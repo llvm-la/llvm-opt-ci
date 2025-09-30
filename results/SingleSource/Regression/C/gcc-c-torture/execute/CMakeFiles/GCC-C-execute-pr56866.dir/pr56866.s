@@ -75,15 +75,11 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr0, $a1, $a0
 	add.d	$a4, $a0, $a1
+	xvldx	$xr0, $a1, $a0
 	xvld	$xr1, $a4, 32
-	xvsrli.d	$xr2, $xr0, 8
-	xvslli.d	$xr0, $xr0, 56
-	xvor.v	$xr0, $xr0, $xr2
-	xvsrli.d	$xr2, $xr1, 8
-	xvslli.d	$xr1, $xr1, 56
-	xvor.v	$xr1, $xr1, $xr2
+	xvrotri.d	$xr0, $xr0, 8
+	xvrotri.d	$xr1, $xr1, 8
 	add.d	$a4, $a2, $a1
 	xvstx	$xr0, $a1, $a2
 	addi.d	$a1, $a1, 64
@@ -96,380 +92,268 @@ main:                                   # @main
 	ori	$a0, $zero, 2664
 	add.d	$a0, $sp, $a0
 	xvld	$xr1, $a0, 0
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
-	xvsrli.w	$xr2, $xr1, 8
-	xvslli.w	$xr1, $xr1, 24
-	xvor.v	$xr1, $xr1, $xr2
+	xvrotri.w	$xr0, $xr0, 8
+	xvst	$xr0, $sp, 1608
 	ori	$a0, $zero, 2696
 	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
-	xvst	$xr0, $sp, 1608
-	xvst	$xr1, $sp, 1640
+	xvld	$xr0, $a0, 0
 	ori	$a0, $zero, 2728
 	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr1, $xr1, 8
+	xvst	$xr1, $sp, 1640
+	xvrotri.w	$xr0, $xr0, 8
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 2760
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0
-	xvst	$xr1, $sp, 1672
-	xvst	$xr0, $sp, 1704
+	xvst	$xr0, $sp, 1672
+	xvst	$xr1, $sp, 1704
 	ori	$a0, $zero, 2792
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.w	$xr1, $xr2, 8
+	xvst	$xr1, $sp, 1736
 	ori	$a0, $zero, 2824
 	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
-	xvst	$xr1, $sp, 1736
-	xvst	$xr0, $sp, 1768
+	xvld	$xr1, $a0, 0
 	ori	$a0, $zero, 2856
 	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr0, $xr0, 8
+	xvst	$xr0, $sp, 1768
+	xvrotri.w	$xr0, $xr1, 8
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 2888
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0
-	xvst	$xr1, $sp, 1800
-	xvst	$xr0, $sp, 1832
+	xvst	$xr0, $sp, 1800
+	xvst	$xr1, $sp, 1832
 	ori	$a0, $zero, 2920
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.w	$xr1, $xr2, 8
+	xvst	$xr1, $sp, 1864
 	ori	$a0, $zero, 2952
 	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
-	xvst	$xr1, $sp, 1864
-	xvst	$xr0, $sp, 1896
+	xvld	$xr1, $a0, 0
 	ori	$a0, $zero, 2984
 	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr0, $xr0, 8
+	xvst	$xr0, $sp, 1896
+	xvrotri.w	$xr0, $xr1, 8
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 3016
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0
-	xvst	$xr1, $sp, 1928
-	xvst	$xr0, $sp, 1960
+	xvst	$xr0, $sp, 1928
+	xvst	$xr1, $sp, 1960
 	ori	$a0, $zero, 3048
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.w	$xr1, $xr2, 8
+	xvst	$xr1, $sp, 1992
 	ori	$a0, $zero, 3080
 	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
-	xvst	$xr1, $sp, 1992
-	xvst	$xr0, $sp, 2024
+	xvld	$xr1, $a0, 0
 	ori	$a0, $zero, 3112
 	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr0, $xr0, 8
+	xvst	$xr0, $sp, 2024
+	xvrotri.w	$xr0, $xr1, 8
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 3144
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0
 	ori	$a0, $zero, 2056
 	add.d	$a0, $sp, $a0
-	xvst	$xr1, $a0, 0
+	xvst	$xr0, $a0, 0
 	ori	$a0, $zero, 2088
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	xvst	$xr1, $a0, 0
 	ori	$a0, $zero, 3176
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
-	ori	$a0, $zero, 3208
-	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 2120
 	add.d	$a0, $sp, $a0
 	xvst	$xr1, $a0, 0
+	ori	$a0, $zero, 3208
+	add.d	$a0, $sp, $a0
+	xvld	$xr1, $a0, 0
+	ori	$a0, $zero, 3240
+	add.d	$a0, $sp, $a0
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr0, $xr0, 8
 	ori	$a0, $zero, 2152
 	add.d	$a0, $sp, $a0
 	xvst	$xr0, $a0, 0
-	ori	$a0, $zero, 3240
-	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.w	$xr0, $xr1, 8
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 3272
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0
 	ori	$a0, $zero, 2184
 	add.d	$a0, $sp, $a0
-	xvst	$xr1, $a0, 0
+	xvst	$xr0, $a0, 0
 	ori	$a0, $zero, 2216
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	xvst	$xr1, $a0, 0
 	ori	$a0, $zero, 3304
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
-	ori	$a0, $zero, 3336
-	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 2248
 	add.d	$a0, $sp, $a0
 	xvst	$xr1, $a0, 0
+	ori	$a0, $zero, 3336
+	add.d	$a0, $sp, $a0
+	xvld	$xr1, $a0, 0
+	ori	$a0, $zero, 3368
+	add.d	$a0, $sp, $a0
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr0, $xr0, 8
 	ori	$a0, $zero, 2280
 	add.d	$a0, $sp, $a0
 	xvst	$xr0, $a0, 0
-	ori	$a0, $zero, 3368
-	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.w	$xr0, $xr1, 8
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 3400
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0
 	ori	$a0, $zero, 2312
 	add.d	$a0, $sp, $a0
-	xvst	$xr1, $a0, 0
+	xvst	$xr0, $a0, 0
 	ori	$a0, $zero, 2344
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	xvst	$xr1, $a0, 0
 	ori	$a0, $zero, 3432
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
-	ori	$a0, $zero, 3464
-	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 2376
 	add.d	$a0, $sp, $a0
 	xvst	$xr1, $a0, 0
+	ori	$a0, $zero, 3464
+	add.d	$a0, $sp, $a0
+	xvld	$xr1, $a0, 0
+	ori	$a0, $zero, 3496
+	add.d	$a0, $sp, $a0
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr0, $xr0, 8
 	ori	$a0, $zero, 2408
 	add.d	$a0, $sp, $a0
 	xvst	$xr0, $a0, 0
-	ori	$a0, $zero, 3496
-	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.w	$xr0, $xr1, 8
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 3528
 	add.d	$a0, $sp, $a0
 	xvld	$xr2, $a0, 0
 	ori	$a0, $zero, 2440
 	add.d	$a0, $sp, $a0
-	xvst	$xr1, $a0, 0
+	xvst	$xr0, $a0, 0
 	ori	$a0, $zero, 2472
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	xvst	$xr1, $a0, 0
 	ori	$a0, $zero, 3560
 	add.d	$a0, $sp, $a0
 	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
-	ori	$a0, $zero, 3592
-	add.d	$a0, $sp, $a0
-	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr1, $xr2, 8
 	ori	$a0, $zero, 2504
 	add.d	$a0, $sp, $a0
 	xvst	$xr1, $a0, 0
+	ori	$a0, $zero, 3592
+	add.d	$a0, $sp, $a0
+	xvld	$xr1, $a0, 0
+	ori	$a0, $zero, 3624
+	add.d	$a0, $sp, $a0
+	xvld	$xr2, $a0, 0
+	xvrotri.w	$xr0, $xr0, 8
 	ori	$a0, $zero, 2536
 	add.d	$a0, $sp, $a0
 	xvst	$xr0, $a0, 0
-	ori	$a0, $zero, 3624
-	add.d	$a0, $sp, $a0
-	xvld	$xr0, $a0, 0
-	xvsrli.w	$xr1, $xr2, 8
-	xvslli.w	$xr2, $xr2, 24
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr0, 8
-	xvslli.w	$xr0, $xr0, 24
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.w	$xr0, $xr1, 8
+	xvrotri.w	$xr1, $xr2, 8
 	xvld	$xr2, $sp, 1096
 	ori	$a0, $zero, 2568
 	add.d	$a0, $sp, $a0
-	xvst	$xr1, $a0, 0
+	xvst	$xr0, $a0, 0
 	ori	$a0, $zero, 2600
 	add.d	$a0, $sp, $a0
-	xvst	$xr0, $a0, 0
+	xvst	$xr1, $a0, 0
 	xvld	$xr0, $sp, 1128
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
-	xvld	$xr2, $sp, 1160
+	xvrotri.h	$xr1, $xr2, 9
 	xvst	$xr1, $sp, 584
+	xvld	$xr1, $sp, 1160
+	xvld	$xr2, $sp, 1192
+	xvrotri.h	$xr0, $xr0, 9
 	xvst	$xr0, $sp, 616
-	xvld	$xr0, $sp, 1192
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.h	$xr0, $xr1, 9
+	xvrotri.h	$xr1, $xr2, 9
 	xvld	$xr2, $sp, 1224
-	xvst	$xr1, $sp, 648
-	xvst	$xr0, $sp, 680
+	xvst	$xr0, $sp, 648
+	xvst	$xr1, $sp, 680
 	xvld	$xr0, $sp, 1256
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
-	xvld	$xr2, $sp, 1288
+	xvrotri.h	$xr1, $xr2, 9
 	xvst	$xr1, $sp, 712
+	xvld	$xr1, $sp, 1288
+	xvld	$xr2, $sp, 1320
+	xvrotri.h	$xr0, $xr0, 9
 	xvst	$xr0, $sp, 744
-	xvld	$xr0, $sp, 1320
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.h	$xr0, $xr1, 9
+	xvrotri.h	$xr1, $xr2, 9
 	xvld	$xr2, $sp, 1352
-	xvst	$xr1, $sp, 776
-	xvst	$xr0, $sp, 808
+	xvst	$xr0, $sp, 776
+	xvst	$xr1, $sp, 808
 	xvld	$xr0, $sp, 1384
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
-	xvld	$xr2, $sp, 1416
+	xvrotri.h	$xr1, $xr2, 9
 	xvst	$xr1, $sp, 840
+	xvld	$xr1, $sp, 1416
+	xvld	$xr2, $sp, 1448
+	xvrotri.h	$xr0, $xr0, 9
 	xvst	$xr0, $sp, 872
-	xvld	$xr0, $sp, 1448
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.h	$xr0, $xr1, 9
+	xvrotri.h	$xr1, $xr2, 9
 	xvld	$xr2, $sp, 1480
-	xvst	$xr1, $sp, 904
-	xvst	$xr0, $sp, 936
+	xvst	$xr0, $sp, 904
+	xvst	$xr1, $sp, 936
 	xvld	$xr0, $sp, 1512
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
-	xvld	$xr2, $sp, 1544
+	xvrotri.h	$xr1, $xr2, 9
 	xvst	$xr1, $sp, 968
+	xvld	$xr1, $sp, 1544
+	xvld	$xr2, $sp, 1576
+	xvrotri.h	$xr0, $xr0, 9
 	xvst	$xr0, $sp, 1000
-	xvld	$xr0, $sp, 1576
-	xvsrli.h	$xr1, $xr2, 9
-	xvslli.h	$xr2, $xr2, 7
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.h	$xr2, $xr0, 9
-	xvslli.h	$xr0, $xr0, 7
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.h	$xr0, $xr1, 9
+	xvrotri.h	$xr1, $xr2, 9
 	xvld	$xr2, $sp, 328
-	xvst	$xr1, $sp, 1032
-	xvst	$xr0, $sp, 1064
+	xvst	$xr0, $sp, 1032
+	xvst	$xr1, $sp, 1064
 	xvld	$xr0, $sp, 360
-	xvsrli.b	$xr1, $xr2, 5
-	xvslli.b	$xr2, $xr2, 3
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.b	$xr2, $xr0, 5
-	xvslli.b	$xr0, $xr0, 3
-	xvor.v	$xr0, $xr0, $xr2
-	xvld	$xr2, $sp, 392
+	xvrotri.b	$xr1, $xr2, 5
 	xvst	$xr1, $sp, 72
+	xvld	$xr1, $sp, 392
+	xvld	$xr2, $sp, 424
+	xvrotri.b	$xr0, $xr0, 5
 	xvst	$xr0, $sp, 104
-	xvld	$xr0, $sp, 424
-	xvsrli.b	$xr1, $xr2, 5
-	xvslli.b	$xr2, $xr2, 3
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.b	$xr2, $xr0, 5
-	xvslli.b	$xr0, $xr0, 3
-	xvor.v	$xr0, $xr0, $xr2
+	xvrotri.b	$xr0, $xr1, 5
+	xvrotri.b	$xr1, $xr2, 5
 	xvld	$xr2, $sp, 456
-	xvst	$xr1, $sp, 136
-	xvst	$xr0, $sp, 168
+	xvst	$xr0, $sp, 136
+	xvst	$xr1, $sp, 168
 	xvld	$xr0, $sp, 488
-	xvsrli.b	$xr1, $xr2, 5
-	xvslli.b	$xr2, $xr2, 3
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.b	$xr2, $xr0, 5
-	xvslli.b	$xr0, $xr0, 3
-	xvor.v	$xr0, $xr0, $xr2
-	xvld	$xr2, $sp, 520
+	xvrotri.b	$xr1, $xr2, 5
 	xvst	$xr1, $sp, 200
+	xvld	$xr1, $sp, 520
+	xvld	$xr2, $sp, 552
+	xvrotri.b	$xr0, $xr0, 5
 	xvst	$xr0, $sp, 232
-	xvld	$xr0, $sp, 552
-	xvsrli.b	$xr1, $xr2, 5
-	xvslli.b	$xr2, $xr2, 3
-	xvor.v	$xr1, $xr2, $xr1
-	xvsrli.b	$xr2, $xr0, 5
-	xvslli.b	$xr0, $xr0, 3
-	xvor.v	$xr0, $xr0, $xr2
-	xvst	$xr1, $sp, 264
-	xvst	$xr0, $sp, 296
+	xvrotri.b	$xr0, $xr1, 5
+	xvrotri.b	$xr1, $xr2, 5
+	xvst	$xr0, $sp, 264
+	xvst	$xr1, $sp, 296
 	ori	$a0, $zero, 3656
 	add.d	$a0, $sp, $a0
 	st.d	$a0, $sp, 32
