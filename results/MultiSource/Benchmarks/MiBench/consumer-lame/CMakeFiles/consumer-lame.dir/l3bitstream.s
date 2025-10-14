@@ -4028,8 +4028,7 @@ L3_huffman_coder_count1:                # @L3_huffman_coder_count1
 	sub.d	$a0, $a2, $a0
 	vinsgr2vr.w	$vr0, $a3, 0
 	vinsgr2vr.w	$vr0, $a4, 1
-	vneg.w	$vr1, $vr0
-	vmax.w	$vr0, $vr0, $vr1
+	vsigncov.w	$vr0, $vr0, $vr0
 	srai.d	$a2, $a5, 31
 	xor	$a3, $a5, $a2
 	sub.d	$a2, $a3, $a2
@@ -4631,53 +4630,50 @@ Huffmancodebits:                        # @Huffmancodebits
 	.p2align	4, , 16
 .LBB6_41:                               # =>This Inner Loop Header: Depth=1
 	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
-	ld.wu	$s7, $s3, 0
-	ld.w	$a1, $a2, 72
-	addi.w	$a3, $s7, 0
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
-	ld.w	$s2, $s3, 12
-	addi.d	$a1, $a1, 32
-	bstrpick.d	$a1, $a1, 31, 0
-	slli.d	$a2, $a1, 4
-	alsl.d	$a1, $a1, $a2, 3
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a1, $a2, $a1
-	srai.d	$a2, $a3, 31
-	xor	$a3, $s7, $a2
-	sub.d	$a2, $a3, $a2
-	slti	$a3, $s2, 1
-	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
-	ld.d	$a3, $s3, 4
-	srai.d	$a4, $s2, 31
-	xor	$a5, $s2, $a4
-	sub.d	$a4, $a5, $a4
-	vinsgr2vr.d	$vr0, $a3, 0
-	vpickve2gr.w	$s4, $vr0, 0
-	vneg.w	$vr1, $vr0
-	vmax.w	$vr1, $vr0, $vr1
+	ld.d	$a1, $s3, 4
+	ld.wu	$s2, $s3, 0
+	ld.w	$a2, $a2, 72
+	vinsgr2vr.d	$vr0, $a1, 0
+	vsigncov.w	$vr1, $vr0, $vr0
 	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
 	vsll.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$a3, $vr1, 0
-	alsl.d	$a2, $a2, $a3, 3
+	vpickve2gr.w	$a1, $vr1, 0
 	vpickve2gr.w	$a3, $vr1, 1
-	add.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a4
-	ld.d	$a3, $a1, 8
-	ld.d	$a4, $a1, 16
+	addi.w	$s6, $s2, 0
+	ld.w	$s7, $s3, 12
+	addi.d	$a2, $a2, 32
 	bstrpick.d	$a2, $a2, 31, 0
-	slli.d	$a1, $a2, 3
+	slli.d	$a4, $a2, 4
+	alsl.d	$a2, $a2, $a4, 3
+	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	add.d	$a2, $a4, $a2
+	srai.d	$a4, $s6, 31
+	xor	$a5, $s2, $a4
+	sub.d	$a4, $a5, $a4
+	slti	$a5, $s7, 1
+	st.d	$a5, $sp, 96                    # 8-byte Folded Spill
+	srai.d	$a5, $s7, 31
+	xor	$a6, $s7, $a5
+	sub.d	$a5, $a6, $a5
+	vpickve2gr.w	$s4, $vr0, 0
+	alsl.d	$a1, $a4, $a1, 3
+	add.d	$a1, $a1, $a3
+	add.d	$a1, $a1, $a5
+	ld.d	$a3, $a2, 8
+	ld.d	$a2, $a2, 16
+	bstrpick.d	$a4, $a1, 31, 0
+	slli.d	$a1, $a4, 3
 	ldx.w	$a1, $a3, $a1
-	ldx.bu	$s1, $a4, $a2
+	ldx.bu	$a2, $a2, $a4
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	slti	$s0, $s4, 1
-	vpickve2gr.w	$s6, $vr0, 1
-	slti	$s8, $s6, 1
-	move	$a2, $s1
+	vpickve2gr.w	$s8, $vr0, 1
+	slti	$s1, $s8, 1
 	pcaddu18i	$ra, %call36(BF_addEntry)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 0
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	sltu	$a1, $zero, $a1
-	srli.d	$a2, $s7, 31
+	sltu	$a1, $zero, $s6
+	srli.d	$a2, $s2, 31
 	sltui	$a3, $s4, 1
 	slli.d	$a4, $a2, 1
 	or	$a4, $a4, $s0
@@ -4688,14 +4684,14 @@ Huffmancodebits:                        # @Huffmancodebits
 	masknez	$a4, $a5, $a3
 	maskeqz	$a1, $a1, $a3
 	or	$a1, $a1, $a4
-	sltu	$a3, $zero, $s6
+	sltu	$a3, $zero, $s8
 	slli.d	$a4, $a2, 1
-	or	$a4, $a4, $s8
+	or	$a4, $a4, $s1
 	masknez	$a2, $a2, $a3
 	maskeqz	$a4, $a4, $a3
 	or	$a2, $a4, $a2
 	add.d	$a1, $a1, $a3
-	sltu	$a3, $zero, $s2
+	sltu	$a3, $zero, $s7
 	slli.d	$a4, $a2, 1
 	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
 	or	$a4, $a4, $a5
@@ -4712,7 +4708,8 @@ Huffmancodebits:                        # @Huffmancodebits
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a0, $fp, 0
 	add.d	$a1, $s2, $s5
-	add.d	$s5, $a1, $s1
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	add.d	$s5, $a1, $a4
 	addi.d	$a5, $a5, 4
 	addi.d	$s3, $s3, 16
 	blt	$a5, $a3, .LBB6_41

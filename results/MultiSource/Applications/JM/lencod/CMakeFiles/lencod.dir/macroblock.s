@@ -16985,9 +16985,9 @@ find_sad_16x16:                         # @find_sad_16x16
 	vadd.w	$vr15, $vr14, $vr13
 	vsub.w	$vr14, $vr13, $vr14
 	vsub.w	$vr8, $vr8, $vr10
-	vadd.w	$vr16, $vr15, $vr11
+	vadd.w	$vr17, $vr15, $vr11
 	vsub.w	$vr13, $vr11, $vr15
-	vadd.w	$vr18, $vr14, $vr8
+	vadd.w	$vr16, $vr14, $vr8
 	vsub.w	$vr8, $vr8, $vr14
 	ld.w	$a0, $a2, -960
 	ld.w	$a4, $a2, -896
@@ -17018,21 +17018,21 @@ find_sad_16x16:                         # @find_sad_16x16
 	ld.w	$a4, $a2, -384
 	ld.w	$a5, $a2, -320
 	ld.w	$t0, $a2, -256
-	vinsgr2vr.w	$vr17, $a0, 0
-	vinsgr2vr.w	$vr17, $a4, 1
-	vinsgr2vr.w	$vr17, $a5, 2
-	vinsgr2vr.w	$vr17, $t0, 3
-	vadd.w	$vr19, $vr17, $vr15
-	vsub.w	$vr15, $vr15, $vr17
+	vinsgr2vr.w	$vr18, $a0, 0
+	vinsgr2vr.w	$vr18, $a4, 1
+	vinsgr2vr.w	$vr18, $a5, 2
+	vinsgr2vr.w	$vr18, $t0, 3
+	vadd.w	$vr19, $vr18, $vr15
+	vsub.w	$vr15, $vr15, $vr18
 	vsub.w	$vr10, $vr10, $vr11
-	vadd.w	$vr17, $vr19, $vr14
+	vadd.w	$vr18, $vr19, $vr14
 	vsub.w	$vr19, $vr14, $vr19
 	vadd.w	$vr20, $vr15, $vr10
 	vsub.w	$vr15, $vr10, $vr15
-	vadd.w	$vr10, $vr17, $vr7
-	vadd.w	$vr11, $vr16, $vr12
-	vsub.w	$vr12, $vr12, $vr16
-	vsub.w	$vr7, $vr7, $vr17
+	vadd.w	$vr10, $vr18, $vr7
+	vadd.w	$vr11, $vr17, $vr12
+	vsub.w	$vr12, $vr12, $vr17
+	vsub.w	$vr7, $vr7, $vr18
 	vadd.w	$vr14, $vr11, $vr10
 	vpickve2gr.w	$a0, $vr14, 0
 	st.w	$a0, $a2, -1008
@@ -17060,20 +17060,20 @@ find_sad_16x16:                         # @find_sad_16x16
 	st.w	$a0, $a2, -864
 	vpickve2gr.w	$a0, $vr14, 3
 	st.w	$a0, $a2, -800
-	vsub.w	$vr16, $vr7, $vr12
-	vpickve2gr.w	$a0, $vr16, 0
+	vsub.w	$vr17, $vr7, $vr12
+	vpickve2gr.w	$a0, $vr17, 0
 	st.w	$a0, $a2, -960
-	vpickve2gr.w	$a0, $vr16, 1
+	vpickve2gr.w	$a0, $vr17, 1
 	st.w	$a0, $a2, -896
-	vpickve2gr.w	$a0, $vr16, 2
+	vpickve2gr.w	$a0, $vr17, 2
 	st.w	$a0, $a2, -832
-	vpickve2gr.w	$a0, $vr16, 3
+	vpickve2gr.w	$a0, $vr17, 3
 	st.w	$a0, $a2, -768
-	vadd.w	$vr16, $vr20, $vr5
-	vadd.w	$vr17, $vr18, $vr9
-	vsub.w	$vr9, $vr9, $vr18
-	vsub.w	$vr18, $vr5, $vr20
-	vadd.w	$vr5, $vr17, $vr16
+	vadd.w	$vr17, $vr20, $vr5
+	vadd.w	$vr18, $vr16, $vr9
+	vsub.w	$vr9, $vr9, $vr16
+	vsub.w	$vr16, $vr5, $vr20
+	vadd.w	$vr5, $vr18, $vr17
 	vpickve2gr.w	$a0, $vr5, 0
 	st.w	$a0, $a2, -752
 	vpickve2gr.w	$a0, $vr5, 1
@@ -17082,7 +17082,7 @@ find_sad_16x16:                         # @find_sad_16x16
 	st.w	$a0, $a2, -624
 	vpickve2gr.w	$a0, $vr5, 3
 	st.w	$a0, $a2, -560
-	vsub.w	$vr20, $vr16, $vr17
+	vsub.w	$vr20, $vr17, $vr18
 	vpickve2gr.w	$a0, $vr20, 0
 	st.w	$a0, $a2, -720
 	vpickve2gr.w	$a0, $vr20, 1
@@ -17091,7 +17091,7 @@ find_sad_16x16:                         # @find_sad_16x16
 	st.w	$a0, $a2, -592
 	vpickve2gr.w	$a0, $vr20, 3
 	st.w	$a0, $a2, -528
-	vadd.w	$vr20, $vr9, $vr18
+	vadd.w	$vr20, $vr9, $vr16
 	vpickve2gr.w	$a0, $vr20, 0
 	st.w	$a0, $a2, -736
 	vpickve2gr.w	$a0, $vr20, 1
@@ -17100,7 +17100,7 @@ find_sad_16x16:                         # @find_sad_16x16
 	st.w	$a0, $a2, -608
 	vpickve2gr.w	$a0, $vr20, 3
 	st.w	$a0, $a2, -544
-	vsub.w	$vr21, $vr18, $vr9
+	vsub.w	$vr21, $vr16, $vr9
 	vpickve2gr.w	$a0, $vr21, 0
 	st.w	$a0, $a2, -704
 	vpickve2gr.w	$a0, $vr21, 1
@@ -17158,26 +17158,19 @@ find_sad_16x16:                         # @find_sad_16x16
 	vstelm.w	$vr25, $a2, 0, 3
 	vabsd.w	$vr2, $vr2, $vr4
 	vabsd.w	$vr4, $vr23, $vr24
-	vneg.w	$vr23, $vr15
-	vmax.w	$vr15, $vr15, $vr23
-	vneg.w	$vr23, $vr8
-	vmax.w	$vr8, $vr8, $vr23
+	vsigncov.w	$vr15, $vr15, $vr15
+	vsigncov.w	$vr8, $vr8, $vr8
 	vabsd.w	$vr3, $vr3, $vr6
 	vabsd.w	$vr6, $vr21, $vr22
-	vneg.w	$vr21, $vr19
-	vmax.w	$vr19, $vr19, $vr21
-	vneg.w	$vr21, $vr13
-	vmax.w	$vr13, $vr13, $vr21
-	vabsd.w	$vr9, $vr18, $vr9
-	vabsd.w	$vr16, $vr16, $vr17
-	vneg.w	$vr17, $vr20
-	vmax.w	$vr17, $vr20, $vr17
-	vneg.w	$vr18, $vr5
-	vmax.w	$vr5, $vr5, $vr18
+	vsigncov.w	$vr19, $vr19, $vr19
+	vsigncov.w	$vr13, $vr13, $vr13
+	vabsd.w	$vr9, $vr16, $vr9
+	vabsd.w	$vr16, $vr17, $vr18
+	vsigncov.w	$vr17, $vr20, $vr20
+	vsigncov.w	$vr5, $vr5, $vr5
 	vabsd.w	$vr7, $vr7, $vr12
 	vabsd.w	$vr10, $vr10, $vr11
-	vneg.w	$vr11, $vr14
-	vmax.w	$vr11, $vr14, $vr11
+	vsigncov.w	$vr11, $vr14, $vr14
 	vadd.w	$vr1, $vr11, $vr1
 	vadd.w	$vr1, $vr10, $vr1
 	vadd.w	$vr1, $vr7, $vr1

@@ -7635,7 +7635,6 @@ itrans_sp_chroma:                       # @itrans_sp_chroma
 # %bb.8:                                # %.split301.us
 	slli.d	$a7, $a1, 8
 	add.d	$a7, $a0, $a7
-	vneg.w	$vr1, $vr0
 	ori	$t8, $zero, 2664
 	ldx.w	$t8, $a7, $t8
 	ori	$fp, $zero, 2728
@@ -7644,15 +7643,14 @@ itrans_sp_chroma:                       # @itrans_sp_chroma
 	ldx.w	$s0, $a7, $s0
 	ori	$s1, $zero, 3496
 	ldx.w	$a7, $a7, $s1
-	vldrepl.w	$vr2, $t7, 0
-	vmax.w	$vr1, $vr0, $vr1
+	vldrepl.w	$vr1, $t7, 0
+	vsigncov.w	$vr2, $vr0, $vr0
 	vslti.w	$vr0, $vr0, 0
 	vreplgr2vr.w	$vr3, $t6
-	vmadd.w	$vr3, $vr1, $vr2
+	vmadd.w	$vr3, $vr2, $vr1
 	vreplgr2vr.w	$vr1, $t5
 	vsra.w	$vr1, $vr3, $vr1
-	vneg.w	$vr2, $vr1
-	vmax.w	$vr1, $vr1, $vr2
+	vsigncov.w	$vr1, $vr1, $vr1
 	vneg.w	$vr2, $vr1
 	vbitsel.v	$vr0, $vr1, $vr2, $vr0
 	vinsgr2vr.w	$vr1, $a7, 0
@@ -7661,7 +7659,6 @@ itrans_sp_chroma:                       # @itrans_sp_chroma
 	vinsgr2vr.w	$vr1, $s0, 2
 	vinsgr2vr.w	$vr1, $t8, 3
 	vadd.w	$vr0, $vr0, $vr1
-	vmul.w	$vr0, $vr0, $vr2
 	b	.LBB9_10
 .LBB9_9:                                # %.split301
 	ldx.w	$a7, $t2, $a6
@@ -7685,22 +7682,20 @@ itrans_sp_chroma:                       # @itrans_sp_chroma
 	vreplgr2vr.w	$vr2, $t0
 	vsll.w	$vr1, $vr1, $vr2
 	vsrai.w	$vr1, $vr1, 5
+	vldrepl.w	$vr2, $t7, 0
 	vadd.w	$vr0, $vr1, $vr0
-	vldrepl.w	$vr1, $t7, 0
-	vneg.w	$vr2, $vr0
-	vmax.w	$vr2, $vr0, $vr2
+	vsigncov.w	$vr1, $vr0, $vr0
 	vreplgr2vr.w	$vr3, $t6
-	vmadd.w	$vr3, $vr2, $vr1
+	vmadd.w	$vr3, $vr1, $vr2
 	vreplgr2vr.w	$vr1, $t5
 	vsra.w	$vr1, $vr3, $vr1
 	vslti.w	$vr0, $vr0, 0
-	vneg.w	$vr2, $vr1
-	vldrepl.w	$vr3, $t4, 0
-	vmax.w	$vr1, $vr1, $vr2
-	vneg.w	$vr2, $vr1
-	vbitsel.v	$vr0, $vr1, $vr2, $vr0
-	vmul.w	$vr0, $vr0, $vr3
+	vldrepl.w	$vr2, $t4, 0
+	vsigncov.w	$vr1, $vr1, $vr1
+	vneg.w	$vr3, $vr1
+	vbitsel.v	$vr0, $vr1, $vr3, $vr0
 .LBB9_10:                               # %.preheader278
+	vmul.w	$vr0, $vr0, $vr2
 	add.d	$a6, $t2, $a6
 	addi.d	$t1, $t1, 12
 	add.d	$a7, $t2, $t1

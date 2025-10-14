@@ -8423,8 +8423,7 @@ link_msps:                              # @link_msps
 	ld.d	$t6, $a7, 0
 	vinsgr2vr.d	$vr1, $t6, 0
 	vsub.w	$vr0, $vr0, $vr1
-	vneg.w	$vr1, $vr0
-	vmax.w	$vr0, $vr0, $vr1
+	vsigncov.w	$vr0, $vr0, $vr0
 	vsrli.w	$vr0, $vr0, 15
 	vpickve2gr.w	$t6, $vr0, 0
 	vpickve2gr.w	$t7, $vr0, 1

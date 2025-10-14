@@ -753,18 +753,12 @@ HadamardSAD8x8:                         # @HadamardSAD8x8
 	xvinsgr2vr.w	$xr0, $a3, 5
 	xvinsgr2vr.w	$xr0, $a2, 6
 	ld.w	$a0, $a0, 224
-	xvneg.w	$xr8, $xr1
-	xvmax.w	$xr1, $xr1, $xr8
-	xvneg.w	$xr8, $xr2
-	xvmax.w	$xr2, $xr2, $xr8
-	xvneg.w	$xr8, $xr3
-	xvmax.w	$xr3, $xr3, $xr8
-	xvneg.w	$xr8, $xr4
-	xvmax.w	$xr4, $xr4, $xr8
-	xvneg.w	$xr8, $xr5
-	xvmax.w	$xr5, $xr5, $xr8
-	xvneg.w	$xr8, $xr6
-	xvmax.w	$xr6, $xr6, $xr8
+	xvsigncov.w	$xr1, $xr1, $xr1
+	xvsigncov.w	$xr2, $xr2, $xr2
+	xvsigncov.w	$xr3, $xr3, $xr3
+	xvsigncov.w	$xr4, $xr4, $xr4
+	xvsigncov.w	$xr5, $xr5, $xr5
+	xvsigncov.w	$xr6, $xr6, $xr6
 	xvinsgr2vr.w	$xr0, $a0, 7
 	xvadda.w	$xr0, $xr7, $xr0
 	xvadd.w	$xr0, $xr6, $xr0

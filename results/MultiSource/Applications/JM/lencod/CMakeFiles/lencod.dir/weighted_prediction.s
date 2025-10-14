@@ -2170,8 +2170,7 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	vsrli.b	$vr16, $vr15, 7
 	vadd.b	$vr15, $vr15, $vr16
 	vsrai.b	$vr15, $vr15, 1
-	vneg.b	$vr16, $vr15
-	vmax.b	$vr15, $vr15, $vr16
+	vsigncov.b	$vr15, $vr15, $vr15
 	vilvl.b	$vr15, $vr3, $vr15
 	vbitseti.h	$vr15, $vr15, 14
 	vpickev.h	$vr12, $vr12, $vr12

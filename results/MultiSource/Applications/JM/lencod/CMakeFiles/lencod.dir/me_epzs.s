@@ -1814,8 +1814,7 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	vsrli.b	$vr12, $vr11, 7
 	vadd.b	$vr11, $vr11, $vr12
 	vsrai.b	$vr11, $vr11, 1
-	vneg.b	$vr12, $vr11
-	vmax.b	$vr11, $vr11, $vr12
+	vsigncov.b	$vr11, $vr11, $vr11
 	vilvl.b	$vr11, $vr5, $vr11
 	vbitseti.h	$vr11, $vr11, 14
 	vpickev.h	$vr9, $vr9, $vr9
