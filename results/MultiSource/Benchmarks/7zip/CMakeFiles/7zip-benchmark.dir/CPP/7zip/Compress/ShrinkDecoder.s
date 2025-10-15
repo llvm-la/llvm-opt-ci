@@ -528,13 +528,14 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
                                         #   Parent Loop BB0_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvldx	$xr0, $a1, $t0
-	xvxori.b	$xr0, $xr0, 255
-	vpickve2gr.b	$a2, $vr0, 0
+	xvxori.b	$xr1, $xr0, 255
+	vpickve2gr.b	$a2, $vr1, 0
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_91
 # %bb.60:                               # %pred.store.if
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s0, $a1, 0
+	xvbitrevi.b	$xr0, $xr0, 0
 	vpickve2gr.b	$a2, $vr0, 1
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_92
@@ -708,6 +709,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	.p2align	4, , 16
 .LBB0_91:                               # %pred.store.continue
                                         #   in Loop: Header=BB0_59 Depth=2
+	xvbitrevi.b	$xr0, $xr0, 0
 	vpickve2gr.b	$a2, $vr0, 1
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_61
