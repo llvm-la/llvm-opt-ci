@@ -812,33 +812,24 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	ffint.d.w	$fa5, $fa1
 	vextrins.d	$vr5, $vr4, 16
 	vreplvei.d	$vr1, $vr0, 0
+	vfmul.d	$vr4, $vr1, $vr5
+	xvori.b	$xr5, $xr0, 0
 	fst.d	$fs0, $sp, 184
 	fst.d	$fs1, $sp, 176
 	fst.d	$fs2, $sp, 168
 	fst.d	$fa3, $sp, 160
 	xvld	$xr3, $sp, 160
-	vfmul.d	$vr4, $vr1, $vr5
-	xvori.b	$xr5, $xr0, 0
 	xvinsve0.d	$xr5, $xr2, 1
 	xvpermi.q	$xr5, $xr4, 2
+	ld.hu	$a3, $a2, 0
 	xvfmul.d	$xr2, $xr5, $xr3
 	xvfmul.d	$xr2, $xr2, $xr6
 	xvfrecip.d	$xr2, $xr2
-	xvpickve.d	$xr3, $xr2, 1
-	fcvt.s.d	$fa3, $fa3
-	xvpickve.d	$xr4, $xr2, 0
-	fcvt.s.d	$fa4, $fa4
-	vextrins.w	$vr4, $vr3, 16
-	xvpickve.d	$xr3, $xr2, 2
-	ld.hu	$a3, $a2, 0
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr4, $vr3, 32
-	xvpickve.d	$xr2, $xr2, 3
 	movgr2fr.w	$fa3, $a3
 	ld.hu	$a3, $a2, 2
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr4, $vr2, 48
-	vst	$vr4, $a0, -16
+	xvpermi.q	$xr4, $xr2, 1
+	vfcvt.s.d	$vr2, $vr4, $vr2
+	vst	$vr2, $a0, -16
 	movgr2fr.w	$fa2, $a3
 	ld.w	$a3, $a2, 4
 	ffint.d.w	$fa3, $fa3
@@ -865,18 +856,9 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	xvfmul.d	$xr0, $xr0, $xr3
 	xvfmul.d	$xr0, $xr0, $xr6
 	xvfrecip.d	$xr0, $xr0
-	xvpickve.d	$xr1, $xr0, 1
-	fcvt.s.d	$fa1, $fa1
-	xvpickve.d	$xr2, $xr0, 0
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	xvpickve.d	$xr1, $xr0, 2
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	xvpickve.d	$xr0, $xr0, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	vst	$vr2, $a0, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vfcvt.s.d	$vr0, $vr1, $vr0
+	vst	$vr0, $a0, 0
 	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 16
 	addi.d	$a0, $a0, 32

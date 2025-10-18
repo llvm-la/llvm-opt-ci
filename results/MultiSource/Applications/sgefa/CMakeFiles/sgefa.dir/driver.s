@@ -249,9 +249,18 @@ main:                                   # @main
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI1_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	6                               # 0x6
+	.word	7                               # 0x7
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI1_1:
+.LCPI1_2:
 	.dword	0x47d2ced32a16a1b1              # double 9.9999999999999997E+37
 	.text
 	.globl	matgen
@@ -1301,13 +1310,15 @@ matgen:                                 # @matgen
 	bstrpick.d	$a4, $a2, 30, 3
 	slli.d	$a3, $a4, 3
 	slli.d	$a4, $a4, 5
-	pcalau12i	$a5, %pc_hi20(.LCPI1_1)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI1_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_2)
+	fld.d	$fa1, $a5, %pc_lo12(.LCPI1_2)
 	pcalau12i	$a5, %pc_hi20(.LCPI1_0)
 	xvld	$xr2, $a5, %pc_lo12(.LCPI1_0)
-	xvreplve0.d	$xr3, $xr0
+	pcalau12i	$a5, %pc_hi20(.LCPI1_1)
+	xvld	$xr3, $a5, %pc_lo12(.LCPI1_1)
+	xvreplve0.d	$xr4, $xr0
 	ori	$a5, $zero, 8
-	xvreplgr2vr.d	$xr4, $s5
+	xvreplgr2vr.d	$xr5, $s5
 	b	.LBB1_110
 .LBB1_109:                              # %._crit_edge469
                                         #   in Loop: Header=BB1_110 Depth=1
@@ -1323,14 +1334,14 @@ matgen:                                 # @matgen
 	srli.d	$a7, $a6, 1
 	andi	$t1, $a6, 1
 	or	$a7, $t1, $a7
-	movgr2fr.d	$fa5, $a7
-	ffint.s.l	$fa5, $fa5
-	fadd.s	$fa5, $fa5, $fa5
-	slti	$a7, $a6, 0
-	movgr2fr.d	$fa6, $a6
+	movgr2fr.d	$fa6, $a7
 	ffint.s.l	$fa6, $fa6
+	fadd.s	$fa6, $fa6, $fa6
+	slti	$a7, $a6, 0
+	movgr2fr.d	$fa7, $a6
+	ffint.s.l	$fa7, $fa7
 	movgr2cf	$fcc0, $a7
-	fsel	$fa5, $fa6, $fa5, $fcc0
+	fsel	$fa6, $fa7, $fa6, $fcc0
 	bge	$s3, $a5, .LBB1_112
 # %bb.111:                              #   in Loop: Header=BB1_110 Depth=1
 	move	$t1, $zero
@@ -1339,16 +1350,29 @@ matgen:                                 # @matgen
 .LBB1_112:                              # %vector.ph621
                                         #   in Loop: Header=BB1_110 Depth=1
 	add.d	$a7, $t0, $a4
-	xvreplgr2vr.d	$xr6, $a0
-	xvreplgr2vr.w	$xr7, $a6
-	xvreplve0.w	$xr8, $xr5
+	xvreplgr2vr.d	$xr7, $a0
+	xvreplgr2vr.w	$xr8, $a6
+	xvreplve0.w	$xr9, $xr6
 	move	$t1, $a3
-	xvori.b	$xr9, $xr2, 0
+	xvori.b	$xr10, $xr2, 0
 	.p2align	4, , 16
 .LBB1_113:                              # %vector.body632
                                         #   Parent Loop BB1_110 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvpermi.q	$xr10, $xr9, 1
+	xvpermi.q	$xr11, $xr10, 1
+	vpickve2gr.w	$t2, $vr11, 2
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr12, $t2, 0
+	vpickve2gr.w	$t2, $vr11, 3
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr12, $t2, 1
+	vpickve2gr.w	$t2, $vr11, 0
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr13, $t2, 0
+	vpickve2gr.w	$t2, $vr11, 1
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr13, $t2, 1
+	xvpermi.q	$xr13, $xr12, 2
 	vpickve2gr.w	$t2, $vr10, 2
 	bstrpick.d	$t2, $t2, 31, 0
 	vinsgr2vr.d	$vr11, $t2, 0
@@ -1362,43 +1386,41 @@ matgen:                                 # @matgen
 	bstrpick.d	$t2, $t2, 31, 0
 	vinsgr2vr.d	$vr12, $t2, 1
 	xvpermi.q	$xr12, $xr11, 2
-	vpickve2gr.w	$t2, $vr9, 2
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr10, $t2, 0
-	vpickve2gr.w	$t2, $vr9, 3
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr10, $t2, 1
-	vpickve2gr.w	$t2, $vr9, 0
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr11, $t2, 0
-	vpickve2gr.w	$t2, $vr9, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr11, $t2, 1
-	xvpermi.q	$xr11, $xr10, 2
-	xvslt.du	$xr10, $xr6, $xr12
-	xvpickve2gr.d	$t2, $xr10, 0
+	xvslt.du	$xr11, $xr7, $xr13
+	xvpickve2gr.d	$t2, $xr11, 0
+	vinsgr2vr.w	$vr13, $t2, 0
+	xvpickve2gr.d	$t2, $xr11, 1
+	vinsgr2vr.w	$vr13, $t2, 1
+	xvpickve2gr.d	$t2, $xr11, 2
+	vinsgr2vr.w	$vr13, $t2, 2
+	xvpickve2gr.d	$t2, $xr11, 3
+	vinsgr2vr.w	$vr13, $t2, 3
+	xvslt.du	$xr11, $xr7, $xr12
+	xvpickve2gr.d	$t2, $xr11, 0
 	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
+	xvpickve2gr.d	$t2, $xr11, 1
 	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
+	xvpickve2gr.d	$t2, $xr11, 2
 	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
+	xvpickve2gr.d	$t2, $xr11, 3
 	vinsgr2vr.w	$vr12, $t2, 3
-	xvslt.du	$xr10, $xr6, $xr11
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr11, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr11, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr11, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr11, $t2, 3
-	xvpermi.q	$xr11, $xr12, 2
-	xvaddi.wu	$xr10, $xr9, 1
-	xvbitsel.v	$xr10, $xr7, $xr10, $xr11
-	xvffint.s.wu	$xr10, $xr10
-	xvfdiv.s	$xr10, $xr8, $xr10
-	xvpermi.q	$xr11, $xr10, 1
+	xvpermi.q	$xr12, $xr13, 2
+	xvaddi.wu	$xr11, $xr10, 1
+	xvbitsel.v	$xr11, $xr8, $xr11, $xr12
+	xvffint.s.wu	$xr11, $xr11
+	xvfdiv.s	$xr11, $xr9, $xr11
+	vreplvei.w	$vr12, $vr11, 3
+	fcvt.d.s	$ft4, $ft4
+	vreplvei.w	$vr13, $vr11, 2
+	fcvt.d.s	$ft5, $ft5
+	vextrins.d	$vr13, $vr12, 16
+	vreplvei.w	$vr12, $vr11, 1
+	fcvt.d.s	$ft4, $ft4
+	vreplvei.w	$vr14, $vr11, 0
+	fcvt.d.s	$ft6, $ft6
+	vextrins.d	$vr14, $vr12, 16
+	xvpermi.q	$xr14, $xr13, 2
+	xvpermi.q	$xr11, $xr11, 1
 	vreplvei.w	$vr12, $vr11, 3
 	fcvt.d.s	$ft4, $ft4
 	vreplvei.w	$vr13, $vr11, 2
@@ -1410,46 +1432,14 @@ matgen:                                 # @matgen
 	fcvt.d.s	$ft3, $ft3
 	vextrins.d	$vr11, $vr12, 16
 	xvpermi.q	$xr11, $xr13, 2
-	vreplvei.w	$vr12, $vr10, 3
-	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr13, $vr10, 2
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr12, 16
-	vreplvei.w	$vr12, $vr10, 1
-	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr10, $vr10, 0
-	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr12, 16
-	xvpermi.q	$xr10, $xr13, 2
-	xvfmul.d	$xr10, $xr10, $xr4
-	xvfmul.d	$xr11, $xr11, $xr4
-	xvfdiv.d	$xr11, $xr11, $xr3
-	xvfdiv.d	$xr10, $xr10, $xr3
-	xvpickve.d	$xr12, $xr10, 1
-	fcvt.s.d	$ft4, $ft4
-	xvpickve.d	$xr13, $xr10, 0
-	fcvt.s.d	$ft5, $ft5
-	vextrins.w	$vr13, $vr12, 16
-	xvpickve.d	$xr12, $xr10, 2
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr13, $vr12, 32
-	xvpickve.d	$xr10, $xr10, 3
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr13, $vr10, 48
-	xvpickve.d	$xr10, $xr11, 1
-	fcvt.s.d	$ft2, $ft2
-	xvpickve.d	$xr12, $xr11, 0
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr12, $vr10, 16
-	xvpickve.d	$xr10, $xr11, 2
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 32
-	xvpickve.d	$xr10, $xr11, 3
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 48
-	xvpermi.q	$xr13, $xr12, 2
-	xvst	$xr13, $t0, 0
-	xvaddi.wu	$xr9, $xr9, 8
+	xvfmul.d	$xr11, $xr11, $xr5
+	xvfmul.d	$xr12, $xr14, $xr5
+	xvfdiv.d	$xr12, $xr12, $xr4
+	xvfdiv.d	$xr11, $xr11, $xr4
+	xvfcvt.s.d	$xr11, $xr11, $xr12
+	xvperm.w	$xr11, $xr11, $xr3
+	xvst	$xr11, $t0, 0
+	xvaddi.wu	$xr10, $xr10, 8
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB1_113
@@ -1470,14 +1460,14 @@ matgen:                                 # @matgen
 	maskeqz	$t2, $t1, $t2
 	or	$t2, $t2, $t3
 	bstrpick.d	$t2, $t2, 31, 0
-	movgr2fr.d	$fa6, $t2
-	ffint.s.l	$fa6, $fa6
-	fdiv.s	$fa6, $fa5, $fa6
-	fcvt.d.s	$fa6, $fa6
-	fmul.d	$fa6, $fa6, $fa1
-	fdiv.d	$fa6, $fa6, $fa0
-	fcvt.s.d	$fa6, $fa6
-	fst.s	$fa6, $a7, 0
+	movgr2fr.d	$fa7, $t2
+	ffint.s.l	$fa7, $fa7
+	fdiv.s	$fa7, $fa6, $fa7
+	fcvt.d.s	$fa7, $fa7
+	fmul.d	$fa7, $fa7, $fa1
+	fdiv.d	$fa7, $fa7, $fa0
+	fcvt.s.d	$fa7, $fa7
+	fst.s	$fa7, $a7, 0
 	addi.d	$a7, $a7, 4
 	addi.d	$t0, $t0, 1
 	bne	$a2, $t1, .LBB1_116
@@ -1707,15 +1697,17 @@ matgen:                                 # @matgen
 	slli.d	$a3, $a4, 3
 	slli.d	$a4, $a4, 5
 	xvreplve0.w	$xr1, $xr0
-	pcalau12i	$a5, %pc_hi20(.LCPI1_1)
-	fld.d	$fa2, $a5, %pc_lo12(.LCPI1_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_2)
+	fld.d	$fa2, $a5, %pc_lo12(.LCPI1_2)
 	pcalau12i	$a5, %pc_hi20(.LCPI1_0)
 	xvld	$xr3, $a5, %pc_lo12(.LCPI1_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_1)
+	xvld	$xr4, $a5, %pc_lo12(.LCPI1_1)
 	lu12i.w	$a5, 172394
 	ori	$a5, $a5, 433
 	lu32i.d	$a5, 184019
 	lu52i.d	$a5, $a5, 1149
-	xvreplgr2vr.d	$xr4, $a5
+	xvreplgr2vr.d	$xr5, $a5
 	ori	$a5, $zero, 8
 	b	.LBB1_147
 .LBB1_146:                              # %._crit_edge461
@@ -1732,14 +1724,14 @@ matgen:                                 # @matgen
 	srli.d	$a7, $a6, 1
 	andi	$t1, $a6, 1
 	or	$a7, $t1, $a7
-	movgr2fr.d	$fa5, $a7
-	ffint.s.l	$fa5, $fa5
-	fadd.s	$fa5, $fa5, $fa5
-	slti	$a7, $a6, 0
-	movgr2fr.d	$fa6, $a6
+	movgr2fr.d	$fa6, $a7
 	ffint.s.l	$fa6, $fa6
+	fadd.s	$fa6, $fa6, $fa6
+	slti	$a7, $a6, 0
+	movgr2fr.d	$fa7, $a6
+	ffint.s.l	$fa7, $fa7
 	movgr2cf	$fcc0, $a7
-	fsel	$fa5, $fa6, $fa5, $fcc0
+	fsel	$fa6, $fa7, $fa6, $fcc0
 	bge	$s3, $a5, .LBB1_149
 # %bb.148:                              #   in Loop: Header=BB1_147 Depth=1
 	move	$t1, $zero
@@ -1748,16 +1740,29 @@ matgen:                                 # @matgen
 .LBB1_149:                              # %vector.ph
                                         #   in Loop: Header=BB1_147 Depth=1
 	add.d	$a7, $t0, $a4
-	xvreplgr2vr.d	$xr6, $a0
-	xvreplgr2vr.w	$xr7, $a6
-	xvreplve0.w	$xr8, $xr5
+	xvreplgr2vr.d	$xr7, $a0
+	xvreplgr2vr.w	$xr8, $a6
+	xvreplve0.w	$xr9, $xr6
 	move	$t1, $a3
-	xvori.b	$xr9, $xr3, 0
+	xvori.b	$xr10, $xr3, 0
 	.p2align	4, , 16
 .LBB1_150:                              # %vector.body
                                         #   Parent Loop BB1_147 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvpermi.q	$xr10, $xr9, 1
+	xvpermi.q	$xr11, $xr10, 1
+	vpickve2gr.w	$t2, $vr11, 2
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr12, $t2, 0
+	vpickve2gr.w	$t2, $vr11, 3
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr12, $t2, 1
+	vpickve2gr.w	$t2, $vr11, 0
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr13, $t2, 0
+	vpickve2gr.w	$t2, $vr11, 1
+	bstrpick.d	$t2, $t2, 31, 0
+	vinsgr2vr.d	$vr13, $t2, 1
+	xvpermi.q	$xr13, $xr12, 2
 	vpickve2gr.w	$t2, $vr10, 2
 	bstrpick.d	$t2, $t2, 31, 0
 	vinsgr2vr.d	$vr11, $t2, 0
@@ -1771,93 +1776,59 @@ matgen:                                 # @matgen
 	bstrpick.d	$t2, $t2, 31, 0
 	vinsgr2vr.d	$vr12, $t2, 1
 	xvpermi.q	$xr12, $xr11, 2
-	vpickve2gr.w	$t2, $vr9, 2
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr10, $t2, 0
-	vpickve2gr.w	$t2, $vr9, 3
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr10, $t2, 1
-	vpickve2gr.w	$t2, $vr9, 0
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr11, $t2, 0
-	vpickve2gr.w	$t2, $vr9, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	vinsgr2vr.d	$vr11, $t2, 1
-	xvpermi.q	$xr11, $xr10, 2
-	xvslt.du	$xr10, $xr6, $xr12
-	xvpickve2gr.d	$t2, $xr10, 0
+	xvslt.du	$xr11, $xr7, $xr13
+	xvpickve2gr.d	$t2, $xr11, 0
+	vinsgr2vr.w	$vr13, $t2, 0
+	xvpickve2gr.d	$t2, $xr11, 1
+	vinsgr2vr.w	$vr13, $t2, 1
+	xvpickve2gr.d	$t2, $xr11, 2
+	vinsgr2vr.w	$vr13, $t2, 2
+	xvpickve2gr.d	$t2, $xr11, 3
+	vinsgr2vr.w	$vr13, $t2, 3
+	xvslt.du	$xr11, $xr7, $xr12
+	xvpickve2gr.d	$t2, $xr11, 0
 	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
+	xvpickve2gr.d	$t2, $xr11, 1
 	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
+	xvpickve2gr.d	$t2, $xr11, 2
 	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
+	xvpickve2gr.d	$t2, $xr11, 3
 	vinsgr2vr.w	$vr12, $t2, 3
-	xvslt.du	$xr10, $xr6, $xr11
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr11, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr11, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr11, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr11, $t2, 3
-	xvpermi.q	$xr11, $xr12, 2
-	xvaddi.wu	$xr10, $xr9, 1
-	xvbitsel.v	$xr10, $xr7, $xr10, $xr11
-	xvffint.s.wu	$xr10, $xr10
-	xvfdiv.s	$xr10, $xr10, $xr8
-	xvfmul.s	$xr10, $xr10, $xr1
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr13, $vr10, 0
+	xvpermi.q	$xr12, $xr13, 2
+	xvaddi.wu	$xr11, $xr10, 1
+	xvbitsel.v	$xr11, $xr8, $xr11, $xr12
+	xvffint.s.wu	$xr11, $xr11
+	xvfdiv.s	$xr11, $xr11, $xr9
+	xvfmul.s	$xr11, $xr11, $xr1
+	xvpermi.q	$xr12, $xr11, 1
+	vreplvei.w	$vr13, $vr12, 3
 	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr11, 16
-	xvpermi.q	$xr13, $xr12, 2
-	xvpermi.q	$xr10, $xr10, 1
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
+	vreplvei.w	$vr14, $vr12, 2
+	fcvt.d.s	$ft6, $ft6
+	vextrins.d	$vr14, $vr13, 16
+	vreplvei.w	$vr13, $vr12, 1
+	fcvt.d.s	$ft5, $ft5
+	vreplvei.w	$vr12, $vr12, 0
 	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
+	vextrins.d	$vr12, $vr13, 16
+	xvpermi.q	$xr12, $xr14, 2
+	vreplvei.w	$vr13, $vr11, 3
+	fcvt.d.s	$ft5, $ft5
+	vreplvei.w	$vr14, $vr11, 2
+	fcvt.d.s	$ft6, $ft6
+	vextrins.d	$vr14, $vr13, 16
+	vreplvei.w	$vr13, $vr11, 1
+	fcvt.d.s	$ft5, $ft5
+	vreplvei.w	$vr11, $vr11, 0
 	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr10, $vr10, 0
-	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr11, 16
-	xvpermi.q	$xr10, $xr12, 2
-	xvfdiv.d	$xr10, $xr10, $xr4
-	xvfdiv.d	$xr11, $xr13, $xr4
-	xvpickve.d	$xr12, $xr11, 1
-	fcvt.s.d	$ft4, $ft4
-	xvpickve.d	$xr13, $xr11, 0
-	fcvt.s.d	$ft5, $ft5
-	vextrins.w	$vr13, $vr12, 16
-	xvpickve.d	$xr12, $xr11, 2
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr13, $vr12, 32
-	xvpickve.d	$xr11, $xr11, 3
-	fcvt.s.d	$ft3, $ft3
-	vextrins.w	$vr13, $vr11, 48
-	xvpickve.d	$xr11, $xr10, 1
-	fcvt.s.d	$ft3, $ft3
-	xvpickve.d	$xr12, $xr10, 0
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr12, $vr11, 16
-	xvpickve.d	$xr11, $xr10, 2
-	fcvt.s.d	$ft3, $ft3
-	vextrins.w	$vr12, $vr11, 32
-	xvpickve.d	$xr10, $xr10, 3
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 48
-	xvpermi.q	$xr13, $xr12, 2
-	xvst	$xr13, $t0, 0
-	xvaddi.wu	$xr9, $xr9, 8
+	vextrins.d	$vr11, $vr13, 16
+	xvpermi.q	$xr11, $xr14, 2
+	xvfdiv.d	$xr11, $xr11, $xr5
+	xvfdiv.d	$xr12, $xr12, $xr5
+	xvfcvt.s.d	$xr11, $xr12, $xr11
+	xvperm.w	$xr11, $xr11, $xr4
+	xvst	$xr11, $t0, 0
+	xvaddi.wu	$xr10, $xr10, 8
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB1_150
@@ -1878,14 +1849,14 @@ matgen:                                 # @matgen
 	maskeqz	$t2, $t1, $t2
 	or	$t2, $t2, $t3
 	bstrpick.d	$t2, $t2, 31, 0
-	movgr2fr.d	$fa6, $t2
-	ffint.s.l	$fa6, $fa6
-	fdiv.s	$fa6, $fa6, $fa5
-	fmul.s	$fa6, $fa6, $fa0
-	fcvt.d.s	$fa6, $fa6
-	fdiv.d	$fa6, $fa6, $fa2
-	fcvt.s.d	$fa6, $fa6
-	fst.s	$fa6, $a7, 0
+	movgr2fr.d	$fa7, $t2
+	ffint.s.l	$fa7, $fa7
+	fdiv.s	$fa7, $fa7, $fa6
+	fmul.s	$fa7, $fa7, $fa0
+	fcvt.d.s	$fa7, $fa7
+	fdiv.d	$fa7, $fa7, $fa2
+	fcvt.s.d	$fa7, $fa7
+	fst.s	$fa7, $a7, 0
 	addi.d	$a7, $a7, 4
 	addi.d	$t0, $t0, 1
 	bne	$a2, $t1, .LBB1_153

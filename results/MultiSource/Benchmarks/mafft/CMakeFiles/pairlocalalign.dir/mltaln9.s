@@ -9481,9 +9481,9 @@ fastsupg:                               # @fastsupg
 .LBB29_2:                               # %.preheader173.lr.ph
 	move	$a0, $zero
 	ld.d	$a2, $s4, %pc_lo12(fastsupg.eff)
-	bstrpick.d	$a3, $fp, 30, 3
-	slli.d	$a3, $a3, 3
-	ori	$a4, $zero, 8
+	bstrpick.d	$a3, $fp, 30, 2
+	slli.d	$a3, $a3, 2
+	ori	$a4, $zero, 4
 	b	.LBB29_4
 	.p2align	4, , 16
 .LBB29_3:                               # %._crit_edge.us
@@ -9504,42 +9504,20 @@ fastsupg:                               # @fastsupg
 	.p2align	4, , 16
 .LBB29_6:                               # %vector.body.preheader
                                         #   in Loop: Header=BB29_4 Depth=1
-	addi.d	$a7, $a6, 16
-	addi.d	$t0, $a5, 32
+	addi.d	$a7, $a6, 8
+	addi.d	$t0, $a5, 16
 	move	$t1, $a3
 	.p2align	4, , 16
 .LBB29_7:                               # %vector.body
                                         #   Parent Loop BB29_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $t0, -32
-	xvld	$xr1, $t0, 0
-	xvpickve.d	$xr2, $xr0, 1
-	fcvt.s.d	$fa2, $fa2
-	xvpickve.d	$xr3, $xr0, 0
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr0, 2
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr3, $vr2, 32
-	xvpickve.d	$xr0, $xr0, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr3, $vr0, 48
-	xvpickve.d	$xr0, $xr1, 1
-	fcvt.s.d	$fa0, $fa0
-	xvpickve.d	$xr2, $xr1, 0
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr2, $vr0, 16
-	xvpickve.d	$xr0, $xr1, 2
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 32
-	xvpickve.d	$xr0, $xr1, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	vst	$vr3, $a7, -16
-	vst	$vr2, $a7, 0
-	addi.d	$t1, $t1, -8
-	addi.d	$a7, $a7, 32
-	addi.d	$t0, $t0, 64
+	vld	$vr0, $t0, -16
+	vld	$vr1, $t0, 0
+	vfcvt.s.d	$vr0, $vr1, $vr0
+	vst	$vr0, $a7, -8
+	addi.d	$t1, $t1, -4
+	addi.d	$a7, $a7, 16
+	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB29_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
@@ -10062,9 +10040,9 @@ supg:                                   # @supg
 # %bb.3:                                # %.preheader161.lr.ph
 	move	$a0, $zero
 	ld.d	$a1, $s3, %pc_lo12(supg.eff)
-	bstrpick.d	$a2, $s1, 30, 3
-	slli.d	$a2, $a2, 3
-	ori	$a3, $zero, 8
+	bstrpick.d	$a2, $s1, 30, 2
+	slli.d	$a2, $a2, 2
+	ori	$a3, $zero, 4
 	b	.LBB30_5
 	.p2align	4, , 16
 .LBB30_4:                               # %._crit_edge.us
@@ -10085,42 +10063,20 @@ supg:                                   # @supg
 	.p2align	4, , 16
 .LBB30_7:                               # %vector.body.preheader
                                         #   in Loop: Header=BB30_5 Depth=1
-	addi.d	$a6, $a5, 16
-	addi.d	$a7, $a4, 32
+	addi.d	$a6, $a5, 8
+	addi.d	$a7, $a4, 16
 	move	$t0, $a2
 	.p2align	4, , 16
 .LBB30_8:                               # %vector.body
                                         #   Parent Loop BB30_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a7, -32
-	xvld	$xr1, $a7, 0
-	xvpickve.d	$xr2, $xr0, 1
-	fcvt.s.d	$fa2, $fa2
-	xvpickve.d	$xr3, $xr0, 0
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr0, 2
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr3, $vr2, 32
-	xvpickve.d	$xr0, $xr0, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr3, $vr0, 48
-	xvpickve.d	$xr0, $xr1, 1
-	fcvt.s.d	$fa0, $fa0
-	xvpickve.d	$xr2, $xr1, 0
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr2, $vr0, 16
-	xvpickve.d	$xr0, $xr1, 2
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 32
-	xvpickve.d	$xr0, $xr1, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	vst	$vr3, $a6, -16
-	vst	$vr2, $a6, 0
-	addi.d	$t0, $t0, -8
-	addi.d	$a6, $a6, 32
-	addi.d	$a7, $a7, 64
+	vld	$vr0, $a7, -16
+	vld	$vr1, $a7, 0
+	vfcvt.s.d	$vr0, $vr1, $vr0
+	vst	$vr0, $a6, -8
+	addi.d	$t0, $t0, -4
+	addi.d	$a6, $a6, 16
+	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB30_8
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB30_5 Depth=1

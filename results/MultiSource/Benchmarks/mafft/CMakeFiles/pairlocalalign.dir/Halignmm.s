@@ -445,16 +445,25 @@ imp_match_init_strictH:                 # @imp_match_init_strictH
 	.word	7                               # 0x7
 	.word	8                               # 0x8
 .LCPI2_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	6                               # 0x6
+	.word	7                               # 0x7
+.LCPI2_3:
 	.dword	5                               # 0x5
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
 	.dword	8                               # 0x8
-.LCPI2_3:
+.LCPI2_4:
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
 	.dword	4                               # 0x4
-.LCPI2_6:
+.LCPI2_7:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -465,15 +474,15 @@ imp_match_init_strictH:                 # @imp_match_init_strictH
 	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI2_4:
+.LCPI2_5:
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
 	.word	4                               # 0x4
-.LCPI2_5:
+.LCPI2_6:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-.LCPI2_7:
+.LCPI2_8:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -1412,71 +1421,52 @@ H__align:                               # @H__align
 	bstrins.d	$a3, $a5, 2, 0
 	pcalau12i	$a5, %pc_hi20(.LCPI2_1)
 	xvld	$xr0, $a5, %pc_lo12(.LCPI2_1)
-	xvreplgr2vr.w	$xr1, $a0
+	pcalau12i	$a5, %pc_hi20(.LCPI2_2)
+	xvld	$xr1, $a5, %pc_lo12(.LCPI2_2)
+	xvreplgr2vr.w	$xr2, $a0
 	addi.d	$a5, $s1, 4
-	xvldi	$xr2, -800
+	xvldi	$xr3, -800
 	move	$a6, $a4
 	.p2align	4, , 16
 .LBB2_43:                               # %vector.body933
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.w	$xr3, $xr1, $xr0
-	xvpermi.q	$xr4, $xr3, 1
+	xvmul.w	$xr4, $xr2, $xr0
+	xvpermi.q	$xr5, $xr4, 1
+	vext2xv.d.w	$xr5, $xr5
+	xvffint.d.l	$xr5, $xr5
 	vext2xv.d.w	$xr4, $xr4
+	xvld	$xr6, $a5, 0
 	xvffint.d.l	$xr4, $xr4
-	vext2xv.d.w	$xr3, $xr3
-	xvld	$xr5, $a5, 0
-	xvffint.d.l	$xr3, $xr3
-	xvfmul.d	$xr3, $xr3, $xr2
-	xvfmul.d	$xr4, $xr4, $xr2
-	xvpermi.q	$xr6, $xr5, 1
-	vreplvei.w	$vr7, $vr6, 3
-	fcvt.d.s	$fa7, $fa7
-	vreplvei.w	$vr8, $vr6, 2
+	xvfmul.d	$xr4, $xr4, $xr3
+	xvfmul.d	$xr5, $xr5, $xr3
+	xvpermi.q	$xr7, $xr6, 1
+	vreplvei.w	$vr8, $vr7, 3
 	fcvt.d.s	$ft0, $ft0
-	vextrins.d	$vr8, $vr7, 16
-	vreplvei.w	$vr7, $vr6, 1
+	vreplvei.w	$vr9, $vr7, 2
+	fcvt.d.s	$ft1, $ft1
+	vextrins.d	$vr9, $vr8, 16
+	vreplvei.w	$vr8, $vr7, 1
+	fcvt.d.s	$ft0, $ft0
+	vreplvei.w	$vr7, $vr7, 0
 	fcvt.d.s	$fa7, $fa7
+	vextrins.d	$vr7, $vr8, 16
+	xvpermi.q	$xr7, $xr9, 2
+	vreplvei.w	$vr8, $vr6, 3
+	fcvt.d.s	$ft0, $ft0
+	vreplvei.w	$vr9, $vr6, 2
+	fcvt.d.s	$ft1, $ft1
+	vextrins.d	$vr9, $vr8, 16
+	vreplvei.w	$vr8, $vr6, 1
+	fcvt.d.s	$ft0, $ft0
 	vreplvei.w	$vr6, $vr6, 0
 	fcvt.d.s	$fa6, $fa6
-	vextrins.d	$vr6, $vr7, 16
-	xvpermi.q	$xr6, $xr8, 2
-	vreplvei.w	$vr7, $vr5, 3
-	fcvt.d.s	$fa7, $fa7
-	vreplvei.w	$vr8, $vr5, 2
-	fcvt.d.s	$ft0, $ft0
-	vextrins.d	$vr8, $vr7, 16
-	vreplvei.w	$vr7, $vr5, 1
-	fcvt.d.s	$fa7, $fa7
-	vreplvei.w	$vr5, $vr5, 0
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr7, 16
-	xvpermi.q	$xr5, $xr8, 2
+	vextrins.d	$vr6, $vr8, 16
+	xvpermi.q	$xr6, $xr9, 2
+	xvfadd.d	$xr5, $xr7, $xr5
 	xvfadd.d	$xr4, $xr6, $xr4
-	xvfadd.d	$xr3, $xr5, $xr3
-	xvpickve.d	$xr5, $xr4, 1
-	fcvt.s.d	$fa5, $fa5
-	xvpickve.d	$xr6, $xr4, 0
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr6, $vr5, 16
-	xvpickve.d	$xr5, $xr4, 2
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr6, $vr5, 32
-	xvpickve.d	$xr4, $xr4, 3
-	fcvt.s.d	$fa4, $fa4
-	vextrins.w	$vr6, $vr4, 48
-	xvpickve.d	$xr4, $xr3, 1
-	fcvt.s.d	$fa4, $fa4
-	xvpickve.d	$xr5, $xr3, 0
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr5, $vr4, 16
-	xvpickve.d	$xr4, $xr3, 2
-	fcvt.s.d	$fa4, $fa4
-	vextrins.w	$vr5, $vr4, 32
-	xvpickve.d	$xr3, $xr3, 3
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr5, $vr3, 48
-	xvpermi.q	$xr5, $xr6, 2
-	xvst	$xr5, $a5, 0
+	xvfcvt.s.d	$xr4, $xr5, $xr4
+	xvperm.w	$xr4, $xr4, $xr1
+	xvst	$xr4, $a5, 0
 	xvaddi.wu	$xr0, $xr0, 8
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
@@ -1525,71 +1515,52 @@ H__align:                               # @H__align
 	bstrins.d	$a3, $a5, 2, 0
 	pcalau12i	$a5, %pc_hi20(.LCPI2_1)
 	xvld	$xr0, $a5, %pc_lo12(.LCPI2_1)
-	xvreplgr2vr.w	$xr1, $a0
+	pcalau12i	$a5, %pc_hi20(.LCPI2_2)
+	xvld	$xr1, $a5, %pc_lo12(.LCPI2_2)
+	xvreplgr2vr.w	$xr2, $a0
 	addi.d	$a5, $s0, 4
-	xvldi	$xr2, -800
+	xvldi	$xr3, -800
 	move	$a6, $a4
 	.p2align	4, , 16
 .LBB2_50:                               # %vector.body948
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.w	$xr3, $xr1, $xr0
-	xvpermi.q	$xr4, $xr3, 1
+	xvmul.w	$xr4, $xr2, $xr0
+	xvpermi.q	$xr5, $xr4, 1
+	vext2xv.d.w	$xr5, $xr5
+	xvffint.d.l	$xr5, $xr5
 	vext2xv.d.w	$xr4, $xr4
+	xvld	$xr6, $a5, 0
 	xvffint.d.l	$xr4, $xr4
-	vext2xv.d.w	$xr3, $xr3
-	xvld	$xr5, $a5, 0
-	xvffint.d.l	$xr3, $xr3
-	xvfmul.d	$xr3, $xr3, $xr2
-	xvfmul.d	$xr4, $xr4, $xr2
-	xvpermi.q	$xr6, $xr5, 1
-	vreplvei.w	$vr7, $vr6, 3
-	fcvt.d.s	$fa7, $fa7
-	vreplvei.w	$vr8, $vr6, 2
+	xvfmul.d	$xr4, $xr4, $xr3
+	xvfmul.d	$xr5, $xr5, $xr3
+	xvpermi.q	$xr7, $xr6, 1
+	vreplvei.w	$vr8, $vr7, 3
 	fcvt.d.s	$ft0, $ft0
-	vextrins.d	$vr8, $vr7, 16
-	vreplvei.w	$vr7, $vr6, 1
+	vreplvei.w	$vr9, $vr7, 2
+	fcvt.d.s	$ft1, $ft1
+	vextrins.d	$vr9, $vr8, 16
+	vreplvei.w	$vr8, $vr7, 1
+	fcvt.d.s	$ft0, $ft0
+	vreplvei.w	$vr7, $vr7, 0
 	fcvt.d.s	$fa7, $fa7
+	vextrins.d	$vr7, $vr8, 16
+	xvpermi.q	$xr7, $xr9, 2
+	vreplvei.w	$vr8, $vr6, 3
+	fcvt.d.s	$ft0, $ft0
+	vreplvei.w	$vr9, $vr6, 2
+	fcvt.d.s	$ft1, $ft1
+	vextrins.d	$vr9, $vr8, 16
+	vreplvei.w	$vr8, $vr6, 1
+	fcvt.d.s	$ft0, $ft0
 	vreplvei.w	$vr6, $vr6, 0
 	fcvt.d.s	$fa6, $fa6
-	vextrins.d	$vr6, $vr7, 16
-	xvpermi.q	$xr6, $xr8, 2
-	vreplvei.w	$vr7, $vr5, 3
-	fcvt.d.s	$fa7, $fa7
-	vreplvei.w	$vr8, $vr5, 2
-	fcvt.d.s	$ft0, $ft0
-	vextrins.d	$vr8, $vr7, 16
-	vreplvei.w	$vr7, $vr5, 1
-	fcvt.d.s	$fa7, $fa7
-	vreplvei.w	$vr5, $vr5, 0
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr7, 16
-	xvpermi.q	$xr5, $xr8, 2
+	vextrins.d	$vr6, $vr8, 16
+	xvpermi.q	$xr6, $xr9, 2
+	xvfadd.d	$xr5, $xr7, $xr5
 	xvfadd.d	$xr4, $xr6, $xr4
-	xvfadd.d	$xr3, $xr5, $xr3
-	xvpickve.d	$xr5, $xr4, 1
-	fcvt.s.d	$fa5, $fa5
-	xvpickve.d	$xr6, $xr4, 0
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr6, $vr5, 16
-	xvpickve.d	$xr5, $xr4, 2
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr6, $vr5, 32
-	xvpickve.d	$xr4, $xr4, 3
-	fcvt.s.d	$fa4, $fa4
-	vextrins.w	$vr6, $vr4, 48
-	xvpickve.d	$xr4, $xr3, 1
-	fcvt.s.d	$fa4, $fa4
-	xvpickve.d	$xr5, $xr3, 0
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr5, $vr4, 16
-	xvpickve.d	$xr4, $xr3, 2
-	fcvt.s.d	$fa4, $fa4
-	vextrins.w	$vr5, $vr4, 32
-	xvpickve.d	$xr3, $xr3, 3
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr5, $vr3, 48
-	xvpermi.q	$xr5, $xr6, 2
-	xvst	$xr5, $a5, 0
+	xvfcvt.s.d	$xr4, $xr5, $xr4
+	xvperm.w	$xr4, $xr4, $xr1
+	xvst	$xr4, $a5, 0
 	xvaddi.wu	$xr0, $xr0, 8
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
@@ -2015,12 +1986,12 @@ H__align:                               # @H__align
 	ld.d	$a0, $a0, %pc_lo12(impmtx)
 	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $a0, %pc_lo12(H__align.ijp)
+	ld.d	$fp, $a0, %pc_lo12(H__align.ijp)
 	pcalau12i	$a0, %pc_hi20(H__align.mp)
 	ld.d	$a0, $a0, %pc_lo12(H__align.mp)
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $a0, %pc_lo12(H__align.gappat2)
+	ld.d	$s3, $a0, %pc_lo12(H__align.gappat2)
 	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(H__align.diaf1)
 	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
@@ -2028,13 +1999,13 @@ H__align:                               # @H__align
 	ld.d	$a0, $a0, %pc_lo12(H__align.gappat1)
 	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s0, $a0, %pc_lo12(H__align.diaf2)
+	ld.d	$s5, $a0, %pc_lo12(H__align.diaf2)
 	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(H__align.gapf1)
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	fcvt.d.s	$fs1, $ft2
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s3, $a0, %pc_lo12(H__align.gapf2)
+	ld.d	$s0, $a0, %pc_lo12(H__align.gapf2)
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
 	add.d	$a0, $a4, $a0
@@ -2173,7 +2144,7 @@ H__align:                               # @H__align
 	fmadd.s	$fa0, $ft3, $fs3, $fa0
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	ldx.d	$s6, $a0, $a3
-	ldx.d	$a3, $s5, $a3
+	ldx.d	$a3, $fp, $a3
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	alsl.d	$a4, $s4, $a0, 2
 	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
@@ -2210,7 +2181,7 @@ H__align:                               # @H__align
                                         #       Child Loop BB2_145 Depth 3
                                         #         Child Loop BB2_147 Depth 4
 	slli.d	$a0, $t0, 3
-	ldx.d	$t5, $fp, $a0
+	ldx.d	$t5, $s3, $a0
 	fld.s	$fa4, $t5, 4
 	fld.s	$fa1, $t4, 0
 	fcmp.ceq.s	$fcc0, $fa4, $fs2
@@ -2225,7 +2196,7 @@ H__align:                               # @H__align
                                         #   in Loop: Header=BB2_118 Depth=2
 	addi.d	$a3, $a3, 4
 	slli.d	$t6, $t0, 2
-	fldx.s	$fa2, $s0, $t6
+	fldx.s	$fa2, $s5, $t6
 	fld.s	$fa6, $a5, 0
 	fld.s	$fa3, $s6, 4
 	st.w	$zero, $a3, 0
@@ -2298,7 +2269,7 @@ H__align:                               # @H__align
 	fmov.s	$fs0, $fa4
 .LBB2_130:                              #   in Loop: Header=BB2_118 Depth=2
 	fld.s	$fa4, $a4, 0
-	fldx.s	$fa5, $s3, $t6
+	fldx.s	$fa5, $s0, $t6
 	addi.d	$t3, $t3, 4
 	fcvt.d.s	$fa4, $fa4
 	fcvt.d.s	$fa5, $fa5
@@ -2311,7 +2282,7 @@ H__align:                               # @H__align
 # %bb.131:                              #   in Loop: Header=BB2_118 Depth=2
 	ld.w	$a0, $t3, 0
 	slli.d	$a2, $a0, 3
-	ldx.d	$a2, $s5, $a2
+	ldx.d	$a2, $fp, $a2
 	fcvt.d.s	$fa3, $fa3
 	alsl.d	$a2, $t0, $a2, 2
 	ld.w	$a2, $a2, -4
@@ -2551,19 +2522,29 @@ H__align:                               # @H__align
 	move	$a3, $a2
 	bstrins.d	$a3, $a5, 2, 0
 	xvreplgr2vr.w	$xr0, $a0
-	pcalau12i	$a5, %pc_hi20(.LCPI2_2)
-	xvld	$xr1, $a5, %pc_lo12(.LCPI2_2)
 	pcalau12i	$a5, %pc_hi20(.LCPI2_3)
-	xvld	$xr2, $a5, %pc_lo12(.LCPI2_3)
-	xvreplgr2vr.d	$xr3, $s7
+	xvld	$xr1, $a5, %pc_lo12(.LCPI2_3)
+	pcalau12i	$a5, %pc_hi20(.LCPI2_4)
+	xvld	$xr2, $a5, %pc_lo12(.LCPI2_4)
+	pcalau12i	$a5, %pc_hi20(.LCPI2_2)
+	xvld	$xr3, $a5, %pc_lo12(.LCPI2_2)
+	xvreplgr2vr.d	$xr4, $s7
 	addi.d	$a5, $s1, 4
-	xvldi	$xr4, -800
+	xvldi	$xr5, -800
 	move	$a6, $a4
 	.p2align	4, , 16
 .LBB2_170:                              # %vector.body1056
                                         # =>This Inner Loop Header: Depth=1
-	xvsub.d	$xr5, $xr3, $xr1
-	xvsub.d	$xr6, $xr3, $xr2
+	xvsub.d	$xr6, $xr4, $xr1
+	xvsub.d	$xr7, $xr4, $xr2
+	xvpickve2gr.d	$a7, $xr7, 0
+	vinsgr2vr.w	$vr8, $a7, 0
+	xvpickve2gr.d	$a7, $xr7, 1
+	vinsgr2vr.w	$vr8, $a7, 1
+	xvpickve2gr.d	$a7, $xr7, 2
+	vinsgr2vr.w	$vr8, $a7, 2
+	xvpickve2gr.d	$a7, $xr7, 3
+	vinsgr2vr.w	$vr8, $a7, 3
 	xvpickve2gr.d	$a7, $xr6, 0
 	vinsgr2vr.w	$vr7, $a7, 0
 	xvpickve2gr.d	$a7, $xr6, 1
@@ -2572,73 +2553,44 @@ H__align:                               # @H__align
 	vinsgr2vr.w	$vr7, $a7, 2
 	xvpickve2gr.d	$a7, $xr6, 3
 	vinsgr2vr.w	$vr7, $a7, 3
-	xvpickve2gr.d	$a7, $xr5, 0
-	vinsgr2vr.w	$vr6, $a7, 0
-	xvpickve2gr.d	$a7, $xr5, 1
-	vinsgr2vr.w	$vr6, $a7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	vinsgr2vr.w	$vr6, $a7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	vinsgr2vr.w	$vr6, $a7, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvmul.w	$xr5, $xr0, $xr7
-	xvpermi.q	$xr6, $xr5, 1
+	xvpermi.q	$xr8, $xr7, 2
+	xvmul.w	$xr6, $xr0, $xr8
+	xvpermi.q	$xr7, $xr6, 1
+	vext2xv.d.w	$xr7, $xr7
+	xvffint.d.l	$xr7, $xr7
 	vext2xv.d.w	$xr6, $xr6
+	xvld	$xr8, $a5, 0
 	xvffint.d.l	$xr6, $xr6
-	vext2xv.d.w	$xr5, $xr5
-	xvld	$xr7, $a5, 0
-	xvffint.d.l	$xr5, $xr5
-	xvfmul.d	$xr5, $xr5, $xr4
-	xvfmul.d	$xr6, $xr6, $xr4
-	xvpermi.q	$xr8, $xr7, 1
-	vreplvei.w	$vr9, $vr8, 3
-	fcvt.d.s	$ft1, $ft1
-	vreplvei.w	$vr10, $vr8, 2
+	xvfmul.d	$xr6, $xr6, $xr5
+	xvfmul.d	$xr7, $xr7, $xr5
+	xvpermi.q	$xr9, $xr8, 1
+	vreplvei.w	$vr10, $vr9, 3
 	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr9, 16
-	vreplvei.w	$vr9, $vr8, 1
+	vreplvei.w	$vr11, $vr9, 2
+	fcvt.d.s	$ft3, $ft3
+	vextrins.d	$vr11, $vr10, 16
+	vreplvei.w	$vr10, $vr9, 1
+	fcvt.d.s	$ft2, $ft2
+	vreplvei.w	$vr9, $vr9, 0
 	fcvt.d.s	$ft1, $ft1
+	vextrins.d	$vr9, $vr10, 16
+	xvpermi.q	$xr9, $xr11, 2
+	vreplvei.w	$vr10, $vr8, 3
+	fcvt.d.s	$ft2, $ft2
+	vreplvei.w	$vr11, $vr8, 2
+	fcvt.d.s	$ft3, $ft3
+	vextrins.d	$vr11, $vr10, 16
+	vreplvei.w	$vr10, $vr8, 1
+	fcvt.d.s	$ft2, $ft2
 	vreplvei.w	$vr8, $vr8, 0
 	fcvt.d.s	$ft0, $ft0
-	vextrins.d	$vr8, $vr9, 16
-	xvpermi.q	$xr8, $xr10, 2
-	vreplvei.w	$vr9, $vr7, 3
-	fcvt.d.s	$ft1, $ft1
-	vreplvei.w	$vr10, $vr7, 2
-	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr9, 16
-	vreplvei.w	$vr9, $vr7, 1
-	fcvt.d.s	$ft1, $ft1
-	vreplvei.w	$vr7, $vr7, 0
-	fcvt.d.s	$fa7, $fa7
-	vextrins.d	$vr7, $vr9, 16
-	xvpermi.q	$xr7, $xr10, 2
+	vextrins.d	$vr8, $vr10, 16
+	xvpermi.q	$xr8, $xr11, 2
+	xvfadd.d	$xr7, $xr9, $xr7
 	xvfadd.d	$xr6, $xr8, $xr6
-	xvfadd.d	$xr5, $xr7, $xr5
-	xvpickve.d	$xr7, $xr6, 1
-	fcvt.s.d	$fa7, $fa7
-	xvpickve.d	$xr8, $xr6, 0
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr8, $vr7, 16
-	xvpickve.d	$xr7, $xr6, 2
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr8, $vr7, 32
-	xvpickve.d	$xr6, $xr6, 3
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr8, $vr6, 48
-	xvpickve.d	$xr6, $xr5, 1
-	fcvt.s.d	$fa6, $fa6
-	xvpickve.d	$xr7, $xr5, 0
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr7, $vr6, 16
-	xvpickve.d	$xr6, $xr5, 2
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr7, $vr6, 32
-	xvpickve.d	$xr5, $xr5, 3
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr7, $vr5, 48
-	xvpermi.q	$xr7, $xr8, 2
-	xvst	$xr7, $a5, 0
+	xvfcvt.s.d	$xr6, $xr7, $xr6
+	xvperm.w	$xr6, $xr6, $xr3
+	xvst	$xr6, $a5, 0
 	xvaddi.du	$xr2, $xr2, 8
 	xvaddi.du	$xr1, $xr1, 8
 	addi.d	$a6, $a6, -8
@@ -2694,8 +2646,8 @@ H__align:                               # @H__align
 	move	$a0, $a3
 	bstrins.d	$a0, $a5, 1, 0
 	xvreplve0.d	$xr2, $xr0
-	pcalau12i	$a5, %pc_hi20(.LCPI2_4)
-	vld	$vr3, $a5, %pc_lo12(.LCPI2_4)
+	pcalau12i	$a5, %pc_hi20(.LCPI2_5)
+	vld	$vr3, $a5, %pc_lo12(.LCPI2_5)
 	xvreplve0.d	$xr4, $xr1
 	addi.d	$a5, $a1, 4
 	xvldi	$xr5, -800
@@ -2720,18 +2672,9 @@ H__align:                               # @H__align
 	vextrins.d	$vr7, $vr8, 16
 	xvpermi.q	$xr7, $xr9, 2
 	xvfmadd.d	$xr6, $xr4, $xr6, $xr7
-	xvpickve.d	$xr7, $xr6, 1
-	fcvt.s.d	$fa7, $fa7
-	xvpickve.d	$xr8, $xr6, 0
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr8, $vr7, 16
-	xvpickve.d	$xr7, $xr6, 2
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr8, $vr7, 32
-	xvpickve.d	$xr6, $xr6, 3
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr8, $vr6, 48
-	vst	$vr8, $a5, 0
+	xvpermi.q	$xr7, $xr6, 1
+	vfcvt.s.d	$vr6, $vr7, $vr6
+	vst	$vr6, $a5, 0
 	vaddi.wu	$vr3, $vr3, 4
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 16
@@ -2931,8 +2874,8 @@ H__align:                               # @H__align
 	move	$a3, $zero
 	b	.LBB2_221
 .LBB2_210:                              # %vector.ph1181
-	pcalau12i	$a4, %pc_hi20(.LCPI2_5)
-	vld	$vr0, $a4, %pc_lo12(.LCPI2_5)
+	pcalau12i	$a4, %pc_hi20(.LCPI2_6)
+	vld	$vr0, $a4, %pc_lo12(.LCPI2_6)
 	bstrpick.d	$a3, $a3, 31, 2
 	slli.d	$a3, $a3, 2
 	addi.d	$a4, $s3, 16
@@ -2984,8 +2927,8 @@ H__align:                               # @H__align
 	move	$a4, $zero
 	b	.LBB2_237
 .LBB2_218:                              # %vector.ph1087
-	pcalau12i	$a4, %pc_hi20(.LCPI2_5)
-	vld	$vr0, $a4, %pc_lo12(.LCPI2_5)
+	pcalau12i	$a4, %pc_hi20(.LCPI2_6)
+	vld	$vr0, $a4, %pc_lo12(.LCPI2_6)
 	bstrpick.d	$a3, $a3, 31, 2
 	slli.d	$a3, $a3, 2
 	addi.d	$a4, $ra, 16
@@ -3053,8 +2996,8 @@ H__align:                               # @H__align
 	andi	$a6, $a5, 12
 	bstrpick.d	$a4, $a5, 31, 4
 	slli.d	$a4, $a4, 4
-	pcalau12i	$a7, %pc_hi20(.LCPI2_6)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI2_6)
+	pcalau12i	$a7, %pc_hi20(.LCPI2_7)
+	xvld	$xr0, $a7, %pc_lo12(.LCPI2_7)
 	addi.d	$a7, $a2, 32
 	xvrepli.b	$xr1, -1
 	xvrepli.w	$xr2, -9
@@ -3076,8 +3019,8 @@ H__align:                               # @H__align
 	beqz	$a6, .LBB2_237
 .LBB2_234:                              # %vec.epilog.ph1216
 	move	$a6, $a4
-	pcalau12i	$a4, %pc_hi20(.LCPI2_7)
-	vld	$vr0, $a4, %pc_lo12(.LCPI2_7)
+	pcalau12i	$a4, %pc_hi20(.LCPI2_8)
+	vld	$vr0, $a4, %pc_lo12(.LCPI2_8)
 	bstrpick.d	$a4, $a5, 31, 2
 	slli.d	$a4, $a4, 2
 	vreplgr2vr.w	$vr1, $a6
@@ -3359,8 +3302,8 @@ H__align:                               # @H__align
 	andi	$a7, $a6, 12
 	bstrpick.d	$a5, $a6, 31, 4
 	slli.d	$a5, $a5, 4
-	pcalau12i	$t0, %pc_hi20(.LCPI2_6)
-	xvld	$xr0, $t0, %pc_lo12(.LCPI2_6)
+	pcalau12i	$t0, %pc_hi20(.LCPI2_7)
+	xvld	$xr0, $t0, %pc_lo12(.LCPI2_7)
 	addi.d	$t0, $a3, 32
 	xvrepli.b	$xr1, -1
 	xvrepli.w	$xr2, -9
@@ -3382,8 +3325,8 @@ H__align:                               # @H__align
 	beqz	$a7, .LBB2_283
 .LBB2_280:                              # %vec.epilog.ph1121
 	move	$a7, $a5
-	pcalau12i	$a5, %pc_hi20(.LCPI2_7)
-	vld	$vr0, $a5, %pc_lo12(.LCPI2_7)
+	pcalau12i	$a5, %pc_hi20(.LCPI2_8)
+	vld	$vr0, $a5, %pc_lo12(.LCPI2_8)
 	bstrpick.d	$a5, $a6, 31, 2
 	slli.d	$a5, $a5, 2
 	vreplgr2vr.w	$vr1, $a7

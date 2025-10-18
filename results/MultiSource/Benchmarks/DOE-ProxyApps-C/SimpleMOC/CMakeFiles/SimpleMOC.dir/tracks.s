@@ -682,9 +682,18 @@ free_tracks:                            # @free_tracks
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI6_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	6                               # 0x6
+	.word	7                               # 0x7
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI6_1:
+.LCPI6_2:
 	.dword	0x400921fb54442d18              # double 3.1415926535897931
 	.text
 	.globl	generate_polar_angles
@@ -718,49 +727,30 @@ generate_polar_angles:                  # @generate_polar_angles
 	xvldi	$xr3, -928
 	lu12i.w	$a2, 345154
 	ori	$a2, $a2, 3352
+	pcalau12i	$a3, %pc_hi20(.LCPI6_1)
+	xvld	$xr4, $a3, %pc_lo12(.LCPI6_1)
 	lu32i.d	$a2, -450053
 	lu52i.d	$a2, $a2, 1024
-	xvreplgr2vr.d	$xr4, $a2
+	xvreplgr2vr.d	$xr5, $a2
 	move	$a2, $a0
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB6_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpermi.q	$xr5, $xr1, 1
-	vext2xv.du.wu	$xr5, $xr5
-	xvffint.d.lu	$xr5, $xr5
-	vext2xv.du.wu	$xr6, $xr1
+	xvpermi.q	$xr6, $xr1, 1
+	vext2xv.du.wu	$xr6, $xr6
 	xvffint.d.lu	$xr6, $xr6
-	xvfadd.d	$xr5, $xr5, $xr3
+	vext2xv.du.wu	$xr7, $xr1
+	xvffint.d.lu	$xr7, $xr7
+	xvfadd.d	$xr7, $xr7, $xr3
 	xvfadd.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr6, $xr6, $xr4
-	xvfmul.d	$xr5, $xr5, $xr4
-	xvfdiv.d	$xr5, $xr5, $xr2
+	xvfmul.d	$xr6, $xr6, $xr5
+	xvfmul.d	$xr7, $xr7, $xr5
+	xvfdiv.d	$xr7, $xr7, $xr2
 	xvfdiv.d	$xr6, $xr6, $xr2
-	xvpickve.d	$xr7, $xr6, 1
-	fcvt.s.d	$fa7, $fa7
-	xvpickve.d	$xr8, $xr6, 0
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr8, $vr7, 16
-	xvpickve.d	$xr7, $xr6, 2
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr8, $vr7, 32
-	xvpickve.d	$xr6, $xr6, 3
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr8, $vr6, 48
-	xvpickve.d	$xr6, $xr5, 1
-	fcvt.s.d	$fa6, $fa6
-	xvpickve.d	$xr7, $xr5, 0
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr7, $vr6, 16
-	xvpickve.d	$xr6, $xr5, 2
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr7, $vr6, 32
-	xvpickve.d	$xr5, $xr5, 3
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr7, $vr5, 48
-	xvpermi.q	$xr8, $xr7, 2
-	xvst	$xr8, $a2, 0
+	xvfcvt.s.d	$xr6, $xr6, $xr7
+	xvperm.w	$xr6, $xr6, $xr4
+	xvst	$xr6, $a2, 0
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 32
@@ -768,8 +758,8 @@ generate_polar_angles:                  # @generate_polar_angles
 # %bb.5:                                # %middle.block
 	beq	$a1, $fp, .LBB6_8
 .LBB6_6:                                # %scalar.ph.preheader
-	pcalau12i	$a2, %pc_hi20(.LCPI6_1)
-	fld.d	$fa1, $a2, %pc_lo12(.LCPI6_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_2)
+	fld.d	$fa1, $a2, %pc_lo12(.LCPI6_2)
 	alsl.d	$a2, $a1, $a0, 2
 	sub.d	$a3, $fp, $a1
 	vldi	$vr2, -928

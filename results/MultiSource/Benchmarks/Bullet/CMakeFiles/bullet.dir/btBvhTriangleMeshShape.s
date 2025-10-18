@@ -1663,19 +1663,16 @@ _ZZNK22btBvhTriangleMeshShape19processAllTrianglesEP18btTriangleCallbackRK9btVec
 	ld.w	$a3, $a3, 0
 .LBB22_6:                               # %.split38.us
 	mul.w	$a2, $a2, $a3
-	fldx.d	$fa0, $a1, $a2
-	fld.s	$fa1, $a0, 8
+	vldx	$vr0, $a1, $a2
 	add.d	$a1, $a1, $a2
-	fcvt.s.d	$fa0, $fa0
-	fmul.s	$fa0, $fa1, $fa0
-	fld.d	$fa1, $a1, 8
-	fld.s	$fa2, $a0, 12
-	fld.d	$fa3, $a1, 16
-	fld.s	$fa4, $a0, 16
+	ld.d	$a2, $a0, 8
+	vfcvt.s.d	$vr0, $vr0, $vr0
+	fld.d	$fa1, $a1, 16
+	fld.s	$fa2, $a0, 16
+	vinsgr2vr.d	$vr3, $a2, 0
+	vfmul.s	$vr0, $vr3, $vr0
 	fcvt.s.d	$fa1, $fa1
 	fmul.s	$fa1, $fa2, $fa1
-	fcvt.s.d	$fa2, $fa3
-	fmul.s	$fa2, $fa4, $fa2
 	b	.LBB22_9
 .LBB22_7:                               # %.split.us.split.preheader
 	ld.w	$a4, $a3, 8
@@ -1714,20 +1711,19 @@ _ZZNK22btBvhTriangleMeshShape19processAllTrianglesEP18btTriangleCallbackRK9btVec
 .LBB22_8:                               # %.split38.us
 	mul.w	$a2, $a2, $a3
 	add.d	$a3, $a1, $a2
-	fldx.s	$fa0, $a1, $a2
-	fld.s	$fa1, $a0, 8
-	fld.s	$fa2, $a3, 4
-	fld.s	$fa3, $a0, 12
-	fld.s	$fa4, $a3, 8
-	fld.s	$fa5, $a0, 16
-	fmul.s	$fa0, $fa0, $fa1
-	fmul.s	$fa1, $fa2, $fa3
-	fmul.s	$fa2, $fa4, $fa5
+	ldx.d	$a1, $a1, $a2
+	ld.d	$a2, $a0, 8
+	fld.s	$fa1, $a3, 8
+	fld.s	$fa2, $a0, 16
+	vinsgr2vr.d	$vr0, $a1, 0
+	vinsgr2vr.d	$vr3, $a2, 0
+	vfmul.s	$vr0, $vr0, $vr3
+	fmul.s	$fa1, $fa1, $fa2
 .LBB22_9:                               # %.split38.us
 	ld.d	$a0, $fp, 16
-	fst.s	$fa0, $fp, 24
-	fst.s	$fa1, $fp, 28
-	fst.s	$fa2, $fp, 32
+	vstelm.w	$vr0, $fp, 24, 0
+	vstelm.w	$vr0, $fp, 28, 1
+	fst.s	$fa1, $fp, 32
 	ld.d	$a1, $a0, 0
 	st.w	$zero, $fp, 36
 	ld.d	$a4, $a1, 16
