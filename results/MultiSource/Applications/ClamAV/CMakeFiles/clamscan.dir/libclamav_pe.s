@@ -5612,15 +5612,15 @@ cli_scanpe:                             # @cli_scanpe
 	addi.w	$a7, $zero, -12
 	lu32i.d	$a7, 0
 	vrepli.b	$vr0, -1
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
 .LBB0_838:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$t0, $a4, 4
-	lu12i.w	$t1, 2
-	ori	$t1, $t1, 396
-	add.d	$t1, $sp, $t1
-	vld	$vr1, $t1, 0
+	lu12i.w	$t2, 2
+	ori	$t2, $t2, 396
+	add.d	$t2, $sp, $t2
+	vld	$vr1, $t2, 0
 	and	$t0, $t0, $a7
-	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
 	vldx	$vr2, $t1, $t0
 	vxor.v	$vr1, $vr1, $vr0
 	vreplvei.w	$vr1, $vr1, 0
@@ -5640,6 +5640,7 @@ cli_scanpe:                             # @cli_scanpe
 	alsl.d	$a3, $a1, $a3, 2
 	add.d	$a3, $s4, $a3
 	sub.d	$a0, $a0, $a1
+	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
 .LBB0_841:                              # %.lr.ph3449
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a1, $a2, 31, 2
@@ -5648,7 +5649,6 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a4, $a4, 396
 	add.d	$a4, $sp, $a4
 	ld.w	$a4, $a4, 0
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
 	ldx.w	$a1, $a5, $a1
 	nor	$a4, $a4, $zero
 	add.d	$a1, $a1, $a4
@@ -5982,6 +5982,7 @@ cli_scanpe:                             # @cli_scanpe
 	vreplgr2vr.w	$vr4, $a2
 	ori	$a2, $zero, 36
 	move	$a3, $a1
+	ld.d	$t0, $sp, 136                   # 8-byte Folded Reload
 .LBB0_885:                              # %vector.body3951
                                         # =>This Inner Loop Header: Depth=1
 	vslli.w	$vr5, $vr2, 1
@@ -5991,7 +5992,6 @@ cli_scanpe:                             # @cli_scanpe
 	vpickve2gr.d	$a5, $vr7, 1
 	vpickve2gr.d	$a6, $vr6, 0
 	vpickve2gr.d	$a7, $vr6, 1
-	ld.d	$t0, $sp, 136                   # 8-byte Folded Reload
 	ldx.b	$a4, $t0, $a4
 	ldx.b	$a5, $t0, $a5
 	ldx.b	$a6, $t0, $a6

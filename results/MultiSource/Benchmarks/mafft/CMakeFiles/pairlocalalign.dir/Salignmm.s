@@ -980,14 +980,14 @@ A__align:                               # @A__align
 	move	$s0, $s1
 	fcvt.d.s	$fa0, $fs0
 	ld.d	$t0, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
 	blez	$s1, .LBB3_32
 # %bb.26:                               # %.lr.ph357
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(A__align.ogcp1)
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a2, $a1, %pc_lo12(A__align.fgcp1)
-	bstrpick.d	$a1, $t1, 30, 0
+	bstrpick.d	$a1, $a5, 30, 0
 	ori	$a3, $zero, 4
 	bltu	$a1, $a3, .LBB3_29
 # %bb.27:                               # %vector.memcheck
@@ -1196,7 +1196,7 @@ A__align:                               # @A__align
 	move	$a2, $s5
 	b	.LBB3_60
 .LBB3_51:                               # %vector.ph
-	bstrpick.d	$a3, $t1, 30, 2
+	bstrpick.d	$a3, $a5, 30, 2
 	slli.d	$a3, $a3, 2
 	vreplvei.d	$vr1, $vr0, 0
 	vldi	$vr2, -912

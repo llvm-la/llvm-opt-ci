@@ -45208,23 +45208,22 @@ _ZN2PP11PowerParser12jump_to_callERiRSt5dequeIiSaIiEES5_RNSt7__cxx1118basic_stri
 	b	.LBB54_98
 .LBB54_240:                             # %.preheader
 	ld.d	$a0, $s5, 704
-	b	.LBB54_242
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	beq	$a0, $a1, .LBB54_245
+# %bb.241:
+	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	b	.LBB54_243
 	.p2align	4, , 16
-.LBB54_241:                             #   in Loop: Header=BB54_242 Depth=1
+.LBB54_242:                             #   in Loop: Header=BB54_243 Depth=1
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
-.LBB54_242:                             # %.preheader
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB54_243 Depth 2
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB54_245
 .LBB54_243:                             # %.lr.ph615
-                                        #   Parent Loop BB54_242 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
+                                        # =>This Inner Loop Header: Depth=1
 	ld.bu	$a1, $a0, 161
-	beqz	$a1, .LBB54_241
-# %bb.244:                              #   in Loop: Header=BB54_243 Depth=2
-	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	beqz	$a1, .LBB54_242
+# %bb.244:                              #   in Loop: Header=BB54_243 Depth=1
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZSt28_Rb_tree_rebalance_for_erasePSt18_Rb_tree_node_baseRS_)
 	jirl	$ra, $ra, 0

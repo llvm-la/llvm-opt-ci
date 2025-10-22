@@ -588,8 +588,6 @@ scan_token:                             # @scan_token
 	b	.LBB2_51
 .LBB2_48:                               #   in Loop: Header=BB2_3 Depth=1
 	move	$s2, $a0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	bltu	$s7, $fp, .LBB2_50
 # %bb.49:                               #   in Loop: Header=BB2_3 Depth=1
 	addi.w	$a1, $s1, 0

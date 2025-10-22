@@ -5433,6 +5433,7 @@ computeSATDWP:                          # @computeSATDWP
 	pcalau12i	$a0, %pc_hi20(src_line)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 .LBB10_13:                              # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB10_14 Depth 2
@@ -5440,7 +5441,6 @@ computeSATDWP:                          # @computeSATDWP
 	move	$fp, $a3
 	move	$s1, $a3
 	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB10_14:                              #   Parent Loop BB10_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -5806,6 +5806,7 @@ computeBiPredSATD1:                     # @computeBiPredSATD1
 	st.d	$a6, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
 .LBB11_4:                               # %.lr.ph.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_5 Depth 2
@@ -5829,7 +5830,6 @@ computeBiPredSATD1:                     # @computeBiPredSATD1
 	ldx.d	$a3, $fp, $a0
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(ref_pic2_sub)
-	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
 	st.d	$s5, $s3, %pc_lo12(src_line)
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	move	$a2, $s0
@@ -6186,6 +6186,7 @@ computeBiPredSATD1:                     # @computeBiPredSATD1
 	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
 .LBB11_11:                              # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_12 Depth 2
@@ -6209,7 +6210,6 @@ computeBiPredSATD1:                     # @computeBiPredSATD1
 	ldx.d	$a3, $s2, $a0
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(ref_pic2_sub)
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
 	st.d	$s5, $s0, %pc_lo12(src_line)
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	move	$a2, $s7
@@ -6715,6 +6715,7 @@ computeBiPredSATD2:                     # @computeBiPredSATD2
 	st.d	$a7, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
 .LBB12_13:                              # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_14 Depth 2
@@ -6738,7 +6739,6 @@ computeBiPredSATD2:                     # @computeBiPredSATD2
 	ldx.d	$a3, $s3, $a0
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(ref_pic2_sub)
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	st.d	$a2, $s5, %pc_lo12(src_line)
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
@@ -10317,13 +10317,13 @@ computeBiPredSSE2:                      # @computeBiPredSSE2
 	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $s5
 	jirl	$ra, $a3, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a1, $s8, %pc_lo12(bipred1_access_method)
 	slli.d	$a1, $a1, 3
 	ldx.d	$a3, $fp, $a1
 	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $s0, 8
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a0, $a2, %pc_lo12(ref2_line)
 	move	$a0, $a1
 	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload

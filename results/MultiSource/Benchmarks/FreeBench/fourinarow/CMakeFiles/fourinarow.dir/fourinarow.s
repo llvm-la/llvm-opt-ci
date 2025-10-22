@@ -2042,6 +2042,11 @@ value:                                  # @value
 	slli.d	$a0, $t6, 14
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
+	ld.d	$t4, $sp, 1600                  # 8-byte Folded Reload
+	ld.d	$t3, $sp, 1568                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1560                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1552                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1544                  # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB7_1:                                # %.preheader164.preheader
                                         # =>This Inner Loop Header: Depth=1
@@ -2220,7 +2225,6 @@ value:                                  # @value
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$t4, $sp, 1600                  # 8-byte Folded Reload
 	andn	$a1, $t4, $a4
 	sltui	$a1, $a1, 1
 	movgr2fr.w	$fa7, $a0
@@ -2242,7 +2246,6 @@ value:                                  # @value
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$t3, $sp, 1568                  # 8-byte Folded Reload
 	andn	$a1, $t3, $a4
 	sltui	$a1, $a1, 1
 	movgr2fr.w	$fa7, $a0
@@ -2253,7 +2256,6 @@ value:                                  # @value
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$fp, $sp, 1560                  # 8-byte Folded Reload
 	andn	$a1, $fp, $a4
 	sltui	$a1, $a1, 1
 	movgr2fr.w	$fa7, $a0
@@ -2264,7 +2266,6 @@ value:                                  # @value
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s0, $sp, 1552                  # 8-byte Folded Reload
 	andn	$a1, $s0, $a4
 	sltui	$a1, $a1, 1
 	movgr2fr.w	$fa7, $a0
@@ -2275,7 +2276,6 @@ value:                                  # @value
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	ld.d	$s1, $sp, 1544                  # 8-byte Folded Reload
 	andn	$a1, $s1, $a4
 	sltui	$a1, $a1, 1
 	movgr2fr.w	$fa7, $a0

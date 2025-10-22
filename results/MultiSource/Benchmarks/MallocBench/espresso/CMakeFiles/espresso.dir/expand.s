@@ -1442,6 +1442,7 @@ select_feasible:                        # @select_feasible
 	move	$s1, $zero
 	alsl.d	$a1, $a1, $a0, 2
 	slli.d	$a2, $a2, 2
+	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
 	b	.LBB7_3
 	.p2align	4, , 16
 .LBB7_2:                                #   in Loop: Header=BB7_3 Depth=1
@@ -1454,7 +1455,6 @@ select_feasible:                        # @select_feasible
 # %bb.4:                                #   in Loop: Header=BB7_3 Depth=1
 	slli.d	$a3, $s1, 3
 	addi.w	$s1, $s1, 1
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
 	stx.d	$a0, $a5, $a3
 	b	.LBB7_2
 .LBB7_5:

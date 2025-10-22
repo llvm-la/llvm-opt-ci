@@ -3871,9 +3871,9 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$s2, $a0, %pc_lo12(.L.str.7)
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.21)
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB4_471
 .LBB4_470:                              #   in Loop: Header=BB4_471 Depth=1
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $s5, 0
 	move	$a1, $s2
 	move	$a2, $s3

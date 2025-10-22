@@ -1635,6 +1635,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 # %bb.115:                              # %.lr.ph359
 	move	$s1, $zero
 	ori	$s3, $zero, 1
+	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB2_116:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 1448
@@ -1650,7 +1651,6 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 # %bb.118:                              #   in Loop: Header=BB2_116 Depth=1
 	ld.d	$s2, $s2, 1152
 .Ltmp212:                               # EH_LABEL
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0

@@ -10607,7 +10607,8 @@ dct_chroma_sp:                          # @dct_chroma_sp
 	addi.d	$s1, $t3, 16
 	pcalau12i	$a1, %pc_hi20(dequant_coef)
 	addi.d	$a1, $a1, %pc_lo12(dequant_coef)
-	add.d	$a4, $a1, $a2
+	add.d	$a2, $a1, $a2
+	st.d	$a2, $sp, 408                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
 	slli.d	$a2, $a2, 2
 	st.d	$a2, $sp, 304                   # 8-byte Folded Spill
@@ -10628,7 +10629,6 @@ dct_chroma_sp:                          # @dct_chroma_sp
 	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$t2, $sp, 288                   # 8-byte Folded Reload
-	st.d	$a4, $sp, 408                   # 8-byte Folded Spill
 	move	$t5, $a1
 	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
 	st.d	$t8, $sp, 416                   # 8-byte Folded Spill

@@ -8306,9 +8306,9 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$t4, $t4, 5
 	srli.d	$t8, $t8, 6
 	xor	$t4, $t8, $t4
-	lu12i.w	$fp, 16384
+	lu12i.w	$a4, 16384
 	ld.w	$t8, $t6, 136
-	or	$t4, $t4, $fp
+	or	$t4, $t4, $a4
 	xor	$a5, $t4, $a5
 	xor	$a0, $a5, $a0
 	addi.d	$a5, $t8, 1
@@ -8347,7 +8347,7 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 6
 	xor	$a0, $a0, $t4
 	ld.w	$t4, $t6, 136
-	or	$a0, $a0, $fp
+	or	$a0, $a0, $a4
 	xor	$a0, $t8, $a0
 	xor	$a0, $a0, $a5
 	addi.d	$a5, $t4, 1
@@ -8382,7 +8382,7 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	srli.d	$a0, $a0, 6
 	xor	$a0, $a0, $t4
 	ld.w	$t4, $t6, 136
-	or	$a0, $a0, $fp
+	or	$a0, $a0, $a4
 	xor	$a0, $s7, $a0
 	xor	$a0, $a0, $a5
 	addi.d	$a5, $t4, 1
@@ -8418,7 +8418,7 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	xor	$a0, $a0, $s7
 	ld.w	$t4, $t6, 136
 	xor	$a5, $a0, $a5
-	ori	$a0, $fp, 1
+	ori	$a0, $a4, 1
 	xor	$a5, $a5, $a0
 	addi.d	$s7, $t4, 1
 	st.w	$s7, $t6, 136
@@ -8540,8 +8540,8 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	addi.w	$a5, $a5, -1
 	and	$t4, $a5, $t4
 	ldx.bu	$t4, $a2, $t4
-	addi.d	$a4, $t8, -2
-	sub.w	$a0, $a0, $a4
+	addi.d	$fp, $t8, -2
+	sub.w	$a0, $a0, $fp
 	and	$a0, $a5, $a0
 	ldx.bu	$a0, $a2, $a0
 	srli.d	$a5, $t4, 2
@@ -8559,7 +8559,7 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	xor	$a0, $a0, $s6
 	ld.w	$t4, $t6, 136
 	xor	$a0, $a0, $a5
-	ori	$a5, $fp, 2
+	ori	$a5, $a4, 2
 	xor	$a0, $a0, $a5
 	addi.d	$a5, $t4, 1
 	st.w	$a5, $t6, 136
@@ -8790,7 +8790,7 @@ _Z9model8bitR5Mixeri:                   # @_Z9model8bitR5Mixeri
 	addi.w	$t4, $t4, -1
 	and	$s5, $t4, $s5
 	ldx.bu	$s5, $a2, $s5
-	sub.w	$a0, $a0, $a4
+	sub.w	$a0, $a0, $fp
 	and	$a0, $t4, $a0
 	ldx.bu	$a0, $a2, $a0
 	add.d	$a0, $a0, $s5
@@ -12522,10 +12522,10 @@ _Z9jpegModelR5Mixer:                    # @_Z9jpegModelR5Mixer
 	ori	$t5, $a6, 1549
 	lu32i.d	$t5, 8
 	ori	$t6, $zero, 64
+	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
 .LBB48_155:                             # =>This Inner Loop Header: Depth=1
 	ldx.bu	$t7, $s0, $a0
 	slli.d	$t7, $t7, 2
-	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
 	ldx.w	$fp, $t1, $t7
 	ori	$a6, $zero, 1
 	sll.d	$t8, $a6, $a0
@@ -18821,6 +18821,8 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	move	$s3, $zero
 	ori	$a3, $zero, 1
 	ori	$s6, $zero, 12
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
 .LBB61_78:                              # %.preheader498
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB61_80 Depth 2
@@ -18835,8 +18837,6 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
 	move	$s8, $s7
 	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB61_80:                              #   Parent Loop BB61_78 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -19046,6 +19046,7 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	move	$s3, $zero
 	ori	$a3, $zero, 1
 	ori	$s6, $zero, 12
+	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
 	b	.LBB61_103
 	.p2align	4, , 16
 .LBB61_102:                             # %.loopexit502
@@ -19070,7 +19071,6 @@ _Z8wavModelR5Mixer:                     # @_Z8wavModelR5Mixer
 	andi	$a2, $a1, 1
 	maskeqz	$a2, $s6, $a2
 	add.w	$a2, $a2, $a0
-	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
 	blt	$a2, $s8, .LBB61_102
 # %bb.105:                              # %.lr.ph543
                                         #   in Loop: Header=BB61_103 Depth=1
@@ -24146,7 +24146,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$s4, $a2
+	move	$s2, $a2
 	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(ftell)
@@ -24167,8 +24167,8 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a0, .LBB77_166
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	beqz	$a0, .LBB77_165
 # %bb.3:                                # %_ZN5ArrayIiLi0EEC2Ei.exit
 	addi.d	$a0, $fp, 2047
 	addi.w	$a0, $a0, 1
@@ -24183,24 +24183,24 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	beqz	$a0, .LBB77_167
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	beqz	$a0, .LBB77_166
 # %bb.6:                                # %_ZN5ArrayIiLi0EEC2Ei.exit593
 	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	blez	$a0, .LBB77_159
+	blez	$a0, .LBB77_158
 # %bb.7:                                # %.lr.ph
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
 	move	$s3, $zero
-	move	$s7, $zero
-	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
+	move	$s4, $zero
+	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	move	$fp, $zero
-	move	$s2, $zero
+	move	$t4, $zero
 	st.d	$zero, $sp, 264                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 288                 # 8-byte Folded Spill
-	move	$t3, $zero
-	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	move	$s7, $zero
+	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 	move	$t2, $zero
 	st.d	$zero, $sp, 280                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
@@ -24208,47 +24208,48 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	st.d	$zero, $sp, 224                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 	move	$t0, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	move	$s0, $zero
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	move	$s5, $zero
 	lu12i.w	$a0, 65496
 	ori	$a0, $a0, 4094
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	lu12i.w	$a0, -262144
 	ori	$a0, $a0, 8
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 589
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	lu12i.w	$a0, 1283
 	ori	$a0, $a0, 1290
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	addi.w	$a0, $s4, -2
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	addi.w	$a0, $s2, -2
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 4095
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB77_9
 	.p2align	4, , 16
 .LBB77_8:                               #   in Loop: Header=BB77_9 Depth=1
 	addi.w	$fp, $fp, 1
 	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	beq	$a0, $fp, .LBB77_141
+	beq	$a0, $fp, .LBB77_140
 .LBB77_9:                               # =>This Inner Loop Header: Depth=1
-	st.d	$t3, $sp, 256                   # 8-byte Folded Spill
+	st.d	$t4, $sp, 256                   # 8-byte Folded Spill
+	move	$s0, $s5
 	move	$s5, $t2
 	move	$s1, $t1
 	move	$s6, $t0
@@ -24257,13 +24258,13 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	beq	$s8, $a0, .LBB77_140
+	beq	$s8, $a0, .LBB77_139
 # %bb.10:                               #   in Loop: Header=BB77_9 Depth=1
-	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 240                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 296                   # 8-byte Folded Spill
 	slli.d	$a0, $s3, 8
 	or	$s3, $s8, $a0
-	bstrpick.d	$s7, $s3, 15, 0
+	bstrpick.d	$s4, $s3, 15, 0
 	ld.d	$a6, $sp, 280                   # 8-byte Folded Reload
 	bnez	$a6, .LBB77_14
 # %bb.11:                               #   in Loop: Header=BB77_9 Depth=1
@@ -24271,7 +24272,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bltu	$fp, $a0, .LBB77_14
 # %bb.12:                               #   in Loop: Header=BB77_9 Depth=1
 	bstrpick.d	$a0, $s3, 31, 4
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	move	$t0, $s6
 	move	$t1, $s1
 	move	$t2, $s5
@@ -24279,6 +24280,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 # %bb.13:                               #   in Loop: Header=BB77_9 Depth=1
 	addi.w	$a0, $fp, 2
 	move	$a6, $fp
+	move	$a7, $s0
 	b	.LBB77_22
 	.p2align	4, , 16
 .LBB77_14:                              #   in Loop: Header=BB77_9 Depth=1
@@ -24288,7 +24290,8 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	beqz	$a6, .LBB77_19
 # %bb.15:                               # %.thread609
                                         #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	move	$a7, $s0
 	bne	$fp, $a0, .LBB77_22
 # %bb.16:                               #   in Loop: Header=BB77_9 Depth=1
 	addi.w	$a0, $s3, 0
@@ -24307,19 +24310,20 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	.p2align	4, , 16
 .LBB77_19:                              #   in Loop: Header=BB77_9 Depth=1
 	st.d	$zero, $sp, 280                 # 8-byte Folded Spill
+	move	$a7, $s0
 	andi	$a0, $s8, 248
 	ori	$a1, $zero, 208
 	bne	$a0, $a1, .LBB77_30
 	b	.LBB77_36
 .LBB77_20:                              #   in Loop: Header=BB77_9 Depth=1
-	add.d	$a0, $fp, $s7
+	add.d	$a0, $fp, $s4
 	addi.w	$a0, $a0, 2
 .LBB77_21:                              # %.thread609.thread
                                         #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a6, $sp, 280                   # 8-byte Folded Reload
 .LBB77_22:                              # %.thread609.thread
                                         #   in Loop: Header=BB77_9 Depth=1
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	slt	$a1, $a0, $fp
 	sub.w	$a0, $fp, $a6
 	lu12i.w	$a2, 16
@@ -24332,7 +24336,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bstrins.d	$a4, $a4, 32, 24
 	and	$a4, $s3, $a4
 	addi.w	$a4, $a4, 0
-	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
 	xor	$a4, $a4, $a5
 	sltui	$a4, $a4, 1
 	masknez	$a5, $t2, $a4
@@ -24352,7 +24356,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 # %bb.23:                               #   in Loop: Header=BB77_9 Depth=1
 	bge	$a6, $t2, .LBB77_29
 # %bb.24:                               #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	blt	$a1, $a0, .LBB77_29
 # %bb.25:                               #   in Loop: Header=BB77_9 Depth=1
 	sub.w	$a0, $fp, $t2
@@ -24365,9 +24369,9 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bne	$a0, $a1, .LBB77_29
 # %bb.27:                               #   in Loop: Header=BB77_9 Depth=1
 	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB77_151
+	bne	$s2, $a0, .LBB77_150
 # %bb.28:                               #   in Loop: Header=BB77_9 Depth=1
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 120                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB77_29:                              # %.thread
                                         #   in Loop: Header=BB77_9 Depth=1
@@ -24381,14 +24385,14 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 # %bb.31:                               # %.thread
                                         #   in Loop: Header=BB77_9 Depth=1
 	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB77_36
+	bne	$s2, $a0, .LBB77_36
 # %bb.32:                               # %.thread
                                         #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	beqz	$a0, .LBB77_36
 # %bb.33:                               # %.thread
                                         #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	bgeu	$a0, $fp, .LBB77_36
 # %bb.34:                               # %.thread
                                         #   in Loop: Header=BB77_9 Depth=1
@@ -24397,7 +24401,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 3840
 	bne	$a0, $a1, .LBB77_36
-	b	.LBB77_142
+	b	.LBB77_141
 	.p2align	4, , 16
 .LBB77_35:                              #   in Loop: Header=BB77_9 Depth=1
 	move	$t2, $zero
@@ -24407,14 +24411,14 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	.p2align	4, , 16
 .LBB77_36:                              #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	xor	$a0, $s7, $a0
+	xor	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $a7, $a0
 	maskeqz	$a0, $fp, $a0
-	or	$s0, $a0, $a1
-	beqz	$s0, .LBB77_40
+	or	$s5, $a0, $a1
+	beqz	$s5, .LBB77_40
 # %bb.37:                               #   in Loop: Header=BB77_9 Depth=1
-	sub.w	$a0, $fp, $s0
+	sub.w	$a0, $fp, $s5
 	ori	$a1, $zero, 12
 	beq	$a0, $a1, .LBB77_41
 # %bb.38:                               #   in Loop: Header=BB77_9 Depth=1
@@ -24429,11 +24433,11 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bstrins.d	$a1, $a0, 15, 8
 	bstrpick.d	$a0, $s3, 55, 8
 	bstrins.d	$a1, $a0, 23, 16
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB77_45
 	.p2align	4, , 16
 .LBB77_40:                              #   in Loop: Header=BB77_9 Depth=1
-	move	$s0, $zero
+	move	$s5, $zero
 	b	.LBB77_64
 .LBB77_41:                              #   in Loop: Header=BB77_9 Depth=1
 	bstrpick.d	$a0, $s3, 31, 24
@@ -24443,7 +24447,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bstrins.d	$a1, $a0, 15, 8
 	bstrpick.d	$a0, $s3, 55, 8
 	bstrins.d	$a1, $a0, 23, 16
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB77_45
 .LBB77_42:                              #   in Loop: Header=BB77_9 Depth=1
 	addi.w	$a0, $a0, -16
@@ -24453,15 +24457,15 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	lu12i.w	$a1, 163840
 	beq	$a0, $a1, .LBB77_45
 # %bb.44:                               #   in Loop: Header=BB77_9 Depth=1
-	move	$s0, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	move	$s5, $zero
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	move	$t0, $zero
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB77_45:                              # %.thread618
                                         #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $s0, 20
+	addi.w	$a0, $s5, 20
 	bne	$a0, $fp, .LBB77_47
 # %bb.46:                               #   in Loop: Header=BB77_9 Depth=1
 	bstrpick.d	$a0, $s3, 31, 24
@@ -24471,11 +24475,11 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bstrins.d	$a0, $a1, 23, 16
 	slli.d	$a1, $s8, 24
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	addi.w	$a0, $a0, 0
 	beqz	$a0, .LBB77_50
 .LBB77_47:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $s0, 24
+	addi.w	$a0, $s5, 24
 	bne	$a0, $fp, .LBB77_51
 .LBB77_48:                              #   in Loop: Header=BB77_9 Depth=1
 	bstrpick.d	$a0, $s3, 31, 24
@@ -24485,30 +24489,30 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bstrins.d	$a0, $a1, 23, 16
 	slli.d	$a1, $s8, 24
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	addi.w	$a0, $a0, 0
 	bnez	$a0, .LBB77_51
 # %bb.49:                               #   in Loop: Header=BB77_9 Depth=1
-	move	$s0, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	move	$s5, $zero
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	move	$t0, $zero
-	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	b	.LBB77_51
 .LBB77_50:                              #   in Loop: Header=BB77_9 Depth=1
-	move	$s0, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	move	$s5, $zero
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	move	$t0, $zero
-	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
-	addi.w	$a0, $s0, 24
+	addi.w	$a0, $s5, 24
 	beq	$a0, $fp, .LBB77_48
 	.p2align	4, , 16
 .LBB77_51:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $s0, 31
-	addi.w	$a1, $s0, 27
+	addi.w	$a0, $s5, 31
+	addi.w	$a1, $s5, 27
 	xor	$a1, $a1, $fp
 	sltui	$a1, $a1, 1
 	masknez	$a2, $t0, $a1
@@ -24519,13 +24523,13 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	addi.w	$a0, $s3, 0
 	beqz	$a0, .LBB77_57
 # %bb.53:                               #   in Loop: Header=BB77_9 Depth=1
-	move	$s0, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	move	$s5, $zero
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	move	$t0, $zero
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 .LBB77_54:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ori	$a1, $zero, 2
 	bltu	$a1, $a0, .LBB77_58
 .LBB77_55:                              #   in Loop: Header=BB77_9 Depth=1
@@ -24541,10 +24545,10 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 # %bb.56:                               #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
 	bnez	$a1, .LBB77_58
-	b	.LBB77_147
+	b	.LBB77_146
 .LBB77_57:                              #   in Loop: Header=BB77_9 Depth=1
 	st.d	$zero, $sp, 248                 # 8-byte Folded Spill
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ori	$a1, $zero, 2
 	bgeu	$a1, $a0, .LBB77_55
 	.p2align	4, , 16
@@ -24553,22 +24557,22 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	bne	$t0, $a0, .LBB77_60
 # %bb.59:                               #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
-	beqz	$a0, .LBB77_144
+	beqz	$a0, .LBB77_143
 .LBB77_60:                              #   in Loop: Header=BB77_9 Depth=1
 	ori	$a0, $zero, 8
 	bne	$t0, $a0, .LBB77_62
 # %bb.61:                               #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
-	beqz	$a0, .LBB77_145
+	beqz	$a0, .LBB77_144
 .LBB77_62:                              #   in Loop: Header=BB77_9 Depth=1
 	ori	$a0, $zero, 24
 	bne	$t0, $a0, .LBB77_64
 # %bb.63:                               #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
-	beqz	$a0, .LBB77_146
+	beqz	$a0, .LBB77_145
 .LBB77_64:                              #   in Loop: Header=BB77_9 Depth=1
 	bstrpick.d	$a0, $s3, 23, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	xor	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
@@ -24577,7 +24581,7 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	or	$a0, $a0, $a1
 	beqz	$a0, .LBB77_71
 # %bb.65:                               #   in Loop: Header=BB77_9 Depth=1
-	st.d	$t2, $sp, 160                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 168                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 304                   # 8-byte Folded Spill
 	addi.w	$a0, $a0, 1
 	xor	$a0, $a0, $fp
@@ -24592,8 +24596,8 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a4, $a1
 	or	$s6, $a0, $a1
+	addi.d	$s2, $sp, 312
 	ori	$a0, $zero, 32
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
 	bne	$s8, $a0, .LBB77_74
 # %bb.66:                               #   in Loop: Header=BB77_9 Depth=1
 	bnez	$s6, .LBB77_74
@@ -24605,8 +24609,8 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	beqz	$t1, .LBB77_74
 # %bb.69:                               #   in Loop: Header=BB77_9 Depth=1
 	move	$s1, $t0
+	stx.b	$zero, $t1, $s2
 	addi.d	$a0, $sp, 312
-	stx.b	$zero, $t1, $a0
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
@@ -24620,7 +24624,8 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	.p2align	4, , 16
 .LBB77_71:                              #   in Loop: Header=BB77_9 Depth=1
 	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
-	b	.LBB77_86
+	ld.d	$t4, $sp, 256                   # 8-byte Folded Reload
+	b	.LBB77_96
 .LBB77_72:                              #   in Loop: Header=BB77_9 Depth=1
 	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
@@ -24643,18 +24648,18 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	beqz	$t1, .LBB77_79
 # %bb.77:                               #   in Loop: Header=BB77_9 Depth=1
 	move	$s6, $t0
+	stx.b	$zero, $t1, $s2
 	addi.d	$a0, $sp, 312
-	stx.b	$zero, $t1, $a0
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	addi.w	$a0, $a0, 0
-	beqz	$a0, .LBB77_129
+	beqz	$a0, .LBB77_86
 # %bb.78:                               #   in Loop: Header=BB77_9 Depth=1
 	move	$t1, $zero
-	b	.LBB77_130
+	b	.LBB77_87
 	.p2align	4, , 16
 .LBB77_79:                              #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
@@ -24665,8 +24670,8 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 # %bb.80:                               #   in Loop: Header=BB77_9 Depth=1
 	beqz	$t1, .LBB77_82
 # %bb.81:                               #   in Loop: Header=BB77_9 Depth=1
+	stx.b	$zero, $t1, $s2
 	addi.d	$a0, $sp, 312
-	stx.b	$zero, $t1, $a0
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	move	$s6, $t0
@@ -24675,14 +24680,14 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	move	$t0, $s6
 	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	move	$t1, $zero
-	b	.LBB77_131
+	b	.LBB77_88
 .LBB77_82:                              #   in Loop: Header=BB77_9 Depth=1
 	ori	$a0, $zero, 1
-	beqz	$s6, .LBB77_131
+	beqz	$s6, .LBB77_88
 	.p2align	4, , 16
 # %bb.83:                               #   in Loop: Header=BB77_9 Depth=1
 	ori	$a1, $zero, 31
-	bge	$a1, $t1, .LBB77_132
+	bge	$a1, $t1, .LBB77_89
 .LBB77_84:                              #   in Loop: Header=BB77_9 Depth=1
 	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
@@ -24690,27 +24695,69 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	st.d	$zero, $sp, 224                 # 8-byte Folded Spill
 	move	$t1, $zero
 	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 .LBB77_85:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 160                   # 8-byte Folded Reload
-.LBB77_86:                              # %.thread863
+	ld.d	$t4, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 168                   # 8-byte Folded Reload
+	b	.LBB77_96
+.LBB77_86:                              #   in Loop: Header=BB77_9 Depth=1
+	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
+	move	$t1, $zero
+	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 224                 # 8-byte Folded Spill
+.LBB77_87:                              # %.thread642
                                         #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
-.LBB77_87:                              # %.thread863
+	move	$t0, $s6
+.LBB77_88:                              # %.thread642
                                         #   in Loop: Header=BB77_9 Depth=1
-	addi.d	$a0, $s7, -474
+	move	$a0, $zero
+	addi.w	$a1, $t1, 1
+	stx.b	$s8, $t1, $s2
+	move	$t1, $a1
+	ori	$a1, $zero, 31
+	blt	$a1, $t1, .LBB77_84
+.LBB77_89:                              #   in Loop: Header=BB77_9 Depth=1
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	addi.w	$a3, $a1, 0
+	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
+	addi.w	$a2, $a1, 0
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	addi.w	$a1, $a1, 0
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ori	$a4, $zero, 6
+	bne	$s2, $a4, .LBB77_93
+# %bb.90:                               #   in Loop: Header=BB77_9 Depth=1
+	beqz	$a3, .LBB77_93
+# %bb.91:                               #   in Loop: Header=BB77_9 Depth=1
+	beqz	$a2, .LBB77_93
+# %bb.92:                               #   in Loop: Header=BB77_9 Depth=1
+	bnez	$a1, .LBB77_148
+.LBB77_93:                              #   in Loop: Header=BB77_9 Depth=1
+	masknez	$a0, $a0, $s1
+	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
+	beqz	$a3, .LBB77_85
+# %bb.94:                               #   in Loop: Header=BB77_9 Depth=1
+	ld.d	$t4, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 168                   # 8-byte Folded Reload
+	beqz	$a2, .LBB77_96
+# %bb.95:                               #   in Loop: Header=BB77_9 Depth=1
+	bnez	$a1, .LBB77_149
+	.p2align	4, , 16
+.LBB77_96:                              # %.thread863
+                                        #   in Loop: Header=BB77_9 Depth=1
+	addi.d	$a0, $s4, -474
 	sltui	$a0, $a0, 1
-	masknez	$a1, $a3, $a0
+	masknez	$a1, $s7, $a0
 	maskeqz	$a0, $fp, $a0
-	or	$t3, $a0, $a1
-	beqz	$t3, .LBB77_114
-# %bb.88:                               #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $t3, 1
-	bne	$a0, $fp, .LBB77_99
-# %bb.89:                               #   in Loop: Header=BB77_9 Depth=1
+	or	$s7, $a0, $a1
+	beqz	$s7, .LBB77_123
+# %bb.97:                               #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a0, $s7, 1
+	bne	$a0, $fp, .LBB77_108
+# %bb.98:                               #   in Loop: Header=BB77_9 Depth=1
 	sltui	$a0, $s8, 2
-	maskeqz	$t3, $t3, $a0
+	maskeqz	$s7, $s7, $a0
 	addi.w	$a1, $zero, -1
 	masknez	$a1, $a1, $a0
 	maskeqz	$a2, $s8, $a0
@@ -24722,28 +24769,28 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	maskeqz	$a1, $a1, $a0
 	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
-	addi.w	$a0, $t3, 2
-	beq	$a0, $fp, .LBB77_100
-.LBB77_90:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $s7, -1
+	addi.w	$a0, $s7, 2
+	beq	$a0, $fp, .LBB77_109
+.LBB77_99:                              #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a0, $s4, -1
 	ori	$a1, $zero, 3
-	bltu	$a0, $a1, .LBB77_101
-.LBB77_91:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $t3, 4
+	bltu	$a0, $a1, .LBB77_110
+.LBB77_100:                             #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a0, $s7, 4
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
-	bne	$a0, $fp, .LBB77_93
-# %bb.92:                               #   in Loop: Header=BB77_9 Depth=1
-	move	$t3, $zero
+	bne	$a0, $fp, .LBB77_102
+# %bb.101:                              #   in Loop: Header=BB77_9 Depth=1
+	move	$s7, $zero
 	move	$a1, $zero
 	st.d	$zero, $sp, 264                 # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
-.LBB77_93:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $t3, 6
-	bne	$a0, $fp, .LBB77_102
-.LBB77_94:                              #   in Loop: Header=BB77_9 Depth=1
-	sltui	$a0, $s7, 1
-	masknez	$t3, $t3, $a0
+.LBB77_102:                             #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a0, $s7, 6
+	bne	$a0, $fp, .LBB77_111
+.LBB77_103:                             #   in Loop: Header=BB77_9 Depth=1
+	sltui	$a0, $s4, 1
+	masknez	$s7, $s7, $a0
 	move	$a3, $a1
 	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
@@ -24752,36 +24799,36 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	or	$a1, $a2, $a1
 	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
 	masknez	$a1, $a3, $a0
-	st.d	$s7, $sp, 264                   # 8-byte Folded Spill
-	addi.w	$a0, $t3, 8
-	beq	$a0, $fp, .LBB77_103
-.LBB77_95:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $t3, 10
-	bne	$a0, $fp, .LBB77_105
-.LBB77_96:                              #   in Loop: Header=BB77_9 Depth=1
+	st.d	$s4, $sp, 264                   # 8-byte Folded Spill
+	addi.w	$a0, $s7, 8
+	beq	$a0, $fp, .LBB77_112
+.LBB77_104:                             #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a0, $s7, 10
+	bne	$a0, $fp, .LBB77_114
+.LBB77_105:                             #   in Loop: Header=BB77_9 Depth=1
 	bstrpick.d	$a0, $s3, 15, 0
 	ori	$a1, $zero, 4
-	bltu	$a1, $a0, .LBB77_98
-# %bb.97:                               #   in Loop: Header=BB77_9 Depth=1
+	bltu	$a1, $a0, .LBB77_107
+# %bb.106:                              #   in Loop: Header=BB77_9 Depth=1
 	ori	$a1, $zero, 1
 	sll.d	$a0, $a1, $a0
 	andi	$a0, $a0, 26
-	bnez	$a0, .LBB77_106
-.LBB77_98:                              #   in Loop: Header=BB77_9 Depth=1
-	move	$t3, $zero
+	bnez	$a0, .LBB77_115
+.LBB77_107:                             #   in Loop: Header=BB77_9 Depth=1
 	move	$s7, $zero
+	move	$s4, $zero
 	st.d	$zero, $sp, 264                 # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
-	b	.LBB77_106
+	b	.LBB77_115
 	.p2align	4, , 16
-.LBB77_99:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $t3, 2
-	bne	$a0, $fp, .LBB77_90
-.LBB77_100:                             #   in Loop: Header=BB77_9 Depth=1
+.LBB77_108:                             #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a0, $s7, 2
+	bne	$a0, $fp, .LBB77_99
+.LBB77_109:                             #   in Loop: Header=BB77_9 Depth=1
 	addi.w	$a0, $s8, -1
 	sltui	$a0, $a0, 2
-	maskeqz	$t3, $t3, $a0
+	maskeqz	$s7, $s7, $a0
 	addi.w	$a1, $zero, -1
 	masknez	$a1, $a1, $a0
 	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
@@ -24794,101 +24841,101 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	maskeqz	$a1, $a1, $a0
 	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
-	addi.w	$a0, $s7, -1
+	addi.w	$a0, $s4, -1
 	ori	$a1, $zero, 3
-	bgeu	$a0, $a1, .LBB77_91
-.LBB77_101:                             #   in Loop: Header=BB77_9 Depth=1
+	bgeu	$a0, $a1, .LBB77_100
+.LBB77_110:                             #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
-	addi.w	$a0, $t3, 6
-	beq	$a0, $fp, .LBB77_94
+	addi.w	$a0, $s7, 6
+	beq	$a0, $fp, .LBB77_103
 	.p2align	4, , 16
-.LBB77_102:                             #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a0, $t3, 8
-	bne	$a0, $fp, .LBB77_95
-.LBB77_103:                             #   in Loop: Header=BB77_9 Depth=1
-	beqz	$s7, .LBB77_139
-# %bb.104:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	mul.d	$a0, $a0, $s7
-	addi.w	$s2, $a0, 512
-	addi.w	$a0, $t3, 10
-	beq	$a0, $fp, .LBB77_96
-.LBB77_105:                             #   in Loop: Header=BB77_9 Depth=1
-	move	$s7, $a1
-.LBB77_106:                             #   in Loop: Header=BB77_9 Depth=1
-	beqz	$s2, .LBB77_115
-# %bb.107:                              #   in Loop: Header=BB77_9 Depth=1
-	sub.w	$a0, $fp, $t3
-	blez	$a0, .LBB77_116
-# %bb.108:                              #   in Loop: Header=BB77_9 Depth=1
-	bge	$s2, $a0, .LBB77_116
-# %bb.109:                              #   in Loop: Header=BB77_9 Depth=1
-	ori	$a0, $zero, 7
-	bne	$s4, $a0, .LBB77_112
-# %bb.110:                              #   in Loop: Header=BB77_9 Depth=1
-	ori	$a0, $zero, 1
-	bne	$s7, $a0, .LBB77_112
-# %bb.111:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
-	beqz	$a0, .LBB77_152
+.LBB77_111:                             #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a0, $s7, 8
+	bne	$a0, $fp, .LBB77_104
 .LBB77_112:                             #   in Loop: Header=BB77_9 Depth=1
-	ori	$a0, $zero, 1
-	bne	$s7, $a0, .LBB77_116
+	beqz	$s4, .LBB77_138
 # %bb.113:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
-	bnez	$a0, .LBB77_116
-	b	.LBB77_153
-	.p2align	4, , 16
+	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
+	mul.d	$a0, $a0, $s4
+	addi.w	$t4, $a0, 512
+	addi.w	$a0, $s7, 10
+	beq	$a0, $fp, .LBB77_105
 .LBB77_114:                             #   in Loop: Header=BB77_9 Depth=1
-	move	$t3, $zero
-	b	.LBB77_117
-	.p2align	4, , 16
+	move	$s4, $a1
 .LBB77_115:                             #   in Loop: Header=BB77_9 Depth=1
-	move	$s2, $zero
-.LBB77_116:                             #   in Loop: Header=BB77_9 Depth=1
-	st.d	$s7, $sp, 288                   # 8-byte Folded Spill
-.LBB77_117:                             #   in Loop: Header=BB77_9 Depth=1
+	beqz	$t4, .LBB77_124
+# %bb.116:                              #   in Loop: Header=BB77_9 Depth=1
+	sub.w	$a0, $fp, $s7
+	blez	$a0, .LBB77_125
+# %bb.117:                              #   in Loop: Header=BB77_9 Depth=1
+	bge	$t4, $a0, .LBB77_125
+# %bb.118:                              #   in Loop: Header=BB77_9 Depth=1
+	ori	$a0, $zero, 7
+	bne	$s2, $a0, .LBB77_121
+# %bb.119:                              #   in Loop: Header=BB77_9 Depth=1
+	ori	$a0, $zero, 1
+	bne	$s4, $a0, .LBB77_121
+# %bb.120:                              #   in Loop: Header=BB77_9 Depth=1
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	beqz	$a0, .LBB77_151
+.LBB77_121:                             #   in Loop: Header=BB77_9 Depth=1
+	ori	$a0, $zero, 1
+	bne	$s4, $a0, .LBB77_125
+# %bb.122:                              #   in Loop: Header=BB77_9 Depth=1
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
+	bnez	$a0, .LBB77_125
+	b	.LBB77_152
+	.p2align	4, , 16
+.LBB77_123:                             #   in Loop: Header=BB77_9 Depth=1
+	move	$s7, $zero
+	b	.LBB77_126
+	.p2align	4, , 16
+.LBB77_124:                             #   in Loop: Header=BB77_9 Depth=1
+	move	$t4, $zero
+.LBB77_125:                             #   in Loop: Header=BB77_9 Depth=1
+	st.d	$s4, $sp, 288                   # 8-byte Folded Spill
+.LBB77_126:                             #   in Loop: Header=BB77_9 Depth=1
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 25
-	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 240                   # 8-byte Folded Reload
 	ori	$a1, $zero, 116
-	bne	$a0, $a1, .LBB77_119
-# %bb.118:                              #   in Loop: Header=BB77_9 Depth=1
+	bne	$a0, $a1, .LBB77_128
+# %bb.127:                              #   in Loop: Header=BB77_9 Depth=1
 	addi.d	$a0, $s8, 1
 	andi	$a0, $a0, 254
-	beqz	$a0, .LBB77_121
-.LBB77_119:                             #   in Loop: Header=BB77_9 Depth=1
+	beqz	$a0, .LBB77_130
+.LBB77_128:                             #   in Loop: Header=BB77_9 Depth=1
 	ori	$a0, $zero, 8
-	bne	$s4, $a0, .LBB77_8
-.LBB77_120:                             #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	bne	$s2, $a0, .LBB77_8
+.LBB77_129:                             #   in Loop: Header=BB77_9 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	sub.w	$a0, $fp, $a0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	blt	$a0, $a1, .LBB77_8
-	b	.LBB77_143
-.LBB77_121:                             #   in Loop: Header=BB77_9 Depth=1
+	b	.LBB77_142
+.LBB77_130:                             #   in Loop: Header=BB77_9 Depth=1
 	srli.d	$a0, $s3, 24
 	add.d	$a0, $fp, $a0
 	andi	$a0, $a0, 255
 	slli.d	$a1, $a0, 2
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	ldx.w	$a3, $a2, $a1
 	move	$a1, $zero
 	srli.d	$a2, $s3, 22
 	andi	$a2, $a2, 1020
 	ori	$a4, $zero, 6
-	blt	$a3, $a4, .LBB77_128
-# %bb.122:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
+	blt	$a3, $a4, .LBB77_137
+# %bb.131:                              #   in Loop: Header=BB77_9 Depth=1
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	ldx.w	$a4, $a4, $a2
-	bge	$a4, $a3, .LBB77_128
-# %bb.123:                              #   in Loop: Header=BB77_9 Depth=1
+	bge	$a4, $a3, .LBB77_137
+# %bb.132:                              #   in Loop: Header=BB77_9 Depth=1
 	sub.w	$a4, $fp, $a3
 	ori	$a5, $zero, 4095
-	blt	$a5, $a4, .LBB77_128
-# %bb.124:                              #   in Loop: Header=BB77_9 Depth=1
-	addi.w	$a1, $s7, 1
-	ld.d	$a7, $sp, 16                    # 8-byte Folded Reload
+	blt	$a5, $a4, .LBB77_137
+# %bb.133:                              #   in Loop: Header=BB77_9 Depth=1
+	addi.w	$a1, $s4, 1
+	ld.d	$a7, $sp, 24                    # 8-byte Folded Reload
 	sltui	$a4, $a7, 1
 	slt	$a5, $a7, $a3
 	masknez	$a6, $a3, $a5
@@ -24897,134 +24944,88 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	masknez	$a5, $a5, $a4
 	maskeqz	$a3, $a3, $a4
 	or	$a3, $a3, $a5
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	ori	$a3, $zero, 8
-	beq	$s4, $a3, .LBB77_127
-# %bb.125:                              #   in Loop: Header=BB77_9 Depth=1
+	beq	$s2, $a3, .LBB77_136
+# %bb.134:                              #   in Loop: Header=BB77_9 Depth=1
 	ori	$a3, $zero, 3
-	blt	$s7, $a3, .LBB77_127
-# %bb.126:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	blt	$s4, $a3, .LBB77_136
+# %bb.135:                              #   in Loop: Header=BB77_9 Depth=1
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	ori	$a4, $zero, 5
-	blt	$a4, $a3, .LBB77_156
-.LBB77_127:                             #   in Loop: Header=BB77_9 Depth=1
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-.LBB77_128:                             # %.thread682
+	blt	$a4, $a3, .LBB77_155
+.LBB77_136:                             #   in Loop: Header=BB77_9 Depth=1
+	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
+.LBB77_137:                             # %.thread682
                                         #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
 	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	add.d	$a2, $a3, $a2
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a3, 2
 	st.w	$fp, $a0, 0
 	st.w	$fp, $a2, 0
-	move	$s7, $a1
+	move	$s4, $a1
 	ori	$a0, $zero, 8
-	beq	$s4, $a0, .LBB77_120
+	beq	$s2, $a0, .LBB77_129
 	b	.LBB77_8
-.LBB77_129:                             #   in Loop: Header=BB77_9 Depth=1
-	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
-	move	$t1, $zero
-	st.d	$zero, $sp, 304                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 224                 # 8-byte Folded Spill
-.LBB77_130:                             # %.thread642
-                                        #   in Loop: Header=BB77_9 Depth=1
-	move	$t0, $s6
-.LBB77_131:                             # %.thread642
-                                        #   in Loop: Header=BB77_9 Depth=1
-	move	$a0, $zero
-	addi.w	$a1, $t1, 1
-	addi.d	$a2, $sp, 312
-	stx.b	$s8, $t1, $a2
-	move	$t1, $a1
-	ori	$a1, $zero, 31
-	blt	$a1, $t1, .LBB77_84
-.LBB77_132:                             #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
-	addi.w	$a3, $a1, 0
-	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
-	addi.w	$a2, $a1, 0
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
-	addi.w	$a1, $a1, 0
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
-	ori	$a4, $zero, 6
-	bne	$s4, $a4, .LBB77_136
-# %bb.133:                              #   in Loop: Header=BB77_9 Depth=1
-	beqz	$a3, .LBB77_136
-# %bb.134:                              #   in Loop: Header=BB77_9 Depth=1
-	beqz	$a2, .LBB77_136
-# %bb.135:                              #   in Loop: Header=BB77_9 Depth=1
-	bnez	$a1, .LBB77_149
-.LBB77_136:                             #   in Loop: Header=BB77_9 Depth=1
-	masknez	$a0, $a0, $s1
-	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
-	beqz	$a3, .LBB77_85
-# %bb.137:                              #   in Loop: Header=BB77_9 Depth=1
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$t2, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
-	beqz	$a2, .LBB77_87
-# %bb.138:                              #   in Loop: Header=BB77_9 Depth=1
-	beqz	$a1, .LBB77_87
-	b	.LBB77_150
-.LBB77_139:                             #   in Loop: Header=BB77_9 Depth=1
-	move	$t3, $zero
+.LBB77_138:                             #   in Loop: Header=BB77_9 Depth=1
+	move	$s7, $zero
 	move	$a1, $zero
 	st.d	$zero, $sp, 264                 # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
-	addi.w	$a0, $t3, 10
-	beq	$a0, $fp, .LBB77_96
-	b	.LBB77_105
+	addi.w	$a0, $s7, 10
+	beq	$a0, $fp, .LBB77_105
+	b	.LBB77_114
+.LBB77_139:
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
 .LBB77_140:
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB77_158
 .LBB77_141:
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	b	.LBB77_159
+	move	$s2, $zero
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB77_158
 .LBB77_142:
-	move	$s4, $zero
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	b	.LBB77_159
-.LBB77_143:
-	move	$s4, $zero
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	move	$s2, $zero
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a1, $a0, $a1
-	b	.LBB77_157
+	b	.LBB77_156
+.LBB77_143:
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $s5
+	addi.d	$a1, $a0, -1
+	ori	$s2, $zero, 2
+	b	.LBB77_156
 .LBB77_144:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a0, $a0, $s0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $s5
 	addi.d	$a1, $a0, -1
-	ori	$s4, $zero, 2
-	b	.LBB77_157
+	ori	$s2, $zero, 3
+	b	.LBB77_156
 .LBB77_145:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a0, $a0, $s0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $s5
 	addi.d	$a1, $a0, -1
-	ori	$s4, $zero, 3
-	b	.LBB77_157
+	ori	$s2, $zero, 4
+	b	.LBB77_156
 .LBB77_146:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a0, $a0, $s0
-	addi.d	$a1, $a0, -1
-	ori	$s4, $zero, 4
-	b	.LBB77_157
-.LBB77_147:
 	ori	$a2, $zero, 4
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a3
-	bne	$t0, $a2, .LBB77_154
-# %bb.148:                              # %.thread623
+	bne	$t0, $a2, .LBB77_153
+# %bb.147:                              # %.thread623
 	addi.w	$a0, $a1, 0
 	srli.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	b	.LBB77_165
-.LBB77_149:
-	move	$s4, $zero
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	b	.LBB77_164
+.LBB77_148:
+	move	$s2, $zero
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 224                   # 8-byte Folded Reload
 	mul.d	$a0, $a1, $a0
@@ -25032,80 +25033,80 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	add.d	$a0, $a1, $a0
 	add.d	$a0, $a0, $fp
 	addi.w	$a0, $a0, -1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $a0
-	b	.LBB77_157
-.LBB77_150:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	b	.LBB77_156
+.LBB77_149:
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 	addi.d	$a1, $a0, -2
-	ori	$s4, $zero, 6
-	b	.LBB77_157
-.LBB77_151:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ori	$s2, $zero, 6
+	b	.LBB77_156
+.LBB77_150:
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 	addi.d	$a1, $a0, -3
-	ori	$s4, $zero, 1
-	b	.LBB77_157
+	ori	$s2, $zero, 1
+	b	.LBB77_156
+.LBB77_151:
+	move	$s2, $zero
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a1, $a0, $t4
+	b	.LBB77_156
 .LBB77_152:
-	move	$s4, $zero
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a1, $a0, $s2
-	b	.LBB77_157
-.LBB77_153:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a0, $a0, $t3
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $s7
 	addi.d	$a1, $a0, -1
-	ori	$s4, $zero, 7
-	b	.LBB77_157
-.LBB77_154:
+	ori	$s2, $zero, 7
+	b	.LBB77_156
+.LBB77_153:
 	ori	$a2, $zero, 24
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	bne	$t0, $a2, .LBB77_164
-# %bb.155:
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	bne	$t0, $a2, .LBB77_163
+# %bb.154:
 	alsl.d	$a0, $a1, $a1, 1
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $a1
+	b	.LBB77_164
+.LBB77_155:
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
-	b	.LBB77_165
-.LBB77_156:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
 	addi.d	$a1, $a0, -5
-	ori	$s4, $zero, 8
+	ori	$s2, $zero, 8
+.LBB77_156:                             # %.thread689.sink.split
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 .LBB77_157:                             # %.thread689.sink.split
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-.LBB77_158:                             # %.thread689.sink.split
 	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
-.LBB77_159:                             # %.thread689
+.LBB77_158:                             # %.thread689
 	ld.w	$fp, $s1, 0
 	ld.w	$s0, $s1, 4
 	addi.w	$a0, $fp, -1024
 	st.w	$a0, $s1, 0
-	bge	$s0, $a0, .LBB77_161
-# %bb.160:
+	bge	$s0, $a0, .LBB77_160
+# %bb.159:
 	st.w	$a0, $s1, 4
 	move	$s0, $a0
-.LBB77_161:                             # %_ZN5ArrayIiLi0EED2Ev.exit594
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+.LBB77_160:                             # %_ZN5ArrayIiLi0EED2Ev.exit594
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $fp, -2048
 	st.w	$a0, $s1, 0
-	bge	$s0, $a0, .LBB77_163
-# %bb.162:
+	bge	$s0, $a0, .LBB77_162
+# %bb.161:
 	st.w	$a0, $s1, 4
-.LBB77_163:                             # %_ZN5ArrayIiLi0EED2Ev.exit595
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+.LBB77_162:                             # %_ZN5ArrayIiLi0EED2Ev.exit595
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
+	move	$a0, $s2
 	ld.d	$s8, $sp, 344                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 360                   # 8-byte Folded Reload
@@ -25119,44 +25120,44 @@ _Z6detectP8_IO_FILEi8Filetype:          # @_Z6detectP8_IO_FILEi8Filetype
 	ld.d	$ra, $sp, 424                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 432
 	ret
-.LBB77_164:
+.LBB77_163:
 	sltui	$a0, $a0, 1
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	masknez	$a2, $a2, $a0
 	maskeqz	$a0, $a1, $a0
 	or	$a0, $a0, $a2
-.LBB77_165:
-	move	$s4, $zero
+.LBB77_164:
+	move	$s2, $zero
 	addi.w	$a0, $a0, 0
 	add.d	$a1, $a3, $a0
-	b	.LBB77_158
-.LBB77_166:
+	b	.LBB77_157
+.LBB77_165:
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
 	pcaddu18i	$ra, %call36(_Z4quitPKc)
 	jirl	$ra, $ra, 0
-.LBB77_167:
+.LBB77_166:
 .Ltmp324:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
 	pcaddu18i	$ra, %call36(_Z4quitPKc)
 	jirl	$ra, $ra, 0
 .Ltmp325:                               # EH_LABEL
-# %bb.168:                              # %.noexc
-.LBB77_169:
+# %bb.167:                              # %.noexc
+.LBB77_168:
 .Ltmp326:                               # EH_LABEL
 	ld.w	$a1, $s1, 0
 	ld.w	$a2, $s1, 4
 	move	$s0, $a0
 	addi.w	$a0, $a1, -1024
 	st.w	$a0, $s1, 0
-	bge	$a2, $a0, .LBB77_171
-# %bb.170:
+	bge	$a2, $a0, .LBB77_170
+# %bb.169:
 	st.w	$a0, $s1, 4
-.LBB77_171:                             # %_ZN5ArrayIiLi0EED2Ev.exit
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+.LBB77_170:                             # %_ZN5ArrayIiLi0EED2Ev.exit
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0

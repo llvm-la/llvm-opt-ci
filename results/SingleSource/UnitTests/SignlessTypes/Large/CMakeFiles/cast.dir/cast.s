@@ -69,6 +69,9 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
 	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
@@ -148,7 +151,6 @@ main:                                   # @main
 	bstrpick.d	$fp, $s0, 15, 0
 	move	$a0, $s1
 	move	$a1, $s0
-	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
 	move	$a2, $s5
 	move	$a3, $s5
 	move	$a4, $s5
@@ -161,7 +163,6 @@ main:                                   # @main
 	move	$a1, $s0
 	move	$a2, $s5
 	move	$a3, $s5
-	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
 	move	$a4, $s6
 	move	$s2, $a5
 	pcaddu18i	$ra, %call36(printf)
@@ -218,7 +219,6 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 	move	$a1, $s0
-	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
 	move	$a2, $s7
 	move	$a3, $s7
 	move	$a4, $s7

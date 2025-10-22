@@ -3431,30 +3431,30 @@ def_FindProofForGuard:                  # @def_FindProofForGuard
 	.type	def_ApplyDefinitionToTermList,@function
 def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -240
+	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	ld.w	$a2, $a2, 204
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	beqz	$a2, .LBB20_47
 # %bb.1:                                # %.preheader.lr.ph
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB20_47
 # %bb.2:                                # %.preheader.lr.ph.split.us
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	beqz	$a0, .LBB20_46
 # %bb.3:                                # %.lr.ph126.us.us.us.preheader
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
@@ -3463,20 +3463,20 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	ld.d	$s2, $a0, %got_pc_lo12(cont_STACKPOINTER)
 	pcalau12i	$a0, %got_pc_hi20(cont_STACK)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_STACK)
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cont_LEFTCONTEXT)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_LEFTCONTEXT)
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s5, $a0, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a0, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_CURRENTBINDING)
-	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	ori	$s1, $zero, 1
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB20_4:                               # %.lr.ph126.us.us.us
                                         # =>This Loop Header: Depth=1
@@ -3490,9 +3490,9 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	ld.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	st.d	$s8, $sp, 48                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB20_5:                               #   Parent Loop BB20_4 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -3503,20 +3503,20 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
                                         #       Child Loop BB20_38 Depth 3
 	ld.d	$a0, $s4, 8
 	ld.d	$s6, $a0, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(term_FindAllAtoms)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(term_AddFatherLinks)
 	jirl	$ra, $ra, 0
 	beqz	$fp, .LBB20_40
 # %bb.6:                                # %.lr.ph.us.us.us.preheader
                                         #   in Loop: Header=BB20_5 Depth=2
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s2, 0
 	move	$s4, $fp
@@ -3528,7 +3528,7 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	beqz	$s4, .LBB20_38
 .LBB20_8:                               # %cont_BackTrack.exit114.us.us.us
                                         #   in Loop: Header=BB20_9 Depth=3
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	beqz	$a0, .LBB20_38
 .LBB20_9:                               # %.lr.ph.us.us.us
                                         #   Parent Loop BB20_4 Depth=1
@@ -3540,20 +3540,20 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	ld.d	$s7, $s4, 8
 	addi.d	$a0, $a2, 1
 	st.w	$a0, $s2, 0
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a2, 2
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
 	stx.w	$a1, $a3, $a2
 	st.w	$zero, $s0, 0
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(unify_Match)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB20_32
 # %bb.10:                               #   in Loop: Header=BB20_9 Depth=3
 	ld.w	$a0, $s0, 0
-	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
 	blez	$a0, .LBB20_13
 # %bb.11:                               # %.lr.ph.i.us.us.us.preheader
                                         #   in Loop: Header=BB20_9 Depth=3
@@ -3583,7 +3583,7 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 # %bb.14:                               #   in Loop: Header=BB20_9 Depth=3
 	addi.w	$a0, $a0, -1
 	slli.d	$a1, $a0, 2
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	ldx.w	$a1, $a2, $a1
 	st.w	$a0, $s2, 0
 	st.w	$a1, $s0, 0
@@ -3597,13 +3597,13 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	pcaddu18i	$ra, %call36(term_MaxVar)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fol_NormalizeVarsStartingAt)
 	jirl	$ra, $ra, 0
 	move	$s2, $s8
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(unify_Match)
 	jirl	$ra, $ra, 0
@@ -3620,21 +3620,19 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 # %bb.17:                               #   in Loop: Header=BB20_9 Depth=3
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	move	$a2, $a0
 	move	$a0, $a1
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	move	$a1, $a2
 	pcaddu18i	$ra, %call36(fol_ApplyContextToTerm)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB20_30
 # %bb.18:                               #   in Loop: Header=BB20_9 Depth=3
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	ld.w	$a0, $s0, 0
-	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
 	blez	$a0, .LBB20_21
 # %bb.19:                               # %.lr.ph.i106.us.us.us.preheader
                                         #   in Loop: Header=BB20_9 Depth=3
@@ -3660,31 +3658,31 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 .LBB20_21:                              # %._crit_edge.i104.us.us.us
                                         #   in Loop: Header=BB20_9 Depth=3
 	ld.w	$a1, $s2, 0
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	beqz	$a1, .LBB20_23
 # %bb.22:                               #   in Loop: Header=BB20_9 Depth=3
 	addi.w	$a3, $a1, -1
 	slli.d	$a1, $a3, 2
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	ldx.w	$a1, $a2, $a1
 	st.w	$a3, $s2, 0
 	st.w	$a1, $s0, 0
 .LBB20_23:                              # %cont_BackTrack.exit108.us.us.us
                                         #   in Loop: Header=BB20_9 Depth=3
 	move	$a1, $s7
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	move	$a3, $s8
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(def_FindProofForGuard)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB20_29
 # %bb.24:                               #   in Loop: Header=BB20_9 Depth=3
 	ld.w	$a1, $s6, 0
 	ld.d	$a0, $s7, 16
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, -1
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	st.w	$a1, $s7, 0
 	pcalau12i	$a1, %got_pc_hi20(term_Delete)
 	ld.d	$a1, $a1, %got_pc_lo12(term_Delete)
@@ -3693,20 +3691,20 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	ld.d	$a0, $s6, 16
 	st.d	$a0, $s7, 16
 	st.d	$zero, $s6, 16
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(term_AddFatherLinks)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s8, 148
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	beqz	$a0, .LBB20_29
 # %bb.25:                               #   in Loop: Header=BB20_9 Depth=3
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $s8, 8
 	ld.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(fol_PrettyPrintDFG)
@@ -3722,14 +3720,14 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	.p2align	4, , 16
 .LBB20_26:                              #   in Loop: Header=BB20_9 Depth=3
 	move	$s8, $s2
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB20_31
 .LBB20_27:                              #   in Loop: Header=BB20_9 Depth=3
 	ld.w	$a1, $s6, 0
 	ld.d	$a0, $s7, 16
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, -1
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	st.w	$a1, $s7, 0
 	pcalau12i	$a1, %got_pc_hi20(term_Delete)
 	ld.d	$a1, $a1, %got_pc_lo12(term_Delete)
@@ -3738,15 +3736,15 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	ld.d	$a0, $s6, 16
 	st.d	$a0, $s7, 16
 	st.d	$zero, $s6, 16
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(term_AddFatherLinks)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 148
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB20_31
 # %bb.28:                               #   in Loop: Header=BB20_9 Depth=3
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
@@ -3766,9 +3764,9 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	jirl	$ra, $ra, 0
 	b	.LBB20_31
 .LBB20_29:                              #   in Loop: Header=BB20_9 Depth=3
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
 .LBB20_30:                              #   in Loop: Header=BB20_9 Depth=3
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
 .LBB20_31:                              #   in Loop: Header=BB20_9 Depth=3
@@ -3776,7 +3774,7 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
 .LBB20_32:                              #   in Loop: Header=BB20_9 Depth=3
-	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
 	ld.w	$a1, $s0, 0
 	blez	$a1, .LBB20_36
 # %bb.33:                               # %.lr.ph.i112.us.us.us.preheader
@@ -3809,7 +3807,7 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 # %bb.37:                               #   in Loop: Header=BB20_9 Depth=3
 	addi.w	$a2, $a0, -1
 	slli.d	$a0, $a2, 2
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	ldx.w	$a1, $a1, $a0
 	st.w	$a2, $s2, 0
 	st.w	$a1, $s0, 0
@@ -3837,41 +3835,41 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	move	$fp, $a0
 	bnez	$a0, .LBB20_38
 # %bb.39:                               #   in Loop: Header=BB20_5 Depth=2
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
 .LBB20_40:                              # %list_Delete.exit.us.us.us
                                         #   in Loop: Header=BB20_5 Depth=2
 	ld.d	$s4, $s4, 0
 	beqz	$s4, .LBB20_42
 # %bb.41:                               # %list_Delete.exit.us.us.us
                                         #   in Loop: Header=BB20_5 Depth=2
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	bnez	$a0, .LBB20_5
 .LBB20_42:                              # %._crit_edge127.us.us.us
                                         #   in Loop: Header=BB20_4 Depth=1
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
 	ld.d	$s8, $s8, 0
 	beqz	$s8, .LBB20_44
 # %bb.43:                               # %._crit_edge127.us.us.us
                                         #   in Loop: Header=BB20_4 Depth=1
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	bnez	$a0, .LBB20_4
 .LBB20_44:                              # %..loopexit_crit_edge.split.us.us.us
                                         #   in Loop: Header=BB20_4 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	beqz	$a0, .LBB20_47
 # %bb.45:                               # %..loopexit_crit_edge.split.us.us.us
                                         #   in Loop: Header=BB20_4 Depth=1
-	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	bnez	$a0, .LBB20_4
 	b	.LBB20_47
 	.p2align	4, , 16
 .LBB20_46:                              # %.preheader.us
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $fp, 8
 	ld.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(term_Copy)
@@ -3879,22 +3877,22 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $fp, 0
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	bnez	$fp, .LBB20_46
 .LBB20_47:                              # %._crit_edge
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 240
 	ret
 .Lfunc_end20:
 	.size	def_ApplyDefinitionToTermList, .Lfunc_end20-def_ApplyDefinitionToTermList

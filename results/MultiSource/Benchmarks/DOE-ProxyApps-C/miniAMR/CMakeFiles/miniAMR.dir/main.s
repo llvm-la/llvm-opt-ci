@@ -378,7 +378,6 @@ main:                                   # @main
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(num_objects)
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	addi.w	$s8, $a1, 0
 	bge	$s8, $a0, .LBB0_72
 # %bb.34:                               #   in Loop: Header=BB0_4 Depth=1

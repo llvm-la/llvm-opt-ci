@@ -320,13 +320,10 @@ main:                                   # @main
 	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
 	movfr2gr.d	$a1, $fa0
 	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	movfr2gr.d	$a2, $fa0
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	movfr2gr.d	$a3, $fa0
 	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	movfr2gr.d	$a4, $fa0
 	movfr2gr.d	$a5, $fs0
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
@@ -747,6 +744,7 @@ SIM:                                    # @SIM
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	pcalau12i	$s1, %pc_hi20(no_mis)
 	b	.LBB1_13
 	.p2align	4, , 16
@@ -840,7 +838,6 @@ SIM:                                    # @SIM
 	st.w	$a2, $a3, %pc_lo12(rl)
 	sub.d	$a3, $a4, $s6
 	addi.w	$a3, $a3, 1
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a3, $s8, %pc_lo12(cl)
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	st.w	$a0, $a4, %pc_lo12(I)

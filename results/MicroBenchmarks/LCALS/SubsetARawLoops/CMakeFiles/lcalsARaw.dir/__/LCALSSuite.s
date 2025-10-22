@@ -34042,19 +34042,19 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	.cfi_def_cfa_offset 256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -272
+	.cfi_def_cfa_offset 272
+	st.d	$ra, $sp, 264                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -34081,24 +34081,24 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	slli.d	$s5, $a0, 5
 	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
 	addi.d	$a0, $a0, %pc_lo12(.LCPI11_0)
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	move	$fp, $zero
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
 	vreplgr2vr.d	$vr0, $a0
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	lu12i.w	$a0, -419431
 	ori	$a0, $a0, 2458
 	lu32i.d	$a0, 104857
 	lu52i.d	$a0, $a0, 1023
 	vreplgr2vr.d	$vr0, $a0
-	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	lu12i.w	$a0, -307024
 	ori	$a0, $a0, 3880
 	lu32i.d	$a0, 129446
 	lu52i.d	$a0, $a0, 1023
 	vreplgr2vr.d	$vr0, $a0
-	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
 	ori	$s0, $zero, 16
 	b	.LBB11_2
 	.p2align	4, , 16
@@ -34116,17 +34116,17 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	add.d	$s2, $s2, $a0
 	addi.d	$s1, $fp, 1
 	st.w	$s1, $s2, 464
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 160
+	ld.d	$a0, $sp, 176
 	st.d	$a0, $s2, 472
 	st.w	$s6, $s2, 480
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s6, .LBB11_1
 # %bb.3:                                # %vector.ph
                                         #   in Loop: Header=BB11_2 Depth=1
@@ -34134,12 +34134,12 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.bu	$a1, $a1, 0
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $a2, 3
 	vldrepl.d	$vr0, $a1, 0
 	addi.d	$a1, $a0, 16
 	move	$a2, $s5
-	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB11_4:                               # %vector.body
                                         #   Parent Loop BB11_2 Depth=1
@@ -34187,23 +34187,23 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	slli.d	$s0, $a0, 2
 	ori	$a0, $zero, 1
 	st.w	$a0, $s2, 848
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 160
+	ld.d	$a0, $sp, 176
 	st.d	$a0, $s2, 856
 	st.w	$s3, $s2, 864
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$fp, .LBB11_8
 # %bb.6:                                # %vector.ph254
 	ld.bu	$a1, $s2, 848
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $a2, 3
 	vldrepl.d	$vr0, $a1, 0
 	addi.d	$a1, $a0, 16
@@ -34252,15 +34252,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$a0, $s2, 136
 	ori	$a0, $zero, 2
 	st.w	$a0, $s2, 872
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	ld.d	$a0, $sp, 160
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	ld.d	$a0, $sp, 176
 	st.d	$a0, $s2, 880
 	st.w	$fp, $s2, 888
 	blez	$fp, .LBB11_11
@@ -34268,7 +34268,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.bu	$a1, $s2, 872
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $a2, 3
 	vldrepl.d	$vr0, $a1, 0
 	addi.d	$a1, $a0, 16
@@ -34316,13 +34316,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$a0, $fp, 144
 	slli.d	$s1, $s5, 2
 	st.w	$zero, $fp, 896
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 160
+	ld.d	$s2, $sp, 176
 	st.d	$s2, $fp, 904
 	st.w	$s6, $fp, 912
 	blez	$s6, .LBB11_13
@@ -34337,13 +34337,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$s2, $fp, 152
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 920
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 160
+	ld.d	$s2, $sp, 176
 	st.d	$s2, $fp, 928
 	st.w	$s6, $fp, 936
 	blez	$s6, .LBB11_15
@@ -34358,13 +34358,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$s2, $fp, 160
 	ori	$a0, $zero, 2
 	st.w	$a0, $fp, 944
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 160
+	ld.d	$s2, $sp, 176
 	st.d	$s2, $fp, 952
 	st.w	$s6, $fp, 960
 	blez	$s6, .LBB11_17
@@ -34379,13 +34379,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$s2, $fp, 168
 	ori	$a0, $zero, 3
 	st.w	$a0, $fp, 968
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 160
+	ld.d	$s2, $sp, 176
 	st.d	$s2, $fp, 976
 	st.w	$s6, $fp, 984
 	blez	$s6, .LBB11_19
@@ -34400,14 +34400,14 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$s2, $fp, 176
 	ori	$a0, $zero, 4
 	st.w	$a0, $fp, 992
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 160
+	ld.d	$s2, $sp, 176
 	st.d	$s2, $fp, 1000
 	st.w	$s6, $fp, 1008
 	blez	$s6, .LBB11_21
@@ -34452,7 +34452,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	alsl.d	$a1, $a0, $s0, 3
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
@@ -34461,8 +34461,8 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	lu32i.d	$a1, 1
 	vreplgr2vr.d	$vr2, $a1
 	move	$a1, $s5
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB11_25:                              # %vector.body293
                                         # =>This Inner Loop Header: Depth=1
@@ -34517,15 +34517,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$s3, $s8, 1048
 	st.w	$s6, $s8, 1056
 	addi.d	$s4, $s8, 1064
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s6, .LBB11_33
 # %bb.30:                               # %vector.ph303
 	ld.bu	$a0, $fp, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	alsl.d	$a1, $a0, $s0, 3
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
@@ -34588,15 +34588,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$s3, $s8, 1072
 	st.w	$s6, $s8, 1080
 	addi.d	$fp, $s8, 1088
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s6, .LBB11_39
 # %bb.36:                               # %vector.ph320
 	ld.bu	$a0, $s4, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	alsl.d	$a1, $a0, $s0, 3
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
@@ -34659,15 +34659,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$s3, $s8, 1096
 	st.w	$s6, $s8, 1104
 	addi.d	$s4, $s8, 1112
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s6, .LBB11_45
 # %bb.42:                               # %vector.ph337
 	ld.bu	$a0, $fp, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	alsl.d	$a1, $a0, $s0, 3
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
@@ -34729,15 +34729,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_47:                              # %.loopexit.i.4
 	st.d	$s2, $s8, 1120
 	st.w	$s6, $s8, 1128
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s6, .LBB11_50
 # %bb.48:                               # %vector.ph354
 	ld.bu	$a0, $s4, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	alsl.d	$a1, $a0, $s0, 3
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
@@ -34783,15 +34783,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	slli.d	$s4, $s5, 3
 	ori	$a0, $zero, 1
 	st.w	$a0, $s8, 1136
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	ld.d	$fp, $sp, 160
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	ld.d	$fp, $sp, 176
 	st.d	$fp, $s8, 1144
 	st.w	$s1, $s8, 1152
 	blez	$s0, .LBB11_53
@@ -34799,7 +34799,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.bu	$a0, $s8, 1136
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $fp, 16
@@ -34875,23 +34875,23 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vst	$vr4, $sp, 96                   # 16-byte Folded Spill
 	ori	$a0, $zero, 2
 	st.w	$a0, $s1, 1160
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 160
+	ld.d	$fp, $sp, 176
 	st.d	$fp, $s1, 1168
 	st.w	$s0, $s1, 1176
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s0, .LBB11_59
 # %bb.57:                               # %vector.ph401
 	ld.bu	$a0, $s1, 1160
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $fp, 16
@@ -34964,23 +34964,23 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_62:                              # %.loopexit186.1
 	ori	$a0, $zero, 3
 	st.w	$a0, $s1, 1184
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 160
+	ld.d	$fp, $sp, 176
 	st.d	$fp, $s1, 1192
 	st.w	$s0, $s1, 1200
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s0, .LBB11_65
 # %bb.63:                               # %vector.ph431
 	ld.bu	$a0, $s1, 1184
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $fp, 16
@@ -35053,23 +35053,23 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_68:                              # %.loopexit186.2
 	ori	$a0, $zero, 4
 	st.w	$a0, $s1, 1208
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 160
+	ld.d	$fp, $sp, 176
 	st.d	$fp, $s1, 1216
 	st.w	$s0, $s1, 1224
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s0, .LBB11_71
 # %bb.69:                               # %vector.ph461
 	ld.bu	$a0, $s1, 1208
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $fp, 16
@@ -35202,17 +35202,17 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	add.d	$s3, $s3, $a0
 	addi.d	$s8, $s4, 1
 	st.w	$s8, $s3, 1232
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 160
+	ld.d	$s2, $sp, 176
 	st.d	$s2, $s3, 1240
 	st.w	$s0, $s3, 1248
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s0, .LBB11_75
 # %bb.77:                               # %vector.ph491
                                         #   in Loop: Header=BB11_76 Depth=1
@@ -35220,7 +35220,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.bu	$a0, $a0, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $s2, 16
@@ -35267,14 +35267,14 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_79:                              # %.preheader183
 	ori	$a0, $zero, 1
 	st.w	$a0, $s3, 1496
-	st.d	$zero, $sp, 160
+	st.d	$zero, $sp, 176
 	lu12i.w	$s0, 8
-	addi.d	$a0, $sp, 160
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 160
+	ld.d	$fp, $sp, 176
 	move	$a0, $zero
 	ld.bu	$a1, $s3, 1496
 	st.d	$fp, $s3, 1504
@@ -35282,14 +35282,14 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.w	$a2, $s3, 1512
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $a2, 3
 	vldrepl.d	$vr0, $a1, 0
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 1
 	vreplgr2vr.d	$vr1, $a1
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB11_80:                              # %vector.body509
                                         # =>This Inner Loop Header: Depth=1
@@ -35469,15 +35469,15 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	slli.d	$s3, $a0, 3
 	ori	$a0, $zero, 1
 	st.w	$a0, $s2, 1520
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	ld.d	$s1, $sp, 160
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	ld.d	$s1, $sp, 176
 	st.d	$s1, $s2, 1528
 	st.w	$fp, $s2, 1536
 	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
@@ -35487,7 +35487,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.bu	$a0, $s2, 1520
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $s1, 16
@@ -35590,23 +35590,23 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_89:                              # %.loopexit
 	ori	$a0, $zero, 2
 	st.w	$a0, $s4, 1544
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 160
+	ld.d	$s1, $sp, 176
 	st.d	$s1, $s4, 1552
 	st.w	$s8, $s4, 1560
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s8, .LBB11_92
 # %bb.90:                               # %vector.ph570
 	ld.bu	$a0, $s4, 1544
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $s1, 16
@@ -35709,23 +35709,23 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_97:                              # %.loopexit.1
 	ori	$a0, $zero, 3
 	st.w	$a0, $s4, 1568
-	st.d	$zero, $sp, 160
-	addi.d	$a0, $sp, 160
+	st.d	$zero, $sp, 176
+	addi.d	$a0, $sp, 176
 	ori	$a1, $zero, 32
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 160
+	ld.d	$s2, $sp, 176
 	st.d	$s2, $s4, 1576
 	st.w	$s8, $s4, 1584
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
 	blez	$s8, .LBB11_100
 # %bb.98:                               # %vector.ph613
 	ld.bu	$a0, $s4, 1568
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	vldrepl.d	$vr0, $a0, 0
 	addi.d	$a0, $s2, 16
@@ -35845,18 +35845,18 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ori	$a0, $zero, 10
 	st.w	$a0, $s1, 1608
 	vst	$vr0, $s1, 448
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 272
 	ret
 .Lfunc_end11:
 	.size	_Z16allocateLoopDatav, .Lfunc_end11-_Z16allocateLoopDatav

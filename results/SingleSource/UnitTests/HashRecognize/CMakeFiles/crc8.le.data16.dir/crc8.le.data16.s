@@ -157,6 +157,7 @@ main:                                   # @main
 	ori	$a2, $zero, 7
 	ori	$t5, $zero, 1
 	ori	$t4, $zero, 8
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB0_5
 	.p2align	4, , 16
 .LBB0_4:                                # %crc_table.exit
@@ -264,7 +265,6 @@ main:                                   # @main
 	st.b	$s5, $a1, 250
 	vpickve2gr.b	$s5, $vr2, 15
 	st.b	$s5, $a1, 254
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
 	xori	$a4, $s1, 29
 	st.d	$a4, $sp, 120                   # 8-byte Folded Spill
 	st.b	$a4, $a1, 128

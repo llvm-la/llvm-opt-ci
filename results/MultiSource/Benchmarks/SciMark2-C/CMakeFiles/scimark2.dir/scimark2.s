@@ -114,7 +114,6 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)

@@ -972,10 +972,9 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(AllocateFloatVec)
 	jirl	$ra, $ra, 0
-	st.d	$fp, $sp, 504                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 512                   # 8-byte Folded Spill
 	move	$fp, $a0
 	move	$a0, $s7
-	ld.d	$s2, $sp, 304                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(AllocateFloatVec)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
@@ -1007,7 +1006,8 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	alsl.d	$s2, $s2, $a0, 3
+	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
+	alsl.d	$s2, $a1, $a0, 3
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$s7, $s8, $a0, 3
 	ori	$a7, $zero, 1
@@ -1038,7 +1038,7 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	jirl	$ra, $ra, 0
 	move	$t3, $fp
 	ld.d	$t1, $sp, 448                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 504                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 512                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 2
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$a1, $fp, 4
@@ -2548,9 +2548,9 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	jirl	$ra, $ra, 0
 	ld.d	$a5, $sp, 416                   # 8-byte Folded Reload
 	ld.d	$t5, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 472                   # 8-byte Folded Reload
 	slli.d	$a0, $s0, 2
+	ld.d	$a1, $sp, 512                   # 8-byte Folded Reload
 	fldx.s	$fa0, $a1, $a0
 	move	$a1, $zero
 	ld.d	$a3, $sp, 504                   # 8-byte Folded Reload
@@ -3183,8 +3183,8 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	alsl.d	$a0, $s5, $a0, 2
 	fld.s	$fa0, $a0, 4
-	ld.d	$a1, $sp, 520                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 520                   # 8-byte Folded Reload
 	alsl.d	$a0, $a1, $a0, 2
 	fld.s	$fa1, $a0, -4
 	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload

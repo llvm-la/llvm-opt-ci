@@ -48354,7 +48354,6 @@ _ZN2kc38impl_ac_direct_declarator_AcMemberDecl10do_unparseERNS_21printer_functor
 	jirl	$ra, $a3, 0
 .LBB280_5:                              # %.sink.split
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
-	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	vpickve2gr.d	$a0, $vr0, 0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72

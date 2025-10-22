@@ -3725,6 +3725,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	ori	$s2, $zero, 4
 	ld.d	$a4, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 496                   # 8-byte Folded Reload
 	b	.LBB12_166
 	.p2align	4, , 16
 .LBB12_165:                             #   in Loop: Header=BB12_166 Depth=1
@@ -3756,7 +3757,6 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	ldx.bu	$a1, $a1, $a0
 	andi	$a1, $a1, 253
-	ld.d	$s0, $sp, 496                   # 8-byte Folded Reload
 	bnez	$a1, .LBB12_167
 # %bb.169:                              #   in Loop: Header=BB12_168 Depth=2
 	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
@@ -3997,6 +3997,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	lu12i.w	$a0, 77
 	ori	$s2, $a0, 1560
 	ori	$s3, $zero, 4
+	ld.d	$fp, $sp, 496                   # 8-byte Folded Reload
 	b	.LBB12_200
 	.p2align	4, , 16
 .LBB12_199:                             #   in Loop: Header=BB12_200 Depth=1
@@ -4028,7 +4029,6 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	ldx.bu	$a1, $a1, $a0
 	addi.d	$a1, $a1, -1
-	ld.d	$fp, $sp, 496                   # 8-byte Folded Reload
 	ori	$a2, $zero, 1
 	bltu	$a2, $a1, .LBB12_201
 # %bb.203:                              #   in Loop: Header=BB12_202 Depth=2
@@ -4083,6 +4083,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	move	$a2, $zero
 	ori	$s7, $a5, 1560
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 496                   # 8-byte Folded Reload
 	b	.LBB12_210
 	.p2align	4, , 16
 .LBB12_209:                             #   in Loop: Header=BB12_210 Depth=1
@@ -4117,7 +4118,6 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	ldx.bu	$a1, $a1, $a0
 	addi.d	$a1, $a1, -1
-	ld.d	$s3, $sp, 496                   # 8-byte Folded Reload
 	bltu	$s6, $a1, .LBB12_211
 # %bb.213:                              #   in Loop: Header=BB12_212 Depth=2
 	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
@@ -4221,11 +4221,11 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	ori	$a1, $zero, 56
 	mul.d	$a1, $a3, $a1
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $sp, 448                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 464                   # 8-byte Folded Spill
 	ld.d	$a5, $sp, 272                   # 8-byte Folded Reload
 	beqz	$a0, .LBB12_226
 # %bb.225:
-	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 464                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.w	$a0, $a0, 24
 	sltui	$a1, $a0, 1
@@ -4279,7 +4279,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 1807
 	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
-	st.d	$ra, $sp, 416                   # 8-byte Folded Spill
+	st.d	$ra, $sp, 424                   # 8-byte Folded Spill
 	b	.LBB12_229
 	.p2align	4, , 16
 .LBB12_228:                             #   in Loop: Header=BB12_229 Depth=1
@@ -4401,7 +4401,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
                                         #   in Loop: Header=BB12_232 Depth=2
 	pcalau12i	$a2, %got_pc_hi20(dec_picture)
 	ld.d	$a2, $a2, %got_pc_lo12(dec_picture)
-	st.d	$a2, $sp, 480                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 472                   # 8-byte Folded Spill
 	ld.d	$a2, $a2, 0
 	ldx.d	$a2, $a2, $ra
 	ld.d	$a2, $a2, 0
@@ -4455,7 +4455,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 .LBB12_236:                             # %._crit_edge.split.us.split.us.us.us.us
                                         #   in Loop: Header=BB12_237 Depth=3
 	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 480                   # 8-byte Folded Reload
 	add.d	$a6, $a6, $a0
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 336                   # 8-byte Folded Reload
@@ -4482,16 +4482,17 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
                                         #             Child Loop BB12_253 Depth 6
                                         #             Child Loop BB12_256 Depth 6
 	ld.w	$a0, $s2, 76
-	st.d	$a6, $sp, 464                   # 8-byte Folded Spill
-	add.d	$a0, $a6, $a0
-	st.d	$a0, $sp, 456                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 480                   # 8-byte Folded Spill
+	add.d	$s6, $a6, $a0
 	st.d	$a1, $sp, 360                   # 8-byte Folded Spill
 	move	$t6, $a1
 	st.d	$a2, $sp, 352                   # 8-byte Folded Spill
 	move	$t7, $a2
 	st.d	$a3, $sp, 344                   # 8-byte Folded Spill
+	move	$s2, $a3
 	st.d	$a4, $sp, 336                   # 8-byte Folded Spill
-	move	$s2, $a4
+	move	$s3, $a4
+	st.d	$s6, $sp, 416                   # 8-byte Folded Spill
 	b	.LBB12_239
 	.p2align	4, , 16
 .LBB12_238:                             # %._crit_edge1011.split.us.us.us.us.us.us.us.us.1
@@ -4499,9 +4500,9 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
 	add.d	$s4, $s4, $a0
 	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
+	add.d	$s3, $s3, $a0
+	ld.d	$s2, $sp, 440                   # 8-byte Folded Reload
 	add.d	$s2, $s2, $a0
-	ld.d	$a3, $sp, 472                   # 8-byte Folded Reload
-	add.d	$a3, $a3, $a0
 	add.d	$t7, $t7, $a0
 	add.d	$t6, $t6, $a0
 	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
@@ -4517,16 +4518,15 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
                                         #           Child Loop BB12_250 Depth 5
                                         #             Child Loop BB12_253 Depth 6
                                         #             Child Loop BB12_256 Depth 6
-	st.d	$a3, $sp, 472                   # 8-byte Folded Spill
-	st.d	$t7, $sp, 432                   # 8-byte Folded Spill
-	st.d	$t6, $sp, 440                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 480                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 0
-	move	$s1, $s4
-	ld.d	$s4, $sp, 448                   # 8-byte Folded Reload
+	st.d	$s3, $sp, 432                   # 8-byte Folded Spill
+	st.d	$t7, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t6, $sp, 456                   # 8-byte Folded Spill
+	ld.d	$s1, $sp, 472                   # 8-byte Folded Reload
+	ld.d	$a0, $s1, 0
+	ld.d	$s3, $sp, 464                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 496                   # 8-byte Folded Reload
 	ld.w	$a1, $s6, 92
-	st.d	$a1, $sp, 424                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
 	add.d	$a1, $a0, $ra
 	ldx.d	$a4, $a0, $ra
 	ld.d	$a5, $a1, 24
@@ -4538,44 +4538,43 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	move	$a0, $s6
 	ld.d	$a2, $sp, 400                   # 8-byte Folded Reload
 	move	$a3, $zero
-	move	$a6, $s1
-	ld.d	$s5, $sp, 464                   # 8-byte Folded Reload
+	move	$a6, $s4
+	ld.d	$s5, $sp, 480                   # 8-byte Folded Reload
 	move	$a7, $s5
 	pcaddu18i	$ra, %call36(SetMotionVectorPredictor)
 	jirl	$ra, $ra, 0
-	stptr.w	$s1, $s6, 5608
+	stptr.w	$s4, $s6, 5608
 	stptr.w	$s5, $s6, 5612
 	ori	$s5, $zero, 254
 	st.w	$zero, $sp, 592
-	ld.d	$a3, $s4, 48
+	ld.d	$a3, $s3, 48
 	addi.d	$a0, $sp, 584
 	move	$a1, $s6
-	ld.d	$s3, $sp, 488                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 456                   # 8-byte Folded Reload
-	move	$a2, $s4
-	move	$s4, $s1
+	ld.d	$s6, $sp, 416                   # 8-byte Folded Reload
+	move	$a2, $s3
+	ld.d	$s3, $sp, 432                   # 8-byte Folded Reload
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $sp, 480                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 0
-	ldx.d	$a1, $a0, $s3
+	ld.d	$a0, $s1, 0
+	ld.d	$a1, $sp, 488                   # 8-byte Folded Reload
+	ldx.d	$a1, $a0, $a1
 	ld.w	$a0, $sp, 588
 	ld.h	$a2, $sp, 560
 	ld.d	$a3, $a1, 0
 	move	$a1, $zero
 	add.d	$a2, $a2, $a0
 	alsl.d	$a3, $s6, $a3, 3
-	ld.d	$a4, $sp, 424                   # 8-byte Folded Reload
-	add.d	$a4, $s1, $a4
+	ld.d	$a4, $sp, 440                   # 8-byte Folded Reload
+	add.d	$a4, $s4, $a4
 	slli.d	$s1, $a4, 3
-	ld.d	$a4, $sp, 472                   # 8-byte Folded Reload
-	move	$a5, $s2
+	st.d	$s2, $sp, 440                   # 8-byte Folded Spill
+	move	$a5, $s3
 	b	.LBB12_241
 	.p2align	4, , 16
 .LBB12_240:                             # %._crit_edge.us.us.us.us.us.us.us.us
                                         #   in Loop: Header=BB12_241 Depth=5
 	addi.d	$a1, $a1, 1
 	addi.d	$a5, $a5, 32
-	addi.d	$a4, $a4, 32
+	addi.d	$s2, $s2, 32
 	beq	$a1, $s7, .LBB12_248
 .LBB12_241:                             # %.preheader945.us.us.us.us.us.us.us.us
                                         #   Parent Loop BB12_229 Depth=1
@@ -4628,7 +4627,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	beq	$s0, $s8, .LBB12_240
 .LBB12_246:                             # %scalar.ph1817.preheader
                                         #   in Loop: Header=BB12_241 Depth=5
-	alsl.d	$a7, $t0, $a4, 3
+	alsl.d	$a7, $t0, $s2, 3
 	alsl.d	$a6, $t0, $a6, 3
 	sub.d	$t0, $s8, $t0
 	.p2align	4, , 16
@@ -4652,15 +4651,15 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
                                         #   in Loop: Header=BB12_239 Depth=4
 	ld.d	$a1, $sp, 496                   # 8-byte Folded Reload
 	stptr.w	$s4, $a1, 5608
-	ld.d	$a0, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 480                   # 8-byte Folded Reload
 	stptr.w	$a0, $a1, 5612
 	ori	$a0, $zero, 2
 	st.w	$a0, $sp, 592
-	ld.d	$a2, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 464                   # 8-byte Folded Reload
 	ld.d	$a3, $a2, 48
 	addi.d	$a0, $sp, 584
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 472                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$t8, $sp, 488                   # 8-byte Folded Reload
 	ldx.d	$a1, $a0, $t8
@@ -4669,13 +4668,12 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	ld.d	$a3, $a1, 0
 	move	$a1, $zero
 	add.d	$a2, $a2, $a0
-	ld.d	$a4, $sp, 456                   # 8-byte Folded Reload
-	alsl.d	$a3, $a4, $a3, 3
-	ld.d	$t6, $sp, 440                   # 8-byte Folded Reload
+	alsl.d	$a3, $s6, $a3, 3
+	ld.d	$t6, $sp, 456                   # 8-byte Folded Reload
 	move	$a4, $t6
-	ld.d	$t7, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 448                   # 8-byte Folded Reload
 	move	$a5, $t7
-	ld.d	$ra, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 424                   # 8-byte Folded Reload
 	b	.LBB12_250
 	.p2align	4, , 16
 .LBB12_249:                             # %._crit_edge.us.us.us.us.us.us.us.us.1
@@ -5112,7 +5110,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	move	$t8, $s3
-	ld.d	$ra, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 424                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	bnez	$a1, .LBB12_284
@@ -5314,7 +5312,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	st.d	$a6, $sp, 312                   # 8-byte Folded Spill
 	slli.d	$a1, $a6, 5
 	st.d	$a1, $sp, 304                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 424                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 416                   # 8-byte Folded Spill
 	slli.d	$a1, $a5, 3
 	st.d	$a1, $sp, 376                   # 8-byte Folded Spill
 	andi	$fp, $a0, 255
@@ -5371,7 +5369,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	.p2align	4, , 16
 .LBB12_309:                             # %._crit_edge1080.split.us.us.us.us.us.us.us.us.us.1
                                         #   in Loop: Header=BB12_310 Depth=4
-	ld.d	$a0, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
 	ld.d	$a6, $sp, 480                   # 8-byte Folded Reload
 	add.d	$a6, $a6, $a0
 	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
@@ -5549,7 +5547,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	move	$a4, $t6
 	ld.d	$t7, $sp, 448                   # 8-byte Folded Reload
 	move	$a5, $t7
-	ld.d	$ra, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 424                   # 8-byte Folded Reload
 	b	.LBB12_321
 	.p2align	4, , 16
 .LBB12_320:                             # %._crit_edge1076.us.us.us.us.us.us.us.us.us.1

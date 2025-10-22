@@ -1238,7 +1238,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bne	$a0, $a2, .LBB0_145
 # %bb.169:                              #   in Loop: Header=BB0_53 Depth=2
 	st.d	$t1, $sp, 32                    # 8-byte Folded Spill
-	move	$a5, $t0
+	move	$a3, $t0
 	bstrpick.d	$a0, $s4, 15, 1
 	slli.d	$s4, $a0, 1
 	ori	$a0, $zero, 5
@@ -1390,7 +1390,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 15
 	b	.LBB0_191
 .LBB0_189:                              #   in Loop: Header=BB0_53 Depth=2
-	move	$t0, $a5
+	move	$t0, $a3
 	ori	$s3, $zero, 10
 	b	.LBB0_135
 .LBB0_190:                              # %.preheader463.1.thread.i
@@ -1743,11 +1743,11 @@ cli_scanautoit:                         # @cli_scanautoit
 	bltu	$a1, $a0, .LBB0_211
 	b	.LBB0_134
 .LBB0_234:                              #   in Loop: Header=BB0_53 Depth=2
-	move	$t0, $a5
+	move	$t0, $a3
 	ori	$s3, $zero, 41
 	b	.LBB0_135
 .LBB0_235:                              #   in Loop: Header=BB0_53 Depth=2
-	move	$t0, $a5
+	move	$t0, $a3
 	b	.LBB0_135
 .LBB0_236:                              # %.thread845.i
                                         #   in Loop: Header=BB0_12 Depth=1

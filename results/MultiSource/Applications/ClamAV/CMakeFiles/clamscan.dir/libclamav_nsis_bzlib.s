@@ -160,30 +160,30 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	addi.d	$a3, $s1, 2047
 	addi.d	$s8, $a3, 1149
 	addi.d	$a4, $a3, 1421
-	st.d	$a4, $sp, 424                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 432                   # 8-byte Folded Spill
 	lu12i.w	$a4, 6
 	ori	$a4, $a4, 1310
 	add.d	$a4, $s1, $a4
-	st.d	$a4, $sp, 336                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 344                   # 8-byte Folded Spill
 	ori	$a4, $a0, 3788
 	add.d	$a4, $s1, $a4
-	st.d	$a4, $sp, 344                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 352                   # 8-byte Folded Spill
 	ori	$a1, $a1, 2928
 	add.d	$a1, $s1, $a1
 	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
 	lu12i.w	$a1, 11
 	ori	$a1, $a1, 380
 	add.d	$a1, $s1, $a1
-	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 392                   # 8-byte Folded Spill
 	lu12i.w	$a4, 12
 	ori	$a1, $a4, 2476
 	add.d	$ra, $s1, $a1
 	lu12i.w	$a1, 14
 	ori	$a1, $a1, 476
 	add.d	$a1, $s1, $a1
-	st.d	$a1, $sp, 352                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 360                   # 8-byte Folded Spill
 	addi.d	$a1, $a2, -1524
-	st.d	$a1, $sp, 376                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
 	addi.d	$a1, $s1, 68
 	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
 	addi.d	$a1, $a3, 1677
@@ -206,7 +206,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
 	lu12i.w	$a2, 24
 	ori	$a2, $a2, 1696
-	st.d	$a2, $sp, 392                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 400                   # 8-byte Folded Spill
 	lu12i.w	$a2, 12320
 	ori	$a2, $a2, 256
 	lu32i.d	$a2, 394500
@@ -215,7 +215,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
 	vrepli.b	$vr3, 32
 	ori	$a0, $a0, 2100
-	st.d	$a0, $sp, 360                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
 	vrepli.b	$vr6, 0
 	vrepli.w	$vr0, 32
 	vst	$vr0, $sp, 288                  # 16-byte Folded Spill
@@ -232,7 +232,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ori	$t8, $zero, 10
 	st.d	$ra, $sp, 496                   # 8-byte Folded Spill
 	vst	$vr3, $sp, 320                  # 16-byte Folded Spill
-	vst	$vr6, $sp, 400                  # 16-byte Folded Spill
+	vst	$vr6, $sp, 416                  # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB3_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_14 Depth 2
@@ -326,7 +326,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$a4, $fp, 56
 	ld.d	$a3, $fp, 72
 	stptr.d	$a0, $s1, 3160
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
 	mul.w	$a0, $a1, $a0
 	srai.d	$a1, $a0, 1
 	ori	$a2, $zero, 1
@@ -344,16 +344,16 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$t4, $a2
 	move	$t6, $a2
 	move	$fp, $a2
-	st.d	$a2, $sp, 448                   # 8-byte Folded Spill
 	st.d	$a2, $sp, 456                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 464                   # 8-byte Folded Spill
 	st.d	$a2, $sp, 472                   # 8-byte Folded Spill
 	move	$t5, $a2
-	st.d	$a2, $sp, 440                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 448                   # 8-byte Folded Spill
 	move	$s2, $a2
-	st.d	$a2, $sp, 432                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 440                   # 8-byte Folded Spill
 	move	$t1, $a2
 	move	$a7, $a2
-	st.d	$a2, $sp, 464                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 408                   # 8-byte Folded Spill
 	st.d	$a2, $sp, 504                   # 8-byte Folded Spill
 	move	$a5, $a2
 	move	$t7, $a2
@@ -365,7 +365,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$a3, $a2
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	ori	$t8, $zero, 10
 	bnez	$a1, .LBB3_85
 	b	.LBB3_349
@@ -758,7 +758,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	beq	$t5, $a7, .LBB3_135
 # %bb.59:                               #   in Loop: Header=BB3_44 Depth=2
 	ld.w	$t1, $s1, 40
-	ld.d	$t2, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 400                   # 8-byte Folded Reload
 	mul.w	$t7, $t1, $t2
 	addi.w	$t1, $a5, 0
 	bgeu	$t1, $t7, .LBB3_480
@@ -882,20 +882,20 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.w	$t6, $s6, 16
 	ld.w	$fp, $s6, 20
 	ld.w	$a0, $s6, 24
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	ld.w	$a0, $s6, 28
 	st.d	$a0, $sp, 456                   # 8-byte Folded Spill
+	ld.w	$a0, $s6, 28
+	st.d	$a0, $sp, 464                   # 8-byte Folded Spill
 	ld.w	$a0, $s6, 32
 	st.d	$a0, $sp, 472                   # 8-byte Folded Spill
 	ld.w	$t5, $s6, 36
 	ld.w	$a0, $s6, 40
-	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	ld.w	$a0, $s6, 48
-	st.d	$a0, $sp, 432                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
 	ld.w	$t1, $s6, 52
 	ld.w	$a7, $s6, 56
 	ld.w	$a0, $s6, 60
-	st.d	$a0, $sp, 464                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 408                   # 8-byte Folded Spill
 	ld.w	$a0, $s6, 64
 	st.d	$a0, $sp, 504                   # 8-byte Folded Spill
 	ld.w	$a5, $s6, 68
@@ -919,7 +919,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	jr	$a1
 .LBB3_82:                               # %._crit_edge1847.i
                                         #   in Loop: Header=BB3_4 Depth=1
-	st.d	$s2, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
 	ld.w	$a0, $s1, 36
 	b	.LBB3_90
 .LBB3_83:                               #   in Loop: Header=BB3_4 Depth=1
@@ -934,16 +934,16 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$t4, $zero
 	move	$t6, $zero
 	move	$fp, $zero
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 456                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 464                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 472                 # 8-byte Folded Spill
 	move	$t5, $zero
-	st.d	$zero, $sp, 440                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$s2, $zero
-	st.d	$zero, $sp, 432                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 440                 # 8-byte Folded Spill
 	move	$t1, $zero
 	move	$a7, $zero
-	st.d	$zero, $sp, 464                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 408                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 504                 # 8-byte Folded Spill
 	move	$a5, $zero
 	move	$t7, $zero
@@ -954,10 +954,10 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$t0, $zero
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	ori	$t8, $zero, 10
 .LBB3_85:                               #   in Loop: Header=BB3_4 Depth=1
-	st.d	$s2, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
 	ld.w	$a1, $s1, 36
 	ori	$a0, $zero, 14
 	st.w	$a0, $s1, 8
@@ -979,7 +979,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 # %bb.88:                               # %._crit_edge.i
                                         #   in Loop: Header=BB3_4 Depth=1
 	ori	$a3, $zero, 49
-	ld.d	$s2, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
 	bne	$a1, $a3, .LBB3_145
 # %bb.89:                               #   in Loop: Header=BB3_4 Depth=1
 	st.w	$zero, $s1, 56
@@ -1044,7 +1044,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ori	$a0, $zero, 4
 	b	.LBB3_148
 .LBB3_99:                               #   in Loop: Header=BB3_4 Depth=1
-	st.d	$a2, $sp, 464                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 408                   # 8-byte Folded Spill
 	move	$t7, $a2
 	move	$s4, $a2
 	move	$s3, $a2
@@ -1055,13 +1055,13 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.d	$a2, $sp, 504                   # 8-byte Folded Spill
 	move	$a7, $a2
 	move	$t1, $a2
-	st.d	$a2, $sp, 432                   # 8-byte Folded Spill
-	move	$s2, $a2
 	st.d	$a2, $sp, 440                   # 8-byte Folded Spill
+	move	$s2, $a2
+	st.d	$a2, $sp, 448                   # 8-byte Folded Spill
 	move	$t5, $a2
 	st.d	$a2, $sp, 472                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 464                   # 8-byte Folded Spill
 	st.d	$a2, $sp, 456                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 448                   # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$t6, $a2
 	move	$t4, $a2
@@ -1106,7 +1106,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.w	$a5, $a0, 16
 	b	.LBB3_101
 .LBB3_105:                              #   in Loop: Header=BB3_4 Depth=1
-	st.d	$zero, $sp, 464                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 408                 # 8-byte Folded Spill
 	move	$t7, $zero
 	move	$s4, $zero
 	move	$s3, $zero
@@ -1117,13 +1117,13 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.d	$zero, $sp, 504                 # 8-byte Folded Spill
 	move	$a7, $zero
 	move	$t1, $zero
-	st.d	$zero, $sp, 432                 # 8-byte Folded Spill
-	move	$s2, $zero
 	st.d	$zero, $sp, 440                 # 8-byte Folded Spill
+	move	$s2, $zero
+	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$t5, $zero
 	st.d	$zero, $sp, 472                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 464                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 456                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
 	move	$fp, $zero
 	move	$t6, $zero
 	move	$t4, $zero
@@ -1136,7 +1136,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
                                         #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	ori	$t8, $zero, 10
 	b	.LBB3_349
 .LBB3_107:                              # %._crit_edge1864.i
@@ -1146,13 +1146,13 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	b	.LBB3_172
 .LBB3_108:                              # %._crit_edge1857.i
                                         #   in Loop: Header=BB3_4 Depth=1
-	st.d	$s2, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
 	move	$s2, $a5
 	ld.w	$a0, $s1, 36
 	b	.LBB3_113
 .LBB3_109:                              # %._crit_edge1852.i
                                         #   in Loop: Header=BB3_4 Depth=1
-	st.d	$s2, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
 	move	$s2, $a5
 	ld.w	$a1, $s1, 36
 .LBB3_110:                              #   in Loop: Header=BB3_4 Depth=1
@@ -1193,7 +1193,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 # %bb.116:                              #   in Loop: Header=BB3_4 Depth=1
 	ld.w	$a3, $s1, 40
 	addi.w	$a1, $a1, 0
-	ld.d	$a4, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 400                   # 8-byte Folded Reload
 	mul.d	$a3, $a3, $a4
 	addi.w	$a3, $a3, 10
 	move	$a5, $s2
@@ -1384,14 +1384,14 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$a5, $s2
 .LBB3_148:                              # %BZ2_decompress.exit
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$s2, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
 	b	.LBB3_349
 .LBB3_149:                              #   in Loop: Header=BB3_4 Depth=1
 	bge	$a2, $a0, .LBB3_154
 # %bb.150:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$s2, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
 .LBB3_151:                              #   in Loop: Header=BB3_4 Depth=1
-	st.d	$s2, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
 	ld.w	$a0, $s1, 36
 	ori	$a1, $zero, 28
 	st.w	$a1, $s1, 8
@@ -1448,11 +1448,11 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	ori	$t8, $zero, 10
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
 	move	$a2, $zero
-	ld.d	$s2, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
 	b	.LBB3_160
 .LBB3_155:                              # %.lr.ph1670.i
                                         #   in Loop: Header=BB3_4 Depth=1
@@ -1517,7 +1517,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ldx.bu	$a3, $s8, $a1
 	beqz	$a3, .LBB3_164
 # %bb.166:                              #   in Loop: Header=BB3_165 Depth=2
-	ld.d	$a3, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 432                   # 8-byte Folded Reload
 	stx.b	$a1, $a3, $a0
 	ori	$a0, $zero, 3192
 	ldx.w	$a0, $s1, $a0
@@ -1765,7 +1765,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	b	.LBB3_209
 .LBB3_208:                              # %._crit_edge1526.i
                                         #   in Loop: Header=BB3_209 Depth=2
-	ld.d	$a2, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
 	stx.b	$a1, $a2, $a0
 	addi.d	$a0, $a0, 1
 	st.b	$a1, $sp, 514
@@ -1775,7 +1775,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
                                         #       Child Loop BB3_222 Depth 3
                                         #       Child Loop BB3_219 Depth 3
                                         #       Child Loop BB3_215 Depth 3
-	ld.d	$a1, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 344                   # 8-byte Folded Reload
 	ldx.bu	$a2, $a1, $a0
 	ldx.bu	$a1, $a2, $t2
 	beqz	$a2, .LBB3_208
@@ -1923,7 +1923,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$a0, $zero
 	b	.LBB3_240
 .LBB3_234:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
 	stx.b	$s0, $a0, $a2
 	addi.w	$a2, $a2, 1
 	b	.LBB3_176
@@ -2119,8 +2119,6 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 .LBB3_266:                              # %.preheader1392.i
                                         #   in Loop: Header=BB3_4 Depth=1
 	st.d	$a5, $sp, 112                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 464                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 464                   # 8-byte Folded Spill
 	st.d	$t4, $sp, 240                   # 8-byte Folded Spill
 	st.d	$t5, $sp, 96                    # 8-byte Folded Spill
 	st.d	$t6, $sp, 232                   # 8-byte Folded Spill
@@ -2144,16 +2142,16 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	slli.d	$a0, $a0, 3
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 392                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	st.d	$s4, $sp, 256                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
 	b	.LBB3_269
 .LBB3_268:                              # %CreateDecodeTables.exit.i
                                         #   in Loop: Header=BB3_269 Depth=2
 	slli.d	$a0, $s0, 2
-	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	stx.w	$s1, $a1, $a0
 	addi.d	$s0, $s0, 1
 	ld.d	$a1, $sp, 480                   # 8-byte Folded Reload
@@ -2196,10 +2194,10 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	jirl	$ra, $ra, 0
 	move	$s2, $zero
 	st.d	$zero, $sp, 472                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 464                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 456                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 448                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 440                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 368                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 376                 # 8-byte Folded Spill
 	move	$a6, $zero
 	move	$a7, $zero
 	move	$t0, $zero
@@ -2290,7 +2288,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$a1, $zero
 	st.d	$fp, $sp, 280                   # 8-byte Folded Spill
 	alsl.d	$a0, $s0, $fp, 3
-	ld.d	$a2, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 360                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $a0
 	move	$a6, $s1
 	b	.LBB3_280
@@ -2365,13 +2363,13 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.w	$a7, $s4, 64
 	ld.w	$a6, $s4, 68
 	ld.w	$a0, $s4, 72
-	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 376                   # 8-byte Folded Spill
 	ld.w	$a0, $s4, 76
-	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
-	ld.w	$a0, $s4, 80
 	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	ld.w	$a0, $s4, 84
+	ld.w	$a0, $s4, 80
 	st.d	$a0, $sp, 456                   # 8-byte Folded Spill
+	ld.w	$a0, $s4, 84
+	st.d	$a0, $sp, 464                   # 8-byte Folded Spill
 	ld.w	$a0, $s4, 88
 	st.d	$a0, $sp, 472                   # 8-byte Folded Spill
 	ld.d	$s4, $sp, 496                   # 8-byte Folded Reload
@@ -2380,7 +2378,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
                                         #   in Loop: Header=BB3_269 Depth=2
 	alsl.d	$a0, $s0, $fp, 3
 	add.d	$s4, $s4, $a0
-	ld.d	$a4, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 392                   # 8-byte Folded Reload
 	add.d	$a0, $a4, $a0
 	st.w	$a3, $s4, 4
 	add.d	$a2, $a3, $a2
@@ -2415,16 +2413,16 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.w	$a1, $s4, 64
 	add.d	$a1, $a1, $a6
 	st.w	$a1, $s4, 68
-	ld.d	$a2, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 376                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a2
 	st.w	$a1, $s4, 72
-	ld.d	$a2, $sp, 440                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $a2
-	st.w	$a1, $s4, 76
 	ld.d	$a2, $sp, 448                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a2
-	st.w	$a1, $s4, 80
+	st.w	$a1, $s4, 76
 	ld.d	$a2, $sp, 456                   # 8-byte Folded Reload
+	add.d	$a1, $a1, $a2
+	st.w	$a1, $s4, 80
+	ld.d	$a2, $sp, 464                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a2
 	st.w	$a1, $s4, 84
 	ld.d	$a2, $sp, 472                   # 8-byte Folded Reload
@@ -2434,7 +2432,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$a6, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 368                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 240                   # 8-byte Folded Reload
 	blez	$t4, .LBB3_290
 # %bb.288:                              # %.lr.ph82.preheader.i.i
@@ -2464,7 +2462,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 .LBB3_290:                              # %.preheader.i.i
                                         #   in Loop: Header=BB3_269 Depth=2
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
@@ -2590,13 +2588,13 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	bne	$a0, $a4, .LBB3_301
 # %bb.302:                              #   in Loop: Header=BB3_4 Depth=1
 	addi.w	$a0, $fp, 1
-	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 456                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
 	mul.w	$a0, $s0, $a0
-	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 448                   # 8-byte Folded Spill
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	ori	$t8, $zero, 10
 	ld.d	$t4, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
@@ -2606,19 +2604,19 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
 	blez	$fp, .LBB3_312
 # %bb.303:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ld.bu	$s4, $a0, 0
 	move	$s2, $zero
-	st.d	$zero, $sp, 456                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 464                 # 8-byte Folded Spill
 	slli.d	$a0, $s4, 10
 	alsl.d	$a0, $s4, $a0, 3
 	add.d	$t2, $ra, $a0
 	slli.d	$a1, $s4, 2
-	ld.d	$a2, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 384                   # 8-byte Folded Reload
 	ldx.w	$s3, $a2, $a1
-	ld.d	$a1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 360                   # 8-byte Folded Reload
 	add.d	$t0, $a1, $a0
-	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s5, $a1, $a0
 	ori	$a2, $zero, 256
 	ori	$a0, $zero, 49
@@ -2690,7 +2688,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 .LBB3_312:                              #   in Loop: Header=BB3_4 Depth=1
 	move	$s2, $zero
 	st.d	$zero, $sp, 472                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 456                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 464                 # 8-byte Folded Spill
 	move	$a3, $zero
 	addi.w	$a0, $zero, -4
 	ori	$a2, $zero, 256
@@ -2927,21 +2925,21 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.w	$t4, $s6, 12
 	st.w	$t6, $s6, 16
 	st.w	$fp, $s6, 20
-	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
-	st.w	$a1, $s6, 24
 	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
+	st.w	$a1, $s6, 24
+	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
 	st.w	$a1, $s6, 28
 	ld.d	$a1, $sp, 472                   # 8-byte Folded Reload
 	st.w	$a1, $s6, 32
 	st.w	$t5, $s6, 36
-	ld.d	$a1, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	st.w	$a1, $s6, 40
 	st.w	$s2, $s6, 44
-	ld.d	$a1, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 440                   # 8-byte Folded Reload
 	st.w	$a1, $s6, 48
 	st.w	$t1, $s6, 52
 	st.w	$a7, $s6, 56
-	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 408                   # 8-byte Folded Reload
 	st.w	$a1, $s6, 60
 	ld.d	$a1, $sp, 504                   # 8-byte Folded Reload
 	st.w	$a1, $s6, 64
@@ -2979,7 +2977,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 .LBB3_353:                              # %.loopexit1376.i
                                         #   in Loop: Header=BB3_4 Depth=1
 	move	$s2, $s0
-	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 456                   # 8-byte Folded Reload
 	bne	$t5, $a0, .LBB3_368
 # %bb.354:                              #   in Loop: Header=BB3_4 Depth=1
 	ld.w	$a1, $s1, 56
@@ -3407,24 +3405,24 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	maskeqz	$a0, $a0, $a1
 	or	$a0, $a0, $a3
 	add.w	$a4, $a0, $a4
-	st.d	$a4, $sp, 432                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 440                   # 8-byte Folded Spill
 	bnez	$a6, .LBB3_373
 # %bb.371:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
 	addi.w	$a1, $a1, 1
-	st.d	$a1, $sp, 456                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 464                   # 8-byte Folded Spill
 	bge	$a1, $fp, .LBB3_395
 # %bb.372:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ldx.bu	$s4, $a0, $a1
 	slli.d	$a0, $s4, 2
-	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	ldx.w	$s3, $a1, $a0
 	slli.d	$a0, $s4, 10
 	alsl.d	$a0, $s4, $a0, 3
-	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s5, $a1, $a0
-	ld.d	$a1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 360                   # 8-byte Folded Reload
 	add.d	$t0, $a1, $a0
 	add.d	$t2, $ra, $a0
 	ori	$a6, $zero, 50
@@ -3495,7 +3493,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 .LBB3_382:                              #   in Loop: Header=BB3_4 Depth=1
 	addi.w	$a0, $zero, -4
 	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
 	bge	$s2, $a1, .LBB3_397
 # %bb.383:                              #   in Loop: Header=BB3_4 Depth=1
 	move	$t1, $t0
@@ -3573,14 +3571,14 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB3_421
 .LBB3_394:                              #   in Loop: Header=BB3_4 Depth=1
-	st.d	$t5, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 456                   # 8-byte Folded Spill
 	b	.LBB3_478
 .LBB3_395:                              #   in Loop: Header=BB3_4 Depth=1
 	st.d	$zero, $sp, 472                 # 8-byte Folded Spill
 	b	.LBB3_145
 .LBB3_396:                              #   in Loop: Header=BB3_4 Depth=1
 	move	$a3, $zero
-	st.d	$t5, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 456                   # 8-byte Folded Spill
 	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB3_349
 .LBB3_397:                              #   in Loop: Header=BB3_4 Depth=1
@@ -3668,7 +3666,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	bstrins.d	$a5, $a1, 19, 16
 	st.w	$a5, $s1, 60
 	st.w	$t2, $s1, 1092
-	st.d	$t5, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 456                   # 8-byte Folded Spill
 	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB3_477
 .LBB3_406:                              #   in Loop: Header=BB3_4 Depth=1
@@ -3761,7 +3759,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	srli.d	$a2, $a0, 8
 	st.w	$a2, $s1, 60
 	st.w	$zero, $s1, 1092
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
 	mul.w	$a3, $a3, $a0
 	ori	$a0, $zero, 1
 	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
@@ -3777,7 +3775,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.w	$a1, $s1, 60
 	ori	$a1, $zero, 1
 	st.w	$a1, $s1, 1092
-	st.d	$t5, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 456                   # 8-byte Folded Spill
 	move	$a2, $s2
 	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB3_349
@@ -3869,7 +3867,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$s0, $sp, 472                   # 8-byte Folded Reload
 .LBB3_421:                              # %.loopexit1387.i
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a3, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 432                   # 8-byte Folded Reload
 	ldx.bu	$a1, $a3, $a1
 	slli.d	$a3, $a1, 2
 	ld.d	$a6, $sp, 208                   # 8-byte Folded Reload
@@ -3893,21 +3891,21 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
 	bnez	$s0, .LBB3_427
 # %bb.425:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 464                   # 8-byte Folded Reload
 	addi.w	$a1, $a1, 1
-	st.d	$a1, $sp, 456                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 464                   # 8-byte Folded Spill
 	bge	$a1, $fp, .LBB3_439
 # %bb.426:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a0, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
 	ldx.bu	$s4, $a0, $a1
 	slli.d	$a0, $s4, 2
-	ld.d	$a1, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	ldx.w	$s3, $a1, $a0
 	slli.d	$a0, $s4, 10
 	alsl.d	$a0, $s4, $a0, 3
-	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 392                   # 8-byte Folded Reload
 	add.d	$s5, $a1, $a0
-	ld.d	$a1, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 360                   # 8-byte Folded Reload
 	add.d	$t0, $a1, $a0
 	add.d	$t2, $ra, $a0
 	ori	$s0, $zero, 50
@@ -4081,7 +4079,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	bgeu	$t5, $t3, .LBB3_455
 # %bb.454:                              #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 440                   # 8-byte Folded Reload
 	move	$s2, $s0
 	b	.LBB3_370
 .LBB3_455:                              #   in Loop: Header=BB3_4 Depth=1
@@ -4091,13 +4089,13 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ldptr.w	$a1, $s1, 7820
 	ld.d	$a3, $sp, 312                   # 8-byte Folded Reload
 	ldx.bu	$a1, $a3, $a1
-	ld.d	$a3, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 432                   # 8-byte Folded Reload
 	ldx.bu	$a3, $a3, $a1
 	slli.d	$a4, $a3, 2
 	ld.d	$a7, $sp, 208                   # 8-byte Folded Reload
 	ldx.w	$a5, $a7, $a4
 	ld.bu	$a6, $s1, 44
-	ld.d	$s2, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 440                   # 8-byte Folded Reload
 	addi.w	$a1, $s2, 1
 	add.d	$a5, $a5, $a1
 	stx.w	$a5, $a7, $a4
@@ -4110,7 +4108,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a5, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 448                   # 8-byte Folded Reload
 	slt	$a4, $a5, $s0
 	masknez	$a5, $a5, $a4
 	maskeqz	$a4, $s0, $a4
@@ -4130,7 +4128,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	or	$a5, $a5, $a6
 	bltu	$t0, $a5, .LBB3_463
 # %bb.458:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$t2, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 408                   # 8-byte Folded Reload
 	b	.LBB3_466
 .LBB3_459:                              # %.preheader1375.i
                                         #   in Loop: Header=BB3_4 Depth=1
@@ -4140,7 +4138,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
-	ld.d	$a5, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 448                   # 8-byte Folded Reload
 	slt	$a4, $a5, $s0
 	masknez	$a5, $a5, $a4
 	maskeqz	$a4, $s0, $a4
@@ -4160,10 +4158,10 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	or	$a5, $a5, $a6
 	bltu	$t0, $a5, .LBB3_469
 # %bb.461:                              #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$t2, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 408                   # 8-byte Folded Reload
 	b	.LBB3_472
 .LBB3_462:                              #   in Loop: Header=BB3_4 Depth=1
-	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ori	$a5, $zero, 1024
 	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
@@ -4171,7 +4169,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	b	.LBB3_353
 .LBB3_463:                              # %vector.ph501
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$t2, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 408                   # 8-byte Folded Reload
 	bstrpick.d	$a5, $a5, 31, 1
 	ldptr.d	$a7, $s1, 3160
 	slli.d	$a6, $a5, 1
@@ -4193,7 +4191,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
                                         #   in Loop: Header=BB3_4 Depth=1
 	slli.d	$a5, $s0, 1
 	sub.d	$a6, $a4, $s0
-	st.d	$t2, $sp, 464                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 408                   # 8-byte Folded Spill
 .LBB3_467:                              # %scalar.ph499
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -4211,7 +4209,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	b	.LBB3_475
 .LBB3_469:                              # %vector.ph490
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$t2, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 408                   # 8-byte Folded Reload
 	bstrpick.d	$a5, $a5, 31, 1
 	ldptr.d	$a7, $s1, 3152
 	slli.d	$a6, $a5, 1
@@ -4233,7 +4231,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
                                         #   in Loop: Header=BB3_4 Depth=1
 	slli.d	$a5, $s0, 2
 	sub.d	$a6, $a4, $s0
-	st.d	$t2, $sp, 464                   # 8-byte Folded Spill
+	st.d	$t2, $sp, 408                   # 8-byte Folded Spill
 .LBB3_473:                              # %scalar.ph489
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -4249,11 +4247,11 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ori	$a7, $zero, 1
 	blt	$a7, $t0, .LBB3_473
 .LBB3_475:                              #   in Loop: Header=BB3_4 Depth=1
-	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 168                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ori	$t3, $zero, 2
 	ori	$a5, $zero, 1024
@@ -4265,12 +4263,12 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$t0, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB3_353
 .LBB3_476:                              #   in Loop: Header=BB3_4 Depth=1
-	st.d	$t0, $sp, 432                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 440                   # 8-byte Folded Spill
 	move	$a3, $zero
 	move	$s2, $a4
 	ld.d	$ra, $sp, 496                   # 8-byte Folded Reload
 	vld	$vr3, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr6, $sp, 400                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 416                  # 16-byte Folded Reload
 	ori	$t8, $zero, 10
 	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload

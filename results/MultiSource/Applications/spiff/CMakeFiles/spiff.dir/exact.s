@@ -122,8 +122,8 @@ Q_do_exact:                             # @Q_do_exact
                                         #   in Loop: Header=BB0_3 Depth=1
 	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	slli.d	$s1, $s7, 32
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	move	$s2, $s8
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	alsl.d	$s8, $s7, $a1, 3
 	addi.w	$a0, $s7, 1
 	move	$s7, $a2

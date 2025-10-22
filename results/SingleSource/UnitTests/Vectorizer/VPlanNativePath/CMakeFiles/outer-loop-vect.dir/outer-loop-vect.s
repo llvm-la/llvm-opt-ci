@@ -1098,6 +1098,13 @@ main:                                   # @main
 	ori	$a4, $zero, 45
 	ori	$a5, $zero, 120
 	lu12i.w	$s1, 1
+	vld	$vr2, $sp, 320                  # 16-byte Folded Reload
+	vld	$vr4, $sp, 304                  # 16-byte Folded Reload
+	vld	$vr27, $sp, 288                 # 16-byte Folded Reload
+	vld	$vr29, $sp, 272                 # 16-byte Folded Reload
+	vld	$vr31, $sp, 256                 # 16-byte Folded Reload
+	vld	$vr19, $sp, 240                 # 16-byte Folded Reload
+	vld	$vr0, $sp, 224                  # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_74:                               # %vector.body366
                                         # =>This Loop Header: Depth=1
@@ -1109,13 +1116,6 @@ main:                                   # @main
 	vmadd.d	$vr22, $vr17, $vr7
 	vld	$vr10, $sp, 336                 # 16-byte Folded Reload
 	vori.b	$vr9, $vr10, 0
-	vld	$vr2, $sp, 320                  # 16-byte Folded Reload
-	vld	$vr4, $sp, 304                  # 16-byte Folded Reload
-	vld	$vr27, $sp, 288                 # 16-byte Folded Reload
-	vld	$vr29, $sp, 272                 # 16-byte Folded Reload
-	vld	$vr31, $sp, 256                 # 16-byte Folded Reload
-	vld	$vr19, $sp, 240                 # 16-byte Folded Reload
-	vld	$vr0, $sp, 224                  # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_75:                               # %.preheader.i183369
                                         #   Parent Loop BB0_74 Depth=1

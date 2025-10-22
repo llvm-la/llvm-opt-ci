@@ -593,6 +593,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	move	$t3, $zero
 	movgr2fr.d	$fa0, $zero
 	ori	$t4, $zero, 2
+	ld.d	$t8, $sp, 544                   # 8-byte Folded Reload
 	b	.LBB0_21
 	.p2align	4, , 16
 .LBB0_19:                               #   in Loop: Header=BB0_21 Depth=1
@@ -625,7 +626,6 @@ L3psycho_anal:                          # @L3psycho_anal
 	move	$t5, $a6
 .LBB0_25:                               # %._crit_edge
                                         #   in Loop: Header=BB0_21 Depth=1
-	ld.d	$t8, $sp, 544                   # 8-byte Folded Reload
 	alsl.d	$t6, $t3, $t8, 3
 	slli.d	$t7, $t3, 3
 	stx.w	$t5, $t8, $t7

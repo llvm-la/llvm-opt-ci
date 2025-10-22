@@ -2152,7 +2152,7 @@ encode_one_frame:                       # @encode_one_frame
 	b	.LBB2_265
 .LBB2_160:
 	pcalau12i	$s8, %pc_hi20(mb_adaptive)
-	st.d	$s8, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
 	beqz	$a1, .LBB2_168
 # %bb.161:                              # %.thread361
 	pcalau12i	$fp, %pc_hi20(generic_RC)
@@ -2295,16 +2295,16 @@ encode_one_frame:                       # @encode_one_frame
 	ld.w	$a2, $a1, 36
 	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(intras)
-	st.d	$a2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
 	ld.w	$a2, $a2, %pc_lo12(intras)
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	ld.w	$a3, $a1, 20
 	lu12i.w	$a2, 3
 	ori	$a4, $a2, 3320
 	ldptr.w	$a2, $a0, 5116
 	st.d	$a4, $sp, 112                   # 8-byte Folded Spill
 	ldx.w	$a0, $a1, $a4
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$s8, %pc_hi20(quadratic_RC_best)
 	pcalau12i	$s0, %pc_hi20(generic_RC_best)
 	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
@@ -2325,11 +2325,11 @@ encode_one_frame:                       # @encode_one_frame
 	ld.d	$a1, $a0, 0
 	ld.w	$a0, $a1, 20
 .LBB2_182:
-	st.d	$s8, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	ori	$a2, $zero, 2
 	pcalau12i	$a3, %pc_hi20(frame_pic)
 	st.d	$a3, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 144                   # 8-byte Folded Spill
 	beq	$a0, $a2, .LBB2_186
 # %bb.183:
 	ld.d	$a2, $s6, 0
@@ -2420,20 +2420,20 @@ encode_one_frame:                       # @encode_one_frame
 # %bb.192:
 	ld.d	$s6, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$a0, $s6, 0
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a2, $a2, %pc_lo12(intras)
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	ld.d	$a2, $s1, 0
 	ldptr.w	$a0, $a0, 5116
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	ldx.w	$a3, $a1, $a3
-	st.d	$a3, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
 	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a2, $a3, %pc_lo12(frame_pic)
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
 	beqz	$a0, .LBB2_194
 # %bb.193:
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(quadratic_RC_best)
 	pcalau12i	$a1, %pc_hi20(quadratic_RC)
 	ld.d	$a1, $a1, %pc_lo12(quadratic_RC)
@@ -2465,7 +2465,7 @@ encode_one_frame:                       # @encode_one_frame
 .LBB2_197:
 	move	$a0, $zero
 	ld.d	$s6, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
 .LBB2_198:
 	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(enc_frame_picture)
@@ -2501,8 +2501,8 @@ encode_one_frame:                       # @encode_one_frame
 	st.w	$a2, $a1, 36
 .LBB2_204:
 	ld.d	$a2, $s4, 0
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a4, $a3, %pc_lo12(intras)
 	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a2, $a3, %pc_lo12(frame_pic)
@@ -2530,7 +2530,7 @@ encode_one_frame:                       # @encode_one_frame
 	ld.d	$a0, $a0, %got_pc_lo12(PicParSet)
 	b	.LBB2_224
 .LBB2_209:
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(intras)
 	ldptr.w	$a2, $a1, 15352
 	ori	$a3, $zero, 100
@@ -2625,8 +2625,6 @@ encode_one_frame:                       # @encode_one_frame
 	stptr.w	$zero, $a1, 15408
 .LBB2_227:
 	st.d	$fp, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	move	$fp, $s5
 	move	$s5, $s1
 	ld.d	$a0, $s6, 0
@@ -2698,7 +2696,7 @@ encode_one_frame:                       # @encode_one_frame
 	slli.w	$a0, $a0, 1
 .LBB2_232:
 	stptr.w	$a0, $a1, 14260
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a2, $s6, 0
 	ldptr.w	$a2, $a2, 5116
 	beqz	$a2, .LBB2_237
@@ -2707,7 +2705,7 @@ encode_one_frame:                       # @encode_one_frame
 	move	$s1, $s5
 	bne	$a0, $a2, .LBB2_235
 # %bb.234:
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(quadratic_RC_best)
 	pcalau12i	$a1, %pc_hi20(quadratic_RC)
 	ld.d	$a1, $a1, %pc_lo12(quadratic_RC)
@@ -2730,7 +2728,7 @@ encode_one_frame:                       # @encode_one_frame
 	ldx.w	$fp, $a1, $a0
 	ld.d	$a0, $s6, 0
 	ldptr.w	$a2, $a0, 5116
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	bnez	$a2, .LBB2_242
 	b	.LBB2_243
 .LBB2_237:
@@ -2754,14 +2752,14 @@ encode_one_frame:                       # @encode_one_frame
 	st.d	$a0, $s8, %pc_lo12(active_pps)
 	st.w	$fp, $a1, 36
 .LBB2_240:
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a2, $a0, %pc_lo12(intras)
 .LBB2_241:
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $s6, 0
 	ldptr.w	$a2, $a0, 5116
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	beqz	$a2, .LBB2_243
 .LBB2_242:
 	pcalau12i	$a0, %pc_hi20(quadratic_RC)
@@ -2818,7 +2816,7 @@ encode_one_frame:                       # @encode_one_frame
 	ldptr.w	$a1, $a0, 4708
 	beqz	$a1, .LBB2_253
 # %bb.252:
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	st.w	$zero, $a1, %pc_lo12(mb_adaptive)
 .LBB2_253:
 	ldptr.w	$a1, $a0, 4704
@@ -4692,7 +4690,7 @@ encode_one_frame:                       # @encode_one_frame
 	ld.d	$a2, $a2, 0
 	ldptr.w	$a3, $a1, 15260
 	st.d	$a2, $s8, %pc_lo12(active_pps)
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
 	bnez	$a3, .LBB2_217
 # %bb.470:
 	ld.w	$a2, $a1, 36

@@ -766,6 +766,7 @@ ygraph:                                 # @ygraph
 	addi.d	$a0, $a1, 2
 	bstrpick.d	$a0, $a0, 31, 0
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB0_87
 	.p2align	4, , 16
 .LBB0_86:                               # %._crit_edge330
@@ -812,7 +813,6 @@ ygraph:                                 # @ygraph
 	add.d	$a0, $s4, $a0
 	ld.w	$s0, $a0, 36
 	slli.d	$s2, $a1, 3
-	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	ldx.d	$s6, $s8, $s2
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)

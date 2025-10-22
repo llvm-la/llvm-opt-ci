@@ -73,7 +73,6 @@ usite0:                                 # @usite0
 	move	$a6, $zero
 	jirl	$ra, $a7, 0
 	ld.w	$a1, $s6, 0
-	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a2, $s8, 0
 	slli.d	$a1, $a1, 3
 	ld.w	$a3, $fp, 0
@@ -111,7 +110,8 @@ usite0:                                 # @usite0
 	pcaddu18i	$ra, %call36(usoftnet)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 0
-	ld.w	$a2, $s6, 0
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$a2, $a2, 0
 	add.d	$s5, $fp, $a0
 	add.w	$a0, $s5, $s7
 	add.w	$a1, $a2, $a1

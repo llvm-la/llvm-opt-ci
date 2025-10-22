@@ -4277,6 +4277,8 @@ _ZN2kc25unparse_string_collectionEv:    # @_ZN2kc25unparse_string_collectionEv
 	addi.d	$a0, $a0, %pc_lo12(.L.str.37)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 80                    # 8-byte Folded Spill
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB44_3:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
@@ -4295,8 +4297,6 @@ _ZN2kc25unparse_string_collectionEv:    # @_ZN2kc25unparse_string_collectionEv
 	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $fp, 3
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16

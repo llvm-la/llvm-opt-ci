@@ -1323,6 +1323,7 @@ conv420to422:                           # @conv420to422
 	move	$a1, $zero
 	ori	$t4, $zero, 67
 	ori	$t5, $zero, 227
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB4_4:                                # %.preheader223.us
                                         # =>This Loop Header: Depth=1
@@ -1333,7 +1334,6 @@ conv420to422:                           # @conv420to422
 	move	$s1, $zero
 	ori	$t8, $zero, 3
 	move	$fp, $a0
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	move	$a1, $t3
 	.p2align	4, , 16
 .LBB4_5:                                #   Parent Loop BB4_4 Depth=1

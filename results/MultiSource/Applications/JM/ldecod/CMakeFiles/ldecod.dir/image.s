@@ -5108,6 +5108,7 @@ get_block:                              # @get_block
 	ori	$s0, $zero, 20
 	move	$s2, $t1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB6_31:                               # =>This Inner Loop Header: Depth=1
 	addi.w	$a4, $s2, 0
@@ -5165,7 +5166,6 @@ get_block:                              # @get_block
 	maskeqz	$a4, $a4, $a7
 	masknez	$a7, $t0, $a7
 	or	$a4, $a4, $a7
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	add.d	$a7, $ra, $t3
 	slli.d	$s4, $a5, 1
 	ldx.hu	$a5, $t5, $s4

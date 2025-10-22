@@ -2459,6 +2459,7 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.L.str.98)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.98)
 	move	$a0, $s0
+	st.d	$s0, $sp, 208                   # 8-byte Folded Spill
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
@@ -2610,7 +2611,6 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	move	$a0, $s0
-	st.d	$s0, $sp, 208                   # 8-byte Folded Spill
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0

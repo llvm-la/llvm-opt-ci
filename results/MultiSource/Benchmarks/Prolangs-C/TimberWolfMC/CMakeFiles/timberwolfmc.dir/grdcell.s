@@ -54,7 +54,8 @@ grdcell:                                # @grdcell
 	st.d	$zero, $sp, 168                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	lu12i.w	$a0, 1606
-	ori	$a1, $a0, 368
+	ori	$a0, $a0, 368
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	lu12i.w	$a0, 472646
 	ori	$a0, $a0, 368
 	lu32i.d	$a0, 353385
@@ -78,7 +79,6 @@ grdcell:                                # @grdcell
                                         # kill: killed $r4
                                         # implicit-def: $r4
                                         # kill: killed $r4
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB0_5
 .LBB0_2:                                #   in Loop: Header=BB0_5 Depth=1
 	move	$s2, $s4

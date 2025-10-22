@@ -1122,6 +1122,7 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	move	$s0, $zero
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
 	b	.LBB2_41
 	.p2align	4, , 16
 .LBB2_39:                               #   in Loop: Header=BB2_41 Depth=1
@@ -1211,7 +1212,6 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	ld.d	$s7, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
-	ld.d	$s4, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $s4, 0
 	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(unify_UnifyNoOC)
@@ -1435,8 +1435,6 @@ inf_ConstraintHyperResolvents:          # @inf_ConstraintHyperResolvents
 	ld.w	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
 	st.w	$a1, $a0, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill

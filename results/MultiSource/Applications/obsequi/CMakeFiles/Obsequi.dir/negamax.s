@@ -652,7 +652,6 @@ search_for_move:                        # @search_for_move
 	pcaddu18i	$ra, %call36(check_hash_code_sanity)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
 	sub.w	$a3, $zero, $a0
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
@@ -1271,6 +1270,8 @@ negamax:                                # @negamax
                                         # implicit-def: $r30
                                         # implicit-def: $r31
 	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
 	b	.LBB1_22
 .LBB1_21:                               # %..loopexit_crit_edge
                                         #   in Loop: Header=BB1_22 Depth=1
@@ -1345,7 +1346,6 @@ negamax:                                # @negamax
 	ld.w	$a0, $a0, %pc_lo12(starting_depth)
 	sub.w	$a0, $a0, $s3
 	slli.d	$a0, $a0, 2
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a1, $s2, %pc_lo12(g_empty_squares)
 	srli.d	$a2, $s7, 32
 	ld.wu	$s7, $s1, 8
@@ -1357,7 +1357,6 @@ negamax:                                # @negamax
 	st.w	$a1, $s2, %pc_lo12(g_empty_squares)
 	bstrins.d	$s7, $a2, 63, 32
 	move	$a1, $s7
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(toggle_move)
 	jirl	$ra, $ra, 0

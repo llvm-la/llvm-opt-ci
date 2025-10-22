@@ -275,6 +275,7 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 200                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 168                   # 8-byte Folded Spill
+	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	b	.LBB2_20
 	.p2align	4, , 16
 .LBB2_19:                               # %.loopexit567
@@ -341,7 +342,6 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	st.w	$a0, $s3, 20
 	move	$a0, $s3
 	move	$a1, $s6
-	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(hypre_ProjectBox)
 	jirl	$ra, $ra, 0

@@ -2275,12 +2275,12 @@ print_reductions:                       # @print_reductions
 	pcalau12i	$a0, %got_pc_hi20(ntokens)
 	ld.d	$a4, $a0, %got_pc_lo12(ntokens)
 	ori	$a5, $zero, 1
+	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB10_70
 	.p2align	4, , 16
 .LBB10_68:                              #   in Loop: Header=BB10_70 Depth=1
 	srai.d	$a0, $a6, 5
 	slli.d	$a0, $a0, 2
-	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
 	ldx.w	$a7, $t0, $a0
 	sll.w	$a6, $a5, $a6
 	or	$a6, $a7, $a6

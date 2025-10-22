@@ -9319,8 +9319,8 @@ _ZN12btIDebugDraw15drawSpherePatchERK9btVector3S2_S2_fffffS2_f: # @_ZN12btIDebug
 .LBB47_10:                              #   in Loop: Header=BB47_6 Depth=1
 	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
 	or	$a0, $s4, $s5
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	orn	$a0, $a1, $a0
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB47_12

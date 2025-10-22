@@ -290,6 +290,24 @@ rmatmult3:                              # @rmatmult3
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	move	$a2, $a1
 	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s7, $sp, 656                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 600                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 592                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 584                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 576                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 568                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 560                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 536                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 520                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 512                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 504                   # 8-byte Folded Reload
+	ld.d	$t7, $sp, 496                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 472                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 464                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 456                   # 8-byte Folded Reload
 	b	.LBB0_5
 	.p2align	4, , 16
 .LBB0_4:                                # %._crit_edge229.split.us.us.us
@@ -331,30 +349,12 @@ rmatmult3:                              # @rmatmult3
 	st.d	$a1, $sp, 672                   # 8-byte Folded Spill
 	ld.d	$s1, $sp, 728                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 624                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 656                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 648                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 600                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 632                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 592                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 584                   # 8-byte Folded Reload
-	ld.d	$t3, $sp, 576                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 568                   # 8-byte Folded Reload
-	ld.d	$t4, $sp, 560                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 552                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 544                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 536                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 528                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 520                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 512                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 504                   # 8-byte Folded Reload
-	ld.d	$t7, $sp, 496                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 488                   # 8-byte Folded Reload
-	ld.d	$t8, $sp, 480                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 472                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 464                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 456                   # 8-byte Folded Reload
 	ori	$s3, $zero, 10
 	move	$t2, $s5
+	ld.d	$s4, $sp, 648                   # 8-byte Folded Reload
 	bgeu	$s2, $s3, .LBB0_10
 .LBB0_7:                                # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_6 Depth=2
@@ -551,8 +551,8 @@ rmatmult3:                              # @rmatmult3
 	add.d	$s2, $s2, $s6
 	ld.d	$s3, $sp, 608                   # 8-byte Folded Reload
 	alsl.d	$s2, $s2, $s3, 3
-	ld.d	$s3, $sp, 720                   # 8-byte Folded Reload
-	sltu	$s2, $s3, $s2
+	ld.d	$a1, $sp, 720                   # 8-byte Folded Reload
+	sltu	$s2, $a1, $s2
 	ld.d	$a1, $sp, 712                   # 8-byte Folded Reload
 	sltu	$s1, $s1, $a1
 	and	$s2, $s2, $s1
@@ -633,8 +633,8 @@ rmatmult3:                              # @rmatmult3
 	alsl.d	$s1, $s6, $s1, 3
 	ld.d	$s3, $sp, 424                   # 8-byte Folded Reload
 	alsl.d	$s2, $s2, $s3, 3
-	ld.d	$s3, $sp, 720                   # 8-byte Folded Reload
-	sltu	$s2, $s3, $s2
+	ld.d	$a1, $sp, 720                   # 8-byte Folded Reload
+	sltu	$s2, $a1, $s2
 	ld.d	$a1, $sp, 712                   # 8-byte Folded Reload
 	sltu	$s1, $s1, $a1
 	and	$s2, $s2, $s1
@@ -646,8 +646,8 @@ rmatmult3:                              # @rmatmult3
 	ld.d	$s2, $sp, 424                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	alsl.d	$s2, $a1, $s2, 3
-	ld.d	$s3, $sp, 720                   # 8-byte Folded Reload
-	sltu	$s2, $s3, $s2
+	ld.d	$a1, $sp, 720                   # 8-byte Folded Reload
+	sltu	$s2, $a1, $s2
 	ld.d	$a1, $sp, 712                   # 8-byte Folded Reload
 	sltu	$s1, $s1, $a1
 	and	$s2, $s2, $s1
@@ -660,8 +660,8 @@ rmatmult3:                              # @rmatmult3
 	ld.d	$s2, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	alsl.d	$s2, $a1, $s2, 3
-	ld.d	$s3, $sp, 720                   # 8-byte Folded Reload
-	sltu	$s2, $s3, $s2
+	ld.d	$a1, $sp, 720                   # 8-byte Folded Reload
+	sltu	$s2, $a1, $s2
 	ld.d	$a1, $sp, 712                   # 8-byte Folded Reload
 	sltu	$s1, $s1, $a1
 	and	$s2, $s2, $s1
@@ -674,8 +674,8 @@ rmatmult3:                              # @rmatmult3
 	ld.d	$s2, $sp, 392                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	alsl.d	$s2, $a1, $s2, 3
-	ld.d	$s3, $sp, 720                   # 8-byte Folded Reload
-	sltu	$s2, $s3, $s2
+	ld.d	$a1, $sp, 720                   # 8-byte Folded Reload
+	sltu	$s2, $a1, $s2
 	ld.d	$a1, $sp, 712                   # 8-byte Folded Reload
 	sltu	$s1, $s1, $a1
 	and	$s2, $s2, $s1
@@ -688,8 +688,8 @@ rmatmult3:                              # @rmatmult3
 	ld.d	$s2, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 704                   # 8-byte Folded Reload
 	alsl.d	$s2, $a1, $s2, 3
-	ld.d	$s3, $sp, 720                   # 8-byte Folded Reload
-	sltu	$s2, $s3, $s2
+	ld.d	$a1, $sp, 720                   # 8-byte Folded Reload
+	sltu	$s2, $a1, $s2
 	ld.d	$a1, $sp, 712                   # 8-byte Folded Reload
 	sltu	$s1, $s1, $a1
 	and	$s2, $s2, $s1

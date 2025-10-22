@@ -2814,8 +2814,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcalau12i	$a0, %pc_hi20(.L.str.114)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.114)
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	move	$s6, $zero
 	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	move	$s6, $zero
 	b	.LBB8_285
 	.p2align	4, , 16
 .LBB8_283:                              # %._crit_edge187.i
@@ -3354,6 +3354,8 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	addi.d	$s5, $a0, %pc_lo12(.L.str.121)
 	move	$s6, $zero
 	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB8_338
 	.p2align	4, , 16
 .LBB8_336:                              # %._crit_edge.i113
@@ -3388,7 +3390,6 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.w	$a0, $s7, 256
 	ori	$a1, $zero, 1
 	sltu	$a0, $a1, $a0
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
 	masknez	$a1, $s4, $a0
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
@@ -3400,7 +3401,6 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s7, 256
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB8_336
 # %bb.341:                              # %.lr.ph.i110
                                         #   in Loop: Header=BB8_338 Depth=1

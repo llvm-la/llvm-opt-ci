@@ -372,6 +372,7 @@ hypre_StructMatrixInitializeShell:      # @hypre_StructMatrixInitializeShell
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	addi.w	$s8, $zero, -1
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB4_22
 	.p2align	4, , 16
 .LBB4_20:                               #   in Loop: Header=BB4_22 Depth=1
@@ -396,7 +397,6 @@ hypre_StructMatrixInitializeShell:      # @hypre_StructMatrixInitializeShell
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ld.w	$s4, $s3, 8
 	ori	$a1, $zero, 4
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0

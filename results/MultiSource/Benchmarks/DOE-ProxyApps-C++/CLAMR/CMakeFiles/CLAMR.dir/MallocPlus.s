@@ -4526,10 +4526,10 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	jirl	$ra, $ra, 0
 .LBB15_79:                              # %.loopexit202
 .Ltmp65:                                # EH_LABEL
-	b	.LBB15_91
+	b	.LBB15_90
 .LBB15_80:                              # %.loopexit.split-lp
 .Ltmp77:                                # EH_LABEL
-	b	.LBB15_91
+	b	.LBB15_90
 .LBB15_81:                              # %_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE10_Auto_nodeD2Ev.exit.i132
 .Ltmp92:                                # EH_LABEL
 	b	.LBB15_88
@@ -4551,30 +4551,25 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 .LBB15_87:                              # %_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE10_Auto_nodeD2Ev.exit.i
 .Ltmp74:                                # EH_LABEL
 .LBB15_88:                              # %.body
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a0
 	ori	$a1, $zero, 48
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB15_92
+	b	.LBB15_91
 .LBB15_89:
 .Ltmp68:                                # EH_LABEL
 .LBB15_90:                              # %.body
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-.LBB15_91:                              # %.body
 	move	$s0, $a0
-.LBB15_92:                              # %.body
-	beqz	$fp, .LBB15_94
-# %bb.93:
+.LBB15_91:                              # %.body
+	beqz	$fp, .LBB15_93
+# %bb.92:
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB15_94:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB15_93:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	addi.d	$a0, $sp, 48
 	pcaddu18i	$ra, %call36(_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEED2Ev)
 	jirl	$ra, $ra, 0

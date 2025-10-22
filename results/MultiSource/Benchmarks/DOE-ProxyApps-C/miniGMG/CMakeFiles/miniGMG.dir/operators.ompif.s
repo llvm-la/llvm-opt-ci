@@ -7472,13 +7472,13 @@ initialize_problem:                     # @initialize_problem
 	pcalau12i	$a0, %pc_hi20(.LCPI22_3)
 	fld.d	$fs6, $a0, %pc_lo12(.LCPI22_3)
 	lu52i.d	$s3, $zero, 1023
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
-	fst.d	$fa2, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fa0, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 192                  # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 152                  # 8-byte Folded Spill
+	fst.d	$fa2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 144                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 184                  # 8-byte Folded Spill
 	fst.d	$fs3, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 184                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 176                  # 8-byte Folded Spill
 	b	.LBB22_3
 	.p2align	4, , 16
 .LBB22_2:                               # %._crit_edge322
@@ -7580,7 +7580,7 @@ initialize_problem:                     # @initialize_problem
 	vldi	$vr2, -928
 	fadd.d	$fa0, $fa0, $fa2
 	fmul.d	$fa1, $fs2, $fa0
-	fst.d	$fa1, $sp, 168                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 192                  # 8-byte Folded Spill
 	add.d	$a0, $a0, $s7
 	movgr2fr.w	$fa0, $a0
 	ld.w	$a0, $s5, 16
@@ -7613,7 +7613,7 @@ initialize_problem:                     # @initialize_problem
 	fadd.d	$fs3, $fa1, $fa4
 	fadd.d	$fs2, $fa0, $fa0
 	fadd.d	$fs7, $fa2, $fa2
-	fst.d	$fs7, $sp, 176                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 168                  # 8-byte Folded Spill
 	fadd.d	$fs0, $fa3, $fa3
 	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
 	vldi	$vr1, -928
@@ -7682,8 +7682,8 @@ initialize_problem:                     # @initialize_problem
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs5, $fa0
-	fld.d	$fs3, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fa0, $sp, 168                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 144                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 192                  # 8-byte Folded Reload
 	fmul.d	$fa0, $fa0, $fs3
 	fst.d	$fa0, $sp, 56                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(sin)
@@ -7695,10 +7695,12 @@ initialize_problem:                     # @initialize_problem
 	jirl	$ra, $ra, 0
 	fmul.d	$fs0, $fs0, $fa0
 	fmul.d	$fa0, $fs1, $fs3
-	fst.d	$fa0, $sp, 152                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 48                   # 8-byte Folded Spill
+	fmov.d	$fs1, $fs3
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
-	fmul.d	$fs0, $fs0, $fa0
+	fmul.d	$fs3, $fs0, $fa0
+	fst.d	$fs3, $sp, 192                  # 8-byte Folded Spill
 	vldi	$vr0, -844
 	fmul.d	$fs4, $fs2, $fa0
 	fst.d	$fs4, $sp, 72                   # 8-byte Folded Spill
@@ -7706,7 +7708,7 @@ initialize_problem:                     # @initialize_problem
 	fmov.d	$fs2, $fs7
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
-	fmul.d	$fs1, $fa0, $fs3
+	fmul.d	$fs1, $fa0, $fs1
 	fld.d	$fs5, $sp, 56                   # 8-byte Folded Reload
 	fmov.d	$fa0, $fs5
 	pcaddu18i	$ra, %call36(cos)
@@ -7716,13 +7718,14 @@ initialize_problem:                     # @initialize_problem
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
 	fmul.d	$fs1, $fs1, $fa0
-	fld.d	$fa0, $sp, 152                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
+	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
 	fmul.d	$fa0, $fs1, $fa0
-	fmadd.d	$fa0, $fs4, $fs0, $fa0
-	fst.d	$fa0, $sp, 168                  # 8-byte Folded Spill
-	fld.d	$fa0, $sp, 176                  # 8-byte Folded Reload
+	fmadd.d	$fa0, $fs4, $fs3, $fa0
+	fst.d	$fa0, $sp, 160                  # 8-byte Folded Spill
+	fld.d	$fa0, $sp, 168                  # 8-byte Folded Reload
 	vldi	$vr1, -844
 	fmul.d	$fs7, $fa0, $fa1
 	fst.d	$fs7, $sp, 80                   # 8-byte Folded Spill
@@ -7730,6 +7733,7 @@ initialize_problem:                     # @initialize_problem
 	fmov.d	$fs1, $fs2
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
+	fld.d	$fs3, $sp, 144                  # 8-byte Folded Reload
 	fmul.d	$fs2, $fa0, $fs3
 	fmov.d	$fs4, $fs5
 	fmov.d	$fa0, $fs5
@@ -7741,13 +7745,14 @@ initialize_problem:                     # @initialize_problem
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
 	fmul.d	$fs2, $fs2, $fa0
-	fld.d	$fs6, $sp, 152                  # 8-byte Folded Reload
-	fmov.d	$fa0, $fs6
+	fmov.d	$fs6, $fs0
+	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
 	fmul.d	$fa0, $fs2, $fa0
+	fld.d	$fs0, $sp, 192                  # 8-byte Folded Reload
 	fmadd.d	$fa0, $fs7, $fs0, $fa0
-	fst.d	$fa0, $sp, 176                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 168                  # 8-byte Folded Spill
 	fld.d	$fa0, $sp, 104                  # 8-byte Folded Reload
 	vldi	$vr1, -844
 	fmul.d	$fs7, $fa0, $fa1
@@ -7771,11 +7776,10 @@ initialize_problem:                     # @initialize_problem
 	fmadd.d	$fa0, $fs7, $fs0, $fa0
 	fst.d	$fa0, $sp, 96                   # 8-byte Folded Spill
 	fld.d	$fa2, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fa0, $sp, 168                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 160                  # 8-byte Folded Reload
 	fmul.d	$fa0, $fa2, $fa0
-	fld.d	$fa1, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 176                  # 8-byte Folded Reload
 	fmadd.d	$fs2, $fs0, $fa1, $fa0
-	fst.d	$fs0, $sp, 160                  # 8-byte Folded Spill
 	fmul.d	$fs7, $fa2, $fs3
 	fst.d	$fs1, $sp, 64                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs1
@@ -7797,7 +7801,7 @@ initialize_problem:                     # @initialize_problem
 	fmov.d	$fa0, $fs1
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 184                  # 8-byte Folded Reload
 	fmul.d	$fs7, $fa0, $fa1
 	fmov.d	$fa0, $fs4
 	pcaddu18i	$ra, %call36(sin)
@@ -7814,10 +7818,10 @@ initialize_problem:                     # @initialize_problem
 	fmul.d	$fa1, $fs1, $fa1
 	fmadd.d	$fa0, $fa1, $fa0, $fs2
 	fst.d	$fa0, $sp, 104                  # 8-byte Folded Spill
-	fld.d	$fa0, $sp, 176                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 168                  # 8-byte Folded Reload
 	fld.d	$fa1, $sp, 80                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fa1, $fa0
-	fld.d	$fa2, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 176                  # 8-byte Folded Reload
 	fmadd.d	$fs1, $fs0, $fa2, $fa0
 	fmul.d	$fs2, $fa1, $fs3
 	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
@@ -7840,7 +7844,7 @@ initialize_problem:                     # @initialize_problem
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 184                  # 8-byte Folded Reload
 	fmul.d	$fs2, $fa0, $fa1
 	fmov.d	$fa0, $fs4
 	pcaddu18i	$ra, %call36(sin)
@@ -7860,8 +7864,8 @@ initialize_problem:                     # @initialize_problem
 	fld.d	$fs1, $sp, 96                   # 8-byte Folded Reload
 	fld.d	$fa1, $sp, 88                   # 8-byte Folded Reload
 	fmul.d	$fa0, $fa1, $fs1
-	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
-	fld.d	$fa3, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 176                  # 8-byte Folded Reload
 	fmadd.d	$fs2, $fa2, $fa3, $fa0
 	fmul.d	$fs7, $fa1, $fs3
 	fmov.d	$fa0, $fs0
@@ -7883,7 +7887,7 @@ initialize_problem:                     # @initialize_problem
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 184                  # 8-byte Folded Reload
 	fmul.d	$fs3, $fa0, $fa1
 	fmov.d	$fa0, $fs4
 	pcaddu18i	$ra, %call36(sin)
@@ -7903,15 +7907,15 @@ initialize_problem:                     # @initialize_problem
 	ld.d	$a1, $a0, 16
 	fmul.d	$fa1, $fs4, $fa1
 	fmadd.d	$fa0, $fa1, $fa0, $fs2
-	fld.d	$fs2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 32                   # 8-byte Folded Reload
 	slli.d	$a3, $s1, 3
 	stx.d	$s3, $a1, $a3
 	ld.d	$a1, $a0, 24
 	fld.d	$fa1, $sp, 120                  # 8-byte Folded Reload
-	fld.d	$fa2, $sp, 176                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 168                  # 8-byte Folded Reload
 	fmul.d	$fa1, $fa1, $fa2
 	fld.d	$fa2, $sp, 128                  # 8-byte Folded Reload
-	fld.d	$fa3, $sp, 168                  # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 160                  # 8-byte Folded Reload
 	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	fld.d	$fa2, $sp, 112                  # 8-byte Folded Reload
 	fmadd.d	$fa1, $fa2, $fs1, $fa1
@@ -7921,17 +7925,17 @@ initialize_problem:                     # @initialize_problem
 	fld.d	$fa2, $sp, 104                  # 8-byte Folded Reload
 	fld.d	$fa4, $sp, 80                   # 8-byte Folded Reload
 	fadd.d	$fa2, $fa2, $fa4
-	fld.d	$fs1, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
 	fadd.d	$fa0, $fa2, $fa0
 	fnmadd.d	$fa0, $fa3, $fa0, $fa1
-	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 192                  # 8-byte Folded Reload
 	fstx.d	$fa2, $a1, $a3
 	ld.d	$a0, $a0, 8
 	ld.w	$a2, $s5, 20
 	fmul.d	$fa0, $fs1, $fa0
-	fld.d	$fa1, $sp, 144                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 152                  # 8-byte Folded Reload
 	fmadd.d	$fa0, $fa1, $fa2, $fa0
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 152                  # 8-byte Folded Reload
 	addi.w	$s8, $s8, 1
 	fstx.d	$fa0, $a0, $a3
 	blt	$s8, $a2, .LBB22_14

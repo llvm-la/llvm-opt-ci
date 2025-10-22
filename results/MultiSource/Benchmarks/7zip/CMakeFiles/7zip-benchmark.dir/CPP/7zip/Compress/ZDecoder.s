@@ -491,7 +491,6 @@ _ZN9NCompress2NZ8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStream
 	ori	$a2, $zero, 1
 	sll.w	$a2, $a2, $s2
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
 	bne	$a1, $s2, .LBB6_57
 # %bb.10:
 	beqz	$a0, .LBB6_57
@@ -503,6 +502,7 @@ _ZN9NCompress2NZ8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStream
 	beqz	$a1, .LBB6_57
 # %bb.13:
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
 .LBB6_14:
 	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 	move	$s3, $zero
@@ -838,6 +838,7 @@ _ZN9NCompress2NZ8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStream
 	move	$s3, $s4
 	beqz	$a0, .LBB6_68
 # %bb.66:
+	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a0, $s0, 24
 	ld.d	$a2, $s0, 32
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill

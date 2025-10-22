@@ -516,9 +516,9 @@ cli_html_normalise:                     # @cli_html_normalise
 	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 280                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 240                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
 	addi.d	$a1, $s5, 4
-	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $sp, 224                   # 8-byte Folded Spill
@@ -759,7 +759,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.57:                               # %html_output_flush.exit.i1228
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -769,7 +769,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_58:                               #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 60
 	stx.b	$a2, $a1, $a0
 .LBB3_59:                               #   in Loop: Header=BB3_47 Depth=2
@@ -868,7 +868,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	move	$s4, $fp
 	move	$fp, $s1
 	move	$s1, $s2
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
 	slli.w	$s3, $s3, 4
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
@@ -973,9 +972,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	beqz	$a0, .LBB3_304
 # %bb.85:                               #   in Loop: Header=BB3_47 Depth=2
 	move	$s0, $s2
-	ld.d	$s2, $sp, 240                   # 8-byte Folded Reload
-	move	$fp, $s1
-	ld.d	$s1, $sp, 280                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
@@ -992,7 +988,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.87:                               # %html_output_flush.exit.i1483
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -1002,13 +998,10 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_88:                               #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s5, $a1, $a0
 .LBB3_89:                               #   in Loop: Header=BB3_47 Depth=2
-	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
-	st.d	$s1, $sp, 280                   # 8-byte Folded Spill
-	move	$s1, $fp
-	st.d	$s2, $sp, 240                   # 8-byte Folded Spill
+	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	move	$s2, $s0
 	beqz	$s6, .LBB3_93
 # %bb.90:                               #   in Loop: Header=BB3_47 Depth=2
@@ -1031,7 +1024,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	stx.b	$s5, $a1, $a0
 .LBB3_93:                               # %html_output_c.exit1484
                                         #   in Loop: Header=BB3_47 Depth=2
-	move	$fp, $s3
 	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
 	beqz	$a4, .LBB3_97
 # %bb.94:                               #   in Loop: Header=BB3_47 Depth=2
@@ -1165,7 +1157,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.116:                              # %html_output_flush.exit.i1286
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -1175,7 +1167,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_117:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 61
 	stx.b	$a2, $a1, $a0
 .LBB3_118:                              #   in Loop: Header=BB3_47 Depth=2
@@ -1263,7 +1255,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	bne	$s5, $a0, .LBB3_264
 # %bb.132:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a0, $sp, 311
-	ld.d	$s0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
 	stx.b	$zero, $s0, $a0
 	addi.d	$a0, $sp, 1336
 	addi.d	$a1, $sp, 311
@@ -1309,7 +1301,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.138:                              # %html_output_flush.exit.i1427
                                         #   in Loop: Header=BB3_136 Depth=3
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a2, 2
@@ -1317,7 +1309,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_139:                              #   in Loop: Header=BB3_136 Depth=3
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s2, $a1, $a0
 .LBB3_140:                              #   in Loop: Header=BB3_136 Depth=3
 	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
@@ -1384,7 +1376,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.154:                              # %html_output_flush.exit.i1266
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -1394,7 +1386,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_155:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 61
 	stx.b	$a2, $a1, $a0
 .LBB3_156:                              #   in Loop: Header=BB3_47 Depth=2
@@ -1439,7 +1431,6 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_162:                              #   in Loop: Header=BB3_47 Depth=2
 	move	$s6, $s3
 	move	$s4, $s2
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $sp, 264                   # 8-byte Folded Reload
@@ -1456,7 +1447,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	ld.w	$a1, $s3, 0
 	move	$s1, $a0
 	move	$a0, $a1
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -1467,7 +1458,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_165:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a2, $a1, 1
 	stptr.w	$a2, $s3, 8196
-	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s0, $a2, $a1
 	ld.bu	$s5, $s8, 0
 	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
@@ -1492,7 +1483,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.169:                              # %html_output_flush.exit.i
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -1502,7 +1493,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_170:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 32
 	stx.b	$a2, $a1, $a0
 .LBB3_171:                              #   in Loop: Header=BB3_47 Depth=2
@@ -1546,7 +1537,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.179:                              # %html_output_flush.exit.i1242
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -1556,7 +1547,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_180:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 33
 	stx.b	$a2, $a1, $a0
 .LBB3_181:                              # %html_output_c.exit1243
@@ -1660,7 +1651,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.203:                              # %html_output_flush.exit.i1291
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -1670,7 +1661,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_204:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a1, $a0
 .LBB3_205:                              #   in Loop: Header=BB3_47 Depth=2
@@ -1749,12 +1740,10 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_698
 .LBB3_217:                              #   in Loop: Header=BB3_47 Depth=2
 	st.d	$s2, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
-	ori	$a0, $zero, 59
 	beqz	$s3, .LBB3_315
 # %bb.218:                              #   in Loop: Header=BB3_47 Depth=2
+	ori	$a0, $zero, 59
 	bne	$s5, $a0, .LBB3_327
 	b	.LBB3_319
 .LBB3_219:                              #   in Loop: Header=BB3_47 Depth=2
@@ -1766,7 +1755,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	bltz	$a0, .LBB3_370
 # %bb.221:                              #   in Loop: Header=BB3_47 Depth=2
 	move	$s4, $s3
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, 0
 	slli.d	$a0, $a0, 2
@@ -1780,7 +1768,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	slli.d	$a1, $s5, 2
 	ldx.w	$s3, $a0, $a1
 	ori	$a0, $zero, 255
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
 	bne	$s3, $a0, .LBB3_394
 # %bb.222:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.bu	$a0, $s8, 1
@@ -1834,9 +1821,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	move	$s5, $s3
 	move	$fp, $s1
 	move	$s1, $s2
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
 	ori	$a0, $zero, 2
 	beqz	$s4, .LBB3_545
 # %bb.231:                              #   in Loop: Header=BB3_47 Depth=2
@@ -2014,7 +1999,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.258:                              # %html_output_flush.exit.i1422
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -2024,7 +2009,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_259:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 38
 	stx.b	$a2, $a1, $a0
 .LBB3_260:                              #   in Loop: Header=BB3_47 Depth=2
@@ -2074,14 +2059,14 @@ cli_html_normalise:                     # @cli_html_normalise
 	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
 	lu12i.w	$a5, 2
 	ori	$a0, $zero, 1023
-	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	bltu	$a0, $a1, .LBB3_615
 .LBB3_268:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a0, $sp, 311
 	stx.b	$s5, $a1, $a0
 	addi.d	$a0, $a1, 1
 	addi.d	$s8, $s8, 1
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 .LBB3_269:                              #   in Loop: Header=BB3_47 Depth=2
 	move	$s6, $s7
 	ori	$s7, $zero, 4
@@ -2107,7 +2092,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.274:                              # %html_output_flush.exit.i1271
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -2116,7 +2101,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_275:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 62
 	stx.b	$a2, $a1, $a0
 .LBB3_276:                              #   in Loop: Header=BB3_47 Depth=2
@@ -2190,7 +2175,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.289:                              # %html_output_flush.exit.i1250
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s4, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -2200,7 +2185,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_290:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s4, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 62
 	stx.b	$a2, $a1, $a0
 .LBB3_291:                              #   in Loop: Header=BB3_47 Depth=2
@@ -2342,7 +2327,6 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_308:                              # %html_output_c.exit1340
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	move	$s3, $s6
 	move	$s2, $s4
@@ -2390,6 +2374,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	addi.d	$s8, $s8, 1
 	b	.LBB3_46
 .LBB3_315:                              #   in Loop: Header=BB3_47 Depth=2
+	ori	$a0, $zero, 59
 	beq	$s5, $a0, .LBB3_319
 # %bb.316:                              #   in Loop: Header=BB3_47 Depth=2
 	ori	$a0, $zero, 120
@@ -2779,7 +2764,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	move	$s6, $s7
 	or	$s7, $a1, $a0
 	addi.d	$s8, $s8, 1
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
 	move	$s2, $s1
 	move	$s1, $fp
 	move	$fp, $s4
@@ -2824,7 +2808,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.379:                              # %html_output_flush.exit.i1258
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -2833,7 +2817,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_380:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s2, $a1, $a0
 .LBB3_381:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
@@ -2925,7 +2909,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.396:                              # %html_output_flush.exit.i1536
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -2935,7 +2919,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_397:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s3, $a1, $a0
 .LBB3_398:                              #   in Loop: Header=BB3_47 Depth=2
 	beqz	$s6, .LBB3_402
@@ -3059,8 +3043,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_699
 .LBB3_419:                              #   in Loop: Header=BB3_47 Depth=2
 	st.d	$s2, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
 	ld.w	$s0, $sp, 1512
 	ori	$s6, $zero, 1
 	blez	$s0, .LBB3_650
@@ -3093,7 +3075,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.425:                              # %html_output_flush.exit.i1432
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3102,7 +3084,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_426:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 38
 	stx.b	$a2, $a1, $a0
 .LBB3_427:                              #   in Loop: Header=BB3_47 Depth=2
@@ -3175,7 +3157,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.440:                              # %html_output_flush.exit.i1442
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3185,7 +3167,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_441:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 59
 	stx.b	$a2, $a1, $a0
 .LBB3_442:                              #   in Loop: Header=BB3_47 Depth=2
@@ -3211,7 +3193,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	stx.b	$a2, $a1, $a0
 .LBB3_446:                              # %html_output_c.exit1443
                                         #   in Loop: Header=BB3_47 Depth=2
-	st.d	$zero, $sp, 240                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
 	move	$s6, $zero
 	addi.d	$s8, $s8, 1
 	b	.LBB3_46
@@ -3239,7 +3221,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.452:                              # %html_output_flush.exit.i1306
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3248,7 +3230,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_453:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a1, $a0
 .LBB3_454:                              #   in Loop: Header=BB3_47 Depth=2
@@ -3318,7 +3300,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.466:                              # %html_output_flush.exit.i1321
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3327,7 +3309,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_467:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a1, $a0
 .LBB3_468:                              #   in Loop: Header=BB3_47 Depth=2
@@ -3395,8 +3377,6 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.478:                              #   in Loop: Header=BB3_47 Depth=2
 	move	$s0, $s3
 	move	$s4, $s2
-	move	$s2, $s1
-	ld.d	$s1, $sp, 280                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a5, 2
@@ -3413,7 +3393,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.480:                              # %html_output_flush.exit.i1336
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$fp, $a2
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
@@ -3425,12 +3405,10 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_481:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$a2, $a1, $a0
 .LBB3_482:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
-	st.d	$s1, $sp, 280                   # 8-byte Folded Spill
-	move	$s1, $s2
 	move	$s2, $s4
 	move	$s3, $s0
 	beqz	$s6, .LBB3_486
@@ -3548,7 +3526,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.505:                              # %html_output_flush.exit.i1276
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3557,7 +3535,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_506:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 32
 	stx.b	$a2, $a1, $a0
 .LBB3_507:                              #   in Loop: Header=BB3_47 Depth=2
@@ -3600,7 +3578,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.513:                              # %html_output_flush.exit.i1281
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3610,7 +3588,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_514:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s2, $a1, $a0
 .LBB3_515:                              #   in Loop: Header=BB3_47 Depth=2
 	beqz	$s6, .LBB3_519
@@ -3657,9 +3635,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_641
 .LBB3_522:                              #   in Loop: Header=BB3_47 Depth=2
 	move	$s6, $s2
-	ld.d	$s2, $sp, 240                   # 8-byte Folded Reload
-	move	$fp, $s1
-	ld.d	$s1, $sp, 280                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
@@ -3676,7 +3651,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.524:                              # %html_output_flush.exit.i1236
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3685,14 +3660,11 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_525:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s0, $a1, $a0
 .LBB3_526:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
-	st.d	$s1, $sp, 280                   # 8-byte Folded Spill
-	move	$s1, $fp
-	st.d	$s2, $sp, 240                   # 8-byte Folded Spill
+	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	move	$s2, $s6
 	beqz	$s5, .LBB3_530
 # %bb.527:                              #   in Loop: Header=BB3_47 Depth=2
@@ -3715,7 +3687,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	stx.b	$s0, $a1, $a0
 .LBB3_530:                              # %html_output_c.exit1237
                                         #   in Loop: Header=BB3_47 Depth=2
-	move	$fp, $s3
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
 	beqz	$a0, .LBB3_535
@@ -3834,7 +3805,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.554:                              # %html_output_flush.exit.i1326
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3844,7 +3815,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_555:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a1, $a0
 .LBB3_556:                              #   in Loop: Header=BB3_47 Depth=2
@@ -3914,7 +3885,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.568:                              # %html_output_flush.exit.i1478
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3924,7 +3895,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_569:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s3, $a1, $a0
 .LBB3_570:                              #   in Loop: Header=BB3_47 Depth=2
 	beqz	$s6, .LBB3_713
@@ -3974,7 +3945,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.577:                              # %html_output_flush.exit.i1473
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s4, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -3984,7 +3955,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_578:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s4, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s0, $a1, $a0
 .LBB3_579:                              #   in Loop: Header=BB3_47 Depth=2
 	beqz	$s6, .LBB3_836
@@ -4032,7 +4003,7 @@ cli_html_normalise:                     # @cli_html_normalise
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
 	move	$a2, $zero
@@ -4091,10 +4062,10 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_596
 	.p2align	4, , 16
 .LBB3_595:                              #   in Loop: Header=BB3_596 Depth=3
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, -1
 	addi.d	$s0, $s0, 1
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	beqz	$a0, .LBB3_435
 .LBB3_596:                              #   Parent Loop BB3_28 Depth=1
                                         #     Parent Loop BB3_47 Depth=2
@@ -4110,7 +4081,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.598:                              # %html_output_flush.exit.i1437
                                         #   in Loop: Header=BB3_596 Depth=3
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4120,7 +4091,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_599:                              #   in Loop: Header=BB3_596 Depth=3
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s2, $a1, $a0
 .LBB3_600:                              #   in Loop: Header=BB3_596 Depth=3
 	beqz	$s6, .LBB3_604
@@ -4210,7 +4181,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
 	lu12i.w	$a5, 2
 	ori	$a0, $zero, 45
-	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	bne	$s5, $a0, .LBB3_615
 # %bb.614:                              #   in Loop: Header=BB3_47 Depth=2
 	ori	$a0, $zero, 1024
@@ -4237,7 +4208,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.620:                              # %html_output_flush.exit.i1447
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4247,7 +4218,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_621:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 38
 	stx.b	$a2, $a1, $a0
 .LBB3_622:                              #   in Loop: Header=BB3_47 Depth=2
@@ -4276,7 +4247,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	stx.b	$a2, $a1, $a0
 .LBB3_626:                              # %html_output_c.exit1448
                                         #   in Loop: Header=BB3_47 Depth=2
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	beqz	$a0, .LBB3_642
 # %bb.627:                              # %.lr.ph1788
                                         #   in Loop: Header=BB3_47 Depth=2
@@ -4290,10 +4261,10 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_629
 	.p2align	4, , 16
 .LBB3_628:                              #   in Loop: Header=BB3_629 Depth=3
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, -1
 	addi.d	$s0, $s0, 1
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	beqz	$a0, .LBB3_640
 .LBB3_629:                              #   Parent Loop BB3_28 Depth=1
                                         #     Parent Loop BB3_47 Depth=2
@@ -4309,7 +4280,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.631:                              # %html_output_flush.exit.i1452
                                         #   in Loop: Header=BB3_629 Depth=3
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4319,7 +4290,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_632:                              #   in Loop: Header=BB3_629 Depth=3
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s5, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s2, $a1, $a0
 .LBB3_633:                              #   in Loop: Header=BB3_629 Depth=3
 	beqz	$s6, .LBB3_637
@@ -4357,7 +4328,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	b	.LBB3_628
 .LBB3_640:                              #   in Loop: Header=BB3_47 Depth=2
-	st.d	$zero, $sp, 240                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
 	move	$s6, $zero
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ori	$s0, $zero, 10
@@ -4369,7 +4340,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	move	$s3, $a0
 	b	.LBB3_46
 .LBB3_642:                              #   in Loop: Header=BB3_47 Depth=2
-	st.d	$zero, $sp, 240                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
 	move	$s6, $zero
 	b	.LBB3_306
 .LBB3_643:                              #   in Loop: Header=BB3_47 Depth=2
@@ -4425,7 +4396,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.653:                              # %html_output_flush.exit.i1301
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4435,7 +4406,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_654:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a1, $a0
 .LBB3_655:                              #   in Loop: Header=BB3_47 Depth=2
@@ -4488,7 +4459,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.664:                              # %html_output_flush.exit.i1316
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4498,7 +4469,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_665:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a1, $a0
 .LBB3_666:                              #   in Loop: Header=BB3_47 Depth=2
@@ -4542,7 +4513,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.673:                              # %html_output_flush.exit.i1296
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4552,7 +4523,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_674:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s0, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a1, $a0
 .LBB3_675:                              #   in Loop: Header=BB3_47 Depth=2
@@ -4640,7 +4611,6 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.690:                              # %.lr.ph.i1364
                                         #   in Loop: Header=BB3_47 Depth=2
 	move	$s7, $s2
-	ld.d	$s5, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1520
 	move	$s1, $zero
 	slli.d	$s3, $s0, 3
@@ -4713,9 +4683,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_442
 .LBB3_702:                              #   in Loop: Header=BB3_47 Depth=2
 	move	$s7, $s2
-	ld.d	$s2, $sp, 240                   # 8-byte Folded Reload
-	move	$fp, $s1
-	ld.d	$s1, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$s4, $sp, 1544
@@ -4728,7 +4695,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	ld.w	$a1, $s3, 0
 	move	$s0, $a0
 	move	$a0, $a1
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4740,13 +4707,10 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_705:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a2, $a1, 1
 	stptr.w	$a2, $s3, 8196
-	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s5, $a2, $a1
 .LBB3_706:                              #   in Loop: Header=BB3_47 Depth=2
-	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
-	st.d	$s1, $sp, 280                   # 8-byte Folded Spill
-	move	$s1, $fp
-	st.d	$s2, $sp, 240                   # 8-byte Folded Spill
+	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	move	$s2, $s7
 	beqz	$s6, .LBB3_710
 # %bb.707:                              #   in Loop: Header=BB3_47 Depth=2
@@ -4793,7 +4757,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	stx.b	$a0, $a6, $s4
 	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
 .LBB3_712:                              #   in Loop: Header=BB3_47 Depth=2
-	move	$fp, $s3
 	addi.d	$s8, $s8, 1
 	ori	$s4, $zero, 5
 	ori	$s7, $zero, 9
@@ -4842,7 +4805,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	blez	$a2, .LBB3_723
 # %bb.722:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s0, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
 	stptr.w	$zero, $s0, 8196
@@ -4864,7 +4827,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.726:                              # %html_output_flush.exit.i1504
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4874,7 +4837,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_727:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 13
 	stx.b	$a2, $a1, $a0
 .LBB3_728:                              #   in Loop: Header=BB3_47 Depth=2
@@ -4934,7 +4897,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.738:                              # %html_output_flush.exit.i1528
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -4944,7 +4907,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_739:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 62
 	stx.b	$a2, $a1, $a0
 .LBB3_740:                              #   in Loop: Header=BB3_47 Depth=2
@@ -5004,7 +4967,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.750:                              # %html_output_flush.exit.i1496
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -5014,7 +4977,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_751:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 60
 	stx.b	$a2, $a1, $a0
 .LBB3_752:                              #   in Loop: Header=BB3_47 Depth=2
@@ -5074,7 +5037,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.762:                              # %html_output_flush.exit.i1512
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -5084,7 +5047,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_763:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ori	$a2, $zero, 64
 	stx.b	$a2, $a1, $a0
 .LBB3_764:                              #   in Loop: Header=BB3_47 Depth=2
@@ -5145,7 +5108,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.774:                              # %html_output_flush.exit.i1520
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a0, $s3, 0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	move	$a2, $a5
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
@@ -5155,7 +5118,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_775:                              #   in Loop: Header=BB3_47 Depth=2
 	addi.d	$a1, $a0, 1
 	stptr.w	$a1, $s3, 8196
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	stx.b	$s5, $a1, $a0
 .LBB3_776:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
@@ -5299,7 +5262,6 @@ cli_html_normalise:                     # @cli_html_normalise
                                         #   in Loop: Header=BB3_47 Depth=2
 	move	$s1, $zero
 	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
-	st.d	$s5, $sp, 280                   # 8-byte Folded Spill
 .LBB3_802:                              #   Parent Loop BB3_28 Depth=1
                                         #     Parent Loop BB3_47 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -5443,7 +5405,7 @@ cli_html_normalise:                     # @cli_html_normalise
 .LBB3_823:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
 .LBB3_824:                              #   in Loop: Header=BB3_47 Depth=2
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a2
 	addi.d	$a1, $sp, 296
 	move	$a2, $s4
@@ -5562,14 +5524,13 @@ cli_html_normalise:                     # @cli_html_normalise
 	pcaddu18i	$ra, %call36(html_tag_arg_add)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 4
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	beqz	$a0, .LBB3_845
 # %bb.843:                              #   in Loop: Header=BB3_47 Depth=2
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beqz	$a0, .LBB3_845
+	beqz	$a2, .LBB3_845
 # %bb.844:                              #   in Loop: Header=BB3_47 Depth=2
 	ld.w	$a1, $fp, 0
 	move	$a0, $fp
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(html_tag_set_inahref)
 	jirl	$ra, $ra, 0
 .LBB3_845:                              #   in Loop: Header=BB3_47 Depth=2
@@ -5783,6 +5744,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	lu12i.w	$a5, 2
 	ori	$s0, $zero, 10
+	ld.d	$s3, $sp, 280                   # 8-byte Folded Reload
 	beqz	$a3, .LBB3_888
 # %bb.878:                              #   in Loop: Header=BB3_47 Depth=2
 	ldptr.w	$a0, $a3, 8196
@@ -5992,6 +5954,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	ori	$s0, $zero, 10
 	move	$s1, $s3
+	ld.d	$s3, $sp, 280                   # 8-byte Folded Reload
 	beqz	$a0, .LBB3_892
 # %bb.905:                              #   in Loop: Header=BB3_893 Depth=3
 	ldptr.w	$a2, $a3, 8196
@@ -6072,6 +6035,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	ldx.w	$s1, $a3, $s0
 	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
 	ori	$s0, $zero, 10
+	ld.d	$s3, $sp, 280                   # 8-byte Folded Reload
 	beq	$s1, $a5, .LBB3_890
 	b	.LBB3_891
 .LBB3_913:                              #   in Loop: Header=BB3_893 Depth=3
@@ -6083,6 +6047,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_890
 .LBB3_914:                              # %._crit_edge59.i
                                         #   in Loop: Header=BB3_47 Depth=2
+	st.d	$s3, $sp, 280                   # 8-byte Folded Spill
 	beqz	$a3, .LBB3_918
 # %bb.915:                              #   in Loop: Header=BB3_47 Depth=2
 	ldptr.w	$a0, $a3, 8196
@@ -6135,15 +6100,16 @@ cli_html_normalise:                     # @cli_html_normalise
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	move	$s2, $s5
-	beqz	$s0, .LBB3_928
+	beqz	$a0, .LBB3_928
 # %bb.926:                              # %html_tag_arg_value.exit1390
                                         #   in Loop: Header=BB3_47 Depth=2
 	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
 	beqz	$a2, .LBB3_928
 # %bb.927:                              #   in Loop: Header=BB3_47 Depth=2
 	move	$a0, $s7
+	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
 	move	$a1, $s0
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(html_tag_contents_append)
@@ -6152,9 +6118,8 @@ cli_html_normalise:                     # @cli_html_normalise
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(html_tag_contents_done)
 	jirl	$ra, $ra, 0
-	move	$s0, $zero
+	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
 .LBB3_928:                              #   in Loop: Header=BB3_47 Depth=2
-	st.d	$s0, $sp, 192                   # 8-byte Folded Spill
 	beqz	$s1, .LBB3_930
 # %bb.929:                              #   in Loop: Header=BB3_47 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
@@ -6260,13 +6225,13 @@ cli_html_normalise:                     # @cli_html_normalise
 	move	$s7, $zero
 	b	.LBB3_1006
 .LBB3_940:
-	st.d	$zero, $sp, 240                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
 .LBB3_941:                              # %._crit_edge1868
 	move	$s4, $s3
 	move	$s3, $fp
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 232                   # 8-byte Folded Reload
 	ori	$s7, $zero, 1
 	beqz	$s1, .LBB3_965
 # %bb.942:
@@ -6418,18 +6383,17 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_956
 .LBB3_965:
 	ld.d	$s6, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	move	$fp, $s3
 	move	$s3, $s4
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	beqz	$a0, .LBB3_967
 .LBB3_966:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB3_967:
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	beqz	$a0, .LBB3_969
+	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	beqz	$a1, .LBB3_969
 # %bb.968:
-	move	$a1, $a0
 	ld.d	$a0, $fp, 24
 	slli.d	$a1, $a1, 3
 	addi.d	$s0, $a1, -8
@@ -6504,6 +6468,7 @@ cli_html_normalise:                     # @cli_html_normalise
 # %bb.980:                              # %.lr.ph1873.split.us.split.preheader
 	move	$s2, $zero
 	lu12i.w	$s6, 2
+	ld.d	$s7, $sp, 272                   # 8-byte Folded Reload
 	b	.LBB3_982
 	.p2align	4, , 16
 .LBB3_981:                              # %html_output_c.exit1605.us
@@ -6522,7 +6487,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	ldx.bu	$a0, $s0, $s2
 	ld.d	$a1, $s4, 0
 	slli.d	$a2, $a0, 2
-	ld.d	$s7, $sp, 272                   # 8-byte Folded Reload
 	ldptr.w	$a0, $s7, 8196
 	ldx.w	$s1, $a1, $a2
 	bne	$a0, $s6, .LBB3_981
@@ -6558,6 +6522,7 @@ cli_html_normalise:                     # @cli_html_normalise
 	b	.LBB3_967
 .LBB3_986:                              # %.lr.ph1873.split.split.us.preheader
 	lu12i.w	$s5, 2
+	ld.d	$s3, $sp, 264                   # 8-byte Folded Reload
 	b	.LBB3_988
 	.p2align	4, , 16
 .LBB3_987:                              # %html_output_c.exit1605.us1876
@@ -6576,7 +6541,6 @@ cli_html_normalise:                     # @cli_html_normalise
 	ldx.bu	$a0, $s0, $s2
 	ld.d	$a1, $s4, 0
 	slli.d	$a2, $a0, 2
-	ld.d	$s3, $sp, 264                   # 8-byte Folded Reload
 	ldptr.w	$a0, $s3, 8196
 	ldx.w	$s1, $a1, $a2
 	bne	$a0, $s5, .LBB3_987
@@ -6598,8 +6562,8 @@ cli_html_normalise:                     # @cli_html_normalise
 	ld.d	$s6, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 200                   # 8-byte Folded Reload
-	ori	$s7, $zero, 1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ori	$s7, $zero, 1
 	bnez	$a0, .LBB3_966
 	b	.LBB3_967
 .LBB3_992:
@@ -6714,10 +6678,10 @@ cli_html_normalise:                     # @cli_html_normalise
 	move	$s7, $zero
 .LBB3_1009:                             # %.loopexit
 	ld.d	$s8, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	move	$s1, $fp
 	move	$fp, $s3
 	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	bnez	$a0, .LBB3_966
 	b	.LBB3_967
 .LBB3_1010:

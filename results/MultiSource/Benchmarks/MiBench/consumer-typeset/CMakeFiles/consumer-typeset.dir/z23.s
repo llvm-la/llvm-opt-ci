@@ -2572,6 +2572,7 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	beq	$s3, $fp, .LBB0_372
 # %bb.365:                              # %.preheader2158.preheader
 	addi.w	$s7, $zero, -91
+	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
 	b	.LBB0_367
 .LBB0_366:                              #   in Loop: Header=BB0_367 Depth=1
 	ld.d	$s3, $s3, 8
@@ -2603,7 +2604,6 @@ FixAndPrintObject:                      # @FixAndPrintObject
 	st.d	$s4, $sp, 0
 	move	$a0, $s2
 	move	$a2, $s1
-	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
 	move	$a4, $s0
 	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FixAndPrintObject)

@@ -436,6 +436,7 @@ Aalign:                                 # @Aalign
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(penalty)
 	ld.d	$s3, $a0, %got_pc_lo12(penalty)
+	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB0_43
 	.p2align	4, , 16
 .LBB0_42:                               # %._crit_edge197
@@ -475,7 +476,6 @@ Aalign:                                 # @Aalign
 	fst.s	$fa0, $s6, 0
 	move	$a0, $s8
 	move	$a3, $s5
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
 	move	$a4, $s0
 	move	$a7, $zero
 	pcaddu18i	$ra, %call36(match_calc)

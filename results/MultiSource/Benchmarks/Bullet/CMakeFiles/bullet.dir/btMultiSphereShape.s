@@ -471,7 +471,6 @@ _ZNK18btMultiSphereShape37localGetSupportingVertexWithoutMarginERK9btVector3: # 
 	fld.s	$fa2, $fp, 32
 	fld.s	$fa3, $s2, 0
 	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
 	fmul.s	$fa0, $fa4, $fa0
 	fmul.s	$fa1, $fs0, $fa1
 	fmul.s	$fa2, $fs1, $fa2

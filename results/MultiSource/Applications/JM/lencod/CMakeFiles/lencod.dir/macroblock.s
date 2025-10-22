@@ -3754,23 +3754,23 @@ LumaPrediction4x4Bi:                    # @LumaPrediction4x4Bi
 	.type	LumaResidualCoding8x8,@function
 LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 # %bb.0:
-	addi.d	$sp, $sp, -320
-	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 232                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -304
+	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 216                   # 8-byte Folded Spill
 	move	$t3, $a3
 	move	$t4, $a2
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	st.w	$zero, $sp, 228
+	st.w	$zero, $sp, 212
 	slli.d	$t2, $a2, 2
 	bstrpick.d	$a0, $t2, 31, 3
 	slli.w	$t0, $a0, 3
@@ -3780,13 +3780,13 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	pcalau12i	$a1, %got_pc_hi20(img)
 	ld.d	$s2, $a1, %got_pc_lo12(img)
 	ld.d	$a1, $s2, 0
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	bnez	$a2, .LBB8_2
 # %bb.1:
 	ld.w	$a2, $a1, 20
 	addi.d	$a2, $a2, -1
 	sltu	$a2, $zero, $a2
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 .LBB8_2:
 	ld.w	$a2, $a1, 12
 	ldptr.d	$a1, $a1, 14224
@@ -3817,9 +3817,9 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	st.d	$t2, $sp, 32                    # 8-byte Folded Spill
 	ori	$a0, $t2, 4
 	addi.w	$a0, $a0, 0
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	addi.d	$a0, $a4, 4
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	slli.d	$a0, $t0, 5
 	lu12i.w	$a2, 3
 	pcalau12i	$s7, %pc_hi20(imgY_org)
@@ -3828,53 +3828,53 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a3, %pc_hi20(sp2_frame_indicator)
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 160                   # 8-byte Folded Spill
-	vst	$vr2, $sp, 208                  # 16-byte Folded Spill
+	st.d	$a4, $sp, 144                   # 8-byte Folded Spill
+	vst	$vr2, $sp, 192                  # 16-byte Folded Spill
 	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$t1, $sp, 200                   # 8-byte Folded Spill
-	st.d	$t3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 184                   # 8-byte Folded Spill
+	st.d	$t1, $sp, 184                   # 8-byte Folded Spill
+	st.d	$t3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 168                   # 8-byte Folded Spill
 	beqz	$a1, .LBB8_19
 # %bb.3:                                # %.preheader160.preheader
-	st.d	$t4, $sp, 96                    # 8-byte Folded Spill
+	st.d	$t4, $sp, 8                     # 8-byte Folded Spill
 	bstrins.d	$a0, $t4, 4, 4
 	ori	$a1, $a2, 440
 	add.d	$fp, $a0, $a1
 	ori	$s3, $a2, 1056
 	move	$s1, $t0
 	move	$a0, $t0
-	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a7, $sp, 104                   # 8-byte Folded Spill
-	st.d	$a6, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 152                   # 8-byte Folded Spill
+	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB8_4:                                # %.preheader160
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $s2, 0
 	ld.w	$a2, $a1, 196
 	ld.w	$a1, $a1, 192
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	add.d	$s7, $a0, $a2
 	add.d	$s6, $a4, $a1
 	move	$a0, $a4
 	move	$a1, $s1
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
 	move	$a2, $s5
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
 	move	$a3, $s4
-	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
 	move	$a4, $s8
-	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
 	move	$a6, $s0
 	pcaddu18i	$ra, %call36(LumaPrediction4x4)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(imgY_org)
 	slli.d	$a1, $s7, 3
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	ldx.d	$a1, $a0, $a1
 	ld.d	$a2, $s2, 0
 	alsl.d	$a0, $s7, $a0, 3
@@ -3884,11 +3884,11 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a5, $a0, 8
 	ld.d	$a6, $a4, -104
 	vinsgr2vr.d	$vr0, $a1, 0
-	vld	$vr1, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr0, $vr1, $vr0
 	ldx.d	$a1, $a5, $a3
 	vinsgr2vr.d	$vr1, $a6, 0
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr1, $vr2, $vr1
 	vsub.w	$vr0, $vr0, $vr1
 	vinsgr2vr.d	$vr1, $a1, 0
@@ -3898,50 +3898,50 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	vst	$vr0, $a2, -208
 	vinsgr2vr.d	$vr0, $a1, 0
 	ldx.d	$a1, $a5, $a3
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr0, $vr2, $vr0
 	vsub.w	$vr0, $vr1, $vr0
 	vinsgr2vr.d	$vr1, $a1, 0
 	ld.d	$a1, $a4, -40
 	vst	$vr0, $a2, -144
 	ld.d	$a0, $a0, 24
-	vld	$vr0, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr0, $vr0, $vr1
 	vinsgr2vr.d	$vr1, $a1, 0
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr1, $vr2, $vr1
 	ldx.d	$a0, $a0, $a3
 	vsub.w	$vr0, $vr0, $vr1
 	ld.d	$a1, $a4, -8
 	vst	$vr0, $a2, -80
 	vinsgr2vr.d	$vr0, $a0, 0
-	vld	$vr1, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr0, $vr1, $vr0
 	vinsgr2vr.d	$vr1, $a1, 0
 	ld.d	$a0, $s2, 0
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr1, $vr2, $vr1
 	vsub.w	$vr0, $vr0, $vr1
 	vst	$vr0, $a2, -16
 	ld.w	$a1, $a0, 192
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	add.d	$s6, $a0, $a1
 	move	$a1, $s1
 	move	$a2, $s5
 	move	$a3, $s4
 	move	$a4, $s8
-	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 160                   # 8-byte Folded Reload
 	move	$a6, $s0
 	pcaddu18i	$ra, %call36(LumaPrediction4x4)
 	jirl	$ra, $ra, 0
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, %pc_lo12(imgY_org)
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ldx.d	$a2, $a1, $a0
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $s2, 0
 	alsl.d	$a1, $s7, $a1, 3
 	slli.d	$a3, $s6, 1
@@ -3971,7 +3971,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a1, $a1, 24
 	vilvl.h	$vr0, $vr2, $vr0
 	vinsgr2vr.d	$vr1, $a4, 0
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
 	vilvl.h	$vr1, $vr2, $vr1
 	ldx.d	$a1, $a1, $a3
 	vsub.w	$vr0, $vr0, $vr1
@@ -3983,19 +3983,19 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	vilvl.h	$vr1, $vr2, $vr1
 	vsub.w	$vr0, $vr0, $vr1
 	vstx	$vr0, $a0, $s3
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	addi.d	$a0, $a1, 4
 	addi.d	$s3, $s3, 256
 	addi.w	$s1, $s1, 4
 	addi.d	$fp, $fp, 128
 	blt	$a1, $s5, .LBB8_4
 # %bb.5:
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $s2, 0
 	ldptr.w	$a1, $a0, 15256
 	addi.d	$a1, $a1, -1
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	or	$a1, $a1, $a2
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB8_9
@@ -4004,8 +4004,8 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ori	$a1, $zero, 3
 	beq	$a0, $a1, .LBB8_9
 # %bb.7:
-	addi.d	$a1, $sp, 228
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	addi.d	$a1, $sp, 212
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(dct_luma8x8)
 	jirl	$ra, $ra, 0
@@ -4031,12 +4031,12 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ldptr.w	$a1, $a0, 15256
 	addi.d	$a1, $a1, -1
 	sltui	$a1, $a1, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	or	$a1, $a1, $a2
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB8_40
 # %bb.10:                               # %.critedge
-	ld.w	$a1, $sp, 228
+	ld.w	$a1, $sp, 212
 	ori	$a2, $zero, 4
 	blt	$a2, $a1, .LBB8_40
 # %bb.11:
@@ -4063,7 +4063,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	sub.d	$a1, $a1, $a4
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	slli.d	$fp, $a4, 3
-	st.w	$zero, $sp, 228
+	st.w	$zero, $sp, 212
 	and	$a1, $a2, $a1
 	st.w	$a1, $a3, 0
 	slli.d	$a1, $a4, 1
@@ -4244,13 +4244,13 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ori	$a1, $a2, 440
 	add.d	$s3, $a0, $a1
 	ori	$a0, $a2, 848
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	ori	$a0, $a2, 912
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	ori	$a0, $a2, 976
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	ori	$a0, $a2, 1040
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	move	$s1, $t0
 	move	$a3, $t1
 	move	$a2, $t3
@@ -4265,10 +4265,10 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	addi.w	$s1, $s1, 4
 	move	$a7, $s6
 	move	$a6, $s0
-	ld.d	$a5, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
 	move	$s7, $s8
 	bge	$fp, $s5, .LBB8_9
 .LBB8_22:                               # %.preheader159
@@ -4300,7 +4300,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a5, $a4, -104
 	vinsgr2vr.d	$vr0, $a2, 0
 	ld.d	$a2, $a1, 8
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr0, $vr2, $vr0
 	vinsgr2vr.d	$vr1, $a5, 0
 	vilvl.h	$vr1, $vr2, $vr1
@@ -4309,7 +4309,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a5, $a4, -72
 	ld.d	$a6, $a1, 16
 	vinsgr2vr.d	$vr1, $a2, 0
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a2
 	vinsgr2vr.d	$vr0, $a5, 0
 	ldx.d	$a2, $a6, $a3
@@ -4318,7 +4318,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	vsub.w	$vr0, $vr1, $vr0
 	vinsgr2vr.d	$vr1, $a2, 0
 	ld.d	$a2, $a4, -40
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a5
 	ld.d	$a1, $a1, 24
 	vilvl.h	$vr0, $vr2, $vr1
@@ -4327,7 +4327,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ldx.d	$a1, $a1, $a3
 	vsub.w	$vr0, $vr0, $vr1
 	ld.d	$a2, $a4, -8
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a3
 	vinsgr2vr.d	$vr0, $a1, 0
 	vilvl.h	$vr0, $vr2, $vr0
@@ -4335,12 +4335,12 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a1, $s2, 0
 	vilvl.h	$vr1, $vr2, $vr1
 	vsub.w	$vr0, $vr0, $vr1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a2
 	ldptr.w	$a0, $a1, 15256
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	or	$a0, $a0, $a2
 	andi	$a0, $a0, 1
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
@@ -4364,8 +4364,8 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(sp2_frame_indicator)
 	or	$a1, $a0, $a1
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 228
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 212
 	beqz	$a1, .LBB8_36
 # %bb.27:                               #   in Loop: Header=BB8_22 Depth=1
 	move	$a1, $s1
@@ -4375,8 +4375,8 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	b	.LBB8_30
 	.p2align	4, , 16
 .LBB8_28:                               #   in Loop: Header=BB8_22 Depth=1
-	addi.d	$a2, $sp, 228
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 212
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	move	$a1, $s1
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(dct_luma)
@@ -4399,12 +4399,12 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
 	ld.d	$a0, $s2, 0
 	ld.w	$a1, $a0, 192
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	add.d	$s5, $a0, $a1
 	move	$a1, $s1
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
 	move	$a5, $s0
 	move	$a6, $s6
 	pcaddu18i	$ra, %call36(LumaPrediction4x4)
@@ -4419,14 +4419,14 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a5, $a4, -96
 	vinsgr2vr.d	$vr0, $a2, 0
 	ld.d	$a2, $a1, 8
-	vld	$vr2, $sp, 208                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 192                  # 16-byte Folded Reload
 	vilvl.h	$vr0, $vr2, $vr0
 	vinsgr2vr.d	$vr1, $a5, 0
 	vilvl.h	$vr1, $vr2, $vr1
 	ldx.d	$a2, $a2, $a3
 	vsub.w	$vr0, $vr0, $vr1
 	ld.d	$a5, $a4, -64
-	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 160                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a6
 	vinsgr2vr.d	$vr0, $a2, 0
 	ld.d	$a2, $a1, 16
@@ -4435,7 +4435,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	vilvl.h	$vr1, $vr2, $vr1
 	ldx.d	$a2, $a2, $a3
 	vsub.w	$vr0, $vr0, $vr1
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a5
 	ld.d	$a4, $a4, -32
 	vinsgr2vr.d	$vr0, $a2, 0
@@ -4446,7 +4446,7 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ldx.d	$a1, $a1, $a3
 	vsub.w	$vr0, $vr0, $vr1
 	ldx.d	$a2, $a0, $s3
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a3
 	vinsgr2vr.d	$vr0, $a1, 0
 	vilvl.h	$vr0, $vr2, $vr0
@@ -4454,15 +4454,15 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a1, $s2, 0
 	vilvl.h	$vr1, $vr2, $vr1
 	vsub.w	$vr0, $vr0, $vr1
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	vstx	$vr0, $a0, $a2
 	ldptr.w	$a0, $a1, 15256
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	or	$a0, $a0, $a2
 	andi	$a0, $a0, 1
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
 	bnez	$a0, .LBB8_20
 .LBB8_31:                               #   in Loop: Header=BB8_22 Depth=1
 	ld.w	$a0, $a1, 20
@@ -4474,8 +4474,8 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(sp2_frame_indicator)
 	or	$a1, $a0, $a1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$a2, $sp, 228
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 212
 	beqz	$a1, .LBB8_37
 # %bb.33:                               #   in Loop: Header=BB8_22 Depth=1
 	move	$a1, $s1
@@ -4485,8 +4485,8 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	b	.LBB8_21
 	.p2align	4, , 16
 .LBB8_34:                               #   in Loop: Header=BB8_22 Depth=1
-	addi.d	$a2, $sp, 228
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a2, $sp, 212
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s1
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(dct_luma)
@@ -4528,19 +4528,19 @@ LumaResidualCoding8x8:                  # @LumaResidualCoding8x8
 	ldptr.w	$a1, $a0, 15540
 	beqz	$a1, .LBB8_12
 .LBB8_40:                               # %.loopexit
-	ld.w	$a0, $sp, 228
-	ld.d	$s8, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 320
+	ld.w	$a0, $sp, 212
+	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 304
 	ret
 .Lfunc_end8:
 	.size	LumaResidualCoding8x8, .Lfunc_end8-LumaResidualCoding8x8
@@ -11450,6 +11450,8 @@ writeMBLayer:                           # @writeMBLayer
 	pcalau12i	$a0, %got_pc_hi20(enc_picture)
 	ld.d	$fp, $a0, %got_pc_lo12(enc_picture)
 	move	$a1, $zero
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB25_61:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB25_62 Depth 2
@@ -11462,8 +11464,6 @@ writeMBLayer:                           # @writeMBLayer
 	move	$s6, $s0
 	ori	$s0, $zero, 16
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB25_62:                              #   Parent Loop BB25_61 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -12673,6 +12673,7 @@ writeMBLayer:                           # @writeMBLayer
 	lu12i.w	$a1, 3
 	ori	$s0, $a1, 3160
 	ori	$s4, $zero, 2
+	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB25_194
 	.p2align	4, , 16
 .LBB25_192:                             #   in Loop: Header=BB25_194 Depth=1
@@ -12697,7 +12698,6 @@ writeMBLayer:                           # @writeMBLayer
 	move	$s6, $zero
 	add.w	$a1, $a1, $a2
 	slli.d	$s7, $a1, 3
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB25_196:                             #   Parent Loop BB25_194 Depth=1
@@ -14239,6 +14239,7 @@ writeMotionVector8x8:                   # @writeMotionVector8x8
 	st.d	$zero, $sp, 224                 # 8-byte Folded Spill
 	st.d	$a6, $sp, 104                   # 8-byte Folded Spill
 	st.d	$t3, $sp, 96                    # 8-byte Folded Spill
+	ld.d	$s6, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB31_10
 	.p2align	4, , 16
 .LBB31_9:                               # %._crit_edge.split.us.us.us
@@ -14286,7 +14287,6 @@ writeMotionVector8x8:                   # @writeMotionVector8x8
                                         #   in Loop: Header=BB31_12 Depth=2
 	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
 	ld.w	$a2, $s7, 20
-	ld.d	$s6, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a3, $s6, 24
 	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0

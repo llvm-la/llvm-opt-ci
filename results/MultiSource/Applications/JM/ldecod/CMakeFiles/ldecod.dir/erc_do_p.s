@@ -3776,6 +3776,8 @@ buildPredRegionYUV:                     # @buildPredRegionYUV
 	addi.d	$a0, $a4, 1
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$s8, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB23_7:                               # %.preheader174.us
                                         # =>This Loop Header: Depth=1
@@ -3835,7 +3837,6 @@ buildPredRegionYUV:                     # @buildPredRegionYUV
 	ld.d	$a6, $sp, 160                   # 8-byte Folded Reload
 	add.w	$a3, $a6, $a5
 	div.w	$a3, $a3, $a4
-	ld.d	$s8, $sp, 288                   # 8-byte Folded Reload
 	srai.d	$t1, $a3, 63
 	andn	$a3, $a3, $t1
 	slt	$t1, $a3, $s2
@@ -3934,7 +3935,6 @@ buildPredRegionYUV:                     # @buildPredRegionYUV
 	slli.d	$s1, $s1, 1
 	slli.d	$a2, $s5, 1
 	slli.d	$ra, $s7, 1
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 176                   # 8-byte Folded Reload
 	.p2align	4, , 16

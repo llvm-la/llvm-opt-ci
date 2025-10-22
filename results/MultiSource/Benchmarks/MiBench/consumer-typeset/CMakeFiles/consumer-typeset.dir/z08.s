@@ -2300,6 +2300,7 @@ Manifest:                               # @Manifest
 # %bb.125:
 	move	$s8, $s5
 	ori	$s1, $zero, 1
+	ld.d	$s5, $sp, 232                   # 8-byte Folded Reload
 	b	.LBB1_127
 .LBB1_126:                              # %.loopexit2473
                                         #   in Loop: Header=BB1_127 Depth=1
@@ -2318,7 +2319,6 @@ Manifest:                               # @Manifest
 # %bb.129:                              #   in Loop: Header=BB1_127 Depth=1
 	beq	$a1, $s1, .LBB1_126
 # %bb.130:                              #   in Loop: Header=BB1_127 Depth=1
-	ld.d	$s5, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$s2, $s5, 0
 	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	st.d	$a1, $sp, 16

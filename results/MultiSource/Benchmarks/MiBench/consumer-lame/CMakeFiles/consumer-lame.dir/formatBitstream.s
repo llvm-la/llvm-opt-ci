@@ -224,6 +224,7 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 	move	$s2, $zero
 	move	$s8, $zero
 	addi.d	$s1, $s0, 48
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_18:                               # %.preheader180.us.i
                                         # =>This Loop Header: Depth=1
@@ -231,7 +232,6 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 	move	$fp, $a3
 	move	$s7, $s2
 	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_19:                               #   Parent Loop BB1_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2

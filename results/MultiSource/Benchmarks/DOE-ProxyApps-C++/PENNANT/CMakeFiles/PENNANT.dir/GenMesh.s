@@ -1275,8 +1275,8 @@ _ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	st.d	$fp, $s6, 16
 	b	.LBB4_13
 .LBB4_33:                               # %._crit_edge
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	mul.w	$fp, $a0, $a1
 	bltz	$fp, .LBB4_377
 # %bb.34:

@@ -3990,6 +3990,7 @@ display_rankings:                       # @display_rankings
 	st.d	$s7, $sp, 168                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
 	b	.LBB21_2
 	.p2align	4, , 16
 .LBB21_1:                               #   in Loop: Header=BB21_2 Depth=1
@@ -4095,7 +4096,6 @@ display_rankings:                       # @display_rankings
 	st.d	$a1, $sp, 344                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	add.d	$s1, $a0, $fp
-	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
 	move	$a0, $s8
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(find_teams_rank)

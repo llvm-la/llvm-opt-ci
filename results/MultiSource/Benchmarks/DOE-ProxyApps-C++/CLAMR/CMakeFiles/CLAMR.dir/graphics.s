@@ -315,6 +315,7 @@ DrawSquaresToFile:                      # @DrawSquaresToFile
 	move	$s7, $zero
 	move	$s8, $zero
 	move	$fp, $zero
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB11_9:                               # %.lr.ph111
                                         # =>This Inner Loop Header: Depth=1
@@ -339,7 +340,6 @@ DrawSquaresToFile:                      # @DrawSquaresToFile
 	movgr2fr.w	$fa1, $a2
 	ffint.d.w	$fa1, $fa1
 	fsub.d	$fa0, $fa0, $fa1
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $s2, %pc_lo12(y_double)
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(dy_double)
@@ -482,13 +482,14 @@ DrawSquaresToFile:                      # @DrawSquaresToFile
 	move	$s8, $zero
 	move	$s7, $zero
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB11_14:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $s5, %pc_lo12(x_float)
 	fldx.s	$fa0, $a0, $s8
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
 	fld.s	$fa1, $s1, %pc_lo12(graphics_xmin)
 	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $s0, %pc_lo12(dx_float)
@@ -514,7 +515,6 @@ DrawSquaresToFile:                      # @DrawSquaresToFile
 	ftintrz.w.d	$fa0, $fa0
 	fldx.s	$fa1, $a0, $s8
 	fldx.s	$fa2, $a1, $s8
-	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
 	fld.s	$fa3, $s2, %pc_lo12(graphics_ymax)
 	movfr2gr.s	$a4, $fa0
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload

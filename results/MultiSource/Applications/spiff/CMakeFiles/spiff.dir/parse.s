@@ -130,7 +130,7 @@ P_file_parse:                           # @P_file_parse
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(_L_ai)
 	ld.d	$a0, $a0, %got_pc_lo12(_L_ai)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(_L_btlindex)
 	ld.d	$a0, $a0, %got_pc_lo12(_L_btlindex)
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
@@ -524,7 +524,7 @@ P_file_parse:                           # @P_file_parse
 	ld.w	$a3, $a3, 0
 	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	stx.w	$a2, $a4, $a1
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	stx.w	$a3, $a2, $a1
 .LBB1_51:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.w	$a1, $s6, 0
@@ -773,18 +773,18 @@ P_file_parse:                           # @P_file_parse
 	add.d	$a1, $a1, $a2
 	bge	$s0, $a5, .LBB1_79
 # %bb.75:                               #   in Loop: Header=BB1_3 Depth=1
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $s0, 1
 	move	$s6, $s5
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	bge	$a0, $a1, .LBB1_78
 # %bb.76:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB1_3 Depth=1
 	nor	$a1, $s0, $zero
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	add.d	$s0, $a1, $a2
 	slli.d	$s5, $a0, 2
 	.p2align	4, , 16
@@ -816,7 +816,7 @@ P_file_parse:                           # @P_file_parse
 	masknez	$a1, $s3, $a0
 	maskeqz	$a2, $s1, $a0
 	or	$a1, $a2, $a1
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	slli.d	$a2, $a2, 2
 	ldx.w	$a1, $a1, $a2
 	masknez	$a2, $s2, $a0
@@ -834,7 +834,7 @@ P_file_parse:                           # @P_file_parse
 	pcaddu18i	$ra, %call36(strncat)
 	jirl	$ra, $ra, 0
 	move	$s5, $s6
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB1_80
 .LBB1_79:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.w	$a2, $fp, %pc_lo12(_P_stringsize)

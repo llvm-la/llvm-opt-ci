@@ -651,12 +651,12 @@ sha256_transform:                       # @sha256_transform
 	ld.w	$t7, $a1, 8
 	ld.w	$t0, $a1, 44
 	ld.w	$a4, $a1, 12
-	st.d	$a4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 112                   # 8-byte Folded Spill
 	ld.w	$t2, $a1, 48
 	ld.w	$a4, $a1, 16
 	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
 	ld.w	$a4, $a1, 52
-	st.d	$a4, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 104                   # 8-byte Folded Spill
 	ld.w	$a4, $a1, 20
 	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$a4, $a1, 24
@@ -770,7 +770,7 @@ sha256_transform:                       # @sha256_transform
 	st.d	$t3, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$t8, $t8, 53, 0
 	xor	$t5, $t5, $t8
-	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
 	rotri.w	$t8, $a5, 7
 	rotri.w	$s1, $a5, 18
 	xor	$t8, $t8, $s1
@@ -832,7 +832,7 @@ sha256_transform:                       # @sha256_transform
 	ld.w	$t5, $t6, 12
 	vpickve2gr.w	$t8, $vr5, 1
 	add.w	$a5, $t4, $t8
-	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 112                   # 8-byte Folded Spill
 	st.w	$a5, $a1, 12
 	add.d	$t5, $t5, $s4
 	add.d	$t5, $t5, $a5
@@ -871,8 +871,7 @@ sha256_transform:                       # @sha256_transform
 	vxor.v	$vr6, $vr6, $vr7
 	vsrl.w	$vr5, $vr5, $vr0
 	vxor.v	$vr5, $vr6, $vr5
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
-	st.d	$a5, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
 	add.d	$t5, $a5, $s1
 	vpickve2gr.w	$t8, $vr5, 0
 	add.d	$t5, $t5, $t8
@@ -1132,7 +1131,7 @@ sha256_transform:                       # @sha256_transform
 	st.w	$a2, $a1, 36
 	ld.w	$t8, $t6, 40
 	add.d	$a6, $t5, $t0
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	add.d	$a6, $a6, $a3
 	add.w	$a6, $a6, $t1
 	add.d	$t1, $a6, $t8
@@ -1206,7 +1205,7 @@ sha256_transform:                       # @sha256_transform
 	xor	$t5, $t5, $t8
 	bstrpick.d	$t8, $a6, 31, 10
 	xor	$t5, $t5, $t8
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	rotri.w	$t8, $a3, 7
 	rotri.w	$s6, $a3, 18
 	xor	$t8, $t8, $s6
@@ -1275,7 +1274,7 @@ sha256_transform:                       # @sha256_transform
 	xor	$t5, $t5, $t8
 	bstrpick.d	$t8, $t4, 31, 3
 	xor	$t5, $t5, $t8
-	st.d	$a7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a7, $sp, 104                   # 8-byte Folded Spill
 	st.w	$a7, $a1, 52
 	add.d	$a7, $t5, $s7
 	ld.w	$t5, $t6, 56

@@ -2249,7 +2249,8 @@ submacroblock_mode_decision:            # @submacroblock_mode_decision
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a0, $a0, 2
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	slli.d	$s5, $fp, 3
+	slli.d	$a0, $fp, 3
+	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cs_cm)
 	ld.d	$a0, $a0, %got_pc_lo12(cs_cm)
 	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
@@ -2358,14 +2359,11 @@ submacroblock_mode_decision:            # @submacroblock_mode_decision
 	ori	$a0, $a1, 4095
 	st.d	$a0, $sp, 360                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 440                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 368                   # 8-byte Folded Spill
 	pcalau12i	$s6, %pc_hi20(si_frame_indicator)
 	b	.LBB8_6
 	.p2align	4, , 16
 .LBB8_3:                                #   in Loop: Header=BB8_6 Depth=1
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 360                   # 8-byte Folded Spill
 	fmov.d	$fs1, $fs0
 	ld.d	$s7, $sp, 328                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 400                   # 8-byte Folded Reload
@@ -3534,6 +3532,7 @@ submacroblock_mode_decision:            # @submacroblock_mode_decision
 	add.d	$a2, $a3, $a2
 	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 440                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB8_107:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a0, 0
@@ -3541,7 +3540,6 @@ submacroblock_mode_decision:            # @submacroblock_mode_decision
 	vld	$vr0, $a2, 0
 	vstx	$vr0, $a3, $a5
 	vld	$vr0, $a2, 16
-	ld.d	$a6, $sp, 440                   # 8-byte Folded Reload
 	alsl.d	$a3, $a6, $a3, 2
 	vst	$vr0, $a3, 16
 	addi.d	$a1, $a1, 1

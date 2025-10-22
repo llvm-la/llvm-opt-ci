@@ -259,6 +259,7 @@ finalcheck:                             # @finalcheck
 	bstrpick.d	$a7, $a7, 31, 0
 	ori	$t0, $zero, 1
 	ori	$t1, $zero, 1
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB0_16
 	.p2align	4, , 16
 .LBB0_14:                               # %._crit_edge174
@@ -272,7 +273,6 @@ finalcheck:                             # @finalcheck
 	st.w	$a5, $s1, 0
 	sub.d	$t8, $t5, $t6
 	add.d	$a4, $a4, $t8
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a4, $s2, 0
 	add.d	$t3, $t3, $t5
 	add.d	$t4, $t4, $t6

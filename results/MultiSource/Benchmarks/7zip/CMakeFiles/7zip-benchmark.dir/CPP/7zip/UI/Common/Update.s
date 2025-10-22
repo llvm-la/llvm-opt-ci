@@ -5416,7 +5416,6 @@ _Z13UpdateArchiveP7CCodecsRKN9NWildcard7CCensorER14CUpdateOptionsR16CUpdateError
 	ori	$a0, $zero, 1112
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$a1, $a0
 .Ltmp395:                               # EH_LABEL
 	ld.d	$s4, $sp, 208                   # 8-byte Folded Reload
 # %bb.303:                              #   in Loop: Header=BB12_151 Depth=1

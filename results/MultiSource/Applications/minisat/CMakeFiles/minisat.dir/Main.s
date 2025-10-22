@@ -1064,9 +1064,9 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .Ltmp28:                                # EH_LABEL
 # %bb.101:                              #   in Loop: Header=BB3_44 Depth=1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a0, $a1, 0
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
 	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload

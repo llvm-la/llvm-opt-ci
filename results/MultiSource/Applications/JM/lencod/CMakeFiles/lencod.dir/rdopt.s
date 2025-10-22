@@ -4311,8 +4311,8 @@ RDCost_for_8x8blocks:                   # @RDCost_for_8x8blocks
 .LBB8_7:
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
-	st.w	$a0, $s7, 0
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a0, $a2, 0
 	ldptr.w	$a0, $a1, 4168
 	ld.d	$a2, $s5, 0
 	ori	$a3, $zero, 3
@@ -14098,6 +14098,7 @@ SetRefAndMotionVectors:                 # @SetRefAndMotionVectors
 	addi.w	$s5, $zero, -1
 	vrepli.b	$vr0, -1
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB22_28
 	.p2align	4, , 16
 .LBB22_27:                              # %._crit_edge
@@ -14106,7 +14107,6 @@ SetRefAndMotionVectors:                 # @SetRefAndMotionVectors
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $s7, 0
 	ldx.d	$a1, $a1, $s2
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
 	alsl.d	$a2, $s6, $a2, 3
 	ld.w	$a2, $a2, 136
 	add.d	$a0, $a1, $a0

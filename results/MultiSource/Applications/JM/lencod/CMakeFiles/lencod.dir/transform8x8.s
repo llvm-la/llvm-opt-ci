@@ -3727,6 +3727,7 @@ dct_luma8x8:                            # @dct_luma8x8
 	lu12i.w	$a6, 244
 	ori	$fp, $a6, 575
 	addi.d	$s0, $sp, 128
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	b	.LBB4_8
 	.p2align	4, , 16
 .LBB4_5:                                #   in Loop: Header=BB4_8 Depth=1
@@ -3768,7 +3769,6 @@ dct_luma8x8:                            # @dct_luma8x8
 	beqz	$s6, .LBB4_10
 # %bb.9:                                #   in Loop: Header=BB4_8 Depth=1
 	ldptr.d	$a6, $a4, 14184
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	slli.d	$s6, $a2, 3
 	ldx.d	$a6, $a6, $s6
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload

@@ -1125,6 +1125,7 @@ main:                                   # @main
 	ld.d	$a0, $a0, %got_pc_lo12(GP)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	fmov.s	$fs3, $fs0
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB7_3
 	.p2align	4, , 16
 .LBB7_2:                                # %SwapSubsetAndReset.exit
@@ -1208,7 +1209,6 @@ main:                                   # @main
 	fcmp.ceq.s	$fcc0, $fs3, $fs2
 	bceqz	$fcc0, .LBB7_11
 # %bb.10:                               #   in Loop: Header=BB7_3 Depth=1
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
 	fcvt.d.s	$fs3, $fs2
 	movfr2gr.d	$a2, $fs3

@@ -1928,6 +1928,7 @@ mccaskillextract:                       # @mccaskillextract
 	lu52i.d	$a0, $a0, -1032
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	movgr2fr.d	$fs0, $zero
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB2_3
 	.p2align	4, , 16
 .LBB2_2:                                # %._crit_edge10
@@ -1984,7 +1985,6 @@ mccaskillextract:                       # @mccaskillextract
 .LBB2_7:                                # %.thread
                                         #   in Loop: Header=BB2_9 Depth=3
 	slli.d	$s8, $a1, 2
-	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
 	ldx.w	$a1, $s4, $s8
 	addi.w	$a1, $a1, 2
 	ori	$a2, $zero, 24

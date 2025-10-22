@@ -1963,6 +1963,8 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 16
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
 	b	.LBB5_14
 	.p2align	4, , 16
 .LBB5_13:                               # %_ZN5Hydro12sumCrnrForceEPK7double2S2_S2_PS0_ii.exit
@@ -2005,7 +2007,6 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 .LBB5_16:                               # %_ZSt4copyIPdS0_ET0_T_S2_S1_.exit
                                         #   in Loop: Header=BB5_14 Depth=1
 	move	$a1, $s4
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
 	move	$a2, $s2
 	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
 	move	$a3, $s1
@@ -2017,7 +2018,6 @@ _ZN5Hydro7doCycleEd:                    # @_ZN5Hydro7doCycleEd
 	st.d	$s5, $sp, 0
 	move	$a1, $s4
 	move	$a2, $s1
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
 	move	$a3, $s7
 	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
 	move	$a5, $s8

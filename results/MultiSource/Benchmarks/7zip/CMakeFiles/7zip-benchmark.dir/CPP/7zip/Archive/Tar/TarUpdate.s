@@ -233,8 +233,8 @@ _ZN8NArchive4NTar13UpdateArchiveEP9IInStreamP20ISequentialOutStreamRK13CObjectVe
 	st.d	$a0, $sp, 128
 	st.b	$zero, $a0, 0
 	st.w	$fp, $sp, 140
-	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
 	addi.d	$a0, $sp, 176
+	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
 .Ltmp40:                                # EH_LABEL
 	ori	$a0, $zero, 4

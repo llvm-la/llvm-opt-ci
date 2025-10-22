@@ -453,9 +453,9 @@ set_pair1:                              # @set_pair1
 	addi.d	$s3, $a0, %pc_lo12(.L.str.1)
 	move	$fp, $zero
 	move	$s8, $zero
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB1_81:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $s1, 8
 	ldx.w	$a0, $a0, $fp
 	ld.d	$a1, $s1, 16

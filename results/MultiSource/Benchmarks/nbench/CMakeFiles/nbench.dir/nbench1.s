@@ -8238,24 +8238,24 @@ DoNNetIteration:                        # @DoNNetIteration
 	fld.d	$fa3, $s8, 472
 	vld	$vr0, $sp, 768                  # 16-byte Folded Reload
 	fmadd.d	$fa0, $fs4, $fa0, $fs7
-	vld	$vr4, $sp, 880                  # 16-byte Folded Reload
 	fst.d	$fa1, $sp, 240                  # 8-byte Folded Spill
+	vld	$vr4, $sp, 880                  # 16-byte Folded Reload
 	fmadd.d	$fa0, $fa1, $fa4, $fa0
-	vld	$vr1, $sp, 864                  # 16-byte Folded Reload
 	fst.d	$fa2, $sp, 232                  # 8-byte Folded Spill
+	vld	$vr1, $sp, 864                  # 16-byte Folded Reload
 	fmadd.d	$fa0, $fa2, $fa1, $fa0
-	vld	$vr1, $sp, 848                  # 16-byte Folded Reload
 	fst.d	$fa3, $sp, 224                  # 8-byte Folded Spill
+	vld	$vr1, $sp, 848                  # 16-byte Folded Reload
 	fmadd.d	$fa0, $fa3, $fa1, $fa0
 	fld.d	$fa1, $s8, 480
 	fld.d	$fa2, $s8, 488
 	fld.d	$fs5, $s8, 496
 	fld.d	$fs0, $s8, 504
-	vld	$vr3, $sp, 832                  # 16-byte Folded Reload
 	fst.d	$fa1, $sp, 216                  # 8-byte Folded Spill
+	vld	$vr3, $sp, 832                  # 16-byte Folded Reload
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
-	vld	$vr1, $sp, 816                  # 16-byte Folded Reload
 	fst.d	$fa2, $sp, 208                  # 8-byte Folded Spill
+	vld	$vr1, $sp, 816                  # 16-byte Folded Reload
 	fmadd.d	$fa0, $fa2, $fa1, $fa0
 	vld	$vr1, $sp, 800                  # 16-byte Folded Reload
 	fmadd.d	$fa0, $fs5, $fa1, $fa0

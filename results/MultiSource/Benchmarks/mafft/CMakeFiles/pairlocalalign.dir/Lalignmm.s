@@ -2362,7 +2362,7 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
 	ori	$a1, $zero, 39
-	st.d	$s0, $sp, 400                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 408                   # 8-byte Folded Spill
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(AllocateFloatMtx)
 	jirl	$ra, $ra, 0
@@ -2770,7 +2770,7 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 	pcaddu18i	$ra, %call36(AllocateIntVec)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$s0, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 408                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(AllocateFloatVec)
 	jirl	$ra, $ra, 0

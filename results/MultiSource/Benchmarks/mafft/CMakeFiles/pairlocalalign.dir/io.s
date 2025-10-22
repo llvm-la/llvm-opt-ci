@@ -9063,6 +9063,7 @@ ReadFasta34m10:                         # @ReadFasta34m10
 	pcalau12i	$a0, %pc_hi20(.L.str.47)
 	addi.d	$s5, $a0, %pc_lo12(.L.str.47)
 	move	$s6, $zero
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB53_5
 	.p2align	4, , 16
 .LBB53_3:                               #   in Loop: Header=BB53_5 Depth=1
@@ -9072,7 +9073,6 @@ ReadFasta34m10:                         # @ReadFasta34m10
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
 	slli.d	$s7, $s6, 2
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	stx.w	$a0, $s8, $s7
 	addi.d	$a0, $sp, 88
 	ori	$a1, $zero, 41

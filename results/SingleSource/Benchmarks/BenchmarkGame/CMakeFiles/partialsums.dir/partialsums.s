@@ -87,7 +87,6 @@ main:                                   # @main
 	frecip.d	$fa0, $fa1
 	fadd.d	$fs4, $fs4, $fa0
 	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	fmul.d	$fa1, $fa0, $fa0
 	fmul.d	$fs6, $fa1, $fa0
                                         # kill: def $f0_64 killed $f0_64 killed $vr0

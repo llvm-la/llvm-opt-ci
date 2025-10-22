@@ -523,7 +523,6 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$fp, $fa0
 	slli.d	$s0, $fp, 1
@@ -2122,6 +2121,7 @@ main:                                   # @main
 	fdiv.d	$fa0, $fs0, $fs1
 	fadd.d	$fs2, $fa1, $fa0
 	vori.b	$vr0, $vr1, 0
+	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(dataDouble)
 	addi.d	$fp, $a0, %pc_lo12(dataDouble)
 	pcalau12i	$a0, %pc_hi20(.L.str.167)

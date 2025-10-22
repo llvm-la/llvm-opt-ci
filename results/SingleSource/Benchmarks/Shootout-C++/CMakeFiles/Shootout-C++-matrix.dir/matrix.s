@@ -678,7 +678,6 @@ main:                                   # @main
 	ld.d	$a0, $sp, 608                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 120
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
 	st.d	$s0, $sp, 320                   # 8-byte Folded Spill
 	addi.d	$a3, $s0, 120
 	st.d	$a3, $sp, 168                   # 8-byte Folded Spill
@@ -718,12 +717,13 @@ main:                                   # @main
 	st.d	$ra, $sp, 384                   # 8-byte Folded Spill
 	addi.d	$a1, $ra, 120
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 120
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 368                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 120
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 120
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload

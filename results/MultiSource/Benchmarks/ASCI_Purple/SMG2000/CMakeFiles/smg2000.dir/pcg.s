@@ -381,6 +381,7 @@ hypre_PCGSolve:                         # @hypre_PCGSolve
 	movcf2gr	$a0, $fcc0
 	st.d	$a0, $sp, 64
 	fmov.d	$fs1, $fs0
+	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB4_11
 	.p2align	4, , 16
 .LBB4_10:                               #   in Loop: Header=BB4_11 Depth=1
@@ -404,7 +405,6 @@ hypre_PCGSolve:                         # @hypre_PCGSolve
 	ld.d	$a4, $s8, 40
 	vldi	$vr0, -912
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
 	move	$a1, $fp
 	move	$a2, $s0
 	fmov.d	$fa1, $fs0

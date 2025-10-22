@@ -1690,20 +1690,18 @@ _ZN17btSoftBodyHelpers4DrawEP10btSoftBodyP12btIDebugDrawi: # @_ZN17btSoftBodyHel
 	pcaddu18i	$ra, %call36(__cxa_guard_release)
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-	fld.s	$fs6, $sp, 24                   # 4-byte Folded Reload
-	fld.s	$fs0, $sp, 20                   # 4-byte Folded Reload
-	fld.s	$fs2, $sp, 16                   # 4-byte Folded Reload
-	fld.s	$fs5, $sp, 12                   # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 24                   # 4-byte Folded Reload
+	fld.s	$fs5, $sp, 20                   # 4-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_106:                              # %_ZNK10btSoftBody4Body5xformEv.exit1397
                                         #   in Loop: Header=BB0_109 Depth=1
 	fmul.s	$fa0, $fs7, $fs4
 	fld.s	$fa1, $sp, 56                   # 4-byte Folded Reload
 	fmadd.s	$fa0, $fa1, $fs3, $fa0
-	fmadd.s	$fa0, $fs6, $fs1, $fa0
+	fmadd.s	$fa0, $fs0, $fs6, $fa0
 	fmul.s	$fa1, $fs4, $fs5
-	fmadd.s	$fa1, $fs0, $fs3, $fa1
-	fmadd.s	$fa1, $fs2, $fs1, $fa1
+	fmadd.s	$fa1, $fs1, $fs3, $fa1
+	fmadd.s	$fa1, $fs2, $fs6, $fa1
 	ld.d	$a0, $s2, 48
 	fld.s	$fa2, $sp, 32                   # 4-byte Folded Reload
 	fmul.s	$fa2, $fs4, $fa2
@@ -1723,7 +1721,7 @@ _ZN17btSoftBodyHelpers4DrawEP10btSoftBodyP12btIDebugDrawi: # @_ZN17btSoftBodyHel
 	fld.s	$fa3, $a0, 4
 	fld.s	$fa4, $s2, 76
 	fld.s	$fa5, $sp, 80                   # 4-byte Folded Reload
-	fmadd.s	$fa2, $fa5, $fs1, $fa2
+	fmadd.s	$fa2, $fa5, $fs6, $fa2
 	fld.s	$fa5, $a0, 0
 	fld.s	$fa6, $s2, 72
 	fmul.s	$fa3, $fa3, $fa4
@@ -2258,9 +2256,9 @@ _ZN17btSoftBodyHelpers4DrawEP10btSoftBodyP12btIDebugDrawi: # @_ZN17btSoftBodyHel
 	fld.s	$fs3, $s2, 56
 	fld.s	$fs7, $a0, 4
 	fld.s	$fs4, $s2, 60
-	fld.s	$fs6, $a0, 8
-	fld.s	$fs1, $s2, 64
-	fld.s	$fs0, $a0, 16
+	fld.s	$fs0, $a0, 8
+	fld.s	$fs6, $s2, 64
+	fld.s	$fs1, $a0, 16
 	fld.s	$fs5, $a0, 20
 	fld.s	$fs2, $a0, 24
 	fld.s	$fa0, $a0, 32
@@ -2280,10 +2278,8 @@ _ZN17btSoftBodyHelpers4DrawEP10btSoftBodyP12btIDebugDrawi: # @_ZN17btSoftBodyHel
 	beqz	$a0, .LBB0_106
 # %bb.121:                              #   in Loop: Header=BB0_109 Depth=1
 .Ltmp46:                                # EH_LABEL
-	fst.s	$fs5, $sp, 12                   # 4-byte Folded Spill
-	fst.s	$fs2, $sp, 16                   # 4-byte Folded Spill
-	fst.s	$fs0, $sp, 20                   # 4-byte Folded Spill
-	fst.s	$fs6, $sp, 24                   # 4-byte Folded Spill
+	fst.s	$fs5, $sp, 20                   # 4-byte Folded Spill
+	fst.s	$fs2, $sp, 24                   # 4-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN11btTransform11getIdentityEv)
 	jirl	$ra, $ra, 0
 .Ltmp47:                                # EH_LABEL

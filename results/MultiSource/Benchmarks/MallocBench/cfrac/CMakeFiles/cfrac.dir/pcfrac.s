@@ -1296,8 +1296,8 @@ getEas:                                 # @getEas
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs1, $fa0
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	vldi	$vr1, -928
+	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	fmul.d	$fa1, $fa0, $fa1
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(pow)

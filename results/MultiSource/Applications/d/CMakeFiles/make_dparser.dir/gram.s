@@ -5835,6 +5835,7 @@ build_grammar:                          # @build_grammar
 	move	$s4, $zero
 	ori	$s5, $zero, 5
 	ori	$s6, $zero, 3
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB33_168
 	.p2align	4, , 16
 .LBB33_166:                             #   in Loop: Header=BB33_168 Depth=1
@@ -5848,7 +5849,6 @@ build_grammar:                          # @build_grammar
 	ori	$a1, $zero, 32
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a1, $fp, 576
 	st.d	$a0, $s0, 72
 	st.w	$s6, $a0, 0

@@ -1128,7 +1128,6 @@ ExpandRecursives:                       # @ExpandRecursives
 	bnez	$a0, .LBB2_63
 # %bb.62:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ld.w	$a1, $a0, 52
 	ld.w	$a2, $a0, 60
 	ori	$a3, $zero, 1

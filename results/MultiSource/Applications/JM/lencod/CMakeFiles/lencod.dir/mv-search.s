@@ -1531,6 +1531,7 @@ BPredPartitionCost:                     # @BPredPartitionCost
 	ori	$a0, $a0, 1004
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 176                   # 8-byte Folded Reload
 	b	.LBB3_8
 	.p2align	4, , 16
 .LBB3_7:                                # %._crit_edge.us180
@@ -1573,7 +1574,6 @@ BPredPartitionCost:                     # @BPredPartitionCost
 .LBB3_11:                               # %.preheader154.us
                                         #   Parent Loop BB3_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s6, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a0, $s6, 0
 	ld.w	$a0, $a0, 192
 	add.w	$s1, $s5, $a0
@@ -4219,6 +4219,7 @@ BIDPartitionCost:                       # @BIDPartitionCost
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s0, $sp, 160                   # 8-byte Folded Reload
 	b	.LBB7_8
 	.p2align	4, , 16
 .LBB7_7:                                # %._crit_edge.us173
@@ -4262,7 +4263,6 @@ BIDPartitionCost:                       # @BIDPartitionCost
 .LBB7_11:                               # %.preheader149.us
                                         #   Parent Loop BB7_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s0, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a0, $s0, 0
 	ld.w	$a0, $a0, 192
 	add.w	$s5, $s4, $a0
@@ -4519,6 +4519,7 @@ GetDirectCost8x8:                       # @GetDirectCost8x8
 	st.d	$a7, $sp, 48                    # 8-byte Folded Spill
 	st.d	$t0, $sp, 32                    # 8-byte Folded Spill
 	st.d	$t2, $sp, 24                    # 8-byte Folded Spill
+	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB8_1:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
@@ -4539,7 +4540,6 @@ GetDirectCost8x8:                       # @GetDirectCost8x8
                                         #   in Loop: Header=BB8_1 Depth=1
 	move	$t3, $a0
 	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
-	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $s7, %pc_lo12(direct_ref_idx)
 	ld.d	$a4, $a0, 0
 	ld.d	$a0, $a0, 8

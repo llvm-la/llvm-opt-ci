@@ -3389,7 +3389,6 @@ parseEmailBody:                         # @parseEmailBody
 	addi.d	$a0, $a0, %pc_lo12(.L.str.108)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	st.d	$s8, $sp, 64                    # 8-byte Folded Spill
 	move	$a0, $s8
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(getTextPart)

@@ -473,7 +473,6 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
 	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
-	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
@@ -518,8 +517,8 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs0, $fa0
-	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
 	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
 	fsub.d	$fa0, $fa1, $fa0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0

@@ -685,11 +685,11 @@ initEamPot:                             # @initEamPot
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	addi.d	$s8, $a0, 8
 	st.d	$s8, $s7, 24
 	st.w	$s2, $s7, 0
-	frecip.d	$fa0, $fa1
+	frecip.d	$fa0, $fa0
 	fst.d	$fa0, $s7, 16
 	st.d	$zero, $s7, 8
 	blez	$s2, .LBB0_54

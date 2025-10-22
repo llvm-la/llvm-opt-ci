@@ -8295,6 +8295,10 @@ compute_max_score:                      # @compute_max_score
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB17_8:                               # %.thread.us.us
                                         # =>This Inner Loop Header: Depth=1
@@ -8308,15 +8312,11 @@ compute_max_score:                      # @compute_max_score
 	move	$s5, $fp
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	move	$a0, $fp
-	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
 	move	$a1, $s4
 	move	$a2, $s5
 	move	$a3, $s6
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
 	move	$a4, $s1
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
 	move	$a5, $s2
-	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
 	move	$a6, $s3
 	move	$a7, $s7
 	pcaddu18i	$ra, %call36(compute_max_score_1)

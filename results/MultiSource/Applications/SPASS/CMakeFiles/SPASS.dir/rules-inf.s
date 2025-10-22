@@ -2599,10 +2599,10 @@ inf_GenLitSPRight:                      # @inf_GenLitSPRight
 # %bb.34:                               #   in Loop: Header=BB7_13 Depth=2
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$a0, $a1, 56
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	ldx.d	$a0, $a0, $a2
+	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a0, $a0, 56
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ldx.d	$a0, $a0, $a1
 	ld.w	$a0, $a0, 8
 	beqz	$a0, .LBB7_38
 # %bb.35:                               #   in Loop: Header=BB7_13 Depth=2
@@ -4102,7 +4102,6 @@ inf_GeneralResolution:                  # @inf_GeneralResolution
 .LBB11_15:                              #   in Loop: Header=BB11_11 Depth=1
 	ld.wu	$a0, $s8, 0
 	andi	$a1, $a0, 4
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	bnez	$a1, .LBB11_19
 # %bb.16:                               #   in Loop: Header=BB11_11 Depth=1
 	ld.bu	$a1, $s3, 48
@@ -4121,6 +4120,7 @@ inf_GeneralResolution:                  # @inf_GeneralResolution
 	beqz	$a1, .LBB11_24
 .LBB11_20:                              # %.thread172
                                         #   in Loop: Header=BB11_11 Depth=1
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a2, $s8, 16
 	ld.d	$a6, $a2, 56
 	addi.d	$a1, $zero, -1
@@ -4149,6 +4149,7 @@ inf_GeneralResolution:                  # @inf_GeneralResolution
 	b	.LBB11_25
 	.p2align	4, , 16
 .LBB11_24:                              #   in Loop: Header=BB11_11 Depth=1
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	ori	$s5, $zero, 1
 .LBB11_25:                              # %.thread
                                         #   in Loop: Header=BB11_11 Depth=1

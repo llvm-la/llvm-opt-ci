@@ -4064,8 +4064,8 @@ susan_edges:                            # @susan_edges
 	add.d	$a2, $a2, $s3
 	add.d	$a2, $a2, $s5
 	add.d	$a6, $a2, $a6
-	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
 	st.d	$t3, $sp, 136                   # 8-byte Folded Spill
+	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
 	alsl.d	$a2, $a2, $t3, 2
 	ld.d	$t3, $sp, 192                   # 8-byte Folded Reload
 	move	$fp, $a7

@@ -1006,6 +1006,9 @@ profile:                                # @profile
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	move	$s2, $zero
 	move	$s5, $zero
+	ld.d	$s8, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 256                   # 8-byte Folded Reload
 	b	.LBB0_27
 	.p2align	4, , 16
 .LBB0_25:                               #   in Loop: Header=BB0_27 Depth=1
@@ -1038,13 +1041,11 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	ld.d	$s8, $sp, 272                   # 8-byte Folded Reload
 	ld.w	$a1, $s8, %pc_lo12(x_block_size)
 	fld.d	$fa0, $s7, -88
 	mul.d	$a0, $a1, $a0
 	movgr2fr.w	$fa1, $a0
 	ld.w	$a0, $s4, 4
-	ld.d	$fp, $sp, 264                   # 8-byte Folded Reload
 	ld.w	$a1, $fp, %pc_lo12(y_block_size)
 	ffint.d.w	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -1052,7 +1053,6 @@ profile:                                # @profile
 	mul.d	$a0, $a1, $a0
 	movgr2fr.w	$fa2, $a0
 	ld.w	$a0, $s4, 8
-	ld.d	$s0, $sp, 256                   # 8-byte Folded Reload
 	ld.w	$a1, $s0, %pc_lo12(z_block_size)
 	ffint.d.w	$fa2, $fa2
 	fmul.d	$fa1, $fa1, $fa2
@@ -2001,6 +2001,9 @@ profile:                                # @profile
 	addi.d	$s6, $a0, %pc_lo12(.L.str.139)
 	move	$s7, $zero
 	move	$s0, $zero
+	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
 	b	.LBB0_57
 	.p2align	4, , 16
 .LBB0_56:                               #   in Loop: Header=BB0_57 Depth=1
@@ -2032,13 +2035,11 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 0
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
 	ld.w	$a1, $s3, %pc_lo12(x_block_size)
 	fld.d	$fa0, $s2, -88
 	mul.d	$a0, $a1, $a0
 	movgr2fr.w	$fa1, $a0
 	ld.w	$a0, $fp, 4
-	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
 	ld.w	$a1, $s4, %pc_lo12(y_block_size)
 	ffint.d.w	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
@@ -2046,7 +2047,6 @@ profile:                                # @profile
 	mul.d	$a0, $a1, $a0
 	movgr2fr.w	$fa2, $a0
 	ld.w	$a0, $fp, 8
-	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
 	ld.w	$a1, $s5, %pc_lo12(z_block_size)
 	ffint.d.w	$fa2, $fa2
 	fmul.d	$fa1, $fa1, $fa2

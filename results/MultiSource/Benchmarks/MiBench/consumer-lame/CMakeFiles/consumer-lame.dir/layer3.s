@@ -6452,6 +6452,7 @@ III_dequantize_sample:                  # @III_dequantize_sample
 .LBB4_107:
 	ori	$a0, $zero, 3
 	ori	$a1, $zero, 1
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB4_109
 	.p2align	4, , 16
 .LBB4_108:                              #   in Loop: Header=BB4_109 Depth=1
@@ -6469,7 +6470,6 @@ III_dequantize_sample:                  # @III_dequantize_sample
 	ld.w	$a2, $t5, 4
 	ld.w	$a3, $t5, 8
 	ld.w	$s4, $t5, 0
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	alsl.d	$s2, $a2, $a4, 3
 	addi.d	$a2, $a3, -3
 	sltui	$a2, $a2, 1
