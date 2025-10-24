@@ -22,13 +22,11 @@ _ZN9btBvhTree20_calc_splitting_axisER18GIM_BVH_DATA_ARRAYii: # @_ZN9btBvhTree20_
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	fld.s	$fa4, $a6, -4
 	fld.s	$fa5, $a6, -20
-	ld.d	$a7, $a6, 0
-	ld.d	$t0, $a6, -16
+	fld.d	$fa6, $a6, 0
+	fld.d	$fa7, $a6, -16
 	fadd.s	$fa4, $fa4, $fa5
 	fmul.s	$fa4, $fa4, $fa0
-	vinsgr2vr.d	$vr5, $a7, 0
-	vinsgr2vr.d	$vr6, $t0, 0
-	vfadd.s	$vr5, $vr5, $vr6
+	vfadd.s	$vr5, $vr6, $vr7
 	vfmul.s	$vr5, $vr5, $vr3
 	fadd.s	$fa2, $fa2, $fa4
 	vfadd.s	$vr1, $vr1, $vr5
@@ -54,14 +52,12 @@ _ZN9btBvhTree20_calc_splitting_axisER18GIM_BVH_DATA_ARRAYii: # @_ZN9btBvhTree20_
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	fld.s	$fa7, $a0, -4
 	fld.s	$ft0, $a0, -20
-	ld.d	$a2, $a0, 0
 	fadd.s	$fa7, $fa7, $ft0
-	vinsgr2vr.d	$vr8, $a2, 0
-	ld.d	$a2, $a0, -16
+	fld.d	$ft0, $a0, 0
+	fld.d	$ft1, $a0, -16
 	fmul.s	$fa7, $fa7, $fa5
 	fsub.s	$fa7, $fa7, $fa3
 	fmul.s	$fa7, $fa7, $fa7
-	vinsgr2vr.d	$vr9, $a2, 0
 	vfadd.s	$vr8, $vr8, $vr9
 	vfmul.s	$vr8, $vr8, $vr6
 	vfsub.s	$vr8, $vr8, $vr4
@@ -124,13 +120,11 @@ _ZN9btBvhTree30_sort_and_calc_splitting_indexER18GIM_BVH_DATA_ARRAYiii: # @_ZN9b
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
 	fld.s	$fa4, $a6, -4
 	fld.s	$fa5, $a6, -20
-	ld.d	$t1, $a6, 0
-	ld.d	$t2, $a6, -16
+	fld.d	$fa6, $a6, 0
+	fld.d	$fa7, $a6, -16
 	fadd.s	$fa4, $fa4, $fa5
 	fmul.s	$fa4, $fa4, $fa2
-	vinsgr2vr.d	$vr5, $t1, 0
-	vinsgr2vr.d	$vr6, $t2, 0
-	vfadd.s	$vr5, $vr5, $vr6
+	vfadd.s	$vr5, $vr6, $vr7
 	vfmul.s	$vr5, $vr5, $vr3
 	fadd.s	$fa1, $fa1, $fa4
 	vfadd.s	$vr0, $vr0, $vr5

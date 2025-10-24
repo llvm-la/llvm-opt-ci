@@ -1845,11 +1845,10 @@ matgen:                                 # @matgen
 	bstrpick.d	$a3, $a3, 31, 0
 	bstrpick.d	$a2, $a3, 31, 1
 	slli.d	$a4, $a2, 1
-	ld.d	$a5, $a0, 0
 	alsl.d	$a1, $a2, $a1, 3
-	ori	$a6, $zero, 2
-	alsl.w	$a2, $a2, $a6, 1
-	vinsgr2vr.d	$vr0, $a5, 0
+	fld.d	$fa0, $a0, 0
+	ori	$a5, $zero, 2
+	alsl.w	$a2, $a2, $a5, 1
 	ori	$a5, $zero, 8
 	move	$a6, $a4
 	.p2align	4, , 16

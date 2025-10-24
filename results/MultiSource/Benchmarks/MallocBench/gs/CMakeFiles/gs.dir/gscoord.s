@@ -133,10 +133,9 @@ gs_translate:                           # @gs_translate
 	bltz	$a0, .LBB4_2
 # %bb.1:
 	fld.s	$fa0, $fp, 88
-	ld.d	$a1, $sp, 8
 	fld.s	$fa1, $fp, 104
+	fld.d	$fa2, $sp, 8
 	move	$a0, $zero
-	vinsgr2vr.d	$vr2, $a1, 0
 	vextrins.w	$vr0, $vr1, 16
 	vfadd.s	$vr0, $vr2, $vr0
 	lu12i.w	$a1, 284672
