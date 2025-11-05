@@ -25,37 +25,48 @@ bar:                                    # @bar
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
 	pcalau12i	$a0, %pc_hi20(.L__const.main.x)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.main.x)
 	ld.d	$a1, $a0, 0
 	ld.w	$a0, $a0, 7
-	st.d	$a1, $sp, 8
-	st.w	$a0, $sp, 15
-	st.b	$zero, $sp, 12
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 8
-	ori	$a2, $zero, 11
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_3
+	st.d	$a1, $sp, 0
+	st.w	$a0, $sp, 7
+	st.b	$zero, $sp, 4
+	ld.d	$a1, $sp, 0
+	lu12i.w	$a0, 312500
+	ori	$a0, $a0, 2633
+	move	$a2, $a0
+	lu32i.d	$a2, -45568
+	lu52i.d	$a2, $a2, 1284
+	xor	$a1, $a1, $a2
+	ld.d	$a2, $sp, 3
+	lu12i.w	$a3, 324832
+	ori	$a3, $a3, 76
+	lu32i.d	$a3, 151888
+	lu52i.d	$a3, $a3, 5
+	xor	$a2, $a2, $a3
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB2_3
 # %bb.1:
-	ori	$a0, $zero, 77
-	st.b	$a0, $sp, 12
-	st.b	$zero, $sp, 16
-	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 8
-	ori	$a2, $zero, 11
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 77
+	st.b	$a1, $sp, 4
+	ld.d	$a1, $sp, 0
+	st.b	$zero, $sp, 8
+	lu32i.d	$a0, -45491
+	lu52i.d	$a0, $a0, 1284
+	xor	$a0, $a1, $a0
+	ld.d	$a1, $sp, 3
+	lu12i.w	$a2, 324836
+	ori	$a2, $a2, 3404
+	lu32i.d	$a2, 131152
+	lu52i.d	$a2, $a2, 5
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_3
 # %bb.2:
 	move	$a0, $zero
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	addi.d	$sp, $sp, 16
 	ret
 .LBB2_3:
 	pcaddu18i	$ra, %call36(abort)

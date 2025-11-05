@@ -418,16 +418,16 @@ _ZN9benchmark17IsTruthyFlagValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	andi	$a1, $a0, 255
 	ori	$a2, $zero, 63
 	ori	$s0, $zero, 1
-	bgeu	$a1, $a2, .LBB2_21
+	bgeu	$a1, $a2, .LBB2_22
 # %bb.4:                                # %switch.lookup
 	lu12i.w	$a1, -263169
 	ori	$a1, $a1, 4094
 	lu52i.d	$a1, $a1, 1019
 	srl.d	$s0, $a1, $a0
-	b	.LBB2_21
+	b	.LBB2_22
 .LBB2_5:
 	ori	$s0, $zero, 1
-	b	.LBB2_21
+	b	.LBB2_22
 .LBB2_6:
 	addi.d	$s1, $sp, 24
 	ld.d	$s0, $a0, 0
@@ -480,18 +480,22 @@ _ZN9benchmark17IsTruthyFlagValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	bne	$a2, $a0, .LBB2_15
 # %bb.14:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
 	ld.d	$fp, $sp, 8
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
-	ori	$a2, $zero, 5
-	b	.LBB2_19
+	ld.w	$a0, $fp, 0
+	ld.bu	$a1, $fp, 4
+	lu12i.w	$a2, 472774
+	ori	$a2, $a2, 358
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 101
+	or	$a0, $a0, $a1
+	b	.LBB2_20
 .LBB2_15:                               # %"_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPcNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES9_ZN9benchmark17IsTruthyFlagValueERKS8_E3$_0ET0_T_SF_SE_T1_.exit._ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread_crit_edge"
 	ld.d	$fp, $sp, 8
 	ori	$s0, $zero, 1
-	bne	$fp, $s1, .LBB2_20
-	b	.LBB2_21
+	bne	$fp, $s1, .LBB2_21
+	b	.LBB2_22
 .LBB2_16:
 	move	$s0, $zero
-	b	.LBB2_21
+	b	.LBB2_22
 .LBB2_17:
 	ld.d	$fp, $sp, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
@@ -505,15 +509,16 @@ _ZN9benchmark17IsTruthyFlagValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
+.LBB2_20:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
 	sltu	$s0, $zero, $a0
-	beq	$fp, $s1, .LBB2_21
-.LBB2_20:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
+	beq	$fp, $s1, .LBB2_22
+.LBB2_21:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_21:                               # %switch.edge
+.LBB2_22:                               # %switch.edge
 	andi	$a0, $s0, 1
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload

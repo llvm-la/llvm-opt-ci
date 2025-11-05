@@ -123,12 +123,15 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(remove)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.16)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
-	addi.d	$a0, $sp, 0
-	ori	$a2, $zero, 10
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 0
+	lu12i.w	$a1, 213811
+	ori	$a1, $a1, 561
+	ld.hu	$a2, $sp, 8
+	lu32i.d	$a1, 472629
+	lu52i.d	$a1, $a1, 899
+	xor	$a0, $a0, $a1
+	xori	$a1, $a2, 57
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_9
 # %bb.4:
 	move	$s1, $zero

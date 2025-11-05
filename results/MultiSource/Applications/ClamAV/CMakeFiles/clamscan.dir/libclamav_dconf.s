@@ -519,7 +519,7 @@ cli_dconf_load:                         # @cli_dconf_load
 	move	$a0, $fp
 	b	.LBB2_35
 .LBB2_2:
-	ld.d	$s4, $a1, 80
+	ld.d	$s6, $a1, 80
 	lu12i.w	$a1, 2
 	addi.d	$a0, $sp, 40
 	move	$a2, $s0
@@ -527,27 +527,34 @@ cli_dconf_load:                         # @cli_dconf_load
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_33
 # %bb.3:                                # %.lr.ph
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.20)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.20)
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	lu12i.w	$a0, 4
+	ori	$a0, $a0, 1360
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
-	addi.d	$s8, $a0, %pc_lo12(.L.str.21)
+	addi.d	$s7, $a0, %pc_lo12(.L.str.21)
 	lu12i.w	$a0, 238692
-	ori	$fp, $a0, 3141
+	ori	$a0, $a0, 3141
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	lu12i.w	$a0, 295989
 	ori	$a0, $a0, 577
 	lu32i.d	$a0, 349769
-	lu52i.d	$s7, $a0, 932
-	pcalau12i	$a0, %pc_hi20(.L.str.24)
-	addi.d	$s5, $a0, %pc_lo12(.L.str.24)
-	pcalau12i	$a0, %pc_hi20(.L.str.25)
-	addi.d	$s6, $a0, %pc_lo12(.L.str.25)
-	pcalau12i	$a0, %pc_hi20(.L.str.26)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.26)
-	pcalau12i	$a0, %pc_hi20(.L.str.27)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.27)
-	ori	$s3, $zero, 1
+	lu52i.d	$s4, $a0, 932
+	lu12i.w	$a0, 349236
+	ori	$a0, $a0, 3908
+	lu32i.d	$a0, -113331
+	lu52i.d	$s5, $a0, 1348
+	lu12i.w	$a0, 312468
+	ori	$s3, $a0, 333
+	lu12i.w	$a0, 283781
+	ori	$fp, $a0, 1103
+	lu12i.w	$a0, 3
+	ori	$s2, $a0, 2642
+	lu12i.w	$a0, 341140
+	ori	$a0, $a0, 2128
+	lu32i.d	$a0, -112312
+	lu52i.d	$s1, $a0, 1140
+	ori	$s8, $zero, 1
 	b	.LBB2_5
 	.p2align	4, , 16
 .LBB2_4:                                #   in Loop: Header=BB2_5 Depth=1
@@ -556,17 +563,18 @@ cli_dconf_load:                         # @cli_dconf_load
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $s3, 1
+	addi.w	$s8, $s8, 1
 	beqz	$a0, .LBB2_33
 .LBB2_5:                                # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(cli_chomp)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 40
-	ori	$a2, $zero, 3
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.hu	$a0, $sp, 40
+	ld.bu	$a1, $sp, 42
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 58
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_9
 # %bb.6:                                #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a0, $sp, 40
@@ -576,17 +584,18 @@ cli_dconf_load:                         # @cli_dconf_load
 # %bb.7:                                #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a2, $sp, 36
 	addi.d	$a0, $sp, 43
-	move	$a1, $s8
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_34
 # %bb.8:                                #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 36
-	st.w	$a0, $s4, 0
+	st.w	$a0, $s6, 0
 .LBB2_9:                                #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 40
-	bne	$a0, $fp, .LBB2_13
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB2_13
 # %bb.10:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(chkflevel)
@@ -595,17 +604,17 @@ cli_dconf_load:                         # @cli_dconf_load
 # %bb.11:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a2, $sp, 36
 	addi.d	$a0, $sp, 44
-	move	$a1, $s8
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_34
 # %bb.12:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 36
-	st.w	$a0, $s4, 4
+	st.w	$a0, $s6, 4
 .LBB2_13:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a0, $sp, 40
-	bne	$a0, $s7, .LBB2_17
+	bne	$a0, $s4, .LBB2_17
 # %bb.14:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(chkflevel)
@@ -614,20 +623,20 @@ cli_dconf_load:                         # @cli_dconf_load
 # %bb.15:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a2, $sp, 36
 	addi.d	$a0, $sp, 48
-	move	$a1, $s8
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_34
 # %bb.16:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 36
-	st.w	$a0, $s4, 8
+	st.w	$a0, $s6, 8
 .LBB2_17:                               #   in Loop: Header=BB2_5 Depth=1
-	addi.d	$a0, $sp, 40
-	ori	$a2, $zero, 9
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 40
+	ld.bu	$a1, $sp, 48
+	xor	$a0, $a0, $s5
+	xori	$a1, $a1, 58
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_21
 # %bb.18:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a0, $sp, 40
@@ -637,20 +646,20 @@ cli_dconf_load:                         # @cli_dconf_load
 # %bb.19:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a2, $sp, 36
 	addi.d	$a0, $sp, 49
-	move	$a1, $s8
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_34
 # %bb.20:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 36
-	st.w	$a0, $s4, 12
+	st.w	$a0, $s6, 12
 .LBB2_21:                               #   in Loop: Header=BB2_5 Depth=1
-	addi.d	$a0, $sp, 40
-	ori	$a2, $zero, 5
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 40
+	ld.bu	$a1, $sp, 44
+	xor	$a0, $a0, $s3
+	xori	$a1, $a1, 58
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_25
 # %bb.22:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a0, $sp, 40
@@ -660,20 +669,20 @@ cli_dconf_load:                         # @cli_dconf_load
 # %bb.23:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a2, $sp, 36
 	addi.d	$a0, $sp, 45
-	move	$a1, $s8
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_34
 # %bb.24:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 36
-	st.w	$a0, $s4, 16
+	st.w	$a0, $s6, 16
 .LBB2_25:                               #   in Loop: Header=BB2_5 Depth=1
-	addi.d	$a0, $sp, 40
-	ori	$a2, $zero, 6
-	move	$a1, $s2
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 40
+	ld.hu	$a1, $sp, 44
+	xor	$a0, $a0, $fp
+	xor	$a1, $a1, $s2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_29
 # %bb.26:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a0, $sp, 40
@@ -683,20 +692,20 @@ cli_dconf_load:                         # @cli_dconf_load
 # %bb.27:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a2, $sp, 36
 	addi.d	$a0, $sp, 46
-	move	$a1, $s8
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_34
 # %bb.28:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 36
-	st.w	$a0, $s4, 20
+	st.w	$a0, $s6, 20
 .LBB2_29:                               #   in Loop: Header=BB2_5 Depth=1
-	addi.d	$a0, $sp, 40
-	ori	$a2, $zero, 9
-	move	$a1, $s1
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 40
+	ld.bu	$a1, $sp, 48
+	xor	$a0, $a0, $s1
+	xori	$a1, $a1, 58
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_4
 # %bb.30:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a0, $sp, 40
@@ -706,14 +715,14 @@ cli_dconf_load:                         # @cli_dconf_load
 # %bb.31:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a2, $sp, 36
 	addi.d	$a0, $sp, 49
-	move	$a1, $s8
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_34
 # %bb.32:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 36
-	st.w	$a0, $s4, 24
+	st.w	$a0, $s6, 24
 	b	.LBB2_4
 .LBB2_33:
 	move	$a0, $zero
@@ -721,10 +730,10 @@ cli_dconf_load:                         # @cli_dconf_load
 .LBB2_34:
 	pcalau12i	$a0, %pc_hi20(.L.str.28)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.28)
-	move	$a1, $s3
+	move	$a1, $s8
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(cl_free)
 	jirl	$ra, $ra, 0

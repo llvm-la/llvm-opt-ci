@@ -5,13 +5,30 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcalau12i	$a1, %pc_hi20(a)
-	addi.d	$a1, $a1, %pc_lo12(a)
-	ori	$a2, $zero, 6
-	pcaddu18i	$t8, %call36(memcmp)
-	jr	$t8
+	pcalau12i	$a0, %pc_hi20(a)
+	addi.d	$a2, $a0, %pc_lo12(a)
+	ld.w	$a0, $a2, 0
+	revb.2w	$a0, $a0
+	addi.w	$a3, $a0, 0
+	lu12i.w	$a1, 402982
+	ori	$a1, $a1, 610
+	bne	$a3, $a1, .LBB0_3
+# %bb.1:                                # %loadbb1
+	ld.h	$a0, $a2, 4
+	revb.2h	$a0, $a0
+	bstrpick.d	$a0, $a0, 15, 0
+	lu12i.w	$a1, 6
+	ori	$a1, $a1, 610
+	bne	$a0, $a1, .LBB0_3
+# %bb.2:
+	move	$a0, $zero
+	ret
+.LBB0_3:                                # %res_block
+	addi.w	$a0, $a0, 0
+	sltu	$a0, $a1, $a0
+	sub.d	$a0, $zero, $a0
+	ori	$a0, $a0, 1
+	ret
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo
                                         # -- End function
@@ -21,12 +38,29 @@ foo:                                    # @foo
 bar:                                    # @bar
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(a)
-	addi.d	$a0, $a0, %pc_lo12(a)
-	pcalau12i	$a1, %pc_hi20(.L.str)
-	addi.d	$a1, $a1, %pc_lo12(.L.str)
-	ori	$a2, $zero, 6
-	pcaddu18i	$t8, %call36(memcmp)
-	jr	$t8
+	addi.d	$a2, $a0, %pc_lo12(a)
+	ld.w	$a0, $a2, 0
+	revb.2w	$a0, $a0
+	addi.w	$a3, $a0, 0
+	lu12i.w	$a1, 402982
+	ori	$a1, $a1, 610
+	bne	$a3, $a1, .LBB1_3
+# %bb.1:                                # %loadbb1
+	ld.h	$a0, $a2, 4
+	revb.2h	$a0, $a0
+	bstrpick.d	$a0, $a0, 15, 0
+	lu12i.w	$a1, 6
+	ori	$a1, $a1, 610
+	bne	$a0, $a1, .LBB1_3
+# %bb.2:
+	move	$a0, $zero
+	ret
+.LBB1_3:                                # %res_block
+	addi.w	$a0, $a0, 0
+	sltu	$a0, $a0, $a1
+	sub.d	$a0, $zero, $a0
+	ori	$a0, $a0, 1
+	ret
 .Lfunc_end1:
 	.size	bar, .Lfunc_end1-bar
                                         # -- End function

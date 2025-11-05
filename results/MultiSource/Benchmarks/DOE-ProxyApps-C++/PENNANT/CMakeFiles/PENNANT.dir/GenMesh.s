@@ -28,19 +28,15 @@ _ZN7GenMeshC2EPK9InputFile:             # @_ZN7GenMeshC2EPK9InputFile
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:                                # %._crit_edge.i.i
-	addi.d	$sp, $sp, -224
-	.cfi_def_cfa_offset 224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	.cfi_def_cfa_offset 160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -48,269 +44,259 @@ _ZN7GenMeshC2EPK9InputFile:             # @_ZN7GenMeshC2EPK9InputFile
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
-	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	move	$s0, $a1
 	move	$fp, $a0
-	addi.d	$s3, $a0, 16
-	st.d	$s3, $a0, 0
+	addi.d	$s1, $a0, 16
+	st.d	$s1, $a0, 0
 	st.d	$zero, $a0, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
 	st.b	$zero, $fp, 16
-	addi.d	$s1, $sp, 88
-	st.d	$s1, $sp, 72
-	vst	$vr0, $sp, 80
-	st.b	$zero, $sp, 96
 	addi.d	$s2, $sp, 56
 	st.d	$s2, $sp, 40
-	st.d	$zero, $sp, 48
-	st.b	$zero, $sp, 56
+	vst	$vr0, $sp, 48
+	st.b	$zero, $sp, 64
+	addi.d	$s3, $sp, 24
+	st.d	$s3, $sp, 8
+	st.d	$zero, $sp, 16
+	st.b	$zero, $sp, 24
 .Ltmp0:                                 # EH_LABEL
-	addi.d	$a0, $sp, 104
-	addi.d	$a2, $sp, 72
-	addi.d	$a3, $sp, 40
+	addi.d	$a0, $sp, 72
+	addi.d	$a2, $sp, 40
+	addi.d	$a3, $sp, 8
 	pcaddu18i	$ra, %call36(_ZNK9InputFile9getStringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_)
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.1:
 	ld.d	$a0, $fp, 0
-	ld.d	$a1, $sp, 104
-	addi.d	$s4, $sp, 120
-	beq	$a0, $s3, .LBB0_5
+	ld.d	$a1, $sp, 72
+	addi.d	$s4, $sp, 88
+	beq	$a0, $s1, .LBB0_5
 # %bb.2:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i
 	beq	$a1, $s4, .LBB0_43
 # %bb.3:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit23.thread25.i
-	vld	$vr0, $sp, 112
+	vld	$vr0, $sp, 80
 	ld.d	$a2, $fp, 16
 	st.d	$a1, $fp, 0
 	vst	$vr0, $fp, 8
 	beqz	$a0, .LBB0_7
 # %bb.4:
-	st.d	$a0, $sp, 104
-	st.d	$a2, $sp, 120
-	st.d	$zero, $sp, 112
+	st.d	$a0, $sp, 72
+	st.d	$a2, $sp, 88
+	st.d	$zero, $sp, 80
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 104
+	ld.d	$a0, $sp, 72
 	bne	$a0, $s4, .LBB0_8
 	b	.LBB0_9
 .LBB0_5:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i
 	beq	$a1, $s4, .LBB0_43
 # %bb.6:                                # %.thread.i
-	vld	$vr0, $sp, 112
+	vld	$vr0, $sp, 80
 	st.d	$a1, $fp, 0
 	vst	$vr0, $fp, 8
 .LBB0_7:
-	st.d	$s4, $sp, 104
+	st.d	$s4, $sp, 72
 	move	$a0, $s4
-	st.d	$zero, $sp, 112
+	st.d	$zero, $sp, 80
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 104
+	ld.d	$a0, $sp, 72
 	beq	$a0, $s4, .LBB0_9
 .LBB0_8:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a1, $sp, 120
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB0_9:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-	ld.d	$a0, $sp, 40
-	beq	$a0, $s2, .LBB0_11
-# %bb.10:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i25
-	ld.d	$a1, $sp, 56
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB0_11:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit27
-	ld.d	$a0, $sp, 72
-	beq	$a0, $s1, .LBB0_13
-# %bb.12:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i28
 	ld.d	$a1, $sp, 88
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB0_9:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
+	ld.d	$a0, $sp, 8
+	beq	$a0, $s3, .LBB0_11
+# %bb.10:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i25
+	ld.d	$a1, $sp, 24
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB0_11:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit27
+	ld.d	$a0, $sp, 40
+	beq	$a0, $s2, .LBB0_13
+# %bb.12:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i28
+	ld.d	$a1, $sp, 56
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
 .LBB0_13:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit30
-	ld.d	$s1, $fp, 8
+	ld.d	$a2, $fp, 8
 	ori	$a0, $zero, 3
-	beq	$s1, $a0, .LBB0_16
+	beq	$a2, $a0, .LBB0_16
 # %bb.14:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit30
 	ori	$a0, $zero, 4
-	bne	$s1, $a0, .LBB0_57
+	bne	$a2, $a0, .LBB0_57
 # %bb.15:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit40
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
-	move	$a2, $s1
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_18
 	b	.LBB0_61
 .LBB0_16:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
-	ld.d	$s2, $fp, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
-	ori	$a2, $zero, 3
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_18
+	ld.d	$a0, $fp, 0
+	ld.hu	$a1, $a0, 0
+	ld.bu	$a3, $a0, 2
+	lu12i.w	$a4, 6
+	ori	$a4, $a4, 2416
+	xor	$a1, $a1, $a4
+	xori	$a3, $a3, 101
+	or	$a1, $a1, $a3
+	beqz	$a1, .LBB0_18
 # %bb.17:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit42
-	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
-	move	$a0, $s2
-	move	$a2, $s1
+	pcalau12i	$a1, %pc_hi20(.L.str.5)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_61
 .LBB0_18:                               # %._crit_edge.i.i48
-	addi.d	$s1, $sp, 120
-	st.d	$s1, $sp, 104
+	addi.d	$s2, $sp, 88
+	st.d	$s2, $sp, 72
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	ld.d	$a1, $a0, 0
 	ld.h	$a0, $a0, 8
-	st.d	$a1, $sp, 120
-	st.h	$a0, $sp, 128
+	st.d	$a1, $sp, 88
+	st.h	$a0, $sp, 96
 	ori	$a0, $zero, 10
-	st.d	$a0, $sp, 112
-	st.b	$zero, $sp, 130
-	st.d	$zero, $sp, 56
+	st.d	$a0, $sp, 80
+	st.b	$zero, $sp, 98
+	st.d	$zero, $sp, 24
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 40
+	vst	$vr0, $sp, 8
 .Ltmp3:                                 # EH_LABEL
-	addi.d	$a0, $sp, 72
-	addi.d	$a2, $sp, 104
-	addi.d	$a3, $sp, 40
+	addi.d	$a0, $sp, 40
+	addi.d	$a2, $sp, 72
+	addi.d	$a3, $sp, 8
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNK9InputFile13getDoubleListERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIdSaIdEE)
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
 # %bb.19:
-	ld.d	$a0, $sp, 40
+	ld.d	$a0, $sp, 8
 	beqz	$a0, .LBB0_21
 # %bb.20:
-	ld.d	$a1, $sp, 56
+	ld.d	$a1, $sp, 24
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_21:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit
-	ld.d	$a0, $sp, 104
-	beq	$a0, $s1, .LBB0_23
+	ld.d	$a0, $sp, 72
+	beq	$a0, $s2, .LBB0_23
 # %bb.22:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i52
-	ld.d	$a1, $sp, 120
+	ld.d	$a1, $sp, 88
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_23:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit54
-	ld.d	$s0, $sp, 72
-	ld.d	$a0, $sp, 80
-	beq	$s0, $a0, .LBB0_65
+	ld.d	$a0, $sp, 40
+	ld.d	$a1, $sp, 48
+	beq	$a0, $a1, .LBB0_65
 # %bb.24:
-	sub.d	$s4, $a0, $s0
-	srai.d	$s6, $s4, 3
-	ori	$a0, $zero, 5
-	bgeu	$s6, $a0, .LBB0_68
+	sub.d	$a3, $a1, $a0
+	srai.d	$a5, $a3, 3
+	ori	$a1, $zero, 5
+	bgeu	$a5, $a1, .LBB0_68
 # %bb.25:
-	fld.d	$fa0, $s0, 0
+	fld.d	$fa0, $a0, 0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s1, $fa0
-	ori	$a0, $zero, 2
-	st.w	$s1, $fp, 32
-	bltu	$s6, $a0, .LBB0_27
+	movfr2gr.s	$a1, $fa0
+	ori	$a2, $zero, 2
+	st.w	$a1, $fp, 32
+	bltu	$a5, $a2, .LBB0_27
 # %bb.26:
-	fld.d	$fa0, $s0, 8
+	fld.d	$fa0, $a0, 8
 	b	.LBB0_28
 .LBB0_27:
-	movgr2fr.w	$fa0, $s1
+	movgr2fr.w	$fa0, $a1
 	ffint.d.w	$fa0, $fa0
 .LBB0_28:
-	ld.d	$s2, $fp, 8
+	ld.d	$a2, $fp, 8
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s5, $fa0
-	ori	$s7, $zero, 3
-	st.w	$s5, $fp, 36
-	bne	$s2, $s7, .LBB0_30
+	movfr2gr.s	$a4, $fa0
+	ori	$a6, $zero, 3
+	st.w	$a4, $fp, 36
+	bne	$a2, $a6, .LBB0_30
 # %bb.29:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit71
-	ld.d	$a0, $fp, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.3)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.3)
-	ori	$a2, $zero, 3
-	ori	$s8, $zero, 3
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_47
+	ld.d	$a7, $fp, 0
+	ld.hu	$t0, $a7, 0
+	ld.bu	$a7, $a7, 2
+	lu12i.w	$t1, 6
+	ori	$t1, $t1, 2416
+	xor	$t0, $t0, $t1
+	xori	$a7, $a7, 101
+	or	$a7, $t0, $a7
+	beqz	$a7, .LBB0_47
 .LBB0_30:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit71.thread
-	bltu	$s6, $s7, .LBB0_33
+	bltu	$a5, $a6, .LBB0_33
 # %bb.31:
-	fld.d	$fa2, $s0, 16
-	ori	$a0, $zero, 32
-	fst.d	$fa2, $fp, 40
-	bne	$s4, $a0, .LBB0_34
+	fld.d	$fa0, $a0, 16
+	ori	$a5, $zero, 32
+	fst.d	$fa0, $fp, 40
+	bne	$a3, $a5, .LBB0_34
 .LBB0_32:
-	fld.d	$fa0, $s0, 24
+	fld.d	$fa1, $a0, 24
 	b	.LBB0_35
 .LBB0_33:
-	vldi	$vr2, -912
-	ori	$a0, $zero, 32
-	fst.d	$fa2, $fp, 40
-	beq	$s4, $a0, .LBB0_32
-.LBB0_34:
 	vldi	$vr0, -912
+	ori	$a5, $zero, 32
+	fst.d	$fa0, $fp, 40
+	beq	$a3, $a5, .LBB0_32
+.LBB0_34:
+	vldi	$vr1, -912
 .LBB0_35:
-	fst.d	$fa0, $fp, 48
-	blez	$s1, .LBB0_54
+	fst.d	$fa1, $fp, 48
+	blez	$a1, .LBB0_54
 # %bb.36:
-	blez	$s5, .LBB0_54
+	blez	$a4, .LBB0_54
 # %bb.37:
-	movgr2fr.d	$fa1, $zero
-	fcmp.cle.d	$fcc0, $fa2, $fa1
+	movgr2fr.d	$fa2, $zero
+	fcmp.cle.d	$fcc0, $fa0, $fa2
 	bcnez	$fcc0, .LBB0_54
 # %bb.38:
-	fcmp.cult.d	$fcc0, $fa1, $fa0
+	fcmp.cult.d	$fcc0, $fa2, $fa1
 	bceqz	$fcc0, .LBB0_54
 # %bb.39:
-	ori	$a0, $zero, 3
-	bne	$s2, $a0, .LBB0_42
+	ori	$a1, $zero, 3
+	bne	$a2, $a1, .LBB0_42
 # %bb.40:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
-	ld.d	$a0, $fp, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.3)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.3)
-	ori	$a2, $zero, 3
-	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI0_4)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_4)
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
-	fcmp.cult.d	$fcc0, $fa1, $fa0
+	fld.d	$fa1, $a1, %pc_lo12(.LCPI0_4)
+	fcmp.cult.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB0_42
 # %bb.41:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
-	beqz	$a0, .LBB0_71
+	ld.d	$a1, $fp, 0
+	ld.hu	$a2, $a1, 0
+	ld.bu	$a1, $a1, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 2416
+	xor	$a2, $a2, $a3
+	xori	$a1, $a1, 101
+	or	$a1, $a2, $a1
+	beqz	$a1, .LBB0_71
 .LBB0_42:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit81
-	ld.d	$a0, $sp, 88
-	sub.d	$a1, $a0, $s0
-	move	$a0, $s0
+	ld.d	$a1, $sp, 56
+	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB0_43:
-	addi.d	$a2, $sp, 104
+	addi.d	$a2, $sp, 72
 	beq	$a2, $fp, .LBB0_53
 # %bb.44:
-	ld.d	$a2, $sp, 112
+	ld.d	$a2, $sp, 80
 	beqz	$a2, .LBB0_50
 # %bb.45:
 	ori	$a3, $zero, 1
@@ -320,43 +306,44 @@ _ZN7GenMeshC2EPK9InputFile:             # @_ZN7GenMeshC2EPK9InputFile
 	st.b	$a1, $a0, 0
 	b	.LBB0_50
 .LBB0_47:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit71.thread87
-	bltu	$s6, $s8, .LBB0_51
+	ori	$a6, $zero, 3
+	bltu	$a5, $a6, .LBB0_51
 # %bb.48:
-	fld.d	$fa0, $s0, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_2)
+	fld.d	$fa0, $a0, 16
+	pcalau12i	$a5, %pc_hi20(.LCPI0_2)
+	fld.d	$fa1, $a5, %pc_lo12(.LCPI0_2)
 	fmul.d	$fa0, $fa0, $fa1
 	b	.LBB0_52
 .LBB0_49:
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB0_50:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_S_copyEPcPKcm.exit.i
-	ld.d	$a0, $sp, 112
+	ld.d	$a0, $sp, 80
 	ld.d	$a1, $fp, 0
 	st.d	$a0, $fp, 8
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 104
-	st.d	$zero, $sp, 112
+	ld.d	$a0, $sp, 72
+	st.d	$zero, $sp, 80
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 104
+	ld.d	$a0, $sp, 72
 	bne	$a0, $s4, .LBB0_8
 	b	.LBB0_9
 .LBB0_51:
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI0_1)
+	fld.d	$fa0, $a5, %pc_lo12(.LCPI0_1)
 .LBB0_52:
-	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_3)
-	fdiv.d	$fa2, $fa0, $fa1
-	ori	$a0, $zero, 32
-	fst.d	$fa2, $fp, 40
-	beq	$s4, $a0, .LBB0_32
+	pcalau12i	$a5, %pc_hi20(.LCPI0_3)
+	fld.d	$fa1, $a5, %pc_lo12(.LCPI0_3)
+	fdiv.d	$fa0, $fa0, $fa1
+	ori	$a5, $zero, 32
+	fst.d	$fa0, $fp, 40
+	beq	$a3, $a5, .LBB0_32
 	b	.LBB0_34
 .LBB0_53:
 	move	$a0, $a1
-	st.d	$zero, $sp, 112
+	st.d	$zero, $sp, 80
 	st.b	$zero, $a0, 0
-	ld.d	$a0, $sp, 104
+	ld.d	$a0, $sp, 72
 	bne	$a0, $s4, .LBB0_8
 	b	.LBB0_9
 .LBB0_54:
@@ -383,7 +370,7 @@ _ZN7GenMeshC2EPK9InputFile:             # @_ZN7GenMeshC2EPK9InputFile
 .Ltmp13:                                # EH_LABEL
 	b	.LBB0_74
 .LBB0_57:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit30
-	bnez	$s1, .LBB0_61
+	bnez	$a2, .LBB0_61
 # %bb.58:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8Parallel4mypeE)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZN8Parallel4mypeE)
@@ -515,47 +502,47 @@ _ZN7GenMeshC2EPK9InputFile:             # @_ZN7GenMeshC2EPK9InputFile
 	b	.LBB0_88
 .LBB0_76:
 .Ltmp5:                                 # EH_LABEL
-	ld.d	$a2, $sp, 40
+	ld.d	$a2, $sp, 8
 	move	$s0, $a0
 	beqz	$a2, .LBB0_78
 # %bb.77:
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 24
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_78:                               # %_ZNSt6vectorIdSaIdEED2Ev.exit60
-	ld.d	$a0, $sp, 104
-	beq	$a0, $s1, .LBB0_88
+	ld.d	$a0, $sp, 72
+	beq	$a0, $s2, .LBB0_88
 # %bb.79:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i61
-	ld.d	$a1, $sp, 120
+	ld.d	$a1, $sp, 88
 	b	.LBB0_84
 .LBB0_80:
 .Ltmp2:                                 # EH_LABEL
-	ld.d	$a2, $sp, 40
+	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s2, .LBB0_82
+	beq	$a2, $s3, .LBB0_82
 # %bb.81:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i33
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_82:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit35
-	ld.d	$a0, $sp, 72
-	beq	$a0, $s1, .LBB0_88
+	ld.d	$a0, $sp, 40
+	beq	$a0, $s2, .LBB0_88
 # %bb.83:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i36
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 56
 .LBB0_84:
 	addi.d	$a1, $a1, 1
 	b	.LBB0_87
 .LBB0_85:
 .Ltmp22:                                # EH_LABEL
-	ld.d	$a2, $sp, 72
+	ld.d	$a2, $sp, 40
 	move	$s0, $a0
 	beqz	$a2, .LBB0_88
 # %bb.86:
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 56
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 .LBB0_87:
@@ -563,9 +550,9 @@ _ZN7GenMeshC2EPK9InputFile:             # @_ZN7GenMeshC2EPK9InputFile
 	jirl	$ra, $ra, 0
 .LBB0_88:
 	ld.d	$a0, $fp, 0
-	beq	$a0, $s3, .LBB0_90
+	beq	$a0, $s1, .LBB0_90
 # %bb.89:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i82
-	ld.d	$a1, $s3, 0
+	ld.d	$a1, $s1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -648,19 +635,19 @@ _ZN7GenMeshD2Ev:                        # @_ZN7GenMeshD2Ev
 _ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_: # @_ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	.cfi_def_cfa_offset 144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	.cfi_def_cfa_offset 128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -672,18 +659,16 @@ _ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	ld.d	$t0, $sp, 160
-	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$t0, $sp, 152
-	st.d	$t0, $sp, 48                    # 8-byte Folded Spill
-	ld.d	$s5, $sp, 144
-	move	$s8, $a7
-	move	$s2, $a6
-	move	$s3, $a5
-	move	$s4, $a4
-	move	$fp, $a3
-	move	$s0, $a2
-	move	$s1, $a1
+	ld.d	$fp, $sp, 144
+	ld.d	$s8, $sp, 136
+	ld.d	$s7, $sp, 128
+	st.d	$a7, $sp, 32                    # 8-byte Folded Spill
+	move	$s0, $a6
+	move	$s1, $a5
+	move	$s2, $a4
+	move	$s3, $a3
+	move	$s4, $a2
+	move	$s5, $a1
 	move	$s6, $a0
 	pcaddu18i	$ra, %call36(_ZN7GenMesh9calcNumPEEv)
 	jirl	$ra, $ra, 0
@@ -706,47 +691,43 @@ _ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7
 	st.w	$a0, $s6, 84
 	addi.d	$a1, $a1, 1
 	mul.w	$a1, $a1, $a2
-	ld.d	$s7, $s6, 8
+	ld.d	$a2, $s6, 8
 	div.w	$a1, $a1, $a4
 	sub.d	$a0, $a1, $a0
 	ori	$a1, $zero, 4
 	st.w	$a0, $s6, 76
-	beq	$s7, $a1, .LBB2_5
+	beq	$a2, $a1, .LBB2_5
 # %bb.1:
 	ori	$a0, $zero, 3
-	bne	$s7, $a0, .LBB2_8
+	bne	$a2, $a0, .LBB2_8
 # %bb.2:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
-	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
-	ld.d	$s8, $s6, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
-	ori	$a2, $zero, 3
-	move	$a0, $s8
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB2_7
+	ld.d	$a0, $s6, 0
+	ld.hu	$a1, $a0, 0
+	ld.bu	$a3, $a0, 2
+	lu12i.w	$a4, 6
+	ori	$a4, $a4, 2416
+	xor	$a1, $a1, $a4
+	xori	$a3, $a3, 101
+	or	$a1, $a1, $a3
+	beqz	$a1, .LBB2_7
 # %bb.3:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit35
-	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
-	move	$a0, $s8
-	move	$a2, $s7
+	pcalau12i	$a1, %pc_hi20(.L.str.5)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.5)
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
 	bnez	$a0, .LBB2_8
 # %bb.4:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit35.thread
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 16
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 8
-	st.d	$s5, $sp, 0
+	st.d	$fp, $sp, 16
+	st.d	$s8, $sp, 8
+	st.d	$s7, $sp, 0
 	move	$a0, $s6
-	move	$a1, $s1
-	move	$a2, $s0
-	move	$a3, $fp
-	move	$a4, $s4
-	move	$a5, $s3
-	move	$a6, $s2
+	move	$a1, $s5
+	move	$a2, $s4
+	move	$a3, $s3
+	move	$a4, $s2
+	move	$a5, $s1
+	move	$a6, $s0
+	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_)
 	jirl	$ra, $ra, 0
 	b	.LBB2_8
@@ -754,56 +735,51 @@ _ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7
 	ld.d	$a0, $s6, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
-	move	$a2, $s7
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_8
 # %bb.6:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit33.thread
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 16
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 8
-	st.d	$s5, $sp, 0
+	st.d	$fp, $sp, 16
+	st.d	$s8, $sp, 8
+	st.d	$s7, $sp, 0
 	move	$a0, $s6
-	move	$a1, $s1
-	move	$a2, $s0
-	move	$a3, $fp
-	move	$a4, $s4
-	move	$a5, $s3
-	move	$a6, $s2
-	move	$a7, $s8
+	move	$a1, $s5
+	move	$a2, $s4
+	move	$a3, $s3
+	move	$a4, $s2
+	move	$a5, $s1
+	move	$a6, $s0
+	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN7GenMesh12generateRectERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_)
 	jirl	$ra, $ra, 0
 	b	.LBB2_8
 .LBB2_7:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 16
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	st.d	$a0, $sp, 8
-	st.d	$s5, $sp, 0
+	st.d	$fp, $sp, 16
+	st.d	$s8, $sp, 8
+	st.d	$s7, $sp, 0
 	move	$a0, $s6
-	move	$a1, $s1
-	move	$a2, $s0
-	move	$a3, $fp
-	move	$a4, $s4
-	move	$a5, $s3
-	move	$a6, $s2
+	move	$a1, $s5
+	move	$a2, $s4
+	move	$a3, $s3
+	move	$a4, $s2
+	move	$a5, $s1
+	move	$a6, $s0
 	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN7GenMesh11generatePieERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_)
 	jirl	$ra, $ra, 0
 .LBB2_8:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit35.thread38
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end2:
 	.size	_ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_, .Lfunc_end2-_ZN7GenMesh8generateERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S7_S7_S7_

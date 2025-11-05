@@ -328,7 +328,6 @@ yylex:                                  # @yylex
 	addi.d	$sp, $sp, 128
 	ret
 .LBB2_38:
-	move	$s0, $a0
 	addi.d	$a1, $a0, -103
 	ori	$a2, $zero, 13
 	bltu	$a2, $a1, .LBB2_53
@@ -342,7 +341,7 @@ yylex:                                  # @yylex
 # %bb.40:                               # %.preheader210
 	lu12i.w	$s2, -2
 	pcalau12i	$a1, %pc_hi20(buf)
-	addi.d	$fp, $a1, %pc_lo12(buf)
+	addi.d	$s0, $a1, %pc_lo12(buf)
 	lu12i.w	$s1, 2
 	ori	$s4, $zero, 95
 	b	.LBB2_42
@@ -352,52 +351,53 @@ yylex:                                  # @yylex
 	addi.d	$s2, $s2, 1
 	beqz	$s2, .LBB2_64
 .LBB2_42:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s3, 0
-	add.d	$s5, $fp, $s2
-	stx.b	$s0, $s5, $s1
+	ld.d	$a1, $s3, 0
+	add.d	$s5, $s0, $s2
+	stx.b	$a0, $s5, $s1
+	move	$a0, $a1
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$fp, $a0
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $a0, 0
-	slli.d	$a2, $s0, 1
+	move	$a1, $a0
+	move	$a0, $fp
+	ld.d	$a1, $a1, 0
+	slli.d	$a2, $fp, 1
 	ldx.hu	$a1, $a1, $a2
 	andi	$a1, $a1, 3072
 	bnez	$a1, .LBB2_41
 # %bb.43:                               #   in Loop: Header=BB2_42 Depth=1
-	beq	$s0, $s4, .LBB2_41
+	beq	$a0, $s4, .LBB2_41
 # %bb.44:
 	ld.d	$a1, $s3, 0
-	move	$a0, $s0
 	pcaddu18i	$ra, %call36(ungetc)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s1, 1
 	stx.b	$zero, $s5, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
-	ori	$a2, $zero, 5
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s0, 0
+	ld.bu	$a1, $s0, 4
+	lu12i.w	$a2, 448294
+	ori	$a2, $a2, 1396
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB2_52
 # %bb.45:
-	pcalau12i	$a0, %pc_hi20(buf)
-	addi.d	$a0, $a0, %pc_lo12(buf)
-	pcalau12i	$a1, %pc_hi20(.L.str.3)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.3)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s0, 0
+	ld.hu	$a1, $s0, 4
+	lu12i.w	$a2, 468503
+	ori	$a2, $a2, 1139
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 116
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB2_55
 # %bb.46:
-	pcalau12i	$a0, %pc_hi20(buf)
-	addi.d	$a0, $a0, %pc_lo12(buf)
-	pcalau12i	$a1, %pc_hi20(.L.str.4)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s0, 0
+	ld.bu	$a1, $s0, 4
+	lu12i.w	$a2, 448023
+	ori	$a2, $a2, 615
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	ori	$a1, $zero, 259
 	beqz	$a0, .LBB2_37
 	b	.LBB2_54
@@ -448,7 +448,7 @@ yylex:                                  # @yylex
 .LBB2_53:
 	ori	$a2, $zero, 37
 	ori	$a1, $zero, 261
-	beq	$s0, $a2, .LBB2_37
+	beq	$a0, $a2, .LBB2_37
 .LBB2_54:
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)

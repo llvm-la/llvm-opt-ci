@@ -382,7 +382,7 @@ FontChange:                             # @FontChange
 	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
-	addi.d	$sp, $sp, -336
+	addi.d	$sp, $sp, -448
 	move	$s7, $a0
 	ld.wu	$a0, $a0, 12
 	pcalau12i	$s8, %pc_hi20(font_count)
@@ -419,8 +419,8 @@ FontChange:                             # @FontChange
 	ld.d	$s6, $s1, 8
 	beq	$s6, $s1, .LBB1_449
 # %bb.6:                                # %.preheader444.preheader
-	st.d	$s3, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 352                   # 8-byte Folded Spill
 	ori	$s5, $zero, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.12)
@@ -448,13 +448,13 @@ FontChange:                             # @FontChange
 	ld.bu	$a0, $s2, 0
 	beqz	$a0, .LBB1_449
 # %bb.10:                               # %.thread393
-	st.d	$s1, $sp, 264
+	st.d	$s1, $sp, 376
 	ori	$fp, $zero, 1
 .LBB1_11:                               # %.lr.ph503.preheader
 	move	$a6, $zero
 	move	$a7, $zero
-	addi.d	$a0, $sp, 280
-	addi.d	$a1, $sp, 264
+	addi.d	$a0, $sp, 392
+	addi.d	$a1, $sp, 376
 	ori	$a2, $zero, 43
 	ori	$a3, $zero, 5
 	ori	$a4, $zero, 45
@@ -564,7 +564,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 1
 	bne	$fp, $a0, .LBB1_55
 # %bb.32:
-	ld.d	$s6, $sp, 264
+	ld.d	$s6, $sp, 376
 	b	.LBB1_61
 .LBB1_33:
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -639,7 +639,7 @@ FontChange:                             # @FontChange
 # %bb.49:                               #   in Loop: Header=BB1_40 Depth=1
 	slli.d	$a0, $fp, 3
 	addi.w	$fp, $fp, 1
-	addi.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 376
 	stx.d	$s0, $a0, $a1
 	b	.LBB1_39
 .LBB1_50:                               #   in Loop: Header=BB1_40 Depth=1
@@ -655,9 +655,9 @@ FontChange:                             # @FontChange
 	ori	$a1, $zero, 41
 .LBB1_52:
 	ori	$a3, $zero, 2
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 .LBB1_53:
-	addi.d	$sp, $sp, 336
+	addi.d	$sp, $sp, 448
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
@@ -673,8 +673,8 @@ FontChange:                             # @FontChange
 	pcaddu18i	$t8, %call36(Error)
 	jr	$t8
 .LBB1_54:
-	ld.d	$fp, $sp, 264
-	ld.d	$s6, $sp, 272
+	ld.d	$fp, $sp, 376
+	ld.d	$s6, $sp, 384
 	b	.LBB1_62
 .LBB1_55:
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -685,8 +685,8 @@ FontChange:                             # @FontChange
 	ori	$a1, $zero, 43
 	b	.LBB1_34
 .LBB1_56:                               # %._crit_edge
-	ld.d	$s8, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 360                   # 8-byte Folded Reload
 	beqz	$fp, .LBB1_449
 # %bb.57:
 	ori	$a0, $zero, 4
@@ -716,8 +716,8 @@ FontChange:                             # @FontChange
 	ld.hu	$a0, $s7, 12
 	slli.d	$a0, $a0, 52
 	pcalau12i	$s5, %pc_hi20(font_root)
-	st.d	$s3, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 344                   # 8-byte Folded Spill
 	bnez	$a0, .LBB1_67
 # %bb.63:
 	beqz	$s0, .LBB1_66
@@ -763,7 +763,7 @@ FontChange:                             # @FontChange
 	bnez	$a0, .LBB1_69
 	b	.LBB1_86
 .LBB1_73:
-	st.d	$s8, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 352                   # 8-byte Folded Spill
 	bnez	$s6, .LBB1_99
 # %bb.74:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -950,10 +950,10 @@ FontChange:                             # @FontChange
 	jirl	$ra, $ra, 0
 	b	.LBB1_369
 .LBB1_98:
-	st.d	$s8, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 352                   # 8-byte Folded Spill
 	move	$fp, $s0
 .LBB1_99:                               # %.thread634
-	st.d	$s7, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 296                   # 8-byte Folded Spill
 	pcalau12i	$s0, %pc_hi20(FontDefSym)
 	ld.d	$a0, $s0, %pc_lo12(FontDefSym)
 	ld.d	$s1, $a0, 88
@@ -976,13 +976,13 @@ FontChange:                             # @FontChange
 .LBB1_101:
 	pcalau12i	$a0, %pc_hi20(.L.str.74)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.74)
-	addi.d	$a0, $sp, 1456
+	addi.d	$a0, $sp, 1568
 	move	$a2, $s3
 	move	$a3, $s8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $s1, 24
-	addi.d	$s2, $sp, 1336
+	addi.d	$s2, $sp, 1448
 	.p2align	4, , 16
 .LBB1_102:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_104 Depth 2
@@ -1000,24 +1000,24 @@ FontChange:                             # @FontChange
 	beqz	$a1, .LBB1_104
 # %bb.105:                              #   in Loop: Header=BB1_102 Depth=1
 	ld.d	$a2, $s0, %pc_lo12(FontDefSym)
-	addi.d	$a3, $sp, 1456
-	addi.d	$a4, $sp, 1356
-	addi.d	$a5, $sp, 1354
-	addi.d	$a6, $sp, 1344
-	addi.d	$a7, $sp, 1332
+	addi.d	$a3, $sp, 1568
+	addi.d	$a4, $sp, 1468
+	addi.d	$a5, $sp, 1466
+	addi.d	$a6, $sp, 1456
+	addi.d	$a7, $sp, 1444
 	st.d	$s2, $sp, 0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(DbRetrieve)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_102
 # %bb.106:
-	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 368                   # 8-byte Folded Spill
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(SwitchScope)
 	jirl	$ra, $ra, 0
-	ld.hu	$a0, $sp, 1354
-	ld.d	$a1, $sp, 1344
-	ld.w	$a2, $sp, 1332
+	ld.hu	$a0, $sp, 1466
+	ld.d	$a1, $sp, 1456
+	ld.w	$a2, $sp, 1444
 	pcaddu18i	$ra, %call36(ReadFromFile)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
@@ -1035,13 +1035,13 @@ FontChange:                             # @FontChange
 	addi.d	$a5, $a0, %pc_lo12(.L.str.1)
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 11
-	addi.d	$a6, $sp, 1456
+	addi.d	$a6, $sp, 1568
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_108:
-	st.d	$s6, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 280                   # 8-byte Folded Spill
 	ld.d	$s3, $s7, 8
 	beq	$s3, $s7, .LBB1_158
 # %bb.109:                              # %.preheader519.lr.ph.i
@@ -1049,16 +1049,16 @@ FontChange:                             # @FontChange
 	pcalau12i	$s6, %pc_hi20(fd_family)
 	pcalau12i	$a0, %pc_hi20(.L.str.77)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.77)
-	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 336                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
 	move	$s4, $zero
 	move	$s2, $zero
-	st.d	$zero, $sp, 208                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 320                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 312                 # 8-byte Folded Spill
 	move	$s1, $zero
-	st.d	$zero, $sp, 176                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 288                 # 8-byte Folded Spill
 	move	$s5, $zero
 	b	.LBB1_113
 .LBB1_110:                              # %.loopexit517.i
@@ -1066,11 +1066,11 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 12
 	ori	$a3, $zero, 1
-	addi.d	$a7, $sp, 1456
-	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
+	addi.d	$a7, $sp, 1568
+	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
 	addi.d	$a4, $s7, 32
 	move	$a5, $fp
-	ld.d	$a6, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 328                   # 8-byte Folded Reload
 .LBB1_111:                              #   in Loop: Header=BB1_113 Depth=1
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -1139,7 +1139,7 @@ FontChange:                             # @FontChange
 	ld.d	$a1, $a1, %pc_lo12(fd_mapping)
 	beq	$a0, $a1, .LBB1_147
 # %bb.124:                              #   in Loop: Header=BB1_113 Depth=1
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(fd_recode)
 	ld.d	$a1, $s1, %pc_lo12(fd_recode)
 	beq	$a0, $a1, .LBB1_152
@@ -1170,7 +1170,7 @@ FontChange:                             # @FontChange
 	bltu	$a1, $a0, .LBB1_110
 # %bb.129:                              #   in Loop: Header=BB1_113 Depth=1
 	move	$a0, $fp
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 368                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB1_110
@@ -1203,7 +1203,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 13
 	ori	$a3, $zero, 1
-	addi.d	$a7, $sp, 1456
+	addi.d	$a7, $sp, 1568
 	addi.d	$a4, $s7, 32
 	move	$a5, $fp
 	b	.LBB1_111
@@ -1222,7 +1222,7 @@ FontChange:                             # @FontChange
 	ld.bu	$a1, $a0, 32
 	addi.d	$a1, $a1, -11
 	ori	$a2, $zero, 2
-	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
 	bltu	$a1, $a2, .LBB1_112
 # %bb.138:                              #   in Loop: Header=BB1_113 Depth=1
 	addi.d	$a4, $a0, 32
@@ -1246,7 +1246,7 @@ FontChange:                             # @FontChange
 	ld.bu	$a1, $a0, 32
 	addi.d	$a1, $a1, -11
 	ori	$a2, $zero, 2
-	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
 	bltu	$a1, $a2, .LBB1_112
 # %bb.142:                              #   in Loop: Header=BB1_113 Depth=1
 	addi.d	$a4, $a0, 32
@@ -1294,7 +1294,7 @@ FontChange:                             # @FontChange
 	ld.bu	$a1, $a0, 32
 	addi.d	$a1, $a1, -11
 	ori	$a2, $zero, 2
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
 	bltu	$a1, $a2, .LBB1_112
 # %bb.150:                              #   in Loop: Header=BB1_113 Depth=1
 	addi.d	$a4, $a0, 32
@@ -1339,39 +1339,39 @@ FontChange:                             # @FontChange
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_157:                              #   in Loop: Header=BB1_113 Depth=1
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
 	b	.LBB1_112
 .LBB1_158:
 	move	$s5, $zero
-	st.d	$zero, $sp, 176                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 288                 # 8-byte Folded Spill
 	move	$s1, $zero
-	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 208                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 312                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 320                 # 8-byte Folded Spill
 	move	$s2, $zero
 	move	$s4, $zero
 .LBB1_159:                              # %._crit_edge.i
-	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
-	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
+	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
+	ld.d	$s5, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
 	beqz	$s4, .LBB1_169
 # %bb.160:                              # %._crit_edge.i
 	beqz	$s2, .LBB1_169
 # %bb.161:                              # %._crit_edge.i
 	beqz	$a0, .LBB1_169
 # %bb.162:                              # %._crit_edge.i
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 312                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_169
 # %bb.163:                              # %._crit_edge.i
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_169
 # %bb.164:
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
 	ld.d	$s0, $s5, %pc_lo12(font_root)
 	addi.d	$s3, $s4, 64
 	move	$s1, $s0
-	ld.d	$s8, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 352                   # 8-byte Folded Reload
 .LBB1_165:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_167 Depth 2
 	ld.d	$s1, $s1, 8
@@ -1533,7 +1533,7 @@ FontChange:                             # @FontChange
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
 	move	$s2, $s0
-	ld.d	$s7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 296                   # 8-byte Folded Reload
 	b	.LBB1_369
 .LBB1_188:
 	ld.d	$a0, $s2, 24
@@ -1559,8 +1559,8 @@ FontChange:                             # @FontChange
 	ld.d	$a0, $s0, 0
 	st.d	$a1, $a1, 8
 .LBB1_190:
-	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 288                   # 8-byte Folded Reload
 	pcalau12i	$a1, %got_pc_hi20(zz_res)
 	ld.d	$s4, $a1, %got_pc_lo12(zz_res)
 	st.d	$a0, $s4, 0
@@ -1589,7 +1589,7 @@ FontChange:                             # @FontChange
 	ld.bu	$a2, $s6, 0
 	pcalau12i	$a0, %got_pc_hi20(zz_size)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_size)
-	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
 	st.w	$a2, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(zz_free)
 	ld.d	$s1, $a0, %got_pc_lo12(zz_free)
@@ -1634,7 +1634,7 @@ FontChange:                             # @FontChange
 	ld.d	$a0, $s0, 0
 	st.d	$a1, $a3, 8
 	st.d	$a0, $s4, 0
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 320                   # 8-byte Folded Reload
 	st.d	$a3, $s3, 0
 	beqz	$a0, .LBB1_198
 # %bb.197:
@@ -1649,7 +1649,7 @@ FontChange:                             # @FontChange
 	ld.bu	$a2, $s6, 0
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $s1, $a0
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 368                   # 8-byte Folded Reload
 	st.w	$a2, $a1, 0
 	beqz	$a0, .LBB1_200
 # %bb.199:
@@ -1699,13 +1699,13 @@ FontChange:                             # @FontChange
 	st.d	$a1, $a0, 16
 	st.d	$a0, $a1, 24
 .LBB1_203:
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_210
 # %bb.204:
 	ld.bu	$a2, $s6, 0
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $s1, $a0
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 368                   # 8-byte Folded Reload
 	st.w	$a2, $a1, 0
 	beqz	$a0, .LBB1_207
 # %bb.205:
@@ -1752,11 +1752,11 @@ FontChange:                             # @FontChange
 	ld.d	$a0, $s0, 0
 	st.d	$a1, $a3, 8
 	st.d	$a0, $s4, 0
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
 	st.d	$a1, $s3, 0
 	beqz	$a0, .LBB1_210
 # %bb.209:
-	ld.d	$a3, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$a1, $a3, 16
 	ld.d	$a2, $a0, 16
 	st.d	$a1, $fp, 0
@@ -1765,7 +1765,7 @@ FontChange:                             # @FontChange
 	st.d	$a1, $a0, 16
 	st.d	$a0, $a1, 24
 .LBB1_210:
-	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
 	beqz	$s5, .LBB1_216
 # %bb.211:                              # %sub_0.i
 	ld.bu	$a0, $s5, 64
@@ -1816,7 +1816,7 @@ FontChange:                             # @FontChange
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $s8, %pc_lo12(font_count)
 	pcalau12i	$a2, %pc_hi20(finfo)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	bltu	$a1, $a0, .LBB1_223
 # %bb.219:
 	lu12i.w	$a2, 1
@@ -1829,13 +1829,13 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 21
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s7, %pc_lo12(finfo_size)
 .LBB1_221:
 	slli.w	$a1, $a0, 1
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a0, $s5, %pc_lo12(finfo)
 	st.w	$a1, $s7, %pc_lo12(finfo_size)
 	alsl.d	$a1, $a1, $a1, 1
@@ -1850,7 +1850,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 22
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_223:
@@ -1873,7 +1873,7 @@ FontChange:                             # @FontChange
 	slli.d	$a1, $a2, 3
 	ldx.d	$a1, $s1, $a1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	st.w	$a2, $a0, 0
 	beqz	$a1, .LBB1_225
 # %bb.224:
@@ -1889,7 +1889,7 @@ FontChange:                             # @FontChange
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 .LBB1_226:
-	ld.d	$s7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 296                   # 8-byte Folded Reload
 	st.b	$zero, $a1, 32
 	st.d	$a1, $a1, 24
 	st.d	$a1, $a1, 16
@@ -1933,13 +1933,13 @@ FontChange:                             # @FontChange
 	st.h	$a2, $s5, 40
 	pcalau12i	$a1, %got_pc_hi20(BackEnd)
 	ld.d	$a1, $a1, %got_pc_lo12(BackEnd)
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
 	ld.w	$a1, $a1, 40
 	sltui	$a1, $a1, 1
 	pcalau12i	$a2, %got_pc_hi20(PlainCharHeight)
 	ld.d	$a2, $a2, %got_pc_lo12(PlainCharHeight)
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	ld.w	$a2, $a2, 0
 	ori	$a3, $zero, 1000
 	masknez	$a3, $a3, $a1
@@ -1958,26 +1958,26 @@ FontChange:                             # @FontChange
 	srli.d	$a1, $a1, 12
 	bstrins.d	$a0, $a1, 63, 12
 	st.h	$a0, $s2, 40
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	addi.d	$a0, $a1, 64
 	addi.d	$a2, $a1, 32
 	pcalau12i	$a1, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.14)
 	ori	$a3, $zero, 5
 	ori	$a4, $zero, 5
-	st.d	$a2, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 320                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(DefineFile)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(OpenFile)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
-	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
 	bnez	$a0, .LBB1_231
 # %bb.230:
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -1986,11 +1986,11 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 23
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_231:
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
@@ -1999,22 +1999,31 @@ FontChange:                             # @FontChange
 # %bb.232:
 	pcalau12i	$a0, %pc_hi20(.L.str.92)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.92)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 308
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 420
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB1_234
 # %bb.233:
-	pcalau12i	$a0, %pc_hi20(.L.str.93)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.93)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 17
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	lu12i.w	$a1, 468503
+	ori	$a1, $a1, 1107
+	lu32i.d	$a1, -47500
+	lu52i.d	$a1, $a1, 1766
+	xor	$a0, $a0, $a1
+	ld.d	$a1, $sp, 428
+	lu12i.w	$a2, 476756
+	ori	$a2, $a2, 3444
+	lu32i.d	$a2, 223602
+	ld.bu	$a3, $sp, 436
+	lu52i.d	$a2, $a2, 1846
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a3
 	beqz	$a0, .LBB1_235
 .LBB1_234:
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2023,17 +2032,17 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 24
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_235:
 	ori	$a0, $zero, 2560
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	bnez	$a0, .LBB1_237
 # %bb.236:
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2052,7 +2061,7 @@ FontChange:                             # @FontChange
 	bnez	$a0, .LBB1_239
 # %bb.238:
 	move	$fp, $a0
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2068,18 +2077,18 @@ FontChange:                             # @FontChange
 .LBB1_239:
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 256
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 258
-	st.w	$a0, $sp, 300
+	st.w	$a0, $sp, 412
 	ori	$a0, $zero, 512
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 336                   # 8-byte Folded Spill
 	bnez	$a0, .LBB1_241
 # %bb.240:
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2095,10 +2104,10 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 1536
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
 	bnez	$a0, .LBB1_243
 # %bb.242:
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2112,7 +2121,7 @@ FontChange:                             # @FontChange
 	jirl	$ra, $ra, 0
 .LBB1_243:
 	ori	$a2, $zero, 512
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
@@ -2121,10 +2130,10 @@ FontChange:                             # @FontChange
 	ori	$fp, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	bnez	$a0, .LBB1_245
 # %bb.244:
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2137,61 +2146,124 @@ FontChange:                             # @FontChange
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_245:
-	st.d	$s5, $sp, 104                   # 8-byte Folded Spill
-	st.w	$fp, $sp, 304
-	addi.d	$a0, $sp, 820
+	st.d	$s5, $sp, 168                   # 8-byte Folded Spill
+	st.w	$fp, $sp, 416
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_319
 # %bb.246:                              # %.lr.ph612.i
-	pcalau12i	$a0, %pc_hi20(.L.str.96)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.96)
+	lu12i.w	$a0, 288326
+	ori	$a0, $a0, 3653
+	lu32i.d	$a0, 290415
+	lu52i.d	$a0, $a0, 1239
+	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
+	lu12i.w	$a0, 431911
+	ori	$a0, $a0, 1125
+	lu32i.d	$a0, -363677
+	lu52i.d	$a0, $a0, 0
+	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.92)
-	addi.d	$s5, $a0, %pc_lo12(.L.str.92)
-	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 200                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 208                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	addi.d	$s3, $a0, %pc_lo12(.L.str.92)
+	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 160                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 264                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 248                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 272                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
 	move	$fp, $zero
-	st.d	$zero, $sp, 168                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 280                 # 8-byte Folded Spill
+	ori	$s5, $zero, 18
+	lu12i.w	$a0, 476902
+	ori	$a0, $a0, 3910
+	lu32i.d	$a0, -171698
+	lu52i.d	$a0, $a0, 1622
+	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
+	lu12i.w	$a0, 431207
+	ori	$a0, $a0, 841
+	lu32i.d	$a0, 288120
+	lu52i.d	$a0, $a0, 1286
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
+	lu12i.w	$a0, 431366
+	ori	$a0, $a0, 1125
+	lu32i.d	$a0, -498828
+	lu52i.d	$a0, $a0, 6
+	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	lu12i.w	$a0, 415575
+	lu12i.w	$a1, 468503
+	ori	$a1, $a1, 1107
+	ori	$a0, $a0, 628
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	move	$a0, $a1
+	lu32i.d	$a0, -507020
+	lu52i.d	$a0, $a0, 1558
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	lu12i.w	$a0, 476756
+	ori	$a0, $a0, 3442
+	lu32i.d	$a0, 223602
+	lu52i.d	$a0, $a0, 1846
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
+	lu12i.w	$a0, 398598
+	ori	$a0, $a0, 3698
+	lu32i.d	$a0, 225897
+	lu52i.d	$a0, $a0, 7
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	lu12i.w	$a0, 415302
+	ori	$a0, $a0, 3669
+	lu32i.d	$a0, -430990
+	lu52i.d	$s1, $a0, 1766
+	lu12i.w	$a0, 472821
+	ori	$a0, $a0, 101
+	lu32i.d	$a0, -428951
+	lu52i.d	$a0, $a0, 1782
+	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	lu12i.w	$a0, 431749
+	ori	$a0, $a0, 1125
+	lu32i.d	$a0, -103581
+	lu52i.d	$a0, $a0, 1622
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	lu12i.w	$a0, 452278
+	ori	$a0, $a0, 873
+	lu32i.d	$a0, 226149
+	lu52i.d	$a0, $a0, 7
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	lu12i.w	$a0, 431700
 	ori	$a0, $a0, 2136
 	lu32i.d	$a0, 288871
 	lu52i.d	$a0, $a0, 7
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
 	b	.LBB1_250
 .LBB1_247:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_316
 .LBB1_248:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
 	ori	$a2, $zero, 250
 	maskeqz	$a0, $a2, $a0
 	or	$a2, $a0, $a1
-	addi.d	$a4, $sp, 300
-	addi.d	$a7, $sp, 304
+	addi.d	$a4, $sp, 412
+	addi.d	$a7, $sp, 416
 	st.d	$s6, $sp, 0
 	move	$a0, $s2
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
-	move	$a5, $s1
-	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
+	st.d	$a2, $sp, 280                   # 8-byte Folded Spill
+	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(ReadCharMetrics)
 	jirl	$ra, $ra, 0
 .LBB1_249:                              #   in Loop: Header=BB1_250 Depth=1
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
@@ -2202,30 +2274,31 @@ FontChange:                             # @FontChange
                                         #       Child Loop BB1_301 Depth 3
                                         #       Child Loop BB1_309 Depth 3
                                         #     Child Loop BB1_260 Depth 2
-	ld.bu	$a0, $sp, 820
+	ld.bu	$a0, $sp, 932
 	ori	$a1, $zero, 69
 	bne	$a0, $a1, .LBB1_252
 # %bb.251:                              #   in Loop: Header=BB1_250 Depth=1
-	addi.d	$a0, $sp, 820
-	ori	$a2, $zero, 16
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 932
+	ld.d	$a1, $sp, 940
+	ld.d	$a2, $sp, 312                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 288                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB1_321
 .LBB1_252:                              # %.critedge484.i
                                         #   in Loop: Header=BB1_250 Depth=1
-	ld.w	$a0, $sp, 304
+	ld.w	$a0, $sp, 416
 	addi.w	$s4, $a0, 1
-	st.w	$s4, $sp, 304
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 308
-	move	$a1, $s5
+	st.w	$s4, $sp, 416
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 420
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 308
+	ld.bu	$a0, $sp, 420
 	addi.d	$a0, $a0, -70
-	ori	$a1, $zero, 18
-	bltu	$a1, $a0, .LBB1_249
+	bltu	$s5, $a0, .LBB1_249
 # %bb.253:                              # %.critedge484.i
                                         #   in Loop: Header=BB1_250 Depth=1
 	slli.d	$a0, $a0, 2
@@ -2235,18 +2308,17 @@ FontChange:                             # @FontChange
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB1_254:                              #   in Loop: Header=BB1_250 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.106)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.106)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 9
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.bu	$a1, $sp, 428
+	ld.d	$a2, $sp, 256                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_249
 # %bb.255:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_257
 # %bb.256:                              #   in Loop: Header=BB1_250 Depth=1
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2255,31 +2327,31 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 29
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	move	$a6, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_257:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.108)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.108)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 308
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 420
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 308
+	ld.bu	$a0, $sp, 420
 	bnez	$a0, .LBB1_259
 # %bb.258:                              #   in Loop: Header=BB1_250 Depth=1
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.109)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.109)
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 30
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_259:                              #   in Loop: Header=BB1_250 Depth=1
@@ -2291,12 +2363,12 @@ FontChange:                             # @FontChange
 	beqz	$a1, .LBB1_260
 # %bb.261:                              #   in Loop: Header=BB1_250 Depth=1
 	addi.d	$s4, $a0, 64
-	addi.d	$a0, $sp, 308
+	addi.d	$a0, $sp, 420
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
 	beqz	$a0, .LBB1_249
 # %bb.262:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.110)
@@ -2306,19 +2378,22 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 31
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 308
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 420
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	move	$a7, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	b	.LBB1_249
 .LBB1_263:                              #   in Loop: Header=BB1_250 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.114)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.114)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 17
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.d	$a1, $sp, 428
+	ld.bu	$a2, $sp, 436
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a3
+	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	beqz	$a0, .LBB1_247
 # %bb.264:                              #   in Loop: Header=BB1_250 Depth=1
 	ld.d	$a0, $s0, 0
@@ -2330,25 +2405,28 @@ FontChange:                             # @FontChange
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB1_249
 # %bb.266:                              #   in Loop: Header=BB1_250 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.116)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.116)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 15
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 427
+	lu32i.d	$a1, 346996
+	lu52i.d	$a1, $a1, 1830
+	xor	$a0, $a0, $a1
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_249
 # %bb.267:                              #   in Loop: Header=BB1_250 Depth=1
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.117)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.117)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 1568
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 1680
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	beq	$a0, $a1, .LBB1_269
 # %bb.268:                              #   in Loop: Header=BB1_250 Depth=1
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2357,94 +2435,101 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 33
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	move	$a6, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_269:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.w	$a0, $sp, 1568
+	ld.w	$a0, $sp, 1680
 	slli.d	$s4, $a0, 1
 	addi.w	$s7, $s4, 0
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
-	addi.d	$a1, $sp, 820
-	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	addi.d	$a1, $sp, 932
+	st.d	$s0, $sp, 192                   # 8-byte Folded Spill
 	bne	$a0, $a1, .LBB1_318
 # %bb.270:                              # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB1_250 Depth=1
 	move	$s7, $zero
 	addi.d	$a0, $s0, 2
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$fp, $zero, 1
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
 	b	.LBB1_287
 .LBB1_271:                              #   in Loop: Header=BB1_250 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.111)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.111)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 13
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.d	$a1, $sp, 425
+	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 216                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_249
 # %bb.272:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.112)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.112)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 308
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 420
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.113)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.113)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 420
+	ld.bu	$a1, $sp, 424
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
 	ori	$a2, $zero, 1
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	b	.LBB1_249
 .LBB1_273:                              #   in Loop: Header=BB1_250 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.97)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.97)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 18
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.d	$a1, $sp, 428
+	ld.hu	$a2, $sp, 436
+	xor	$a0, $a0, $s1
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a4
+	xori	$a2, $a2, 110
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	beqz	$a0, .LBB1_282
 # %bb.274:                              #   in Loop: Header=BB1_250 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.100)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.100)
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 19
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.d	$a1, $sp, 428
+	ld.d	$a2, $sp, 431
+	xor	$a0, $a0, $s1
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	xor	$a2, $a2, $a3
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	bnez	$a0, .LBB1_249
 # %bb.275:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a0, .LBB1_277
 # %bb.276:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.101)
@@ -2452,30 +2537,30 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 27
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	move	$a5, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_277:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.102)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.102)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 288
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 400
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 288
+	fld.s	$fa0, $sp, 400
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB1_249
 .LBB1_278:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$a0, $sp, 308
+	ld.d	$a0, $sp, 420
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB1_249
 # %bb.279:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_281
 # %bb.280:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.104)
@@ -2483,28 +2568,28 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 28
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	move	$a5, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_281:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.105)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.105)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 296
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 408
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 296
+	fld.s	$fa0, $sp, 408
 	vldi	$vr1, -1184
 	fmul.s	$fa0, $fa0, $fa1
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 280                   # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
 	b	.LBB1_249
 .LBB1_282:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	beqz	$a0, .LBB1_284
 # %bb.283:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.98)
@@ -2512,28 +2597,28 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 26
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	move	$a5, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_284:                              #   in Loop: Header=BB1_250 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.99)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.99)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 292
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 404
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 292
+	fld.s	$fa0, $sp, 404
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$fp, $fa0
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	b	.LBB1_249
 .LBB1_285:                              #   in Loop: Header=BB1_287 Depth=2
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 304
+	ld.w	$a1, $sp, 416
 	move	$a7, $a0
 	st.d	$a1, $sp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.123)
@@ -2541,19 +2626,19 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 35
 	ori	$a3, $zero, 2
-	addi.d	$a5, $sp, 1768
-	addi.d	$a6, $sp, 1668
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1880
+	addi.d	$a6, $sp, 1780
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_286:                              # %.backedge.i
                                         #   in Loop: Header=BB1_287 Depth=2
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 820
+	addi.d	$a1, $sp, 932
 	bne	$a0, $a1, .LBB1_317
 .LBB1_287:                              #   Parent Loop BB1_250 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -2561,33 +2646,33 @@ FontChange:                             # @FontChange
                                         #       Child Loop BB1_309 Depth 3
 	pcalau12i	$a0, %pc_hi20(.L.str.119)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.119)
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	pcaddu18i	$ra, %call36(StringBeginsWith)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB1_317
 # %bb.288:                              #   in Loop: Header=BB1_287 Depth=2
-	ld.w	$a0, $sp, 304
+	ld.w	$a0, $sp, 416
 	addi.w	$s4, $a0, 1
-	st.w	$s4, $sp, 304
+	st.w	$s4, $sp, 416
 	pcalau12i	$a0, %pc_hi20(.L.str.120)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.120)
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	pcaddu18i	$ra, %call36(StringBeginsWith)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_315
 # %bb.289:                              #   in Loop: Header=BB1_287 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.121)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.121)
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 1768
-	addi.d	$a3, $sp, 1668
-	addi.d	$a4, $sp, 1564
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 1880
+	addi.d	$a3, $sp, 1780
+	addi.d	$a4, $sp, 1676
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 3
 	beq	$a0, $a1, .LBB1_291
 # %bb.290:                              #   in Loop: Header=BB1_287 Depth=2
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2596,20 +2681,20 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 34
 	ori	$a3, $zero, 1
-	addi.d	$a7, $sp, 820
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a7, $sp, 932
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	move	$a6, $s4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_291:                              #   in Loop: Header=BB1_287 Depth=2
-	fld.s	$fa0, $sp, 1564
+	fld.s	$fa0, $sp, 1676
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$s0, $fa0
 	beqz	$s0, .LBB1_286
 # %bb.292:                              #   in Loop: Header=BB1_287 Depth=2
 	ld.bu	$a0, $s2, 60
 	andi	$a1, $a0, 127
-	addi.d	$a0, $sp, 1768
+	addi.d	$a0, $sp, 1880
 	pcaddu18i	$ra, %call36(MapCharEncoding)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_286
@@ -2617,7 +2702,7 @@ FontChange:                             # @FontChange
 	move	$s4, $a0
 	ld.bu	$a0, $s2, 60
 	andi	$a1, $a0, 127
-	addi.d	$a0, $sp, 1668
+	addi.d	$a0, $sp, 1780
 	pcaddu18i	$ra, %call36(MapCharEncoding)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_286
@@ -2625,32 +2710,32 @@ FontChange:                             # @FontChange
 	beq	$s4, $s7, .LBB1_297
 # %bb.295:                              #   in Loop: Header=BB1_287 Depth=2
 	slli.d	$a1, $s4, 1
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	ldx.hu	$a1, $a2, $a1
 	bnez	$a1, .LBB1_285
 # %bb.296:                              #   in Loop: Header=BB1_287 Depth=2
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	alsl.d	$a5, $s4, $a1, 1
 	move	$s7, $s4
 	b	.LBB1_298
 .LBB1_297:                              # %split.i
                                         #   in Loop: Header=BB1_287 Depth=2
 	slli.d	$a1, $s7, 1
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	ldx.hu	$a1, $a2, $a1
 	alsl.d	$a5, $s7, $a2, 1
 	bnez	$a1, .LBB1_299
 .LBB1_298:                              # %split.thread.i
                                         #   in Loop: Header=BB1_287 Depth=2
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
 	st.h	$a3, $a5, 0
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	stx.b	$zero, $a1, $a3
 	addi.w	$a2, $a3, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	stx.b	$zero, $a1, $a3
 	move	$a1, $a3
-	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 352                   # 8-byte Folded Spill
 .LBB1_299:                              #   in Loop: Header=BB1_287 Depth=2
 	ori	$s4, $zero, 1
 	ori	$a2, $zero, 2
@@ -2678,21 +2763,21 @@ FontChange:                             # @FontChange
 .LBB1_304:                              # %._crit_edge584.thread.i
                                         #   in Loop: Header=BB1_287 Depth=2
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.w	$a0, $sp, 1568
+	ld.w	$a0, $sp, 1680
 	bne	$fp, $a0, .LBB1_306
 # %bb.305:                              #   in Loop: Header=BB1_287 Depth=2
 	move	$s4, $a5
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.124)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.124)
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 36
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $s4, 0
@@ -2700,13 +2785,13 @@ FontChange:                             # @FontChange
 	slli.d	$a0, $fp, 1
 	move	$s4, $fp
 	addi.w	$fp, $fp, 1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	stx.h	$s0, $a2, $a0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 .LBB1_307:                              #   in Loop: Header=BB1_287 Depth=2
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 352                   # 8-byte Folded Reload
 	bstrpick.d	$a1, $a1, 15, 0
 	move	$s0, $t0
 	bge	$a1, $t0, .LBB1_314
@@ -2726,7 +2811,7 @@ FontChange:                             # @FontChange
 	ldx.b	$a4, $a7, $a2
 	addi.d	$a5, $a2, -1
 	stx.b	$a3, $a6, $a2
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	stx.b	$a4, $a3, $a2
 	addi.w	$s0, $s0, -1
 	move	$a2, $a5
@@ -2740,10 +2825,10 @@ FontChange:                             # @FontChange
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	bne	$a1, $a0, .LBB1_313
 # %bb.312:                              #   in Loop: Header=BB1_287 Depth=2
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 304
+	ld.w	$a1, $sp, 416
 	move	$a7, $a0
 	st.d	$a1, $sp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.125)
@@ -2751,36 +2836,36 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 37
 	ori	$a3, $zero, 1
-	addi.d	$a5, $sp, 1768
-	addi.d	$a6, $sp, 1668
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1880
+	addi.d	$a6, $sp, 1780
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_313:                              # %.critedge13.i
                                         #   in Loop: Header=BB1_287 Depth=2
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 352                   # 8-byte Folded Reload
 .LBB1_314:                              # %.critedge13.i
                                         #   in Loop: Header=BB1_287 Depth=2
 	stx.b	$a0, $a3, $s0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	stx.b	$s4, $a0, $s0
 	addi.w	$t0, $t0, 1
-	st.d	$t0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 352                   # 8-byte Folded Spill
 .LBB1_315:                              # %.outer.i
                                         #   in Loop: Header=BB1_287 Depth=2
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
-	addi.d	$a1, $sp, 820
+	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 932
 	beq	$a0, $a1, .LBB1_287
 	b	.LBB1_318
 .LBB1_316:                              #   in Loop: Header=BB1_250 Depth=1
-	move	$a0, $s1
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2789,31 +2874,31 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 32
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	b	.LBB1_248
 .LBB1_317:                              #   in Loop: Header=BB1_250 Depth=1
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
 .LBB1_318:                              # %.critedge11.i
                                         #   in Loop: Header=BB1_250 Depth=1
 	st.h	$fp, $s0, 0
-	ld.d	$s7, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
 	b	.LBB1_249
 .LBB1_319:
-	st.d	$zero, $sp, 168                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 280                 # 8-byte Folded Spill
 	move	$fp, $zero
-	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	st.d	$zero, $sp, 248                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 160                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
 .LBB1_320:                              # %._crit_edge613.i
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	move	$a0, $s1
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2822,23 +2907,24 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 38
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 320                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	b	.LBB1_322
 .LBB1_321:
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
 .LBB1_322:                              # %.critedge.i
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.w	$a1, $a0, 40
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
 	bnez	$a1, .LBB1_324
 # %bb.323:
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	bstrpick.d	$a1, $a0, 62, 61
 	add.w	$a0, $a0, $a1
@@ -2855,15 +2941,14 @@ FontChange:                             # @FontChange
 # %bb.325:
 	slli.d	$a1, $a0, 3
 	alsl.d	$a0, $a0, $a1, 1
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	ld.h	$a0, $a0, 6
 	b	.LBB1_327
 .LBB1_326:
 	move	$a0, $zero
 .LBB1_327:
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
 	st.w	$a0, $fp, 56
 	beqz	$a1, .LBB1_367
 # %bb.328:
@@ -2897,9 +2982,9 @@ FontChange:                             # @FontChange
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_330:
-	st.d	$s8, $sp, 240                   # 8-byte Folded Spill
-	st.w	$zero, $sp, 304
-	addi.d	$a0, $sp, 820
+	st.d	$s8, $sp, 352                   # 8-byte Folded Spill
+	st.w	$zero, $sp, 416
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(fgets)
@@ -2907,54 +2992,77 @@ FontChange:                             # @FontChange
 	ori	$s0, $zero, 1
 	beqz	$a0, .LBB1_366
 # %bb.331:                              # %.lr.ph624.i.preheader
-	addi.d	$s7, $sp, 1769
+	addi.d	$s7, $sp, 1881
 	pcalau12i	$a0, %pc_hi20(.L.str.92)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.92)
-	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.129)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.129)
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.130)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.130)
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 304                   # 8-byte Folded Spill
+	lu12i.w	$a0, 468503
+	ori	$a0, $a0, 1107
+	move	$a1, $a0
+	lu32i.d	$a1, -506508
+	lu52i.d	$a1, $a1, 1863
+	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
+	lu12i.w	$a1, 427062
+	ori	$a1, $a1, 370
+	lu32i.d	$a1, -167327
+	lu52i.d	$a1, $a1, 1620
+	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
+	lu12i.w	$a1, 468806
+	ori	$a1, $a1, 1357
+	lu32i.d	$a1, 222057
+	lu52i.d	$a1, $a1, 7
+	st.d	$a1, $sp, 256                   # 8-byte Folded Spill
+	lu32i.d	$a0, 344692
+	lu52i.d	$a0, $a0, 1687
+	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	lu12i.w	$a0, 455734
+	ori	$a0, $a0, 1132
+	lu32i.d	$a0, -36755
+	lu52i.d	$a0, $a0, 1846
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	lu12i.w	$a0, 431926
+	ori	$a0, $a0, 3952
+	lu32i.d	$a0, 222580
+	lu52i.d	$a0, $a0, 7
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.151)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.151)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.144)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.144)
-	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.150)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.150)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.145)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.145)
-	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 312                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.146)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.146)
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 288                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.147)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.147)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	ori	$fp, $zero, 0
 	lu32i.d	$fp, 1
 	ori	$s8, $zero, 59
 	ori	$s1, $zero, 10
-	st.d	$s4, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 320                   # 8-byte Folded Spill
 	b	.LBB1_334
 .LBB1_332:                              #   in Loop: Header=BB1_334 Depth=1
-	addi.d	$a4, $sp, 300
-	addi.d	$a7, $sp, 304
+	addi.d	$a4, $sp, 412
+	addi.d	$a7, $sp, 416
 	st.d	$s4, $sp, 0
 	move	$a0, $s2
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
 	move	$a5, $s5
-	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(ReadCharMetrics)
 	jirl	$ra, $ra, 0
 .LBB1_333:                              #   in Loop: Header=BB1_334 Depth=1
-	addi.d	$a0, $sp, 820
+	addi.d	$a0, $sp, 932
 	ori	$a1, $zero, 512
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(fgets)
@@ -2966,44 +3074,56 @@ FontChange:                             # @FontChange
                                         #       Child Loop BB1_344 Depth 3
                                         #       Child Loop BB1_353 Depth 3
                                         #         Child Loop BB1_356 Depth 4
-	ld.w	$a0, $sp, 304
+	ld.w	$a0, $sp, 416
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $sp, 304
-	addi.d	$a0, $sp, 820
-	addi.d	$a2, $sp, 308
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	st.w	$a0, $sp, 416
+	addi.d	$a0, $sp, 932
+	addi.d	$a2, $sp, 420
+	ld.d	$a1, $sp, 304                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 308
+	ld.bu	$a0, $sp, 420
 	ori	$a1, $zero, 83
 	bne	$a0, $a1, .LBB1_333
 # %bb.335:                              #   in Loop: Header=BB1_334 Depth=1
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 22
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.d	$a1, $sp, 428
+	ld.d	$a2, $sp, 434
+	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a3
+	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	ld.d	$a3, $sp, 256                   # 8-byte Folded Reload
+	xor	$a2, $a2, $a3
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	beqz	$a0, .LBB1_332
 # %bb.336:                              #   in Loop: Header=BB1_334 Depth=1
-	addi.d	$a0, $sp, 308
-	ori	$a2, $zero, 21
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 420
+	ld.d	$a1, $sp, 428
+	ld.d	$a2, $sp, 433
+	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a3
+	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
+	xor	$a2, $a2, $a3
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	bnez	$a0, .LBB1_333
 # %bb.337:                              #   in Loop: Header=BB1_334 Depth=1
-	addi.d	$a0, $sp, 1768
+	addi.d	$a0, $sp, 1880
 	ori	$a1, $zero, 512
 	b	.LBB1_339
 .LBB1_338:                              #   in Loop: Header=BB1_339 Depth=2
 	slli.d	$a0, $s4, 2
 	alsl.d	$a0, $s4, $a0, 1
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 368                   # 8-byte Folded Reload
 	stx.b	$zero, $a1, $a0
 	addi.w	$s0, $s0, 1
-	addi.d	$a0, $sp, 1768
+	addi.d	$a0, $sp, 1880
 	ori	$a1, $zero, 512
-	ld.d	$s4, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 320                   # 8-byte Folded Reload
 .LBB1_339:                              #   Parent Loop BB1_334 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_344 Depth 3
@@ -3015,19 +3135,19 @@ FontChange:                             # @FontChange
 	beqz	$a0, .LBB1_365
 # %bb.340:                              # %.lr.ph90.i.i
                                         #   in Loop: Header=BB1_339 Depth=2
-	addi.d	$a0, $sp, 1768
-	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$a0, $sp, 1880
+	ld.d	$a1, $sp, 328                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(StringBeginsWith)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_364
 # %bb.341:                              #   in Loop: Header=BB1_339 Depth=2
-	ld.w	$a0, $sp, 304
+	ld.w	$a0, $sp, 416
 	addi.w	$s4, $a0, 1
-	st.w	$s4, $sp, 304
-	addi.d	$a0, $sp, 1768
-	addi.d	$a2, $sp, 1668
-	addi.d	$a3, $sp, 1564
-	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
+	st.w	$s4, $sp, 416
+	addi.d	$a0, $sp, 1880
+	addi.d	$a2, $sp, 1780
+	addi.d	$a3, $sp, 1676
+	ld.d	$a1, $sp, 312                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
@@ -3049,7 +3169,7 @@ FontChange:                             # @FontChange
 .LBB1_343:                              # %.preheader759
                                         #   in Loop: Header=BB1_339 Depth=2
 	move	$s6, $zero
-	addi.d	$a0, $sp, 1768
+	addi.d	$a0, $sp, 1880
 	ldx.bu	$a0, $s6, $a0
 	beqz	$a0, .LBB1_347
 	.p2align	4, , 16
@@ -3061,19 +3181,19 @@ FontChange:                             # @FontChange
 	beq	$a0, $s8, .LBB1_348
 # %bb.346:                              #   in Loop: Header=BB1_344 Depth=3
 	addi.d	$s6, $s6, 1
-	addi.d	$a0, $sp, 1768
+	addi.d	$a0, $sp, 1880
 	ldx.bu	$a0, $s6, $a0
 	bnez	$a0, .LBB1_344
 .LBB1_347:                              #   in Loop: Header=BB1_339 Depth=2
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 5
 	ori	$a3, $zero, 1
-	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 288                   # 8-byte Folded Reload
 	move	$a4, $s3
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -3081,7 +3201,7 @@ FontChange:                             # @FontChange
                                         #   in Loop: Header=BB1_339 Depth=2
 	ld.bu	$a0, $s2, 60
 	andi	$a1, $a0, 127
-	addi.d	$a0, $sp, 1668
+	addi.d	$a0, $sp, 1780
 	pcaddu18i	$ra, %call36(MapCharEncoding)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
@@ -3090,19 +3210,19 @@ FontChange:                             # @FontChange
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 6
 	ori	$a3, $zero, 1
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
 	move	$a4, $s3
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_350:                              #   in Loop: Header=BB1_339 Depth=2
-	ld.w	$a0, $sp, 1564
+	ld.w	$a0, $sp, 1676
 	slli.d	$a1, $s4, 1
-	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 336                   # 8-byte Folded Reload
 	stx.h	$s0, $a2, $a1
 	blez	$a0, .LBB1_362
 # %bb.351:                              # %.lr.ph.i.preheader.i
@@ -3113,17 +3233,17 @@ FontChange:                             # @FontChange
 .LBB1_352:                              #   in Loop: Header=BB1_353 Depth=3
 	ld.bu	$a0, $s2, 60
 	andi	$a1, $a0, 127
-	addi.d	$a0, $sp, 1568
+	addi.d	$a0, $sp, 1680
 	pcaddu18i	$ra, %call36(MapCharEncoding)
 	jirl	$ra, $ra, 0
 	slli.d	$a1, $s0, 2
 	alsl.d	$a1, $s0, $a1, 1
-	ld.d	$a5, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 368                   # 8-byte Folded Reload
 	add.d	$a2, $a5, $a1
-	ld.h	$a3, $sp, 1560
-	ld.h	$a4, $sp, 1556
+	ld.h	$a3, $sp, 1672
+	ld.h	$a4, $sp, 1668
 	stx.b	$a0, $a5, $a1
-	ld.w	$a0, $sp, 1564
+	ld.w	$a0, $sp, 1676
 	st.h	$a3, $a2, 2
 	st.h	$a4, $a2, 4
 	addi.w	$s4, $s4, 1
@@ -3137,13 +3257,13 @@ FontChange:                             # @FontChange
 	slli.d	$s6, $s6, 32
 	add.d	$a0, $s6, $fp
 	srai.d	$a0, $a0, 32
-	addi.d	$a1, $sp, 1768
+	addi.d	$a1, $sp, 1880
 	add.d	$a0, $a1, $a0
 	pcalau12i	$a1, %pc_hi20(.L.str.148)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.148)
-	addi.d	$a2, $sp, 1568
-	addi.d	$a3, $sp, 1560
-	addi.d	$a4, $sp, 1556
+	addi.d	$a2, $sp, 1680
+	addi.d	$a3, $sp, 1672
+	addi.d	$a4, $sp, 1668
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 3
@@ -3152,7 +3272,7 @@ FontChange:                             # @FontChange
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.146)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.146)
@@ -3180,7 +3300,7 @@ FontChange:                             # @FontChange
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.146)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.146)
@@ -3198,7 +3318,7 @@ FontChange:                             # @FontChange
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.149)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.149)
@@ -3218,7 +3338,7 @@ FontChange:                             # @FontChange
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.149)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.149)
@@ -3231,8 +3351,8 @@ FontChange:                             # @FontChange
 	b	.LBB1_338
 .LBB1_364:                              # %.critedge.i.i
                                         #   in Loop: Header=BB1_334 Depth=1
-	addi.d	$a0, $sp, 1768
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$a0, $sp, 1880
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(StringBeginsWith)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB1_333
@@ -3241,12 +3361,12 @@ FontChange:                             # @FontChange
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
-	ld.w	$a6, $sp, 304
+	ld.w	$a6, $sp, 416
 	move	$a5, $a0
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 9
 	ori	$a3, $zero, 1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	move	$a4, $s3
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -3255,51 +3375,51 @@ FontChange:                             # @FontChange
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
 	b	.LBB1_368
 .LBB1_367:
 	ori	$s0, $zero, 1
 .LBB1_368:                              # %FontRead.exit
 	ld.wu	$a0, $s8, %pc_lo12(font_count)
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(finfo)
 	alsl.d	$a0, $a0, $a0, 1
 	slli.d	$a0, $a0, 5
 	add.d	$a2, $a1, $a0
 	st.d	$fp, $a2, 40
 	st.d	$s2, $a2, 48
-	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 280                   # 8-byte Folded Reload
 	sub.d	$a3, $a4, $a3
 	st.h	$a3, $a2, 56
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	st.h	$a3, $a2, 58
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
 	stx.d	$a3, $a1, $a0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	st.d	$a0, $a2, 8
 	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
+	st.d	$a0, $a2, 8
+	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 16
-	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 24
 	st.w	$s0, $a2, 32
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 64
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 72
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 80
-	st.d	$a5, $a2, 88
+	st.d	$s3, $a2, 88
 .LBB1_369:                              # %.thread418
 	ld.d	$a0, $s2, 8
 	beq	$a0, $s2, .LBB1_373
 # %bb.370:
 	ld.d	$a0, $a0, 8
-	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 344                   # 8-byte Folded Reload
 	beq	$a0, $s2, .LBB1_374
 .LBB1_371:
 	ld.d	$a0, $a0, 8
@@ -3322,8 +3442,8 @@ FontChange:                             # @FontChange
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 8
 	ld.d	$a0, $a0, 8
-	ld.d	$fp, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 344                   # 8-byte Folded Reload
 	bne	$a0, $s2, .LBB1_371
 .LBB1_374:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -3357,24 +3477,24 @@ FontChange:                             # @FontChange
 	jirl	$ra, $ra, 0
 	beqz	$s0, .LBB1_380
 .LBB1_376:
-	addi.d	$a2, $sp, 1768
-	addi.d	$a3, $sp, 820
+	addi.d	$a2, $sp, 1880
+	addi.d	$a3, $sp, 932
 	move	$a0, $s0
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(GetGap)
 	jirl	$ra, $ra, 0
-	ld.hu	$a0, $sp, 1768
+	ld.hu	$a0, $sp, 1880
 	bstrpick.d	$a0, $a0, 15, 10
 	slli.d	$a0, $a0, 10
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 1024
 	bne	$a0, $a1, .LBB1_379
 # %bb.377:
-	ld.w	$a5, $sp, 820
+	ld.w	$a5, $sp, 932
 	ori	$a0, $zero, 158
 	bne	$a5, $a0, .LBB1_400
 # %bb.378:
-	ld.hu	$a0, $sp, 1770
+	ld.hu	$a0, $sp, 1882
 	b	.LBB1_381
 .LBB1_379:
 	addi.d	$a4, $s0, 32
@@ -3473,7 +3593,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 51
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, %pc_lo12(finfo_size)
@@ -3494,7 +3614,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 52
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_394:
@@ -3568,7 +3688,7 @@ FontChange:                             # @FontChange
 	add.d	$a0, $a1, $a0
 	ld.d	$a0, $a0, 40
 	ld.h	$a0, $a0, 48
-	ld.h	$a1, $sp, 1770
+	ld.h	$a1, $sp, 1882
 	add.d	$a0, $a1, $a0
 	b	.LBB1_381
 .LBB1_404:
@@ -3690,7 +3810,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 53
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $fp, %pc_lo12(finfo)
@@ -3798,7 +3918,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 54
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_418:
@@ -3878,7 +3998,7 @@ FontChange:                             # @FontChange
 	ori	$a0, $zero, 37
 	ori	$a1, $zero, 55
 	ori	$a3, $zero, 1
-	ld.d	$a4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 360                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB1_426:
@@ -3957,7 +4077,7 @@ FontChange:                             # @FontChange
 	add.d	$a0, $a1, $a0
 	ld.d	$a0, $a0, 40
 	ld.h	$a0, $a0, 48
-	ld.h	$a1, $sp, 1770
+	ld.h	$a1, $sp, 1882
 	sub.d	$a0, $a0, $a1
 	b	.LBB1_381
 .LBB1_438:
@@ -4043,7 +4163,7 @@ FontChange:                             # @FontChange
 .LBB1_448:                              # %.thread
 	st.h	$a0, $s7, 6
 .LBB1_449:                              # %.thread
-	addi.d	$sp, $sp, 336
+	addi.d	$sp, $sp, 448
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
@@ -5951,7 +6071,7 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	st.d	$a5, $sp, 128                   # 8-byte Folded Spill
 	move	$s4, $a4
 	st.d	$a3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	move	$s6, $a1
 	.p2align	4, , 16
 .LBB16_1:                               # =>This Inner Loop Header: Depth=1
@@ -5965,25 +6085,28 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_55
+	beqz	$a0, .LBB16_54
 # %bb.3:                                # %.lr.ph188
 	addi.d	$a0, $s1, 32
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$s3, $sp, 697
 	pcalau12i	$a0, %pc_hi20(.L.str.131)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.131)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.132)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.132)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$s7, $zero, 32
 	ori	$s1, $zero, 10
 	pcalau12i	$a0, %pc_hi20(.L.str.92)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.92)
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	sltu	$a0, $zero, $s6
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	ori	$s5, $zero, 59
+	lu12i.w	$a0, 5
+	ori	$a0, $a0, 2135
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
                                         # implicit-def: $r4
                                         # kill: killed $r4
                                         # implicit-def: $r4
@@ -5994,8 +6117,8 @@ ReadCharMetrics:                        # @ReadCharMetrics
                                         # kill: killed $r4
                                         # implicit-def: $r4
                                         # kill: killed $r4
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB16_7
 .LBB16_4:                               #   in Loop: Header=BB16_7 Depth=1
 	alsl.d	$a2, $s6, $a0, 1
@@ -6027,27 +6150,27 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_55
+	beqz	$a0, .LBB16_54
 .LBB16_7:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB16_10 Depth 2
                                         #     Child Loop BB16_14 Depth 2
                                         #       Child Loop BB16_23 Depth 3
-                                        #       Child Loop BB16_33 Depth 3
+                                        #       Child Loop BB16_32 Depth 3
                                         #         Child Loop BB16_29 Depth 4
                                         #         Child Loop BB16_31 Depth 4
-                                        #       Child Loop BB16_40 Depth 3
-                                        #       Child Loop BB16_43 Depth 3
-	addi.d	$a0, $sp, 696
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(StringBeginsWith)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB16_55
-# %bb.8:                                #   in Loop: Header=BB16_7 Depth=1
+                                        #       Child Loop BB16_39 Depth 3
+                                        #       Child Loop BB16_42 Depth 3
 	addi.d	$a0, $sp, 696
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(StringBeginsWith)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB16_55
+	bnez	$a0, .LBB16_54
+# %bb.8:                                #   in Loop: Header=BB16_7 Depth=1
+	addi.d	$a0, $sp, 696
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(StringBeginsWith)
+	jirl	$ra, $ra, 0
+	bnez	$a0, .LBB16_54
 # %bb.9:                                #   in Loop: Header=BB16_7 Depth=1
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a1, $a2, 0
@@ -6057,19 +6180,19 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	.p2align	4, , 16
 .LBB16_10:                              #   Parent Loop BB16_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	move	$s2, $a0
 	ldx.bu	$a1, $a0, $s0
 	addi.d	$a0, $a0, 1
 	beq	$a1, $s7, .LBB16_10
 # %bb.11:                               # %.preheader162
                                         #   in Loop: Header=BB16_7 Depth=1
-	addi.d	$s2, $a0, -1
 	bstrpick.d	$a0, $s2, 31, 0
 	ldx.bu	$a1, $a0, $s0
 	beq	$a1, $s1, .LBB16_6
 # %bb.12:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB16_7 Depth=1
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	move	$s6, $zero
 	add.d	$s8, $s0, $a0
 	b	.LBB16_14
@@ -6079,16 +6202,16 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	addi.w	$a0, $s2, 0
 	ldx.bu	$a1, $a0, $s0
 	add.d	$s8, $s0, $a0
-	beq	$a1, $s1, .LBB16_44
+	beq	$a1, $s1, .LBB16_43
 .LBB16_14:                              # %.lr.ph
                                         #   Parent Loop BB16_7 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB16_23 Depth 3
-                                        #       Child Loop BB16_33 Depth 3
+                                        #       Child Loop BB16_32 Depth 3
                                         #         Child Loop BB16_29 Depth 4
                                         #         Child Loop BB16_31 Depth 4
-                                        #       Child Loop BB16_40 Depth 3
-                                        #       Child Loop BB16_43 Depth 3
+                                        #       Child Loop BB16_39 Depth 3
+                                        #       Child Loop BB16_42 Depth 3
 	addi.d	$a2, $sp, 184
 	move	$a0, $s8
 	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
@@ -6096,31 +6219,30 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	jirl	$ra, $ra, 0
 	ld.hu	$a0, $sp, 184
 	ori	$a1, $zero, 78
-	beq	$a0, $a1, .LBB16_36
+	beq	$a0, $a1, .LBB16_35
 # %bb.15:                               #   in Loop: Header=BB16_14 Depth=2
-	pcalau12i	$a0, %pc_hi20(.L.str.135)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.135)
-	addi.d	$a0, $sp, 184
-	ori	$a2, $zero, 3
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB16_37
+	ld.hu	$a0, $sp, 184
+	ld.bu	$a1, $sp, 186
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB16_36
 # %bb.16:                               #   in Loop: Header=BB16_14 Depth=2
 	ld.hu	$a0, $sp, 184
 	ori	$a1, $zero, 66
-	beq	$a0, $a1, .LBB16_38
+	beq	$a0, $a1, .LBB16_37
 # %bb.17:                               #   in Loop: Header=BB16_14 Depth=2
 	ld.hu	$a0, $sp, 184
 	ori	$a1, $zero, 76
-	bne	$a0, $a1, .LBB16_39
+	bne	$a0, $a1, .LBB16_38
 # %bb.18:                               #   in Loop: Header=BB16_14 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(BackEnd)
 	ld.d	$a0, $a0, %got_pc_lo12(BackEnd)
 	ld.d	$a0, $a0, 0
 	ld.w	$a0, $a0, 40
-	beqz	$a0, .LBB16_39
+	beqz	$a0, .LBB16_38
 # %bb.19:                               #   in Loop: Header=BB16_14 Depth=2
-	beqz	$s6, .LBB16_39
+	beqz	$s6, .LBB16_38
 # %bb.20:                               #   in Loop: Header=BB16_14 Depth=2
 	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
 	ldx.bu	$a0, $a2, $s6
@@ -6134,18 +6256,17 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 0
 	stx.b	$s6, $a2, $a0
-	addi.w	$a0, $s2, 0
+	addi.w	$s2, $s2, 0
 	.p2align	4, , 16
 .LBB16_23:                              #   Parent Loop BB16_7 Depth=1
                                         #     Parent Loop BB16_14 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldx.bu	$a1, $s3, $a0
-	addi.d	$s2, $a0, 1
-	move	$a0, $s2
-	beq	$a1, $s7, .LBB16_23
-	b	.LBB16_33
+	ldx.bu	$a0, $s3, $s2
+	addi.d	$s2, $s2, 1
+	beq	$a0, $s7, .LBB16_23
+	b	.LBB16_32
 	.p2align	4, , 16
-.LBB16_24:                              #   in Loop: Header=BB16_33 Depth=3
+.LBB16_24:                              #   in Loop: Header=BB16_32 Depth=3
 	add.d	$a0, $s0, $s8
 	pcalau12i	$a1, %pc_hi20(.L.str.92)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.92)
@@ -6158,7 +6279,7 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	pcaddu18i	$ra, %call36(MapCharEncoding)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB16_26
-# %bb.25:                               #   in Loop: Header=BB16_33 Depth=3
+# %bb.25:                               #   in Loop: Header=BB16_32 Depth=3
 	ld.w	$a1, $s4, 0
 	addi.d	$a2, $a1, 1
 	st.w	$a2, $s4, 0
@@ -6169,7 +6290,7 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	blt	$a0, $a1, .LBB16_29
 	b	.LBB16_27
 	.p2align	4, , 16
-.LBB16_26:                              #   in Loop: Header=BB16_33 Depth=3
+.LBB16_26:                              #   in Loop: Header=BB16_32 Depth=3
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
@@ -6191,7 +6312,7 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	ld.w	$a0, $s4, 0
 	ori	$a1, $zero, 508
 	blt	$a0, $a1, .LBB16_29
-.LBB16_27:                              #   in Loop: Header=BB16_33 Depth=3
+.LBB16_27:                              #   in Loop: Header=BB16_32 Depth=3
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
@@ -6212,7 +6333,7 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	addi.d	$s8, $s8, 1
 .LBB16_29:                              #   Parent Loop BB16_7 Depth=1
                                         #     Parent Loop BB16_14 Depth=2
-                                        #       Parent Loop BB16_33 Depth=3
+                                        #       Parent Loop BB16_32 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ldx.bu	$a0, $s8, $s0
 	beq	$a0, $s5, .LBB16_31
@@ -6222,15 +6343,14 @@ ReadCharMetrics:                        # @ReadCharMetrics
 .LBB16_31:                              # %.critedge6
                                         #   Parent Loop BB16_7 Depth=1
                                         #     Parent Loop BB16_14 Depth=2
-                                        #       Parent Loop BB16_33 Depth=3
+                                        #       Parent Loop BB16_32 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ldx.bu	$a0, $s8, $s0
-	addi.d	$s8, $s8, 1
+	addi.d	$a1, $s8, 1
+	move	$s2, $s8
+	move	$s8, $a1
 	beq	$a0, $s7, .LBB16_31
-# %bb.32:                               # %.loopexit
-                                        #   in Loop: Header=BB16_33 Depth=3
-	addi.d	$s2, $s8, -1
-.LBB16_33:                              # %.preheader161
+.LBB16_32:                              # %.preheader161
                                         #   Parent Loop BB16_7 Depth=1
                                         #     Parent Loop BB16_14 Depth=2
                                         # =>    This Loop Header: Depth=3
@@ -6238,11 +6358,11 @@ ReadCharMetrics:                        # @ReadCharMetrics
                                         #         Child Loop BB16_31 Depth 4
 	addi.w	$s8, $s2, 0
 	ldx.bu	$a0, $s8, $s0
-	beq	$a0, $s1, .LBB16_35
-# %bb.34:                               # %.preheader161
-                                        #   in Loop: Header=BB16_33 Depth=3
+	beq	$a0, $s1, .LBB16_34
+# %bb.33:                               # %.preheader161
+                                        #   in Loop: Header=BB16_32 Depth=3
 	bne	$a0, $s5, .LBB16_24
-.LBB16_35:                              # %.critedge4
+.LBB16_34:                              # %.critedge4
                                         #   in Loop: Header=BB16_14 Depth=2
 	ld.w	$a0, $s4, 0
 	addi.d	$a1, $a0, 1
@@ -6251,10 +6371,10 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	stx.b	$zero, $a1, $a0
 	addi.w	$s2, $s2, 0
 	ldx.bu	$a0, $s2, $s0
-	bne	$a0, $s1, .LBB16_40
+	bne	$a0, $s1, .LBB16_39
 	b	.LBB16_13
 	.p2align	4, , 16
-.LBB16_36:                              #   in Loop: Header=BB16_14 Depth=2
+.LBB16_35:                              #   in Loop: Header=BB16_14 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.134)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.134)
 	addi.d	$a2, $sp, 184
@@ -6269,10 +6389,10 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	move	$s6, $a0
 	addi.w	$s2, $s2, 0
 	ldx.bu	$a0, $s2, $s0
-	bne	$a0, $s1, .LBB16_40
+	bne	$a0, $s1, .LBB16_39
 	b	.LBB16_13
 	.p2align	4, , 16
-.LBB16_37:                              #   in Loop: Header=BB16_14 Depth=2
+.LBB16_36:                              #   in Loop: Header=BB16_14 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.136)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.136)
 	addi.d	$a2, $sp, 180
@@ -6282,14 +6402,14 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	fld.s	$fa0, $sp, 180
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	addi.w	$s2, $s2, 0
 	ldx.bu	$a0, $s2, $s0
-	bne	$a0, $s1, .LBB16_40
+	bne	$a0, $s1, .LBB16_39
 	b	.LBB16_13
-.LBB16_38:                              #   in Loop: Header=BB16_14 Depth=2
+.LBB16_37:                              #   in Loop: Header=BB16_14 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.138)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.138)
 	addi.d	$a2, $sp, 176
@@ -6303,66 +6423,66 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	fld.s	$fa1, $sp, 172
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	fld.s	$fa0, $sp, 168
 	ftintrz.w.s	$fa1, $fa1
 	fld.s	$fa2, $sp, 164
 	movfr2gr.s	$a0, $fa1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ftintrz.w.s	$fa0, $fa2
 	movfr2gr.s	$a0, $fa0
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	.p2align	4, , 16
-.LBB16_39:                              #   in Loop: Header=BB16_14 Depth=2
+.LBB16_38:                              #   in Loop: Header=BB16_14 Depth=2
 	addi.w	$s2, $s2, 0
 	ldx.bu	$a0, $s2, $s0
 	beq	$a0, $s1, .LBB16_13
 	.p2align	4, , 16
-.LBB16_40:                              #   Parent Loop BB16_7 Depth=1
+.LBB16_39:                              #   Parent Loop BB16_7 Depth=1
                                         #     Parent Loop BB16_14 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	beq	$a0, $s5, .LBB16_42
-# %bb.41:                               #   in Loop: Header=BB16_40 Depth=3
+	beq	$a0, $s5, .LBB16_41
+# %bb.40:                               #   in Loop: Header=BB16_39 Depth=3
 	addi.d	$s2, $s2, 1
 	ldx.bu	$a0, $s2, $s0
-	bne	$a0, $s1, .LBB16_40
+	bne	$a0, $s1, .LBB16_39
 	b	.LBB16_13
 	.p2align	4, , 16
-.LBB16_42:                              #   in Loop: Header=BB16_14 Depth=2
+.LBB16_41:                              #   in Loop: Header=BB16_14 Depth=2
 	move	$a0, $s2
 	.p2align	4, , 16
-.LBB16_43:                              # %.preheader
+.LBB16_42:                              # %.preheader
                                         #   Parent Loop BB16_7 Depth=1
                                         #     Parent Loop BB16_14 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.bu	$a1, $s3, $a0
 	addi.d	$s2, $a0, 1
 	move	$a0, $s2
-	beq	$a1, $s7, .LBB16_43
+	beq	$a1, $s7, .LBB16_42
 	b	.LBB16_13
 	.p2align	4, , 16
-.LBB16_44:                              # %._crit_edge
+.LBB16_43:                              # %._crit_edge
                                         #   in Loop: Header=BB16_7 Depth=1
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	beqz	$s6, .LBB16_6
+# %bb.44:                               #   in Loop: Header=BB16_7 Depth=1
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	beqz	$a0, .LBB16_47
 # %bb.45:                               #   in Loop: Header=BB16_7 Depth=1
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	beqz	$a0, .LBB16_48
-# %bb.46:                               #   in Loop: Header=BB16_7 Depth=1
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	beqz	$a0, .LBB16_49
-.LBB16_47:                              #   in Loop: Header=BB16_7 Depth=1
+.LBB16_46:                              #   in Loop: Header=BB16_7 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ldx.bu	$a0, $a0, $s6
-	bnez	$a0, .LBB16_50
-	b	.LBB16_53
-.LBB16_48:                              #   in Loop: Header=BB16_7 Depth=1
+	bnez	$a0, .LBB16_49
+	b	.LBB16_52
+.LBB16_47:                              #   in Loop: Header=BB16_7 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
@@ -6377,9 +6497,9 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	bnez	$a0, .LBB16_47
-.LBB16_49:                              #   in Loop: Header=BB16_7 Depth=1
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	bnez	$a0, .LBB16_46
+.LBB16_48:                              #   in Loop: Header=BB16_7 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(FileName)
 	jirl	$ra, $ra, 0
@@ -6396,53 +6516,53 @@ ReadCharMetrics:                        # @ReadCharMetrics
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ldx.bu	$a0, $a0, $s6
-	beqz	$a0, .LBB16_53
-.LBB16_50:                              #   in Loop: Header=BB16_7 Depth=1
+	beqz	$a0, .LBB16_52
+.LBB16_49:                              #   in Loop: Header=BB16_7 Depth=1
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB16_52
-# %bb.51:                               #   in Loop: Header=BB16_7 Depth=1
+	bne	$a0, $a1, .LBB16_51
+# %bb.50:                               #   in Loop: Header=BB16_7 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	stx.b	$zero, $a0, $s6
-	b	.LBB16_53
-.LBB16_52:                              #   in Loop: Header=BB16_7 Depth=1
+	b	.LBB16_52
+.LBB16_51:                              #   in Loop: Header=BB16_7 Depth=1
 	ld.w	$a0, $s4, 0
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $s4, 0
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	stx.b	$zero, $a1, $a0
-.LBB16_53:                              #   in Loop: Header=BB16_7 Depth=1
+.LBB16_52:                              #   in Loop: Header=BB16_7 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(BackEnd)
 	ld.d	$a0, $a0, %got_pc_lo12(BackEnd)
 	ld.d	$a0, $a0, 0
 	ld.w	$a1, $a0, 40
 	slli.d	$a0, $s6, 3
 	beqz	$a1, .LBB16_4
-# %bb.54:                               #   in Loop: Header=BB16_7 Depth=1
+# %bb.53:                               #   in Loop: Header=BB16_7 Depth=1
 	alsl.d	$a1, $s6, $a0, 1
 	add.d	$a2, $s2, $a1
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
-	st.h	$a3, $a2, 4
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	st.h	$a3, $a2, 4
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	sub.d	$a3, $a3, $a4
 	st.h	$a3, $a2, 2
-	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
 	addi.w	$a3, $a5, 0
 	st.h	$a5, $a2, 6
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	sub.d	$a2, $a2, $a4
 	stx.h	$a2, $s2, $a1
-	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a1, $a4, 0
 	sltui	$a1, $a1, 1
 	sltui	$a2, $a3, 1
 	sub.d	$a3, $a4, $a5
 	masknez	$a2, $a3, $a2
 	masknez	$a1, $a2, $a1
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	masknez	$a1, $a1, $a2
 	b	.LBB16_5
-.LBB16_55:                              # %.critedge
+.LBB16_54:                              # %.critedge
 	ld.d	$s8, $sp, 1208                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1216                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1224                  # 8-byte Folded Reload

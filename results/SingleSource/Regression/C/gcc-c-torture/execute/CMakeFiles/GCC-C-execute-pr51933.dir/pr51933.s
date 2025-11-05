@@ -755,12 +755,22 @@ main:                                   # @main
 	addi.d	$a2, $sp, 54
 	pcaddu18i	$ra, %call36(bar)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 54
-	ori	$a2, $zero, 18
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 54
+	lu12i.w	$a1, 411190
+	ori	$a1, $a1, 609
+	lu32i.d	$a1, -497819
+	lu52i.d	$a1, $a1, 1670
+	xor	$a0, $a0, $a1
+	ld.d	$a1, $sp, 62
+	lu12i.w	$a2, 448182
+	ori	$a2, $a2, 2665
+	ld.hu	$a3, $sp, 70
+	lu32i.d	$a2, -37267
+	lu52i.d	$a2, $a2, 1814
+	xor	$a1, $a1, $a2
+	xori	$a2, $a3, 113
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	bnez	$a0, .LBB2_2
 # %bb.1:
 	move	$a0, $zero

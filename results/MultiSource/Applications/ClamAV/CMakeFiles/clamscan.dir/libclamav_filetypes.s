@@ -136,14 +136,14 @@ cli_filetype2:                          # @cli_filetype2
 # %bb.8:
 	ld.d	$a0, $s1, 16
 	ld.d	$s6, $a0, 0
-	beqz	$s6, .LBB1_41
+	beqz	$s6, .LBB1_40
 # %bb.9:
 	ld.w	$a1, $s6, 64
 	addi.d	$a0, $sp, 232
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(cli_ac_initdata)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_41
+	bnez	$a0, .LBB1_40
 # %bb.10:
 	ld.d	$a0, $s1, 16
 	ld.d	$a3, $a0, 0
@@ -171,7 +171,7 @@ cli_filetype2:                          # @cli_filetype2
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(cli_ac_initdata)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_41
+	bnez	$a0, .LBB1_40
 # %bb.12:
 	addi.d	$a0, $sp, 248
 	move	$a1, $s4
@@ -253,7 +253,7 @@ cli_filetype2:                          # @cli_filetype2
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(cli_ac_initdata)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_41
+	bnez	$a0, .LBB1_40
 # %bb.22:                               #   in Loop: Header=BB1_21 Depth=1
 	addi.d	$a0, $sp, 56
 	addi.d	$a2, $sp, 32
@@ -306,14 +306,14 @@ cli_filetype2:                          # @cli_filetype2
 	slli.w	$a0, $a0, 1
 	ori	$a1, $zero, 500
 	move	$s0, $s5
-	bne	$a0, $a1, .LBB1_41
+	bne	$a0, $a1, .LBB1_40
 .LBB1_28:                               # %.thread105
 	lu12i.w	$s2, 9
 	ori	$a0, $s2, 775
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB1_41
+	beqz	$a0, .LBB1_40
 # %bb.29:
 	move	$s1, $a0
 	move	$a0, $fp
@@ -343,60 +343,58 @@ cli_filetype2:                          # @cli_filetype2
 	ori	$fp, $zero, 505
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
-	b	.LBB1_39
+	b	.LBB1_38
 .LBB1_33:
-	lu12i.w	$s3, 8
-	ori	$a0, $s3, 1
-	add.d	$a0, $s1, $a0
-	pcalau12i	$a1, %pc_hi20(.L.str.5)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.5)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
+	lu12i.w	$a0, 8
+	ori	$a0, $a0, 1
+	add.d	$a1, $s1, $a0
+	ld.w	$a0, $a1, 0
+	ld.bu	$a3, $a1, 4
+	lu12i.w	$a2, 197380
+	ori	$a2, $a2, 1091
+	xor	$a0, $a0, $a2
+	xori	$a3, $a3, 49
+	or	$a3, $a0, $a3
 	ori	$fp, $zero, 504
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
-	beqz	$a1, .LBB1_39
+	beqz	$a3, .LBB1_38
 # %bb.34:
-	move	$s4, $a0
-	ori	$a0, $s2, 769
-	add.d	$a0, $s1, $a0
-	pcalau12i	$a1, %pc_hi20(.L.str.5)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.5)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB1_38
+	lu12i.w	$a3, 1
+	ori	$a4, $a3, 768
+	ldx.w	$a4, $a1, $a4
+	ori	$a3, $a3, 772
+	ldx.bu	$a3, $a1, $a3
+	xor	$a2, $a4, $a2
+	xori	$a3, $a3, 49
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB1_38
 # %bb.35:
-	ori	$a0, $s3, 8
-	add.d	$a0, $s1, $a0
-	pcalau12i	$a1, %pc_hi20(.L.str.7)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.7)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_40
+	ld.w	$a0, $a1, 7
+	ld.bu	$a1, $a1, 11
+	lu12i.w	$a2, 324900
+	ori	$a2, $a2, 1091
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 77
+	or	$a0, $a0, $a1
+	bnez	$a0, .LBB1_39
 # %bb.36:
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
-	b	.LBB1_39
+	b	.LBB1_38
 .LBB1_37:
 	ori	$fp, $zero, 506
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	b	.LBB1_39
-.LBB1_38:
-	move	$a0, $s4
-.LBB1_39:                               # %.thread109.sink.split
+.LBB1_38:                               # %.thread109.sink.split
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	move	$s0, $fp
-.LBB1_40:                               # %.thread109
+.LBB1_39:                               # %.thread109
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB1_41:
+.LBB1_40:
 	move	$a0, $s0
 	ld.d	$s7, $sp, 512                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 520                   # 8-byte Folded Reload

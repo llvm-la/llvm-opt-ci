@@ -53,12 +53,15 @@ main:                                   # @main
 	addi.d	$a1, $sp, 1
 	bne	$a0, $a1, .LBB1_3
 # %bb.1:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 0
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 0
+	lu12i.w	$a1, 234387
+	ori	$a1, $a1, 2353
+	ld.w	$a2, $sp, 3
+	xor	$a0, $a0, $a1
+	lu12i.w	$a1, 915
+	ori	$a1, $a1, 2361
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_3
 # %bb.2:
 	move	$a0, $zero

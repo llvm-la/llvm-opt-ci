@@ -614,17 +614,17 @@ runInteractively:                       # @runInteractively
 	pcalau12i	$a0, %got_pc_hi20(stdin)
 	ld.d	$a0, $a0, %got_pc_lo12(stdin)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.19)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.19)
+	lu12i.w	$a0, 444054
+	ori	$s7, $a0, 354
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
-	addi.d	$s4, $a0, %pc_lo12(.L.str.22)
+	addi.d	$s3, $a0, %pc_lo12(.L.str.22)
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
-	addi.d	$s5, $a0, %pc_lo12(.L.str.23)
+	addi.d	$s4, $a0, %pc_lo12(.L.str.23)
 	pcalau12i	$a0, %pc_hi20(.Lstr.5)
-	addi.d	$s6, $a0, %pc_lo12(.Lstr.5)
+	addi.d	$s5, $a0, %pc_lo12(.Lstr.5)
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
@@ -637,13 +637,13 @@ runInteractively:                       # @runInteractively
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 .LBB3_4:                                #   in Loop: Header=BB3_5 Depth=1
-	move	$a0, $s7
+	move	$a0, $s8
 	pcaddu18i	$ra, %call36(NodePtrVec_delete)
 	jirl	$ra, $ra, 0
 .LBB3_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_6 Depth 2
                                         #     Child Loop BB3_17 Depth 2
-	move	$s7, $zero
+	move	$s8, $zero
 .LBB3_6:                                #   Parent Loop BB3_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a0, $s1
@@ -671,11 +671,10 @@ runInteractively:                       # @runInteractively
 	st.b	$zero, $a0, -1
 .LBB3_10:                               # %mygets.exit
                                         #   in Loop: Header=BB3_6 Depth=2
-	addi.d	$a0, $sp, 256
-	ori	$a2, $zero, 5
-	move	$a1, $s2
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 256
+	ld.bu	$a1, $sp, 260
+	xor	$a0, $a0, $s7
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB3_22
 # %bb.11:                               #   in Loop: Header=BB3_6 Depth=2
 	ld.bu	$a0, $sp, 256
@@ -684,54 +683,54 @@ runInteractively:                       # @runInteractively
 	addi.d	$a0, $sp, 256
 	pcaddu18i	$ra, %call36(strdup)
 	jirl	$ra, $ra, 0
-	slli.d	$a1, $s7, 3
-	addi.d	$s7, $s7, 1
-	ori	$s3, $zero, 25
+	slli.d	$a1, $s8, 3
+	addi.d	$s8, $s8, 1
+	ori	$s2, $zero, 25
 	addi.d	$a2, $sp, 56
 	stx.d	$a0, $a1, $a2
-	bne	$s7, $s3, .LBB3_6
+	bne	$s8, $s2, .LBB3_6
 	b	.LBB3_14
 .LBB3_13:                               # %.critedge.split.loop.exit
                                         #   in Loop: Header=BB3_5 Depth=1
-	move	$s3, $s7
+	move	$s2, $s8
 .LBB3_14:                               # %.critedge
                                         #   in Loop: Header=BB3_5 Depth=1
-	addi.w	$s7, $s3, 0
-	slli.d	$a0, $s7, 3
+	addi.w	$s8, $s2, 0
+	slli.d	$a0, $s8, 3
 	addi.d	$a1, $sp, 56
 	stx.d	$zero, $a0, $a1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	blez	$s7, .LBB3_19
+	blez	$s8, .LBB3_19
 # %bb.15:                               # %.lr.ph
                                         #   in Loop: Header=BB3_5 Depth=1
 	move	$s0, $zero
-	addi.w	$s3, $s3, -1
-	addi.d	$s8, $sp, 56
+	addi.w	$s2, $s2, -1
+	addi.d	$s6, $sp, 56
 	b	.LBB3_17
 	.p2align	4, , 16
 .LBB3_16:                               #   in Loop: Header=BB3_17 Depth=2
-	move	$a0, $s6
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	addi.d	$s0, $s0, 1
-	addi.d	$s8, $s8, 8
-	beq	$s7, $s0, .LBB3_19
+	addi.d	$s6, $s6, 8
+	beq	$s8, $s0, .LBB3_19
 .LBB3_17:                               #   Parent Loop BB3_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s8, 0
+	ld.d	$a1, $s6, 0
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	bgeu	$s0, $s2, .LBB3_16
+# %bb.18:                               #   in Loop: Header=BB3_17 Depth=2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	bgeu	$s0, $s3, .LBB3_16
-# %bb.18:                               #   in Loop: Header=BB3_17 Depth=2
-	move	$a0, $s5
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
 	addi.d	$s0, $s0, 1
-	addi.d	$s8, $s8, 8
-	bne	$s7, $s0, .LBB3_17
+	addi.d	$s6, $s6, 8
+	bne	$s8, $s0, .LBB3_17
 .LBB3_19:                               # %._crit_edge
                                         #   in Loop: Header=BB3_5 Depth=1
 	ori	$a0, $zero, 50
@@ -739,15 +738,15 @@ runInteractively:                       # @runInteractively
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 16
 	ld.w	$a3, $a1, 0
-	move	$s7, $a0
+	move	$s8, $a0
 	addi.d	$a1, $sp, 56
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	move	$a2, $s7
+	move	$a2, $s8
 	pcaddu18i	$ra, %call36(findLabelPath)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB3_3
 # %bb.20:                               #   in Loop: Header=BB3_5 Depth=1
-	ld.w	$a1, $s7, 0
+	ld.w	$a1, $s8, 0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0

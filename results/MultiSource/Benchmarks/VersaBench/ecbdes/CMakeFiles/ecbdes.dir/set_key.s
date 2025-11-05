@@ -41,72 +41,72 @@ des_set_odd_parity:                     # @des_set_odd_parity
 des_is_weak_key:                        # @des_is_weak_key
 # %bb.0:
 	move	$a1, $a0
-	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(weak_keys)
 	addi.d	$a2, $a0, %pc_lo12(weak_keys)
-	ld.d	$a4, $a2, 0
+	ld.d	$a3, $a2, 0
+	ld.d	$a4, $a1, 0
 	ori	$a0, $zero, 1
-	beq	$a4, $a3, .LBB1_16
+	beq	$a3, $a4, .LBB1_16
 # %bb.1:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 8
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 8
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.2:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 16
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 16
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.3:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 24
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 24
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.4:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 32
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 32
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.5:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 40
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 40
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.6:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 48
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 48
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.7:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 56
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 56
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.8:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 64
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 64
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.9:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 72
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 72
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.10:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 80
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 80
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.11:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 88
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 88
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.12:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 96
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 96
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.13:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 104
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 104
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.14:
-	ld.d	$a3, $a1, 0
-	ld.d	$a4, $a2, 112
-	beq	$a4, $a3, .LBB1_16
+	ld.d	$a3, $a2, 112
+	ld.d	$a4, $a1, 0
+	beq	$a3, $a4, .LBB1_16
 # %bb.15:
-	ld.d	$a0, $a1, 0
-	ld.d	$a1, $a2, 120
-	xor	$a0, $a1, $a0
+	ld.d	$a0, $a2, 120
+	ld.d	$a1, $a1, 0
+	xor	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 .LBB1_16:
 	ret

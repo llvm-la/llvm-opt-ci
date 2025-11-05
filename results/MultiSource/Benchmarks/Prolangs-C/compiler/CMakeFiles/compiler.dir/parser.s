@@ -1933,8 +1933,8 @@ DeclOrF:                                # @DeclOrF
 	pcalau12i	$s7, %pc_hi20(PreviousFtokenval)
 	pcalau12i	$s1, %pc_hi20(NextLookahead)
 	pcalau12i	$s2, %pc_hi20(NextTokenval)
-	pcalau12i	$s4, %pc_hi20(NextFtokenval)
-	pcalau12i	$s5, %pc_hi20(ErrorFlag)
+	pcalau12i	$s5, %pc_hi20(NextFtokenval)
+	pcalau12i	$s4, %pc_hi20(ErrorFlag)
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -1960,7 +1960,7 @@ DeclOrF:                                # @DeclOrF
 	jirl	$ra, $ra, 0
 .LBB5_2:                                # %match.exit21
                                         #   in Loop: Header=BB5_3 Depth=1
-	ld.w	$a0, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
 	bnez	$a0, .LBB5_40
 .LBB5_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_20 Depth 2
@@ -1982,7 +1982,7 @@ DeclOrF:                                # @DeclOrF
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 .LBB5_8:                                #   in Loop: Header=BB5_3 Depth=1
-	ld.w	$a0, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
 	bnez	$a0, .LBB5_40
 # %bb.9:                                #   in Loop: Header=BB5_3 Depth=1
 	ld.w	$a1, $s6, %pc_lo12(lookahead)
@@ -2002,7 +2002,7 @@ DeclOrF:                                # @DeclOrF
 	fld.s	$fa0, $s0, %pc_lo12(ftokenval)
 	ld.w	$a0, $s1, %pc_lo12(NextLookahead)
 	ld.w	$a1, $s2, %pc_lo12(NextTokenval)
-	fld.s	$fa1, $s4, %pc_lo12(NextFtokenval)
+	fld.s	$fa1, $s5, %pc_lo12(NextFtokenval)
 	fst.s	$fa0, $s7, %pc_lo12(PreviousFtokenval)
 	st.w	$a0, $s6, %pc_lo12(lookahead)
 	st.w	$a1, $s8, %pc_lo12(tokenval)
@@ -2015,7 +2015,7 @@ DeclOrF:                                # @DeclOrF
 	st.w	$a0, $s1, %pc_lo12(NextLookahead)
 .LBB5_12:                               # %match.exit15
                                         #   in Loop: Header=BB5_3 Depth=1
-	ld.w	$a0, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
 	bnez	$a0, .LBB5_40
 # %bb.13:                               # %match.exit15._crit_edge
                                         #   in Loop: Header=BB5_3 Depth=1
@@ -2032,7 +2032,7 @@ DeclOrF:                                # @DeclOrF
 	ld.w	$a1, $s1, %pc_lo12(NextLookahead)
 	ld.w	$a0, $s2, %pc_lo12(NextTokenval)
 	fst.s	$fa0, $s7, %pc_lo12(PreviousFtokenval)
-	fld.s	$fa0, $s4, %pc_lo12(NextFtokenval)
+	fld.s	$fa0, $s5, %pc_lo12(NextFtokenval)
 	st.w	$a1, $s6, %pc_lo12(lookahead)
 	st.w	$a0, $s8, %pc_lo12(tokenval)
 	ori	$a0, $zero, 260
@@ -2044,7 +2044,7 @@ DeclOrF:                                # @DeclOrF
 	st.w	$a0, $s1, %pc_lo12(NextLookahead)
 .LBB5_16:                               # %match.exit
                                         #   in Loop: Header=BB5_3 Depth=1
-	ld.w	$a1, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a1, $s4, %pc_lo12(ErrorFlag)
 	bnez	$a1, .LBB5_40
 .LBB5_17:                               #   in Loop: Header=BB5_3 Depth=1
 	ori	$a1, $zero, 40
@@ -2056,7 +2056,7 @@ DeclOrF:                                # @DeclOrF
 	pcaddu18i	$ra, %call36(GlobalScopeAndInsert)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 44
-	ld.w	$a0, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
 	bnez	$a0, .LBB5_40
 # %bb.19:                               #   in Loop: Header=BB5_3 Depth=1
 	ld.w	$a0, $s6, %pc_lo12(lookahead)
@@ -2072,7 +2072,7 @@ DeclOrF:                                # @DeclOrF
 	fld.s	$fa0, $s0, %pc_lo12(ftokenval)
 	ld.w	$a0, $s1, %pc_lo12(NextLookahead)
 	ld.w	$a1, $s2, %pc_lo12(NextTokenval)
-	fld.s	$fa1, $s4, %pc_lo12(NextFtokenval)
+	fld.s	$fa1, $s5, %pc_lo12(NextFtokenval)
 	fst.s	$fa0, $s7, %pc_lo12(PreviousFtokenval)
 	st.w	$a0, $s6, %pc_lo12(lookahead)
 	st.w	$a1, $s8, %pc_lo12(tokenval)
@@ -2083,7 +2083,7 @@ DeclOrF:                                # @DeclOrF
                                         #   in Loop: Header=BB5_20 Depth=2
 	pcaddu18i	$ra, %call36(lexan)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a1, $s4, %pc_lo12(ErrorFlag)
 	st.w	$a0, $s1, %pc_lo12(NextLookahead)
 	bnez	$a1, .LBB5_40
 .LBB5_22:                               # %match.exit.i.thread
@@ -2099,7 +2099,7 @@ DeclOrF:                                # @DeclOrF
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(GlobalScopeAndInsert)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
 	bnez	$a0, .LBB5_27
 # %bb.25:                               #   in Loop: Header=BB5_20 Depth=2
 	ld.w	$a1, $s6, %pc_lo12(lookahead)
@@ -2110,7 +2110,7 @@ DeclOrF:                                # @DeclOrF
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
 .LBB5_27:                               # %GlobalVarList.exit
                                         #   in Loop: Header=BB5_3 Depth=1
 	bnez	$a0, .LBB5_40
@@ -2129,7 +2129,7 @@ DeclOrF:                                # @DeclOrF
 	fld.s	$fa0, $s0, %pc_lo12(ftokenval)
 	ld.w	$a0, $s1, %pc_lo12(NextLookahead)
 	ld.w	$a1, $s2, %pc_lo12(NextTokenval)
-	fld.s	$fa1, $s4, %pc_lo12(NextFtokenval)
+	fld.s	$fa1, $s5, %pc_lo12(NextFtokenval)
 	fst.s	$fa0, $s7, %pc_lo12(PreviousFtokenval)
 	st.w	$a0, $s6, %pc_lo12(lookahead)
 	st.w	$a1, $s8, %pc_lo12(tokenval)
@@ -2150,7 +2150,7 @@ DeclOrF:                                # @DeclOrF
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
 	beqz	$a0, .LBB5_1
 	b	.LBB5_40
 .LBB5_34:
@@ -2171,21 +2171,21 @@ DeclOrF:                                # @DeclOrF
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(GlobalInsert)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a1, $s4, %pc_lo12(ErrorFlag)
 	bnez	$a1, .LBB5_40
 # %bb.35:
-	move	$fp, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.7)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	pcalau12i	$a1, %pc_hi20(lexbuf)
 	addi.d	$a1, $a1, %pc_lo12(lexbuf)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_37
+	ld.w	$a2, $a1, 0
+	ld.bu	$a1, $a1, 4
+	lu12i.w	$a3, 452246
+	ori	$a3, $a3, 365
+	xor	$a2, $a2, $a3
+	or	$a1, $a2, $a1
+	bnez	$a1, .LBB5_37
 # %bb.36:
-	pcalau12i	$a0, %pc_hi20(GlobalIndex)
-	st.w	$fp, $a0, %pc_lo12(GlobalIndex)
+	pcalau12i	$a1, %pc_hi20(GlobalIndex)
+	st.w	$a0, $a1, %pc_lo12(GlobalIndex)
 .LBB5_37:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$fp, $a0, %pc_lo12(PreviousLookahead)
@@ -2224,7 +2224,7 @@ DeclOrF:                                # @DeclOrF
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(GlobalInsert)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s5, %pc_lo12(ErrorFlag)
+	ld.w	$a1, $s4, %pc_lo12(ErrorFlag)
 	beqz	$a1, .LBB5_41
 .LBB5_40:                               # %match.exit15.thread
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
@@ -2241,18 +2241,18 @@ DeclOrF:                                # @DeclOrF
 	addi.d	$sp, $sp, 144
 	ret
 .LBB5_41:
-	move	$s0, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.7)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	pcalau12i	$a1, %pc_hi20(lexbuf)
 	addi.d	$a1, $a1, %pc_lo12(lexbuf)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_38
+	ld.w	$a2, $a1, 0
+	ld.bu	$a1, $a1, 4
+	lu12i.w	$a3, 452246
+	ori	$a3, $a3, 365
+	xor	$a2, $a2, $a3
+	or	$a1, $a2, $a1
+	bnez	$a1, .LBB5_38
 # %bb.42:
-	pcalau12i	$a0, %pc_hi20(GlobalIndex)
-	st.w	$s0, $a0, %pc_lo12(GlobalIndex)
+	pcalau12i	$a1, %pc_hi20(GlobalIndex)
+	st.w	$a0, $a1, %pc_lo12(GlobalIndex)
 	b	.LBB5_38
 .Lfunc_end5:
 	.size	DeclOrF, .Lfunc_end5-DeclOrF

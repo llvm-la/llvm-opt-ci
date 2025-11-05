@@ -78,29 +78,31 @@ main:                                   # @main
 	ld.d	$a1, $sp, 16
 	st.d	$a0, $sp, 24
 	stx.b	$zero, $a1, $a0
-	ld.d	$a0, $sp, 24
-	ld.d	$s2, $sp, 16
-	ori	$a1, $zero, 7
-	move	$s3, $zero
-	bne	$a0, $a1, .LBB0_11
-# %bb.10:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a1, $a0, %pc_lo12(.L.str)
+	ld.d	$a1, $sp, 24
+	ld.d	$a0, $sp, 16
 	ori	$a2, $zero, 7
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	sltui	$s3, $a0, 1
+	move	$s2, $zero
+	bne	$a1, $a2, .LBB0_11
+# %bb.10:
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 468530
+	ori	$a2, $a2, 3373
+	ld.w	$a3, $a0, 3
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 427830
+	ori	$a2, $a2, 370
+	xor	$a2, $a3, $a2
+	or	$a1, $a1, $a2
+	sltui	$s2, $a1, 1
 .LBB0_11:                               # %.critedge
-	beq	$s2, $s4, .LBB0_13
+	beq	$a0, $s4, .LBB0_13
 # %bb.12:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a0, $sp, 32
-	addi.d	$a1, $a0, 1
-	move	$a0, $s2
+	ld.d	$a1, $sp, 32
+	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB0_13:                               # %.critedge37
-	beqz	$s3, .LBB0_16
+	beqz	$s2, .LBB0_16
 # %bb.14:
 	addi.d	$fp, $s1, 16
 	addi.w	$s2, $s0, -2

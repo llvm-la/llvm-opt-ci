@@ -58,17 +58,51 @@ bar:                                    # @bar
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(data)
-	addi.d	$a1, $a1, %pc_lo12(data)
-	ori	$a2, $zero, 64
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	lu12i.w	$a2, 213811
+	ori	$a2, $a2, 561
+	lu32i.d	$a2, 472629
+	lu52i.d	$a2, $a2, 899
+	xor	$a1, $a1, $a2
+	ld.d	$a3, $a0, 8
+	lu12i.w	$a4, 205587
+	ori	$a4, $a4, 57
+	lu32i.d	$a4, 341043
+	lu52i.d	$a4, $a4, 867
+	xor	$a3, $a3, $a4
+	ld.d	$a5, $a0, 16
+	ld.d	$a6, $a0, 24
+	lu12i.w	$a7, 230259
+	ori	$a7, $a7, 1589
+	lu32i.d	$a7, 77881
+	lu52i.d	$a7, $a7, 803
+	xor	$a6, $a6, $a7
+	ld.d	$a7, $a0, 32
+	lu12i.w	$t0, 222035
+	ori	$t0, $t0, 1075
+	lu32i.d	$t0, -444361
+	lu52i.d	$t0, $t0, 771
+	xor	$a7, $a7, $t0
+	ld.d	$t0, $a0, 40
+	lu12i.w	$t1, 197523
+	ori	$t1, $t1, 2103
+	lu32i.d	$t1, 209457
+	xor	$a2, $t0, $a2
+	ld.d	$t0, $a0, 48
+	ld.d	$a0, $a0, 56
+	lu52i.d	$t1, $t1, 835
+	xor	$a5, $a5, $t1
+	xor	$a4, $t0, $a4
+	xor	$a0, $a0, $t1
+	or	$a1, $a1, $a3
+	or	$a3, $a5, $a6
+	or	$a2, $a7, $a2
+	or	$a0, $a4, $a0
+	or	$a1, $a1, $a3
+	or	$a0, $a2, $a0
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB2_2
 # %bb.1:
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .LBB2_2:
 	pcaddu18i	$ra, %call36(abort)

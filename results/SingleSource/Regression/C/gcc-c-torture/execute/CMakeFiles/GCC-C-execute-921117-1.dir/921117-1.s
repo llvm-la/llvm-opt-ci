@@ -43,22 +43,25 @@ main:                                   # @main
 	ld.d	$a2, $a2, 0
 	st.w	$a3, $a0, 7
 	st.d	$a2, $a0, 0
-	ld.d	$a0, $a0, 8
-	lu12i.w	$a2, 209699
-	ori	$a2, $a2, 304
-	lu32i.d	$a2, 406836
-	lu52i.d	$a2, $a2, 883
-	st.d	$a2, $sp, 8
-	srli.d	$a2, $a0, 32
-	st.d	$a0, $sp, 16
-	bne	$a2, $a1, .LBB1_3
+	ld.d	$a2, $a0, 8
+	lu12i.w	$a0, 209699
+	ori	$a0, $a0, 304
+	lu32i.d	$a0, 406836
+	lu52i.d	$a0, $a0, 883
+	st.d	$a0, $sp, 8
+	srli.d	$a3, $a2, 32
+	st.d	$a2, $sp, 16
+	bne	$a3, $a1, .LBB1_3
 # %bb.1:                                # %check.exit
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 8
-	ori	$a2, $zero, 11
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $sp, 8
+	xor	$a0, $a1, $a0
+	ld.d	$a1, $sp, 11
+	lu12i.w	$a2, 222035
+	ori	$a2, $a2, 1075
+	lu32i.d	$a2, -444361
+	lu52i.d	$a2, $a2, 3
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_3
 # %bb.2:
 	move	$a0, $zero

@@ -23,9 +23,7 @@ test:                                   # @test
 	.type	testl,@function
 testl:                                  # @testl
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
 	st.d	$zero, $sp, 16
 	ori	$a0, $zero, 0
 	ori	$a1, $zero, 0
@@ -33,14 +31,14 @@ testl:                                  # @testl
 	lu52i.d	$a2, $a1, 1023
 	st.d	$a2, $sp, 24
 	st.d	$zero, $sp, 32
-	lu52i.d	$a2, $a1, -1025
-	st.d	$a2, $sp, 40
+	lu52i.d	$a3, $a1, -1025
+	st.d	$a3, $sp, 40
 	st.d	$zero, $sp, 48
-	st.d	$a2, $sp, 56
-	lu52i.d	$a2, $zero, -2048
-	st.d	$a2, $sp, 72
+	st.d	$a3, $sp, 56
+	lu52i.d	$a3, $zero, -2048
+	st.d	$a3, $sp, 72
 	st.d	$zero, $sp, 64
-	st.d	$a2, $sp, 88
+	st.d	$a3, $sp, 88
 	st.d	$zero, $sp, 80
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 96
@@ -51,66 +49,75 @@ testl:                                  # @testl
 	lu52i.d	$a0, $a0, 2047
 	st.d	$a0, $sp, 136
 	pcalau12i	$a0, %pc_hi20(Zl)
-	addi.d	$fp, $a0, %pc_lo12(Zl)
-	addi.d	$a0, $sp, 16
-	ori	$a2, $zero, 16
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_9
+	addi.d	$a0, $a0, %pc_lo12(Zl)
+	ld.d	$a1, $a0, 8
+	ld.d	$a3, $a0, 0
+	xor	$a1, $a1, $a2
+	or	$a1, $a3, $a1
+	bnez	$a1, .LBB2_9
 # %bb.1:
-	addi.d	$a0, $sp, 32
-	addi.d	$a1, $fp, 16
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_9
+	ld.d	$a1, $sp, 32
+	ld.d	$a2, $a0, 16
+	ld.d	$a3, $sp, 40
+	ld.d	$a4, $a0, 24
+	xor	$a1, $a1, $a2
+	xor	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB2_9
 # %bb.2:
-	addi.d	$a0, $sp, 48
-	addi.d	$a1, $fp, 32
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_9
+	ld.d	$a1, $sp, 48
+	ld.d	$a2, $a0, 32
+	ld.d	$a3, $sp, 56
+	ld.d	$a4, $a0, 40
+	xor	$a1, $a1, $a2
+	xor	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB2_9
 # %bb.3:
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $fp, 48
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_9
+	ld.d	$a1, $sp, 64
+	ld.d	$a2, $a0, 48
+	ld.d	$a3, $sp, 72
+	ld.d	$a4, $a0, 56
+	xor	$a1, $a1, $a2
+	xor	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB2_9
 # %bb.4:
-	addi.d	$a0, $sp, 80
-	addi.d	$a1, $fp, 64
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_9
+	ld.d	$a1, $sp, 80
+	ld.d	$a2, $a0, 64
+	ld.d	$a3, $sp, 88
+	ld.d	$a4, $a0, 72
+	xor	$a1, $a1, $a2
+	xor	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB2_9
 # %bb.5:
-	addi.d	$a0, $sp, 96
-	addi.d	$a1, $fp, 80
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_9
+	ld.d	$a1, $sp, 104
+	ld.d	$a2, $a0, 88
+	ld.d	$a3, $sp, 96
+	xor	$a1, $a1, $a2
+	or	$a1, $a3, $a1
+	bnez	$a1, .LBB2_9
 # %bb.6:
-	addi.d	$a0, $sp, 112
-	addi.d	$a1, $fp, 96
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_9
+	ld.d	$a1, $sp, 112
+	ld.d	$a2, $a0, 96
+	ld.d	$a3, $sp, 120
+	ld.d	$a4, $a0, 104
+	xor	$a1, $a1, $a2
+	xor	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB2_9
 # %bb.7:
-	addi.d	$a0, $sp, 128
-	addi.d	$a1, $fp, 112
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $sp, 128
+	ld.d	$a2, $a0, 112
+	ld.d	$a3, $sp, 136
+	ld.d	$a0, $a0, 120
+	xor	$a1, $a1, $a2
+	xor	$a0, $a3, $a0
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB2_9
 # %bb.8:
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $sp, 144
 	ret
 .LBB2_9:
 	pcaddu18i	$ra, %call36(abort)

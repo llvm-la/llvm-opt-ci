@@ -948,12 +948,12 @@ main:                                   # @main
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(output)
-	addi.d	$fp, $a0, %pc_lo12(output)
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $sp, 1088
+	ld.d	$a0, $sp, 1088
+	pcalau12i	$a1, %pc_hi20(output)
+	addi.d	$fp, $a1, %pc_lo12(output)
+	ld.d	$a1, $fp, 0
                                         # implicit-def: $r30
-	bne	$a1, $a0, .LBB2_8
+	bne	$a0, $a1, .LBB2_8
 # %bb.3:                                # %.split.1
 	pcalau12i	$a0, %pc_hi20(.Lstr.1)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)
@@ -964,10 +964,10 @@ main:                                   # @main
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 30
-	ld.d	$a1, $sp, 1088
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $fp, 30
                                         # implicit-def: $r30
-	bne	$a1, $a0, .LBB2_8
+	bne	$a0, $a1, .LBB2_8
 # %bb.4:                                # %.split.2
 	pcalau12i	$a0, %pc_hi20(.Lstr.1)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)
@@ -978,10 +978,10 @@ main:                                   # @main
 	ori	$a1, $zero, 3
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 60
-	ld.d	$a1, $sp, 1088
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $fp, 60
                                         # implicit-def: $r30
-	bne	$a1, $a0, .LBB2_8
+	bne	$a0, $a1, .LBB2_8
 # %bb.5:                                # %.split.3
 	pcalau12i	$a0, %pc_hi20(.Lstr.1)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.1)
@@ -992,11 +992,17 @@ main:                                   # @main
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $fp, 90
-	addi.d	$a0, $sp, 1088
-	ori	$a2, $zero, 20
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $fp, 90
+	ld.d	$a2, $sp, 1096
+	ld.d	$a3, $fp, 98
+	ld.wu	$a4, $sp, 1104
+	ld.wu	$a5, $fp, 106
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a3
+	xor	$a2, $a4, $a5
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
                                         # implicit-def: $r30
 	bnez	$a0, .LBB2_8
 # %bb.6:                                # %.split.4
@@ -1009,11 +1015,21 @@ main:                                   # @main
 	ori	$a1, $zero, 5
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $fp, 120
-	addi.d	$a0, $sp, 1088
-	ori	$a2, $zero, 28
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $fp, 120
+	ld.d	$a2, $sp, 1096
+	ld.d	$a3, $fp, 128
+	ld.d	$a4, $sp, 1104
+	ld.d	$a5, $fp, 136
+	ld.wu	$a6, $sp, 1112
+	ld.wu	$a7, $fp, 144
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a3
+	xor	$a2, $a4, $a5
+	xor	$a3, $a6, $a7
+	or	$a0, $a0, $a1
+	or	$a1, $a2, $a3
+	or	$a0, $a0, $a1
                                         # implicit-def: $r30
 	bnez	$a0, .LBB2_8
 # %bb.7:                                # %.split.5
@@ -1026,11 +1042,13 @@ main:                                   # @main
 	ori	$a1, $zero, 6
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $fp, 150
-	addi.d	$a0, $sp, 1088
-	ori	$a2, $zero, 10
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 1088
+	ld.d	$a1, $fp, 150
+	ld.hu	$a2, $sp, 1096
+	ld.hu	$a3, $fp, 158
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a3
+	or	$a0, $a0, $a1
                                         # implicit-def: $r30
 	beqz	$a0, .LBB2_21
 .LBB2_8:                                # %.split35.us

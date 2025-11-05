@@ -2704,12 +2704,13 @@ _Z5checkB5cxx11iPPc:                    # @_Z5checkB5cxx11iPPc
 	bne	$s0, $a0, .LBB6_17
 # %bb.12:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
 	ld.d	$s1, $sp, 8
-	pcalau12i	$a0, %pc_hi20(.L.str.7)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.7)
-	ori	$a2, $zero, 3
-	move	$a0, $s1
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.hu	$a0, $s1, 0
+	ld.bu	$a1, $s1, 2
+	lu12i.w	$a2, 6
+	ori	$a2, $a2, 3169
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 108
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB6_17
 	b	.LBB6_15
 .LBB6_13:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit9
@@ -2817,16 +2818,16 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	ld.d	$a0, $sp, 48
-	ld.d	$s2, $sp, 40
-	ori	$a1, $zero, 3
-	beq	$a0, $a1, .LBB7_6
+	ld.d	$a1, $sp, 48
+	ld.d	$a0, $sp, 40
+	ori	$a2, $zero, 3
+	beq	$a1, $a2, .LBB7_6
 .LBB7_2:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread88
-	ori	$a1, $zero, 2
-	beq	$a0, $a1, .LBB7_15
+	ori	$a2, $zero, 2
+	beq	$a1, $a2, .LBB7_15
 .LBB7_3:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit35.thread89
-	ori	$a1, $zero, 4
-	beq	$a0, $a1, .LBB7_32
+	ori	$a2, $zero, 4
+	beq	$a1, $a2, .LBB7_32
 	b	.LBB7_67
 .LBB7_4:
 .Ltmp129:                               # EH_LABEL
@@ -2842,18 +2843,19 @@ main:                                   # @main
 # %bb.5:
 	lu12i.w	$a0, 12
 	ori	$fp, $a0, 848
-	ld.d	$a0, $sp, 48
-	ld.d	$s2, $sp, 40
-	ori	$a1, $zero, 3
-	bne	$a0, $a1, .LBB7_2
-.LBB7_6:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
-	pcalau12i	$a0, %pc_hi20(.L.str.7)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.7)
+	ld.d	$a1, $sp, 48
+	ld.d	$a0, $sp, 40
 	ori	$a2, $zero, 3
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB7_67
+	bne	$a1, $a2, .LBB7_2
+.LBB7_6:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
+	ld.hu	$a1, $a0, 0
+	ld.bu	$a2, $a0, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 3169
+	xor	$a1, $a1, $a3
+	xori	$a2, $a2, 108
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB7_67
 # %bb.7:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
 	st.d	$zero, $sp, 16
 	vrepli.b	$vr0, 0
@@ -2892,15 +2894,15 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB7_14:                               # %_ZN9FibonacciD2Ev.exit
-	ld.d	$a0, $sp, 48
-	ld.d	$s2, $sp, 40
-	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB7_3
+	ld.d	$a1, $sp, 48
+	ld.d	$a0, $sp, 40
+	ori	$a2, $zero, 2
+	bne	$a1, $a2, .LBB7_3
 .LBB7_15:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit35
-	ld.hu	$a0, $s2, 0
-	lu12i.w	$a1, 6
-	ori	$a1, $a1, 2164
-	bne	$a0, $a1, .LBB7_67
+	ld.hu	$a1, $a0, 0
+	lu12i.w	$a2, 6
+	ori	$a2, $a2, 2164
+	bne	$a1, $a2, .LBB7_67
 # %bb.16:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit35.thread
 	st.d	$zero, $sp, 16
 	vrepli.b	$vr0, 0
@@ -2976,15 +2978,15 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB7_31:                               # %_ZN9FibonacciD2Ev.exit50
-	ld.d	$a0, $sp, 48
-	ld.d	$s2, $sp, 40
-	ori	$a1, $zero, 4
-	bne	$a0, $a1, .LBB7_67
+	ld.d	$a1, $sp, 48
+	ld.d	$a0, $sp, 40
+	ori	$a2, $zero, 4
+	bne	$a1, $a2, .LBB7_67
 .LBB7_32:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit52
-	ld.w	$a0, $s2, 0
-	lu12i.w	$a1, 415446
-	ori	$a1, $a1, 3955
-	bne	$a0, $a1, .LBB7_48
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 415446
+	ori	$a2, $a2, 3955
+	bne	$a1, $a2, .LBB7_48
 # %bb.33:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit52.thread
 	st.d	$zero, $sp, 16
 	vrepli.b	$vr0, 0
@@ -3059,15 +3061,15 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB7_47:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit52.thread90
-	ld.d	$a0, $sp, 48
-	ld.d	$s2, $sp, 40
-	ori	$a1, $zero, 4
-	bne	$a0, $a1, .LBB7_67
+	ld.d	$a1, $sp, 48
+	ld.d	$a0, $sp, 40
+	ori	$a2, $zero, 4
+	bne	$a1, $a2, .LBB7_67
 .LBB7_48:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit69
-	ld.w	$a0, $s2, 0
-	lu12i.w	$a1, 411366
-	ori	$a1, $a1, 370
-	bne	$a0, $a1, .LBB7_67
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 411366
+	ori	$a2, $a2, 370
+	bne	$a1, $a2, .LBB7_67
 # %bb.49:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit69.thread
 	ori	$a0, $zero, 3
 	bne	$s1, $a0, .LBB7_51
@@ -3151,14 +3153,13 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB7_66:                               # %_ZN9FibonacciD2Ev.exit84
-	ld.d	$s2, $sp, 40
+	ld.d	$a0, $sp, 40
 .LBB7_67:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit69.thread93
-	addi.d	$a0, $sp, 56
-	beq	$s2, $a0, .LBB7_69
+	addi.d	$a1, $sp, 56
+	beq	$a0, $a1, .LBB7_69
 # %bb.68:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
-	ld.d	$a0, $sp, 56
-	addi.d	$a1, $a0, 1
-	move	$a0, $s2
+	ld.d	$a1, $sp, 56
+	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB7_69:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
@@ -3241,71 +3242,67 @@ GCC_except_table7:
 	.uleb128 .Ltmp130-.Ltmp129              #   Call between .Ltmp129 and .Ltmp130
 	.uleb128 .Ltmp131-.Lfunc_begin5         #     jumps to .Ltmp131
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp130-.Lfunc_begin5         # >> Call Site 3 <<
-	.uleb128 .Ltmp132-.Ltmp130              #   Call between .Ltmp130 and .Ltmp132
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp132-.Lfunc_begin5         # >> Call Site 4 <<
+	.uleb128 .Ltmp132-.Lfunc_begin5         # >> Call Site 3 <<
 	.uleb128 .Ltmp133-.Ltmp132              #   Call between .Ltmp132 and .Ltmp133
 	.uleb128 .Ltmp134-.Lfunc_begin5         #     jumps to .Ltmp134
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp133-.Lfunc_begin5         # >> Call Site 5 <<
+	.uleb128 .Ltmp133-.Lfunc_begin5         # >> Call Site 4 <<
 	.uleb128 .Ltmp135-.Ltmp133              #   Call between .Ltmp133 and .Ltmp135
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp135-.Lfunc_begin5         # >> Call Site 6 <<
+	.uleb128 .Ltmp135-.Lfunc_begin5         # >> Call Site 5 <<
 	.uleb128 .Ltmp136-.Ltmp135              #   Call between .Ltmp135 and .Ltmp136
 	.uleb128 .Ltmp137-.Lfunc_begin5         #     jumps to .Ltmp137
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp136-.Lfunc_begin5         # >> Call Site 7 <<
+	.uleb128 .Ltmp136-.Lfunc_begin5         # >> Call Site 6 <<
 	.uleb128 .Ltmp138-.Ltmp136              #   Call between .Ltmp136 and .Ltmp138
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp138-.Lfunc_begin5         # >> Call Site 8 <<
+	.uleb128 .Ltmp138-.Lfunc_begin5         # >> Call Site 7 <<
 	.uleb128 .Ltmp139-.Ltmp138              #   Call between .Ltmp138 and .Ltmp139
 	.uleb128 .Ltmp140-.Lfunc_begin5         #     jumps to .Ltmp140
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp139-.Lfunc_begin5         # >> Call Site 9 <<
+	.uleb128 .Ltmp139-.Lfunc_begin5         # >> Call Site 8 <<
 	.uleb128 .Ltmp141-.Ltmp139              #   Call between .Ltmp139 and .Ltmp141
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp141-.Lfunc_begin5         # >> Call Site 10 <<
+	.uleb128 .Ltmp141-.Lfunc_begin5         # >> Call Site 9 <<
 	.uleb128 .Ltmp142-.Ltmp141              #   Call between .Ltmp141 and .Ltmp142
 	.uleb128 .Ltmp143-.Lfunc_begin5         #     jumps to .Ltmp143
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp142-.Lfunc_begin5         # >> Call Site 11 <<
+	.uleb128 .Ltmp142-.Lfunc_begin5         # >> Call Site 10 <<
 	.uleb128 .Ltmp144-.Ltmp142              #   Call between .Ltmp142 and .Ltmp144
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp144-.Lfunc_begin5         # >> Call Site 12 <<
+	.uleb128 .Ltmp144-.Lfunc_begin5         # >> Call Site 11 <<
 	.uleb128 .Ltmp145-.Ltmp144              #   Call between .Ltmp144 and .Ltmp145
 	.uleb128 .Ltmp146-.Lfunc_begin5         #     jumps to .Ltmp146
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp145-.Lfunc_begin5         # >> Call Site 13 <<
+	.uleb128 .Ltmp145-.Lfunc_begin5         # >> Call Site 12 <<
 	.uleb128 .Ltmp147-.Ltmp145              #   Call between .Ltmp145 and .Ltmp147
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp147-.Lfunc_begin5         # >> Call Site 14 <<
+	.uleb128 .Ltmp147-.Lfunc_begin5         # >> Call Site 13 <<
 	.uleb128 .Ltmp148-.Ltmp147              #   Call between .Ltmp147 and .Ltmp148
 	.uleb128 .Ltmp149-.Lfunc_begin5         #     jumps to .Ltmp149
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp148-.Lfunc_begin5         # >> Call Site 15 <<
+	.uleb128 .Ltmp148-.Lfunc_begin5         # >> Call Site 14 <<
 	.uleb128 .Ltmp150-.Ltmp148              #   Call between .Ltmp148 and .Ltmp150
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp150-.Lfunc_begin5         # >> Call Site 16 <<
+	.uleb128 .Ltmp150-.Lfunc_begin5         # >> Call Site 15 <<
 	.uleb128 .Ltmp151-.Ltmp150              #   Call between .Ltmp150 and .Ltmp151
 	.uleb128 .Ltmp152-.Lfunc_begin5         #     jumps to .Ltmp152
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp151-.Lfunc_begin5         # >> Call Site 17 <<
+	.uleb128 .Ltmp151-.Lfunc_begin5         # >> Call Site 16 <<
 	.uleb128 .Ltmp153-.Ltmp151              #   Call between .Ltmp151 and .Ltmp153
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp153-.Lfunc_begin5         # >> Call Site 18 <<
+	.uleb128 .Ltmp153-.Lfunc_begin5         # >> Call Site 17 <<
 	.uleb128 .Ltmp154-.Ltmp153              #   Call between .Ltmp153 and .Ltmp154
 	.uleb128 .Ltmp155-.Lfunc_begin5         #     jumps to .Ltmp155
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp154-.Lfunc_begin5         # >> Call Site 19 <<
+	.uleb128 .Ltmp154-.Lfunc_begin5         # >> Call Site 18 <<
 	.uleb128 .Lfunc_end7-.Ltmp154           #   Call between .Ltmp154 and .Lfunc_end7
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup

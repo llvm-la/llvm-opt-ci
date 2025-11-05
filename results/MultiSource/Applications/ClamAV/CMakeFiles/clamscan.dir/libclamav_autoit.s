@@ -5,25 +5,25 @@
 	.type	cli_scanautoit,@function
 cli_scanautoit:                         # @cli_scanautoit
 # %bb.0:
-	addi.d	$sp, $sp, -1920
-	st.d	$ra, $sp, 1912                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1904                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1896                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1888                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1880                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1872                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1864                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1856                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1848                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1840                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1832                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1936
+	st.d	$ra, $sp, 1928                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1920                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1912                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1904                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1896                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1888                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1880                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1872                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1864                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1856                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1848                  # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$s1, $a0
 	move	$a1, $a2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 207
+	addi.d	$a1, $sp, 223
 	ori	$a2, $zero, 1
 	ori	$fp, $zero, 1
 	move	$a0, $s1
@@ -52,17 +52,17 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $zero, -118
-	b	.LBB0_613
+	b	.LBB0_614
 .LBB0_4:
 	addi.w	$a0, $zero, -123
-	b	.LBB0_614
+	b	.LBB0_615
 .LBB0_5:
 	addi.w	$a0, $zero, -118
-	b	.LBB0_614
+	b	.LBB0_615
 .LBB0_6:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
-	ld.d	$s6, $a0, %got_pc_lo12(cli_leavetemps_flag)
-	ld.bu	$a0, $s6, 0
+	ld.d	$s7, $a0, %got_pc_lo12(cli_leavetemps_flag)
+	ld.bu	$a0, $s7, 0
 	beqz	$a0, .LBB0_8
 # %bb.7:
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
@@ -71,38 +71,38 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 .LBB0_8:
-	ld.bu	$a0, $sp, 207
+	ld.bu	$a0, $sp, 223
 	ori	$a1, $zero, 54
 	beq	$a0, $a1, .LBB0_262
 # %bb.9:
 	ori	$a1, $zero, 53
-	bne	$a0, $a1, .LBB0_608
+	bne	$a0, $a1, .LBB0_609
 # %bb.10:
-	addi.d	$s5, $sp, 1232
-	addi.d	$a1, $sp, 1232
+	addi.d	$s5, $sp, 1248
+	addi.d	$a1, $sp, 1248
 	ori	$a2, $zero, 16
 	ori	$s2, $zero, 16
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_610
+	bne	$a0, $s2, .LBB0_611
 # %bb.11:                               # %.preheader471.preheader.i
-	ld.bu	$a0, $sp, 1232
-	ld.bu	$a1, $sp, 1233
-	ld.bu	$a2, $sp, 1234
-	ld.bu	$a3, $sp, 1235
-	ld.bu	$a4, $sp, 1236
-	ld.bu	$a5, $sp, 1237
-	ld.bu	$a6, $sp, 1238
-	ld.bu	$a7, $sp, 1239
-	ld.bu	$t0, $sp, 1240
-	ld.bu	$t1, $sp, 1241
-	ld.bu	$t2, $sp, 1242
-	ld.bu	$t3, $sp, 1243
-	ld.bu	$t4, $sp, 1244
-	ld.bu	$t5, $sp, 1245
-	ld.bu	$t6, $sp, 1246
-	ld.bu	$t7, $sp, 1247
+	ld.bu	$a0, $sp, 1248
+	ld.bu	$a1, $sp, 1249
+	ld.bu	$a2, $sp, 1250
+	ld.bu	$a3, $sp, 1251
+	ld.bu	$a4, $sp, 1252
+	ld.bu	$a5, $sp, 1253
+	ld.bu	$a6, $sp, 1254
+	ld.bu	$a7, $sp, 1255
+	ld.bu	$t0, $sp, 1256
+	ld.bu	$t1, $sp, 1257
+	ld.bu	$t2, $sp, 1258
+	ld.bu	$t3, $sp, 1259
+	ld.bu	$t4, $sp, 1260
+	ld.bu	$t5, $sp, 1261
+	ld.bu	$t6, $sp, 1262
+	ld.bu	$t7, $sp, 1263
 	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
 	add.d	$a0, $a0, $a3
@@ -120,48 +120,48 @@ cli_scanautoit:                         # @cli_scanautoit
 	add.d	$a0, $a0, $t7
 	lu12i.w	$a1, 2
 	ori	$a2, $a1, 687
-	add.w	$s7, $a0, $a2
-	ori	$s8, $zero, 8
+	add.w	$a0, $a0, $a2
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	ori	$s6, $zero, 8
 	lu12i.w	$a0, -201978
-	ori	$a0, $a0, 3583
-	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
+	ori	$s8, $a0, 3583
 	ori	$a0, $a1, 2492
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cli_debug_flag)
-	ld.d	$s4, $a0, %got_pc_lo12(cli_debug_flag)
-	ori	$s3, $zero, 299
+	ld.d	$s3, $a0, %got_pc_lo12(cli_debug_flag)
+	ori	$s4, $zero, 299
 	lu12i.w	$a0, 10
 	ori	$a0, $a0, 606
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	ori	$a0, $a1, 2476
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 606
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 1450
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 176                 # 8-byte Folded Spill
 	lu12i.w	$a0, 12
 	ori	$a0, $a0, 978
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	lu12i.w	$a0, 217860
 	ori	$a0, $a0, 325
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 184                   # 8-byte Folded Spill
 .LBB0_12:                               # %.backedge.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_53 Depth 2
@@ -175,47 +175,46 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.13:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.w	$a1, $a0, 4
 	addi.w	$a0, $a1, -1
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
-	bltu	$a0, $a2, .LBB0_619
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
+	bltu	$a0, $a2, .LBB0_620
 .LBB0_14:                               # %.critedge.i
                                         #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	ori	$a2, $zero, 8
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s8, .LBB0_610
+	bne	$a0, $s6, .LBB0_611
 # %bb.15:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.w	$a0, $sp, 1232
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB0_618
+	ld.w	$a0, $sp, 1248
+	bne	$a0, $s8, .LBB0_619
 # %bb.16:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.w	$a0, $sp, 1236
-	bltz	$a0, .LBB0_610
+	ld.w	$a0, $sp, 1252
+	bltz	$a0, .LBB0_611
 # %bb.17:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	xor	$s2, $a0, $a1
-	bltu	$s3, $s2, .LBB0_21
+	bltu	$s4, $s2, .LBB0_21
 # %bb.18:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.bu	$a0, $s4, 0
+	ld.bu	$a0, $s3, 0
 	beqz	$a0, .LBB0_21
 # %bb.19:                               #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	move	$a0, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_610
+	bne	$a0, $s2, .LBB0_611
 # %bb.20:                               #   in Loop: Header=BB0_12 Depth=1
 	stx.b	$zero, $s2, $s5
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	add.w	$a2, $s2, $a0
-	addi.d	$a0, $sp, 1232
+	addi.d	$a0, $sp, 1248
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(MT_decrypt)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 1232
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 1248
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_22
@@ -226,40 +225,40 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 .LBB0_22:                               #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	ori	$a2, $zero, 4
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
-	bne	$a0, $a1, .LBB0_610
+	bne	$a0, $a1, .LBB0_611
 # %bb.23:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.w	$a0, $sp, 1232
-	bltz	$a0, .LBB0_610
+	ld.w	$a0, $sp, 1248
+	bltz	$a0, .LBB0_611
 # %bb.24:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	xor	$s2, $a0, $a1
-	bltu	$s3, $s2, .LBB0_28
+	bltu	$s4, $s2, .LBB0_28
 # %bb.25:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.bu	$a0, $s4, 0
+	ld.bu	$a0, $s3, 0
 	beqz	$a0, .LBB0_28
 # %bb.26:                               #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	move	$a0, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_610
+	bne	$a0, $s2, .LBB0_611
 # %bb.27:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	add.w	$a2, $s2, $a0
-	addi.d	$a0, $sp, 1232
+	addi.d	$a0, $sp, 1248
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(MT_decrypt)
 	jirl	$ra, $ra, 0
 	stx.b	$zero, $s2, $s5
-	addi.d	$a1, $sp, 1232
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 1248
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_29
@@ -270,44 +269,44 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 .LBB0_29:                               #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	ori	$a2, $zero, 13
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 13
-	bne	$a0, $a1, .LBB0_610
+	bne	$a0, $a1, .LBB0_611
 # %bb.30:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.w	$s2, $sp, 1233
-	bltz	$s2, .LBB0_615
+	ld.w	$s2, $sp, 1249
+	bltz	$s2, .LBB0_616
 # %bb.31:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.bu	$s4, $sp, 1232
+	ld.bu	$s3, $sp, 1248
 	ori	$a1, $zero, 16
 	ori	$a2, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
-	bne	$s2, $s3, .LBB0_33
+	ld.d	$s4, $sp, 192                   # 8-byte Folded Reload
+	bne	$s2, $s4, .LBB0_33
 # %bb.32:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_46
 .LBB0_33:                               #   in Loop: Header=BB0_12 Depth=1
-	xor	$s2, $s2, $s3
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	xor	$s2, $s2, $s4
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 1237
-	xor	$a1, $a0, $s3
+	ld.w	$a0, $sp, 1253
+	xor	$a1, $a0, $s4
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 1241
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.w	$a0, $sp, 1257
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	xor	$a1, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.11)
@@ -338,7 +337,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
 	addi.w	$a0, $zero, -114
-	beqz	$s8, .LBB0_611
+	beqz	$s8, .LBB0_612
 # %bb.38:                               #   in Loop: Header=BB0_12 Depth=1
 	move	$s6, $a0
 	move	$a0, $s1
@@ -346,22 +345,22 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_621
+	bne	$a0, $s2, .LBB0_622
 # %bb.39:                               #   in Loop: Header=BB0_12 Depth=1
 	move	$a0, $s8
 	move	$a1, $s2
-	move	$a2, $s7
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(MT_decrypt)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB0_47
+	bne	$s3, $a0, .LBB0_47
 # %bb.40:                               #   in Loop: Header=BB0_12 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s8, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB0_45
 # %bb.41:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.w	$a0, $s8, 4
@@ -372,7 +371,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	bstrpick.d	$a0, $a1, 31, 0
-	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 184                   # 8-byte Folded Reload
 	beqz	$a3, .LBB0_50
 # %bb.42:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.d	$a2, $a3, 24
@@ -388,9 +387,9 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ori	$s8, $zero, 8
-	ori	$s3, $zero, 299
+	ori	$s6, $zero, 8
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ori	$s4, $zero, 299
 	b	.LBB0_12
 .LBB0_45:                               #   in Loop: Header=BB0_12 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -400,63 +399,63 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ori	$s8, $zero, 8
+	ori	$s6, $zero, 8
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 .LBB0_46:                               # %.backedge.i
                                         #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
-	ori	$s3, $zero, 299
+	ld.d	$s3, $sp, 184                   # 8-byte Folded Reload
+	ori	$s4, $zero, 299
 	b	.LBB0_12
 .LBB0_47:                               #   in Loop: Header=BB0_12 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	move	$s5, $s8
 .LBB0_48:                               # %.sink.split.i
                                         #   in Loop: Header=BB0_12 Depth=1
-	ori	$s8, $zero, 8
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
 	addi.w	$a2, $s6, 0
 	ori	$a0, $zero, 2
 	bgeu	$a2, $a0, .LBB0_241
 .LBB0_49:                               #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
-	ori	$s3, $zero, 299
+	ld.d	$s3, $sp, 184                   # 8-byte Folded Reload
+	ori	$s4, $zero, 299
 	b	.LBB0_254
 .LBB0_50:                               # %split.i
                                         #   in Loop: Header=BB0_12 Depth=1
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_637
+	beqz	$a0, .LBB0_635
 # %bb.51:                               #   in Loop: Header=BB0_12 Depth=1
 	move	$s5, $a0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	addi.w	$s6, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	beqz	$s6, .LBB0_236
 # %bb.52:                               # %.lr.ph533.i.preheader
                                         #   in Loop: Header=BB0_12 Depth=1
 	move	$s6, $zero
-	move	$s4, $zero
+	move	$s3, $zero
 	move	$a0, $zero
 	ori	$a4, $zero, 8
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 88                    # 8-byte Folded Spill
 .LBB0_53:                               # %.lr.ph533.i
                                         #   Parent Loop BB0_12 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_211 Depth 3
                                         #       Child Loop BB0_157 Depth 3
                                         #       Child Loop BB0_150 Depth 3
-	bstrpick.d	$s4, $s4, 15, 0
+	bstrpick.d	$s3, $s3, 15, 0
 	bnez	$a0, .LBB0_58
 # %bb.54:                               # %.lr.ph533.i
                                         #   in Loop: Header=BB0_53 Depth=2
@@ -465,7 +464,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bgeu	$a1, $a2, .LBB0_58
 # %bb.55:                               # %.thread783.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	move	$s3, $a4
+	move	$s4, $a4
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -478,14 +477,14 @@ cli_scanautoit:                         # @cli_scanautoit
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	ori	$a7, $zero, 1
-	move	$a4, $s3
+	move	$a4, $s4
 .LBB0_57:                               # %getbits.exit231.i
                                         #   in Loop: Header=BB0_53 Depth=2
 	bstrpick.d	$a1, $s6, 31, 0
 	stx.b	$a0, $s5, $a1
 	addi.w	$s6, $s6, 1
 	move	$a0, $s7
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	beqz	$a7, .LBB0_152
 	b	.LBB0_237
 .LBB0_58:                               # %.preheader468.preheader.i
@@ -500,12 +499,12 @@ cli_scanautoit:                         # @cli_scanautoit
 	slli.d	$a1, $a1, 8
 	addi.w	$a4, $a4, 2
 	or	$a0, $a1, $a0
-	or	$s4, $a0, $s4
+	or	$s3, $a0, $s3
 	ori	$a0, $zero, 16
 .LBB0_60:                               # %getbits.exit.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$a1, $s4, 1
-	bstrpick.d	$a2, $s4, 31, 15
+	slli.d	$a1, $s3, 1
+	bstrpick.d	$a2, $s3, 31, 15
 	addi.w	$s7, $a0, -1
 	bnez	$a2, .LBB0_64
 # %bb.61:                               #   in Loop: Header=BB0_53 Depth=2
@@ -516,12 +515,12 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a3, $zero, 2
 	bgeu	$a2, $a3, .LBB0_67
 # %bb.63:                               #   in Loop: Header=BB0_53 Depth=2
-	move	$s3, $a4
-	move	$s4, $a1
+	move	$s4, $a4
+	move	$s3, $a1
 	b	.LBB0_56
 .LBB0_64:                               #   in Loop: Header=BB0_53 Depth=2
 	bstrpick.d	$a1, $a1, 15, 1
-	slli.d	$s4, $a1, 1
+	slli.d	$s3, $a1, 1
 	ori	$a1, $zero, 15
 	bltu	$a1, $a0, .LBB0_70
 # %bb.65:                               #   in Loop: Header=BB0_53 Depth=2
@@ -531,10 +530,10 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.66:                               #   in Loop: Header=BB0_53 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
-	move	$s3, $a4
+	move	$s4, $a4
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a4, $s3
+	move	$a4, $s4
 	move	$t0, $zero
 	ori	$a0, $zero, 1
 	ori	$a7, $zero, 1
@@ -552,7 +551,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 2
+	slli.d	$a2, $s3, 2
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a1, $a0, $a1
@@ -571,7 +570,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 1
+	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -622,7 +621,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s4
+	or	$a0, $a0, $s3
 	slli.d	$a0, $a0, 1
 	ori	$a2, $zero, 14
 .LBB0_78:                               # %.preheader467.3.i.thread
@@ -655,7 +654,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	beq	$a0, $a1, .LBB0_89
 # %bb.82:                               # %.preheader459.2.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$a1, $s4, 3
+	slli.d	$a1, $s3, 3
 	ori	$a2, $zero, 3
 	bne	$a0, $a2, .LBB0_101
 # %bb.83:                               # %.preheader459.3.thread.i
@@ -677,7 +676,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	beq	$a0, $a1, .LBB0_93
 # %bb.85:                               # %.preheader467.2.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$a1, $s4, 2
+	slli.d	$a1, $s3, 2
 	ori	$a2, $zero, 3
 	bne	$a0, $a2, .LBB0_107
 # %bb.86:                               # %.preheader467.3.thread.i
@@ -705,7 +704,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 4
+	slli.d	$a2, $s3, 4
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a1, $a0, $a1
@@ -739,7 +738,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 3
+	slli.d	$a2, $s3, 3
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -826,7 +825,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 16
 .LBB0_106:                              #   in Loop: Header=BB0_53 Depth=2
 	move	$a7, $zero
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	addi.w	$s7, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 15
 	b	.LBB0_57
@@ -991,7 +990,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	addi.w	$s7, $a1, -1
 	bstrpick.d	$t0, $a0, 31, 15
 	bstrpick.d	$a0, $a2, 15, 1
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	sub.w	$a0, $s2, $a4
 	sltui	$a0, $a0, 2
 .LBB0_131:                              # %getbits.exit201.i
@@ -1002,9 +1001,9 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   in Loop: Header=BB0_53 Depth=2
 	beqz	$a0, .LBB0_136
 # %bb.133:                              #   in Loop: Header=BB0_53 Depth=2
-	st.d	$t0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
-	move	$s3, $zero
+	st.d	$t0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
+	move	$s4, $zero
 .LBB0_134:                              # %.loopexit462.sink.split.i
                                         #   in Loop: Header=BB0_53 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
@@ -1015,7 +1014,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a7, $zero, 1
 .LBB0_135:                              # %.loopexit462.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$t0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_145
 .LBB0_136:                              # %.preheader466.preheader.i
                                         #   in Loop: Header=BB0_53 Depth=2
@@ -1023,7 +1022,7 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.137:                              # %.preheader466.1.i
                                         #   in Loop: Header=BB0_53 Depth=2
 	addi.w	$a1, $s7, -1
-	slli.d	$a0, $s4, 1
+	slli.d	$a0, $s3, 1
 	bnez	$a1, .LBB0_140
 # %bb.138:                              #   in Loop: Header=BB0_53 Depth=2
 	addi.d	$a1, $a4, 1
@@ -1047,51 +1046,51 @@ cli_scanautoit:                         # @cli_scanautoit
 	slli.d	$a1, $a1, 8
 	addi.w	$a4, $a4, 2
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s4
+	or	$a0, $a0, $s3
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 15
 .LBB0_140:                              # %getbits.exit206.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 15
 	addi.w	$s7, $a1, -1
 	ori	$a2, $zero, 3
 	bne	$a0, $a2, .LBB0_144
 # %bb.141:                              #   in Loop: Header=BB0_53 Depth=2
-	bstrpick.d	$a0, $s4, 15, 1
+	bstrpick.d	$a0, $s3, 15, 1
 	ori	$a2, $zero, 3
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	bltu	$a2, $a1, .LBB0_160
 # %bb.142:                              #   in Loop: Header=BB0_53 Depth=2
 	sub.w	$a0, $s2, $a4
 	ori	$a2, $zero, 2
 	bgeu	$a0, $a2, .LBB0_160
 # %bb.143:                              #   in Loop: Header=BB0_53 Depth=2
-	st.d	$t0, $sp, 32                    # 8-byte Folded Spill
-	ori	$s3, $zero, 3
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 48                    # 8-byte Folded Spill
+	ori	$s4, $zero, 3
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB0_134
 .LBB0_144:                              #   in Loop: Header=BB0_53 Depth=2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
-	move	$s3, $zero
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
+	move	$s4, $zero
 .LBB0_145:                              # %.loopexit462.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	add.d	$a0, $a0, $s3
+	add.d	$a0, $a0, $s4
 	addi.w	$a1, $a0, 2
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	bgeu	$a1, $a2, .LBB0_239
 # %bb.146:                              #   in Loop: Header=BB0_53 Depth=2
 	addi.w	$a0, $a0, 3
 	bstrpick.d	$a2, $s6, 31, 0
 	bstrpick.d	$a5, $a0, 31, 0
 	add.d	$a3, $a5, $a2
-	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
 	bltu	$a4, $a3, .LBB0_239
 # %bb.147:                              #   in Loop: Header=BB0_53 Depth=2
 	sub.w	$a4, $s6, $t0
 	bstrpick.d	$a3, $a4, 31, 0
 	add.d	$a5, $a5, $a3
-	ld.d	$a6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
 	bltu	$a6, $a5, .LBB0_239
 # %bb.148:                              # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_53 Depth=2
@@ -1099,7 +1098,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bgeu	$a0, $a5, .LBB0_153
 .LBB0_149:                              # %.lr.ph.i.preheader668
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	sub.w	$a1, $zero, $t0
 .LBB0_150:                              # %.lr.ph.i
                                         #   Parent Loop BB0_12 Depth=1
@@ -1116,11 +1115,11 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.151:                              # %.loopexit.i
                                         #   in Loop: Header=BB0_53 Depth=2
 	move	$a0, $s7
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	bnez	$a7, .LBB0_237
 .LBB0_152:                              # %.loopexit.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	bltu	$s6, $a1, .LBB0_53
 	b	.LBB0_237
 .LBB0_153:                              # %vector.scevcheck648
@@ -1166,8 +1165,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	bne	$a0, $a1, .LBB0_163
 # %bb.159:                              #   in Loop: Header=BB0_53 Depth=2
 	move	$a0, $s7
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	beqz	$a7, .LBB0_152
 	b	.LBB0_237
 .LBB0_160:                              # %.preheader465.preheader.i
@@ -1183,7 +1182,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 1
+	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -1201,7 +1200,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s4
+	or	$a0, $a0, $s3
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
 .LBB0_165:                              # %.preheader465.2.thread.i
@@ -1212,7 +1211,7 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_166:                              # %.preheader465.2.i
                                         #   in Loop: Header=BB0_53 Depth=2
 	addi.w	$a1, $a1, -3
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s3, 2
 	bnez	$a1, .LBB0_168
 # %bb.167:                              #   in Loop: Header=BB0_53 Depth=2
 	addi.d	$a1, $a4, 1
@@ -1227,23 +1226,23 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 16
 .LBB0_168:                              # %getbits.exit211.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	addi.w	$s7, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 15
-	ori	$s3, $zero, 3
+	ori	$s4, $zero, 3
 	ori	$a2, $zero, 7
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	bne	$a0, $a2, .LBB0_145
 # %bb.169:                              #   in Loop: Header=BB0_53 Depth=2
-	st.d	$t0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$t0, $sp, 48                    # 8-byte Folded Spill
 	move	$a5, $a7
-	bstrpick.d	$a0, $s4, 15, 1
-	slli.d	$s4, $a0, 1
+	bstrpick.d	$a0, $s3, 15, 1
+	slli.d	$s3, $a0, 1
 	ori	$a0, $zero, 5
 	bltu	$a0, $a1, .LBB0_171
 # %bb.170:                              #   in Loop: Header=BB0_53 Depth=2
 	sub.w	$a0, $s2, $a4
-	ori	$s3, $zero, 10
+	ori	$s4, $zero, 10
 	ori	$a2, $zero, 2
 	bltu	$a0, $a2, .LBB0_134
 .LBB0_171:                              # %.preheader464.preheader.i
@@ -1254,13 +1253,13 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a0, $zero, 2
 	bne	$a1, $a0, .LBB0_177
 # %bb.173:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 1
+	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -1268,7 +1267,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	b	.LBB0_175
 .LBB0_174:                              # %.preheader464.1.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
@@ -1276,20 +1275,20 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s4
+	or	$a0, $a0, $s3
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
 .LBB0_175:                              # %.preheader464.3.i.thread
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	addi.w	$a1, $a1, -2
 	slli.d	$a0, $a0, 2
 	bnez	$a1, .LBB0_183
 .LBB0_176:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1297,7 +1296,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 16
@@ -1308,12 +1307,12 @@ cli_scanautoit:                         # @cli_scanautoit
 	beq	$a1, $a0, .LBB0_180
 # %bb.178:                              # %.preheader464.2.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s3, 2
 	ori	$a2, $zero, 3
 	bne	$a1, $a2, .LBB0_182
 # %bb.179:                              # %.preheader464.3.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1326,22 +1325,22 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 14
 	b	.LBB0_181
 .LBB0_180:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 3
+	slli.d	$a2, $s3, 3
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
 .LBB0_181:                              # %.preheader464.4.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	b	.LBB0_183
 .LBB0_182:                              #   in Loop: Header=BB0_53 Depth=2
@@ -1351,20 +1350,20 @@ cli_scanautoit:                         # @cli_scanautoit
 	beqz	$a1, .LBB0_176
 .LBB0_183:                              # %getbits.exit216.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	addi.w	$s7, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 15
 	ori	$a2, $zero, 31
 	bne	$a0, $a2, .LBB0_189
 # %bb.184:                              #   in Loop: Header=BB0_53 Depth=2
-	bstrpick.d	$a0, $s4, 15, 1
-	slli.d	$s4, $a0, 1
+	bstrpick.d	$a0, $s3, 15, 1
+	slli.d	$s3, $a0, 1
 	ori	$a0, $zero, 8
 	bltu	$a0, $a1, .LBB0_186
 # %bb.185:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.w	$a0, $s2, $a0
-	ori	$s3, $zero, 41
+	ori	$s4, $zero, 41
 	ori	$a2, $zero, 2
 	bltu	$a0, $a2, .LBB0_134
 .LBB0_186:                              # %.preheader463.preheader.i
@@ -1375,13 +1374,13 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a0, $zero, 2
 	bne	$a1, $a0, .LBB0_194
 # %bb.188:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 1
+	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -1389,11 +1388,11 @@ cli_scanautoit:                         # @cli_scanautoit
 	b	.LBB0_191
 .LBB0_189:                              #   in Loop: Header=BB0_53 Depth=2
 	move	$a7, $a5
-	ori	$s3, $zero, 10
+	ori	$s4, $zero, 10
 	b	.LBB0_135
 .LBB0_190:                              # %.preheader463.1.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
@@ -1401,14 +1400,14 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s4
+	or	$a0, $a0, $s3
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
 .LBB0_191:                              # %.preheader463.3.i.thread
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	ori	$a2, $zero, 3
 	beq	$a1, $a2, .LBB0_203
@@ -1419,7 +1418,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bne	$a1, $a2, .LBB0_197
 # %bb.193:                              # %.preheader463.5.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1437,12 +1436,12 @@ cli_scanautoit:                         # @cli_scanautoit
 	beq	$a1, $a0, .LBB0_198
 # %bb.195:                              # %.preheader463.2.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s3, 2
 	ori	$a2, $zero, 3
 	bne	$a1, $a2, .LBB0_202
 # %bb.196:                              # %.preheader463.3.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1458,22 +1457,22 @@ cli_scanautoit:                         # @cli_scanautoit
 	addi.d	$a1, $a1, -2
 	b	.LBB0_200
 .LBB0_198:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 3
+	slli.d	$a2, $s3, 3
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
 .LBB0_199:                              # %.preheader463.5.i.thread
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 .LBB0_200:                              # %.preheader463.6.i
                                         #   in Loop: Header=BB0_53 Depth=2
@@ -1482,7 +1481,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bnez	$a1, .LBB0_205
 # %bb.201:                              # %.preheader463.7.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1490,7 +1489,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
@@ -1501,7 +1500,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a2, $zero, 3
 	bne	$a1, $a2, .LBB0_192
 .LBB0_203:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1514,9 +1513,9 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 15
 .LBB0_204:                              # %.preheader463.6.thread.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 .LBB0_205:                              # %.preheader463.7.i
                                         #   in Loop: Header=BB0_53 Depth=2
@@ -1524,7 +1523,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	slli.d	$a0, $a0, 1
 	bnez	$a1, .LBB0_207
 # %bb.206:                              #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1532,33 +1531,33 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 16
 .LBB0_207:                              # %getbits.exit221.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	addi.w	$s7, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 15
 	ori	$a2, $zero, 255
 	bne	$a0, $a2, .LBB0_234
 # %bb.208:                              # %.preheader461.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	bstrpick.d	$a0, $s4, 15, 1
-	slli.d	$s4, $a0, 1
+	bstrpick.d	$a0, $s3, 15, 1
+	slli.d	$s3, $a0, 1
 	ori	$a0, $zero, 8
 	bltu	$a0, $a1, .LBB0_210
 # %bb.209:                              # %.preheader461.i
                                         #   in Loop: Header=BB0_53 Depth=2
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.w	$a0, $s2, $a0
-	ori	$s3, $zero, 296
+	ori	$s4, $zero, 296
 	ori	$a1, $zero, 2
 	bltu	$a0, $a1, .LBB0_134
 .LBB0_210:                              # %.preheader.i.preheader
                                         #   in Loop: Header=BB0_53 Depth=2
-	ori	$s3, $zero, 296
+	ori	$s4, $zero, 296
 .LBB0_211:                              # %.preheader.i
                                         #   Parent Loop BB0_12 Depth=1
                                         #     Parent Loop BB0_53 Depth=2
@@ -1570,7 +1569,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bnez	$s7, .LBB0_218
 # %bb.213:                              # %.thread.i
                                         #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
@@ -1578,27 +1577,27 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a0, $s8, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s4
+	or	$a0, $a0, $s3
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
 	b	.LBB0_215
 .LBB0_214:                              #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 1
+	slli.d	$a2, $s3, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
 .LBB0_215:                              # %.thread
                                         #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	ori	$a2, $zero, 3
 	beq	$a1, $a2, .LBB0_227
@@ -1608,7 +1607,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bne	$a1, $a2, .LBB0_221
 # %bb.217:                              # %.thread769.i
                                         #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1624,12 +1623,12 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a0, $zero, 3
 	beq	$s7, $a0, .LBB0_222
 # %bb.219:                              #   in Loop: Header=BB0_211 Depth=3
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s3, 2
 	ori	$a1, $zero, 2
 	bne	$s7, $a1, .LBB0_226
 # %bb.220:                              # %.thread759.i
                                         #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1645,22 +1644,22 @@ cli_scanautoit:                         # @cli_scanautoit
 	addi.d	$a1, $a1, -2
 	b	.LBB0_224
 .LBB0_222:                              #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $s8, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $s8, $a0
-	slli.d	$a2, $s4, 3
+	slli.d	$a2, $s3, 3
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
 .LBB0_223:                              # %.thread108
                                         #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 .LBB0_224:                              #   in Loop: Header=BB0_211 Depth=3
 	addi.w	$a1, $a1, -2
@@ -1668,7 +1667,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	bnez	$a1, .LBB0_229
 # %bb.225:                              # %.thread779.i
                                         #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1676,7 +1675,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
@@ -1687,7 +1686,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a2, $zero, 3
 	bne	$a1, $a2, .LBB0_216
 .LBB0_227:                              #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1700,16 +1699,16 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 15
 .LBB0_228:                              # %.thread775.i
                                         #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 .LBB0_229:                              #   in Loop: Header=BB0_211 Depth=3
 	addi.w	$a1, $a1, -1
 	slli.d	$a0, $a0, 1
 	bnez	$a1, .LBB0_231
 # %bb.230:                              #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
 	ldx.bu	$a2, $s8, $a2
@@ -1717,32 +1716,32 @@ cli_scanautoit:                         # @cli_scanautoit
 	ldx.bu	$a1, $s8, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 16
 .LBB0_231:                              # %getbits.exit226.i
                                         #   in Loop: Header=BB0_211 Depth=3
-	slli.d	$s4, $a0, 1
+	slli.d	$s3, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 15
 	addi.w	$s7, $a1, -1
 	ori	$a2, $zero, 255
 	bne	$a0, $a2, .LBB0_235
 # %bb.232:                              #   in Loop: Header=BB0_211 Depth=3
-	addi.d	$s3, $s3, 255
-	bstrpick.d	$a0, $s4, 15, 1
-	slli.d	$s4, $a0, 1
+	addi.d	$s4, $s4, 255
+	bstrpick.d	$a0, $s3, 15, 1
+	slli.d	$s3, $a0, 1
 	ori	$a0, $zero, 8
 	bltu	$a0, $a1, .LBB0_211
 # %bb.233:                              #   in Loop: Header=BB0_211 Depth=3
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.w	$a0, $s2, $a0
 	ori	$a1, $zero, 1
 	bltu	$a1, $a0, .LBB0_211
 	b	.LBB0_134
 .LBB0_234:                              #   in Loop: Header=BB0_53 Depth=2
 	move	$a7, $a5
-	ori	$s3, $zero, 41
+	ori	$s4, $zero, 41
 	b	.LBB0_135
 .LBB0_235:                              #   in Loop: Header=BB0_53 Depth=2
 	move	$a7, $a5
@@ -1753,8 +1752,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$s6, $zero
-	ori	$s8, $zero, 8
-	ori	$s3, $zero, 299
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ori	$s4, $zero, 299
 	b	.LBB0_254
 .LBB0_237:                              # %._crit_edge.i
                                         #   in Loop: Header=BB0_12 Depth=1
@@ -1774,11 +1773,11 @@ cli_scanautoit:                         # @cli_scanautoit
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB0_48
 .LBB0_240:                              #   in Loop: Header=BB0_12 Depth=1
-	ori	$s8, $zero, 8
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
 	addi.w	$a2, $s6, 0
 	ori	$a0, $zero, 2
 	bltu	$a2, $a0, .LBB0_49
@@ -1799,8 +1798,8 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.245:                              #   in Loop: Header=BB0_12 Depth=1
 	addi.d	$a0, $s5, 2
 	addi.w	$s6, $s6, -2
-	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
-	ori	$s3, $zero, 299
+	ld.d	$s3, $sp, 184                   # 8-byte Folded Reload
+	ori	$s4, $zero, 299
 	b	.LBB0_251
 .LBB0_246:                              # %.lr.ph.preheader.i.i
                                         #   in Loop: Header=BB0_12 Depth=1
@@ -1812,13 +1811,11 @@ cli_scanautoit:                         # @cli_scanautoit
 	maskeqz	$a2, $a2, $a3
 	or	$a2, $a2, $a4
 	andi	$a2, $a2, 30
-	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
-	ori	$s3, $zero, 299
+	ld.d	$s3, $sp, 184                   # 8-byte Folded Reload
+	ori	$s4, $zero, 299
 	b	.LBB0_248
 .LBB0_247:                              #   in Loop: Header=BB0_248 Depth=2
-	add.d	$a3, $s5, $a1
-	ld.bu	$a3, $a3, 1
-	sltui	$a3, $a3, 1
+	move	$a3, $zero
 	addi.d	$a1, $a1, 2
 	add.d	$a0, $a3, $a0
 	bgeu	$a1, $a2, .LBB0_250
@@ -1826,9 +1823,11 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.bu	$a3, $s5, $a1
-	bnez	$a3, .LBB0_247
+	beqz	$a3, .LBB0_247
 # %bb.249:                              #   in Loop: Header=BB0_248 Depth=2
-	move	$a3, $zero
+	add.d	$a3, $s5, $a1
+	ld.bu	$a3, $a3, 1
+	sltui	$a3, $a3, 1
 	addi.d	$a1, $a1, 2
 	add.d	$a0, $a3, $a0
 	bltu	$a1, $a2, .LBB0_248
@@ -1856,23 +1855,23 @@ cli_scanautoit:                         # @cli_scanautoit
 	bstrpick.d	$s6, $s6, 31, 1
 .LBB0_254:                              # %u2a.exit.i
                                         #   in Loop: Header=BB0_12 Depth=1
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 176                   # 8-byte Folded Reload
 	addi.w	$a4, $a4, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.19)
-	addi.d	$a0, $sp, 208
+	addi.d	$a0, $sp, 224
 	ori	$a1, $zero, 1023
 	move	$a3, $fp
-	st.d	$a4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 176                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
-	st.b	$zero, $sp, 1231
-	addi.d	$a0, $sp, 208
+	st.b	$zero, $sp, 1247
+	addi.d	$a0, $sp, 224
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_627
+	bltz	$a0, .LBB0_624
 # %bb.255:                              #   in Loop: Header=BB0_12 Depth=1
 	move	$s2, $a0
 	addi.w	$s6, $s6, 0
@@ -1885,13 +1884,12 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ld.bu	$a0, $s6, 0
+	ld.bu	$a0, $s7, 0
 	beqz	$a0, .LBB0_258
 # %bb.257:                              #   in Loop: Header=BB0_12 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.22)
-	addi.d	$a1, $sp, 208
+	addi.d	$a1, $sp, 224
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_259
@@ -1901,6 +1899,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 .LBB0_259:                              #   in Loop: Header=BB0_12 Depth=1
+	ori	$s6, $zero, 8
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(fsync)
 	jirl	$ra, $ra, 0
@@ -1917,14 +1916,14 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $s6, 0
+	ld.bu	$a0, $s7, 0
 	ori	$a1, $zero, 1
-	beq	$s5, $a1, .LBB0_631
+	beq	$s5, $a1, .LBB0_625
 # %bb.260:                              #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$s5, $sp, 1232
+	addi.d	$s5, $sp, 1248
 	bnez	$a0, .LBB0_12
 # %bb.261:                              #   in Loop: Header=BB0_12 Depth=1
-	addi.d	$a0, $sp, 208
+	addi.d	$a0, $sp, 224
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
 	b	.LBB0_12
@@ -1934,29 +1933,41 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	addi.d	$s4, $sp, 1232
-	ori	$s7, $zero, 8
+	addi.d	$s3, $sp, 1248
+	ori	$s6, $zero, 8
 	lu12i.w	$a0, 339108
 	ori	$a0, $a0, 875
-	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	lu12i.w	$a1, 10
 	ori	$a0, $a1, 3516
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	lu12i.w	$a0, -5
 	ori	$a0, $a0, 831
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 184                 # 8-byte Folded Spill
 	ori	$a0, $a1, 3503
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	lu12i.w	$a0, 267235
+	ori	$a0, $a0, 3646
+	lu32i.d	$a0, -43947
+	lu52i.d	$a0, $a0, 1172
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	lu12i.w	$a0, 275762
+	ori	$a0, $a0, 84
+	lu32i.d	$a0, 18770
+	lu52i.d	$a0, $a0, 1349
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.50)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.50)
+	lu12i.w	$a0, 328853
+	ori	$a0, $a0, 579
+	lu32i.d	$a0, -246700
+	lu52i.d	$a0, $a0, 963
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$zero, $sp, 168                 # 8-byte Folded Spill
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 2080
-	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
 	lu12i.w	$a0, 8
 	ori	$s8, $a0, 1980
 	lu12i.w	$a0, 2
@@ -1978,53 +1989,53 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #     Child Loop BB0_301 Depth 2
                                         #     Child Loop BB0_305 Depth 2
                                         #     Child Loop BB0_324 Depth 2
-                                        #       Child Loop BB0_486 Depth 3
+                                        #       Child Loop BB0_488 Depth 3
                                         #       Child Loop BB0_416 Depth 3
                                         #       Child Loop BB0_425 Depth 3
-                                        #     Child Loop BB0_527 Depth 2
-                                        #       Child Loop BB0_546 Depth 3
-                                        #       Child Loop BB0_554 Depth 3
-                                        #       Child Loop BB0_558 Depth 3
+                                        #     Child Loop BB0_528 Depth 2
+                                        #       Child Loop BB0_547 Depth 3
+                                        #       Child Loop BB0_555 Depth 3
+                                        #       Child Loop BB0_559 Depth 3
 	ld.d	$a0, $s0, 32
 	beqz	$a0, .LBB0_266
 # %bb.265:                              #   in Loop: Header=BB0_264 Depth=1
 	ld.w	$a1, $a0, 4
 	addi.w	$a0, $a1, -1
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	bltu	$a0, $a2, .LBB0_617
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	bltu	$a0, $a2, .LBB0_618
 .LBB0_266:                              # %.critedge.i24
                                         #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	ori	$a2, $zero, 8
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB0_610
+	bne	$a0, $s6, .LBB0_611
 # %bb.267:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.w	$a0, $sp, 1232
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB0_616
+	ld.w	$a0, $sp, 1248
+	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB0_617
 # %bb.268:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.w	$s3, $sp, 1236
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
-	xor	$s5, $s3, $a0
+	ld.w	$s4, $sp, 1252
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
+	xor	$s5, $s4, $a0
 	slli.w	$s2, $s5, 1
-	bltz	$s2, .LBB0_610
+	bltz	$s2, .LBB0_611
 # %bb.269:                              #   in Loop: Header=BB0_264 Depth=1
 	ori	$a0, $zero, 299
 	bltu	$a0, $s5, .LBB0_277
 # %bb.270:                              #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	move	$a0, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_610
+	bne	$a0, $s2, .LBB0_611
 # %bb.271:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	add.d	$a0, $s5, $a0
 	bstrpick.d	$a2, $a0, 15, 0
-	addi.d	$a0, $sp, 1232
+	addi.d	$a0, $sp, 1248
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(LAME_decrypt)
 	jirl	$ra, $ra, 0
@@ -2033,19 +2044,19 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a0, $zero, 5
 	bltu	$s2, $a0, .LBB0_278
 # %bb.273:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.bu	$a0, $sp, 1232
+	ld.bu	$a0, $sp, 1248
 	ori	$a1, $zero, 255
 	bne	$a0, $a1, .LBB0_278
 # %bb.274:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.bu	$a0, $sp, 1233
+	ld.bu	$a0, $sp, 1249
 	ori	$a1, $zero, 254
 	bne	$a0, $a1, .LBB0_278
 # %bb.275:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.bu	$a0, $sp, 1234
+	ld.bu	$a0, $sp, 1250
 	beqz	$a0, .LBB0_278
 # %bb.276:                              #   in Loop: Header=BB0_264 Depth=1
 	addi.w	$s2, $s2, -2
-	addi.d	$a0, $sp, 1234
+	addi.d	$a0, $sp, 1250
 	b	.LBB0_283
 .LBB0_277:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.51)
@@ -2078,10 +2089,10 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_280:                              # %.lr.ph.i.i51
                                         #   Parent Loop BB0_264 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.bu	$a3, $a2, $s4
+	ldx.bu	$a3, $a2, $s3
 	beqz	$a3, .LBB0_279
 # %bb.281:                              #   in Loop: Header=BB0_280 Depth=2
-	add.d	$a3, $s4, $a2
+	add.d	$a3, $s3, $a2
 	ld.bu	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	addi.d	$a2, $a2, 2
@@ -2090,7 +2101,7 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_282:                              # %._crit_edge.i.i56
                                         #   in Loop: Header=BB0_264 Depth=1
 	slli.w	$a2, $a0, 2
-	addi.d	$a0, $sp, 1232
+	addi.d	$a0, $sp, 1248
 	bltu	$a2, $a1, .LBB0_285
 .LBB0_283:                              # %.lr.ph49.preheader.i.i42
                                         #   in Loop: Header=BB0_264 Depth=1
@@ -2102,7 +2113,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	addi.d	$a1, $a1, -1
 	srli.d	$a1, $a1, 1
 	addi.d	$a1, $a1, 1
-	addi.d	$a2, $sp, 1232
+	addi.d	$a2, $sp, 1248
 	.p2align	4, , 16
 .LBB0_284:                              # %.lr.ph49.i.i45
                                         #   Parent Loop BB0_264 Depth=1
@@ -2115,76 +2126,82 @@ cli_scanautoit:                         # @cli_scanautoit
 	bnez	$a1, .LBB0_284
 .LBB0_285:                              # %u2a.exit.i49
                                         #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a1, $sp, 1232
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 1248
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ori	$s5, $zero, 1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	bne	$s3, $a0, .LBB0_287
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
+	bne	$s4, $a0, .LBB0_287
 # %bb.286:                              #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a1, $sp, 1232
-	ori	$a2, $zero, 19
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 1248
+	ld.d	$a1, $sp, 1256
+	ld.d	$a2, $sp, 1259
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a3
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a3
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	xor	$a2, $a2, $a3
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a2
 	sltu	$s5, $zero, $a0
 .LBB0_287:                              #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	ori	$a2, $zero, 4
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
-	bne	$a0, $a1, .LBB0_610
+	bne	$a0, $a1, .LBB0_611
 # %bb.288:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.w	$a0, $sp, 1232
-	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
-	xor	$s3, $a0, $a1
-	slli.w	$s2, $s3, 1
-	bltz	$s2, .LBB0_610
+	ld.w	$a0, $sp, 1248
+	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	xor	$s4, $a0, $a1
+	slli.w	$s2, $s4, 1
+	bltz	$s2, .LBB0_611
 # %bb.289:                              #   in Loop: Header=BB0_264 Depth=1
 	ori	$a0, $zero, 299
-	bltu	$a0, $s3, .LBB0_298
+	bltu	$a0, $s4, .LBB0_298
 # %bb.290:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(cli_debug_flag)
 	ld.d	$a0, $a0, %got_pc_lo12(cli_debug_flag)
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB0_298
 # %bb.291:                              #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	move	$a0, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_610
+	bne	$a0, $s2, .LBB0_611
 # %bb.292:                              #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a0, $s3, -2048
+	addi.d	$a0, $s4, -2048
 	addi.d	$a0, $a0, -903
 	bstrpick.d	$a2, $a0, 15, 0
-	addi.d	$a0, $sp, 1232
+	addi.d	$a0, $sp, 1248
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(LAME_decrypt)
 	jirl	$ra, $ra, 0
-	stx.h	$zero, $s2, $s4
+	stx.h	$zero, $s2, $s3
 	beqz	$s2, .LBB0_306
 # %bb.293:                              #   in Loop: Header=BB0_264 Depth=1
 	ori	$a0, $zero, 5
 	bltu	$s2, $a0, .LBB0_299
 # %bb.294:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.bu	$a0, $sp, 1232
+	ld.bu	$a0, $sp, 1248
 	ori	$a1, $zero, 255
 	bne	$a0, $a1, .LBB0_299
 # %bb.295:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.bu	$a0, $sp, 1233
+	ld.bu	$a0, $sp, 1249
 	ori	$a1, $zero, 254
 	bne	$a0, $a1, .LBB0_299
 # %bb.296:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.bu	$a0, $sp, 1234
+	ld.bu	$a0, $sp, 1250
 	beqz	$a0, .LBB0_299
 # %bb.297:                              #   in Loop: Header=BB0_264 Depth=1
 	addi.w	$s2, $s2, -2
-	addi.d	$a0, $sp, 1234
+	addi.d	$a0, $sp, 1250
 	b	.LBB0_304
 .LBB0_298:                              #   in Loop: Header=BB0_264 Depth=1
 	ori	$a2, $zero, 1
@@ -2212,10 +2229,10 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_301:                              # %.lr.ph.i328.i
                                         #   Parent Loop BB0_264 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.bu	$a3, $a2, $s4
+	ldx.bu	$a3, $a2, $s3
 	beqz	$a3, .LBB0_300
 # %bb.302:                              #   in Loop: Header=BB0_301 Depth=2
-	add.d	$a3, $s4, $a2
+	add.d	$a3, $s3, $a2
 	ld.bu	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	addi.d	$a2, $a2, 2
@@ -2224,7 +2241,7 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_303:                              # %._crit_edge.i333.i
                                         #   in Loop: Header=BB0_264 Depth=1
 	slli.w	$a2, $a0, 2
-	addi.d	$a0, $sp, 1232
+	addi.d	$a0, $sp, 1248
 	bltu	$a2, $a1, .LBB0_306
 .LBB0_304:                              # %.lr.ph49.preheader.i335.i
                                         #   in Loop: Header=BB0_264 Depth=1
@@ -2236,7 +2253,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	addi.d	$a1, $a1, -1
 	srli.d	$a1, $a1, 1
 	addi.d	$a1, $a1, 1
-	addi.d	$a2, $sp, 1232
+	addi.d	$a2, $sp, 1248
 	.p2align	4, , 16
 .LBB0_305:                              # %.lr.ph49.i338.i
                                         #   Parent Loop BB0_264 Depth=1
@@ -2251,42 +2268,42 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 .LBB0_307:                              #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a1, $sp, 1232
+	addi.d	$a1, $sp, 1248
 	ori	$a2, $zero, 13
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 13
-	bne	$a0, $a1, .LBB0_610
+	bne	$a0, $a1, .LBB0_611
 # %bb.308:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.w	$s3, $sp, 1233
-	bltz	$s3, .LBB0_615
+	ld.w	$s4, $sp, 1249
+	bltz	$s4, .LBB0_616
 # %bb.309:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.bu	$s2, $sp, 1232
+	ld.bu	$s2, $sp, 1248
 	ori	$a1, $zero, 16
 	ori	$a2, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	beq	$s3, $s8, .LBB0_263
+	beq	$s4, $s8, .LBB0_263
 # %bb.310:                              #   in Loop: Header=BB0_264 Depth=1
-	xor	$s7, $s3, $s8
+	xor	$s6, $s4, $s8
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
-	move	$a1, $s7
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 1237
+	ld.w	$a0, $sp, 1253
 	xor	$a1, $a0, $s8
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 1241
+	ld.w	$a0, $sp, 1257
 	lu12i.w	$a1, 10
 	ori	$a1, $a1, 1669
 	xor	$a1, $a0, $a1
@@ -2300,61 +2317,61 @@ cli_scanautoit:                         # @cli_scanautoit
 	ld.d	$a2, $a0, 24
 	beqz	$a2, .LBB0_314
 # %bb.312:                              #   in Loop: Header=BB0_264 Depth=1
-	bgeu	$a2, $s7, .LBB0_314
+	bgeu	$a2, $s6, .LBB0_314
 # %bb.313:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
-	move	$a1, $s7
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 1
 	move	$a0, $s1
-	move	$a1, $s7
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	ori	$s7, $zero, 8
+	ori	$s6, $zero, 8
 	b	.LBB0_264
 .LBB0_314:                              #   in Loop: Header=BB0_264 Depth=1
-	move	$a0, $s7
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s4, $a0
 	addi.w	$a0, $zero, -114
-	beqz	$s3, .LBB0_611
+	beqz	$s4, .LBB0_612
 # %bb.315:                              #   in Loop: Header=BB0_264 Depth=1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	move	$a0, $s1
-	move	$a1, $s3
-	move	$a2, $s7
+	move	$a1, $s4
+	move	$a2, $s6
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB0_622
+	bne	$a0, $s6, .LBB0_623
 # %bb.316:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	move	$a0, $s3
-	move	$a1, $s7
+	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	move	$a0, $s4
+	move	$a1, $s6
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(LAME_decrypt)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	bne	$s2, $a0, .LBB0_511
+	bne	$s2, $a0, .LBB0_512
 # %bb.317:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, 0
+	ld.w	$a0, $s4, 0
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB0_514
+	bne	$a0, $a1, .LBB0_515
 # %bb.318:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.w	$a0, $s3, 4
+	ld.w	$a0, $s4, 4
 	revb.2w	$a1, $a0
 	sltui	$a2, $a0, 1
 	ld.d	$a3, $s0, 32
 	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $s7, $a2
+	maskeqz	$a2, $s6, $a2
 	or	$s2, $a2, $a1
 	bstrpick.d	$a0, $s2, 31, 0
 	beqz	$a3, .LBB0_321
@@ -2362,45 +2379,45 @@ cli_scanautoit:                         # @cli_scanautoit
 	ld.d	$a1, $a3, 24
 	beqz	$a1, .LBB0_321
 # %bb.320:                              #   in Loop: Header=BB0_264 Depth=1
-	bltu	$a1, $a0, .LBB0_515
+	bltu	$a1, $a0, .LBB0_516
 .LBB0_321:                              #   in Loop: Header=BB0_264 Depth=1
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_634
+	beqz	$a0, .LBB0_632
 # %bb.322:                              #   in Loop: Header=BB0_264 Depth=1
-	move	$s6, $a0
-	addi.w	$s3, $s2, 0
+	move	$s5, $a0
+	addi.w	$s4, $s2, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
-	move	$a1, $s3
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
-	beqz	$s3, .LBB0_517
+	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
+	beqz	$s4, .LBB0_518
 # %bb.323:                              # %.lr.ph819.i.preheader
                                         #   in Loop: Header=BB0_264 Depth=1
-	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	move	$s5, $zero
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	move	$s2, $zero
 	move	$t3, $zero
 	move	$t2, $zero
 	ori	$a4, $zero, 8
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
+	st.d	$s7, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
 .LBB0_324:                              # %.lr.ph819.i
                                         #   Parent Loop BB0_264 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB0_486 Depth 3
+                                        #       Child Loop BB0_488 Depth 3
                                         #       Child Loop BB0_416 Depth 3
                                         #       Child Loop BB0_425 Depth 3
-	bstrpick.d	$s3, $t2, 15, 0
+	bstrpick.d	$s4, $t2, 15, 0
 	bnez	$t3, .LBB0_331
 # %bb.325:                              # %.lr.ph819.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	sub.w	$a0, $s7, $a4
+	sub.w	$a0, $s6, $a4
 	ori	$a1, $zero, 2
 	bgeu	$a0, $a1, .LBB0_331
 # %bb.326:                              # %.thread.i40
@@ -2410,7 +2427,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$s2, $zero
+	move	$s7, $zero
 .LBB0_327:                              #   in Loop: Header=BB0_324 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
@@ -2418,34 +2435,37 @@ cli_scanautoit:                         # @cli_scanautoit
 	jirl	$ra, $ra, 0
 	move	$t1, $zero
 	ori	$a0, $zero, 1
+	move	$a6, $s7
 	ori	$t0, $zero, 1
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
 	move	$a4, $s8
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	bstrpick.d	$s3, $s3, 15, 0
+	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
+	bstrpick.d	$s4, $s4, 15, 0
 	ori	$a1, $zero, 1
-	bltu	$a1, $s2, .LBB0_398
+	bltu	$a1, $a6, .LBB0_398
 .LBB0_328:                              # %getbits.exit351.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	beqz	$a0, .LBB0_398
 # %bb.329:                              #   in Loop: Header=BB0_324 Depth=2
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$t1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$t1, $sp, 48                    # 8-byte Folded Spill
 	move	$a3, $zero
 .LBB0_330:                              # %.loopexit728.sink.split.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
-	move	$s3, $a3
+	move	$s4, $a3
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a3, $s3
+	move	$a3, $s4
 	move	$a0, $zero
 	ori	$t0, $zero, 1
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$t2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB0_407
 .LBB0_331:                              # %.preheader735.preheader.i
                                         #   in Loop: Header=BB0_324 Depth=2
@@ -2453,31 +2473,31 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.332:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a1, $a1, 8
 	addi.w	$a4, $a4, 2
 	or	$a0, $a1, $a0
-	or	$s3, $a0, $s3
+	or	$s4, $a0, $s4
 	ori	$t3, $zero, 16
 .LBB0_333:                              # %getbits.exit.i32
                                         #   in Loop: Header=BB0_324 Depth=2
-	slli.d	$a0, $s3, 1
-	bstrpick.d	$a1, $s3, 31, 15
-	addi.w	$s2, $t3, -1
+	slli.d	$a0, $s4, 1
+	bstrpick.d	$a1, $s4, 31, 15
+	addi.w	$s7, $t3, -1
 	bnez	$a1, .LBB0_337
 # %bb.334:                              #   in Loop: Header=BB0_324 Depth=2
 	ori	$a1, $zero, 15
 	bltu	$a1, $t3, .LBB0_340
 # %bb.335:                              #   in Loop: Header=BB0_324 Depth=2
-	sub.w	$a1, $s7, $a4
+	sub.w	$a1, $s6, $a4
 	ori	$a2, $zero, 2
 	bgeu	$a1, $a2, .LBB0_340
 # %bb.336:                              #   in Loop: Header=BB0_324 Depth=2
 	move	$s8, $a4
-	move	$s3, $a0
+	move	$s4, $a0
 	b	.LBB0_327
 .LBB0_337:                              #   in Loop: Header=BB0_324 Depth=2
 	bstrpick.d	$a0, $a0, 15, 1
@@ -2485,27 +2505,27 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a0, $zero, 8
 	bltu	$a0, $t3, .LBB0_343
 # %bb.338:                              #   in Loop: Header=BB0_324 Depth=2
-	sub.w	$a0, $s7, $a4
+	sub.w	$a0, $s6, $a4
 	ori	$a1, $zero, 2
 	bgeu	$a0, $a1, .LBB0_343
 # %bb.339:                              #   in Loop: Header=BB0_324 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.25)
-	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
-	move	$s3, $s8
+	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
+	move	$s4, $s8
 	move	$s8, $a4
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	move	$a4, $s8
-	move	$s8, $s3
-	ld.d	$t2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+	move	$s8, $s4
+	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
 	move	$a0, $zero
 	ori	$t0, $zero, 1
 	b	.LBB0_444
 .LBB0_340:                              # %.preheader733.preheader.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	beqz	$s2, .LBB0_346
+	beqz	$s7, .LBB0_346
 # %bb.341:                              # %.preheader733.1.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a0, $zero, 2
@@ -2513,11 +2533,11 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.342:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a3, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a3, $a0
-	slli.d	$a2, $s3, 2
+	slli.d	$a2, $s4, 2
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -2525,7 +2545,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	b	.LBB0_347
 .LBB0_343:                              # %.preheader734.preheader.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	beqz	$s2, .LBB0_350
+	beqz	$s7, .LBB0_350
 # %bb.344:                              # %.preheader734.1.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a0, $zero, 2
@@ -2533,7 +2553,7 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.345:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
@@ -2547,7 +2567,7 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -2558,6 +2578,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 14
 .LBB0_347:                              # %.preheader733.3.i.thread
                                         #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a4, $a4, 2
 	slli.d	$a0, $a0, 1
 	ori	$a2, $zero, 3
@@ -2584,7 +2605,7 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
@@ -2597,7 +2618,7 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a4, $a4, 2
 	slli.d	$a0, $a0, 1
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ori	$a2, $zero, 3
 	beq	$a1, $a2, .LBB0_439
 .LBB0_352:                              # %.preheader734.4.i
@@ -2620,18 +2641,19 @@ cli_scanautoit:                         # @cli_scanautoit
 	b	.LBB0_440
 .LBB0_354:                              # %.preheader733.2.i
                                         #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	ori	$a0, $zero, 4
 	beq	$t3, $a0, .LBB0_362
 # %bb.355:                              # %.preheader733.2.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	slli.d	$a0, $s3, 3
+	slli.d	$a0, $s4, 3
 	ori	$a1, $zero, 3
 	bne	$t3, $a1, .LBB0_374
 # %bb.356:                              # %.preheader733.3.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -2654,7 +2676,7 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -2673,11 +2695,11 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_362:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a3, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a3, $a0
-	slli.d	$a2, $s3, 4
+	slli.d	$a2, $s4, 4
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -2730,7 +2752,7 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_370:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a3, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a3, $a0
@@ -2764,7 +2786,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	b	.LBB0_443
 .LBB0_374:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a1, $t3, -3
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ori	$a2, $zero, 3
 	bne	$a1, $a2, .LBB0_348
 .LBB0_375:                              #   in Loop: Header=BB0_324 Depth=2
@@ -2920,26 +2942,26 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 16
 .LBB0_397:                              #   in Loop: Header=BB0_324 Depth=2
 	move	$t0, $zero
-	slli.d	$s3, $a0, 1
-	addi.w	$s2, $a1, -1
+	slli.d	$s4, $a0, 1
+	addi.w	$a6, $a1, -1
 	bstrpick.d	$t1, $a0, 31, 15
-	sub.w	$a0, $s7, $a4
+	sub.w	$a0, $s6, $a4
 	sltui	$a0, $a0, 2
-	bstrpick.d	$s3, $s3, 15, 0
+	bstrpick.d	$s4, $s4, 15, 0
 	ori	$a1, $zero, 1
-	bgeu	$a1, $s2, .LBB0_328
+	bgeu	$a1, $a6, .LBB0_328
 .LBB0_398:                              # %.preheader732.preheader.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	beqz	$s2, .LBB0_401
+	beqz	$a6, .LBB0_401
 # %bb.399:                              # %.preheader732.1.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	addi.w	$a1, $s2, -1
-	slli.d	$a0, $s3, 1
+	addi.w	$a1, $a6, -1
+	slli.d	$a0, $s4, 1
 	bnez	$a1, .LBB0_402
 # %bb.400:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -2953,69 +2975,70 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a1, $a1, 8
 	addi.w	$a4, $a4, 2
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s3
+	or	$a0, $a0, $s4
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 15
 .LBB0_402:                              # %getbits.exit356.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	slli.d	$t2, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 15
-	addi.w	$s2, $a1, -1
+	addi.w	$a6, $a1, -1
 	ori	$a2, $zero, 3
 	bne	$a0, $a2, .LBB0_406
 # %bb.403:                              #   in Loop: Header=BB0_324 Depth=2
 	bstrpick.d	$a0, $t2, 15, 1
 	ori	$a3, $zero, 3
-	slli.d	$s3, $a0, 1
+	slli.d	$s4, $a0, 1
 	bltu	$a3, $a1, .LBB0_419
 # %bb.404:                              #   in Loop: Header=BB0_324 Depth=2
-	sub.w	$a0, $s7, $a4
+	sub.w	$a0, $s6, $a4
 	ori	$a2, $zero, 2
 	bgeu	$a0, $a2, .LBB0_419
 # %bb.405:                              #   in Loop: Header=BB0_324 Depth=2
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$t1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$t1, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB0_330
 .LBB0_406:                              #   in Loop: Header=BB0_324 Depth=2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	move	$a3, $zero
 .LBB0_407:                              # %.loopexit728.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	add.d	$a0, $a3, $a0
 	addi.w	$a1, $a0, 2
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
-	bgeu	$a1, $a2, .LBB0_516
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	bgeu	$a1, $a2, .LBB0_517
 # %bb.408:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a0, $a0, 3
-	bstrpick.d	$a2, $s5, 31, 0
+	bstrpick.d	$a2, $s2, 31, 0
 	bstrpick.d	$a5, $a0, 31, 0
 	add.d	$a3, $a5, $a2
-	bltu	$a7, $a3, .LBB0_516
+	bltu	$a7, $a3, .LBB0_517
 # %bb.409:                              #   in Loop: Header=BB0_324 Depth=2
-	sub.w	$a4, $s5, $t1
+	sub.w	$a4, $s2, $t1
 	bstrpick.d	$a3, $a4, 31, 0
 	add.d	$a5, $a5, $a3
-	bltu	$a7, $a5, .LBB0_516
+	bltu	$a7, $a5, .LBB0_517
 # %bb.410:                              # %.lr.ph.i37.preheader
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a5, $zero, 32
 	bgeu	$a0, $a5, .LBB0_412
 # %bb.411:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
-	move	$t3, $s2
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB0_424
 .LBB0_412:                              # %vector.scevcheck
                                         #   in Loop: Header=BB0_324 Depth=2
-	nor	$a5, $s5, $zero
+	nor	$a5, $s2, $zero
 	addi.w	$a5, $a5, 0
-	move	$t3, $s2
+	ld.d	$t3, $sp, 80                    # 8-byte Folded Reload
 	bltu	$a5, $a1, .LBB0_423
 # %bb.413:                              # %vector.scevcheck
                                         #   in Loop: Header=BB0_324 Depth=2
@@ -3031,7 +3054,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a1, $a0
 	bstrins.d	$a1, $zero, 4, 0
 	sub.w	$a2, $zero, $t1
-	move	$a3, $s5
+	move	$a3, $s2
 	move	$a4, $a1
 .LBB0_416:                              # %vector.body
                                         #   Parent Loop BB0_264 Depth=1
@@ -3039,26 +3062,26 @@ cli_scanautoit:                         # @cli_scanautoit
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a5, $a2, $a3
 	bstrpick.d	$a5, $a5, 31, 0
-	add.d	$a6, $s6, $a5
-	vldx	$vr0, $s6, $a5
+	add.d	$a6, $s5, $a5
+	vldx	$vr0, $s5, $a5
 	vld	$vr1, $a6, 16
 	bstrpick.d	$a5, $a3, 31, 0
-	add.d	$a6, $s6, $a5
-	vstx	$vr0, $s6, $a5
+	add.d	$a6, $s5, $a5
+	vstx	$vr0, $s5, $a5
 	vst	$vr1, $a6, 16
 	addi.w	$a4, $a4, -32
 	addi.w	$a3, $a3, 32
 	bnez	$a4, .LBB0_416
 # %bb.417:                              # %middle.block
                                         #   in Loop: Header=BB0_324 Depth=2
-	add.w	$s5, $s5, $a1
+	add.w	$s2, $s2, $a1
 	bne	$a0, $a1, .LBB0_422
 # %bb.418:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	b	.LBB0_445
 .LBB0_419:                              # %.preheader731.preheader.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	beqz	$s2, .LBB0_426
+	beqz	$a6, .LBB0_426
 # %bb.420:                              # %.preheader731.1.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a0, $zero, 2
@@ -3066,11 +3089,11 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.421:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
-	slli.d	$a2, $s3, 1
+	slli.d	$a2, $s4, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
@@ -3080,7 +3103,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	andi	$a0, $a0, 31
 .LBB0_423:                              # %.lr.ph.i37.preheader700
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 .LBB0_424:                              # %.lr.ph.i37.preheader700
                                         #   in Loop: Header=BB0_324 Depth=2
 	sub.w	$a1, $zero, $t1
@@ -3088,26 +3111,26 @@ cli_scanautoit:                         # @cli_scanautoit
                                         #   Parent Loop BB0_264 Depth=1
                                         #     Parent Loop BB0_324 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a2, $a1, $s5
+	add.d	$a2, $a1, $s2
 	bstrpick.d	$a2, $a2, 31, 0
-	ldx.b	$a2, $s6, $a2
+	ldx.b	$a2, $s5, $a2
 	addi.w	$a0, $a0, -1
-	bstrpick.d	$a3, $s5, 31, 0
-	stx.b	$a2, $s6, $a3
-	addi.w	$s5, $s5, 1
+	bstrpick.d	$a3, $s2, 31, 0
+	stx.b	$a2, $s5, $a3
+	addi.w	$s2, $s2, 1
 	bnez	$a0, .LBB0_425
 	b	.LBB0_445
 .LBB0_426:                              # %.preheader731.1.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s3
+	or	$a0, $a0, $s4
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
 .LBB0_427:                              # %.preheader731.2.thread.i
@@ -3118,12 +3141,12 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_428:                              # %.preheader731.2.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a1, $a1, -3
-	slli.d	$a0, $s3, 2
+	slli.d	$a0, $s4, 2
 	bnez	$a1, .LBB0_430
 # %bb.429:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3135,33 +3158,34 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_430:                              # %getbits.exit361.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	slli.d	$t2, $a0, 1
-	addi.w	$s2, $a1, -1
+	addi.w	$a6, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 15
 	ori	$a3, $zero, 3
 	ori	$a2, $zero, 7
 	bne	$a0, $a2, .LBB0_434
 # %bb.431:                              #   in Loop: Header=BB0_324 Depth=2
 	bstrpick.d	$a0, $t2, 15, 1
-	slli.d	$s3, $a0, 1
+	slli.d	$s4, $a0, 1
 	ori	$a0, $zero, 5
-	st.d	$t1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$t1, $sp, 48                    # 8-byte Folded Spill
 	bltu	$a0, $a1, .LBB0_435
 # %bb.432:                              #   in Loop: Header=BB0_324 Depth=2
-	sub.w	$a0, $s7, $a4
+	sub.w	$a0, $s6, $a4
 	ori	$a3, $zero, 10
 	ori	$a2, $zero, 2
 	bgeu	$a0, $a2, .LBB0_435
 # %bb.433:                              #   in Loop: Header=BB0_324 Depth=2
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB0_330
 .LBB0_434:                              #   in Loop: Header=BB0_324 Depth=2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	b	.LBB0_407
 .LBB0_435:                              # %.preheader730.preheader.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	move	$a3, $s3
+	move	$a3, $s4
 	move	$a5, $t0
-	beqz	$s2, .LBB0_447
+	beqz	$a6, .LBB0_447
 # %bb.436:                              # %.preheader730.1.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a0, $zero, 2
@@ -3169,7 +3193,7 @@ cli_scanautoit:                         # @cli_scanautoit
 # %bb.437:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
@@ -3181,7 +3205,7 @@ cli_scanautoit:                         # @cli_scanautoit
 	b	.LBB0_448
 .LBB0_438:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a1, $t3, -3
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ori	$a2, $zero, 3
 	bne	$a1, $a2, .LBB0_352
 .LBB0_439:                              #   in Loop: Header=BB0_324 Depth=2
@@ -3218,27 +3242,28 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_443:                              #   in Loop: Header=BB0_324 Depth=2
 	move	$t0, $zero
 	slli.d	$t2, $a0, 1
-	addi.w	$s2, $a1, -1
+	addi.w	$s7, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 15
 .LBB0_444:                              # %getbits.exit381.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	bstrpick.d	$a1, $s5, 31, 0
-	stx.b	$a0, $s6, $a1
-	addi.w	$s5, $s5, 1
-	move	$t3, $s2
+	bstrpick.d	$a1, $s2, 31, 0
+	stx.b	$a0, $s5, $a1
+	addi.w	$s2, $s2, 1
+	move	$t3, $s7
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 .LBB0_445:                              # %.loopexit.i33
                                         #   in Loop: Header=BB0_324 Depth=2
-	bnez	$t0, .LBB0_518
+	bnez	$t0, .LBB0_519
 # %bb.446:                              # %.loopexit.i33
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	bltu	$s5, $a0, .LBB0_324
-	b	.LBB0_518
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	bltu	$s2, $a0, .LBB0_324
+	b	.LBB0_519
 .LBB0_447:                              # %.preheader730.1.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
@@ -3250,29 +3275,29 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_448:                              # %.preheader730.3.i.thread
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	addi.w	$a1, $a1, -2
 	slli.d	$a0, $a0, 2
 	bnez	$a1, .LBB0_456
 .LBB0_449:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 16
 	b	.LBB0_456
 .LBB0_450:                              # %.preheader730.2.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	ori	$a0, $zero, 4
 	beq	$a1, $a0, .LBB0_453
 # %bb.451:                              # %.preheader730.2.i
@@ -3282,10 +3307,10 @@ cli_scanautoit:                         # @cli_scanautoit
 	bne	$a1, $a2, .LBB0_455
 # %bb.452:                              # %.preheader730.3.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3296,10 +3321,10 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 14
 	b	.LBB0_454
 .LBB0_453:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
@@ -3310,9 +3335,9 @@ cli_scanautoit:                         # @cli_scanautoit
 	ori	$a1, $zero, 15
 .LBB0_454:                              # %.preheader730.4.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	b	.LBB0_456
 .LBB0_455:                              #   in Loop: Header=BB0_324 Depth=2
@@ -3323,81 +3348,89 @@ cli_scanautoit:                         # @cli_scanautoit
 .LBB0_456:                              # %getbits.exit366.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	slli.d	$t2, $a0, 1
-	addi.w	$s2, $a1, -1
+	addi.w	$a6, $a1, -1
 	bstrpick.d	$a0, $a0, 31, 15
 	ori	$a3, $zero, 10
 	ori	$a2, $zero, 31
-	bne	$a0, $a2, .LBB0_510
+	bne	$a0, $a2, .LBB0_460
 # %bb.457:                              #   in Loop: Header=BB0_324 Depth=2
 	bstrpick.d	$a0, $t2, 15, 1
 	slli.d	$a0, $a0, 1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a0, $zero, 8
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
-	bltu	$a0, $a1, .LBB0_460
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	bltu	$a0, $a1, .LBB0_462
 # %bb.458:                              #   in Loop: Header=BB0_324 Depth=2
-	sub.w	$a0, $s7, $a4
+	sub.w	$a0, $s6, $a4
 	ori	$a2, $zero, 2
-	bgeu	$a0, $a2, .LBB0_460
+	bgeu	$a0, $a2, .LBB0_462
 # %bb.459:                              #   in Loop: Header=BB0_324 Depth=2
 	ori	$a3, $zero, 41
 	b	.LBB0_330
-.LBB0_460:                              # %.preheader729.preheader.i
+.LBB0_460:                              #   in Loop: Header=BB0_324 Depth=2
+	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
+.LBB0_461:                              # %.loopexit728.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	beqz	$s2, .LBB0_463
-# %bb.461:                              # %.preheader729.1.i
+	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
+	move	$t0, $a5
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
+	b	.LBB0_407
+.LBB0_462:                              # %.preheader729.preheader.i
+                                        #   in Loop: Header=BB0_324 Depth=2
+	beqz	$a6, .LBB0_465
+# %bb.463:                              # %.preheader729.1.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a0, $zero, 2
-	bne	$a1, $a0, .LBB0_467
-# %bb.462:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	bne	$a1, $a0, .LBB0_469
+# %bb.464:                              #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	slli.d	$a2, $a2, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
-	b	.LBB0_464
-.LBB0_463:                              # %.preheader729.1.thread.i
+	b	.LBB0_466
+.LBB0_465:                              # %.preheader729.1.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	or	$a0, $a0, $a1
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
-.LBB0_464:                              # %.preheader729.3.i.thread
+.LBB0_466:                              # %.preheader729.3.i.thread
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
 	ori	$a2, $zero, 3
-	beq	$a1, $a2, .LBB0_476
-.LBB0_465:                              # %.preheader729.4.i
+	beq	$a1, $a2, .LBB0_478
+.LBB0_467:                              # %.preheader729.4.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	slli.d	$a0, $a0, 2
 	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB0_470
-# %bb.466:                              # %.preheader729.5.thread.i
+	bne	$a1, $a2, .LBB0_472
+# %bb.468:                              # %.preheader729.5.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3406,23 +3439,23 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
-	b	.LBB0_477
-.LBB0_467:                              # %.preheader729.2.i
+	b	.LBB0_479
+.LBB0_469:                              # %.preheader729.2.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a0, $zero, 4
-	beq	$a1, $a0, .LBB0_471
-# %bb.468:                              # %.preheader729.2.i
+	beq	$a1, $a0, .LBB0_473
+# %bb.470:                              # %.preheader729.2.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 2
 	ori	$a2, $zero, 3
-	bne	$a1, $a2, .LBB0_475
-# %bb.469:                              # %.preheader729.3.thread.i
+	bne	$a1, $a2, .LBB0_477
+# %bb.471:                              # %.preheader729.3.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3431,61 +3464,61 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
-	b	.LBB0_472
-.LBB0_470:                              #   in Loop: Header=BB0_324 Depth=2
+	b	.LBB0_474
+.LBB0_472:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.d	$a1, $a1, -2
-	b	.LBB0_473
-.LBB0_471:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	b	.LBB0_475
+.LBB0_473:                              #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a0, $a1, 1
 	bstrpick.d	$a1, $a1, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	slli.d	$a2, $a2, 3
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
-.LBB0_472:                              # %.preheader729.5.i.thread
+.LBB0_474:                              # %.preheader729.5.i.thread
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
-.LBB0_473:                              # %.preheader729.6.i
+.LBB0_475:                              # %.preheader729.6.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a1, $a1, -2
 	slli.d	$a0, $a0, 2
-	bnez	$a1, .LBB0_478
-# %bb.474:                              # %.preheader729.7.thread.i
+	bnez	$a1, .LBB0_480
+# %bb.476:                              # %.preheader729.7.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 15
-	b	.LBB0_480
-.LBB0_475:                              #   in Loop: Header=BB0_324 Depth=2
+	b	.LBB0_482
+.LBB0_477:                              #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a1, $a1, -3
 	ori	$a2, $zero, 3
-	bne	$a1, $a2, .LBB0_465
-.LBB0_476:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	bne	$a1, $a2, .LBB0_467
+.LBB0_478:                              #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a2, 1
 	bstrpick.d	$a2, $a2, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3494,118 +3527,121 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a0, $a0, $a1
 	or	$a0, $a0, $a2
 	ori	$a1, $zero, 15
-.LBB0_477:                              # %.preheader729.6.thread.i
+.LBB0_479:                              # %.preheader729.6.thread.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 2
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 1
-.LBB0_478:                              # %.preheader729.7.i
+.LBB0_480:                              # %.preheader729.7.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	addi.w	$a1, $a1, -1
 	slli.d	$a0, $a0, 1
-	bnez	$a1, .LBB0_480
-# %bb.479:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	bnez	$a1, .LBB0_482
+# %bb.481:                              #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
 	slli.d	$a2, $a2, 8
 	addi.w	$a4, $a4, 2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 16
-.LBB0_480:                              # %getbits.exit371.i
+.LBB0_482:                              # %getbits.exit371.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	slli.d	$t2, $a0, 1
-	addi.w	$s2, $a1, -1
+	addi.w	$a2, $a1, -1
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $a0, 31, 15
 	ori	$a2, $zero, 255
-	bne	$a0, $a2, .LBB0_484
-# %bb.481:                              # %.preheader727.i
+	bne	$a0, $a2, .LBB0_486
+# %bb.483:                              # %.preheader727.i
                                         #   in Loop: Header=BB0_324 Depth=2
 	bstrpick.d	$a0, $t2, 15, 1
 	slli.d	$a0, $a0, 1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a0, $zero, 8
-	bltu	$a0, $a1, .LBB0_485
-# %bb.482:                              # %.preheader727.i
+	bltu	$a0, $a1, .LBB0_487
+# %bb.484:                              # %.preheader727.i
                                         #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	sub.w	$a0, $s7, $a0
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	sub.w	$a0, $s6, $a0
 	ori	$a1, $zero, 2
-	bgeu	$a0, $a1, .LBB0_485
-# %bb.483:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	bgeu	$a0, $a1, .LBB0_487
+# %bb.485:                              #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
 	ori	$a3, $zero, 296
 	b	.LBB0_330
-.LBB0_484:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+.LBB0_486:                              #   in Loop: Header=BB0_324 Depth=2
+	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
 	move	$t0, $a5
-	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
 	ori	$a3, $zero, 41
 	b	.LBB0_407
-.LBB0_485:                              # %.preheader.i38.preheader
+.LBB0_487:                              # %.preheader.i38.preheader
                                         #   in Loop: Header=BB0_324 Depth=2
 	ori	$a3, $zero, 296
-	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
-.LBB0_486:                              # %.preheader.i38
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
+.LBB0_488:                              # %.preheader.i38
                                         #   Parent Loop BB0_264 Depth=1
                                         #     Parent Loop BB0_324 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$a7, $a3
 	ori	$a0, $zero, 1
-	beq	$s2, $a0, .LBB0_489
-# %bb.487:                              # %.preheader.i38
-                                        #   in Loop: Header=BB0_486 Depth=3
-	bnez	$s2, .LBB0_493
-# %bb.488:                              # %.thread1147.i
-                                        #   in Loop: Header=BB0_486 Depth=3
+	beq	$a6, $a0, .LBB0_491
+# %bb.489:                              # %.preheader.i38
+                                        #   in Loop: Header=BB0_488 Depth=3
+	bnez	$a6, .LBB0_495
+# %bb.490:                              # %.thread1147.i
+                                        #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	or	$a0, $a0, $a1
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
-	b	.LBB0_490
-.LBB0_489:                              #   in Loop: Header=BB0_486 Depth=3
+	b	.LBB0_492
+.LBB0_491:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	slli.d	$a2, $a2, 1
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
-.LBB0_490:                              # %.thread169
-                                        #   in Loop: Header=BB0_486 Depth=3
+.LBB0_492:                              # %.thread169
+                                        #   in Loop: Header=BB0_488 Depth=3
 	addi.w	$a4, $a4, 2
 	slli.d	$a0, $a0, 1
 	ori	$a2, $zero, 3
-	beq	$a1, $a2, .LBB0_502
-.LBB0_491:                              #   in Loop: Header=BB0_486 Depth=3
+	beq	$a1, $a2, .LBB0_504
+.LBB0_493:                              #   in Loop: Header=BB0_488 Depth=3
 	slli.d	$a0, $a0, 2
 	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB0_496
-# %bb.492:                              # %.thread1166.i
-                                        #   in Loop: Header=BB0_486 Depth=3
+	bne	$a1, $a2, .LBB0_498
+# %bb.494:                              # %.thread1166.i
+                                        #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3614,21 +3650,21 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
-	b	.LBB0_503
-.LBB0_493:                              #   in Loop: Header=BB0_486 Depth=3
+	b	.LBB0_505
+.LBB0_495:                              #   in Loop: Header=BB0_488 Depth=3
 	ori	$a0, $zero, 3
-	beq	$s2, $a0, .LBB0_497
-# %bb.494:                              #   in Loop: Header=BB0_486 Depth=3
-	move	$a2, $s2
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	beq	$a6, $a0, .LBB0_499
+# %bb.496:                              #   in Loop: Header=BB0_488 Depth=3
+	move	$a2, $a6
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 2
 	ori	$a1, $zero, 2
-	bne	$s2, $a1, .LBB0_501
-# %bb.495:                              # %.thread1156.i
-                                        #   in Loop: Header=BB0_486 Depth=3
+	bne	$a6, $a1, .LBB0_503
+# %bb.497:                              # %.thread1156.i
+                                        #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3637,36 +3673,36 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 14
-	b	.LBB0_498
-.LBB0_496:                              #   in Loop: Header=BB0_486 Depth=3
+	b	.LBB0_500
+.LBB0_498:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a1, $a1, -2
-	b	.LBB0_499
-.LBB0_497:                              #   in Loop: Header=BB0_486 Depth=3
+	b	.LBB0_501
+.LBB0_499:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a0, $a4, 1
 	bstrpick.d	$a1, $a4, 31, 0
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a1, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	ldx.bu	$a0, $a2, $a0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	slli.d	$a2, $a2, 3
 	slli.d	$a1, $a1, 8
 	or	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 15
-.LBB0_498:                              # %.thread175
-                                        #   in Loop: Header=BB0_486 Depth=3
+.LBB0_500:                              # %.thread175
+                                        #   in Loop: Header=BB0_488 Depth=3
 	addi.w	$a4, $a4, 2
 	slli.d	$a0, $a0, 1
-.LBB0_499:                              #   in Loop: Header=BB0_486 Depth=3
+.LBB0_501:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.w	$a1, $a1, -2
 	slli.d	$a0, $a0, 2
-	bnez	$a1, .LBB0_504
-# %bb.500:                              # %.thread1176.i
-                                        #   in Loop: Header=BB0_486 Depth=3
+	bnez	$a1, .LBB0_506
+# %bb.502:                              # %.thread1176.i
+                                        #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3676,15 +3712,15 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
 	ori	$a1, $zero, 15
-	b	.LBB0_506
-.LBB0_501:                              #   in Loop: Header=BB0_486 Depth=3
+	b	.LBB0_508
+.LBB0_503:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.w	$a1, $a2, -2
 	ori	$a2, $zero, 3
-	bne	$a1, $a2, .LBB0_491
-.LBB0_502:                              #   in Loop: Header=BB0_486 Depth=3
+	bne	$a1, $a2, .LBB0_493
+.LBB0_504:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3693,18 +3729,18 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a0, $a0, $a1
 	or	$a0, $a0, $a2
 	ori	$a1, $zero, 15
-.LBB0_503:                              # %.thread1172.i
-                                        #   in Loop: Header=BB0_486 Depth=3
+.LBB0_505:                              # %.thread1172.i
+                                        #   in Loop: Header=BB0_488 Depth=3
 	addi.w	$a4, $a4, 2
 	slli.d	$a0, $a0, 1
-.LBB0_504:                              #   in Loop: Header=BB0_486 Depth=3
+.LBB0_506:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.w	$a1, $a1, -1
 	slli.d	$a0, $a0, 1
-	bnez	$a1, .LBB0_506
-# %bb.505:                              #   in Loop: Header=BB0_486 Depth=3
+	bnez	$a1, .LBB0_508
+# %bb.507:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a1, $a4, 1
 	bstrpick.d	$a2, $a4, 31, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ldx.bu	$a2, $a3, $a2
 	bstrpick.d	$a1, $a1, 31, 0
 	ldx.bu	$a1, $a3, $a1
@@ -3713,176 +3749,171 @@ cli_scanautoit:                         # @cli_scanautoit
 	or	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 16
-.LBB0_506:                              # %getbits.exit376.i
-                                        #   in Loop: Header=BB0_486 Depth=3
+.LBB0_508:                              # %getbits.exit376.i
+                                        #   in Loop: Header=BB0_488 Depth=3
 	move	$a3, $a7
 	slli.d	$t2, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 15
-	addi.w	$s2, $a1, -1
+	addi.w	$a6, $a1, -1
 	ori	$a2, $zero, 255
-	bne	$a0, $a2, .LBB0_509
-# %bb.507:                              #   in Loop: Header=BB0_486 Depth=3
+	bne	$a0, $a2, .LBB0_511
+# %bb.509:                              #   in Loop: Header=BB0_488 Depth=3
 	addi.d	$a3, $a3, 255
 	bstrpick.d	$a0, $t2, 15, 1
 	slli.d	$a0, $a0, 1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a0, $zero, 8
-	bltu	$a0, $a1, .LBB0_486
-# %bb.508:                              #   in Loop: Header=BB0_486 Depth=3
-	sub.w	$a0, $s7, $a4
+	bltu	$a0, $a1, .LBB0_488
+# %bb.510:                              #   in Loop: Header=BB0_488 Depth=3
+	sub.w	$a0, $s6, $a4
 	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB0_486
+	bltu	$a1, $a0, .LBB0_488
 	b	.LBB0_330
-.LBB0_509:                              #   in Loop: Header=BB0_324 Depth=2
-	st.d	$a4, $sp, 88                    # 8-byte Folded Spill
-.LBB0_510:                              #   in Loop: Header=BB0_324 Depth=2
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
-	move	$t0, $a5
-	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
-	b	.LBB0_407
-.LBB0_511:                              #   in Loop: Header=BB0_264 Depth=1
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
+.LBB0_511:                              #   in Loop: Header=BB0_324 Depth=2
+	st.d	$a6, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 96                    # 8-byte Folded Spill
+	b	.LBB0_461
+.LBB0_512:                              #   in Loop: Header=BB0_264 Depth=1
+	st.d	$s5, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
-	move	$s6, $s3
-	move	$s3, $s7
-.LBB0_512:                              # %.sink.split.i26
+	move	$s5, $s4
+	move	$s4, $s6
+.LBB0_513:                              # %.sink.split.i26
                                         #   in Loop: Header=BB0_264 Depth=1
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ori	$s7, $zero, 8
-	addi.w	$a1, $s3, 0
+	ori	$s6, $zero, 8
+	addi.w	$a1, $s4, 0
 	ori	$a0, $zero, 3
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	bltu	$a0, $a1, .LBB0_521
-.LBB0_513:                              #   in Loop: Header=BB0_264 Depth=1
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	bltu	$a0, $a1, .LBB0_522
+.LBB0_514:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.52)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.52)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s6
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB0_264
-.LBB0_514:                              #   in Loop: Header=BB0_264 Depth=1
+.LBB0_515:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_515:                              #   in Loop: Header=BB0_264 Depth=1
-	move	$a0, $s3
+.LBB0_516:                              #   in Loop: Header=BB0_264 Depth=1
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ori	$s7, $zero, 8
+	ori	$s6, $zero, 8
 	b	.LBB0_264
-.LBB0_516:                              # %.thread671.i
+.LBB0_517:                              # %.thread671.i
                                         #   in Loop: Header=BB0_264 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB0_519
-.LBB0_517:                              # %.thread1205.i
+	b	.LBB0_520
+.LBB0_518:                              # %.thread1205.i
                                         #   in Loop: Header=BB0_264 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ori	$s7, $zero, 8
-	b	.LBB0_513
-.LBB0_518:                              # %._crit_edge.i34
+	ori	$s6, $zero, 8
+	b	.LBB0_514
+.LBB0_519:                              # %._crit_edge.i34
                                         #   in Loop: Header=BB0_264 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	move	$s2, $t0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	beqz	$s2, .LBB0_520
-.LBB0_519:                              #   in Loop: Header=BB0_264 Depth=1
+	beqz	$s2, .LBB0_521
+.LBB0_520:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	b	.LBB0_512
-.LBB0_520:                              #   in Loop: Header=BB0_264 Depth=1
-	ori	$s7, $zero, 8
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	addi.w	$a1, $s3, 0
-	ori	$a0, $zero, 3
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	bgeu	$a0, $a1, .LBB0_513
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	b	.LBB0_513
 .LBB0_521:                              #   in Loop: Header=BB0_264 Depth=1
-	bnez	$s5, .LBB0_596
-# %bb.522:                              #   in Loop: Header=BB0_264 Depth=1
-	bstrpick.d	$a0, $s3, 31, 0
+	ori	$s6, $zero, 8
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	addi.w	$a1, $s4, 0
+	ori	$a0, $zero, 3
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	bgeu	$a0, $a1, .LBB0_514
+.LBB0_522:                              #   in Loop: Header=BB0_264 Depth=1
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	bnez	$a0, .LBB0_597
+# %bb.523:                              #   in Loop: Header=BB0_264 Depth=1
+	bstrpick.d	$a0, $s4, 31, 0
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_635
-# %bb.523:                              #   in Loop: Header=BB0_264 Depth=1
-	move	$s7, $a0
-	ld.w	$s2, $s6, 0
+	beqz	$a0, .LBB0_633
+# %bb.524:                              #   in Loop: Header=BB0_264 Depth=1
+	move	$s6, $a0
+	ld.w	$s2, $s5, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.53)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.53)
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
-	beqz	$s2, .LBB0_588
-# %bb.524:                              # %.lr.ph830.i
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	beqz	$s2, .LBB0_589
+# %bb.525:                              # %.lr.ph830.i
                                         #   in Loop: Header=BB0_264 Depth=1
 	move	$t1, $zero
-	addi.w	$a0, $s3, -4
+	addi.w	$a0, $s4, -4
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	addi.w	$a0, $s3, -8
+	addi.w	$a0, $s4, -8
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$s2, $zero, 4
-	move	$a2, $s7
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	move	$a3, $s3
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	b	.LBB0_527
-.LBB0_525:                              #   in Loop: Header=BB0_527 Depth=2
+	move	$a2, $s6
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	move	$a3, $s4
+	st.d	$s7, $sp, 88                    # 8-byte Folded Spill
+	b	.LBB0_528
+.LBB0_526:                              #   in Loop: Header=BB0_528 Depth=2
 	move	$a5, $t1
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
-.LBB0_526:                              # %.thread678.i
-                                        #   in Loop: Header=BB0_527 Depth=2
+.LBB0_527:                              # %.thread678.i
+                                        #   in Loop: Header=BB0_528 Depth=2
 	move	$a2, $a4
 	move	$t1, $a5
-	move	$s2, $s7
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	beqz	$a0, .LBB0_595
-.LBB0_527:                              #   Parent Loop BB0_264 Depth=1
-                                        # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB0_546 Depth 3
-                                        #       Child Loop BB0_554 Depth 3
-                                        #       Child Loop BB0_558 Depth 3
+	move	$s2, $s4
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	bgeu	$s2, $a0, .LBB0_589
-# %bb.528:                              #   in Loop: Header=BB0_527 Depth=2
+	beqz	$a0, .LBB0_596
+.LBB0_528:                              #   Parent Loop BB0_264 Depth=1
+                                        # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB0_547 Depth 3
+                                        #       Child Loop BB0_555 Depth 3
+                                        #       Child Loop BB0_559 Depth 3
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	bgeu	$s2, $a0, .LBB0_590
+# %bb.529:                              #   in Loop: Header=BB0_528 Depth=2
 	bstrpick.d	$a0, $s2, 31, 0
-	ldx.bu	$s5, $s6, $a0
-	addi.d	$a0, $s5, -5
+	ldx.bu	$s7, $s5, $a0
+	addi.d	$a0, $s7, -5
 	ori	$a1, $zero, 122
-	bltu	$a1, $a0, .LBB0_604
-# %bb.529:                              #   in Loop: Header=BB0_527 Depth=2
-	addi.w	$s3, $s2, 1
+	bltu	$a1, $a0, .LBB0_605
+# %bb.530:                              #   in Loop: Header=BB0_528 Depth=2
+	addi.w	$s6, $s2, 1
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI0_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI0_0)
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
-.LBB0_530:                              #   in Loop: Header=BB0_527 Depth=2
+.LBB0_531:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.w	$a0, $t1, 4
 	addi.w	$a1, $a3, 0
-	bgeu	$a0, $a1, .LBB0_532
-# %bb.531:                              #   in Loop: Header=BB0_527 Depth=2
-	move	$s7, $a3
+	bgeu	$a0, $a1, .LBB0_533
+# %bb.532:                              #   in Loop: Header=BB0_528 Depth=2
+	move	$s4, $a3
 	move	$a4, $a2
-	b	.LBB0_533
-.LBB0_532:                              #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_534
+.LBB0_533:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.w	$a3, $a3, 512
-	move	$s7, $a3
+	move	$s4, $a3
 	bstrpick.d	$a1, $a3, 31, 0
 	move	$a0, $a2
 	move	$s2, $t1
@@ -3891,133 +3922,133 @@ cli_scanautoit:                         # @cli_scanautoit
 	jirl	$ra, $ra, 0
 	move	$t1, $s2
 	move	$a4, $a0
-	beqz	$a0, .LBB0_594
-.LBB0_533:                              # %.thread688.i
-                                        #   in Loop: Header=BB0_527 Depth=2
+	beqz	$a0, .LBB0_595
+.LBB0_534:                              # %.thread688.i
+                                        #   in Loop: Header=BB0_528 Depth=2
 	bstrpick.d	$a0, $t1, 31, 0
 	add.d	$a0, $a4, $a0
 	pcalau12i	$a1, %pc_hi20(.L__const.ea06.opers)
 	addi.d	$a1, $a1, %pc_lo12(.L__const.ea06.opers)
-	alsl.d	$a1, $s5, $a1, 3
+	alsl.d	$a1, $s7, $a1, 3
 	ld.d	$a3, $a1, -512
 	pcalau12i	$a1, %pc_hi20(.L.str.62)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.62)
 	ori	$a1, $zero, 4
 	move	$s2, $t1
-	move	$s5, $a4
+	move	$s7, $a4
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
-	move	$a4, $s5
+	move	$a4, $s7
 	add.w	$a5, $a0, $s2
-.LBB0_534:                              # %.thread678.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	move	$a3, $s7
-	move	$s7, $s3
-	b	.LBB0_526
-.LBB0_535:                              #   in Loop: Header=BB0_527 Depth=2
+.LBB0_535:                              # %.thread678.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
+	move	$a3, $s4
+	move	$s4, $s6
+	b	.LBB0_527
+.LBB0_536:                              #   in Loop: Header=BB0_528 Depth=2
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	bgeu	$s3, $a0, .LBB0_590
-# %bb.536:                              #   in Loop: Header=BB0_527 Depth=2
-	bstrpick.d	$a0, $s3, 31, 0
-	ldx.wu	$s3, $s6, $a0
-	slli.d	$t3, $s3, 1
+	bgeu	$s6, $a0, .LBB0_591
+# %bb.537:                              #   in Loop: Header=BB0_528 Depth=2
+	bstrpick.d	$a0, $s6, 31, 0
+	ldx.wu	$s6, $s5, $a0
+	slli.d	$t3, $s6, 1
 	addi.w	$t4, $t3, 0
-	addi.w	$s7, $s2, 5
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	bltu	$a0, $t4, .LBB0_592
-# %bb.537:                              #   in Loop: Header=BB0_527 Depth=2
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	addi.w	$s4, $s2, 5
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	bltu	$a0, $t4, .LBB0_593
+# %bb.538:                              #   in Loop: Header=BB0_528 Depth=2
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	sub.w	$a0, $a0, $t3
-	bgeu	$s7, $a0, .LBB0_592
-# %bb.538:                              #   in Loop: Header=BB0_527 Depth=2
-	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
-	add.d	$a0, $t1, $s3
+	bgeu	$s4, $a0, .LBB0_593
+# %bb.539:                              #   in Loop: Header=BB0_528 Depth=2
+	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
+	add.d	$a0, $t1, $s6
 	addi.w	$a0, $a0, 3
 	addi.w	$a1, $a3, 0
 	st.d	$t3, $sp, 72                    # 8-byte Folded Spill
-	bgeu	$a0, $a1, .LBB0_540
-# %bb.539:                              #   in Loop: Header=BB0_527 Depth=2
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	bgeu	$a0, $a1, .LBB0_541
+# %bb.540:                              #   in Loop: Header=BB0_528 Depth=2
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	move	$a0, $a2
-	b	.LBB0_541
-.LBB0_540:                              #   in Loop: Header=BB0_527 Depth=2
-	add.d	$a0, $a3, $s3
+	b	.LBB0_542
+.LBB0_541:                              #   in Loop: Header=BB0_528 Depth=2
+	add.d	$a0, $a3, $s6
 	addi.w	$a0, $a0, 512
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	bstrpick.d	$a1, $a0, 31, 0
 	move	$a0, $a2
-	st.d	$t1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$t1, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	move	$s7, $t4
+	move	$s4, $t4
 	pcaddu18i	$ra, %call36(cli_realloc)
 	jirl	$ra, $ra, 0
-	move	$t4, $s7
+	move	$t4, $s4
 	ld.d	$t3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t1, $sp, 24                    # 8-byte Folded Reload
-	beqz	$a0, .LBB0_594
-.LBB0_541:                              #   in Loop: Header=BB0_527 Depth=2
+	ld.d	$t1, $sp, 40                    # 8-byte Folded Reload
+	beqz	$a0, .LBB0_595
+.LBB0_542:                              #   in Loop: Header=BB0_528 Depth=2
 	pcalau12i	$a1, %pc_hi20(.L__const.ea06.prefixes)
 	addi.d	$a1, $a1, %pc_lo12(.L__const.ea06.prefixes)
-	add.d	$a1, $a1, $s5
+	add.d	$a1, $a1, $s7
 	ld.bu	$a3, $a1, -48
-	beqz	$a3, .LBB0_543
-# %bb.542:                              #   in Loop: Header=BB0_527 Depth=2
+	beqz	$a3, .LBB0_544
+# %bb.543:                              #   in Loop: Header=BB0_528 Depth=2
 	bstrpick.d	$a1, $t1, 31, 0
 	addi.w	$t1, $t1, 1
 	stx.b	$a3, $a0, $a1
-.LBB0_543:                              #   in Loop: Header=BB0_527 Depth=2
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
+.LBB0_544:                              #   in Loop: Header=BB0_528 Depth=2
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	beqz	$s3, .LBB0_561
-# %bb.544:                              # %.preheader725.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	bstrpick.d	$a1, $s7, 31, 0
-	beqz	$t4, .LBB0_559
-# %bb.545:                              # %.lr.ph822.i
-                                        #   in Loop: Header=BB0_527 Depth=2
+	beqz	$s6, .LBB0_562
+# %bb.545:                              # %.preheader725.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	bstrpick.d	$a1, $s4, 31, 0
+	beqz	$t4, .LBB0_560
+# %bb.546:                              # %.lr.ph822.i
+                                        #   in Loop: Header=BB0_528 Depth=2
 	move	$a2, $zero
-	srli.d	$a3, $s3, 8
+	srli.d	$a3, $s6, 8
 	bstrpick.d	$t2, $t3, 31, 0
 	addi.w	$a4, $s2, 6
-.LBB0_546:                              #   Parent Loop BB0_264 Depth=1
-                                        #     Parent Loop BB0_527 Depth=2
+.LBB0_547:                              #   Parent Loop BB0_264 Depth=1
+                                        #     Parent Loop BB0_528 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	addi.d	$a5, $a4, -1
 	bstrpick.d	$a5, $a5, 31, 0
-	ldx.b	$a6, $s6, $a5
+	ldx.b	$a6, $s5, $a5
 	bstrpick.d	$a7, $a4, 31, 0
-	ldx.b	$t0, $s6, $a7
-	xor	$a6, $a6, $s3
-	stx.b	$a6, $s6, $a5
+	ldx.b	$t0, $s5, $a7
+	xor	$a6, $a6, $s6
+	stx.b	$a6, $s5, $a5
 	xor	$a5, $t0, $a3
-	stx.b	$a5, $s6, $a7
+	stx.b	$a5, $s5, $a7
 	addi.d	$a2, $a2, 2
 	addi.w	$a4, $a4, 2
-	bltu	$a2, $t2, .LBB0_546
-# %bb.547:                              #   in Loop: Header=BB0_527 Depth=2
-	add.d	$a1, $s6, $a1
+	bltu	$a2, $t2, .LBB0_547
+# %bb.548:                              #   in Loop: Header=BB0_528 Depth=2
+	add.d	$a1, $s5, $a1
 	ori	$a2, $zero, 5
-	bltu	$t4, $a2, .LBB0_552
-# %bb.548:                              #   in Loop: Header=BB0_527 Depth=2
+	bltu	$t4, $a2, .LBB0_553
+# %bb.549:                              #   in Loop: Header=BB0_528 Depth=2
 	ld.bu	$a2, $a1, 0
 	ori	$a3, $zero, 255
-	bne	$a2, $a3, .LBB0_552
-# %bb.549:                              #   in Loop: Header=BB0_527 Depth=2
+	bne	$a2, $a3, .LBB0_553
+# %bb.550:                              #   in Loop: Header=BB0_528 Depth=2
 	ld.bu	$a2, $a1, 1
 	ori	$a3, $zero, 254
-	bne	$a2, $a3, .LBB0_552
-# %bb.550:                              #   in Loop: Header=BB0_527 Depth=2
+	bne	$a2, $a3, .LBB0_553
+# %bb.551:                              #   in Loop: Header=BB0_528 Depth=2
 	ld.bu	$a2, $a1, 2
-	beqz	$a2, .LBB0_552
-# %bb.551:                              #   in Loop: Header=BB0_527 Depth=2
+	beqz	$a2, .LBB0_553
+# %bb.552:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.d	$a2, $a1, 2
 	addi.d	$a3, $t3, -2
 	bstrpick.d	$t2, $a3, 31, 0
-	b	.LBB0_557
-.LBB0_552:                              # %.lr.ph.preheader.i382.i
-                                        #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_558
+.LBB0_553:                              # %.lr.ph.preheader.i382.i
+                                        #   in Loop: Header=BB0_528 Depth=2
 	move	$a3, $zero
 	move	$a2, $zero
 	sltui	$a4, $t4, 20
@@ -4025,211 +4056,211 @@ cli_scanautoit:                         # @cli_scanautoit
 	masknez	$a5, $a5, $a4
 	maskeqz	$a4, $t4, $a4
 	or	$a4, $a4, $a5
-	b	.LBB0_554
-.LBB0_553:                              #   in Loop: Header=BB0_554 Depth=3
+	b	.LBB0_555
+.LBB0_554:                              #   in Loop: Header=BB0_555 Depth=3
+	move	$a5, $zero
+	addi.d	$a3, $a3, 2
+	add.d	$a2, $a5, $a2
+	bgeu	$a3, $a4, .LBB0_557
+.LBB0_555:                              # %.lr.ph.i383.i
+                                        #   Parent Loop BB0_264 Depth=1
+                                        #     Parent Loop BB0_528 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	ldx.bu	$a5, $a1, $a3
+	beqz	$a5, .LBB0_554
+# %bb.556:                              #   in Loop: Header=BB0_555 Depth=3
 	add.d	$a5, $a1, $a3
 	ld.bu	$a5, $a5, 1
 	sltui	$a5, $a5, 1
 	addi.d	$a3, $a3, 2
 	add.d	$a2, $a5, $a2
-	bgeu	$a3, $a4, .LBB0_556
-.LBB0_554:                              # %.lr.ph.i383.i
-                                        #   Parent Loop BB0_264 Depth=1
-                                        #     Parent Loop BB0_527 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	ldx.bu	$a5, $a1, $a3
-	bnez	$a5, .LBB0_553
-# %bb.555:                              #   in Loop: Header=BB0_554 Depth=3
-	move	$a5, $zero
-	addi.d	$a3, $a3, 2
-	add.d	$a2, $a5, $a2
-	bltu	$a3, $a4, .LBB0_554
-.LBB0_556:                              # %._crit_edge.i388.i
-                                        #   in Loop: Header=BB0_527 Depth=2
+	bltu	$a3, $a4, .LBB0_555
+.LBB0_557:                              # %._crit_edge.i388.i
+                                        #   in Loop: Header=BB0_528 Depth=2
 	slli.w	$a3, $a2, 2
 	move	$a2, $a1
-	bltu	$a3, $a4, .LBB0_560
-.LBB0_557:                              # %.lr.ph49.preheader.i390.i
-                                        #   in Loop: Header=BB0_527 Depth=2
+	bltu	$a3, $a4, .LBB0_561
+.LBB0_558:                              # %.lr.ph49.preheader.i390.i
+                                        #   in Loop: Header=BB0_528 Depth=2
 	move	$a3, $zero
 	move	$a4, $a1
-.LBB0_558:                              # %.lr.ph49.i393.i
+.LBB0_559:                              # %.lr.ph49.i393.i
                                         #   Parent Loop BB0_264 Depth=1
-                                        #     Parent Loop BB0_527 Depth=2
+                                        #     Parent Loop BB0_528 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.b	$a5, $a2, $a3
 	addi.d	$a6, $a4, 1
 	addi.d	$a3, $a3, 2
 	st.b	$a5, $a4, 0
 	move	$a4, $a6
-	bltu	$a3, $t2, .LBB0_558
-	b	.LBB0_560
-.LBB0_559:                              # %._crit_edge823.thread.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	add.d	$a1, $s6, $a1
-.LBB0_560:                              # %u2a.exit400.i
-                                        #   in Loop: Header=BB0_527 Depth=2
+	bltu	$a3, $t2, .LBB0_559
+	b	.LBB0_561
+.LBB0_560:                              # %._crit_edge823.thread.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	add.d	$a1, $s5, $a1
+.LBB0_561:                              # %u2a.exit400.i
+                                        #   in Loop: Header=BB0_528 Depth=2
 	bstrpick.d	$a2, $t1, 31, 0
 	add.d	$a0, $a0, $a2
-	move	$a2, $s3
+	move	$a2, $s6
 	move	$s2, $t1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	add.w	$t1, $s2, $s3
+	add.w	$t1, $s2, $s6
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	add.w	$s7, $a0, $s7
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
-.LBB0_561:                              #   in Loop: Header=BB0_527 Depth=2
+	add.w	$s4, $a0, $s4
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+.LBB0_562:                              #   in Loop: Header=BB0_528 Depth=2
 	ori	$a0, $zero, 52
-	beq	$s5, $a0, .LBB0_525
-# %bb.562:                              #   in Loop: Header=BB0_527 Depth=2
+	beq	$s7, $a0, .LBB0_526
+# %bb.563:                              #   in Loop: Header=BB0_528 Depth=2
 	ori	$a0, $zero, 54
 	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
-	bne	$s5, $a0, .LBB0_564
-# %bb.563:                              #   in Loop: Header=BB0_527 Depth=2
+	bne	$s7, $a0, .LBB0_565
+# %bb.564:                              #   in Loop: Header=BB0_528 Depth=2
 	bstrpick.d	$a0, $t1, 31, 0
 	addi.w	$t1, $t1, 1
 	ori	$a2, $zero, 34
 	stx.b	$a2, $a4, $a0
-.LBB0_564:                              #   in Loop: Header=BB0_527 Depth=2
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+.LBB0_565:                              #   in Loop: Header=BB0_528 Depth=2
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a5, $t1, 1
 	bstrpick.d	$a0, $t1, 31, 0
 	ori	$a1, $zero, 32
 	stx.b	$a1, $a4, $a0
-	b	.LBB0_526
-.LBB0_565:                              #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_527
+.LBB0_566:                              #   in Loop: Header=BB0_528 Depth=2
 	ori	$a0, $zero, 8
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	bltu	$a1, $a0, .LBB0_606
-# %bb.566:                              #   in Loop: Header=BB0_527 Depth=2
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	bltu	$a1, $a0, .LBB0_607
+# %bb.567:                              #   in Loop: Header=BB0_528 Depth=2
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	bgeu	$s3, $a0, .LBB0_606
-# %bb.567:                              #   in Loop: Header=BB0_527 Depth=2
-	move	$s5, $s3
+	bgeu	$s6, $a0, .LBB0_607
+# %bb.568:                              #   in Loop: Header=BB0_528 Depth=2
+	move	$s4, $s6
 	addi.w	$a0, $t1, 40
 	addi.w	$a1, $a3, 0
-	bgeu	$a0, $a1, .LBB0_580
-# %bb.568:                              #   in Loop: Header=BB0_527 Depth=2
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	bgeu	$a0, $a1, .LBB0_581
+# %bb.569:                              #   in Loop: Header=BB0_528 Depth=2
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	move	$a4, $a2
-	b	.LBB0_581
-.LBB0_569:                              #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_582
+.LBB0_570:                              #   in Loop: Header=BB0_528 Depth=2
 	ori	$a0, $zero, 8
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	bltu	$a1, $a0, .LBB0_605
-# %bb.570:                              #   in Loop: Header=BB0_527 Depth=2
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	bltu	$a1, $a0, .LBB0_606
+# %bb.571:                              #   in Loop: Header=BB0_528 Depth=2
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	bgeu	$s3, $a0, .LBB0_605
-# %bb.571:                              #   in Loop: Header=BB0_527 Depth=2
-	move	$s5, $s3
+	bgeu	$s6, $a0, .LBB0_606
+# %bb.572:                              #   in Loop: Header=BB0_528 Depth=2
+	move	$s4, $s6
 	addi.w	$a0, $t1, 20
 	addi.w	$a1, $a3, 0
-	bgeu	$a0, $a1, .LBB0_582
-# %bb.572:                              #   in Loop: Header=BB0_527 Depth=2
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	bgeu	$a0, $a1, .LBB0_583
+# %bb.573:                              #   in Loop: Header=BB0_528 Depth=2
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	move	$a4, $a2
-	b	.LBB0_583
-.LBB0_573:                              #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_584
+.LBB0_574:                              #   in Loop: Header=BB0_528 Depth=2
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	bgeu	$s3, $a0, .LBB0_607
-# %bb.574:                              #   in Loop: Header=BB0_527 Depth=2
-	move	$s5, $s3
+	bgeu	$s6, $a0, .LBB0_608
+# %bb.575:                              #   in Loop: Header=BB0_528 Depth=2
+	move	$s4, $s6
 	addi.w	$a0, $t1, 12
 	addi.w	$a1, $a3, 0
-	bgeu	$a0, $a1, .LBB0_585
-# %bb.575:                              #   in Loop: Header=BB0_527 Depth=2
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	bgeu	$a0, $a1, .LBB0_586
+# %bb.576:                              #   in Loop: Header=BB0_528 Depth=2
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	move	$a4, $a2
-	b	.LBB0_586
-.LBB0_576:                              #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_587
+.LBB0_577:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.w	$a5, $t1, 1
 	addi.w	$a0, $a3, 0
-	bgeu	$a5, $a0, .LBB0_578
-# %bb.577:                              #   in Loop: Header=BB0_527 Depth=2
-	move	$s7, $a3
+	bgeu	$a5, $a0, .LBB0_579
+# %bb.578:                              #   in Loop: Header=BB0_528 Depth=2
+	move	$s4, $a3
 	move	$a4, $a2
-	b	.LBB0_579
-.LBB0_578:                              #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_580
+.LBB0_579:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.w	$a3, $a3, 512
-	move	$s7, $a3
+	move	$s4, $a3
 	bstrpick.d	$a1, $a3, 31, 0
 	move	$a0, $a2
 	move	$s2, $t1
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	move	$s5, $a5
+	move	$s7, $a5
 	pcaddu18i	$ra, %call36(cli_realloc)
 	jirl	$ra, $ra, 0
-	move	$a5, $s5
+	move	$a5, $s7
 	move	$t1, $s2
 	move	$a4, $a0
-	beqz	$a0, .LBB0_594
-.LBB0_579:                              # %.thread692.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	beqz	$a0, .LBB0_595
+.LBB0_580:                              # %.thread692.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	addi.w	$a0, $a0, -1
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	bstrpick.d	$a0, $t1, 31, 0
 	ori	$a1, $zero, 10
 	stx.b	$a1, $a4, $a0
-	b	.LBB0_534
-.LBB0_580:                              #   in Loop: Header=BB0_527 Depth=2
+	b	.LBB0_535
+.LBB0_581:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.w	$a3, $a3, 512
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	bstrpick.d	$a1, $a3, 31, 0
 	move	$a0, $a2
-	move	$s3, $t1
+	move	$s6, $t1
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_realloc)
 	jirl	$ra, $ra, 0
-	move	$t1, $s3
+	move	$t1, $s6
 	move	$a4, $a0
-	beqz	$a0, .LBB0_594
-.LBB0_581:                              # %.thread681.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	bstrpick.d	$a0, $s5, 31, 0
-	ldx.d	$a3, $s6, $a0
+	beqz	$a0, .LBB0_595
+.LBB0_582:                              # %.thread681.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	bstrpick.d	$a0, $s4, 31, 0
+	ldx.d	$a3, $s5, $a0
 	bstrpick.d	$a0, $t1, 31, 0
-	add.d	$s3, $a4, $a0
+	add.d	$s4, $a4, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.59)
 	ori	$a1, $zero, 39
-	move	$a0, $s3
-	move	$s5, $t1
+	move	$a0, $s4
+	move	$s6, $t1
 	move	$s7, $a4
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $s5, 38
+	addi.d	$a0, $s6, 38
 	bstrpick.d	$a0, $a0, 31, 0
 	ori	$a1, $zero, 32
 	stx.b	$a1, $s7, $a0
-	addi.d	$a0, $s5, 39
+	addi.d	$a0, $s6, 39
 	bstrpick.d	$a0, $a0, 31, 0
 	stx.b	$zero, $s7, $a0
-	move	$a0, $s3
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$a4, $s7
-	add.w	$a5, $s5, $a0
-	b	.LBB0_584
-.LBB0_582:                              #   in Loop: Header=BB0_527 Depth=2
+	add.w	$a5, $s6, $a0
+	b	.LBB0_585
+.LBB0_583:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.w	$a3, $a3, 512
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	bstrpick.d	$a1, $a3, 31, 0
 	move	$a0, $a2
-	move	$s3, $t1
+	move	$s6, $t1
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_realloc)
 	jirl	$ra, $ra, 0
-	move	$t1, $s3
+	move	$t1, $s6
 	move	$a4, $a0
-	beqz	$a0, .LBB0_594
-.LBB0_583:                              #   in Loop: Header=BB0_527 Depth=2
+	beqz	$a0, .LBB0_595
+.LBB0_584:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.d	$a0, $s2, 5
 	bstrpick.d	$a0, $a0, 31, 0
-	ldx.w	$a0, $s6, $a0
-	bstrpick.d	$a1, $s5, 31, 0
-	ldx.w	$a1, $s6, $a1
+	ldx.w	$a0, $s5, $a0
+	bstrpick.d	$a1, $s4, 31, 0
+	ldx.w	$a1, $s5, $a1
 	slli.d	$a0, $a0, 32
 	add.d	$a3, $a0, $a1
 	bstrpick.d	$a0, $t1, 31, 0
@@ -4237,150 +4268,150 @@ cli_scanautoit:                         # @cli_scanautoit
 	pcalau12i	$a1, %pc_hi20(.L.str.57)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.57)
 	ori	$a1, $zero, 20
-	move	$s3, $t1
-	move	$s5, $a4
+	move	$s4, $t1
+	move	$s6, $a4
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
-	move	$a4, $s5
-	addi.w	$a5, $s3, 19
-.LBB0_584:                              # %.thread678.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	addi.w	$s7, $s2, 9
-	b	.LBB0_587
-.LBB0_585:                              #   in Loop: Header=BB0_527 Depth=2
+	move	$a4, $s6
+	addi.w	$a5, $s4, 19
+.LBB0_585:                              # %.thread678.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	addi.w	$s4, $s2, 9
+	b	.LBB0_588
+.LBB0_586:                              #   in Loop: Header=BB0_528 Depth=2
 	addi.w	$a3, $a3, 512
-	st.d	$a3, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
 	bstrpick.d	$a1, $a3, 31, 0
 	move	$a0, $a2
-	move	$s3, $t1
+	move	$s6, $t1
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_realloc)
 	jirl	$ra, $ra, 0
-	move	$t1, $s3
+	move	$t1, $s6
 	move	$a4, $a0
-	beqz	$a0, .LBB0_594
-.LBB0_586:                              # %.thread674.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	bstrpick.d	$a0, $s5, 31, 0
-	ldx.w	$a3, $s6, $a0
+	beqz	$a0, .LBB0_595
+.LBB0_587:                              # %.thread674.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	bstrpick.d	$a0, $s4, 31, 0
+	ldx.w	$a3, $s5, $a0
 	bstrpick.d	$a0, $t1, 31, 0
 	add.d	$a0, $a4, $a0
 	pcalau12i	$a1, %pc_hi20(.L.str.55)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.55)
 	ori	$a1, $zero, 12
-	move	$s3, $t1
-	move	$s5, $a4
+	move	$s4, $t1
+	move	$s6, $a4
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
-	move	$a4, $s5
-	addi.w	$a5, $s3, 11
-	addi.w	$s7, $s2, 5
-.LBB0_587:                              # %.thread678.i
-                                        #   in Loop: Header=BB0_527 Depth=2
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
-	b	.LBB0_526
-.LBB0_588:                              #   in Loop: Header=BB0_264 Depth=1
-	move	$a5, $zero
-	move	$a4, $s7
-	b	.LBB0_595
+	move	$a4, $s6
+	addi.w	$a5, $s4, 11
+	addi.w	$s4, $s2, 5
+.LBB0_588:                              # %.thread678.i
+                                        #   in Loop: Header=BB0_528 Depth=2
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	b	.LBB0_527
 .LBB0_589:                              #   in Loop: Header=BB0_264 Depth=1
+	move	$a5, $zero
+	move	$a4, $s6
+	b	.LBB0_596
+.LBB0_590:                              #   in Loop: Header=BB0_264 Depth=1
 	move	$a5, $t1
 	move	$a4, $a2
-	b	.LBB0_595
-.LBB0_590:                              #   in Loop: Header=BB0_264 Depth=1
+	b	.LBB0_596
+.LBB0_591:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.60)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.60)
-.LBB0_591:                              # %.critedge14.i
+.LBB0_592:                              # %.critedge14.i
                                         #   in Loop: Header=BB0_264 Depth=1
 	move	$s2, $t1
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_593
-.LBB0_592:                              #   in Loop: Header=BB0_264 Depth=1
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	sub.w	$a3, $a0, $s7
+	b	.LBB0_594
+.LBB0_593:                              #   in Loop: Header=BB0_264 Depth=1
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	sub.w	$a3, $a0, $s4
 	pcalau12i	$a0, %pc_hi20(.L.str.61)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.61)
 	move	$a1, $t4
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	move	$s2, $t1
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_593:                              # %.critedge14.i
+.LBB0_594:                              # %.critedge14.i
                                         #   in Loop: Header=BB0_264 Depth=1
 	move	$t1, $s2
-.LBB0_594:                              # %.critedge14.i
+.LBB0_595:                              # %.critedge14.i
                                         #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.64)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.64)
-	move	$s3, $t1
+	move	$s6, $t1
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a5, $s3
+	move	$a5, $s6
 	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-.LBB0_595:                              # %.critedge14.thread.i
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
+.LBB0_596:                              # %.critedge14.thread.i
                                         #   in Loop: Header=BB0_264 Depth=1
-	move	$a0, $s6
-	move	$s6, $a4
-	move	$s3, $a5
+	move	$a0, $s5
+	move	$s5, $a4
+	move	$s4, $a5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ori	$s7, $zero, 8
-.LBB0_596:                              #   in Loop: Header=BB0_264 Depth=1
+	ori	$s6, $zero, 8
+.LBB0_597:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.19)
-	addi.d	$a0, $sp, 208
+	addi.d	$a0, $sp, 224
 	ori	$a1, $zero, 1023
 	move	$a3, $fp
-	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
-	st.b	$zero, $sp, 1231
-	addi.d	$a0, $sp, 208
+	st.b	$zero, $sp, 1247
+	addi.d	$a0, $sp, 224
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_623
-# %bb.597:                              #   in Loop: Header=BB0_264 Depth=1
+	bltz	$a0, .LBB0_624
+# %bb.598:                              #   in Loop: Header=BB0_264 Depth=1
 	move	$s2, $a0
-	addi.w	$s3, $s3, 0
-	move	$a1, $s6
-	move	$a2, $s3
+	addi.w	$s4, $s4, 0
+	move	$a1, $s5
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(cli_writen)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s3, .LBB0_624
-# %bb.598:                              #   in Loop: Header=BB0_264 Depth=1
-	move	$a0, $s6
+	bne	$a0, $s4, .LBB0_627
+# %bb.599:                              #   in Loop: Header=BB0_264 Depth=1
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ld.bu	$a0, $s6, 0
+	ld.bu	$a0, $s7, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.66)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.66)
-	masknez	$a1, $a1, $s5
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	masknez	$a1, $a1, $a3
 	pcalau12i	$a2, %pc_hi20(.L.str.67)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.67)
-	maskeqz	$a2, $a2, $s5
+	maskeqz	$a2, $a2, $a3
 	or	$a1, $a2, $a1
-	beqz	$a0, .LBB0_600
-# %bb.599:                              #   in Loop: Header=BB0_264 Depth=1
+	beqz	$a0, .LBB0_601
+# %bb.600:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.65)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.65)
-	addi.d	$a2, $sp, 208
+	addi.d	$a2, $sp, 224
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_601
-.LBB0_600:                              #   in Loop: Header=BB0_264 Depth=1
+	b	.LBB0_602
+.LBB0_601:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.68)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.68)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_601:                              #   in Loop: Header=BB0_264 Depth=1
+.LBB0_602:                              #   in Loop: Header=BB0_264 Depth=1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(fsync)
 	jirl	$ra, $ra, 0
@@ -4393,330 +4424,301 @@ cli_scanautoit:                         # @cli_scanautoit
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_magic_scandesc)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s4, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $s6, 0
+	ld.bu	$a0, $s7, 0
 	ori	$a1, $zero, 1
-	beq	$s3, $a1, .LBB0_625
-# %bb.602:                              #   in Loop: Header=BB0_264 Depth=1
-	bnez	$a0, .LBB0_264
+	beq	$s4, $a1, .LBB0_625
 # %bb.603:                              #   in Loop: Header=BB0_264 Depth=1
-	addi.d	$a0, $sp, 208
+	bnez	$a0, .LBB0_264
+# %bb.604:                              #   in Loop: Header=BB0_264 Depth=1
+	addi.d	$a0, $sp, 224
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
 	b	.LBB0_264
-.LBB0_604:                              #   in Loop: Header=BB0_264 Depth=1
+.LBB0_605:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.63)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.63)
-	move	$a1, $s5
+	move	$a1, $s7
 	move	$s2, $t1
 	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_593
-.LBB0_605:                              #   in Loop: Header=BB0_264 Depth=1
+	b	.LBB0_594
+.LBB0_606:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.56)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.56)
-	b	.LBB0_591
-.LBB0_606:                              #   in Loop: Header=BB0_264 Depth=1
+	b	.LBB0_592
+.LBB0_607:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.58)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.58)
-	b	.LBB0_591
-.LBB0_607:                              #   in Loop: Header=BB0_264 Depth=1
+	b	.LBB0_592
+.LBB0_608:                              #   in Loop: Header=BB0_264 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.54)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.54)
-	b	.LBB0_591
-.LBB0_608:
+	b	.LBB0_592
+.LBB0_609:
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-.LBB0_609:
+.LBB0_610:
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_610:
-	move	$a0, $zero
 .LBB0_611:
+	move	$a0, $zero
+.LBB0_612:
 	move	$s0, $a0
-	ld.bu	$a0, $s6, 0
-	bnez	$a0, .LBB0_613
-# %bb.612:
+	ld.bu	$a0, $s7, 0
+	bnez	$a0, .LBB0_614
+# %bb.613:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_rmdirs)
 	jirl	$ra, $ra, 0
-.LBB0_613:                              # %.sink.split
+.LBB0_614:                              # %.sink.split
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-.LBB0_614:
-	ld.d	$s8, $sp, 1832                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1840                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1848                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1856                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1864                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1872                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1880                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1888                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1896                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1904                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1912                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1920
-	ret
 .LBB0_615:
+	ld.d	$s8, $sp, 1848                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1856                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1864                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1872                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1880                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1888                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1896                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1904                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1912                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1920                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1928                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1936
+	ret
+.LBB0_616:
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
-	b	.LBB0_609
-.LBB0_616:
+	b	.LBB0_610
+.LBB0_617:
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
-	b	.LBB0_609
-.LBB0_617:
+	b	.LBB0_610
+.LBB0_618:
 	pcalau12i	$a0, %pc_hi20(.L.str.69)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.69)
-	b	.LBB0_620
-.LBB0_618:
+	b	.LBB0_621
+.LBB0_619:
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
-	b	.LBB0_609
-.LBB0_619:
+	b	.LBB0_610
+.LBB0_620:
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
-.LBB0_620:
+.LBB0_621:
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -102
-	b	.LBB0_611
-.LBB0_621:
-	pcalau12i	$a0, %pc_hi20(.L.str.13)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
-	pcaddu18i	$ra, %call36(cli_dbgmsg)
-	jirl	$ra, $ra, 0
-	move	$a0, $s8
-	pcaddu18i	$ra, %call36(free)
-	jirl	$ra, $ra, 0
-	move	$a0, $zero
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB0_611
+	b	.LBB0_612
 .LBB0_622:
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s8
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB0_610
+	b	.LBB0_611
 .LBB0_623:
+	pcalau12i	$a0, %pc_hi20(.L.str.13)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
+	pcaddu18i	$ra, %call36(cli_dbgmsg)
+	jirl	$ra, $ra, 0
+	move	$a0, $s4
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	b	.LBB0_611
+.LBB0_624:
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.20)
-	addi.d	$a1, $sp, 208
+	addi.d	$a1, $sp, 224
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s6
-	b	.LBB0_630
-.LBB0_624:
-	pcalau12i	$a0, %pc_hi20(.L.str.21)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(cli_dbgmsg)
-	jirl	$ra, $ra, 0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(close)
-	jirl	$ra, $ra, 0
-	move	$a0, $s6
 	b	.LBB0_630
 .LBB0_625:
-	beqz	$a0, .LBB0_638
+	beqz	$a0, .LBB0_631
 # %bb.626:
 	ori	$a0, $zero, 1
-	b	.LBB0_611
+	b	.LBB0_612
 .LBB0_627:
-	pcalau12i	$a0, %pc_hi20(.L.str.20)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.20)
-	addi.d	$a1, $sp, 208
-	pcaddu18i	$ra, %call36(cli_dbgmsg)
-	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.21)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB0_629
 .LBB0_628:
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
 	move	$a1, $s6
+.LBB0_629:                              # %ea05.exit
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
-.LBB0_629:                              # %ea05.exit
+.LBB0_630:                              # %ea05.exit
 	move	$a0, $s5
-.LBB0_630:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -123
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB0_611
+	b	.LBB0_612
 .LBB0_631:
-	bnez	$a0, .LBB0_633
-# %bb.632:
-	addi.d	$a0, $sp, 208
+	addi.d	$a0, $sp, 224
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_633:
 	ori	$a0, $zero, 1
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB0_611
-.LBB0_634:
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB0_636
-.LBB0_635:
-	move	$a0, $s6
-.LBB0_636:                              # %ea06.exit
+	b	.LBB0_612
+.LBB0_632:
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	b	.LBB0_634
+.LBB0_633:
+	move	$a0, $s5
+.LBB0_634:                              # %ea06.exit
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB0_611
-.LBB0_637:
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB0_612
+.LBB0_635:
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s6
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	b	.LBB0_611
-.LBB0_638:
-	addi.d	$a0, $sp, 208
-	pcaddu18i	$ra, %call36(unlink)
-	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	b	.LBB0_611
+	b	.LBB0_612
 .Lfunc_end0:
 	.size	cli_scanautoit, .Lfunc_end0-cli_scanautoit
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI0_0:
-	.word	.LBB0_573-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_569-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_565-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_535-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_530-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_604-.LJTI0_0
-	.word	.LBB0_576-.LJTI0_0
+	.word	.LBB0_574-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_570-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_566-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_536-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_531-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_605-.LJTI0_0
+	.word	.LBB0_577-.LJTI0_0
                                         # -- End function
 	.text
 	.p2align	5                               # -- Begin function MT_decrypt

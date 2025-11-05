@@ -2244,11 +2244,15 @@ _ZN9benchmark8internal12_GLOBAL__N_114CreateReporterERKNSt7__cxx1112basic_string
 # %bb.3:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
 	move	$s1, $a2
 	ld.d	$a0, $s0, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.21)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.21)
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 472806
+	ori	$a2, $a2, 3939
+	ld.w	$a0, $a0, 3
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 415430
+	ori	$a2, $a2, 3955
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB20_13
 # %bb.4:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
 	ori	$a0, $zero, 96
@@ -2592,20 +2596,22 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	sub.d	$sp, $sp, $a3
 	.cfi_def_cfa_offset 11456
 	move	$s5, $a2
-	ld.d	$fp, $a2, 8
+	ld.d	$a2, $a2, 8
 	move	$s3, $a1
 	move	$s0, $a0
-	beqz	$fp, .LBB22_3
+	beqz	$a2, .LBB22_3
 # %bb.1:
 	ori	$a0, $zero, 3
-	bne	$fp, $a0, .LBB22_4
+	bne	$a2, $a0, .LBB22_4
 # %bb.2:                                # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
 	ld.d	$a0, $s5, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.43)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.43)
-	ori	$a2, $zero, 3
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.hu	$a1, $a0, 0
+	ld.bu	$a0, $a0, 2
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 3169
+	xor	$a1, $a1, $a3
+	xori	$a0, $a0, 108
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB22_4
 .LBB22_3:
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
@@ -2613,7 +2619,6 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	ori	$a4, $zero, 1
 	move	$a0, $s5
 	move	$a1, $zero
-	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEmmPKcm)
 	jirl	$ra, $ra, 0
 .LBB22_4:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
@@ -6411,10 +6416,17 @@ _ZN9benchmark8internal21ParseCommandLineFlagsEPiPPc: # @_ZN9benchmark8internal21
 	bne	$a2, $a1, .LBB39_70
 # %bb.39:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
 	ld.d	$a0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.21)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.21)
-	ori	$a2, $zero, 7
-	b	.LBB39_42
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 472806
+	ori	$a2, $a2, 3939
+	ld.w	$a0, $a0, 3
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 415430
+	ori	$a2, $a2, 3955
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
+	beqz	$a0, .LBB39_43
+	b	.LBB39_70
 .LBB39_40:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit82
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.24)
@@ -6428,7 +6440,7 @@ _ZN9benchmark8internal21ParseCommandLineFlagsEPiPPc: # @_ZN9benchmark8internal21
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB39_70
-# %bb.43:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread108
+.LBB39_43:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread108
 	pcalau12i	$a0, %pc_hi20(_ZN9benchmark26FLAGS_benchmark_out_formatB5cxx11E)
 	addi.d	$a0, $a0, %pc_lo12(_ZN9benchmark26FLAGS_benchmark_out_formatB5cxx11E)
 	ld.d	$a2, $a0, 8
@@ -6442,10 +6454,17 @@ _ZN9benchmark8internal21ParseCommandLineFlagsEPiPPc: # @_ZN9benchmark8internal21
 	bne	$a2, $a1, .LBB39_70
 # %bb.46:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.1
 	ld.d	$a0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.21)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.21)
-	ori	$a2, $zero, 7
-	b	.LBB39_49
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 472806
+	ori	$a2, $a2, 3939
+	ld.w	$a0, $a0, 3
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 415430
+	ori	$a2, $a2, 3955
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
+	beqz	$a0, .LBB39_50
+	b	.LBB39_70
 .LBB39_47:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit82.1
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.24)
@@ -6459,7 +6478,7 @@ _ZN9benchmark8internal21ParseCommandLineFlagsEPiPPc: # @_ZN9benchmark8internal21
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB39_70
-# %bb.50:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread108.1
+.LBB39_50:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread108.1
 	pcalau12i	$a0, %pc_hi20(_ZN9benchmark25FLAGS_benchmark_time_unitB5cxx11E)
 	addi.d	$a1, $a0, %pc_lo12(_ZN9benchmark25FLAGS_benchmark_time_unitB5cxx11E)
 	ld.d	$a2, $a1, 8

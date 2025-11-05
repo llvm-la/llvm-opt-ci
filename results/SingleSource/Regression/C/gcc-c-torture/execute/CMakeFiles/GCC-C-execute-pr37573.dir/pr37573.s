@@ -11,11 +11,19 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(p)
 	addi.d	$a0, $a0, %pc_lo12(p)
-	pcalau12i	$a1, %pc_hi20(q)
-	addi.d	$a1, $a1, %pc_lo12(q)
-	ori	$a2, $zero, 23
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	pcalau12i	$a2, %pc_hi20(q)
+	addi.d	$a2, $a2, %pc_lo12(q)
+	ld.d	$a3, $a2, 0
+	ld.d	$a4, $a0, 8
+	ld.d	$a5, $a2, 8
+	ld.d	$a0, $a0, 15
+	ld.d	$a2, $a2, 15
+	xor	$a1, $a1, $a3
+	xor	$a3, $a4, $a5
+	xor	$a0, $a0, $a2
+	or	$a1, $a1, $a3
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero

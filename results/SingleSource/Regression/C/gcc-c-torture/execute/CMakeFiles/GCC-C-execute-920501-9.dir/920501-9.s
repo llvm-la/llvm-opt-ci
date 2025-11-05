@@ -89,13 +89,14 @@ main:                                   # @main
 	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 20
+	addi.d	$a0, $sp, 12
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	ld.hu	$a0, $sp, 20
+	ld.hu	$a0, $sp, 12
 	ori	$a1, $zero, 49
 	bne	$a0, $a1, .LBB6_6
 # %bb.1:
@@ -103,16 +104,18 @@ main:                                   # @main
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
 	lu12i.w	$a0, 74565
 	ori	$s0, $a0, 1656
-	addi.d	$a0, $sp, 20
+	addi.d	$a0, $sp, 12
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	addi.d	$a1, $sp, 20
-	ori	$a2, $zero, 9
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 12
+	lu12i.w	$a1, 213811
+	ori	$a1, $a1, 561
+	ld.bu	$a2, $sp, 20
+	lu32i.d	$a1, 472629
+	lu52i.d	$s1, $a1, 899
+	xor	$a0, $a0, $s1
+	or	$a0, $a0, $a2
 	bnez	$a0, .LBB6_6
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -120,47 +123,54 @@ main:                                   # @main
 	lu12i.w	$a0, -349252
 	ori	$fp, $a0, 3293
 	lu32i.d	$fp, 0
-	addi.d	$a0, $sp, 20
+	addi.d	$a0, $sp, 12
 	move	$a2, $fp
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.4)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
-	addi.d	$a1, $sp, 20
-	ori	$a2, $zero, 17
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 12
+	lu12i.w	$a1, 402982
+	ori	$a1, $a1, 353
+	lu32i.d	$a1, 287587
+	ld.d	$a2, $sp, 20
+	lu52i.d	$s0, $a1, 1606
+	ld.bu	$a1, $sp, 28
+	xor	$a0, $a0, $s0
+	xor	$a2, $a2, $s1
+	or	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB6_6
 # %bb.3:
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
 	addi.w	$a2, $zero, -1
 	lu32i.d	$a2, 0
-	addi.d	$a0, $sp, 20
+	addi.d	$a0, $sp, 12
 	move	$a3, $a2
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
-	addi.d	$a1, $sp, 20
-	ori	$a2, $zero, 17
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 12
+	lu12i.w	$a1, 419430
+	ori	$a1, $a1, 1638
+	ld.d	$a2, $sp, 20
+	bstrins.d	$a1, $a1, 62, 32
+	ld.bu	$a3, $sp, 28
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a3
 	bnez	$a0, .LBB6_6
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 20
+	addi.d	$a0, $sp, 12
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.6)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
-	addi.d	$a1, $sp, 20
-	ori	$a2, $zero, 9
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 12
+	ld.bu	$a1, $sp, 20
+	xor	$a0, $a0, $s0
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB6_6
 # %bb.5:
 	move	$a0, $zero

@@ -460,6 +460,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 # %bb.47:
 	andi	$a0, $a0, 2
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$s4, $sp, 384
 	beqz	$a0, .LBB1_351
 # %bb.48:
 	addi.d	$s0, $sp, 968
@@ -486,7 +487,6 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bne	$a0, $fp, .LBB1_310
 # %bb.52:
 	ld.d	$a0, $sp, 144
-	addi.d	$s4, $sp, 384
 	beq	$a0, $s3, .LBB1_54
 .LBB1_53:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i38.i.i
 	ld.d	$a1, $sp, 160
@@ -516,9 +516,15 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	addi.d	$s1, $a0, %pc_lo12(.L.str.13)
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.14)
-	ori	$s5, $zero, 11
-	pcalau12i	$a0, %pc_hi20(.L.str.15)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.15)
+	ori	$s3, $zero, 11
+	lu12i.w	$a0, 419622
+	ori	$a0, $a0, 1392
+	lu32i.d	$a0, -167313
+	lu52i.d	$s5, $a0, 1558
+	lu12i.w	$a0, 448294
+	ori	$a0, $a0, 3942
+	lu32i.d	$a0, 224865
+	lu52i.d	$s6, $a0, 1622
 	b	.LBB1_59
 	.p2align	4, , 16
 .LBB1_58:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit15.i
@@ -547,14 +553,15 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	beqz	$a0, .LBB1_64
 # %bb.62:                               #   in Loop: Header=BB1_59 Depth=1
 	ld.d	$a0, $sp, 960
-	bne	$a0, $s5, .LBB1_67
+	bne	$a0, $s3, .LBB1_67
 # %bb.63:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.i
                                         #   in Loop: Header=BB1_59 Depth=1
 	ld.d	$a0, $sp, 952
-	ori	$a2, $zero, 11
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	ld.d	$a0, $a0, 3
+	xor	$a1, $a1, $s5
+	xor	$a0, $a0, $s6
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB1_67
 .LBB1_64:                               # %.critedge.i
                                         #   in Loop: Header=BB1_59 Depth=1
@@ -2239,7 +2246,6 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 144
-	addi.d	$s4, $sp, 384
 	bne	$a0, $s3, .LBB1_53
 	b	.LBB1_54
 .LBB1_311:

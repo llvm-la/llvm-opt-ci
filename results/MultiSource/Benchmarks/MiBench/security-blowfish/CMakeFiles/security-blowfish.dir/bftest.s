@@ -1223,9 +1223,9 @@ test:                                   # @test
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(BF_ecb_encrypt)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 0
-	ld.d	$a1, $sp, 40
-	beq	$a1, $a0, .LBB2_15
+	ld.d	$a0, $sp, 40
+	ld.d	$a1, $s4, 0
+	beq	$a0, $a1, .LBB2_15
 # %bb.17:                               #   in Loop: Header=BB2_16 Depth=1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(puts)
@@ -1296,14 +1296,35 @@ test:                                   # @test
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(BF_cbc_encrypt)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(cbc_ok)
-	addi.d	$a1, $a0, %pc_lo12(cbc_ok)
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 232
 	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 32
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $a0, 0
+	pcalau12i	$a1, %pc_hi20(cbc_ok)
+	addi.d	$a1, $a1, %pc_lo12(cbc_ok)
+	ld.d	$a2, $a1, 0
+	lu12i.w	$a3, 2
+	ori	$a3, $a3, 240
+	add.d	$a3, $sp, $a3
+	ld.d	$a3, $a3, 0
+	ld.d	$a4, $a1, 8
+	lu12i.w	$a5, 2
+	ori	$a5, $a5, 248
+	add.d	$a5, $sp, $a5
+	ld.d	$a5, $a5, 0
+	ld.d	$a6, $a1, 16
+	lu12i.w	$a7, 2
+	ori	$a7, $a7, 256
+	add.d	$a7, $sp, $a7
+	ld.d	$a7, $a7, 0
+	ld.d	$a1, $a1, 24
+	xor	$a0, $a0, $a2
+	xor	$a2, $a3, $a4
+	xor	$a3, $a5, $a6
+	xor	$a1, $a7, $a1
+	or	$a0, $a0, $a2
+	or	$a1, $a3, $a1
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB2_20
 # %bb.19:                               # %.loopexit109.loopexit
 	pcalau12i	$a0, %pc_hi20(.Lstr.11)

@@ -1928,14 +1928,13 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	bne	$a0, $s0, .LBB16_66
 # %bb.35:                               # %Xz_CheckFooter.exit
                                         #   in Loop: Header=BB16_3 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(XZ_FOOTER_SIG)
-	ld.d	$a0, $a0, %got_pc_lo12(XZ_FOOTER_SIG)
-	ld.hu	$a0, $a0, 0
-	addi.d	$a1, $s4, 778
+	ld.hu	$a0, $s4, 778
+	pcalau12i	$a1, %got_pc_hi20(XZ_FOOTER_SIG)
+	ld.d	$a1, $a1, %got_pc_lo12(XZ_FOOTER_SIG)
 	ld.hu	$a1, $a1, 0
 	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	beq	$a1, $a0, .LBB16_2
+	beq	$a0, $a1, .LBB16_2
 	b	.LBB16_66
 .LBB16_36:                              #   in Loop: Header=BB16_3 Depth=1
 	ld.bu	$a1, $s5, 0
@@ -2158,11 +2157,21 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	addi.d	$a0, $s4, 632
 	pcaddu18i	$ra, %call36(Sha256_Final)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 88
-	ori	$a2, $zero, 32
-	addi.d	$a1, $s4, 736
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 88
+	ld.d	$a1, $s4, 736
+	ld.d	$a2, $sp, 96
+	ld.d	$a3, $s4, 744
+	ld.d	$a4, $sp, 104
+	ld.d	$a5, $s4, 752
+	ld.d	$a6, $sp, 112
+	ld.d	$a7, $s4, 760
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a3
+	xor	$a2, $a4, $a5
+	xor	$a3, $a6, $a7
+	or	$a0, $a0, $a1
+	or	$a1, $a2, $a3
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB16_2
 .LBB16_59:
 	ori	$s7, $zero, 3

@@ -56,16 +56,16 @@ endgame:                                # @endgame
 	addi.d	$a1, $sp, 30
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	lu12i.w	$a2, 460535
+	ori	$s2, $a2, 1139
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(p)
-	ld.d	$s2, $a0, %got_pc_lo12(p)
+	ld.d	$s1, $a0, %got_pc_lo12(p)
 	pcalau12i	$a0, %got_pc_hi20(mymove)
 	ld.d	$s3, $a0, %got_pc_lo12(mymove)
 	pcalau12i	$a0, %got_pc_hi20(mk)
@@ -74,8 +74,6 @@ endgame:                                # @endgame
 	addi.d	$fp, $a0, %pc_lo12(.L.str.8)
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.9)
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.10)
 	pcalau12i	$a0, %got_pc_hi20(umove)
 	ld.d	$s5, $a0, %got_pc_lo12(umove)
 	pcalau12i	$a0, %got_pc_hi20(uk)
@@ -98,11 +96,10 @@ endgame:                                # @endgame
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	move	$a1, $s1
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_6
 .LBB0_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -115,7 +112,7 @@ endgame:                                # @endgame
 	ld.w	$a0, $sp, 20
 	alsl.d	$a2, $a1, $a1, 3
 	alsl.d	$a1, $a2, $a1, 1
-	add.d	$a1, $s2, $a1
+	add.d	$a1, $s1, $a1
 	ldx.bu	$a3, $a1, $a0
 	ld.w	$a4, $s3, 0
 	move	$a2, $s4
@@ -147,12 +144,10 @@ endgame:                                # @endgame
 	addi.d	$a1, $sp, 30
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_9
 # %bb.7:
 	pcalau12i	$a0, %got_pc_hi20(umove)
@@ -168,8 +163,6 @@ endgame:                                # @endgame
 	ld.d	$s6, $a0, %got_pc_lo12(mymove)
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.14)
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.10)
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph38
                                         # =>This Inner Loop Header: Depth=1
@@ -211,11 +204,10 @@ endgame:                                # @endgame
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	move	$a1, $s2
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_8
 .LBB0_9:                                # %.critedge31.preheader
 	st.w	$zero, $sp, 24

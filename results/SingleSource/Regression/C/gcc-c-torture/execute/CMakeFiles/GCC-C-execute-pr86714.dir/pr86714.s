@@ -5,28 +5,24 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(b)
-	addi.d	$a1, $a0, %pc_lo12(b)
-	lu12i.w	$a0, 492339
-	ori	$a0, $a0, 561
-	st.w	$a0, $a1, 0
-	pcalau12i	$a0, %pc_hi20(pb)
-	ld.d	$a0, $a0, %pc_lo12(pb)
-	lu12i.w	$a2, 6
-	ori	$a2, $a2, 353
-	st.h	$a2, $a1, 4
-	pcalau12i	$a1, %pc_hi20(.L.str)
-	addi.d	$a1, $a1, %pc_lo12(.L.str)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	addi.d	$a0, $a0, %pc_lo12(b)
+	lu12i.w	$a1, 492339
+	ori	$a1, $a1, 561
+	st.w	$a1, $a0, 0
+	pcalau12i	$a2, %pc_hi20(pb)
+	ld.d	$a2, $a2, %pc_lo12(pb)
+	lu12i.w	$a3, 6
+	ori	$a3, $a3, 353
+	st.h	$a3, $a0, 4
+	ld.w	$a0, $a2, 0
+	ld.hu	$a2, $a2, 4
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a3
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .LBB0_2:
 	pcaddu18i	$ra, %call36(abort)

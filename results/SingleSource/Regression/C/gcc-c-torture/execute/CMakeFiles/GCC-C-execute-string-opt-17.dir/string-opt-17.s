@@ -71,17 +71,15 @@ main:                                   # @main
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	ld.b	$a1, $a0, 9
-	ld.h	$a0, $a0, 7
+	ld.bu	$a1, $a0, 9
+	ld.hu	$a0, $a0, 7
 	st.b	$a1, $sp, 10
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 2657
+	xor	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	st.h	$a0, $sp, 8
-	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 8
-	ori	$a2, $zero, 3
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB3_2
+	bnez	$a1, .LBB3_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(check2.r)
 	ld.bu	$a1, $a0, %pc_lo12(check2.r)

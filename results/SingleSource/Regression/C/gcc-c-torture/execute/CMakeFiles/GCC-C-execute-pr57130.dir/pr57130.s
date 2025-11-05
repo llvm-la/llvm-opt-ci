@@ -5,25 +5,25 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
 	pcalau12i	$a2, %pc_hi20(foo.cnt)
 	ld.w	$a3, $a2, %pc_lo12(foo.cnt)
-	st.d	$a0, $sp, 8
-	st.d	$a1, $sp, 16
-	addi.d	$a0, $a3, 1
-	st.w	$a0, $a2, %pc_lo12(foo.cnt)
-	pcalau12i	$a0, %pc_hi20(s)
-	addi.d	$a0, $a0, %pc_lo12(s)
-	alsl.d	$a1, $a3, $a0, 4
-	addi.d	$a0, $sp, 8
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 0
+	st.d	$a1, $sp, 8
+	addi.d	$a4, $a3, 1
+	st.w	$a4, $a2, %pc_lo12(foo.cnt)
+	pcalau12i	$a2, %pc_hi20(s)
+	addi.d	$a2, $a2, %pc_lo12(s)
+	alsl.d	$a4, $a3, $a2, 4
+	slli.d	$a3, $a3, 4
+	ldx.d	$a2, $a2, $a3
+	ld.d	$a3, $a4, 8
+	xor	$a0, $a0, $a2
+	xor	$a1, $a1, $a3
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_2
 # %bb.1:
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	addi.d	$sp, $sp, 16
 	ret
 .LBB0_2:
 	pcaddu18i	$ra, %call36(abort)

@@ -3290,18 +3290,24 @@ _ZL16BM_BenchmarkNameRN9benchmark5StateE: # @_ZL16BM_BenchmarkNameRN9benchmark5S
 	ori	$a1, $zero, 16
 	bne	$a0, $a1, .LBB13_12
 # %bb.10:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbPKT_RKNSt7__cxx1112basic_stringIS3_T0_T1_EE.exit
-	ld.d	$fp, $sp, 8
-	pcalau12i	$a0, %pc_hi20(.L.str.46)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.46)
-	ori	$a2, $zero, 16
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB13_12
+	ld.d	$a0, $sp, 8
+	ld.d	$a1, $a0, 0
+	lu12i.w	$a2, 271860
+	ori	$a2, $a2, 3394
+	lu32i.d	$a2, 224869
+	lu52i.d	$a2, $a2, 1670
+	xor	$a1, $a1, $a2
+	ld.d	$a2, $a0, 8
+	lu12i.w	$a3, 440102
+	ori	$a3, $a3, 365
+	lu32i.d	$a3, -171698
+	lu52i.d	$a3, $a3, 1622
+	xor	$a2, $a2, $a3
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB13_12
 # %bb.11:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbPKT_RKNSt7__cxx1112basic_stringIS3_T0_T1_EE.exit.thread
-	ld.d	$a0, $sp, 24
-	addi.d	$a1, $a0, 1
-	move	$a0, $fp
+	ld.d	$a1, $sp, 24
+	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload

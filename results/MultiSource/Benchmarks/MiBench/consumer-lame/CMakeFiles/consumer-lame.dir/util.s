@@ -441,36 +441,34 @@ DetermineByteOrder:                     # @DetermineByteOrder
 # %bb.0:
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	lu12i.w	$a0, 267300
-	ori	$a0, $a0, 836
-	st.w	$a0, $sp, 12
-	addi.d	$a0, $sp, 19
-	addi.d	$a1, $sp, 12
+	ori	$fp, $a0, 836
+	st.w	$fp, $sp, 4
+	addi.d	$a0, $sp, 11
+	addi.d	$a1, $sp, 4
 	ori	$a2, $zero, 4
 	pcaddu18i	$ra, %call36(strncpy)
 	jirl	$ra, $ra, 0
-	st.b	$zero, $sp, 23
-	pcalau12i	$a0, %pc_hi20(.L.str.8)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.8)
-	addi.d	$a0, $sp, 19
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_2
+	ld.w	$a0, $sp, 11
+	lu12i.w	$a1, 279604
+	ori	$a1, $a1, 577
+	st.b	$zero, $sp, 15
+	beq	$a0, $a1, .LBB5_2
 # %bb.1:
-	pcalau12i	$a0, %pc_hi20(.L.str.9)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.9)
-	addi.d	$a0, $sp, 19
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 11
+	ld.bu	$a1, $sp, 15
+	xor	$a0, $a0, $fp
+	or	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 1
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
 .LBB5_2:
 	ori	$a0, $zero, 1
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret

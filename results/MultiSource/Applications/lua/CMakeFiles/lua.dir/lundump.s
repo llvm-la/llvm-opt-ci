@@ -61,11 +61,13 @@ luaU_undump:                            # @luaU_undump
 	pcaddu18i	$ra, %call36(luaD_throw)
 	jirl	$ra, $ra, 0
 .LBB0_7:                                # %LoadBlock.exit.i
-	addi.d	$a0, $sp, 60
-	addi.d	$a1, $sp, 48
-	ori	$a2, $zero, 12
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 60
+	ld.d	$a1, $sp, 48
+	ld.wu	$a2, $sp, 68
+	ld.wu	$a3, $sp, 56
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a3
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_9
 # %bb.8:
 	pcalau12i	$a0, %pc_hi20(.L.str.5)

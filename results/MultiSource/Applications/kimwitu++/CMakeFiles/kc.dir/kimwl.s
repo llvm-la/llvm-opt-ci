@@ -1807,29 +1807,31 @@ _Z5yylexv:                              # @_Z5yylexv
 	pcaddu18i	$ra, %call36(_ZN12_GLOBAL__N_15countEb)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(yytext)
-	ld.d	$a0, $a0, %pc_lo12(yytext)
+	addi.d	$a0, $a0, %pc_lo12(yytext)
+	ld.d	$a2, $a0, 0
 	lu12i.w	$a1, 415526
 	ori	$a1, $a1, 3942
 	lu32i.d	$a1, -498847
 	lu52i.d	$a1, $a1, 6
-	beq	$a0, $a1, .LBB0_371
+	beq	$a2, $a1, .LBB0_371
 # %bb.203:
-	pcalau12i	$a0, %pc_hi20(yytext)
-	addi.d	$a0, $a0, %pc_lo12(yytext)
-	pcalau12i	$a1, %pc_hi20(.L.str.15)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.15)
-	ori	$a2, $zero, 13
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_372
+	ld.d	$a2, $a0, 0
+	lu12i.w	$a3, 415558
+	ori	$a3, $a3, 1633
+	ld.d	$a4, $a0, 5
+	lu32i.d	$a3, -39310
+	lu52i.d	$a3, $a3, 1830
+	xor	$a2, $a2, $a3
+	xor	$a1, $a4, $a1
+	or	$a1, $a2, $a1
+	beqz	$a1, .LBB0_372
 # %bb.204:
-	pcalau12i	$a0, %pc_hi20(yytext)
-	addi.d	$a0, $a0, %pc_lo12(yytext)
-	pcalau12i	$a1, %pc_hi20(.L.str.16)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.16)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	ld.bu	$a0, $a0, 4
+	lu12i.w	$a2, 427846
+	ori	$a2, $a2, 2423
+	xor	$a1, $a1, $a2
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB0_170
 # %bb.205:
 	ori	$a0, $zero, 272

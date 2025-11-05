@@ -11198,10 +11198,13 @@ _Z14RunOutputTestsiPPc:                 # @_Z14RunOutputTestsiPPc
 	bne	$a0, $a1, .LBB30_84
 # %bb.69:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit
 	ld.d	$a0, $sp, 1960
-	ori	$a2, $zero, 11
-	move	$a1, $s8
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	ld.d	$a2, $sp, 264
+	ld.d	$a0, $a0, 3
+	ld.d	$a3, $sp, 267
+	xor	$a1, $a1, $a2
+	xor	$a0, $a0, $a3
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB30_84
 # %bb.70:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_.exit.thread
 	pcalau12i	$a0, %pc_hi20(_ZGVZN9benchmark8internal18GetNullLogInstanceEvE8null_log)

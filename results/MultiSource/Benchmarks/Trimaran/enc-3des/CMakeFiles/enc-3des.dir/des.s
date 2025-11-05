@@ -3763,10 +3763,10 @@ main:                                   # @main
 	bnez	$s1, .LBB10_19
 .LBB10_20:                              # %.loopexit
                                         #   in Loop: Header=BB10_7 Depth=3
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 128
-	beq	$a1, $a0, .LBB10_23
+	ld.d	$a0, $sp, 128
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $a1, 0
+	beq	$a0, $a1, .LBB10_23
 	b	.LBB10_26
 	.p2align	4, , 16
 .LBB10_21:                              # %.critedge.us.us.us
@@ -3783,10 +3783,10 @@ main:                                   # @main
 	bnez	$s1, .LBB10_21
 .LBB10_22:                              # %.critedge41.us.us
                                         #   in Loop: Header=BB10_7 Depth=3
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 128
-	bne	$a1, $a0, .LBB10_26
+	ld.d	$a0, $sp, 128
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $a1, 0
+	bne	$a0, $a1, .LBB10_26
 .LBB10_23:                              #   in Loop: Header=BB10_7 Depth=3
 	addi.w	$s0, $s0, 1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload

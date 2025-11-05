@@ -73,10 +73,10 @@ cli_ole2_extract:                       # @cli_ole2_extract
 	st.d	$a0, $sp, 680
 	beqz	$a0, .LBB0_11
 # %bb.7:
-	pcalau12i	$a0, %pc_hi20(magic_id)
-	ld.d	$a0, $a0, %pc_lo12(magic_id)
-	ld.d	$a1, $sp, 144
-	beq	$a1, $a0, .LBB0_13
+	ld.d	$a0, $sp, 144
+	pcalau12i	$a1, %pc_hi20(magic_id)
+	ld.d	$a1, $a1, %pc_lo12(magic_id)
+	beq	$a0, $a1, .LBB0_13
 # %bb.8:
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)

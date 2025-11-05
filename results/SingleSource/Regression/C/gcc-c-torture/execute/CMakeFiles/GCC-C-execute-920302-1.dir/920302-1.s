@@ -93,11 +93,13 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(buf)
 	addi.d	$a0, $a0, %pc_lo12(buf)
-	pcalau12i	$a1, %pc_hi20(.L.str)
-	addi.d	$a1, $a1, %pc_lo12(.L.str)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	ld.hu	$a0, $a0, 4
+	lu12i.w	$a2, 497543
+	ori	$a2, $a2, 2424
+	xor	$a1, $a1, $a2
+	xori	$a0, $a0, 122
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB1_2
 # %bb.1:
 	move	$a0, $zero
