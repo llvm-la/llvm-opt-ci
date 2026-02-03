@@ -1265,25 +1265,30 @@ main:                                   # @main
 .LBB1_8:                                # %._crit_edge.us.us.us.us.1
                                         #   in Loop: Header=BB1_9 Depth=3
 	vrepli.b	$vr0, 0
-	vldi	$vr4, -912
-	vfcmp.clt.d	$vr1, $vr4, $vr6
-	fcmp.clt.d	$fcc0, $fa4, $fs2
-	fsel	$fa2, $fs2, $fa4, $fcc0
-	vldi	$vr5, -944
-	fmul.d	$fa2, $fa2, $fa5
-	movgr2fr.d	$fa3, $zero
-	fcmp.clt.d	$fcc0, $fs2, $fa3
-	fsel	$fa2, $fa2, $fa3, $fcc0
-	fld.d	$fa3, $sp, 72                   # 8-byte Folded Reload
-	fadd.d	$fa2, $fa2, $fa3
-	vbitsel.v	$vr1, $vr6, $vr4, $vr1
-	vfmul.d	$vr1, $vr1, $vr5
-	vfcmp.cule.d	$vr0, $vr0, $vr6
+	vreplvei.d	$vr1, $vr7, 0
+	vreplvei.d	$vr2, $vr7, 1
+	vldi	$vr5, -912
+	fcmp.clt.d	$fcc0, $fa5, $fs2
+	fsel	$fa3, $fs2, $fa5, $fcc0
+	vldi	$vr6, -944
+	fmul.d	$fa3, $fa3, $fa6
+	movgr2fr.d	$fa4, $zero
+	fcmp.clt.d	$fcc0, $fs2, $fa4
+	fsel	$fa3, $fa3, $fa4, $fcc0
+	fld.d	$fa4, $sp, 72                   # 8-byte Folded Reload
+	fadd.d	$fa3, $fa3, $fa4
+	fcmp.clt.d	$fcc0, $fa5, $fa2
+	fsel	$fa2, $fa2, $fa5, $fcc0
+	fcmp.clt.d	$fcc0, $fa5, $fa1
+	fsel	$fa1, $fa1, $fa5, $fcc0
+	vextrins.d	$vr1, $vr2, 16
+	vfmul.d	$vr1, $vr1, $vr6
+	vfcmp.cule.d	$vr0, $vr0, $vr7
 	vand.v	$vr0, $vr0, $vr1
 	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
 	vfadd.d	$vr0, $vr0, $vr1
 	vst	$vr0, $s8, 0
-	fst.d	$fa2, $s3, 0
+	fst.d	$fa3, $s3, 0
 	andi	$a0, $s2, 1
 	vldi	$vr0, -904
 	vst	$vr0, $sp, 240                  # 16-byte Folded Spill
@@ -1298,6 +1303,7 @@ main:                                   # @main
                                         #         Child Loop BB1_29 Depth 4
 	move	$s1, $s0
 	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
+	vori.b	$vr5, $vr3, 0
 	b	.LBB1_13
 	.p2align	4, , 16
 .LBB1_10:                               #   in Loop: Header=BB1_13 Depth=4
@@ -1369,8 +1375,8 @@ main:                                   # @main
 	vfmul.d	$vr0, $vr2, $vr0
 	vld	$vr2, $sp, 224                  # 16-byte Folded Reload
 	fmul.d	$fa1, $fa2, $fa1
-	vld	$vr3, $sp, 96                   # 16-byte Folded Reload
-	vfadd.d	$vr3, $vr3, $vr0
+	vld	$vr5, $sp, 96                   # 16-byte Folded Reload
+	vfadd.d	$vr5, $vr5, $vr0
 	addi.w	$s1, $s1, -1
 	fadd.d	$fs3, $fs3, $fa1
 	beqz	$s1, .LBB1_25
@@ -1378,7 +1384,7 @@ main:                                   # @main
                                         #     Parent Loop BB1_7 Depth=2
                                         #       Parent Loop BB1_9 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	vst	$vr3, $sp, 96                   # 16-byte Folded Spill
+	vst	$vr5, $sp, 96                   # 16-byte Folded Spill
 	addi.d	$a0, $sp, 338
 	pcaddu18i	$ra, %call36(erand48)
 	jirl	$ra, $ra, 0
@@ -1453,24 +1459,29 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB1_25:                               # %._crit_edge.us.us.us.us
                                         #   in Loop: Header=BB1_9 Depth=3
-	vrepli.b	$vr6, 0
-	vldi	$vr2, -912
-	vfcmp.clt.d	$vr0, $vr2, $vr3
-	fcmp.clt.d	$fcc0, $fa2, $fs3
-	fsel	$fa1, $fs3, $fa2, $fcc0
+	vrepli.b	$vr7, 0
+	vreplvei.d	$vr0, $vr5, 0
+	vreplvei.d	$vr1, $vr5, 1
+	vldi	$vr3, -912
+	fcmp.clt.d	$fcc0, $fa3, $fs3
+	fsel	$fa2, $fs3, $fa3, $fcc0
+	vldi	$vr4, -944
+	fmul.d	$fa2, $fa2, $fa4
 	movgr2fr.d	$fs2, $zero
 	fcmp.clt.d	$fcc0, $fs3, $fs2
-	vbitsel.v	$vr0, $vr3, $vr2, $vr0
-	vldi	$vr4, -944
+	fsel	$fa2, $fa2, $fs2, $fcc0
+	fcmp.clt.d	$fcc0, $fa3, $fa1
+	fsel	$fa1, $fa1, $fa3, $fcc0
+	fcmp.clt.d	$fcc0, $fa3, $fa0
+	fsel	$fa0, $fa0, $fa3, $fcc0
+	vextrins.d	$vr0, $vr1, 16
 	vfmul.d	$vr0, $vr0, $vr4
-	vfcmp.cule.d	$vr2, $vr6, $vr3
-	vand.v	$vr0, $vr2, $vr0
-	vld	$vr2, $s8, 0
+	vld	$vr1, $s8, 0
 	fld.d	$fa3, $s3, 0
-	fmul.d	$fa1, $fa1, $fa4
-	fsel	$fa1, $fa1, $fs2, $fcc0
-	vfadd.d	$vr0, $vr0, $vr2
-	fadd.d	$fa1, $fa1, $fa3
+	vfcmp.cule.d	$vr4, $vr7, $vr5
+	vand.v	$vr0, $vr4, $vr0
+	vfadd.d	$vr0, $vr0, $vr1
+	fadd.d	$fa1, $fa2, $fa3
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	vst	$vr0, $s8, 0
 	fst.d	$fa1, $sp, 72                   # 8-byte Folded Spill
@@ -1548,8 +1559,8 @@ main:                                   # @main
 	vfmul.d	$vr0, $vr2, $vr0
 	vld	$vr2, $sp, 224                  # 16-byte Folded Reload
 	fmul.d	$fa1, $fa2, $fa1
-	vld	$vr6, $sp, 96                   # 16-byte Folded Reload
-	vfadd.d	$vr6, $vr6, $vr0
+	vld	$vr7, $sp, 96                   # 16-byte Folded Reload
+	vfadd.d	$vr7, $vr7, $vr0
 	addi.w	$s1, $s1, -1
 	fadd.d	$fs2, $fs2, $fa1
 	beqz	$s1, .LBB1_8
@@ -1557,7 +1568,7 @@ main:                                   # @main
                                         #     Parent Loop BB1_7 Depth=2
                                         #       Parent Loop BB1_9 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	vst	$vr6, $sp, 96                   # 16-byte Folded Spill
+	vst	$vr7, $sp, 96                   # 16-byte Folded Spill
 	addi.d	$a0, $sp, 338
 	pcaddu18i	$ra, %call36(erand48)
 	jirl	$ra, $ra, 0

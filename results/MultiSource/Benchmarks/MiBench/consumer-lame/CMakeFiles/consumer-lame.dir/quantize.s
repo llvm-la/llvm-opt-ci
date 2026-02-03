@@ -365,27 +365,32 @@ init_outer_loop:                        # @init_outer_loop
 	fld.d	$fa3, $a0, -16
 	fld.d	$fa4, $a0, -8
 	fld.d	$fa5, $a0, 0
-	fmadd.d	$fa0, $fa3, $fa3, $fa0
-	fmadd.d	$fa2, $fa4, $fa4, $fa2
-	fmadd.d	$fa1, $fa5, $fa5, $fa1
+	fmadd.d	$fa2, $fa3, $fa3, $fa2
+	fmadd.d	$fa1, $fa4, $fa4, $fa1
+	fmadd.d	$fa0, $fa5, $fa5, $fa0
 	addi.w	$a1, $a1, -1
 	addi.d	$a0, $a0, 24
 	bnez	$a1, .LBB1_3
 # %bb.4:                                # %.preheader83.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
 	fld.d	$fa3, $a0, %pc_lo12(.LCPI1_1)
-	fcmp.clt.d	$fcc0, $fa0, $fa3
-	fsel	$fa4, $fa0, $fa3, $fcc0
-	fcmp.clt.d	$fcc0, $fa2, $fa4
-	fsel	$fa4, $fa2, $fa4, $fcc0
+	fcmp.clt.d	$fcc0, $fa2, $fa3
+	fsel	$fa4, $fa2, $fa3, $fcc0
 	fcmp.clt.d	$fcc0, $fa1, $fa4
 	fsel	$fa4, $fa1, $fa4, $fcc0
-	fmax.d	$fa0, $fa0, $fa3
-	fdiv.d	$fs0, $fa0, $fa4
-	fmax.d	$fa0, $fa2, $fa3
-	fdiv.d	$fs1, $fa0, $fa4
-	fmax.d	$fa0, $fa1, $fa3
-	fdiv.d	$fs2, $fa0, $fa4
+	fcmp.clt.d	$fcc0, $fa3, $fa2
+	fsel	$fa2, $fa3, $fa2, $fcc0
+	fcmp.clt.d	$fcc0, $fa3, $fa1
+	fsel	$fa1, $fa3, $fa1, $fcc0
+	vpackev.d	$vr3, $vr0, $vr3
+	vextrins.d	$vr0, $vr4, 16
+	vfcmp.clt.d	$vr4, $vr3, $vr0
+	vbitsel.v	$vr0, $vr3, $vr0, $vr4
+	vreplvei.d	$vr3, $vr0, 1
+	fdiv.d	$fs0, $fa2, $fa3
+	fdiv.d	$fs1, $fa1, $fa3
+	vreplvei.d	$vr0, $vr0, 0
+	fdiv.d	$fs2, $fa0, $fa3
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
@@ -2955,7 +2960,8 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
 	fldx.d	$fa0, $a7, $a6
 	fmul.d	$fa1, $fa1, $fa2
 	movgr2fr.d	$fa2, $zero
-	fmin.d	$fa1, $fa1, $fa2
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	beqz	$a4, .LBB8_20
 # %bb.7:                                # %.lr.ph88.preheader
 	vreplvei.d	$vr2, $vr0, 0

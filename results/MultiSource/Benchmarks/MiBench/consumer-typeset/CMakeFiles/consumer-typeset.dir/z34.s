@@ -160,7 +160,8 @@ RotateSize:                             # @RotateSize
 	fsel	$fs2, $fa4, $fa2, $fcc0
 	lu52i.d	$a0, $a0, -1003
 	movgr2fr.d	$fa2, $a0
-	fmax.d	$fa0, $fa0, $fa2
+	fcmp.clt.d	$fcc0, $fa2, $fa0
+	fsel	$fa0, $fa2, $fa0, $fcc0
 	fcmp.clt.d	$fcc0, $fa0, $fa3
 	fsel	$fa0, $fa0, $fa3, $fcc0
 	fcmp.clt.d	$fcc0, $fa0, $fa4
@@ -176,7 +177,8 @@ RotateSize:                             # @RotateSize
 	fmul.d	$fa4, $fs5, $fs6
 	fcmp.clt.d	$fcc0, $fa1, $fa4
 	fsel	$fs1, $fa4, $fa1, $fcc0
-	fmax.d	$fa0, $fa0, $fa2
+	fcmp.clt.d	$fcc0, $fa2, $fa0
+	fsel	$fa0, $fa2, $fa0, $fcc0
 	fcmp.clt.d	$fcc0, $fa0, $fa3
 	fsel	$fa0, $fa0, $fa3, $fcc0
 	fcmp.clt.d	$fcc0, $fa0, $fa4

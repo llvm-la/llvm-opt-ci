@@ -2764,12 +2764,14 @@ L3psycho_anal:                          # @L3psycho_anal
 	fdiv.d	$fa1, $fs2, $fs0
 	fmul.d	$fa1, $fa1, $fa0
 	vldi	$vr2, -928
-	fmin.d	$fs0, $fa1, $fa2
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fs0, $fa2, $fa1, $fcc0
 	vreplvei.d	$vr1, $vr3, 0
 	vreplvei.d	$vr3, $vr3, 1
 	fdiv.d	$fa1, $fa3, $fa1
 	fmul.d	$fa0, $fa1, $fa0
-	fmin.d	$fs1, $fa0, $fa2
+	fcmp.clt.d	$fcc0, $fa0, $fa2
+	fsel	$fs1, $fa2, $fa0, $fcc0
 	ld.w	$s2, $s3, 204
 	ld.d	$s0, $sp, 1248
 	blez	$s2, .LBB0_269

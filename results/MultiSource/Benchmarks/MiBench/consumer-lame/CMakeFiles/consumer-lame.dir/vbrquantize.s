@@ -735,7 +735,8 @@ compute_scalefacs_short:                # @compute_scalefacs_short
 	vreplvei.d	$vr21, $vr21, 0
 	fadd.d	$fa0, $fa0, $ft13
 	movgr2fr.d	$ft13, $zero
-	fmax.d	$fa0, $fa0, $ft13
+	fcmp.clt.d	$fcc0, $ft13, $fa0
+	fsel	$fa0, $ft13, $fa0, $fcc0
 	fcmp.clt.d	$fcc0, $fa0, $ft14
 	fsel	$fa0, $fa0, $ft14, $fcc0
 	fcmp.clt.d	$fcc0, $fa0, $ft12

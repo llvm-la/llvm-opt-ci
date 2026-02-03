@@ -2698,9 +2698,11 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	ffint.d.w	$fa1, $fa1
 	fmul.d	$fa0, $fa1, $fa0
 	movgr2fr.d	$fa1, $zero
-	fmax.d	$fa0, $fa0, $fa1
+	fcmp.clt.d	$fcc0, $fa1, $fa0
+	fsel	$fa0, $fa1, $fa0, $fcc0
 	vldi	$vr1, -928
-	fmin.d	$fa0, $fa0, $fa1
+	fcmp.clt.d	$fcc0, $fa0, $fa1
+	fsel	$fa0, $fa1, $fa0, $fcc0
 	vldi	$vr1, -912
 	fsub.d	$fs1, $fa1, $fa0
 	ori	$s5, $zero, 2
@@ -2839,9 +2841,11 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	vldi	$vr1, -1000
 	fdiv.d	$fa1, $fs0, $fa1
 	vldi	$vr2, -1024
-	fmax.d	$fa1, $fa1, $fa2
+	fcmp.clt.d	$fcc0, $fa2, $fa1
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	vldi	$vr2, -1008
-	fmin.d	$fa1, $fa1, $fa2
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	b	.LBB6_71
 .LBB6_19:                               #   in Loop: Header=BB6_7 Depth=2
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -3017,9 +3021,11 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI6_3)
 	vldi	$vr2, -984
 	fdiv.d	$fa2, $fs0, $fa2
-	fmax.d	$fa1, $fa2, $fa1
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fa1, $fa1, $fa2, $fcc0
 	vldi	$vr2, -1016
-	fmin.d	$fa1, $fa1, $fa2
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	b	.LBB6_74
 .LBB6_48:                               #   in Loop: Header=BB6_7 Depth=2
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -3141,9 +3147,11 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI6_3)
 	vldi	$vr2, -984
 	fdiv.d	$fa2, $fs0, $fa2
-	fmax.d	$fa1, $fa2, $fa1
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fa1, $fa1, $fa2, $fcc0
 	vldi	$vr2, -1016
-	fmin.d	$fa1, $fa1, $fa2
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	vldi	$vr4, -928
 	b	.LBB6_71
 .LBB6_70:                               #   in Loop: Header=BB6_7 Depth=2

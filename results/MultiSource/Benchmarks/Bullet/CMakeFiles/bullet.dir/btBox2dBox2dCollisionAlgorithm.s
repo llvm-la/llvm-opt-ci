@@ -571,10 +571,11 @@ _Z17b2CollidePolygonsP16btManifoldResultPK12btBox2dShapeRK11btTransformS3_S6_: #
 	lu12i.w	$a5, 382432
 	ori	$a5, $a5, 2923
 	movgr2fr.w	$fs5, $a5
+	fcmp.clt.s	$fcc1, $fs4, $fs5
 	fld.s	$fs6, $a4, 164
 	fld.s	$fs7, $a4, 160
 	fld.s	$fa0, $a4, 168
-	fmin.s	$fs4, $fs4, $fs5
+	fsel	$fs4, $fs5, $fs4, $fcc1
 	fmul.s	$fs5, $fs3, $fs6
 	fmadd.s	$fs5, $fs2, $fs7, $fs5
 	fmadd.s	$fa0, $fs1, $fa0, $fs5
@@ -1063,10 +1064,11 @@ _ZL17FindMaxSeparationPiPK12btBox2dShapeRK11btTransformS2_S5_: # @_ZL17FindMaxSe
 	lu12i.w	$a0, -141856
 	ori	$a0, $a0, 2923
 	movgr2fr.w	$fa2, $a0
+	fcmp.clt.s	$fcc0, $fa2, $fa1
 	fld.s	$fa5, $a1, 164
 	fld.s	$fa6, $a1, 160
 	fld.s	$fa7, $a1, 168
-	fmax.s	$fa1, $fa1, $fa2
+	fsel	$fa1, $fa2, $fa1, $fcc0
 	fmul.s	$fa2, $fa4, $fa5
 	fmadd.s	$fa2, $fa6, $fa3, $fa2
 	fmadd.s	$fa2, $fa7, $fa0, $fa2
@@ -1422,10 +1424,11 @@ _ZL14EdgeSeparationPK12btBox2dShapeRK11btTransformiS1_S4_: # @_ZL14EdgeSeparatio
 	lu12i.w	$a2, 382432
 	ori	$a2, $a2, 2923
 	movgr2fr.w	$fs1, $a2
+	fcmp.clt.s	$fcc0, $fs0, $fs1
 	fld.s	$fs2, $a3, 100
 	fld.s	$fs3, $a3, 96
 	fld.s	$fs4, $a3, 104
-	fmin.s	$fs0, $fs0, $fs1
+	fsel	$fs0, $fs1, $fs0, $fcc0
 	fmul.s	$fs1, $ft14, $fs2
 	fmadd.s	$fs1, $fs3, $ft13, $fs1
 	fmadd.s	$fs1, $fs4, $ft15, $fs1

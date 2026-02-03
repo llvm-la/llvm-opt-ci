@@ -48841,7 +48841,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_32E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB96_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -48900,7 +48902,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_33E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB98_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -48958,7 +48962,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_34E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB100_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49016,7 +49022,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB102_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49074,7 +49082,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_36E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB104_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49132,7 +49142,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_37E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB106_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49190,7 +49202,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_38E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB108_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49248,7 +49262,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_39E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB110_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49305,7 +49321,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_40E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB112_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49362,7 +49380,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_41E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB114_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49422,7 +49442,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_42E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB116_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -49482,7 +49504,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_43E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB118_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -49545,7 +49569,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_44E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB120_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49605,7 +49631,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_45E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB122_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49664,7 +49692,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_46E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -49727,7 +49756,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_47E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -49791,7 +49821,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_48E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -49855,7 +49886,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_49E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -49915,7 +49947,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_50E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB132_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -49974,7 +50008,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_51E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB134_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50032,7 +50068,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_52E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB136_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50090,7 +50128,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_53E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB138_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50148,7 +50188,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_54E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB140_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50206,7 +50248,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_55E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB142_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50264,7 +50308,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_56E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB144_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50322,7 +50368,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_57E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB146_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50379,7 +50427,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_58E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB148_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50436,7 +50486,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_59E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB150_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50496,7 +50548,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_60E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB152_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -50556,7 +50610,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_61E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB154_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -50619,7 +50675,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_62E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB156_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50679,7 +50737,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_63E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB158_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -50738,7 +50798,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_64E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -50801,7 +50862,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_65E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -50865,7 +50927,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_66E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -50929,7 +50992,8 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_67E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -54077,7 +54141,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE4$_96E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB241_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54136,7 +54202,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE4$_97E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB243_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54194,7 +54262,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE4$_98E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB245_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54252,7 +54322,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE4$_99E9_M_invokeERKSt9_Any_dataOS0_S7_O
 .LBB247_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54310,7 +54382,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_100E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB249_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54368,7 +54442,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_101E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB251_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54426,7 +54502,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_102E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB253_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54484,7 +54562,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_103E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB255_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54541,7 +54621,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_104E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB257_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54598,7 +54680,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_105E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB259_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54658,7 +54742,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_106E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB261_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -54718,7 +54804,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_107E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB263_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -54781,7 +54869,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_108E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB265_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54841,7 +54931,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_109E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB267_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -54900,7 +54992,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_110E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -54963,7 +55056,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_111E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -55027,7 +55121,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_112E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -55091,7 +55186,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_113E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmin.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmin.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -55151,7 +55247,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_114E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB277_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55210,7 +55308,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_115E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB279_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55268,7 +55368,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_116E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB281_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55326,7 +55428,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_117E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB283_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55384,7 +55488,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_118E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB285_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55442,7 +55548,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_119E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB287_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55500,7 +55608,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_120E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB289_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55558,7 +55668,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_121E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB291_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55615,7 +55727,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_122E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB293_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55672,7 +55786,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_123E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB295_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55732,7 +55848,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_124E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB297_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -55792,7 +55910,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_125E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB299_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -55855,7 +55975,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_126E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB301_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55915,7 +56037,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_127E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB303_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa1
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -55974,7 +56098,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_128E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -56037,7 +56162,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_129E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -56101,7 +56227,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_130E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -56165,7 +56292,8 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE5$_131E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a2, 0
 	fadd.s	$fa1, $fa1, $fa2
-	fmax.s	$fa1, $fa1, $fa0
+	fmax.s	$fa2, $fa0, $fa0
+	fmax.s	$fa1, $fa1, $fa2
 	fcmp.cune.s	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -61038,7 +61166,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_164E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB401_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61096,7 +61226,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_165E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB403_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61153,7 +61285,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_166E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB405_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61210,7 +61344,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_167E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB407_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61272,7 +61408,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_168E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB409_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61334,7 +61472,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_169E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB411_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61391,7 +61531,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_170E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB413_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61448,7 +61590,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_171E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB415_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61504,7 +61648,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_172E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB417_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61560,7 +61706,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_173E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB419_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61618,7 +61766,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_174E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB421_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61676,7 +61826,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_175E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB423_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61737,7 +61889,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_176E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB425_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61795,7 +61949,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_177E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB427_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -61853,7 +62009,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_178E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -61915,7 +62072,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_179E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -61977,7 +62135,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_180E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -62039,7 +62198,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_181E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -62098,7 +62258,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_182E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB437_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62156,7 +62318,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_183E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB439_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62213,7 +62377,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_184E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB441_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62270,7 +62436,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_185E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB443_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62332,7 +62500,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_186E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB445_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62394,7 +62564,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_187E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB447_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62451,7 +62623,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_188E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB449_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62508,7 +62682,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_189E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB451_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62564,7 +62740,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_190E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB453_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62620,7 +62798,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_191E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB455_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62678,7 +62858,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_192E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB457_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62736,7 +62918,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_193E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB459_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62797,7 +62981,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_194E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB461_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62855,7 +63041,9 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_195E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB463_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -62913,7 +63101,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_196E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -62975,7 +63164,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_197E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -63037,7 +63227,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_198E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -63099,7 +63290,8 @@ _ZNSt17_Function_handlerIFmPdS0_jEZ4mainE5$_199E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -66208,7 +66400,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_228E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB546_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66266,7 +66460,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_229E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB548_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66323,7 +66519,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_230E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB550_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66380,7 +66578,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_231E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB552_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66442,7 +66642,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_232E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB554_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66504,7 +66706,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_233E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB556_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66561,7 +66765,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_234E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB558_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66618,7 +66824,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_235E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB560_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66674,7 +66882,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_236E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB562_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66730,7 +66940,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_237E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB564_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66788,7 +67000,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_238E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB566_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66846,7 +67060,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_239E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB568_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66907,7 +67123,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_240E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB570_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -66965,7 +67183,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_241E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB572_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67023,7 +67243,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_242E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -67085,7 +67306,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_243E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -67147,7 +67369,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_244E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -67209,7 +67432,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_245E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -67268,7 +67492,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_246E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB582_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67326,7 +67552,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_247E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB584_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67383,7 +67611,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_248E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB586_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67440,7 +67670,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_249E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB588_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67502,7 +67734,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_250E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB590_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67564,7 +67798,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_251E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB592_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67621,7 +67857,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_252E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB594_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67678,7 +67916,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_253E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB596_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67734,7 +67974,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_254E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB598_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67790,7 +68032,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_255E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB600_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67848,7 +68092,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_256E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB602_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67906,7 +68152,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_257E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB604_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -67967,7 +68215,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_258E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB606_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -68025,7 +68275,9 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_259E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB608_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -68083,7 +68335,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_260E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -68145,7 +68398,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_261E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -68207,7 +68461,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_262E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -68269,7 +68524,8 @@ _ZNSt17_Function_handlerIFlPdS0_jEZ4mainE5$_263E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -71412,7 +71668,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_292E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB691_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71471,7 +71729,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_293E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB693_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71529,7 +71789,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_294E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB695_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71587,7 +71849,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_295E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB697_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71650,7 +71914,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_296E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB699_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71713,7 +71979,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_297E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB701_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71771,7 +72039,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_298E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB703_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71829,7 +72099,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_299E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB705_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71886,7 +72158,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_300E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB707_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -71943,7 +72217,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_301E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB709_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72003,7 +72279,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_302E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB711_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -72063,7 +72341,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_303E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB713_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -72126,7 +72406,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_304E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB715_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72186,7 +72468,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_305E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB717_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72245,7 +72529,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_306E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -72308,7 +72593,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_307E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -72372,7 +72658,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_308E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -72436,7 +72723,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_309E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -72496,7 +72784,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_310E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB727_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72555,7 +72845,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_311E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB729_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72613,7 +72905,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_312E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB731_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72671,7 +72965,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_313E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB733_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72734,7 +73030,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_314E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB735_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72797,7 +73095,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_315E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB737_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72855,7 +73155,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_316E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB739_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72913,7 +73215,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_317E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB741_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -72970,7 +73274,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_318E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB743_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -73027,7 +73333,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_319E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB745_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -73087,7 +73395,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_320E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB747_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -73147,7 +73457,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_321E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB749_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -73210,7 +73522,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_322E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB751_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -73270,7 +73584,9 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_323E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB753_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -73329,7 +73645,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_324E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -73392,7 +73709,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_325E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -73456,7 +73774,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_326E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -73520,7 +73839,8 @@ _ZNSt17_Function_handlerIFjPdS0_jEZ4mainE5$_327E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -76668,7 +76988,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_356E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB836_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -76727,7 +77049,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_357E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB838_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -76785,7 +77109,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_358E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB840_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -76843,7 +77169,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_359E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB842_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -76906,7 +77234,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_360E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB844_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -76969,7 +77299,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_361E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB846_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77027,7 +77359,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_362E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB848_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77085,7 +77419,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_363E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB850_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77142,7 +77478,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_364E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB852_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77199,7 +77537,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_365E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB854_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77259,7 +77599,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_366E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB856_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -77319,7 +77661,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_367E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB858_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -77382,7 +77726,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_368E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB860_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77442,7 +77788,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_369E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB862_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77501,7 +77849,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_370E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -77564,7 +77913,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_371E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -77628,7 +77978,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_372E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -77692,7 +78043,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_373E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmin.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmin.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -77752,7 +78104,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_374E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB872_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77811,7 +78165,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_375E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB874_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77869,7 +78225,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_376E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB876_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77927,7 +78285,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_377E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB878_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -77990,7 +78350,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_378E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB880_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78053,7 +78415,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_379E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB882_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78111,7 +78475,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_380E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB884_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78169,7 +78535,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_381E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB886_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78226,7 +78594,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_382E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB888_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78283,7 +78653,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_383E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB890_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78343,7 +78715,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_384E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB892_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -78403,7 +78777,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_385E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB894_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a1, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -78466,7 +78842,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_386E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB896_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78526,7 +78904,9 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_387E9_M_invokeERKSt9_Any_dataOS0_S7_
 .LBB898_2:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa1, $a2, 0
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa1
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
@@ -78585,7 +78965,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_388E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -78648,7 +79029,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_389E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a5, $fcc0
@@ -78712,7 +79094,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_390E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
@@ -78776,7 +79159,8 @@ _ZNSt17_Function_handlerIFiPdS0_jEZ4mainE5$_391E9_M_invokeERKSt9_Any_dataOS0_S7_
 	fld.d	$fa1, $a1, 0
 	fld.d	$fa2, $a2, 0
 	fadd.d	$fa1, $fa1, $fa2
-	fmax.d	$fa1, $fa1, $fa0
+	fmax.d	$fa2, $fa0, $fa0
+	fmax.d	$fa1, $fa1, $fa2
 	fcmp.cune.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0

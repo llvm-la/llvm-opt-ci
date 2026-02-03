@@ -19943,10 +19943,13 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 	fld.s	$fa0, $fp, 328
 	fld.s	$fa1, $fp, 324
 	fld.s	$fa3, $fp, 332
-	fmax.s	$fa7, $fa0, $fa1
-	movgr2fr.w	$ft0, $zero
-	fcmp.cule.s	$fcc0, $fa7, $ft0
-	bcnez	$fcc0, .LBB98_2
+	movgr2fr.w	$fa5, $zero
+	fcmp.clt.s	$fcc0, $fa5, $fa0
+	fcmp.clt.s	$fcc1, $fa5, $fa1
+	movcf2gr	$a0, $fcc0
+	movcf2gr	$a1, $fcc1
+	or	$a3, $a0, $a1
+	beqz	$a3, .LBB98_2
 # %bb.1:
 	ld.w	$a0, $fp, 312
 	slti	$a2, $a0, 3
@@ -19954,7 +19957,7 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 	slt	$a0, $a1, $a0
 	fld.s	$fa4, $fp, 336
 	ld.w	$a1, $fp, 820
-	fcmp.cune.s	$fcc0, $fa3, $ft0
+	fcmp.cune.s	$fcc0, $fa3, $fa5
 	bceqz	$fcc0, .LBB98_3
 	b	.LBB98_4
 .LBB98_2:
@@ -19962,66 +19965,65 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 	move	$a0, $zero
 	fld.s	$fa4, $fp, 336
 	ld.w	$a1, $fp, 820
-	fcmp.cune.s	$fcc0, $fa3, $ft0
+	fcmp.cune.s	$fcc0, $fa3, $fa5
 	bcnez	$fcc0, .LBB98_4
 .LBB98_3:
 	movgr2fr.w	$fa2, $zero
 	fcmp.cule.s	$fcc0, $fa4, $fa2
-	fmov.s	$fa6, $ft0
-	fmov.s	$fa5, $ft0
+	fmov.s	$fa6, $fa5
 	bcnez	$fcc0, .LBB98_12
 .LBB98_4:
 	blez	$a1, .LBB98_8
 # %bb.5:
-	ld.w	$a3, $fp, 884
-	blez	$a3, .LBB98_9
+	ld.w	$a4, $fp, 884
+	blez	$a4, .LBB98_9
 # %bb.6:                                # %.lr.ph.i
-	ld.d	$a4, $fp, 832
-	fld.s	$fa2, $a4, 16
-	ld.d	$a5, $fp, 896
-	fld.s	$fa6, $a4, 20
-	fld.s	$ft1, $a4, 24
-	addi.d	$a4, $a5, 32
+	ld.d	$a5, $fp, 832
+	fld.s	$fa2, $a5, 16
+	ld.d	$a6, $fp, 896
+	fld.s	$fa6, $a5, 20
+	fld.s	$fa7, $a5, 24
+	addi.d	$a5, $a6, 32
 	movgr2fr.w	$fa5, $zero
 	.p2align	4, , 16
 .LBB98_7:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a4, -16
-	fld.s	$ft2, $a5, 16
-	fld.s	$ft3, $a5, 20
-	ld.d	$a6, $a4, -8
-	fld.s	$ft4, $a5, 24
-	fsub.s	$ft2, $ft2, $fa2
-	fsub.s	$ft3, $ft3, $fa6
-	fld.s	$ft5, $a6, 16
-	fld.s	$ft6, $a6, 20
-	fld.s	$ft7, $a6, 24
-	ld.d	$a5, $a4, 0
-	fsub.s	$ft4, $ft4, $ft1
-	fsub.s	$ft5, $ft5, $fa2
-	fsub.s	$ft6, $ft6, $fa6
-	fld.s	$ft8, $a5, 16
-	fld.s	$ft9, $a5, 20
-	fld.s	$ft10, $a5, 24
-	fsub.s	$ft7, $ft7, $ft1
-	fsub.s	$ft8, $ft8, $fa2
-	fsub.s	$ft9, $ft9, $fa6
-	fsub.s	$ft10, $ft10, $ft1
-	fneg.s	$ft11, $ft9
-	fmul.s	$ft11, $ft7, $ft11
-	fmadd.s	$ft11, $ft6, $ft10, $ft11
-	fneg.s	$ft10, $ft10
-	fmul.s	$ft10, $ft5, $ft10
-	fmadd.s	$ft7, $ft7, $ft8, $ft10
+	ld.d	$a6, $a5, -16
+	fld.s	$ft0, $a6, 16
+	fld.s	$ft1, $a6, 20
+	ld.d	$a7, $a5, -8
+	fld.s	$ft2, $a6, 24
+	fsub.s	$ft0, $ft0, $fa2
+	fsub.s	$ft1, $ft1, $fa6
+	fld.s	$ft3, $a7, 16
+	fld.s	$ft4, $a7, 20
+	fld.s	$ft5, $a7, 24
+	ld.d	$a6, $a5, 0
+	fsub.s	$ft2, $ft2, $fa7
+	fsub.s	$ft3, $ft3, $fa2
+	fsub.s	$ft4, $ft4, $fa6
+	fld.s	$ft6, $a6, 16
+	fld.s	$ft7, $a6, 20
+	fld.s	$ft8, $a6, 24
+	fsub.s	$ft5, $ft5, $fa7
+	fsub.s	$ft6, $ft6, $fa2
+	fsub.s	$ft7, $ft7, $fa6
+	fsub.s	$ft8, $ft8, $fa7
+	fneg.s	$ft9, $ft7
+	fmul.s	$ft9, $ft5, $ft9
+	fmadd.s	$ft9, $ft4, $ft8, $ft9
 	fneg.s	$ft8, $ft8
-	fmul.s	$ft6, $ft6, $ft8
-	fmadd.s	$ft5, $ft5, $ft9, $ft6
-	fmul.s	$ft3, $ft3, $ft7
-	fmadd.s	$ft2, $ft2, $ft11, $ft3
-	fmadd.s	$ft2, $ft4, $ft5, $ft2
-	fadd.s	$fa5, $fa5, $ft2
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 72
-	bnez	$a3, .LBB98_7
+	fmul.s	$ft8, $ft3, $ft8
+	fmadd.s	$ft5, $ft5, $ft6, $ft8
+	fneg.s	$ft6, $ft6
+	fmul.s	$ft4, $ft4, $ft6
+	fmadd.s	$ft3, $ft3, $ft7, $ft4
+	fmul.s	$ft1, $ft1, $ft5
+	fmadd.s	$ft0, $ft0, $ft9, $ft1
+	fmadd.s	$ft0, $ft2, $ft3, $ft0
+	fadd.s	$fa5, $fa5, $ft0
+	addi.d	$a4, $a4, -1
+	addi.d	$a5, $a5, 72
+	bnez	$a4, .LBB98_7
 	b	.LBB98_10
 .LBB98_8:
 	movgr2fr.w	$fa2, $zero
@@ -20032,19 +20034,17 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 	vldi	$vr2, -1256
 	fdiv.s	$fa2, $fa5, $fa2
 .LBB98_11:                              # %_ZNK10btSoftBody9getVolumeEv.exit
-	fld.s	$fa6, $fp, 540
-	fabs.s	$fa5, $fa2
-	frecip.s	$fa5, $fa5
-	fmul.s	$fa5, $fa3, $fa5
-	fsub.s	$fa2, $fa6, $fa2
-	fmul.s	$fa6, $fa4, $fa2
+	fld.s	$fa5, $fp, 540
+	fabs.s	$fa6, $fa2
+	frecip.s	$fa6, $fa6
+	fmul.s	$fa6, $fa3, $fa6
+	fsub.s	$fa2, $fa5, $fa2
+	fmul.s	$fa5, $fa4, $fa2
 .LBB98_12:                              # %._crit_edge458
 	fld.s	$fa2, $fp, 512
 	blez	$a1, .LBB98_45
 # %bb.13:                               # %.lr.ph
 	ld.d	$a5, $fp, 832
-	fcmp.clt.s	$fcc0, $ft0, $fa7
-	movcf2gr	$a3, $fcc0
 	beqz	$a3, .LBB98_38
 # %bb.14:                               # %.lr.ph.split.us.preheader
 	ld.d	$a3, $fp, 776
@@ -20230,7 +20230,7 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 # %bb.35:                               #   in Loop: Header=BB98_16 Depth=1
 	fld.s	$ft5, $a5, 0
 	fld.s	$ft6, $a5, -20
-	fmul.s	$ft5, $fa5, $ft5
+	fmul.s	$ft5, $fa6, $ft5
 	fld.s	$ft7, $a5, -16
 	fld.s	$ft8, $a5, -12
 	fmul.s	$ft6, $ft6, $ft5
@@ -20251,7 +20251,7 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 # %bb.37:                               #   in Loop: Header=BB98_16 Depth=1
 	fld.s	$ft4, $a5, 0
 	fld.s	$ft5, $a5, -20
-	fmul.s	$ft4, $fa6, $ft4
+	fmul.s	$ft4, $fa5, $ft4
 	fld.s	$ft6, $a5, -16
 	fld.s	$ft7, $a5, -12
 	fmul.s	$ft5, $ft5, $ft4
@@ -20289,7 +20289,7 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 # %bb.42:                               #   in Loop: Header=BB98_40 Depth=1
 	fld.s	$fa3, $a2, 36
 	fld.s	$fa4, $a2, 16
-	fmul.s	$fa3, $fa5, $fa3
+	fmul.s	$fa3, $fa6, $fa3
 	fld.s	$ft0, $a2, 20
 	fld.s	$ft1, $a2, 24
 	fmul.s	$fa4, $fa4, $fa3
@@ -20309,7 +20309,7 @@ _ZN10btSoftBody11applyForcesEv:         # @_ZN10btSoftBody11applyForcesEv
 # %bb.44:                               #   in Loop: Header=BB98_40 Depth=1
 	fld.s	$fa3, $a2, 36
 	fld.s	$fa4, $a2, 16
-	fmul.s	$fa3, $fa6, $fa3
+	fmul.s	$fa3, $fa5, $fa3
 	fld.s	$ft0, $a2, 20
 	fld.s	$ft1, $a2, 24
 	fmul.s	$fa4, $fa4, $fa3
@@ -32289,7 +32289,7 @@ _ZN15btSoftColliders12CollideVF_SS7ProcessEPK10btDbvtNodeS3_: # @_ZN15btSoftColl
 	fsub.s	$ft9, $ft3, $fa3
 	fld.s	$fa1, $a2, 16
 	fld.s	$fa5, $a2, 20
-	fst.s	$fa0, $sp, 40                   # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 36                   # 4-byte Folded Spill
 	fsub.s	$ft10, $fa0, $fa4
 	ld.d	$a3, $s0, 32
 	fst.s	$fa1, $sp, 32                   # 4-byte Folded Spill
@@ -32301,7 +32301,7 @@ _ZN15btSoftColliders12CollideVF_SS7ProcessEPK10btDbvtNodeS3_: # @_ZN15btSoftColl
 	fld.s	$fa0, $a3, 20
 	fld.s	$fa1, $a3, 24
 	fsub.s	$ft14, $fa7, $fa4
-	fst.s	$fa5, $sp, 36                   # 4-byte Folded Spill
+	fst.s	$fa5, $sp, 40                   # 4-byte Folded Spill
 	fsub.s	$ft5, $fa5, $fa2
 	fst.s	$fa0, $sp, 48                   # 4-byte Folded Spill
 	fsub.s	$ft6, $fa0, $fa3
@@ -32487,7 +32487,7 @@ _ZN15btSoftColliders12CollideVF_SS7ProcessEPK10btDbvtNodeS3_: # @_ZN15btSoftColl
 	fadd.s	$fa3, $fa4, $ft6
 	fsub.s	$fa4, $ft2, $fa1
 	fsub.s	$fa5, $ft3, $fa2
-	fld.s	$fa6, $sp, 40                   # 4-byte Folded Reload
+	fld.s	$fa6, $sp, 36                   # 4-byte Folded Reload
 	fsub.s	$fa6, $fa6, $fa3
 	fld.s	$fa7, $sp, 32                   # 4-byte Folded Reload
 	fsub.s	$fa7, $fa7, $fa1
@@ -32508,7 +32508,7 @@ _ZN15btSoftColliders12CollideVF_SS7ProcessEPK10btDbvtNodeS3_: # @_ZN15btSoftColl
 	fmadd.s	$ft2, $ft2, $ft2, $ft3
 	fmadd.s	$ft2, $ft4, $ft4, $ft2
 	fsqrt.s	$ft2, $ft2
-	fld.s	$ft3, $sp, 36                   # 4-byte Folded Reload
+	fld.s	$ft3, $sp, 40                   # 4-byte Folded Reload
 	fsub.s	$fa1, $ft3, $fa1
 	fld.s	$ft3, $sp, 48                   # 4-byte Folded Reload
 	fsub.s	$fa2, $ft3, $fa2
@@ -32553,14 +32553,15 @@ _ZN15btSoftColliders12CollideVF_SS7ProcessEPK10btDbvtNodeS3_: # @_ZN15btSoftColl
 	fmul.s	$fa4, $fs5, $fa1
 	fmadd.s	$fa4, $fa2, $fs4, $fa4
 	fmadd.s	$fa4, $fa3, $fs6, $fa4
-	fmin.s	$fa1, $fa2, $fa1
-	movgr2fr.w	$fa2, $zero
-	fcmp.cult.s	$fcc0, $fa2, $fa3
-	fsel	$fa3, $fa2, $fa4, $fcc0
-	fcmp.cult.s	$fcc0, $fa2, $fa1
-	fsel	$fs7, $fa2, $fa3, $fcc0
+	movgr2fr.w	$fa5, $zero
+	fcmp.cult.s	$fcc0, $fa5, $fa3
+	fsel	$fa3, $fa5, $fa4, $fcc0
+	fcmp.cult.s	$fcc0, $fa5, $fa1
+	fsel	$fa1, $fa5, $fa3, $fcc0
+	fcmp.cult.s	$fcc0, $fa5, $fa2
+	fsel	$fs7, $fa5, $fa1, $fcc0
 	fadd.s	$fs0, $fs1, $fs7
-	fcmp.cule.s	$fcc0, $fs0, $fa2
+	fcmp.cule.s	$fcc0, $fs0, $fa5
 	bcnez	$fcc0, .LBB199_31
 # %bb.11:
 	fsqrt.s	$fa1, $fa0

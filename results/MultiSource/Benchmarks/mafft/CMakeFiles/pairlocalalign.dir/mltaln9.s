@@ -16169,32 +16169,52 @@ makelocal:                              # @makelocal
 	ld.d	$a3, $a3, %got_pc_lo12(penalty)
 	ld.w	$a3, $a3, 0
 	movgr2fr.w	$fa0, $a3
-	ld.bu	$t2, $a0, 0
 	ffint.d.w	$fa0, $fa0
-	movgr2fr.d	$fa1, $zero
-	ori	$a5, $zero, 45
+	vrepli.b	$vr1, 0
+	ori	$a4, $zero, 45
 	pcalau12i	$a3, %got_pc_hi20(amino_dis)
 	ld.d	$a6, $a3, %got_pc_lo12(amino_dis)
-	move	$a4, $zero
-	move	$a3, $zero
 	move	$t0, $zero
-	fmov.d	$fa2, $fa1
+	move	$a3, $zero
+	move	$a5, $zero
+	movgr2fr.d	$fa2, $zero
 	move	$a7, $a0
 	move	$t1, $a1
-	fmov.d	$fa3, $fa1
-	.p2align	4, , 16
-.LBB67_1:                               # %.loopexit
+.LBB67_1:                               # %.outer
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB67_6 Depth 2
+                                        #     Child Loop BB67_5 Depth 2
+	ld.bu	$t2, $a7, 0
+	vreplvei.d	$vr3, $vr1, 0
 	andi	$t3, $t2, 255
-	beq	$t3, $a5, .LBB67_6
-# %bb.2:                                # %.loopexit
+	beq	$t3, $a4, .LBB67_5
+	.p2align	4, , 16
+.LBB67_2:                               # %.loopexit
                                         #   in Loop: Header=BB67_1 Depth=1
 	beqz	$t3, .LBB67_9
 # %bb.3:                                #   in Loop: Header=BB67_1 Depth=1
 	ld.b	$t3, $t1, 0
-	beq	$t3, $a5, .LBB67_6
-# %bb.4:                                #   in Loop: Header=BB67_1 Depth=1
+	beq	$t3, $a4, .LBB67_5
+	b	.LBB67_8
+	.p2align	4, , 16
+.LBB67_4:                               # %.critedge
+                                        #   in Loop: Header=BB67_5 Depth=2
+	addi.d	$a7, $a7, 1
+	addi.d	$t1, $t1, 1
+.LBB67_5:                               #   Parent Loop BB67_1 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.bu	$t2, $a7, 0
+	beq	$t2, $a4, .LBB67_4
+# %bb.6:                                #   in Loop: Header=BB67_5 Depth=2
+	ld.bu	$t3, $t1, 0
+	beq	$t3, $a4, .LBB67_4
+# %bb.7:                                # %.loopexit.loopexit
+                                        #   in Loop: Header=BB67_5 Depth=2
+	fadd.d	$fa3, $fa3, $fa0
+	andi	$t3, $t2, 255
+	bne	$t3, $a4, .LBB67_2
+	b	.LBB67_5
+	.p2align	4, , 16
+.LBB67_8:                               #   in Loop: Header=BB67_1 Depth=1
 	ext.w.b	$t2, $t2
 	slli.d	$t2, $t2, 9
 	add.d	$t2, $a6, $t2
@@ -16206,53 +16226,38 @@ makelocal:                              # @makelocal
 	movgr2fr.w	$fa4, $t2
 	ffint.d.w	$fa4, $fa4
 	fadd.d	$fa3, $fa3, $fa4
-	fcmp.clt.d	$fcc0, $fa2, $fa3
-	fsel	$fa2, $fa2, $fa3, $fcc0
-	movcf2gr	$t2, $fcc0
+	vextrins.d	$vr1, $vr3, 0
+	vpackev.d	$vr3, $vr3, $vr2
+	vfcmp.clt.d	$vr4, $vr1, $vr3
+	vpickve2gr.d	$t2, $vr4, 1
+	andi	$t2, $t2, 1
 	masknez	$a3, $a3, $t2
 	maskeqz	$t2, $t0, $t2
 	or	$a3, $t2, $a3
-	fcmp.clt.d	$fcc0, $fa3, $fa1
 	xor	$t2, $t0, $a3
 	sltui	$t2, $t2, 1
 	sub.w	$t3, $a7, $a0
-	fsel	$fa3, $fa3, $fa1, $fcc0
-	movcf2gr	$t4, $fcc0
-	maskeqz	$t5, $t3, $t4
+	vpickve2gr.d	$t4, $vr4, 0
+	andi	$t4, $t4, 1
 	masknez	$t0, $t0, $t4
+	maskeqz	$t5, $t3, $t4
 	or	$t0, $t5, $t0
-	masknez	$t5, $a4, $t2
+	masknez	$t5, $a5, $t2
 	maskeqz	$t2, $t3, $t2
-	or	$t3, $t2, $t5
-	ld.bu	$t2, $a7, 0
-	maskeqz	$t3, $t3, $t4
-	masknez	$a4, $a4, $t4
-	or	$a4, $t3, $a4
-	b	.LBB67_1
-	.p2align	4, , 16
-.LBB67_5:                               # %.critedge
-                                        #   in Loop: Header=BB67_6 Depth=2
-	addi.d	$a7, $a7, 1
-	addi.d	$t1, $t1, 1
-.LBB67_6:                               #   Parent Loop BB67_1 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t2, $a7, 0
-	beq	$t2, $a5, .LBB67_5
-# %bb.7:                                #   in Loop: Header=BB67_6 Depth=2
-	ld.bu	$t3, $t1, 0
-	beq	$t3, $a5, .LBB67_5
-# %bb.8:                                # %.loopexit.loopexit
-                                        #   in Loop: Header=BB67_1 Depth=1
-	fadd.d	$fa3, $fa3, $fa0
+	or	$t2, $t2, $t5
+	maskeqz	$t2, $t2, $t4
+	masknez	$a5, $a5, $t4
+	or	$a5, $t2, $a5
+	vbitsel.v	$vr1, $vr1, $vr3, $vr4
 	b	.LBB67_1
 .LBB67_9:
 	xor	$a2, $t0, $a3
 	sltui	$a2, $a2, 1
-	nor	$a5, $a0, $zero
-	add.w	$a5, $a7, $a5
-	maskeqz	$a5, $a5, $a2
-	masknez	$a2, $a4, $a2
-	or	$a2, $a5, $a2
+	nor	$a4, $a0, $zero
+	add.w	$a4, $a7, $a4
+	maskeqz	$a4, $a4, $a2
+	masknez	$a2, $a5, $a2
+	or	$a2, $a4, $a2
 	addi.d	$a2, $a2, 1
 	stx.b	$zero, $a0, $a2
 	stx.b	$zero, $a1, $a2

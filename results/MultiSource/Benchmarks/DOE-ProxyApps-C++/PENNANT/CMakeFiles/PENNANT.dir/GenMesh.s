@@ -6735,7 +6735,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	fmul.d	$fa0, $fa2, $fa0
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa1, $fa0, $fcc0
-	fmax.d	$fs5, $fa0, $fs4
+	fcmp.clt.d	$fcc0, $fs4, $fa0
+	fsel	$fs5, $fs4, $fa0, $fcc0
 	fld.d	$fa0, $sp, 160                  # 8-byte Folded Reload
 	fadd.d	$fs6, $fa0, $fs5
 	fsub.d	$fs7, $fs5, $fa0
@@ -6777,7 +6778,8 @@ _ZN7GenMesh11generateHexERSt6vectorI7double2SaIS1_EERS0_IiSaIiEES7_S7_S7_S7_S7_S
 	fmul.d	$fa0, $fs0, $fa0
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa1, $fa0, $fcc0
-	fmax.d	$fs1, $fa0, $fs4
+	fcmp.clt.d	$fcc0, $fs4, $fa0
+	fsel	$fs1, $fs4, $fa0, $fcc0
 	beqz	$a0, .LBB6_17
 # %bb.22:                               #   in Loop: Header=BB6_21 Depth=2
 	ld.w	$a1, $s5, 32

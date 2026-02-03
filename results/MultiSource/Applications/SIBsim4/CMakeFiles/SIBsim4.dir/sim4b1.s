@@ -4886,7 +4886,8 @@ SIM4:                                   # @SIM4
 	fmul.d	$fa0, $fa0, $fa1
 	addi.w	$a2, $a1, -1
 	addi.w	$a3, $a0, -1
-	fmax.d	$fa0, $fa0, $fa2
+	fcmp.clt.d	$fcc0, $fa2, $fa0
+	fsel	$fa0, $fa2, $fa0, $fcc0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a6, $fa0
 	move	$a0, $fp

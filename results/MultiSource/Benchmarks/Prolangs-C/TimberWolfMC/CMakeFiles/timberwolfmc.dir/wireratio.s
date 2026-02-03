@@ -32,14 +32,16 @@ wireratio:                              # @wireratio
 	pcalau12i	$a1, %pc_hi20(N)
 	fst.d	$fa0, $a1, %pc_lo12(N)
 	vldi	$vr0, -912
-	fmax.d	$fa1, $fs0, $fa0
+	fcmp.cle.d	$fcc0, $fa0, $fs0
+	fsel	$fa1, $fa0, $fs0, $fcc0
 	ori	$a1, $zero, 2
 	slt	$a2, $a1, $a0
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$a0, $a0, $a1
 	addi.d	$fp, $a0, -1
-	fmax.d	$fa0, $fa2, $fa0
+	fcmp.cle.d	$fcc0, $fa0, $fa2
+	fsel	$fa0, $fa0, $fa2, $fcc0
 	ftintrz.w.d	$fa2, $fa1
 	movfr2gr.s	$s0, $fa2
 	ftintrz.w.d	$fa2, $fa0
