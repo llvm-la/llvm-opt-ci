@@ -1452,60 +1452,52 @@ _ZN24lambda_expression_parser5alistEv:  # @_ZN24lambda_expression_parser5alistEv
 	move	$s0, $zero
 	ori	$s3, $zero, 8
 	ori	$s4, $zero, 1
-	addi.d	$a1, $sp, 16
-	pcaddu18i	$ra, %call36(_ZN12token_stream9get_tokenEPPc)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	bne	$a0, $s3, .LBB8_8
 	b	.LBB8_3
 	.p2align	4, , 16
 .LBB8_2:                                #   in Loop: Header=BB8_3 Depth=1
 	ld.d	$a0, $fp, 0
+.LBB8_3:                                # =>This Inner Loop Header: Depth=1
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(_ZN12token_stream9get_tokenEPPc)
 	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	bne	$a0, $s3, .LBB8_8
-.LBB8_3:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, 0
 	ld.d	$a2, $sp, 16
+	move	$s1, $a0
+	move	$a0, $a1
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZN12token_stream10push_tokenENS_10token_typeEPc)
 	jirl	$ra, $ra, 0
+	beq	$s1, $s3, .LBB8_5
+# %bb.4:                                #   in Loop: Header=BB8_3 Depth=1
+	bne	$s1, $s4, .LBB8_11
+.LBB8_5:                                #   in Loop: Header=BB8_3 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN24lambda_expression_parser4atomEv)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB8_2
-# %bb.4:                                #   in Loop: Header=BB8_3 Depth=1
-	move	$s2, $a0
-	beqz	$s0, .LBB8_7
-# %bb.5:                                #   in Loop: Header=BB8_3 Depth=1
+# %bb.6:                                #   in Loop: Header=BB8_3 Depth=1
+	move	$s1, $a0
+	beqz	$s0, .LBB8_9
+# %bb.7:                                #   in Loop: Header=BB8_3 Depth=1
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s2, $a0
 .Ltmp24:                                # EH_LABEL
 	ori	$a3, $zero, 1
 	move	$a1, $s0
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(_ZN8app_nodeC1EP8exp_nodeS1_s)
 	jirl	$ra, $ra, 0
 .Ltmp25:                                # EH_LABEL
-# %bb.6:                                #   in Loop: Header=BB8_3 Depth=1
-	move	$s0, $s1
-	b	.LBB8_2
-	.p2align	4, , 16
-.LBB8_7:                                #   in Loop: Header=BB8_3 Depth=1
+# %bb.8:                                #   in Loop: Header=BB8_3 Depth=1
 	move	$s0, $s2
 	b	.LBB8_2
 	.p2align	4, , 16
-.LBB8_8:
-	beq	$a1, $s4, .LBB8_3
-# %bb.9:
+.LBB8_9:                                #   in Loop: Header=BB8_3 Depth=1
+	move	$s0, $s1
 	ld.d	$a0, $fp, 0
-	ld.d	$a2, $sp, 16
-	pcaddu18i	$ra, %call36(_ZN12token_stream10push_tokenENS_10token_typeEPc)
-	jirl	$ra, $ra, 0
-	b	.LBB8_11
+	b	.LBB8_3
 .LBB8_10:
 	move	$s0, $zero
 .LBB8_11:
@@ -1523,7 +1515,7 @@ _ZN24lambda_expression_parser5alistEv:  # @_ZN24lambda_expression_parser5alistEv
 .Ltmp26:                                # EH_LABEL
 	move	$fp, $a0
 	ori	$a1, $zero, 32
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp

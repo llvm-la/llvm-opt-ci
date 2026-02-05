@@ -81,30 +81,31 @@ start_input_tga:                        # @start_input_tga
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ld.hu	$s5, $sp, 52
 	ld.bu	$s7, $sp, 55
+	st.b	$a0, $sp, 54
 	srli.d	$a1, $a0, 3
 	st.w	$a1, $s0, 92
-	st.b	$a0, $sp, 54
-	bltu	$s8, $s3, .LBB1_8
+	bltu	$s8, $s3, .LBB1_9
 # %bb.3:
-	addi.d	$a1, $a0, -40
-	addi.w	$a2, $zero, -32
-	bltu	$a1, $a2, .LBB1_8
+	ori	$a2, $zero, 39
+	bltu	$a2, $a0, .LBB1_9
 # %bb.4:
-	andi	$a0, $a0, 7
-	bnez	$a0, .LBB1_8
+	beqz	$a1, .LBB1_9
 # %bb.5:
-	ori	$a0, $zero, 64
-	bgeu	$s7, $a0, .LBB1_8
+	andi	$a0, $a0, 7
+	bnez	$a0, .LBB1_9
 # %bb.6:
+	ori	$a0, $zero, 64
+	bgeu	$s7, $a0, .LBB1_9
+# %bb.7:
 	ori	$a0, $zero, 9
-	bltu	$s4, $a0, .LBB1_9
-.LBB1_7:
+	bltu	$s4, $a0, .LBB1_10
+.LBB1_8:
 	st.d	$zero, $s0, 96
 	addi.d	$s4, $s4, -8
 	pcalau12i	$a0, %pc_hi20(read_rle_pixel)
 	addi.d	$a0, $a0, %pc_lo12(read_rle_pixel)
-	b	.LBB1_10
-.LBB1_8:
+	b	.LBB1_11
+.LBB1_9:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1033
@@ -112,93 +113,93 @@ start_input_tga:                        # @start_input_tga
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ori	$a0, $zero, 9
-	bgeu	$s4, $a0, .LBB1_7
-.LBB1_9:
+	bgeu	$s4, $a0, .LBB1_8
+.LBB1_10:
 	pcalau12i	$a0, %pc_hi20(read_non_rle_pixel)
 	addi.d	$a0, $a0, %pc_lo12(read_non_rle_pixel)
-.LBB1_10:
+.LBB1_11:
 	andi	$s8, $s7, 32
 	st.d	$a0, $s0, 80
 	ori	$a0, $zero, 2
 	ori	$a1, $zero, 3
 	st.w	$a0, $fp, 52
-	beq	$s4, $a1, .LBB1_20
-# %bb.11:
-	beq	$s4, $a0, .LBB1_16
+	beq	$s4, $a1, .LBB1_21
 # %bb.12:
-	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB1_22
+	beq	$s4, $a0, .LBB1_17
 # %bb.13:
-	ld.w	$a1, $s0, 92
-	bne	$a1, $a0, .LBB1_24
-# %bb.14:
 	ori	$a0, $zero, 1
-	bne	$s3, $a0, .LBB1_24
+	bne	$s4, $a0, .LBB1_23
+# %bb.14:
+	ld.w	$a1, $s0, 92
+	bne	$a1, $a0, .LBB1_25
 # %bb.15:
+	ori	$a0, $zero, 1
+	bne	$s3, $a0, .LBB1_25
+# %bb.16:
 	pcalau12i	$a0, %pc_hi20(get_8bit_row)
 	addi.d	$a0, $a0, %pc_lo12(get_8bit_row)
 	st.d	$a0, $s0, 104
-	b	.LBB1_25
-.LBB1_16:
+	b	.LBB1_26
+.LBB1_17:
 	ld.w	$a0, $s0, 92
 	ori	$a1, $zero, 4
-	beq	$a0, $a1, .LBB1_23
-# %bb.17:
-	ori	$a1, $zero, 3
-	beq	$a0, $a1, .LBB1_23
+	beq	$a0, $a1, .LBB1_24
 # %bb.18:
-	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB1_29
+	ori	$a1, $zero, 3
+	beq	$a0, $a1, .LBB1_24
 # %bb.19:
+	ori	$a1, $zero, 2
+	bne	$a0, $a1, .LBB1_30
+# %bb.20:
 	pcalau12i	$a0, %pc_hi20(get_16bit_row)
 	addi.d	$a0, $a0, %pc_lo12(get_16bit_row)
 	st.d	$a0, $s0, 104
-	b	.LBB1_30
-.LBB1_20:
+	b	.LBB1_31
+.LBB1_21:
 	ld.w	$a0, $s0, 92
 	ori	$a1, $zero, 1
 	st.w	$a1, $fp, 52
-	bne	$a0, $a1, .LBB1_26
-# %bb.21:
+	bne	$a0, $a1, .LBB1_27
+# %bb.22:
 	pcalau12i	$a0, %pc_hi20(get_8bit_gray_row)
 	addi.d	$a0, $a0, %pc_lo12(get_8bit_gray_row)
 	st.d	$a0, $s0, 104
-	b	.LBB1_27
-.LBB1_22:
+	b	.LBB1_28
+.LBB1_23:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1033
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	b	.LBB1_32
-.LBB1_23:
+	b	.LBB1_33
+.LBB1_24:
 	pcalau12i	$a0, %pc_hi20(get_24bit_row)
 	addi.d	$a0, $a0, %pc_lo12(get_24bit_row)
 	st.d	$a0, $s0, 104
-	b	.LBB1_30
-.LBB1_24:
+	b	.LBB1_31
+.LBB1_25:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1033
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-.LBB1_25:
+.LBB1_26:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 44
 	ld.d	$a1, $fp, 0
 	ori	$a2, $zero, 1037
-	b	.LBB1_31
-.LBB1_26:
+	b	.LBB1_32
+.LBB1_27:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1033
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-.LBB1_27:
+.LBB1_28:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 44
@@ -213,8 +214,8 @@ start_input_tga:                        # @start_input_tga
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	slli.d	$s4, $s2, 8
-	beqz	$s8, .LBB1_33
-.LBB1_28:
+	beqz	$s8, .LBB1_34
+.LBB1_29:
 	ld.d	$a0, $fp, 8
 	ld.d	$a4, $a0, 16
 	st.d	$zero, $s0, 64
@@ -231,22 +232,22 @@ start_input_tga:                        # @start_input_tga
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	or	$s2, $s4, $a0
 	st.d	$a1, $s0, 8
-	bnez	$s6, .LBB1_36
-	b	.LBB1_40
-.LBB1_29:
+	bnez	$s6, .LBB1_37
+	b	.LBB1_41
+.LBB1_30:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1033
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-.LBB1_30:
+.LBB1_31:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 44
 	ld.d	$a1, $fp, 0
 	ori	$a2, $zero, 1035
-.LBB1_31:
+.LBB1_32:
 	st.w	$a2, $a0, 40
 	st.w	$s5, $a1, 48
 	ld.d	$a0, $fp, 0
@@ -254,11 +255,11 @@ start_input_tga:                        # @start_input_tga
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-.LBB1_32:
+.LBB1_33:
 	ori	$s7, $zero, 3
 	slli.d	$s4, $s2, 8
-	bnez	$s8, .LBB1_28
-.LBB1_33:
+	bnez	$s8, .LBB1_29
+.LBB1_34:
 	ld.d	$a0, $fp, 8
 	ld.d	$a6, $a0, 32
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
@@ -272,59 +273,59 @@ start_input_tga:                        # @start_input_tga
 	jirl	$ra, $a6, 0
 	ld.d	$a1, $fp, 16
 	st.d	$a0, $s0, 64
-	beqz	$a1, .LBB1_35
-# %bb.34:
+	beqz	$a1, .LBB1_36
+# %bb.35:
 	ld.w	$a0, $a1, 36
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a1, 36
-.LBB1_35:
+.LBB1_36:
 	st.w	$s1, $s0, 40
 	pcalau12i	$a0, %pc_hi20(preload_image)
 	addi.d	$a1, $a0, %pc_lo12(preload_image)
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	or	$s2, $s4, $a0
 	st.d	$a1, $s0, 8
-	beqz	$s6, .LBB1_40
-.LBB1_36:                               # %.lr.ph
+	beqz	$s6, .LBB1_41
+.LBB1_37:                               # %.lr.ph
 	addi.w	$s8, $zero, -1
 	ori	$s1, $zero, 42
-	b	.LBB1_38
+	b	.LBB1_39
 	.p2align	4, , 16
-.LBB1_37:                               # %read_byte.exit
-                                        #   in Loop: Header=BB1_38 Depth=1
+.LBB1_38:                               # %read_byte.exit
+                                        #   in Loop: Header=BB1_39 Depth=1
 	addi.w	$s6, $s6, -1
-	beqz	$s6, .LBB1_40
-.LBB1_38:                               # =>This Inner Loop Header: Depth=1
+	beqz	$s6, .LBB1_41
+.LBB1_39:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s8, .LBB1_37
-# %bb.39:                               #   in Loop: Header=BB1_38 Depth=1
+	bne	$a0, $s8, .LBB1_38
+# %bb.40:                               #   in Loop: Header=BB1_39 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 0
 	st.w	$s1, $a1, 40
 	jirl	$ra, $a2, 0
-	b	.LBB1_37
-.LBB1_40:                               # %._crit_edge
-	beqz	$s2, .LBB1_54
-# %bb.41:
+	b	.LBB1_38
+.LBB1_41:                               # %._crit_edge
+	beqz	$s2, .LBB1_55
+# %bb.42:
 	ori	$a0, $zero, 256
 	move	$s1, $s5
-	bltu	$a0, $s2, .LBB1_43
-# %bb.42:
+	bltu	$a0, $s2, .LBB1_44
+# %bb.43:
 	ld.bu	$a0, $sp, 41
 	ld.bu	$a1, $sp, 42
 	or	$a0, $a1, $a0
-	beqz	$a0, .LBB1_44
-.LBB1_43:
+	beqz	$a0, .LBB1_45
+.LBB1_44:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1032
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-.LBB1_44:
+.LBB1_45:
 	ld.d	$a0, $fp, 8
 	ld.d	$a4, $a0, 16
 	ori	$a1, $zero, 1
@@ -335,43 +336,43 @@ start_input_tga:                        # @start_input_tga
 	ld.bu	$a1, $sp, 45
 	ori	$a2, $zero, 24
 	st.d	$a0, $s0, 56
-	beq	$a1, $a2, .LBB1_46
-# %bb.45:
+	beq	$a1, $a2, .LBB1_47
+# %bb.46:
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 0
 	ori	$a3, $zero, 1032
 	st.w	$a3, $a1, 40
 	jirl	$ra, $a2, 0
-.LBB1_46:
+.LBB1_47:
 	move	$s5, $zero
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	add.d	$s4, $s4, $a0
 	addi.w	$s6, $zero, -1
 	ori	$s8, $zero, 42
-	b	.LBB1_48
+	b	.LBB1_49
 	.p2align	4, , 16
-.LBB1_47:                               # %read_byte.exit16.i
-                                        #   in Loop: Header=BB1_48 Depth=1
+.LBB1_48:                               # %read_byte.exit16.i
+                                        #   in Loop: Header=BB1_49 Depth=1
 	ld.d	$a0, $s0, 56
 	ld.d	$a0, $a0, 0
 	stx.b	$s2, $a0, $s5
 	addi.d	$s5, $s5, 1
-	beq	$s4, $s5, .LBB1_57
-.LBB1_48:                               # =>This Inner Loop Header: Depth=1
+	beq	$s4, $s5, .LBB1_58
+.LBB1_49:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	bne	$a0, $s6, .LBB1_50
-# %bb.49:                               #   in Loop: Header=BB1_48 Depth=1
+	bne	$a0, $s6, .LBB1_51
+# %bb.50:                               #   in Loop: Header=BB1_49 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 0
 	st.w	$s8, $a1, 40
 	jirl	$ra, $a2, 0
-.LBB1_50:                               # %read_byte.exit.i
-                                        #   in Loop: Header=BB1_48 Depth=1
+.LBB1_51:                               # %read_byte.exit.i
+                                        #   in Loop: Header=BB1_49 Depth=1
 	ld.d	$a0, $s0, 56
 	ld.d	$a0, $a0, 16
 	stx.b	$s2, $a0, $s5
@@ -379,15 +380,15 @@ start_input_tga:                        # @start_input_tga
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	bne	$a0, $s6, .LBB1_52
-# %bb.51:                               #   in Loop: Header=BB1_48 Depth=1
+	bne	$a0, $s6, .LBB1_53
+# %bb.52:                               #   in Loop: Header=BB1_49 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 0
 	st.w	$s8, $a1, 40
 	jirl	$ra, $a2, 0
-.LBB1_52:                               # %read_byte.exit15.i
-                                        #   in Loop: Header=BB1_48 Depth=1
+.LBB1_53:                               # %read_byte.exit15.i
+                                        #   in Loop: Header=BB1_49 Depth=1
 	ld.d	$a0, $s0, 56
 	ld.d	$a0, $a0, 8
 	stx.b	$s2, $a0, $s5
@@ -395,27 +396,27 @@ start_input_tga:                        # @start_input_tga
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	bne	$a0, $s6, .LBB1_47
-# %bb.53:                               #   in Loop: Header=BB1_48 Depth=1
+	bne	$a0, $s6, .LBB1_48
+# %bb.54:                               #   in Loop: Header=BB1_49 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 0
 	st.w	$s8, $a1, 40
 	jirl	$ra, $a2, 0
-	b	.LBB1_47
-.LBB1_54:
+	b	.LBB1_48
+.LBB1_55:
 	move	$s1, $s5
-	beqz	$s3, .LBB1_56
-# %bb.55:
+	beqz	$s3, .LBB1_57
+# %bb.56:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1033
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-.LBB1_56:
+.LBB1_57:
 	st.d	$zero, $s0, 56
-.LBB1_57:                               # %read_colormap.exit
+.LBB1_58:                               # %read_colormap.exit
 	st.w	$s7, $fp, 48
 	ori	$a0, $zero, 8
 	st.w	$a0, $fp, 64

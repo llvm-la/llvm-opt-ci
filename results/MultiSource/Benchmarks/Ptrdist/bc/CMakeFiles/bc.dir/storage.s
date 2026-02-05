@@ -1024,16 +1024,15 @@ get_array_num:                          # @get_array_num
 .LBB12_19:                              # %.lr.ph81
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s3, 0
-	alsl.d	$a0, $a0, $fp, 3
-	ld.d	$fp, $a0, 128
+	alsl.d	$s5, $a0, $fp, 3
+	ld.d	$fp, $s5, 128
 	bnez	$fp, .LBB12_18
 # %bb.20:                               #   in Loop: Header=BB12_19 Depth=1
-	addi.d	$s5, $a0, 128
 	ori	$a0, $zero, 256
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	st.d	$a0, $s5, 0
+	st.d	$a0, $s5, 128
 	bne	$s2, $s4, .LBB12_17
 # %bb.21:                               # %.loopexit.thread
 	pcalau12i	$a0, %got_pc_hi20(_zero_)

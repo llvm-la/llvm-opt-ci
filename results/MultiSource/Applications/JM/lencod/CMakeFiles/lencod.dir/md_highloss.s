@@ -1491,9 +1491,8 @@ encode_one_macroblock_highloss:         # @encode_one_macroblock_highloss
 	ld.d	$a0, $a0, %got_pc_lo12(cbp)
 	ld.w	$a1, $a0, 0
 	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
-	ld.h	$a0, $a0, 0
+	ld.hu	$a0, $a0, 0
 	sltu	$a2, $zero, $a1
-	bstrpick.d	$a0, $a0, 15, 0
 	addi.d	$a3, $a0, -10
 	sltui	$a3, $a3, 1
 	or	$a2, $a2, $a3

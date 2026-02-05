@@ -170,8 +170,7 @@ _ZN12GIM_BOX_TREE30_sort_and_calc_splitting_indexER9gim_arrayI13GIM_AABB_DATAEjj
 	add.d	$t7, $t2, $t4
 	vst	$vr2, $t3, 0
 	ld.w	$t8, $t7, 32
-	addi.d	$fp, $t3, 16
-	vld	$vr2, $fp, 0
+	vld	$vr2, $t3, 16
 	ld.w	$fp, $t3, 32
 	st.w	$t8, $t3, 32
 	vld	$vr3, $t7, 16
@@ -390,9 +389,8 @@ _ZN12GIM_BOX_TREE15_build_sub_treeER9gim_arrayI13GIM_AABB_DATAEjj: # @_ZN12GIM_B
 	bcnez	$fcc0, .LBB2_8
 # %bb.10:                               #   in Loop: Header=BB2_9 Depth=1
 	vld	$vr2, $a6, 0
-	addi.d	$a7, $a6, 16
 	vst	$vr2, $sp, 24
-	vld	$vr2, $a7, 0
+	vld	$vr2, $a6, 16
 	bstrpick.d	$a7, $a0, 31, 0
 	vst	$vr2, $a3, 0
 	slli.d	$t0, $a7, 5
@@ -496,13 +494,13 @@ _ZN12GIM_BOX_TREE15_build_sub_treeER9gim_arrayI13GIM_AABB_DATAEjj: # @_ZN12GIM_B
 _ZN12GIM_BOX_TREE10build_treeER9gim_arrayI13GIM_AABB_DATAE: # @_ZN12GIM_BOX_TREE10build_treeER9gim_arrayI13GIM_AABB_DATAE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -551,35 +549,31 @@ _ZN12GIM_BOX_TREE10build_treeER9gim_arrayI13GIM_AABB_DATAE: # @_ZN12GIM_BOX_TREE
 	st.w	$s0, $s2, 20
 	move	$a1, $s1
 .LBB3_8:                                # %_ZN9gim_arrayI17GIM_BOX_TREE_NODEE7reserveEj.exit.i
+	bgeu	$a2, $fp, .LBB3_11
+# %bb.9:                                # %.lr.ph.i.preheader
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 40
-	bgeu	$a2, $fp, .LBB3_10
 	.p2align	4, , 16
-.LBB3_9:                                # %.lr.ph.i
+.LBB3_10:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a0, 8
 	bstrpick.d	$a2, $a2, 31, 0
 	slli.d	$a4, $a2, 5
-	xvld	$xr0, $sp, 8
-	vld	$vr1, $sp, 40
 	alsl.d	$a2, $a2, $a4, 4
-	add.d	$a4, $a3, $a2
-	xvstx	$xr0, $a3, $a2
-	vst	$vr1, $a4, 32
+	add.d	$a2, $a3, $a2
+	vst	$vr0, $a2, 32
 	ld.w	$a2, $a0, 16
 	addi.w	$a2, $a2, 1
 	st.w	$a2, $a0, 16
-	bltu	$a2, $fp, .LBB3_9
-.LBB3_10:                               # %._crit_edge.i
-	ld.w	$a3, $a1, 8
+	bltu	$a2, $fp, .LBB3_10
 .LBB3_11:                               # %_ZN9gim_arrayI17GIM_BOX_TREE_NODEE6resizeEjb.exit
+	ld.w	$a3, $a1, 8
 	move	$a2, $zero
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(_ZN12GIM_BOX_TREE15_build_sub_treeER9gim_arrayI13GIM_AABB_DATAEjj)
 	jr	$t8
 .Lfunc_end3:

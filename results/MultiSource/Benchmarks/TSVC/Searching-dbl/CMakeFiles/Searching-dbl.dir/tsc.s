@@ -11892,7 +11892,7 @@ s332:                                   # @s332
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	blez	$a0, .LBB8_9
+	blez	$a0, .LBB8_8
 # %bb.1:                                # %vector.ph.preheader
 	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
 	xvreplve0.d	$xr3, $xr0
@@ -11900,11 +11900,7 @@ s332:                                   # @s332
 	addi.d	$fp, $a0, %pc_lo12(global_data)
 	move	$s8, $zero
 	lu12i.w	$a0, 7
-	ori	$s7, $a0, 3324
-	lu12i.w	$a0, 4128
-	ori	$a0, $a0, 772
-	vreplgr2vr.w	$vr0, $a0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	ori	$s7, $a0, 3328
 	lu12i.w	$a0, 62
 	ori	$a0, $a0, 2080
 	add.d	$s0, $fp, $a0
@@ -11926,6 +11922,10 @@ s332:                                   # @s332
 	lu12i.w	$a0, 568
 	ori	$a0, $a0, 2464
 	add.d	$s6, $fp, $a0
+	lu12i.w	$a0, 4128
+	ori	$a0, $a0, 772
+	vreplgr2vr.w	$vr0, $a0
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	xvst	$xr3, $sp, 32                   # 32-byte Folded Spill
 	b	.LBB8_4
 	.p2align	4, , 16
@@ -11975,43 +11975,38 @@ s332:                                   # @s332
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	addi.w	$s8, $s8, 1
 	xvld	$xr3, $sp, 32                   # 32-byte Folded Reload
-	bge	$s8, $a0, .LBB8_10
+	bge	$s8, $a0, .LBB8_9
 .LBB8_4:                                # %vector.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_5 Depth 2
+	move	$a0, $zero
 	move	$a1, $fp
-	move	$a4, $s7
-	ori	$a0, $zero, 4
+	move	$a2, $s7
 	.p2align	4, , 16
 .LBB8_5:                                # %vector.body
                                         #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr0, $a1, 0
-	move	$a2, $a4
 	xvfcmp.clt.d	$xr1, $xr3, $xr0
 	xvmskltz.d	$xr2, $xr1
 	xvpickve2gr.wu	$a3, $xr2, 0
 	xvpickve2gr.wu	$a4, $xr2, 4
 	bstrins.d	$a3, $a4, 3, 2
-	addi.w	$a0, $a0, -4
-	bnez	$a3, .LBB8_7
-# %bb.6:                                # %vector.body
+	bnez	$a3, .LBB8_2
+# %bb.6:                                # %vector.body.interim
                                         #   in Loop: Header=BB8_5 Depth=2
-	addi.d	$a4, $a2, -4
+	addi.w	$a0, $a0, -4
+	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB8_5
-.LBB8_7:                                # %middle.split
-                                        #   in Loop: Header=BB8_4 Depth=1
-	andi	$a1, $a3, 15
-	bnez	$a1, .LBB8_2
-# %bb.8:                                #   in Loop: Header=BB8_4 Depth=1
+# %bb.7:                                #   in Loop: Header=BB8_4 Depth=1
 	vldi	$vr0, -896
 	vldi	$vr1, -784
 	b	.LBB8_3
-.LBB8_9:
+.LBB8_8:
                                         # implicit-def: $f0_64
 	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
-.LBB8_10:                               # %._crit_edge
+.LBB8_9:                                # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.L.str.138)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.138)
 	move	$a1, $zero
@@ -12095,7 +12090,7 @@ set:                                    # @set
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	addi.d	$a1, $s1, 20
+	addi.d	$a1, $s1, 28
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 2304
 	.p2align	4, , 16
@@ -12103,23 +12098,24 @@ set:                                    # @set
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a3, $a0, 5
 	addi.d	$a4, $a0, 4
-	addi.d	$a5, $a0, 9
-	st.w	$a4, $a1, -20
-	st.w	$a5, $a1, 0
+	st.w	$a4, $a1, -28
 	addi.d	$a4, $a0, 2
-	addi.d	$a5, $a0, 7
-	st.w	$a4, $a1, -16
+	st.w	$a0, $a1, -20
+	addi.d	$a5, $a0, 8
 	st.w	$a5, $a1, 4
-	st.w	$a0, $a1, -12
-	st.w	$a3, $a1, 8
-	addi.d	$a3, $a0, 3
-	addi.d	$a4, $a0, 8
-	st.w	$a3, $a1, -8
-	st.w	$a4, $a1, 12
-	addi.d	$a3, $a0, 1
-	addi.d	$a4, $a0, 6
-	st.w	$a3, $a1, -4
-	st.w	$a4, $a1, 16
+	addi.d	$a5, $a0, 6
+	st.w	$a4, $a1, -24
+	st.w	$a3, $a1, 0
+	addi.d	$a3, $a0, 7
+	addi.d	$a4, $a0, 9
+	addi.d	$a6, $a0, 1
+	addi.d	$a7, $a0, 3
+	vinsgr2vr.w	$vr0, $a7, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $a3, 3
+	vst	$vr0, $a1, -16
+	st.w	$a5, $a1, 8
 	addi.d	$a0, $a0, 10
 	addi.d	$a2, $a2, -2
 	addi.d	$a1, $a1, 40

@@ -280,13 +280,11 @@ execute:                                # @execute
 .LBB2_18:                               #   in Loop: Header=BB2_5 Depth=1
 	slli.d	$a2, $a2, 8
 	ld.d	$a1, $a1, 144
-	or	$a3, $a2, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB2_21
+	or	$a2, $a2, $a0
+	srli.d	$a2, $a2, 6
+	beqz	$a2, .LBB2_21
 # %bb.19:                               # %.lr.ph155.preheader
                                         #   in Loop: Header=BB2_5 Depth=1
-	add.d	$a2, $a2, $a0
-	srli.d	$a2, $a2, 6
 	addi.d	$a2, $a2, 1
 	.p2align	4, , 16
 .LBB2_20:                               # %.lr.ph155

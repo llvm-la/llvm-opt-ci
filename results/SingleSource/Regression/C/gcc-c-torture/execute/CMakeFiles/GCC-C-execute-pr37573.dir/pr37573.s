@@ -11,11 +11,19 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(p)
 	addi.d	$a0, $a0, %pc_lo12(p)
-	pcalau12i	$a1, %pc_hi20(q)
-	addi.d	$a1, $a1, %pc_lo12(q)
-	ori	$a2, $zero, 23
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	pcalau12i	$a2, %pc_hi20(q)
+	addi.d	$a2, $a2, %pc_lo12(q)
+	ld.d	$a3, $a2, 0
+	ld.d	$a4, $a0, 8
+	ld.d	$a5, $a2, 8
+	ld.d	$a0, $a0, 15
+	ld.d	$a2, $a2, 15
+	xor	$a1, $a1, $a3
+	xor	$a3, $a4, $a5
+	xor	$a0, $a0, $a2
+	or	$a1, $a1, $a3
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
@@ -46,9 +54,9 @@ bar:                                    # @bar
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	addi.d	$sp, $sp, -624
 	lu12i.w	$a0, 10
-	ori	$a1, $a0, 629
-	st.w	$a1, $sp, 68
-	ori	$a0, $zero, 1
+	ori	$a0, $a0, 629
+	st.w	$a0, $sp, 68
+	ori	$a1, $zero, 1
 	lu12i.w	$a2, -1
 	ori	$a2, $a2, 1604
 	lu12i.w	$a3, 442488
@@ -57,16 +65,16 @@ bar:                                    # @bar
 	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a6, $a1, 31, 30
-	xor	$a1, $a6, $a1
-	mul.d	$a6, $a1, $a3
-	add.w	$a1, $a6, $a5
-	add.d	$a6, $a0, $a6
+	bstrpick.d	$a6, $a0, 31, 30
+	xor	$a0, $a6, $a0
+	mul.d	$a6, $a0, $a3
+	add.w	$a0, $a6, $a1
+	add.d	$a6, $a5, $a6
 	add.d	$a7, $a4, $a2
 	stptr.w	$a6, $a7, 2508
-	addi.d	$a5, $a5, 1
+	addi.d	$a1, $a1, 1
 	addi.d	$a2, $a2, 4
-	addi.d	$a0, $a0, 1
+	addi.d	$a5, $a5, 1
 	bnez	$a2, .LBB1_1
 # %bb.2:
 	ori	$a0, $zero, 1

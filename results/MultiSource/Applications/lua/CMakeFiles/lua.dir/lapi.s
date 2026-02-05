@@ -185,61 +185,60 @@ lua_gettop:                             # @lua_gettop
 	.type	lua_settop,@function
 lua_settop:                             # @lua_settop
 # %bb.0:
-	bltz	$a1, .LBB7_4
+	bltz	$a1, .LBB7_7
 # %bb.1:                                # %.preheader
-	ld.d	$a4, $a0, 24
-	ld.d	$a3, $a0, 16
-	alsl.d	$a2, $a1, $a4, 4
-	bgeu	$a3, $a2, .LBB7_9
+	ld.d	$a3, $a0, 24
+	ld.d	$a4, $a0, 16
+	alsl.d	$a2, $a1, $a3, 4
+	bgeu	$a4, $a2, .LBB7_6
 # %bb.2:                                # %.lr.ph.preheader
-	alsl.d	$a1, $a1, $a4, 4
-	addi.d	$a4, $a3, 16
-	sltu	$a5, $a4, $a1
+	alsl.d	$a1, $a1, $a3, 4
+	addi.d	$a3, $a4, 16
+	sltu	$a5, $a3, $a1
 	maskeqz	$a1, $a1, $a5
-	masknez	$a4, $a4, $a5
-	or	$a1, $a1, $a4
-	nor	$a4, $a3, $zero
-	add.d	$a1, $a1, $a4
-	ori	$a4, $zero, 16
-	bgeu	$a1, $a4, .LBB7_5
-# %bb.3:
-	move	$a1, $a3
-	b	.LBB7_8
-.LBB7_4:
+	masknez	$a3, $a3, $a5
+	or	$a1, $a1, $a3
+	nor	$a3, $a4, $zero
+	add.d	$a1, $a1, $a3
+	srli.d	$a1, $a1, 4
+	beqz	$a1, .LBB7_8
+# %bb.3:                                # %vector.ph
+	addi.d	$a3, $a1, 1
+	bstrpick.d	$a1, $a3, 60, 1
+	slli.d	$a5, $a1, 1
+	slli.d	$a1, $a1, 5
+	add.d	$a1, $a4, $a1
+	addi.d	$a4, $a4, 24
+	move	$a6, $a5
+	.p2align	4, , 16
+.LBB7_4:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	st.w	$zero, $a4, -16
+	st.w	$zero, $a4, 0
+	addi.d	$a6, $a6, -2
+	addi.d	$a4, $a4, 32
+	bnez	$a6, .LBB7_4
+# %bb.5:                                # %middle.block
+	bne	$a3, $a5, .LBB7_9
+.LBB7_6:                                # %._crit_edge
+	st.d	$a2, $a0, 16
+	ret
+.LBB7_7:
 	ld.d	$a2, $a0, 16
 	alsl.d	$a1, $a1, $a2, 4
 	addi.d	$a2, $a1, 16
 	st.d	$a2, $a0, 16
 	ret
-.LBB7_5:                                # %vector.ph
-	srli.d	$a1, $a1, 4
-	addi.d	$a4, $a1, 1
-	bstrpick.d	$a1, $a4, 60, 1
-	slli.d	$a5, $a1, 1
-	slli.d	$a1, $a1, 5
-	add.d	$a1, $a3, $a1
-	addi.d	$a3, $a3, 24
-	move	$a6, $a5
+.LBB7_8:
+	move	$a1, $a4
 	.p2align	4, , 16
-.LBB7_6:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$zero, $a3, -16
-	st.w	$zero, $a3, 0
-	addi.d	$a6, $a6, -2
-	addi.d	$a3, $a3, 32
-	bnez	$a6, .LBB7_6
-# %bb.7:                                # %middle.block
-	beq	$a4, $a5, .LBB7_9
-	.p2align	4, , 16
-.LBB7_8:                                # %.lr.ph
+.LBB7_9:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a3, $a1, 16
 	st.w	$zero, $a1, 8
 	move	$a1, $a3
-	bltu	$a3, $a2, .LBB7_8
-.LBB7_9:                                # %._crit_edge
-	st.d	$a2, $a0, 16
-	ret
+	bltu	$a3, $a2, .LBB7_9
+	b	.LBB7_6
 .Lfunc_end7:
 	.size	lua_settop, .Lfunc_end7-lua_settop
                                         # -- End function

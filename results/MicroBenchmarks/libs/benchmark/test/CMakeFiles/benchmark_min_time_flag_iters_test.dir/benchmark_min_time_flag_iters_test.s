@@ -851,23 +851,25 @@ _GLOBAL__sub_I_benchmark_min_time_flag_iters_test.cc: # @_GLOBAL__sub_I_benchmar
 .Ltmp21:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB10_7
-# %bb.6:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s2, .LBB10_8
-	b	.LBB10_9
-.LBB10_7:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB10_8
+# %bb.6:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bnez	$s2, .LBB10_9
+.LBB10_7:
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB10_8:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s2, .LBB10_9
-.LBB10_8:
+	beqz	$s2, .LBB10_7
+.LBB10_9:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB10_9:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

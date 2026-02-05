@@ -869,8 +869,8 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$sp, $sp, -1936
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 1
-	beqz	$a0, .LBB4_217
-# %bb.1:                                # %.preheader629.lr.ph
+	beqz	$a0, .LBB4_212
+# %bb.1:                                # %.preheader623.lr.ph
 	move	$fp, $a1
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
@@ -892,17 +892,17 @@ do_meta_command:                        # @do_meta_command
 	ori	$t2, $zero, 49
 	ori	$t3, $zero, 39
 	.p2align	4, , 16
-.LBB4_2:                                # %.preheader629
+.LBB4_2:                                # %.preheader623
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_3 Depth 2
                                         #     Child Loop BB4_8 Depth 2
-                                        #     Child Loop BB4_40 Depth 2
+                                        #     Child Loop BB4_38 Depth 2
                                         #     Child Loop BB4_12 Depth 2
-                                        #     Child Loop BB4_21 Depth 2
+                                        #     Child Loop BB4_20 Depth 2
 	move	$t5, $t6
-	ld.d	$s2, $a0, 0
+	ld.d	$t7, $a0, 0
 	addi.d	$t6, $t4, -1
-	slli.d	$t7, $t4, 32
+	slli.d	$t8, $t4, 32
 	addi.w	$s5, $t4, 1
 	add.d	$s6, $a1, $t4
 	move	$s1, $t4
@@ -910,58 +910,57 @@ do_meta_command:                        # @do_meta_command
 .LBB4_3:                                #   Parent Loop BB4_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t4, $s0, $t6
-	ld.bu	$t8, $t4, 1
+	ld.bu	$s4, $t4, 1
 	move	$t4, $s5
-	move	$s4, $s6
+	move	$s2, $s6
 	addi.w	$s1, $s1, 1
-	slli.d	$s5, $t8, 1
-	ldx.hu	$s6, $s2, $s5
+	slli.d	$s5, $s4, 1
+	ldx.hu	$s6, $t7, $s5
 	addi.d	$t6, $t6, 1
-	add.d	$t7, $t7, $a2
+	add.d	$t8, $t8, $a2
 	addi.w	$s5, $t4, 1
 	slli.d	$s7, $s6, 50
-	addi.d	$s6, $s4, 1
+	addi.d	$s6, $s2, 1
 	bltz	$s7, .LBB4_3
 # %bb.4:                                #   in Loop: Header=BB4_2 Depth=1
-	beq	$t8, $a3, .LBB4_11
+	beq	$s4, $a3, .LBB4_11
 # %bb.5:                                #   in Loop: Header=BB4_2 Depth=1
-	beq	$t8, $t3, .LBB4_11
+	beq	$s4, $t3, .LBB4_11
 # %bb.6:                                #   in Loop: Header=BB4_2 Depth=1
-	beqz	$t8, .LBB4_59
+	beqz	$s4, .LBB4_54
 # %bb.7:                                #   in Loop: Header=BB4_2 Depth=1
-	ori	$s5, $zero, 0
-	lu32i.d	$s5, -1
-	add.d	$t7, $t7, $s5
-	srai.d	$t7, $t7, 32
-	ldx.bu	$s5, $s0, $t7
-	add.d	$t7, $s0, $t6
-	slli.d	$s6, $t5, 3
-	stx.d	$t7, $s6, $a4
-	beqz	$s5, .LBB4_36
+	ori	$s4, $zero, 0
+	lu32i.d	$s4, -1
+	add.d	$t8, $t8, $s4
+	srai.d	$t8, $t8, 32
+	ldx.bu	$s4, $s0, $t8
+	add.d	$t8, $s0, $t6
+	slli.d	$s5, $t5, 3
+	stx.d	$t8, $s5, $a4
+	beqz	$s4, .LBB4_33
 	.p2align	4, , 16
 .LBB4_8:                                # %.lr.ph
                                         #   Parent Loop BB4_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.d	$s1, $s5, 1
-	ldx.hu	$s1, $s2, $s1
+	slli.d	$s1, $s4, 1
+	ldx.hu	$s1, $t7, $s1
 	slli.d	$s1, $s1, 50
-	bltz	$s1, .LBB4_54
+	bltz	$s1, .LBB4_34
 # %bb.9:                                #   in Loop: Header=BB4_8 Depth=2
-	ld.bu	$s5, $s4, 0
-	addi.d	$s4, $s4, 1
+	ld.bu	$s4, $s2, 0
+	addi.d	$s2, $s2, 1
 	addi.w	$t4, $t4, 1
-	bnez	$s5, .LBB4_8
+	bnez	$s4, .LBB4_8
 # %bb.10:                               # %.critedge2.thread.loopexit
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.w	$t4, $t4, -1
-	bnez	$t8, .LBB4_37
-	b	.LBB4_55
+	b	.LBB4_35
 	.p2align	4, , 16
 .LBB4_11:                               #   in Loop: Header=BB4_2 Depth=1
-	srai.d	$t6, $t7, 32
-	add.d	$t6, $s0, $t6
+	srai.d	$t6, $t8, 32
+	add.d	$t8, $s0, $t6
 	slli.d	$t7, $t5, 3
-	stx.d	$t6, $t7, $a4
+	stx.d	$t8, $t7, $a4
 	add.d	$t7, $s0, $t4
 	.p2align	4, , 16
 .LBB4_12:                               #   Parent Loop BB4_2 Depth=1
@@ -971,196 +970,173 @@ do_meta_command:                        # @do_meta_command
 	addi.w	$t4, $t4, 1
 	beqz	$s2, .LBB4_14
 # %bb.13:                               #   in Loop: Header=BB4_12 Depth=2
-	bne	$s2, $t8, .LBB4_12
+	bne	$s2, $s4, .LBB4_12
 .LBB4_14:                               # %.critedge
                                         #   in Loop: Header=BB4_2 Depth=1
-	bne	$s2, $t8, .LBB4_16
+	bne	$s2, $s4, .LBB4_16
 # %bb.15:                               #   in Loop: Header=BB4_2 Depth=1
 	st.b	$zero, $t7, -1
-	beq	$t8, $a3, .LBB4_17
-	b	.LBB4_57
+	beq	$s4, $a3, .LBB4_17
+	b	.LBB4_52
 	.p2align	4, , 16
 .LBB4_16:                               #   in Loop: Header=BB4_2 Depth=1
 	addi.w	$t4, $t4, -1
-	bne	$t8, $a3, .LBB4_57
-.LBB4_17:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.bu	$s4, $t6, 0
-	beqz	$s4, .LBB4_35
-# %bb.18:                               # %.lr.ph.i.preheader
+	bne	$s4, $a3, .LBB4_52
+.LBB4_17:                               # %.preheader622.preheader
                                         #   in Loop: Header=BB4_2 Depth=1
 	move	$t7, $zero
 	move	$s2, $zero
-	add.d	$t8, $s0, $s1
-	b	.LBB4_21
+	add.d	$s1, $s0, $s1
+	b	.LBB4_20
 	.p2align	4, , 16
-.LBB4_19:                               #   in Loop: Header=BB4_21 Depth=2
-	andi	$s1, $s4, 255
-.LBB4_20:                               #   in Loop: Header=BB4_21 Depth=2
-	stx.b	$s1, $t8, $t7
+.LBB4_18:                               # %.preheader622
+                                        #   in Loop: Header=BB4_20 Depth=2
+	beqz	$s4, .LBB4_51
+.LBB4_19:                               #   in Loop: Header=BB4_20 Depth=2
+	stx.b	$s4, $s1, $t7
 	addi.w	$s2, $s2, 1
-	ldx.bu	$s4, $t6, $s2
 	addi.d	$t7, $t7, 1
-	beqz	$s4, .LBB4_34
-.LBB4_21:                               # %.lr.ph.i
+.LBB4_20:                               # %.preheader622
                                         #   Parent Loop BB4_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bne	$s4, $a5, .LBB4_19
-# %bb.22:                               #   in Loop: Header=BB4_21 Depth=2
-	addi.w	$s4, $s2, 1
-	ldx.b	$s1, $t6, $s4
-	andi	$s5, $s1, 255
-	beq	$s5, $a6, .LBB4_27
-# %bb.23:                               #   in Loop: Header=BB4_21 Depth=2
-	beq	$s5, $a7, .LBB4_26
-# %bb.24:                               #   in Loop: Header=BB4_21 Depth=2
-	bne	$s5, $t0, .LBB4_28
-# %bb.25:                               #   in Loop: Header=BB4_21 Depth=2
-	ori	$s1, $zero, 9
-	move	$s2, $s4
-	b	.LBB4_20
-.LBB4_26:                               #   in Loop: Header=BB4_21 Depth=2
-	ori	$s1, $zero, 13
-	move	$s2, $s4
-	b	.LBB4_20
-.LBB4_27:                               #   in Loop: Header=BB4_21 Depth=2
-	ori	$s1, $zero, 10
-	move	$s2, $s4
-	b	.LBB4_20
-.LBB4_28:                               #   in Loop: Header=BB4_21 Depth=2
-	andi	$s5, $s5, 248
-	bne	$s5, $t1, .LBB4_32
-# %bb.29:                               #   in Loop: Header=BB4_21 Depth=2
-	addi.w	$s5, $s2, 2
-	ldx.bu	$s6, $t6, $s5
-	andi	$s7, $s6, 248
-	addi.d	$s1, $s1, -48
-	bne	$s7, $t1, .LBB4_32
-# %bb.30:                               #   in Loop: Header=BB4_21 Depth=2
-	addi.w	$s2, $s2, 3
-	ldx.bu	$s4, $t6, $s2
-	alsl.d	$s1, $s1, $s6, 3
-	andi	$s6, $s4, 248
-	addi.d	$s1, $s1, -48
-	bne	$s6, $t1, .LBB4_33
-# %bb.31:                               #   in Loop: Header=BB4_21 Depth=2
-	alsl.d	$s1, $s1, $s4, 3
-	addi.d	$s1, $s1, -48
-	b	.LBB4_20
-.LBB4_32:                               #   in Loop: Header=BB4_21 Depth=2
-	move	$s2, $s4
-	b	.LBB4_20
-.LBB4_33:                               #   in Loop: Header=BB4_21 Depth=2
+	ldx.bu	$s4, $t8, $s2
+	bne	$s4, $a5, .LBB4_18
+# %bb.21:                               #   in Loop: Header=BB4_20 Depth=2
+	addi.w	$s5, $s2, 1
+	ldx.bu	$s4, $t8, $s5
+	beq	$s4, $a6, .LBB4_26
+# %bb.22:                               #   in Loop: Header=BB4_20 Depth=2
+	beq	$s4, $a7, .LBB4_25
+# %bb.23:                               #   in Loop: Header=BB4_20 Depth=2
+	bne	$s4, $t0, .LBB4_27
+# %bb.24:                               #   in Loop: Header=BB4_20 Depth=2
+	ori	$s4, $zero, 9
 	move	$s2, $s5
-	b	.LBB4_20
-	.p2align	4, , 16
-.LBB4_34:                               # %._crit_edge.loopexit.i
-                                        #   in Loop: Header=BB4_2 Depth=1
-	bstrpick.d	$t7, $t7, 31, 0
-	stx.b	$zero, $t6, $t7
-	b	.LBB4_57
-.LBB4_35:                               #   in Loop: Header=BB4_2 Depth=1
-	stx.b	$zero, $t6, $zero
-	b	.LBB4_57
-.LBB4_36:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_19
+.LBB4_25:                               #   in Loop: Header=BB4_20 Depth=2
+	ori	$s4, $zero, 13
+	move	$s2, $s5
+	b	.LBB4_19
+.LBB4_26:                               #   in Loop: Header=BB4_20 Depth=2
+	ori	$s4, $zero, 10
+	move	$s2, $s5
+	b	.LBB4_19
+.LBB4_27:                               #   in Loop: Header=BB4_20 Depth=2
+	andi	$s6, $s4, 248
+	bne	$s6, $t1, .LBB4_31
+# %bb.28:                               #   in Loop: Header=BB4_20 Depth=2
+	addi.w	$s6, $s2, 2
+	ldx.bu	$s7, $t8, $s6
+	andi	$s8, $s7, 248
+	addi.d	$s4, $s4, -48
+	bne	$s8, $t1, .LBB4_31
+# %bb.29:                               #   in Loop: Header=BB4_20 Depth=2
+	addi.w	$s2, $s2, 3
+	ldx.bu	$s5, $t8, $s2
+	alsl.d	$s4, $s4, $s7, 3
+	andi	$s7, $s5, 248
+	addi.d	$s4, $s4, -48
+	bne	$s7, $t1, .LBB4_32
+# %bb.30:                               #   in Loop: Header=BB4_20 Depth=2
+	alsl.d	$s4, $s4, $s5, 3
+	addi.d	$s4, $s4, -48
+	b	.LBB4_19
+.LBB4_31:                               #   in Loop: Header=BB4_20 Depth=2
+	move	$s2, $s5
+	b	.LBB4_19
+.LBB4_32:                               #   in Loop: Header=BB4_20 Depth=2
+	move	$s2, $s6
+	b	.LBB4_19
+.LBB4_33:                               #   in Loop: Header=BB4_2 Depth=1
 	addi.w	$t4, $s1, -1
-	beqz	$t8, .LBB4_55
-.LBB4_37:                               # %.lr.ph.i558.preheader
+	b	.LBB4_35
+.LBB4_34:                               # %.critedge2
                                         #   in Loop: Header=BB4_2 Depth=1
+	st.b	$zero, $s2, -1
+.LBB4_35:                               # %.critedge2.thread
+                                        #   in Loop: Header=BB4_2 Depth=1
+	move	$t7, $zero
 	move	$s1, $zero
-	move	$s2, $zero
-	b	.LBB4_40
+	b	.LBB4_38
 	.p2align	4, , 16
-.LBB4_38:                               #   in Loop: Header=BB4_40 Depth=2
-	andi	$t8, $t8, 255
-.LBB4_39:                               #   in Loop: Header=BB4_40 Depth=2
-	stx.b	$t8, $t7, $s1
-	add.d	$t8, $t7, $s2
-	ld.bu	$t8, $t8, 1
-	addi.w	$s2, $s2, 1
-	addi.d	$s1, $s1, 1
-	beqz	$t8, .LBB4_53
-.LBB4_40:                               # %.lr.ph.i558
-                                        #   Parent Loop BB4_2 Depth=1
+.LBB4_36:                               #   in Loop: Header=BB4_38 Depth=2
+	beqz	$s2, .LBB4_51
+.LBB4_37:                               #   in Loop: Header=BB4_38 Depth=2
+	stx.b	$s2, $t8, $t7
+	addi.w	$s1, $s1, 1
+	addi.d	$t7, $t7, 1
+.LBB4_38:                               #   Parent Loop BB4_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bne	$t8, $a5, .LBB4_38
-# %bb.41:                               #   in Loop: Header=BB4_40 Depth=2
-	addi.w	$s4, $s2, 1
-	add.d	$t8, $s0, $s4
-	ldx.b	$t8, $t8, $t6
-	andi	$s5, $t8, 255
-	beq	$s5, $a6, .LBB4_46
-# %bb.42:                               #   in Loop: Header=BB4_40 Depth=2
-	beq	$s5, $a7, .LBB4_45
-# %bb.43:                               #   in Loop: Header=BB4_40 Depth=2
-	bne	$s5, $t0, .LBB4_47
-# %bb.44:                               #   in Loop: Header=BB4_40 Depth=2
-	ori	$t8, $zero, 9
-	move	$s2, $s4
-	b	.LBB4_39
-.LBB4_45:                               #   in Loop: Header=BB4_40 Depth=2
-	ori	$t8, $zero, 13
-	move	$s2, $s4
-	b	.LBB4_39
-.LBB4_46:                               #   in Loop: Header=BB4_40 Depth=2
-	ori	$t8, $zero, 10
-	move	$s2, $s4
-	b	.LBB4_39
-.LBB4_47:                               #   in Loop: Header=BB4_40 Depth=2
-	andi	$s5, $s5, 248
-	bne	$s5, $t1, .LBB4_51
-# %bb.48:                               #   in Loop: Header=BB4_40 Depth=2
-	addi.w	$s5, $s2, 2
+	add.d	$s2, $s0, $s1
+	ldx.bu	$s2, $s2, $t6
+	bne	$s2, $a5, .LBB4_36
+# %bb.39:                               #   in Loop: Header=BB4_38 Depth=2
+	addi.w	$s4, $s1, 1
+	add.d	$s2, $s0, $s4
+	ldx.bu	$s2, $s2, $t6
+	beq	$s2, $a6, .LBB4_44
+# %bb.40:                               #   in Loop: Header=BB4_38 Depth=2
+	beq	$s2, $a7, .LBB4_43
+# %bb.41:                               #   in Loop: Header=BB4_38 Depth=2
+	bne	$s2, $t0, .LBB4_45
+# %bb.42:                               #   in Loop: Header=BB4_38 Depth=2
+	ori	$s2, $zero, 9
+	move	$s1, $s4
+	b	.LBB4_37
+.LBB4_43:                               #   in Loop: Header=BB4_38 Depth=2
+	ori	$s2, $zero, 13
+	move	$s1, $s4
+	b	.LBB4_37
+.LBB4_44:                               #   in Loop: Header=BB4_38 Depth=2
+	ori	$s2, $zero, 10
+	move	$s1, $s4
+	b	.LBB4_37
+.LBB4_45:                               #   in Loop: Header=BB4_38 Depth=2
+	andi	$s5, $s2, 248
+	bne	$s5, $t1, .LBB4_49
+# %bb.46:                               #   in Loop: Header=BB4_38 Depth=2
+	addi.w	$s5, $s1, 2
 	add.d	$s6, $s0, $s5
 	ldx.bu	$s6, $s6, $t6
 	andi	$s7, $s6, 248
-	addi.d	$t8, $t8, -48
-	bne	$s7, $t1, .LBB4_51
-# %bb.49:                               #   in Loop: Header=BB4_40 Depth=2
-	addi.w	$s2, $s2, 3
-	add.d	$s4, $s0, $s2
+	addi.d	$s2, $s2, -48
+	bne	$s7, $t1, .LBB4_49
+# %bb.47:                               #   in Loop: Header=BB4_38 Depth=2
+	addi.w	$s1, $s1, 3
+	add.d	$s4, $s0, $s1
 	ldx.bu	$s4, $s4, $t6
-	alsl.d	$t8, $t8, $s6, 3
+	alsl.d	$s2, $s2, $s6, 3
 	andi	$s6, $s4, 248
-	addi.d	$t8, $t8, -48
-	bne	$s6, $t1, .LBB4_52
-# %bb.50:                               #   in Loop: Header=BB4_40 Depth=2
-	alsl.d	$t8, $t8, $s4, 3
-	addi.d	$t8, $t8, -48
-	b	.LBB4_39
-.LBB4_51:                               #   in Loop: Header=BB4_40 Depth=2
-	move	$s2, $s4
-	b	.LBB4_39
-.LBB4_52:                               #   in Loop: Header=BB4_40 Depth=2
-	move	$s2, $s5
-	b	.LBB4_39
+	addi.d	$s2, $s2, -48
+	bne	$s6, $t1, .LBB4_50
+# %bb.48:                               #   in Loop: Header=BB4_38 Depth=2
+	alsl.d	$s2, $s2, $s4, 3
+	addi.d	$s2, $s2, -48
+	b	.LBB4_37
+.LBB4_49:                               #   in Loop: Header=BB4_38 Depth=2
+	move	$s1, $s4
+	b	.LBB4_37
+.LBB4_50:                               #   in Loop: Header=BB4_38 Depth=2
+	move	$s1, $s5
+	b	.LBB4_37
 	.p2align	4, , 16
-.LBB4_53:                               # %._crit_edge.loopexit.i565
+.LBB4_51:                               # %.sink.split
                                         #   in Loop: Header=BB4_2 Depth=1
-	bstrpick.d	$t7, $s1, 31, 0
-	b	.LBB4_56
-.LBB4_54:                               # %.critedge2
-                                        #   in Loop: Header=BB4_2 Depth=1
-	st.b	$zero, $s4, -1
-	ldx.bu	$t8, $s0, $t6
-	bnez	$t8, .LBB4_37
-.LBB4_55:                               #   in Loop: Header=BB4_2 Depth=1
-	move	$t7, $zero
-.LBB4_56:                               # %resolve_backslashes.exit570
-                                        #   in Loop: Header=BB4_2 Depth=1
-	add.d	$t7, $s0, $t7
-	stx.b	$zero, $t7, $t6
-.LBB4_57:                               #   in Loop: Header=BB4_2 Depth=1
+	add.d	$t6, $s0, $t6
+	bstrpick.d	$t7, $t7, 31, 0
+	stx.b	$zero, $t6, $t7
+.LBB4_52:                               #   in Loop: Header=BB4_2 Depth=1
 	ldx.bu	$t6, $s0, $t4
 	addi.w	$s3, $s3, 1
-	beqz	$t6, .LBB4_60
-# %bb.58:                               #   in Loop: Header=BB4_2 Depth=1
+	beqz	$t6, .LBB4_55
+# %bb.53:                               #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$t6, $t5, 1
 	bltu	$t5, $t2, .LBB4_2
-	b	.LBB4_60
-.LBB4_59:                               # %._crit_edge
+	b	.LBB4_55
+.LBB4_54:                               # %._crit_edge
 	move	$s3, $t5
-	beqz	$t5, .LBB4_217
-.LBB4_60:                               # %._crit_edge.thread770
+	beqz	$t5, .LBB4_212
+.LBB4_55:                               # %._crit_edge.thread760
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1432
 	add.d	$a0, $sp, $a0
@@ -1171,23 +1147,23 @@ do_meta_command:                        # @do_meta_command
 	ld.bu	$s4, $s0, 0
 	ori	$a1, $zero, 98
 	addi.w	$s1, $a0, 0
-	bne	$s4, $a1, .LBB4_72
-# %bb.61:                               # %._crit_edge.thread770
+	bne	$s4, $a1, .LBB4_67
+# %bb.56:                               # %._crit_edge.thread760
 	ori	$a1, $zero, 2
-	blt	$s1, $a1, .LBB4_72
-# %bb.62:
+	blt	$s1, $a1, .LBB4_67
+# %bb.57:
 	bstrpick.d	$a2, $a0, 30, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.40)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.40)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.63:
+	bnez	$a0, .LBB4_210
+# %bb.58:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_215
-# %bb.64:
+	beq	$a0, $a1, .LBB4_210
+# %bb.59:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -1199,13 +1175,13 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	ld.bu	$s1, $fp, 0
 	move	$s0, $a0
-	beqz	$s1, .LBB4_70
-# %bb.65:                               # %.lr.ph.i571
+	beqz	$s1, .LBB4_65
+# %bb.60:                               # %.lr.ph.i
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $fp, 1
 	.p2align	4, , 16
-.LBB4_66:                               # =>This Inner Loop Header: Depth=1
+.LBB4_61:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 0
 	ext.w.b	$a3, $s1
 	slli.d	$a3, $a3, 2
@@ -1213,19 +1189,19 @@ do_meta_command:                        # @do_meta_command
 	ld.bu	$s1, $a1, 0
 	st.b	$a2, $a1, -1
 	addi.d	$a1, $a1, 1
-	bnez	$s1, .LBB4_66
-# %bb.67:                               # %sub_0.i
+	bnez	$s1, .LBB4_61
+# %bb.62:                               # %sub_0.i
 	ld.bu	$a0, $fp, 0
 	ori	$a1, $zero, 111
-	bne	$a0, $a1, .LBB4_70
-# %bb.68:                               # %sub_1.i
+	bne	$a0, $a1, .LBB4_65
+# %bb.63:                               # %sub_1.i
 	ld.bu	$a0, $fp, 1
 	ori	$a1, $zero, 110
-	bne	$a0, $a1, .LBB4_70
-# %bb.69:                               # %.tail.i
+	bne	$a0, $a1, .LBB4_65
+# %bb.64:                               # %.tail.i
 	ld.bu	$a0, $fp, 2
-	beqz	$a0, .LBB4_114
-.LBB4_70:                               # %.tail.thread.i
+	beqz	$a0, .LBB4_109
+.LBB4_65:                               # %.tail.thread.i
 	pcalau12i	$a0, %pc_hi20(.L.str.119)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.119)
 	move	$a0, $fp
@@ -1236,18 +1212,18 @@ do_meta_command:                        # @do_meta_command
 	ori	$a2, $zero, 1
 	maskeqz	$a0, $a2, $a0
 	or	$a1, $a0, $a1
-.LBB4_71:                               # %booleanValue.exit
+.LBB4_66:                               # %booleanValue.exit
 	move	$a0, $zero
 	pcalau12i	$a2, %pc_hi20(bail_on_error)
 	st.w	$a1, $a2, %pc_lo12(bail_on_error)
-	b	.LBB4_218
-.LBB4_72:
+	b	.LBB4_213
+.LBB4_67:
 	ori	$a1, $zero, 100
-	bne	$s4, $a1, .LBB4_77
-# %bb.73:
+	bne	$s4, $a1, .LBB4_72
+# %bb.68:
 	ori	$a2, $zero, 2
-	blt	$s1, $a2, .LBB4_77
-# %bb.74:
+	blt	$s1, $a2, .LBB4_72
+# %bb.69:
 	move	$s2, $a0
 	bstrpick.d	$a2, $a0, 30, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.41)
@@ -1255,8 +1231,8 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_78
-# %bb.75:
+	bnez	$a0, .LBB4_73
+# %bb.70:
 	st.d	$zero, $sp, 96
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(open_db)
@@ -1286,8 +1262,8 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(sqlite3_exec)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $sp, 96
-	beqz	$a2, .LBB4_217
-.LBB4_76:
+	beqz	$a2, .LBB4_212
+.LBB4_71:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
@@ -1298,28 +1274,28 @@ do_meta_command:                        # @do_meta_command
 	ld.d	$a0, $sp, 96
 	pcaddu18i	$ra, %call36(sqlite3_free)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_77:
+	b	.LBB4_212
+.LBB4_72:
 	move	$s2, $a0
-	bne	$s4, $a1, .LBB4_86
-.LBB4_78:                               # %.thread
+	bne	$s4, $a1, .LBB4_81
+.LBB4_73:                               # %.thread
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.44)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_98
-# %bb.79:
+	beqz	$a0, .LBB4_93
+# %bb.74:
 	move	$a2, $zero
-.LBB4_80:                               # %.critedge554.thread621
+.LBB4_75:                               # %.critedge554.thread614
 	move	$a1, $s2
-.LBB4_81:                               # %.critedge554.thread621
-	beqz	$a2, .LBB4_109
-# %bb.82:                               # %.critedge554.thread621
+.LBB4_76:                               # %.critedge554.thread614
+	beqz	$a2, .LBB4_104
+# %bb.77:                               # %.critedge554.thread614
 	ori	$a0, $zero, 5
-	blt	$s1, $a0, .LBB4_109
-# %bb.83:
+	blt	$s1, $a0, .LBB4_104
+# %bb.78:
 	bstrpick.d	$s2, $a1, 30, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.116)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.116)
@@ -1327,12 +1303,12 @@ do_meta_command:                        # @do_meta_command
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_106
-# %bb.84:
+	bnez	$a0, .LBB4_101
+# %bb.79:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_106
-# %bb.85:
+	beq	$a0, $a1, .LBB4_101
+# %bb.80:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(open_db)
 	jirl	$ra, $ra, 0
@@ -1349,31 +1325,31 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(sqlite3_busy_timeout)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_86:
+	b	.LBB4_212
+.LBB4_81:
 	addi.d	$a0, $s4, -101
 	ori	$a1, $zero, 14
-	bltu	$a1, $a0, .LBB4_148
-# %bb.87:
+	bltu	$a1, $a0, .LBB4_143
+# %bb.82:
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI4_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI4_0)
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
-.LBB4_88:
+.LBB4_83:
 	pcalau12i	$a0, %pc_hi20(.L.str.52)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.52)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_183
-# %bb.89:
+	bnez	$a0, .LBB4_178
+# %bb.84:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_183
-# %bb.90:
+	beq	$a0, $a1, .LBB4_178
+# %bb.85:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -1385,12 +1361,12 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	ld.bu	$s2, $s0, 0
 	move	$s1, $a0
-	beqz	$s2, .LBB4_96
-# %bb.91:                               # %.lr.ph.i577
+	beqz	$s2, .LBB4_91
+# %bb.86:                               # %.lr.ph.i570
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $s0, 1
-.LBB4_92:                               # =>This Inner Loop Header: Depth=1
+.LBB4_87:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 0
 	ext.w.b	$a3, $s2
 	slli.d	$a3, $a3, 2
@@ -1398,19 +1374,19 @@ do_meta_command:                        # @do_meta_command
 	ld.bu	$s2, $a1, 0
 	st.b	$a2, $a1, -1
 	addi.d	$a1, $a1, 1
-	bnez	$s2, .LBB4_92
-# %bb.93:                               # %sub_0.i581
+	bnez	$s2, .LBB4_87
+# %bb.88:                               # %sub_0.i574
 	ld.bu	$a0, $s0, 0
 	ori	$a1, $zero, 111
-	bne	$a0, $a1, .LBB4_96
-# %bb.94:                               # %sub_1.i586
+	bne	$a0, $a1, .LBB4_91
+# %bb.89:                               # %sub_1.i579
 	ld.bu	$a0, $s0, 1
 	ori	$a1, $zero, 110
-	bne	$a0, $a1, .LBB4_96
-# %bb.95:                               # %.tail.i588
+	bne	$a0, $a1, .LBB4_91
+# %bb.90:                               # %.tail.i581
 	ld.bu	$a0, $s0, 2
-	beqz	$a0, .LBB4_229
-.LBB4_96:                               # %.tail.thread.i583
+	beqz	$a0, .LBB4_224
+.LBB4_91:                               # %.tail.thread.i576
 	pcalau12i	$a0, %pc_hi20(.L.str.119)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.119)
 	move	$a0, $s0
@@ -1421,11 +1397,11 @@ do_meta_command:                        # @do_meta_command
 	ori	$a2, $zero, 1
 	maskeqz	$a0, $a2, $a0
 	or	$a1, $a0, $a1
-.LBB4_97:                               # %booleanValue.exit589
+.LBB4_92:                               # %booleanValue.exit582
 	move	$a0, $zero
 	st.w	$a1, $fp, 8
-	b	.LBB4_218
-.LBB4_98:
+	b	.LBB4_213
+.LBB4_93:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(open_db)
 	jirl	$ra, $ra, 0
@@ -1439,8 +1415,8 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $s3, 0
 	st.w	$zero, $fp, 28
-	bne	$a0, $s0, .LBB4_100
-# %bb.99:
+	bne	$a0, $s0, .LBB4_95
+# %bb.94:
 	pcalau12i	$a0, %pc_hi20(.L.str.46)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.46)
 	move	$a0, $fp
@@ -1452,8 +1428,8 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$a2, $a2, %pc_lo12(.L.str.47)
 	pcaddu18i	$ra, %call36(run_table_dump_query)
 	jirl	$ra, $ra, 0
-	b	.LBB4_102
-.LBB4_100:                              # %.lr.ph683.preheader
+	b	.LBB4_97
+.LBB4_95:                               # %.lr.ph677.preheader
 	bstrpick.d	$a0, $s3, 31, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1440
@@ -1465,7 +1441,7 @@ do_meta_command:                        # @do_meta_command
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.49)
 	.p2align	4, , 16
-.LBB4_101:                              # %.lr.ph683
+.LBB4_96:                               # %.lr.ph677
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 0
 	st.d	$a0, $s4, %pc_lo12(zShellStatic)
@@ -1481,11 +1457,11 @@ do_meta_command:                        # @do_meta_command
 	st.d	$zero, $s4, %pc_lo12(zShellStatic)
 	addi.d	$s3, $s3, -1
 	addi.d	$s2, $s2, 8
-	bnez	$s3, .LBB4_101
-.LBB4_102:                              # %.loopexit624
+	bnez	$s3, .LBB4_96
+.LBB4_97:                               # %.loopexit617
 	ld.w	$a0, $fp, 28
-	beqz	$a0, .LBB4_104
-# %bb.103:
+	beqz	$a0, .LBB4_99
+# %bb.98:
 	ld.d	$a3, $fp, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.50)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.50)
@@ -1494,29 +1470,29 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	st.w	$zero, $fp, 28
-.LBB4_104:
+.LBB4_99:
 	ld.d	$a3, $fp, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.51)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.51)
 	ori	$a1, $zero, 8
-.LBB4_105:                              # %.loopexit
+.LBB4_100:                              # %.loopexit
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_106:
+	b	.LBB4_212
+.LBB4_101:
 	pcalau12i	$a0, %pc_hi20(.L.str.117)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.117)
 	move	$a0, $s0
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_109
-# %bb.107:
+	bnez	$a0, .LBB4_104
+# %bb.102:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_109
-# %bb.108:
+	beq	$a0, $a1, .LBB4_104
+# %bb.103:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -1527,23 +1503,23 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $zero
 	pcalau12i	$a2, %pc_hi20(enableTimer)
 	st.w	$a1, $a2, %pc_lo12(enableTimer)
-	b	.LBB4_218
-.LBB4_109:
+	b	.LBB4_213
+.LBB4_104:
 	ori	$a0, $zero, 119
-	bne	$s4, $a0, .LBB4_215
-# %bb.110:
+	bne	$s4, $a0, .LBB4_210
+# %bb.105:
 	pcalau12i	$a0, %pc_hi20(.L.str.108)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.108)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.111:                              # %.preheader
+	bnez	$a0, .LBB4_210
+# %bb.106:                              # %.preheader
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_217
-# %bb.112:                              # %.lr.ph685.preheader
+	beq	$a0, $a1, .LBB4_212
+# %bb.107:                              # %.lr.ph679.preheader
 	bstrpick.d	$a0, $s3, 31, 0
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1440
@@ -1551,7 +1527,7 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$fp, $fp, 68
 	addi.d	$s1, $a0, -1
 	.p2align	4, , 16
-.LBB4_113:                              # %.lr.ph685
+.LBB4_108:                              # %.lr.ph679
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 0
 	ori	$a2, $zero, 10
@@ -1564,24 +1540,24 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$s0, $s0, 8
 	addi.d	$s1, $s1, -1
 	addi.d	$fp, $fp, 4
-	bnez	$s1, .LBB4_113
-	b	.LBB4_218
-.LBB4_114:
+	bnez	$s1, .LBB4_108
+	b	.LBB4_213
+.LBB4_109:
 	ori	$a1, $zero, 1
-	b	.LBB4_71
-.LBB4_115:
+	b	.LBB4_66
+.LBB4_110:
 	pcalau12i	$a0, %pc_hi20(.L.str.58)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.58)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_180
-# %bb.116:
+	bnez	$a0, .LBB4_175
+# %bb.111:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 3
-	bltu	$a0, $a1, .LBB4_180
-# %bb.117:
+	bltu	$a0, $a1, .LBB4_175
+# %bb.112:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1448
 	add.d	$a0, $sp, $a0
@@ -1598,16 +1574,16 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	slli.d	$s7, $a0, 32
-	beqz	$s7, .LBB4_228
-# %bb.118:
+	beqz	$s7, .LBB4_223
+# %bb.113:
 	move	$s4, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.60)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.60)
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(sqlite3_mprintf)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_217
-# %bb.119:
+	beqz	$a0, .LBB4_212
+# %bb.114:
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1624,8 +1600,8 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(sqlite3_free)
 	jirl	$ra, $ra, 0
-	bnez	$s3, .LBB4_255
-# %bb.120:
+	bnez	$s3, .LBB4_250
+# %bb.115:
 	ld.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(sqlite3_column_count)
 	jirl	$ra, $ra, 0
@@ -1634,14 +1610,14 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(sqlite3_finalize)
 	jirl	$ra, $ra, 0
-	beqz	$s2, .LBB4_217
-# %bb.121:
+	beqz	$s2, .LBB4_212
+# %bb.116:
 	addi.w	$s0, $s0, 20
 	alsl.w	$a0, $s2, $s0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_217
-# %bb.122:
+	beqz	$a0, .LBB4_212
+# %bb.117:
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.61)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.61)
@@ -1655,36 +1631,36 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 2
 	move	$s5, $s2
-	blt	$s2, $a2, .LBB4_235
-# %bb.123:                              # %.lr.ph661.preheader
+	blt	$s2, $a2, .LBB4_230
+# %bb.118:                              # %.lr.ph655.preheader
 	addi.w	$a4, $a0, 0
 	ori	$a1, $zero, 1
-	bne	$s5, $a2, .LBB4_230
-# %bb.124:
+	bne	$s5, $a2, .LBB4_225
+# %bb.119:
 	move	$a0, $a4
-	b	.LBB4_233
-.LBB4_125:
+	b	.LBB4_228
+.LBB4_120:
 	pcalau12i	$a0, %pc_hi20(.L.str.84)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.84)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.126:
+	bnez	$a0, .LBB4_210
+# %bb.121:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB4_215
-# %bb.127:
+	bne	$a0, $a1, .LBB4_210
+# %bb.122:
 	ld.d	$a0, $fp, 16
 	pcalau12i	$a1, %got_pc_hi20(stdout)
 	ld.d	$s1, $a1, %got_pc_lo12(stdout)
 	ld.d	$a1, $s1, 0
-	beq	$a0, $a1, .LBB4_129
-# %bb.128:
+	beq	$a0, $a1, .LBB4_124
+# %bb.123:
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-.LBB4_129:
+.LBB4_124:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -1694,16 +1670,16 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_192
-# %bb.130:
+	beqz	$a0, .LBB4_187
+# %bb.125:
 	pcalau12i	$a0, %pc_hi20(.L.str.86)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.86)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 16
-	beqz	$a0, .LBB4_226
-# %bb.131:
+	beqz	$a0, .LBB4_221
+# %bb.126:
 	addi.d	$a1, $fp, 1300
 	pcalau12i	$a0, %pc_hi20(.L.str.88)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.88)
@@ -1711,28 +1687,28 @@ do_meta_command:                        # @do_meta_command
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(sqlite3_snprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_132:
+	b	.LBB4_212
+.LBB4_127:
 	pcalau12i	$a0, %pc_hi20(.L.str.55)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.55)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_134
-# %bb.133:
+	beqz	$a0, .LBB4_129
+# %bb.128:
 	pcalau12i	$a0, %pc_hi20(.L.str.56)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.56)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_213
-.LBB4_134:
+	bnez	$a0, .LBB4_208
+.LBB4_129:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_213
-# %bb.135:
+	beq	$a0, $a1, .LBB4_208
+# %bb.130:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -1744,12 +1720,12 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	ld.bu	$s2, $s0, 0
 	move	$s1, $a0
-	beqz	$s2, .LBB4_141
-# %bb.136:                              # %.lr.ph.i591
+	beqz	$s2, .LBB4_136
+# %bb.131:                              # %.lr.ph.i584
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $s0, 1
-.LBB4_137:                              # =>This Inner Loop Header: Depth=1
+.LBB4_132:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 0
 	ext.w.b	$a3, $s2
 	slli.d	$a3, $a3, 2
@@ -1757,19 +1733,19 @@ do_meta_command:                        # @do_meta_command
 	ld.bu	$s2, $a1, 0
 	st.b	$a2, $a1, -1
 	addi.d	$a1, $a1, 1
-	bnez	$s2, .LBB4_137
-# %bb.138:                              # %sub_0.i595
+	bnez	$s2, .LBB4_132
+# %bb.133:                              # %sub_0.i588
 	ld.bu	$a0, $s0, 0
 	ori	$a1, $zero, 111
-	bne	$a0, $a1, .LBB4_141
-# %bb.139:                              # %sub_1.i600
+	bne	$a0, $a1, .LBB4_136
+# %bb.134:                              # %sub_1.i593
 	ld.bu	$a0, $s0, 1
 	ori	$a1, $zero, 110
-	bne	$a0, $a1, .LBB4_141
-# %bb.140:                              # %.tail.i602
+	bne	$a0, $a1, .LBB4_136
+# %bb.135:                              # %.tail.i595
 	ld.bu	$a0, $s0, 2
-	beqz	$a0, .LBB4_220
-.LBB4_141:                              # %.tail.thread.i597
+	beqz	$a0, .LBB4_215
+.LBB4_136:                              # %.tail.thread.i590
 	pcalau12i	$a0, %pc_hi20(.L.str.119)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.119)
 	move	$a0, $s0
@@ -1780,24 +1756,24 @@ do_meta_command:                        # @do_meta_command
 	ori	$a2, $zero, 1
 	maskeqz	$a0, $a2, $a0
 	or	$a1, $a0, $a1
-.LBB4_142:                              # %booleanValue.exit603
+.LBB4_137:                              # %booleanValue.exit596
 	move	$a0, $zero
 	st.w	$a1, $fp, 32
-	b	.LBB4_218
-.LBB4_143:
+	b	.LBB4_213
+.LBB4_138:
 	pcalau12i	$a0, %pc_hi20(.L.str.89)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.89)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.144:
+	bnez	$a0, .LBB4_210
+# %bb.139:
 	bstrpick.d	$a0, $s3, 30, 1
 	slli.w	$a0, $a0, 1
 	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB4_215
-# %bb.145:
+	bne	$a0, $a1, .LBB4_210
+# %bb.140:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -1809,8 +1785,8 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 3
-	bltu	$a0, $a1, .LBB4_217
-# %bb.146:
+	bltu	$a0, $a1, .LBB4_212
+# %bb.141:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1448
 	add.d	$a0, $sp, $a0
@@ -1820,8 +1796,8 @@ do_meta_command:                        # @do_meta_command
 	ori	$a2, $zero, 19
 	pcaddu18i	$ra, %call36(strncpy)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_147:
+	b	.LBB4_212
+.LBB4_142:
 	pcalau12i	$a0, %pc_hi20(.L.str.90)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.90)
 	move	$a0, $s0
@@ -1830,18 +1806,18 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	ori	$a0, $zero, 2
-	beqz	$a1, .LBB4_218
-	b	.LBB4_215
-.LBB4_148:                              # %.critedge554
+	beqz	$a1, .LBB4_213
+	b	.LBB4_210
+.LBB4_143:                              # %.critedge554
 	addi.d	$a0, $s4, -116
 	ori	$a1, $zero, 116
 	sltui	$a2, $a0, 1
-	bne	$s4, $a1, .LBB4_80
-# %bb.149:                              # %.critedge554
+	bne	$s4, $a1, .LBB4_75
+# %bb.144:                              # %.critedge554
 	ori	$a0, $zero, 2
 	move	$a1, $s2
-	blt	$s1, $a0, .LBB4_81
-# %bb.150:
+	blt	$s1, $a0, .LBB4_76
+# %bb.145:
 	bstrpick.d	$a2, $a1, 30, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.110)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.110)
@@ -1850,15 +1826,15 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	move	$a1, $s2
 	ori	$a2, $zero, 1
-	bnez	$a0, .LBB4_81
-# %bb.151:
+	bnez	$a0, .LBB4_76
+# %bb.146:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(open_db)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_206
-# %bb.152:
+	bne	$a0, $a1, .LBB4_201
+# %bb.147:
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.111)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.111)
@@ -1868,20 +1844,20 @@ do_meta_command:                        # @do_meta_command
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(sqlite3_get_table)
 	jirl	$ra, $ra, 0
-	b	.LBB4_207
-.LBB4_153:
+	b	.LBB4_202
+.LBB4_148:
 	pcalau12i	$a0, %pc_hi20(.L.str.69)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.69)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.154:
+	bnez	$a0, .LBB4_210
+# %bb.149:
 	addi.w	$s2, $s3, 0
 	ori	$a0, $zero, 1
-	beq	$s2, $a0, .LBB4_215
-# %bb.155:
+	beq	$s2, $a0, .LBB4_210
+# %bb.150:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -1896,156 +1872,156 @@ do_meta_command:                        # @do_meta_command
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_179
-# %bb.156:
+	beqz	$a0, .LBB4_174
+# %bb.151:
 	pcalau12i	$a0, %pc_hi20(.L.str.71)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.71)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_179
-# %bb.157:
+	beqz	$a0, .LBB4_174
+# %bb.152:
 	pcalau12i	$a0, %pc_hi20(.L.str.72)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.72)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_198
-# %bb.158:
+	beqz	$a0, .LBB4_193
+# %bb.153:
 	pcalau12i	$a0, %pc_hi20(.L.str.73)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.73)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_198
-# %bb.159:
+	beqz	$a0, .LBB4_193
+# %bb.154:
 	pcalau12i	$a0, %pc_hi20(.L.str.74)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.74)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_221
-# %bb.160:
+	beqz	$a0, .LBB4_216
+# %bb.155:
 	pcalau12i	$a0, %pc_hi20(.L.str.75)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.75)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_227
-# %bb.161:
+	beqz	$a0, .LBB4_222
+# %bb.156:
 	pcalau12i	$a0, %pc_hi20(.L.str.76)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.76)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_254
-# %bb.162:
+	beqz	$a0, .LBB4_249
+# %bb.157:
 	pcalau12i	$a0, %pc_hi20(.L.str.77)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.77)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_256
-# %bb.163:
+	beqz	$a0, .LBB4_251
+# %bb.158:
 	pcalau12i	$a0, %pc_hi20(.L.str.78)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.78)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_271
-# %bb.164:
+	beqz	$a0, .LBB4_266
+# %bb.159:
 	pcalau12i	$a0, %pc_hi20(.L.str.80)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.80)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_282
-# %bb.165:
+	bnez	$a0, .LBB4_277
+# %bb.160:
 	ori	$a0, $zero, 5
 	ori	$a1, $zero, 3
 	st.w	$a0, $fp, 24
-	bltu	$s2, $a1, .LBB4_273
-# %bb.166:
+	bltu	$s2, $a1, .LBB4_268
+# %bb.161:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1448
 	add.d	$a0, $sp, $a0
 	ld.d	$a1, $a0, 0
-	b	.LBB4_274
-.LBB4_167:
+	b	.LBB4_269
+.LBB4_162:
 	pcalau12i	$a0, %pc_hi20(.L.str.83)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.83)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.168:
+	bnez	$a0, .LBB4_210
+# %bb.163:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB4_215
-# %bb.169:
+	bne	$a0, $a1, .LBB4_210
+# %bb.164:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
 	ld.d	$a4, $a0, 0
 	addi.d	$a1, $fp, 868
-	b	.LBB4_174
-.LBB4_170:
+	b	.LBB4_169
+.LBB4_165:
 	pcalau12i	$a0, %pc_hi20(.L.str.93)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.93)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_190
-# %bb.171:
+	beqz	$a0, .LBB4_185
+# %bb.166:
 	pcalau12i	$a0, %pc_hi20(.L.str.101)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.101)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_193
-# %bb.172:
+	bnez	$a0, .LBB4_188
+# %bb.167:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB4_193
-# %bb.173:
+	bne	$a0, $a1, .LBB4_188
+# %bb.168:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
 	ld.d	$a4, $a0, 0
 	addi.d	$a1, $fp, 48
-.LBB4_174:                              # %.loopexit
+.LBB4_169:                              # %.loopexit
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.10)
 	ori	$a0, $zero, 20
 	ori	$a3, $zero, 19
 	pcaddu18i	$ra, %call36(sqlite3_snprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_175:
+	b	.LBB4_212
+.LBB4_170:
 	pcalau12i	$a0, %pc_hi20(.L.str.91)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.91)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.176:
+	bnez	$a0, .LBB4_210
+# %bb.171:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB4_215
-# %bb.177:
+	bne	$a0, $a1, .LBB4_210
+# %bb.172:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -2055,8 +2031,8 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_219
-# %bb.178:
+	beqz	$a0, .LBB4_214
+# %bb.173:
 	move	$s1, $a0
 	move	$a0, $fp
 	move	$a1, $s1
@@ -2065,24 +2041,24 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_179:
+	b	.LBB4_212
+.LBB4_174:
 	move	$a0, $zero
 	st.w	$zero, $fp, 24
-	b	.LBB4_218
-.LBB4_180:
+	b	.LBB4_213
+.LBB4_175:
 	pcalau12i	$a0, %pc_hi20(.L.str.67)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.67)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.181:
+	bnez	$a0, .LBB4_210
+# %bb.176:
 	addi.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_215
-# %bb.182:
+	beq	$a0, $a1, .LBB4_210
+# %bb.177:
 	st.d	$zero, $sp, 96
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(open_db)
@@ -2113,40 +2089,40 @@ do_meta_command:                        # @do_meta_command
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $sp, 96
 	st.d	$zero, $s0, %pc_lo12(zShellStatic)
-	beqz	$a2, .LBB4_217
-	b	.LBB4_76
-.LBB4_183:
+	beqz	$a2, .LBB4_212
+	b	.LBB4_71
+.LBB4_178:
 	pcalau12i	$a0, %pc_hi20(.L.str.53)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.53)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_199
-# %bb.184:                              # %.critedge543
+	beqz	$a0, .LBB4_194
+# %bb.179:                              # %.critedge543
 	pcalau12i	$a0, %pc_hi20(.L.str.54)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.54)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.185:
+	bnez	$a0, .LBB4_210
+# %bb.180:
 	addi.w	$a0, $s3, 0
 	ori	$s0, $zero, 1
-	beq	$a0, $s0, .LBB4_187
-# %bb.186:
+	beq	$a0, $s0, .LBB4_182
+# %bb.181:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(booleanValue)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s0, .LBB4_210
-.LBB4_187:                              # %.critedge546
+	bne	$a0, $s0, .LBB4_205
+.LBB4_182:                              # %.critedge546
 	ld.w	$a0, $fp, 888
-	bnez	$a0, .LBB4_189
-# %bb.188:
+	bnez	$a0, .LBB4_184
+# %bb.183:
 	ld.w	$a0, $fp, 24
 	ld.w	$a1, $fp, 32
 	ori	$a2, $zero, 1
@@ -2158,7 +2134,7 @@ do_meta_command:                        # @do_meta_command
 	ori	$a2, $zero, 400
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB4_189:
+.LBB4_184:
 	ori	$a0, $zero, 9
 	st.w	$a0, $fp, 24
 	ori	$a0, $zero, 1
@@ -2172,8 +2148,8 @@ do_meta_command:                        # @do_meta_command
 	xvld	$xr0, $a0, %pc_lo12(.LCPI4_0)
 	move	$a0, $zero
 	xvst	$xr0, $fp, 68
-	b	.LBB4_218
-.LBB4_190:
+	b	.LBB4_213
+.LBB4_185:
 	st.d	$zero, $sp, 112
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(open_db)
@@ -2189,8 +2165,8 @@ do_meta_command:                        # @do_meta_command
 	addi.w	$a1, $s3, 0
 	ori	$a2, $zero, 1
 	st.w	$a0, $sp, 144
-	bne	$a1, $a2, .LBB4_200
-# %bb.191:
+	bne	$a1, $a2, .LBB4_195
+# %bb.186:
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.100)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.100)
@@ -2200,8 +2176,8 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$a4, $sp, 112
 	pcaddu18i	$ra, %call36(sqlite3_exec)
 	jirl	$ra, $ra, 0
-	b	.LBB4_224
-.LBB4_192:
+	b	.LBB4_219
+.LBB4_187:
 	ld.d	$a0, $s1, 0
 	st.d	$a0, $fp, 16
 	addi.d	$a1, $fp, 1300
@@ -2210,16 +2186,16 @@ do_meta_command:                        # @do_meta_command
 	lu12i.w	$a0, 1
 	pcaddu18i	$ra, %call36(sqlite3_snprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_193:                              # %.critedge553
+	b	.LBB4_212
+.LBB4_188:                              # %.critedge553
 	pcalau12i	$a0, %pc_hi20(.L.str.102)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.102)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.194:
+	bnez	$a0, .LBB4_210
+# %bb.189:
 	ld.w	$a1, $fp, 8
 	ld.d	$a0, $fp, 16
 	sltui	$a1, $a1, 1
@@ -2324,42 +2300,42 @@ do_meta_command:                        # @do_meta_command
 	pcalau12i	$a0, %pc_hi20(.L.str.109)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.109)
 	ori	$s2, $zero, 468
-.LBB4_195:                              # =>This Inner Loop Header: Depth=1
+.LBB4_190:                              # =>This Inner Loop Header: Depth=1
 	ldx.w	$a2, $fp, $s1
-	beqz	$a2, .LBB4_197
-# %bb.196:                              #   in Loop: Header=BB4_195 Depth=1
+	beqz	$a2, .LBB4_192
+# %bb.191:                              #   in Loop: Header=BB4_190 Depth=1
 	ld.d	$a0, $fp, 16
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	addi.d	$s1, $s1, 4
-	bne	$s1, $s2, .LBB4_195
-.LBB4_197:                              # %.critedge39
+	bne	$s1, $s2, .LBB4_190
+.LBB4_192:                              # %.critedge39
 	ld.d	$a1, $fp, 16
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_198:
+	b	.LBB4_212
+.LBB4_193:
 	move	$a0, $zero
 	ori	$a1, $zero, 1
 	st.w	$a1, $fp, 24
-	b	.LBB4_218
-.LBB4_199:
+	b	.LBB4_213
+.LBB4_194:
 	ori	$a0, $zero, 2
-	b	.LBB4_218
-.LBB4_200:                              # %.preheader628
+	b	.LBB4_213
+.LBB4_195:                              # %.preheader621
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
 	ld.d	$s0, $a0, 0
 	ld.bu	$s1, $s0, 0
-	beqz	$s1, .LBB4_203
-# %bb.201:                              # %.lr.ph655
+	beqz	$s1, .LBB4_198
+# %bb.196:                              # %.lr.ph649
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $s0, 1
-.LBB4_202:                              # =>This Inner Loop Header: Depth=1
+.LBB4_197:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 0
 	ext.w.b	$a3, $s1
 	slli.d	$a3, $a3, 2
@@ -2367,22 +2343,22 @@ do_meta_command:                        # @do_meta_command
 	ld.bu	$s1, $a1, 0
 	st.b	$a2, $a1, -1
 	addi.d	$a1, $a1, 1
-	bnez	$s1, .LBB4_202
-.LBB4_203:                              # %._crit_edge656
+	bnez	$s1, .LBB4_197
+.LBB4_198:                              # %._crit_edge650
 	pcalau12i	$a0, %pc_hi20(.L.str.94)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.94)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_212
-# %bb.204:
+	beqz	$a0, .LBB4_207
+# %bb.199:
 	pcalau12i	$a0, %pc_hi20(.L.str.97)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.97)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_222
-# %bb.205:
+	beqz	$a0, .LBB4_217
+# %bb.200:
 	pcalau12i	$s1, %pc_hi20(zShellStatic)
 	st.d	$s0, $s1, %pc_lo12(zShellStatic)
 	ld.d	$a0, $fp, 0
@@ -2395,8 +2371,8 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(sqlite3_exec)
 	jirl	$ra, $ra, 0
 	st.d	$zero, $s1, %pc_lo12(zShellStatic)
-	b	.LBB4_224
-.LBB4_206:
+	b	.LBB4_219
+.LBB4_201:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
@@ -2413,20 +2389,20 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(sqlite3_get_table)
 	jirl	$ra, $ra, 0
 	st.d	$zero, $s0, %pc_lo12(zShellStatic)
-.LBB4_207:
+.LBB4_202:
 	ld.d	$a2, $sp, 96
-	bnez	$a2, .LBB4_257
-# %bb.208:
-	beqz	$a0, .LBB4_258
-.LBB4_209:                              # %.loopexit625
+	bnez	$a2, .LBB4_252
+# %bb.203:
+	beqz	$a0, .LBB4_253
+.LBB4_204:                              # %.loopexit618
 	ld.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(sqlite3_free_table)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_210:
+	b	.LBB4_212
+.LBB4_205:
 	ld.w	$a0, $fp, 888
-	beqz	$a0, .LBB4_217
-# %bb.211:
+	beqz	$a0, .LBB4_212
+# %bb.206:
 	ld.w	$a0, $fp, 892
 	ld.w	$a1, $fp, 896
 	st.w	$zero, $fp, 888
@@ -2437,20 +2413,20 @@ do_meta_command:                        # @do_meta_command
 	ori	$a2, $zero, 400
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_212:
+	b	.LBB4_212
+.LBB4_207:
 	pcalau12i	$a0, %pc_hi20(.L.str.95)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.95)
-	b	.LBB4_223
-.LBB4_213:
+	b	.LBB4_218
+.LBB4_208:
 	pcalau12i	$a0, %pc_hi20(.L.str.57)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.57)
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_215
-# %bb.214:
+	bnez	$a0, .LBB4_210
+# %bb.209:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
@@ -2458,20 +2434,20 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$a1, $a1, %pc_lo12(zHelp)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_215:                              # %.thread781
+	b	.LBB4_212
+.LBB4_210:                              # %.thread771
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.118)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.118)
-.LBB4_216:                              # %.loopexit
+.LBB4_211:                              # %.loopexit
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB4_217:                              # %.loopexit
+.LBB4_212:                              # %.loopexit
 	move	$a0, $zero
-.LBB4_218:                              # %.loopexit
+.LBB4_213:                              # %.loopexit
 	addi.d	$sp, $sp, 2032
 	addi.d	$sp, $sp, 1952
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
@@ -2487,25 +2463,25 @@ do_meta_command:                        # @do_meta_command
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB4_219:
+.LBB4_214:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.92)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.92)
-	b	.LBB4_216
-.LBB4_220:
+	b	.LBB4_211
+.LBB4_215:
 	ori	$a1, $zero, 1
-	b	.LBB4_142
-.LBB4_221:
+	b	.LBB4_137
+.LBB4_216:
 	move	$a0, $zero
 	ori	$a1, $zero, 2
 	st.w	$a1, $fp, 24
-	b	.LBB4_218
-.LBB4_222:
+	b	.LBB4_213
+.LBB4_217:
 	pcalau12i	$a0, %pc_hi20(.L.str.98)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.98)
-.LBB4_223:
+.LBB4_218:
 	st.d	$a0, $sp, 96
 	st.d	$zero, $sp, 104
 	pcalau12i	$a0, %pc_hi20(.L.str.96)
@@ -2518,10 +2494,10 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$a3, $sp, 80
 	pcaddu18i	$ra, %call36(callback)
 	jirl	$ra, $ra, 0
-.LBB4_224:
+.LBB4_219:
 	ld.d	$a2, $sp, 112
-	beqz	$a2, .LBB4_217
-# %bb.225:
+	beqz	$a2, .LBB4_212
+# %bb.220:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
@@ -2532,8 +2508,8 @@ do_meta_command:                        # @do_meta_command
 	ld.d	$a0, $sp, 112
 	pcaddu18i	$ra, %call36(sqlite3_free)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_226:
+	b	.LBB4_212
+.LBB4_221:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
@@ -2545,24 +2521,24 @@ do_meta_command:                        # @do_meta_command
 	ld.d	$a1, $s1, 0
 	move	$a0, $zero
 	st.d	$a1, $fp, 16
-	b	.LBB4_218
-.LBB4_227:
+	b	.LBB4_213
+.LBB4_222:
 	move	$a0, $zero
 	ori	$a1, $zero, 4
 	st.w	$a1, $fp, 24
-	b	.LBB4_218
-.LBB4_228:
+	b	.LBB4_213
+.LBB4_223:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
 	ori	$a1, $zero, 39
-	b	.LBB4_105
-.LBB4_229:
+	b	.LBB4_100
+.LBB4_224:
 	ori	$a1, $zero, 1
-	b	.LBB4_97
-.LBB4_230:                              # %vector.ph
+	b	.LBB4_92
+.LBB4_225:                              # %vector.ph
 	addi.w	$a1, $s5, -1
 	bstrpick.d	$a2, $a1, 31, 0
 	bstrpick.d	$a0, $a2, 31, 1
@@ -2574,25 +2550,25 @@ do_meta_command:                        # @do_meta_command
 	lu12i.w	$a5, 258755
 	ori	$a5, $a5, 3884
 	move	$a6, $a3
-.LBB4_231:                              # %vector.body
+.LBB4_226:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a5, $a4, -3
 	addi.d	$a6, $a6, -2
 	addi.d	$a4, $a4, 4
-	bnez	$a6, .LBB4_231
-# %bb.232:                              # %middle.block
-	beq	$a3, $a2, .LBB4_235
-.LBB4_233:                              # %.lr.ph661.preheader805
+	bnez	$a6, .LBB4_226
+# %bb.227:                              # %middle.block
+	beq	$a3, $a2, .LBB4_230
+.LBB4_228:                              # %.lr.ph655.preheader798
 	sub.d	$a1, $s5, $a1
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 3884
-.LBB4_234:                              # %.lr.ph661
+.LBB4_229:                              # %.lr.ph655
                                         # =>This Inner Loop Header: Depth=1
 	stx.h	$a2, $s3, $a0
 	addi.w	$a1, $a1, -1
 	addi.d	$a0, $a0, 2
-	bnez	$a1, .LBB4_234
-.LBB4_235:                              # %._crit_edge662
+	bnez	$a1, .LBB4_229
+.LBB4_230:                              # %._crit_edge656
 	ld.d	$a1, $fp, 0
 	addi.w	$a0, $a0, 0
 	ori	$a2, $zero, 41
@@ -2608,23 +2584,23 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	bnez	$s0, .LBB4_275
-# %bb.236:
+	bnez	$s0, .LBB4_270
+# %bb.231:
 	pcalau12i	$a0, %pc_hi20(.L.str.35)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.35)
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	beqz	$a0, .LBB4_276
-# %bb.237:
+	beqz	$a0, .LBB4_271
+# %bb.232:
 	slli.d	$a0, $s5, 3
 	addi.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	beqz	$a0, .LBB4_253
-# %bb.238:
+	beqz	$a0, .LBB4_248
+# %bb.233:
 	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.63)
@@ -2651,9 +2627,9 @@ do_meta_command:                        # @do_meta_command
 	ori	$s7, $a0, 1025
 	addi.w	$s8, $zero, -1
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	b	.LBB4_240
-.LBB4_239:                              # %._crit_edge666
-                                        #   in Loop: Header=BB4_240 Depth=1
+	b	.LBB4_235
+.LBB4_234:                              # %._crit_edge660
+                                        #   in Loop: Header=BB4_235 Depth=1
 	ld.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(sqlite3_step)
 	jirl	$ra, $ra, 0
@@ -2665,16 +2641,16 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	bnez	$s4, .LBB4_279
-.LBB4_240:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_243 Depth 2
-                                        #     Child Loop BB4_252 Depth 2
+	bnez	$s4, .LBB4_274
+.LBB4_235:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_238 Depth 2
+                                        #     Child Loop BB4_247 Depth 2
 	move	$a0, $zero
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(local_getline)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_281
-# %bb.241:                              #   in Loop: Header=BB4_240 Depth=1
+	beqz	$a0, .LBB4_276
+# %bb.236:                              #   in Loop: Header=BB4_235 Depth=1
 	move	$s0, $a0
 	move	$s2, $zero
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -2683,56 +2659,56 @@ do_meta_command:                        # @do_meta_command
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	st.d	$s0, $a0, 0
 	move	$s4, $s0
-	b	.LBB4_243
-.LBB4_242:                              #   in Loop: Header=BB4_243 Depth=2
+	b	.LBB4_238
+.LBB4_237:                              #   in Loop: Header=BB4_238 Depth=2
 	addi.d	$s4, $s4, 1
-.LBB4_243:                              #   Parent Loop BB4_240 Depth=1
+.LBB4_238:                              #   Parent Loop BB4_235 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a0, $s4, 0
-	bltu	$s3, $a0, .LBB4_245
-# %bb.244:                              #   in Loop: Header=BB4_243 Depth=2
+	bltu	$s3, $a0, .LBB4_240
+# %bb.239:                              #   in Loop: Header=BB4_238 Depth=2
 	ori	$a1, $zero, 1
 	sll.d	$a1, $a1, $a0
 	and	$a1, $a1, $s7
-	bnez	$a1, .LBB4_249
-.LBB4_245:                              #   in Loop: Header=BB4_243 Depth=2
+	bnez	$a1, .LBB4_244
+.LBB4_240:                              #   in Loop: Header=BB4_238 Depth=2
 	ld.bu	$a1, $s1, 0
-	bne	$a0, $a1, .LBB4_242
-# %bb.246:                              #   in Loop: Header=BB4_243 Depth=2
+	bne	$a0, $a1, .LBB4_237
+# %bb.241:                              #   in Loop: Header=BB4_238 Depth=2
 	move	$a0, $s4
 	move	$a1, $s1
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_242
-# %bb.247:                              #   in Loop: Header=BB4_243 Depth=2
+	bnez	$a0, .LBB4_237
+# %bb.242:                              #   in Loop: Header=BB4_238 Depth=2
 	addi.w	$s2, $s2, 1
 	st.b	$zero, $s4, 0
-	bge	$s2, $s5, .LBB4_242
-# %bb.248:                              #   in Loop: Header=BB4_243 Depth=2
+	bge	$s2, $s5, .LBB4_237
+# %bb.243:                              #   in Loop: Header=BB4_238 Depth=2
 	add.d	$a0, $s4, $s6
 	slli.d	$a1, $s2, 3
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	stx.d	$a0, $a2, $a1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	add.d	$s4, $s4, $a0
-	b	.LBB4_242
-.LBB4_249:                              # %.critedge16
-                                        #   in Loop: Header=BB4_240 Depth=1
+	b	.LBB4_237
+.LBB4_244:                              # %.critedge16
+                                        #   in Loop: Header=BB4_235 Depth=1
 	addi.w	$a5, $s2, 1
 	st.b	$zero, $s4, 0
-	bne	$a5, $s5, .LBB4_278
-# %bb.250:                              # %.preheader627
-                                        #   in Loop: Header=BB4_240 Depth=1
-	blez	$s5, .LBB4_239
-# %bb.251:                              # %.lr.ph665.preheader
-                                        #   in Loop: Header=BB4_240 Depth=1
+	bne	$a5, $s5, .LBB4_273
+# %bb.245:                              # %.preheader620
+                                        #   in Loop: Header=BB4_235 Depth=1
+	blez	$s5, .LBB4_234
+# %bb.246:                              # %.lr.ph659.preheader
+                                        #   in Loop: Header=BB4_235 Depth=1
 	ori	$s4, $zero, 1
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB4_252:                              # %.lr.ph665
-                                        #   Parent Loop BB4_240 Depth=1
+.LBB4_247:                              # %.lr.ph659
+                                        #   Parent Loop BB4_235 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $sp, 120
 	ld.d	$a2, $s5, 0
@@ -2744,19 +2720,19 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$s5, $s5, 8
 	addi.d	$s2, $s2, -1
 	addi.w	$s4, $s4, 1
-	bnez	$s2, .LBB4_252
-	b	.LBB4_239
-.LBB4_253:
+	bnez	$s2, .LBB4_247
+	b	.LBB4_234
+.LBB4_248:
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_254:
+	b	.LBB4_212
+.LBB4_249:
 	move	$a0, $zero
 	ori	$a1, $zero, 6
 	st.w	$a1, $fp, 24
-	b	.LBB4_218
-.LBB4_255:                              # %.thread606
+	b	.LBB4_213
+.LBB4_250:                              # %.thread599
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$fp, $a0, 0
@@ -2768,15 +2744,15 @@ do_meta_command:                        # @do_meta_command
 	pcalau12i	$a0, %pc_hi20(.L.str.43)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.43)
 	move	$a0, $fp
-	b	.LBB4_277
-.LBB4_256:
+	b	.LBB4_272
+.LBB4_251:
 	ori	$a0, $zero, 7
 	st.w	$a0, $fp, 24
 	addi.d	$a1, $fp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.9)
-	b	.LBB4_272
-.LBB4_257:
+	b	.LBB4_267
+.LBB4_252:
 	pcalau12i	$a1, %got_pc_hi20(stderr)
 	ld.d	$a1, $a1, %got_pc_lo12(stderr)
 	ld.d	$a3, $a1, 0
@@ -2790,26 +2766,26 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(sqlite3_free)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-	bnez	$a0, .LBB4_209
-.LBB4_258:                              # %.preheader626
+	bnez	$a0, .LBB4_204
+.LBB4_253:                              # %.preheader619
 	ld.w	$s0, $sp, 80
-	blez	$s0, .LBB4_264
-# %bb.259:                              # %.lr.ph670
+	blez	$s0, .LBB4_259
+# %bb.254:                              # %.lr.ph664
 	ld.d	$a0, $sp, 120
 	move	$fp, $zero
 	addi.d	$a1, $s0, 1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$s1, $a0, 8
 	addi.d	$s2, $a1, -1
-	b	.LBB4_261
-.LBB4_260:                              #   in Loop: Header=BB4_261 Depth=1
+	b	.LBB4_256
+.LBB4_255:                              #   in Loop: Header=BB4_256 Depth=1
 	addi.d	$s2, $s2, -1
 	addi.d	$s1, $s1, 8
-	beqz	$s2, .LBB4_263
-.LBB4_261:                              # =>This Inner Loop Header: Depth=1
+	beqz	$s2, .LBB4_258
+.LBB4_256:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 0
-	beqz	$a0, .LBB4_260
-# %bb.262:                              #   in Loop: Header=BB4_261 Depth=1
+	beqz	$a0, .LBB4_255
+# %bb.257:                              #   in Loop: Header=BB4_256 Depth=1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
@@ -2817,8 +2793,8 @@ do_meta_command:                        # @do_meta_command
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$fp, $a1, $a0
-	b	.LBB4_260
-.LBB4_263:                              # %._crit_edge671
+	b	.LBB4_255
+.LBB4_258:                              # %._crit_edge665
 	addi.w	$a0, $fp, 2
 	ori	$a1, $zero, 80
 	div.wu	$a0, $a1, $a0
@@ -2828,16 +2804,16 @@ do_meta_command:                        # @do_meta_command
 	ori	$a2, $zero, 1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
-	b	.LBB4_265
-.LBB4_264:
+	b	.LBB4_260
+.LBB4_259:
 	move	$fp, $zero
 	ori	$a0, $zero, 40
-.LBB4_265:                              # %._crit_edge671.thread
+.LBB4_260:                              # %._crit_edge665.thread
 	add.d	$a1, $s0, $a0
 	addi.w	$a1, $a1, -1
 	div.w	$s1, $a1, $a0
-	blez	$s1, .LBB4_209
-# %bb.266:                              # %.lr.ph681.preheader
+	blez	$s1, .LBB4_204
+# %bb.261:                              # %.lr.ph675.preheader
 	slli.d	$s2, $s1, 3
 	ori	$a0, $zero, 8
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
@@ -2849,9 +2825,9 @@ do_meta_command:                        # @do_meta_command
 	pcalau12i	$a0, %pc_hi20(.L.str.115)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.115)
 	move	$s7, $zero
-	b	.LBB4_268
-.LBB4_267:                              # %._crit_edge678
-                                        #   in Loop: Header=BB4_268 Depth=1
+	b	.LBB4_263
+.LBB4_262:                              # %._crit_edge672
+                                        #   in Loop: Header=BB4_263 Depth=1
 	addi.w	$s7, $s7, 1
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putchar)
@@ -2860,18 +2836,18 @@ do_meta_command:                        # @do_meta_command
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	addi.w	$s4, $s4, 1
-	beq	$s7, $s1, .LBB4_209
-.LBB4_268:                              # %.lr.ph681
+	beq	$s7, $s1, .LBB4_204
+.LBB4_263:                              # %.lr.ph675
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_270 Depth 2
+                                        #     Child Loop BB4_265 Depth 2
 	ld.w	$a0, $sp, 80
-	bge	$s7, $a0, .LBB4_267
-# %bb.269:                              # %.lr.ph677.preheader
-                                        #   in Loop: Header=BB4_268 Depth=1
+	bge	$s7, $a0, .LBB4_262
+# %bb.264:                              # %.lr.ph671.preheader
+                                        #   in Loop: Header=BB4_263 Depth=1
 	move	$s8, $s4
 	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
-.LBB4_270:                              # %.lr.ph677
-                                        #   Parent Loop BB4_268 Depth=1
+.LBB4_265:                              # %.lr.ph671
+                                        #   Parent Loop BB4_263 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $sp, 120
 	slt	$a1, $s1, $s8
@@ -2890,28 +2866,28 @@ do_meta_command:                        # @do_meta_command
 	ld.w	$a0, $sp, 80
 	add.w	$s8, $s8, $s1
 	add.d	$s3, $s3, $s2
-	bge	$a0, $s8, .LBB4_270
-	b	.LBB4_267
-.LBB4_271:
+	bge	$a0, $s8, .LBB4_265
+	b	.LBB4_262
+.LBB4_266:
 	ori	$a0, $zero, 2
 	st.w	$a0, $fp, 24
 	addi.d	$a1, $fp, 48
 	pcalau12i	$a0, %pc_hi20(.L.str.79)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.79)
-.LBB4_272:                              # %.loopexit
+.LBB4_267:                              # %.loopexit
 	ori	$a0, $zero, 20
 	pcaddu18i	$ra, %call36(sqlite3_snprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_273:
+	b	.LBB4_212
+.LBB4_268:
 	pcalau12i	$a0, %pc_hi20(.L.str.81)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.81)
-.LBB4_274:                              # %.loopexit
+.LBB4_269:                              # %.loopexit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(set_table_name)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_275:
+	b	.LBB4_212
+.LBB4_270:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$fp, $a0, 0
@@ -2929,22 +2905,22 @@ do_meta_command:                        # @do_meta_command
 	pcaddu18i	$ra, %call36(sqlite3_finalize)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	b	.LBB4_218
-.LBB4_276:
+	b	.LBB4_213
+.LBB4_271:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.62)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.62)
 	move	$a2, $s6
-.LBB4_277:                              # %.thread612
+.LBB4_272:                              # %.thread605
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(sqlite3_finalize)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_278:
+	b	.LBB4_212
+.LBB4_273:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
@@ -2955,8 +2931,8 @@ do_meta_command:                        # @do_meta_command
 	move	$a4, $s5
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB4_280
-.LBB4_279:
+	b	.LBB4_275
+.LBB4_274:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$s0, $a0, 0
@@ -2970,11 +2946,11 @@ do_meta_command:                        # @do_meta_command
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB4_280:                              # %.thread608
+.LBB4_275:                              # %.thread601
 	pcalau12i	$a0, %pc_hi20(.L.str.66)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.66)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-.LBB4_281:                              # %.thread608
+.LBB4_276:                              # %.thread601
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -2991,35 +2967,35 @@ do_meta_command:                        # @do_meta_command
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(sqlite3_exec)
 	jirl	$ra, $ra, 0
-	b	.LBB4_217
-.LBB4_282:
+	b	.LBB4_212
+.LBB4_277:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.82)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.82)
 	ori	$a1, $zero, 65
-	b	.LBB4_105
+	b	.LBB4_100
 .Lfunc_end4:
 	.size	do_meta_command, .Lfunc_end4-do_meta_command
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI4_0:
-	.word	.LBB4_88-.LJTI4_0
-	.word	.LBB4_148-.LJTI4_0
-	.word	.LBB4_148-.LJTI4_0
-	.word	.LBB4_132-.LJTI4_0
-	.word	.LBB4_115-.LJTI4_0
-	.word	.LBB4_148-.LJTI4_0
-	.word	.LBB4_148-.LJTI4_0
-	.word	.LBB4_148-.LJTI4_0
-	.word	.LBB4_153-.LJTI4_0
-	.word	.LBB4_167-.LJTI4_0
-	.word	.LBB4_125-.LJTI4_0
+	.word	.LBB4_83-.LJTI4_0
 	.word	.LBB4_143-.LJTI4_0
-	.word	.LBB4_147-.LJTI4_0
-	.word	.LBB4_175-.LJTI4_0
+	.word	.LBB4_143-.LJTI4_0
+	.word	.LBB4_127-.LJTI4_0
+	.word	.LBB4_110-.LJTI4_0
+	.word	.LBB4_143-.LJTI4_0
+	.word	.LBB4_143-.LJTI4_0
+	.word	.LBB4_143-.LJTI4_0
+	.word	.LBB4_148-.LJTI4_0
+	.word	.LBB4_162-.LJTI4_0
+	.word	.LBB4_120-.LJTI4_0
+	.word	.LBB4_138-.LJTI4_0
+	.word	.LBB4_142-.LJTI4_0
 	.word	.LBB4_170-.LJTI4_0
+	.word	.LBB4_165-.LJTI4_0
                                         # -- End function
 	.text
 	.p2align	5                               # -- Begin function callback
@@ -4843,50 +4819,51 @@ set_table_name:                         # @set_table_name
 # %bb.3:
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $fp, 0
+	ld.bu	$a2, $fp, 0
 	ld.d	$a0, $a0, 0
-	slli.d	$a2, $a1, 1
-	ldx.hu	$a2, $a0, $a2
-	addi.d	$a3, $a1, -95
+	slli.d	$a1, $a2, 1
+	ldx.hu	$a1, $a0, $a1
+	addi.d	$a3, $a2, -95
 	sltu	$a3, $zero, $a3
-	andi	$a2, $a2, 1024
-	sltui	$a2, $a2, 1
-	and	$s1, $a3, $a2
-	move	$a2, $zero
-	beqz	$a1, .LBB7_6
+	andi	$a1, $a1, 1024
+	sltui	$a1, $a1, 1
+	and	$s1, $a3, $a1
+	move	$a1, $zero
+	beqz	$a2, .LBB7_6
 # %bb.4:                                # %.lr.ph.preheader
 	addi.d	$a3, $fp, 1
 	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB7_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$a5, $a1, 1
+	slli.d	$a5, $a2, 1
 	ldx.hu	$a5, $a0, $a5
 	andi	$a5, $a5, 8
 	sltui	$a5, $a5, 1
-	addi.d	$a6, $a1, -95
+	addi.d	$a6, $a2, -95
 	sltu	$a6, $zero, $a6
-	addi.d	$a1, $a1, -39
-	sltui	$a1, $a1, 1
-	and	$a7, $a1, $a5
-	masknez	$a1, $s1, $a5
+	addi.d	$a2, $a2, -39
+	sltui	$a2, $a2, 1
+	and	$a7, $a2, $a5
+	masknez	$a2, $s1, $a5
 	maskeqz	$a5, $a4, $a5
-	or	$a1, $a5, $a1
-	maskeqz	$a5, $a1, $a6
+	or	$a2, $a5, $a2
+	maskeqz	$a5, $a2, $a6
 	masknez	$a6, $s1, $a6
-	ld.bu	$a1, $a3, 0
+	ld.bu	$a2, $a3, 0
 	or	$s1, $a5, $a6
-	add.d	$a2, $a2, $a7
-	addi.d	$a2, $a2, 1
+	add.d	$a1, $a1, $a7
+	addi.d	$a1, $a1, 1
 	addi.d	$a3, $a3, 1
-	bnez	$a1, .LBB7_5
+	bnez	$a2, .LBB7_5
 .LBB7_6:                                # %._crit_edge
 	sltui	$a0, $s1, 1
-	addi.d	$a1, $a2, 2
-	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
-	addi.w	$a0, $a0, 1
+	ori	$a2, $zero, 3
+	masknez	$a2, $a2, $a0
+	ori	$a3, $zero, 1
+	maskeqz	$a0, $a3, $a0
+	or	$a0, $a0, $a2
+	add.w	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, 40

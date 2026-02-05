@@ -866,8 +866,7 @@ reduce_side:                            # @reduce_side
 	fcmp.cule.s	$fcc0, $fa1, $fa3
 	bcnez	$fcc0, .LBB5_3
 # %bb.2:
-	ld.w	$a2, $a0, 0
-	movgr2fr.w	$fa3, $a2
+	fld.s	$fa3, $a0, 0
 	ffint.s.w	$fa3, $fa3
 	fmadd.s	$fa0, $fa2, $fa0, $fa3
 	ftintrz.w.s	$fa0, $fa0
@@ -3497,14 +3496,12 @@ bin_search_StepSize2:                   # @bin_search_StepSize2
 	bne	$a1, $s6, .LBB11_2
 .LBB11_1:                               # %._crit_edge
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	sub.w	$a1, $a1, $s7
-	srai.d	$a2, $a1, 31
-	xor	$a1, $a1, $a2
-	sub.w	$a1, $a1, $a2
-	sltui	$a1, $a1, 4
-	ori	$a2, $zero, 4
+	sub.d	$a1, $a1, $s7
+	addi.w	$a1, $a1, -4
+	sltui	$a1, $a1, -7
+	ori	$a2, $zero, 2
 	masknez	$a2, $a2, $a1
-	ori	$a3, $zero, 2
+	ori	$a3, $zero, 4
 	maskeqz	$a1, $a3, $a1
 	or	$a1, $a1, $a2
 	st.w	$a1, $s5, %pc_lo12(bin_search_StepSize2.CurrentStep)

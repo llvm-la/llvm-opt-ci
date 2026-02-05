@@ -689,7 +689,7 @@ read_sched_into:                        # @read_sched_into
 	pcalau12i	$s1, %pc_hi20(num_games)
 	ld.w	$a2, $s1, %pc_lo12(num_games)
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	blez	$a2, .LBB4_59
+	blez	$a2, .LBB4_58
 # %bb.1:                                # %iter.check
 	move	$s0, $a0
 	ori	$a0, $zero, 1
@@ -720,7 +720,7 @@ read_sched_into:                        # @read_sched_into
 # %bb.6:                                # %middle.block
 	beq	$a1, $a2, .LBB4_13
 # %bb.7:                                # %vec.epilog.iter.check
-	beqz	$a3, .LBB4_60
+	beqz	$a3, .LBB4_59
 .LBB4_8:                                # %vec.epilog.ph
 	bstrpick.d	$a3, $a2, 30, 2
 	slli.d	$a4, $a3, 2
@@ -762,7 +762,7 @@ read_sched_into:                        # @read_sched_into
 	ori	$s2, $zero, 1
 	pcalau12i	$a0, %pc_hi20(team)
 	addi.d	$fp, $a0, %pc_lo12(team)
-	addi.d	$s6, $sp, 86
+	addi.d	$s3, $sp, 86
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -776,7 +776,7 @@ read_sched_into:                        # @read_sched_into
                                         #   in Loop: Header=BB4_15 Depth=1
 	addi.d	$s2, $s2, 1
 	ori	$a0, $zero, 29
-	beq	$s2, $a0, .LBB4_58
+	beq	$s2, $a0, .LBB4_57
 .LBB4_15:                               # %.preheader130
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_20 Depth 2
@@ -798,9 +798,21 @@ read_sched_into:                        # @read_sched_into
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB4_20
-	.p2align	4, , 16
-.LBB4_17:                               #   in Loop: Header=BB4_20 Depth=2
-	addi.d	$s6, $sp, 86
+.LBB4_17:                               # %.thread
+                                        #   in Loop: Header=BB4_20 Depth=2
+	addi.d	$a1, $sp, 96
+	alsl.d	$a1, $a5, $a1, 2
+	ori	$a2, $zero, 180
+	mul.d	$a2, $a5, $a2
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	add.d	$a2, $a3, $a2
+	slli.d	$a3, $a0, 3
+	alsl.d	$a3, $a0, $a3, 2
+	add.d	$a2, $a2, $a3
+	st.w	$s5, $a2, 4
+	st.w	$s3, $a2, 8
+	addi.d	$a0, $a0, 1
+	st.w	$a0, $a1, 0
 .LBB4_18:                               #   in Loop: Header=BB4_20 Depth=2
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 .LBB4_19:                               #   in Loop: Header=BB4_20 Depth=2
@@ -809,6 +821,7 @@ read_sched_into:                        # @read_sched_into
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 180
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$s3, $sp, 86
 	bge	$a5, $a2, .LBB4_14
 .LBB4_20:                               #   Parent Loop BB4_15 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -850,7 +863,7 @@ read_sched_into:                        # @read_sched_into
                                         #   Parent Loop BB4_15 Depth=1
                                         #     Parent Loop BB4_20 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	stx.b	$s5, $s1, $s6
+	stx.b	$s5, $s1, $s3
 	addi.d	$s1, $s1, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(getc)
@@ -865,7 +878,7 @@ read_sched_into:                        # @read_sched_into
 	bstrpick.d	$a0, $s1, 31, 0
 .LBB4_27:                               # %._crit_edge
                                         #   in Loop: Header=BB4_20 Depth=2
-	stx.b	$zero, $a0, $s6
+	stx.b	$zero, $a0, $s3
 	ld.bu	$a0, $sp, 86
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $a1, 0
@@ -923,15 +936,14 @@ read_sched_into:                        # @read_sched_into
 	bltu	$a0, $s2, .LBB4_46
 .LBB4_34:                               #   in Loop: Header=BB4_20 Depth=2
 	ori	$a0, $zero, 29
-	beq	$s7, $a0, .LBB4_17
+	beq	$s7, $a0, .LBB4_18
 # %bb.35:                               # %.preheader128
                                         #   in Loop: Header=BB4_20 Depth=2
 	slli.d	$a0, $a5, 2
 	addi.d	$a1, $sp, 96
 	ldx.w	$a0, $a0, $a1
-	addi.d	$s6, $sp, 86
 	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB4_57
+	blt	$a0, $a1, .LBB4_17
 # %bb.36:                               # %.lr.ph150
                                         #   in Loop: Header=BB4_20 Depth=2
 	move	$a4, $zero
@@ -1093,7 +1105,6 @@ read_sched_into:                        # @read_sched_into
                                         #   in Loop: Header=BB4_20 Depth=2
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	addi.d	$s8, $sp, 87
-	addi.d	$s6, $sp, 86
 	bne	$a0, $s3, .LBB4_19
 # %bb.53:                               #   in Loop: Header=BB4_20 Depth=2
 	ori	$a0, $zero, 30
@@ -1113,7 +1124,7 @@ read_sched_into:                        # @read_sched_into
 	b	.LBB4_19
 .LBB4_54:                               #   in Loop: Header=BB4_20 Depth=2
 	ori	$a1, $zero, 15
-	blt	$a0, $a1, .LBB4_57
+	blt	$a0, $a1, .LBB4_17
 # %bb.55:                               #   in Loop: Header=BB4_20 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
@@ -1124,25 +1135,9 @@ read_sched_into:                        # @read_sched_into
 	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
 	ori	$t0, $zero, 1
 	b	.LBB4_18
-.LBB4_57:                               # %.thread
-                                        #   in Loop: Header=BB4_20 Depth=2
-	addi.d	$a1, $sp, 96
-	alsl.d	$a1, $a5, $a1, 2
-	ori	$a2, $zero, 180
-	mul.d	$a2, $a5, $a2
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a2, $a3, $a2
-	slli.d	$a3, $a0, 3
-	alsl.d	$a3, $a0, $a3, 2
-	add.d	$a2, $a2, $a3
-	st.w	$s5, $a2, 4
-	st.w	$s3, $a2, 8
-	addi.d	$a0, $a0, 1
-	st.w	$a0, $a1, 0
-	b	.LBB4_18
-.LBB4_58:                               # %.split.us
-	bnez	$t0, .LBB4_61
-.LBB4_59:                               # %.split.us.thread
+.LBB4_57:                               # %.split.us
+	bnez	$t0, .LBB4_60
+.LBB4_58:                               # %.split.us.thread
 	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
@@ -1156,10 +1151,10 @@ read_sched_into:                        # @read_sched_into
 	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 272
 	ret
-.LBB4_60:
+.LBB4_59:
 	addi.d	$a3, $a1, 1
 	b	.LBB4_11
-.LBB4_61:
+.LBB4_60:
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0

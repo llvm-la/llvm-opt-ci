@@ -528,7 +528,7 @@ Ppmd8_EncodeSymbol:                     # @Ppmd8_EncodeSymbol
 	addi.w	$a1, $a1, -1
 	addi.d	$a0, $a0, 6
 	bnez	$a1, .LBB1_57
-.LBB1_58:                               # %.loopexit260
+.LBB1_58:                               # %.loopexit258
 	ld.w	$a0, $sp, 20
 	ld.w	$a1, $fp, 104
 	ld.bu	$a3, $s2, 1

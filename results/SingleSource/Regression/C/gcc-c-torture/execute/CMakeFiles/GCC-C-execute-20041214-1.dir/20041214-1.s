@@ -91,25 +91,23 @@ main:                                   # @main
 # %bb.0:
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$fp, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 6
-	move	$a2, $fp
+	addi.d	$a2, $a0, %pc_lo12(.L.str.1)
+	addi.d	$a0, $sp, 14
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(f)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 6
-	ori	$a2, $zero, 5
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 14
+	ld.bu	$a1, $sp, 18
+	lu12i.w	$a2, 419399
+	ori	$a2, $a2, 865
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_2
 # %bb.1:
 	move	$a0, $zero
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret

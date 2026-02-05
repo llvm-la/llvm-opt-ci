@@ -113,15 +113,14 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	ld.w	$a0, $s0, 60
 	blez	$a0, .LBB0_53
 # %bb.4:                                # %_ZN8NArchive3N7z10CCoderInfoD2Ev.exit.lr.ph
-	addi.d	$s3, $s0, 16
+	addi.d	$s1, $s0, 16
 	pcalau12i	$a0, %pc_hi20(_ZTV7CBufferIhE+16)
-	addi.d	$s4, $a0, %pc_lo12(_ZTV7CBufferIhE+16)
+	addi.d	$s3, $a0, %pc_lo12(_ZTV7CBufferIhE+16)
 	pcalau12i	$a0, %got_pc_hi20(IID_ICompressSetCoderMt)
-	ld.d	$a0, $a0, %got_pc_lo12(IID_ICompressSetCoderMt)
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	ld.d	$s4, $a0, %got_pc_lo12(IID_ICompressSetCoderMt)
 	pcalau12i	$a0, %got_pc_hi20(IID_ICryptoSetPassword)
 	ld.d	$a0, $a0, %got_pc_lo12(IID_ICryptoSetPassword)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	move	$s8, $zero
 	move	$s7, $zero
 	.p2align	4, , 16
@@ -137,11 +136,11 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	st.d	$zero, $a0, 0
-	st.d	$s4, $a0, 8
+	st.d	$s3, $a0, 8
 	st.d	$zero, $a0, 16
 	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
 	vst	$vr0, $a0, 24
-	move	$a0, $s3
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 28
@@ -172,29 +171,29 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	b	.LBB0_44
 	.p2align	4, , 16
 .LBB0_8:                                #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$s1, $sp, 144
-	bnez	$s1, .LBB0_10
+	ld.d	$s5, $sp, 144
+	bnez	$s5, .LBB0_10
 # %bb.9:                                #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$s1, $sp, 136
-	beqz	$s1, .LBB0_55
+	ld.d	$s5, $sp, 136
+	beqz	$s5, .LBB0_55
 .LBB0_10:                               # %.thread134
                                         #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a1, $a0, 8
 .Ltmp3:                                 # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 .Ltmp4:                                 # EH_LABEL
 # %bb.11:                               # %_ZN9CMyComPtrI8IUnknownEC2EPS0_.exit
                                         #   in Loop: Header=BB0_5 Depth=1
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 104                   # 8-byte Folded Spill
 	st.d	$zero, $sp, 128
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a3, $a0, 0
 .Ltmp6:                                 # EH_LABEL
 	addi.d	$a2, $sp, 128
-	move	$a0, $s1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	move	$a0, $s5
+	move	$a1, $s4
 	jirl	$ra, $a3, 0
 .Ltmp7:                                 # EH_LABEL
 # %bb.12:                               # %_ZNK9CMyComPtrI8IUnknownE14QueryInterfaceI19ICompressSetCoderMtEEiRK4GUIDPPT_.exit
@@ -229,7 +228,7 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 .Ltmp18:                                # EH_LABEL
 	move	$a0, $s6
 	move	$a1, $s2
-	move	$a2, $s1
+	move	$a2, $s5
 	pcaddu18i	$ra, %call36(_Z19SetMethodPropertiesRK7CMethodPKyP8IUnknown)
 	jirl	$ra, $ra, 0
 .Ltmp19:                                # EH_LABEL
@@ -241,12 +240,12 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	b	.LBB0_43
 .LBB0_21:                               #   in Loop: Header=BB0_5 Depth=1
 	st.d	$zero, $sp, 128
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a3, $a0, 0
 .Ltmp21:                                # EH_LABEL
 	addi.d	$a2, $sp, 128
-	move	$a0, $s1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	move	$a0, $s5
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	jirl	$ra, $a3, 0
 .Ltmp22:                                # EH_LABEL
 # %bb.22:                               # %_ZNK9CMyComPtrI8IUnknownE14QueryInterfaceI18ICryptoSetPasswordEEiRK4GUIDPPT_.exit
@@ -254,11 +253,12 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	ld.d	$fp, $sp, 128
 	beqz	$fp, .LBB0_38
 # %bb.23:                               #   in Loop: Header=BB0_5 Depth=1
-	ld.w	$s7, $s0, 128
-	slli.w	$s5, $s7, 1
-	beqz	$s7, .LBB0_32
+	ld.w	$a0, $s0, 128
+	slli.w	$s7, $a0, 1
+	beqz	$a0, .LBB0_32
 # %bb.24:                               #   in Loop: Header=BB0_5 Depth=1
-	bstrpick.d	$a0, $s5, 31, 0
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	bstrpick.d	$a0, $s7, 31, 0
 .Ltmp23:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -266,28 +266,29 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 # %bb.25:                               # %_ZN7CBufferIhE11SetCapacityEm.exit
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s6, $a0
-	blez	$s7, .LBB0_33
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	blez	$a3, .LBB0_33
 # %bb.26:                               # %.lr.ph
                                         #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$a2, $s0, 120
 	ori	$a0, $zero, 8
-	bltu	$s7, $a0, .LBB0_29
+	bltu	$a3, $a0, .LBB0_29
 # %bb.27:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_5 Depth=1
-	alsl.d	$a1, $s7, $a2, 2
+	alsl.d	$a1, $a3, $a2, 2
 	bgeu	$s6, $a1, .LBB0_50
 # %bb.28:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_5 Depth=1
-	alsl.d	$a1, $s7, $s6, 1
+	alsl.d	$a1, $a3, $s6, 1
 	bgeu	$a2, $a1, .LBB0_50
 .LBB0_29:                               #   in Loop: Header=BB0_5 Depth=1
-	move	$a3, $zero
+	move	$a4, $zero
 .LBB0_30:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
-	alsl.d	$a0, $a3, $a2, 2
-	alsl.d	$a1, $a3, $s6, 1
+	alsl.d	$a0, $a4, $a2, 2
+	alsl.d	$a1, $a4, $s6, 1
 	addi.d	$a2, $a1, 1
-	sub.d	$a1, $s7, $a3
+	sub.d	$a1, $a3, $a4
 	.p2align	4, , 16
 .LBB0_31:                               # %scalar.ph
                                         #   Parent Loop BB0_5 Depth=1
@@ -308,7 +309,7 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 .Ltmp26:                                # EH_LABEL
 	move	$a0, $fp
 	move	$a1, $s6
-	move	$a2, $s5
+	move	$a2, $s7
 	jirl	$ra, $a3, 0
 .Ltmp27:                                # EH_LABEL
 # %bb.34:                               #   in Loop: Header=BB0_5 Depth=1
@@ -334,7 +335,7 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	pcaddu18i	$ra, %call36(_ZN11NCoderMixer14CCoderMixer2MT8AddCoderEP14ICompressCoder)
 	jirl	$ra, $ra, 0
 .Ltmp30:                                # EH_LABEL
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
 	b	.LBB0_41
 .LBB0_40:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$a1, $sp, 136
@@ -343,7 +344,7 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	pcaddu18i	$ra, %call36(_ZN11NCoderMixer14CCoderMixer2MT9AddCoder2EP15ICompressCoder2)
 	jirl	$ra, $ra, 0
 .Ltmp32:                                # EH_LABEL
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
 .LBB0_41:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$a0, $sp, 128
 	beqz	$a0, .LBB0_43
@@ -355,10 +356,10 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 .Ltmp47:                                # EH_LABEL
 	.p2align	4, , 16
 .LBB0_43:                               #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a1, $a0, 16
 .Ltmp49:                                # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 .Ltmp50:                                # EH_LABEL
 .LBB0_44:                               # %_ZN9CMyComPtrI8IUnknownED2Ev.exit
@@ -391,16 +392,16 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	b	.LBB0_53
 .LBB0_50:                               # %vector.ph
                                         #   in Loop: Header=BB0_5 Depth=1
-	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI0_1)
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	bstrpick.d	$a1, $s7, 30, 3
+	bstrpick.d	$a1, $a3, 30, 3
 	slli.d	$a3, $a1, 3
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
@@ -410,8 +411,9 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr2, $a2, 0
 	xvpickve2gr.w	$a0, $xr2, 7
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	xvpickve2gr.w	$a0, $xr2, 6
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	xvpickve2gr.w	$t5, $xr2, 6
 	xvpickve2gr.w	$a6, $xr2, 5
 	xvpickve2gr.w	$a7, $xr2, 4
 	xvpickve2gr.w	$t0, $xr2, 3
@@ -421,49 +423,48 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	xvslli.d	$xr3, $xr0, 1
 	xvslli.d	$xr4, $xr1, 1
 	xvpickve2gr.d	$t4, $xr4, 0
-	add.d	$a0, $s6, $t4
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	xvpickve2gr.d	$t6, $xr4, 1
-	add.d	$t7, $s6, $t6
-	xvpickve2gr.d	$t8, $xr4, 2
-	add.d	$ra, $s6, $t8
-	xvpickve2gr.d	$a0, $xr4, 3
-	add.d	$a5, $s6, $a0
-	xvpickve2gr.d	$s2, $xr3, 0
-	add.d	$a4, $s6, $s2
-	xvpickve2gr.d	$s7, $xr3, 1
-	add.d	$fp, $s6, $s7
-	xvpickve2gr.d	$s3, $xr3, 2
-	add.d	$s4, $s6, $s3
-	xvpickve2gr.d	$s5, $xr3, 3
-	add.d	$a1, $s6, $s5
+	xvpickve2gr.d	$t5, $xr4, 1
+	xvpickve2gr.d	$t6, $xr4, 2
+	xvpickve2gr.d	$t7, $xr4, 3
+	xvpickve2gr.d	$t8, $xr3, 0
+	xvpickve2gr.d	$ra, $xr3, 1
+	xvpickve2gr.d	$a0, $xr3, 2
+	xvpickve2gr.d	$a1, $xr3, 3
+	add.d	$s2, $s6, $t4
+	add.d	$s1, $s6, $t5
+	add.d	$s7, $s6, $t6
+	add.d	$fp, $s6, $t7
+	add.d	$s3, $s6, $t8
+	add.d	$s4, $s6, $ra
+	add.d	$a4, $s6, $a0
+	add.d	$a5, $s6, $a1
 	stx.b	$t3, $s6, $t4
-	stx.b	$t2, $s6, $t6
-	stx.b	$t1, $s6, $t8
-	stx.b	$t0, $s6, $a0
-	stx.b	$a7, $s6, $s2
-	stx.b	$a6, $s6, $s7
-	stx.b	$t5, $s6, $s3
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	stx.b	$a0, $s6, $s5
+	stx.b	$t2, $s6, $t5
+	stx.b	$t1, $s6, $t6
+	stx.b	$t0, $s6, $t7
+	stx.b	$a7, $s6, $t8
+	stx.b	$a6, $s6, $ra
+	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
+	stx.b	$a6, $s6, $a0
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	stx.b	$a0, $s6, $a1
 	xvsrli.w	$xr2, $xr2, 8
 	xvpickve2gr.w	$a0, $xr2, 7
-	xvpickve2gr.w	$a6, $xr2, 6
-	xvpickve2gr.w	$a7, $xr2, 5
-	xvpickve2gr.w	$t0, $xr2, 4
-	xvpickve2gr.w	$t1, $xr2, 3
-	xvpickve2gr.w	$t2, $xr2, 2
-	xvpickve2gr.w	$t3, $xr2, 1
-	xvpickve2gr.w	$t4, $xr2, 0
-	ld.d	$t5, $sp, 80                    # 8-byte Folded Reload
-	st.b	$t4, $t5, 1
-	st.b	$t3, $t7, 1
-	st.b	$t2, $ra, 1
-	st.b	$t1, $a5, 1
-	st.b	$t0, $a4, 1
-	st.b	$a7, $fp, 1
+	xvpickve2gr.w	$a1, $xr2, 6
+	xvpickve2gr.w	$a6, $xr2, 5
+	xvpickve2gr.w	$a7, $xr2, 4
+	xvpickve2gr.w	$t0, $xr2, 3
+	xvpickve2gr.w	$t1, $xr2, 2
+	xvpickve2gr.w	$t2, $xr2, 1
+	xvpickve2gr.w	$t3, $xr2, 0
+	st.b	$t3, $s2, 1
+	st.b	$t2, $s1, 1
+	st.b	$t1, $s7, 1
+	st.b	$t0, $fp, 1
+	st.b	$a7, $s3, 1
 	st.b	$a6, $s4, 1
-	st.b	$a0, $a1, 1
+	st.b	$a1, $a4, 1
+	st.b	$a0, $a5, 1
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.du	$xr0, $xr0, 8
 	addi.d	$a3, $a3, -8
@@ -472,14 +473,15 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 # %bb.52:                               # %middle.block
                                         #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
-	addi.d	$s3, $s0, 16
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$s1, $s0, 16
+	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	beq	$a3, $s7, .LBB0_33
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	beq	$a4, $a3, .LBB0_33
 	b	.LBB0_30
 .LBB0_53:
 	move	$s7, $zero
@@ -560,10 +562,10 @@ _ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy: # @_ZN8NArchive3N7z8CEncoder16C
 	jirl	$ra, $a1, 0
 .Ltmp13:                                # EH_LABEL
 .LBB0_71:
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a1, $a0, 16
 .Ltmp37:                                # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 .Ltmp38:                                # EH_LABEL
 	b	.LBB0_80
@@ -806,8 +808,8 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	st.d	$a6, $sp, 64                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
 	move	$fp, $a4
-	move	$s2, $a3
-	move	$s3, $a2
+	move	$s3, $a3
+	move	$s1, $a2
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z8CEncoder13EncoderConstrEv)
@@ -845,7 +847,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	st.d	$a2, $sp, 1368
 	blt	$a0, $a1, .LBB2_21
 # %bb.2:                                # %.lr.ph
-	ori	$s1, $zero, 1
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB2_3:                                # =>This Inner Loop Header: Depth=1
 .Ltmp58:                                # EH_LABEL
@@ -902,15 +904,15 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp72:                                # EH_LABEL
 # %bb.9:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$a0, $s0, 244
-	addi.w	$s1, $s1, 1
-	blt	$s1, $a0, .LBB2_3
+	addi.w	$s2, $s2, 1
+	blt	$s2, $a0, .LBB2_3
 # %bb.10:                               # %.preheader303
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB2_21
 # %bb.11:                               # %.lr.ph342
 	pcalau12i	$a0, %got_pc_hi20(_ZTV27CSequentialOutTempBufferImp)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTV27CSequentialOutTempBufferImp)
-	ld.d	$s1, $a0, 24
+	ld.d	$s2, $a0, 24
 	move	$s6, $zero
 	ori	$s8, $zero, 1
 	addi.d	$s7, $a0, 16
@@ -926,7 +928,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	st.w	$zero, $a0, 8
 	st.d	$s7, $a0, 0
 .Ltmp77:                                # EH_LABEL
-	jirl	$ra, $s1, 0
+	jirl	$ra, $s2, 0
 .Ltmp78:                                # EH_LABEL
 # %bb.14:                               # %_ZN9CMyComPtrI20ISequentialOutStreamEC2EPS0_.exit
                                         #   in Loop: Header=BB2_12 Depth=1
@@ -968,7 +970,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp88:                                # EH_LABEL
 # %bb.18:                               # %.noexc180
                                         #   in Loop: Header=BB2_12 Depth=1
-	move	$s2, $a0
+	move	$s3, $a0
 	st.d	$s4, $a0, 0
 .Ltmp89:                                # EH_LABEL
 	addi.d	$a0, $sp, 1400
@@ -979,7 +981,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.w	$a0, $sp, 1412
 	ld.d	$a1, $sp, 1416
 	slli.d	$a2, $a0, 3
-	stx.d	$s2, $a1, $a2
+	stx.d	$s3, $a1, $a2
 	ld.d	$a1, $s4, 0
 	ld.d	$a1, $a1, 16
 	addi.d	$a0, $a0, 1
@@ -998,7 +1000,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	blez	$a0, .LBB2_25
 # %bb.22:                               # %.lr.ph344.preheader
-	move	$s2, $zero
+	move	$s3, $zero
 	.p2align	4, , 16
 .LBB2_23:                               # %.lr.ph344
                                         # =>This Inner Loop Header: Depth=1
@@ -1006,15 +1008,15 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 64
 .Ltmp98:                                # EH_LABEL
-	move	$a1, $s2
+	move	$a1, $s3
 	move	$a2, $zero
 	move	$a3, $zero
 	jirl	$ra, $a4, 0
 .Ltmp99:                                # EH_LABEL
 # %bb.24:                               #   in Loop: Header=BB2_23 Depth=1
-	addi.w	$s2, $s2, 1
+	addi.w	$s3, $s3, 1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	bne	$a0, $s2, .LBB2_23
+	bne	$a0, $s3, .LBB2_23
 .LBB2_25:                               # %._crit_edge
 	ld.w	$a0, $s0, 212
 	beqz	$a0, .LBB2_86
@@ -1023,17 +1025,17 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	beqz	$a0, .LBB2_30
 # %bb.27:                               # %.lr.ph.i
 	ld.d	$a1, $s0, 216
-	ld.w	$s1, $a1, 0
+	ld.w	$s2, $a1, 0
 	ld.d	$a1, $s0, 152
 	move	$s6, $zero
 	.p2align	4, , 16
 .LBB2_28:                               # =>This Inner Loop Header: Depth=1
-	slli.d	$s2, $s6, 3
-	ldx.w	$a2, $a1, $s2
-	bltu	$s1, $a2, .LBB2_32
+	slli.d	$s3, $s6, 3
+	ldx.w	$a2, $a1, $s3
+	bltu	$s2, $a2, .LBB2_32
 # %bb.29:                               #   in Loop: Header=BB2_28 Depth=1
 	addi.w	$s6, $s6, 1
-	sub.w	$s1, $s1, $a2
+	sub.w	$s2, $s2, $a2
 	bne	$a0, $s6, .LBB2_28
 .LBB2_30:                               # %._crit_edge.i
 	ori	$a0, $zero, 4
@@ -1050,7 +1052,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp234:                               # EH_LABEL
 # %bb.31:                               # %.noexc185
 .LBB2_32:                               # %_ZNK11NCoderMixer9CBindInfo12FindInStreamEjRjS1_.exit
-	beqz	$s3, .LBB2_38
+	beqz	$s1, .LBB2_38
 # %bb.33:                               # %.lr.ph347
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 208
@@ -1069,17 +1071,17 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp102:                               # EH_LABEL
 # %bb.35:                               # %_ZN13CRecordVectorIPKyE3AddES1_.exit
                                         #   in Loop: Header=BB2_34 Depth=1
-	xor	$a0, $s1, $s4
+	xor	$a0, $s2, $s4
 	ld.w	$a1, $sp, 212
 	ld.d	$a2, $sp, 216
 	sltui	$a0, $a0, 1
-	maskeqz	$a0, $s3, $a0
+	maskeqz	$a0, $s1, $a0
 	slli.d	$a3, $a1, 3
 	stx.d	$a0, $a2, $a3
 	ld.d	$a0, $s0, 152
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $sp, 212
-	ldx.w	$a0, $a0, $s2
+	ldx.w	$a0, $a0, $s3
 	addi.w	$s4, $s4, 1
 	bltu	$s4, $a0, .LBB2_34
 # %bb.36:                               # %._crit_edge348
@@ -1117,7 +1119,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	move	$a0, $s8
 	jirl	$ra, $a1, 0
 .Ltmp111:                               # EH_LABEL
-	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
 # %bb.40:                               # %_ZN9CMyComPtrI19ISequentialInStreamEC2EPS0_.exit
 .Ltmp113:                               # EH_LABEL
 	ori	$a0, $zero, 32
@@ -1125,31 +1127,30 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	jirl	$ra, $ra, 0
 .Ltmp114:                               # EH_LABEL
 # %bb.41:
-	move	$s2, $a0
+	move	$s1, $a0
 	st.w	$zero, $a0, 8
 	pcalau12i	$a0, %got_pc_hi20(_ZTV29CSequentialOutStreamSizeCount)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZTV29CSequentialOutStreamSizeCount)
 	ld.d	$a1, $a0, 24
 	addi.d	$a0, $a0, 16
-	st.d	$a0, $s2, 0
-	st.d	$zero, $s2, 16
+	st.d	$a0, $s1, 0
+	st.d	$zero, $s1, 16
 .Ltmp116:                               # EH_LABEL
-	move	$a0, $s2
+	move	$a0, $s1
 	jirl	$ra, $a1, 0
 .Ltmp117:                               # EH_LABEL
 # %bb.42:                               # %_ZN9CMyComPtrI20ISequentialOutStreamEC2EPS0_.exit193
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	beqz	$s3, .LBB2_44
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	beqz	$s2, .LBB2_44
 # %bb.43:
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	ld.d	$a1, $a0, 8
 .Ltmp119:                               # EH_LABEL
-	move	$a0, $s3
+	move	$a0, $s2
 	jirl	$ra, $a1, 0
 .Ltmp120:                               # EH_LABEL
 .LBB2_44:                               # %.noexc195
-	addi.d	$s1, $s8, 24
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s8, 24
 	beqz	$a0, .LBB2_46
 # %bb.45:
 	ld.d	$a1, $a0, 0
@@ -1159,7 +1160,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp122:                               # EH_LABEL
 .LBB2_46:                               # %_ZN9CMyComPtrI19ISequentialInStreamEaSEPS0_.exit.i
 	ld.d	$a0, $s8, 32
-	st.d	$s3, $s8, 24
+	st.d	$s2, $s8, 24
 	beqz	$a0, .LBB2_49
 # %bb.47:
 	ld.d	$a1, $a0, 0
@@ -1168,16 +1169,16 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	jirl	$ra, $a1, 0
 .Ltmp124:                               # EH_LABEL
 # %bb.48:                               # %.noexc197
-	ld.d	$s3, $s1, 0
+	ld.d	$s2, $s8, 24
 .LBB2_49:                               # %_ZN9CMyComPtrI25ICompressGetSubStreamSizeEaSEPS0_.exit.i
 	addi.d	$a2, $s8, 32
 	st.d	$zero, $a2, 0
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	ld.d	$a3, $a0, 0
 .Ltmp125:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(IID_ICompressGetSubStreamSize)
 	ld.d	$a1, $a0, %got_pc_lo12(IID_ICompressGetSubStreamSize)
-	move	$a0, $s3
+	move	$a0, $s2
 	jirl	$ra, $a3, 0
 .Ltmp126:                               # EH_LABEL
 # %bb.50:
@@ -1192,7 +1193,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	jirl	$ra, $a1, 0
 .Ltmp128:                               # EH_LABEL
 .LBB2_52:                               # %.noexc201
-	ld.d	$a0, $s2, 16
+	ld.d	$a0, $s1, 16
 	beqz	$a0, .LBB2_54
 # %bb.53:
 	ld.d	$a1, $a0, 0
@@ -1202,8 +1203,8 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp130:                               # EH_LABEL
 .LBB2_54:
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	st.d	$a0, $s2, 16
-	st.d	$zero, $s2, 24
+	st.d	$a0, $s1, 16
+	st.d	$zero, $s1, 24
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 208
 	ori	$a0, $zero, 8
@@ -1237,7 +1238,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.w	$a0, $sp, 180
 	ld.d	$a1, $sp, 184
 	slli.d	$a2, $a0, 3
-	stx.d	$s2, $a1, $a2
+	stx.d	$s1, $a1, $a2
 	ld.w	$a1, $s0, 244
 	addi.d	$a0, $a0, 1
 	ori	$a2, $zero, 2
@@ -1280,8 +1281,8 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.d	$s7, $a1, %got_pc_lo12(IID_ICryptoResetInitVector)
 	pcalau12i	$a1, %got_pc_hi20(IID_ICompressWriteCoderProperties)
 	ld.d	$s8, $a1, %got_pc_lo12(IID_ICompressWriteCoderProperties)
-	move	$s3, $zero
 	move	$s1, $zero
+	move	$s2, $zero
 	addi.d	$a0, $a0, 16
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB2_63
@@ -1289,16 +1290,16 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .LBB2_62:                               # %_ZN9CMyComPtrI22ICryptoResetInitVectorED2Ev.exit
                                         #   in Loop: Header=BB2_63 Depth=1
 	ld.w	$a1, $s0, 28
-	addi.d	$s1, $s1, 1
-	addi.d	$s3, $s3, 8
-	bge	$s1, $a1, .LBB2_79
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 8
+	bge	$s2, $a1, .LBB2_79
 .LBB2_63:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 32
 	ld.d	$a0, $a0, 208
-	ldx.d	$s4, $a1, $s3
+	ldx.d	$s4, $a1, $s1
 	st.d	$zero, $sp, 160
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s1
 	ld.d	$a1, $a0, 240
 	ld.d	$a0, $a0, 248
 	sltui	$a2, $a1, 1
@@ -1326,7 +1327,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.d	$a0, $s0, 0
 	ld.d	$a0, $a0, 208
 	st.d	$zero, $sp, 152
-	ldx.d	$a0, $a0, $s3
+	ldx.d	$a0, $a0, $s1
 	ld.d	$a1, $a0, 240
 	ld.d	$a0, $a0, 248
 	sltui	$a2, $a1, 1
@@ -1342,8 +1343,8 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp146:                               # EH_LABEL
 # %bb.67:                               # %_ZNK11NCoderMixer11CCoderInfo214QueryInterfaceERK4GUIDPPv.exit211
                                         #   in Loop: Header=BB2_63 Depth=1
-	ld.d	$s2, $sp, 152
-	beqz	$s2, .LBB2_75
+	ld.d	$s3, $sp, 152
+	beqz	$s3, .LBB2_75
 # %bb.68:                               #   in Loop: Header=BB2_63 Depth=1
 .Ltmp148:                               # EH_LABEL
 	ori	$a0, $zero, 40
@@ -1410,7 +1411,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	b	.LBB2_62
 .LBB2_77:
 	move	$a0, $s0
-	move	$a1, $s2
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z8CEncoder16CreateMixerCoderEPKy)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_145
@@ -1581,15 +1582,15 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 # %bb.105:                              # %_ZN8NArchive3N7z10CCoderInfoD2Ev.exit.lr.ph.i
 	pcalau12i	$a0, %pc_hi20(_ZTV7CBufferIhE+16)
 	addi.d	$s1, $a0, %pc_lo12(_ZTV7CBufferIhE+16)
-	move	$s3, $zero
+	move	$s2, $zero
 	move	$s4, $zero
 	.p2align	4, , 16
 .LBB2_106:                              # %_ZN8NArchive3N7z10CCoderInfoD2Ev.exit.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 280
 	ld.d	$a1, $sp, 136
-	ldx.d	$s6, $a0, $s3
-	ldx.d	$s7, $a1, $s3
+	ldx.d	$s6, $a0, $s2
+	ldx.d	$s7, $a1, $s2
 .Ltmp198:                               # EH_LABEL
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -1597,7 +1598,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .Ltmp199:                               # EH_LABEL
 # %bb.107:                              # %.noexc233
                                         #   in Loop: Header=BB2_106 Depth=1
-	move	$s2, $a0
+	move	$s3, $a0
 	st.d	$s7, $a0, 0
 	st.d	$s1, $a0, 8
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
@@ -1613,12 +1614,12 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.w	$a0, $fp, 12
 	ld.d	$a1, $fp, 16
 	slli.d	$a2, $a0, 3
-	stx.d	$s2, $a1, $a2
+	stx.d	$s3, $a1, $a2
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 12
 	ld.w	$a0, $s0, 276
 	addi.d	$s4, $s4, 1
-	addi.d	$s3, $s3, 8
+	addi.d	$s2, $s2, 8
 	blt	$s4, $a0, .LBB2_106
 .LBB2_109:                              # %.preheader.i
 	ld.w	$a0, $s0, 340
@@ -1672,24 +1673,25 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	blt	$a0, $a1, .LBB2_120
 # %bb.115:                              # %.lr.ph359
 	move	$s1, $zero
-	ori	$s3, $zero, 1
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB2_116:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 1448
-	ldx.d	$s2, $a0, $s1
+	ldx.d	$s3, $a0, $s1
 .Ltmp209:                               # EH_LABEL
-	move	$a0, $s2
+	move	$a0, $s3
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN16CInOutTempBuffer13WriteToStreamEP20ISequentialOutStream)
 	jirl	$ra, $ra, 0
 .Ltmp210:                               # EH_LABEL
 # %bb.117:                              #   in Loop: Header=BB2_116 Depth=1
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	bnez	$a0, .LBB2_139
 # %bb.118:                              #   in Loop: Header=BB2_116 Depth=1
-	ld.d	$s2, $s2, 1152
+	ld.d	$s3, $s3, 1152
 .Ltmp212:                               # EH_LABEL
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
-	move	$a0, $s4
+	move	$a0, $a1
+	move	$s4, $a1
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 .Ltmp213:                               # EH_LABEL
@@ -1697,21 +1699,21 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	ld.w	$a0, $s4, 12
 	ld.d	$a1, $s4, 16
 	slli.d	$a2, $a0, 3
-	stx.d	$s2, $a1, $a2
+	stx.d	$s3, $a1, $a2
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s4, 12
 	ld.w	$a0, $s0, 244
-	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	blt	$s3, $a0, .LBB2_116
+	blt	$s2, $a0, .LBB2_116
 .LBB2_120:                              # %.preheader
 	ld.d	$a0, $s0, 392
 	ld.w	$a1, $a0, 232
 	blez	$a1, .LBB2_130
 # %bb.121:                              # %.lr.ph361
-	move	$s2, $zero
+	move	$s1, $zero
 	addi.d	$s3, $s8, 40
-	addi.d	$s1, $fp, 96
+	addi.d	$s2, $fp, 96
 	.p2align	4, , 16
 .LBB2_122:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_124 Depth 2
@@ -1721,7 +1723,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 # %bb.123:                              # %.lr.ph.i240
                                         #   in Loop: Header=BB2_122 Depth=1
 	ld.d	$a0, $a0, 256
-	slli.d	$a1, $s2, 2
+	slli.d	$a1, $s1, 2
 	ldx.w	$a0, $a0, $a1
 	ld.d	$a1, $s0, 184
 	move	$a2, $zero
@@ -1748,7 +1750,7 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
                                         #   in Loop: Header=BB2_122 Depth=1
 	ld.d	$s4, $a1, 0
 .Ltmp215:                               # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 .Ltmp216:                               # EH_LABEL
@@ -1761,14 +1763,14 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	st.w	$a0, $fp, 108
 	ld.d	$a0, $s0, 392
 	ld.w	$a1, $a0, 232
-	addi.d	$s2, $s2, 1
-	blt	$s2, $a1, .LBB2_122
+	addi.d	$s1, $s1, 1
+	blt	$s1, $a1, .LBB2_122
 .LBB2_130:                              # %._crit_edge362
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	blez	$a2, .LBB2_138
 # %bb.131:                              # %.lr.ph365
 	addi.w	$a0, $a2, -1
-	addi.d	$s2, $a2, 1
+	addi.d	$s1, $a2, 1
 	slli.d	$a1, $a2, 3
 	addi.d	$s3, $a1, -8
 	sub.d	$a0, $a0, $a2
@@ -1780,17 +1782,17 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 .LBB2_132:                              # %.noexc247
                                         #   in Loop: Header=BB2_134 Depth=1
 	st.d	$a0, $s6, 24
-	st.d	$s1, $s6, 16
+	st.d	$s2, $s6, 16
 	ld.d	$a2, $s7, 16
 	ld.d	$a1, $s7, 24
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB2_133:                              # %_ZN7CBufferIhEaSERKS0_.exit
                                         #   in Loop: Header=BB2_134 Depth=1
-	addi.d	$s2, $s2, -1
+	addi.d	$s1, $s1, -1
 	addi.d	$s3, $s3, -8
 	addi.d	$s4, $s4, 8
-	bgeu	$s5, $s2, .LBB2_138
+	bgeu	$s5, $s1, .LBB2_138
 .LBB2_134:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 16
 	ldx.d	$s6, $a0, $s4
@@ -1805,12 +1807,12 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
                                         #   in Loop: Header=BB2_134 Depth=1
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr0, $s6, 16
-	ld.d	$s1, $s7, 16
-	beqz	$s1, .LBB2_133
+	ld.d	$s2, $s7, 16
+	beqz	$s2, .LBB2_133
 # %bb.137:                              # %_ZN7CBufferIhE11SetCapacityEm.exit.i
                                         #   in Loop: Header=BB2_134 Depth=1
 .Ltmp218:                               # EH_LABEL
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp219:                               # EH_LABEL
@@ -2041,13 +2043,13 @@ _ZN8NArchive3N7z8CEncoder6EncodeEP19ISequentialInStreamPKyS5_RNS0_7CFolderEP20IS
 	jirl	$ra, $a1, 0
 .Ltmp160:                               # EH_LABEL
 .LBB2_188:                              # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit218
-	ld.d	$s2, $sp, 152
-	beqz	$s2, .LBB2_197
+	ld.d	$s3, $sp, 152
+	beqz	$s3, .LBB2_197
 .LBB2_189:
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a1, $a0, 16
 .Ltmp162:                               # EH_LABEL
-	move	$a0, $s2
+	move	$a0, $s3
 	jirl	$ra, $a1, 0
 .Ltmp163:                               # EH_LABEL
 	b	.LBB2_197
@@ -2804,56 +2806,56 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	vinsgr2vr.d	$vr7, $a6, 0
 	vpickve2gr.w	$a6, $vr0, 1
 	vinsgr2vr.d	$vr7, $a6, 1
-	xvpermi.q	$xr8, $xr3, 1
-	vpickve2gr.w	$a6, $vr8, 2
-	vinsgr2vr.d	$vr9, $a6, 0
-	vpickve2gr.w	$a6, $vr8, 3
-	vinsgr2vr.d	$vr9, $a6, 1
-	xvpermi.q	$xr9, $xr9, 2
-	vpickve2gr.w	$a6, $vr8, 0
-	vinsgr2vr.d	$vr10, $a6, 0
-	vpickve2gr.w	$a6, $vr8, 1
-	vinsgr2vr.d	$vr10, $a6, 1
-	vpickve2gr.w	$a6, $vr3, 2
-	vinsgr2vr.d	$vr8, $a6, 0
-	vpickve2gr.w	$a6, $vr3, 3
-	vinsgr2vr.d	$vr8, $a6, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$a6, $vr3, 0
-	vinsgr2vr.d	$vr11, $a6, 0
-	vpickve2gr.w	$a6, $vr3, 1
-	vinsgr2vr.d	$vr11, $a6, 1
 	xvpickve2gr.d	$a6, $xr7, 0
-	slli.d	$a6, $a6, 3
 	xvpickve2gr.d	$a7, $xr7, 1
-	slli.d	$a7, $a7, 3
 	xvpickve2gr.d	$t0, $xr4, 2
-	slli.d	$t0, $t0, 3
 	xvpickve2gr.d	$t1, $xr4, 3
-	slli.d	$t1, $t1, 3
 	xvpickve2gr.d	$t2, $xr6, 0
-	slli.d	$t2, $t2, 3
 	xvpickve2gr.d	$t3, $xr6, 1
-	slli.d	$t3, $t3, 3
 	xvpickve2gr.d	$t4, $xr5, 2
-	slli.d	$t4, $t4, 3
 	xvpickve2gr.d	$t5, $xr5, 3
+	xvpermi.q	$xr4, $xr3, 1
+	vpickve2gr.w	$t6, $vr4, 2
+	vinsgr2vr.d	$vr5, $t6, 0
+	vpickve2gr.w	$t6, $vr4, 3
+	vinsgr2vr.d	$vr5, $t6, 1
+	xvpermi.q	$xr5, $xr5, 2
+	vpickve2gr.w	$t6, $vr4, 0
+	vinsgr2vr.d	$vr6, $t6, 0
+	vpickve2gr.w	$t6, $vr4, 1
+	vinsgr2vr.d	$vr6, $t6, 1
+	vpickve2gr.w	$t6, $vr3, 2
+	vinsgr2vr.d	$vr4, $t6, 0
+	vpickve2gr.w	$t6, $vr3, 3
+	vinsgr2vr.d	$vr4, $t6, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$t6, $vr3, 0
+	vinsgr2vr.d	$vr7, $t6, 0
+	vpickve2gr.w	$t6, $vr3, 1
+	vinsgr2vr.d	$vr7, $t6, 1
+	xvpickve2gr.d	$t6, $xr7, 0
+	xvpickve2gr.d	$t7, $xr7, 1
+	xvpickve2gr.d	$t8, $xr4, 2
+	xvpickve2gr.d	$s0, $xr4, 3
+	xvpickve2gr.d	$s3, $xr6, 0
+	xvpickve2gr.d	$ra, $xr6, 1
+	xvpickve2gr.d	$s8, $xr5, 2
+	xvpickve2gr.d	$s7, $xr5, 3
+	slli.d	$a6, $a6, 3
+	slli.d	$a7, $a7, 3
+	slli.d	$t0, $t0, 3
+	slli.d	$t1, $t1, 3
+	slli.d	$t2, $t2, 3
+	slli.d	$t3, $t3, 3
+	slli.d	$t4, $t4, 3
 	slli.d	$t5, $t5, 3
-	xvpickve2gr.d	$t6, $xr11, 0
 	slli.d	$t6, $t6, 3
-	xvpickve2gr.d	$t7, $xr11, 1
 	slli.d	$t7, $t7, 3
-	xvpickve2gr.d	$t8, $xr8, 2
 	slli.d	$t8, $t8, 3
-	xvpickve2gr.d	$s0, $xr8, 3
 	slli.d	$s0, $s0, 3
-	xvpickve2gr.d	$s3, $xr10, 0
 	slli.d	$s3, $s3, 3
-	xvpickve2gr.d	$ra, $xr10, 1
 	slli.d	$ra, $ra, 3
-	xvpickve2gr.d	$s8, $xr9, 2
 	slli.d	$s8, $s8, 3
-	xvpickve2gr.d	$s7, $xr9, 3
 	slli.d	$s7, $s7, 3
 	ldx.w	$a6, $a3, $a6
 	ldx.w	$a7, $a3, $a7
@@ -2938,12 +2940,12 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	vpickve2gr.w	$a5, $vr1, 1
 	vinsgr2vr.d	$vr3, $a5, 1
 	xvpickve2gr.d	$a5, $xr3, 0
-	slli.d	$a5, $a5, 3
 	xvpickve2gr.d	$a6, $xr3, 1
-	slli.d	$a6, $a6, 3
 	xvpickve2gr.d	$a7, $xr2, 2
-	slli.d	$a7, $a7, 3
 	xvpickve2gr.d	$t0, $xr2, 3
+	slli.d	$a5, $a5, 3
+	slli.d	$a6, $a6, 3
+	slli.d	$a7, $a7, 3
 	slli.d	$t0, $t0, 3
 	ldx.w	$a5, $a3, $a5
 	ldx.w	$a6, $a3, $a6
@@ -3031,56 +3033,56 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	vinsgr2vr.d	$vr7, $t0, 0
 	vpickve2gr.w	$t0, $vr1, 1
 	vinsgr2vr.d	$vr7, $t0, 1
-	xvpermi.q	$xr8, $xr3, 1
-	vpickve2gr.w	$t0, $vr8, 2
-	vinsgr2vr.d	$vr9, $t0, 0
-	vpickve2gr.w	$t0, $vr8, 3
-	vinsgr2vr.d	$vr9, $t0, 1
-	xvpermi.q	$xr9, $xr9, 2
-	vpickve2gr.w	$t0, $vr8, 0
-	vinsgr2vr.d	$vr10, $t0, 0
-	vpickve2gr.w	$t0, $vr8, 1
-	vinsgr2vr.d	$vr10, $t0, 1
-	vpickve2gr.w	$t0, $vr3, 2
-	vinsgr2vr.d	$vr8, $t0, 0
-	vpickve2gr.w	$t0, $vr3, 3
-	vinsgr2vr.d	$vr8, $t0, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$t0, $vr3, 0
-	vinsgr2vr.d	$vr11, $t0, 0
-	vpickve2gr.w	$t0, $vr3, 1
-	vinsgr2vr.d	$vr11, $t0, 1
 	xvpickve2gr.d	$t0, $xr7, 0
-	alsl.d	$t0, $t0, $a4, 3
 	xvpickve2gr.d	$t1, $xr7, 1
-	alsl.d	$t1, $t1, $a4, 3
 	xvpickve2gr.d	$t2, $xr4, 2
-	alsl.d	$t2, $t2, $a4, 3
 	xvpickve2gr.d	$t3, $xr4, 3
-	alsl.d	$t3, $t3, $a4, 3
 	xvpickve2gr.d	$t4, $xr6, 0
-	alsl.d	$t4, $t4, $a4, 3
 	xvpickve2gr.d	$t5, $xr6, 1
-	alsl.d	$t5, $t5, $a4, 3
 	xvpickve2gr.d	$t6, $xr5, 2
-	alsl.d	$t6, $t6, $a4, 3
 	xvpickve2gr.d	$t7, $xr5, 3
+	xvpermi.q	$xr4, $xr3, 1
+	vpickve2gr.w	$t8, $vr4, 2
+	vinsgr2vr.d	$vr5, $t8, 0
+	vpickve2gr.w	$t8, $vr4, 3
+	vinsgr2vr.d	$vr5, $t8, 1
+	xvpermi.q	$xr5, $xr5, 2
+	vpickve2gr.w	$t8, $vr4, 0
+	vinsgr2vr.d	$vr6, $t8, 0
+	vpickve2gr.w	$t8, $vr4, 1
+	vinsgr2vr.d	$vr6, $t8, 1
+	vpickve2gr.w	$t8, $vr3, 2
+	vinsgr2vr.d	$vr4, $t8, 0
+	vpickve2gr.w	$t8, $vr3, 3
+	vinsgr2vr.d	$vr4, $t8, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$t8, $vr3, 0
+	vinsgr2vr.d	$vr7, $t8, 0
+	vpickve2gr.w	$t8, $vr3, 1
+	vinsgr2vr.d	$vr7, $t8, 1
+	xvpickve2gr.d	$t8, $xr7, 0
+	xvpickve2gr.d	$s0, $xr7, 1
+	xvpickve2gr.d	$s3, $xr4, 2
+	xvpickve2gr.d	$s7, $xr4, 3
+	xvpickve2gr.d	$s8, $xr6, 0
+	xvpickve2gr.d	$ra, $xr6, 1
+	xvpickve2gr.d	$s1, $xr5, 2
+	xvpickve2gr.d	$a6, $xr5, 3
+	alsl.d	$t0, $t0, $a4, 3
+	alsl.d	$t1, $t1, $a4, 3
+	alsl.d	$t2, $t2, $a4, 3
+	alsl.d	$t3, $t3, $a4, 3
+	alsl.d	$t4, $t4, $a4, 3
+	alsl.d	$t5, $t5, $a4, 3
+	alsl.d	$t6, $t6, $a4, 3
 	alsl.d	$t7, $t7, $a4, 3
-	xvpickve2gr.d	$t8, $xr11, 0
 	alsl.d	$t8, $t8, $a4, 3
-	xvpickve2gr.d	$s0, $xr11, 1
 	alsl.d	$s0, $s0, $a4, 3
-	xvpickve2gr.d	$s3, $xr8, 2
 	alsl.d	$s3, $s3, $a4, 3
-	xvpickve2gr.d	$s7, $xr8, 3
 	alsl.d	$s7, $s7, $a4, 3
-	xvpickve2gr.d	$s8, $xr10, 0
 	alsl.d	$s8, $s8, $a4, 3
-	xvpickve2gr.d	$ra, $xr10, 1
 	alsl.d	$ra, $ra, $a4, 3
-	xvpickve2gr.d	$s1, $xr9, 2
 	alsl.d	$s1, $s1, $a4, 3
-	xvpickve2gr.d	$a6, $xr9, 3
 	alsl.d	$a6, $a6, $a4, 3
 	ld.w	$t0, $t0, 4
 	ld.w	$t1, $t1, 4
@@ -3168,12 +3170,12 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	vpickve2gr.w	$a7, $vr1, 1
 	vinsgr2vr.d	$vr3, $a7, 1
 	xvpickve2gr.d	$a7, $xr3, 0
-	alsl.d	$a7, $a7, $a4, 3
 	xvpickve2gr.d	$t0, $xr3, 1
-	alsl.d	$t0, $t0, $a4, 3
 	xvpickve2gr.d	$t1, $xr2, 2
-	alsl.d	$t1, $t1, $a4, 3
 	xvpickve2gr.d	$t2, $xr2, 3
+	alsl.d	$a7, $a7, $a4, 3
+	alsl.d	$t0, $t0, $a4, 3
+	alsl.d	$t1, $t1, $a4, 3
 	alsl.d	$t2, $t2, $a4, 3
 	ld.w	$a7, $a7, 4
 	ld.w	$t0, $t0, 4
@@ -3384,56 +3386,56 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	vinsgr2vr.d	$vr10, $t4, 0
 	vpickve2gr.w	$t4, $vr4, 1
 	vinsgr2vr.d	$vr10, $t4, 1
-	xvpermi.q	$xr11, $xr6, 1
-	vpickve2gr.w	$t4, $vr11, 2
-	vinsgr2vr.d	$vr12, $t4, 0
-	vpickve2gr.w	$t4, $vr11, 3
-	vinsgr2vr.d	$vr12, $t4, 1
-	xvpermi.q	$xr12, $xr12, 2
-	vpickve2gr.w	$t4, $vr11, 0
-	vinsgr2vr.d	$vr13, $t4, 0
-	vpickve2gr.w	$t4, $vr11, 1
-	vinsgr2vr.d	$vr13, $t4, 1
-	vpickve2gr.w	$t4, $vr6, 2
-	vinsgr2vr.d	$vr11, $t4, 0
-	vpickve2gr.w	$t4, $vr6, 3
-	vinsgr2vr.d	$vr11, $t4, 1
-	xvpermi.q	$xr11, $xr11, 2
-	vpickve2gr.w	$t4, $vr6, 0
-	vinsgr2vr.d	$vr14, $t4, 0
-	vpickve2gr.w	$t4, $vr6, 1
-	vinsgr2vr.d	$vr14, $t4, 1
 	xvpickve2gr.d	$t4, $xr10, 0
-	alsl.d	$t4, $t4, $a2, 3
 	xvpickve2gr.d	$t5, $xr10, 1
-	alsl.d	$t5, $t5, $a2, 3
 	xvpickve2gr.d	$t6, $xr7, 2
-	alsl.d	$t6, $t6, $a2, 3
 	xvpickve2gr.d	$t7, $xr7, 3
-	alsl.d	$t7, $t7, $a2, 3
 	xvpickve2gr.d	$t8, $xr9, 0
-	alsl.d	$t8, $t8, $a2, 3
 	xvpickve2gr.d	$s0, $xr9, 1
-	alsl.d	$s0, $s0, $a2, 3
 	xvpickve2gr.d	$s1, $xr8, 2
-	alsl.d	$s1, $s1, $a2, 3
 	xvpickve2gr.d	$s3, $xr8, 3
+	xvpermi.q	$xr7, $xr6, 1
+	vpickve2gr.w	$s4, $vr7, 2
+	vinsgr2vr.d	$vr8, $s4, 0
+	vpickve2gr.w	$s4, $vr7, 3
+	vinsgr2vr.d	$vr8, $s4, 1
+	xvpermi.q	$xr8, $xr8, 2
+	vpickve2gr.w	$s4, $vr7, 0
+	vinsgr2vr.d	$vr9, $s4, 0
+	vpickve2gr.w	$s4, $vr7, 1
+	vinsgr2vr.d	$vr9, $s4, 1
+	vpickve2gr.w	$s4, $vr6, 2
+	vinsgr2vr.d	$vr7, $s4, 0
+	vpickve2gr.w	$s4, $vr6, 3
+	vinsgr2vr.d	$vr7, $s4, 1
+	xvpermi.q	$xr7, $xr7, 2
+	vpickve2gr.w	$s4, $vr6, 0
+	vinsgr2vr.d	$vr10, $s4, 0
+	vpickve2gr.w	$s4, $vr6, 1
+	vinsgr2vr.d	$vr10, $s4, 1
+	xvpickve2gr.d	$s4, $xr10, 0
+	xvpickve2gr.d	$s7, $xr10, 1
+	xvpickve2gr.d	$s8, $xr7, 2
+	xvpickve2gr.d	$ra, $xr7, 3
+	xvpickve2gr.d	$a7, $xr9, 0
+	xvpickve2gr.d	$t2, $xr9, 1
+	xvpickve2gr.d	$a5, $xr8, 2
+	xvpickve2gr.d	$a6, $xr8, 3
+	alsl.d	$t4, $t4, $a2, 3
+	alsl.d	$t5, $t5, $a2, 3
+	alsl.d	$t6, $t6, $a2, 3
+	alsl.d	$t7, $t7, $a2, 3
+	alsl.d	$t8, $t8, $a2, 3
+	alsl.d	$s0, $s0, $a2, 3
+	alsl.d	$s1, $s1, $a2, 3
 	alsl.d	$s3, $s3, $a2, 3
-	xvpickve2gr.d	$s4, $xr14, 0
 	alsl.d	$s4, $s4, $a2, 3
-	xvpickve2gr.d	$s7, $xr14, 1
 	alsl.d	$s7, $s7, $a2, 3
-	xvpickve2gr.d	$s8, $xr11, 2
 	alsl.d	$s8, $s8, $a2, 3
-	xvpickve2gr.d	$ra, $xr11, 3
 	alsl.d	$ra, $ra, $a2, 3
-	xvpickve2gr.d	$a7, $xr13, 0
 	alsl.d	$a7, $a7, $a2, 3
-	xvpickve2gr.d	$t2, $xr13, 1
 	alsl.d	$t2, $t2, $a2, 3
-	xvpickve2gr.d	$a5, $xr12, 2
 	alsl.d	$a5, $a5, $a2, 3
-	xvpickve2gr.d	$a6, $xr12, 3
 	alsl.d	$a6, $a6, $a2, 3
 	ld.w	$t4, $t4, 4
 	ld.w	$t5, $t5, 4
@@ -3521,12 +3523,12 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	vpickve2gr.w	$a5, $vr4, 1
 	vinsgr2vr.d	$vr6, $a5, 1
 	xvpickve2gr.d	$a5, $xr6, 0
-	alsl.d	$a5, $a5, $a2, 3
 	xvpickve2gr.d	$a6, $xr6, 1
-	alsl.d	$a6, $a6, $a2, 3
 	xvpickve2gr.d	$a7, $xr5, 2
-	alsl.d	$a7, $a7, $a2, 3
 	xvpickve2gr.d	$t3, $xr5, 3
+	alsl.d	$a5, $a5, $a2, 3
+	alsl.d	$a6, $a6, $a2, 3
+	alsl.d	$a7, $a7, $a2, 3
 	alsl.d	$t3, $t3, $a2, 3
 	ld.w	$a5, $a5, 4
 	ld.w	$a6, $a6, 4

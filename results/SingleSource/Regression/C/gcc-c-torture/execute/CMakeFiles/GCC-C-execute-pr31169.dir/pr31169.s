@@ -14,25 +14,25 @@ sign_bit_p:                             # @sign_bit_p
 	addi.d	$a4, $a0, -65
 	ori	$a5, $zero, 1
 	sll.d	$a4, $a5, $a4
-	sub.d	$a5, $zero, $a0
-	addi.w	$a0, $zero, -1
-	srl.d	$a5, $a0, $a5
-	b	.LBB0_3
-.LBB0_2:
-	move	$a5, $zero
-	move	$a4, $zero
-	addi.d	$a3, $a0, -1
-	ori	$a6, $zero, 1
-	sll.d	$a3, $a6, $a3
 	sub.d	$a0, $zero, $a0
-	addi.w	$a6, $zero, -1
-	srl.d	$a0, $a6, $a0
-.LBB0_3:
-	and	$a1, $a5, $a1
-	xor	$a1, $a1, $a4
-	sltui	$a1, $a1, 1
-	and	$a0, $a0, $a2
-	xor	$a0, $a0, $a3
+	addi.w	$a5, $zero, -1
+	srl.d	$a0, $a5, $a0
+	and	$a0, $a0, $a1
+	xor	$a0, $a0, $a4
+	sltui	$a1, $a0, 1
+	xor	$a0, $a2, $a3
+	sltui	$a0, $a0, 1
+	and	$a0, $a1, $a0
+	ret
+.LBB0_2:
+	addi.d	$a3, $a0, -1
+	ori	$a1, $zero, 1
+	sll.d	$a3, $a1, $a3
+	sub.d	$a0, $zero, $a0
+	addi.w	$a4, $zero, -1
+	srl.d	$a0, $a4, $a0
+	and	$a2, $a0, $a2
+	xor	$a0, $a2, $a3
 	sltui	$a0, $a0, 1
 	and	$a0, $a1, $a0
 	ret

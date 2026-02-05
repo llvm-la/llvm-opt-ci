@@ -1007,33 +1007,33 @@ read_CLI:                               # @read_CLI
 	st.h	$a0, $s0, 4
 	ori	$s6, $zero, 2
 	lu12i.w	$a0, 2
-	lu12i.w	$a2, 3662
+	lu12i.w	$a1, 3662
 	blt	$s2, $s6, .LBB7_20
 # %bb.1:                                # %sub_0.preheader
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
-	ori	$a1, $zero, 1
+	ori	$a2, $zero, 1
+	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	ori	$a0, $a0, 3111
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	ori	$a0, $a2, 448
+	ori	$a0, $a1, 448
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$s8, $zero, 45
-	ori	$s4, $zero, 116
+	ori	$s5, $zero, 116
 	ori	$s7, $zero, 103
-	ori	$fp, $zero, 108
-	ori	$s3, $zero, 115
-	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ori	$s3, $zero, 108
+	ori	$fp, $zero, 115
+	ori	$a1, $zero, 1
 	b	.LBB7_4
 	.p2align	4, , 16
 .LBB7_2:                                #   in Loop: Header=BB7_4 Depth=1
 	slli.d	$a0, $s6, 3
 	ldx.d	$s0, $s1, $a0
-	addi.d	$s5, $a1, 1
+	addi.d	$s4, $a1, 1
 .LBB7_3:                                #   in Loop: Header=BB7_4 Depth=1
 	addi.w	$a0, $s6, 1
 	addi.w	$s6, $s6, 2
-	addi.d	$a1, $s5, 1
+	addi.d	$a1, $s4, 1
 	bge	$a0, $s2, .LBB7_21
 .LBB7_4:                                # %sub_0
                                         # =>This Inner Loop Header: Depth=1
@@ -1045,7 +1045,7 @@ read_CLI:                               # @read_CLI
 # %bb.5:                                # %sub_1
                                         #   in Loop: Header=BB7_4 Depth=1
 	ld.bu	$a2, $a0, 1
-	bne	$a2, $s4, .LBB7_7
+	bne	$a2, $s5, .LBB7_7
 # %bb.6:                                # %.tail
                                         #   in Loop: Header=BB7_4 Depth=1
 	ld.bu	$a2, $a0, 2
@@ -1061,7 +1061,7 @@ read_CLI:                               # @read_CLI
 .LBB7_9:                                # %sub_150
                                         #   in Loop: Header=BB7_4 Depth=1
 	ld.bu	$a2, $a0, 1
-	bne	$a2, $fp, .LBB7_11
+	bne	$a2, $s3, .LBB7_11
 # %bb.10:                               # %.tail48
                                         #   in Loop: Header=BB7_4 Depth=1
 	ld.bu	$a2, $a0, 2
@@ -1069,7 +1069,7 @@ read_CLI:                               # @read_CLI
 .LBB7_11:                               # %sub_155
                                         #   in Loop: Header=BB7_4 Depth=1
 	ld.bu	$a2, $a0, 1
-	bne	$a2, $s3, .LBB7_36
+	bne	$a2, $fp, .LBB7_36
 # %bb.12:                               # %.tail53
                                         #   in Loop: Header=BB7_4 Depth=1
 	ld.bu	$a0, $a0, 2
@@ -1082,7 +1082,7 @@ read_CLI:                               # @read_CLI
 # %bb.15:                               #   in Loop: Header=BB7_4 Depth=1
 	slli.d	$a0, $s6, 3
 	ldx.d	$a0, $s1, $a0
-	addi.d	$s5, $a1, 1
+	addi.d	$s4, $a1, 1
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
@@ -1094,7 +1094,7 @@ read_CLI:                               # @read_CLI
 # %bb.17:                               #   in Loop: Header=BB7_4 Depth=1
 	slli.d	$a0, $s6, 3
 	ldx.d	$a0, $s1, $a0
-	addi.d	$s5, $a1, 1
+	addi.d	$s4, $a1, 1
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
@@ -1108,7 +1108,7 @@ read_CLI:                               # @read_CLI
 # %bb.19:                               #   in Loop: Header=BB7_4 Depth=1
 	slli.d	$a0, $s6, 3
 	ldx.d	$a0, $s1, $a0
-	addi.d	$s5, $a1, 1
+	addi.d	$s4, $a1, 1
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
@@ -1117,7 +1117,7 @@ read_CLI:                               # @read_CLI
 	b	.LBB7_3
 .LBB7_20:                               # %.thread144
 	st.d	$s0, $s3, 32
-	ori	$a1, $a2, 448
+	ori	$a1, $a1, 448
 	st.w	$a1, $s3, 24
 	ori	$a0, $a0, 3111
 	st.d	$a0, $s3, 16
@@ -1127,18 +1127,18 @@ read_CLI:                               # @read_CLI
 .LBB7_21:                               # %._crit_edge
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	st.d	$s0, $s3, 32
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	st.w	$a2, $s3, 24
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	st.w	$a3, $s3, 24
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.d	$a1, $s3, 16
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	addi.w	$a0, $a3, 0
-	st.w	$a3, $s3, 0
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	addi.w	$a0, $a2, 0
+	st.w	$a2, $s3, 0
 	blez	$a0, .LBB7_37
 # %bb.22:
 	blez	$a1, .LBB7_37
 # %bb.23:
-	addi.w	$a0, $a2, 0
+	addi.w	$a0, $a3, 0
 	blez	$a0, .LBB7_37
 # %bb.24:
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload

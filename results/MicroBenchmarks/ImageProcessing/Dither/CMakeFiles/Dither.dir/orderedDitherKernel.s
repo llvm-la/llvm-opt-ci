@@ -413,20 +413,20 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	bstrpick.d	$t7, $t7, 31, 0
 	vinsgr2vr.d	$vr10, $t7, 1
 	xvpickve2gr.d	$t7, $xr10, 0
-	mul.d	$t7, $t7, $t3
 	xvpickve2gr.d	$t8, $xr10, 1
-	mul.d	$t8, $t8, $t3
 	xvpickve2gr.d	$fp, $xr7, 2
-	mul.d	$fp, $fp, $t3
 	xvpickve2gr.d	$s0, $xr7, 3
-	mul.d	$s0, $s0, $t3
 	xvpickve2gr.d	$s1, $xr9, 0
-	mul.d	$s1, $s1, $t3
 	xvpickve2gr.d	$s2, $xr9, 1
-	mul.d	$s2, $s2, $t3
 	xvpickve2gr.d	$s3, $xr8, 2
-	mul.d	$s3, $s3, $t3
 	xvpickve2gr.d	$s4, $xr8, 3
+	mul.d	$t7, $t7, $t3
+	mul.d	$t8, $t8, $t3
+	mul.d	$fp, $fp, $t3
+	mul.d	$s0, $s0, $t3
+	mul.d	$s1, $s1, $t3
+	mul.d	$s2, $s2, $t3
+	mul.d	$s3, $s3, $t3
 	mul.d	$s4, $s4, $t3
 	ldx.w	$t7, $t4, $t7
 	ldx.w	$t8, $t4, $t8

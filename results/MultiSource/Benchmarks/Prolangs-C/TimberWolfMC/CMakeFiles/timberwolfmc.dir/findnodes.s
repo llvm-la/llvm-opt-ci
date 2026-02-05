@@ -32,8 +32,8 @@ findnodes:                              # @findnodes
 	pcalau12i	$a0, %got_pc_hi20(Hlist)
 	ld.d	$a0, $a0, %got_pc_lo12(Hlist)
 	ld.d	$s4, $a0, 0
-	beqz	$s4, .LBB0_150
-# %bb.1:                                # %.lr.ph458.preheader
+	beqz	$s4, .LBB0_149
+# %bb.1:                                # %.lr.ph459.preheader
 	pcalau12i	$a0, %got_pc_hi20(edgeList)
 	ld.d	$s6, $a0, %got_pc_lo12(edgeList)
 	pcalau12i	$a0, %got_pc_hi20(Vptrs)
@@ -61,21 +61,21 @@ findnodes:                              # @findnodes
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
 	move	$s3, $fp
 	move	$s5, $s8
-.LBB0_3:                                # %.loopexit397
+.LBB0_3:                                # %.loopexit398
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$s4, $s4, 16
 	move	$s8, $s5
 	move	$fp, $s3
-	beqz	$s4, .LBB0_150
-.LBB0_4:                                # %.lr.ph458
+	beqz	$s4, .LBB0_149
+.LBB0_4:                                # %.lr.ph459
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_7 Depth 2
                                         #       Child Loop BB0_24 Depth 3
                                         #       Child Loop BB0_40 Depth 3
                                         #       Child Loop BB0_101 Depth 3
                                         #       Child Loop BB0_106 Depth 3
-                                        #       Child Loop BB0_123 Depth 3
-                                        #       Child Loop BB0_137 Depth 3
+                                        #       Child Loop BB0_122 Depth 3
+                                        #       Child Loop BB0_136 Depth 3
 	ld.w	$a0, $s4, 0
 	ld.d	$a1, $s6, 0
 	slli.d	$a2, $a0, 5
@@ -99,21 +99,21 @@ findnodes:                              # @findnodes
 	slli.d	$a0, $a0, 3
 	ldx.d	$s7, $s1, $a0
 	beqz	$s7, .LBB0_2
-# %bb.6:                                # %.lr.ph443.preheader
+# %bb.6:                                # %.lr.ph444.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$t2, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 120                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB0_7:                                # %.lr.ph443
+.LBB0_7:                                # %.lr.ph444
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_24 Depth 3
                                         #       Child Loop BB0_40 Depth 3
                                         #       Child Loop BB0_101 Depth 3
                                         #       Child Loop BB0_106 Depth 3
-                                        #       Child Loop BB0_123 Depth 3
-                                        #       Child Loop BB0_137 Depth 3
+                                        #       Child Loop BB0_122 Depth 3
+                                        #       Child Loop BB0_136 Depth 3
 	ld.w	$a1, $s7, 0
 	ld.d	$a0, $s6, 0
 	slli.d	$a2, $a1, 5
@@ -130,7 +130,7 @@ findnodes:                              # @findnodes
 .LBB0_10:                               #   in Loop: Header=BB0_7 Depth=2
 	move	$s3, $fp
 	move	$s5, $s8
-.LBB0_11:                               # %.loopexit396
+.LBB0_11:                               # %.loopexit397
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$s7, $s7, 16
 	move	$s8, $s5
@@ -237,7 +237,7 @@ findnodes:                              # @findnodes
 	slli.d	$a0, $a0, 3
 	ldx.d	$a1, $s3, $a0
 	beqz	$a1, .LBB0_36
-# %bb.35:                               # %.lr.ph419
+# %bb.35:                               # %.lr.ph420
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$a0, $s6, 0
 	move	$a2, $zero
@@ -380,7 +380,7 @@ findnodes:                              # @findnodes
 .LBB0_76:                               #   in Loop: Header=BB0_40 Depth=3
 	bge	$s1, $a5, .LBB0_81
 .LBB0_77:                               #   in Loop: Header=BB0_40 Depth=3
-	bnez	$a2, .LBB0_145
+	bnez	$a2, .LBB0_144
 # %bb.78:                               #   in Loop: Header=BB0_40 Depth=3
 	ori	$a7, $zero, 2
 	ori	$t0, $zero, 1
@@ -437,7 +437,7 @@ findnodes:                              # @findnodes
 	ld.w	$a2, $a3, 24
 	sltui	$a2, $a2, 1
 	and	$a3, $a2, $t0
-	bnez	$a3, .LBB0_149
+	bnez	$a3, .LBB0_148
 # %bb.95:                               #   in Loop: Header=BB0_40 Depth=3
 	masknez	$a3, $s8, $a2
 	maskeqz	$a4, $s3, $a2
@@ -459,37 +459,34 @@ findnodes:                              # @findnodes
 	move	$s5, $s3
 .LBB0_98:                               # %.thread384
                                         #   in Loop: Header=BB0_7 Depth=2
-	addi.w	$a4, $s5, 0
-	ori	$a7, $zero, 40
-	mul.d	$a1, $a4, $a7
+	addi.w	$a5, $s5, 0
+	ori	$t0, $zero, 40
+	mul.d	$a1, $a5, $t0
 	add.d	$a1, $a0, $a1
-	ld.w	$a5, $a1, 12
+	ld.w	$a2, $a1, 12
 	addi.w	$s8, $s3, 0
-	mul.d	$a2, $s8, $a7
-	add.d	$a2, $a0, $a2
-	ld.w	$a6, $a2, 12
-	slt	$a3, $a5, $a6
-	slt	$a5, $a6, $a5
-	masknez	$a6, $s8, $a5
-	maskeqz	$a4, $a4, $a5
-	or	$a4, $a4, $a6
-	masknez	$a4, $a4, $a3
-	maskeqz	$a5, $s8, $a3
-	or	$a4, $a5, $a4
-	mul.d	$a4, $a4, $a7
-	add.d	$a4, $a0, $a4
-	ld.w	$a5, $a4, 8
-	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
+	mul.d	$a3, $s8, $t0
+	add.d	$a3, $a0, $a3
+	ld.w	$a4, $a3, 12
+	slt	$a6, $a4, $a2
+	masknez	$a7, $s8, $a6
+	maskeqz	$a5, $a5, $a6
+	or	$a5, $a5, $a7
+	mul.d	$a5, $a5, $t0
+	add.d	$a5, $a0, $a5
+	ld.w	$t1, $a5, 8
+	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
 	st.d	$t4, $sp, 24                    # 8-byte Folded Spill
-	blt	$t4, $a4, .LBB0_117
+	blt	$t4, $a5, .LBB0_116
 # %bb.99:                               #   in Loop: Header=BB0_7 Depth=2
-	masknez	$a4, $a1, $a3
-	maskeqz	$a2, $a2, $a3
+	slt	$a2, $a2, $a4
+	masknez	$a4, $a1, $a2
+	maskeqz	$a2, $a3, $a2
 	or	$a2, $a2, $a4
 	ld.w	$a2, $a2, 4
-	bge	$a2, $s2, .LBB0_117
+	bge	$a2, $s2, .LBB0_116
 # %bb.100:                              #   in Loop: Header=BB0_7 Depth=2
-	st.d	$a5, $sp, 72                    # 8-byte Folded Spill
+	st.d	$t1, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$a0, $a1, 24
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -525,14 +522,16 @@ findnodes:                              # @findnodes
 	ld.d	$t2, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 24                    # 8-byte Folded Reload
-	beqz	$a1, .LBB0_116
-# %bb.104:                              # %.lr.ph429
+	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 72                    # 8-byte Folded Reload
+	beqz	$a1, .LBB0_117
+# %bb.104:                              # %.lr.ph430
                                         #   in Loop: Header=BB0_7 Depth=2
-	ld.d	$t0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB0_106
 .LBB0_105:                              #   in Loop: Header=BB0_106 Depth=3
 	ld.d	$a1, $a1, 8
-	beqz	$a1, .LBB0_116
+	beqz	$a1, .LBB0_117
 .LBB0_106:                              #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -549,7 +548,7 @@ findnodes:                              # @findnodes
 	ld.w	$a4, $a2, 8
 	blt	$a4, $t4, .LBB0_105
 # %bb.109:                              #   in Loop: Header=BB0_106 Depth=3
-	beqz	$t0, .LBB0_112
+	beqz	$t5, .LBB0_112
 # %bb.110:                              #   in Loop: Header=BB0_106 Depth=3
 	bne	$a3, $t4, .LBB0_115
 # %bb.111:                              #   in Loop: Header=BB0_106 Depth=3
@@ -565,22 +564,19 @@ findnodes:                              # @findnodes
 	beq	$a4, $t4, .LBB0_105
 .LBB0_115:                              #   in Loop: Header=BB0_7 Depth=2
 	ld.w	$s2, $a2, 12
+	b	.LBB0_117
 .LBB0_116:                              #   in Loop: Header=BB0_7 Depth=2
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
-	b	.LBB0_118
-.LBB0_117:                              #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-.LBB0_118:                              # %.loopexit395
+	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
+.LBB0_117:                              # %.loopexit396
                                         #   in Loop: Header=BB0_7 Depth=2
 	move	$a7, $s1
-	blt	$t4, $a1, .LBB0_134
-# %bb.119:                              # %.loopexit395
+	blt	$t4, $t0, .LBB0_133
+# %bb.118:                              # %.loopexit396
                                         #   in Loop: Header=BB0_7 Depth=2
 	move	$a7, $s1
-	bge	$s1, $a5, .LBB0_134
-# %bb.120:                              #   in Loop: Header=BB0_7 Depth=2
+	bge	$s1, $t1, .LBB0_133
+# %bb.119:                              #   in Loop: Header=BB0_7 Depth=2
 	slli.d	$a1, $s8, 5
 	alsl.d	$a1, $s8, $a1, 3
 	add.d	$a0, $a0, $a1
@@ -602,16 +598,16 @@ findnodes:                              # @findnodes
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ldx.d	$a0, $a1, $a0
 	move	$a7, $s1
-	beqz	$a0, .LBB0_134
-# %bb.121:                              # %.lr.ph434
+	beqz	$a0, .LBB0_133
+# %bb.120:                              # %.lr.ph435
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$a1, $s6, 0
-	b	.LBB0_123
+	b	.LBB0_122
 	.p2align	4, , 16
-.LBB0_122:                              #   in Loop: Header=BB0_123 Depth=3
+.LBB0_121:                              #   in Loop: Header=BB0_122 Depth=3
 	ld.d	$a0, $a0, 16
-	beqz	$a0, .LBB0_133
-.LBB0_123:                              #   Parent Loop BB0_4 Depth=1
+	beqz	$a0, .LBB0_132
+.LBB0_122:                              #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a2, $a0, 0
@@ -619,39 +615,39 @@ findnodes:                              # @findnodes
 	alsl.d	$a2, $a2, $a3, 3
 	add.d	$a2, $a1, $a2
 	ld.w	$a3, $a2, 20
-	bltz	$a3, .LBB0_122
-# %bb.124:                              #   in Loop: Header=BB0_123 Depth=3
+	bltz	$a3, .LBB0_121
+# %bb.123:                              #   in Loop: Header=BB0_122 Depth=3
 	ld.w	$a3, $a2, 4
-	blt	$t4, $a3, .LBB0_122
-# %bb.125:                              #   in Loop: Header=BB0_123 Depth=3
+	blt	$t4, $a3, .LBB0_121
+# %bb.124:                              #   in Loop: Header=BB0_122 Depth=3
 	ld.w	$a4, $a2, 8
-	blt	$a4, $t4, .LBB0_122
-# %bb.126:                              #   in Loop: Header=BB0_123 Depth=3
-	beqz	$s8, .LBB0_129
-# %bb.127:                              #   in Loop: Header=BB0_123 Depth=3
-	bne	$a3, $t4, .LBB0_132
-# %bb.128:                              #   in Loop: Header=BB0_123 Depth=3
-	blt	$a3, $a4, .LBB0_122
-	b	.LBB0_132
-.LBB0_129:                              #   in Loop: Header=BB0_123 Depth=3
+	blt	$a4, $t4, .LBB0_121
+# %bb.125:                              #   in Loop: Header=BB0_122 Depth=3
+	beqz	$s8, .LBB0_128
+# %bb.126:                              #   in Loop: Header=BB0_122 Depth=3
+	bne	$a3, $t4, .LBB0_131
+# %bb.127:                              #   in Loop: Header=BB0_122 Depth=3
+	blt	$a3, $a4, .LBB0_121
+	b	.LBB0_131
+.LBB0_128:                              #   in Loop: Header=BB0_122 Depth=3
 	ld.w	$a5, $a2, 24
 	ori	$a7, $zero, 1
-	bne	$a5, $a7, .LBB0_132
-# %bb.130:                              #   in Loop: Header=BB0_123 Depth=3
-	beq	$a3, $t4, .LBB0_122
-# %bb.131:                              #   in Loop: Header=BB0_123 Depth=3
-	beq	$a4, $t4, .LBB0_122
-.LBB0_132:                              #   in Loop: Header=BB0_7 Depth=2
+	bne	$a5, $a7, .LBB0_131
+# %bb.129:                              #   in Loop: Header=BB0_122 Depth=3
+	beq	$a3, $t4, .LBB0_121
+# %bb.130:                              #   in Loop: Header=BB0_122 Depth=3
+	beq	$a4, $t4, .LBB0_121
+.LBB0_131:                              #   in Loop: Header=BB0_7 Depth=2
 	ld.w	$a7, $a2, 12
-	b	.LBB0_134
-.LBB0_133:                              #   in Loop: Header=BB0_7 Depth=2
+	b	.LBB0_133
+.LBB0_132:                              #   in Loop: Header=BB0_7 Depth=2
 	move	$a7, $s1
-.LBB0_134:                              # %.loopexit
+.LBB0_133:                              # %.loopexit
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.w	$a1, $fp, 0
 	st.d	$a7, $sp, 72                    # 8-byte Folded Spill
-	blez	$a1, .LBB0_139
-# %bb.135:                              # %.lr.ph.i
+	blez	$a1, .LBB0_138
+# %bb.134:                              # %.lr.ph.i
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
@@ -661,43 +657,43 @@ findnodes:                              # @findnodes
 	add.d	$a2, $a0, $a2
 	addi.d	$a4, $a2, 20
 	move	$a2, $a1
-	b	.LBB0_137
+	b	.LBB0_136
 	.p2align	4, , 16
-.LBB0_136:                              #   in Loop: Header=BB0_137 Depth=3
+.LBB0_135:                              #   in Loop: Header=BB0_136 Depth=3
 	addi.w	$a2, $a2, -1
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, -52
 	ori	$a5, $zero, 1
-	bge	$a5, $a3, .LBB0_143
-.LBB0_137:                              #   Parent Loop BB0_4 Depth=1
+	bge	$a5, $a3, .LBB0_142
+.LBB0_136:                              #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a5, $a4, 0
-	blt	$a5, $s2, .LBB0_136
-# %bb.138:                              #   in Loop: Header=BB0_137 Depth=3
+	blt	$a5, $s2, .LBB0_135
+# %bb.137:                              #   in Loop: Header=BB0_136 Depth=3
 	ld.w	$a5, $a4, -4
-	blt	$a7, $a5, .LBB0_136
-	b	.LBB0_141
-.LBB0_139:                              # %._crit_edge.i
+	blt	$a7, $a5, .LBB0_135
+	b	.LBB0_140
+.LBB0_138:                              # %._crit_edge.i
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	beqz	$a1, .LBB0_146
-# %bb.140:                              # %._crit_edge..thread_crit_edge.i
+	beqz	$a1, .LBB0_145
+# %bb.139:                              # %._crit_edge..thread_crit_edge.i
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$a0, $s8, 0
 	move	$a2, $a1
-.LBB0_141:                              # %.thread.i
+.LBB0_140:                              # %.thread.i
                                         #   in Loop: Header=BB0_7 Depth=2
 	ori	$a3, $zero, 52
 	mul.d	$a2, $a2, $a3
 	add.d	$a2, $a0, $a2
 	ld.w	$a3, $a2, 28
-	blt	$a3, $s0, .LBB0_143
-# %bb.142:                              # %backCheck.exit
+	blt	$a3, $s0, .LBB0_142
+# %bb.141:                              # %backCheck.exit
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.w	$a2, $a2, 24
 	bge	$t4, $a2, .LBB0_11
-.LBB0_143:                              # %backCheck.exit.thread
+.LBB0_142:                              # %backCheck.exit.thread
                                         #   in Loop: Header=BB0_7 Depth=2
 	addi.w	$a2, $a1, 1
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
@@ -707,8 +703,8 @@ findnodes:                              # @findnodes
 	rotri.w	$a3, $a3, 2
 	st.w	$a2, $fp, 0
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
-	bltu	$a4, $a3, .LBB0_147
-# %bb.144:                              #   in Loop: Header=BB0_7 Depth=2
+	bltu	$a4, $a3, .LBB0_146
+# %bb.143:                              #   in Loop: Header=BB0_7 Depth=2
 	addi.w	$a1, $a1, 101
 	ori	$a2, $zero, 52
 	mul.d	$a1, $a1, $a2
@@ -720,16 +716,16 @@ findnodes:                              # @findnodes
 	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a2, $fp, 0
 	st.d	$a0, $s8, 0
-	b	.LBB0_147
-.LBB0_145:                              #   in Loop: Header=BB0_7 Depth=2
+	b	.LBB0_146
+.LBB0_144:                              #   in Loop: Header=BB0_7 Depth=2
 	move	$s5, $s8
 	b	.LBB0_98
-.LBB0_146:                              # %backCheck.exit.thread.thread
+.LBB0_145:                              # %backCheck.exit.thread.thread
                                         #   in Loop: Header=BB0_7 Depth=2
 	ld.d	$a0, $s8, 0
 	ori	$a2, $zero, 1
 	st.w	$a2, $fp, 0
-.LBB0_147:                              #   in Loop: Header=BB0_7 Depth=2
+.LBB0_146:                              #   in Loop: Header=BB0_7 Depth=2
 	ori	$a3, $zero, 52
 	mul.d	$a1, $a2, $a3
 	add.d	$a1, $a0, $a1
@@ -828,7 +824,7 @@ findnodes:                              # @findnodes
 	ld.d	$a0, $a0, %got_pc_lo12(doPlacement)
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB0_37
-# %bb.148:                              #   in Loop: Header=BB0_7 Depth=2
+# %bb.147:                              #   in Loop: Header=BB0_7 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(fpNodes)
 	ld.d	$a0, $a0, %got_pc_lo12(fpNodes)
 	ld.d	$a0, $a0, 0
@@ -841,11 +837,11 @@ findnodes:                              # @findnodes
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	b	.LBB0_37
-.LBB0_149:                              #   in Loop: Header=BB0_7 Depth=2
+.LBB0_148:                              #   in Loop: Header=BB0_7 Depth=2
 	move	$s5, $s3
 	move	$s3, $fp
 	b	.LBB0_98
-.LBB0_150:                              # %._crit_edge459
+.LBB0_149:                              # %._crit_edge460
 	pcaddu18i	$ra, %call36(rectlink)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(LEroot)
@@ -861,8 +857,8 @@ findnodes:                              # @findnodes
 	ld.d	$a0, $a0, %got_pc_lo12(HRlist)
 	ld.d	$s4, $a0, 0
 	lu12i.w	$s2, -245
-	beqz	$s4, .LBB0_157
-# %bb.151:                              # %.lr.ph.preheader.i
+	beqz	$s4, .LBB0_156
+# %bb.150:                              # %.lr.ph.preheader.i
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ori	$a2, $s2, 3520
@@ -876,9 +872,9 @@ findnodes:                              # @findnodes
 	pcalau12i	$a1, %got_pc_hi20(LEroot)
 	ld.d	$fp, $a1, %got_pc_lo12(LEroot)
 	move	$a1, $zero
-	b	.LBB0_154
+	b	.LBB0_153
 	.p2align	4, , 16
-.LBB0_152:                              #   in Loop: Header=BB0_154 Depth=1
+.LBB0_151:                              #   in Loop: Header=BB0_153 Depth=1
 	slli.d	$a1, $s1, 3
 	stx.d	$s4, $a0, $a1
 	move	$a0, $fp
@@ -890,31 +886,31 @@ findnodes:                              # @findnodes
 	ld.d	$a0, $a0, 0
 	move	$a1, $s1
 	move	$a2, $s0
-.LBB0_153:                              #   in Loop: Header=BB0_154 Depth=1
+.LBB0_152:                              #   in Loop: Header=BB0_153 Depth=1
 	ld.d	$s4, $s4, 16
-	beqz	$s4, .LBB0_157
-.LBB0_154:                              # %.lr.ph.i327
+	beqz	$s4, .LBB0_156
+.LBB0_153:                              # %.lr.ph.i327
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $s4, 0
 	mul.d	$a3, $a3, $s5
 	add.d	$a3, $a0, $a3
 	ld.w	$s0, $a3, 16
-	bge	$a2, $s0, .LBB0_153
-# %bb.155:                              #   in Loop: Header=BB0_154 Depth=1
+	bge	$a2, $s0, .LBB0_152
+# %bb.154:                              #   in Loop: Header=BB0_153 Depth=1
 	addi.w	$s1, $a1, 1
 	mul.d	$a2, $s1, $s6
 	ld.d	$a0, $s3, 0
 	add.d	$a2, $a2, $s7
 	rotri.w	$a2, $a2, 2
-	bltu	$s8, $a2, .LBB0_152
-# %bb.156:                              #   in Loop: Header=BB0_154 Depth=1
+	bltu	$s8, $a2, .LBB0_151
+# %bb.155:                              #   in Loop: Header=BB0_153 Depth=1
 	slli.d	$a1, $a1, 3
 	addi.d	$a1, $a1, 808
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s3, 0
-	b	.LBB0_152
-.LBB0_157:                              # %makeRLEtree.exit
+	b	.LBB0_151
+.LBB0_156:                              # %makeRLEtree.exit
 	pcalau12i	$a0, %got_pc_hi20(BEroot)
 	ld.d	$a0, $a0, %got_pc_lo12(BEroot)
 	st.d	$zero, $a0, 0
@@ -928,8 +924,8 @@ findnodes:                              # @findnodes
 	ld.d	$a0, $a0, %got_pc_lo12(VRlist)
 	ld.d	$s4, $a0, 0
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	beqz	$s4, .LBB0_164
-# %bb.158:                              # %.lr.ph.preheader.i332
+	beqz	$s4, .LBB0_163
+# %bb.157:                              # %.lr.ph.preheader.i332
 	ld.d	$a0, $s8, 0
 	ori	$a2, $s2, 3520
 	ori	$s2, $zero, 52
@@ -942,9 +938,9 @@ findnodes:                              # @findnodes
 	pcalau12i	$a1, %got_pc_hi20(BEroot)
 	ld.d	$fp, $a1, %got_pc_lo12(BEroot)
 	move	$a1, $zero
-	b	.LBB0_161
+	b	.LBB0_160
 	.p2align	4, , 16
-.LBB0_159:                              #   in Loop: Header=BB0_161 Depth=1
+.LBB0_158:                              #   in Loop: Header=BB0_160 Depth=1
 	slli.d	$a1, $s1, 3
 	stx.d	$s4, $a0, $a1
 	move	$a0, $fp
@@ -955,36 +951,36 @@ findnodes:                              # @findnodes
 	ld.d	$a0, $s8, 0
 	move	$a1, $s1
 	move	$a2, $s0
-.LBB0_160:                              #   in Loop: Header=BB0_161 Depth=1
+.LBB0_159:                              #   in Loop: Header=BB0_160 Depth=1
 	ld.d	$s4, $s4, 16
-	beqz	$s4, .LBB0_164
-.LBB0_161:                              # %.lr.ph.i334
+	beqz	$s4, .LBB0_163
+.LBB0_160:                              # %.lr.ph.i334
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $s4, 0
 	mul.d	$a3, $a3, $s2
 	add.d	$a3, $a0, $a3
 	ld.w	$s0, $a3, 24
-	bge	$a2, $s0, .LBB0_160
-# %bb.162:                              #   in Loop: Header=BB0_161 Depth=1
+	bge	$a2, $s0, .LBB0_159
+# %bb.161:                              #   in Loop: Header=BB0_160 Depth=1
 	addi.w	$s1, $a1, 1
 	mul.d	$a2, $s1, $s5
 	ld.d	$a0, $s3, 0
 	add.d	$a2, $a2, $s6
 	rotri.w	$a2, $a2, 2
-	bltu	$s7, $a2, .LBB0_159
-# %bb.163:                              #   in Loop: Header=BB0_161 Depth=1
+	bltu	$s7, $a2, .LBB0_158
+# %bb.162:                              #   in Loop: Header=BB0_160 Depth=1
 	slli.d	$a1, $a1, 3
 	addi.d	$a1, $a1, 808
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s3, 0
-	b	.LBB0_159
-.LBB0_164:                              # %makeRBEtree.exit
+	b	.LBB0_158
+.LBB0_163:                              # %makeRBEtree.exit
 	pcalau12i	$a0, %got_pc_hi20(doPlacement)
 	ld.d	$a0, $a0, %got_pc_lo12(doPlacement)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB0_166
-# %bb.165:
+	beqz	$a0, .LBB0_165
+# %bb.164:
 	pcalau12i	$a0, %got_pc_hi20(fpNodes)
 	ld.d	$fp, $a0, %got_pc_lo12(fpNodes)
 	ld.d	$a3, $fp, 0
@@ -1009,7 +1005,7 @@ findnodes:                              # @findnodes
 	addi.d	$sp, $sp, 224
 	pcaddu18i	$t8, %call36(fclose)
 	jr	$t8
-.LBB0_166:
+.LBB0_165:
 	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
@@ -1129,7 +1125,7 @@ rectlink:                               # @rectlink
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 40
-	ld.d	$s2, $fp, 0
+	ld.d	$fp, $fp, 0
 	st.d	$a0, $s1, 0
 	st.w	$a1, $a0, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
@@ -1145,15 +1141,16 @@ rectlink:                               # @rectlink
 	beqz	$a0, .LBB2_4
 # %bb.2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(hRectRoot)
-	ld.d	$fp, $a0, %got_pc_lo12(hRectRoot)
+	ld.d	$s0, $a0, %got_pc_lo12(hRectRoot)
 	.p2align	4, , 16
 .LBB2_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
+	move	$s2, $fp
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 40
-	move	$s0, $a0
+	move	$fp, $a0
 	st.w	$a1, $a0, 0
 	st.d	$s2, $a0, 8
 	st.d	$zero, $a0, 16
@@ -1161,14 +1158,13 @@ rectlink:                               # @rectlink
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 44
 	addi.d	$a3, $sp, 40
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(tpop)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 48
-	move	$s2, $s0
 	bnez	$a0, .LBB2_3
 .LBB2_4:                                # %._crit_edge
-	ld.d	$s1, $s1, 0
+	ld.d	$fp, $s1, 0
 	pcalau12i	$a0, %got_pc_hi20(vRectRoot)
 	ld.d	$a0, $a0, %got_pc_lo12(vRectRoot)
 	addi.d	$a1, $sp, 48
@@ -1180,15 +1176,16 @@ rectlink:                               # @rectlink
 	beqz	$a0, .LBB2_7
 # %bb.5:                                # %.lr.ph17.preheader
 	pcalau12i	$a0, %got_pc_hi20(vRectRoot)
-	ld.d	$fp, $a0, %got_pc_lo12(vRectRoot)
+	ld.d	$s0, $a0, %got_pc_lo12(vRectRoot)
 	.p2align	4, , 16
 .LBB2_6:                                # %.lr.ph17
                                         # =>This Inner Loop Header: Depth=1
+	move	$s1, $fp
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 40
-	move	$s0, $a0
+	move	$fp, $a0
 	st.w	$a1, $a0, 0
 	st.d	$s1, $a0, 8
 	st.d	$zero, $a0, 16
@@ -1196,11 +1193,10 @@ rectlink:                               # @rectlink
 	addi.d	$a1, $sp, 48
 	addi.d	$a2, $sp, 44
 	addi.d	$a3, $sp, 40
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(tpop)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 48
-	move	$s1, $s0
 	bnez	$a0, .LBB2_6
 .LBB2_7:                                # %.loopexit
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload

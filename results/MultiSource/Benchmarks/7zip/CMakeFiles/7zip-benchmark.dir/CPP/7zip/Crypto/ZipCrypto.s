@@ -696,7 +696,7 @@ _ZThn8_N7NCrypto4NZip8CEncoderD0Ev:     # @_ZThn8_N7NCrypto4NZip8CEncoderD0Ev
 	.type	_ZN7NCrypto4NZip7CCipherD0Ev,@function
 _ZN7NCrypto4NZip7CCipherD0Ev:           # @_ZN7NCrypto4NZip7CCipherD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end18:
 	.size	_ZN7NCrypto4NZip7CCipherD0Ev, .Lfunc_end18-_ZN7NCrypto4NZip7CCipherD0Ev
                                         # -- End function
@@ -716,7 +716,7 @@ _ZThn8_N7NCrypto4NZip7CCipherD1Ev:      # @_ZThn8_N7NCrypto4NZip7CCipherD1Ev
 	.type	_ZThn8_N7NCrypto4NZip7CCipherD0Ev,@function
 _ZThn8_N7NCrypto4NZip7CCipherD0Ev:      # @_ZThn8_N7NCrypto4NZip7CCipherD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end20:
 	.size	_ZThn8_N7NCrypto4NZip7CCipherD0Ev, .Lfunc_end20-_ZThn8_N7NCrypto4NZip7CCipherD0Ev
                                         # -- End function

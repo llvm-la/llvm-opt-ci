@@ -71,20 +71,17 @@ bilinearKernel:                         # @bilinearKernel
 .LBB0_6:                                #   in Loop: Header=BB0_8 Depth=2
 	addi.w	$t6, $t6, 0
 	slli.d	$t6, $t6, 2
-	ldx.w	$t7, $t1, $t6
-	movgr2fr.w	$fa7, $t7
+	fldx.s	$fa7, $t1, $t6
 	ffint.s.w	$fa7, $fa7
-	ldx.w	$t5, $t4, $t5
 	fmul.s	$fa7, $fa2, $fa7
+	fldx.s	$ft0, $t4, $t5
 	fmul.s	$fa7, $fa4, $fa7
 	fmadd.s	$fa6, $fa6, $fa2, $fa7
-	movgr2fr.w	$fa7, $t5
-	ldx.w	$t5, $t4, $t6
-	ffint.s.w	$fa7, $fa7
-	fmul.s	$fa7, $fa3, $fa7
-	fmadd.s	$fa5, $fa7, $fa5, $fa6
-	movgr2fr.w	$fa6, $t5
-	ffint.s.w	$fa6, $fa6
+	fldx.s	$fa7, $t4, $t6
+	ffint.s.w	$ft0, $ft0
+	fmul.s	$ft0, $fa3, $ft0
+	fmadd.s	$fa5, $ft0, $fa5, $fa6
+	ffint.s.w	$fa6, $fa7
 	fmul.s	$fa6, $fa3, $fa6
 	fmadd.s	$fa4, $fa6, $fa4, $fa5
 .LBB0_7:                                #   in Loop: Header=BB0_8 Depth=2
@@ -104,12 +101,11 @@ bilinearKernel:                         # @bilinearKernel
 	fmul.s	$fa4, $fa4, $fa0
 	movgr2fr.d	$fa5, $t6
 	slli.d	$t5, $t6, 2
-	ldx.w	$t7, $t1, $t5
+	fldx.s	$fa6, $t1, $t5
 	ffint.s.l	$fa5, $fa5
 	fsub.s	$fa4, $fa4, $fa5
 	addi.d	$t6, $t6, 1
-	movgr2fr.w	$fa5, $t7
-	ffint.s.w	$fa6, $fa5
+	ffint.s.w	$fa6, $fa6
 	fsub.s	$fa5, $fa1, $fa4
 	fmul.s	$fa6, $fa5, $fa6
 	blt	$t6, $a1, .LBB0_6
@@ -127,8 +123,7 @@ bilinearKernel:                         # @bilinearKernel
 .LBB0_11:                               #   in Loop: Header=BB0_13 Depth=2
 	addi.w	$t5, $t5, 0
 	slli.d	$t5, $t5, 2
-	ldx.w	$t5, $t1, $t5
-	movgr2fr.w	$fa5, $t5
+	fldx.s	$fa5, $t1, $t5
 	ffint.s.w	$fa5, $fa5
 	fmul.s	$fa5, $fa2, $fa5
 	fmul.s	$fa3, $fa3, $fa5
@@ -151,12 +146,11 @@ bilinearKernel:                         # @bilinearKernel
 	fmul.s	$fa3, $fa3, $fa0
 	movgr2fr.d	$fa4, $t5
 	slli.d	$t6, $t5, 2
-	ldx.w	$t6, $t1, $t6
+	fldx.s	$fa5, $t1, $t6
 	ffint.s.l	$fa4, $fa4
 	fsub.s	$fa3, $fa3, $fa4
 	addi.d	$t5, $t5, 1
-	movgr2fr.w	$fa4, $t6
-	ffint.s.w	$fa4, $fa4
+	ffint.s.w	$fa4, $fa5
 	fsub.s	$fa5, $fa1, $fa3
 	fmul.s	$fa4, $fa5, $fa4
 	blt	$t5, $a1, .LBB0_11

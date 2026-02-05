@@ -3050,12 +3050,12 @@ _ZN10MallocPlus14memory_reorderEPdPi:   # @_ZN10MallocPlus14memory_reorderEPdPi
 	vpickve2gr.w	$a6, $vr0, 1
 	vinsgr2vr.d	$vr2, $a6, 1
 	xvpickve2gr.d	$a6, $xr2, 0
-	slli.d	$a6, $a6, 3
 	xvpickve2gr.d	$a7, $xr2, 1
-	slli.d	$a7, $a7, 3
 	xvpickve2gr.d	$t0, $xr1, 2
-	slli.d	$t0, $t0, 3
 	xvpickve2gr.d	$t1, $xr1, 3
+	slli.d	$a6, $a6, 3
+	slli.d	$a7, $a7, 3
+	slli.d	$t0, $t0, 3
 	slli.d	$t1, $t1, 3
 	fldx.d	$fa0, $a1, $a6
 	fldx.d	$fa1, $a1, $a7
@@ -3334,20 +3334,20 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	vpickve2gr.w	$a6, $vr0, 1
 	vinsgr2vr.d	$vr4, $a6, 1
 	xvpickve2gr.d	$a6, $xr4, 0
-	slli.d	$a6, $a6, 2
 	xvpickve2gr.d	$a7, $xr4, 1
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t0, $xr1, 2
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t1, $xr1, 3
-	slli.d	$t1, $t1, 2
 	xvpickve2gr.d	$t2, $xr3, 0
-	slli.d	$t2, $t2, 2
 	xvpickve2gr.d	$t3, $xr3, 1
-	slli.d	$t3, $t3, 2
 	xvpickve2gr.d	$t4, $xr2, 2
-	slli.d	$t4, $t4, 2
 	xvpickve2gr.d	$t5, $xr2, 3
+	slli.d	$a6, $a6, 2
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$t1, $t1, 2
+	slli.d	$t2, $t2, 2
+	slli.d	$t3, $t3, 2
+	slli.d	$t4, $t4, 2
 	slli.d	$t5, $t5, 2
 	fldx.s	$fa0, $a1, $a6
 	fldx.s	$fa1, $a1, $a7
@@ -3634,20 +3634,20 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	vpickve2gr.w	$a6, $vr0, 1
 	vinsgr2vr.d	$vr4, $a6, 1
 	xvpickve2gr.d	$a6, $xr4, 0
-	slli.d	$a6, $a6, 2
 	xvpickve2gr.d	$a7, $xr4, 1
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t0, $xr1, 2
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t1, $xr1, 3
-	slli.d	$t1, $t1, 2
 	xvpickve2gr.d	$t2, $xr3, 0
-	slli.d	$t2, $t2, 2
 	xvpickve2gr.d	$t3, $xr3, 1
-	slli.d	$t3, $t3, 2
 	xvpickve2gr.d	$t4, $xr2, 2
-	slli.d	$t4, $t4, 2
 	xvpickve2gr.d	$t5, $xr2, 3
+	slli.d	$a6, $a6, 2
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$t1, $t1, 2
+	slli.d	$t2, $t2, 2
+	slli.d	$t3, $t3, 2
+	slli.d	$t4, $t4, 2
 	slli.d	$t5, $t5, 2
 	ldx.w	$a6, $a1, $a6
 	ldx.w	$a7, $a1, $a7
@@ -4068,11 +4068,11 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	st.d	$a0, $sp, 64
 	beq	$s4, $fp, .LBB15_74
 # %bb.6:                                # %.lr.ph247
-	move	$fp, $zero
+	move	$s0, $zero
 	move	$s1, $zero
 	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
 	addi.d	$s3, $s5, 56
-	ori	$s0, $zero, 16
+	ori	$fp, $zero, 16
 	ori	$s6, $zero, 24
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
@@ -4114,7 +4114,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	ld.d	$a0, $a2, 32
 	sltu	$a0, $a0, $a1
 	masknez	$a4, $a2, $a0
-	masknez	$a5, $s0, $a0
+	masknez	$a5, $fp, $a0
 	maskeqz	$a6, $s6, $a0
 	or	$a5, $a6, $a5
 	ldx.d	$a2, $a2, $a5
@@ -4196,7 +4196,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	ld.d	$a2, $a0, 32
 	sltu	$a2, $a2, $s7
 	masknez	$a3, $a0, $a2
-	masknez	$a4, $s0, $a2
+	masknez	$a4, $fp, $a2
 	maskeqz	$a5, $s6, $a2
 	or	$a4, $a5, $a4
 	ldx.d	$a0, $a0, $a4
@@ -4234,7 +4234,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	b	.LBB15_66
 	.p2align	4, , 16
 .LBB15_26:                              #   in Loop: Header=BB15_9 Depth=1
-	sub.d	$s8, $s1, $fp
+	sub.d	$s8, $s1, $s0
 	srai.d	$a4, $s8, 2
 	bgeu	$a4, $s3, .LBB15_55
 # %bb.27:                               #   in Loop: Header=BB15_9 Depth=1
@@ -4287,18 +4287,18 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	blez	$s8, .LBB15_34
 # %bb.33:                               #   in Loop: Header=BB15_9 Depth=1
 	move	$a0, $s7
-	move	$a1, $fp
+	move	$a1, $s0
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a2, $s3
 .LBB15_34:                              # %_ZNSt6vectorIiSaIiEE11_S_relocateEPiS2_S2_RS0_.exit.i
                                         #   in Loop: Header=BB15_9 Depth=1
-	beqz	$fp, .LBB15_36
+	beqz	$s0, .LBB15_36
 # %bb.35:                               #   in Loop: Header=BB15_9 Depth=1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	sub.d	$a1, $a0, $fp
-	move	$a0, $fp
+	sub.d	$a1, $a0, $s0
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	move	$a2, $s3
@@ -4362,7 +4362,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	ld.d	$a2, $a0, 32
 	sltu	$a2, $a2, $s7
 	masknez	$a3, $a0, $a2
-	masknez	$a4, $s0, $a2
+	masknez	$a4, $fp, $a2
 	maskeqz	$a5, $s6, $a2
 	or	$a4, $a5, $a4
 	ldx.d	$a0, $a0, $a4
@@ -4413,7 +4413,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	jirl	$ra, $ra, 0
 	alsl.d	$a0, $s1, $s5, 2
 .LBB15_50:                              #   in Loop: Header=BB15_9 Depth=1
-	move	$s7, $fp
+	move	$s7, $s0
 .LBB15_51:                              # %_ZNSt6vectorIiSaIiEE6resizeEm.exit
                                         #   in Loop: Header=BB15_9 Depth=1
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -4438,7 +4438,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	addi.d	$a2, $a2, 4
 	bnez	$a1, .LBB15_53
 .LBB15_54:                              #   in Loop: Header=BB15_9 Depth=1
-	move	$fp, $s7
+	move	$s0, $s7
 .LBB15_55:                              # %.loopexit
                                         #   in Loop: Header=BB15_9 Depth=1
 	ld.d	$a0, $s2, 32
@@ -4461,7 +4461,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	slli.d	$a3, $a3, 2
 	ldx.w	$a3, $s8, $a3
 	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $fp, $a3
+	ldx.w	$a3, $s0, $a3
 	st.w	$a3, $a2, 0
 	bstrpick.d	$a3, $a0, 31, 0
 	addi.d	$a2, $a2, 4
@@ -4496,7 +4496,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	ld.d	$a2, $a0, 32
 	sltu	$a2, $a2, $s7
 	masknez	$a3, $a0, $a2
-	masknez	$a4, $s0, $a2
+	masknez	$a4, $fp, $a2
 	maskeqz	$a5, $s6, $a2
 	or	$a4, $a5, $a4
 	ldx.d	$a0, $a0, $a4
@@ -4561,11 +4561,11 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB15_8
 .LBB15_72:                              # %_ZNSt6vectorIiSaIiEE5clearEv.exit
-	beqz	$fp, .LBB15_74
+	beqz	$s0, .LBB15_74
 # %bb.73:
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	sub.d	$a1, $a0, $fp
-	move	$a0, $fp
+	sub.d	$a1, $a0, $s0
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB15_74:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit126
@@ -4630,7 +4630,7 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 .LBB15_88:                              # %.body
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	move	$s0, $a0
+	move	$fp, $a0
 	ori	$a1, $zero, 48
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -4642,20 +4642,20 @@ _ZN10MallocPlus18memory_reorder_allEPi: # @_ZN10MallocPlus18memory_reorder_allEP
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 .LBB15_91:                              # %.body
-	move	$s0, $a0
+	move	$fp, $a0
 .LBB15_92:                              # %.body
-	beqz	$fp, .LBB15_94
+	beqz	$s0, .LBB15_94
 # %bb.93:
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	sub.d	$a1, $a0, $fp
-	move	$a0, $fp
+	sub.d	$a1, $a0, $s0
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB15_94:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	addi.d	$a0, $sp, 48
 	pcaddu18i	$ra, %call36(_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEED2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end15:

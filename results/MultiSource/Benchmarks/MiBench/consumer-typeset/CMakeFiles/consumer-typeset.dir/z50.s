@@ -146,7 +146,7 @@ PDF_PrintGraphicObject:                 # @PDF_PrintGraphicObject
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	move	$s0, $a0
+	move	$fp, $a0
 	ld.bu	$a0, $a0, 32
 	addi.d	$a1, $a0, -11
 	ori	$a2, $zero, 2
@@ -154,7 +154,7 @@ PDF_PrintGraphicObject:                 # @PDF_PrintGraphicObject
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(out_fp)
 	ld.d	$a0, $a0, %pc_lo12(out_fp)
-	addi.d	$a1, $s0, 64
+	addi.d	$a1, $fp, 64
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -171,11 +171,11 @@ PDF_PrintGraphicObject:                 # @PDF_PrintGraphicObject
 	jr	$t8
 .LBB3_2:
 	ori	$a1, $zero, 17
-	addi.d	$fp, $s0, 32
+	addi.d	$s0, $fp, 32
 	bne	$a0, $a1, .LBB3_17
 # %bb.3:                                # %.preheader25
-	ld.d	$s5, $s0, 8
-	beq	$s5, $s0, .LBB3_18
+	ld.d	$s5, $fp, 8
+	beq	$s5, $fp, .LBB3_18
 # %bb.4:
 	ori	$s6, $zero, 25
 	ori	$s7, $zero, 20
@@ -199,7 +199,7 @@ PDF_PrintGraphicObject:                 # @PDF_PrintGraphicObject
 .LBB3_6:                                # %.loopexit
                                         #   in Loop: Header=BB3_7 Depth=1
 	ld.d	$s5, $s5, 8
-	beq	$s5, $s0, .LBB3_18
+	beq	$s5, $fp, .LBB3_18
 .LBB3_7:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_8 Depth 2
@@ -235,7 +235,7 @@ PDF_PrintGraphicObject:                 # @PDF_PrintGraphicObject
 	ori	$a1, $zero, 2
 	ori	$a3, $zero, 2
 	move	$a2, $s1
-	move	$a4, $fp
+	move	$a4, $s0
 	move	$a5, $s2
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -257,7 +257,7 @@ PDF_PrintGraphicObject:                 # @PDF_PrintGraphicObject
 	ori	$a0, $zero, 50
 	ori	$a1, $zero, 3
 	ori	$a3, $zero, 2
-	move	$a4, $fp
+	move	$a4, $s0
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -1055,29 +1055,29 @@ PDF_PrintWord:                          # @PDF_PrintWord
 	alsl.d	$a0, $a0, $a0, 1
 	slli.d	$a0, $a0, 5
 	add.d	$a0, $a1, $a0
-	ld.d	$s6, $a0, 8
+	ld.d	$s5, $a0, 8
 	ld.bu	$a1, $fp, 64
-	addi.d	$s5, $fp, 64
+	addi.d	$a0, $fp, 64
 	ori	$s7, $zero, 2
-	move	$a0, $s5
+	move	$s6, $a0
 	b	.LBB15_12
 	.p2align	4, , 16
 .LBB15_11:                              #   in Loop: Header=BB15_12 Depth=1
 	move	$a0, $s8
 	ld.bu	$a1, $a0, 0
-	addi.d	$s5, $s5, 1
+	addi.d	$s6, $s6, 1
 	beqz	$a1, .LBB15_25
 .LBB15_12:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB15_15 Depth 2
                                         #       Child Loop BB15_17 Depth 3
-	st.b	$a1, $s5, 0
-	ldx.bu	$a1, $s6, $a1
+	st.b	$a1, $s6, 0
+	ldx.bu	$a1, $s5, $a1
 	addi.d	$s8, $a0, 1
 	bltu	$a1, $s7, .LBB15_11
 # %bb.13:                               #   in Loop: Header=BB15_12 Depth=1
 	ld.bu	$s0, $a0, 0
-	ldx.bu	$a0, $s6, $s0
-	add.d	$a0, $s6, $a0
+	ldx.bu	$a0, $s5, $s0
+	add.d	$a0, $s5, $a0
 	ld.bu	$a1, $a0, 256
 	bne	$a1, $s0, .LBB15_11
 # %bb.14:                               # %.lr.ph118
@@ -1138,14 +1138,14 @@ PDF_PrintWord:                          # @PDF_PrintWord
 	beq	$a1, $s0, .LBB15_15
 	b	.LBB15_11
 .LBB15_24:                              #   in Loop: Header=BB15_12 Depth=1
-	st.b	$a1, $s5, 0
+	st.b	$a1, $s6, 0
 	ld.bu	$a1, $a0, 0
-	addi.d	$s5, $s5, 1
+	addi.d	$s6, $s6, 1
 	bnez	$a1, .LBB15_12
 .LBB15_25:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 0
-	st.b	$zero, $s5, 0
+	st.b	$zero, $s6, 0
 	ori	$a1, $zero, 115
 	pcalau12i	$s0, %pc_hi20(PDF_PrintWord.last_hpos)
 	beq	$a0, $a1, .LBB15_28

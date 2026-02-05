@@ -67,18 +67,16 @@ _ZN12btAxisSweep3C2ERK9btVector3S2_tP22btOverlappingPairCacheb: # @_ZN12btAxisSw
 _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @_ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -87,8 +85,6 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$s0, $a5
 	move	$s1, $a2
 	move	$s2, $a1
@@ -105,8 +101,6 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	st.d	$zero, $fp, 152
 	beqz	$a6, .LBB1_14
 # %bb.1:
-	addi.d	$s6, $fp, 12
-	addi.d	$s5, $fp, 28
 	addi.d	$s4, $s0, 1
 	bnez	$a7, .LBB1_3
 .LBB1_2:
@@ -119,8 +113,8 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	pcalau12i	$a1, %pc_hi20(_ZTV15btNullPairCache+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV15btNullPairCache+16)
 	st.d	$a1, $a0, 0
-	ori	$s7, $zero, 1
-	st.b	$s7, $a0, 32
+	ori	$s5, $zero, 1
+	st.b	$s5, $a0, 32
 	st.w	$zero, $a0, 12
 	st.d	$a0, $fp, 160
 	ori	$a0, $zero, 224
@@ -132,12 +126,12 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	pcaddu18i	$ra, %call36(_ZN16btDbvtBroadphaseC1EP22btOverlappingPairCache)
 	jirl	$ra, $ra, 0
 	st.d	$s3, $fp, 152
-	st.b	$s7, $s3, 221
+	st.b	$s5, $s3, 221
 .LBB1_3:                                # %_ZN20btAxisSweep3InternalItE6HandlenaEm.exit
 	vld	$vr0, $s2, 0
-	vst	$vr0, $s6, 0
+	vst	$vr0, $fp, 12
 	vld	$vr0, $s1, 0
-	vst	$vr0, $s5, 0
+	vst	$vr0, $fp, 28
 	fld.s	$fa0, $fp, 28
 	fld.s	$fa1, $fp, 12
 	fld.s	$fa2, $fp, 32
@@ -242,8 +236,6 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	st.d	$s3, $fp, 128
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 144
-	addi.d	$s6, $fp, 12
-	addi.d	$s5, $fp, 28
 	addi.d	$s4, $s0, 1
 	beqz	$a7, .LBB1_2
 	b	.LBB1_3
@@ -309,13 +301,19 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	xvpermi.q	$xr4, $xr5, 2
 	xvaddi.hu	$xr4, $xr4, 1
 	vpickve2gr.h	$t0, $vr4, 0
+	vpickve2gr.h	$t1, $vr4, 1
+	vpickve2gr.h	$t2, $vr4, 2
+	vpickve2gr.h	$t3, $vr4, 3
+	xvpermi.d	$xr5, $xr4, 14
+	vpickve2gr.h	$t4, $vr5, 3
+	vpickve2gr.h	$t5, $vr5, 4
+	vpickve2gr.h	$t6, $vr5, 5
+	vpickve2gr.h	$t7, $vr5, 6
+	vpickve2gr.h	$t8, $vr5, 7
 	st.h	$t0, $a6, -560
-	vpickve2gr.h	$t0, $vr4, 1
-	st.h	$t0, $a6, -480
-	vpickve2gr.h	$t0, $vr4, 2
-	st.h	$t0, $a6, -400
-	vpickve2gr.h	$t0, $vr4, 3
-	st.h	$t0, $a6, -320
+	st.h	$t1, $a6, -480
+	st.h	$t2, $a6, -400
+	st.h	$t3, $a6, -320
 	xvstelm.h	$xr4, $a6, -240, 4
 	xvstelm.h	$xr4, $a6, -160, 5
 	xvstelm.h	$xr4, $a6, -80, 6
@@ -323,17 +321,11 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	xvstelm.h	$xr4, $a6, 80, 8
 	xvstelm.h	$xr4, $a6, 160, 9
 	xvstelm.h	$xr4, $a6, 240, 10
-	xvpermi.d	$xr4, $xr4, 14
-	vpickve2gr.h	$t0, $vr4, 3
-	st.h	$t0, $a6, 320
-	vpickve2gr.h	$t0, $vr4, 4
-	st.h	$t0, $a6, 400
-	vpickve2gr.h	$t0, $vr4, 5
-	st.h	$t0, $a6, 480
-	vpickve2gr.h	$t0, $vr4, 6
-	st.h	$t0, $a6, 560
-	vpickve2gr.h	$t0, $vr4, 7
-	st.h	$t0, $a6, 640
+	st.h	$t4, $a6, 320
+	st.h	$t5, $a6, 400
+	st.h	$t6, $a6, 480
+	st.h	$t7, $a6, 560
+	st.h	$t8, $a6, 640
 	xvaddi.du	$xr3, $xr3, 16
 	xvaddi.du	$xr2, $xr2, 16
 	xvaddi.du	$xr1, $xr1, 16
@@ -440,17 +432,15 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	ld.h	$a1, $fp, 10
 	st.h	$a1, $a0, 4
 	st.h	$zero, $a0, 6
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB1_26:
 	addi.d	$a5, $a3, 1
@@ -500,18 +490,16 @@ _ZN17bt32BitAxisSweep3C2ERK9btVector3S2_jP22btOverlappingPairCacheb: # @_ZN17bt3
 _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -520,8 +508,6 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$s0, $a5
 	move	$s1, $a2
 	move	$s2, $a1
@@ -539,8 +525,6 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	addi.w	$s4, $a5, 1
 	beqz	$a6, .LBB3_17
 # %bb.1:
-	addi.d	$s6, $fp, 16
-	addi.d	$s5, $fp, 32
 	bnez	$a7, .LBB3_3
 .LBB3_2:
 	ori	$a0, $zero, 40
@@ -552,8 +536,8 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	pcalau12i	$a1, %pc_hi20(_ZTV15btNullPairCache+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV15btNullPairCache+16)
 	st.d	$a1, $a0, 0
-	ori	$s7, $zero, 1
-	st.b	$s7, $a0, 32
+	ori	$s5, $zero, 1
+	st.b	$s5, $a0, 32
 	st.w	$zero, $a0, 12
 	st.d	$a0, $fp, 168
 	ori	$a0, $zero, 224
@@ -565,12 +549,12 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	pcaddu18i	$ra, %call36(_ZN16btDbvtBroadphaseC1EP22btOverlappingPairCache)
 	jirl	$ra, $ra, 0
 	st.d	$s3, $fp, 160
-	st.b	$s7, $s3, 221
+	st.b	$s5, $s3, 221
 .LBB3_3:                                # %_ZN20btAxisSweep3InternalIjE6HandlenaEm.exit
 	vld	$vr0, $s2, 0
-	vst	$vr0, $s6, 0
+	vst	$vr0, $fp, 16
 	vld	$vr0, $s1, 0
-	vst	$vr0, $s5, 0
+	vst	$vr0, $fp, 32
 	fld.s	$fa0, $fp, 32
 	fld.s	$fa1, $fp, 16
 	fld.s	$fa2, $fp, 36
@@ -700,8 +684,6 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	st.d	$s3, $fp, 136
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 152
-	addi.d	$s6, $fp, 16
-	addi.d	$s5, $fp, 32
 	beqz	$a7, .LBB3_2
 	b	.LBB3_3
 .LBB3_18:                               # %.loopexit.thread
@@ -758,17 +740,15 @@ _ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb: # @
 	st.d	$zero, $a1, 0
 	vinsgr2vr.w	$vr0, $a2, 2
 	vst	$vr0, $a0, 0
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end3:
 	.size	_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb, .Lfunc_end3-_ZN20btAxisSweep3InternalIjEC2ERK9btVector3S3_jjjP22btOverlappingPairCacheb
@@ -3078,8 +3058,8 @@ _ZN20btAxisSweep3InternalItE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	slli.d	$a1, $a2, 6
 	alsl.d	$a1, $a2, $a1, 4
 	add.d	$a1, $a3, $a1
-	ori	$a2, $zero, 66
-	ori	$a3, $zero, 60
+	ori	$a2, $zero, 68
+	ori	$a3, $zero, 62
 	.p2align	4, , 16
 .LBB50_9:                               # %.lr.ph.split.i57
                                         # =>This Inner Loop Header: Depth=1
@@ -3093,10 +3073,9 @@ _ZN20btAxisSweep3InternalItE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	masknez	$a6, $a2, $a4
 	maskeqz	$a4, $a3, $a4
 	or	$a4, $a4, $a6
-	add.d	$a4, $a5, $a4
-	ld.h	$a5, $a4, 2
-	addi.d	$a5, $a5, 1
-	st.h	$a5, $a4, 2
+	ldx.h	$a6, $a5, $a4
+	addi.d	$a6, $a6, 1
+	stx.h	$a6, $a5, $a4
 	ld.h	$a4, $a1, 62
 	addi.d	$a4, $a4, -1
 	st.h	$a4, $a1, 62
@@ -3125,8 +3104,8 @@ _ZN20btAxisSweep3InternalItE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	slli.d	$a1, $a2, 6
 	alsl.d	$a1, $a2, $a1, 4
 	add.d	$a1, $a3, $a1
-	ori	$a2, $zero, 66
-	ori	$a3, $zero, 60
+	ori	$a2, $zero, 68
+	ori	$a3, $zero, 62
 	.p2align	4, , 16
 .LBB50_13:                              # %.lr.ph.split.i66
                                         # =>This Inner Loop Header: Depth=1
@@ -3140,10 +3119,9 @@ _ZN20btAxisSweep3InternalItE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	masknez	$a6, $a2, $a4
 	maskeqz	$a4, $a3, $a4
 	or	$a4, $a4, $a6
-	add.d	$a4, $a5, $a4
-	ld.h	$a5, $a4, 2
-	addi.d	$a5, $a5, 1
-	st.h	$a5, $a4, 2
+	ldx.h	$a6, $a5, $a4
+	addi.d	$a6, $a6, 1
+	stx.h	$a6, $a5, $a4
 	ld.h	$a4, $a1, 68
 	addi.d	$a4, $a4, -1
 	st.h	$a4, $a1, 68
@@ -3524,8 +3502,7 @@ _ZN20btAxisSweep3InternalItE11sortMaxDownEitP12btDispatcherb: # @_ZN20btAxisSwee
 	slli.d	$a5, $a2, 6
 	alsl.d	$a2, $a2, $a5, 4
 	add.d	$a2, $a3, $a2
-	alsl.d	$a2, $a1, $a2, 1
-	addi.d	$s3, $a2, 66
+	alsl.d	$s3, $a1, $a2, 1
 	beqz	$a4, .LBB53_12
 # %bb.2:                                # %.lr.ph.split.us.preheader
 	ori	$a2, $zero, 1
@@ -3545,9 +3522,9 @@ _ZN20btAxisSweep3InternalItE11sortMaxDownEitP12btDispatcherb: # @_ZN20btAxisSwee
 	ldx.h	$a0, $s8, $s7
 	addi.d	$a0, $a0, 1
 	stx.h	$a0, $s8, $s7
-	ld.h	$a0, $s3, 0
+	ld.h	$a0, $s3, 66
 	addi.d	$a0, $a0, -1
-	st.h	$a0, $s3, 0
+	st.h	$a0, $s3, 66
 	ld.w	$a1, $s4, -4
 	ld.wu	$a2, $s4, 0
 	ld.hu	$a0, $s4, -8
@@ -3631,9 +3608,9 @@ _ZN20btAxisSweep3InternalItE11sortMaxDownEitP12btDispatcherb: # @_ZN20btAxisSwee
 	ldx.h	$a5, $a0, $a1
 	addi.d	$a5, $a5, 1
 	stx.h	$a5, $a0, $a1
-	ld.h	$a0, $s3, 0
+	ld.h	$a0, $s3, 66
 	addi.d	$a0, $a0, -1
-	st.h	$a0, $s3, 0
+	st.h	$a0, $s3, 66
 	ld.w	$a5, $a4, 0
 	ld.wu	$a6, $a4, 4
 	ld.hu	$a0, $a4, -4
@@ -3830,8 +3807,8 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	slli.d	$a6, $a5, 6
 	alsl.d	$a5, $a5, $a6, 4
 	add.d	$a5, $a1, $a5
-	ori	$a6, $zero, 66
-	ori	$a7, $zero, 60
+	ori	$a6, $zero, 68
+	ori	$a7, $zero, 62
 	.p2align	4, , 16
 .LBB54_17:                              # %.lr.ph.split.i.1
                                         # =>This Inner Loop Header: Depth=1
@@ -3847,10 +3824,9 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a6, $a2
 	maskeqz	$a2, $a7, $a2
 	or	$a2, $a2, $t0
-	add.d	$a1, $a1, $a2
-	ld.h	$a2, $a1, 2
-	addi.d	$a2, $a2, -1
-	st.h	$a2, $a1, 2
+	ldx.h	$t0, $a1, $a2
+	addi.d	$t0, $t0, -1
+	stx.h	$t0, $a1, $a2
 	ld.h	$a1, $a5, 68
 	addi.d	$a1, $a1, 1
 	st.h	$a1, $a5, 68
@@ -3883,8 +3859,8 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	alsl.d	$a2, $a2, $a5, 4
 	ld.hu	$t0, $a4, 0
 	add.d	$a2, $a1, $a2
-	ori	$a5, $zero, 66
-	ori	$a6, $zero, 60
+	ori	$a5, $zero, 68
+	ori	$a6, $zero, 62
 	.p2align	4, , 16
 .LBB54_24:                              # %.lr.ph.split.i29.1
                                         # =>This Inner Loop Header: Depth=1
@@ -3900,10 +3876,9 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a5, $a7
 	maskeqz	$a7, $a6, $a7
 	or	$a7, $a7, $t0
-	add.d	$a1, $a1, $a7
-	ld.h	$a7, $a1, 2
-	addi.d	$a7, $a7, -1
-	st.h	$a7, $a1, 2
+	ldx.h	$t0, $a1, $a7
+	addi.d	$t0, $t0, -1
+	stx.h	$t0, $a1, $a7
 	ld.h	$a1, $a2, 62
 	addi.d	$a1, $a1, 1
 	st.h	$a1, $a2, 62
@@ -3935,8 +3910,8 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	slli.d	$a6, $a5, 6
 	alsl.d	$a5, $a5, $a6, 4
 	add.d	$a5, $a1, $a5
-	ori	$a6, $zero, 66
-	ori	$a7, $zero, 60
+	ori	$a6, $zero, 70
+	ori	$a7, $zero, 64
 	.p2align	4, , 16
 .LBB54_30:                              # %.lr.ph.split.i.2
                                         # =>This Inner Loop Header: Depth=1
@@ -3952,10 +3927,9 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a6, $a2
 	maskeqz	$a2, $a7, $a2
 	or	$a2, $a2, $t0
-	add.d	$a1, $a1, $a2
-	ld.h	$a2, $a1, 4
-	addi.d	$a2, $a2, -1
-	st.h	$a2, $a1, 4
+	ldx.h	$t0, $a1, $a2
+	addi.d	$t0, $t0, -1
+	stx.h	$t0, $a1, $a2
 	ld.h	$a1, $a5, 70
 	addi.d	$a1, $a1, 1
 	st.h	$a1, $a5, 70
@@ -3988,8 +3962,8 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	alsl.d	$a2, $a2, $a5, 4
 	ld.hu	$t0, $a4, 0
 	add.d	$a2, $a1, $a2
-	ori	$a5, $zero, 66
-	ori	$a6, $zero, 60
+	ori	$a5, $zero, 70
+	ori	$a6, $zero, 64
 	.p2align	4, , 16
 .LBB54_37:                              # %.lr.ph.split.i29.2
                                         # =>This Inner Loop Header: Depth=1
@@ -4005,10 +3979,9 @@ _ZN20btAxisSweep3InternalItE12removeHandleEtP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a5, $a7
 	maskeqz	$a7, $a6, $a7
 	or	$a7, $a7, $t0
-	add.d	$a1, $a1, $a7
-	ld.h	$a7, $a1, 4
-	addi.d	$a7, $a7, -1
-	st.h	$a7, $a1, 4
+	ldx.h	$t0, $a1, $a7
+	addi.d	$t0, $t0, -1
+	stx.h	$t0, $a1, $a7
 	ld.h	$a1, $a2, 64
 	addi.d	$a1, $a1, 1
 	st.h	$a1, $a2, 64
@@ -4282,8 +4255,7 @@ _ZN20btAxisSweep3InternalItE9sortMinUpEitP12btDispatcherb: # @_ZN20btAxisSweep3I
 	slli.d	$a7, $a5, 6
 	alsl.d	$a5, $a5, $a7, 4
 	add.d	$a5, $a6, $a5
-	alsl.d	$a5, $a1, $a5, 1
-	addi.d	$s2, $a5, 60
+	alsl.d	$s2, $a1, $a5, 1
 	beqz	$a4, .LBB56_3
 # %bb.2:                                # %.lr.ph.split.us.preheader
 	ori	$a4, $zero, 1
@@ -4319,9 +4291,9 @@ _ZN20btAxisSweep3InternalItE9sortMinUpEitP12btDispatcherb: # @_ZN20btAxisSweep3I
 	ldx.h	$a5, $a2, $a1
 	addi.d	$a5, $a5, -1
 	stx.h	$a5, $a2, $a1
-	ld.h	$a2, $s2, 0
+	ld.h	$a2, $s2, 60
 	addi.d	$a2, $a2, 1
-	st.h	$a2, $s2, 0
+	st.h	$a2, $s2, 60
 	ld.d	$a5, $s1, 0
 	ld.hu	$a2, $s1, 10
 	rotri.d	$a5, $a5, 32
@@ -4360,9 +4332,9 @@ _ZN20btAxisSweep3InternalItE9sortMinUpEitP12btDispatcherb: # @_ZN20btAxisSweep3I
 	ldx.h	$a2, $a1, $s3
 	addi.d	$a2, $a2, -1
 	stx.h	$a2, $a1, $s3
-	ld.h	$a1, $s2, 0
+	ld.h	$a1, $s2, 60
 	addi.d	$a1, $a1, 1
-	st.h	$a1, $s2, 0
+	st.h	$a1, $s2, 60
 	ld.d	$a1, $s1, 0
 	ld.hu	$a2, $s1, 10
 	rotri.d	$a1, $a1, 32
@@ -4655,16 +4627,15 @@ _ZN20btAxisSweep3InternalItE12updateHandleEtRK9btVector3S3_P12btDispatcher: # @_
 _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphasePairSortPredicateEEvT_ii: # @_ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphasePairSortPredicateEEvT_ii
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4672,7 +4643,6 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphaseP
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a3
 	move	$s0, $a2
 	move	$s1, $a0
@@ -4764,69 +4734,68 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphaseP
 	.p2align	4, , 16
 .LBB58_21:                              # %.critedge.preheader
                                         #   in Loop: Header=BB58_4 Depth=2
-	addi.d	$t3, $a5, -16
 	slli.d	$t2, $a3, 5
-	move	$t4, $a3
+	move	$t3, $a3
 	b	.LBB58_23
 	.p2align	4, , 16
 .LBB58_22:                              # %_ZN29btBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38.thread
                                         #   in Loop: Header=BB58_23 Depth=3
-	addi.d	$t4, $t4, -1
+	addi.d	$t3, $t3, -1
 	addi.w	$a3, $a3, -1
 	addi.d	$t2, $t2, -32
 .LBB58_23:                              # %.critedge
                                         #   Parent Loop BB58_2 Depth=1
                                         #     Parent Loop BB58_4 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	move	$t7, $s2
+	move	$t6, $s2
 	beqz	$a0, .LBB58_25
 # %bb.24:                               #   in Loop: Header=BB58_23 Depth=3
-	ld.w	$t7, $a0, 24
+	ld.w	$t6, $a0, 24
 .LBB58_25:                              #   in Loop: Header=BB58_23 Depth=3
-	ldx.d	$t5, $a6, $t2
-	move	$s3, $s2
-	beqz	$t5, .LBB58_27
-# %bb.26:                               #   in Loop: Header=BB58_23 Depth=3
-	ld.w	$s3, $t5, 24
-.LBB58_27:                              #   in Loop: Header=BB58_23 Depth=3
+	ldx.d	$t4, $a6, $t2
 	move	$t8, $s2
+	beqz	$t4, .LBB58_27
+# %bb.26:                               #   in Loop: Header=BB58_23 Depth=3
+	ld.w	$t8, $t4, 24
+.LBB58_27:                              #   in Loop: Header=BB58_23 Depth=3
+	move	$t7, $s2
 	beqz	$a1, .LBB58_29
 # %bb.28:                               #   in Loop: Header=BB58_23 Depth=3
-	ld.w	$t8, $a1, 24
+	ld.w	$t7, $a1, 24
 .LBB58_29:                              #   in Loop: Header=BB58_23 Depth=3
-	add.d	$t6, $a6, $t2
-	ld.d	$s5, $t6, 8
-	move	$s4, $s2
-	beqz	$s5, .LBB58_31
+	add.d	$t5, $a6, $t2
+	ld.d	$s4, $t5, 8
+	move	$s3, $s2
+	beqz	$s4, .LBB58_31
 # %bb.30:                               #   in Loop: Header=BB58_23 Depth=3
-	ld.w	$s4, $s5, 24
+	ld.w	$s3, $s4, 24
 .LBB58_31:                              #   in Loop: Header=BB58_23 Depth=3
-	blt	$s3, $t7, .LBB58_22
+	blt	$t8, $t6, .LBB58_22
 # %bb.32:                               #   in Loop: Header=BB58_23 Depth=3
-	bne	$a0, $t5, .LBB58_36
+	bne	$a0, $t4, .LBB58_36
 # %bb.33:                               #   in Loop: Header=BB58_23 Depth=3
-	blt	$s4, $t8, .LBB58_36
+	blt	$s3, $t7, .LBB58_36
 # %bb.34:                               #   in Loop: Header=BB58_23 Depth=3
-	bne	$a1, $s5, .LBB58_38
+	bne	$a1, $s4, .LBB58_38
 # %bb.35:                               #   in Loop: Header=BB58_23 Depth=3
-	ld.d	$t5, $t6, 16
-	bltu	$t5, $a4, .LBB58_22
+	ld.d	$t4, $t5, 16
+	bltu	$t4, $a4, .LBB58_22
 	b	.LBB58_38
 	.p2align	4, , 16
 .LBB58_36:                              # %_ZN29btBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38
                                         #   in Loop: Header=BB58_23 Depth=3
-	bne	$a0, $t5, .LBB58_38
+	bne	$a0, $t4, .LBB58_38
 # %bb.37:                               # %_ZN29btBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38
                                         #   in Loop: Header=BB58_23 Depth=3
-	blt	$s4, $t8, .LBB58_22
+	blt	$s3, $t7, .LBB58_22
 	.p2align	4, , 16
 .LBB58_38:                              # %_ZN29btBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38.thread43
                                         #   in Loop: Header=BB58_4 Depth=2
-	blt	$t4, $a7, .LBB58_3
+	blt	$t3, $a7, .LBB58_3
 # %bb.39:                               #   in Loop: Header=BB58_4 Depth=2
-	xvld	$xr0, $t6, 0
+	xvld	$xr0, $t5, 0
 	vld	$vr1, $a5, 0
-	xvst	$xr0, $t3, 0
+	xvst	$xr0, $a5, -16
 	ld.d	$a5, $s1, 16
 	add.d	$a6, $a5, $t2
 	stx.d	$t0, $a5, $t2
@@ -4845,15 +4814,14 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphaseP
 	jirl	$ra, $ra, 0
 	b	.LBB58_1
 .LBB58_42:
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end58:
 	.size	_ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphasePairSortPredicateEEvT_ii, .Lfunc_end58-_ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI29btBroadphasePairSortPredicateEEvT_ii
@@ -5089,8 +5057,8 @@ _ZN20btAxisSweep3InternalIjE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	alsl.d	$a1, $a2, $a2, 1
 	slli.d	$a1, $a1, 5
 	add.d	$a1, $a3, $a1
-	ori	$a2, $zero, 72
-	ori	$a3, $zero, 60
+	ori	$a2, $zero, 76
+	ori	$a3, $zero, 64
 	.p2align	4, , 16
 .LBB59_9:                               # %.lr.ph.split.i57
                                         # =>This Inner Loop Header: Depth=1
@@ -5104,10 +5072,9 @@ _ZN20btAxisSweep3InternalIjE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	masknez	$a6, $a2, $a4
 	maskeqz	$a4, $a3, $a4
 	or	$a4, $a4, $a6
-	add.d	$a4, $a5, $a4
-	ld.w	$a5, $a4, 4
-	addi.d	$a5, $a5, 1
-	st.w	$a5, $a4, 4
+	ldx.w	$a6, $a5, $a4
+	addi.d	$a6, $a6, 1
+	stx.w	$a6, $a5, $a4
 	ld.w	$a4, $a1, 64
 	addi.d	$a4, $a4, -1
 	st.w	$a4, $a1, 64
@@ -5136,8 +5103,8 @@ _ZN20btAxisSweep3InternalIjE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	alsl.d	$a1, $a2, $a2, 1
 	slli.d	$a1, $a1, 5
 	add.d	$a1, $a3, $a1
-	ori	$a2, $zero, 72
-	ori	$a3, $zero, 60
+	ori	$a2, $zero, 76
+	ori	$a3, $zero, 64
 	.p2align	4, , 16
 .LBB59_13:                              # %.lr.ph.split.i66
                                         # =>This Inner Loop Header: Depth=1
@@ -5151,10 +5118,9 @@ _ZN20btAxisSweep3InternalIjE9addHandleERK9btVector3S3_PvssP12btDispatcherS4_: # 
 	masknez	$a6, $a2, $a4
 	maskeqz	$a4, $a3, $a4
 	or	$a4, $a4, $a6
-	add.d	$a4, $a5, $a4
-	ld.w	$a5, $a4, 4
-	addi.d	$a5, $a5, 1
-	st.w	$a5, $a4, 4
+	ldx.w	$a6, $a5, $a4
+	addi.d	$a6, $a6, 1
+	stx.w	$a6, $a5, $a4
 	ld.w	$a4, $a1, 76
 	addi.d	$a4, $a4, -1
 	st.w	$a4, $a1, 76
@@ -5533,8 +5499,7 @@ _ZN20btAxisSweep3InternalIjE11sortMaxDownEijP12btDispatcherb: # @_ZN20btAxisSwee
 	alsl.d	$a2, $a2, $a2, 1
 	slli.d	$a2, $a2, 5
 	add.d	$a2, $a3, $a2
-	alsl.d	$a2, $a1, $a2, 2
-	addi.d	$s3, $a2, 72
+	alsl.d	$s3, $a1, $a2, 2
 	beqz	$a4, .LBB62_12
 # %bb.2:                                # %.lr.ph.split.us.preheader
 	ori	$a2, $zero, 1
@@ -5554,9 +5519,9 @@ _ZN20btAxisSweep3InternalIjE11sortMaxDownEijP12btDispatcherb: # @_ZN20btAxisSwee
 	ldx.w	$a0, $s8, $s7
 	addi.d	$a0, $a0, 1
 	stx.w	$a0, $s8, $s7
-	ld.w	$a0, $s3, 0
+	ld.w	$a0, $s3, 72
 	addi.d	$a0, $a0, -1
-	st.w	$a0, $s3, 0
+	st.w	$a0, $s3, 72
 	ld.d	$a1, $s4, -8
 	ld.d	$a2, $s4, 0
 	ld.w	$a0, $s4, -16
@@ -5640,9 +5605,9 @@ _ZN20btAxisSweep3InternalIjE11sortMaxDownEijP12btDispatcherb: # @_ZN20btAxisSwee
 	ldx.w	$a5, $a0, $a1
 	addi.d	$a5, $a5, 1
 	stx.w	$a5, $a0, $a1
-	ld.w	$a0, $s3, 0
+	ld.w	$a0, $s3, 72
 	addi.d	$a0, $a0, -1
-	st.w	$a0, $s3, 0
+	st.w	$a0, $s3, 72
 	ld.d	$a5, $a4, 0
 	ld.d	$a6, $a4, 8
 	ld.w	$a0, $a4, -8
@@ -5842,8 +5807,8 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	alsl.d	$a5, $a5, $a5, 1
 	slli.d	$a5, $a5, 5
 	add.d	$a5, $a1, $a5
-	ori	$a6, $zero, 72
-	ori	$a7, $zero, 60
+	ori	$a6, $zero, 76
+	ori	$a7, $zero, 64
 	.p2align	4, , 16
 .LBB63_17:                              # %.lr.ph.split.i.1
                                         # =>This Inner Loop Header: Depth=1
@@ -5860,10 +5825,9 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a6, $a2
 	maskeqz	$a2, $a7, $a2
 	or	$a2, $a2, $t0
-	add.d	$a1, $a1, $a2
-	ld.w	$a2, $a1, 4
-	addi.d	$a2, $a2, -1
-	st.w	$a2, $a1, 4
+	ldx.w	$t0, $a1, $a2
+	addi.d	$t0, $t0, -1
+	stx.w	$t0, $a1, $a2
 	ld.w	$a1, $a5, 76
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a5, 76
@@ -5896,8 +5860,8 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	slli.d	$a2, $a2, 5
 	ld.w	$t0, $a4, 0
 	add.d	$a2, $a1, $a2
-	ori	$a5, $zero, 72
-	ori	$a6, $zero, 60
+	ori	$a5, $zero, 76
+	ori	$a6, $zero, 64
 	.p2align	4, , 16
 .LBB63_24:                              # %.lr.ph.split.i29.1
                                         # =>This Inner Loop Header: Depth=1
@@ -5914,10 +5878,9 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a5, $a7
 	maskeqz	$a7, $a6, $a7
 	or	$a7, $a7, $t0
-	add.d	$a1, $a1, $a7
-	ld.w	$a7, $a1, 4
-	addi.d	$a7, $a7, -1
-	st.w	$a7, $a1, 4
+	ldx.w	$t0, $a1, $a7
+	addi.d	$t0, $t0, -1
+	stx.w	$t0, $a1, $a7
 	ld.w	$a1, $a2, 64
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a2, 64
@@ -5949,8 +5912,8 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	alsl.d	$a5, $a5, $a5, 1
 	slli.d	$a5, $a5, 5
 	add.d	$a5, $a1, $a5
-	ori	$a6, $zero, 72
-	ori	$a7, $zero, 60
+	ori	$a6, $zero, 80
+	ori	$a7, $zero, 68
 	.p2align	4, , 16
 .LBB63_30:                              # %.lr.ph.split.i.2
                                         # =>This Inner Loop Header: Depth=1
@@ -5967,10 +5930,9 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a6, $a2
 	maskeqz	$a2, $a7, $a2
 	or	$a2, $a2, $t0
-	add.d	$a1, $a1, $a2
-	ld.w	$a2, $a1, 8
-	addi.d	$a2, $a2, -1
-	st.w	$a2, $a1, 8
+	ldx.w	$t0, $a1, $a2
+	addi.d	$t0, $t0, -1
+	stx.w	$t0, $a1, $a2
 	ld.w	$a1, $a5, 80
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a5, 80
@@ -6003,8 +5965,8 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	slli.d	$a2, $a2, 5
 	ld.w	$t0, $a4, 0
 	add.d	$a2, $a1, $a2
-	ori	$a5, $zero, 72
-	ori	$a6, $zero, 60
+	ori	$a5, $zero, 80
+	ori	$a6, $zero, 68
 	.p2align	4, , 16
 .LBB63_37:                              # %.lr.ph.split.i29.2
                                         # =>This Inner Loop Header: Depth=1
@@ -6021,10 +5983,9 @@ _ZN20btAxisSweep3InternalIjE12removeHandleEjP12btDispatcher: # @_ZN20btAxisSweep
 	masknez	$t0, $a5, $a7
 	maskeqz	$a7, $a6, $a7
 	or	$a7, $a7, $t0
-	add.d	$a1, $a1, $a7
-	ld.w	$a7, $a1, 8
-	addi.d	$a7, $a7, -1
-	st.w	$a7, $a1, 8
+	ldx.w	$t0, $a1, $a7
+	addi.d	$t0, $t0, -1
+	stx.w	$t0, $a1, $a7
 	ld.w	$a1, $a2, 68
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a2, 68
@@ -6302,8 +6263,7 @@ _ZN20btAxisSweep3InternalIjE9sortMinUpEijP12btDispatcherb: # @_ZN20btAxisSweep3I
 	alsl.d	$a5, $a5, $a5, 1
 	slli.d	$a5, $a5, 5
 	add.d	$a5, $a6, $a5
-	alsl.d	$a5, $a1, $a5, 2
-	addi.d	$s2, $a5, 60
+	alsl.d	$s2, $a1, $a5, 2
 	beqz	$a4, .LBB65_3
 # %bb.2:                                # %.lr.ph.split.us.preheader
 	ori	$a4, $zero, 1
@@ -6339,9 +6299,9 @@ _ZN20btAxisSweep3InternalIjE9sortMinUpEijP12btDispatcherb: # @_ZN20btAxisSweep3I
 	ldx.w	$a5, $a2, $a1
 	addi.d	$a5, $a5, -1
 	stx.w	$a5, $a2, $a1
-	ld.w	$a2, $s2, 0
+	ld.w	$a2, $s2, 60
 	addi.d	$a2, $a2, 1
-	st.w	$a2, $s2, 0
+	st.w	$a2, $s2, 60
 	ld.d	$a5, $s1, 8
 	ld.d	$a6, $s1, 0
 	ld.wu	$a2, $s1, 20
@@ -6381,9 +6341,9 @@ _ZN20btAxisSweep3InternalIjE9sortMinUpEijP12btDispatcherb: # @_ZN20btAxisSweep3I
 	ldx.w	$a2, $a1, $s3
 	addi.d	$a2, $a2, -1
 	stx.w	$a2, $a1, $s3
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s2, 60
 	addi.d	$a1, $a1, 1
-	st.w	$a1, $s2, 0
+	st.w	$a1, $s2, 60
 	ld.d	$a1, $s1, 8
 	ld.d	$a4, $s1, 0
 	ld.wu	$a2, $s1, 20

@@ -43,9 +43,9 @@ f:                                      # @f
 	ld.w	$a1, $a0, %pc_lo12(x)
 	addi.d	$a2, $a1, 20
 	st.w	$a2, $a0, %pc_lo12(x)
-	slli.d	$a0, $a1, 4
-	alsl.d	$a0, $a1, $a0, 1
-	alsl.d	$a0, $a1, $a0, 1
+	slli.d	$a0, $a1, 1
+	alsl.d	$a0, $a1, $a0, 3
+	add.d	$a0, $a0, $a0
 	addi.w	$fp, $a0, 207
 	pcalau12i	$a0, %pc_hi20(buf)
 	addi.d	$a0, $a0, %pc_lo12(buf)

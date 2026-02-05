@@ -1237,7 +1237,7 @@ luaV_execute:                           # @luaV_execute
 .LBB9_1:                                # %.loopexit
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_6 Depth 2
-                                        #       Child Loop BB9_149 Depth 3
+                                        #       Child Loop BB9_153 Depth 3
                                         #       Child Loop BB9_29 Depth 3
                                         #       Child Loop BB9_162 Depth 3
                                         #       Child Loop BB9_188 Depth 3
@@ -1249,7 +1249,7 @@ luaV_execute:                           # @luaV_execute
 	ld.d	$a0, $a1, 32
 	ld.d	$s8, $fp, 48
 	ld.d	$s2, $fp, 24
-	ld.d	$s0, $a0, 16
+	ld.d	$s1, $a0, 16
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	addi.d	$a0, $a1, 40
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
@@ -1277,16 +1277,16 @@ luaV_execute:                           # @luaV_execute
 	addu16i.d	$a0, $a0, -8
 	addi.d	$s8, $a0, 4
 	.p2align	4, , 16
-.LBB9_6:                                # %.backedge
+.LBB9_6:                                # %.critedge
                                         #   Parent Loop BB9_1 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB9_149 Depth 3
+                                        #       Child Loop BB9_153 Depth 3
                                         #       Child Loop BB9_29 Depth 3
                                         #       Child Loop BB9_162 Depth 3
                                         #       Child Loop BB9_188 Depth 3
                                         #       Child Loop BB9_62 Depth 3
 	ld.bu	$a0, $fp, 100
-	move	$s1, $s8
+	move	$s0, $s8
 	ld.w	$s4, $s8, 0
 	andi	$a1, $a0, 12
 	addi.d	$s8, $s8, 4
@@ -1397,19 +1397,19 @@ luaV_execute:                           # @luaV_execute
 	lu32i.d	$a1, 0
 	and	$a1, $s4, $a1
 	srli.d	$a1, $a1, 11
-	ldx.d	$s1, $a0, $a1
-	ld.bu	$s4, $s1, 112
+	ldx.d	$s0, $a0, $a1
+	ld.bu	$s4, $s0, 112
 	ld.d	$a2, $a2, 24
 	move	$a0, $fp
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(luaF_newLclosure)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	st.d	$s1, $a0, 32
+	st.d	$s0, $a0, 32
 	beqz	$s4, .LBB9_31
-# %bb.26:                               # %.lr.ph848
+# %bb.26:                               # %.lr.ph846
                                         #   in Loop: Header=BB9_6 Depth=2
-	addi.d	$s1, $s5, 40
+	addi.d	$s0, $s5, 40
 	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB9_29
 	.p2align	4, , 16
@@ -1419,10 +1419,10 @@ luaV_execute:                           # @luaV_execute
 	pcaddu18i	$ra, %call36(luaF_findupval)
 	jirl	$ra, $ra, 0
 .LBB9_28:                               #   in Loop: Header=BB9_29 Depth=3
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s0, 0
 	addi.d	$s8, $s8, 4
 	addi.d	$s4, $s4, -1
-	addi.d	$s1, $s1, 8
+	addi.d	$s0, $s0, 8
 	beqz	$s4, .LBB9_31
 .LBB9_29:                               #   Parent Loop BB9_1 Depth=1
                                         #     Parent Loop BB9_6 Depth=2
@@ -1481,14 +1481,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a2, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a1, $a0, $a1
 	ld.w	$a4, $a2, 8
@@ -1496,10 +1496,10 @@ luaV_execute:                           # @luaV_execute
 	andi	$a3, $a0, 4080
 	ori	$a0, $zero, 3
 	add.d	$a3, $a1, $a3
-	bne	$a4, $a0, .LBB9_134
+	bne	$a4, $a0, .LBB9_132
 # %bb.38:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $a3, 8
-	bne	$a1, $a0, .LBB9_134
+	bne	$a1, $a0, .LBB9_132
 # %bb.39:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
@@ -1520,14 +1520,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a2, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a1, $a0, $a1
 	ld.w	$a4, $a2, 8
@@ -1535,10 +1535,10 @@ luaV_execute:                           # @luaV_execute
 	andi	$a3, $a0, 4080
 	ori	$a0, $zero, 3
 	add.d	$a3, $a1, $a3
-	bne	$a4, $a0, .LBB9_135
+	bne	$a4, $a0, .LBB9_133
 # %bb.41:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $a3, 8
-	bne	$a1, $a0, .LBB9_135
+	bne	$a1, $a0, .LBB9_133
 # %bb.42:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
@@ -1561,7 +1561,7 @@ luaV_execute:                           # @luaV_execute
 	st.d	$a0, $s3, 16
 	st.w	$a2, $s3, 24
 	st.d	$s8, $fp, 48
-	b	.LBB9_90
+	b	.LBB9_88
 .LBB9_45:                               #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
@@ -1583,14 +1583,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a2, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a1, $a0, $a1
 	ld.w	$a4, $a2, 8
@@ -1598,10 +1598,10 @@ luaV_execute:                           # @luaV_execute
 	andi	$a3, $a0, 4080
 	ori	$a0, $zero, 3
 	add.d	$a3, $a1, $a3
-	bne	$a4, $a0, .LBB9_136
+	bne	$a4, $a0, .LBB9_134
 # %bb.47:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $a3, 8
-	bne	$a1, $a0, .LBB9_136
+	bne	$a1, $a0, .LBB9_134
 # %bb.48:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
@@ -1619,14 +1619,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a2, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a1
 	srli.d	$a1, $s4, 10
@@ -1647,14 +1647,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a1, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a2, $s0, $a0
+	masknez	$a2, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a2
 	srli.d	$a2, $s4, 10
@@ -1662,7 +1662,7 @@ luaV_execute:                           # @luaV_execute
 	add.d	$a2, $a0, $a2
 	ld.w	$a0, $a1, 8
 	ld.w	$a3, $a2, 8
-	bne	$a0, $a3, .LBB9_142
+	bne	$a0, $a3, .LBB9_140
 # %bb.51:                               #   in Loop: Header=BB9_6 Depth=2
 	ori	$a3, $zero, 4
 	beq	$a0, $a3, .LBB9_182
@@ -1688,14 +1688,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a1, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a2, $s0, $a0
+	masknez	$a2, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a2
 	srli.d	$a2, $s4, 10
@@ -1726,7 +1726,7 @@ luaV_execute:                           # @luaV_execute
 	lu12i.w	$a0, 2044
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	addi.d	$a1, $s1, 8
+	addi.d	$a1, $s0, 8
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s8, $a0
 	or	$s8, $a0, $a1
@@ -1742,14 +1742,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a2, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a1, $a0, $a1
 	ld.w	$a4, $a2, 8
@@ -1757,10 +1757,10 @@ luaV_execute:                           # @luaV_execute
 	andi	$a3, $a0, 4080
 	ori	$a0, $zero, 3
 	add.d	$a3, $a1, $a3
-	bne	$a4, $a0, .LBB9_137
+	bne	$a4, $a0, .LBB9_135
 # %bb.59:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $a3, 8
-	bne	$a1, $a0, .LBB9_137
+	bne	$a1, $a0, .LBB9_135
 # %bb.60:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
@@ -1792,11 +1792,11 @@ luaV_execute:                           # @luaV_execute
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
 	srli.d	$a0, $a0, 10
-	add.d	$a2, $s0, $a0
+	add.d	$a2, $s1, $a0
 	addi.d	$a1, $sp, 56
 	move	$a0, $fp
 	move	$a3, $s3
-.LBB9_64:                               # %.backedge
+.LBB9_64:                               # %.critedge
                                         #   in Loop: Header=BB9_6 Depth=2
 	pcaddu18i	$ra, %call36(luaV_settable)
 	jirl	$ra, $ra, 0
@@ -1807,9 +1807,9 @@ luaV_execute:                           # @luaV_execute
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
 	srli.d	$a0, $a0, 10
-	ldx.d	$a1, $s0, $a0
-	add.d	$a0, $s0, $a0
-.LBB9_66:                               # %.backedge
+	ldx.d	$a1, $s1, $a0
+	add.d	$a0, $s1, $a0
+.LBB9_66:                               # %.critedge
                                         #   in Loop: Header=BB9_6 Depth=2
 	st.d	$a1, $s3, 0
 	ld.w	$a0, $a0, 8
@@ -1869,14 +1869,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a2, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a1, $a0, $a1
 	ld.w	$a4, $a2, 8
@@ -1884,10 +1884,10 @@ luaV_execute:                           # @luaV_execute
 	andi	$a3, $a0, 4080
 	ori	$a0, $zero, 3
 	add.d	$a3, $a1, $a3
-	bne	$a4, $a0, .LBB9_138
+	bne	$a4, $a0, .LBB9_136
 # %bb.71:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $a3, 8
-	bne	$a1, $a0, .LBB9_138
+	bne	$a1, $a0, .LBB9_136
 # %bb.72:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
@@ -1895,52 +1895,35 @@ luaV_execute:                           # @luaV_execute
 	jirl	$ra, $ra, 0
 	b	.LBB9_171
 .LBB9_73:                               #   in Loop: Header=BB9_6 Depth=2
-	ld.d	$s1, $fp, 40
+	ld.d	$s0, $fp, 40
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 32
-	ld.d	$a1, $s1, 0
-	ld.d	$a2, $s1, 8
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 8
 	ld.bu	$a3, $a0, 113
 	bstrpick.d	$a0, $s4, 31, 23
 	sub.d	$a1, $a1, $a2
 	srli.d	$a1, $a1, 4
 	nor	$a2, $a3, $zero
 	add.w	$s4, $a1, $a2
-	slli.d	$s6, $s4, 4
-	bnez	$a0, .LBB9_145
+	beqz	$a0, .LBB9_147
 # %bb.74:                               #   in Loop: Header=BB9_6 Depth=2
-	ld.d	$a0, $fp, 56
-	ld.d	$a1, $fp, 16
-	sub.d	$a0, $a0, $a1
-	addi.w	$a1, $s6, 0
-	st.d	$s8, $fp, 48
-	blt	$a1, $a0, .LBB9_76
-# %bb.75:                               #   in Loop: Header=BB9_6 Depth=2
-	move	$a0, $fp
-	move	$a1, $s4
-	pcaddu18i	$ra, %call36(luaD_growstack)
-	jirl	$ra, $ra, 0
-.LBB9_76:                               #   in Loop: Header=BB9_6 Depth=2
-	ld.d	$s2, $fp, 24
-	alsl.d	$s3, $s5, $s2, 4
-	alsl.d	$a0, $s4, $s3, 4
-	st.d	$a0, $fp, 16
-	move	$a0, $s4
-	bgtz	$a0, .LBB9_146
+	addi.w	$a0, $a0, -1
+	bgtz	$a0, .LBB9_150
 	b	.LBB9_6
-.LBB9_77:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_75:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $s3, 32
 	fld.d	$fa2, $s3, 0
 	fld.d	$fa1, $s3, 16
 	movgr2fr.d	$fa3, $zero
 	fcmp.cule.d	$fcc0, $fa0, $fa3
 	fadd.d	$fa0, $fa0, $fa2
-	bcnez	$fcc0, .LBB9_151
-# %bb.78:                               #   in Loop: Header=BB9_6 Depth=2
+	bcnez	$fcc0, .LBB9_143
+# %bb.76:                               #   in Loop: Header=BB9_6 Depth=2
 	fcmp.cult.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB9_6
-	b	.LBB9_152
-.LBB9_79:                               #   in Loop: Header=BB9_6 Depth=2
+	b	.LBB9_144
+.LBB9_77:                               #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
@@ -1949,35 +1932,35 @@ luaV_execute:                           # @luaV_execute
 	ld.w	$a0, $s4, 8
 	ori	$a1, $zero, 4
 	beq	$a0, $a1, .LBB9_170
-# %bb.80:                               #   in Loop: Header=BB9_6 Depth=2
+# %bb.78:                               #   in Loop: Header=BB9_6 Depth=2
 	ori	$a1, $zero, 5
 	bne	$a0, $a1, .LBB9_172
-# %bb.81:                               #   in Loop: Header=BB9_6 Depth=2
+# %bb.79:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$a0, $s4, 0
 	pcaddu18i	$ra, %call36(luaH_getn)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
 	b	.LBB9_171
-.LBB9_82:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_80:                               #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -4
 	lu32i.d	$a0, 0
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 24
 	and	$a0, $s4, $a0
 	srli.d	$a0, $a0, 10
-	add.d	$a2, $s0, $a0
+	add.d	$a2, $s1, $a0
 	st.d	$a1, $sp, 56
 	ori	$a0, $zero, 5
 	st.w	$a0, $sp, 64
 	st.d	$s8, $fp, 48
 	addi.d	$a1, $sp, 56
-	b	.LBB9_91
-.LBB9_83:                               #   in Loop: Header=BB9_6 Depth=2
-	bstrpick.d	$s1, $s4, 31, 23
+	b	.LBB9_89
+.LBB9_81:                               #   in Loop: Header=BB9_6 Depth=2
+	bstrpick.d	$s0, $s4, 31, 23
 	bstrpick.d	$a2, $s4, 22, 14
 	st.d	$s8, $fp, 48
-	sub.d	$a0, $a2, $s1
+	sub.d	$a0, $a2, $s0
 	addi.d	$a1, $a0, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaV_concat)
@@ -1985,14 +1968,14 @@ luaV_execute:                           # @luaV_execute
 	ld.d	$a0, $fp, 32
 	ld.d	$a1, $a0, 120
 	ld.d	$a0, $a0, 112
-	bltu	$a1, $a0, .LBB9_85
-# %bb.84:                               #   in Loop: Header=BB9_6 Depth=2
+	bltu	$a1, $a0, .LBB9_83
+# %bb.82:                               #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaC_step)
 	jirl	$ra, $ra, 0
-.LBB9_85:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_83:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$s2, $fp, 24
-	addi.w	$a0, $s1, 0
+	addi.w	$a0, $s0, 0
 	alsl.d	$a1, $a0, $s2, 4
 	slli.d	$a0, $a0, 4
 	ldx.d	$a0, $s2, $a0
@@ -2002,7 +1985,7 @@ luaV_execute:                           # @luaV_execute
 	stx.d	$a0, $s2, $a3
 	st.w	$a1, $a2, 8
 	b	.LBB9_6
-.LBB9_86:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_84:                               #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
@@ -2013,14 +1996,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a2, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s0, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a1, $a0, $a1
 	ld.w	$a4, $a2, 8
@@ -2028,34 +2011,34 @@ luaV_execute:                           # @luaV_execute
 	andi	$a3, $a0, 4080
 	ori	$a0, $zero, 3
 	add.d	$a3, $a1, $a3
-	bne	$a4, $a0, .LBB9_139
-# %bb.87:                               #   in Loop: Header=BB9_6 Depth=2
+	bne	$a4, $a0, .LBB9_137
+# %bb.85:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $a3, 8
-	bne	$a1, $a0, .LBB9_139
-# %bb.88:                               #   in Loop: Header=BB9_6 Depth=2
+	bne	$a1, $a0, .LBB9_137
+# %bb.86:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
 	fsub.d	$fa0, $fa0, $fa1
 	b	.LBB9_171
-.LBB9_89:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_87:                               #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
 	srli.d	$a0, $a0, 19
 	add.d	$a1, $s2, $a0
-.LBB9_90:                               # %.backedge
+.LBB9_88:                               # %.critedge
                                         #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a2, $s0, $a0
+	masknez	$a2, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a2
 	srli.d	$a2, $s4, 10
 	andi	$a2, $a2, 4080
 	add.d	$a2, $a0, $a2
-.LBB9_91:                               # %.backedge
+.LBB9_89:                               # %.critedge
                                         #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $fp
 	move	$a3, $s3
@@ -2063,7 +2046,7 @@ luaV_execute:                           # @luaV_execute
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $fp, 24
 	b	.LBB9_6
-.LBB9_92:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_90:                               #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
@@ -2071,14 +2054,14 @@ luaV_execute:                           # @luaV_execute
 	add.d	$a2, $s2, $a0
 	ld.w	$a1, $a2, 8
 	ori	$a0, $zero, 3
-	bne	$a1, $a0, .LBB9_153
-# %bb.93:                               #   in Loop: Header=BB9_6 Depth=2
+	bne	$a1, $a0, .LBB9_145
+# %bb.91:                               #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $a2, 0
 	fneg.d	$fa0, $fa0
 	fst.d	$fa0, $s3, 0
 	st.w	$a0, $s3, 8
 	b	.LBB9_6
-.LBB9_94:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_92:                               #   in Loop: Header=BB9_6 Depth=2
 	bstrpick.d	$a0, $s4, 31, 23
 	bstrpick.d	$s2, $s4, 22, 14
 	pcaddu18i	$ra, %call36(luaO_fb2int)
@@ -2099,15 +2082,15 @@ luaV_execute:                           # @luaV_execute
 	st.d	$s8, $fp, 48
 	ld.d	$a1, $a0, 120
 	ld.d	$a0, $a0, 112
-	bltu	$a1, $a0, .LBB9_96
-# %bb.95:                               #   in Loop: Header=BB9_6 Depth=2
+	bltu	$a1, $a0, .LBB9_94
+# %bb.93:                               #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaC_step)
 	jirl	$ra, $ra, 0
-.LBB9_96:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_94:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$s2, $fp, 24
 	b	.LBB9_6
-.LBB9_97:                               #   in Loop: Header=BB9_6 Depth=2
+.LBB9_95:                               #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
@@ -2121,82 +2104,82 @@ luaV_execute:                           # @luaV_execute
 	ori	$a3, $zero, 4
 	st.w	$a2, $a0, 8
 	blt	$a2, $a3, .LBB9_6
-# %bb.98:                               #   in Loop: Header=BB9_6 Depth=2
+# %bb.96:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$a2, $s3, 0
 	ld.bu	$a0, $a2, 9
 	andi	$a0, $a0, 3
 	beqz	$a0, .LBB9_6
-# %bb.99:                               #   in Loop: Header=BB9_6 Depth=2
+# %bb.97:                               #   in Loop: Header=BB9_6 Depth=2
 	ld.bu	$a0, $a1, 9
 	andi	$a0, $a0, 4
 	beqz	$a0, .LBB9_6
-# %bb.100:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.98:                               #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaC_barrierf)
 	jirl	$ra, $ra, 0
 	b	.LBB9_6
-.LBB9_101:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_99:                               #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ld.w	$a0, $s3, 8
-	ori	$s1, $zero, 3
-	beq	$a0, $s1, .LBB9_105
-# %bb.102:                              #   in Loop: Header=BB9_6 Depth=2
+	ori	$s0, $zero, 3
+	beq	$a0, $s0, .LBB9_103
+# %bb.100:                              #   in Loop: Header=BB9_6 Depth=2
 	ori	$a1, $zero, 4
 	bne	$a0, $a1, .LBB9_2
-# %bb.103:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.101:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$a0, $s3, 0
 	addi.d	$a0, $a0, 24
 	addi.d	$a1, $sp, 56
 	pcaddu18i	$ra, %call36(luaO_str2d)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB9_2
-# %bb.104:                              # %luaV_tonumber.exit.thread
+# %bb.102:                              # %luaV_tonumber.exit.thread
                                         #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $sp, 56
 	fst.d	$fa0, $s3, 0
 	ori	$a0, $zero, 3
 	st.w	$a0, $s3, 8
-.LBB9_105:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_103:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a0, $s3, 24
-	beq	$a0, $s1, .LBB9_109
-# %bb.106:                              #   in Loop: Header=BB9_6 Depth=2
+	beq	$a0, $s0, .LBB9_107
+# %bb.104:                              #   in Loop: Header=BB9_6 Depth=2
 	ori	$a1, $zero, 4
 	bne	$a0, $a1, .LBB9_181
-# %bb.107:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.105:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$a0, $s3, 16
 	addi.d	$a0, $a0, 24
 	addi.d	$a1, $sp, 56
 	pcaddu18i	$ra, %call36(luaO_str2d)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB9_181
-# %bb.108:                              # %luaV_tonumber.exit815.thread
+# %bb.106:                              # %luaV_tonumber.exit815.thread
                                         #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $sp, 56
 	fst.d	$fa0, $s3, 16
 	ori	$a0, $zero, 3
 	st.w	$a0, $s3, 24
-.LBB9_109:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_107:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a0, $s3, 40
 	ori	$a1, $zero, 3
 	beq	$a0, $a1, .LBB9_4
-# %bb.110:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.108:                              #   in Loop: Header=BB9_6 Depth=2
 	ori	$a1, $zero, 4
 	bne	$a0, $a1, .LBB9_212
-# %bb.111:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.109:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$a0, $s3, 32
 	addi.d	$a0, $a0, 24
 	addi.d	$a1, $sp, 56
 	pcaddu18i	$ra, %call36(luaO_str2d)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB9_212
-# %bb.112:                              # %luaV_tonumber.exit818.thread
+# %bb.110:                              # %luaV_tonumber.exit818.thread
                                         #   in Loop: Header=BB9_6 Depth=2
 	fld.d	$fa0, $sp, 56
 	fst.d	$fa0, $s3, 32
 	ori	$a0, $zero, 3
 	st.w	$a0, $s3, 40
 	b	.LBB9_4
-.LBB9_113:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_111:                              #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
@@ -2206,14 +2189,14 @@ luaV_execute:                           # @luaV_execute
 	ori	$a0, $zero, 1
 	ori	$a2, $zero, 1
 	beqz	$a3, .LBB9_176
-# %bb.114:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.112:                              #   in Loop: Header=BB9_6 Depth=2
 	ori	$a2, $zero, 1
 	bne	$a3, $a2, .LBB9_175
-# %bb.115:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.113:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $a1, 0
 	sltui	$a2, $a1, 1
 	b	.LBB9_176
-.LBB9_116:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_114:                              #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -2048
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
@@ -2224,14 +2207,14 @@ luaV_execute:                           # @luaV_execute
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	masknez	$a1, $s0, $a2
+	masknez	$a1, $s1, $a2
 	maskeqz	$a2, $s2, $a2
 	or	$a1, $a2, $a1
 	alsl.d	$a1, $a0, $a1, 4
 	lu12i.w	$a0, 1024
 	and	$a0, $s4, $a0
 	sltui	$a0, $a0, 1
-	masknez	$a2, $s0, $a0
+	masknez	$a2, $s1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a2
 	srli.d	$a2, $s4, 10
@@ -2240,26 +2223,23 @@ luaV_execute:                           # @luaV_execute
 	st.d	$s8, $fp, 48
 	ld.w	$a0, $a1, 8
 	ld.w	$a3, $a2, 8
-	bne	$a0, $a3, .LBB9_154
-# %bb.117:                              #   in Loop: Header=BB9_6 Depth=2
+	bne	$a0, $a3, .LBB9_146
+# %bb.115:                              #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaV_equalval)
 	jirl	$ra, $ra, 0
 	beq	$a0, $s5, .LBB9_55
 	b	.LBB9_56
-.LBB9_118:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_116:                              #   in Loop: Header=BB9_6 Depth=2
 	bstrpick.d	$a0, $s4, 31, 23
-	beqz	$a0, .LBB9_120
-# %bb.119:                              #   in Loop: Header=BB9_6 Depth=2
-	lu12i.w	$a0, -2048
-	lu32i.d	$a0, 0
-	and	$a0, $s4, $a0
-	srli.d	$a0, $a0, 19
-	add.d	$a0, $s3, $a0
+	beqz	$a0, .LBB9_118
+# %bb.117:                              #   in Loop: Header=BB9_6 Depth=2
+	addi.w	$a0, $a0, 0
+	alsl.d	$a0, $a0, $s3, 4
 	st.d	$a0, $fp, 16
-.LBB9_120:                              #   in Loop: Header=BB9_6 Depth=2
-	bstrpick.d	$s1, $s4, 22, 14
-	addi.w	$a2, $s1, -1
+.LBB9_118:                              #   in Loop: Header=BB9_6 Depth=2
+	bstrpick.d	$s0, $s4, 22, 14
+	addi.w	$a2, $s0, -1
 	st.d	$s8, $fp, 48
 	move	$a0, $fp
 	move	$a1, $s3
@@ -2267,26 +2247,23 @@ luaV_execute:                           # @luaV_execute
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB9_194
-# %bb.121:                              #   in Loop: Header=BB9_6 Depth=2
-	beqz	$s1, .LBB9_123
-# %bb.122:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.119:                              #   in Loop: Header=BB9_6 Depth=2
+	beqz	$s0, .LBB9_121
+# %bb.120:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$a0, $fp, 40
 	ld.d	$a0, $a0, 16
 	st.d	$a0, $fp, 16
-.LBB9_123:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_121:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$s2, $fp, 24
 	b	.LBB9_6
-.LBB9_124:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_122:                              #   in Loop: Header=BB9_6 Depth=2
 	bstrpick.d	$a0, $s4, 31, 23
-	beqz	$a0, .LBB9_126
-# %bb.125:                              #   in Loop: Header=BB9_6 Depth=2
-	lu12i.w	$a0, -2048
-	lu32i.d	$a0, 0
-	and	$a0, $s4, $a0
-	srli.d	$a0, $a0, 19
-	add.d	$a0, $s3, $a0
+	beqz	$a0, .LBB9_124
+# %bb.123:                              #   in Loop: Header=BB9_6 Depth=2
+	addi.w	$a0, $a0, 0
+	alsl.d	$a0, $a0, $s3, 4
 	st.d	$a0, $fp, 16
-.LBB9_126:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_124:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	addi.w	$a2, $zero, -1
 	move	$a0, $fp
@@ -2295,108 +2272,79 @@ luaV_execute:                           # @luaV_execute
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB9_196
-# %bb.127:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.125:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$s2, $fp, 24
 	b	.LBB9_6
-.LBB9_128:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_126:                              #   in Loop: Header=BB9_6 Depth=2
 	bstrpick.d	$s6, $s4, 31, 23
 	beqz	$s6, .LBB9_155
-# %bb.129:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.127:                              #   in Loop: Header=BB9_6 Depth=2
 	bstrpick.d	$a0, $s4, 22, 14
 	beqz	$a0, .LBB9_156
-.LBB9_130:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_128:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a1, $s3, 8
 	ori	$a2, $zero, 5
 	bne	$a1, $a2, .LBB9_6
 	b	.LBB9_157
-.LBB9_131:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_129:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a0, $s3, 8
 	beqz	$a0, .LBB9_177
-# %bb.132:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.130:                              #   in Loop: Header=BB9_6 Depth=2
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB9_180
-# %bb.133:                              #   in Loop: Header=BB9_6 Depth=2
+# %bb.131:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.w	$a0, $s3, 0
 	sltui	$a0, $a0, 1
 	bstrpick.d	$a1, $s4, 22, 14
 	bne	$a0, $a1, .LBB9_178
 	b	.LBB9_179
-.LBB9_134:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_132:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ori	$a4, $zero, 9
-	b	.LBB9_140
-.LBB9_135:                              #   in Loop: Header=BB9_6 Depth=2
+	b	.LBB9_138
+.LBB9_133:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ori	$a4, $zero, 7
-	b	.LBB9_140
-.LBB9_136:                              #   in Loop: Header=BB9_6 Depth=2
+	b	.LBB9_138
+.LBB9_134:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ori	$a4, $zero, 5
-	b	.LBB9_140
-.LBB9_137:                              #   in Loop: Header=BB9_6 Depth=2
+	b	.LBB9_138
+.LBB9_135:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ori	$a4, $zero, 8
-	b	.LBB9_140
-.LBB9_138:                              #   in Loop: Header=BB9_6 Depth=2
+	b	.LBB9_138
+.LBB9_136:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ori	$a4, $zero, 10
-	b	.LBB9_140
-.LBB9_139:                              #   in Loop: Header=BB9_6 Depth=2
+	b	.LBB9_138
+.LBB9_137:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ori	$a4, $zero, 6
-.LBB9_140:                              # %.backedge
+.LBB9_138:                              # %.critedge
                                         #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $fp
 	move	$a1, $s3
-.LBB9_141:                              # %.backedge
+.LBB9_139:                              # %.critedge
                                         #   in Loop: Header=BB9_6 Depth=2
 	pcaddu18i	$ra, %call36(Arith)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $fp, 24
 	b	.LBB9_6
-.LBB9_142:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_140:                              #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $fp
-.LBB9_143:                              # %lessequal.exit
+.LBB9_141:                              # %lessequal.exit
                                         #   in Loop: Header=BB9_6 Depth=2
 	pcaddu18i	$ra, %call36(luaG_ordererror)
 	jirl	$ra, $ra, 0
-.LBB9_144:                              # %lessequal.exit
+.LBB9_142:                              # %lessequal.exit
                                         #   in Loop: Header=BB9_6 Depth=2
 	beq	$a0, $s5, .LBB9_55
 	b	.LBB9_56
-.LBB9_145:                              #   in Loop: Header=BB9_6 Depth=2
-	addi.w	$a0, $a0, -1
-	blez	$a0, .LBB9_6
-.LBB9_146:                              # %.lr.ph
-                                        #   in Loop: Header=BB9_6 Depth=2
-	move	$a1, $zero
-	addi.d	$a2, $s3, 8
-	sub.d	$a3, $zero, $s6
-	b	.LBB9_149
-	.p2align	4, , 16
-.LBB9_147:                              #   in Loop: Header=BB9_149 Depth=3
-	ld.d	$a4, $s1, 0
-	ldx.d	$a5, $a4, $a3
-	add.d	$a4, $a4, $a3
-	st.d	$a5, $a2, -8
-	ld.w	$a4, $a4, 8
-.LBB9_148:                              #   in Loop: Header=BB9_149 Depth=3
-	st.w	$a4, $a2, 0
-	addi.d	$a1, $a1, 1
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
-	beq	$a0, $a1, .LBB9_6
-.LBB9_149:                              #   Parent Loop BB9_1 Depth=1
-                                        #     Parent Loop BB9_6 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	blt	$a1, $s4, .LBB9_147
-# %bb.150:                              #   in Loop: Header=BB9_149 Depth=3
-	move	$a4, $zero
-	b	.LBB9_148
-.LBB9_151:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_143:                              #   in Loop: Header=BB9_6 Depth=2
 	fcmp.cult.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB9_6
-.LBB9_152:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_144:                              #   in Loop: Header=BB9_6 Depth=2
 	lu12i.w	$a0, -4
 	lu32i.d	$a0, 0
 	and	$a0, $s4, $a0
@@ -2410,17 +2358,63 @@ luaV_execute:                           # @luaV_execute
 	fst.d	$fa0, $s3, 48
 	st.w	$a0, $s3, 56
 	b	.LBB9_6
-.LBB9_153:                              #   in Loop: Header=BB9_6 Depth=2
+.LBB9_145:                              #   in Loop: Header=BB9_6 Depth=2
 	st.d	$s8, $fp, 48
 	ori	$a4, $zero, 11
 	move	$a0, $fp
 	move	$a1, $s3
 	move	$a3, $a2
-	b	.LBB9_141
-.LBB9_154:                              #   in Loop: Header=BB9_6 Depth=2
+	b	.LBB9_139
+.LBB9_146:                              #   in Loop: Header=BB9_6 Depth=2
 	move	$a0, $zero
 	beq	$a0, $s5, .LBB9_55
 	b	.LBB9_56
+.LBB9_147:                              #   in Loop: Header=BB9_6 Depth=2
+	ld.d	$a0, $fp, 56
+	ld.d	$a1, $fp, 16
+	sub.d	$a0, $a0, $a1
+	slli.w	$a1, $s4, 4
+	st.d	$s8, $fp, 48
+	blt	$a1, $a0, .LBB9_149
+# %bb.148:                              #   in Loop: Header=BB9_6 Depth=2
+	move	$a0, $fp
+	move	$a1, $s4
+	pcaddu18i	$ra, %call36(luaD_growstack)
+	jirl	$ra, $ra, 0
+.LBB9_149:                              #   in Loop: Header=BB9_6 Depth=2
+	ld.d	$s2, $fp, 24
+	alsl.d	$s3, $s5, $s2, 4
+	alsl.d	$a0, $s4, $s3, 4
+	st.d	$a0, $fp, 16
+	move	$a0, $s4
+	blez	$a0, .LBB9_6
+.LBB9_150:                              # %.lr.ph
+                                        #   in Loop: Header=BB9_6 Depth=2
+	move	$a1, $zero
+	addi.d	$a2, $s3, 8
+	slli.d	$a3, $s4, 4
+	sub.d	$a3, $zero, $a3
+	b	.LBB9_153
+	.p2align	4, , 16
+.LBB9_151:                              #   in Loop: Header=BB9_153 Depth=3
+	ld.d	$a4, $s0, 0
+	ldx.d	$a5, $a4, $a3
+	add.d	$a4, $a4, $a3
+	st.d	$a5, $a2, -8
+	ld.w	$a4, $a4, 8
+.LBB9_152:                              #   in Loop: Header=BB9_153 Depth=3
+	st.w	$a4, $a2, 0
+	addi.d	$a1, $a1, 1
+	addi.d	$a2, $a2, 16
+	addi.d	$a3, $a3, 16
+	beq	$a0, $a1, .LBB9_6
+.LBB9_153:                              #   Parent Loop BB9_1 Depth=1
+                                        #     Parent Loop BB9_6 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	blt	$a1, $s4, .LBB9_151
+# %bb.154:                              #   in Loop: Header=BB9_153 Depth=3
+	move	$a4, $zero
+	b	.LBB9_152
 .LBB9_155:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$a0, $fp, 40
 	ld.d	$a1, $fp, 16
@@ -2430,10 +2424,10 @@ luaV_execute:                           # @luaV_execute
 	addi.d	$s6, $a1, -1
 	st.d	$a0, $fp, 16
 	bstrpick.d	$a0, $s4, 22, 14
-	bnez	$a0, .LBB9_130
+	bnez	$a0, .LBB9_128
 .LBB9_156:                              #   in Loop: Header=BB9_6 Depth=2
-	ld.w	$a0, $s1, 4
-	addi.d	$s8, $s1, 8
+	ld.w	$a0, $s0, 4
+	addi.d	$s8, $s0, 8
 	ld.w	$a1, $s3, 8
 	ori	$a2, $zero, 5
 	bne	$a1, $a2, .LBB9_6
@@ -2454,20 +2448,20 @@ luaV_execute:                           # @luaV_execute
 .LBB9_159:                              #   in Loop: Header=BB9_6 Depth=2
 	addi.w	$a0, $s6, 0
 	blez	$a0, .LBB9_6
-# %bb.160:                              # %.lr.ph852
+# %bb.160:                              # %.lr.ph850
                                         #   in Loop: Header=BB9_6 Depth=2
-	addi.d	$s1, $a0, 1
+	addi.d	$s0, $a0, 1
 	slli.d	$a0, $a0, 4
 	alsl.d	$a0, $s5, $a0, 4
 	add.d	$s5, $s2, $a0
 	b	.LBB9_162
 	.p2align	4, , 16
 .LBB9_161:                              #   in Loop: Header=BB9_162 Depth=3
-	addi.d	$s1, $s1, -1
+	addi.d	$s0, $s0, -1
 	addi.d	$s5, $s5, -16
 	ori	$a0, $zero, 1
 	addi.w	$s4, $s4, -1
-	bge	$a0, $s1, .LBB9_6
+	bge	$a0, $s0, .LBB9_6
 .LBB9_162:                              #   Parent Loop BB9_1 Depth=1
                                         #     Parent Loop BB9_6 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -2537,7 +2531,7 @@ luaV_execute:                           # @luaV_execute
 	bstrins.d	$a0, $a1, 63, 32
 	movgr2fr.d	$fa1, $a0
 	fadd.d	$fa0, $fa1, $fa0
-.LBB9_171:                              # %.backedge
+.LBB9_171:                              # %.critedge
                                         #   in Loop: Header=BB9_6 Depth=2
 	fst.d	$fa0, $s3, 0
 	ori	$a0, $zero, 3
@@ -2599,9 +2593,9 @@ luaV_execute:                           # @luaV_execute
 	b	.LBB9_3
 .LBB9_182:                              #   in Loop: Header=BB9_6 Depth=2
 	ld.d	$s4, $a1, 0
-	ld.d	$s1, $a2, 0
+	ld.d	$s0, $a2, 0
 	addi.d	$s2, $s4, 24
-	addi.d	$s3, $s1, 24
+	addi.d	$s3, $s0, 24
 	move	$a0, $s2
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strcoll)
@@ -2620,7 +2614,7 @@ luaV_execute:                           # @luaV_execute
 	pcaddu18i	$ra, %call36(call_orderTM)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB9_144
+	bne	$a0, $a1, .LBB9_142
 # %bb.185:                              #   in Loop: Header=BB9_6 Depth=2
 	ori	$a3, $zero, 13
 	move	$a0, $fp
@@ -2636,7 +2630,7 @@ luaV_execute:                           # @luaV_execute
 	b	.LBB9_56
 .LBB9_187:                              # %.lr.ph.preheader.i.i
                                         #   in Loop: Header=BB9_6 Depth=2
-	ld.d	$s1, $s1, 16
+	ld.d	$s0, $s0, 16
 	ld.d	$s4, $s4, 16
 	.p2align	4, , 16
 .LBB9_188:                              # %.lr.ph.i.i
@@ -2646,7 +2640,7 @@ luaV_execute:                           # @luaV_execute
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s1, .LBB9_192
+	beq	$a0, $s0, .LBB9_192
 # %bb.189:                              #   in Loop: Header=BB9_188 Depth=3
 	beq	$a0, $s4, .LBB9_193
 # %bb.190:                              #   in Loop: Header=BB9_188 Depth=3
@@ -2654,7 +2648,7 @@ luaV_execute:                           # @luaV_execute
 	add.d	$s2, $s2, $a0
 	sub.d	$s4, $s4, $a0
 	add.d	$s3, $s3, $a0
-	sub.d	$s1, $s1, $a0
+	sub.d	$s0, $s0, $a0
 	move	$a0, $s2
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strcoll)
@@ -2665,9 +2659,9 @@ luaV_execute:                           # @luaV_execute
 	move	$a0, $fp
 	move	$a1, $s2
 	move	$a2, $s3
-	b	.LBB9_143
+	b	.LBB9_141
 .LBB9_192:                              #   in Loop: Header=BB9_6 Depth=2
-	xor	$a0, $s1, $s4
+	xor	$a0, $s0, $s4
 	sltu	$a0, $zero, $a0
 	slti	$a0, $a0, 1
 	beq	$a0, $s5, .LBB9_55
@@ -2708,11 +2702,11 @@ luaV_execute:                           # @luaV_execute
 	st.d	$a0, $fp, 24
 	move	$a0, $zero
 	bgeu	$s2, $a1, .LBB9_202
-# %bb.200:                              # %.lr.ph855.preheader
+# %bb.200:                              # %.lr.ph853.preheader
                                         #   in Loop: Header=BB9_1 Depth=1
 	addi.d	$a1, $s1, 8
 	.p2align	4, , 16
-.LBB9_201:                              # %.lr.ph855
+.LBB9_201:                              # %.lr.ph853
                                         #   Parent Loop BB9_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $s2, 0
@@ -2724,7 +2718,7 @@ luaV_execute:                           # @luaV_execute
 	addi.d	$s2, $s2, 16
 	addi.d	$a1, $a1, 16
 	bltu	$s2, $a2, .LBB9_201
-.LBB9_202:                              # %._crit_edge856
+.LBB9_202:                              # %._crit_edge854
                                         #   in Loop: Header=BB9_1 Depth=1
 	alsl.d	$a0, $a0, $s1, 4
 	st.d	$a0, $fp, 16
@@ -2742,11 +2736,8 @@ luaV_execute:                           # @luaV_execute
 	bstrpick.d	$a0, $s4, 31, 23
 	beqz	$a0, .LBB9_205
 # %bb.204:                              #   in Loop: Header=BB9_1 Depth=1
-	lu12i.w	$a0, -2048
-	lu32i.d	$a0, 0
-	and	$a0, $s4, $a0
-	srli.d	$a0, $a0, 19
-	add.d	$a0, $s3, $a0
+	addi.w	$a0, $a0, 0
+	alsl.d	$a0, $a0, $s3, 4
 	addi.d	$a0, $a0, -16
 	st.d	$a0, $fp, 16
 .LBB9_205:                              #   in Loop: Header=BB9_1 Depth=1
@@ -2775,7 +2766,7 @@ luaV_execute:                           # @luaV_execute
 	st.d	$a0, $fp, 16
 	b	.LBB9_1
 .LBB9_210:
-	st.d	$s1, $fp, 48
+	st.d	$s0, $fp, 48
 .LBB9_211:                              # %.critedge.thread
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
@@ -2806,36 +2797,36 @@ luaV_execute:                           # @luaV_execute
 	.word	.LBB9_57-.LJTI9_0
 	.word	.LBB9_61-.LJTI9_0
 	.word	.LBB9_45-.LJTI9_0
-	.word	.LBB9_82-.LJTI9_0
-	.word	.LBB9_89-.LJTI9_0
+	.word	.LBB9_80-.LJTI9_0
+	.word	.LBB9_87-.LJTI9_0
 	.word	.LBB9_63-.LJTI9_0
-	.word	.LBB9_97-.LJTI9_0
+	.word	.LBB9_95-.LJTI9_0
 	.word	.LBB9_49-.LJTI9_0
-	.word	.LBB9_94-.LJTI9_0
+	.word	.LBB9_92-.LJTI9_0
 	.word	.LBB9_44-.LJTI9_0
 	.word	.LBB9_46-.LJTI9_0
-	.word	.LBB9_86-.LJTI9_0
+	.word	.LBB9_84-.LJTI9_0
 	.word	.LBB9_40-.LJTI9_0
 	.word	.LBB9_58-.LJTI9_0
 	.word	.LBB9_37-.LJTI9_0
 	.word	.LBB9_70-.LJTI9_0
-	.word	.LBB9_92-.LJTI9_0
-	.word	.LBB9_113-.LJTI9_0
-	.word	.LBB9_79-.LJTI9_0
-	.word	.LBB9_83-.LJTI9_0
+	.word	.LBB9_90-.LJTI9_0
+	.word	.LBB9_111-.LJTI9_0
+	.word	.LBB9_77-.LJTI9_0
+	.word	.LBB9_81-.LJTI9_0
 	.word	.LBB9_5-.LJTI9_0
-	.word	.LBB9_116-.LJTI9_0
+	.word	.LBB9_114-.LJTI9_0
 	.word	.LBB9_54-.LJTI9_0
 	.word	.LBB9_50-.LJTI9_0
-	.word	.LBB9_131-.LJTI9_0
+	.word	.LBB9_129-.LJTI9_0
 	.word	.LBB9_34-.LJTI9_0
-	.word	.LBB9_118-.LJTI9_0
-	.word	.LBB9_124-.LJTI9_0
+	.word	.LBB9_116-.LJTI9_0
+	.word	.LBB9_122-.LJTI9_0
 	.word	.LBB9_203-.LJTI9_0
-	.word	.LBB9_77-.LJTI9_0
-	.word	.LBB9_101-.LJTI9_0
+	.word	.LBB9_75-.LJTI9_0
+	.word	.LBB9_99-.LJTI9_0
 	.word	.LBB9_67-.LJTI9_0
-	.word	.LBB9_128-.LJTI9_0
+	.word	.LBB9_126-.LJTI9_0
 	.word	.LBB9_43-.LJTI9_0
 	.word	.LBB9_25-.LJTI9_0
 	.word	.LBB9_73-.LJTI9_0

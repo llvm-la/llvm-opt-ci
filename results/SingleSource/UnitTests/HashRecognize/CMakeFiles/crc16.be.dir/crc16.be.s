@@ -78,16 +78,11 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(CRCTable)
 	addi.d	$a1, $a0, %pc_lo12(CRCTable)
 	ld.hu	$a2, $a1, 510
 	ld.h	$a0, $a1, 0
-	beqz	$a2, .LBB0_3
+	beqz	$a2, .LBB0_2
 # %bb.1:                                # %crc_table.exit.us.preheader
 	slli.d	$a2, $a0, 8
 	nor	$a3, $a0, $zero
@@ -106,32 +101,33 @@ main:                                   # @main
 	xori	$a0, $a0, 145
 	slli.d	$a0, $a0, 1
 	ldx.h	$a0, $a1, $a0
-	vinsgr2vr.h	$vr0, $a3, 0
-	vinsgr2vr.h	$vr0, $a4, 1
-	vinsgr2vr.h	$vr0, $a5, 2
+	xor	$a1, $a3, $a2
+	xor	$a3, $a4, $a2
+	xor	$a4, $a5, $a2
+	xor	$a0, $a0, $a2
+	vinsgr2vr.h	$vr0, $a1, 0
+	vinsgr2vr.h	$vr0, $a3, 1
+	vinsgr2vr.h	$vr0, $a4, 2
 	vinsgr2vr.h	$vr0, $a0, 3
 	vinsgr2vr.h	$vr0, $a0, 4
-	vinsgr2vr.h	$vr0, $a5, 5
-	vinsgr2vr.h	$vr0, $a4, 6
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
 	vld	$vr1, $a0, %pc_lo12(.LCPI0_4)
-	vinsgr2vr.h	$vr0, $a3, 7
-	vreplgr2vr.h	$vr2, $a2
-	vxor.v	$vr0, $vr0, $vr2
+	vinsgr2vr.h	$vr0, $a4, 5
+	vinsgr2vr.h	$vr0, $a3, 6
+	vinsgr2vr.h	$vr0, $a1, 7
 	vseq.h	$vr0, $vr0, $vr1
 	vrepli.b	$vr1, -1
 	vxor.v	$vr0, $vr0, $vr1
 	vmskltz.h	$vr0, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
 	sltu	$a0, $zero, $a0
-.LBB0_2:                                # %.split11.us
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
 	ret
-.LBB0_3:                                # %.split.preheader
+.LBB0_2:                                # %.split.preheader
+	addi.d	$sp, $sp, -32
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
 	xvld	$xr0, $a2, %pc_lo12(.LCPI0_0)
 	xvreplgr2vr.h	$xr2, $a0
@@ -187,10 +183,10 @@ main:                                   # @main
 	move	$a0, $zero
 	ori	$t6, $zero, 1
 	addi.w	$t7, $zero, -4
-	b	.LBB0_5
+	b	.LBB0_4
 	.p2align	4, , 16
-.LBB0_4:                                # %crc_table.exit
-                                        #   in Loop: Header=BB0_5 Depth=1
+.LBB0_3:                                # %crc_table.exit
+                                        #   in Loop: Header=BB0_4 Depth=1
 	ldx.w	$t8, $t2, $t5
 	ldx.w	$fp, $t2, $t1
 	xor	$s0, $fp, $t8
@@ -223,13 +219,13 @@ main:                                   # @main
 	or	$a0, $a0, $fp
 	addi.d	$t1, $t1, -4
 	addi.d	$t5, $t5, 4
-	beq	$t1, $t7, .LBB0_2
-.LBB0_5:                                # %.split
+	beq	$t1, $t7, .LBB0_6
+.LBB0_4:                                # %.split
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$t8, $a1, 510
-	bnez	$t8, .LBB0_4
-# %bb.6:                                # %vector.ph17
-                                        #   in Loop: Header=BB0_5 Depth=1
+	bnez	$t8, .LBB0_3
+# %bb.5:                                # %vector.ph17
+                                        #   in Loop: Header=BB0_4 Depth=1
 	xvst	$xr0, $a1, 2
 	xvst	$xr1, $a1, 34
 	xvst	$xr2, $a1, 66
@@ -271,7 +267,14 @@ main:                                   # @main
 	xvxor.v	$xr8, $xr9, $xr6
 	xvst	$xr7, $a1, 448
 	xvst	$xr8, $a1, 480
-	b	.LBB0_4
+	b	.LBB0_3
+.LBB0_6:
+	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
+	ret
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
                                         # -- End function

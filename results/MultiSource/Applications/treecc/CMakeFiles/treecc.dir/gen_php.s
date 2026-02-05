@@ -1485,7 +1485,7 @@ TreeCCGeneratePHP:                      # @TreeCCGeneratePHP
 	jirl	$ra, $ra, 0
 	ldptr.d	$fp, $fp, 8200
 	beqz	$fp, .LBB14_16
-# %bb.10:                               # %.lr.ph.i11.preheader
+# %bb.10:                               # %.lr.ph.i10.preheader
 	ori	$s1, $zero, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.87)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.87)
@@ -1502,7 +1502,7 @@ TreeCCGeneratePHP:                      # @TreeCCGeneratePHP
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $fp, 72
 	beqz	$fp, .LBB14_16
-.LBB14_13:                              # %.lr.ph.i11
+.LBB14_13:                              # %.lr.ph.i10
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a0, $fp, 52
 	andi	$a1, $a0, 24

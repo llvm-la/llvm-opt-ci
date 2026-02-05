@@ -1284,15 +1284,14 @@ EliminateLargeSpreadComponents:         # @EliminateLargeSpreadComponents
 	ld.w	$a2, $a0, 16
 	ld.w	$a3, $a0, 24
 	sub.d	$a2, $a2, $a3
-	ld.w	$a3, $fp, 32
-	movgr2fr.w	$fa0, $a2
-	ffint.d.w	$fa0, $fa0
-	fld.d	$fa1, $s2, 0
-	movgr2fr.w	$fa2, $a3
-	ffint.s.w	$fa2, $fa2
-	fcvt.d.s	$fa2, $fa2
-	fmul.d	$fa1, $fa1, $fa2
-	fcmp.cult.d	$fcc0, $fa0, $fa1
+	fld.s	$fa0, $fp, 32
+	movgr2fr.w	$fa1, $a2
+	fld.d	$fa2, $s2, 0
+	ffint.d.w	$fa1, $fa1
+	ffint.s.w	$fa0, $fa0
+	fcvt.d.s	$fa0, $fa0
+	fmul.d	$fa0, $fa2, $fa0
+	fcmp.cult.d	$fcc0, $fa1, $fa0
 	beqz	$a1, .LBB4_6
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
 	bceqz	$fcc0, .LBB4_7
@@ -2189,8 +2188,9 @@ Overlap:                                # @Overlap
 	and	$a0, $a0, $a1
 	ret
 .LBB11_10:
-	addi.w	$a7, $zero, -1
-	slt	$a7, $a7, $a1
+	slli.d	$a7, $a1, 32
+	addi.w	$t0, $zero, -1
+	slt	$a7, $t0, $a7
 	and	$a6, $a6, $a7
 	beqz	$a6, .LBB11_13
 # %bb.11:

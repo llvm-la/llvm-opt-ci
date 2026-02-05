@@ -538,26 +538,23 @@ putAtomInBox:                           # @putAtomInBox
 	.type	getBoxFromCoord,@function
 getBoxFromCoord:                        # @getBoxFromCoord
 # %bb.0:
-	fld.d	$fa6, $a1, 0
-	fld.d	$fa1, $a1, 8
-	fld.d	$fa2, $a0, 32
-	fld.d	$fa3, $a0, 104
-	fld.d	$fa0, $a1, 16
-	fld.d	$fa7, $a0, 48
-	fld.d	$fa4, $a0, 40
-	fld.d	$fa5, $a0, 112
-	fcmp.cule.d	$fcc0, $fa7, $fa6
+	fld.d	$fa3, $a1, 0
+	vld	$vr0, $a1, 8
+	fld.d	$fa4, $a0, 48
+	vld	$vr2, $a0, 32
+	vld	$vr1, $a0, 104
+	fcmp.cule.d	$fcc0, $fa4, $fa3
 	bcnez	$fcc0, .LBB5_2
 # %bb.1:
-	fld.d	$fa7, $a0, 24
-	fld.d	$ft0, $a0, 96
-	fsub.d	$fa6, $fa6, $fa7
-	fmul.d	$fa6, $fa6, $ft0
-	vreplvei.d	$vr6, $vr6, 0
+	fld.d	$fa4, $a0, 24
+	fld.d	$fa5, $a0, 96
+	fsub.d	$fa3, $fa3, $fa4
+	fmul.d	$fa3, $fa3, $fa5
+	vreplvei.d	$vr3, $vr3, 0
 	ld.w	$a1, $a0, 0
-	vfrintrm.d	$vr6, $vr6
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a2, $fa6
+	vfrintrm.d	$vr3, $vr3
+	ftintrz.w.d	$fa3, $fa3
+	movfr2gr.s	$a2, $fa3
 	xor	$a3, $a1, $a2
 	sltui	$a3, $a3, 1
 	addi.w	$a1, $a1, -1
@@ -568,44 +565,46 @@ getBoxFromCoord:                        # @getBoxFromCoord
 .LBB5_2:
 	ld.w	$a1, $a0, 0
 .LBB5_3:
-	fsub.d	$fa4, $fa0, $fa4
-	fmul.d	$fa4, $fa4, $fa5
-	vreplvei.d	$vr4, $vr4, 0
-	vfrintrm.d	$vr4, $vr4
-	ftintrz.w.d	$fa4, $fa4
-	movfr2gr.s	$a3, $fa4
-	fsub.d	$fa2, $fa1, $fa2
-	fmul.d	$fa2, $fa2, $fa3
-	vreplvei.d	$vr2, $vr2, 0
-	vfrintrm.d	$vr2, $vr2
 	fld.d	$fa3, $a0, 56
-	ld.w	$a2, $a0, 4
-	ftintrz.w.d	$fa2, $fa2
-	movfr2gr.s	$a4, $fa2
-	fcmp.clt.d	$fcc0, $fa1, $fa3
-	xor	$a5, $a2, $a4
-	sltui	$a5, $a5, 1
-	addi.w	$a6, $a2, -1
-	masknez	$a4, $a4, $a5
-	maskeqz	$a5, $a6, $a5
-	or	$a4, $a5, $a4
+	vreplvei.d	$vr4, $vr0, 0
+	fld.d	$fa5, $a0, 64
+	fcmp.clt.d	$fcc1, $fa4, $fa3
+	vfsub.d	$vr2, $vr0, $vr2
+	vreplvei.d	$vr0, $vr0, 1
+	fcmp.clt.d	$fcc0, $fa0, $fa5
+	vfmul.d	$vr0, $vr2, $vr1
+	vfrintrm.d	$vr0, $vr0
+	ld.d	$a2, $a0, 4
+	xvftintrz.l.d	$xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 238
+	xvpickev.w	$xr0, $xr1, $xr0
+	vinsgr2vr.d	$vr1, $a2, 0
+	vpickve2gr.w	$a2, $vr1, 0
+	addi.w	$a3, $a2, -1
+	vseq.w	$vr2, $vr1, $vr0
+	vshuf4i.w	$vr3, $vr2, 16
+	vpickve2gr.d	$a4, $vr2, 0
+	andi	$a4, $a4, 1
+	vpickve2gr.w	$a5, $vr0, 0
+	masknez	$a5, $a5, $a4
+	maskeqz	$a3, $a3, $a4
+	or	$a3, $a3, $a5
+	movcf2gr	$a4, $fcc1
+	maskeqz	$a3, $a3, $a4
+	masknez	$a2, $a2, $a4
+	or	$a2, $a3, $a2
+	vpickve2gr.w	$a3, $vr1, 1
+	addi.w	$a4, $a3, -1
+	vpickve2gr.d	$a5, $vr3, 1
+	andi	$a5, $a5, 1
+	vpickve2gr.w	$a6, $vr0, 1
+	masknez	$a6, $a6, $a5
+	maskeqz	$a4, $a4, $a5
+	or	$a4, $a4, $a6
 	movcf2gr	$a5, $fcc0
 	maskeqz	$a4, $a4, $a5
-	fld.d	$fa1, $a0, 64
-	ld.w	$a6, $a0, 8
-	masknez	$a2, $a2, $a5
-	or	$a2, $a4, $a2
-	fcmp.clt.d	$fcc0, $fa0, $fa1
-	xor	$a4, $a6, $a3
-	sltui	$a4, $a4, 1
-	addi.w	$a5, $a6, -1
-	masknez	$a3, $a3, $a4
-	maskeqz	$a4, $a5, $a4
+	masknez	$a3, $a3, $a5
 	or	$a3, $a4, $a3
-	movcf2gr	$a4, $fcc0
-	maskeqz	$a3, $a3, $a4
-	masknez	$a4, $a6, $a4
-	or	$a3, $a3, $a4
 	pcaddu18i	$t8, %call36(getBoxFromTuple)
 	jr	$t8
 .Lfunc_end5:
@@ -806,32 +805,37 @@ updateLinkCells:                        # @updateLinkCells
 .LBB7_14:                               # %getBoxFromCoord.exit
                                         #   in Loop: Header=BB7_11 Depth=2
 	add.d	$t4, $t3, $t0
-	fld.d	$fa0, $t4, 8
-	fld.d	$fa1, $a0, 32
-	fld.d	$fa3, $a0, 104
-	fld.d	$fa2, $t4, 16
-	fsub.d	$fa1, $fa0, $fa1
-	fmul.d	$fa1, $fa1, $fa3
-	vreplvei.d	$vr1, $vr1, 0
-	vfrintrm.d	$vr3, $vr1
-	fld.d	$fa1, $a0, 56
-	ld.w	$t7, $a0, 4
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$t8, $fa3
-	fcmp.cule.d	$fcc0, $fa1, $fa0
-	xor	$fp, $t7, $t8
-	sltui	$fp, $fp, 1
-	addi.w	$s0, $t7, -1
-	masknez	$t8, $t8, $fp
-	maskeqz	$fp, $s0, $fp
-	or	$fp, $fp, $t8
-	movcf2gr	$s0, $fcc0
-	fld.d	$fa3, $a0, 64
-	masknez	$s1, $fp, $s0
-	ld.w	$t8, $a0, 8
-	maskeqz	$s0, $t7, $s0
-	fcmp.clt.d	$fcc0, $fa2, $fa3
-	or	$s0, $s0, $s1
+	vld	$vr2, $t4, 8
+	vld	$vr1, $a0, 32
+	fld.d	$fa0, $a0, 56
+	vld	$vr3, $a0, 104
+	vfsub.d	$vr4, $vr2, $vr1
+	vreplvei.d	$vr1, $vr2, 0
+	fcmp.cule.d	$fcc0, $fa0, $fa1
+	fld.d	$fa5, $a0, 64
+	vreplvei.d	$vr6, $vr2, 1
+	vfmul.d	$vr2, $vr4, $vr3
+	vfrintrm.d	$vr2, $vr2
+	ld.d	$t7, $a0, 4
+	xvftintrz.l.d	$xr2, $xr2
+	xvpermi.d	$xr3, $xr2, 238
+	xvpickev.w	$xr2, $xr3, $xr2
+	vinsgr2vr.d	$vr4, $t7, 0
+	vpickve2gr.w	$t7, $vr4, 0
+	addi.w	$t8, $t7, -1
+	vseq.w	$vr3, $vr4, $vr2
+	vpickve2gr.d	$fp, $vr3, 0
+	andi	$fp, $fp, 1
+	vpickve2gr.w	$s0, $vr2, 0
+	masknez	$s0, $s0, $fp
+	maskeqz	$t8, $t8, $fp
+	or	$fp, $t8, $s0
+	movcf2gr	$t8, $fcc0
+	masknez	$s0, $fp, $t8
+	maskeqz	$t8, $t7, $t8
+	or	$s0, $t8, $s0
+	fcmp.clt.d	$fcc0, $fa6, $fa5
+	vpickve2gr.w	$t8, $vr4, 1
 	bcnez	$fcc0, .LBB7_16
 # %bb.15:                               #   in Loop: Header=BB7_11 Depth=2
 	slli.d	$fp, $t8, 1
@@ -845,24 +849,18 @@ updateLinkCells:                        # @updateLinkCells
 	b	.LBB7_25
 	.p2align	4, , 16
 .LBB7_16:                               #   in Loop: Header=BB7_11 Depth=2
-	fld.d	$fa3, $a0, 40
-	fld.d	$fa4, $a0, 112
-	fsub.d	$fa2, $fa2, $fa3
-	fmul.d	$fa2, $fa2, $fa4
-	vreplvei.d	$vr2, $vr2, 0
-	vfrintrm.d	$vr2, $vr2
-	ftintrz.w.d	$fa2, $fa2
-	movfr2gr.s	$s1, $fa2
-	xor	$s2, $t8, $s1
-	sltui	$s2, $s2, 1
-	addi.w	$s3, $t8, -1
-	masknez	$s1, $s1, $s2
-	maskeqz	$s2, $s3, $s2
-	or	$s1, $s2, $s1
+	vshuf4i.w	$vr3, $vr3, 16
+	addi.w	$s1, $t8, -1
+	vpickve2gr.d	$s2, $vr3, 1
+	andi	$s2, $s2, 1
+	vpickve2gr.w	$s3, $vr2, 1
+	masknez	$s3, $s3, $s2
+	maskeqz	$s1, $s1, $s2
+	or	$s1, $s1, $s3
 	addi.w	$s2, $zero, -1
 	beq	$s1, $s2, .LBB7_19
 # %bb.17:                               #   in Loop: Header=BB7_11 Depth=2
-	fcmp.clt.d	$fcc0, $fa0, $fa1
+	fcmp.clt.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB7_20
 # %bb.18:                               #   in Loop: Header=BB7_11 Depth=2
 	mul.d	$t7, $t8, $t7

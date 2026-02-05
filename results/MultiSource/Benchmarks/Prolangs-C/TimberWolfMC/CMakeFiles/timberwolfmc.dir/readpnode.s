@@ -5,62 +5,62 @@
 	.type	readpnode,@function
 readpnode:                              # @readpnode
 # %bb.0:
-	addi.d	$sp, $sp, -1248
-	st.d	$ra, $sp, 1240                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1232                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1224                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1216                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1208                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1200                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1192                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1184                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1176                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1168                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1160                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1264
+	st.d	$ra, $sp, 1256                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1248                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1240                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1232                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1224                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1216                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1208                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1200                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1192                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1184                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1176                  # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(maxpnode)
-	ld.d	$s8, $a0, %got_pc_lo12(maxpnode)
-	st.w	$zero, $s8, 0
+	ld.d	$s5, $a0, %got_pc_lo12(maxpnode)
+	st.w	$zero, $s5, 0
 	pcalau12i	$a0, %got_pc_hi20(numpins)
 	ld.d	$s0, $a0, %got_pc_lo12(numpins)
 	st.w	$zero, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ori	$s6, $zero, 1
-	move	$s7, $zero
-	move	$s3, $zero
+	move	$s4, $zero
+	move	$s2, $zero
 	bne	$a0, $s6, .LBB0_18
 # %bb.1:                                # %.lr.ph.preheader
 	lu12i.w	$a0, 1862
-	ori	$s2, $a0, 1390
+	ori	$s7, $a0, 1390
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s1, $a0, %pc_lo12(.L.str)
 	lu12i.w	$a0, 1766
 	ori	$a0, $a0, 2416
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.8)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	lu12i.w	$a0, 415302
+	ori	$a0, $a0, 3950
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.13)
-	addi.d	$s4, $a0, %pc_lo12(.L.str.13)
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	lu12i.w	$a0, 7
+	ori	$s8, $a0, 1121
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
-	addi.d	$s5, $a0, %pc_lo12(.L.str.14)
-	pcalau12i	$a0, %pc_hi20(.L.str.16)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	move	$s3, $zero
-	move	$s7, $zero
+	addi.d	$s3, $a0, %pc_lo12(.L.str.14)
+	move	$s2, $zero
+	move	$s4, $zero
+	lu12i.w	$a0, 431959
+	ori	$a0, $a0, 357
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
@@ -68,99 +68,100 @@ readpnode:                              # @readpnode
 	bne	$a0, $s6, .LBB0_18
 .LBB0_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $sp, 136
-	beq	$a0, $s2, .LBB0_14
+	ld.w	$a0, $sp, 152
+	beq	$a0, $s7, .LBB0_14
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.w	$a0, $sp, 136
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.w	$a0, $sp, 152
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_6
 # %bb.5:                                #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a0, $sp, 136
-	ori	$a2, $zero, 6
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 152
+	ld.hu	$a1, $sp, 156
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 118
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_112
 .LBB0_6:                                #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$a0, $s0, 0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 0
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_111
 # %bb.7:                                #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_110
 # %bb.8:                                #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a0, $sp, 136
-	ori	$a2, $zero, 6
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 152
+	ld.hu	$a1, $sp, 156
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 115
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_107
 # %bb.9:                                #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a2, $sp, 132
-	addi.d	$a3, $sp, 128
+	addi.d	$a2, $sp, 148
+	addi.d	$a3, $sp, 144
 	move	$a0, $fp
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB0_108
 # %bb.10:                               #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_107
 # %bb.11:                               #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a0, $sp, 136
-	ori	$a2, $zero, 3
-	move	$a1, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.hu	$a0, $sp, 152
+	ld.bu	$a1, $sp, 154
+	xor	$a0, $a0, $s8
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_107
 # %bb.12:                               #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a2, $sp, 124
+	addi.d	$a2, $sp, 140
 	move	$a0, $fp
-	move	$a1, $s5
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_109
 # %bb.13:                               #   in Loop: Header=BB0_3 Depth=1
-	addi.w	$s3, $s3, 1
+	addi.w	$s2, $s2, 1
 	b	.LBB0_2
 	.p2align	4, , 16
 .LBB0_14:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.w	$a0, $s8, 0
-	bge	$a0, $s3, .LBB0_16
+	ld.w	$a0, $s5, 0
+	bge	$a0, $s2, .LBB0_16
 # %bb.15:                               #   in Loop: Header=BB0_3 Depth=1
-	st.w	$s3, $s8, 0
+	st.w	$s2, $s5, 0
 .LBB0_16:                               #   in Loop: Header=BB0_3 Depth=1
-	addi.w	$s7, $s7, 1
-	addi.d	$a2, $sp, 136
+	addi.w	$s4, $s4, 1
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_113
 # %bb.17:                               #   in Loop: Header=BB0_3 Depth=1
-	move	$s3, $zero
+	move	$s2, $zero
 	b	.LBB0_2
 .LBB0_18:                               # %._crit_edge
-	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
-	ld.w	$a0, $s8, 0
-	bge	$a0, $s3, .LBB0_20
+	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	ld.w	$a0, $s5, 0
+	bge	$a0, $s2, .LBB0_20
 # %bb.19:
-	st.w	$s3, $s8, 0
+	st.w	$s2, $s5, 0
 .LBB0_20:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(rewind)
@@ -171,15 +172,15 @@ readpnode:                              # @readpnode
 	pcalau12i	$a1, %got_pc_hi20(numnodes)
 	ld.d	$s1, $a1, %got_pc_lo12(numnodes)
 	ld.w	$a1, $s1, 0
-	ld.w	$a2, $s8, 0
+	ld.w	$a2, $s5, 0
 	add.d	$a1, $a1, $a2
 	addi.w	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	ld.w	$s1, $s1, 0
-	ld.w	$s3, $s8, 0
+	ld.w	$s3, $s5, 0
 	st.d	$a0, $s0, 0
 	add.w	$s0, $s3, $s1
 	blez	$s3, .LBB0_22
@@ -199,8 +200,8 @@ readpnode:                              # @readpnode
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB0_22:                               # %._crit_edge325
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -210,7 +211,7 @@ readpnode:                              # @readpnode
 	st.d	$s2, $a0, 0
 	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
 	addi.w	$a0, $s3, 1
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$s0, $a0, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(malloc)
@@ -224,16 +225,16 @@ readpnode:                              # @readpnode
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s2, 24
-	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s2, 32
 	pcalau12i	$a0, %got_pc_hi20(largestNet)
 	ld.d	$a0, $a0, %got_pc_lo12(largestNet)
-	st.w	$s7, $a0, 0
-	addi.w	$a0, $s7, 1
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.w	$s4, $a0, 0
+	addi.w	$a0, $s4, 1
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	alsl.d	$a0, $a0, $a0, 1
 	slli.d	$a0, $a0, 3
 	pcaddu18i	$ra, %call36(malloc)
@@ -245,27 +246,27 @@ readpnode:                              # @readpnode
 	pcalau12i	$a0, %got_pc_hi20(MAXPATHS)
 	ld.d	$a0, $a0, %got_pc_lo12(MAXPATHS)
 	ld.w	$s8, $a0, 0
-	st.d	$s7, $sp, 104                   # 8-byte Folded Spill
-	blez	$s7, .LBB0_28
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	blez	$s4, .LBB0_28
 # %bb.23:                               # %.lr.ph336
 	addi.w	$a0, $s8, 1
 	slli.d	$s3, $a0, 3
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	bstrpick.d	$s6, $a1, 31, 0
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	bstrpick.d	$s7, $a1, 31, 0
 	bstrpick.d	$a0, $a0, 31, 0
-	addi.d	$s7, $a0, -1
+	addi.d	$s4, $a0, -1
 	ori	$s1, $zero, 1
-	ori	$s4, $zero, 1
+	ori	$s5, $zero, 1
 	b	.LBB0_25
 	.p2align	4, , 16
 .LBB0_24:                               # %._crit_edge332
                                         #   in Loop: Header=BB0_25 Depth=1
-	addi.d	$s4, $s4, 1
-	beq	$s4, $s6, .LBB0_28
+	addi.d	$s5, $s5, 1
+	beq	$s5, $s7, .LBB0_28
 .LBB0_25:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_27 Depth 2
-	slli.d	$a0, $s4, 4
-	alsl.d	$s0, $s4, $a0, 3
+	slli.d	$a0, $s5, 4
+	alsl.d	$s0, $s5, $a0, 3
 	add.d	$a0, $s2, $s0
 	st.w	$s1, $a0, 12
 	move	$a0, $s3
@@ -276,7 +277,7 @@ readpnode:                              # @readpnode
 # %bb.26:                               # %.lr.ph331.preheader
                                         #   in Loop: Header=BB0_25 Depth=1
 	addi.d	$s0, $a0, 8
-	move	$s5, $s7
+	move	$s6, $s4
 	.p2align	4, , 16
 .LBB0_27:                               # %.lr.ph331
                                         #   Parent Loop BB0_25 Depth=1
@@ -287,9 +288,9 @@ readpnode:                              # @readpnode
 	st.d	$a0, $s0, 0
 	st.d	$zero, $a0, 0
 	st.d	$zero, $a0, 16
-	addi.d	$s5, $s5, -1
+	addi.d	$s6, $s6, -1
 	addi.d	$s0, $s0, 8
-	bnez	$s5, .LBB0_27
+	bnez	$s6, .LBB0_27
 	b	.LBB0_24
 .LBB0_28:                               # %._crit_edge337
 	slli.w	$s3, $s8, 1
@@ -300,11 +301,11 @@ readpnode:                              # @readpnode
 	pcalau12i	$a1, %got_pc_hi20(savePaths)
 	ld.d	$a1, $a1, %got_pc_lo12(savePaths)
 	st.d	$a0, $a1, 0
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	alsl.w	$s6, $s4, $s4, 1
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	alsl.w	$s7, $s6, $s6, 1
 	blez	$s8, .LBB0_31
 # %bb.29:                               # %.lr.ph341
-	slli.d	$a1, $s6, 1
+	slli.d	$a1, $s7, 1
 	addi.d	$s2, $a1, 2
 	ori	$a1, $zero, 1
 	slt	$a2, $a1, $s3
@@ -322,7 +323,7 @@ readpnode:                              # @readpnode
 	addi.d	$s1, $s1, 8
 	bnez	$s0, .LBB0_30
 .LBB0_31:                               # %._crit_edge342
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$s0, $a0, 0
 	slli.d	$s2, $s0, 3
 	addi.d	$a0, $s2, 8
@@ -330,9 +331,9 @@ readpnode:                              # @readpnode
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(pnameArray)
 	ld.d	$a1, $a1, %got_pc_lo12(pnameArray)
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a0, $a1, 0
-	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	blez	$s0, .LBB0_33
 # %bb.32:                               # %.lr.ph346.preheader
 	addi.d	$a0, $a0, 8
@@ -341,13 +342,13 @@ readpnode:                              # @readpnode
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB0_33:                               # %._crit_edge347
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
 	slli.d	$a0, $s0, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(nnameArray)
 	ld.d	$a1, $a1, %got_pc_lo12(nnameArray)
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a0, $a1, 0
 	slli.d	$s2, $s0, 2
 	blez	$s1, .LBB0_35
@@ -377,22 +378,22 @@ readpnode:                              # @readpnode
 	ld.d	$a1, $a1, %got_pc_lo12(pinOffset)
 	st.d	$a0, $a1, 0
 .LBB0_36:                               # %._crit_edge357
-	slli.d	$a0, $s6, 1
+	slli.d	$a0, $s7, 1
 	addi.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(segList)
 	ld.d	$a1, $a1, %got_pc_lo12(segList)
 	st.d	$a0, $a1, 0
-	ld.d	$s2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(sourceList)
 	ld.d	$a1, $a1, %got_pc_lo12(sourceList)
 	st.d	$a0, $a1, 0
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	add.w	$a0, $a0, $s1
 	slli.d	$s0, $a0, 1
 	move	$a0, $s0
@@ -430,9 +431,8 @@ readpnode:                              # @readpnode
 # %bb.37:                               # %.lr.ph366
 	addi.w	$a1, $s2, 2
 	slli.d	$s0, $a1, 2
-	move	$a1, $s4
 	addi.w	$s4, $s2, 1
-	addi.d	$a1, $a1, 2
+	addi.d	$a1, $s6, 2
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$s1, $a1, 2
 	bstrpick.d	$a1, $s5, 31, 0
@@ -501,12 +501,11 @@ readpnode:                              # @readpnode
 	pcalau12i	$s8, %pc_hi20(pnodeAlength)
 	st.w	$zero, $s8, %pc_lo12(pnodeAlength)
 	pcalau12i	$a0, %got_pc_hi20(pinlist)
-	ld.d	$a0, $a0, %got_pc_lo12(pinlist)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$zero, $a0, 0
+	ld.d	$s5, $a0, %got_pc_lo12(pinlist)
+	st.d	$zero, $s5, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
@@ -515,31 +514,36 @@ readpnode:                              # @readpnode
 # %bb.46:                               # %.lr.ph405.preheader
 	lu12i.w	$a0, 1862
 	ori	$a0, $a0, 1390
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	lu12i.w	$a0, -209716
 	ori	$a0, $a0, 3277
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a0, 104857
 	ori	$a0, $a0, 2457
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(fpo)
 	ld.d	$a0, $a0, %got_pc_lo12(fpo)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(pnodeArray)
 	ld.d	$s2, $a0, %got_pc_lo12(pnodeArray)
 	pcalau12i	$a0, %got_pc_hi20(netSegArray)
 	ld.d	$s6, $a0, %got_pc_lo12(netSegArray)
-	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	move	$s3, $zero
 	move	$s1, $zero
 	move	$s0, $zero
 	lu12i.w	$a0, 1766
 	ori	$a0, $a0, 2416
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-                                        # implicit-def: $r28
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	lu12i.w	$a0, 431959
+	ori	$a0, $a0, 357
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+                                        # implicit-def: $r30
+	st.d	$s5, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB0_49
 	.p2align	4, , 16
 .LBB0_47:                               #   in Loop: Header=BB0_49 Depth=1
@@ -547,7 +551,7 @@ readpnode:                              # @readpnode
 .LBB0_48:                               #   in Loop: Header=BB0_49 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
@@ -561,67 +565,74 @@ readpnode:                              # @readpnode
                                         #     Child Loop BB0_75 Depth 2
                                         #     Child Loop BB0_78 Depth 2
                                         #     Child Loop BB0_81 Depth 2
-	ld.w	$a0, $sp, 136
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.w	$a0, $sp, 152
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_53
 # %bb.50:                               #   in Loop: Header=BB0_49 Depth=1
 	move	$s4, $s3
-	ld.w	$a0, $sp, 136
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.w	$a0, $sp, 152
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_57
 # %bb.51:                               #   in Loop: Header=BB0_49 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.16)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
-	addi.d	$a0, $sp, 136
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 152
+	ld.hu	$a1, $sp, 156
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 118
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_47
 # %bb.52:                               #   in Loop: Header=BB0_49 Depth=1
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	move	$s6, $s0
+	move	$s0, $s5
+	move	$s5, $s7
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
 	addi.w	$s7, $s7, 1
 	addi.w	$s1, $s1, 1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s3, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 136
+	addi.d	$a0, $sp, 152
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
 	slli.d	$a2, $s7, 3
+	move	$s7, $s5
+	move	$s5, $s0
+	move	$s0, $s6
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
 	stx.d	$a0, $a1, $a2
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 152
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a2, $sp, 132
-	addi.d	$a3, $sp, 128
+	addi.d	$a2, $sp, 148
+	addi.d	$a3, $sp, 144
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
-	addi.d	$a2, $sp, 124
+	addi.d	$a2, $sp, 140
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
@@ -634,9 +645,9 @@ readpnode:                              # @readpnode
 	st.d	$zero, $a0, 16
 	addi.w	$a0, $zero, -1
 	lu32i.d	$a0, 0
-	ld.w	$a1, $sp, 132
-	ld.w	$a2, $sp, 128
-	ld.w	$a3, $sp, 124
+	ld.w	$a1, $sp, 148
+	ld.w	$a2, $sp, 144
+	ld.w	$a3, $sp, 140
 	st.w	$a0, $s3, 0
 	st.w	$a1, $s3, 4
 	st.w	$a2, $s3, 8
@@ -644,14 +655,13 @@ readpnode:                              # @readpnode
 	b	.LBB0_48
 	.p2align	4, , 16
 .LBB0_53:                               #   in Loop: Header=BB0_49 Depth=1
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
 	blez	$s0, .LBB0_80
 # %bb.54:                               #   in Loop: Header=BB0_49 Depth=1
-	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	mul.d	$a0, $s0, $a0
 	rotri.w	$a0, $a0, 1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	bgeu	$a1, $a0, .LBB0_59
 # %bb.55:                               #   in Loop: Header=BB0_49 Depth=1
 	ld.w	$a0, $s8, %pc_lo12(pnodeAlength)
@@ -661,49 +671,52 @@ readpnode:                              # @readpnode
 	b	.LBB0_73
 	.p2align	4, , 16
 .LBB0_57:                               #   in Loop: Header=BB0_49 Depth=1
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	move	$s0, $s5
+	move	$s5, $s7
+	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
 	addi.w	$s7, $s7, 1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s3, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 136
+	addi.d	$a0, $sp, 152
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
 	slli.d	$a2, $s7, 3
 	stx.d	$a0, $a1, $a2
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 152
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a2, $sp, 132
-	addi.d	$a3, $sp, 128
+	addi.d	$a2, $sp, 148
+	addi.d	$a3, $sp, 144
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
-	addi.d	$a2, $sp, 124
+	addi.d	$a2, $sp, 140
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
@@ -716,9 +729,9 @@ readpnode:                              # @readpnode
 	st.d	$s3, $s4, 16
 	b	.LBB0_84
 .LBB0_59:                               #   in Loop: Header=BB0_49 Depth=1
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $s3, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
@@ -804,7 +817,8 @@ readpnode:                              # @readpnode
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB0_73:                               #   in Loop: Header=BB0_49 Depth=1
-	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	move	$s0, $s7
 	st.w	$s1, $s8, %pc_lo12(pnodeAlength)
 	addi.w	$s4, $s1, 1
 	slli.d	$a0, $s4, 4
@@ -815,7 +829,7 @@ readpnode:                              # @readpnode
 	blez	$s1, .LBB0_76
 # %bb.74:                               # %.lr.ph388
                                         #   in Loop: Header=BB0_49 Depth=1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	add.w	$a1, $s4, $a1
 	slli.d	$a2, $a1, 3
@@ -841,12 +855,13 @@ readpnode:                              # @readpnode
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s6, 0
-	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
+	move	$s7, $s0
+	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
 	blez	$s1, .LBB0_79
 # %bb.77:                               # %.lr.ph392
                                         #   in Loop: Header=BB0_49 Depth=1
 	move	$s3, $a0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	add.w	$a0, $s4, $a0
 	slli.d	$s4, $a0, 1
@@ -863,40 +878,40 @@ readpnode:                              # @readpnode
 	bnez	$s5, .LBB0_78
 .LBB0_79:                               # %.loopexit281
                                         #   in Loop: Header=BB0_49 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	addi.w	$a1, $a0, 0
+	addi.w	$a1, $s7, 0
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(procesnet)
 	jirl	$ra, $ra, 0
+	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 .LBB0_80:                               #   in Loop: Header=BB0_49 Depth=1
 	addi.w	$s0, $s0, 1
 	pcalau12i	$a0, %got_pc_hi20(pinOffset)
 	ld.d	$a0, $a0, %got_pc_lo12(pinOffset)
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $s0, 2
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	stx.w	$a2, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 136
+	addi.d	$a0, $sp, 152
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	slli.d	$a2, $s0, 3
 	stx.d	$a0, $a1, $a2
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 152
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	beqz	$a0, .LBB0_82
 	.p2align	4, , 16
 .LBB0_81:                               # %.lr.ph396
@@ -909,34 +924,34 @@ readpnode:                              # @readpnode
 	bnez	$s1, .LBB0_81
 .LBB0_82:                               # %._crit_edge397
                                         #   in Loop: Header=BB0_49 Depth=1
-	move	$s5, $zero
+	move	$s7, $zero
 	move	$s1, $zero
 	move	$s3, $zero
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	st.d	$zero, $a0, 0
+	st.d	$zero, $s5, 0
 	b	.LBB0_48
 .LBB0_83:                               #   in Loop: Header=BB0_49 Depth=1
 	move	$s4, $zero
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	st.d	$s3, $a0, 0
+	st.d	$s3, $s0, 0
 .LBB0_84:                               #   in Loop: Header=BB0_49 Depth=1
 	addi.w	$s1, $s1, 1
-	addi.d	$s5, $s5, 1
+	addi.d	$s7, $s5, 1
 	st.d	$s4, $s3, 24
 	st.d	$zero, $s3, 16
-	ld.w	$a0, $sp, 132
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 124
+	ld.w	$a0, $sp, 148
+	ld.w	$a1, $sp, 144
+	ld.w	$a2, $sp, 140
 	ori	$a3, $zero, 1
 	st.w	$a3, $s3, 0
 	st.w	$a0, $s3, 4
 	st.w	$a1, $s3, 8
 	st.w	$a2, $s3, 12
+	move	$s5, $s0
+	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB0_48
 .LBB0_85:
 	move	$s0, $zero
 	move	$s1, $zero
-                                        # implicit-def: $r28
+                                        # implicit-def: $r30
 .LBB0_86:                               # %._crit_edge406
 	ld.w	$a0, $s8, %pc_lo12(pnodeAlength)
 	blt	$a0, $s1, .LBB0_88
@@ -1027,7 +1042,7 @@ readpnode:                              # @readpnode
 	st.d	$a0, $a1, 0
 	blez	$s1, .LBB0_103
 # %bb.101:                              # %.lr.ph424
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	add.w	$a1, $s2, $a1
 	slli.d	$a2, $a1, 3
@@ -1056,7 +1071,7 @@ readpnode:                              # @readpnode
 	st.d	$fp, $a0, 0
 	blez	$s1, .LBB0_106
 # %bb.104:                              # %.lr.ph428
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	add.w	$a0, $s2, $a0
 	slli.d	$s2, $a0, 1
@@ -1071,23 +1086,23 @@ readpnode:                              # @readpnode
 	addi.d	$fp, $fp, 8
 	bnez	$s3, .LBB0_105
 .LBB0_106:                              # %.loopexit
-	addi.w	$a1, $s5, 0
+	addi.w	$a1, $s7, 0
 	move	$a0, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(procesnet)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 1160                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1168                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1176                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1184                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1192                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1200                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1208                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1216                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1224                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1232                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1240                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1248
+	ld.d	$s8, $sp, 1176                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1184                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1192                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1200                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1208                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1216                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1224                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1232                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1240                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1248                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1256                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1264
 	ret
 .LBB0_107:
 	pcalau12i	$a0, %got_pc_hi20(fpo)
@@ -1141,7 +1156,7 @@ readpnode:                              # @readpnode
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.17)
-	addi.d	$a2, $sp, 136
+	addi.d	$a2, $sp, 152
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	b	.LBB0_116
@@ -1169,7 +1184,7 @@ readpnode:                              # @readpnode
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
-	move	$a2, $s7
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero

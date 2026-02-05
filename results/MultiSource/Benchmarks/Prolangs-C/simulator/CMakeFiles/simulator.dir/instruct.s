@@ -125,28 +125,24 @@ AND_P:                                  # @AND_P
 	xvld	$xr0, $sp, 112
 	xvld	$xr1, $sp, 16
 	xvseqi.w	$xr0, $xr0, 0
-	xvrepli.b	$xr2, -1
-	xvxor.v	$xr0, $xr0, $xr2
 	xvseqi.w	$xr1, $xr1, 0
-	xvandn.v	$xr0, $xr1, $xr0
+	xvor.v	$xr0, $xr1, $xr0
 	xvrepli.w	$xr1, 1
-	xvld	$xr3, $sp, 144
-	xvand.v	$xr0, $xr0, $xr1
-	xvld	$xr4, $sp, 48
+	xvld	$xr2, $sp, 144
+	xvld	$xr3, $sp, 48
+	xvandn.v	$xr0, $xr0, $xr1
 	xvst	$xr0, $sp, 112
-	xvseqi.w	$xr0, $xr3, 0
-	xvxor.v	$xr0, $xr0, $xr2
-	xvseqi.w	$xr3, $xr4, 0
-	xvandn.v	$xr0, $xr3, $xr0
-	xvld	$xr3, $sp, 176
-	xvand.v	$xr0, $xr0, $xr1
-	xvld	$xr4, $sp, 80
+	xvseqi.w	$xr0, $xr2, 0
+	xvseqi.w	$xr2, $xr3, 0
+	xvor.v	$xr0, $xr2, $xr0
+	xvld	$xr2, $sp, 176
+	xvld	$xr3, $sp, 80
+	xvandn.v	$xr0, $xr0, $xr1
 	xvst	$xr0, $sp, 144
-	xvseqi.w	$xr0, $xr3, 0
-	xvxor.v	$xr0, $xr0, $xr2
-	xvseqi.w	$xr2, $xr4, 0
-	xvandn.v	$xr0, $xr2, $xr0
-	xvand.v	$xr0, $xr0, $xr1
+	xvseqi.w	$xr0, $xr2, 0
+	xvseqi.w	$xr2, $xr3, 0
+	xvor.v	$xr0, $xr2, $xr0
+	xvandn.v	$xr0, $xr0, $xr1
 	xvst	$xr0, $sp, 176
 	addi.d	$a0, $sp, 112
 	ori	$a1, $zero, 24
@@ -1489,7 +1485,7 @@ STA_P:                                  # @STA_P
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
+	move	$s0, $a0
 	ori	$a1, $zero, 3
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(FORMAT3_4)
@@ -1502,7 +1498,7 @@ STA_P:                                  # @STA_P
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(SIGNAL_INTERUPT)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB21_5
+	beqz	$s0, .LBB21_5
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.Lstr.20)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.20)
@@ -1516,7 +1512,7 @@ STA_P:                                  # @STA_P
 	pcaddu18i	$t8, %call36(puts)
 	jr	$t8
 .LBB21_3:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(REGISTER)
 	ld.d	$s1, $a0, %got_pc_lo12(REGISTER)
 	ld.w	$a0, $s1, 0
@@ -1526,10 +1522,10 @@ STA_P:                                  # @STA_P
 	pcalau12i	$a1, %got_pc_hi20(MEMORY)
 	ld.d	$s2, $a1, %got_pc_lo12(MEMORY)
 	ld.d	$a1, $s2, 0
-	stx.b	$a0, $a1, $s0
+	stx.b	$a0, $a1, $fp
 	ld.d	$a0, $s2, 0
 	ld.w	$s3, $s1, 0
-	ldx.b	$a0, $a0, $s0
+	ldx.b	$a0, $a0, $fp
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	slli.d	$a0, $a0, 16
@@ -1538,7 +1534,7 @@ STA_P:                                  # @STA_P
 	ld.d	$a2, $s2, 0
 	add.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 8
-	addi.d	$a1, $s0, 1
+	addi.d	$a1, $fp, 1
 	stx.b	$a0, $a2, $a1
 	ld.d	$a0, $s2, 0
 	ld.b	$s3, $s1, 0
@@ -1546,9 +1542,9 @@ STA_P:                                  # @STA_P
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
-	add.d	$a0, $a0, $s0
+	add.d	$a0, $a0, $fp
 	st.b	$s3, $a0, 2
-	beqz	$fp, .LBB21_5
+	beqz	$s0, .LBB21_5
 # %bb.4:
 	ld.w	$a1, $s1, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -1561,7 +1557,7 @@ STA_P:                                  # @STA_P
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.1)
-	move	$a1, $s0
+	move	$a1, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1595,7 +1591,7 @@ STB_P:                                  # @STB_P
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
+	move	$s0, $a0
 	ori	$a1, $zero, 3
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(FORMAT3_4)
@@ -1608,7 +1604,7 @@ STB_P:                                  # @STB_P
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(SIGNAL_INTERUPT)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB22_5
+	beqz	$s0, .LBB22_5
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.Lstr.21)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.21)
@@ -1622,7 +1618,7 @@ STB_P:                                  # @STB_P
 	pcaddu18i	$t8, %call36(puts)
 	jr	$t8
 .LBB22_3:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(REGISTER)
 	ld.d	$s1, $a0, %got_pc_lo12(REGISTER)
 	ld.w	$a0, $s1, 12
@@ -1632,10 +1628,10 @@ STB_P:                                  # @STB_P
 	pcalau12i	$a1, %got_pc_hi20(MEMORY)
 	ld.d	$s2, $a1, %got_pc_lo12(MEMORY)
 	ld.d	$a1, $s2, 0
-	stx.b	$a0, $a1, $s0
+	stx.b	$a0, $a1, $fp
 	ld.d	$a0, $s2, 0
 	ld.w	$s3, $s1, 12
-	ldx.b	$a0, $a0, $s0
+	ldx.b	$a0, $a0, $fp
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	slli.d	$a0, $a0, 16
@@ -1644,7 +1640,7 @@ STB_P:                                  # @STB_P
 	ld.d	$a2, $s2, 0
 	add.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 8
-	addi.d	$a1, $s0, 1
+	addi.d	$a1, $fp, 1
 	stx.b	$a0, $a2, $a1
 	ld.d	$a0, $s2, 0
 	ld.b	$s3, $s1, 12
@@ -1652,9 +1648,9 @@ STB_P:                                  # @STB_P
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
-	add.d	$a0, $a0, $s0
+	add.d	$a0, $a0, $fp
 	st.b	$s3, $a0, 2
-	beqz	$fp, .LBB22_5
+	beqz	$s0, .LBB22_5
 # %bb.4:
 	ld.w	$a1, $s1, 12
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -1667,7 +1663,7 @@ STB_P:                                  # @STB_P
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.1)
-	move	$a1, $s0
+	move	$a1, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1873,7 +1869,7 @@ STL_P:                                  # @STL_P
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
+	move	$s0, $a0
 	ori	$a1, $zero, 3
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(FORMAT3_4)
@@ -1886,7 +1882,7 @@ STL_P:                                  # @STL_P
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(SIGNAL_INTERUPT)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB25_5
+	beqz	$s0, .LBB25_5
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.Lstr.24)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.24)
@@ -1900,7 +1896,7 @@ STL_P:                                  # @STL_P
 	pcaddu18i	$t8, %call36(puts)
 	jr	$t8
 .LBB25_3:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(REGISTER)
 	ld.d	$s1, $a0, %got_pc_lo12(REGISTER)
 	ld.w	$a0, $s1, 8
@@ -1910,10 +1906,10 @@ STL_P:                                  # @STL_P
 	pcalau12i	$a1, %got_pc_hi20(MEMORY)
 	ld.d	$s2, $a1, %got_pc_lo12(MEMORY)
 	ld.d	$a1, $s2, 0
-	stx.b	$a0, $a1, $s0
+	stx.b	$a0, $a1, $fp
 	ld.d	$a0, $s2, 0
 	ld.w	$s3, $s1, 8
-	ldx.b	$a0, $a0, $s0
+	ldx.b	$a0, $a0, $fp
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	slli.d	$a0, $a0, 16
@@ -1922,7 +1918,7 @@ STL_P:                                  # @STL_P
 	ld.d	$a2, $s2, 0
 	add.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 8
-	addi.d	$a1, $s0, 1
+	addi.d	$a1, $fp, 1
 	stx.b	$a0, $a2, $a1
 	ld.d	$a0, $s2, 0
 	ld.b	$s3, $s1, 8
@@ -1930,9 +1926,9 @@ STL_P:                                  # @STL_P
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
-	add.d	$a0, $a0, $s0
+	add.d	$a0, $a0, $fp
 	st.b	$s3, $a0, 2
-	beqz	$fp, .LBB25_5
+	beqz	$s0, .LBB25_5
 # %bb.4:
 	ld.w	$a1, $s1, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -1945,7 +1941,7 @@ STL_P:                                  # @STL_P
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.1)
-	move	$a1, $s0
+	move	$a1, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1979,7 +1975,7 @@ STS_P:                                  # @STS_P
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
+	move	$s0, $a0
 	ori	$a1, $zero, 3
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(FORMAT3_4)
@@ -1992,7 +1988,7 @@ STS_P:                                  # @STS_P
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(SIGNAL_INTERUPT)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB26_5
+	beqz	$s0, .LBB26_5
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.Lstr.25)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.25)
@@ -2006,7 +2002,7 @@ STS_P:                                  # @STS_P
 	pcaddu18i	$t8, %call36(puts)
 	jr	$t8
 .LBB26_3:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(REGISTER)
 	ld.d	$s1, $a0, %got_pc_lo12(REGISTER)
 	ld.w	$a0, $s1, 16
@@ -2016,10 +2012,10 @@ STS_P:                                  # @STS_P
 	pcalau12i	$a1, %got_pc_hi20(MEMORY)
 	ld.d	$s2, $a1, %got_pc_lo12(MEMORY)
 	ld.d	$a1, $s2, 0
-	stx.b	$a0, $a1, $s0
+	stx.b	$a0, $a1, $fp
 	ld.d	$a0, $s2, 0
 	ld.w	$s3, $s1, 16
-	ldx.b	$a0, $a0, $s0
+	ldx.b	$a0, $a0, $fp
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	slli.d	$a0, $a0, 16
@@ -2028,7 +2024,7 @@ STS_P:                                  # @STS_P
 	ld.d	$a2, $s2, 0
 	add.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 8
-	addi.d	$a1, $s0, 1
+	addi.d	$a1, $fp, 1
 	stx.b	$a0, $a2, $a1
 	ld.d	$a0, $s2, 0
 	ld.b	$s3, $s1, 16
@@ -2036,9 +2032,9 @@ STS_P:                                  # @STS_P
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
-	add.d	$a0, $a0, $s0
+	add.d	$a0, $a0, $fp
 	st.b	$s3, $a0, 2
-	beqz	$fp, .LBB26_5
+	beqz	$s0, .LBB26_5
 # %bb.4:
 	ld.w	$a1, $s1, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -2051,7 +2047,7 @@ STS_P:                                  # @STS_P
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.1)
-	move	$a1, $s0
+	move	$a1, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -2206,7 +2202,7 @@ STT_P:                                  # @STT_P
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
+	move	$s0, $a0
 	ori	$a1, $zero, 3
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(FORMAT3_4)
@@ -2219,7 +2215,7 @@ STT_P:                                  # @STT_P
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(SIGNAL_INTERUPT)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB28_5
+	beqz	$s0, .LBB28_5
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.Lstr.28)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.28)
@@ -2233,7 +2229,7 @@ STT_P:                                  # @STT_P
 	pcaddu18i	$t8, %call36(puts)
 	jr	$t8
 .LBB28_3:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(REGISTER)
 	ld.d	$s1, $a0, %got_pc_lo12(REGISTER)
 	ld.w	$a0, $s1, 20
@@ -2243,10 +2239,10 @@ STT_P:                                  # @STT_P
 	pcalau12i	$a1, %got_pc_hi20(MEMORY)
 	ld.d	$s2, $a1, %got_pc_lo12(MEMORY)
 	ld.d	$a1, $s2, 0
-	stx.b	$a0, $a1, $s0
+	stx.b	$a0, $a1, $fp
 	ld.d	$a0, $s2, 0
 	ld.w	$s3, $s1, 20
-	ldx.b	$a0, $a0, $s0
+	ldx.b	$a0, $a0, $fp
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	slli.d	$a0, $a0, 16
@@ -2255,7 +2251,7 @@ STT_P:                                  # @STT_P
 	ld.d	$a2, $s2, 0
 	add.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 8
-	addi.d	$a1, $s0, 1
+	addi.d	$a1, $fp, 1
 	stx.b	$a0, $a2, $a1
 	ld.d	$a0, $s2, 0
 	ld.b	$s3, $s1, 20
@@ -2263,9 +2259,9 @@ STT_P:                                  # @STT_P
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
-	add.d	$a0, $a0, $s0
+	add.d	$a0, $a0, $fp
 	st.b	$s3, $a0, 2
-	beqz	$fp, .LBB28_5
+	beqz	$s0, .LBB28_5
 # %bb.4:
 	ld.w	$a1, $s1, 20
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -2278,7 +2274,7 @@ STT_P:                                  # @STT_P
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.1)
-	move	$a1, $s0
+	move	$a1, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -2312,7 +2308,7 @@ STX_P:                                  # @STX_P
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
+	move	$s0, $a0
 	ori	$a1, $zero, 3
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(FORMAT3_4)
@@ -2325,7 +2321,7 @@ STX_P:                                  # @STX_P
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(SIGNAL_INTERUPT)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB29_5
+	beqz	$s0, .LBB29_5
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.Lstr.29)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.29)
@@ -2339,7 +2335,7 @@ STX_P:                                  # @STX_P
 	pcaddu18i	$t8, %call36(puts)
 	jr	$t8
 .LBB29_3:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(REGISTER)
 	ld.d	$s1, $a0, %got_pc_lo12(REGISTER)
 	ld.w	$a0, $s1, 4
@@ -2349,10 +2345,10 @@ STX_P:                                  # @STX_P
 	pcalau12i	$a1, %got_pc_hi20(MEMORY)
 	ld.d	$s2, $a1, %got_pc_lo12(MEMORY)
 	ld.d	$a1, $s2, 0
-	stx.b	$a0, $a1, $s0
+	stx.b	$a0, $a1, $fp
 	ld.d	$a0, $s2, 0
 	ld.w	$s3, $s1, 4
-	ldx.b	$a0, $a0, $s0
+	ldx.b	$a0, $a0, $fp
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	slli.d	$a0, $a0, 16
@@ -2361,7 +2357,7 @@ STX_P:                                  # @STX_P
 	ld.d	$a2, $s2, 0
 	add.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 8
-	addi.d	$a1, $s0, 1
+	addi.d	$a1, $fp, 1
 	stx.b	$a0, $a2, $a1
 	ld.d	$a0, $s2, 0
 	ld.b	$s3, $s1, 4
@@ -2369,9 +2365,9 @@ STX_P:                                  # @STX_P
 	pcaddu18i	$ra, %call36(INT)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
-	add.d	$a0, $a0, $s0
+	add.d	$a0, $a0, $fp
 	st.b	$s3, $a0, 2
-	beqz	$fp, .LBB29_5
+	beqz	$s0, .LBB29_5
 # %bb.4:
 	ld.w	$a1, $s1, 4
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
@@ -2384,7 +2380,7 @@ STX_P:                                  # @STX_P
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a1, %pc_lo12(.L.str.1)
-	move	$a1, $s0
+	move	$a1, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload

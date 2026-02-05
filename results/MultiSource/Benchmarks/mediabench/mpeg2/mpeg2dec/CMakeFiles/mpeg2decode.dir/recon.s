@@ -34,14 +34,14 @@ form_predictions:                       # @form_predictions
 	sub.w	$s6, $a7, $a0
 	andi	$a1, $a2, 8
 	pcalau12i	$a0, %got_pc_hi20(picture_coding_type)
-	ld.d	$s7, $a0, %got_pc_lo12(picture_coding_type)
-	ld.w	$a0, $s7, 0
+	ld.d	$s8, $a0, %got_pc_lo12(picture_coding_type)
+	ld.w	$a0, $s8, 0
 	bnez	$a1, .LBB0_3
 # %bb.1:
 	ori	$a2, $zero, 2
 	beq	$a0, $a2, .LBB0_3
 # %bb.2:
-	move	$s8, $s6
+	move	$s7, $s6
 	move	$s6, $s5
 	b	.LBB0_39
 .LBB0_3:
@@ -56,15 +56,15 @@ form_predictions:                       # @form_predictions
 # %bb.5:
 	beqz	$a1, .LBB0_16
 # %bb.6:
-	move	$s7, $a7
+	move	$s8, $a7
 	ori	$a0, $zero, 3
 	beq	$s3, $a0, .LBB0_31
 # %bb.7:
-	ori	$s8, $zero, 1
-	bne	$s3, $s8, .LBB0_30
+	ori	$s7, $zero, 1
+	bne	$s3, $s7, .LBB0_30
 # %bb.8:
-	ori	$s8, $zero, 1
-	blt	$s8, $s6, .LBB0_10
+	ori	$s7, $zero, 1
+	blt	$s7, $s6, .LBB0_10
 # %bb.9:
 	ld.w	$a1, $s2, 0
 	pcalau12i	$a0, %got_pc_hi20(Coded_Picture_Width)
@@ -89,7 +89,7 @@ form_predictions:                       # @form_predictions
 .LBB0_10:
 	ori	$a0, $zero, 5
 	ori	$s6, $zero, 1
-	blt	$a0, $s7, .LBB0_39
+	blt	$a0, $s8, .LBB0_39
 # %bb.11:
 	ld.w	$a1, $s2, 8
 	pcalau12i	$a0, %got_pc_hi20(Coded_Picture_Width)
@@ -107,7 +107,7 @@ form_predictions:                       # @form_predictions
 	ld.d	$a0, $a0, %got_pc_lo12(forward_reference_frame)
 	ori	$a2, $zero, 1
 	ori	$a5, $zero, 8
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB0_26
 .LBB0_12:
 	addi.d	$a2, $a2, -2
@@ -125,12 +125,12 @@ form_predictions:                       # @form_predictions
 .LBB0_15:
 	pcalau12i	$a0, %got_pc_hi20(forward_reference_frame)
 	ld.d	$a0, $a0, %got_pc_lo12(forward_reference_frame)
-	ori	$s8, $zero, 1
-	bne	$s3, $s8, .LBB0_21
+	ori	$s7, $zero, 1
+	bne	$s3, $s7, .LBB0_21
 	b	.LBB0_27
 .LBB0_16:
-	ori	$s8, $zero, 1
-	blt	$s8, $s6, .LBB0_18
+	ori	$s7, $zero, 1
+	blt	$s7, $s6, .LBB0_18
 # %bb.17:
 	pcalau12i	$a0, %got_pc_hi20(Coded_Picture_Width)
 	ld.d	$a0, $a0, %got_pc_lo12(Coded_Picture_Width)
@@ -171,13 +171,13 @@ form_predictions:                       # @form_predictions
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	ori	$a5, $zero, 8
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB0_29
 .LBB0_20:
 	pcalau12i	$a0, %got_pc_hi20(backward_reference_frame)
 	ld.d	$a0, $a0, %got_pc_lo12(backward_reference_frame)
-	ori	$s8, $zero, 1
-	beq	$s3, $s8, .LBB0_27
+	ori	$s7, $zero, 1
+	beq	$s3, $s7, .LBB0_27
 .LBB0_21:
 	beqz	$a1, .LBB0_27
 # %bb.22:
@@ -187,8 +187,8 @@ form_predictions:                       # @form_predictions
 	ori	$a1, $zero, 2
 	bne	$s3, $a1, .LBB0_30
 # %bb.24:
-	ori	$s8, $zero, 1
-	blt	$s8, $s6, .LBB0_38
+	ori	$s7, $zero, 1
+	blt	$s7, $s6, .LBB0_38
 # %bb.25:                               # %._crit_edge
 	ld.w	$a1, $s2, 0
 	pcalau12i	$a2, %got_pc_hi20(Coded_Picture_Width)
@@ -208,26 +208,26 @@ form_predictions:                       # @form_predictions
 	move	$a7, $s1
 	pcaddu18i	$ra, %call36(form_prediction)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s7, 0
+	ld.w	$a0, $s8, 0
 	ld.w	$a2, $fp, 0
 	ld.w	$a1, $s2, 8
 	addi.d	$a0, $a0, -2
 	sltui	$a0, $a0, 1
 	sltu	$a2, $zero, $a2
 	xor	$a3, $a1, $s5
-	sltui	$a3, $a3, 1
-	pcalau12i	$a4, %got_pc_hi20(backward_reference_frame)
-	ld.d	$a4, $a4, %got_pc_lo12(backward_reference_frame)
-	masknez	$a4, $a4, $a3
-	pcalau12i	$a5, %got_pc_hi20(forward_reference_frame)
-	ld.d	$a5, $a5, %got_pc_lo12(forward_reference_frame)
-	maskeqz	$a3, $a5, $a3
-	or	$a3, $a3, $a4
+	sltu	$a3, $zero, $a3
+	pcalau12i	$a4, %got_pc_hi20(forward_reference_frame)
+	ld.d	$a4, $a4, %got_pc_lo12(forward_reference_frame)
+	masknez	$a5, $a4, $a3
+	pcalau12i	$a6, %got_pc_hi20(backward_reference_frame)
+	ld.d	$a6, $a6, %got_pc_lo12(backward_reference_frame)
+	maskeqz	$a3, $a6, $a3
+	or	$a3, $a3, $a5
 	maskeqz	$a3, $a3, $a2
-	masknez	$a2, $a5, $a2
+	masknez	$a2, $a4, $a2
 	or	$a2, $a3, $a2
 	maskeqz	$a2, $a2, $a0
-	masknez	$a0, $a5, $a0
+	masknez	$a0, $a4, $a0
 	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a3, $a3, 0
 	ld.w	$a4, $s0, 16
@@ -245,7 +245,7 @@ form_predictions:                       # @form_predictions
 	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_37
 .LBB0_27:
-	blt	$s8, $s6, .LBB0_38
+	blt	$s7, $s6, .LBB0_38
 # %bb.28:
 	ld.w	$a1, $s2, 0
 	pcalau12i	$a2, %got_pc_hi20(Coded_Picture_Width)
@@ -277,8 +277,8 @@ form_predictions:                       # @form_predictions
 	move	$a1, $a6
 	pcaddu18i	$ra, %call36(Dual_Prime_Arithmetic)
 	jirl	$ra, $ra, 0
-	ori	$s8, $zero, 1
-	blt	$s8, $s6, .LBB0_33
+	ori	$s7, $zero, 1
+	blt	$s7, $s6, .LBB0_33
 # %bb.32:
 	pcalau12i	$a0, %got_pc_hi20(Coded_Picture_Width)
 	ld.d	$fp, $a0, %got_pc_lo12(Coded_Picture_Width)
@@ -323,7 +323,7 @@ form_predictions:                       # @form_predictions
 .LBB0_33:
 	ori	$a0, $zero, 5
 	ori	$s6, $zero, 1
-	blt	$a0, $s7, .LBB0_39
+	blt	$a0, $s8, .LBB0_39
 # %bb.34:
 	pcalau12i	$a0, %got_pc_hi20(Coded_Picture_Width)
 	ld.d	$fp, $a0, %got_pc_lo12(Coded_Picture_Width)
@@ -341,11 +341,11 @@ form_predictions:                       # @form_predictions
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	ori	$a5, $zero, 8
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	move	$a0, $s6
 	move	$a4, $a3
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	move	$a6, $s7
+	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
+	move	$a6, $s8
 	move	$a7, $s5
 	pcaddu18i	$ra, %call36(form_prediction)
 	jirl	$ra, $ra, 0
@@ -353,7 +353,7 @@ form_predictions:                       # @form_predictions
 	ld.w	$a1, $sp, 64
 	ld.w	$a2, $sp, 68
 	slli.w	$a3, $a0, 1
-	st.d	$s8, $sp, 16
+	st.d	$s7, $sp, 16
 	st.d	$a2, $sp, 8
 	ori	$a2, $zero, 1
 	ori	$a5, $zero, 8
@@ -361,7 +361,7 @@ form_predictions:                       # @form_predictions
 	move	$a0, $s6
 	move	$a1, $zero
 	move	$a4, $a3
-	move	$a6, $s7
+	move	$a6, $s8
 	move	$a7, $s5
 	b	.LBB0_37
 .LBB0_35:
@@ -371,11 +371,11 @@ form_predictions:                       # @form_predictions
 	ld.d	$a1, $a1, %got_pc_lo12(backward_reference_frame)
 	masknez	$a1, $a1, $a0
 	pcalau12i	$a2, %got_pc_hi20(forward_reference_frame)
-	ld.d	$s8, $a2, %got_pc_lo12(forward_reference_frame)
+	ld.d	$s7, $a2, %got_pc_lo12(forward_reference_frame)
 	ld.w	$a2, $s0, 0
 	ld.w	$a3, $s0, 4
-	maskeqz	$a0, $s8, $a0
-	or	$s7, $a0, $a1
+	maskeqz	$a0, $s7, $a0
+	or	$s8, $a0, $a1
 	addi.d	$a0, $sp, 56
 	move	$a1, $a6
 	pcaddu18i	$ra, %call36(Dual_Prime_Arithmetic)
@@ -390,7 +390,7 @@ form_predictions:                       # @form_predictions
 	st.d	$a2, $sp, 8
 	ori	$a5, $zero, 16
 	st.d	$a1, $sp, 0
-	move	$a0, $s8
+	move	$a0, $s7
 	move	$a1, $s5
 	move	$a2, $zero
 	move	$a4, $a3
@@ -403,12 +403,12 @@ form_predictions:                       # @form_predictions
 	ld.w	$a1, $sp, 56
 	ld.w	$a2, $sp, 60
 	slli.w	$a3, $a0, 1
-	ori	$s8, $zero, 1
-	st.d	$s8, $sp, 16
+	ori	$s7, $zero, 1
+	st.d	$s7, $sp, 16
 	st.d	$a2, $sp, 8
 	ori	$a5, $zero, 16
 	st.d	$a1, $sp, 0
-	move	$a0, $s7
+	move	$a0, $s8
 	move	$a1, $s6
 	move	$a2, $zero
 	move	$a4, $a3
@@ -434,7 +434,7 @@ form_predictions:                       # @form_predictions
 	ori	$a0, $zero, 2
 	bne	$s3, $a0, .LBB0_49
 # %bb.42:
-	blt	$fp, $s8, .LBB0_44
+	blt	$fp, $s7, .LBB0_44
 # %bb.43:
 	pcalau12i	$a0, %got_pc_hi20(Coded_Picture_Width)
 	ld.d	$a0, $a0, %got_pc_lo12(Coded_Picture_Width)
@@ -442,7 +442,7 @@ form_predictions:                       # @form_predictions
 	ld.w	$a0, $s0, 8
 	ld.w	$a1, $s0, 12
 	slli.w	$a4, $a3, 1
-	st.d	$s8, $sp, 16
+	st.d	$s7, $sp, 16
 	st.d	$a1, $sp, 8
 	st.d	$a0, $sp, 0
 	pcalau12i	$a0, %got_pc_hi20(backward_reference_frame)
@@ -486,7 +486,7 @@ form_predictions:                       # @form_predictions
 	ld.w	$a2, $s0, 8
 	ld.w	$a4, $s0, 12
 	slli.w	$a3, $a0, 1
-	st.d	$s8, $sp, 16
+	st.d	$s7, $sp, 16
 	st.d	$a4, $sp, 8
 	st.d	$a2, $sp, 0
 	pcalau12i	$a0, %got_pc_hi20(backward_reference_frame)
@@ -496,7 +496,7 @@ form_predictions:                       # @form_predictions
 	b	.LBB0_53
 .LBB0_49:
 	srai.d	$s1, $s1, 1
-	blt	$fp, $s8, .LBB0_51
+	blt	$fp, $s7, .LBB0_51
 # %bb.50:
 	ld.w	$a1, $s2, 4
 	pcalau12i	$a0, %got_pc_hi20(Coded_Picture_Width)
@@ -506,7 +506,7 @@ form_predictions:                       # @form_predictions
 	ld.w	$a4, $s0, 8
 	slli.w	$a3, $a0, 1
 	srai.d	$a0, $a2, 1
-	st.d	$s8, $sp, 16
+	st.d	$s7, $sp, 16
 	st.d	$a0, $sp, 8
 	st.d	$a4, $sp, 0
 	pcalau12i	$a0, %got_pc_hi20(backward_reference_frame)
@@ -552,7 +552,7 @@ form_predictions:                       # @form_predictions
 	ld.w	$a2, $s0, 8
 	ld.w	$a4, $s0, 12
 	slli.w	$a3, $a0, 1
-	st.d	$s8, $sp, 16
+	st.d	$s7, $sp, 16
 	st.d	$a4, $sp, 8
 	st.d	$a2, $sp, 0
 	pcalau12i	$a0, %got_pc_hi20(backward_reference_frame)
@@ -572,7 +572,7 @@ form_predictions:                       # @form_predictions
 	ld.w	$a4, $s0, 28
 	slli.w	$a3, $a0, 1
 	addi.w	$a7, $s1, 8
-	st.d	$s8, $sp, 16
+	st.d	$s7, $sp, 16
 	st.d	$a4, $sp, 8
 	ori	$a5, $zero, 8
 	st.d	$a2, $sp, 0
@@ -637,21 +637,21 @@ form_prediction:                        # @form_prediction
 	add.d	$a0, $a0, $a1
 	pcalau12i	$a1, %got_pc_hi20(current_frame)
 	ld.d	$a1, $a1, %got_pc_lo12(current_frame)
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$a1, $a1, 0
 	sltui	$a2, $a2, 1
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	masknez	$a2, $s3, $a2
 	add.d	$a1, $a1, $a2
-	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 16
-	move	$s7, $a4
+	move	$s8, $a4
 	st.d	$a4, $sp, 8
 	st.d	$s5, $sp, 0
 	ori	$a4, $zero, 16
 	move	$a2, $s1
 	move	$a3, $s6
-	move	$s8, $a5
+	move	$s7, $a5
 	pcaddu18i	$ra, %call36(form_component_prediction)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(chroma_format)
@@ -660,79 +660,77 @@ form_prediction:                        # @form_prediction
 	ori	$a1, $zero, 3
 	bne	$a0, $a1, .LBB1_2
 # %bb.1:
-	ori	$a6, $zero, 16
+	ori	$s4, $zero, 16
 	move	$a4, $s5
-	move	$t0, $s1
+	move	$a3, $s1
 	move	$s1, $s0
 	move	$s5, $s2
 	move	$s3, $s6
 	b	.LBB1_5
 .LBB1_2:
-	srai.d	$t0, $s1, 1
+	srai.d	$a3, $s1, 1
 	srai.d	$s1, $s0, 1
 	bstrpick.d	$a1, $s5, 31, 31
 	add.w	$a1, $s5, $a1
 	srai.d	$a4, $a1, 1
-	ori	$a6, $zero, 8
+	ori	$s4, $zero, 8
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB1_4
 # %bb.3:
-	bstrpick.d	$a5, $s8, 31, 1
+	bstrpick.d	$a5, $s7, 31, 1
 	srai.d	$s5, $s2, 1
-	bstrpick.d	$a0, $s7, 31, 31
-	add.w	$a0, $s7, $a0
-	srai.d	$s7, $a0, 1
+	bstrpick.d	$a0, $s8, 31, 31
+	add.w	$a0, $s8, $a0
+	srai.d	$s8, $a0, 1
 	b	.LBB1_6
 .LBB1_4:
 	move	$s5, $s2
 .LBB1_5:                                # %.thread
-	move	$a5, $s8
+	move	$a5, $s7
 .LBB1_6:                                # %.thread
 	ld.d	$a0, $fp, 8
 	srai.d	$a1, $s3, 1
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a2, $s4, 8
-	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
-	masknez	$s6, $a1, $a7
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $a2, 8
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	masknez	$s6, $a1, $a6
 	add.d	$a0, $a0, $s6
-	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
-	masknez	$s2, $a1, $a7
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
+	masknez	$s2, $a1, $a6
 	add.d	$a1, $a2, $s2
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	st.d	$fp, $sp, 16
-	move	$s8, $s7
-	st.d	$s7, $sp, 8
+	move	$s7, $s8
+	st.d	$s8, $sp, 8
 	addi.w	$a5, $a5, 0
 	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
-	move	$a3, $s3
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	move	$s0, $s3
 	move	$s3, $a4
 	st.d	$a4, $sp, 0
-	move	$s7, $t0
-	move	$a2, $t0
-	move	$s0, $a6
-	move	$a4, $a6
+	move	$s8, $a3
+	move	$a2, $a3
+	move	$a3, $s0
+	move	$a4, $s4
 	move	$a6, $s1
 	move	$a7, $s5
 	pcaddu18i	$ra, %call36(form_component_prediction)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 16
-	ld.d	$a1, $s4, 16
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $a1, 16
 	add.d	$a0, $a0, $s6
 	add.d	$a1, $a1, $s2
-	st.d	$fp, $sp, 16
-	st.d	$s8, $sp, 8
-	st.d	$s3, $sp, 0
-	move	$a2, $s7
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	move	$a4, $s0
+	st.d	$s3, $sp, 160
+	st.d	$s7, $sp, 168
+	st.d	$fp, $sp, 176
+	move	$a2, $s8
+	move	$a3, $s0
+	move	$a4, $s4
 	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
 	move	$a6, $s1
 	move	$a7, $s5
-	pcaddu18i	$ra, %call36(form_component_prediction)
-	jirl	$ra, $ra, 0
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
@@ -745,7 +743,8 @@ form_prediction:                        # @form_prediction
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 160
-	ret
+	pcaddu18i	$t8, %call36(form_component_prediction)
+	jr	$t8
 .Lfunc_end1:
 	.size	form_prediction, .Lfunc_end1-form_prediction
                                         # -- End function
@@ -753,11 +752,11 @@ form_prediction:                        # @form_prediction
 	.type	form_component_prediction,@function
 form_component_prediction:              # @form_component_prediction
 # %bb.0:
-	ld.d	$t6, $sp, 0
-	ld.d	$t7, $sp, 8
+	ld.d	$t7, $sp, 0
+	ld.d	$t6, $sp, 8
 	ld.d	$t4, $sp, 16
-	srai.d	$t2, $t6, 1
-	srli.d	$t0, $t7, 1
+	srai.d	$t2, $t7, 1
+	srli.d	$t0, $t6, 1
 	add.d	$t0, $t0, $a7
 	mul.w	$t1, $t0, $a2
 	add.d	$t0, $a0, $t1
@@ -765,7 +764,7 @@ form_component_prediction:              # @form_component_prediction
 	add.d	$t0, $t0, $t2
 	mul.w	$t3, $a7, $a2
 	add.d	$t5, $a1, $t3
-	or	$a7, $t7, $t6
+	or	$a7, $t6, $t7
 	andi	$t8, $a7, 1
 	add.d	$a7, $t5, $a6
 	bnez	$t8, .LBB2_8
@@ -839,11 +838,11 @@ form_component_prediction:              # @form_component_prediction
 	bne	$a2, $a6, .LBB2_7
 	b	.LBB2_3
 .LBB2_8:
-	andi	$t8, $t6, 1
-	andi	$t6, $t7, 1
-	bnez	$t8, .LBB2_17
+	andi	$t7, $t7, 1
+	bnez	$t7, .LBB2_17
 # %bb.9:
-	beqz	$t6, .LBB2_17
+	andi	$t8, $t6, 1
+	beqz	$t8, .LBB2_17
 # %bb.10:
 	bstrpick.d	$a4, $a4, 31, 0
 	beqz	$t4, .LBB2_48
@@ -933,9 +932,10 @@ form_component_prediction:              # @form_component_prediction
 	bne	$a4, $a6, .LBB2_16
 	b	.LBB2_12
 .LBB2_17:
-	beqz	$t8, .LBB2_41
+	beqz	$t7, .LBB2_41
 # %bb.18:
-	bnez	$t6, .LBB2_41
+	andi	$t5, $t6, 1
+	bnez	$t5, .LBB2_41
 # %bb.19:
 	bstrpick.d	$a2, $a4, 31, 0
 	addi.w	$a4, $a5, -1
@@ -1208,9 +1208,7 @@ form_component_prediction:              # @form_component_prediction
 	vadd.h	$vr2, $vr2, $vr5
 	vaddi.hu	$vr2, $vr2, 2
 	vsrli.h	$vr2, $vr2, 2
-	vadd.h	$vr1, $vr1, $vr2
-	vaddi.hu	$vr1, $vr1, 1
-	vsrli.h	$vr1, $vr1, 1
+	vavgr.hu	$vr1, $vr1, $vr2
 	vpickev.b	$vr1, $vr1, $vr1
 	addi.d	$a2, $a2, 8
 	vstelm.d	$vr1, $t1, 0, 0

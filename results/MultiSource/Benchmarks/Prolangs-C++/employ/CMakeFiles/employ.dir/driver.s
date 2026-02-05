@@ -61,7 +61,7 @@ _ZN8EmployeeC2EPKcS1_:                  # @_ZN8EmployeeC2EPKcS1_
 	.type	_ZN8EmployeeD0Ev,@function
 _ZN8EmployeeD0Ev:                       # @_ZN8EmployeeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end1:
 	.size	_ZN8EmployeeD0Ev, .Lfunc_end1-_ZN8EmployeeD0Ev
                                         # -- End function
@@ -1046,11 +1046,10 @@ _ZN11PieceWorker16ProducedThisWeekEi:   # @_ZN11PieceWorker16ProducedThisWeekEi
 	.type	_ZN11PieceWorker8EarningsEv,@function
 _ZN11PieceWorker8EarningsEv:            # @_ZN11PieceWorker8EarningsEv
 # %bb.0:
-	ld.w	$a1, $a0, 32
-	fld.s	$fa0, $a0, 28
-	movgr2fr.w	$fa1, $a1
-	ffint.s.w	$fa1, $fa1
-	fmul.s	$fa0, $fa0, $fa1
+	fld.s	$fa0, $a0, 32
+	fld.s	$fa1, $a0, 28
+	ffint.s.w	$fa0, $fa0
+	fmul.s	$fa0, $fa1, $fa0
 	ret
 .Lfunc_end33:
 	.size	_ZN11PieceWorker8EarningsEv, .Lfunc_end33-_ZN11PieceWorker8EarningsEv
@@ -1635,7 +1634,7 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(_ZTV20HourlyWorkerOvertime+16)
 	addi.d	$s8, $a0, %pc_lo12(_ZTV20HourlyWorkerOvertime+16)
 	pcalau12i	$a0, %pc_hi20(_ZTV22HourlyWorkerNoOvertime+16)
-	addi.d	$s1, $a0, %pc_lo12(_ZTV22HourlyWorkerNoOvertime+16)
+	addi.d	$fp, $a0, %pc_lo12(_ZTV22HourlyWorkerNoOvertime+16)
 	move	$s7, $zero
 	b	.LBB45_5
 .LBB45_3:                               #   in Loop: Header=BB45_5 Depth=1
@@ -1661,7 +1660,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	st.d	$s2, $a0, 0
-	st.d	$fp, $a0, 8
+	st.d	$s1, $a0, 8
 	addi.d	$a1, $sp, 208
 	addi.d	$a2, $sp, 128
 	addi.d	$a3, $sp, 48
@@ -1677,7 +1676,7 @@ main:                                   # @main
 	bltu	$s5, $a0, .LBB45_35
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB45_5 Depth=1
-	move	$fp, $s7
+	move	$s1, $s7
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $s6, $a0
 	add.d	$a0, $s6, $a0
@@ -1763,7 +1762,7 @@ main:                                   # @main
 	lu12i.w	$a0, 258048
 	st.w	$a0, $s2, 24
 	st.w	$zero, $s2, 32
-	st.d	$s1, $s2, 0
+	st.d	$fp, $s2, 0
 	b	.LBB45_4
 .LBB45_13:                              #   in Loop: Header=BB45_5 Depth=1
 	ori	$a0, $zero, 40
@@ -2215,7 +2214,7 @@ _ZN18CommissionedWorkerD0Ev:            # @_ZN18CommissionedWorkerD0Ev
 	.type	_ZN10WageWorkerD0Ev,@function
 _ZN10WageWorkerD0Ev:                    # @_ZN10WageWorkerD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end48:
 	.size	_ZN10WageWorkerD0Ev, .Lfunc_end48-_ZN10WageWorkerD0Ev
                                         # -- End function
@@ -2260,7 +2259,7 @@ _ZN11PieceWorkerD0Ev:                   # @_ZN11PieceWorkerD0Ev
 	.type	_ZN12HourlyWorkerD0Ev,@function
 _ZN12HourlyWorkerD0Ev:                  # @_ZN12HourlyWorkerD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end50:
 	.size	_ZN12HourlyWorkerD0Ev, .Lfunc_end50-_ZN12HourlyWorkerD0Ev
                                         # -- End function

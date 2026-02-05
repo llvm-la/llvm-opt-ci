@@ -611,7 +611,7 @@ GetStrength:                            # @GetStrength
 	addi.d	$s6, $s6, 1
 	addi.w	$s5, $s5, 1
 	ori	$a0, $zero, 16
-	beq	$s6, $a0, .LBB2_51
+	beq	$s6, $a0, .LBB2_52
 .LBB2_5:                                # =>This Inner Loop Header: Depth=1
 	masknez	$a0, $s5, $s8
 	or	$s1, $fp, $a0
@@ -749,9 +749,9 @@ GetStrength:                            # @GetStrength
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ldx.d	$a0, $a0, $a3
 	bstrins.d	$s0, $a1, 63, 2
-	addi.w	$a5, $s0, 0
-	ldx.b	$a0, $a0, $a5
-	slli.d	$a2, $a5, 3
+	addi.w	$a6, $s0, 0
+	ldx.b	$a0, $a0, $a6
+	slli.d	$a2, $a6, 3
 	lu52i.d	$t4, $zero, -2048
 	move	$a4, $t4
 	bltz	$a0, .LBB2_30
@@ -762,181 +762,167 @@ GetStrength:                            # @GetStrength
 .LBB2_30:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.w	$a0, $sp, 140
 	srai.d	$a0, $a0, 2
-	ld.w	$a6, $sp, 136
+	ld.w	$a5, $sp, 136
 	slli.d	$a1, $a0, 3
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ldx.d	$a0, $a0, $a1
-	srai.d	$t0, $a6, 2
-	ldx.b	$a7, $a0, $t0
-	slli.d	$a0, $t0, 3
-	move	$a6, $t4
-	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
-	bltz	$a7, .LBB2_32
-# %bb.31:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.d	$a6, $sp, 56                    # 8-byte Folded Reload
-	ldx.d	$a6, $a6, $a1
-	ldx.d	$a6, $a6, $a0
-.LBB2_32:                               #   in Loop: Header=BB2_5 Depth=1
-	ldx.d	$a7, $t3, $a3
-	ldx.b	$a5, $a7, $a5
-	move	$a7, $t4
-	ld.d	$t1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$t2, $sp, 24                    # 8-byte Folded Reload
-	bltz	$a5, .LBB2_34
-# %bb.33:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
-	ldx.d	$a5, $a5, $a3
-	ldx.d	$a7, $a5, $a2
-.LBB2_34:                               #   in Loop: Header=BB2_5 Depth=1
-	ldx.d	$a5, $t3, $a1
-	ldx.b	$t0, $a5, $t0
+	srai.d	$a7, $a5, 2
+	ldx.b	$t0, $a0, $a7
+	slli.d	$a0, $a7, 3
 	move	$a5, $t4
-	bltz	$t0, .LBB2_36
-# %bb.35:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
+	bltz	$t0, .LBB2_32
+# %bb.31:                               #   in Loop: Header=BB2_5 Depth=1
+	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
 	ldx.d	$a5, $a5, $a1
 	ldx.d	$a5, $a5, $a0
+.LBB2_32:                               #   in Loop: Header=BB2_5 Depth=1
+	ldx.d	$t0, $t3, $a3
+	ldx.b	$t0, $t0, $a6
+	move	$a6, $t4
+	ld.d	$t1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 24                    # 8-byte Folded Reload
+	bltz	$t0, .LBB2_34
+# %bb.33:                               #   in Loop: Header=BB2_5 Depth=1
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	ldx.d	$a6, $a6, $a3
+	ldx.d	$a6, $a6, $a2
+.LBB2_34:                               #   in Loop: Header=BB2_5 Depth=1
+	ldx.d	$t0, $t3, $a1
+	ldx.b	$t0, $t0, $a7
+	move	$a7, $t4
+	bltz	$t0, .LBB2_36
+# %bb.35:                               #   in Loop: Header=BB2_5 Depth=1
+	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
+	ldx.d	$a7, $a7, $a1
+	ldx.d	$a7, $a7, $a0
 .LBB2_36:                               #   in Loop: Header=BB2_5 Depth=1
-	bne	$a4, $a6, .LBB2_38
+	bne	$a4, $a5, .LBB2_38
 # %bb.37:                               #   in Loop: Header=BB2_5 Depth=1
-	beq	$a7, $a5, .LBB2_40
+	beq	$a6, $a7, .LBB2_40
 .LBB2_38:                               #   in Loop: Header=BB2_5 Depth=1
-	bne	$a4, $a5, .LBB2_27
+	bne	$a4, $a7, .LBB2_27
 # %bb.39:                               #   in Loop: Header=BB2_5 Depth=1
-	bne	$a7, $a6, .LBB2_27
+	bne	$a6, $a5, .LBB2_27
 .LBB2_40:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
-	stx.b	$zero, $a5, $s6
-	ldx.d	$a5, $t1, $a3
-	ldx.d	$t0, $a5, $a2
-	ld.h	$a5, $t0, 0
-	bne	$a4, $a7, .LBB2_45
+	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
+	stx.b	$zero, $a7, $s6
+	ldx.d	$a7, $t1, $a3
+	ldx.d	$a7, $a7, $a2
+	ld.h	$t0, $a7, 0
+	bne	$a4, $a6, .LBB2_46
 # %bb.41:                               #   in Loop: Header=BB2_5 Depth=1
 	ldx.d	$a4, $t1, $a1
 	ldx.d	$a6, $a4, $a0
-	ld.h	$a4, $t0, 2
-	ldx.d	$a7, $t2, $a3
-	ldx.d	$t0, $t2, $a1
-	ld.h	$a1, $a6, 2
-	ld.h	$a3, $a6, 0
-	ldx.d	$a6, $a7, $a2
-	ldx.d	$t0, $t0, $a0
-	sub.d	$t1, $a4, $a1
-	srai.d	$t2, $t1, 63
-	ld.h	$a2, $a6, 0
-	ld.h	$a7, $t0, 0
+	ldx.d	$a3, $t2, $a3
+	ldx.d	$a5, $t2, $a1
+	ld.h	$a1, $a6, 0
+	addi.d	$a4, $t0, -4
+	ldx.d	$a2, $a3, $a2
+	ldx.d	$t0, $a5, $a0
+	ld.h	$a5, $a7, 2
 	ld.h	$a0, $a6, 2
-	ld.h	$a6, $t0, 2
-	xor	$t0, $t1, $t2
-	sub.d	$t0, $t0, $t2
-	ld.d	$t1, $sp, 40                    # 8-byte Folded Reload
-	bge	$t0, $t1, .LBB2_47
+	ld.h	$a3, $a2, 0
+	ld.h	$a6, $t0, 0
+	ld.h	$a2, $a2, 2
+	ld.h	$a7, $t0, 2
+	sub.d	$t1, $a4, $a1
+	addi.w	$t0, $zero, -7
+	bltu	$t1, $t0, .LBB2_48
 # %bb.42:                               #   in Loop: Header=BB2_5 Depth=1
-	sub.w	$t0, $a5, $a3
-	srai.d	$t1, $t0, 31
-	xor	$t0, $t0, $t1
-	sub.w	$t0, $t0, $t1
-	sub.d	$t1, $a2, $a7
+	sub.d	$t1, $a5, $a0
 	srai.d	$t2, $t1, 63
 	xor	$t1, $t1, $t2
 	sub.w	$t1, $t1, $t2
-	or	$t0, $t1, $t0
-	ori	$t1, $zero, 3
-	bltu	$t1, $t0, .LBB2_47
+	ld.d	$t2, $sp, 40                    # 8-byte Folded Reload
+	bge	$t1, $t2, .LBB2_48
 # %bb.43:                               #   in Loop: Header=BB2_5 Depth=1
-	sub.d	$t0, $a0, $a6
+	sub.d	$t1, $a3, $a6
+	addi.d	$t1, $t1, -4
+	bltu	$t1, $t0, .LBB2_48
+# %bb.44:                               #   in Loop: Header=BB2_5 Depth=1
+	sub.d	$t0, $a2, $a7
 	srai.d	$t1, $t0, 63
 	xor	$t0, $t0, $t1
 	sub.w	$t0, $t0, $t1
 	ld.d	$t1, $sp, 40                    # 8-byte Folded Reload
-	bge	$t0, $t1, .LBB2_47
-# %bb.44:                               #   in Loop: Header=BB2_5 Depth=1
+	bge	$t0, $t1, .LBB2_48
+# %bb.45:                               #   in Loop: Header=BB2_5 Depth=1
 	move	$a0, $zero
-	b	.LBB2_50
-.LBB2_45:                               #   in Loop: Header=BB2_5 Depth=1
+	b	.LBB2_51
+.LBB2_46:                               #   in Loop: Header=BB2_5 Depth=1
 	ldx.d	$a3, $t2, $a3
 	ldx.d	$a2, $a3, $a2
-	ld.h	$a7, $t0, 2
+	ld.h	$a6, $a7, 2
 	ld.h	$a3, $a2, 0
-	bne	$a4, $a6, .LBB2_48
-# %bb.46:                               #   in Loop: Header=BB2_5 Depth=1
+	addi.d	$a7, $t0, -4
+	bne	$a4, $a5, .LBB2_49
+# %bb.47:                               #   in Loop: Header=BB2_5 Depth=1
 	ldx.d	$a4, $t1, $a1
 	ldx.d	$a4, $a4, $a0
-	ld.h	$a6, $a4, 0
-	sub.w	$a5, $a5, $a6
-	srai.d	$a6, $a5, 31
+	ld.h	$a5, $a4, 0
 	ldx.d	$a1, $t2, $a1
-	b	.LBB2_49
-.LBB2_47:                               #   in Loop: Header=BB2_5 Depth=1
-	sub.w	$a5, $a5, $a7
-	srai.d	$a7, $a5, 31
-	xor	$a5, $a5, $a7
-	sub.w	$a5, $a5, $a7
-	sub.w	$a4, $a4, $a6
-	srai.d	$a6, $a4, 31
-	xor	$a4, $a4, $a6
-	sub.w	$a4, $a4, $a6
-	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
-	slt	$a4, $a4, $a6
-	xori	$a4, $a4, 1
-	sub.w	$a2, $a2, $a3
-	srai.d	$a3, $a2, 31
-	xor	$a2, $a2, $a3
-	sub.w	$a2, $a2, $a3
-	or	$a2, $a5, $a2
-	ori	$a3, $zero, 3
-	sltu	$a2, $a3, $a2
-	sub.w	$a0, $a0, $a1
-	srai.d	$a1, $a0, 31
-	xor	$a0, $a0, $a1
-	sub.w	$a0, $a0, $a1
-	slt	$a0, $a0, $a6
-	xori	$a0, $a0, 1
-	or	$a0, $a4, $a0
-	or	$a0, $a0, $a2
 	b	.LBB2_50
 .LBB2_48:                               #   in Loop: Header=BB2_5 Depth=1
-	ldx.d	$a4, $t2, $a1
-	ldx.d	$a4, $a4, $a0
-	ld.h	$a6, $a4, 0
-	sub.w	$a5, $a5, $a6
+	sub.d	$a4, $a4, $a6
+	sltui	$a4, $a4, -7
+	sub.w	$a5, $a5, $a7
 	srai.d	$a6, $a5, 31
-	ldx.d	$a1, $t1, $a1
-.LBB2_49:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.h	$a4, $a4, 2
 	xor	$a5, $a5, $a6
 	sub.w	$a5, $a5, $a6
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
+	slt	$a5, $a5, $a6
+	xori	$a5, $a5, 1
+	sub.d	$a1, $a3, $a1
+	addi.d	$a1, $a1, -4
+	sltui	$a1, $a1, -7
+	or	$a1, $a4, $a1
+	or	$a1, $a1, $a5
+	sub.w	$a0, $a2, $a0
+	srai.d	$a2, $a0, 31
+	xor	$a0, $a0, $a2
+	sub.w	$a0, $a0, $a2
+	slt	$a0, $a0, $a6
+	xori	$a0, $a0, 1
+	or	$a0, $a0, $a1
+	b	.LBB2_51
+.LBB2_49:                               #   in Loop: Header=BB2_5 Depth=1
+	ldx.d	$a4, $t2, $a1
+	ldx.d	$a4, $a4, $a0
+	ld.h	$a5, $a4, 0
+	ldx.d	$a1, $t1, $a1
+.LBB2_50:                               #   in Loop: Header=BB2_5 Depth=1
+	ld.h	$a4, $a4, 2
+	sub.d	$a5, $a7, $a5
+	sltui	$a5, $a5, -7
 	ldx.d	$a0, $a1, $a0
-	sub.w	$a1, $a7, $a4
+	sub.w	$a1, $a6, $a4
 	srai.d	$a4, $a1, 31
 	xor	$a1, $a1, $a4
 	ld.h	$a6, $a0, 0
 	sub.w	$a1, $a1, $a4
-	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
-	slt	$a1, $a1, $a7
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
+	slt	$a1, $a1, $a4
 	xori	$a1, $a1, 1
-	sub.w	$a3, $a3, $a6
-	srai.d	$a4, $a3, 31
-	xor	$a3, $a3, $a4
+	sub.d	$a3, $a3, $a6
+	addi.d	$a3, $a3, -4
 	ld.h	$a2, $a2, 2
 	ld.h	$a0, $a0, 2
-	sub.w	$a3, $a3, $a4
-	or	$a3, $a3, $a5
-	ori	$a4, $zero, 3
-	sltu	$a3, $a4, $a3
+	sltui	$a3, $a3, -7
+	or	$a3, $a5, $a3
+	or	$a1, $a3, $a1
 	sub.d	$a0, $a2, $a0
 	srai.d	$a2, $a0, 63
 	xor	$a0, $a0, $a2
 	sub.d	$a0, $a0, $a2
-	slt	$a0, $a0, $a7
+	slt	$a0, $a0, $a4
 	xori	$a0, $a0, 1
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $a3
-.LBB2_50:                               #   in Loop: Header=BB2_5 Depth=1
+.LBB2_51:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	stx.b	$a0, $a1, $s6
 	b	.LBB2_4
-.LBB2_51:
+.LBB2_52:
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
@@ -1143,7 +1129,7 @@ EdgeLoop:                               # @EdgeLoop
 	sll.w	$t3, $a5, $a3
 	sltui	$a3, $a4, 1
 	sll.w	$t4, $a5, $a3
-.LBB3_16:                               # %.thread240
+.LBB3_16:                               # %.thread238
                                         #   in Loop: Header=BB3_7 Depth=1
 	ld.d	$a6, $sp, 112                   # 8-byte Folded Reload
 	beqz	$fp, .LBB3_18
@@ -1262,7 +1248,7 @@ EdgeLoop:                               # @EdgeLoop
 	srli.d	$a1, $a1, 2
 	st.h	$a1, $a0, 0
 	b	.LBB3_6
-.LBB3_25:                               # %.thread243
+.LBB3_25:                               # %.thread241
                                         #   in Loop: Header=BB3_7 Depth=1
 	st.d	$t1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a4, $sp, 16                    # 8-byte Folded Spill

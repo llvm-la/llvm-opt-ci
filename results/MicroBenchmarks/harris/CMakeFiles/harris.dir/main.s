@@ -892,15 +892,16 @@ main:                                   # @main
 	st.d	$s1, $sp, 0
 	move	$s6, $s1
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	move	$s1, $s2
 	move	$a3, $s2
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	move	$a4, $s1
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	move	$a4, $s2
 	move	$a5, $s3
 	move	$a6, $s4
 	move	$a7, $s5
 	pcaddu18i	$ra, %call36(_Z12harrisKerneliiPA2052_fPA2048_fPA2050_fS4_S4_S4_S4_S2_S2_S2_S2_S2_)
 	jirl	$ra, $ra, 0
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
@@ -941,13 +942,13 @@ main:                                   # @main
 	or	$a3, $a0, $a2
 	ori	$a0, $zero, 2048
 	ori	$a1, $zero, 2048
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(_Z10printImageiiPA2048_fi)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$fp, $zero
@@ -2025,14 +2026,12 @@ _GLOBAL__sub_I_main.cpp:                # @_GLOBAL__sub_I_main.cpp
 .Ltmp29:                                # EH_LABEL
 	ld.d	$a1, $sp, 104
 	move	$fp, $a0
-	bne	$a1, $s1, .LBB9_42
-# %bb.41:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i78.i
-	bnez	$s2, .LBB9_43
-	b	.LBB9_45
-.LBB9_42:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit79.i
+	beq	$a1, $s1, .LBB9_42
+# %bb.41:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i77.i
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
+.LBB9_42:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit79.i
 	beqz	$s2, .LBB9_45
 .LBB9_43:
 	move	$a0, $s0

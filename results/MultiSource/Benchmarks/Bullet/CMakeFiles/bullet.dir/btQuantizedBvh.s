@@ -457,10 +457,9 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	st.w	$a0, $fp, 60
 	b	.LBB5_21
 .LBB5_7:                                # %_ZN14btQuantizedBvh22setInternalNodeAabbMinEiRK9btVector3.exit
-	addi.d	$a0, $fp, 24
-	ld.d	$a1, $fp, 120
-	vld	$vr0, $a0, 0
-	vstx	$vr0, $a1, $s6
+	ld.d	$a0, $fp, 120
+	vld	$vr0, $fp, 24
+	vstx	$vr0, $a0, $s6
 	ld.bu	$a1, $fp, 64
 	ld.w	$a0, $fp, 60
 	beqz	$a1, .LBB5_9
@@ -498,11 +497,10 @@ _ZN14btQuantizedBvh9buildTreeEii:       # @_ZN14btQuantizedBvh9buildTreeEii
 	blt	$s1, $s0, .LBB5_10
 	b	.LBB5_15
 .LBB5_9:
-	addi.d	$a1, $fp, 8
-	ld.d	$a2, $fp, 120
-	vld	$vr0, $a1, 0
+	ld.d	$a1, $fp, 120
+	vld	$vr0, $fp, 8
 	slli.d	$a0, $a0, 6
-	add.d	$a0, $a2, $a0
+	add.d	$a0, $a1, $a0
 	vst	$vr0, $a0, 16
 	bge	$s1, $s0, .LBB5_15
 .LBB5_10:                               # %.lr.ph
@@ -1026,48 +1024,51 @@ _ZN14btQuantizedBvh17calcSplittingAxisEii: # @_ZN14btQuantizedBvh17calcSplitting
 	addi.w	$a4, $a5, 0
 	bge	$a1, $a2, .LBB10_6
 # %bb.1:                                # %.lr.ph
+	ld.d	$a3, $a0, 40
 	ld.bu	$a6, $a0, 64
 	ld.d	$a7, $a0, 88
 	ld.d	$t0, $a0, 152
-	fld.s	$fa0, $a0, 40
-	fld.s	$fa1, $a0, 44
-	fld.s	$fa2, $a0, 48
-	fld.s	$fa3, $a0, 8
-	fld.s	$fa4, $a0, 12
-	fld.s	$fa6, $a0, 16
+	vinsgr2vr.d	$vr0, $a3, 0
+	ld.d	$a3, $a0, 8
+	fld.s	$fa1, $a0, 48
+	vreplvei.w	$vr2, $vr0, 0
+	vreplvei.w	$vr3, $vr0, 1
+	vinsgr2vr.d	$vr4, $a3, 0
+	vreplvei.w	$vr5, $vr4, 0
+	vreplvei.w	$vr8, $vr4, 1
+	fld.s	$ft1, $a0, 16
 	slli.d	$a3, $a1, 6
 	add.d	$a7, $a3, $a7
 	addi.d	$a7, $a7, 16
 	alsl.d	$t0, $a1, $t0, 4
 	addi.d	$t0, $t0, 6
-	movgr2fr.w	$fa5, $zero
-	vldi	$vr7, -1184
-	fmov.s	$ft0, $fa5
-	fmov.s	$ft1, $fa5
+	vrepli.b	$vr7, 0
+	movgr2fr.w	$fa6, $zero
+	vldi	$vr10, -3265
+	vldi	$vr11, -1184
 	b	.LBB10_4
 	.p2align	4, , 16
 .LBB10_2:                               #   in Loop: Header=BB10_4 Depth=1
 	ld.d	$t2, $a7, 0
-	fld.s	$ft2, $a7, 8
+	fld.s	$ft4, $a7, 8
+	srli.d	$t3, $t2, 32
 	ld.d	$t1, $a7, -16
-	fld.s	$ft5, $a7, -8
-	movgr2fr.w	$ft3, $t2
-	srli.d	$t2, $t2, 32
-	movgr2fr.w	$ft4, $t2
+	fld.s	$ft6, $a7, -8
+	vinsgr2vr.d	$vr13, $t2, 0
+	vinsgr2vr.d	$vr13, $t3, 1
+	vshuf4i.w	$vr13, $vr13, 8
 .LBB10_3:                               # %_ZNK14btQuantizedBvh10getAabbMinEi.exit
                                         #   in Loop: Header=BB10_4 Depth=1
-	movgr2fr.w	$ft6, $t1
-	srli.d	$t1, $t1, 32
-	movgr2fr.w	$ft7, $t1
-	fadd.s	$ft3, $ft3, $ft6
-	fadd.s	$ft4, $ft4, $ft7
-	fadd.s	$ft2, $ft2, $ft5
-	fmul.s	$ft3, $ft3, $fa7
-	fmul.s	$ft4, $ft4, $fa7
-	fmul.s	$ft2, $ft2, $fa7
-	fadd.s	$ft1, $ft1, $ft3
-	fadd.s	$ft0, $ft0, $ft4
-	fadd.s	$fa5, $fa5, $ft2
+	fadd.s	$ft4, $ft4, $ft6
+	srli.d	$t2, $t1, 32
+	vinsgr2vr.d	$vr14, $t1, 0
+	vinsgr2vr.d	$vr14, $t2, 1
+	vshuf4i.w	$vr14, $vr14, 8
+	vfadd.s	$vr13, $vr13, $vr14
+	vfmul.s	$vr13, $vr13, $vr10
+	fmul.s	$ft4, $ft4, $ft3
+	vfadd.s	$vr7, $vr7, $vr13
+	fadd.s	$fa6, $fa6, $ft4
 	addi.d	$a5, $a5, -1
 	addi.d	$a7, $a7, 64
 	addi.d	$t0, $t0, 16
@@ -1075,55 +1076,55 @@ _ZN14btQuantizedBvh17calcSplittingAxisEii: # @_ZN14btQuantizedBvh17calcSplitting
 .LBB10_4:                               # =>This Inner Loop Header: Depth=1
 	beqz	$a6, .LBB10_2
 # %bb.5:                                #   in Loop: Header=BB10_4 Depth=1
-	ld.hu	$t1, $t0, 0
-	movgr2fr.w	$ft2, $t1
 	ld.hu	$t1, $t0, 2
-	ffint.s.w	$ft2, $ft2
-	fdiv.s	$ft2, $ft2, $fa0
-	ld.hu	$t2, $t0, 4
-	movgr2fr.w	$ft3, $t1
-	ffint.s.w	$ft3, $ft3
-	fdiv.s	$ft4, $ft3, $fa1
-	movgr2fr.w	$ft3, $t2
-	ffint.s.w	$ft3, $ft3
-	fdiv.s	$ft5, $ft3, $fa2
-	ld.hu	$t1, $t0, -6
-	fadd.s	$ft3, $ft2, $fa3
-	fadd.s	$ft4, $ft4, $fa4
-	fadd.s	$ft2, $ft5, $fa6
-	movgr2fr.w	$ft5, $t1
-	ld.hu	$t1, $t0, -4
+	ld.hu	$t2, $t0, 0
+	movgr2fr.w	$ft4, $t1
+	ffint.s.w	$ft4, $ft4
+	movgr2fr.w	$ft5, $t2
+	ld.hu	$t1, $t0, 4
 	ffint.s.w	$ft5, $ft5
-	fdiv.s	$ft5, $ft5, $fa0
-	ld.hu	$t2, $t0, -2
+	vextrins.w	$vr13, $vr12, 16
+	vfdiv.s	$vr12, $vr13, $vr0
+	movgr2fr.w	$ft5, $t1
+	ffint.s.w	$ft5, $ft5
+	ld.hu	$t1, $t0, -6
+	fdiv.s	$ft6, $ft5, $fa1
+	vfadd.s	$vr13, $vr12, $vr4
+	fadd.s	$ft4, $ft6, $ft1
 	movgr2fr.w	$ft6, $t1
+	ld.hu	$t1, $t0, -4
 	ffint.s.w	$ft6, $ft6
-	fdiv.s	$ft6, $ft6, $fa1
-	movgr2fr.w	$ft7, $t2
+	fdiv.s	$ft6, $ft6, $fa2
+	ld.hu	$t2, $t0, -2
+	movgr2fr.w	$ft7, $t1
 	ffint.s.w	$ft7, $ft7
-	fdiv.s	$ft7, $ft7, $fa2
-	fadd.s	$ft8, $ft5, $fa3
-	fadd.s	$ft6, $ft6, $fa4
-	fadd.s	$ft5, $ft7, $fa6
-	movfr2gr.s	$t1, $ft8
-	movfr2gr.s	$t2, $ft6
+	fdiv.s	$ft7, $ft7, $fa3
+	movgr2fr.w	$ft8, $t2
+	ffint.s.w	$ft8, $ft8
+	fdiv.s	$ft8, $ft8, $fa1
+	fadd.s	$ft9, $ft6, $fa5
+	fadd.s	$ft7, $ft7, $ft0
+	fadd.s	$ft6, $ft8, $ft1
+	movfr2gr.s	$t1, $ft9
+	movfr2gr.s	$t2, $ft7
 	bstrins.d	$t1, $t2, 63, 32
 	b	.LBB10_3
 .LBB10_6:                               # %._crit_edge.thread
 	movgr2fr.w	$fa0, $a4
-	movgr2fr.w	$fa5, $zero
 	ffint.s.w	$fa0, $fa0
-	fmov.s	$fa7, $fa5
-	fmov.s	$fa1, $fa5
+	vrepli.b	$vr4, 0
+	movgr2fr.w	$fa3, $zero
 .LBB10_7:                               # %._crit_edge203
-	vldi	$vr2, -1040
-	fadd.s	$fa0, $fa0, $fa2
+	vldi	$vr1, -1040
+	fadd.s	$fa0, $fa0, $fa1
 	frecip.s	$fa0, $fa0
-	fmul.s	$fa2, $fa0, $fa5
-	fmul.s	$fa3, $fa0, $fa7
-	fmul.s	$fa0, $fa0, $fa1
-	fcmp.clt.s	$fcc0, $fa2, $fa3
-	fsel	$fa1, $fa2, $fa3, $fcc0
+	vreplvei.w	$vr1, $vr4, 0
+	fmul.s	$fa1, $fa0, $fa1
+	vreplvei.w	$vr2, $vr4, 1
+	fmul.s	$fa2, $fa0, $fa2
+	fmul.s	$fa0, $fa0, $fa3
+	fcmp.clt.s	$fcc0, $fa1, $fa2
+	fsel	$fa1, $fa1, $fa2, $fcc0
 	fcmp.clt.s	$fcc1, $fa1, $fa0
 	movcf2gr	$a0, $fcc0
 	movcf2gr	$a1, $fcc1
@@ -1135,58 +1136,60 @@ _ZN14btQuantizedBvh17calcSplittingAxisEii: # @_ZN14btQuantizedBvh17calcSplitting
 .LBB10_8:                               # %._crit_edge
 	movgr2fr.w	$fa0, $a4
 	ffint.s.w	$fa0, $fa0
-	frecip.s	$fa1, $fa0
-	fmul.s	$fa2, $fa1, $ft1
-	fmul.s	$fa3, $fa1, $ft0
-	fmul.s	$fa4, $fa1, $fa5
+	frecip.s	$fa2, $fa0
+	vori.b	$vr1, $vr2, 0
+	vextrins.w	$vr1, $vr2, 16
+	vfmul.s	$vr1, $vr1, $vr7
+	fmul.s	$fa2, $fa2, $fa6
+	ld.d	$a5, $a0, 40
 	ld.bu	$a4, $a0, 64
-	ld.d	$a5, $a0, 88
-	ld.d	$a6, $a0, 152
-	fld.s	$fa6, $a0, 40
-	fld.s	$ft0, $a0, 44
-	fld.s	$ft1, $a0, 48
-	fld.s	$ft2, $a0, 8
-	fld.s	$ft3, $a0, 12
+	ld.d	$a6, $a0, 88
+	ld.d	$a7, $a0, 152
+	vinsgr2vr.d	$vr5, $a5, 0
+	ld.d	$a5, $a0, 8
+	fld.s	$fa6, $a0, 48
+	vreplvei.w	$vr7, $vr5, 0
+	vreplvei.w	$vr8, $vr5, 1
+	vinsgr2vr.d	$vr9, $a5, 0
+	vreplvei.w	$vr10, $vr9, 0
+	vreplvei.w	$vr11, $vr9, 1
 	fld.s	$ft4, $a0, 16
 	sub.d	$a0, $a2, $a1
-	add.d	$a2, $a3, $a5
+	add.d	$a2, $a3, $a6
 	addi.d	$a2, $a2, 16
-	alsl.d	$a1, $a1, $a6, 4
+	alsl.d	$a1, $a1, $a7, 4
 	addi.d	$a1, $a1, 6
-	movgr2fr.w	$fa1, $zero
+	vrepli.b	$vr4, 0
+	movgr2fr.w	$fa3, $zero
 	vldi	$vr13, -1184
-	fmov.s	$fa7, $fa1
-	fmov.s	$fa5, $fa1
+	vldi	$vr14, -3265
 	b	.LBB10_11
 	.p2align	4, , 16
 .LBB10_9:                               #   in Loop: Header=BB10_11 Depth=1
 	ld.d	$a5, $a2, 0
-	fld.s	$ft6, $a2, 8
+	fld.s	$ft7, $a2, 8
+	srli.d	$a6, $a5, 32
 	ld.d	$a3, $a2, -16
 	fld.s	$ft9, $a2, -8
-	movgr2fr.w	$ft7, $a5
-	srli.d	$a5, $a5, 32
-	movgr2fr.w	$ft8, $a5
+	vinsgr2vr.d	$vr16, $a5, 0
+	vinsgr2vr.d	$vr16, $a6, 1
+	vshuf4i.w	$vr16, $vr16, 8
 .LBB10_10:                              # %_ZNK14btQuantizedBvh10getAabbMinEi.exit90
                                         #   in Loop: Header=BB10_11 Depth=1
-	movgr2fr.w	$ft10, $a3
-	srli.d	$a3, $a3, 32
-	movgr2fr.w	$ft11, $a3
-	fadd.s	$ft7, $ft7, $ft10
-	fadd.s	$ft8, $ft8, $ft11
-	fadd.s	$ft6, $ft6, $ft9
+	fadd.s	$ft7, $ft7, $ft9
 	fmul.s	$ft7, $ft7, $ft5
-	fmul.s	$ft8, $ft8, $ft5
-	fmul.s	$ft6, $ft6, $ft5
 	fsub.s	$ft7, $ft7, $fa2
-	fsub.s	$ft8, $ft8, $fa3
-	fsub.s	$ft6, $ft6, $fa4
+	srli.d	$a5, $a3, 32
+	vinsgr2vr.d	$vr17, $a3, 0
+	vinsgr2vr.d	$vr17, $a5, 1
+	vshuf4i.w	$vr17, $vr17, 8
+	vfadd.s	$vr16, $vr16, $vr17
+	vfmul.s	$vr16, $vr16, $vr14
+	vfsub.s	$vr16, $vr16, $vr1
+	vfmul.s	$vr16, $vr16, $vr16
 	fmul.s	$ft7, $ft7, $ft7
-	fmul.s	$ft8, $ft8, $ft8
-	fmul.s	$ft6, $ft6, $ft6
-	fadd.s	$fa5, $fa5, $ft7
-	fadd.s	$fa7, $fa7, $ft8
-	fadd.s	$fa1, $fa1, $ft6
+	vfadd.s	$vr4, $vr4, $vr16
+	fadd.s	$fa3, $fa3, $ft7
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 64
 	addi.d	$a1, $a1, 16
@@ -1194,33 +1197,32 @@ _ZN14btQuantizedBvh17calcSplittingAxisEii: # @_ZN14btQuantizedBvh17calcSplitting
 .LBB10_11:                              # =>This Inner Loop Header: Depth=1
 	beqz	$a4, .LBB10_9
 # %bb.12:                               #   in Loop: Header=BB10_11 Depth=1
-	ld.hu	$a3, $a1, 0
-	movgr2fr.w	$ft6, $a3
 	ld.hu	$a3, $a1, 2
-	ffint.s.w	$ft6, $ft6
-	fdiv.s	$ft6, $ft6, $fa6
-	ld.hu	$a5, $a1, 4
+	ld.hu	$a5, $a1, 0
 	movgr2fr.w	$ft7, $a3
 	ffint.s.w	$ft7, $ft7
-	fdiv.s	$ft8, $ft7, $ft0
-	movgr2fr.w	$ft7, $a5
-	ffint.s.w	$ft7, $ft7
-	fdiv.s	$ft9, $ft7, $ft1
+	movgr2fr.w	$ft8, $a5
+	ld.hu	$a3, $a1, 4
+	ffint.s.w	$ft8, $ft8
+	vextrins.w	$vr16, $vr15, 16
+	vfdiv.s	$vr15, $vr16, $vr5
+	movgr2fr.w	$ft8, $a3
+	ffint.s.w	$ft8, $ft8
 	ld.hu	$a3, $a1, -6
-	fadd.s	$ft7, $ft6, $ft2
-	fadd.s	$ft8, $ft8, $ft3
-	fadd.s	$ft6, $ft9, $ft4
+	fdiv.s	$ft9, $ft8, $fa6
+	vfadd.s	$vr16, $vr15, $vr9
+	fadd.s	$ft7, $ft9, $ft4
 	movgr2fr.w	$ft9, $a3
 	ld.hu	$a3, $a1, -4
 	ffint.s.w	$ft9, $ft9
-	fdiv.s	$ft9, $ft9, $fa6
+	fdiv.s	$ft9, $ft9, $fa7
 	ld.hu	$a5, $a1, -2
 	movgr2fr.w	$ft10, $a3
 	ffint.s.w	$ft10, $ft10
 	fdiv.s	$ft10, $ft10, $ft0
 	movgr2fr.w	$ft11, $a5
 	ffint.s.w	$ft11, $ft11
-	fdiv.s	$ft11, $ft11, $ft1
+	fdiv.s	$ft11, $ft11, $fa6
 	fadd.s	$ft12, $ft9, $ft2
 	fadd.s	$ft10, $ft10, $ft3
 	fadd.s	$ft9, $ft11, $ft4
@@ -1243,102 +1245,102 @@ _ZN14btQuantizedBvh25sortAndCalcSplittingIndexEiii: # @_ZN14btQuantizedBvh25sort
 	bge	$a1, $a2, .LBB11_6
 # %bb.1:                                # %.lr.ph
 	ld.bu	$a6, $a0, 64
-	ld.d	$t0, $a0, 88
+	ld.d	$a7, $a0, 88
 	ld.d	$t1, $a0, 152
 	fld.s	$fa0, $a0, 40
-	fld.s	$fa2, $a0, 44
+	fld.s	$fa1, $a0, 8
+	fld.s	$fa2, $a0, 16
 	fld.s	$fa3, $a0, 48
-	fld.s	$fa4, $a0, 8
-	fld.s	$fa5, $a0, 12
-	fld.s	$fa6, $a0, 16
-	sub.d	$a7, $a2, $a1
-	slli.d	$t2, $a1, 6
-	add.d	$t0, $t2, $t0
-	addi.d	$t0, $t0, 16
+	fld.s	$fa5, $a0, 44
+	fld.s	$fa6, $a0, 12
+	vori.b	$vr8, $vr1, 0
+	vextrins.w	$vr8, $vr2, 16
+	vori.b	$vr9, $vr0, 0
+	vextrins.w	$vr9, $vr3, 16
+	slli.d	$t0, $a1, 6
+	add.d	$a7, $t0, $a7
+	addi.d	$a7, $a7, 16
+	sub.d	$t0, $a2, $a1
 	alsl.d	$t1, $a1, $t1, 4
 	addi.d	$t1, $t1, 6
-	movgr2fr.w	$fa1, $zero
-	vldi	$vr9, -1184
-	fmov.s	$ft0, $fa1
-	fmov.s	$fa7, $fa1
+	vrepli.b	$vr4, 0
+	movgr2fr.w	$fa7, $zero
+	vldi	$vr10, -1184
+	vldi	$vr11, -3265
 	b	.LBB11_4
 	.p2align	4, , 16
 .LBB11_2:                               #   in Loop: Header=BB11_4 Depth=1
-	ld.d	$t3, $t0, 0
-	fld.s	$ft2, $t0, 8
-	ld.d	$t2, $t0, -16
-	fld.s	$ft5, $t0, -8
-	movgr2fr.w	$ft3, $t3
-	srli.d	$t3, $t3, 32
-	movgr2fr.w	$ft4, $t3
+	vld	$vr12, $a7, 0
+	fld.s	$ft5, $a7, 4
+	ld.d	$t2, $a7, -16
+	fld.s	$ft6, $a7, -8
+	vshuf4i.w	$vr12, $vr12, 8
 .LBB11_3:                               # %_ZNK14btQuantizedBvh10getAabbMinEi.exit
                                         #   in Loop: Header=BB11_4 Depth=1
-	movgr2fr.w	$ft6, $t2
+	vinsgr2vr.d	$vr15, $t2, 0
 	srli.d	$t2, $t2, 32
-	movgr2fr.w	$ft7, $t2
-	fadd.s	$ft3, $ft3, $ft6
-	fadd.s	$ft4, $ft4, $ft7
-	fadd.s	$ft2, $ft2, $ft5
-	fmul.s	$ft3, $ft3, $ft1
-	fmul.s	$ft4, $ft4, $ft1
-	fmul.s	$ft2, $ft2, $ft1
-	fadd.s	$fa1, $fa1, $ft3
-	fadd.s	$ft0, $ft0, $ft4
-	fadd.s	$fa7, $fa7, $ft2
-	addi.d	$a7, $a7, -1
-	addi.d	$t0, $t0, 64
+	movgr2fr.w	$ft8, $t2
+	fadd.s	$ft5, $ft5, $ft8
+	fmul.s	$ft5, $ft5, $ft2
+	vextrins.w	$vr15, $vr14, 16
+	vfadd.s	$vr12, $vr12, $vr15
+	vfmul.s	$vr12, $vr12, $vr11
+	fadd.s	$fa7, $fa7, $ft5
+	vfadd.s	$vr4, $vr4, $vr12
+	addi.d	$a7, $a7, 64
+	addi.d	$t0, $t0, -1
 	addi.d	$t1, $t1, 16
-	beqz	$a7, .LBB11_7
+	beqz	$t0, .LBB11_7
 .LBB11_4:                               # =>This Inner Loop Header: Depth=1
 	beqz	$a6, .LBB11_2
 # %bb.5:                                #   in Loop: Header=BB11_4 Depth=1
-	ld.hu	$t2, $t1, 0
-	movgr2fr.w	$ft2, $t2
 	ld.hu	$t2, $t1, 2
-	ffint.s.w	$ft2, $ft2
-	fdiv.s	$ft2, $ft2, $fa0
-	ld.hu	$t3, $t1, 4
-	movgr2fr.w	$ft3, $t2
-	ffint.s.w	$ft3, $ft3
-	fdiv.s	$ft4, $ft3, $fa2
-	movgr2fr.w	$ft3, $t3
-	ffint.s.w	$ft3, $ft3
-	fdiv.s	$ft5, $ft3, $fa3
-	ld.hu	$t2, $t1, -6
-	fadd.s	$ft3, $ft2, $fa4
-	fadd.s	$ft4, $ft4, $fa5
-	fadd.s	$ft2, $ft5, $fa6
+	movgr2fr.w	$ft4, $t2
+	ld.hu	$t2, $t1, 4
+	ld.hu	$t3, $t1, 0
+	ffint.s.w	$ft4, $ft4
+	fdiv.s	$ft4, $ft4, $fa5
 	movgr2fr.w	$ft5, $t2
-	ld.hu	$t2, $t1, -4
 	ffint.s.w	$ft5, $ft5
-	fdiv.s	$ft5, $ft5, $fa0
-	ld.hu	$t3, $t1, -2
-	movgr2fr.w	$ft6, $t2
+	movgr2fr.w	$ft6, $t3
 	ffint.s.w	$ft6, $ft6
-	fdiv.s	$ft6, $ft6, $fa2
-	movgr2fr.w	$ft7, $t3
+	vextrins.w	$vr14, $vr13, 16
+	ld.hu	$t2, $t1, -6
+	vfdiv.s	$vr14, $vr14, $vr9
+	fadd.s	$ft5, $ft4, $fa6
+	vfadd.s	$vr12, $vr14, $vr8
+	movgr2fr.w	$ft6, $t2
+	ld.hu	$t2, $t1, -4
+	ffint.s.w	$ft6, $ft6
+	fdiv.s	$ft6, $ft6, $fa0
+	ld.hu	$t3, $t1, -2
+	movgr2fr.w	$ft7, $t2
 	ffint.s.w	$ft7, $ft7
-	fdiv.s	$ft7, $ft7, $fa3
-	fadd.s	$ft8, $ft5, $fa4
-	fadd.s	$ft6, $ft6, $fa5
-	fadd.s	$ft5, $ft7, $fa6
-	movfr2gr.s	$t2, $ft8
-	movfr2gr.s	$t3, $ft6
+	fdiv.s	$ft7, $ft7, $fa5
+	movgr2fr.w	$ft8, $t3
+	ffint.s.w	$ft8, $ft8
+	fdiv.s	$ft8, $ft8, $fa3
+	fadd.s	$ft9, $ft6, $fa1
+	fadd.s	$ft7, $ft7, $fa6
+	fadd.s	$ft6, $ft8, $fa2
+	movfr2gr.s	$t2, $ft9
+	movfr2gr.s	$t3, $ft7
 	bstrins.d	$t2, $t3, 63, 32
 	b	.LBB11_3
 .LBB11_6:
-	movgr2fr.w	$fa1, $zero
-	fmov.s	$fa7, $fa1
-	fmov.s	$ft0, $fa1
+	vrepli.b	$vr4, 0
+	movgr2fr.w	$fa7, $zero
 .LBB11_7:                               # %._crit_edge
 	movgr2fr.w	$fa0, $a4
 	ffint.s.w	$fa0, $fa0
 	frecip.s	$fa0, $fa0
+	vreplvei.w	$vr1, $vr4, 0
 	fmul.s	$fa1, $fa0, $fa1
 	fst.s	$fa1, $sp, 32
-	fmul.s	$fa1, $fa0, $ft0
+	fmul.s	$fa1, $fa0, $fa7
 	fst.s	$fa1, $sp, 36
-	fmul.s	$fa0, $fa0, $fa7
+	vreplvei.w	$vr1, $vr4, 1
+	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 40
 	bge	$a1, $a2, .LBB11_18
 # %bb.8:                                # %.lr.ph172
@@ -3758,11 +3760,9 @@ _ZN14btQuantizedBvh9serializeEPvjb:     # @_ZN14btQuantizedBvh9serializeEPvjb
 .LBB26_2:
 	st.w	$a0, $fp, 60
 	vld	$vr0, $s0, 8
-	addi.d	$a0, $fp, 8
-	vst	$vr0, $a0, 0
+	vst	$vr0, $fp, 8
 	vld	$vr0, $s0, 24
-	addi.d	$a0, $fp, 24
-	vst	$vr0, $a0, 0
+	vst	$vr0, $fp, 24
 	vld	$vr0, $s0, 40
 	vst	$vr0, $fp, 40
 	ld.w	$a1, $s0, 200

@@ -3970,302 +3970,299 @@ _GLOBAL__sub_I_internal_threading_test.cc: # @_GLOBAL__sub_I_internal_threading_
 .LBB13_271:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i211
 .Ltmp458:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_272:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i202
 .Ltmp442:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_273:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i193
 .Ltmp428:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_274:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i184
 .Ltmp414:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_275:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i175
 .Ltmp400:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_276:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i166
 .Ltmp388:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_277:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i157
 .Ltmp372:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_278:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i148
 .Ltmp356:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_279:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i139
 .Ltmp342:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_280:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i130
 .Ltmp328:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_281:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i121
 .Ltmp314:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_282:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp302:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB13_323
+	b	.LBB13_325
 .LBB13_283:
 .Ltmp397:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_284:
 .Ltmp311:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB13_310
-	b	.LBB13_312
+	beq	$a2, $s1, .LBB13_312
+	b	.LBB13_311
 .LBB13_285:
 .Ltmp240:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_286:
 .Ltmp172:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_287:
 .Ltmp104:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_288:
 .Ltmp36:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB13_322
-	b	.LBB13_326
+	beq	$a2, $s1, .LBB13_324
+	b	.LBB13_323
 .LBB13_289:
 .Ltmp439:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_290:
 .Ltmp425:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_291:
 .Ltmp411:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_292:
 .Ltmp353:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_293:
 .Ltmp339:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_294:
 .Ltmp325:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_295:
 .Ltmp273:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_296:
 .Ltmp262:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_297:
 .Ltmp251:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_298:
 .Ltmp205:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_299:
 .Ltmp194:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_300:
 .Ltmp183:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_301:
 .Ltmp137:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_302:
 .Ltmp126:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_303:
 .Ltmp115:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_304:
 .Ltmp69:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_305:
 .Ltmp58:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_306:
 .Ltmp47:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_307:
 .Ltmp471:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB13_314
+	bne	$a2, $s1, .LBB13_318
 	b	.LBB13_319
 .LBB13_308:
 .Ltmp455:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_312
-	b	.LBB13_310
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
 .LBB13_309:
 .Ltmp385:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
+	bne	$a2, $s1, .LBB13_311
+	b	.LBB13_312
+.LBB13_310:
+.Ltmp369:                               # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
 	beq	$a2, $s1, .LBB13_312
-.LBB13_310:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i117
+.LBB13_311:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i117
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s7, .LBB13_323
-	b	.LBB13_324
-.LBB13_311:
-.Ltmp369:                               # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB13_310
-.LBB13_312:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i118
-	bnez	$s7, .LBB13_323
-	b	.LBB13_324
+.LBB13_312:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i118
+	bnez	$s7, .LBB13_325
+	b	.LBB13_326
 .LBB13_313:
 .Ltmp299:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
+	bne	$a2, $s1, .LBB13_318
+	b	.LBB13_319
+.LBB13_314:
+.Ltmp286:                               # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
+.LBB13_315:
+.Ltmp231:                               # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
+.LBB13_316:
+.Ltmp218:                               # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
+.LBB13_317:
+.Ltmp163:                               # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
 	beq	$a2, $s1, .LBB13_319
-.LBB13_314:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i52
+.LBB13_318:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i52
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s3, .LBB13_323
-	b	.LBB13_324
-.LBB13_315:
-.Ltmp286:                               # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
-.LBB13_316:
-.Ltmp231:                               # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
-.LBB13_317:
-.Ltmp218:                               # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
-.LBB13_318:
-.Ltmp163:                               # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB13_314
-.LBB13_319:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i53
-	bnez	$s3, .LBB13_323
-	b	.LBB13_324
+.LBB13_319:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i53
+	bnez	$s3, .LBB13_325
+	b	.LBB13_326
 .LBB13_320:
 .Ltmp150:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-	b	.LBB13_322
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
 .LBB13_321:
 .Ltmp95:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB13_326
-.LBB13_322:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB13_323
+	b	.LBB13_324
+.LBB13_322:
+.Ltmp82:                                # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	beq	$a2, $s1, .LBB13_324
+.LBB13_323:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s6, .LBB13_324
-.LBB13_323:                             # %common.resume.sink.split
+.LBB13_324:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s6, .LBB13_326
+.LBB13_325:                             # %common.resume.sink.split
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB13_324:                             # %common.resume
+.LBB13_326:                             # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB13_325:
-.Ltmp82:                                # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB13_322
-.LBB13_326:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s6, .LBB13_323
-	b	.LBB13_324
 .Lfunc_end13:
 	.size	_GLOBAL__sub_I_internal_threading_test.cc, .Lfunc_end13-_GLOBAL__sub_I_internal_threading_test.cc
 	.cfi_endproc

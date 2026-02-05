@@ -229,23 +229,23 @@ ImplementStateType:                     # @ImplementStateType
 	sltui	$a1, $a1, 1
 	andi	$a0, $a0, 1024
 	sltui	$a0, $a0, 1
-	pcalau12i	$a3, %pc_hi20(.L.str.8)
-	addi.d	$a3, $a3, %pc_lo12(.L.str.8)
+	pcalau12i	$a3, %pc_hi20(.L.str.10)
+	addi.d	$a3, $a3, %pc_lo12(.L.str.10)
 	masknez	$a3, $a3, $a0
-	pcalau12i	$a4, %pc_hi20(.L.str.9)
-	addi.d	$a4, $a4, %pc_lo12(.L.str.9)
+	pcalau12i	$a4, %pc_hi20(.L.str.11)
+	addi.d	$a4, $a4, %pc_lo12(.L.str.11)
 	maskeqz	$a4, $a4, $a0
 	or	$a3, $a4, $a3
-	pcalau12i	$a4, %pc_hi20(.L.str.10)
-	addi.d	$a4, $a4, %pc_lo12(.L.str.10)
+	pcalau12i	$a4, %pc_hi20(.L.str.8)
+	addi.d	$a4, $a4, %pc_lo12(.L.str.8)
 	masknez	$a4, $a4, $a0
-	pcalau12i	$a5, %pc_hi20(.L.str.11)
-	addi.d	$a5, $a5, %pc_lo12(.L.str.11)
+	pcalau12i	$a5, %pc_hi20(.L.str.9)
+	addi.d	$a5, $a5, %pc_lo12(.L.str.9)
 	maskeqz	$a0, $a5, $a0
 	or	$a0, $a0, $a4
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a1, $a1, $a0
+	masknez	$a3, $a3, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$a1, $a0, $a3
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0

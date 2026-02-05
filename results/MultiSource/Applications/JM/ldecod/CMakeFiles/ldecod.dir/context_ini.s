@@ -243,20 +243,20 @@ init_contexts:                          # @init_contexts
 .LBB0_35:                               # %.preheader365
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s3, 176
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	addi.w	$s8, $zero, -3
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(INIT_B8_TYPE_P)
-	addi.d	$s4, $a2, %pc_lo12(INIT_B8_TYPE_P)
-	masknez	$a2, $s4, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_B8_TYPE_I)
-	addi.d	$s0, $a3, %pc_lo12(INIT_B8_TYPE_I)
-	ldptr.w	$a3, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
+	pcalau12i	$a3, %pc_hi20(INIT_B8_TYPE_P)
+	addi.d	$s0, $a3, %pc_lo12(INIT_B8_TYPE_P)
+	masknez	$a3, $s0, $a0
+	pcalau12i	$a4, %pc_hi20(INIT_B8_TYPE_I)
+	addi.d	$s4, $a4, %pc_lo12(INIT_B8_TYPE_I)
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	ori	$s1, $zero, 144
-	mul.d	$a2, $a3, $s1
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
@@ -265,9 +265,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 180
 	mul.d	$a2, $a2, $s1
@@ -280,9 +280,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 184
 	mul.d	$a2, $a2, $s1
@@ -295,9 +295,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 188
 	mul.d	$a2, $a2, $s1
@@ -310,9 +310,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 192
 	mul.d	$a2, $a2, $s1
@@ -325,9 +325,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 196
 	mul.d	$a2, $a2, $s1
@@ -340,9 +340,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 200
 	mul.d	$a2, $a2, $s1
@@ -355,9 +355,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 204
 	mul.d	$a2, $a2, $s1
@@ -370,9 +370,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 208
 	mul.d	$a2, $a2, $s1
@@ -383,16 +383,16 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s3, 212
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s4, $s4, 72
-	masknez	$a2, $s4, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s0, $s0, 72
+	addi.d	$s5, $s0, 72
+	masknez	$a3, $s5, $a0
+	addi.d	$s0, $s4, 72
 	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
@@ -401,7 +401,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -416,7 +416,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -431,7 +431,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -446,7 +446,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -461,7 +461,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -476,7 +476,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -491,7 +491,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -506,7 +506,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -519,19 +519,19 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s3, 248
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(INIT_MV_RES_P)
-	addi.d	$s4, $a2, %pc_lo12(INIT_MV_RES_P)
-	masknez	$a2, $s4, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_MV_RES_I)
-	addi.d	$s0, $a3, %pc_lo12(INIT_MV_RES_I)
-	ldptr.w	$a3, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
+	pcalau12i	$a3, %pc_hi20(INIT_MV_RES_P)
+	addi.d	$s0, $a3, %pc_lo12(INIT_MV_RES_P)
+	masknez	$a3, $s0, $a0
+	pcalau12i	$a4, %pc_hi20(INIT_MV_RES_I)
+	addi.d	$s4, $a4, %pc_lo12(INIT_MV_RES_I)
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	ori	$s1, $zero, 160
-	mul.d	$a2, $a3, $s1
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
@@ -540,9 +540,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 252
 	mul.d	$a2, $a2, $s1
@@ -555,9 +555,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 256
 	mul.d	$a2, $a2, $s1
@@ -570,9 +570,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 260
 	mul.d	$a2, $a2, $s1
@@ -585,9 +585,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 264
 	mul.d	$a2, $a2, $s1
@@ -600,9 +600,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 268
 	mul.d	$a2, $a2, $s1
@@ -615,9 +615,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 272
 	mul.d	$a2, $a2, $s1
@@ -630,9 +630,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 276
 	mul.d	$a2, $a2, $s1
@@ -645,9 +645,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 280
 	mul.d	$a2, $a2, $s1
@@ -660,9 +660,9 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s0, $a0
 	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	addi.d	$a1, $s3, 284
 	mul.d	$a2, $a2, $s1
@@ -673,16 +673,16 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s3, 288
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s4, $s4, 80
-	masknez	$a2, $s4, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s0, $s0, 80
+	addi.d	$s5, $s0, 80
+	masknez	$a3, $s5, $a0
+	addi.d	$s0, $s4, 80
 	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
@@ -691,7 +691,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -706,7 +706,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -721,7 +721,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -736,7 +736,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -751,7 +751,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -766,7 +766,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -781,7 +781,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -796,7 +796,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -811,7 +811,7 @@ init_contexts:                          # @init_contexts
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
+	masknez	$a1, $s5, $a0
 	ldptr.w	$a2, $fp, 5868
 	maskeqz	$a0, $s0, $a0
 	or	$a0, $a0, $a1
@@ -824,19 +824,19 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s3, 328
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(INIT_REF_NO_P)
-	addi.d	$s4, $a2, %pc_lo12(INIT_REF_NO_P)
-	masknez	$a2, $s4, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_REF_NO_I)
-	addi.d	$s0, $a3, %pc_lo12(INIT_REF_NO_I)
-	ldptr.w	$a3, $fp, 5868
+	pcalau12i	$a3, %pc_hi20(INIT_REF_NO_P)
+	addi.d	$s4, $a3, %pc_lo12(INIT_REF_NO_P)
+	masknez	$a3, $s4, $a0
+	pcalau12i	$a4, %pc_hi20(INIT_REF_NO_I)
+	addi.d	$s0, $a4, %pc_lo12(INIT_REF_NO_I)
 	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
+	or	$a0, $a0, $a3
 	ori	$s1, $zero, 96
-	mul.d	$a2, $a3, $s1
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
@@ -1554,32 +1554,32 @@ init_contexts:                          # @init_contexts
 	ld.w	$a0, $fp, 44
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$a1, $s2, 232
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(INIT_MAP_P)
-	addi.d	$s4, $a2, %pc_lo12(INIT_MAP_P)
-	masknez	$a2, $s4, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_MAP_I)
-	addi.d	$s3, $a3, %pc_lo12(INIT_MAP_I)
-	ldptr.w	$a3, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a2
+	pcalau12i	$a3, %pc_hi20(INIT_MAP_P)
+	addi.d	$s3, $a3, %pc_lo12(INIT_MAP_P)
+	masknez	$a3, $s3, $a0
+	pcalau12i	$a4, %pc_hi20(INIT_MAP_I)
+	addi.d	$s4, $a4, %pc_lo12(INIT_MAP_I)
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	ori	$s1, $zero, 960
-	mul.d	$a2, $a3, $s1
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 236
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 236
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -1587,14 +1587,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 240
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 240
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -1602,14 +1602,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 244
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 244
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -1617,14 +1617,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 248
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 248
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -1632,14 +1632,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 252
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 252
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -1647,14 +1647,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 256
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 256
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -1662,14 +1662,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 260
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 260
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -1677,14 +1677,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 264
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 264
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -1692,14 +1692,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 268
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 268
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -1707,14 +1707,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 272
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 272
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -1722,14 +1722,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 276
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 276
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -1737,14 +1737,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 280
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 280
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -1752,14 +1752,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 284
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 284
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -1767,14 +1767,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 288
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 288
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -1783,29 +1783,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 292
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 120
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 120
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 120
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 296
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 296
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -1813,14 +1813,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 300
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 300
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -1828,14 +1828,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 304
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 304
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -1843,14 +1843,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 308
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 308
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -1858,14 +1858,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 312
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 312
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -1873,14 +1873,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 316
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 316
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -1888,14 +1888,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 320
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 320
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -1903,14 +1903,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 324
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 324
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -1918,14 +1918,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 328
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 328
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -1933,14 +1933,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 332
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 332
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -1948,14 +1948,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 336
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 336
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -1963,14 +1963,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 340
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 340
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -1978,14 +1978,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 344
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 344
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -1993,14 +1993,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 348
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 348
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -2009,29 +2009,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 352
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 240
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 240
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 240
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 356
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 356
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -2039,14 +2039,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 360
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 360
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -2054,14 +2054,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 364
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 364
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -2069,14 +2069,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 368
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 368
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -2084,14 +2084,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 372
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 372
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -2099,14 +2099,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 376
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 376
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -2114,14 +2114,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 380
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 380
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -2129,14 +2129,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 384
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 384
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -2144,14 +2144,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 388
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 388
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -2159,14 +2159,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 392
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 392
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -2174,14 +2174,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 396
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 396
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -2189,14 +2189,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 400
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 400
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -2204,14 +2204,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 404
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 404
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -2219,14 +2219,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 408
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 408
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -2235,29 +2235,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 412
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 360
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 360
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 360
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 416
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 416
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -2265,14 +2265,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 420
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 420
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -2280,14 +2280,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 424
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 424
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -2295,14 +2295,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 428
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 428
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -2310,14 +2310,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 432
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 432
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -2325,14 +2325,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 436
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 436
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -2340,14 +2340,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 440
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 440
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -2355,14 +2355,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 444
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 444
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -2370,14 +2370,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 448
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 448
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -2385,14 +2385,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 452
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 452
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -2400,14 +2400,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 456
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 456
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -2415,14 +2415,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 460
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 460
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -2430,14 +2430,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 464
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 464
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -2445,14 +2445,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 468
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 468
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -2461,29 +2461,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 472
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 480
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 480
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 480
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 476
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 476
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -2491,14 +2491,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 480
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 480
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -2506,14 +2506,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 484
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 484
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -2521,14 +2521,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 488
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 488
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -2536,14 +2536,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 492
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 492
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -2551,14 +2551,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 496
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 496
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -2566,14 +2566,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 500
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 500
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -2581,14 +2581,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 504
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 504
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -2596,14 +2596,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 508
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 508
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -2611,14 +2611,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 512
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 512
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -2626,14 +2626,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 516
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 516
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -2641,14 +2641,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 520
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 520
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -2656,14 +2656,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 524
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 524
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -2671,14 +2671,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 528
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 528
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -2687,29 +2687,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 532
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 600
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 600
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 600
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 536
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 536
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -2717,14 +2717,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 540
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 540
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -2732,14 +2732,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 544
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 544
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -2747,14 +2747,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 548
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 548
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -2762,14 +2762,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 552
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 552
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -2777,14 +2777,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 556
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 556
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -2792,14 +2792,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 560
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 560
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -2807,14 +2807,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 564
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 564
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -2822,14 +2822,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 568
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 568
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -2837,14 +2837,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 572
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 572
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -2852,14 +2852,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 576
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 576
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -2867,14 +2867,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 580
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 580
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -2882,14 +2882,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 584
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 584
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -2897,14 +2897,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 588
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 588
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -2913,29 +2913,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 592
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 720
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 720
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 720
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 596
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 596
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -2943,14 +2943,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 600
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 600
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -2958,14 +2958,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 604
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 604
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -2973,14 +2973,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 608
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 608
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -2988,14 +2988,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 612
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 612
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -3003,14 +3003,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 616
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 616
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -3018,14 +3018,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 620
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 620
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -3033,14 +3033,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 624
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 624
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -3048,14 +3048,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 628
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 628
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -3063,14 +3063,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 632
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 632
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -3078,14 +3078,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 636
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 636
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -3093,14 +3093,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 640
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 640
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -3108,14 +3108,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 644
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 644
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -3123,14 +3123,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 648
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 648
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -3139,29 +3139,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 652
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s4, $s4, 840
-	masknez	$a2, $s4, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 840
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s3, $s4, 840
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 656
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 656
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -3169,14 +3169,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 660
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 660
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -3184,14 +3184,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 664
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 664
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -3199,14 +3199,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 668
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 668
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -3214,14 +3214,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 672
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 672
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -3229,14 +3229,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 676
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 676
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -3244,14 +3244,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 680
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 680
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -3259,14 +3259,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 684
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 684
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -3274,14 +3274,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 688
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 688
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -3289,14 +3289,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 692
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 692
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -3304,14 +3304,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 696
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 696
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -3319,14 +3319,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 700
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 700
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -3334,14 +3334,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 704
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 704
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -3349,14 +3349,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 708
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 708
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -3365,31 +3365,31 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 832
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(INIT_LAST_P)
-	addi.d	$s4, $a2, %pc_lo12(INIT_LAST_P)
-	masknez	$a2, $s4, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_LAST_I)
-	addi.d	$s3, $a3, %pc_lo12(INIT_LAST_I)
-	ldptr.w	$a3, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	pcalau12i	$a3, %pc_hi20(INIT_LAST_P)
+	addi.d	$s3, $a3, %pc_lo12(INIT_LAST_P)
+	masknez	$a3, $s3, $a0
+	pcalau12i	$a4, %pc_hi20(INIT_LAST_I)
+	addi.d	$s4, $a4, %pc_lo12(INIT_LAST_I)
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 836
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 836
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -3397,14 +3397,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 840
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 840
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -3412,14 +3412,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 844
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 844
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -3427,14 +3427,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 848
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 848
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -3442,14 +3442,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 852
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 852
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -3457,14 +3457,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 856
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 856
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -3472,14 +3472,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 860
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 860
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -3487,14 +3487,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 864
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 864
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -3502,14 +3502,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 868
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 868
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -3517,14 +3517,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 872
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 872
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -3532,14 +3532,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 876
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 876
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -3547,14 +3547,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 880
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 880
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -3562,14 +3562,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 884
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 884
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -3577,14 +3577,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 888
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 888
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -3593,29 +3593,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 892
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 120
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 120
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 120
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 896
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 896
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -3623,14 +3623,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 900
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 900
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -3638,14 +3638,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 904
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 904
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -3653,14 +3653,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 908
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 908
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -3668,14 +3668,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 912
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 912
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -3683,14 +3683,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 916
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 916
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -3698,14 +3698,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 920
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 920
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -3713,14 +3713,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 924
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 924
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -3728,14 +3728,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 928
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 928
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -3743,14 +3743,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 932
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 932
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -3758,14 +3758,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 936
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 936
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -3773,14 +3773,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 940
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 940
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -3788,14 +3788,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 944
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 944
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -3803,14 +3803,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 948
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 948
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -3819,29 +3819,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 952
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 240
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 240
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 240
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 956
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 956
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -3849,14 +3849,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 960
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 960
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -3864,14 +3864,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 964
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 964
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -3879,14 +3879,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 968
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 968
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -3894,14 +3894,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 972
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 972
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -3909,14 +3909,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 976
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 976
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -3924,14 +3924,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 980
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 980
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -3939,14 +3939,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 984
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 984
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -3954,14 +3954,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 988
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 988
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -3969,14 +3969,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 992
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 992
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -3984,14 +3984,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 996
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 996
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -3999,14 +3999,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1000
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1000
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -4014,14 +4014,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1004
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1004
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -4029,14 +4029,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1008
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1008
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -4045,29 +4045,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 1012
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 360
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 360
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 360
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1016
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1016
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -4075,14 +4075,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1020
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1020
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -4090,14 +4090,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1024
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1024
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -4105,14 +4105,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1028
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1028
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -4120,14 +4120,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1032
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1032
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -4135,14 +4135,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1036
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1036
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -4150,14 +4150,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1040
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1040
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -4165,14 +4165,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1044
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1044
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -4180,14 +4180,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1048
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1048
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -4195,14 +4195,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1052
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1052
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -4210,14 +4210,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1056
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1056
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -4225,14 +4225,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1060
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1060
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -4240,14 +4240,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1064
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1064
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -4255,14 +4255,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1068
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1068
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -4271,29 +4271,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 1072
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 480
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 480
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 480
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1076
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1076
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -4301,14 +4301,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1080
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1080
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -4316,14 +4316,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1084
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1084
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -4331,14 +4331,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1088
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1088
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -4346,14 +4346,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1092
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1092
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -4361,14 +4361,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1096
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1096
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -4376,14 +4376,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1100
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1100
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -4391,14 +4391,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1104
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1104
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -4406,14 +4406,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1108
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1108
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -4421,14 +4421,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1112
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1112
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -4436,14 +4436,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1116
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1116
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -4451,14 +4451,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1120
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1120
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -4466,14 +4466,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1124
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1124
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -4481,14 +4481,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1128
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1128
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -4497,29 +4497,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 1132
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 600
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 600
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 600
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1136
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1136
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -4527,14 +4527,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1140
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1140
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -4542,14 +4542,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1144
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1144
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -4557,14 +4557,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1148
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1148
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -4572,14 +4572,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1152
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1152
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -4587,14 +4587,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1156
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1156
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -4602,14 +4602,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1160
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1160
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -4617,14 +4617,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1164
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1164
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -4632,14 +4632,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1168
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1168
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -4647,14 +4647,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1172
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1172
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -4662,14 +4662,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1176
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1176
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -4677,14 +4677,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1180
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1180
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -4692,14 +4692,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1184
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1184
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -4707,14 +4707,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1188
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1188
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -4723,29 +4723,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 1192
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 720
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 720
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 720
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1196
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1196
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -4753,14 +4753,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1200
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1200
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -4768,14 +4768,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1204
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1204
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -4783,14 +4783,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1208
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1208
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -4798,14 +4798,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1212
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1212
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -4813,14 +4813,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1216
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1216
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -4828,14 +4828,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1220
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1220
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -4843,14 +4843,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1224
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1224
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -4858,14 +4858,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1228
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1228
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -4873,14 +4873,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1232
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1232
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -4888,14 +4888,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1236
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1236
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -4903,14 +4903,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1240
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1240
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -4918,14 +4918,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1244
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1244
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -4933,14 +4933,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1248
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1248
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -4949,29 +4949,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s2, 1252
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	addi.d	$s4, $s4, 840
-	masknez	$a2, $s4, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 840
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s3, $s4, 840
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1256
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1256
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -4979,14 +4979,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1260
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1260
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -4994,14 +4994,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1264
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1264
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -5009,14 +5009,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1268
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1268
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -5024,14 +5024,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1272
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1272
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -5039,14 +5039,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1276
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1276
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -5054,14 +5054,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1280
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1280
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -5069,14 +5069,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1284
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1284
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -5084,14 +5084,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1288
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1288
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -5099,14 +5099,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1292
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1292
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -5114,14 +5114,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1296
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1296
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -5129,14 +5129,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1300
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1300
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -5144,14 +5144,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1304
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1304
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -5159,15 +5159,15 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s2, 1308
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	and	$a0, $a0, $s8
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s2, 1308
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -5401,33 +5401,33 @@ init_contexts:                          # @init_contexts
 	ld.w	$a0, $fp, 44
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$a1, $s7, 1832
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(INIT_FLD_MAP_P)
-	addi.d	$s4, $a2, %pc_lo12(INIT_FLD_MAP_P)
-	masknez	$a2, $s4, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_FLD_MAP_I)
-	addi.d	$s3, $a3, %pc_lo12(INIT_FLD_MAP_I)
-	ldptr.w	$a3, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a2
+	pcalau12i	$a3, %pc_hi20(INIT_FLD_MAP_P)
+	addi.d	$s3, $a3, %pc_lo12(INIT_FLD_MAP_P)
+	masknez	$a3, $s3, $a0
+	pcalau12i	$a4, %pc_hi20(INIT_FLD_MAP_I)
+	addi.d	$s4, $a4, %pc_lo12(INIT_FLD_MAP_I)
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	ori	$s1, $zero, 960
-	mul.d	$a2, $a3, $s1
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1836
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1836
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -5435,14 +5435,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1840
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1840
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -5450,14 +5450,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1844
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1844
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -5465,14 +5465,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1848
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1848
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -5480,14 +5480,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1852
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1852
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -5495,14 +5495,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1856
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1856
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -5510,14 +5510,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1860
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1860
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -5525,14 +5525,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1864
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1864
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -5540,14 +5540,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1868
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1868
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -5555,14 +5555,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1872
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1872
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -5570,14 +5570,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1876
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1876
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -5585,14 +5585,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1880
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1880
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -5600,14 +5600,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1884
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1884
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -5615,14 +5615,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1888
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1888
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -5631,29 +5631,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s7, 1892
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 120
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 120
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 120
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1896
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1896
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -5661,14 +5661,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1900
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1900
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -5676,14 +5676,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1904
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1904
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -5691,14 +5691,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1908
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1908
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -5706,14 +5706,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1912
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1912
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -5721,14 +5721,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1916
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1916
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -5736,14 +5736,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1920
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1920
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -5751,14 +5751,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1924
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1924
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -5766,14 +5766,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1928
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1928
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -5781,14 +5781,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1932
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1932
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -5796,14 +5796,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1936
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1936
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -5811,14 +5811,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1940
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1940
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -5826,14 +5826,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1944
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1944
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -5841,14 +5841,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1948
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1948
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -5857,29 +5857,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s7, 1952
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 240
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s0, $s3, 240
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s0, $a0
+	addi.d	$s5, $s4, 240
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1956
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1956
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -5887,14 +5887,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1960
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1960
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -5902,14 +5902,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1964
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1964
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -5917,14 +5917,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1968
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1968
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -5932,14 +5932,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1972
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1972
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -5947,14 +5947,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1976
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1976
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -5962,14 +5962,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1980
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1980
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -5977,14 +5977,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1984
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1984
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -5992,14 +5992,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1988
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1988
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -6007,14 +6007,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1992
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1992
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -6022,14 +6022,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 1996
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 1996
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -6037,14 +6037,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2000
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2000
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -6052,14 +6052,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2004
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2004
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -6067,14 +6067,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2008
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s0, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2008
+	masknez	$a3, $s0, $a0
+	maskeqz	$a0, $s5, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -6083,29 +6083,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s7, 2012
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 360
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 360
+	addi.d	$s5, $s3, 360
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 360
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2016
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2016
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -6113,14 +6113,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2020
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2020
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -6128,14 +6128,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2024
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2024
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -6143,14 +6143,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2028
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2028
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -6158,14 +6158,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2032
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2032
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -6173,14 +6173,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2036
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2036
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -6188,14 +6188,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2040
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2040
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -6203,14 +6203,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s7, 2044
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s7, 2044
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -6218,15 +6218,15 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$s0, $s7, 2047
+	addi.d	$a1, $s0, 1
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	ldptr.w	$a2, $fp, 5868
-	or	$a0, $a0, $a1
-	addi.d	$s0, $s7, 2047
-	addi.d	$a1, $s0, 1
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -6234,14 +6234,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 5
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 5
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -6249,14 +6249,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 9
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 9
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -6264,14 +6264,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 13
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 13
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -6279,14 +6279,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 17
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 17
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -6294,14 +6294,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 21
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 21
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -6310,29 +6310,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 25
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 480
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 480
+	addi.d	$s5, $s3, 480
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 480
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 29
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 29
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -6340,14 +6340,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 33
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 33
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -6355,14 +6355,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 37
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 37
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -6370,14 +6370,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 41
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 41
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -6385,14 +6385,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 45
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 45
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -6400,14 +6400,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 49
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 49
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -6415,14 +6415,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 53
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 53
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -6430,14 +6430,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 57
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 57
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -6445,14 +6445,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 61
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 61
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -6460,14 +6460,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 65
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 65
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -6475,14 +6475,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 69
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 69
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -6490,14 +6490,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 73
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 73
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -6505,14 +6505,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 77
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 77
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -6520,14 +6520,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 81
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 81
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -6536,29 +6536,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 85
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 600
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 600
+	addi.d	$s5, $s3, 600
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 600
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 89
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 89
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -6566,14 +6566,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 93
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 93
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -6581,14 +6581,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 97
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 97
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -6596,14 +6596,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 101
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 101
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -6611,14 +6611,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 105
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 105
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -6626,14 +6626,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 109
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 109
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -6641,14 +6641,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 113
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 113
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -6656,14 +6656,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 117
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 117
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -6671,14 +6671,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 121
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 121
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -6686,14 +6686,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 125
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 125
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -6701,14 +6701,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 129
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 129
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -6716,14 +6716,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 133
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 133
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -6731,14 +6731,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 137
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 137
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -6746,14 +6746,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 141
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 141
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -6762,29 +6762,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 145
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 720
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 720
+	addi.d	$s5, $s3, 720
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 720
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 149
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 149
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -6792,14 +6792,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 153
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 153
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -6807,14 +6807,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 157
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 157
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -6822,14 +6822,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 161
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 161
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -6837,14 +6837,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 165
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 165
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -6852,14 +6852,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 169
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 169
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -6867,14 +6867,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 173
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 173
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -6882,14 +6882,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 177
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 177
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -6897,14 +6897,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 181
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 181
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -6912,14 +6912,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 185
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 185
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -6927,14 +6927,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 189
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 189
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -6942,14 +6942,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 193
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 193
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -6957,14 +6957,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 197
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 197
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -6972,14 +6972,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 201
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 201
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -6988,29 +6988,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 205
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s4, $s4, 840
-	masknez	$a2, $s4, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s3, $s3, 840
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s3, $a0
+	addi.d	$s4, $s4, 840
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 209
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 209
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -7018,14 +7018,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 213
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 213
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -7033,14 +7033,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 217
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 217
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -7048,14 +7048,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 221
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 221
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -7063,14 +7063,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 225
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 225
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -7078,14 +7078,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 229
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 229
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -7093,14 +7093,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 233
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 233
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -7108,14 +7108,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 237
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 237
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -7123,14 +7123,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 241
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 241
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -7138,14 +7138,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 245
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 245
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -7153,14 +7153,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 249
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 249
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -7168,14 +7168,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 253
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 253
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -7183,14 +7183,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 257
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 257
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -7198,14 +7198,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 261
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 261
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -7214,31 +7214,31 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 385
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(INIT_FLD_LAST_P)
-	addi.d	$s4, $a2, %pc_lo12(INIT_FLD_LAST_P)
-	masknez	$a2, $s4, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_FLD_LAST_I)
-	addi.d	$s3, $a3, %pc_lo12(INIT_FLD_LAST_I)
-	ldptr.w	$a3, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	pcalau12i	$a3, %pc_hi20(INIT_FLD_LAST_P)
+	addi.d	$s3, $a3, %pc_lo12(INIT_FLD_LAST_P)
+	masknez	$a3, $s3, $a0
+	pcalau12i	$a4, %pc_hi20(INIT_FLD_LAST_I)
+	addi.d	$s4, $a4, %pc_lo12(INIT_FLD_LAST_I)
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 389
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 389
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -7246,14 +7246,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 393
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 393
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -7261,14 +7261,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 397
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 397
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -7276,14 +7276,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 401
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 401
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -7291,14 +7291,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 405
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 405
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -7306,14 +7306,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 409
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 409
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -7321,14 +7321,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 413
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 413
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -7336,14 +7336,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 417
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 417
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -7351,14 +7351,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 421
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 421
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -7366,14 +7366,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 425
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 425
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -7381,14 +7381,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 429
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 429
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -7396,14 +7396,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 433
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 433
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -7411,14 +7411,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 437
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 437
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -7426,14 +7426,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 441
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 441
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -7442,29 +7442,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 445
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 120
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 120
+	addi.d	$s5, $s3, 120
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 120
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 449
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 449
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -7472,14 +7472,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 453
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 453
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -7487,14 +7487,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 457
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 457
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -7502,14 +7502,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 461
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 461
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -7517,14 +7517,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 465
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 465
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -7532,14 +7532,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 469
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 469
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -7547,14 +7547,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 473
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 473
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -7562,14 +7562,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 477
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 477
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -7577,14 +7577,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 481
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 481
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -7592,14 +7592,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 485
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 485
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -7607,14 +7607,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 489
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 489
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -7622,14 +7622,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 493
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 493
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -7637,14 +7637,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 497
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 497
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -7652,14 +7652,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 501
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 501
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -7668,29 +7668,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 505
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 240
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 240
+	addi.d	$s5, $s3, 240
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 240
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 509
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 509
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -7698,14 +7698,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 513
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 513
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -7713,14 +7713,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 517
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 517
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -7728,14 +7728,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 521
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 521
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -7743,14 +7743,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 525
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 525
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -7758,14 +7758,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 529
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 529
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -7773,14 +7773,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 533
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 533
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -7788,14 +7788,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 537
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 537
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -7803,14 +7803,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 541
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 541
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -7818,14 +7818,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 545
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 545
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -7833,14 +7833,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 549
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 549
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -7848,14 +7848,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 553
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 553
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -7863,14 +7863,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 557
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 557
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -7878,14 +7878,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 561
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 561
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -7894,29 +7894,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 565
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 360
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 360
+	addi.d	$s5, $s3, 360
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 360
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 569
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 569
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -7924,14 +7924,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 573
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 573
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -7939,14 +7939,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 577
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 577
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -7954,14 +7954,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 581
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 581
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -7969,14 +7969,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 585
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 585
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -7984,14 +7984,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 589
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 589
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -7999,14 +7999,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 593
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 593
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -8014,14 +8014,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 597
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 597
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -8029,14 +8029,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 601
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 601
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -8044,14 +8044,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 605
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 605
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -8059,14 +8059,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 609
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 609
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -8074,14 +8074,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 613
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 613
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -8089,14 +8089,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 617
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 617
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -8104,14 +8104,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 621
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 621
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -8120,29 +8120,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 625
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 480
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 480
+	addi.d	$s5, $s3, 480
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 480
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 629
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 629
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -8150,14 +8150,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 633
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 633
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -8165,14 +8165,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 637
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 637
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -8180,14 +8180,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 641
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 641
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -8195,14 +8195,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 645
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 645
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -8210,14 +8210,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 649
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 649
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -8225,14 +8225,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 653
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 653
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -8240,14 +8240,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 657
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 657
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -8255,14 +8255,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 661
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 661
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -8270,14 +8270,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 665
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 665
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -8285,14 +8285,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 669
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 669
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -8300,14 +8300,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 673
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 673
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -8315,14 +8315,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 677
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 677
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -8330,14 +8330,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 681
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 681
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -8346,29 +8346,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 685
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 600
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 600
+	addi.d	$s5, $s3, 600
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 600
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 689
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 689
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -8376,14 +8376,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 693
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 693
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -8391,14 +8391,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 697
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 697
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -8406,14 +8406,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 701
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 701
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -8421,14 +8421,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 705
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 705
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -8436,14 +8436,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 709
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 709
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -8451,14 +8451,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 713
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 713
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -8466,14 +8466,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 717
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 717
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -8481,14 +8481,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 721
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 721
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -8496,14 +8496,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 725
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 725
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -8511,14 +8511,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 729
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 729
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -8526,14 +8526,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 733
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 733
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -8541,14 +8541,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 737
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 737
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -8556,14 +8556,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 741
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 741
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -8572,29 +8572,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 745
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s5, $s4, 720
-	masknez	$a2, $s5, $a0
-	ldptr.w	$a3, $fp, 5868
-	addi.d	$s6, $s3, 720
+	addi.d	$s5, $s3, 720
+	masknez	$a3, $s5, $a0
+	addi.d	$s6, $s4, 720
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 749
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 749
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -8602,14 +8602,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 753
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 753
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -8617,14 +8617,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 757
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 757
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -8632,14 +8632,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 761
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 761
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -8647,14 +8647,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 765
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 765
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -8662,14 +8662,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 769
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 769
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -8677,14 +8677,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 773
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 773
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -8692,14 +8692,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 777
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 777
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -8707,14 +8707,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 781
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 781
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -8722,14 +8722,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 785
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 785
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -8737,14 +8737,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 789
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 789
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -8752,14 +8752,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 793
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 793
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -8767,14 +8767,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 797
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 797
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -8782,14 +8782,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 801
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s5, $a0
-	ldptr.w	$a2, $fp, 5868
+	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s6, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 801
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112
@@ -8798,29 +8798,29 @@ init_contexts:                          # @init_contexts
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $s0, 805
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	addi.d	$s4, $s4, 840
-	masknez	$a2, $s4, $a0
-	ldptr.w	$a3, $fp, 5868
 	addi.d	$s3, $s3, 840
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a2
-	mul.d	$a2, $a3, $s1
+	masknez	$a3, $s3, $a0
+	addi.d	$s4, $s4, 840
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a0, $a2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 809
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 809
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 8
@@ -8828,14 +8828,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 813
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 813
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 16
@@ -8843,14 +8843,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 817
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 817
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 24
@@ -8858,14 +8858,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 821
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 821
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 32
@@ -8873,14 +8873,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 825
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 825
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 40
@@ -8888,14 +8888,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 829
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 829
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 48
@@ -8903,14 +8903,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 833
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 833
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 56
@@ -8918,14 +8918,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 837
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 837
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 64
@@ -8933,14 +8933,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 841
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 841
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 72
@@ -8948,14 +8948,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 845
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 845
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 80
@@ -8963,14 +8963,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 849
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 849
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 88
@@ -8978,14 +8978,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 853
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 853
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 96
@@ -8993,14 +8993,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 857
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 857
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 104
@@ -9008,14 +9008,14 @@ init_contexts:                          # @init_contexts
 	pcaddu18i	$ra, %call36(biari_init_context)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
+	addi.d	$a1, $s0, 861
+	ldptr.w	$a2, $fp, 5868
 	addi.w	$a0, $a0, -2
 	and	$a0, $a0, $s2
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s4, $a0
-	ldptr.w	$a2, $fp, 5868
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	addi.d	$a1, $s0, 861
+	masknez	$a3, $s3, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$a0, $a0, $a3
 	mul.d	$a2, $a2, $s1
 	add.d	$a0, $a0, $a2
 	addi.d	$a2, $a0, 112

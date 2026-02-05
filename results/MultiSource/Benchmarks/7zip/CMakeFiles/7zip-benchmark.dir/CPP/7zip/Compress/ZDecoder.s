@@ -506,7 +506,7 @@ _ZN9NCompress2NZ8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutStream
 .LBB6_14:
 	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 	move	$s3, $zero
-	ext.w.b	$a1, $s1
+	slli.d	$a1, $s1, 56
 	addi.w	$a3, $zero, -1
 	slt	$a1, $a3, $a1
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill

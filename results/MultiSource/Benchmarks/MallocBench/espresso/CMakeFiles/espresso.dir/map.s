@@ -57,8 +57,7 @@ minterms:                               # @minterms
 	bnez	$a6, .LBB0_7
 # %bb.8:                                # %middle.block
 	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvpermi.d	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1
 	xvshuf4i.w	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1
@@ -307,8 +306,7 @@ map:                                    # @map
 	bnez	$a6, .LBB2_7
 # %bb.8:                                # %middle.block
 	xvmul.w	$xr0, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvpermi.d	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1
 	xvshuf4i.w	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1
@@ -417,7 +415,7 @@ map:                                    # @map
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	move	$a1, $zero
-	ori	$s4, $zero, 64
+	ori	$s0, $zero, 64
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB2_23
 	.p2align	4, , 16
@@ -458,7 +456,7 @@ map:                                    # @map
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_27 Depth 3
                                         #         Child Loop BB2_29 Depth 4
-	move	$s0, $zero
+	move	$s4, $zero
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	slli.d	$s7, $a0, 8
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
@@ -467,7 +465,7 @@ map:                                    # @map
 .LBB2_26:                               #   in Loop: Header=BB2_27 Depth=3
 	addi.d	$s3, $s3, 64
 	ori	$a0, $zero, 16
-	beq	$s0, $a0, .LBB2_24
+	beq	$s4, $a0, .LBB2_24
 .LBB2_27:                               # %.preheader
                                         #   Parent Loop BB2_23 Depth=1
                                         #     Parent Loop BB2_25 Depth=2
@@ -475,14 +473,14 @@ map:                                    # @map
                                         #         Child Loop BB2_29 Depth 4
 	move	$s5, $zero
 	move	$fp, $zero
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	ori	$s0, $zero, 1
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	ori	$s4, $zero, 1
 	b	.LBB2_29
 	.p2align	4, , 16
 .LBB2_28:                               #   in Loop: Header=BB2_29 Depth=4
 	addi.d	$s5, $s5, 4
-	addi.d	$s0, $s0, 1
-	beq	$s5, $s4, .LBB2_35
+	addi.d	$s4, $s4, 1
+	beq	$s5, $s0, .LBB2_35
 .LBB2_29:                               #   Parent Loop BB2_23 Depth=1
                                         #     Parent Loop BB2_25 Depth=2
                                         #       Parent Loop BB2_27 Depth=3
@@ -491,10 +489,10 @@ map:                                    # @map
 	add.w	$a0, $a0, $s7
 	blt	$a0, $s6, .LBB2_32
 # %bb.30:                               #   in Loop: Header=BB2_29 Depth=4
-	andi	$a0, $s0, 3
+	andi	$a0, $s4, 3
 	beqz	$a0, .LBB2_33
 .LBB2_31:                               #   in Loop: Header=BB2_29 Depth=4
-	andi	$a0, $s0, 7
+	andi	$a0, $s4, 7
 	bnez	$a0, .LBB2_28
 	b	.LBB2_34
 	.p2align	4, , 16
@@ -515,14 +513,14 @@ map:                                    # @map
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
-	andi	$a0, $s0, 3
+	andi	$a0, $s4, 3
 	bnez	$a0, .LBB2_31
 .LBB2_33:                               #   in Loop: Header=BB2_29 Depth=4
 	ld.d	$a1, $s8, 0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s0, 7
+	andi	$a0, $s4, 7
 	bnez	$a0, .LBB2_28
 .LBB2_34:                               #   in Loop: Header=BB2_29 Depth=4
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -539,11 +537,11 @@ map:                                    # @map
 	jirl	$ra, $ra, 0
 .LBB2_37:                               #   in Loop: Header=BB2_27 Depth=3
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$s0, $a1, 1
-	andi	$a0, $s0, 3
+	addi.d	$s4, $a1, 1
+	andi	$a0, $s4, 3
 	beqz	$a0, .LBB2_39
 # %bb.38:                               #   in Loop: Header=BB2_27 Depth=3
-	andi	$a0, $s0, 7
+	andi	$a0, $s4, 7
 	bnez	$a0, .LBB2_26
 	b	.LBB2_42
 	.p2align	4, , 16
@@ -551,7 +549,7 @@ map:                                    # @map
 	ori	$a0, $zero, 15
 	beq	$a1, $a0, .LBB2_41
 # %bb.40:                               #   in Loop: Header=BB2_27 Depth=3
-	slli.d	$a0, $s0, 6
+	slli.d	$a0, $s4, 6
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ldx.w	$a0, $a1, $a0
 	bge	$a0, $s6, .LBB2_24
@@ -560,7 +558,7 @@ map:                                    # @map
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s0, 7
+	andi	$a0, $s4, 7
 	bnez	$a0, .LBB2_26
 .LBB2_42:                               #   in Loop: Header=BB2_27 Depth=3
 	ld.d	$a1, $s8, 0

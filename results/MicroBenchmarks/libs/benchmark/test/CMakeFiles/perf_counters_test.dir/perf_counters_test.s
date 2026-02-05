@@ -2677,7 +2677,7 @@ _GLOBAL__sub_I_perf_counters_test.cc:   # @_GLOBAL__sub_I_perf_counters_test.cc
 .LBB16_86:                              # %_ZNSt14_Function_baseD2Ev.exit5.i
 	ld.d	$a0, $sp, 24
 	beq	$a0, $s1, .LBB16_111
-# %bb.87:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
+# %bb.87:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i59
 	ld.d	$a1, $sp, 40
 	addi.d	$a1, $a1, 1
 	b	.LBB16_110
@@ -2737,37 +2737,34 @@ _GLOBAL__sub_I_perf_counters_test.cc:   # @_GLOBAL__sub_I_perf_counters_test.cc
 .Ltmp107:                               # EH_LABEL
 	ld.d	$a2, $sp, 24
 	move	$fp, $a0
-	bne	$a2, $s1, .LBB16_104
-# %bb.103:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i35
-	bnez	$s3, .LBB16_109
-	b	.LBB16_111
-.LBB16_104:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i34
+	beq	$a2, $s1, .LBB16_104
+# %bb.103:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i34
 	ld.d	$a0, $sp, 40
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB16_104:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i35
 	bnez	$s3, .LBB16_109
 	b	.LBB16_111
 .LBB16_105:
 .Ltmp93:                                # EH_LABEL
 	ld.d	$a2, $sp, 24
 	move	$fp, $a0
+	bne	$a2, $s1, .LBB16_107
+	b	.LBB16_108
+.LBB16_106:
+.Ltmp79:                                # EH_LABEL
+	ld.d	$a2, $sp, 24
+	move	$fp, $a0
 	beq	$a2, $s1, .LBB16_108
-.LBB16_106:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+.LBB16_107:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 40
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s2, .LBB16_109
-	b	.LBB16_111
-.LBB16_107:
-.Ltmp79:                                # EH_LABEL
-	ld.d	$a2, $sp, 24
-	move	$fp, $a0
-	bne	$a2, $s1, .LBB16_106
-.LBB16_108:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
+.LBB16_108:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s2, .LBB16_111
 .LBB16_109:
 	ori	$a1, $zero, 232

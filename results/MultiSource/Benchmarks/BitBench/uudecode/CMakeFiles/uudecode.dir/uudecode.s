@@ -257,33 +257,20 @@ decode:                                 # @decode
 	vinsgr2vr.d	$vr11, $a5, 0
 	vpickve2gr.w	$a5, $vr2, 1
 	vinsgr2vr.d	$vr11, $a5, 1
-	xvpickve2gr.d	$a5, $xr11, 0
-	add.d	$s0, $a2, $a5
-	xvpickve2gr.d	$a5, $xr11, 1
-	add.d	$s1, $a2, $a5
-	xvpickve2gr.d	$a5, $xr10, 2
-	add.d	$s2, $a2, $a5
-	xvpickve2gr.d	$a5, $xr10, 3
-	add.d	$s3, $a2, $a5
-	xvpickve2gr.d	$a5, $xr8, 0
-	add.d	$s4, $a2, $a5
-	xvpickve2gr.d	$a5, $xr8, 1
-	add.d	$s5, $a2, $a5
-	xvpickve2gr.d	$a5, $xr7, 2
-	add.d	$s6, $a2, $a5
-	xvpickve2gr.d	$a5, $xr7, 3
-	add.d	$s7, $a2, $a5
-	xvpickve2gr.d	$a5, $xr9, 0
-	add.d	$s8, $a2, $a5
-	xvpickve2gr.d	$a5, $xr9, 1
-	add.d	$ra, $a2, $a5
-	xvpickve2gr.d	$a5, $xr6, 2
-	add.d	$a7, $a2, $a5
+	xvpickve2gr.d	$s0, $xr11, 0
+	xvpickve2gr.d	$s1, $xr11, 1
+	xvpickve2gr.d	$s2, $xr10, 2
+	xvpickve2gr.d	$s3, $xr10, 3
+	xvpickve2gr.d	$s4, $xr8, 0
+	xvpickve2gr.d	$s5, $xr8, 1
+	xvpickve2gr.d	$s6, $xr7, 2
+	xvpickve2gr.d	$s7, $xr7, 3
+	xvpickve2gr.d	$s8, $xr9, 0
+	xvpickve2gr.d	$ra, $xr9, 1
+	xvpickve2gr.d	$a7, $xr6, 2
 	xvpickve2gr.d	$a5, $xr6, 3
-	add.d	$a5, $a2, $a5
-	xvpickve2gr.d	$a6, $xr5, 0
 	ld.b	$t0, $a1, -30
-	add.d	$a6, $a2, $a6
+	xvpickve2gr.d	$a6, $xr5, 0
 	ld.b	$t4, $a1, -26
 	ld.b	$t6, $a1, -22
 	vinsgr2vr.b	$vr6, $t0, 0
@@ -403,19 +390,32 @@ decode:                                 # @decode
 	vinsgr2vr.b	$vr9, $t4, 9
 	ld.b	$t4, $a1, 20
 	vinsgr2vr.b	$vr9, $t0, 10
-	xvpickve2gr.d	$t0, $xr5, 1
+	ld.b	$t0, $a1, 24
 	vinsgr2vr.b	$vr9, $t6, 11
-	ld.b	$t8, $a1, 24
+	ld.b	$t6, $a1, 28
 	vinsgr2vr.b	$vr9, $t4, 12
-	ld.b	$t4, $a1, 28
-	add.d	$t6, $a2, $t0
-	vinsgr2vr.b	$vr9, $t8, 13
-	ld.b	$t8, $a1, 32
-	vinsgr2vr.b	$vr9, $t4, 14
-	xvpickve2gr.d	$t0, $xr4, 2
-	add.d	$t0, $a2, $t0
-	vinsgr2vr.b	$vr9, $t8, 15
+	ld.b	$t4, $a1, 32
+	vinsgr2vr.b	$vr9, $t0, 13
+	xvpickve2gr.d	$t0, $xr5, 1
+	vinsgr2vr.b	$vr9, $t6, 14
+	xvpickve2gr.d	$t8, $xr4, 2
+	vinsgr2vr.b	$vr9, $t4, 15
 	xvpickve2gr.d	$t4, $xr4, 3
+	add.d	$s0, $a2, $s0
+	add.d	$s1, $a2, $s1
+	add.d	$s2, $a2, $s2
+	add.d	$s3, $a2, $s3
+	add.d	$s4, $a2, $s4
+	add.d	$s5, $a2, $s5
+	add.d	$s6, $a2, $s6
+	add.d	$s7, $a2, $s7
+	add.d	$s8, $a2, $s8
+	add.d	$ra, $a2, $ra
+	add.d	$a7, $a2, $a7
+	add.d	$a5, $a2, $a5
+	add.d	$a6, $a2, $a6
+	add.d	$t6, $a2, $t0
+	add.d	$t0, $a2, $t8
 	add.d	$t4, $a2, $t4
 	vstelm.b	$vr3, $s0, 0, 0
 	vstelm.b	$vr3, $s1, 0, 1

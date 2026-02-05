@@ -161,7 +161,7 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 	ld.d	$a1, $s0, 24
 	ld.w	$s3, $a1, 0
 	st.d	$a0, $s7, 8
-	st.d	$s4, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s4, $s6, 24
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 16
@@ -218,17 +218,16 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 	ld.w	$a3, $s0, 4
 	blez	$a3, .LBB1_145
 # %bb.17:                               # %.preheader180.lr.ph.i
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
 	move	$s2, $zero
 	move	$s8, $zero
 	addi.d	$s1, $s0, 48
+	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB1_18:                               # %.preheader180.us.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_19 Depth 2
-	move	$fp, $a3
 	move	$s7, $s2
 	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
@@ -263,15 +262,14 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
                                         #   in Loop: Header=BB1_18 Depth=1
 	addi.d	$s8, $s8, 1
 	addi.d	$s2, $s2, 16
-	move	$a3, $fp
-	bne	$s8, $fp, .LBB1_18
+	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
+	bne	$s8, $a3, .LBB1_18
 # %bb.21:
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB1_2
 .LBB1_22:
 	move	$a0, $a1
@@ -1321,10 +1319,10 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 .LBB1_144:                              # %.preheader181.thread.i
 	move	$s3, $s6
 	ld.w	$a3, $s0, 4
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB1_2
 .LBB1_145:
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB1_2
 .LBB1_146:

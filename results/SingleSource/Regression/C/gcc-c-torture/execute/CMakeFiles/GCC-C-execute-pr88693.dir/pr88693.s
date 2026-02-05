@@ -49,59 +49,7 @@ quux:                                   # @quux
 	.type	qux,@function
 qux:                                    # @qux
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 120
-	ori	$a2, $zero, 100
-	addi.d	$fp, $sp, 8
-	pcaddu18i	$ra, %call36(memset)
-	jirl	$ra, $ra, 0
-	move	$a3, $zero
-	xvrepli.b	$xr0, 120
-	ori	$a0, $zero, 64
-	.p2align	4, , 16
-.LBB2_1:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a1, $a3
-	xvldx	$xr1, $a3, $fp
-	xvseq.b	$xr1, $xr1, $xr0
-	xvxori.b	$xr1, $xr1, 255
-	xvmskltz.b	$xr1, $xr1
-	xvpickve2gr.wu	$a2, $xr1, 0
-	xvpickve2gr.wu	$a3, $xr1, 4
-	bstrins.d	$a2, $a3, 31, 16
-	addi.w	$a2, $a2, 0
-	bnez	$a2, .LBB2_3
-# %bb.2:                                # %vector.body
-                                        #   in Loop: Header=BB2_1 Depth=1
-	addi.d	$a3, $a1, 32
-	bne	$a1, $a0, .LBB2_1
-.LBB2_3:                                # %middle.split
-	bnez	$a2, .LBB2_9
-# %bb.4:                                # %scalar.ph
-	ld.bu	$a1, $sp, 104
-	ori	$a0, $zero, 120
-	bne	$a1, $a0, .LBB2_9
-# %bb.5:                                # %scalar.ph
-	ld.bu	$a1, $sp, 105
-	bne	$a1, $a0, .LBB2_9
-# %bb.6:                                # %scalar.ph
-	ld.bu	$a1, $sp, 106
-	ori	$a0, $zero, 120
-	bne	$a1, $a0, .LBB2_9
-# %bb.7:                                # %scalar.ph
-	ld.bu	$a1, $sp, 107
-	bne	$a1, $a0, .LBB2_9
-# %bb.8:                                # %quux.exit
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
 	ret
-.LBB2_9:                                # %vector.early.exit
-	pcaddu18i	$ra, %call36(abort)
-	jirl	$ra, $ra, 0
 .Lfunc_end2:
 	.size	qux, .Lfunc_end2-qux
                                         # -- End function
@@ -171,49 +119,6 @@ main:                                   # @main
 	addi.d	$sp, $sp, -128
 	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 120
-	ori	$a2, $zero, 100
-	addi.d	$fp, $sp, 8
-	pcaddu18i	$ra, %call36(memset)
-	jirl	$ra, $ra, 0
-	move	$a3, $zero
-	xvrepli.b	$xr0, 120
-	ori	$a0, $zero, 64
-	.p2align	4, , 16
-.LBB5_1:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a1, $a3
-	xvldx	$xr1, $a3, $fp
-	xvseq.b	$xr1, $xr1, $xr0
-	xvxori.b	$xr1, $xr1, 255
-	xvmskltz.b	$xr1, $xr1
-	xvpickve2gr.wu	$a2, $xr1, 0
-	xvpickve2gr.wu	$a3, $xr1, 4
-	bstrins.d	$a2, $a3, 31, 16
-	addi.w	$a2, $a2, 0
-	bnez	$a2, .LBB5_3
-# %bb.2:                                # %vector.body
-                                        #   in Loop: Header=BB5_1 Depth=1
-	addi.d	$a3, $a1, 32
-	bne	$a1, $a0, .LBB5_1
-.LBB5_3:                                # %middle.split
-	bnez	$a2, .LBB5_11
-# %bb.4:                                # %scalar.ph
-	ld.bu	$a1, $sp, 104
-	ori	$a0, $zero, 120
-	bne	$a1, $a0, .LBB5_11
-# %bb.5:                                # %scalar.ph
-	ld.bu	$a1, $sp, 105
-	bne	$a1, $a0, .LBB5_11
-# %bb.6:                                # %scalar.ph
-	ld.bu	$a1, $sp, 106
-	ori	$a0, $zero, 120
-	bne	$a1, $a0, .LBB5_11
-# %bb.7:                                # %scalar.ph
-	ld.bu	$a1, $sp, 107
-	bne	$a1, $a0, .LBB5_11
-# %bb.8:                                # %qux.exit
 	pcalau12i	$a0, %pc_hi20(bar.u)
 	addi.d	$a0, $a0, %pc_lo12(bar.u)
 	ld.b	$a1, $a0, 8
@@ -225,8 +130,8 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 9
-	bne	$a0, $fp, .LBB5_11
-# %bb.9:                                # %bar.exit
+	bne	$a0, $fp, .LBB5_3
+# %bb.1:                                # %bar.exit
 	pcalau12i	$a0, %pc_hi20(baz.u)
 	addi.d	$a0, $a0, %pc_lo12(baz.u)
 	ld.b	$a1, $a0, 8
@@ -237,14 +142,14 @@ main:                                   # @main
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	bne	$a0, $fp, .LBB5_11
-# %bb.10:                               # %baz.exit
+	bne	$a0, $fp, .LBB5_3
+# %bb.2:                                # %baz.exit
 	move	$a0, $zero
 	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB5_11:                               # %vector.early.exit
+.LBB5_3:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end5:

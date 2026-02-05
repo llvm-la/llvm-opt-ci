@@ -12,18 +12,16 @@ _Z21ConvertStringToUInt64PKcPS0_:       # @_Z21ConvertStringToUInt64PKcPS0_
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	ori	$a4, $zero, 10
-	move	$a5, $a0
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	andi	$a6, $a3, 15
-	ld.bu	$a3, $a5, 1
+	andi	$a5, $a3, 15
+	ld.bu	$a3, $a0, 1
 	mul.d	$a2, $a2, $a4
-	addi.d	$a0, $a5, 1
-	addi.d	$a7, $a3, -48
-	add.d	$a2, $a2, $a6
-	move	$a5, $a0
-	bltu	$a7, $a4, .LBB0_2
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a3, -48
+	addi.d	$a0, $a0, 1
+	bltu	$a5, $a4, .LBB0_2
 # %bb.3:                                # %._crit_edge
 	beqz	$a1, .LBB0_5
 .LBB0_4:
@@ -48,19 +46,17 @@ _Z24ConvertOctStringToUInt64PKcPS0_:    # @_Z24ConvertOctStringToUInt64PKcPS0_
 	ori	$a3, $zero, 48
 	bne	$a2, $a3, .LBB1_6
 # %bb.1:                                # %.lr.ph.preheader
-	move	$a5, $zero
-	move	$a6, $a0
+	move	$a2, $zero
 	.p2align	4, , 16
 .LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	ld.bu	$a4, $a6, 1
-	bstrins.d	$a2, $a5, 63, 3
-	addi.d	$a0, $a6, 1
-	andi	$a7, $a4, 248
 	move	$a5, $a2
-	move	$a6, $a0
-	beq	$a7, $a3, .LBB1_2
+	move	$a2, $a4
+	ld.bu	$a4, $a0, 1
+	bstrins.d	$a2, $a5, 63, 3
+	andi	$a5, $a4, 248
+	addi.d	$a0, $a0, 1
+	beq	$a5, $a3, .LBB1_2
 # %bb.3:                                # %._crit_edge
 	beqz	$a1, .LBB1_5
 .LBB1_4:
@@ -136,17 +132,15 @@ _Z21ConvertStringToUInt64PKwPS0_:       # @_Z21ConvertStringToUInt64PKwPS0_
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	ori	$a4, $zero, 10
-	move	$a5, $a0
 	.p2align	4, , 16
 .LBB3_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$a0, $a2, 3
-	ld.w	$a6, $a5, 4
-	alsl.d	$a0, $a2, $a0, 1
-	add.d	$a2, $a0, $a3
-	addi.d	$a0, $a5, 4
-	addi.w	$a3, $a6, -48
-	move	$a5, $a0
+	ld.w	$a5, $a0, 4
+	slli.d	$a6, $a2, 3
+	alsl.d	$a2, $a2, $a6, 1
+	add.d	$a2, $a2, $a3
+	addi.w	$a3, $a5, -48
+	addi.d	$a0, $a0, 4
 	bltu	$a3, $a4, .LBB3_2
 # %bb.3:                                # %._crit_edge
 	beqz	$a1, .LBB3_5
@@ -179,18 +173,16 @@ _Z20ConvertStringToInt64PKcPS0_:        # @_Z20ConvertStringToInt64PKcPS0_
 	bltu	$a5, $a4, .LBB4_4
 # %bb.2:                                # %.lr.ph.i.preheader
 	ori	$a4, $zero, 10
-	move	$a5, $a2
 	.p2align	4, , 16
 .LBB4_3:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	andi	$a6, $a3, 15
-	ld.bu	$a3, $a5, 1
+	andi	$a5, $a3, 15
+	ld.bu	$a3, $a2, 1
 	mul.d	$a0, $a0, $a4
-	addi.d	$a2, $a5, 1
-	addi.d	$a7, $a3, -48
-	add.d	$a0, $a0, $a6
-	move	$a5, $a2
-	bltu	$a7, $a4, .LBB4_3
+	add.d	$a0, $a0, $a5
+	addi.d	$a5, $a3, -48
+	addi.d	$a2, $a2, 1
+	bltu	$a5, $a4, .LBB4_3
 .LBB4_4:                                # %._crit_edge.i
 	beqz	$a1, .LBB4_6
 # %bb.5:
@@ -205,18 +197,16 @@ _Z20ConvertStringToInt64PKcPS0_:        # @_Z20ConvertStringToInt64PKcPS0_
 # %bb.8:                                # %.lr.ph.i10.preheader
 	move	$a2, $zero
 	ori	$a4, $zero, 10
-	move	$a5, $a0
 	.p2align	4, , 16
 .LBB4_9:                                # %.lr.ph.i10
                                         # =>This Inner Loop Header: Depth=1
-	andi	$a6, $a3, 15
-	ld.bu	$a3, $a5, 1
+	andi	$a5, $a3, 15
+	ld.bu	$a3, $a0, 1
 	mul.d	$a2, $a2, $a4
-	addi.d	$a0, $a5, 1
-	addi.d	$a7, $a3, -48
-	add.d	$a2, $a2, $a6
-	move	$a5, $a0
-	bltu	$a7, $a4, .LBB4_9
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a3, -48
+	addi.d	$a0, $a0, 1
+	bltu	$a5, $a4, .LBB4_9
 # %bb.10:                               # %._crit_edge.i6
 	beqz	$a1, .LBB4_12
 .LBB4_11:

@@ -107,8 +107,7 @@ alloc:                                  # @alloc
 	beqz	$a0, .LBB2_6
 # %bb.5:
 	ld.d	$a2, $a0, 0
-	addi.d	$a1, $a1, 104
-	st.d	$a2, $a1, 0
+	st.d	$a2, $a1, 104
 	b	.LBB2_16
 .LBB2_6:                                # %.thread
 	ld.d	$a1, $s0, 16
@@ -129,19 +128,18 @@ alloc:                                  # @alloc
 	ld.d	$a2, $s0, 0
 	ld.d	$a3, $s0, 24
 	ld.d	$a4, $s0, 16
-	ld.d	$a5, $s0, 80
 	add.d	$a1, $a1, $a3
 	add.d	$a4, $a2, $a4
-	sub.d	$a1, $a1, $a4
-	add.d	$a1, $a1, $a5
-	st.d	$a1, $s0, 80
-	ld.d	$a4, $s0, 88
 	sub.d	$a2, $a3, $a2
-	ld.w	$a3, $s0, 96
+	sub.d	$a1, $a1, $a4
+	vld	$vr0, $s0, 80
+	vinsgr2vr.d	$vr1, $a1, 0
+	vinsgr2vr.d	$vr1, $a2, 1
+	ld.w	$a2, $s0, 96
 	ld.d	$a1, $s0, 48
-	add.d	$a2, $a2, $a4
-	st.d	$a2, $s0, 88
-	addi.d	$a2, $a3, 1
+	vadd.d	$vr0, $vr1, $vr0
+	vst	$vr0, $s0, 80
+	addi.d	$a2, $a2, 1
 	st.w	$a2, $s0, 96
 	beqz	$a1, .LBB2_11
 # %bb.9:
@@ -574,7 +572,7 @@ alloc_shrink:                           # @alloc_shrink
 	addi.w	$t0, $a6, 0
 	mul.d	$s1, $a3, $a2
 	addi.w	$a7, $s1, 0
-	beq	$a7, $t0, .LBB8_16
+	beq	$a7, $t0, .LBB8_15
 # %bb.1:
 	pcalau12i	$a5, %pc_hi20(as_current)
 	addi.d	$a5, $a5, %pc_lo12(as_current)
@@ -598,7 +596,7 @@ alloc_shrink:                           # @alloc_shrink
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-	b	.LBB8_16
+	b	.LBB8_15
 .LBB8_4:
 	move	$fp, $a1
 	move	$s2, $a0
@@ -608,7 +606,7 @@ alloc_shrink:                           # @alloc_shrink
 	move	$a2, $a4
 	pcaddu18i	$ra, %call36(alloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_15
+	beqz	$a0, .LBB8_14
 # %bb.5:
 	bstrpick.d	$a2, $s1, 31, 0
 	move	$s1, $a0
@@ -621,11 +619,11 @@ alloc_shrink:                           # @alloc_shrink
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
-	b	.LBB8_16
+	b	.LBB8_15
 .LBB8_6:
 	bstrpick.d	$a6, $a6, 31, 0
 	add.d	$a1, $a0, $a6
-	beqz	$a7, .LBB8_14
+	beqz	$a7, .LBB8_13
 # %bb.7:                                # %.lr.ph.preheader
 	bstrpick.d	$a7, $s1, 31, 0
 	add.d	$a2, $a0, $a7
@@ -660,26 +658,23 @@ alloc_shrink:                           # @alloc_shrink
 	addi.d	$a6, $a6, -32
 	bnez	$t0, .LBB8_10
 # %bb.11:                               # %middle.block
-	beq	$a3, $a4, .LBB8_14
-.LBB8_12:                               # %.lr.ph.preheader60
-	move	$a3, $a1
+	beq	$a3, $a4, .LBB8_13
 	.p2align	4, , 16
-.LBB8_13:                               # %.lr.ph
+.LBB8_12:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a4, $a2, -1
-	addi.d	$a6, $a2, -1
-	addi.d	$a1, $a3, -1
-	st.b	$a4, $a3, -1
-	move	$a3, $a1
-	move	$a2, $a6
-	bltu	$a0, $a6, .LBB8_13
-.LBB8_14:                               # %._crit_edge
+	ld.b	$a3, $a2, -1
+	addi.d	$a4, $a2, -1
+	st.b	$a3, $a1, -1
+	addi.d	$a1, $a1, -1
+	move	$a2, $a4
+	bltu	$a0, $a4, .LBB8_12
+.LBB8_13:                               # %._crit_edge
 	st.d	$a1, $a5, 16
 	move	$a0, $a1
-	b	.LBB8_16
-.LBB8_15:
+	b	.LBB8_15
+.LBB8_14:
 	move	$a0, $s2
-.LBB8_16:
+.LBB8_15:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

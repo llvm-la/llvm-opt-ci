@@ -60,13 +60,14 @@ MakeGraph:                              # @MakeGraph
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$s2, $zero
+	move	$s6, $zero
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_4:                                #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	move	$s2, $s6
 	move	$s6, $a0
 	st.w	$s3, $s7, %pc_lo12(HashRange)
 	st.w	$s8, $a0, 0
@@ -78,7 +79,6 @@ MakeGraph:                              # @MakeGraph
 	st.d	$s2, $s6, 8
 	addi.d	$s5, $s5, -1
 	addi.d	$a0, $s6, -24
-	move	$s2, $s6
 	bnez	$s5, .LBB0_4
 # %bb.5:                                # %._crit_edge.us
                                         #   in Loop: Header=BB0_3 Depth=1

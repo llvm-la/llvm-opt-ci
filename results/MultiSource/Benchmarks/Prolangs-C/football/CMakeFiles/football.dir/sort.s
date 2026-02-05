@@ -909,12 +909,10 @@ break_ties:                             # @break_ties
 .LBB10_17:                              #   in Loop: Header=BB10_9 Depth=1
 	or	$a6, $a4, $a2
 	beqz	$a6, .LBB10_22
-# %bb.18:                               # %tied.exit
-                                        #   in Loop: Header=BB10_9 Depth=1
+# %bb.18:                               #   in Loop: Header=BB10_9 Depth=1
 	or	$a3, $a5, $a3
 	bnez	$a3, .LBB10_23
-# %bb.19:                               # %tied.exit
-                                        #   in Loop: Header=BB10_9 Depth=1
+# %bb.19:                               #   in Loop: Header=BB10_9 Depth=1
 	bne	$a2, $a4, .LBB10_14
 	b	.LBB10_23
 .LBB10_20:                              #   in Loop: Header=BB10_9 Depth=1
@@ -923,7 +921,8 @@ break_ties:                             # @break_ties
 	move	$s6, $s0
 	vldi	$vr3, -928
 	b	.LBB10_8
-.LBB10_22:                              #   in Loop: Header=BB10_9 Depth=1
+.LBB10_22:                              # %tied.exit
+                                        #   in Loop: Header=BB10_9 Depth=1
 	bne	$a3, $a5, .LBB10_14
 .LBB10_23:                              #   in Loop: Header=BB10_9 Depth=1
 	beqz	$s3, .LBB10_27
@@ -1929,16 +1928,16 @@ sort_all:                               # @sort_all
 	ffint.d.w	$fa1, $fa1
 	ffint.d.w	$fa2, $fa2
 	fdiv.d	$fa1, $fa1, $fa2
-.LBB11_108:                             #   in Loop: Header=BB11_98 Depth=2
-	fcmp.clt.d	$fcc0, $fa3, $fa1
-	bcnez	$fcc0, .LBB11_96
+.LBB11_108:                             # %defence_lt.exit
+                                        #   in Loop: Header=BB11_98 Depth=2
+	fcmp.cule.d	$fcc0, $fa1, $fa3
+	bceqz	$fcc0, .LBB11_96
 	b	.LBB11_97
 	.p2align	4, , 16
 .LBB11_109:                             #   in Loop: Header=BB11_98 Depth=2
 	bge	$t1, $t2, .LBB11_97
 	b	.LBB11_96
-.LBB11_110:                             # %defence_lt.exit
-                                        #   in Loop: Header=BB11_98 Depth=2
+.LBB11_110:                             #   in Loop: Header=BB11_98 Depth=2
 	blt	$a7, $t0, .LBB11_96
 	b	.LBB11_97
 .LBB11_111:                             # %.preheader206.preheader
@@ -2140,16 +2139,16 @@ sort_all:                               # @sort_all
 	ffint.d.w	$fa1, $fa1
 	ffint.d.w	$fa2, $fa2
 	fdiv.d	$fa1, $fa1, $fa2
-.LBB11_144:                             #   in Loop: Header=BB11_134 Depth=2
-	fcmp.clt.d	$fcc0, $fa1, $fa3
-	bcnez	$fcc0, .LBB11_132
+.LBB11_144:                             # %offence_lt.exit
+                                        #   in Loop: Header=BB11_134 Depth=2
+	fcmp.cule.d	$fcc0, $fa3, $fa1
+	bceqz	$fcc0, .LBB11_132
 	b	.LBB11_133
 	.p2align	4, , 16
 .LBB11_145:                             #   in Loop: Header=BB11_134 Depth=2
 	bge	$t1, $t2, .LBB11_133
 	b	.LBB11_132
-.LBB11_146:                             # %offence_lt.exit
-                                        #   in Loop: Header=BB11_134 Depth=2
+.LBB11_146:                             #   in Loop: Header=BB11_134 Depth=2
 	blt	$a7, $t0, .LBB11_132
 	b	.LBB11_133
 .LBB11_147:                             # %.preheader202.preheader
@@ -2359,16 +2358,16 @@ sort_all:                               # @sort_all
 	ffint.d.w	$fa1, $fa1
 	ffint.d.w	$fa2, $fa2
 	fdiv.d	$fa1, $fa1, $fa2
-.LBB11_180:                             #   in Loop: Header=BB11_170 Depth=2
-	fcmp.clt.d	$fcc0, $fa1, $fa3
-	bcnez	$fcc0, .LBB11_168
+.LBB11_180:                             # %net_lt.exit
+                                        #   in Loop: Header=BB11_170 Depth=2
+	fcmp.cule.d	$fcc0, $fa3, $fa1
+	bceqz	$fcc0, .LBB11_168
 	b	.LBB11_169
 	.p2align	4, , 16
 .LBB11_181:                             #   in Loop: Header=BB11_170 Depth=2
 	bge	$t1, $t2, .LBB11_169
 	b	.LBB11_168
-.LBB11_182:                             # %net_lt.exit
-                                        #   in Loop: Header=BB11_170 Depth=2
+.LBB11_182:                             #   in Loop: Header=BB11_170 Depth=2
 	blt	$a7, $t0, .LBB11_168
 	b	.LBB11_169
 .LBB11_183:                             # %.preheader.preheader

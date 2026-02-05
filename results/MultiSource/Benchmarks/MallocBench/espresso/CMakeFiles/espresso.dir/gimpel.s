@@ -19,7 +19,7 @@ gimpel_reduce:                          # @gimpel_reduce
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	move	$s1, $a0
 	ld.d	$a0, $a0, 32
-	beqz	$a0, .LBB0_12
+	beqz	$a0, .LBB0_17
 # %bb.1:                                # %.lr.ph
 	ori	$t0, $zero, 2
 	b	.LBB0_5
@@ -27,13 +27,13 @@ gimpel_reduce:                          # @gimpel_reduce
 .LBB0_2:                                #   in Loop: Header=BB0_5 Depth=1
 	move	$s7, $zero
 	ld.w	$t2, $t4, 4
-	beq	$t2, $t0, .LBB0_17
+	beq	$t2, $t0, .LBB0_12
 .LBB0_3:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.w	$t2, $s7, 4
-	beq	$t2, $t0, .LBB0_13
+	beq	$t2, $t0, .LBB0_28
 .LBB0_4:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$a0, $a0, 32
-	beqz	$a0, .LBB0_12
+	beqz	$a0, .LBB0_17
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$t1, $a0, 4
 	bne	$t1, $t0, .LBB0_4
@@ -67,53 +67,40 @@ gimpel_reduce:                          # @gimpel_reduce
 	ldx.d	$s7, $t2, $t3
 	ld.w	$t2, $t4, 4
 	bne	$t2, $t0, .LBB0_3
-	b	.LBB0_17
 .LBB0_12:
-	move	$a0, $zero
-	b	.LBB0_27
-.LBB0_13:
-	bltz	$t1, .LBB0_32
-# %bb.14:
-	ld.w	$t0, $s1, 24
-	bge	$t1, $t0, .LBB0_32
-# %bb.15:
-	ld.d	$t2, $s1, 16
-	slli.d	$t0, $t1, 3
-	ldx.d	$t4, $t2, $t0
-	bgez	$t5, .LBB0_33
-.LBB0_16:
-	move	$s7, $zero
-.LBB0_17:                               # %.loopexit116
-	ld.d	$t0, $t4, 16
+	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	ld.d	$a7, $t4, 16
 	ld.w	$s8, $a0, 0
-	ld.w	$s6, $t0, 0
-	bne	$s6, $s8, .LBB0_19
-.LBB0_18:
+	ld.w	$s6, $a7, 0
+	bne	$s6, $s8, .LBB0_14
+.LBB0_13:
 	ld.d	$a0, $t4, 24
 	ld.w	$s6, $a0, 0
-.LBB0_19:
+.LBB0_14:
 	ld.w	$s2, $t4, 0
 	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
-	bltz	$s6, .LBB0_22
-# %bb.20:
+	bltz	$s6, .LBB0_18
+# %bb.15:
 	ld.w	$a0, $s1, 8
-	bge	$s6, $a0, .LBB0_22
-# %bb.21:
+	bge	$s6, $a0, .LBB0_18
+# %bb.16:
 	move	$fp, $a3
 	move	$s0, $a6
 	ld.d	$a0, $s1, 0
 	slli.d	$a1, $s6, 3
 	ldx.d	$a0, $a0, $a1
+	b	.LBB0_19
+.LBB0_17:
+	move	$a0, $zero
 	b	.LBB0_23
-.LBB0_22:
+.LBB0_18:
 	move	$fp, $a3
 	move	$s0, $a6
 	move	$a0, $zero
-.LBB0_23:
+.LBB0_19:
 	ld.w	$s4, $s7, 0
 	pcaddu18i	$ra, %call36(sm_row_dup)
 	jirl	$ra, $ra, 0
@@ -122,8 +109,8 @@ gimpel_reduce:                          # @gimpel_reduce
 	pcaddu18i	$ra, %call36(sm_row_remove)
 	jirl	$ra, $ra, 0
 	ld.d	$s7, $s7, 16
-	bnez	$s7, .LBB0_29
-.LBB0_24:                               # %._crit_edge
+	bnez	$s7, .LBB0_25
+.LBB0_20:                               # %._crit_edge
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(sm_delcol)
@@ -163,8 +150,8 @@ gimpel_reduce:                          # @gimpel_reduce
 	st.d	$a0, $s0, 0
 	addi.d	$a1, $a1, -1
 	st.w	$a1, $s6, 28
-	beqz	$a0, .LBB0_26
-# %bb.25:                               # %.sink.split
+	beqz	$a0, .LBB0_22
+# %bb.21:                               # %.sink.split
 	ld.d	$a1, $a0, 0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(sm_row_intersects)
@@ -177,12 +164,12 @@ gimpel_reduce:                          # @gimpel_reduce
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(solution_add)
 	jirl	$ra, $ra, 0
-.LBB0_26:
+.LBB0_22:
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(sm_row_free)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-.LBB0_27:                               # %.critedge
+.LBB0_23:                               # %.critedge
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
@@ -197,20 +184,20 @@ gimpel_reduce:                          # @gimpel_reduce
 	addi.d	$sp, $sp, 144
 	ret
 	.p2align	4, , 16
-.LBB0_28:                               # %.loopexit
-                                        #   in Loop: Header=BB0_29 Depth=1
+.LBB0_24:                               # %.loopexit
+                                        #   in Loop: Header=BB0_25 Depth=1
 	ld.d	$s7, $s7, 8
-	beqz	$s7, .LBB0_24
-.LBB0_29:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_31 Depth 2
+	beqz	$s7, .LBB0_20
+.LBB0_25:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_27 Depth 2
 	ld.w	$a0, $s7, 0
-	beq	$a0, $s8, .LBB0_28
-# %bb.30:                               #   in Loop: Header=BB0_29 Depth=1
+	beq	$a0, $s8, .LBB0_24
+# %bb.26:                               #   in Loop: Header=BB0_25 Depth=1
 	ld.d	$s5, $s3, 16
-	beqz	$s5, .LBB0_28
+	beqz	$s5, .LBB0_24
 	.p2align	4, , 16
-.LBB0_31:                               # %.lr.ph138
-                                        #   Parent Loop BB0_29 Depth=1
+.LBB0_27:                               # %.lr.ph138
+                                        #   Parent Loop BB0_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a1, $s7, 0
 	ld.w	$a2, $s5, 4
@@ -218,30 +205,45 @@ gimpel_reduce:                          # @gimpel_reduce
 	pcaddu18i	$ra, %call36(sm_insert)
 	jirl	$ra, $ra, 0
 	ld.d	$s5, $s5, 24
-	bnez	$s5, .LBB0_31
-	b	.LBB0_28
-.LBB0_32:
-	move	$t4, $zero
-	bltz	$t5, .LBB0_16
-.LBB0_33:
+	bnez	$s5, .LBB0_27
+	b	.LBB0_24
+.LBB0_28:
+	bltz	$t1, .LBB0_31
+# %bb.29:
 	ld.w	$t0, $s1, 24
-	bge	$t5, $t0, .LBB0_35
-# %bb.34:
+	bge	$t1, $t0, .LBB0_31
+# %bb.30:
+	ld.d	$t2, $s1, 16
+	slli.d	$t0, $t1, 3
+	ldx.d	$t4, $t2, $t0
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
+	bgez	$t5, .LBB0_32
+	b	.LBB0_34
+.LBB0_31:
+	move	$t4, $zero
+	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
+	bltz	$t5, .LBB0_34
+.LBB0_32:
+	ld.w	$t0, $s1, 24
+	bge	$t5, $t0, .LBB0_34
+# %bb.33:
 	ld.d	$t0, $s1, 16
-	slli.d	$t1, $t5, 3
-	ldx.d	$s7, $t0, $t1
-	ld.d	$t0, $t4, 16
+	slli.d	$a7, $t5, 3
+	ldx.d	$s7, $t0, $a7
+	ld.d	$a7, $t4, 16
 	ld.w	$s8, $a0, 0
-	ld.w	$s6, $t0, 0
-	bne	$s6, $s8, .LBB0_19
-	b	.LBB0_18
-.LBB0_35:
+	ld.w	$s6, $a7, 0
+	bne	$s6, $s8, .LBB0_14
+	b	.LBB0_13
+.LBB0_34:
 	move	$s7, $zero
-	ld.d	$t0, $t4, 16
+	ld.d	$a7, $t4, 16
 	ld.w	$s8, $a0, 0
-	ld.w	$s6, $t0, 0
-	beq	$s6, $s8, .LBB0_18
-	b	.LBB0_19
+	ld.w	$s6, $a7, 0
+	beq	$s6, $s8, .LBB0_13
+	b	.LBB0_14
 .Lfunc_end0:
 	.size	gimpel_reduce, .Lfunc_end0-gimpel_reduce
                                         # -- End function

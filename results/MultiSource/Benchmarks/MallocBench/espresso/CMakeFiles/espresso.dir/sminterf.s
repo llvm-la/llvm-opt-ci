@@ -67,10 +67,9 @@ do_sm_minimum_cover:                    # @do_sm_minimum_cover
 	b	.LBB0_9
 	.p2align	4, , 16
 .LBB0_8:                                #   in Loop: Header=BB0_9 Depth=3
-	addi.w	$a0, $s8, 0
 	bstrpick.d	$s8, $s8, 31, 1
 	addi.w	$s2, $s2, 1
-	bltu	$a0, $s5, .LBB0_5
+	beqz	$s8, .LBB0_5
 .LBB0_9:                                # %.lr.ph
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_6 Depth=2

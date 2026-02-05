@@ -2435,14 +2435,10 @@ _ZN27btGImpactCollisionAlgorithm18gimpact_vs_gimpactEP17btCollisionObjectS1_P23b
 	vld	$vr2, $a0, 0
 	addi.d	$a0, $sp, 936
 	vld	$vr3, $a0, 0
-	addi.d	$a0, $s2, 8
-	vst	$vr0, $a0, 0
-	addi.d	$a0, $s2, 24
-	vst	$vr1, $a0, 0
-	addi.d	$a0, $s2, 40
-	vst	$vr2, $a0, 0
-	addi.d	$a0, $s2, 56
-	vst	$vr3, $a0, 0
+	vst	$vr0, $s2, 8
+	vst	$vr1, $s2, 24
+	vst	$vr2, $s2, 40
+	vst	$vr3, $s2, 56
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB11_21
 .LBB11_42:                              #   in Loop: Header=BB11_22 Depth=1
@@ -2453,14 +2449,10 @@ _ZN27btGImpactCollisionAlgorithm18gimpact_vs_gimpactEP17btCollisionObjectS1_P23b
 	vld	$vr2, $a0, 0
 	addi.d	$a0, $sp, 872
 	vld	$vr3, $a0, 0
-	addi.d	$a0, $s1, 8
-	vst	$vr0, $a0, 0
-	addi.d	$a0, $s1, 24
-	vst	$vr1, $a0, 0
-	addi.d	$a0, $s1, 40
-	vst	$vr2, $a0, 0
-	addi.d	$a0, $s1, 56
-	vst	$vr3, $a0, 0
+	vst	$vr0, $s1, 8
+	vst	$vr1, $s1, 24
+	vst	$vr2, $s1, 40
+	vst	$vr3, $s1, 56
 	b	.LBB11_21
 .LBB11_43:                              # %._crit_edge
 	ld.d	$a0, $s0, 0
@@ -3527,14 +3519,10 @@ _ZN27btGImpactCollisionAlgorithm16gimpact_vs_shapeEP17btCollisionObjectS1_P23btG
 	vld	$vr2, $a0, 0
 	addi.d	$a0, $sp, 584
 	vld	$vr3, $a0, 0
-	addi.d	$a0, $s1, 8
-	vst	$vr0, $a0, 0
-	addi.d	$a0, $s1, 24
-	vst	$vr1, $a0, 0
-	addi.d	$a0, $s1, 40
-	vst	$vr2, $a0, 0
-	addi.d	$a0, $s1, 56
-	vst	$vr3, $a0, 0
+	vst	$vr0, $s1, 8
+	vst	$vr1, $s1, 24
+	vst	$vr2, $s1, 40
+	vst	$vr3, $s1, 56
 	b	.LBB16_18
 .LBB16_29:                              # %._crit_edge
 	ld.d	$a0, $fp, 0

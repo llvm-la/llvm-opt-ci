@@ -807,17 +807,18 @@ insert_id_rec:                          # @insert_id_rec
 	beqz	$a0, .LBB13_12
 # %bb.3:
 	ld.d	$a1, $fp, 0
-	ld.hu	$a0, $a1, 20
-	addi.d	$a2, $a0, -1
+	ld.h	$a0, $a1, 20
+	addi.d	$a0, $a0, -1
+	bstrpick.d	$a2, $a0, 15, 0
 	lu12i.w	$a3, 15
-	ori	$a3, $a3, 4095
-	st.h	$a2, $a1, 20
-	bne	$a0, $a3, .LBB13_12
+	ori	$a3, $a3, 4094
+	st.h	$a0, $a1, 20
+	bne	$a2, $a3, .LBB13_12
 # %bb.4:
 	ld.d	$a2, $a1, 24
 	ld.h	$a0, $a2, 20
 	ld.d	$a3, $a2, 32
-	blez	$a0, .LBB13_18
+	blez	$a0, .LBB13_14
 # %bb.5:
 	st.d	$a3, $fp, 0
 	ld.d	$a0, $a3, 24
@@ -834,7 +835,7 @@ insert_id_rec:                          # @insert_id_rec
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a4, $a0, 15, 0
 	ori	$a5, $zero, 2
-	bltu	$a5, $a4, .LBB13_17
+	bltu	$a5, $a4, .LBB13_19
 # %bb.6:                                # %switch.lookup
 	slli.d	$a0, $a0, 4
 	bstrpick.d	$a0, $a0, 15, 4
@@ -843,7 +844,7 @@ insert_id_rec:                          # @insert_id_rec
 	srl.d	$a4, $a4, $a0
 	ori	$a5, $zero, 0
 	lu32i.d	$a5, 65535
-	b	.LBB13_16
+	b	.LBB13_18
 .LBB13_7:
 	st.d	$s0, $fp, 0
 	st.h	$zero, $s0, 20
@@ -859,21 +860,22 @@ insert_id_rec:                          # @insert_id_rec
 	beqz	$a0, .LBB13_12
 # %bb.9:
 	ld.d	$a1, $fp, 0
-	ld.hu	$a0, $a1, 20
-	addi.d	$a2, $a0, 1
-	ori	$a3, $zero, 1
-	st.h	$a2, $a1, 20
-	bne	$a0, $a3, .LBB13_12
+	ld.h	$a0, $a1, 20
+	addi.d	$a0, $a0, 1
+	bstrpick.d	$a2, $a0, 15, 0
+	ori	$a3, $zero, 2
+	st.h	$a0, $a1, 20
+	bne	$a2, $a3, .LBB13_12
 # %bb.10:
 	ld.d	$a2, $a1, 32
 	ld.h	$a0, $a2, 20
 	ld.d	$a3, $a2, 24
-	bltz	$a0, .LBB13_14
+	bltz	$a0, .LBB13_16
 # %bb.11:
 	move	$a0, $zero
 	st.d	$a3, $a1, 32
 	st.d	$a1, $a2, 24
-	b	.LBB13_19
+	b	.LBB13_15
 .LBB13_12:
 	move	$a0, $zero
 .LBB13_13:
@@ -884,6 +886,15 @@ insert_id_rec:                          # @insert_id_rec
 	addi.d	$sp, $sp, 32
 	ret
 .LBB13_14:
+	move	$a0, $zero
+	st.d	$a3, $a1, 24
+	st.d	$a1, $a2, 32
+.LBB13_15:
+	st.d	$a2, $fp, 0
+	st.h	$zero, $a1, 20
+	st.h	$zero, $a2, 20
+	b	.LBB13_13
+.LBB13_16:
 	st.d	$a3, $fp, 0
 	ld.d	$a0, $a3, 32
 	st.d	$a0, $a2, 24
@@ -899,8 +910,8 @@ insert_id_rec:                          # @insert_id_rec
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a4, $a0, 15, 0
 	ori	$a5, $zero, 2
-	bltu	$a5, $a4, .LBB13_17
-# %bb.15:                               # %switch.lookup87
+	bltu	$a5, $a4, .LBB13_19
+# %bb.17:                               # %switch.lookup87
 	slli.d	$a0, $a0, 4
 	bstrpick.d	$a0, $a0, 15, 4
 	slli.d	$a0, $a0, 4
@@ -908,22 +919,13 @@ insert_id_rec:                          # @insert_id_rec
 	lu32i.d	$a4, 65535
 	srl.d	$a4, $a4, $a0
 	ori	$a5, $zero, 1
-.LBB13_16:
+.LBB13_18:
 	srl.d	$a0, $a5, $a0
 	st.h	$a4, $a1, 20
 	st.h	$a0, $a2, 20
-.LBB13_17:
+.LBB13_19:
 	move	$a0, $zero
 	st.h	$zero, $a3, 20
-	b	.LBB13_13
-.LBB13_18:
-	move	$a0, $zero
-	st.d	$a3, $a1, 24
-	st.d	$a1, $a2, 32
-.LBB13_19:
-	st.d	$a2, $fp, 0
-	st.h	$zero, $a1, 20
-	st.h	$zero, $a2, 20
 	b	.LBB13_13
 .Lfunc_end13:
 	.size	insert_id_rec, .Lfunc_end13-insert_id_rec

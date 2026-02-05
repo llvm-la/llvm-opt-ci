@@ -15,15 +15,13 @@ _Z7mytimerv:                            # @_Z7mytimerv
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(getrusage)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
-	movgr2fr.d	$fa0, $a0
-	ld.d	$a0, $sp, 16
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	fld.d	$fa1, $a1, %pc_lo12(.LCPI0_0)
+	fld.d	$fa0, $sp, 8
+	fld.d	$fa1, $sp, 16
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI0_0)
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa2, $a0
-	ffint.d.l	$fa2, $fa2
-	fdiv.d	$fa1, $fa2, $fa1
+	ffint.d.l	$fa1, $fa1
+	fdiv.d	$fa1, $fa1, $fa2
 	fadd.d	$fa0, $fa1, $fa0
 	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 160

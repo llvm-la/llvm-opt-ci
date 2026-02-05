@@ -72,16 +72,14 @@ main:                                   # @main
 	vst	$vr0, $a0, 0
 	ori	$a1, $zero, 4
 	st.w	$a1, $a0, 16
-	pcalau12i	$a2, %pc_hi20(from_input)
-	addi.d	$a2, $a2, %pc_lo12(from_input)
-	vst	$vr1, $a2, 0
-	ori	$a3, $zero, 9
-	vld	$vr0, $a0, 0
-	st.w	$a3, $a2, 16
-	vld	$vr1, $a2, 0
+	pcalau12i	$a0, %pc_hi20(from_input)
+	addi.d	$a0, $a0, %pc_lo12(from_input)
+	vst	$vr1, $a0, 0
+	ori	$a2, $zero, 9
+	st.w	$a2, $a0, 16
 	st.w	$a1, $sp, 48
 	vst	$vr0, $sp, 32
-	st.w	$a3, $sp, 24
+	st.w	$a2, $sp, 24
 	vst	$vr1, $sp, 8
 	addi.d	$a0, $sp, 32
 	addi.d	$a1, $sp, 8

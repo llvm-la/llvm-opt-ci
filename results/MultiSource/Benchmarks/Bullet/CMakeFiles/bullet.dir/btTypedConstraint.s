@@ -299,7 +299,7 @@ _ZN17btTypedConstraintD2Ev:             # @_ZN17btTypedConstraintD2Ev
 	.type	_ZN17btTypedConstraintD0Ev,@function
 _ZN17btTypedConstraintD0Ev:             # @_ZN17btTypedConstraintD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end6:
 	.size	_ZN17btTypedConstraintD0Ev, .Lfunc_end6-_ZN17btTypedConstraintD0Ev
                                         # -- End function

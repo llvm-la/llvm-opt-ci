@@ -312,13 +312,14 @@ FmoInit:                                # @FmoInit
                                         #     Parent Loop BB0_47 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.w	$t0, $fp, $s6
-	ld.d	$t1, $s4, %pc_lo12(MapUnitToSliceGroupMap)
+	move	$t1, $a7
+	ld.d	$a7, $s4, %pc_lo12(MapUnitToSliceGroupMap)
 	mul.d	$t0, $t0, $a3
-	add.d	$t0, $t0, $a7
+	add.d	$t0, $t0, $t1
 	bstrpick.d	$t0, $t0, 31, 0
-	addi.w	$a7, $a7, 1
-	stx.b	$a2, $t1, $t0
-	bgeu	$a6, $a7, .LBB0_48
+	stx.b	$a2, $a7, $t0
+	addi.w	$a7, $t1, 1
+	bltu	$t1, $a6, .LBB0_48
 # %bb.49:                               # %._crit_edge38.i.i
                                         #   in Loop: Header=BB0_47 Depth=2
 	addi.w	$a3, $a3, 1

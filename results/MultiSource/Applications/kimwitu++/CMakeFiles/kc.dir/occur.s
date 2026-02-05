@@ -2195,28 +2195,28 @@ _ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE: # @_ZN2kc22f_useoccurl
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	move	$fp, $a0
+	move	$s0, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 0
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
 	move	$a1, $a0
 	ori	$a2, $zero, 164
 	ori	$a0, $zero, 1
 	beq	$a1, $a2, .LBB12_9
 # %bb.1:
-	ld.d	$a0, $fp, 0
+	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 0
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
 	ori	$s2, $zero, 165
 	bne	$a0, $s2, .LBB12_7
 # %bb.2:
-	ld.d	$s0, $fp, 8
-	ld.d	$a0, $fp, 16
+	ld.d	$fp, $s0, 8
+	ld.d	$a0, $s0, 16
 	pcaddu18i	$ra, %call36(_ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %got_pc_hi20(Thelanguages)
 	ld.d	$a0, $a0, %got_pc_lo12(Thelanguages)
 	ld.d	$s1, $a0, 0
@@ -2231,10 +2231,10 @@ _ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE: # @_ZN2kc22f_useoccurl
 .LBB12_4:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s1, 8
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNK2kc20impl_abstract_phylum2eqEPKS0_)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB12_8
+	bnez	$a0, .LBB12_10
 # %bb.5:                                #   in Loop: Header=BB12_4 Depth=1
 	ld.d	$s1, $s1, 16
 	ld.d	$a0, $s1, 0
@@ -2243,24 +2243,23 @@ _ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE: # @_ZN2kc22f_useoccurl
 	jirl	$ra, $a1, 0
 	beq	$a0, $s2, .LBB12_4
 .LBB12_6:                               # %._crit_edge.i
-	ld.d	$a0, $s0, 32
-	ld.w	$a1, $s0, 24
+	ld.d	$a0, $fp, 32
+	ld.w	$a1, $fp, 24
 	pcaddu18i	$ra, %call36(_ZN2kc8FileLineEPNS_20impl_casestring__StrEi)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.79)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.79)
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN2kc13Problem1S1tIDEPKcPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN2kc5FatalEPNS_13impl_filelineEPNS_12impl_problemE)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8v_reportEPNS_10impl_errorE)
 	jirl	$ra, $ra, 0
-	and	$a0, $fp, $zero
-	b	.LBB12_9
+	b	.LBB12_8
 .LBB12_7:
 	pcalau12i	$a0, %pc_hi20(.L.str.52)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.52)
@@ -2269,12 +2268,9 @@ _ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE: # @_ZN2kc22f_useoccurl
 	ori	$a1, $zero, 694
 	pcaddu18i	$ra, %call36(_ZN2kc21kc_no_default_in_withEPKciS1_)
 	jirl	$ra, $ra, 0
+.LBB12_8:                               # %_ZN2kcL17occurlanguagenameEPNS_7impl_IDE.exit
 	move	$a0, $zero
-	b	.LBB12_9
-.LBB12_8:
-	ori	$a0, $zero, 1
-	and	$a0, $fp, $a0
-.LBB12_9:
+.LBB12_9:                               # %_ZN2kcL17occurlanguagenameEPNS_7impl_IDE.exit
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -2282,6 +2278,9 @@ _ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE: # @_ZN2kc22f_useoccurl
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
+.LBB12_10:
+	move	$a0, $s0
+	b	.LBB12_9
 .Lfunc_end12:
 	.size	_ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE, .Lfunc_end12-_ZN2kc22f_useoccurlanguagenameEPNS_18impl_languagenamesE
 	.cfi_endproc

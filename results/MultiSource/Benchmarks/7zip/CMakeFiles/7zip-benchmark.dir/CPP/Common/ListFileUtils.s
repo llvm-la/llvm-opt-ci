@@ -737,16 +737,16 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	ld.w	$a2, $a2, -4
 	bne	$a2, $a1, .LBB1_5
 # %bb.3:
-	move	$s3, $a0
+	move	$s4, $a0
 	addi.w	$s2, $fp, -2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	addi.w	$s4, $fp, -1
+	addi.w	$s3, $fp, -1
 	ori	$s5, $zero, 4
 	st.w	$zero, $a0, 0
-	bne	$s4, $s5, .LBB1_6
+	bne	$s3, $s5, .LBB1_6
 # %bb.4:
 	move	$fp, $s1
 	b	.LBB1_8
@@ -762,7 +762,7 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	addi.d	$sp, $sp, 80
 	ret
 .LBB1_6:
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s3, 2
 .Ltmp62:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -772,7 +772,7 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $s3, 0
+	ld.d	$s0, $s4, 0
 	st.w	$zero, $fp, 0
 	beqz	$s2, .LBB1_14
 .LBB1_8:                                # %iter.check
@@ -780,13 +780,13 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	bgeu	$s2, $s5, .LBB1_10
 # %bb.9:
 	move	$a2, $zero
-	move	$a0, $s3
+	move	$a0, $s4
 	b	.LBB1_22
 .LBB1_10:                               # %vector.memcheck
 	sub.d	$a0, $fp, $s0
 	addi.d	$a2, $a0, -4
 	ori	$a3, $zero, 64
-	move	$a0, $s3
+	move	$a0, $s4
 	bgeu	$a2, $a3, .LBB1_12
 # %bb.11:
 	move	$a2, $zero
@@ -798,7 +798,7 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	move	$a2, $zero
 	b	.LBB1_19
 .LBB1_14:
-	move	$a0, $s3
+	move	$a0, $s4
 	move	$a1, $zero
 	b	.LBB1_24
 .LBB1_15:                               # %vector.ph
@@ -858,12 +858,12 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	stx.w	$zero, $fp, $a1
 	st.w	$zero, $a0, 8
 	st.w	$zero, $s0, 0
-	bne	$s4, $s5, .LBB1_26
+	bne	$s3, $s5, .LBB1_26
 # %bb.25:
 	move	$s1, $s0
 	b	.LBB1_31
 .LBB1_26:
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s3, 2
 .Ltmp65:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -875,17 +875,17 @@ _ZL11RemoveQuoteR11CStringBaseIwE:      # @_ZL11RemoveQuoteR11CStringBaseIwE
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
-	ld.w	$a1, $s3, 8
+	move	$a0, $s4
+	ld.w	$a1, $s4, 8
 	b	.LBB1_30
 .LBB1_29:
 	move	$a1, $zero
-	move	$a0, $s3
+	move	$a0, $s4
 .LBB1_30:
 	st.d	$s1, $a0, 0
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $s1, $a1
-	st.w	$s4, $a0, 12
+	st.w	$s3, $a0, 12
 .LBB1_31:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i8.preheader
 	move	$a1, $zero
 	.p2align	4, , 16

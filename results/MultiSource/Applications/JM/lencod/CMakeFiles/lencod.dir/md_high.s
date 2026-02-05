@@ -84,8 +84,9 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	st.h	$zero, $sp, 282
 	st.d	$zero, $sp, 272
 	pcalau12i	$a0, %got_pc_hi20(input)
-	ld.d	$s1, $a0, %got_pc_lo12(input)
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $a0, %got_pc_lo12(input)
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	ld.d	$a0, $a0, 0
 	ldptr.w	$a0, $a0, 5244
 	ori	$a1, $zero, 2
 	beq	$a0, $a1, .LBB0_13
@@ -121,8 +122,8 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	pcaddu18i	$ra, %call36(store_coding_state)
 	jirl	$ra, $ra, 0
 	bstrpick.d	$t7, $fp, 15, 0
-	lu12i.w	$s3, 4112
-	st.d	$s1, $sp, 152                   # 8-byte Folded Spill
+	lu12i.w	$s1, 4112
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	st.d	$t7, $sp, 112                   # 8-byte Folded Spill
 	bnez	$t7, .LBB0_64
 # %bb.15:
@@ -136,7 +137,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	pcaddu18i	$ra, %call36(Get_Direct_Motion_Vectors)
 	jirl	$ra, $ra, 0
 .LBB0_17:
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a0, $a0, 4172
 	bne	$a0, $fp, .LBB0_19
 # %bb.18:
@@ -161,7 +162,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	ori	$a0, $s3, 257
+	ori	$a0, $s1, 257
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	ori	$s3, $zero, 1
 	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
@@ -188,7 +189,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 # %bb.23:                               #   in Loop: Header=BB0_22 Depth=1
 	move	$s4, $zero
 	st.w	$zero, $sp, 308
-	ori	$s0, $zero, 1
+	ori	$s1, $zero, 1
 	b	.LBB0_26
 	.p2align	4, , 16
 .LBB0_24:                               #   in Loop: Header=BB0_26 Depth=2
@@ -200,7 +201,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	pcaddu18i	$ra, %call36(SetRefAndMotionVectors)
 	jirl	$ra, $ra, 0
 .LBB0_25:                               #   in Loop: Header=BB0_26 Depth=2
-	move	$s0, $zero
+	move	$s1, $zero
 	addi.d	$a0, $s3, -1
 	sltu	$a0, $zero, $a0
 	xori	$a1, $s4, 1
@@ -210,8 +211,8 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 .LBB0_26:                               # %.preheader318
                                         #   Parent Loop BB0_22 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s1, $s1, 0
-	ldptr.w	$a0, $s1, 4172
+	ld.d	$s0, $s0, 0
+	ldptr.w	$a0, $s0, 4172
 	ld.w	$s8, $sp, 376
 	beqz	$a0, .LBB0_33
 # %bb.27:                               #   in Loop: Header=BB0_26 Depth=2
@@ -223,7 +224,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
                                         #   in Loop: Header=BB0_26 Depth=2
 	movgr2fr.w	$fa1, $s8
 	ffint.d.w	$fa1, $fa1
-	ldptr.w	$a0, $s1, 4172
+	ldptr.w	$a0, $s0, 4172
 	fmul.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a1, $fa0
@@ -238,20 +239,20 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
                                         #   in Loop: Header=BB0_26 Depth=2
 	movgr2fr.w	$fa1, $s8
 	ffint.d.w	$fa1, $fa1
-	ldptr.w	$a0, $s1, 4172
+	ldptr.w	$a0, $s0, 4172
 	fmul.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a1, $fa0
 	st.w	$a1, $sp, 288
 	beqz	$a0, .LBB0_35
 # %bb.31:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.w	$s1, $sp, 384
+	ld.w	$s0, $sp, 384
 	fsqrt.d	$fa0, $fs0
 	fcmp.cor.d	$fcc0, $fa0, $fa0
 	bceqz	$fcc0, .LBB0_50
 .LBB0_32:                               # %.split413
                                         #   in Loop: Header=BB0_26 Depth=2
-	movgr2fr.w	$fa1, $s1
+	movgr2fr.w	$fa1, $s0
 	ffint.d.w	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
@@ -288,7 +289,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(list_prediction_cost)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	bne	$s7, $s5, .LBB0_40
 # %bb.37:                               #   in Loop: Header=BB0_26 Depth=2
 	st.w	$s6, $sp, 316
@@ -320,7 +321,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	jirl	$ra, $ra, 0
 	bne	$s3, $s5, .LBB0_41
 # %bb.38:                               #   in Loop: Header=BB0_26 Depth=2
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ori	$a1, $zero, 2120
 	ldx.w	$a0, $a0, $a1
 	beqz	$a0, .LBB0_41
@@ -410,7 +411,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	stx.b	$a4, $a3, $a2
 	stx.b	$a4, $a3, $s4
 	sltui	$a2, $s3, 2
-	orn	$a2, $a2, $s0
+	orn	$a2, $a2, $s1
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_25
 	b	.LBB0_24
@@ -434,7 +435,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	stx.b	$a4, $a5, $a3
 	stx.b	$a4, $a5, $a2
 	sltui	$a2, $s3, 2
-	orn	$a2, $a2, $s0
+	orn	$a2, $a2, $s1
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_24
 	b	.LBB0_25
@@ -457,7 +458,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	st.b	$a1, $a2, 5
 	st.b	$a1, $a2, 4
 	sltui	$a2, $s3, 2
-	orn	$a2, $a2, $s0
+	orn	$a2, $a2, $s1
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_25
 	b	.LBB0_24
@@ -485,7 +486,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	bge	$s4, $a0, .LBB0_21
 # %bb.52:                               #   in Loop: Header=BB0_22 Depth=1
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a0, $a0, 4172
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.h	$s3, $a1, 0
@@ -500,9 +501,9 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	beqz	$a0, .LBB0_61
 # %bb.55:
 	pcalau12i	$a0, %pc_hi20(giRDOpt_B8OnlyFlag)
-	ori	$s0, $zero, 1
+	ori	$s1, $zero, 1
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	st.w	$s0, $a0, %pc_lo12(giRDOpt_B8OnlyFlag)
+	st.w	$s1, $a0, %pc_lo12(giRDOpt_B8OnlyFlag)
 	pcalau12i	$a0, %got_pc_hi20(tr8x8)
 	ld.d	$s3, $a0, %got_pc_lo12(tr8x8)
 	lu12i.w	$a0, 524287
@@ -521,7 +522,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	lu32i.d	$a0, 0
 	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $fp, 468
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a0, $a0, 5100
 	lu12i.w	$s5, 1
 	beqz	$a0, .LBB0_57
@@ -529,27 +530,28 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	st.w	$zero, $s3, 0
 	pcalau12i	$a0, %got_pc_hi20(cnt_nonz_8x8)
 	ld.d	$a0, $a0, %got_pc_lo12(cnt_nonz_8x8)
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(cbp_blk8x8)
 	ld.d	$a0, $a0, %got_pc_lo12(cbp_blk8x8)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(cbp8x8)
 	ld.d	$a0, $a0, %got_pc_lo12(cbp8x8)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
 	st.w	$zero, $sp, 304
 	pcalau12i	$a0, %got_pc_hi20(cofAC_8x8ts)
-	ld.d	$s8, $a0, %got_pc_lo12(cofAC_8x8ts)
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $a0, %got_pc_lo12(cofAC_8x8ts)
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	ld.d	$a0, $a0, 0
 	ld.d	$s4, $a0, 0
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
 	ori	$a2, $zero, 96
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $sp, 16
+	st.d	$s1, $sp, 16
 	addi.d	$a0, $sp, 296
 	st.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 308
@@ -560,8 +562,8 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	move	$a1, $s3
 	move	$a2, $fp
 	move	$a3, $s4
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	move	$a5, $s1
+	ld.d	$s8, $sp, 144                   # 8-byte Folded Reload
+	move	$a5, $s8
 	move	$a6, $zero
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
@@ -569,33 +571,33 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.h	$a0, $s3, $a0
 	pcalau12i	$a1, %got_pc_hi20(best8x8mode)
 	ld.d	$a2, $a1, %got_pc_lo12(best8x8mode)
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	ori	$a1, $s5, 2060
 	ldx.b	$a1, $s3, $a1
 	st.h	$a0, $a2, 0
 	pcalau12i	$a0, %got_pc_hi20(best8x8pdir)
 	ld.d	$a3, $a0, %got_pc_lo12(best8x8pdir)
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	ori	$a0, $s5, 2064
 	ldx.b	$a0, $s3, $a0
 	ori	$a2, $s5, 2068
 	ldx.b	$a2, $s3, $a2
 	st.b	$a1, $a3, 32
-	ori	$s0, $zero, 1
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	st.b	$a0, $fp, 32
+	ori	$s6, $zero, 1
+	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
+	st.b	$a0, $s0, 32
 	pcalau12i	$a0, %got_pc_hi20(best8x8bwref)
-	ld.d	$s6, $a0, %got_pc_lo12(best8x8bwref)
-	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
-	ld.d	$a0, $s8, 0
-	st.b	$a2, $s6, 32
+	ld.d	$s1, $a0, %got_pc_lo12(best8x8bwref)
+	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $fp, 0
+	st.b	$a2, $s1, 32
 	ld.d	$s4, $a0, 8
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
 	ori	$a2, $zero, 96
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $sp, 16
+	st.d	$s6, $sp, 16
 	addi.d	$a0, $sp, 296
 	st.d	$a0, $sp, 8
 	addi.d	$a0, $sp, 176
@@ -607,7 +609,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	move	$a1, $s3
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	move	$a3, $s4
-	move	$a5, $s1
+	move	$a5, $s8
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s5, 2054
@@ -618,16 +620,15 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.b	$a2, $s3, $a2
 	ori	$a3, $s5, 2069
 	ldx.b	$a3, $s3, $a3
-	ld.d	$a4, $s8, 0
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	st.b	$a1, $s0, 33
-	st.b	$a2, $fp, 33
-	move	$s4, $fp
-	st.b	$a3, $s6, 33
-	move	$fp, $s6
-	ld.d	$s8, $a4, 16
-	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
-	st.h	$a0, $s6, 2
+	ld.d	$a4, $fp, 0
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
+	st.b	$a1, $s6, 33
+	st.b	$a2, $s0, 33
+	move	$fp, $s1
+	st.b	$a3, $s1, 33
+	ld.d	$s4, $a4, 16
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	st.h	$a0, $s1, 2
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
 	ori	$a2, $zero, 96
@@ -645,8 +646,9 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	addi.d	$a7, $sp, 304
 	move	$a1, $s3
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	move	$a3, $s8
-	move	$a5, $s1
+	move	$a3, $s4
+	move	$a5, $s8
+	move	$s0, $s8
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s5, 2056
@@ -657,14 +659,14 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.b	$a2, $s3, $a2
 	ori	$a3, $s5, 2070
 	ldx.b	$a3, $s3, $a3
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a4, $a4, 0
-	st.b	$a1, $s0, 34
-	st.b	$a2, $s4, 34
+	st.b	$a1, $s6, 34
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
+	st.b	$a2, $s8, 34
 	st.b	$a3, $fp, 34
-	move	$s8, $fp
 	ld.d	$s4, $a4, 24
-	st.h	$a0, $s6, 4
+	st.h	$a0, $s1, 4
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
 	ori	$a2, $zero, 96
@@ -683,41 +685,40 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	move	$a1, $s3
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	move	$a3, $s4
-	move	$a5, $s1
+	move	$a5, $s0
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s5, 2058
 	ldx.h	$a0, $s3, $a0
-	st.h	$a0, $s6, 6
-	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
+	st.h	$a0, $s1, 6
 	ori	$a0, $s5, 2063
 	ldx.b	$a0, $s3, $a0
 	ori	$a1, $s5, 2067
 	ldx.b	$a1, $s3, $a1
 	ori	$a2, $s5, 2071
 	ldx.b	$a2, $s3, $a2
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a3, $a3, 0
-	st.b	$a0, $s0, 35
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	st.b	$a1, $a0, 35
+	st.b	$a0, $s6, 35
+	st.b	$a1, $s8, 35
+	st.b	$a2, $fp, 35
 	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
-	st.b	$a2, $s8, 35
 	pcalau12i	$a0, %got_pc_hi20(cbp8_8x8ts)
 	ld.d	$a0, $a0, %got_pc_lo12(cbp8_8x8ts)
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	st.w	$a3, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(cbp_blk8_8x8ts)
 	ld.d	$a0, $a0, %got_pc_lo12(cbp_blk8_8x8ts)
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a2, $a2, 0
 	st.d	$a1, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(cnt_nonz8_8x8ts)
 	ld.d	$a0, $a0, %got_pc_lo12(cnt_nonz8_8x8ts)
 	st.w	$a2, $a0, 0
 	st.w	$zero, $fp, 472
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a0, $a0, 5100
 	ori	$a1, $zero, 2
 	beq	$a0, $a1, .LBB0_58
@@ -734,8 +735,8 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	st.w	$zero, $a0, 0
 	st.w	$zero, $sp, 304
 	pcalau12i	$a0, %got_pc_hi20(cofAC8x8)
-	ld.d	$s1, $a0, %got_pc_lo12(cofAC8x8)
-	ld.d	$a0, $s1, 0
+	ld.d	$s6, $a0, %got_pc_lo12(cofAC8x8)
+	ld.d	$a0, $s6, 0
 	ld.d	$s3, $a0, 0
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
@@ -753,9 +754,8 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	move	$a1, $s2
 	move	$a2, $fp
 	move	$a3, $s3
-	move	$s0, $fp
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	move	$a5, $fp
+	ld.d	$s8, $sp, 144                   # 8-byte Folded Reload
+	move	$a5, $s8
 	move	$a6, $zero
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
@@ -768,19 +768,21 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.b	$a1, $s2, $a1
 	st.h	$a0, $a2, 0
 	pcalau12i	$a0, %got_pc_hi20(best8x8pdir)
-	ld.d	$s6, $a0, %got_pc_lo12(best8x8pdir)
+	ld.d	$a3, $a0, %got_pc_lo12(best8x8pdir)
+	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
 	ori	$a0, $s5, 2064
 	ldx.b	$a0, $s2, $a0
 	ori	$a2, $s5, 2068
 	ldx.b	$a2, $s2, $a2
-	st.b	$a1, $s6, 32
-	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
+	st.b	$a1, $a3, 32
 	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
 	st.b	$a0, $s4, 32
 	pcalau12i	$a0, %got_pc_hi20(best8x8bwref)
-	ld.d	$s8, $a0, %got_pc_lo12(best8x8bwref)
-	ld.d	$a0, $s1, 0
-	st.b	$a2, $s8, 32
+	move	$s0, $fp
+	ld.d	$s1, $a0, %got_pc_lo12(best8x8bwref)
+	ld.d	$a0, $s6, 0
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.b	$a2, $s1, 32
 	ld.d	$s3, $a0, 8
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
@@ -797,9 +799,9 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	addi.d	$a1, $sp, 308
 	st.d	$a1, $sp, 0
 	move	$a1, $s2
-	move	$a2, $s0
+	move	$a2, $fp
 	move	$a3, $s3
-	move	$a5, $fp
+	move	$a5, $s8
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s5, 2054
@@ -810,13 +812,14 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.b	$a2, $s2, $a2
 	ori	$a3, $s5, 2069
 	ldx.b	$a3, $s2, $a3
-	ld.d	$a4, $s1, 0
-	st.b	$a1, $s6, 33
+	ld.d	$a4, $s6, 0
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	st.b	$a1, $s8, 33
 	st.b	$a2, $s4, 33
-	st.b	$a3, $s8, 33
+	st.b	$a3, $s1, 33
 	ld.d	$s3, $a4, 16
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	st.h	$a0, $s6, 2
+	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
+	st.h	$a0, $fp, 2
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
 	ori	$a2, $zero, 96
@@ -833,8 +836,10 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	st.d	$a1, $sp, 0
 	move	$a1, $s2
 	move	$a2, $s0
+	move	$s6, $s0
 	move	$a3, $s3
-	move	$a5, $fp
+	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
+	move	$a5, $s0
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s5, 2056
@@ -845,14 +850,13 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.b	$a2, $s2, $a2
 	ori	$a3, $s5, 2070
 	ldx.b	$a3, $s2, $a3
-	ld.d	$a4, $s1, 0
-	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
-	st.b	$a1, $s0, 34
+	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a4, $a4, 0
+	st.b	$a1, $s8, 34
 	st.b	$a2, $s4, 34
-	st.b	$a3, $s8, 34
+	st.b	$a3, $s1, 34
 	ld.d	$s3, $a4, 24
-	st.h	$a0, $s6, 4
+	st.h	$a0, $fp, 4
 	addi.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 344
 	ori	$a2, $zero, 96
@@ -868,9 +872,10 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	addi.d	$a1, $sp, 308
 	st.d	$a1, $sp, 0
 	move	$a1, $s2
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	move	$a2, $s6
 	move	$a3, $s3
-	move	$a5, $fp
+	move	$a5, $s0
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(submacroblock_mode_decision)
 	jirl	$ra, $ra, 0
 	ori	$a0, $s5, 2058
@@ -881,18 +886,18 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.b	$a2, $s2, $a2
 	ori	$a3, $s5, 2071
 	ldx.b	$a3, $s2, $a3
-	st.h	$a0, $s6, 6
-	st.b	$a1, $s0, 35
+	st.h	$a0, $fp, 6
+	st.b	$a1, $s8, 35
 	st.b	$a2, $s4, 35
-	st.b	$a3, $s8, 35
+	st.b	$a3, $s1, 35
 .LBB0_58:                               # %.loopexit317
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(reset_coding_state)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a0, $a0, 5116
-	lu12i.w	$s3, 4112
+	lu12i.w	$s1, 4112
 	beqz	$a0, .LBB0_60
 # %bb.59:
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -917,7 +922,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	lu12i.w	$a1, 524287
 	ori	$a1, $a1, 4095
 	st.w	$a1, $a0, 0
-	lu12i.w	$s3, 4112
+	lu12i.w	$s1, 4112
 	ori	$a0, $zero, 3
 	ld.d	$t7, $sp, 112                   # 8-byte Folded Reload
 	beq	$s7, $a0, .LBB0_63
@@ -928,7 +933,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	jirl	$ra, $ra, 0
 	ld.d	$t7, $sp, 112                   # 8-byte Folded Reload
 .LBB0_64:
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	lu12i.w	$a1, 236040
 	ori	$a1, $a1, 3306
 	ldptr.w	$a2, $a0, 2120
@@ -952,7 +957,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	addi.d	$a2, $sp, 164
 	pcaddu18i	$ra, %call36(IntraChromaPrediction)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a0, $a0, 4176
 	beqz	$a0, .LBB0_70
 # %bb.68:
@@ -984,11 +989,11 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	st.w	$a2, $t6, 416
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s0, 0
 	pcalau12i	$a3, %got_pc_hi20(mb_mode_table)
 	ld.d	$s0, $a3, %got_pc_lo12(mb_mode_table)
 	ori	$s4, $zero, 1
-	ori	$a3, $s3, 257
+	ori	$a3, $s1, 257
 	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$a3, %got_pc_hi20(best8x8pdir)
 	ld.d	$s1, $a3, %got_pc_lo12(best8x8pdir)
@@ -1372,12 +1377,12 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	pcalau12i	$a0, %got_pc_hi20(cbp)
 	ld.d	$a0, $a0, %got_pc_lo12(cbp)
 	ld.w	$a1, $a0, 0
-	ld.h	$a0, $s3, 0
+	ld.hu	$a0, $s3, 0
 	sltu	$a2, $zero, $a1
-	bstrpick.d	$a0, $a0, 15, 0
 	addi.d	$a3, $a0, -10
 	sltui	$a3, $a3, 1
 	or	$a2, $a2, $a3
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	beqz	$a2, .LBB0_143
 # %bb.142:
 	ori	$a3, $zero, 14
@@ -1386,8 +1391,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 .LBB0_143:
 	bnez	$a1, .LBB0_145
 # %bb.144:
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a1, $a1, 0
+	ld.d	$a1, $s0, 0
 	ldptr.w	$a1, $a1, 5116
 	beqz	$a1, .LBB0_146
 .LBB0_145:
@@ -1411,8 +1415,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 .LBB0_148:
 	pcaddu18i	$ra, %call36(set_stored_macroblock_parameters)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $s0, 0
 	ldptr.w	$a0, $a0, 5116
 	beqz	$a0, .LBB0_150
 # %bb.149:
@@ -1436,7 +1439,7 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	beqz	$a0, .LBB0_153
 # %bb.152:
 	ld.w	$a0, $a2, 72
-	beqz	$a0, .LBB0_166
+	beqz	$a0, .LBB0_167
 .LBB0_153:
 	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $s0, 0
@@ -1452,11 +1455,10 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 .LBB0_155:
 	ldptr.w	$a0, $a0, 5244
 	ori	$a1, $zero, 2
-	beq	$a0, $a1, .LBB0_159
+	beq	$a0, $a1, .LBB0_158
 # %bb.156:
 	ori	$a1, $zero, 1
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB0_158
+	bne	$a0, $a1, .LBB0_160
 # %bb.157:
 	ld.h	$a1, $sp, 418
 	ld.h	$a0, $s3, 0
@@ -1466,13 +1468,8 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.w	$a1, $a2, $a1
 	pcaddu18i	$ra, %call36(UMHEX_skip_intrabk_SAD)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	b	.LBB0_159
 .LBB0_158:
-	ld.d	$a0, $s0, 0
-	ld.w	$a0, $a0, 272
-	bnez	$a0, .LBB0_160
-	b	.LBB0_165
-.LBB0_159:
 	ld.h	$a1, $sp, 418
 	ld.h	$a0, $s3, 0
 	slli.d	$a1, $a1, 2
@@ -1481,36 +1478,37 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ldx.w	$a1, $a2, $a1
 	pcaddu18i	$ra, %call36(smpUMHEX_skip_intrabk_SAD)
 	jirl	$ra, $ra, 0
+.LBB0_159:
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+.LBB0_160:
 	ld.d	$a0, $s0, 0
 	ld.w	$a0, $a0, 272
-	beqz	$a0, .LBB0_165
-.LBB0_160:
+	beqz	$a0, .LBB0_166
+# %bb.161:
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.w	$a3, $a0, 20
 	ori	$a1, $zero, 1
-	bltu	$a1, $a3, .LBB0_165
-# %bb.161:
+	bltu	$a1, $a3, .LBB0_166
+# %bb.162:
 	ld.w	$a2, $a2, 72
 	ori	$a3, $zero, 13
-	bltu	$a3, $a2, .LBB0_163
-# %bb.162:
+	bltu	$a3, $a2, .LBB0_164
+# %bb.163:
 	ori	$a3, $zero, 1
 	sll.d	$a3, $a3, $a2
 	ori	$a4, $fp, 1536
 	and	$a3, $a3, $a4
-	bnez	$a3, .LBB0_164
-.LBB0_163:
+	bnez	$a3, .LBB0_165
+.LBB0_164:
 	addi.d	$a1, $a2, -14
 	sltui	$a1, $a1, 1
-.LBB0_164:
+.LBB0_165:
 	ld.w	$a2, $a0, 12
 	ldptr.d	$a0, $a0, 14240
 	slli.d	$a2, $a2, 2
 	stx.w	$a1, $a0, $a2
-.LBB0_165:
+.LBB0_166:
 	fld.d	$fs0, $sp, 448                  # 8-byte Folded Reload
 	ld.d	$s8, $sp, 456                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 464                   # 8-byte Folded Reload
@@ -1525,32 +1523,32 @@ encode_one_macroblock_high:             # @encode_one_macroblock_high
 	ld.d	$ra, $sp, 536                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 544
 	ret
-.LBB0_166:
+.LBB0_167:
 	ori	$a0, $zero, 1
-	bne	$s7, $a0, .LBB0_170
-# %bb.167:
-	ld.w	$a0, $a2, 364
-	bnez	$a0, .LBB0_153
+	bne	$s7, $a0, .LBB0_171
 # %bb.168:
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$a0, $a0, 72
+	ld.w	$a0, $a2, 364
 	bnez	$a0, .LBB0_153
 # %bb.169:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.w	$a0, $a0, 72
+	bnez	$a0, .LBB0_153
+# %bb.170:
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 364
 	bnez	$a0, .LBB0_153
-	b	.LBB0_171
-.LBB0_170:                              # %.thread313
+	b	.LBB0_172
+.LBB0_171:                              # %.thread313
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 72
 	bnez	$a0, .LBB0_153
-.LBB0_171:                              # %.thread315
+.LBB0_172:                              # %.thread315
 	pcaddu18i	$ra, %call36(field_flag_inference)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ld.h	$a1, $sp, 422
 	beq	$a0, $a1, .LBB0_153
-# %bb.172:
+# %bb.173:
 	ld.d	$a0, $s0, %pc_lo12(rdopt)
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0

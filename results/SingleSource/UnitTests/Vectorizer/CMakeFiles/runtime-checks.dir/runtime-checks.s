@@ -12670,20 +12670,20 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bstrpick.d	$a7, $a7, 31, 0
 	vinsgr2vr.d	$vr4, $a7, 1
 	xvpickve2gr.d	$a7, $xr4, 0
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t0, $xr4, 1
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t1, $xr1, 2
-	slli.d	$t1, $t1, 2
 	xvpickve2gr.d	$t2, $xr1, 3
-	slli.d	$t2, $t2, 2
 	xvpickve2gr.d	$t3, $xr3, 0
-	slli.d	$t3, $t3, 2
 	xvpickve2gr.d	$t4, $xr3, 1
-	slli.d	$t4, $t4, 2
 	xvpickve2gr.d	$t5, $xr2, 2
-	slli.d	$t5, $t5, 2
 	xvpickve2gr.d	$t6, $xr2, 3
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$t1, $t1, 2
+	slli.d	$t2, $t2, 2
+	slli.d	$t3, $t3, 2
+	slli.d	$t4, $t4, 2
+	slli.d	$t5, $t5, 2
 	slli.d	$t6, $t6, 2
 	ldx.w	$a7, $a0, $a7
 	ldx.w	$t0, $a0, $t0

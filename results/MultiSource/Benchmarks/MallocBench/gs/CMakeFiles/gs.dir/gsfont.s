@@ -39,12 +39,12 @@ gs_font_dir_alloc_limits:               # @gs_font_dir_alloc_limits
 	move	$s0, $a3
 	move	$s4, $a2
 	move	$s1, $a1
-	move	$s7, $a0
+	move	$s8, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 1144
-	jirl	$ra, $s7, 0
+	jirl	$ra, $s8, 0
 	beqz	$a0, .LBB1_12
 # %bb.1:
 	move	$fp, $a0
@@ -55,7 +55,7 @@ gs_font_dir_alloc_limits:               # @gs_font_dir_alloc_limits
 	ori	$a1, $zero, 1
 	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
 	move	$a0, $s0
-	jirl	$ra, $s7, 0
+	jirl	$ra, $s8, 0
 	move	$s3, $a0
 	pcalau12i	$a0, %got_pc_hi20(cached_fm_pair_sizeof)
 	ld.d	$s4, $a0, %got_pc_lo12(cached_fm_pair_sizeof)
@@ -63,19 +63,19 @@ gs_font_dir_alloc_limits:               # @gs_font_dir_alloc_limits
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.2)
 	move	$a0, $s2
-	jirl	$ra, $s7, 0
-	move	$s8, $a0
+	jirl	$ra, $s8, 0
+	move	$s7, $a0
 	pcalau12i	$a0, %got_pc_hi20(cached_char_sizeof)
 	ld.d	$s0, $a0, %got_pc_lo12(cached_char_sizeof)
 	ld.w	$a1, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.3)
 	move	$a0, $s5
-	jirl	$ra, $s7, 0
+	jirl	$ra, $s8, 0
 	move	$s6, $a0
 	beqz	$s3, .LBB1_5
 # %bb.2:
-	beqz	$s8, .LBB1_5
+	beqz	$s7, .LBB1_5
 # %bb.3:
 	beqz	$s6, .LBB1_5
 # %bb.4:
@@ -84,7 +84,7 @@ gs_font_dir_alloc_limits:               # @gs_font_dir_alloc_limits
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $fp, 0
+	st.d	$s8, $fp, 0
 	st.d	$s1, $fp, 8
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.w	$a0, $fp, 36
@@ -102,7 +102,7 @@ gs_font_dir_alloc_limits:               # @gs_font_dir_alloc_limits
 	st.w	$a0, $fp, 64
 	st.w	$a2, $fp, 68
 	st.d	$s3, $fp, 1096
-	st.d	$s8, $fp, 1112
+	st.d	$s7, $fp, 1112
 	st.d	$s6, $fp, 1128
 	b	.LBB1_13
 .LBB1_5:
@@ -115,12 +115,12 @@ gs_font_dir_alloc_limits:               # @gs_font_dir_alloc_limits
 	move	$a1, $s5
 	jirl	$ra, $s1, 0
 .LBB1_7:
-	beqz	$s8, .LBB1_9
+	beqz	$s7, .LBB1_9
 # %bb.8:
 	ld.w	$a2, $s4, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.2)
-	move	$a0, $s8
+	move	$a0, $s7
 	move	$a1, $s2
 	jirl	$ra, $s1, 0
 .LBB1_9:

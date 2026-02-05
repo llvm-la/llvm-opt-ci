@@ -92,7 +92,7 @@ main:                                   # @main
 	vrepli.w	$vr4, -144
 	vrepli.w	$vr5, 112
 	vrepli.b	$vr6, -1
-	ori	$a2, $zero, 1136
+	ori	$a2, $zero, 1152
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body39
                                         # =>This Inner Loop Header: Depth=1
@@ -106,22 +106,18 @@ main:                                   # @main
 	vseq.w	$vr7, $vr7, $vr8
 	vxor.v	$vr7, $vr7, $vr6
 	vmskltz.w	$vr7, $vr7
-	vpickve2gr.hu	$a4, $vr7, 0
-	bnez	$a4, .LBB1_3
-# %bb.2:                                # %vector.body39
+	vpickve2gr.hu	$a3, $vr7, 0
+	bnez	$a3, .LBB1_4
+# %bb.2:                                # %vector.body.interim
                                         #   in Loop: Header=BB1_1 Depth=1
-	move	$a3, $a0
-	vaddi.wu	$vr0, $vr0, 4
 	addi.d	$a0, $a0, 16
-	bne	$a3, $a2, .LBB1_1
-.LBB1_3:                                # %middle.split
-	andi	$a0, $a4, 15
-	bnez	$a0, .LBB1_5
-# %bb.4:                                # %check.exit
+	vaddi.wu	$vr0, $vr0, 4
+	bne	$a0, $a2, .LBB1_1
+# %bb.3:                                # %check.exit
 	move	$a0, $zero
 	addi.d	$sp, $sp, 1168
 	ret
-.LBB1_5:                                # %vector.early.exit
+.LBB1_4:                                # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:

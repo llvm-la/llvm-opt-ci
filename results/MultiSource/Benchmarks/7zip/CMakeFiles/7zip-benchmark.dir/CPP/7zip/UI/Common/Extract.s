@@ -2345,8 +2345,7 @@ _ZN23CArchiveExtractCallbackC2Ev:       # @_ZN23CArchiveExtractCallbackC2Ev
 .LBB1_10:
 .Ltmp196:                               # EH_LABEL
 	move	$s0, $a0
-	addi.d	$a0, $fp, 96
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 96
 	beqz	$a0, .LBB1_22
 	b	.LBB1_25
 .LBB1_11:
@@ -2393,12 +2392,10 @@ _ZN23CArchiveExtractCallbackC2Ev:       # @_ZN23CArchiveExtractCallbackC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp214:                               # EH_LABEL
 .LBB1_20:                               # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit17
-	addi.d	$a0, $fp, 112
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 112
 	bnez	$a0, .LBB1_24
 # %bb.21:                               # %_ZN11CStringBaseIwED2Ev.exit
-	addi.d	$a0, $fp, 96
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 96
 	bnez	$a0, .LBB1_25
 .LBB1_22:                               # %_ZN11CStringBaseIwED2Ev.exit18
 	ld.d	$a0, $fp, 72
@@ -2410,8 +2407,7 @@ _ZN23CArchiveExtractCallbackC2Ev:       # @_ZN23CArchiveExtractCallbackC2Ev
 .LBB1_24:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 96
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 96
 	beqz	$a0, .LBB1_22
 .LBB1_25:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2439,8 +2435,7 @@ _ZN23CArchiveExtractCallbackC2Ev:       # @_ZN23CArchiveExtractCallbackC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp220:                               # EH_LABEL
 .LBB1_30:                               # %_ZN9CMyComPtrI21ICompressProgressInfoED2Ev.exit22
-	addi.d	$a0, $fp, 48
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 48
 	beqz	$a0, .LBB1_32
 # %bb.31:
 	ld.d	$a1, $a0, 0

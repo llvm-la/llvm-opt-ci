@@ -5,18 +5,18 @@
 	.type	pcheck_ConvertParentsInSPASSProof,@function
 pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 96
 	move	$s1, $a1
@@ -149,9 +149,9 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	ld.d	$s8, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s2, $a0, %got_pc_lo12(memory_FREEDBYTES)
-	move	$s1, $zero
-	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
-	ori	$fp, $zero, 1
+	move	$s0, $zero
+	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB0_29
 	.p2align	4, , 16
 .LBB0_27:                               # %list_Delete.exit72.i.i
@@ -159,38 +159,37 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	pcaddu18i	$ra, %call36(list_NReverse)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(list_NReverse)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $s6, 32
-	st.d	$a0, $s6, 40
+	st.d	$s5, $fp, 32
+	st.d	$a0, $fp, 40
 .LBB0_28:                               #   in Loop: Header=BB0_29 Depth=1
-	addi.d	$s1, $s1, 1
-	beq	$s1, $s4, .LBB0_51
+	addi.d	$s0, $s0, 1
+	beq	$s0, $s4, .LBB0_51
 .LBB0_29:                               # %.preheader.i.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_33 Depth 2
                                         #       Child Loop BB0_34 Depth 3
                                         #     Child Loop BB0_41 Depth 2
                                         #     Child Loop BB0_45 Depth 2
-	slli.d	$a0, $s1, 3
-	ldx.d	$s6, $s3, $a0
-	ld.wu	$a0, $s6, 48
+	slli.d	$a0, $s0, 3
+	ldx.d	$fp, $s3, $a0
+	ld.wu	$a0, $fp, 48
 	andi	$a1, $a0, 64
 	bnez	$a1, .LBB0_28
 # %bb.30:                               #   in Loop: Header=BB0_29 Depth=1
-	ld.d	$s0, $s6, 32
+	ld.d	$s1, $fp, 32
 	ori	$a0, $a0, 64
-	st.w	$a0, $s6, 48
-	addi.d	$s7, $s6, 40
-	beqz	$s0, .LBB0_43
+	st.w	$a0, $fp, 48
+	addi.d	$a1, $fp, 40
+	beqz	$s1, .LBB0_42
 # %bb.31:                               # %.lr.ph85.i.i.preheader
                                         #   in Loop: Header=BB0_29 Depth=1
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
+	move	$s5, $zero
+	move	$s0, $a1
 	move	$a0, $s3
 	b	.LBB0_33
 	.p2align	4, , 16
@@ -199,92 +198,87 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
-	st.d	$s4, $a0, 8
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	st.d	$s3, $a0, 8
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a0, $s6, 0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s3, $a0, 8
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	st.d	$a1, $a0, 0
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	ld.d	$s0, $s0, 0
-	move	$a0, $s5
-	move	$s4, $s1
-	beqz	$s0, .LBB0_39
+	st.d	$s7, $a0, 8
+	st.d	$s5, $a0, 0
+	move	$s5, $a0
+	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
+	ld.d	$s1, $s1, 0
+	move	$a0, $s4
+	beqz	$s1, .LBB0_39
 .LBB0_33:                               # %.lr.ph85.i.i
                                         #   Parent Loop BB0_29 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_34 Depth 3
-	ld.d	$s7, $s7, 0
-	ld.w	$s6, $s0, 8
-	ld.w	$s3, $s7, 8
-	move	$s5, $a0
-	move	$s1, $s4
-	move	$a1, $s4
+	ld.d	$s0, $s0, 0
+	ld.w	$s6, $s1, 8
+	ld.w	$s7, $s0, 8
+	move	$s4, $a0
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_34:                               # %.lr.ph.i.i.i
                                         #   Parent Loop BB0_29 Depth=1
                                         #     Parent Loop BB0_33 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	slli.d	$a2, $a1, 2
-	bstrins.d	$a2, $zero, 2, 0
-	ldx.d	$s4, $a0, $a2
-	ld.w	$a3, $s4, 0
-	add.d	$a2, $a0, $a2
+	bstrpick.d	$a2, $a2, 62, 3
+	slli.d	$a3, $a2, 3
+	ldx.d	$s3, $a0, $a3
+	ld.w	$a3, $s3, 0
+	alsl.d	$a2, $a2, $a0, 3
 	beq	$a3, $s6, .LBB0_37
 # %bb.35:                               #   in Loop: Header=BB0_34 Depth=3
 	slt	$a3, $a3, $s6
 	addi.d	$a2, $a2, 8
-	sub.d	$a4, $a1, $a3
+	sub.d	$a1, $a1, $a3
 	masknez	$a0, $a0, $a3
-	maskeqz	$a1, $a2, $a3
-	or	$a0, $a1, $a0
-	srli.d	$a1, $a4, 1
-	bltu	$fp, $a4, .LBB0_34
+	maskeqz	$a2, $a2, $a3
+	srli.d	$a1, $a1, 1
+	or	$a0, $a2, $a0
+	bnez	$a1, .LBB0_34
 # %bb.36:                               #   in Loop: Header=BB0_33 Depth=2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s6, $a0, 8
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	ld.w	$a1, $a2, 48
+	ld.w	$a1, $fp, 48
 	ori	$a1, $a1, 128
-	st.w	$a1, $a2, 48
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	ld.d	$s0, $s0, 0
-	move	$a0, $s5
-	move	$s4, $s1
-	bnez	$s0, .LBB0_33
+	st.w	$a1, $fp, 48
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ld.d	$s1, $s1, 0
+	move	$a0, $s4
+	bnez	$s1, .LBB0_33
 	b	.LBB0_39
 	.p2align	4, , 16
 .LBB0_37:                               # %bsearch.exit.i.i
                                         #   in Loop: Header=BB0_33 Depth=2
-	ld.bu	$a0, $s4, 48
+	ld.bu	$a0, $s3, 48
 	andi	$a0, $a0, 128
 	beqz	$a0, .LBB0_32
 # %bb.38:                               #   in Loop: Header=BB0_33 Depth=2
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	ld.w	$a0, $a1, 48
+	ld.w	$a0, $fp, 48
 	ori	$a0, $a0, 128
-	st.w	$a0, $a1, 48
-	ld.d	$s4, $a2, 0
+	st.w	$a0, $fp, 48
+	ld.d	$s3, $a2, 0
 	b	.LBB0_32
 	.p2align	4, , 16
 .LBB0_39:                               # %._crit_edge.i.i
                                         #   in Loop: Header=BB0_29 Depth=1
 	move	$s3, $a0
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a0, $s6, 32
-	beqz	$a0, .LBB0_44
+	ld.d	$a0, $fp, 32
+	beqz	$a0, .LBB0_43
 # %bb.40:                               # %.lr.ph.i65.i.i.preheader
                                         #   in Loop: Header=BB0_29 Depth=1
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	move	$s1, $s5
 	.p2align	4, , 16
 .LBB0_41:                               # %.lr.ph.i65.i.i
                                         #   Parent Loop BB0_29 Depth=1
@@ -301,24 +295,21 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	st.d	$a0, $a1, 0
 	move	$a0, $a4
 	bnez	$a4, .LBB0_41
-# %bb.42:                               #   in Loop: Header=BB0_29 Depth=1
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a5, $s7, 0
+	b	.LBB0_44
+.LBB0_42:                               #   in Loop: Header=BB0_29 Depth=1
+	move	$a0, $zero
+	move	$s1, $zero
+	ld.d	$a5, $a1, 0
 	bnez	$a5, .LBB0_45
 	b	.LBB0_27
 .LBB0_43:                               #   in Loop: Header=BB0_29 Depth=1
-	move	$a0, $zero
-	move	$s0, $zero
-	ld.d	$a5, $s7, 0
-	bnez	$a5, .LBB0_45
-	b	.LBB0_27
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	move	$s1, $s5
 .LBB0_44:                               #   in Loop: Header=BB0_29 Depth=1
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a5, $s7, 0
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	addi.d	$a1, $fp, 40
+	ld.d	$a5, $a1, 0
 	beqz	$a5, .LBB0_27
 	.p2align	4, , 16
 .LBB0_45:                               # %.lr.ph.i68.i.i
@@ -362,7 +353,7 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	bnez	$fp, .LBB0_59
 	b	.LBB0_61
 .LBB0_50:
-	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 .LBB0_51:                               # %pcheck_ForceParentNumbersToPointersInVector.exit.i
 	ori	$a0, $zero, 1024
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
@@ -383,7 +374,7 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	ldx.d	$a0, $a1, $a0
 	st.d	$s3, $a0, 0
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
 	bnez	$fp, .LBB0_59
 	b	.LBB0_61
 .LBB0_53:
@@ -403,7 +394,7 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	ld.d	$a3, $a1, -16
 	ld.d	$a2, $a1, -8
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a3, .LBB0_62
 # %bb.54:
 	st.d	$a2, $a3, 8
@@ -457,18 +448,18 @@ pcheck_ConvertParentsInSPASSProof:      # @pcheck_ConvertParentsInSPASSProof
 	bnez	$a5, .LBB0_60
 .LBB0_61:                               # %list_Delete.exit
 	move	$a0, $s0
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB0_62:
 	pcalau12i	$a3, %got_pc_hi20(memory_BIGBLOCKS)
@@ -978,8 +969,8 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	slli.w	$a0, $a0, 3
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	slli.w	$s1, $a0, 3
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -1006,7 +997,6 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s6, $a0, %got_pc_lo12(memory_FREEDBYTES)
 	move	$s7, $zero
-	ori	$s8, $zero, 2
 	b	.LBB4_55
 	.p2align	4, , 16
 .LBB4_54:                               # %list_Delete.exit.i.i
@@ -1020,7 +1010,7 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	slli.d	$a0, $s7, 3
 	ldx.d	$a0, $s0, $a0
 	ld.d	$s3, $a0, 32
-	alsl.d	$s1, $s7, $s0, 3
+	alsl.d	$s8, $s7, $s0, 3
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(list_Copy)
 	jirl	$ra, $ra, 0
@@ -1048,25 +1038,26 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
                                         #     Parent Loop BB4_58 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	slli.d	$a4, $a3, 2
-	bstrins.d	$a4, $zero, 2, 0
-	ldx.d	$a5, $a2, $a4
+	bstrpick.d	$a4, $a4, 62, 3
+	slli.d	$a5, $a4, 3
+	ldx.d	$a5, $a2, $a5
 	ld.w	$a6, $a5, 0
 	beq	$a6, $s4, .LBB4_57
 # %bb.60:                               #   in Loop: Header=BB4_59 Depth=3
-	add.d	$a4, $a2, $a4
+	alsl.d	$a4, $a4, $a2, 3
 	slt	$a5, $a6, $s4
 	addi.d	$a4, $a4, 8
-	sub.d	$a6, $a3, $a5
+	sub.d	$a3, $a3, $a5
 	masknez	$a2, $a2, $a5
-	maskeqz	$a3, $a4, $a5
-	or	$a2, $a3, $a2
-	srli.d	$a3, $a6, 1
-	bgeu	$a6, $s8, .LBB4_59
+	maskeqz	$a4, $a4, $a5
+	srli.d	$a3, $a3, 1
+	or	$a2, $a4, $a2
+	bnez	$a3, .LBB4_59
 	b	.LBB4_73
 	.p2align	4, , 16
 .LBB4_61:                               # %._crit_edge.i.i72
                                         #   in Loop: Header=BB4_55 Depth=1
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s8, 0
 	st.d	$a0, $a1, 32
 	beqz	$s3, .LBB4_54
 	.p2align	4, , 16
@@ -1088,10 +1079,9 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	b	.LBB4_54
 .LBB4_63:                               # %pcheck_ParentNumbersToPointersInVector.exit.i
 	ori	$a0, $zero, 1024
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	bgeu	$a3, $a0, .LBB4_65
+	bgeu	$s1, $a0, .LBB4_65
 # %bb.64:
-	slli.d	$a0, $a3, 3
+	slli.d	$a0, $s1, 3
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_ARRAY)
 	ldx.d	$a2, $a1, $a0
@@ -1110,11 +1100,11 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	pcalau12i	$a0, %got_pc_hi20(memory_ALIGN)
 	ld.d	$a0, $a0, %got_pc_lo12(memory_ALIGN)
 	ld.w	$a0, $a0, 0
-	mod.wu	$a1, $a3, $a0
+	mod.wu	$a1, $s1, $a0
 	sltui	$a2, $a1, 1
 	sub.d	$a0, $a0, $a1
 	masknez	$a0, $a0, $a2
-	add.w	$a0, $a0, $a3
+	add.w	$a0, $a0, $s1
 	pcalau12i	$a1, %got_pc_hi20(memory_OFFSET)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_OFFSET)
 	ld.wu	$a1, $a1, 0
@@ -1178,7 +1168,7 @@ pcheck_ConvertTermListToClauseList:     # @pcheck_ConvertTermListToClauseList
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s8, 0
 	ld.w	$a2, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)

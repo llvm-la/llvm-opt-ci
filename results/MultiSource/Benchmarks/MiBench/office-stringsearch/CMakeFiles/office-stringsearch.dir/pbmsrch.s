@@ -128,12 +128,12 @@ init_search:                            # @init_search
 	vpickve2gr.b	$a7, $vr5, 3
 	xvreplgr2vr.b	$xr5, $a7
 	xvpermi.q	$xr5, $xr7, 48
-	alsl.d	$a5, $a5, $a1, 3
-	alsl.d	$a6, $a6, $a1, 3
 	xvpickve2gr.d	$a7, $xr7, 2
 	xvextrins.b	$xr7, $xr5, 136
-	alsl.d	$a7, $a7, $a1, 3
 	xvpickve2gr.d	$t0, $xr7, 3
+	alsl.d	$a5, $a5, $a1, 3
+	alsl.d	$a6, $a6, $a1, 3
+	alsl.d	$a7, $a7, $a1, 3
 	alsl.d	$t0, $t0, $a1, 3
 	xvstelm.d	$xr4, $a5, 0, 0
 	xvstelm.d	$xr4, $a6, 0, 1
@@ -445,12 +445,12 @@ main:                                   # @main
 	vpickve2gr.b	$a5, $vr3, 3
 	xvreplgr2vr.b	$xr3, $a5
 	xvpermi.q	$xr3, $xr5, 48
-	alsl.d	$a3, $a3, $s8, 3
-	alsl.d	$a4, $a4, $s8, 3
 	xvpickve2gr.d	$a5, $xr5, 2
 	xvextrins.b	$xr5, $xr3, 136
-	alsl.d	$a5, $a5, $s8, 3
 	xvpickve2gr.d	$a6, $xr5, 3
+	alsl.d	$a3, $a3, $s8, 3
+	alsl.d	$a4, $a4, $s8, 3
+	alsl.d	$a5, $a5, $s8, 3
 	alsl.d	$a6, $a6, $s8, 3
 	xvstelm.d	$xr2, $a3, 0, 0
 	xvstelm.d	$xr2, $a4, 0, 1

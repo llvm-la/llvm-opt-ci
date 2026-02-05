@@ -10,10 +10,10 @@ simple_vol_global:                      # @simple_vol_global
 	preld	0, $a0, 0
 	pcalau12i	$a0, %pc_hi20(glob_vol_ptr_int)
 	ld.d	$a0, $a0, %pc_lo12(glob_vol_ptr_int)
+	pcalau12i	$a1, %pc_hi20(glob_ptr_vol_int)
+	ld.d	$a1, $a1, %pc_lo12(glob_ptr_vol_int)
 	preld	0, $a0, 0
-	pcalau12i	$a0, %pc_hi20(glob_ptr_vol_int)
-	ld.d	$a0, $a0, %pc_lo12(glob_ptr_vol_int)
-	preld	0, $a0, 0
+	preld	0, $a1, 0
 	pcalau12i	$a0, %pc_hi20(glob_vol_ptr_vol_int)
 	ld.d	$a0, $a0, %pc_lo12(glob_vol_ptr_vol_int)
 	preld	0, $a0, 0
@@ -100,18 +100,18 @@ expr_vol_global:                        # @expr_vol_global
 	preld	0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(glob_vol_ptr_int)
 	ld.d	$a2, $a1, %pc_lo12(glob_vol_ptr_int)
+	pcalau12i	$a3, %pc_hi20(glob_ptr_vol_int)
+	ld.d	$a3, $a3, %pc_lo12(glob_ptr_vol_int)
 	preld	0, $a2, 0
-	pcalau12i	$a2, %pc_hi20(glob_ptr_vol_int)
-	ld.d	$a2, $a2, %pc_lo12(glob_ptr_vol_int)
-	preld	0, $a2, 0
-	pcalau12i	$a3, %pc_hi20(glob_vol_ptr_vol_int)
-	ld.d	$a4, $a3, %pc_lo12(glob_vol_ptr_vol_int)
+	preld	0, $a3, 0
+	pcalau12i	$a2, %pc_hi20(glob_vol_ptr_vol_int)
+	ld.d	$a4, $a2, %pc_lo12(glob_vol_ptr_vol_int)
 	preld	0, $a4, 0
 	preld	0, $a0, 8
 	ld.d	$a4, $a1, %pc_lo12(glob_vol_ptr_int)
 	preld	0, $a4, 12
-	preld	0, $a2, 12
-	ld.d	$a4, $a3, %pc_lo12(glob_vol_ptr_vol_int)
+	preld	0, $a3, 12
+	ld.d	$a4, $a2, %pc_lo12(glob_vol_ptr_vol_int)
 	preld	0, $a4, 12
 	preld	0, $a0, 12
 	pcalau12i	$a4, %pc_hi20(glob_vol_int)
@@ -120,17 +120,17 @@ expr_vol_global:                        # @expr_vol_global
 	preld	0, $a0, 0
 	ld.d	$a0, $a1, %pc_lo12(glob_vol_ptr_int)
 	preld	0, $a0, 20
-	preld	0, $a2, 20
-	ld.d	$a0, $a3, %pc_lo12(glob_vol_ptr_vol_int)
+	preld	0, $a3, 20
+	ld.d	$a0, $a2, %pc_lo12(glob_vol_ptr_vol_int)
 	preld	0, $a0, 20
 	ld.d	$a0, $a1, %pc_lo12(glob_vol_ptr_int)
 	ld.w	$a1, $a4, %pc_lo12(glob_vol_int)
 	alsl.d	$a0, $a1, $a0, 2
 	preld	0, $a0, 0
 	ld.w	$a0, $a4, %pc_lo12(glob_vol_int)
-	alsl.d	$a0, $a0, $a2, 2
+	alsl.d	$a0, $a0, $a3, 2
 	preld	0, $a0, 0
-	ld.d	$a0, $a3, %pc_lo12(glob_vol_ptr_vol_int)
+	ld.d	$a0, $a2, %pc_lo12(glob_vol_ptr_vol_int)
 	ld.w	$a1, $a4, %pc_lo12(glob_vol_int)
 	alsl.d	$a0, $a1, $a0, 2
 	preld	0, $a0, 0

@@ -143,11 +143,11 @@ _ZN9benchmark14MinimalLeastSqERKSt6vectorIlSaIlEERKS0_IdSaIdEEPFdlE: # @_ZN9benc
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $a3
 	move	$s2, $a2
-	movgr2fr.d	$fs1, $zero
+	movgr2fr.d	$fs0, $zero
 	move	$s3, $zero
 	move	$s4, $zero
-	fmov.d	$fs0, $fs1
-	fmov.d	$fs2, $fs1
+	fmov.d	$fs1, $fs0
+	fmov.d	$fs2, $fs0
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -367,11 +367,11 @@ _ZN9benchmark14MinimalLeastSqERKSt6vectorIlSaIlEERKS0_IdSaIdEENS_4BigOE: # @_ZN9
 	ld.d	$a0, $s1, 0
 	beq	$a1, $a0, .LBB3_24
 .LBB3_10:                               # %.lr.ph.i52.preheader
-	movgr2fr.d	$fs1, $zero
+	movgr2fr.d	$fs0, $zero
 	move	$s3, $zero
 	move	$s4, $zero
-	fmov.d	$fs0, $fs1
-	fmov.d	$fs2, $fs1
+	fmov.d	$fs1, $fs0
+	fmov.d	$fs2, $fs0
 	.p2align	4, , 16
 .LBB3_11:                               # %.lr.ph.i52
                                         # =>This Inner Loop Header: Depth=1
@@ -453,24 +453,24 @@ _ZN9benchmark14MinimalLeastSqERKSt6vectorIlSaIlEERKS0_IdSaIdEENS_4BigOE: # @_ZN9
 	ld.d	$a1, $s0, 0
 	sub.d	$a0, $s5, $s4
 	srai.d	$a0, $a0, 3
-	movgr2fr.d	$fa0, $zero
-	vldi	$vr1, -912
+	movgr2fr.d	$fa2, $zero
+	vldi	$vr0, -912
 	move	$a2, $a1
 	move	$a3, $a0
-	fmov.d	$fa2, $fa0
-	fmov.d	$fa3, $fa0
+	fmov.d	$fa1, $fa2
+	fmov.d	$fa3, $fa2
 	.p2align	4, , 16
 .LBB3_19:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa4, $a2, 0
-	fadd.d	$fa0, $fa0, $fa1
+	fadd.d	$fa1, $fa1, $fa0
 	fadd.d	$fa2, $fa2, $fa4
 	fadd.d	$fa3, $fa3, $fa4
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 8
 	bnez	$a3, .LBB3_19
 # %bb.20:                               # %._crit_edge.i
-	fdiv.d	$fs0, $fa3, $fa0
+	fdiv.d	$fs0, $fa3, $fa1
 	movgr2fr.d	$fa0, $zero
 	move	$a2, $a0
 	.p2align	4, , 16
@@ -1012,10 +1012,9 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 .LBB4_16:                               # %_ZNSt6vectorIlSaIlEE9push_backERKl.exit
                                         #   in Loop: Header=BB4_4 Depth=1
 	fld.d	$fa1, $s8, 432
-	ld.d	$a1, $s8, 392
+	fld.d	$fa0, $s8, 392
 	ld.d	$a0, $sp, 1512
 	ld.d	$s6, $sp, 1520
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	fdiv.d	$fs0, $fa1, $fa0
 	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
@@ -1076,11 +1075,10 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	add.d	$a0, $s5, $s3
 	addi.d	$a0, $a0, 8
 	st.d	$s5, $sp, 1504
-	ld.d	$a1, $s8, 392
+	fld.d	$fa0, $s8, 392
 	st.d	$a0, $sp, 1512
 	alsl.d	$s6, $s1, $s5, 3
 	st.d	$s6, $sp, 1520
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 .LBB4_25:                               # %_ZNSt6vectorIdSaIdEE9push_backEOd.exit
                                         #   in Loop: Header=BB4_4 Depth=1
@@ -1179,12 +1177,12 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	ld.d	$s6, $sp, 1480
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	srai.d	$s7, $s3, 3
-	movgr2fr.d	$fs0, $zero
+	movgr2fr.d	$fs2, $zero
 	move	$s3, $s2
 	move	$s1, $s6
 	move	$s8, $s7
-	fmov.d	$fs2, $fs0
-	fmov.d	$fs1, $fs0
+	fmov.d	$fs0, $fs2
+	fmov.d	$fs1, $fs2
 	.p2align	4, , 16
 .LBB4_38:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
@@ -1253,12 +1251,12 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 .LBB4_45:                               # %.lr.ph.i74.preheader
 	ld.d	$s1, $sp, 1504
 	srai.d	$s0, $s3, 3
-	movgr2fr.d	$fs3, $zero
+	movgr2fr.d	$fs5, $zero
 	move	$s3, $s2
 	move	$s6, $s1
 	move	$s7, $s0
-	fmov.d	$fs5, $fs3
-	fmov.d	$fs6, $fs3
+	fmov.d	$fs3, $fs5
+	fmov.d	$fs6, $fs5
 	.p2align	4, , 16
 .LBB4_46:                               # %.lr.ph.i74
                                         # =>This Inner Loop Header: Depth=1

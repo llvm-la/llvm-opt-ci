@@ -234,23 +234,22 @@ dec_viterbi_F:                          # @dec_viterbi_F
 	addi.d	$s6, $s6, 1
 .LBB0_20:                               #   in Loop: Header=BB0_10 Depth=1
 	st.d	$s6, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
 	srli.d	$a0, $s3, 1
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
-	ori	$a0, $zero, 2
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	bltu	$s3, $a0, .LBB0_23
+	beqz	$a0, .LBB0_23
 # %bb.21:                               # %.lr.ph212.preheader
                                         #   in Loop: Header=BB0_10 Depth=1
-	ld.d	$s6, $sp, 208                   # 8-byte Folded Reload
-	slli.d	$a0, $s6, 7
-	alsl.d	$s2, $s6, $a0, 4
-	slli.d	$s0, $s6, 3
+	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
+	slli.d	$a0, $s7, 7
+	alsl.d	$s2, $s7, $a0, 4
+	slli.d	$s0, $s7, 3
 	addi.d	$s4, $sp, 216
 	lu12i.w	$a0, 4
 	ori	$a0, $a0, 2264
 	add.d	$s1, $sp, $a0
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 168                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_22:                               # %.lr.ph212
@@ -273,8 +272,8 @@ dec_viterbi_F:                          # @dec_viterbi_F
 	ori	$a2, $zero, 143
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s7, -8
-	fld.d	$fa1, $s7, 0
+	fld.d	$fa0, $s6, -8
+	fld.d	$fa1, $s6, 0
 	fcmp.cult.d	$fcc0, $fa1, $fa0
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a0, $fcc0
@@ -290,10 +289,10 @@ dec_viterbi_F:                          # @dec_viterbi_F
 	addi.d	$s5, $s5, 8
 	addi.d	$s4, $s4, 144
 	addi.d	$s1, $s1, 286
-	addi.d	$s6, $s6, -1
-	addi.d	$s7, $s7, 16
+	addi.d	$s7, $s7, -1
+	addi.d	$s6, $s6, 16
 	addi.d	$s8, $s8, 16
-	bnez	$s6, .LBB0_22
+	bnez	$s7, .LBB0_22
 .LBB0_23:                               # %.preheader191
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.d	$a7, $sp, 176                   # 8-byte Folded Reload
@@ -365,7 +364,7 @@ dec_viterbi_F:                          # @dec_viterbi_F
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a1, $vr0, 0
 	beq	$a7, $a0, .LBB0_32
-.LBB0_30:                               # %.lr.ph216.preheader265
+.LBB0_30:                               # %.lr.ph216.preheader266
                                         #   in Loop: Header=BB0_10 Depth=1
 	sub.d	$a2, $a7, $a0
 	slli.d	$a3, $a0, 7

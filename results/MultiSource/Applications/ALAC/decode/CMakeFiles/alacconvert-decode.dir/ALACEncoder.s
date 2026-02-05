@@ -193,8 +193,7 @@ _ZN11ALACEncoder12EncodeStereoEP9BitBufferPvjjj: # @_ZN11ALACEncoder12EncodeSter
 	ldx.w	$a3, $s0, $a3
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	alsl.d	$a0, $a0, $s0, 1
-	addi.d	$a3, $a0, 12
-	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	ld.hu	$s6, $a0, 12
 	st.d	$a5, $sp, 56                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $a5, 31, 3
@@ -346,7 +345,7 @@ _ZN11ALACEncoder12EncodeStereoEP9BitBufferPvjjj: # @_ZN11ALACEncoder12EncodeSter
 # %bb.12:
 	ld.h	$a0, $s0, 8
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	st.h	$s6, $a1, 0
+	st.h	$s6, $a1, 12
 	addi.d	$a0, $a0, -16
 	rotri.w	$a0, $a0, 2
 	ori	$s8, $zero, 4

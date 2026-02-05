@@ -249,14 +249,13 @@ scan_buffer:                            # @scan_buffer
 	bstrpick.d	$a5, $fp, 31, 0
 	beq	$a0, $a5, .LBB0_32
 # %bb.36:                               #   in Loop: Header=BB0_34 Depth=1
-	addi.d	$a5, $a4, -8
-	xvld	$xr0, $a5, 0
-	slli.d	$a6, $fp, 5
-	alsl.d	$a6, $fp, $a6, 3
-	xvstx	$xr0, $a2, $a6
-	ld.d	$a5, $a5, 32
-	add.d	$a6, $a2, $a6
-	st.d	$a5, $a6, 32
+	xvld	$xr0, $a4, -8
+	slli.d	$a5, $fp, 5
+	alsl.d	$a5, $fp, $a5, 3
+	xvstx	$xr0, $a2, $a5
+	ld.d	$a6, $a4, 24
+	add.d	$a5, $a2, $a5
+	st.d	$a6, $a5, 32
 	b	.LBB0_32
 .LBB0_37:
 	ld.bu	$a6, $a7, 0

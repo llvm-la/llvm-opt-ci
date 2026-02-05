@@ -27,22 +27,21 @@ jinit_color_deconverter:                # @jinit_color_deconverter
 	move	$s0, $a0
 	st.d	$a0, $fp, 600
 	pcalau12i	$a0, %pc_hi20(start_pass_dcolor)
-	addi.d	$a2, $a0, %pc_lo12(start_pass_dcolor)
-	ld.w	$a0, $fp, 52
-	addi.d	$a3, $a0, -2
-	ori	$a1, $zero, 2
-	st.d	$a2, $s0, 0
-	bltu	$a3, $a1, .LBB0_3
-# %bb.1:
-	addi.d	$a2, $a0, -4
-	bgeu	$a2, $a1, .LBB0_16
-# %bb.2:
+	addi.d	$a3, $a0, %pc_lo12(start_pass_dcolor)
+	ld.w	$a1, $fp, 52
 	ld.w	$a0, $fp, 48
+	addi.d	$a4, $a1, -2
+	ori	$a2, $zero, 2
+	st.d	$a3, $s0, 0
+	bltu	$a4, $a2, .LBB0_3
+# %bb.1:
+	addi.d	$a3, $a1, -4
+	bgeu	$a3, $a2, .LBB0_16
+# %bb.2:
 	ori	$a1, $zero, 4
 	bne	$a0, $a1, .LBB0_4
 	b	.LBB0_5
 .LBB0_3:
-	ld.w	$a0, $fp, 48
 	ori	$a1, $zero, 3
 	beq	$a0, $a1, .LBB0_5
 .LBB0_4:                                # %.sink.split
@@ -111,11 +110,10 @@ jinit_color_deconverter:                # @jinit_color_deconverter
 	bnez	$a0, .LBB0_15
 	b	.LBB0_34
 .LBB0_16:
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_37
+	ori	$a2, $zero, 1
+	bne	$a1, $a2, .LBB0_37
 # %bb.17:
-	ld.w	$a0, $fp, 48
-	bne	$a0, $a1, .LBB0_4
+	bne	$a0, $a2, .LBB0_4
 	b	.LBB0_5
 .LBB0_18:
 	ld.w	$a0, $fp, 52
@@ -366,7 +364,6 @@ jinit_color_deconverter:                # @jinit_color_deconverter
 	addi.d	$sp, $sp, 32
 	ret
 .LBB0_37:
-	ld.w	$a0, $fp, 48
 	bgtz	$a0, .LBB0_5
 	b	.LBB0_4
 .LBB0_38:                               # %scalar.ph93.preheader

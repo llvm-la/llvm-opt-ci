@@ -905,15 +905,14 @@ _ZN7NCrypto5NSha18CContext5FinalEPh:    # @_ZN7NCrypto5NSha18CContext5FinalEPh
 	andi	$a1, $s2, 3
 	srli.d	$a0, $s2, 2
 	bstrpick.d	$a2, $s2, 31, 2
-	alsl.d	$a2, $a2, $fp, 2
-	addi.d	$a3, $a2, 36
+	alsl.d	$a3, $a2, $fp, 2
 	beqz	$a1, .LBB5_2
 # %bb.1:                                # %._crit_edge32
-	ld.w	$a2, $a3, 0
+	ld.w	$a2, $a3, 36
 	b	.LBB5_3
 .LBB5_2:
 	move	$a2, $zero
-	st.w	$zero, $a3, 0
+	st.w	$zero, $a3, 36
 .LBB5_3:
 	ld.d	$s3, $fp, 24
 	slli.d	$a1, $a1, 3

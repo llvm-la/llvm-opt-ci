@@ -1338,9 +1338,8 @@ conv420to422:                           # @conv420to422
 	.p2align	4, , 16
 .LBB4_5:                                #   Parent Loop BB4_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$s0, $t7, -1
-	sltu	$s2, $t7, $s0
-	masknez	$s2, $s0, $s2
+	sltu	$s0, $zero, $t7
+	sub.d	$s2, $t7, $s0
 	addi.d	$s0, $t7, -2
 	sltu	$s3, $t7, $s0
 	masknez	$s3, $s0, $s3
@@ -1440,17 +1439,18 @@ conv420to422:                           # @conv420to422
 	addi.d	$t6, $a3, -7
 	addi.d	$t7, $a3, -4
 	bstrpick.d	$a6, $a2, 31, 0
-	slli.d	$a3, $a6, 1
+	slli.d	$t2, $a6, 1
 	alsl.d	$a7, $a6, $a6, 1
 	add.d	$t1, $t3, $a7
 	slli.d	$a4, $a6, 2
 	add.d	$a1, $t3, $a6
 	alsl.d	$a7, $a6, $t3, 1
 	pcalau12i	$a6, %got_pc_hi20(Clip)
-	ld.d	$t4, $a6, %got_pc_lo12(Clip)
+	ld.d	$a3, $a6, %got_pc_lo12(Clip)
 	move	$a6, $zero
+	ori	$t4, $zero, 30
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$t2, $sp, 16                    # 8-byte Folded Spill
 	ori	$s4, $zero, 194
 	.p2align	4, , 16
 .LBB4_10:                               # %.preheader.us
@@ -1495,7 +1495,7 @@ conv420to422:                           # @conv420to422
 	masknez	$s0, $a5, $t3
 	maskeqz	$t3, $t5, $t3
 	or	$t3, $t3, $s0
-	ld.d	$t5, $t4, 0
+	ld.d	$t5, $a3, 0
 	mul.w	$a6, $a6, $a2
 	ldx.bu	$a6, $a0, $a6
 	mul.w	$t0, $t0, $a2
@@ -1505,13 +1505,11 @@ conv420to422:                           # @conv420to422
 	ld.bu	$s2, $s8, 0
 	slli.d	$s3, $s0, 3
 	sub.d	$s0, $s0, $s3
-	ori	$a3, $zero, 30
-	mul.d	$s1, $s1, $a3
+	mul.d	$s1, $s1, $t4
 	mul.d	$s2, $s2, $a4
 	mul.w	$t2, $t2, $a2
 	ldx.bu	$s3, $a0, $t2
 	mul.w	$t3, $t3, $a2
-	move	$a3, $t4
 	ldx.bu	$t4, $a0, $t3
 	add.d	$s0, $a6, $s0
 	addi.d	$a6, $zero, -21
@@ -1634,20 +1632,19 @@ conv420to422:                           # @conv420to422
 	ldx.bu	$t2, $a0, $t5
 	mul.d	$a6, $a7, $a6
 	ldx.bu	$a7, $a0, $t4
-	move	$t4, $a3
+	ori	$t4, $zero, 30
 	add.d	$t0, $t0, $t1
-	ori	$a3, $zero, 30
-	mul.d	$t1, $t2, $a3
-	ori	$a3, $zero, 248
+	mul.d	$t1, $t2, $t4
+	ori	$a4, $zero, 248
 	add.d	$t0, $t0, $t1
-	mul.d	$a7, $a7, $a3
+	mul.d	$a7, $a7, $a4
 	ldx.bu	$t1, $a0, $t3
 	add.d	$a7, $t0, $a7
 	add.d	$a6, $a7, $a6
-	ld.d	$a7, $t4, 0
+	ld.d	$a7, $a3, 0
 	alsl.d	$t0, $t1, $t1, 2
 	add.d	$a6, $a6, $t0
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 16                    # 8-byte Folded Reload
 	addi.w	$a6, $a6, 128
 	srai.d	$a6, $a6, 8
 	ldx.b	$a6, $a7, $a6
@@ -1655,7 +1652,7 @@ conv420to422:                           # @conv420to422
 	ld.d	$t1, $sp, 56                    # 8-byte Folded Reload
 	stx.b	$a6, $t1, $s5
 	addi.w	$s7, $s7, 2
-	add.d	$s8, $s8, $a3
+	add.d	$s8, $s8, $t2
 	addi.d	$s6, $s6, -2
 	add.d	$s5, $s5, $a4
 	move	$ra, $fp
@@ -1743,9 +1740,8 @@ conv422to444:                           # @conv422to444
 	addi.d	$t7, $t4, -2
 	sltu	$t8, $t4, $t7
 	masknez	$t7, $t7, $t8
-	addi.d	$t8, $t4, -1
-	sltu	$fp, $t4, $t8
-	masknez	$t8, $t8, $fp
+	sltu	$t8, $zero, $t4
+	sub.w	$t8, $t4, $t8
 	sltu	$fp, $t6, $a5
 	addi.d	$s0, $t6, 1
 	masknez	$s1, $a5, $fp
@@ -1769,7 +1765,6 @@ conv422to444:                           # @conv422to444
 	ld.d	$s2, $t0, 0
 	add.d	$t7, $s3, $t7
 	alsl.d	$s3, $t7, $t7, 2
-	addi.w	$t8, $t8, 0
 	ldx.bu	$t8, $a0, $t8
 	ldx.bu	$s1, $a0, $s1
 	addi.w	$fp, $fp, 0
@@ -1829,13 +1824,12 @@ conv422to444:                           # @conv422to444
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$fp, $t7, -3
 	sltu	$s1, $t7, $fp
-	masknez	$s1, $fp, $s1
+	masknez	$s2, $fp, $s1
 	addi.d	$fp, $t7, -2
-	sltu	$s2, $t7, $fp
-	masknez	$s2, $fp, $s2
-	addi.d	$fp, $t7, -1
-	sltu	$s3, $t7, $fp
-	masknez	$s3, $fp, $s3
+	sltu	$s1, $t7, $fp
+	masknez	$s3, $fp, $s1
+	sltu	$fp, $zero, $t7
+	sub.w	$s1, $t7, $fp
 	sltu	$s4, $s0, $a5
 	addi.d	$fp, $s0, 1
 	masknez	$s5, $a5, $s4
@@ -1847,26 +1841,25 @@ conv422to444:                           # @conv422to444
 	maskeqz	$s5, $s6, $s5
 	or	$s5, $s5, $s7
 	slt	$s6, $s0, $a6
-	addi.w	$s1, $s1, 0
-	ldx.bu	$s1, $a0, $s1
 	addi.w	$s2, $s2, 0
-	ldx.bu	$s7, $a0, $s2
+	ldx.bu	$s2, $a0, $s2
+	addi.w	$s3, $s3, 0
+	ldx.bu	$s7, $a0, $s3
 	addi.w	$s8, $t7, 3
 	ld.d	$ra, $t0, 0
-	alsl.d	$s1, $s1, $s1, 2
+	alsl.d	$s2, $s2, $s2, 2
 	mul.d	$s7, $s7, $t2
-	addi.w	$s3, $s3, 0
-	ldx.bu	$a2, $a0, $s3
+	ldx.bu	$a2, $a0, $s1
 	ldx.bu	$a4, $a0, $s0
 	addi.w	$s4, $s4, 0
 	ldx.bu	$t1, $a0, $s4
-	add.d	$s1, $s1, $s7
+	add.d	$s2, $s2, $s7
 	ldx.bu	$s7, $a0, $s5
 	mul.d	$a2, $a2, $t3
 	mul.d	$a4, $a4, $t4
 	mul.d	$t1, $t1, $t5
 	mul.d	$s7, $s7, $t6
-	add.d	$a2, $s1, $a2
+	add.d	$a2, $s2, $a2
 	add.d	$a2, $a2, $a4
 	add.d	$a2, $a2, $t1
 	add.d	$a2, $a2, $s7
@@ -1882,19 +1875,19 @@ conv422to444:                           # @conv422to444
 	ld.d	$t1, $t0, 0
 	alsl.d	$a2, $a2, $a2, 2
 	mul.d	$a4, $a4, $t2
-	ldx.bu	$s1, $a0, $s4
+	ldx.bu	$s2, $a0, $s4
 	ldx.bu	$s0, $a0, $s0
+	ldx.bu	$s1, $a0, $s1
 	ldx.bu	$s3, $a0, $s3
-	ldx.bu	$s2, $a0, $s2
-	mul.d	$s1, $s1, $t3
+	mul.d	$s2, $s2, $t3
 	mul.d	$s0, $s0, $t4
-	mul.d	$s3, $s3, $t5
-	mul.d	$s2, $s2, $t6
+	mul.d	$s1, $s1, $t5
+	mul.d	$s3, $s3, $t6
 	add.d	$a2, $a2, $a4
-	add.d	$a2, $a2, $s1
-	add.d	$a2, $a2, $s0
-	add.d	$a2, $a2, $s3
 	add.d	$a2, $a2, $s2
+	add.d	$a2, $a2, $s0
+	add.d	$a2, $a2, $s1
+	add.d	$a2, $a2, $s3
 	addi.w	$a2, $a2, 128
 	srai.d	$a2, $a2, 8
 	ldx.b	$a2, $t1, $a2

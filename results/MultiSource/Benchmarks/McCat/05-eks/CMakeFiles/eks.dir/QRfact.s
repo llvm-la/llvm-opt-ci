@@ -168,9 +168,9 @@ QRiterate:                              # @QRiterate
 	addi.d	$t6, $t6, -8
 	addi.d	$a4, $t2, 1
 	addi.d	$t2, $t2, -1
-	addi.w	$t1, $t1, -1
+	addi.w	$t0, $t0, -1
 	addi.d	$t5, $t5, -1
-	addi.d	$t0, $t0, -1
+	addi.d	$t1, $t1, -1
 	bltu	$a5, $a4, .LBB3_5
 	b	.LBB3_36
 	.p2align	4, , 16
@@ -183,7 +183,7 @@ QRiterate:                              # @QRiterate
 # %bb.8:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB3_1 Depth=1
 	move	$a4, $t6
-	move	$t4, $t1
+	move	$t4, $t0
 	.p2align	4, , 16
 .LBB3_9:                                # %.lr.ph
                                         #   Parent Loop BB3_1 Depth=1
@@ -204,7 +204,7 @@ QRiterate:                              # @QRiterate
                                         #   in Loop: Header=BB3_1 Depth=1
 	move	$t7, $zero
 	move	$a4, $a2
-	bge	$t4, $t1, .LBB3_1
+	bge	$t4, $t0, .LBB3_1
 # %bb.13:                               # %.lr.ph166.preheader
                                         #   in Loop: Header=BB3_1 Depth=1
 	move	$t5, $zero
@@ -287,9 +287,9 @@ QRiterate:                              # @QRiterate
 	or	$a4, $a4, $s0
 	addi.d	$s0, $fp, 2
 	addi.w	$a7, $s0, 0
-	slt	$s1, $t1, $a7
+	slt	$s1, $t0, $a7
 	masknez	$a7, $a7, $s1
-	maskeqz	$s1, $t1, $s1
+	maskeqz	$s1, $t0, $s1
 	or	$s2, $s1, $a7
 	slli.d	$s1, $fp, 3
 	blt	$s2, $a4, .LBB3_31
@@ -333,9 +333,9 @@ QRiterate:                              # @QRiterate
 	bltu	$s8, $a4, .LBB3_27
 .LBB3_24:                               # %vector.ph
                                         #   in Loop: Header=BB3_15 Depth=2
-	slt	$a4, $t0, $t8
+	slt	$a4, $t1, $t8
 	masknez	$a7, $t8, $a4
-	maskeqz	$a4, $t0, $a4
+	maskeqz	$a4, $t1, $a4
 	or	$a4, $a4, $a7
 	slt	$a7, $a4, $s3
 	masknez	$a4, $a4, $a7

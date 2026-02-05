@@ -181,15 +181,15 @@ initAtomHaloExchange:                   # @initAtomHaloExchange
 	ori	$a2, $zero, 1
 	maskeqz	$a2, $a2, $a1
 	masknez	$a0, $a0, $a1
-	or	$s3, $a2, $a0
+	or	$s2, $a2, $a0
 	addi.d	$a0, $a3, -5
 	sltui	$a0, $a0, 1
-	addi.w	$a1, $s3, -2
+	addi.w	$a1, $s2, -2
 	maskeqz	$a1, $a1, $a0
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	masknez	$a0, $a2, $a0
 	or	$fp, $a1, $a0
-	bge	$fp, $s3, .LBB0_1
+	bge	$fp, $s2, .LBB0_1
 # %bb.5:                                # %.preheader43.us.us.i.preheader
                                         #   in Loop: Header=BB0_2 Depth=1
 	move	$s0, $zero
@@ -206,7 +206,7 @@ initAtomHaloExchange:                   # @initAtomHaloExchange
                                         #     Parent Loop BB0_6 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_8 Depth 4
-	alsl.d	$s2, $s0, $s4, 2
+	alsl.d	$s3, $s0, $s4, 2
 	move	$s7, $fp
 	.p2align	4, , 16
 .LBB0_8:                                #   Parent Loop BB0_2 Depth=1
@@ -220,10 +220,10 @@ initAtomHaloExchange:                   # @initAtomHaloExchange
 	pcaddu18i	$ra, %call36(getBoxFromTuple)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $s0, 1
-	st.w	$a0, $s2, 0
+	st.w	$a0, $s3, 0
 	addi.w	$s7, $s7, 1
-	addi.d	$s2, $s2, 4
-	bne	$s3, $s7, .LBB0_8
+	addi.d	$s3, $s3, 4
+	bne	$s2, $s7, .LBB0_8
 # %bb.9:                                # %._crit_edge.us.us.us.i
                                         #   in Loop: Header=BB0_7 Depth=3
 	addi.w	$s6, $s6, 1
@@ -258,7 +258,7 @@ initAtomHaloExchange:                   # @initAtomHaloExchange
 	ori	$a1, $zero, 24
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s2, $a0
 	st.d	$a0, $fp, 96
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 24
@@ -330,7 +330,7 @@ initAtomHaloExchange:                   # @initAtomHaloExchange
 	addi.w	$a3, $a3, -1
 	bne	$a2, $a3, .LBB0_15
 .LBB0_22:
-	st.d	$a1, $s3, 8
+	st.d	$a1, $s2, 8
 	ld.w	$a2, $a4, 20
 	bnez	$a2, .LBB0_16
 .LBB0_23:

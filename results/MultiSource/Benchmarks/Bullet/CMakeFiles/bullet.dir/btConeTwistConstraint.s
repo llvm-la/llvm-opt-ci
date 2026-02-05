@@ -2761,27 +2761,19 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	ld.bu	$a4, $fp, 600
 	beqz	$a4, .LBB10_12
 # %bb.9:
-	addi.d	$a4, $a3, 8
-	vld	$vr0, $a4, 0
-	addi.d	$a4, $a3, 56
-	addi.d	$a5, $a3, 24
-	addi.d	$a3, $a3, 40
+	vld	$vr0, $a3, 8
+	vld	$vr1, $a3, 24
+	vld	$vr2, $a3, 40
+	vld	$vr3, $a3, 56
 	vst	$vr0, $sp, 400
-	vld	$vr0, $a5, 0
-	vld	$vr1, $a3, 0
-	vld	$vr2, $a4, 0
-	addi.d	$a3, $a0, 8
-	vst	$vr0, $sp, 416
-	vst	$vr1, $sp, 432
-	vst	$vr2, $sp, 448
-	vld	$vr0, $a3, 0
-	addi.d	$a3, $a0, 56
-	addi.d	$a4, $a0, 24
-	addi.d	$a0, $a0, 40
+	vst	$vr1, $sp, 416
+	vst	$vr2, $sp, 432
+	vst	$vr3, $sp, 448
+	vld	$vr0, $a0, 8
 	vst	$vr0, $sp, 336
-	vld	$vr0, $a4, 0
-	vld	$vr1, $a0, 0
-	vld	$vr2, $a3, 0
+	vld	$vr0, $a0, 24
+	vld	$vr1, $a0, 40
+	vld	$vr2, $a0, 56
 	ld.d	$a0, $a1, 72
 	vst	$vr0, $sp, 352
 	vst	$vr1, $sp, 368
@@ -3444,90 +3436,91 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	fld.s	$fa5, $sp, 312
 	fmul.s	$fa6, $fa1, $fa1
 	fmadd.s	$fa6, $fa0, $fa0, $fa6
-	fmadd.s	$ft3, $fa2, $fa2, $fa6
+	fmadd.s	$ft4, $fa2, $fa2, $fa6
+	lu12i.w	$a0, 523264
+	movgr2fr.w	$ft1, $a0
 	lu12i.w	$a0, 212992
 	movgr2fr.w	$fa6, $a0
-	fcmp.cule.s	$fcc0, $ft3, $fa6
+	fcmp.cule.s	$fcc0, $ft4, $fa6
 	fsub.s	$fa5, $fa7, $fa5
 	fmov.s	$ft2, $fs1
-                                        # implicit-def: $f8
                                         # implicit-def: $f7
-                                        # implicit-def: $f9
+	fmov.s	$ft3, $ft1
+                                        # implicit-def: $f8
 	bcnez	$fcc0, .LBB10_23
 # %bb.22:
 	ld.d	$a0, $fp, 24
-	frsqrt.s	$ft0, $ft3
-	fmul.s	$fa7, $fa0, $ft0
+	frsqrt.s	$fa7, $ft4
+	fmul.s	$ft3, $fa0, $fa7
 	fld.s	$ft2, $a0, 296
-	fmul.s	$ft1, $fa1, $ft0
-	fmul.s	$ft0, $fa2, $ft0
-	fld.s	$ft3, $a0, 280
-	fmul.s	$ft2, $ft1, $ft2
-	fld.s	$ft4, $a0, 312
-	fld.s	$ft5, $a0, 300
-	fld.s	$ft6, $a0, 284
-	fmadd.s	$ft2, $ft3, $fa7, $ft2
-	fmadd.s	$ft2, $ft4, $ft0, $ft2
-	fmul.s	$ft3, $ft1, $ft5
-	fmadd.s	$ft3, $ft6, $fa7, $ft3
-	fld.s	$ft4, $a0, 316
-	fld.s	$ft5, $a0, 304
-	fld.s	$ft6, $a0, 288
-	fld.s	$ft7, $a0, 320
-	fmadd.s	$ft3, $ft4, $ft0, $ft3
-	fmul.s	$ft4, $ft1, $ft5
-	fmadd.s	$ft4, $ft6, $fa7, $ft4
-	fmadd.s	$ft4, $ft7, $ft0, $ft4
-	fmul.s	$ft3, $ft1, $ft3
-	fmadd.s	$ft2, $fa7, $ft2, $ft3
-	fmadd.s	$ft2, $ft0, $ft4, $ft2
+	fmul.s	$ft0, $fa1, $fa7
+	fmul.s	$fa7, $fa2, $fa7
+	fld.s	$ft4, $a0, 280
+	fmul.s	$ft2, $ft0, $ft2
+	fld.s	$ft5, $a0, 312
+	fld.s	$ft6, $a0, 300
+	fld.s	$ft7, $a0, 284
+	fmadd.s	$ft2, $ft4, $ft3, $ft2
+	fmadd.s	$ft2, $ft5, $fa7, $ft2
+	fmul.s	$ft4, $ft0, $ft6
+	fmadd.s	$ft4, $ft7, $ft3, $ft4
+	fld.s	$ft5, $a0, 316
+	fld.s	$ft6, $a0, 304
+	fld.s	$ft7, $a0, 288
+	fld.s	$ft8, $a0, 320
+	fmadd.s	$ft4, $ft5, $fa7, $ft4
+	fmul.s	$ft5, $ft0, $ft6
+	fmadd.s	$ft5, $ft7, $ft3, $ft5
+	fmadd.s	$ft5, $ft8, $fa7, $ft5
+	fmul.s	$ft4, $ft0, $ft4
+	fmadd.s	$ft2, $ft3, $ft2, $ft4
+	fmadd.s	$ft2, $fa7, $ft5, $ft2
+	fmul.s	$ft3, $ft3, $ft2
 .LBB10_23:
-	fmul.s	$ft3, $fa4, $fa4
-	fmadd.s	$ft3, $fa3, $fa3, $ft3
-	fmadd.s	$ft6, $fa5, $fa5, $ft3
+	fmul.s	$ft4, $fa4, $fa4
+	fmadd.s	$ft4, $fa3, $fa3, $ft4
+	fmadd.s	$ft6, $fa5, $fa5, $ft4
 	fcmp.cule.s	$fcc0, $ft6, $fa6
                                         # implicit-def: $f12
-                                        # implicit-def: $f11
                                         # implicit-def: $f13
 	move	$a1, $s1
 	bcnez	$fcc0, .LBB10_25
 # %bb.24:
 	ld.d	$a0, $fp, 32
-	frsqrt.s	$ft4, $ft6
-	fmul.s	$ft3, $fa3, $ft4
-	fld.s	$ft6, $a0, 296
-	fmul.s	$ft5, $fa4, $ft4
-	fmul.s	$ft4, $fa5, $ft4
-	fld.s	$ft7, $a0, 280
-	fmul.s	$ft6, $ft5, $ft6
+	frsqrt.s	$ft1, $ft6
+	fmul.s	$ft6, $fa3, $ft1
+	fld.s	$ft7, $a0, 296
+	fmul.s	$ft5, $fa4, $ft1
+	fmul.s	$ft4, $fa5, $ft1
+	fld.s	$ft1, $a0, 280
+	fmul.s	$ft7, $ft5, $ft7
 	fld.s	$ft8, $a0, 312
 	fld.s	$ft9, $a0, 300
 	fld.s	$ft10, $a0, 284
-	fmadd.s	$ft6, $ft7, $ft3, $ft6
-	fmadd.s	$ft6, $ft8, $ft4, $ft6
+	fmadd.s	$ft1, $ft1, $ft6, $ft7
+	fmadd.s	$ft1, $ft8, $ft4, $ft1
 	fmul.s	$ft7, $ft5, $ft9
-	fmadd.s	$ft7, $ft10, $ft3, $ft7
+	fmadd.s	$ft7, $ft10, $ft6, $ft7
 	fld.s	$ft8, $a0, 316
 	fld.s	$ft9, $a0, 304
 	fld.s	$ft10, $a0, 288
 	fld.s	$ft11, $a0, 320
 	fmadd.s	$ft7, $ft8, $ft4, $ft7
 	fmul.s	$ft8, $ft5, $ft9
-	fmadd.s	$ft8, $ft10, $ft3, $ft8
+	fmadd.s	$ft8, $ft10, $ft6, $ft8
 	fmadd.s	$ft8, $ft11, $ft4, $ft8
 	fmul.s	$ft7, $ft5, $ft7
-	fmadd.s	$ft6, $ft3, $ft6, $ft7
-	fmadd.s	$fs1, $ft4, $ft8, $ft6
+	fmadd.s	$ft1, $ft6, $ft1, $ft7
+	fmadd.s	$fs1, $ft4, $ft8, $ft1
+	fmul.s	$ft1, $ft6, $fs1
 .LBB10_25:
-	fmul.s	$fa7, $ft2, $fa7
-	fmul.s	$ft6, $ft2, $ft1
 	fmul.s	$ft0, $ft2, $ft0
-	fmul.s	$ft1, $fs1, $ft3
-	fmul.s	$ft2, $fs1, $ft5
-	fmul.s	$ft3, $fs1, $ft4
-	fadd.s	$ft1, $fa7, $ft1
-	fadd.s	$fa7, $ft6, $ft2
-	fadd.s	$ft0, $ft0, $ft3
+	fmul.s	$ft2, $ft2, $fa7
+	fmul.s	$fa7, $fs1, $ft5
+	fmul.s	$ft4, $fs1, $ft4
+	fadd.s	$ft1, $ft3, $ft1
+	fadd.s	$fa7, $ft0, $fa7
+	fadd.s	$ft0, $ft2, $ft4
 	fmul.s	$ft2, $fa7, $fa7
 	fmadd.s	$ft2, $ft1, $ft1, $ft2
 	fmadd.s	$ft2, $ft0, $ft0, $ft2
@@ -4077,16 +4070,16 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # @_ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 48                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4165,12 +4158,12 @@ _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # 
 	pcaddu18i	$ra, %call36(cosf)
 	jirl	$ra, $ra, 0
 	fmov.s	$fs0, $fa0
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16
-	ld.d	$a1, $sp, 24
+	ld.d	$a0, $sp, 32
+	ld.d	$a1, $sp, 40
 	movgr2fr.w	$fa0, $a0
 	srli.d	$a0, $a0, 32
 	movgr2fr.w	$fa1, $a0
@@ -4231,10 +4224,7 @@ _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # 
 	fadd.s	$ft4, $fa2, $ft0
 	fadd.s	$fa0, $ft1, $fa0
 	fadd.s	$fa1, $fa5, $fa1
-	fsub.s	$fa1, $ft2, $fa1
-	fsub.s	$ft1, $fa3, $fa7
-	fsub.s	$fa2, $fa2, $ft0
-	fadd.s	$fa3, $fa3, $fa7
+	fadd.s	$ft1, $fa3, $fa7
 	fadd.s	$fa5, $fa5, $fa6
 	fsub.s	$fa5, $ft2, $fa5
 	fst.s	$fa4, $fp, 0
@@ -4242,22 +4232,30 @@ _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # 
 	fst.s	$ft4, $fp, 8
 	st.w	$zero, $fp, 12
 	fst.s	$fa0, $fp, 16
-	fst.s	$fa1, $fp, 20
-	fst.s	$ft1, $fp, 24
-	st.w	$zero, $fp, 28
-	fst.s	$fa2, $fp, 32
-	fst.s	$fa3, $fp, 36
+	movgr2fr.w	$fa0, $zero
+	fst.s	$fa0, $sp, 24
+	fst.s	$ft2, $sp, 16
+	fst.s	$fa2, $sp, 28
+	fst.s	$fa3, $sp, 20
+	vld	$vr0, $sp, 16
+	vrepli.b	$vr2, 0
+	vextrins.w	$vr2, $vr1, 0
+	vextrins.w	$vr2, $vr7, 16
+	vextrins.w	$vr2, $vr8, 48
+	vfsub.s	$vr0, $vr0, $vr2
+	vst	$vr0, $fp, 20
+	fst.s	$ft1, $fp, 36
 	fst.s	$fa5, $fp, 40
 	st.w	$zero, $fp, 44
-	fld.d	$fs4, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	fld.d	$fs4, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end11:
 	.size	_ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_, .Lfunc_end11-_ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_
@@ -4402,6 +4400,8 @@ _ZN21btConeTwistConstraint13calcAngleInfoEv: # @_ZN21btConeTwistConstraint13calc
 	fadd.s	$ft5, $ft4, $ft5
 	fdiv.s	$ft4, $ft4, $ft5
 	fmul.s	$ft4, $ft4, $ft6
+	fmul.s	$ft4, $ft4, $ft4
+	fabs.s	$ft4, $ft4
 .LBB13_5:
 	fld.s	$ft5, $a0, 496
 	fcmp.cult.s	$fcc0, $ft5, $ft13
@@ -4461,18 +4461,16 @@ _ZN21btConeTwistConstraint13calcAngleInfoEv: # @_ZN21btConeTwistConstraint13calc
 	vldi	$vr3, -1168
 	fadd.s	$fa3, $fa2, $fa3
 	fdiv.s	$fa2, $fa2, $fa3
-	fmul.s	$ft3, $fa2, $fa4
+	fmul.s	$fa2, $fa2, $fa4
+	fmul.s	$fa2, $fa2, $fa2
+	fabs.s	$ft3, $fa2
 .LBB13_10:
 	fmul.s	$fa1, $fa1, $fa1
 	frecip.s	$fa1, $fa1
 	fmul.s	$fa2, $ft5, $ft5
 	frecip.s	$fa2, $fa2
-	fmul.s	$fa3, $ft4, $ft4
-	fabs.s	$fa3, $fa3
-	fmul.s	$fa4, $ft3, $ft3
-	fabs.s	$fa4, $fa4
-	fmul.s	$fa2, $fa2, $fa4
-	fmadd.s	$fa1, $fa3, $fa1, $fa2
+	fmul.s	$fa2, $fa2, $ft3
+	fmadd.s	$fa1, $ft4, $fa1, $fa2
 	vldi	$vr2, -1168
 	fcmp.cule.s	$fcc0, $fa1, $fa2
 	fld.s	$ft4, $sp, 60                   # 4-byte Folded Reload
@@ -6155,24 +6153,21 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	fcmp.cor.s	$fcc0, $fa0, $fa0
 	bceqz	$fcc0, .LBB24_6
 .LBB24_2:                               # %.split
-	fld.s	$fa1, $a0, 36
-	fld.s	$fa2, $a0, 24
-	fld.s	$fa3, $a0, 8
-	fld.s	$fa4, $a0, 32
-	fsub.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $a0, 16
-	fld.s	$fa5, $a0, 4
+	vldi	$vr2, -1184
+	fmul.s	$fa1, $fa0, $fa2
+	fld.s	$fa3, $a0, 36
+	fld.s	$fa4, $a0, 24
+	fdiv.s	$fa5, $fa2, $fa0
+	fld.s	$fa0, $a0, 8
+	fld.s	$fa2, $a0, 32
 	fsub.s	$fa3, $fa3, $fa4
-	vldi	$vr4, -1184
-	fdiv.s	$fa4, $fa4, $fa0
-	fsub.s	$fa2, $fa2, $fa5
-	vextrins.w	$vr4, $vr0, 16
-	vshuf4i.w	$vr0, $vr4, 64
-	vldi	$vr4, -3265
-	vextrins.w	$vr4, $vr1, 0
-	vextrins.w	$vr4, $vr3, 16
-	vextrins.w	$vr4, $vr2, 32
-	vfmul.s	$vr0, $vr0, $vr4
+	fld.s	$fa4, $a0, 16
+	fld.s	$fa6, $a0, 4
+	fsub.s	$fa2, $fa0, $fa2
+	fmul.s	$fa0, $fa5, $fa3
+	fmul.s	$fa2, $fa5, $fa2
+	fsub.s	$fa3, $fa4, $fa6
+	fmul.s	$fa3, $fa5, $fa3
 	b	.LBB24_5
 .LBB24_3:
 	fcmp.clt.s	$fcc0, $fa2, $fa1
@@ -6215,11 +6210,10 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 .LBB24_4:                               # %.split47
 	vldi	$vr1, -1184
 	fmul.s	$fa2, $fa0, $fa1
-	addi.d	$a0, $sp, 16
 	fldx.s	$fa3, $s3, $s0
 	fldx.s	$fa4, $s4, $s2
-	or	$a2, $a0, $s1
-	fst.s	$fa2, $a2, 0
+	addi.d	$a0, $sp, 16
+	fstx.s	$fa2, $s1, $a0
 	fdiv.s	$fa0, $fa1, $fa0
 	fsub.s	$fa1, $fa3, $fa4
 	fmul.s	$fa1, $fa0, $fa1
@@ -6234,9 +6228,15 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	fadd.s	$fa1, $fa1, $fa4
 	fmul.s	$fa0, $fa0, $fa1
 	fstx.s	$fa0, $s2, $a0
-	vld	$vr0, $sp, 16
+	fld.s	$fa0, $sp, 16
+	fld.s	$fa2, $sp, 20
+	fld.s	$fa3, $sp, 24
+	fld.s	$fa1, $sp, 28
 .LBB24_5:
-	vst	$vr0, $a1, 0
+	fst.s	$fa0, $a1, 0
+	fst.s	$fa2, $a1, 4
+	fst.s	$fa3, $a1, 8
+	fst.s	$fa1, $a1, 12
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
@@ -6255,7 +6255,6 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
 	move	$a1, $fp
-                                        # kill: def $f0 killed $f0 def $vr0
 	b	.LBB24_2
 .LBB24_7:                               # %call.sqrt48
 	fmov.s	$fa0, $fa1

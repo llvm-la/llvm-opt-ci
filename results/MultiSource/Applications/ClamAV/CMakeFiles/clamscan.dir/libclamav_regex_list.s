@@ -206,7 +206,7 @@ regex_list_match:                       # @regex_list_match
 	ori	$a0, $zero, 32
 	bne	$a3, $a0, .LBB0_12
 	b	.LBB0_60
-.LBB0_24:                               # %.loopexit133
+.LBB0_24:                               # %.loopexit
 	ori	$a0, $zero, 16
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	masknez	$a0, $a0, $a2
@@ -385,7 +385,7 @@ regex_list_match:                       # @regex_list_match
 	pcaddu18i	$ra, %call36(cli_regexec)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_62
-# %bb.51:                               # %.thread150.thread.i
+# %bb.51:                               # %.preheader.thread.i
                                         #   in Loop: Header=BB0_26 Depth=1
 	addi.d	$s1, $s7, -1
 	addi.d	$a0, $s3, 1
@@ -580,9 +580,8 @@ get_char_at_pos_with_skip:              # @get_char_at_pos_with_skip
 .LBB1_13:
 	move	$s1, $fp
 .LBB1_14:                               # %.sink.split
-	addi.d	$a0, $s0, -1
-	sltu	$a1, $s0, $a0
-	masknez	$a0, $a0, $a1
+	sltu	$a0, $zero, $s0
+	sub.d	$a0, $s0, $a0
 	ldx.b	$a0, $s1, $a0
 .LBB1_15:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -708,7 +707,6 @@ init_regex_list:                        # @init_regex_list
 	ret
 .LBB2_11:
 	ld.d	$a0, $fp, 16
-	addi.d	$s0, $fp, 48
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 8
@@ -721,7 +719,7 @@ init_regex_list:                        # @init_regex_list
 	jirl	$ra, $ra, 0
 .LBB2_13:                               # %stack_destroy.exit
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 0
+	vst	$vr0, $fp, 48
 	b	.LBB2_9
 .Lfunc_end2:
 	.size	init_regex_list, .Lfunc_end2-init_regex_list
@@ -750,19 +748,19 @@ load_regex_matcher:                     # @load_regex_matcher
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 2272
+	ori	$a2, $a2, 2320
 	sub.d	$sp, $sp, $a2
 	move	$fp, $a0
 	ld.w	$a0, $a0, 32
-	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
 	addi.w	$s0, $zero, -1
 	addi.w	$s3, $zero, -116
-	beq	$a0, $s0, .LBB3_224
+	beq	$a0, $s0, .LBB3_225
 # %bb.1:
 	move	$s1, $a1
 	beqz	$a1, .LBB3_6
 # %bb.2:
-	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -774,24 +772,46 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(init_regex_list)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 32
-	beqz	$a1, .LBB3_215
+	beqz	$a1, .LBB3_216
 .LBB3_4:
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a1, 2
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 144
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_206
+	beqz	$a0, .LBB3_207
 # %bb.5:                                # %.lr.ph
-	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
 	ori	$s2, $zero, 6
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, -65536
+	lu52i.d	$a0, $a0, 63
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	lu12i.w	$a0, 32767
+	ori	$a0, $a0, 4094
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	lu12i.w	$a0, -32768
+	ori	$a0, $a0, 1
+	lu32i.d	$a0, 1
+	lu52i.d	$a0, $a0, 1920
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	lu12i.w	$a0, 3
+	ori	$a0, $a0, 3584
+	lu32i.d	$a0, 1
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ori	$a0, $zero, 512
+	lu32i.d	$a0, 1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$a0, $zero, 126
+	lu32i.d	$a0, 126
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	lu12i.w	$a0, 524287
 	ori	$a0, $a0, 4095
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB3_10
 .LBB3_6:
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
@@ -799,31 +819,31 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
 	addi.w	$s3, $zero, -123
-	b	.LBB3_224
+	b	.LBB3_225
 .LBB3_7:                                #   in Loop: Header=BB3_10 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
-	addi.d	$a1, $sp, 96
+	addi.d	$a1, $sp, 144
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	.p2align	4, , 16
 .LBB3_8:                                # %functionality_level_check.exit
                                         #   in Loop: Header=BB3_10 Depth=1
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 .LBB3_9:                                # %functionality_level_check.exit
                                         #   in Loop: Header=BB3_10 Depth=1
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 144
 	lu12i.w	$a1, 2
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_206
+	beqz	$a0, .LBB3_207
 .LBB3_10:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_15 Depth 2
                                         #     Child Loop BB3_19 Depth 2
-                                        #     Child Loop BB3_195 Depth 2
-                                        #     Child Loop BB3_191 Depth 2
+                                        #     Child Loop BB3_196 Depth 2
+                                        #     Child Loop BB3_192 Depth 2
                                         #     Child Loop BB3_76 Depth 2
                                         #     Child Loop BB3_32 Depth 2
                                         #     Child Loop BB3_82 Depth 2
@@ -832,13 +852,13 @@ load_regex_matcher:                     # @load_regex_matcher
                                         #         Child Loop BB3_122 Depth 4
                                         #         Child Loop BB3_118 Depth 4
                                         #       Child Loop BB3_87 Depth 3
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 144
 	pcaddu18i	$ra, %call36(cli_chomp)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 96
+	ld.bu	$a0, $sp, 144
 	beqz	$a0, .LBB3_9
 # %bb.11:                               #   in Loop: Header=BB3_10 Depth=1
-	addi.d	$a0, $sp, 96
+	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 58
 	pcaddu18i	$ra, %call36(strrchr)
 	jirl	$ra, $ra, 0
@@ -910,7 +930,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	jirl	$ra, $ra, 0
 	ld.bu	$a1, $s6, 1
 	move	$s5, $a0
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a1, .LBB3_23
 # %bb.22:                               #   in Loop: Header=BB3_10 Depth=1
 	ori	$a2, $zero, 10
@@ -935,32 +955,32 @@ load_regex_matcher:                     # @load_regex_matcher
 	.p2align	4, , 16
 .LBB3_26:                               # %.loopexit
                                         #   in Loop: Header=BB3_10 Depth=1
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	addi.w	$s0, $s0, 1
-	addi.d	$a0, $sp, 96
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
+	addi.w	$s1, $s1, 1
+	addi.d	$a0, $sp, 144
 	ori	$a1, $zero, 58
 	pcaddu18i	$ra, %call36(strchr)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_216
+	beqz	$a0, .LBB3_217
 # %bb.27:                               #   in Loop: Header=BB3_10 Depth=1
 	move	$s6, $a0
 	addi.d	$s7, $a0, 1
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	st.d	$s1, $sp, 120                   # 8-byte Folded Spill
 	beqz	$a0, .LBB3_51
 # %bb.28:                               #   in Loop: Header=BB3_10 Depth=1
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	srli.d	$a1, $a0, 13
-	bnez	$a1, .LBB3_217
+	bnez	$a1, .LBB3_218
 # %bb.29:                               #   in Loop: Header=BB3_10 Depth=1
 	ori	$a1, $zero, 47
 	stx.h	$a1, $s7, $a0
-	ld.bu	$s8, $sp, 96
-	andi	$a2, $s8, 254
+	ld.bu	$s0, $sp, 144
+	andi	$a2, $s0, 254
 	ori	$a0, $zero, 77
-	move	$a1, $s8
+	move	$a1, $s0
 	ori	$a3, $zero, 88
 	bne	$a2, $a3, .LBB3_52
 .LBB3_30:                               #   in Loop: Header=BB3_10 Depth=1
@@ -971,121 +991,121 @@ load_regex_matcher:                     # @load_regex_matcher
 # %bb.31:                               # %.preheader.i.i.preheader
                                         #   in Loop: Header=BB3_10 Depth=1
 	move	$s4, $a0
-	move	$s3, $zero
-	move	$s0, $zero
-	ori	$s1, $zero, 10
+	move	$s6, $zero
+	move	$s1, $zero
+	ori	$s3, $zero, 10
 	move	$s5, $s7
 	.p2align	4, , 16
 .LBB3_32:                               # %.preheader.i.i
                                         #   Parent Loop BB3_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 96
+	ori	$a0, $a0, 144
 	add.d	$a1, $sp, $a0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(getNextToken)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 112
+	ori	$a1, $a1, 160
 	add.d	$a1, $sp, $a1
-	ld.bu	$s6, $a1, 0
-	bne	$s6, $s2, .LBB3_35
+	ld.bu	$s8, $a1, 0
+	bne	$s8, $s2, .LBB3_35
 # %bb.33:                               #   in Loop: Header=BB3_32 Depth=2
-	beqz	$s0, .LBB3_44
+	beqz	$s1, .LBB3_44
 # %bb.34:                               #   in Loop: Header=BB3_32 Depth=2
-	ld.d	$s3, $s4, 0
+	ld.d	$s6, $s4, 0
 	b	.LBB3_45
 	.p2align	4, , 16
 .LBB3_35:                               #   in Loop: Header=BB3_32 Depth=2
 	ori	$a1, $zero, 4
-	bne	$s6, $a1, .LBB3_38
+	bne	$s8, $a1, .LBB3_38
 # %bb.36:                               #   in Loop: Header=BB3_32 Depth=2
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 96
+	ori	$a1, $a1, 144
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	beqz	$a1, .LBB3_38
 # %bb.37:                               # %.thread.i.i
                                         #   in Loop: Header=BB3_32 Depth=2
-	move	$s3, $a0
+	move	$s6, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s6
 	b	.LBB3_43
 	.p2align	4, , 16
 .LBB3_38:                               #   in Loop: Header=BB3_32 Depth=2
 	ori	$a1, $zero, 5
-	beq	$s6, $a1, .LBB3_40
+	beq	$s8, $a1, .LBB3_40
 # %bb.39:                               #   in Loop: Header=BB3_32 Depth=2
 	ori	$a1, $zero, 2
-	bne	$s6, $a1, .LBB3_43
+	bne	$s8, $a1, .LBB3_43
 .LBB3_40:                               #   in Loop: Header=BB3_32 Depth=2
-	beqz	$s0, .LBB3_48
+	beqz	$s1, .LBB3_48
 # %bb.41:                               #   in Loop: Header=BB3_32 Depth=2
-	alsl.d	$a1, $s0, $s4, 3
+	alsl.d	$a1, $s1, $s4, 3
 	ld.d	$a2, $a1, -8
 	ld.bu	$a2, $a2, 0
 	ori	$a3, $zero, 124
 	bne	$a2, $a3, .LBB3_48
 # %bb.42:                               #   in Loop: Header=BB3_32 Depth=2
 	st.d	$s5, $a1, -8
-	move	$s3, $s5
+	move	$s6, $s5
 	b	.LBB3_45
 	.p2align	4, , 16
 .LBB3_43:                               #   in Loop: Header=BB3_32 Depth=2
-	addi.d	$a1, $s6, -3
+	addi.d	$a1, $s8, -3
 	sltui	$a1, $a1, 1
-	sub.d	$s0, $s0, $a1
-	move	$s3, $s5
+	sub.d	$s1, $s1, $a1
+	move	$s6, $s5
 	b	.LBB3_45
 .LBB3_44:                               #   in Loop: Header=BB3_32 Depth=2
-	move	$s0, $zero
+	move	$s1, $zero
 .LBB3_45:                               #   in Loop: Header=BB3_32 Depth=2
-	move	$s6, $s1
+	move	$s8, $s3
 .LBB3_46:                               #   in Loop: Header=BB3_32 Depth=2
 	ld.bu	$a1, $a0, 0
 	beqz	$a1, .LBB3_57
 # %bb.47:                               #   in Loop: Header=BB3_32 Depth=2
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 112
+	ori	$a1, $a1, 160
 	add.d	$a1, $sp, $a1
 	ld.bu	$a1, $a1, 0
 	move	$s5, $a0
-	move	$s1, $s6
+	move	$s3, $s8
 	bne	$a1, $s2, .LBB3_32
 	b	.LBB3_57
 .LBB3_48:                               #   in Loop: Header=BB3_32 Depth=2
-	addi.d	$a1, $s0, 1
-	slli.d	$a2, $s0, 3
+	addi.d	$a1, $s1, 1
+	slli.d	$a2, $s1, 3
 	stx.d	$s5, $s4, $a2
-	bne	$a1, $s1, .LBB3_50
+	bne	$a1, $s3, .LBB3_50
 # %bb.49:                               #   in Loop: Header=BB3_32 Depth=2
-	addi.d	$s6, $s1, 20
-	slli.d	$a1, $s6, 3
-	move	$s0, $a0
+	addi.d	$s8, $s3, 20
+	slli.d	$a1, $s8, 3
+	move	$s1, $a0
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(cli_realloc2)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
-	move	$a0, $s0
-	move	$s3, $s5
-	move	$s0, $s1
+	move	$a0, $s1
+	move	$s6, $s5
+	move	$s1, $s3
 	bnez	$s4, .LBB3_46
 	b	.LBB3_58
 .LBB3_50:                               #   in Loop: Header=BB3_32 Depth=2
-	move	$s3, $s5
-	move	$s6, $s1
-	move	$s0, $a1
+	move	$s6, $s5
+	move	$s8, $s3
+	move	$s1, $a1
 	b	.LBB3_46
 .LBB3_51:                               #   in Loop: Header=BB3_10 Depth=1
-	ld.bu	$a1, $sp, 96
-	ori	$s8, $zero, 82
+	ld.bu	$a1, $sp, 144
+	ori	$s0, $zero, 82
 	ori	$a0, $zero, 72
-	beq	$a1, $s8, .LBB3_30
+	beq	$a1, $s0, .LBB3_30
 .LBB3_52:                               # %.thread125
                                         #   in Loop: Header=BB3_10 Depth=1
-	bne	$a1, $a0, .LBB3_219
+	bne	$a1, $a0, .LBB3_220
 # %bb.53:                               #   in Loop: Header=BB3_10 Depth=1
 	ld.w	$a1, $fp, 40
 	ld.d	$s4, $fp, 0
@@ -1100,7 +1120,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(cli_realloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 0
-	beqz	$a0, .LBB3_222
+	beqz	$a0, .LBB3_223
 # %bb.55:                               #   in Loop: Header=BB3_10 Depth=1
 	ld.d	$a1, $fp, 24
 	ori	$a2, $zero, 80
@@ -1125,7 +1145,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(cli_ac_init)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB3_225
+	bnez	$a0, .LBB3_226
 # %bb.56:                               #   in Loop: Header=BB3_10 Depth=1
 	st.w	$zero, $fp, 40
 	ori	$a0, $zero, 1
@@ -1133,22 +1153,22 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB3_67
-	b	.LBB3_223
+	b	.LBB3_224
 .LBB3_57:                               #   in Loop: Header=BB3_10 Depth=1
-	move	$s0, $a0
+	move	$s1, $a0
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $s0, 0
+	ld.bu	$a0, $s1, 0
 	sltui	$a0, $a0, 1
-	add.d	$a0, $s3, $a0
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	add.d	$a0, $s6, $a0
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB3_59
 .LBB3_58:                               #   in Loop: Header=BB3_10 Depth=1
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 .LBB3_59:                               # %find_regex_start.exit.i
                                         #   in Loop: Header=BB3_10 Depth=1
-	addi.d	$a0, $s8, -89
+	addi.d	$a0, $s0, -89
 	sltui	$a0, $a0, 1
 	ori	$a1, $zero, 8
 	masknez	$a1, $a1, $a0
@@ -1161,6 +1181,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	st.d	$zero, $fp, 64
 	st.d	$zero, $fp, 88
 	ori	$s4, $zero, 7
+	ori	$s5, $zero, 2
 	beqz	$a2, .LBB3_61
 # %bb.60:                               #   in Loop: Header=BB3_10 Depth=1
 	move	$a1, $zero
@@ -1188,7 +1209,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	beq	$a0, $a1, .LBB3_8
 # %bb.65:                               # %.lr.ph.i109.preheader
                                         #   in Loop: Header=BB3_10 Depth=1
-	addi.d	$s5, $s6, 12
+	addi.d	$s0, $s6, 12
 	b	.LBB3_82
 .LBB3_66:                               #   in Loop: Header=BB3_10 Depth=1
 	slli.d	$a1, $a0, 6
@@ -1199,7 +1220,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	ori	$a1, $zero, 96
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_223
+	beqz	$a0, .LBB3_224
 .LBB3_67:                               #   in Loop: Header=BB3_10 Depth=1
 	move	$s4, $a0
 	move	$a0, $s7
@@ -1209,7 +1230,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	st.h	$zero, $s4, 74
 	st.d	$zero, $s4, 24
 	st.b	$zero, $s4, 72
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
 	vst	$vr0, $s4, 40
 	st.h	$a0, $s4, 16
 	ld.hu	$a0, $s8, 0
@@ -1222,7 +1243,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, 0
-	beqz	$a0, .LBB3_220
+	beqz	$a0, .LBB3_221
 # %bb.70:                               # %.preheader.i113
                                         #   in Loop: Header=BB3_10 Depth=1
 	beqz	$s5, .LBB3_77
@@ -1234,11 +1255,11 @@ load_regex_matcher:                     # @load_regex_matcher
                                         #   in Loop: Header=BB3_10 Depth=1
 	add.d	$a1, $s6, $s5
 	addi.d	$a1, $a1, 1
-	bgeu	$a0, $a1, .LBB3_188
+	bgeu	$a0, $a1, .LBB3_189
 # %bb.73:                               # %vector.memcheck
                                         #   in Loop: Header=BB3_10 Depth=1
 	alsl.d	$a1, $s5, $a0, 1
-	bgeu	$s7, $a1, .LBB3_188
+	bgeu	$s7, $a1, .LBB3_189
 .LBB3_74:                               #   in Loop: Header=BB3_10 Depth=1
 	move	$a1, $zero
 .LBB3_75:                               # %.lr.ph.i114.preheader
@@ -1259,7 +1280,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	bnez	$a2, .LBB3_76
 .LBB3_77:                               # %._crit_edge.i116
                                         #   in Loop: Header=BB3_10 Depth=1
-	addi.d	$a0, $sp, 97
+	addi.d	$a0, $sp, 145
 	pcaddu18i	$ra, %call36(cli_strdup)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, 32
@@ -1267,9 +1288,9 @@ load_regex_matcher:                     # @load_regex_matcher
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(cli_ac_addpatt)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 	beqz	$a0, .LBB3_9
-	b	.LBB3_221
+	b	.LBB3_222
 .LBB3_78:                               # %._crit_edge.i127.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a1, $fp, 64
@@ -1283,7 +1304,7 @@ load_regex_matcher:                     # @load_regex_matcher
 .LBB3_81:                               # %tree_node_char_binsearch.exit.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	ld.w	$a0, $s8, 12
-	addi.d	$s5, $s8, 12
+	addi.d	$s0, $s8, 12
 	move	$s6, $s8
 	ori	$a1, $zero, 4
 	beq	$a0, $a1, .LBB3_8
@@ -1295,17 +1316,17 @@ load_regex_matcher:                     # @load_regex_matcher
                                         #         Child Loop BB3_122 Depth 4
                                         #         Child Loop BB3_118 Depth 4
                                         #       Child Loop BB3_87 Depth 3
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	bgeu	$s7, $a0, .LBB3_186
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	bgeu	$s7, $a0, .LBB3_187
 # %bb.83:                               #   in Loop: Header=BB3_82 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 96
+	ori	$a0, $a0, 144
 	add.d	$a1, $sp, $a0
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(getNextToken)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 112
+	ori	$a1, $a1, 160
 	add.d	$a1, $sp, $a1
 	ld.bu	$a1, $a1, 0
 	move	$s7, $a0
@@ -1319,10 +1340,10 @@ load_regex_matcher:                     # @load_regex_matcher
 	jr	$a0
 .LBB3_85:                               #   in Loop: Header=BB3_82 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 96
+	ori	$a0, $a0, 144
 	add.d	$a0, $sp, $a0
 	ld.bu	$s1, $a0, 0
-	ld.w	$a3, $s5, 0
+	ld.w	$a3, $s0, 0
 	ld.b	$a1, $s6, 16
 	ld.d	$a0, $s6, 24
 	addi.d	$a2, $a3, -2
@@ -1363,8 +1384,7 @@ load_regex_matcher:                     # @load_regex_matcher
 .LBB3_89:                               # %.loopexit.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	move	$a4, $a0
-	ori	$a5, $zero, 2
-	bne	$a3, $a5, .LBB3_91
+	bne	$a3, $s5, .LBB3_91
 # %bb.90:                               #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a3, $a0, 8
 	addi.d	$a4, $a0, 8
@@ -1372,6 +1392,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	masknez	$a4, $a4, $a3
 .LBB3_91:                               # %tree_node_get_children.exit.i.i.i
                                         #   in Loop: Header=BB3_82 Depth=2
+	ori	$a3, $zero, 2
 	bnez	$a1, .LBB3_166
 # %bb.92:                               # %tree_node_get_children.exit.i.i.i
                                         #   in Loop: Header=BB3_82 Depth=2
@@ -1381,13 +1402,12 @@ load_regex_matcher:                     # @load_regex_matcher
 	sltui	$a4, $a3, 1
 	masknez	$a3, $a3, $a4
 	maskeqz	$a4, $s6, $a4
-	or	$s0, $a4, $a3
+	or	$s5, $a4, $a3
 	b	.LBB3_168
 .LBB3_94:                               #   in Loop: Header=BB3_82 Depth=2
-	ld.w	$a1, $s5, 0
+	ld.w	$a1, $s0, 0
 	ld.d	$a0, $s6, 24
-	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB3_96
+	bne	$a1, $s5, .LBB3_96
 # %bb.95:                               #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a1, $a0, 8
 	addi.d	$a0, $a0, 8
@@ -1482,14 +1502,13 @@ load_regex_matcher:                     # @load_regex_matcher
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $fp, 88
 	slli.d	$a0, $a0, 3
-	ldx.d	$s1, $a1, $a0
-	beqz	$s1, .LBB3_125
+	ldx.d	$s0, $a1, $a0
+	beqz	$s0, .LBB3_125
 # %bb.110:                              #   in Loop: Header=BB3_108 Depth=3
-	ld.w	$a3, $s1, 12
-	ld.d	$a0, $s1, 24
+	ld.w	$a3, $s0, 12
+	ld.d	$a0, $s0, 24
 	move	$a1, $a0
-	ori	$a2, $zero, 2
-	bne	$a3, $a2, .LBB3_112
+	bne	$a3, $s5, .LBB3_112
 # %bb.111:                              #   in Loop: Header=BB3_108 Depth=3
 	ld.d	$a1, $a0, 8
 	addi.d	$a2, $a0, 8
@@ -1497,12 +1516,12 @@ load_regex_matcher:                     # @load_regex_matcher
 	masknez	$a1, $a2, $a1
 .LBB3_112:                              # %tree_node_get_children.exit.i.i
                                         #   in Loop: Header=BB3_108 Depth=3
-	ld.b	$a2, $s1, 16
+	ld.b	$a2, $s0, 16
 	beqz	$a2, .LBB3_116
 # %bb.113:                              #   in Loop: Header=BB3_108 Depth=3
 	ld.d	$a0, $a1, 0
 	ld.d	$a3, $a0, 0
-	beq	$a3, $s1, .LBB3_121
+	beq	$a3, $s0, .LBB3_121
 	.p2align	4, , 16
 .LBB3_114:                              # %.preheader60.i.i
                                         #   Parent Loop BB3_10 Depth=1
@@ -1511,7 +1530,7 @@ load_regex_matcher:                     # @load_regex_matcher
                                         # =>      This Inner Loop Header: Depth=4
 	move	$a0, $a3
 	ld.d	$a3, $a3, 0
-	bne	$a3, $s1, .LBB3_114
+	bne	$a3, $s0, .LBB3_114
 # %bb.115:                              #   in Loop: Header=BB3_108 Depth=3
 	st.b	$s3, $s8, 17
 	st.b	$zero, $a0, 17
@@ -1519,10 +1538,10 @@ load_regex_matcher:                     # @load_regex_matcher
 	b	.LBB3_108
 	.p2align	4, , 16
 .LBB3_116:                              #   in Loop: Header=BB3_108 Depth=3
-	addi.d	$s0, $a3, -2
+	addi.d	$s1, $a3, -2
 	beqz	$a0, .LBB3_123
 # %bb.117:                              #   in Loop: Header=BB3_108 Depth=3
-	sltui	$a1, $s0, 1
+	sltui	$a1, $s1, 1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a1, $a0, $a1
 	beqz	$a1, .LBB3_123
@@ -1568,10 +1587,10 @@ load_regex_matcher:                     # @load_regex_matcher
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(cli_realloc2)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 24
+	st.d	$a0, $s0, 24
 	beqz	$a0, .LBB3_108
 # %bb.124:                              #   in Loop: Header=BB3_108 Depth=3
-	sltui	$a1, $s0, 1
+	sltui	$a1, $s1, 1
 	slli.d	$a1, $a1, 3
 	stx.d	$s8, $a0, $a1
 	b	.LBB3_108
@@ -1584,10 +1603,9 @@ load_regex_matcher:                     # @load_regex_matcher
 	st.d	$a0, $fp, 64
 	b	.LBB3_81
 .LBB3_127:                              #   in Loop: Header=BB3_82 Depth=2
-	ld.w	$a1, $s5, 0
+	ld.w	$a1, $s0, 0
 	ld.d	$a0, $s6, 24
-	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB3_129
+	bne	$a1, $s5, .LBB3_129
 # %bb.128:                              #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a1, $a0, 8
 	addi.d	$a0, $a0, 8
@@ -1644,9 +1662,8 @@ load_regex_matcher:                     # @load_regex_matcher
 	b	.LBB3_165
 .LBB3_138:                              #   in Loop: Header=BB3_82 Depth=2
 	move	$s0, $s6
-	ori	$a2, $zero, 2
 	ori	$s1, $zero, 1
-	blt	$a1, $a2, .LBB3_140
+	blt	$a1, $s5, .LBB3_140
 # %bb.139:                              #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a0, $a0, 0
 	ld.d	$s0, $a0, 0
@@ -1665,112 +1682,176 @@ load_regex_matcher:                     # @load_regex_matcher
 .LBB3_142:                              # %tree_node_alloc.exit163.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 96
+	ori	$a0, $a0, 144
 	add.d	$a0, $sp, $a0
-	ld.d	$s4, $a0, 0
-	pcalau12i	$a0, %pc_hi20(char_class_bitmap)
-	addi.d	$s5, $a0, %pc_lo12(char_class_bitmap)
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_161
+	ld.d	$s0, $a0, 0
+	ld.d	$a0, $s0, 0
+	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
+	xor	$a1, $a0, $a5
+	ld.d	$a2, $s0, 8
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $s0, 16
+	ld.d	$a4, $s0, 24
+	bstrins.d	$a0, $a0, 58, 32
+	xor	$a2, $a2, $a0
+	or	$a1, $a1, $a2
+	or	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB3_161
 # %bb.143:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 32
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_173
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 8
+	ld.d	$a3, $s0, 16
+	ld.d	$a4, $s0, 24
+	xor	$a1, $a1, $a5
+	or	$a1, $a1, $a2
+	or	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB3_174
 # %bb.144:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 64
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_174
+	ld.d	$a1, $s0, 0
+	ori	$a2, $zero, 0
+	lu32i.d	$a2, 65534
+	lu52i.d	$a2, $a2, -64
+	ld.d	$a3, $s0, 8
+	ld.d	$a4, $s0, 16
+	ld.d	$a5, $s0, 24
+	xor	$a1, $a1, $a2
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	xor	$a2, $a3, $a2
+	or	$a1, $a1, $a2
+	or	$a2, $a4, $a5
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB3_175
 # %bb.145:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 96
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_175
-# %bb.146:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 128
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 8
+	ld.d	$a3, $s0, 16
+	ld.d	$a4, $s0, 24
+	xor	$a0, $a2, $a0
+	or	$a0, $a1, $a0
+	or	$a1, $a3, $a4
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB3_176
+# %bb.146:                              #   in Loop: Header=BB3_82 Depth=2
+	ld.d	$a0, $s0, 0
+	ori	$a1, $zero, 0
+	lu32i.d	$a1, -2
+	xor	$a2, $a0, $a1
+	ld.d	$a3, $s0, 8
+	ld.d	$a4, $s0, 16
+	ld.d	$a5, $s0, 24
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	lu52i.d	$a0, $a0, 2047
+	xor	$a3, $a3, $a0
+	or	$a2, $a2, $a3
+	or	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB3_177
 # %bb.147:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 160
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_177
+	ld.d	$a2, $s0, 0
+	ld.d	$a3, $s0, 8
+	ld.d	$a4, $s0, 16
+	ld.d	$a5, $s0, 24
+	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
+	xor	$a2, $a2, $a6
+	or	$a2, $a2, $a3
+	or	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB3_178
 # %bb.148:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 192
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_178
+	ld.d	$a2, $s0, 0
+	ld.d	$a3, $s0, 8
+	ld.d	$a4, $s0, 16
+	ld.d	$a5, $s0, 24
+	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
+	xor	$a2, $a2, $a6
+	or	$a2, $a2, $a3
+	or	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB3_179
 # %bb.149:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 224
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_179
+	ld.d	$a2, $s0, 0
+	ld.d	$a3, $s0, 8
+	ld.d	$a4, $s0, 16
+	ld.d	$a5, $s0, 24
+	lu52i.d	$a1, $a1, 127
+	xor	$a1, $a3, $a1
+	or	$a1, $a2, $a1
+	or	$a2, $a4, $a5
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB3_180
 # %bb.150:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 256
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_180
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 8
+	ld.d	$a3, $s0, 16
+	ld.d	$a4, $s0, 24
+	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
+	xor	$a2, $a2, $a5
+	or	$a1, $a1, $a2
+	or	$a2, $a3, $a4
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB3_181
 # %bb.151:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 288
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_181
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	lu32i.d	$a2, 0
+	ld.d	$a3, $s0, 8
+	ld.d	$a4, $s0, 16
+	ld.d	$a5, $s0, 24
+	xor	$a1, $a1, $a2
+	lu52i.d	$a2, $zero, -2048
+	xor	$a2, $a3, $a2
+	or	$a1, $a1, $a2
+	or	$a2, $a4, $a5
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB3_182
 # %bb.152:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 320
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_182
-# %bb.153:                              #   in Loop: Header=BB3_82 Depth=2
-	addi.d	$a1, $s5, 352
-	ori	$a2, $zero, 32
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $s0, 0
+	ori	$a2, $zero, 0
+	lu32i.d	$a2, -1
+	ld.d	$a3, $s0, 8
+	ld.d	$a4, $s0, 16
+	ld.d	$a5, $s0, 24
+	xor	$a1, $a1, $a2
+	xor	$a0, $a3, $a0
+	or	$a0, $a1, $a0
+	or	$a1, $a4, $a5
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB3_183
+# %bb.153:                              #   in Loop: Header=BB3_82 Depth=2
+	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
+	ld.d	$a2, $s0, 16
+	ld.d	$a3, $s0, 24
+	ld.d	$a4, $sp, 88                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a4
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	xor	$a1, $a1, $a4
+	or	$a0, $a0, $a1
+	or	$a1, $a2, $a3
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB3_184
 # %bb.154:                              # %char_getclass.exit.i
                                         #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 2
-	st.w	$a0, $s8, 12
+	st.w	$s5, $s8, 12
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s8, 24
-	beqz	$a0, .LBB3_223
+	beqz	$a0, .LBB3_224
 # %bb.155:                              #   in Loop: Header=BB3_82 Depth=2
-	st.d	$s4, $a0, 0
+	st.d	$s0, $a0, 0
 	ld.d	$a0, $s8, 24
 	st.d	$zero, $a0, 8
-	b	.LBB3_185
+	move	$a0, $s6
+	move	$a1, $s8
+	pcaddu18i	$ra, %call36(tree_node_insert_nonbin)
+	jirl	$ra, $ra, 0
+	b	.LBB3_173
 .LBB3_156:                              #   in Loop: Header=BB3_82 Depth=2
 	move	$s0, $s6
-	ori	$a2, $zero, 2
-	blt	$a1, $a2, .LBB3_158
+	blt	$a1, $s5, .LBB3_158
 # %bb.157:                              #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a0, $a0, 0
 	ld.d	$s0, $a0, 0
@@ -1790,14 +1871,10 @@ load_regex_matcher:                     # @load_regex_matcher
                                         #   in Loop: Header=BB3_82 Depth=2
 	ori	$a0, $zero, 3
 	st.w	$a0, $s8, 12
-	move	$a0, $s6
-	move	$a1, $s8
-	pcaddu18i	$ra, %call36(tree_node_insert_nonbin)
-	jirl	$ra, $ra, 0
-	b	.LBB3_81
+	b	.LBB3_186
 .LBB3_161:                              #   in Loop: Header=BB3_82 Depth=2
 	move	$a0, $zero
-	b	.LBB3_184
+	b	.LBB3_185
 .LBB3_162:                              #   in Loop: Header=BB3_82 Depth=2
 	move	$a1, $zero
 	move	$s8, $zero
@@ -1822,12 +1899,11 @@ load_regex_matcher:                     # @load_regex_matcher
 	stx.d	$s8, $a0, $a1
 	b	.LBB3_81
 .LBB3_166:                              #   in Loop: Header=BB3_82 Depth=2
-	move	$s0, $s6
-	ori	$a3, $zero, 2
+	move	$s5, $s6
 	blt	$a1, $a3, .LBB3_168
 # %bb.167:                              #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a3, $a4, 0
-	ld.d	$s0, $a3, 0
+	ld.d	$s5, $a3, 0
 .LBB3_168:                              # %tree_get_next.exit.i.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	addi.d	$a1, $a1, 1
@@ -1839,17 +1915,17 @@ load_regex_matcher:                     # @load_regex_matcher
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	st.d	$a0, $s6, 24
-	ld.w	$s5, $s5, 0
+	ld.w	$s0, $s0, 0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
 	beqz	$a0, .LBB3_170
 # %bb.169:                              #   in Loop: Header=BB3_82 Depth=2
-	xor	$a0, $s6, $s0
+	xor	$a0, $s6, $s5
 	sltui	$a0, $a0, 1
 	st.b	$zero, $s8, 16
-	st.d	$s0, $s8, 0
+	st.d	$s5, $s8, 0
 	st.b	$a0, $s8, 17
 	st.d	$zero, $s8, 24
 	st.w	$zero, $s8, 12
@@ -1857,7 +1933,7 @@ load_regex_matcher:                     # @load_regex_matcher
 .LBB3_170:                              # %tree_node_alloc.exit.thread.i.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	ld.b	$a0, $s6, 16
-	addi.d	$a1, $s5, -2
+	addi.d	$a1, $s0, -2
 	sltui	$a1, $a1, 1
 	nor	$a2, $s3, $zero
 	add.w	$a2, $a0, $a2
@@ -1873,69 +1949,71 @@ load_regex_matcher:                     # @load_regex_matcher
                                         #   in Loop: Header=BB3_82 Depth=2
 	slli.d	$a0, $s3, 3
 	stx.d	$s8, $s0, $a0
+.LBB3_173:                              # %tree_node_char_binsearch.exit.i
+                                        #   in Loop: Header=BB3_82 Depth=2
 	ori	$s4, $zero, 7
+	ori	$s5, $zero, 2
 	b	.LBB3_81
-.LBB3_173:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 1
-	b	.LBB3_184
 .LBB3_174:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 2
-	b	.LBB3_184
+	ori	$a0, $zero, 1
+	b	.LBB3_185
 .LBB3_175:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 3
-	b	.LBB3_184
+	ori	$a0, $zero, 2
+	b	.LBB3_185
 .LBB3_176:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 4
-	b	.LBB3_184
+	ori	$a0, $zero, 3
+	b	.LBB3_185
 .LBB3_177:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 5
-	b	.LBB3_184
+	ori	$a0, $zero, 4
+	b	.LBB3_185
 .LBB3_178:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 6
-	b	.LBB3_184
+	ori	$a0, $zero, 5
+	b	.LBB3_185
 .LBB3_179:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 7
-	b	.LBB3_184
+	ori	$a0, $zero, 6
+	b	.LBB3_185
 .LBB3_180:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 8
-	b	.LBB3_184
+	ori	$a0, $zero, 7
+	b	.LBB3_185
 .LBB3_181:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 9
-	b	.LBB3_184
+	ori	$a0, $zero, 8
+	b	.LBB3_185
 .LBB3_182:                              #   in Loop: Header=BB3_82 Depth=2
-	ori	$a0, $zero, 10
-	b	.LBB3_184
+	ori	$a0, $zero, 9
+	b	.LBB3_185
 .LBB3_183:                              #   in Loop: Header=BB3_82 Depth=2
+	ori	$a0, $zero, 10
+	b	.LBB3_185
+.LBB3_184:                              #   in Loop: Header=BB3_82 Depth=2
 	ori	$a0, $zero, 11
-.LBB3_184:                              # %select.unfold.i
+.LBB3_185:                              # %select.unfold.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	st.w	$s1, $s8, 12
 	st.b	$a0, $s8, 8
-.LBB3_185:                              # %tree_node_char_binsearch.exit.i
+.LBB3_186:                              # %tree_node_char_binsearch.exit.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	move	$a0, $s6
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(tree_node_insert_nonbin)
 	jirl	$ra, $ra, 0
-	ori	$s4, $zero, 7
 	b	.LBB3_81
-.LBB3_186:                              #   in Loop: Header=BB3_10 Depth=1
+.LBB3_187:                              #   in Loop: Header=BB3_10 Depth=1
 	ld.bu	$a0, $s7, 0
-	beqz	$a0, .LBB3_193
-# %bb.187:                              #   in Loop: Header=BB3_10 Depth=1
+	beqz	$a0, .LBB3_194
+# %bb.188:                              #   in Loop: Header=BB3_10 Depth=1
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 96
+	ori	$a0, $a0, 144
 	add.d	$a0, $sp, $a0
 	st.d	$s7, $a0, 0
-	ori	$s0, $zero, 1
-	b	.LBB3_199
-.LBB3_188:                              # %vector.main.loop.iter.check
+	ori	$s1, $zero, 1
+	b	.LBB3_200
+.LBB3_189:                              # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB3_10 Depth=1
 	ori	$a1, $zero, 16
-	bgeu	$s5, $a1, .LBB3_194
-# %bb.189:                              #   in Loop: Header=BB3_10 Depth=1
+	bgeu	$s5, $a1, .LBB3_195
+# %bb.190:                              #   in Loop: Header=BB3_10 Depth=1
 	move	$a1, $zero
-.LBB3_190:                              # %vec.epilog.ph
+.LBB3_191:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB3_10 Depth=1
 	move	$a4, $a1
 	move	$a1, $s5
@@ -1945,7 +2023,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	add.d	$a4, $s6, $a4
 	addi.d	$a4, $a4, 1
 	.p2align	4, , 16
-.LBB3_191:                              # %vec.epilog.vector.body
+.LBB3_192:                              # %vec.epilog.vector.body
                                         #   Parent Loop BB3_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a5, $a4, 0
@@ -1957,15 +2035,15 @@ load_regex_matcher:                     # @load_regex_matcher
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 8
-	bnez	$a2, .LBB3_191
-# %bb.192:                              # %vec.epilog.middle.block
+	bnez	$a2, .LBB3_192
+# %bb.193:                              # %vec.epilog.middle.block
                                         #   in Loop: Header=BB3_10 Depth=1
 	bne	$s5, $a1, .LBB3_75
 	b	.LBB3_77
-.LBB3_193:                              #   in Loop: Header=BB3_10 Depth=1
-	move	$s0, $zero
-	b	.LBB3_199
-.LBB3_194:                              # %vector.ph
+.LBB3_194:                              #   in Loop: Header=BB3_10 Depth=1
+	move	$s1, $zero
+	b	.LBB3_200
+.LBB3_195:                              # %vector.ph
                                         #   in Loop: Header=BB3_10 Depth=1
 	andi	$a2, $s5, 8
 	move	$a1, $s5
@@ -1974,7 +2052,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	addi.d	$a4, $s6, 9
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB3_195:                              # %vector.body
+.LBB3_196:                              # %vector.body
                                         #   Parent Loop BB3_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a6, $a4, -8
@@ -1992,40 +2070,40 @@ load_regex_matcher:                     # @load_regex_matcher
 	addi.d	$a5, $a5, -16
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 16
-	bnez	$a5, .LBB3_195
-# %bb.196:                              # %middle.block
+	bnez	$a5, .LBB3_196
+# %bb.197:                              # %middle.block
                                         #   in Loop: Header=BB3_10 Depth=1
 	beq	$s5, $a1, .LBB3_77
-# %bb.197:                              # %vec.epilog.iter.check
+# %bb.198:                              # %vec.epilog.iter.check
                                         #   in Loop: Header=BB3_10 Depth=1
-	bnez	$a2, .LBB3_190
+	bnez	$a2, .LBB3_191
 	b	.LBB3_75
-.LBB3_198:                              # %.thread.i.loopexit
+.LBB3_199:                              # %.thread.i.loopexit
                                         #   in Loop: Header=BB3_10 Depth=1
 	addi.d	$a0, $a1, -6
-	sltui	$s0, $a0, 1
-.LBB3_199:                              # %.thread.i
+	sltui	$s1, $a0, 1
+.LBB3_200:                              # %.thread.i
                                         #   in Loop: Header=BB3_10 Depth=1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_223
-# %bb.200:                              #   in Loop: Header=BB3_10 Depth=1
+	beqz	$a0, .LBB3_224
+# %bb.201:                              #   in Loop: Header=BB3_10 Depth=1
 	move	$s4, $a0
-	addi.d	$a0, $sp, 97
+	addi.d	$a0, $sp, 145
 	pcaddu18i	$ra, %call36(cli_strdup)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, 0
-	beqz	$s0, .LBB3_205
-# %bb.201:                              #   in Loop: Header=BB3_10 Depth=1
+	beqz	$s1, .LBB3_206
+# %bb.202:                              #   in Loop: Header=BB3_10 Depth=1
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_223
-# %bb.202:                              #   in Loop: Header=BB3_10 Depth=1
+	beqz	$a0, .LBB3_224
+# %bb.203:                              #   in Loop: Header=BB3_10 Depth=1
 	move	$s5, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 96
+	ori	$a0, $a0, 144
 	add.d	$a0, $sp, $a0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1
@@ -2033,13 +2111,13 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(cli_regcomp)
 	jirl	$ra, $ra, 0
 	st.d	$s5, $s4, 8
-	bnez	$a0, .LBB3_226
-# %bb.203:                              #   in Loop: Header=BB3_10 Depth=1
+	bnez	$a0, .LBB3_227
+# %bb.204:                              #   in Loop: Header=BB3_10 Depth=1
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_223
-# %bb.204:                              #   in Loop: Header=BB3_10 Depth=1
+	beqz	$a0, .LBB3_224
+# %bb.205:                              #   in Loop: Header=BB3_10 Depth=1
 	move	$a1, $a0
 	ori	$a0, $zero, 4
 	st.w	$a0, $a1, 12
@@ -2051,26 +2129,26 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(tree_node_insert_nonbin)
 	jirl	$ra, $ra, 0
 	b	.LBB3_8
-.LBB3_205:                              #   in Loop: Header=BB3_10 Depth=1
+.LBB3_206:                              #   in Loop: Header=BB3_10 Depth=1
 	st.d	$zero, $s4, 8
 	st.b	$zero, $s6, 16
 	st.d	$s4, $s6, 24
 	ori	$a0, $zero, 4
-	st.w	$a0, $s5, 0
+	st.w	$a0, $s0, 0
 	b	.LBB3_8
-.LBB3_206:                              # %._crit_edge
+.LBB3_207:                              # %._crit_edge
 	ld.w	$a0, $fp, 32
 	ori	$a1, $zero, 1
 	st.w	$a1, $fp, 36
-	beqz	$a0, .LBB3_214
-# %bb.207:
+	beqz	$a0, .LBB3_215
+# %bb.208:
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB3_209
-# %bb.208:
+	beqz	$a0, .LBB3_210
+# %bb.209:
 	ld.d	$a1, $fp, 24
 	slli.d	$a2, $a1, 6
 	alsl.d	$a1, $a1, $a2, 4
@@ -2079,27 +2157,26 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(cli_ac_buildtrie)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	bnez	$a0, .LBB3_224
-.LBB3_209:
+	bnez	$a0, .LBB3_225
+.LBB3_210:
 	ld.d	$a0, $fp, 48
 	ori	$a1, $zero, 1
 	st.w	$a1, $fp, 40
-	addi.d	$s0, $fp, 48
-	beqz	$a0, .LBB3_211
-# %bb.210:
+	beqz	$a0, .LBB3_212
+# %bb.211:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB3_211:                              # %stack_destroy.exit.i
+.LBB3_212:                              # %stack_destroy.exit.i
 	ld.d	$a0, $fp, 72
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 0
-	beqz	$a0, .LBB3_213
-# %bb.212:
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr0, $fp, 48
+	beqz	$a0, .LBB3_214
+# %bb.213:
+	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-.LBB3_213:                              # %regex_list_cleanup.exit
+	vld	$vr0, $sp, 128                  # 16-byte Folded Reload
+.LBB3_214:                              # %regex_list_cleanup.exit
 	st.d	$zero, $fp, 80
 	vst	$vr0, $fp, 64
 	ori	$a0, $zero, 1024
@@ -2117,15 +2194,15 @@ load_regex_matcher:                     # @load_regex_matcher
 	jirl	$ra, $ra, 0
 	move	$s3, $zero
 	st.d	$a0, $fp, 72
-	b	.LBB3_224
-.LBB3_214:
+	b	.LBB3_225
+.LBB3_215:
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	b	.LBB3_224
-.LBB3_215:
+	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
+	b	.LBB3_225
+.LBB3_216:
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
@@ -2137,33 +2214,33 @@ load_regex_matcher:                     # @load_regex_matcher
 	addi.w	$a0, $zero, -1
 	lu32i.d	$a0, 0
 	st.w	$a0, $fp, 32
-	b	.LBB3_224
-.LBB3_216:
+	b	.LBB3_225
+.LBB3_217:
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
-	b	.LBB3_218
-.LBB3_217:
+	b	.LBB3_219
+.LBB3_218:
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.11)
-.LBB3_218:                              # %functionality_level_check.exit.thread157
-	move	$a1, $s0
+.LBB3_219:                              # %functionality_level_check.exit.thread157
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(regex_list_done)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	lu32i.d	$a0, 0
 	st.w	$a0, $fp, 32
-.LBB3_219:
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	b	.LBB3_224
-.LBB3_220:                              # %.thread146
+.LBB3_220:
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	b	.LBB3_225
+.LBB3_221:                              # %.thread146
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB3_223
-.LBB3_221:
+	b	.LBB3_224
+.LBB3_222:
 	ld.d	$a1, $s4, 32
 	move	$fp, $a0
 	move	$a0, $a1
@@ -2176,17 +2253,17 @@ load_regex_matcher:                     # @load_regex_matcher
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -114
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	beq	$fp, $a0, .LBB3_223
-	b	.LBB3_224
-.LBB3_222:
-	st.d	$s4, $fp, 0
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	beq	$fp, $a0, .LBB3_224
+	b	.LBB3_225
 .LBB3_223:
+	st.d	$s4, $fp, 0
+.LBB3_224:
 	addi.w	$s3, $zero, -114
-.LBB3_224:                              # %functionality_level_check.exit.thread157
+.LBB3_225:                              # %functionality_level_check.exit.thread157
 	move	$a0, $s3
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 2272
+	ori	$a1, $a1, 2320
 	add.d	$sp, $sp, $a1
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
@@ -2201,19 +2278,19 @@ load_regex_matcher:                     # @load_regex_matcher
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB3_225:
+.LBB3_226:
 	pcalau12i	$a1, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.13)
 	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB3_224
-.LBB3_226:
+	b	.LBB3_225
+.LBB3_227:
 	addi.w	$a1, $zero, -114
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB3_224
-	b	.LBB3_223
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB3_225
+	b	.LBB3_224
 .Lfunc_end3:
 	.size	load_regex_matcher, .Lfunc_end3-load_regex_matcher
 	.section	.rodata,"a",@progbits
@@ -2225,8 +2302,8 @@ load_regex_matcher:                     # @load_regex_matcher
 	.word	.LBB3_105-.LJTI3_0
 	.word	.LBB3_94-.LJTI3_0
 	.word	.LBB3_132-.LJTI3_0
-	.word	.LBB3_198-.LJTI3_0
-	.word	.LBB3_198-.LJTI3_0
+	.word	.LBB3_199-.LJTI3_0
+	.word	.LBB3_199-.LJTI3_0
                                         # -- End function
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function regex_list_cleanup
@@ -2245,7 +2322,6 @@ regex_list_cleanup:                     # @regex_list_cleanup
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 48
-	addi.d	$s0, $fp, 48
 	beqz	$a0, .LBB4_2
 # %bb.1:
 	pcaddu18i	$ra, %call36(free)
@@ -2253,7 +2329,7 @@ regex_list_cleanup:                     # @regex_list_cleanup
 .LBB4_2:                                # %stack_destroy.exit
 	ld.d	$a0, $fp, 72
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 0
+	vst	$vr0, $fp, 48
 	beqz	$a0, .LBB4_4
 # %bb.3:
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
@@ -2296,15 +2372,13 @@ regex_list_cleanup:                     # @regex_list_cleanup
 	.type	regex_list_done,@function
 regex_list_done:                        # @regex_list_done
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 48
-	addi.d	$s1, $fp, 48
 	beqz	$a0, .LBB5_2
 # %bb.1:
 	pcaddu18i	$ra, %call36(free)
@@ -2312,15 +2386,15 @@ regex_list_done:                        # @regex_list_done
 .LBB5_2:                                # %stack_destroy.exit.i
 	ld.d	$a0, $fp, 72
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vst	$vr0, $s1, 0
+	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
+	vst	$vr0, $fp, 48
 	beqz	$a0, .LBB5_4
 # %bb.3:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB5_4:                                # %regex_list_cleanup.exit
 	st.d	$zero, $fp, 80
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $fp, 64
 	ori	$a0, $zero, 1024
 	st.d	$a0, $fp, 56
@@ -2337,7 +2411,7 @@ regex_list_done:                        # @regex_list_done
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 36
 	st.d	$a0, $fp, 72
-	beqz	$a1, .LBB5_17
+	beqz	$a1, .LBB5_13
 # %bb.5:
 	ld.d	$a0, $fp, 0
 	beqz	$a0, .LBB5_11
@@ -2346,7 +2420,7 @@ regex_list_done:                        # @regex_list_done
 	beqz	$a1, .LBB5_10
 # %bb.7:                                # %.lr.ph.preheader
 	move	$s0, $zero
-	move	$s2, $zero
+	move	$s1, $zero
 	.p2align	4, , 16
 .LBB5_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -2355,9 +2429,9 @@ regex_list_done:                        # @regex_list_done
 	pcaddu18i	$ra, %call36(cli_ac_free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 24
-	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 1
 	addi.d	$s0, $s0, 80
-	bltu	$s2, $a0, .LBB5_8
+	bltu	$s1, $a0, .LBB5_8
 # %bb.9:                                # %._crit_edge.loopexit
 	ld.d	$a0, $fp, 0
 .LBB5_10:                               # %._crit_edge
@@ -2377,59 +2451,54 @@ regex_list_done:                        # @regex_list_done
 	pcaddu18i	$ra, %call36(destroy_tree_internal)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 64
-	beqz	$a1, .LBB5_16
-# %bb.12:                               # %stack_pop.exit.i.preheader
-	addi.d	$s0, $fp, 64
-	b	.LBB5_14
+	bnez	$a1, .LBB5_21
+.LBB5_12:                               # %destroy_tree.exit
+	st.w	$zero, $fp, 36
+.LBB5_13:
+	ld.w	$a0, $fp, 32
+	beqz	$a0, .LBB5_15
+# %bb.14:
+	st.w	$zero, $fp, 32
+.LBB5_15:
+	ld.d	$a0, $fp, 48
+	beqz	$a0, .LBB5_17
+# %bb.16:
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB5_17:                               # %stack_destroy.exit
+	ld.d	$a0, $fp, 72
+	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
+	vst	$vr0, $fp, 48
+	beqz	$a0, .LBB5_19
+# %bb.18:
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB5_19:                               # %stack_destroy.exit21
+	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
+	vst	$vr0, $fp, 72
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
+	ret
 	.p2align	4, , 16
-.LBB5_13:                               # %stack_pop.exit.thread.i
-                                        #   in Loop: Header=BB5_14 Depth=1
-	beqz	$a1, .LBB5_16
-.LBB5_14:                               # %stack_pop.exit.i
+.LBB5_20:                               # %stack_pop.exit.thread.i
+                                        #   in Loop: Header=BB5_21 Depth=1
+	beqz	$a1, .LBB5_12
+.LBB5_21:                               # %stack_pop.exit.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, 48
 	addi.d	$a1, $a1, -1
 	slli.d	$a2, $a1, 3
 	ldx.d	$a0, $a0, $a2
-	st.d	$a1, $s0, 0
-	beqz	$a0, .LBB5_13
-# %bb.15:                               #   in Loop: Header=BB5_14 Depth=1
+	st.d	$a1, $fp, 64
+	beqz	$a0, .LBB5_20
+# %bb.22:                               #   in Loop: Header=BB5_21 Depth=1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 0
-	b	.LBB5_13
-.LBB5_16:                               # %destroy_tree.exit
-	st.w	$zero, $fp, 36
-.LBB5_17:
-	ld.w	$a0, $fp, 32
-	beqz	$a0, .LBB5_19
-# %bb.18:
-	st.w	$zero, $fp, 32
-.LBB5_19:
-	ld.d	$a0, $s1, 0
-	addi.d	$fp, $fp, 72
-	beqz	$a0, .LBB5_21
-# %bb.20:
-	pcaddu18i	$ra, %call36(free)
-	jirl	$ra, $ra, 0
-.LBB5_21:                               # %stack_destroy.exit
-	ld.d	$a0, $fp, 0
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $s1, 0
-	beqz	$a0, .LBB5_23
-# %bb.22:
-	pcaddu18i	$ra, %call36(free)
-	jirl	$ra, $ra, 0
-.LBB5_23:                               # %stack_destroy.exit21
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $fp, 0
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
-	ret
+	ld.d	$a1, $fp, 64
+	b	.LBB5_20
 .Lfunc_end5:
 	.size	regex_list_done, .Lfunc_end5-regex_list_done
                                         # -- End function

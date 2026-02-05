@@ -458,14 +458,50 @@ Lzma2Enc_SetProps:                      # @Lzma2Enc_SetProps
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function Lzma2Enc_WriteProperties
 .LCPI5_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
+	.word	4097                            # 0x1001
+	.word	6145                            # 0x1801
+	.word	8193                            # 0x2001
+	.word	12289                           # 0x3001
+	.word	16385                           # 0x4001
+	.word	24577                           # 0x6001
+	.word	32769                           # 0x8001
+	.word	49153                           # 0xc001
+.LCPI5_1:
+	.word	65537                           # 0x10001
+	.word	98305                           # 0x18001
+	.word	131073                          # 0x20001
+	.word	196609                          # 0x30001
+	.word	262145                          # 0x40001
+	.word	393217                          # 0x60001
+	.word	524289                          # 0x80001
+	.word	786433                          # 0xc0001
+.LCPI5_2:
+	.word	1048577                         # 0x100001
+	.word	1572865                         # 0x180001
+	.word	2097153                         # 0x200001
+	.word	3145729                         # 0x300001
+	.word	4194305                         # 0x400001
+	.word	6291457                         # 0x600001
+	.word	8388609                         # 0x800001
+	.word	12582913                        # 0xc00001
+.LCPI5_3:
+	.word	16777217                        # 0x1000001
+	.word	25165825                        # 0x1800001
+	.word	33554433                        # 0x2000001
+	.word	50331649                        # 0x3000001
+	.word	67108865                        # 0x4000001
+	.word	100663297                       # 0x6000001
+	.word	134217729                       # 0x8000001
+	.word	201326593                       # 0xc000001
+.LCPI5_4:
+	.word	268435457                       # 0x10000001
+	.word	402653185                       # 0x18000001
+	.word	536870913                       # 0x20000001
+	.word	805306369                       # 0x30000001
+	.word	1073741825                      # 0x40000001
+	.word	1610612737                      # 0x60000001
+	.word	2147483649                      # 0x80000001
+	.word	3221225473                      # 0xc0000001
 	.text
 	.globl	Lzma2Enc_WriteProperties
 	.p2align	5
@@ -479,56 +515,153 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI5_0)
-	xvreplgr2vr.w	$xr2, $a0
-	addi.w	$a0, $zero, -8
-	xvrepli.w	$xr3, 1
-	ori	$a1, $zero, 24
-	.p2align	4, , 16
-.LBB5_1:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a2, $a0
-	xvand.v	$xr0, $xr1, $xr3
-	xvbitseti.w	$xr0, $xr0, 1
-	xvsrli.w	$xr4, $xr1, 1
-	xvaddi.wu	$xr4, $xr4, 11
-	xvsll.w	$xr0, $xr0, $xr4
-	xvsle.wu	$xr0, $xr2, $xr0
-	xvmskltz.w	$xr4, $xr0
-	xvpickve2gr.wu	$a3, $xr4, 0
-	xvpickve2gr.wu	$a0, $xr4, 4
-	bstrins.d	$a3, $a0, 7, 4
-	addi.w	$a0, $a2, 8
-	bnez	$a3, .LBB5_3
-# %bb.2:                                # %vector.body
-                                        #   in Loop: Header=BB5_1 Depth=1
-	xvaddi.wu	$xr1, $xr1, 8
-	bne	$a2, $a1, .LBB5_1
-.LBB5_3:                                # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB5_5
-# %bb.4:                                # %vector.early.exit
-	xvpickve2gr.w	$a1, $xr0, 0
-	vinsgr2vr.b	$vr1, $a1, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	vinsgr2vr.b	$vr1, $a1, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	vinsgr2vr.b	$vr1, $a1, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	vinsgr2vr.b	$vr1, $a1, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	vinsgr2vr.b	$vr1, $a1, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	vinsgr2vr.b	$vr1, $a1, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	vinsgr2vr.b	$vr1, $a1, 6
-	xvpickve2gr.w	$a1, $xr0, 7
-	vinsgr2vr.b	$vr1, $a1, 7
+	xvreplgr2vr.w	$xr0, $a0
+	xvslt.wu	$xr1, $xr0, $xr1
+	xvmskltz.w	$xr2, $xr1
+	xvpickve2gr.wu	$a0, $xr2, 0
+	xvpickve2gr.wu	$a1, $xr2, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB5_2
+# %bb.1:
+	move	$a0, $zero
+	xvpickve2gr.w	$a1, $xr1, 0
+	vinsgr2vr.h	$vr0, $a1, 0
+	xvpickve2gr.w	$a1, $xr1, 1
+	vinsgr2vr.h	$vr0, $a1, 1
+	xvpickve2gr.w	$a1, $xr1, 2
+	vinsgr2vr.h	$vr0, $a1, 2
+	xvpickve2gr.w	$a1, $xr1, 3
+	vinsgr2vr.h	$vr0, $a1, 3
+	xvpickve2gr.w	$a1, $xr1, 4
+	vinsgr2vr.h	$vr0, $a1, 4
+	xvpickve2gr.w	$a1, $xr1, 5
+	vinsgr2vr.h	$vr0, $a1, 5
+	xvpickve2gr.w	$a1, $xr1, 6
+	vinsgr2vr.h	$vr0, $a1, 6
+	xvpickve2gr.w	$a1, $xr1, 7
+	vinsgr2vr.h	$vr0, $a1, 7
+	b	.LBB5_10
+.LBB5_2:                                # %vector.body.interim
+	pcalau12i	$a0, %pc_hi20(.LCPI5_1)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI5_1)
+	xvslt.wu	$xr1, $xr0, $xr1
+	xvmskltz.w	$xr2, $xr1
+	xvpickve2gr.wu	$a0, $xr2, 0
+	xvpickve2gr.wu	$a1, $xr2, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB5_4
+# %bb.3:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	ori	$a0, $zero, 8
+	b	.LBB5_10
+.LBB5_4:                                # %vector.body.interim.1
+	pcalau12i	$a0, %pc_hi20(.LCPI5_2)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI5_2)
+	xvslt.wu	$xr1, $xr0, $xr1
+	xvmskltz.w	$xr2, $xr1
+	xvpickve2gr.wu	$a0, $xr2, 0
+	xvpickve2gr.wu	$a1, $xr2, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB5_6
+# %bb.5:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	ori	$a0, $zero, 16
+	b	.LBB5_10
+.LBB5_6:                                # %vector.body.interim.2
+	pcalau12i	$a0, %pc_hi20(.LCPI5_3)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI5_3)
+	xvslt.wu	$xr1, $xr0, $xr1
+	xvmskltz.w	$xr2, $xr1
+	xvpickve2gr.wu	$a0, $xr2, 0
+	xvpickve2gr.wu	$a1, $xr2, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB5_8
+# %bb.7:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	ori	$a0, $zero, 24
+	b	.LBB5_10
+.LBB5_8:                                # %vector.body.interim.3
+	pcalau12i	$a0, %pc_hi20(.LCPI5_4)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI5_4)
+	xvslt.wu	$xr1, $xr0, $xr1
+	xvmskltz.w	$xr0, $xr1
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB5_11
+# %bb.9:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	ori	$a0, $zero, 32
+.LBB5_10:                               # %vector.early.exit
+	vpickev.b	$vr0, $vr0, $vr0
+	vslli.b	$vr0, $vr0, 7
+	vsrai.b	$vr0, $vr0, 7
 	lu12i.w	$a1, 20576
 	ori	$a1, $a1, 1800
 	lu32i.d	$a1, 131844
 	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr0, $a1
-	vand.v	$vr0, $vr1, $vr0
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.bu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 2
@@ -536,15 +669,13 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	vbsrl.v	$vr1, $vr0, 1
 	vmax.bu	$vr0, $vr1, $vr0
 	vpickve2gr.b	$a1, $vr0, 0
-	ori	$a2, $zero, 8
-	sub.d	$a1, $a2, $a1
-	andi	$a1, $a1, 255
-	add.d	$a0, $a1, $a0
+	sub.d	$a0, $a0, $a1
+	addi.d	$a0, $a0, 8
 	andi	$a0, $a0, 255
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
-.LBB5_5:
+.LBB5_11:
 	ori	$a0, $zero, 40
 	andi	$a0, $a0, 255
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload

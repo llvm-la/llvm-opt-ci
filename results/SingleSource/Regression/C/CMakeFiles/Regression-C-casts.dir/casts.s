@@ -55,7 +55,7 @@ main:                                   # @main
 	b	.LBB0_6
 .LBB0_5:
 	move	$s5, $zero
-.LBB0_6:                                # %.thread124
+.LBB0_6:                                # %.thread122
 	ext.w.b	$s4, $s3
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)

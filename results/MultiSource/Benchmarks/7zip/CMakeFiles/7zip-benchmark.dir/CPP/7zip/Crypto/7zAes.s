@@ -512,8 +512,7 @@ _ZN7NCrypto7NSevenZ13CKeyInfoCache4FindERNS0_8CKeyInfoE: # @_ZN7NCrypto7NSevenZ1
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB2_30:                               # %_ZN13CObjectVectorIN7NCrypto7NSevenZ8CKeyInfoEE6InsertEiRKS2_.exit
-	addi.d	$a0, $s2, 48
-	xvld	$xr0, $a0, 0
+	xvld	$xr0, $s2, 48
 	addi.d	$s1, $fp, 8
 	xvst	$xr0, $s0, 48
 	move	$a0, $s1
@@ -1113,10 +1112,12 @@ _ZN7NCrypto7NSevenZ8CEncoder20WriteCoderPropertiesEP20ISequentialOutStream: # @_
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
+	.cfi_offset 25, -40
 	move	$fp, $a0
 	ld.w	$s1, $a0, 160
 	ori	$a0, $zero, 15
@@ -1141,12 +1142,12 @@ _ZN7NCrypto7NSevenZ8CEncoder20WriteCoderPropertiesEP20ISequentialOutStream: # @_
 	ld.d	$a3, $s0, 0
 	maskeqz	$a0, $a1, $a0
 	or	$a0, $a0, $a2
-	sltu	$a1, $zero, $s1
+	sltu	$s2, $zero, $s1
 	ld.d	$a4, $a3, 40
-	slli.d	$a1, $a1, 6
+	slli.d	$a1, $s2, 6
 	or	$a0, $a0, $a1
-	st.b	$a0, $sp, 15
-	addi.d	$a1, $sp, 15
+	st.b	$a0, $sp, 7
+	addi.d	$a1, $sp, 7
 	ori	$a2, $zero, 1
 	move	$a0, $s0
 	move	$a3, $zero
@@ -1161,23 +1162,22 @@ _ZN7NCrypto7NSevenZ8CEncoder20WriteCoderPropertiesEP20ISequentialOutStream: # @_
 	b	.LBB11_6
 .LBB11_5:
 	sltui	$a1, $a0, 1
+	ld.d	$a2, $s0, 0
 	slli.d	$a0, $a0, 4
 	addi.d	$a0, $a0, 240
-	ld.d	$a2, $s0, 0
 	masknez	$a0, $a0, $a1
-	addi.d	$a1, $s1, -1
-	sltu	$a3, $s1, $a1
 	ld.d	$a4, $a2, 40
-	masknez	$a1, $a1, $a3
+	sub.d	$a1, $s1, $s2
 	or	$a0, $a0, $a1
-	st.b	$a0, $sp, 14
-	addi.d	$a1, $sp, 14
+	st.b	$a0, $sp, 6
+	addi.d	$a1, $sp, 6
 	ori	$a2, $zero, 1
 	move	$a0, $s0
 	move	$a3, $zero
 	jirl	$ra, $a4, 0
 	beqz	$a0, .LBB11_7
 .LBB11_6:
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
@@ -1315,11 +1315,10 @@ _ZN7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZN7NCrypto7NSevenZ
 	beqz	$a2, .LBB14_2
 # %bb.1:
 	ld.bu	$a5, $a1, 0
-	addi.d	$a3, $a0, 64
 	andi	$a4, $a5, 63
-	ori	$a6, $zero, 64
-	st.w	$a4, $a3, 0
-	bgeu	$a5, $a6, .LBB14_3
+	ori	$a3, $zero, 64
+	st.w	$a4, $a0, 64
+	bgeu	$a5, $a3, .LBB14_3
 .LBB14_2:
 	move	$a0, $zero
 	ret
@@ -1373,28 +1372,28 @@ _ZN7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZN7NCrypto7NSevenZ
 .LBB14_12:
 	ori	$a2, $zero, 2
 .LBB14_13:                              # %.preheader
-	addi.w	$a3, $a7, 0
-	beqz	$a3, .LBB14_19
+	addi.w	$a7, $a7, 0
+	beqz	$a7, .LBB14_19
 # %bb.14:                               # %iter.check
-	ori	$a7, $zero, 4
-	bltu	$a3, $a7, .LBB14_16
+	ori	$a3, $zero, 4
+	bltu	$a7, $a3, .LBB14_16
 # %bb.15:                               # %vector.memcheck58
-	add.d	$a7, $a2, $a1
-	sub.d	$a7, $a0, $a7
-	addi.d	$t0, $a7, 144
-	ori	$a7, $zero, 16
-	bgeu	$t0, $a7, .LBB14_22
+	add.d	$a3, $a2, $a1
+	sub.d	$a3, $a0, $a3
+	addi.d	$t0, $a3, 144
+	ori	$a3, $zero, 16
+	bgeu	$t0, $a3, .LBB14_22
 .LBB14_16:
-	move	$a7, $zero
+	move	$a3, $zero
 	move	$t0, $a2
 .LBB14_17:                              # %vec.epilog.scalar.ph.preheader
 	srli.d	$a2, $a5, 6
 	add.d	$a1, $a1, $t0
-	add.d	$a0, $a7, $a0
+	add.d	$a0, $a3, $a0
 	addi.d	$a0, $a0, 144
 	andi	$a2, $a2, 1
 	add.d	$a2, $a6, $a2
-	sub.d	$a2, $a2, $a7
+	sub.d	$a2, $a2, $a3
 	.p2align	4, , 16
 .LBB14_18:                              # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -1422,26 +1421,25 @@ _ZN7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZN7NCrypto7NSevenZ
 	beq	$a3, $t2, .LBB14_13
 	b	.LBB14_9
 .LBB14_22:                              # %vector.main.loop.iter.check
-	bgeu	$a3, $a7, .LBB14_24
+	bgeu	$a7, $a3, .LBB14_24
 # %bb.23:
-	move	$a7, $zero
+	move	$a3, $zero
 	b	.LBB14_26
 .LBB14_24:                              # %vector.ph64
 	vldx	$vr0, $a1, $a2
-	addi.d	$t0, $a0, 144
-	andi	$a7, $a3, 16
-	vst	$vr0, $t0, 0
-	beq	$a7, $a3, .LBB14_19
+	andi	$a3, $a7, 16
+	vst	$vr0, $a0, 144
+	beq	$a3, $a7, .LBB14_19
 # %bb.25:                               # %vec.epilog.iter.check
-	andi	$t0, $a3, 12
+	andi	$t0, $a7, 12
 	beqz	$t0, .LBB14_29
 .LBB14_26:                              # %vec.epilog.ph
-	move	$t2, $a7
-	andi	$a7, $a3, 28
-	add.d	$t0, $a2, $a7
+	move	$t2, $a3
+	andi	$a3, $a7, 28
+	add.d	$t0, $a2, $a3
 	add.d	$a2, $a2, $t2
 	add.d	$a2, $a1, $a2
-	sub.d	$t1, $t2, $a7
+	sub.d	$t1, $t2, $a3
 	add.d	$t2, $t2, $a0
 	addi.d	$t2, $t2, 144
 	.p2align	4, , 16
@@ -1454,10 +1452,10 @@ _ZN7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZN7NCrypto7NSevenZ
 	addi.d	$t2, $t2, 4
 	bnez	$t1, .LBB14_27
 # %bb.28:                               # %vec.epilog.middle.block
-	bne	$a7, $a3, .LBB14_17
+	bne	$a3, $a7, .LBB14_17
 	b	.LBB14_19
 .LBB14_29:
-	add.d	$t0, $a2, $a7
+	add.d	$t0, $a2, $a3
 	b	.LBB14_17
 .Lfunc_end14:
 	.size	_ZN7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj, .Lfunc_end14-_ZN7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj
@@ -1474,11 +1472,10 @@ _ZThn176_N7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZThn176_N7N
 	beqz	$a2, .LBB15_2
 # %bb.1:
 	ld.bu	$a5, $a1, 0
-	addi.d	$a3, $a0, -112
 	andi	$a4, $a5, 63
-	ori	$a6, $zero, 64
-	st.w	$a4, $a3, 0
-	bgeu	$a5, $a6, .LBB15_3
+	ori	$a3, $zero, 64
+	st.w	$a4, $a0, -112
+	bgeu	$a5, $a3, .LBB15_3
 .LBB15_2:
 	move	$a0, $zero
 	ret
@@ -1587,9 +1584,8 @@ _ZThn176_N7NCrypto7NSevenZ8CDecoder21SetDecoderProperties2EPKhj: # @_ZThn176_N7N
 	b	.LBB15_26
 .LBB15_24:                              # %vector.ph11
 	vldx	$vr0, $a1, $a2
-	addi.d	$t0, $a0, -32
 	andi	$a7, $a3, 16
-	vst	$vr0, $t0, 0
+	vst	$vr0, $a0, -32
 	beq	$a7, $a3, .LBB15_19
 # %bb.25:                               # %vec.epilog.iter.check
 	andi	$t0, $a3, 12
@@ -3560,7 +3556,7 @@ GCC_except_table41:
 	.type	_ZN7NCrypto7NSevenZ10CBaseCoderD0Ev,@function
 _ZN7NCrypto7NSevenZ10CBaseCoderD0Ev:    # @_ZN7NCrypto7NSevenZ10CBaseCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end42:
 	.size	_ZN7NCrypto7NSevenZ10CBaseCoderD0Ev, .Lfunc_end42-_ZN7NCrypto7NSevenZ10CBaseCoderD0Ev
                                         # -- End function
@@ -3678,7 +3674,7 @@ GCC_except_table43:
 	.type	_ZThn8_N7NCrypto7NSevenZ10CBaseCoderD0Ev,@function
 _ZThn8_N7NCrypto7NSevenZ10CBaseCoderD0Ev: # @_ZThn8_N7NCrypto7NSevenZ10CBaseCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end44:
 	.size	_ZThn8_N7NCrypto7NSevenZ10CBaseCoderD0Ev, .Lfunc_end44-_ZThn8_N7NCrypto7NSevenZ10CBaseCoderD0Ev
                                         # -- End function

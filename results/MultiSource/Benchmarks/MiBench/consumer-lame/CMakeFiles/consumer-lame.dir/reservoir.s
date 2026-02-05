@@ -26,16 +26,17 @@ ResvFrameBegin:                         # @ResvFrameBegin
 	or	$a4, $a4, $a5
 	ld.w	$a5, $a0, 200
 	lu12i.w	$a6, 1
+	ori	$a7, $a6, 3585
 	ld.w	$a0, $a0, 72
+	slt	$a7, $a3, $a7
 	ori	$a6, $a6, 3584
-	slt	$a7, $a6, $a3
 	sub.w	$a3, $a6, $a3
 	sltui	$a0, $a0, 1
 	slt	$a6, $a3, $a4
 	masknez	$a4, $a4, $a6
 	maskeqz	$a3, $a3, $a6
 	or	$a3, $a3, $a4
-	masknez	$a3, $a3, $a7
+	maskeqz	$a3, $a3, $a7
 	maskeqz	$a3, $a3, $a0
 	pcalau12i	$a4, %pc_hi20(ResvMax)
 	mul.d	$a0, $a5, $a2
@@ -132,7 +133,7 @@ ResvFrameEnd:                           # @ResvFrameEnd
 	pcalau12i	$a5, %pc_hi20(ResvMax)
 	ld.w	$a5, $a5, %pc_lo12(ResvMax)
 	sltui	$a0, $a0, 1
-	and	$a0, $a2, $a0
+	and	$a0, $a0, $a2
 	add.w	$a0, $a4, $a0
 	sub.d	$a2, $a0, $a5
 	slli.d	$a4, $a2, 32

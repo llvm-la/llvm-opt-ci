@@ -1212,39 +1212,37 @@ show_move:                              # @show_move
 	.type	show_proceed,@function
 show_proceed:                           # @show_proceed
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$s0, $a0, 0
 	ld.d	$s7, $a0, 8
 	st.w	$zero, $a0, 356
-	addi.d	$s1, $a0, 320
-	addi.w	$a0, $zero, -14
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	addi.w	$s8, $zero, -14
 	ori	$a0, $zero, 2048
 	vreplgr2vr.d	$vr0, $a0
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	lu12i.w	$a0, -1
 	vreplgr2vr.d	$vr0, $a0
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	lu52i.d	$a0, $zero, 1011
 	movgr2fr.d	$fs0, $a0
 	pcalau12i	$a0, %pc_hi20(continue_show_update)
-	addi.d	$s8, $a0, %pc_lo12(continue_show_update)
+	addi.d	$s1, $a0, %pc_lo12(continue_show_update)
 	move	$s2, $zero
 	addi.w	$a0, $zero, -23
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 .LBB24_1:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB24_6 Depth 2
 	ld.w	$a0, $fp, 56
@@ -1295,7 +1293,7 @@ show_proceed:                           # @show_proceed
 	vld	$vr0, $s4, 32
 	ld.w	$a0, $fp, 40
 	ld.d	$s3, $fp, 0
-	vst	$vr0, $s1, 0
+	vst	$vr0, $fp, 320
 	beqz	$a0, .LBB24_12
 # %bb.11:                               #   in Loop: Header=BB24_6 Depth=2
 	fld.s	$fa0, $fp, 32
@@ -1405,9 +1403,9 @@ show_proceed:                           # @show_proceed
 	pcaddu18i	$ra, %call36(gs_translate_to_fixed)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $s0, 120
-	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
-	vadd.d	$vr0, $vr0, $vr1
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
+	vadd.d	$vr0, $vr0, $vr1
+	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	vand.v	$vr0, $vr0, $vr1
 	vpickve2gr.d	$a0, $vr0, 0
 	movgr2fr.d	$fa1, $a0
@@ -1426,7 +1424,7 @@ show_proceed:                           # @show_proceed
 	ld.d	$a4, $a2, 176
 	fst.s	$fa0, $s0, 104
 	st.w	$zero, $fp, 352
-	st.d	$s8, $fp, 360
+	st.d	$s1, $fp, 360
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a3, $s3
@@ -1519,30 +1517,30 @@ show_proceed:                           # @show_proceed
 	ori	$a0, $zero, 2
 	b	.LBB24_41
 .LBB24_39:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	move	$a0, $s8
 	b	.LBB24_41
 .LBB24_40:
 	move	$a0, $zero
 .LBB24_41:                              # %.thread
-	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .LBB24_42:
 	ori	$a0, $zero, 1
 	b	.LBB24_41
 .LBB24_43:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB24_41
 .Lfunc_end24:
 	.size	show_proceed, .Lfunc_end24-show_proceed
@@ -1834,8 +1832,7 @@ stringwidth_proceed:                    # @stringwidth_proceed
 # %bb.11:                               #   in Loop: Header=BB29_7 Depth=1
 	vld	$vr0, $a0, 32
 	ld.d	$a0, $fp, 0
-	addi.d	$a1, $fp, 320
-	vst	$vr0, $a1, 0
+	vst	$vr0, $fp, 320
 	ld.d	$a1, $a0, 256
 	ld.bu	$a0, $a1, 136
 	ori	$a2, $zero, 2

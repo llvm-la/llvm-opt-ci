@@ -55,23 +55,19 @@ NumberOfBitsNeeded:                     # @NumberOfBitsNeeded
 	.type	ReverseBits,@function
 ReverseBits:                            # @ReverseBits
 # %bb.0:
-	beqz	$a1, .LBB2_4
-# %bb.1:                                # %.lr.ph.preheader
 	move	$a2, $zero
+	beqz	$a1, .LBB2_2
 	.p2align	4, , 16
-.LBB2_2:                                # %.lr.ph
+.LBB2_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a3, $a0
+	move	$a3, $a2
+	move	$a2, $a0
 	bstrpick.d	$a0, $a0, 31, 1
-	bstrins.d	$a3, $a2, 63, 1
 	addi.w	$a1, $a1, -1
-	move	$a2, $a3
-	bnez	$a1, .LBB2_2
-# %bb.3:                                # %._crit_edge
-	addi.w	$a0, $a3, 0
-	ret
-.LBB2_4:
-	addi.w	$a0, $zero, 0
+	bstrins.d	$a2, $a3, 63, 1
+	bnez	$a1, .LBB2_1
+.LBB2_2:                                # %._crit_edge
+	addi.w	$a0, $a2, 0
 	ret
 .Lfunc_end2:
 	.size	ReverseBits, .Lfunc_end2-ReverseBits

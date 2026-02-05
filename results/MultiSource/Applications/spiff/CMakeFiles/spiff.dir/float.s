@@ -234,55 +234,51 @@ F_atof:                                 # @F_atof
 	sltui	$a1, $a1, 1
 	add.d	$a2, $a1, $a2
 	ldx.bu	$a1, $s3, $a2
-	add.d	$a2, $s3, $a2
+	add.d	$s3, $s3, $a2
 	move	$s4, $s5
 	b	.LBB1_16
 .LBB1_14:
 	move	$s5, $zero
 	move	$s4, $zero
 .LBB1_15:                               # %.loopexit
-	add.d	$a2, $s3, $a2
+	add.d	$s3, $s3, $a2
 .LBB1_16:                               # %.loopexit
-	ext.w.b	$a3, $a1
-	slli.d	$a3, $a3, 1
-	ldx.hu	$a3, $a0, $a3
-	slli.d	$a3, $a3, 52
-	bltz	$a3, .LBB1_18
-# %bb.17:
-	move	$s3, $a2
-	b	.LBB1_20
-.LBB1_18:                               # %.lr.ph90.preheader
-	bstrpick.d	$a3, $s5, 31, 0
-	addi.d	$a4, $sp, 8
-	add.d	$a3, $a3, $a4
-	addi.d	$a3, $a3, 1
+	ext.w.b	$a2, $a1
+	slli.d	$a2, $a2, 1
+	ldx.hu	$a2, $a0, $a2
+	slli.d	$a2, $a2, 52
+	bgez	$a2, .LBB1_19
+# %bb.17:                               # %.lr.ph90.preheader
+	bstrpick.d	$a2, $s5, 31, 0
+	addi.d	$a3, $sp, 8
+	add.d	$a2, $a2, $a3
+	addi.d	$a2, $a2, 1
 	.p2align	4, , 16
-.LBB1_19:                               # %.lr.ph90
+.LBB1_18:                               # %.lr.ph90
                                         # =>This Inner Loop Header: Depth=1
-	st.b	$a1, $a3, -1
-	st.b	$zero, $a3, 0
-	ld.b	$a1, $a2, 1
-	slli.d	$a4, $a1, 1
-	ldx.hu	$a4, $a0, $a4
-	addi.d	$s3, $a2, 1
+	st.b	$a1, $a2, -1
+	st.b	$zero, $a2, 0
+	ld.b	$a1, $s3, 1
+	slli.d	$a3, $a1, 1
+	ldx.hu	$a3, $a0, $a3
+	addi.d	$s3, $s3, 1
 	andi	$a1, $a1, 255
-	addi.d	$a3, $a3, 1
-	slli.d	$a4, $a4, 52
+	addi.d	$a2, $a2, 1
+	slli.d	$a3, $a3, 52
 	addi.w	$s5, $s5, 1
-	move	$a2, $s3
-	bltz	$a4, .LBB1_19
-.LBB1_20:                               # %._crit_edge91
+	bltz	$a3, .LBB1_18
+.LBB1_19:                               # %._crit_edge91
 	addi.d	$a0, $a1, -68
 	ori	$a1, $zero, 33
-	bltu	$a1, $a0, .LBB1_23
-# %bb.21:                               # %._crit_edge91
+	bltu	$a1, $a0, .LBB1_22
+# %bb.20:                               # %._crit_edge91
 	ori	$a1, $zero, 1
 	sll.d	$a0, $a1, $a0
 	ori	$a1, $zero, 3
 	lu32i.d	$a1, 3
 	and	$a0, $a0, $a1
-	beqz	$a0, .LBB1_23
-# %bb.22:
+	beqz	$a0, .LBB1_22
+# %bb.21:
 	addi.d	$s3, $s3, 1
 	ori	$a2, $zero, 10
 	move	$a0, $s3
@@ -290,31 +286,31 @@ F_atof:                                 # @F_atof
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
 	add.d	$s4, $s4, $a0
-.LBB1_23:
-	beqz	$s1, .LBB1_31
-# %bb.24:
+.LBB1_22:
+	beqz	$s1, .LBB1_30
+# %bb.23:
 	ld.bu	$a0, $s3, 0
 	ori	$a1, $zero, 45
-	beq	$a0, $a1, .LBB1_26
-# %bb.25:
+	beq	$a0, $a1, .LBB1_25
+# %bb.24:
 	ori	$a1, $zero, 43
-	bne	$a0, $a1, .LBB1_27
-.LBB1_26:
+	bne	$a0, $a1, .LBB1_26
+.LBB1_25:
 	addi.d	$s3, $s3, 1
-.LBB1_27:
+.LBB1_26:
 	ld.d	$a0, $s2, 0
 	.p2align	4, , 16
-.LBB1_28:                               # =>This Inner Loop Header: Depth=1
+.LBB1_27:                               # =>This Inner Loop Header: Depth=1
 	ld.b	$a1, $s3, 0
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a2, $a0, $a2
 	slli.d	$a2, $a2, 52
 	addi.d	$s3, $s3, 1
-	bltz	$a2, .LBB1_28
-# %bb.29:
+	bltz	$a2, .LBB1_27
+# %bb.28:
 	andi	$a0, $a1, 255
-	beqz	$a0, .LBB1_31
-# %bb.30:
+	beqz	$a0, .LBB1_30
+# %bb.29:
 	pcalau12i	$a0, %got_pc_hi20(Z_err_buf)
 	ld.d	$s1, $a0, %got_pc_lo12(Z_err_buf)
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -326,28 +322,28 @@ F_atof:                                 # @F_atof
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(Z_fatal)
 	jirl	$ra, $ra, 0
-.LBB1_31:
-	beqz	$s5, .LBB1_35
-# %bb.32:                               # %.lr.ph97.preheader
+.LBB1_30:
+	beqz	$s5, .LBB1_34
+# %bb.31:                               # %.lr.ph97.preheader
 	move	$a0, $zero
 	bstrpick.d	$a1, $s5, 31, 0
 	addi.d	$a2, $sp, 8
 	ori	$a3, $zero, 48
 	.p2align	4, , 16
-.LBB1_33:                               # %.lr.ph97
+.LBB1_32:                               # %.lr.ph97
                                         # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a4, $a0, $a2
-	bne	$a4, $a3, .LBB1_36
-# %bb.34:                               #   in Loop: Header=BB1_33 Depth=1
+	bne	$a4, $a3, .LBB1_35
+# %bb.33:                               #   in Loop: Header=BB1_32 Depth=1
 	addi.d	$a0, $a0, 1
-	bne	$a1, $a0, .LBB1_33
-.LBB1_35:                               # %._crit_edge98
+	bne	$a1, $a0, .LBB1_32
+.LBB1_34:                               # %._crit_edge98
 	ld.d	$a0, $fp, 8
 	ori	$a1, $zero, 48
 	st.h	$a1, $a0, 0
 	st.d	$zero, $fp, 0
-	b	.LBB1_37
-.LBB1_36:
+	b	.LBB1_36
+.LBB1_35:
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(S_trimzeros)
 	jirl	$ra, $ra, 0
@@ -356,7 +352,7 @@ F_atof:                                 # @F_atof
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	st.w	$s4, $fp, 0
-.LBB1_37:
+.LBB1_36:
 	move	$a0, $fp
 	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
@@ -597,15 +593,14 @@ F_floatsub:                             # @F_floatsub
 	bne	$a2, $a0, .LBB2_32
 # %bb.30:                               # %.lr.ph79.preheader
 	pcalau12i	$a1, %pc_hi20(F_floatsub.diff)
-	addi.d	$a2, $a1, %pc_lo12(F_floatsub.diff)
+	addi.d	$a1, $a1, %pc_lo12(F_floatsub.diff)
 	.p2align	4, , 16
 .LBB2_31:                               # %.lr.ph79
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a3, $a2, 1
-	addi.d	$a1, $a2, 1
+	ld.bu	$a2, $a1, 1
+	addi.d	$a1, $a1, 1
 	addi.d	$fp, $fp, -1
-	move	$a2, $a1
-	beq	$a3, $a0, .LBB2_31
+	beq	$a2, $a0, .LBB2_31
 .LBB2_32:                               # %._crit_edge80
 	ld.d	$s0, $s5, %pc_lo12(F_floatsub.result)
 	ld.d	$a0, $s0, 8
@@ -1493,15 +1488,14 @@ F_floatmagadd:                          # @F_floatmagadd
 	bne	$a1, $a0, .LBB7_37
 # %bb.35:                               # %.lr.ph.preheader
 	pcalau12i	$a1, %pc_hi20(F_floatmagadd.man1)
-	addi.d	$a1, $a1, %pc_lo12(F_floatmagadd.man1)
+	addi.d	$fp, $a1, %pc_lo12(F_floatmagadd.man1)
 	.p2align	4, , 16
 .LBB7_36:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $a1, 1
-	addi.d	$fp, $a1, 1
+	ld.bu	$a1, $fp, 1
+	addi.d	$fp, $fp, 1
 	addi.d	$s1, $s1, -1
-	move	$a1, $fp
-	beq	$a2, $a0, .LBB7_36
+	beq	$a1, $a0, .LBB7_36
 .LBB7_37:                               # %._crit_edge
 	ld.d	$s0, $s4, %pc_lo12(F_floatmagadd.result)
 	ld.d	$a0, $s0, 8

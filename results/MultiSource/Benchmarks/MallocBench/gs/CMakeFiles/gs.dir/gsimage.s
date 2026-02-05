@@ -7,44 +7,42 @@ gs_image_init:                          # @gs_image_init
 # %bb.0:
 	move	$a7, $a1
 	ld.bu	$a1, $a1, 436
-	beqz	$a1, .LBB0_3
+	beqz	$a1, .LBB0_2
 # %bb.1:
 	addi.w	$a1, $zero, -21
+	b	.LBB0_9
 .LBB0_2:
-	move	$a0, $a1
-	ret
-.LBB0_3:
-	addi.w	$a4, $a4, -1
-	ori	$t0, $zero, 7
+	addi.w	$t0, $a4, -1
+	xor	$t1, $a4, $t0
 	addi.w	$a1, $zero, -15
-	bltu	$t0, $a4, .LBB0_2
+	bgeu	$t0, $t1, .LBB0_9
+# %bb.3:                                # %.split
+	ctz.d	$t0, $a4
+	ori	$t1, $zero, 3
+	bgeu	$t0, $t1, .LBB0_5
 # %bb.4:
-	ori	$t0, $zero, 139
-	srl.d	$t0, $t0, $a4
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB0_2
-# %bb.5:                                # %switch.lookup
-	addi.w	$a5, $a5, 4
-	ori	$t0, $zero, 8
-	bltu	$t0, $a5, .LBB0_2
-# %bb.6:                                # %switch.lookup
-	ori	$t0, $zero, 419
-	srl.d	$t0, $t0, $a5
-	andi	$t0, $t0, 1
-	beqz	$t0, .LBB0_2
-# %bb.7:                                # %switch.lookup21
+	srai.d	$t0, $a4, 1
+	b	.LBB0_6
+.LBB0_5:                                # %.split
+	bne	$t0, $t1, .LBB0_9
+.LBB0_6:
+	addi.w	$a4, $a5, 4
+	ori	$a5, $zero, 8
+	bltu	$a5, $a4, .LBB0_9
+# %bb.7:
+	ori	$a5, $zero, 419
+	srl.d	$a5, $a5, $a4
+	andi	$a5, $a5, 1
+	beqz	$a5, .LBB0_9
+# %bb.8:                                # %switch.lookup
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	slli.d	$a1, $a4, 2
 	pcalau12i	$a4, %pc_hi20(.Lswitch.table.gs_image_init)
 	addi.d	$a4, $a4, %pc_lo12(.Lswitch.table.gs_image_init)
-	ldx.w	$t0, $a4, $a1
-	slli.d	$a1, $a5, 2
-	pcalau12i	$a4, %pc_hi20(.Lswitch.table.gs_image_init.1)
-	addi.d	$a4, $a4, %pc_lo12(.Lswitch.table.gs_image_init.1)
 	ldx.w	$a4, $a4, $a1
-	pcalau12i	$a5, %pc_hi20(.Lswitch.table.gs_image_init.2)
-	addi.d	$a5, $a5, %pc_lo12(.Lswitch.table.gs_image_init.2)
+	pcalau12i	$a5, %pc_hi20(.Lswitch.table.gs_image_init.1)
+	addi.d	$a5, $a5, %pc_lo12(.Lswitch.table.gs_image_init.1)
 	ld.d	$t1, $a7, 448
 	ldx.w	$a5, $a5, $a1
 	ld.d	$a1, $t1, 24
@@ -58,6 +56,9 @@ gs_image_init:                          # @gs_image_init
 	jirl	$ra, $ra, 0
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
+	ret
+.LBB0_9:
+	move	$a0, $a1
 	ret
 .Lfunc_end0:
 	.size	gs_image_init, .Lfunc_end0-gs_image_init
@@ -960,17 +961,17 @@ image_render_direct:                    # @image_render_direct
 	move	$s0, $a2
 	move	$fp, $a1
 	ld.d	$t1, $a0, 160
-	ld.d	$a2, $s6, 8
-	add.d	$a3, $a4, $a5
+	ld.d	$a3, $s6, 8
+	add.d	$a2, $a4, $a5
 	srli.d	$a7, $a5, 12
-	srli.d	$a3, $a3, 12
-	ld.d	$s1, $a2, 72
+	srli.d	$a2, $a2, 12
+	ld.d	$s1, $a3, 72
 	ld.d	$s7, $a0, 184
 	ldptr.d	$t4, $a0, 8344
-	sub.w	$a2, $a3, $a7
+	sub.w	$a3, $a2, $a7
 	ori	$s4, $zero, 1
 	srli.d	$a0, $t1, 12
-	bne	$a2, $s4, .LBB12_2
+	bne	$a3, $s4, .LBB12_2
 # %bb.1:
 	addi.d	$a2, $s0, 7
 	bstrpick.d	$a3, $a2, 31, 3
@@ -987,20 +988,21 @@ image_render_direct:                    # @image_render_direct
 	move	$s4, $s2
 	b	.LBB12_5
 .LBB12_2:
-	addi.w	$a4, $a3, 0
+	addi.w	$a4, $a2, 0
 	addi.w	$a5, $a7, 0
 	beq	$a4, $a5, .LBB12_5
 # %bb.3:                                # %.lr.ph
-	slti	$a4, $a2, 0
+	slti	$a4, $a3, 0
+	srai.d	$a5, $a3, 31
+	xor	$a3, $a3, $a5
+	sub.d	$a3, $a3, $a5
 	masknez	$a5, $a7, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$s8, $a3, $a5
-	addi.d	$a3, $s0, 7
-	bstrpick.d	$a4, $a3, 31, 3
-	srai.d	$a3, $a2, 31
-	xor	$a2, $a2, $a3
-	sub.w	$s5, $a3, $a2
-	addi.w	$a2, $a4, 0
+	maskeqz	$a2, $a2, $a4
+	or	$s8, $a2, $a5
+	addi.d	$a2, $s0, 7
+	bstrpick.d	$a2, $a2, 31, 3
+	sub.w	$s5, $zero, $a3
+	addi.w	$a2, $a2, 0
 	st.d	$a2, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$s3, $a0, 0
 	ori	$s4, $zero, 1
@@ -1296,7 +1298,7 @@ image_render_mono:                      # @image_render_mono
 .LBB13_37:                              #   in Loop: Header=BB13_15 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	beqz	$a0, .LBB13_45
-# %bb.38:                               # %.thread239
+# %bb.38:                               # %.thread241
                                         #   in Loop: Header=BB13_15 Depth=1
 	addi.d	$a0, $sp, 184
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
@@ -1315,7 +1317,7 @@ image_render_mono:                      # @image_render_mono
 	pcaddu18i	$ra, %call36(gx_path_add_pgram)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB13_62
-# %bb.39:                               # %.thread244
+# %bb.39:                               # %.thread245
                                         #   in Loop: Header=BB13_15 Depth=1
 	addi.d	$a0, $sp, 184
 	addi.d	$a1, $sp, 152
@@ -1674,21 +1676,21 @@ image_init.spread_procs:
 	.size	image_init.spread_procs, 32
 
 	.type	.Lswitch.table.gs_image_init,@object # @switch.table.gs_image_init
-	.section	.rodata.cst32,"aM",@progbits,32
+	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .Lswitch.table.gs_image_init:
-	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.word	3                               # 0x3
+	.space	4
+	.space	4
+	.space	4
 	.word	1                               # 0x1
 	.space	4
-	.word	2                               # 0x2
-	.space	4
-	.space	4
-	.space	4
 	.word	3                               # 0x3
-	.size	.Lswitch.table.gs_image_init, 32
+	.word	4                               # 0x4
+	.size	.Lswitch.table.gs_image_init, 36
 
 	.type	.Lswitch.table.gs_image_init.1,@object # @switch.table.gs_image_init.1
-	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .Lswitch.table.gs_image_init.1:
 	.word	4                               # 0x4
@@ -1698,23 +1700,9 @@ image_init.spread_procs:
 	.space	4
 	.word	1                               # 0x1
 	.space	4
-	.word	3                               # 0x3
-	.word	4                               # 0x4
+	.word	1                               # 0x1
+	.word	1                               # 0x1
 	.size	.Lswitch.table.gs_image_init.1, 36
-
-	.type	.Lswitch.table.gs_image_init.2,@object # @switch.table.gs_image_init.2
-	.p2align	2, 0x0
-.Lswitch.table.gs_image_init.2:
-	.word	4                               # 0x4
-	.word	3                               # 0x3
-	.space	4
-	.space	4
-	.space	4
-	.word	1                               # 0x1
-	.space	4
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.size	.Lswitch.table.gs_image_init.2, 36
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

@@ -183,60 +183,51 @@ gaussianBlurKernel:                     # @gaussianBlurKernel
                                         #   Parent Loop BB0_5 Depth=1
                                         #     Parent Loop BB0_6 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$t6, $t5, -16
-	movgr2fr.w	$fa2, $t6
+	fld.s	$fa2, $t5, -16
 	fldx.s	$fa3, $t4, $a6
 	ffint.s.w	$fa2, $fa2
 	add.d	$t6, $a6, $t4
-	ld.w	$t7, $t5, -12
+	fld.s	$fa4, $t5, -12
 	fmul.s	$fa2, $fa3, $fa2
+	fld.s	$fa3, $t6, 4
 	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 4
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, -8
-	fmul.s	$fa2, $fa2, $fa3
+	ffint.s.w	$fa2, $fa4
+	fld.s	$fa4, $t5, -8
+	fmul.s	$fa2, $fa3, $fa2
+	fld.s	$fa3, $t6, 8
 	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 8
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, -4
-	fmul.s	$fa2, $fa2, $fa3
+	ffint.s.w	$fa2, $fa4
+	fld.s	$fa4, $t5, -4
+	fmul.s	$fa2, $fa3, $fa2
+	fld.s	$fa3, $t6, 12
 	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 12
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, 0
-	fmul.s	$fa2, $fa2, $fa3
+	ffint.s.w	$fa2, $fa4
+	fld.s	$fa4, $t5, 0
+	fmul.s	$fa2, $fa3, $fa2
+	fld.s	$fa3, $t6, 16
 	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 16
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, 4
-	fmul.s	$fa2, $fa2, $fa3
+	ffint.s.w	$fa2, $fa4
+	fld.s	$fa4, $t5, 4
+	fmul.s	$fa2, $fa3, $fa2
+	fld.s	$fa3, $t6, 20
 	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 20
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, 8
-	fmul.s	$fa2, $fa2, $fa3
+	ffint.s.w	$fa2, $fa4
+	fld.s	$fa4, $t5, 8
+	fmul.s	$fa2, $fa3, $fa2
+	fld.s	$fa3, $t6, 24
 	fadd.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $t6, 24
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, 12
-	fmul.s	$fa2, $fa2, $fa3
+	ffint.s.w	$fa2, $fa4
+	fld.s	$fa4, $t5, 12
+	fmul.s	$fa2, $fa3, $fa2
 	fadd.s	$fa1, $fa1, $fa2
 	fld.s	$fa2, $t6, 28
-	movgr2fr.w	$fa3, $t7
-	ffint.s.w	$fa3, $fa3
-	ld.w	$t7, $t5, 16
+	ffint.s.w	$fa3, $fa4
+	fld.s	$fa4, $t5, 16
+	fld.s	$fa5, $t6, 32
 	fmul.s	$fa2, $fa2, $fa3
-	fld.s	$fa3, $t6, 32
 	fadd.s	$fa1, $fa1, $fa2
-	movgr2fr.w	$fa2, $t7
-	ffint.s.w	$fa2, $fa2
-	fmul.s	$fa2, $fa3, $fa2
+	ffint.s.w	$fa2, $fa4
+	fmul.s	$fa2, $fa5, $fa2
 	fadd.s	$fa1, $fa1, $fa2
 	addi.d	$t4, $t4, 36
 	add.d	$t5, $t5, $a4

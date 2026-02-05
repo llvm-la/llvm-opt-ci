@@ -269,26 +269,23 @@ arienco_done_encoding:                  # @arienco_done_encoding
 	st.d	$a3, $a4, 1960
 	beq	$a1, $a2, .LBB6_19
 # %bb.13:                               # %.lr.ph99
-	ld.w	$a2, $a0, 8
-	ori	$a3, $zero, 9
-	ori	$a4, $zero, 1
+	ld.w	$a3, $a0, 8
 	.p2align	4, , 16
 .LBB6_14:                               # =>This Inner Loop Header: Depth=1
-	move	$a5, $a1
-	slli.d	$a2, $a2, 1
 	addi.w	$a1, $a1, -1
-	beq	$a5, $a3, .LBB6_18
+	slli.d	$a3, $a3, 1
+	beq	$a1, $a2, .LBB6_18
 # %bb.15:                               #   in Loop: Header=BB6_14 Depth=1
-	bne	$a5, $a4, .LBB6_14
+	bnez	$a1, .LBB6_14
 # %bb.16:
-	ld.d	$a3, $a0, 32
-	st.w	$a2, $a0, 8
+	ld.d	$a2, $a0, 32
+	st.w	$a3, $a0, 8
 	st.w	$a1, $a0, 12
-	ld.w	$a1, $a3, 0
+	ld.w	$a1, $a2, 0
 	ld.d	$a4, $a0, 24
 	addi.d	$a5, $a1, 1
-	st.w	$a5, $a3, 0
-	stx.b	$a2, $a4, $a1
+	st.w	$a5, $a2, 0
+	stx.b	$a3, $a4, $a1
 	ld.w	$a1, $a0, 40
 	ori	$a2, $zero, 8
 	st.w	$a2, $a0, 12
@@ -309,7 +306,7 @@ arienco_done_encoding:                  # @arienco_done_encoding
 	st.w	$a2, $a0, 44
 	b	.LBB6_19
 .LBB6_18:                               # %._crit_edge100.loopexit
-	st.w	$a2, $a0, 8
+	st.w	$a3, $a0, 8
 	st.w	$a1, $a0, 12
 .LBB6_19:                               # %._crit_edge100
 	ld.w	$a1, $a0, 44

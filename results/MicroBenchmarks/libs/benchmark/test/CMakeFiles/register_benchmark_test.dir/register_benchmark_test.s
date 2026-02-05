@@ -8305,16 +8305,14 @@ _GLOBAL__sub_I_register_benchmark_test.cc: # @_GLOBAL__sub_I_register_benchmark_
 .Ltmp316:                               # EH_LABEL
 	ld.d	$a2, $sp, 200
 	move	$fp, $a0
-	bne	$a2, $s2, .LBB48_107
-# %bb.106:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i25
-	bnez	$s4, .LBB48_115
-	b	.LBB48_117
-.LBB48_107:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i24
+	beq	$a2, $s2, .LBB48_107
+# %bb.106:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i24
 	ld.d	$a0, $sp, 216
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB48_107:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i25
 	bnez	$s4, .LBB48_115
 	b	.LBB48_117
 .LBB48_108:
@@ -8332,16 +8330,14 @@ _GLOBAL__sub_I_register_benchmark_test.cc: # @_GLOBAL__sub_I_register_benchmark_
 .Ltmp276:                               # EH_LABEL
 	ld.d	$a2, $sp, 200
 	move	$fp, $a0
-	bne	$a2, $s2, .LBB48_114
-# %bb.113:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s6, .LBB48_115
-	b	.LBB48_117
-.LBB48_114:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beq	$a2, $s2, .LBB48_114
+# %bb.113:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 216
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB48_114:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s6, .LBB48_117
 .LBB48_115:
 	ori	$a1, $zero, 232

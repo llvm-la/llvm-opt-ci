@@ -871,11 +871,11 @@ symbexec:                               # @symbexec
 	ori	$t1, $zero, 30
 	bne	$a3, $t1, .LBB10_85
 # %bb.9:
-	addi.w	$s1, $a6, -1
+	addi.w	$s6, $a6, -1
 	blez	$a1, .LBB10_86
 # %bb.10:                               # %.lr.ph281
-	andi	$ra, $t0, 6
-	addi.d	$s7, $a7, 4
+	andi	$s8, $t0, 6
+	addi.d	$s1, $a7, 4
 	ori	$t3, $zero, 37
 	pcalau12i	$a3, %pc_hi20(luaP_opmodes)
 	addi.d	$t4, $a3, %pc_lo12(luaP_opmodes)
@@ -883,76 +883,80 @@ symbexec:                               # @symbexec
 	addi.d	$t5, $a3, %pc_lo12(.LJTI10_0)
 	pcalau12i	$a3, %pc_hi20(.LJTI10_1)
 	addi.d	$t6, $a3, %pc_lo12(.LJTI10_1)
+	lu12i.w	$t7, -4
+	lu32i.d	$t7, 0
 	pcalau12i	$a3, %pc_hi20(.LJTI10_2)
-	addi.d	$t7, $a3, %pc_lo12(.LJTI10_2)
-	move	$t8, $zero
-	ori	$s0, $zero, 256
+	addi.d	$t8, $a3, %pc_lo12(.LJTI10_2)
+	move	$fp, $zero
 	lu12i.w	$a3, 2044
-	ori	$s2, $a3, 63
-	ori	$s3, $zero, 34
-	move	$t0, $s1
+	ori	$s3, $a3, 63
+	ori	$s4, $zero, 34
+	move	$t0, $s6
 	b	.LBB10_13
 .LBB10_11:                              #   in Loop: Header=BB10_13 Depth=1
 	ld.d	$t0, $a0, 16
-	alsl.d	$t0, $s5, $t0, 4
+	addi.w	$t1, $s0, 0
+	alsl.d	$t0, $t1, $t0, 4
 	ld.w	$t0, $t0, 8
 	ori	$t1, $zero, 4
 	bne	$t0, $t1, .LBB10_85
 .LBB10_12:                              #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$t8, $t8, 1
+	addi.w	$fp, $fp, 1
 	move	$t0, $a3
-	bge	$t8, $a1, .LBB10_87
+	bge	$fp, $a1, .LBB10_87
 .LBB10_13:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB10_25 Depth 2
                                         #     Child Loop BB10_74 Depth 2
-	slli.d	$a3, $t8, 2
-	ldx.wu	$t1, $a7, $a3
-	andi	$fp, $t1, 63
+	slli.d	$a3, $fp, 2
+	ldx.wu	$ra, $a7, $a3
+	andi	$s5, $ra, 63
 	move	$a3, $zero
-	bltu	$t3, $fp, .LBB10_88
+	bltu	$t3, $s5, .LBB10_88
 # %bb.14:                               #   in Loop: Header=BB10_13 Depth=1
-	bstrpick.d	$t2, $t1, 13, 6
-	bgeu	$t2, $a4, .LBB10_88
+	bstrpick.d	$s2, $ra, 13, 6
+	bgeu	$s2, $a4, .LBB10_88
 # %bb.15:                               #   in Loop: Header=BB10_13 Depth=1
-	ldx.bu	$s4, $t4, $fp
-	andi	$a3, $s4, 3
+	ldx.bu	$s7, $t4, $s5
+	andi	$a3, $s7, 3
 	slli.d	$a3, $a3, 2
 	ldx.w	$a3, $t5, $a3
-	add.d	$a3, $t5, $a3
-	move	$s6, $zero
-	move	$s5, $zero
-	jr	$a3
+	move	$t1, $zero
+	move	$s0, $zero
+	add.d	$t2, $t5, $a3
+	addi.w	$a3, $ra, 0
+	jr	$t2
 .LBB10_16:                              #   in Loop: Header=BB10_13 Depth=1
-	bstrpick.d	$a3, $s4, 5, 4
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $t6, $a3
-	add.d	$a3, $t6, $a3
-	srli.d	$s5, $t1, 23
-	jr	$a3
+	bstrpick.d	$t1, $s7, 5, 4
+	slli.d	$t1, $t1, 2
+	ldx.w	$t1, $t6, $t1
+	add.d	$t1, $t6, $t1
+	bstrpick.d	$s0, $a3, 31, 23
+	jr	$t1
 .LBB10_17:                              #   in Loop: Header=BB10_13 Depth=1
-	srli.d	$a3, $t1, 23
-	beqz	$a3, .LBB10_32
+	addi.w	$t1, $s0, 0
+	beqz	$t1, .LBB10_32
 	b	.LBB10_85
 .LBB10_18:                              #   in Loop: Header=BB10_13 Depth=1
-	andi	$a3, $s4, 48
-	srli.d	$s5, $t1, 14
-	ori	$t1, $zero, 48
-	bne	$a3, $t1, .LBB10_29
+	andi	$t1, $s7, 48
+	bstrpick.d	$s0, $a3, 31, 14
+	ori	$a3, $zero, 48
+	bne	$t1, $a3, .LBB10_29
 # %bb.19:                               #   in Loop: Header=BB10_13 Depth=1
-	ld.w	$t1, $a0, 76
-	move	$s6, $zero
+	ld.w	$t2, $a0, 76
+	addi.w	$ra, $s0, 0
+	move	$t1, $zero
 	move	$a3, $zero
-	blt	$s5, $t1, .LBB10_37
+	blt	$ra, $t2, .LBB10_37
 	b	.LBB10_88
 .LBB10_20:                              #   in Loop: Header=BB10_13 Depth=1
-	srli.d	$a3, $t1, 14
+	bstrpick.d	$a3, $a3, 31, 14
 	addu16i.d	$a3, $a3, -2
-	andi	$t1, $s4, 48
-	addi.d	$s5, $a3, 1
+	andi	$t1, $s7, 48
+	addi.d	$s0, $a3, 1
 	ori	$a3, $zero, 32
 	bne	$t1, $a3, .LBB10_29
 # %bb.21:                               #   in Loop: Header=BB10_13 Depth=1
-	add.d	$a3, $t8, $s5
+	add.d	$a3, $fp, $s0
 	addi.w	$t1, $a3, 1
 	move	$a3, $zero
 	bltz	$t1, .LBB10_88
@@ -962,235 +966,244 @@ symbexec:                               # @symbexec
 	beqz	$t1, .LBB10_29
 # %bb.24:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB10_13 Depth=1
-	move	$s0, $s1
-	move	$s1, $s7
-	move	$s7, $ra
+	move	$t3, $s1
+	move	$s1, $s6
+	move	$s6, $s8
 	move	$a3, $zero
-	add.w	$s6, $s5, $t8
-	bstrpick.d	$s8, $t1, 31, 0
+	add.w	$ra, $s0, $fp
+	bstrpick.d	$t2, $t1, 31, 0
 .LBB10_25:                              # %.lr.ph
                                         #   Parent Loop BB10_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.d	$ra, $s6, 2
-	ldx.wu	$ra, $a7, $ra
-	and	$ra, $ra, $s2
-	bne	$ra, $s3, .LBB10_28
+	slli.d	$s8, $ra, 2
+	ldx.wu	$s8, $a7, $s8
+	and	$s8, $s8, $s3
+	bne	$s8, $s4, .LBB10_28
 # %bb.26:                               #   in Loop: Header=BB10_25 Depth=2
 	addi.d	$a3, $a3, 1
-	addi.d	$s8, $s8, -1
-	addi.w	$s6, $s6, -1
-	bnez	$s8, .LBB10_25
+	addi.d	$t2, $t2, -1
+	addi.w	$ra, $ra, -1
+	bnez	$t2, .LBB10_25
 # %bb.27:                               #   in Loop: Header=BB10_13 Depth=1
 	move	$a3, $t1
 .LBB10_28:                              # %._crit_edge
                                         #   in Loop: Header=BB10_13 Depth=1
-	andi	$t1, $a3, 1
-	move	$s6, $zero
+	andi	$t2, $a3, 1
+	move	$t1, $zero
 	move	$a3, $zero
-	move	$ra, $s7
-	move	$s7, $s1
-	move	$s1, $s0
-	ori	$s0, $zero, 256
-	beqz	$t1, .LBB10_37
+	move	$s8, $s6
+	move	$s6, $s1
+	move	$s1, $t3
+	ori	$t3, $zero, 37
+	beqz	$t2, .LBB10_37
 	b	.LBB10_88
 .LBB10_29:                              #   in Loop: Header=BB10_13 Depth=1
-	move	$s6, $zero
+	move	$t1, $zero
 	b	.LBB10_37
 .LBB10_30:                              #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$a3, $t1, 0
 	bltz	$a3, .LBB10_81
 .LBB10_31:                              #   in Loop: Header=BB10_13 Depth=1
-	bgeu	$s5, $a4, .LBB10_85
+	addi.w	$t1, $s0, 0
+	bgeu	$t1, $a4, .LBB10_85
 .LBB10_32:                              # %checkArgMode.exit
                                         #   in Loop: Header=BB10_13 Depth=1
-	bstrpick.d	$a3, $s4, 3, 2
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $t7, $a3
-	bstrpick.d	$s8, $t1, 22, 14
-	add.d	$a3, $t7, $a3
-	move	$s6, $s8
-	jr	$a3
+	bstrpick.d	$t1, $s7, 3, 2
+	slli.d	$t1, $t1, 2
+	ldx.w	$t1, $t8, $t1
+	and	$t2, $a3, $t7
+	bstrpick.d	$ra, $t2, 22, 14
+	add.d	$t2, $t8, $t1
+	move	$t1, $ra
+	jr	$t2
 .LBB10_33:                              #   in Loop: Header=BB10_13 Depth=1
-	move	$s6, $zero
+	move	$t1, $zero
 	move	$a3, $zero
-	beqz	$s8, .LBB10_37
+	beqz	$ra, .LBB10_37
 	b	.LBB10_88
 .LBB10_34:                              #   in Loop: Header=BB10_13 Depth=1
-	bgeu	$s8, $s0, .LBB10_36
+	ori	$t1, $zero, 256
+	bgeu	$ra, $t1, .LBB10_36
 .LBB10_35:                              #   in Loop: Header=BB10_13 Depth=1
-	move	$s6, $s8
-	bltu	$s8, $a4, .LBB10_37
+	move	$t1, $ra
+	bltu	$ra, $a4, .LBB10_37
 	b	.LBB10_85
 .LBB10_36:                              #   in Loop: Header=BB10_13 Depth=1
-	ld.w	$a3, $a0, 76
-	srli.d	$t1, $t1, 14
-	andi	$t1, $t1, 255
-	move	$s6, $s8
-	bge	$t1, $a3, .LBB10_85
+	ld.w	$t2, $a0, 76
+	bstrpick.d	$a3, $a3, 31, 14
+	andi	$a3, $a3, 255
+	move	$t1, $ra
+	bge	$a3, $t2, .LBB10_85
 .LBB10_37:                              # %.critedge
                                         #   in Loop: Header=BB10_13 Depth=1
-	ext.w.b	$a3, $s4
-	alsl.d	$t1, $t8, $a7, 2
+	ext.w.b	$a3, $s7
+	alsl.d	$ra, $fp, $a7, 2
 	bgez	$a3, .LBB10_40
 # %bb.38:                               #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$a3, $t8, 2
+	addi.w	$a3, $fp, 2
 	bge	$a3, $a6, .LBB10_85
 # %bb.39:                               #   in Loop: Header=BB10_13 Depth=1
-	ld.wu	$a3, $t1, 4
+	ld.wu	$a3, $ra, 4
 	andi	$a3, $a3, 63
-	ori	$s8, $zero, 22
-	bne	$a3, $s8, .LBB10_85
+	ori	$t2, $zero, 22
+	bne	$a3, $t2, .LBB10_85
 .LBB10_40:                              #   in Loop: Header=BB10_13 Depth=1
-	bstrpick.d	$a3, $s4, 6, 6
-	xor	$s4, $t2, $a2
-	sltui	$s4, $s4, 1
-	masknez	$s8, $t0, $a3
-	maskeqz	$a3, $t8, $a3
-	or	$a3, $a3, $s8
-	maskeqz	$a3, $a3, $s4
-	masknez	$s4, $t0, $s4
-	addi.d	$fp, $fp, -2
-	or	$a3, $a3, $s4
-	ori	$s4, $zero, 35
-	bltu	$s4, $fp, .LBB10_12
+	bstrpick.d	$a3, $s7, 6, 6
+	xor	$t2, $s2, $a2
+	sltui	$t2, $t2, 1
+	masknez	$s7, $t0, $a3
+	maskeqz	$a3, $fp, $a3
+	or	$a3, $a3, $s7
+	maskeqz	$a3, $a3, $t2
+	masknez	$s7, $t0, $t2
+	addi.d	$t2, $s5, -2
+	or	$a3, $a3, $s7
+	ori	$s5, $zero, 35
+	bltu	$s5, $t2, .LBB10_12
 # %bb.41:                               #   in Loop: Header=BB10_13 Depth=1
-	slli.d	$fp, $fp, 2
-	pcalau12i	$s4, %pc_hi20(.LJTI10_3)
-	addi.d	$s4, $s4, %pc_lo12(.LJTI10_3)
-	ldx.w	$fp, $s4, $fp
-	add.d	$fp, $s4, $fp
-	jr	$fp
+	slli.d	$t2, $t2, 2
+	pcalau12i	$s5, %pc_hi20(.LJTI10_3)
+	addi.d	$s5, $s5, %pc_lo12(.LJTI10_3)
+	ldx.w	$t2, $s5, $t2
+	add.d	$t2, $s5, $t2
+	jr	$t2
 .LBB10_42:                              #   in Loop: Header=BB10_13 Depth=1
-	blt	$s5, $a5, .LBB10_12
+	addi.w	$t0, $s0, 0
+	blt	$t0, $a5, .LBB10_12
 	b	.LBB10_85
 .LBB10_43:                              #   in Loop: Header=BB10_13 Depth=1
-	beqz	$s5, .LBB10_45
+	addi.w	$a3, $s0, 0
+	beqz	$a3, .LBB10_45
 # %bb.44:                               #   in Loop: Header=BB10_13 Depth=1
-	add.w	$a3, $s5, $t2
+	add.w	$a3, $s0, $s2
 	blt	$a4, $a3, .LBB10_85
 .LBB10_45:                              #   in Loop: Header=BB10_13 Depth=1
-	beqz	$s6, .LBB10_77
+	beqz	$t1, .LBB10_77
 # %bb.46:                               #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$a3, $s6, -1
+	addi.w	$a3, $t1, -1
 	beqz	$a3, .LBB10_80
 # %bb.47:                               #   in Loop: Header=BB10_13 Depth=1
-	add.w	$a3, $a3, $t2
+	add.w	$a3, $a3, $s2
 	bge	$a4, $a3, .LBB10_80
 	b	.LBB10_85
 .LBB10_48:                              #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$t0, $t2, 3
+	addi.w	$t0, $s2, 3
 	bgeu	$t0, $a4, .LBB10_85
 .LBB10_49:                              #   in Loop: Header=BB10_13 Depth=1
 	addi.d	$t0, $a2, -255
 	sltui	$t0, $t0, 1
-	add.d	$t1, $t8, $s5
+	add.d	$t1, $fp, $s0
 	addi.w	$t1, $t1, 1
-	slt	$t2, $t8, $t1
+	slt	$t2, $fp, $t1
 	xori	$t2, $t2, 1
 	slt	$t1, $a1, $t1
 	or	$t1, $t2, $t1
 	andi	$t1, $t1, 1
-	masknez	$t1, $s5, $t1
+	masknez	$t1, $s0, $t1
 	masknez	$t0, $t1, $t0
-	add.d	$t8, $t0, $t8
+	add.d	$fp, $t0, $fp
 	b	.LBB10_12
 .LBB10_50:                              #   in Loop: Header=BB10_13 Depth=1
-	ori	$t0, $zero, 2
-	blt	$s5, $t0, .LBB10_12
+	addi.w	$t0, $s0, 0
+	ori	$t1, $zero, 2
+	blt	$t0, $t1, .LBB10_12
 # %bb.51:                               #   in Loop: Header=BB10_13 Depth=1
-	add.d	$t0, $t2, $s5
+	add.d	$t0, $s2, $s0
 	addi.w	$t0, $t0, -1
 	bge	$a4, $t0, .LBB10_12
 	b	.LBB10_85
 .LBB10_52:                              #   in Loop: Header=BB10_13 Depth=1
-	slt	$t0, $a2, $t2
-	addi.w	$t1, $s5, 0
+	slt	$t0, $a2, $s2
+	addi.w	$t1, $s0, 0
 	slt	$t1, $t1, $a2
-	masknez	$t2, $t8, $t1
+	masknez	$t2, $fp, $t1
 	maskeqz	$t1, $a3, $t1
 	or	$t1, $t1, $t2
 	masknez	$t1, $t1, $t0
 	b	.LBB10_62
 .LBB10_53:                              #   in Loop: Header=BB10_13 Depth=1
 	ori	$t0, $zero, 1
-	bne	$s6, $t0, .LBB10_12
+	bne	$t1, $t0, .LBB10_12
 # %bb.54:                               #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$t0, $t8, 2
+	addi.w	$t0, $fp, 2
 	bge	$t0, $a6, .LBB10_85
 # %bb.55:                               #   in Loop: Header=BB10_13 Depth=1
-	ld.wu	$t0, $t1, 4
-	and	$t0, $t0, $s2
-	bne	$t0, $s3, .LBB10_12
+	ld.wu	$t0, $ra, 4
+	and	$t0, $t0, $s3
+	bne	$t0, $s4, .LBB10_12
 	b	.LBB10_85
 .LBB10_56:                              #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$t0, $t2, 1
+	addi.w	$t0, $s2, 1
 	bgeu	$t0, $a4, .LBB10_85
 # %bb.57:                               #   in Loop: Header=BB10_13 Depth=1
 	xor	$t0, $a2, $t0
 	sltui	$t0, $t0, 1
 	masknez	$a3, $a3, $t0
-	maskeqz	$t0, $t8, $t0
+	maskeqz	$t0, $fp, $t0
 	or	$a3, $t0, $a3
 	b	.LBB10_12
 .LBB10_58:                              #   in Loop: Header=BB10_13 Depth=1
-	blt	$s5, $s6, .LBB10_12
+	addi.w	$t0, $s0, 0
+	blt	$t0, $t1, .LBB10_12
 	b	.LBB10_85
 .LBB10_59:                              #   in Loop: Header=BB10_13 Depth=1
-	beqz	$s6, .LBB10_85
+	beqz	$t1, .LBB10_85
 # %bb.60:                               #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$t0, $t2, 2
-	add.w	$t1, $s6, $t0
+	addi.w	$t0, $s2, 2
+	add.w	$t1, $t1, $t0
 	bgeu	$t1, $a4, .LBB10_85
 # %bb.61:                               #   in Loop: Header=BB10_13 Depth=1
 	slt	$t0, $a2, $t0
-	masknez	$t1, $t8, $t0
+	masknez	$t1, $fp, $t0
 .LBB10_62:                              #   in Loop: Header=BB10_13 Depth=1
 	maskeqz	$a3, $a3, $t0
 	or	$a3, $a3, $t1
 	b	.LBB10_12
 .LBB10_63:                              #   in Loop: Header=BB10_13 Depth=1
-	blez	$s5, .LBB10_65
+	addi.w	$t0, $s0, 0
+	blez	$t0, .LBB10_65
 # %bb.64:                               #   in Loop: Header=BB10_13 Depth=1
-	add.w	$t0, $s5, $t2
+	add.w	$t0, $s0, $s2
 	bge	$t0, $a4, .LBB10_85
 .LBB10_65:                              #   in Loop: Header=BB10_13 Depth=1
-	bnez	$s6, .LBB10_12
+	bnez	$t1, .LBB10_12
 # %bb.66:                               #   in Loop: Header=BB10_13 Depth=1
-	addi.w	$t8, $t8, 1
-	blt	$t8, $s1, .LBB10_12
+	addi.w	$fp, $fp, 1
+	blt	$fp, $s6, .LBB10_12
 	b	.LBB10_85
 .LBB10_67:                              #   in Loop: Header=BB10_13 Depth=1
 	ori	$t0, $zero, 2
-	bne	$ra, $t0, .LBB10_85
+	bne	$s8, $t0, .LBB10_85
 # %bb.68:                               #   in Loop: Header=BB10_13 Depth=1
-	beqz	$s5, .LBB10_82
+	addi.w	$t0, $s0, 0
+	beqz	$t0, .LBB10_82
 # %bb.69:                               #   in Loop: Header=BB10_13 Depth=1
-	add.d	$t0, $s5, $t2
+	add.d	$t0, $s0, $s2
 	addi.w	$t0, $t0, -1
 	bge	$a4, $t0, .LBB10_12
 	b	.LBB10_85
 .LBB10_70:                              #   in Loop: Header=BB10_13 Depth=1
-	ld.w	$t0, $a0, 88
-	bge	$s5, $t0, .LBB10_85
+	ld.w	$t1, $a0, 88
+	addi.w	$t0, $s0, 0
+	bge	$t0, $t1, .LBB10_85
 # %bb.71:                               #   in Loop: Header=BB10_13 Depth=1
-	ld.d	$t0, $a0, 32
-	slli.d	$t1, $s5, 3
-	ldx.d	$t0, $t0, $t1
+	ld.d	$t1, $a0, 32
+	slli.d	$t0, $t0, 3
+	ldx.d	$t0, $t1, $t0
 	ld.bu	$t1, $t0, 112
-	add.w	$t0, $t8, $t1
+	add.w	$t0, $fp, $t1
 	bge	$t0, $a6, .LBB10_85
 # %bb.72:                               # %.preheader
                                         #   in Loop: Header=BB10_13 Depth=1
 	beqz	$t1, .LBB10_76
 # %bb.73:                               # %.lr.ph276.preheader
                                         #   in Loop: Header=BB10_13 Depth=1
-	alsl.d	$t2, $t8, $s7, 2
+	alsl.d	$t2, $fp, $s1, 2
 .LBB10_74:                              # %.lr.ph276
                                         #   Parent Loop BB10_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$fp, $t2, 0
-	andi	$fp, $fp, 59
-	bnez	$fp, .LBB10_85
+	ld.bu	$s0, $t2, 0
+	andi	$s0, $s0, 59
+	bnez	$s0, .LBB10_85
 # %bb.75:                               #   in Loop: Header=BB10_74 Depth=2
 	addi.d	$t1, $t1, -1
 	addi.d	$t2, $t2, 4
@@ -1200,40 +1213,40 @@ symbexec:                               # @symbexec
 	addi.d	$t1, $a2, -255
 	sltui	$t1, $t1, 1
 	masknez	$t0, $t0, $t1
-	maskeqz	$t1, $t8, $t1
-	or	$t8, $t1, $t0
+	maskeqz	$t1, $fp, $t1
+	or	$fp, $t1, $t0
 	b	.LBB10_12
 .LBB10_77:                              #   in Loop: Header=BB10_13 Depth=1
-	ld.wu	$a3, $t1, 4
+	ld.wu	$a3, $ra, 4
 	andi	$t1, $a3, 63
-	addi.d	$fp, $t1, -28
-	ori	$s4, $zero, 3
-	bltu	$fp, $s4, .LBB10_79
+	addi.d	$t2, $t1, -28
+	ori	$s0, $zero, 3
+	bltu	$t2, $s0, .LBB10_79
 # %bb.78:                               #   in Loop: Header=BB10_13 Depth=1
-	bne	$t1, $s3, .LBB10_85
+	bne	$t1, $s4, .LBB10_85
 .LBB10_79:                              # %luaG_checkopenop.exit
                                         #   in Loop: Header=BB10_13 Depth=1
 	srli.d	$a3, $a3, 23
 	bnez	$a3, .LBB10_85
 .LBB10_80:                              #   in Loop: Header=BB10_13 Depth=1
-	slt	$a3, $a2, $t2
-	masknez	$t1, $t8, $a3
+	slt	$a3, $a2, $s2
+	masknez	$t1, $fp, $a3
 	maskeqz	$a3, $t0, $a3
 	or	$a3, $a3, $t1
 	b	.LBB10_12
 .LBB10_81:                              #   in Loop: Header=BB10_13 Depth=1
-	ld.w	$a3, $a0, 76
-	andi	$s6, $s5, 255
-	blt	$s6, $a3, .LBB10_32
+	ld.w	$t1, $a0, 76
+	andi	$t2, $s0, 255
+	blt	$t2, $t1, .LBB10_32
 	b	.LBB10_85
 .LBB10_82:                              #   in Loop: Header=BB10_13 Depth=1
-	ld.wu	$t0, $t1, 4
+	ld.wu	$t0, $ra, 4
 	andi	$t1, $t0, 63
 	addi.d	$t2, $t1, -28
-	ori	$fp, $zero, 3
-	bltu	$t2, $fp, .LBB10_84
+	ori	$s0, $zero, 3
+	bltu	$t2, $s0, .LBB10_84
 # %bb.83:                               #   in Loop: Header=BB10_13 Depth=1
-	bne	$t1, $s3, .LBB10_85
+	bne	$t1, $s4, .LBB10_85
 .LBB10_84:                              # %luaG_checkopenop.exit243
                                         #   in Loop: Header=BB10_13 Depth=1
 	srli.d	$t0, $t0, 23
@@ -1242,7 +1255,7 @@ symbexec:                               # @symbexec
 	move	$a3, $zero
 	b	.LBB10_88
 .LBB10_86:
-	move	$a3, $s1
+	move	$a3, $s6
 .LBB10_87:                              # %._crit_edge282
 	slli.d	$a0, $a3, 2
 	ldx.w	$a3, $a7, $a0

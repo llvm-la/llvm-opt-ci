@@ -433,11 +433,70 @@ InitLists:                              # @InitLists
 	addi.d	$s1, $a0, %pc_lo12(groupB)
 	pcalau12i	$a0, %pc_hi20(numModules)
 	ld.d	$a0, $a0, %pc_lo12(numModules)
-	ori	$a1, $zero, 2
+	srli.d	$s2, $a0, 1
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $s1, 0
-	bgeu	$a0, $a1, .LBB3_2
-.LBB3_1:                                # %._crit_edge
+	beqz	$s2, .LBB3_11
+# %bb.1:                                # %.lr.ph
+	slli.d	$a0, $s2, 2
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(moduleToGroup)
+	addi.d	$s4, $a0, %pc_lo12(moduleToGroup)
+	move	$s5, $zero
+	move	$s6, $zero
+	move	$s3, $zero
+	move	$s8, $zero
+	move	$s7, $zero
+	b	.LBB3_4
+	.p2align	4, , 16
+.LBB3_2:                                #   in Loop: Header=BB3_4 Depth=1
+	st.d	$zero, $a0, 0
+	st.d	$a0, $s7, 0
+.LBB3_3:                                #   in Loop: Header=BB3_4 Depth=1
+	st.d	$a0, $s1, 8
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ori	$a2, $zero, 1
+	stx.w	$a2, $s4, $a1
+	addi.d	$s5, $s5, 1
+	addi.d	$s4, $s4, 4
+	move	$s3, $fp
+	move	$s7, $a0
+	beq	$s2, $s5, .LBB3_11
+.LBB3_4:                                # =>This Inner Loop Header: Depth=1
+	ori	$a0, $zero, 16
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB3_12
+# %bb.5:                                #   in Loop: Header=BB3_4 Depth=1
+	move	$fp, $a0
+	st.d	$s5, $a0, 8
+	beqz	$s6, .LBB3_7
+# %bb.6:                                #   in Loop: Header=BB3_4 Depth=1
+	st.d	$zero, $fp, 0
+	st.d	$fp, $s3, 0
+	b	.LBB3_8
+	.p2align	4, , 16
+.LBB3_7:                                #   in Loop: Header=BB3_4 Depth=1
+	st.d	$fp, $s0, 0
+	st.d	$zero, $fp, 0
+	move	$s6, $fp
+.LBB3_8:                                #   in Loop: Header=BB3_4 Depth=1
+	st.d	$fp, $s0, 8
+	st.w	$zero, $s4, 0
+	ori	$a0, $zero, 16
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB3_13
+# %bb.9:                                #   in Loop: Header=BB3_4 Depth=1
+	add.d	$a1, $s2, $s5
+	st.d	$a1, $a0, 8
+	bnez	$s8, .LBB3_2
+# %bb.10:                               #   in Loop: Header=BB3_4 Depth=1
+	st.d	$a0, $s1, 0
+	st.d	$zero, $a0, 0
+	move	$s8, $a0
+	b	.LBB3_3
+.LBB3_11:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(swapToA)
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $a0, %pc_lo12(swapToA)
@@ -456,66 +515,6 @@ InitLists:                              # @InitLists
 	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 128
 	ret
-.LBB3_2:                                # %.lr.ph
-	srli.d	$s2, $a0, 1
-	slli.d	$a0, $s2, 2
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(moduleToGroup)
-	addi.d	$s4, $a0, %pc_lo12(moduleToGroup)
-	move	$s5, $zero
-	move	$s6, $zero
-	move	$s3, $zero
-	move	$s8, $zero
-	move	$s7, $zero
-	b	.LBB3_5
-	.p2align	4, , 16
-.LBB3_3:                                #   in Loop: Header=BB3_5 Depth=1
-	st.d	$zero, $a0, 0
-	st.d	$a0, $s7, 0
-.LBB3_4:                                #   in Loop: Header=BB3_5 Depth=1
-	st.d	$a0, $s1, 8
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	ori	$a2, $zero, 1
-	stx.w	$a2, $s4, $a1
-	addi.d	$s5, $s5, 1
-	addi.d	$s4, $s4, 4
-	move	$s3, $fp
-	move	$s7, $a0
-	beq	$s2, $s5, .LBB3_1
-.LBB3_5:                                # =>This Inner Loop Header: Depth=1
-	ori	$a0, $zero, 16
-	pcaddu18i	$ra, %call36(malloc)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_12
-# %bb.6:                                #   in Loop: Header=BB3_5 Depth=1
-	move	$fp, $a0
-	st.d	$s5, $a0, 8
-	beqz	$s6, .LBB3_8
-# %bb.7:                                #   in Loop: Header=BB3_5 Depth=1
-	st.d	$zero, $fp, 0
-	st.d	$fp, $s3, 0
-	b	.LBB3_9
-	.p2align	4, , 16
-.LBB3_8:                                #   in Loop: Header=BB3_5 Depth=1
-	st.d	$fp, $s0, 0
-	st.d	$zero, $fp, 0
-	move	$s6, $fp
-.LBB3_9:                                #   in Loop: Header=BB3_5 Depth=1
-	st.d	$fp, $s0, 8
-	st.w	$zero, $s4, 0
-	ori	$a0, $zero, 16
-	pcaddu18i	$ra, %call36(malloc)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_13
-# %bb.10:                               #   in Loop: Header=BB3_5 Depth=1
-	add.d	$a1, $s2, $s5
-	st.d	$a1, $a0, 8
-	bnez	$s8, .LBB3_3
-# %bb.11:                               #   in Loop: Header=BB3_5 Depth=1
-	st.d	$a0, $s1, 0
-	st.d	$zero, $a0, 0
-	move	$s8, $a0
-	b	.LBB3_4
 .LBB3_12:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$fp, $a0, %got_pc_lo12(stderr)

@@ -575,14 +575,14 @@ reset_all:                              # @reset_all
 	masknez	$t1, $t1, $t2
 	slti	$t2, $a6, 0
 	masknez	$t1, $t1, $t2
-	vslt.w	$vr1, $vr0, $vr1
-	vpickve2gr.w	$t2, $vr1, 0
+	vslt.w	$vr2, $vr0, $vr1
+	vpickve2gr.w	$t2, $vr2, 0
 	andi	$t2, $t2, 1
-	vpickve2gr.w	$t3, $vr1, 1
+	vpickve2gr.w	$t3, $vr2, 1
 	andi	$t3, $t3, 1
-	vpickve2gr.w	$t4, $vr1, 2
+	vpickve2gr.w	$t4, $vr2, 2
 	andi	$t4, $t4, 1
-	vpickve2gr.w	$t5, $vr1, 3
+	vpickve2gr.w	$t5, $vr2, 3
 	andi	$t5, $t5, 1
 	maskeqz	$t1, $t1, $t2
 	ld.w	$t2, $a3, 24
@@ -592,6 +592,7 @@ reset_all:                              # @reset_all
 	st.w	$t1, $a3, -8
 	bltz	$t2, .LBB1_13
 # %bb.10:                               #   in Loop: Header=BB1_8 Depth=1
+	vxor.v	$vr1, $vr1, $vr0
 	vmskltz.w	$vr1, $vr1
 	vpickve2gr.hu	$t1, $vr1, 0
 	bne	$t1, $a5, .LBB1_14

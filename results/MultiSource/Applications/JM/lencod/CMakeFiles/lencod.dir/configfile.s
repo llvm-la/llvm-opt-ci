@@ -154,7 +154,7 @@ Configure:                              # @Configure
 # %bb.13:                               # %.tail86
 	ld.bu	$a1, $a0, 1
 	ori	$a2, $zero, 100
-	bne	$a1, $a2, .LBB1_144
+	bne	$a1, $a2, .LBB1_142
 # %bb.14:
 	ld.d	$s2, $fp, 16
 	ori	$s3, $zero, 3
@@ -602,18 +602,15 @@ Configure:                              # @Configure
 # %bb.75:
 	pcalau12i	$a1, %pc_hi20(log2_max_frame_num_minus4)
 	st.w	$a2, $a1, %pc_lo12(log2_max_frame_num_minus4)
-	bnez	$a2, .LBB1_80
-	b	.LBB1_78
+	bnez	$a2, .LBB1_79
+	b	.LBB1_77
 .LBB1_76:
 	ld.w	$a2, $a0, 8
 	mul.d	$a1, $a2, $a1
-	addi.w	$a1, $a1, -1
-	beqz	$a1, .LBB1_136
-# %bb.77:
-	slli.d	$a1, $a1, 32
-	clz.d	$a1, $a1
+	addi.d	$a1, $a1, -1
+	clz.w	$a1, $a1
 	ori	$a2, $zero, 28
-	sub.d	$a1, $a2, $a1
+	sub.w	$a1, $a2, $a1
 	srai.d	$a2, $a1, 63
 	andn	$a1, $a1, $a2
 	slti	$a2, $a1, 12
@@ -623,12 +620,12 @@ Configure:                              # @Configure
 	or	$a2, $a1, $a2
 	pcalau12i	$a1, %pc_hi20(log2_max_frame_num_minus4)
 	st.w	$a2, $a1, %pc_lo12(log2_max_frame_num_minus4)
-	bnez	$a2, .LBB1_80
-.LBB1_78:
+	bnez	$a2, .LBB1_79
+.LBB1_77:
 	ld.w	$a1, $a0, 32
 	ori	$a2, $zero, 16
-	bne	$a1, $a2, .LBB1_80
-.LBB1_79:
+	bne	$a1, $a2, .LBB1_79
+# %bb.78:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.255)
@@ -643,19 +640,19 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_80:
+.LBB1_79:
 	ld.w	$a3, $a0, 52
 	pcalau12i	$a2, %pc_hi20(log2_max_pic_order_cnt_lsb_minus4)
-	beq	$a3, $s2, .LBB1_85
-# %bb.81:                               # %.thread.i
+	beq	$a3, $s2, .LBB1_84
+# %bb.80:                               # %.thread.i
 	ld.w	$a1, $a0, 20
 	addi.d	$a4, $a3, 3
 	ori	$a5, $zero, 1
 	sll.w	$a4, $a5, $a4
 	slli.w	$a5, $a1, 2
 	st.w	$a3, $a2, %pc_lo12(log2_max_pic_order_cnt_lsb_minus4)
-	bge	$a4, $a5, .LBB1_83
-# %bb.82:                               # %.thread152.i
+	bge	$a4, $a5, .LBB1_82
+# %bb.81:                               # %.thread150.i
 	pcalau12i	$a0, %pc_hi20(.L.str.256)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.256)
 	ori	$a1, $zero, 400
@@ -664,12 +661,12 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ld.w	$a1, $a0, 20
 	ldptr.w	$a3, $a0, 2096
-	bge	$a1, $a3, .LBB1_86
-	b	.LBB1_84
-.LBB1_83:
+	bge	$a1, $a3, .LBB1_85
+	b	.LBB1_83
+.LBB1_82:
 	ldptr.w	$a3, $a0, 2096
-	bge	$a1, $a3, .LBB1_86
-.LBB1_84:
+	bge	$a1, $a3, .LBB1_85
+.LBB1_83:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.257)
@@ -685,9 +682,9 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ori	$a1, $zero, 2096
 	ldx.w	$a3, $a0, $a1
-	bnez	$a3, .LBB1_87
-	b	.LBB1_89
-.LBB1_85:
+	bnez	$a3, .LBB1_86
+	b	.LBB1_88
+.LBB1_84:
 	ld.w	$a1, $a0, 20
 	ld.w	$a3, $a0, 8
 	addi.d	$a4, $a1, 1
@@ -708,14 +705,14 @@ Configure:                              # @Configure
 	or	$a3, $a3, $a4
 	st.w	$a3, $a2, %pc_lo12(log2_max_pic_order_cnt_lsb_minus4)
 	ldptr.w	$a3, $a0, 2096
-	blt	$a1, $a3, .LBB1_84
+	blt	$a1, $a3, .LBB1_83
+.LBB1_85:
+	beqz	$a3, .LBB1_88
 .LBB1_86:
-	beqz	$a3, .LBB1_89
-.LBB1_87:
 	ldptr.w	$a3, $a0, 2112
 	ori	$a1, $zero, 2
-	bltu	$a3, $a1, .LBB1_89
-# %bb.88:
+	bltu	$a3, $a1, .LBB1_88
+# %bb.87:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.258)
@@ -729,16 +726,16 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_89:
+.LBB1_88:
 	ldptr.w	$a1, $a0, 4704
-	bgtz	$a1, .LBB1_91
-# %bb.90:
+	bgtz	$a1, .LBB1_90
+# %bb.89:
 	ldptr.w	$a2, $a0, 4708
-	blez	$a2, .LBB1_96
-.LBB1_91:
+	blez	$a2, .LBB1_95
+.LBB1_90:
 	ldptr.w	$a2, $a0, 2116
-	bnez	$a2, .LBB1_93
-# %bb.92:
+	bnez	$a2, .LBB1_92
+# %bb.91:
 	pcalau12i	$a0, %pc_hi20(.L.str.259)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.259)
 	pcaddu18i	$ra, %call36(printf)
@@ -746,15 +743,15 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ori	$a1, $s8, 608
 	ldx.w	$a1, $a0, $a1
-.LBB1_93:
+.LBB1_92:
 	ori	$a2, $zero, 1
 	stptr.w	$a2, $a0, 2116
-	blez	$a1, .LBB1_96
-# %bb.94:
+	blez	$a1, .LBB1_95
+# %bb.93:
 	ldptr.w	$a3, $a0, 4712
 	ori	$a1, $zero, 2
-	bltu	$a3, $a1, .LBB1_96
-# %bb.95:
+	bltu	$a3, $a1, .LBB1_95
+# %bb.94:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.260)
@@ -768,11 +765,11 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_96:                               # %.thread282.i
+.LBB1_95:                               # %.thread278.i
 	ldptr.w	$a3, $a0, 4008
 	ori	$a1, $zero, 2
-	bltu	$a3, $a1, .LBB1_98
-# %bb.97:
+	bltu	$a3, $a1, .LBB1_97
+# %bb.96:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.261)
@@ -786,15 +783,15 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_98:
+.LBB1_97:
 	addi.d	$a0, $a0, 280
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(open64)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(p_in)
 	st.w	$a0, $a1, %pc_lo12(p_in)
-	bne	$a0, $s2, .LBB1_100
-# %bb.99:
+	bne	$a0, $s2, .LBB1_99
+# %bb.98:
 	ld.d	$a0, $s4, 0
 	addi.d	$a3, $a0, 280
 	pcalau12i	$a0, %pc_hi20(errortext)
@@ -809,11 +806,11 @@ Configure:                              # @Configure
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-.LBB1_100:
+.LBB1_99:
 	ld.d	$s3, $s4, 0
 	ld.bu	$a0, $s3, 792
-	beqz	$a0, .LBB1_103
-# %bb.101:
+	beqz	$a0, .LBB1_102
+# %bb.100:
 	addi.d	$a0, $s3, 792
 	ori	$a1, $zero, 577
 	ori	$a2, $zero, 384
@@ -822,8 +819,8 @@ Configure:                              # @Configure
 	ld.d	$s3, $s4, 0
 	pcalau12i	$a1, %pc_hi20(p_dec)
 	st.w	$a0, $a1, %pc_lo12(p_dec)
-	bne	$a0, $s2, .LBB1_103
-# %bb.102:
+	bne	$a0, $s2, .LBB1_102
+# %bb.101:
 	addi.d	$a3, $s3, 792
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
@@ -838,7 +835,7 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s4, 0
-.LBB1_103:
+.LBB1_102:
 	ld.w	$a0, $s3, 56
 	bstrpick.d	$a1, $a0, 62, 59
 	add.d	$a1, $a0, $a1
@@ -854,15 +851,15 @@ Configure:                              # @Configure
 	ld.d	$a0, $s1, 0
 	ldptr.w	$a1, $s3, 4704
 	stptr.w	$a2, $a0, 15584
-	bnez	$a1, .LBB1_105
-# %bb.104:
+	bnez	$a1, .LBB1_104
+# %bb.103:
 	ldptr.w	$a1, $s3, 4708
-	beqz	$a1, .LBB1_137
-.LBB1_105:
+	beqz	$a1, .LBB1_135
+.LBB1_104:
 	ld.wu	$a1, $s3, 60
 	andi	$a0, $a1, 1
-	beqz	$a0, .LBB1_107
-# %bb.106:
+	beqz	$a0, .LBB1_106
+# %bb.105:
 	pcalau12i	$a0, %pc_hi20(.L.str.264)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.264)
 	ori	$a1, $zero, 500
@@ -870,78 +867,78 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s4, 0
 	ld.w	$a1, $s3, 60
-.LBB1_107:
+.LBB1_106:
 	addi.w	$a0, $a1, 0
 	bstrpick.d	$a0, $a0, 62, 58
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 31, 5
 	slli.d	$a0, $a0, 5
 	sub.w	$a0, $a1, $a0
-	bnez	$a0, .LBB1_146
-# %bb.108:
+	bnez	$a0, .LBB1_144
+# %bb.107:
 	ld.d	$a0, $s1, 0
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 3296
 	ldx.w	$a2, $a0, $a2
-.LBB1_109:
+.LBB1_108:
 	stptr.w	$zero, $a0, 15588
-	bnez	$a2, .LBB1_145
-# %bb.110:
+	bnez	$a2, .LBB1_143
+# %bb.109:
 	ld.w	$a0, $s3, 264
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB1_113
-.LBB1_111:
+	bne	$a0, $a1, .LBB1_112
+.LBB1_110:
 	ldptr.w	$a0, $s3, 4708
-	beqz	$a0, .LBB1_113
-# %bb.112:
+	beqz	$a0, .LBB1_112
+# %bb.111:
 	ld.bu	$a0, $s3, 268
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB1_322
-.LBB1_113:
+	bnez	$a0, .LBB1_320
+.LBB1_112:
 	ldptr.w	$a0, $s3, 5032
-	beqz	$a0, .LBB1_153
-# %bb.114:
+	beqz	$a0, .LBB1_151
+# %bb.113:
 	ldptr.w	$a0, $s3, 5036
 	ori	$a1, $zero, 6
-	bltu	$a1, $a0, .LBB1_153
-# %bb.115:
+	bltu	$a1, $a0, .LBB1_151
+# %bb.114:
 	ori	$a1, $zero, 1
 	sll.d	$a1, $a1, $a0
 	andi	$a1, $a1, 69
-	beqz	$a1, .LBB1_153
-# %bb.116:
+	beqz	$a1, .LBB1_151
+# %bb.115:
 	ori	$s7, $s8, 680
 	ldx.bu	$a1, $s3, $s7
-	beqz	$a1, .LBB1_126
-# %bb.117:
+	beqz	$a1, .LBB1_125
+# %bb.116:
 	add.d	$a0, $s3, $s7
 	pcalau12i	$a1, %pc_hi20(.L.str.237)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.237)
 	pcaddu18i	$ra, %call36(fopen64)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s4, 0
-	beqz	$a0, .LBB1_139
-# %bb.118:                              # %._crit_edge193.i
+	beqz	$a0, .LBB1_137
+# %bb.117:                              # %._crit_edge191.i
 	move	$fp, $a0
 	ori	$a0, $s8, 940
 	ldx.w	$a0, $s3, $a0
 	ori	$a1, $zero, 6
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	beq	$a0, $a1, .LBB1_127
-.LBB1_119:
+	beq	$a0, $a1, .LBB1_126
+.LBB1_118:
 	ori	$a1, $zero, 2
-	beq	$a0, $a1, .LBB1_140
+	beq	$a0, $a1, .LBB1_138
+# %bb.119:
+	bnez	$a0, .LBB1_150
 # %bb.120:
-	bnez	$a0, .LBB1_152
-# %bb.121:
 	ldptr.w	$s0, $s3, 5032
 	slli.d	$a0, $s0, 2
 	addi.d	$a0, $a0, 4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	stptr.d	$a0, $s3, 5064
-	bnez	$a0, .LBB1_123
-# %bb.122:
+	bnez	$a0, .LBB1_122
+# %bb.121:
 	pcalau12i	$a0, %pc_hi20(.L.str.268)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.268)
 	pcaddu18i	$ra, %call36(no_mem_exit)
@@ -949,16 +946,16 @@ Configure:                              # @Configure
 	ld.d	$s3, $s4, 0
 	ori	$a0, $s8, 936
 	ldx.w	$s0, $s3, $a0
-.LBB1_123:
-	bltz	$s0, .LBB1_152
-# %bb.124:                              # %.lr.ph163.i.preheader
+.LBB1_122:
+	bltz	$s0, .LBB1_150
+# %bb.123:                              # %.lr.ph161.i.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.245)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.245)
 	pcalau12i	$a0, %pc_hi20(.L.str.269)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.269)
 	move	$s5, $zero
 	.p2align	4, , 16
-.LBB1_125:                              # %.lr.ph163.i
+.LBB1_124:                              # %.lr.ph161.i
                                         # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $s3, 5064
 	add.d	$a2, $a0, $s5
@@ -974,23 +971,23 @@ Configure:                              # @Configure
 	ldptr.w	$a0, $s3, 5032
 	addi.d	$s2, $s2, 1
 	addi.d	$s5, $s5, 4
-	blt	$s2, $a0, .LBB1_125
-	b	.LBB1_152
-.LBB1_126:
+	blt	$s2, $a0, .LBB1_124
+	b	.LBB1_150
+.LBB1_125:
 	move	$fp, $zero
 	ori	$a1, $zero, 6
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	bne	$a0, $a1, .LBB1_119
-.LBB1_127:
+	bne	$a0, $a1, .LBB1_118
+.LBB1_126:
 	ldptr.w	$a1, $s3, 4704
 	ori	$a0, $zero, 2
-	bnez	$a1, .LBB1_129
-# %bb.128:
+	bnez	$a1, .LBB1_128
+# %bb.127:
 	ldptr.w	$a0, $s3, 4708
 	sltui	$a0, $a0, 1
 	ori	$a1, $zero, 2
 	sub.d	$a0, $a1, $a0
-.LBB1_129:
+.LBB1_128:
 	ld.d	$a1, $s1, 0
 	ld.w	$a2, $s3, 56
 	lu12i.w	$a5, 3
@@ -1008,16 +1005,16 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	stptr.d	$a0, $s3, 5056
-	bnez	$a0, .LBB1_131
-# %bb.130:
+	bnez	$a0, .LBB1_130
+# %bb.129:
 	pcalau12i	$a0, %pc_hi20(.L.str.272)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.272)
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
-.LBB1_131:
+.LBB1_130:
 	mul.w	$s8, $s1, $s0
-	blez	$s8, .LBB1_143
-# %bb.132:                              # %.lr.ph.preheader.i
+	blez	$s8, .LBB1_141
+# %bb.131:                              # %.lr.ph.preheader.i
 	pcalau12i	$a0, %pc_hi20(.L.str.245)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.245)
 	pcalau12i	$a0, %pc_hi20(errortext)
@@ -1027,16 +1024,16 @@ Configure:                              # @Configure
 	pcalau12i	$a0, %pc_hi20(.L.str.269)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.269)
 	move	$s5, $zero
-	b	.LBB1_134
+	b	.LBB1_133
 	.p2align	4, , 16
-.LBB1_133:                              #   in Loop: Header=BB1_134 Depth=1
+.LBB1_132:                              #   in Loop: Header=BB1_133 Depth=1
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	addi.d	$s5, $s5, 1
-	beq	$s8, $s5, .LBB1_143
-.LBB1_134:                              # %.lr.ph.i78
+	beq	$s8, $s5, .LBB1_141
+.LBB1_133:                              # %.lr.ph.i78
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a2, $sp, 44
 	move	$a0, $fp
@@ -1051,8 +1048,8 @@ Configure:                              # @Configure
 	ldptr.d	$a1, $a0, 5056
 	ldx.bu	$a1, $a1, $s5
 	ldptr.w	$a2, $a0, 5032
-	bge	$a2, $a1, .LBB1_133
-# %bb.135:                              #   in Loop: Header=BB1_134 Depth=1
+	bge	$a2, $a1, .LBB1_132
+# %bb.134:                              #   in Loop: Header=BB1_133 Depth=1
 	add.d	$a3, $a0, $s7
 	ori	$a1, $zero, 300
 	move	$a0, $s1
@@ -1063,28 +1060,21 @@ Configure:                              # @Configure
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	b	.LBB1_133
-.LBB1_136:                              # %.thread280.i
-	pcalau12i	$a1, %pc_hi20(log2_max_frame_num_minus4)
-	st.w	$zero, $a1, %pc_lo12(log2_max_frame_num_minus4)
-	ld.w	$a1, $a0, 32
-	ori	$a2, $zero, 16
-	bne	$a1, $a2, .LBB1_80
-	b	.LBB1_79
-.LBB1_137:
+	b	.LBB1_132
+.LBB1_135:
 	ld.w	$a1, $s3, 60
 	bstrpick.d	$a3, $a1, 62, 59
 	add.d	$a3, $a1, $a3
 	bstrpick.d	$a3, $a3, 31, 4
 	slli.d	$a3, $a3, 4
 	sub.w	$a3, $a1, $a3
-	beqz	$a3, .LBB1_109
-# %bb.138:
+	beqz	$a3, .LBB1_108
+# %bb.136:
 	ori	$a4, $zero, 16
 	sub.d	$a3, $a4, $a3
 	stptr.w	$a3, $a0, 15588
-	b	.LBB1_147
-.LBB1_139:
+	b	.LBB1_145
+.LBB1_137:
 	add.d	$a3, $s3, $s7
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
@@ -1098,8 +1088,8 @@ Configure:                              # @Configure
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	b	.LBB1_153
-.LBB1_140:
+	b	.LBB1_151
+.LBB1_138:
 	ldptr.w	$a0, $s3, 5032
 	slli.d	$s0, $a0, 2
 	move	$a0, $s0
@@ -1111,26 +1101,26 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	stptr.d	$a0, $s3, 5048
-	beqz	$s1, .LBB1_148
-# %bb.141:
-	beqz	$a0, .LBB1_149
-.LBB1_142:
+	beqz	$s1, .LBB1_146
+# %bb.139:
+	beqz	$a0, .LBB1_147
+.LBB1_140:
 	ldptr.w	$a0, $s3, 5032
-	bgtz	$a0, .LBB1_150
-	b	.LBB1_152
-.LBB1_143:                              # %._crit_edge.i
+	bgtz	$a0, .LBB1_148
+	b	.LBB1_150
+.LBB1_141:                              # %._crit_edge.i
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	lu12i.w	$s8, 1
-	b	.LBB1_152
-.LBB1_144:
+	b	.LBB1_150
+.LBB1_142:
 	pcalau12i	$a1, %pc_hi20(.L.str.225)
 	addi.d	$s2, $a1, %pc_lo12(.L.str.225)
 	ori	$s3, $zero, 1
 	b	.LBB1_9
-.LBB1_145:
+.LBB1_143:
 	move	$a3, $zero
-	b	.LBB1_147
-.LBB1_146:
+	b	.LBB1_145
+.LBB1_144:
 	ld.d	$a4, $s1, 0
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 3296
@@ -1138,7 +1128,7 @@ Configure:                              # @Configure
 	ori	$a3, $zero, 32
 	sub.d	$a3, $a3, $a0
 	stptr.w	$a3, $a4, 15588
-.LBB1_147:
+.LBB1_145:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.w	$a4, $s3, 56
@@ -1152,25 +1142,25 @@ Configure:                              # @Configure
 	ld.d	$s3, $s4, 0
 	ld.w	$a0, $s3, 264
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB1_111
-	b	.LBB1_113
-.LBB1_148:
+	beq	$a0, $a1, .LBB1_110
+	b	.LBB1_112
+.LBB1_146:
 	pcalau12i	$a0, %pc_hi20(.L.str.270)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.270)
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s4, 0
 	ldptr.d	$a0, $s3, 5048
-	bnez	$a0, .LBB1_142
-.LBB1_149:
+	bnez	$a0, .LBB1_140
+.LBB1_147:
 	pcalau12i	$a0, %pc_hi20(.L.str.271)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.271)
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s4, 0
 	ldptr.w	$a0, $s3, 5032
-	blez	$a0, .LBB1_152
-.LBB1_150:                              # %.lr.ph159.i.preheader
+	blez	$a0, .LBB1_150
+.LBB1_148:                              # %.lr.ph157.i.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.245)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.245)
 	pcalau12i	$a0, %pc_hi20(.L.str.269)
@@ -1178,7 +1168,7 @@ Configure:                              # @Configure
 	move	$s2, $zero
 	move	$s5, $zero
 	.p2align	4, , 16
-.LBB1_151:                              # %.lr.ph159.i
+.LBB1_149:                              # %.lr.ph157.i
                                         # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $s3, 5040
 	add.d	$a2, $a0, $s2
@@ -1205,25 +1195,25 @@ Configure:                              # @Configure
 	ldptr.w	$a0, $s3, 5032
 	addi.d	$s5, $s5, 1
 	addi.d	$s2, $s2, 4
-	blt	$s5, $a0, .LBB1_151
-.LBB1_152:                              # %.loopexit.i
+	blt	$s5, $a0, .LBB1_149
+.LBB1_150:                              # %.loopexit.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-.LBB1_153:
+.LBB1_151:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 4000
-	beqz	$a1, .LBB1_157
-# %bb.154:
+	beqz	$a1, .LBB1_155
+# %bb.152:
 	ldptr.w	$a1, $a0, 4704
-	bnez	$a1, .LBB1_156
-# %bb.155:
+	bnez	$a1, .LBB1_154
+# %bb.153:
 	ldptr.w	$a1, $a0, 4708
-	beqz	$a1, .LBB1_157
-.LBB1_156:
+	beqz	$a1, .LBB1_155
+.LBB1_154:
 	pcalau12i	$a0, %pc_hi20(.L.str.274)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.274)
 	xvld	$xr0, $a0, 32
@@ -1235,16 +1225,16 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_157:
+.LBB1_155:
 	ldptr.w	$a1, $a0, 4004
-	beqz	$a1, .LBB1_161
-# %bb.158:
+	beqz	$a1, .LBB1_159
+# %bb.156:
 	ldptr.w	$a1, $a0, 4704
-	bnez	$a1, .LBB1_160
-# %bb.159:
+	bnez	$a1, .LBB1_158
+# %bb.157:
 	ldptr.w	$a1, $a0, 4708
-	beqz	$a1, .LBB1_161
-.LBB1_160:
+	beqz	$a1, .LBB1_159
+.LBB1_158:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.275)
@@ -1258,22 +1248,22 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_161:
+.LBB1_159:
 	ldptr.w	$a3, $a0, 4704
 	ori	$a1, $zero, 3
-	bgeu	$a3, $a1, .LBB1_165
-# %bb.162:
+	bgeu	$a3, $a1, .LBB1_163
+# %bb.160:
 	ldptr.w	$a3, $a0, 4708
 	ori	$a1, $zero, 4
-	bgeu	$a3, $a1, .LBB1_166
-.LBB1_163:
+	bgeu	$a3, $a1, .LBB1_164
+.LBB1_161:
 	ldptr.w	$a1, $a0, 4168
-	beqz	$a1, .LBB1_167
-.LBB1_164:
+	beqz	$a1, .LBB1_165
+.LBB1_162:
 	ori	$a2, $zero, 2
-	beq	$a1, $a2, .LBB1_169
-	b	.LBB1_171
-.LBB1_165:
+	beq	$a1, $a2, .LBB1_167
+	b	.LBB1_169
+.LBB1_163:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.276)
@@ -1289,8 +1279,8 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a3, $a0, 4708
 	ori	$a1, $zero, 4
-	bltu	$a3, $a1, .LBB1_163
-.LBB1_166:
+	bltu	$a3, $a1, .LBB1_161
+.LBB1_164:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.277)
@@ -1305,11 +1295,11 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 4168
-	bnez	$a1, .LBB1_164
-.LBB1_167:
+	bnez	$a1, .LBB1_162
+.LBB1_165:
 	ldptr.w	$a1, $a0, 4708
-	beqz	$a1, .LBB1_171
-# %bb.168:
+	beqz	$a1, .LBB1_169
+# %bb.166:
 	pcalau12i	$a0, %pc_hi20(.L.str.278)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.278)
 	ld.d	$a1, $a0, 47
@@ -1326,12 +1316,12 @@ Configure:                              # @Configure
 	ori	$a1, $s8, 72
 	ldx.w	$a1, $a0, $a1
 	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB1_171
-.LBB1_169:
+	bne	$a1, $a2, .LBB1_169
+.LBB1_167:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 100
-	blt	$a1, $a2, .LBB1_171
-# %bb.170:
+	blt	$a1, $a2, .LBB1_169
+# %bb.168:
 	pcalau12i	$a0, %pc_hi20(.L.str.279)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.279)
 	ld.h	$a1, $a0, 56
@@ -1347,23 +1337,23 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_171:                              # %.thread287.i
+.LBB1_169:                              # %.thread283.i
 	ldptr.w	$a1, $a0, 5788
 	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB1_176
-# %bb.172:
+	bne	$a1, $a2, .LBB1_174
+# %bb.170:
 	ldptr.w	$a1, $a0, 5784
-	bnez	$a1, .LBB1_176
-# %bb.173:
+	bnez	$a1, .LBB1_174
+# %bb.171:
 	ldptr.w	$a1, $a0, 5780
-	bnez	$a1, .LBB1_176
-# %bb.174:
+	bnez	$a1, .LBB1_174
+# %bb.172:
 	ori	$a1, $s8, 1148
 	ldx.w	$a1, $a0, $a1
 	addi.w	$a1, $a1, -1
 	ori	$a2, $zero, 1
-	bltu	$a2, $a1, .LBB1_176
-# %bb.175:
+	bltu	$a2, $a1, .LBB1_174
+# %bb.173:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.280)
@@ -1377,16 +1367,16 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_176:
+.LBB1_174:
 	ldptr.w	$a3, $a0, 4736
 	ld.w	$a4, $a0, 32
-	bltz	$a3, .LBB1_179
-# %bb.177:
-	bge	$a3, $a4, .LBB1_179
-# %bb.178:
-	bgtz	$a3, .LBB1_180
-	b	.LBB1_181
-.LBB1_179:
+	bltz	$a3, .LBB1_177
+# %bb.175:
+	bge	$a3, $a4, .LBB1_177
+# %bb.176:
+	bgtz	$a3, .LBB1_178
+	b	.LBB1_179
+.LBB1_177:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.281)
@@ -1402,18 +1392,18 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ori	$a1, $s8, 640
 	ldx.w	$a3, $a0, $a1
-	blez	$a3, .LBB1_181
-.LBB1_180:
+	blez	$a3, .LBB1_179
+.LBB1_178:
 	ldptr.w	$a1, $a0, 4012
-	beqz	$a1, .LBB1_183
-.LBB1_181:
+	beqz	$a1, .LBB1_181
+.LBB1_179:
 	ldptr.w	$a1, $a0, 4704
-	bnez	$a1, .LBB1_184
-.LBB1_182:
+	bnez	$a1, .LBB1_182
+.LBB1_180:
 	ldptr.w	$a1, $a0, 4708
-	bnez	$a1, .LBB1_184
-	b	.LBB1_186
-.LBB1_183:
+	bnez	$a1, .LBB1_182
+	b	.LBB1_184
+.LBB1_181:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.282)
@@ -1428,12 +1418,12 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 4704
-	beqz	$a1, .LBB1_182
-.LBB1_184:
+	beqz	$a1, .LBB1_180
+.LBB1_182:
 	ldptr.w	$a1, $a0, 4764
 	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1_186
-# %bb.185:
+	bne	$a1, $a2, .LBB1_184
+# %bb.183:
 	pcalau12i	$a0, %pc_hi20(.L.str.283)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.283)
 	ld.h	$a1, $a0, 40
@@ -1447,14 +1437,14 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_186:
+.LBB1_184:
 	ldptr.w	$a2, $a0, 4012
 	ori	$a1, $zero, 1
-	beq	$a2, $a1, .LBB1_189
-# %bb.187:
+	beq	$a2, $a1, .LBB1_187
+# %bb.185:
 	ldptr.w	$a2, $a0, 4764
-	bne	$a2, $a1, .LBB1_189
-# %bb.188:
+	bne	$a2, $a1, .LBB1_187
+# %bb.186:
 	pcalau12i	$a0, %pc_hi20(.L.str.284)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.284)
 	xvld	$xr0, $a0, 32
@@ -1466,16 +1456,16 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_189:
+.LBB1_187:
 	ldptr.w	$a1, $a0, 2928
-	bgtz	$a1, .LBB1_191
-# %bb.190:
+	bgtz	$a1, .LBB1_189
+# %bb.188:
 	ldptr.w	$a1, $a0, 2932
-	blez	$a1, .LBB1_193
-.LBB1_191:
+	blez	$a1, .LBB1_191
+.LBB1_189:
 	ldptr.w	$a1, $a0, 4708
-	beqz	$a1, .LBB1_193
-# %bb.192:
+	beqz	$a1, .LBB1_191
+# %bb.190:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.285)
@@ -1489,13 +1479,13 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_193:
+.LBB1_191:
 	ldptr.w	$a1, $a0, 4736
-	blez	$a1, .LBB1_196
-# %bb.194:
+	blez	$a1, .LBB1_194
+# %bb.192:
 	ldptr.w	$a1, $a0, 2928
-	blez	$a1, .LBB1_196
-# %bb.195:
+	blez	$a1, .LBB1_194
+# %bb.193:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.286)
@@ -1509,22 +1499,22 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_196:
+.LBB1_194:
 	ldptr.w	$a1, $a0, 5032
-	blez	$a1, .LBB1_199
-# %bb.197:
+	blez	$a1, .LBB1_197
+# %bb.195:
 	ori	$a1, $s8, 940
 	ldx.w	$a1, $a0, $a1
 	addi.w	$a1, $a1, -3
 	ori	$a2, $zero, 2
-	bltu	$a2, $a1, .LBB1_199
-# %bb.198:
+	bltu	$a2, $a1, .LBB1_197
+# %bb.196:
 	ori	$a1, $zero, 1
 	stptr.w	$a1, $a0, 5032
-.LBB1_199:
+.LBB1_197:
 	ldptr.w	$a1, $a0, 5116
-	beqz	$a1, .LBB1_206
-# %bb.200:
+	beqz	$a1, .LBB1_204
+# %bb.198:
 	ld.d	$a1, $s1, 0
 	ld.w	$a2, $a0, 60
 	lu12i.w	$a4, 3
@@ -1542,8 +1532,8 @@ Configure:                              # @Configure
 	add.w	$a1, $a1, $a2
 	srai.d	$a1, $a1, 8
 	mod.wu	$a1, $a1, $a3
-	beqz	$a1, .LBB1_202
-# %bb.201:
+	beqz	$a1, .LBB1_200
+# %bb.199:
 	pcalau12i	$a0, %pc_hi20(.L.str.287)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.287)
 	ld.w	$a1, $a0, 55
@@ -1559,17 +1549,17 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_202:
+.LBB1_200:
 	ldptr.w	$a1, $a0, 2096
-	bnez	$a1, .LBB1_204
-# %bb.203:
+	bnez	$a1, .LBB1_202
+# %bb.201:
 	ld.w	$a1, $a0, 20
-	beqz	$a1, .LBB1_206
-.LBB1_204:
+	beqz	$a1, .LBB1_204
+.LBB1_202:
 	ldptr.w	$a1, $a0, 5136
 	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1_206
-# %bb.205:
+	bne	$a1, $a2, .LBB1_204
+# %bb.203:
 	pcalau12i	$a0, %pc_hi20(.L.str.288)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.288)
 	ld.b	$a1, $a0, 40
@@ -1583,52 +1573,52 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_206:
+.LBB1_204:
 	ldptr.w	$a1, $a0, 2096
-	beqz	$a1, .LBB1_212
-# %bb.207:
+	beqz	$a1, .LBB1_210
+# %bb.205:
 	ldptr.w	$a1, $a0, 2964
-	beqz	$a1, .LBB1_212
-# %bb.208:
+	beqz	$a1, .LBB1_210
+# %bb.206:
 	ld.w	$a1, $a0, 1568
-	beqz	$a1, .LBB1_212
-# %bb.209:
+	beqz	$a1, .LBB1_210
+# %bb.207:
 	ld.w	$a1, $a0, 1560
-	beqz	$a1, .LBB1_212
-# %bb.210:
+	beqz	$a1, .LBB1_210
+# %bb.208:
 	ldptr.w	$a1, $a0, 5088
-	beqz	$a1, .LBB1_212
-# %bb.211:
+	beqz	$a1, .LBB1_210
+# %bb.209:
 	pcalau12i	$a0, %pc_hi20(.L.str.289)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.289)
 	addi.w	$a1, $zero, -1000
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_212:
+.LBB1_210:
 	ldptr.w	$a1, $a0, 2112
-	bnez	$a1, .LBB1_216
-# %bb.213:
+	bnez	$a1, .LBB1_214
+# %bb.211:
 	ld.w	$a1, $a0, 32
 	ori	$a2, $zero, 1
-	blt	$a2, $a1, .LBB1_216
-# %bb.214:
+	blt	$a2, $a1, .LBB1_214
+# %bb.212:
 	ldptr.w	$a1, $a0, 2096
-	blez	$a1, .LBB1_216
-# %bb.215:
+	blez	$a1, .LBB1_214
+# %bb.213:
 	pcalau12i	$a0, %pc_hi20(.L.str.290)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.290)
 	addi.w	$a1, $zero, -1000
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_216:
+.LBB1_214:
 	ldptr.w	$a1, $a0, 5100
-	beqz	$a1, .LBB1_221
-# %bb.217:
-	ldptr.w	$a1, $a0, 2136
 	beqz	$a1, .LBB1_219
-# %bb.218:
+# %bb.215:
+	ldptr.w	$a1, $a0, 2136
+	beqz	$a1, .LBB1_217
+# %bb.216:
 	pcalau12i	$a0, %pc_hi20(.L.str.291)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.291)
 	ld.w	$a1, $a0, 48
@@ -1643,13 +1633,13 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 5100
-	beqz	$a1, .LBB1_221
-.LBB1_219:                              # %.thread290.i
+	beqz	$a1, .LBB1_219
+.LBB1_217:                              # %.thread286.i
 	ld.w	$a1, $a0, 0
 	addi.w	$a1, $a1, -145
 	addi.w	$a2, $zero, -46
-	bltu	$a2, $a1, .LBB1_221
-# %bb.220:
+	bltu	$a2, $a1, .LBB1_219
+# %bb.218:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.292)
@@ -1665,15 +1655,15 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_221:                              # %.thread288.i
+.LBB1_219:                              # %.thread284.i
 	ldptr.w	$a1, $a0, 5208
-	beqz	$a1, .LBB1_224
-# %bb.222:
+	beqz	$a1, .LBB1_222
+# %bb.220:
 	ld.w	$a1, $a0, 0
 	addi.w	$a1, $a1, -145
 	addi.w	$a2, $zero, -46
-	bltu	$a2, $a1, .LBB1_224
-# %bb.223:
+	bltu	$a2, $a1, .LBB1_222
+# %bb.221:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.293)
@@ -1689,15 +1679,15 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_224:
+.LBB1_222:
 	ld.w	$a1, $a0, 64
 	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB1_227
-# %bb.225:
+	bne	$a1, $a2, .LBB1_225
+# %bb.223:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 121
-	blt	$a2, $a1, .LBB1_230
-# %bb.226:
+	blt	$a2, $a1, .LBB1_228
+# %bb.224:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.294)
@@ -1714,14 +1704,14 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 	ld.w	$a1, $a0, 64
-.LBB1_227:
+.LBB1_225:
 	ori	$a2, $zero, 3
-	bne	$a1, $a2, .LBB1_230
-# %bb.228:
+	bne	$a1, $a2, .LBB1_228
+# %bb.226:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 143
-	blt	$a2, $a1, .LBB1_230
-# %bb.229:
+	blt	$a2, $a1, .LBB1_228
+# %bb.227:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.295)
@@ -1736,17 +1726,17 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_230:                              # %.thread292.i
+.LBB1_228:                              # %.thread288.i
 	ldptr.w	$a1, $a0, 2096
-	beqz	$a1, .LBB1_234
-# %bb.231:
+	beqz	$a1, .LBB1_232
+# %bb.229:
 	ldptr.w	$a1, $a0, 2120
-	beqz	$a1, .LBB1_234
-# %bb.232:
+	beqz	$a1, .LBB1_232
+# %bb.230:
 	ld.w	$a1, $a0, 28
 	ldptr.w	$a2, $a0, 2128
-	bge	$a1, $a2, .LBB1_234
-# %bb.233:
+	bge	$a1, $a2, .LBB1_232
+# %bb.231:
 	pcalau12i	$a0, %pc_hi20(.L.str.296)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.296)
 	ld.w	$a1, $a0, 55
@@ -1762,13 +1752,13 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_234:
+.LBB1_232:
 	ldptr.w	$a1, $a0, 5776
-	beqz	$a1, .LBB1_239
-# %bb.235:
+	beqz	$a1, .LBB1_237
+# %bb.233:
 	ldptr.w	$a1, $a0, 5772
-	bnez	$a1, .LBB1_237
-# %bb.236:
+	bnez	$a1, .LBB1_235
+# %bb.234:
 	pcalau12i	$a0, %pc_hi20(.L.str.297)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.297)
 	ld.w	$a1, $a0, 55
@@ -1785,11 +1775,11 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 5776
-	beqz	$a1, .LBB1_239
-.LBB1_237:                              # %.thread295.i
+	beqz	$a1, .LBB1_237
+.LBB1_235:                              # %.thread291.i
 	ld.w	$a1, $a0, 64
-	bnez	$a1, .LBB1_239
-# %bb.238:
+	bnez	$a1, .LBB1_237
+# %bb.236:
 	pcalau12i	$a1, %pc_hi20(.L.str.298)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.298)
 	ld.b	$a2, $a1, 56
@@ -1801,13 +1791,13 @@ Configure:                              # @Configure
 	vst	$vr0, $fp, 32
 	xvst	$xr1, $fp, 0
 	stptr.w	$zero, $a0, 5776
-.LBB1_239:                              # %.thread293.i
+.LBB1_237:                              # %.thread289.i
 	ld.w	$a1, $a0, 1564
-	beqz	$a1, .LBB1_243
-# %bb.240:
+	beqz	$a1, .LBB1_241
+# %bb.238:
 	ldptr.w	$a1, $a0, 4704
-	beqz	$a1, .LBB1_242
-# %bb.241:
+	beqz	$a1, .LBB1_240
+# %bb.239:
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.299)
 	ld.w	$a1, $a0, 55
@@ -1824,20 +1814,20 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 	ld.w	$a1, $a0, 1564
-	beqz	$a1, .LBB1_243
-.LBB1_242:                              # %.thread299.i
+	beqz	$a1, .LBB1_241
+.LBB1_240:                              # %.thread295.i
 	ori	$a1, $zero, 1
 	stptr.w	$a1, $a0, 4000
-.LBB1_243:                              # %.thread297.i
+.LBB1_241:                              # %.thread293.i
 	ldptr.w	$a1, $a0, 5084
-	beqz	$a1, .LBB1_255
-# %bb.244:
+	beqz	$a1, .LBB1_253
+# %bb.242:
 	ldptr.w	$a1, $a0, 4704
-	bnez	$a1, .LBB1_246
-# %bb.245:
+	bnez	$a1, .LBB1_244
+# %bb.243:
 	ldptr.w	$a1, $a0, 4708
-	beqz	$a1, .LBB1_247
-.LBB1_246:
+	beqz	$a1, .LBB1_245
+.LBB1_244:
 	pcalau12i	$a0, %pc_hi20(.L.str.300)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.300)
 	ld.b	$a1, $a0, 56
@@ -1853,10 +1843,10 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_247:
+.LBB1_245:
 	ldptr.w	$a1, $a0, 2940
-	beqz	$a1, .LBB1_249
-# %bb.248:
+	beqz	$a1, .LBB1_247
+# %bb.246:
 	pcalau12i	$a0, %pc_hi20(.L.str.301)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.301)
 	ld.h	$a1, $a0, 56
@@ -1872,10 +1862,10 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_249:
+.LBB1_247:
 	ldptr.w	$a1, $a0, 2096
-	beqz	$a1, .LBB1_251
-# %bb.250:
+	beqz	$a1, .LBB1_249
+# %bb.248:
 	pcalau12i	$a0, %pc_hi20(.L.str.302)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.302)
 	ld.b	$a1, $a0, 48
@@ -1889,14 +1879,14 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_251:
+.LBB1_249:
 	ori	$a1, $s8, 1664
 	ldx.wu	$a2, $a0, $a1
 	ldptr.w	$a1, $a0, 5764
 	ori	$a3, $zero, 1
 	sll.w	$a2, $a3, $a2
-	bge	$a1, $a2, .LBB1_253
-# %bb.252:
+	bge	$a1, $a2, .LBB1_251
+# %bb.250:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.303)
@@ -1912,10 +1902,10 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ori	$a1, $s8, 1668
 	ldx.w	$a1, $a0, $a1
-.LBB1_253:
+.LBB1_251:
 	ld.w	$a2, $a0, 32
-	bge	$a2, $a1, .LBB1_255
-# %bb.254:
+	bge	$a2, $a1, .LBB1_253
+# %bb.252:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.304)
@@ -1929,28 +1919,28 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_255:
+.LBB1_253:
 	ld.w	$a1, $a0, 32
 	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1_257
-# %bb.256:
+	bne	$a1, $a2, .LBB1_255
+# %bb.254:
 	ldptr.w	$a1, $a0, 2096
-	bnez	$a1, .LBB1_320
-.LBB1_257:
+	bnez	$a1, .LBB1_318
+.LBB1_255:
 	ldptr.w	$a1, $a0, 2968
-	bnez	$a1, .LBB1_259
-.LBB1_258:
+	bnez	$a1, .LBB1_257
+.LBB1_256:
 	ldptr.w	$a1, $a0, 2964
-	beqz	$a1, .LBB1_260
-.LBB1_259:
+	beqz	$a1, .LBB1_258
+.LBB1_257:
 	ldptr.w	$a1, $a0, 2096
-	bnez	$a1, .LBB1_316
-.LBB1_260:
+	bnez	$a1, .LBB1_314
+.LBB1_258:
 	ld.w	$a1, $a0, 0
 	addi.d	$a2, $a1, -66
 	ori	$a3, $zero, 56
-	bltu	$a3, $a2, .LBB1_317
-.LBB1_261:
+	bltu	$a3, $a2, .LBB1_315
+.LBB1_259:
 	ori	$a3, $zero, 1
 	sll.d	$a2, $a3, $a2
 	lu12i.w	$a3, 1024
@@ -1958,15 +1948,15 @@ Configure:                              # @Configure
 	lu32i.d	$a3, 4100
 	lu52i.d	$a3, $a3, 16
 	and	$a2, $a2, $a3
-	beqz	$a2, .LBB1_317
-.LBB1_262:
+	beqz	$a2, .LBB1_315
+.LBB1_260:
 	ldptr.w	$a1, $a0, 4016
-	beqz	$a1, .LBB1_265
-# %bb.263:
+	beqz	$a1, .LBB1_263
+# %bb.261:
 	ldptr.w	$a1, $a0, 4008
 	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1_265
-# %bb.264:
+	bne	$a1, $a2, .LBB1_263
+# %bb.262:
 	pcalau12i	$a0, %pc_hi20(.L.str.316)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.316)
 	ld.d	$a1, $a0, 53
@@ -1982,14 +1972,14 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_265:
+.LBB1_263:
 	ldptr.w	$a1, $a0, 5084
-	beqz	$a1, .LBB1_268
-# %bb.266:
+	beqz	$a1, .LBB1_266
+# %bb.264:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 66
-	beq	$a1, $a2, .LBB1_268
-# %bb.267:
+	beq	$a1, $a2, .LBB1_266
+# %bb.265:
 	pcalau12i	$a0, %pc_hi20(.L.str.317)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.317)
 	ld.b	$a1, $a0, 56
@@ -2005,14 +1995,14 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_268:
+.LBB1_266:
 	ldptr.w	$a1, $a0, 4016
-	beqz	$a1, .LBB1_271
-# %bb.269:
+	beqz	$a1, .LBB1_269
+# %bb.267:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 88
-	beq	$a1, $a2, .LBB1_271
-# %bb.270:
+	beq	$a1, $a2, .LBB1_269
+# %bb.268:
 	pcalau12i	$a0, %pc_hi20(.L.str.318)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.318)
 	ld.d	$a1, $a0, 47
@@ -2026,27 +2016,27 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_271:
+.LBB1_269:
 	ldptr.w	$a1, $a0, 4072
-	beqz	$a1, .LBB1_273
-# %bb.272:
+	beqz	$a1, .LBB1_271
+# %bb.270:
 	ldptr.w	$a1, $a0, 4176
-	bnez	$a1, .LBB1_319
-.LBB1_273:
+	bnez	$a1, .LBB1_317
+.LBB1_271:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 66
-	bne	$a1, $a2, .LBB1_287
-.LBB1_274:
+	bne	$a1, $a2, .LBB1_285
+.LBB1_272:
 	ldptr.w	$a1, $a0, 2096
-	bnez	$a1, .LBB1_276
-# %bb.275:
+	bnez	$a1, .LBB1_274
+# %bb.273:
 	ldptr.w	$a1, $a0, 2964
 	ori	$a2, $zero, 2
-	bne	$a1, $a2, .LBB1_278
-.LBB1_276:
+	bne	$a1, $a2, .LBB1_276
+.LBB1_274:
 	ldptr.w	$a1, $a0, 2100
-	bnez	$a1, .LBB1_278
-# %bb.277:
+	bnez	$a1, .LBB1_276
+# %bb.275:
 	pcalau12i	$a0, %pc_hi20(.L.str.321)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.321)
 	ld.d	$a1, $a0, 30
@@ -2058,10 +2048,10 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_278:
+.LBB1_276:
 	ldptr.w	$a1, $a0, 2136
-	beqz	$a1, .LBB1_280
-# %bb.279:
+	beqz	$a1, .LBB1_278
+# %bb.277:
 	pcalau12i	$a0, %pc_hi20(.L.str.322)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.322)
 	ld.b	$a1, $a0, 40
@@ -2075,10 +2065,23 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_280:
+.LBB1_278:
 	ldptr.w	$a1, $a0, 2928
 	pcalau12i	$a2, %pc_hi20(.L.str.323)
 	addi.d	$s0, $a2, %pc_lo12(.L.str.323)
+	beqz	$a1, .LBB1_280
+# %bb.279:
+	vld	$vr0, $s0, 32
+	xvld	$xr1, $s0, 0
+	vst	$vr0, $fp, 32
+	xvst	$xr1, $fp, 0
+	ori	$a1, $zero, 500
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s4, 0
+.LBB1_280:
+	ldptr.w	$a1, $a0, 2932
 	beqz	$a1, .LBB1_282
 # %bb.281:
 	vld	$vr0, $s0, 32
@@ -2091,23 +2094,10 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 .LBB1_282:
-	ldptr.w	$a1, $a0, 2932
-	beqz	$a1, .LBB1_284
-# %bb.283:
-	vld	$vr0, $s0, 32
-	xvld	$xr1, $s0, 0
-	vst	$vr0, $fp, 32
-	xvst	$xr1, $fp, 0
-	ori	$a1, $zero, 500
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 0
-.LBB1_284:
 	ldptr.w	$a1, $a0, 4008
 	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1_286
-# %bb.285:
+	bne	$a1, $a2, .LBB1_284
+# %bb.283:
 	pcalau12i	$a0, %pc_hi20(.L.str.324)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.324)
 	ld.h	$a1, $a0, 32
@@ -2119,15 +2109,15 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_286:                              # %thread-pre-split.i.i
+.LBB1_284:                              # %thread-pre-split.i.i
 	ld.w	$a1, $a0, 0
-.LBB1_287:
+.LBB1_285:
 	ori	$a2, $zero, 77
-	bne	$a1, $a2, .LBB1_292
-# %bb.288:
+	bne	$a1, $a2, .LBB1_290
+# %bb.286:
 	ldptr.w	$a1, $a0, 2136
-	beqz	$a1, .LBB1_290
-# %bb.289:
+	beqz	$a1, .LBB1_288
+# %bb.287:
 	pcalau12i	$a0, %pc_hi20(.L.str.325)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.325)
 	ld.d	$a1, $a0, 29
@@ -2139,10 +2129,10 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_290:
+.LBB1_288:
 	ldptr.w	$a1, $a0, 5032
-	beqz	$a1, .LBB1_292
-# %bb.291:
+	beqz	$a1, .LBB1_290
+# %bb.289:
 	pcalau12i	$a0, %pc_hi20(.L.str.326)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.326)
 	ld.d	$a1, $a0, 48
@@ -2156,18 +2146,18 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_292:
+.LBB1_290:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 88
-	bne	$a1, $a2, .LBB1_296
-# %bb.293:
+	bne	$a1, $a2, .LBB1_294
+# %bb.291:
 	ldptr.w	$a1, $a0, 2116
-	beqz	$a1, .LBB1_315
-# %bb.294:
+	beqz	$a1, .LBB1_313
+# %bb.292:
 	ldptr.w	$a1, $a0, 4008
 	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB1_296
-.LBB1_295:
+	bne	$a1, $a2, .LBB1_294
+.LBB1_293:
 	pcalau12i	$a0, %pc_hi20(.L.str.328)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.328)
 	ld.h	$a1, $a0, 32
@@ -2179,24 +2169,24 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_296:                              # %ProfileCheck.exit.i
+.LBB1_294:                              # %ProfileCheck.exit.i
 	ld.w	$a1, $a0, 4
 	ori	$a2, $zero, 30
-	blt	$a1, $a2, .LBB1_298
-# %bb.297:
+	blt	$a1, $a2, .LBB1_296
+# %bb.295:
 	ldptr.w	$a2, $a0, 2116
-	beqz	$a2, .LBB1_321
-.LBB1_298:
+	beqz	$a2, .LBB1_319
+.LBB1_296:
 	addi.w	$a1, $a1, -42
 	addi.w	$a2, $zero, -22
-	bltu	$a2, $a1, .LBB1_302
-.LBB1_299:
+	bltu	$a2, $a1, .LBB1_300
+.LBB1_297:
 	ldptr.w	$a1, $a0, 4704
-	bgtz	$a1, .LBB1_301
-# %bb.300:
+	bgtz	$a1, .LBB1_299
+# %bb.298:
 	ldptr.w	$a1, $a0, 4708
-	blez	$a1, .LBB1_302
-.LBB1_301:
+	blez	$a1, .LBB1_300
+.LBB1_299:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.330)
@@ -2210,10 +2200,10 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-.LBB1_302:                              # %PatchInp.exit
+.LBB1_300:                              # %PatchInp.exit
 	ldptr.w	$a0, $a0, 5108
-	beqz	$a0, .LBB1_314
-# %bb.303:
+	beqz	$a0, .LBB1_312
+# %bb.301:
 	pcalau12i	$a0, %pc_hi20(.Lstr.4)
 	addi.d	$fp, $a0, %pc_lo12(.Lstr.4)
 	move	$a0, $fp
@@ -2227,8 +2217,8 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 0
-	beqz	$a1, .LBB1_313
-# %bb.304:                              # %.lr.ph.i81.preheader
+	beqz	$a1, .LBB1_311
+# %bb.302:                              # %.lr.ph.i81.preheader
 	ori	$s2, $zero, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.254)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.254)
@@ -2237,45 +2227,45 @@ Configure:                              # @Configure
 	addi.d	$s0, $a0, %pc_lo12(.L.str.253)
 	pcalau12i	$a0, %pc_hi20(.L.str.252)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.252)
-	b	.LBB1_308
+	b	.LBB1_306
 	.p2align	4, , 16
-.LBB1_305:                              #   in Loop: Header=BB1_308 Depth=1
+.LBB1_303:                              #   in Loop: Header=BB1_306 Depth=1
 	ld.d	$a2, $s6, 8
 	move	$a0, $s0
-.LBB1_306:                              #   in Loop: Header=BB1_308 Depth=1
+.LBB1_304:                              #   in Loop: Header=BB1_306 Depth=1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-.LBB1_307:                              #   in Loop: Header=BB1_308 Depth=1
+.LBB1_305:                              #   in Loop: Header=BB1_306 Depth=1
 	ld.d	$a1, $s6, 56
 	addi.d	$s6, $s6, 56
-	beqz	$a1, .LBB1_313
-.LBB1_308:                              # %.lr.ph.i81
+	beqz	$a1, .LBB1_311
+.LBB1_306:                              # %.lr.ph.i81
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s6, 16
-	beq	$a0, $s2, .LBB1_312
-# %bb.309:                              # %.lr.ph.i81
-                                        #   in Loop: Header=BB1_308 Depth=1
-	beq	$a0, $s3, .LBB1_305
-# %bb.310:                              # %.lr.ph.i81
-                                        #   in Loop: Header=BB1_308 Depth=1
-	bnez	$a0, .LBB1_307
-# %bb.311:                              #   in Loop: Header=BB1_308 Depth=1
+	beq	$a0, $s2, .LBB1_310
+# %bb.307:                              # %.lr.ph.i81
+                                        #   in Loop: Header=BB1_306 Depth=1
+	beq	$a0, $s3, .LBB1_303
+# %bb.308:                              # %.lr.ph.i81
+                                        #   in Loop: Header=BB1_306 Depth=1
+	bnez	$a0, .LBB1_305
+# %bb.309:                              #   in Loop: Header=BB1_306 Depth=1
 	ld.d	$a0, $s6, 8
 	ld.w	$a2, $a0, 0
 	move	$a0, $s1
-	b	.LBB1_306
+	b	.LBB1_304
 	.p2align	4, , 16
-.LBB1_312:                              #   in Loop: Header=BB1_308 Depth=1
+.LBB1_310:                              #   in Loop: Header=BB1_306 Depth=1
 	ld.d	$a0, $s6, 8
 	ld.d	$a2, $a0, 0
 	move	$a0, $fp
-	b	.LBB1_306
-.LBB1_313:                              # %DisplayEncoderParams.exit
+	b	.LBB1_304
+.LBB1_311:                              # %DisplayEncoderParams.exit
 	pcalau12i	$a0, %pc_hi20(.Lstr.4)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.4)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-.LBB1_314:
+.LBB1_312:
 	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
@@ -2290,7 +2280,7 @@ Configure:                              # @Configure
 	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 144
 	ret
-.LBB1_315:
+.LBB1_313:
 	pcalau12i	$a0, %pc_hi20(.L.str.327)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.327)
 	ld.h	$a1, $a0, 56
@@ -2308,9 +2298,9 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 4008
 	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB1_295
-	b	.LBB1_296
-.LBB1_316:
+	beq	$a1, $a2, .LBB1_293
+	b	.LBB1_294
+.LBB1_314:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$s0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $s0, 0
@@ -2338,11 +2328,11 @@ Configure:                              # @Configure
 	ld.w	$a1, $a0, 0
 	addi.d	$a2, $a1, -66
 	ori	$a3, $zero, 56
-	bgeu	$a3, $a2, .LBB1_261
-.LBB1_317:
+	bgeu	$a3, $a2, .LBB1_259
+.LBB1_315:
 	ori	$a2, $zero, 144
-	beq	$a1, $a2, .LBB1_262
-# %bb.318:
+	beq	$a1, $a2, .LBB1_260
+# %bb.316:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str.315)
@@ -2358,8 +2348,8 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-	b	.LBB1_262
-.LBB1_319:
+	b	.LBB1_260
+.LBB1_317:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$s1, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $s1, 0
@@ -2387,9 +2377,9 @@ Configure:                              # @Configure
 	stptr.w	$zero, $a0, 4176
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 66
-	beq	$a1, $a2, .LBB1_274
-	b	.LBB1_287
-.LBB1_320:
+	beq	$a1, $a2, .LBB1_272
+	b	.LBB1_285
+.LBB1_318:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$s0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $s0, 0
@@ -2415,9 +2405,9 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 2968
-	bnez	$a1, .LBB1_259
-	b	.LBB1_258
-.LBB1_321:
+	bnez	$a1, .LBB1_257
+	b	.LBB1_256
+.LBB1_319:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0
@@ -2433,9 +2423,9 @@ Configure:                              # @Configure
 	stptr.w	$fp, $a0, 2116
 	addi.w	$a1, $a1, -42
 	addi.w	$a2, $zero, -22
-	bgeu	$a2, $a1, .LBB1_299
-	b	.LBB1_302
-.LBB1_322:
+	bgeu	$a2, $a1, .LBB1_297
+	b	.LBB1_300
+.LBB1_320:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$fp, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $fp, 0
@@ -2459,7 +2449,7 @@ Configure:                              # @Configure
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s4, 0
-	b	.LBB1_113
+	b	.LBB1_112
 .Lfunc_end1:
 	.size	Configure, .Lfunc_end1-Configure
                                         # -- End function
@@ -2928,13 +2918,10 @@ ParseContent:                           # @ParseContent
 	.type	CeilLog2,@function
 CeilLog2:                               # @CeilLog2
 # %bb.0:                                # %._crit_edge
-	addi.w	$a0, $a0, -1
-	sltui	$a1, $a0, 1
-	slli.d	$a0, $a0, 32
-	clz.d	$a0, $a0
-	ori	$a2, $zero, 32
-	sub.d	$a0, $a2, $a0
-	masknez	$a0, $a0, $a1
+	addi.d	$a0, $a0, -1
+	clz.w	$a0, $a0
+	ori	$a1, $zero, 32
+	sub.w	$a0, $a1, $a0
 	ret
 .Lfunc_end4:
 	.size	CeilLog2, .Lfunc_end4-CeilLog2

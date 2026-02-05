@@ -497,26 +497,26 @@ put_gray_rows:                          # @put_gray_rows
 	move	$a0, $s0
 	jirl	$ra, $a5, 0
 	ld.w	$a1, $fp, 76
-	ld.wu	$a2, $s0, 128
+	ld.wu	$a3, $s0, 128
 	ld.d	$a5, $a0, 0
 	addi.d	$a0, $a1, 1
-	addi.w	$a1, $a2, 0
+	addi.w	$a1, $a3, 0
 	st.w	$a0, $fp, 76
 	beqz	$a1, .LBB3_6
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $fp, 32
 	ld.d	$a6, $a0, 0
 	ori	$a0, $zero, 64
-	bltu	$a2, $a0, .LBB3_7
+	bltu	$a3, $a0, .LBB3_7
 # %bb.2:                                # %.lr.ph.preheader
 	sub.d	$a1, $a5, $a6
 	bltu	$a1, $a0, .LBB3_7
 # %bb.3:                                # %vector.ph
-	bstrpick.d	$a0, $a2, 31, 6
+	bstrpick.d	$a0, $a3, 31, 6
 	slli.d	$a4, $a0, 6
-	sub.d	$a1, $a2, $a4
+	sub.d	$a1, $a3, $a4
 	add.d	$a0, $a5, $a4
-	add.d	$a3, $a6, $a4
+	add.d	$a2, $a6, $a4
 	addi.d	$a6, $a6, 32
 	addi.d	$a5, $a5, 32
 	move	$a7, $a4
@@ -532,31 +532,28 @@ put_gray_rows:                          # @put_gray_rows
 	addi.d	$a5, $a5, 64
 	bnez	$a7, .LBB3_4
 # %bb.5:                                # %middle.block
-	bne	$a4, $a2, .LBB3_8
-	b	.LBB3_10
+	bne	$a4, $a3, .LBB3_8
+	b	.LBB3_9
 .LBB3_6:
 	move	$a0, $a5
-	b	.LBB3_10
+	b	.LBB3_9
 .LBB3_7:
-	move	$a1, $a2
+	move	$a1, $a3
 	move	$a0, $a5
-	move	$a3, $a6
-.LBB3_8:                                # %.lr.ph.preheader34
-	move	$a2, $a0
+	move	$a2, $a6
 	.p2align	4, , 16
-.LBB3_9:                                # %.lr.ph
+.LBB3_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a4, $a3, 0
-	addi.d	$a3, $a3, 1
-	addi.d	$a0, $a2, 1
+	ld.b	$a3, $a2, 0
+	addi.d	$a2, $a2, 1
+	st.b	$a3, $a0, 0
 	addi.w	$a1, $a1, -1
-	st.b	$a4, $a2, 0
-	move	$a2, $a0
-	bnez	$a1, .LBB3_9
-.LBB3_10:                               # %._crit_edge
+	addi.d	$a0, $a0, 1
+	bnez	$a1, .LBB3_8
+.LBB3_9:                                # %._crit_edge
 	ld.w	$a2, $fp, 72
-	blez	$a2, .LBB3_12
-# %bb.11:                               # %.lr.ph26.preheader
+	blez	$a2, .LBB3_11
+# %bb.10:                               # %.lr.ph26.preheader
 	move	$a1, $zero
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -564,7 +561,7 @@ put_gray_rows:                          # @put_gray_rows
 	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
-.LBB3_12:                               # %._crit_edge27
+.LBB3_11:                               # %._crit_edge27
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

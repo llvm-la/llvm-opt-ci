@@ -46,7 +46,7 @@ f:                                      # @f
 	addi.d	$sp, $sp, -16
 	sub.w	$a4, $a0, $a2
 	ori	$a5, $zero, 2
-	blt	$a5, $a4, .LBB0_11
+	blt	$a5, $a4, .LBB0_10
 # %bb.1:                                # %.lr.ph
 	srai.d	$a5, $a4, 63
 	andn	$a7, $a4, $a5
@@ -56,7 +56,7 @@ f:                                      # @f
 	bgeu	$a4, $a5, .LBB0_3
 # %bb.2:
 	move	$a5, $a7
-	b	.LBB0_8
+	b	.LBB0_7
 .LBB0_3:                                # %vector.ph
 	sub.d	$t0, $a2, $a0
 	sub.d	$t1, $a2, $a1
@@ -79,8 +79,8 @@ f:                                      # @f
 	xvadd.w	$xr4, $xr6, $xr4
 	xvadd.w	$xr5, $xr6, $xr5
 	xvadd.w	$xr6, $xr6, $xr7
-	addi.w	$a7, $a6, -32
 	xvrepli.w	$xr7, 32
+	move	$a7, $a6
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -217,21 +217,18 @@ f:                                      # @f
 	or	$t0, $t0, $t1
 	st.w	$t0, $sp, 12
 	ld.w	$t0, $sp, 12
-	bnez	$t0, .LBB0_6
-# %bb.5:                                # %vector.body
+	bnez	$t0, .LBB0_11
+# %bb.5:                                # %vector.body.interim
                                         #   in Loop: Header=BB0_4 Depth=1
-	move	$t1, $a7
 	xvadd.w	$xr6, $xr6, $xr7
 	xvadd.w	$xr5, $xr5, $xr7
 	xvadd.w	$xr4, $xr4, $xr7
-	xvadd.w	$xr3, $xr3, $xr7
 	addi.w	$a7, $a7, -32
-	bnez	$t1, .LBB0_4
-.LBB0_6:                                # %middle.split
-	bnez	$t0, .LBB0_12
-# %bb.7:                                # %middle.block
-	beq	$a4, $a6, .LBB0_11
-.LBB0_8:                                # %scalar.ph.preheader
+	xvadd.w	$xr3, $xr3, $xr7
+	bnez	$a7, .LBB0_4
+# %bb.6:                                # %middle.block
+	beq	$a4, $a6, .LBB0_10
+.LBB0_7:                                # %scalar.ph.preheader
 	addi.d	$a4, $a5, -3
 	add.d	$a5, $a5, $a2
 	nor	$a0, $a0, $zero
@@ -240,17 +237,17 @@ f:                                      # @f
 	add.d	$a0, $a2, $a0
 	sub.d	$a0, $a0, $a1
 	.p2align	4, , 16
-.LBB0_9:                                # %scalar.ph
+.LBB0_8:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	add.w	$a0, $a0, $a3
-	bltz	$a0, .LBB0_12
-# %bb.10:                               #   in Loop: Header=BB0_9 Depth=1
+	bltz	$a0, .LBB0_11
+# %bb.9:                                #   in Loop: Header=BB0_8 Depth=1
 	addi.w	$a4, $a4, 1
-	bnez	$a4, .LBB0_9
-.LBB0_11:                               # %.preheader
+	bnez	$a4, .LBB0_8
+.LBB0_10:                               # %.preheader
 	addi.d	$sp, $sp, 16
 	ret
-.LBB0_12:                               # %vector.early.exit
+.LBB0_11:                               # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:

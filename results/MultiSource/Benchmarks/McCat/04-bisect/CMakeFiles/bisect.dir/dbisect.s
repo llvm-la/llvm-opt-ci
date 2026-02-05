@@ -159,47 +159,49 @@ dbisect:                                # @dbisect
 	jr	$t8
 .LBB1_7:                                # %.lr.ph140.preheader
 	sub.d	$a1, $s5, $s0
-	addi.d	$a2, $a1, 1
-	ori	$a3, $zero, 4
-	move	$a1, $s5
+	addi.d	$a1, $a1, 1
+	ori	$a3, $zero, 8
+	move	$a2, $s5
 	xvld	$xr7, $sp, 48                   # 32-byte Folded Reload
 	xvld	$xr8, $sp, 16                   # 32-byte Folded Reload
-	bltu	$a2, $a3, .LBB1_11
+	bltu	$a1, $a3, .LBB1_11
 # %bb.8:                                # %vector.ph
-	move	$a3, $a2
-	bstrins.d	$a3, $zero, 1, 0
-	sub.d	$a1, $s5, $a3
-	xvreplve0.d	$xr0, $xr8
-	xvreplve0.d	$xr1, $xr7
+	move	$a3, $a1
+	bstrins.d	$a3, $zero, 2, 0
+	xvreplve0.d	$xr0, $xr7
+	xvreplve0.d	$xr1, $xr8
+	sub.d	$a2, $s5, $a3
 	slli.d	$a4, $s5, 3
 	addi.d	$a5, $a4, -24
-	add.d	$a4, $a0, $a5
-	add.d	$a5, $s6, $a5
+	add.d	$a4, $s6, $a5
+	add.d	$a5, $a0, $a5
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB1_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a5, 0
 	xvst	$xr1, $a4, 0
-	addi.d	$a6, $a6, -4
-	addi.d	$a4, $a4, -32
-	addi.d	$a5, $a5, -32
+	xvst	$xr1, $a4, -32
+	xvst	$xr0, $a5, 0
+	xvst	$xr0, $a5, -32
+	addi.d	$a6, $a6, -8
+	addi.d	$a4, $a4, -64
+	addi.d	$a5, $a5, -64
 	bnez	$a6, .LBB1_9
 # %bb.10:                               # %middle.block
-	beq	$a2, $a3, .LBB1_13
+	beq	$a1, $a3, .LBB1_13
 .LBB1_11:                               # %.lr.ph140.preheader178
-	addi.d	$a2, $a1, 1
-	alsl.d	$a3, $a1, $s6, 3
-	alsl.d	$a1, $a1, $a0, 3
+	addi.d	$a1, $a2, 1
+	alsl.d	$a3, $a2, $s6, 3
+	alsl.d	$a2, $a2, $a0, 3
 	.p2align	4, , 16
 .LBB1_12:                               # %.lr.ph140
                                         # =>This Inner Loop Header: Depth=1
 	fst.d	$ft0, $a3, 0
-	fst.d	$fa7, $a1, 0
-	addi.d	$a2, $a2, -1
+	fst.d	$fa7, $a2, 0
+	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, -8
-	addi.d	$a1, $a1, -8
-	blt	$s0, $a2, .LBB1_12
+	addi.d	$a2, $a2, -8
+	blt	$s0, $a1, .LBB1_12
 .LBB1_13:                               # %.preheader.lr.ph
 	move	$a1, $zero
 	st.w	$zero, $fp, 0

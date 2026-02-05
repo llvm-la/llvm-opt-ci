@@ -462,28 +462,22 @@ _ZN9benchmark15ConsoleReporter10ReportRunsERKSt6vectorINS_17BenchmarkReporter3Ru
 	addi.d	$fp, $fp, 560
 	beq	$fp, $s3, .LBB2_7
 .LBB2_3:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a0, $s0, 24
-	ld.bu	$s5, $s0, 88
-	andi	$a0, $a0, 2
+	ld.bu	$a0, $s0, 88
+	ld.bu	$a1, $s0, 24
+	xori	$s5, $a0, 1
+	andi	$a0, $a1, 2
 	addi.d	$s2, $fp, 496
-	bnez	$a0, .LBB2_5
+	beqz	$a0, .LBB2_5
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
-	move	$a0, $zero
-	xori	$a1, $s5, 1
-	or	$a0, $a0, $a1
-	bnez	$a0, .LBB2_6
-	b	.LBB2_2
-	.p2align	4, , 16
-.LBB2_5:                                #   in Loop: Header=BB2_3 Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark8internal9SameNamesERKSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_7CounterESt4lessIS7_ESaISt4pairIKS7_S8_EEESH_)
 	jirl	$ra, $ra, 0
 	xori	$a0, $a0, 1
-	xori	$a1, $s5, 1
-	or	$a0, $a0, $a1
-	beqz	$a0, .LBB2_2
-.LBB2_6:                                #   in Loop: Header=BB2_3 Depth=1
+	or	$s5, $a0, $s5
+.LBB2_5:                                #   in Loop: Header=BB2_3 Depth=1
+	beqz	$s5, .LBB2_2
+# %bb.6:                                #   in Loop: Header=BB2_3 Depth=1
 	st.b	$s4, $s0, 88
 	move	$a0, $s1
 	move	$a1, $s2

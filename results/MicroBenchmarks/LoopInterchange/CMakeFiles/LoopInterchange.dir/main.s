@@ -516,23 +516,25 @@ _GLOBAL__sub_I_main.cpp:                # @_GLOBAL__sub_I_main.cpp
 .Ltmp20:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB3_8
-# %bb.7:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s2, .LBB3_9
-	b	.LBB3_10
-.LBB3_8:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB3_9
+# %bb.7:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bnez	$s2, .LBB3_10
+.LBB3_8:
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB3_9:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s2, .LBB3_10
-.LBB3_9:
+	beqz	$s2, .LBB3_8
+.LBB3_10:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB3_10:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

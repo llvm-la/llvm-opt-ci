@@ -1763,35 +1763,34 @@ _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	move	$a0, $zero
 	st.d	$s0, $s2, 8
 	ld.d	$a1, $fp, 8
-	addi.d	$a3, $s3, -1
-	ori	$a2, $zero, 1
-	sll.w	$a3, $a2, $a3
+	addi.d	$a2, $s3, -1
+	ori	$a3, $zero, 1
+	sll.w	$a2, $a3, $a2
 	.p2align	4, , 16
 .LBB5_2:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_3 Depth 2
-	slli.d	$a4, $a0, 3
-	fldx.d	$fa0, $a1, $a4
-	move	$a4, $zero
-	ori	$a5, $zero, 1
-	move	$a6, $a3
+	slli.d	$a3, $a0, 3
+	fldx.d	$fa0, $a1, $a3
+	move	$a3, $zero
+	ori	$a4, $zero, 1
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB5_3:                                #   Parent Loop BB5_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a7, $a6
-	and	$a6, $a5, $a0
+	and	$a6, $a4, $a0
 	sltui	$a6, $a6, 1
-	masknez	$a6, $a7, $a6
-	or	$a4, $a6, $a4
-	srli.d	$a6, $a7, 1
-	slli.d	$a5, $a5, 1
-	bltu	$a2, $a7, .LBB5_3
+	masknez	$a6, $a5, $a6
+	or	$a3, $a6, $a3
+	srli.d	$a5, $a5, 1
+	slli.d	$a4, $a4, 1
+	bnez	$a5, .LBB5_3
 # %bb.4:                                # %_ZN10polynomialIdE9flip_bitsEmm.exit.i
                                         #   in Loop: Header=BB5_2 Depth=1
-	alsl.d	$a5, $a4, $s0, 4
-	slli.d	$a4, $a4, 4
-	fstx.d	$fa0, $s0, $a4
+	alsl.d	$a4, $a3, $s0, 4
+	slli.d	$a3, $a3, 4
+	fstx.d	$fa0, $s0, $a3
 	addi.d	$a0, $a0, 1
-	st.d	$zero, $a5, 8
+	st.d	$zero, $a4, 8
 	bne	$a0, $s1, .LBB5_2
 # %bb.5:                                # %_ZN10polynomialIdE11bit_reverseERKS0_.exit
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
@@ -2060,33 +2059,32 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	move	$a0, $zero
 	st.d	$fp, $s2, 8
 	ld.d	$a1, $s0, 8
-	addi.d	$a3, $s3, -1
-	ori	$a2, $zero, 1
-	sll.w	$a3, $a2, $a3
+	addi.d	$a2, $s3, -1
+	ori	$a3, $zero, 1
+	sll.w	$a2, $a3, $a2
 	.p2align	4, , 16
 .LBB6_2:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_3 Depth 2
-	slli.d	$a4, $a0, 4
-	vldx	$vr0, $a1, $a4
-	move	$a4, $zero
-	ori	$a5, $zero, 1
-	move	$a6, $a3
+	slli.d	$a3, $a0, 4
+	vldx	$vr0, $a1, $a3
+	move	$a3, $zero
+	ori	$a4, $zero, 1
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB6_3:                                #   Parent Loop BB6_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a7, $a6
-	and	$a6, $a5, $a0
+	and	$a6, $a4, $a0
 	sltui	$a6, $a6, 1
-	masknez	$a6, $a7, $a6
-	or	$a4, $a6, $a4
-	srli.d	$a6, $a7, 1
-	slli.d	$a5, $a5, 1
-	bltu	$a2, $a7, .LBB6_3
+	masknez	$a6, $a5, $a6
+	or	$a3, $a6, $a3
+	srli.d	$a5, $a5, 1
+	slli.d	$a4, $a4, 1
+	bnez	$a5, .LBB6_3
 # %bb.4:                                # %_ZN10polynomialIdE9flip_bitsEmm.exit.i
                                         #   in Loop: Header=BB6_2 Depth=1
-	slli.d	$a4, $a4, 4
+	slli.d	$a3, $a3, 4
 	addi.d	$a0, $a0, 1
-	vstx	$vr0, $fp, $a4
+	vstx	$vr0, $fp, $a3
 	bne	$a0, $s5, .LBB6_2
 # %bb.5:                                # %_ZN10polynomialIdE11bit_reverseERKS_ISt7complexIdEE.exit
 	lu12i.w	$a3, 256

@@ -207,7 +207,7 @@ gz_open:                                # @gz_open
 	or	$a3, $a3, $a4
 	or	$a1, $a3, $a1
 	masknez	$a1, $a1, $a2
-	or	$a1, $a1, $a0
+	or	$a1, $a0, $a1
 	ori	$a2, $zero, 438
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(open)

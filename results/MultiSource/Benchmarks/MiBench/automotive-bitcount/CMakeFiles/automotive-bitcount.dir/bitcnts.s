@@ -311,34 +311,33 @@ main:                                   # @main
 	sub.d	$a1, $a1, $a4
 	add.d	$a1, $a3, $a1
 	addi.w	$a1, $a1, 1
-	ori	$a3, $zero, 2
-	ori	$a4, $zero, 63
+	ori	$a3, $zero, 63
 	b	.LBB2_16
 	.p2align	4, , 16
 .LBB2_15:                               # %bit_shifter.exit
                                         #   in Loop: Header=BB2_16 Depth=1
-	add.d	$a2, $a2, $a5
+	add.d	$a2, $a2, $a4
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 13
 	beq	$a0, $s4, .LBB2_20
 .LBB2_16:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_17 Depth 2
-	move	$a5, $zero
-	move	$t0, $zero
-	move	$a6, $a1
+	move	$a4, $zero
+	move	$a7, $zero
+	move	$a5, $a1
 	.p2align	4, , 16
 .LBB2_17:                               # %.lr.ph.i
                                         #   Parent Loop BB2_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a7, $t0
-	andi	$t0, $a6, 1
-	add.w	$a5, $t0, $a5
-	bltu	$a6, $a3, .LBB2_15
+	move	$a6, $a7
+	andi	$a7, $a5, 1
+	srli.d	$a5, $a5, 1
+	add.w	$a4, $a7, $a4
+	beqz	$a5, .LBB2_15
 # %bb.18:                               # %.lr.ph.i
                                         #   in Loop: Header=BB2_17 Depth=2
-	addi.w	$t0, $a7, 1
-	srli.d	$a6, $a6, 1
-	bltu	$a7, $a4, .LBB2_17
+	addi.w	$a7, $a6, 1
+	bltu	$a6, $a3, .LBB2_17
 	b	.LBB2_15
 .LBB2_19:                               # %.split.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.9)

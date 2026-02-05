@@ -891,14 +891,13 @@ _ZN19btPrimitiveTriangle35find_triangle_collision_clip_methodERS_R20GIM_TRIANGLE
 .LBB5_29:                               # %_ZN20GIM_TRIANGLE_CONTACT12merge_pointsERK9btVector4fPK9btVector3i.exit30
 	beqz	$a2, .LBB5_32
 # %bb.30:
-	addi.d	$a3, $fp, 8
 	fcmp.cule.s	$fcc0, $fs0, $fa0
 	addi.d	$a0, $fp, 24
 	bcnez	$fcc0, .LBB5_34
 # %bb.31:                               # %.lr.ph.i31
 	vld	$vr1, $a1, 0
 	fst.s	$fa0, $fp, 0
-	vst	$vr1, $a3, 0
+	vst	$vr1, $fp, 8
 	st.w	$a2, $fp, 4
 	addi.d	$a1, $sp, 40
 	slli.d	$a2, $a2, 4
@@ -923,7 +922,7 @@ _ZN19btPrimitiveTriangle35find_triangle_collision_clip_methodERS_R20GIM_TRIANGLE
 .LBB5_34:                               # %.lr.ph.i35
 	vld	$vr0, $s3, 0
 	fst.s	$fs0, $fp, 0
-	vst	$vr0, $a3, 0
+	vst	$vr0, $fp, 8
 	st.w	$s2, $fp, 4
 	addi.d	$a1, $sp, 320
 	slli.d	$a2, $s2, 4

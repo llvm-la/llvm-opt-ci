@@ -841,7 +841,7 @@ des_encrypt2:                           # @des_encrypt2
 	addi.d	$a2, $a2, -8
 	addi.d	$a1, $a1, -64
 	bltu	$t5, $a2, .LBB1_4
-.LBB1_5:                                # %.loopexit.loopexit180
+.LBB1_5:                                # %.loopexit
 	vinsgr2vr.d	$vr0, $a4, 0
 	vinsgr2vr.d	$vr0, $a3, 1
 	vsrli.d	$vr1, $vr0, 3

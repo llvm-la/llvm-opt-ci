@@ -73,7 +73,7 @@ main:                                   # @main
 	addi.d	$a1, $a0, %pc_lo12(CRCTable)
 	ld.hu	$a0, $a1, 510
 	ld.hu	$a7, $a1, 0
-	beqz	$a0, .LBB0_10
+	beqz	$a0, .LBB0_9
 # %bb.1:                                # %crc_table.exit.us.preheader
 	srli.d	$a0, $a7, 7
 	andi	$a4, $a0, 510
@@ -82,7 +82,7 @@ main:                                   # @main
 	bstrpick.d	$a0, $a2, 15, 8
 	slli.d	$a5, $a0, 8
 	ori	$a0, $zero, 1
-	bne	$a3, $a5, .LBB0_9
+	bne	$a3, $a5, .LBB0_15
 # %bb.2:                                # %crc_table.exit.us.1
 	xori	$a3, $a4, 2
 	ldx.hu	$a3, $a1, $a3
@@ -90,27 +90,27 @@ main:                                   # @main
 	xor	$a5, $a3, $a2
 	lu12i.w	$a3, 1
 	ori	$a6, $a3, 33
-	bne	$a5, $a6, .LBB0_9
+	bne	$a5, $a6, .LBB0_15
 # %bb.3:                                # %crc_table.exit.us.2
 	xori	$a5, $a4, 22
 	ldx.hu	$a5, $a1, $a5
 	xor	$a5, $a5, $a2
 	lu12i.w	$a6, 11
 	ori	$a6, $a6, 363
-	bne	$a5, $a6, .LBB0_9
+	bne	$a5, $a6, .LBB0_15
 # %bb.4:                                # %crc_table.exit.us.3
 	xori	$a5, $a4, 32
 	ldx.hu	$a5, $a1, $a5
 	xor	$a5, $a5, $a2
 	ori	$a6, $a3, 561
-	bne	$a5, $a6, .LBB0_9
+	bne	$a5, $a6, .LBB0_15
 # %bb.5:                                # %crc_table.exit.us.4
 	xori	$a4, $a4, 258
 	ldx.hu	$a4, $a1, $a4
 	xor	$a4, $a4, $a2
 	lu12i.w	$a5, 8
 	ori	$a5, $a5, 425
-	bne	$a4, $a5, .LBB0_9
+	bne	$a4, $a5, .LBB0_15
 # %bb.6:                                # %crc_table.exit.us.5
 	nor	$a4, $a7, $zero
 	bstrpick.d	$a4, $a4, 15, 8
@@ -120,7 +120,7 @@ main:                                   # @main
 	ldx.hu	$a4, $a1, $a4
 	xor	$a2, $a4, $a2
 	ori	$a3, $a3, 3824
-	bne	$a2, $a3, .LBB0_9
+	bne	$a2, $a3, .LBB0_15
 # %bb.7:                                # %crc_table.exit.us.6
 	ld.hu	$a2, $a1, 32
 	srli.d	$a3, $a2, 7
@@ -133,7 +133,7 @@ main:                                   # @main
 	xor	$a2, $a3, $a2
 	lu12i.w	$a3, 3
 	ori	$a3, $a3, 1840
-	bne	$a2, $a3, .LBB0_9
+	bne	$a2, $a3, .LBB0_15
 # %bb.8:                                # %crc_table.exit.us.7
 	ld.hu	$a0, $a1, 128
 	srli.d	$a2, $a0, 7
@@ -146,9 +146,8 @@ main:                                   # @main
 	ori	$a1, $zero, 3532
 	xor	$a0, $a0, $a1
 	sltu	$a0, $zero, $a0
-.LBB0_9:                                # %.split16.us
 	ret
-.LBB0_10:                               # %.split.preheader
+.LBB0_9:                                # %.split.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
 	xvreplgr2vr.h	$xr2, $a7
@@ -200,12 +199,12 @@ main:                                   # @main
 	xvreplgr2vr.h	$xr6, $t3
 	ori	$t3, $zero, 16
 	.p2align	4, , 16
-.LBB0_11:                               # %.split
+.LBB0_10:                               # %.split
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$t4, $a1, 510
-	bnez	$t4, .LBB0_13
-# %bb.12:                               # %vector.ph20
-                                        #   in Loop: Header=BB0_11 Depth=1
+	bnez	$t4, .LBB0_12
+# %bb.11:                               # %vector.ph20
+                                        #   in Loop: Header=BB0_10 Depth=1
 	xvst	$xr0, $a1, 2
 	xvst	$xr1, $a1, 34
 	xvst	$xr2, $a1, 66
@@ -247,8 +246,8 @@ main:                                   # @main
 	xvxor.v	$xr8, $xr9, $xr6
 	xvst	$xr7, $a1, 448
 	xvst	$xr8, $a1, 480
-.LBB0_13:                               # %crc_table.exit
-                                        #   in Loop: Header=BB0_11 Depth=1
+.LBB0_12:                               # %crc_table.exit
+                                        #   in Loop: Header=BB0_10 Depth=1
 	ldx.hu	$t4, $t0, $t2
 	srli.d	$t5, $t4, 8
 	slli.d	$t5, $t5, 1
@@ -275,11 +274,12 @@ main:                                   # @main
 	xor	$t4, $t4, $t5
 	bstrpick.d	$t5, $t6, 15, 0
 	bne	$t5, $t4, .LBB0_16
-# %bb.14:                               #   in Loop: Header=BB0_11 Depth=1
+# %bb.13:                               #   in Loop: Header=BB0_10 Depth=1
 	addi.d	$t2, $t2, 2
-	bne	$t2, $t3, .LBB0_11
-# %bb.15:
+	bne	$t2, $t3, .LBB0_10
+# %bb.14:
 	move	$a0, $zero
+.LBB0_15:                               # %.split16.us
 	ret
 .LBB0_16:
 	ori	$a0, $zero, 1

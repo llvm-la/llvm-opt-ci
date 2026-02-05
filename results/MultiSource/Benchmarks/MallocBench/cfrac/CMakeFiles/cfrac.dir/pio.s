@@ -613,8 +613,7 @@ fgetp:                                  # @fgetp
 	xvreplgr2vr.w	$xr3, $a1
 	xvslt.wu	$xr0, $xr3, $xr0
 	xvbitsel.v	$xr0, $xr2, $xr1, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvpermi.d	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1
 	xvshuf4i.w	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1

@@ -4716,19 +4716,19 @@ deflate_fast:                           # @deflate_fast
 	ldx.h	$a1, $s5, $a0
 	addi.d	$a1, $a1, 1
 	stx.h	$a1, $s5, $a0
-	ldx.w	$a1, $fp, $s6
-	ld.w	$a2, $fp, 160
+	ldx.w	$a2, $fp, $s6
+	ld.w	$a0, $fp, 160
 	ld.w	$a3, $fp, 180
 	ld.w	$a4, $fp, 192
-	ldx.w	$a0, $fp, $s7
-	addi.w	$a1, $a1, -1
-	sub.w	$a3, $a3, $a2
+	ldx.w	$a1, $fp, $s7
+	addi.w	$a2, $a2, -1
+	sub.w	$a3, $a3, $a0
 	st.w	$a3, $fp, 180
-	bltu	$a4, $a2, .LBB21_18
+	bltu	$a4, $a0, .LBB21_18
 # %bb.14:                               #   in Loop: Header=BB21_2 Depth=1
 	bltu	$a3, $s8, .LBB21_18
 # %bb.15:                               #   in Loop: Header=BB21_2 Depth=1
-	addi.d	$t1, $a2, -1
+	addi.d	$t1, $a0, -1
 	ld.w	$a3, $fp, 144
 	ld.d	$a4, $fp, 96
 	ld.w	$a5, $fp, 140
@@ -4738,13 +4738,13 @@ deflate_fast:                           # @deflate_fast
 	ld.w	$t3, $fp, 172
 	ld.w	$t2, $fp, 128
 	st.w	$t1, $fp, 160
-	addi.d	$t1, $a2, -2
-	addi.w	$a2, $t3, 1
+	addi.d	$t1, $a0, -2
+	addi.w	$a0, $t3, 1
 	.p2align	4, , 16
 .LBB21_16:                              #   Parent Loop BB21_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.w	$a2, $fp, 172
-	addi.d	$t3, $a2, 2
+	st.w	$a0, $fp, 172
+	addi.d	$t3, $a0, 2
 	bstrpick.d	$t3, $t3, 31, 0
 	ldx.bu	$t3, $a4, $t3
 	sll.w	$t2, $t2, $a3
@@ -4754,29 +4754,29 @@ deflate_fast:                           # @deflate_fast
 	bstrpick.d	$t3, $t2, 31, 0
 	slli.d	$t3, $t3, 1
 	ldx.h	$t4, $a6, $t3
-	and	$t5, $t0, $a2
+	and	$t5, $t0, $a0
 	bstrpick.d	$t5, $t5, 31, 0
 	slli.d	$t5, $t5, 1
 	stx.h	$t4, $a7, $t5
-	stx.h	$a2, $a6, $t3
+	stx.h	$a0, $a6, $t3
 	st.w	$t1, $fp, 160
 	addi.w	$t1, $t1, -1
 	addi.w	$t3, $zero, -1
-	addi.w	$a2, $a2, 1
+	addi.w	$a0, $a0, 1
 	bne	$t1, $t3, .LBB21_16
 # %bb.17:                               #   in Loop: Header=BB21_2 Depth=1
-	st.w	$a2, $fp, 172
-	bne	$a0, $a1, .LBB21_2
+	st.w	$a0, $fp, 172
+	bne	$a1, $a2, .LBB21_2
 	b	.LBB21_21
 	.p2align	4, , 16
 .LBB21_18:                              #   in Loop: Header=BB21_2 Depth=1
 	ld.w	$a3, $fp, 172
-	add.d	$a3, $a3, $a2
-	addi.w	$a2, $a3, 0
+	add.d	$a3, $a3, $a0
+	addi.w	$a0, $a3, 0
 	ld.d	$a4, $fp, 96
 	st.w	$a3, $fp, 172
 	st.w	$zero, $fp, 160
-	bstrpick.d	$a5, $a2, 31, 0
+	bstrpick.d	$a5, $a0, 31, 0
 	ldx.bu	$a5, $a4, $a5
 	st.w	$a5, $fp, 128
 	ld.wu	$a6, $fp, 144
@@ -4788,7 +4788,7 @@ deflate_fast:                           # @deflate_fast
 	xor	$a3, $a5, $a3
 	and	$a3, $a3, $a4
 	st.w	$a3, $fp, 128
-	bne	$a0, $a1, .LBB21_2
+	bne	$a1, $a2, .LBB21_2
 	b	.LBB21_21
 	.p2align	4, , 16
 .LBB21_19:                              #   in Loop: Header=BB21_2 Depth=1
@@ -4816,27 +4816,27 @@ deflate_fast:                           # @deflate_fast
 	stx.h	$a1, $a2, $a0
 	ldx.w	$a0, $fp, $s6
 	ld.w	$a1, $fp, 180
-	ldptr.w	$a3, $fp, 5900
-	ld.w	$a2, $fp, 172
-	addi.w	$a0, $a0, -1
-	addi.d	$a1, $a1, -1
-	st.w	$a1, $fp, 180
-	addi.w	$a2, $a2, 1
-	st.w	$a2, $fp, 172
-	bne	$a3, $a0, .LBB21_2
+	ldptr.w	$a2, $fp, 5900
+	ld.w	$a3, $fp, 172
+	addi.w	$a4, $a0, -1
+	addi.d	$a0, $a1, -1
+	st.w	$a0, $fp, 180
+	addi.w	$a0, $a3, 1
+	st.w	$a0, $fp, 172
+	bne	$a2, $a4, .LBB21_2
 .LBB21_21:                              #   in Loop: Header=BB21_2 Depth=1
-	ld.d	$a0, $fp, 152
-	bltz	$a0, .LBB21_23
+	ld.d	$a2, $fp, 152
+	bltz	$a2, .LBB21_23
 # %bb.22:                               #   in Loop: Header=BB21_2 Depth=1
 	ld.d	$a1, $fp, 96
-	bstrpick.d	$a3, $a0, 31, 0
+	bstrpick.d	$a3, $a2, 31, 0
 	add.d	$a1, $a1, $a3
 	b	.LBB21_24
 .LBB21_23:                              #   in Loop: Header=BB21_2 Depth=1
 	move	$a1, $zero
 .LBB21_24:                              #   in Loop: Header=BB21_2 Depth=1
-	bstrpick.d	$a2, $a2, 31, 0
-	sub.d	$a2, $a2, $a0
+	bstrpick.d	$a0, $a0, 31, 0
+	sub.d	$a2, $a0, $a2
 	move	$a0, $fp
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(_tr_flush_block)

@@ -307,7 +307,8 @@ res_fname:                              # @res_fname
 # %bb.13:                               #   in Loop: Header=BB5_7 Depth=1
 	bge	$s4, $s0, .LBB5_22
 # %bb.14:                               #   in Loop: Header=BB5_7 Depth=1
-	sub.w	$a0, $a0, $a1
+	sub.d	$a0, $a0, $a1
+	slli.d	$a0, $a0, 32
 	addi.d	$a1, $s1, 1
 	sltu	$a1, $zero, $a1
 	slti	$a0, $a0, 0

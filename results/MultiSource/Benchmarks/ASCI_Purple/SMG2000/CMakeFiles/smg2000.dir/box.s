@@ -429,15 +429,13 @@ hypre_BoxArrayArrayDuplicate:           # @hypre_BoxArrayArrayDuplicate
 	bge	$a0, $s8, .LBB10_7
 # %bb.6:                                #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$a0, $s6, 0
-	move	$s0, $fp
-	addi.d	$fp, $s8, 10
-	slli.d	$a1, $fp, 4
-	alsl.w	$a1, $fp, $a1, 3
+	addi.d	$s0, $s8, 10
+	slli.d	$a1, $s0, 4
+	alsl.w	$a1, $s0, $a1, 3
 	pcaddu18i	$ra, %call36(hypre_ReAlloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s6, 0
-	st.w	$fp, $s6, 12
-	move	$fp, $s0
+	st.w	$s0, $s6, 12
 .LBB10_7:                               # %hypre_BoxArraySetSize.exit.i
                                         #   in Loop: Header=BB10_5 Depth=1
 	st.w	$s8, $s6, 8

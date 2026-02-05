@@ -2710,7 +2710,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	beqz	$s7, .LBB4_72
 # %bb.20:
 	srli.d	$a0, $s7, 60
-	bnez	$a0, .LBB4_272
+	bnez	$a0, .LBB4_265
 # %bb.21:                               # %_ZNKSt6vectorIdSaIdEE12_M_check_lenEmPKc.exit.i
 	slli.d	$s4, $s7, 3
 .Ltmp127:                               # EH_LABEL
@@ -2886,7 +2886,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$s5, $fp, 1160
 	srli.d	$a0, $s5, 61
-	bnez	$a0, .LBB4_272
+	bnez	$a0, .LBB4_265
 # %bb.52:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i
 	slli.d	$s4, $s5, 2
 .Ltmp94:                                # EH_LABEL
@@ -2945,7 +2945,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	ori	$a2, $zero, 4
 	ld.d	$t0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	bgeu	$s5, $a2, .LBB4_128
+	bgeu	$s5, $a2, .LBB4_121
 # %bb.59:
 	move	$a2, $zero
 	move	$a3, $zero
@@ -2982,7 +2982,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	fdiv.d	$fa0, $fa2, $fa0
 	ori	$a2, $zero, 16
 	fdiv.d	$fa1, $fa2, $fa1
-	bgeu	$s5, $a2, .LBB4_132
+	bgeu	$s5, $a2, .LBB4_125
 # %bb.63:
 	move	$a2, $zero
 .LBB4_64:                               # %scalar.ph.preheader
@@ -3030,11 +3030,11 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $fp, 1160
 	srli.d	$a0, $s3, 61
-	bnez	$a0, .LBB4_274
+	bnez	$a0, .LBB4_267
 # %bb.68:                               # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i215
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
 	move	$s1, $s2
-	beqz	$s3, .LBB4_193
+	beqz	$s3, .LBB4_186
 # %bb.69:
 	slli.d	$a0, $s3, 2
 .Ltmp100:                               # EH_LABEL
@@ -3047,14 +3047,14 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a1, $s3, -1
 	st.w	$zero, $s4, 0
-	beqz	$a1, .LBB4_194
+	beqz	$a1, .LBB4_187
 # %bb.71:                               # %_ZSt6fill_nIPimiET_S1_T0_RKT1_.exit.loopexit.i.i.i.i.i217
 	addi.d	$a0, $s4, 4
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	b	.LBB4_194
+	b	.LBB4_187
 .LBB4_72:
 	move	$fp, $s5
 	move	$s8, $zero
@@ -3218,13 +3218,13 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 .Ltmp134:                               # EH_LABEL
 # %bb.102:                              # %.preheader486
 	ld.d	$s0, $fp, 1160
-	beqz	$s0, .LBB4_142
+	beqz	$s0, .LBB4_135
 # %bb.103:                              # %iter.check1033
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ori	$a1, $zero, 4
 	addi.d	$s2, $s0, -1
-	bgeu	$s0, $a1, .LBB4_245
+	bgeu	$s0, $a1, .LBB4_238
 # %bb.104:
 	move	$a1, $zero
 .LBB4_105:                              # %vec.epilog.scalar.ph1047.preheader
@@ -3252,14 +3252,14 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	alsl.d	$a0, $s0, $a0, 2
 	st.w	$zero, $s5, 0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	beqz	$s2, .LBB4_143
+	beqz	$s2, .LBB4_136
 # %bb.109:                              # %_ZSt6fill_nIPimiET_S1_T0_RKT1_.exit.loopexit.i.i.i.i.i
 	addi.d	$a0, $s5, 4
 	slli.d	$a2, $s2, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	b	.LBB4_143
+	b	.LBB4_136
 .LBB4_110:                              # %vector.scevcheck1122
 	addi.d	$a3, $a0, -1
 	bstrpick.d	$a4, $a3, 31, 0
@@ -3272,10 +3272,10 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	bnez	$a3, .LBB4_10
 # %bb.112:                              # %vector.main.loop.iter.check1128
 	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB4_250
+	bgeu	$a0, $a2, .LBB4_243
 # %bb.113:
 	move	$a2, $zero
-	b	.LBB4_254
+	b	.LBB4_247
 .LBB4_114:                              # %vector.scevcheck982
 	addi.d	$a5, $s7, -1
 	bstrpick.d	$a6, $a5, 31, 0
@@ -3287,39 +3287,55 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	srli.d	$a5, $a5, 32
 	bnez	$a5, .LBB4_75
 # %bb.116:                              # %vector.memcheck983
-	sub.d	$a6, $s4, $s3
-	ori	$a5, $zero, 32
-	move	$a4, $zero
-	bltu	$a6, $a5, .LBB4_75
-# %bb.117:                              # %vector.memcheck983
-	sub.d	$a6, $s3, $a0
-	bltu	$a6, $a5, .LBB4_75
-# %bb.118:                              # %vector.memcheck983
+	sub.d	$a4, $s4, $s3
+	sub.d	$a5, $s3, $a0
 	sub.d	$a6, $s3, $a1
-	ori	$a5, $zero, 32
-	bltu	$a6, $a5, .LBB4_75
-# %bb.119:                              # %vector.memcheck983
-	sub.d	$a6, $a2, $s3
-	bltu	$a6, $a5, .LBB4_75
-# %bb.120:                              # %vector.memcheck983
-	sub.d	$a6, $a3, $s3
-	ori	$a5, $zero, 32
-	bltu	$a6, $a5, .LBB4_75
-# %bb.121:                              # %vector.memcheck983
-	sub.d	$a6, $s4, $a0
-	bltu	$a6, $a5, .LBB4_75
-# %bb.122:                              # %vector.memcheck983
-	sub.d	$a6, $s4, $a1
-	ori	$a5, $zero, 32
-	bltu	$a6, $a5, .LBB4_75
-# %bb.123:                              # %vector.memcheck983
-	sub.d	$a6, $s4, $a2
-	bltu	$a6, $a5, .LBB4_75
-# %bb.124:                              # %vector.memcheck983
+	sub.d	$a7, $a2, $s3
+	sub.d	$t0, $a3, $s3
+	sub.d	$t1, $s4, $a0
+	sub.d	$t2, $s4, $a1
+	sub.d	$t3, $s4, $a2
+	vinsgr2vr.d	$vr4, $t2, 0
+	vinsgr2vr.d	$vr4, $t3, 1
+	vinsgr2vr.d	$vr5, $t0, 0
+	vinsgr2vr.d	$vr5, $t1, 1
+	xvpermi.q	$xr5, $xr4, 2
+	vinsgr2vr.d	$vr4, $a6, 0
+	vinsgr2vr.d	$vr4, $a7, 1
+	vinsgr2vr.d	$vr6, $a4, 0
+	vinsgr2vr.d	$vr6, $a5, 1
+	xvpermi.q	$xr6, $xr4, 2
+	xvrepli.d	$xr4, 32
+	xvslt.du	$xr6, $xr6, $xr4
+	xvpickve2gr.d	$a4, $xr6, 0
+	xvpickve2gr.d	$a5, $xr6, 1
+	andi	$a5, $a5, 1
+	slli.d	$a5, $a5, 1
+	sub.d	$a4, $a5, $a4
+	xvpickve2gr.d	$a5, $xr6, 2
+	bstrins.d	$a4, $a5, 2, 2
+	xvpickve2gr.d	$a5, $xr6, 3
+	bstrins.d	$a4, $a5, 3, 3
+	xvslt.du	$xr4, $xr5, $xr4
+	xvpickve2gr.d	$a5, $xr4, 0
+	bstrins.d	$a4, $a5, 4, 4
+	xvpickve2gr.d	$a5, $xr4, 1
+	bstrins.d	$a4, $a5, 5, 5
+	xvpickve2gr.d	$a5, $xr4, 2
+	andi	$a5, $a5, 1
+	slli.d	$a5, $a5, 6
+	or	$a4, $a4, $a5
+	xvpickve2gr.d	$a5, $xr4, 3
+	slli.d	$a5, $a5, 7
+	or	$a4, $a4, $a5
+	andi	$a5, $a4, 255
+	move	$a4, $zero
+	bnez	$a5, .LBB4_75
+# %bb.117:                              # %vector.memcheck983
 	sub.d	$a5, $s4, $a3
 	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB4_75
-# %bb.125:                              # %vector.ph1005
+# %bb.118:                              # %vector.ph1005
 	bstrpick.d	$a4, $s7, 32, 2
 	slli.d	$a4, $a4, 2
 	xvreplve0.d	$xr4, $xr0
@@ -3335,7 +3351,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	move	$t2, $s4
 	move	$t3, $a4
 	.p2align	4, , 16
-.LBB4_126:                              # %vector.body1016
+.LBB4_119:                              # %vector.body1016
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr9, $a6, 0
 	xvld	$xr10, $a5, 0
@@ -3358,58 +3374,58 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a7, $a7, 32
 	addi.d	$a6, $a6, 32
 	addi.d	$a5, $a5, 32
-	bnez	$t3, .LBB4_126
-# %bb.127:                              # %middle.block1023
+	bnez	$t3, .LBB4_119
+# %bb.120:                              # %middle.block1023
 	bne	$s7, $a4, .LBB4_75
 	b	.LBB4_77
-.LBB4_128:                              # %vector.scevcheck
+.LBB4_121:                              # %vector.scevcheck
 	bstrpick.d	$a3, $s1, 31, 0
 	addi.w	$a4, $zero, -1
 	lu32i.d	$a4, 0
 	move	$a2, $zero
-	beq	$a3, $a4, .LBB4_257
-# %bb.129:                              # %vector.scevcheck
+	beq	$a3, $a4, .LBB4_250
+# %bb.122:                              # %vector.scevcheck
 	srli.d	$a5, $s1, 32
 	move	$a3, $a2
 	move	$a4, $a2
 	bnez	$a5, .LBB4_60
-# %bb.130:                              # %vector.main.loop.iter.check856
+# %bb.123:                              # %vector.main.loop.iter.check856
 	ori	$a2, $zero, 16
-	bgeu	$s5, $a2, .LBB4_258
-# %bb.131:
+	bgeu	$s5, $a2, .LBB4_251
+# %bb.124:
 	move	$a2, $zero
 	move	$a3, $zero
 	move	$a4, $zero
-	b	.LBB4_262
-.LBB4_132:                              # %vector.scevcheck897
+	b	.LBB4_255
+.LBB4_125:                              # %vector.scevcheck897
 	bstrpick.d	$a3, $s1, 31, 0
 	addi.w	$a4, $zero, -1
 	lu32i.d	$a4, 0
 	move	$a2, $zero
 	beq	$a3, $a4, .LBB4_64
-# %bb.133:                              # %vector.scevcheck897
+# %bb.126:                              # %vector.scevcheck897
 	srli.d	$a3, $s1, 32
 	bnez	$a3, .LBB4_64
-# %bb.134:                              # %vector.memcheck
+# %bb.127:                              # %vector.memcheck
 	sub.d	$a4, $s4, $s7
 	ori	$a3, $zero, 32
 	move	$a2, $zero
 	bltu	$a4, $a3, .LBB4_64
-# %bb.135:                              # %vector.memcheck
+# %bb.128:                              # %vector.memcheck
 	sub.d	$a4, $s7, $a0
 	bltu	$a4, $a3, .LBB4_64
-# %bb.136:                              # %vector.memcheck
+# %bb.129:                              # %vector.memcheck
 	sub.d	$a4, $t1, $s7
 	ori	$a3, $zero, 32
 	bltu	$a4, $a3, .LBB4_64
-# %bb.137:                              # %vector.memcheck
+# %bb.130:                              # %vector.memcheck
 	sub.d	$a4, $s4, $a0
 	bltu	$a4, $a3, .LBB4_64
-# %bb.138:                              # %vector.memcheck
+# %bb.131:                              # %vector.memcheck
 	sub.d	$a3, $s4, $t1
 	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB4_64
-# %bb.139:                              # %vector.ph906
+# %bb.132:                              # %vector.ph906
 	bstrpick.d	$a2, $s5, 32, 3
 	slli.d	$a2, $a2, 3
 	xvreplve0.d	$xr2, $xr0
@@ -3420,7 +3436,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	move	$a6, $s2
 	move	$a7, $a2
 	.p2align	4, , 16
-.LBB4_140:                              # %vector.body913
+.LBB4_133:                              # %vector.body913
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr4, $a3, 0
 	xvpermi.q	$xr5, $xr4, 1
@@ -3459,17 +3475,17 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a5, $a5, 32
 	addi.d	$a4, $a4, 32
 	addi.d	$a3, $a3, 32
-	bnez	$a7, .LBB4_140
-# %bb.141:                              # %middle.block918
+	bnez	$a7, .LBB4_133
+# %bb.134:                              # %middle.block918
 	bne	$s5, $a2, .LBB4_64
 	b	.LBB4_66
-.LBB4_142:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
+.LBB4_135:                              # %_ZNSt6vectorIiSaIiEE17_S_check_init_lenEmRKS0_.exit.i.thread
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$s5, $zero
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
-.LBB4_143:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit
+.LBB4_136:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit
 	ld.d	$a1, $fp, 1368
 	addi.d	$s1, $fp, 8
 .Ltmp139:                               # EH_LABEL
@@ -3479,7 +3495,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp140:                               # EH_LABEL
-# %bb.144:
+# %bb.137:
 	ld.d	$a1, $fp, 1376
 .Ltmp141:                               # EH_LABEL
 	ori	$a2, $zero, 256
@@ -3487,7 +3503,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp142:                               # EH_LABEL
-# %bb.145:
+# %bb.138:
 	ld.d	$a1, $fp, 1384
 .Ltmp143:                               # EH_LABEL
 	ori	$a2, $zero, 256
@@ -3495,7 +3511,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp144:                               # EH_LABEL
-# %bb.146:
+# %bb.139:
 	ld.d	$a1, $fp, 1392
 .Ltmp145:                               # EH_LABEL
 	ori	$a2, $zero, 256
@@ -3503,7 +3519,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp146:                               # EH_LABEL
-# %bb.147:
+# %bb.140:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 .Ltmp147:                               # EH_LABEL
@@ -3511,36 +3527,36 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus18memory_reorder_allEPi)
 	jirl	$ra, $ra, 0
 .Ltmp148:                               # EH_LABEL
-# %bb.148:
+# %bb.141:
 .Ltmp149:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN4Mesh17memory_reset_ptrsEv)
 	jirl	$ra, $ra, 0
 .Ltmp150:                               # EH_LABEL
-# %bb.149:
+# %bb.142:
 	ld.d	$a0, $fp, 1424
 	ld.d	$s2, $fp, 1416
 	ld.d	$s0, $fp, 1160
 	sub.d	$a0, $a0, $s2
 	srai.d	$a0, $a0, 3
-	bltu	$a0, $s0, .LBB4_192
-# %bb.150:
+	bltu	$a0, $s0, .LBB4_185
+# %bb.143:
 	srli.d	$a0, $s0, 60
-	bnez	$a0, .LBB4_276
-# %bb.151:                              # %_ZNSt6vectorIdSaIdEE17_S_check_init_lenEmRKS0_.exit.i
-	beqz	$s0, .LBB4_192
-# %bb.152:
+	bnez	$a0, .LBB4_269
+# %bb.144:                              # %_ZNSt6vectorIdSaIdEE17_S_check_init_lenEmRKS0_.exit.i
+	beqz	$s0, .LBB4_185
+# %bb.145:
 	slli.d	$s1, $s0, 3
 .Ltmp152:                               # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp153:                               # EH_LABEL
-# %bb.153:                              # %.noexc203
+# %bb.146:                              # %.noexc203
 	addi.d	$a2, $s0, -1
 	st.d	$zero, $a0, 0
-	beqz	$a2, .LBB4_155
-# %bb.154:                              # %_ZNSt6vectorIdSaIdEEC2EmRKS0_.exit
+	beqz	$a2, .LBB4_148
+# %bb.147:                              # %_ZNSt6vectorIdSaIdEEC2EmRKS0_.exit
 	addi.d	$a1, $a0, 8
 	slli.d	$a2, $a2, 3
 	move	$s7, $a0
@@ -3550,24 +3566,24 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	jirl	$ra, $ra, 0
 	move	$a0, $s7
 	addi.w	$a1, $s0, 0
-	blez	$a1, .LBB4_191
-.LBB4_155:                              # %.lr.ph533.preheader
+	blez	$a1, .LBB4_184
+.LBB4_148:                              # %.lr.ph533.preheader
 	bstrpick.d	$a1, $s0, 30, 0
 	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB4_160
-# %bb.156:                              # %.lr.ph533.preheader
+	bltu	$a1, $a3, .LBB4_153
+# %bb.149:                              # %.lr.ph533.preheader
 	sub.d	$a3, $a0, $s2
 	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB4_160
-# %bb.157:                              # %vector.ph1066
+	bltu	$a3, $a4, .LBB4_153
+# %bb.150:                              # %vector.ph1066
 	bstrpick.d	$a2, $s0, 30, 3
 	slli.d	$a2, $a2, 3
 	addi.d	$a3, $a0, 32
 	addi.d	$a4, $s2, 32
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB4_158:                              # %vector.body1069
+.LBB4_151:                              # %vector.body1069
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a4, -32
 	xvld	$xr1, $a4, 0
@@ -3576,28 +3592,28 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a5, $a5, -8
 	addi.d	$a3, $a3, 64
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB4_158
-# %bb.159:                              # %middle.block1074
-	beq	$a1, $a2, .LBB4_162
-.LBB4_160:                              # %.lr.ph533.preheader1171
+	bnez	$a5, .LBB4_151
+# %bb.152:                              # %middle.block1074
+	beq	$a1, $a2, .LBB4_155
+.LBB4_153:                              # %.lr.ph533.preheader1171
 	alsl.d	$a3, $a2, $s2, 3
 	alsl.d	$a4, $a2, $a0, 3
 	sub.d	$a2, $a1, $a2
 	.p2align	4, , 16
-.LBB4_161:                              # %.lr.ph533
+.LBB4_154:                              # %.lr.ph533
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a3, 0
 	fst.d	$fa0, $a4, 0
 	addi.d	$a3, $a3, 8
 	addi.d	$a2, $a2, -1
 	addi.d	$a4, $a4, 8
-	bnez	$a2, .LBB4_161
-.LBB4_162:                              # %.lr.ph536
+	bnez	$a2, .LBB4_154
+.LBB4_155:                              # %.lr.ph536
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	move	$a3, $a1
 	.p2align	4, , 16
-.LBB4_163:                              # =>This Inner Loop Header: Depth=1
+.LBB4_156:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
 	slli.d	$a4, $a4, 3
 	fldx.d	$fa0, $a0, $a4
@@ -3605,24 +3621,24 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, -1
 	addi.d	$s2, $s2, 8
-	bnez	$a3, .LBB4_163
-# %bb.164:                              # %.lr.ph538
+	bnez	$a3, .LBB4_156
+# %bb.157:                              # %.lr.ph538
 	ld.d	$a2, $fp, 1440
 	ori	$a4, $zero, 8
 	move	$a3, $zero
-	bltu	$a1, $a4, .LBB4_169
-# %bb.165:                              # %.lr.ph538
+	bltu	$a1, $a4, .LBB4_162
+# %bb.158:                              # %.lr.ph538
 	sub.d	$a4, $a0, $a2
 	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB4_169
-# %bb.166:                              # %vector.ph1081
+	bltu	$a4, $a5, .LBB4_162
+# %bb.159:                              # %vector.ph1081
 	bstrpick.d	$a3, $s0, 30, 3
 	slli.d	$a3, $a3, 3
 	addi.d	$a4, $a0, 32
 	addi.d	$a5, $a2, 32
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB4_167:                              # %vector.body1084
+.LBB4_160:                              # %vector.body1084
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a5, -32
 	xvld	$xr1, $a5, 0
@@ -3631,29 +3647,29 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a6, $a6, -8
 	addi.d	$a4, $a4, 64
 	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB4_167
-# %bb.168:                              # %middle.block1089
-	beq	$a1, $a3, .LBB4_171
-.LBB4_169:                              # %scalar.ph1079.preheader
+	bnez	$a6, .LBB4_160
+# %bb.161:                              # %middle.block1089
+	beq	$a1, $a3, .LBB4_164
+.LBB4_162:                              # %scalar.ph1079.preheader
 	alsl.d	$a2, $a3, $a2, 3
 	alsl.d	$a4, $a3, $a0, 3
 	sub.d	$a3, $a1, $a3
 	.p2align	4, , 16
-.LBB4_170:                              # %scalar.ph1079
+.LBB4_163:                              # %scalar.ph1079
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a2, 0
 	fst.d	$fa0, $a4, 0
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 8
-	bnez	$a3, .LBB4_170
-.LBB4_171:                              # %.lr.ph540
+	bnez	$a3, .LBB4_163
+.LBB4_164:                              # %.lr.ph540
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $fp, 1440
 	move	$a4, $a1
 	.p2align	4, , 16
-.LBB4_172:                              # =>This Inner Loop Header: Depth=1
+.LBB4_165:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0
 	slli.d	$a5, $a5, 3
 	fldx.d	$fa0, $a0, $a5
@@ -3661,24 +3677,24 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB4_172
-# %bb.173:                              # %.lr.ph542
+	bnez	$a4, .LBB4_165
+# %bb.166:                              # %.lr.ph542
 	ld.d	$a2, $fp, 1464
 	ori	$a4, $zero, 8
 	move	$a3, $zero
-	bltu	$a1, $a4, .LBB4_178
-# %bb.174:                              # %.lr.ph542
+	bltu	$a1, $a4, .LBB4_171
+# %bb.167:                              # %.lr.ph542
 	sub.d	$a4, $a0, $a2
 	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB4_178
-# %bb.175:                              # %vector.ph1096
+	bltu	$a4, $a5, .LBB4_171
+# %bb.168:                              # %vector.ph1096
 	bstrpick.d	$a3, $s0, 30, 3
 	slli.d	$a3, $a3, 3
 	addi.d	$a4, $a0, 32
 	addi.d	$a5, $a2, 32
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB4_176:                              # %vector.body1099
+.LBB4_169:                              # %vector.body1099
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a5, -32
 	xvld	$xr1, $a5, 0
@@ -3687,29 +3703,29 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a6, $a6, -8
 	addi.d	$a4, $a4, 64
 	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB4_176
-# %bb.177:                              # %middle.block1104
-	beq	$a1, $a3, .LBB4_180
-.LBB4_178:                              # %scalar.ph1094.preheader
+	bnez	$a6, .LBB4_169
+# %bb.170:                              # %middle.block1104
+	beq	$a1, $a3, .LBB4_173
+.LBB4_171:                              # %scalar.ph1094.preheader
 	alsl.d	$a2, $a3, $a2, 3
 	alsl.d	$a4, $a3, $a0, 3
 	sub.d	$a3, $a1, $a3
 	.p2align	4, , 16
-.LBB4_179:                              # %scalar.ph1094
+.LBB4_172:                              # %scalar.ph1094
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a2, 0
 	fst.d	$fa0, $a4, 0
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 8
-	bnez	$a3, .LBB4_179
-.LBB4_180:                              # %.lr.ph544
+	bnez	$a3, .LBB4_172
+.LBB4_173:                              # %.lr.ph544
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $fp, 1464
 	bstrpick.d	$a4, $s0, 30, 0
 	.p2align	4, , 16
-.LBB4_181:                              # =>This Inner Loop Header: Depth=1
+.LBB4_174:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0
 	slli.d	$a5, $a5, 3
 	fldx.d	$fa0, $a0, $a5
@@ -3717,25 +3733,25 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB4_181
-# %bb.182:                              # %.lr.ph546
+	bnez	$a4, .LBB4_174
+# %bb.175:                              # %.lr.ph546
 	ld.d	$a3, $fp, 1488
 	move	$a4, $zero
 	ori	$a5, $zero, 8
 	bstrpick.d	$a2, $s0, 30, 0
-	bltu	$a1, $a5, .LBB4_187
-# %bb.183:                              # %.lr.ph546
+	bltu	$a1, $a5, .LBB4_180
+# %bb.176:                              # %.lr.ph546
 	sub.d	$a5, $a0, $a3
 	ori	$a6, $zero, 64
-	bltu	$a5, $a6, .LBB4_187
-# %bb.184:                              # %vector.ph1111
+	bltu	$a5, $a6, .LBB4_180
+# %bb.177:                              # %vector.ph1111
 	bstrpick.d	$a4, $s0, 30, 3
 	slli.d	$a4, $a4, 3
 	addi.d	$a5, $a0, 32
 	addi.d	$a6, $a3, 32
 	move	$a7, $a4
 	.p2align	4, , 16
-.LBB4_185:                              # %vector.body1114
+.LBB4_178:                              # %vector.body1114
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a6, -32
 	xvld	$xr1, $a6, 0
@@ -3744,28 +3760,28 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a7, $a7, -8
 	addi.d	$a5, $a5, 64
 	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB4_185
-# %bb.186:                              # %middle.block1119
-	beq	$a1, $a4, .LBB4_189
-.LBB4_187:                              # %scalar.ph1109.preheader
+	bnez	$a7, .LBB4_178
+# %bb.179:                              # %middle.block1119
+	beq	$a1, $a4, .LBB4_182
+.LBB4_180:                              # %scalar.ph1109.preheader
 	alsl.d	$a1, $a4, $a3, 3
 	alsl.d	$a3, $a4, $a0, 3
 	sub.d	$a4, $a2, $a4
 	.p2align	4, , 16
-.LBB4_188:                              # %scalar.ph1109
+.LBB4_181:                              # %scalar.ph1109
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a1, 0
 	fst.d	$fa0, $a3, 0
 	addi.d	$a1, $a1, 8
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB4_188
-.LBB4_189:                              # %.lr.ph548
+	bnez	$a4, .LBB4_181
+.LBB4_182:                              # %.lr.ph548
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	ld.d	$a3, $fp, 1488
 	.p2align	4, , 16
-.LBB4_190:                              # =>This Inner Loop Header: Depth=1
+.LBB4_183:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a1, 0
 	slli.d	$a4, $a4, 3
 	fldx.d	$fa0, $a0, $a4
@@ -3773,23 +3789,23 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a2, .LBB4_190
-.LBB4_191:                              # %.preheader485.thread
+	bnez	$a2, .LBB4_183
+.LBB4_184:                              # %.preheader485.thread
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_192:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit
+.LBB4_185:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit
 	move	$s5, $zero
 	move	$s1, $zero
 	move	$s7, $zero
 	move	$s0, $zero
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	bnez	$a2, .LBB4_244
+	bnez	$a2, .LBB4_237
 	b	.LBB4_89
-.LBB4_193:
+.LBB4_186:
 	move	$s4, $zero
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
-.LBB4_194:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit223
+.LBB4_187:                              # %_ZNSt6vectorIiSaIiEEC2EmRKS0_.exit223
 	ld.d	$a1, $fp, 1368
 	addi.d	$s3, $fp, 8
 .Ltmp102:                               # EH_LABEL
@@ -3799,7 +3815,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp103:                               # EH_LABEL
-# %bb.195:
+# %bb.188:
 	ld.d	$a1, $fp, 1376
 .Ltmp104:                               # EH_LABEL
 	ori	$a2, $zero, 256
@@ -3807,7 +3823,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp105:                               # EH_LABEL
-# %bb.196:
+# %bb.189:
 	ld.d	$a1, $fp, 1384
 .Ltmp106:                               # EH_LABEL
 	ori	$a2, $zero, 256
@@ -3815,7 +3831,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp107:                               # EH_LABEL
-# %bb.197:
+# %bb.190:
 	ld.d	$a1, $fp, 1392
 .Ltmp108:                               # EH_LABEL
 	ori	$a2, $zero, 256
@@ -3823,7 +3839,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus20set_memory_attributeEPvi)
 	jirl	$ra, $ra, 0
 .Ltmp109:                               # EH_LABEL
-# %bb.198:
+# %bb.191:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 .Ltmp110:                               # EH_LABEL
@@ -3831,36 +3847,36 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus18memory_reorder_allEPi)
 	jirl	$ra, $ra, 0
 .Ltmp111:                               # EH_LABEL
-# %bb.199:
+# %bb.192:
 .Ltmp112:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN4Mesh17memory_reset_ptrsEv)
 	jirl	$ra, $ra, 0
 .Ltmp113:                               # EH_LABEL
-# %bb.200:
+# %bb.193:
 	ld.d	$a0, $fp, 1424
 	ld.d	$s6, $fp, 1416
 	ld.d	$s4, $fp, 1160
 	sub.d	$a0, $a0, $s6
 	srai.d	$a0, $a0, 3
-	bltu	$a0, $s4, .LBB4_243
-# %bb.201:
+	bltu	$a0, $s4, .LBB4_236
+# %bb.194:
 	srli.d	$a0, $s4, 60
-	bnez	$a0, .LBB4_278
-# %bb.202:                              # %_ZNSt6vectorIdSaIdEE17_S_check_init_lenEmRKS0_.exit.i224
-	beqz	$s4, .LBB4_243
-# %bb.203:
+	bnez	$a0, .LBB4_271
+# %bb.195:                              # %_ZNSt6vectorIdSaIdEE17_S_check_init_lenEmRKS0_.exit.i224
+	beqz	$s4, .LBB4_236
+# %bb.196:
 	slli.d	$s3, $s4, 3
 .Ltmp115:                               # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp116:                               # EH_LABEL
-# %bb.204:                              # %.noexc231
+# %bb.197:                              # %.noexc231
 	addi.d	$a2, $s4, -1
 	st.d	$zero, $a0, 0
-	beqz	$a2, .LBB4_206
-# %bb.205:                              # %_ZNSt6vectorIdSaIdEEC2EmRKS0_.exit232
+	beqz	$a2, .LBB4_199
+# %bb.198:                              # %_ZNSt6vectorIdSaIdEEC2EmRKS0_.exit232
 	addi.d	$a1, $a0, 8
 	slli.d	$a2, $a2, 3
 	move	$s7, $a0
@@ -3870,24 +3886,24 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	jirl	$ra, $ra, 0
 	move	$a0, $s7
 	addi.w	$a1, $s4, 0
-	blez	$a1, .LBB4_242
-.LBB4_206:                              # %.lr.ph508.preheader
+	blez	$a1, .LBB4_235
+.LBB4_199:                              # %.lr.ph508.preheader
 	bstrpick.d	$a1, $s4, 30, 0
 	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB4_211
-# %bb.207:                              # %.lr.ph508.preheader
+	bltu	$a1, $a3, .LBB4_204
+# %bb.200:                              # %.lr.ph508.preheader
 	sub.d	$a3, $a0, $s6
 	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB4_211
-# %bb.208:                              # %vector.ph926
+	bltu	$a3, $a4, .LBB4_204
+# %bb.201:                              # %vector.ph926
 	bstrpick.d	$a2, $s4, 30, 3
 	slli.d	$a2, $a2, 3
 	addi.d	$a3, $a0, 32
 	addi.d	$a4, $s6, 32
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB4_209:                              # %vector.body929
+.LBB4_202:                              # %vector.body929
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a4, -32
 	xvld	$xr1, $a4, 0
@@ -3896,28 +3912,28 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a5, $a5, -8
 	addi.d	$a3, $a3, 64
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB4_209
-# %bb.210:                              # %middle.block934
-	beq	$a1, $a2, .LBB4_213
-.LBB4_211:                              # %.lr.ph508.preheader1174
+	bnez	$a5, .LBB4_202
+# %bb.203:                              # %middle.block934
+	beq	$a1, $a2, .LBB4_206
+.LBB4_204:                              # %.lr.ph508.preheader1174
 	alsl.d	$a3, $a2, $s6, 3
 	alsl.d	$a4, $a2, $a0, 3
 	sub.d	$a2, $a1, $a2
 	.p2align	4, , 16
-.LBB4_212:                              # %.lr.ph508
+.LBB4_205:                              # %.lr.ph508
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a3, 0
 	fst.d	$fa0, $a4, 0
 	addi.d	$a3, $a3, 8
 	addi.d	$a2, $a2, -1
 	addi.d	$a4, $a4, 8
-	bnez	$a2, .LBB4_212
-.LBB4_213:                              # %.lr.ph511
+	bnez	$a2, .LBB4_205
+.LBB4_206:                              # %.lr.ph511
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	move	$a3, $a1
 	.p2align	4, , 16
-.LBB4_214:                              # =>This Inner Loop Header: Depth=1
+.LBB4_207:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
 	slli.d	$a4, $a4, 3
 	fldx.d	$fa0, $a0, $a4
@@ -3925,24 +3941,24 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, -1
 	addi.d	$s6, $s6, 8
-	bnez	$a3, .LBB4_214
-# %bb.215:                              # %.lr.ph513
+	bnez	$a3, .LBB4_207
+# %bb.208:                              # %.lr.ph513
 	ld.d	$a2, $fp, 1440
 	ori	$a4, $zero, 8
 	move	$a3, $zero
-	bltu	$a1, $a4, .LBB4_220
-# %bb.216:                              # %.lr.ph513
+	bltu	$a1, $a4, .LBB4_213
+# %bb.209:                              # %.lr.ph513
 	sub.d	$a4, $a0, $a2
 	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB4_220
-# %bb.217:                              # %vector.ph941
+	bltu	$a4, $a5, .LBB4_213
+# %bb.210:                              # %vector.ph941
 	bstrpick.d	$a3, $s4, 30, 3
 	slli.d	$a3, $a3, 3
 	addi.d	$a4, $a0, 32
 	addi.d	$a5, $a2, 32
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB4_218:                              # %vector.body944
+.LBB4_211:                              # %vector.body944
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a5, -32
 	xvld	$xr1, $a5, 0
@@ -3951,29 +3967,29 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a6, $a6, -8
 	addi.d	$a4, $a4, 64
 	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB4_218
-# %bb.219:                              # %middle.block949
-	beq	$a1, $a3, .LBB4_222
-.LBB4_220:                              # %scalar.ph939.preheader
+	bnez	$a6, .LBB4_211
+# %bb.212:                              # %middle.block949
+	beq	$a1, $a3, .LBB4_215
+.LBB4_213:                              # %scalar.ph939.preheader
 	alsl.d	$a2, $a3, $a2, 3
 	alsl.d	$a4, $a3, $a0, 3
 	sub.d	$a3, $a1, $a3
 	.p2align	4, , 16
-.LBB4_221:                              # %scalar.ph939
+.LBB4_214:                              # %scalar.ph939
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a2, 0
 	fst.d	$fa0, $a4, 0
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 8
-	bnez	$a3, .LBB4_221
-.LBB4_222:                              # %.lr.ph515
+	bnez	$a3, .LBB4_214
+.LBB4_215:                              # %.lr.ph515
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $fp, 1440
 	move	$a4, $a1
 	.p2align	4, , 16
-.LBB4_223:                              # =>This Inner Loop Header: Depth=1
+.LBB4_216:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0
 	slli.d	$a5, $a5, 3
 	fldx.d	$fa0, $a0, $a5
@@ -3981,24 +3997,24 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB4_223
-# %bb.224:                              # %.lr.ph517
+	bnez	$a4, .LBB4_216
+# %bb.217:                              # %.lr.ph517
 	ld.d	$a2, $fp, 1464
 	ori	$a4, $zero, 8
 	move	$a3, $zero
-	bltu	$a1, $a4, .LBB4_229
-# %bb.225:                              # %.lr.ph517
+	bltu	$a1, $a4, .LBB4_222
+# %bb.218:                              # %.lr.ph517
 	sub.d	$a4, $a0, $a2
 	ori	$a5, $zero, 64
-	bltu	$a4, $a5, .LBB4_229
-# %bb.226:                              # %vector.ph956
+	bltu	$a4, $a5, .LBB4_222
+# %bb.219:                              # %vector.ph956
 	bstrpick.d	$a3, $s4, 30, 3
 	slli.d	$a3, $a3, 3
 	addi.d	$a4, $a0, 32
 	addi.d	$a5, $a2, 32
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB4_227:                              # %vector.body959
+.LBB4_220:                              # %vector.body959
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a5, -32
 	xvld	$xr1, $a5, 0
@@ -4007,29 +4023,29 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a6, $a6, -8
 	addi.d	$a4, $a4, 64
 	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB4_227
-# %bb.228:                              # %middle.block964
-	beq	$a1, $a3, .LBB4_231
-.LBB4_229:                              # %scalar.ph954.preheader
+	bnez	$a6, .LBB4_220
+# %bb.221:                              # %middle.block964
+	beq	$a1, $a3, .LBB4_224
+.LBB4_222:                              # %scalar.ph954.preheader
 	alsl.d	$a2, $a3, $a2, 3
 	alsl.d	$a4, $a3, $a0, 3
 	sub.d	$a3, $a1, $a3
 	.p2align	4, , 16
-.LBB4_230:                              # %scalar.ph954
+.LBB4_223:                              # %scalar.ph954
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a2, 0
 	fst.d	$fa0, $a4, 0
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 8
-	bnez	$a3, .LBB4_230
-.LBB4_231:                              # %.lr.ph519
+	bnez	$a3, .LBB4_223
+.LBB4_224:                              # %.lr.ph519
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $fp, 1464
 	bstrpick.d	$a4, $s4, 30, 0
 	.p2align	4, , 16
-.LBB4_232:                              # =>This Inner Loop Header: Depth=1
+.LBB4_225:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0
 	slli.d	$a5, $a5, 3
 	fldx.d	$fa0, $a0, $a5
@@ -4037,25 +4053,25 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB4_232
-# %bb.233:                              # %.lr.ph521
+	bnez	$a4, .LBB4_225
+# %bb.226:                              # %.lr.ph521
 	ld.d	$a3, $fp, 1488
 	move	$a4, $zero
 	ori	$a5, $zero, 8
 	bstrpick.d	$a2, $s4, 30, 0
-	bltu	$a1, $a5, .LBB4_238
-# %bb.234:                              # %.lr.ph521
+	bltu	$a1, $a5, .LBB4_231
+# %bb.227:                              # %.lr.ph521
 	sub.d	$a5, $a0, $a3
 	ori	$a6, $zero, 64
-	bltu	$a5, $a6, .LBB4_238
-# %bb.235:                              # %vector.ph971
+	bltu	$a5, $a6, .LBB4_231
+# %bb.228:                              # %vector.ph971
 	bstrpick.d	$a4, $s4, 30, 3
 	slli.d	$a4, $a4, 3
 	addi.d	$a5, $a0, 32
 	addi.d	$a6, $a3, 32
 	move	$a7, $a4
 	.p2align	4, , 16
-.LBB4_236:                              # %vector.body974
+.LBB4_229:                              # %vector.body974
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a6, -32
 	xvld	$xr1, $a6, 0
@@ -4064,28 +4080,28 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a7, $a7, -8
 	addi.d	$a5, $a5, 64
 	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB4_236
-# %bb.237:                              # %middle.block979
-	beq	$a1, $a4, .LBB4_240
-.LBB4_238:                              # %scalar.ph969.preheader
+	bnez	$a7, .LBB4_229
+# %bb.230:                              # %middle.block979
+	beq	$a1, $a4, .LBB4_233
+.LBB4_231:                              # %scalar.ph969.preheader
 	alsl.d	$a1, $a4, $a3, 3
 	alsl.d	$a3, $a4, $a0, 3
 	sub.d	$a4, $a2, $a4
 	.p2align	4, , 16
-.LBB4_239:                              # %scalar.ph969
+.LBB4_232:                              # %scalar.ph969
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a1, 0
 	fst.d	$fa0, $a3, 0
 	addi.d	$a1, $a1, 8
 	addi.d	$a4, $a4, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB4_239
-.LBB4_240:                              # %.lr.ph523
+	bnez	$a4, .LBB4_232
+.LBB4_233:                              # %.lr.ph523
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	ld.d	$a3, $fp, 1488
 	.p2align	4, , 16
-.LBB4_241:                              # =>This Inner Loop Header: Depth=1
+.LBB4_234:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a1, 0
 	slli.d	$a4, $a4, 3
 	fldx.d	$fa0, $a0, $a4
@@ -4093,12 +4109,12 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 8
-	bnez	$a2, .LBB4_241
-.LBB4_242:                              # %.preheader493.thread
+	bnez	$a2, .LBB4_234
+.LBB4_235:                              # %.preheader493.thread
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_243:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit234
+.LBB4_236:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit234
 	move	$s3, $zero
 	move	$s8, $zero
 	move	$s4, $zero
@@ -4106,33 +4122,33 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	beqz	$a2, .LBB4_89
-.LBB4_244:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit.sink.split
+.LBB4_237:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit.sink.split
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB4_89
-.LBB4_245:                              # %vector.scevcheck1027
+.LBB4_238:                              # %vector.scevcheck1027
 	bstrpick.d	$a2, $s2, 31, 0
 	addi.w	$a3, $zero, -1
 	lu32i.d	$a3, 0
 	move	$a1, $zero
 	beq	$a2, $a3, .LBB4_105
-# %bb.246:                              # %vector.scevcheck1027
+# %bb.239:                              # %vector.scevcheck1027
 	srli.d	$a2, $s2, 32
 	bnez	$a2, .LBB4_105
-# %bb.247:                              # %vector.scevcheck1027
+# %bb.240:                              # %vector.scevcheck1027
 	sub.d	$a2, $a0, $s1
 	ori	$a3, $zero, 64
 	bltu	$a2, $a3, .LBB4_105
-# %bb.248:                              # %vector.main.loop.iter.check1035
+# %bb.241:                              # %vector.main.loop.iter.check1035
 	ori	$a1, $zero, 16
-	bgeu	$s0, $a1, .LBB4_265
-# %bb.249:
+	bgeu	$s0, $a1, .LBB4_258
+# %bb.242:
 	move	$a1, $zero
-	b	.LBB4_269
-.LBB4_250:                              # %vector.ph1129
+	b	.LBB4_262
+.LBB4_243:                              # %vector.ph1129
 	andi	$a3, $a0, 12
 	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
 	xvld	$xr0, $a2, %pc_lo12(.LCPI4_0)
@@ -4141,7 +4157,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a4, $a1, 32
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB4_251:                              # %vector.body1132
+.LBB4_244:                              # %vector.body1132
                                         # =>This Inner Loop Header: Depth=1
 	xvaddi.wu	$xr1, $xr0, 8
 	xvst	$xr0, $a4, -32
@@ -4149,12 +4165,12 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	xvaddi.wu	$xr0, $xr0, 16
 	addi.d	$a5, $a5, -16
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB4_251
-# %bb.252:                              # %middle.block1135
+	bnez	$a5, .LBB4_244
+# %bb.245:                              # %middle.block1135
 	beq	$a0, $a2, .LBB4_12
-# %bb.253:                              # %vec.epilog.iter.check1140
+# %bb.246:                              # %vec.epilog.iter.check1140
 	beqz	$a3, .LBB4_10
-.LBB4_254:                              # %vec.epilog.ph1142
+.LBB4_247:                              # %vec.epilog.ph1142
 	move	$a4, $a2
 	pcalau12i	$a3, %pc_hi20(.LCPI4_1)
 	vld	$vr0, $a3, %pc_lo12(.LCPI4_1)
@@ -4165,21 +4181,21 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	sub.d	$a3, $a4, $a2
 	alsl.d	$a4, $a4, $a1, 2
 	.p2align	4, , 16
-.LBB4_255:                              # %vec.epilog.vector.body1147
+.LBB4_248:                              # %vec.epilog.vector.body1147
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a4, 0
 	vaddi.wu	$vr0, $vr0, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB4_255
-# %bb.256:                              # %vec.epilog.middle.block1152
+	bnez	$a3, .LBB4_248
+# %bb.249:                              # %vec.epilog.middle.block1152
 	bne	$a0, $a2, .LBB4_10
 	b	.LBB4_12
-.LBB4_257:
+.LBB4_250:
 	move	$a3, $a2
 	move	$a4, $a2
 	b	.LBB4_60
-.LBB4_258:                              # %vector.ph857
+.LBB4_251:                              # %vector.ph857
 	andi	$a5, $s5, 12
 	bstrpick.d	$a2, $s5, 32, 4
 	slli.d	$a2, $a2, 4
@@ -4191,7 +4207,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	xvori.b	$xr0, $xr2, 0
 	xvori.b	$xr1, $xr2, 0
 	.p2align	4, , 16
-.LBB4_259:                              # %vector.body860
+.LBB4_252:                              # %vector.body860
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr4, $a4, -32
 	xvld	$xr5, $a4, 0
@@ -4204,8 +4220,8 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a6, $a6, -16
 	addi.d	$a3, $a3, 64
 	addi.d	$a4, $a4, 64
-	bnez	$a6, .LBB4_259
-# %bb.260:                              # %middle.block869
+	bnez	$a6, .LBB4_252
+# %bb.253:                              # %middle.block869
 	xvmax.w	$xr2, $xr2, $xr3
 	xvpermi.q	$xr3, $xr2, 1
 	vmax.w	$vr2, $vr2, $vr3
@@ -4223,9 +4239,9 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	vmax.w	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a4, $vr0, 0
 	beq	$s5, $a2, .LBB4_62
-# %bb.261:                              # %vec.epilog.iter.check875
+# %bb.254:                              # %vec.epilog.iter.check875
 	beqz	$a5, .LBB4_60
-.LBB4_262:                              # %vec.epilog.ph877
+.LBB4_255:                              # %vec.epilog.ph877
 	move	$a5, $a2
 	bstrpick.d	$a2, $s5, 32, 2
 	slli.d	$a2, $a2, 2
@@ -4235,7 +4251,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	alsl.d	$a4, $a5, $t1, 2
 	alsl.d	$a5, $a5, $a0, 2
 	.p2align	4, , 16
-.LBB4_263:                              # %vec.epilog.vector.body884
+.LBB4_256:                              # %vec.epilog.vector.body884
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a5, 0
 	vld	$vr3, $a4, 0
@@ -4244,8 +4260,8 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB4_263
-# %bb.264:                              # %vec.epilog.middle.block891
+	bnez	$a3, .LBB4_256
+# %bb.257:                              # %vec.epilog.middle.block891
 	vbsrl.v	$vr2, $vr1, 8
 	vmax.w	$vr1, $vr2, $vr1
 	vbsrl.v	$vr2, $vr1, 4
@@ -4258,7 +4274,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	vpickve2gr.w	$a4, $vr0, 0
 	bne	$s5, $a2, .LBB4_60
 	b	.LBB4_62
-.LBB4_265:                              # %vector.ph1036
+.LBB4_258:                              # %vector.ph1036
 	andi	$a2, $s0, 12
 	bstrpick.d	$a1, $s0, 32, 4
 	slli.d	$a1, $a1, 4
@@ -4266,7 +4282,7 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a4, $s1, 32
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB4_266:                              # %vector.body1039
+.LBB4_259:                              # %vector.body1039
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a4, -32
 	xvld	$xr1, $a4, 0
@@ -4275,12 +4291,12 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a5, $a5, -16
 	addi.d	$a3, $a3, 64
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB4_266
-# %bb.267:                              # %middle.block1044
+	bnez	$a5, .LBB4_259
+# %bb.260:                              # %middle.block1044
 	beq	$s0, $a1, .LBB4_107
-# %bb.268:                              # %vec.epilog.iter.check1048
+# %bb.261:                              # %vec.epilog.iter.check1048
 	beqz	$a2, .LBB4_105
-.LBB4_269:                              # %vec.epilog.ph1050
+.LBB4_262:                              # %vec.epilog.ph1050
 	move	$a4, $a1
 	bstrpick.d	$a1, $s0, 32, 2
 	slli.d	$a1, $a1, 2
@@ -4288,18 +4304,18 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	alsl.d	$a3, $a4, $a0, 2
 	alsl.d	$a4, $a4, $s1, 2
 	.p2align	4, , 16
-.LBB4_270:                              # %vec.epilog.vector.body1053
+.LBB4_263:                              # %vec.epilog.vector.body1053
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a4, 0
 	vst	$vr0, $a3, 0
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 16
 	addi.d	$a4, $a4, 16
-	bnez	$a2, .LBB4_270
-# %bb.271:                              # %vec.epilog.middle.block1057
+	bnez	$a2, .LBB4_263
+# %bb.264:                              # %vec.epilog.middle.block1057
 	bne	$s0, $a1, .LBB4_105
 	b	.LBB4_107
-.LBB4_272:                              # %.invoke
+.LBB4_265:                              # %.invoke
 .Ltmp131:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
@@ -4312,139 +4328,139 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp132:                               # EH_LABEL
-# %bb.273:                              # %.cont
-.LBB4_274:
+# %bb.266:                              # %.cont
+.LBB4_267:
 .Ltmp120:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.20)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp121:                               # EH_LABEL
-# %bb.275:                              # %.noexc221
-.LBB4_276:
+# %bb.268:                              # %.noexc221
+.LBB4_269:
 .Ltmp154:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.20)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp155:                               # EH_LABEL
-# %bb.277:                              # %.noexc202
-.LBB4_278:
+# %bb.270:                              # %.noexc202
+.LBB4_271:
 .Ltmp117:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.20)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp118:                               # EH_LABEL
-# %bb.279:                              # %.noexc230
-.LBB4_280:
+# %bb.272:                              # %.noexc230
+.LBB4_273:
 .Ltmp138:                               # EH_LABEL
-	b	.LBB4_284
-.LBB4_281:
+	b	.LBB4_277
+.LBB4_274:
 .Ltmp119:                               # EH_LABEL
-	b	.LBB4_287
-.LBB4_282:
+	b	.LBB4_280
+.LBB4_275:
 .Ltmp156:                               # EH_LABEL
-	b	.LBB4_290
-.LBB4_283:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit206.thread829
+	b	.LBB4_283
+.LBB4_276:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit206.thread829
 .Ltmp135:                               # EH_LABEL
-.LBB4_284:                              # %.sink.split
+.LBB4_277:                              # %.sink.split
 	move	$fp, $a0
-	b	.LBB4_292
-.LBB4_285:
+	b	.LBB4_285
+.LBB4_278:
 .Ltmp122:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB4_302
-.LBB4_286:
+	b	.LBB4_295
+.LBB4_279:
 .Ltmp114:                               # EH_LABEL
-.LBB4_287:
+.LBB4_280:
 	move	$fp, $a0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	beqz	$a0, .LBB4_302
-# %bb.288:
+	beqz	$a0, .LBB4_295
+# %bb.281:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
-	b	.LBB4_301
-.LBB4_289:
+	b	.LBB4_294
+.LBB4_282:
 .Ltmp151:                               # EH_LABEL
-.LBB4_290:
+.LBB4_283:
 	move	$fp, $a0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	beqz	$a0, .LBB4_292
-# %bb.291:
+	beqz	$a0, .LBB4_285
+# %bb.284:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_292:                              # %.sink.split
+.LBB4_285:                              # %.sink.split
 	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 	move	$s2, $zero
 	move	$s5, $zero
-	b	.LBB4_295
-.LBB4_293:
+	b	.LBB4_288
+.LBB4_286:
 .Ltmp90:                                # EH_LABEL
-	b	.LBB4_297
-.LBB4_294:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit206
+	b	.LBB4_290
+.LBB4_287:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit206
 .Ltmp162:                               # EH_LABEL
 	move	$s2, $s1
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a0
-	beqz	$s4, .LBB4_299
-.LBB4_295:
+	beqz	$s4, .LBB4_292
+.LBB4_288:
 	sub.d	$a1, $s6, $s4
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB4_299
-.LBB4_296:
+	b	.LBB4_292
+.LBB4_289:
 .Ltmp93:                                # EH_LABEL
-.LBB4_297:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit250.thread
+.LBB4_290:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit250.thread
 	move	$fp, $a0
 	move	$s5, $zero
 	move	$s2, $zero
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
-	b	.LBB4_302
-.LBB4_298:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit206.thread818
+	b	.LBB4_295
+.LBB4_291:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit206.thread818
 .Ltmp159:                               # EH_LABEL
 	move	$s5, $fp
 	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a0
-.LBB4_299:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit250
-	beqz	$s3, .LBB4_302
-# %bb.300:
+.LBB4_292:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit250
+	beqz	$s3, .LBB4_295
+# %bb.293:
 	sub.d	$a1, $s8, $s3
 	move	$a0, $s3
-.LBB4_301:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit252
+.LBB4_294:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit252
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB4_302:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit252
-	bnez	$s2, .LBB4_306
-# %bb.303:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit254
+.LBB4_295:                              # %_ZNSt6vectorIdSaIdEED2Ev.exit252
+	bnez	$s2, .LBB4_299
+# %bb.296:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit254
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bnez	$a0, .LBB4_307
-.LBB4_304:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit256
+	bnez	$a0, .LBB4_300
+.LBB4_297:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit256
 	ld.d	$a0, $sp, 80
-	bnez	$a0, .LBB4_308
-.LBB4_305:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit258
+	bnez	$a0, .LBB4_301
+.LBB4_298:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit258
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB4_306:
+.LBB4_299:
 	sub.d	$a1, $s5, $s2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	beqz	$a0, .LBB4_304
-.LBB4_307:
+	beqz	$a0, .LBB4_297
+.LBB4_300:
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $a2
@@ -4452,8 +4468,8 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 80
-	beqz	$a0, .LBB4_305
-.LBB4_308:
+	beqz	$a0, .LBB4_298
+.LBB4_301:
 	ld.d	$a1, $sp, 96
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)

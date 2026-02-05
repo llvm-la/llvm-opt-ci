@@ -567,8 +567,8 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_35:                               # %vector.ph126
                                         #   in Loop: Header=BB7_33 Depth=2
-	xvldrepl.d	$xr3, $t7, 0
-	xvldrepl.d	$xr4, $a1, 0
+	xvldrepl.d	$xr3, $a1, 0
+	xvldrepl.d	$xr4, $t7, 0
 	move	$t2, $a6
 	move	$t1, $t5
 	move	$fp, $t8
@@ -595,8 +595,8 @@ main:                                   # @main
 	xvpermi.q	$xr6, $xr9, 2
 	xvld	$xr7, $fp, 0
 	xvfmul.d	$xr6, $xr6, $xr0
-	xvfmul.d	$xr6, $xr6, $xr4
-	xvfmadd.d	$xr5, $xr5, $xr3, $xr6
+	xvfmul.d	$xr6, $xr6, $xr3
+	xvfmadd.d	$xr5, $xr5, $xr4, $xr6
 	xvfadd.d	$xr5, $xr7, $xr5
 	xvst	$xr5, $fp, 0
 	addi.d	$s0, $s0, -4
@@ -774,8 +774,8 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_53:                               # %vector.ph172
                                         #   in Loop: Header=BB7_51 Depth=2
-	xvldrepl.d	$xr3, $t6, 0
-	xvldrepl.d	$xr4, $a1, 0
+	xvldrepl.d	$xr3, $a1, 0
+	xvldrepl.d	$xr4, $t6, 0
 	move	$s2, $a6
 	move	$t1, $t4
 	move	$t7, $fp
@@ -797,13 +797,13 @@ main:                                   # @main
 	fld.d	$ft0, $s2, 0
 	fldx.d	$ft1, $s2, $a0
 	xvfmul.d	$xr5, $xr5, $xr0
-	xvfmul.d	$xr5, $xr5, $xr3
+	xvfmul.d	$xr5, $xr5, $xr4
 	vextrins.d	$vr6, $vr7, 16
 	vextrins.d	$vr8, $vr9, 16
 	xvpermi.q	$xr6, $xr8, 2
 	xvld	$xr7, $t7, 0
 	xvfmul.d	$xr6, $xr6, $xr0
-	xvfmul.d	$xr6, $xr6, $xr4
+	xvfmul.d	$xr6, $xr6, $xr3
 	xvfadd.d	$xr5, $xr5, $xr6
 	xvfadd.d	$xr5, $xr7, $xr5
 	xvst	$xr5, $t7, 0

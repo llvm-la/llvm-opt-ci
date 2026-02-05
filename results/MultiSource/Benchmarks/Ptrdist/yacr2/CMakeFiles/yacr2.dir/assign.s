@@ -261,17 +261,17 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	pcalau12i	$a0, %got_pc_hi20(VCG)
 	ld.d	$s4, $a0, %got_pc_lo12(VCG)
 	pcalau12i	$a0, %got_pc_hi20(HCG)
-	ld.d	$s5, $a0, %got_pc_lo12(HCG)
+	ld.d	$a0, $a0, %got_pc_lo12(HCG)
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$s6, %pc_hi20(netsAssign)
 	pcalau12i	$a0, %pc_hi20(costMatrix)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(channelTracks)
 	ld.d	$a0, $a0, %got_pc_lo12(channelTracks)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s7, $zero, 2
-	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$s8, $zero, 9
+	ori	$s7, $zero, 2
+	addi.w	$s8, $zero, -1
+	ori	$s5, $zero, 9
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	b	.LBB3_11
@@ -297,7 +297,8 @@ MaxNetsAssign:                          # @MaxNetsAssign
                                         #       Child Loop BB3_23 Depth 3
                                         #     Child Loop BB3_25 Depth 2
 	ld.d	$a0, $s4, 0
-	ld.d	$a1, $s5, 0
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $a1, 0
 	ld.d	$a2, $s6, %pc_lo12(netsAssign)
 	ld.d	$fp, $s2, 0
 	move	$a3, $fp
@@ -307,7 +308,7 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	beqz	$a0, .LBB3_9
 # %bb.12:                               # %.lr.ph35.i
                                         #   in Loop: Header=BB3_11 Depth=1
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	addi.d	$a3, $a0, 1
 	move	$s0, $zero
@@ -331,7 +332,7 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	ori	$a6, $zero, 1
 	move	$a7, $a3
 	bstrins.d	$a7, $a6, 2, 0
-	ld.d	$t0, $sp, 16                    # 8-byte Folded Reload
+	move	$t0, $s8
 	b	.LBB3_16
 	.p2align	4, , 16
 .LBB3_14:                               # %._crit_edge.i
@@ -357,7 +358,7 @@ MaxNetsAssign:                          # @MaxNetsAssign
 # %bb.17:                               # %.lr.ph.i
                                         #   in Loop: Header=BB3_16 Depth=2
 	ldx.d	$t1, $a0, $t1
-	bgeu	$a1, $s8, .LBB3_19
+	bgeu	$a1, $s5, .LBB3_19
 # %bb.18:                               #   in Loop: Header=BB3_16 Depth=2
 	move	$t2, $zero
 	ori	$t4, $zero, 1
@@ -414,16 +415,16 @@ MaxNetsAssign:                          # @MaxNetsAssign
 	or	$a0, $a0, $a1
 	addi.d	$a1, $fp, 8
 	ori	$a2, $zero, 1
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	move	$a3, $s8
 	.p2align	4, , 16
 .LBB3_25:                               # %.lr.ph35.split.us.i
                                         #   Parent Loop BB3_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a4, $a1, 0
 	sltui	$a4, $a4, 1
-	slti	$a5, $a3, 0
-	masknez	$a6, $s0, $a5
-	maskeqz	$a5, $a2, $a5
+	slt	$a5, $s8, $a3
+	masknez	$a6, $a2, $a5
+	maskeqz	$a5, $s0, $a5
 	or	$a5, $a5, $a6
 	masknez	$a5, $a5, $a4
 	maskeqz	$a6, $s0, $a4
@@ -936,25 +937,26 @@ LeftNetsAssign:                         # @LeftNetsAssign
                                         #   in Loop: Header=BB4_22 Depth=2
 	move	$a1, $zero
 	move	$fp, $zero
-	addi.d	$a2, $s5, 8
-	addi.w	$a3, $zero, -1
+	addi.w	$a2, $zero, -1
+	addi.d	$a3, $s5, 8
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB4_67:                               # %.lr.ph35.split.us.i
                                         #   Parent Loop BB4_7 Depth=1
                                         #     Parent Loop BB4_22 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a4, $a2, 0
+	ld.d	$a5, $a3, 0
 	addi.d	$a1, $a1, 1
-	sltui	$a4, $a4, 1
-	slti	$a5, $a3, 0
-	masknez	$a6, $fp, $a5
-	maskeqz	$a5, $a1, $a5
-	or	$a5, $a5, $a6
-	masknez	$a5, $a5, $a4
-	maskeqz	$a6, $fp, $a4
-	or	$fp, $a6, $a5
-	maskeqz	$a3, $a3, $a4
-	addi.d	$a2, $a2, 8
+	sltui	$a5, $a5, 1
+	slt	$a6, $a2, $a4
+	masknez	$a7, $a1, $a6
+	maskeqz	$a6, $fp, $a6
+	or	$a6, $a6, $a7
+	masknez	$a6, $a6, $a5
+	maskeqz	$a7, $fp, $a5
+	or	$fp, $a7, $a6
+	maskeqz	$a4, $a4, $a5
+	addi.d	$a3, $a3, 8
 	bne	$a0, $a1, .LBB4_67
 	b	.LBB4_21
 	.p2align	4, , 16
@@ -1485,25 +1487,26 @@ RightNetsAssign:                        # @RightNetsAssign
                                         #   in Loop: Header=BB5_23 Depth=2
 	move	$a1, $zero
 	move	$fp, $zero
-	addi.d	$a2, $s7, 8
-	addi.w	$a3, $zero, -1
+	addi.w	$a2, $zero, -1
+	addi.d	$a3, $s7, 8
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB5_68:                               # %.lr.ph35.split.us.i
                                         #   Parent Loop BB5_8 Depth=1
                                         #     Parent Loop BB5_23 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a4, $a2, 0
+	ld.d	$a5, $a3, 0
 	addi.d	$a1, $a1, 1
-	sltui	$a4, $a4, 1
-	slti	$a5, $a3, 0
-	masknez	$a6, $fp, $a5
-	maskeqz	$a5, $a1, $a5
-	or	$a5, $a5, $a6
-	masknez	$a5, $a5, $a4
-	maskeqz	$a6, $fp, $a4
-	or	$fp, $a6, $a5
-	maskeqz	$a3, $a3, $a4
-	addi.d	$a2, $a2, 8
+	sltui	$a5, $a5, 1
+	slt	$a6, $a2, $a4
+	masknez	$a7, $a1, $a6
+	maskeqz	$a6, $fp, $a6
+	or	$a6, $a6, $a7
+	masknez	$a6, $a6, $a5
+	maskeqz	$a7, $fp, $a5
+	or	$fp, $a7, $a6
+	maskeqz	$a4, $a4, $a5
+	addi.d	$a3, $a3, 8
 	bne	$a0, $a1, .LBB5_68
 	b	.LBB5_22
 	.p2align	4, , 16
@@ -1642,24 +1645,25 @@ Select:                                 # @Select
 	maskeqz	$a1, $a1, $a3
 	or	$a1, $a1, $a2
 	addi.d	$a2, $s0, 8
-	ori	$a3, $zero, 1
-	addi.w	$a4, $zero, -1
+	addi.w	$a3, $zero, -1
+	ori	$a4, $zero, 1
+	move	$a5, $a3
 	.p2align	4, , 16
 .LBB6_15:                               # %.lr.ph35.split.us
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a2, 0
-	sltui	$a5, $a5, 1
-	slti	$a6, $a4, 0
-	masknez	$a7, $a0, $a6
-	maskeqz	$a6, $a3, $a6
-	or	$a6, $a6, $a7
-	masknez	$a6, $a6, $a5
-	maskeqz	$a0, $a0, $a5
-	or	$a0, $a0, $a6
-	maskeqz	$a4, $a4, $a5
-	addi.d	$a3, $a3, 1
+	ld.d	$a6, $a2, 0
+	sltui	$a6, $a6, 1
+	slt	$a7, $a3, $a5
+	masknez	$t0, $a4, $a7
+	maskeqz	$a7, $a0, $a7
+	or	$a7, $a7, $t0
+	masknez	$a7, $a7, $a6
+	maskeqz	$a0, $a0, $a6
+	or	$a0, $a0, $a7
+	maskeqz	$a5, $a5, $a6
+	addi.d	$a4, $a4, 1
 	addi.d	$a2, $a2, 8
-	bne	$a1, $a3, .LBB6_15
+	bne	$a1, $a4, .LBB6_15
 .LBB6_16:                               # %._crit_edge36
 	st.d	$a0, $fp, 0
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload

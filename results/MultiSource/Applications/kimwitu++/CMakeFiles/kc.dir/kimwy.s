@@ -262,7 +262,7 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	.cfi_def_cfa_offset 2272
 	pcalau12i	$s8, %pc_hi20(yydebug)
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	bnez	$a0, .LBB4_466
+	bnez	$a0, .LBB4_464
 .LBB4_1:
 	pcalau12i	$a0, %pc_hi20(yynerrs)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
@@ -274,18 +274,18 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	st.w	$a0, $s0, %pc_lo12(yychar)
 	st.h	$zero, $sp, 1784
-	addi.d	$s6, $sp, 184
+	addi.d	$fp, $sp, 184
 	pcalau12i	$a0, %pc_hi20(_ZL6yypact)
-	addi.d	$s5, $a0, %pc_lo12(_ZL6yypact)
+	addi.d	$a4, $a0, %pc_lo12(_ZL6yypact)
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 3652
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(_ZL8yydefact)
 	addi.d	$a0, $a0, %pc_lo12(_ZL8yydefact)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
@@ -294,71 +294,70 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(_ZL7yytname)
 	addi.d	$a0, $a0, %pc_lo12(_ZL7yytname)
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.29)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.29)
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	addi.w	$a4, $zero, -1
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	addi.w	$s6, $zero, -1
 	pcalau12i	$a0, %pc_hi20(_ZL7yycheck)
-	addi.d	$a5, $a0, %pc_lo12(_ZL7yycheck)
+	addi.d	$a0, $a0, %pc_lo12(_ZL7yycheck)
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ori	$a3, $zero, 1
 	pcalau12i	$a0, %pc_hi20(_ZL7yytable)
 	addi.d	$a0, $a0, %pc_lo12(_ZL7yytable)
 	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	move	$s2, $zero
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	move	$s1, $zero
 	move	$s7, $zero
 	pcalau12i	$a0, %pc_hi20(yylval)
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	addi.d	$a6, $sp, 1784
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$a5, $sp, 1784
+	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a4, $sp, 160                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 152                   # 8-byte Folded Spill
 .LBB4_2:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_41 Depth 2
+                                        #     Child Loop BB4_39 Depth 2
+	move	$s5, $s6
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
 	bnez	$a0, .LBB4_21
 .LBB4_3:                                #   in Loop: Header=BB4_2 Depth=1
 	slli.d	$s4, $s2, 1
-	ldx.h	$fp, $s5, $s4
-	bstrpick.d	$s3, $fp, 15, 0
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	beq	$s3, $a0, .LBB4_28
+	ldx.h	$s6, $a4, $s4
+	bstrpick.d	$s3, $s6, 15, 0
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	beq	$s3, $a0, .LBB4_26
 # %bb.4:                                #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s0, %pc_lo12(yychar)
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB4_7
 # %bb.5:                                #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	bnez	$a0, .LBB4_25
+	bnez	$a0, .LBB4_24
 .LBB4_6:                                #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z5yylexv)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s0, %pc_lo12(yychar)
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ori	$a3, $zero, 1
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 .LBB4_7:                                #   in Loop: Header=BB4_2 Depth=1
-	move	$s1, $s5
 	blez	$a0, .LBB4_12
 # %bb.8:                                #   in Loop: Header=BB4_2 Depth=1
-	ori	$s5, $zero, 2
+	ori	$s1, $zero, 2
 	ori	$a1, $zero, 299
 	bltu	$a1, $a0, .LBB4_10
 # %bb.9:                                #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a1, %pc_hi20(_ZL11yytranslate)
 	addi.d	$a1, $a1, %pc_lo12(_ZL11yytranslate)
-	ldx.bu	$s5, $a1, $a0
+	ldx.bu	$s1, $a1, $a0
 .LBB4_10:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
 	beqz	$a0, .LBB4_13
 # %bb.11:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $s0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.7)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.7)
@@ -367,13 +366,13 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $s0, 0
-	sltui	$a4, $s5, 66
-	slli.d	$a1, $s5, 3
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	sltui	$a4, $s1, 66
+	slli.d	$a1, $s1, 3
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	ldx.d	$a2, $a2, $a1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	masknez	$a1, $a1, $a4
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	maskeqz	$a3, $a3, $a4
 	or	$a1, $a3, $a1
 	move	$a0, $s0
@@ -383,48 +382,47 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ori	$a3, $zero, 1
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	add.d	$a0, $s5, $fp
+	add.d	$a0, $s1, $s6
 	ori	$a1, $zero, 771
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
 	bgeu	$a1, $a0, .LBB4_14
-	b	.LBB4_27
+	b	.LBB4_26
 .LBB4_12:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	move	$s5, $zero
+	move	$s1, $zero
 	st.w	$zero, $s0, %pc_lo12(yychar)
-	bnez	$a0, .LBB4_26
+	bnez	$a0, .LBB4_25
 .LBB4_13:                               #   in Loop: Header=BB4_2 Depth=1
-	add.d	$a0, $s5, $fp
+	add.d	$a0, $s1, $s6
 	ori	$a1, $zero, 771
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	bltu	$a1, $a0, .LBB4_27
+	bltu	$a1, $a0, .LBB4_26
 .LBB4_14:                               #   in Loop: Header=BB4_2 Depth=1
 	slli.d	$a1, $a0, 1
-	ldx.h	$a2, $a5, $a1
-	bne	$s5, $a2, .LBB4_27
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ldx.h	$a2, $a2, $a1
+	bne	$s1, $a2, .LBB4_26
 # %bb.15:                               #   in Loop: Header=BB4_2 Depth=1
+	st.d	$s1, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	ldx.h	$fp, $a2, $a1
-	blez	$fp, .LBB4_22
+	ldx.h	$s1, $a2, $a1
+	move	$s6, $s5
+	blez	$s1, .LBB4_22
 # %bb.16:                               #   in Loop: Header=BB4_2 Depth=1
 	ori	$a1, $zero, 46
-	beq	$a0, $a1, .LBB4_473
+	beq	$a0, $a1, .LBB4_471
 # %bb.17:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	bnez	$a0, .LBB4_71
+	bnez	$a0, .LBB4_69
 # %bb.18:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s0, %pc_lo12(yychar)
-	move	$s5, $s1
 	beqz	$a0, .LBB4_20
 .LBB4_19:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -432,40 +430,34 @@ _Z7yyparsev:                            # @_Z7yyparsev
 .LBB4_20:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(yylval)
-	st.d	$a0, $s6, 8
-	addi.d	$s6, $s6, 8
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	addi.w	$a0, $a0, 0
-	addi.d	$a1, $a0, -1
-	sltu	$a0, $a0, $a1
-	masknez	$a0, $a1, $a0
-	b	.LBB4_53
+	st.d	$a0, $fp, 8
+	addi.d	$fp, $fp, 8
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	sltu	$a0, $zero, $a1
+	sub.w	$a1, $a1, $a0
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	b	.LBB4_51
 .LBB4_21:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ori	$a3, $zero, 1
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	b	.LBB4_3
 .LBB4_22:                               #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a0, -762
 	ori	$a1, $zero, 9
-	bgeu	$a0, $a1, .LBB4_24
+	bltu	$a0, $a1, .LBB4_31
 # %bb.23:                               #   in Loop: Header=BB4_2 Depth=1
-	move	$s5, $s1
-	b	.LBB4_33
+	sub.d	$s1, $zero, $s1
+	b	.LBB4_27
 .LBB4_24:                               #   in Loop: Header=BB4_2 Depth=1
-	sub.d	$s4, $zero, $fp
-	move	$s5, $s1
-	b	.LBB4_29
-.LBB4_25:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
@@ -474,8 +466,8 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	b	.LBB4_6
-.LBB4_26:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+.LBB4_25:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
@@ -483,100 +475,99 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ori	$a3, $zero, 1
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	move	$s5, $zero
-	add.d	$a0, $s5, $fp
+	move	$s1, $zero
+	add.d	$a0, $s1, $s6
 	ori	$a1, $zero, 771
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
 	bgeu	$a1, $a0, .LBB4_14
 	.p2align	4, , 16
+.LBB4_26:                               #   in Loop: Header=BB4_2 Depth=1
+	st.d	$s1, $sp, 152                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ldx.hu	$s1, $a0, $s4
+	move	$s6, $s5
+	beqz	$s1, .LBB4_31
 .LBB4_27:                               #   in Loop: Header=BB4_2 Depth=1
-	move	$s5, $s1
-.LBB4_28:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	ldx.hu	$s4, $a0, $s4
-	beqz	$s4, .LBB4_33
-.LBB4_29:                               #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZL4yyr2)
 	addi.d	$a0, $a0, %pc_lo12(_ZL4yyr2)
-	ldx.bu	$s1, $a0, $s4
-	sub.d	$a0, $a3, $s1
+	ldx.bu	$s4, $a0, $s1
+	sub.d	$a0, $a3, $s4
 	slli.d	$a0, $a0, 3
 	ld.w	$a1, $s8, %pc_lo12(yydebug)
-	ldx.d	$s2, $s6, $a0
-	bnez	$a1, .LBB4_54
-# %bb.30:                               #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a0, $s4, -2
+	ldx.d	$s2, $fp, $a0
+	bnez	$a1, .LBB4_52
+# %bb.28:                               #   in Loop: Header=BB4_2 Depth=1
+	addi.d	$a0, $s1, -2
 	ori	$a1, $zero, 375
-	bltu	$a1, $a0, .LBB4_324
-.LBB4_31:                               #   in Loop: Header=BB4_2 Depth=1
+	bltu	$a1, $a0, .LBB4_319
+.LBB4_29:                               #   in Loop: Header=BB4_2 Depth=1
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI4_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI4_0)
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
-.LBB4_32:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -16
-	b	.LBB4_324
+.LBB4_30:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -16
+	b	.LBB4_319
 	.p2align	4, , 16
+.LBB4_31:                               #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %pc_hi20(_ZL6yystos)
+	addi.d	$s4, $a0, %pc_lo12(_ZL6yystos)
+	ori	$a0, $zero, 3
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB4_33
+# %bb.32:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	bnez	$a1, .LBB4_36
+	b	.LBB4_473
 .LBB4_33:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	addi.w	$a0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(_ZL6yystos)
-	addi.d	$s4, $a1, %pc_lo12(_ZL6yystos)
-	ori	$a1, $zero, 3
-	beq	$a0, $a1, .LBB4_35
-# %bb.34:                               #   in Loop: Header=BB4_2 Depth=1
-	bnez	$a0, .LBB4_38
-	b	.LBB4_475
-.LBB4_35:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s0, %pc_lo12(yychar)
-	beqz	$a0, .LBB4_467
-# %bb.36:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	beqz	$a0, .LBB4_465
+# %bb.34:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	bnez	$a0, .LBB4_58
-.LBB4_37:                               #   in Loop: Header=BB4_2 Depth=1
+	bnez	$a0, .LBB4_56
+.LBB4_35:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	st.w	$a0, $s0, %pc_lo12(yychar)
-.LBB4_38:                               # %.preheader1024
+.LBB4_36:                               # %.preheader1024
                                         #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$s6, $s6, 8
-	b	.LBB4_41
+	addi.d	$fp, $fp, 8
+	b	.LBB4_39
 	.p2align	4, , 16
-.LBB4_39:                               # %.thread
-                                        #   in Loop: Header=BB4_41 Depth=2
-	ld.hu	$s1, $fp, -2
-.LBB4_40:                               #   in Loop: Header=BB4_41 Depth=2
+.LBB4_37:                               # %.thread
+                                        #   in Loop: Header=BB4_39 Depth=2
+	ld.hu	$s1, $s2, -2
+.LBB4_38:                               #   in Loop: Header=BB4_39 Depth=2
 	ext.w.h	$s2, $s1
 	slli.d	$a0, $s2, 1
-	ldx.hu	$s3, $s5, $a0
-	addi.d	$s6, $s6, -8
+	ldx.hu	$s3, $a4, $a0
+	addi.d	$fp, $fp, -8
 	addi.d	$s7, $s7, -2
-.LBB4_41:                               #   Parent Loop BB4_2 Depth=1
+.LBB4_39:                               #   Parent Loop BB4_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ext.w.h	$a0, $s3
-	blt	$a0, $a4, .LBB4_44
-# %bb.42:                               #   in Loop: Header=BB4_41 Depth=2
+	blt	$a0, $s6, .LBB4_42
+# %bb.40:                               #   in Loop: Header=BB4_39 Depth=2
 	addi.d	$a0, $a0, 1
 	slli.d	$a0, $a0, 1
-	ldx.hu	$a1, $a5, $a0
-	bne	$a1, $a3, .LBB4_44
-# %bb.43:                               #   in Loop: Header=BB4_41 Depth=2
+	ldx.hu	$a1, $s5, $a0
+	bne	$a1, $a3, .LBB4_42
+# %bb.41:                               #   in Loop: Header=BB4_39 Depth=2
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	ldx.h	$fp, $a1, $a0
-	bgtz	$fp, .LBB4_49
-.LBB4_44:                               #   in Loop: Header=BB4_41 Depth=2
-	beqz	$s7, .LBB4_464
-# %bb.45:                               #   in Loop: Header=BB4_41 Depth=2
+	ldx.h	$s1, $a1, $a0
+	bgtz	$s1, .LBB4_47
+.LBB4_42:                               #   in Loop: Header=BB4_39 Depth=2
+	beqz	$s7, .LBB4_462
+# %bb.43:                               #   in Loop: Header=BB4_39 Depth=2
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	add.d	$fp, $a6, $s7
-	beqz	$a0, .LBB4_39
-# %bb.46:                               #   in Loop: Header=BB4_41 Depth=2
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
+	add.d	$s2, $a5, $s7
+	beqz	$a0, .LBB4_37
+# %bb.44:                               #   in Loop: Header=BB4_39 Depth=2
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $s0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.7)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.7)
@@ -590,11 +581,11 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.d	$s1, $s0, 0
 	sltui	$a1, $a0, 66
 	slli.d	$a0, $a0, 3
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	ldx.d	$a2, $a2, $a0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	masknez	$a0, $a0, $a1
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	maskeqz	$a1, $a3, $a1
 	or	$a1, $a1, $a0
 	move	$a0, $s1
@@ -609,77 +600,75 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	ld.hu	$s1, $fp, -2
-	bnez	$a0, .LBB4_48
-.LBB4_47:                               #   in Loop: Header=BB4_41 Depth=2
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.hu	$s1, $s2, -2
+	bnez	$a0, .LBB4_46
+.LBB4_45:                               #   in Loop: Header=BB4_39 Depth=2
+	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ori	$a3, $zero, 1
-	addi.d	$a6, $sp, 1784
-	b	.LBB4_40
-.LBB4_48:                               #   in Loop: Header=BB4_41 Depth=2
-	addi.d	$a1, $fp, -2
+	addi.d	$a5, $sp, 1784
+	b	.LBB4_38
+.LBB4_46:                               #   in Loop: Header=BB4_39 Depth=2
+	addi.d	$a1, $s2, -2
 	addi.d	$a0, $sp, 1784
 	pcaddu18i	$ra, %call36(_ZL14yy_stack_printPsS_)
 	jirl	$ra, $ra, 0
-	b	.LBB4_47
-.LBB4_49:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_45
+.LBB4_47:                               #   in Loop: Header=BB4_2 Depth=1
 	move	$a0, $zero
 	ori	$a1, $zero, 71
-	beq	$s2, $a1, .LBB4_465
-# %bb.50:                               #   in Loop: Header=BB4_2 Depth=1
+	beq	$s2, $a1, .LBB4_463
+# %bb.48:                               #   in Loop: Header=BB4_2 Depth=1
 	ori	$a1, $zero, 75
-	beq	$s2, $a1, .LBB4_465
-# %bb.51:                               #   in Loop: Header=BB4_2 Depth=1
+	beq	$s2, $a1, .LBB4_463
+# %bb.49:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	bnez	$a0, .LBB4_72
-.LBB4_52:                               #   in Loop: Header=BB4_2 Depth=1
+	bnez	$a0, .LBB4_70
+.LBB4_50:                               #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(yylval)
-	st.d	$a0, $s6, 0
+	st.d	$a0, $fp, 0
 	ori	$a0, $zero, 3
-.LBB4_53:                               #   in Loop: Header=BB4_2 Depth=1
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s2, $fp
-	b	.LBB4_330
-.LBB4_54:                               #   in Loop: Header=BB4_2 Depth=1
-	move	$a0, $s4
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+.LBB4_51:                               #   in Loop: Header=BB4_2 Depth=1
+	move	$s2, $s1
+	b	.LBB4_325
+.LBB4_52:                               #   in Loop: Header=BB4_2 Depth=1
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZL15yy_reduce_printi)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	addi.d	$a0, $s4, -2
+	addi.d	$a0, $s1, -2
 	ori	$a1, $zero, 375
-	bgeu	$a1, $a0, .LBB4_31
-	b	.LBB4_324
-.LBB4_55:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -8
-	b	.LBB4_324
-.LBB4_56:                               #   in Loop: Header=BB4_2 Depth=1
+	bgeu	$a1, $a0, .LBB4_29
+	b	.LBB4_319
+.LBB4_53:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	b	.LBB4_319
+.LBB4_54:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_57:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	b	.LBB4_324
-.LBB4_58:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a0, $fp, 0
+	b	.LBB4_405
+.LBB4_55:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
+	b	.LBB4_319
+.LBB4_56:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $s0, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $fp, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s1, $s0, 0
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	sltui	$a0, $a1, 66
 	slli.d	$a1, $a1, 3
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	ldx.d	$a2, $a2, $a1
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	maskeqz	$a0, $a3, $a0
 	or	$a1, $a0, $a1
 	move	$a0, $s1
@@ -689,68 +678,68 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s0, 0
+	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ori	$a3, $zero, 1
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	b	.LBB4_37
-.LBB4_59:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_35
+.LBB4_57:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z8do_CEXPRv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_60:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_405
+.LBB4_58:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z10do_CEXPRDQv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
+	b	.LBB4_405
+.LBB4_59:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc10YespointerEPNS_15impl_ac_pointerE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_66
+.LBB4_60:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc10YespointerEPNS_15impl_ac_pointerE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_63
 .LBB4_61:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	pcaddu18i	$ra, %call36(_ZN2kc10YespointerEPNS_15impl_ac_pointerE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_68
-.LBB4_62:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc10YespointerEPNS_15impl_ac_pointerE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_65
-.LBB4_63:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc15NoStorageOptionEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_64:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_62:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc9NopointerEv)
 	jirl	$ra, $ra, 0
-.LBB4_65:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_63:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc7AcNoRefEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_69
-.LBB4_66:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_67
+.LBB4_64:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc25Yesac_constant_expressionEPNS_27impl_ac_constant_expressionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_67:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_65:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc9NopointerEv)
 	jirl	$ra, $ra, 0
-.LBB4_68:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_66:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc5AcRefEv)
 	jirl	$ra, $ra, 0
-.LBB4_69:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_67:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a2, $s6, 0
+	ld.d	$a2, $fp, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc12AcDeclaratorEPNS_22impl_ac_pointer_optionEPNS_18impl_ac_ref_optionEPNS_25impl_ac_direct_declaratorE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_70:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_68:                               #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.11)
 	addi.w	$a1, $zero, -1
@@ -758,28 +747,26 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionPartEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_71:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	b	.LBB4_318
+.LBB4_69:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	slli.d	$a1, $a1, 3
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	ldx.d	$a2, $a2, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.10)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ori	$a3, $zero, 1
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a0, $s0, %pc_lo12(yychar)
-	move	$s5, $s1
 	bnez	$a0, .LBB4_19
 	b	.LBB4_20
-.LBB4_72:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+.LBB4_70:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
@@ -787,65 +774,196 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ori	$a3, $zero, 1
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	b	.LBB4_52
-.LBB4_73:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_50
+.LBB4_71:                               #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	ld.d	$a1, $a0, 48
 	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_414
-# %bb.74:                               # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit779
+	beq	$a1, $a2, .LBB4_411
+# %bb.72:                               # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit779
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_415
-.LBB4_75:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_412
+.LBB4_73:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc3IntEPNS_17impl_integer__IntE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_76:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_358
+.LBB4_74:                               #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
 	st.w	$zero, $a0, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	b	.LBB4_324
-.LBB4_77:                               #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_319
+.LBB4_75:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc14NilCexpressionEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_78:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	pcaddu18i	$ra, %call36(_ZN2kc19ConsoutmostpatternsEPNS_19impl_outmostpatternEPNS_20impl_outmostpatternsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_79:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc8NiltermsEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_80:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_358
+.LBB4_76:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc15ConsCexpressionEPNS_21impl_Cexpression_elemEPNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a1, $s6, -8
+	ld.d	$a1, $fp, -8
 	ld.d	$a1, $a1, 16
 	move	$s2, $a0
 	st.d	$a1, $a0, 16
-	ld.d	$a0, $s6, -8
+	ld.d	$a0, $fp, -8
 	ld.w	$a0, $a0, 8
 	st.w	$a0, $s2, 8
-	b	.LBB4_324
+	b	.LBB4_319
+.LBB4_77:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc8NiltermsEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_78:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc10NoViewnameEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_79:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc9ConstermsEPNS_9impl_termEPNS_10impl_termsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_376
+.LBB4_80:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc19ConsoutmostpatternsEPNS_19impl_outmostpatternEPNS_20impl_outmostpatternsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_376
 .LBB4_81:                               #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$fp, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	ld.w	$a0, $fp, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	bnez	$a0, .LBB4_83
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -8
+	move	$s2, $a0
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeQualEPNS_22impl_ac_type_qualifierE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -16
+	move	$s3, $a0
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZN2kc21AcDeclSpecStorageSpecEPNS_31impl_ac_storage_class_specifierE)
+	jirl	$ra, $ra, 0
+	move	$s5, $s4
+	move	$s4, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s4
+	move	$s4, $s5
+	pcaddu18i	$ra, %call36(_ZN2kc29Consac_declaration_specifiersEPNS_29impl_ac_declaration_specifierEPNS_30impl_ac_declaration_specifiersE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_93
 .LBB4_82:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
+	jirl	$ra, $ra, 0
+	move	$s2, $a0
+	b	.LBB4_135
+.LBB4_83:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc24Noac_constant_expressionEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_84:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -8
+	move	$s2, $a0
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeQualEPNS_22impl_ac_type_qualifierE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_92
+.LBB4_85:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_Z10do_CEXPRSQv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_405
+.LBB4_86:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc9PWildcardEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_87:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc14AcDirectDeclIdEPNS_7impl_IDE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_88:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc13NilattributesEv)
+	jirl	$ra, $ra, 0
+	move	$s2, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc9NilCtextsEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc11CcodeOptionEPNS_15impl_attributesEPNS_11impl_CtextsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_89:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc16ConsalternativesEPNS_16impl_alternativeEPNS_17impl_alternativesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_376
+.LBB4_90:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc8AcStaticEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_91:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -8
+	move	$s2, $a0
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZN2kc21AcDeclSpecStorageSpecEPNS_31impl_ac_storage_class_specifierE)
+	jirl	$ra, $ra, 0
+.LBB4_92:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	move	$s3, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
+	jirl	$ra, $ra, 0
+.LBB4_93:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	move	$a1, $a0
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(_ZN2kc29Consac_declaration_specifiersEPNS_29impl_ac_declaration_specifierEPNS_30impl_ac_declaration_specifiersE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_317
+.LBB4_94:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc17ConslanguagenamesEPNS_7impl_IDEPNS_18impl_languagenamesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_376
+.LBB4_95:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc16NillanguagenamesEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc17ConslanguagenamesEPNS_7impl_IDEPNS_18impl_languagenamesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_96:                               #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_316
+.LBB4_97:                               #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc7AcConstEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_98:                               #   in Loop: Header=BB4_2 Depth=1
+	move	$s5, $s4
+	pcalau12i	$s4, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	ld.w	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	bnez	$a0, .LBB4_100
+.LBB4_99:                               #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -859,173 +977,42 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8v_reportEPNS_10impl_errorE)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-.LBB4_83:                               #   in Loop: Header=BB4_2 Depth=1
-	st.w	$zero, $fp, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	b	.LBB4_324
-.LBB4_84:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc10NoViewnameEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_85:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc9PWildcardEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_86:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -8
-	move	$s2, $a0
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeQualEPNS_22impl_ac_type_qualifierE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -16
-	move	$s3, $a0
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZN2kc21AcDeclSpecStorageSpecEPNS_31impl_ac_storage_class_specifierE)
-	jirl	$ra, $ra, 0
-	move	$fp, $s4
-	move	$s4, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s4
-	move	$s4, $fp
-	pcaddu18i	$ra, %call36(_ZN2kc29Consac_declaration_specifiersEPNS_29impl_ac_declaration_specifierEPNS_30impl_ac_declaration_specifiersE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_97
-.LBB4_87:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
-	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	b	.LBB4_138
-.LBB4_88:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc24Noac_constant_expressionEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_89:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -8
-	move	$s2, $a0
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeQualEPNS_22impl_ac_type_qualifierE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_96
-.LBB4_90:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_Z10do_CEXPRSQv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_91:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc13NilattributesEv)
-	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc9NilCtextsEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc11CcodeOptionEPNS_15impl_attributesEPNS_11impl_CtextsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_92:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	pcaddu18i	$ra, %call36(_ZN2kc16ConsalternativesEPNS_16impl_alternativeEPNS_17impl_alternativesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_93:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc14AcDirectDeclIdEPNS_7impl_IDE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_94:                               #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc8AcStaticEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_95:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -8
-	move	$s2, $a0
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZN2kc21AcDeclSpecStorageSpecEPNS_31impl_ac_storage_class_specifierE)
-	jirl	$ra, $ra, 0
-.LBB4_96:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	move	$s3, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
-	jirl	$ra, $ra, 0
-.LBB4_97:                               # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	move	$a1, $a0
-	move	$a0, $s3
-	pcaddu18i	$ra, %call36(_ZN2kc29Consac_declaration_specifiersEPNS_29impl_ac_declaration_specifierEPNS_30impl_ac_declaration_specifiersE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_322
-.LBB4_98:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	pcaddu18i	$ra, %call36(_ZN2kc17ConslanguagenamesEPNS_7impl_IDEPNS_18impl_languagenamesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_99:                               #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc16NillanguagenamesEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc17ConslanguagenamesEPNS_7impl_IDEPNS_18impl_languagenamesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
 .LBB4_100:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc18AcDeclSpecTypeSpecEPNS_22impl_ac_type_specifierE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_321
+	st.w	$zero, $s4, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	move	$s4, $s5
+	b	.LBB4_319
 .LBB4_101:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc7AcConstEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_102:                              #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$fp, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	ld.d	$s3, $fp, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	move	$s5, $s4
+	pcalau12i	$s4, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	ld.d	$s3, $s4, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
 	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZNK2kc20impl_abstract_phylum2eqEPKS0_)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_303
-# %bb.103:                              #   in Loop: Header=BB4_2 Depth=1
+	beqz	$a0, .LBB4_299
+# %bb.102:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z4do_Cv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_304
-.LBB4_104:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_300
+.LBB4_103:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_105:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	pcaddu18i	$ra, %call36(_ZN2kc9ConstermsEPNS_9impl_termEPNS_10impl_termsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_106:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_376
+.LBB4_104:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc12ConspatternsEPNS_12impl_patternEPNS_13impl_patternsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_107:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_376
+.LBB4_105:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc11NilpatternsEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_108:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_106:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.11)
 	addi.w	$a1, $zero, -1
@@ -1042,63 +1029,63 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc16CExpressionArrayEPNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_109:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_107:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %got_pc_hi20(Thefndeclarations)
-	ld.d	$fp, $a1, %got_pc_lo12(Thefndeclarations)
-	ld.d	$a1, $fp, 0
+	ld.d	$s3, $a1, %got_pc_lo12(Thefndeclarations)
+	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(_ZN2kc18ConsfndeclarationsEPNS_18impl_fndeclarationEPNS_19impl_fndeclarationsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_412
-.LBB4_110:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_409
+.LBB4_108:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc17CExpressionSQPartEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_111:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_109:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z4do_Cv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, -8
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc18CTextCexpressionSQEPNS_18impl_CexpressionSQE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_112:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_110:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z8do_CEXPRv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_393
-.LBB4_113:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_390
+.LBB4_111:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %got_pc_hi20(Theunparsedeclarations)
-	ld.d	$fp, $a1, %got_pc_lo12(Theunparsedeclarations)
-	ld.d	$a1, $fp, 0
+	ld.d	$s3, $a1, %got_pc_lo12(Theunparsedeclarations)
+	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(_ZN2kc23ConsunparsedeclarationsEPNS_23impl_unparsedeclarationEPNS_24impl_unparsedeclarationsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_412
-.LBB4_114:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_409
+.LBB4_112:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	ld.d	$a1, $a0, 48
 	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_428
-# %bb.115:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit796
+	beq	$a1, $a2, .LBB4_426
+# %bb.113:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit796
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_429
-.LBB4_116:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+	b	.LBB4_427
+.LBB4_114:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc9NilCtextsEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc10ConsCtextsEPNS_10impl_CtextEPNS_11impl_CtextsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_117:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_115:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc18IncludeDeclarationEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -24
+	ld.d	$a1, $fp, -24
 	move	$s3, $a0
 	move	$a0, $a1
 	move	$a1, $s3
@@ -1108,12 +1095,12 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	ld.d	$a1, $a0, 48
 	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_432
-# %bb.118:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit824
+	beq	$a1, $a2, .LBB4_430
+# %bb.116:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit824
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_433
-.LBB4_119:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_431
+.LBB4_117:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	addi.w	$a1, $zero, -1
@@ -1128,28 +1115,29 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc16ConsincludefilesEPNS_16impl_includefileEPNS_17impl_includefilesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_120:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
+	b	.LBB4_318
+.LBB4_118:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc21PositiveStorageOptionEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_344
-.LBB4_121:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc21PatternchainitemGroupEPNS_18impl_patternchainsE)
+	b	.LBB4_340
+.LBB4_119:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc23PatternchainitemOutmostEPNS_19impl_outmostpatternE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_122:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_120:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc13BaseClassDeclEPNS_7impl_IDEPNS_19impl_baseclass_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_123:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_121:                              #   in Loop: Header=BB4_2 Depth=1
+	move	$s5, $s4
 	pcaddu18i	$ra, %call36(_Z4do_Cv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $s6, -40
-	ld.d	$s3, $s6, -8
+	ld.d	$s2, $fp, -40
+	ld.d	$s3, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc19NotInForeachContextEv)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
@@ -1157,11 +1145,11 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc19CTextWithexpressionEPNS_20impl_withexpressionsEPNS_14impl_withcasesEPNS_16impl_contextinfoE)
 	jirl	$ra, $ra, 0
-	pcalau12i	$fp, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	ld.w	$a1, $fp, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	pcalau12i	$s4, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	ld.w	$a1, $s4, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
 	move	$s2, $a0
-	bnez	$a1, .LBB4_125
-# %bb.124:                              #   in Loop: Header=BB4_2 Depth=1
+	bnez	$a1, .LBB4_123
+# %bb.122:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -1175,81 +1163,71 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8v_reportEPNS_10impl_errorE)
 	jirl	$ra, $ra, 0
-.LBB4_125:                              #   in Loop: Header=BB4_2 Depth=1
-	st.w	$zero, $fp, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	b	.LBB4_456
-.LBB4_126:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+.LBB4_123:                              #   in Loop: Header=BB4_2 Depth=1
+	st.w	$zero, $s4, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	b	.LBB4_418
+.LBB4_124:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc17NilidCexpressionsEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc18ConsidCexpressionsEPNS_18impl_idCexpressionEPNS_19impl_idCexpressionsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
+	b	.LBB4_318
+.LBB4_125:                              #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	ld.d	$a1, $a0, 48
+	ld.d	$a2, $a0, 56
+	beq	$a1, $a2, .LBB4_432
+# %bb.126:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit828
+                                        #   in Loop: Header=BB4_2 Depth=1
+	addi.d	$a0, $a1, -8
+	b	.LBB4_433
 .LBB4_127:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc23PatternchainitemOutmostEPNS_19impl_outmostpatternE)
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc24PatternchainitemDollaridEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
+	ld.d	$a1, $fp, 0
+	move	$s2, $a0
+	move	$a0, $a1
+	b	.LBB4_277
 .LBB4_128:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc18NiloutmostpatternsEv)
+	ld.d	$a0, $fp, -40
+	ld.d	$a1, $fp, -24
+	ld.d	$a2, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc7TMethodEPNS_9impl_termEPNS_7impl_IDEPNS_10impl_termsE)
 	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc19ConsoutmostpatternsEPNS_19impl_outmostpatternEPNS_20impl_outmostpatternsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
+	b	.LBB4_358
 .LBB4_129:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -40
-	ld.d	$a1, $s6, -24
-	ld.d	$a2, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc10TMethodDotEPNS_9impl_termEPNS_7impl_IDEPNS_10impl_termsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_130:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z4do_Cv)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $s6, 0
-	b	.LBB4_324
-.LBB4_131:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	b	.LBB4_319
+.LBB4_130:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc8NilCtextEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_132:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc8NiltermsEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc9ConstermsEPNS_9impl_termEPNS_10impl_termsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_133:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc14NilCexpressionEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_134:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc12NilargumentsEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_135:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_358
+.LBB4_131:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc9OPDefaultEPNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_136:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc9PVariableEPNS_7impl_IDE)
+	b	.LBB4_358
+.LBB4_132:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc12NilargumentsEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_137:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -16
-.LBB4_138:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+	b	.LBB4_318
+.LBB4_133:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc10OPWildcardEPNS_16impl_CexpressionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_358
+.LBB4_134:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -16
+.LBB4_135:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc15NilunparseitemsEv)
 	jirl	$ra, $ra, 0
@@ -1257,26 +1235,25 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc13UnparseClauseEPNS_14impl_viewnamesEPNS_17impl_unparseitemsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_139:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc16PNonLeafVariableEPNS_7impl_IDEPNS_12impl_patternE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_140:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_136:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc17CExpressionDQPartEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_141:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_137:                              #   in Loop: Header=BB4_2 Depth=1
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(_ZN2kc9mkintegerEi)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc7CTextNlEPNS_17impl_integer__IntE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_142:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_138:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc9TVariableEPNS_7impl_IDE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_358
+.LBB4_139:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_19pl_phylumE)
 	st.d	$zero, $a0, %pc_lo12(_ZN12_GLOBAL__N_19pl_phylumE)
 	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
@@ -1285,128 +1262,117 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	st.d	$a0, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
 	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_143:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_405
+.LBB4_140:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_228
-.LBB4_144:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
+	b	.LBB4_226
+.LBB4_141:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_19pl_phylumE)
 	st.d	$a0, $a1, %pc_lo12(_ZN12_GLOBAL__N_19pl_phylumE)
-	b	.LBB4_324
-.LBB4_145:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc9TOperatorEPNS_7impl_IDEPNS_10impl_termsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_146:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc12NilwithcasesEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc13ConswithcasesEPNS_13impl_withcaseEPNS_14impl_withcasesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_147:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	b	.LBB4_350
-.LBB4_148:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_319
+.LBB4_142:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	b	.LBB4_348
+.LBB4_143:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, -24
+	b	.LBB4_247
+.LBB4_144:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc9CTextLineEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_149:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, -24
-	b	.LBB4_251
-.LBB4_150:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_145:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc17ConsCexpressionSQEPNS_23impl_CexpressionSQ_elemEPNS_18impl_CexpressionSQE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_151:                              #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_146:                              #   in Loop: Header=BB4_2 Depth=1
+	addi.d	$a1, $fp, -16
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_122pl_idCexpressionsstackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_122pl_idCexpressionsstackE)
 	ld.d	$a3, $a0, 64
 	ld.d	$a2, $a0, 48
 	addi.d	$a3, $a3, -8
 	beq	$a2, $a3, .LBB4_434
-# %bb.152:                              #   in Loop: Header=BB4_2 Depth=1
+# %bb.147:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a1, $a1, 0
 	st.d	$a1, $a2, 0
 	addi.d	$a1, $a2, 8
 	st.d	$a1, $a0, 48
-	b	.LBB4_324
-.LBB4_153:                              #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	ld.d	$a1, $a0, 48
-	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_435
-# %bb.154:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit828
-                                        #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a0, $a1, -8
-	b	.LBB4_436
-.LBB4_155:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-	b	.LBB4_373
-.LBB4_156:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc24PatternchainitemDollaridEPNS_7impl_IDE)
+	b	.LBB4_319
+.LBB4_148:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc16ConspatternchainEPNS_21impl_patternchainitemEPNS_17impl_patternchainE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
-	move	$s2, $a0
-	move	$a0, $a1
-	b	.LBB4_282
-.LBB4_157:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, -8
-	ld.d	$a2, $s6, 0
+	b	.LBB4_318
+.LBB4_149:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc14TStringLiteralEPNS_18impl_CexpressionDQE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_358
+.LBB4_150:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+	b	.LBB4_371
+.LBB4_151:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, -8
+	ld.d	$a2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc10UnpSubexprEPNS_19impl_languageoptionEPNS_15impl_unpsubtermEPNS_19impl_viewnameoptionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_186
-.LBB4_158:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc11TIntLiteralEPNS_8impl_INTE)
+	b	.LBB4_183
+.LBB4_152:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc21PatternchainitemGroupEPNS_18impl_patternchainsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_159:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, -24
-	b	.LBB4_341
-.LBB4_160:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_153:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, -24
+	b	.LBB4_336
+.LBB4_154:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc8NiltermsEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc9ConstermsEPNS_9impl_termEPNS_10impl_termsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_155:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc16UnpDollarvarTermEPNS_8impl_INTE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_161:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, 0
+	b	.LBB4_318
+.LBB4_156:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc16UnpDollarvarAttrEPNS_8impl_INTEPNS_18impl_unpattributesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_162:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_157:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc14ConvOperatorFnEv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN2kc9NopointerEv)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s5, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc7AcNoRefEv)
 	jirl	$ra, $ra, 0
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	move	$s4, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc26Nilac_class_qualifier_listEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $s6, -56
-	ld.d	$a1, $s6, -32
+	ld.d	$a2, $fp, -56
+	ld.d	$a1, $fp, -32
 	move	$s2, $a0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZN2kc18AcConvOperatorDeclEPNS_7impl_IDES1_)
@@ -1416,18 +1382,18 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc9AcParListEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s6, -8
+	ld.d	$a3, $fp, -8
 	move	$a2, $a0
 	move	$a0, $s2
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc20AcQualifiedDeclProtoEPNS_28impl_ac_class_qualifier_listEPNS_25impl_ac_direct_declaratorEPNS_27impl_ac_parameter_type_listEPNS_22impl_ac_type_qualifierE)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	move	$a0, $fp
+	move	$a0, $s5
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZN2kc12AcDeclaratorEPNS_22impl_ac_pointer_optionEPNS_18impl_ac_ref_optionEPNS_25impl_ac_direct_declaratorE)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $s6, -32
+	ld.d	$s5, $fp, -32
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
 	jirl	$ra, $ra, 0
@@ -1437,51 +1403,67 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$s3, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc12AcNoBaseInitEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $s6, 0
+	ld.d	$a4, $fp, 0
 	move	$a3, $a0
 	move	$a0, $s4
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	move	$a1, $s2
 	move	$a2, $s3
-	move	$a5, $fp
-	move	$s3, $fp
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	b	.LBB4_204
-.LBB4_163:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -8
+	move	$a5, $s5
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	move	$a6, $s3
+	pcaddu18i	$ra, %call36(_ZN2kc15FnAcDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_24impl_ac_declaration_listEPNS_26impl_ac_opt_base_init_listEPNS_10impl_CtextEPNS_7impl_IDEPNS_12impl_fnclassE)
+	jirl	$ra, $ra, 0
+	move	$s2, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	st.d	$a0, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(_ZN2kc14ITUserFunctionEPNS_12impl_fnclassE)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s5
+	b	.LBB4_201
+.LBB4_158:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
 	pcalau12i	$a0, %got_pc_hi20(pg_uviewshavebeendefined)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_uviewshavebeendefined)
-	b	.LBB4_279
-.LBB4_164:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
+	b	.LBB4_274
+.LBB4_159:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc13TMemberVarDotEPNS_9impl_termEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc6TCTermEPNS_18impl_CexpressionSQE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_165:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+	b	.LBB4_358
+.LBB4_160:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc17NilunparseclausesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc18ConsunparseclausesEPNS_18impl_unparseclauseEPNS_19impl_unparseclausesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_166:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	b	.LBB4_309
-.LBB4_167:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -24
+	b	.LBB4_318
+.LBB4_161:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc11TIntLiteralEPNS_8impl_INTE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_358
+.LBB4_162:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	b	.LBB4_304
+.LBB4_163:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -24
 	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNK2kc20impl_abstract_phylum2eqEPKS0_)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_421
-# %bb.168:                              #   in Loop: Header=BB4_2 Depth=1
+	beqz	$a0, .LBB4_419
+# %bb.164:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
 	addi.w	$a1, $zero, -1
@@ -1491,18 +1473,18 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc2IdEPNS_11impl_uniqIDE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -24
+	ld.d	$a1, $fp, -24
 	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_422
-.LBB4_169:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_420
+.LBB4_165:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc15NilunparseitemsEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_170:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_166:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc13ConstructorFnEv)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s5, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc9NopointerEv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -1511,12 +1493,12 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN2kc26Nilac_class_qualifier_listEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -40
+	ld.d	$a1, $fp, -40
 	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN2kc14AcDirectDeclIdEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $s6, -24
+	ld.d	$s2, $fp, -24
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	move	$s4, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc13AcNoQualifierEv)
@@ -1533,7 +1515,7 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcaddu18i	$ra, %call36(_ZN2kc12AcDeclaratorEPNS_22impl_ac_pointer_optionEPNS_18impl_ac_ref_optionEPNS_25impl_ac_direct_declaratorE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	move	$a1, $fp
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZN2kc21f_ID_of_fn_declaratorEPNS_18impl_ac_declaratorEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
@@ -1542,13 +1524,13 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$s3, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc22Nilac_declaration_listEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s6, -8
-	ld.d	$a4, $s6, 0
+	ld.d	$a3, $fp, -8
+	ld.d	$a4, $fp, 0
 	move	$a2, $a0
 	move	$a0, $s3
 	move	$a1, $s2
 	move	$a5, $s4
-	move	$a6, $fp
+	move	$a6, $s5
 	pcaddu18i	$ra, %call36(_ZN2kc15FnAcDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_24impl_ac_declaration_listEPNS_26impl_ac_opt_base_init_listEPNS_10impl_CtextEPNS_7impl_IDEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
@@ -1556,122 +1538,137 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
 	st.d	$a0, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	move	$a0, $fp
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN2kc14ITUserFunctionEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s4
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	b	.LBB4_205
-.LBB4_171:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc16NilpatternchainsEv)
+	b	.LBB4_201
+.LBB4_167:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -24
+	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc17ConspatternchainsEPNS_17impl_patternchainEPNS_18impl_patternchainsE)
+	pcaddu18i	$ra, %call36(_ZNK2kc20impl_abstract_phylum2eqEPKS0_)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_172:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	beqz	$a0, .LBB4_421
+# %bb.168:                              #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %pc_hi20(.L.str.17)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
+	addi.w	$a1, $zero, -1
+	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
+	jirl	$ra, $ra, 0
+	pcaddu18i	$ra, %call36(_ZN2kc3StrEPNS_20impl_casestring__StrE)
+	jirl	$ra, $ra, 0
+	pcaddu18i	$ra, %call36(_ZN2kc2IdEPNS_11impl_uniqIDE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -24
+	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_422
+.LBB4_169:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc14CTextDollarVarEPNS_8impl_INTE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_173:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
+	b	.LBB4_318
+.LBB4_170:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc13CExpressionSQEPNS_18impl_CexpressionSQE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_174:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
+	b	.LBB4_318
+.LBB4_171:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
 	pcalau12i	$a1, %got_pc_hi20(pg_filename)
-	ld.d	$fp, $a1, %got_pc_lo12(pg_filename)
-	ld.d	$a1, $fp, 0
+	ld.d	$s2, $a1, %got_pc_lo12(pg_filename)
+	ld.d	$a1, $s2, 0
 	pcaddu18i	$ra, %call36(_ZN2kc19f_member_class_infoEPNS_30impl_ac_declaration_specifiersEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s6, -24
-	ld.d	$a1, $s6, -16
-	ld.d	$a2, $s6, -8
+	ld.d	$a3, $fp, -24
+	ld.d	$a1, $fp, -16
+	ld.d	$a2, $fp, -8
 	move	$a4, $a0
 	move	$a0, $a3
 	move	$a3, $a4
 	pcaddu18i	$ra, %call36(_ZN2kc19AcMemberDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_34impl_ac_constant_expression_optionEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s2, 0
 	move	$s2, $a0
 	ori	$a0, $zero, 1
 	st.b	$a0, $s2, 32
 	st.d	$a1, $s2, 24
-	b	.LBB4_301
-.LBB4_175:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc10OPWildcardEPNS_16impl_CexpressionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_176:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, 0
+	b	.LBB4_296
+.LBB4_172:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc17OPNonLeafVariableEPNS_7impl_IDEPNS_19impl_outmostpatternE)
 	jirl	$ra, $ra, 0
 	b	.LBB4_364
-.LBB4_177:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc8NilCtextEv)
+.LBB4_173:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -32
+	ld.d	$a1, $fp, -16
+	ld.d	$a2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc10OPOperatorEPNS_7impl_IDEPNS_13impl_patternsEPNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_178:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_364
+.LBB4_174:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc16ConsunparseitemsEPNS_16impl_unparseitemEPNS_17impl_unparseitemsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_179:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, 0
+	b	.LBB4_318
+.LBB4_175:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8UnpCtextEPNS_19impl_languageoptionEPNS_10impl_CtextE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_186
-.LBB4_180:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_183
+.LBB4_176:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc8NilCtextEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_177:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(pg_no_of_arguments)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_no_of_arguments)
 	st.w	$zero, $a0, 0
-	b	.LBB4_324
-.LBB4_181:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc11CcodeOptionEPNS_15impl_attributesEPNS_11impl_CtextsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_182:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_319
+.LBB4_178:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc18ConsunparseclausesEPNS_18impl_unparseclauseEPNS_19impl_unparseclausesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_183:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_179:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc12AcNoBaseInitEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_184:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_180:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc11CcodeOptionEPNS_15impl_attributesEPNS_11impl_CtextsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_181:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_185:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_182:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc7UnpBodyEPNS_19impl_languageoptionEPNS_17impl_unparseitemsE)
 	jirl	$ra, $ra, 0
-.LBB4_186:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_183:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc11inc_text_nrEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_187:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_405
+.LBB4_184:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc9ConsCtextEPNS_15impl_Ctext_elemEPNS_10impl_CtextE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
@@ -1679,110 +1676,114 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	ld.d	$a1, $a0, 48
 	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_437
-# %bb.188:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit800
+	beq	$a1, $a2, .LBB4_435
+# %bb.185:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit800
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_438
-.LBB4_189:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -40
-	ld.d	$a1, $s6, -24
-	ld.d	$a2, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc7TMethodEPNS_9impl_termEPNS_7impl_IDEPNS_10impl_termsE)
+	b	.LBB4_436
+.LBB4_186:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc9TOperatorEPNS_7impl_IDEPNS_10impl_termsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_190:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_358
+.LBB4_187:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc10AcTypeSpecEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_191:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -32
+	b	.LBB4_318
+.LBB4_188:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -32
 	st.d	$zero, $sp, 176
 	addi.d	$a1, $sp, 176
 	pcaddu18i	$ra, %call36(_ZN2kc23f_check_build_qualifierEPNS_33impl_ac_class_qualifier_help_listERPNS_25impl_ac_direct_declaratorE)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 176
-	ld.d	$a2, $s6, -16
-	ld.d	$a3, $s6, 0
+	ld.d	$a2, $fp, -16
+	ld.d	$a3, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc20AcQualifiedDeclProtoEPNS_28impl_ac_class_qualifier_listEPNS_25impl_ac_direct_declaratorEPNS_27impl_ac_parameter_type_listEPNS_22impl_ac_type_qualifierE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_192:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_189:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc9POperatorEPNS_7impl_IDEPNS_13impl_patternsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_190:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc17ConsCexpressionDQEPNS_23impl_CexpressionDQ_elemEPNS_18impl_CexpressionDQE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_193:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -16
+	b	.LBB4_318
+.LBB4_191:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc12NilargumentsEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc11AlternativeEPNS_7impl_IDEPNS_14impl_argumentsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_194:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_192:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc16NilpatternchainsEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc17ConspatternchainsEPNS_17impl_patternchainEPNS_18impl_patternchainsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_195:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+	b	.LBB4_318
+.LBB4_193:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc15NilalternativesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc16ConsalternativesEPNS_16impl_alternativeEPNS_17impl_alternativesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_196:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -24
+	b	.LBB4_318
+.LBB4_194:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -24
 	pcaddu18i	$ra, %call36(_ZN2kc17NilunparseclausesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc18UnparseDeclarationEPNS_20impl_outmostpatternsEPNS_19impl_unparseclausesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_197:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_195:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc12AcPointerNilEPNS_27impl_ac_type_qualifier_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_198:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_196:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc21Consac_base_init_listEPNS_17impl_ac_base_initEPNS_22impl_ac_base_init_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_199:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_197:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_200:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -40
-	ld.d	$a1, $s6, -32
-	ld.d	$a2, $s6, -16
+	b	.LBB4_318
+.LBB4_198:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -40
+	ld.d	$a1, $fp, -32
+	ld.d	$a2, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc12UViewVarDeclEPNS_7impl_IDES1_PNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_201:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	b	.LBB4_294
-.LBB4_202:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionSQNlEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_203:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_199:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	b	.LBB4_288
+.LBB4_200:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc12DestructorFnEv)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s5, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc9NopointerEv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -1791,7 +1792,7 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN2kc26Nilac_class_qualifier_listEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -24
+	ld.d	$a1, $fp, -24
 	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN2kc14AcDirectDeclIdEPNS_7impl_IDE)
@@ -1817,26 +1818,24 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcaddu18i	$ra, %call36(_ZN2kc12AcDeclaratorEPNS_22impl_ac_pointer_optionEPNS_18impl_ac_ref_optionEPNS_25impl_ac_direct_declaratorE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	move	$a1, $fp
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZN2kc21f_ID_of_fn_declaratorEPNS_18impl_ac_declaratorEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $s6, -32
+	ld.d	$s4, $fp, -32
 	move	$s3, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc22Nilac_declaration_listEv)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN2kc12AcNoBaseInitEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $s6, 0
+	ld.d	$a4, $fp, 0
 	move	$a3, $a0
 	move	$a0, $s4
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	move	$a1, $s2
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	move	$a5, $s3
-.LBB4_204:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	move	$a6, $fp
+	move	$a6, $s5
 	pcaddu18i	$ra, %call36(_ZN2kc15FnAcDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_24impl_ac_declaration_listEPNS_26impl_ac_opt_base_init_listEPNS_10impl_CtextEPNS_7impl_IDEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
@@ -1844,242 +1843,237 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
 	st.d	$a0, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	move	$a0, $fp
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN2kc14ITUserFunctionEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s3
-.LBB4_205:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_201:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10v_defoccurEPNS_7impl_IDEPNS_11impl_IDtypeE)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	pcalau12i	$a0, %got_pc_hi20(pg_filename)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
-	b	.LBB4_300
-.LBB4_206:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
+	ld.d	$a0, $a0, 0
+	b	.LBB4_295
+.LBB4_202:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionSQNlEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_203:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
 	pcalau12i	$a1, %got_pc_hi20(pg_filename)
-	ld.d	$fp, $a1, %got_pc_lo12(pg_filename)
-	ld.d	$a1, $fp, 0
+	ld.d	$s2, $a1, %got_pc_lo12(pg_filename)
+	ld.d	$a1, $s2, 0
 	pcaddu18i	$ra, %call36(_ZN2kc19f_member_class_infoEPNS_30impl_ac_declaration_specifiersEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s6, -24
-	ld.d	$a1, $s6, -16
-	ld.d	$a2, $s6, -8
+	ld.d	$a3, $fp, -24
+	ld.d	$a1, $fp, -16
+	ld.d	$a2, $fp, -8
 	move	$a4, $a0
 	move	$a0, $a3
 	move	$a3, $a4
 	pcaddu18i	$ra, %call36(_ZN2kc19AcMemberDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_34impl_ac_constant_expression_optionEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s2, 0
 	move	$s2, $a0
 	st.b	$zero, $a0, 32
 	st.d	$a1, $a0, 24
-	b	.LBB4_301
-.LBB4_207:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_296
+.LBB4_204:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc20Nilac_parameter_listEv)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc13AcParList3DotEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_208:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
-	ld.d	$a2, $s6, 0
+	b	.LBB4_318
+.LBB4_205:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
+	ld.d	$a2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc12AcMemberDeclEPNS_7impl_IDES1_PNS_32impl_ac_constant_expression_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_209:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_206:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc32Consac_class_qualifier_help_listEPNS_25impl_ac_direct_declaratorEPNS_33impl_ac_class_qualifier_help_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_210:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
+	b	.LBB4_318
+.LBB4_207:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc16AcDirectDeclPackEPNS_18impl_ac_declaratorE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_211:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_208:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc9AcVirtualEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_212:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
+	b	.LBB4_318
+.LBB4_209:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc13AcParList3DotEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_213:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_210:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc9AcParListEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_214:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_211:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11YesViewnameEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_215:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, 0
+	b	.LBB4_318
+.LBB4_212:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc10UnpSubAttrEPNS_7impl_IDEPNS_18impl_unpattributesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_216:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
+	b	.LBB4_318
+.LBB4_213:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc10YespointerEPNS_15impl_ac_pointerE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_291
-.LBB4_217:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
+	b	.LBB4_285
+.LBB4_214:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc13AcParList3DotEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_218:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_215:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	b	.LBB4_348
+.LBB4_216:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc16NilCexpressionDQEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_219:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+	b	.LBB4_318
+.LBB4_217:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc17Nilbaseclass_listEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc18Consbaseclass_listEPNS_7impl_IDEPNS_19impl_baseclass_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_220:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_218:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $a0, 8
 	ori	$a2, $zero, 1
 	bltu	$a2, $a1, .LBB4_423
-# %bb.221:                              #   in Loop: Header=BB4_2 Depth=1
+# %bb.219:                              #   in Loop: Header=BB4_2 Depth=1
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc15NilincludefilesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	b	.LBB4_362
-.LBB4_222:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	b	.LBB4_350
-.LBB4_223:                              #   in Loop: Header=BB4_2 Depth=1
+.LBB4_220:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, -32
+	b	.LBB4_336
+.LBB4_221:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc26Noattribute_initialisationEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_224:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, -32
-	b	.LBB4_341
-.LBB4_225:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_222:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc25Nilac_type_qualifier_listEv)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc12AcPointerNilEPNS_27impl_ac_type_qualifier_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_226:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_223:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc14NoLanguagenameEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_227:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -24
-	pcaddu18i	$ra, %call36(_ZN2kc19ConswithexpressionsEPNS_19impl_withexpressionEPNS_20impl_withexpressionsE)
-	jirl	$ra, $ra, 0
-	move	$s2, $a0
-.LBB4_228:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	pcaddu18i	$ra, %call36(_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3popEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_229:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+	b	.LBB4_376
+.LBB4_224:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc20Nilac_parameter_listEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc21Consac_parameter_listEPNS_29impl_ac_parameter_declarationEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_230:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_225:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -24
+	pcaddu18i	$ra, %call36(_ZN2kc19ConswithexpressionsEPNS_19impl_withexpressionEPNS_20impl_withexpressionsE)
+	jirl	$ra, $ra, 0
+	move	$s2, $a0
+.LBB4_226:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	pcaddu18i	$ra, %call36(_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3popEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_405
+.LBB4_227:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionDQNlEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_231:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_228:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc17NilstorageclassesEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_232:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+	b	.LBB4_376
+.LBB4_229:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc31Nilac_class_qualifier_help_listEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc32Consac_class_qualifier_help_listEPNS_25impl_ac_direct_declaratorEPNS_33impl_ac_class_qualifier_help_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_233:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc18ConsrewriteclausesEPNS_18impl_rewriteclauseEPNS_19impl_rewriteclausesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_234:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, -32
-	b	.LBB4_251
-.LBB4_235:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_230:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc14TStringLiteralEPNS_18impl_CexpressionDQE)
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc6TCTermEPNS_18impl_CexpressionSQE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_236:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc11NilpatternsEv)
+	b	.LBB4_358
+.LBB4_231:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc17NilrewriteclausesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc12ConspatternsEPNS_12impl_patternEPNS_13impl_patternsE)
+	pcaddu18i	$ra, %call36(_ZN2kc18ConsrewriteclausesEPNS_18impl_rewriteclauseEPNS_19impl_rewriteclausesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_237:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_232:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, -32
+	b	.LBB4_247
+.LBB4_233:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc18NiloutmostpatternsEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_234:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc17ConslanguagenamesEPNS_7impl_IDEPNS_18impl_languagenamesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_238:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_235:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc8AcExternEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_239:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -32
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc13RwDeclarationEPNS_20impl_outmostpatternsEPNS_19impl_rewriteclausesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_240:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_236:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc16NillanguagenamesEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_241:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -32
+	b	.LBB4_318
+.LBB4_237:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -32
 	st.d	$zero, $sp, 176
 	addi.d	$a1, $sp, 176
 	pcaddu18i	$ra, %call36(_ZN2kc23f_check_build_qualifierEPNS_33impl_ac_class_qualifier_help_listERPNS_25impl_ac_direct_declaratorE)
@@ -2090,189 +2084,752 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc9AcParListEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s6, 0
+	ld.d	$a3, $fp, 0
 	move	$a2, $a0
 	move	$a0, $s3
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc20AcQualifiedDeclProtoEPNS_28impl_ac_class_qualifier_listEPNS_25impl_ac_direct_declaratorEPNS_27impl_ac_parameter_type_listEPNS_22impl_ac_type_qualifierE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_242:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -8
+	b	.LBB4_376
+.LBB4_238:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
 	pcalau12i	$a0, %got_pc_hi20(pg_rviewshavebeendefined)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_rviewshavebeendefined)
-	b	.LBB4_279
-.LBB4_243:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
+	b	.LBB4_274
+.LBB4_239:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc25Nilac_type_qualifier_listEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc26Consac_type_qualifier_listEPNS_22impl_ac_type_qualifierEPNS_27impl_ac_type_qualifier_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_244:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_240:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc9AcTypedefEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_245:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_241:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc10UnpSubTermEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_246:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
+	b	.LBB4_318
+.LBB4_242:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
 	pcaddu18i	$ra, %call36(_ZN2kc32Yesac_direct_abstract_declaratorEPNS_34impl_ac_direct_abstract_declaratorE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_248
-.LBB4_247:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_244
+.LBB4_243:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc31Noac_direct_abstract_declaratorEv)
 	jirl	$ra, $ra, 0
-.LBB4_248:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_244:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s6, -8
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc17AcDirAbsdeclArrayEPNS_41impl_ac_direct_abstract_declarator_optionEPNS_34impl_ac_constant_expression_optionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_249:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_245:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc17ConslanguagenamesEPNS_7impl_IDEPNS_18impl_languagenamesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_250:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -8
+	b	.LBB4_318
+.LBB4_246:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
-.LBB4_251:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_247:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -8
+	ld.d	$a1, $fp, -8
 	move	$s2, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN2kc23v_add_to_rviewnames_extEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $s6, -8
+	ld.d	$s3, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc11ITUserRViewEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_407
-.LBB4_252:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_Z4do_Cv)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc18CTextCexpressionDQEPNS_18impl_CexpressionDQE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_253:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
+	b	.LBB4_404
+.LBB4_248:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc12LanguageListEPNS_18impl_languagenamesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_254:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_376
+.LBB4_249:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z4do_Cv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc10CTextCbodyEPNS_10impl_CtextE)
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc18CTextCexpressionDQEPNS_18impl_CexpressionDQE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_255:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	pcaddu18i	$ra, %call36(_ZN2kc16ConspatternchainEPNS_21impl_patternchainitemEPNS_17impl_patternchainE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_256:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc15NilalternativesEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_257:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc16NillanguagenamesEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_377
-.LBB4_258:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, -8
-	ld.d	$a2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc13AcParDeclDeclEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_34impl_ac_constant_expression_optionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_259:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc17NilrewriteclausesEv)
+	b	.LBB4_318
+.LBB4_250:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc15NilpatternchainEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc18ConsrewriteclausesEPNS_18impl_rewriteclauseEPNS_19impl_rewriteclausesE)
+	pcaddu18i	$ra, %call36(_ZN2kc16ConspatternchainEPNS_21impl_patternchainitemEPNS_17impl_patternchainE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
+	b	.LBB4_318
+.LBB4_251:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_Z4do_Cv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc10CTextCbodyEPNS_10impl_CtextE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_252:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc16NillanguagenamesEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_376
+.LBB4_253:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, -8
+	ld.d	$a2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc13AcParDeclDeclEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_34impl_ac_constant_expression_optionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_254:                              #   in Loop: Header=BB4_2 Depth=1
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	b	.LBB4_319
+.LBB4_255:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
+	pcalau12i	$a0, %got_pc_hi20(pg_languageshavebeendefined)
+	ld.d	$a0, $a0, %got_pc_lo12(pg_languageshavebeendefined)
+	b	.LBB4_274
+.LBB4_256:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -32
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc13RwDeclarationEPNS_20impl_outmostpatternsEPNS_19impl_rewriteclausesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_376
+.LBB4_257:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	b	.LBB4_280
+.LBB4_258:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc15NilalternativesEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_259:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc11AcConstExprEPNS_16impl_CexpressionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
 .LBB4_260:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_19pl_phylumE)
 	ld.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_19pl_phylumE)
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc20makeListAlternativesEPNS_7impl_IDES1_)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc16ListAlternativesEPNS_17impl_alternativesEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	pcalau12i	$a0, %got_pc_hi20(Theargsnumbers)
-	ld.d	$fp, $a0, %got_pc_lo12(Theargsnumbers)
-	ld.d	$a1, $fp, 0
+	ld.d	$s3, $a0, %got_pc_lo12(Theargsnumbers)
+	ld.d	$a1, $s3, 0
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(_ZN2kc21insert_in_argsnumbersEiPNS_16impl_argsnumbersE)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	st.d	$a0, $fp, 0
+	st.d	$a0, $s3, 0
 	ori	$a0, $zero, 2
-	b	.LBB4_275
+	b	.LBB4_272
 .LBB4_261:                              #   in Loop: Header=BB4_2 Depth=1
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	b	.LBB4_324
-.LBB4_262:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -8
-	pcalau12i	$a0, %got_pc_hi20(pg_languageshavebeendefined)
-	ld.d	$a0, $a0, %got_pc_lo12(pg_languageshavebeendefined)
-	b	.LBB4_279
-.LBB4_263:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	b	.LBB4_285
-.LBB4_264:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc11AcConstExprEPNS_16impl_CexpressionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_265:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc18OPOperatorWildcardEPNS_7impl_IDEPNS_16impl_CexpressionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_364
-.LBB4_266:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, -8
-	ld.d	$a2, $s6, 0
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, -8
+	ld.d	$a2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc16AcParDeclAbsdeclEPNS_30impl_ac_declaration_specifiersEPNS_27impl_ac_abstract_declaratorEPNS_34impl_ac_constant_expression_optionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_267:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_262:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc21Consac_parameter_listEPNS_29impl_ac_parameter_declarationEPNS_22impl_ac_parameter_listE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_268:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -32
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_263:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -32
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc18UnparseDeclarationEPNS_20impl_outmostpatternsEPNS_19impl_unparseclausesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
+	b	.LBB4_318
+.LBB4_264:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc13ConswithcasesEPNS_13impl_withcaseEPNS_14impl_withcasesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_265:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc17ConsunpattributesEPNS_7impl_IDEPNS_18impl_unpattributesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_266:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -48
+	ld.d	$a1, $fp, -40
+	ld.d	$a2, $fp, -16
+	ld.d	$a3, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc17PhylumDeclarationEPNS_7impl_IDEPNS_18impl_storageoptionEPNS_20impl_productionblockEPNS_17impl_Ccode_optionE)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_19pl_phylumE)
+	ld.d	$s3, $a1, %pc_lo12(_ZN12_GLOBAL__N_19pl_phylumE)
+	move	$s2, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc12ITUserPhylumEPNS_22impl_phylumdeclarationE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_404
+.LBB4_267:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc13AcNoQualifierEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_268:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	b	.LBB4_304
 .LBB4_269:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+	b	.LBB4_288
+.LBB4_270:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc31Noac_direct_abstract_declaratorEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_283
+.LBB4_271:                              #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %got_pc_hi20(pg_no_of_arguments)
+	ld.d	$a0, $a0, %got_pc_lo12(pg_no_of_arguments)
+	ld.w	$a0, $a0, 0
+	pcalau12i	$a1, %got_pc_hi20(Theargsnumbers)
+	ld.d	$s3, $a1, %got_pc_lo12(Theargsnumbers)
+	ld.d	$a1, $s3, 0
+.LBB4_272:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc21insert_in_argsnumbersEiPNS_16impl_argsnumbersE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_409
+.LBB4_273:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
+	pcalau12i	$a0, %got_pc_hi20(pg_storageclasseshavebeendefined)
+	ld.d	$a0, $a0, %got_pc_lo12(pg_storageclasseshavebeendefined)
+.LBB4_274:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	ori	$a1, $zero, 1
+	st.b	$a1, $a0, 0
+	b	.LBB4_319
+.LBB4_275:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc26Consac_type_qualifier_listEPNS_22impl_ac_type_qualifierEPNS_27impl_ac_type_qualifier_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_276:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	move	$a0, $s2
+.LBB4_277:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc10WEVariableEPNS_7impl_IDE)
+	jirl	$ra, $ra, 0
+	pcalau12i	$s3, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	ld.d	$a1, $s3, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	pcaddu18i	$ra, %call36(_ZN2kc19ConswithexpressionsEPNS_19impl_withexpressionEPNS_20impl_withexpressionsE)
+	jirl	$ra, $ra, 0
+	addi.d	$a5, $sp, 1784
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	st.d	$a0, $s3, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	b	.LBB4_319
+.LBB4_278:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc10AcRegisterEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_279:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc25Nilac_type_qualifier_listEv)
+	jirl	$ra, $ra, 0
+.LBB4_280:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc13AcPointerConsEPNS_27impl_ac_type_qualifier_listEPNS_15impl_ac_pointerE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_281:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc6AcAutoEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_282:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	pcaddu18i	$ra, %call36(_ZN2kc32Yesac_direct_abstract_declaratorEPNS_34impl_ac_direct_abstract_declaratorE)
+	jirl	$ra, $ra, 0
+.LBB4_283:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc14AcDirAbsdeclFnEPNS_41impl_ac_direct_abstract_declarator_optionEPNS_27impl_ac_parameter_type_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_284:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc9NopointerEv)
+	jirl	$ra, $ra, 0
+.LBB4_285:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc16AcAbsdeclDirdeclEPNS_22impl_ac_pointer_optionEPNS_34impl_ac_direct_abstract_declaratorE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_286:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc16AcAbsdeclPointerEPNS_15impl_ac_pointerE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_287:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc17NilstorageclassesEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+.LBB4_288:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc18ConsstorageclassesEPNS_7impl_IDEPNS_19impl_storageclassesE)
+	jirl	$ra, $ra, 0
+	ld.d	$s3, $fp, 0
+	move	$s2, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc9f_emptyIdEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(_ZN2kc23v_add_to_storageclassesEPNS_7impl_IDES1_)
+	jirl	$ra, $ra, 0
+	ld.d	$s3, $fp, 0
+	b	.LBB4_341
+.LBB4_289:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc7CTextNlEPNS_17impl_integer__IntE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_290:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc20Nilac_parameter_listEv)
+	jirl	$ra, $ra, 0
+	pcaddu18i	$ra, %call36(_ZN2kc9AcParListEPNS_22impl_ac_parameter_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_291:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc16AcDirAbsdeclPackEPNS_27impl_ac_abstract_declaratorE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_292:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc17AcDirectDeclProtoEPNS_25impl_ac_direct_declaratorEPNS_27impl_ac_parameter_type_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_293:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc16NilunpattributesEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc17ConsunpattributesEPNS_7impl_IDEPNS_18impl_unpattributesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_294:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	pcalau12i	$a1, %got_pc_hi20(pg_filename)
+	ld.d	$a1, $a1, %got_pc_lo12(pg_filename)
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$a1, $a1, 0
+	ld.d	$a2, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc14f_fnclass_infoEPNS_30impl_ac_declaration_specifiersEPNS_20impl_casestring__StrEPNS_18impl_ac_declaratorE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -8
+	move	$s3, $a0
+	move	$a0, $a1
+	move	$a1, $s3
+	pcaddu18i	$ra, %call36(_ZN2kc21f_ID_of_fn_declaratorEPNS_18impl_ac_declaratorEPNS_12impl_fnclassE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -16
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	ld.d	$s4, $fp, -8
+	move	$s6, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc22Nilac_declaration_listEv)
+	jirl	$ra, $ra, 0
+	move	$s2, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc12AcNoBaseInitEv)
+	jirl	$ra, $ra, 0
+	ld.d	$a4, $fp, 0
+	move	$a3, $a0
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	move	$a1, $s4
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	move	$a2, $s2
+	move	$a5, $s6
+	move	$a6, $s3
+	pcaddu18i	$ra, %call36(_ZN2kc15FnAcDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_24impl_ac_declaration_listEPNS_26impl_ac_opt_base_init_listEPNS_10impl_CtextEPNS_7impl_IDEPNS_12impl_fnclassE)
+	jirl	$ra, $ra, 0
+	move	$s2, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	st.d	$a0, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(_ZN2kc14ITUserFunctionEPNS_12impl_fnclassE)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s6
+	pcaddu18i	$ra, %call36(_ZN2kc10v_defoccurEPNS_7impl_IDEPNS_11impl_IDtypeE)
+	jirl	$ra, $ra, 0
+	addi.d	$a5, $sp, 1784
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $a0, 0
+	move	$s6, $s5
+.LBB4_295:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	st.d	$a0, $s2, 24
+.LBB4_296:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %got_pc_hi20(pg_lineno)
+	ld.d	$a0, $a0, %got_pc_lo12(pg_lineno)
+	ld.w	$a0, $a0, 0
+	st.w	$a0, $s2, 16
+	b	.LBB4_319
+.LBB4_297:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc17AcDirectDeclArrayEPNS_25impl_ac_direct_declaratorEPNS_34impl_ac_constant_expression_optionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_298:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc13IdCexpressionEPNS_7impl_IDEPNS_16impl_CexpressionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_299:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
+	jirl	$ra, $ra, 0
+.LBB4_300:                              #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %got_pc_hi20(pg_filename)
+	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
+	ld.d	$a0, $a0, 0
+	pcalau12i	$a1, %got_pc_hi20(pg_lineno)
+	ld.d	$a1, $a1, %got_pc_lo12(pg_lineno)
+	ld.w	$a1, $a1, 0
+	pcaddu18i	$ra, %call36(_ZN2kc8FileLineEPNS_20impl_casestring__StrEi)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 176
+	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	addi.d	$a1, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	ld.d	$a3, $a1, 64
+	ld.d	$a2, $a1, 48
+	addi.d	$a3, $a3, -8
+	beq	$a2, $a3, .LBB4_413
+# %bb.301:                              #   in Loop: Header=BB4_2 Depth=1
+	st.d	$a0, $a2, 0
+	addi.d	$a0, $a2, 8
+	st.d	$a0, $a1, 48
+	b	.LBB4_414
+.LBB4_302:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc12NilwithcasesEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc13ConswithcasesEPNS_13impl_withcaseEPNS_14impl_withcasesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_303:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+.LBB4_304:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, 0
+	move	$s2, $a0
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZN2kc19v_add_to_rviewnamesEPNS_7impl_IDE)
+	jirl	$ra, $ra, 0
+	ld.d	$s3, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc11ITUserRViewEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_404
+.LBB4_305:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc30Nilac_constant_expression_listEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_306:                              #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a0, %pc_hi20(.L.str.19)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
+	addi.w	$a1, $zero, -1
+	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
+	jirl	$ra, $ra, 0
+	pcaddu18i	$ra, %call36(_ZN2kc3StrEPNS_20impl_casestring__StrE)
+	jirl	$ra, $ra, 0
+	pcaddu18i	$ra, %call36(_ZN2kc2IdEPNS_11impl_uniqIDE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_307:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc14AcOperatorNameEPNS_20impl_casestring__StrE)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a1, %got_pc_hi20(pg_filename)
+	ld.d	$a1, $a1, %got_pc_lo12(pg_filename)
+	ld.d	$a1, $a1, 0
+	st.d	$a1, $a0, 16
+	pcalau12i	$a1, %got_pc_hi20(pg_lineno)
+	ld.d	$a1, $a1, %got_pc_lo12(pg_lineno)
+	ld.w	$a1, $a1, 0
+	st.w	$a1, $a0, 8
+	pcaddu18i	$ra, %call36(_ZN2kc16AcOperatorDeclIdEPNS_21impl_ac_operator_nameE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_308:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc10AcUnsignedEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_309:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc18Consbaseclass_listEPNS_7impl_IDEPNS_19impl_baseclass_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_310:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc13AcYesBaseInitEPNS_22impl_ac_base_init_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_311:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, -24
+	pcaddu18i	$ra, %call36(_ZN2kc31Consac_constant_expression_listEPNS_27impl_ac_constant_expressionEPNS_32impl_ac_constant_expression_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_312:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc10AcVolatileEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_313:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc20Nilac_base_init_listEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc21Consac_base_init_listEPNS_17impl_ac_base_initEPNS_22impl_ac_base_init_listE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_314:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc9PVariableEPNS_7impl_IDE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_315:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc9AcVirtualEv)
+	jirl	$ra, $ra, 0
+	pcaddu18i	$ra, %call36(_ZN2kc21AcDeclSpecStorageSpecEPNS_31impl_ac_storage_class_specifierE)
+	jirl	$ra, $ra, 0
+.LBB4_316:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	move	$s2, $a0
+	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
+	jirl	$ra, $ra, 0
+.LBB4_317:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc29Consac_declaration_specifiersEPNS_29impl_ac_declaration_specifierEPNS_30impl_ac_declaration_specifiersE)
+	jirl	$ra, $ra, 0
+	.p2align	4, , 16
+.LBB4_318:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	addi.d	$a5, $sp, 1784
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	move	$s2, $a0
+.LBB4_319:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.w	$a0, $s8, %pc_lo12(yydebug)
+	slli.d	$a1, $s4, 1
+	sub.d	$s7, $s7, $a1
+	bnez	$a0, .LBB4_326
+.LBB4_320:                              #   in Loop: Header=BB4_2 Depth=1
+	slli.d	$a0, $s4, 3
+	sub.d	$a0, $fp, $a0
+	addi.d	$fp, $a0, 8
+	st.d	$s2, $a0, 8
+	pcalau12i	$a0, %pc_hi20(_ZL4yyr1)
+	addi.d	$a0, $a0, %pc_lo12(_ZL4yyr1)
+	ldx.bu	$a0, $a0, $s1
+	addi.d	$a0, $a0, -66
+	slli.d	$a0, $a0, 1
+	pcalau12i	$a1, %pc_hi20(_ZL7yypgoto)
+	addi.d	$a1, $a1, %pc_lo12(_ZL7yypgoto)
+	ldx.h	$a2, $a1, $a0
+	ldx.h	$a1, $s7, $a5
+	add.d	$a2, $a1, $a2
+	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ori	$a6, $zero, 771
+	bltu	$a6, $a2, .LBB4_323
+# %bb.321:                              #   in Loop: Header=BB4_2 Depth=1
+	slli.d	$a2, $a2, 1
+	ldx.hu	$a3, $a3, $a2
+	bstrpick.d	$a1, $a1, 15, 0
+	bstrpick.d	$a1, $a1, 15, 0
+	bne	$a3, $a1, .LBB4_323
+# %bb.322:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ldx.h	$s2, $a0, $a2
+	b	.LBB4_324
+	.p2align	4, , 16
+.LBB4_323:                              #   in Loop: Header=BB4_2 Depth=1
+	pcalau12i	$a1, %pc_hi20(_ZL9yydefgoto)
+	addi.d	$a1, $a1, %pc_lo12(_ZL9yydefgoto)
+	ldx.h	$s2, $a1, $a0
+.LBB4_324:                              #   in Loop: Header=BB4_2 Depth=1
+	ori	$a3, $zero, 1
+.LBB4_325:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
+	move	$a0, $s7
+	addi.d	$s7, $s7, 2
+	stx.h	$s2, $s7, $a5
+	ori	$a1, $zero, 395
+	bge	$a1, $a0, .LBB4_2
+	b	.LBB4_472
+.LBB4_326:                              #   in Loop: Header=BB4_2 Depth=1
+	add.d	$a1, $a5, $s7
+	addi.d	$a0, $sp, 1784
+	pcaddu18i	$ra, %call36(_ZL14yy_stack_printPsS_)
+	jirl	$ra, $ra, 0
+	addi.d	$a5, $sp, 1784
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	b	.LBB4_320
+.LBB4_327:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc10AcBaseInitEPNS_7impl_IDEPNS_27impl_ac_constant_expressionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_328:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc14PStringLiteralEPNS_18impl_CexpressionDQE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_329:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_Z4do_Cv)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %got_pc_hi20(pg_filename)
+	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
+	ld.d	$a0, $a0, 0
+	pcalau12i	$a1, %got_pc_hi20(pg_lineno)
+	ld.d	$a1, $a1, %got_pc_lo12(pg_lineno)
+	ld.w	$a1, $a1, 0
+	pcaddu18i	$ra, %call36(_ZN2kc8FileLineEPNS_20impl_casestring__StrEi)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 176
+	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	addi.d	$a1, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	ld.d	$a3, $a1, 64
+	ld.d	$a2, $a1, 48
+	addi.d	$a3, $a3, -8
+	beq	$a2, $a3, .LBB4_437
+# %bb.330:                              #   in Loop: Header=BB4_2 Depth=1
+	st.d	$a0, $a2, 0
+	addi.d	$a0, $a2, 8
+	st.d	$a0, $a1, 48
+	b	.LBB4_438
+.LBB4_331:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionPackEPNS_16impl_CexpressionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_332:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc25Yesac_constant_expressionEPNS_27impl_ac_constant_expressionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_333:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc19ConswithexpressionsEPNS_19impl_withexpressionEPNS_20impl_withexpressionsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_334:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc16PNonLeafVariableEPNS_7impl_IDEPNS_12impl_patternE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_335:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+.LBB4_336:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $fp, -8
+	move	$s2, $a0
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZN2kc23v_add_to_uviewnames_extEPNS_7impl_IDE)
+	jirl	$ra, $ra, 0
+	ld.d	$s3, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc11ITUserUViewEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_404
+.LBB4_337:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc11NilpatternsEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc12ConspatternsEPNS_12impl_patternEPNS_13impl_patternsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_338:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc17UnpCastedVariableEPNS_7impl_IDES1_)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_339:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc21NegativeStorageOptionEPNS_7impl_IDE)
+	jirl	$ra, $ra, 0
+.LBB4_340:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s3, $fp, -8
+	move	$s2, $a0
+.LBB4_341:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc14ITStorageClassEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_404
+.LBB4_342:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc16NilCexpressionSQEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_343:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+	ld.d	$a1, $fp, -16
+	ld.d	$a2, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc9AttributeEPNS_7impl_IDES1_PNS_36impl_attribute_initialisation_optionE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_344:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
 	ld.d	$a1, $a0, 0
 	ld.d	$a2, $a1, 24
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc10base_rviewE)
@@ -2286,590 +2843,36 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.w	$a2, $a2, 0
 	pcaddu18i	$ra, %call36(_ZN2kc26syn_patternchains_filelineEPNS_18impl_patternchainsEPNS_20impl_casestring__StrEi)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8WithcaseEPNS_18impl_patternchainsEPNS_10impl_CtextE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_270:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -48
-	ld.d	$a1, $s6, -40
-	ld.d	$a2, $s6, -16
-	ld.d	$a3, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc17PhylumDeclarationEPNS_7impl_IDEPNS_18impl_storageoptionEPNS_20impl_productionblockEPNS_17impl_Ccode_optionE)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_19pl_phylumE)
-	ld.d	$s3, $a1, %pc_lo12(_ZN12_GLOBAL__N_19pl_phylumE)
-	move	$s2, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc12ITUserPhylumEPNS_22impl_phylumdeclarationE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_407
-.LBB4_271:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc17ConsunpattributesEPNS_7impl_IDEPNS_18impl_unpattributesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_272:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc13AcNoQualifierEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_273:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	b	.LBB4_309
-.LBB4_274:                              #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(pg_no_of_arguments)
-	ld.d	$a0, $a0, %got_pc_lo12(pg_no_of_arguments)
-	ld.w	$a0, $a0, 0
-	pcalau12i	$a1, %got_pc_hi20(Theargsnumbers)
-	ld.d	$fp, $a1, %got_pc_lo12(Theargsnumbers)
-	ld.d	$a1, $fp, 0
-.LBB4_275:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc21insert_in_argsnumbersEiPNS_16impl_argsnumbersE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_412
-.LBB4_276:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-	b	.LBB4_294
-.LBB4_277:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc31Noac_direct_abstract_declaratorEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_289
-.LBB4_278:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -8
-	pcalau12i	$a0, %got_pc_hi20(pg_storageclasseshavebeendefined)
-	ld.d	$a0, $a0, %got_pc_lo12(pg_storageclasseshavebeendefined)
-.LBB4_279:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	ori	$a1, $zero, 1
-	st.b	$a1, $a0, 0
-	b	.LBB4_324
-.LBB4_280:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc26Consac_type_qualifier_listEPNS_22impl_ac_type_qualifierEPNS_27impl_ac_type_qualifier_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_281:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	move	$a0, $s2
-.LBB4_282:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc10WEVariableEPNS_7impl_IDE)
-	jirl	$ra, $ra, 0
-	pcalau12i	$fp, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	ld.d	$a1, $fp, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	pcaddu18i	$ra, %call36(_ZN2kc19ConswithexpressionsEPNS_19impl_withexpressionEPNS_20impl_withexpressionsE)
-	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	st.d	$a0, $fp, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	b	.LBB4_324
-.LBB4_283:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc10AcRegisterEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_284:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc25Nilac_type_qualifier_listEv)
-	jirl	$ra, $ra, 0
-.LBB4_285:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc13AcPointerConsEPNS_27impl_ac_type_qualifier_listEPNS_15impl_ac_pointerE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_286:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc6AcAutoEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_287:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc7CTextNlEPNS_17impl_integer__IntE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_288:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	pcaddu18i	$ra, %call36(_ZN2kc32Yesac_direct_abstract_declaratorEPNS_34impl_ac_direct_abstract_declaratorE)
-	jirl	$ra, $ra, 0
-.LBB4_289:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc14AcDirAbsdeclFnEPNS_41impl_ac_direct_abstract_declarator_optionEPNS_27impl_ac_parameter_type_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_290:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc9NopointerEv)
-	jirl	$ra, $ra, 0
-.LBB4_291:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc16AcAbsdeclDirdeclEPNS_22impl_ac_pointer_optionEPNS_34impl_ac_direct_abstract_declaratorE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_292:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc16AcAbsdeclPointerEPNS_15impl_ac_pointerE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_293:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc17NilstorageclassesEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-.LBB4_294:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc18ConsstorageclassesEPNS_7impl_IDEPNS_19impl_storageclassesE)
-	jirl	$ra, $ra, 0
-	ld.d	$s3, $s6, 0
-	move	$s2, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc9f_emptyIdEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s3
-	pcaddu18i	$ra, %call36(_ZN2kc23v_add_to_storageclassesEPNS_7impl_IDES1_)
-	jirl	$ra, $ra, 0
-	ld.d	$s3, $s6, 0
-	b	.LBB4_345
-.LBB4_295:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc20Nilac_parameter_listEv)
-	jirl	$ra, $ra, 0
-	pcaddu18i	$ra, %call36(_ZN2kc9AcParListEPNS_22impl_ac_parameter_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_296:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc16AcDirAbsdeclPackEPNS_27impl_ac_abstract_declaratorE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_297:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc17AcDirectDeclProtoEPNS_25impl_ac_direct_declaratorEPNS_27impl_ac_parameter_type_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_298:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc16NilunpattributesEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc17ConsunpattributesEPNS_7impl_IDEPNS_18impl_unpattributesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_299:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	pcalau12i	$a1, %got_pc_hi20(pg_filename)
-	ld.d	$a1, $a1, %got_pc_lo12(pg_filename)
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a1, $a1, 0
-	ld.d	$a2, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc14f_fnclass_infoEPNS_30impl_ac_declaration_specifiersEPNS_20impl_casestring__StrEPNS_18impl_ac_declaratorE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -8
-	move	$s3, $a0
-	move	$a0, $a1
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(_ZN2kc21f_ID_of_fn_declaratorEPNS_18impl_ac_declaratorEPNS_12impl_fnclassE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -16
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	move	$s1, $s4
-	ld.d	$s4, $s6, -8
-	move	$fp, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc22Nilac_declaration_listEv)
-	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc12AcNoBaseInitEv)
-	jirl	$ra, $ra, 0
-	ld.d	$a4, $s6, 0
-	move	$a3, $a0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	move	$a1, $s4
-	move	$s4, $s1
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	move	$a2, $s2
-	move	$a5, $fp
-	move	$a6, $s3
-	pcaddu18i	$ra, %call36(_ZN2kc15FnAcDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_24impl_ac_declaration_listEPNS_26impl_ac_opt_base_init_listEPNS_10impl_CtextEPNS_7impl_IDEPNS_12impl_fnclassE)
-	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	st.d	$a0, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	move	$a0, $s3
-	pcaddu18i	$ra, %call36(_ZN2kc14ITUserFunctionEPNS_12impl_fnclassE)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZN2kc10v_defoccurEPNS_7impl_IDEPNS_11impl_IDtypeE)
-	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-.LBB4_300:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $a0, 0
-	st.d	$a0, $s2, 24
-.LBB4_301:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(pg_lineno)
-	ld.d	$a0, $a0, %got_pc_lo12(pg_lineno)
-	ld.w	$a0, $a0, 0
-	st.w	$a0, $s2, 16
-	b	.LBB4_324
-.LBB4_302:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc13IdCexpressionEPNS_7impl_IDEPNS_16impl_CexpressionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_303:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
-	jirl	$ra, $ra, 0
-.LBB4_304:                              #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(pg_filename)
-	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
-	ld.d	$a0, $a0, 0
-	pcalau12i	$a1, %got_pc_hi20(pg_lineno)
-	ld.d	$a1, $a1, %got_pc_lo12(pg_lineno)
-	ld.w	$a1, $a1, 0
-	pcaddu18i	$ra, %call36(_ZN2kc8FileLineEPNS_20impl_casestring__StrEi)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 176
-	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	addi.d	$a1, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	ld.d	$a3, $a1, 64
-	ld.d	$a2, $a1, 48
-	addi.d	$a3, $a3, -8
-	beq	$a2, $a3, .LBB4_416
-# %bb.305:                              #   in Loop: Header=BB4_2 Depth=1
-	st.d	$a0, $a2, 0
-	addi.d	$a0, $a2, 8
-	st.d	$a0, $a1, 48
-	b	.LBB4_417
-.LBB4_306:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc17AcDirectDeclArrayEPNS_25impl_ac_direct_declaratorEPNS_34impl_ac_constant_expression_optionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_307:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc13ConswithcasesEPNS_13impl_withcaseEPNS_14impl_withcasesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_308:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-.LBB4_309:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
-	move	$s2, $a0
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZN2kc19v_add_to_rviewnamesEPNS_7impl_IDE)
-	jirl	$ra, $ra, 0
-	ld.d	$s3, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc11ITUserRViewEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_407
-.LBB4_310:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc30Nilac_constant_expression_listEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_311:                              #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.19)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
-	addi.w	$a1, $zero, -1
-	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
-	jirl	$ra, $ra, 0
-	pcaddu18i	$ra, %call36(_ZN2kc3StrEPNS_20impl_casestring__StrE)
-	jirl	$ra, $ra, 0
-	pcaddu18i	$ra, %call36(_ZN2kc2IdEPNS_11impl_uniqIDE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_312:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc14AcOperatorNameEPNS_20impl_casestring__StrE)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a1, %got_pc_hi20(pg_filename)
-	ld.d	$a1, $a1, %got_pc_lo12(pg_filename)
-	ld.d	$a1, $a1, 0
-	st.d	$a1, $a0, 16
-	pcalau12i	$a1, %got_pc_hi20(pg_lineno)
-	ld.d	$a1, $a1, %got_pc_lo12(pg_lineno)
-	ld.w	$a1, $a1, 0
-	st.w	$a1, $a0, 8
-	pcaddu18i	$ra, %call36(_ZN2kc16AcOperatorDeclIdEPNS_21impl_ac_operator_nameE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_313:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
-	pcaddu18i	$ra, %call36(_ZN2kc18Consbaseclass_listEPNS_7impl_IDEPNS_19impl_baseclass_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_314:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc10AcUnsignedEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_315:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc13AcYesBaseInitEPNS_22impl_ac_base_init_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_316:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	ld.d	$a1, $s6, -24
-	pcaddu18i	$ra, %call36(_ZN2kc31Consac_constant_expression_listEPNS_27impl_ac_constant_expressionEPNS_32impl_ac_constant_expression_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_317:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc10AcVolatileEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_318:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc20Nilac_base_init_listEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc21Consac_base_init_listEPNS_17impl_ac_base_initEPNS_22impl_ac_base_init_listE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_319:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc9POperatorEPNS_7impl_IDEPNS_13impl_patternsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_320:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc9AcVirtualEv)
-	jirl	$ra, $ra, 0
-	pcaddu18i	$ra, %call36(_ZN2kc21AcDeclSpecStorageSpecEPNS_31impl_ac_storage_class_specifierE)
-	jirl	$ra, $ra, 0
-.LBB4_321:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	move	$s2, $a0
-	pcaddu18i	$ra, %call36(_ZN2kc28Nilac_declaration_specifiersEv)
-	jirl	$ra, $ra, 0
-.LBB4_322:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc29Consac_declaration_specifiersEPNS_29impl_ac_declaration_specifierEPNS_30impl_ac_declaration_specifiersE)
-	jirl	$ra, $ra, 0
-	.p2align	4, , 16
-.LBB4_323:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	move	$s2, $a0
-.LBB4_324:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.w	$a0, $s8, %pc_lo12(yydebug)
-	slli.d	$a1, $s1, 1
-	sub.d	$s7, $s7, $a1
-	bnez	$a0, .LBB4_331
-.LBB4_325:                              #   in Loop: Header=BB4_2 Depth=1
-	slli.d	$a0, $s1, 3
-	sub.d	$a0, $s6, $a0
-	addi.d	$s6, $a0, 8
-	st.d	$s2, $a0, 8
-	pcalau12i	$a0, %pc_hi20(_ZL4yyr1)
-	addi.d	$a0, $a0, %pc_lo12(_ZL4yyr1)
-	ldx.bu	$a0, $a0, $s4
-	addi.d	$a0, $a0, -66
-	slli.d	$a0, $a0, 1
-	pcalau12i	$a1, %pc_hi20(_ZL7yypgoto)
-	addi.d	$a1, $a1, %pc_lo12(_ZL7yypgoto)
-	ldx.h	$a2, $a1, $a0
-	ldx.h	$a1, $s7, $a6
-	add.d	$a2, $a1, $a2
-	ori	$a3, $zero, 771
-	bltu	$a3, $a2, .LBB4_328
-# %bb.326:                              #   in Loop: Header=BB4_2 Depth=1
-	slli.d	$a2, $a2, 1
-	ldx.hu	$a3, $a5, $a2
-	bstrpick.d	$a1, $a1, 15, 0
-	bstrpick.d	$a1, $a1, 15, 0
-	bne	$a3, $a1, .LBB4_328
-# %bb.327:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ldx.h	$s2, $a0, $a2
-	b	.LBB4_329
-	.p2align	4, , 16
-.LBB4_328:                              #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a1, %pc_hi20(_ZL9yydefgoto)
-	addi.d	$a1, $a1, %pc_lo12(_ZL9yydefgoto)
-	ldx.h	$s2, $a1, $a0
-.LBB4_329:                              #   in Loop: Header=BB4_2 Depth=1
-	ori	$a3, $zero, 1
-.LBB4_330:                              #   in Loop: Header=BB4_2 Depth=1
-	move	$a0, $s7
-	addi.d	$s7, $s7, 2
-	stx.h	$s2, $s7, $a6
-	ori	$a1, $zero, 395
-	bge	$a1, $a0, .LBB4_2
-	b	.LBB4_474
-.LBB4_331:                              #   in Loop: Header=BB4_2 Depth=1
-	add.d	$a1, $a6, $s7
-	addi.d	$a0, $sp, 1784
-	pcaddu18i	$ra, %call36(_ZL14yy_stack_printPsS_)
-	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	b	.LBB4_325
-.LBB4_332:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc10AcBaseInitEPNS_7impl_IDEPNS_27impl_ac_constant_expressionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_333:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_Z4do_Cv)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %got_pc_hi20(pg_filename)
-	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
-	ld.d	$a0, $a0, 0
-	pcalau12i	$a1, %got_pc_hi20(pg_lineno)
-	ld.d	$a1, $a1, %got_pc_lo12(pg_lineno)
-	ld.w	$a1, $a1, 0
-	pcaddu18i	$ra, %call36(_ZN2kc8FileLineEPNS_20impl_casestring__StrEi)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 176
-	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	addi.d	$a1, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	ld.d	$a3, $a1, 64
-	ld.d	$a2, $a1, 48
-	addi.d	$a3, $a3, -8
-	beq	$a2, $a3, .LBB4_439
-# %bb.334:                              #   in Loop: Header=BB4_2 Depth=1
-	st.d	$a0, $a2, 0
-	addi.d	$a0, $a2, 8
-	st.d	$a0, $a1, 48
-	b	.LBB4_440
-.LBB4_335:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_345:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11PIntLiteralEPNS_8impl_INTE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_336:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionPackEPNS_16impl_CexpressionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_337:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc19ConswithexpressionsEPNS_19impl_withexpressionEPNS_20impl_withexpressionsE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_338:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc25Yesac_constant_expressionEPNS_27impl_ac_constant_expressionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_339:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc14PStringLiteralEPNS_18impl_CexpressionDQE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_340:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-.LBB4_341:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -8
-	move	$s2, $a0
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZN2kc23v_add_to_uviewnames_extEPNS_7impl_IDE)
-	jirl	$ra, $ra, 0
-	ld.d	$s3, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc11ITUserUViewEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_407
-.LBB4_342:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc17UnpCastedVariableEPNS_7impl_IDES1_)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_343:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc21NegativeStorageOptionEPNS_7impl_IDE)
-	jirl	$ra, $ra, 0
-.LBB4_344:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s3, $s6, -8
-	move	$s2, $a0
-.LBB4_345:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc14ITStorageClassEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_407
+	b	.LBB4_318
 .LBB4_346:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc16NilCexpressionSQEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_347:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-	ld.d	$a1, $s6, -16
-	ld.d	$a2, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc9AttributeEPNS_7impl_IDES1_PNS_36impl_attribute_initialisation_optionE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_348:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_349:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
-.LBB4_350:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+	b	.LBB4_318
+.LBB4_347:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+.LBB4_348:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	move	$s2, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN2kc19v_add_to_uviewnamesEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $s6, 0
+	ld.d	$s3, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11ITUserUViewEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_407
-.LBB4_351:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc9TVariableEPNS_7impl_IDE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_352:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_404
+.LBB4_349:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.11)
 	addi.w	$a1, $zero, -1
@@ -2877,26 +2880,25 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc18IncludeDeclarationEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_353:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_350:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, 0
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc27Yesattribute_initialisationEPNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_354:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_351:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %got_pc_hi20(Thephylumdeclarations)
-	ld.d	$fp, $a1, %got_pc_lo12(Thephylumdeclarations)
-	ld.d	$a1, $fp, 0
+	ld.d	$s3, $a1, %got_pc_lo12(Thephylumdeclarations)
+	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(_ZN2kc23mergephylumdeclarationsEPNS_22impl_phylumdeclarationEPNS_23impl_phylumdeclarationsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_412
-.LBB4_355:                              #   in Loop: Header=BB4_2 Depth=1
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	b	.LBB4_409
+.LBB4_352:                              #   in Loop: Header=BB4_2 Depth=1
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$s2, $s6, -24
+	ld.d	$s2, $fp, -24
 	pcaddu18i	$ra, %call36(_ZN2kc16NilpatternchainsEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
@@ -2910,20 +2912,21 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $a2, 0
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_122pl_idCexpressionsstackE)
-	addi.d	$s1, $a0, %pc_lo12(_ZN12_GLOBAL__N_122pl_idCexpressionsstackE)
-	ld.d	$a0, $s1, 48
-	ld.d	$a1, $s1, 56
-	bne	$a0, $a1, .LBB4_357
-# %bb.356:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s1, 72
+	addi.d	$a2, $a0, %pc_lo12(_ZN12_GLOBAL__N_122pl_idCexpressionsstackE)
+	ld.d	$a0, $a2, 48
+	ld.d	$a1, $a2, 56
+	bne	$a0, $a1, .LBB4_354
+# %bb.353:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $a2, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 512
-.LBB4_357:                              # %_ZNSt5stackIPN2kc19impl_idCexpressionsESt5dequeIS2_SaIS2_EEE3topEv.exit
+.LBB4_354:                              # %_ZNSt5stackIPN2kc19impl_idCexpressionsESt5dequeIS2_SaIS2_EEE3topEv.exit
                                         #   in Loop: Header=BB4_2 Depth=1
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, -8
 	pcaddu18i	$ra, %call36(_ZN2kc27pf_gen_foreachwith_listvarsEPNS_19impl_idCexpressionsE)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s2, $a0
 	pcalau12i	$a0, %got_pc_hi20(pg_filename)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
 	ld.d	$a1, $a0, 0
@@ -2933,7 +2936,7 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc26syn_patternchains_filelineEPNS_18impl_patternchainsEPNS_20impl_casestring__StrEi)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8WithcaseEPNS_18impl_patternchainsEPNS_10impl_CtextE)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -2943,14 +2946,14 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc13ConswithcasesEPNS_13impl_withcaseEPNS_14impl_withcasesE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -24
+	ld.d	$a1, $fp, -24
 	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN2kc16InForeachContextEPNS_17impl_patternchainE)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	move	$a0, $fp
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	move	$a0, $s2
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc19CTextWithexpressionEPNS_20impl_withexpressionsEPNS_14impl_withcasesEPNS_16impl_contextinfoE)
 	jirl	$ra, $ra, 0
@@ -2964,62 +2967,32 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	addi.d	$fp, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	ld.d	$a0, $fp, 48
-	ld.d	$a1, $fp, 56
-	beq	$a0, $a1, .LBB4_443
-# %bb.358:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit817
+	addi.d	$s6, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	ld.d	$a0, $s6, 48
+	ld.d	$a1, $s6, 56
+	beq	$a0, $a1, .LBB4_441
+# %bb.355:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit817
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a0, -8
-	b	.LBB4_444
-.LBB4_359:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, 0
+	b	.LBB4_442
+.LBB4_356:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -40
+	ld.d	$a1, $fp, -24
+	ld.d	$a2, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc10TMethodDotEPNS_9impl_termEPNS_7impl_IDEPNS_10impl_termsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_358
+.LBB4_357:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc10TMemberVarEPNS_9impl_termEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_366
-.LBB4_360:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
-	jirl	$ra, $ra, 0
-	ld.w	$a1, $a0, 8
-	ori	$a2, $zero, 1
-	bltu	$a2, $a1, .LBB4_424
-# %bb.361:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s6, -8
-.LBB4_362:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_358:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc16ConsincludefilesEPNS_16impl_includefileEPNS_17impl_includefilesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_427
-.LBB4_363:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -32
-	ld.d	$a1, $s6, -16
-	ld.d	$a2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc10OPOperatorEPNS_7impl_IDEPNS_13impl_patternsEPNS_16impl_CexpressionE)
-	jirl	$ra, $ra, 0
-.LBB4_364:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	move	$s2, $a0
-	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	ori	$a1, $zero, 1
-	st.w	$a1, $a0, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	b	.LBB4_367
-.LBB4_365:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc13TMemberVarDotEPNS_9impl_termEPNS_7impl_IDE)
-	jirl	$ra, $ra, 0
-.LBB4_366:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	move	$s2, $a0
-.LBB4_367:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_359:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(pg_filename)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
@@ -3029,50 +3002,86 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.d	$a0, $a0, %got_pc_lo12(pg_lineno)
 	ld.w	$a0, $a0, 0
 	st.w	$a0, $s2, 8
-	b	.LBB4_324
-.LBB4_368:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_319
+.LBB4_360:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 8
+	ori	$a2, $zero, 1
+	bltu	$a2, $a1, .LBB4_425
+# %bb.361:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $fp, -8
+.LBB4_362:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc16ConsincludefilesEPNS_16impl_includefileEPNS_17impl_includefilesE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_424
+.LBB4_363:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
+	ld.d	$a1, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc18OPOperatorWildcardEPNS_7impl_IDEPNS_16impl_CexpressionE)
+	jirl	$ra, $ra, 0
+.LBB4_364:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	addi.d	$a5, $sp, 1784
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	move	$s2, $a0
+	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	ori	$a1, $zero, 1
+	st.w	$a1, $a0, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	b	.LBB4_359
+.LBB4_365:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, 0
+	pcaddu18i	$ra, %call36(_ZN2kc18NiloutmostpatternsEv)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN2kc19ConsoutmostpatternsEPNS_19impl_outmostpatternEPNS_20impl_outmostpatternsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_366:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionPartEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_369:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -48
-	ld.d	$a1, $s6, -24
-	ld.d	$a2, $s6, 0
+	b	.LBB4_318
+.LBB4_367:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -48
+	ld.d	$a1, $fp, -24
+	ld.d	$a2, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc6UnpStrEPNS_19impl_languageoptionEPNS_18impl_CexpressionDQEPNS_19impl_viewnameoptionE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc11get_text_nrEv)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s2, 8
-	ld.d	$s3, $s6, 0
+	ld.d	$s3, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc10NoViewnameEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZNK2kc20impl_abstract_phylum2eqEPKS0_)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB4_456
-# %bb.370:                              #   in Loop: Header=BB4_2 Depth=1
+	bnez	$a0, .LBB4_454
+# %bb.368:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc11inc_text_nrEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_456
-.LBB4_371:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_454
+.LBB4_369:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc13NilattributesEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_372:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -16
-	ld.d	$a1, $s6, 0
+	b	.LBB4_318
+.LBB4_370:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -16
+	ld.d	$a1, $fp, 0
 	st.d	$a0, $a1, 16
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -24
-.LBB4_373:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -24
+.LBB4_371:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc13ConsargumentsEPNS_7impl_IDEPNS_14impl_argumentsE)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	move	$s2, $a0
 	pcalau12i	$a0, %got_pc_hi20(pg_no_of_arguments)
@@ -3080,10 +3089,14 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.w	$a1, $a0, 0
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a0, 0
-	b	.LBB4_324
-.LBB4_374:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_319
+.LBB4_372:                              #   in Loop: Header=BB4_2 Depth=1
+	pcaddu18i	$ra, %call36(_ZN2kc14NilCexpressionEv)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
+.LBB4_373:                              #   in Loop: Header=BB4_2 Depth=1
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$s2, $s6, -56
+	ld.d	$s2, $fp, -56
 	pcaddu18i	$ra, %call36(_ZN2kc16NilpatternchainsEv)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
@@ -3095,7 +3108,7 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc10base_rviewE)
 	ld.d	$a1, $a1, %got_pc_lo12(_ZN2kc10base_rviewE)
 	jirl	$ra, $a2, 0
-	ld.d	$a1, $s6, -32
+	ld.d	$a1, $fp, -32
 	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN2kc23pf_gen_foreachwith_varsEPNS_19impl_idCexpressionsE)
@@ -3110,7 +3123,7 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc26syn_patternchains_filelineEPNS_18impl_patternchainsEPNS_20impl_casestring__StrEi)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -16
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc8WithcaseEPNS_18impl_patternchainsEPNS_10impl_CtextE)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -3120,13 +3133,13 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc13ConswithcasesEPNS_13impl_withcaseEPNS_14impl_withcasesE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -56
+	ld.d	$a1, $fp, -56
 	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN2kc16InForeachContextEPNS_17impl_patternchainE)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	move	$fp, $s2
+	move	$s5, $s2
 	move	$a0, $s2
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc19CTextWithexpressionEPNS_20impl_withexpressionsEPNS_14impl_withcasesEPNS_16impl_contextinfoE)
@@ -3144,65 +3157,57 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	ld.d	$a1, $a0, 48
 	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_452
-# %bb.375:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit809
+	beq	$a1, $a2, .LBB4_450
+# %bb.374:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit809
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_453
-.LBB4_376:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_451
+.LBB4_375:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -8
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc13UnparseClauseEPNS_14impl_viewnamesEPNS_17impl_unparseitemsE)
 	jirl	$ra, $ra, 0
-.LBB4_377:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_376:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	move	$s2, $a0
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	b	.LBB4_324
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	b	.LBB4_319
+.LBB4_377:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
+	pcaddu18i	$ra, %call36(_ZN2kc17ConspatternchainsEPNS_17impl_patternchainEPNS_18impl_patternchainsE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_318
 .LBB4_378:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, 0
-	pcaddu18i	$ra, %call36(_ZN2kc15NilpatternchainEv)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZN2kc16ConspatternchainEPNS_21impl_patternchainitemEPNS_17impl_patternchainE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_379:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc9NilCtextsEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_380:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -8
+	b	.LBB4_318
+.LBB4_379:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc14ConsattributesEPNS_14impl_attributeEPNS_15impl_attributesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_381:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_380:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc19NonlistAlternativesEPNS_17impl_alternativesE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_382:                              #   in Loop: Header=BB4_2 Depth=1
-	pcaddu18i	$ra, %call36(_ZN2kc18NiloutmostpatternsEv)
-	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_383:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_381:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc14NoForeachAfterEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_384:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_382:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc18ConsidCexpressionsEPNS_18impl_idCexpressionEPNS_19impl_idCexpressionsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_385:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_383:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc13WECexpressionEPNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
@@ -3210,51 +3215,34 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	ld.d	$a1, $a0, 48
 	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_454
-# %bb.386:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit
+	beq	$a1, $a2, .LBB4_452
+# %bb.384:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_455
-.LBB4_387:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s2, $s6, -24
-	pcaddu18i	$ra, %call36(_ZN2kc12NilviewnamesEv)
+	b	.LBB4_453
+.LBB4_385:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc18ConsrewriteclausesEPNS_18impl_rewriteclauseEPNS_19impl_rewriteclausesE)
 	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(_ZNK2kc20impl_abstract_phylum2eqEPKS0_)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_425
-# %bb.388:                              #   in Loop: Header=BB4_2 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.17)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
-	addi.w	$a1, $zero, -1
-	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
-	jirl	$ra, $ra, 0
-	pcaddu18i	$ra, %call36(_ZN2kc3StrEPNS_20impl_casestring__StrE)
-	jirl	$ra, $ra, 0
-	pcaddu18i	$ra, %call36(_ZN2kc2IdEPNS_11impl_uniqIDE)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, -24
-	pcaddu18i	$ra, %call36(_ZN2kc13ConsviewnamesEPNS_7impl_IDEPNS_14impl_viewnamesE)
-	jirl	$ra, $ra, 0
-	b	.LBB4_426
-.LBB4_389:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_386:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc20EmptyproductionblockEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_390:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_387:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc13CExpressionNlEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_391:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_318
+.LBB4_388:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc20CExpressionDollarvarEPNS_8impl_INTE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_392:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_318
+.LBB4_389:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z9do_NORMALv)
 	jirl	$ra, $ra, 0
-.LBB4_393:                              #   in Loop: Header=BB4_2 Depth=1
+.LBB4_390:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(pg_filename)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_filename)
 	ld.d	$a0, $a0, 0
@@ -3269,37 +3257,37 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.d	$a3, $a1, 64
 	ld.d	$a2, $a1, 48
 	addi.d	$a3, $a3, -8
-	beq	$a2, $a3, .LBB4_395
-# %bb.394:                              #   in Loop: Header=BB4_2 Depth=1
+	beq	$a2, $a3, .LBB4_392
+# %bb.391:                              #   in Loop: Header=BB4_2 Depth=1
 	st.d	$a0, $a2, 0
 	addi.d	$a0, $a2, 8
 	st.d	$a0, $a1, 48
-	b	.LBB4_456
-.LBB4_395:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_454
+.LBB4_392:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a1, $sp, 176
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc13impl_filelineESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-	b	.LBB4_456
-.LBB4_396:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_454
+.LBB4_393:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_Z4do_Cv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_397:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_405
+.LBB4_394:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_121pl_withvariablesstackE)
 	addi.d	$a1, $a0, %pc_lo12(_ZN12_GLOBAL__N_121pl_withvariablesstackE)
 	ld.d	$a0, $a1, 48
 	ld.d	$a2, $a1, 56
-	bne	$a0, $a2, .LBB4_399
-# %bb.398:                              #   in Loop: Header=BB4_2 Depth=1
+	bne	$a0, $a2, .LBB4_396
+# %bb.395:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a1, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 512
-.LBB4_399:                              # %_ZNSt5stackIPN2kc20impl_withexpressionsESt5dequeIS2_SaIS2_EEE3topEv.exit
+.LBB4_396:                              # %_ZNSt5stackIPN2kc20impl_withexpressionsESt5dequeIS2_SaIS2_EEE3topEv.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$s2, $a0, -8
-	ld.d	$s3, $s6, 0
+	ld.d	$s3, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc19NotInForeachContextEv)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
@@ -3309,25 +3297,25 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	addi.d	$fp, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
-	ld.d	$a1, $fp, 48
-	ld.d	$a2, $fp, 56
-	beq	$a1, $a2, .LBB4_457
-# %bb.400:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit789
+	addi.d	$s3, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
+	ld.d	$a1, $s3, 48
+	ld.d	$a2, $s3, 56
+	beq	$a1, $a2, .LBB4_455
+# %bb.397:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit789
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a1, $a1, -8
-	b	.LBB4_458
-.LBB4_401:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_456
+.LBB4_398:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	ld.d	$a1, $a0, 48
 	ld.d	$a2, $a0, 56
-	beq	$a1, $a2, .LBB4_462
-# %bb.402:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit787
+	beq	$a1, $a2, .LBB4_460
+# %bb.399:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit787
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_463
-.LBB4_403:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_461
+.LBB4_400:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	addi.w	$a1, $zero, -1
@@ -3335,78 +3323,75 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc15CExpressionPartEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_404:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
+	b	.LBB4_318
+.LBB4_401:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc16CExpressionArrayEPNS_16impl_CexpressionE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_405:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -8
+	b	.LBB4_318
+.LBB4_402:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc13CExpressionDQEPNS_18impl_CexpressionDQE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_323
-.LBB4_406:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -40
-	ld.d	$a1, $s6, -16
+	b	.LBB4_318
+.LBB4_403:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -40
+	ld.d	$a1, $fp, -16
 	pcaddu18i	$ra, %call36(_ZN2kc11AlternativeEPNS_7impl_IDEPNS_14impl_argumentsE)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $s6, -40
+	ld.d	$s3, $fp, -40
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_19pl_phylumE)
 	ld.d	$a1, $a1, %pc_lo12(_ZN12_GLOBAL__N_19pl_phylumE)
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc14ITUserOperatorEPNS_16impl_alternativeEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-.LBB4_407:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_404:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	move	$a1, $a0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc13v_extendoccurEPNS_7impl_IDEPNS_11impl_IDtypeE)
 	jirl	$ra, $ra, 0
-.LBB4_408:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_405:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	b	.LBB4_324
-.LBB4_409:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_319
+.LBB4_406:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %got_pc_hi20(Therwdeclarations)
-	ld.d	$fp, $a1, %got_pc_lo12(Therwdeclarations)
-	ld.d	$a1, $fp, 0
+	ld.d	$s3, $a1, %got_pc_lo12(Therwdeclarations)
+	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(_ZN2kc18ConsrwdeclarationsEPNS_18impl_rwdeclarationEPNS_19impl_rwdeclarationsE)
 	jirl	$ra, $ra, 0
-	b	.LBB4_412
-.LBB4_410:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_409
+.LBB4_407:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %got_pc_hi20(Thelanguages)
-	ld.d	$fp, $a1, %got_pc_lo12(Thelanguages)
-	ld.d	$a1, $fp, 0
+	ld.d	$s3, $a1, %got_pc_lo12(Thelanguages)
+	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(_ZN2kc19merge_languagenamesEPNS_18impl_languagenamesES1_)
 	jirl	$ra, $ra, 0
-	b	.LBB4_412
-.LBB4_411:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	b	.LBB4_409
+.LBB4_408:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %got_pc_hi20(Thebaseclasses)
-	ld.d	$fp, $a1, %got_pc_lo12(Thebaseclasses)
-	ld.d	$a1, $fp, 0
+	ld.d	$s3, $a1, %got_pc_lo12(Thebaseclasses)
+	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(_ZN2kc26Consbaseclass_declarationsEPNS_19impl_baseclass_declEPNS_27impl_baseclass_declarationsE)
 	jirl	$ra, $ra, 0
-.LBB4_412:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_409:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	st.d	$a0, $fp, 0
-	b	.LBB4_324
-.LBB4_413:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, 0
+	st.d	$a0, $s3, 0
+	b	.LBB4_319
+.LBB4_410:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(_ZN2kc3StrEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc2IdEPNS_11impl_uniqIDE)
 	jirl	$ra, $ra, 0
-	addi.d	$a6, $sp, 1784
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
 	move	$s2, $a0
 	pcalau12i	$a0, %got_pc_hi20(pg_filename)
@@ -3417,15 +3402,15 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.d	$a0, $a0, %got_pc_lo12(pg_lineno)
 	ld.w	$a0, $a0, 0
 	st.w	$a0, $s2, 24
-	b	.LBB4_324
-.LBB4_414:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_319
+.LBB4_411:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_415:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit780
+.LBB4_412:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit780
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
-	ld.d	$s2, $s6, -16
+	ld.d	$s2, $fp, -16
 	ld.d	$a1, $a0, 8
 	st.d	$a1, $s2, 16
 	ld.w	$a0, $a0, 16
@@ -3438,56 +3423,69 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_121pl_withvariablesstackE)
 	pcaddu18i	$ra, %call36(_ZNSt5stackIPN2kc20impl_withexpressionsESt5dequeIS2_SaIS2_EEE3popEv)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	b	.LBB4_456
-.LBB4_416:                              #   in Loop: Header=BB4_2 Depth=1
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	b	.LBB4_454
+.LBB4_413:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a1, $sp, 176
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc13impl_filelineESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.LBB4_417:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit778
+.LBB4_414:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit778
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_121pl_withvariablesstackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_121pl_withvariablesstackE)
 	ld.d	$a2, $a0, 64
 	ld.d	$a1, $a0, 48
 	addi.d	$a2, $a2, -8
-	beq	$a1, $a2, .LBB4_419
-# %bb.418:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a2, $fp, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
+	beq	$a1, $a2, .LBB4_416
+# %bb.415:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a2, $s4, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
 	st.d	$a2, $a1, 0
 	addi.d	$a1, $a1, 8
 	st.d	$a1, $a0, 48
-	b	.LBB4_420
-.LBB4_419:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_417
+.LBB4_416:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_121pl_withvariablesstackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_121pl_withvariablesstackE)
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_116pl_withvariablesE)
 	addi.d	$a1, $a1, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc20impl_withexpressionsESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.LBB4_420:                              # %_ZNSt5stackIPN2kc20impl_withexpressionsESt5dequeIS2_SaIS2_EEE4pushERKS2_.exit
+.LBB4_417:                              # %_ZNSt5stackIPN2kc20impl_withexpressionsESt5dequeIS2_SaIS2_EEE4pushERKS2_.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc18NilwithexpressionsEv)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $fp, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
-	b	.LBB4_456
-.LBB4_421:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-.LBB4_422:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s6, -8
+	st.d	$a0, $s4, %pc_lo12(_ZN12_GLOBAL__N_116pl_withvariablesE)
+.LBB4_418:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
+	addi.d	$a5, $sp, 1784
+	move	$s4, $s5
+	b	.LBB4_319
+.LBB4_419:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+.LBB4_420:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $fp, -8
 	pcaddu18i	$ra, %call36(_ZN2kc13UnparseClauseEPNS_14impl_viewnamesEPNS_17impl_unparseitemsE)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(_ZN2kc11inc_text_nrEv)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	b	.LBB4_456
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	b	.LBB4_454
+.LBB4_421:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $fp, -24
+.LBB4_422:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $fp, -8
+	pcaddu18i	$ra, %call36(_ZN2kc13RewriteClauseEPNS_14impl_viewnamesEPNS_9impl_termE)
+	jirl	$ra, $ra, 0
+	b	.LBB4_424
 .LBB4_423:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	move	$s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
@@ -3501,11 +3499,14 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc15NilincludefilesEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_427
-.LBB4_424:                              #   in Loop: Header=BB4_2 Depth=1
+.LBB4_424:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+                                        #   in Loop: Header=BB4_2 Depth=1
+	move	$s2, $a0
+	b	.LBB4_454
+.LBB4_425:                              #   in Loop: Header=BB4_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	move	$s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
@@ -3517,27 +3518,16 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8v_reportEPNS_10impl_errorE)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $s6, -8
-	b	.LBB4_456
-.LBB4_425:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $s6, -24
-.LBB4_426:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s6, -8
-	pcaddu18i	$ra, %call36(_ZN2kc13RewriteClauseEPNS_14impl_viewnamesEPNS_9impl_termE)
-	jirl	$ra, $ra, 0
-.LBB4_427:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
-                                        #   in Loop: Header=BB4_2 Depth=1
-	move	$s2, $a0
-	b	.LBB4_456
-.LBB4_428:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$s2, $fp, -8
+	b	.LBB4_454
+.LBB4_426:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_429:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit797
+.LBB4_427:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit797
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
-	ld.d	$s2, $s6, -16
+	ld.d	$s2, $fp, -16
 	ld.d	$a1, $a0, 8
 	st.d	$a1, $s2, 16
 	ld.w	$a0, $a0, 16
@@ -3550,12 +3540,12 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$a1, $a0, %pc_lo12(_ZN12_GLOBAL__N_119pl_nooperatorsstackE)
 	ld.d	$a0, $a1, 48
 	ld.d	$a2, $a1, 56
-	bne	$a0, $a2, .LBB4_431
-# %bb.430:                              #   in Loop: Header=BB4_2 Depth=1
+	bne	$a0, $a2, .LBB4_429
+# %bb.428:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a1, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 512
-.LBB4_431:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE3topEv.exit
+.LBB4_429:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE3topEv.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.w	$a0, $a0, -4
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
@@ -3564,65 +3554,65 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_119pl_nooperatorsstackE)
 	pcaddu18i	$ra, %call36(_ZNSt5stackIiSt5dequeIiSaIiEEE3popEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_456
-.LBB4_432:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_454
+.LBB4_430:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_433:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit825
+.LBB4_431:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit825
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 8
 	st.d	$a1, $s3, 16
 	ld.w	$a0, $a0, 16
 	st.w	$a0, $s3, 8
-	b	.LBB4_451
+	b	.LBB4_449
+.LBB4_432:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $a0, 72
+	ld.d	$a0, $a0, -8
+	addi.d	$a0, $a0, 504
+.LBB4_433:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit829
+                                        #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $a0, 0
+	ld.d	$s2, $fp, 0
+	b	.LBB4_448
 .LBB4_434:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_122pl_idCexpressionsstackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_122pl_idCexpressionsstackE)
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc19impl_idCexpressionsESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
+	b	.LBB4_405
 .LBB4_435:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_436:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit829
-                                        #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $a0, 0
-	ld.d	$s2, $s6, 0
-	b	.LBB4_450
-.LBB4_437:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $a0, 72
-	ld.d	$a0, $a0, -8
-	addi.d	$a0, $a0, 504
-.LBB4_438:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit801
+.LBB4_436:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit801
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 8
-	ld.d	$a2, $s6, 0
+	ld.d	$a2, $fp, 0
 	st.d	$a1, $a2, 16
 	ld.w	$a0, $a0, 16
-	ld.d	$a1, $s6, 0
+	ld.d	$a1, $fp, 0
 	st.w	$a0, $a1, 8
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	pcaddu18i	$ra, %call36(_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3popEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, -16
+	ld.d	$a0, $fp, -16
 	ld.d	$a0, $a0, 16
 	st.d	$a0, $s2, 16
-	ld.d	$a0, $s6, -16
+	ld.d	$a0, $fp, -16
 	ld.w	$a0, $a0, 8
 	st.w	$a0, $s2, 8
-	b	.LBB4_456
-.LBB4_439:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_454
+.LBB4_437:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a1, $sp, 176
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc13impl_filelineESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.LBB4_440:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit794
+.LBB4_438:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit794
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_119pl_nooperatorsstackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_119pl_nooperatorsstackE)
@@ -3630,29 +3620,28 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.d	$a1, $a0, 48
 	addi.d	$a2, $a2, -4
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$a6, $sp, 1784
-	beq	$a1, $a2, .LBB4_442
-# %bb.441:                              #   in Loop: Header=BB4_2 Depth=1
+	addi.d	$a5, $sp, 1784
+	beq	$a1, $a2, .LBB4_440
+# %bb.439:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a2, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
 	ld.w	$a2, $a2, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
 	st.w	$a2, $a1, 0
 	addi.d	$a1, $a1, 4
 	st.d	$a1, $a0, 48
-	b	.LBB4_324
-.LBB4_442:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_319
+.LBB4_440:                              #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_119pl_nooperatorsstackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_119pl_nooperatorsstackE)
 	pcalau12i	$a1, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
 	addi.d	$a1, $a1, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIiSaIiEE16_M_push_back_auxIJRKiEEEvDpOT_)
 	jirl	$ra, $ra, 0
-	b	.LBB4_408
-.LBB4_443:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $fp, 72
+	b	.LBB4_405
+.LBB4_441:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $s6, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_444:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit818
+.LBB4_442:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit818
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 8
@@ -3663,63 +3652,64 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	st.w	$a0, $s2, 8
 	st.d	$a1, $s3, 16
 	st.w	$a0, $s3, 8
-	ld.d	$a2, $s6, -24
+	ld.d	$a2, $fp, -24
 	ld.d	$a0, $a2, 16
 	ld.w	$a1, $a2, 8
 	pcalau12i	$a3, %pc_hi20(.L.str.14)
 	addi.d	$a3, $a3, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZN2kc53check_no_patternchaingroup_or_pattern_in_patternchainEPNS_20impl_casestring__StrEiPNS_17impl_patternchainEPKc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, 48
-	ld.d	$a2, $s1, 56
-	ld.d	$a0, $s6, -24
-	bne	$a1, $a2, .LBB4_446
-# %bb.445:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $s1, 72
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $a3, 48
+	ld.d	$a2, $a3, 56
+	ld.d	$a0, $fp, -24
+	bne	$a1, $a2, .LBB4_444
+# %bb.443:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $a3, 72
 	ld.d	$a1, $a1, -8
 	addi.d	$a1, $a1, 512
-.LBB4_446:                              # %_ZNSt5stackIPN2kc19impl_idCexpressionsESt5dequeIS2_SaIS2_EEE3topEv.exit819
+.LBB4_444:                              # %_ZNSt5stackIPN2kc19impl_idCexpressionsESt5dequeIS2_SaIS2_EEE3topEv.exit819
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a1, $a1, -8
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	move	$a3, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc12ForeachAfterEPNS_17impl_patternchainEPNS_19impl_idCexpressionsEPNS_20impl_withexpressionsEPNS_10impl_CtextE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 48
-	ld.d	$a2, $fp, 56
+	ld.d	$a1, $s6, 48
+	ld.d	$a2, $s6, 56
 	move	$s2, $a0
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	beq	$a1, $a2, .LBB4_448
-# %bb.447:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit820
+	beq	$a1, $a2, .LBB4_446
+# %bb.445:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit820
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_449
-.LBB4_448:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $fp, 72
+	b	.LBB4_447
+.LBB4_446:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $s6, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_449:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit821
+.LBB4_447:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit821
                                         #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	move	$s6, $s5
 	ld.d	$a0, $a0, 0
-.LBB4_450:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_448:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a1, $a0, 8
 	st.d	$a1, $s2, 16
 	ld.w	$a0, $a0, 16
 	st.w	$a0, $s2, 8
-.LBB4_451:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_449:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	pcalau12i	$a0, %pc_hi20(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	addi.d	$a0, $a0, %pc_lo12(_ZN12_GLOBAL__N_116pl_filelinestackE)
 	pcaddu18i	$ra, %call36(_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3popEv)
 	jirl	$ra, $ra, 0
-	b	.LBB4_456
-.LBB4_452:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_454
+.LBB4_450:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_453:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit810
+.LBB4_451:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit810
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 8
@@ -3730,17 +3720,17 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	st.w	$a0, $s2, 8
 	st.d	$a1, $s3, 16
 	st.w	$a0, $s3, 8
-	ld.d	$a2, $s6, -56
+	ld.d	$a2, $fp, -56
 	ld.d	$a0, $a2, 16
 	ld.w	$a1, $a2, 8
 	pcalau12i	$a3, %pc_hi20(.L.str.14)
 	addi.d	$a3, $a3, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(_ZN2kc42check_no_patternchaingroup_in_patternchainEPNS_20impl_casestring__StrEiPNS_17impl_patternchainEPKc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s6, -56
-	ld.d	$a1, $s6, -32
-	ld.d	$a4, $s6, 0
-	move	$a2, $fp
+	ld.d	$a0, $fp, -56
+	ld.d	$a1, $fp, -32
+	ld.d	$a4, $fp, 0
+	move	$a2, $s5
 	move	$a3, $s3
 	pcaddu18i	$ra, %call36(_ZN2kc22CTextForeachexpressionEPNS_17impl_patternchainEPNS_19impl_idCexpressionsEPNS_20impl_withexpressionsEPNS_10impl_CtextEPNS_18impl_foreach_afterE)
 	jirl	$ra, $ra, 0
@@ -3750,32 +3740,30 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcaddu18i	$ra, %call36(_ZNSt5stackIPN2kc19impl_idCexpressionsESt5dequeIS2_SaIS2_EEE3popEv)
 	jirl	$ra, $ra, 0
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	b	.LBB4_324
-.LBB4_454:                              #   in Loop: Header=BB4_2 Depth=1
+	b	.LBB4_319
+.LBB4_452:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_455:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit776
+.LBB4_453:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit776
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 8
 	st.d	$a1, $s2, 24
 	ld.w	$a0, $a0, 16
 	st.w	$a0, $s2, 16
-.LBB4_456:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
+.LBB4_454:                              # %_ZNSt5stackIiSt5dequeIiSaIiEEE4pushERKi.exit
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$a6, $sp, 1784
-	b	.LBB4_324
-.LBB4_457:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a1, $fp, 72
+	addi.d	$a5, $sp, 1784
+	b	.LBB4_319
+.LBB4_455:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a1, $s3, 72
 	ld.d	$a1, $a1, -8
 	addi.d	$a1, $a1, 504
-.LBB4_458:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit790
+.LBB4_456:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit790
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a1, 8
@@ -3788,48 +3776,48 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc9ConsCtextEPNS_15impl_Ctext_elemEPNS_10impl_CtextE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 48
-	ld.d	$a2, $fp, 56
+	ld.d	$a1, $s3, 48
+	ld.d	$a2, $s3, 56
 	move	$s2, $a0
-	beq	$a1, $a2, .LBB4_460
-# %bb.459:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit791
+	move	$s5, $s4
+	beq	$a1, $a2, .LBB4_458
+# %bb.457:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit791
                                         #   in Loop: Header=BB4_2 Depth=1
 	addi.d	$a0, $a1, -8
-	b	.LBB4_461
-.LBB4_460:                              #   in Loop: Header=BB4_2 Depth=1
-	ld.d	$a0, $fp, 72
+	b	.LBB4_459
+.LBB4_458:                              #   in Loop: Header=BB4_2 Depth=1
+	ld.d	$a0, $s3, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_461:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit792
+.LBB4_459:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit792
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$a6, $sp, 1784
+	addi.d	$a5, $sp, 1784
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 8
 	st.d	$a1, $s2, 16
 	ld.w	$a0, $a0, 16
-	pcalau12i	$fp, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
-	ld.w	$a1, $fp, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	pcalau12i	$s4, %pc_hi20(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
+	ld.w	$a1, $s4, %pc_lo12(_ZN12_GLOBAL__N_126non_default_outmostpatternE)
 	st.w	$a0, $s2, 8
-	bnez	$a1, .LBB4_83
-	b	.LBB4_82
-.LBB4_462:                              #   in Loop: Header=BB4_2 Depth=1
+	bnez	$a1, .LBB4_100
+	b	.LBB4_99
+.LBB4_460:                              #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 504
-.LBB4_463:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit788
+.LBB4_461:                              # %_ZNSt5stackIPN2kc13impl_filelineESt5dequeIS2_SaIS2_EEE3topEv.exit788
                                         #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a0, $a0, 0
-	ld.d	$s2, $s6, 0
+	ld.d	$s2, $fp, 0
 	ld.d	$a1, $a0, 8
 	st.d	$a1, $s2, 16
 	ld.w	$a0, $a0, 16
 	st.w	$a0, $s2, 8
-	b	.LBB4_324
-.LBB4_464:
+	b	.LBB4_319
+.LBB4_462:
 	ori	$a0, $zero, 1
-.LBB4_465:                              # %.loopexit
+.LBB4_463:                              # %.loopexit
 	addi.d	$sp, $sp, 240
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
@@ -3844,7 +3832,7 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB4_466:
+.LBB4_464:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0
@@ -3855,14 +3843,14 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	b	.LBB4_1
-.LBB4_467:                              # %.preheader
+.LBB4_465:                              # %.preheader
 	ori	$a1, $zero, 3
 	ori	$a0, $zero, 1
-	blt	$s7, $a1, .LBB4_465
-# %bb.468:                              # %.preheader
+	blt	$s7, $a1, .LBB4_463
+# %bb.466:                              # %.preheader
 	ld.w	$a1, $s8, %pc_lo12(yydebug)
-	beqz	$a1, .LBB4_465
-# %bb.469:                              # %.lr.ph.split.preheader
+	beqz	$a1, .LBB4_463
+# %bb.467:                              # %.lr.ph.split.preheader
 	addi.d	$fp, $sp, 1784
 	add.d	$a0, $fp, $s7
 	addi.d	$s0, $a0, -2
@@ -3871,9 +3859,9 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	addi.d	$s2, $a0, %pc_lo12(.L.str.7)
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.21)
-	b	.LBB4_471
-.LBB4_470:                              #   in Loop: Header=BB4_471 Depth=1
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	b	.LBB4_469
+.LBB4_468:                              #   in Loop: Header=BB4_469 Depth=1
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $s5, 0
 	move	$a1, $s2
 	move	$a2, $s3
@@ -3884,11 +3872,11 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.d	$s1, $s5, 0
 	sltui	$a1, $a0, 66
 	slli.d	$a0, $a0, 3
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	ldx.d	$a2, $a2, $a0
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	masknez	$a0, $a0, $a1
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	maskeqz	$a1, $a3, $a1
 	or	$a1, $a1, $a0
 	move	$a0, $s1
@@ -3905,27 +3893,27 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	ld.w	$a1, $s8, %pc_lo12(yydebug)
 	addi.d	$s0, $s0, -2
 	ori	$a0, $zero, 1
-	bgeu	$fp, $s0, .LBB4_465
+	bgeu	$fp, $s0, .LBB4_463
 	.p2align	4, , 16
-.LBB4_471:                              # %.lr.ph.split
+.LBB4_469:                              # %.lr.ph.split
                                         # =>This Inner Loop Header: Depth=1
-	bnez	$a1, .LBB4_470
-# %bb.472:                              #   in Loop: Header=BB4_471 Depth=1
+	bnez	$a1, .LBB4_468
+# %bb.470:                              #   in Loop: Header=BB4_469 Depth=1
 	move	$a1, $zero
 	addi.d	$s0, $s0, -2
 	ori	$a0, $zero, 1
-	bltu	$fp, $s0, .LBB4_471
-	b	.LBB4_465
-.LBB4_473:
+	bltu	$fp, $s0, .LBB4_469
+	b	.LBB4_463
+.LBB4_471:
 	move	$a0, $zero
-	b	.LBB4_465
-.LBB4_474:
+	b	.LBB4_463
+.LBB4_472:
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_Z9yyerror_1PKci)
 	jirl	$ra, $ra, 0
-.LBB4_475:
+.LBB4_473:
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, %pc_lo12(yynerrs)
 	addi.d	$a0, $a0, 1
@@ -3941,382 +3929,382 @@ _Z7yyparsev:                            # @_Z7yyparsev
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI4_0:
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_413-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_142-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_354-.LJTI4_0
-	.word	.LBB4_409-.LJTI4_0
-	.word	.LBB4_109-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_113-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
+	.word	.LBB4_73-.LJTI4_0
 	.word	.LBB4_410-.LJTI4_0
-	.word	.LBB4_411-.LJTI4_0
-	.word	.LBB4_122-.LJTI4_0
-	.word	.LBB4_219-.LJTI4_0
-	.word	.LBB4_313-.LJTI4_0
-	.word	.LBB4_144-.LJTI4_0
-	.word	.LBB4_270-.LJTI4_0
-	.word	.LBB4_63-.LJTI4_0
-	.word	.LBB4_120-.LJTI4_0
-	.word	.LBB4_343-.LJTI4_0
-	.word	.LBB4_63-.LJTI4_0
-	.word	.LBB4_63-.LJTI4_0
-	.word	.LBB4_389-.LJTI4_0
-	.word	.LBB4_260-.LJTI4_0
-	.word	.LBB4_381-.LJTI4_0
-	.word	.LBB4_195-.LJTI4_0
-	.word	.LBB4_92-.LJTI4_0
-	.word	.LBB4_256-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_92-.LJTI4_0
-	.word	.LBB4_180-.LJTI4_0
-	.word	.LBB4_274-.LJTI4_0
-	.word	.LBB4_406-.LJTI4_0
-	.word	.LBB4_193-.LJTI4_0
-	.word	.LBB4_134-.LJTI4_0
-	.word	.LBB4_155-.LJTI4_0
-	.word	.LBB4_372-.LJTI4_0
-	.word	.LBB4_91-.LJTI4_0
-	.word	.LBB4_181-.LJTI4_0
-	.word	.LBB4_91-.LJTI4_0
-	.word	.LBB4_371-.LJTI4_0
-	.word	.LBB4_380-.LJTI4_0
-	.word	.LBB4_347-.LJTI4_0
-	.word	.LBB4_223-.LJTI4_0
-	.word	.LBB4_59-.LJTI4_0
-	.word	.LBB4_353-.LJTI4_0
-	.word	.LBB4_77-.LJTI4_0
-	.word	.LBB4_80-.LJTI4_0
-	.word	.LBB4_368-.LJTI4_0
-	.word	.LBB4_391-.LJTI4_0
-	.word	.LBB4_390-.LJTI4_0
-	.word	.LBB4_405-.LJTI4_0
-	.word	.LBB4_173-.LJTI4_0
-	.word	.LBB4_336-.LJTI4_0
-	.word	.LBB4_404-.LJTI4_0
-	.word	.LBB4_70-.LJTI4_0
-	.word	.LBB4_70-.LJTI4_0
-	.word	.LBB4_70-.LJTI4_0
-	.word	.LBB4_108-.LJTI4_0
-	.word	.LBB4_77-.LJTI4_0
-	.word	.LBB4_80-.LJTI4_0
-	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_403-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_218-.LJTI4_0
-	.word	.LBB4_192-.LJTI4_0
-	.word	.LBB4_140-.LJTI4_0
-	.word	.LBB4_230-.LJTI4_0
-	.word	.LBB4_346-.LJTI4_0
-	.word	.LBB4_150-.LJTI4_0
-	.word	.LBB4_110-.LJTI4_0
-	.word	.LBB4_202-.LJTI4_0
-	.word	.LBB4_126-.LJTI4_0
-	.word	.LBB4_384-.LJTI4_0
-	.word	.LBB4_59-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
-	.word	.LBB4_302-.LJTI4_0
-	.word	.LBB4_385-.LJTI4_0
-	.word	.LBB4_337-.LJTI4_0
-	.word	.LBB4_393-.LJTI4_0
-	.word	.LBB4_227-.LJTI4_0
-	.word	.LBB4_102-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
 	.word	.LBB4_73-.LJTI4_0
-	.word	.LBB4_102-.LJTI4_0
-	.word	.LBB4_396-.LJTI4_0
-	.word	.LBB4_73-.LJTI4_0
-	.word	.LBB4_401-.LJTI4_0
-	.word	.LBB4_397-.LJTI4_0
-	.word	.LBB4_177-.LJTI4_0
-	.word	.LBB4_333-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
-	.word	.LBB4_114-.LJTI4_0
-	.word	.LBB4_131-.LJTI4_0
-	.word	.LBB4_393-.LJTI4_0
-	.word	.LBB4_187-.LJTI4_0
-	.word	.LBB4_148-.LJTI4_0
-	.word	.LBB4_172-.LJTI4_0
-	.word	.LBB4_141-.LJTI4_0
-	.word	.LBB4_287-.LJTI4_0
-	.word	.LBB4_60-.LJTI4_0
-	.word	.LBB4_252-.LJTI4_0
-	.word	.LBB4_90-.LJTI4_0
-	.word	.LBB4_111-.LJTI4_0
-	.word	.LBB4_254-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
-	.word	.LBB4_130-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
-	.word	.LBB4_112-.LJTI4_0
-	.word	.LBB4_143-.LJTI4_0
-	.word	.LBB4_123-.LJTI4_0
-	.word	.LBB4_76-.LJTI4_0
-	.word	.LBB4_151-.LJTI4_0
-	.word	.LBB4_374-.LJTI4_0
-	.word	.LBB4_383-.LJTI4_0
-	.word	.LBB4_392-.LJTI4_0
-	.word	.LBB4_76-.LJTI4_0
-	.word	.LBB4_355-.LJTI4_0
-	.word	.LBB4_379-.LJTI4_0
-	.word	.LBB4_116-.LJTI4_0
-	.word	.LBB4_393-.LJTI4_0
-	.word	.LBB4_117-.LJTI4_0
-	.word	.LBB4_352-.LJTI4_0
-	.word	.LBB4_119-.LJTI4_0
-	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_220-.LJTI4_0
-	.word	.LBB4_360-.LJTI4_0
-	.word	.LBB4_81-.LJTI4_0
-	.word	.LBB4_239-.LJTI4_0
-	.word	.LBB4_259-.LJTI4_0
-	.word	.LBB4_233-.LJTI4_0
-	.word	.LBB4_387-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_324-.LJTI4_0
-	.word	.LBB4_171-.LJTI4_0
-	.word	.LBB4_194-.LJTI4_0
-	.word	.LBB4_378-.LJTI4_0
-	.word	.LBB4_255-.LJTI4_0
-	.word	.LBB4_393-.LJTI4_0
-	.word	.LBB4_153-.LJTI4_0
-	.word	.LBB4_127-.LJTI4_0
-	.word	.LBB4_121-.LJTI4_0
-	.word	.LBB4_156-.LJTI4_0
-	.word	.LBB4_128-.LJTI4_0
-	.word	.LBB4_78-.LJTI4_0
-	.word	.LBB4_382-.LJTI4_0
-	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_78-.LJTI4_0
-	.word	.LBB4_265-.LJTI4_0
-	.word	.LBB4_363-.LJTI4_0
-	.word	.LBB4_176-.LJTI4_0
-	.word	.LBB4_175-.LJTI4_0
-	.word	.LBB4_135-.LJTI4_0
-	.word	.LBB4_133-.LJTI4_0
-	.word	.LBB4_59-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_136-.LJTI4_0
-	.word	.LBB4_319-.LJTI4_0
-	.word	.LBB4_85-.LJTI4_0
-	.word	.LBB4_85-.LJTI4_0
 	.word	.LBB4_139-.LJTI4_0
-	.word	.LBB4_60-.LJTI4_0
-	.word	.LBB4_339-.LJTI4_0
-	.word	.LBB4_335-.LJTI4_0
-	.word	.LBB4_107-.LJTI4_0
-	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_236-.LJTI4_0
-	.word	.LBB4_106-.LJTI4_0
-	.word	.LBB4_107-.LJTI4_0
-	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_106-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
 	.word	.LBB4_351-.LJTI4_0
-	.word	.LBB4_145-.LJTI4_0
-	.word	.LBB4_189-.LJTI4_0
-	.word	.LBB4_129-.LJTI4_0
-	.word	.LBB4_359-.LJTI4_0
-	.word	.LBB4_365-.LJTI4_0
-	.word	.LBB4_90-.LJTI4_0
-	.word	.LBB4_164-.LJTI4_0
-	.word	.LBB4_60-.LJTI4_0
-	.word	.LBB4_235-.LJTI4_0
-	.word	.LBB4_158-.LJTI4_0
-	.word	.LBB4_79-.LJTI4_0
-	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_132-.LJTI4_0
-	.word	.LBB4_105-.LJTI4_0
-	.word	.LBB4_79-.LJTI4_0
-	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_105-.LJTI4_0
-	.word	.LBB4_146-.LJTI4_0
-	.word	.LBB4_307-.LJTI4_0
-	.word	.LBB4_269-.LJTI4_0
-	.word	.LBB4_81-.LJTI4_0
-	.word	.LBB4_268-.LJTI4_0
-	.word	.LBB4_196-.LJTI4_0
-	.word	.LBB4_165-.LJTI4_0
-	.word	.LBB4_182-.LJTI4_0
-	.word	.LBB4_167-.LJTI4_0
-	.word	.LBB4_137-.LJTI4_0
-	.word	.LBB4_376-.LJTI4_0
-	.word	.LBB4_87-.LJTI4_0
-	.word	.LBB4_87-.LJTI4_0
-	.word	.LBB4_348-.LJTI4_0
-	.word	.LBB4_199-.LJTI4_0
-	.word	.LBB4_169-.LJTI4_0
-	.word	.LBB4_178-.LJTI4_0
-	.word	.LBB4_60-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
-	.word	.LBB4_369-.LJTI4_0
-	.word	.LBB4_157-.LJTI4_0
-	.word	.LBB4_179-.LJTI4_0
-	.word	.LBB4_185-.LJTI4_0
-	.word	.LBB4_59-.LJTI4_0
-	.word	.LBB4_56-.LJTI4_0
-	.word	.LBB4_200-.LJTI4_0
-	.word	.LBB4_245-.LJTI4_0
-	.word	.LBB4_160-.LJTI4_0
-	.word	.LBB4_215-.LJTI4_0
-	.word	.LBB4_161-.LJTI4_0
-	.word	.LBB4_342-.LJTI4_0
-	.word	.LBB4_298-.LJTI4_0
-	.word	.LBB4_271-.LJTI4_0
-	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_311-.LJTI4_0
-	.word	.LBB4_84-.LJTI4_0
-	.word	.LBB4_214-.LJTI4_0
-	.word	.LBB4_84-.LJTI4_0
-	.word	.LBB4_163-.LJTI4_0
-	.word	.LBB4_104-.LJTI4_0
-	.word	.LBB4_222-.LJTI4_0
-	.word	.LBB4_340-.LJTI4_0
-	.word	.LBB4_349-.LJTI4_0
-	.word	.LBB4_159-.LJTI4_0
-	.word	.LBB4_147-.LJTI4_0
-	.word	.LBB4_224-.LJTI4_0
-	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_242-.LJTI4_0
-	.word	.LBB4_104-.LJTI4_0
-	.word	.LBB4_273-.LJTI4_0
-	.word	.LBB4_250-.LJTI4_0
-	.word	.LBB4_308-.LJTI4_0
-	.word	.LBB4_149-.LJTI4_0
-	.word	.LBB4_166-.LJTI4_0
-	.word	.LBB4_234-.LJTI4_0
-	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_278-.LJTI4_0
-	.word	.LBB4_231-.LJTI4_0
-	.word	.LBB4_293-.LJTI4_0
-	.word	.LBB4_276-.LJTI4_0
-	.word	.LBB4_201-.LJTI4_0
-	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_299-.LJTI4_0
-	.word	.LBB4_162-.LJTI4_0
-	.word	.LBB4_170-.LJTI4_0
-	.word	.LBB4_203-.LJTI4_0
-	.word	.LBB4_206-.LJTI4_0
-	.word	.LBB4_174-.LJTI4_0
-	.word	.LBB4_183-.LJTI4_0
-	.word	.LBB4_315-.LJTI4_0
-	.word	.LBB4_318-.LJTI4_0
-	.word	.LBB4_198-.LJTI4_0
-	.word	.LBB4_332-.LJTI4_0
-	.word	.LBB4_88-.LJTI4_0
-	.word	.LBB4_66-.LJTI4_0
-	.word	.LBB4_88-.LJTI4_0
-	.word	.LBB4_66-.LJTI4_0
-	.word	.LBB4_338-.LJTI4_0
-	.word	.LBB4_100-.LJTI4_0
-	.word	.LBB4_95-.LJTI4_0
-	.word	.LBB4_89-.LJTI4_0
-	.word	.LBB4_86-.LJTI4_0
-	.word	.LBB4_100-.LJTI4_0
-	.word	.LBB4_95-.LJTI4_0
-	.word	.LBB4_89-.LJTI4_0
-	.word	.LBB4_86-.LJTI4_0
-	.word	.LBB4_286-.LJTI4_0
-	.word	.LBB4_283-.LJTI4_0
-	.word	.LBB4_94-.LJTI4_0
-	.word	.LBB4_238-.LJTI4_0
-	.word	.LBB4_244-.LJTI4_0
-	.word	.LBB4_211-.LJTI4_0
-	.word	.LBB4_94-.LJTI4_0
-	.word	.LBB4_184-.LJTI4_0
-	.word	.LBB4_320-.LJTI4_0
-	.word	.LBB4_190-.LJTI4_0
-	.word	.LBB4_101-.LJTI4_0
-	.word	.LBB4_317-.LJTI4_0
-	.word	.LBB4_314-.LJTI4_0
-	.word	.LBB4_64-.LJTI4_0
-	.word	.LBB4_62-.LJTI4_0
-	.word	.LBB4_67-.LJTI4_0
-	.word	.LBB4_61-.LJTI4_0
-	.word	.LBB4_64-.LJTI4_0
-	.word	.LBB4_62-.LJTI4_0
-	.word	.LBB4_67-.LJTI4_0
-	.word	.LBB4_61-.LJTI4_0
-	.word	.LBB4_64-.LJTI4_0
-	.word	.LBB4_62-.LJTI4_0
-	.word	.LBB4_67-.LJTI4_0
-	.word	.LBB4_61-.LJTI4_0
-	.word	.LBB4_62-.LJTI4_0
-	.word	.LBB4_61-.LJTI4_0
-	.word	.LBB4_93-.LJTI4_0
-	.word	.LBB4_210-.LJTI4_0
-	.word	.LBB4_306-.LJTI4_0
-	.word	.LBB4_297-.LJTI4_0
-	.word	.LBB4_208-.LJTI4_0
-	.word	.LBB4_310-.LJTI4_0
-	.word	.LBB4_316-.LJTI4_0
-	.word	.LBB4_191-.LJTI4_0
-	.word	.LBB4_241-.LJTI4_0
-	.word	.LBB4_232-.LJTI4_0
-	.word	.LBB4_209-.LJTI4_0
-	.word	.LBB4_93-.LJTI4_0
-	.word	.LBB4_312-.LJTI4_0
-	.word	.LBB4_272-.LJTI4_0
-	.word	.LBB4_101-.LJTI4_0
-	.word	.LBB4_225-.LJTI4_0
-	.word	.LBB4_197-.LJTI4_0
-	.word	.LBB4_284-.LJTI4_0
-	.word	.LBB4_263-.LJTI4_0
-	.word	.LBB4_243-.LJTI4_0
-	.word	.LBB4_280-.LJTI4_0
-	.word	.LBB4_295-.LJTI4_0
-	.word	.LBB4_207-.LJTI4_0
-	.word	.LBB4_213-.LJTI4_0
-	.word	.LBB4_212-.LJTI4_0
+	.word	.LBB4_406-.LJTI4_0
+	.word	.LBB4_107-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_111-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_407-.LJTI4_0
+	.word	.LBB4_408-.LJTI4_0
+	.word	.LBB4_120-.LJTI4_0
 	.word	.LBB4_217-.LJTI4_0
-	.word	.LBB4_229-.LJTI4_0
-	.word	.LBB4_267-.LJTI4_0
-	.word	.LBB4_258-.LJTI4_0
+	.word	.LBB4_309-.LJTI4_0
+	.word	.LBB4_141-.LJTI4_0
 	.word	.LBB4_266-.LJTI4_0
-	.word	.LBB4_292-.LJTI4_0
-	.word	.LBB4_290-.LJTI4_0
+	.word	.LBB4_61-.LJTI4_0
+	.word	.LBB4_118-.LJTI4_0
+	.word	.LBB4_339-.LJTI4_0
+	.word	.LBB4_61-.LJTI4_0
+	.word	.LBB4_61-.LJTI4_0
+	.word	.LBB4_386-.LJTI4_0
+	.word	.LBB4_260-.LJTI4_0
+	.word	.LBB4_380-.LJTI4_0
+	.word	.LBB4_193-.LJTI4_0
+	.word	.LBB4_89-.LJTI4_0
+	.word	.LBB4_258-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_89-.LJTI4_0
+	.word	.LBB4_177-.LJTI4_0
+	.word	.LBB4_271-.LJTI4_0
+	.word	.LBB4_403-.LJTI4_0
+	.word	.LBB4_191-.LJTI4_0
+	.word	.LBB4_132-.LJTI4_0
+	.word	.LBB4_150-.LJTI4_0
+	.word	.LBB4_370-.LJTI4_0
+	.word	.LBB4_88-.LJTI4_0
+	.word	.LBB4_180-.LJTI4_0
+	.word	.LBB4_88-.LJTI4_0
+	.word	.LBB4_369-.LJTI4_0
+	.word	.LBB4_379-.LJTI4_0
+	.word	.LBB4_343-.LJTI4_0
+	.word	.LBB4_221-.LJTI4_0
+	.word	.LBB4_57-.LJTI4_0
+	.word	.LBB4_350-.LJTI4_0
+	.word	.LBB4_75-.LJTI4_0
+	.word	.LBB4_76-.LJTI4_0
+	.word	.LBB4_366-.LJTI4_0
+	.word	.LBB4_388-.LJTI4_0
+	.word	.LBB4_387-.LJTI4_0
+	.word	.LBB4_402-.LJTI4_0
+	.word	.LBB4_170-.LJTI4_0
+	.word	.LBB4_331-.LJTI4_0
+	.word	.LBB4_401-.LJTI4_0
+	.word	.LBB4_68-.LJTI4_0
+	.word	.LBB4_68-.LJTI4_0
+	.word	.LBB4_68-.LJTI4_0
+	.word	.LBB4_106-.LJTI4_0
+	.word	.LBB4_75-.LJTI4_0
+	.word	.LBB4_76-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_400-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
 	.word	.LBB4_216-.LJTI4_0
-	.word	.LBB4_296-.LJTI4_0
-	.word	.LBB4_246-.LJTI4_0
-	.word	.LBB4_247-.LJTI4_0
-	.word	.LBB4_288-.LJTI4_0
-	.word	.LBB4_277-.LJTI4_0
-	.word	.LBB4_66-.LJTI4_0
-	.word	.LBB4_59-.LJTI4_0
-	.word	.LBB4_264-.LJTI4_0
+	.word	.LBB4_190-.LJTI4_0
+	.word	.LBB4_136-.LJTI4_0
+	.word	.LBB4_227-.LJTI4_0
+	.word	.LBB4_342-.LJTI4_0
+	.word	.LBB4_145-.LJTI4_0
+	.word	.LBB4_108-.LJTI4_0
+	.word	.LBB4_202-.LJTI4_0
+	.word	.LBB4_124-.LJTI4_0
+	.word	.LBB4_382-.LJTI4_0
 	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_281-.LJTI4_0
-	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_261-.LJTI4_0
-	.word	.LBB4_57-.LJTI4_0
-	.word	.LBB4_253-.LJTI4_0
-	.word	.LBB4_226-.LJTI4_0
-	.word	.LBB4_99-.LJTI4_0
-	.word	.LBB4_98-.LJTI4_0
-	.word	.LBB4_240-.LJTI4_0
-	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
-	.word	.LBB4_98-.LJTI4_0
-	.word	.LBB4_262-.LJTI4_0
-	.word	.LBB4_257-.LJTI4_0
-	.word	.LBB4_99-.LJTI4_0
-	.word	.LBB4_237-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_298-.LJTI4_0
+	.word	.LBB4_383-.LJTI4_0
+	.word	.LBB4_333-.LJTI4_0
+	.word	.LBB4_390-.LJTI4_0
+	.word	.LBB4_225-.LJTI4_0
+	.word	.LBB4_101-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_101-.LJTI4_0
+	.word	.LBB4_393-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_398-.LJTI4_0
+	.word	.LBB4_394-.LJTI4_0
+	.word	.LBB4_176-.LJTI4_0
+	.word	.LBB4_329-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_112-.LJTI4_0
+	.word	.LBB4_130-.LJTI4_0
+	.word	.LBB4_390-.LJTI4_0
+	.word	.LBB4_184-.LJTI4_0
+	.word	.LBB4_144-.LJTI4_0
+	.word	.LBB4_169-.LJTI4_0
+	.word	.LBB4_137-.LJTI4_0
+	.word	.LBB4_289-.LJTI4_0
+	.word	.LBB4_58-.LJTI4_0
 	.word	.LBB4_249-.LJTI4_0
+	.word	.LBB4_85-.LJTI4_0
+	.word	.LBB4_109-.LJTI4_0
+	.word	.LBB4_251-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_129-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_110-.LJTI4_0
+	.word	.LBB4_140-.LJTI4_0
+	.word	.LBB4_121-.LJTI4_0
+	.word	.LBB4_74-.LJTI4_0
+	.word	.LBB4_146-.LJTI4_0
+	.word	.LBB4_373-.LJTI4_0
+	.word	.LBB4_381-.LJTI4_0
+	.word	.LBB4_389-.LJTI4_0
+	.word	.LBB4_74-.LJTI4_0
+	.word	.LBB4_352-.LJTI4_0
+	.word	.LBB4_378-.LJTI4_0
+	.word	.LBB4_114-.LJTI4_0
+	.word	.LBB4_390-.LJTI4_0
+	.word	.LBB4_115-.LJTI4_0
+	.word	.LBB4_349-.LJTI4_0
+	.word	.LBB4_117-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_218-.LJTI4_0
+	.word	.LBB4_360-.LJTI4_0
+	.word	.LBB4_98-.LJTI4_0
+	.word	.LBB4_256-.LJTI4_0
+	.word	.LBB4_231-.LJTI4_0
+	.word	.LBB4_385-.LJTI4_0
+	.word	.LBB4_167-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_319-.LJTI4_0
+	.word	.LBB4_192-.LJTI4_0
+	.word	.LBB4_377-.LJTI4_0
+	.word	.LBB4_250-.LJTI4_0
+	.word	.LBB4_148-.LJTI4_0
+	.word	.LBB4_390-.LJTI4_0
+	.word	.LBB4_125-.LJTI4_0
+	.word	.LBB4_119-.LJTI4_0
+	.word	.LBB4_152-.LJTI4_0
+	.word	.LBB4_127-.LJTI4_0
+	.word	.LBB4_365-.LJTI4_0
+	.word	.LBB4_80-.LJTI4_0
+	.word	.LBB4_233-.LJTI4_0
 	.word	.LBB4_55-.LJTI4_0
-	.word	.LBB4_32-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_80-.LJTI4_0
+	.word	.LBB4_363-.LJTI4_0
+	.word	.LBB4_173-.LJTI4_0
+	.word	.LBB4_172-.LJTI4_0
+	.word	.LBB4_133-.LJTI4_0
+	.word	.LBB4_131-.LJTI4_0
+	.word	.LBB4_372-.LJTI4_0
+	.word	.LBB4_57-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_314-.LJTI4_0
+	.word	.LBB4_189-.LJTI4_0
+	.word	.LBB4_86-.LJTI4_0
+	.word	.LBB4_86-.LJTI4_0
+	.word	.LBB4_334-.LJTI4_0
+	.word	.LBB4_58-.LJTI4_0
+	.word	.LBB4_328-.LJTI4_0
+	.word	.LBB4_345-.LJTI4_0
+	.word	.LBB4_105-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_337-.LJTI4_0
+	.word	.LBB4_104-.LJTI4_0
+	.word	.LBB4_105-.LJTI4_0
+	.word	.LBB4_55-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_104-.LJTI4_0
+	.word	.LBB4_138-.LJTI4_0
+	.word	.LBB4_186-.LJTI4_0
+	.word	.LBB4_128-.LJTI4_0
+	.word	.LBB4_356-.LJTI4_0
+	.word	.LBB4_357-.LJTI4_0
+	.word	.LBB4_159-.LJTI4_0
+	.word	.LBB4_85-.LJTI4_0
+	.word	.LBB4_230-.LJTI4_0
+	.word	.LBB4_58-.LJTI4_0
+	.word	.LBB4_149-.LJTI4_0
+	.word	.LBB4_161-.LJTI4_0
+	.word	.LBB4_77-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_154-.LJTI4_0
+	.word	.LBB4_79-.LJTI4_0
+	.word	.LBB4_77-.LJTI4_0
+	.word	.LBB4_55-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_79-.LJTI4_0
+	.word	.LBB4_302-.LJTI4_0
+	.word	.LBB4_264-.LJTI4_0
+	.word	.LBB4_344-.LJTI4_0
+	.word	.LBB4_98-.LJTI4_0
+	.word	.LBB4_263-.LJTI4_0
+	.word	.LBB4_194-.LJTI4_0
+	.word	.LBB4_160-.LJTI4_0
+	.word	.LBB4_178-.LJTI4_0
+	.word	.LBB4_163-.LJTI4_0
+	.word	.LBB4_134-.LJTI4_0
+	.word	.LBB4_375-.LJTI4_0
+	.word	.LBB4_82-.LJTI4_0
+	.word	.LBB4_82-.LJTI4_0
+	.word	.LBB4_346-.LJTI4_0
+	.word	.LBB4_197-.LJTI4_0
+	.word	.LBB4_165-.LJTI4_0
+	.word	.LBB4_174-.LJTI4_0
+	.word	.LBB4_58-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_367-.LJTI4_0
+	.word	.LBB4_151-.LJTI4_0
+	.word	.LBB4_175-.LJTI4_0
+	.word	.LBB4_182-.LJTI4_0
+	.word	.LBB4_57-.LJTI4_0
+	.word	.LBB4_54-.LJTI4_0
+	.word	.LBB4_198-.LJTI4_0
+	.word	.LBB4_241-.LJTI4_0
+	.word	.LBB4_155-.LJTI4_0
+	.word	.LBB4_212-.LJTI4_0
+	.word	.LBB4_156-.LJTI4_0
+	.word	.LBB4_338-.LJTI4_0
+	.word	.LBB4_293-.LJTI4_0
+	.word	.LBB4_265-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_306-.LJTI4_0
+	.word	.LBB4_78-.LJTI4_0
+	.word	.LBB4_211-.LJTI4_0
+	.word	.LBB4_78-.LJTI4_0
+	.word	.LBB4_158-.LJTI4_0
+	.word	.LBB4_103-.LJTI4_0
+	.word	.LBB4_215-.LJTI4_0
+	.word	.LBB4_335-.LJTI4_0
+	.word	.LBB4_347-.LJTI4_0
+	.word	.LBB4_153-.LJTI4_0
+	.word	.LBB4_142-.LJTI4_0
+	.word	.LBB4_220-.LJTI4_0
+	.word	.LBB4_55-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_238-.LJTI4_0
+	.word	.LBB4_103-.LJTI4_0
+	.word	.LBB4_268-.LJTI4_0
+	.word	.LBB4_246-.LJTI4_0
+	.word	.LBB4_303-.LJTI4_0
+	.word	.LBB4_143-.LJTI4_0
+	.word	.LBB4_162-.LJTI4_0
+	.word	.LBB4_232-.LJTI4_0
+	.word	.LBB4_55-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_273-.LJTI4_0
+	.word	.LBB4_228-.LJTI4_0
+	.word	.LBB4_287-.LJTI4_0
+	.word	.LBB4_269-.LJTI4_0
+	.word	.LBB4_199-.LJTI4_0
+	.word	.LBB4_55-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_294-.LJTI4_0
+	.word	.LBB4_157-.LJTI4_0
+	.word	.LBB4_166-.LJTI4_0
+	.word	.LBB4_200-.LJTI4_0
+	.word	.LBB4_203-.LJTI4_0
+	.word	.LBB4_171-.LJTI4_0
+	.word	.LBB4_179-.LJTI4_0
+	.word	.LBB4_310-.LJTI4_0
+	.word	.LBB4_313-.LJTI4_0
+	.word	.LBB4_196-.LJTI4_0
+	.word	.LBB4_327-.LJTI4_0
+	.word	.LBB4_83-.LJTI4_0
+	.word	.LBB4_64-.LJTI4_0
+	.word	.LBB4_83-.LJTI4_0
+	.word	.LBB4_64-.LJTI4_0
+	.word	.LBB4_332-.LJTI4_0
+	.word	.LBB4_96-.LJTI4_0
+	.word	.LBB4_91-.LJTI4_0
+	.word	.LBB4_84-.LJTI4_0
+	.word	.LBB4_81-.LJTI4_0
+	.word	.LBB4_96-.LJTI4_0
+	.word	.LBB4_91-.LJTI4_0
+	.word	.LBB4_84-.LJTI4_0
+	.word	.LBB4_81-.LJTI4_0
+	.word	.LBB4_281-.LJTI4_0
+	.word	.LBB4_278-.LJTI4_0
+	.word	.LBB4_90-.LJTI4_0
+	.word	.LBB4_235-.LJTI4_0
+	.word	.LBB4_240-.LJTI4_0
+	.word	.LBB4_208-.LJTI4_0
+	.word	.LBB4_90-.LJTI4_0
+	.word	.LBB4_181-.LJTI4_0
+	.word	.LBB4_315-.LJTI4_0
+	.word	.LBB4_187-.LJTI4_0
+	.word	.LBB4_97-.LJTI4_0
+	.word	.LBB4_312-.LJTI4_0
+	.word	.LBB4_308-.LJTI4_0
+	.word	.LBB4_62-.LJTI4_0
+	.word	.LBB4_60-.LJTI4_0
+	.word	.LBB4_65-.LJTI4_0
+	.word	.LBB4_59-.LJTI4_0
+	.word	.LBB4_62-.LJTI4_0
+	.word	.LBB4_60-.LJTI4_0
+	.word	.LBB4_65-.LJTI4_0
+	.word	.LBB4_59-.LJTI4_0
+	.word	.LBB4_62-.LJTI4_0
+	.word	.LBB4_60-.LJTI4_0
+	.word	.LBB4_65-.LJTI4_0
+	.word	.LBB4_59-.LJTI4_0
+	.word	.LBB4_60-.LJTI4_0
+	.word	.LBB4_59-.LJTI4_0
+	.word	.LBB4_87-.LJTI4_0
+	.word	.LBB4_207-.LJTI4_0
+	.word	.LBB4_297-.LJTI4_0
+	.word	.LBB4_292-.LJTI4_0
+	.word	.LBB4_205-.LJTI4_0
+	.word	.LBB4_305-.LJTI4_0
+	.word	.LBB4_311-.LJTI4_0
+	.word	.LBB4_188-.LJTI4_0
+	.word	.LBB4_237-.LJTI4_0
+	.word	.LBB4_229-.LJTI4_0
+	.word	.LBB4_206-.LJTI4_0
+	.word	.LBB4_87-.LJTI4_0
+	.word	.LBB4_307-.LJTI4_0
+	.word	.LBB4_267-.LJTI4_0
+	.word	.LBB4_97-.LJTI4_0
+	.word	.LBB4_222-.LJTI4_0
+	.word	.LBB4_195-.LJTI4_0
+	.word	.LBB4_279-.LJTI4_0
+	.word	.LBB4_257-.LJTI4_0
+	.word	.LBB4_239-.LJTI4_0
+	.word	.LBB4_275-.LJTI4_0
+	.word	.LBB4_290-.LJTI4_0
+	.word	.LBB4_204-.LJTI4_0
+	.word	.LBB4_210-.LJTI4_0
+	.word	.LBB4_209-.LJTI4_0
+	.word	.LBB4_214-.LJTI4_0
+	.word	.LBB4_224-.LJTI4_0
+	.word	.LBB4_262-.LJTI4_0
+	.word	.LBB4_253-.LJTI4_0
+	.word	.LBB4_261-.LJTI4_0
+	.word	.LBB4_286-.LJTI4_0
+	.word	.LBB4_284-.LJTI4_0
+	.word	.LBB4_213-.LJTI4_0
+	.word	.LBB4_291-.LJTI4_0
+	.word	.LBB4_242-.LJTI4_0
+	.word	.LBB4_243-.LJTI4_0
+	.word	.LBB4_282-.LJTI4_0
+	.word	.LBB4_270-.LJTI4_0
+	.word	.LBB4_64-.LJTI4_0
+	.word	.LBB4_57-.LJTI4_0
+	.word	.LBB4_259-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_276-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_254-.LJTI4_0
+	.word	.LBB4_53-.LJTI4_0
+	.word	.LBB4_248-.LJTI4_0
+	.word	.LBB4_223-.LJTI4_0
+	.word	.LBB4_95-.LJTI4_0
+	.word	.LBB4_94-.LJTI4_0
+	.word	.LBB4_236-.LJTI4_0
+	.word	.LBB4_55-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
+	.word	.LBB4_94-.LJTI4_0
+	.word	.LBB4_255-.LJTI4_0
+	.word	.LBB4_252-.LJTI4_0
+	.word	.LBB4_95-.LJTI4_0
+	.word	.LBB4_234-.LJTI4_0
+	.word	.LBB4_245-.LJTI4_0
+	.word	.LBB4_55-.LJTI4_0
+	.word	.LBB4_30-.LJTI4_0
                                         # -- End function
 	.section	.text.unlikely.,"ax",@progbits
 	.p2align	5                               # -- Begin function _ZL15yy_reduce_printi

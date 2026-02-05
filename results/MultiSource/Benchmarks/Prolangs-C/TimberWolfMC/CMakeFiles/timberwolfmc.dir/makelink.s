@@ -22,12 +22,12 @@ makelink:                               # @makelink
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(hFixedList)
-	ld.d	$s3, $a0, %got_pc_lo12(hFixedList)
-	st.d	$fp, $s3, 0
+	ld.d	$s2, $a0, %got_pc_lo12(hFixedList)
+	st.d	$fp, $s2, 0
 	pcalau12i	$a0, %got_pc_hi20(edgeCount)
 	ld.d	$a0, $a0, %got_pc_lo12(edgeCount)
-	ld.w	$s2, $a0, 0
-	st.w	$s2, $fp, 0
+	ld.w	$s4, $a0, 0
+	st.w	$s4, $fp, 0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -36,7 +36,7 @@ makelink:                               # @makelink
 	st.d	$zero, $fp, 8
 	st.d	$zero, $a0, 16
 	st.d	$fp, $a0, 8
-	addi.d	$a0, $s2, -2
+	addi.d	$a0, $s4, -2
 	st.w	$a0, $s0, 0
 	pcalau12i	$a0, %got_pc_hi20(hFixedEnd)
 	ld.d	$a0, $a0, %got_pc_lo12(hFixedEnd)
@@ -46,9 +46,9 @@ makelink:                               # @makelink
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	pcalau12i	$a0, %got_pc_hi20(vFixedList)
-	ld.d	$s4, $a0, %got_pc_lo12(vFixedList)
-	st.d	$s1, $s4, 0
-	addi.d	$a0, $s2, -3
+	ld.d	$s3, $a0, %got_pc_lo12(vFixedList)
+	st.d	$s1, $s3, 0
+	addi.d	$a0, $s4, -3
 	st.w	$a0, $s1, 0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
@@ -57,7 +57,7 @@ makelink:                               # @makelink
 	st.d	$zero, $s1, 8
 	st.d	$zero, $a0, 16
 	st.d	$s1, $a0, 8
-	addi.d	$a1, $s2, -1
+	addi.d	$a1, $s4, -1
 	st.w	$a1, $a0, 0
 	pcalau12i	$a1, %got_pc_hi20(vFixedEnd)
 	ld.d	$a1, $a1, %got_pc_lo12(vFixedEnd)
@@ -77,15 +77,16 @@ makelink:                               # @makelink
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
+	move	$s4, $fp
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 8
-	move	$s2, $a0
+	move	$fp, $a0
 	st.w	$a1, $a0, 0
-	st.d	$fp, $a0, 8
+	st.d	$s4, $a0, 8
 	st.d	$s0, $a0, 16
-	st.d	$a0, $fp, 16
+	st.d	$a0, $s4, 16
 	st.d	$a0, $s0, 8
 	addi.d	$a1, $sp, 16
 	addi.d	$a2, $sp, 12
@@ -94,11 +95,10 @@ makelink:                               # @makelink
 	pcaddu18i	$ra, %call36(tpop)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 16
-	move	$fp, $s2
 	bnez	$a0, .LBB0_2
 .LBB0_3:                                # %._crit_edge
-	ld.d	$s2, $s4, 0
-	ld.d	$s1, $s2, 16
+	ld.d	$fp, $s3, 0
+	ld.d	$s1, $fp, 16
 	pcalau12i	$a0, %got_pc_hi20(vFixedEdgeRoot)
 	ld.d	$a0, $a0, %got_pc_lo12(vFixedEdgeRoot)
 	addi.d	$a1, $sp, 16
@@ -110,27 +110,27 @@ makelink:                               # @makelink
 	beqz	$a0, .LBB0_6
 # %bb.4:                                # %.lr.ph37
 	pcalau12i	$a0, %got_pc_hi20(vFixedEdgeRoot)
-	ld.d	$fp, $a0, %got_pc_lo12(vFixedEdgeRoot)
+	ld.d	$s0, $a0, %got_pc_lo12(vFixedEdgeRoot)
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
+	move	$s4, $fp
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 8
-	move	$s0, $a0
+	move	$fp, $a0
 	st.w	$a1, $a0, 0
-	st.d	$s2, $a0, 8
+	st.d	$s4, $a0, 8
 	st.d	$s1, $a0, 16
-	st.d	$a0, $s2, 16
+	st.d	$a0, $s4, 16
 	st.d	$a0, $s1, 8
 	addi.d	$a1, $sp, 16
 	addi.d	$a2, $sp, 12
 	addi.d	$a3, $sp, 8
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(tpop)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 16
-	move	$s2, $s0
 	bnez	$a0, .LBB0_5
 .LBB0_6:                                # %._crit_edge38
 	pcalau12i	$a0, %got_pc_hi20(Vroot)
@@ -142,12 +142,12 @@ makelink:                               # @makelink
 	pcalau12i	$a1, %got_pc_hi20(Vptrs)
 	ld.d	$s7, $a1, %got_pc_lo12(Vptrs)
 	st.d	$a0, $s7, 0
-	ld.d	$s8, $s4, 0
+	ld.d	$s8, $s3, 0
 	beqz	$s8, .LBB0_13
 # %bb.7:                                # %.lr.ph.preheader.i
 	pcalau12i	$a0, %got_pc_hi20(edgeList)
-	ld.d	$s2, $a0, %got_pc_lo12(edgeList)
-	ld.d	$a0, $s2, 0
+	ld.d	$s3, $a0, %got_pc_lo12(edgeList)
+	ld.d	$a0, $s3, 0
 	lu12i.w	$a1, -245
 	ori	$a2, $a1, 3520
 	lu12i.w	$a1, -251659
@@ -169,7 +169,7 @@ makelink:                               # @makelink
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s3, 0
 	move	$a1, $s1
 	move	$a2, $s0
 .LBB0_9:                                #   in Loop: Header=BB0_10 Depth=1
@@ -206,13 +206,13 @@ makelink:                               # @makelink
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(Hptrs)
 	ld.d	$s7, $a1, %got_pc_lo12(Hptrs)
-	ld.d	$s3, $s3, 0
+	ld.d	$s2, $s2, 0
 	st.d	$a0, $s7, 0
-	beqz	$s3, .LBB0_20
+	beqz	$s2, .LBB0_20
 # %bb.14:                               # %.lr.ph.preheader.i22
 	pcalau12i	$a0, %got_pc_hi20(edgeList)
-	ld.d	$s2, $a0, %got_pc_lo12(edgeList)
-	ld.d	$a0, $s2, 0
+	ld.d	$s3, $a0, %got_pc_lo12(edgeList)
+	ld.d	$a0, $s3, 0
 	lu12i.w	$a1, -245
 	ori	$a2, $a1, 3520
 	lu12i.w	$a1, -251659
@@ -228,21 +228,21 @@ makelink:                               # @makelink
 	.p2align	4, , 16
 .LBB0_15:                               #   in Loop: Header=BB0_17 Depth=1
 	slli.d	$a1, $s1, 3
-	stx.d	$s3, $a0, $a1
+	stx.d	$s2, $a0, $a1
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s3, 0
 	move	$a1, $s1
 	move	$a2, $s0
 .LBB0_16:                               #   in Loop: Header=BB0_17 Depth=1
-	ld.d	$s3, $s3, 16
-	beqz	$s3, .LBB0_20
+	ld.d	$s2, $s2, 16
+	beqz	$s2, .LBB0_20
 .LBB0_17:                               # %.lr.ph.i24
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $s3, 0
+	ld.w	$a3, $s2, 0
 	slli.d	$a4, $a3, 5
 	alsl.d	$a3, $a3, $a4, 3
 	add.d	$a3, $a0, $a3

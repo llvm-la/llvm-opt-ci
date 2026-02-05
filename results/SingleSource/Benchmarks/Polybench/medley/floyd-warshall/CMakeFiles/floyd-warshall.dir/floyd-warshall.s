@@ -260,10 +260,10 @@ main:                                   # @main
 	xvsle.wu	$xr15, $xr15, $xr3
 	xvmul.w	$xr16, $xr17, $xr4
 	xvsle.wu	$xr16, $xr16, $xr5
+	xvmul.w	$xr17, $xr17, $xr6
+	xvsle.wu	$xr17, $xr17, $xr7
 	xvor.v	$xr15, $xr15, $xr16
-	xvmul.w	$xr16, $xr17, $xr6
-	xvsle.wu	$xr16, $xr16, $xr7
-	xvor.v	$xr15, $xr16, $xr15
+	xvor.v	$xr15, $xr17, $xr15
 	xvbitsel.v	$xr14, $xr14, $xr10, $xr15
 	xvstx	$xr14, $t0, $s2
 	xvaddi.du	$xr12, $xr12, 8
@@ -350,7 +350,7 @@ main:                                   # @main
 	bnez	$t7, .LBB7_14
 	b	.LBB7_11
 	.p2align	4, , 16
-.LBB7_15:                               # %vector.body87.preheader
+.LBB7_15:                               # %vector.ph86
                                         #   in Loop: Header=BB7_12 Depth=2
 	xvldrepl.w	$xr8, $t6, 0
 	ori	$t6, $s3, 1088
@@ -447,10 +447,10 @@ main:                                   # @main
 	xvsle.wu	$xr15, $xr15, $xr3
 	xvmul.w	$xr16, $xr17, $xr4
 	xvsle.wu	$xr16, $xr16, $xr5
+	xvmul.w	$xr17, $xr17, $xr6
+	xvsle.wu	$xr17, $xr17, $xr7
 	xvor.v	$xr15, $xr15, $xr16
-	xvmul.w	$xr16, $xr17, $xr6
-	xvsle.wu	$xr16, $xr16, $xr7
-	xvor.v	$xr15, $xr16, $xr15
+	xvor.v	$xr15, $xr17, $xr15
 	xvbitsel.v	$xr14, $xr14, $xr10, $xr15
 	xvstx	$xr14, $a7, $s2
 	xvaddi.du	$xr12, $xr12, 8
@@ -535,7 +535,7 @@ main:                                   # @main
 	bnez	$t5, .LBB7_27
 	b	.LBB7_24
 	.p2align	4, , 16
-.LBB7_28:                               # %vector.body121.preheader
+.LBB7_28:                               # %vector.ph120
                                         #   in Loop: Header=BB7_25 Depth=2
 	xvldrepl.w	$xr0, $t4, 0
 	ori	$t4, $s3, 1088

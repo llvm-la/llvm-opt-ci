@@ -34,13 +34,12 @@ foo:                                    # @foo
 	ori	$t4, $zero, 1
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
-	ld.h	$t5, $a4, %pc_lo12(b)
 	st.w	$a2, $a1, %pc_lo12(p)
+	ld.h	$t5, $a4, %pc_lo12(b)
 	or	$t2, $t3, $a3
 	sub.w	$t2, $t4, $t2
-	ext.w.h	$t3, $t5
-	sub.d	$t4, $a5, $t4
-	sll.w	$t3, $t3, $t4
+	sub.d	$t3, $a5, $t4
+	sll.w	$t3, $t5, $t3
 	st.w	$t3, $a6, %pc_lo12(f)
 	bgeu	$a2, $t2, .LBB1_3
 # %bb.2:                                #   in Loop: Header=BB1_1 Depth=1
@@ -48,8 +47,7 @@ foo:                                    # @foo
 	slti	$t4, $t4, 3
 	st.w	$t4, $a0, 0
 .LBB1_3:                                #   in Loop: Header=BB1_1 Depth=1
-	bstrpick.d	$t4, $t5, 15, 0
-	or	$t4, $t2, $t4
+	or	$t4, $t2, $t5
 	sltu	$t4, $zero, $t4
 	xor	$t5, $t3, $t4
 	ld.w	$t6, $t0, %pc_lo12(c)
@@ -105,13 +103,12 @@ main:                                   # @main
 	ori	$t4, $zero, 1
 	.p2align	4, , 16
 .LBB2_1:                                # =>This Inner Loop Header: Depth=1
-	ld.h	$t5, $a4, %pc_lo12(b)
 	st.w	$a2, $a1, %pc_lo12(p)
+	ld.h	$t5, $a4, %pc_lo12(b)
 	or	$t2, $t3, $a3
 	sub.w	$t2, $t4, $t2
-	ext.w.h	$t3, $t5
-	sub.d	$t4, $a5, $t4
-	sll.w	$t3, $t3, $t4
+	sub.d	$t3, $a5, $t4
+	sll.w	$t3, $t5, $t3
 	st.w	$t3, $a6, %pc_lo12(f)
 	bgeu	$a2, $t2, .LBB2_3
 # %bb.2:                                #   in Loop: Header=BB2_1 Depth=1
@@ -119,8 +116,7 @@ main:                                   # @main
 	slti	$t4, $t4, 3
 	st.w	$t4, $a0, 0
 .LBB2_3:                                #   in Loop: Header=BB2_1 Depth=1
-	bstrpick.d	$t4, $t5, 15, 0
-	or	$t4, $t2, $t4
+	or	$t4, $t2, $t5
 	sltu	$t4, $zero, $t4
 	xor	$t5, $t3, $t4
 	ld.w	$t6, $t0, %pc_lo12(c)

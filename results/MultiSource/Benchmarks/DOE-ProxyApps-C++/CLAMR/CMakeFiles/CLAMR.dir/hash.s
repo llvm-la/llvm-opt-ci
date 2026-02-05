@@ -70,7 +70,7 @@ compact_hash_init:                      # @compact_hash_init
 	b	.LBB2_5
 .LBB2_2:
 	ld.w	$s1, $s3, %pc_lo12(hash_method)
-	beqz	$s1, .LBB2_24
+	beqz	$s1, .LBB2_15
 # %bb.3:
 	ori	$a0, $zero, 2
 	bltu	$a3, $a0, .LBB2_5
@@ -169,17 +169,13 @@ compact_hash_init:                      # @compact_hash_init
 	slli.d	$a1, $s1, 1
 	addi.w	$a2, $a1, 0
 	move	$s0, $a0
-	beqz	$a2, .LBB2_18
+	beqz	$a2, .LBB2_20
 # %bb.11:                               # %.lr.ph63.preheader
 	bstrpick.d	$a0, $a1, 31, 0
 	addi.d	$a1, $a0, -1
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB2_13
-# %bb.12:
-	move	$a1, $zero
-	b	.LBB2_16
-.LBB2_13:                               # %vector.ph
 	srli.d	$a1, $a1, 1
+	beqz	$a1, .LBB2_17
+# %bb.12:                               # %vector.ph
 	addi.d	$a2, $a1, 1
 	move	$a3, $a2
 	bstrins.d	$a3, $zero, 0, 0
@@ -189,62 +185,17 @@ compact_hash_init:                      # @compact_hash_init
 	lu32i.d	$a5, 0
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB2_14:                               # %vector.body
+.LBB2_13:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a5, $a4, -8
 	st.w	$a5, $a4, 0
 	addi.d	$a6, $a6, -2
 	addi.d	$a4, $a4, 16
-	bnez	$a6, .LBB2_14
-# %bb.15:                               # %middle.block
-	beq	$a2, $a3, .LBB2_18
-.LBB2_16:                               # %.lr.ph63.preheader77
-	alsl.d	$a2, $a1, $s0, 2
-	addi.w	$a3, $zero, -1
-	lu32i.d	$a3, 0
-	.p2align	4, , 16
-.LBB2_17:                               # %.lr.ph63
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$a3, $a2, 0
-	addi.d	$a1, $a1, 2
-	addi.d	$a2, $a2, 8
-	bltu	$a1, $a0, .LBB2_17
-.LBB2_18:                               # %._crit_edge64
-	ld.w	$a0, $s3, %pc_lo12(hash_method)
-	ori	$a1, $zero, 2
-	beq	$a0, $a1, .LBB2_29
-# %bb.19:                               # %._crit_edge64
-	ori	$a1, $zero, 3
-	beq	$a0, $a1, .LBB2_26
-# %bb.20:                               # %._crit_edge64
-	ori	$a1, $zero, 4
-	bne	$a0, $a1, .LBB2_39
-# %bb.21:
-	ld.w	$a2, $s2, %pc_lo12(hash_report_level)
-	ori	$a0, $zero, 3
-	bltu	$a0, $a2, .LBB2_46
-# %bb.22:
-	pcalau12i	$a0, %pc_hi20(write_hash_primejump_report_level_2)
-	addi.d	$a0, $a0, %pc_lo12(write_hash_primejump_report_level_2)
-	pcalau12i	$a1, %pc_hi20(read_hash_primejump_report_level_2)
-	addi.d	$a1, $a1, %pc_lo12(read_hash_primejump_report_level_2)
-	slli.d	$a2, $a2, 2
-	pcalau12i	$a3, %pc_hi20(.LJTI2_0)
-	addi.d	$a3, $a3, %pc_lo12(.LJTI2_0)
-	ldx.w	$a2, $a3, $a2
-	add.d	$a2, $a3, $a2
-	jr	$a2
-.LBB2_23:
-	pcalau12i	$a0, %pc_hi20(read_hash)
-	pcalau12i	$a1, %pc_hi20(read_hash_primejump)
-	addi.d	$a1, $a1, %pc_lo12(read_hash_primejump)
-	st.d	$a1, $a0, %pc_lo12(read_hash)
-	pcalau12i	$a0, %pc_hi20(write_hash)
-	pcalau12i	$a1, %pc_hi20(write_hash_primejump)
-	addi.d	$a1, $a1, %pc_lo12(write_hash_primejump)
-	st.d	$a1, $a0, %pc_lo12(write_hash)
-	b	.LBB2_47
-.LBB2_24:
+	bnez	$a6, .LBB2_13
+# %bb.14:                               # %middle.block
+	bne	$a2, $a3, .LBB2_18
+	b	.LBB2_20
+.LBB2_15:
 	bstrpick.d	$a0, $fp, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
@@ -259,7 +210,7 @@ compact_hash_init:                      # @compact_hash_init
 	fcmp.ceq.s	$fcc0, $fa2, $fa0
 	fcvt.d.s	$fa0, $fa2
 	bcnez	$fcc0, .LBB2_32
-# %bb.25:
+# %bb.16:
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	fld.d	$fa2, $a0, %pc_lo12(.LCPI2_0)
 	fmul.d	$fa2, $fa0, $fa2
@@ -267,6 +218,54 @@ compact_hash_init:                      # @compact_hash_init
 	fdiv.d	$fa2, $fa3, $fa2
 	fcvt.s.d	$fa2, $fa2
 	b	.LBB2_33
+.LBB2_17:
+	move	$a1, $zero
+.LBB2_18:                               # %.lr.ph63.preheader77
+	alsl.d	$a2, $a1, $s0, 2
+	addi.w	$a3, $zero, -1
+	lu32i.d	$a3, 0
+	.p2align	4, , 16
+.LBB2_19:                               # %.lr.ph63
+                                        # =>This Inner Loop Header: Depth=1
+	st.w	$a3, $a2, 0
+	addi.d	$a1, $a1, 2
+	addi.d	$a2, $a2, 8
+	bltu	$a1, $a0, .LBB2_19
+.LBB2_20:                               # %._crit_edge64
+	ld.w	$a0, $s3, %pc_lo12(hash_method)
+	ori	$a1, $zero, 2
+	beq	$a0, $a1, .LBB2_29
+# %bb.21:                               # %._crit_edge64
+	ori	$a1, $zero, 3
+	beq	$a0, $a1, .LBB2_26
+# %bb.22:                               # %._crit_edge64
+	ori	$a1, $zero, 4
+	bne	$a0, $a1, .LBB2_39
+# %bb.23:
+	ld.w	$a2, $s2, %pc_lo12(hash_report_level)
+	ori	$a0, $zero, 3
+	bltu	$a0, $a2, .LBB2_46
+# %bb.24:
+	pcalau12i	$a0, %pc_hi20(write_hash_primejump_report_level_2)
+	addi.d	$a0, $a0, %pc_lo12(write_hash_primejump_report_level_2)
+	pcalau12i	$a1, %pc_hi20(read_hash_primejump_report_level_2)
+	addi.d	$a1, $a1, %pc_lo12(read_hash_primejump_report_level_2)
+	slli.d	$a2, $a2, 2
+	pcalau12i	$a3, %pc_hi20(.LJTI2_0)
+	addi.d	$a3, $a3, %pc_lo12(.LJTI2_0)
+	ldx.w	$a2, $a3, $a2
+	add.d	$a2, $a3, $a2
+	jr	$a2
+.LBB2_25:
+	pcalau12i	$a0, %pc_hi20(read_hash)
+	pcalau12i	$a1, %pc_hi20(read_hash_primejump)
+	addi.d	$a1, $a1, %pc_lo12(read_hash_primejump)
+	st.d	$a1, $a0, %pc_lo12(read_hash)
+	pcalau12i	$a0, %pc_hi20(write_hash)
+	pcalau12i	$a1, %pc_hi20(write_hash_primejump)
+	addi.d	$a1, $a1, %pc_lo12(write_hash_primejump)
+	st.d	$a1, $a0, %pc_lo12(write_hash)
+	b	.LBB2_47
 .LBB2_26:
 	ld.w	$a2, $s2, %pc_lo12(hash_report_level)
 	bltu	$a1, $a2, .LBB2_46
@@ -475,7 +474,7 @@ compact_hash_init:                      # @compact_hash_init
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI2_0:
-	.word	.LBB2_23-.LJTI2_0
+	.word	.LBB2_25-.LJTI2_0
 	.word	.LBB2_42-.LJTI2_0
 	.word	.LBB2_45-.LJTI2_0
 	.word	.LBB2_44-.LJTI2_0
@@ -941,13 +940,12 @@ read_hash_linear_report_level_3:        # @read_hash_linear_report_level_3
 	mod.wu	$a2, $a0, $a2
 	slli.d	$a0, $a2, 3
 	pcalau12i	$s4, %pc_hi20(hash_stride)
-	ld.w	$a1, $s4, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s4, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s0, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s0, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
@@ -990,13 +988,12 @@ read_hash_linear_report_level_3:        # @read_hash_linear_report_level_3
 	addi.w	$s8, $a1, 1
 	mod.wu	$a2, $s8, $a0
 	slli.d	$a0, $a2, 3
-	ld.w	$a1, $s4, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s4, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s0, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s0, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s0, $a0
 	move	$a0, $s2
 	move	$a1, $s7
@@ -1101,13 +1098,12 @@ write_hash_linear_report_level_3:       # @write_hash_linear_report_level_3
 	mod.wu	$a3, $a0, $a2
 	slli.d	$a0, $a3, 3
 	pcalau12i	$s5, %pc_hi20(hash_stride)
-	ld.w	$a1, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s5, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a4, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a7, $s1, $a0
-	mul.d	$a0, $a7, $a0
+	div.du	$a7, $s1, $a1
+	mul.d	$a0, $a7, $a1
 	sub.d	$a6, $s1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
@@ -1147,11 +1143,10 @@ write_hash_linear_report_level_3:       # @write_hash_linear_report_level_3
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$s8, $a1, 1
 	mod.wu	$a3, $s8, $a0
-	ld.w	$a0, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a0, $s5, %pc_lo12(hash_stride)
 	slli.w	$a1, $a3, 1
 	slli.d	$a1, $a1, 2
 	ldx.w	$a4, $fp, $a1
-	bstrpick.d	$a0, $a0, 31, 0
 	div.du	$a7, $s1, $a0
 	mul.d	$a0, $a7, $a0
 	sub.d	$a6, $s1, $a0
@@ -1687,13 +1682,12 @@ read_hash_quadratic_report_level_3:     # @read_hash_quadratic_report_level_3
 	mod.wu	$a2, $a0, $a2
 	slli.d	$a0, $a2, 3
 	pcalau12i	$s4, %pc_hi20(hash_stride)
-	ld.w	$a1, $s4, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s4, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s0, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s0, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
@@ -1736,13 +1730,12 @@ read_hash_quadratic_report_level_3:     # @read_hash_quadratic_report_level_3
 	addi.w	$a1, $s5, 1
 	mod.wu	$a2, $a1, $a0
 	slli.d	$a0, $a2, 3
-	ld.w	$a1, $s4, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s4, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s0, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s0, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s0, $a0
 	move	$a0, $s2
 	move	$a1, $s8
@@ -1849,13 +1842,12 @@ write_hash_quadratic_report_level_3:    # @write_hash_quadratic_report_level_3
 	mod.wu	$a3, $a0, $a2
 	slli.d	$a0, $a3, 3
 	pcalau12i	$s5, %pc_hi20(hash_stride)
-	ld.w	$a1, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s5, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a4, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a7, $s1, $a0
-	mul.d	$a0, $a7, $a0
+	div.du	$a7, $s1, $a1
+	mul.d	$a0, $a7, $a1
 	sub.d	$a6, $s1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
@@ -1897,11 +1889,10 @@ write_hash_quadratic_report_level_3:    # @write_hash_quadratic_report_level_3
 	mul.d	$a2, $s2, $s2
 	add.w	$s8, $a2, $a1
 	mod.wu	$a3, $s8, $a0
-	ld.w	$a0, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a0, $s5, %pc_lo12(hash_stride)
 	slli.w	$a1, $a3, 1
 	slli.d	$a1, $a1, 2
 	ldx.w	$a4, $fp, $a1
-	bstrpick.d	$a0, $a0, 31, 0
 	div.du	$a7, $s1, $a0
 	mul.d	$a0, $a7, $a0
 	sub.d	$a6, $s1, $a0
@@ -2499,13 +2490,12 @@ read_hash_primejump_report_level_3:     # @read_hash_primejump_report_level_3
 	slli.d	$a0, $a2, 3
 	pcalau12i	$a1, %pc_hi20(hash_stride)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$a1, $a1, %pc_lo12(hash_stride)
+	ld.wu	$a1, $a1, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s0, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s0, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
@@ -2561,13 +2551,12 @@ read_hash_primejump_report_level_3:     # @read_hash_primejump_report_level_3
 	mod.wu	$a2, $a1, $a0
 	slli.d	$a0, $a2, 3
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	ld.w	$a1, $a1, %pc_lo12(hash_stride)
+	ld.wu	$a1, $a1, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s0, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s0, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s0, $a0
 	move	$a0, $s2
 	move	$a1, $s4
@@ -2676,13 +2665,12 @@ write_hash_primejump_report_level_3:    # @write_hash_primejump_report_level_3
 	slli.d	$a0, $a3, 3
 	pcalau12i	$a1, %pc_hi20(hash_stride)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	ld.w	$a1, $a1, %pc_lo12(hash_stride)
+	ld.wu	$a1, $a1, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a4, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a7, $s1, $a0
-	mul.d	$a0, $a7, $a0
+	div.du	$a7, $s1, $a1
+	mul.d	$a0, $a7, $a1
 	sub.d	$a6, $s1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
@@ -2737,11 +2725,10 @@ write_hash_primejump_report_level_3:    # @write_hash_primejump_report_level_3
 	addi.w	$a1, $s6, 1
 	mod.wu	$a3, $a1, $a0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ld.w	$a0, $a0, %pc_lo12(hash_stride)
+	ld.wu	$a0, $a0, %pc_lo12(hash_stride)
 	slli.w	$a1, $a3, 1
 	slli.d	$a1, $a1, 2
 	ldx.w	$a4, $fp, $a1
-	bstrpick.d	$a0, $a0, 31, 0
 	div.du	$a7, $s1, $a0
 	mul.d	$a0, $a7, $a0
 	sub.d	$a6, $s1, $a0
@@ -3272,13 +3259,12 @@ read_dev_hash:                          # @read_dev_hash
 	addi.w	$s1, $s8, 0
 	slli.d	$a0, $s8, 3
 	pcalau12i	$s5, %pc_hi20(hash_stride)
-	ld.w	$a1, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s5, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$s3, $a0, 3
 	ldx.w	$a3, $fp, $s3
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s2, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s2, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
@@ -3308,13 +3294,12 @@ read_dev_hash:                          # @read_dev_hash
 	bstrpick.d	$a0, $a0, 31, 0
 	mod.du	$a0, $a0, $s0
 	slli.d	$a1, $a0, 3
-	ld.w	$a2, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a2, $s5, %pc_lo12(hash_stride)
 	bstrpick.d	$a1, $a1, 33, 3
 	slli.d	$a1, $a1, 3
 	ldx.w	$a3, $fp, $a1
-	bstrpick.d	$a1, $a2, 31, 0
-	div.du	$a6, $s2, $a1
-	mul.d	$a1, $a6, $a1
+	div.du	$a6, $s2, $a2
+	mul.d	$a1, $a6, $a2
 	sub.d	$a5, $s2, $a1
 	addi.w	$a2, $a0, 0
 	move	$a0, $s4
@@ -3509,13 +3494,12 @@ read_dev_hash:                          # @read_dev_hash
 	slli.d	$a0, $s4, 3
 	pcalau12i	$a1, %pc_hi20(hash_stride)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$a1, $a1, %pc_lo12(hash_stride)
+	ld.wu	$a1, $a1, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$s3, $a0, 3
 	ldx.w	$a3, $fp, $s3
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s2, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s2, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
@@ -3548,13 +3532,12 @@ read_dev_hash:                          # @read_dev_hash
 	mod.du	$a0, $a0, $s0
 	slli.d	$a1, $a0, 3
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	ld.w	$a2, $a2, %pc_lo12(hash_stride)
+	ld.wu	$a2, $a2, %pc_lo12(hash_stride)
 	bstrpick.d	$a1, $a1, 33, 3
 	slli.d	$a1, $a1, 3
 	ldx.w	$a3, $fp, $a1
-	bstrpick.d	$a1, $a2, 31, 0
-	div.du	$a6, $s2, $a1
-	mul.d	$a1, $a6, $a1
+	div.du	$a6, $s2, $a2
+	mul.d	$a1, $a6, $a2
 	sub.d	$a5, $s2, $a1
 	addi.w	$a2, $a0, 0
 	move	$a0, $s4
@@ -3602,13 +3585,12 @@ read_dev_hash:                          # @read_dev_hash
 	addi.w	$s1, $a0, 0
 	slli.d	$a0, $a0, 3
 	pcalau12i	$s5, %pc_hi20(hash_stride)
-	ld.w	$a1, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s5, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s2, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s2, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.7)
@@ -3638,13 +3620,12 @@ read_dev_hash:                          # @read_dev_hash
 	mod.du	$a0, $a0, $s0
 	addi.w	$s1, $a0, 0
 	slli.d	$a0, $a0, 3
-	ld.w	$a1, $s5, %pc_lo12(hash_stride)
+	ld.wu	$a1, $s5, %pc_lo12(hash_stride)
 	bstrpick.d	$a0, $a0, 33, 3
 	slli.d	$a0, $a0, 3
 	ldx.w	$a3, $fp, $a0
-	bstrpick.d	$a0, $a1, 31, 0
-	div.du	$a6, $s2, $a0
-	mul.d	$a0, $a6, $a0
+	div.du	$a6, $s2, $a1
+	mul.d	$a0, $a6, $a1
 	sub.d	$a5, $s2, $a0
 	move	$a0, $s3
 	move	$a1, $s4

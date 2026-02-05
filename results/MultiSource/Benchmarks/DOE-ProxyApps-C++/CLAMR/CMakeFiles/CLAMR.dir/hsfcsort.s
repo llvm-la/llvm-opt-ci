@@ -222,20 +222,20 @@ hsfc2sort:                              # @hsfc2sort
 	vpickve2gr.w	$a4, $vr0, 1
 	vinsgr2vr.d	$vr5, $a4, 1
 	xvpickve2gr.d	$a4, $xr5, 0
-	slli.d	$a4, $a4, 2
 	xvpickve2gr.d	$a5, $xr5, 1
-	slli.d	$a5, $a5, 2
 	xvpickve2gr.d	$a6, $xr2, 2
-	slli.d	$a6, $a6, 2
 	xvpickve2gr.d	$a7, $xr2, 3
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t0, $xr4, 0
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t1, $xr4, 1
-	slli.d	$t1, $t1, 2
 	xvpickve2gr.d	$t2, $xr3, 2
-	slli.d	$t2, $t2, 2
 	xvpickve2gr.d	$t3, $xr3, 3
+	slli.d	$a4, $a4, 2
+	slli.d	$a5, $a5, 2
+	slli.d	$a6, $a6, 2
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$t1, $t1, 2
+	slli.d	$t2, $t2, 2
 	slli.d	$t3, $t3, 2
 	ldx.w	$a4, $s2, $a4
 	ldx.w	$a5, $s2, $a5
@@ -295,8 +295,8 @@ hsfc2sort:                              # @hsfc2sort
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
 	vpickve2gr.d	$a4, $vr2, 0
-	slli.d	$a4, $a4, 2
 	vpickve2gr.d	$a5, $vr2, 1
+	slli.d	$a4, $a4, 2
 	slli.d	$a5, $a5, 2
 	ldx.w	$a4, $s2, $a4
 	ldx.w	$a5, $s2, $a5
@@ -304,8 +304,8 @@ hsfc2sort:                              # @hsfc2sort
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
 	vpickve2gr.d	$a6, $vr2, 0
-	slli.d	$a6, $a6, 2
 	vpickve2gr.d	$a7, $vr2, 1
+	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
 	stx.w	$a4, $s0, $a6
 	stx.w	$a5, $s0, $a7
@@ -510,8 +510,8 @@ hsfc3sort:                              # @hsfc3sort
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
 	vpickve2gr.d	$a4, $vr2, 0
-	slli.d	$a4, $a4, 2
 	vpickve2gr.d	$a5, $vr2, 1
+	slli.d	$a4, $a4, 2
 	slli.d	$a5, $a5, 2
 	ldx.w	$a4, $s2, $a4
 	ldx.w	$a5, $s2, $a5
@@ -519,8 +519,8 @@ hsfc3sort:                              # @hsfc3sort
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
 	vpickve2gr.d	$a6, $vr2, 0
-	slli.d	$a6, $a6, 2
 	vpickve2gr.d	$a7, $vr2, 1
+	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
 	stx.w	$a4, $s0, $a6
 	stx.w	$a5, $s0, $a7
@@ -650,20 +650,20 @@ hsfc3sort:                              # @hsfc3sort
 	vpickve2gr.w	$a4, $vr0, 1
 	vinsgr2vr.d	$vr6, $a4, 1
 	xvpickve2gr.d	$a4, $xr6, 0
-	slli.d	$a4, $a4, 2
 	xvpickve2gr.d	$a5, $xr6, 1
-	slli.d	$a5, $a5, 2
 	xvpickve2gr.d	$a6, $xr3, 2
-	slli.d	$a6, $a6, 2
 	xvpickve2gr.d	$a7, $xr3, 3
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t0, $xr5, 0
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t1, $xr5, 1
-	slli.d	$t1, $t1, 2
 	xvpickve2gr.d	$t2, $xr4, 2
-	slli.d	$t2, $t2, 2
 	xvpickve2gr.d	$t3, $xr4, 3
+	slli.d	$a4, $a4, 2
+	slli.d	$a5, $a5, 2
+	slli.d	$a6, $a6, 2
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$t1, $t1, 2
+	slli.d	$t2, $t2, 2
 	slli.d	$t3, $t3, 2
 	ldx.w	$a4, $s2, $a4
 	ldx.w	$a5, $s2, $a5

@@ -248,11 +248,12 @@ symalist:                               # @symalist
 	beqz	$a1, .LBB5_5
 # %bb.2:                                # %.lr.ph.preheader
 	move	$a0, $a1
-	move	$s1, $fp
+	move	$a1, $fp
 	.p2align	4, , 16
 .LBB5_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s0, $a2, 8
+	move	$s1, $a1
 	addi.d	$a1, $a2, 16
 	st.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(cintern)
@@ -269,7 +270,6 @@ symalist:                               # @symalist
 	addi.d	$a0, $a2, 8
 	st.d	$a0, $sp, 8
 	ld.d	$a0, $a2, 0
-	move	$s1, $a1
 	bnez	$a0, .LBB5_3
 	b	.LBB5_5
 .LBB5_4:
@@ -2546,14 +2546,12 @@ file_times:                             # @file_times
 	addi.d	$sp, $sp, 160
 	ret
 .LBB49_2:
-	ld.d	$a0, $sp, 112
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $sp, 112
 	ffint.d.l	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 96
+	fld.d	$fa0, $sp, 96
 	move	$fp, $a0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
@@ -2939,27 +2937,23 @@ decode_stat:                            # @decode_stat
 	fadd.d	$fa0, $fa1, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, 48
+	fld.d	$fa0, $s3, 48
 	move	$s6, $a0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, 72
+	fld.d	$fa0, $s3, 72
 	move	$s7, $a0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, 88
+	fld.d	$fa0, $s3, 88
 	move	$s8, $a0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, 104
+	fld.d	$fa0, $s3, 104
 	move	$fp, $a0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
@@ -2969,9 +2963,8 @@ decode_stat:                            # @decode_stat
 	ffint.d.w	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s3, 64
+	fld.d	$fa0, $s3, 64
 	move	$s3, $a0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
@@ -6060,6 +6053,7 @@ datref:                                 # @datref
 	jirl	$ra, $ra, 0
 .LBB102_21:
 	ldx.wu	$a0, $fp, $s1
+	movgr2fr.d	$fa0, $a0
 	b	.LBB102_36
 .LBB102_22:
 	ld.d	$a0, $sp, 0
@@ -6125,9 +6119,8 @@ datref:                                 # @datref
 	pcaddu18i	$ra, %call36(err)
 	jirl	$ra, $ra, 0
 .LBB102_35:
-	ldx.d	$a0, $fp, $s1
+	fldx.d	$fa0, $fp, $s1
 .LBB102_36:
-	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
 .LBB102_37:
 	pcaddu18i	$ra, %call36(flocons)

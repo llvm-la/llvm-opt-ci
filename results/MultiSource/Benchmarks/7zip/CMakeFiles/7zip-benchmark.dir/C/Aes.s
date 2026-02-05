@@ -875,27 +875,24 @@ AesCbc_Decode:                          # @AesCbc_Decode
 	ldx.w	$t8, $t0, $t8
 	srli.d	$s4, $s4, 22
 	ldx.w	$s4, $a6, $s4
-	vinsgr2vr.w	$vr5, $s3, 0
-	vinsgr2vr.w	$vr5, $t4, 1
-	vinsgr2vr.w	$vr5, $s7, 2
-	vinsgr2vr.w	$vr5, $t5, 3
-	vinsgr2vr.w	$vr6, $s1, 0
-	vinsgr2vr.w	$vr6, $fp, 1
-	vinsgr2vr.w	$vr6, $s0, 2
-	vinsgr2vr.w	$vr6, $t7, 3
-	vxor.v	$vr5, $vr5, $vr6
-	vinsgr2vr.w	$vr6, $s5, 0
-	vinsgr2vr.w	$vr6, $t8, 1
-	vinsgr2vr.w	$vr6, $ra, 2
-	vinsgr2vr.w	$vr6, $t6, 3
-	vxor.v	$vr5, $vr5, $vr6
-	vinsgr2vr.w	$vr6, $s6, 0
-	vinsgr2vr.w	$vr6, $s4, 1
-	vld	$vr7, $t2, -16
-	vinsgr2vr.w	$vr6, $s2, 2
-	vinsgr2vr.w	$vr6, $s8, 3
-	vxor.v	$vr5, $vr5, $vr6
-	vxor.v	$vr5, $vr5, $vr7
+	xor	$t5, $t5, $t7
+	xor	$t7, $s7, $s0
+	xor	$t4, $t4, $fp
+	xor	$fp, $s3, $s1
+	xor	$t5, $t5, $t6
+	xor	$t6, $t7, $ra
+	xor	$t4, $t4, $t8
+	xor	$t7, $fp, $s5
+	xor	$t5, $t5, $s8
+	xor	$t6, $t6, $s2
+	xor	$t4, $t4, $s4
+	xor	$t7, $t7, $s6
+	vld	$vr5, $t2, -16
+	vinsgr2vr.w	$vr6, $t7, 0
+	vinsgr2vr.w	$vr6, $t4, 1
+	vinsgr2vr.w	$vr6, $t6, 2
+	vinsgr2vr.w	$vr6, $t5, 3
+	vxor.v	$vr5, $vr6, $vr5
 	addi.w	$t3, $t3, -1
 	addi.d	$t2, $t2, -32
 	b	.LBB2_4
@@ -917,117 +914,69 @@ AesCbc_Decode:                          # @AesCbc_Decode
 .Lfunc_end2:
 	.size	AesCbc_Decode, .Lfunc_end2-AesCbc_Decode
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function AesCtr_Code
-.LCPI3_0:
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-	.word	1                               # 0x1
-.LCPI3_1:
-	.word	2                               # 0x2
-	.word	2                               # 0x2
-	.word	2                               # 0x2
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	3                               # 0x3
-	.word	3                               # 0x3
-	.word	3                               # 0x3
-.LCPI3_2:
-	.word	0                               # 0x0
-	.word	8                               # 0x8
-	.word	16                              # 0x10
-	.word	24                              # 0x18
-	.word	0                               # 0x0
-	.word	8                               # 0x8
-	.word	16                              # 0x10
-	.word	24                              # 0x18
-	.text
-	.globl	AesCtr_Code
+	.globl	AesCtr_Code                     # -- Begin function AesCtr_Code
 	.p2align	5
 	.type	AesCtr_Code,@function
 AesCtr_Code:                            # @AesCtr_Code
 # %bb.0:
 	beqz	$a2, .LBB3_6
 # %bb.1:                                # %.lr.ph
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_1)
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI3_2)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_2)
-	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	addi.d	$s2, $s0, 16
+	addi.d	$s2, $a0, 16
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                #   in Loop: Header=BB3_3 Depth=1
-	addi.d	$a1, $sp, 112
+	addi.d	$a1, $sp, 8
 	move	$a0, $s2
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(Aes_Encode)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 112
-	xvpermi.d	$xr0, $xr0, 68
-	xvld	$xr1, $sp, 80                   # 32-byte Folded Reload
-	xvshuf.w	$xr1, $xr0, $xr0
-	xvld	$xr2, $sp, 48                   # 32-byte Folded Reload
-	xvshuf.w	$xr2, $xr0, $xr0
-	xvld	$xr3, $sp, 16                   # 32-byte Folded Reload
-	xvsrl.w	$xr1, $xr1, $xr3
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.b	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.b	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.b	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.b	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.b	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.b	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.b	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vld	$vr1, $s1, 0
-	addi.d	$a1, $s1, 16
-	xvsrl.w	$xr2, $xr2, $xr3
-	vinsgr2vr.b	$vr0, $a0, 7
-	xvpickve2gr.w	$a0, $xr2, 0
-	vinsgr2vr.b	$vr0, $a0, 8
-	xvpickve2gr.w	$a0, $xr2, 1
-	vinsgr2vr.b	$vr0, $a0, 9
-	xvpickve2gr.w	$a0, $xr2, 2
-	vinsgr2vr.b	$vr0, $a0, 10
-	xvpickve2gr.w	$a0, $xr2, 3
-	vinsgr2vr.b	$vr0, $a0, 11
-	xvpickve2gr.w	$a0, $xr2, 4
-	vinsgr2vr.b	$vr0, $a0, 12
-	xvpickve2gr.w	$a0, $xr2, 5
-	vinsgr2vr.b	$vr0, $a0, 13
-	xvpickve2gr.w	$a0, $xr2, 6
-	vinsgr2vr.b	$vr0, $a0, 14
-	xvpickve2gr.w	$a0, $xr2, 7
-	vinsgr2vr.b	$vr0, $a0, 15
-	vxor.v	$vr0, $vr1, $vr0
+	vld	$vr0, $s1, 0
+	addi.d	$a0, $s1, 16
+	ld.wu	$a1, $sp, 20
+	ld.wu	$a2, $sp, 16
+	ld.wu	$a3, $sp, 12
+	ld.wu	$a4, $sp, 8
+	srli.d	$a5, $a1, 24
+	srli.d	$a6, $a1, 16
+	srli.d	$a7, $a1, 8
+	srli.d	$t0, $a2, 24
+	srli.d	$t1, $a2, 16
+	srli.d	$t2, $a2, 8
+	srli.d	$t3, $a3, 24
+	srli.d	$t4, $a3, 16
+	srli.d	$t5, $a3, 8
+	srli.d	$t6, $a4, 24
+	srli.d	$t7, $a4, 16
+	srli.d	$t8, $a4, 8
+	vinsgr2vr.b	$vr1, $a4, 0
+	vinsgr2vr.b	$vr1, $t8, 1
+	vinsgr2vr.b	$vr1, $t7, 2
+	vinsgr2vr.b	$vr1, $t6, 3
+	vinsgr2vr.b	$vr1, $a3, 4
+	vinsgr2vr.b	$vr1, $t5, 5
+	vinsgr2vr.b	$vr1, $t4, 6
+	vinsgr2vr.b	$vr1, $t3, 7
+	vinsgr2vr.b	$vr1, $a2, 8
+	vinsgr2vr.b	$vr1, $t2, 9
+	vinsgr2vr.b	$vr1, $t1, 10
+	vinsgr2vr.b	$vr1, $t0, 11
+	vinsgr2vr.b	$vr1, $a1, 12
+	vinsgr2vr.b	$vr1, $a7, 13
+	vinsgr2vr.b	$vr1, $a6, 14
+	vinsgr2vr.b	$vr1, $a5, 15
+	vxor.v	$vr0, $vr0, $vr1
 	addi.d	$fp, $fp, -1
 	vst	$vr0, $s1, 0
-	move	$s1, $a1
+	move	$s1, $a0
 	beqz	$fp, .LBB3_5
 .LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	ld.wu	$a0, $s0, 0
@@ -1041,12 +990,12 @@ AesCtr_Code:                            # @AesCtr_Code
 	st.w	$a0, $s0, 4
 	b	.LBB3_2
 .LBB3_5:
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 .LBB3_6:                                # %._crit_edge
 	ret
 .Lfunc_end3:
@@ -1065,32 +1014,25 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	bstrpick.d	$a4, $a4, 60, 0
 	addi.d	$a4, $a4, 3
 	st.w	$a4, $a0, 0
-	ori	$a6, $zero, 4
 	addi.d	$a4, $a0, 16
-	bgeu	$a2, $a6, .LBB4_2
-# %bb.1:
-	move	$a1, $zero
-	addi.w	$a6, $a1, 0
-	bltu	$a6, $a5, .LBB4_5
-	b	.LBB4_13
-.LBB4_2:                                # %.lr.ph.preheader
+	beqz	$a3, .LBB4_3
+# %bb.1:                                # %.lr.ph.preheader
 	addi.w	$a6, $a3, 0
 	move	$a7, $a4
 	.p2align	4, , 16
-.LBB4_3:                                # %.lr.ph
+.LBB4_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a1, 0
 	st.w	$t0, $a7, 0
 	addi.d	$a1, $a1, 4
 	addi.d	$a6, $a6, -1
 	addi.d	$a7, $a7, 4
-	bnez	$a6, .LBB4_3
-# %bb.4:
-	move	$a1, $a3
-	addi.w	$a6, $a1, 0
-	bgeu	$a6, $a5, .LBB4_13
-.LBB4_5:                                # %.lr.ph47
-	bstrpick.d	$a7, $a1, 31, 0
+	bnez	$a6, .LBB4_2
+.LBB4_3:                                # %.preheader
+	addi.w	$a1, $a3, 0
+	bgeu	$a1, $a5, .LBB4_12
+# %bb.4:                                # %.lr.ph47
+	bstrpick.d	$a7, $a3, 31, 0
 	bstrpick.d	$t0, $a5, 31, 0
 	addi.w	$a5, $zero, -1
 	lu32i.d	$a5, 0
@@ -1099,37 +1041,37 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	addi.d	$a0, $a0, 16
 	sub.w	$a6, $zero, $a3
 	sub.d	$a7, $t0, $a7
-	addi.w	$t0, $a3, 0
-	pcalau12i	$t1, %pc_hi20(Sbox)
-	addi.d	$t1, $t1, %pc_lo12(Sbox)
-	pcalau12i	$t2, %pc_hi20(Rcon)
-	addi.d	$t2, $t2, %pc_lo12(Rcon)
-	ori	$t3, $zero, 28
-	ori	$t4, $zero, 4
-	b	.LBB4_9
+	pcalau12i	$t0, %pc_hi20(Sbox)
+	addi.d	$t0, $t0, %pc_lo12(Sbox)
+	pcalau12i	$t1, %pc_hi20(Rcon)
+	addi.d	$t1, $t1, %pc_lo12(Rcon)
+	ori	$t2, $zero, 28
+	ori	$t3, $zero, 4
+	move	$t4, $a3
+	b	.LBB4_8
 	.p2align	4, , 16
-.LBB4_6:                                #   in Loop: Header=BB4_9 Depth=1
+.LBB4_5:                                #   in Loop: Header=BB4_8 Depth=1
 	bstrpick.d	$t7, $t5, 15, 8
-	ldx.bu	$t7, $t1, $t7
+	ldx.bu	$t7, $t0, $t7
 	bstrpick.d	$t6, $t6, 31, 0
-	ldx.bu	$t6, $t2, $t6
+	ldx.bu	$t6, $t1, $t6
 	bstrpick.d	$t8, $t5, 23, 16
-	ldx.bu	$t8, $t1, $t8
+	ldx.bu	$t8, $t0, $t8
 	srli.d	$fp, $t5, 24
-	ldx.bu	$fp, $t1, $fp
+	ldx.bu	$fp, $t0, $fp
 	xor	$t6, $t6, $t7
 	slli.d	$t7, $t8, 8
 	or	$t6, $t7, $t6
 	slli.d	$t7, $fp, 16
 	or	$t6, $t6, $t7
 	andi	$t5, $t5, 255
-.LBB4_7:                                # %.sink.split
-                                        #   in Loop: Header=BB4_9 Depth=1
-	ldx.bu	$t5, $t1, $t5
+.LBB4_6:                                # %.sink.split
+                                        #   in Loop: Header=BB4_8 Depth=1
+	ldx.bu	$t5, $t0, $t5
 	slli.d	$t5, $t5, 24
 	or	$t5, $t6, $t5
-.LBB4_8:                                #   in Loop: Header=BB4_9 Depth=1
-	add.d	$t6, $a6, $a1
+.LBB4_7:                                #   in Loop: Header=BB4_8 Depth=1
+	add.d	$t6, $a6, $t4
 	bstrpick.d	$t6, $t6, 31, 0
 	slli.d	$t6, $t6, 2
 	ldx.w	$t6, $a4, $t6
@@ -1138,35 +1080,35 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	addi.d	$a5, $a5, 1
 	addi.d	$a0, $a0, 4
 	addi.d	$a7, $a7, -1
-	addi.w	$a1, $a1, 1
-	beqz	$a7, .LBB4_13
-.LBB4_9:                                # =>This Inner Loop Header: Depth=1
+	addi.w	$t4, $t4, 1
+	beqz	$a7, .LBB4_12
+.LBB4_8:                                # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$t5, $a5, 31, 0
 	slli.d	$t5, $t5, 2
 	ldx.wu	$t5, $a4, $t5
-	addi.w	$t6, $a1, 0
-	div.wu	$t6, $t6, $t0
+	addi.w	$t6, $t4, 0
+	div.wu	$t6, $t6, $a1
 	mul.d	$t7, $t6, $a3
-	sub.w	$t7, $a1, $t7
-	beqz	$t7, .LBB4_6
-# %bb.10:                               #   in Loop: Header=BB4_9 Depth=1
-	bltu	$a2, $t3, .LBB4_8
-# %bb.11:                               #   in Loop: Header=BB4_9 Depth=1
-	bne	$t7, $t4, .LBB4_8
-# %bb.12:                               #   in Loop: Header=BB4_9 Depth=1
+	sub.w	$t7, $t4, $t7
+	beqz	$t7, .LBB4_5
+# %bb.9:                                #   in Loop: Header=BB4_8 Depth=1
+	bltu	$a2, $t2, .LBB4_7
+# %bb.10:                               #   in Loop: Header=BB4_8 Depth=1
+	bne	$t7, $t3, .LBB4_7
+# %bb.11:                               #   in Loop: Header=BB4_8 Depth=1
 	andi	$t6, $t5, 255
-	ldx.bu	$t6, $t1, $t6
+	ldx.bu	$t6, $t0, $t6
 	bstrpick.d	$t7, $t5, 15, 8
-	ldx.bu	$t7, $t1, $t7
+	ldx.bu	$t7, $t0, $t7
 	bstrpick.d	$t8, $t5, 23, 16
-	ldx.bu	$t8, $t1, $t8
+	ldx.bu	$t8, $t0, $t8
 	slli.d	$t7, $t7, 8
 	or	$t6, $t7, $t6
 	slli.d	$t7, $t8, 16
 	or	$t6, $t6, $t7
 	srli.d	$t5, $t5, 24
-	b	.LBB4_7
-.LBB4_13:                               # %._crit_edge
+	b	.LBB4_6
+.LBB4_12:                               # %._crit_edge
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -1372,18 +1314,18 @@ Aes_Encode:                             # @Aes_Encode
 # %bb.2:                                #   in Loop: Header=BB7_1 Depth=1
 	and	$s0, $t2, $a4
 	slli.d	$t8, $t8, 2
-	ldx.w	$s1, $a5, $t8
-	and	$s2, $t6, $a4
-	srli.d	$t8, $t6, 6
-	andi	$t8, $t8, 1020
-	ldx.w	$s3, $a7, $t8
-	and	$s4, $t3, $a4
-	srli.d	$t8, $t3, 14
-	andi	$t8, $t8, 1020
-	ldx.w	$s5, $t0, $t8
-	and	$t8, $t4, $a4
-	srli.d	$t8, $t8, 22
-	ldx.w	$t8, $a6, $t8
+	ldx.w	$t8, $a5, $t8
+	and	$s1, $t6, $a4
+	srli.d	$s2, $t6, 6
+	andi	$s2, $s2, 1020
+	ldx.w	$s2, $a7, $s2
+	and	$s3, $t3, $a4
+	srli.d	$s4, $t3, 14
+	andi	$s4, $s4, 1020
+	ldx.w	$s4, $t0, $s4
+	and	$s5, $t4, $a4
+	srli.d	$s5, $s5, 22
+	ldx.w	$s5, $a6, $s5
 	slli.d	$fp, $fp, 2
 	ldx.w	$fp, $a5, $fp
 	srli.d	$s6, $t4, 6
@@ -1392,8 +1334,8 @@ Aes_Encode:                             # @Aes_Encode
 	srli.d	$s7, $t2, 14
 	andi	$s7, $s7, 1020
 	ldx.w	$s7, $t0, $s7
-	srli.d	$s2, $s2, 22
-	ldx.w	$s2, $a6, $s2
+	srli.d	$s1, $s1, 22
+	ldx.w	$s1, $a6, $s1
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $a5, $t5
 	srli.d	$t3, $t3, 6
@@ -1412,29 +1354,26 @@ Aes_Encode:                             # @Aes_Encode
 	srli.d	$t6, $t6, 14
 	andi	$t6, $t6, 1020
 	ldx.w	$t6, $t0, $t6
-	srli.d	$s4, $s4, 22
-	ldx.w	$s4, $a6, $s4
-	vinsgr2vr.w	$vr0, $s6, 0
-	vinsgr2vr.w	$vr0, $t2, 1
-	vinsgr2vr.w	$vr0, $s3, 2
-	vinsgr2vr.w	$vr0, $t3, 3
-	vinsgr2vr.w	$vr1, $fp, 0
-	vinsgr2vr.w	$vr1, $t7, 1
-	vinsgr2vr.w	$vr1, $s1, 2
-	vinsgr2vr.w	$vr1, $t5, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $s7, 0
-	vinsgr2vr.w	$vr1, $t6, 1
-	vinsgr2vr.w	$vr1, $s5, 2
-	vinsgr2vr.w	$vr1, $t4, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vinsgr2vr.w	$vr1, $s2, 0
-	vinsgr2vr.w	$vr1, $s4, 1
-	vld	$vr2, $a3, 0
-	vinsgr2vr.w	$vr1, $t8, 2
-	vinsgr2vr.w	$vr1, $s0, 3
-	vxor.v	$vr0, $vr0, $vr1
-	vxor.v	$vr0, $vr0, $vr2
+	srli.d	$s3, $s3, 22
+	ldx.w	$s3, $a6, $s3
+	xor	$t3, $t3, $t5
+	xor	$t5, $s2, $t8
+	xor	$t2, $t2, $t7
+	xor	$t7, $s6, $fp
+	xor	$t3, $t3, $t4
+	xor	$t4, $t5, $s4
+	xor	$t2, $t2, $t6
+	xor	$t5, $t7, $s7
+	xor	$t3, $t3, $s0
+	xor	$t4, $t4, $s5
+	xor	$t2, $t2, $s3
+	xor	$t5, $t5, $s1
+	vld	$vr0, $a3, 0
+	vinsgr2vr.w	$vr1, $t5, 0
+	vinsgr2vr.w	$vr1, $t2, 1
+	vinsgr2vr.w	$vr1, $t4, 2
+	vinsgr2vr.w	$vr1, $t3, 3
+	vxor.v	$vr0, $vr1, $vr0
 	addi.d	$a3, $a3, 32
 	addi.d	$t1, $t1, -1
 	b	.LBB7_1

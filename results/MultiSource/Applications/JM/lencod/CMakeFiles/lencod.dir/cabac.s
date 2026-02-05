@@ -564,14 +564,14 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	sltu	$a1, $zero, $a0
 	addi.d	$a2, $s4, 448
 	move	$a0, $s0
-	b	.LBB9_44
+	b	.LBB9_47
 .LBB9_10:
 	slti	$a0, $s5, 7
 	ori	$a1, $zero, 7
 	masknez	$a2, $a1, $a0
 	maskeqz	$a0, $s5, $a0
 	or	$a0, $a0, $a2
-	bltu	$a1, $a0, .LBB9_48
+	bltu	$a1, $a0, .LBB9_49
 # %bb.11:
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI9_0)
@@ -605,7 +605,7 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	alsl.d	$a2, $a0, $s4, 4
 	beq	$s5, $a1, .LBB9_22
 # %bb.16:
-	beqz	$s5, .LBB9_43
+	beqz	$s5, .LBB9_40
 # %bb.17:
 	ori	$a1, $zero, 1
 	move	$a0, $s0
@@ -650,7 +650,7 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 .LBB9_21:
 	alsl.d	$a0, $a0, $s4, 4
 	addi.d	$a2, $a0, 352
-	b	.LBB9_43
+	b	.LBB9_40
 .LBB9_22:
 	ori	$a1, $zero, 1
 	move	$a0, $s0
@@ -661,7 +661,7 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_encode_symbol_final)
 	jirl	$ra, $ra, 0
-	b	.LBB9_45
+	b	.LBB9_48
 .LBB9_24:
 	ori	$s6, $zero, 24
 	slti	$a1, $s5, 24
@@ -695,7 +695,7 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a1, $s5, 1, 1
-	b	.LBB9_37
+	b	.LBB9_45
 .LBB9_26:
 	ori	$a1, $zero, 1
 	move	$a0, $s0
@@ -718,13 +718,13 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	addi.d	$a2, $s4, 128
 	andi	$a1, $s3, 1
 	move	$a0, $s0
-	b	.LBB9_44
+	b	.LBB9_47
 .LBB9_28:
 	ori	$a1, $zero, 22
 	beq	$s3, $a1, .LBB9_30
 # %bb.29:
 	ori	$a1, $zero, 11
-	bne	$s3, $a1, .LBB9_46
+	bne	$s3, $a1, .LBB9_41
 .LBB9_30:
 	alsl.d	$a0, $a0, $s4, 4
 	addi.d	$a2, $a0, 352
@@ -755,7 +755,7 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $s5, -11
 	sltu	$a1, $zero, $a0
-	b	.LBB9_38
+	b	.LBB9_46
 .LBB9_31:
 	addi.d	$a2, $s4, 240
 	move	$a0, $s0
@@ -771,7 +771,7 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 .LBB9_32:                               # %.thread259
 	ori	$a1, $zero, 1
 	move	$a0, $s0
-	b	.LBB9_44
+	b	.LBB9_47
 .LBB9_33:                               # %.thread262
 	ori	$a0, $zero, 7
 	slt	$a1, $a0, $s5
@@ -807,48 +807,31 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
-	move	$a1, $zero
 	slli.d	$a0, $s5, 3
 	alsl.d	$a0, $s5, $a0, 2
 	sub.w	$s5, $s3, $a0
-	ori	$a0, $zero, 4
+	bstrpick.d	$s6, $s5, 31, 2
 	addi.d	$s3, $s4, 320
-	bltu	$s5, $a0, .LBB9_36
+	beqz	$s6, .LBB9_43
 # %bb.35:
 	ori	$a1, $zero, 1
 	move	$a0, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
-	andi	$a0, $s5, 12
-	addi.d	$a0, $a0, -4
+	addi.w	$a0, $s6, 0
+	addi.d	$a0, $a0, -1
 	sltu	$a1, $zero, $a0
-.LBB9_36:
-	move	$a0, $s0
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(biari_encode_symbol)
-	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $s5, 1, 1
-	addi.d	$s3, $s4, 336
-.LBB9_37:                               # %.thread259
-	move	$a0, $s0
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(biari_encode_symbol)
-	jirl	$ra, $ra, 0
-	andi	$a1, $s5, 1
-.LBB9_38:                               # %.thread259
-	move	$a0, $s0
-	move	$a2, $s3
 	b	.LBB9_44
-.LBB9_39:
+.LBB9_36:
 	addi.d	$a2, $s4, 240
 	move	$a0, $s0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $s4, 256
-	b	.LBB9_42
-.LBB9_40:
+	b	.LBB9_39
+.LBB9_37:
 	addi.d	$a2, $s4, 240
 	move	$a0, $s0
 	move	$a1, $zero
@@ -860,44 +843,20 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $s4, 272
-	b	.LBB9_43
-.LBB9_41:
+	b	.LBB9_40
+.LBB9_38:
 	addi.d	$a2, $s4, 240
-.LBB9_42:                               # %.thread259
+.LBB9_39:                               # %.thread259
 	ori	$a1, $zero, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $s4, 288
-.LBB9_43:
+.LBB9_40:
 	move	$a0, $s0
 	move	$a1, $zero
-.LBB9_44:                               # %.thread259
-	pcaddu18i	$ra, %call36(biari_encode_symbol)
-	jirl	$ra, $ra, 0
-.LBB9_45:                               # %.thread259
-	ld.d	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	st.w	$a1, $a0, 40
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(arienco_bits_written)
-	jirl	$ra, $ra, 0
-	sub.d	$a0, $a0, $s1
-	st.w	$a0, $fp, 12
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
-	ret
-.LBB9_46:
+	b	.LBB9_47
+.LBB9_41:
 	ori	$a1, $zero, 22
 	sltu	$a1, $a1, $s5
 	sub.d	$s7, $s3, $a1
@@ -946,8 +905,8 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	sltu	$a0, $a0, $s8
 	add.w	$a0, $s7, $a0
 	ori	$a1, $zero, 24
-	bne	$a0, $a1, .LBB9_45
-# %bb.47:
+	bne	$a0, $a1, .LBB9_48
+# %bb.42:
 	slt	$a0, $s6, $s5
 	masknez	$a1, $s6, $a0
 	maskeqz	$a0, $s5, $a0
@@ -956,7 +915,50 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	ori	$a0, $zero, 25
 	beq	$s3, $a0, .LBB9_23
 	b	.LBB9_34
-.LBB9_48:
+.LBB9_43:
+	move	$a1, $zero
+.LBB9_44:
+	move	$a0, $s0
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(biari_encode_symbol)
+	jirl	$ra, $ra, 0
+	bstrpick.d	$a1, $s5, 1, 1
+	addi.d	$s3, $s4, 336
+.LBB9_45:                               # %.thread259
+	move	$a0, $s0
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(biari_encode_symbol)
+	jirl	$ra, $ra, 0
+	andi	$a1, $s5, 1
+.LBB9_46:                               # %.thread259
+	move	$a0, $s0
+	move	$a2, $s3
+.LBB9_47:                               # %.thread259
+	pcaddu18i	$ra, %call36(biari_encode_symbol)
+	jirl	$ra, $ra, 0
+.LBB9_48:                               # %.thread259
+	ld.d	$a0, $s2, 0
+	ori	$a1, $zero, 1
+	st.w	$a1, $a0, 40
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(arienco_bits_written)
+	jirl	$ra, $ra, 0
+	sub.d	$a0, $a0, $s1
+	st.w	$a0, $fp, 12
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
+	ret
+.LBB9_49:
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
@@ -969,13 +971,13 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI9_0:
-	.word	.LBB9_45-.LJTI9_0
-	.word	.LBB9_40-.LJTI9_0
+	.word	.LBB9_48-.LJTI9_0
+	.word	.LBB9_37-.LJTI9_0
 	.word	.LBB9_31-.LJTI9_0
-	.word	.LBB9_39-.LJTI9_0
+	.word	.LBB9_36-.LJTI9_0
 	.word	.LBB9_12-.LJTI9_0
 	.word	.LBB9_12-.LJTI9_0
-	.word	.LBB9_41-.LJTI9_0
+	.word	.LBB9_38-.LJTI9_0
 	.word	.LBB9_33-.LJTI9_0
                                         # -- End function
 	.text
@@ -1656,11 +1658,11 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	ld.d	$s8, $a0, %got_pc_lo12(img)
 	ld.d	$a0, $s8, 0
 	ld.w	$a1, $a0, 96
-	ld.w	$s2, $a0, 100
+	ld.w	$s7, $a0, 100
 	ld.w	$a3, $fp, 8
 	slli.w	$s3, $a1, 2
-	slli.w	$a2, $s2, 2
-	andi	$s7, $a3, 1
+	slli.w	$a2, $s7, 2
+	andi	$s2, $a3, 1
 	ldptr.d	$a4, $a0, 14216
 	srai.d	$s6, $a3, 1
 	ld.w	$s4, $a0, 12
@@ -1677,14 +1679,14 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(getLuma4x4Neighbour)
 	jirl	$ra, $ra, 0
-	alsl.w	$a2, $s2, $s5, 2
+	alsl.w	$a2, $s7, $s5, 2
 	addi.d	$a3, $sp, 40
 	move	$a0, $s4
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(getLuma4x4Neighbour)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 40
-	slli.d	$a1, $s7, 7
+	slli.d	$a1, $s2, 7
 	beqz	$a0, .LBB15_6
 # %bb.1:
 	ld.d	$a0, $s8, 0
@@ -1869,14 +1871,13 @@ writeMVD_CABAC:                         # @writeMVD_CABAC
 	.type	unary_exp_golomb_mv_encode,@function
 unary_exp_golomb_mv_encode:             # @unary_exp_golomb_mv_encode
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a2
 	move	$fp, $a0
 	beqz	$a1, .LBB16_9
@@ -1901,9 +1902,13 @@ unary_exp_golomb_mv_encode:             # @unary_exp_golomb_mv_encode
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $s2, -2
 	sltui	$a0, $a0, 1
-	alsl.d	$a0, $a0, $s0, 4
+	ori	$a1, $zero, 32
+	masknez	$a1, $a1, $a0
+	ori	$a2, $zero, 48
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a1
 	ori	$a1, $zero, 2
-	addi.d	$s0, $a0, 32
+	add.d	$s0, $s0, $a0
 	beq	$s1, $a1, .LBB16_9
 # %bb.4:                                # %.lr.ph.1
 	ori	$a1, $zero, 1
@@ -1964,14 +1969,13 @@ unary_exp_golomb_mv_encode:             # @unary_exp_golomb_mv_encode
 	move	$a0, $fp
 	move	$a1, $zero
 	move	$a2, $s0
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(biari_encode_symbol)
 	jr	$t8
 .LBB16_10:                              # %.lr.ph.6
@@ -1981,29 +1985,28 @@ unary_exp_golomb_mv_encode:             # @unary_exp_golomb_mv_encode
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $s1, -8
-	ori	$s1, $zero, 8
-	ori	$s4, $zero, 3
-	bltu	$s0, $s1, .LBB16_13
+	ori	$s2, $zero, 8
+	ori	$s1, $zero, 3
+	bltu	$s0, $s2, .LBB16_13
 # %bb.11:                               # %.lr.ph.i.preheader
-	ori	$s3, $zero, 3
-	ori	$s2, $zero, 2
+	ori	$s1, $zero, 3
+	ori	$s3, $zero, 2
 .LBB16_12:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(biari_encode_symbol_eq_prob)
 	jirl	$ra, $ra, 0
-	sub.w	$s0, $s0, $s1
-	addi.d	$s4, $s3, 1
-	sll.w	$s1, $s2, $s3
-	move	$s3, $s4
-	bgeu	$s0, $s1, .LBB16_12
+	sub.w	$s0, $s0, $s2
+	sll.w	$s2, $s3, $s1
+	addi.d	$s1, $s1, 1
+	bgeu	$s0, $s2, .LBB16_12
 .LBB16_13:                              # %._crit_edge.i
 	move	$a0, $fp
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(biari_encode_symbol_eq_prob)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s4, -1
+	addi.d	$s1, $s1, -1
 	addi.w	$s2, $zero, -1
 .LBB16_14:                              # %.lr.ph20.i
                                         # =>This Inner Loop Header: Depth=1
@@ -2015,14 +2018,13 @@ unary_exp_golomb_mv_encode:             # @unary_exp_golomb_mv_encode
 	addi.w	$s1, $s1, -1
 	bne	$s1, $s2, .LBB16_14
 # %bb.15:                               # %exp_golomb_encode_eq_prob.exit
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end16:
 	.size	unary_exp_golomb_mv_encode, .Lfunc_end16-unary_exp_golomb_mv_encode
@@ -2508,71 +2510,64 @@ writeCBP_CABAC:                         # @writeCBP_CABAC
 	.type	write_and_store_CBP_block_bit,@function
 write_and_store_CBP_block_bit:          # @write_and_store_CBP_block_bit
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$s1, $a2
-	addi.d	$a4, $a2, -8
+	addi.w	$s8, $a2, -1
+	pcalau12i	$a2, %got_pc_hi20(img)
+	ld.d	$s6, $a2, %got_pc_lo12(img)
+	ld.d	$a5, $s6, 0
+	addi.d	$a4, $s1, -8
 	ori	$a2, $zero, 2
-	addi.w	$fp, $s1, -1
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	bltu	$a4, $a2, .LBB21_4
 # %bb.1:
 	ori	$a2, $zero, 6
 	beq	$s1, $a2, .LBB21_4
 # %bb.2:
-	ori	$a0, $zero, 7
-	bne	$s1, $a0, .LBB21_5
-# %bb.3:                                # %.thread135
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ld.w	$a2, $a0, 108
-	move	$s6, $zero
-	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
-	sltui	$s8, $a2, 1
-	sltu	$s2, $zero, $a2
-	ori	$a2, $zero, 5
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	bgeu	$fp, $a2, .LBB21_6
+	ori	$a1, $zero, 7
+	bne	$s1, $a1, .LBB21_5
+# %bb.3:                                # %.thread130
+	ld.w	$a1, $a5, 108
+	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
+	sltui	$fp, $a1, 1
+	sltu	$s2, $zero, $a1
+	ori	$a1, $zero, 5
+	bgeu	$s8, $a1, .LBB21_6
 	b	.LBB21_9
 .LBB21_4:
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ld.w	$a2, $a0, 108
+	ld.w	$a1, $a5, 108
 	move	$s2, $zero
-	move	$s8, $zero
-	sltui	$s6, $a2, 1
-	sltu	$a2, $zero, $a2
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	ori	$a2, $zero, 5
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	bgeu	$fp, $a2, .LBB21_6
+	move	$fp, $zero
+	sltui	$a0, $a1, 1
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	sltu	$a0, $zero, $a1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$a1, $zero, 5
+	bgeu	$s8, $a1, .LBB21_6
 	b	.LBB21_9
-.LBB21_5:                               # %.switch.edge.thread138_crit_edge
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	move	$s6, $zero
+.LBB21_5:
+	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
 	move	$s2, $zero
-	move	$s8, $zero
-	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
-	ori	$a2, $zero, 5
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	bltu	$fp, $a2, .LBB21_9
-.LBB21_6:                               # %switch.edge.thread138
-	bnez	$s8, .LBB21_9
-# %bb.7:                                # %switch.edge.thread138
+	move	$fp, $zero
+	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
+	ori	$a1, $zero, 5
+	bltu	$s8, $a1, .LBB21_9
+.LBB21_6:                               # %switch.edge.thread133
+	bnez	$fp, .LBB21_9
+# %bb.7:                                # %switch.edge.thread133
 	bnez	$s2, .LBB21_9
 # %bb.8:
 	move	$s7, $a3
@@ -2581,207 +2576,197 @@ write_and_store_CBP_block_bit:          # @write_and_store_CBP_block_bit
 	b	.LBB21_10
 .LBB21_9:
 	move	$s7, $a3
-	ld.w	$a1, $a0, 100
-	ld.w	$s0, $a0, 96
+	ld.w	$a1, $a5, 100
+	ld.w	$s0, $a5, 96
 	slli.w	$s3, $a1, 2
 .LBB21_10:
-	ld.w	$a1, $a0, 104
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$a0, $a0, 12
+	ld.w	$a0, $a5, 104
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ld.w	$a0, $a5, 12
 	slli.w	$s4, $s0, 2
 	addi.d	$a1, $zero, -1
 	alsl.w	$a1, $s0, $a1, 2
 	ori	$a2, $zero, 5
 	addi.w	$s5, $s3, -1
-	addi.d	$a3, $sp, 64
-	bltu	$a2, $s1, .LBB21_13
+	addi.d	$a3, $sp, 80
+	bltu	$a2, $s1, .LBB21_17
 # %bb.11:
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(getLuma4x4Neighbour)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $s6, 0
 	ld.w	$a0, $a0, 12
-	addi.d	$a3, $sp, 40
+	addi.d	$a3, $sp, 56
 	move	$a1, $s4
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(getLuma4x4Neighbour)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 4
-	bltu	$a0, $fp, .LBB21_16
+	bltu	$a0, $s8, .LBB21_20
 # %bb.12:
-	ld.w	$a0, $sp, 64
+	ld.w	$a0, $sp, 80
 	sltui	$a0, $a0, 1
-	ld.w	$a1, $sp, 76
-	ld.w	$a2, $sp, 72
-	ld.w	$a3, $sp, 40
-	ld.w	$a4, $sp, 52
-	ld.w	$a5, $sp, 48
+	ld.w	$a1, $sp, 92
+	ld.w	$a2, $sp, 88
+	ld.w	$a3, $sp, 56
+	ld.w	$a4, $sp, 68
+	ld.w	$a5, $sp, 64
 	alsl.w	$a1, $a1, $a2, 2
-	masknez	$a0, $a1, $a0
+	masknez	$t1, $a1, $a0
 	sltui	$a1, $a3, 1
 	alsl.w	$a2, $a4, $a5, 2
 	masknez	$a1, $a2, $a1
 	add.d	$a2, $s0, $s3
-	addi.d	$a2, $a2, 1
-	b	.LBB21_17
+	addi.d	$a3, $a2, 1
+	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	bnez	$s7, .LBB21_29
 .LBB21_13:
-	move	$a2, $s3
-	pcaddu18i	$ra, %call36(getChroma4x4Neighbour)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ld.w	$a0, $a0, 12
-	addi.d	$a3, $sp, 40
-	move	$a1, $s4
-	move	$a2, $s5
-	pcaddu18i	$ra, %call36(getChroma4x4Neighbour)
-	jirl	$ra, $ra, 0
-	or	$a0, $s8, $s2
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB21_18
-# %bb.14:
-	ld.w	$a0, $sp, 64
-	ld.w	$a1, $sp, 76
-	ld.w	$a2, $sp, 72
-	ld.w	$a3, $sp, 40
-	sltui	$a0, $a0, 1
-	alsl.w	$a1, $a1, $a2, 2
-	masknez	$a0, $a1, $a0
-	move	$t1, $s7
-	beqz	$a3, .LBB21_19
-# %bb.15:
-	ld.w	$a1, $sp, 52
-	ld.w	$a2, $sp, 48
-	alsl.w	$a1, $a1, $a2, 2
-	b	.LBB21_20
-.LBB21_16:
-	move	$a1, $zero
-	move	$a0, $zero
-	move	$a2, $zero
-.LBB21_17:
-	move	$t1, $s7
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	bnez	$t1, .LBB21_25
-	b	.LBB21_34
-.LBB21_18:
-	move	$a0, $zero
-	move	$a1, $zero
-	move	$t1, $s7
-	b	.LBB21_20
-.LBB21_19:
-	move	$a1, $zero
-.LBB21_20:
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	or	$a2, $s6, $a2
-	andi	$a2, $a2, 1
-	beqz	$a2, .LBB21_22
-# %bb.21:
-	ori	$a2, $zero, 18
-	sub.d	$a2, $a2, $s6
-	bnez	$t1, .LBB21_25
-	b	.LBB21_34
-.LBB21_22:
-	add.d	$a2, $s3, $s0
-	beqz	$s8, .LBB21_24
-# %bb.23:
-	addi.d	$a2, $a2, 19
-	bnez	$t1, .LBB21_25
-	b	.LBB21_34
-.LBB21_24:
-	addi.d	$a2, $a2, 35
-	beqz	$t1, .LBB21_34
-.LBB21_25:
-	ld.d	$a3, $s7, 408
-	ori	$a5, $zero, 1
-	ori	$a6, $zero, 4
-	sll.d	$a4, $a5, $a2
-	beq	$s1, $a6, .LBB21_30
-# %bb.26:
-	ori	$a5, $zero, 3
-	beq	$s1, $a5, .LBB21_29
-# %bb.27:
-	ori	$a5, $zero, 2
-	bne	$s1, $a5, .LBB21_33
-# %bb.28:
-	addi.d	$a5, $a2, 1
-	ori	$a6, $zero, 1
-	sll.d	$a5, $a6, $a5
-	addi.d	$a7, $a2, 4
-	sll.d	$a7, $a6, $a7
-	addi.d	$a2, $a2, 5
-	sll.d	$a2, $a6, $a2
-	or	$a5, $a5, $a7
-	or	$a2, $a5, $a2
-	b	.LBB21_32
-.LBB21_29:
-	addi.d	$a2, $a2, 1
-	ori	$a5, $zero, 1
-	b	.LBB21_31
-.LBB21_30:
-	addi.d	$a2, $a2, 4
-.LBB21_31:                              # %.thread155
-	sll.d	$a2, $a5, $a2
-.LBB21_32:                              # %.thread155
-	sltui	$a5, $fp, 5
-	or	$a2, $a2, $a4
-	or	$a2, $a2, $a3
-	st.d	$a2, $s7, 408
-	ori	$a2, $zero, 17
-	masknez	$a2, $a2, $a5
-	ori	$a3, $zero, 1
-	maskeqz	$a3, $a3, $a5
-	or	$a2, $a3, $a2
-	ori	$a3, $zero, 2
-	bne	$s1, $a3, .LBB21_39
-	b	.LBB21_46
-.LBB21_33:
-	or	$a2, $a3, $a4
-	st.d	$a2, $s7, 408
-.LBB21_34:
 	beqz	$s1, .LBB21_37
-# %bb.35:
-	sltui	$a2, $fp, 5
-	or	$a3, $a2, $s6
+.LBB21_14:
+	sltui	$a2, $s1, 6
+	or	$a3, $a2, $a0
 	andi	$a3, $a3, 1
-	beqz	$a3, .LBB21_38
-# %bb.36:
+	beqz	$a3, .LBB21_27
+# %bb.15:                               # %.thread150
+	ori	$a3, $zero, 2
+	beq	$s1, $a3, .LBB21_45
+# %bb.16:
 	ori	$a3, $zero, 17
 	masknez	$a3, $a3, $a2
 	ori	$a4, $zero, 1
 	maskeqz	$a2, $a4, $a2
 	or	$a2, $a2, $a3
-	ori	$a3, $zero, 2
-	bne	$s1, $a3, .LBB21_39
-	b	.LBB21_46
+	b	.LBB21_38
+.LBB21_17:
+	move	$a2, $s3
+	pcaddu18i	$ra, %call36(getChroma4x4Neighbour)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s6, 0
+	ld.w	$a0, $a0, 12
+	addi.d	$a3, $sp, 56
+	move	$a1, $s4
+	move	$a2, $s5
+	pcaddu18i	$ra, %call36(getChroma4x4Neighbour)
+	jirl	$ra, $ra, 0
+	or	$a0, $fp, $s2
+	andi	$a0, $a0, 1
+	beqz	$a0, .LBB21_21
+# %bb.18:
+	ld.w	$a0, $sp, 80
+	ld.w	$a1, $sp, 92
+	ld.w	$a2, $sp, 88
+	ld.w	$a3, $sp, 56
+	sltui	$a0, $a0, 1
+	alsl.w	$a1, $a1, $a2, 2
+	masknez	$t1, $a1, $a0
+	beqz	$a3, .LBB21_22
+# %bb.19:
+	ld.w	$a1, $sp, 68
+	ld.w	$a2, $sp, 64
+	alsl.w	$a1, $a1, $a2, 2
+	b	.LBB21_23
+.LBB21_20:
+	move	$a1, $zero
+	move	$t1, $zero
+	move	$a3, $zero
+	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	bnez	$s7, .LBB21_29
+	b	.LBB21_13
+.LBB21_21:
+	move	$t1, $zero
+.LBB21_22:
+	move	$a1, $zero
+.LBB21_23:
+	ld.d	$a7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	or	$a2, $a3, $a0
+	move	$a0, $a3
+	andi	$a2, $a2, 1
+	beqz	$a2, .LBB21_25
+# %bb.24:
+	ori	$a2, $zero, 18
+	sub.d	$a3, $a2, $a0
+	bnez	$s7, .LBB21_29
+	b	.LBB21_13
+.LBB21_25:
+	add.d	$a2, $s3, $s0
+	beqz	$fp, .LBB21_28
+# %bb.26:
+	addi.d	$a3, $a2, 19
+	bnez	$s7, .LBB21_29
+	b	.LBB21_13
+.LBB21_27:
+	ori	$a2, $zero, 35
+	masknez	$a2, $a2, $fp
+	ori	$a3, $zero, 19
+	maskeqz	$a3, $a3, $fp
+	or	$a2, $a3, $a2
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	masknez	$a2, $a2, $a0
+	ori	$a3, $zero, 18
+	maskeqz	$a3, $a3, $a0
+	or	$a2, $a3, $a2
+	b	.LBB21_38
+.LBB21_28:
+	addi.d	$a3, $a2, 35
+	beqz	$s7, .LBB21_13
+.LBB21_29:
+	ld.d	$a4, $a7, 408
+	ori	$a2, $zero, 1
+	ori	$a6, $zero, 4
+	sll.d	$a5, $a2, $a3
+	beq	$s1, $a6, .LBB21_34
+# %bb.30:
+	ori	$a2, $zero, 3
+	beq	$s1, $a2, .LBB21_33
+# %bb.31:
+	ori	$a2, $zero, 2
+	bne	$s1, $a2, .LBB21_36
+# %bb.32:                               # %.thread150.thread160
+	addi.d	$a0, $a3, 1
+	ori	$a1, $zero, 1
+	sll.d	$a0, $a1, $a0
+	addi.d	$a2, $a3, 4
+	sll.d	$a2, $a1, $a2
+	addi.d	$a3, $a3, 5
+	sll.d	$a1, $a1, $a3
+	or	$a0, $a0, $a2
+	or	$a0, $a0, $a1
+	or	$a0, $a0, $a5
+	or	$a0, $a0, $a4
+	st.d	$a0, $a7, 408
+	b	.LBB21_45
+.LBB21_33:
+	addi.d	$a3, $a3, 1
+	ori	$a2, $zero, 1
+	b	.LBB21_35
+.LBB21_34:
+	addi.d	$a3, $a3, 4
+.LBB21_35:                              # %.thread155
+	sll.d	$a3, $a2, $a3
+	or	$a3, $a3, $a5
+	or	$a3, $a3, $a4
+	st.d	$a3, $a7, 408
+	b	.LBB21_38
+.LBB21_36:
+	or	$a2, $a4, $a5
+	st.d	$a2, $a7, 408
+	bnez	$s1, .LBB21_14
 .LBB21_37:
 	move	$a2, $zero
-	b	.LBB21_39
-.LBB21_38:
-	ori	$a2, $zero, 35
-	masknez	$a2, $a2, $s8
-	ori	$a3, $zero, 19
-	maskeqz	$a3, $a3, $s8
-	or	$a2, $a3, $a2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
-	masknez	$a2, $a2, $a4
-	ori	$a3, $zero, 18
-	maskeqz	$a3, $a3, $a4
-	or	$a2, $a3, $a2
-.LBB21_39:                              # %.thread160
-	ld.w	$a6, $sp, 40
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	sltu	$a4, $zero, $a3
-	pcalau12i	$a3, %got_pc_hi20(img)
-	ld.d	$a3, $a3, %got_pc_lo12(img)
-	ld.d	$a3, $a3, 0
+.LBB21_38:                              # %.thread155
+	ld.w	$a6, $sp, 56
+	ld.d	$a3, $s6, 0
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	sltu	$a4, $zero, $a0
 	move	$a5, $a4
-	beqz	$a6, .LBB21_42
-# %bb.40:
-	ld.w	$a5, $sp, 44
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	beqz	$a6, .LBB21_41
+# %bb.39:
+	ld.w	$a5, $sp, 60
 	ldptr.d	$a6, $a3, 14224
 	ori	$a7, $zero, 536
 	mul.d	$a5, $a5, $a7
@@ -2789,19 +2774,19 @@ write_and_store_CBP_block_bit:          # @write_and_store_CBP_block_bit
 	ld.w	$a7, $a6, 72
 	ori	$t0, $zero, 14
 	ori	$a5, $zero, 1
-	beq	$a7, $t0, .LBB21_42
-# %bb.41:
+	beq	$a7, $t0, .LBB21_41
+# %bb.40:
 	ld.d	$a5, $a6, 408
 	add.d	$a1, $a2, $a1
 	ori	$a6, $zero, 1
 	sll.d	$a6, $a6, $a1
 	and	$a5, $a5, $a6
 	sra.d	$a5, $a5, $a1
-.LBB21_42:
-	ld.w	$a1, $sp, 64
-	beqz	$a1, .LBB21_45
-# %bb.43:
-	ld.w	$a1, $sp, 68
+.LBB21_41:
+	ld.w	$a1, $sp, 80
+	beqz	$a1, .LBB21_44
+# %bb.42:
+	ld.w	$a1, $sp, 84
 	ldptr.d	$a4, $a3, 14224
 	ori	$a6, $zero, 536
 	mul.d	$a1, $a1, $a6
@@ -2809,43 +2794,42 @@ write_and_store_CBP_block_bit:          # @write_and_store_CBP_block_bit
 	ld.w	$a6, $a1, 72
 	ori	$a7, $zero, 14
 	ori	$a4, $zero, 1
-	beq	$a6, $a7, .LBB21_45
-# %bb.44:
+	beq	$a6, $a7, .LBB21_44
+# %bb.43:
 	ld.d	$a1, $a1, 408
-	add.d	$a0, $a2, $a0
+	add.d	$a4, $a2, $t1
 	ori	$a2, $zero, 1
-	sll.d	$a2, $a2, $a0
+	sll.d	$a2, $a2, $a4
 	and	$a1, $a1, $a2
-	sra.d	$a4, $a1, $a0
-.LBB21_45:
-	ldptr.d	$a0, $a3, 14216
-	ld.d	$a0, $a0, 40
+	sra.d	$a4, $a1, $a4
+.LBB21_44:
+	ldptr.d	$a1, $a3, 14216
+	ld.d	$a6, $a1, 40
 	alsl.w	$a1, $a5, $a4, 1
 	slli.d	$a2, $s1, 2
 	pcalau12i	$a3, %pc_hi20(type2ctx_bcbp)
 	addi.d	$a3, $a3, %pc_lo12(type2ctx_bcbp)
 	ldx.w	$a2, $a3, $a2
 	slli.d	$a2, $a2, 6
-	add.d	$a0, $a0, $a2
-	alsl.d	$a0, $a1, $a0, 4
-	addi.d	$a2, $a0, 288
-	ext.w.h	$a1, $t1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	add.d	$a2, $a6, $a2
+	alsl.d	$a1, $a1, $a2, 4
+	addi.d	$a2, $a1, 288
+	ext.w.h	$a1, $s7
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
-.LBB21_46:
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+.LBB21_45:
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end21:
 	.size	write_and_store_CBP_block_bit, .Lfunc_end21-write_and_store_CBP_block_bit

@@ -1807,31 +1807,30 @@ _GLOBAL__sub_I_spec_arg_test.cc:        # @_GLOBAL__sub_I_spec_arg_test.cc
 .Ltmp88:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB15_14
-.LBB15_10:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB15_11
+	b	.LBB15_12
+.LBB15_10:
+.Ltmp83:                                # EH_LABEL
+	ld.d	$a2, $sp, 16
+	move	$s0, $a0
+	beq	$a2, $s1, .LBB15_12
+.LBB15_11:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB15_12
-.LBB15_11:                              # %common.resume.sink.split
+.LBB15_12:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s3, .LBB15_14
+# %bb.13:                               # %common.resume.sink.split
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB15_12:                              # %common.resume
+.LBB15_14:                              # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB15_13:
-.Ltmp83:                                # EH_LABEL
-	ld.d	$a2, $sp, 16
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB15_10
-.LBB15_14:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s3, .LBB15_12
-	b	.LBB15_11
 .Lfunc_end15:
 	.size	_GLOBAL__sub_I_spec_arg_test.cc, .Lfunc_end15-_GLOBAL__sub_I_spec_arg_test.cc
 	.cfi_endproc

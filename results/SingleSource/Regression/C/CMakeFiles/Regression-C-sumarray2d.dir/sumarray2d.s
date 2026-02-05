@@ -170,18 +170,18 @@ main:                                   # @main
                                         # =>This Inner Loop Header: Depth=1
 	xvneg.w	$xr1, $xr0
 	xvpickve2gr.w	$a4, $xr1, 0
+	xvpickve2gr.w	$a5, $xr1, 1
+	xvpickve2gr.w	$a6, $xr1, 2
+	xvpickve2gr.w	$a7, $xr1, 6
+	xvpickve2gr.w	$t0, $xr1, 7
 	st.w	$a4, $a3, -1616
-	xvpickve2gr.w	$a4, $xr1, 1
-	st.w	$a4, $a3, -1212
-	xvpickve2gr.w	$a4, $xr1, 2
-	st.w	$a4, $a3, -808
+	st.w	$a5, $a3, -1212
+	st.w	$a6, $a3, -808
 	xvstelm.w	$xr1, $a3, -404, 3
 	xvstelm.w	$xr1, $a3, 0, 4
 	xvstelm.w	$xr1, $a3, 404, 5
-	xvpickve2gr.w	$a4, $xr1, 6
-	st.w	$a4, $a3, 808
-	xvpickve2gr.w	$a4, $xr1, 7
-	st.w	$a4, $a3, 1212
+	st.w	$a7, $a3, 808
+	st.w	$t0, $a3, 1212
 	xvaddi.wu	$xr0, $xr0, 8
 	addi.d	$a0, $a0, 8
 	addi.d	$a3, $a3, 2047

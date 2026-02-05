@@ -167,7 +167,7 @@ Lzma2Dec_DecodeToDic:                   # @Lzma2Dec_DecodeToDic
 	st.w	$a0, $s1, 136
 	ori	$a0, $zero, 4
 	.p2align	4, , 16
-.LBB3_6:                                # %.thread175
+.LBB3_6:                                # %.thread174
                                         #   in Loop: Header=BB3_7 Depth=1
 	addi.d	$s4, $s4, 1
 	st.w	$a0, $s1, 144
@@ -417,7 +417,7 @@ Lzma2Dec_DecodeToDic:                   # @Lzma2Dec_DecodeToDic
 	slt	$a0, $a0, $a1
 	ori	$a1, $zero, 3
 	masknez	$a1, $a1, $a0
-.LBB3_52:                               # %.thread175
+.LBB3_52:                               # %.thread174
                                         #   in Loop: Header=BB3_7 Depth=1
 	maskeqz	$a0, $t2, $a0
 	or	$a0, $a0, $a1

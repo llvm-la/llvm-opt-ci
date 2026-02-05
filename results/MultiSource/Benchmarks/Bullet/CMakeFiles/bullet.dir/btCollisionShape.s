@@ -283,7 +283,7 @@ _ZN16btCollisionShapeD2Ev:              # @_ZN16btCollisionShapeD2Ev
 	.type	_ZN16btCollisionShapeD0Ev,@function
 _ZN16btCollisionShapeD0Ev:              # @_ZN16btCollisionShapeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end6:
 	.size	_ZN16btCollisionShapeD0Ev, .Lfunc_end6-_ZN16btCollisionShapeD0Ev
                                         # -- End function

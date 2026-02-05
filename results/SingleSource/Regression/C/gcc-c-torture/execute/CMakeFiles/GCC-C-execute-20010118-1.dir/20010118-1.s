@@ -20,24 +20,6 @@ bar:                                    # @bar
 	ld.w	$a5, $a0, 4
 	beq	$a5, $a2, .LBB1_3
 .LBB1_2:
-	ld.w	$a5, $a0, 16
-	ld.w	$a6, $a0, 20
-	movgr2fr.w	$fa0, $a5
-	ffint.d.w	$fa0, $fa0
-	movgr2fr.d	$fa1, $zero
-	fcopysign.d	$fa0, $fa1, $fa0
-	vldi	$vr2, -928
-	fmul.d	$fa0, $fa0, $fa2
-	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a5, $fa0
-	movgr2fr.w	$fa0, $a6
-	ffint.d.w	$fa0, $fa0
-	fcopysign.d	$fa0, $fa1, $fa0
-	fmul.d	$fa0, $fa0, $fa2
-	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a6, $fa0
-	add.d	$a1, $a1, $a5
-	add.d	$a2, $a2, $a6
 	st.w	$a1, $a0, 0
 	st.w	$a2, $a0, 4
 	st.w	$a3, $a0, 8

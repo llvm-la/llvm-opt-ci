@@ -10,6 +10,40 @@
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
+.LCPI0_2:
+	.word	4294967288                      # 0xfffffff8
+	.word	4294967288                      # 0xfffffff8
+	.word	4294967292                      # 0xfffffffc
+	.word	4294967292                      # 0xfffffffc
+.LCPI0_3:
+	.half	32                              # 0x20
+	.half	32                              # 0x20
+	.half	16                              # 0x10
+	.half	16                              # 0x10
+	.half	8                               # 0x8
+	.half	8                               # 0x8
+	.half	4                               # 0x4
+	.half	4                               # 0x4
+.LCPI0_4:
+	.half	63                              # 0x3f
+	.half	63                              # 0x3f
+	.half	31                              # 0x1f
+	.half	31                              # 0x1f
+	.half	15                              # 0xf
+	.half	15                              # 0xf
+	.half	7                               # 0x7
+	.half	7                               # 0x7
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0
+.LCPI0_1:
+	.word	31                              # 0x1f
+	.word	31                              # 0x1f
+	.word	15                              # 0xf
+	.word	15                              # 0xf
+	.word	7                               # 0x7
+	.word	7                               # 0x7
+	.word	3                               # 0x3
+	.word	3                               # 0x3
 	.text
 	.globl	Gsm_LPC_Analysis
 	.p2align	5
@@ -113,109 +147,41 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vmax.hu	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a0, $vr0, 0
 	bstrpick.d	$a0, $a0, 15, 0
-	move	$s2, $a2
-	beqz	$a0, .LBB0_6
+	move	$s4, $a2
+	beqz	$a0, .LBB0_7
 # %bb.1:
 	slli.d	$a0, $a0, 16
 	pcaddu18i	$ra, %call36(gsm_norm)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
-	sub.d	$a1, $a1, $a0
-	ext.w.h	$a1, $a1
-	blez	$a1, .LBB0_7
+	sub.d	$a0, $a1, $a0
+	ext.w.h	$a1, $a0
+	blez	$a1, .LBB0_8
 # %bb.2:
+	bstrpick.d	$a0, $a1, 15, 0
+	addi.d	$a2, $a0, -1
 	ori	$a3, $zero, 3
-	ori	$a2, $zero, 1
-	bltu	$a3, $a0, .LBB0_14
+	ori	$a0, $zero, 1
+	bltu	$a3, $a2, .LBB0_18
 # %bb.3:
-	bstrpick.d	$a0, $a0, 15, 0
-	slli.d	$a0, $a0, 2
-	pcalau12i	$a3, %pc_hi20(.LJTI0_0)
-	addi.d	$a3, $a3, %pc_lo12(.LJTI0_0)
-	ldx.w	$a0, $a3, $a0
-	add.d	$a0, $a3, $a0
-	jr	$a0
-.LBB0_4:                                # %vector.body107.preheader
+	slli.d	$a1, $a2, 2
+	pcalau12i	$a2, %pc_hi20(.LJTI0_0)
+	addi.d	$a2, $a2, %pc_lo12(.LJTI0_0)
+	ldx.w	$a1, $a2, $a1
+	add.d	$a1, $a2, $a1
+	jr	$a1
+.LBB0_4:                                # %vector.body129.preheader
 	move	$a0, $zero
 	vldi	$vr0, -3776
-	ori	$a3, $zero, 320
+	ori	$a1, $zero, 320
 	.p2align	4, , 16
-.LBB0_5:                                # %vector.body107
+.LBB0_5:                                # %vector.body129
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $s0, $a0
-	ldx.d	$a5, $s0, $a0
-	ld.d	$a4, $a4, 8
-	vinsgr2vr.d	$vr1, $a5, 0
-	vinsgr2vr.d	$vr2, $a4, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr2, $vr2, 11
-	vadd.w	$vr1, $vr1, $vr0
-	vadd.w	$vr2, $vr2, $vr0
-	vsrli.w	$vr1, $vr1, 15
-	vsrli.w	$vr2, $vr2, 15
-	vpickev.h	$vr1, $vr1, $vr1
-	vpickev.h	$vr2, $vr2, $vr2
-	vpackev.d	$vr1, $vr2, $vr1
-	vstx	$vr1, $s0, $a0
-	addi.d	$a0, $a0, 16
-	bne	$a0, $a3, .LBB0_5
-	b	.LBB0_14
-.LBB0_6:
-	move	$a2, $zero
-	move	$a1, $zero
-	b	.LBB0_14
-.LBB0_7:
-	move	$a2, $zero
-	b	.LBB0_14
-.LBB0_8:                                # %vector.body121.preheader
-	move	$a0, $zero
-	vldi	$vr0, -3776
-	ori	$a3, $zero, 320
-	.p2align	4, , 16
-.LBB0_9:                                # %vector.body121
-                                        # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $s0, $a0
-	ldx.d	$a5, $s0, $a0
-	ld.d	$a4, $a4, 8
-	vinsgr2vr.d	$vr1, $a5, 0
-	vinsgr2vr.d	$vr2, $a4, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr2, $vr2, 13
-	vadd.w	$vr1, $vr1, $vr0
-	vadd.w	$vr2, $vr2, $vr0
-	vsrli.w	$vr1, $vr1, 15
-	vsrli.w	$vr2, $vr2, 15
-	vpickev.h	$vr1, $vr1, $vr1
-	vpickev.h	$vr2, $vr2, $vr2
-	vpackev.d	$vr1, $vr2, $vr1
-	vstx	$vr1, $s0, $a0
-	addi.d	$a0, $a0, 16
-	bne	$a0, $a3, .LBB0_9
-	b	.LBB0_14
-.LBB0_10:                               # %vector.body128.preheader
-	move	$a0, $zero
-	vldi	$vr0, -3776
-	ori	$a3, $zero, 320
-	.p2align	4, , 16
-.LBB0_11:                               # %vector.body128
-                                        # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $s0, $a0
-	ldx.d	$a5, $s0, $a0
-	ld.d	$a4, $a4, 8
-	vinsgr2vr.d	$vr1, $a5, 0
-	vinsgr2vr.d	$vr2, $a4, 0
+	add.d	$a2, $s0, $a0
+	ldx.d	$a3, $s0, $a0
+	ld.d	$a2, $a2, 8
+	vinsgr2vr.d	$vr1, $a3, 0
+	vinsgr2vr.d	$vr2, $a2, 0
 	vilvl.h	$vr1, $vr1, $vr1
 	vslli.w	$vr1, $vr1, 16
 	vsrai.w	$vr1, $vr1, 16
@@ -233,20 +199,30 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vpackev.d	$vr1, $vr2, $vr1
 	vstx	$vr1, $s0, $a0
 	addi.d	$a0, $a0, 16
-	bne	$a0, $a3, .LBB0_11
-	b	.LBB0_14
-.LBB0_12:                               # %vector.body114.preheader
+	bne	$a0, $a1, .LBB0_5
+# %bb.6:
+	ori	$a0, $zero, 1
+	ori	$a1, $zero, 1
+	b	.LBB0_18
+.LBB0_7:
 	move	$a0, $zero
+	move	$a1, $zero
+	b	.LBB0_18
+.LBB0_8:
+	move	$a0, $zero
+	b	.LBB0_18
+.LBB0_9:                                # %vector.body115.preheader
+	move	$a1, $zero
 	vldi	$vr0, -3776
-	ori	$a3, $zero, 320
+	ori	$a2, $zero, 320
 	.p2align	4, , 16
-.LBB0_13:                               # %vector.body114
+.LBB0_10:                               # %vector.body115
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $s0, $a0
-	ldx.d	$a5, $s0, $a0
-	ld.d	$a4, $a4, 8
-	vinsgr2vr.d	$vr1, $a5, 0
-	vinsgr2vr.d	$vr2, $a4, 0
+	add.d	$a3, $s0, $a1
+	ldx.d	$a4, $s0, $a1
+	ld.d	$a3, $a3, 8
+	vinsgr2vr.d	$vr1, $a4, 0
+	vinsgr2vr.d	$vr2, $a3, 0
 	vilvl.h	$vr1, $vr1, $vr1
 	vslli.w	$vr1, $vr1, 16
 	vsrai.w	$vr1, $vr1, 16
@@ -262,15 +238,83 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vpickev.h	$vr1, $vr1, $vr1
 	vpickev.h	$vr2, $vr2, $vr2
 	vpackev.d	$vr1, $vr2, $vr1
-	vstx	$vr1, $s0, $a0
-	addi.d	$a0, $a0, 16
-	bne	$a0, $a3, .LBB0_13
-.LBB0_14:                               # %.thread.i
+	vstx	$vr1, $s0, $a1
+	addi.d	$a1, $a1, 16
+	bne	$a1, $a2, .LBB0_10
+# %bb.11:
+	ori	$a1, $zero, 3
+	b	.LBB0_18
+.LBB0_12:                               # %vector.body108.preheader
+	move	$a1, $zero
+	vldi	$vr0, -3776
+	ori	$a2, $zero, 320
+	.p2align	4, , 16
+.LBB0_13:                               # %vector.body108
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a3, $s0, $a1
+	ldx.d	$a4, $s0, $a1
+	ld.d	$a3, $a3, 8
+	vinsgr2vr.d	$vr1, $a4, 0
+	vinsgr2vr.d	$vr2, $a3, 0
+	vilvl.h	$vr1, $vr1, $vr1
+	vslli.w	$vr1, $vr1, 16
+	vsrai.w	$vr1, $vr1, 16
+	vilvl.h	$vr2, $vr2, $vr2
+	vslli.w	$vr2, $vr2, 16
+	vsrai.w	$vr2, $vr2, 16
+	vslli.w	$vr1, $vr1, 11
+	vslli.w	$vr2, $vr2, 11
+	vadd.w	$vr1, $vr1, $vr0
+	vadd.w	$vr2, $vr2, $vr0
+	vsrli.w	$vr1, $vr1, 15
+	vsrli.w	$vr2, $vr2, 15
+	vpickev.h	$vr1, $vr1, $vr1
+	vpickev.h	$vr2, $vr2, $vr2
+	vpackev.d	$vr1, $vr2, $vr1
+	vstx	$vr1, $s0, $a1
+	addi.d	$a1, $a1, 16
+	bne	$a1, $a2, .LBB0_13
+# %bb.14:
+	ori	$a1, $zero, 4
+	b	.LBB0_18
+.LBB0_15:                               # %vector.body122.preheader
+	move	$a1, $zero
+	vldi	$vr0, -3776
+	ori	$a2, $zero, 320
+	.p2align	4, , 16
+.LBB0_16:                               # %vector.body122
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a3, $s0, $a1
+	ldx.d	$a4, $s0, $a1
+	ld.d	$a3, $a3, 8
+	vinsgr2vr.d	$vr1, $a4, 0
+	vinsgr2vr.d	$vr2, $a3, 0
+	vilvl.h	$vr1, $vr1, $vr1
+	vslli.w	$vr1, $vr1, 16
+	vsrai.w	$vr1, $vr1, 16
+	vilvl.h	$vr2, $vr2, $vr2
+	vslli.w	$vr2, $vr2, 16
+	vsrai.w	$vr2, $vr2, 16
+	vslli.w	$vr1, $vr1, 13
+	vslli.w	$vr2, $vr2, 13
+	vadd.w	$vr1, $vr1, $vr0
+	vadd.w	$vr2, $vr2, $vr0
+	vsrli.w	$vr1, $vr1, 15
+	vsrli.w	$vr2, $vr2, 15
+	vpickev.h	$vr1, $vr1, $vr1
+	vpickev.h	$vr2, $vr2, $vr2
+	vpackev.d	$vr1, $vr2, $vr1
+	vstx	$vr1, $s0, $a1
+	addi.d	$a1, $a1, 16
+	bne	$a1, $a2, .LBB0_16
+# %bb.17:
+	ori	$a1, $zero, 2
+.LBB0_18:                               # %.thread.i
 	ld.h	$a3, $s0, 14
 	ld.h	$a5, $s0, 0
 	ld.h	$a6, $s0, 2
 	ld.h	$a4, $s0, 12
-	move	$a0, $zero
+	move	$a2, $zero
 	mul.d	$a7, $a3, $a6
 	mul.d	$t0, $a4, $a5
 	ld.h	$t1, $s0, 10
@@ -331,45 +375,45 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	mul.d	$a4, $a4, $a4
 	add.d	$a4, $a5, $a4
 	mul.d	$a5, $a3, $a3
-	vrepli.b	$vr16, 0
+	vrepli.b	$vr1, 0
 	add.d	$a4, $a4, $a5
-	vori.b	$vr17, $vr16, 0
-	vinsgr2vr.d	$vr17, $a4, 0
-	vori.b	$vr0, $vr16, 0
+	vori.b	$vr16, $vr1, 0
+	vinsgr2vr.d	$vr16, $a4, 0
+	vori.b	$vr0, $vr1, 0
 	vinsgr2vr.d	$vr0, $t8, 0
-	vori.b	$vr1, $vr16, 0
-	vinsgr2vr.d	$vr1, $t7, 0
-	vori.b	$vr2, $vr16, 0
-	vinsgr2vr.d	$vr2, $t5, 0
-	vori.b	$vr3, $vr16, 0
-	vinsgr2vr.d	$vr3, $t4, 0
-	vori.b	$vr4, $vr16, 0
-	vinsgr2vr.d	$vr4, $t0, 0
-	vori.b	$vr5, $vr16, 0
-	vinsgr2vr.d	$vr5, $a7, 0
-	vori.b	$vr6, $vr16, 0
+	vori.b	$vr2, $vr1, 0
+	vinsgr2vr.d	$vr2, $t7, 0
+	vori.b	$vr3, $vr1, 0
+	vinsgr2vr.d	$vr3, $t5, 0
+	vori.b	$vr4, $vr1, 0
+	vinsgr2vr.d	$vr4, $t4, 0
+	vori.b	$vr5, $vr1, 0
+	vinsgr2vr.d	$vr5, $t0, 0
+	vori.b	$vr6, $vr1, 0
+	vinsgr2vr.d	$vr6, $a7, 0
+	vori.b	$vr7, $vr1, 0
 	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
-	vld	$vr18, $a4, %pc_lo12(.LCPI0_0)
-	vinsgr2vr.d	$vr6, $fp, 0
+	vld	$vr17, $a4, %pc_lo12(.LCPI0_0)
+	vinsgr2vr.d	$vr7, $fp, 0
 	vinsgr2vr.h	$vr19, $a3, 1
 	ori	$a3, $zero, 304
-	vori.b	$vr7, $vr16, 0
-	vori.b	$vr8, $vr16, 0
-	vori.b	$vr9, $vr16, 0
-	vori.b	$vr10, $vr16, 0
-	vori.b	$vr11, $vr16, 0
-	vori.b	$vr12, $vr16, 0
-	vori.b	$vr13, $vr16, 0
-	vori.b	$vr14, $vr16, 0
-	vori.b	$vr15, $vr16, 0
+	vori.b	$vr18, $vr1, 0
+	vori.b	$vr8, $vr1, 0
+	vori.b	$vr9, $vr1, 0
+	vori.b	$vr10, $vr1, 0
+	vori.b	$vr11, $vr1, 0
+	vori.b	$vr12, $vr1, 0
+	vori.b	$vr13, $vr1, 0
+	vori.b	$vr14, $vr1, 0
+	vori.b	$vr15, $vr1, 0
 	.p2align	4, , 16
-.LBB0_15:                               # %vector.body135
+.LBB0_19:                               # %vector.body136
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $s0, $a0
+	add.d	$a4, $s0, $a2
 	ld.w	$a5, $a4, 16
 	ld.w	$a6, $a4, 20
 	vinsgr2vr.w	$vr22, $a5, 0
-	vori.b	$vr23, $vr18, 0
+	vori.b	$vr23, $vr17, 0
 	vshuf.h	$vr23, $vr22, $vr19
 	vinsgr2vr.w	$vr19, $a6, 0
 	vilvl.h	$vr20, $vr22, $vr22
@@ -380,17 +424,17 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vilvl.w	$vr21, $vr21, $vr21
 	vslli.d	$vr21, $vr21, 48
 	vsrai.d	$vr21, $vr21, 48
-	vmadd.d	$vr17, $vr20, $vr20
-	vmadd.d	$vr16, $vr21, $vr21
+	vmadd.d	$vr16, $vr20, $vr20
+	vmadd.d	$vr18, $vr21, $vr21
 	vslli.d	$vr23, $vr23, 48
 	vsrai.d	$vr23, $vr23, 48
-	vori.b	$vr24, $vr18, 0
+	vori.b	$vr24, $vr17, 0
 	vshuf.h	$vr24, $vr19, $vr22
 	vslli.d	$vr22, $vr24, 48
 	ld.w	$a5, $a4, 12
 	vsrai.d	$vr22, $vr22, 48
 	vmadd.d	$vr0, $vr20, $vr23
-	vmadd.d	$vr7, $vr21, $vr22
+	vmadd.d	$vr8, $vr21, $vr22
 	vinsgr2vr.w	$vr22, $a5, 0
 	ld.w	$a5, $a4, 10
 	vilvl.h	$vr22, $vr22, $vr22
@@ -399,8 +443,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vinsgr2vr.w	$vr23, $a5, 0
 	ld.w	$a5, $a4, 14
 	vsrai.d	$vr22, $vr22, 48
-	vmadd.d	$vr1, $vr22, $vr20
-	vmadd.d	$vr8, $vr20, $vr21
+	vmadd.d	$vr2, $vr22, $vr20
+	vmadd.d	$vr9, $vr20, $vr21
 	vinsgr2vr.w	$vr24, $a5, 0
 	vilvl.h	$vr23, $vr23, $vr23
 	vilvl.w	$vr23, $vr23, $vr23
@@ -411,56 +455,56 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vslli.d	$vr24, $vr24, 48
 	ld.w	$a5, $a4, 8
 	vsrai.d	$vr24, $vr24, 48
-	vmadd.d	$vr2, $vr23, $vr20
-	vmadd.d	$vr9, $vr24, $vr21
+	vmadd.d	$vr3, $vr23, $vr20
+	vmadd.d	$vr10, $vr24, $vr21
 	vinsgr2vr.w	$vr24, $a5, 0
 	vilvl.h	$vr24, $vr24, $vr24
 	vilvl.w	$vr24, $vr24, $vr24
 	vslli.d	$vr24, $vr24, 48
 	ld.w	$a5, $a4, 6
 	vsrai.d	$vr24, $vr24, 48
-	vmadd.d	$vr3, $vr24, $vr20
-	vmadd.d	$vr10, $vr22, $vr21
+	vmadd.d	$vr4, $vr24, $vr20
+	vmadd.d	$vr11, $vr22, $vr21
 	vinsgr2vr.w	$vr22, $a5, 0
 	vilvl.h	$vr22, $vr22, $vr22
 	vilvl.w	$vr22, $vr22, $vr22
 	vslli.d	$vr22, $vr22, 48
 	ld.w	$a5, $a4, 4
 	vsrai.d	$vr22, $vr22, 48
-	vmadd.d	$vr4, $vr22, $vr20
-	vmadd.d	$vr11, $vr23, $vr21
+	vmadd.d	$vr5, $vr22, $vr20
+	vmadd.d	$vr12, $vr23, $vr21
 	vinsgr2vr.w	$vr23, $a5, 0
 	vilvl.h	$vr23, $vr23, $vr23
 	vilvl.w	$vr23, $vr23, $vr23
 	vslli.d	$vr23, $vr23, 48
 	ld.w	$a4, $a4, 2
 	vsrai.d	$vr23, $vr23, 48
-	vmadd.d	$vr5, $vr23, $vr20
-	vmadd.d	$vr12, $vr24, $vr21
+	vmadd.d	$vr6, $vr23, $vr20
+	vmadd.d	$vr13, $vr24, $vr21
 	vinsgr2vr.w	$vr24, $a4, 0
 	vilvl.h	$vr24, $vr24, $vr24
 	vilvl.w	$vr24, $vr24, $vr24
 	vslli.d	$vr24, $vr24, 48
-	ldx.w	$a4, $s0, $a0
+	ldx.w	$a4, $s0, $a2
 	vsrai.d	$vr24, $vr24, 48
-	vmadd.d	$vr6, $vr24, $vr20
-	vmadd.d	$vr13, $vr22, $vr21
+	vmadd.d	$vr7, $vr24, $vr20
+	vmadd.d	$vr1, $vr22, $vr21
 	vinsgr2vr.w	$vr22, $a4, 0
 	vilvl.h	$vr22, $vr22, $vr22
 	vilvl.w	$vr22, $vr22, $vr22
 	vslli.d	$vr22, $vr22, 48
 	vsrai.d	$vr22, $vr22, 48
 	vmadd.d	$vr14, $vr22, $vr20
-	addi.d	$a0, $a0, 8
+	addi.d	$a2, $a2, 8
 	vmadd.d	$vr15, $vr23, $vr21
-	bne	$a0, $a3, .LBB0_15
-# %bb.16:                               # %.preheader212.i
-	vadd.d	$vr16, $vr16, $vr17
+	bne	$a2, $a3, .LBB0_19
+# %bb.20:                               # %.preheader212.i
+	vadd.d	$vr16, $vr18, $vr16
 	vhaddw.q.d	$vr16, $vr16, $vr16
-	vpickve2gr.d	$a0, $vr16, 0
-	slli.d	$s1, $a0, 1
-	beqz	$a2, .LBB0_18
-# %bb.17:                               # %vector.ph181
+	vpickve2gr.d	$a2, $vr16, 0
+	slli.d	$s1, $a2, 1
+	beqz	$a0, .LBB0_22
+# %bb.21:                               # %vector.ph182
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $s0, 8
 	vreplgr2vr.w	$vr16, $a1
@@ -702,34 +746,34 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vpickev.h	$vr16, $vr16, $vr16
 	vpackev.d	$vr16, $vr16, $vr17
 	vst	$vr16, $s0, 304
-.LBB0_18:                               # %Autocorrelation.exit
+.LBB0_22:                               # %Autocorrelation.exit
 	lu12i.w	$ra, 8
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	beqz	$s1, .LBB0_21
-# %bb.19:                               # %.preheader69.preheader.i
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	beqz	$s1, .LBB0_25
+# %bb.23:                               # %.preheader69.preheader.i
 	vadd.d	$vr14, $vr15, $vr14
+	vadd.d	$vr1, $vr1, $vr7
 	vadd.d	$vr6, $vr13, $vr6
 	vadd.d	$vr5, $vr12, $vr5
 	vadd.d	$vr4, $vr11, $vr4
 	vadd.d	$vr3, $vr10, $vr3
 	vadd.d	$vr2, $vr9, $vr2
-	vadd.d	$vr1, $vr8, $vr1
-	vadd.d	$vr0, $vr7, $vr0
+	vadd.d	$vr0, $vr8, $vr0
 	vhaddw.q.d	$vr7, $vr14, $vr14
+	vhaddw.q.d	$vr1, $vr1, $vr1
 	vhaddw.q.d	$vr6, $vr6, $vr6
 	vhaddw.q.d	$vr5, $vr5, $vr5
 	vhaddw.q.d	$vr4, $vr4, $vr4
 	vhaddw.q.d	$vr3, $vr3, $vr3
 	vhaddw.q.d	$vr2, $vr2, $vr2
-	vhaddw.q.d	$vr1, $vr1, $vr1
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a0, $vr7, 0
-	vpickve2gr.d	$a1, $vr6, 0
-	vpickve2gr.d	$a2, $vr5, 0
-	vpickve2gr.d	$a3, $vr4, 0
-	vpickve2gr.d	$a4, $vr3, 0
-	vpickve2gr.d	$a5, $vr2, 0
-	vpickve2gr.d	$a6, $vr1, 0
+	vpickve2gr.d	$a1, $vr1, 0
+	vpickve2gr.d	$a2, $vr6, 0
+	vpickve2gr.d	$a3, $vr5, 0
+	vpickve2gr.d	$a4, $vr4, 0
+	vpickve2gr.d	$a5, $vr3, 0
+	vpickve2gr.d	$a6, $vr2, 0
 	vpickve2gr.d	$a7, $vr0, 0
 	slli.d	$fp, $a0, 1
 	slli.d	$s0, $a1, 1
@@ -758,7 +802,6 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	sll.d	$t0, $s4, $a0
 	srli.d	$t0, $t0, 16
 	sll.d	$t1, $s2, $a0
-	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
 	srli.d	$t1, $t1, 16
 	sll.d	$t2, $s0, $a0
 	srli.d	$t2, $t2, 16
@@ -790,23 +833,24 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	masknez	$a4, $s5, $a0
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a4
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
 	ext.w.h	$a0, $a0
 	ori	$a2, $zero, 16
-	move	$s0, $t3
-	bge	$a3, $a0, .LBB0_26
-.LBB0_20:                               # %.lr.ph82.preheader.i
+	move	$s0, $a4
+	bge	$a3, $a0, .LBB0_30
+.LBB0_24:                               # %.lr.ph82.preheader.i
 	move	$a0, $s0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$ra, 8
-	b	.LBB0_22
-.LBB0_21:                               # %.preheader.preheader.i
+	b	.LBB0_26
+.LBB0_25:                               # %.preheader.preheader.i
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s2, 0
-.LBB0_22:                               # %Reflection_coefficients.exit
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.hu	$a1, $s1, 0
+	vst	$vr0, $s4, 0
+.LBB0_26:                               # %Reflection_coefficients.exit
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.hu	$a1, $s4, 0
 	ext.w.h	$a0, $a1
 	slti	$a0, $a0, 0
 	xor	$a2, $a1, $ra
@@ -821,34 +865,34 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	ext.w.h	$a2, $a1
 	lu12i.w	$a3, 5
 	ori	$a4, $a3, 1637
-	blt	$a4, $a2, .LBB0_24
-# %bb.23:
-	srai.d	$a1, $a2, 1
-	lu12i.w	$s2, 7
-	b	.LBB0_34
-.LBB0_24:
+	blt	$a4, $a2, .LBB0_28
+# %bb.27:
+	srai.d	$a2, $a2, 1
+	lu12i.w	$s1, 7
+	b	.LBB0_38
+.LBB0_28:
 	bstrpick.d	$a2, $a1, 15, 0
-	lu12i.w	$s2, 7
-	ori	$a4, $s2, 2457
-	bltu	$a4, $a2, .LBB0_33
-# %bb.25:
+	lu12i.w	$s1, 7
+	ori	$a4, $s1, 2457
+	bltu	$a4, $a2, .LBB0_37
+# %bb.29:
 	lu12i.w	$a2, -3
 	ori	$a2, $a2, 1229
-	add.d	$a1, $a1, $a2
-	b	.LBB0_34
-.LBB0_26:                               # %.lr.ph.preheader
+	add.d	$a2, $a1, $a2
+	b	.LBB0_38
+.LBB0_30:                               # %.lr.ph.preheader
 	move	$s6, $zero
 	ori	$s7, $zero, 8
 	ori	$fp, $zero, 0
 	lu32i.d	$fp, 32768
 	lu12i.w	$s4, -8
 	ori	$s8, $zero, 7
-	move	$s0, $t3
+	move	$s0, $a4
 	ori	$a2, $zero, 1
-	b	.LBB0_28
+	b	.LBB0_32
 	.p2align	4, , 16
-.LBB0_27:                               # %._crit_edge.i
-                                        #   in Loop: Header=BB0_28 Depth=1
+.LBB0_31:                               # %._crit_edge.i
+                                        #   in Loop: Header=BB0_32 Depth=1
 	mul.d	$a0, $a1, $a0
 	slli.d	$a0, $a0, 33
 	add.d	$a0, $a0, $fp
@@ -880,10 +924,10 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	ext.w.h	$a0, $a0
 	ext.w.h	$a3, $a1
 	addi.d	$s8, $s8, -1
-	blt	$a3, $a0, .LBB0_70
-.LBB0_28:                               # %.lr.ph
+	blt	$a3, $a0, .LBB0_74
+.LBB0_32:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_31 Depth 2
+                                        #     Child Loop BB0_35 Depth 2
 	move	$s2, $a2
 	ext.w.h	$a0, $a0
 	ext.w.h	$s1, $a1
@@ -898,13 +942,13 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	maskeqz	$a2, $a3, $a2
 	or	$a0, $a2, $a0
 	st.h	$a0, $s0, 0
-	beq	$s2, $s7, .LBB0_22
-# %bb.29:                               #   in Loop: Header=BB0_28 Depth=1
+	beq	$s2, $s7, .LBB0_26
+# %bb.33:                               #   in Loop: Header=BB0_32 Depth=1
 	ext.w.h	$a0, $a0
 	ori	$a2, $zero, 7
-	bltu	$a2, $s2, .LBB0_27
-# %bb.30:                               # %.lr.ph.i
-                                        #   in Loop: Header=BB0_28 Depth=1
+	bltu	$a2, $s2, .LBB0_31
+# %bb.34:                               # %.lr.ph.i
+                                        #   in Loop: Header=BB0_32 Depth=1
 	ori	$a3, $zero, 1
 	sltu	$a2, $a3, $s8
 	masknez	$a3, $a3, $a2
@@ -914,7 +958,7 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	addi.d	$a4, $sp, 30
 	addi.d	$a5, $sp, 50
 	.p2align	4, , 16
-.LBB0_31:                               #   Parent Loop BB0_28 Depth=1
+.LBB0_35:                               #   Parent Loop BB0_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.h	$a6, $a4, 0
 	ld.h	$a7, $a5, 0
@@ -947,49 +991,49 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	addi.d	$a2, $a2, -1
 	addi.d	$a5, $a5, 2
 	addi.d	$a4, $a4, 2
-	bnez	$a2, .LBB0_31
-# %bb.32:                               # %._crit_edge.i.loopexit
-                                        #   in Loop: Header=BB0_28 Depth=1
+	bnez	$a2, .LBB0_35
+# %bb.36:                               # %._crit_edge.i.loopexit
+                                        #   in Loop: Header=BB0_32 Depth=1
 	ld.hu	$s5, $sp, 48
-	b	.LBB0_27
-.LBB0_33:
+	b	.LBB0_31
+.LBB0_37:
 	lu12i.w	$a2, 6
 	ori	$a2, $a2, 2048
-	alsl.d	$a1, $a1, $a2, 2
-.LBB0_34:
-	ld.hu	$a4, $s1, 2
-	ext.w.h	$a2, $a4
-	slti	$a2, $a2, 0
+	alsl.d	$a2, $a1, $a2, 2
+.LBB0_38:
+	ld.hu	$a4, $s4, 2
+	ext.w.h	$a1, $a4
+	slti	$a1, $a1, 0
 	xor	$a5, $a4, $ra
 	sltui	$a5, $a5, 1
 	sub.d	$a6, $zero, $a4
 	masknez	$a6, $a6, $a5
 	maskeqz	$a5, $s3, $a5
 	or	$a5, $a5, $a6
-	maskeqz	$a5, $a5, $a2
-	masknez	$a4, $a4, $a2
+	maskeqz	$a5, $a5, $a1
+	masknez	$a4, $a4, $a1
 	or	$a4, $a5, $a4
 	ext.w.h	$a6, $a4
 	ori	$a5, $a3, 1638
-	bge	$a6, $a5, .LBB0_36
-# %bb.35:
+	bge	$a6, $a5, .LBB0_40
+# %bb.39:
 	srai.d	$a3, $a6, 1
-	b	.LBB0_39
-.LBB0_36:
+	b	.LBB0_43
+.LBB0_40:
 	bstrpick.d	$a3, $a4, 15, 0
-	ori	$a6, $s2, 2458
-	bgeu	$a3, $a6, .LBB0_38
-# %bb.37:
+	ori	$a6, $s1, 2458
+	bgeu	$a3, $a6, .LBB0_42
+# %bb.41:
 	lu12i.w	$a3, -3
 	ori	$a3, $a3, 1229
 	add.d	$a3, $a4, $a3
-	b	.LBB0_39
-.LBB0_38:
+	b	.LBB0_43
+.LBB0_42:
 	lu12i.w	$a3, 6
 	ori	$a3, $a3, 2048
 	alsl.d	$a3, $a4, $a3, 2
-.LBB0_39:
-	ld.hu	$a6, $s1, 4
+.LBB0_43:
+	ld.hu	$a6, $s4, 4
 	ext.w.h	$a4, $a6
 	slti	$a4, $a4, 0
 	xor	$a7, $a6, $ra
@@ -1002,25 +1046,25 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	masknez	$a6, $a6, $a4
 	or	$a6, $a7, $a6
 	ext.w.h	$a7, $a6
-	bge	$a7, $a5, .LBB0_41
-# %bb.40:
+	bge	$a7, $a5, .LBB0_45
+# %bb.44:
 	srai.d	$a6, $a7, 1
-	b	.LBB0_44
-.LBB0_41:
+	b	.LBB0_48
+.LBB0_45:
 	bstrpick.d	$a7, $a6, 15, 0
-	ori	$t0, $s2, 2458
-	bgeu	$a7, $t0, .LBB0_43
-# %bb.42:
+	ori	$t0, $s1, 2458
+	bgeu	$a7, $t0, .LBB0_47
+# %bb.46:
 	lu12i.w	$a7, -3
 	ori	$a7, $a7, 1229
 	add.d	$a6, $a6, $a7
-	b	.LBB0_44
-.LBB0_43:
+	b	.LBB0_48
+.LBB0_47:
 	lu12i.w	$a7, 6
 	ori	$a7, $a7, 2048
 	alsl.d	$a6, $a6, $a7, 2
-.LBB0_44:
-	ld.hu	$t0, $s1, 6
+.LBB0_48:
+	ld.hu	$t0, $s4, 6
 	ext.w.h	$a7, $t0
 	slti	$a7, $a7, 0
 	xor	$t1, $t0, $ra
@@ -1033,56 +1077,56 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	masknez	$t0, $t0, $a7
 	or	$t0, $t1, $t0
 	ext.w.h	$t1, $t0
-	bge	$t1, $a5, .LBB0_46
-# %bb.45:
-	srai.d	$t0, $t1, 1
-	b	.LBB0_49
-.LBB0_46:
+	bge	$t1, $a5, .LBB0_50
+# %bb.49:
+	srai.d	$t1, $t1, 1
+	b	.LBB0_53
+.LBB0_50:
 	bstrpick.d	$t1, $t0, 15, 0
-	ori	$t2, $s2, 2458
-	bgeu	$t1, $t2, .LBB0_48
-# %bb.47:
+	ori	$t2, $s1, 2458
+	bgeu	$t1, $t2, .LBB0_52
+# %bb.51:
 	lu12i.w	$t1, -3
 	ori	$t1, $t1, 1229
-	add.d	$t0, $t0, $t1
-	b	.LBB0_49
-.LBB0_48:
+	add.d	$t1, $t0, $t1
+	b	.LBB0_53
+.LBB0_52:
 	lu12i.w	$t1, 6
 	ori	$t1, $t1, 2048
-	alsl.d	$t0, $t0, $t1, 2
-.LBB0_49:
-	ld.hu	$t2, $s1, 8
-	ext.w.h	$t1, $t2
-	slti	$t1, $t1, 0
+	alsl.d	$t1, $t0, $t1, 2
+.LBB0_53:
+	ld.hu	$t2, $s4, 8
+	ext.w.h	$t0, $t2
+	slti	$t0, $t0, 0
 	xor	$t3, $t2, $ra
 	sltui	$t3, $t3, 1
 	sub.d	$t4, $zero, $t2
 	masknez	$t4, $t4, $t3
 	maskeqz	$t3, $s3, $t3
 	or	$t3, $t3, $t4
-	maskeqz	$t3, $t3, $t1
-	masknez	$t2, $t2, $t1
+	maskeqz	$t3, $t3, $t0
+	masknez	$t2, $t2, $t0
 	or	$t2, $t3, $t2
 	ext.w.h	$t3, $t2
-	bge	$t3, $a5, .LBB0_51
-# %bb.50:
+	bge	$t3, $a5, .LBB0_55
+# %bb.54:
 	srai.d	$t2, $t3, 1
-	b	.LBB0_54
-.LBB0_51:
+	b	.LBB0_58
+.LBB0_55:
 	bstrpick.d	$t3, $t2, 15, 0
-	ori	$t4, $s2, 2458
-	bgeu	$t3, $t4, .LBB0_53
-# %bb.52:
+	ori	$t4, $s1, 2458
+	bgeu	$t3, $t4, .LBB0_57
+# %bb.56:
 	lu12i.w	$t3, -3
 	ori	$t3, $t3, 1229
 	add.d	$t2, $t2, $t3
-	b	.LBB0_54
-.LBB0_53:
+	b	.LBB0_58
+.LBB0_57:
 	lu12i.w	$t3, 6
 	ori	$t3, $t3, 2048
 	alsl.d	$t2, $t2, $t3, 2
-.LBB0_54:
-	ld.hu	$t4, $s1, 10
+.LBB0_58:
+	ld.hu	$t4, $s4, 10
 	ext.w.h	$t3, $t4
 	slti	$t3, $t3, 0
 	xor	$t5, $t4, $ra
@@ -1095,25 +1139,25 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	masknez	$t4, $t4, $t3
 	or	$t4, $t5, $t4
 	ext.w.h	$t5, $t4
-	bge	$t5, $a5, .LBB0_56
-# %bb.55:
+	bge	$t5, $a5, .LBB0_60
+# %bb.59:
 	srai.d	$t4, $t5, 1
-	b	.LBB0_59
-.LBB0_56:
+	b	.LBB0_63
+.LBB0_60:
 	bstrpick.d	$t5, $t4, 15, 0
-	ori	$t6, $s2, 2458
-	bgeu	$t5, $t6, .LBB0_58
-# %bb.57:
+	ori	$t6, $s1, 2458
+	bgeu	$t5, $t6, .LBB0_62
+# %bb.61:
 	lu12i.w	$t5, -3
 	ori	$t5, $t5, 1229
 	add.d	$t4, $t4, $t5
-	b	.LBB0_59
-.LBB0_58:
+	b	.LBB0_63
+.LBB0_62:
 	lu12i.w	$t5, 6
 	ori	$t5, $t5, 2048
 	alsl.d	$t4, $t4, $t5, 2
-.LBB0_59:
-	ld.hu	$t6, $s1, 12
+.LBB0_63:
+	ld.hu	$t6, $s4, 12
 	ext.w.h	$t5, $t6
 	slti	$t5, $t5, 0
 	xor	$t7, $t6, $ra
@@ -1126,242 +1170,189 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	masknez	$t6, $t6, $t5
 	or	$t6, $t7, $t6
 	ext.w.h	$t7, $t6
-	bge	$t7, $a5, .LBB0_61
-# %bb.60:
-	srai.d	$t7, $t7, 1
-	b	.LBB0_64
-.LBB0_61:
+	bge	$t7, $a5, .LBB0_65
+# %bb.64:
+	srai.d	$t6, $t7, 1
+	b	.LBB0_68
+.LBB0_65:
 	bstrpick.d	$t7, $t6, 15, 0
-	ori	$t8, $s2, 2458
-	bgeu	$t7, $t8, .LBB0_63
-# %bb.62:
+	ori	$t8, $s1, 2458
+	bgeu	$t7, $t8, .LBB0_67
+# %bb.66:
 	lu12i.w	$t7, -3
 	ori	$t7, $t7, 1229
-	add.d	$t7, $t6, $t7
-	b	.LBB0_64
-.LBB0_63:
+	add.d	$t6, $t6, $t7
+	b	.LBB0_68
+.LBB0_67:
 	lu12i.w	$t7, 6
 	ori	$t7, $t7, 2048
-	alsl.d	$t7, $t6, $t7, 2
-.LBB0_64:
-	ld.hu	$t8, $s1, 14
-	ext.w.h	$t6, $t8
-	slti	$t6, $t6, 0
+	alsl.d	$t6, $t6, $t7, 2
+.LBB0_68:
+	ld.hu	$t8, $s4, 14
+	ext.w.h	$t7, $t8
+	slti	$t7, $t7, 0
 	xor	$fp, $t8, $ra
 	sltui	$fp, $fp, 1
 	sub.d	$s0, $zero, $t8
 	masknez	$s0, $s0, $fp
 	maskeqz	$fp, $s3, $fp
 	or	$fp, $fp, $s0
-	maskeqz	$fp, $fp, $t6
-	masknez	$t8, $t8, $t6
+	maskeqz	$fp, $fp, $t7
+	masknez	$t8, $t8, $t7
 	or	$t8, $fp, $t8
 	ext.w.h	$fp, $t8
-	bge	$fp, $a5, .LBB0_66
-# %bb.65:
-	srai.d	$t8, $fp, 1
-	b	.LBB0_69
-.LBB0_66:
+	bge	$fp, $a5, .LBB0_70
+# %bb.69:
+	srai.d	$a5, $fp, 1
+	b	.LBB0_73
+.LBB0_70:
 	bstrpick.d	$a5, $t8, 15, 0
-	ori	$fp, $s2, 2458
-	bgeu	$a5, $fp, .LBB0_68
-# %bb.67:
+	ori	$fp, $s1, 2458
+	bgeu	$a5, $fp, .LBB0_72
+# %bb.71:
 	lu12i.w	$a5, -3
 	ori	$a5, $a5, 1229
-	add.d	$t8, $t8, $a5
-	b	.LBB0_69
-.LBB0_68:
+	add.d	$a5, $t8, $a5
+	b	.LBB0_73
+.LBB0_72:
 	lu12i.w	$a5, 6
 	ori	$a5, $a5, 2048
-	alsl.d	$t8, $t8, $a5, 2
-.LBB0_69:                               # %Transformation_to_Log_Area_Ratios.exit
-	sub.d	$a5, $zero, $t7
-	masknez	$t7, $t7, $t5
-	maskeqz	$a5, $a5, $t5
-	or	$a5, $a5, $t7
-	sub.d	$t5, $zero, $t4
-	masknez	$t4, $t4, $t3
-	maskeqz	$t3, $t5, $t3
-	or	$t3, $t3, $t4
-	sub.d	$t4, $zero, $t2
-	masknez	$t2, $t2, $t1
-	maskeqz	$t1, $t4, $t1
-	or	$t1, $t1, $t2
-	sub.d	$t2, $zero, $t0
-	masknez	$t0, $t0, $a7
-	maskeqz	$a7, $t2, $a7
-	or	$a7, $a7, $t0
-	sub.d	$t0, $zero, $a6
+	alsl.d	$a5, $t8, $a5, 2
+.LBB0_73:                               # %Transformation_to_Log_Area_Ratios.exit
+	sub.d	$t8, $zero, $t6
+	sub.d	$fp, $zero, $t4
+	sub.d	$s0, $zero, $t2
+	sub.d	$s1, $zero, $t1
+	sub.d	$s2, $zero, $a6
+	vinsgr2vr.h	$vr0, $a2, 0
+	vinsgr2vr.h	$vr0, $a3, 1
+	vneg.h	$vr1, $vr0
+	sub.d	$a2, $zero, $a5
+	masknez	$a3, $t1, $a7
+	maskeqz	$a7, $s1, $a7
+	or	$a3, $a7, $a3
 	masknez	$a6, $a6, $a4
-	maskeqz	$a4, $t0, $a4
+	maskeqz	$a4, $s2, $a4
 	or	$a4, $a4, $a6
-	sub.d	$a6, $zero, $a3
-	masknez	$a3, $a3, $a2
-	maskeqz	$a2, $a6, $a2
-	or	$a3, $a2, $a3
-	sub.d	$a2, $zero, $a1
-	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a1, $a0, $a1
-	sub.d	$a0, $zero, $t8
-	masknez	$a2, $t8, $t6
-	maskeqz	$a0, $a0, $t6
-	or	$a0, $a0, $a2
-	ext.w.h	$a1, $a1
-	lu12i.w	$a6, 10
-	mul.d	$a1, $a1, $a6
-	addu16i.d	$a1, $a1, 256
-	addi.w	$a1, $a1, 0
-	srai.d	$a1, $a1, 25
-	ori	$a2, $zero, 31
-	slt	$t0, $a2, $a1
-	addi.d	$a1, $a1, 32
-	masknez	$a1, $a1, $t0
-	ori	$t2, $zero, 63
-	maskeqz	$t0, $t2, $t0
-	or	$a1, $t0, $a1
-	st.h	$a1, $s1, 0
-	ext.w.h	$a1, $a3
-	mul.d	$a1, $a1, $a6
-	addu16i.d	$a1, $a1, 256
-	addi.w	$a1, $a1, 0
-	srai.d	$a1, $a1, 25
-	slt	$a3, $a2, $a1
-	addi.d	$a1, $a1, 32
-	masknez	$a1, $a1, $a3
-	maskeqz	$a3, $t2, $a3
-	or	$a1, $a3, $a1
-	st.h	$a1, $s1, 2
-	ext.w.h	$a3, $a4
-	ori	$a1, $zero, 0
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 40960
-	mul.d	$a3, $a3, $a4
-	lu52i.d	$a6, $zero, 128
-	add.d	$a3, $a3, $a6
+	masknez	$a5, $a5, $t7
+	maskeqz	$a2, $a2, $t7
+	or	$a2, $a2, $a5
+	masknez	$a5, $t6, $t5
+	maskeqz	$a6, $t8, $t5
+	or	$a5, $a6, $a5
+	masknez	$a6, $t4, $t3
+	maskeqz	$a7, $fp, $t3
+	or	$a6, $a7, $a6
+	masknez	$a7, $t2, $t0
+	maskeqz	$t0, $s0, $t0
+	or	$a7, $t0, $a7
+	ext.w.h	$a3, $a3
+	ext.w.h	$a4, $a4
+	ori	$t0, $zero, 0
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, 40960
+	mul.d	$a3, $a3, $t1
+	mul.d	$a4, $a4, $t1
+	lu52i.d	$t1, $zero, -160
+	add.d	$a3, $a3, $t1
+	lu52i.d	$t1, $zero, 128
+	add.d	$a4, $a4, $t1
 	srli.d	$a3, $a3, 32
-	addu16i.d	$a3, $a3, 256
-	addi.w	$a3, $a3, 0
-	srai.d	$a6, $a3, 25
-	ori	$a3, $zero, 15
-	slt	$t0, $a3, $a6
-	addi.w	$t2, $zero, -16
-	slt	$t4, $t2, $a6
-	maskeqz	$a6, $a6, $t4
-	masknez	$t4, $t2, $t4
-	or	$a6, $a6, $t4
-	addi.d	$a6, $a6, 16
-	masknez	$a6, $a6, $t0
-	maskeqz	$t0, $a2, $t0
-	or	$a6, $t0, $a6
-	st.h	$a6, $s1, 4
-	ext.w.h	$a6, $a7
-	mul.d	$a4, $a6, $a4
-	lu52i.d	$a6, $zero, -160
-	add.d	$a4, $a4, $a6
 	srli.d	$a4, $a4, 32
-	addu16i.d	$a4, $a4, 256
-	addi.w	$a4, $a4, 0
-	srai.d	$a4, $a4, 25
-	slt	$a6, $a3, $a4
-	slt	$a7, $t2, $a4
-	maskeqz	$a4, $a4, $a7
-	masknez	$a7, $t2, $a7
-	or	$a4, $a4, $a7
-	addi.d	$a4, $a4, 16
-	masknez	$a4, $a4, $a6
-	maskeqz	$a2, $a2, $a6
-	or	$a2, $a2, $a4
-	st.h	$a2, $s1, 6
-	ext.w.h	$a2, $t1
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 27928
-	mul.d	$a2, $a2, $a4
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, -131072
-	lu52i.d	$a4, $a4, 5
-	add.d	$a2, $a2, $a4
+	ext.w.h	$a2, $a2
+	ext.w.h	$a5, $a5
+	ext.w.h	$a6, $a6
+	ext.w.h	$a7, $a7
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, 18072
+	mul.d	$a2, $a2, $t1
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, 17068
+	mul.d	$a5, $a5, $t1
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, 30720
+	mul.d	$a6, $a6, $t1
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, 27928
+	mul.d	$a7, $a7, $t1
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, -524288
+	lu52i.d	$t1, $t1, -72
+	add.d	$a2, $a2, $t1
+	ori	$t1, $zero, 0
+	lu32i.d	$t1, -327680
+	lu52i.d	$t1, $t1, -22
+	add.d	$a5, $a5, $t1
+	lu52i.d	$t1, $zero, -112
+	add.d	$a6, $a6, $t1
+	lu32i.d	$t0, -131072
+	lu52i.d	$t0, $t0, 5
+	add.d	$a7, $a7, $t0
 	srli.d	$a2, $a2, 32
+	srli.d	$a5, $a5, 32
+	srli.d	$a6, $a6, 32
+	srli.d	$a7, $a7, 32
 	addu16i.d	$a2, $a2, 256
-	addi.w	$a2, $a2, 0
-	srai.d	$a4, $a2, 25
-	ori	$a2, $zero, 7
-	slt	$a6, $a2, $a4
-	addi.w	$a7, $zero, -8
-	slt	$t0, $a7, $a4
-	maskeqz	$a4, $a4, $t0
-	masknez	$t0, $a7, $t0
-	or	$a4, $a4, $t0
-	addi.d	$a4, $a4, 8
-	masknez	$a4, $a4, $a6
-	maskeqz	$a6, $a3, $a6
-	or	$a4, $a6, $a4
-	st.h	$a4, $s1, 8
-	ext.w.h	$a4, $t3
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 30720
-	mul.d	$a4, $a4, $a6
-	lu52i.d	$a6, $zero, -112
-	add.d	$a4, $a4, $a6
-	srli.d	$a4, $a4, 32
-	addu16i.d	$a4, $a4, 256
-	addi.w	$a4, $a4, 0
-	srai.d	$a4, $a4, 25
-	slt	$a6, $a2, $a4
-	slt	$t0, $a7, $a4
-	maskeqz	$a4, $a4, $t0
-	masknez	$a7, $a7, $t0
-	or	$a4, $a4, $a7
-	addi.d	$a4, $a4, 8
-	masknez	$a4, $a4, $a6
-	maskeqz	$a3, $a3, $a6
-	or	$a3, $a3, $a4
-	st.h	$a3, $s1, 10
-	ext.w.h	$a3, $a5
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 17068
-	mul.d	$a3, $a3, $a4
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, -327680
-	lu52i.d	$a4, $a4, -22
-	add.d	$a3, $a3, $a4
-	srli.d	$a3, $a3, 32
+	addu16i.d	$a5, $a5, 256
+	addu16i.d	$a6, $a6, 256
+	addu16i.d	$a7, $a7, 256
 	addu16i.d	$a3, $a3, 256
-	addi.w	$a3, $a3, 0
-	srai.d	$a3, $a3, 25
-	ori	$a4, $zero, 3
-	slt	$a5, $a4, $a3
-	addi.w	$a6, $zero, -4
-	slt	$a7, $a6, $a3
-	maskeqz	$a3, $a3, $a7
-	masknez	$a7, $a6, $a7
-	or	$a3, $a3, $a7
-	addi.d	$a3, $a3, 4
-	masknez	$a3, $a3, $a5
-	maskeqz	$a5, $a2, $a5
-	or	$a3, $a5, $a3
-	st.h	$a3, $s1, 12
-	ext.w.h	$a0, $a0
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 18072
-	mul.d	$a0, $a0, $a3
-	lu32i.d	$a1, -524288
-	lu52i.d	$a1, $a1, -72
-	add.d	$a0, $a0, $a1
-	srli.d	$a0, $a0, 32
-	addu16i.d	$a0, $a0, 256
-	addi.w	$a0, $a0, 0
-	srai.d	$a0, $a0, 25
-	slt	$a1, $a4, $a0
-	slt	$a3, $a6, $a0
-	maskeqz	$a0, $a0, $a3
-	masknez	$a3, $a6, $a3
-	or	$a0, $a0, $a3
-	addi.d	$a0, $a0, 4
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a2, $a1
-	or	$a0, $a1, $a0
-	st.h	$a0, $s1, 14
+	addu16i.d	$a4, $a4, 256
+	vinsgr2vr.h	$vr2, $a0, 0
+	vinsgr2vr.h	$vr2, $a1, 1
+	vslli.h	$vr2, $vr2, 15
+	vsrai.h	$vr2, $vr2, 15
+	vbitsel.v	$vr0, $vr0, $vr1, $vr2
+	vilvl.h	$vr0, $vr0, $vr0
+	vslli.w	$vr0, $vr0, 16
+	vsrai.w	$vr0, $vr0, 16
+	vldi	$vr1, -3680
+	vldi	$vr2, -3327
+	vmadd.w	$vr2, $vr0, $vr1
+	xvinsgr2vr.w	$xr2, $a4, 2
+	xvinsgr2vr.w	$xr2, $a3, 3
+	xvinsgr2vr.w	$xr2, $a7, 4
+	xvinsgr2vr.w	$xr2, $a6, 5
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
+	xvinsgr2vr.w	$xr2, $a5, 6
+	xvinsgr2vr.w	$xr2, $a2, 7
+	xvsrai.w	$xr1, $xr2, 25
+	xvslt.w	$xr0, $xr0, $xr1
+	xvpickve2gr.w	$a0, $xr0, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr0, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr0, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr0, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr0, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr0, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_2)
+	xvpickve2gr.w	$a0, $xr0, 6
+	xvpickve2gr.w	$a1, $xr0, 7
+	xvpermi.q	$xr0, $xr1, 1
+	vmax.w	$vr0, $vr0, $vr3
+	xvpickve2gr.w	$a2, $xr1, 2
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.w	$a2, $xr1, 3
+	vinsgr2vr.w	$vr3, $a2, 1
+	vmaxi.w	$vr3, $vr3, -16
+	vpackev.d	$vr1, $vr3, $vr1
+	vpickev.h	$vr0, $vr0, $vr1
+	pcalau12i	$a2, %pc_hi20(.LCPI0_3)
+	vld	$vr1, $a2, %pc_lo12(.LCPI0_3)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_4)
+	vld	$vr3, $a2, %pc_lo12(.LCPI0_4)
+	vinsgr2vr.h	$vr2, $a0, 6
+	vinsgr2vr.h	$vr2, $a1, 7
+	vadd.h	$vr0, $vr0, $vr1
+	vbitsel.v	$vr0, $vr0, $vr3, $vr2
+	vst	$vr0, $s4, 0
 	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
@@ -1376,23 +1367,23 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 160
 	ret
-.LBB0_70:                               # %.preheader64.i
+.LBB0_74:                               # %.preheader64.i
 	ori	$a0, $zero, 7
-	bltu	$a0, $s2, .LBB0_22
-# %bb.71:
+	bltu	$a0, $s2, .LBB0_26
+# %bb.75:
 	slli.d	$a0, $s6, 1
 	ori	$a1, $zero, 16
 	sub.d	$a2, $a1, $a0
-	b	.LBB0_20
+	b	.LBB0_24
 .Lfunc_end0:
 	.size	Gsm_LPC_Analysis, .Lfunc_end0-Gsm_LPC_Analysis
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI0_0:
 	.word	.LBB0_4-.LJTI0_0
+	.word	.LBB0_15-.LJTI0_0
+	.word	.LBB0_9-.LJTI0_0
 	.word	.LBB0_12-.LJTI0_0
-	.word	.LBB0_8-.LJTI0_0
-	.word	.LBB0_10-.LJTI0_0
                                         # -- End function
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

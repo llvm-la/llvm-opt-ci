@@ -32,10 +32,8 @@ f:                                      # @f
 	addi.d	$a0, $sp, 20
 	addi.d	$a1, $sp, 8
 	sub.d	$a0, $a1, $a0
-	srai.d	$a1, $a0, 63
-	xor	$a0, $a0, $a1
-	sub.d	$a0, $a0, $a1
-	ori	$a1, $zero, 11
+	addi.d	$a0, $a0, 11
+	ori	$a1, $zero, 22
 	bgeu	$a1, $a0, .LBB2_2
 # %bb.1:                                # %.loopexit
 	addi.d	$sp, $sp, 32

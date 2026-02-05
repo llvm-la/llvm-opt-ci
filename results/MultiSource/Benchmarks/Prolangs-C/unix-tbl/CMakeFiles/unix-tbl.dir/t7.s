@@ -431,12 +431,12 @@ deftail:                                # @deftail
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(ncol)
-	ld.d	$s6, $a0, %got_pc_lo12(ncol)
-	ld.w	$a0, $s6, 0
+	ld.d	$s7, $a0, %got_pc_lo12(ncol)
+	ld.w	$a0, $s7, 0
 	blez	$a0, .LBB2_20
 # %bb.16:                               # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(nlin)
-	ld.d	$s7, $a0, %got_pc_lo12(nlin)
+	ld.d	$s6, $a0, %got_pc_lo12(nlin)
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.25)
 	pcalau12i	$a0, %pc_hi20(.L.str.26)
@@ -447,12 +447,12 @@ deftail:                                # @deftail
 	b	.LBB2_18
 	.p2align	4, , 16
 .LBB2_17:                               #   in Loop: Header=BB2_18 Depth=1
-	ld.w	$a0, $s6, 0
+	ld.w	$a0, $s7, 0
 	addi.w	$s2, $s2, 1
 	bge	$s2, $a0, .LBB2_20
 .LBB2_18:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $s7, 0
+	ld.w	$a0, $s6, 0
 	addi.w	$a0, $a0, -1
 	addi.d	$a2, $sp, 36
 	move	$a1, $s2
@@ -478,7 +478,7 @@ deftail:                                # @deftail
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(tohcol)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s7, 0
+	ld.w	$a0, $s6, 0
 	ld.w	$a3, $sp, 36
 	addi.w	$a1, $a0, -1
 	move	$a0, $s3
@@ -524,7 +524,7 @@ deftail:                                # @deftail
 	ld.w	$a0, $a0, 0
 	ld.w	$a3, $fp, 0
 	addi.w	$a1, $a0, -1
-	ld.w	$a2, $s6, 0
+	ld.w	$a2, $s7, 0
 	sltui	$a0, $a3, 1
 	ori	$a3, $zero, 2
 	sub.d	$a3, $a3, $a0

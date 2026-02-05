@@ -486,50 +486,46 @@ initialize_LA:                          # @initialize_LA
 	ld.w	$a1, $fp, 0
 	pcalau12i	$a2, %pc_hi20(lookback)
 	st.d	$a0, $a2, %pc_lo12(lookback)
-	blez	$a1, .LBB6_25
+	blez	$a1, .LBB6_24
 # %bb.17:                               # %.lr.ph63
 	ld.d	$a4, $s3, %pc_lo12(LAruleno)
 	ld.d	$a0, $s0, %pc_lo12(consistent)
 	ld.d	$a2, $s1, %pc_lo12(reduction_table)
 	move	$a3, $zero
-	b	.LBB6_20
+	b	.LBB6_19
 	.p2align	4, , 16
-.LBB6_18:                               #   in Loop: Header=BB6_20 Depth=1
-	move	$t0, $a4
-.LBB6_19:                               # %.loopexit
-                                        #   in Loop: Header=BB6_20 Depth=1
+.LBB6_18:                               # %.loopexit
+                                        #   in Loop: Header=BB6_19 Depth=1
 	addi.d	$a3, $a3, 1
-	move	$a4, $t0
-	beq	$a3, $a1, .LBB6_25
-.LBB6_20:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_24 Depth 2
+	beq	$a3, $a1, .LBB6_24
+.LBB6_19:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB6_23 Depth 2
 	ldx.bu	$a5, $a0, $a3
 	bnez	$a5, .LBB6_18
-# %bb.21:                               #   in Loop: Header=BB6_20 Depth=1
+# %bb.20:                               #   in Loop: Header=BB6_19 Depth=1
 	slli.d	$a5, $a3, 3
 	ldx.d	$a5, $a2, $a5
 	beqz	$a5, .LBB6_18
-# %bb.22:                               # %.preheader
-                                        #   in Loop: Header=BB6_20 Depth=1
+# %bb.21:                               # %.preheader
+                                        #   in Loop: Header=BB6_19 Depth=1
 	ld.h	$a6, $a5, 10
 	blez	$a6, .LBB6_18
-# %bb.23:                               # %.lr.ph58
-                                        #   in Loop: Header=BB6_20 Depth=1
+# %bb.22:                               # %.lr.ph58
+                                        #   in Loop: Header=BB6_19 Depth=1
 	move	$a6, $zero
 	addi.d	$a7, $a5, 12
 	.p2align	4, , 16
-.LBB6_24:                               #   Parent Loop BB6_20 Depth=1
+.LBB6_23:                               #   Parent Loop BB6_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.h	$t0, $a7, 0
 	st.h	$t0, $a4, 0
-	ld.h	$t1, $a5, 10
-	addi.d	$t0, $a4, 2
+	ld.h	$t0, $a5, 10
+	addi.d	$a4, $a4, 2
 	addi.d	$a6, $a6, 1
 	addi.d	$a7, $a7, 2
-	move	$a4, $t0
-	blt	$a6, $t1, .LBB6_24
-	b	.LBB6_19
-.LBB6_25:                               # %._crit_edge64
+	blt	$a6, $t0, .LBB6_23
+	b	.LBB6_18
+.LBB6_24:                               # %._crit_edge64
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload

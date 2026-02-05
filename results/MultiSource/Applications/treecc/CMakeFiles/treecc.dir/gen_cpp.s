@@ -138,7 +138,7 @@ TreeCCGenerateCPP:                      # @TreeCCGenerateCPP
 	jirl	$ra, $ra, 0
 	ldptr.d	$s0, $fp, 8200
 	beqz	$s0, .LBB0_24
-# %bb.15:                               # %.lr.ph.i25
+# %bb.15:                               # %.lr.ph.i24
 	ori	$s2, $zero, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.105)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.105)

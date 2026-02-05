@@ -97,9 +97,9 @@ main:                                   # @main
 	lu32i.d	$a0, 209715
 	lu52i.d	$a0, $a0, 819
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	ori	$s7, $zero, 19
+	ori	$s5, $zero, 19
 	lu12i.w	$a0, 128
-	ori	$s5, $a0, 69
+	ori	$s7, $a0, 69
 	addi.w	$a0, $zero, -16
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	b	.LBB0_3
@@ -302,11 +302,11 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_28:                               #   in Loop: Header=BB0_25 Depth=2
 	addi.d	$a4, $a3, -65
-	bltu	$s7, $a4, .LBB0_94
+	bltu	$s5, $a4, .LBB0_94
 # %bb.29:                               #   in Loop: Header=BB0_25 Depth=2
 	ori	$a5, $zero, 1
 	sll.d	$a4, $a5, $a4
-	and	$a4, $a4, $s5
+	and	$a4, $a4, $s7
 	bnez	$a4, .LBB0_24
 	b	.LBB0_94
 .LBB0_30:                               #   in Loop: Header=BB0_3 Depth=1
@@ -414,51 +414,51 @@ main:                                   # @main
 .LBB0_37:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $s4, 0
-	addi.d	$a4, $a1, -3
+	addi.d	$a4, $a2, -3
 	bstrpick.d	$a4, $a4, 31, 0
 	ld.d	$a5, $s4, 8
 	ldx.bu	$a3, $a3, $a4
-	add.d	$a4, $a5, $a2
+	add.d	$a4, $a5, $a1
 	st.b	$a3, $a4, -3
 	ld.d	$a4, $s4, 8
 	ldx.b	$a3, $s1, $a3
-	add.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a1
 	st.b	$a3, $a4, 4
 	ld.d	$a3, $s4, 0
-	addi.d	$a4, $a1, -2
+	addi.d	$a4, $a2, -2
 	bstrpick.d	$a4, $a4, 31, 0
 	ld.d	$a5, $s4, 8
 	ldx.bu	$a3, $a3, $a4
-	add.d	$a4, $a5, $a2
+	add.d	$a4, $a5, $a1
 	st.b	$a3, $a4, -2
 	ld.d	$a4, $s4, 8
 	ldx.b	$a3, $s1, $a3
-	add.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a1
 	st.b	$a3, $a4, 3
 	ld.d	$a3, $s4, 0
-	addi.d	$a4, $a1, -1
+	addi.d	$a4, $a2, -1
 	bstrpick.d	$a4, $a4, 31, 0
 	ld.d	$a5, $s4, 8
 	ldx.bu	$a3, $a3, $a4
-	add.d	$a4, $a5, $a2
+	add.d	$a4, $a5, $a1
 	st.b	$a3, $a4, -1
 	ld.d	$a4, $s4, 8
 	ldx.b	$a3, $s1, $a3
-	add.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a1
 	st.b	$a3, $a4, 2
 	ld.d	$a3, $s4, 0
-	bstrpick.d	$a4, $a1, 31, 0
+	bstrpick.d	$a4, $a2, 31, 0
 	ldx.bu	$a3, $a3, $a4
 	ld.d	$a4, $s4, 8
-	stx.b	$a3, $a4, $a2
+	stx.b	$a3, $a4, $a1
 	ld.d	$a4, $s4, 8
 	ldx.b	$a3, $s1, $a3
-	add.d	$a4, $a4, $a2
+	add.d	$a4, $a4, $a1
 	st.b	$a3, $a4, 1
 	ld.wu	$a3, $s4, 16
 	addi.d	$a0, $a0, 1
-	addi.d	$a2, $a2, 8
-	addi.w	$a1, $a1, 5
+	addi.d	$a1, $a1, 8
+	addi.w	$a2, $a2, 5
 	bltu	$a0, $a3, .LBB0_37
 .LBB0_38:                               # %init_splice_junctions.exit
 	pcalau12i	$a0, %pc_hi20(rna_seq_head)
@@ -2104,8 +2104,8 @@ print_res:                              # @print_res
 	ld.w	$t5, $t4, -3
 	ld.w	$t4, $t4, -7
 	vinsgr2vr.w	$vr4, $t5, 0
-	vshuf4i.b	$vr4, $vr4, 27
 	vinsgr2vr.w	$vr5, $t4, 0
+	vshuf4i.b	$vr4, $vr4, 27
 	vshuf4i.b	$vr5, $vr5, 27
 	vseq.b	$vr4, $vr4, $vr1
 	vilvl.b	$vr4, $vr4, $vr4

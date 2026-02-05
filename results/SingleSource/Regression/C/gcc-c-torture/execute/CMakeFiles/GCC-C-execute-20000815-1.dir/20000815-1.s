@@ -8,12 +8,12 @@ invalidate_memory:                      # @invalidate_memory
 	ld.b	$a0, $a0, 0
 	andi	$a1, $a0, 8
 	bnez	$a1, .LBB0_3
-# %bb.1:                                # %.split23.us
+# %bb.1:                                # %.split24.us
 	andi	$a0, $a0, 4
 	bnez	$a0, .LBB0_8
-.LBB0_2:                                # %.split30.us
+.LBB0_2:                                # %.split31.us
 	ret
-.LBB0_3:                                # %.split23.preheader
+.LBB0_3:                                # %.split24.preheader
 	pcalau12i	$a0, %pc_hi20(table)
 	addi.d	$a0, $a0, %pc_lo12(table)
 	move	$a1, $zero
@@ -24,7 +24,7 @@ invalidate_memory:                      # @invalidate_memory
                                         #   in Loop: Header=BB0_5 Depth=1
 	addi.d	$a1, $a1, 1
 	beq	$a1, $a2, .LBB0_2
-.LBB0_5:                                # %.split23
+.LBB0_5:                                # %.split24
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_6 Depth 2
 	slli.d	$a3, $a1, 3
@@ -40,18 +40,18 @@ invalidate_memory:                      # @invalidate_memory
 	ld.d	$a3, $a3, 8
 	bnez	$a3, .LBB0_6
 	b	.LBB0_4
-.LBB0_8:                                # %.split23.us.split.preheader
+.LBB0_8:                                # %.split24.us.split.preheader
 	pcalau12i	$a0, %pc_hi20(table)
 	addi.d	$a0, $a0, %pc_lo12(table)
 	move	$a1, $zero
 	ori	$a2, $zero, 31
 	b	.LBB0_10
 	.p2align	4, , 16
-.LBB0_9:                                # %._crit_edge.split.us.split.us27
+.LBB0_9:                                # %._crit_edge.split.us.split.us28
                                         #   in Loop: Header=BB0_10 Depth=1
 	addi.d	$a1, $a1, 1
 	beq	$a1, $a2, .LBB0_2
-.LBB0_10:                               # %.split23.us.split
+.LBB0_10:                               # %.split24.us.split
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_12 Depth 2
 	slli.d	$a3, $a1, 3
@@ -103,7 +103,7 @@ remove_from_table:                      # @remove_from_table
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %.split23.us.i
+# %bb.0:                                # %.split24.us.i
 	addi.d	$sp, $sp, -96
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
@@ -122,11 +122,11 @@ main:                                   # @main
 	ori	$a2, $zero, 31
 	b	.LBB3_2
 	.p2align	4, , 16
-.LBB3_1:                                # %._crit_edge.split.us.split.us27.i
+.LBB3_1:                                # %._crit_edge.split.us.split.us28.i
                                         #   in Loop: Header=BB3_2 Depth=1
 	addi.d	$a1, $a1, 1
 	beq	$a1, $a2, .LBB3_7
-.LBB3_2:                                # %.split23.us.split.i
+.LBB3_2:                                # %.split24.us.split.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_4 Depth 2
 	slli.d	$a3, $a1, 3

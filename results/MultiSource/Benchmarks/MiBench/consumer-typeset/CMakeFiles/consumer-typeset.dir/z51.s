@@ -194,8 +194,7 @@ Plain_PrintLength:                      # @Plain_PrintLength
 	masknez	$a4, $a4, $a2
 	maskeqz	$a2, $a3, $a2
 	or	$a2, $a2, $a4
-	ld.w	$a2, $a2, 0
-	movgr2fr.w	$fa1, $a2
+	fld.s	$fa1, $a2, 0
 	ffint.s.w	$fa1, $fa1
 	fdiv.s	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa0, $fa0
@@ -550,25 +549,23 @@ Plain_PrintWord:                        # @Plain_PrintWord
 	pcalau12i	$a0, %got_pc_hi20(TotalWordCount)
 	ld.d	$a0, $a0, %got_pc_lo12(TotalWordCount)
 	ld.w	$a3, $a0, 0
-	addi.d	$a3, $a3, 1
 	pcalau12i	$a4, %pc_hi20(PlainCharWidth)
-	ld.w	$a4, $a4, %pc_lo12(PlainCharWidth)
+	fld.s	$fa0, $a4, %pc_lo12(PlainCharWidth)
+	addi.d	$a3, $a3, 1
 	st.w	$a3, $a0, 0
-	movgr2fr.w	$fa0, $a1
-	ffint.s.w	$fa0, $fa0
-	movgr2fr.w	$fa1, $a4
+	movgr2fr.w	$fa1, $a1
 	ffint.s.w	$fa1, $fa1
-	fdiv.s	$fa0, $fa0, $fa1
+	ffint.s.w	$fa0, $fa0
+	fdiv.s	$fa0, $fa1, $fa0
 	fcvt.d.s	$fa0, $fa0
 	vldi	$vr1, -928
 	fadd.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
 	pcalau12i	$a0, %pc_hi20(PlainCharHeight)
-	ld.w	$a0, $a0, %pc_lo12(PlainCharHeight)
+	fld.s	$fa1, $a0, %pc_lo12(PlainCharHeight)
 	movfr2gr.s	$s0, $fa0
 	movgr2fr.w	$fa0, $a2
 	ffint.s.w	$fa0, $fa0
-	movgr2fr.w	$fa1, $a0
 	ffint.s.w	$fa1, $fa1
 	fdiv.s	$fa0, $fa0, $fa1
 	ftintrz.w.s	$fa0, $fa0
@@ -686,9 +683,9 @@ Plain_PrintPlainGraphic:                # @Plain_PrintPlainGraphic
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 8                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
 	ld.bu	$a4, $a0, 32
 	move	$s1, $a3
 	move	$s2, $a1
@@ -706,18 +703,17 @@ Plain_PrintPlainGraphic:                # @Plain_PrintPlainGraphic
 # %bb.2:
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(PlainCharWidth)
-	ld.w	$a0, $a0, %pc_lo12(PlainCharWidth)
-	movgr2fr.w	$fa0, $s2
-	ffint.s.w	$fs0, $fa0
-	movgr2fr.w	$fa0, $a0
-	ffint.s.w	$fs1, $fa0
-	fdiv.s	$fa0, $fs0, $fs1
+	fld.s	$fa0, $a0, %pc_lo12(PlainCharWidth)
+	movgr2fr.w	$fa1, $s2
+	ffint.s.w	$fs1, $fa1
+	ffint.s.w	$fs2, $fa0
+	fdiv.s	$fa0, $fs1, $fs2
 	fcvt.d.s	$fa0, $fa0
 	vldi	$vr1, -928
 	pcalau12i	$a0, %pc_hi20(PlainCharHeight)
-	ld.w	$s6, $a0, %pc_lo12(PlainCharHeight)
-	ld.w	$s7, $s1, 48
-	ld.w	$s8, $s1, 56
+	fld.s	$fs0, $a0, %pc_lo12(PlainCharHeight)
+	ld.w	$s6, $s1, 48
+	ld.w	$s7, $s1, 56
 	ld.w	$s2, $s1, 52
 	ld.w	$s5, $s1, 60
 	fadd.d	$fa0, $fa0, $fa1
@@ -731,11 +727,11 @@ Plain_PrintPlainGraphic:                # @Plain_PrintPlainGraphic
 	jirl	$ra, $ra, 0
 	bltz	$s1, .LBB17_14
 # %bb.3:
-	add.d	$a0, $s8, $s7
+	add.d	$a0, $s7, $s6
 	movgr2fr.w	$fa0, $a0
 	ffint.s.w	$fa0, $fa0
-	fadd.s	$fa0, $fs0, $fa0
-	fdiv.s	$fa0, $fa0, $fs1
+	fadd.s	$fa0, $fs1, $fa0
+	fdiv.s	$fa0, $fa0, $fs2
 	fcvt.d.s	$fa0, $fa0
 	pcalau12i	$a0, %pc_hi20(hsize)
 	ld.w	$a1, $a0, %pc_lo12(hsize)
@@ -747,8 +743,7 @@ Plain_PrintPlainGraphic:                # @Plain_PrintPlainGraphic
 # %bb.4:
 	movgr2fr.w	$fa0, $s4
 	ffint.s.w	$fa1, $fa0
-	movgr2fr.w	$fa0, $s6
-	ffint.s.w	$fa0, $fa0
+	ffint.s.w	$fa0, $fs0
 	fdiv.s	$fa2, $fa1, $fa0
 	ftintrz.w.s	$fa2, $fa2
 	movfr2gr.s	$a3, $fa2
@@ -805,9 +800,9 @@ Plain_PrintPlainGraphic:                # @Plain_PrintPlainGraphic
 	add.d	$a5, $a5, $a1
 	blt	$a0, $a3, .LBB17_9
 .LBB17_12:                              # %.loopexit48
-	fld.d	$fs1, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
@@ -838,9 +833,9 @@ Plain_PrintPlainGraphic:                # @Plain_PrintPlainGraphic
 	move	$a5, $fp
 	move	$a6, $zero
 	move	$a7, $zero
-	fld.d	$fs1, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
@@ -864,9 +859,9 @@ Plain_PrintPlainGraphic:                # @Plain_PrintPlainGraphic
 .LBB17_16:
 	ori	$a3, $zero, 2
 	move	$a4, $s0
-	fld.d	$fs1, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload

@@ -1,112 +1,39 @@
 	.file	"ashrdi-1.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function main
-.LCPI0_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
-	.globl	main
+	.globl	main                            # -- Begin function main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %vector.ph
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_0)
-	lu12i.w	$a1, -74566
-	ori	$a1, $a1, 2432
-	lu32i.d	$a1, 274975
-	lu52i.d	$a1, $a1, 1893
-	xvreplgr2vr.d	$xr2, $a1
-	pcalau12i	$a1, %pc_hi20(.Lswitch.table.main)
-	addi.d	$a1, $a1, %pc_lo12(.Lswitch.table.main)
-	move	$a5, $zero
-	xvrepli.b	$xr0, -1
-	ori	$a2, $zero, 480
-	.p2align	4, , 16
-.LBB0_1:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a3, $a5
-	xvldx	$xr3, $a1, $a5
-	xvsrl.d	$xr4, $xr2, $xr1
-	xvseq.d	$xr3, $xr4, $xr3
-	xvxor.v	$xr3, $xr3, $xr0
-	xvmskltz.d	$xr3, $xr3
-	xvpickve2gr.wu	$a4, $xr3, 0
-	xvpickve2gr.wu	$a5, $xr3, 4
-	bstrins.d	$a4, $a5, 3, 2
-	bnez	$a4, .LBB0_3
-# %bb.2:                                # %vector.body
-                                        #   in Loop: Header=BB0_1 Depth=1
-	xvaddi.du	$xr1, $xr1, 4
-	addi.d	$a5, $a3, 32
-	bne	$a3, $a2, .LBB0_1
-.LBB0_3:                                # %middle.split
-	andi	$a1, $a4, 15
-	bnez	$a1, .LBB0_8
-# %bb.4:                                # %vector.body42.preheader
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_0)
-	lu12i.w	$a0, 484675
-	ori	$a0, $a0, 528
-	lu32i.d	$a0, -214369
-	lu52i.d	$a0, $a0, -1811
-	xvreplgr2vr.d	$xr2, $a0
-	pcalau12i	$a0, %pc_hi20(.Lswitch.table.main.1)
-	addi.d	$a0, $a0, %pc_lo12(.Lswitch.table.main.1)
-	move	$a4, $zero
-	ori	$a1, $zero, 480
-	.p2align	4, , 16
-.LBB0_5:                                # %vector.body42
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	xvldx	$xr3, $a0, $a4
-	xvsra.d	$xr4, $xr2, $xr1
-	xvseq.d	$xr3, $xr4, $xr3
-	xvxor.v	$xr3, $xr3, $xr0
-	xvmskltz.d	$xr3, $xr3
-	xvpickve2gr.wu	$a3, $xr3, 0
-	xvpickve2gr.wu	$a4, $xr3, 4
-	bstrins.d	$a3, $a4, 3, 2
-	bnez	$a3, .LBB0_7
-# %bb.6:                                # %vector.body42
-                                        #   in Loop: Header=BB0_5 Depth=1
-	xvaddi.du	$xr1, $xr1, 4
-	addi.d	$a4, $a2, 32
-	bne	$a2, $a1, .LBB0_5
-.LBB0_7:                                # %middle.split48
-	andi	$a0, $a3, 15
-	beqz	$a0, .LBB0_9
-.LBB0_8:                                # %vector.early.exit
-	pcaddu18i	$ra, %call36(abort)
-	jirl	$ra, $ra, 0
-.LBB0_9:                                # %.preheader26.preheader
 	move	$a0, $zero
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 512
 	.p2align	4, , 16
-.LBB0_10:                               # %.preheader26
+.LBB0_1:                                # %.preheader26
                                         # =>This Inner Loop Header: Depth=1
-	beqz	$a1, .LBB0_8
-# %bb.11:                               #   in Loop: Header=BB0_10 Depth=1
+	beqz	$a1, .LBB0_7
+# %bb.2:                                #   in Loop: Header=BB0_1 Depth=1
 	addi.d	$a0, $a0, 8
-	bne	$a0, $a2, .LBB0_10
-# %bb.12:                               # %.preheader.preheader
+	bne	$a0, $a2, .LBB0_1
+# %bb.3:                                # %.preheader.preheader
 	move	$a0, $zero
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 512
 	.p2align	4, , 16
-.LBB0_13:                               # %.preheader
+.LBB0_4:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	beqz	$a1, .LBB0_8
-# %bb.14:                               #   in Loop: Header=BB0_13 Depth=1
+	beqz	$a1, .LBB0_7
+# %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$a0, $a0, 8
-	bne	$a0, $a2, .LBB0_13
-# %bb.15:
+	bne	$a0, $a2, .LBB0_4
+# %bb.6:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(exit)
+	jirl	$ra, $ra, 0
+.LBB0_7:
+	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main

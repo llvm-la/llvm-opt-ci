@@ -144,29 +144,21 @@ add_point:                              # @add_point
 	.type	compute_v,@function
 compute_v:                              # @compute_v
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
-	ld.wu	$fp, $a0, 4
-	ld.w	$s2, $a0, 8
-	addi.w	$s3, $fp, 0
+	ld.d	$s0, $a0, 4
+	addi.w	$s2, $s0, 0
 	pcaddu18i	$ra, %call36(next)
 	jirl	$ra, $ra, 0
-	ld.wu	$a1, $a0, 4
-	ld.w	$s4, $a0, 8
-	addi.w	$s5, $a1, 0
-	slli.d	$a0, $s2, 32
-	or	$s0, $a0, $fp
-	slli.d	$a0, $s4, 32
-	or	$s1, $a0, $a1
+	ld.d	$s1, $a0, 4
+	addi.w	$s3, $s1, 0
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(vector)
@@ -179,9 +171,11 @@ compute_v:                              # @compute_v
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(calculate_c)
 	jirl	$ra, $ra, 0
-	bge	$s3, $s5, .LBB4_4
+	bge	$s2, $s3, .LBB4_4
 # %bb.1:
-	bge	$s2, $s4, .LBB4_4
+	srai.d	$a0, $s0, 32
+	srai.d	$a1, $s1, 32
+	bge	$a0, $a1, .LBB4_4
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI4_1)
@@ -203,9 +197,11 @@ compute_v:                              # @compute_v
 	fmov.d	$fa0, $fs0
 	b	.LBB4_20
 .LBB4_4:
-	bge	$s3, $s5, .LBB4_8
+	srli.d	$a0, $s0, 32
+	srli.d	$a1, $s1, 32
+	bge	$s2, $s3, .LBB4_8
 # %bb.5:
-	bne	$s2, $s4, .LBB4_8
+	bne	$a0, $a1, .LBB4_8
 # %bb.6:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI4_1)
@@ -214,9 +210,11 @@ compute_v:                              # @compute_v
 	lu32i.d	$a1, 1
 	b	.LBB4_19
 .LBB4_8:
-	bge	$s3, $s5, .LBB4_12
+	addi.w	$a2, $a1, 0
+	addi.w	$a3, $a0, 0
+	bge	$s2, $s3, .LBB4_12
 # %bb.9:
-	bge	$s4, $s2, .LBB4_12
+	bge	$a2, $a3, .LBB4_12
 # %bb.10:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI4_1)
@@ -237,17 +235,17 @@ compute_v:                              # @compute_v
 	fmov.d	$fa1, $fs0
 	b	.LBB4_20
 .LBB4_12:
-	bne	$s3, $s5, .LBB4_15
+	bne	$s2, $s3, .LBB4_15
 # %bb.13:
-	bge	$s2, $s4, .LBB4_15
+	bge	$a3, $a2, .LBB4_15
 # %bb.14:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI4_0)
 	b	.LBB4_18
 .LBB4_15:
-	bne	$s3, $s5, .LBB4_22
+	bne	$s2, $s3, .LBB4_22
 # %bb.16:
-	bge	$s4, $s2, .LBB4_22
+	bge	$a2, $a3, .LBB4_22
 # %bb.17:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI4_1)
@@ -266,20 +264,18 @@ compute_v:                              # @compute_v
 	bstrins.d	$a0, $a1, 63, 32
 	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB4_22:
-	bge	$s5, $s3, .LBB4_25
+	bge	$s3, $s2, .LBB4_25
 # %bb.23:
-	bge	$s2, $s4, .LBB4_25
+	bge	$a3, $a2, .LBB4_25
 # %bb.24:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI4_0)
@@ -297,17 +293,17 @@ compute_v:                              # @compute_v
 	bceqz	$fcc0, .LBB4_11
 	b	.LBB4_21
 .LBB4_25:
-	bge	$s5, $s3, .LBB4_28
+	bge	$s3, $s2, .LBB4_28
 # %bb.26:
-	bne	$s2, $s4, .LBB4_28
+	bne	$a0, $a1, .LBB4_28
 # %bb.27:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI4_0)
 	b	.LBB4_7
 .LBB4_28:
-	bge	$s5, $s3, .LBB4_32
+	bge	$s3, $s2, .LBB4_32
 # %bb.29:
-	bge	$s4, $s2, .LBB4_32
+	bge	$a2, $a3, .LBB4_32
 # %bb.30:
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI4_0)

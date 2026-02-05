@@ -564,11 +564,11 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	st.w	$zero, $fp, 216
 	vld	$vr0, $a2, 0
 	addi.d	$s2, $fp, 408
-	addi.d	$s0, $fp, 168
 	vst	$vr0, $fp, 144
 	fld.s	$fa0, $fp, 148
 	fld.s	$fa1, $fp, 144
 	fld.s	$fa2, $fp, 152
+	addi.d	$s0, $fp, 168
 	fmul.s	$fa3, $fa0, $fa0
 	fmadd.s	$fa3, $fa1, $fa1, $fa3
 	fmadd.s	$fs0, $fa2, $fa2, $fa3
@@ -612,17 +612,17 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	vld	$vr0, $a0, 16
 	vst	$vr0, $fp, 144
 	vld	$vr0, $a0, 16
-	move	$s8, $zero
 	move	$s7, $zero
+	move	$s8, $zero
 	vst	$vr0, $sp, 80
 	vst	$vr0, $sp, 64
 	vst	$vr0, $sp, 48
 	vst	$vr0, $sp, 32
-	ld.w	$s4, $fp, 444
+	ld.w	$s6, $fp, 444
 	fld.s	$fa1, $fp, 144
 	fld.s	$fa0, $fp, 148
 	fld.s	$fs3, $fp, 152
-	ori	$s5, $zero, 56
+	ori	$s4, $zero, 56
 	lu12i.w	$a0, 232731
 	ori	$a0, $a0, 1815
 	movgr2fr.w	$fs2, $a0
@@ -636,10 +636,10 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	addi.d	$a0, $a0, -15
 	sltui	$a0, $a0, 1
 	masknez	$a2, $a2, $a0
-	maskeqz	$a0, $s6, $a0
+	maskeqz	$a0, $s5, $a0
 	or	$a0, $a0, $a2
-	addi.w	$s7, $s7, 1
-	sltui	$a2, $s7, 128
+	addi.w	$s8, $s8, 1
+	sltui	$a2, $s8, 128
 	maskeqz	$a0, $a0, $a2
 	ori	$a3, $zero, 2
 	masknez	$a2, $a3, $a2
@@ -653,11 +653,11 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	fmadd.s	$fa2, $fs3, $fs3, $fa2
 	fsqrt.s	$fs4, $fa2
 	fcmp.cule.s	$fcc0, $fs2, $fs4
-	bstrpick.d	$a1, $s4, 31, 0
+	bstrpick.d	$a1, $s6, 31, 0
 	bceqz	$fcc0, .LBB3_36
 # %bb.3:                                #   in Loop: Header=BB3_2 Depth=1
-	mul.d	$a0, $a1, $s5
-	move	$s6, $s0
+	mul.d	$a0, $a1, $s4
+	move	$s5, $s0
 	add.d	$s1, $s0, $a0
 	ld.wu	$a0, $s1, 48
 	fneg.s	$fa1, $fa1
@@ -749,16 +749,15 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	bcnez	$fcc0, .LBB3_27
 # %bb.7:                                # %.critedge
                                         #   in Loop: Header=BB3_2 Depth=1
-	addi.d	$a1, $a1, 16
 	fld.s	$fa3, $fp, 148
-	addi.d	$a2, $s8, 1
-	andi	$s8, $a2, 3
+	addi.d	$a2, $s7, 1
+	andi	$s7, $a2, 3
 	fld.s	$fa4, $fp, 144
 	fmul.s	$fa2, $fa3, $fa2
 	fld.s	$fa3, $fp, 152
-	slli.d	$a2, $s8, 4
+	slli.d	$a2, $s7, 4
 	fmadd.s	$fa0, $fa4, $fa0, $fa2
-	vld	$vr2, $a1, 0
+	vld	$vr2, $a1, 16
 	fmadd.s	$fa0, $fa3, $fa1, $fa0
 	fdiv.s	$fa0, $fa0, $fs4
 	fcmp.clt.s	$fcc0, $fs1, $fa0
@@ -773,12 +772,12 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	bceqz	$fcc0, .LBB3_27
 # %bb.8:                                #   in Loop: Header=BB3_2 Depth=1
 	st.w	$zero, $sp, 12
-	move	$s0, $s6
+	move	$s0, $s5
 	ori	$a1, $zero, 4
 	beq	$a0, $a1, .LBB3_16
 # %bb.9:                                #   in Loop: Header=BB3_2 Depth=1
 	ori	$a1, $zero, 3
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	beq	$a0, $a1, .LBB3_15
 # %bb.10:                               #   in Loop: Header=BB3_2 Depth=1
 	ori	$a1, $zero, 2
@@ -854,7 +853,7 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	pcaddu18i	$ra, %call36(_ZN12gjkepa2_impl3GJK13projectoriginERK9btVector3S3_S3_S3_PfRj)
 	jirl	$ra, $ra, 0
 	fmov.s	$fs0, $fa0
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 	b	.LBB3_20
 .LBB3_17:                               #   in Loop: Header=BB3_2 Depth=1
 	lu52i.d	$a0, $zero, 1016
@@ -868,7 +867,7 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 .LBB3_18:                               #   in Loop: Header=BB3_2 Depth=1
 	lu12i.w	$a0, 260096
 	st.d	$a0, $sp, 16
-	st.w	$s6, $sp, 12
+	st.w	$s5, $sp, 12
 .LBB3_19:                               # %_ZN12gjkepa2_impl3GJK13projectoriginERK9btVector3S3_PfRj.exit
                                         #   in Loop: Header=BB3_2 Depth=1
 	fmul.s	$fa1, $fa1, $fa1
@@ -880,17 +879,16 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	fcmp.cult.s	$fcc0, $fs0, $fs3
 	bcnez	$fcc0, .LBB3_35
 # %bb.21:                               #   in Loop: Header=BB3_2 Depth=1
-	sub.w	$s4, $s6, $s4
-	bstrpick.d	$a1, $s4, 31, 0
-	mul.d	$a0, $a1, $s5
+	sub.w	$s6, $s5, $s6
+	bstrpick.d	$a1, $s6, 31, 0
+	mul.d	$a0, $a1, $s4
 	add.d	$a2, $s0, $a0
 	st.w	$zero, $a2, 48
 	ld.wu	$a3, $s1, 48
 	ld.w	$a0, $sp, 12
 	vrepli.b	$vr0, 0
-	addi.d	$a4, $fp, 144
-	vst	$vr0, $a4, 0
-	st.w	$s4, $fp, 444
+	vst	$vr0, $fp, 144
+	st.w	$s6, $fp, 444
 	fmov.s	$fa0, $fs3
 	fmov.s	$fa1, $fs3
 	beqz	$a3, .LBB3_1
@@ -950,8 +948,8 @@ _ZN12gjkepa2_impl3GJK8EvaluateERKNS_13MinkowskiDiffERK9btVector3: # @_ZN12gjkepa
 	ld.wu	$a1, $fp, 444
 	ori	$a0, $zero, 56
 	mul.d	$a0, $a1, $a0
-	move	$s0, $s6
-	add.d	$a0, $s6, $a0
+	move	$s0, $s5
+	add.d	$a0, $s5, $a0
 	ld.w	$a2, $a0, 48
 	addi.d	$a2, $a2, -1
 	st.w	$a2, $a0, 48

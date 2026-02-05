@@ -1222,16 +1222,16 @@ Fgetlag:                                # @Fgetlag
 	vshuf4i.w	$vr2, $vr2, 16
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
 	vpickve2gr.d	$a7, $vr2, 0
-	slli.d	$a7, $a7, 4
 	vpickve2gr.d	$t0, $vr2, 1
+	vshuf4i.w	$vr2, $vr3, 16
+	vslli.d	$vr2, $vr2, 32
+	vsrai.d	$vr2, $vr2, 32
+	vpickve2gr.d	$t1, $vr2, 0
+	vpickve2gr.d	$t2, $vr2, 1
+	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
-	vpickve2gr.d	$t1, $vr3, 0
 	slli.d	$t1, $t1, 4
-	vpickve2gr.d	$t2, $vr3, 1
 	slli.d	$t2, $t2, 4
 	fldx.d	$fa2, $a0, $a7
 	fldx.d	$fa3, $a0, $t0
@@ -1853,22 +1853,22 @@ Fgetlag:                                # @Fgetlag
 .LBB0_202:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.d	$xr2, $xr1, $xr0
-	xvsubi.du	$xr3, $xr2, 4
 	xvpickve2gr.d	$t0, $xr2, 0
-	slli.d	$t0, $t0, 4
 	xvpickve2gr.d	$t1, $xr2, 1
-	slli.d	$t1, $t1, 4
 	xvpickve2gr.d	$t2, $xr2, 2
-	slli.d	$t2, $t2, 4
 	xvpickve2gr.d	$t3, $xr2, 3
+	xvsubi.du	$xr2, $xr2, 4
+	xvpickve2gr.d	$t4, $xr2, 0
+	xvpickve2gr.d	$t5, $xr2, 1
+	xvpickve2gr.d	$t6, $xr2, 2
+	xvpickve2gr.d	$t7, $xr2, 3
+	slli.d	$t0, $t0, 4
+	slli.d	$t1, $t1, 4
+	slli.d	$t2, $t2, 4
 	slli.d	$t3, $t3, 4
-	xvpickve2gr.d	$t4, $xr3, 0
 	slli.d	$t4, $t4, 4
-	xvpickve2gr.d	$t5, $xr3, 1
 	slli.d	$t5, $t5, 4
-	xvpickve2gr.d	$t6, $xr3, 2
 	slli.d	$t6, $t6, 4
-	xvpickve2gr.d	$t7, $xr3, 3
 	fldx.d	$fa2, $a3, $t2
 	fldx.d	$fa3, $a3, $t3
 	slli.d	$t2, $t7, 4
@@ -2530,14 +2530,14 @@ Falign:                                 # @Falign
 	pcalau12i	$a1, %got_pc_hi20(fftscore)
 	ld.d	$a1, $a1, %got_pc_lo12(fftscore)
 	ld.w	$a1, $a1, 0
-	sltui	$a1, $a1, 1
-	ori	$a2, $zero, 1
-	masknez	$a3, $a2, $a1
-	ori	$a4, $zero, 20
-	maskeqz	$a1, $a4, $a1
-	or	$a1, $a1, $a3
+	sltu	$a1, $zero, $a1
+	ori	$a2, $zero, 20
+	masknez	$a2, $a2, $a1
+	ori	$a3, $zero, 1
+	maskeqz	$a1, $a3, $a1
+	or	$a1, $a1, $a2
 	masknez	$a1, $a1, $a0
-	maskeqz	$a2, $a2, $a0
+	maskeqz	$a2, $a3, $a0
 	ld.w	$a0, $s4, %pc_lo12(Falign.localalloclen)
 	or	$a1, $a2, $a1
 	pcalau12i	$a2, %pc_hi20(n20or4or2)
@@ -4325,16 +4325,16 @@ Falign:                                 # @Falign
 	vshuf4i.w	$vr2, $vr2, 16
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
 	vpickve2gr.d	$a7, $vr2, 0
-	slli.d	$a7, $a7, 4
 	vpickve2gr.d	$t0, $vr2, 1
+	vshuf4i.w	$vr2, $vr3, 16
+	vslli.d	$vr2, $vr2, 32
+	vsrai.d	$vr2, $vr2, 32
+	vpickve2gr.d	$t1, $vr2, 0
+	vpickve2gr.d	$t2, $vr2, 1
+	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
-	vpickve2gr.d	$t1, $vr3, 0
 	slli.d	$t1, $t1, 4
-	vpickve2gr.d	$t2, $vr3, 1
 	slli.d	$t2, $t2, 4
 	fldx.d	$fa2, $a0, $a7
 	fldx.d	$fa3, $a0, $t0
@@ -4364,22 +4364,22 @@ Falign:                                 # @Falign
 .LBB2_243:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.d	$xr2, $xr1, $xr0
-	xvsubi.du	$xr3, $xr2, 4
 	xvpickve2gr.d	$t0, $xr2, 0
-	slli.d	$t0, $t0, 4
 	xvpickve2gr.d	$t1, $xr2, 1
-	slli.d	$t1, $t1, 4
 	xvpickve2gr.d	$t2, $xr2, 2
-	slli.d	$t2, $t2, 4
 	xvpickve2gr.d	$t3, $xr2, 3
+	xvsubi.du	$xr2, $xr2, 4
+	xvpickve2gr.d	$t4, $xr2, 0
+	xvpickve2gr.d	$t5, $xr2, 1
+	xvpickve2gr.d	$t6, $xr2, 2
+	xvpickve2gr.d	$t7, $xr2, 3
+	slli.d	$t0, $t0, 4
+	slli.d	$t1, $t1, 4
+	slli.d	$t2, $t2, 4
 	slli.d	$t3, $t3, 4
-	xvpickve2gr.d	$t4, $xr3, 0
 	slli.d	$t4, $t4, 4
-	xvpickve2gr.d	$t5, $xr3, 1
 	slli.d	$t5, $t5, 4
-	xvpickve2gr.d	$t6, $xr3, 2
 	slli.d	$t6, $t6, 4
-	xvpickve2gr.d	$t7, $xr3, 3
 	fldx.d	$fa2, $a3, $t2
 	fldx.d	$fa3, $a3, $t3
 	slli.d	$t2, $t7, 4
@@ -4860,14 +4860,14 @@ Falign_noudp:                           # @Falign_noudp
 	pcalau12i	$a1, %got_pc_hi20(fftscore)
 	ld.d	$a1, $a1, %got_pc_lo12(fftscore)
 	ld.w	$a1, $a1, 0
-	sltui	$a1, $a1, 1
-	ori	$a2, $zero, 1
-	masknez	$a3, $a2, $a1
-	ori	$a4, $zero, 20
-	maskeqz	$a1, $a4, $a1
-	or	$a1, $a1, $a3
+	sltu	$a1, $zero, $a1
+	ori	$a2, $zero, 20
+	masknez	$a2, $a2, $a1
+	ori	$a3, $zero, 1
+	maskeqz	$a1, $a3, $a1
+	or	$a1, $a1, $a2
 	masknez	$a1, $a1, $a0
-	maskeqz	$a2, $a2, $a0
+	maskeqz	$a2, $a3, $a0
 	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
 	ld.w	$a0, $s4, %pc_lo12(Falign_noudp.localalloclen)
 	or	$a1, $a2, $a1
@@ -6604,16 +6604,16 @@ Falign_noudp:                           # @Falign_noudp
 	vshuf4i.w	$vr2, $vr2, 16
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
 	vpickve2gr.d	$a7, $vr2, 0
-	slli.d	$a7, $a7, 4
 	vpickve2gr.d	$t0, $vr2, 1
+	vshuf4i.w	$vr2, $vr3, 16
+	vslli.d	$vr2, $vr2, 32
+	vsrai.d	$vr2, $vr2, 32
+	vpickve2gr.d	$t1, $vr2, 0
+	vpickve2gr.d	$t2, $vr2, 1
+	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
-	vpickve2gr.d	$t1, $vr3, 0
 	slli.d	$t1, $t1, 4
-	vpickve2gr.d	$t2, $vr3, 1
 	slli.d	$t2, $t2, 4
 	fldx.d	$fa2, $a0, $a7
 	fldx.d	$fa3, $a0, $t0
@@ -6643,22 +6643,22 @@ Falign_noudp:                           # @Falign_noudp
 .LBB3_264:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.d	$xr2, $xr1, $xr0
-	xvsubi.du	$xr3, $xr2, 4
 	xvpickve2gr.d	$t0, $xr2, 0
-	slli.d	$t0, $t0, 4
 	xvpickve2gr.d	$t1, $xr2, 1
-	slli.d	$t1, $t1, 4
 	xvpickve2gr.d	$t2, $xr2, 2
-	slli.d	$t2, $t2, 4
 	xvpickve2gr.d	$t3, $xr2, 3
+	xvsubi.du	$xr2, $xr2, 4
+	xvpickve2gr.d	$t4, $xr2, 0
+	xvpickve2gr.d	$t5, $xr2, 1
+	xvpickve2gr.d	$t6, $xr2, 2
+	xvpickve2gr.d	$t7, $xr2, 3
+	slli.d	$t0, $t0, 4
+	slli.d	$t1, $t1, 4
+	slli.d	$t2, $t2, 4
 	slli.d	$t3, $t3, 4
-	xvpickve2gr.d	$t4, $xr3, 0
 	slli.d	$t4, $t4, 4
-	xvpickve2gr.d	$t5, $xr3, 1
 	slli.d	$t5, $t5, 4
-	xvpickve2gr.d	$t6, $xr3, 2
 	slli.d	$t6, $t6, 4
-	xvpickve2gr.d	$t7, $xr3, 3
 	fldx.d	$fa2, $a3, $t2
 	fldx.d	$fa3, $a3, $t3
 	slli.d	$t2, $t7, 4
@@ -7100,14 +7100,14 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	pcalau12i	$a1, %got_pc_hi20(fftscore)
 	ld.d	$a1, $a1, %got_pc_lo12(fftscore)
 	ld.w	$a1, $a1, 0
-	sltui	$a1, $a1, 1
-	ori	$a2, $zero, 1
-	masknez	$a3, $a2, $a1
-	ori	$a4, $zero, 20
-	maskeqz	$a1, $a4, $a1
-	or	$a1, $a1, $a3
+	sltu	$a1, $zero, $a1
+	ori	$a2, $zero, 20
+	masknez	$a2, $a2, $a1
+	ori	$a3, $zero, 1
+	maskeqz	$a1, $a3, $a1
+	or	$a1, $a1, $a2
 	masknez	$a1, $a1, $a0
-	maskeqz	$a2, $a2, $a0
+	maskeqz	$a2, $a3, $a0
 	move	$s1, $s2
 	ld.w	$a0, $s2, %pc_lo12(Falign_udpari_long.localalloclen)
 	or	$a1, $a2, $a1
@@ -8978,16 +8978,16 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	vshuf4i.w	$vr2, $vr2, 16
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
 	vpickve2gr.d	$a7, $vr2, 0
-	slli.d	$a7, $a7, 4
 	vpickve2gr.d	$t0, $vr2, 1
+	vshuf4i.w	$vr2, $vr3, 16
+	vslli.d	$vr2, $vr2, 32
+	vsrai.d	$vr2, $vr2, 32
+	vpickve2gr.d	$t1, $vr2, 0
+	vpickve2gr.d	$t2, $vr2, 1
+	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
-	vpickve2gr.d	$t1, $vr3, 0
 	slli.d	$t1, $t1, 4
-	vpickve2gr.d	$t2, $vr3, 1
 	slli.d	$t2, $t2, 4
 	fldx.d	$fa2, $a0, $a7
 	fldx.d	$fa3, $a0, $t0
@@ -9030,22 +9030,22 @@ Falign_udpari_long:                     # @Falign_udpari_long
 .LBB4_267:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvsub.d	$xr2, $xr1, $xr0
-	xvsubi.du	$xr3, $xr2, 4
 	xvpickve2gr.d	$t0, $xr2, 0
-	slli.d	$t0, $t0, 4
 	xvpickve2gr.d	$t1, $xr2, 1
-	slli.d	$t1, $t1, 4
 	xvpickve2gr.d	$t2, $xr2, 2
-	slli.d	$t2, $t2, 4
 	xvpickve2gr.d	$t3, $xr2, 3
+	xvsubi.du	$xr2, $xr2, 4
+	xvpickve2gr.d	$t4, $xr2, 0
+	xvpickve2gr.d	$t5, $xr2, 1
+	xvpickve2gr.d	$t6, $xr2, 2
+	xvpickve2gr.d	$t7, $xr2, 3
+	slli.d	$t0, $t0, 4
+	slli.d	$t1, $t1, 4
+	slli.d	$t2, $t2, 4
 	slli.d	$t3, $t3, 4
-	xvpickve2gr.d	$t4, $xr3, 0
 	slli.d	$t4, $t4, 4
-	xvpickve2gr.d	$t5, $xr3, 1
 	slli.d	$t5, $t5, 4
-	xvpickve2gr.d	$t6, $xr3, 2
 	slli.d	$t6, $t6, 4
-	xvpickve2gr.d	$t7, $xr3, 3
 	fldx.d	$fa2, $a3, $t2
 	fldx.d	$fa3, $a3, $t3
 	slli.d	$t2, $t7, 4

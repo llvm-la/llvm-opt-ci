@@ -5756,8 +5756,8 @@ _ZN16COpenCallbackImpC2Ev:              # @_ZN16COpenCallbackImpC2Ev
 	move	$s0, $a0
 	st.d	$a0, $fp, 40
 	st.w	$zero, $a0, 0
-	ori	$s2, $zero, 4
-	st.w	$s2, $fp, 52
+	ori	$s1, $zero, 4
+	st.w	$s1, $fp, 52
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $fp, 96
 .Ltmp385:                               # EH_LABEL
@@ -5766,11 +5766,10 @@ _ZN16COpenCallbackImpC2Ev:              # @_ZN16COpenCallbackImpC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp386:                               # EH_LABEL
 # %bb.1:
-	move	$s1, $a0
-	addi.d	$s0, $fp, 40
+	move	$s2, $a0
 	st.d	$a0, $fp, 96
 	st.w	$zero, $a0, 0
-	st.w	$s2, $fp, 108
+	st.w	$s1, $fp, 108
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $fp, 120
 .Ltmp388:                               # EH_LABEL
@@ -5800,22 +5799,22 @@ _ZN16COpenCallbackImpC2Ev:              # @_ZN16COpenCallbackImpC2Ev
 	ret
 .LBB18_3:
 .Ltmp390:                               # EH_LABEL
-	move	$fp, $a0
-	move	$a0, $s1
+	move	$s1, $a0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $s0, 0
+	ld.d	$s0, $fp, 40
 	bnez	$s0, .LBB18_5
 	b	.LBB18_6
 .LBB18_4:                               # %.thread
 .Ltmp387:                               # EH_LABEL
-	move	$fp, $a0
+	move	$s1, $a0
 .LBB18_5:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB18_6:                               # %_ZN11CStringBaseIwED2Ev.exit9
-	move	$a0, $fp
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end18:
@@ -7317,7 +7316,6 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -7325,7 +7323,6 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s0, $a1
 	ld.d	$a1, $a1, 0
 	move	$fp, $a0
@@ -7369,7 +7366,6 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 .LBB30_6:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i
 	ld.d	$a0, $s0, 8
 	move	$a1, $zero
-	addi.d	$s3, $fp, 8
 	.p2align	4, , 16
 .LBB30_7:                               # =>This Inner Loop Header: Depth=1
 	ldx.w	$a2, $a0, $a1
@@ -7380,16 +7376,16 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 	st.w	$s2, $fp, 16
 	vst	$vr1, $fp, 24
 	ld.wu	$a0, $s0, 32
-	addi.d	$s5, $a0, 1
-	slli.d	$a1, $s5, 31
-	addi.w	$s4, $a0, 0
+	addi.d	$s4, $a0, 1
+	slli.d	$a1, $s4, 31
+	addi.w	$s3, $a0, 0
 	bgez	$a1, .LBB30_10
 # %bb.9:
 	move	$s2, $zero
 	b	.LBB30_12
 .LBB30_10:
-	addi.w	$a0, $s5, 0
-	slti	$a1, $s4, -1
+	addi.w	$a0, $s4, 0
+	slti	$a1, $s3, -1
 	slli.d	$a0, $a0, 2
 	addi.w	$a2, $zero, -1
 	maskeqz	$a2, $a2, $a1
@@ -7403,7 +7399,7 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 	move	$s2, $a0
 	st.d	$a0, $fp, 24
 	st.w	$zero, $a0, 0
-	st.w	$s5, $fp, 36
+	st.w	$s4, $fp, 36
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 .LBB30_12:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i11
 	ld.d	$a0, $s0, 24
@@ -7415,23 +7411,23 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB30_13
 # %bb.14:
-	st.w	$s4, $fp, 32
+	st.w	$s3, $fp, 32
 	vld	$vr0, $s0, 40
 	vst	$vr0, $fp, 40
 	ld.b	$a0, $s0, 56
 	st.b	$a0, $fp, 56
 	vst	$vr1, $fp, 64
 	ld.wu	$a0, $s0, 72
-	addi.d	$s5, $a0, 1
-	slli.d	$a1, $s5, 31
-	addi.w	$s4, $a0, 0
+	addi.d	$s4, $a0, 1
+	slli.d	$a1, $s4, 31
+	addi.w	$s3, $a0, 0
 	bgez	$a1, .LBB30_16
 # %bb.15:
 	move	$a0, $zero
 	b	.LBB30_18
 .LBB30_16:
-	addi.w	$a0, $s5, 0
-	slti	$a1, $s4, -1
+	addi.w	$a0, $s4, 0
+	slti	$a1, $s3, -1
 	slli.d	$a0, $a0, 2
 	addi.w	$a2, $zero, -1
 	maskeqz	$a2, $a2, $a1
@@ -7444,7 +7440,7 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 # %bb.17:                               # %.noexc21
 	st.d	$a0, $fp, 64
 	st.w	$zero, $a0, 0
-	st.w	$s5, $fp, 76
+	st.w	$s4, $fp, 76
 .LBB30_18:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i17
 	ld.d	$a1, $s0, 64
 	.p2align	4, , 16
@@ -7456,8 +7452,7 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 	move	$a0, $a3
 	bnez	$a2, .LBB30_19
 # %bb.20:
-	st.w	$s4, $fp, 72
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	st.w	$s3, $fp, 72
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
@@ -7481,7 +7476,7 @@ _ZN4CArcC2ERKS_:                        # @_ZN4CArcC2ERKS_
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $s3, 0
+	ld.d	$s1, $fp, 8
 	beqz	$s1, .LBB30_23
 	b	.LBB30_26
 .LBB30_25:

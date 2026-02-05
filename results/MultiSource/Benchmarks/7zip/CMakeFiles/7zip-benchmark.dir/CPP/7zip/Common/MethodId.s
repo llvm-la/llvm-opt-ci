@@ -22,31 +22,29 @@ _Z23ConvertMethodIdToStringy:           # @_Z23ConvertMethodIdToStringy
 	addi.d	$s0, $sp, 132
 	st.w	$zero, $sp, 132
 	ori	$a0, $zero, 3
-	ori	$a2, $zero, 255
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	move	$a3, $a1
-	andi	$a1, $a1, 255
-	andi	$a4, $a3, 15
-	sltui	$a5, $a4, 10
-	move	$a6, $a3
-	bstrins.d	$a6, $a0, 63, 4
-	addi.d	$a4, $a4, 55
-	masknez	$a4, $a4, $a5
-	maskeqz	$a5, $a6, $a5
-	or	$a4, $a5, $a4
-	st.w	$a4, $s0, -4
-	bstrpick.d	$a4, $a3, 7, 4
-	sltui	$a1, $a1, 160
-	ori	$a5, $a4, 48
-	addi.d	$a4, $a4, 55
-	masknez	$a4, $a4, $a1
-	maskeqz	$a1, $a5, $a1
-	or	$a1, $a1, $a4
-	st.w	$a1, $s0, -8
+	andi	$a2, $a1, 255
+	andi	$a3, $a1, 15
+	sltui	$a4, $a3, 10
+	move	$a5, $a1
+	bstrins.d	$a5, $a0, 63, 4
+	addi.d	$a3, $a3, 55
+	masknez	$a3, $a3, $a4
+	maskeqz	$a4, $a5, $a4
+	or	$a3, $a4, $a3
+	st.w	$a3, $s0, -4
+	bstrpick.d	$a3, $a1, 7, 4
+	sltui	$a2, $a2, 160
+	ori	$a4, $a3, 48
+	addi.d	$a3, $a3, 55
+	masknez	$a3, $a3, $a2
+	maskeqz	$a2, $a4, $a2
+	or	$a2, $a2, $a3
+	st.w	$a2, $s0, -8
+	srli.d	$a1, $a1, 8
 	addi.d	$s0, $s0, -8
-	srli.d	$a1, $a3, 8
-	bltu	$a2, $a3, .LBB0_1
+	bnez	$a1, .LBB0_1
 # %bb.2:
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 0

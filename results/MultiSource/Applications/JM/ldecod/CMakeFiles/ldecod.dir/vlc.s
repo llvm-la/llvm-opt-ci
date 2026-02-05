@@ -956,22 +956,21 @@ more_rbsp_data:                         # @more_rbsp_data
 	srai.d	$a4, $a1, 3
 	addi.w	$a2, $a2, -1
 	ori	$a0, $zero, 1
-	blt	$a4, $a2, .LBB16_4
+	blt	$a4, $a2, .LBB16_5
 # %bb.1:
 	ldx.bu	$a2, $a3, $a4
 	andi	$a1, $a1, 7
 	xori	$a3, $a1, 7
 	srl.w	$a3, $a2, $a3
 	andi	$a3, $a3, 1
-	beqz	$a3, .LBB16_4
+	beqz	$a3, .LBB16_5
 # %bb.2:
 	ori	$a0, $zero, 7
-	bne	$a1, $a0, .LBB16_5
+	bne	$a1, $a0, .LBB16_4
 # %bb.3:
 	move	$a0, $zero
-.LBB16_4:                               # %._crit_edge
 	ret
-.LBB16_5:                               # %vector.ph
+.LBB16_4:                               # %vector.ph
 	ori	$a0, $zero, 6
 	sub.d	$a0, $a0, $a1
 	xvreplgr2vr.w	$xr0, $a0
@@ -993,6 +992,7 @@ more_rbsp_data:                         # @more_rbsp_data
 	xvpickve2gr.d	$a0, $xr0, 0
 	addi.w	$a0, $a0, 0
 	sltu	$a0, $zero, $a0
+.LBB16_5:                               # %._crit_edge
 	ret
 .Lfunc_end16:
 	.size	more_rbsp_data, .Lfunc_end16-more_rbsp_data
@@ -1518,7 +1518,7 @@ readSyntaxElement_NumCoeffTrailingOnes: # @readSyntaxElement_NumCoeffTrailingOne
 	beq	$t5, $t4, .LBB21_59
 .LBB21_51:                              #   in Loop: Header=BB21_52 Depth=1
 	addi.d	$a5, $a5, 1
-	beq	$a5, $t3, .LBB21_73
+	beq	$a5, $t3, .LBB21_74
 .LBB21_52:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB21_56 Depth 2
 	slli.d	$t4, $a5, 2
@@ -1570,7 +1570,7 @@ readSyntaxElement_NumCoeffTrailingOnes: # @readSyntaxElement_NumCoeffTrailingOne
 	st.w	$a3, $a0, 8
 	add.d	$a2, $t0, $a2
 	st.w	$a2, $a1, 8
-	b	.LBB21_72
+	b	.LBB21_73
 .LBB21_64:
 	bge	$a5, $a3, .LBB21_67
 # %bb.65:                               # %._crit_edge54
@@ -1606,22 +1606,24 @@ readSyntaxElement_NumCoeffTrailingOnes: # @readSyntaxElement_NumCoeffTrailingOne
 .LBB21_68:                              # %ShowBits.exit
 	addi.d	$a2, $a2, 6
 	st.w	$a2, $a1, 8
-	addi.w	$a2, $a3, 0
-	andi	$a1, $a3, 3
-	st.w	$a1, $a0, 8
-	srai.d	$a1, $a2, 2
-	ori	$a3, $zero, 3
+	addi.w	$a1, $a3, 0
+	andi	$a2, $a3, 3
+	st.w	$a2, $a0, 8
+	srai.d	$a1, $a1, 2
 	st.w	$a1, $a0, 4
-	bne	$a2, $a3, .LBB21_70
-# %bb.69:
+	bnez	$a1, .LBB21_71
+# %bb.69:                               # %ShowBits.exit
+	ori	$a3, $zero, 3
+	bne	$a2, $a3, .LBB21_71
+# %bb.70:
 	st.w	$zero, $a0, 8
-	b	.LBB21_71
-.LBB21_70:
+	b	.LBB21_72
+.LBB21_71:
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a0, 4
-.LBB21_71:                              # %.critedge
-	ori	$t0, $zero, 6
 .LBB21_72:                              # %.critedge
+	ori	$t0, $zero, 6
+.LBB21_73:                              # %.critedge
 	st.w	$t0, $a0, 12
 	move	$a0, $zero
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -1631,7 +1633,7 @@ readSyntaxElement_NumCoeffTrailingOnes: # @readSyntaxElement_NumCoeffTrailingOne
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB21_73:                              # %._crit_edge.us.i.3
+.LBB21_74:                              # %._crit_edge.us.i.3
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)

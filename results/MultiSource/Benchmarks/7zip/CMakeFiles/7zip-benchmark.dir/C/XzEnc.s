@@ -116,27 +116,23 @@ XzBlock_WriteHeader:                    # @XzBlock_WriteHeader
 	.p2align	4, , 16
 .LBB1_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$s2, $s1, 1
 	bstrpick.d	$a1, $s1, 31, 0
-	andi	$a2, $s2, 3
+	addi.w	$s1, $s1, 1
+	andi	$a2, $s1, 3
 	stx.b	$zero, $a1, $a0
-	move	$s1, $s2
 	bnez	$a2, .LBB1_8
-	b	.LBB1_10
-.LBB1_9:
-	move	$s2, $s1
-.LBB1_10:                               # %._crit_edge
-	srli.d	$a0, $s2, 2
+.LBB1_9:                                # %._crit_edge
+	srli.d	$a0, $s1, 2
 	st.b	$a0, $sp, 8
-	bstrpick.d	$s0, $s2, 31, 0
+	bstrpick.d	$s0, $s1, 31, 0
 	addi.d	$a0, $sp, 8
-	addi.d	$s1, $sp, 8
+	addi.d	$s2, $sp, 8
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(CrcCalc)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $fp, 0
-	stx.w	$a0, $s0, $s1
-	addi.d	$a0, $s2, 4
+	stx.w	$a0, $s0, $s2
+	addi.d	$a0, $s1, 4
 	bstrpick.d	$s0, $a0, 31, 0
 	addi.d	$a1, $sp, 8
 	move	$a0, $fp

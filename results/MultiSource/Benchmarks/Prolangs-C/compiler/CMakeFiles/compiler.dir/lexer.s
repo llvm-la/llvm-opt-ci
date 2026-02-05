@@ -257,11 +257,10 @@ Number:                                 # @Number
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 .LBB1_15:
-	ld.w	$a1, $s2, %pc_lo12(NextTokenval)
-	fld.s	$fa0, $s1, %pc_lo12(NextFtokenval)
-	movgr2fr.w	$fa1, $a1
-	ffint.s.w	$fa1, $fa1
-	fadd.s	$fa0, $fa0, $fa1
+	fld.s	$fa0, $s2, %pc_lo12(NextTokenval)
+	fld.s	$fa1, $s1, %pc_lo12(NextFtokenval)
+	ffint.s.w	$fa0, $fa0
+	fadd.s	$fa0, $fa1, $fa0
 	move	$a1, $a0
 	bstrins.d	$a1, $zero, 5, 5
 	ori	$a2, $zero, 69

@@ -2551,9 +2551,8 @@ main:                                   # @main
 	slli.d	$a6, $a5, 9
 	add.d	$a6, $a1, $a6
 	slli.d	$a5, $a5, 2
-	ldx.w	$a6, $a6, $a5
+	fldx.s	$fa3, $a6, $a5
 	ld.bu	$a5, $a4, 0
-	movgr2fr.w	$fa3, $a6
 	ffint.s.w	$fa3, $fa3
 	fadd.s	$fa2, $fa2, $fa3
 	addi.d	$a4, $a4, 1

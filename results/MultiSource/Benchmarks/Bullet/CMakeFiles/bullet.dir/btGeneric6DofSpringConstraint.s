@@ -179,12 +179,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa2, $a0, 1296
 	fld.s	$fa3, $a1, 0
 	fld.s	$fa4, $a0, 1320
-	ld.w	$a2, $a1, 88
+	fld.s	$fa5, $a1, 88
 	fsub.s	$fa0, $fa0, $fa1
 	fmul.s	$fa0, $fa0, $fa2
 	fmul.s	$fa1, $fa3, $fa4
-	movgr2fr.w	$fa2, $a2
-	ffint.s.w	$fa2, $fa2
+	ffint.s.w	$fa2, $fa5
 	fdiv.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa0, $fa1
 	fst.s	$fa1, $a0, 792
@@ -200,12 +199,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa2, $a0, 1300
 	fld.s	$fa3, $a1, 0
 	fld.s	$fa4, $a0, 1324
-	ld.w	$a2, $a1, 88
+	fld.s	$fa5, $a1, 88
 	fsub.s	$fa0, $fa0, $fa1
 	fmul.s	$fa0, $fa0, $fa2
 	fmul.s	$fa1, $fa3, $fa4
-	movgr2fr.w	$fa2, $a2
-	ffint.s.w	$fa2, $fa2
+	ffint.s.w	$fa2, $fa5
 	fdiv.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa0, $fa1
 	fst.s	$fa1, $a0, 796
@@ -221,12 +219,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa2, $a0, 1304
 	fld.s	$fa3, $a1, 0
 	fld.s	$fa4, $a0, 1328
-	ld.w	$a2, $a1, 88
+	fld.s	$fa5, $a1, 88
 	fsub.s	$fa0, $fa0, $fa1
 	fmul.s	$fa0, $fa0, $fa2
 	fmul.s	$fa1, $fa3, $fa4
-	movgr2fr.w	$fa2, $a2
-	ffint.s.w	$fa2, $fa2
+	ffint.s.w	$fa2, $fa5
 	fdiv.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa0, $fa1
 	fst.s	$fa1, $a0, 800
@@ -243,12 +240,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa1, $a0, 1308
 	fld.s	$fa2, $a1, 0
 	fld.s	$fa3, $a0, 1332
-	ld.w	$a2, $a1, 88
+	fld.s	$fa4, $a1, 88
 	fneg.s	$fa0, $fa0
 	fmul.s	$fa0, $fa1, $fa0
 	fmul.s	$fa1, $fa2, $fa3
-	movgr2fr.w	$fa3, $a2
-	ffint.s.w	$fa3, $fa3
+	ffint.s.w	$fa3, $fa4
 	fdiv.s	$fa1, $fa1, $fa3
 	fmul.s	$fa1, $fa0, $fa1
 	fst.s	$fa1, $a0, 876
@@ -264,12 +260,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa1, $a0, 1312
 	fld.s	$fa2, $a1, 0
 	fld.s	$fa3, $a0, 1336
-	ld.w	$a2, $a1, 88
+	fld.s	$fa4, $a1, 88
 	fneg.s	$fa0, $fa0
 	fmul.s	$fa0, $fa1, $fa0
 	fmul.s	$fa1, $fa2, $fa3
-	movgr2fr.w	$fa3, $a2
-	ffint.s.w	$fa3, $fa3
+	ffint.s.w	$fa3, $fa4
 	fdiv.s	$fa1, $fa1, $fa3
 	fmul.s	$fa1, $fa0, $fa1
 	fst.s	$fa1, $a0, 932
@@ -285,12 +280,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa1, $a0, 1316
 	fld.s	$fa2, $a1, 0
 	fld.s	$fa3, $a0, 1340
-	ld.w	$a1, $a1, 88
+	fld.s	$fa4, $a1, 88
 	fneg.s	$fa0, $fa0
 	fmul.s	$fa0, $fa1, $fa0
 	fmul.s	$fa1, $fa2, $fa3
-	movgr2fr.w	$fa3, $a1
-	ffint.s.w	$fa3, $fa3
+	ffint.s.w	$fa3, $fa4
 	fdiv.s	$fa1, $fa1, $fa3
 	fmul.s	$fa1, $fa0, $fa1
 	fst.s	$fa1, $a0, 988

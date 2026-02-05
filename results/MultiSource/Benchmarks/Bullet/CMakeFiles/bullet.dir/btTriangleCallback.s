@@ -15,7 +15,7 @@ _ZN18btTriangleCallbackD2Ev:            # @_ZN18btTriangleCallbackD2Ev
 	.type	_ZN18btTriangleCallbackD0Ev,@function
 _ZN18btTriangleCallbackD0Ev:            # @_ZN18btTriangleCallbackD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end1:
 	.size	_ZN18btTriangleCallbackD0Ev, .Lfunc_end1-_ZN18btTriangleCallbackD0Ev
                                         # -- End function
@@ -35,7 +35,7 @@ _ZN31btInternalTriangleIndexCallbackD2Ev: # @_ZN31btInternalTriangleIndexCallbac
 	.type	_ZN31btInternalTriangleIndexCallbackD0Ev,@function
 _ZN31btInternalTriangleIndexCallbackD0Ev: # @_ZN31btInternalTriangleIndexCallbackD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end3:
 	.size	_ZN31btInternalTriangleIndexCallbackD0Ev, .Lfunc_end3-_ZN31btInternalTriangleIndexCallbackD0Ev
                                         # -- End function

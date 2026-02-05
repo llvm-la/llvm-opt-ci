@@ -6700,7 +6700,7 @@ _ZN9benchmark8heapsortIPddEEvT_S2_:     # @_ZN9benchmark8heapsortIPddEEvT_S2_
 	sub.d	$a1, $a1, $a0
 	srai.d	$a1, $a1, 3
 	ori	$a2, $zero, 2
-	blt	$a1, $a2, .LBB30_25
+	blt	$a1, $a2, .LBB30_23
 # %bb.1:                                # %.lr.ph
 	srli.d	$a3, $a1, 1
 	addi.d	$a2, $a1, -1
@@ -6727,16 +6727,17 @@ _ZN9benchmark8heapsortIPddEEvT_S2_:     # @_ZN9benchmark8heapsortIPddEEvT_S2_
 	bge	$t0, $a1, .LBB30_12
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB30_4 Depth=1
-	move	$t1, $a3
+	move	$a7, $a3
 	.p2align	4, , 16
 .LBB30_6:                               # %.lr.ph.i
                                         #   Parent Loop BB30_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a7, $t0, $a0, 3
+	alsl.d	$t1, $t0, $a0, 3
 	slli.d	$t2, $t0, 3
-	fld.d	$fa1, $a7, -8
+	fld.d	$fa1, $t1, -8
 	fldx.d	$fa2, $a0, $t2
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	move	$t1, $a7
 	movcf2gr	$a7, $fcc0
 	add.d	$t0, $t0, $a7
 	addi.d	$a7, $t0, -1
@@ -6745,7 +6746,6 @@ _ZN9benchmark8heapsortIPddEEvT_S2_:     # @_ZN9benchmark8heapsortIPddEEvT_S2_
 	slli.d	$t1, $t1, 3
 	slli.d	$t0, $t0, 1
 	fstx.d	$fa1, $a0, $t1
-	move	$t1, $a7
 	blt	$t0, $a1, .LBB30_6
 # %bb.7:                                # %._crit_edge.i
                                         #   in Loop: Header=BB30_4 Depth=1
@@ -6781,88 +6781,81 @@ _ZN9benchmark8heapsortIPddEEvT_S2_:     # @_ZN9benchmark8heapsortIPddEEvT_S2_
 	beq	$t0, $a1, .LBB30_8
 	b	.LBB30_9
 .LBB30_13:                              # %.lr.ph44.preheader
-	ori	$a2, $zero, 3
-	ori	$a3, $zero, 1
-	ori	$a4, $zero, 2
+	ori	$a2, $zero, 4
+	ori	$a3, $zero, 2
 	b	.LBB30_16
 	.p2align	4, , 16
 .LBB30_14:                              #   in Loop: Header=BB30_16 Depth=1
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB30_15:                              # %_ZN9benchmark7sift_inIPddEEvlT_lT0_.exit34
                                         #   in Loop: Header=BB30_16 Depth=1
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa0, $a0, $a6
-	bge	$a4, $a5, .LBB30_25
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa0, $a0, $a5
+	bge	$a3, $a4, .LBB30_23
 .LBB30_16:                              # %.lr.ph44
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB30_18 Depth 2
-                                        #     Child Loop BB30_23 Depth 2
-	move	$a5, $a1
+                                        #     Child Loop BB30_17 Depth 2
+                                        #     Child Loop BB30_21 Depth 2
+	move	$a4, $a1
 	addi.d	$a1, $a1, -1
-	slli.d	$a6, $a1, 3
+	slli.d	$a5, $a1, 3
 	fld.d	$fa1, $a0, 0
-	fldx.d	$fa0, $a0, $a6
-	fstx.d	$fa1, $a0, $a6
-	bltu	$a1, $a2, .LBB30_21
-# %bb.17:                               # %.lr.ph.i30.preheader
-                                        #   in Loop: Header=BB30_16 Depth=1
-	move	$t0, $zero
-	ori	$a7, $zero, 2
+	fldx.d	$fa0, $a0, $a5
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $zero
+	ori	$a6, $zero, 2
+	bltu	$a4, $a2, .LBB30_18
 	.p2align	4, , 16
-.LBB30_18:                              # %.lr.ph.i30
+.LBB30_17:                              # %.lr.ph.i30
                                         #   Parent Loop BB30_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a6, $a7, $a0, 3
-	slli.d	$t1, $a7, 3
-	fld.d	$fa1, $a6, -8
-	fldx.d	$fa2, $a0, $t1
+	alsl.d	$a7, $a6, $a0, 3
+	slli.d	$t0, $a6, 3
+	fld.d	$fa1, $a7, -8
+	fldx.d	$fa2, $a0, $t0
 	fcmp.clt.d	$fcc0, $fa1, $fa2
-	movcf2gr	$a6, $fcc0
-	or	$a7, $a7, $a6
-	addi.d	$a6, $a7, -1
-	slli.d	$t1, $a6, 3
-	fldx.d	$fa1, $a0, $t1
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 1
-	fstx.d	$fa1, $a0, $t0
-	move	$t0, $a6
-	blt	$a7, $a1, .LBB30_18
-# %bb.19:                               # %._crit_edge.i21
-                                        #   in Loop: Header=BB30_16 Depth=1
-	bne	$a7, $a1, .LBB30_22
-.LBB30_20:                              # %.thread
-                                        #   in Loop: Header=BB30_16 Depth=1
-	addi.d	$a7, $a5, -2
-	slli.d	$t0, $a7, 3
+	move	$a7, $a5
+	movcf2gr	$a5, $fcc0
+	or	$a6, $a6, $a5
+	addi.d	$a5, $a6, -1
+	slli.d	$t0, $a5, 3
 	fldx.d	$fa1, $a0, $t0
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $a7
-	b	.LBB30_23
+	slli.d	$a7, $a7, 3
+	slli.d	$a6, $a6, 1
+	fstx.d	$fa1, $a0, $a7
+	blt	$a6, $a1, .LBB30_17
+.LBB30_18:                              # %._crit_edge.i21
+                                        #   in Loop: Header=BB30_16 Depth=1
+	bne	$a6, $a1, .LBB30_20
+# %bb.19:                               # %.thread
+                                        #   in Loop: Header=BB30_16 Depth=1
+	addi.d	$a6, $a4, -2
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	b	.LBB30_21
 	.p2align	4, , 16
-.LBB30_21:                              #   in Loop: Header=BB30_16 Depth=1
-	move	$a6, $zero
-	ori	$a7, $zero, 2
-	beq	$a7, $a1, .LBB30_20
-.LBB30_22:                              #   in Loop: Header=BB30_16 Depth=1
-	blez	$a6, .LBB30_15
+.LBB30_20:                              #   in Loop: Header=BB30_16 Depth=1
+	blez	$a5, .LBB30_15
 	.p2align	4, , 16
-.LBB30_23:                              # %.lr.ph50.i26
+.LBB30_21:                              # %.lr.ph50.i26
                                         #   Parent Loop BB30_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a7, $a6, -1
-	srli.d	$t0, $a7, 1
-	slli.d	$t1, $t0, 3
-	fldx.d	$fa1, $a0, $t1
+	addi.d	$a6, $a5, -1
+	srli.d	$a6, $a6, 1
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB30_15
-# %bb.24:                               #   in Loop: Header=BB30_23 Depth=2
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $t0
-	bltu	$a3, $a7, .LBB30_23
+# %bb.22:                               #   in Loop: Header=BB30_21 Depth=2
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	bnez	$a6, .LBB30_21
 	b	.LBB30_14
-.LBB30_25:                              # %._crit_edge
+.LBB30_23:                              # %._crit_edge
 	ret
 .Lfunc_end30:
 	.size	_ZN9benchmark8heapsortIPddEEvT_S2_, .Lfunc_end30-_ZN9benchmark8heapsortIPddEEvT_S2_
@@ -6878,7 +6871,7 @@ _ZN9benchmark8heapsortI14PointerWrapperIdEdEEvT_S3_: # @_ZN9benchmark8heapsortI1
 	sub.d	$a1, $a1, $a0
 	srai.d	$a1, $a1, 3
 	ori	$a2, $zero, 2
-	blt	$a1, $a2, .LBB31_25
+	blt	$a1, $a2, .LBB31_23
 # %bb.1:                                # %.lr.ph
 	srli.d	$a3, $a1, 1
 	addi.d	$a2, $a1, -1
@@ -6905,16 +6898,17 @@ _ZN9benchmark8heapsortI14PointerWrapperIdEdEEvT_S3_: # @_ZN9benchmark8heapsortI1
 	bge	$t0, $a1, .LBB31_12
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB31_4 Depth=1
-	move	$t1, $a3
+	move	$a7, $a3
 	.p2align	4, , 16
 .LBB31_6:                               # %.lr.ph.i
                                         #   Parent Loop BB31_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a7, $t0, $a0, 3
+	alsl.d	$t1, $t0, $a0, 3
 	slli.d	$t2, $t0, 3
-	fld.d	$fa1, $a7, -8
+	fld.d	$fa1, $t1, -8
 	fldx.d	$fa2, $a0, $t2
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	move	$t1, $a7
 	movcf2gr	$a7, $fcc0
 	add.d	$t0, $t0, $a7
 	addi.d	$a7, $t0, -1
@@ -6923,7 +6917,6 @@ _ZN9benchmark8heapsortI14PointerWrapperIdEdEEvT_S3_: # @_ZN9benchmark8heapsortI1
 	slli.d	$t1, $t1, 3
 	slli.d	$t0, $t0, 1
 	fstx.d	$fa1, $a0, $t1
-	move	$t1, $a7
 	blt	$t0, $a1, .LBB31_6
 # %bb.7:                                # %._crit_edge.i
                                         #   in Loop: Header=BB31_4 Depth=1
@@ -6959,88 +6952,81 @@ _ZN9benchmark8heapsortI14PointerWrapperIdEdEEvT_S3_: # @_ZN9benchmark8heapsortI1
 	beq	$t0, $a1, .LBB31_8
 	b	.LBB31_9
 .LBB31_13:                              # %.lr.ph44.preheader
-	ori	$a2, $zero, 3
-	ori	$a3, $zero, 1
-	ori	$a4, $zero, 2
+	ori	$a2, $zero, 4
+	ori	$a3, $zero, 2
 	b	.LBB31_16
 	.p2align	4, , 16
 .LBB31_14:                              #   in Loop: Header=BB31_16 Depth=1
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB31_15:                              # %_ZN9benchmark7sift_inI14PointerWrapperIdEdEEvlT_lT0_.exit29
                                         #   in Loop: Header=BB31_16 Depth=1
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa0, $a0, $a6
-	bge	$a4, $a5, .LBB31_25
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa0, $a0, $a5
+	bge	$a3, $a4, .LBB31_23
 .LBB31_16:                              # %.lr.ph44
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB31_18 Depth 2
-                                        #     Child Loop BB31_23 Depth 2
-	move	$a5, $a1
+                                        #     Child Loop BB31_17 Depth 2
+                                        #     Child Loop BB31_21 Depth 2
+	move	$a4, $a1
 	addi.d	$a1, $a1, -1
-	slli.d	$a6, $a1, 3
+	slli.d	$a5, $a1, 3
 	fld.d	$fa1, $a0, 0
-	fldx.d	$fa0, $a0, $a6
-	fstx.d	$fa1, $a0, $a6
-	bltu	$a1, $a2, .LBB31_21
-# %bb.17:                               # %.lr.ph.i25.preheader
-                                        #   in Loop: Header=BB31_16 Depth=1
-	move	$t0, $zero
-	ori	$a7, $zero, 2
+	fldx.d	$fa0, $a0, $a5
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $zero
+	ori	$a6, $zero, 2
+	bltu	$a4, $a2, .LBB31_18
 	.p2align	4, , 16
-.LBB31_18:                              # %.lr.ph.i25
+.LBB31_17:                              # %.lr.ph.i25
                                         #   Parent Loop BB31_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a6, $a7, $a0, 3
-	slli.d	$t1, $a7, 3
-	fld.d	$fa1, $a6, -8
-	fldx.d	$fa2, $a0, $t1
+	alsl.d	$a7, $a6, $a0, 3
+	slli.d	$t0, $a6, 3
+	fld.d	$fa1, $a7, -8
+	fldx.d	$fa2, $a0, $t0
 	fcmp.clt.d	$fcc0, $fa1, $fa2
-	movcf2gr	$a6, $fcc0
-	or	$a7, $a7, $a6
-	addi.d	$a6, $a7, -1
-	slli.d	$t1, $a6, 3
-	fldx.d	$fa1, $a0, $t1
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 1
-	fstx.d	$fa1, $a0, $t0
-	move	$t0, $a6
-	blt	$a7, $a1, .LBB31_18
-# %bb.19:                               # %._crit_edge.i16
-                                        #   in Loop: Header=BB31_16 Depth=1
-	bne	$a7, $a1, .LBB31_22
-.LBB31_20:                              # %.thread
-                                        #   in Loop: Header=BB31_16 Depth=1
-	addi.d	$a7, $a5, -2
-	slli.d	$t0, $a7, 3
+	move	$a7, $a5
+	movcf2gr	$a5, $fcc0
+	or	$a6, $a6, $a5
+	addi.d	$a5, $a6, -1
+	slli.d	$t0, $a5, 3
 	fldx.d	$fa1, $a0, $t0
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $a7
-	b	.LBB31_23
+	slli.d	$a7, $a7, 3
+	slli.d	$a6, $a6, 1
+	fstx.d	$fa1, $a0, $a7
+	blt	$a6, $a1, .LBB31_17
+.LBB31_18:                              # %._crit_edge.i16
+                                        #   in Loop: Header=BB31_16 Depth=1
+	bne	$a6, $a1, .LBB31_20
+# %bb.19:                               # %.thread
+                                        #   in Loop: Header=BB31_16 Depth=1
+	addi.d	$a6, $a4, -2
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	b	.LBB31_21
 	.p2align	4, , 16
-.LBB31_21:                              #   in Loop: Header=BB31_16 Depth=1
-	move	$a6, $zero
-	ori	$a7, $zero, 2
-	beq	$a7, $a1, .LBB31_20
-.LBB31_22:                              #   in Loop: Header=BB31_16 Depth=1
-	blez	$a6, .LBB31_15
+.LBB31_20:                              #   in Loop: Header=BB31_16 Depth=1
+	blez	$a5, .LBB31_15
 	.p2align	4, , 16
-.LBB31_23:                              # %.lr.ph58.i21
+.LBB31_21:                              # %.lr.ph58.i21
                                         #   Parent Loop BB31_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a7, $a6, -1
-	srli.d	$t0, $a7, 1
-	slli.d	$t1, $t0, 3
-	fldx.d	$fa1, $a0, $t1
+	addi.d	$a6, $a5, -1
+	srli.d	$a6, $a6, 1
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB31_15
-# %bb.24:                               #   in Loop: Header=BB31_23 Depth=2
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $t0
-	bltu	$a3, $a7, .LBB31_23
+# %bb.22:                               #   in Loop: Header=BB31_21 Depth=2
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	bnez	$a6, .LBB31_21
 	b	.LBB31_14
-.LBB31_25:                              # %._crit_edge
+.LBB31_23:                              # %._crit_edge
 	ret
 .Lfunc_end31:
 	.size	_ZN9benchmark8heapsortI14PointerWrapperIdEdEEvT_S3_, .Lfunc_end31-_ZN9benchmark8heapsortI14PointerWrapperIdEdEEvT_S3_
@@ -7056,7 +7042,7 @@ _ZN9benchmark8heapsortIP12ValueWrapperIdES2_EEvT_S4_: # @_ZN9benchmark8heapsortI
 	sub.d	$a1, $a1, $a0
 	srai.d	$a1, $a1, 3
 	ori	$a2, $zero, 2
-	blt	$a1, $a2, .LBB32_25
+	blt	$a1, $a2, .LBB32_23
 # %bb.1:                                # %.lr.ph
 	srli.d	$a3, $a1, 1
 	addi.d	$a2, $a1, -1
@@ -7083,16 +7069,17 @@ _ZN9benchmark8heapsortIP12ValueWrapperIdES2_EEvT_S4_: # @_ZN9benchmark8heapsortI
 	bge	$t0, $a1, .LBB32_12
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB32_4 Depth=1
-	move	$t1, $a3
+	move	$a7, $a3
 	.p2align	4, , 16
 .LBB32_6:                               # %.lr.ph.i
                                         #   Parent Loop BB32_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a7, $t0, $a0, 3
+	alsl.d	$t1, $t0, $a0, 3
 	slli.d	$t2, $t0, 3
-	fld.d	$fa1, $a7, -8
+	fld.d	$fa1, $t1, -8
 	fldx.d	$fa2, $a0, $t2
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	move	$t1, $a7
 	movcf2gr	$a7, $fcc0
 	add.d	$t0, $t0, $a7
 	addi.d	$a7, $t0, -1
@@ -7101,7 +7088,6 @@ _ZN9benchmark8heapsortIP12ValueWrapperIdES2_EEvT_S4_: # @_ZN9benchmark8heapsortI
 	slli.d	$t1, $t1, 3
 	slli.d	$t0, $t0, 1
 	stx.d	$t2, $a0, $t1
-	move	$t1, $a7
 	blt	$t0, $a1, .LBB32_6
 # %bb.7:                                # %._crit_edge.i
                                         #   in Loop: Header=BB32_4 Depth=1
@@ -7137,88 +7123,81 @@ _ZN9benchmark8heapsortIP12ValueWrapperIdES2_EEvT_S4_: # @_ZN9benchmark8heapsortI
 	beq	$t0, $a1, .LBB32_8
 	b	.LBB32_9
 .LBB32_13:                              # %.lr.ph45.preheader
-	ori	$a2, $zero, 3
-	ori	$a3, $zero, 1
-	ori	$a4, $zero, 2
+	ori	$a2, $zero, 4
+	ori	$a3, $zero, 2
 	b	.LBB32_16
 	.p2align	4, , 16
 .LBB32_14:                              #   in Loop: Header=BB32_16 Depth=1
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB32_15:                              # %_ZN9benchmark7sift_inIP12ValueWrapperIdES2_EEvlT_lT0_.exit35
                                         #   in Loop: Header=BB32_16 Depth=1
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa0, $a0, $a6
-	bge	$a4, $a5, .LBB32_25
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa0, $a0, $a5
+	bge	$a3, $a4, .LBB32_23
 .LBB32_16:                              # %.lr.ph45
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB32_18 Depth 2
-                                        #     Child Loop BB32_23 Depth 2
-	move	$a5, $a1
+                                        #     Child Loop BB32_17 Depth 2
+                                        #     Child Loop BB32_21 Depth 2
+	move	$a4, $a1
 	addi.d	$a1, $a1, -1
-	slli.d	$a6, $a1, 3
-	ld.d	$a7, $a0, 0
-	fldx.d	$fa0, $a0, $a6
-	stx.d	$a7, $a0, $a6
-	bltu	$a1, $a2, .LBB32_21
-# %bb.17:                               # %.lr.ph.i31.preheader
-                                        #   in Loop: Header=BB32_16 Depth=1
-	move	$t0, $zero
-	ori	$a7, $zero, 2
+	slli.d	$a5, $a1, 3
+	ld.d	$a6, $a0, 0
+	fldx.d	$fa0, $a0, $a5
+	stx.d	$a6, $a0, $a5
+	move	$a5, $zero
+	ori	$a6, $zero, 2
+	bltu	$a4, $a2, .LBB32_18
 	.p2align	4, , 16
-.LBB32_18:                              # %.lr.ph.i31
+.LBB32_17:                              # %.lr.ph.i31
                                         #   Parent Loop BB32_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a6, $a7, $a0, 3
-	slli.d	$t1, $a7, 3
-	fld.d	$fa1, $a6, -8
-	fldx.d	$fa2, $a0, $t1
+	alsl.d	$a7, $a6, $a0, 3
+	slli.d	$t0, $a6, 3
+	fld.d	$fa1, $a7, -8
+	fldx.d	$fa2, $a0, $t0
 	fcmp.clt.d	$fcc0, $fa1, $fa2
-	movcf2gr	$a6, $fcc0
-	or	$a7, $a7, $a6
-	addi.d	$a6, $a7, -1
-	slli.d	$t1, $a6, 3
-	ldx.d	$t1, $a0, $t1
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 1
-	stx.d	$t1, $a0, $t0
-	move	$t0, $a6
-	blt	$a7, $a1, .LBB32_18
-# %bb.19:                               # %._crit_edge.i22
-                                        #   in Loop: Header=BB32_16 Depth=1
-	bne	$a7, $a1, .LBB32_22
-.LBB32_20:                              # %.thread
-                                        #   in Loop: Header=BB32_16 Depth=1
-	addi.d	$a7, $a5, -2
-	slli.d	$t0, $a7, 3
+	move	$a7, $a5
+	movcf2gr	$a5, $fcc0
+	or	$a6, $a6, $a5
+	addi.d	$a5, $a6, -1
+	slli.d	$t0, $a5, 3
 	ldx.d	$t0, $a0, $t0
-	slli.d	$a6, $a6, 3
-	stx.d	$t0, $a0, $a6
-	move	$a6, $a7
-	b	.LBB32_23
+	slli.d	$a7, $a7, 3
+	slli.d	$a6, $a6, 1
+	stx.d	$t0, $a0, $a7
+	blt	$a6, $a1, .LBB32_17
+.LBB32_18:                              # %._crit_edge.i22
+                                        #   in Loop: Header=BB32_16 Depth=1
+	bne	$a6, $a1, .LBB32_20
+# %bb.19:                               # %.thread
+                                        #   in Loop: Header=BB32_16 Depth=1
+	addi.d	$a6, $a4, -2
+	slli.d	$a7, $a6, 3
+	ldx.d	$a7, $a0, $a7
+	slli.d	$a5, $a5, 3
+	stx.d	$a7, $a0, $a5
+	move	$a5, $a6
+	b	.LBB32_21
 	.p2align	4, , 16
-.LBB32_21:                              #   in Loop: Header=BB32_16 Depth=1
-	move	$a6, $zero
-	ori	$a7, $zero, 2
-	beq	$a7, $a1, .LBB32_20
-.LBB32_22:                              #   in Loop: Header=BB32_16 Depth=1
-	blez	$a6, .LBB32_15
+.LBB32_20:                              #   in Loop: Header=BB32_16 Depth=1
+	blez	$a5, .LBB32_15
 	.p2align	4, , 16
-.LBB32_23:                              # %.lr.ph47.i27
+.LBB32_21:                              # %.lr.ph47.i27
                                         #   Parent Loop BB32_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a7, $a6, -1
-	srli.d	$t0, $a7, 1
-	slli.d	$t1, $t0, 3
-	fldx.d	$fa1, $a0, $t1
+	addi.d	$a6, $a5, -1
+	srli.d	$a6, $a6, 1
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB32_15
-# %bb.24:                               #   in Loop: Header=BB32_23 Depth=2
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $t0
-	bltu	$a3, $a7, .LBB32_23
+# %bb.22:                               #   in Loop: Header=BB32_21 Depth=2
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	bnez	$a6, .LBB32_21
 	b	.LBB32_14
-.LBB32_25:                              # %._crit_edge
+.LBB32_23:                              # %._crit_edge
 	ret
 .Lfunc_end32:
 	.size	_ZN9benchmark8heapsortIP12ValueWrapperIdES2_EEvT_S4_, .Lfunc_end32-_ZN9benchmark8heapsortIP12ValueWrapperIdES2_EEvT_S4_
@@ -7234,7 +7213,7 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIdEES3_EEvT_S5_: # @_ZN9be
 	sub.d	$a1, $a1, $a0
 	srai.d	$a1, $a1, 3
 	ori	$a2, $zero, 2
-	blt	$a1, $a2, .LBB33_25
+	blt	$a1, $a2, .LBB33_23
 # %bb.1:                                # %.lr.ph
 	srli.d	$a3, $a1, 1
 	addi.d	$a2, $a1, -1
@@ -7261,16 +7240,17 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIdEES3_EEvT_S5_: # @_ZN9be
 	bge	$t0, $a1, .LBB33_12
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB33_4 Depth=1
-	move	$t1, $a3
+	move	$a7, $a3
 	.p2align	4, , 16
 .LBB33_6:                               # %.lr.ph.i
                                         #   Parent Loop BB33_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a7, $t0, $a0, 3
+	alsl.d	$t1, $t0, $a0, 3
 	slli.d	$t2, $t0, 3
-	fld.d	$fa1, $a7, -8
+	fld.d	$fa1, $t1, -8
 	fldx.d	$fa2, $a0, $t2
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	move	$t1, $a7
 	movcf2gr	$a7, $fcc0
 	add.d	$t0, $t0, $a7
 	addi.d	$a7, $t0, -1
@@ -7279,7 +7259,6 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIdEES3_EEvT_S5_: # @_ZN9be
 	slli.d	$t1, $t1, 3
 	slli.d	$t0, $t0, 1
 	stx.d	$t2, $a0, $t1
-	move	$t1, $a7
 	blt	$t0, $a1, .LBB33_6
 # %bb.7:                                # %._crit_edge.i
                                         #   in Loop: Header=BB33_4 Depth=1
@@ -7315,88 +7294,81 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIdEES3_EEvT_S5_: # @_ZN9be
 	beq	$t0, $a1, .LBB33_8
 	b	.LBB33_9
 .LBB33_13:                              # %.lr.ph47.preheader
-	ori	$a2, $zero, 3
-	ori	$a3, $zero, 1
-	ori	$a4, $zero, 2
+	ori	$a2, $zero, 4
+	ori	$a3, $zero, 2
 	b	.LBB33_16
 	.p2align	4, , 16
 .LBB33_14:                              #   in Loop: Header=BB33_16 Depth=1
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB33_15:                              # %_ZN9benchmark7sift_inI14PointerWrapperI12ValueWrapperIdEES3_EEvlT_lT0_.exit32
                                         #   in Loop: Header=BB33_16 Depth=1
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa0, $a0, $a6
-	bge	$a4, $a5, .LBB33_25
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa0, $a0, $a5
+	bge	$a3, $a4, .LBB33_23
 .LBB33_16:                              # %.lr.ph47
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB33_18 Depth 2
-                                        #     Child Loop BB33_23 Depth 2
-	move	$a5, $a1
+                                        #     Child Loop BB33_17 Depth 2
+                                        #     Child Loop BB33_21 Depth 2
+	move	$a4, $a1
 	addi.d	$a1, $a1, -1
-	slli.d	$a6, $a1, 3
-	ld.d	$a7, $a0, 0
-	fldx.d	$fa0, $a0, $a6
-	stx.d	$a7, $a0, $a6
-	bltu	$a1, $a2, .LBB33_21
-# %bb.17:                               # %.lr.ph.i28.preheader
-                                        #   in Loop: Header=BB33_16 Depth=1
-	move	$t0, $zero
-	ori	$a7, $zero, 2
+	slli.d	$a5, $a1, 3
+	ld.d	$a6, $a0, 0
+	fldx.d	$fa0, $a0, $a5
+	stx.d	$a6, $a0, $a5
+	move	$a5, $zero
+	ori	$a6, $zero, 2
+	bltu	$a4, $a2, .LBB33_18
 	.p2align	4, , 16
-.LBB33_18:                              # %.lr.ph.i28
+.LBB33_17:                              # %.lr.ph.i28
                                         #   Parent Loop BB33_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a6, $a7, $a0, 3
-	slli.d	$t1, $a7, 3
-	fld.d	$fa1, $a6, -8
-	fldx.d	$fa2, $a0, $t1
+	alsl.d	$a7, $a6, $a0, 3
+	slli.d	$t0, $a6, 3
+	fld.d	$fa1, $a7, -8
+	fldx.d	$fa2, $a0, $t0
 	fcmp.clt.d	$fcc0, $fa1, $fa2
-	movcf2gr	$a6, $fcc0
-	or	$a7, $a7, $a6
-	addi.d	$a6, $a7, -1
-	slli.d	$t1, $a6, 3
-	ldx.d	$t1, $a0, $t1
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 1
-	stx.d	$t1, $a0, $t0
-	move	$t0, $a6
-	blt	$a7, $a1, .LBB33_18
-# %bb.19:                               # %._crit_edge.i19
-                                        #   in Loop: Header=BB33_16 Depth=1
-	bne	$a7, $a1, .LBB33_22
-.LBB33_20:                              # %.thread
-                                        #   in Loop: Header=BB33_16 Depth=1
-	addi.d	$a7, $a5, -2
-	slli.d	$t0, $a7, 3
+	move	$a7, $a5
+	movcf2gr	$a5, $fcc0
+	or	$a6, $a6, $a5
+	addi.d	$a5, $a6, -1
+	slli.d	$t0, $a5, 3
 	ldx.d	$t0, $a0, $t0
-	slli.d	$a6, $a6, 3
-	stx.d	$t0, $a0, $a6
-	move	$a6, $a7
-	b	.LBB33_23
+	slli.d	$a7, $a7, 3
+	slli.d	$a6, $a6, 1
+	stx.d	$t0, $a0, $a7
+	blt	$a6, $a1, .LBB33_17
+.LBB33_18:                              # %._crit_edge.i19
+                                        #   in Loop: Header=BB33_16 Depth=1
+	bne	$a6, $a1, .LBB33_20
+# %bb.19:                               # %.thread
+                                        #   in Loop: Header=BB33_16 Depth=1
+	addi.d	$a6, $a4, -2
+	slli.d	$a7, $a6, 3
+	ldx.d	$a7, $a0, $a7
+	slli.d	$a5, $a5, 3
+	stx.d	$a7, $a0, $a5
+	move	$a5, $a6
+	b	.LBB33_21
 	.p2align	4, , 16
-.LBB33_21:                              #   in Loop: Header=BB33_16 Depth=1
-	move	$a6, $zero
-	ori	$a7, $zero, 2
-	beq	$a7, $a1, .LBB33_20
-.LBB33_22:                              #   in Loop: Header=BB33_16 Depth=1
-	blez	$a6, .LBB33_15
+.LBB33_20:                              #   in Loop: Header=BB33_16 Depth=1
+	blez	$a5, .LBB33_15
 	.p2align	4, , 16
-.LBB33_23:                              # %.lr.ph58.i24
+.LBB33_21:                              # %.lr.ph58.i24
                                         #   Parent Loop BB33_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a7, $a6, -1
-	srli.d	$t0, $a7, 1
-	slli.d	$t1, $t0, 3
-	fldx.d	$fa1, $a0, $t1
+	addi.d	$a6, $a5, -1
+	srli.d	$a6, $a6, 1
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB33_15
-# %bb.24:                               #   in Loop: Header=BB33_23 Depth=2
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $t0
-	bltu	$a3, $a7, .LBB33_23
+# %bb.22:                               #   in Loop: Header=BB33_21 Depth=2
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	bnez	$a6, .LBB33_21
 	b	.LBB33_14
-.LBB33_25:                              # %._crit_edge
+.LBB33_23:                              # %._crit_edge
 	ret
 .Lfunc_end33:
 	.size	_ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIdEES3_EEvT_S5_, .Lfunc_end33-_ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIdEES3_EEvT_S5_
@@ -7412,7 +7384,7 @@ _ZN9benchmark8heapsortIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEE
 	sub.d	$a1, $a1, $a0
 	srai.d	$a1, $a1, 3
 	ori	$a2, $zero, 2
-	blt	$a1, $a2, .LBB34_25
+	blt	$a1, $a2, .LBB34_23
 # %bb.1:                                # %.lr.ph
 	srli.d	$a3, $a1, 1
 	addi.d	$a2, $a1, -1
@@ -7439,16 +7411,17 @@ _ZN9benchmark8heapsortIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEE
 	bge	$t0, $a1, .LBB34_12
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB34_4 Depth=1
-	move	$t1, $a3
+	move	$a7, $a3
 	.p2align	4, , 16
 .LBB34_6:                               # %.lr.ph.i
                                         #   Parent Loop BB34_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a7, $t0, $a0, 3
+	alsl.d	$t1, $t0, $a0, 3
 	slli.d	$t2, $t0, 3
-	fld.d	$fa1, $a7, -8
+	fld.d	$fa1, $t1, -8
 	fldx.d	$fa2, $a0, $t2
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	move	$t1, $a7
 	movcf2gr	$a7, $fcc0
 	add.d	$t0, $t0, $a7
 	addi.d	$a7, $t0, -1
@@ -7457,7 +7430,6 @@ _ZN9benchmark8heapsortIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEE
 	slli.d	$t1, $t1, 3
 	slli.d	$t0, $t0, 1
 	stx.d	$t2, $a0, $t1
-	move	$t1, $a7
 	blt	$t0, $a1, .LBB34_6
 # %bb.7:                                # %._crit_edge.i
                                         #   in Loop: Header=BB34_4 Depth=1
@@ -7493,88 +7465,81 @@ _ZN9benchmark8heapsortIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEE
 	beq	$t0, $a1, .LBB34_8
 	b	.LBB34_9
 .LBB34_13:                              # %.lr.ph45.preheader
-	ori	$a2, $zero, 3
-	ori	$a3, $zero, 1
-	ori	$a4, $zero, 2
+	ori	$a2, $zero, 4
+	ori	$a3, $zero, 2
 	b	.LBB34_16
 	.p2align	4, , 16
 .LBB34_14:                              #   in Loop: Header=BB34_16 Depth=1
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB34_15:                              # %_ZN9benchmark7sift_inIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEEEEEEEESB_EEvlT_lT0_.exit35
                                         #   in Loop: Header=BB34_16 Depth=1
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa0, $a0, $a6
-	bge	$a4, $a5, .LBB34_25
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa0, $a0, $a5
+	bge	$a3, $a4, .LBB34_23
 .LBB34_16:                              # %.lr.ph45
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB34_18 Depth 2
-                                        #     Child Loop BB34_23 Depth 2
-	move	$a5, $a1
+                                        #     Child Loop BB34_17 Depth 2
+                                        #     Child Loop BB34_21 Depth 2
+	move	$a4, $a1
 	addi.d	$a1, $a1, -1
-	slli.d	$a6, $a1, 3
-	ld.d	$a7, $a0, 0
-	fldx.d	$fa0, $a0, $a6
-	stx.d	$a7, $a0, $a6
-	bltu	$a1, $a2, .LBB34_21
-# %bb.17:                               # %.lr.ph.i31.preheader
-                                        #   in Loop: Header=BB34_16 Depth=1
-	move	$t0, $zero
-	ori	$a7, $zero, 2
+	slli.d	$a5, $a1, 3
+	ld.d	$a6, $a0, 0
+	fldx.d	$fa0, $a0, $a5
+	stx.d	$a6, $a0, $a5
+	move	$a5, $zero
+	ori	$a6, $zero, 2
+	bltu	$a4, $a2, .LBB34_18
 	.p2align	4, , 16
-.LBB34_18:                              # %.lr.ph.i31
+.LBB34_17:                              # %.lr.ph.i31
                                         #   Parent Loop BB34_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a6, $a7, $a0, 3
-	slli.d	$t1, $a7, 3
-	fld.d	$fa1, $a6, -8
-	fldx.d	$fa2, $a0, $t1
+	alsl.d	$a7, $a6, $a0, 3
+	slli.d	$t0, $a6, 3
+	fld.d	$fa1, $a7, -8
+	fldx.d	$fa2, $a0, $t0
 	fcmp.clt.d	$fcc0, $fa1, $fa2
-	movcf2gr	$a6, $fcc0
-	or	$a7, $a7, $a6
-	addi.d	$a6, $a7, -1
-	slli.d	$t1, $a6, 3
-	ldx.d	$t1, $a0, $t1
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 1
-	stx.d	$t1, $a0, $t0
-	move	$t0, $a6
-	blt	$a7, $a1, .LBB34_18
-# %bb.19:                               # %._crit_edge.i22
-                                        #   in Loop: Header=BB34_16 Depth=1
-	bne	$a7, $a1, .LBB34_22
-.LBB34_20:                              # %.thread
-                                        #   in Loop: Header=BB34_16 Depth=1
-	addi.d	$a7, $a5, -2
-	slli.d	$t0, $a7, 3
+	move	$a7, $a5
+	movcf2gr	$a5, $fcc0
+	or	$a6, $a6, $a5
+	addi.d	$a5, $a6, -1
+	slli.d	$t0, $a5, 3
 	ldx.d	$t0, $a0, $t0
-	slli.d	$a6, $a6, 3
-	stx.d	$t0, $a0, $a6
-	move	$a6, $a7
-	b	.LBB34_23
+	slli.d	$a7, $a7, 3
+	slli.d	$a6, $a6, 1
+	stx.d	$t0, $a0, $a7
+	blt	$a6, $a1, .LBB34_17
+.LBB34_18:                              # %._crit_edge.i22
+                                        #   in Loop: Header=BB34_16 Depth=1
+	bne	$a6, $a1, .LBB34_20
+# %bb.19:                               # %.thread
+                                        #   in Loop: Header=BB34_16 Depth=1
+	addi.d	$a6, $a4, -2
+	slli.d	$a7, $a6, 3
+	ldx.d	$a7, $a0, $a7
+	slli.d	$a5, $a5, 3
+	stx.d	$a7, $a0, $a5
+	move	$a5, $a6
+	b	.LBB34_21
 	.p2align	4, , 16
-.LBB34_21:                              #   in Loop: Header=BB34_16 Depth=1
-	move	$a6, $zero
-	ori	$a7, $zero, 2
-	beq	$a7, $a1, .LBB34_20
-.LBB34_22:                              #   in Loop: Header=BB34_16 Depth=1
-	blez	$a6, .LBB34_15
+.LBB34_20:                              #   in Loop: Header=BB34_16 Depth=1
+	blez	$a5, .LBB34_15
 	.p2align	4, , 16
-.LBB34_23:                              # %.lr.ph47.i27
+.LBB34_21:                              # %.lr.ph47.i27
                                         #   Parent Loop BB34_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a7, $a6, -1
-	srli.d	$t0, $a7, 1
-	slli.d	$t1, $t0, 3
-	fldx.d	$fa1, $a0, $t1
+	addi.d	$a6, $a5, -1
+	srli.d	$a6, $a6, 1
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB34_15
-# %bb.24:                               #   in Loop: Header=BB34_23 Depth=2
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $t0
-	bltu	$a3, $a7, .LBB34_23
+# %bb.22:                               #   in Loop: Header=BB34_21 Depth=2
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	bnez	$a6, .LBB34_21
 	b	.LBB34_14
-.LBB34_25:                              # %._crit_edge
+.LBB34_23:                              # %._crit_edge
 	ret
 .Lfunc_end34:
 	.size	_ZN9benchmark8heapsortIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEEEEEEEESB_EEvT_SD_, .Lfunc_end34-_ZN9benchmark8heapsortIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEEEEEEEESB_EEvT_SD_
@@ -7590,7 +7555,7 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS
 	sub.d	$a1, $a1, $a0
 	srai.d	$a1, $a1, 3
 	ori	$a2, $zero, 2
-	blt	$a1, $a2, .LBB35_25
+	blt	$a1, $a2, .LBB35_23
 # %bb.1:                                # %.lr.ph
 	srli.d	$a3, $a1, 1
 	addi.d	$a2, $a1, -1
@@ -7617,16 +7582,17 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS
 	bge	$t0, $a1, .LBB35_12
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB35_4 Depth=1
-	move	$t1, $a3
+	move	$a7, $a3
 	.p2align	4, , 16
 .LBB35_6:                               # %.lr.ph.i
                                         #   Parent Loop BB35_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a7, $t0, $a0, 3
+	alsl.d	$t1, $t0, $a0, 3
 	slli.d	$t2, $t0, 3
-	fld.d	$fa1, $a7, -8
+	fld.d	$fa1, $t1, -8
 	fldx.d	$fa2, $a0, $t2
 	fcmp.clt.d	$fcc0, $fa1, $fa2
+	move	$t1, $a7
 	movcf2gr	$a7, $fcc0
 	add.d	$t0, $t0, $a7
 	addi.d	$a7, $t0, -1
@@ -7635,7 +7601,6 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS
 	slli.d	$t1, $t1, 3
 	slli.d	$t0, $t0, 1
 	stx.d	$t2, $a0, $t1
-	move	$t1, $a7
 	blt	$t0, $a1, .LBB35_6
 # %bb.7:                                # %._crit_edge.i
                                         #   in Loop: Header=BB35_4 Depth=1
@@ -7671,88 +7636,81 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS
 	beq	$t0, $a1, .LBB35_8
 	b	.LBB35_9
 .LBB35_13:                              # %.lr.ph47.preheader
-	ori	$a2, $zero, 3
-	ori	$a3, $zero, 1
-	ori	$a4, $zero, 2
+	ori	$a2, $zero, 4
+	ori	$a3, $zero, 2
 	b	.LBB35_16
 	.p2align	4, , 16
 .LBB35_14:                              #   in Loop: Header=BB35_16 Depth=1
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB35_15:                              # %_ZN9benchmark7sift_inI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS2_IS2_IS2_IdEEEEEEEEEEESC_EEvlT_lT0_.exit32
                                         #   in Loop: Header=BB35_16 Depth=1
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa0, $a0, $a6
-	bge	$a4, $a5, .LBB35_25
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa0, $a0, $a5
+	bge	$a3, $a4, .LBB35_23
 .LBB35_16:                              # %.lr.ph47
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB35_18 Depth 2
-                                        #     Child Loop BB35_23 Depth 2
-	move	$a5, $a1
+                                        #     Child Loop BB35_17 Depth 2
+                                        #     Child Loop BB35_21 Depth 2
+	move	$a4, $a1
 	addi.d	$a1, $a1, -1
-	slli.d	$a6, $a1, 3
-	ld.d	$a7, $a0, 0
-	fldx.d	$fa0, $a0, $a6
-	stx.d	$a7, $a0, $a6
-	bltu	$a1, $a2, .LBB35_21
-# %bb.17:                               # %.lr.ph.i28.preheader
-                                        #   in Loop: Header=BB35_16 Depth=1
-	move	$t0, $zero
-	ori	$a7, $zero, 2
+	slli.d	$a5, $a1, 3
+	ld.d	$a6, $a0, 0
+	fldx.d	$fa0, $a0, $a5
+	stx.d	$a6, $a0, $a5
+	move	$a5, $zero
+	ori	$a6, $zero, 2
+	bltu	$a4, $a2, .LBB35_18
 	.p2align	4, , 16
-.LBB35_18:                              # %.lr.ph.i28
+.LBB35_17:                              # %.lr.ph.i28
                                         #   Parent Loop BB35_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a6, $a7, $a0, 3
-	slli.d	$t1, $a7, 3
-	fld.d	$fa1, $a6, -8
-	fldx.d	$fa2, $a0, $t1
+	alsl.d	$a7, $a6, $a0, 3
+	slli.d	$t0, $a6, 3
+	fld.d	$fa1, $a7, -8
+	fldx.d	$fa2, $a0, $t0
 	fcmp.clt.d	$fcc0, $fa1, $fa2
-	movcf2gr	$a6, $fcc0
-	or	$a7, $a7, $a6
-	addi.d	$a6, $a7, -1
-	slli.d	$t1, $a6, 3
-	ldx.d	$t1, $a0, $t1
-	slli.d	$t0, $t0, 3
-	slli.d	$a7, $a7, 1
-	stx.d	$t1, $a0, $t0
-	move	$t0, $a6
-	blt	$a7, $a1, .LBB35_18
-# %bb.19:                               # %._crit_edge.i19
-                                        #   in Loop: Header=BB35_16 Depth=1
-	bne	$a7, $a1, .LBB35_22
-.LBB35_20:                              # %.thread
-                                        #   in Loop: Header=BB35_16 Depth=1
-	addi.d	$a7, $a5, -2
-	slli.d	$t0, $a7, 3
+	move	$a7, $a5
+	movcf2gr	$a5, $fcc0
+	or	$a6, $a6, $a5
+	addi.d	$a5, $a6, -1
+	slli.d	$t0, $a5, 3
 	ldx.d	$t0, $a0, $t0
-	slli.d	$a6, $a6, 3
-	stx.d	$t0, $a0, $a6
-	move	$a6, $a7
-	b	.LBB35_23
+	slli.d	$a7, $a7, 3
+	slli.d	$a6, $a6, 1
+	stx.d	$t0, $a0, $a7
+	blt	$a6, $a1, .LBB35_17
+.LBB35_18:                              # %._crit_edge.i19
+                                        #   in Loop: Header=BB35_16 Depth=1
+	bne	$a6, $a1, .LBB35_20
+# %bb.19:                               # %.thread
+                                        #   in Loop: Header=BB35_16 Depth=1
+	addi.d	$a6, $a4, -2
+	slli.d	$a7, $a6, 3
+	ldx.d	$a7, $a0, $a7
+	slli.d	$a5, $a5, 3
+	stx.d	$a7, $a0, $a5
+	move	$a5, $a6
+	b	.LBB35_21
 	.p2align	4, , 16
-.LBB35_21:                              #   in Loop: Header=BB35_16 Depth=1
-	move	$a6, $zero
-	ori	$a7, $zero, 2
-	beq	$a7, $a1, .LBB35_20
-.LBB35_22:                              #   in Loop: Header=BB35_16 Depth=1
-	blez	$a6, .LBB35_15
+.LBB35_20:                              #   in Loop: Header=BB35_16 Depth=1
+	blez	$a5, .LBB35_15
 	.p2align	4, , 16
-.LBB35_23:                              # %.lr.ph58.i24
+.LBB35_21:                              # %.lr.ph58.i24
                                         #   Parent Loop BB35_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a7, $a6, -1
-	srli.d	$t0, $a7, 1
-	slli.d	$t1, $t0, 3
-	fldx.d	$fa1, $a0, $t1
+	addi.d	$a6, $a5, -1
+	srli.d	$a6, $a6, 1
+	slli.d	$a7, $a6, 3
+	fldx.d	$fa1, $a0, $a7
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB35_15
-# %bb.24:                               #   in Loop: Header=BB35_23 Depth=2
-	slli.d	$a6, $a6, 3
-	fstx.d	$fa1, $a0, $a6
-	move	$a6, $t0
-	bltu	$a3, $a7, .LBB35_23
+# %bb.22:                               #   in Loop: Header=BB35_21 Depth=2
+	slli.d	$a5, $a5, 3
+	fstx.d	$fa1, $a0, $a5
+	move	$a5, $a6
+	bnez	$a6, .LBB35_21
 	b	.LBB35_14
-.LBB35_25:                              # %._crit_edge
+.LBB35_23:                              # %._crit_edge
 	ret
 .Lfunc_end35:
 	.size	_ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS2_IS2_IS2_IdEEEEEEEEEEESC_EEvT_SE_, .Lfunc_end35-_ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS2_IS2_IS2_IdEEEEEEEEEEESC_EEvT_SE_

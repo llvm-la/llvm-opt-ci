@@ -274,8 +274,8 @@ lame_decode_fromfile:                   # @lame_decode_fromfile
 	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(buf)
 	addi.d	$s4, $a0, %pc_lo12(buf)
-	ori	$s8, $zero, 1
-	addi.w	$s0, $zero, -1
+	ori	$s0, $zero, 1
+	addi.w	$s8, $zero, -1
 	pcalau12i	$a0, %pc_hi20(mp)
 	addi.d	$s5, $a0, %pc_lo12(mp)
 	pcalau12i	$a0, %pc_hi20(out)
@@ -300,7 +300,7 @@ lame_decode_fromfile:                   # @lame_decode_fromfile
 	move	$a4, $s7
 	pcaddu18i	$ra, %call36(decodeMP3)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s8, .LBB3_8
+	beq	$a0, $s0, .LBB3_8
 # %bb.10:                               #   in Loop: Header=BB3_8 Depth=1
 	ld.w	$a1, $sp, 20
 	beqz	$a1, .LBB3_8
@@ -514,7 +514,7 @@ lame_decode_fromfile:                   # @lame_decode_fromfile
 	bnez	$s3, .LBB3_43
 	b	.LBB3_16
 .LBB3_44:
-	move	$a0, $s0
+	move	$a0, $s8
 .LBB3_45:                               # %.loopexit35
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload

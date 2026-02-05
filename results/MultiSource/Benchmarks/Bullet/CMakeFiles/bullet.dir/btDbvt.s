@@ -1244,18 +1244,18 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	fabs.s	$fa0, $fa0
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a3, $fa0
-	ori	$s7, $zero, 2
+	ori	$s8, $zero, 2
 	blt	$a3, $a2, .LBB11_21
 .LBB11_20:
-	move	$s7, $a1
+	move	$s8, $a1
 	bltz	$a1, .LBB11_32
 .LBB11_21:                              # %.thread
-	addi.d	$s2, $sp, 64
-	slli.d	$a0, $s7, 3
-	ldx.w	$fp, $a0, $s2
-	blez	$fp, .LBB11_42
+	addi.d	$fp, $sp, 64
+	slli.d	$a0, $s8, 3
+	ldx.w	$s2, $a0, $fp
+	blez	$s2, .LBB11_42
 # %bb.22:
-	slli.d	$a0, $fp, 3
+	slli.d	$a0, $s2, 3
 .Ltmp43:                                # EH_LABEL
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -1370,7 +1370,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	b	.LBB11_123
 .LBB11_42:
 	move	$a0, $zero
-	alsl.d	$a1, $s7, $s2, 3
+	alsl.d	$a1, $s8, $fp, 3
 	ld.w	$fp, $a1, 4
 	blt	$a0, $fp, .LBB11_47
 	b	.LBB11_63
@@ -1390,8 +1390,8 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	ld.w	$a0, $sp, 128
 	st.b	$a1, $sp, 112
 	st.d	$s3, $sp, 104
-	st.w	$fp, $sp, 96
-	alsl.d	$a1, $s7, $s2, 3
+	st.w	$s2, $sp, 96
+	alsl.d	$a1, $s8, $fp, 3
 	ld.w	$fp, $a1, 4
 	bge	$a0, $fp, .LBB11_63
 .LBB11_47:
@@ -1481,9 +1481,9 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	st.w	$zero, $sp, 92
 	bltz	$fp, .LBB11_72
 .LBB11_65:                              # %_ZN20btAlignedObjectArrayIP10btDbvtNodeE6resizeEiRKS1_.exit37.i
-	ld.w	$s8, $s1, 4
+	ld.w	$s7, $s1, 4
 	st.w	$zero, $sp, 124
-	bgtz	$s8, .LBB11_78
+	bgtz	$s7, .LBB11_78
 	b	.LBB11_163
 .LBB11_66:
 	ld.w	$a1, $sp, 96
@@ -1544,13 +1544,13 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.w	$s8, $s1, 4
+	ld.w	$s7, $s1, 4
 	st.w	$zero, $sp, 124
-	blez	$s8, .LBB11_163
+	blez	$s7, .LBB11_163
 .LBB11_78:                              # %.lr.ph.i119
 	move	$s2, $zero
-	alsl.d	$s6, $s7, $s6, 4
-	ori	$s7, $zero, 1
+	alsl.d	$s6, $s8, $s6, 4
+	ori	$s8, $zero, 1
 	ori	$fp, $zero, 8
 	b	.LBB11_83
 .LBB11_79:                              #   in Loop: Header=BB11_83 Depth=1
@@ -1564,7 +1564,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 .LBB11_81:                              # %_ZN20btAlignedObjectArrayIP10btDbvtNodeE10deallocateEv.exit.i.i56.i
                                         #   in Loop: Header=BB11_83 Depth=1
 	ld.d	$a0, $s5, 0
-	st.b	$s7, $sp, 144
+	st.b	$s8, $sp, 144
 	st.d	$s3, $sp, 136
 	st.w	$s4, $sp, 128
 .LBB11_82:                              # %_ZN20btAlignedObjectArrayIP10btDbvtNodeE9push_backERKS1_.exit68.i
@@ -1575,7 +1575,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $sp, 124
 	addi.d	$s2, $s2, 1
-	beq	$s2, $s8, .LBB11_163
+	beq	$s2, $s7, .LBB11_163
 .LBB11_83:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_105 Depth 2
                                         #     Child Loop BB11_108 Depth 2
@@ -1619,7 +1619,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	sltui	$a2, $a1, 1
 	slli.w	$a3, $a1, 1
 	masknez	$a3, $a3, $a2
-	maskeqz	$a2, $s7, $a2
+	maskeqz	$a2, $s8, $a2
 	or	$s4, $a2, $a3
 	bge	$a1, $s4, .LBB11_116
 # %bb.86:                               #   in Loop: Header=BB11_83 Depth=1
@@ -1697,7 +1697,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	sltui	$a2, $a1, 1
 	slli.w	$a3, $a1, 1
 	masknez	$a3, $a3, $a2
-	maskeqz	$a2, $s7, $a2
+	maskeqz	$a2, $s8, $a2
 	or	$s4, $a2, $a3
 	bge	$a1, $s4, .LBB11_82
 # %bb.99:                               #   in Loop: Header=BB11_83 Depth=1
@@ -1789,7 +1789,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 .LBB11_115:                             # %_ZN20btAlignedObjectArrayIP10btDbvtNodeE10deallocateEv.exit.i.i40.i
                                         #   in Loop: Header=BB11_83 Depth=1
 	ld.d	$a0, $s5, 0
-	st.b	$s7, $sp, 112
+	st.b	$s8, $sp, 112
 	st.d	$s3, $sp, 104
 	st.w	$s4, $sp, 96
 .LBB11_116:                             # %_ZN20btAlignedObjectArrayIP10btDbvtNodeE9push_backERKS1_.exit.i
@@ -1800,7 +1800,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $sp, 92
 	addi.d	$s2, $s2, 1
-	bne	$s2, $s8, .LBB11_83
+	bne	$s2, $s7, .LBB11_83
 	b	.LBB11_163
 .LBB11_117:                             #   in Loop: Header=BB11_83 Depth=1
 	move	$s3, $zero
@@ -4252,20 +4252,20 @@ _ZN6btDbvt11countLeavesEPK10btDbvtNode: # @_ZN6btDbvt11countLeavesEPK10btDbvtNod
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	move	$fp, $zero
+	move	$fp, $a0
+	move	$s0, $zero
 	.p2align	4, , 16
 .LBB28_2:                               # %tailrecurse
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $a0, 40
-	move	$s0, $a1
+	ld.d	$a0, $fp, 40
+	move	$fp, $a1
 	pcaddu18i	$ra, %call36(_ZN6btDbvt11countLeavesEPK10btDbvtNode)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 48
-	add.d	$fp, $a0, $fp
-	move	$a0, $s0
+	ld.d	$a1, $fp, 48
+	add.d	$s0, $a0, $s0
 	bnez	$a1, .LBB28_2
 # %bb.3:                                # %tailrecurse._crit_edge.loopexit
-	addi.w	$a0, $fp, 1
+	addi.w	$a0, $s0, 1
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

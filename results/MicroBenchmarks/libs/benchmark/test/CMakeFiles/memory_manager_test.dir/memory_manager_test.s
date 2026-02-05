@@ -1854,18 +1854,16 @@ _GLOBAL__sub_I_memory_manager_test.cc:  # @_GLOBAL__sub_I_memory_manager_test.cc
 .Ltmp11:                                # EH_LABEL
 	ld.d	$a2, $sp, 464
 	move	$s3, $a0
-	bne	$a2, $s2, .LBB8_180
-# %bb.179:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s1, .LBB8_143
-	b	.LBB8_181
-.LBB8_180:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beq	$a2, $s2, .LBB8_180
+# %bb.179:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 480
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB8_180:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s1, .LBB8_143
-.LBB8_181:
+# %bb.181:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)

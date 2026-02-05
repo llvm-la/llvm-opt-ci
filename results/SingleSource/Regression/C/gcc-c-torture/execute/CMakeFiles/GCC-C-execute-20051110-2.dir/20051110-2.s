@@ -13,43 +13,40 @@ add_unwind_adjustsp:                    # @add_unwind_adjustsp
 # %bb.1:
 	pcalau12i	$a1, %pc_hi20(bytes)
 	addi.d	$a1, $a1, %pc_lo12(bytes)
-	ori	$a2, $zero, 127
 	.p2align	4, , 16
 .LBB0_2:                                # %.split
                                         # =>This Inner Loop Header: Depth=1
-	move	$a3, $a0
+	move	$a2, $a0
 	srli.d	$a0, $a0, 7
-	bltu	$a2, $a3, .LBB0_2
+	bnez	$a0, .LBB0_2
 # %bb.3:
-	move	$a0, $a3
+	move	$a0, $a2
 .LBB0_4:                                # %.critedge
 	andi	$a0, $a0, 127
 	st.b	$a0, $a1, 0
 	ret
 .LBB0_5:                                # %.split.us.lr.ph.split.us
-	ori	$a1, $zero, 128
-	bgeu	$a0, $a1, .LBB0_7
-# %bb.6:
+	srli.d	$a2, $a0, 7
+	beqz	$a2, .LBB0_8
+# %bb.6:                                # %.split20.us.us.preheader
+	pcalau12i	$a1, %pc_hi20(bytes)
+	addi.d	$a1, $a1, %pc_lo12(bytes)
+	.p2align	4, , 16
+.LBB0_7:                                # %.split20.us.us
+                                        # =>This Inner Loop Header: Depth=1
+	ori	$a3, $a0, 128
+	move	$a0, $a2
+	st.b	$a3, $a1, 0
+	srli.d	$a2, $a2, 7
+	addi.d	$a1, $a1, 1
+	bnez	$a2, .LBB0_7
+	b	.LBB0_4
+.LBB0_8:
 	pcalau12i	$a1, %pc_hi20(bytes)
 	addi.d	$a1, $a1, %pc_lo12(bytes)
 	andi	$a0, $a0, 127
 	st.b	$a0, $a1, 0
 	ret
-.LBB0_7:                                # %.split20.us.us.preheader
-	pcalau12i	$a1, %pc_hi20(bytes)
-	addi.d	$a1, $a1, %pc_lo12(bytes)
-	move	$a2, $a0
-	.p2align	4, , 16
-.LBB0_8:                                # %.split20.us.us
-                                        # =>This Inner Loop Header: Depth=1
-	srli.d	$a0, $a2, 7
-	ori	$a3, $a2, 128
-	st.b	$a3, $a1, 0
-	srli.d	$a3, $a2, 14
-	addi.d	$a1, $a1, 1
-	move	$a2, $a0
-	bnez	$a3, .LBB0_8
-	b	.LBB0_4
 .Lfunc_end0:
 	.size	add_unwind_adjustsp, .Lfunc_end0-add_unwind_adjustsp
                                         # -- End function

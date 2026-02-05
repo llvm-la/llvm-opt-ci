@@ -404,10 +404,10 @@ main:                                   # @main
 	bnez	$t3, .LBB7_26
 	b	.LBB7_23
 	.p2align	4, , 16
-.LBB7_27:                               # %vector.body74.preheader
+.LBB7_27:                               # %vector.ph73
                                         #   in Loop: Header=BB7_24 Depth=1
-	xvldrepl.d	$xr0, $t1, 0
-	xvldrepl.d	$xr1, $t2, 0
+	xvldrepl.d	$xr0, $t2, 0
+	xvldrepl.d	$xr1, $t1, 0
 	move	$t1, $a5
 	.p2align	4, , 16
 .LBB7_28:                               # %vector.body74
@@ -419,15 +419,15 @@ main:                                   # @main
 	xvldx	$xr3, $t2, $a7
 	xvldx	$xr4, $t2, $s1
 	xvldx	$xr5, $t3, $a1
-	xvfmul.d	$xr2, $xr0, $xr2
+	xvfmul.d	$xr2, $xr1, $xr2
 	xvfadd.d	$xr2, $xr3, $xr2
 	add.d	$t3, $s4, $t1
 	xvldx	$xr3, $t3, $s1
 	xvldx	$xr6, $t3, $a1
-	xvfmul.d	$xr5, $xr0, $xr5
+	xvfmul.d	$xr5, $xr1, $xr5
 	xvfadd.d	$xr4, $xr4, $xr5
-	xvfmul.d	$xr3, $xr1, $xr3
-	xvfmul.d	$xr5, $xr1, $xr6
+	xvfmul.d	$xr3, $xr0, $xr3
+	xvfmul.d	$xr5, $xr0, $xr6
 	xvfadd.d	$xr2, $xr2, $xr3
 	xvfadd.d	$xr3, $xr4, $xr5
 	xvstx	$xr2, $t2, $a7

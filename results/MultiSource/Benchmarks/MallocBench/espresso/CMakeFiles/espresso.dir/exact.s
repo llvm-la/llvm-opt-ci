@@ -202,8 +202,8 @@ do_minimize:                            # @do_minimize
 	beqz	$a0, .LBB2_38
 # %bb.19:
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	ld.d	$fp, $sp, 64
-	ld.d	$s3, $sp, 56
+	ld.d	$s3, $sp, 64
+	ld.d	$fp, $sp, 56
 	ld.d	$s2, $sp, 48
 	pcalau12i	$a0, %got_pc_hi20(filename)
 	ld.d	$s5, $a0, %got_pc_lo12(filename)
@@ -283,12 +283,12 @@ do_minimize:                            # @do_minimize
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, 12
-	ld.w	$a1, $fp, 0
+	ld.w	$a0, $s3, 12
+	ld.w	$a1, $s3, 0
 	mul.w	$a0, $a1, $a0
 	blez	$a0, .LBB2_28
 # %bb.26:                               # %.lr.ph.i.preheader
-	ld.d	$s6, $fp, 24
+	ld.d	$s6, $s3, 24
 	alsl.d	$s0, $a0, $s6, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$s7, $a0, %pc_lo12(.L.str.10)
@@ -303,7 +303,7 @@ do_minimize:                            # @do_minimize
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, 0
+	ld.w	$a0, $s3, 0
 	alsl.d	$s6, $a0, $s6, 2
 	bltu	$s6, $s0, .LBB2_27
 .LBB2_28:                               # %._crit_edge.i
@@ -314,13 +314,13 @@ do_minimize:                            # @do_minimize
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, 12
-	ld.w	$a1, $s3, 0
+	ld.w	$a0, $fp, 12
+	ld.w	$a1, $fp, 0
 	mul.w	$a0, $a1, $a0
 	blez	$a0, .LBB2_31
 # %bb.29:                               # %.lr.ph63.i.preheader
-	ld.d	$s6, $s3, 24
-	alsl.d	$fp, $a0, $s6, 2
+	ld.d	$s6, $fp, 24
+	alsl.d	$s0, $a0, $s6, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$s7, $a0, %pc_lo12(.L.str.10)
 	.p2align	4, , 16
@@ -334,9 +334,9 @@ do_minimize:                            # @do_minimize
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, 0
+	ld.w	$a0, $fp, 0
 	alsl.d	$s6, $a0, $s6, 2
-	bltu	$s6, $fp, .LBB2_30
+	bltu	$s6, $s0, .LBB2_30
 .LBB2_31:                               # %._crit_edge64.i
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
@@ -348,7 +348,7 @@ do_minimize:                            # @do_minimize
 	ld.w	$a0, $s2, 12
 	ld.w	$a1, $s2, 0
 	mul.w	$a0, $a1, $a0
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	blez	$a0, .LBB2_34
 # %bb.32:                               # %.lr.ph67.i.preheader
 	ld.d	$s6, $s2, 24
@@ -373,7 +373,7 @@ do_minimize:                            # @do_minimize
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$fp, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $fp, 0
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB2_36
 # %bb.35:
 	move	$a0, $s4

@@ -120,753 +120,660 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a0, %pc_hi20(src)
-	addi.d	$fp, $a0, %pc_lo12(src)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_1)
-	vst	$vr0, $fp, 0
-	vst	$vr1, $fp, 16
-	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI1_4)
-	ld.hu	$a0, $fp, 0
-	vst	$vr0, $fp, 32
-	vst	$vr1, $fp, 48
-	vst	$vr2, $fp, 64
+	addi.d	$a0, $a0, %pc_lo12(src)
+	vst	$vr0, $a0, 0
+	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_4)
+	vld	$vr3, $a1, %pc_lo12(.LCPI1_4)
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 32
+	vst	$vr2, $a0, 48
+	vst	$vr3, $a0, 64
 	pcalau12i	$a1, %pc_hi20(dst)
-	addi.d	$s0, $a1, %pc_lo12(dst)
-	st.h	$a0, $s0, 0
-	bne	$a0, $a0, .LBB1_77
+	addi.d	$a1, $a1, %pc_lo12(dst)
+	ld.h	$a3, $a0, 0
+	ori	$a2, $zero, 1
+	st.h	$a3, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.1:                                # %check.exit10
-	ld.b	$a0, $fp, 2
-	ld.h	$a1, $fp, 0
-	st.b	$a0, $s0, 2
-	st.h	$a1, $s0, 0
-	ori	$a2, $zero, 3
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a3, $a0, 2
+	ld.hu	$a4, $a0, 0
+	st.b	$a3, $a1, 2
+	st.h	$a4, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.2:                                # %check.exit13
-	ld.b	$a0, $fp, 4
-	ld.w	$a1, $fp, 0
-	st.b	$a0, $s0, 4
-	st.w	$a1, $s0, 0
-	ori	$a2, $zero, 5
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a2, $a0, 4
+	ld.wu	$a3, $a0, 0
+	st.b	$a2, $a1, 4
+	ori	$a2, $zero, 1
+	st.w	$a3, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.3:                                # %check.exit19
-	ld.h	$a0, $fp, 4
-	ld.w	$a1, $fp, 0
-	st.h	$a0, $s0, 4
-	st.w	$a1, $s0, 0
-	ori	$a2, $zero, 6
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a3, $a0, 4
+	ld.wu	$a4, $a0, 0
+	st.h	$a3, $a1, 4
+	st.w	$a4, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.4:                                # %check.exit22
-	ld.w	$a0, $fp, 3
-	ld.w	$a1, $fp, 0
-	st.w	$a0, $s0, 3
-	st.w	$a1, $s0, 0
-	ori	$a2, $zero, 7
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 3
+	ld.w	$a3, $a0, 0
+	st.w	$a2, $a1, 3
+	st.w	$a3, $a1, 0
+	ld.w	$a4, $a1, 0
+	ld.w	$a5, $a1, 3
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	bnez	$a2, .LBB1_77
 # %bb.5:                                # %check.exit25
-	ld.b	$a0, $fp, 8
-	ld.d	$a1, $fp, 0
-	st.b	$a0, $s0, 8
-	st.d	$a1, $s0, 0
-	ori	$a2, $zero, 9
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a2, $a0, 8
+	ld.d	$a3, $a0, 0
+	st.b	$a2, $a1, 8
+	ori	$a2, $zero, 1
+	st.d	$a3, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.6:                                # %check.exit31
-	ld.h	$a0, $fp, 8
-	ld.d	$a1, $fp, 0
-	st.h	$a0, $s0, 8
-	st.d	$a1, $s0, 0
-	ori	$a2, $zero, 10
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a3, $a0, 8
+	ld.d	$a4, $a0, 0
+	st.h	$a3, $a1, 8
+	st.d	$a4, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.7:                                # %check.exit34
-	ld.w	$a0, $fp, 7
-	ld.d	$a1, $fp, 0
-	st.w	$a0, $s0, 7
-	st.d	$a1, $s0, 0
-	ori	$a2, $zero, 11
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 7
+	ld.d	$a3, $a0, 0
+	st.w	$a2, $a1, 7
+	st.d	$a3, $a1, 0
+	ld.d	$a2, $a1, 0
+	ld.d	$a4, $a1, 3
+	ld.d	$a5, $a0, 3
+	xor	$a2, $a2, $a3
+	xor	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	bnez	$a2, .LBB1_77
 # %bb.8:                                # %check.exit37
-	ld.w	$a0, $fp, 8
-	ld.d	$a1, $fp, 0
-	st.w	$a0, $s0, 8
-	st.d	$a1, $s0, 0
-	ori	$a2, $zero, 12
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.wu	$a2, $a0, 8
+	ld.d	$a3, $a0, 0
+	st.w	$a2, $a1, 8
+	ori	$a2, $zero, 1
+	st.d	$a3, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.9:                                # %check.exit40
-	ld.d	$a0, $fp, 5
-	ld.d	$a1, $fp, 0
-	st.d	$a0, $s0, 5
-	st.d	$a1, $s0, 0
-	ori	$a2, $zero, 13
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 5
+	ld.d	$a3, $a0, 0
+	st.d	$a2, $a1, 5
+	st.d	$a3, $a1, 0
+	ld.d	$a4, $a1, 0
+	ld.d	$a5, $a1, 5
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	bnez	$a2, .LBB1_77
 # %bb.10:                               # %check.exit43
-	ld.d	$a0, $fp, 6
-	ld.d	$a1, $fp, 0
-	st.d	$a0, $s0, 6
-	st.d	$a1, $s0, 0
-	ori	$a2, $zero, 14
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 6
+	ld.d	$a3, $a0, 0
+	st.d	$a2, $a1, 6
+	st.d	$a3, $a1, 0
+	ld.d	$a4, $a1, 0
+	ld.d	$a5, $a1, 6
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	bnez	$a2, .LBB1_77
 # %bb.11:                               # %check.exit46
-	ld.d	$a0, $fp, 7
-	ld.d	$a1, $fp, 0
-	st.d	$a0, $s0, 7
-	st.d	$a1, $s0, 0
-	ori	$a2, $zero, 15
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 7
+	ld.d	$a3, $a0, 0
+	st.d	$a2, $a1, 7
+	st.d	$a3, $a1, 0
+	ld.d	$a4, $a1, 0
+	ld.d	$a5, $a1, 7
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	bnez	$a2, .LBB1_77
 # %bb.12:                               # %check.exit49
-	vld	$vr0, $fp, 0
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 16
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	vld	$vr0, $a0, 0
+	ori	$a2, $zero, 1
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.13:                               # %check.exit52
-	ld.b	$a0, $fp, 16
-	vld	$vr0, $fp, 0
-	st.b	$a0, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 17
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a3, $a0, 16
+	vld	$vr0, $a0, 0
+	st.b	$a3, $a1, 16
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.14:                               # %check.exit55
-	ld.h	$a0, $fp, 16
-	vld	$vr0, $fp, 0
-	st.h	$a0, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 18
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a2, $a0, 16
+	vld	$vr0, $a0, 0
+	st.h	$a2, $a1, 16
+	ori	$a2, $zero, 1
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.15:                               # %check.exit58
-	ld.w	$a0, $fp, 15
-	vld	$vr0, $fp, 0
-	st.w	$a0, $s0, 15
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 19
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 15
+	ld.d	$a3, $a0, 8
+	st.w	$a2, $a1, 15
+	st.d	$a3, $a1, 8
+	ld.d	$a2, $a1, 8
+	ld.d	$a4, $a1, 11
+	ld.d	$a5, $a0, 11
+	ld.d	$a6, $a0, 0
+	xor	$a2, $a2, $a3
+	xor	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	st.d	$a6, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.16:                               # %check.exit61
-	ld.w	$a0, $fp, 16
-	vld	$vr0, $fp, 0
-	st.w	$a0, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 20
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.wu	$a2, $a0, 16
+	vld	$vr0, $a0, 0
+	st.w	$a2, $a1, 16
+	ori	$a2, $zero, 1
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.17:                               # %check.exit64
-	ld.d	$a0, $fp, 13
-	vld	$vr0, $fp, 0
-	st.d	$a0, $s0, 13
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 21
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 13
+	ld.d	$a3, $a0, 8
+	st.d	$a2, $a1, 13
+	st.d	$a3, $a1, 8
+	ld.d	$a4, $a1, 8
+	ld.d	$a5, $a1, 13
+	ld.d	$a6, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	st.d	$a6, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.18:                               # %check.exit67
-	ld.d	$a0, $fp, 14
-	vld	$vr0, $fp, 0
-	st.d	$a0, $s0, 14
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 22
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 14
+	ld.d	$a3, $a0, 8
+	st.d	$a2, $a1, 14
+	st.d	$a3, $a1, 8
+	ld.d	$a4, $a1, 8
+	ld.d	$a5, $a1, 14
+	ld.d	$a6, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	st.d	$a6, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.19:                               # %check.exit70
-	ld.d	$a0, $fp, 15
-	vld	$vr0, $fp, 0
-	st.d	$a0, $s0, 15
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 23
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 15
+	ld.d	$a3, $a0, 8
+	st.d	$a2, $a1, 15
+	st.d	$a3, $a1, 8
+	ld.d	$a4, $a1, 8
+	ld.d	$a5, $a1, 15
+	ld.d	$a6, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	st.d	$a6, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.20:                               # %check.exit73
-	ld.d	$a0, $fp, 16
-	vld	$vr0, $fp, 0
-	st.d	$a0, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 24
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 16
+	vld	$vr0, $a0, 0
+	st.d	$a2, $a1, 16
+	ori	$a2, $zero, 1
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.21:                               # %check.exit76
-	ld.b	$a0, $fp, 24
-	ld.d	$a1, $fp, 16
-	vld	$vr0, $fp, 0
-	st.b	$a0, $s0, 24
-	st.d	$a1, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 25
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a3, $a0, 24
+	ld.d	$a4, $a0, 16
+	vld	$vr0, $a0, 0
+	st.b	$a3, $a1, 24
+	st.d	$a4, $a1, 16
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.22:                               # %check.exit79
-	ld.h	$a0, $fp, 24
-	ld.d	$a1, $fp, 16
-	vld	$vr0, $fp, 0
-	st.h	$a0, $s0, 24
-	st.d	$a1, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 26
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a2, $a0, 24
+	ld.d	$a3, $a0, 16
+	vld	$vr0, $a0, 0
+	st.h	$a2, $a1, 24
+	st.d	$a3, $a1, 16
+	ori	$a2, $zero, 1
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.23:                               # %check.exit82
-	ld.w	$a0, $fp, 23
-	ld.d	$a1, $fp, 16
-	vld	$vr0, $fp, 0
-	st.w	$a0, $s0, 23
-	st.d	$a1, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 27
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 23
+	ld.d	$a3, $a0, 16
+	st.w	$a2, $a1, 23
+	st.d	$a3, $a1, 16
+	ld.d	$a2, $a1, 16
+	ld.d	$a4, $a1, 19
+	ld.d	$a5, $a0, 19
+	vld	$vr0, $a0, 0
+	xor	$a2, $a2, $a3
+	xor	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.24:                               # %check.exit85
-	ld.w	$a0, $fp, 24
-	ld.d	$a1, $fp, 16
-	vld	$vr0, $fp, 0
-	st.w	$a0, $s0, 24
-	st.d	$a1, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 28
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.wu	$a2, $a0, 24
+	ld.d	$a3, $a0, 16
+	vld	$vr0, $a0, 0
+	st.w	$a2, $a1, 24
+	st.d	$a3, $a1, 16
+	ori	$a2, $zero, 1
+	vst	$vr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.25:                               # %check.exit88
-	ld.d	$a0, $fp, 21
-	ld.d	$a1, $fp, 16
-	vld	$vr0, $fp, 0
-	st.d	$a0, $s0, 21
-	st.d	$a1, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 29
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 21
+	ld.d	$a3, $a0, 16
+	st.d	$a2, $a1, 21
+	st.d	$a3, $a1, 16
+	ld.d	$a4, $a1, 16
+	ld.d	$a5, $a1, 21
+	vld	$vr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.26:                               # %check.exit91
-	ld.d	$a0, $fp, 22
-	ld.d	$a1, $fp, 16
-	vld	$vr0, $fp, 0
-	st.d	$a0, $s0, 22
-	st.d	$a1, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 30
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 22
+	ld.d	$a3, $a0, 16
+	st.d	$a2, $a1, 22
+	st.d	$a3, $a1, 16
+	ld.d	$a4, $a1, 16
+	ld.d	$a5, $a1, 22
+	vld	$vr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.27:                               # %check.exit94
-	ld.d	$a0, $fp, 23
-	ld.d	$a1, $fp, 16
-	vld	$vr0, $fp, 0
-	st.d	$a0, $s0, 23
-	st.d	$a1, $s0, 16
-	vst	$vr0, $s0, 0
-	ori	$a2, $zero, 31
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 23
+	ld.d	$a3, $a0, 16
+	st.d	$a2, $a1, 23
+	st.d	$a3, $a1, 16
+	ld.d	$a4, $a1, 16
+	ld.d	$a5, $a1, 23
+	vld	$vr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.28:                               # %check.exit97
-	xvld	$xr0, $fp, 0
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 32
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	xvld	$xr0, $a0, 0
+	ori	$a2, $zero, 1
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.29:                               # %check.exit100
-	ld.b	$a0, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.b	$a0, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 33
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a3, $a0, 32
+	xvld	$xr0, $a0, 0
+	st.b	$a3, $a1, 32
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.30:                               # %check.exit103
-	ld.h	$a0, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.h	$a0, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 34
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a2, $a0, 32
+	xvld	$xr0, $a0, 0
+	st.h	$a2, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.31:                               # %check.exit106
-	ld.w	$a0, $fp, 31
-	xvld	$xr0, $fp, 0
-	st.w	$a0, $s0, 31
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 35
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 31
+	ld.d	$a3, $a0, 24
+	st.w	$a2, $a1, 31
+	st.d	$a3, $a1, 24
+	ld.d	$a2, $a0, 16
+	ld.d	$a4, $a1, 24
+	ld.d	$a5, $a1, 27
+	ld.d	$a6, $a0, 27
+	st.d	$a2, $a1, 16
+	vld	$vr0, $a0, 0
+	xor	$a2, $a4, $a3
+	xor	$a3, $a5, $a6
+	or	$a2, $a2, $a3
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.32:                               # %check.exit109
-	ld.w	$a0, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.w	$a0, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 36
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.wu	$a2, $a0, 32
+	xvld	$xr0, $a0, 0
+	st.w	$a2, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.33:                               # %check.exit112
-	ld.d	$a0, $fp, 29
-	xvld	$xr0, $fp, 0
-	st.d	$a0, $s0, 29
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 37
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 29
+	ld.d	$a3, $a0, 24
+	st.d	$a2, $a1, 29
+	ld.d	$a4, $a0, 16
+	st.d	$a3, $a1, 24
+	ld.d	$a5, $a1, 24
+	ld.d	$a6, $a1, 29
+	st.d	$a4, $a1, 16
+	vld	$vr0, $a0, 0
+	xor	$a3, $a5, $a3
+	xor	$a2, $a6, $a2
+	or	$a2, $a3, $a2
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.34:                               # %check.exit115
-	ld.d	$a0, $fp, 30
-	xvld	$xr0, $fp, 0
-	st.d	$a0, $s0, 30
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 38
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 30
+	ld.d	$a3, $a0, 24
+	st.d	$a2, $a1, 30
+	ld.d	$a4, $a0, 16
+	st.d	$a3, $a1, 24
+	ld.d	$a5, $a1, 24
+	ld.d	$a6, $a1, 30
+	st.d	$a4, $a1, 16
+	vld	$vr0, $a0, 0
+	xor	$a3, $a5, $a3
+	xor	$a2, $a6, $a2
+	or	$a2, $a3, $a2
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.35:                               # %check.exit118
-	ld.d	$a0, $fp, 31
-	xvld	$xr0, $fp, 0
-	st.d	$a0, $s0, 31
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 39
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 31
+	ld.d	$a3, $a0, 24
+	st.d	$a2, $a1, 31
+	ld.d	$a4, $a0, 16
+	st.d	$a3, $a1, 24
+	ld.d	$a5, $a1, 24
+	ld.d	$a6, $a1, 31
+	st.d	$a4, $a1, 16
+	vld	$vr0, $a0, 0
+	xor	$a3, $a5, $a3
+	xor	$a2, $a6, $a2
+	or	$a2, $a3, $a2
+	vst	$vr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.36:                               # %check.exit121
-	ld.d	$a0, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.d	$a0, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 40
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 32
+	xvld	$xr0, $a0, 0
+	st.d	$a2, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.37:                               # %check.exit124
-	ld.b	$a0, $fp, 40
-	ld.d	$a1, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.b	$a0, $s0, 40
-	st.d	$a1, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 41
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a3, $a0, 40
+	ld.d	$a4, $a0, 32
+	xvld	$xr0, $a0, 0
+	st.b	$a3, $a1, 40
+	st.d	$a4, $a1, 32
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.38:                               # %check.exit127
-	ld.h	$a0, $fp, 40
-	ld.d	$a1, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.h	$a0, $s0, 40
-	st.d	$a1, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 42
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a2, $a0, 40
+	ld.d	$a3, $a0, 32
+	xvld	$xr0, $a0, 0
+	st.h	$a2, $a1, 40
+	st.d	$a3, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.39:                               # %check.exit130
-	ld.w	$a0, $fp, 39
-	ld.d	$a1, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.w	$a0, $s0, 39
-	st.d	$a1, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 43
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 39
+	ld.d	$a3, $a0, 32
+	st.w	$a2, $a1, 39
+	st.d	$a3, $a1, 32
+	ld.d	$a2, $a1, 32
+	ld.d	$a4, $a1, 35
+	ld.d	$a5, $a0, 35
+	xvld	$xr0, $a0, 0
+	xor	$a2, $a2, $a3
+	xor	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.40:                               # %check.exit133
-	ld.w	$a0, $fp, 40
-	ld.d	$a1, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.w	$a0, $s0, 40
-	st.d	$a1, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 44
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.wu	$a2, $a0, 40
+	ld.d	$a3, $a0, 32
+	xvld	$xr0, $a0, 0
+	st.w	$a2, $a1, 40
+	st.d	$a3, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr0, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.41:                               # %check.exit136
-	ld.d	$a0, $fp, 37
-	ld.d	$a1, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.d	$a0, $s0, 37
-	st.d	$a1, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 45
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 37
+	ld.d	$a3, $a0, 32
+	st.d	$a2, $a1, 37
+	st.d	$a3, $a1, 32
+	ld.d	$a4, $a1, 32
+	ld.d	$a5, $a1, 37
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.42:                               # %check.exit139
-	ld.d	$a0, $fp, 38
-	ld.d	$a1, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.d	$a0, $s0, 38
-	st.d	$a1, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 46
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 38
+	ld.d	$a3, $a0, 32
+	st.d	$a2, $a1, 38
+	st.d	$a3, $a1, 32
+	ld.d	$a4, $a1, 32
+	ld.d	$a5, $a1, 38
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.43:                               # %check.exit142
-	ld.d	$a0, $fp, 39
-	ld.d	$a1, $fp, 32
-	xvld	$xr0, $fp, 0
-	st.d	$a0, $s0, 39
-	st.d	$a1, $s0, 32
-	xvst	$xr0, $s0, 0
-	ori	$a2, $zero, 47
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 39
+	ld.d	$a3, $a0, 32
+	st.d	$a2, $a1, 39
+	st.d	$a3, $a1, 32
+	ld.d	$a4, $a1, 32
+	ld.d	$a5, $a1, 39
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.44:                               # %check.exit145
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 48
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	vld	$vr0, $a0, 32
+	xvld	$xr1, $a0, 0
+	vst	$vr0, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.45:                               # %check.exit148
-	ld.b	$a0, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.b	$a0, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 49
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a3, $a0, 48
+	vld	$vr0, $a0, 32
+	xvld	$xr1, $a0, 0
+	st.b	$a3, $a1, 48
+	vst	$vr0, $a1, 32
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.46:                               # %check.exit151
-	ld.h	$a0, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.h	$a0, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 50
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a2, $a0, 48
+	vld	$vr0, $a0, 32
+	xvld	$xr1, $a0, 0
+	st.h	$a2, $a1, 48
+	vst	$vr0, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.47:                               # %check.exit154
-	ld.w	$a0, $fp, 47
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.w	$a0, $s0, 47
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 51
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 47
+	ld.d	$a3, $a0, 40
+	st.w	$a2, $a1, 47
+	st.d	$a3, $a1, 40
+	ld.d	$a2, $a0, 32
+	ld.d	$a4, $a1, 40
+	ld.d	$a5, $a1, 43
+	ld.d	$a6, $a0, 43
+	st.d	$a2, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a2, $a4, $a3
+	xor	$a3, $a5, $a6
+	or	$a2, $a2, $a3
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.48:                               # %check.exit157
-	ld.w	$a0, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.w	$a0, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 52
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.wu	$a2, $a0, 48
+	vld	$vr0, $a0, 32
+	xvld	$xr1, $a0, 0
+	st.w	$a2, $a1, 48
+	vst	$vr0, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.49:                               # %check.exit160
-	ld.d	$a0, $fp, 45
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.d	$a0, $s0, 45
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 53
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 45
+	ld.d	$a3, $a0, 40
+	st.d	$a2, $a1, 45
+	ld.d	$a4, $a0, 32
+	st.d	$a3, $a1, 40
+	ld.d	$a5, $a1, 40
+	ld.d	$a6, $a1, 45
+	st.d	$a4, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a5, $a3
+	xor	$a2, $a6, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.50:                               # %check.exit163
-	ld.d	$a0, $fp, 46
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.d	$a0, $s0, 46
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 54
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 46
+	ld.d	$a3, $a0, 40
+	st.d	$a2, $a1, 46
+	ld.d	$a4, $a0, 32
+	st.d	$a3, $a1, 40
+	ld.d	$a5, $a1, 40
+	ld.d	$a6, $a1, 46
+	st.d	$a4, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a5, $a3
+	xor	$a2, $a6, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.51:                               # %check.exit166
-	ld.d	$a0, $fp, 47
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.d	$a0, $s0, 47
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 55
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 47
+	ld.d	$a3, $a0, 40
+	st.d	$a2, $a1, 47
+	ld.d	$a4, $a0, 32
+	st.d	$a3, $a1, 40
+	ld.d	$a5, $a1, 40
+	ld.d	$a6, $a1, 47
+	st.d	$a4, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a5, $a3
+	xor	$a2, $a6, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.52:                               # %check.exit169
-	ld.d	$a0, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.d	$a0, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 56
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 48
+	vld	$vr0, $a0, 32
+	xvld	$xr1, $a0, 0
+	st.d	$a2, $a1, 48
+	vst	$vr0, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.53:                               # %check.exit172
-	ld.b	$a0, $fp, 56
-	ld.d	$a1, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.b	$a0, $s0, 56
-	st.d	$a1, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 57
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.bu	$a3, $a0, 56
+	ld.d	$a4, $a0, 48
+	vld	$vr0, $a0, 32
+	xvld	$xr1, $a0, 0
+	st.b	$a3, $a1, 56
+	st.d	$a4, $a1, 48
+	vst	$vr0, $a1, 32
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.54:                               # %check.exit175
-	ld.h	$a0, $fp, 56
-	ld.d	$a1, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.h	$a0, $s0, 56
-	st.d	$a1, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 58
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.hu	$a2, $a0, 56
+	ld.d	$a3, $a0, 48
+	vld	$vr0, $a0, 32
+	st.h	$a2, $a1, 56
+	xvld	$xr1, $a0, 0
+	st.d	$a3, $a1, 48
+	vst	$vr0, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.55:                               # %check.exit178
-	ld.w	$a0, $fp, 55
-	ld.d	$a1, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.w	$a0, $s0, 55
-	st.d	$a1, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 59
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.w	$a2, $a0, 55
+	ld.d	$a3, $a0, 48
+	st.w	$a2, $a1, 55
+	st.d	$a3, $a1, 48
+	vld	$vr0, $a0, 32
+	ld.d	$a2, $a1, 48
+	ld.d	$a4, $a1, 51
+	ld.d	$a5, $a0, 51
+	vst	$vr0, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a2, $a2, $a3
+	xor	$a3, $a4, $a5
+	or	$a2, $a2, $a3
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.56:                               # %check.exit181
-	ld.w	$a0, $fp, 56
-	ld.d	$a1, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.w	$a0, $s0, 56
-	st.d	$a1, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 60
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.wu	$a2, $a0, 56
+	ld.d	$a3, $a0, 48
+	vld	$vr0, $a0, 32
+	st.w	$a2, $a1, 56
+	xvld	$xr1, $a0, 0
+	st.d	$a3, $a1, 48
+	vst	$vr0, $a1, 32
+	ori	$a2, $zero, 1
+	xvst	$xr1, $a1, 0
+	beqz	$a2, .LBB1_77
 # %bb.57:                               # %check.exit184
-	ld.d	$a0, $fp, 53
-	ld.d	$a1, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.d	$a0, $s0, 53
-	st.d	$a1, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 61
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 53
+	ld.d	$a3, $a0, 48
+	st.d	$a2, $a1, 53
+	vld	$vr0, $a0, 32
+	st.d	$a3, $a1, 48
+	ld.d	$a4, $a1, 48
+	ld.d	$a5, $a1, 53
+	vst	$vr0, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.58:                               # %check.exit187
-	ld.d	$a0, $fp, 54
-	ld.d	$a1, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.d	$a0, $s0, 54
-	st.d	$a1, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 62
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 54
+	ld.d	$a3, $a0, 48
+	st.d	$a2, $a1, 54
+	vld	$vr0, $a0, 32
+	st.d	$a3, $a1, 48
+	ld.d	$a4, $a1, 48
+	ld.d	$a5, $a1, 54
+	vst	$vr0, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.59:                               # %check.exit190
-	ld.d	$a0, $fp, 55
-	ld.d	$a1, $fp, 48
-	vld	$vr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	st.d	$a0, $s0, 55
-	st.d	$a1, $s0, 48
-	vst	$vr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 63
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	ld.d	$a2, $a0, 55
+	ld.d	$a3, $a0, 48
+	st.d	$a2, $a1, 55
+	vld	$vr0, $a0, 32
+	st.d	$a3, $a1, 48
+	ld.d	$a4, $a1, 48
+	ld.d	$a5, $a1, 55
+	vst	$vr0, $a1, 32
+	xvld	$xr0, $a0, 0
+	xor	$a3, $a4, $a3
+	xor	$a2, $a5, $a2
+	or	$a2, $a3, $a2
+	xvst	$xr0, $a1, 0
+	bnez	$a2, .LBB1_77
 # %bb.60:                               # %check.exit193
-	xvld	$xr0, $fp, 32
-	xvld	$xr1, $fp, 0
-	xvst	$xr0, $s0, 32
-	xvst	$xr1, $s0, 0
-	ori	$a2, $zero, 64
-	move	$a0, $s0
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB1_77
+	xvld	$xr0, $a0, 32
+	xvld	$xr1, $a0, 0
+	xvst	$xr0, $a1, 32
+	ori	$a0, $zero, 1
+	xvst	$xr1, $a1, 0
+	beqz	$a0, .LBB1_77
 # %bb.61:                               # %check.exit196
 	pcalau12i	$a0, %pc_hi20(dst)
 	addi.d	$fp, $a0, %pc_lo12(dst)

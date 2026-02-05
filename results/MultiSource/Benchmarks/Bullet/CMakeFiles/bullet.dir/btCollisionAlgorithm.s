@@ -30,7 +30,7 @@ _ZN20btCollisionAlgorithmD2Ev:          # @_ZN20btCollisionAlgorithmD2Ev
 	.type	_ZN20btCollisionAlgorithmD0Ev,@function
 _ZN20btCollisionAlgorithmD0Ev:          # @_ZN20btCollisionAlgorithmD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end2:
 	.size	_ZN20btCollisionAlgorithmD0Ev, .Lfunc_end2-_ZN20btCollisionAlgorithmD0Ev
                                         # -- End function

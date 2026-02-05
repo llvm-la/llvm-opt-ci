@@ -124,7 +124,7 @@ Huffman_Generate:                       # @Huffman_Generate
 	stx.w	$a0, $s0, $a2
 	stx.b	$a0, $fp, $a1
 	st.b	$a0, $fp, 0
-	b	.LBB0_37
+	b	.LBB0_36
 .LBB0_15:                               # %.preheader162.preheader
 	move	$a0, $zero
 	move	$s3, $zero
@@ -219,43 +219,39 @@ Huffman_Generate:                       # @Huffman_Generate
 	ori	$a0, $zero, 2
 	ori	$a1, $zero, 1
 	st.w	$a0, $sp, 92
-	bne	$s3, $a1, .LBB0_38
+	bne	$s3, $a1, .LBB0_37
 .LBB0_28:                               # %.preheader160
-	beqz	$s2, .LBB0_34
+	beqz	$s2, .LBB0_33
 # %bb.29:                               # %.lr.ph187.preheader
 	move	$a2, $zero
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$a1, $sp, 88
-	b	.LBB0_32
+	b	.LBB0_31
 	.p2align	4, , 16
-.LBB0_30:                               #   in Loop: Header=BB0_32 Depth=1
-	move	$a4, $a2
-.LBB0_31:                               # %._crit_edge183
-                                        #   in Loop: Header=BB0_32 Depth=1
+.LBB0_30:                               # %._crit_edge183
+                                        #   in Loop: Header=BB0_31 Depth=1
 	addi.w	$s2, $s2, -1
 	addi.d	$a0, $a0, -1
-	move	$a2, $a4
-	beqz	$s2, .LBB0_34
-.LBB0_32:                               # %.lr.ph187
+	beqz	$s2, .LBB0_33
+.LBB0_31:                               # %.lr.ph187
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_33 Depth 2
+                                        #     Child Loop BB0_32 Depth 2
 	slli.d	$a3, $a0, 2
 	ldx.w	$a3, $a3, $a1
 	beqz	$a3, .LBB0_30
 	.p2align	4, , 16
-.LBB0_33:                               #   Parent Loop BB0_32 Depth=1
+.LBB0_32:                               #   Parent Loop BB0_31 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	bstrpick.d	$a4, $a2, 31, 0
 	slli.d	$a4, $a4, 2
-	ldx.wu	$a5, $s0, $a4
-	addi.w	$a4, $a2, 1
-	andi	$a2, $a5, 1023
+	ldx.wu	$a4, $s0, $a4
+	addi.w	$a2, $a2, 1
+	andi	$a4, $a4, 1023
 	addi.w	$a3, $a3, -1
-	stx.b	$a0, $fp, $a2
-	move	$a2, $a4
-	bnez	$a3, .LBB0_33
-	b	.LBB0_31
-.LBB0_34:                               # %._crit_edge188
+	stx.b	$a0, $fp, $a4
+	bnez	$a3, .LBB0_32
+	b	.LBB0_30
+.LBB0_33:                               # %._crit_edge188
 	ld.w	$a0, $sp, 88
 	ld.w	$a1, $sp, 92
 	slli.d	$a2, $a0, 1
@@ -319,12 +315,12 @@ Huffman_Generate:                       # @Huffman_Generate
 	alsl.d	$a0, $a0, $a2, 1
 	slli.d	$a0, $a0, 1
 	st.w	$a0, $sp, 84
-	beqz	$s1, .LBB0_37
-# %bb.35:                               # %.lr.ph192.preheader
+	beqz	$s1, .LBB0_36
+# %bb.34:                               # %.lr.ph192.preheader
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$a1, $sp, 20
 	.p2align	4, , 16
-.LBB0_36:                               # %.lr.ph192
+.LBB0_35:                               # %.lr.ph192
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $fp, 0
 	slli.d	$a2, $a2, 2
@@ -335,8 +331,8 @@ Huffman_Generate:                       # @Huffman_Generate
 	addi.d	$fp, $fp, 1
 	addi.d	$a0, $a0, -1
 	addi.d	$s0, $s0, 4
-	bnez	$a0, .LBB0_36
-.LBB0_37:
+	bnez	$a0, .LBB0_35
+.LBB0_36:
 	ld.d	$s8, $sp, 344                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 352                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 360                   # 8-byte Folded Reload
@@ -350,20 +346,20 @@ Huffman_Generate:                       # @Huffman_Generate
 	ld.d	$ra, $sp, 424                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 432
 	ret
-.LBB0_38:                               # %.lr.ph177.preheader
+.LBB0_37:                               # %.lr.ph177.preheader
 	addi.d	$a0, $s3, -1
 	addi.w	$a1, $s2, 1
 	lu12i.w	$a2, 4095
 	ori	$a2, $a2, 4092
-	b	.LBB0_41
+	b	.LBB0_40
 	.p2align	4, , 16
-.LBB0_39:                               # %.lr.ph177..loopexit_crit_edge
-                                        #   in Loop: Header=BB0_41 Depth=1
+.LBB0_38:                               # %.lr.ph177..loopexit_crit_edge
+                                        #   in Loop: Header=BB0_40 Depth=1
 	slli.d	$a4, $a3, 2
 	ldx.w	$a5, $a4, $s4
 	addi.d	$a4, $a6, 2
-.LBB0_40:                               # %.loopexit
-                                        #   in Loop: Header=BB0_41 Depth=1
+.LBB0_39:                               # %.loopexit
+                                        #   in Loop: Header=BB0_40 Depth=1
 	slli.d	$a3, $a3, 2
 	addi.d	$a5, $a5, -1
 	stx.w	$a5, $a3, $s4
@@ -373,9 +369,9 @@ Huffman_Generate:                       # @Huffman_Generate
 	addi.d	$a4, $a4, 2
 	stx.w	$a4, $a3, $s4
 	beqz	$a0, .LBB0_28
-.LBB0_41:                               # %.lr.ph177
+.LBB0_40:                               # %.lr.ph177
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_42 Depth 2
+                                        #     Child Loop BB0_41 Depth 2
 	addi.d	$a0, $a0, -1
 	slli.d	$a4, $a0, 2
 	ldx.wu	$a5, $s0, $a4
@@ -387,18 +383,18 @@ Huffman_Generate:                       # @Huffman_Generate
 	bstrins.d	$a5, $a3, 63, 10
 	stx.w	$a5, $s0, $a4
 	move	$a4, $a1
-	bltu	$a3, $s2, .LBB0_39
+	bltu	$a3, $s2, .LBB0_38
 	.p2align	4, , 16
-.LBB0_42:                               # %.preheader161
-                                        #   Parent Loop BB0_41 Depth=1
+.LBB0_41:                               # %.preheader161
+                                        #   Parent Loop BB0_40 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$a3, $a4, -2
 	bstrpick.d	$a3, $a3, 31, 0
 	slli.d	$a5, $a3, 2
 	ldx.w	$a5, $a5, $s4
 	addi.w	$a4, $a4, -1
-	beqz	$a5, .LBB0_42
-	b	.LBB0_40
+	beqz	$a5, .LBB0_41
+	b	.LBB0_39
 .Lfunc_end0:
 	.size	Huffman_Generate, .Lfunc_end0-Huffman_Generate
                                         # -- End function

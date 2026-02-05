@@ -267,14 +267,13 @@ get_time:                               # @get_time
 	.type	est_mem_usage,@function
 est_mem_usage:                          # @est_mem_usage
 # %bb.0:
-	ld.w	$a1, $a0, 44
-	fld.s	$fa0, $a0, 24
-	fld.s	$fa1, $a0, 60
-	movgr2fr.w	$fa2, $a1
-	ffint.s.w	$fa2, $fa2
-	fmul.s	$fa0, $fa0, $fa2
+	fld.s	$fa0, $a0, 44
+	fld.s	$fa1, $a0, 24
+	fld.s	$fa2, $a0, 60
+	ffint.s.w	$fa0, $fa0
+	fmul.s	$fa0, $fa1, $fa0
 	ld.d	$a1, $a0, 120
-	fdiv.s	$fa0, $fa1, $fa0
+	fdiv.s	$fa0, $fa2, $fa0
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	srai.d	$a3, $a1, 63
@@ -336,8 +335,7 @@ est_mem_usage:                          # @est_mem_usage
 	.type	time_per_intersection,@function
 time_per_intersection:                  # @time_per_intersection
 # %bb.0:
-	ld.d	$a1, $a0, 144
-	movgr2fr.d	$fa1, $a1
+	fld.d	$fa1, $a0, 144
 	pcalau12i	$a1, %pc_hi20(.LCPI6_0)
 	fld.d	$fa2, $a1, %pc_lo12(.LCPI6_0)
 	ld.w	$a0, $a0, 36

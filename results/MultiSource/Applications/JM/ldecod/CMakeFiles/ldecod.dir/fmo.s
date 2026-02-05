@@ -739,13 +739,14 @@ FmoInit:                                # @FmoInit
                                         #     Parent Loop BB0_107 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.w	$t3, $a1, $a3
-	mul.d	$t3, $t3, $a5
-	add.d	$t3, $t3, $t2
-	bstrpick.d	$t3, $t3, 31, 0
-	slli.d	$t3, $t3, 2
-	addi.w	$t2, $t2, 1
-	stx.w	$a4, $t1, $t3
-	bgeu	$t0, $t2, .LBB0_108
+	move	$t4, $t2
+	mul.d	$t2, $t3, $a5
+	add.d	$t2, $t2, $t4
+	bstrpick.d	$t2, $t2, 31, 0
+	slli.d	$t2, $t2, 2
+	stx.w	$a4, $t1, $t2
+	addi.w	$t2, $t4, 1
+	bltu	$t4, $t0, .LBB0_108
 # %bb.109:                              # %._crit_edge5.i.i
                                         #   in Loop: Header=BB0_107 Depth=2
 	addi.w	$a5, $a5, 1
@@ -1013,22 +1014,22 @@ FmoInit:                                # @FmoInit
 	slli.d	$a3, $a3, 2
 	pcalau12i	$a4, %pc_hi20(.LCPI0_3)
 	vld	$vr2, $a4, %pc_lo12(.LCPI0_3)
-	vreplgr2vr.w	$vr0, $a2
+	vldrepl.w	$vr0, $a1, 0
+	vreplgr2vr.w	$vr1, $a2
 	vreplgr2vr.w	$vr3, $a5
-	vldrepl.w	$vr1, $a1, 0
 	vor.v	$vr2, $vr3, $vr2
 	sub.d	$a4, $a5, $a3
 	alsl.d	$a5, $a5, $a0, 2
 	.p2align	4, , 16
 .LBB0_152:                              # %vec.epilog.vector.body218
                                         # =>This Inner Loop Header: Depth=1
-	vdiv.wu	$vr3, $vr2, $vr1
+	vdiv.wu	$vr3, $vr2, $vr0
 	vaddi.wu	$vr4, $vr2, 4
-	vmsub.w	$vr2, $vr3, $vr1
-	vmul.w	$vr3, $vr3, $vr0
+	vmsub.w	$vr2, $vr3, $vr0
+	vmul.w	$vr3, $vr3, $vr1
 	vsrli.w	$vr3, $vr3, 1
 	vadd.w	$vr2, $vr3, $vr2
-	vmod.wu	$vr2, $vr2, $vr0
+	vmod.wu	$vr2, $vr2, $vr1
 	vst	$vr2, $a5, 0
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 16

@@ -293,18 +293,18 @@ main:                                   # @main
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	move	$s0, $a1
+	move	$fp, $a1
 	st.w	$a0, $sp, 540
 	blez	$a0, .LBB5_12
 # %bb.1:                                # %.lr.ph
 	addi.d	$s4, $sp, 56
 	ori	$s5, $zero, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$fp, $a0, %pc_lo12(.L.str.10)
+	addi.d	$s0, $a0, %pc_lo12(.L.str.10)
 	move	$s6, $zero
 	move	$s3, $zero
 	ori	$s7, $zero, 1
-	move	$s8, $s0
+	move	$s8, $fp
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
@@ -361,7 +361,7 @@ main:                                   # @main
 	stx.b	$zero, $a1, $a0
 	addi.d	$a0, $sp, 40
 	ori	$a3, $zero, 22
-	move	$a1, $fp
+	move	$a1, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4findEPKcmm)
 	jirl	$ra, $ra, 0
@@ -382,7 +382,7 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(_ZN9benchmark16PrintDefaultHelpEv)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN9benchmark16PrintDefaultHelpEv)
 	addi.d	$a0, $sp, 540
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark10InitializeEPiPPcPFvvE)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $sp, 432
@@ -409,17 +409,17 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
 # %bb.14:
-	move	$fp, $a0
+	move	$s0, $a0
 	ld.w	$a0, $sp, 540
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB5_68
 # %bb.15:
-	ld.d	$s0, $s0, 8
+	ld.d	$fp, $fp, 8
 	addi.d	$s2, $sp, 24
 	st.d	$s2, $sp, 8
-	beqz	$s0, .LBB5_72
+	beqz	$fp, .LBB5_72
 # %bb.16:
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -445,11 +445,11 @@ main:                                   # @main
 	ori	$a1, $zero, 1
 	bne	$s1, $a1, .LBB5_22
 # %bb.21:
-	ld.b	$a1, $s0, 0
+	ld.b	$a1, $fp, 0
 	st.b	$a1, $a0, 0
 	b	.LBB5_23
 .LBB5_22:
-	move	$a1, $s0
+	move	$a1, $fp
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
@@ -482,18 +482,18 @@ main:                                   # @main
 .Ltmp9:                                 # EH_LABEL
 # %bb.27:                               # %_ZNSirsERl.exit
 	ld.d	$a0, $sp, 8
-	bne	$fp, $a0, .LBB5_31
+	bne	$s0, $a0, .LBB5_31
 # %bb.28:
-	ld.w	$s0, $sp, 524
+	ld.w	$fp, $sp, 524
 	andi	$a0, $s3, 1
-	masknez	$fp, $fp, $a0
-	bne	$fp, $s0, .LBB5_38
+	masknez	$s0, $s0, $a0
+	bne	$s0, $fp, .LBB5_38
 # %bb.29:
 	ld.d	$a0, $sp, 528
-	sltui	$a1, $s0, 1
+	sltui	$a1, $fp, 1
 	addi.d	$a0, $a0, 1
-	masknez	$s0, $a0, $a1
-	bne	$s0, $fp, .LBB5_49
+	masknez	$fp, $a0, $a1
+	bne	$fp, $s0, .LBB5_49
 # %bb.30:
 	move	$fp, $zero
 	ori	$s0, $zero, 1
@@ -518,18 +518,18 @@ main:                                   # @main
 .Ltmp13:                                # EH_LABEL
 # %bb.33:                               # %_ZNSolsEl.exit
 .Ltmp14:                                # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.12)
 	ori	$a2, $zero, 48
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp15:                                # EH_LABEL
 # %bb.34:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit70
 .Ltmp16:                                # EH_LABEL
-	move	$a0, $s0
-	move	$a1, $fp
+	move	$a0, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp17:                                # EH_LABEL
@@ -560,24 +560,24 @@ main:                                   # @main
 .Ltmp31:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp32:                                # EH_LABEL
 # %bb.40:                               # %_ZNSolsEl.exit80
 .Ltmp33:                                # EH_LABEL
-	move	$fp, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.13)
 	ori	$a2, $zero, 38
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp34:                                # EH_LABEL
 # %bb.41:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit82
 .Ltmp35:                                # EH_LABEL
-	move	$a0, $fp
-	move	$a1, $s0
+	move	$a0, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp36:                                # EH_LABEL
@@ -635,24 +635,24 @@ main:                                   # @main
 .Ltmp50:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp51:                                # EH_LABEL
 # %bb.51:                               # %_ZNSolsEl.exit90
 .Ltmp52:                                # EH_LABEL
-	move	$fp, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
 	ori	$a2, $zero, 44
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp53:                                # EH_LABEL
 # %bb.52:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit92
 .Ltmp54:                                # EH_LABEL
-	move	$a0, $fp
-	move	$a1, $s0
+	move	$a0, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp55:                                # EH_LABEL
@@ -1525,49 +1525,48 @@ _GLOBAL__sub_I_filter_test.cc:          # @_GLOBAL__sub_I_filter_test.cc
 .Ltmp103:                               # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB14_25
-	b	.LBB14_29
+	bne	$a2, $s1, .LBB14_26
+	b	.LBB14_27
 .LBB14_22:
 .Ltmp98:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB14_25
-	b	.LBB14_29
+	bne	$a2, $s1, .LBB14_26
+	b	.LBB14_27
 .LBB14_23:
 .Ltmp93:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB14_25
-	b	.LBB14_29
+	bne	$a2, $s1, .LBB14_26
+	b	.LBB14_27
 .LBB14_24:
 .Ltmp88:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB14_29
-.LBB14_25:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB14_26
+	b	.LBB14_27
+.LBB14_25:
+.Ltmp83:                                # EH_LABEL
+	ld.d	$a2, $sp, 16
+	move	$s0, $a0
+	beq	$a2, $s1, .LBB14_27
+.LBB14_26:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB14_27
-.LBB14_26:                              # %common.resume.sink.split
+.LBB14_27:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s3, .LBB14_29
+# %bb.28:                               # %common.resume.sink.split
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB14_27:                              # %common.resume
+.LBB14_29:                              # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB14_28:
-.Ltmp83:                                # EH_LABEL
-	ld.d	$a2, $sp, 16
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB14_25
-.LBB14_29:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s3, .LBB14_27
-	b	.LBB14_26
 .Lfunc_end14:
 	.size	_GLOBAL__sub_I_filter_test.cc, .Lfunc_end14-_GLOBAL__sub_I_filter_test.cc
 	.cfi_endproc

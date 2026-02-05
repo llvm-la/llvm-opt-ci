@@ -9,18 +9,14 @@ _ZN12CFilterCoderC2Ev:                  # @_ZN12CFilterCoderC2Ev
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a0
 	st.w	$zero, $a0, 88
 	pcalau12i	$a0, %pc_hi20(_ZTV12CFilterCoder)
@@ -47,8 +43,6 @@ _ZN12CFilterCoderC2Ev:                  # @_ZN12CFilterCoderC2Ev
 	st.d	$a1, $fp, 72
 	addi.d	$a0, $a0, 768
 	st.d	$a0, $fp, 80
-	addi.d	$s1, $fp, 104
-	addi.d	$s2, $fp, 152
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 104
 	vst	$vr0, $fp, 152
@@ -63,12 +57,10 @@ _ZN12CFilterCoderC2Ev:                  # @_ZN12CFilterCoderC2Ev
 	st.d	$a0, $fp, 96
 	beqz	$a0, .LBB0_3
 # %bb.2:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB0_3:
 	ori	$a0, $zero, 4
@@ -133,7 +125,7 @@ _ZN12CFilterCoderC2Ev:                  # @_ZN12CFilterCoderC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp18:                                # EH_LABEL
 .LBB0_15:                               # %_ZN9CMyComPtrI27ICompressSetCoderPropertiesED2Ev.exit
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $fp, 152
 	beqz	$a0, .LBB0_17
 # %bb.16:
 	ld.d	$a1, $a0, 0
@@ -151,7 +143,7 @@ _ZN12CFilterCoderC2Ev:                  # @_ZN12CFilterCoderC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp24:                                # EH_LABEL
 .LBB0_19:                               # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, 104
 	beqz	$a0, .LBB0_21
 # %bb.20:
 	ld.d	$a1, $a0, 0
@@ -1316,21 +1308,19 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 # %bb.1:
 	st.w	$zero, $s1, 0
 .LBB30_2:
-	beqz	$s0, .LBB30_16
+	beqz	$s0, .LBB30_14
 # %bb.3:                                # %.lr.ph58
 	ld.w	$a0, $fp, 120
 	lu12i.w	$s6, 32
-	b	.LBB30_6
+	b	.LBB30_5
 	.p2align	4, , 16
-.LBB30_4:                               #   in Loop: Header=BB30_6 Depth=1
-	move	$a0, $zero
-.LBB30_5:                               # %._crit_edge
-                                        #   in Loop: Header=BB30_6 Depth=1
+.LBB30_4:                               # %._crit_edge
+                                        #   in Loop: Header=BB30_5 Depth=1
 	add.d	$s2, $s2, $s3
 	st.w	$a0, $fp, 120
-	beqz	$s0, .LBB30_16
-.LBB30_6:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB30_15 Depth 2
+	beqz	$s0, .LBB30_14
+.LBB30_5:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB30_13 Depth 2
 	sub.w	$a1, $s6, $a0
 	sltu	$a2, $s0, $a1
 	masknez	$a1, $a1, $a2
@@ -1344,12 +1334,12 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	beqz	$s1, .LBB30_8
-# %bb.7:                                #   in Loop: Header=BB30_6 Depth=1
+	beqz	$s1, .LBB30_7
+# %bb.6:                                #   in Loop: Header=BB30_5 Depth=1
 	ld.w	$a0, $s1, 0
 	add.d	$a0, $a0, $s5
 	st.w	$a0, $s1, 0
-.LBB30_8:                               #   in Loop: Header=BB30_6 Depth=1
+.LBB30_7:                               #   in Loop: Header=BB30_5 Depth=1
 	ld.d	$a0, $fp, 192
 	ld.d	$a2, $a0, 0
 	ld.w	$a3, $fp, 120
@@ -1359,14 +1349,14 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	move	$a2, $s4
 	jirl	$ra, $a4, 0
 	st.w	$a0, $fp, 120
-	beqz	$a0, .LBB30_17
-# %bb.9:                                #   in Loop: Header=BB30_6 Depth=1
+	beqz	$a0, .LBB30_15
+# %bb.8:                                #   in Loop: Header=BB30_5 Depth=1
 	sub.w	$s0, $s0, $s5
-	bltu	$s4, $a0, .LBB30_18
-# %bb.10:                               #   in Loop: Header=BB30_6 Depth=1
+	bltu	$s4, $a0, .LBB30_16
+# %bb.9:                                #   in Loop: Header=BB30_5 Depth=1
 	ld.bu	$a1, $fp, 132
-	beqz	$a1, .LBB30_12
-# %bb.11:                               #   in Loop: Header=BB30_6 Depth=1
+	beqz	$a1, .LBB30_11
+# %bb.10:                               #   in Loop: Header=BB30_5 Depth=1
 	ld.d	$a1, $fp, 136
 	ld.d	$a2, $fp, 144
 	sub.d	$a1, $a1, $a2
@@ -1375,7 +1365,7 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	maskeqz	$a1, $a1, $a2
 	masknez	$a0, $a0, $a2
 	or	$a0, $a1, $a0
-.LBB30_12:                              #   in Loop: Header=BB30_6 Depth=1
+.LBB30_11:                              #   in Loop: Header=BB30_5 Depth=1
 	ld.d	$a2, $fp, 112
 	ld.d	$a1, $fp, 96
 	bstrpick.d	$s5, $a0, 31, 0
@@ -1383,46 +1373,43 @@ _ZN12CFilterCoder5WriteEPKvjPj:         # @_ZN12CFilterCoder5WriteEPKvjPj
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(_Z11WriteStreamP20ISequentialOutStreamPKvm)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB30_19
-# %bb.13:                               # %_ZN12CFilterCoder14WriteWithLimitEP20ISequentialOutStreamj.exit
-                                        #   in Loop: Header=BB30_6 Depth=1
+	bnez	$a0, .LBB30_17
+# %bb.12:                               # %_ZN12CFilterCoder14WriteWithLimitEP20ISequentialOutStreamj.exit
+                                        #   in Loop: Header=BB30_5 Depth=1
 	ld.d	$a0, $fp, 144
 	ld.w	$a1, $fp, 120
 	add.d	$a0, $a0, $s5
 	st.d	$a0, $fp, 144
+	move	$a0, $zero
 	bgeu	$a1, $s4, .LBB30_4
-# %bb.14:                               # %.lr.ph.preheader
-                                        #   in Loop: Header=BB30_6 Depth=1
-	move	$a2, $zero
 	.p2align	4, , 16
-.LBB30_15:                              # %.lr.ph
-                                        #   Parent Loop BB30_6 Depth=1
+.LBB30_13:                              # %.lr.ph
+                                        #   Parent Loop BB30_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $fp, 96
+	ld.d	$a2, $fp, 96
 	addi.d	$a3, $a1, 1
 	st.w	$a3, $fp, 120
 	bstrpick.d	$a1, $a1, 31, 0
-	ldx.b	$a1, $a0, $a1
-	bstrpick.d	$a3, $a2, 31, 0
-	stx.b	$a1, $a0, $a3
+	ldx.b	$a1, $a2, $a1
+	bstrpick.d	$a3, $a0, 31, 0
+	stx.b	$a1, $a2, $a3
 	ld.w	$a1, $fp, 120
-	addi.w	$a0, $a2, 1
-	move	$a2, $a0
-	bltu	$a1, $s4, .LBB30_15
-	b	.LBB30_5
-.LBB30_16:
+	addi.w	$a0, $a0, 1
+	bltu	$a1, $s4, .LBB30_13
+	b	.LBB30_4
+.LBB30_14:
 	move	$a0, $zero
-	b	.LBB30_19
-.LBB30_17:
+	b	.LBB30_17
+.LBB30_15:
 	move	$a0, $zero
 	st.w	$s4, $fp, 120
-	b	.LBB30_19
-.LBB30_18:
+	b	.LBB30_17
+.LBB30_16:
 	sltui	$a0, $s0, 1
 	lu12i.w	$a1, -524284
 	ori	$a1, $a1, 5
 	masknez	$a0, $a1, $a0
-.LBB30_19:                              # %.thread
+.LBB30_17:                              # %.thread
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

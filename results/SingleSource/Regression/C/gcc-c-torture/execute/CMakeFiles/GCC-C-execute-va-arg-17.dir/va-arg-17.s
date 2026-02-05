@@ -13,11 +13,11 @@ vafunction:                             # @vafunction
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
+	movgr2fr.d	$fa0, $a1
 	addi.d	$a0, $sp, 32
-	st.d	$a0, $sp, 8
-	fld.d	$fa0, $sp, 24
 	vldi	$vr1, -912
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
+	st.d	$a0, $sp, 8
 	bceqz	$fcc0, .LBB0_10
 # %bb.1:
 	addi.d	$a0, $sp, 24

@@ -26,7 +26,6 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -16
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
 	ori	$a1, $zero, 764
@@ -44,29 +43,28 @@ main:                                   # @main
 	xvadd.w	$xr0, $xr0, $xr1
 	bne	$a1, $a2, .LBB0_1
 # %bb.2:                                # %scalar.ph
-	move	$a3, $zero
-	ori	$a1, $zero, 6
-	st.w	$a1, $a0, 24
-	ori	$a1, $zero, 4
-	lu32i.d	$a1, 5
-	st.d	$a1, $a0, 16
-	ori	$a1, $zero, 2
-	lu32i.d	$a1, 3
-	st.d	$a1, $a0, 8
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_2)
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	st.d	$a1, $a0, 0
+	move	$a1, $zero
+	ori	$a2, $zero, 6
+	st.w	$a2, $a0, 24
+	ori	$a2, $zero, 4
+	lu32i.d	$a2, 5
+	st.d	$a2, $a0, 16
+	ori	$a2, $zero, 2
+	lu32i.d	$a2, 3
+	st.d	$a2, $a0, 8
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	xvld	$xr0, $a2, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI0_2)
+	ori	$a2, $zero, 0
+	lu32i.d	$a2, 1
+	st.d	$a2, $a0, 0
 	xvrepli.b	$xr2, -1
-	ori	$a1, $zero, 736
+	ori	$a2, $zero, 768
 	.p2align	4, , 16
 .LBB0_3:                                # %vector.body7
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a3
-	xvldx	$xr3, $a0, $a3
+	xvldx	$xr3, $a0, $a1
 	xvpermi.q	$xr4, $xr3, 1
 	vpickve2gr.w	$a3, $vr4, 2
 	bstrpick.d	$a3, $a3, 31, 0
@@ -118,49 +116,47 @@ main:                                   # @main
 	xvpickve2gr.d	$a4, $xr3, 3
 	slli.d	$a4, $a4, 7
 	or	$a3, $a3, $a4
-	andi	$a4, $a3, 255
-	bnez	$a4, .LBB0_5
-# %bb.4:                                # %vector.body7
+	andi	$a3, $a3, 255
+	bnez	$a3, .LBB0_13
+# %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB0_3 Depth=1
 	xvaddi.du	$xr1, $xr1, 8
+	addi.d	$a1, $a1, 32
 	xvaddi.du	$xr0, $xr0, 8
-	addi.d	$a3, $a2, 32
-	bne	$a2, $a1, .LBB0_3
-.LBB0_5:                                # %middle.split
-	bnez	$a4, .LBB0_14
-# %bb.6:                                # %foo.exit.preheader
+	bne	$a1, $a2, .LBB0_3
+# %bb.5:                                # %foo.exit.preheader
 	ld.w	$a1, $a0, 768
 	ori	$a2, $zero, 192
-	bne	$a1, $a2, .LBB0_14
-# %bb.7:                                # %foo.exit.preheader
+	bne	$a1, $a2, .LBB0_13
+# %bb.6:                                # %foo.exit.preheader
 	ld.w	$a1, $a0, 772
 	ori	$a2, $zero, 193
-	bne	$a1, $a2, .LBB0_14
-# %bb.8:                                # %foo.exit.preheader
+	bne	$a1, $a2, .LBB0_13
+# %bb.7:                                # %foo.exit.preheader
 	ld.w	$a1, $a0, 776
 	ori	$a2, $zero, 194
-	bne	$a1, $a2, .LBB0_14
-# %bb.9:                                # %foo.exit.preheader
+	bne	$a1, $a2, .LBB0_13
+# %bb.8:                                # %foo.exit.preheader
 	ld.w	$a1, $a0, 780
 	ori	$a2, $zero, 195
-	bne	$a1, $a2, .LBB0_14
-# %bb.10:                               # %foo.exit.preheader
+	bne	$a1, $a2, .LBB0_13
+# %bb.9:                                # %foo.exit.preheader
 	ld.w	$a1, $a0, 784
 	ori	$a2, $zero, 196
-	bne	$a1, $a2, .LBB0_14
-# %bb.11:                               # %foo.exit.preheader
+	bne	$a1, $a2, .LBB0_13
+# %bb.10:                               # %foo.exit.preheader
 	ld.w	$a1, $a0, 788
 	ori	$a2, $zero, 197
-	bne	$a1, $a2, .LBB0_14
-# %bb.12:                               # %foo.exit.preheader
+	bne	$a1, $a2, .LBB0_13
+# %bb.11:                               # %foo.exit.preheader
 	ld.w	$a0, $a0, 792
 	ori	$a1, $zero, 198
-	bne	$a0, $a1, .LBB0_14
-# %bb.13:                               # %foo.exit.6
+	bne	$a0, $a1, .LBB0_13
+# %bb.12:                               # %foo.exit.6
 	move	$a0, $zero
-	addi.d	$sp, $sp, 16
 	ret
-.LBB0_14:                               # %vector.early.exit
+.LBB0_13:                               # %vector.early.exit
+	addi.d	$sp, $sp, -16
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:

@@ -635,11 +635,9 @@ lame_init_params:                       # @lame_init_params
 	bnez	$a0, .LBB0_67
 	b	.LBB0_68
 .LBB0_84:                               # %.thread433
-	addi.d	$a0, $fp, 256
-	st.d	$zero, $a0, 16
+	st.d	$zero, $fp, 272
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $a0, 0
-	b	.LBB0_93
+	b	.LBB0_92
 .LBB0_85:                               # %.thread364
 	ori	$a0, $zero, 7
 	st.w	$a0, $fp, 28
@@ -875,20 +873,20 @@ lame_print_config:                      # @lame_print_config
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 8                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	fld.d	$fs0, $a1, %pc_lo12(.LCPI1_0)
-	fld.s	$fs2, $fp, 216
-	ld.w	$s5, $fp, 204
-	ld.w	$s4, $fp, 48
+	fld.d	$fs1, $a1, %pc_lo12(.LCPI1_0)
+	fld.s	$fs3, $fp, 216
+	ld.w	$s4, $fp, 204
+	fld.s	$fs0, $fp, 48
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
-	fdiv.d	$fs1, $fa0, $fs0
+	fdiv.d	$fs2, $fa0, $fs1
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$s3, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $s3, 0
@@ -913,14 +911,14 @@ lame_print_config:                      # @lame_print_config
 	fld.s	$fa0, $fp, 216
 	vldi	$vr1, -1168
 	fcmp.ceq.s	$fcc0, $fa0, $fa1
-	fcvt.s.d	$fs1, $fs1
+	fcvt.s.d	$fs2, $fs2
 	bcnez	$fcc0, .LBB1_5
 # %bb.4:
-	fmul.s	$fa0, $fs2, $fs1
+	fmul.s	$fa0, $fs3, $fs2
 	ld.d	$a0, $s3, 0
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
-	ftintrz.w.s	$fa0, $fs1
+	ftintrz.w.s	$fa0, $fs2
 	movfr2gr.s	$a3, $fa0
 	pcalau12i	$a1, %pc_hi20(.L.str.6)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.6)
@@ -928,13 +926,13 @@ lame_print_config:                      # @lame_print_config
 	jirl	$ra, $ra, 0
 .LBB1_5:
 	fld.s	$fa0, $fp, 244
-	movgr2fr.w	$fs2, $zero
-	fcmp.cule.s	$fcc0, $fa0, $fs2
+	movgr2fr.w	$fs3, $zero
+	fcmp.cule.s	$fcc0, $fa0, $fs3
 	lu12i.w	$s0, 278432
 	bceqz	$fcc0, .LBB1_11
 # %bb.6:
 	fld.s	$fa0, $fp, 232
-	fcmp.cule.s	$fcc0, $fa0, $fs2
+	fcmp.cule.s	$fcc0, $fa0, $fs3
 	bceqz	$fcc0, .LBB1_12
 .LBB1_7:
 	ld.w	$a0, $fp, 20
@@ -959,11 +957,11 @@ lame_print_config:                      # @lame_print_config
 .LBB1_11:
 	fld.s	$fa1, $fp, 240
 	ld.d	$a0, $s3, 0
-	fmul.s	$fa1, $fa1, $fs1
+	fmul.s	$fa1, $fa1, $fs2
 	movgr2fr.w	$fa2, $s0
 	fmul.s	$fa1, $fa1, $fa2
 	fcvt.d.s	$fa1, $fa1
-	fmul.s	$fa0, $fa0, $fs1
+	fmul.s	$fa0, $fa0, $fs2
 	fmul.s	$fa0, $fa0, $fa2
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a3, $fa0
@@ -973,16 +971,16 @@ lame_print_config:                      # @lame_print_config
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	fld.s	$fa0, $fp, 232
-	fcmp.cule.s	$fcc0, $fa0, $fs2
+	fcmp.cule.s	$fcc0, $fa0, $fs3
 	bcnez	$fcc0, .LBB1_7
 .LBB1_12:
 	ld.d	$a0, $s3, 0
-	fmul.s	$fa0, $fa0, $fs1
+	fmul.s	$fa0, $fa0, $fs2
 	fld.s	$fa1, $fp, 236
 	movgr2fr.w	$fa2, $s0
 	fmul.s	$fa0, $fa0, $fa2
 	fcvt.d.s	$fa0, $fa0
-	fmul.s	$fa1, $fa1, $fs1
+	fmul.s	$fa1, $fa1, $fs2
 	fmul.s	$fa1, $fa1, $fa2
 	fcvt.d.s	$fa1, $fa1
 	movfr2gr.d	$a2, $fa0
@@ -1047,17 +1045,16 @@ lame_print_config:                      # @lame_print_config
 	ld.w	$a7, $fp, 28
 	movgr2fr.w	$fa0, $a1
 	ffint.d.w	$fa0, $fa0
-	fdiv.d	$fa0, $fa0, $fs0
+	fdiv.d	$fa0, $fa0, $fs1
 	bnez	$a2, .LBB1_20
 # %bb.19:
-	slli.d	$a1, $s5, 4
+	slli.d	$a1, $s4, 4
 	movgr2fr.w	$fa1, $a1
 	ffint.s.w	$fa1, $fa1
-	movgr2fr.w	$fa2, $s4
-	fmul.s	$fa1, $fs1, $fa1
+	fmul.s	$fa1, $fs2, $fa1
 	ld.w	$a1, $fp, 36
 	ld.w	$a3, $fp, 48
-	ffint.s.w	$fa2, $fa2
+	ffint.s.w	$fa2, $fs0
 	fdiv.s	$fa1, $fa1, $fa2
 	slli.d	$a1, $a1, 3
 	pcalau12i	$a2, %pc_hi20(lame_print_config.mode_names)
@@ -1092,10 +1089,10 @@ lame_print_config:                      # @lame_print_config
 	jirl	$ra, $ra, 0
 .LBB1_21:
 	ld.d	$a0, $s3, 0
-	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
@@ -1258,17 +1255,17 @@ lame_encode_frame:                      # @lame_encode_frame
 	pcalau12i	$a0, %pc_hi20(l3_side)
 	addi.d	$a0, $a0, %pc_lo12(l3_side)
 	move	$s4, $zero
-	addi.d	$s8, $a0, 552
-	addi.d	$s0, $a0, 72
-	ori	$s2, $zero, 8
+	addi.d	$s0, $a0, 552
+	addi.d	$s1, $a0, 72
+	ori	$s3, $zero, 8
 	ori	$a0, $zero, 608
 	xvreplgr2vr.d	$xr3, $a0
-	addi.d	$s7, $sp, 160
-	addi.d	$s1, $sp, 128
+	addi.d	$s8, $sp, 160
+	addi.d	$s2, $sp, 128
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 800
-	add.d	$s3, $sp, $a0
-	ori	$s5, $zero, 120
+	add.d	$s5, $sp, $a0
+	ori	$s7, $zero, 120
 	xvst	$xr3, $sp, 80                   # 32-byte Folded Spill
 	b	.LBB2_15
 	.p2align	4, , 16
@@ -1276,8 +1273,8 @@ lame_encode_frame:                      # @lame_encode_frame
                                         #   in Loop: Header=BB2_15 Depth=1
 	ld.w	$a0, $fp, 200
 	addi.d	$s4, $s4, 1
-	addi.d	$s8, $s8, 240
 	addi.d	$s0, $s0, 240
+	addi.d	$s1, $s1, 240
 	bge	$s4, $a0, .LBB2_31
 .LBB2_15:                               # %.preheader129
                                         # =>This Loop Header: Depth=1
@@ -1291,7 +1288,7 @@ lame_encode_frame:                      # @lame_encode_frame
                                         #   in Loop: Header=BB2_15 Depth=1
 	alsl.d	$a0, $s4, $s4, 3
 	slli.d	$a0, $a0, 7
-	bgeu	$a1, $s2, .LBB2_18
+	bgeu	$a1, $s3, .LBB2_18
 # %bb.17:                               #   in Loop: Header=BB2_15 Depth=1
 	move	$a2, $zero
 	b	.LBB2_21
@@ -1352,9 +1349,9 @@ lame_encode_frame:                      # @lame_encode_frame
 	pcalau12i	$a0, %pc_hi20(lame_encode_frame.ms_ener_ratio)
 	addi.d	$a0, $a0, %pc_lo12(lame_encode_frame.ms_ener_ratio)
 	alsl.d	$a5, $s4, $a0, 3
-	alsl.d	$a0, $s4, $s7, 4
-	alsl.d	$a1, $s4, $s1, 4
-	st.d	$s3, $sp, 16
+	alsl.d	$a0, $s4, $s8, 4
+	alsl.d	$a1, $s4, $s2, 4
+	st.d	$s5, $sp, 16
 	st.d	$a1, $sp, 8
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 1824
@@ -1375,7 +1372,7 @@ lame_encode_frame:                      # @lame_encode_frame
 	blez	$a0, .LBB2_14
 # %bb.24:                               # %.lr.ph133
                                         #   in Loop: Header=BB2_15 Depth=1
-	bgeu	$a1, $s2, .LBB2_26
+	bgeu	$a1, $s3, .LBB2_26
 # %bb.25:                               #   in Loop: Header=BB2_15 Depth=1
 	move	$a0, $zero
 	b	.LBB2_29
@@ -1384,36 +1381,43 @@ lame_encode_frame:                      # @lame_encode_frame
                                         #   in Loop: Header=BB2_15 Depth=1
 	bstrpick.d	$a0, $a1, 30, 3
 	slli.d	$a0, $a0, 3
-	lu12i.w	$a2, 2
-	ori	$a2, $a2, 800
-	add.d	$a2, $sp, $a2
-	move	$a3, $s8
+	move	$a2, $s0
+	lu12i.w	$a3, 2
+	ori	$a3, $a3, 816
+	add.d	$a3, $sp, $a3
 	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_27:                               # %vector.body
                                         #   Parent Loop BB2_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a2, 0
-	xvstelm.w	$xr0, $a3, -480, 0
-	xvstelm.w	$xr0, $a3, -360, 1
-	xvstelm.w	$xr0, $a3, -240, 2
-	xvstelm.w	$xr0, $a3, -120, 3
-	xvstelm.w	$xr0, $a3, 0, 4
-	xvstelm.w	$xr0, $a3, 120, 5
-	xvstelm.w	$xr0, $a3, 240, 6
-	xvstelm.w	$xr0, $a3, 360, 7
+	ld.w	$a5, $a3, -16
+	ld.w	$a6, $a3, -12
+	ld.w	$a7, $a3, -8
+	ld.w	$t0, $a3, -4
+	ld.w	$t1, $a3, 0
+	ld.w	$t2, $a3, 4
+	ld.w	$t3, $a3, 8
+	ld.w	$t4, $a3, 12
+	st.w	$a5, $a2, -480
+	st.w	$a6, $a2, -360
+	st.w	$a7, $a2, -240
+	st.w	$t0, $a2, -120
+	st.w	$t1, $a2, 0
+	st.w	$t2, $a2, 120
+	st.w	$t3, $a2, 240
+	st.w	$t4, $a2, 360
 	addi.d	$a4, $a4, -8
-	addi.d	$a2, $a2, 32
-	addi.d	$a3, $a3, 960
+	addi.d	$a3, $a3, 32
+	addi.d	$a2, $a2, 960
 	bnez	$a4, .LBB2_27
 # %bb.28:                               # %middle.block
                                         #   in Loop: Header=BB2_15 Depth=1
 	beq	$a0, $a1, .LBB2_14
 .LBB2_29:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB2_15 Depth=1
-	alsl.d	$a2, $a0, $s3, 2
-	mul.d	$a3, $a0, $s5
-	add.d	$a3, $s0, $a3
+	alsl.d	$a2, $a0, $s5, 2
+	mul.d	$a3, $a0, $s7
+	add.d	$a3, $s1, $a3
 	sub.d	$a0, $a1, $a0
 	.p2align	4, , 16
 .LBB2_30:                               # %scalar.ph
@@ -2605,11 +2609,9 @@ lame_encode_buffer:                     # @lame_encode_buffer
 	xvadd.w	$xr1, $xr6, $xr1
 	xvadd.w	$xr2, $xr5, $xr2
 	xvsrli.w	$xr3, $xr1, 31
-	xvadd.w	$xr1, $xr1, $xr3
-	xvsrai.w	$xr1, $xr1, 1
+	xvavg.w	$xr1, $xr1, $xr3
 	xvsrli.w	$xr3, $xr2, 31
-	xvadd.w	$xr2, $xr2, $xr3
-	xvsrai.w	$xr2, $xr2, 1
+	xvavg.w	$xr2, $xr2, $xr3
 	xvpickve2gr.w	$a5, $xr1, 0
 	vinsgr2vr.h	$vr3, $a5, 0
 	xvpickve2gr.w	$a5, $xr1, 1
@@ -2675,8 +2677,7 @@ lame_encode_buffer:                     # @lame_encode_buffer
 	vsrai.w	$vr1, $vr1, 16
 	vadd.w	$vr0, $vr1, $vr0
 	vsrli.w	$vr1, $vr0, 31
-	vadd.w	$vr0, $vr0, $vr1
-	vsrli.w	$vr0, $vr0, 1
+	vavg.wu	$vr0, $vr0, $vr1
 	vpickev.h	$vr0, $vr0, $vr0
 	vstelm.d	$vr0, $a3, 0, 0
 	st.d	$zero, $a2, 0
@@ -3111,45 +3112,45 @@ lame_encode_buffer_interleaved:         # @lame_encode_buffer_interleaved
 	xvslli.d	$xr2, $xr0, 2
 	xvslli.d	$xr3, $xr1, 2
 	xvpickve2gr.d	$a1, $xr3, 0
-	add.d	$a3, $s3, $a1
-	xvpickve2gr.d	$a6, $xr3, 1
-	add.d	$a7, $s3, $a6
-	xvpickve2gr.d	$t0, $xr3, 2
-	add.d	$t1, $s3, $t0
-	xvpickve2gr.d	$t2, $xr3, 3
-	add.d	$t3, $s3, $t2
-	xvpickve2gr.d	$t4, $xr2, 0
-	add.d	$t5, $s3, $t4
-	xvpickve2gr.d	$t6, $xr2, 1
-	add.d	$t7, $s3, $t6
-	xvpickve2gr.d	$t8, $xr2, 2
-	add.d	$s1, $s3, $t8
-	xvpickve2gr.d	$s4, $xr2, 3
-	add.d	$s5, $s3, $s4
+	xvpickve2gr.d	$a3, $xr3, 1
+	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a7, $xr3, 3
+	xvpickve2gr.d	$t0, $xr2, 0
+	xvpickve2gr.d	$t1, $xr2, 1
+	xvpickve2gr.d	$t2, $xr2, 2
+	xvpickve2gr.d	$t3, $xr2, 3
+	add.d	$t4, $s3, $a1
+	add.d	$t5, $s3, $a3
+	add.d	$t6, $s3, $a6
+	add.d	$t7, $s3, $a7
+	add.d	$t8, $s3, $t0
+	add.d	$s1, $s3, $t1
+	add.d	$s4, $s3, $t2
+	add.d	$s5, $s3, $t3
 	ldx.h	$a1, $s3, $a1
+	ldx.h	$a3, $s3, $a3
 	ldx.h	$a6, $s3, $a6
+	ldx.h	$a7, $s3, $a7
 	ldx.h	$t0, $s3, $t0
+	ldx.h	$t1, $s3, $t1
 	ldx.h	$t2, $s3, $t2
-	ldx.h	$t4, $s3, $t4
-	ldx.h	$t6, $s3, $t6
-	ldx.h	$t8, $s3, $t8
-	ldx.h	$s4, $s3, $s4
+	ldx.h	$t3, $s3, $t3
 	vinsgr2vr.h	$vr2, $a1, 0
-	vinsgr2vr.h	$vr2, $a6, 1
-	vinsgr2vr.h	$vr2, $t0, 2
-	vinsgr2vr.h	$vr2, $t2, 3
-	vinsgr2vr.h	$vr2, $t4, 4
-	vinsgr2vr.h	$vr2, $t6, 5
-	vinsgr2vr.h	$vr2, $t8, 6
-	vinsgr2vr.h	$vr2, $s4, 7
+	vinsgr2vr.h	$vr2, $a3, 1
+	vinsgr2vr.h	$vr2, $a6, 2
+	vinsgr2vr.h	$vr2, $a7, 3
+	vinsgr2vr.h	$vr2, $t0, 4
+	vinsgr2vr.h	$vr2, $t1, 5
+	vinsgr2vr.h	$vr2, $t2, 6
+	vinsgr2vr.h	$vr2, $t3, 7
 	vst	$vr2, $a5, 0
-	ld.h	$a1, $a3, 2
-	ld.h	$a3, $a7, 2
-	ld.h	$a6, $t1, 2
-	ld.h	$a7, $t3, 2
-	ld.h	$t0, $t5, 2
-	ld.h	$t1, $t7, 2
-	ld.h	$t2, $s1, 2
+	ld.h	$a1, $t4, 2
+	ld.h	$a3, $t5, 2
+	ld.h	$a6, $t6, 2
+	ld.h	$a7, $t7, 2
+	ld.h	$t0, $t8, 2
+	ld.h	$t1, $s1, 2
+	ld.h	$t2, $s4, 2
 	ld.h	$t3, $s5, 2
 	vinsgr2vr.h	$vr2, $a1, 0
 	vinsgr2vr.h	$vr2, $a3, 1
@@ -3355,45 +3356,45 @@ lame_encode_buffer_interleaved:         # @lame_encode_buffer_interleaved
 	xvslli.d	$xr2, $xr0, 2
 	xvslli.d	$xr3, $xr1, 2
 	xvpickve2gr.d	$a5, $xr3, 0
-	add.d	$a6, $s3, $a5
-	xvpickve2gr.d	$a7, $xr3, 1
-	add.d	$t0, $s3, $a7
-	xvpickve2gr.d	$t1, $xr3, 2
-	add.d	$t2, $s3, $t1
-	xvpickve2gr.d	$t3, $xr3, 3
-	add.d	$t4, $s3, $t3
-	xvpickve2gr.d	$t5, $xr2, 0
-	add.d	$t6, $s3, $t5
-	xvpickve2gr.d	$t7, $xr2, 1
-	add.d	$t8, $s3, $t7
-	xvpickve2gr.d	$fp, $xr2, 2
-	add.d	$s0, $s3, $fp
-	xvpickve2gr.d	$s1, $xr2, 3
-	add.d	$s5, $s3, $s1
+	xvpickve2gr.d	$a6, $xr3, 1
+	xvpickve2gr.d	$a7, $xr3, 2
+	xvpickve2gr.d	$t0, $xr3, 3
+	xvpickve2gr.d	$t1, $xr2, 0
+	xvpickve2gr.d	$t2, $xr2, 1
+	xvpickve2gr.d	$t3, $xr2, 2
+	xvpickve2gr.d	$t4, $xr2, 3
+	add.d	$t5, $s3, $a5
+	add.d	$t6, $s3, $a6
+	add.d	$t7, $s3, $a7
+	add.d	$t8, $s3, $t0
+	add.d	$fp, $s3, $t1
+	add.d	$s0, $s3, $t2
+	add.d	$s1, $s3, $t3
+	add.d	$s5, $s3, $t4
 	ldx.h	$a5, $s3, $a5
+	ldx.h	$a6, $s3, $a6
 	ldx.h	$a7, $s3, $a7
+	ldx.h	$t0, $s3, $t0
 	ldx.h	$t1, $s3, $t1
+	ldx.h	$t2, $s3, $t2
 	ldx.h	$t3, $s3, $t3
-	ldx.h	$t5, $s3, $t5
-	ldx.h	$t7, $s3, $t7
-	ldx.h	$fp, $s3, $fp
-	ldx.h	$s1, $s3, $s1
+	ldx.h	$t4, $s3, $t4
 	vinsgr2vr.h	$vr2, $a5, 0
-	vinsgr2vr.h	$vr2, $a7, 1
-	vinsgr2vr.h	$vr2, $t1, 2
-	vinsgr2vr.h	$vr2, $t3, 3
-	vinsgr2vr.h	$vr2, $t5, 4
-	vinsgr2vr.h	$vr2, $t7, 5
-	vinsgr2vr.h	$vr2, $fp, 6
-	vinsgr2vr.h	$vr2, $s1, 7
+	vinsgr2vr.h	$vr2, $a6, 1
+	vinsgr2vr.h	$vr2, $a7, 2
+	vinsgr2vr.h	$vr2, $t0, 3
+	vinsgr2vr.h	$vr2, $t1, 4
+	vinsgr2vr.h	$vr2, $t2, 5
+	vinsgr2vr.h	$vr2, $t3, 6
+	vinsgr2vr.h	$vr2, $t4, 7
 	vst	$vr2, $a4, 0
-	ld.h	$a5, $a6, 2
-	ld.h	$a6, $t0, 2
-	ld.h	$a7, $t2, 2
-	ld.h	$t0, $t4, 2
-	ld.h	$t1, $t6, 2
-	ld.h	$t2, $t8, 2
-	ld.h	$t3, $s0, 2
+	ld.h	$a5, $t5, 2
+	ld.h	$a6, $t6, 2
+	ld.h	$a7, $t7, 2
+	ld.h	$t0, $t8, 2
+	ld.h	$t1, $fp, 2
+	ld.h	$t2, $s0, 2
+	ld.h	$t3, $s1, 2
 	ld.h	$t4, $s5, 2
 	vinsgr2vr.h	$vr2, $a5, 0
 	vinsgr2vr.h	$vr2, $a6, 1

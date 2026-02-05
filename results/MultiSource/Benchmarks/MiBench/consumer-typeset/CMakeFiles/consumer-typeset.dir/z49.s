@@ -61,7 +61,7 @@ PS_PrintGraphicObject:                  # @PS_PrintGraphicObject
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	move	$s0, $a0
+	move	$fp, $a0
 	ld.bu	$a0, $a0, 32
 	addi.d	$a1, $a0, -11
 	ori	$a2, $zero, 2
@@ -69,7 +69,7 @@ PS_PrintGraphicObject:                  # @PS_PrintGraphicObject
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(out_fp)
 	ld.d	$a1, $a0, %pc_lo12(out_fp)
-	addi.d	$a0, $s0, 64
+	addi.d	$a0, $fp, 64
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -85,11 +85,11 @@ PS_PrintGraphicObject:                  # @PS_PrintGraphicObject
 	jr	$t8
 .LBB1_2:
 	ori	$a1, $zero, 17
-	addi.d	$fp, $s0, 32
+	addi.d	$s0, $fp, 32
 	bne	$a0, $a1, .LBB1_17
 # %bb.3:                                # %.preheader26
-	ld.d	$s3, $s0, 8
-	beq	$s3, $s0, .LBB1_18
+	ld.d	$s3, $fp, 8
+	beq	$s3, $fp, .LBB1_18
 # %bb.4:
 	ori	$s4, $zero, 25
 	ori	$s5, $zero, 20
@@ -108,7 +108,7 @@ PS_PrintGraphicObject:                  # @PS_PrintGraphicObject
 .LBB1_6:                                # %.loopexit
                                         #   in Loop: Header=BB1_7 Depth=1
 	ld.d	$s3, $s3, 8
-	beq	$s3, $s0, .LBB1_18
+	beq	$s3, $fp, .LBB1_18
 .LBB1_7:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_8 Depth 2
@@ -144,7 +144,7 @@ PS_PrintGraphicObject:                  # @PS_PrintGraphicObject
 	ori	$a1, $zero, 8
 	ori	$a3, $zero, 2
 	move	$a2, $s1
-	move	$a4, $fp
+	move	$a4, $s0
 	move	$a5, $s2
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
@@ -166,7 +166,7 @@ PS_PrintGraphicObject:                  # @PS_PrintGraphicObject
 	ori	$a0, $zero, 49
 	ori	$a1, $zero, 9
 	ori	$a3, $zero, 2
-	move	$a4, $fp
+	move	$a4, $s0
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload

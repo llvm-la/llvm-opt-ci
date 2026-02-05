@@ -55,18 +55,17 @@ _Z9put_pointii:                         # @_Z9put_pointii
 	.type	_Z8put_lineiiii,@function
 _Z8put_lineiiii:                        # @_Z8put_lineiiii
 # %bb.0:
-	sub.w	$a4, $a2, $a0
-	srai.d	$a5, $a4, 31
-	xor	$a6, $a4, $a5
-	sub.w	$a7, $a6, $a5
-	slti	$a4, $a4, 0
+	sub.w	$a5, $a2, $a0
+	slti	$a4, $a5, 0
 	sub.d	$a4, $zero, $a4
 	ori	$a4, $a4, 1
 	sub.w	$t1, $a3, $a1
-	srai.d	$a5, $t1, 31
-	xor	$a6, $t1, $a5
-	sub.w	$t2, $a6, $a5
+	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr0, $t1, 1
+	vsigncov.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a7, $vr0, 0
 	slli.d	$t0, $a7, 1
+	vpickve2gr.w	$t2, $vr0, 1
 	slli.d	$a5, $t2, 1
 	sub.w	$a6, $t0, $t2
 	bgeu	$t2, $a7, .LBB3_7
@@ -100,26 +99,28 @@ _Z8put_lineiiii:                        # @_Z8put_lineiiii
 	bgeu	$a3, $a0, .LBB3_4
 	b	.LBB3_5
 .LBB3_7:                                # %.split.preheader
-	move	$t4, $zero
 	slti	$t1, $t1, 0
 	sub.d	$t1, $zero, $t1
 	ori	$t1, $t1, 1
 	ori	$t2, $zero, 23
 	ori	$t3, $zero, 39
+	pcalau12i	$t4, %pc_hi20(screen)
+	addi.d	$t4, $t4, %pc_lo12(screen)
+	move	$t6, $zero
 	ori	$t5, $zero, 42
 	b	.LBB3_9
 	.p2align	4, , 16
 .LBB3_8:                                #   in Loop: Header=BB3_9 Depth=1
-	slt	$t6, $a6, $t4
-	masknez	$t7, $a4, $t6
-	add.w	$a0, $t7, $a0
-	masknez	$t6, $a5, $t6
-	add.w	$t4, $t6, $t4
-	slt	$t6, $t4, $a7
-	masknez	$t7, $t1, $t6
-	add.w	$a1, $t7, $a1
-	masknez	$t6, $t0, $t6
-	sub.w	$t4, $t4, $t6
+	slt	$t7, $a6, $t6
+	masknez	$t8, $a4, $t7
+	add.w	$a0, $t8, $a0
+	masknez	$t7, $a5, $t7
+	add.w	$t6, $t7, $t6
+	slt	$t7, $t6, $a7
+	masknez	$t8, $t1, $t7
+	add.w	$a1, $t8, $a1
+	masknez	$t7, $t0, $t7
+	sub.w	$t6, $t6, $t7
 .LBB3_9:                                # %.split
                                         # =>This Inner Loop Header: Depth=1
 	bltu	$t2, $a1, .LBB3_12
@@ -127,12 +128,10 @@ _Z8put_lineiiii:                        # @_Z8put_lineiiii
                                         #   in Loop: Header=BB3_9 Depth=1
 	bltu	$t3, $a0, .LBB3_12
 # %bb.11:                               #   in Loop: Header=BB3_9 Depth=1
-	slli.d	$t6, $a0, 4
-	alsl.d	$t6, $a0, $t6, 3
-	pcalau12i	$t7, %pc_hi20(screen)
-	addi.d	$t7, $t7, %pc_lo12(screen)
-	add.d	$t6, $t7, $t6
-	stx.b	$t5, $t6, $a1
+	slli.d	$t7, $a0, 4
+	alsl.d	$t7, $a0, $t7, 3
+	add.d	$t7, $t4, $t7
+	stx.b	$t5, $t7, $a1
 .LBB3_12:                               # %_Z9put_pointii.exit
                                         #   in Loop: Header=BB3_9 Depth=1
 	bne	$a1, $a3, .LBB3_8
@@ -1011,7 +1010,7 @@ _ZN7myshapeC2EP5pointS1_:               # @_ZN7myshapeC2EP5pointS1_
 	move	$s0, $a2
 	move	$a0, $s1
 	move	$s1, $s5
-	move	$s5, $s2
+	move	$s6, $s2
 	move	$s2, $s3
 	move	$a2, $a1
 	b	.LBB14_8
@@ -1049,7 +1048,7 @@ _ZN7myshapeC2EP5pointS1_:               # @_ZN7myshapeC2EP5pointS1_
 	st.w	$s3, $a0, 0
 	st.w	$s1, $a0, 4
 	move	$a0, $s5
-	move	$s5, $s2
+	move	$s6, $s2
 	move	$s2, $s3
 	b	.LBB14_8
 .LBB14_6:
@@ -1057,7 +1056,7 @@ _ZN7myshapeC2EP5pointS1_:               # @_ZN7myshapeC2EP5pointS1_
 	move	$s0, $a1
 	move	$a0, $s5
 .LBB14_7:                               # %_ZN9rectangleC2EP5pointS1_.exit
-	move	$s5, $s3
+	move	$s6, $s3
 .LBB14_8:                               # %_ZN9rectangleC2EP5pointS1_.exit
 	st.d	$a2, $fp, 24
 	pcalau12i	$a1, %pc_hi20(_ZTV7myshape+16)
@@ -1080,8 +1079,8 @@ _ZN7myshapeC2EP5pointS1_:               # @_ZN7myshapeC2EP5pointS1_
 	alsl.w	$a3, $s3, $s3, 1
 	bstrpick.d	$a3, $a3, 62, 61
 	add.w	$a2, $a2, $a3
-	srai.d	$s6, $a2, 2
-	add.d	$s7, $a0, $s6
+	srai.d	$s5, $a2, 2
+	add.d	$s7, $a0, $s5
 	st.w	$a1, $s1, 0
 	st.w	$s7, $s1, 4
 	ori	$a0, $zero, 8
@@ -1104,11 +1103,11 @@ _ZN7myshapeC2EP5pointS1_:               # @_ZN7myshapeC2EP5pointS1_
 .Ltmp9:                                 # EH_LABEL
 # %bb.10:
 	ld.w	$a0, $a0, 4
-	sub.d	$a1, $s2, $s5
+	sub.d	$a1, $s2, $s6
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	add.d	$a1, $a1, $s8
 	addi.d	$a1, $a1, -3
-	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $s5
 	st.w	$a1, $s0, 0
 	st.w	$a0, $s0, 4
 	ori	$a0, $zero, 8

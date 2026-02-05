@@ -270,10 +270,9 @@ gx_path_copy:                           # @gx_path_copy
 	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
 	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	addi.d	$a0, $sp, 48
+	addi.d	$a0, $sp, 56
 	ori	$a2, $zero, 88
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(memcpy)
@@ -282,19 +281,18 @@ gx_path_copy:                           # @gx_path_copy
 	ld.d	$a0, $fp, 96
 	xvld	$xr0, $fp, 104
 	ld.d	$s2, $fp, 136
-	st.d	$a0, $sp, 8
-	xvst	$xr0, $sp, 16
+	st.d	$a0, $sp, 16
+	xvst	$xr0, $sp, 24
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(gx_path_init)
 	jirl	$ra, $ra, 0
 	beqz	$s1, .LBB7_10
 # %bb.1:                                # %.lr.ph.i.preheader
-	addi.d	$s3, $fp, 96
-	ori	$s4, $zero, 3
+	ori	$s3, $zero, 3
 	pcalau12i	$a0, %pc_hi20(.LJTI7_0)
-	addi.d	$s5, $a0, %pc_lo12(.LJTI7_0)
-	move	$s6, $s1
+	addi.d	$s4, $a0, %pc_lo12(.LJTI7_0)
+	move	$s5, $s1
 	b	.LBB7_5
 	.p2align	4, , 16
 .LBB7_2:                                #   in Loop: Header=BB7_5 Depth=1
@@ -305,50 +303,49 @@ gx_path_copy:                           # @gx_path_copy
 	bnez	$a0, .LBB7_12
 .LBB7_4:                                # %.thread.i
                                         #   in Loop: Header=BB7_5 Depth=1
-	ld.d	$s6, $s6, 8
-	beqz	$s6, .LBB7_10
+	ld.d	$s5, $s5, 8
+	beqz	$s5, .LBB7_10
 .LBB7_5:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $s6, 16
-	bltu	$s4, $a0, .LBB7_4
+	ld.w	$a0, $s5, 16
+	bltu	$s3, $a0, .LBB7_4
 # %bb.6:                                # %.lr.ph.i
                                         #   in Loop: Header=BB7_5 Depth=1
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $s5, $a0
-	add.d	$a0, $s5, $a0
+	ldx.w	$a0, $s4, $a0
+	add.d	$a0, $s4, $a0
 	jr	$a0
 .LBB7_7:                                #   in Loop: Header=BB7_5 Depth=1
-	ld.d	$a1, $s6, 24
-	ld.d	$a2, $s6, 32
+	ld.d	$a1, $s5, 24
+	ld.d	$a2, $s5, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(gx_path_add_point)
 	jirl	$ra, $ra, 0
 	b	.LBB7_3
 	.p2align	4, , 16
 .LBB7_8:                                #   in Loop: Header=BB7_5 Depth=1
-	ld.d	$a1, $s6, 40
-	ld.d	$a2, $s6, 48
-	ld.d	$a3, $s6, 56
-	ld.d	$a4, $s6, 64
-	ld.d	$a5, $s6, 24
-	ld.d	$a6, $s6, 32
+	ld.d	$a1, $s5, 40
+	ld.d	$a2, $s5, 48
+	ld.d	$a3, $s5, 56
+	ld.d	$a4, $s5, 64
+	ld.d	$a5, $s5, 24
+	ld.d	$a6, $s5, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(gx_path_add_curve)
 	jirl	$ra, $ra, 0
 	b	.LBB7_3
 .LBB7_9:                                #   in Loop: Header=BB7_5 Depth=1
-	ld.d	$a1, $s6, 24
-	ld.d	$a2, $s6, 32
+	ld.d	$a1, $s5, 24
+	ld.d	$a2, $s5, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(gx_path_add_line)
 	jirl	$ra, $ra, 0
 	b	.LBB7_3
 .LBB7_10:                               # %._crit_edge.i
-	vld	$vr0, $sp, 32
+	vld	$vr0, $sp, 40
 	move	$a0, $zero
 	vst	$vr0, $s0, 120
 .LBB7_11:                               # %copy_path.exit
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
@@ -360,27 +357,27 @@ gx_path_copy:                           # @gx_path_copy
 	addi.d	$sp, $sp, 208
 	ret
 .LBB7_12:
-	move	$s4, $a0
+	move	$s3, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(gx_path_release)
 	jirl	$ra, $ra, 0
 	beq	$s0, $fp, .LBB7_14
 # %bb.13:
-	move	$a0, $s4
+	move	$a0, $s3
 	b	.LBB7_11
 .LBB7_14:
-	addi.d	$a1, $sp, 48
+	addi.d	$a1, $sp, 56
 	ori	$a2, $zero, 88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8
-	xvld	$xr0, $sp, 16
+	ld.d	$a0, $sp, 16
+	xvld	$xr0, $sp, 24
 	st.d	$s1, $fp, 88
-	st.d	$a0, $s3, 0
-	xvst	$xr0, $s3, 8
+	st.d	$a0, $fp, 96
+	xvst	$xr0, $fp, 104
 	st.d	$s2, $fp, 136
-	move	$a0, $s4
+	move	$a0, $s3
 	b	.LBB7_11
 .Lfunc_end7:
 	.size	gx_path_copy, .Lfunc_end7-gx_path_copy
@@ -398,21 +395,20 @@ gx_path_copy:                           # @gx_path_copy
 	.type	copy_path,@function
 copy_path:                              # @copy_path
 # %bb.0:
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -208
+	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
 	move	$s1, $a2
 	move	$s0, $a1
 	move	$fp, $a0
-	addi.d	$a0, $sp, 56
+	addi.d	$a0, $sp, 48
 	ori	$a2, $zero, 88
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(memcpy)
@@ -421,19 +417,18 @@ copy_path:                              # @copy_path
 	ld.d	$a0, $fp, 96
 	xvld	$xr0, $fp, 104
 	ld.d	$s3, $fp, 136
-	st.d	$a0, $sp, 16
-	xvst	$xr0, $sp, 24
+	st.d	$a0, $sp, 8
+	xvst	$xr0, $sp, 16
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(gx_path_init)
 	jirl	$ra, $ra, 0
 	beqz	$s2, .LBB8_10
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$s4, $fp, 96
-	ori	$s5, $zero, 3
+	ori	$s4, $zero, 3
 	pcalau12i	$a0, %pc_hi20(.LJTI8_0)
-	addi.d	$s6, $a0, %pc_lo12(.LJTI8_0)
-	move	$s7, $s2
+	addi.d	$s5, $a0, %pc_lo12(.LJTI8_0)
+	move	$s6, $s2
 	b	.LBB8_5
 	.p2align	4, , 16
 .LBB8_2:                                #   in Loop: Header=BB8_5 Depth=1
@@ -444,59 +439,58 @@ copy_path:                              # @copy_path
 	bnez	$a0, .LBB8_12
 .LBB8_4:                                # %.thread
                                         #   in Loop: Header=BB8_5 Depth=1
-	ld.d	$s7, $s7, 8
-	beqz	$s7, .LBB8_10
+	ld.d	$s6, $s6, 8
+	beqz	$s6, .LBB8_10
 .LBB8_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $s7, 16
-	bltu	$s5, $a0, .LBB8_4
+	ld.w	$a0, $s6, 16
+	bltu	$s4, $a0, .LBB8_4
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB8_5 Depth=1
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $s6, $a0
-	add.d	$a0, $s6, $a0
+	ldx.w	$a0, $s5, $a0
+	add.d	$a0, $s5, $a0
 	jr	$a0
 .LBB8_7:                                #   in Loop: Header=BB8_5 Depth=1
-	ld.d	$a1, $s7, 24
-	ld.d	$a2, $s7, 32
+	ld.d	$a1, $s6, 24
+	ld.d	$a2, $s6, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(gx_path_add_point)
 	jirl	$ra, $ra, 0
 	b	.LBB8_3
 	.p2align	4, , 16
 .LBB8_8:                                #   in Loop: Header=BB8_5 Depth=1
-	ld.d	$a1, $s7, 40
-	ld.d	$a2, $s7, 48
-	ld.d	$a3, $s7, 56
-	ld.d	$a4, $s7, 64
-	ld.d	$a5, $s7, 24
-	ld.d	$a6, $s7, 32
+	ld.d	$a1, $s6, 40
+	ld.d	$a2, $s6, 48
+	ld.d	$a3, $s6, 56
+	ld.d	$a4, $s6, 64
+	ld.d	$a5, $s6, 24
+	ld.d	$a6, $s6, 32
 	move	$a0, $s0
 	jirl	$ra, $s1, 0
 	b	.LBB8_3
 .LBB8_9:                                #   in Loop: Header=BB8_5 Depth=1
-	ld.d	$a1, $s7, 24
-	ld.d	$a2, $s7, 32
+	ld.d	$a1, $s6, 24
+	ld.d	$a2, $s6, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(gx_path_add_line)
 	jirl	$ra, $ra, 0
 	b	.LBB8_3
 .LBB8_10:                               # %._crit_edge
-	vld	$vr0, $sp, 40
+	vld	$vr0, $sp, 32
 	move	$a0, $zero
 	vst	$vr0, $s0, 120
 .LBB8_11:
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 208
 	ret
 .LBB8_12:
 	move	$s1, $a0
@@ -508,16 +502,16 @@ copy_path:                              # @copy_path
 	move	$a0, $s1
 	b	.LBB8_11
 .LBB8_14:
-	addi.d	$a1, $sp, 56
+	addi.d	$a1, $sp, 48
 	ori	$a2, $zero, 88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16
-	xvld	$xr0, $sp, 24
+	ld.d	$a0, $sp, 8
+	xvld	$xr0, $sp, 16
 	st.d	$s2, $fp, 88
-	st.d	$a0, $s4, 0
-	xvst	$xr0, $s4, 8
+	st.d	$a0, $fp, 96
+	xvst	$xr0, $fp, 104
 	st.d	$s3, $fp, 136
 	move	$a0, $s1
 	b	.LBB8_11

@@ -3289,304 +3289,13 @@ _ZN8NArchive3N7zL21GetStringForSizeValueEj: # @_ZN8NArchive3N7zL21GetStringForSi
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	lu12i.w	$a2, 7
-	ori	$a2, $a2, 4095
-	move	$fp, $a0
-	blt	$a2, $a1, .LBB12_5
-# %bb.1:
-	ori	$a0, $zero, 127
-	blt	$a0, $a1, .LBB12_11
-# %bb.2:
-	addi.d	$a0, $a1, -1
-	ori	$a2, $zero, 63
-	bltu	$a2, $a0, .LBB12_51
-# %bb.3:
-	slli.d	$a0, $a0, 2
-	pcalau12i	$a2, %pc_hi20(.LJTI12_0)
-	addi.d	$a2, $a2, %pc_lo12(.LJTI12_0)
-	ldx.w	$a0, $a2, $a0
-	add.d	$a0, $a2, $a0
-	jr	$a0
-.LBB12_4:                               # %.fold.split99
-	move	$a0, $zero
-	b	.LBB12_80
-.LBB12_5:
-	lu12i.w	$a0, 2047
-	ori	$a0, $a0, 4095
-	blt	$a0, $a1, .LBB12_16
-# %bb.6:
-	lu12i.w	$a0, 127
-	ori	$a0, $a0, 4095
-	blt	$a0, $a1, .LBB12_21
-# %bb.7:
-	lu12i.w	$a0, 31
-	ori	$a0, $a0, 4095
-	blt	$a0, $a1, .LBB12_33
-# %bb.8:
-	lu12i.w	$a0, 8
-	beq	$a1, $a0, .LBB12_68
-# %bb.9:
-	lu12i.w	$a0, 16
-	bne	$a1, $a0, .LBB12_52
-# %bb.10:                               # %.fold.split83
-	ori	$a0, $zero, 16
-	b	.LBB12_80
-.LBB12_11:
-	ori	$a0, $zero, 2047
-	blt	$a0, $a1, .LBB12_25
-# %bb.12:
-	ori	$a0, $zero, 511
-	blt	$a0, $a1, .LBB12_36
-# %bb.13:
-	ori	$a0, $zero, 128
-	beq	$a1, $a0, .LBB12_69
-# %bb.14:
-	ori	$a0, $zero, 256
-	bne	$a1, $a0, .LBB12_52
-# %bb.15:                               # %.fold.split91
-	ori	$a0, $zero, 8
-	b	.LBB12_80
-.LBB12_16:
-	lu12i.w	$a0, 32767
-	ori	$a0, $a0, 4095
-	blt	$a0, $a1, .LBB12_29
-# %bb.17:
-	lu12i.w	$a0, 8191
-	ori	$a0, $a0, 4095
-	blt	$a0, $a1, .LBB12_39
-# %bb.18:
-	lu12i.w	$a0, 2048
-	beq	$a1, $a0, .LBB12_70
-# %bb.19:
-	lu12i.w	$a0, 4096
-	bne	$a1, $a0, .LBB12_52
-# %bb.20:                               # %.fold.split75
-	ori	$a0, $zero, 24
-	b	.LBB12_80
-.LBB12_21:
-	lu12i.w	$a0, 511
-	ori	$a0, $a0, 4095
-	blt	$a0, $a1, .LBB12_42
-# %bb.22:
-	lu12i.w	$a0, 128
-	beq	$a1, $a0, .LBB12_71
-# %bb.23:
-	lu12i.w	$a0, 256
-	bne	$a1, $a0, .LBB12_52
-# %bb.24:                               # %.fold.split79
-	ori	$a0, $zero, 20
-	b	.LBB12_80
-.LBB12_25:
-	lu12i.w	$a0, 1
-	ori	$a2, $a0, 4095
-	blt	$a2, $a1, .LBB12_45
-# %bb.26:
-	ori	$a2, $zero, 2048
-	beq	$a1, $a2, .LBB12_72
-# %bb.27:
-	bne	$a1, $a0, .LBB12_52
-# %bb.28:                               # %.fold.split87
-	ori	$a0, $zero, 12
-	b	.LBB12_80
-.LBB12_29:
-	lu12i.w	$a0, 131071
-	ori	$a0, $a0, 4095
-	blt	$a0, $a1, .LBB12_48
-# %bb.30:
-	lu12i.w	$a0, 32768
-	beq	$a1, $a0, .LBB12_73
-# %bb.31:
-	lu12i.w	$a0, 65536
-	bne	$a1, $a0, .LBB12_52
-# %bb.32:                               # %.fold.split71
-	ori	$a0, $zero, 28
-	b	.LBB12_80
-.LBB12_33:
-	lu12i.w	$a0, 32
-	beq	$a1, $a0, .LBB12_74
-# %bb.34:
-	lu12i.w	$a0, 64
-	bne	$a1, $a0, .LBB12_52
-# %bb.35:                               # %.fold.split81
-	ori	$a0, $zero, 18
-	b	.LBB12_80
-.LBB12_36:
-	ori	$a0, $zero, 512
-	beq	$a1, $a0, .LBB12_75
-# %bb.37:
-	ori	$a0, $zero, 1024
-	bne	$a1, $a0, .LBB12_52
-# %bb.38:                               # %.fold.split89
-	ori	$a0, $zero, 10
-	b	.LBB12_80
-.LBB12_39:
-	lu12i.w	$a0, 8192
-	beq	$a1, $a0, .LBB12_76
-# %bb.40:
-	lu12i.w	$a0, 16384
-	bne	$a1, $a0, .LBB12_52
-# %bb.41:                               # %.fold.split73
-	ori	$a0, $zero, 26
-	b	.LBB12_80
-.LBB12_42:
-	lu12i.w	$a0, 512
-	beq	$a1, $a0, .LBB12_77
-# %bb.43:
-	lu12i.w	$a0, 1024
-	bne	$a1, $a0, .LBB12_52
-# %bb.44:                               # %.fold.split77
-	ori	$a0, $zero, 22
-	b	.LBB12_80
-.LBB12_45:
-	lu12i.w	$a0, 2
-	beq	$a1, $a0, .LBB12_78
-# %bb.46:
-	lu12i.w	$a0, 4
-	bne	$a1, $a0, .LBB12_52
-# %bb.47:                               # %.fold.split85
-	ori	$a0, $zero, 14
-	b	.LBB12_80
-.LBB12_48:
-	lu12i.w	$a0, 131072
-	beq	$a1, $a0, .LBB12_79
-# %bb.49:
-	lu12i.w	$a0, 262144
-	bne	$a1, $a0, .LBB12_52
-# %bb.50:                               # %.fold.split
-	ori	$a0, $zero, 30
-	b	.LBB12_80
-.LBB12_51:
-	lu12i.w	$a2, -524288
-	ori	$a0, $zero, 31
-	beq	$a1, $a2, .LBB12_80
-.LBB12_52:
-	st.d	$zero, $fp, 8
-	ori	$a0, $zero, 16
 	move	$s0, $a1
-	pcaddu18i	$ra, %call36(_Znam)
-	jirl	$ra, $ra, 0
-	move	$a1, $s0
-	st.d	$a0, $fp, 0
-	st.w	$zero, $a0, 0
-	ori	$a0, $zero, 4
-	slli.d	$a2, $s0, 44
-	st.w	$a0, $fp, 12
-	beqz	$a2, .LBB12_84
-# %bb.53:
-	andi	$a0, $a1, 1023
-	beqz	$a0, .LBB12_92
-# %bb.54:
-	bstrpick.d	$a0, $a1, 31, 0
-.Ltmp218:                               # EH_LABEL
-	addi.d	$a1, $sp, 24
-	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPw)
-	jirl	$ra, $ra, 0
-.Ltmp219:                               # EH_LABEL
-# %bb.55:                               # %.noexc49
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 8
-	addi.d	$a0, $sp, 24
-	addi.d	$s1, $sp, 24
-	pcaddu18i	$ra, %call36(wcslen)
-	jirl	$ra, $ra, 0
-	move	$s0, $a0
-	addi.w	$a0, $a0, 0
-	addi.w	$s2, $s0, 1
-	slti	$a0, $a0, -1
-	slli.d	$a1, $s2, 2
-	addi.w	$a2, $zero, -1
-	maskeqz	$a2, $a2, $a0
-	masknez	$a0, $a1, $a0
-	or	$a0, $a2, $a0
-.Ltmp220:                               # EH_LABEL
-	pcaddu18i	$ra, %call36(_Znam)
-	jirl	$ra, $ra, 0
-.Ltmp221:                               # EH_LABEL
-# %bb.56:                               # %.noexc50
-	st.d	$a0, $sp, 8
-	st.w	$zero, $a0, 0
-	st.w	$s2, $sp, 20
-	.p2align	4, , 16
-.LBB12_57:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i45
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$a1, $s1, 0
-	addi.d	$s1, $s1, 4
-	addi.d	$a2, $a0, 4
-	st.w	$a1, $a0, 0
-	move	$a0, $a2
-	bnez	$a1, .LBB12_57
-# %bb.58:
-	st.w	$s0, $sp, 16
-.Ltmp223:                               # EH_LABEL
-	addi.d	$a1, $sp, 8
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLERKS0_)
-	jirl	$ra, $ra, 0
-.Ltmp224:                               # EH_LABEL
-# %bb.59:
-	ld.d	$a0, $sp, 8
-	beqz	$a0, .LBB12_61
-# %bb.60:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-.LBB12_61:                              # %_ZN11CStringBaseIwED2Ev.exit52
-	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
-	b	.LBB12_100
-.LBB12_62:                              # %.fold.split97
-	ori	$a0, $zero, 2
-	b	.LBB12_80
-.LBB12_63:                              # %.fold.split96
-	ori	$a0, $zero, 3
-	b	.LBB12_80
-.LBB12_64:                              # %.fold.split94
-	ori	$a0, $zero, 5
-	b	.LBB12_80
-.LBB12_65:                              # %.fold.split95
-	ori	$a0, $zero, 4
-	b	.LBB12_80
-.LBB12_66:                              # %.fold.split98
-	ori	$a0, $zero, 1
-	b	.LBB12_80
-.LBB12_67:                              # %.fold.split93
-	ori	$a0, $zero, 6
-	b	.LBB12_80
-.LBB12_68:                              # %.fold.split84
-	ori	$a0, $zero, 15
-	b	.LBB12_80
-.LBB12_69:                              # %.fold.split92
-	ori	$a0, $zero, 7
-	b	.LBB12_80
-.LBB12_70:                              # %.fold.split76
-	ori	$a0, $zero, 23
-	b	.LBB12_80
-.LBB12_71:                              # %.fold.split80
-	ori	$a0, $zero, 19
-	b	.LBB12_80
-.LBB12_72:                              # %.fold.split88
-	ori	$a0, $zero, 11
-	b	.LBB12_80
-.LBB12_73:                              # %.fold.split72
-	ori	$a0, $zero, 27
-	b	.LBB12_80
-.LBB12_74:                              # %.fold.split82
-	ori	$a0, $zero, 17
-	b	.LBB12_80
-.LBB12_75:                              # %.fold.split90
-	ori	$a0, $zero, 9
-	b	.LBB12_80
-.LBB12_76:                              # %.fold.split74
-	ori	$a0, $zero, 25
-	b	.LBB12_80
-.LBB12_77:                              # %.fold.split78
-	ori	$a0, $zero, 21
-	b	.LBB12_80
-.LBB12_78:                              # %.fold.split86
-	ori	$a0, $zero, 13
-	b	.LBB12_80
-.LBB12_79:                              # %.fold.split70
-	ori	$a0, $zero, 29
-.LBB12_80:
+	addi.w	$a1, $a1, -1
+	xor	$a2, $s0, $a1
+	move	$fp, $a0
+	bgeu	$a1, $a2, .LBB12_4
+# %bb.1:                                # %.split
+	ctz.d	$a0, $s0
 	addi.d	$a1, $sp, 24
 	addi.d	$s1, $sp, 24
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPw)
@@ -3611,32 +3320,97 @@ _ZN8NArchive3N7zL21GetStringForSizeValueEj: # @_ZN8NArchive3N7zL21GetStringForSi
 	st.w	$zero, $a0, 0
 	st.w	$s2, $fp, 12
 	.p2align	4, , 16
-.LBB12_81:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
+.LBB12_2:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s1, 0
 	addi.d	$s1, $s1, 4
 	addi.d	$a2, $a0, 4
 	st.w	$a1, $a0, 0
 	move	$a0, $a2
-	bnez	$a1, .LBB12_81
-# %bb.82:
+	bnez	$a1, .LBB12_2
+# %bb.3:
 	st.w	$s0, $fp, 8
-.LBB12_83:
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
-	ret
-.LBB12_84:
-	bstrpick.d	$a0, $a1, 31, 20
+	b	.LBB12_31
+.LBB12_4:
+	st.d	$zero, $fp, 8
+	ori	$a0, $zero, 16
+	pcaddu18i	$ra, %call36(_Znam)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $fp, 0
+	st.w	$zero, $a0, 0
+	ori	$a0, $zero, 4
+	slli.d	$a1, $s0, 44
+	st.w	$a0, $fp, 12
+	beqz	$a1, .LBB12_14
+# %bb.5:
+	andi	$a0, $s0, 1023
+	beqz	$a0, .LBB12_22
+# %bb.6:
+	bstrpick.d	$a0, $s0, 31, 0
+.Ltmp218:                               # EH_LABEL
+	addi.d	$a1, $sp, 24
+	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPw)
+	jirl	$ra, $ra, 0
+.Ltmp219:                               # EH_LABEL
+# %bb.7:                                # %.noexc49
+	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 8
+	addi.d	$a0, $sp, 24
+	addi.d	$s1, $sp, 24
+	pcaddu18i	$ra, %call36(wcslen)
+	jirl	$ra, $ra, 0
+	move	$s0, $a0
+	addi.w	$a0, $a0, 0
+	addi.w	$s2, $s0, 1
+	slti	$a0, $a0, -1
+	slli.d	$a1, $s2, 2
+	addi.w	$a2, $zero, -1
+	maskeqz	$a2, $a2, $a0
+	masknez	$a0, $a1, $a0
+	or	$a0, $a2, $a0
+.Ltmp220:                               # EH_LABEL
+	pcaddu18i	$ra, %call36(_Znam)
+	jirl	$ra, $ra, 0
+.Ltmp221:                               # EH_LABEL
+# %bb.8:                                # %.noexc50
+	st.d	$a0, $sp, 8
+	st.w	$zero, $a0, 0
+	st.w	$s2, $sp, 20
+	.p2align	4, , 16
+.LBB12_9:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i45
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a1, $s1, 0
+	addi.d	$s1, $s1, 4
+	addi.d	$a2, $a0, 4
+	st.w	$a1, $a0, 0
+	move	$a0, $a2
+	bnez	$a1, .LBB12_9
+# %bb.10:
+	st.w	$s0, $sp, 16
+.Ltmp223:                               # EH_LABEL
+	addi.d	$a1, $sp, 8
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLERKS0_)
+	jirl	$ra, $ra, 0
+.Ltmp224:                               # EH_LABEL
+# %bb.11:
+	ld.d	$a0, $sp, 8
+	beqz	$a0, .LBB12_13
+# %bb.12:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+.LBB12_13:                              # %_ZN11CStringBaseIwED2Ev.exit52
+	pcalau12i	$a0, %pc_hi20(.L.str.5)
+	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
+	b	.LBB12_30
+.LBB12_14:
+	bstrpick.d	$a0, $s0, 31, 20
 .Ltmp234:                               # EH_LABEL
 	addi.d	$a1, $sp, 24
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPw)
 	jirl	$ra, $ra, 0
 .Ltmp235:                               # EH_LABEL
-# %bb.85:                               # %.noexc
+# %bb.15:                               # %.noexc
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 8
 	addi.d	$a0, $sp, 24
@@ -3656,20 +3430,20 @@ _ZN8NArchive3N7zL21GetStringForSizeValueEj: # @_ZN8NArchive3N7zL21GetStringForSi
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp237:                               # EH_LABEL
-# %bb.86:                               # %.noexc31
+# %bb.16:                               # %.noexc31
 	st.d	$a0, $sp, 8
 	st.w	$zero, $a0, 0
 	st.w	$s2, $sp, 20
 	.p2align	4, , 16
-.LBB12_87:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i27
+.LBB12_17:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i27
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s1, 0
 	addi.d	$s1, $s1, 4
 	addi.d	$a2, $a0, 4
 	st.w	$a1, $a0, 0
 	move	$a0, $a2
-	bnez	$a1, .LBB12_87
-# %bb.88:
+	bnez	$a1, .LBB12_17
+# %bb.18:
 	st.w	$s0, $sp, 16
 .Ltmp239:                               # EH_LABEL
 	addi.d	$a1, $sp, 8
@@ -3677,24 +3451,24 @@ _ZN8NArchive3N7zL21GetStringForSizeValueEj: # @_ZN8NArchive3N7zL21GetStringForSi
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLERKS0_)
 	jirl	$ra, $ra, 0
 .Ltmp240:                               # EH_LABEL
-# %bb.89:
+# %bb.19:
 	ld.d	$a0, $sp, 8
-	beqz	$a0, .LBB12_91
-# %bb.90:
+	beqz	$a0, .LBB12_21
+# %bb.20:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB12_91:                              # %_ZN11CStringBaseIwED2Ev.exit
+.LBB12_21:                              # %_ZN11CStringBaseIwED2Ev.exit
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
-	b	.LBB12_100
-.LBB12_92:
-	bstrpick.d	$a0, $a1, 31, 10
+	b	.LBB12_30
+.LBB12_22:
+	bstrpick.d	$a0, $s0, 31, 10
 .Ltmp226:                               # EH_LABEL
 	addi.d	$a1, $sp, 24
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt64ToStringyPw)
 	jirl	$ra, $ra, 0
 .Ltmp227:                               # EH_LABEL
-# %bb.93:                               # %.noexc39
+# %bb.23:                               # %.noexc39
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 8
 	addi.d	$a0, $sp, 24
@@ -3714,20 +3488,20 @@ _ZN8NArchive3N7zL21GetStringForSizeValueEj: # @_ZN8NArchive3N7zL21GetStringForSi
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp229:                               # EH_LABEL
-# %bb.94:                               # %.noexc40
+# %bb.24:                               # %.noexc40
 	st.d	$a0, $sp, 8
 	st.w	$zero, $a0, 0
 	st.w	$s2, $sp, 20
 	.p2align	4, , 16
-.LBB12_95:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i35
+.LBB12_25:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i35
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s1, 0
 	addi.d	$s1, $s1, 4
 	addi.d	$a2, $a0, 4
 	st.w	$a1, $a0, 0
 	move	$a0, $a2
-	bnez	$a1, .LBB12_95
-# %bb.96:
+	bnez	$a1, .LBB12_25
+# %bb.26:
 	st.w	$s0, $sp, 16
 .Ltmp231:                               # EH_LABEL
 	addi.d	$a1, $sp, 8
@@ -3735,72 +3509,79 @@ _ZN8NArchive3N7zL21GetStringForSizeValueEj: # @_ZN8NArchive3N7zL21GetStringForSi
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLERKS0_)
 	jirl	$ra, $ra, 0
 .Ltmp232:                               # EH_LABEL
-# %bb.97:
+# %bb.27:
 	ld.d	$a0, $sp, 8
-	beqz	$a0, .LBB12_99
-# %bb.98:
+	beqz	$a0, .LBB12_29
+# %bb.28:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB12_99:                              # %_ZN11CStringBaseIwED2Ev.exit42
+.LBB12_29:                              # %_ZN11CStringBaseIwED2Ev.exit42
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
-.LBB12_100:                             # %_ZN11CStringBaseIwED2Ev.exit52.invoke
+.LBB12_30:                              # %_ZN11CStringBaseIwED2Ev.exit52.invoke
 .Ltmp242:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLEPKw)
 	jirl	$ra, $ra, 0
 .Ltmp243:                               # EH_LABEL
-	b	.LBB12_83
-.LBB12_101:
+.LBB12_31:
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
+	ret
+.LBB12_32:
 .Ltmp233:                               # EH_LABEL
-	b	.LBB12_104
-.LBB12_102:
+	b	.LBB12_35
+.LBB12_33:
 .Ltmp241:                               # EH_LABEL
-	b	.LBB12_104
-.LBB12_103:
+	b	.LBB12_35
+.LBB12_34:
 .Ltmp225:                               # EH_LABEL
-.LBB12_104:
+.LBB12_35:
 	ld.d	$a1, $sp, 8
 	move	$s0, $a0
-	bnez	$a1, .LBB12_107
-# %bb.105:
+	bnez	$a1, .LBB12_38
+# %bb.36:
 	ld.d	$a0, $fp, 0
-	bnez	$a0, .LBB12_112
-.LBB12_106:                             # %_ZN11CStringBaseIwED2Ev.exit54
+	bnez	$a0, .LBB12_43
+.LBB12_37:                              # %_ZN11CStringBaseIwED2Ev.exit54
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB12_107:
+.LBB12_38:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB12_106
-	b	.LBB12_112
-.LBB12_108:
+	beqz	$a0, .LBB12_37
+	b	.LBB12_43
+.LBB12_39:
 .Ltmp230:                               # EH_LABEL
 	move	$s0, $a0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB12_106
-	b	.LBB12_112
-.LBB12_109:
+	beqz	$a0, .LBB12_37
+	b	.LBB12_43
+.LBB12_40:
 .Ltmp238:                               # EH_LABEL
 	move	$s0, $a0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB12_106
-	b	.LBB12_112
-.LBB12_110:
+	beqz	$a0, .LBB12_37
+	b	.LBB12_43
+.LBB12_41:
 .Ltmp222:                               # EH_LABEL
 	move	$s0, $a0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB12_106
-	b	.LBB12_112
-.LBB12_111:
+	beqz	$a0, .LBB12_37
+	b	.LBB12_43
+.LBB12_42:
 .Ltmp244:                               # EH_LABEL
 	move	$s0, $a0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB12_106
-.LBB12_112:
+	beqz	$a0, .LBB12_37
+.LBB12_43:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
@@ -3809,73 +3590,6 @@ _ZN8NArchive3N7zL21GetStringForSizeValueEj: # @_ZN8NArchive3N7zL21GetStringForSi
 .Lfunc_end12:
 	.size	_ZN8NArchive3N7zL21GetStringForSizeValueEj, .Lfunc_end12-_ZN8NArchive3N7zL21GetStringForSizeValueEj
 	.cfi_endproc
-	.section	.rodata,"a",@progbits
-	.p2align	2, 0x0
-.LJTI12_0:
-	.word	.LBB12_4-.LJTI12_0
-	.word	.LBB12_66-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_62-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_63-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_65-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_64-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_52-.LJTI12_0
-	.word	.LBB12_67-.LJTI12_0
 	.section	.gcc_except_table,"a",@progbits
 	.p2align	2, 0x0
 GCC_except_table12:

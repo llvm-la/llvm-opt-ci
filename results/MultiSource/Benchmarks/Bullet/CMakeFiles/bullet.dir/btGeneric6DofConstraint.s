@@ -552,7 +552,7 @@ _ZN25btTranslationalLimitMotor14testLimitValueEif: # @_ZN25btTranslationalLimitM
 	fld.s	$fa1, $a2, 16
 	fcmp.cule.s	$fcc0, $fa2, $fa1
 	bcnez	$fcc0, .LBB6_2
-# %bb.1:
+.LBB6_1:
 	move	$a0, $zero
 	st.w	$zero, $a2, 128
 	movgr2fr.w	$fa0, $zero
@@ -569,18 +569,11 @@ _ZN25btTranslationalLimitMotor14testLimitValueEif: # @_ZN25btTranslationalLimitM
 	ret
 .LBB6_4:
 	fcmp.cule.s	$fcc0, $fa0, $fa1
-	addi.d	$a1, $a2, 128
-	bcnez	$fcc0, .LBB6_6
+	bcnez	$fcc0, .LBB6_1
 # %bb.5:
 	ori	$a0, $zero, 1
-	st.w	$a0, $a1, 0
+	st.w	$a0, $a2, 128
 	fsub.s	$fa0, $fa0, $fa1
-	fst.s	$fa0, $a2, 96
-	ret
-.LBB6_6:
-	move	$a0, $zero
-	st.w	$zero, $a1, 0
-	movgr2fr.w	$fa0, $zero
 	fst.s	$fa0, $a2, 96
 	ret
 .Lfunc_end6:
@@ -1729,60 +1722,56 @@ _ZN23btGeneric6DofConstraint20buildAngularJacobianER15btJacobianEntryRK9btVector
 _ZN23btGeneric6DofConstraint21testAngularLimitMotorEi: # @_ZN23btGeneric6DofConstraint21testAngularLimitMotorEi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	.cfi_def_cfa_offset 32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	.cfi_def_cfa_offset 16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	alsl.d	$a2, $a1, $a0, 2
 	fld.s	$fa0, $a2, 1168
 	ori	$a2, $zero, 56
 	mul.d	$a1, $a1, $a2
-	add.d	$s0, $a0, $a1
-	fld.s	$fa1, $s0, 868
-	fld.s	$fa2, $s0, 872
-	addi.d	$fp, $s0, 868
+	add.d	$fp, $a0, $a1
+	fld.s	$fa1, $fp, 868
+	fld.s	$fa2, $fp, 872
 	pcaddu18i	$ra, %call36(_Z21btAdjustAngleToLimitsfff)
 	jirl	$ra, $ra, 0
-	fld.s	$fa2, $s0, 868
-	fld.s	$fa1, $s0, 872
+	fld.s	$fa2, $fp, 868
+	fld.s	$fa1, $fp, 872
 	fcmp.cule.s	$fcc0, $fa2, $fa1
-	fst.s	$fa0, $s0, 912
+	fst.s	$fa0, $fp, 912
 	bcnez	$fcc0, .LBB14_2
 .LBB14_1:
 	move	$a0, $zero
-	st.w	$zero, $fp, 48
+	st.w	$zero, $fp, 916
 	b	.LBB14_6
 .LBB14_2:
 	fcmp.cule.s	$fcc0, $fa2, $fa0
 	bcnez	$fcc0, .LBB14_4
 # %bb.3:
 	ori	$a0, $zero, 1
-	st.w	$a0, $fp, 48
+	st.w	$a0, $fp, 916
 	fsub.s	$fa0, $fa0, $fa2
-	fst.s	$fa0, $fp, 40
+	fst.s	$fa0, $fp, 908
 	b	.LBB14_6
 .LBB14_4:
 	fcmp.cule.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB14_1
 # %bb.5:
 	ori	$a0, $zero, 2
-	st.w	$a0, $fp, 48
+	st.w	$a0, $fp, 916
 	fsub.s	$fa0, $fa0, $fa1
-	fst.s	$fa0, $fp, 40
+	fst.s	$fa0, $fp, 908
 	ori	$a0, $zero, 1
 .LBB14_6:                               # %_ZN22btRotationalLimitMotor14testLimitValueEf.exit
-	ld.b	$a1, $fp, 36
+	ld.b	$a1, $fp, 904
 	andi	$a1, $a1, 255
 	sltu	$a1, $zero, $a1
 	or	$a0, $a0, $a1
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end14:
 	.size	_ZN23btGeneric6DofConstraint21testAngularLimitMotorEi, .Lfunc_end14-_ZN23btGeneric6DofConstraint21testAngularLimitMotorEi

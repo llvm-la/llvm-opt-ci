@@ -843,138 +843,131 @@ writeCBP_VLC:                           # @writeCBP_VLC
 	ldptr.d	$a4, $a2, 14224
 	ori	$a5, $zero, 536
 	mul.d	$a3, $a3, $a5
-	add.d	$a3, $a4, $a3
-	ld.w	$a3, $a3, 72
-	ori	$a4, $zero, 13
-	bltu	$a4, $a3, .LBB14_6
+	ldptr.w	$a5, $a2, 15536
+	add.d	$a2, $a4, $a3
+	ld.w	$a2, $a2, 72
+	ld.w	$a3, $a0, 4
+	sltu	$a4, $zero, $a5
+	alsl.d	$a4, $a4, $a4, 1
+	slli.d	$a4, $a4, 5
+	pcalau12i	$a5, %pc_hi20(NCBP)
+	addi.d	$a5, $a5, %pc_lo12(NCBP)
+	add.d	$a4, $a5, $a4
+	ori	$a5, $zero, 13
+	alsl.d	$a3, $a3, $a4, 1
+	bltu	$a5, $a2, .LBB14_6
 # %bb.1:
 	ori	$a4, $zero, 1
-	sll.d	$a3, $a4, $a3
+	sll.d	$a2, $a4, $a2
 	lu12i.w	$a4, 3
 	ori	$a4, $a4, 512
-	and	$a3, $a3, $a4
-	beqz	$a3, .LBB14_6
+	and	$a2, $a2, $a4
+	beqz	$a2, .LBB14_6
 # %bb.2:
-	ldptr.w	$a2, $a2, 15536
-	ld.w	$a3, $a0, 4
-	sltu	$a2, $zero, $a2
-	alsl.d	$a2, $a2, $a2, 1
-	slli.d	$a2, $a2, 5
-	pcalau12i	$a4, %pc_hi20(NCBP)
-	addi.d	$a4, $a4, %pc_lo12(NCBP)
-	add.d	$a2, $a4, $a2
-	slli.d	$a3, $a3, 1
-	ldx.bu	$a2, $a2, $a3
-	addi.d	$a3, $a2, 1
-	move	$a4, $zero
-	beqz	$a2, .LBB14_10
+	ld.bu	$a3, $a3, 0
+	addi.d	$a2, $a3, 1
+	beqz	$a3, .LBB14_10
 # %bb.3:                                # %.lr.ph.i.i.preheader
-	ori	$a2, $zero, 14
+	move	$a3, $zero
+	ori	$a4, $zero, 14
 	ori	$a5, $zero, 3
-	move	$a6, $a3
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB14_4:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$a7, $a4
-	addi.w	$a4, $a4, 1
-	bltu	$a2, $a7, .LBB14_10
+	move	$a7, $a3
+	addi.w	$a3, $a3, 1
+	bltu	$a4, $a7, .LBB14_11
 # %bb.5:                                # %.lr.ph.i.i
                                         #   in Loop: Header=BB14_4 Depth=1
 	addi.w	$a7, $a6, 0
 	bstrpick.d	$a6, $a6, 31, 1
 	bltu	$a5, $a7, .LBB14_4
-	b	.LBB14_10
+	b	.LBB14_11
 .LBB14_6:
-	ldptr.w	$a2, $a2, 15536
-	ld.w	$a3, $a0, 4
-	sltu	$a2, $zero, $a2
-	alsl.d	$a2, $a2, $a2, 1
-	slli.d	$a2, $a2, 5
-	pcalau12i	$a4, %pc_hi20(NCBP)
-	addi.d	$a4, $a4, %pc_lo12(NCBP)
-	add.d	$a2, $a4, $a2
-	alsl.d	$a2, $a3, $a2, 1
-	ld.bu	$a2, $a2, 1
-	addi.d	$a3, $a2, 1
-	move	$a4, $zero
-	beqz	$a2, .LBB14_10
+	ld.bu	$a3, $a3, 1
+	addi.d	$a2, $a3, 1
+	beqz	$a3, .LBB14_10
 # %bb.7:                                # %.lr.ph.i.i18.preheader
-	ori	$a2, $zero, 14
+	move	$a3, $zero
+	ori	$a4, $zero, 14
 	ori	$a5, $zero, 3
-	move	$a6, $a3
+	move	$a6, $a2
 	.p2align	4, , 16
 .LBB14_8:                               # %.lr.ph.i.i18
                                         # =>This Inner Loop Header: Depth=1
-	move	$a7, $a4
-	addi.w	$a4, $a4, 1
-	bltu	$a2, $a7, .LBB14_10
+	move	$a7, $a3
+	addi.w	$a3, $a3, 1
+	bltu	$a4, $a7, .LBB14_11
 # %bb.9:                                # %.lr.ph.i.i18
                                         #   in Loop: Header=BB14_8 Depth=1
 	addi.w	$a7, $a6, 0
 	bstrpick.d	$a6, $a6, 31, 1
 	bltu	$a5, $a7, .LBB14_8
-.LBB14_10:                              # %cbp_linfo_inter.exit
-	slli.d	$a2, $a4, 1
-	addi.d	$a2, $a2, 1
-	st.w	$a2, $a0, 12
-	addi.d	$a5, $zero, -1
-	sll.w	$a4, $a5, $a4
-	add.d	$a5, $a4, $a3
-	st.w	$a5, $a0, 16
+	b	.LBB14_11
+.LBB14_10:
 	move	$a3, $zero
-	bstrpick.d	$a4, $a2, 7, 1
-	ori	$a6, $zero, 1
-	sll.w	$a7, $a6, $a4
-	addi.d	$t0, $a7, -1
-	ld.d	$a4, $a1, 0
-	and	$a5, $t0, $a5
-	or	$a5, $a5, $a7
-	st.w	$a5, $a0, 20
-	ld.bu	$a7, $a4, 8
-	addi.d	$a5, $a2, -1
-	sll.w	$a5, $a6, $a5
-	ori	$a6, $zero, 8
-	b	.LBB14_12
+.LBB14_11:                              # %.lr.ph.i
+	move	$a4, $zero
+	slli.d	$a5, $a3, 1
+	addi.d	$a6, $zero, -1
+	sll.w	$a6, $a6, $a3
+	add.d	$a2, $a6, $a2
+	st.w	$a2, $a0, 16
+	ori	$t0, $zero, 1
+	sll.w	$a3, $t0, $a3
+	addi.d	$a6, $a3, -1
+	and	$a2, $a6, $a2
+	addi.w	$a6, $a5, 1
+	or	$a3, $a2, $a3
+	ld.d	$a2, $a1, 0
+	st.w	$a6, $a0, 12
+	st.w	$a3, $a0, 20
+	bstrpick.d	$a3, $a5, 31, 1
+	ld.bu	$a7, $a2, 8
+	slli.d	$a3, $a3, 1
+	sll.w	$a3, $t0, $a3
+	ori	$a5, $zero, 8
+	b	.LBB14_13
 	.p2align	4, , 16
-.LBB14_11:                              #   in Loop: Header=BB14_12 Depth=1
-	addi.w	$a3, $a3, 1
-	addi.w	$t0, $a2, 0
-	bstrpick.d	$a5, $a5, 31, 1
-	bge	$a3, $t0, .LBB14_16
-.LBB14_12:                              # =>This Inner Loop Header: Depth=1
+.LBB14_12:                              #   in Loop: Header=BB14_13 Depth=1
+	addi.w	$a4, $a4, 1
+	bstrpick.d	$a3, $a3, 31, 1
+	bge	$a4, $a6, .LBB14_17
+.LBB14_13:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a0, 20
 	slli.d	$a7, $a7, 1
-	and	$t0, $t0, $a5
+	and	$t0, $t0, $a3
 	addi.w	$t0, $t0, 0
-	st.b	$a7, $a4, 8
-	beqz	$t0, .LBB14_14
-# %bb.13:                               #   in Loop: Header=BB14_12 Depth=1
+	st.b	$a7, $a2, 8
+	beqz	$t0, .LBB14_15
+# %bb.14:                               #   in Loop: Header=BB14_13 Depth=1
 	ori	$a7, $a7, 1
-	st.b	$a7, $a4, 8
-.LBB14_14:                              #   in Loop: Header=BB14_12 Depth=1
-	ld.w	$t0, $a4, 4
+	st.b	$a7, $a2, 8
+.LBB14_15:                              #   in Loop: Header=BB14_13 Depth=1
+	ld.w	$t0, $a2, 4
 	addi.w	$t0, $t0, -1
-	st.w	$t0, $a4, 4
-	bnez	$t0, .LBB14_11
-# %bb.15:                               #   in Loop: Header=BB14_12 Depth=1
-	ld.w	$a2, $a4, 0
-	ld.d	$t0, $a4, 32
-	st.w	$a6, $a4, 4
-	addi.d	$t1, $a2, 1
-	st.w	$t1, $a4, 0
-	stx.b	$a7, $t0, $a2
-	ld.w	$a2, $a0, 12
-	st.b	$zero, $a4, 8
+	st.w	$t0, $a2, 4
+	bnez	$t0, .LBB14_12
+# %bb.16:                               #   in Loop: Header=BB14_13 Depth=1
+	ld.w	$a6, $a2, 0
+	ld.d	$t0, $a2, 32
+	st.w	$a5, $a2, 4
+	addi.d	$t1, $a6, 1
+	st.w	$t1, $a2, 0
+	stx.b	$a7, $t0, $a6
+	ld.w	$a6, $a0, 12
+	st.b	$zero, $a2, 8
 	move	$a7, $zero
-	b	.LBB14_11
-.LBB14_16:                              # %writeUVLC2buffer.exit
+	b	.LBB14_12
+.LBB14_17:                              # %writeUVLC2buffer.exit
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB14_18
-# %bb.17:
+	beqz	$a0, .LBB14_19
+# %bb.18:
 	ld.d	$a0, $a1, 0
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 40
-.LBB14_18:
+.LBB14_19:
 	ret
 .Lfunc_end14:
 	.size	writeCBP_VLC, .Lfunc_end14-writeCBP_VLC
@@ -1372,28 +1365,28 @@ writeSE_Fix:                            # @writeSE_Fix
 	.type	symbol2vlc,@function
 symbol2vlc:                             # @symbol2vlc
 # %bb.0:
-	ld.w	$a2, $a0, 12
-	blez	$a2, .LBB22_4
+	ld.w	$a3, $a0, 12
+	blez	$a3, .LBB22_4
 # %bb.1:                                # %.lr.ph
 	ld.w	$a1, $a0, 16
-	move	$a4, $zero
-	addi.d	$a2, $a2, 1
-	ori	$a3, $zero, 1
+	move	$a2, $zero
+	addi.d	$a3, $a3, 1
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB22_2:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a5, $a2, -2
-	srl.w	$a5, $a1, $a5
-	bstrins.d	$a5, $a4, 63, 1
-	addi.w	$a2, $a2, -1
-	move	$a4, $a5
-	bltu	$a3, $a2, .LBB22_2
+	move	$a5, $a2
+	addi.d	$a2, $a3, -2
+	srl.w	$a2, $a1, $a2
+	addi.w	$a3, $a3, -1
+	bstrins.d	$a2, $a5, 63, 1
+	bltu	$a4, $a3, .LBB22_2
 # %bb.3:                                # %._crit_edge
-	st.w	$a5, $a0, 20
+	st.w	$a2, $a0, 20
 	move	$a0, $zero
 	ret
 .LBB22_4:
-	move	$a5, $zero
-	st.w	$a5, $a0, 20
+	move	$a2, $zero
+	st.w	$a2, $a0, 20
 	move	$a0, $zero
 	ret
 .Lfunc_end22:

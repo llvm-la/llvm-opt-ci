@@ -354,8 +354,8 @@ _Z24WriteCAFFpaktChunkHeaderP8_IO_FILEP25port_CAFPacketTableHeaderj: # @_Z24Writ
 	.cfi_offset 24, -32
 	move	$fp, $a1
 	ld.d	$a1, $a1, 0
-	move	$s1, $a2
-	move	$s0, $a0
+	move	$s0, $a2
+	move	$s1, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(Swap64NtoB)
 	jirl	$ra, $ra, 0
@@ -378,23 +378,23 @@ _Z24WriteCAFFpaktChunkHeaderP8_IO_FILEP25port_CAFPacketTableHeaderj: # @_Z24Writ
 	lu12i.w	$a0, 476854
 	ori	$a0, $a0, 368
 	st.d	$a0, $sp, 4
-	srli.d	$a0, $s1, 24
+	srli.d	$a0, $s0, 24
 	st.b	$a0, $sp, 12
-	srli.d	$a0, $s1, 16
+	srli.d	$a0, $s0, 16
 	st.b	$a0, $sp, 13
-	srli.d	$a0, $s1, 8
+	srli.d	$a0, $s0, 8
 	st.b	$a0, $sp, 14
-	st.b	$s1, $sp, 15
+	st.b	$s0, $sp, 15
 	addi.d	$a0, $sp, 4
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 12
-	move	$a3, $s0
+	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 24
 	move	$a0, $fp
-	move	$a3, $s0
+	move	$a3, $s1
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload

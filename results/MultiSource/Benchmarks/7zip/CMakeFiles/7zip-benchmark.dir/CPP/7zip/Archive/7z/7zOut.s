@@ -1491,16 +1491,15 @@ _ZN8NArchive3N7z11COutArchive11WriteFolderERKNS0_7CFolderE: # @_ZN8NArchive3N7z1
 _ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE: # @_ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1508,50 +1507,44 @@ _ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE: # @_ZN8NArc
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s1, $a1
 	ld.w	$a1, $a1, 12
-	blez	$a1, .LBB13_23
+	blez	$a1, .LBB13_22
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	addi.d	$s0, $a0, 32
 	ori	$a0, $zero, 128
-	ori	$s4, $zero, 1
 	pcalau12i	$a1, %got_pc_hi20(g_CrcTable)
 	ld.d	$s2, $a1, %got_pc_lo12(g_CrcTable)
-	move	$s5, $zero
+	move	$s4, $zero
 	move	$s3, $zero
 	b	.LBB13_4
-	.p2align	4, , 16
 .LBB13_2:                               #   in Loop: Header=BB13_4 Depth=1
-	bstrpick.d	$a0, $a0, 7, 1
+	ld.d	$a0, $fp, 16
+	move	$s3, $zero
+	addi.d	$a0, $a0, 1
+	st.d	$a0, $fp, 16
+	ori	$a0, $zero, 128
+	.p2align	4, , 16
 .LBB13_3:                               # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit
                                         #   in Loop: Header=BB13_4 Depth=1
 	ld.w	$a1, $s1, 12
-	addi.d	$s5, $s5, 1
-	bge	$s5, $a1, .LBB13_14
+	addi.d	$s4, $s4, 1
+	bge	$s4, $a1, .LBB13_13
 .LBB13_4:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s1, 16
-	ldx.bu	$a1, $a1, $s5
+	ldx.bu	$a1, $a1, $s4
 	maskeqz	$a1, $a0, $a1
-	andi	$a2, $a0, 255
+	bstrpick.d	$a0, $a0, 7, 1
 	or	$s3, $a1, $s3
-	bltu	$s4, $a2, .LBB13_2
+	bnez	$a0, .LBB13_3
 # %bb.5:                                #   in Loop: Header=BB13_4 Depth=1
 	ld.bu	$a0, $fp, 8
-	beqz	$a0, .LBB13_7
+	bnez	$a0, .LBB13_2
 # %bb.6:                                #   in Loop: Header=BB13_4 Depth=1
-	ld.d	$a0, $fp, 16
-	move	$s3, $zero
-	addi.d	$a0, $a0, 1
-	st.d	$a0, $fp, 16
-	ori	$a0, $zero, 128
-	b	.LBB13_3
-	.p2align	4, , 16
-.LBB13_7:                               #   in Loop: Header=BB13_4 Depth=1
 	ld.bu	$a0, $fp, 9
-	beqz	$a0, .LBB13_11
-# %bb.8:                                #   in Loop: Header=BB13_4 Depth=1
+	beqz	$a0, .LBB13_10
+# %bb.7:                                #   in Loop: Header=BB13_4 Depth=1
 	ld.wu	$a0, $fp, 40
 	ld.d	$a1, $fp, 32
 	addi.d	$a2, $a0, 1
@@ -1559,12 +1552,12 @@ _ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE: # @_ZN8NArc
 	stx.b	$s3, $a1, $a0
 	ld.w	$a0, $fp, 40
 	ld.w	$a1, $fp, 44
-	bne	$a0, $a1, .LBB13_10
-# %bb.9:                                #   in Loop: Header=BB13_4 Depth=1
+	bne	$a0, $a1, .LBB13_9
+# %bb.8:                                #   in Loop: Header=BB13_4 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
-.LBB13_10:                              # %_ZN10COutBuffer9WriteByteEh.exit.i
+.LBB13_9:                               # %_ZN10COutBuffer9WriteByteEh.exit.i
                                         #   in Loop: Header=BB13_4 Depth=1
 	ld.wu	$a0, $fp, 24
 	xor	$a1, $s3, $a0
@@ -1574,38 +1567,38 @@ _ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE: # @_ZN8NArc
 	srli.d	$a0, $a0, 8
 	xor	$a0, $a1, $a0
 	st.w	$a0, $fp, 24
-	b	.LBB13_13
-.LBB13_11:                              #   in Loop: Header=BB13_4 Depth=1
+	b	.LBB13_12
+.LBB13_10:                              #   in Loop: Header=BB13_4 Depth=1
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB13_24
-# %bb.12:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i
+	beq	$a1, $a0, .LBB13_23
+# %bb.11:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i
                                         #   in Loop: Header=BB13_4 Depth=1
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
 	st.d	$a2, $fp, 104
 	stx.b	$s3, $a1, $a0
-.LBB13_13:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit
+.LBB13_12:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit
                                         #   in Loop: Header=BB13_4 Depth=1
 	ori	$a0, $zero, 128
 	move	$s3, $zero
 	b	.LBB13_3
-.LBB13_14:                              # %._crit_edge
+.LBB13_13:                              # %._crit_edge
 	andi	$a0, $a0, 255
 	ori	$a1, $zero, 128
-	beq	$a0, $a1, .LBB13_23
-# %bb.15:
+	beq	$a0, $a1, .LBB13_22
+# %bb.14:
 	ld.bu	$a0, $fp, 8
-	beqz	$a0, .LBB13_17
-# %bb.16:
+	beqz	$a0, .LBB13_16
+# %bb.15:
 	ld.d	$a0, $fp, 16
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $fp, 16
-	b	.LBB13_23
-.LBB13_17:
+	b	.LBB13_22
+.LBB13_16:
 	ld.bu	$a0, $fp, 9
-	beqz	$a0, .LBB13_21
-# %bb.18:
+	beqz	$a0, .LBB13_20
+# %bb.17:
 	ld.wu	$a0, $fp, 40
 	ld.d	$a1, $fp, 32
 	addi.d	$a2, $a0, 1
@@ -1613,12 +1606,12 @@ _ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE: # @_ZN8NArc
 	stx.b	$s3, $a1, $a0
 	ld.w	$a0, $fp, 40
 	ld.w	$a1, $fp, 44
-	bne	$a0, $a1, .LBB13_20
-# %bb.19:
+	bne	$a0, $a1, .LBB13_19
+# %bb.18:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
-.LBB13_20:                              # %_ZN10COutBuffer9WriteByteEh.exit.i16
+.LBB13_19:                              # %_ZN10COutBuffer9WriteByteEh.exit.i16
 	ld.wu	$a0, $fp, 24
 	xor	$a1, $s3, $a0
 	andi	$a1, $a1, 255
@@ -1627,28 +1620,27 @@ _ZN8NArchive3N7z11COutArchive15WriteBoolVectorERK13CRecordVectorIbE: # @_ZN8NArc
 	srli.d	$a0, $a0, 8
 	xor	$a0, $a1, $a0
 	st.w	$a0, $fp, 24
-	b	.LBB13_23
-.LBB13_21:
+	b	.LBB13_22
+.LBB13_20:
 	ld.d	$a1, $fp, 96
 	ld.d	$a0, $fp, 104
-	beq	$a1, $a0, .LBB13_24
-# %bb.22:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i15
+	beq	$a1, $a0, .LBB13_23
+# %bb.21:                               # %_ZN8NArchive3N7z15CWriteBufferLoc9WriteByteEh.exit.i15
 	ld.d	$a1, $fp, 88
 	addi.d	$a2, $a0, 1
 	st.d	$a2, $fp, 104
 	stx.b	$s3, $a1, $a0
-.LBB13_23:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit19
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+.LBB13_22:                              # %_ZN8NArchive3N7z11COutArchive9WriteByteEh.exit19
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
-.LBB13_24:
+.LBB13_23:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
 	jirl	$ra, $ra, 0

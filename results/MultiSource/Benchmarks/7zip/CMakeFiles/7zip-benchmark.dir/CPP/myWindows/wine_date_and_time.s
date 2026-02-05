@@ -337,8 +337,7 @@ FileTimeToSystemTime:                   # @FileTimeToSystemTime
 	ori	$t1, $t1, 2269
 	mul.d	$t0, $t0, $t1
 	srli.d	$t1, $t0, 63
-	srai.d	$t0, $t0, 32
-	srli.d	$t0, $t0, 9
+	srai.d	$t0, $t0, 41
 	add.d	$t0, $t0, $t1
 	slti	$t1, $a6, 429
 	sub.d	$t2, $zero, $t1

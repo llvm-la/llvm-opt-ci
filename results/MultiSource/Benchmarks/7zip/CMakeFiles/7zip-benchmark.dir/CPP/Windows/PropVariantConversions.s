@@ -275,9 +275,14 @@ _Z26ConvertPropVariantToStringRK14tagPROPVARIANT: # @_Z26ConvertPropVariantToStr
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 1
 	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_Z23ConvertFileTimeToStringRK9_FILETIMEbb)
-	jirl	$ra, $ra, 0
-	b	.LBB2_25
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
+	pcaddu18i	$t8, %call36(_Z23ConvertFileTimeToStringRK9_FILETIMEbb)
+	jr	$t8
 .LBB2_6:
 	ld.d	$a0, $a1, 8
 	addi.d	$a1, $sp, 8

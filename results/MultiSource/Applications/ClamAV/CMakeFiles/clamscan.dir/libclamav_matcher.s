@@ -210,36 +210,31 @@ cli_scanbuff:                           # @cli_scanbuff
 	.type	cli_vermd5,@function
 cli_vermd5:                             # @cli_vermd5
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	move	$s0, $a0
+	move	$a2, $a0
 	ld.bu	$a0, $a0, 0
 	ld.d	$a1, $a1, 24
 	slli.d	$a0, $a0, 3
-	ldx.d	$fp, $a1, $a0
-	beqz	$fp, .LBB1_3
-	.p2align	4, , 16
-.LBB1_1:                                # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $fp, 8
-	ori	$a2, $zero, 16
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ldx.d	$a0, $a1, $a0
 	beqz	$a0, .LBB1_4
-# %bb.2:                                #   in Loop: Header=BB1_1 Depth=1
-	ld.d	$fp, $fp, 24
-	bnez	$fp, .LBB1_1
-.LBB1_3:
-	move	$fp, $zero
-.LBB1_4:                                # %.loopexit
-	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+# %bb.1:                                # %.preheader.preheader
+	ld.d	$a1, $a2, 0
+	ld.d	$a2, $a2, 8
+	.p2align	4, , 16
+.LBB1_2:                                # %.preheader
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $a0, 8
+	ld.d	$a4, $a3, 0
+	ld.d	$a3, $a3, 8
+	xor	$a4, $a4, $a1
+	xor	$a3, $a3, $a2
+	or	$a3, $a4, $a3
+	beqz	$a3, .LBB1_5
+# %bb.3:                                #   in Loop: Header=BB1_2 Depth=1
+	ld.d	$a0, $a0, 24
+	bnez	$a0, .LBB1_2
+.LBB1_4:
+	move	$a0, $zero
+.LBB1_5:                                # %.loopexit
 	ret
 .Lfunc_end1:
 	.size	cli_vermd5, .Lfunc_end1-cli_vermd5
@@ -1102,79 +1097,83 @@ cli_checkfp:                            # @cli_checkfp
 	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	move	$s1, $a1
+	move	$s0, $a1
 	ld.d	$a1, $a1, 24
-	beqz	$a1, .LBB5_13
+	beqz	$a1, .LBB5_14
 # %bb.1:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcaddu18i	$ra, %call36(cli_md5digest)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_5
-# %bb.2:
-	move	$fp, $a0
-	ld.bu	$a0, $a0, 0
-	ld.d	$a1, $s1, 24
-	slli.d	$a0, $a0, 3
-	ldx.d	$s1, $a1, $a0
-	beqz	$s1, .LBB5_12
-	.p2align	4, , 16
-.LBB5_3:                                # %.preheader.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
-	ori	$a2, $zero, 16
-	move	$a1, $fp
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB5_6
-# %bb.4:                                #   in Loop: Header=BB5_3 Depth=1
+# %bb.2:
+	ld.bu	$a1, $a0, 0
+	ld.d	$a2, $s0, 24
+	slli.d	$a1, $a1, 3
+	ldx.d	$s1, $a2, $a1
+	beqz	$s1, .LBB5_13
+# %bb.3:                                # %.preheader.i.preheader
+	ld.d	$a1, $a0, 0
+	ld.d	$a2, $a0, 8
+	.p2align	4, , 16
+.LBB5_4:                                # %.preheader.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $s1, 8
+	ld.d	$a4, $a3, 0
+	ld.d	$a3, $a3, 8
+	xor	$a4, $a4, $a1
+	xor	$a3, $a3, $a2
+	or	$a3, $a4, $a3
+	beqz	$a3, .LBB5_7
+# %bb.5:                                #   in Loop: Header=BB5_4 Depth=1
 	ld.d	$s1, $s1, 24
-	bnez	$s1, .LBB5_3
-	b	.LBB5_12
-.LBB5_5:
+	bnez	$s1, .LBB5_4
+	b	.LBB5_13
+.LBB5_6:
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB5_13
-.LBB5_6:                                # %cli_vermd5.exit
-	ld.hu	$a0, $s1, 20
-	beqz	$a0, .LBB5_12
-# %bb.7:
+	b	.LBB5_14
+.LBB5_7:                                # %cli_vermd5.exit
+	ld.hu	$a1, $s1, 20
+	beqz	$a1, .LBB5_13
+# %bb.8:
+	move	$s0, $a0
 	addi.d	$a1, $sp, 16
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fstat)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_9
-# %bb.8:
+	beqz	$a0, .LBB5_10
+# %bb.9:
 	addi.w	$a0, $zero, -123
-	b	.LBB5_14
-.LBB5_9:
+	b	.LBB5_15
+.LBB5_10:
 	ld.w	$a0, $sp, 64
 	ld.w	$a1, $s1, 16
-	bne	$a1, $a0, .LBB5_11
-# %bb.10:
+	bne	$a1, $a0, .LBB5_12
+# %bb.11:
 	ld.d	$a1, $s1, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	b	.LBB5_14
-.LBB5_11:
+	b	.LBB5_15
+.LBB5_12:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(cli_warnmsg)
 	jirl	$ra, $ra, 0
-.LBB5_12:                               # %cli_vermd5.exit.thread
-	move	$a0, $fp
+	move	$a0, $s0
+.LBB5_13:                               # %cli_vermd5.exit.thread
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB5_13:
-	move	$a0, $zero
 .LBB5_14:
+	move	$a0, $zero
+.LBB5_15:
 	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload

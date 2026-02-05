@@ -263,14 +263,15 @@ ren_Rename:                             # @ren_Rename
 	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB1_35
 .LBB1_31:                               # %.preheader
-	beqz	$a0, .LBB1_34
+	move	$s3, $zero
+	beqz	$a0, .LBB1_35
 # %bb.32:                               # %.lr.ph.preheader
-	move	$s0, $zero
 	move	$fp, $a0
 	.p2align	4, , 16
 .LBB1_33:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s1, $fp, 8
+	move	$s0, $s3
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(ren_Polarity)
 	jirl	$ra, $ra, 0
@@ -290,7 +291,6 @@ ren_Rename:                             # @ren_Rename
 	st.d	$s5, $a0, 8
 	st.d	$s0, $a0, 0
 	ld.d	$fp, $fp, 0
-	move	$s0, $a0
 	bnez	$fp, .LBB1_33
 	b	.LBB1_35
 .LBB1_34:

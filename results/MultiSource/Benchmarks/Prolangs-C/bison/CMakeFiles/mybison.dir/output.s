@@ -2403,12 +2403,12 @@ sort_actions:                           # @sort_actions
                                         #   Parent Loop BB16_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.h	$fp, $t6, 0
-	addi.w	$t7, $t7, 0
-	slli.d	$t7, $t7, 1
-	stx.h	$fp, $a0, $t7
-	addi.d	$t8, $t8, -1
+	addi.w	$s0, $t7, 0
 	move	$t7, $t5
-	addi.d	$t5, $t5, -1
+	slli.d	$t5, $s0, 1
+	stx.h	$fp, $a0, $t5
+	addi.d	$t8, $t8, -1
+	addi.d	$t5, $t7, -1
 	addi.d	$t6, $t6, -2
 	blt	$t4, $t8, .LBB16_17
 	b	.LBB16_2
@@ -4504,10 +4504,9 @@ matching_state:                         # @matching_state
 	ld.d	$a3, $a3, %pc_lo12(tally)
 	pcalau12i	$a4, %pc_hi20(width)
 	ld.d	$a5, $a4, %pc_lo12(width)
-	slli.d	$a4, $t2, 1
-	ldx.h	$a7, $a3, $a4
-	ldx.hu	$a6, $a5, $a4
-	ext.w.h	$a4, $a7
+	slli.d	$a6, $t2, 1
+	ldx.h	$a4, $a3, $a6
+	ldx.hu	$a6, $a5, $a6
 	blez	$a4, .LBB25_12
 # %bb.2:                                # %.split.us.preheader
 	blez	$a1, .LBB25_16

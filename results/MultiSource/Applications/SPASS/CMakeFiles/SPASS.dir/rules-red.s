@@ -7100,10 +7100,10 @@ red_SimpleStaticReductions:             # @red_SimpleStaticReductions
 	add.w	$s7, $a2, $a1
 	addi.w	$s8, $s7, -1
 	add.w	$s6, $s7, $a0
-	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
-	ld.d	$s2, $a0, %got_pc_lo12(fol_NOT)
 	bltz	$s8, .LBB20_16
 # %bb.3:                                # %.lr.ph15.split.preheader.i
+	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
+	ld.d	$s2, $a0, %got_pc_lo12(fol_NOT)
 	pcalau12i	$a0, %got_pc_hi20(fol_EQUALITY)
 	ld.d	$s3, $a0, %got_pc_lo12(fol_EQUALITY)
 	.p2align	4, , 16
@@ -7175,6 +7175,8 @@ red_SimpleStaticReductions:             # @red_SimpleStaticReductions
 	beqz	$a0, .LBB20_4
 	b	.LBB20_24
 .LBB20_16:                              # %.lr.ph15.split.us.preheader.i
+	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
+	ld.d	$s2, $a0, %got_pc_lo12(fol_NOT)
 	ld.w	$a1, $s2, 0
 	addi.d	$s3, $s7, 1
 	slli.d	$s5, $s7, 3
@@ -9326,11 +9328,13 @@ red_ContextualRewriting:                # @red_ContextualRewriting
 # %bb.50:                               #   in Loop: Header=BB23_20 Depth=5
 	ld.d	$s5, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB23_55
 .LBB23_51:                              #   in Loop: Header=BB23_20 Depth=5
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a1, .LBB23_67
 .LBB23_52:                              #   in Loop: Header=BB23_20 Depth=5
 	pcaddu18i	$ra, %call36(clause_Copy)
@@ -9636,8 +9640,7 @@ red_ContextualRewriting:                # @red_ContextualRewriting
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(unify_MatchBindings)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 16
+	ld.d	$a0, $s4, 16
 	ld.d	$a0, $a0, 0
 	ld.d	$s0, $s0, 0
 	ld.d	$a0, $a0, 8
@@ -9910,12 +9913,12 @@ red_SortSimplification:                 # @red_SortSimplification
 	ld.d	$a0, $a0, %got_pc_lo12(fol_NOT)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
-	ld.d	$s2, $a0, %got_pc_lo12(memory_ARRAY)
+	ld.d	$s3, $a0, %got_pc_lo12(memory_ARRAY)
 	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
 	move	$s6, $zero
 	st.d	$zero, $sp, 64                  # 8-byte Folded Spill
-	move	$s3, $s0
+	move	$s2, $s0
 	b	.LBB24_6
 	.p2align	4, , 16
 .LBB24_3:                               #   in Loop: Header=BB24_6 Depth=1
@@ -9942,7 +9945,7 @@ red_SortSimplification:                 # @red_SortSimplification
                                         #     Child Loop BB24_24 Depth 2
                                         #     Child Loop BB24_35 Depth 2
                                         #     Child Loop BB24_19 Depth 2
-	ld.d	$a0, $s3, 56
+	ld.d	$a0, $s2, 56
 	slli.d	$a1, $s6, 3
 	ldx.d	$a0, $a0, $a1
 	ld.d	$s8, $a0, 24
@@ -9960,7 +9963,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	ld.d	$a1, $a0, 8
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 	move	$a0, $s7
-	move	$a2, $s3
+	move	$a2, $s2
 	move	$a3, $s6
 	move	$a4, $s1
 	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
@@ -10000,7 +10003,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(clause_Print)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $s8, 0
@@ -10042,7 +10045,7 @@ red_SortSimplification:                 # @red_SortSimplification
 .LBB24_19:                              # %.lr.ph.i
                                         #   Parent Loop BB24_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s2, 128
+	ld.d	$a0, $s3, 128
 	ld.d	$a1, $s5, 0
 	ld.w	$a2, $a0, 32
 	pcalau12i	$a3, %got_pc_hi20(memory_FREEDBYTES)
@@ -10052,7 +10055,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	st.d	$a2, $a3, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $s5, 0
-	ld.d	$a0, $s2, 128
+	ld.d	$a0, $s3, 128
 	st.d	$s5, $a0, 0
 	move	$s5, $a1
 	bnez	$a1, .LBB24_19
@@ -10082,7 +10085,7 @@ red_SortSimplification:                 # @red_SortSimplification
 .LBB24_24:                              # %.lr.ph
                                         #   Parent Loop BB24_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bne	$s0, $s3, .LBB24_28
+	bne	$s0, $s2, .LBB24_28
 # %bb.25:                               #   in Loop: Header=BB24_24 Depth=2
 	bnez	$s4, .LBB24_27
 # %bb.26:                               #   in Loop: Header=BB24_24 Depth=2
@@ -10093,10 +10096,10 @@ red_SortSimplification:                 # @red_SortSimplification
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(clause_Copy)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s2, $a0
 .LBB24_28:                              #   in Loop: Header=BB24_24 Depth=2
 	ld.d	$a1, $fp, 8
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(clause_UpdateSplitDataFromPartner)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 72
@@ -10125,7 +10128,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 .LBB24_32:                              #   in Loop: Header=BB24_6 Depth=1
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $s6
 	move	$a2, $s1
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
@@ -10165,7 +10168,7 @@ red_SortSimplification:                 # @red_SortSimplification
 # %bb.40:
 	beqz	$s4, .LBB24_54
 # %bb.41:
-	ld.d	$a0, $s3, 32
+	ld.d	$a0, $s2, 32
 	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a0, .LBB24_44
 # %bb.42:                               # %.lr.ph.i.i.preheader
@@ -10174,7 +10177,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	.p2align	4, , 16
 .LBB24_43:                              # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $s2, 128
+	ld.d	$a2, $s3, 128
 	ld.w	$a3, $a2, 32
 	ld.d	$a4, $a1, 0
 	ld.d	$a5, $a0, 0
@@ -10182,12 +10185,12 @@ red_SortSimplification:                 # @red_SortSimplification
 	st.d	$a3, $a1, 0
 	ld.d	$a2, $a2, 0
 	st.d	$a2, $a0, 0
-	ld.d	$a2, $s2, 128
+	ld.d	$a2, $s3, 128
 	st.d	$a0, $a2, 0
 	move	$a0, $a5
 	bnez	$a5, .LBB24_43
 .LBB24_44:                              # %list_Delete.exit.i
-	ld.d	$a0, $s3, 40
+	ld.d	$a0, $s2, 40
 	beqz	$a0, .LBB24_47
 # %bb.45:                               # %.lr.ph.i33.i.preheader
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
@@ -10195,7 +10198,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	.p2align	4, , 16
 .LBB24_46:                              # %.lr.ph.i33.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $s2, 128
+	ld.d	$a2, $s3, 128
 	ld.w	$a3, $a2, 32
 	ld.d	$a4, $a1, 0
 	ld.d	$a5, $a0, 0
@@ -10203,7 +10206,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	st.d	$a3, $a1, 0
 	ld.d	$a2, $a2, 0
 	st.d	$a2, $a0, 0
-	ld.d	$a2, $s2, 128
+	ld.d	$a2, $s3, 128
 	st.d	$a0, $a2, 0
 	move	$a0, $a5
 	bnez	$a5, .LBB24_46
@@ -10215,12 +10218,12 @@ red_SortSimplification:                 # @red_SortSimplification
 	.p2align	4, , 16
 .LBB24_49:                              # %.lr.ph.i130
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$s2, $s3, 0
+	ld.w	$s3, $s2, 0
 	move	$s4, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $a0, 8
+	st.d	$s3, $a0, 8
 	st.d	$s4, $a0, 0
 	ld.d	$fp, $fp, 0
 	bnez	$fp, .LBB24_49
@@ -10254,7 +10257,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	.p2align	4, , 16
 .LBB24_56:                              # %.lr.ph.i134
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $s2, 128
+	ld.d	$a1, $s3, 128
 	ld.w	$a2, $a1, 32
 	ld.d	$a3, $a0, 0
 	ld.d	$a4, $a5, 0
@@ -10262,7 +10265,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	st.d	$a2, $a0, 0
 	ld.d	$a1, $a1, 0
 	st.d	$a1, $a5, 0
-	ld.d	$a1, $s2, 128
+	ld.d	$a1, $s3, 128
 	st.d	$a5, $a1, 0
 	move	$a5, $a4
 	bnez	$a4, .LBB24_56
@@ -10273,11 +10276,11 @@ red_SortSimplification:                 # @red_SortSimplification
 	move	$fp, $zero
 .LBB24_59:                              # %.lr.ph54.preheader.i
 	move	$a0, $zero
-	move	$s2, $s6
+	move	$s3, $s6
 	.p2align	4, , 16
 .LBB24_60:                              # %.lr.ph54.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $s2, 8
+	ld.d	$a1, $s3, 8
 	ld.w	$a2, $a1, 64
 	ld.w	$a1, $a1, 68
 	move	$s4, $a0
@@ -10287,11 +10290,11 @@ red_SortSimplification:                 # @red_SortSimplification
 	jirl	$ra, $ra, 0
 	st.d	$s5, $a0, 8
 	st.d	$s4, $a0, 0
-	ld.d	$a1, $s2, 8
+	ld.d	$a1, $s3, 8
 	ld.w	$a1, $a1, 0
-	st.d	$a1, $s2, 8
-	ld.d	$s2, $s2, 0
-	bnez	$s2, .LBB24_60
+	st.d	$a1, $s3, 8
+	ld.d	$s3, $s3, 0
+	bnez	$s3, .LBB24_60
 # %bb.61:                               # %._crit_edge.i
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	beqz	$a4, .LBB24_69
@@ -10307,7 +10310,7 @@ red_SortSimplification:                 # @red_SortSimplification
 	bnez	$a3, .LBB24_63
 # %bb.64:
 	st.d	$a1, $a2, 0
-	st.d	$a4, $s3, 40
+	st.d	$a4, $s2, 40
 	beqz	$a0, .LBB24_70
 .LBB24_65:                              # %.preheader.i41.i.preheader
 	move	$a2, $a0
@@ -10322,44 +10325,44 @@ red_SortSimplification:                 # @red_SortSimplification
 	b	.LBB24_72
 .LBB24_68:                              # %.thread86.i
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.d	$a1, $s3, 40
+	st.d	$a1, $s2, 40
 	b	.LBB24_72
 .LBB24_69:
 	move	$a4, $a0
 	move	$a0, $fp
-	st.d	$a4, $s3, 40
+	st.d	$a4, $s2, 40
 	bnez	$a0, .LBB24_65
 .LBB24_70:
 	move	$a0, $s6
 	b	.LBB24_72
 .LBB24_71:                              # %list_Nconc.exit.thread.i
 	move	$a0, $zero
-	st.d	$zero, $s3, 40
+	st.d	$zero, $s2, 40
 .LBB24_72:                              # %red_DocumentSortSimplification.exit
-	st.d	$a0, $s3, 32
+	st.d	$a0, $s2, 32
 	pcalau12i	$a0, %got_pc_hi20(clause_CLAUSECOUNTER)
 	ld.d	$a0, $a0, %got_pc_lo12(clause_CLAUSECOUNTER)
 	ld.w	$a1, $a0, 0
 	addi.d	$a2, $a1, 1
 	st.w	$a2, $a0, 0
-	st.w	$a1, $s3, 0
+	st.w	$a1, $s2, 0
 	ori	$a0, $zero, 20
-	st.w	$a0, $s3, 76
+	st.w	$a0, $s2, 76
 .LBB24_73:                              # %list_Delete.exit139
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(clause_Normalize)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $s1
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(clause_SetMaxLitFlags)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(clause_ComputeWeight)
 	jirl	$ra, $ra, 0
-	st.w	$a0, $s3, 4
-	move	$a0, $s3
+	st.w	$a0, $s2, 4
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(clause_UpdateMaxVar)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 72
@@ -10374,15 +10377,15 @@ red_SortSimplification:                 # @red_SortSimplification
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(clause_Print)
 	jirl	$ra, $ra, 0
 .LBB24_75:
 	ori	$a0, $zero, 1
-	beq	$s3, $s0, .LBB24_53
+	beq	$s2, $s0, .LBB24_53
 # %bb.76:
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	st.d	$s3, $a1, 0
+	st.d	$s2, $a1, 0
 	b	.LBB24_53
 .Lfunc_end24:
 	.size	red_SortSimplification, .Lfunc_end24-red_SortSimplification
@@ -12632,9 +12635,8 @@ red_CRwTautologyCheck:                  # @red_CRwTautologyCheck
 	move	$a0, $a1
 .LBB30_34:                              # %list_Nconc.exit158
                                         #   in Loop: Header=BB30_37 Depth=1
-	addi.d	$a1, $s3, 32
 	st.d	$a0, $s6, 40
-	vst	$vr0, $a1, 0
+	vst	$vr0, $s3, 32
 .LBB30_35:                              #   in Loop: Header=BB30_37 Depth=1
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(clause_Delete)
@@ -13704,37 +13706,32 @@ red_DocumentMatchingReplacementResolution: # @red_DocumentMatchingReplacementRes
 	move	$s2, $a2
 	move	$s0, $a1
 	move	$fp, $a0
-	beqz	$a1, .LBB32_4
+	move	$a0, $zero
+	beqz	$a1, .LBB32_3
 # %bb.1:                                # %.lr.ph.preheader
-	move	$s4, $zero
 	move	$s3, $s0
 	.p2align	4, , 16
 .LBB32_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$s5, $fp, 0
+	ld.w	$s4, $fp, 0
+	move	$s5, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $a0, 8
-	st.d	$s4, $a0, 0
+	st.d	$s4, $a0, 8
+	st.d	$s5, $a0, 0
 	ld.d	$s3, $s3, 0
-	move	$s4, $a0
 	bnez	$s3, .LBB32_2
-# %bb.3:                                # %._crit_edge
+.LBB32_3:                               # %._crit_edge
 	ld.d	$a1, $fp, 32
-	bnez	$a1, .LBB32_5
-	b	.LBB32_7
-.LBB32_4:
-	move	$a0, $zero
-	ld.d	$a1, $fp, 32
-	beqz	$a1, .LBB32_7
-.LBB32_5:                               # %.lr.ph.i.preheader
+	beqz	$a1, .LBB32_6
+# %bb.4:                                # %.lr.ph.i.preheader
 	pcalau12i	$a2, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a2, $a2, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a3, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$a3, $a3, %got_pc_lo12(memory_FREEDBYTES)
 	.p2align	4, , 16
-.LBB32_6:                               # %.lr.ph.i
+.LBB32_5:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 128
 	ld.w	$a5, $a4, 32
@@ -13747,17 +13744,17 @@ red_DocumentMatchingReplacementResolution: # @red_DocumentMatchingReplacementRes
 	ld.d	$a4, $a2, 128
 	st.d	$a1, $a4, 0
 	move	$a1, $a7
-	bnez	$a7, .LBB32_6
-.LBB32_7:                               # %list_Delete.exit
+	bnez	$a7, .LBB32_5
+.LBB32_6:                               # %list_Delete.exit
 	ld.d	$a1, $fp, 40
-	beqz	$a1, .LBB32_10
-# %bb.8:                                # %.lr.ph.i19.preheader
+	beqz	$a1, .LBB32_9
+# %bb.7:                                # %.lr.ph.i19.preheader
 	pcalau12i	$a2, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a2, $a2, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a3, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$a3, $a3, %got_pc_lo12(memory_FREEDBYTES)
 	.p2align	4, , 16
-.LBB32_9:                               # %.lr.ph.i19
+.LBB32_8:                               # %.lr.ph.i19
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 128
 	ld.w	$a5, $a4, 32
@@ -13770,44 +13767,44 @@ red_DocumentMatchingReplacementResolution: # @red_DocumentMatchingReplacementRes
 	ld.d	$a4, $a2, 128
 	st.d	$a1, $a4, 0
 	move	$a1, $a7
-	bnez	$a7, .LBB32_9
-.LBB32_10:                              # %list_Delete.exit23
-	beqz	$a0, .LBB32_20
-# %bb.11:
-	beqz	$s2, .LBB32_15
-# %bb.12:                               # %.preheader.i.preheader
+	bnez	$a7, .LBB32_8
+.LBB32_9:                               # %list_Delete.exit23
+	beqz	$a0, .LBB32_19
+# %bb.10:
+	beqz	$s2, .LBB32_14
+# %bb.11:                               # %.preheader.i.preheader
 	move	$a2, $a0
 	.p2align	4, , 16
-.LBB32_13:                              # %.preheader.i
+.LBB32_12:                              # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a2
 	ld.d	$a2, $a2, 0
-	bnez	$a2, .LBB32_13
-# %bb.14:
+	bnez	$a2, .LBB32_12
+# %bb.13:
 	st.d	$s2, $a1, 0
-.LBB32_15:                              # %list_Nconc.exit
+.LBB32_14:                              # %list_Nconc.exit
 	st.d	$a0, $fp, 32
-	beqz	$s0, .LBB32_21
-.LBB32_16:
-	beqz	$s1, .LBB32_22
-# %bb.17:                               # %.preheader.i27.preheader
+	beqz	$s0, .LBB32_20
+.LBB32_15:
+	beqz	$s1, .LBB32_21
+# %bb.16:                               # %.preheader.i27.preheader
 	move	$a1, $s0
 	.p2align	4, , 16
-.LBB32_18:                              # %.preheader.i27
+.LBB32_17:                              # %.preheader.i27
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $a1
 	ld.d	$a1, $a1, 0
-	bnez	$a1, .LBB32_18
-# %bb.19:
+	bnez	$a1, .LBB32_17
+# %bb.18:
 	st.d	$s1, $a0, 0
-	b	.LBB32_22
-.LBB32_20:
+	b	.LBB32_21
+.LBB32_19:
 	move	$a0, $s2
 	st.d	$a0, $fp, 32
-	bnez	$s0, .LBB32_16
-.LBB32_21:
+	bnez	$s0, .LBB32_15
+.LBB32_20:
 	move	$s0, $s1
-.LBB32_22:                              # %list_Nconc.exit32
+.LBB32_21:                              # %list_Nconc.exit32
 	st.d	$s0, $fp, 40
 	pcalau12i	$a0, %got_pc_hi20(clause_CLAUSECOUNTER)
 	ld.d	$a0, $a0, %got_pc_lo12(clause_CLAUSECOUNTER)

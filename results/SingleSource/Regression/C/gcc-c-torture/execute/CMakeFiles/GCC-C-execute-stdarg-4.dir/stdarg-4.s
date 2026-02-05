@@ -13,10 +13,10 @@ f1:                                     # @f1
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
-	fld.d	$fa0, $sp, 24
-	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a0, $fa0
-	fld.d	$fa0, $sp, 40
+	movgr2fr.d	$fa0, $a3
+	movgr2fr.d	$fa1, $a1
+	ftintrz.l.d	$fa1, $fa1
+	movfr2gr.d	$a0, $fa1
 	add.d	$a0, $a2, $a0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
@@ -43,18 +43,18 @@ f2:                                     # @f2
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
 	ld.w	$a0, $sp, 24
-	fld.d	$fa0, $sp, 40
+	movgr2fr.d	$fa0, $a6
+	movgr2fr.d	$fa1, $a4
+	movgr2fr.d	$fa2, $a3
 	add.d	$a0, $a2, $a0
-	movgr2fr.d	$fa1, $a0
-	ffint.d.l	$fa1, $fa1
-	fadd.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $sp, 48
-	ftintrz.l.d	$fa0, $fa0
+	movgr2fr.d	$fa3, $a0
+	ffint.d.l	$fa3, $fa3
+	fadd.d	$fa2, $fa2, $fa3
+	ftintrz.l.d	$fa2, $fa2
 	pcalau12i	$a0, %pc_hi20(y)
-	fst.d	$fa0, $a0, %pc_lo12(y)
-	ftintrz.l.d	$fa0, $fa1
-	movfr2gr.d	$a0, $fa0
-	fld.d	$fa0, $sp, 64
+	fst.d	$fa2, $a0, %pc_lo12(y)
+	ftintrz.l.d	$fa1, $fa1
+	movfr2gr.d	$a0, $fa1
 	add.d	$a0, $a5, $a0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1

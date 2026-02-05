@@ -3964,77 +3964,74 @@ _GLOBAL__sub_I_RawSubsetAbenchmarks.cxx: # @_GLOBAL__sub_I_RawSubsetAbenchmarks.
 .LBB7_53:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i19
 .Ltmp65:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_65
+	b	.LBB7_67
 .LBB7_54:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i10
 .Ltmp49:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_65
+	b	.LBB7_67
 .LBB7_55:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
 .Ltmp33:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_65
+	b	.LBB7_67
 .LBB7_56:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp17:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_65
+	b	.LBB7_67
 .LBB7_57:
 .Ltmp104:                               # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_59
-# %bb.58:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i35
-	bnez	$s2, .LBB7_65
-	b	.LBB7_66
-.LBB7_59:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i34
+	beq	$a1, $s3, .LBB7_59
+# %bb.58:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i34
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	bnez	$s2, .LBB7_65
-	b	.LBB7_66
+.LBB7_59:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i35
+	bnez	$s2, .LBB7_67
+	b	.LBB7_68
 .LBB7_60:
 .Ltmp91:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_64
-	b	.LBB7_68
+	bne	$a1, $s3, .LBB7_65
+	b	.LBB7_66
 .LBB7_61:
 .Ltmp78:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_64
-	b	.LBB7_68
+	bne	$a1, $s3, .LBB7_65
+	b	.LBB7_66
 .LBB7_62:
 .Ltmp62:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_64
-	b	.LBB7_68
+	bne	$a1, $s3, .LBB7_65
+	b	.LBB7_66
 .LBB7_63:
 .Ltmp46:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	beq	$a1, $s3, .LBB7_68
-.LBB7_64:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZdlPv)
-	jirl	$ra, $ra, 0
-	beqz	$s5, .LBB7_66
-.LBB7_65:                               # %common.resume.sink.split
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZdlPv)
-	jirl	$ra, $ra, 0
-.LBB7_66:                               # %common.resume
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB7_67:
+	bne	$a1, $s3, .LBB7_65
+	b	.LBB7_66
+.LBB7_64:
 .Ltmp30:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_64
-.LBB7_68:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s5, .LBB7_66
-	b	.LBB7_65
+	beq	$a1, $s3, .LBB7_66
+.LBB7_65:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+.LBB7_66:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s5, .LBB7_68
+.LBB7_67:                               # %common.resume.sink.split
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+.LBB7_68:                               # %common.resume
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
 .Lfunc_end7:
 	.size	_GLOBAL__sub_I_RawSubsetAbenchmarks.cxx, .Lfunc_end7-_GLOBAL__sub_I_RawSubsetAbenchmarks.cxx
 	.cfi_endproc

@@ -9,22 +9,20 @@ _ZN8NArchive3N7z15CFolderInStreamC2Ev:  # @_ZN8NArchive3N7z15CFolderInStreamC2Ev
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a0
 	st.w	$zero, $a0, 16
 	pcalau12i	$a0, %pc_hi20(_ZTVN8NArchive3N7z15CFolderInStreamE)
@@ -33,7 +31,6 @@ _ZN8NArchive3N7z15CFolderInStreamC2Ev:  # @_ZN8NArchive3N7z15CFolderInStreamC2Ev
 	st.d	$a1, $fp, 0
 	addi.d	$a0, $a0, 88
 	st.d	$a0, $fp, 8
-	addi.d	$s4, $fp, 32
 	addi.d	$s0, $fp, 88
 	vrepli.b	$vr0, 0
 	vst	$vr0, $fp, 96
@@ -77,7 +74,7 @@ _ZN8NArchive3N7z15CFolderInStreamC2Ev:  # @_ZN8NArchive3N7z15CFolderInStreamC2Ev
 	jirl	$ra, $a2, 0
 .Ltmp3:                                 # EH_LABEL
 # %bb.2:                                # %.noexc
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $fp, 32
 	beqz	$a0, .LBB0_4
 # %bb.3:
 	ld.d	$a1, $a0, 0
@@ -86,15 +83,14 @@ _ZN8NArchive3N7z15CFolderInStreamC2Ev:  # @_ZN8NArchive3N7z15CFolderInStreamC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp5:                                 # EH_LABEL
 .LBB0_4:
-	st.d	$s3, $s4, 0
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	st.d	$s3, $fp, 32
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB0_5:
 .Ltmp6:                                 # EH_LABEL
@@ -117,7 +113,7 @@ _ZN8NArchive3N7z15CFolderInStreamC2Ev:  # @_ZN8NArchive3N7z15CFolderInStreamC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp8:                                 # EH_LABEL
 .LBB0_7:                                # %_ZN9CMyComPtrI22IArchiveUpdateCallbackED2Ev.exit
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $fp, 32
 	beqz	$a0, .LBB0_9
 # %bb.8:
 	ld.d	$a1, $a0, 0

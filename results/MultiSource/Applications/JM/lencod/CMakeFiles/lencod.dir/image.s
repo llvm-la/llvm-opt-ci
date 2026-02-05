@@ -3148,7 +3148,7 @@ encode_one_frame:                       # @encode_one_frame
 	b	.LBB2_318
 .LBB2_326:                              # %._crit_edge134.i
 	ldptr.w	$a3, $s3, 15536
-	move	$s0, $zero
+	move	$s7, $zero
 	beqz	$a3, .LBB2_343
 # %bb.327:                              # %._crit_edge134.i
 	blez	$s6, .LBB2_343
@@ -3164,8 +3164,8 @@ encode_one_frame:                       # @encode_one_frame
 	ld.d	$a5, $a5, 8
 	ld.d	$a7, $a7, 8
 	move	$t0, $zero
-	move	$s7, $zero
 	move	$s0, $zero
+	move	$s7, $zero
 	.p2align	4, , 16
 .LBB2_330:                              # %.preheader.us.i174
                                         # =>This Loop Header: Depth=1
@@ -3193,8 +3193,8 @@ encode_one_frame:                       # @encode_one_frame
 	ldx.w	$t7, $a3, $t7
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $a3, $t8
-	add.d	$s7, $s7, $t7
-	add.d	$s0, $s0, $t8
+	add.d	$s0, $s0, $t7
+	add.d	$s7, $s7, $t8
 	addi.d	$t6, $t6, -1
 	addi.d	$t5, $t5, 8
 	addi.d	$t4, $t4, 8
@@ -3210,7 +3210,7 @@ encode_one_frame:                       # @encode_one_frame
 	move	$a2, $zero
 .LBB2_334:                              # %._crit_edge115.i
 	ldptr.w	$a3, $s3, 15536
-	move	$s0, $zero
+	move	$s7, $zero
 	beqz	$a3, .LBB2_343
 .LBB2_335:                              # %._crit_edge115.i
 	blez	$s6, .LBB2_343
@@ -3227,8 +3227,8 @@ encode_one_frame:                       # @encode_one_frame
 	ld.d	$a6, $a6, 8
 	ld.d	$a7, $a7, 8
 	move	$t0, $zero
-	move	$s7, $zero
 	move	$s0, $zero
+	move	$s7, $zero
 	.p2align	4, , 16
 .LBB2_338:                              # %.preheader106.us.i
                                         # =>This Loop Header: Depth=1
@@ -3256,8 +3256,8 @@ encode_one_frame:                       # @encode_one_frame
 	ldx.w	$t7, $a3, $t7
 	slli.d	$t8, $t8, 2
 	ldx.w	$t8, $a3, $t8
-	add.d	$s7, $s7, $t7
-	add.d	$s0, $s0, $t8
+	add.d	$s0, $s0, $t7
+	add.d	$s7, $s7, $t8
 	addi.d	$t6, $t6, -1
 	addi.d	$t5, $t5, 8
 	addi.d	$t4, $t4, 8
@@ -3280,20 +3280,20 @@ encode_one_frame:                       # @encode_one_frame
 .LBB2_342:
 	move	$a2, $zero
 	ldptr.w	$a3, $s3, 15536
-	move	$s0, $zero
+	move	$s7, $zero
 	bnez	$a3, .LBB2_335
 .LBB2_343:
-	move	$s7, $s0
+	move	$s0, $s7
 .LBB2_344:                              # %.loopexit104.i
 	ld.d	$a3, $sp, 312                   # 8-byte Folded Reload
 	ld.d	$s8, $a3, 0
 	movgr2fr.d	$fa0, $a2
 	ffint.s.l	$fs3, $fa0
 	fst.s	$fs3, $s8, 96
-	movgr2fr.d	$fa0, $s7
+	movgr2fr.d	$fa0, $s0
 	ffint.s.l	$fs1, $fa0
 	fst.s	$fs1, $s8, 100
-	movgr2fr.d	$fa0, $s0
+	movgr2fr.d	$fa0, $s7
 	ffint.s.l	$fs0, $fa0
 	fst.s	$fs0, $s8, 104
 	ori	$fp, $zero, 1
@@ -3322,13 +3322,13 @@ encode_one_frame:                       # @encode_one_frame
 	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a0
 	mul.d	$a1, $s6, $s5
-	sltu	$a2, $fp, $s0
-	masknez	$a3, $fp, $a2
-	maskeqz	$a2, $s0, $a2
-	or	$s0, $a2, $a3
 	sltu	$a2, $fp, $s7
 	masknez	$a3, $fp, $a2
 	maskeqz	$a2, $s7, $a2
+	or	$s1, $a2, $a3
+	sltu	$a2, $fp, $s0
+	masknez	$a3, $fp, $a2
+	maskeqz	$a2, $s0, $a2
 	or	$a2, $a2, $a3
 	bstrpick.d	$a0, $a0, 31, 0
 	movgr2fr.d	$fa0, $a0
@@ -3344,7 +3344,7 @@ encode_one_frame:                       # @encode_one_frame
 	vldi	$vr1, -988
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fs4, $fa0
-	movgr2fr.d	$fa0, $s0
+	movgr2fr.d	$fa0, $s1
 	ffint.d.l	$fa0, $fa0
 	fdiv.d	$fa0, $fs6, $fa0
 	fmul.d	$fa0, $fa0, $fs5
@@ -7432,12 +7432,11 @@ copy_rdopt_data:                        # @copy_rdopt_data
 	lu32i.d	$a1, 0
 	and	$a1, $s4, $a1
 	addi.w	$a1, $a1, 0
-	ori	$a3, $zero, 9
-	addi.d	$a2, $s7, 332
-	bne	$a1, $a3, .LBB13_16
+	ori	$a2, $zero, 9
+	bne	$a1, $a2, .LBB13_16
 # %bb.14:                               # %.lr.ph196.preheader
 	vld	$vr0, $a0, 1608
-	vst	$vr0, $a2, 0
+	vst	$vr0, $s7, 332
 	ld.d	$a0, $s3, %pc_lo12(rdopt)
 	vld	$vr0, $a0, 1624
 	vst	$vr0, $s7, 348
@@ -7468,8 +7467,8 @@ copy_rdopt_data:                        # @copy_rdopt_data
 	ori	$a1, $a0, 514
 	move	$a0, $a1
 	bstrins.d	$a0, $a1, 57, 32
-	st.d	$a0, $a2, 8
-	st.d	$a0, $a2, 0
+	st.d	$a0, $s7, 340
+	st.d	$a0, $s7, 332
 	ld.d	$a0, $s6, 0
 	ld.w	$a3, $a0, 172
 	addi.d	$a2, $a3, -1

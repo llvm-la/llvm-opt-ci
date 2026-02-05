@@ -101,19 +101,19 @@ sort_GetSymbolsFromSort:                # @sort_GetSymbolsFromSort
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
-	move	$s0, $zero
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $fp, 8
-	ld.w	$s1, $a0, 32
+	ld.d	$a1, $fp, 8
+	ld.w	$s0, $a1, 32
+	move	$s1, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $a0, 8
-	st.d	$s0, $a0, 0
+	st.d	$s0, $a0, 8
+	st.d	$s1, $a0, 0
 	ld.d	$fp, $fp, 0
-	move	$s0, $a0
 	bnez	$fp, .LBB2_2
 # %bb.3:
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
@@ -4874,17 +4874,17 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s6, $a0, 8
-	st.d	$s5, $a0, 0
-	ld.d	$t0, $s0, 8
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	beqz	$t0, .LBB31_54
+	st.d	$s5, $a0, 0
+	ld.d	$a7, $s0, 8
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	beqz	$a7, .LBB31_54
 # %bb.35:                               # %.lr.ph171.outer.preheader
                                         #   in Loop: Header=BB31_29 Depth=1
 	move	$a2, $zero
 	ori	$a3, $zero, 1
 	ori	$a1, $zero, 1
-	move	$a7, $t0
+	move	$a0, $a7
 	ld.d	$a6, $sp, 24                    # 8-byte Folded Reload
 .LBB31_36:                              # %.lr.ph171.outer
                                         #   Parent Loop BB31_29 Depth=1
@@ -4900,25 +4900,25 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	and	$a4, $a4, $a3
 	bnez	$a4, .LBB31_27
 # %bb.38:                               #   in Loop: Header=BB31_37 Depth=3
-	ld.d	$a4, $a7, 8
+	ld.d	$a4, $a0, 8
 	ld.w	$a5, $a4, 8
 	bne	$a5, $a6, .LBB31_40
 # %bb.39:                               #   in Loop: Header=BB31_37 Depth=3
 	ld.w	$a4, $a4, 12
-	ld.d	$a7, $a7, 0
+	ld.d	$a0, $a0, 0
 	xor	$a4, $a4, $a6
 	sltui	$a4, $a4, 1
 	maskeqz	$a1, $a1, $a4
-	bnez	$a7, .LBB31_37
+	bnez	$a0, .LBB31_37
 	b	.LBB31_52
 	.p2align	4, , 16
 .LBB31_40:                              # %.thread
                                         #   in Loop: Header=BB31_36 Depth=2
-	ld.d	$a7, $a7, 0
+	ld.d	$a0, $a0, 0
 	move	$a3, $zero
 	move	$a1, $zero
 	ori	$a2, $zero, 1
-	bnez	$a7, .LBB31_36
+	bnez	$a0, .LBB31_36
 	b	.LBB31_27
 	.p2align	4, , 16
 .LBB31_41:                              # %.loopexit.i131
@@ -4998,14 +4998,14 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	b	.LBB31_46
 .LBB31_52:                              # %.critedge
                                         #   in Loop: Header=BB31_29 Depth=1
-	andi	$a2, $a2, 1
-	bnez	$a2, .LBB31_27
+	andi	$a0, $a2, 1
+	bnez	$a0, .LBB31_27
 # %bb.53:                               #   in Loop: Header=BB31_29 Depth=1
 	beqz	$a1, .LBB31_55
 	.p2align	4, , 16
 .LBB31_54:                              # %.thread218
                                         #   in Loop: Header=BB31_29 Depth=1
-	move	$a0, $t0
+	move	$a0, $a7
 	pcaddu18i	$ra, %call36(list_Copy)
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $s0, 0
@@ -5057,11 +5057,11 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	st.d	$s1, $a0, 8
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
-	ld.d	$t0, $s0, 8
+	ld.d	$a7, $s0, 8
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 .LBB31_55:                              #   in Loop: Header=BB31_29 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	beqz	$t0, .LBB31_27
+	beqz	$a7, .LBB31_27
 # %bb.56:                               # %.lr.ph185
                                         #   in Loop: Header=BB31_29 Depth=1
 	ldptr.d	$s2, $a0, 32008
@@ -5077,11 +5077,11 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB31_63 Depth 3
                                         #         Child Loop BB31_68 Depth 4
-	st.d	$t0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 80                    # 8-byte Folded Spill
 	beqz	$s2, .LBB31_70
 # %bb.59:                               # %.lr.ph178.preheader
                                         #   in Loop: Header=BB31_58 Depth=2
-	ld.d	$s6, $t0, 8
+	ld.d	$s6, $a7, 8
 	b	.LBB31_63
 .LBB31_60:                              #   in Loop: Header=BB31_63 Depth=3
 	move	$s1, $a1
@@ -5195,9 +5195,9 @@ sort_TheoryComputeAllSubsortHits:       # @sort_TheoryComputeAllSubsortHits
 	.p2align	4, , 16
 .LBB31_70:                              # %.loopexit
                                         #   in Loop: Header=BB31_58 Depth=2
-	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$t0, $t0, 0
-	bnez	$t0, .LBB31_57
+	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a7, $a7, 0
+	bnez	$a7, .LBB31_57
 	b	.LBB31_26
 .LBB31_71:                              #   in Loop: Header=BB31_29 Depth=1
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
@@ -6505,10 +6505,10 @@ sort_ApproxPseudoLinear:                # @sort_ApproxPseudoLinear
 	beqz	$a0, .LBB35_9
 # %bb.1:                                # %.lr.ph42
 	move	$s0, $a0
-	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
-	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)
 	beqz	$s5, .LBB35_10
 # %bb.2:                                # %.lr.ph.preheader
+	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
+	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s6, $a0, %got_pc_lo12(memory_FREEDBYTES)
@@ -6585,6 +6585,8 @@ sort_ApproxPseudoLinear:                # @sort_ApproxPseudoLinear
 	move	$s4, $zero
 	b	.LBB35_15
 .LBB35_10:                              # %.lr.ph42.split.us.preheader
+	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
+	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_FREEDBYTES)
 	move	$a2, $s0

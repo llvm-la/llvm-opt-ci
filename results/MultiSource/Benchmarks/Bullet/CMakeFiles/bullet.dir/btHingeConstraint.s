@@ -3991,24 +3991,21 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	fcmp.cor.s	$fcc0, $fa0, $fa0
 	bceqz	$fcc0, .LBB22_6
 .LBB22_2:                               # %.split
-	fld.s	$fa1, $a0, 36
-	fld.s	$fa2, $a0, 24
-	fld.s	$fa3, $a0, 8
-	fld.s	$fa4, $a0, 32
-	fsub.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $a0, 16
-	fld.s	$fa5, $a0, 4
+	vldi	$vr2, -1184
+	fmul.s	$fa1, $fa0, $fa2
+	fld.s	$fa3, $a0, 36
+	fld.s	$fa4, $a0, 24
+	fdiv.s	$fa5, $fa2, $fa0
+	fld.s	$fa0, $a0, 8
+	fld.s	$fa2, $a0, 32
 	fsub.s	$fa3, $fa3, $fa4
-	vldi	$vr4, -1184
-	fdiv.s	$fa4, $fa4, $fa0
-	fsub.s	$fa2, $fa2, $fa5
-	vextrins.w	$vr4, $vr0, 16
-	vshuf4i.w	$vr0, $vr4, 64
-	vldi	$vr4, -3265
-	vextrins.w	$vr4, $vr1, 0
-	vextrins.w	$vr4, $vr3, 16
-	vextrins.w	$vr4, $vr2, 32
-	vfmul.s	$vr0, $vr0, $vr4
+	fld.s	$fa4, $a0, 16
+	fld.s	$fa6, $a0, 4
+	fsub.s	$fa2, $fa0, $fa2
+	fmul.s	$fa0, $fa5, $fa3
+	fmul.s	$fa2, $fa5, $fa2
+	fsub.s	$fa3, $fa4, $fa6
+	fmul.s	$fa3, $fa5, $fa3
 	b	.LBB22_5
 .LBB22_3:
 	fcmp.clt.s	$fcc0, $fa2, $fa1
@@ -4051,11 +4048,10 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 .LBB22_4:                               # %.split47
 	vldi	$vr1, -1184
 	fmul.s	$fa2, $fa0, $fa1
-	addi.d	$a0, $sp, 16
 	fldx.s	$fa3, $s3, $s0
 	fldx.s	$fa4, $s4, $s2
-	or	$a2, $a0, $s1
-	fst.s	$fa2, $a2, 0
+	addi.d	$a0, $sp, 16
+	fstx.s	$fa2, $s1, $a0
 	fdiv.s	$fa0, $fa1, $fa0
 	fsub.s	$fa1, $fa3, $fa4
 	fmul.s	$fa1, $fa0, $fa1
@@ -4070,9 +4066,15 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	fadd.s	$fa1, $fa1, $fa4
 	fmul.s	$fa0, $fa0, $fa1
 	fstx.s	$fa0, $s2, $a0
-	vld	$vr0, $sp, 16
+	fld.s	$fa0, $sp, 16
+	fld.s	$fa2, $sp, 20
+	fld.s	$fa3, $sp, 24
+	fld.s	$fa1, $sp, 28
 .LBB22_5:
-	vst	$vr0, $a1, 0
+	fst.s	$fa0, $a1, 0
+	fst.s	$fa2, $a1, 4
+	fst.s	$fa3, $a1, 8
+	fst.s	$fa1, $a1, 12
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
@@ -4091,7 +4093,6 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
 	move	$a1, $fp
-                                        # kill: def $f0 killed $f0 def $vr0
 	b	.LBB22_2
 .LBB22_7:                               # %call.sqrt48
 	fmov.s	$fa0, $fa1

@@ -95,14 +95,14 @@ expr_global:                            # @expr_global
 	preld	0, $a1, 0
 	preld	0, $a0, 4
 	preld	0, $a1, 4
+	ld.d	$a2, $a0, 16
+	ld.d	$a3, $a1, 16
 	preld	0, $a0, 8
 	preld	0, $a1, 8
-	ld.d	$a0, $a0, 16
-	preld	0, $a0, 0
-	ld.d	$a1, $a1, 16
-	preld	0, $a1, 0
-	preld	0, $a0, 8
-	preld	0, $a1, 8
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a2, 8
+	preld	0, $a3, 8
 	pcalau12i	$a0, %pc_hi20(glob_int_arr)
 	addi.d	$a0, $a0, %pc_lo12(glob_int_arr)
 	pcalau12i	$a1, %pc_hi20(glob_ptr_int)

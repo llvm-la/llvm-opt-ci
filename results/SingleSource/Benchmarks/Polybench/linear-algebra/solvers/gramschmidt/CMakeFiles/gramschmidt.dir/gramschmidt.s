@@ -432,7 +432,7 @@ main:                                   # @main
 	fstx.d	$fa1, $s2, $a1
 	bnez	$t6, .LBB7_19
 	.p2align	4, , 16
-.LBB7_22:                               # %vector.body55.preheader
+.LBB7_22:                               # %vector.ph54
                                         #   in Loop: Header=BB7_15 Depth=1
 	xvldrepl.d	$xr0, $a0, 0
 	ori	$a0, $s7, 2816
@@ -534,7 +534,7 @@ main:                                   # @main
 	bnez	$a6, .LBB7_31
 	b	.LBB7_26
 	.p2align	4, , 16
-.LBB7_32:                               # %vector.body37.preheader
+.LBB7_32:                               # %vector.ph36
                                         #   in Loop: Header=BB7_27 Depth=2
 	xvldrepl.d	$xr0, $a4, 0
 	move	$a4, $zero

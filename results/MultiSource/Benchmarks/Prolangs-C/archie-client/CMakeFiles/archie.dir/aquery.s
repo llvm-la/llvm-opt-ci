@@ -53,194 +53,10 @@ archie_query:                           # @archie_query
 	move	$a6, $zero
 	pcaddu18i	$ra, %call36(get_vdir)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_2
+	beqz	$a0, .LBB0_3
 # %bb.1:
 	move	$fp, $zero
-	b	.LBB0_35
-.LBB0_2:
-	ld.d	$fp, $sp, 48
-	st.d	$zero, $sp, 48
-	beqz	$fp, .LBB0_31
-# %bb.3:                                # %.lr.ph.preheader
-	sltui	$a0, $s1, 1
-	masknez	$a1, $s1, $a0
-	pcalau12i	$a2, %pc_hi20(defcmplink)
-	addi.d	$a2, $a2, %pc_lo12(defcmplink)
-	maskeqz	$a0, $a2, $a0
-	or	$s7, $a0, $a1
-	move	$a0, $fp
-	b	.LBB0_5
-	.p2align	4, , 16
-.LBB0_4:                                #   in Loop: Header=BB0_5 Depth=1
-	move	$a0, $a1
-	beqz	$a1, .LBB0_9
-.LBB0_5:                                # %.lr.ph
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_7 Depth 2
-	ld.d	$a2, $a0, 40
-	ld.d	$a1, $a0, 152
-	beqz	$a2, .LBB0_4
-# %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	st.d	$a2, $a0, 152
-	st.d	$a0, $a2, 144
-	.p2align	4, , 16
-.LBB0_7:                                #   Parent Loop BB0_5 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	move	$a3, $a2
-	ld.d	$a2, $a2, 152
-	bnez	$a2, .LBB0_7
-# %bb.8:                                #   in Loop: Header=BB0_5 Depth=1
-	st.d	$a1, $a3, 152
-	st.d	$a3, $a1, 144
-	st.d	$zero, $a0, 40
-	b	.LBB0_4
-.LBB0_9:                                # %._crit_edge
-	andi	$a0, $s0, 2
-	bnez	$a0, .LBB0_17
-# %bb.10:                               # %.lr.ph112.preheader
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.3)
-	pcalau12i	$a0, %pc_hi20(.L.str.4)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.4)
-	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.5)
-	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$s4, $a0, %pc_lo12(.L.str.1)
-	move	$s8, $fp
-	b	.LBB0_13
-.LBB0_11:                               #   in Loop: Header=BB0_13 Depth=1
-	move	$s5, $a0
-	pcaddu18i	$ra, %call36(stcopyr)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $s8, 72
-	st.b	$zero, $s5, 0
-	.p2align	4, , 16
-.LBB0_12:                               # %translateArchieResponse.exit
-                                        #   in Loop: Header=BB0_13 Depth=1
-	ld.d	$s8, $s8, 152
-	beqz	$s8, .LBB0_17
-.LBB0_13:                               # %.lr.ph112
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$s5, $s8, 24
-	move	$a0, $s5
-	move	$a1, $s1
-	pcaddu18i	$ra, %call36(strcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_12
-# %bb.14:                               #   in Loop: Header=BB0_13 Depth=1
-	ld.d	$a0, $s8, 72
-	ori	$a2, $zero, 11
-	move	$a1, $s2
-	pcaddu18i	$ra, %call36(strncmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_12
-# %bb.15:                               #   in Loop: Header=BB0_13 Depth=1
-	move	$a0, $s3
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(stcopyr)
-	jirl	$ra, $ra, 0
-	ld.d	$a2, $s8, 72
-	ld.d	$a1, $s8, 56
-	st.d	$a0, $s8, 24
-	addi.d	$a0, $a2, 12
-	pcaddu18i	$ra, %call36(stcopyr)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $s8, 56
-	ori	$a1, $zero, 47
-	pcaddu18i	$ra, %call36(strchr)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $s8, 72
-	bnez	$a0, .LBB0_11
-# %bb.16:                               #   in Loop: Header=BB0_13 Depth=1
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(stcopyr)
-	jirl	$ra, $ra, 0
-	st.d	$a0, $s8, 72
-	b	.LBB0_12
-.LBB0_17:                               # %.loopexit
-	andi	$a1, $s0, 1
-	bnez	$a1, .LBB0_32
-# %bb.18:
-	move	$s3, $fp
-	b	.LBB0_21
-	.p2align	4, , 16
-.LBB0_19:                               #   in Loop: Header=BB0_21 Depth=1
-	st.d	$a0, $s0, 144
-	xor	$a0, $fp, $s3
-	sltui	$a0, $a0, 1
-	masknez	$a1, $fp, $a0
-	maskeqz	$a0, $s0, $a0
-	or	$fp, $a0, $a1
-.LBB0_20:                               #   in Loop: Header=BB0_21 Depth=1
-	move	$s3, $s2
-	beqz	$s2, .LBB0_34
-.LBB0_21:                               # %.lr.ph122
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_23 Depth 2
-	ld.d	$s2, $s3, 152
-	move	$s0, $s3
-	beqz	$s2, .LBB0_24
-# %bb.22:                               # %.lr.ph117.preheader
-                                        #   in Loop: Header=BB0_21 Depth=1
-	move	$s0, $s3
-	move	$s1, $s2
-	.p2align	4, , 16
-.LBB0_23:                               # %.lr.ph117
-                                        #   Parent Loop BB0_21 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	move	$a0, $s1
-	move	$a1, $s0
-	jirl	$ra, $s7, 0
-	slti	$a0, $a0, 0
-	maskeqz	$a1, $s1, $a0
-	ld.d	$s1, $s1, 152
-	masknez	$a0, $s0, $a0
-	or	$s0, $a1, $a0
-	bnez	$s1, .LBB0_23
-.LBB0_24:                               # %._crit_edge118
-                                        #   in Loop: Header=BB0_21 Depth=1
-	beq	$s3, $s0, .LBB0_20
-# %bb.25:                               #   in Loop: Header=BB0_21 Depth=1
-	ld.d	$a1, $s3, 152
-	ld.d	$a2, $s0, 152
-	ld.d	$a0, $s3, 144
-	beqz	$a2, .LBB0_27
-# %bb.26:                               #   in Loop: Header=BB0_21 Depth=1
-	st.d	$s3, $a2, 144
-.LBB0_27:                               #   in Loop: Header=BB0_21 Depth=1
-	st.d	$a2, $s3, 152
-	beq	$s2, $s0, .LBB0_29
-# %bb.28:                               #   in Loop: Header=BB0_21 Depth=1
-	ld.d	$a2, $s0, 144
-	st.d	$s3, $a2, 152
-	st.d	$a2, $s3, 144
-	st.d	$s0, $a1, 144
-	st.d	$a1, $s0, 152
-	bnez	$a0, .LBB0_30
-	b	.LBB0_19
-	.p2align	4, , 16
-.LBB0_29:                               # %.critedge
-                                        #   in Loop: Header=BB0_21 Depth=1
-	st.d	$s0, $s3, 144
-	move	$a1, $s3
-	st.d	$a1, $s0, 152
-	beqz	$a0, .LBB0_19
-.LBB0_30:                               #   in Loop: Header=BB0_21 Depth=1
-	st.d	$s0, $a0, 152
-	b	.LBB0_19
-.LBB0_31:                               # %.loopexit.thread
-	move	$a0, $zero
-	andi	$a1, $s0, 1
-	b	.LBB0_33
-.LBB0_32:
-	move	$a0, $zero
-.LBB0_33:                               # %._crit_edge123
-	sub.d	$a1, $zero, $a1
-	and	$fp, $a1, $fp
-	b	.LBB0_35
-.LBB0_34:
-	move	$a0, $zero
-.LBB0_35:                               # %._crit_edge123
+.LBB0_2:                                # %._crit_edge123
 	st.w	$a0, $s6, 0
 	move	$a0, $fp
 	ld.d	$s8, $sp, 1112                  # 8-byte Folded Reload
@@ -256,6 +72,190 @@ archie_query:                           # @archie_query
 	ld.d	$ra, $sp, 1192                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 1200
 	ret
+.LBB0_3:
+	ld.d	$fp, $sp, 48
+	st.d	$zero, $sp, 48
+	beqz	$fp, .LBB0_20
+# %bb.4:                                # %.lr.ph.preheader
+	sltui	$a0, $s1, 1
+	masknez	$a1, $s1, $a0
+	pcalau12i	$a2, %pc_hi20(defcmplink)
+	addi.d	$a2, $a2, %pc_lo12(defcmplink)
+	maskeqz	$a0, $a2, $a0
+	or	$s7, $a0, $a1
+	move	$a0, $fp
+	b	.LBB0_6
+	.p2align	4, , 16
+.LBB0_5:                                #   in Loop: Header=BB0_6 Depth=1
+	move	$a0, $a1
+	beqz	$a1, .LBB0_10
+.LBB0_6:                                # %.lr.ph
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_8 Depth 2
+	ld.d	$a2, $a0, 40
+	ld.d	$a1, $a0, 152
+	beqz	$a2, .LBB0_5
+# %bb.7:                                #   in Loop: Header=BB0_6 Depth=1
+	st.d	$a2, $a0, 152
+	st.d	$a0, $a2, 144
+	.p2align	4, , 16
+.LBB0_8:                                #   Parent Loop BB0_6 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	move	$a3, $a2
+	ld.d	$a2, $a2, 152
+	bnez	$a2, .LBB0_8
+# %bb.9:                                #   in Loop: Header=BB0_6 Depth=1
+	st.d	$a1, $a3, 152
+	st.d	$a3, $a1, 144
+	st.d	$zero, $a0, 40
+	b	.LBB0_5
+.LBB0_10:                               # %._crit_edge
+	andi	$a0, $s0, 2
+	bnez	$a0, .LBB0_18
+# %bb.11:                               # %.lr.ph112.preheader
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$s1, $a0, %pc_lo12(.L.str.3)
+	pcalau12i	$a0, %pc_hi20(.L.str.4)
+	addi.d	$s2, $a0, %pc_lo12(.L.str.4)
+	pcalau12i	$a0, %pc_hi20(.L.str.5)
+	addi.d	$s3, $a0, %pc_lo12(.L.str.5)
+	pcalau12i	$a0, %pc_hi20(.L.str.1)
+	addi.d	$s4, $a0, %pc_lo12(.L.str.1)
+	move	$s8, $fp
+	b	.LBB0_14
+.LBB0_12:                               #   in Loop: Header=BB0_14 Depth=1
+	move	$s5, $a0
+	pcaddu18i	$ra, %call36(stcopyr)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s8, 72
+	st.b	$zero, $s5, 0
+	.p2align	4, , 16
+.LBB0_13:                               # %translateArchieResponse.exit
+                                        #   in Loop: Header=BB0_14 Depth=1
+	ld.d	$s8, $s8, 152
+	beqz	$s8, .LBB0_18
+.LBB0_14:                               # %.lr.ph112
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$s5, $s8, 24
+	move	$a0, $s5
+	move	$a1, $s1
+	pcaddu18i	$ra, %call36(strcmp)
+	jirl	$ra, $ra, 0
+	bnez	$a0, .LBB0_13
+# %bb.15:                               #   in Loop: Header=BB0_14 Depth=1
+	ld.d	$a0, $s8, 72
+	ori	$a2, $zero, 11
+	move	$a1, $s2
+	pcaddu18i	$ra, %call36(strncmp)
+	jirl	$ra, $ra, 0
+	bnez	$a0, .LBB0_13
+# %bb.16:                               #   in Loop: Header=BB0_14 Depth=1
+	move	$a0, $s3
+	move	$a1, $s5
+	pcaddu18i	$ra, %call36(stcopyr)
+	jirl	$ra, $ra, 0
+	ld.d	$a2, $s8, 72
+	ld.d	$a1, $s8, 56
+	st.d	$a0, $s8, 24
+	addi.d	$a0, $a2, 12
+	pcaddu18i	$ra, %call36(stcopyr)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s8, 56
+	ori	$a1, $zero, 47
+	pcaddu18i	$ra, %call36(strchr)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s8, 72
+	bnez	$a0, .LBB0_12
+# %bb.17:                               #   in Loop: Header=BB0_14 Depth=1
+	move	$a0, $s4
+	pcaddu18i	$ra, %call36(stcopyr)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s8, 72
+	b	.LBB0_13
+.LBB0_18:                               # %.loopexit
+	andi	$a1, $s0, 1
+	beqz	$a1, .LBB0_21
+# %bb.19:
+	move	$a0, $zero
+	maskeqz	$fp, $fp, $a1
+	b	.LBB0_2
+.LBB0_20:                               # %.loopexit.thread
+	move	$a0, $zero
+	andi	$a1, $s0, 1
+	sub.d	$a1, $zero, $a1
+	and	$fp, $a1, $fp
+	b	.LBB0_2
+.LBB0_21:
+	move	$s3, $fp
+	b	.LBB0_24
+	.p2align	4, , 16
+.LBB0_22:                               #   in Loop: Header=BB0_24 Depth=1
+	st.d	$a0, $s0, 144
+	xor	$a0, $fp, $s3
+	sltui	$a0, $a0, 1
+	masknez	$a1, $fp, $a0
+	maskeqz	$a0, $s0, $a0
+	or	$fp, $a0, $a1
+.LBB0_23:                               #   in Loop: Header=BB0_24 Depth=1
+	move	$s3, $s2
+	beqz	$s2, .LBB0_34
+.LBB0_24:                               # %.lr.ph122
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_26 Depth 2
+	ld.d	$s2, $s3, 152
+	move	$s0, $s3
+	beqz	$s2, .LBB0_27
+# %bb.25:                               # %.lr.ph117.preheader
+                                        #   in Loop: Header=BB0_24 Depth=1
+	move	$s0, $s3
+	move	$s1, $s2
+	.p2align	4, , 16
+.LBB0_26:                               # %.lr.ph117
+                                        #   Parent Loop BB0_24 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	move	$a0, $s1
+	move	$a1, $s0
+	jirl	$ra, $s7, 0
+	slti	$a0, $a0, 0
+	maskeqz	$a1, $s1, $a0
+	ld.d	$s1, $s1, 152
+	masknez	$a0, $s0, $a0
+	or	$s0, $a1, $a0
+	bnez	$s1, .LBB0_26
+.LBB0_27:                               # %._crit_edge118
+                                        #   in Loop: Header=BB0_24 Depth=1
+	beq	$s3, $s0, .LBB0_23
+# %bb.28:                               #   in Loop: Header=BB0_24 Depth=1
+	ld.d	$a1, $s3, 152
+	ld.d	$a2, $s0, 152
+	ld.d	$a0, $s3, 144
+	beqz	$a2, .LBB0_30
+# %bb.29:                               #   in Loop: Header=BB0_24 Depth=1
+	st.d	$s3, $a2, 144
+.LBB0_30:                               #   in Loop: Header=BB0_24 Depth=1
+	st.d	$a2, $s3, 152
+	beq	$s2, $s0, .LBB0_32
+# %bb.31:                               #   in Loop: Header=BB0_24 Depth=1
+	ld.d	$a2, $s0, 144
+	st.d	$s3, $a2, 152
+	st.d	$a2, $s3, 144
+	st.d	$s0, $a1, 144
+	st.d	$a1, $s0, 152
+	bnez	$a0, .LBB0_33
+	b	.LBB0_22
+	.p2align	4, , 16
+.LBB0_32:                               # %.critedge
+                                        #   in Loop: Header=BB0_24 Depth=1
+	st.d	$s0, $s3, 144
+	move	$a1, $s3
+	st.d	$a1, $s0, 152
+	beqz	$a0, .LBB0_22
+.LBB0_33:                               #   in Loop: Header=BB0_24 Depth=1
+	st.d	$s0, $a0, 152
+	b	.LBB0_22
+.LBB0_34:
+	move	$a0, $zero
+	b	.LBB0_2
 .Lfunc_end0:
 	.size	archie_query, .Lfunc_end0-archie_query
                                         # -- End function

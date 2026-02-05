@@ -225,86 +225,87 @@ GCC_except_table3:
 	.type	_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj,@function
 _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj
 # %bb.0:
-	ld.w	$t0, $a0, 0
+	ld.w	$t1, $a0, 0
 	beqz	$a2, .LBB4_6
 # %bb.1:                                # %.lr.ph
-	ld.w	$a6, $a0, 4
-	ld.bu	$a4, $a0, 8
 	addi.d	$a3, $a0, 8
-	ori	$a5, $zero, 3
+	ld.w	$a6, $a0, 4
+	ld.bu	$a5, $a0, 8
+	bstrpick.d	$t2, $a2, 31, 0
+	addi.d	$a4, $a1, 15
+	ori	$a7, $zero, 3
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                # %.loopexit
                                         #   in Loop: Header=BB4_3 Depth=1
-	addi.w	$a2, $a2, -1
 	addi.d	$a1, $a1, 1
+	addi.w	$a2, $a2, -1
+	addi.d	$t2, $t2, -1
+	addi.d	$a4, $a4, 1
 	beqz	$a2, .LBB4_6
 .LBB4_3:                                # =>This Inner Loop Header: Depth=1
 	beqz	$a6, .LBB4_7
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
-	ld.b	$a7, $a1, 0
-	stx.b	$a7, $a3, $a6
-	ld.wu	$a7, $a0, 4
-	addi.d	$a6, $a7, 1
+	ld.b	$t0, $a4, -15
+	stx.b	$t0, $a3, $a6
+	ld.wu	$t0, $a0, 4
+	addi.d	$a6, $t0, 1
 	andi	$a6, $a6, 3
-	andi	$a7, $a7, 3
+	andi	$t0, $t0, 3
 	st.w	$a6, $a0, 4
-	bne	$a7, $a5, .LBB4_2
+	bne	$t0, $a7, .LBB4_2
 # %bb.5:                                # %.preheader.preheader
                                         #   in Loop: Header=BB4_3 Depth=1
-	ld.bu	$a7, $a0, 9
-	ld.bu	$t1, $a0, 10
-	slli.d	$a7, $a7, 8
-	ld.b	$t2, $a0, 11
-	or	$a7, $a7, $a4
-	slli.d	$t1, $t1, 16
-	or	$a7, $a7, $t1
-	slli.d	$t1, $t2, 24
-	or	$a7, $a7, $t1
-	xor	$t0, $a7, $t0
+	ld.bu	$t0, $a0, 9
+	ld.bu	$t3, $a0, 10
+	slli.d	$t0, $t0, 8
+	ld.b	$t4, $a0, 11
+	or	$t0, $t0, $a5
+	slli.d	$t3, $t3, 16
+	or	$t0, $t0, $t3
+	slli.d	$t3, $t4, 24
+	or	$t0, $t0, $t3
+	xor	$t1, $t0, $t1
 	b	.LBB4_2
 .LBB4_6:                                # %._crit_edge.thread
-	st.w	$t0, $a0, 0
+	st.w	$t1, $a0, 0
 	ret
 .LBB4_7:                                # %.critedge
-	ori	$a4, $zero, 4
-	bltu	$a2, $a4, .LBB4_13
+	bstrpick.d	$a6, $a2, 31, 2
+	addi.d	$a5, $a4, -15
+	beqz	$a6, .LBB4_13
 # %bb.8:                                # %.lr.ph52.preheader
-	bstrpick.d	$a4, $a2, 31, 2
-	addi.d	$a5, $a4, -1
-	ori	$a6, $zero, 7
-	bltu	$a5, $a6, .LBB4_12
+	ori	$a7, $zero, 32
+	bltu	$t2, $a7, .LBB4_12
 # %bb.9:                                # %vector.ph
-	addi.d	$a7, $a1, 15
-	bstrpick.d	$a5, $a5, 31, 0
-	addi.d	$a5, $a5, 1
-	bstrpick.d	$a6, $a5, 32, 3
-	slli.d	$a6, $a6, 3
-	sub.d	$a4, $a4, $a6
-	slli.d	$t1, $a5, 2
-	bstrpick.d	$t1, $t1, 34, 5
-	slli.d	$t1, $t1, 5
+	srli.d	$a7, $t2, 2
+	bstrpick.d	$a5, $a7, 61, 3
+	slli.d	$t0, $a5, 3
+	sub.d	$a6, $a6, $t0
+	bstrins.d	$t2, $zero, 4, 0
 	vrepli.b	$vr0, 0
-	add.d	$a1, $a1, $t1
+	add.d	$a5, $a1, $t2
 	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.w	$vr1, $t0, 0
-	move	$t0, $a6
+	vinsgr2vr.w	$vr1, $t1, 0
+	addi.w	$a1, $zero, -8
+	lu52i.d	$a1, $a1, 1023
+	and	$a1, $a7, $a1
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB4_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$t1, $a7, -15
-	ld.b	$t2, $a7, -11
-	ld.b	$t3, $a7, -7
-	ld.b	$t4, $a7, -3
+	ld.b	$t1, $a4, -15
+	ld.b	$t2, $a4, -11
+	ld.b	$t3, $a4, -7
+	ld.b	$t4, $a4, -3
 	vinsgr2vr.b	$vr3, $t1, 0
 	vinsgr2vr.b	$vr3, $t2, 1
 	vinsgr2vr.b	$vr3, $t3, 2
 	vinsgr2vr.b	$vr3, $t4, 3
-	ld.b	$t1, $a7, 1
-	ld.b	$t2, $a7, 5
-	ld.b	$t3, $a7, 9
-	ld.b	$t4, $a7, 13
+	ld.b	$t1, $a4, 1
+	ld.b	$t2, $a4, 5
+	ld.b	$t3, $a4, 9
+	ld.b	$t4, $a4, 13
 	vinsgr2vr.b	$vr4, $t1, 0
 	vinsgr2vr.b	$vr4, $t2, 1
 	vinsgr2vr.b	$vr4, $t3, 2
@@ -313,18 +314,18 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 	vilvl.h	$vr3, $vr0, $vr3
 	vilvl.b	$vr4, $vr0, $vr4
 	vilvl.h	$vr4, $vr0, $vr4
-	ld.b	$t1, $a7, -14
-	ld.b	$t2, $a7, -10
-	ld.b	$t3, $a7, -6
-	ld.b	$t4, $a7, -2
+	ld.b	$t1, $a4, -14
+	ld.b	$t2, $a4, -10
+	ld.b	$t3, $a4, -6
+	ld.b	$t4, $a4, -2
 	vinsgr2vr.b	$vr5, $t1, 0
 	vinsgr2vr.b	$vr5, $t2, 1
 	vinsgr2vr.b	$vr5, $t3, 2
 	vinsgr2vr.b	$vr5, $t4, 3
-	ld.b	$t1, $a7, 2
-	ld.b	$t2, $a7, 6
-	ld.b	$t3, $a7, 10
-	ld.b	$t4, $a7, 14
+	ld.b	$t1, $a4, 2
+	ld.b	$t2, $a4, 6
+	ld.b	$t3, $a4, 10
+	ld.b	$t4, $a4, 14
 	vinsgr2vr.b	$vr6, $t1, 0
 	vinsgr2vr.b	$vr6, $t2, 1
 	vinsgr2vr.b	$vr6, $t3, 2
@@ -337,18 +338,18 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 	vslli.w	$vr6, $vr6, 8
 	vor.v	$vr3, $vr5, $vr3
 	vor.v	$vr4, $vr6, $vr4
-	ld.b	$t1, $a7, -13
-	ld.b	$t2, $a7, -9
-	ld.b	$t3, $a7, -5
-	ld.b	$t4, $a7, -1
+	ld.b	$t1, $a4, -13
+	ld.b	$t2, $a4, -9
+	ld.b	$t3, $a4, -5
+	ld.b	$t4, $a4, -1
 	vinsgr2vr.b	$vr5, $t1, 0
 	vinsgr2vr.b	$vr5, $t2, 1
 	vinsgr2vr.b	$vr5, $t3, 2
 	vinsgr2vr.b	$vr5, $t4, 3
-	ld.b	$t1, $a7, 3
-	ld.b	$t2, $a7, 7
-	ld.b	$t3, $a7, 11
-	ld.b	$t4, $a7, 15
+	ld.b	$t1, $a4, 3
+	ld.b	$t2, $a4, 7
+	ld.b	$t3, $a4, 11
+	ld.b	$t4, $a4, 15
 	vinsgr2vr.b	$vr6, $t1, 0
 	vinsgr2vr.b	$vr6, $t2, 1
 	vinsgr2vr.b	$vr6, $t3, 2
@@ -361,14 +362,14 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 	vslli.w	$vr6, $vr6, 16
 	vor.v	$vr3, $vr3, $vr5
 	vor.v	$vr4, $vr4, $vr6
-	ld.b	$t1, $a7, -12
-	ld.b	$t2, $a7, -8
-	ld.b	$t3, $a7, -4
-	ld.b	$t4, $a7, 0
-	ld.b	$t5, $a7, 4
-	ld.b	$t6, $a7, 8
-	ld.b	$t7, $a7, 12
-	ld.b	$t8, $a7, 16
+	ld.b	$t1, $a4, -12
+	ld.b	$t2, $a4, -8
+	ld.b	$t3, $a4, -4
+	ld.b	$t4, $a4, 0
+	ld.b	$t5, $a4, 4
+	ld.b	$t6, $a4, 8
+	ld.b	$t7, $a4, 12
+	ld.b	$t8, $a4, 16
 	vinsgr2vr.b	$vr5, $t1, 0
 	vinsgr2vr.b	$vr5, $t2, 4
 	vinsgr2vr.b	$vr5, $t3, 8
@@ -383,42 +384,42 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 	vor.v	$vr4, $vr4, $vr6
 	vxor.v	$vr1, $vr3, $vr1
 	vxor.v	$vr2, $vr4, $vr2
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 32
-	bnez	$t0, .LBB4_10
+	addi.d	$a1, $a1, -8
+	addi.d	$a4, $a4, 32
+	bnez	$a1, .LBB4_10
 # %bb.11:                               # %middle.block
 	vxor.v	$vr0, $vr2, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vxor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vxor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$t0, $vr0, 0
-	beq	$a5, $a6, .LBB4_13
+	vpickve2gr.w	$t1, $vr0, 0
+	beq	$a7, $t0, .LBB4_13
 	.p2align	4, , 16
 .LBB4_12:                               # %.lr.ph52
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a1, 0
-	addi.w	$a4, $a4, -1
-	addi.d	$a1, $a1, 4
-	xor	$t0, $a5, $t0
-	bnez	$a4, .LBB4_12
+	ld.w	$a1, $a5, 0
+	addi.w	$a6, $a6, -1
+	addi.d	$a5, $a5, 4
+	xor	$t1, $a1, $t1
+	bnez	$a6, .LBB4_12
 .LBB4_13:                               # %._crit_edge
-	andi	$a2, $a2, 3
-	st.w	$t0, $a0, 0
-	beqz	$a2, .LBB4_16
+	andi	$a1, $a2, 3
+	st.w	$t1, $a0, 0
+	beqz	$a1, .LBB4_16
 # %bb.14:                               # %.lr.ph59
-	ld.w	$a4, $a0, 4
+	ld.w	$a2, $a0, 4
 	.p2align	4, , 16
 .LBB4_15:                               # =>This Inner Loop Header: Depth=1
-	ld.b	$a5, $a1, 0
-	stx.b	$a5, $a3, $a4
-	ld.w	$a4, $a0, 4
-	addi.d	$a1, $a1, 1
-	addi.d	$a4, $a4, 1
-	andi	$a4, $a4, 3
-	addi.w	$a2, $a2, -1
-	st.w	$a4, $a0, 4
-	bnez	$a2, .LBB4_15
+	ld.b	$a4, $a5, 0
+	stx.b	$a4, $a3, $a2
+	ld.w	$a2, $a0, 4
+	addi.d	$a5, $a5, 1
+	addi.d	$a2, $a2, 1
+	andi	$a2, $a2, 3
+	addi.w	$a1, $a1, -1
+	st.w	$a2, $a0, 4
+	bnez	$a1, .LBB4_15
 .LBB4_16:                               # %._crit_edge60
 	ret
 .Lfunc_end4:

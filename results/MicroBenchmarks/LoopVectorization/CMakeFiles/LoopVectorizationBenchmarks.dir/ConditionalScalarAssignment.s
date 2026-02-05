@@ -3,8 +3,19 @@
 	.globl	_ZSt21ios_base_library_initv
 
                                         # End of file scope inline assembly
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE
+.LCPI0_0:
+	.half	0                               # 0x0
+	.half	1                               # 0x1
+	.half	2                               # 0x2
+	.half	3                               # 0x3
+	.half	4                               # 0x4
+	.half	5                               # 0x5
+	.half	6                               # 0x6
+	.half	7                               # 0x7
 	.text
-	.globl	_Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE # -- Begin function _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE
+	.globl	_Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE
 	.p2align	5
 	.type	_Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE,@function
 _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE
@@ -22,6 +33,7 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	st.d	$s2, $sp, 1992                  # 8-byte Folded Spill
 	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -29,17 +41,18 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
+	.cfi_offset 28, -64
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1024
-	.cfi_def_cfa_offset 5104
-	move	$s0, $a0
+	addi.d	$sp, $sp, -1104
+	.cfi_def_cfa_offset 5184
+	move	$fp, $a0
 	lu12i.w	$a0, 97
 	ori	$s3, $a0, 2688
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 104
 .Ltmp0:                                 # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -47,29 +60,29 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 .Ltmp1:                                 # EH_LABEL
 # %bb.1:
 	move	$s2, $a0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 96
 .Ltmp3:                                 # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
 # %bb.2:
-	move	$fp, $a0
-	st.d	$a0, $sp, 16
+	move	$s0, $a0
+	st.d	$a0, $sp, 88
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 100
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 944
+	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 40
+	st.d	$a2, $sp, 112
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 40
+	addi.d	$a4, $sp, 112
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
@@ -86,18 +99,18 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1008
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
 .Ltmp6:                                 # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1016
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 112
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1016
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -107,11 +120,11 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	stx.w	$a0, $s1, $s4
 .Ltmp8:                                 # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1016
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 112
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1016
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -121,39 +134,95 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	stx.w	$a0, $s2, $s4
 .Ltmp10:                                # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1016
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 112
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1016
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp11:                                # EH_LABEL
 # %bb.8:                                # %.noexc10
                                         #   in Loop: Header=BB0_5 Depth=1
-	stx.w	$a0, $fp, $s4
+	stx.w	$a0, $s0, $s4
 	addi.d	$s4, $s4, 4
 	bne	$s4, $s3, .LBB0_5
-# %bb.9:
-	ori	$s3, $zero, 101
-	lu12i.w	$s4, 24
-	ori	$a0, $s4, 1696
-	ori	$a1, $zero, 75
-	move	$a2, $s1
+# %bb.9:                                # %vector.ph
+	vrepli.b	$vr0, 0
+	xvrepli.w	$xr1, 101
+	lu12i.w	$s5, 24
+	ori	$a0, $s5, 1696
+	xvrepli.w	$xr5, 75
+	addi.d	$s4, $zero, -1
+	move	$a1, $s1
 	.p2align	4, , 16
-.LBB0_10:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $a2, 0
-	slt	$a4, $a1, $a3
-	masknez	$a5, $s3, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$s3, $a3, $a5
-	addi.d	$a0, $a0, -1
-	addi.d	$a2, $a2, 4
+.LBB0_10:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvld	$xr2, $a1, 0
+	xvslt.w	$xr3, $xr5, $xr2
+	xvpickve2gr.w	$a2, $xr3, 0
+	vinsgr2vr.h	$vr4, $a2, 0
+	xvpickve2gr.w	$a2, $xr3, 1
+	vinsgr2vr.h	$vr4, $a2, 1
+	xvpickve2gr.w	$a2, $xr3, 2
+	vinsgr2vr.h	$vr4, $a2, 2
+	xvpickve2gr.w	$a2, $xr3, 3
+	vinsgr2vr.h	$vr4, $a2, 3
+	xvpickve2gr.w	$a2, $xr3, 4
+	vinsgr2vr.h	$vr4, $a2, 4
+	xvpickve2gr.w	$a2, $xr3, 5
+	vinsgr2vr.h	$vr4, $a2, 5
+	xvpickve2gr.w	$a2, $xr3, 6
+	vinsgr2vr.h	$vr4, $a2, 6
+	xvpickve2gr.w	$a2, $xr3, 7
+	vinsgr2vr.h	$vr4, $a2, 7
+	xvmskltz.w	$xr3, $xr3
+	xvpickve2gr.wu	$a2, $xr3, 0
+	xvpickve2gr.wu	$a3, $xr3, 4
+	bstrins.d	$a2, $a3, 7, 4
+	sltui	$a2, $a2, 1
+	maskeqz	$a2, $s4, $a2
+	vreplgr2vr.h	$vr3, $a2
+	vandn.v	$vr4, $vr3, $vr4
+	vand.v	$vr0, $vr0, $vr3
+	vor.v	$vr0, $vr0, $vr4
+	xvreplgr2vr.w	$xr3, $a2
+	xvandn.v	$xr2, $xr3, $xr2
+	xvand.v	$xr1, $xr1, $xr3
+	xvor.v	$xr1, $xr1, $xr2
+	addi.d	$a0, $a0, -8
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB0_10
-# %bb.11:                               # %_ZL27run_single_csa_only_autovecIiET_PS0_S1_S1_S0_.exit.preheader
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_0)
+	vrepli.b	$vr6, 0
+	vbitsel.v	$vr2, $vr6, $vr4, $vr0
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.hu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.hu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.hu	$vr2, $vr3, $vr2
+	vpickve2gr.h	$a0, $vr2, 0
+	bstrpick.d	$a0, $a0, 15, 0
+	xvreplgr2vr.w	$xr2, $a0
+	xvperm.w	$xr1, $xr1, $xr2
+	xvpickve2gr.w	$a0, $xr1, 0
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.h	$a1, $vr0, 0
+	andi	$a1, $a1, 1
+	maskeqz	$a0, $a0, $a1
 	ori	$s2, $zero, 101
-	ori	$a0, $s4, 1696
+	masknez	$a1, $s2, $a1
+	or	$s3, $a0, $a1
+	ori	$a0, $s5, 1696
 	ori	$a1, $zero, 75
 	.p2align	4, , 16
 .LBB0_12:                               # %_ZL27run_single_csa_only_autovecIiET_PS0_S1_S1_S0_.exit
@@ -167,47 +236,106 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	addi.d	$s1, $s1, 4
 	bnez	$a0, .LBB0_12
 # %bb.13:                               # %_ZL25run_single_csa_only_novecIiET_PS0_S1_S1_S0_.exit
+	vst	$vr6, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
+	xvst	$xr5, $sp, 48                   # 32-byte Folded Spill
 	bne	$s3, $s2, .LBB0_29
 # %bb.14:
-	ld.w	$s1, $s0, 28
-	ld.d	$fp, $s0, 16
+	ld.w	$s1, $fp, 28
+	ld.d	$s0, $fp, 16
 .Ltmp24:                                # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp25:                                # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
+	xvld	$xr6, $sp, 48                   # 32-byte Folded Reload
+	vld	$vr7, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr8, $sp, 16                   # 16-byte Folded Reload
 	bnez	$s1, .LBB0_21
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$fp, .LBB0_21
+	beqz	$s0, .LBB0_21
 # %bb.17:
-	ori	$a0, $s4, 1696
-	ori	$a1, $zero, 75
-	addi.d	$a2, $sp, 32
-	addi.d	$a3, $sp, 24
-	addi.d	$a4, $sp, 16
-	addi.d	$a5, $sp, 40
+	xvrepli.w	$xr0, 101
+	ori	$a0, $s5, 1696
+	ori	$a1, $zero, 101
+	addi.d	$a2, $sp, 104
+	addi.d	$a3, $sp, 96
+	addi.d	$a4, $sp, 88
+	addi.d	$a5, $sp, 112
 	.p2align	4, , 16
 .LBB0_18:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_19 Depth 2
-	ld.d	$a6, $sp, 32
-	ori	$a7, $zero, 101
-	move	$t0, $a0
+	ld.d	$a6, $sp, 104
+	move	$a7, $a0
+	xvori.b	$xr2, $xr0, 0
+	vori.b	$vr1, $vr8, 0
 	.p2align	4, , 16
-.LBB0_19:                               #   Parent Loop BB0_18 Depth=1
+.LBB0_19:                               # %vector.body74
+                                        #   Parent Loop BB0_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t1, $a6, 0
-	slt	$t2, $a1, $t1
-	masknez	$a7, $a7, $t2
-	maskeqz	$t1, $t1, $t2
-	or	$a7, $t1, $a7
-	addi.d	$t0, $t0, -1
-	addi.d	$a6, $a6, 4
-	bnez	$t0, .LBB0_19
+	xvld	$xr3, $a6, 0
+	xvslt.w	$xr4, $xr6, $xr3
+	xvpickve2gr.w	$t0, $xr4, 0
+	vinsgr2vr.h	$vr5, $t0, 0
+	xvpickve2gr.w	$t0, $xr4, 1
+	vinsgr2vr.h	$vr5, $t0, 1
+	xvpickve2gr.w	$t0, $xr4, 2
+	vinsgr2vr.h	$vr5, $t0, 2
+	xvpickve2gr.w	$t0, $xr4, 3
+	vinsgr2vr.h	$vr5, $t0, 3
+	xvpickve2gr.w	$t0, $xr4, 4
+	vinsgr2vr.h	$vr5, $t0, 4
+	xvpickve2gr.w	$t0, $xr4, 5
+	vinsgr2vr.h	$vr5, $t0, 5
+	xvpickve2gr.w	$t0, $xr4, 6
+	vinsgr2vr.h	$vr5, $t0, 6
+	xvpickve2gr.w	$t0, $xr4, 7
+	vinsgr2vr.h	$vr5, $t0, 7
+	xvmskltz.w	$xr4, $xr4
+	xvpickve2gr.wu	$t0, $xr4, 0
+	xvpickve2gr.wu	$t1, $xr4, 4
+	bstrins.d	$t0, $t1, 7, 4
+	sltui	$t0, $t0, 1
+	maskeqz	$t0, $s4, $t0
+	vreplgr2vr.h	$vr4, $t0
+	vandn.v	$vr5, $vr4, $vr5
+	vand.v	$vr1, $vr1, $vr4
+	vor.v	$vr1, $vr1, $vr5
+	xvreplgr2vr.w	$xr4, $t0
+	xvandn.v	$xr3, $xr4, $xr3
+	xvand.v	$xr2, $xr2, $xr4
+	xvor.v	$xr2, $xr2, $xr3
+	addi.d	$a7, $a7, -8
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB0_19
 # %bb.20:                               # %_ZL27run_single_csa_only_autovecIiET_PS0_S1_S1_S0_.exit27
                                         #   in Loop: Header=BB0_18 Depth=1
-	st.w	$a7, $sp, 40
+	vbitsel.v	$vr3, $vr8, $vr7, $vr1
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.hu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.hu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vmax.hu	$vr3, $vr4, $vr3
+	vpickve2gr.h	$a6, $vr3, 0
+	bstrpick.d	$a6, $a6, 15, 0
+	xvreplgr2vr.w	$xr3, $a6
+	xvperm.w	$xr2, $xr2, $xr3
+	xvpickve2gr.w	$a6, $xr2, 0
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.h	$a7, $vr1, 0
+	andi	$a7, $a7, 1
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $a1, $a7
+	or	$a6, $a6, $a7
+	st.w	$a6, $sp, 112
 	#APP
 	#NO_APP
 	#APP
@@ -216,36 +344,37 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	#NO_APP
 	#APP
 	#NO_APP
-	addi.d	$fp, $fp, -1
+	addi.d	$s0, $s0, -1
 	#MEMBARRIER
-	bnez	$fp, .LBB0_18
+	bnez	$s0, .LBB0_18
 .LBB0_21:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp26:                                # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp27:                                # EH_LABEL
 # %bb.22:                               # %_ZL21benchmark_csa_autovecIiEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 88
 	beqz	$a0, .LBB0_24
 # %bb.23:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_24:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit37
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 96
 	beqz	$a0, .LBB0_26
 # %bb.25:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_26:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit40
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 104
 	beqz	$a0, .LBB0_28
 # %bb.27:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_28:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit43
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1040
+	addi.d	$sp, $sp, 1120
+	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -275,17 +404,17 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 .Ltmp16:                                # EH_LABEL
 # %bb.31:
 .Ltmp17:                                # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.38)
 	ori	$a2, $zero, 4
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp18:                                # EH_LABEL
 # %bb.32:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
 .Ltmp19:                                # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
@@ -306,53 +435,53 @@ _Z42BENCHMARK_single_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z42BENCHM
 	b	.LBB0_43
 .LBB0_36:                               # %.thread
 .Ltmp5:                                 # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	b	.LBB0_45
 .LBB0_37:                               # %.thread55
 .Ltmp2:                                 # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB0_38:
 .Ltmp28:                                # EH_LABEL
-	ld.d	$fp, $sp, 16
-	move	$s0, $a0
-	bnez	$fp, .LBB0_44
+	ld.d	$s0, $sp, 88
+	move	$fp, $a0
+	bnez	$s0, .LBB0_44
 # %bb.39:
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 96
 	bnez	$s2, .LBB0_45
 .LBB0_40:
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 104
 	bnez	$s1, .LBB0_46
 .LBB0_41:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit34
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB0_42:
 .Ltmp12:                                # EH_LABEL
 .LBB0_43:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$s0, $a0
+	move	$fp, $a0
 .LBB0_44:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 96
 	beqz	$s2, .LBB0_40
 .LBB0_45:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i30
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 104
 	beqz	$s1, .LBB0_41
 .LBB0_46:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:
@@ -711,8 +840,19 @@ GCC_except_table1:
 .Lcst_end1:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE
+.LCPI2_0:
+	.half	0                               # 0x0
+	.half	1                               # 0x1
+	.half	2                               # 0x2
+	.half	3                               # 0x3
+	.half	4                               # 0x4
+	.half	5                               # 0x5
+	.half	6                               # 0x6
+	.half	7                               # 0x7
 	.text
-	.globl	_Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE # -- Begin function _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE
+	.globl	_Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE
 	.p2align	5
 	.type	_Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE,@function
 _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE
@@ -738,8 +878,8 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1024
-	.cfi_def_cfa_offset 5104
+	addi.d	$sp, $sp, -1088
+	.cfi_def_cfa_offset 5168
 	move	$fp, $a0
 	lu12i.w	$a0, 97
 	ori	$s3, $a0, 2688
@@ -747,7 +887,7 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 96
 .Ltmp47:                                # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -755,7 +895,7 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 .Ltmp48:                                # EH_LABEL
 # %bb.1:
 	move	$s2, $a0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 88
 .Ltmp50:                                # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -763,21 +903,21 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 .Ltmp51:                                # EH_LABEL
 # %bb.2:
 	move	$s0, $a0
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 80
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 100
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 944
+	ori	$a1, $a1, 1008
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 40
+	st.d	$a2, $sp, 104
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 40
+	addi.d	$a4, $sp, 104
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB2_3:                                # =>This Inner Loop Header: Depth=1
@@ -794,18 +934,18 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1000
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB2_5:                                # =>This Inner Loop Header: Depth=1
 .Ltmp53:                                # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -815,11 +955,11 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.w	$a0, $s1, $s4
 .Ltmp55:                                # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -829,11 +969,11 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.w	$a0, $s2, $s4
 .Ltmp57:                                # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -843,62 +983,222 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.w	$a0, $s0, $s4
 	addi.d	$s4, $s4, 4
 	bne	$s4, $s3, .LBB2_5
-# %bb.9:
-	move	$a3, $zero
-	ori	$a0, $zero, 101
-	ori	$a4, $zero, 75
-	ori	$a1, $zero, 101
-	ori	$a2, $zero, 101
+# %bb.9:                                # %vector.ph
+	move	$a0, $zero
+	vrepli.b	$vr4, 0
+	xvrepli.w	$xr5, 101
+	xvrepli.w	$xr9, 75
+	addi.d	$s4, $zero, -1
+	xvori.b	$xr3, $xr5, 0
+	vori.b	$vr2, $vr4, 0
+	xvori.b	$xr1, $xr5, 0
+	vori.b	$vr0, $vr4, 0
 	.p2align	4, , 16
-.LBB2_10:                               # =>This Inner Loop Header: Depth=1
-	ldx.w	$a5, $s1, $a3
-	slt	$a6, $a4, $a5
-	ldx.w	$a7, $s2, $a3
-	maskeqz	$a5, $a5, $a6
-	masknez	$a2, $a2, $a6
-	or	$a2, $a5, $a2
-	slt	$a5, $a4, $a7
-	ldx.w	$a6, $s0, $a3
-	maskeqz	$a7, $a7, $a5
-	masknez	$a1, $a1, $a5
-	or	$a1, $a7, $a1
-	slt	$a5, $a4, $a6
-	maskeqz	$a6, $a6, $a5
-	masknez	$a0, $a0, $a5
-	addi.d	$a3, $a3, 4
-	or	$a0, $a6, $a0
-	bne	$a3, $s3, .LBB2_10
-# %bb.11:                               # %.preheader.preheader
-	move	$a4, $zero
-	ori	$a3, $zero, 101
+.LBB2_10:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvldx	$xr6, $s1, $a0
+	xvslt.w	$xr7, $xr9, $xr6
+	xvpickve2gr.w	$a1, $xr7, 0
+	vinsgr2vr.h	$vr8, $a1, 0
+	xvpickve2gr.w	$a1, $xr7, 1
+	vinsgr2vr.h	$vr8, $a1, 1
+	xvpickve2gr.w	$a1, $xr7, 2
+	vinsgr2vr.h	$vr8, $a1, 2
+	xvpickve2gr.w	$a1, $xr7, 3
+	vinsgr2vr.h	$vr8, $a1, 3
+	xvpickve2gr.w	$a1, $xr7, 4
+	vinsgr2vr.h	$vr8, $a1, 4
+	xvpickve2gr.w	$a1, $xr7, 5
+	vinsgr2vr.h	$vr8, $a1, 5
+	xvpickve2gr.w	$a1, $xr7, 6
+	vinsgr2vr.h	$vr8, $a1, 6
+	xvpickve2gr.w	$a1, $xr7, 7
+	vinsgr2vr.h	$vr8, $a1, 7
+	xvmskltz.w	$xr7, $xr7
+	xvpickve2gr.wu	$a1, $xr7, 0
+	xvpickve2gr.wu	$a2, $xr7, 4
+	bstrins.d	$a1, $a2, 7, 4
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	vreplgr2vr.h	$vr7, $a1
+	vandn.v	$vr8, $vr7, $vr8
+	vand.v	$vr0, $vr0, $vr7
+	vor.v	$vr0, $vr0, $vr8
+	xvreplgr2vr.w	$xr7, $a1
+	xvldx	$xr8, $s2, $a0
+	xvandn.v	$xr6, $xr7, $xr6
+	xvand.v	$xr1, $xr1, $xr7
+	xvor.v	$xr1, $xr1, $xr6
+	xvslt.w	$xr6, $xr9, $xr8
+	xvpickve2gr.w	$a1, $xr6, 0
+	vinsgr2vr.h	$vr7, $a1, 0
+	xvpickve2gr.w	$a1, $xr6, 1
+	vinsgr2vr.h	$vr7, $a1, 1
+	xvpickve2gr.w	$a1, $xr6, 2
+	vinsgr2vr.h	$vr7, $a1, 2
+	xvpickve2gr.w	$a1, $xr6, 3
+	vinsgr2vr.h	$vr7, $a1, 3
+	xvpickve2gr.w	$a1, $xr6, 4
+	vinsgr2vr.h	$vr7, $a1, 4
+	xvpickve2gr.w	$a1, $xr6, 5
+	vinsgr2vr.h	$vr7, $a1, 5
+	xvpickve2gr.w	$a1, $xr6, 6
+	vinsgr2vr.h	$vr7, $a1, 6
+	xvpickve2gr.w	$a1, $xr6, 7
+	vinsgr2vr.h	$vr7, $a1, 7
+	xvmskltz.w	$xr6, $xr6
+	xvpickve2gr.wu	$a1, $xr6, 0
+	xvpickve2gr.wu	$a2, $xr6, 4
+	bstrins.d	$a1, $a2, 7, 4
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	vreplgr2vr.h	$vr6, $a1
+	vandn.v	$vr7, $vr6, $vr7
+	vand.v	$vr2, $vr2, $vr6
+	vor.v	$vr2, $vr2, $vr7
+	xvreplgr2vr.w	$xr6, $a1
+	xvldx	$xr7, $s0, $a0
+	xvandn.v	$xr8, $xr6, $xr8
+	xvand.v	$xr3, $xr3, $xr6
+	xvor.v	$xr3, $xr3, $xr8
+	xvslt.w	$xr6, $xr9, $xr7
+	xvpickve2gr.w	$a1, $xr6, 0
+	vinsgr2vr.h	$vr8, $a1, 0
+	xvpickve2gr.w	$a1, $xr6, 1
+	vinsgr2vr.h	$vr8, $a1, 1
+	xvpickve2gr.w	$a1, $xr6, 2
+	vinsgr2vr.h	$vr8, $a1, 2
+	xvpickve2gr.w	$a1, $xr6, 3
+	vinsgr2vr.h	$vr8, $a1, 3
+	xvpickve2gr.w	$a1, $xr6, 4
+	vinsgr2vr.h	$vr8, $a1, 4
+	xvpickve2gr.w	$a1, $xr6, 5
+	vinsgr2vr.h	$vr8, $a1, 5
+	xvpickve2gr.w	$a1, $xr6, 6
+	vinsgr2vr.h	$vr8, $a1, 6
+	xvpickve2gr.w	$a1, $xr6, 7
+	vinsgr2vr.h	$vr8, $a1, 7
+	xvmskltz.w	$xr6, $xr6
+	xvpickve2gr.wu	$a1, $xr6, 0
+	xvpickve2gr.wu	$a2, $xr6, 4
+	bstrins.d	$a1, $a2, 7, 4
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	vreplgr2vr.h	$vr6, $a1
+	vandn.v	$vr8, $vr6, $vr8
+	vand.v	$vr4, $vr4, $vr6
+	vor.v	$vr4, $vr4, $vr8
+	xvreplgr2vr.w	$xr6, $a1
+	xvandn.v	$xr7, $xr6, $xr7
+	xvand.v	$xr5, $xr5, $xr6
+	addi.d	$a0, $a0, 32
+	xvor.v	$xr5, $xr5, $xr7
+	bne	$a0, $s3, .LBB2_10
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
+	vld	$vr8, $a0, %pc_lo12(.LCPI2_0)
+	move	$a0, $zero
+	vrepli.b	$vr10, 0
+	vbitsel.v	$vr6, $vr10, $vr8, $vr4
+	vbsrl.v	$vr7, $vr6, 8
+	vmax.hu	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 4
+	vmax.hu	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 2
+	vmax.hu	$vr6, $vr7, $vr6
+	vpickve2gr.h	$a1, $vr6, 0
+	bstrpick.d	$a1, $a1, 15, 0
+	xvreplgr2vr.w	$xr6, $a1
+	xvperm.w	$xr5, $xr5, $xr6
+	xvpickve2gr.w	$a1, $xr5, 0
+	vbsrl.v	$vr5, $vr4, 8
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 4
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 2
+	vor.v	$vr4, $vr5, $vr4
+	vpickve2gr.h	$a2, $vr4, 0
+	andi	$a2, $a2, 1
+	maskeqz	$a3, $a1, $a2
+	ori	$a1, $zero, 101
+	masknez	$a2, $a1, $a2
+	or	$a2, $a3, $a2
+	vbitsel.v	$vr4, $vr10, $vr8, $vr2
+	vbsrl.v	$vr5, $vr4, 8
+	vmax.hu	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 4
+	vmax.hu	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 2
+	vmax.hu	$vr4, $vr5, $vr4
+	vpickve2gr.h	$a3, $vr4, 0
+	bstrpick.d	$a3, $a3, 15, 0
+	xvreplgr2vr.w	$xr4, $a3
+	xvperm.w	$xr3, $xr3, $xr4
+	xvpickve2gr.w	$a3, $xr3, 0
+	vbsrl.v	$vr3, $vr2, 8
+	vor.v	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vor.v	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vor.v	$vr2, $vr3, $vr2
+	vpickve2gr.h	$a4, $vr2, 0
+	andi	$a4, $a4, 1
+	maskeqz	$a3, $a3, $a4
+	masknez	$a4, $a1, $a4
+	or	$a3, $a3, $a4
+	vbitsel.v	$vr2, $vr10, $vr8, $vr0
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.hu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.hu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.hu	$vr2, $vr3, $vr2
+	vpickve2gr.h	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 15, 0
+	xvreplgr2vr.w	$xr2, $a4
+	xvperm.w	$xr1, $xr1, $xr2
+	xvpickve2gr.w	$a4, $xr1, 0
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.h	$a5, $vr0, 0
+	andi	$a5, $a5, 1
+	maskeqz	$a4, $a4, $a5
+	masknez	$a5, $a1, $a5
+	or	$a4, $a4, $a5
 	ori	$a6, $zero, 75
 	ori	$a5, $zero, 101
 	ori	$a7, $zero, 101
 	.p2align	4, , 16
-.LBB2_12:                               # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.w	$t0, $s1, $a4
+.LBB2_12:                               # =>This Inner Loop Header: Depth=1
+	ldx.w	$t0, $s1, $a0
 	slt	$t1, $a6, $t0
-	ldx.w	$t2, $s2, $a4
+	ldx.w	$t2, $s2, $a0
 	maskeqz	$t0, $t0, $t1
 	masknez	$a7, $a7, $t1
 	or	$a7, $t0, $a7
 	slt	$t0, $a6, $t2
-	ldx.w	$t1, $s0, $a4
+	ldx.w	$t1, $s0, $a0
 	maskeqz	$t2, $t2, $t0
 	masknez	$a5, $a5, $t0
 	or	$a5, $t2, $a5
 	slt	$t0, $a6, $t1
 	maskeqz	$t1, $t1, $t0
-	masknez	$a3, $a3, $t0
-	addi.d	$a4, $a4, 4
-	or	$a3, $t1, $a3
-	bne	$a4, $s3, .LBB2_12
+	masknez	$a1, $a1, $t0
+	addi.d	$a0, $a0, 4
+	or	$a1, $t1, $a1
+	bne	$a0, $s3, .LBB2_12
 # %bb.13:
-	xor	$a1, $a1, $a2
-	xor	$s2, $a1, $a0
+	vst	$vr10, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr8, $sp, 32                   # 16-byte Folded Spill
+	xvst	$xr9, $sp, 48                   # 32-byte Folded Spill
+	xor	$a0, $a3, $a4
+	xor	$s2, $a0, $a2
 	xor	$a0, $a5, $a7
-	xor	$s1, $a0, $a3
+	xor	$s1, $a0, $a1
 	bne	$s2, $s1, .LBB2_29
 # %bb.14:
 	ld.w	$s1, $fp, 28
@@ -909,56 +1209,214 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .Ltmp72:                                # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
+	xvld	$xr10, $sp, 48                  # 32-byte Folded Reload
+	vld	$vr11, $sp, 32                  # 16-byte Folded Reload
+	vld	$vr12, $sp, 16                  # 16-byte Folded Reload
 	bnez	$s1, .LBB2_21
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s0, .LBB2_21
 # %bb.17:
+	xvrepli.w	$xr0, 101
 	lu12i.w	$a0, 24
 	ori	$a0, $a0, 1696
-	ori	$a1, $zero, 75
-	addi.d	$a2, $sp, 32
-	addi.d	$a3, $sp, 24
-	addi.d	$a4, $sp, 16
-	addi.d	$a5, $sp, 40
+	ori	$a1, $zero, 101
+	addi.d	$a2, $sp, 96
+	addi.d	$a3, $sp, 88
+	addi.d	$a4, $sp, 80
+	addi.d	$a5, $sp, 104
 	.p2align	4, , 16
 .LBB2_18:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_19 Depth 2
-	ld.d	$a6, $sp, 32
-	ld.d	$a7, $sp, 24
-	ld.d	$t0, $sp, 16
-	ori	$t1, $zero, 101
-	move	$t2, $a0
-	ori	$t3, $zero, 101
-	ori	$t4, $zero, 101
+	ld.d	$a6, $sp, 96
+	ld.d	$a7, $sp, 88
+	ld.d	$t0, $sp, 80
+	move	$t1, $a0
+	xvori.b	$xr2, $xr0, 0
+	vori.b	$vr1, $vr12, 0
+	xvori.b	$xr4, $xr0, 0
+	vori.b	$vr3, $vr12, 0
+	xvori.b	$xr6, $xr0, 0
+	vori.b	$vr5, $vr12, 0
 	.p2align	4, , 16
-.LBB2_19:                               #   Parent Loop BB2_18 Depth=1
+.LBB2_19:                               # %vector.body88
+                                        #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t5, $a6, 0
-	slt	$t6, $a1, $t5
-	ld.w	$t7, $a7, 0
-	masknez	$t4, $t4, $t6
-	maskeqz	$t5, $t5, $t6
-	or	$t4, $t5, $t4
-	slt	$t5, $a1, $t7
-	ld.w	$t6, $t0, 0
-	masknez	$t3, $t3, $t5
-	maskeqz	$t5, $t7, $t5
-	or	$t3, $t5, $t3
-	slt	$t5, $a1, $t6
-	masknez	$t1, $t1, $t5
-	maskeqz	$t5, $t6, $t5
-	or	$t1, $t5, $t1
-	addi.d	$t2, $t2, -1
-	addi.d	$t0, $t0, 4
-	addi.d	$a7, $a7, 4
-	addi.d	$a6, $a6, 4
-	bnez	$t2, .LBB2_19
+	xvld	$xr7, $a6, 0
+	xvslt.w	$xr8, $xr10, $xr7
+	xvpickve2gr.w	$t2, $xr8, 0
+	vinsgr2vr.h	$vr9, $t2, 0
+	xvpickve2gr.w	$t2, $xr8, 1
+	vinsgr2vr.h	$vr9, $t2, 1
+	xvpickve2gr.w	$t2, $xr8, 2
+	vinsgr2vr.h	$vr9, $t2, 2
+	xvpickve2gr.w	$t2, $xr8, 3
+	vinsgr2vr.h	$vr9, $t2, 3
+	xvpickve2gr.w	$t2, $xr8, 4
+	vinsgr2vr.h	$vr9, $t2, 4
+	xvpickve2gr.w	$t2, $xr8, 5
+	vinsgr2vr.h	$vr9, $t2, 5
+	xvpickve2gr.w	$t2, $xr8, 6
+	vinsgr2vr.h	$vr9, $t2, 6
+	xvpickve2gr.w	$t2, $xr8, 7
+	vinsgr2vr.h	$vr9, $t2, 7
+	xvmskltz.w	$xr8, $xr8
+	xvpickve2gr.wu	$t2, $xr8, 0
+	xvpickve2gr.wu	$t3, $xr8, 4
+	bstrins.d	$t2, $t3, 7, 4
+	sltui	$t2, $t2, 1
+	maskeqz	$t2, $s4, $t2
+	vreplgr2vr.h	$vr8, $t2
+	vandn.v	$vr9, $vr8, $vr9
+	vand.v	$vr5, $vr5, $vr8
+	vor.v	$vr5, $vr5, $vr9
+	xvreplgr2vr.w	$xr8, $t2
+	xvld	$xr9, $a7, 0
+	xvandn.v	$xr7, $xr8, $xr7
+	xvand.v	$xr6, $xr6, $xr8
+	xvor.v	$xr6, $xr6, $xr7
+	xvslt.w	$xr7, $xr10, $xr9
+	xvpickve2gr.w	$t2, $xr7, 0
+	vinsgr2vr.h	$vr8, $t2, 0
+	xvpickve2gr.w	$t2, $xr7, 1
+	vinsgr2vr.h	$vr8, $t2, 1
+	xvpickve2gr.w	$t2, $xr7, 2
+	vinsgr2vr.h	$vr8, $t2, 2
+	xvpickve2gr.w	$t2, $xr7, 3
+	vinsgr2vr.h	$vr8, $t2, 3
+	xvpickve2gr.w	$t2, $xr7, 4
+	vinsgr2vr.h	$vr8, $t2, 4
+	xvpickve2gr.w	$t2, $xr7, 5
+	vinsgr2vr.h	$vr8, $t2, 5
+	xvpickve2gr.w	$t2, $xr7, 6
+	vinsgr2vr.h	$vr8, $t2, 6
+	xvpickve2gr.w	$t2, $xr7, 7
+	vinsgr2vr.h	$vr8, $t2, 7
+	xvmskltz.w	$xr7, $xr7
+	xvpickve2gr.wu	$t2, $xr7, 0
+	xvpickve2gr.wu	$t3, $xr7, 4
+	bstrins.d	$t2, $t3, 7, 4
+	sltui	$t2, $t2, 1
+	maskeqz	$t2, $s4, $t2
+	vreplgr2vr.h	$vr7, $t2
+	vandn.v	$vr8, $vr7, $vr8
+	vand.v	$vr3, $vr3, $vr7
+	vor.v	$vr3, $vr3, $vr8
+	xvreplgr2vr.w	$xr7, $t2
+	xvld	$xr8, $t0, 0
+	xvandn.v	$xr9, $xr7, $xr9
+	xvand.v	$xr4, $xr4, $xr7
+	xvor.v	$xr4, $xr4, $xr9
+	xvslt.w	$xr7, $xr10, $xr8
+	xvpickve2gr.w	$t2, $xr7, 0
+	vinsgr2vr.h	$vr9, $t2, 0
+	xvpickve2gr.w	$t2, $xr7, 1
+	vinsgr2vr.h	$vr9, $t2, 1
+	xvpickve2gr.w	$t2, $xr7, 2
+	vinsgr2vr.h	$vr9, $t2, 2
+	xvpickve2gr.w	$t2, $xr7, 3
+	vinsgr2vr.h	$vr9, $t2, 3
+	xvpickve2gr.w	$t2, $xr7, 4
+	vinsgr2vr.h	$vr9, $t2, 4
+	xvpickve2gr.w	$t2, $xr7, 5
+	vinsgr2vr.h	$vr9, $t2, 5
+	xvpickve2gr.w	$t2, $xr7, 6
+	vinsgr2vr.h	$vr9, $t2, 6
+	xvpickve2gr.w	$t2, $xr7, 7
+	vinsgr2vr.h	$vr9, $t2, 7
+	xvmskltz.w	$xr7, $xr7
+	xvpickve2gr.wu	$t2, $xr7, 0
+	xvpickve2gr.wu	$t3, $xr7, 4
+	bstrins.d	$t2, $t3, 7, 4
+	sltui	$t2, $t2, 1
+	maskeqz	$t2, $s4, $t2
+	vreplgr2vr.h	$vr7, $t2
+	vandn.v	$vr9, $vr7, $vr9
+	vand.v	$vr1, $vr1, $vr7
+	vor.v	$vr1, $vr1, $vr9
+	xvreplgr2vr.w	$xr7, $t2
+	xvandn.v	$xr8, $xr7, $xr8
+	xvand.v	$xr2, $xr2, $xr7
+	xvor.v	$xr2, $xr2, $xr8
+	addi.d	$t1, $t1, -8
+	addi.d	$t0, $t0, 32
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	bnez	$t1, .LBB2_19
 # %bb.20:                               # %_ZN9benchmark5State3endEv.exit
                                         #   in Loop: Header=BB2_18 Depth=1
-	xor	$a6, $t3, $t4
-	xor	$a6, $a6, $t1
-	st.w	$a6, $sp, 40
+	vbitsel.v	$vr7, $vr12, $vr11, $vr5
+	vbsrl.v	$vr8, $vr7, 8
+	vmax.hu	$vr7, $vr8, $vr7
+	vbsrl.v	$vr8, $vr7, 4
+	vmax.hu	$vr7, $vr8, $vr7
+	vbsrl.v	$vr8, $vr7, 2
+	vmax.hu	$vr7, $vr8, $vr7
+	vpickve2gr.h	$a6, $vr7, 0
+	bstrpick.d	$a6, $a6, 15, 0
+	xvreplgr2vr.w	$xr7, $a6
+	xvperm.w	$xr6, $xr6, $xr7
+	xvpickve2gr.w	$a6, $xr6, 0
+	vbsrl.v	$vr6, $vr5, 8
+	vor.v	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 4
+	vor.v	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 2
+	vor.v	$vr5, $vr6, $vr5
+	vpickve2gr.h	$a7, $vr5, 0
+	andi	$a7, $a7, 1
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $a1, $a7
+	or	$a6, $a6, $a7
+	vbitsel.v	$vr5, $vr12, $vr11, $vr3
+	vbsrl.v	$vr6, $vr5, 8
+	vmax.hu	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 4
+	vmax.hu	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 2
+	vmax.hu	$vr5, $vr6, $vr5
+	vpickve2gr.h	$a7, $vr5, 0
+	bstrpick.d	$a7, $a7, 15, 0
+	xvreplgr2vr.w	$xr5, $a7
+	xvperm.w	$xr4, $xr4, $xr5
+	xvpickve2gr.w	$a7, $xr4, 0
+	vbsrl.v	$vr4, $vr3, 8
+	vor.v	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vor.v	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vor.v	$vr3, $vr4, $vr3
+	vpickve2gr.h	$t0, $vr3, 0
+	andi	$t0, $t0, 1
+	maskeqz	$a7, $a7, $t0
+	masknez	$t0, $a1, $t0
+	or	$a7, $a7, $t0
+	vbitsel.v	$vr3, $vr12, $vr11, $vr1
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.hu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.hu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vmax.hu	$vr3, $vr4, $vr3
+	vpickve2gr.h	$t0, $vr3, 0
+	bstrpick.d	$t0, $t0, 15, 0
+	xvreplgr2vr.w	$xr3, $t0
+	xvperm.w	$xr2, $xr2, $xr3
+	xvpickve2gr.w	$t0, $xr2, 0
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.h	$t1, $vr1, 0
+	andi	$t1, $t1, 1
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a1, $t1
+	or	$t0, $t0, $t1
+	xor	$a6, $a7, $a6
+	xor	$a6, $a6, $t0
+	st.w	$a6, $sp, 104
 	#APP
 	#NO_APP
 	#APP
@@ -977,26 +1435,26 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .Ltmp74:                                # EH_LABEL
 # %bb.22:                               # %_ZL21benchmark_csa_autovecIiEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB2_24
 # %bb.23:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i44
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB2_24:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit45
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 88
 	beqz	$a0, .LBB2_26
 # %bb.25:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i47
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB2_26:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit48
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 96
 	beqz	$a0, .LBB2_28
 # %bb.27:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i50
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB2_28:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit51
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1040
+	addi.d	$sp, $sp, 1104
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -1070,14 +1528,14 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .LBB2_38:
 .Ltmp75:                                # EH_LABEL
-	ld.d	$s0, $sp, 16
+	ld.d	$s0, $sp, 80
 	move	$fp, $a0
 	bnez	$s0, .LBB2_44
 # %bb.39:
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 88
 	bnez	$s2, .LBB2_45
 .LBB2_40:
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 96
 	bnez	$s1, .LBB2_46
 .LBB2_41:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit42
 	move	$a0, $fp
@@ -1091,13 +1549,13 @@ _Z41BENCHMARK_multi_csa_only_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 88
 	beqz	$s2, .LBB2_40
 .LBB2_45:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i38
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 96
 	beqz	$s1, .LBB2_41
 .LBB2_46:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i41
 	move	$a0, $s1
@@ -1480,8 +1938,19 @@ GCC_except_table3:
 .Lcst_end3:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE
+.LCPI4_0:
+	.half	0                               # 0x0
+	.half	1                               # 0x1
+	.half	2                               # 0x2
+	.half	3                               # 0x3
+	.half	4                               # 0x4
+	.half	5                               # 0x5
+	.half	6                               # 0x6
+	.half	7                               # 0x7
 	.text
-	.globl	_Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE # -- Begin function _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE
+	.globl	_Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE
 	.p2align	5
 	.type	_Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE,@function
 _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE
@@ -1500,6 +1969,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
 	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1508,47 +1978,48 @@ _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
+	.cfi_offset 29, -72
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1024
-	.cfi_def_cfa_offset 5104
+	addi.d	$sp, $sp, -1168
+	.cfi_def_cfa_offset 5248
 	move	$fp, $a0
 	lu12i.w	$a0, 97
-	ori	$s3, $a0, 2688
-	move	$a0, $s3
+	ori	$s0, $a0, 2688
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$a0, $sp, 24
+	move	$s2, $a0
+	st.d	$a0, $sp, 160
 .Ltmp94:                                # EH_LABEL
-	move	$a0, $s3
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp95:                                # EH_LABEL
 # %bb.1:
-	move	$s2, $a0
-	st.d	$a0, $sp, 16
+	move	$s3, $a0
+	st.d	$a0, $sp, 152
 .Ltmp97:                                # EH_LABEL
-	move	$a0, $s3
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp98:                                # EH_LABEL
 # %bb.2:
-	move	$s0, $a0
-	st.d	$a0, $sp, 8
+	move	$s1, $a0
+	st.d	$a0, $sp, 144
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 100
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1072
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 32
+	st.d	$a2, $sp, 168
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 32
+	addi.d	$a4, $sp, 168
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB4_3:                                # =>This Inner Loop Header: Depth=1
@@ -1565,148 +2036,214 @@ _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 928
+	ori	$a1, $a1, 1064
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB4_5:                                # =>This Inner Loop Header: Depth=1
 .Ltmp100:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 936
+	ori	$a0, $a0, 1072
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 168
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 936
+	ori	$a2, $a2, 1072
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp101:                               # EH_LABEL
 # %bb.6:                                # %.noexc8
                                         #   in Loop: Header=BB4_5 Depth=1
-	stx.w	$a0, $s1, $s4
+	stx.w	$a0, $s2, $s4
 .Ltmp102:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 936
+	ori	$a0, $a0, 1072
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 168
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 936
+	ori	$a2, $a2, 1072
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp103:                               # EH_LABEL
 # %bb.7:                                # %.noexc9
                                         #   in Loop: Header=BB4_5 Depth=1
-	stx.w	$a0, $s2, $s4
+	stx.w	$a0, $s3, $s4
 .Ltmp104:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 936
+	ori	$a0, $a0, 1072
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 168
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 936
+	ori	$a2, $a2, 1072
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIiEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEiRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp105:                               # EH_LABEL
 # %bb.8:                                # %.noexc10
                                         #   in Loop: Header=BB4_5 Depth=1
-	stx.w	$a0, $s0, $s4
+	stx.w	$a0, $s1, $s4
 	addi.d	$s4, $s4, 4
-	bne	$s4, $s3, .LBB4_5
-# %bb.9:
+	bne	$s4, $s0, .LBB4_5
+# %bb.9:                                # %vector.ph
 	move	$a0, $zero
+	vrepli.b	$vr0, 0
+	xvrepli.w	$xr1, 101
+	xvrepli.w	$xr5, 13
+	xvrepli.w	$xr6, 5
+	xvrepli.w	$xr7, 75
+	addi.d	$s6, $zero, -1
+	.p2align	4, , 16
+.LBB4_10:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvldx	$xr2, $s3, $a0
+	xvldx	$xr3, $s2, $a0
+	xvmul.w	$xr2, $xr2, $xr6
+	xvmadd.w	$xr2, $xr3, $xr5
+	xvstx	$xr2, $s1, $a0
+	xvslt.w	$xr2, $xr7, $xr3
+	xvpickve2gr.w	$a1, $xr2, 0
+	vinsgr2vr.h	$vr4, $a1, 0
+	xvpickve2gr.w	$a1, $xr2, 1
+	vinsgr2vr.h	$vr4, $a1, 1
+	xvpickve2gr.w	$a1, $xr2, 2
+	vinsgr2vr.h	$vr4, $a1, 2
+	xvpickve2gr.w	$a1, $xr2, 3
+	vinsgr2vr.h	$vr4, $a1, 3
+	xvpickve2gr.w	$a1, $xr2, 4
+	vinsgr2vr.h	$vr4, $a1, 4
+	xvpickve2gr.w	$a1, $xr2, 5
+	vinsgr2vr.h	$vr4, $a1, 5
+	xvpickve2gr.w	$a1, $xr2, 6
+	vinsgr2vr.h	$vr4, $a1, 6
+	xvpickve2gr.w	$a1, $xr2, 7
+	vinsgr2vr.h	$vr4, $a1, 7
+	xvmskltz.w	$xr2, $xr2
+	xvpickve2gr.wu	$a1, $xr2, 0
+	xvpickve2gr.wu	$a2, $xr2, 4
+	bstrins.d	$a1, $a2, 7, 4
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s6, $a1
+	vreplgr2vr.h	$vr2, $a1
+	vandn.v	$vr4, $vr2, $vr4
+	vand.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr4
+	xvreplgr2vr.w	$xr2, $a1
+	xvandn.v	$xr3, $xr2, $xr3
+	xvand.v	$xr1, $xr1, $xr2
+	addi.d	$a0, $a0, 32
+	xvor.v	$xr1, $xr1, $xr3
+	bne	$a0, $s0, .LBB4_10
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
+	vld	$vr4, $a0, %pc_lo12(.LCPI4_0)
+	move	$a0, $zero
+	vrepli.b	$vr8, 0
+	vbitsel.v	$vr2, $vr8, $vr4, $vr0
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.hu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.hu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.hu	$vr2, $vr3, $vr2
+	vpickve2gr.h	$a1, $vr2, 0
+	bstrpick.d	$a1, $a1, 15, 0
+	xvreplgr2vr.w	$xr2, $a1
+	xvperm.w	$xr1, $xr1, $xr2
+	xvpickve2gr.w	$a1, $xr1, 0
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.h	$a2, $vr0, 0
+	andi	$a2, $a2, 1
+	maskeqz	$a1, $a1, $a2
 	ori	$s4, $zero, 101
+	masknez	$a2, $s4, $a2
+	or	$s5, $a1, $a2
 	ori	$a1, $zero, 75
 	.p2align	4, , 16
-.LBB4_10:                               # =>This Inner Loop Header: Depth=1
-	ldx.w	$a2, $s1, $a0
-	ldx.w	$a3, $s2, $a0
+.LBB4_12:                               # %_ZL26run_csa_with_arith_autovecIiET_PS0_S1_S1_S0_.exit
+                                        # =>This Inner Loop Header: Depth=1
+	ldx.w	$a2, $s2, $a0
+	ldx.w	$a3, $s3, $a0
 	alsl.d	$a4, $a2, $a2, 1
 	alsl.d	$a4, $a4, $a2, 2
 	alsl.d	$a3, $a3, $a3, 2
 	add.d	$a3, $a3, $a4
-	stx.w	$a3, $s0, $a0
+	stx.w	$a3, $s1, $a0
 	slt	$a3, $a1, $a2
 	maskeqz	$a2, $a2, $a3
 	masknez	$a3, $s4, $a3
 	addi.d	$a0, $a0, 4
 	or	$s4, $a2, $a3
-	bne	$a0, $s3, .LBB4_10
-# %bb.11:                               # %_ZL26run_csa_with_arith_autovecIiET_PS0_S1_S1_S0_.exit.preheader
-	move	$a0, $zero
-	ori	$s5, $zero, 101
-	ori	$a1, $zero, 75
-	.p2align	4, , 16
-.LBB4_12:                               # %_ZL26run_csa_with_arith_autovecIiET_PS0_S1_S1_S0_.exit
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.w	$a2, $s1, $a0
-	ldx.w	$a3, $s2, $a0
-	alsl.d	$a4, $a2, $a2, 1
-	alsl.d	$a4, $a4, $a2, 2
-	alsl.d	$a3, $a3, $a3, 2
-	add.d	$a3, $a3, $a4
-	stx.w	$a3, $s0, $a0
-	slt	$a3, $a1, $a2
-	maskeqz	$a2, $a2, $a3
-	masknez	$a3, $s5, $a3
-	addi.d	$a0, $a0, 4
-	or	$s5, $a2, $a3
-	bne	$a0, $s3, .LBB4_12
+	bne	$a0, $s0, .LBB4_12
 # %bb.13:                               # %_ZL24run_csa_with_arith_novecIiET_PS0_S1_S1_S0_.exit
-	bne	$s4, $s5, .LBB4_29
+	vst	$vr8, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
+	xvst	$xr7, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr6, $sp, 80                   # 32-byte Folded Spill
+	xvst	$xr5, $sp, 112                  # 32-byte Folded Spill
+	bne	$s5, $s4, .LBB4_34
 # %bb.14:
-	ld.w	$s1, $fp, 28
-	ld.d	$s0, $fp, 16
+	ld.w	$s2, $fp, 28
+	ld.d	$s1, $fp, 16
 .Ltmp118:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp119:                               # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s1, .LBB4_21
+	xvld	$xr6, $sp, 112                  # 32-byte Folded Reload
+	xvld	$xr7, $sp, 80                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 48                   # 32-byte Folded Reload
+	vld	$vr9, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr10, $sp, 16                  # 16-byte Folded Reload
+	bnez	$s2, .LBB4_26
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s0, .LBB4_21
+	beqz	$s1, .LBB4_26
 # %bb.17:
 	lu12i.w	$a0, 24
 	ori	$a0, $a0, 1696
 	ori	$a1, $zero, 75
-	addi.d	$a2, $sp, 24
-	addi.d	$a3, $sp, 16
-	addi.d	$a4, $sp, 8
-	addi.d	$a5, $sp, 32
+	addi.d	$a2, $sp, 160
+	addi.d	$a3, $sp, 152
+	addi.d	$a4, $sp, 144
+	addi.d	$a5, $sp, 168
+	xvrepli.w	$xr0, 101
+	ori	$a6, $zero, 101
+	b	.LBB4_20
 	.p2align	4, , 16
-.LBB4_18:                               # %.lr.ph
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_19 Depth 2
-	ld.d	$a6, $sp, 24
-	ld.d	$a7, $sp, 16
-	ld.d	$t0, $sp, 8
-	ori	$t1, $zero, 101
-	move	$t2, $a0
-	.p2align	4, , 16
-.LBB4_19:                               #   Parent Loop BB4_18 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.w	$t3, $a6, 0
-	ld.w	$t4, $a7, 0
-	alsl.d	$t5, $t3, $t3, 1
-	alsl.d	$t3, $t5, $t3, 2
-	alsl.d	$t4, $t4, $t4, 2
-	add.d	$t3, $t4, $t3
-	st.w	$t3, $t0, 0
-	ld.w	$t3, $a6, 0
-	slt	$t4, $a1, $t3
-	masknez	$t1, $t1, $t4
-	maskeqz	$t3, $t3, $t4
-	or	$t1, $t3, $t1
-	addi.d	$t2, $t2, -1
-	addi.d	$t0, $t0, 4
-	addi.d	$a7, $a7, 4
-	addi.d	$a6, $a6, 4
-	bnez	$t2, .LBB4_19
-# %bb.20:                               # %_ZL26run_csa_with_arith_autovecIiET_PS0_S1_S1_S0_.exit27
-                                        #   in Loop: Header=BB4_18 Depth=1
-	st.w	$t1, $sp, 32
+.LBB4_18:                               # %middle.block87
+                                        #   in Loop: Header=BB4_20 Depth=1
+	vbitsel.v	$vr3, $vr10, $vr9, $vr1
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.hu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.hu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vmax.hu	$vr3, $vr4, $vr3
+	vpickve2gr.h	$a7, $vr3, 0
+	bstrpick.d	$a7, $a7, 15, 0
+	xvreplgr2vr.w	$xr3, $a7
+	xvperm.w	$xr2, $xr2, $xr3
+	xvpickve2gr.w	$a7, $xr2, 0
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.h	$t0, $vr1, 0
+	andi	$t0, $t0, 1
+	maskeqz	$a7, $a7, $t0
+	masknez	$t0, $a6, $t0
+	or	$t2, $a7, $t0
+.LBB4_19:                               # %_ZL26run_csa_with_arith_autovecIiET_PS0_S1_S1_S0_.exit27
+                                        #   in Loop: Header=BB4_20 Depth=1
+	st.w	$t2, $sp, 168
 	#APP
 	#NO_APP
 	#APP
@@ -1715,36 +2252,135 @@ _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	#NO_APP
 	#APP
 	#NO_APP
-	addi.d	$s0, $s0, -1
+	addi.d	$s1, $s1, -1
 	#MEMBARRIER
-	bnez	$s0, .LBB4_18
-.LBB4_21:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
+	beqz	$s1, .LBB4_26
+.LBB4_20:                               # %.lr.ph
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_23 Depth 2
+                                        #     Child Loop BB4_25 Depth 2
+	ld.d	$a7, $sp, 144
+	ld.d	$t0, $sp, 160
+	ld.d	$t1, $sp, 152
+	add.d	$t2, $a7, $s0
+	add.d	$t3, $t0, $s0
+	sltu	$t3, $a7, $t3
+	sltu	$t4, $t0, $t2
+	and	$t3, $t3, $t4
+	bnez	$t3, .LBB4_24
+# %bb.21:                               # %.lr.ph
+                                        #   in Loop: Header=BB4_20 Depth=1
+	add.d	$t3, $t1, $s0
+	sltu	$t3, $a7, $t3
+	sltu	$t2, $t1, $t2
+	and	$t2, $t3, $t2
+	bnez	$t2, .LBB4_24
+# %bb.22:                               # %vector.body80.preheader
+                                        #   in Loop: Header=BB4_20 Depth=1
+	move	$t2, $a0
+	xvori.b	$xr2, $xr0, 0
+	vori.b	$vr1, $vr10, 0
+	.p2align	4, , 16
+.LBB4_23:                               # %vector.body80
+                                        #   Parent Loop BB4_20 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	xvld	$xr3, $t1, 0
+	xvld	$xr4, $t0, 0
+	xvmul.w	$xr3, $xr3, $xr7
+	xvmadd.w	$xr3, $xr4, $xr6
+	xvst	$xr3, $a7, 0
+	xvslt.w	$xr3, $xr8, $xr4
+	xvpickve2gr.w	$t3, $xr3, 0
+	vinsgr2vr.h	$vr5, $t3, 0
+	xvpickve2gr.w	$t3, $xr3, 1
+	vinsgr2vr.h	$vr5, $t3, 1
+	xvpickve2gr.w	$t3, $xr3, 2
+	vinsgr2vr.h	$vr5, $t3, 2
+	xvpickve2gr.w	$t3, $xr3, 3
+	vinsgr2vr.h	$vr5, $t3, 3
+	xvpickve2gr.w	$t3, $xr3, 4
+	vinsgr2vr.h	$vr5, $t3, 4
+	xvpickve2gr.w	$t3, $xr3, 5
+	vinsgr2vr.h	$vr5, $t3, 5
+	xvpickve2gr.w	$t3, $xr3, 6
+	vinsgr2vr.h	$vr5, $t3, 6
+	xvpickve2gr.w	$t3, $xr3, 7
+	vinsgr2vr.h	$vr5, $t3, 7
+	xvmskltz.w	$xr3, $xr3
+	xvpickve2gr.wu	$t3, $xr3, 0
+	xvpickve2gr.wu	$t4, $xr3, 4
+	bstrins.d	$t3, $t4, 7, 4
+	sltui	$t3, $t3, 1
+	maskeqz	$t3, $s6, $t3
+	vreplgr2vr.h	$vr3, $t3
+	vandn.v	$vr5, $vr3, $vr5
+	vand.v	$vr1, $vr1, $vr3
+	vor.v	$vr1, $vr1, $vr5
+	xvreplgr2vr.w	$xr3, $t3
+	xvandn.v	$xr4, $xr3, $xr4
+	xvand.v	$xr2, $xr2, $xr3
+	xvor.v	$xr2, $xr2, $xr4
+	addi.d	$t2, $t2, -8
+	addi.d	$a7, $a7, 32
+	addi.d	$t1, $t1, 32
+	addi.d	$t0, $t0, 32
+	bnez	$t2, .LBB4_23
+	b	.LBB4_18
+	.p2align	4, , 16
+.LBB4_24:                               # %scalar.ph.preheader
+                                        #   in Loop: Header=BB4_20 Depth=1
+	ori	$t2, $zero, 101
+	move	$t3, $a0
+	.p2align	4, , 16
+.LBB4_25:                               # %scalar.ph
+                                        #   Parent Loop BB4_20 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.w	$t4, $t0, 0
+	ld.w	$t5, $t1, 0
+	alsl.d	$t6, $t4, $t4, 1
+	alsl.d	$t4, $t6, $t4, 2
+	alsl.d	$t5, $t5, $t5, 2
+	add.d	$t4, $t5, $t4
+	st.w	$t4, $a7, 0
+	ld.w	$t4, $t0, 0
+	slt	$t5, $a1, $t4
+	masknez	$t2, $t2, $t5
+	maskeqz	$t4, $t4, $t5
+	or	$t2, $t4, $t2
+	addi.d	$t3, $t3, -1
+	addi.d	$a7, $a7, 4
+	addi.d	$t1, $t1, 4
+	addi.d	$t0, $t0, 4
+	bnez	$t3, .LBB4_25
+	b	.LBB4_19
+.LBB4_26:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp120:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp121:                               # EH_LABEL
-# %bb.22:                               # %_ZL21benchmark_csa_autovecIiEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 8
-	beqz	$a0, .LBB4_24
-# %bb.23:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
+# %bb.27:                               # %_ZL21benchmark_csa_autovecIiEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
+	ld.d	$a0, $sp, 144
+	beqz	$a0, .LBB4_29
+# %bb.28:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB4_24:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit37
-	ld.d	$a0, $sp, 16
-	beqz	$a0, .LBB4_26
-# %bb.25:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
+.LBB4_29:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit37
+	ld.d	$a0, $sp, 152
+	beqz	$a0, .LBB4_31
+# %bb.30:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB4_26:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit40
-	ld.d	$a0, $sp, 24
-	beqz	$a0, .LBB4_28
-# %bb.27:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
+.LBB4_31:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit40
+	ld.d	$a0, $sp, 160
+	beqz	$a0, .LBB4_33
+# %bb.32:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB4_28:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit43
+.LBB4_33:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit43
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1040
+	addi.d	$sp, $sp, 1184
+	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
 	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
@@ -1755,7 +2391,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB4_29:
+.LBB4_34:
 .Ltmp107:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -1765,15 +2401,15 @@ _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp108:                               # EH_LABEL
-# %bb.30:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.35:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp109:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
-	move	$a1, $s4
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp110:                               # EH_LABEL
-# %bb.31:
+# %bb.36:
 .Ltmp111:                               # EH_LABEL
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
@@ -1783,73 +2419,73 @@ _Z41BENCHMARK_csa_with_arith_autovec_int32_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp112:                               # EH_LABEL
-# %bb.32:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
+# %bb.37:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
 .Ltmp113:                               # EH_LABEL
 	move	$a0, $fp
-	move	$a1, $s5
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp114:                               # EH_LABEL
-# %bb.33:
+# %bb.38:
 .Ltmp115:                               # EH_LABEL
 	pcalau12i	$a1, %pc_hi20(.L.str.39)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.39)
 	pcaddu18i	$ra, %call36(_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc)
 	jirl	$ra, $ra, 0
 .Ltmp116:                               # EH_LABEL
-# %bb.34:
+# %bb.39:
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB4_35:
+.LBB4_40:
 .Ltmp117:                               # EH_LABEL
-	b	.LBB4_43
-.LBB4_36:                               # %.thread
+	b	.LBB4_48
+.LBB4_41:                               # %.thread
 .Ltmp99:                                # EH_LABEL
 	move	$fp, $a0
-	b	.LBB4_45
-.LBB4_37:                               # %.thread55
+	b	.LBB4_50
+.LBB4_42:                               # %.thread55
 .Ltmp96:                                # EH_LABEL
 	move	$fp, $a0
-	move	$a0, $s1
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB4_38:
-.Ltmp122:                               # EH_LABEL
-	ld.d	$s0, $sp, 8
-	move	$fp, $a0
-	bnez	$s0, .LBB4_44
-# %bb.39:
-	ld.d	$s2, $sp, 16
-	bnez	$s2, .LBB4_45
-.LBB4_40:
-	ld.d	$s1, $sp, 24
-	bnez	$s1, .LBB4_46
-.LBB4_41:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit34
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB4_42:
-.Ltmp106:                               # EH_LABEL
-.LBB4_43:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$fp, $a0
-.LBB4_44:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 16
-	beqz	$s2, .LBB4_40
-.LBB4_45:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i30
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 24
-	beqz	$s1, .LBB4_41
-.LBB4_46:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB4_43:
+.Ltmp122:                               # EH_LABEL
+	ld.d	$s1, $sp, 144
+	move	$fp, $a0
+	bnez	$s1, .LBB4_49
+# %bb.44:
+	ld.d	$s3, $sp, 152
+	bnez	$s3, .LBB4_50
+.LBB4_45:
+	ld.d	$s2, $sp, 160
+	bnez	$s2, .LBB4_51
+.LBB4_46:                               # %_ZNSt10unique_ptrIA_iSt14default_deleteIS0_EED2Ev.exit34
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB4_47:
+.Ltmp106:                               # EH_LABEL
+.LBB4_48:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
+	move	$fp, $a0
+.LBB4_49:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
 	move	$a0, $s1
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$s3, $sp, 152
+	beqz	$s3, .LBB4_45
+.LBB4_50:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i30
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$s2, $sp, 160
+	beqz	$s2, .LBB4_46
+.LBB4_51:                               # %_ZNKSt14default_deleteIA_iEclIiEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -2222,8 +2858,43 @@ GCC_except_table5:
 .Lcst_end5:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE
+.LCPI6_0:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	11                              # 0xb
+	.byte	12                              # 0xc
+	.byte	13                              # 0xd
+	.byte	14                              # 0xe
+	.byte	15                              # 0xf
+	.byte	16                              # 0x10
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	24                              # 0x18
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 	.text
-	.globl	_Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE # -- Begin function _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE
+	.globl	_Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE
 	.p2align	5
 	.type	_Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE,@function
 _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE
@@ -2251,16 +2922,16 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1024
-	.cfi_def_cfa_offset 5104
-	move	$s0, $a0
+	addi.d	$sp, $sp, -1136
+	.cfi_def_cfa_offset 5216
+	move	$fp, $a0
 	lu12i.w	$s4, 24
 	ori	$s2, $s4, 1696
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 136
 .Ltmp141:                               # EH_LABEL
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2268,29 +2939,29 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 .Ltmp142:                               # EH_LABEL
 # %bb.1:
 	move	$s3, $a0
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 128
 .Ltmp144:                               # EH_LABEL
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp145:                               # EH_LABEL
 # %bb.2:
-	move	$fp, $a0
-	st.d	$a0, $sp, 8
+	move	$s0, $a0
+	st.d	$a0, $sp, 120
 	lu12i.w	$a0, 6
 	ori	$a0, $a0, 1024
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 942
+	ori	$a1, $a1, 1054
 	add.d	$a1, $sp, $a1
 	st.h	$a0, $a1, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 32
+	st.d	$a2, $sp, 144
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 32
+	addi.d	$a4, $sp, 144
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB6_3:                                # =>This Inner Loop Header: Depth=1
@@ -2307,18 +2978,18 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 	move	$s5, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 928
+	ori	$a1, $a1, 1040
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB6_5:                                # =>This Inner Loop Header: Depth=1
 .Ltmp147:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 942
+	ori	$a0, $a0, 1054
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 144
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 942
+	ori	$a2, $a2, 1054
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -2328,11 +2999,11 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 	stx.b	$a0, $s1, $s5
 .Ltmp149:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 942
+	ori	$a0, $a0, 1054
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 144
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 942
+	ori	$a2, $a2, 1054
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -2342,36 +3013,85 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 	stx.b	$a0, $s3, $s5
 .Ltmp151:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 942
+	ori	$a0, $a0, 1054
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 144
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 942
+	ori	$a2, $a2, 1054
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp152:                               # EH_LABEL
 # %bb.8:                                # %.noexc10
                                         #   in Loop: Header=BB6_5 Depth=1
-	stx.b	$a0, $fp, $s5
+	stx.b	$a0, $s0, $s5
 	addi.d	$s5, $s5, 1
 	bne	$s5, $s2, .LBB6_5
-# %bb.9:
-	ori	$a0, $zero, 101
-	ori	$a1, $zero, 90
-	move	$a2, $s1
+# %bb.9:                                # %vector.ph
+	xvrepli.b	$xr0, 0
+	xvrepli.b	$xr1, 101
+	xvrepli.b	$xr5, 90
+	addi.d	$s3, $zero, -1
+	move	$a0, $s1
 	.p2align	4, , 16
-.LBB6_10:                               # =>This Inner Loop Header: Depth=1
-	ld.bu	$a3, $a2, 0
-	sltu	$a4, $a1, $a3
-	masknez	$a0, $a0, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$a0, $a3, $a0
-	addi.d	$s2, $s2, -1
-	addi.d	$a2, $a2, 1
+.LBB6_10:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvld	$xr2, $a0, 0
+	xvslt.bu	$xr3, $xr5, $xr2
+	xvmskltz.b	$xr4, $xr3
+	xvpickve2gr.wu	$a1, $xr4, 0
+	xvpickve2gr.wu	$a2, $xr4, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s3, $a1
+	xvreplgr2vr.b	$xr4, $a1
+	xvandn.v	$xr3, $xr4, $xr3
+	xvand.v	$xr0, $xr0, $xr4
+	xvor.v	$xr0, $xr0, $xr3
+	xvandn.v	$xr2, $xr4, $xr2
+	xvand.v	$xr1, $xr1, $xr4
+	xvor.v	$xr1, $xr1, $xr2
+	addi.d	$s2, $s2, -32
+	addi.d	$a0, $a0, 32
 	bnez	$s2, .LBB6_10
-# %bb.11:                               # %_ZL27run_single_csa_only_autovecIhET_PS0_S1_S1_S0_.exit.preheader
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
+	xvld	$xr4, $a0, %pc_lo12(.LCPI6_0)
+	xvrepli.b	$xr6, 0
+	xvbitsel.v	$xr2, $xr6, $xr4, $xr0
+	xvpermi.q	$xr3, $xr2, 1
+	vmax.bu	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 1
+	vmax.bu	$vr2, $vr3, $vr2
+	vpickve2gr.b	$a0, $vr2, 0
+	andi	$a0, $a0, 255
+	movgr2fr.w	$fa2, $a0
+	xvpermi.q	$xr3, $xr1, 1
+	xvshuf.b	$xr1, $xr3, $xr1, $xr2
+	vpickve2gr.b	$a0, $vr1, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a1, $vr0, 0
+	andi	$a2, $a1, 1
+	maskeqz	$a0, $a0, $a2
 	ori	$a1, $zero, 101
+	masknez	$a2, $a1, $a2
+	or	$a0, $a0, $a2
 	ori	$a2, $s4, 1696
 	ori	$a3, $zero, 90
 	.p2align	4, , 16
@@ -2386,49 +3106,101 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 	addi.d	$s1, $s1, 1
 	bnez	$a2, .LBB6_12
 # %bb.13:                               # %_ZL25run_single_csa_only_novecIhET_PS0_S1_S1_S0_.exit
+	xvst	$xr6, $sp, 16                   # 32-byte Folded Spill
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr5, $sp, 80                   # 32-byte Folded Spill
 	andi	$s1, $a1, 255
 	andi	$s2, $a0, 255
 	bne	$s2, $s1, .LBB6_29
 # %bb.14:
-	ld.w	$s1, $s0, 28
-	ld.d	$fp, $s0, 16
+	ld.w	$s1, $fp, 28
+	ld.d	$s0, $fp, 16
 .Ltmp165:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp166:                               # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
+	xvld	$xr6, $sp, 80                   # 32-byte Folded Reload
+	xvld	$xr7, $sp, 48                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 16                   # 32-byte Folded Reload
 	bnez	$s1, .LBB6_21
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$fp, .LBB6_21
+	beqz	$s0, .LBB6_21
 # %bb.17:
+	xvrepli.b	$xr0, 101
 	ori	$a0, $s4, 1696
-	ori	$a1, $zero, 90
-	addi.d	$a2, $sp, 24
-	addi.d	$a3, $sp, 16
-	addi.d	$a4, $sp, 8
-	addi.d	$a5, $sp, 32
+	ori	$a1, $zero, 101
+	addi.d	$a2, $sp, 136
+	addi.d	$a3, $sp, 128
+	addi.d	$a4, $sp, 120
+	addi.d	$a5, $sp, 144
 	.p2align	4, , 16
 .LBB6_18:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_19 Depth 2
-	ld.d	$a6, $sp, 24
-	ori	$a7, $zero, 101
-	move	$t0, $a0
+	ld.d	$a6, $sp, 136
+	move	$a7, $a0
+	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr1, $xr8, 0
 	.p2align	4, , 16
-.LBB6_19:                               #   Parent Loop BB6_18 Depth=1
+.LBB6_19:                               # %vector.body74
+                                        #   Parent Loop BB6_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t1, $a6, 0
-	sltu	$t2, $a1, $t1
-	masknez	$a7, $a7, $t2
-	maskeqz	$t1, $t1, $t2
-	or	$a7, $t1, $a7
-	addi.d	$t0, $t0, -1
-	addi.d	$a6, $a6, 1
-	bnez	$t0, .LBB6_19
+	xvld	$xr3, $a6, 0
+	xvslt.bu	$xr4, $xr6, $xr3
+	xvmskltz.b	$xr5, $xr4
+	xvpickve2gr.wu	$t0, $xr5, 0
+	xvpickve2gr.wu	$t1, $xr5, 4
+	bstrins.d	$t0, $t1, 31, 16
+	addi.w	$t0, $t0, 0
+	sltui	$t0, $t0, 1
+	maskeqz	$t0, $s3, $t0
+	xvreplgr2vr.b	$xr5, $t0
+	xvandn.v	$xr4, $xr5, $xr4
+	xvand.v	$xr1, $xr1, $xr5
+	xvor.v	$xr1, $xr1, $xr4
+	xvandn.v	$xr3, $xr5, $xr3
+	xvand.v	$xr2, $xr2, $xr5
+	xvor.v	$xr2, $xr2, $xr3
+	addi.d	$a7, $a7, -32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB6_19
 # %bb.20:                               # %_ZL27run_single_csa_only_autovecIhET_PS0_S1_S1_S0_.exit27
                                         #   in Loop: Header=BB6_18 Depth=1
-	st.b	$a7, $sp, 32
+	xvbitsel.v	$xr3, $xr8, $xr7, $xr1
+	xvpermi.q	$xr4, $xr3, 1
+	vmax.bu	$vr3, $vr3, $vr4
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 1
+	vmax.bu	$vr3, $vr4, $vr3
+	vpickve2gr.b	$a6, $vr3, 0
+	andi	$a6, $a6, 255
+	movgr2fr.w	$fa3, $a6
+	xvpermi.q	$xr4, $xr2, 1
+	xvshuf.b	$xr2, $xr4, $xr2, $xr3
+	vpickve2gr.b	$a6, $vr2, 0
+	xvpermi.q	$xr2, $xr1, 1
+	vor.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.b	$a7, $vr1, 0
+	andi	$a7, $a7, 1
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $a1, $a7
+	or	$a6, $a6, $a7
+	st.b	$a6, $sp, 144
 	#APP
 	#NO_APP
 	#APP
@@ -2437,36 +3209,36 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 	#NO_APP
 	#APP
 	#NO_APP
-	addi.d	$fp, $fp, -1
+	addi.d	$s0, $s0, -1
 	#MEMBARRIER
-	bnez	$fp, .LBB6_18
+	bnez	$s0, .LBB6_18
 .LBB6_21:                               # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp167:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp168:                               # EH_LABEL
 # %bb.22:                               # %_ZL21benchmark_csa_autovecIhEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 8
+	ld.d	$a0, $sp, 120
 	beqz	$a0, .LBB6_24
 # %bb.23:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB6_24:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit37
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 128
 	beqz	$a0, .LBB6_26
 # %bb.25:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB6_26:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit40
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 136
 	beqz	$a0, .LBB6_28
 # %bb.27:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB6_28:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit43
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1040
+	addi.d	$sp, $sp, 1152
 	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
@@ -2497,17 +3269,17 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 .Ltmp157:                               # EH_LABEL
 # %bb.31:
 .Ltmp158:                               # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.38)
 	ori	$a2, $zero, 4
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp159:                               # EH_LABEL
 # %bb.32:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
 .Ltmp160:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_h)
 	jirl	$ra, $ra, 0
@@ -2528,53 +3300,53 @@ _Z42BENCHMARK_single_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z42BENCHM
 	b	.LBB6_43
 .LBB6_36:                               # %.thread
 .Ltmp146:                               # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	b	.LBB6_45
 .LBB6_37:                               # %.thread55
 .Ltmp143:                               # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB6_38:
 .Ltmp169:                               # EH_LABEL
-	ld.d	$fp, $sp, 8
-	move	$s0, $a0
-	bnez	$fp, .LBB6_44
+	ld.d	$s0, $sp, 120
+	move	$fp, $a0
+	bnez	$s0, .LBB6_44
 # %bb.39:
-	ld.d	$s3, $sp, 16
+	ld.d	$s3, $sp, 128
 	bnez	$s3, .LBB6_45
 .LBB6_40:
-	ld.d	$s1, $sp, 24
+	ld.d	$s1, $sp, 136
 	bnez	$s1, .LBB6_46
 .LBB6_41:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit34
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB6_42:
 .Ltmp153:                               # EH_LABEL
 .LBB6_43:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$s0, $a0
+	move	$fp, $a0
 .LBB6_44:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 16
+	ld.d	$s3, $sp, 128
 	beqz	$s3, .LBB6_40
 .LBB6_45:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i30
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 24
+	ld.d	$s1, $sp, 136
 	beqz	$s1, .LBB6_41
 .LBB6_46:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end6:
@@ -2931,8 +3703,43 @@ GCC_except_table7:
 .Lcst_end7:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE
+.LCPI8_0:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	11                              # 0xb
+	.byte	12                              # 0xc
+	.byte	13                              # 0xd
+	.byte	14                              # 0xe
+	.byte	15                              # 0xf
+	.byte	16                              # 0x10
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	24                              # 0x18
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 	.text
-	.globl	_Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE # -- Begin function _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE
+	.globl	_Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE
 	.p2align	5
 	.type	_Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE,@function
 _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE
@@ -2958,8 +3765,8 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1024
-	.cfi_def_cfa_offset 5104
+	addi.d	$sp, $sp, -1120
+	.cfi_def_cfa_offset 5200
 	move	$fp, $a0
 	lu12i.w	$a0, 24
 	ori	$s0, $a0, 1696
@@ -2967,7 +3774,7 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 128
 .Ltmp188:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2975,7 +3782,7 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 .Ltmp189:                               # EH_LABEL
 # %bb.1:
 	move	$s3, $a0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 120
 .Ltmp191:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
@@ -2983,21 +3790,21 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 .Ltmp192:                               # EH_LABEL
 # %bb.2:
 	move	$s1, $a0
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 112
 	lu12i.w	$a0, 6
 	ori	$a0, $a0, 1024
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 950
+	ori	$a1, $a1, 1046
 	add.d	$a1, $sp, $a1
 	st.h	$a0, $a1, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 40
+	st.d	$a2, $sp, 136
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 40
+	addi.d	$a4, $sp, 136
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB8_3:                                # =>This Inner Loop Header: Depth=1
@@ -3014,18 +3821,18 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1032
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB8_5:                                # =>This Inner Loop Header: Depth=1
 .Ltmp194:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 950
+	ori	$a0, $a0, 1046
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 136
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 950
+	ori	$a2, $a2, 1046
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -3035,11 +3842,11 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.b	$a0, $s2, $s4
 .Ltmp196:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 950
+	ori	$a0, $a0, 1046
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 136
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 950
+	ori	$a2, $a2, 1046
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -3049,11 +3856,11 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.b	$a0, $s3, $s4
 .Ltmp198:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 950
+	ori	$a0, $a0, 1046
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 136
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 950
+	ori	$a2, $a2, 1046
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -3063,63 +3870,202 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.b	$a0, $s1, $s4
 	addi.d	$s4, $s4, 1
 	bne	$s4, $s0, .LBB8_5
-# %bb.9:
-	move	$a3, $zero
-	ori	$a0, $zero, 101
-	ori	$a4, $zero, 90
-	ori	$a1, $zero, 101
-	ori	$a2, $zero, 101
+# %bb.9:                                # %vector.ph
+	move	$a0, $zero
+	xvrepli.b	$xr4, 0
+	xvrepli.b	$xr5, 101
+	xvrepli.b	$xr9, 90
+	addi.d	$s4, $zero, -1
+	xvori.b	$xr3, $xr5, 0
+	xvori.b	$xr2, $xr4, 0
+	xvori.b	$xr1, $xr5, 0
+	xvori.b	$xr0, $xr4, 0
 	.p2align	4, , 16
-.LBB8_10:                               # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a5, $s2, $a3
-	sltu	$a6, $a4, $a5
-	ldx.bu	$a7, $s3, $a3
-	maskeqz	$a5, $a5, $a6
-	masknez	$a2, $a2, $a6
-	or	$a2, $a5, $a2
-	sltu	$a5, $a4, $a7
-	ldx.bu	$a6, $s1, $a3
-	maskeqz	$a7, $a7, $a5
-	masknez	$a1, $a1, $a5
-	or	$a1, $a7, $a1
-	sltu	$a5, $a4, $a6
-	maskeqz	$a6, $a6, $a5
-	masknez	$a0, $a0, $a5
-	addi.d	$a3, $a3, 1
-	or	$a0, $a6, $a0
-	bne	$a3, $s0, .LBB8_10
-# %bb.11:                               # %.preheader.preheader
-	move	$a4, $zero
-	ori	$a3, $zero, 101
+.LBB8_10:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvldx	$xr6, $s2, $a0
+	xvslt.bu	$xr7, $xr9, $xr6
+	xvmskltz.b	$xr8, $xr7
+	xvpickve2gr.wu	$a1, $xr8, 0
+	xvpickve2gr.wu	$a2, $xr8, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	xvreplgr2vr.b	$xr8, $a1
+	xvandn.v	$xr7, $xr8, $xr7
+	xvand.v	$xr0, $xr0, $xr8
+	xvor.v	$xr0, $xr0, $xr7
+	xvldx	$xr7, $s3, $a0
+	xvandn.v	$xr6, $xr8, $xr6
+	xvand.v	$xr1, $xr1, $xr8
+	xvor.v	$xr1, $xr1, $xr6
+	xvslt.bu	$xr6, $xr9, $xr7
+	xvmskltz.b	$xr8, $xr6
+	xvpickve2gr.wu	$a1, $xr8, 0
+	xvpickve2gr.wu	$a2, $xr8, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	xvreplgr2vr.b	$xr8, $a1
+	xvandn.v	$xr6, $xr8, $xr6
+	xvand.v	$xr2, $xr2, $xr8
+	xvor.v	$xr2, $xr2, $xr6
+	xvldx	$xr6, $s1, $a0
+	xvandn.v	$xr7, $xr8, $xr7
+	xvand.v	$xr3, $xr3, $xr8
+	xvor.v	$xr3, $xr3, $xr7
+	xvslt.bu	$xr7, $xr9, $xr6
+	xvmskltz.b	$xr8, $xr7
+	xvpickve2gr.wu	$a1, $xr8, 0
+	xvpickve2gr.wu	$a2, $xr8, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	xvreplgr2vr.b	$xr8, $a1
+	xvandn.v	$xr7, $xr8, $xr7
+	xvand.v	$xr4, $xr4, $xr8
+	xvor.v	$xr4, $xr4, $xr7
+	xvandn.v	$xr6, $xr8, $xr6
+	xvand.v	$xr5, $xr5, $xr8
+	addi.d	$a0, $a0, 32
+	xvor.v	$xr5, $xr5, $xr6
+	bne	$a0, $s0, .LBB8_10
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr8, $a0, %pc_lo12(.LCPI8_0)
+	move	$a0, $zero
+	xvrepli.b	$xr10, 0
+	xvbitsel.v	$xr6, $xr10, $xr8, $xr4
+	xvpermi.q	$xr7, $xr6, 1
+	vmax.bu	$vr6, $vr6, $vr7
+	vbsrl.v	$vr7, $vr6, 8
+	vmax.bu	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 4
+	vmax.bu	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 2
+	vmax.bu	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 1
+	vmax.bu	$vr6, $vr7, $vr6
+	vpickve2gr.b	$a1, $vr6, 0
+	andi	$a1, $a1, 255
+	movgr2fr.w	$fa6, $a1
+	xvpermi.q	$xr7, $xr5, 1
+	xvshuf.b	$xr5, $xr7, $xr5, $xr6
+	vpickve2gr.b	$a1, $vr5, 0
+	xvpermi.q	$xr5, $xr4, 1
+	vor.v	$vr4, $vr4, $vr5
+	vbsrl.v	$vr5, $vr4, 8
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 4
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 2
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 1
+	vor.v	$vr4, $vr5, $vr4
+	vpickve2gr.b	$a2, $vr4, 0
+	andi	$a2, $a2, 1
+	maskeqz	$a3, $a1, $a2
+	ori	$a1, $zero, 101
+	masknez	$a2, $a1, $a2
+	or	$a2, $a3, $a2
+	xvbitsel.v	$xr4, $xr10, $xr8, $xr2
+	xvpermi.q	$xr5, $xr4, 1
+	vmax.bu	$vr4, $vr4, $vr5
+	vbsrl.v	$vr5, $vr4, 8
+	vmax.bu	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 4
+	vmax.bu	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 2
+	vmax.bu	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 1
+	vmax.bu	$vr4, $vr5, $vr4
+	vpickve2gr.b	$a3, $vr4, 0
+	andi	$a3, $a3, 255
+	movgr2fr.w	$fa4, $a3
+	xvpermi.q	$xr5, $xr3, 1
+	xvshuf.b	$xr3, $xr5, $xr3, $xr4
+	vpickve2gr.b	$a3, $vr3, 0
+	xvpermi.q	$xr3, $xr2, 1
+	vor.v	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vor.v	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vor.v	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vor.v	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 1
+	vor.v	$vr2, $vr3, $vr2
+	vpickve2gr.b	$a4, $vr2, 0
+	andi	$a4, $a4, 1
+	maskeqz	$a3, $a3, $a4
+	masknez	$a4, $a1, $a4
+	or	$a3, $a3, $a4
+	xvbitsel.v	$xr2, $xr10, $xr8, $xr0
+	xvpermi.q	$xr3, $xr2, 1
+	vmax.bu	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 1
+	vmax.bu	$vr2, $vr3, $vr2
+	vpickve2gr.b	$a4, $vr2, 0
+	andi	$a4, $a4, 255
+	movgr2fr.w	$fa2, $a4
+	xvpermi.q	$xr3, $xr1, 1
+	xvshuf.b	$xr1, $xr3, $xr1, $xr2
+	vpickve2gr.b	$a4, $vr1, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a5, $vr0, 0
+	andi	$a5, $a5, 1
+	maskeqz	$a4, $a4, $a5
+	masknez	$a5, $a1, $a5
+	or	$a4, $a4, $a5
 	ori	$a7, $zero, 90
 	ori	$a5, $zero, 101
 	ori	$a6, $zero, 101
 	.p2align	4, , 16
-.LBB8_12:                               # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.bu	$t0, $s2, $a4
+.LBB8_12:                               # =>This Inner Loop Header: Depth=1
+	ldx.bu	$t0, $s2, $a0
 	sltu	$t1, $a7, $t0
-	ldx.bu	$t2, $s3, $a4
+	ldx.bu	$t2, $s3, $a0
 	maskeqz	$t0, $t0, $t1
 	masknez	$a6, $a6, $t1
 	or	$a6, $t0, $a6
 	sltu	$t0, $a7, $t2
-	ldx.bu	$t1, $s1, $a4
+	ldx.bu	$t1, $s1, $a0
 	maskeqz	$t2, $t2, $t0
 	masknez	$a5, $a5, $t0
 	or	$a5, $t2, $a5
 	sltu	$t0, $a7, $t1
 	maskeqz	$t1, $t1, $t0
-	masknez	$a3, $a3, $t0
-	addi.d	$a4, $a4, 1
-	or	$a3, $t1, $a3
-	bne	$a4, $s0, .LBB8_12
+	masknez	$a1, $a1, $t0
+	addi.d	$a0, $a0, 1
+	or	$a1, $t1, $a1
+	bne	$a0, $s0, .LBB8_12
 # %bb.13:
-	xor	$a1, $a1, $a2
-	xor	$a0, $a1, $a0
+	xvst	$xr10, $sp, 16                  # 32-byte Folded Spill
+	xvst	$xr8, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr9, $sp, 80                   # 32-byte Folded Spill
+	xor	$a0, $a3, $a4
+	xor	$a0, $a0, $a2
 	andi	$s3, $a0, 255
 	xor	$a0, $a5, $a6
-	xor	$a0, $a0, $a3
+	xor	$a0, $a0, $a1
 	andi	$s2, $a0, 255
 	bne	$s3, $s2, .LBB8_29
 # %bb.14:
@@ -3131,54 +4077,191 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .Ltmp213:                               # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
+	xvld	$xr10, $sp, 80                  # 32-byte Folded Reload
+	xvld	$xr11, $sp, 48                  # 32-byte Folded Reload
+	xvld	$xr12, $sp, 16                  # 32-byte Folded Reload
 	bnez	$s2, .LBB8_21
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s1, .LBB8_21
 # %bb.17:
-	ori	$a0, $zero, 90
-	addi.d	$a1, $sp, 32
-	addi.d	$a2, $sp, 24
-	addi.d	$a3, $sp, 16
-	addi.d	$a4, $sp, 40
+	xvrepli.b	$xr0, 101
+	ori	$a0, $zero, 101
+	addi.d	$a1, $sp, 128
+	addi.d	$a2, $sp, 120
+	addi.d	$a3, $sp, 112
+	addi.d	$a4, $sp, 136
 	.p2align	4, , 16
 .LBB8_18:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_19 Depth 2
-	ld.d	$a5, $sp, 32
-	ld.d	$a6, $sp, 24
-	ld.d	$a7, $sp, 16
-	ori	$t0, $zero, 101
-	move	$t1, $s0
-	ori	$t2, $zero, 101
-	ori	$t3, $zero, 101
+	ld.d	$a5, $sp, 128
+	ld.d	$a6, $sp, 120
+	ld.d	$a7, $sp, 112
+	move	$t0, $s0
+	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr1, $xr12, 0
+	xvori.b	$xr4, $xr0, 0
+	xvori.b	$xr3, $xr12, 0
+	xvori.b	$xr6, $xr0, 0
+	xvori.b	$xr5, $xr12, 0
 	.p2align	4, , 16
-.LBB8_19:                               #   Parent Loop BB8_18 Depth=1
+.LBB8_19:                               # %vector.body88
+                                        #   Parent Loop BB8_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t4, $a5, 0
-	sltu	$t5, $a0, $t4
-	ld.bu	$t6, $a6, 0
-	masknez	$t3, $t3, $t5
-	maskeqz	$t4, $t4, $t5
-	or	$t3, $t4, $t3
-	sltu	$t4, $a0, $t6
-	ld.bu	$t5, $a7, 0
-	masknez	$t2, $t2, $t4
-	maskeqz	$t4, $t6, $t4
-	or	$t2, $t4, $t2
-	sltu	$t4, $a0, $t5
-	masknez	$t0, $t0, $t4
-	maskeqz	$t4, $t5, $t4
-	or	$t0, $t4, $t0
-	addi.d	$t1, $t1, -1
-	addi.d	$a7, $a7, 1
-	addi.d	$a6, $a6, 1
-	addi.d	$a5, $a5, 1
-	bnez	$t1, .LBB8_19
+	xvld	$xr7, $a5, 0
+	xvslt.bu	$xr8, $xr10, $xr7
+	xvmskltz.b	$xr9, $xr8
+	xvpickve2gr.wu	$t1, $xr9, 0
+	xvpickve2gr.wu	$t2, $xr9, 4
+	bstrins.d	$t1, $t2, 31, 16
+	addi.w	$t1, $t1, 0
+	sltui	$t1, $t1, 1
+	maskeqz	$t1, $s4, $t1
+	xvreplgr2vr.b	$xr9, $t1
+	xvandn.v	$xr8, $xr9, $xr8
+	xvand.v	$xr5, $xr5, $xr9
+	xvor.v	$xr5, $xr5, $xr8
+	xvld	$xr8, $a6, 0
+	xvandn.v	$xr7, $xr9, $xr7
+	xvand.v	$xr6, $xr6, $xr9
+	xvor.v	$xr6, $xr6, $xr7
+	xvslt.bu	$xr7, $xr10, $xr8
+	xvmskltz.b	$xr9, $xr7
+	xvpickve2gr.wu	$t1, $xr9, 0
+	xvpickve2gr.wu	$t2, $xr9, 4
+	bstrins.d	$t1, $t2, 31, 16
+	addi.w	$t1, $t1, 0
+	sltui	$t1, $t1, 1
+	maskeqz	$t1, $s4, $t1
+	xvreplgr2vr.b	$xr9, $t1
+	xvandn.v	$xr7, $xr9, $xr7
+	xvand.v	$xr3, $xr3, $xr9
+	xvor.v	$xr3, $xr3, $xr7
+	xvld	$xr7, $a7, 0
+	xvandn.v	$xr8, $xr9, $xr8
+	xvand.v	$xr4, $xr4, $xr9
+	xvor.v	$xr4, $xr4, $xr8
+	xvslt.bu	$xr8, $xr10, $xr7
+	xvmskltz.b	$xr9, $xr8
+	xvpickve2gr.wu	$t1, $xr9, 0
+	xvpickve2gr.wu	$t2, $xr9, 4
+	bstrins.d	$t1, $t2, 31, 16
+	addi.w	$t1, $t1, 0
+	sltui	$t1, $t1, 1
+	maskeqz	$t1, $s4, $t1
+	xvreplgr2vr.b	$xr9, $t1
+	xvandn.v	$xr8, $xr9, $xr8
+	xvand.v	$xr1, $xr1, $xr9
+	xvor.v	$xr1, $xr1, $xr8
+	xvandn.v	$xr7, $xr9, $xr7
+	xvand.v	$xr2, $xr2, $xr9
+	xvor.v	$xr2, $xr2, $xr7
+	addi.d	$t0, $t0, -32
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	addi.d	$a5, $a5, 32
+	bnez	$t0, .LBB8_19
 # %bb.20:                               # %_ZN9benchmark5State3endEv.exit
                                         #   in Loop: Header=BB8_18 Depth=1
-	xor	$a5, $t2, $t3
-	xor	$a5, $a5, $t0
-	st.b	$a5, $sp, 40
+	xvbitsel.v	$xr7, $xr12, $xr11, $xr5
+	xvpermi.q	$xr8, $xr7, 1
+	vmax.bu	$vr7, $vr7, $vr8
+	vbsrl.v	$vr8, $vr7, 8
+	vmax.bu	$vr7, $vr8, $vr7
+	vbsrl.v	$vr8, $vr7, 4
+	vmax.bu	$vr7, $vr8, $vr7
+	vbsrl.v	$vr8, $vr7, 2
+	vmax.bu	$vr7, $vr8, $vr7
+	vbsrl.v	$vr8, $vr7, 1
+	vmax.bu	$vr7, $vr8, $vr7
+	vpickve2gr.b	$a5, $vr7, 0
+	andi	$a5, $a5, 255
+	movgr2fr.w	$fa7, $a5
+	xvpermi.q	$xr8, $xr6, 1
+	xvshuf.b	$xr6, $xr8, $xr6, $xr7
+	vpickve2gr.b	$a5, $vr6, 0
+	xvpermi.q	$xr6, $xr5, 1
+	vor.v	$vr5, $vr5, $vr6
+	vbsrl.v	$vr6, $vr5, 8
+	vor.v	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 4
+	vor.v	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 2
+	vor.v	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 1
+	vor.v	$vr5, $vr6, $vr5
+	vpickve2gr.b	$a6, $vr5, 0
+	andi	$a6, $a6, 1
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $a0, $a6
+	or	$a5, $a5, $a6
+	xvbitsel.v	$xr5, $xr12, $xr11, $xr3
+	xvpermi.q	$xr6, $xr5, 1
+	vmax.bu	$vr5, $vr5, $vr6
+	vbsrl.v	$vr6, $vr5, 8
+	vmax.bu	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 4
+	vmax.bu	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 2
+	vmax.bu	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 1
+	vmax.bu	$vr5, $vr6, $vr5
+	vpickve2gr.b	$a6, $vr5, 0
+	andi	$a6, $a6, 255
+	movgr2fr.w	$fa5, $a6
+	xvpermi.q	$xr6, $xr4, 1
+	xvshuf.b	$xr4, $xr6, $xr4, $xr5
+	vpickve2gr.b	$a6, $vr4, 0
+	xvpermi.q	$xr4, $xr3, 1
+	vor.v	$vr3, $vr3, $vr4
+	vbsrl.v	$vr4, $vr3, 8
+	vor.v	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vor.v	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vor.v	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 1
+	vor.v	$vr3, $vr4, $vr3
+	vpickve2gr.b	$a7, $vr3, 0
+	andi	$a7, $a7, 1
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $a0, $a7
+	or	$a6, $a6, $a7
+	xvbitsel.v	$xr3, $xr12, $xr11, $xr1
+	xvpermi.q	$xr4, $xr3, 1
+	vmax.bu	$vr3, $vr3, $vr4
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 1
+	vmax.bu	$vr3, $vr4, $vr3
+	vpickve2gr.b	$a7, $vr3, 0
+	andi	$a7, $a7, 255
+	movgr2fr.w	$fa3, $a7
+	xvpermi.q	$xr4, $xr2, 1
+	xvshuf.b	$xr2, $xr4, $xr2, $xr3
+	vpickve2gr.b	$a7, $vr2, 0
+	xvpermi.q	$xr2, $xr1, 1
+	vor.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.b	$t0, $vr1, 0
+	andi	$t0, $t0, 1
+	maskeqz	$a7, $a7, $t0
+	masknez	$t0, $a0, $t0
+	or	$a7, $a7, $t0
+	xor	$a5, $a6, $a5
+	xor	$a5, $a5, $a7
+	st.b	$a5, $sp, 136
 	#APP
 	#NO_APP
 	#APP
@@ -3197,26 +4280,26 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .Ltmp215:                               # EH_LABEL
 # %bb.22:                               # %_ZL21benchmark_csa_autovecIhEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 112
 	beqz	$a0, .LBB8_24
 # %bb.23:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i44
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB8_24:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit45
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 120
 	beqz	$a0, .LBB8_26
 # %bb.25:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i47
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB8_26:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit48
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 128
 	beqz	$a0, .LBB8_28
 # %bb.27:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i50
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB8_28:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit51
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1040
+	addi.d	$sp, $sp, 1136
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -3290,14 +4373,14 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .LBB8_38:
 .Ltmp216:                               # EH_LABEL
-	ld.d	$s1, $sp, 16
+	ld.d	$s1, $sp, 112
 	move	$fp, $a0
 	bnez	$s1, .LBB8_44
 # %bb.39:
-	ld.d	$s3, $sp, 24
+	ld.d	$s3, $sp, 120
 	bnez	$s3, .LBB8_45
 .LBB8_40:
-	ld.d	$s2, $sp, 32
+	ld.d	$s2, $sp, 128
 	bnez	$s2, .LBB8_46
 .LBB8_41:                               # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit42
 	move	$a0, $fp
@@ -3311,13 +4394,13 @@ _Z41BENCHMARK_multi_csa_only_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 24
+	ld.d	$s3, $sp, 120
 	beqz	$s3, .LBB8_40
 .LBB8_45:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i38
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 32
+	ld.d	$s2, $sp, 128
 	beqz	$s2, .LBB8_41
 .LBB8_46:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i41
 	move	$a0, $s2
@@ -3698,8 +4781,43 @@ GCC_except_table9:
 .Lcst_end9:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE
+.LCPI10_0:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	11                              # 0xb
+	.byte	12                              # 0xc
+	.byte	13                              # 0xd
+	.byte	14                              # 0xe
+	.byte	15                              # 0xf
+	.byte	16                              # 0x10
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	20                              # 0x14
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	24                              # 0x18
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	28                              # 0x1c
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 	.text
-	.globl	_Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE # -- Begin function _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE
+	.globl	_Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE
 	.p2align	5
 	.type	_Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE,@function
 _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE
@@ -3725,8 +4843,8 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1024
-	.cfi_def_cfa_offset 5104
+	addi.d	$sp, $sp, -1184
+	.cfi_def_cfa_offset 5264
 	move	$fp, $a0
 	lu12i.w	$a0, 24
 	ori	$s0, $a0, 1696
@@ -3734,7 +4852,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 192
 .Ltmp235:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
@@ -3742,7 +4860,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 .Ltmp236:                               # EH_LABEL
 # %bb.1:
 	move	$s3, $a0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 184
 .Ltmp238:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
@@ -3750,21 +4868,21 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 .Ltmp239:                               # EH_LABEL
 # %bb.2:
 	move	$s1, $a0
-	st.d	$a0, $sp, 16
+	st.d	$a0, $sp, 176
 	lu12i.w	$a0, 6
 	ori	$a0, $a0, 1024
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 950
+	ori	$a1, $a1, 1110
 	add.d	$a1, $sp, $a1
 	st.h	$a0, $a1, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 40
+	st.d	$a2, $sp, 200
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 40
+	addi.d	$a4, $sp, 200
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB10_3:                               # =>This Inner Loop Header: Depth=1
@@ -3781,18 +4899,18 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1096
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB10_5:                               # =>This Inner Loop Header: Depth=1
 .Ltmp241:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 950
+	ori	$a0, $a0, 1110
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 200
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 950
+	ori	$a2, $a2, 1110
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -3802,11 +4920,11 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.b	$a0, $s2, $s4
 .Ltmp243:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 950
+	ori	$a0, $a0, 1110
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 200
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 950
+	ori	$a2, $a2, 1110
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -3816,11 +4934,11 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.b	$a0, $s3, $s4
 .Ltmp245:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 950
+	ori	$a0, $a0, 1110
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 200
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 950
+	ori	$a2, $a2, 1110
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -3830,49 +4948,102 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.b	$a0, $s1, $s4
 	addi.d	$s4, $s4, 1
 	bne	$s4, $s0, .LBB10_5
-# %bb.9:
-	move	$a1, $zero
-	ori	$a0, $zero, 101
-	ori	$a2, $zero, 90
+# %bb.9:                                # %vector.ph
+	move	$a0, $zero
+	xvrepli.b	$xr0, 0
+	xvrepli.b	$xr1, 101
+	xvrepli.b	$xr5, 13
+	xvrepli.b	$xr6, 5
+	xvrepli.b	$xr7, 90
+	addi.d	$s4, $zero, -1
 	.p2align	4, , 16
-.LBB10_10:                              # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a3, $s2, $a1
-	ldx.b	$a4, $s3, $a1
-	alsl.d	$a5, $a3, $a3, 1
-	alsl.d	$a5, $a5, $a3, 2
-	alsl.d	$a4, $a4, $a4, 2
-	add.d	$a4, $a4, $a5
-	stx.b	$a4, $s1, $a1
-	sltu	$a4, $a2, $a3
-	maskeqz	$a3, $a3, $a4
-	masknez	$a0, $a0, $a4
-	addi.d	$a1, $a1, 1
-	or	$a0, $a3, $a0
-	bne	$a1, $s0, .LBB10_10
-# %bb.11:                               # %_ZL26run_csa_with_arith_autovecIhET_PS0_S1_S1_S0_.exit.preheader
-	move	$a1, $zero
-	ori	$a3, $zero, 101
-	ori	$a2, $zero, 90
-	.p2align	4, , 16
-.LBB10_12:                              # %_ZL26run_csa_with_arith_autovecIhET_PS0_S1_S1_S0_.exit
+.LBB10_10:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a4, $s2, $a1
-	ldx.b	$a5, $s3, $a1
+	xvldx	$xr2, $s3, $a0
+	xvldx	$xr3, $s2, $a0
+	xvmul.b	$xr2, $xr2, $xr6
+	xvmadd.b	$xr2, $xr3, $xr5
+	xvstx	$xr2, $s1, $a0
+	xvslt.bu	$xr2, $xr7, $xr3
+	xvmskltz.b	$xr4, $xr2
+	xvpickve2gr.wu	$a1, $xr4, 0
+	xvpickve2gr.wu	$a2, $xr4, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	xvreplgr2vr.b	$xr4, $a1
+	xvandn.v	$xr2, $xr4, $xr2
+	xvand.v	$xr0, $xr0, $xr4
+	xvor.v	$xr0, $xr0, $xr2
+	xvandn.v	$xr2, $xr4, $xr3
+	xvand.v	$xr1, $xr1, $xr4
+	addi.d	$a0, $a0, 32
+	xvor.v	$xr1, $xr1, $xr2
+	bne	$a0, $s0, .LBB10_10
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
+	xvld	$xr4, $a0, %pc_lo12(.LCPI10_0)
+	move	$a0, $zero
+	xvrepli.b	$xr8, 0
+	xvbitsel.v	$xr2, $xr8, $xr4, $xr0
+	xvpermi.q	$xr3, $xr2, 1
+	vmax.bu	$vr2, $vr2, $vr3
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 1
+	vmax.bu	$vr2, $vr3, $vr2
+	vpickve2gr.b	$a1, $vr2, 0
+	andi	$a1, $a1, 255
+	movgr2fr.w	$fa2, $a1
+	xvpermi.q	$xr3, $xr1, 1
+	xvshuf.b	$xr1, $xr3, $xr1, $xr2
+	vpickve2gr.b	$a1, $vr1, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a2, $vr0, 0
+	andi	$a3, $a2, 1
+	maskeqz	$a1, $a1, $a3
+	ori	$a2, $zero, 101
+	masknez	$a3, $a2, $a3
+	or	$a1, $a1, $a3
+	ori	$a3, $zero, 90
+	.p2align	4, , 16
+.LBB10_12:                              # =>This Inner Loop Header: Depth=1
+	ldx.bu	$a4, $s2, $a0
+	ldx.b	$a5, $s3, $a0
 	alsl.d	$a6, $a4, $a4, 1
 	alsl.d	$a6, $a6, $a4, 2
 	alsl.d	$a5, $a5, $a5, 2
 	add.d	$a5, $a5, $a6
-	stx.b	$a5, $s1, $a1
-	sltu	$a5, $a2, $a4
+	stx.b	$a5, $s1, $a0
+	sltu	$a5, $a3, $a4
 	maskeqz	$a4, $a4, $a5
-	masknez	$a3, $a3, $a5
-	addi.d	$a1, $a1, 1
-	or	$a3, $a4, $a3
-	bne	$a1, $s0, .LBB10_12
+	masknez	$a2, $a2, $a5
+	addi.d	$a0, $a0, 1
+	or	$a2, $a4, $a2
+	bne	$a0, $s0, .LBB10_12
 # %bb.13:                               # %_ZL24run_csa_with_arith_novecIhET_PS0_S1_S1_S0_.exit
-	andi	$s2, $a3, 255
-	andi	$s3, $a0, 255
-	bne	$s3, $s2, .LBB10_29
+	xvst	$xr8, $sp, 16                   # 32-byte Folded Spill
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr7, $sp, 80                   # 32-byte Folded Spill
+	xvst	$xr6, $sp, 112                  # 32-byte Folded Spill
+	xvst	$xr5, $sp, 144                  # 32-byte Folded Spill
+	andi	$s2, $a2, 255
+	andi	$s3, $a1, 255
+	bne	$s3, $s2, .LBB10_34
 # %bb.14:
 	ld.w	$s2, $fp, 28
 	ld.d	$s1, $fp, 16
@@ -3882,47 +5053,61 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .Ltmp260:                               # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s2, .LBB10_21
+	xvld	$xr6, $sp, 144                  # 32-byte Folded Reload
+	xvld	$xr7, $sp, 112                  # 32-byte Folded Reload
+	xvld	$xr8, $sp, 80                   # 32-byte Folded Reload
+	xvld	$xr9, $sp, 48                   # 32-byte Folded Reload
+	xvld	$xr10, $sp, 16                  # 32-byte Folded Reload
+	bnez	$s2, .LBB10_26
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s1, .LBB10_21
+	beqz	$s1, .LBB10_26
 # %bb.17:
 	ori	$a0, $zero, 90
-	addi.d	$a1, $sp, 32
-	addi.d	$a2, $sp, 24
-	addi.d	$a3, $sp, 16
-	addi.d	$a4, $sp, 40
+	addi.d	$a1, $sp, 192
+	addi.d	$a2, $sp, 184
+	addi.d	$a3, $sp, 176
+	addi.d	$a4, $sp, 200
+	xvrepli.b	$xr0, 101
+	ori	$a5, $zero, 101
+	b	.LBB10_20
 	.p2align	4, , 16
-.LBB10_18:                              # %.lr.ph
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB10_19 Depth 2
-	ld.d	$a5, $sp, 32
-	ld.d	$a6, $sp, 24
-	ld.d	$a7, $sp, 16
-	ori	$t0, $zero, 101
-	move	$t1, $s0
-	.p2align	4, , 16
-.LBB10_19:                              #   Parent Loop BB10_18 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.b	$t2, $a5, 0
-	ld.b	$t3, $a6, 0
-	alsl.d	$t4, $t2, $t2, 1
-	alsl.d	$t2, $t4, $t2, 2
-	alsl.d	$t3, $t3, $t3, 2
-	add.d	$t2, $t3, $t2
-	st.b	$t2, $a7, 0
-	ld.bu	$t2, $a5, 0
-	sltu	$t3, $a0, $t2
-	masknez	$t0, $t0, $t3
-	maskeqz	$t2, $t2, $t3
-	or	$t0, $t2, $t0
-	addi.d	$t1, $t1, -1
-	addi.d	$a7, $a7, 1
-	addi.d	$a6, $a6, 1
-	addi.d	$a5, $a5, 1
-	bnez	$t1, .LBB10_19
-# %bb.20:                               # %_ZL26run_csa_with_arith_autovecIhET_PS0_S1_S1_S0_.exit27
-                                        #   in Loop: Header=BB10_18 Depth=1
-	st.b	$t0, $sp, 40
+.LBB10_18:                              # %middle.block87
+                                        #   in Loop: Header=BB10_20 Depth=1
+	xvbitsel.v	$xr3, $xr10, $xr9, $xr1
+	xvpermi.q	$xr4, $xr3, 1
+	vmax.bu	$vr3, $vr3, $vr4
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 2
+	vmax.bu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 1
+	vmax.bu	$vr3, $vr4, $vr3
+	vpickve2gr.b	$a6, $vr3, 0
+	andi	$a6, $a6, 255
+	movgr2fr.w	$fa3, $a6
+	xvpermi.q	$xr4, $xr2, 1
+	xvshuf.b	$xr2, $xr4, $xr2, $xr3
+	vpickve2gr.b	$a6, $vr2, 0
+	xvpermi.q	$xr2, $xr1, 1
+	vor.v	$vr1, $vr1, $vr2
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.b	$a7, $vr1, 0
+	andi	$a7, $a7, 1
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $a5, $a7
+	or	$t1, $a6, $a7
+.LBB10_19:                              # %_ZL26run_csa_with_arith_autovecIhET_PS0_S1_S1_S0_.exit27
+                                        #   in Loop: Header=BB10_20 Depth=1
+	st.b	$t1, $sp, 200
 	#APP
 	#NO_APP
 	#APP
@@ -3933,34 +5118,116 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	#NO_APP
 	addi.d	$s1, $s1, -1
 	#MEMBARRIER
-	bnez	$s1, .LBB10_18
-.LBB10_21:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
+	beqz	$s1, .LBB10_26
+.LBB10_20:                              # %.lr.ph
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB10_23 Depth 2
+                                        #     Child Loop BB10_25 Depth 2
+	ld.d	$a6, $sp, 176
+	ld.d	$a7, $sp, 192
+	ld.d	$t0, $sp, 184
+	add.d	$t1, $a6, $s0
+	add.d	$t2, $a7, $s0
+	sltu	$t2, $a6, $t2
+	sltu	$t3, $a7, $t1
+	and	$t2, $t2, $t3
+	bnez	$t2, .LBB10_24
+# %bb.21:                               # %.lr.ph
+                                        #   in Loop: Header=BB10_20 Depth=1
+	add.d	$t2, $t0, $s0
+	sltu	$t2, $a6, $t2
+	sltu	$t1, $t0, $t1
+	and	$t1, $t2, $t1
+	bnez	$t1, .LBB10_24
+# %bb.22:                               # %vector.body80.preheader
+                                        #   in Loop: Header=BB10_20 Depth=1
+	move	$t1, $s0
+	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr1, $xr10, 0
+	.p2align	4, , 16
+.LBB10_23:                              # %vector.body80
+                                        #   Parent Loop BB10_20 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	xvld	$xr3, $t0, 0
+	xvld	$xr4, $a7, 0
+	xvmul.b	$xr3, $xr3, $xr7
+	xvmadd.b	$xr3, $xr4, $xr6
+	xvst	$xr3, $a6, 0
+	xvslt.bu	$xr3, $xr8, $xr4
+	xvmskltz.b	$xr5, $xr3
+	xvpickve2gr.wu	$t2, $xr5, 0
+	xvpickve2gr.wu	$t3, $xr5, 4
+	bstrins.d	$t2, $t3, 31, 16
+	addi.w	$t2, $t2, 0
+	sltui	$t2, $t2, 1
+	maskeqz	$t2, $s4, $t2
+	xvreplgr2vr.b	$xr5, $t2
+	xvandn.v	$xr3, $xr5, $xr3
+	xvand.v	$xr1, $xr1, $xr5
+	xvor.v	$xr1, $xr1, $xr3
+	xvandn.v	$xr3, $xr5, $xr4
+	xvand.v	$xr2, $xr2, $xr5
+	xvor.v	$xr2, $xr2, $xr3
+	addi.d	$t1, $t1, -32
+	addi.d	$a6, $a6, 32
+	addi.d	$t0, $t0, 32
+	addi.d	$a7, $a7, 32
+	bnez	$t1, .LBB10_23
+	b	.LBB10_18
+	.p2align	4, , 16
+.LBB10_24:                              # %scalar.ph.preheader
+                                        #   in Loop: Header=BB10_20 Depth=1
+	ori	$t1, $zero, 101
+	move	$t2, $s0
+	.p2align	4, , 16
+.LBB10_25:                              # %scalar.ph
+                                        #   Parent Loop BB10_20 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.b	$t3, $a7, 0
+	ld.b	$t4, $t0, 0
+	alsl.d	$t5, $t3, $t3, 1
+	alsl.d	$t3, $t5, $t3, 2
+	alsl.d	$t4, $t4, $t4, 2
+	add.d	$t3, $t4, $t3
+	st.b	$t3, $a6, 0
+	ld.bu	$t3, $a7, 0
+	sltu	$t4, $a0, $t3
+	masknez	$t1, $t1, $t4
+	maskeqz	$t3, $t3, $t4
+	or	$t1, $t3, $t1
+	addi.d	$t2, $t2, -1
+	addi.d	$a6, $a6, 1
+	addi.d	$t0, $t0, 1
+	addi.d	$a7, $a7, 1
+	bnez	$t2, .LBB10_25
+	b	.LBB10_19
+.LBB10_26:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp261:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp262:                               # EH_LABEL
-# %bb.22:                               # %_ZL21benchmark_csa_autovecIhEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 16
-	beqz	$a0, .LBB10_24
-# %bb.23:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
+# %bb.27:                               # %_ZL21benchmark_csa_autovecIhEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
+	ld.d	$a0, $sp, 176
+	beqz	$a0, .LBB10_29
+# %bb.28:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB10_24:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit37
-	ld.d	$a0, $sp, 24
-	beqz	$a0, .LBB10_26
-# %bb.25:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
+.LBB10_29:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit37
+	ld.d	$a0, $sp, 184
+	beqz	$a0, .LBB10_31
+# %bb.30:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB10_26:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit40
-	ld.d	$a0, $sp, 32
-	beqz	$a0, .LBB10_28
-# %bb.27:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
+.LBB10_31:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit40
+	ld.d	$a0, $sp, 192
+	beqz	$a0, .LBB10_33
+# %bb.32:                               # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB10_28:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit43
+.LBB10_33:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit43
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1040
+	addi.d	$sp, $sp, 1200
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -3970,7 +5237,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB10_29:
+.LBB10_34:
 .Ltmp248:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3980,7 +5247,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp249:                               # EH_LABEL
-# %bb.30:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.35:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp250:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -3988,7 +5255,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_h)
 	jirl	$ra, $ra, 0
 .Ltmp251:                               # EH_LABEL
-# %bb.31:
+# %bb.36:
 .Ltmp252:                               # EH_LABEL
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
@@ -3998,32 +5265,32 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp253:                               # EH_LABEL
-# %bb.32:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
+# %bb.37:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit21
 .Ltmp254:                               # EH_LABEL
 	move	$a0, $fp
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_h)
 	jirl	$ra, $ra, 0
 .Ltmp255:                               # EH_LABEL
-# %bb.33:
+# %bb.38:
 .Ltmp256:                               # EH_LABEL
 	pcalau12i	$a1, %pc_hi20(.L.str.39)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.39)
 	pcaddu18i	$ra, %call36(_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc)
 	jirl	$ra, $ra, 0
 .Ltmp257:                               # EH_LABEL
-# %bb.34:
+# %bb.39:
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB10_35:
+.LBB10_40:
 .Ltmp258:                               # EH_LABEL
-	b	.LBB10_43
-.LBB10_36:                              # %.thread
+	b	.LBB10_48
+.LBB10_41:                              # %.thread
 .Ltmp240:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB10_45
-.LBB10_37:                              # %.thread55
+	b	.LBB10_50
+.LBB10_42:                              # %.thread55
 .Ltmp237:                               # EH_LABEL
 	move	$fp, $a0
 	move	$a0, $s2
@@ -4032,38 +5299,38 @@ _Z41BENCHMARK_csa_with_arith_autovec_uint8_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB10_38:
+.LBB10_43:
 .Ltmp263:                               # EH_LABEL
-	ld.d	$s1, $sp, 16
+	ld.d	$s1, $sp, 176
 	move	$fp, $a0
-	bnez	$s1, .LBB10_44
-# %bb.39:
-	ld.d	$s3, $sp, 24
-	bnez	$s3, .LBB10_45
-.LBB10_40:
-	ld.d	$s2, $sp, 32
-	bnez	$s2, .LBB10_46
-.LBB10_41:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit34
+	bnez	$s1, .LBB10_49
+# %bb.44:
+	ld.d	$s3, $sp, 184
+	bnez	$s3, .LBB10_50
+.LBB10_45:
+	ld.d	$s2, $sp, 192
+	bnez	$s2, .LBB10_51
+.LBB10_46:                              # %_ZNSt10unique_ptrIA_hSt14default_deleteIS0_EED2Ev.exit34
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB10_42:
+.LBB10_47:
 .Ltmp247:                               # EH_LABEL
-.LBB10_43:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
+.LBB10_48:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
 	move	$fp, $a0
-.LBB10_44:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
+.LBB10_49:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 24
-	beqz	$s3, .LBB10_40
-.LBB10_45:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i30
+	ld.d	$s3, $sp, 184
+	beqz	$s3, .LBB10_45
+.LBB10_50:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i30
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 32
-	beqz	$s2, .LBB10_41
-.LBB10_46:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
+	ld.d	$s2, $sp, 192
+	beqz	$s2, .LBB10_46
+.LBB10_51:                              # %_ZNKSt14default_deleteIA_hEclIhEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
@@ -4440,6 +5707,11 @@ GCC_except_table11:
 .LCPI12_0:
 	.dword	0                               # 0x0
 	.dword	100                             # 0x64
+.LCPI12_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	_Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE
 	.p2align	5
@@ -4459,6 +5731,7 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	st.d	$s2, $sp, 1992                  # 8-byte Folded Spill
 	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4466,17 +5739,18 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
+	.cfi_offset 28, -64
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1040
-	.cfi_def_cfa_offset 5120
-	move	$s0, $a0
+	addi.d	$sp, $sp, -1104
+	.cfi_def_cfa_offset 5184
+	move	$fp, $a0
 	lu12i.w	$a0, 195
 	ori	$s3, $a0, 1280
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 96
 .Ltmp282:                               # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -4484,29 +5758,29 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 .Ltmp283:                               # EH_LABEL
 # %bb.1:
 	move	$s2, $a0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 88
 .Ltmp285:                               # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp286:                               # EH_LABEL
 # %bb.2:
-	move	$fp, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.LCPI12_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI12_0)
-	st.d	$fp, $sp, 16
+	st.d	$s0, $sp, 80
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
 	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 40
+	st.d	$a2, $sp, 104
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 40
+	addi.d	$a4, $sp, 104
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB12_3:                               # =>This Inner Loop Header: Depth=1
@@ -4523,18 +5797,18 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1000
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB12_5:                               # =>This Inner Loop Header: Depth=1
 .Ltmp288:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -4544,11 +5818,11 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	stx.d	$a0, $s1, $s4
 .Ltmp290:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -4558,39 +5832,84 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	stx.d	$a0, $s2, $s4
 .Ltmp292:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp293:                               # EH_LABEL
 # %bb.8:                                # %.noexc10
                                         #   in Loop: Header=BB12_5 Depth=1
-	stx.d	$a0, $fp, $s4
+	stx.d	$a0, $s0, $s4
 	addi.d	$s4, $s4, 8
 	bne	$s4, $s3, .LBB12_5
-# %bb.9:
-	ori	$s3, $zero, 101
-	lu12i.w	$s4, 24
-	ori	$a0, $s4, 1696
-	ori	$a1, $zero, 60
-	move	$a2, $s1
+# %bb.9:                                # %vector.ph
+	vrepli.b	$vr0, 0
+	xvrepli.d	$xr1, 101
+	lu12i.w	$s5, 24
+	ori	$a0, $s5, 1696
+	xvrepli.d	$xr5, 60
+	addi.w	$s4, $zero, -1
+	move	$a1, $s1
 	.p2align	4, , 16
-.LBB12_10:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a2, 0
-	slt	$a4, $a1, $a3
-	masknez	$a5, $s3, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$s3, $a3, $a5
-	addi.d	$a0, $a0, -1
-	addi.d	$a2, $a2, 8
+.LBB12_10:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvld	$xr2, $a1, 0
+	xvslt.d	$xr3, $xr5, $xr2
+	xvpickve2gr.d	$a2, $xr3, 0
+	vinsgr2vr.w	$vr4, $a2, 0
+	xvpickve2gr.d	$a2, $xr3, 1
+	vinsgr2vr.w	$vr4, $a2, 1
+	xvpickve2gr.d	$a2, $xr3, 2
+	vinsgr2vr.w	$vr4, $a2, 2
+	xvpickve2gr.d	$a2, $xr3, 3
+	vinsgr2vr.w	$vr4, $a2, 3
+	xvmskltz.d	$xr3, $xr3
+	xvpickve2gr.wu	$a2, $xr3, 0
+	xvpickve2gr.wu	$a3, $xr3, 4
+	bstrins.d	$a2, $a3, 3, 2
+	sltui	$a2, $a2, 1
+	maskeqz	$a2, $s4, $a2
+	vreplgr2vr.w	$vr3, $a2
+	vandn.v	$vr4, $vr3, $vr4
+	vand.v	$vr0, $vr0, $vr3
+	vor.v	$vr0, $vr0, $vr4
+	xvreplgr2vr.d	$xr3, $a2
+	xvandn.v	$xr2, $xr3, $xr2
+	xvand.v	$xr1, $xr1, $xr3
+	xvor.v	$xr1, $xr1, $xr2
+	addi.d	$a0, $a0, -4
+	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB12_10
-# %bb.11:                               # %_ZL27run_single_csa_only_autovecIlET_PS0_S1_S1_S0_.exit.preheader
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI12_1)
+	vld	$vr4, $a0, %pc_lo12(.LCPI12_1)
+	vrepli.b	$vr6, 0
+	vbitsel.v	$vr2, $vr6, $vr4, $vr0
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.wu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.wu	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a0, $vr2, 0
+	bstrpick.d	$a0, $a0, 31, 0
+	movgr2fr.w	$fa2, $a0
+	xvpermi.q	$xr3, $xr1, 1
+	xvshuf.d	$xr2, $xr3, $xr1
+	xvpickve2gr.d	$a0, $xr2, 0
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a1, $vr0, 0
+	andi	$a1, $a1, 1
+	maskeqz	$a0, $a0, $a1
 	ori	$s2, $zero, 101
-	ori	$a0, $s4, 1696
+	masknez	$a1, $s2, $a1
+	or	$s3, $a0, $a1
+	ori	$a0, $s5, 1696
 	ori	$a1, $zero, 60
 	.p2align	4, , 16
 .LBB12_12:                              # %_ZL27run_single_csa_only_autovecIlET_PS0_S1_S1_S0_.exit
@@ -4604,47 +5923,95 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	addi.d	$s1, $s1, 8
 	bnez	$a0, .LBB12_12
 # %bb.13:                               # %_ZL25run_single_csa_only_novecIlET_PS0_S1_S1_S0_.exit
+	vst	$vr6, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
+	xvst	$xr5, $sp, 48                   # 32-byte Folded Spill
 	bne	$s3, $s2, .LBB12_29
 # %bb.14:
-	ld.w	$s1, $s0, 28
-	ld.d	$fp, $s0, 16
+	ld.w	$s1, $fp, 28
+	ld.d	$s0, $fp, 16
 .Ltmp306:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp307:                               # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
+	xvld	$xr6, $sp, 48                   # 32-byte Folded Reload
+	vld	$vr7, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr8, $sp, 16                   # 16-byte Folded Reload
 	bnez	$s1, .LBB12_21
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$fp, .LBB12_21
+	beqz	$s0, .LBB12_21
 # %bb.17:
-	ori	$a0, $s4, 1696
-	ori	$a1, $zero, 60
-	addi.d	$a2, $sp, 32
-	addi.d	$a3, $sp, 24
-	addi.d	$a4, $sp, 16
-	addi.d	$a5, $sp, 40
+	xvrepli.d	$xr0, 101
+	ori	$a0, $s5, 1696
+	ori	$a1, $zero, 101
+	addi.d	$a2, $sp, 96
+	addi.d	$a3, $sp, 88
+	addi.d	$a4, $sp, 80
+	addi.d	$a5, $sp, 104
 	.p2align	4, , 16
 .LBB12_18:                              # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_19 Depth 2
-	ld.d	$a6, $sp, 32
-	ori	$a7, $zero, 101
-	move	$t0, $a0
+	ld.d	$a6, $sp, 96
+	move	$a7, $a0
+	xvori.b	$xr2, $xr0, 0
+	vori.b	$vr1, $vr8, 0
 	.p2align	4, , 16
-.LBB12_19:                              #   Parent Loop BB12_18 Depth=1
+.LBB12_19:                              # %vector.body77
+                                        #   Parent Loop BB12_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t1, $a6, 0
-	slt	$t2, $a1, $t1
-	masknez	$a7, $a7, $t2
-	maskeqz	$t1, $t1, $t2
-	or	$a7, $t1, $a7
-	addi.d	$t0, $t0, -1
-	addi.d	$a6, $a6, 8
-	bnez	$t0, .LBB12_19
+	xvld	$xr3, $a6, 0
+	xvslt.d	$xr4, $xr6, $xr3
+	xvpickve2gr.d	$t0, $xr4, 0
+	vinsgr2vr.w	$vr5, $t0, 0
+	xvpickve2gr.d	$t0, $xr4, 1
+	vinsgr2vr.w	$vr5, $t0, 1
+	xvpickve2gr.d	$t0, $xr4, 2
+	vinsgr2vr.w	$vr5, $t0, 2
+	xvpickve2gr.d	$t0, $xr4, 3
+	vinsgr2vr.w	$vr5, $t0, 3
+	xvmskltz.d	$xr4, $xr4
+	xvpickve2gr.wu	$t0, $xr4, 0
+	xvpickve2gr.wu	$t1, $xr4, 4
+	bstrins.d	$t0, $t1, 3, 2
+	sltui	$t0, $t0, 1
+	maskeqz	$t0, $s4, $t0
+	vreplgr2vr.w	$vr4, $t0
+	vandn.v	$vr5, $vr4, $vr5
+	vand.v	$vr1, $vr1, $vr4
+	vor.v	$vr1, $vr1, $vr5
+	xvreplgr2vr.d	$xr4, $t0
+	xvandn.v	$xr3, $xr4, $xr3
+	xvand.v	$xr2, $xr2, $xr4
+	xvor.v	$xr2, $xr2, $xr3
+	addi.d	$a7, $a7, -4
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB12_19
 # %bb.20:                               # %_ZL27run_single_csa_only_autovecIlET_PS0_S1_S1_S0_.exit30
                                         #   in Loop: Header=BB12_18 Depth=1
-	st.d	$a7, $sp, 40
+	vbitsel.v	$vr3, $vr8, $vr7, $vr1
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.wu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.wu	$vr3, $vr4, $vr3
+	vpickve2gr.w	$a6, $vr3, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.w	$fa3, $a6
+	xvpermi.q	$xr4, $xr2, 1
+	xvshuf.d	$xr3, $xr4, $xr2
+	xvpickve2gr.d	$a6, $xr3, 0
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a7, $vr1, 0
+	andi	$a7, $a7, 1
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $a1, $a7
+	or	$a6, $a6, $a7
+	st.d	$a6, $sp, 104
 	#APP
 	#NO_APP
 	#APP
@@ -4653,36 +6020,37 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	#NO_APP
 	#APP
 	#NO_APP
-	addi.d	$fp, $fp, -1
+	addi.d	$s0, $s0, -1
 	#MEMBARRIER
-	bnez	$fp, .LBB12_18
+	bnez	$s0, .LBB12_18
 .LBB12_21:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp308:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp309:                               # EH_LABEL
 # %bb.22:                               # %_ZL21benchmark_csa_autovecIlEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB12_24
 # %bb.23:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB12_24:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit40
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 88
 	beqz	$a0, .LBB12_26
 # %bb.25:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB12_26:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit43
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 96
 	beqz	$a0, .LBB12_28
 # %bb.27:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i45
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB12_28:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit46
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1056
+	addi.d	$sp, $sp, 1120
+	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -4712,17 +6080,17 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 .Ltmp298:                               # EH_LABEL
 # %bb.31:                               # %_ZNSolsEl.exit
 .Ltmp299:                               # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.38)
 	ori	$a2, $zero, 4
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp300:                               # EH_LABEL
 # %bb.32:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit22
 .Ltmp301:                               # EH_LABEL
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
@@ -4743,53 +6111,53 @@ _Z42BENCHMARK_single_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z42BENCHM
 	b	.LBB12_43
 .LBB12_36:                              # %.thread
 .Ltmp287:                               # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	b	.LBB12_45
 .LBB12_37:                              # %.thread58
 .Ltmp284:                               # EH_LABEL
-	move	$s0, $a0
+	move	$fp, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB12_38:
 .Ltmp310:                               # EH_LABEL
-	ld.d	$fp, $sp, 16
-	move	$s0, $a0
-	bnez	$fp, .LBB12_44
+	ld.d	$s0, $sp, 80
+	move	$fp, $a0
+	bnez	$s0, .LBB12_44
 # %bb.39:
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 88
 	bnez	$s2, .LBB12_45
 .LBB12_40:
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 96
 	bnez	$s1, .LBB12_46
 .LBB12_41:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit37
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB12_42:
 .Ltmp294:                               # EH_LABEL
 .LBB12_43:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$s0, $a0
+	move	$fp, $a0
 .LBB12_44:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 88
 	beqz	$s2, .LBB12_40
 .LBB12_45:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 96
 	beqz	$s1, .LBB12_41
 .LBB12_46:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end12:
@@ -5158,6 +6526,11 @@ GCC_except_table13:
 .LCPI14_0:
 	.dword	0                               # 0x0
 	.dword	100                             # 0x64
+.LCPI14_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	_Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE
 	.p2align	5
@@ -5185,8 +6558,8 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1040
-	.cfi_def_cfa_offset 5120
+	addi.d	$sp, $sp, -1104
+	.cfi_def_cfa_offset 5184
 	move	$fp, $a0
 	lu12i.w	$a0, 195
 	ori	$s3, $a0, 1280
@@ -5194,7 +6567,7 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$a0, $sp, 32
+	st.d	$a0, $sp, 96
 .Ltmp329:                               # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -5202,7 +6575,7 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 .Ltmp330:                               # EH_LABEL
 # %bb.1:
 	move	$s2, $a0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 88
 .Ltmp332:                               # EH_LABEL
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -5212,19 +6585,19 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.LCPI14_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI14_0)
-	st.d	$s0, $sp, 16
+	st.d	$s0, $sp, 80
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
 	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 40
+	st.d	$a2, $sp, 104
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 40
+	addi.d	$a4, $sp, 104
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB14_3:                               # =>This Inner Loop Header: Depth=1
@@ -5241,18 +6614,18 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1000
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB14_5:                               # =>This Inner Loop Header: Depth=1
 .Ltmp335:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -5262,11 +6635,11 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.d	$a0, $s1, $s4
 .Ltmp337:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -5276,11 +6649,11 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.d	$a0, $s2, $s4
 .Ltmp339:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1008
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 104
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1008
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -5290,62 +6663,189 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	stx.d	$a0, $s0, $s4
 	addi.d	$s4, $s4, 8
 	bne	$s4, $s3, .LBB14_5
-# %bb.9:
-	move	$a3, $zero
-	ori	$a0, $zero, 101
-	ori	$a4, $zero, 60
-	ori	$a1, $zero, 101
-	ori	$a2, $zero, 101
+# %bb.9:                                # %vector.ph
+	move	$a0, $zero
+	vrepli.b	$vr4, 0
+	xvrepli.d	$xr5, 101
+	xvrepli.d	$xr9, 60
+	addi.w	$s4, $zero, -1
+	xvori.b	$xr3, $xr5, 0
+	vori.b	$vr2, $vr4, 0
+	xvori.b	$xr1, $xr5, 0
+	vori.b	$vr0, $vr4, 0
 	.p2align	4, , 16
-.LBB14_10:                              # =>This Inner Loop Header: Depth=1
-	ldx.d	$a5, $s1, $a3
-	slt	$a6, $a4, $a5
-	ldx.d	$a7, $s2, $a3
-	maskeqz	$a5, $a5, $a6
-	masknez	$a2, $a2, $a6
-	or	$a2, $a5, $a2
-	slt	$a5, $a4, $a7
-	ldx.d	$a6, $s0, $a3
-	maskeqz	$a7, $a7, $a5
-	masknez	$a1, $a1, $a5
-	or	$a1, $a7, $a1
-	slt	$a5, $a4, $a6
-	maskeqz	$a6, $a6, $a5
-	masknez	$a0, $a0, $a5
-	addi.d	$a3, $a3, 8
-	or	$a0, $a6, $a0
-	bne	$a3, $s3, .LBB14_10
-# %bb.11:                               # %.preheader.preheader
-	move	$a4, $zero
-	ori	$a3, $zero, 101
+.LBB14_10:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvldx	$xr6, $s1, $a0
+	xvslt.d	$xr7, $xr9, $xr6
+	xvpickve2gr.d	$a1, $xr7, 0
+	vinsgr2vr.w	$vr8, $a1, 0
+	xvpickve2gr.d	$a1, $xr7, 1
+	vinsgr2vr.w	$vr8, $a1, 1
+	xvpickve2gr.d	$a1, $xr7, 2
+	vinsgr2vr.w	$vr8, $a1, 2
+	xvpickve2gr.d	$a1, $xr7, 3
+	vinsgr2vr.w	$vr8, $a1, 3
+	xvmskltz.d	$xr7, $xr7
+	xvpickve2gr.wu	$a1, $xr7, 0
+	xvpickve2gr.wu	$a2, $xr7, 4
+	bstrins.d	$a1, $a2, 3, 2
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	vreplgr2vr.w	$vr7, $a1
+	vandn.v	$vr8, $vr7, $vr8
+	vand.v	$vr0, $vr0, $vr7
+	vor.v	$vr0, $vr0, $vr8
+	xvreplgr2vr.d	$xr7, $a1
+	xvldx	$xr8, $s2, $a0
+	xvandn.v	$xr6, $xr7, $xr6
+	xvand.v	$xr1, $xr1, $xr7
+	xvor.v	$xr1, $xr1, $xr6
+	xvslt.d	$xr6, $xr9, $xr8
+	xvpickve2gr.d	$a1, $xr6, 0
+	vinsgr2vr.w	$vr7, $a1, 0
+	xvpickve2gr.d	$a1, $xr6, 1
+	vinsgr2vr.w	$vr7, $a1, 1
+	xvpickve2gr.d	$a1, $xr6, 2
+	vinsgr2vr.w	$vr7, $a1, 2
+	xvpickve2gr.d	$a1, $xr6, 3
+	vinsgr2vr.w	$vr7, $a1, 3
+	xvmskltz.d	$xr6, $xr6
+	xvpickve2gr.wu	$a1, $xr6, 0
+	xvpickve2gr.wu	$a2, $xr6, 4
+	bstrins.d	$a1, $a2, 3, 2
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	vreplgr2vr.w	$vr6, $a1
+	vandn.v	$vr7, $vr6, $vr7
+	vand.v	$vr2, $vr2, $vr6
+	vor.v	$vr2, $vr2, $vr7
+	xvreplgr2vr.d	$xr6, $a1
+	xvldx	$xr7, $s0, $a0
+	xvandn.v	$xr8, $xr6, $xr8
+	xvand.v	$xr3, $xr3, $xr6
+	xvor.v	$xr3, $xr3, $xr8
+	xvslt.d	$xr6, $xr9, $xr7
+	xvpickve2gr.d	$a1, $xr6, 0
+	vinsgr2vr.w	$vr8, $a1, 0
+	xvpickve2gr.d	$a1, $xr6, 1
+	vinsgr2vr.w	$vr8, $a1, 1
+	xvpickve2gr.d	$a1, $xr6, 2
+	vinsgr2vr.w	$vr8, $a1, 2
+	xvpickve2gr.d	$a1, $xr6, 3
+	vinsgr2vr.w	$vr8, $a1, 3
+	xvmskltz.d	$xr6, $xr6
+	xvpickve2gr.wu	$a1, $xr6, 0
+	xvpickve2gr.wu	$a2, $xr6, 4
+	bstrins.d	$a1, $a2, 3, 2
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s4, $a1
+	vreplgr2vr.w	$vr6, $a1
+	vandn.v	$vr8, $vr6, $vr8
+	vand.v	$vr4, $vr4, $vr6
+	vor.v	$vr4, $vr4, $vr8
+	xvreplgr2vr.d	$xr6, $a1
+	xvandn.v	$xr7, $xr6, $xr7
+	xvand.v	$xr5, $xr5, $xr6
+	addi.d	$a0, $a0, 32
+	xvor.v	$xr5, $xr5, $xr7
+	bne	$a0, $s3, .LBB14_10
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI14_1)
+	vld	$vr8, $a0, %pc_lo12(.LCPI14_1)
+	move	$a0, $zero
+	vrepli.b	$vr10, 0
+	vbitsel.v	$vr6, $vr10, $vr8, $vr4
+	vbsrl.v	$vr7, $vr6, 8
+	vmax.wu	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 4
+	vmax.wu	$vr6, $vr7, $vr6
+	vpickve2gr.w	$a1, $vr6, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	movgr2fr.w	$fa6, $a1
+	xvpermi.q	$xr7, $xr5, 1
+	xvshuf.d	$xr6, $xr7, $xr5
+	xvpickve2gr.d	$a1, $xr6, 0
+	vbsrl.v	$vr5, $vr4, 8
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 4
+	vor.v	$vr4, $vr5, $vr4
+	vpickve2gr.w	$a2, $vr4, 0
+	andi	$a2, $a2, 1
+	maskeqz	$a3, $a1, $a2
+	ori	$a1, $zero, 101
+	masknez	$a2, $a1, $a2
+	or	$a2, $a3, $a2
+	vbitsel.v	$vr4, $vr10, $vr8, $vr2
+	vbsrl.v	$vr5, $vr4, 8
+	vmax.wu	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr4, 4
+	vmax.wu	$vr4, $vr5, $vr4
+	vpickve2gr.w	$a3, $vr4, 0
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.w	$fa4, $a3
+	xvpermi.q	$xr5, $xr3, 1
+	xvshuf.d	$xr4, $xr5, $xr3
+	xvpickve2gr.d	$a3, $xr4, 0
+	vbsrl.v	$vr3, $vr2, 8
+	vor.v	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vor.v	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a4, $vr2, 0
+	andi	$a4, $a4, 1
+	maskeqz	$a3, $a3, $a4
+	masknez	$a4, $a1, $a4
+	or	$a3, $a3, $a4
+	vbitsel.v	$vr2, $vr10, $vr8, $vr0
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.wu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.wu	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	movgr2fr.w	$fa2, $a4
+	xvpermi.q	$xr3, $xr1, 1
+	xvshuf.d	$xr2, $xr3, $xr1
+	xvpickve2gr.d	$a4, $xr2, 0
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
+	andi	$a5, $a5, 1
+	maskeqz	$a4, $a4, $a5
+	masknez	$a5, $a1, $a5
+	or	$a4, $a4, $a5
 	ori	$a6, $zero, 60
 	ori	$a5, $zero, 101
 	ori	$a7, $zero, 101
 	.p2align	4, , 16
-.LBB14_12:                              # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.d	$t0, $s1, $a4
+.LBB14_12:                              # =>This Inner Loop Header: Depth=1
+	ldx.d	$t0, $s1, $a0
 	slt	$t1, $a6, $t0
-	ldx.d	$t2, $s2, $a4
+	ldx.d	$t2, $s2, $a0
 	maskeqz	$t0, $t0, $t1
 	masknez	$a7, $a7, $t1
 	or	$a7, $t0, $a7
 	slt	$t0, $a6, $t2
-	ldx.d	$t1, $s0, $a4
+	ldx.d	$t1, $s0, $a0
 	maskeqz	$t2, $t2, $t0
 	masknez	$a5, $a5, $t0
 	or	$a5, $t2, $a5
 	slt	$t0, $a6, $t1
 	maskeqz	$t1, $t1, $t0
-	masknez	$a3, $a3, $t0
-	addi.d	$a4, $a4, 8
-	or	$a3, $t1, $a3
-	bne	$a4, $s3, .LBB14_12
+	masknez	$a1, $a1, $t0
+	addi.d	$a0, $a0, 8
+	or	$a1, $t1, $a1
+	bne	$a0, $s3, .LBB14_12
 # %bb.13:
-	xor	$a1, $a1, $a2
-	xor	$s2, $a1, $a0
+	vst	$vr10, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr8, $sp, 32                   # 16-byte Folded Spill
+	xvst	$xr9, $sp, 48                   # 32-byte Folded Spill
+	xor	$a0, $a3, $a4
+	xor	$s2, $a0, $a2
 	xor	$a0, $a5, $a7
-	xor	$s1, $a0, $a3
+	xor	$s1, $a0, $a1
 	bne	$s2, $s1, .LBB14_29
 # %bb.14:
 	ld.w	$s1, $fp, 28
@@ -5356,56 +6856,181 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .Ltmp354:                               # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
+	xvld	$xr10, $sp, 48                  # 32-byte Folded Reload
+	vld	$vr11, $sp, 32                  # 16-byte Folded Reload
+	vld	$vr12, $sp, 16                  # 16-byte Folded Reload
 	bnez	$s1, .LBB14_21
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s0, .LBB14_21
 # %bb.17:
+	xvrepli.d	$xr0, 101
 	lu12i.w	$a0, 24
 	ori	$a0, $a0, 1696
-	ori	$a1, $zero, 60
-	addi.d	$a2, $sp, 32
-	addi.d	$a3, $sp, 24
-	addi.d	$a4, $sp, 16
-	addi.d	$a5, $sp, 40
+	ori	$a1, $zero, 101
+	addi.d	$a2, $sp, 96
+	addi.d	$a3, $sp, 88
+	addi.d	$a4, $sp, 80
+	addi.d	$a5, $sp, 104
 	.p2align	4, , 16
 .LBB14_18:                              # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB14_19 Depth 2
-	ld.d	$a6, $sp, 32
-	ld.d	$a7, $sp, 24
-	ld.d	$t0, $sp, 16
-	ori	$t1, $zero, 101
-	move	$t2, $a0
-	ori	$t3, $zero, 101
-	ori	$t4, $zero, 101
+	ld.d	$a6, $sp, 96
+	ld.d	$a7, $sp, 88
+	ld.d	$t0, $sp, 80
+	move	$t1, $a0
+	xvori.b	$xr2, $xr0, 0
+	vori.b	$vr1, $vr12, 0
+	xvori.b	$xr4, $xr0, 0
+	vori.b	$vr3, $vr12, 0
+	xvori.b	$xr6, $xr0, 0
+	vori.b	$vr5, $vr12, 0
 	.p2align	4, , 16
-.LBB14_19:                              #   Parent Loop BB14_18 Depth=1
+.LBB14_19:                              # %vector.body91
+                                        #   Parent Loop BB14_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t5, $a6, 0
-	slt	$t6, $a1, $t5
-	ld.d	$t7, $a7, 0
-	masknez	$t4, $t4, $t6
-	maskeqz	$t5, $t5, $t6
-	or	$t4, $t5, $t4
-	slt	$t5, $a1, $t7
-	ld.d	$t6, $t0, 0
-	masknez	$t3, $t3, $t5
-	maskeqz	$t5, $t7, $t5
-	or	$t3, $t5, $t3
-	slt	$t5, $a1, $t6
-	masknez	$t1, $t1, $t5
-	maskeqz	$t5, $t6, $t5
-	or	$t1, $t5, $t1
-	addi.d	$t2, $t2, -1
-	addi.d	$t0, $t0, 8
-	addi.d	$a7, $a7, 8
-	addi.d	$a6, $a6, 8
-	bnez	$t2, .LBB14_19
+	xvld	$xr7, $a6, 0
+	xvslt.d	$xr8, $xr10, $xr7
+	xvpickve2gr.d	$t2, $xr8, 0
+	vinsgr2vr.w	$vr9, $t2, 0
+	xvpickve2gr.d	$t2, $xr8, 1
+	vinsgr2vr.w	$vr9, $t2, 1
+	xvpickve2gr.d	$t2, $xr8, 2
+	vinsgr2vr.w	$vr9, $t2, 2
+	xvpickve2gr.d	$t2, $xr8, 3
+	vinsgr2vr.w	$vr9, $t2, 3
+	xvmskltz.d	$xr8, $xr8
+	xvpickve2gr.wu	$t2, $xr8, 0
+	xvpickve2gr.wu	$t3, $xr8, 4
+	bstrins.d	$t2, $t3, 3, 2
+	sltui	$t2, $t2, 1
+	maskeqz	$t2, $s4, $t2
+	vreplgr2vr.w	$vr8, $t2
+	vandn.v	$vr9, $vr8, $vr9
+	vand.v	$vr5, $vr5, $vr8
+	vor.v	$vr5, $vr5, $vr9
+	xvreplgr2vr.d	$xr8, $t2
+	xvld	$xr9, $a7, 0
+	xvandn.v	$xr7, $xr8, $xr7
+	xvand.v	$xr6, $xr6, $xr8
+	xvor.v	$xr6, $xr6, $xr7
+	xvslt.d	$xr7, $xr10, $xr9
+	xvpickve2gr.d	$t2, $xr7, 0
+	vinsgr2vr.w	$vr8, $t2, 0
+	xvpickve2gr.d	$t2, $xr7, 1
+	vinsgr2vr.w	$vr8, $t2, 1
+	xvpickve2gr.d	$t2, $xr7, 2
+	vinsgr2vr.w	$vr8, $t2, 2
+	xvpickve2gr.d	$t2, $xr7, 3
+	vinsgr2vr.w	$vr8, $t2, 3
+	xvmskltz.d	$xr7, $xr7
+	xvpickve2gr.wu	$t2, $xr7, 0
+	xvpickve2gr.wu	$t3, $xr7, 4
+	bstrins.d	$t2, $t3, 3, 2
+	sltui	$t2, $t2, 1
+	maskeqz	$t2, $s4, $t2
+	vreplgr2vr.w	$vr7, $t2
+	vandn.v	$vr8, $vr7, $vr8
+	vand.v	$vr3, $vr3, $vr7
+	vor.v	$vr3, $vr3, $vr8
+	xvreplgr2vr.d	$xr7, $t2
+	xvld	$xr8, $t0, 0
+	xvandn.v	$xr9, $xr7, $xr9
+	xvand.v	$xr4, $xr4, $xr7
+	xvor.v	$xr4, $xr4, $xr9
+	xvslt.d	$xr7, $xr10, $xr8
+	xvpickve2gr.d	$t2, $xr7, 0
+	vinsgr2vr.w	$vr9, $t2, 0
+	xvpickve2gr.d	$t2, $xr7, 1
+	vinsgr2vr.w	$vr9, $t2, 1
+	xvpickve2gr.d	$t2, $xr7, 2
+	vinsgr2vr.w	$vr9, $t2, 2
+	xvpickve2gr.d	$t2, $xr7, 3
+	vinsgr2vr.w	$vr9, $t2, 3
+	xvmskltz.d	$xr7, $xr7
+	xvpickve2gr.wu	$t2, $xr7, 0
+	xvpickve2gr.wu	$t3, $xr7, 4
+	bstrins.d	$t2, $t3, 3, 2
+	sltui	$t2, $t2, 1
+	maskeqz	$t2, $s4, $t2
+	vreplgr2vr.w	$vr7, $t2
+	vandn.v	$vr9, $vr7, $vr9
+	vand.v	$vr1, $vr1, $vr7
+	vor.v	$vr1, $vr1, $vr9
+	xvreplgr2vr.d	$xr7, $t2
+	xvandn.v	$xr8, $xr7, $xr8
+	xvand.v	$xr2, $xr2, $xr7
+	xvor.v	$xr2, $xr2, $xr8
+	addi.d	$t1, $t1, -4
+	addi.d	$t0, $t0, 32
+	addi.d	$a7, $a7, 32
+	addi.d	$a6, $a6, 32
+	bnez	$t1, .LBB14_19
 # %bb.20:                               # %_ZN9benchmark5State3endEv.exit
                                         #   in Loop: Header=BB14_18 Depth=1
-	xor	$a6, $t3, $t4
-	xor	$a6, $a6, $t1
-	st.d	$a6, $sp, 40
+	vbitsel.v	$vr7, $vr12, $vr11, $vr5
+	vbsrl.v	$vr8, $vr7, 8
+	vmax.wu	$vr7, $vr8, $vr7
+	vbsrl.v	$vr8, $vr7, 4
+	vmax.wu	$vr7, $vr8, $vr7
+	vpickve2gr.w	$a6, $vr7, 0
+	bstrpick.d	$a6, $a6, 31, 0
+	movgr2fr.w	$fa7, $a6
+	xvpermi.q	$xr8, $xr6, 1
+	xvshuf.d	$xr7, $xr8, $xr6
+	xvpickve2gr.d	$a6, $xr7, 0
+	vbsrl.v	$vr6, $vr5, 8
+	vor.v	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 4
+	vor.v	$vr5, $vr6, $vr5
+	vpickve2gr.w	$a7, $vr5, 0
+	andi	$a7, $a7, 1
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $a1, $a7
+	or	$a6, $a6, $a7
+	vbitsel.v	$vr5, $vr12, $vr11, $vr3
+	vbsrl.v	$vr6, $vr5, 8
+	vmax.wu	$vr5, $vr6, $vr5
+	vbsrl.v	$vr6, $vr5, 4
+	vmax.wu	$vr5, $vr6, $vr5
+	vpickve2gr.w	$a7, $vr5, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.w	$fa5, $a7
+	xvpermi.q	$xr6, $xr4, 1
+	xvshuf.d	$xr5, $xr6, $xr4
+	xvpickve2gr.d	$a7, $xr5, 0
+	vbsrl.v	$vr4, $vr3, 8
+	vor.v	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vor.v	$vr3, $vr4, $vr3
+	vpickve2gr.w	$t0, $vr3, 0
+	andi	$t0, $t0, 1
+	maskeqz	$a7, $a7, $t0
+	masknez	$t0, $a1, $t0
+	or	$a7, $a7, $t0
+	vbitsel.v	$vr3, $vr12, $vr11, $vr1
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.wu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.wu	$vr3, $vr4, $vr3
+	vpickve2gr.w	$t0, $vr3, 0
+	bstrpick.d	$t0, $t0, 31, 0
+	movgr2fr.w	$fa3, $t0
+	xvpermi.q	$xr4, $xr2, 1
+	xvshuf.d	$xr3, $xr4, $xr2
+	xvpickve2gr.d	$t0, $xr3, 0
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.w	$t1, $vr1, 0
+	andi	$t1, $t1, 1
+	maskeqz	$t0, $t0, $t1
+	masknez	$t1, $a1, $t1
+	or	$t0, $t0, $t1
+	xor	$a6, $a7, $a6
+	xor	$a6, $a6, $t0
+	st.d	$a6, $sp, 104
 	#APP
 	#NO_APP
 	#APP
@@ -5424,26 +7049,26 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .Ltmp356:                               # EH_LABEL
 # %bb.22:                               # %_ZL21benchmark_csa_autovecIlEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 80
 	beqz	$a0, .LBB14_24
 # %bb.23:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i47
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_24:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit48
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 88
 	beqz	$a0, .LBB14_26
 # %bb.25:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i50
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_26:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit51
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 96
 	beqz	$a0, .LBB14_28
 # %bb.27:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i53
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB14_28:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit54
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1056
+	addi.d	$sp, $sp, 1120
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -5517,14 +7142,14 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	jirl	$ra, $ra, 0
 .LBB14_38:
 .Ltmp357:                               # EH_LABEL
-	ld.d	$s0, $sp, 16
+	ld.d	$s0, $sp, 80
 	move	$fp, $a0
 	bnez	$s0, .LBB14_44
 # %bb.39:
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 88
 	bnez	$s2, .LBB14_45
 .LBB14_40:
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 96
 	bnez	$s1, .LBB14_46
 .LBB14_41:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit45
 	move	$a0, $fp
@@ -5538,13 +7163,13 @@ _Z41BENCHMARK_multi_csa_only_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 24
+	ld.d	$s2, $sp, 88
 	beqz	$s2, .LBB14_40
 .LBB14_45:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i41
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 32
+	ld.d	$s1, $sp, 96
 	beqz	$s1, .LBB14_41
 .LBB14_46:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i44
 	move	$a0, $s1
@@ -5937,6 +7562,11 @@ GCC_except_table15:
 .LCPI16_0:
 	.dword	0                               # 0x0
 	.dword	100                             # 0x64
+.LCPI16_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	_Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE
 	.p2align	5
@@ -5957,6 +7587,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
 	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5965,47 +7596,48 @@ _Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
+	.cfi_offset 29, -72
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1040
-	.cfi_def_cfa_offset 5120
+	addi.d	$sp, $sp, -1184
+	.cfi_def_cfa_offset 5264
 	move	$fp, $a0
 	lu12i.w	$a0, 195
-	ori	$s3, $a0, 1280
-	move	$a0, $s3
+	ori	$s0, $a0, 1280
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$a0, $sp, 32
+	move	$s2, $a0
+	st.d	$a0, $sp, 160
 .Ltmp376:                               # EH_LABEL
-	move	$a0, $s3
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp377:                               # EH_LABEL
 # %bb.1:
-	move	$s2, $a0
-	st.d	$a0, $sp, 24
+	move	$s3, $a0
+	st.d	$a0, $sp, 152
 .Ltmp379:                               # EH_LABEL
-	move	$a0, $s3
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp380:                               # EH_LABEL
 # %bb.2:
-	move	$s0, $a0
+	move	$s1, $a0
 	pcalau12i	$a0, %pc_hi20(.LCPI16_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI16_0)
-	st.d	$s0, $sp, 16
+	st.d	$s1, $sp, 144
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1072
 	add.d	$a0, $sp, $a0
 	vst	$vr0, $a0, 0
 	lu12i.w	$a0, 3
 	ori	$a2, $a0, 57
-	st.d	$a2, $sp, 40
+	st.d	$a2, $sp, 168
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 8
 	lu12i.w	$a3, 442488
 	ori	$a3, $a3, 2405
-	addi.d	$a4, $sp, 40
+	addi.d	$a4, $sp, 168
 	ori	$a5, $zero, 624
 	.p2align	4, , 16
 .LBB16_3:                               # =>This Inner Loop Header: Depth=1
@@ -6022,148 +7654,200 @@ _Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	move	$s4, $zero
 	ori	$a0, $zero, 624
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 936
+	ori	$a1, $a1, 1064
 	add.d	$a1, $sp, $a1
 	stptr.d	$a0, $a1, 0
 	.p2align	4, , 16
 .LBB16_5:                               # =>This Inner Loop Header: Depth=1
 .Ltmp382:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1072
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 168
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1072
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp383:                               # EH_LABEL
 # %bb.6:                                # %.noexc8
                                         #   in Loop: Header=BB16_5 Depth=1
-	stx.d	$a0, $s1, $s4
+	stx.d	$a0, $s2, $s4
 .Ltmp384:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1072
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 168
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1072
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp385:                               # EH_LABEL
 # %bb.7:                                # %.noexc9
                                         #   in Loop: Header=BB16_5 Depth=1
-	stx.d	$a0, $s2, $s4
+	stx.d	$a0, $s3, $s4
 .Ltmp386:                               # EH_LABEL
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 944
+	ori	$a0, $a0, 1072
 	add.d	$a0, $sp, $a0
-	addi.d	$a1, $sp, 40
+	addi.d	$a1, $sp, 168
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 944
+	ori	$a2, $a2, 1072
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIlEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEElRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
 .Ltmp387:                               # EH_LABEL
 # %bb.8:                                # %.noexc10
                                         #   in Loop: Header=BB16_5 Depth=1
-	stx.d	$a0, $s0, $s4
+	stx.d	$a0, $s1, $s4
 	addi.d	$s4, $s4, 8
-	bne	$s4, $s3, .LBB16_5
-# %bb.9:
+	bne	$s4, $s0, .LBB16_5
+# %bb.9:                                # %vector.ph
 	move	$a0, $zero
+	vrepli.b	$vr0, 0
+	xvrepli.d	$xr1, 101
+	xvrepli.d	$xr5, 13
+	xvrepli.d	$xr6, 5
+	xvrepli.d	$xr7, 60
+	addi.w	$s6, $zero, -1
+	.p2align	4, , 16
+.LBB16_10:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvldx	$xr2, $s3, $a0
+	xvldx	$xr3, $s2, $a0
+	xvmul.d	$xr2, $xr2, $xr6
+	xvmadd.d	$xr2, $xr3, $xr5
+	xvstx	$xr2, $s1, $a0
+	xvslt.d	$xr2, $xr7, $xr3
+	xvpickve2gr.d	$a1, $xr2, 0
+	vinsgr2vr.w	$vr4, $a1, 0
+	xvpickve2gr.d	$a1, $xr2, 1
+	vinsgr2vr.w	$vr4, $a1, 1
+	xvpickve2gr.d	$a1, $xr2, 2
+	vinsgr2vr.w	$vr4, $a1, 2
+	xvpickve2gr.d	$a1, $xr2, 3
+	vinsgr2vr.w	$vr4, $a1, 3
+	xvmskltz.d	$xr2, $xr2
+	xvpickve2gr.wu	$a1, $xr2, 0
+	xvpickve2gr.wu	$a2, $xr2, 4
+	bstrins.d	$a1, $a2, 3, 2
+	sltui	$a1, $a1, 1
+	maskeqz	$a1, $s6, $a1
+	vreplgr2vr.w	$vr2, $a1
+	vandn.v	$vr4, $vr2, $vr4
+	vand.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr4
+	xvreplgr2vr.d	$xr2, $a1
+	xvandn.v	$xr3, $xr2, $xr3
+	xvand.v	$xr1, $xr1, $xr2
+	addi.d	$a0, $a0, 32
+	xvor.v	$xr1, $xr1, $xr3
+	bne	$a0, $s0, .LBB16_10
+# %bb.11:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI16_1)
+	vld	$vr4, $a0, %pc_lo12(.LCPI16_1)
+	move	$a0, $zero
+	vrepli.b	$vr8, 0
+	vbitsel.v	$vr2, $vr8, $vr4, $vr0
+	vbsrl.v	$vr3, $vr2, 8
+	vmax.wu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.wu	$vr2, $vr3, $vr2
+	vpickve2gr.w	$a1, $vr2, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	movgr2fr.w	$fa2, $a1
+	xvpermi.q	$xr3, $xr1, 1
+	xvshuf.d	$xr2, $xr3, $xr1
+	xvpickve2gr.d	$a1, $xr2, 0
+	vbsrl.v	$vr1, $vr0, 8
+	vor.v	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vor.v	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
+	andi	$a2, $a2, 1
+	maskeqz	$a1, $a1, $a2
 	ori	$s4, $zero, 101
+	masknez	$a2, $s4, $a2
+	or	$s5, $a1, $a2
 	ori	$a1, $zero, 60
 	.p2align	4, , 16
-.LBB16_10:                              # =>This Inner Loop Header: Depth=1
-	ldx.d	$a2, $s1, $a0
-	ldx.d	$a3, $s2, $a0
+.LBB16_12:                              # %_ZL26run_csa_with_arith_autovecIlET_PS0_S1_S1_S0_.exit
+                                        # =>This Inner Loop Header: Depth=1
+	ldx.d	$a2, $s2, $a0
+	ldx.d	$a3, $s3, $a0
 	alsl.d	$a4, $a2, $a2, 1
 	alsl.d	$a4, $a4, $a2, 2
 	alsl.d	$a3, $a3, $a3, 2
 	add.d	$a3, $a3, $a4
-	stx.d	$a3, $s0, $a0
+	stx.d	$a3, $s1, $a0
 	slt	$a3, $a1, $a2
 	maskeqz	$a2, $a2, $a3
 	masknez	$a3, $s4, $a3
 	addi.d	$a0, $a0, 8
 	or	$s4, $a2, $a3
-	bne	$a0, $s3, .LBB16_10
-# %bb.11:                               # %_ZL26run_csa_with_arith_autovecIlET_PS0_S1_S1_S0_.exit.preheader
-	move	$a0, $zero
-	ori	$s5, $zero, 101
-	ori	$a1, $zero, 60
-	.p2align	4, , 16
-.LBB16_12:                              # %_ZL26run_csa_with_arith_autovecIlET_PS0_S1_S1_S0_.exit
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.d	$a2, $s1, $a0
-	ldx.d	$a3, $s2, $a0
-	alsl.d	$a4, $a2, $a2, 1
-	alsl.d	$a4, $a4, $a2, 2
-	alsl.d	$a3, $a3, $a3, 2
-	add.d	$a3, $a3, $a4
-	stx.d	$a3, $s0, $a0
-	slt	$a3, $a1, $a2
-	maskeqz	$a2, $a2, $a3
-	masknez	$a3, $s5, $a3
-	addi.d	$a0, $a0, 8
-	or	$s5, $a2, $a3
-	bne	$a0, $s3, .LBB16_12
+	bne	$a0, $s0, .LBB16_12
 # %bb.13:                               # %_ZL24run_csa_with_arith_novecIlET_PS0_S1_S1_S0_.exit
-	bne	$s4, $s5, .LBB16_29
+	vst	$vr8, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
+	xvst	$xr7, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr6, $sp, 80                   # 32-byte Folded Spill
+	xvst	$xr5, $sp, 112                  # 32-byte Folded Spill
+	bne	$s5, $s4, .LBB16_34
 # %bb.14:
-	ld.w	$s1, $fp, 28
-	ld.d	$s0, $fp, 16
+	ld.w	$s2, $fp, 28
+	ld.d	$s1, $fp, 16
 .Ltmp400:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16StartKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp401:                               # EH_LABEL
 # %bb.15:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	bnez	$s1, .LBB16_21
+	xvld	$xr6, $sp, 112                  # 32-byte Folded Reload
+	xvld	$xr7, $sp, 80                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 48                   # 32-byte Folded Reload
+	vld	$vr9, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr10, $sp, 16                  # 16-byte Folded Reload
+	bnez	$s2, .LBB16_26
 # %bb.16:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	beqz	$s0, .LBB16_21
+	beqz	$s1, .LBB16_26
 # %bb.17:
 	lu12i.w	$a0, 24
 	ori	$a0, $a0, 1696
 	ori	$a1, $zero, 60
-	addi.d	$a2, $sp, 32
-	addi.d	$a3, $sp, 24
-	addi.d	$a4, $sp, 16
-	addi.d	$a5, $sp, 40
+	addi.d	$a2, $sp, 160
+	addi.d	$a3, $sp, 152
+	addi.d	$a4, $sp, 144
+	addi.d	$a5, $sp, 168
+	xvrepli.d	$xr0, 101
+	ori	$a6, $zero, 101
+	b	.LBB16_20
 	.p2align	4, , 16
-.LBB16_18:                              # %.lr.ph
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB16_19 Depth 2
-	ld.d	$a6, $sp, 32
-	ld.d	$a7, $sp, 24
-	ld.d	$t0, $sp, 16
-	ori	$t1, $zero, 101
-	move	$t2, $a0
-	.p2align	4, , 16
-.LBB16_19:                              #   Parent Loop BB16_18 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.d	$t3, $a6, 0
-	ld.d	$t4, $a7, 0
-	alsl.d	$t5, $t3, $t3, 1
-	alsl.d	$t3, $t5, $t3, 2
-	alsl.d	$t4, $t4, $t4, 2
-	add.d	$t3, $t4, $t3
-	st.d	$t3, $t0, 0
-	ld.d	$t3, $a6, 0
-	slt	$t4, $a1, $t3
-	masknez	$t1, $t1, $t4
-	maskeqz	$t3, $t3, $t4
-	or	$t1, $t3, $t1
-	addi.d	$t2, $t2, -1
-	addi.d	$t0, $t0, 8
-	addi.d	$a7, $a7, 8
-	addi.d	$a6, $a6, 8
-	bnez	$t2, .LBB16_19
-# %bb.20:                               # %_ZL26run_csa_with_arith_autovecIlET_PS0_S1_S1_S0_.exit30
-                                        #   in Loop: Header=BB16_18 Depth=1
-	st.d	$t1, $sp, 40
+.LBB16_18:                              # %middle.block90
+                                        #   in Loop: Header=BB16_20 Depth=1
+	vbitsel.v	$vr3, $vr10, $vr9, $vr1
+	vbsrl.v	$vr4, $vr3, 8
+	vmax.wu	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr3, 4
+	vmax.wu	$vr3, $vr4, $vr3
+	vpickve2gr.w	$a7, $vr3, 0
+	bstrpick.d	$a7, $a7, 31, 0
+	movgr2fr.w	$fa3, $a7
+	xvpermi.q	$xr4, $xr2, 1
+	xvshuf.d	$xr3, $xr4, $xr2
+	xvpickve2gr.d	$a7, $xr3, 0
+	vbsrl.v	$vr2, $vr1, 8
+	vor.v	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 4
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.w	$t0, $vr1, 0
+	andi	$t0, $t0, 1
+	maskeqz	$a7, $a7, $t0
+	masknez	$t0, $a6, $t0
+	or	$t2, $a7, $t0
+.LBB16_19:                              # %_ZL26run_csa_with_arith_autovecIlET_PS0_S1_S1_S0_.exit30
+                                        #   in Loop: Header=BB16_20 Depth=1
+	st.d	$t2, $sp, 168
 	#APP
 	#NO_APP
 	#APP
@@ -6172,36 +7856,127 @@ _Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	#NO_APP
 	#APP
 	#NO_APP
-	addi.d	$s0, $s0, -1
+	addi.d	$s1, $s1, -1
 	#MEMBARRIER
-	bnez	$s0, .LBB16_18
-.LBB16_21:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
+	beqz	$s1, .LBB16_26
+.LBB16_20:                              # %.lr.ph
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB16_23 Depth 2
+                                        #     Child Loop BB16_25 Depth 2
+	ld.d	$a7, $sp, 144
+	ld.d	$t0, $sp, 160
+	ld.d	$t1, $sp, 152
+	add.d	$t2, $a7, $s0
+	add.d	$t3, $t0, $s0
+	sltu	$t3, $a7, $t3
+	sltu	$t4, $t0, $t2
+	and	$t3, $t3, $t4
+	bnez	$t3, .LBB16_24
+# %bb.21:                               # %.lr.ph
+                                        #   in Loop: Header=BB16_20 Depth=1
+	add.d	$t3, $t1, $s0
+	sltu	$t3, $a7, $t3
+	sltu	$t2, $t1, $t2
+	and	$t2, $t3, $t2
+	bnez	$t2, .LBB16_24
+# %bb.22:                               # %vector.body83.preheader
+                                        #   in Loop: Header=BB16_20 Depth=1
+	move	$t2, $a0
+	xvori.b	$xr2, $xr0, 0
+	vori.b	$vr1, $vr10, 0
+	.p2align	4, , 16
+.LBB16_23:                              # %vector.body83
+                                        #   Parent Loop BB16_20 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	xvld	$xr3, $t1, 0
+	xvld	$xr4, $t0, 0
+	xvmul.d	$xr3, $xr3, $xr7
+	xvmadd.d	$xr3, $xr4, $xr6
+	xvst	$xr3, $a7, 0
+	xvslt.d	$xr3, $xr8, $xr4
+	xvpickve2gr.d	$t3, $xr3, 0
+	vinsgr2vr.w	$vr5, $t3, 0
+	xvpickve2gr.d	$t3, $xr3, 1
+	vinsgr2vr.w	$vr5, $t3, 1
+	xvpickve2gr.d	$t3, $xr3, 2
+	vinsgr2vr.w	$vr5, $t3, 2
+	xvpickve2gr.d	$t3, $xr3, 3
+	vinsgr2vr.w	$vr5, $t3, 3
+	xvmskltz.d	$xr3, $xr3
+	xvpickve2gr.wu	$t3, $xr3, 0
+	xvpickve2gr.wu	$t4, $xr3, 4
+	bstrins.d	$t3, $t4, 3, 2
+	sltui	$t3, $t3, 1
+	maskeqz	$t3, $s6, $t3
+	vreplgr2vr.w	$vr3, $t3
+	vandn.v	$vr5, $vr3, $vr5
+	vand.v	$vr1, $vr1, $vr3
+	vor.v	$vr1, $vr1, $vr5
+	xvreplgr2vr.d	$xr3, $t3
+	xvandn.v	$xr4, $xr3, $xr4
+	xvand.v	$xr2, $xr2, $xr3
+	xvor.v	$xr2, $xr2, $xr4
+	addi.d	$t2, $t2, -4
+	addi.d	$a7, $a7, 32
+	addi.d	$t1, $t1, 32
+	addi.d	$t0, $t0, 32
+	bnez	$t2, .LBB16_23
+	b	.LBB16_18
+	.p2align	4, , 16
+.LBB16_24:                              # %scalar.ph.preheader
+                                        #   in Loop: Header=BB16_20 Depth=1
+	ori	$t2, $zero, 101
+	move	$t3, $a0
+	.p2align	4, , 16
+.LBB16_25:                              # %scalar.ph
+                                        #   Parent Loop BB16_20 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.d	$t4, $t0, 0
+	ld.d	$t5, $t1, 0
+	alsl.d	$t6, $t4, $t4, 1
+	alsl.d	$t4, $t6, $t4, 2
+	alsl.d	$t5, $t5, $t5, 2
+	add.d	$t4, $t5, $t4
+	st.d	$t4, $a7, 0
+	ld.d	$t4, $t0, 0
+	slt	$t5, $a1, $t4
+	masknez	$t2, $t2, $t5
+	maskeqz	$t4, $t4, $t5
+	or	$t2, $t4, $t2
+	addi.d	$t3, $t3, -1
+	addi.d	$a7, $a7, 8
+	addi.d	$t1, $t1, 8
+	addi.d	$t0, $t0, 8
+	bnez	$t3, .LBB16_25
+	b	.LBB16_19
+.LBB16_26:                              # %_ZN9benchmark5State3endEv.exit._crit_edge
 .Ltmp402:                               # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 .Ltmp403:                               # EH_LABEL
-# %bb.22:                               # %_ZL21benchmark_csa_autovecIlEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
-	ld.d	$a0, $sp, 16
-	beqz	$a0, .LBB16_24
-# %bb.23:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
+# %bb.27:                               # %_ZL21benchmark_csa_autovecIlEvRN9benchmark5StateEPFT_PS3_S4_S4_S3_ES6_S3_.exit
+	ld.d	$a0, $sp, 144
+	beqz	$a0, .LBB16_29
+# %bb.28:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i39
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_24:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit40
-	ld.d	$a0, $sp, 24
-	beqz	$a0, .LBB16_26
-# %bb.25:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
+.LBB16_29:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit40
+	ld.d	$a0, $sp, 152
+	beqz	$a0, .LBB16_31
+# %bb.30:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i42
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_26:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit43
-	ld.d	$a0, $sp, 32
-	beqz	$a0, .LBB16_28
-# %bb.27:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i45
+.LBB16_31:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit43
+	ld.d	$a0, $sp, 160
+	beqz	$a0, .LBB16_33
+# %bb.32:                               # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i45
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB16_28:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit46
+.LBB16_33:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit46
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1056
+	addi.d	$sp, $sp, 1200
+	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
 	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
@@ -6212,7 +7987,7 @@ _Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB16_29:
+.LBB16_34:
 .Ltmp389:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
@@ -6222,15 +7997,15 @@ _Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp390:                               # EH_LABEL
-# %bb.30:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.35:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 .Ltmp391:                               # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
-	move	$a1, $s4
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp392:                               # EH_LABEL
-# %bb.31:                               # %_ZNSolsEl.exit
+# %bb.36:                               # %_ZNSolsEl.exit
 .Ltmp393:                               # EH_LABEL
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
@@ -6240,73 +8015,73 @@ _Z41BENCHMARK_csa_with_arith_autovec_int64_t_RN9benchmark5StateE: # @_Z41BENCHMA
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp394:                               # EH_LABEL
-# %bb.32:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit22
+# %bb.37:                               # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit22
 .Ltmp395:                               # EH_LABEL
 	move	$a0, $fp
-	move	$a1, $s5
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertIlEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp396:                               # EH_LABEL
-# %bb.33:                               # %_ZNSolsEl.exit24
+# %bb.38:                               # %_ZNSolsEl.exit24
 .Ltmp397:                               # EH_LABEL
 	pcalau12i	$a1, %pc_hi20(.L.str.39)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.39)
 	pcaddu18i	$ra, %call36(_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc)
 	jirl	$ra, $ra, 0
 .Ltmp398:                               # EH_LABEL
-# %bb.34:
+# %bb.39:
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB16_35:
+.LBB16_40:
 .Ltmp399:                               # EH_LABEL
-	b	.LBB16_43
-.LBB16_36:                              # %.thread
+	b	.LBB16_48
+.LBB16_41:                              # %.thread
 .Ltmp381:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB16_45
-.LBB16_37:                              # %.thread58
+	b	.LBB16_50
+.LBB16_42:                              # %.thread58
 .Ltmp378:                               # EH_LABEL
 	move	$fp, $a0
-	move	$a0, $s1
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB16_38:
-.Ltmp404:                               # EH_LABEL
-	ld.d	$s0, $sp, 16
-	move	$fp, $a0
-	bnez	$s0, .LBB16_44
-# %bb.39:
-	ld.d	$s2, $sp, 24
-	bnez	$s2, .LBB16_45
-.LBB16_40:
-	ld.d	$s1, $sp, 32
-	bnez	$s1, .LBB16_46
-.LBB16_41:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit37
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB16_42:
-.Ltmp388:                               # EH_LABEL
-.LBB16_43:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$fp, $a0
-.LBB16_44:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-	ld.d	$s2, $sp, 24
-	beqz	$s2, .LBB16_40
-.LBB16_45:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 32
-	beqz	$s1, .LBB16_41
-.LBB16_46:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB16_43:
+.Ltmp404:                               # EH_LABEL
+	ld.d	$s1, $sp, 144
+	move	$fp, $a0
+	bnez	$s1, .LBB16_49
+# %bb.44:
+	ld.d	$s3, $sp, 152
+	bnez	$s3, .LBB16_50
+.LBB16_45:
+	ld.d	$s2, $sp, 160
+	bnez	$s2, .LBB16_51
+.LBB16_46:                              # %_ZNSt10unique_ptrIA_lSt14default_deleteIS0_EED2Ev.exit37
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB16_47:
+.Ltmp388:                               # EH_LABEL
+.LBB16_48:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
+	move	$fp, $a0
+.LBB16_49:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i
 	move	$a0, $s1
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$s3, $sp, 152
+	beqz	$s3, .LBB16_45
+.LBB16_50:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i33
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$s2, $sp, 160
+	beqz	$s2, .LBB16_46
+.LBB16_51:                              # %_ZNKSt14default_deleteIA_lEclIlEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i36
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -8338,200 +10113,199 @@ _GLOBAL__sub_I_ConditionalScalarAssignment.cpp: # @_GLOBAL__sub_I_ConditionalSca
 .LBB22_109:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i145
 .Ltmp595:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_110:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i136
 .Ltmp585:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_111:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i127
 .Ltmp575:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_112:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i118
 .Ltmp565:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_113:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i109
 .Ltmp555:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_114:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i100
 .Ltmp545:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_115:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i91
 .Ltmp535:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_116:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i82
 .Ltmp525:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_117:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i73
 .Ltmp515:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_118:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i64
 .Ltmp505:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_119:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i55
 .Ltmp495:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_120:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i46
 .Ltmp485:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_121:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i37
 .Ltmp475:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_122:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i28
 .Ltmp465:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_123:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i19
 .Ltmp455:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_124:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i10
 .Ltmp445:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_125:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
 .Ltmp435:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_126:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp425:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB22_145
+	b	.LBB22_147
 .LBB22_127:
 .Ltmp602:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_128:
 .Ltmp592:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_129:
 .Ltmp582:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_130:
 .Ltmp572:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_131:
 .Ltmp562:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_132:
 .Ltmp552:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_133:
 .Ltmp542:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_134:
 .Ltmp532:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_135:
 .Ltmp522:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_136:
 .Ltmp512:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_137:
 .Ltmp502:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_138:
 .Ltmp492:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_139:
 .Ltmp482:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_140:
 .Ltmp472:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_141:
 .Ltmp462:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_142:
 .Ltmp452:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-	b	.LBB22_148
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
 .LBB22_143:
 .Ltmp442:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB22_148
-.LBB22_144:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB22_145
+	b	.LBB22_146
+.LBB22_144:
+.Ltmp432:                               # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	beq	$a2, $s1, .LBB22_146
+.LBB22_145:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB22_146
-.LBB22_145:                             # %common.resume.sink.split
+.LBB22_146:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s3, .LBB22_148
+.LBB22_147:                             # %common.resume.sink.split
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB22_146:                             # %common.resume
+.LBB22_148:                             # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB22_147:
-.Ltmp432:                               # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_144
-.LBB22_148:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s3, .LBB22_146
-	b	.LBB22_145
 .Lfunc_end22:
 	.size	_GLOBAL__sub_I_ConditionalScalarAssignment.cpp, .Lfunc_end22-_GLOBAL__sub_I_ConditionalScalarAssignment.cpp
 	.cfi_endproc

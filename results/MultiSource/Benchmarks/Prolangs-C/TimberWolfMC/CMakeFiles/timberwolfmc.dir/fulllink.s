@@ -47,8 +47,8 @@ fulllink:                               # @fulllink
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	pcalau12i	$a0, %got_pc_hi20(Vlist)
-	ld.d	$s4, $a0, %got_pc_lo12(Vlist)
-	st.d	$s1, $s4, 0
+	ld.d	$s3, $a0, %got_pc_lo12(Vlist)
+	st.d	$s1, $s3, 0
 	addi.d	$a0, $s2, -3
 	st.w	$a0, $s1, 0
 	ori	$a0, $zero, 24
@@ -78,15 +78,16 @@ fulllink:                               # @fulllink
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
+	move	$s2, $fp
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 24
-	move	$s2, $a0
+	move	$fp, $a0
 	st.w	$a1, $a0, 0
-	st.d	$fp, $a0, 8
+	st.d	$s2, $a0, 8
 	st.d	$s0, $a0, 16
-	st.d	$a0, $fp, 16
+	st.d	$a0, $s2, 16
 	st.d	$a0, $s0, 8
 	addi.d	$a1, $sp, 32
 	addi.d	$a2, $sp, 28
@@ -95,11 +96,10 @@ fulllink:                               # @fulllink
 	pcaddu18i	$ra, %call36(tpop)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 32
-	move	$fp, $s2
 	bnez	$a0, .LBB0_2
 .LBB0_3:                                # %._crit_edge
-	ld.d	$s2, $s4, 0
-	ld.d	$s1, $s2, 16
+	ld.d	$fp, $s3, 0
+	ld.d	$s1, $fp, 16
 	pcalau12i	$a0, %got_pc_hi20(vEdgeRoot)
 	ld.d	$a0, $a0, %got_pc_lo12(vEdgeRoot)
 	addi.d	$a1, $sp, 32
@@ -111,14 +111,15 @@ fulllink:                               # @fulllink
 	beqz	$a0, .LBB0_6
 # %bb.4:                                # %.lr.ph57
 	pcalau12i	$a0, %got_pc_hi20(vEdgeRoot)
-	ld.d	$fp, $a0, %got_pc_lo12(vEdgeRoot)
+	ld.d	$s0, $a0, %got_pc_lo12(vEdgeRoot)
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
+	move	$s2, $fp
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 24
-	move	$s0, $a0
+	move	$fp, $a0
 	st.w	$a1, $a0, 0
 	st.d	$s2, $a0, 8
 	st.d	$s1, $a0, 16
@@ -127,11 +128,10 @@ fulllink:                               # @fulllink
 	addi.d	$a1, $sp, 32
 	addi.d	$a2, $sp, 28
 	addi.d	$a3, $sp, 24
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(tpop)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 32
-	move	$s2, $s0
 	bnez	$a0, .LBB0_5
 .LBB0_6:                                # %._crit_edge58
 	pcalau12i	$a0, %got_pc_hi20(VDroot)
@@ -143,8 +143,8 @@ fulllink:                               # @fulllink
 	pcalau12i	$a1, %got_pc_hi20(VDptrs)
 	ld.d	$s8, $a1, %got_pc_lo12(VDptrs)
 	st.d	$a0, $s8, 0
-	ld.d	$s2, $s4, 0
-	beqz	$s2, .LBB0_14
+	ld.d	$s4, $s3, 0
+	beqz	$s4, .LBB0_14
 # %bb.7:                                # %.lr.ph.preheader.i
 	pcalau12i	$a0, %got_pc_hi20(edgeList)
 	ld.d	$s5, $a0, %got_pc_lo12(edgeList)
@@ -156,7 +156,7 @@ fulllink:                               # @fulllink
 	lu12i.w	$a1, 20971
 	ori	$s7, $a1, 2128
 	lu12i.w	$a1, 10485
-	ori	$s3, $a1, 3112
+	ori	$s2, $a1, 3112
 	pcalau12i	$a1, %got_pc_hi20(VDroot)
 	ld.d	$fp, $a1, %got_pc_lo12(VDroot)
 	move	$a1, $zero
@@ -165,13 +165,13 @@ fulllink:                               # @fulllink
 .LBB0_8:                                #   in Loop: Header=BB0_9 Depth=1
 	move	$s0, $a2
 	move	$s1, $a1
-	ld.d	$s2, $s2, 16
+	ld.d	$s4, $s4, 16
 	move	$a1, $s1
 	move	$a2, $s0
-	beqz	$s2, .LBB0_14
+	beqz	$s4, .LBB0_14
 .LBB0_9:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $s2, 0
+	ld.w	$a3, $s4, 0
 	slli.d	$a4, $a3, 5
 	alsl.d	$a3, $a3, $a4, 3
 	add.d	$a3, $a0, $a3
@@ -186,7 +186,7 @@ fulllink:                               # @fulllink
 	ld.d	$a0, $s8, 0
 	add.d	$a2, $a2, $s7
 	rotri.w	$a2, $a2, 2
-	bltu	$s3, $a2, .LBB0_13
+	bltu	$s2, $a2, .LBB0_13
 # %bb.12:                               #   in Loop: Header=BB0_9 Depth=1
 	slli.d	$a1, $a1, 3
 	addi.d	$a1, $a1, 808
@@ -195,17 +195,17 @@ fulllink:                               # @fulllink
 	st.d	$a0, $s8, 0
 .LBB0_13:                               #   in Loop: Header=BB0_9 Depth=1
 	slli.d	$a1, $s1, 3
-	stx.d	$s2, $a0, $a1
+	stx.d	$s4, $a0, $a1
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s5, 0
-	ld.d	$s2, $s2, 16
+	ld.d	$s4, $s4, 16
 	move	$a1, $s1
 	move	$a2, $s0
-	bnez	$s2, .LBB0_9
+	bnez	$s4, .LBB0_9
 .LBB0_14:                               # %makeVertDownTree.exit
 	pcalau12i	$a0, %got_pc_hi20(HRroot)
 	ld.d	$a0, $a0, %got_pc_lo12(HRroot)
@@ -214,10 +214,10 @@ fulllink:                               # @fulllink
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(HRptrs)
-	ld.d	$s2, $a1, %got_pc_lo12(HRptrs)
+	ld.d	$s4, $a1, %got_pc_lo12(HRptrs)
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s8, $a1, 0
-	st.d	$a0, $s2, 0
+	st.d	$a0, $s4, 0
 	beqz	$s8, .LBB0_22
 # %bb.15:                               # %.lr.ph.preheader.i22
 	pcalau12i	$a0, %got_pc_hi20(edgeList)
@@ -230,7 +230,7 @@ fulllink:                               # @fulllink
 	lu12i.w	$a1, 20971
 	ori	$s7, $a1, 2128
 	lu12i.w	$a1, 10485
-	ori	$s3, $a1, 3112
+	ori	$s2, $a1, 3112
 	pcalau12i	$a1, %got_pc_hi20(HRroot)
 	ld.d	$fp, $a1, %got_pc_lo12(HRroot)
 	move	$a1, $zero
@@ -257,16 +257,16 @@ fulllink:                               # @fulllink
 # %bb.19:                               #   in Loop: Header=BB0_17 Depth=1
 	addi.w	$s1, $a1, 1
 	mul.d	$a2, $s1, $s6
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s4, 0
 	add.d	$a2, $a2, $s7
 	rotri.w	$a2, $a2, 2
-	bltu	$s3, $a2, .LBB0_21
+	bltu	$s2, $a2, .LBB0_21
 # %bb.20:                               #   in Loop: Header=BB0_17 Depth=1
 	slli.d	$a1, $a1, 3
 	addi.d	$a1, $a1, 808
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s2, 0
+	st.d	$a0, $s4, 0
 .LBB0_21:                               #   in Loop: Header=BB0_17 Depth=1
 	slli.d	$a1, $s1, 3
 	stx.d	$s8, $a0, $a1
@@ -288,10 +288,10 @@ fulllink:                               # @fulllink
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(Vptrs)
-	ld.d	$s2, $a1, %got_pc_lo12(Vptrs)
-	ld.d	$s4, $s4, 0
-	st.d	$a0, $s2, 0
-	beqz	$s4, .LBB0_29
+	ld.d	$s4, $a1, %got_pc_lo12(Vptrs)
+	ld.d	$s3, $s3, 0
+	st.d	$a0, $s4, 0
+	beqz	$s3, .LBB0_29
 # %bb.23:                               # %.lr.ph.preheader.i34
 	pcalau12i	$a0, %got_pc_hi20(edgeList)
 	ld.d	$s5, $a0, %got_pc_lo12(edgeList)
@@ -299,7 +299,7 @@ fulllink:                               # @fulllink
 	lu12i.w	$a1, -245
 	ori	$a2, $a1, 3520
 	lu12i.w	$a1, -251659
-	ori	$s3, $a1, 3113
+	ori	$s2, $a1, 3113
 	lu12i.w	$a1, 20971
 	ori	$s6, $a1, 2128
 	lu12i.w	$a1, 10485
@@ -311,7 +311,7 @@ fulllink:                               # @fulllink
 	.p2align	4, , 16
 .LBB0_24:                               #   in Loop: Header=BB0_26 Depth=1
 	slli.d	$a1, $s1, 3
-	stx.d	$s4, $a0, $a1
+	stx.d	$s3, $a0, $a1
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
@@ -321,11 +321,11 @@ fulllink:                               # @fulllink
 	move	$a1, $s1
 	move	$a2, $s0
 .LBB0_25:                               #   in Loop: Header=BB0_26 Depth=1
-	ld.d	$s4, $s4, 16
-	beqz	$s4, .LBB0_29
+	ld.d	$s3, $s3, 16
+	beqz	$s3, .LBB0_29
 .LBB0_26:                               # %.lr.ph.i35
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $s4, 0
+	ld.w	$a3, $s3, 0
 	slli.d	$a4, $a3, 5
 	alsl.d	$a3, $a3, $a4, 3
 	add.d	$a3, $a0, $a3
@@ -333,8 +333,8 @@ fulllink:                               # @fulllink
 	bge	$a2, $s0, .LBB0_25
 # %bb.27:                               #   in Loop: Header=BB0_26 Depth=1
 	addi.w	$s1, $a1, 1
-	mul.d	$a2, $s1, $s3
-	ld.d	$a0, $s2, 0
+	mul.d	$a2, $s1, $s2
+	ld.d	$a0, $s4, 0
 	add.d	$a2, $a2, $s6
 	rotri.w	$a2, $a2, 2
 	bltu	$s7, $a2, .LBB0_24
@@ -343,7 +343,7 @@ fulllink:                               # @fulllink
 	addi.d	$a1, $a1, 808
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s2, 0
+	st.d	$a0, $s4, 0
 	b	.LBB0_24
 .LBB0_29:                               # %makeVertTree.exit
 	pcalau12i	$a0, %got_pc_hi20(Hroot)
@@ -353,11 +353,11 @@ fulllink:                               # @fulllink
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(Hptrs)
-	ld.d	$s2, $a1, %got_pc_lo12(Hptrs)
+	ld.d	$s3, $a1, %got_pc_lo12(Hptrs)
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s3, $a1, 0
-	st.d	$a0, $s2, 0
-	beqz	$s3, .LBB0_36
+	ld.d	$s2, $a1, 0
+	st.d	$a0, $s3, 0
+	beqz	$s2, .LBB0_36
 # %bb.30:                               # %.lr.ph.preheader.i42
 	pcalau12i	$a0, %got_pc_hi20(edgeList)
 	ld.d	$s4, $a0, %got_pc_lo12(edgeList)
@@ -377,7 +377,7 @@ fulllink:                               # @fulllink
 	.p2align	4, , 16
 .LBB0_31:                               #   in Loop: Header=BB0_33 Depth=1
 	slli.d	$a1, $s1, 3
-	stx.d	$s3, $a0, $a1
+	stx.d	$s2, $a0, $a1
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
@@ -387,11 +387,11 @@ fulllink:                               # @fulllink
 	move	$a1, $s1
 	move	$a2, $s0
 .LBB0_32:                               #   in Loop: Header=BB0_33 Depth=1
-	ld.d	$s3, $s3, 16
-	beqz	$s3, .LBB0_36
+	ld.d	$s2, $s2, 16
+	beqz	$s2, .LBB0_36
 .LBB0_33:                               # %.lr.ph.i44
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $s3, 0
+	ld.w	$a3, $s2, 0
 	slli.d	$a4, $a3, 5
 	alsl.d	$a3, $a3, $a4, 3
 	add.d	$a3, $a0, $a3
@@ -400,7 +400,7 @@ fulllink:                               # @fulllink
 # %bb.34:                               #   in Loop: Header=BB0_33 Depth=1
 	addi.w	$s1, $a1, 1
 	mul.d	$a2, $s1, $s5
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s3, 0
 	add.d	$a2, $a2, $s6
 	rotri.w	$a2, $a2, 2
 	bltu	$s7, $a2, .LBB0_31
@@ -409,7 +409,7 @@ fulllink:                               # @fulllink
 	addi.d	$a1, $a1, 808
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s2, 0
+	st.d	$a0, $s3, 0
 	b	.LBB0_31
 .LBB0_36:                               # %makeHoriTree.exit
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload

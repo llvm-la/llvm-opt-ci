@@ -900,16 +900,15 @@ exact_minimum_cover:                    # @exact_minimum_cover
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	blez	$a1, .LBB4_51
 # %bb.1:                                # %.preheader.preheader
-	move	$s0, $zero
-	ori	$a0, $zero, 1
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB4_2:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$a2, $a1, 0
 	bstrpick.d	$a1, $a1, 31, 1
-	addi.d	$s0, $s0, 1
-	bltu	$a0, $a2, .LBB4_2
+	addi.d	$a0, $a0, 1
+	bnez	$a1, .LBB4_2
 # %bb.3:
+	move	$s0, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(sf_save)
 	jirl	$ra, $ra, 0
@@ -1399,7 +1398,7 @@ unate_intersect:                        # @unate_intersect
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a3, $a0, 4
-	move	$s4, $a2
+	move	$s3, $a2
 	move	$s0, $a1
 	ori	$a0, $zero, 500
 	move	$a1, $a3
@@ -1412,14 +1411,14 @@ unate_intersect:                        # @unate_intersect
 	blez	$a2, .LBB5_19
 # %bb.1:                                # %.lr.ph104
 	ld.d	$s1, $fp, 24
-	ld.d	$s3, $s2, 24
+	ld.d	$s4, $s2, 24
 	ld.w	$a0, $s0, 0
 	alsl.d	$a2, $a2, $s1, 2
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	beqz	$s4, .LBB5_20
+	beqz	$s3, .LBB5_20
 # %bb.2:                                # %.lr.ph104.split.us.preheader
 	move	$s8, $zero
-	move	$s4, $zero
+	move	$s3, $zero
 	b	.LBB5_5
 	.p2align	4, , 16
 .LBB5_3:                                # %._crit_edge.split.us118.loopexit
@@ -1443,7 +1442,7 @@ unate_intersect:                        # @unate_intersect
 	.p2align	4, , 16
 .LBB5_7:                                #   in Loop: Header=BB5_9 Depth=2
 	ld.w	$a0, $s2, 0
-	alsl.d	$s3, $a0, $s3, 2
+	alsl.d	$s4, $a0, $s4, 2
 .LBB5_8:                                # %.thread80.us114
                                         #   in Loop: Header=BB5_9 Depth=2
 	ld.w	$a0, $s0, 0
@@ -1452,33 +1451,33 @@ unate_intersect:                        # @unate_intersect
 .LBB5_9:                                # %.lr.ph.us
                                         #   Parent Loop BB5_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a0, $s3
+	move	$a0, $s4
 	move	$a1, $s1
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(set_andp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB5_8
 # %bb.10:                               #   in Loop: Header=BB5_9 Depth=2
-	move	$a0, $s3
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(set_ord)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	bge	$s8, $a0, .LBB5_14
 # %bb.11:                               #   in Loop: Header=BB5_9 Depth=2
-	beqz	$s4, .LBB5_13
+	beqz	$s3, .LBB5_13
 # %bb.12:                               #   in Loop: Header=BB5_9 Depth=2
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(sf_free)
 	jirl	$ra, $ra, 0
 .LBB5_13:                               #   in Loop: Header=BB5_9 Depth=2
-	ld.d	$s3, $s2, 24
+	ld.d	$s4, $s2, 24
 	st.w	$zero, $s2, 12
-	move	$a0, $s3
+	move	$a0, $s4
 	move	$a1, $s1
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(set_and)
 	jirl	$ra, $ra, 0
-	move	$s4, $zero
+	move	$s3, $zero
 	move	$s8, $s6
 	b	.LBB5_15
 	.p2align	4, , 16
@@ -1496,9 +1495,9 @@ unate_intersect:                        # @unate_intersect
 	pcaddu18i	$ra, %call36(sf_contain)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
-	beqz	$s4, .LBB5_18
+	beqz	$s3, .LBB5_18
 # %bb.17:                               #   in Loop: Header=BB5_9 Depth=2
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(sf_union)
 	jirl	$ra, $ra, 0
@@ -1509,8 +1508,8 @@ unate_intersect:                        # @unate_intersect
 	pcaddu18i	$ra, %call36(sf_new)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s3, $a0, 24
-	move	$s4, $s6
+	ld.d	$s4, $a0, 24
+	move	$s3, $s6
 	b	.LBB5_8
 .LBB5_19:                               # %._crit_edge105.thread
 	move	$a0, $s2
@@ -1529,7 +1528,7 @@ unate_intersect:                        # @unate_intersect
 	pcaddu18i	$t8, %call36(sf_contain)
 	jr	$t8
 .LBB5_20:                               # %.lr.ph104.split.preheader
-	move	$s4, $zero
+	move	$s3, $zero
 	b	.LBB5_23
 	.p2align	4, , 16
 .LBB5_21:                               # %._crit_edge.split.us.loopexit
@@ -1554,7 +1553,7 @@ unate_intersect:                        # @unate_intersect
 	.p2align	4, , 16
 .LBB5_25:                               #   in Loop: Header=BB5_27 Depth=2
 	ld.w	$a0, $s2, 0
-	alsl.d	$s3, $a0, $s3, 2
+	alsl.d	$s4, $a0, $s4, 2
 .LBB5_26:                               # %.thread80.us
                                         #   in Loop: Header=BB5_27 Depth=2
 	ld.w	$a0, $s0, 0
@@ -1563,7 +1562,7 @@ unate_intersect:                        # @unate_intersect
 .LBB5_27:                               # %.lr.ph
                                         #   Parent Loop BB5_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a0, $s3
+	move	$a0, $s4
 	move	$a1, $s1
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(set_andp)
@@ -1581,9 +1580,9 @@ unate_intersect:                        # @unate_intersect
 	pcaddu18i	$ra, %call36(sf_contain)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
-	beqz	$s4, .LBB5_31
+	beqz	$s3, .LBB5_31
 # %bb.30:                               #   in Loop: Header=BB5_27 Depth=2
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(sf_union)
 	jirl	$ra, $ra, 0
@@ -1594,17 +1593,17 @@ unate_intersect:                        # @unate_intersect
 	pcaddu18i	$ra, %call36(sf_new)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s3, $a0, 24
-	move	$s4, $s6
+	ld.d	$s4, $a0, 24
+	move	$s3, $s6
 	b	.LBB5_26
 .LBB5_32:                               # %._crit_edge105
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(sf_contain)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	beqz	$s4, .LBB5_34
+	beqz	$s3, .LBB5_34
 # %bb.33:
-	move	$a0, $s4
+	move	$a0, $s3
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload

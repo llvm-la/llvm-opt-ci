@@ -2636,7 +2636,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	jirl	$ra, $ra, 0
 .Ltmp136:                               # EH_LABEL
 # %bb.40:                               # %.noexc521
-	move	$s6, $s4
+	move	$s5, $s4
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 2464
 	add.d	$a1, $sp, $a1
@@ -2646,7 +2646,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	st.d	$a0, $sp, 1104
 	st.d	$a1, $sp, 1120
 	vst	$vr0, $a0, 0
-	st.h	$s6, $a0, 16
+	st.h	$s5, $a0, 16
 	ld.d	$a0, $sp, 1104
 	st.d	$a1, $sp, 1112
 	stx.b	$zero, $a0, $a1
@@ -2956,7 +2956,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	st.d	$a0, $sp, 848
 	st.d	$a1, $sp, 864
 	vst	$vr0, $a0, 0
-	st.h	$s6, $a0, 16
+	st.h	$s5, $a0, 16
 	ld.d	$a0, $sp, 848
 	st.d	$a1, $sp, 856
 	stx.b	$zero, $a0, $a1
@@ -3058,10 +3058,10 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	st.d	$a0, $sp, 752
 	st.d	$a1, $sp, 768
 	pcalau12i	$a2, %pc_hi20(.L.str.193)
-	addi.d	$s5, $a2, %pc_lo12(.L.str.193)
-	vld	$vr0, $s5, 0
-	ld.h	$a2, $s5, 24
-	ld.d	$a3, $s5, 16
+	addi.d	$s6, $a2, %pc_lo12(.L.str.193)
+	vld	$vr0, $s6, 0
+	ld.h	$a2, $s6, 24
+	ld.d	$a3, $s6, 16
 	vst	$vr0, $a0, 0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.h	$a2, $a0, 24
@@ -3356,7 +3356,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	st.d	$a0, $sp, 528
 	st.d	$a1, $sp, 544
 	vst	$vr0, $a0, 0
-	st.h	$s6, $a0, 16
+	st.h	$s5, $a0, 16
 	ld.d	$a0, $sp, 528
 	st.d	$a1, $sp, 536
 	stx.b	$zero, $a0, $a1
@@ -3455,7 +3455,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	ori	$a1, $a1, 2464
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s5, 0
+	vld	$vr0, $s6, 0
 	st.d	$a0, $sp, 432
 	st.d	$a1, $sp, 448
 	vst	$vr0, $a0, 0
@@ -3681,12 +3681,11 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	jirl	$ra, $ra, 0
 .Ltmp286:                               # EH_LABEL
 # %bb.90:                               # %.noexc.i628
-	ori	$a1, $s0, 128
+	ori	$s3, $s0, 128
 	addi.d	$a0, $sp, 1808
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	add.d	$fp, $a0, $a1
-	addi.d	$s3, $sp, 256
-	st.d	$s3, $sp, 240
+	add.d	$fp, $a0, $s3
+	addi.d	$a0, $sp, 256
+	st.d	$a0, $sp, 240
 	ori	$a0, $zero, 25
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 2464
@@ -3743,7 +3742,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	jirl	$ra, $ra, 0
 .Ltmp295:                               # EH_LABEL
 # %bb.93:                               # %.noexc633
-	move	$s2, $s3
+	move	$s7, $s3
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 2464
 	add.d	$a1, $sp, $a1
@@ -3752,7 +3751,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	st.d	$a0, $sp, 208
 	st.d	$a1, $sp, 224
 	vst	$vr0, $a0, 0
-	st.h	$s6, $a0, 16
+	st.h	$s5, $a0, 16
 	ld.d	$a0, $sp, 208
 	st.d	$a1, $sp, 216
 	stx.b	$zero, $a0, $a1
@@ -3784,8 +3783,8 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	jirl	$ra, $ra, 0
 .Ltmp301:                               # EH_LABEL
 # %bb.95:                               # %.noexc.i640
-	ori	$s6, $s0, 392
-	add.d	$fp, $s4, $s6
+	ori	$s5, $s0, 392
+	add.d	$fp, $s4, $s5
 	addi.d	$a0, $sp, 160
 	st.d	$a0, $sp, 144
 	ori	$a0, $zero, 28
@@ -3852,7 +3851,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	ori	$a1, $a1, 2464
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s5, 0
+	vld	$vr0, $s6, 0
 	st.d	$a0, $sp, 112
 	st.d	$a1, $sp, 128
 	vst	$vr0, $a0, 0
@@ -3871,11 +3870,11 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	jirl	$ra, $ra, 0
 .Ltmp313:                               # EH_LABEL
 # %bb.99:                               # %.noexc.i648
-	ori	$s5, $s0, 568
+	ori	$s6, $s0, 568
 	addi.d	$a0, $sp, 1808
-	add.d	$fp, $a0, $s5
+	add.d	$fp, $a0, $s6
 	addi.d	$a0, $sp, 96
-	move	$s7, $a0
+	move	$s2, $a0
 	st.d	$a0, $sp, 80
 	ori	$a0, $zero, 17
 	lu12i.w	$a1, 1
@@ -4006,7 +4005,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	b	.LBB21_111
 .LBB21_115:
 	ld.d	$a0, $sp, 80
-	beq	$a0, $s7, .LBB21_117
+	beq	$a0, $s2, .LBB21_117
 # %bb.116:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
 	ld.d	$a1, $sp, 96
 	addi.d	$a1, $a1, 1
@@ -4055,7 +4054,8 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	jirl	$ra, $ra, 0
 .LBB21_125:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit662
 	ld.d	$a0, $sp, 240
-	beq	$a0, $s2, .LBB21_127
+	addi.d	$a1, $sp, 256
+	beq	$a0, $a1, .LBB21_127
 # %bb.126:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i663
 	ld.d	$a1, $sp, 256
 	addi.d	$a1, $a1, 1
@@ -4510,13 +4510,13 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 .LBB21_224:                             # %.loopexit1030.loopexit
 .Ltmp323:                               # EH_LABEL
 	move	$s0, $a0
-	add.d	$a0, $s8, $s5
+	add.d	$a0, $s8, $s6
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s8, $s4
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s8, $s6
+	add.d	$a0, $s8, $s5
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s8, $s3
@@ -4525,8 +4525,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	add.d	$a0, $s8, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a0, $s8, $a0
+	add.d	$a0, $s8, $s7
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
@@ -4704,7 +4703,7 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	move	$s3, $zero
 .LBB21_226:                             # %.loopexit1030
 	ld.d	$a0, $sp, 80
-	bne	$a0, $s7, .LBB21_284
+	bne	$a0, $s2, .LBB21_284
 # %bb.227:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit812
 	ld.d	$a0, $sp, 112
 	addi.d	$a1, $sp, 128
@@ -4723,7 +4722,8 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	bne	$a0, $a1, .LBB21_298
 .LBB21_231:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit824
 	ld.d	$a0, $sp, 240
-	bne	$a0, $s2, .LBB21_302
+	addi.d	$a1, $sp, 256
+	bne	$a0, $a1, .LBB21_302
 .LBB21_232:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit827
 	ld.d	$a0, $sp, 272
 	addi.d	$a1, $sp, 288
@@ -5021,7 +5021,8 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 240
-	beq	$a0, $s2, .LBB21_232
+	addi.d	$a1, $sp, 256
+	beq	$a0, $a1, .LBB21_232
 	b	.LBB21_302
 .LBB21_299:
 .Ltmp296:                               # EH_LABEL
@@ -5029,11 +5030,11 @@ __cxx_global_var_init.210:              # @__cxx_global_var_init.210
 .LBB21_300:
 .Ltmp293:                               # EH_LABEL
 .LBB21_301:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit824
-	move	$s2, $s3
 	move	$s0, $a0
 	move	$s3, $zero
 	ld.d	$a0, $sp, 240
-	beq	$a0, $s2, .LBB21_232
+	addi.d	$a1, $sp, 256
+	beq	$a0, $a1, .LBB21_232
 .LBB21_302:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i825
 	ld.d	$a1, $sp, 256
 	addi.d	$a1, $a1, 1
@@ -6535,9 +6536,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	addi.d	$a2, $a2, %pc_lo12(.L.str.233)
 	vld	$vr0, $a2, 0
 	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
-	ld.w	$s7, $a2, 16
+	ld.w	$s1, $a2, 16
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$s1, $a0, 16
 	ori	$a0, $zero, 2064
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
@@ -6578,8 +6579,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	pcalau12i	$s6, %pc_hi20(.L.str.13)
-	xvld	$xr0, $s6, %pc_lo12(.L.str.13)
+	pcalau12i	$s7, %pc_hi20(.L.str.13)
+	xvld	$xr0, $s7, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 2032
 	ori	$a2, $zero, 2048
 	add.d	$a2, $sp, $a2
@@ -6625,9 +6626,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	addi.d	$a2, $a2, %pc_lo12(.L.str.234)
 	xvld	$xr0, $a2, 0
 	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	ld.w	$s1, $a2, 31
+	ld.w	$s6, $a2, 31
 	xvst	$xr0, $a0, 0
-	st.w	$s1, $a0, 31
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 2008
 	stx.b	$zero, $a0, $a1
 .Ltmp342:                               # EH_LABEL
@@ -6859,7 +6860,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 1808
 	st.d	$a1, $sp, 1824
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$s1, $a0, 16
 	ld.d	$a0, $sp, 1808
 	st.d	$a1, $sp, 1816
 	stx.b	$zero, $a0, $a1
@@ -6894,7 +6895,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s6, %pc_lo12(.L.str.13)
+	xvld	$xr0, $s7, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 1776
 	st.d	$a1, $sp, 1792
 	xvst	$xr0, $a0, 0
@@ -6937,7 +6938,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 1744
 	st.d	$a1, $sp, 1760
 	xvst	$xr0, $a0, 0
-	st.w	$s1, $a0, 31
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 1752
 	stx.b	$zero, $a0, $a1
 .Ltmp387:                               # EH_LABEL
@@ -7158,7 +7159,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 1552
 	st.d	$a1, $sp, 1568
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$s1, $a0, 16
 	ld.d	$a0, $sp, 1552
 	st.d	$a1, $sp, 1560
 	stx.b	$zero, $a0, $a1
@@ -7193,7 +7194,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s6, %pc_lo12(.L.str.13)
+	xvld	$xr0, $s7, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 1520
 	st.d	$a1, $sp, 1536
 	xvst	$xr0, $a0, 0
@@ -7236,7 +7237,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 1488
 	st.d	$a1, $sp, 1504
 	xvst	$xr0, $a0, 0
-	st.w	$s1, $a0, 31
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 1496
 	stx.b	$zero, $a0, $a1
 .Ltmp432:                               # EH_LABEL
@@ -7462,7 +7463,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 1296
 	st.d	$a1, $sp, 1312
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$s1, $a0, 16
 	ld.d	$a0, $sp, 1296
 	st.d	$a1, $sp, 1304
 	stx.b	$zero, $a0, $a1
@@ -7499,7 +7500,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s6, %pc_lo12(.L.str.13)
+	xvld	$xr0, $s7, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 1264
 	st.d	$a1, $sp, 1280
 	xvst	$xr0, $a0, 0
@@ -7544,7 +7545,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 1232
 	st.d	$a1, $sp, 1248
 	xvst	$xr0, $a0, 0
-	st.w	$s1, $a0, 31
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 1240
 	stx.b	$zero, $a0, $a1
 .Ltmp477:                               # EH_LABEL
@@ -7775,7 +7776,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 1040
 	st.d	$a1, $sp, 1056
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$s1, $a0, 16
 	ld.d	$a0, $sp, 1040
 	st.d	$a1, $sp, 1048
 	stx.b	$zero, $a0, $a1
@@ -7812,7 +7813,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s6, %pc_lo12(.L.str.13)
+	xvld	$xr0, $s7, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 1008
 	st.d	$a1, $sp, 1024
 	xvst	$xr0, $a0, 0
@@ -7857,7 +7858,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 976
 	st.d	$a1, $sp, 992
 	xvst	$xr0, $a0, 0
-	st.w	$s1, $a0, 31
+	st.w	$s6, $a0, 31
 	st.d	$a1, $sp, 984
 	stx.b	$zero, $a0, $a1
 .Ltmp522:                               # EH_LABEL
@@ -7898,12 +7899,13 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	pcalau12i	$a2, %pc_hi20(.L.str.191)
 	addi.d	$s3, $a2, %pc_lo12(.L.str.191)
 	vld	$vr0, $s3, 0
-	ld.b	$s8, $s3, 24
-	ld.d	$a2, $s3, 16
+	ld.b	$a2, $s3, 24
+	ld.d	$a3, $s3, 16
 	vst	$vr0, $a0, 0
-	st.b	$s8, $a0, 24
 	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$a2, $a0, 16
+	st.b	$a2, $a0, 24
+	st.d	$a3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a3, $a0, 16
 	ld.d	$a0, $sp, 944
 	st.d	$a1, $sp, 952
 	stx.b	$zero, $a0, $a1
@@ -8055,9 +8057,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ld.h	$a2, $s5, 24
 	ld.d	$a3, $s5, 16
 	vst	$vr0, $a0, 0
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	st.h	$a2, $a0, 24
-	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	st.d	$a3, $a0, 16
 	ld.d	$a0, $sp, 816
 	st.d	$a1, $sp, 824
@@ -8070,6 +8072,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp550:                               # EH_LABEL
 # %bb.76:                               # %.noexc.i678
+	move	$s8, $s7
 	move	$s4, $s6
 	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
@@ -8101,10 +8104,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	pcalau12i	$a2, %pc_hi20(.L.str.238)
 	addi.d	$s6, $a2, %pc_lo12(.L.str.238)
 	vld	$vr0, $s6, 0
-	ld.b	$a2, $s6, 16
+	ld.b	$s7, $s6, 16
 	vst	$vr0, $a0, 0
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	st.b	$a2, $a0, 16
+	st.b	$s7, $a0, 16
 	ld.d	$a0, $sp, 784
 	st.d	$a1, $sp, 792
 	stx.b	$zero, $a0, $a1
@@ -8189,7 +8191,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 720
 	st.d	$a1, $sp, 736
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$s1, $a0, 16
 	ld.d	$a0, $sp, 720
 	st.d	$a1, $sp, 728
 	stx.b	$zero, $a0, $a1
@@ -8226,7 +8228,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s4, %pc_lo12(.L.str.13)
+	xvld	$xr0, $s8, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 688
 	st.d	$a1, $sp, 704
 	xvst	$xr0, $a0, 0
@@ -8271,7 +8273,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 656
 	st.d	$a1, $sp, 672
 	xvst	$xr0, $a0, 0
-	st.w	$s1, $a0, 31
+	st.w	$s4, $a0, 31
 	st.d	$a1, $sp, 664
 	stx.b	$zero, $a0, $a1
 .Ltmp579:                               # EH_LABEL
@@ -8312,8 +8314,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 624
 	st.d	$a1, $sp, 640
 	vst	$vr0, $a0, 0
-	st.b	$s8, $a0, 24
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	st.b	$a2, $a0, 24
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	st.d	$a2, $a0, 16
 	ld.d	$a0, $sp, 624
 	st.d	$a1, $sp, 632
@@ -8467,9 +8470,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 496
 	st.d	$a1, $sp, 512
 	vst	$vr0, $a0, 0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	st.h	$a2, $a0, 24
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	st.h	$a2, $a0, 24
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a2, $a0, 16
 	ld.d	$a0, $sp, 496
 	st.d	$a1, $sp, 504
@@ -8512,8 +8515,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 464
 	st.d	$a1, $sp, 480
 	vst	$vr0, $a0, 0
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	st.b	$a2, $a0, 16
+	st.b	$s7, $a0, 16
 	ld.d	$a0, $sp, 464
 	st.d	$a1, $sp, 472
 	stx.b	$zero, $a0, $a1
@@ -8600,7 +8602,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 400
 	st.d	$a1, $sp, 416
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$s2, $a0, 16
 	ld.d	$a0, $sp, 400
 	st.d	$a1, $sp, 408
 	stx.b	$zero, $a0, $a1
@@ -8612,10 +8614,10 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp625:                               # EH_LABEL
 # %bb.101:                              # %.noexc.i730
-	ori	$s7, $s1, 656
+	ori	$s2, $s1, 656
 	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	add.d	$fp, $a0, $s7
+	add.d	$fp, $a0, $s2
 	addi.d	$a0, $sp, 384
 	st.d	$a0, $sp, 368
 	ori	$a0, $zero, 32
@@ -8637,7 +8639,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	xvld	$xr0, $s4, %pc_lo12(.L.str.13)
+	xvld	$xr0, $s8, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 368
 	st.d	$a1, $sp, 384
 	xvst	$xr0, $a0, 0
@@ -8652,11 +8654,10 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp631:                               # EH_LABEL
 # %bb.103:                              # %.noexc.i734
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	ori	$s4, $s1, 744
+	ori	$s8, $s1, 744
 	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	add.d	$fp, $a0, $s4
+	add.d	$fp, $a0, $s8
 	addi.d	$a0, $sp, 352
 	st.d	$a0, $sp, 336
 	ori	$a0, $zero, 35
@@ -8674,7 +8675,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp634:                               # EH_LABEL
 # %bb.104:                              # %.noexc735
-	move	$s0, $s8
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
@@ -8684,7 +8685,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 336
 	st.d	$a1, $sp, 352
 	xvst	$xr0, $a0, 0
-	st.w	$s2, $a0, 31
+	st.w	$s4, $a0, 31
 	st.d	$a1, $sp, 344
 	stx.b	$zero, $a0, $a1
 .Ltmp636:                               # EH_LABEL
@@ -8724,8 +8725,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 304
 	st.d	$a1, $sp, 320
 	vst	$vr0, $a0, 0
-	st.b	$s0, $a0, 24
 	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	st.b	$a2, $a0, 24
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	st.d	$a2, $a0, 16
 	ld.d	$a0, $sp, 304
 	st.d	$a1, $sp, 312
@@ -8759,6 +8761,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp646:                               # EH_LABEL
 # %bb.108:                              # %.noexc743
+	st.d	$s2, $sp, 128                   # 8-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 3488
 	add.d	$a1, $sp, $a1
@@ -8781,11 +8784,11 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp649:                               # EH_LABEL
 # %bb.109:                              # %._crit_edge.i.i745
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
 	ori	$s2, $s1, 1008
 	ori	$a0, $zero, 2128
-	add.d	$s0, $sp, $a0
-	add.d	$fp, $s0, $s2
+	add.d	$s4, $sp, $a0
+	add.d	$fp, $s4, $s2
 	addi.d	$a0, $sp, 256
 	st.d	$a0, $sp, 240
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
@@ -8803,8 +8806,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp652:                               # EH_LABEL
 # %bb.110:                              # %.noexc.i750
-	ori	$s7, $s1, 1096
-	add.d	$fp, $s0, $s7
+	ori	$s0, $s1, 1096
+	add.d	$fp, $s4, $s0
 	addi.d	$a0, $sp, 224
 	st.d	$a0, $sp, 208
 	ori	$a0, $zero, 28
@@ -8847,10 +8850,10 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .Ltmp658:                               # EH_LABEL
 # %bb.112:                              # %.noexc.i754
-	ori	$s0, $s1, 1184
+	ori	$s4, $s1, 1184
 	ori	$a0, $zero, 2128
 	add.d	$a0, $sp, $a0
-	add.d	$fp, $a0, $s0
+	add.d	$fp, $a0, $s4
 	addi.d	$a0, $sp, 192
 	st.d	$a0, $sp, 176
 	ori	$a0, $zero, 26
@@ -8876,9 +8879,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 176
 	st.d	$a1, $sp, 192
 	vst	$vr0, $a0, 0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	st.h	$a2, $a0, 24
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	st.h	$a2, $a0, 24
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	st.d	$a2, $a0, 16
 	ld.d	$a0, $sp, 176
 	st.d	$a1, $sp, 184
@@ -8920,8 +8923,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	st.d	$a0, $sp, 144
 	st.d	$a1, $sp, 160
 	vst	$vr0, $a0, 0
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	st.b	$a2, $a0, 16
+	st.b	$s7, $a0, 16
 	ld.d	$a0, $sp, 144
 	st.d	$a1, $sp, 152
 	stx.b	$zero, $a0, $a1
@@ -8939,12 +8941,12 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 62
 	ori	$a3, $zero, 2128
-	add.d	$s6, $sp, $a3
+	add.d	$s7, $sp, $a3
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp673:                               # EH_LABEL
 # %bb.117:
-	move	$s7, $a0
+	move	$s6, $a0
 	ori	$s0, $s1, 1360
 	ori	$s1, $zero, 1
 	ori	$s2, $zero, 1
@@ -8956,7 +8958,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	addi.d	$s0, $s0, -88
 	beqz	$s0, .LBB22_130
 .LBB22_119:                             # =>This Inner Loop Header: Depth=1
-	add.d	$s3, $s6, $s0
+	add.d	$s3, $s7, $s0
 	ld.d	$fp, $s3, -8
 	beqz	$fp, .LBB22_124
 # %bb.120:                              #   in Loop: Header=BB22_119 Depth=1
@@ -9037,17 +9039,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_132:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
 	ld.d	$a0, $sp, 176
-	ori	$a1, $zero, 2112
-	add.d	$fp, $sp, $a1
-	ori	$a1, $zero, 2080
-	add.d	$s0, $sp, $a1
-	ori	$a1, $zero, 2048
-	add.d	$s1, $sp, $a1
-	addi.d	$s2, $sp, 2016
-	addi.d	$s3, $sp, 1984
-	addi.d	$s4, $sp, 1952
-	addi.d	$s5, $sp, 1920
-	addi.d	$s6, $sp, 1888
+	addi.d	$fp, $sp, 864
+	addi.d	$s0, $sp, 832
 	addi.d	$a1, $sp, 192
 	beq	$a0, $a1, .LBB22_134
 # %bb.133:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i761
@@ -9228,8 +9221,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_172:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit820
 	ld.d	$a0, $sp, 816
-	addi.d	$a1, $sp, 832
-	beq	$a0, $a1, .LBB22_174
+	beq	$a0, $s0, .LBB22_174
 # %bb.173:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i821
 	ld.d	$a1, $sp, 832
 	addi.d	$a1, $a1, 1
@@ -9237,8 +9229,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_174:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit823
 	ld.d	$a0, $sp, 848
-	addi.d	$a1, $sp, 864
-	beq	$a0, $a1, .LBB22_176
+	beq	$a0, $fp, .LBB22_176
 # %bb.175:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i824
 	ld.d	$a1, $sp, 864
 	addi.d	$a1, $a1, 1
@@ -9525,7 +9516,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_238:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit919
 	ld.d	$a0, $sp, 1872
-	beq	$a0, $s6, .LBB22_240
+	addi.d	$a1, $sp, 1888
+	beq	$a0, $a1, .LBB22_240
 # %bb.239:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i920
 	ld.d	$a1, $sp, 1888
 	addi.d	$a1, $a1, 1
@@ -9533,7 +9525,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_240:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit922
 	ld.d	$a0, $sp, 1904
-	beq	$a0, $s5, .LBB22_242
+	addi.d	$a1, $sp, 1920
+	beq	$a0, $a1, .LBB22_242
 # %bb.241:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i923
 	ld.d	$a1, $sp, 1920
 	addi.d	$a1, $a1, 1
@@ -9541,7 +9534,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_242:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit925
 	ld.d	$a0, $sp, 1936
-	beq	$a0, $s4, .LBB22_244
+	addi.d	$a1, $sp, 1952
+	beq	$a0, $a1, .LBB22_244
 # %bb.243:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i926
 	ld.d	$a1, $sp, 1952
 	addi.d	$a1, $a1, 1
@@ -9549,7 +9543,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_244:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit928
 	ld.d	$a0, $sp, 1968
-	beq	$a0, $s3, .LBB22_246
+	addi.d	$a1, $sp, 1984
+	beq	$a0, $a1, .LBB22_246
 # %bb.245:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i929
 	ld.d	$a1, $sp, 1984
 	addi.d	$a1, $a1, 1
@@ -9557,7 +9552,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_246:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit931
 	ld.d	$a0, $sp, 2000
-	beq	$a0, $s2, .LBB22_248
+	addi.d	$a1, $sp, 2016
+	beq	$a0, $a1, .LBB22_248
 # %bb.247:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i932
 	ld.d	$a1, $sp, 2016
 	addi.d	$a1, $a1, 1
@@ -9565,7 +9561,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_248:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit934
 	ld.d	$a0, $sp, 2032
-	beq	$a0, $s1, .LBB22_250
+	ori	$a1, $zero, 2048
+	add.d	$a1, $sp, $a1
+	beq	$a0, $a1, .LBB22_250
 # %bb.249:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i935
 	ori	$a1, $zero, 2048
 	add.d	$a1, $sp, $a1
@@ -9577,7 +9575,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a0, $zero, 2064
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $s0, .LBB22_252
+	ori	$a1, $zero, 2080
+	add.d	$a1, $sp, $a1
+	beq	$a0, $a1, .LBB22_252
 # %bb.251:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i938
 	ori	$a1, $zero, 2080
 	add.d	$a1, $sp, $a1
@@ -9589,7 +9589,9 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $fp, .LBB22_254
+	ori	$a1, $zero, 2112
+	add.d	$a1, $sp, $a1
+	beq	$a0, $a1, .LBB22_254
 # %bb.253:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i941
 	ori	$a1, $zero, 2112
 	add.d	$a1, $sp, $a1
@@ -9599,7 +9601,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 .LBB22_254:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit943
 	pcalau12i	$a0, %pc_hi20(dummy631)
-	st.w	$s7, $a0, %pc_lo12(dummy631)
+	st.w	$s6, $a0, %pc_lo12(dummy631)
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1552
 	add.d	$sp, $sp, $a0
@@ -9618,61 +9620,62 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	ret
 .LBB22_255:                             # %.loopexit1196.loopexit
 .Ltmp674:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	add.d	$a0, $s6, $s5
+	move	$s1, $a0
+	add.d	$a0, $s7, $s5
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s6, $s0
+	add.d	$a0, $s7, $s4
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s6, $s7
+	add.d	$a0, $s7, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s6, $s2
+	add.d	$a0, $s7, $s2
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s6, $s3
+	add.d	$a0, $s7, $s3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s6, $s8
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	add.d	$a0, $s6, $s4
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
+	add.d	$a0, $s7, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
+	add.d	$a0, $s7, $a0
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	add.d	$a0, $s7, $a0
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	add.d	$a0, $s7, $a0
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	add.d	$a0, $s7, $a0
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	add.d	$a0, $s7, $a0
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	add.d	$a0, $s7, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
+	add.d	$a0, $s7, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
+	add.d	$a0, $s7, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
+	add.d	$a0, $s7, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$s0, $s6, 2047
+	addi.d	$s0, $s7, 2047
 	addi.d	$a0, $s0, 2001
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
@@ -9839,12 +9842,12 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ori	$s1, $zero, 1
+	ori	$s2, $zero, 1
 	b	.LBB22_257
 .LBB22_256:
 .Ltmp671:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 .LBB22_257:                             # %.loopexit1196
 	ld.d	$a0, $sp, 144
 	addi.d	$a1, $sp, 160
@@ -10102,8 +10105,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_319:
 .Ltmp665:                               # EH_LABEL
 .LBB22_320:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit946
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 176
 	addi.d	$a1, $sp, 192
 	beq	$a0, $a1, .LBB22_259
@@ -10122,8 +10125,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_323:
 .Ltmp659:                               # EH_LABEL
 .LBB22_324:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit949
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 208
 	addi.d	$a1, $sp, 224
 	beq	$a0, $a1, .LBB22_260
@@ -10142,8 +10145,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_327:
 .Ltmp653:                               # EH_LABEL
 .LBB22_328:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit952
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 240
 	addi.d	$a1, $sp, 256
 	beq	$a0, $a1, .LBB22_261
@@ -10158,8 +10161,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	b	.LBB22_331
 .LBB22_330:
 .Ltmp650:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 272
 	addi.d	$a1, $sp, 288
 	beq	$a0, $a1, .LBB22_262
@@ -10178,8 +10181,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_333:
 .Ltmp644:                               # EH_LABEL
 .LBB22_334:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit958
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 304
 	addi.d	$a1, $sp, 320
 	beq	$a0, $a1, .LBB22_263
@@ -10198,8 +10201,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_337:
 .Ltmp638:                               # EH_LABEL
 .LBB22_338:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit961
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 336
 	addi.d	$a1, $sp, 352
 	beq	$a0, $a1, .LBB22_264
@@ -10218,8 +10221,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_341:
 .Ltmp632:                               # EH_LABEL
 .LBB22_342:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit964
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 368
 	addi.d	$a1, $sp, 384
 	beq	$a0, $a1, .LBB22_265
@@ -10238,8 +10241,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_345:
 .Ltmp626:                               # EH_LABEL
 .LBB22_346:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit967
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 400
 	addi.d	$a1, $sp, 416
 	beq	$a0, $a1, .LBB22_266
@@ -10692,7 +10695,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	add.d	$s0, $sp, $a0
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
-	or	$a0, $s1, $a0
+	or	$a0, $s2, $a0
 	bnez	$a0, .LBB22_405
 	.p2align	4, , 16
 .LBB22_404:                             # %.preheader
@@ -10703,7 +10706,7 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB22_404
 .LBB22_405:                             # %.loopexit
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB22_406:
@@ -10712,8 +10715,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_407:
 .Ltmp620:                               # EH_LABEL
 .LBB22_408:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit970
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 432
 	addi.d	$a1, $sp, 448
 	beq	$a0, $a1, .LBB22_267
@@ -10724,8 +10727,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_410:
 .Ltmp614:                               # EH_LABEL
 .LBB22_411:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit973
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 464
 	addi.d	$a1, $sp, 480
 	beq	$a0, $a1, .LBB22_268
@@ -10736,8 +10739,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_413:
 .Ltmp608:                               # EH_LABEL
 .LBB22_414:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit976
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 496
 	addi.d	$a1, $sp, 512
 	beq	$a0, $a1, .LBB22_269
@@ -10748,8 +10751,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_416:
 .Ltmp602:                               # EH_LABEL
 .LBB22_417:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit979
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 528
 	addi.d	$a1, $sp, 544
 	beq	$a0, $a1, .LBB22_270
@@ -10760,16 +10763,16 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_419:
 .Ltmp596:                               # EH_LABEL
 .LBB22_420:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit982
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 560
 	addi.d	$a1, $sp, 576
 	beq	$a0, $a1, .LBB22_271
 	b	.LBB22_352
 .LBB22_421:
 .Ltmp593:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 592
 	addi.d	$a1, $sp, 608
 	beq	$a0, $a1, .LBB22_272
@@ -10780,8 +10783,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_423:
 .Ltmp587:                               # EH_LABEL
 .LBB22_424:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit988
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 624
 	addi.d	$a1, $sp, 640
 	beq	$a0, $a1, .LBB22_273
@@ -10792,8 +10795,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_426:
 .Ltmp581:                               # EH_LABEL
 .LBB22_427:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit991
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 656
 	addi.d	$a1, $sp, 672
 	beq	$a0, $a1, .LBB22_274
@@ -10804,8 +10807,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_429:
 .Ltmp575:                               # EH_LABEL
 .LBB22_430:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit994
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 688
 	addi.d	$a1, $sp, 704
 	beq	$a0, $a1, .LBB22_275
@@ -10816,8 +10819,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_432:
 .Ltmp569:                               # EH_LABEL
 .LBB22_433:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit997
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 720
 	addi.d	$a1, $sp, 736
 	beq	$a0, $a1, .LBB22_276
@@ -10828,8 +10831,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_435:
 .Ltmp563:                               # EH_LABEL
 .LBB22_436:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1000
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 752
 	addi.d	$a1, $sp, 768
 	beq	$a0, $a1, .LBB22_277
@@ -10840,8 +10843,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_438:
 .Ltmp557:                               # EH_LABEL
 .LBB22_439:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1003
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 784
 	addi.d	$a1, $sp, 800
 	beq	$a0, $a1, .LBB22_278
@@ -10852,8 +10855,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_441:
 .Ltmp551:                               # EH_LABEL
 .LBB22_442:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1006
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 816
 	addi.d	$a1, $sp, 832
 	beq	$a0, $a1, .LBB22_279
@@ -10864,8 +10867,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_444:
 .Ltmp545:                               # EH_LABEL
 .LBB22_445:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1009
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 848
 	addi.d	$a1, $sp, 864
 	beq	$a0, $a1, .LBB22_280
@@ -10876,16 +10879,16 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_447:
 .Ltmp539:                               # EH_LABEL
 .LBB22_448:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1012
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 880
 	addi.d	$a1, $sp, 896
 	beq	$a0, $a1, .LBB22_281
 	b	.LBB22_362
 .LBB22_449:
 .Ltmp536:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 912
 	addi.d	$a1, $sp, 928
 	beq	$a0, $a1, .LBB22_282
@@ -10896,8 +10899,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_451:
 .Ltmp530:                               # EH_LABEL
 .LBB22_452:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1018
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 944
 	addi.d	$a1, $sp, 960
 	beq	$a0, $a1, .LBB22_283
@@ -10908,8 +10911,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_454:
 .Ltmp524:                               # EH_LABEL
 .LBB22_455:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1021
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 976
 	addi.d	$a1, $sp, 992
 	beq	$a0, $a1, .LBB22_284
@@ -10920,8 +10923,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_457:
 .Ltmp518:                               # EH_LABEL
 .LBB22_458:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1024
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1008
 	addi.d	$a1, $sp, 1024
 	beq	$a0, $a1, .LBB22_285
@@ -10932,8 +10935,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_460:
 .Ltmp512:                               # EH_LABEL
 .LBB22_461:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1027
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1040
 	addi.d	$a1, $sp, 1056
 	beq	$a0, $a1, .LBB22_286
@@ -10944,8 +10947,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_463:
 .Ltmp506:                               # EH_LABEL
 .LBB22_464:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1030
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1072
 	addi.d	$a1, $sp, 1088
 	beq	$a0, $a1, .LBB22_287
@@ -10956,16 +10959,16 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_466:
 .Ltmp500:                               # EH_LABEL
 .LBB22_467:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1033
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1104
 	addi.d	$a1, $sp, 1120
 	beq	$a0, $a1, .LBB22_288
 	b	.LBB22_369
 .LBB22_468:
 .Ltmp497:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1136
 	addi.d	$a1, $sp, 1152
 	beq	$a0, $a1, .LBB22_289
@@ -10976,8 +10979,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_470:
 .Ltmp491:                               # EH_LABEL
 .LBB22_471:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1039
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1168
 	addi.d	$a1, $sp, 1184
 	beq	$a0, $a1, .LBB22_290
@@ -10988,8 +10991,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_473:
 .Ltmp485:                               # EH_LABEL
 .LBB22_474:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1042
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1200
 	addi.d	$a1, $sp, 1216
 	beq	$a0, $a1, .LBB22_291
@@ -11000,8 +11003,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_476:
 .Ltmp479:                               # EH_LABEL
 .LBB22_477:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1045
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1232
 	addi.d	$a1, $sp, 1248
 	beq	$a0, $a1, .LBB22_292
@@ -11012,8 +11015,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_479:
 .Ltmp473:                               # EH_LABEL
 .LBB22_480:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1048
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1264
 	addi.d	$a1, $sp, 1280
 	beq	$a0, $a1, .LBB22_293
@@ -11024,8 +11027,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_482:
 .Ltmp467:                               # EH_LABEL
 .LBB22_483:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1051
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1296
 	addi.d	$a1, $sp, 1312
 	beq	$a0, $a1, .LBB22_294
@@ -11036,8 +11039,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_485:
 .Ltmp461:                               # EH_LABEL
 .LBB22_486:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1054
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1328
 	addi.d	$a1, $sp, 1344
 	beq	$a0, $a1, .LBB22_295
@@ -11048,16 +11051,16 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_488:
 .Ltmp455:                               # EH_LABEL
 .LBB22_489:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1057
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1360
 	addi.d	$a1, $sp, 1376
 	beq	$a0, $a1, .LBB22_296
 	b	.LBB22_377
 .LBB22_490:
 .Ltmp452:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1392
 	addi.d	$a1, $sp, 1408
 	beq	$a0, $a1, .LBB22_297
@@ -11068,8 +11071,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_492:
 .Ltmp446:                               # EH_LABEL
 .LBB22_493:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1063
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1424
 	addi.d	$a1, $sp, 1440
 	beq	$a0, $a1, .LBB22_298
@@ -11080,8 +11083,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_495:
 .Ltmp440:                               # EH_LABEL
 .LBB22_496:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1066
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1456
 	addi.d	$a1, $sp, 1472
 	beq	$a0, $a1, .LBB22_299
@@ -11092,8 +11095,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_498:
 .Ltmp434:                               # EH_LABEL
 .LBB22_499:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1069
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1488
 	addi.d	$a1, $sp, 1504
 	beq	$a0, $a1, .LBB22_300
@@ -11104,8 +11107,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_501:
 .Ltmp428:                               # EH_LABEL
 .LBB22_502:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1072
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1520
 	addi.d	$a1, $sp, 1536
 	beq	$a0, $a1, .LBB22_301
@@ -11116,8 +11119,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_504:
 .Ltmp422:                               # EH_LABEL
 .LBB22_505:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1075
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1552
 	addi.d	$a1, $sp, 1568
 	beq	$a0, $a1, .LBB22_302
@@ -11128,8 +11131,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_507:
 .Ltmp416:                               # EH_LABEL
 .LBB22_508:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1078
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1584
 	addi.d	$a1, $sp, 1600
 	beq	$a0, $a1, .LBB22_303
@@ -11140,16 +11143,16 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_510:
 .Ltmp410:                               # EH_LABEL
 .LBB22_511:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1081
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1616
 	addi.d	$a1, $sp, 1632
 	beq	$a0, $a1, .LBB22_304
 	b	.LBB22_385
 .LBB22_512:
 .Ltmp407:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1648
 	addi.d	$a1, $sp, 1664
 	beq	$a0, $a1, .LBB22_305
@@ -11160,8 +11163,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_514:
 .Ltmp401:                               # EH_LABEL
 .LBB22_515:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1087
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1680
 	addi.d	$a1, $sp, 1696
 	beq	$a0, $a1, .LBB22_306
@@ -11172,8 +11175,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_517:
 .Ltmp395:                               # EH_LABEL
 .LBB22_518:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1090
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1712
 	addi.d	$a1, $sp, 1728
 	beq	$a0, $a1, .LBB22_307
@@ -11184,8 +11187,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_520:
 .Ltmp389:                               # EH_LABEL
 .LBB22_521:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1093
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1744
 	addi.d	$a1, $sp, 1760
 	beq	$a0, $a1, .LBB22_308
@@ -11196,8 +11199,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_523:
 .Ltmp383:                               # EH_LABEL
 .LBB22_524:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1096
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1776
 	addi.d	$a1, $sp, 1792
 	beq	$a0, $a1, .LBB22_309
@@ -11208,8 +11211,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_526:
 .Ltmp377:                               # EH_LABEL
 .LBB22_527:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1099
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1808
 	addi.d	$a1, $sp, 1824
 	beq	$a0, $a1, .LBB22_310
@@ -11220,8 +11223,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_529:
 .Ltmp371:                               # EH_LABEL
 .LBB22_530:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1102
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1840
 	addi.d	$a1, $sp, 1856
 	beq	$a0, $a1, .LBB22_311
@@ -11232,16 +11235,16 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_532:
 .Ltmp365:                               # EH_LABEL
 .LBB22_533:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1105
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1872
 	addi.d	$a1, $sp, 1888
 	beq	$a0, $a1, .LBB22_312
 	b	.LBB22_393
 .LBB22_534:
 .Ltmp362:                               # EH_LABEL
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1904
 	addi.d	$a1, $sp, 1920
 	beq	$a0, $a1, .LBB22_313
@@ -11252,8 +11255,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_536:
 .Ltmp356:                               # EH_LABEL
 .LBB22_537:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1111
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1936
 	addi.d	$a1, $sp, 1952
 	beq	$a0, $a1, .LBB22_314
@@ -11264,8 +11267,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_539:
 .Ltmp350:                               # EH_LABEL
 .LBB22_540:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1114
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 1968
 	addi.d	$a1, $sp, 1984
 	beq	$a0, $a1, .LBB22_315
@@ -11276,8 +11279,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_542:
 .Ltmp344:                               # EH_LABEL
 .LBB22_543:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1117
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 2000
 	addi.d	$a1, $sp, 2016
 	beq	$a0, $a1, .LBB22_316
@@ -11288,8 +11291,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_545:
 .Ltmp338:                               # EH_LABEL
 .LBB22_546:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1120
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	ld.d	$a0, $sp, 2032
 	ori	$a1, $zero, 2048
 	add.d	$a1, $sp, $a1
@@ -11301,8 +11304,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_548:
 .Ltmp332:                               # EH_LABEL
 .LBB22_549:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1123
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	b	.LBB22_399
 .LBB22_550:
 .Ltmp329:                               # EH_LABEL
@@ -11310,8 +11313,8 @@ __cxx_global_var_init.231:              # @__cxx_global_var_init.231
 .LBB22_551:
 .Ltmp326:                               # EH_LABEL
 .LBB22_552:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1126
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	move	$s1, $zero
+	move	$s1, $a0
+	move	$s2, $zero
 	b	.LBB22_401
 .Lfunc_end22:
 	.size	__cxx_global_var_init.231, .Lfunc_end22-__cxx_global_var_init.231
@@ -12181,10 +12184,10 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a0, $zero, 2744
 	add.d	$fp, $sp, $a0
 	ori	$a0, $zero, 2608
+	add.d	$s4, $sp, $a0
+	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2592
-	add.d	$a1, $sp, $a1
-	st.d	$a0, $a1, 0
+	st.d	$s4, $a0, 0
 	ori	$a0, $zero, 20
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 976
@@ -12212,9 +12215,9 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.318)
-	addi.d	$s4, $a2, %pc_lo12(.L.str.318)
-	vld	$vr0, $s4, 0
-	ld.w	$a2, $s4, 16
+	addi.d	$s5, $a2, %pc_lo12(.L.str.318)
+	vld	$vr0, $s5, 0
+	ld.w	$a2, $s5, 16
 	vst	$vr0, $a0, 0
 	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
 	st.w	$a2, $a0, 16
@@ -12234,7 +12237,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	jirl	$ra, $ra, 0
 .Ltmp682:                               # EH_LABEL
 # %bb.3:                                # %.noexc.i642
-	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 216                   # 8-byte Folded Spill
 	ori	$a0, $zero, 2832
 	add.d	$fp, $sp, $a0
 	ori	$a0, $zero, 2576
@@ -13544,7 +13547,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
 .Ltmp838:                               # EH_LABEL
-	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
 # %bb.55:                               # %.noexc751
@@ -13725,7 +13728,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	st.d	$a0, $sp, 1568
 	st.d	$a1, $sp, 1584
 	xvst	$xr0, $a0, 0
-	st.d	$s5, $a0, 32
+	st.d	$s3, $a0, 32
 	vld	$vr0, $s6, 40
 	vst	$vr0, $a0, 40
 	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
@@ -13768,10 +13771,10 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	st.d	$a0, $sp, 1536
 	st.d	$a1, $sp, 1552
 	pcalau12i	$a2, %pc_hi20(.L.str.191)
-	addi.d	$s4, $a2, %pc_lo12(.L.str.191)
-	vld	$vr0, $s4, 0
-	ld.b	$a2, $s4, 24
-	ld.d	$a3, $s4, 16
+	addi.d	$s5, $a2, %pc_lo12(.L.str.191)
+	vld	$vr0, $s5, 0
+	ld.b	$a2, $s5, 24
+	ld.d	$a3, $s5, 16
 	vst	$vr0, $a0, 0
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	st.b	$a2, $a0, 24
@@ -13923,10 +13926,10 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	st.d	$a0, $sp, 1408
 	st.d	$a1, $sp, 1424
 	pcalau12i	$a2, %pc_hi20(.L.str.193)
-	addi.d	$s3, $a2, %pc_lo12(.L.str.193)
-	vld	$vr0, $s3, 0
-	ld.h	$a2, $s3, 24
-	ld.d	$a3, $s3, 16
+	addi.d	$s4, $a2, %pc_lo12(.L.str.193)
+	vld	$vr0, $s4, 0
+	ld.h	$a2, $s4, 24
+	ld.d	$a3, $s4, 16
 	vst	$vr0, $a0, 0
 	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
 	st.h	$a2, $a0, 24
@@ -14188,7 +14191,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	st.d	$a0, $sp, 1216
 	st.d	$a1, $sp, 1232
 	xvst	$xr0, $a0, 0
-	st.d	$s5, $a0, 32
+	st.d	$s3, $a0, 32
 	vld	$vr0, $s6, 40
 	vst	$vr0, $a0, 40
 	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
@@ -14228,7 +14231,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a1, $a1, 976
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s4, 0
+	vld	$vr0, $s5, 0
 	st.d	$a0, $sp, 1184
 	st.d	$a1, $sp, 1200
 	vst	$vr0, $a0, 0
@@ -14382,7 +14385,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a1, $a1, 976
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s3, 0
+	vld	$vr0, $s4, 0
 	st.d	$a0, $sp, 1056
 	st.d	$a1, $sp, 1072
 	vst	$vr0, $a0, 0
@@ -14651,7 +14654,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	st.d	$a0, $sp, 864
 	st.d	$a1, $sp, 880
 	xvst	$xr0, $a0, 0
-	st.d	$s5, $a0, 32
+	st.d	$s3, $a0, 32
 	vld	$vr0, $s6, 40
 	vst	$vr0, $a0, 40
 	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
@@ -14692,7 +14695,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a1, $a1, 976
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s4, 0
+	vld	$vr0, $s5, 0
 	st.d	$a0, $sp, 832
 	st.d	$a1, $sp, 848
 	vst	$vr0, $a0, 0
@@ -14848,7 +14851,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a1, $a1, 976
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s3, 0
+	vld	$vr0, $s4, 0
 	st.d	$a0, $sp, 704
 	st.d	$a1, $sp, 720
 	vst	$vr0, $a0, 0
@@ -15115,7 +15118,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	st.d	$a0, $sp, 512
 	st.d	$a1, $sp, 528
 	xvst	$xr0, $a0, 0
-	st.d	$s5, $a0, 32
+	st.d	$s3, $a0, 32
 	vld	$vr0, $s6, 40
 	vst	$vr0, $a0, 40
 	ld.d	$a2, $sp, 280                   # 8-byte Folded Reload
@@ -15130,10 +15133,10 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	jirl	$ra, $ra, 0
 .Ltmp1054:                              # EH_LABEL
 # %bb.127:                              # %.noexc.i902
-	ori	$s5, $s1, 1800
+	ori	$s6, $s1, 1800
 	ori	$a0, $zero, 2656
 	add.d	$a0, $sp, $a0
-	add.d	$fp, $a0, $s5
+	add.d	$fp, $a0, $s6
 	addi.d	$a0, $sp, 496
 	st.d	$a0, $sp, 480
 	ori	$a0, $zero, 25
@@ -15155,7 +15158,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a1, $a1, 976
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s4, 0
+	vld	$vr0, $s5, 0
 	st.d	$a0, $sp, 480
 	st.d	$a1, $sp, 496
 	vst	$vr0, $a0, 0
@@ -15174,10 +15177,10 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	jirl	$ra, $ra, 0
 .Ltmp1060:                              # EH_LABEL
 # %bb.129:                              # %.noexc.i906
-	ori	$s4, $s1, 1888
+	ori	$s5, $s1, 1888
 	ori	$a0, $zero, 2656
 	add.d	$a0, $sp, $a0
-	add.d	$fp, $a0, $s4
+	add.d	$fp, $a0, $s5
 	addi.d	$a0, $sp, 464
 	st.d	$a0, $sp, 448
 	ori	$a0, $zero, 18
@@ -15282,10 +15285,10 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	jirl	$ra, $ra, 0
 .Ltmp1075:                              # EH_LABEL
 # %bb.134:                              # %.noexc.i918
-	ori	$s2, $s1, 2152
+	ori	$s3, $s1, 2152
 	ori	$a0, $zero, 2656
 	add.d	$a0, $sp, $a0
-	add.d	$fp, $a0, $s2
+	add.d	$fp, $a0, $s3
 	addi.d	$a0, $sp, 368
 	st.d	$a0, $sp, 352
 	ori	$a0, $zero, 26
@@ -15303,11 +15306,12 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	jirl	$ra, $ra, 0
 .Ltmp1078:                              # EH_LABEL
 # %bb.135:                              # %.noexc919
+	st.d	$s5, $sp, 264                   # 8-byte Folded Spill
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 976
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s3, 0
+	vld	$vr0, $s4, 0
 	st.d	$a0, $sp, 352
 	st.d	$a1, $sp, 368
 	vst	$vr0, $a0, 0
@@ -15326,11 +15330,11 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	jirl	$ra, $ra, 0
 .Ltmp1081:                              # EH_LABEL
 # %bb.136:                              # %.noexc.i922
-	st.d	$s5, $sp, 264                   # 8-byte Folded Spill
-	ori	$s5, $s1, 2240
+	move	$s5, $s6
+	ori	$s2, $s1, 2240
 	ori	$a0, $zero, 2656
 	add.d	$a0, $sp, $a0
-	add.d	$fp, $a0, $s5
+	add.d	$fp, $a0, $s2
 	addi.d	$a0, $sp, 336
 	st.d	$a0, $sp, 320
 	ori	$a0, $zero, 17
@@ -15422,7 +15426,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	add.d	$a1, $sp, $a1
 	ori	$a2, $zero, 74
 	ori	$a3, $zero, 2656
-	add.d	$s3, $sp, $a3
+	add.d	$s4, $sp, $a3
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp1096:                              # EH_LABEL
@@ -15439,8 +15443,8 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	addi.d	$s0, $s0, -88
 	beqz	$s0, .LBB28_154
 .LBB28_143:                             # =>This Inner Loop Header: Depth=1
-	add.d	$s4, $s3, $s0
-	ld.d	$fp, $s4, -8
+	add.d	$s3, $s4, $s0
+	ld.d	$fp, $s3, -8
 	beqz	$fp, .LBB28_148
 # %bb.144:                              #   in Loop: Header=BB28_143 Depth=1
 	ld.d	$a0, $fp, 8
@@ -15456,8 +15460,8 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ld.d	$a1, $a0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	ld.d	$a0, $s4, -48
-	addi.d	$a1, $s4, -32
+	ld.d	$a0, $s3, -48
+	addi.d	$a1, $s3, -32
 	bne	$a1, $a0, .LBB28_149
 	b	.LBB28_150
 	.p2align	4, , 16
@@ -15474,8 +15478,8 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	.p2align	4, , 16
 .LBB28_148:                             # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i
                                         #   in Loop: Header=BB28_143 Depth=1
-	ld.d	$a0, $s4, -48
-	addi.d	$a1, $s4, -32
+	ld.d	$a0, $s3, -48
+	addi.d	$a1, $s3, -32
 	beq	$a1, $a0, .LBB28_150
 .LBB28_149:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i
                                         #   in Loop: Header=BB28_143 Depth=1
@@ -15485,8 +15489,8 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	jirl	$ra, $ra, 0
 .LBB28_150:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i
                                         #   in Loop: Header=BB28_143 Depth=1
-	ld.d	$a0, $s4, -88
-	addi.d	$a1, $s4, -72
+	ld.d	$a0, $s3, -88
+	addi.d	$a1, $s3, -72
 	beq	$a1, $a0, .LBB28_142
 # %bb.151:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1.i
                                         #   in Loop: Header=BB28_143 Depth=1
@@ -15505,8 +15509,8 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, -48
-	addi.d	$a1, $s4, -32
+	ld.d	$a0, $s3, -48
+	addi.d	$a1, $s3, -32
 	bne	$a1, $a0, .LBB28_149
 	b	.LBB28_150
 .LBB28_154:
@@ -15524,7 +15528,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	add.d	$fp, $sp, $a1
 	ori	$a1, $zero, 2608
 	add.d	$s0, $sp, $a1
-	ori	$a1, $zero, 2576
+	ori	$a1, $zero, 2544
 	add.d	$s1, $sp, $a1
 	addi.d	$s2, $sp, 1968
 	addi.d	$a1, $sp, 336
@@ -16224,9 +16228,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a0, $zero, 2528
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2544
-	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_296
+	beq	$a0, $s1, .LBB28_296
 # %bb.295:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1136
 	ori	$a1, $zero, 2544
 	add.d	$a1, $sp, $a1
@@ -16238,7 +16240,9 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a0, $zero, 2560
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $s1, .LBB28_298
+	ori	$a1, $zero, 2576
+	add.d	$a1, $sp, $a1
+	beq	$a0, $a1, .LBB28_298
 # %bb.297:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1139
 	ori	$a1, $zero, 2576
 	add.d	$a1, $sp, $a1
@@ -16292,108 +16296,108 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 .LBB28_303:                             # %.loopexit1448.loopexit
 .Ltmp1097:                              # EH_LABEL
 	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
-	add.d	$a0, $s3, $s8
+	add.d	$a0, $s4, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s3, $s5
+	add.d	$a0, $s4, $s2
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s3, $s2
+	add.d	$a0, $s4, $s3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s3, $s7
+	add.d	$a0, $s4, $s7
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s3, $s0
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	add.d	$a0, $s3, $s4
+	add.d	$a0, $s4, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	add.d	$a0, $s4, $s5
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s3, $s6
+	add.d	$a0, $s4, $s6
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s4, $a0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$s0, $s3, 2047
+	addi.d	$s0, $s4, 2047
 	addi.d	$a0, $s0, 2001
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
@@ -17494,10 +17498,12 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a0, $zero, 2640
 	add.d	$s3, $sp, $a0
 	ori	$a0, $zero, 2608
-	add.d	$s0, $sp, $a0
+	add.d	$s4, $sp, $a0
 	ori	$a0, $zero, 2576
+	add.d	$s0, $sp, $a0
+	ori	$a0, $zero, 2544
 	add.d	$s2, $sp, $a0
-	ld.d	$s4, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
 .LBB28_462:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1348
 	ori	$a0, $zero, 2432
 	add.d	$a0, $sp, $a0
@@ -17532,62 +17538,64 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ld.d	$a0, $a0, 0
 	ori	$a1, $zero, 2512
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB28_468
-# %bb.467:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1355
-	ori	$a1, $zero, 2512
-	add.d	$a1, $sp, $a1
-	ld.d	$a1, $a1, 0
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB28_468:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1357
+	bne	$a0, $a1, .LBB28_475
+# %bb.467:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1357
 	ori	$a0, $zero, 2528
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 2544
-	add.d	$a1, $sp, $a1
-	bne	$a0, $a1, .LBB28_476
-# %bb.469:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1360
+	bne	$a0, $s2, .LBB28_476
+.LBB28_468:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1360
 	ori	$a0, $zero, 2560
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	bne	$a0, $s2, .LBB28_477
-.LBB28_470:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1363
+	bne	$a0, $s0, .LBB28_477
+.LBB28_469:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1363
 	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	bne	$a0, $s0, .LBB28_478
-.LBB28_471:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1366
+	bne	$a0, $s4, .LBB28_478
+.LBB28_470:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1366
 	ori	$a0, $zero, 2624
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $s3, .LBB28_473
-.LBB28_472:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1367
+	beq	$a0, $s3, .LBB28_472
+.LBB28_471:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1367
 	ori	$a1, $zero, 2640
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB28_473:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1369
+.LBB28_472:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1369
 	ori	$a0, $zero, 2656
 	add.d	$s0, $sp, $a0
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s1, $a0
-	bnez	$a0, .LBB28_475
+	bnez	$a0, .LBB28_474
 	.p2align	4, , 16
-.LBB28_474:                             # %.preheader
+.LBB28_473:                             # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$fp, $fp, -88
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$fp, $s0, .LBB28_474
-.LBB28_475:                             # %.loopexit
-	move	$a0, $s4
+	bne	$fp, $s0, .LBB28_473
+.LBB28_474:                             # %.loopexit
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
+.LBB28_475:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1355
+	ori	$a1, $zero, 2512
+	add.d	$a1, $sp, $a1
+	ld.d	$a1, $a1, 0
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 2528
+	add.d	$a0, $sp, $a0
+	ld.d	$a0, $a0, 0
+	beq	$a0, $s2, .LBB28_468
 .LBB28_476:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1358
 	ori	$a1, $zero, 2544
 	add.d	$a1, $sp, $a1
@@ -17598,7 +17606,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a0, $zero, 2560
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $s2, .LBB28_470
+	beq	$a0, $s0, .LBB28_469
 .LBB28_477:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1361
 	ori	$a1, $zero, 2576
 	add.d	$a1, $sp, $a1
@@ -17609,7 +17617,7 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $s0, .LBB28_471
+	beq	$a0, $s4, .LBB28_470
 .LBB28_478:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i1364
 	ori	$a1, $zero, 2608
 	add.d	$a1, $sp, $a1
@@ -17620,8 +17628,8 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	ori	$a0, $zero, 2624
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	bne	$a0, $s3, .LBB28_472
-	b	.LBB28_473
+	bne	$a0, $s3, .LBB28_471
+	b	.LBB28_472
 .LBB28_479:
 .Ltmp1046:                              # EH_LABEL
 	b	.LBB28_481
@@ -18264,13 +18272,15 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 	b	.LBB28_459
 .LBB28_643:
 .Ltmp713:                               # EH_LABEL
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
 	ori	$a0, $zero, 2640
 	add.d	$s3, $sp, $a0
 	ori	$a0, $zero, 2608
-	add.d	$s0, $sp, $a0
+	add.d	$s4, $sp, $a0
 	ori	$a0, $zero, 2576
+	add.d	$s0, $sp, $a0
+	ori	$a0, $zero, 2544
 	add.d	$s2, $sp, $a0
 	b	.LBB28_462
 .LBB28_644:
@@ -18279,13 +18289,15 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 .LBB28_645:
 .Ltmp707:                               # EH_LABEL
 .LBB28_646:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1351
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
 	ori	$a0, $zero, 2640
 	add.d	$s3, $sp, $a0
 	ori	$a0, $zero, 2608
-	add.d	$s0, $sp, $a0
+	add.d	$s4, $sp, $a0
 	ori	$a0, $zero, 2576
+	add.d	$s0, $sp, $a0
+	ori	$a0, $zero, 2544
 	add.d	$s2, $sp, $a0
 	b	.LBB28_464
 .LBB28_647:
@@ -18294,48 +18306,54 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 .LBB28_648:
 .Ltmp701:                               # EH_LABEL
 .LBB28_649:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1354
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
 	ori	$a0, $zero, 2640
 	add.d	$s3, $sp, $a0
 	ori	$a0, $zero, 2608
-	add.d	$s0, $sp, $a0
+	add.d	$s4, $sp, $a0
 	ori	$a0, $zero, 2576
+	add.d	$s0, $sp, $a0
+	ori	$a0, $zero, 2544
 	add.d	$s2, $sp, $a0
 	b	.LBB28_466
 .LBB28_650:
 .Ltmp698:                               # EH_LABEL
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
 	ori	$a0, $zero, 2640
 	add.d	$s3, $sp, $a0
+	ori	$a0, $zero, 2608
+	add.d	$s4, $sp, $a0
 	b	.LBB28_652
 .LBB28_651:
 .Ltmp695:                               # EH_LABEL
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
 .LBB28_652:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1357
-	ori	$a0, $zero, 2608
-	add.d	$s0, $sp, $a0
 	ori	$a0, $zero, 2576
+	add.d	$s0, $sp, $a0
+	ori	$a0, $zero, 2544
 	add.d	$s2, $sp, $a0
-	b	.LBB28_468
+	ori	$a0, $zero, 2528
+	add.d	$a0, $sp, $a0
+	ld.d	$a0, $a0, 0
+	beq	$a0, $s2, .LBB28_468
+	b	.LBB28_476
 .LBB28_653:
 .Ltmp692:                               # EH_LABEL
 	b	.LBB28_655
 .LBB28_654:
 .Ltmp689:                               # EH_LABEL
 .LBB28_655:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1360
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
-	ori	$a0, $zero, 2608
-	add.d	$s0, $sp, $a0
 	ori	$a0, $zero, 2576
-	add.d	$s2, $sp, $a0
+	add.d	$s0, $sp, $a0
 	ori	$a0, $zero, 2560
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $s2, .LBB28_470
+	beq	$a0, $s0, .LBB28_469
 	b	.LBB28_477
 .LBB28_656:
 .Ltmp686:                               # EH_LABEL
@@ -18343,14 +18361,12 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 .LBB28_657:
 .Ltmp683:                               # EH_LABEL
 .LBB28_658:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1363
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
-	ori	$a0, $zero, 2608
-	add.d	$s0, $sp, $a0
 	ori	$a0, $zero, 2592
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	beq	$a0, $s0, .LBB28_471
+	beq	$a0, $s4, .LBB28_470
 	b	.LBB28_478
 .LBB28_659:
 .Ltmp680:                               # EH_LABEL
@@ -18358,13 +18374,13 @@ __cxx_global_var_init.316:              # @__cxx_global_var_init.316
 .LBB28_660:
 .Ltmp677:                               # EH_LABEL
 .LBB28_661:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit1366
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$s1, $zero
 	ori	$a0, $zero, 2624
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	bne	$a0, $s3, .LBB28_472
-	b	.LBB28_473
+	bne	$a0, $s3, .LBB28_471
+	b	.LBB28_472
 .Lfunc_end28:
 	.size	__cxx_global_var_init.316, .Lfunc_end28-__cxx_global_var_init.316
 	.cfi_endproc
@@ -48185,7 +48201,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a1, $a1, 1816
 	add.d	$a1, $sp, $a1
 	beq	$a0, $a1, .LBB44_1568
-# %bb.1567:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i22.i
+# %bb.1567:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i22.i2327
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1816
 	add.d	$a1, $sp, $a1
@@ -49346,9 +49362,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.184)
 	addi.d	$s4, $a2, %pc_lo12(.L.str.184)
-	ld.d	$fp, $s4, 23
+	ld.d	$s0, $s4, 23
 	ld.d	$s3, $s4, 16
-	st.d	$fp, $a0, 23
+	st.d	$s0, $a0, 23
 	st.d	$s3, $a0, 16
 	vld	$vr0, $s4, 0
 	vst	$vr0, $a0, 0
@@ -49410,11 +49426,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.185)
-	addi.d	$s0, $a2, %pc_lo12(.L.str.185)
-	vld	$vr0, $s0, 0
-	ld.w	$s7, $s0, 16
+	addi.d	$s7, $a2, %pc_lo12(.L.str.185)
+	vld	$vr0, $s7, 0
+	ld.w	$fp, $s7, 16
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$fp, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1768
 	add.d	$a0, $sp, $a0
@@ -49814,7 +49830,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	vst	$vr0, $a0, 0
-	st.d	$fp, $a0, 23
+	st.d	$s0, $a0, 23
 	st.d	$s3, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1544
@@ -49835,7 +49851,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp2976:                              # EH_LABEL
 # %bb.1697:                             # %.noexc.i408.i
-	addi.d	$fp, $sp, 1576
+	addi.d	$s0, $sp, 1576
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1528
 	add.d	$a0, $sp, $a0
@@ -49864,7 +49880,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a1, $a1, 1480
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s0, 0
+	vld	$vr0, $s7, 0
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1512
 	add.d	$a2, $sp, $a2
@@ -49874,7 +49890,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$fp, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1512
 	add.d	$a0, $sp, $a0
@@ -49889,12 +49905,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1512
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2982:                              # EH_LABEL
 # %bb.1699:                             # %.noexc.i412.i
-	addi.d	$fp, $sp, 1664
+	addi.d	$s0, $sp, 1664
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1496
 	add.d	$a0, $sp, $a0
@@ -49948,12 +49964,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1480
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2988:                              # EH_LABEL
 # %bb.1701:                             # %.noexc.i416.i
-	addi.d	$fp, $sp, 1752
+	addi.d	$s0, $sp, 1752
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1464
 	add.d	$a0, $sp, $a0
@@ -49993,9 +50009,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcalau12i	$a2, %pc_hi20(.L.str.188)
 	addi.d	$s5, $a2, %pc_lo12(.L.str.188)
 	xvld	$xr0, $s5, 0
-	ld.w	$s3, $s5, 31
+	ld.w	$s4, $s5, 31
 	xvst	$xr0, $a0, 0
-	st.w	$s3, $a0, 31
+	st.w	$s4, $a0, 31
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1456
 	add.d	$a2, $sp, $a2
@@ -50006,12 +50022,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1448
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp2994:                              # EH_LABEL
 # %bb.1703:                             # %.noexc.i420.i
-	addi.d	$fp, $sp, 1840
+	addi.d	$s0, $sp, 1840
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1432
 	add.d	$a0, $sp, $a0
@@ -50069,12 +50085,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1416
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3000:                              # EH_LABEL
 # %bb.1705:                             # %.noexc.i424.i
-	addi.d	$fp, $sp, 1928
+	addi.d	$s0, $sp, 1928
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1400
 	add.d	$a0, $sp, $a0
@@ -50129,12 +50145,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1384
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3006:                              # EH_LABEL
 # %bb.1707:                             # %.noexc.i428.i
-	addi.d	$fp, $sp, 2016
+	addi.d	$s0, $sp, 2016
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1368
 	add.d	$a0, $sp, $a0
@@ -50191,13 +50207,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1352
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3012:                              # EH_LABEL
 # %bb.1709:                             # %._crit_edge.i.i431.i
 	ori	$a0, $zero, 2104
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1336
 	add.d	$a0, $sp, $a0
@@ -50229,13 +50245,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1320
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3015:                              # EH_LABEL
 # %bb.1710:                             # %.noexc.i436.i
 	ori	$a0, $zero, 2192
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1304
 	add.d	$a0, $sp, $a0
@@ -50287,14 +50303,14 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1288
 	add.d	$a1, $sp, $a0
-	move	$a0, $fp
+	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3021:                              # EH_LABEL
 # %bb.1712:                             # %.noexc.i440.i
 	ori	$a0, $zero, 2280
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1272
 	add.d	$a0, $sp, $a0
@@ -50323,7 +50339,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a1, $a1, 1224
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s0, 0
+	vld	$vr0, $s7, 0
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1256
 	add.d	$a2, $sp, $a2
@@ -50333,7 +50349,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$fp, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -50348,13 +50364,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1256
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3027:                              # EH_LABEL
 # %bb.1714:                             # %.noexc.i444.i
 	ori	$a0, $zero, 2368
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1240
 	add.d	$a0, $sp, $a0
@@ -50408,13 +50424,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1224
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3033:                              # EH_LABEL
 # %bb.1716:                             # %.noexc.i448.i
 	ori	$a0, $zero, 2456
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1208
 	add.d	$a0, $sp, $a0
@@ -50453,7 +50469,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	xvst	$xr0, $a0, 0
-	st.w	$s3, $a0, 31
+	st.w	$s4, $a0, 31
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1200
 	add.d	$a2, $sp, $a2
@@ -50464,13 +50480,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1192
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3039:                              # EH_LABEL
 # %bb.1718:                             # %.noexc.i452.i
 	ori	$a0, $zero, 2544
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1176
 	add.d	$a0, $sp, $a0
@@ -50532,13 +50548,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1160
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3045:                              # EH_LABEL
 # %bb.1720:                             # %.noexc.i456.i
 	ori	$a0, $zero, 2632
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1144
 	add.d	$a0, $sp, $a0
@@ -50593,13 +50609,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1128
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3051:                              # EH_LABEL
 # %bb.1722:                             # %._crit_edge.i.i459.i
 	ori	$a0, $zero, 2720
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1112
 	add.d	$a0, $sp, $a0
@@ -50631,13 +50647,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1096
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3054:                              # EH_LABEL
 # %bb.1723:                             # %.noexc.i464.i
 	ori	$a0, $zero, 2808
-	add.d	$fp, $sp, $a0
+	add.d	$s0, $sp, $a0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1080
 	add.d	$a0, $sp, $a0
@@ -50699,14 +50715,14 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1064
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3060:                              # EH_LABEL
 # %bb.1725:                             # %.noexc.i468.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$s8, $a0, 65
+	addi.d	$s0, $a0, 65
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1048
 	add.d	$a0, $sp, $a0
@@ -50768,7 +50784,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1032
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s8
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3066:                              # EH_LABEL
@@ -50800,6 +50816,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3069:                              # EH_LABEL
 # %bb.1728:                             # %.noexc473.i
+	st.d	$s0, $sp, 64                    # 8-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 968
 	add.d	$a1, $sp, $a1
@@ -50841,7 +50858,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 # %bb.1729:                             # %.noexc.i476.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$s4, $a0, 241
+	addi.d	$s3, $a0, 241
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 984
 	add.d	$a0, $sp, $a0
@@ -50893,7 +50910,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a1, $sp, $a0
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -50901,7 +50918,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 # %bb.1731:                             # %.noexc.i480.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$fp, $a0, 329
+	addi.d	$s0, $a0, 329
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 952
 	add.d	$a0, $sp, $a0
@@ -50926,12 +50943,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3081:                              # EH_LABEL
 # %bb.1732:                             # %.noexc481.i
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 904
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
-	vld	$vr0, $s0, 0
+	vld	$vr0, $s7, 0
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 936
 	add.d	$a2, $sp, $a2
@@ -50941,7 +50957,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$fp, $a0, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -50956,7 +50972,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 936
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3084:                              # EH_LABEL
@@ -50988,7 +51004,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3087:                              # EH_LABEL
 # %bb.1734:                             # %.noexc485.i
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 872
 	add.d	$a1, $sp, $a1
@@ -51018,7 +51034,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 904
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -51065,7 +51081,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	add.d	$a2, $sp, $a2
 	st.d	$a1, $a2, 0
 	xvst	$xr0, $a0, 0
-	st.w	$s3, $a0, 31
+	st.w	$s4, $a0, 31
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 880
 	add.d	$a2, $sp, $a2
@@ -51141,7 +51157,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 840
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
 	move	$a0, $s8
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -51174,7 +51190,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3105:                              # EH_LABEL
 # %bb.1740:                             # %.noexc497.i
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 776
 	add.d	$a1, $sp, $a1
@@ -51210,10 +51226,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3108:                              # EH_LABEL
 # %bb.1741:                             # %._crit_edge.i.i499.i
-	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
 	addi.d	$a0, $sp, 784
-	addi.d	$fp, $a0, 2047
-	addi.d	$a3, $fp, 769
+	addi.d	$s0, $a0, 2047
+	addi.d	$a3, $s0, 769
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 792
 	add.d	$a0, $sp, $a0
@@ -51245,13 +51260,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 776
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 104                   # 8-byte Folded Spill
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3111:                              # EH_LABEL
 # %bb.1742:                             # %.noexc.i504.i
-	addi.d	$s2, $fp, 857
+	addi.d	$s0, $s0, 857
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 760
 	add.d	$a0, $sp, $a0
@@ -51271,7 +51286,6 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3114:                              # EH_LABEL
 # %bb.1743:                             # %.noexc505.i
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
 	ld.d	$a1, $sp, 752
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 744
@@ -51306,15 +51320,15 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 744
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3117:                              # EH_LABEL
 # %bb.1744:                             # %.noexc.i508.i
-	move	$s8, $s6
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$fp, $a0, 945
+	addi.d	$s0, $a0, 945
 	addi.d	$a0, $sp, 768
 	st.d	$a0, $sp, 752
 	ori	$a0, $zero, 26
@@ -51327,7 +51341,6 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3120:                              # EH_LABEL
 # %bb.1745:                             # %.noexc509.i
-	move	$s6, $s3
 	ld.d	$a1, $sp, 720
 	ld.d	$a2, $sp, 264                   # 8-byte Folded Reload
 	vld	$vr0, $a2, 0
@@ -51344,15 +51357,15 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .Ltmp3122:                              # EH_LABEL
 	addi.d	$a1, $sp, 752
 	ori	$a2, $zero, 1
-	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
-	move	$a0, $fp
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3123:                              # EH_LABEL
 # %bb.1746:                             # %.noexc.i512.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$s3, $a0, 1033
+	addi.d	$s0, $a0, 1033
 	addi.d	$a0, $sp, 736
 	st.d	$a0, $sp, 720
 	ori	$a0, $zero, 17
@@ -51379,14 +51392,15 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .Ltmp3128:                              # EH_LABEL
 	addi.d	$a1, $sp, 720
 	ori	$a2, $zero, 1
-	move	$a0, $s3
+	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3129:                              # EH_LABEL
 # %bb.1748:                             # %.noexc.i516.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$fp, $a0, 1121
+	addi.d	$s0, $a0, 1121
 	addi.d	$a0, $sp, 704
 	st.d	$a0, $sp, 688
 	ori	$a0, $zero, 38
@@ -51412,8 +51426,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	stx.b	$zero, $a0, $a1
 .Ltmp3134:                              # EH_LABEL
 	addi.d	$a1, $sp, 688
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	move	$a0, $fp
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
@@ -51421,7 +51435,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 # %bb.1750:                             # %.noexc.i520.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$fp, $a0, 1209
+	addi.d	$s0, $a0, 1209
 	addi.d	$a0, $sp, 672
 	st.d	$a0, $sp, 656
 	ori	$a0, $zero, 20
@@ -51435,25 +51449,25 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .Ltmp3138:                              # EH_LABEL
 # %bb.1751:                             # %.noexc521.i
 	ld.d	$a1, $sp, 624
-	vld	$vr0, $s0, 0
+	vld	$vr0, $s7, 0
 	st.d	$a0, $sp, 656
 	st.d	$a1, $sp, 672
 	vst	$vr0, $a0, 0
-	st.w	$s7, $a0, 16
+	st.w	$fp, $a0, 16
 	ld.d	$a0, $sp, 656
 	st.d	$a1, $sp, 664
 	stx.b	$zero, $a0, $a1
 .Ltmp3140:                              # EH_LABEL
 	addi.d	$a1, $sp, 656
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3141:                              # EH_LABEL
 # %bb.1752:                             # %.noexc.i524.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$s7, $a0, 1297
+	addi.d	$fp, $a0, 1297
 	addi.d	$a0, $sp, 640
 	st.d	$a0, $sp, 624
 	ori	$a0, $zero, 32
@@ -51466,8 +51480,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3144:                              # EH_LABEL
 # %bb.1753:                             # %.noexc525.i
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 592
 	ld.d	$a2, $sp, 384                   # 8-byte Folded Reload
 	xvld	$xr0, $a2, %pc_lo12(.L.str.13)
@@ -51480,14 +51493,14 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .Ltmp3146:                              # EH_LABEL
 	addi.d	$a1, $sp, 624
 	ori	$a2, $zero, 1
-	move	$a0, $s7
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3147:                              # EH_LABEL
 # %bb.1754:                             # %.noexc.i528.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$fp, $a0, 1385
+	addi.d	$s3, $a0, 1385
 	addi.d	$a0, $sp, 608
 	st.d	$a0, $sp, 592
 	ori	$a0, $zero, 35
@@ -51505,13 +51518,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	st.d	$a0, $sp, 592
 	st.d	$a1, $sp, 608
 	xvst	$xr0, $a0, 0
-	st.w	$s6, $a0, 31
+	st.w	$s4, $a0, 31
 	st.d	$a1, $sp, 600
 	stx.b	$zero, $a0, $a1
 .Ltmp3152:                              # EH_LABEL
 	addi.d	$a1, $sp, 592
 	ori	$a2, $zero, 1
-	move	$a0, $fp
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3153:                              # EH_LABEL
@@ -51531,7 +51544,6 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3156:                              # EH_LABEL
 # %bb.1757:                             # %.noexc533.i
-	move	$s0, $s8
 	ld.d	$a1, $sp, 528
 	ld.d	$a2, $sp, 288                   # 8-byte Folded Reload
 	vld	$vr0, $a2, 0
@@ -51552,7 +51564,6 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3159:                              # EH_LABEL
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
 # %bb.1758:                             # %.noexc.i536.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
@@ -51575,8 +51586,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	st.d	$a0, $sp, 528
 	st.d	$a1, $sp, 544
 	vst	$vr0, $a0, 0
-	st.d	$s0, $sp, 176                   # 8-byte Folded Spill
-	st.h	$s0, $a0, 16
+	st.d	$s6, $sp, 176                   # 8-byte Folded Spill
+	st.h	$s6, $a0, 16
 	ld.d	$a0, $sp, 528
 	st.d	$a1, $sp, 536
 	stx.b	$zero, $a0, $a1
@@ -51588,10 +51599,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3165:                              # EH_LABEL
 # %bb.1760:                             # %._crit_edge.i.i539.i
-	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
 	addi.d	$a0, $sp, 784
-	addi.d	$s0, $a0, 2047
-	addi.d	$s6, $s0, 1649
+	addi.d	$fp, $a0, 2047
+	addi.d	$s6, $fp, 1649
 	addi.d	$a0, $sp, 512
 	st.d	$a0, $sp, 496
 	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
@@ -51609,9 +51621,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3168:                              # EH_LABEL
 # %bb.1761:                             # %.noexc.i544.i
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	addi.d	$s7, $s0, 1737
+	addi.d	$s7, $fp, 1737
 	addi.d	$a0, $sp, 480
 	st.d	$a0, $sp, 464
 	ori	$a0, $zero, 28
@@ -51624,7 +51634,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3171:                              # EH_LABEL
 # %bb.1762:                             # %.noexc545.i
-	move	$s3, $s8
+	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 432
 	st.d	$a0, $sp, 464
 	st.d	$a1, $sp, 480
@@ -51688,7 +51698,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 # %bb.1765:                             # %.noexc.i552.i
 	addi.d	$a0, $sp, 784
 	addi.d	$a0, $a0, 2047
-	addi.d	$s0, $a0, 1913
+	addi.d	$fp, $a0, 1913
 	addi.d	$a0, $sp, 416
 	st.d	$a0, $sp, 400
 	ori	$a0, $zero, 17
@@ -51723,7 +51733,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .Ltmp3185:                              # EH_LABEL
 	addi.d	$a1, $sp, 400
 	ori	$a2, $zero, 1
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3186:                              # EH_LABEL
@@ -51732,24 +51742,24 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $zero, 2
 	addi.d	$a1, $sp, 784
 	ori	$a2, $zero, 46
-	addi.d	$s2, $sp, 784
+	addi.d	$s0, $sp, 784
 	pcaddu18i	$ra, %call36(_Z8AddCases10TestCaseIDSt16initializer_listI8TestCaseE)
 	jirl	$ra, $ra, 0
 .Ltmp3189:                              # EH_LABEL
 # %bb.1768:
 	move	$s5, $a0
-	ori	$s0, $zero, 4048
-	ori	$s1, $zero, 1
+	ori	$s1, $zero, 4048
+	ori	$s2, $zero, 1
 	ori	$s3, $zero, 1
 	lu32i.d	$s3, 1
 	b	.LBB44_1770
 	.p2align	4, , 16
 .LBB44_1769:                            # %_ZN8TestCaseD2Ev.exit.i2506
                                         #   in Loop: Header=BB44_1770 Depth=1
-	addi.d	$s0, $s0, -88
-	beqz	$s0, .LBB44_1781
+	addi.d	$s1, $s1, -88
+	beqz	$s1, .LBB44_1781
 .LBB44_1770:                            # =>This Inner Loop Header: Depth=1
-	add.d	$s4, $s2, $s0
+	add.d	$s4, $s0, $s1
 	ld.d	$fp, $s4, -8
 	beqz	$fp, .LBB44_1775
 # %bb.1771:                             #   in Loop: Header=BB44_1770 Depth=1
@@ -51780,7 +51790,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a0, -1
 	st.w	$a1, $fp, 8
 	addi.w	$a0, $a0, 0
-	beq	$a0, $s1, .LBB44_1780
+	beq	$a0, $s2, .LBB44_1780
 	.p2align	4, , 16
 .LBB44_1775:                            # %_ZNSt12__shared_ptrIN9benchmark5RegexELN9__gnu_cxx12_Lock_policyE2EED2Ev.exit.i.i2502
                                         #   in Loop: Header=BB44_1770 Depth=1
@@ -51810,7 +51820,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.w	$a2, $zero, -1
 	amadd_db.w	$a0, $a2, $a1
 	addi.w	$a0, $a0, 0
-	bne	$a0, $s1, .LBB44_1775
+	bne	$a0, $s2, .LBB44_1775
 .LBB44_1780:                            #   in Loop: Header=BB44_1770 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE24_M_release_last_use_coldEv)
@@ -51833,7 +51843,10 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1432
 	add.d	$fp, $sp, $a1
-	addi.d	$s0, $sp, 640
+	addi.d	$s0, $sp, 768
+	addi.d	$s1, $sp, 736
+	addi.d	$s2, $sp, 704
+	addi.d	$s3, $sp, 672
 	addi.d	$a1, $sp, 448
 	beq	$a0, $a1, .LBB44_1785
 # %bb.1784:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i555.i
@@ -51888,7 +51901,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .LBB44_1795:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit572.i
 	ld.d	$a0, $sp, 624
-	beq	$a0, $s0, .LBB44_1797
+	addi.d	$a1, $sp, 640
+	beq	$a0, $a1, .LBB44_1797
 # %bb.1796:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i573.i
 	ld.d	$a1, $sp, 640
 	addi.d	$a1, $a1, 1
@@ -51896,8 +51910,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .LBB44_1797:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit575.i
 	ld.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 672
-	beq	$a0, $a1, .LBB44_1799
+	beq	$a0, $s3, .LBB44_1799
 # %bb.1798:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i576.i
 	ld.d	$a1, $sp, 672
 	addi.d	$a1, $a1, 1
@@ -51905,8 +51918,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .LBB44_1799:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit578.i
 	ld.d	$a0, $sp, 688
-	addi.d	$a1, $sp, 704
-	beq	$a0, $a1, .LBB44_1801
+	beq	$a0, $s2, .LBB44_1801
 # %bb.1800:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i579.i
 	ld.d	$a1, $sp, 704
 	addi.d	$a1, $a1, 1
@@ -51914,8 +51926,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .LBB44_1801:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit581.i
 	ld.d	$a0, $sp, 720
-	addi.d	$a1, $sp, 736
-	beq	$a0, $a1, .LBB44_1803
+	beq	$a0, $s1, .LBB44_1803
 # %bb.1802:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i582.i
 	ld.d	$a1, $sp, 736
 	addi.d	$a1, $a1, 1
@@ -51923,8 +51934,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .LBB44_1803:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit584.i
 	ld.d	$a0, $sp, 752
-	addi.d	$a1, $sp, 768
-	beq	$a0, $a1, .LBB44_1805
+	beq	$a0, $s0, .LBB44_1805
 # %bb.1804:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i585.i
 	ld.d	$a1, $sp, 768
 	addi.d	$a1, $a1, 1
@@ -65089,7 +65099,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp3988:                              # EH_LABEL
 # %bb.2819:                             # %.noexc.i292.i4009
-	addi.d	$s7, $sp, 1136
+	addi.d	$s1, $sp, 1136
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1688
 	add.d	$a0, $sp, $a0
@@ -65144,12 +65154,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1672
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s7
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp3994:                              # EH_LABEL
 # %bb.2821:                             # %.noexc.i296.i4016
-	addi.d	$s7, $sp, 1224
+	addi.d	$s1, $sp, 1224
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1656
 	add.d	$a0, $sp, $a0
@@ -65207,12 +65217,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1640
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s7
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp4000:                              # EH_LABEL
 # %bb.2823:                             # %.noexc.i300.i4023
-	addi.d	$s7, $sp, 1312
+	addi.d	$s1, $sp, 1312
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1624
 	add.d	$a0, $sp, $a0
@@ -65268,7 +65278,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1608
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s7
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp4006:                              # EH_LABEL
@@ -65310,7 +65320,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 .Ltmp4009:                              # EH_LABEL
 # %bb.2826:                             # %.noexc.i308.i4035
-	addi.d	$s7, $sp, 1488
+	addi.d	$s1, $sp, 1488
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1560
 	add.d	$a0, $sp, $a0
@@ -65368,12 +65378,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1544
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s7
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp4015:                              # EH_LABEL
 # %bb.2828:                             # %.noexc.i312.i4042
-	addi.d	$s7, $sp, 1576
+	addi.d	$s1, $sp, 1576
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1528
 	add.d	$a0, $sp, $a0
@@ -65431,12 +65441,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1512
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s7
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp4021:                              # EH_LABEL
 # %bb.2830:                             # %.noexc.i316.i4049
-	addi.d	$s7, $sp, 1664
+	addi.d	$s1, $sp, 1664
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1496
 	add.d	$a0, $sp, $a0
@@ -65492,7 +65502,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1480
 	add.d	$a1, $sp, $a0
 	ori	$a2, $zero, 1
-	move	$a0, $s7
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi)
 	jirl	$ra, $ra, 0
 .Ltmp4027:                              # EH_LABEL
@@ -71009,9 +71019,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1000
 	addi.d	$a1, $sp, 1016
-	beq	$a0, $a1, .LBB44_5556
+	beq	$a0, $a1, .LBB44_5555
 	b	.LBB44_11
-.LBB44_5556:
+.LBB44_5555:
 	b	.LBB44_12
 .LBB44_3216:
 	addi.d	$a1, $s0, 8
@@ -71027,9 +71037,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 912
 	addi.d	$a1, $sp, 928
-	beq	$a0, $a1, .LBB44_5557
+	beq	$a0, $a1, .LBB44_5556
 	b	.LBB44_20
-.LBB44_5557:
+.LBB44_5556:
 	b	.LBB44_21
 .LBB44_3218:
 	addi.d	$a1, $s0, 8
@@ -71045,9 +71055,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5558
+	beq	$a0, $a1, .LBB44_5557
 	b	.LBB44_29
-.LBB44_5558:
+.LBB44_5557:
 	b	.LBB44_30
 .LBB44_3220:
 	addi.d	$a1, $fp, 8
@@ -71063,9 +71073,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 1000
 	addi.d	$a1, $sp, 1016
-	beq	$a0, $a1, .LBB44_5559
+	beq	$a0, $a1, .LBB44_5558
 	b	.LBB44_51
-.LBB44_5559:
+.LBB44_5558:
 	b	.LBB44_52
 .LBB44_3222:
 	addi.d	$a1, $fp, 8
@@ -71081,9 +71091,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 912
 	addi.d	$a1, $sp, 928
-	beq	$a0, $a1, .LBB44_5560
+	beq	$a0, $a1, .LBB44_5559
 	b	.LBB44_60
-.LBB44_5560:
+.LBB44_5559:
 	b	.LBB44_61
 .LBB44_3224:
 	addi.d	$a1, $fp, 8
@@ -71099,9 +71109,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5561
+	beq	$a0, $a1, .LBB44_5560
 	b	.LBB44_69
-.LBB44_5561:
+.LBB44_5560:
 	b	.LBB44_70
 .LBB44_3226:
 	addi.d	$a1, $s0, 8
@@ -71117,9 +71127,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5562
+	beq	$a0, $a1, .LBB44_5561
 	b	.LBB44_255
-.LBB44_5562:
+.LBB44_5561:
 	b	.LBB44_256
 .LBB44_3228:
 	addi.d	$a1, $fp, 8
@@ -71135,9 +71145,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5563
+	beq	$a0, $a1, .LBB44_5562
 	b	.LBB44_284
-.LBB44_5563:
+.LBB44_5562:
 	b	.LBB44_285
 .LBB44_3230:
 	addi.d	$a1, $fp, 8
@@ -71153,9 +71163,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5564
+	beq	$a0, $a1, .LBB44_5563
 	b	.LBB44_298
-.LBB44_5564:
+.LBB44_5563:
 	b	.LBB44_299
 .LBB44_3232:
 	addi.d	$a1, $fp, 8
@@ -71171,9 +71181,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5565
+	beq	$a0, $a1, .LBB44_5564
 	b	.LBB44_312
-.LBB44_5565:
+.LBB44_5564:
 	b	.LBB44_313
 .LBB44_3234:
 	addi.d	$a1, $fp, 8
@@ -71189,9 +71199,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5566
+	beq	$a0, $a1, .LBB44_5565
 	b	.LBB44_326
-.LBB44_5566:
+.LBB44_5565:
 	b	.LBB44_327
 .LBB44_3236:
 	addi.d	$a1, $s0, 8
@@ -71207,9 +71217,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5567
+	beq	$a0, $a1, .LBB44_5566
 	b	.LBB44_339
-.LBB44_5567:
+.LBB44_5566:
 	b	.LBB44_340
 .LBB44_3238:
 	addi.d	$a1, $s0, 8
@@ -71225,9 +71235,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5568
+	beq	$a0, $a1, .LBB44_5567
 	b	.LBB44_356
-.LBB44_5568:
+.LBB44_5567:
 	b	.LBB44_357
 .LBB44_3240:
 	addi.d	$a1, $s0, 8
@@ -71243,9 +71253,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5569
+	beq	$a0, $a1, .LBB44_5568
 	b	.LBB44_432
-.LBB44_5569:
+.LBB44_5568:
 	b	.LBB44_433
 .LBB44_3242:
 	addi.d	$a1, $s0, 8
@@ -71261,9 +71271,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5570
+	beq	$a0, $a1, .LBB44_5569
 	b	.LBB44_450
-.LBB44_5570:
+.LBB44_5569:
 	b	.LBB44_451
 .LBB44_3244:
 	addi.d	$a1, $s0, 8
@@ -71279,9 +71289,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5571
+	beq	$a0, $a1, .LBB44_5570
 	b	.LBB44_530
-.LBB44_5571:
+.LBB44_5570:
 	b	.LBB44_531
 .LBB44_3246:
 	addi.d	$a1, $s0, 8
@@ -71297,9 +71307,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5572
+	beq	$a0, $a1, .LBB44_5571
 	b	.LBB44_548
-.LBB44_5572:
+.LBB44_5571:
 	b	.LBB44_549
 .LBB44_3248:
 	addi.d	$a1, $s0, 8
@@ -72425,9 +72435,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5573
+	beq	$a0, $a1, .LBB44_5572
 	b	.LBB44_128
-.LBB44_5573:
+.LBB44_5572:
 	b	.LBB44_129
 .LBB44_3398:
 	addi.d	$a1, $fp, 8
@@ -72443,9 +72453,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 824
 	addi.d	$a1, $sp, 840
-	beq	$a0, $a1, .LBB44_5574
+	beq	$a0, $a1, .LBB44_5573
 	b	.LBB44_270
-.LBB44_5574:
+.LBB44_5573:
 	b	.LBB44_271
 .LBB44_3400:                            # %.invoke.i.i.i.i
 .Ltmp1653:                              # EH_LABEL
@@ -72473,11 +72483,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
+	beq	$a0, $a1, .LBB44_5552
 # %bb.3405:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i574.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
-	b	.LBB44_5555
+	b	.LBB44_5554
 .LBB44_3406:
 .Ltmp1664:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -72502,11 +72512,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1464
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
+	beq	$a0, $a1, .LBB44_5552
 # %bb.3410:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i434.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1464
-	b	.LBB44_5555
+	b	.LBB44_5554
 .LBB44_3411:                            # %.loopexit.loopexit.i4824
 .Ltmp4399:                              # EH_LABEL
 	b	.LBB44_5313
@@ -72742,7 +72752,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3450:                            # %.preheader.i4726
                                         # =>This Inner Loop Header: Depth=1
@@ -72751,7 +72761,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_3450
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3451:                            # %.loopexit132.loopexit.i4685
 .Ltmp4346:                              # EH_LABEL
 	move	$s3, $a0
@@ -72981,7 +72991,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3488:                            # %.preheader.i4634
                                         # =>This Inner Loop Header: Depth=1
@@ -72990,14 +73000,14 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_3488
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3489:
 .Ltmp4304:                              # EH_LABEL
 	b	.LBB44_4652
 .LBB44_3490:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit24.thread.i
 .Ltmp4288:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_3491:                            # %.loopexit132.loopexit.i4576
 .Ltmp4285:                              # EH_LABEL
 	move	$s3, $a0
@@ -73227,7 +73237,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3528:                            # %.preheader.i4525
                                         # =>This Inner Loop Header: Depth=1
@@ -73236,7 +73246,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_3528
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3529:                            # %.loopexit132.loopexit.i4484
 .Ltmp4243:                              # EH_LABEL
 	move	$s3, $a0
@@ -73466,7 +73476,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3566:                            # %.preheader.i4433
                                         # =>This Inner Loop Header: Depth=1
@@ -73475,7 +73485,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_3566
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3567:
 .Ltmp4201:                              # EH_LABEL
 	b	.LBB44_4652
@@ -73609,7 +73619,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s3, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3590:                            # %.preheader.i4327
                                         # =>This Inner Loop Header: Depth=1
@@ -73618,10 +73628,10 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_3590
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3591:                            # %.loopexit650.loopexit.i
 .Ltmp4163:                              # EH_LABEL
-	move	$s6, $a0
+	move	$s1, $a0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
@@ -73733,12 +73743,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a0, $sp, 784
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ori	$s1, $zero, 1
-	st.d	$s6, $sp, 392                   # 8-byte Folded Spill
+	ori	$s6, $zero, 1
+	st.d	$s1, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3593
 .LBB44_3592:
 .Ltmp4160:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 .LBB44_3593:                            # %.loopexit650.i
 	lu12i.w	$a0, 1
@@ -73762,12 +73772,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	b	.LBB44_3599
 .LBB44_3596:
 .Ltmp4157:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s7, $fp
 	b	.LBB44_3598
 .LBB44_3597:
 .Ltmp4154:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 .LBB44_3598:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit512.i4195
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 .LBB44_3599:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit512.i4195
@@ -73792,12 +73802,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	b	.LBB44_3605
 .LBB44_3602:
 .Ltmp4151:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s5, $s7
 	b	.LBB44_3604
 .LBB44_3603:
 .Ltmp4148:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 .LBB44_3604:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit515.i4188
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 .LBB44_3605:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit515.i4188
@@ -74356,8 +74366,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$fp, $sp, 784
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
-	or	$a0, $s1, $a0
-	bnez	$a0, .LBB44_5553
+	or	$a0, $s6, $a0
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3674:                            # %.preheader.i3987
                                         # =>This Inner Loop Header: Depth=1
@@ -74366,343 +74376,343 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_3674
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3675:
 .Ltmp4145:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s4, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3608
 .LBB44_3676:
 .Ltmp4142:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3608
 .LBB44_3677:
 .Ltmp4139:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s3, $s4
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3611
 .LBB44_3678:
 .Ltmp4136:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3611
 .LBB44_3679:
 .Ltmp4133:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3614
 .LBB44_3680:
 .Ltmp4130:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s2
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3617
 .LBB44_3681:
 .Ltmp4127:                              # EH_LABEL
 	move	$s0, $fp
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3617
 .LBB44_3682:
 .Ltmp4124:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $fp
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3619
 .LBB44_3683:
 .Ltmp4121:                              # EH_LABEL
 	move	$s0, $s2
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3619
 .LBB44_3684:
 .Ltmp4118:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s2
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3621
 .LBB44_3685:
 .Ltmp4115:                              # EH_LABEL
 	move	$s0, $s5
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3621
 .LBB44_3686:
 .Ltmp4112:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3623
 .LBB44_3687:
 .Ltmp4109:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3623
 .LBB44_3688:
 .Ltmp4106:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3625
 .LBB44_3689:
 .Ltmp4103:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3625
 .LBB44_3690:
 .Ltmp4100:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3627
 .LBB44_3691:
 .Ltmp4097:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3627
 .LBB44_3692:
 .Ltmp4094:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3629
 .LBB44_3693:
 .Ltmp4091:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3629
 .LBB44_3694:
 .Ltmp4088:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3631
 .LBB44_3695:
 .Ltmp4085:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3631
 .LBB44_3696:
 .Ltmp4082:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3633
 .LBB44_3697:
 .Ltmp4079:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3633
 .LBB44_3698:
 .Ltmp4076:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3635
 .LBB44_3699:
 .Ltmp4073:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3635
 .LBB44_3700:
 .Ltmp4070:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3637
 .LBB44_3701:
 .Ltmp4067:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3639
 .LBB44_3702:
 .Ltmp4064:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3639
 .LBB44_3703:
 .Ltmp4061:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3641
 .LBB44_3704:
 .Ltmp4058:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3641
 .LBB44_3705:
 .Ltmp4055:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3643
 .LBB44_3706:
 .Ltmp4052:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3643
 .LBB44_3707:
 .Ltmp4049:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3645
 .LBB44_3708:
 .Ltmp4046:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3645
 .LBB44_3709:
 .Ltmp4043:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3647
 .LBB44_3710:
 .Ltmp4040:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3647
 .LBB44_3711:
 .Ltmp4037:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3649
 .LBB44_3712:
 .Ltmp4034:                              # EH_LABEL
 	move	$s0, $s7
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3649
 .LBB44_3713:
 .Ltmp4031:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3651
 .LBB44_3714:
 .Ltmp4028:                              # EH_LABEL
-	move	$s0, $s7
-	move	$s1, $zero
+	move	$s0, $s1
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3651
 .LBB44_3715:
 .Ltmp4025:                              # EH_LABEL
-	move	$s1, $zero
-	move	$s0, $s7
+	move	$s6, $zero
+	move	$s0, $s1
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3653
 .LBB44_3716:
 .Ltmp4022:                              # EH_LABEL
-	move	$s0, $s7
-	move	$s1, $zero
+	move	$s0, $s1
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3653
 .LBB44_3717:
 .Ltmp4019:                              # EH_LABEL
-	move	$s1, $zero
-	move	$s0, $s7
+	move	$s6, $zero
+	move	$s0, $s1
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3655
 .LBB44_3718:
 .Ltmp4016:                              # EH_LABEL
-	move	$s0, $s7
-	move	$s1, $zero
+	move	$s0, $s1
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3655
 .LBB44_3719:
 .Ltmp4013:                              # EH_LABEL
-	move	$s1, $zero
-	move	$s0, $s7
+	move	$s6, $zero
+	move	$s0, $s1
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3657
 .LBB44_3720:
 .Ltmp4010:                              # EH_LABEL
 	move	$s0, $s1
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3657
 .LBB44_3721:
 .Ltmp4007:                              # EH_LABEL
-	move	$s0, $s7
-	move	$s1, $zero
+	move	$s0, $s1
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3659
 .LBB44_3722:
 .Ltmp4004:                              # EH_LABEL
-	move	$s1, $zero
-	move	$s0, $s7
+	move	$s6, $zero
+	move	$s0, $s1
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3661
 .LBB44_3723:
 .Ltmp4001:                              # EH_LABEL
-	move	$s0, $s7
-	move	$s1, $zero
+	move	$s0, $s1
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3661
 .LBB44_3724:
 .Ltmp3998:                              # EH_LABEL
-	move	$s1, $zero
-	move	$s0, $s7
+	move	$s6, $zero
+	move	$s0, $s1
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3663
 .LBB44_3725:
 .Ltmp3995:                              # EH_LABEL
-	move	$s0, $s7
-	move	$s1, $zero
+	move	$s0, $s1
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3663
 .LBB44_3726:
 .Ltmp3992:                              # EH_LABEL
-	move	$s1, $zero
-	move	$s0, $s7
+	move	$s6, $zero
+	move	$s0, $s1
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3665
 .LBB44_3727:
 .Ltmp3989:                              # EH_LABEL
 	move	$s0, $fp
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3665
 .LBB44_3728:
 .Ltmp3986:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $fp
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3667
 .LBB44_3729:
 .Ltmp3983:                              # EH_LABEL
 	move	$s0, $fp
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3667
 .LBB44_3730:
 .Ltmp3980:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	move	$s0, $fp
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3669
 .LBB44_3731:
 .Ltmp3977:                              # EH_LABEL
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3669
 .LBB44_3732:
@@ -74711,7 +74721,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_3733:
 .Ltmp3971:                              # EH_LABEL
 .LBB44_3734:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit608.i3981
-	move	$s1, $zero
+	move	$s6, $zero
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_3671
 .LBB44_3735:                            # %.loopexit75.loopexit.i3924
@@ -74844,7 +74854,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s3, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3757:                            # %.preheader.i3897
                                         # =>This Inner Loop Header: Depth=1
@@ -74853,11 +74863,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_3757
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3758:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i3879
 .Ltmp3933:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_3759:                            # %.loopexit75.loopexit.i3822
 .Ltmp3930:                              # EH_LABEL
 	move	$fp, $a0
@@ -74988,7 +74998,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s3, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3781:                            # %.preheader.i3795
                                         # =>This Inner Loop Header: Depth=1
@@ -74997,7 +75007,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_3781
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3782:                            # %.loopexit593.loopexit.i3683
 .Ltmp3906:                              # EH_LABEL
 	move	$s0, $a0
@@ -75678,7 +75688,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3860:                            # %.preheader.i3443
                                         # =>This Inner Loop Header: Depth=1
@@ -75687,7 +75697,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_3860
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3861:
 .Ltmp3888:                              # EH_LABEL
 	move	$s6, $zero
@@ -76128,7 +76138,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s3, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3937:                            # %.preheader.i3352
                                         # =>This Inner Loop Header: Depth=1
@@ -76137,11 +76147,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_3937
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3938:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i3334
 .Ltmp3696:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_3939:                            # %.loopexit75.loopexit.i3277
 .Ltmp3693:                              # EH_LABEL
 	move	$fp, $a0
@@ -76272,7 +76282,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s3, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_3961:                            # %.preheader.i3250
                                         # =>This Inner Loop Header: Depth=1
@@ -76281,7 +76291,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_3961
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_3962:                            # %.loopexit593.loopexit.i
 .Ltmp3669:                              # EH_LABEL
 	move	$s0, $a0
@@ -76962,7 +76972,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4040:                            # %.preheader.i3164
                                         # =>This Inner Loop Header: Depth=1
@@ -76971,7 +76981,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4040
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4041:
 .Ltmp3651:                              # EH_LABEL
 	move	$s6, $zero
@@ -77412,7 +77422,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s3, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4117:                            # %.preheader.i3091
                                         # =>This Inner Loop Header: Depth=1
@@ -77421,11 +77431,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_4117
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4118:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i3074
 .Ltmp3459:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_4119:                            # %.loopexit.loopexit.i3058
 .Ltmp3456:                              # EH_LABEL
 	b	.LBB44_5313
@@ -77688,7 +77698,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4161:                            # %.preheader.i2957
                                         # =>This Inner Loop Header: Depth=1
@@ -77697,7 +77707,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4161
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4162:                            # %.loopexit.loopexit.i2934
 .Ltmp3405:                              # EH_LABEL
 	b	.LBB44_5313
@@ -77933,7 +77943,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4201:                            # %.preheader.i2836
                                         # =>This Inner Loop Header: Depth=1
@@ -77942,7 +77952,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4201
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4202:                            # %.loopexit132.loopexit.i
 .Ltmp3348:                              # EH_LABEL
 	move	$s3, $a0
@@ -78172,7 +78182,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4239:                            # %.preheader.i2772
                                         # =>This Inner Loop Header: Depth=1
@@ -78181,7 +78191,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4239
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4240:                            # %.loopexit113.loopexit.i2732
 .Ltmp3299:                              # EH_LABEL
 	move	$fp, $a0
@@ -78378,7 +78388,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s5, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4272:                            # %.preheader.i2689
                                         # =>This Inner Loop Header: Depth=1
@@ -78387,7 +78397,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_4272
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4273:                            # %.loopexit113.loopexit.i
 .Ltmp3263:                              # EH_LABEL
 	move	$fp, $a0
@@ -78584,7 +78594,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s5, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4305:                            # %.preheader.i2635
                                         # =>This Inner Loop Header: Depth=1
@@ -78593,7 +78603,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_4305
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4306:                            # %.loopexit94.loopexit.i2555
 .Ltmp3220:                              # EH_LABEL
 	move	$fp, $a0
@@ -78757,7 +78767,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s4, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4333:                            # %.preheader.i2520
                                         # =>This Inner Loop Header: Depth=1
@@ -78766,11 +78776,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_4333
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4334:                            # %.loopexit878.loopexit.i
 .Ltmp3190:                              # EH_LABEL
-	move	$s2, $a0
-	move	$a0, $s0
+	move	$s0, $a0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s8
@@ -78788,7 +78798,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
@@ -78797,43 +78807,43 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
-	jirl	$ra, $ra, 0
-	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 2808
@@ -78919,7 +78929,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 392                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_4336
 .LBB44_4335:
 .Ltmp3187:                              # EH_LABEL
@@ -78935,12 +78945,12 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_4338:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit692.i
-	move	$s8, $s0
+	move	$s8, $fp
 	b	.LBB44_4342
 .LBB44_4339:
 .Ltmp3184:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s8, $s0
+	move	$s8, $fp
 	b	.LBB44_4341
 .LBB44_4340:
 .Ltmp3181:                              # EH_LABEL
@@ -79011,60 +79021,75 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB44_4358:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit707.i
-	move	$fp, $s4
+	move	$s3, $s4
 .LBB44_4359:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit707.i
 	ld.d	$a0, $sp, 592
 	addi.d	$a1, $sp, 608
-	bne	$a0, $a1, .LBB44_4449
-# %bb.4360:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit710.i
+	beq	$a0, $a1, .LBB44_4361
+# %bb.4360:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i708.i
+	ld.d	$a1, $sp, 608
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB44_4361:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit710.i
+	move	$s0, $s3
+.LBB44_4362:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit710.i
 	ld.d	$a0, $sp, 624
 	addi.d	$a1, $sp, 640
-	bne	$a0, $a1, .LBB44_4450
-.LBB44_4361:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit713.i
+	beq	$a0, $a1, .LBB44_4364
+# %bb.4363:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i711.i
+	ld.d	$a1, $sp, 640
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB44_4364:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit713.i
 	ld.d	$a0, $sp, 656
 	addi.d	$a1, $sp, 672
-	beq	$a0, $a1, .LBB44_4363
-.LBB44_4362:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i714.i
+	beq	$a0, $a1, .LBB44_4366
+# %bb.4365:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i714.i
 	ld.d	$a1, $sp, 672
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4363:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit716.i
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-.LBB44_4364:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit716.i
+.LBB44_4366:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit716.i
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+.LBB44_4367:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit716.i
 	ld.d	$a0, $sp, 688
 	addi.d	$a1, $sp, 704
-	beq	$a0, $a1, .LBB44_4366
-# %bb.4365:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i717.i
+	beq	$a0, $a1, .LBB44_4369
+# %bb.4368:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i717.i
 	ld.d	$a1, $sp, 704
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4366:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit719.i
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-.LBB44_4367:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit719.i
+.LBB44_4369:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit719.i
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+.LBB44_4370:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit719.i
 	ld.d	$a0, $sp, 720
 	addi.d	$a1, $sp, 736
-	beq	$a0, $a1, .LBB44_4369
-# %bb.4368:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i720.i
+	beq	$a0, $a1, .LBB44_4372
+# %bb.4371:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i720.i
 	ld.d	$a1, $sp, 736
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4369:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit722.i
-	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
-.LBB44_4370:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit722.i
+.LBB44_4372:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit722.i
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+.LBB44_4373:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit722.i
 	ld.d	$a0, $sp, 752
 	addi.d	$a1, $sp, 768
-	beq	$a0, $a1, .LBB44_4372
-# %bb.4371:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i723.i
+	beq	$a0, $a1, .LBB44_4375
+# %bb.4374:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i723.i
 	ld.d	$a1, $sp, 768
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4372:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit725.i
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-.LBB44_4373:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit725.i
+.LBB44_4375:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit725.i
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+.LBB44_4376:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit725.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 744
 	add.d	$a0, $sp, $a0
@@ -79072,8 +79097,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4375
-# %bb.4374:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i726.i
+	beq	$a0, $a1, .LBB44_4378
+# %bb.4377:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i726.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 760
 	add.d	$a1, $sp, $a1
@@ -79081,9 +79106,10 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4375:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit728.i
-	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
-.LBB44_4376:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit728.i
+.LBB44_4378:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit728.i
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+.LBB44_4379:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit728.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 776
 	add.d	$a0, $sp, $a0
@@ -79091,8 +79117,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4378
-# %bb.4377:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i729.i
+	beq	$a0, $a1, .LBB44_4381
+# %bb.4380:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i729.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 792
 	add.d	$a1, $sp, $a1
@@ -79100,9 +79126,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4378:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit731.i
-	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
-.LBB44_4379:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit731.i
+.LBB44_4381:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit731.i
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+.LBB44_4382:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit731.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 808
 	add.d	$a0, $sp, $a0
@@ -79110,8 +79136,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4381
-# %bb.4380:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i732.i
+	beq	$a0, $a1, .LBB44_4384
+# %bb.4383:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i732.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 824
 	add.d	$a1, $sp, $a1
@@ -79119,9 +79145,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4381:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit734.i
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-.LBB44_4382:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit734.i
+.LBB44_4384:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit734.i
+	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
+.LBB44_4385:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit734.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 840
 	add.d	$a0, $sp, $a0
@@ -79129,8 +79155,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4384
-# %bb.4383:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i735.i
+	beq	$a0, $a1, .LBB44_4387
+# %bb.4386:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i735.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 856
 	add.d	$a1, $sp, $a1
@@ -79138,9 +79164,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4384:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit737.i
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-.LBB44_4385:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit737.i
+.LBB44_4387:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit737.i
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+.LBB44_4388:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit737.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 872
 	add.d	$a0, $sp, $a0
@@ -79148,8 +79174,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4387
-# %bb.4386:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i738.i
+	beq	$a0, $a1, .LBB44_4390
+# %bb.4389:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i738.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 888
 	add.d	$a1, $sp, $a1
@@ -79157,9 +79183,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4387:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit740.i
-	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
-.LBB44_4388:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit740.i
+.LBB44_4390:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit740.i
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+.LBB44_4391:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit740.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 904
 	add.d	$a0, $sp, $a0
@@ -79167,8 +79193,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4390
-# %bb.4389:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i741.i
+	beq	$a0, $a1, .LBB44_4393
+# %bb.4392:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i741.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 920
 	add.d	$a1, $sp, $a1
@@ -79176,9 +79202,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4390:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit743.i
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-.LBB44_4391:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit743.i
+.LBB44_4393:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit743.i
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
+.LBB44_4394:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit743.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 936
 	add.d	$a0, $sp, $a0
@@ -79186,8 +79212,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4393
-# %bb.4392:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i744.i
+	beq	$a0, $a1, .LBB44_4396
+# %bb.4395:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i744.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 952
 	add.d	$a1, $sp, $a1
@@ -79195,7 +79221,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4393:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit746.i
+.LBB44_4396:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit746.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 968
 	add.d	$a0, $sp, $a0
@@ -79203,8 +79229,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4395
-# %bb.4394:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i747.i
+	beq	$a0, $a1, .LBB44_4398
+# %bb.4397:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i747.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 984
 	add.d	$a1, $sp, $a1
@@ -79212,7 +79238,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4395:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit749.i
+.LBB44_4398:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit749.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1000
 	add.d	$a0, $sp, $a0
@@ -79220,8 +79246,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4397
-# %bb.4396:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i750.i
+	beq	$a0, $a1, .LBB44_4400
+# %bb.4399:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i750.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1016
 	add.d	$a1, $sp, $a1
@@ -79229,7 +79255,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4397:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit752.i
+.LBB44_4400:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit752.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1032
 	add.d	$a0, $sp, $a0
@@ -79237,8 +79263,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4399
-# %bb.4398:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i753.i
+	beq	$a0, $a1, .LBB44_4402
+# %bb.4401:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i753.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
@@ -79246,7 +79272,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4399:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit755.i
+.LBB44_4402:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit755.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1064
 	add.d	$a0, $sp, $a0
@@ -79254,8 +79280,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4401
-# %bb.4400:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i756.i
+	beq	$a0, $a1, .LBB44_4404
+# %bb.4403:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i756.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
@@ -79263,7 +79289,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4401:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit758.i
+.LBB44_4404:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit758.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1096
 	add.d	$a0, $sp, $a0
@@ -79271,8 +79297,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4403
-# %bb.4402:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i759.i
+	beq	$a0, $a1, .LBB44_4406
+# %bb.4405:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i759.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
@@ -79280,7 +79306,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4403:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit761.i
+.LBB44_4406:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit761.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1128
 	add.d	$a0, $sp, $a0
@@ -79288,8 +79314,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4405
-# %bb.4404:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i762.i
+	beq	$a0, $a1, .LBB44_4408
+# %bb.4407:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i762.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
@@ -79297,7 +79323,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4405:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit764.i
+.LBB44_4408:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit764.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1160
 	add.d	$a0, $sp, $a0
@@ -79305,8 +79331,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4407
-# %bb.4406:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i765.i
+	beq	$a0, $a1, .LBB44_4410
+# %bb.4409:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i765.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1176
 	add.d	$a1, $sp, $a1
@@ -79314,7 +79340,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4407:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit767.i
+.LBB44_4410:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit767.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -79322,8 +79348,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4409
-# %bb.4408:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i768.i
+	beq	$a0, $a1, .LBB44_4412
+# %bb.4411:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i768.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -79331,7 +79357,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4409:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit770.i
+.LBB44_4412:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit770.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -79339,8 +79365,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4411
-# %bb.4410:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i771.i
+	beq	$a0, $a1, .LBB44_4414
+# %bb.4413:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i771.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -79348,7 +79374,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4411:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit773.i
+.LBB44_4414:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit773.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -79356,8 +79382,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4413
-# %bb.4412:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i774.i
+	beq	$a0, $a1, .LBB44_4416
+# %bb.4415:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i774.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -79365,7 +79391,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4413:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit776.i
+.LBB44_4416:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit776.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1288
 	add.d	$a0, $sp, $a0
@@ -79373,8 +79399,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1304
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4415
-# %bb.4414:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i777.i
+	beq	$a0, $a1, .LBB44_4418
+# %bb.4417:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i777.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1304
 	add.d	$a1, $sp, $a1
@@ -79382,7 +79408,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4415:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit779.i
+.LBB44_4418:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit779.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1320
 	add.d	$a0, $sp, $a0
@@ -79390,8 +79416,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1336
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4417
-# %bb.4416:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i780.i
+	beq	$a0, $a1, .LBB44_4420
+# %bb.4419:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i780.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1336
 	add.d	$a1, $sp, $a1
@@ -79399,7 +79425,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4417:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit782.i
+.LBB44_4420:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit782.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1352
 	add.d	$a0, $sp, $a0
@@ -79407,8 +79433,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1368
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4419
-# %bb.4418:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i783.i
+	beq	$a0, $a1, .LBB44_4422
+# %bb.4421:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i783.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1368
 	add.d	$a1, $sp, $a1
@@ -79416,7 +79442,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4419:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit785.i
+.LBB44_4422:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit785.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1384
 	add.d	$a0, $sp, $a0
@@ -79424,8 +79450,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1400
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4421
-# %bb.4420:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i786.i
+	beq	$a0, $a1, .LBB44_4424
+# %bb.4423:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i786.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1400
 	add.d	$a1, $sp, $a1
@@ -79433,7 +79459,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4421:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit788.i
+.LBB44_4424:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit788.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1416
 	add.d	$a0, $sp, $a0
@@ -79441,8 +79467,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1432
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4423
-# %bb.4422:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i789.i
+	beq	$a0, $a1, .LBB44_4426
+# %bb.4425:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i789.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1432
 	add.d	$a1, $sp, $a1
@@ -79450,7 +79476,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4423:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit791.i
+.LBB44_4426:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit791.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1448
 	add.d	$a0, $sp, $a0
@@ -79458,8 +79484,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1464
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4425
-# %bb.4424:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i792.i
+	beq	$a0, $a1, .LBB44_4428
+# %bb.4427:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i792.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1464
 	add.d	$a1, $sp, $a1
@@ -79467,7 +79493,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4425:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit794.i
+.LBB44_4428:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit794.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1480
 	add.d	$a0, $sp, $a0
@@ -79475,8 +79501,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1496
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4427
-# %bb.4426:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i795.i
+	beq	$a0, $a1, .LBB44_4430
+# %bb.4429:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i795.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1496
 	add.d	$a1, $sp, $a1
@@ -79484,7 +79510,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4427:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit797.i
+.LBB44_4430:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit797.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1512
 	add.d	$a0, $sp, $a0
@@ -79492,8 +79518,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1528
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4429
-# %bb.4428:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i798.i
+	beq	$a0, $a1, .LBB44_4432
+# %bb.4431:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i798.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1528
 	add.d	$a1, $sp, $a1
@@ -79501,7 +79527,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4429:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit800.i
+.LBB44_4432:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit800.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1544
 	add.d	$a0, $sp, $a0
@@ -79509,8 +79535,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1560
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4431
-# %bb.4430:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i801.i
+	beq	$a0, $a1, .LBB44_4434
+# %bb.4433:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i801.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1560
 	add.d	$a1, $sp, $a1
@@ -79518,7 +79544,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4431:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit803.i
+.LBB44_4434:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit803.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1576
 	add.d	$a0, $sp, $a0
@@ -79526,8 +79552,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1592
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4433
-# %bb.4432:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i804.i
+	beq	$a0, $a1, .LBB44_4436
+# %bb.4435:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i804.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1592
 	add.d	$a1, $sp, $a1
@@ -79535,7 +79561,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4433:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit806.i
+.LBB44_4436:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit806.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1608
 	add.d	$a0, $sp, $a0
@@ -79543,8 +79569,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1624
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4435
-# %bb.4434:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i807.i
+	beq	$a0, $a1, .LBB44_4438
+# %bb.4437:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i807.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1624
 	add.d	$a1, $sp, $a1
@@ -79552,7 +79578,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4435:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit809.i
+.LBB44_4438:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit809.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1640
 	add.d	$a0, $sp, $a0
@@ -79560,8 +79586,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1656
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4437
-# %bb.4436:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i810.i
+	beq	$a0, $a1, .LBB44_4440
+# %bb.4439:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i810.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1656
 	add.d	$a1, $sp, $a1
@@ -79569,7 +79595,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4437:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit812.i
+.LBB44_4440:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit812.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1672
 	add.d	$a0, $sp, $a0
@@ -79577,8 +79603,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1688
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4439
-# %bb.4438:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i813.i
+	beq	$a0, $a1, .LBB44_4442
+# %bb.4441:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i813.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1688
 	add.d	$a1, $sp, $a1
@@ -79586,7 +79612,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4439:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit815.i
+.LBB44_4442:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit815.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1704
 	add.d	$a0, $sp, $a0
@@ -79594,8 +79620,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1720
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4441
-# %bb.4440:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i816.i
+	beq	$a0, $a1, .LBB44_4444
+# %bb.4443:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i816.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1720
 	add.d	$a1, $sp, $a1
@@ -79603,7 +79629,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4441:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit818.i
+.LBB44_4444:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit818.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1736
 	add.d	$a0, $sp, $a0
@@ -79611,8 +79637,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1752
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4443
-# %bb.4442:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i819.i
+	beq	$a0, $a1, .LBB44_4446
+# %bb.4445:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i819.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1752
 	add.d	$a1, $sp, $a1
@@ -79620,7 +79646,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4443:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit821.i
+.LBB44_4446:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit821.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1768
 	add.d	$a0, $sp, $a0
@@ -79628,8 +79654,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1784
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4445
-# %bb.4444:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i822.i
+	beq	$a0, $a1, .LBB44_4448
+# %bb.4447:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i822.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1784
 	add.d	$a1, $sp, $a1
@@ -79637,7 +79663,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4445:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit824.i
+.LBB44_4448:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit824.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1800
 	add.d	$a0, $sp, $a0
@@ -79645,8 +79671,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1816
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_4447
-# %bb.4446:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i825.i
+	beq	$a0, $a1, .LBB44_4450
+# %bb.4449:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i825.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1816
 	add.d	$a1, $sp, $a1
@@ -79654,51 +79680,34 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_4447:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit827.i
+.LBB44_4450:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit827.i
 	addi.d	$fp, $sp, 784
 	xor	$a0, $fp, $s1
 	sltui	$a0, $a0, 1
 	ld.d	$a1, $sp, 384                   # 8-byte Folded Reload
 	or	$a0, $a1, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
-.LBB44_4448:                            # %.preheader.i2467
+.LBB44_4451:                            # %.preheader.i2467
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$s1, $s1, -88
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$s1, $fp, .LBB44_4448
-	b	.LBB44_5553
-.LBB44_4449:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i708.i
-	ld.d	$a1, $sp, 608
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 624
-	addi.d	$a1, $sp, 640
-	beq	$a0, $a1, .LBB44_4361
-.LBB44_4450:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i711.i
-	ld.d	$a1, $sp, 640
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 672
-	bne	$a0, $a1, .LBB44_4362
-	b	.LBB44_4363
-.LBB44_4451:
+	bne	$s1, $fp, .LBB44_4451
+	b	.LBB44_5552
+.LBB44_4452:
 .Ltmp3172:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s6, $s7
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_4351
-.LBB44_4452:
+.LBB44_4453:
 .Ltmp3169:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_4351
-.LBB44_4453:
+.LBB44_4454:
 .Ltmp3166:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -79706,456 +79715,449 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $sp, 544
 	bne	$a0, $a1, .LBB44_4354
 	b	.LBB44_4355
-.LBB44_4454:
+.LBB44_4455:
 .Ltmp3163:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s4, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_4356
-.LBB44_4455:
+.LBB44_4456:
 .Ltmp3160:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_4356
-.LBB44_4456:
+.LBB44_4457:
 .Ltmp3157:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$fp, $s4
+	move	$s3, $s4
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_4359
-.LBB44_4457:
+.LBB44_4458:
 .Ltmp3154:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	b	.LBB44_4359
-.LBB44_4458:
-.Ltmp3151:                              # EH_LABEL
-	b	.LBB44_4460
 .LBB44_4459:
+.Ltmp3151:                              # EH_LABEL
+	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
+	move	$s0, $s3
+	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
+	b	.LBB44_4362
+.LBB44_4460:
 .Ltmp3148:                              # EH_LABEL
-	move	$fp, $s7
-.LBB44_4460:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit710.i
+	move	$s0, $fp
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 624
-	addi.d	$a1, $sp, 640
-	beq	$a0, $a1, .LBB44_4361
-	b	.LBB44_4450
+	b	.LBB44_4362
 .LBB44_4461:
 .Ltmp3145:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$fp, $s7
+	move	$s0, $fp
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 672
-	bne	$a0, $a1, .LBB44_4362
-	b	.LBB44_4363
+	b	.LBB44_4364
 .LBB44_4462:
 .Ltmp3142:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 656
-	addi.d	$a1, $sp, 672
-	bne	$a0, $a1, .LBB44_4362
-	b	.LBB44_4363
+	b	.LBB44_4364
 .LBB44_4463:
 .Ltmp3139:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4364
+	b	.LBB44_4367
 .LBB44_4464:
 .Ltmp3136:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4364
+	b	.LBB44_4367
 .LBB44_4465:
 .Ltmp3133:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s3, $fp
+	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4367
+	b	.LBB44_4370
 .LBB44_4466:
 .Ltmp3130:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4367
+	b	.LBB44_4370
 .LBB44_4467:
 .Ltmp3127:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4370
+	b	.LBB44_4373
 .LBB44_4468:
 .Ltmp3124:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4370
+	b	.LBB44_4373
 .LBB44_4469:
 .Ltmp3121:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s2, $fp
+	st.d	$s0, $sp, 96                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4373
+	b	.LBB44_4376
 .LBB44_4470:
 .Ltmp3118:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4373
+	b	.LBB44_4376
 .LBB44_4471:
 .Ltmp3115:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	st.d	$s2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4376
+	b	.LBB44_4379
 .LBB44_4472:
 .Ltmp3112:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4376
+	b	.LBB44_4379
 .LBB44_4473:
 .Ltmp3109:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4379
+	b	.LBB44_4382
 .LBB44_4474:
 .Ltmp3106:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4382
+	b	.LBB44_4385
 .LBB44_4475:
 .Ltmp3103:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4382
+	b	.LBB44_4385
 .LBB44_4476:
 .Ltmp3100:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s2, $s8
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4385
+	b	.LBB44_4388
 .LBB44_4477:
 .Ltmp3097:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4385
+	b	.LBB44_4388
 .LBB44_4478:
 .Ltmp3094:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4388
+	b	.LBB44_4391
 .LBB44_4479:
 .Ltmp3091:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4388
+	b	.LBB44_4391
 .LBB44_4480:
 .Ltmp3088:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s8
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4391
+	b	.LBB44_4394
 .LBB44_4481:
 .Ltmp3085:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4391
+	b	.LBB44_4394
 .LBB44_4482:
 .Ltmp3082:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4393
+	b	.LBB44_4396
 .LBB44_4483:
 .Ltmp3079:                              # EH_LABEL
-	move	$s1, $s4
+	move	$s1, $s3
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4393
+	b	.LBB44_4396
 .LBB44_4484:
 .Ltmp3076:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $s4
+	move	$s1, $s3
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4395
+	b	.LBB44_4398
 .LBB44_4485:
 .Ltmp3073:                              # EH_LABEL
 	move	$s1, $s2
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4395
+	b	.LBB44_4398
 .LBB44_4486:
 .Ltmp3070:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s2
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4397
+	b	.LBB44_4400
 .LBB44_4487:
 .Ltmp3067:                              # EH_LABEL
-	move	$s1, $s8
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4397
+	b	.LBB44_4400
 .LBB44_4488:
 .Ltmp3064:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $s8
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4399
+	b	.LBB44_4402
 .LBB44_4489:
 .Ltmp3061:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4399
+	b	.LBB44_4402
 .LBB44_4490:
 .Ltmp3058:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4401
+	b	.LBB44_4404
 .LBB44_4491:
 .Ltmp3055:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4401
+	b	.LBB44_4404
 .LBB44_4492:
 .Ltmp3052:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4403
+	b	.LBB44_4406
 .LBB44_4493:
 .Ltmp3049:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4405
+	b	.LBB44_4408
 .LBB44_4494:
 .Ltmp3046:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4405
+	b	.LBB44_4408
 .LBB44_4495:
 .Ltmp3043:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4407
+	b	.LBB44_4410
 .LBB44_4496:
 .Ltmp3040:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4407
+	b	.LBB44_4410
 .LBB44_4497:
 .Ltmp3037:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4409
+	b	.LBB44_4412
 .LBB44_4498:
 .Ltmp3034:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4409
+	b	.LBB44_4412
 .LBB44_4499:
 .Ltmp3031:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4411
+	b	.LBB44_4414
 .LBB44_4500:
 .Ltmp3028:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4411
+	b	.LBB44_4414
 .LBB44_4501:
 .Ltmp3025:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4413
+	b	.LBB44_4416
 .LBB44_4502:
 .Ltmp3022:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4413
+	b	.LBB44_4416
 .LBB44_4503:
 .Ltmp3019:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4415
+	b	.LBB44_4418
 .LBB44_4504:
 .Ltmp3016:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4415
+	b	.LBB44_4418
 .LBB44_4505:
 .Ltmp3013:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4417
+	b	.LBB44_4420
 .LBB44_4506:
 .Ltmp3010:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4419
+	b	.LBB44_4422
 .LBB44_4507:
 .Ltmp3007:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4419
+	b	.LBB44_4422
 .LBB44_4508:
 .Ltmp3004:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4421
+	b	.LBB44_4424
 .LBB44_4509:
 .Ltmp3001:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4421
+	b	.LBB44_4424
 .LBB44_4510:
 .Ltmp2998:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4423
+	b	.LBB44_4426
 .LBB44_4511:
 .Ltmp2995:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4423
+	b	.LBB44_4426
 .LBB44_4512:
 .Ltmp2992:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4425
+	b	.LBB44_4428
 .LBB44_4513:
 .Ltmp2989:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4425
+	b	.LBB44_4428
 .LBB44_4514:
 .Ltmp2986:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4427
+	b	.LBB44_4430
 .LBB44_4515:
 .Ltmp2983:                              # EH_LABEL
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4427
+	b	.LBB44_4430
 .LBB44_4516:
 .Ltmp2980:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
-	move	$s1, $fp
+	move	$s1, $s0
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4429
+	b	.LBB44_4432
 .LBB44_4517:
 .Ltmp2977:                              # EH_LABEL
 	move	$s1, $s5
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4429
+	b	.LBB44_4432
 .LBB44_4518:
 .Ltmp2974:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4431
+	b	.LBB44_4434
 .LBB44_4519:
 .Ltmp2971:                              # EH_LABEL
 	move	$s1, $s5
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4431
+	b	.LBB44_4434
 .LBB44_4520:
 .Ltmp2968:                              # EH_LABEL
 	move	$s1, $s5
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4433
+	b	.LBB44_4436
 .LBB44_4521:
 .Ltmp2965:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4435
+	b	.LBB44_4438
 .LBB44_4522:
 .Ltmp2962:                              # EH_LABEL
 	move	$s1, $s5
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4435
+	b	.LBB44_4438
 .LBB44_4523:
 .Ltmp2959:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4437
+	b	.LBB44_4440
 .LBB44_4524:
 .Ltmp2956:                              # EH_LABEL
 	move	$s1, $s5
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4437
+	b	.LBB44_4440
 .LBB44_4525:
 .Ltmp2953:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4439
+	b	.LBB44_4442
 .LBB44_4526:
 .Ltmp2950:                              # EH_LABEL
 	move	$s1, $s5
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4439
+	b	.LBB44_4442
 .LBB44_4527:
 .Ltmp2947:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4441
+	b	.LBB44_4444
 .LBB44_4528:
 .Ltmp2944:                              # EH_LABEL
 	move	$s1, $s5
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4441
+	b	.LBB44_4444
 .LBB44_4529:
 .Ltmp2941:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	move	$s1, $s5
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4443
+	b	.LBB44_4446
 .LBB44_4530:
 .Ltmp2938:                              # EH_LABEL
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4443
+	b	.LBB44_4446
 .LBB44_4531:
 .Ltmp2935:                              # EH_LABEL
 	b	.LBB44_4533
@@ -80164,7 +80166,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_4533:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit824.i
 	st.d	$zero, $sp, 384                 # 8-byte Folded Spill
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_4445
+	b	.LBB44_4448
 .LBB44_4534:                            # %.loopexit94.loopexit.i
 .Ltmp2929:                              # EH_LABEL
 	move	$fp, $a0
@@ -80328,7 +80330,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s4, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4561:                            # %.preheader.i2418
                                         # =>This Inner Loop Header: Depth=1
@@ -80337,7 +80339,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_4561
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4562:                            # %.loopexit37.loopexit.i2379
 .Ltmp2892:                              # EH_LABEL
 	move	$fp, $a0
@@ -80402,7 +80404,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s1, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4572:                            # %.preheader.i2368
                                         # =>This Inner Loop Header: Depth=1
@@ -80411,7 +80413,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_4572
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4573:                            # %.loopexit.loopexit.i2349
 .Ltmp2880:                              # EH_LABEL
 	move	$fp, $a0
@@ -80437,7 +80439,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_4575:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i2335
 .Ltmp2865:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_4576:                            # %.loopexit37.loopexit.i
 .Ltmp2862:                              # EH_LABEL
 	move	$fp, $a0
@@ -80502,7 +80504,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $fp, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $s1, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4586:                            # %.preheader.i2302
                                         # =>This Inner Loop Header: Depth=1
@@ -80511,7 +80513,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $fp, .LBB44_4586
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4587:                            # %.loopexit.loopexit.i2277
 .Ltmp2841:                              # EH_LABEL
 	b	.LBB44_5313
@@ -80821,7 +80823,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s8, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4628:                            # %.preheader.i2121
                                         # =>This Inner Loop Header: Depth=1
@@ -80830,7 +80832,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4628
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4629:
 .Ltmp2820:                              # EH_LABEL
 	move	$s8, $zero
@@ -80965,8 +80967,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_4654:                            # %.thread.i
 	ld.d	$a0, $sp, 784
 	addi.d	$a1, $sp, 800
-	beq	$a0, $a1, .LBB44_5553
-# %bb.4655:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit24.thread38.i
+	beq	$a0, $a1, .LBB44_5552
+# %bb.4655:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i22.thread.i
 	ld.d	$a1, $sp, 800
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -81236,7 +81238,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s7, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4698:                            # %.preheader.i1959
                                         # =>This Inner Loop Header: Depth=1
@@ -81245,7 +81247,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4698
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4699:                            # %.loopexit.loopexit.i1936
 .Ltmp2698:                              # EH_LABEL
 	b	.LBB44_5313
@@ -81534,7 +81536,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s7, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4746:                            # %.preheader.i1806
                                         # =>This Inner Loop Header: Depth=1
@@ -81543,7 +81545,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4746
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4747:                            # %.loopexit.loopexit.i1783
 .Ltmp2622:                              # EH_LABEL
 	b	.LBB44_5313
@@ -81812,7 +81814,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s7, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4791:                            # %.preheader.i1715
                                         # =>This Inner Loop Header: Depth=1
@@ -81821,7 +81823,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4791
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4792:                            # %.loopexit.loopexit.i1696
 .Ltmp2555:                              # EH_LABEL
 	b	.LBB44_5313
@@ -82083,7 +82085,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s8, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4831:                            # %.preheader.i1602
                                         # =>This Inner Loop Header: Depth=1
@@ -82092,7 +82094,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4831
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4832:
 .Ltmp2518:                              # EH_LABEL
 	move	$s8, $zero
@@ -82479,7 +82481,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s8, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4889:                            # %.preheader.i1395
                                         # =>This Inner Loop Header: Depth=1
@@ -82488,7 +82490,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4889
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4890:
 .Ltmp2447:                              # EH_LABEL
 	move	$s8, $zero
@@ -82605,7 +82607,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_4912:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1354
 .Ltmp2377:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_4913:                            # %.loopexit.loopexit.i1338
 .Ltmp2374:                              # EH_LABEL
 	b	.LBB44_5313
@@ -82915,7 +82917,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s8, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_4954:                            # %.preheader.i1182
                                         # =>This Inner Loop Header: Depth=1
@@ -82924,7 +82926,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_4954
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_4955:
 .Ltmp2353:                              # EH_LABEL
 	move	$s8, $zero
@@ -83041,7 +83043,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_4977:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1141
 .Ltmp2283:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_4978:                            # %.loopexit.loopexit.i1125
 .Ltmp2280:                              # EH_LABEL
 	b	.LBB44_5313
@@ -83351,7 +83353,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s8, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5019:                            # %.preheader.i969
                                         # =>This Inner Loop Header: Depth=1
@@ -83360,7 +83362,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5019
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5020:
 .Ltmp2259:                              # EH_LABEL
 	move	$s8, $zero
@@ -83477,7 +83479,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_5042:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i928
 .Ltmp2189:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_5043:                            # %.loopexit.loopexit.i912
 .Ltmp2186:                              # EH_LABEL
 	b	.LBB44_5313
@@ -83787,7 +83789,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s8, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5084:                            # %.preheader.i756
                                         # =>This Inner Loop Header: Depth=1
@@ -83796,7 +83798,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5084
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5085:
 .Ltmp2165:                              # EH_LABEL
 	move	$s8, $zero
@@ -83913,7 +83915,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_5107:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i715
 .Ltmp2095:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_5108:                            # %.loopexit.loopexit.i699
 .Ltmp2092:                              # EH_LABEL
 	b	.LBB44_5313
@@ -84241,7 +84243,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s1, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5150:                            # %.preheader.i532
                                         # =>This Inner Loop Header: Depth=1
@@ -84250,7 +84252,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5150
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5151:
 .Ltmp2071:                              # EH_LABEL
 	move	$s1, $zero
@@ -84704,7 +84706,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s1, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5217:                            # %.preheader.i313
                                         # =>This Inner Loop Header: Depth=1
@@ -84713,7 +84715,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5217
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5218:
 .Ltmp1976:                              # EH_LABEL
 	move	$s1, $zero
@@ -84843,7 +84845,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_5242:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i272
 .Ltmp1902:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_5243:                            # %.loopexit.loopexit.i256
 .Ltmp1899:                              # EH_LABEL
 	b	.LBB44_5313
@@ -85173,7 +85175,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s1, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5286:                            # %.preheader.i129
                                         # =>This Inner Loop Header: Depth=1
@@ -85182,7 +85184,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5286
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5287:
 .Ltmp1878:                              # EH_LABEL
 	move	$s1, $zero
@@ -85311,7 +85313,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 .LBB44_5311:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp1804:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	b	.LBB44_5517
+	b	.LBB44_5513
 .LBB44_5312:                            # %.loopexit.loopexit.i82
 .Ltmp1801:                              # EH_LABEL
 .LBB44_5313:                            # %.loopexit.i2927
@@ -85629,7 +85631,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s7, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5355:                            # %.preheader.i51
                                         # =>This Inner Loop Header: Depth=1
@@ -85638,7 +85640,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5355
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5356:
 .Ltmp1780:                              # EH_LABEL
 	move	$s7, $zero
@@ -85774,11 +85776,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1816
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
+	beq	$a0, $a1, .LBB44_5552
 # %bb.5382:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i10.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1816
-	b	.LBB44_5555
+	b	.LBB44_5554
 .LBB44_5383:                            # %.loopexit702.loopexit.i.i
 .Ltmp1706:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -85797,11 +85799,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
+	beq	$a0, $a1, .LBB44_5552
 # %bb.5386:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i658.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1048
-	b	.LBB44_5555
+	b	.LBB44_5554
 .LBB44_5387:
 .Ltmp1700:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -85826,11 +85828,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
+	beq	$a0, $a1, .LBB44_5552
 # %bb.5391:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i655.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1080
-	b	.LBB44_5555
+	b	.LBB44_5554
 .LBB44_5392:
 .Ltmp1691:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -85855,11 +85857,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
+	beq	$a0, $a1, .LBB44_5552
 # %bb.5396:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i652.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1112
-	b	.LBB44_5555
+	b	.LBB44_5554
 .LBB44_5397:
 .Ltmp1682:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -85884,11 +85886,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
+	beq	$a0, $a1, .LBB44_5552
 # %bb.5401:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i649.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1144
-	b	.LBB44_5555
+	b	.LBB44_5554
 .LBB44_5402:
 .Ltmp1673:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -85913,8 +85915,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1432
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5553
-	b	.LBB44_5554
+	beq	$a0, $a1, .LBB44_5552
+	b	.LBB44_5553
 .LBB44_5406:                            # %.loopexit712.loopexit.i.i
 .Ltmp1609:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -86131,7 +86133,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s6, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5437:                            # %.preheader710.i.i
                                         # =>This Inner Loop Header: Depth=1
@@ -86140,7 +86142,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5437
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5438:
 .Ltmp1585:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -86255,7 +86257,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s0, $fp
 	sltui	$a0, $a0, 1
 	or	$a0, $s1, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5457:                            # %.preheader713.i.i
                                         # =>This Inner Loop Header: Depth=1
@@ -86264,7 +86266,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$fp, $s0, .LBB44_5457
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5458:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit409.thread.i.i
 .Ltmp1555:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
@@ -86361,7 +86363,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	xor	$a0, $s1, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $fp, $a0
-	bnez	$a0, .LBB44_5553
+	bnez	$a0, .LBB44_5552
 	.p2align	4, , 16
 .LBB44_5473:                            # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
@@ -86370,21 +86372,21 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	bne	$s0, $s1, .LBB44_5473
-	b	.LBB44_5553
+	b	.LBB44_5552
 .LBB44_5474:
 .Ltmp4393:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5475:
 .Ltmp2754:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5516
-	b	.LBB44_5511
+	bne	$a2, $a0, .LBB44_5515
+	b	.LBB44_5516
 .LBB44_5476:
 .Ltmp2689:                              # EH_LABEL
 	lu12i.w	$a1, 1
@@ -86462,13 +86464,13 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1816
 	add.d	$a0, $sp, $a0
-	beq	$a2, $a0, .LBB44_5513
-# %bb.5487:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit67.i
+	beq	$a2, $a0, .LBB44_5512
+# %bb.5487:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i65.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1816
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	b	.LBB44_5509
+	b	.LBB44_5511
 .LBB44_5488:
 .Ltmp2616:                              # EH_LABEL
 	lu12i.w	$a1, 1
@@ -86486,182 +86488,157 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5511
+	bne	$a2, $a0, .LBB44_5515
 	b	.LBB44_5516
 .LBB44_5490:
 .Ltmp2473:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5491:
 .Ltmp2002:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5492:
 .Ltmp1907:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5493:
 .Ltmp1809:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5514
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5494:
 .Ltmp1717:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5508
-	b	.LBB44_5513
+	beq	$a2, $a0, .LBB44_5512
+	b	.LBB44_5510
 .LBB44_5495:
 .Ltmp3306:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5496:
 .Ltmp3227:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5497:
 .Ltmp2899:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5498:
 .Ltmp2549:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5499:
 .Ltmp2384:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5500:
 .Ltmp2290:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5501:
 .Ltmp2196:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5502:
 .Ltmp2102:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5503:
 .Ltmp3705:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5504:
 .Ltmp3468:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5505:
 .Ltmp3399:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-	b	.LBB44_5508
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5506:
 .Ltmp2874:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-	b	.LBB44_5513
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
 .LBB44_5507:
 .Ltmp2850:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5513
-.LBB44_5508:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
-	ld.d	$a0, $sp, 800
-.LBB44_5509:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
-	addi.d	$a1, $a0, 1
-	move	$a0, $a2
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	beqz	$s1, .LBB44_5553
-	b	.LBB44_5517
-.LBB44_5510:
+	bne	$a2, $a0, .LBB44_5510
+	b	.LBB44_5512
+.LBB44_5508:
 .Ltmp4198:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	beq	$a2, $a0, .LBB44_5516
-.LBB44_5511:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit24.i
-	ld.d	$a0, $sp, 800
-	addi.d	$a1, $a0, 1
-	move	$a0, $a2
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	beqz	$s0, .LBB44_5553
-	b	.LBB44_5517
-.LBB44_5512:
+	bne	$a2, $a0, .LBB44_5515
+	b	.LBB44_5516
+.LBB44_5509:
 .Ltmp3944:                              # EH_LABEL
 	ld.d	$a2, $sp, 784
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5514
-.LBB44_5513:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s1, .LBB44_5553
-	b	.LBB44_5517
-.LBB44_5514:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i99
+	beq	$a2, $a0, .LBB44_5512
+.LBB44_5510:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 800
+.LBB44_5511:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s1, .LBB44_5517
-	b	.LBB44_5553
-.LBB44_5515:
-.Ltmp4301:                              # EH_LABEL
-	ld.d	$a2, $sp, 784
-	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-	addi.d	$a0, $sp, 800
-	bne	$a2, $a0, .LBB44_5511
-.LBB44_5516:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i23.i
-	beqz	$s0, .LBB44_5553
-.LBB44_5517:
+.LBB44_5512:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s1, .LBB44_5552
+.LBB44_5513:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -86669,54 +86646,69 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB44_5518:
+.LBB44_5514:
+.Ltmp4301:                              # EH_LABEL
+	ld.d	$a2, $sp, 784
+	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
+	addi.d	$a0, $sp, 800
+	beq	$a2, $a0, .LBB44_5516
+.LBB44_5515:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i22.i4613
+	ld.d	$a0, $sp, 800
+	addi.d	$a1, $a0, 1
+	move	$a0, $a2
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB44_5516:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit24.i4614
+	beqz	$s0, .LBB44_5552
+	b	.LBB44_5513
+.LBB44_5517:
 .Ltmp1625:                              # EH_LABEL
-	b	.LBB44_5549
-.LBB44_5519:                            # %.loopexit701.loopexit.i.i
+	b	.LBB44_5548
+.LBB44_5518:                            # %.loopexit701.loopexit.i.i
 .Ltmp1628:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 784
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB44_5550
-.LBB44_5520:
+	b	.LBB44_5549
+.LBB44_5519:
 .Ltmp1631:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	move	$fp, $zero
 	addi.d	$s0, $sp, 784
-	b	.LBB44_5543
-.LBB44_5521:
+	b	.LBB44_5542
+.LBB44_5520:
 .Ltmp1634:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	move	$fp, $zero
-	b	.LBB44_5541
-.LBB44_5522:
+	b	.LBB44_5540
+.LBB44_5521:
 .Ltmp1637:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	move	$fp, $zero
-	b	.LBB44_5538
-.LBB44_5523:
+	b	.LBB44_5537
+.LBB44_5522:
 .Ltmp1640:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	move	$fp, $zero
-	b	.LBB44_5535
-.LBB44_5524:
+	b	.LBB44_5534
+.LBB44_5523:
 .Ltmp1643:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	move	$fp, $zero
 	addi.d	$a0, $sp, 1136
-	b	.LBB44_5534
-.LBB44_5525:
+	b	.LBB44_5533
+.LBB44_5524:
 .Ltmp1646:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	move	$fp, $zero
-	b	.LBB44_5531
-.LBB44_5526:
+	b	.LBB44_5530
+.LBB44_5525:
 .Ltmp1649:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	move	$fp, $zero
-	b	.LBB44_5528
-.LBB44_5527:                            # %.loopexit700.loopexit.i.i
+	b	.LBB44_5527
+.LBB44_5526:                            # %.loopexit700.loopexit.i.i
 .Ltmp1652:                              # EH_LABEL
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
 	addi.d	$a0, $sp, 1224
@@ -86738,7 +86730,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
-.LBB44_5528:                            # %.loopexit700.i.i
+.LBB44_5527:                            # %.loopexit700.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1192
 	add.d	$a0, $sp, $a0
@@ -86746,8 +86738,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5530
-# %bb.5529:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i518.i.i
+	beq	$a0, $a1, .LBB44_5529
+# %bb.5528:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i518.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1208
 	add.d	$a1, $sp, $a1
@@ -86755,10 +86747,10 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_5530:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit520.i.i
+.LBB44_5529:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit520.i.i
 	addi.d	$a0, $sp, 1224
 	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
-.LBB44_5531:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit520.i.i
+.LBB44_5530:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit520.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1224
 	add.d	$a0, $sp, $a0
@@ -86766,8 +86758,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5533
-# %bb.5532:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i521.i.i
+	beq	$a0, $a1, .LBB44_5532
+# %bb.5531:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i521.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1240
 	add.d	$a1, $sp, $a1
@@ -86775,11 +86767,11 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_5533:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit523.i.i
+.LBB44_5532:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit523.i.i
 	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
-.LBB44_5534:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit523.i.i
+.LBB44_5533:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit523.i.i
 	st.d	$a0, $sp, 376                   # 8-byte Folded Spill
-.LBB44_5535:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit523.i.i
+.LBB44_5534:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit523.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1256
 	add.d	$a0, $sp, $a0
@@ -86787,8 +86779,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5537
-# %bb.5536:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i524.i.i
+	beq	$a0, $a1, .LBB44_5536
+# %bb.5535:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i524.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1272
 	add.d	$a1, $sp, $a1
@@ -86796,10 +86788,10 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_5537:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit526.i.i
+.LBB44_5536:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit526.i.i
 	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 384                   # 8-byte Folded Spill
-.LBB44_5538:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit526.i.i
+.LBB44_5537:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit526.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1288
 	add.d	$a0, $sp, $a0
@@ -86807,8 +86799,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1304
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5540
-# %bb.5539:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i527.i.i
+	beq	$a0, $a1, .LBB44_5539
+# %bb.5538:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i527.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1304
 	add.d	$a1, $sp, $a1
@@ -86816,9 +86808,9 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_5540:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit529.i.i
+.LBB44_5539:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit529.i.i
 	ld.d	$s0, $sp, 384                   # 8-byte Folded Reload
-.LBB44_5541:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit529.i.i
+.LBB44_5540:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit529.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1320
 	add.d	$a0, $sp, $a0
@@ -86826,8 +86818,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1336
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5543
-# %bb.5542:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i530.i.i
+	beq	$a0, $a1, .LBB44_5542
+# %bb.5541:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i530.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1336
 	add.d	$a1, $sp, $a1
@@ -86835,7 +86827,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_5543:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit532.i.i
+.LBB44_5542:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit532.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1352
 	add.d	$a0, $sp, $a0
@@ -86843,8 +86835,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1368
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5545
-# %bb.5544:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i533.i.i
+	beq	$a0, $a1, .LBB44_5544
+# %bb.5543:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i533.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1368
 	add.d	$a1, $sp, $a1
@@ -86852,29 +86844,29 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_5545:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit535.i.i
+.LBB44_5544:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit535.i.i
 	addi.d	$s1, $sp, 784
 	xor	$a0, $s1, $s0
 	sltui	$a0, $a0, 1
 	or	$a0, $fp, $a0
-	bnez	$a0, .LBB44_5552
+	bnez	$a0, .LBB44_5551
 	.p2align	4, , 16
-.LBB44_5546:                            # %.preheader.i.i
+.LBB44_5545:                            # %.preheader.i.i
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$s0, $s0, -88
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN8TestCaseD2Ev)
 	jirl	$ra, $ra, 0
-	bne	$s0, $s1, .LBB44_5546
-	b	.LBB44_5552
-.LBB44_5547:                            # %.loopexit.split-lp.i.i
+	bne	$s0, $s1, .LBB44_5545
+	b	.LBB44_5551
+.LBB44_5546:                            # %.loopexit.split-lp.i.i
 .Ltmp1655:                              # EH_LABEL
-	b	.LBB44_5549
-.LBB44_5548:                            # %.loopexit708.i.i
+	b	.LBB44_5548
+.LBB44_5547:                            # %.loopexit708.i.i
 .Ltmp1622:                              # EH_LABEL
-.LBB44_5549:                            # %.loopexit701.i.i
+.LBB44_5548:                            # %.loopexit701.i.i
 	st.d	$a0, $sp, 392                   # 8-byte Folded Spill
-.LBB44_5550:                            # %.loopexit701.i.i
+.LBB44_5549:                            # %.loopexit701.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1384
 	add.d	$a0, $sp, $a0
@@ -86882,8 +86874,8 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1400
 	add.d	$a1, $sp, $a1
-	beq	$a0, $a1, .LBB44_5552
-# %bb.5551:                             # %.body.i.i.sink.split
+	beq	$a0, $a1, .LBB44_5551
+# %bb.5550:                             # %.body.i.i.sink.split
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1400
 	add.d	$a1, $sp, $a1
@@ -86891,7 +86883,7 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB44_5552:                            # %.loopexit.i.i
+.LBB44_5551:                            # %.loopexit.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1432
 	add.d	$a1, $sp, $a0
@@ -86899,15 +86891,15 @@ _GLOBAL__sub_I_reporter_output_test.cc: # @_GLOBAL__sub_I_reporter_output_test.c
 	ori	$a0, $a0, 1416
 	add.d	$a0, $sp, $a0
 	ld.d	$a0, $a0, 0
-	bne	$a0, $a1, .LBB44_5554
-.LBB44_5553:                            # %common.resume
+	bne	$a0, $a1, .LBB44_5553
+.LBB44_5552:                            # %common.resume
 	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB44_5554:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i536.i.i
+.LBB44_5553:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i536.i.i
 	lu12i.w	$a1, 1
 	ori	$a1, $a1, 1432
-.LBB44_5555:                            # %common.resume
+.LBB44_5554:                            # %common.resume
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1

@@ -316,9 +316,8 @@ f3:                                     # @f3
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
-	fld.d	$fa0, $sp, 24
 	pcalau12i	$a0, %pc_hi20(d)
-	fst.d	$fa0, $a0, %pc_lo12(d)
+	st.d	$a1, $a0, %pc_lo12(d)
 	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end5:
@@ -337,9 +336,9 @@ f4:                                     # @f4
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
+	movgr2fr.d	$fa0, $a1
 	addi.d	$a1, $sp, 32
 	st.d	$a1, $sp, 8
-	fld.d	$fa0, $sp, 24
 	ftintrz.l.d	$fa0, $fa0
 	pcalau12i	$a2, %pc_hi20(x)
 	ori	$a3, $zero, 5

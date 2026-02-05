@@ -216,28 +216,34 @@ very_real_unpack:                       # @very_real_unpack
 	ld.d	$s2, $sp, 352
 	addi.w	$s6, $zero, -1
 	sll.w	$a3, $s6, $a3
-	nor	$t0, $a3, $zero
+	nor	$t3, $a3, $zero
 	sll.w	$a3, $s6, $a4
 	nor	$t8, $a3, $zero
-	bstrpick.d	$a0, $a0, 31, 0
-	ori	$a3, $zero, 3660
-	alsl.d	$a0, $a0, $a3, 1
-	add.d	$a3, $s7, $a0
+	slli.d	$a0, $a0, 1
+	bstrpick.d	$a3, $a0, 32, 1
+	slli.d	$a0, $a3, 1
+	alsl.d	$a3, $a3, $s7, 1
 	xvldi	$xr0, -2812
-	addi.w	$a4, $zero, -20
+	ori	$a4, $zero, 3660
+	ori	$a7, $zero, 3628
+	lu12i.w	$t0, -1
+	ori	$t0, $t0, 448
 	.p2align	4, , 16
 .LBB1_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvstx	$xr0, $a3, $a6
-	addi.d	$a6, $a6, -32
-	add.d	$a7, $a0, $a6
-	bne	$a7, $a4, .LBB1_3
+	add.d	$t1, $a3, $a6
+	xvstx	$xr0, $t1, $a4
+	addi.d	$a6, $a6, -64
+	add.d	$t2, $a0, $a6
+	xvstx	$xr0, $t1, $a7
+	bne	$t2, $t0, .LBB1_3
 # %bb.4:                                # %vec.epilog.vector.body
+	xvst	$xr0, $s7, 12
 	lu12i.w	$a0, 16384
 	ori	$a0, $a0, 1024
-	st.w	$a0, $s7, 0
+	st.w	$a0, $s7, 8
 	bstrins.d	$a0, $a0, 58, 32
-	st.d	$a0, $s7, 4
+	st.d	$a0, $s7, 0
 	st.w	$zero, $sp, 240
 	st.d	$a5, $sp, 216
 	lu32i.d	$s6, 0
@@ -246,22 +252,22 @@ very_real_unpack:                       # @very_real_unpack
 	add.d	$a0, $a5, $a0
 	addi.d	$a0, $a0, -13
 	st.d	$a0, $sp, 224
-	st.d	$s7, $sp, 248
-	ori	$a4, $zero, 13
 	st.w	$a1, $sp, 256
-	bgeu	$a4, $s0, .LBB1_9
+	ori	$a1, $zero, 13
+	st.d	$s7, $sp, 248
+	bgeu	$a1, $s0, .LBB1_9
 # %bb.5:
-	ld.bu	$a1, $a5, 0
+	ld.bu	$a3, $a5, 0
 	addi.d	$a5, $a5, 1
 	st.d	$a5, $sp, 216
-	slli.d	$a3, $a1, 8
+	slli.d	$a3, $a3, 8
 	bltu	$a5, $a0, .LBB1_10
 .LBB1_6:
 	move	$a1, $zero
 	ori	$a4, $zero, 1
 	st.w	$a4, $sp, 240
-	ori	$a6, $zero, 255
-	or	$a3, $a6, $a3
+	ori	$a4, $zero, 255
+	or	$a3, $a4, $a3
 	st.w	$a3, $sp, 236
 	slli.d	$a3, $a3, 8
 	bltu	$a5, $a0, .LBB1_11
@@ -285,17 +291,17 @@ very_real_unpack:                       # @very_real_unpack
 	bltu	$a5, $a0, .LBB1_13
 	b	.LBB1_1
 .LBB1_9:
-	ori	$a1, $zero, 1
-	st.w	$a1, $sp, 240
-	lu12i.w	$a1, 15
-	ori	$a3, $a1, 3840
+	ori	$a3, $zero, 1
+	st.w	$a3, $sp, 240
+	lu12i.w	$a3, 15
+	ori	$a3, $a3, 3840
 	bgeu	$a5, $a0, .LBB1_6
 .LBB1_10:
-	ld.bu	$a6, $a5, 0
-	sltu	$a1, $a4, $s0
+	ld.bu	$a4, $a5, 0
+	sltu	$a1, $a1, $s0
 	addi.d	$a5, $a5, 1
 	st.d	$a5, $sp, 216
-	or	$a3, $a6, $a3
+	or	$a3, $a4, $a3
 	st.w	$a3, $sp, 236
 	slli.d	$a3, $a3, 8
 	bgeu	$a5, $a0, .LBB1_7
@@ -316,7 +322,7 @@ very_real_unpack:                       # @very_real_unpack
 	ori	$s5, $zero, 1
 	bgeu	$a5, $a0, .LBB1_1
 .LBB1_13:                               # %get_byte.exit.4
-	st.d	$t0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$t3, $sp, 152                   # 8-byte Folded Spill
 	ld.bu	$a0, $a5, 0
 	slli.d	$a3, $a3, 8
 	addi.d	$a4, $a5, 1
@@ -446,7 +452,7 @@ very_real_unpack:                       # @very_real_unpack
 	bgeu	$a0, $t0, .LBB1_38
 # %bb.25:                               #   in Loop: Header=BB1_15 Depth=1
 	ori	$t5, $zero, 1
-.LBB1_26:                               # %.preheader.preheader846
+.LBB1_26:                               # %.preheader.preheader850
                                         #   in Loop: Header=BB1_15 Depth=1
 	sub.w	$a1, $zero, $a2
 	addi.w	$a5, $a4, -1
@@ -538,7 +544,7 @@ very_real_unpack:                       # @very_real_unpack
 	sub.d	$a1, $a1, $a3
 	ori	$a3, $zero, 64
 	bltu	$a1, $a3, .LBB1_26
-# %bb.41:                               # %vector.ph792
+# %bb.41:                               # %vector.ph796
                                         #   in Loop: Header=BB1_15 Depth=1
 	move	$a1, $a0
 	bstrins.d	$a1, $zero, 5, 0
@@ -547,7 +553,7 @@ very_real_unpack:                       # @very_real_unpack
 	sub.w	$a5, $zero, $a2
 	move	$a6, $a1
 	.p2align	4, , 16
-.LBB1_42:                               # %vector.body797
+.LBB1_42:                               # %vector.body801
                                         #   Parent Loop BB1_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a7, $a5, $s4
@@ -562,7 +568,7 @@ very_real_unpack:                       # @very_real_unpack
 	addi.w	$a6, $a6, -64
 	addi.w	$s4, $s4, 64
 	bnez	$a6, .LBB1_42
-# %bb.43:                               # %middle.block802
+# %bb.43:                               # %middle.block806
                                         #   in Loop: Header=BB1_15 Depth=1
 	bne	$a0, $a1, .LBB1_79
 # %bb.44:                               #   in Loop: Header=BB1_15 Depth=1
@@ -1203,7 +1209,7 @@ very_real_unpack:                       # @very_real_unpack
                                         #   in Loop: Header=BB1_15 Depth=1
 	addi.w	$a2, $a5, 0
 	bltu	$s1, $a6, .LBB1_179
-# %bb.150:                              # %iter.check809
+# %bb.150:                              # %iter.check813
                                         #   in Loop: Header=BB1_15 Depth=1
 	st.w	$s1, $sp, 240
 	ori	$a3, $zero, 4
@@ -1603,7 +1609,7 @@ very_real_unpack:                       # @very_real_unpack
 	st.w	$s1, $sp, 240
 	ori	$a6, $zero, 255
 	b	.LBB1_247
-.LBB1_218:                              # %vector.main.loop.iter.check811
+.LBB1_218:                              # %vector.main.loop.iter.check815
                                         #   in Loop: Header=BB1_15 Depth=1
 	ori	$a3, $zero, 16
 	bgeu	$a2, $a3, .LBB1_220
@@ -1611,7 +1617,7 @@ very_real_unpack:                       # @very_real_unpack
 	move	$a4, $zero
 	move	$a3, $zero
 	b	.LBB1_224
-.LBB1_220:                              # %vector.ph812
+.LBB1_220:                              # %vector.ph816
                                         #   in Loop: Header=BB1_15 Depth=1
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
 	xvld	$xr0, $a3, %pc_lo12(.LCPI1_0)
@@ -1621,7 +1627,7 @@ very_real_unpack:                       # @very_real_unpack
 	move	$a3, $a4
 	xvld	$xr2, $sp, 16                   # 32-byte Folded Reload
 	xvori.b	$xr1, $xr2, 0
-.LBB1_221:                              # %vector.body815
+.LBB1_221:                              # %vector.body819
                                         #   Parent Loop BB1_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.wu	$xr3, $xr0, 8
@@ -1632,7 +1638,7 @@ very_real_unpack:                       # @very_real_unpack
 	addi.w	$a3, $a3, -16
 	xvaddi.wu	$xr0, $xr0, 16
 	bnez	$a3, .LBB1_221
-# %bb.222:                              # %middle.block822
+# %bb.222:                              # %middle.block826
                                         #   in Loop: Header=BB1_15 Depth=1
 	xvor.v	$xr0, $xr2, $xr1
 	xvpermi.q	$xr1, $xr0, 1
@@ -1644,10 +1650,10 @@ very_real_unpack:                       # @very_real_unpack
 	addi.w	$a7, $a4, 0
 	vpickve2gr.w	$a3, $vr0, 0
 	beq	$a2, $a7, .LBB1_228
-# %bb.223:                              # %vec.epilog.iter.check826
+# %bb.223:                              # %vec.epilog.iter.check830
                                         #   in Loop: Header=BB1_15 Depth=1
 	beqz	$a6, .LBB1_227
-.LBB1_224:                              # %vec.epilog.ph828
+.LBB1_224:                              # %vec.epilog.ph832
                                         #   in Loop: Header=BB1_15 Depth=1
 	pcalau12i	$a6, %pc_hi20(.LCPI1_1)
 	vld	$vr1, $a6, %pc_lo12(.LCPI1_1)
@@ -1657,7 +1663,7 @@ very_real_unpack:                       # @very_real_unpack
 	vreplgr2vr.w	$vr2, $a4
 	vor.v	$vr1, $vr2, $vr1
 	sub.d	$a3, $a4, $a5
-.LBB1_225:                              # %vec.epilog.vector.body834
+.LBB1_225:                              # %vec.epilog.vector.body838
                                         #   Parent Loop BB1_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vsll.w	$vr2, $vr5, $vr1
@@ -1665,7 +1671,7 @@ very_real_unpack:                       # @very_real_unpack
 	addi.w	$a3, $a3, 4
 	vaddi.wu	$vr1, $vr1, 4
 	bnez	$a3, .LBB1_225
-# %bb.226:                              # %vec.epilog.middle.block840
+# %bb.226:                              # %vec.epilog.middle.block844
                                         #   in Loop: Header=BB1_15 Depth=1
 	vbsrl.v	$vr1, $vr0, 8
 	vor.v	$vr0, $vr1, $vr0

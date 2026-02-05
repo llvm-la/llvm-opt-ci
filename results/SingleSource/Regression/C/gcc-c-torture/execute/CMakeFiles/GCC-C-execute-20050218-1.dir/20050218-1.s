@@ -20,9 +20,9 @@ foo:                                    # @foo
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
-	pcalau12i	$a0, %pc_hi20(a)
 	beqz	$a1, .LBB0_6
 # %bb.2:                                # %.lr.ph.split.preheader
+	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$s5, $a0, %pc_lo12(a)
 	move	$s6, $zero
 	.p2align	4, , 16
@@ -54,6 +54,7 @@ foo:                                    # @foo
 	move	$a0, $zero
 	ret
 .LBB0_6:                                # %.lr.ph.split.us.preheader
+	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$s4, $a0, %pc_lo12(a)
 	move	$s5, $zero
 	.p2align	4, , 16

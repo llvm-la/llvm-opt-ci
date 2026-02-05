@@ -234,34 +234,34 @@ main:                                   # @main
                                         #       Child Loop BB7_11 Depth 3
 	mul.d	$t5, $t3, $s2
 	add.d	$t6, $fp, $t5
-	fldx.d	$fa5, $t6, $a5
-	fldx.d	$fa3, $t6, $a0
+	fldx.d	$fa1, $t6, $a5
+	fldx.d	$fa5, $t6, $a0
 	fldx.d	$fa6, $fp, $t5
-	fld.d	$fa1, $t6, 8
-	fldx.d	$fa4, $t6, $s2
-	fldx.d	$fa2, $t6, $a1
+	fld.d	$fa2, $t6, 8
+	fldx.d	$fa3, $t6, $s2
+	fldx.d	$fa4, $t6, $a1
 	add.d	$t5, $fp, $t4
 	move	$t6, $t0
 	.p2align	4, , 16
 .LBB7_11:                               #   Parent Loop BB7_9 Depth=1
                                         #     Parent Loop BB7_10 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	fmov.d	$fa7, $fa3
+	fmov.d	$fa7, $fa1
+	fmov.d	$fa1, $fa5
 	add.d	$t7, $t5, $t6
-	fldx.d	$fa3, $t7, $a2
-	fadd.d	$fa5, $fa7, $fa5
-	fadd.d	$fa5, $fa5, $fa3
-	fadd.d	$fa5, $fa6, $fa5
-	fadd.d	$fa5, $fa1, $fa5
-	fld.d	$fa1, $t7, -16
-	fmov.d	$fa6, $fa2
-	fldx.d	$fa2, $t7, $a3
-	fadd.d	$fa5, $fa1, $fa5
-	fadd.d	$fa4, $fa4, $fa5
-	fadd.d	$ft0, $fa6, $fa4
-	fmov.d	$fa4, $fa6
-	fmov.d	$fa5, $fa7
-	fadd.d	$fa6, $fa2, $ft0
+	fldx.d	$fa5, $t7, $a2
+	fadd.d	$fa7, $fa1, $fa7
+	fadd.d	$fa7, $fa7, $fa5
+	fadd.d	$fa6, $fa6, $fa7
+	fadd.d	$fa6, $fa2, $fa6
+	fld.d	$fa2, $t7, -16
+	fmov.d	$fa7, $fa3
+	fmov.d	$fa3, $fa4
+	fldx.d	$fa4, $t7, $a3
+	fadd.d	$fa6, $fa2, $fa6
+	fadd.d	$fa6, $fa7, $fa6
+	fadd.d	$fa6, $fa3, $fa6
+	fadd.d	$fa6, $fa4, $fa6
 	fdiv.d	$fa6, $fa6, $fa0
 	addi.d	$t6, $t6, 8
 	fst.d	$fa6, $t7, -24
@@ -339,34 +339,34 @@ main:                                   # @main
                                         #       Child Loop BB7_21 Depth 3
 	mul.d	$t4, $t2, $s2
 	add.d	$t5, $s0, $t4
-	fldx.d	$fa5, $t5, $a4
-	fldx.d	$fa3, $t5, $a0
+	fldx.d	$fa1, $t5, $a4
+	fldx.d	$fa5, $t5, $a0
 	fldx.d	$fa6, $s0, $t4
-	fld.d	$fa1, $t5, 8
-	fldx.d	$fa4, $t5, $s2
-	fldx.d	$fa2, $t5, $a1
+	fld.d	$fa2, $t5, 8
+	fldx.d	$fa3, $t5, $s2
+	fldx.d	$fa4, $t5, $a1
 	add.d	$t4, $s0, $t3
 	move	$t5, $a7
 	.p2align	4, , 16
 .LBB7_21:                               #   Parent Loop BB7_19 Depth=1
                                         #     Parent Loop BB7_20 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	fmov.d	$fa7, $fa3
+	fmov.d	$fa7, $fa1
+	fmov.d	$fa1, $fa5
 	add.d	$t6, $t4, $t5
-	fldx.d	$fa3, $t6, $a2
-	fadd.d	$fa5, $fa7, $fa5
-	fadd.d	$fa5, $fa5, $fa3
-	fadd.d	$fa5, $fa6, $fa5
-	fadd.d	$fa5, $fa1, $fa5
-	fld.d	$fa1, $t6, -16
-	fmov.d	$fa6, $fa2
-	fldx.d	$fa2, $t6, $a3
-	fadd.d	$fa5, $fa1, $fa5
-	fadd.d	$fa4, $fa4, $fa5
-	fadd.d	$ft0, $fa6, $fa4
-	fmov.d	$fa4, $fa6
-	fmov.d	$fa5, $fa7
-	fadd.d	$fa6, $fa2, $ft0
+	fldx.d	$fa5, $t6, $a2
+	fadd.d	$fa7, $fa1, $fa7
+	fadd.d	$fa7, $fa7, $fa5
+	fadd.d	$fa6, $fa6, $fa7
+	fadd.d	$fa6, $fa2, $fa6
+	fld.d	$fa2, $t6, -16
+	fmov.d	$fa7, $fa3
+	fmov.d	$fa3, $fa4
+	fldx.d	$fa4, $t6, $a3
+	fadd.d	$fa6, $fa2, $fa6
+	fadd.d	$fa6, $fa7, $fa6
+	fadd.d	$fa6, $fa3, $fa6
+	fadd.d	$fa6, $fa4, $fa6
 	fdiv.d	$fa6, $fa6, $fa0
 	addi.d	$t5, $t5, 8
 	fst.d	$fa6, $t6, -24

@@ -139,7 +139,7 @@ fuloop:                                 # @fuloop
 	blez	$a0, .LBB0_25
 # %bb.1:                                # %.preheader140.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(randVar)
-	ld.d	$ra, $a0, %got_pc_lo12(randVar)
+	ld.d	$s7, $a0, %got_pc_lo12(randVar)
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
@@ -169,8 +169,8 @@ fuloop:                                 # @fuloop
 	ld.d	$a0, $a0, %got_pc_lo12(gridGiven)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	move	$s3, $zero
-	move	$s7, $zero
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
+	st.d	$s7, $sp, 88                    # 8-byte Folded Spill
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %.outer
@@ -178,13 +178,12 @@ fuloop:                                 # @fuloop
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	addi.w	$s3, $s3, 1
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	bge	$s3, $a0, .LBB0_26
 .LBB0_3:                                # %.preheader140.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_6 Depth 2
                                         #     Child Loop BB0_24 Depth 2
-	ld.w	$a6, $ra, 0
+	ld.w	$a6, $s7, 0
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
@@ -307,7 +306,7 @@ fuloop:                                 # @fuloop
 	b	.LBB0_5
 	.p2align	4, , 16
 .LBB0_17:                               #   in Loop: Header=BB0_3 Depth=1
-	st.w	$a6, $ra, 0
+	st.w	$a6, $s7, 0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	mul.d	$a1, $t1, $s1
@@ -319,8 +318,6 @@ fuloop:                                 # @fuloop
 	ld.w	$a0, $s5, 56
 	alsl.d	$a0, $a0, $s5, 3
 	ld.d	$a0, $a0, 152
-	st.d	$s3, $sp, 104                   # 8-byte Folded Spill
-	move	$s3, $s7
 	ld.d	$s7, $a0, 88
 	ld.w	$a0, $s7, 8
 	ld.w	$a3, $s7, 12
@@ -337,8 +334,6 @@ fuloop:                                 # @fuloop
 	ld.d	$a0, $a0, %got_pc_lo12(newyy)
 	ld.w	$a0, $a0, 0
 	ld.w	$a2, $s7, 12
-	move	$s7, $s3
-	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	sub.w	$a2, $a0, $a2
 .LBB0_19:                               #   in Loop: Header=BB0_3 Depth=1
 	move	$a0, $s6
@@ -350,8 +345,11 @@ fuloop:                                 # @fuloop
 	ld.w	$a0, $a1, 0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a1, 0
-	addi.w	$s7, $s7, 1
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	addi.w	$a0, $a0, 1
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 .LBB0_21:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	ld.w	$a0, $s5, 132
 	beqz	$a0, .LBB0_2
 # %bb.22:                               # %.preheader
@@ -373,7 +371,7 @@ fuloop:                                 # @fuloop
 	blt	$s6, $a0, .LBB0_24
 	b	.LBB0_2
 .LBB0_25:
-	move	$s7, $zero
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	move	$s3, $zero
 .LBB0_26:                               # %.outer._crit_edge
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -387,7 +385,7 @@ fuloop:                                 # @fuloop
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.6)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.6)
-	move	$a2, $s7
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	move	$a3, $s3
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0

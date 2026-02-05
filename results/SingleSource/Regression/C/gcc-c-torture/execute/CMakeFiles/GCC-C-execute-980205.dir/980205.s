@@ -14,13 +14,13 @@ fdouble:                                # @fdouble
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
 	st.d	$a0, $sp, 16
-	addi.d	$a0, $sp, 24
+	addi.d	$a1, $sp, 24
 	vldi	$vr1, -912
 	fcmp.cune.d	$fcc0, $fa0, $fa1
-	st.d	$a0, $sp, 8
+	st.d	$a1, $sp, 8
 	bcnez	$fcc0, .LBB0_3
 # %bb.1:
-	fld.d	$fa0, $sp, 16
+	movgr2fr.d	$fa0, $a0
 	vldi	$vr1, -1024
 	fcmp.ceq.d	$fcc0, $fa0, $fa1
 	bceqz	$fcc0, .LBB0_3

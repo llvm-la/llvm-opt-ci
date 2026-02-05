@@ -121,12 +121,12 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(stdout)
-	ld.d	$s0, $a0, %got_pc_lo12(stdout)
-	ld.d	$a0, $s0, 0
+	ld.d	$fp, $a0, %got_pc_lo12(stdout)
+	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
-	pcalau12i	$fp, %pc_hi20(solutions)
-	st.d	$zero, $fp, %pc_lo12(solutions)
+	pcalau12i	$s0, %pc_hi20(solutions)
+	st.d	$zero, $s0, %pc_lo12(solutions)
 	pcalau12i	$a0, %pc_hi20(file)
 	addi.d	$a0, $a0, %pc_lo12(file)
 	xvrepli.w	$xr0, 101
@@ -209,16 +209,16 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(find)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, %pc_lo12(printing)
-	ld.d	$a1, $fp, %pc_lo12(solutions)
+	ld.d	$a1, $s0, %pc_lo12(solutions)
 	beqz	$a0, .LBB0_18
 # %bb.16:                               # %iter.check
 	beqz	$a1, .LBB0_18
 # %bb.17:
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $fp, 0
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, %pc_lo12(solutions)
+	ld.d	$a1, $s0, %pc_lo12(solutions)
 .LBB0_18:
 	ori	$a0, $zero, 1
 	bne	$a1, $a0, .LBB0_21

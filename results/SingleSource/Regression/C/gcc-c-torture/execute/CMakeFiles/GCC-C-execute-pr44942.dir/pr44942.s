@@ -56,13 +56,13 @@ test3:                                  # @test3
 	st.d	$a5, $sp, 40
 	st.d	$a4, $sp, 32
 	st.d	$a3, $sp, 24
-	st.d	$a2, $sp, 16
-	addi.d	$a0, $sp, 24
-	st.d	$a0, $sp, 8
-	fld.d	$fa0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI2_0)
-	fcmp.ceq.d	$fcc0, $fa0, $fa1
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI2_0)
+	st.d	$a2, $sp, 16
+	movgr2fr.d	$fa1, $a2
+	addi.d	$a0, $sp, 24
+	fcmp.ceq.d	$fcc0, $fa1, $fa0
+	st.d	$a0, $sp, 8
 	bceqz	$fcc0, .LBB2_2
 # %bb.1:
 	addi.d	$sp, $sp, 64

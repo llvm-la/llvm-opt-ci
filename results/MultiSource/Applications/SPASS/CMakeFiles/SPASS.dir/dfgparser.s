@@ -51,11 +51,11 @@ dfg_parse:                              # @dfg_parse
 	ori	$a1, $a1, 1920
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
-	addi.d	$s8, $fp, -496
+	addi.d	$s0, $fp, -496
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 2000
 	add.d	$s7, $fp, $a0
-	ori	$s0, $zero, 200
+	ori	$s1, $zero, 200
 	pcalau12i	$a0, %pc_hi20(yypact)
 	addi.d	$a0, $a0, %pc_lo12(yypact)
 	lu12i.w	$a1, -1
@@ -99,7 +99,7 @@ dfg_parse:                              # @dfg_parse
 	ori	$a1, $a1, 1968
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
-	addi.d	$s1, $fp, -496
+	addi.d	$s8, $fp, -496
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1888
 	add.d	$a0, $fp, $a0
@@ -132,19 +132,19 @@ dfg_parse:                              # @dfg_parse
                                         #     Child Loop BB0_152 Depth 2
                                         #     Child Loop BB0_117 Depth 2
                                         #     Child Loop BB0_130 Depth 2
-	alsl.d	$a0, $s0, $s1, 1
+	alsl.d	$a0, $s1, $s0, 1
 	addi.d	$a0, $a0, -2
 	st.h	$s3, $s8, 0
 	bltu	$s8, $a0, .LBB0_7
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	srli.d	$a0, $s0, 4
+	srli.d	$a0, $s1, 4
 	ori	$a1, $zero, 624
 	bltu	$a1, $a0, .LBB0_321
 # %bb.5:                                #   in Loop: Header=BB0_3 Depth=1
-	sub.d	$a0, $s8, $s1
+	sub.d	$a0, $s8, $s0
 	srai.d	$a0, $a0, 1
 	addi.d	$s4, $a0, 1
-	slli.d	$a0, $s0, 1
+	slli.d	$a0, $s1, 1
 	srli.d	$a1, $a0, 4
 	sltui	$a1, $a1, 625
 	lu12i.w	$a2, -1
@@ -153,9 +153,9 @@ dfg_parse:                              # @dfg_parse
 	ld.d	$a2, $a2, 0                     # 8-byte Folded Reload
 	masknez	$a2, $a2, $a1
 	maskeqz	$a0, $a0, $a1
-	or	$s0, $a0, $a2
-	slli.d	$a0, $s0, 3
-	alsl.d	$a0, $s0, $a0, 1
+	or	$s1, $a0, $a2
+	slli.d	$a0, $s1, 3
+	alsl.d	$a0, $s1, $a0, 1
 	addi.d	$a0, $a0, 22
 	bstrpick.d	$a0, $a0, 18, 4
 	slli.d	$a0, $a0, 4
@@ -163,33 +163,33 @@ dfg_parse:                              # @dfg_parse
 	move	$sp, $s2
 	slli.d	$a2, $s4, 1
 	move	$a0, $s2
-	move	$a1, $s1
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	slli.d	$a0, $s0, 1
+	slli.d	$a0, $s1, 1
 	addi.d	$a0, $a0, 7
 	bstrpick.d	$a0, $a0, 15, 3
-	alsl.d	$s1, $a0, $s2, 3
+	alsl.d	$s0, $a0, $s2, 3
 	slli.d	$a2, $s4, 3
-	move	$a0, $s1
+	move	$a0, $s0
 	lu12i.w	$a1, -1
 	ori	$a1, $a1, 1968
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	bgeu	$s4, $s0, .LBB0_308
+	bgeu	$s4, $s1, .LBB0_308
 # %bb.6:                                #   in Loop: Header=BB0_3 Depth=1
 	alsl.d	$a0, $s4, $s2, 1
 	addi.d	$s8, $a0, -2
-	alsl.d	$a0, $s4, $s1, 3
+	alsl.d	$a0, $s4, $s0, 3
 	addi.d	$s7, $a0, -8
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1968
 	add.d	$a0, $fp, $a0
-	st.d	$s1, $a0, 0                     # 8-byte Folded Spill
-	move	$s1, $s2
-.LBB0_7:                                # %.thread716
+	st.d	$s0, $a0, 0                     # 8-byte Folded Spill
+	move	$s0, $s2
+.LBB0_7:                                # %.thread
                                         #   in Loop: Header=BB0_3 Depth=1
 	slli.d	$a0, $s3, 1
 	lu12i.w	$a1, -1
@@ -750,7 +750,7 @@ dfg_parse:                              # @dfg_parse
 	beqz	$a1, .LBB0_258
 # %bb.93:                               #   in Loop: Header=BB0_3 Depth=1
 	beqz	$a0, .LBB0_262
-.LBB0_94:                               # %.thread1214
+.LBB0_94:                               # %.thread1213
                                         #   in Loop: Header=BB0_3 Depth=1
 	pcaddu18i	$ra, %call36(string_StringFree)
 	jirl	$ra, $ra, 0
@@ -1328,7 +1328,7 @@ dfg_parse:                              # @dfg_parse
 	b	.LBB0_155
 .LBB0_154:                              #   in Loop: Header=BB0_3 Depth=1
 	move	$s6, $a0
-.LBB0_155:                              # %list_Nconc.exit560
+.LBB0_155:                              # %dfg_SubSort.exit
                                         #   in Loop: Header=BB0_3 Depth=1
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1904
@@ -2086,7 +2086,7 @@ dfg_parse:                              # @dfg_parse
 	ld.d	$s6, $a1, 0                     # 8-byte Folded Reload
 	st.d	$a0, $s3, %pc_lo12(dfg_PROOFLIST)
 	b	.LBB0_267
-.LBB0_262:                              # %.thread1216
+.LBB0_262:                              # %.thread1215
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a0, $s7, -72
 	beqz	$a0, .LBB0_264
@@ -2340,7 +2340,7 @@ dfg_parse:                              # @dfg_parse
 	b	.LBB0_292
 .LBB0_308:
 	ori	$a0, $zero, 1
-.LBB0_309:                              # %.thread
+.LBB0_309:                              # %.thread716
 	addi.d	$sp, $fp, -2048
 	addi.d	$sp, $sp, -192
 	addi.d	$sp, $sp, 208
@@ -2473,7 +2473,7 @@ dfg_parse:                              # @dfg_parse
 	pcaddu18i	$ra, %call36(misc_Error)
 	jirl	$ra, $ra, 0
 .LBB0_325:
-	ori	$s4, $zero, 1
+	move	$s4, $zero
 	ori	$s6, $zero, 25
 	b	.LBB0_327
 .LBB0_326:                              # %._crit_edge.loopexit
@@ -2496,69 +2496,66 @@ dfg_parse:                              # @dfg_parse
 	move	$sp, $a0
 	pcalau12i	$a1, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.16)
-	ld.b	$a3, $a1, 24
-	ld.d	$a4, $a1, 16
+	ld.b	$a2, $a1, 24
+	ld.d	$a3, $a1, 16
 	vld	$vr0, $a1, 0
-	move	$a2, $zero
-	st.b	$a3, $a0, 24
-	st.d	$a4, $a0, 16
+	move	$a1, $zero
+	st.b	$a2, $a0, 24
+	st.d	$a3, $a0, 16
 	vst	$vr0, $a0, 0
 	.p2align	4, , 16
 .LBB0_328:                              # %yystpcpy.exit
                                         # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a1, $s0, $a2
-	add.d	$a3, $a0, $a2
-	st.b	$a1, $a3, 24
-	addi.d	$a2, $a2, 1
-	bnez	$a1, .LBB0_328
+	ldx.bu	$a2, $s0, $a1
+	add.d	$a3, $a0, $a1
+	st.b	$a2, $a3, 24
+	addi.d	$a1, $a1, 1
+	bnez	$a2, .LBB0_328
 # %bb.329:                              # %yystpcpy.exit701
-	ori	$a1, $zero, 171
-	slt	$a3, $a1, $s3
-	xori	$a4, $s4, 1
-	or	$a3, $a4, $a3
-	bnez	$a3, .LBB0_339
+	beqz	$s4, .LBB0_339
 # %bb.330:                              # %.lr.ph943.preheader
-	add.d	$a2, $a0, $a2
-	addi.d	$a6, $a2, 23
-	pcalau12i	$a2, %pc_hi20(yycheck)
-	addi.d	$a2, $a2, %pc_lo12(yycheck)
-	alsl.d	$a2, $s2, $a2, 1
-	ori	$a3, $zero, 1
-	pcalau12i	$a4, %pc_hi20(.L.str.18)
-	addi.d	$a4, $a4, %pc_lo12(.L.str.18)
-	pcalau12i	$a5, %pc_hi20(.L.str.17)
-	addi.d	$a5, $a5, %pc_lo12(.L.str.17)
-	move	$a7, $zero
+	add.d	$a1, $a0, $a1
+	addi.d	$a5, $a1, 23
+	pcalau12i	$a1, %pc_hi20(yycheck)
+	addi.d	$a1, $a1, %pc_lo12(yycheck)
+	alsl.d	$a1, $s2, $a1, 1
+	ori	$a2, $zero, 1
+	pcalau12i	$a3, %pc_hi20(.L.str.18)
+	addi.d	$a3, $a3, %pc_lo12(.L.str.18)
+	pcalau12i	$a4, %pc_hi20(.L.str.17)
+	addi.d	$a4, $a4, %pc_lo12(.L.str.17)
+	move	$a6, $zero
+	ori	$a7, $zero, 171
 	b	.LBB0_332
 	.p2align	4, , 16
 .LBB0_331:                              #   in Loop: Header=BB0_332 Depth=1
 	addi.d	$s3, $t0, 1
-	bge	$t0, $a1, .LBB0_339
+	bge	$t0, $a7, .LBB0_339
 .LBB0_332:                              # %.lr.ph943
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_335 Depth 2
                                         #     Child Loop BB0_337 Depth 2
 	move	$t0, $s3
-	beq	$s3, $a3, .LBB0_331
+	beq	$s3, $a2, .LBB0_331
 # %bb.333:                              # %.lr.ph943
                                         #   in Loop: Header=BB0_332 Depth=1
 	slli.d	$t1, $t0, 1
-	ldx.h	$t1, $a2, $t1
+	ldx.h	$t1, $a1, $t1
 	bne	$t0, $t1, .LBB0_331
 # %bb.334:                              #   in Loop: Header=BB0_332 Depth=1
-	sltui	$t1, $a7, 1
-	masknez	$t2, $a4, $t1
-	maskeqz	$t1, $a5, $t1
+	sltui	$t1, $a6, 1
+	masknez	$t2, $a3, $t1
+	maskeqz	$t1, $a4, $t1
 	or	$t2, $t1, $t2
-	addi.d	$t1, $a6, -1
+	addi.d	$t1, $a5, -1
 	.p2align	4, , 16
 .LBB0_335:                              #   Parent Loop BB0_332 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$t3, $t2, 0
-	move	$a6, $t1
+	move	$a5, $t1
 	addi.d	$t1, $t1, 1
 	addi.d	$t2, $t2, 1
-	st.b	$t3, $a6, 1
+	st.b	$t3, $a5, 1
 	bnez	$t3, .LBB0_335
 # %bb.336:                              # %yystpcpy.exit705
                                         #   in Loop: Header=BB0_332 Depth=1
@@ -2569,12 +2566,12 @@ dfg_parse:                              # @dfg_parse
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$t2, $t1, 0
 	addi.d	$t1, $t1, 1
-	st.b	$t2, $a6, 1
-	addi.d	$a6, $a6, 1
+	st.b	$t2, $a5, 1
+	addi.d	$a5, $a5, 1
 	bnez	$t2, .LBB0_337
 # %bb.338:                              # %yystpcpy.exit709
                                         #   in Loop: Header=BB0_332 Depth=1
-	addi.w	$a7, $a7, 1
+	addi.w	$a6, $a6, 1
 	b	.LBB0_331
 .LBB0_339:                              # %.loopexit
 	pcaddu18i	$ra, %call36(dfg_error)

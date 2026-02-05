@@ -645,102 +645,102 @@ _ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3
 	and	$a5, $a7, $a5
 	bnez	$a5, .LBB10_3
 # %bb.8:                                # %vector.ph
+	vld	$vr0, $a0, 48
 	bstrpick.d	$a4, $a3, 30, 3
 	slli.d	$a4, $a4, 3
+	vld	$vr1, $a0, 44
+	xvpermi.d	$xr0, $xr0, 68
+	vld	$vr2, $a0, 40
+	xvrepl128vei.w	$xr0, $xr0, 0
+	xvpermi.d	$xr1, $xr1, 68
+	xvrepl128vei.w	$xr1, $xr1, 0
+	xvpermi.d	$xr2, $xr2, 68
+	xvrepl128vei.w	$xr2, $xr2, 0
+	xvbitrevi.w	$xr3, $xr2, 31
+	xvbitrevi.w	$xr4, $xr1, 31
+	xvbitrevi.w	$xr5, $xr0, 31
 	addi.d	$a5, $a1, 64
 	addi.d	$a6, $a2, 64
-	xvrepli.b	$xr0, 0
+	xvrepli.b	$xr6, 0
 	move	$a7, $a4
 	.p2align	4, , 16
 .LBB10_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$fa1, $a5, -64
-	fld.s	$fa2, $a5, -48
-	fld.s	$fa3, $a5, -32
-	fld.s	$fa4, $a5, 0
-	fld.s	$fa5, $a5, 16
-	fld.s	$fa6, $a5, 32
-	fld.s	$fa7, $a5, 48
-	fld.s	$ft0, $a5, -16
-	vextrins.w	$vr4, $vr5, 16
-	vextrins.w	$vr4, $vr6, 32
-	vextrins.w	$vr4, $vr7, 48
-	vextrins.w	$vr1, $vr2, 16
-	vld	$vr2, $a0, 40
-	vextrins.w	$vr1, $vr3, 32
-	vextrins.w	$vr1, $vr8, 48
-	xvpermi.q	$xr1, $xr4, 2
-	xvpermi.d	$xr2, $xr2, 68
-	xvrepl128vei.w	$xr2, $xr2, 0
-	xvbitrevi.w	$xr3, $xr2, 31
-	xvfcmp.cle.s	$xr1, $xr0, $xr1
-	xvbitsel.v	$xr1, $xr3, $xr2, $xr1
-	fld.s	$fa2, $a5, -60
-	fld.s	$fa3, $a5, -44
-	fld.s	$fa4, $a5, -28
-	fld.s	$fa5, $a5, 4
-	fld.s	$fa6, $a5, 20
-	fld.s	$fa7, $a5, 36
-	fld.s	$ft0, $a5, 52
-	fld.s	$ft1, $a5, -12
-	vextrins.w	$vr5, $vr6, 16
-	vextrins.w	$vr5, $vr7, 32
-	vextrins.w	$vr5, $vr8, 48
-	vextrins.w	$vr2, $vr3, 16
-	vld	$vr3, $a0, 44
-	vextrins.w	$vr2, $vr4, 32
-	vextrins.w	$vr2, $vr9, 48
-	xvpermi.q	$xr2, $xr5, 2
-	xvpermi.d	$xr3, $xr3, 68
-	xvrepl128vei.w	$xr3, $xr3, 0
-	xvbitrevi.w	$xr4, $xr3, 31
-	xvfcmp.cle.s	$xr2, $xr0, $xr2
-	xvbitsel.v	$xr2, $xr4, $xr3, $xr2
-	fld.s	$fa3, $a5, -56
-	fld.s	$fa4, $a5, -40
-	fld.s	$fa5, $a5, -24
-	fld.s	$fa6, $a5, 8
-	fld.s	$fa7, $a5, 24
-	fld.s	$ft0, $a5, 40
-	fld.s	$ft1, $a5, 56
-	fld.s	$ft2, $a5, -8
-	vextrins.w	$vr6, $vr7, 16
-	vextrins.w	$vr6, $vr8, 32
-	vextrins.w	$vr6, $vr9, 48
-	vextrins.w	$vr3, $vr4, 16
-	vld	$vr4, $a0, 48
-	vextrins.w	$vr3, $vr5, 32
-	vextrins.w	$vr3, $vr10, 48
-	xvpermi.q	$xr3, $xr6, 2
-	xvpermi.d	$xr4, $xr4, 68
-	xvrepl128vei.w	$xr4, $xr4, 0
-	xvbitrevi.w	$xr5, $xr4, 31
-	xvfcmp.cle.s	$xr3, $xr0, $xr3
-	xvbitsel.v	$xr3, $xr5, $xr4, $xr3
-	xvstelm.w	$xr1, $a6, -64, 0
-	xvstelm.w	$xr1, $a6, -48, 1
-	xvstelm.w	$xr1, $a6, -32, 2
-	xvstelm.w	$xr1, $a6, -16, 3
-	xvstelm.w	$xr1, $a6, 0, 4
-	xvstelm.w	$xr1, $a6, 16, 5
-	xvstelm.w	$xr1, $a6, 32, 6
-	xvstelm.w	$xr1, $a6, 48, 7
-	xvstelm.w	$xr2, $a6, -60, 0
-	xvstelm.w	$xr2, $a6, -44, 1
-	xvstelm.w	$xr2, $a6, -28, 2
-	xvstelm.w	$xr2, $a6, -12, 3
-	xvstelm.w	$xr2, $a6, 4, 4
-	xvstelm.w	$xr2, $a6, 20, 5
-	xvstelm.w	$xr2, $a6, 36, 6
-	xvstelm.w	$xr2, $a6, 52, 7
-	xvstelm.w	$xr3, $a6, -56, 0
-	xvstelm.w	$xr3, $a6, -40, 1
-	xvstelm.w	$xr3, $a6, -24, 2
-	xvstelm.w	$xr3, $a6, -8, 3
-	xvstelm.w	$xr3, $a6, 8, 4
-	xvstelm.w	$xr3, $a6, 24, 5
-	xvstelm.w	$xr3, $a6, 40, 6
-	xvstelm.w	$xr3, $a6, 56, 7
+	fld.s	$fa7, $a5, -64
+	fld.s	$ft0, $a5, -48
+	fld.s	$ft1, $a5, -32
+	fld.s	$ft2, $a5, 0
+	fld.s	$ft3, $a5, 16
+	fld.s	$ft4, $a5, 32
+	fld.s	$ft5, $a5, 48
+	fld.s	$ft6, $a5, -16
+	vextrins.w	$vr10, $vr11, 16
+	vextrins.w	$vr10, $vr12, 32
+	vextrins.w	$vr10, $vr13, 48
+	vextrins.w	$vr7, $vr8, 16
+	vextrins.w	$vr7, $vr9, 32
+	vextrins.w	$vr7, $vr14, 48
+	xvpermi.q	$xr7, $xr10, 2
+	xvfcmp.cle.s	$xr7, $xr6, $xr7
+	xvbitsel.v	$xr7, $xr3, $xr2, $xr7
+	fld.s	$ft0, $a5, -60
+	fld.s	$ft1, $a5, -44
+	fld.s	$ft2, $a5, -28
+	fld.s	$ft3, $a5, 4
+	fld.s	$ft4, $a5, 20
+	fld.s	$ft5, $a5, 36
+	fld.s	$ft6, $a5, 52
+	fld.s	$ft7, $a5, -12
+	vextrins.w	$vr11, $vr12, 16
+	vextrins.w	$vr11, $vr13, 32
+	vextrins.w	$vr11, $vr14, 48
+	vextrins.w	$vr8, $vr9, 16
+	vextrins.w	$vr8, $vr10, 32
+	vextrins.w	$vr8, $vr15, 48
+	xvpermi.q	$xr8, $xr11, 2
+	xvfcmp.cle.s	$xr8, $xr6, $xr8
+	xvbitsel.v	$xr8, $xr4, $xr1, $xr8
+	fld.s	$ft1, $a5, -56
+	fld.s	$ft2, $a5, -40
+	fld.s	$ft3, $a5, -24
+	fld.s	$ft4, $a5, 8
+	fld.s	$ft5, $a5, 24
+	fld.s	$ft6, $a5, 40
+	fld.s	$ft7, $a5, 56
+	fld.s	$ft8, $a5, -8
+	vextrins.w	$vr12, $vr13, 16
+	vextrins.w	$vr12, $vr14, 32
+	vextrins.w	$vr12, $vr15, 48
+	vextrins.w	$vr9, $vr10, 16
+	vextrins.w	$vr9, $vr11, 32
+	vextrins.w	$vr9, $vr16, 48
+	xvpermi.q	$xr9, $xr12, 2
+	xvfcmp.cle.s	$xr9, $xr6, $xr9
+	xvbitsel.v	$xr9, $xr5, $xr0, $xr9
+	xvstelm.w	$xr7, $a6, -64, 0
+	xvstelm.w	$xr7, $a6, -48, 1
+	xvstelm.w	$xr7, $a6, -32, 2
+	xvstelm.w	$xr7, $a6, -16, 3
+	xvstelm.w	$xr7, $a6, 0, 4
+	xvstelm.w	$xr7, $a6, 16, 5
+	xvstelm.w	$xr7, $a6, 32, 6
+	xvstelm.w	$xr7, $a6, 48, 7
+	xvstelm.w	$xr8, $a6, -60, 0
+	xvstelm.w	$xr8, $a6, -44, 1
+	xvstelm.w	$xr8, $a6, -28, 2
+	xvstelm.w	$xr8, $a6, -12, 3
+	xvstelm.w	$xr8, $a6, 4, 4
+	xvstelm.w	$xr8, $a6, 20, 5
+	xvstelm.w	$xr8, $a6, 36, 6
+	xvstelm.w	$xr8, $a6, 52, 7
+	xvstelm.w	$xr9, $a6, -56, 0
+	xvstelm.w	$xr9, $a6, -40, 1
+	xvstelm.w	$xr9, $a6, -24, 2
+	xvstelm.w	$xr9, $a6, -8, 3
+	xvstelm.w	$xr9, $a6, 8, 4
+	xvstelm.w	$xr9, $a6, 24, 5
+	xvstelm.w	$xr9, $a6, 40, 6
+	xvstelm.w	$xr9, $a6, 56, 7
 	st.w	$zero, $a6, -52
 	st.w	$zero, $a6, -36
 	st.w	$zero, $a6, -20

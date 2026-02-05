@@ -766,12 +766,12 @@ _ZN20btMultiSapBroadphase11createProxyERK9btVector3S2_iPvssP12btDispatcherS3_: #
 	move	$s7, $a3
 	move	$s0, $a2
 	move	$s1, $a1
-	move	$s2, $a0
+	move	$s3, $a0
 	ori	$a0, $zero, 136
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s2, $a0
 	st.d	$s6, $a0, 0
 	st.h	$s5, $a0, 8
 	st.h	$s4, $a0, 10
@@ -781,17 +781,17 @@ _ZN20btMultiSapBroadphase11createProxyERK9btVector3S2_iPvssP12btDispatcherS3_: #
 	vst	$vr0, $a0, 44
 	st.d	$zero, $a0, 16
 	ori	$a0, $zero, 1
-	st.b	$a0, $s3, 88
-	st.d	$zero, $s3, 80
-	st.d	$zero, $s3, 68
+	st.b	$a0, $s2, 88
+	st.d	$zero, $s2, 80
+	st.d	$zero, $s2, 68
 	vld	$vr0, $s1, 0
-	vst	$vr0, $s3, 96
+	vst	$vr0, $s2, 96
 	vld	$vr0, $s0, 0
-	vst	$vr0, $s3, 112
-	ld.w	$a1, $s2, 92
-	ld.w	$a2, $s2, 96
-	st.w	$s7, $s3, 128
-	st.d	$s3, $s3, 16
+	vst	$vr0, $s2, 112
+	ld.w	$a1, $s3, 92
+	ld.w	$a2, $s3, 96
+	st.w	$s7, $s2, 128
+	st.d	$s2, $s2, 16
 	bne	$a1, $a2, .LBB7_17
 # %bb.1:
 	sltui	$a2, $a1, 1
@@ -807,9 +807,9 @@ _ZN20btMultiSapBroadphase11createProxyERK9btVector3S2_iPvssP12btDispatcherS3_: #
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 92
+	ld.w	$a1, $s3, 92
 	move	$s4, $a0
-	ld.d	$a0, $s2, 104
+	ld.d	$a0, $s3, 104
 	blez	$a1, .LBB7_13
 .LBB7_4:                                # %.lr.ph.i.i.i
 	ori	$a3, $zero, 8
@@ -852,43 +852,43 @@ _ZN20btMultiSapBroadphase11createProxyERK9btVector3S2_iPvssP12btDispatcherS3_: #
 	addi.d	$a2, $a2, 8
 	bnez	$a3, .LBB7_10
 .LBB7_11:                               # %_ZNK20btAlignedObjectArrayIPN20btMultiSapBroadphase15btMultiSapProxyEE4copyEiiPS2_.exit.thread.i.i
-	ld.bu	$a2, $s2, 112
+	ld.bu	$a2, $s3, 112
 	bnez	$a2, .LBB7_15
 	b	.LBB7_16
 .LBB7_12:
 	move	$s4, $zero
-	ld.d	$a0, $s2, 104
+	ld.d	$a0, $s3, 104
 	bgtz	$a1, .LBB7_4
 .LBB7_13:                               # %_ZNK20btAlignedObjectArrayIPN20btMultiSapBroadphase15btMultiSapProxyEE4copyEiiPS2_.exit.i.i
 	beqz	$a0, .LBB7_16
 # %bb.14:                               # %_ZNK20btAlignedObjectArrayIPN20btMultiSapBroadphase15btMultiSapProxyEE4copyEiiPS2_.exit.i.i
-	ld.b	$a2, $s2, 112
+	ld.b	$a2, $s3, 112
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB7_16
 .LBB7_15:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 92
+	ld.w	$a1, $s3, 92
 .LBB7_16:                               # %_ZN20btAlignedObjectArrayIPN20btMultiSapBroadphase15btMultiSapProxyEE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
-	st.b	$a0, $s2, 112
-	st.d	$s4, $s2, 104
-	st.w	$s5, $s2, 96
+	st.b	$a0, $s3, 112
+	st.d	$s4, $s3, 104
+	st.w	$s5, $s3, 96
 .LBB7_17:                               # %_ZN20btAlignedObjectArrayIPN20btMultiSapBroadphase15btMultiSapProxyEE9push_backERKS2_.exit
-	ld.d	$a0, $s2, 104
+	ld.d	$a0, $s3, 104
 	slli.d	$a2, $a1, 3
-	ld.d	$a3, $s2, 0
-	stx.d	$s3, $a0, $a2
+	ld.d	$a3, $s3, 0
+	stx.d	$s2, $a0, $a2
 	addi.d	$a0, $a1, 1
-	st.w	$a0, $s2, 92
+	st.w	$a0, $s3, 92
 	ld.d	$a5, $a3, 32
-	move	$a0, $s2
-	move	$a1, $s3
+	move	$a0, $s3
+	move	$a1, $s2
 	move	$a2, $s1
 	move	$a3, $s0
 	move	$a4, $fp
 	jirl	$ra, $a5, 0
-	move	$a0, $s3
+	move	$a0, $s2
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
@@ -1169,16 +1169,15 @@ _ZN20btMultiSapBroadphase7rayTestERK9btVector3S2_R23btBroadphaseRayCallbackS2_S2
 _ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispatcher: # @_ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispatcher
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	.cfi_def_cfa_offset 144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	.cfi_def_cfa_offset 128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1186,7 +1185,6 @@ _ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispat
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a2
 	vld	$vr0, $a2, 0
 	move	$s0, $a3
@@ -1199,13 +1197,13 @@ _ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispat
 	pcalau12i	$a0, %pc_hi20(_ZTVZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispatcherE21MyNodeOverlapCallback+16)
 	addi.d	$a2, $a0, %pc_lo12(_ZTVZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispatcherE21MyNodeOverlapCallback+16)
 	ld.d	$a0, $a1, 56
-	st.d	$a2, $sp, 48
-	st.d	$a1, $sp, 56
-	st.d	$s1, $sp, 64
-	st.d	$a4, $sp, 72
+	st.d	$a2, $sp, 40
+	st.d	$a1, $sp, 48
+	st.d	$s1, $sp, 56
+	st.d	$a4, $sp, 64
 	beqz	$a0, .LBB13_2
 # %bb.1:
-	addi.d	$a1, $sp, 48
+	addi.d	$a1, $sp, 40
 	move	$a2, $fp
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(_ZNK14btQuantizedBvh26reportAabbOverlappingNodexEP21btNodeOverlapCallbackRK9btVector3S4_)
@@ -1216,7 +1214,6 @@ _ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispat
 # %bb.3:                                # %.lr.ph
 	move	$s3, $zero
 	move	$s4, $zero
-	addi.d	$s5, $s1, 96
 	b	.LBB13_5
 	.p2align	4, , 16
 .LBB13_4:                               # %_Z20TestAabbAgainstAabb2RK9btVector3S1_S1_S1_.exit.thread
@@ -1247,42 +1244,42 @@ _ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispat
 	ld.d	$a0, $a0, 8
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 80
-	addi.d	$a1, $sp, 32
-	addi.d	$a2, $sp, 16
+	addi.d	$a1, $sp, 24
+	addi.d	$a2, $sp, 8
 	jirl	$ra, $a3, 0
-	fld.s	$fa0, $sp, 32
+	fld.s	$fa0, $sp, 24
 	fld.s	$fa1, $s1, 112
 	ori	$a0, $zero, 1
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	ori	$a1, $zero, 1
 	bcnez	$fcc0, .LBB13_8
 # %bb.6:                                #   in Loop: Header=BB13_5 Depth=1
-	fld.s	$fa0, $sp, 16
-	fld.s	$fa1, $s5, 0
+	fld.s	$fa0, $sp, 8
+	fld.s	$fa1, $s1, 96
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	ori	$a1, $zero, 1
 	bcnez	$fcc0, .LBB13_8
 # %bb.7:                                #   in Loop: Header=BB13_5 Depth=1
 	move	$a1, $zero
 .LBB13_8:                               #   in Loop: Header=BB13_5 Depth=1
-	fld.s	$fa0, $sp, 40
+	fld.s	$fa0, $sp, 32
 	fld.s	$fa1, $s1, 120
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB13_11
 # %bb.9:                                #   in Loop: Header=BB13_5 Depth=1
-	fld.s	$fa0, $sp, 24
+	fld.s	$fa0, $sp, 16
 	fld.s	$fa1, $s1, 104
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB13_11
 # %bb.10:                               #   in Loop: Header=BB13_5 Depth=1
 	move	$a0, $a1
 .LBB13_11:                              #   in Loop: Header=BB13_5 Depth=1
-	fld.s	$fa0, $sp, 36
+	fld.s	$fa0, $sp, 28
 	fld.s	$fa1, $s1, 116
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB13_4
 # %bb.12:                               #   in Loop: Header=BB13_5 Depth=1
-	fld.s	$fa0, $sp, 20
+	fld.s	$fa0, $sp, 12
 	fld.s	$fa1, $s1, 100
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	movcf2gr	$a1, $fcc0
@@ -1316,15 +1313,14 @@ _ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispat
 	addi.d	$s3, $s3, 8
 	blt	$s4, $a0, .LBB13_16
 .LBB13_17:                              # %._crit_edge
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end13:
 	.size	_ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispatcher, .Lfunc_end13-_ZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispatcher
@@ -1932,18 +1928,16 @@ _ZZN20btMultiSapBroadphase7setAabbEP17btBroadphaseProxyRK9btVector3S4_P12btDispa
 _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBroadphasePairSortPredicateEEvT_ii: # @_ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBroadphasePairSortPredicateEEvT_ii
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a3
 	move	$s0, $a2
 	move	$s1, $a0
@@ -2041,14 +2035,13 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBro
 	.p2align	4, , 16
 .LBB27_21:                              # %.critedge.preheader
                                         #   in Loop: Header=BB27_4 Depth=2
-	addi.d	$t3, $a5, -16
 	slli.d	$t2, $a3, 5
-	move	$t4, $a3
+	move	$t3, $a3
 	b	.LBB27_23
 	.p2align	4, , 16
 .LBB27_22:                              # %_ZN37btMultiSapBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38.thread
                                         #   in Loop: Header=BB27_23 Depth=3
-	addi.d	$t4, $t4, -1
+	addi.d	$t3, $t3, -1
 	addi.w	$a3, $a3, -1
 	addi.d	$t2, $t2, -32
 .LBB27_23:                              # %.critedge
@@ -2057,62 +2050,62 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBro
                                         # =>    This Inner Loop Header: Depth=3
 	beqz	$a0, .LBB27_28
 # %bb.24:                               #   in Loop: Header=BB27_23 Depth=3
-	ld.d	$t5, $a0, 16
+	ld.d	$t4, $a0, 16
 	beqz	$a1, .LBB27_29
 .LBB27_25:                              #   in Loop: Header=BB27_23 Depth=3
-	ld.d	$t6, $a1, 16
-	ldx.d	$t7, $a6, $t2
-	beqz	$t7, .LBB27_30
+	ld.d	$t5, $a1, 16
+	ldx.d	$t6, $a6, $t2
+	beqz	$t6, .LBB27_30
 .LBB27_26:                              #   in Loop: Header=BB27_23 Depth=3
-	ld.d	$t8, $t7, 16
-	add.d	$t7, $a6, $t2
-	ld.d	$s2, $t7, 8
-	beqz	$s2, .LBB27_31
+	ld.d	$t7, $t6, 16
+	add.d	$t6, $a6, $t2
+	ld.d	$t8, $t6, 8
+	beqz	$t8, .LBB27_31
 .LBB27_27:                              #   in Loop: Header=BB27_23 Depth=3
-	ld.d	$s2, $s2, 16
-	bltu	$t8, $t5, .LBB27_22
+	ld.d	$t8, $t8, 16
+	bltu	$t7, $t4, .LBB27_22
 	b	.LBB27_32
 	.p2align	4, , 16
 .LBB27_28:                              #   in Loop: Header=BB27_23 Depth=3
-	move	$t5, $zero
+	move	$t4, $zero
 	bnez	$a1, .LBB27_25
 .LBB27_29:                              #   in Loop: Header=BB27_23 Depth=3
-	move	$t6, $zero
-	ldx.d	$t7, $a6, $t2
-	bnez	$t7, .LBB27_26
+	move	$t5, $zero
+	ldx.d	$t6, $a6, $t2
+	bnez	$t6, .LBB27_26
 .LBB27_30:                              #   in Loop: Header=BB27_23 Depth=3
-	move	$t8, $zero
-	add.d	$t7, $a6, $t2
-	ld.d	$s2, $t7, 8
-	bnez	$s2, .LBB27_27
+	move	$t7, $zero
+	add.d	$t6, $a6, $t2
+	ld.d	$t8, $t6, 8
+	bnez	$t8, .LBB27_27
 .LBB27_31:                              #   in Loop: Header=BB27_23 Depth=3
-	move	$s2, $zero
-	bltu	$t8, $t5, .LBB27_22
+	move	$t8, $zero
+	bltu	$t7, $t4, .LBB27_22
 .LBB27_32:                              #   in Loop: Header=BB27_23 Depth=3
-	bne	$t5, $t8, .LBB27_36
+	bne	$t4, $t7, .LBB27_36
 # %bb.33:                               #   in Loop: Header=BB27_23 Depth=3
-	bltu	$s2, $t6, .LBB27_36
+	bltu	$t8, $t5, .LBB27_36
 # %bb.34:                               #   in Loop: Header=BB27_23 Depth=3
-	bne	$t6, $s2, .LBB27_38
+	bne	$t5, $t8, .LBB27_38
 # %bb.35:                               #   in Loop: Header=BB27_23 Depth=3
-	ld.d	$t5, $t7, 16
-	bltu	$t5, $a4, .LBB27_22
+	ld.d	$t4, $t6, 16
+	bltu	$t4, $a4, .LBB27_22
 	b	.LBB27_38
 	.p2align	4, , 16
 .LBB27_36:                              # %_ZN37btMultiSapBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38
                                         #   in Loop: Header=BB27_23 Depth=3
-	bne	$t5, $t8, .LBB27_38
+	bne	$t4, $t7, .LBB27_38
 # %bb.37:                               # %_ZN37btMultiSapBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38
                                         #   in Loop: Header=BB27_23 Depth=3
-	bltu	$s2, $t6, .LBB27_22
+	bltu	$t8, $t5, .LBB27_22
 	.p2align	4, , 16
 .LBB27_38:                              # %_ZN37btMultiSapBroadphasePairSortPredicateclERK16btBroadphasePairS2_.exit38.thread43
                                         #   in Loop: Header=BB27_4 Depth=2
-	blt	$t4, $a7, .LBB27_3
+	blt	$t3, $a7, .LBB27_3
 # %bb.39:                               #   in Loop: Header=BB27_4 Depth=2
-	xvld	$xr0, $t7, 0
+	xvld	$xr0, $t6, 0
 	vld	$vr1, $a5, 0
-	xvst	$xr0, $t3, 0
+	xvst	$xr0, $a5, -16
 	ld.d	$a5, $s1, 16
 	add.d	$a6, $a5, $t2
 	stx.d	$t0, $a5, $t2
@@ -2131,12 +2124,11 @@ _ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBro
 	jirl	$ra, $ra, 0
 	b	.LBB27_1
 .LBB27_42:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end27:
 	.size	_ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBroadphasePairSortPredicateEEvT_ii, .Lfunc_end27-_ZN20btAlignedObjectArrayI16btBroadphasePairE17quickSortInternalI37btMultiSapBroadphasePairSortPredicateEEvT_ii

@@ -1474,33 +1474,33 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	ld.d	$a0, $a1, 0
 	beqz	$a0, .LBB8_34
 # %bb.1:
-	move	$fp, $a1
+	move	$s0, $a1
 	ld.d	$s8, $a1, 24
 	ld.d	$s7, $a1, 32
 	ld.d	$s6, $a1, 8
 	or	$a1, $s8, $s7
-	beqz	$a1, .LBB8_51
+	beqz	$a1, .LBB8_40
 # %bb.2:
 	pcalau12i	$a1, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.13)
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_38
+	beqz	$a0, .LBB8_48
 # %bb.3:
 	move	$s1, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.43)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.43)
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_39
+	beqz	$a0, .LBB8_52
 # %bb.4:
-	move	$s0, $a0
+	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.45)
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_40
+	beqz	$a0, .LBB8_53
 # %bb.5:                                # %.preheader105
 	move	$s2, $a0
 	move	$s4, $zero
@@ -1527,7 +1527,7 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_42
+	beqz	$a0, .LBB8_55
 # %bb.10:                               #   in Loop: Header=BB8_9 Depth=3
 	ld.w	$a0, $s8, 0
 	beq	$s4, $a0, .LBB8_22
@@ -1541,7 +1541,7 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	jirl	$ra, $ra, 0
 	addi.w	$s4, $s4, 1
 	bne	$a0, $s3, .LBB8_9
-	b	.LBB8_41
+	b	.LBB8_54
 .LBB8_13:                               # %.split122
                                         #   in Loop: Header=BB8_8 Depth=2
 	ld.d	$s5, $s7, 8
@@ -1553,19 +1553,19 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB8_70
+	bnez	$a0, .LBB8_63
 # %bb.14:                               #   in Loop: Header=BB8_8 Depth=2
 	ld.d	$a0, $s7, 16
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB8_41
+	beq	$a0, $s3, .LBB8_54
 # %bb.15:                               #   in Loop: Header=BB8_8 Depth=2
 	ori	$a0, $zero, 10
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB8_41
+	beq	$a0, $s3, .LBB8_54
 # %bb.16:                               # %.outer106
                                         #   in Loop: Header=BB8_8 Depth=2
 	ld.d	$s7, $s7, 24
@@ -1582,7 +1582,7 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_43
+	beqz	$a0, .LBB8_55
 # %bb.19:                               #   in Loop: Header=BB8_18 Depth=2
 	ld.w	$a0, $s8, 0
 	beq	$s4, $a0, .LBB8_21
@@ -1593,7 +1593,7 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	jirl	$ra, $ra, 0
 	addi.w	$s4, $s4, 1
 	bne	$a0, $s3, .LBB8_18
-	b	.LBB8_41
+	b	.LBB8_54
 .LBB8_21:                               #   in Loop: Header=BB8_7 Depth=1
 	move	$s7, $zero
 .LBB8_22:                               # %.split133
@@ -1607,7 +1607,7 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB8_69
+	bnez	$a0, .LBB8_62
 # %bb.23:                               # %.outer
                                         #   in Loop: Header=BB8_7 Depth=1
 	ld.d	$s8, $s8, 24
@@ -1629,7 +1629,7 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_44
+	beqz	$a0, .LBB8_55
 # %bb.28:                               #   in Loop: Header=BB8_27 Depth=2
 	ld.w	$a0, $s7, 0
 	beq	$s4, $a0, .LBB8_30
@@ -1640,7 +1640,7 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	jirl	$ra, $ra, 0
 	addi.w	$s4, $s4, 1
 	bne	$a0, $s5, .LBB8_27
-	b	.LBB8_41
+	b	.LBB8_54
 .LBB8_30:                               # %.split122.us.us
                                         #   in Loop: Header=BB8_26 Depth=1
 	ld.d	$s3, $s7, 8
@@ -1652,19 +1652,19 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strncmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB8_70
+	bnez	$a0, .LBB8_63
 # %bb.31:                               #   in Loop: Header=BB8_26 Depth=1
 	ld.d	$a0, $s7, 16
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s5, .LBB8_41
+	beq	$a0, $s5, .LBB8_54
 # %bb.32:                               #   in Loop: Header=BB8_26 Depth=1
 	ori	$a0, $zero, 10
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s5, .LBB8_41
+	beq	$a0, $s5, .LBB8_54
 # %bb.33:                               # %.outer106.us
                                         #   in Loop: Header=BB8_26 Depth=1
 	ld.d	$s7, $s7, 24
@@ -1675,14 +1675,14 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	addi.d	$a0, $a0, %pc_lo12(.L.str.41)
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-	b	.LBB8_64
+	b	.LBB8_57
 .LBB8_35:                               #   in Loop: Header=BB8_36 Depth=1
 	addi.d	$a0, $sp, 8
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
-	beq	$a0, $a1, .LBB8_41
+	beq	$a0, $a1, .LBB8_54
 .LBB8_36:                               # %.outer106.split.us.split.us
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $sp, 8
@@ -1691,16 +1691,91 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB8_35
-# %bb.37:
+# %bb.37:                               # %.critedge
+	move	$a0, $s1
+	pcaddu18i	$ra, %call36(fclose)
+	jirl	$ra, $ra, 0
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(fclose)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s0, 0
+	pcaddu18i	$ra, %call36(unlink)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s0, 0
+	addi.w	$s3, $zero, -1
+	beq	$a0, $s3, .LBB8_59
+# %bb.38:
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(rename)
+	jirl	$ra, $ra, 0
+	beq	$a0, $s3, .LBB8_60
+# %bb.39:
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB8_40:
+	beqz	$s6, .LBB8_47
+# %bb.41:
+	ld.d	$a0, $s0, 0
+	pcalau12i	$a1, %pc_hi20(.L.str.53)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.53)
+	pcaddu18i	$ra, %call36(fopen)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB8_50
+# %bb.42:
+	move	$fp, $a0
+	addi.w	$s3, $zero, -1
+	.p2align	4, , 16
+.LBB8_43:                               # %.preheader
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a0, $s6, 8
+	move	$a1, $fp
+	pcaddu18i	$ra, %call36(fputs)
+	jirl	$ra, $ra, 0
+	beq	$a0, $s3, .LBB8_49
+# %bb.44:                               #   in Loop: Header=BB8_43 Depth=1
+	ori	$a0, $zero, 10
+	move	$a1, $fp
+	pcaddu18i	$ra, %call36(fputc)
+	jirl	$ra, $ra, 0
+	beq	$a0, $s3, .LBB8_49
+# %bb.45:                               #   in Loop: Header=BB8_43 Depth=1
+	ld.d	$s6, $s6, 24
+	bnez	$s6, .LBB8_43
+# %bb.46:
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(fclose)
+	jirl	$ra, $ra, 0
+.LBB8_47:
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(cdiff_ctx_free)
+	jirl	$ra, $ra, 0
 	move	$s3, $zero
-	move	$s4, $zero
-	b	.LBB8_46
-.LBB8_38:
-	ld.d	$a1, $fp, 0
+	b	.LBB8_58
+.LBB8_48:
+	ld.d	$a1, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.42)
-	b	.LBB8_61
-.LBB8_39:
+	b	.LBB8_51
+.LBB8_49:
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(fclose)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s0, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.49)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
+	pcaddu18i	$ra, %call36(logg)
+	jirl	$ra, $ra, 0
+	b	.LBB8_58
+.LBB8_50:
+	ld.d	$a1, $s0, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.54)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.54)
+.LBB8_51:
+	pcaddu18i	$ra, %call36(logg)
+	jirl	$ra, $ra, 0
+	b	.LBB8_57
+.LBB8_52:
 	pcalau12i	$a0, %pc_hi20(.L.str.44)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.44)
 	pcaddu18i	$ra, %call36(logg)
@@ -1708,142 +1783,54 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	b	.LBB8_64
-.LBB8_40:
+	b	.LBB8_57
+.LBB8_53:
 	pcalau12i	$a0, %pc_hi20(.L.str.46)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.46)
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	b	.LBB8_63
-.LBB8_41:                               # %.split184.us
+	b	.LBB8_56
+.LBB8_54:                               # %.split184.us
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(unlink)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.49)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(logg)
-	jirl	$ra, $ra, 0
-	b	.LBB8_63
-.LBB8_42:
-	ori	$s3, $zero, 1
-	b	.LBB8_45
-.LBB8_43:
-	move	$s4, $zero
-	ori	$s3, $zero, 1
-	b	.LBB8_46
-.LBB8_44:
-	move	$s3, $zero
-.LBB8_45:                               # %.split.us
-	ori	$s4, $zero, 1
-.LBB8_46:                               # %.split.us
-	move	$a0, $s1
-	pcaddu18i	$ra, %call36(fclose)
-	jirl	$ra, $ra, 0
-	move	$a0, $s2
-	pcaddu18i	$ra, %call36(fclose)
-	jirl	$ra, $ra, 0
-	bnez	$s3, .LBB8_62
-# %bb.47:                               # %.split.us
-	bnez	$s4, .LBB8_62
-# %bb.48:
-	ld.d	$a0, $fp, 0
-	pcaddu18i	$ra, %call36(unlink)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
-	addi.w	$s3, $zero, -1
-	beq	$a0, $s3, .LBB8_66
-# %bb.49:
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(rename)
-	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB8_67
-# %bb.50:
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(free)
-	jirl	$ra, $ra, 0
-.LBB8_51:
-	beqz	$s6, .LBB8_58
-# %bb.52:
-	ld.d	$a0, $fp, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.53)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.53)
-	pcaddu18i	$ra, %call36(fopen)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB8_60
-# %bb.53:
-	move	$s0, $a0
-	addi.w	$s3, $zero, -1
-	.p2align	4, , 16
-.LBB8_54:                               # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s6, 8
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(fputs)
-	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB8_59
-# %bb.55:                               #   in Loop: Header=BB8_54 Depth=1
-	ori	$a0, $zero, 10
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(fputc)
-	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB8_59
-# %bb.56:                               #   in Loop: Header=BB8_54 Depth=1
-	ld.d	$s6, $s6, 24
-	bnez	$s6, .LBB8_54
-# %bb.57:
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(fclose)
-	jirl	$ra, $ra, 0
-.LBB8_58:
 	move	$a0, $fp
-	pcaddu18i	$ra, %call36(cdiff_ctx_free)
+	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	move	$s3, $zero
-	b	.LBB8_65
-.LBB8_59:
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(fclose)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-	b	.LBB8_65
-.LBB8_60:
-	ld.d	$a1, $fp, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.54)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.54)
-.LBB8_61:
-	pcaddu18i	$ra, %call36(logg)
+	b	.LBB8_56
+.LBB8_55:                               # %.split.us
+	move	$a0, $s1
+	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	b	.LBB8_64
-.LBB8_62:
+	move	$a0, $s2
+	pcaddu18i	$ra, %call36(fclose)
+	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.50)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.50)
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB8_63:
-	move	$a0, $s0
+.LBB8_56:
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB8_64:
+.LBB8_57:
 	addi.w	$s3, $zero, -1
-.LBB8_65:
+.LBB8_58:
 	move	$a0, $s3
 	ld.d	$s8, $sp, 1032                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1040                  # 8-byte Folded Reload
@@ -1858,67 +1845,67 @@ cdiff_cmd_close:                        # @cdiff_cmd_close
 	ld.d	$ra, $sp, 1112                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 1120
 	ret
-.LBB8_66:
+.LBB8_59:
 	pcalau12i	$a0, %pc_hi20(.L.str.51)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.51)
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-	b	.LBB8_68
-.LBB8_67:
-	ld.d	$a2, $fp, 0
+	b	.LBB8_61
+.LBB8_60:
+	ld.d	$a2, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.52)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.52)
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-.LBB8_68:
-	move	$a0, $s0
+.LBB8_61:
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB8_65
-.LBB8_69:
+	b	.LBB8_58
+.LBB8_62:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $fp, 0
+	ld.d	$a2, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.47)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.47)
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-	b	.LBB8_65
-.LBB8_70:                               # %.split186.us
+	b	.LBB8_58
+.LBB8_63:                               # %.split186.us
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $fp, 0
+	ld.d	$a2, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.48)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.48)
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(logg)
 	jirl	$ra, $ra, 0
-	b	.LBB8_64
+	b	.LBB8_57
 .Lfunc_end8:
 	.size	cdiff_cmd_close, .Lfunc_end8-cdiff_cmd_close
                                         # -- End function

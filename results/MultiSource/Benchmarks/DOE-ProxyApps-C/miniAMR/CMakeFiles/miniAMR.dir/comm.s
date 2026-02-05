@@ -1573,12 +1573,12 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
 	xvfmul.d	$xr3, $xr3, $xr1
 	xvslli.d	$xr4, $xr2, 4
 	xvpickve2gr.d	$a4, $xr4, 0
-	add.d	$a4, $t5, $a4
 	xvpickve2gr.d	$t0, $xr4, 1
-	add.d	$t0, $t5, $t0
 	xvpickve2gr.d	$t3, $xr4, 2
-	add.d	$t3, $t5, $t3
 	xvpickve2gr.d	$t6, $xr4, 3
+	add.d	$a4, $t5, $a4
+	add.d	$t0, $t5, $t0
+	add.d	$t3, $t5, $t3
 	add.d	$t6, $t5, $t6
 	xvstelm.d	$xr3, $a4, 0, 0
 	xvstelm.d	$xr3, $t0, 0, 1
@@ -1682,22 +1682,22 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
                                         # =>  This Inner Loop Header: Depth=2
 	xvslli.d	$xr3, $xr2, 4
 	xvpickve2gr.d	$a1, $xr3, 0
-	add.d	$a2, $t4, $a1
-	xvpickve2gr.d	$a4, $xr3, 1
-	xvpickve2gr.d	$t0, $xr3, 2
-	add.d	$t8, $t4, $t0
-	xvpickve2gr.d	$s2, $xr3, 3
-	add.d	$s5, $t4, $s2
-	fld.d	$fa3, $t8, -8
+	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a4, $xr3, 2
+	xvpickve2gr.d	$t0, $xr3, 3
+	add.d	$t8, $t4, $a1
+	add.d	$s2, $t4, $a4
+	add.d	$s5, $t4, $t0
+	fld.d	$fa3, $s2, -8
 	fld.d	$fa4, $s5, -8
-	add.d	$t8, $t4, $a4
-	fld.d	$fa5, $a2, -8
-	fld.d	$fa6, $t8, -8
+	add.d	$s2, $t4, $a2
+	fld.d	$fa5, $t8, -8
+	fld.d	$fa6, $s2, -8
 	vextrins.d	$vr3, $vr4, 16
 	fldx.d	$fa4, $t4, $a1
-	fldx.d	$fa7, $t4, $t0
-	fldx.d	$ft0, $t4, $s2
-	fldx.d	$ft1, $t4, $a4
+	fldx.d	$fa7, $t4, $a4
+	fldx.d	$ft0, $t4, $t0
+	fldx.d	$ft1, $t4, $a2
 	vextrins.d	$vr5, $vr6, 16
 	xvpermi.q	$xr5, $xr3, 2
 	vextrins.d	$vr7, $vr8, 16
@@ -1875,12 +1875,12 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
 	xvfmul.d	$xr3, $xr3, $xr1
 	xvslli.d	$xr4, $xr2, 4
 	xvpickve2gr.d	$a4, $xr4, 0
-	add.d	$a4, $a6, $a4
 	xvpickve2gr.d	$t0, $xr4, 1
-	add.d	$t0, $a6, $t0
 	xvpickve2gr.d	$t5, $xr4, 2
-	add.d	$t5, $a6, $t5
 	xvpickve2gr.d	$t6, $xr4, 3
+	add.d	$a4, $a6, $a4
+	add.d	$t0, $a6, $t0
+	add.d	$t5, $a6, $t5
 	add.d	$t6, $a6, $t6
 	xvstelm.d	$xr3, $a4, 0, 0
 	xvstelm.d	$xr3, $t0, 0, 1
@@ -1980,22 +1980,22 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
                                         # =>  This Inner Loop Header: Depth=2
 	xvslli.d	$xr3, $xr2, 4
 	xvpickve2gr.d	$a1, $xr3, 0
-	add.d	$a2, $a0, $a1
-	xvpickve2gr.d	$a4, $xr3, 1
-	xvpickve2gr.d	$t0, $xr3, 2
-	add.d	$t5, $a0, $t0
-	xvpickve2gr.d	$t6, $xr3, 3
-	add.d	$t7, $a0, $t6
-	fld.d	$fa3, $t5, -8
+	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a4, $xr3, 2
+	xvpickve2gr.d	$t0, $xr3, 3
+	add.d	$t5, $a0, $a1
+	add.d	$t6, $a0, $a4
+	add.d	$t7, $a0, $t0
+	fld.d	$fa3, $t6, -8
 	fld.d	$fa4, $t7, -8
-	add.d	$t5, $a0, $a4
-	fld.d	$fa5, $a2, -8
-	fld.d	$fa6, $t5, -8
+	add.d	$t6, $a0, $a2
+	fld.d	$fa5, $t5, -8
+	fld.d	$fa6, $t6, -8
 	vextrins.d	$vr3, $vr4, 16
 	fldx.d	$fa4, $a0, $a1
-	fldx.d	$fa7, $a0, $t0
-	fldx.d	$ft0, $a0, $t6
-	fldx.d	$ft1, $a0, $a4
+	fldx.d	$fa7, $a0, $a4
+	fldx.d	$ft0, $a0, $t0
+	fldx.d	$ft1, $a0, $a2
 	vextrins.d	$vr5, $vr6, 16
 	xvpermi.q	$xr5, $xr3, 2
 	vextrins.d	$vr7, $vr8, 16
@@ -2285,12 +2285,12 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
 	xvfmul.d	$xr3, $xr3, $xr1
 	xvslli.d	$xr4, $xr2, 4
 	xvpickve2gr.d	$a4, $xr4, 0
-	add.d	$a4, $t6, $a4
 	xvpickve2gr.d	$a6, $xr4, 1
-	add.d	$a6, $t6, $a6
 	xvpickve2gr.d	$t2, $xr4, 2
-	add.d	$t2, $t6, $t2
 	xvpickve2gr.d	$t3, $xr4, 3
+	add.d	$a4, $t6, $a4
+	add.d	$a6, $t6, $a6
+	add.d	$t2, $t6, $t2
 	add.d	$t3, $t6, $t3
 	xvstelm.d	$xr3, $a4, 0, 0
 	xvstelm.d	$xr3, $a6, 0, 1
@@ -2392,22 +2392,22 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
                                         # =>  This Inner Loop Header: Depth=2
 	xvslli.d	$xr3, $xr2, 4
 	xvpickve2gr.d	$a1, $xr3, 0
-	add.d	$a2, $t5, $a1
-	xvpickve2gr.d	$a4, $xr3, 1
-	xvpickve2gr.d	$t2, $xr3, 2
-	add.d	$t3, $t5, $t2
-	xvpickve2gr.d	$fp, $xr3, 3
-	add.d	$s4, $t5, $fp
-	fld.d	$fa3, $t3, -8
+	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a4, $xr3, 2
+	xvpickve2gr.d	$t2, $xr3, 3
+	add.d	$t3, $t5, $a1
+	add.d	$fp, $t5, $a4
+	add.d	$s4, $t5, $t2
+	fld.d	$fa3, $fp, -8
 	fld.d	$fa4, $s4, -8
-	add.d	$t3, $t5, $a4
-	fld.d	$fa5, $a2, -8
-	fld.d	$fa6, $t3, -8
+	add.d	$fp, $t5, $a2
+	fld.d	$fa5, $t3, -8
+	fld.d	$fa6, $fp, -8
 	vextrins.d	$vr3, $vr4, 16
 	fldx.d	$fa4, $t5, $a1
-	fldx.d	$fa7, $t5, $t2
-	fldx.d	$ft0, $t5, $fp
-	fldx.d	$ft1, $t5, $a4
+	fldx.d	$fa7, $t5, $a4
+	fldx.d	$ft0, $t5, $t2
+	fldx.d	$ft1, $t5, $a2
 	vextrins.d	$vr5, $vr6, 16
 	xvpermi.q	$xr5, $xr3, 2
 	vextrins.d	$vr7, $vr8, 16
@@ -2585,12 +2585,12 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
 	xvfmul.d	$xr3, $xr3, $xr1
 	xvslli.d	$xr4, $xr2, 4
 	xvpickve2gr.d	$a4, $xr4, 0
-	add.d	$a4, $a7, $a4
 	xvpickve2gr.d	$t2, $xr4, 1
-	add.d	$t2, $a7, $t2
 	xvpickve2gr.d	$t3, $xr4, 2
-	add.d	$t3, $a7, $t3
 	xvpickve2gr.d	$t7, $xr4, 3
+	add.d	$a4, $a7, $a4
+	add.d	$t2, $a7, $t2
+	add.d	$t3, $a7, $t3
 	add.d	$t7, $a7, $t7
 	xvstelm.d	$xr3, $a4, 0, 0
 	xvstelm.d	$xr3, $t2, 0, 1
@@ -2685,22 +2685,22 @@ on_proc_comm_diff:                      # @on_proc_comm_diff
                                         # =>  This Inner Loop Header: Depth=2
 	xvslli.d	$xr3, $xr2, 4
 	xvpickve2gr.d	$a1, $xr3, 0
-	add.d	$a2, $a0, $a1
-	xvpickve2gr.d	$a4, $xr3, 1
-	xvpickve2gr.d	$t2, $xr3, 2
-	add.d	$t3, $a0, $t2
-	xvpickve2gr.d	$t5, $xr3, 3
-	add.d	$t6, $a0, $t5
-	fld.d	$fa3, $t3, -8
+	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a4, $xr3, 2
+	xvpickve2gr.d	$t2, $xr3, 3
+	add.d	$t3, $a0, $a1
+	add.d	$t5, $a0, $a4
+	add.d	$t6, $a0, $t2
+	fld.d	$fa3, $t5, -8
 	fld.d	$fa4, $t6, -8
-	add.d	$t3, $a0, $a4
-	fld.d	$fa5, $a2, -8
-	fld.d	$fa6, $t3, -8
+	add.d	$t5, $a0, $a2
+	fld.d	$fa5, $t3, -8
+	fld.d	$fa6, $t5, -8
 	vextrins.d	$vr3, $vr4, 16
 	fldx.d	$fa4, $a0, $a1
-	fldx.d	$fa7, $a0, $t2
-	fldx.d	$ft0, $a0, $t5
-	fldx.d	$ft1, $a0, $a4
+	fldx.d	$fa7, $a0, $a4
+	fldx.d	$ft0, $a0, $t2
+	fldx.d	$ft1, $a0, $a2
 	vextrins.d	$vr5, $vr6, 16
 	xvpermi.q	$xr5, $xr3, 2
 	vextrins.d	$vr7, $vr8, 16

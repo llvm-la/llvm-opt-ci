@@ -2753,8 +2753,8 @@ Meld:                                   # @Meld
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	move	$s5, $zero
 	ori	$s2, $zero, 9
-	addi.w	$s3, $zero, -91
-	ori	$s0, $zero, 90
+	addi.w	$s0, $zero, -91
+	ori	$s3, $zero, 90
 	ori	$a5, $zero, 1
 	b	.LBB7_20
 	.p2align	4, , 16
@@ -2800,7 +2800,7 @@ Meld:                                   # @Meld
 	.p2align	4, , 16
 .LBB7_24:                               #   in Loop: Header=BB7_26 Depth=2
 	addi.d	$a1, $a1, -9
-	bgeu	$s0, $a1, .LBB7_40
+	bgeu	$s3, $a1, .LBB7_40
 .LBB7_25:                               # %.critedge2
                                         #   in Loop: Header=BB7_26 Depth=2
 	ld.d	$s4, $s4, 8
@@ -2851,11 +2851,11 @@ Meld:                                   # @Meld
 # %bb.36:                               # %SplitIsDefinite.exit357
                                         #   in Loop: Header=BB7_26 Depth=2
 	addi.d	$a1, $a1, -100
-	bltu	$a1, $s3, .LBB7_25
+	bltu	$a1, $s0, .LBB7_25
 # %bb.37:                               # %SplitIsDefinite.exit357
                                         #   in Loop: Header=BB7_26 Depth=2
 	addi.d	$a1, $a3, -100
-	bltu	$a1, $s3, .LBB7_25
+	bltu	$a1, $s0, .LBB7_25
 	b	.LBB7_40
 .LBB7_38:                               #   in Loop: Header=BB7_26 Depth=2
 	move	$a0, $zero

@@ -7461,7 +7461,7 @@ _ZN12_GLOBAL__N_124writeTimingSummaryReportERKSt6vectorINSt7__cxx1112basic_strin
 	ld.d	$a0, $sp, 280
 	addi.d	$a1, $sp, 296
 	beq	$a0, $a1, .LBB10_325
-.LBB10_328:
+.LBB10_328:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i472
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
@@ -9870,7 +9870,7 @@ _ZN12_GLOBAL__N_119writeChecksumReportERKSt6vectorINSt7__cxx1112basic_stringIcSt
 	ld.d	$a0, $sp, 264
 	addi.d	$a1, $sp, 280
 	beq	$a0, $a1, .LBB12_240
-.LBB12_247:
+.LBB12_247:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i319
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
@@ -11838,10 +11838,10 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 # %bb.3:                                # %_ZNSt15basic_streambufIcSt11char_traitsIcEE5sgetcEv.exit.thread.i.i.i.i.peel
 	ld.bu	$a0, $a0, 0
 .LBB19_4:                               # %_ZNKSt19istreambuf_iteratorIcSt11char_traitsIcEE9_M_at_eofEv.exit.i.i.peel
-	addi.d	$s5, $fp, 16
+	addi.d	$a1, $fp, 16
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	addi.w	$s7, $zero, -1
 	addi.w	$s3, $a0, 0
-	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	beqz	$s2, .LBB19_9
 # %bb.5:                                # %_ZNKSt19istreambuf_iteratorIcSt11char_traitsIcEE9_M_at_eofEv.exit.i.i.peel
 	addi.w	$a2, $s0, 0
@@ -11877,15 +11877,16 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 # %bb.13:
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 24
-	bgeu	$a0, $a1, .LBB19_97
+	bgeu	$a0, $a1, .LBB19_98
 # %bb.14:                               # %_ZNSt15basic_streambufIcSt11char_traitsIcEE5sgetcEv.exit.thread.i.i.peel
 	ld.bu	$s4, $a0, 0
 .LBB19_15:                              # %_ZNKSt19istreambuf_iteratorIcSt11char_traitsIcEEdeEv.exit.peel
-	st.b	$s4, $s5, 0
+	addi.d	$a0, $fp, 16
+	st.b	$s4, $a0, 0
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 24
-	bgeu	$a0, $a1, .LBB19_98
-.LBB19_16:
+	bgeu	$a0, $a1, .LBB19_97
+# %bb.16:
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s1, 16
 .LBB19_17:                              # %_ZNSt19istreambuf_iteratorIcSt11char_traitsIcEEppEv.exit.peel.preheader
@@ -12137,10 +12138,10 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 	st.d	$a0, $s1, 16
 .LBB19_66:                              # %_ZNSt19istreambuf_iteratorIcSt11char_traitsIcEEppEv.exit40.peel.preheader
 	addi.d	$s3, $s3, 1
+	ori	$s5, $zero, 1
 	addi.w	$a0, $s0, 0
 	addi.d	$a0, $a0, 1
-	sltui	$s5, $a0, 1
-	addi.d	$s6, $fp, 16
+	sltui	$s8, $a0, 1
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 24
 	bltu	$a0, $a1, .LBB19_69
@@ -12209,17 +12210,17 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 .Ltmp1002:                              # EH_LABEL
 # %bb.80:
 	move	$s4, $a0
-	addi.d	$a0, $s3, -1
-	beq	$a0, $s7, .LBB19_83
+	beqz	$s3, .LBB19_83
 # %bb.81:
 	ld.d	$a1, $fp, 0
-	bnez	$a0, .LBB19_93
+	bne	$s3, $s5, .LBB19_93
 # %bb.82:
 	ld.b	$a0, $a1, 0
 	st.b	$a0, $s4, 0
 .LBB19_83:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7_S_copyEPcPKcm.exit
 	ld.d	$a0, $fp, 0
-	beq	$a0, $s6, .LBB19_85
+	addi.d	$a1, $fp, 16
+	beq	$a0, $a1, .LBB19_85
 .LBB19_84:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
@@ -12264,7 +12265,7 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 	bnez	$s2, .LBB19_70
 	.p2align	4, , 16
 .LBB19_92:
-	bne	$s5, $s4, .LBB19_78
+	bne	$s8, $s4, .LBB19_78
 	b	.LBB19_96
 	.p2align	4, , 16
 .LBB19_93:
@@ -12273,7 +12274,8 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	bne	$a0, $s6, .LBB19_84
+	addi.d	$a1, $fp, 16
+	bne	$a0, $a1, .LBB19_84
 	b	.LBB19_85
 .LBB19_94:                              # %_ZNSt15basic_streambufIcSt11char_traitsIcEE5sgetcEv.exit.i.i35
 	ld.d	$a0, $s1, 0
@@ -12308,7 +12310,13 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB19_97:                              # %_ZNSt15basic_streambufIcSt11char_traitsIcEE5sgetcEv.exit.i.i.peel
+.LBB19_97:
+	ld.d	$a0, $s1, 0
+	ld.d	$a1, $a0, 80
+	move	$a0, $s1
+	jirl	$ra, $a1, 0
+	b	.LBB19_17
+.LBB19_98:                              # %_ZNSt15basic_streambufIcSt11char_traitsIcEE5sgetcEv.exit.i.i.peel
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 72
 	move	$a0, $s1
@@ -12317,16 +12325,7 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructISt19istreamb
 	addi.d	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	masknez	$s1, $s1, $a0
-	st.b	$s4, $s5, 0
-	ld.d	$a0, $s1, 16
-	ld.d	$a1, $s1, 24
-	bltu	$a0, $a1, .LBB19_16
-.LBB19_98:
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $a0, 80
-	move	$a0, $s1
-	jirl	$ra, $a1, 0
-	b	.LBB19_17
+	b	.LBB19_15
 .LBB19_99:                              # %_ZNSt15basic_streambufIcSt11char_traitsIcEE5sgetcEv.exit.i.i35.peel
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 72

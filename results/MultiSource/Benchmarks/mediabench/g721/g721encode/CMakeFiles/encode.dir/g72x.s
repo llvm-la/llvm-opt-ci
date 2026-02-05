@@ -452,21 +452,21 @@ update:                                 # @update
 	bstrpick.d	$t3, $a4, 14, 0
 	beqz	$t0, .LBB7_2
 # %bb.1:
-	ld.w	$t0, $a7, 0
-	slli.w	$t1, $t0, 1
-	srai.d	$t2, $t1, 16
-	ori	$t4, $zero, 9
-	slt	$t2, $t4, $t2
-	srli.d	$t0, $t0, 10
+	ld.d	$t0, $a7, 0
+	srli.d	$t1, $t0, 15
+	ext.w.h	$t1, $t1
+	ori	$t2, $zero, 9
+	slt	$t1, $t2, $t1
+	srli.d	$t2, $t0, 10
 	ori	$t4, $zero, 1
-	bstrins.d	$t0, $t4, 63, 5
-	bstrpick.d	$t1, $t1, 47, 16
-	sll.w	$t0, $t0, $t1
+	bstrins.d	$t2, $t4, 63, 5
+	bstrpick.d	$t0, $t0, 30, 15
+	sll.w	$t0, $t2, $t0
 	ext.w.h	$t0, $t0
-	masknez	$t0, $t0, $t2
-	lu12i.w	$t1, 7
-	ori	$t1, $t1, 3072
-	maskeqz	$t1, $t1, $t2
+	masknez	$t0, $t0, $t1
+	lu12i.w	$t2, 7
+	ori	$t2, $t2, 3072
+	maskeqz	$t1, $t2, $t1
 	or	$t0, $t1, $t0
 	srli.d	$t1, $t0, 1
 	add.d	$t0, $t1, $t0
@@ -496,7 +496,6 @@ update:                                 # @update
 .LBB7_7:
 	addi.d	$sp, $sp, -16
 	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$t2, $a7, 0
 	bstrpick.d	$a2, $a6, 31, 31
 	ext.w.h	$t1, $t1
@@ -505,14 +504,13 @@ update:                                 # @update
 	add.d	$t1, $t2, $t1
 	add.d	$t1, $t1, $t4
 	st.d	$t1, $a7, 0
-	addi.d	$t4, $a7, 16
 	lu12i.w	$t1, -3
 	beqz	$t0, .LBB7_10
 # %bb.8:                                # %.loopexit
 	ld.d	$a0, $a7, 36
 	ld.h	$a6, $a7, 44
 	vrepli.b	$vr0, 0
-	vst	$vr0, $t4, 0
+	vst	$vr0, $a7, 16
 	st.d	$a0, $a7, 38
 	st.h	$a6, $a7, 46
                                         # implicit-def: $r14
@@ -523,96 +521,96 @@ update:                                 # @update
 	b	.LBB7_60
 .LBB7_10:
 	ld.h	$t2, $a7, 18
-	srai.d	$t5, $t2, 7
-	sub.d	$t2, $t2, $t5
-	lu12i.w	$t5, 3
+	srai.d	$t4, $t2, 7
+	sub.d	$t2, $t2, $t4
+	lu12i.w	$t4, 3
 	beqz	$a6, .LBB7_13
 # %bb.11:
 	ld.hu	$a6, $a7, 32
-	ld.hu	$t6, $a7, 16
-	bstrpick.d	$t7, $a2, 15, 0
-	xor	$t8, $a6, $t7
-	sltui	$t8, $t8, 1
-	sub.d	$fp, $zero, $t6
-	maskeqz	$fp, $fp, $t8
-	masknez	$t8, $t6, $t8
-	or	$t8, $fp, $t8
-	ext.w.h	$t8, $t8
-	lu12i.w	$fp, -2
-	blt	$fp, $t8, .LBB7_14
+	ld.hu	$t5, $a7, 16
+	bstrpick.d	$t6, $a2, 15, 0
+	xor	$t7, $a6, $t6
+	sltui	$t7, $t7, 1
+	sub.d	$t8, $zero, $t5
+	maskeqz	$t8, $t8, $t7
+	masknez	$t7, $t5, $t7
+	or	$t7, $t8, $t7
+	ext.w.h	$t7, $t7
+	lu12i.w	$t8, -2
+	blt	$t8, $t7, .LBB7_14
 # %bb.12:
 	addi.d	$t2, $t2, -256
 	b	.LBB7_17
 .LBB7_13:
 	ld.h	$a6, $a7, 16
 	st.h	$t2, $a7, 18
-	srai.d	$t6, $a6, 8
-	sub.d	$a6, $a6, $t6
+	srai.d	$t5, $a6, 8
+	sub.d	$a6, $a6, $t5
 	b	.LBB7_25
 .LBB7_14:
-	lu12i.w	$fp, 2
-	blt	$t8, $fp, .LBB7_16
+	lu12i.w	$t8, 2
+	blt	$t7, $t8, .LBB7_16
 # %bb.15:
 	addi.d	$t2, $t2, 255
 	b	.LBB7_17
 .LBB7_16:
-	srai.d	$t8, $t8, 5
-	add.d	$t2, $t8, $t2
+	srai.d	$t7, $t7, 5
+	add.d	$t2, $t7, $t2
 .LBB7_17:
-	ld.h	$fp, $a7, 34
-	addi.w	$s0, $a2, 0
-	ext.w.h	$t8, $t2
+	ld.h	$t8, $a7, 34
+	addi.w	$fp, $a2, 0
+	ext.w.h	$t7, $t2
 	lu12i.w	$t2, 13
-	bne	$s0, $fp, .LBB7_20
+	bne	$fp, $t8, .LBB7_20
 # %bb.18:
-	lu12i.w	$fp, -4
-	ori	$fp, $fp, 3969
-	blt	$t8, $fp, .LBB7_22
+	lu12i.w	$t8, -4
+	ori	$t8, $t8, 3969
+	blt	$t7, $t8, .LBB7_22
 # %bb.19:
 	lu12i.w	$t2, 2
 	ori	$t2, $t2, 3968
-	slt	$fp, $t8, $t2
-	masknez	$t2, $t2, $fp
-	maskeqz	$t8, $t8, $fp
-	or	$t2, $t8, $t2
+	slt	$t8, $t7, $t2
+	masknez	$t2, $t2, $t8
+	maskeqz	$t7, $t7, $t8
+	or	$t2, $t7, $t2
 	addi.d	$t2, $t2, 128
 	b	.LBB7_22
 .LBB7_20:
-	ori	$fp, $t1, 129
-	blt	$t8, $fp, .LBB7_22
+	ori	$t8, $t1, 129
+	blt	$t7, $t8, .LBB7_22
 # %bb.21:
-	ori	$t2, $t5, 128
-	slt	$fp, $t8, $t2
-	masknez	$t2, $t2, $fp
-	maskeqz	$t8, $t8, $fp
-	or	$t2, $t8, $t2
+	ori	$t2, $t4, 128
+	slt	$t8, $t7, $t2
+	masknez	$t2, $t2, $t8
+	maskeqz	$t7, $t7, $t8
+	or	$t2, $t7, $t2
 	addi.d	$t2, $t2, -128
 .LBB7_22:
 	st.h	$t2, $a7, 18
-	ext.w.h	$t8, $t6
-	srai.d	$t8, $t8, 8
-	sub.d	$t6, $t6, $t8
-	bne	$a6, $t7, .LBB7_24
+	ext.w.h	$t7, $t5
+	srai.d	$t7, $t7, 8
+	sub.d	$t5, $t5, $t7
+	bne	$a6, $t6, .LBB7_24
 # %bb.23:
-	addi.d	$a6, $t6, 192
+	addi.d	$a6, $t5, 192
 	b	.LBB7_25
 .LBB7_24:
-	addi.d	$a6, $t6, -192
+	addi.d	$a6, $t5, -192
 .LBB7_25:
-	ori	$t5, $t5, 3072
-	sub.d	$t5, $t5, $t2
-	ext.w.h	$t5, $t5
-	ext.w.h	$t6, $a6
-	sub.d	$t7, $zero, $t5
-	st.h	$a6, $t4, 0
-	bge	$t6, $t7, .LBB7_27
+	ori	$t4, $t4, 3072
+	sub.d	$t4, $t4, $t2
+	ext.w.h	$t4, $t4
+	ext.w.h	$t5, $a6
+	sub.d	$t6, $zero, $t4
+	st.h	$a6, $a7, 16
+	bge	$t5, $t6, .LBB7_27
 # %bb.26:
-	move	$t5, $t7
+	move	$t4, $t6
 	b	.LBB7_28
 .LBB7_27:
-	bge	$t5, $t6, .LBB7_29
-.LBB7_28:                               # %.sink.split215
-	st.h	$t5, $t4, 0
+	bge	$t4, $t5, .LBB7_29
+.LBB7_28:                               # %.sink.split213
+	st.h	$t4, $a7, 16
 .LBB7_29:
 	ld.hu	$a6, $a7, 20
 	addi.d	$a0, $a0, -5
@@ -836,13 +834,12 @@ update:                                 # @update
 	ld.h	$a4, $a7, 48
 	st.h	$a0, $a7, 36
 	st.h	$a4, $a7, 50
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	beqz	$a5, .LBB7_65
 # %bb.62:
 	blez	$a5, .LBB7_66
-# %bb.63:                               # %.lr.ph.i179.1
+# %bb.63:                               # %.lr.ph.i177.1
 	ori	$a0, $zero, 1
 	bne	$a5, $a0, .LBB7_70
 # %bb.64:
@@ -855,16 +852,16 @@ update:                                 # @update
 	lu12i.w	$a0, -8
 	ori	$a0, $a0, 1
 	bltu	$a5, $a0, .LBB7_72
-# %bb.67:                               # %.lr.ph.i185.1
+# %bb.67:                               # %.lr.ph.i183.1
 	addi.w	$a0, $zero, -1
 	beq	$a5, $a0, .LBB7_77
-# %bb.68:                               # %.lr.ph.i185.2
+# %bb.68:                               # %.lr.ph.i183.2
 	addi.w	$a0, $zero, -4
 	bge	$a0, $a5, .LBB7_78
 # %bb.69:
 	lu12i.w	$a0, 32
 	b	.LBB7_121
-.LBB7_70:                               # %.lr.ph.i179.2
+.LBB7_70:                               # %.lr.ph.i177.2
 	ori	$a0, $zero, 4
 	bge	$a5, $a0, .LBB7_73
 # %bb.71:
@@ -874,13 +871,13 @@ update:                                 # @update
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 3104
 	b	.LBB7_122
-.LBB7_73:                               # %.lr.ph.i179.3
+.LBB7_73:                               # %.lr.ph.i177.3
 	ori	$a0, $zero, 8
 	bge	$a5, $a0, .LBB7_75
 # %bb.74:
 	lu12i.w	$a0, 48
 	b	.LBB7_117
-.LBB7_75:                               # %.lr.ph.i179.4
+.LBB7_75:                               # %.lr.ph.i177.4
 	ori	$a0, $zero, 16
 	bge	$a5, $a0, .LBB7_80
 # %bb.76:
@@ -889,121 +886,121 @@ update:                                 # @update
 .LBB7_77:
 	lu12i.w	$a0, 16
 	b	.LBB7_121
-.LBB7_78:                               # %.lr.ph.i185.3
+.LBB7_78:                               # %.lr.ph.i183.3
 	addi.w	$a0, $zero, -8
 	bge	$a0, $a5, .LBB7_82
 # %bb.79:
 	lu12i.w	$a0, 48
 	b	.LBB7_121
-.LBB7_80:                               # %.lr.ph.i179.5
+.LBB7_80:                               # %.lr.ph.i177.5
 	ori	$a0, $zero, 32
 	bge	$a5, $a0, .LBB7_84
 # %bb.81:
 	lu12i.w	$a0, 80
 	b	.LBB7_117
-.LBB7_82:                               # %.lr.ph.i185.4
+.LBB7_82:                               # %.lr.ph.i183.4
 	addi.w	$a0, $zero, -16
 	bge	$a0, $a5, .LBB7_86
 # %bb.83:
 	lu12i.w	$a0, 64
 	b	.LBB7_121
-.LBB7_84:                               # %.lr.ph.i179.6
+.LBB7_84:                               # %.lr.ph.i177.6
 	ori	$a0, $zero, 64
 	bge	$a5, $a0, .LBB7_88
 # %bb.85:
 	lu12i.w	$a0, 96
 	b	.LBB7_117
-.LBB7_86:                               # %.lr.ph.i185.5
+.LBB7_86:                               # %.lr.ph.i183.5
 	addi.w	$a0, $zero, -32
 	bge	$a0, $a5, .LBB7_90
 # %bb.87:
 	lu12i.w	$a0, 80
 	b	.LBB7_121
-.LBB7_88:                               # %.lr.ph.i179.7
+.LBB7_88:                               # %.lr.ph.i177.7
 	ori	$a0, $zero, 128
 	bge	$a5, $a0, .LBB7_92
 # %bb.89:
 	lu12i.w	$a0, 112
 	b	.LBB7_117
-.LBB7_90:                               # %.lr.ph.i185.6
+.LBB7_90:                               # %.lr.ph.i183.6
 	addi.w	$a0, $zero, -64
 	bge	$a0, $a5, .LBB7_94
 # %bb.91:
 	lu12i.w	$a0, 96
 	b	.LBB7_121
-.LBB7_92:                               # %.lr.ph.i179.8
+.LBB7_92:                               # %.lr.ph.i177.8
 	ori	$a0, $zero, 256
 	bge	$a5, $a0, .LBB7_96
 # %bb.93:
 	lu12i.w	$a0, 128
 	b	.LBB7_117
-.LBB7_94:                               # %.lr.ph.i185.7
+.LBB7_94:                               # %.lr.ph.i183.7
 	addi.w	$a0, $zero, -128
 	bge	$a0, $a5, .LBB7_98
 # %bb.95:
 	lu12i.w	$a0, 112
 	b	.LBB7_121
-.LBB7_96:                               # %.lr.ph.i179.9
+.LBB7_96:                               # %.lr.ph.i177.9
 	ori	$a0, $zero, 512
 	bge	$a5, $a0, .LBB7_100
 # %bb.97:
 	lu12i.w	$a0, 144
 	b	.LBB7_117
-.LBB7_98:                               # %.lr.ph.i185.8
+.LBB7_98:                               # %.lr.ph.i183.8
 	addi.w	$a0, $zero, -256
 	bge	$a0, $a5, .LBB7_102
 # %bb.99:
 	lu12i.w	$a0, 128
 	b	.LBB7_121
-.LBB7_100:                              # %.lr.ph.i179.10
+.LBB7_100:                              # %.lr.ph.i177.10
 	ori	$a0, $zero, 1024
 	bge	$a5, $a0, .LBB7_104
 # %bb.101:
 	lu12i.w	$a0, 160
 	b	.LBB7_117
-.LBB7_102:                              # %.lr.ph.i185.9
+.LBB7_102:                              # %.lr.ph.i183.9
 	addi.w	$a0, $zero, -512
 	bge	$a0, $a5, .LBB7_106
 # %bb.103:
 	lu12i.w	$a0, 144
 	b	.LBB7_121
-.LBB7_104:                              # %.lr.ph.i179.11
+.LBB7_104:                              # %.lr.ph.i177.11
 	ori	$a0, $zero, 2048
 	bge	$a5, $a0, .LBB7_108
 # %bb.105:
 	lu12i.w	$a0, 176
 	b	.LBB7_117
-.LBB7_106:                              # %.lr.ph.i185.10
+.LBB7_106:                              # %.lr.ph.i183.10
 	addi.w	$a0, $zero, -1024
 	bge	$a0, $a5, .LBB7_110
 # %bb.107:
 	lu12i.w	$a0, 160
 	b	.LBB7_121
-.LBB7_108:                              # %.lr.ph.i179.12
+.LBB7_108:                              # %.lr.ph.i177.12
 	lu12i.w	$a0, 1
 	bge	$a5, $a0, .LBB7_112
 # %bb.109:
 	lu12i.w	$a0, 192
 	b	.LBB7_117
-.LBB7_110:                              # %.lr.ph.i185.11
+.LBB7_110:                              # %.lr.ph.i183.11
 	addi.w	$a0, $zero, -2048
 	bge	$a0, $a5, .LBB7_114
 # %bb.111:
 	lu12i.w	$a0, 176
 	b	.LBB7_121
-.LBB7_112:                              # %.lr.ph.i179.13
+.LBB7_112:                              # %.lr.ph.i177.13
 	lu12i.w	$a0, 2
 	bge	$a5, $a0, .LBB7_116
 # %bb.113:
 	lu12i.w	$a0, 208
 	b	.LBB7_117
-.LBB7_114:                              # %.lr.ph.i185.12
+.LBB7_114:                              # %.lr.ph.i183.12
 	lu12i.w	$a0, -1
 	bge	$a0, $a5, .LBB7_118
 # %bb.115:
 	lu12i.w	$a0, 192
 	b	.LBB7_121
-.LBB7_116:                              # %.lr.ph.i179.14
+.LBB7_116:                              # %.lr.ph.i177.14
 	lu12i.w	$a0, 4
 	slt	$a0, $a5, $a0
 	lu12i.w	$a4, 240
@@ -1011,20 +1008,20 @@ update:                                 # @update
 	lu12i.w	$a6, 224
 	maskeqz	$a0, $a6, $a0
 	or	$a0, $a0, $a4
-.LBB7_117:                              # %quan.exit184
+.LBB7_117:                              # %quan.exit182
 	srli.d	$a4, $a0, 16
 	srli.d	$a0, $a0, 10
 	slli.d	$a5, $a5, 6
 	sra.w	$a4, $a5, $a4
 	add.d	$a0, $a4, $a0
 	b	.LBB7_122
-.LBB7_118:                              # %.lr.ph.i185.13
+.LBB7_118:                              # %.lr.ph.i183.13
 	lu12i.w	$a0, -2
 	bge	$a0, $a5, .LBB7_120
 # %bb.119:
 	lu12i.w	$a0, 208
 	b	.LBB7_121
-.LBB7_120:                              # %.lr.ph.i185.14
+.LBB7_120:                              # %.lr.ph.i183.14
 	lu12i.w	$a0, -4
 	slt	$a0, $a0, $a5
 	lu12i.w	$a4, 240
@@ -1032,7 +1029,7 @@ update:                                 # @update
 	lu12i.w	$a6, 224
 	maskeqz	$a0, $a6, $a0
 	or	$a0, $a0, $a4
-.LBB7_121:                              # %quan.exit190
+.LBB7_121:                              # %quan.exit188
 	srli.d	$a4, $a0, 16
 	srli.d	$a0, $a0, 10
 	slli.d	$a5, $a5, 6
@@ -1262,30 +1259,29 @@ tandem_adjust_ulaw:                     # @tandem_adjust_ulaw
 # %bb.2:
 	bnez	$a0, .LBB9_6
 # %bb.3:
-	addi.d	$a0, $fp, -1
-	sltu	$a1, $fp, $a0
-	masknez	$fp, $a0, $a1
+	sltu	$a0, $zero, $fp
+	sub.w	$fp, $fp, $a0
 	b	.LBB9_9
 .LBB9_4:
 	bnez	$a0, .LBB9_7
 # %bb.5:
 	addi.d	$a0, $fp, -127
 	sltui	$a0, $a0, 1
-	addi.d	$a1, $fp, 1
+	addi.w	$a1, $fp, 1
 	masknez	$a1, $a1, $a0
 	ori	$a2, $zero, 254
 	b	.LBB9_8
 .LBB9_6:
 	addi.d	$a0, $fp, -255
 	sltui	$a0, $a0, 1
-	addi.d	$a1, $fp, 1
+	addi.w	$a1, $fp, 1
 	masknez	$a1, $a1, $a0
 	ori	$a2, $zero, 126
 	b	.LBB9_8
 .LBB9_7:
 	addi.d	$a0, $fp, -128
 	sltui	$a0, $a0, 1
-	addi.d	$a1, $fp, -1
+	addi.w	$a1, $fp, -1
 	masknez	$a1, $a1, $a0
 	ori	$a2, $zero, 128
 .LBB9_8:

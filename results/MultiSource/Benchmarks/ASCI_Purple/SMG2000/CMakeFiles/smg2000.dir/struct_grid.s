@@ -1609,9 +1609,9 @@ hypre_GatherAllBoxes:                   # @hypre_GatherAllBoxes
 	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
-	move	$fp, $a4
-	move	$s1, $a3
-	move	$s2, $a2
+	move	$s1, $a4
+	move	$s2, $a3
+	move	$s3, $a2
 	move	$s7, $a1
 	move	$s6, $a0
 	addi.d	$a1, $sp, 76
@@ -1630,49 +1630,50 @@ hypre_GatherAllBoxes:                   # @hypre_GatherAllBoxes
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 76
-	move	$s3, $a0
+	move	$s8, $a0
 	slli.w	$a0, $a1, 2
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	move	$s8, $a0
+	move	$s4, $a0
 	addi.d	$a0, $sp, 68
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	ori	$a4, $zero, 1
 	ori	$a5, $zero, 1
 	ori	$s0, $zero, 1
-	move	$a3, $s3
+	move	$a3, $s8
 	move	$a6, $s6
 	pcaddu18i	$ra, %call36(hypre_MPI_Allgather)
 	jirl	$ra, $ra, 0
-	st.w	$zero, $s8, 0
-	ld.w	$a1, $sp, 76
-	ld.w	$a0, $s3, 0
-	ori	$a2, $zero, 2
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	blt	$a1, $a2, .LBB9_3
+	st.w	$zero, $s4, 0
+	ld.w	$a0, $sp, 76
+	ld.w	$fp, $s8, 0
+	ori	$a1, $zero, 2
+	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
+	blt	$a0, $a1, .LBB9_3
 # %bb.1:                                # %.lr.ph.preheader
-	move	$a1, $zero
-	addi.d	$a2, $s3, 4
-	addi.d	$a3, $s8, 4
-	move	$fp, $a0
+	move	$a0, $zero
+	addi.d	$a1, $s8, 4
+	addi.d	$a2, $s4, 4
+	move	$a3, $fp
+	move	$s1, $s4
 	.p2align	4, , 16
 .LBB9_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a1, $a0, $a1
-	st.w	$a1, $a3, 0
-	ld.w	$a0, $a2, 0
+	add.d	$a0, $a3, $a0
+	st.w	$a0, $a2, 0
+	ld.w	$a3, $a1, 0
 	ld.w	$a4, $sp, 76
-	add.w	$fp, $a0, $fp
+	add.w	$fp, $a3, $fp
 	addi.d	$s0, $s0, 1
+	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 4
-	addi.d	$a3, $a3, 4
 	blt	$s0, $a4, .LBB9_2
 	b	.LBB9_4
 .LBB9_3:
-	move	$fp, $a0
+	move	$s1, $s4
 .LBB9_4:                                # %._crit_edge
 	ld.w	$a0, $sp, 68
 	slli.w	$a0, $a0, 2
@@ -1723,10 +1724,10 @@ hypre_GatherAllBoxes:                   # @hypre_GatherAllBoxes
 	ori	$a6, $zero, 1
 	move	$a0, $s4
 	move	$a3, $s5
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	move	$a4, $s3
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	move	$a5, $s8
+	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
+	move	$a4, $s8
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	move	$a5, $s1
 	move	$a7, $s6
 	pcaddu18i	$ra, %call36(hypre_MPI_Allgatherv)
 	jirl	$ra, $ra, 0

@@ -5850,6 +5850,7 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB25_23:                              # %_Z13record_resultdPKc.exit
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI25_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI25_0)
 	sub.d	$a1, $s0, $fp
@@ -5859,8 +5860,7 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a2, $a1, 8
+	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
@@ -6101,6 +6101,7 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB26_23:                              # %_Z13record_resultdPKc.exit
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI26_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI26_0)
 	sub.d	$a1, $s0, $fp
@@ -6110,8 +6111,7 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a2, $a1, 8
+	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
@@ -12604,6 +12604,7 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB57_23:                              # %_Z13record_resultdPKc.exit
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI57_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI57_0)
 	sub.d	$a1, $s0, $fp
@@ -12613,8 +12614,7 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a2, $a1, 8
+	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
@@ -12855,6 +12855,7 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB58_23:                              # %_Z13record_resultdPKc.exit
+	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(.LCPI58_0)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI58_0)
 	sub.d	$a1, $s0, $fp
@@ -12864,8 +12865,7 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	alsl.d	$a1, $a0, $a2, 4
 	slli.d	$a3, $a0, 4
 	fstx.d	$fa0, $a2, $a3
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
-	st.d	$a2, $a1, 8
+	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
@@ -56975,12 +56975,11 @@ _Z13test_constantIf19custom_constant_addIfEEvPT_iPKc: # @_Z13test_constantIf19cu
 .LBB267_8:                              # %.preheader.preheader
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	vldi	$vr2, -1244
 	pcalau12i	$a0, %pc_hi20(.LCPI267_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI267_0)
+	vldi	$vr2, -1244
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -56995,7 +56994,6 @@ _Z13test_constantIf19custom_constant_addIfEEvPT_iPKc: # @_Z13test_constantIf19cu
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -57212,12 +57210,11 @@ _Z13test_constantIf28custom_multiple_constant_addIfEEvPT_iPKc: # @_Z13test_const
 	vldi	$vr2, -1168
 	vldi	$vr3, -1280
 	vldi	$vr4, -1272
-	vldi	$vr5, -1264
 	pcalau12i	$a0, %pc_hi20(.LCPI268_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI268_0)
+	vldi	$vr5, -1264
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -57235,7 +57232,6 @@ _Z13test_constantIf28custom_multiple_constant_addIfEEvPT_iPKc: # @_Z13test_const
 	fadd.s	$fa1, $fa1, $fa4
 	fadd.s	$fa1, $fa1, $fa5
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -57440,12 +57436,11 @@ _Z13test_constantIf19custom_constant_subIfEEvPT_iPKc: # @_Z13test_constantIf19cu
 .LBB269_8:                              # %.preheader.preheader
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	vldi	$vr2, -1116
 	pcalau12i	$a0, %pc_hi20(.LCPI269_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI269_0)
+	vldi	$vr2, -1116
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -57460,7 +57455,6 @@ _Z13test_constantIf19custom_constant_subIfEEvPT_iPKc: # @_Z13test_constantIf19cu
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -57677,12 +57671,11 @@ _Z13test_constantIf28custom_multiple_constant_subIfEEvPT_iPKc: # @_Z13test_const
 	vldi	$vr2, -1040
 	vldi	$vr3, -1152
 	vldi	$vr4, -1144
-	vldi	$vr5, -1136
 	pcalau12i	$a0, %pc_hi20(.LCPI270_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI270_0)
+	vldi	$vr5, -1136
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -57700,7 +57693,6 @@ _Z13test_constantIf28custom_multiple_constant_subIfEEvPT_iPKc: # @_Z13test_const
 	fadd.s	$fa1, $fa1, $fa4
 	fadd.s	$fa1, $fa1, $fa5
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -57912,12 +57904,11 @@ _Z13test_constantIf24custom_constant_multiplyIfEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	lu12i.w	$a0, -250112
-	movgr2fr.w	$fs0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI271_0)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI271_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI271_0)
+	fld.d	$fs0, $a2, %pc_lo12(.LCPI271_0)
+	movgr2fr.w	$fs1, $a0
 	lu12i.w	$a0, 286624
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -57930,12 +57921,11 @@ _Z13test_constantIf24custom_constant_multiplyIfEEvPT_iPKc: # @_Z13test_constantI
 .LBB271_10:                             # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	fcvt.s.d	$fa1, $fa0
-	fmul.s	$fa1, $fa1, $fs0
+	fmul.s	$fa1, $fa1, $fs1
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
-	fcmp.clt.d	$fcc0, $fa1, $fs1
+	fcmp.clt.d	$fcc0, $fa1, $fs0
 	bcnez	$fcc0, .LBB271_9
 # %bb.11:                               #   in Loop: Header=BB271_10 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -58149,12 +58139,11 @@ _Z13test_constantIf33custom_multiple_constant_multiplyIfEEvPT_iPKc: # @_Z13test_
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	vldi	$vr2, -1144
 	vldi	$vr3, -1264
-	vldi	$vr4, -1260
 	pcalau12i	$a0, %pc_hi20(.LCPI272_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI272_0)
+	vldi	$vr4, -1260
 	lu12i.w	$a0, 286624
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -58172,7 +58161,6 @@ _Z13test_constantIf33custom_multiple_constant_multiplyIfEEvPT_iPKc: # @_Z13test_
 	fmul.s	$fa1, $fa1, $fa3
 	fmul.s	$fa1, $fa1, $fa4
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -58379,12 +58367,11 @@ _Z13test_constantIf34custom_multiple_constant_multiply2IfEEvPT_iPKc: # @_Z13test
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	lu12i.w	$a0, 274176
-	movgr2fr.w	$fs0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI273_0)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI273_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI273_0)
+	fld.d	$fs0, $a2, %pc_lo12(.LCPI273_0)
+	movgr2fr.w	$fs1, $a0
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -58397,12 +58384,11 @@ _Z13test_constantIf34custom_multiple_constant_multiply2IfEEvPT_iPKc: # @_Z13test
 .LBB273_10:                             # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	fcvt.s.d	$fa1, $fa0
-	fadd.s	$fa1, $fa1, $fs0
+	fadd.s	$fa1, $fa1, $fs1
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
-	fcmp.clt.d	$fcc0, $fa1, $fs1
+	fcmp.clt.d	$fcc0, $fa1, $fs0
 	bcnez	$fcc0, .LBB273_9
 # %bb.11:                               #   in Loop: Header=BB273_10 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -58603,12 +58589,11 @@ _Z13test_constantIf22custom_constant_divideIfEEvPT_iPKc: # @_Z13test_constantIf2
 .LBB274_8:                              # %.preheader.preheader
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	vldi	$vr2, -1132
 	pcalau12i	$a0, %pc_hi20(.LCPI274_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI274_0)
+	vldi	$vr2, -1132
 	lu12i.w	$a0, 286624
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -58623,7 +58608,6 @@ _Z13test_constantIf22custom_constant_divideIfEEvPT_iPKc: # @_Z13test_constantIf2
 	fcvt.s.d	$fa1, $fa0
 	fdiv.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -58842,12 +58826,11 @@ _Z13test_constantIf31custom_multiple_constant_divideIfEEvPT_iPKc: # @_Z13test_co
 	vldi	$vr2, -1056
 	vldi	$vr3, -1272
 	vldi	$vr4, -1200
-	vldi	$vr5, -1260
 	pcalau12i	$a0, %pc_hi20(.LCPI275_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI275_0)
+	vldi	$vr5, -1260
 	lu12i.w	$a0, 286624
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -58865,7 +58848,6 @@ _Z13test_constantIf31custom_multiple_constant_divideIfEEvPT_iPKc: # @_Z13test_co
 	fmul.s	$fa1, $fa1, $fa4
 	fdiv.s	$fa1, $fa1, $fa5
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -59070,12 +59052,11 @@ _Z13test_constantIf32custom_multiple_constant_divide2IfEEvPT_iPKc: # @_Z13test_c
 .LBB276_8:                              # %.preheader.preheader
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	vldi	$vr2, -1280
 	pcalau12i	$a0, %pc_hi20(.LCPI276_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI276_0)
+	vldi	$vr2, -1280
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs1, $a0
-	movgr2fr.w	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -59090,7 +59071,6 @@ _Z13test_constantIf32custom_multiple_constant_divide2IfEEvPT_iPKc: # @_Z13test_c
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa1, $fs1
-	fadd.s	$fa1, $fa1, $fs2
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs0
@@ -59302,12 +59282,11 @@ _Z13test_constantIf30custom_multiple_constant_mixedIfEEvPT_iPKc: # @_Z13test_con
 	vldi	$vr2, -1280
 	lu12i.w	$a0, -261735
 	ori	$a0, $a0, 2458
-	movgr2fr.w	$fs0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI277_0)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI277_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI277_0)
+	fld.d	$fs0, $a2, %pc_lo12(.LCPI277_0)
+	movgr2fr.w	$fs1, $a0
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -59321,12 +59300,11 @@ _Z13test_constantIf30custom_multiple_constant_mixedIfEEvPT_iPKc: # @_Z13test_con
                                         # =>This Inner Loop Header: Depth=1
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fa1, $fa2
-	fadd.s	$fa1, $fa1, $fs0
+	fadd.s	$fa1, $fa1, $fs1
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
-	fcmp.clt.d	$fcc0, $fa1, $fs1
+	fcmp.clt.d	$fcc0, $fa1, $fs0
 	bcnez	$fcc0, .LBB277_9
 # %bb.11:                               #   in Loop: Header=BB277_10 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
@@ -60445,7 +60423,6 @@ _Z13test_constantId19custom_constant_addIdEEvPT_iPKc: # @_Z13test_constantId19cu
 	pcalau12i	$a0, %pc_hi20(.LCPI283_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI283_1)
 	vldi	$vr2, -988
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -60459,7 +60436,6 @@ _Z13test_constantId19custom_constant_addIdEEvPT_iPKc: # @_Z13test_constantId19cu
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fa0, $fa2
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB283_9
@@ -60672,14 +60648,13 @@ _Z13test_constantId28custom_multiple_constant_addIdEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	vldi	$vr2, -912
-	vldi	$vr3, -1024
 	pcalau12i	$a0, %pc_hi20(.LCPI284_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI284_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI284_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI284_1)
+	vldi	$vr3, -1024
 	vldi	$vr4, -1016
 	vldi	$vr5, -1008
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -60696,7 +60671,6 @@ _Z13test_constantId28custom_multiple_constant_addIdEEvPT_iPKc: # @_Z13test_const
 	fadd.d	$fa1, $fa1, $fa4
 	fadd.d	$fa1, $fa1, $fa5
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB284_9
@@ -60904,7 +60878,6 @@ _Z13test_constantId19custom_constant_subIdEEvPT_iPKc: # @_Z13test_constantId19cu
 	pcalau12i	$a0, %pc_hi20(.LCPI285_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI285_1)
 	vldi	$vr2, -860
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -60918,7 +60891,6 @@ _Z13test_constantId19custom_constant_subIdEEvPT_iPKc: # @_Z13test_constantId19cu
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fa0, $fa2
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB285_9
@@ -61131,14 +61103,13 @@ _Z13test_constantId28custom_multiple_constant_subIdEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	vldi	$vr2, -784
-	vldi	$vr3, -896
 	pcalau12i	$a0, %pc_hi20(.LCPI286_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI286_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI286_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI286_1)
+	vldi	$vr3, -896
 	vldi	$vr4, -888
 	vldi	$vr5, -880
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -61155,7 +61126,6 @@ _Z13test_constantId28custom_multiple_constant_subIdEEvPT_iPKc: # @_Z13test_const
 	fadd.d	$fa1, $fa1, $fa4
 	fadd.d	$fa1, $fa1, $fa5
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB286_9
@@ -61374,7 +61344,6 @@ _Z13test_constantId24custom_constant_multiplyIdEEvPT_iPKc: # @_Z13test_constantI
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI287_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI287_2)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI287_2)
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -61388,7 +61357,6 @@ _Z13test_constantId24custom_constant_multiplyIdEEvPT_iPKc: # @_Z13test_constantI
                                         # =>This Inner Loop Header: Depth=1
 	fmul.d	$fa1, $fa0, $fs0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB287_9
@@ -61601,14 +61569,13 @@ _Z13test_constantId33custom_multiple_constant_multiplyIdEEvPT_iPKc: # @_Z13test_
 .LBB288_8:                              # %.preheader.preheader
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
-	vldi	$vr2, -888
 	pcalau12i	$a0, %pc_hi20(.LCPI288_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI288_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI288_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI288_1)
+	vldi	$vr2, -888
 	vldi	$vr3, -1008
 	vldi	$vr4, -1004
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -61625,7 +61592,6 @@ _Z13test_constantId33custom_multiple_constant_multiplyIdEEvPT_iPKc: # @_Z13test_
 	fmul.d	$fa1, $fa1, $fa3
 	fmul.d	$fa1, $fa1, $fa4
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB288_9
@@ -61837,7 +61803,6 @@ _Z13test_constantId34custom_multiple_constant_multiply2IdEEvPT_iPKc: # @_Z13test
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI289_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI289_2)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI289_2)
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -61851,7 +61816,6 @@ _Z13test_constantId34custom_multiple_constant_multiply2IdEEvPT_iPKc: # @_Z13test
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fa0, $fs0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB289_9
@@ -62058,7 +62022,6 @@ _Z13test_constantId22custom_constant_divideIdEEvPT_iPKc: # @_Z13test_constantId2
 	pcalau12i	$a0, %pc_hi20(.LCPI290_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI290_1)
 	vldi	$vr2, -876
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -62072,7 +62035,6 @@ _Z13test_constantId22custom_constant_divideIdEEvPT_iPKc: # @_Z13test_constantId2
                                         # =>This Inner Loop Header: Depth=1
 	fdiv.d	$fa1, $fa0, $fa2
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB290_9
@@ -62287,14 +62249,13 @@ _Z13test_constantId31custom_multiple_constant_divideIdEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$s1, %pc_hi20(init_value)
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	vldi	$vr2, -800
-	vldi	$vr3, -1016
 	pcalau12i	$a0, %pc_hi20(.LCPI291_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI291_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI291_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI291_1)
+	vldi	$vr3, -1016
 	vldi	$vr4, -944
 	vldi	$vr5, -1004
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -62311,7 +62272,6 @@ _Z13test_constantId31custom_multiple_constant_divideIdEEvPT_iPKc: # @_Z13test_co
 	fmul.d	$fa1, $fa1, $fa4
 	fdiv.d	$fa1, $fa1, $fa5
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB291_9
@@ -62519,7 +62479,6 @@ _Z13test_constantId32custom_multiple_constant_divide2IdEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a0, %pc_hi20(.LCPI292_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI292_1)
 	vldi	$vr2, -1024
-	movgr2fr.d	$fs2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -62533,7 +62492,6 @@ _Z13test_constantId32custom_multiple_constant_divide2IdEEvPT_iPKc: # @_Z13test_c
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fa0, $fa2
 	fmul.d	$fa1, $fa1, $fs0
-	fadd.d	$fa1, $fa1, $fs2
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
 	bcnez	$fcc0, .LBB292_9
@@ -62748,7 +62706,6 @@ _Z13test_constantId30custom_multiple_constant_mixedIdEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a0, %pc_hi20(.LCPI293_2)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI293_2)
 	vldi	$vr2, -1024
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.299)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.299)
 	move	$s2, $zero
@@ -62763,7 +62720,6 @@ _Z13test_constantId30custom_multiple_constant_mixedIdEEvPT_iPKc: # @_Z13test_con
 	fadd.d	$fa1, $fa0, $fa2
 	fadd.d	$fa1, $fa1, $fs0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB293_9

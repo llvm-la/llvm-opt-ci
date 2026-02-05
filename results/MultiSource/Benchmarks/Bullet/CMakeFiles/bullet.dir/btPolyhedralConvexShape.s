@@ -667,7 +667,7 @@ _ZNK34btPolyhedralConvexAabbCachingShape7getAabbERK11btTransformR9btVector3S4_: 
 	.type	_ZN23btPolyhedralConvexShapeD0Ev,@function
 _ZN23btPolyhedralConvexShapeD0Ev:       # @_ZN23btPolyhedralConvexShapeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end8:
 	.size	_ZN23btPolyhedralConvexShapeD0Ev, .Lfunc_end8-_ZN23btPolyhedralConvexShapeD0Ev
                                         # -- End function
@@ -745,7 +745,7 @@ _ZNK21btConvexInternalShape32getPreferredPenetrationDirectionEiR9btVector3: # @_
 	.type	_ZN34btPolyhedralConvexAabbCachingShapeD0Ev,@function
 _ZN34btPolyhedralConvexAabbCachingShapeD0Ev: # @_ZN34btPolyhedralConvexAabbCachingShapeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end15:
 	.size	_ZN34btPolyhedralConvexAabbCachingShapeD0Ev, .Lfunc_end15-_ZN34btPolyhedralConvexAabbCachingShapeD0Ev
                                         # -- End function

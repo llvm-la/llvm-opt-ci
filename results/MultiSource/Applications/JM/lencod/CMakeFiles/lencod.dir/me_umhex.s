@@ -4159,30 +4159,26 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 	move	$fp, $s2
 .LBB6_31:                               # %.preheader.preheader
 	ori	$s5, $zero, 3
+	ori	$s2, $zero, 6
 	pcalau12i	$a0, %got_pc_hi20(mvbits)
 	ld.d	$a0, $a0, %got_pc_lo12(mvbits)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(computeUniPred)
 	ld.d	$a0, $a0, %got_pc_lo12(computeUniPred)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ori	$s1, $zero, 3
 	.p2align	4, , 16
 .LBB6_32:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a0, $s4, 0
 	addi.d	$s6, $s3, -1
 	sub.w	$a0, $s6, $a0
-	srai.d	$a1, $a0, 31
-	xor	$a2, $a0, $a1
-	sub.w	$a1, $a2, $a1
-	bltu	$s5, $a1, .LBB6_35
+	addi.w	$a1, $a0, 3
+	bltu	$s2, $a1, .LBB6_35
 # %bb.33:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.h	$a1, $t3, 0
 	sub.w	$a1, $fp, $a1
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a2, $a3, $a2
-	bltu	$s5, $a2, .LBB6_35
+	addi.w	$a2, $a1, 3
+	bltu	$s2, $a2, .LBB6_35
 # %bb.34:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.d	$a2, $a5, %pc_lo12(SearchState)
 	alsl.d	$a1, $a1, $a2, 3
@@ -4192,23 +4188,19 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 	beqz	$a0, .LBB6_51
 	.p2align	4, , 16
 .LBB6_35:                               #   in Loop: Header=BB6_32 Depth=1
-	move	$s2, $s3
-	ori	$s8, $zero, 1
+	move	$s8, $s3
+	ori	$s1, $zero, 1
 .LBB6_36:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.h	$a0, $s4, 0
 	sub.w	$a0, $s3, $a0
-	srai.d	$a1, $a0, 31
-	xor	$a2, $a0, $a1
-	sub.w	$a1, $a2, $a1
-	bltu	$s5, $a1, .LBB6_39
+	addi.w	$a1, $a0, 3
+	bltu	$s2, $a1, .LBB6_39
 # %bb.37:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.h	$a1, $t3, 0
 	addi.d	$s6, $fp, 1
 	sub.w	$a1, $s6, $a1
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a2, $a3, $a2
-	bltu	$s5, $a2, .LBB6_39
+	addi.w	$a2, $a1, 3
+	bltu	$s2, $a2, .LBB6_39
 # %bb.38:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.d	$a2, $a5, %pc_lo12(SearchState)
 	alsl.d	$a1, $a1, $a2, 3
@@ -4223,17 +4215,13 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 	ld.h	$a0, $s4, 0
 	addi.d	$s6, $s3, 1
 	sub.w	$a0, $s6, $a0
-	srai.d	$a1, $a0, 31
-	xor	$a2, $a0, $a1
-	sub.w	$a1, $a2, $a1
-	bltu	$s5, $a1, .LBB6_45
+	addi.w	$a1, $a0, 3
+	bltu	$s2, $a1, .LBB6_45
 # %bb.41:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.h	$a1, $t3, 0
 	sub.w	$a1, $fp, $a1
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a2, $a3, $a2
-	bltu	$s5, $a2, .LBB6_45
+	addi.w	$a2, $a1, 3
+	bltu	$s2, $a2, .LBB6_45
 # %bb.42:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.d	$a2, $a5, %pc_lo12(SearchState)
 	alsl.d	$a1, $a1, $a2, 3
@@ -4290,26 +4278,22 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	bge	$a0, $a1, .LBB6_45
 # %bb.44:                               #   in Loop: Header=BB6_32 Depth=1
-	move	$s8, $zero
-	move	$s2, $s6
+	move	$s1, $zero
+	move	$s8, $s6
 	move	$s7, $fp
 	move	$s0, $a0
 	.p2align	4, , 16
 .LBB6_45:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.h	$a0, $s4, 0
 	sub.w	$a0, $s3, $a0
-	srai.d	$a1, $a0, 31
-	xor	$a2, $a0, $a1
-	sub.w	$a1, $a2, $a1
-	bltu	$s5, $a1, .LBB6_49
+	addi.w	$a1, $a0, 3
+	bltu	$s2, $a1, .LBB6_49
 # %bb.46:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.h	$a1, $t3, 0
 	addi.d	$fp, $fp, -1
 	sub.w	$a1, $fp, $a1
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a2, $a3, $a2
-	bltu	$s5, $a2, .LBB6_49
+	addi.w	$a2, $a1, 3
+	bltu	$s2, $a2, .LBB6_49
 # %bb.47:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.d	$a2, $a5, %pc_lo12(SearchState)
 	alsl.d	$a1, $a1, $a2, 3
@@ -4367,15 +4351,15 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 .LBB6_49:                               #   in Loop: Header=BB6_32 Depth=1
 	move	$a0, $s0
 	move	$fp, $s7
-	move	$s3, $s2
-	bnez	$s8, .LBB6_55
+	move	$s3, $s8
+	bnez	$s1, .LBB6_55
 .LBB6_50:                               # %.thread236
                                         #   in Loop: Header=BB6_32 Depth=1
-	addi.w	$s1, $s1, -1
+	addi.w	$s5, $s5, -1
 	move	$s0, $a0
 	move	$s7, $fp
-	move	$s2, $s3
-	bnez	$s1, .LBB6_32
+	move	$s8, $s3
+	bnez	$s5, .LBB6_32
 	b	.LBB6_55
 .LBB6_51:                               #   in Loop: Header=BB6_32 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
@@ -4393,11 +4377,11 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 	add.d	$a0, $a0, $a1
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	mul.w	$a0, $a0, $a1
-	srai.d	$s2, $a0, 16
+	srai.d	$s1, $a0, 16
 	slli.d	$a0, $a2, 3
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a6, $a1, $a0
-	sub.w	$a3, $s0, $s2
+	sub.w	$a3, $s0, $s1
 	addi.w	$s7, $s0, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	add.w	$a4, $s6, $a0
@@ -4415,16 +4399,16 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 	alsl.d	$a1, $a1, $a2, 3
 	ld.h	$a2, $s4, 0
 	ld.d	$a1, $a1, 24
-	add.w	$a0, $s2, $a0
+	add.w	$a0, $s1, $a0
 	sub.w	$a2, $s6, $a2
 	add.d	$a1, $a1, $a2
-	ori	$s8, $zero, 1
-	st.b	$s8, $a1, 3
-	move	$s2, $s3
+	ori	$s1, $zero, 1
+	st.b	$s1, $a1, 3
+	move	$s8, $s3
 	bge	$a0, $s7, .LBB6_36
 # %bb.52:                               #   in Loop: Header=BB6_32 Depth=1
-	move	$s8, $zero
-	move	$s2, $s6
+	move	$s1, $zero
+	move	$s8, $s6
 	move	$s0, $a0
 	b	.LBB6_36
 .LBB6_53:                               #   in Loop: Header=BB6_32 Depth=1
@@ -4475,13 +4459,13 @@ UMHEXSubPelBlockMotionSearch:           # @UMHEXSubPelBlockMotionSearch
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	bge	$a0, $a1, .LBB6_40
 # %bb.54:                               #   in Loop: Header=BB6_32 Depth=1
-	move	$s8, $zero
-	move	$s2, $s3
+	move	$s1, $zero
+	move	$s8, $s3
 	move	$s7, $s6
 	move	$s0, $a0
 	b	.LBB6_40
 .LBB6_55:
-	st.h	$s2, $s4, 0
+	st.h	$s8, $s4, 0
 	addi.w	$a0, $s0, 0
 	st.h	$s7, $t3, 0
 	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
@@ -9287,14 +9271,11 @@ UMHEXSetMotionVectorPredictor:          # @UMHEXSetMotionVectorPredictor
 	srai.d	$a0, $a0, 31
 	xor	$a2, $a2, $a0
 	sub.w	$a0, $a2, $a0
-	addi.w	$a2, $a3, 0
-	srai.d	$a2, $a2, 31
-	xor	$a3, $a3, $a2
-	sub.w	$a2, $a3, $a2
-	addi.w	$a3, $a4, 0
-	srai.d	$a3, $a3, 31
-	xor	$a4, $a4, $a3
-	sub.w	$a3, $a4, $a3
+	vinsgr2vr.w	$vr0, $a3, 0
+	vinsgr2vr.w	$vr0, $a4, 1
+	vsigncov.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a2, $vr0, 0
+	vpickve2gr.w	$a3, $vr0, 1
 	sltu	$a4, $a3, $a2
 	masknez	$a5, $a3, $a4
 	maskeqz	$a4, $a2, $a4

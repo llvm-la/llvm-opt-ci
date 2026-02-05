@@ -36,8 +36,8 @@ db_debug:                               # @db_debug
 	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(stderr)
-	ld.d	$s4, $a0, %got_pc_lo12(stderr)
-	ld.d	$a3, $s4, 0
+	ld.d	$s3, $a0, %got_pc_lo12(stderr)
+	ld.d	$a3, $s3, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	ori	$a1, $zero, 11
@@ -45,28 +45,28 @@ db_debug:                               # @db_debug
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(stdin)
-	ld.d	$s5, $a0, %got_pc_lo12(stdin)
-	ld.d	$a2, $s5, 0
+	ld.d	$s4, $a0, %got_pc_lo12(stdin)
+	ld.d	$a2, $s4, 0
 	addi.d	$a0, $sp, 22
 	ori	$a1, $zero, 250
 	pcaddu18i	$ra, %call36(fgets)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_7
 # %bb.1:                                # %.lr.ph.preheader
-	pcalau12i	$a0, %pc_hi20(.L.str.15)
-	addi.d	$s0, $a0, %pc_lo12(.L.str.15)
+	lu12i.w	$a0, 476902
+	ori	$s5, $a0, 3939
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.16)
+	addi.d	$s0, $a0, %pc_lo12(.L.str.16)
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.14)
-	addi.w	$s3, $zero, -1
+	addi.d	$s1, $a0, %pc_lo12(.L.str.14)
+	addi.w	$s2, $zero, -1
 .LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $sp, 22
-	ori	$a2, $zero, 6
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 22
+	ld.hu	$a1, $sp, 26
+	xor	$a0, $a0, $s5
+	xori	$a1, $a1, 10
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB1_7
 # %bb.3:                                #   in Loop: Header=BB1_2 Depth=1
 	addi.d	$a0, $sp, 22
@@ -75,7 +75,7 @@ db_debug:                               # @db_debug
 	move	$a2, $a0
 	addi.d	$a1, $sp, 22
 	move	$a0, $fp
-	move	$a3, $s1
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(luaL_loadbuffer)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB1_5
@@ -89,14 +89,14 @@ db_debug:                               # @db_debug
 	beqz	$a0, .LBB1_6
 .LBB1_5:                                #   in Loop: Header=BB1_2 Depth=1
 	move	$a0, $fp
-	move	$a1, $s3
+	move	$a1, $s2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lua_tolstring)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s4, 0
+	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s4, 0
+	ld.d	$a1, $s3, 0
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
@@ -105,13 +105,13 @@ db_debug:                               # @db_debug
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(lua_settop)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s4, 0
+	ld.d	$a3, $s3, 0
 	ori	$a1, $zero, 11
 	ori	$a2, $zero, 1
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $s5, 0
+	ld.d	$a2, $s4, 0
 	addi.d	$a0, $sp, 22
 	ori	$a1, $zero, 250
 	pcaddu18i	$ra, %call36(fgets)

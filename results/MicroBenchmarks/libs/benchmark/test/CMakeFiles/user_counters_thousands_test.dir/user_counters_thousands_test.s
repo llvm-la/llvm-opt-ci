@@ -610,11 +610,33 @@ _Z14CheckThousandsRK7Results:           # @_Z14CheckThousandsRK7Results
 	bne	$a0, $a1, .LBB2_447
 # %bb.1:                                # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
 	ld.d	$a0, $fp, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.55)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.55)
-	ori	$a2, $zero, 31
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	lu12i.w	$a2, 275956
+	ori	$a2, $a2, 3394
+	lu32i.d	$a2, -101009
+	lu52i.d	$a2, $a2, 1862
+	xor	$a1, $a1, $a2
+	ld.d	$a2, $a0, 8
+	lu12i.w	$a3, 390967
+	ori	$a3, $a3, 613
+	lu32i.d	$a3, -38828
+	lu52i.d	$a3, $a3, 1878
+	xor	$a2, $a2, $a3
+	ld.d	$a3, $a0, 16
+	lu12i.w	$a4, 411366
+	ori	$a4, $a4, 371
+	lu32i.d	$a4, 143219
+	lu52i.d	$a4, $a4, 1623
+	xor	$a3, $a3, $a4
+	ld.d	$a0, $a0, 23
+	lu12i.w	$a4, 398935
+	ori	$a4, $a4, 101
+	lu32i.d	$a4, -363660
+	lu52i.d	$a4, $a4, 803
+	xor	$a0, $a0, $a4
+	or	$a1, $a1, $a2
+	or	$a0, $a3, $a0
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB2_447
 # %bb.2:                                # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread1027
 	addi.d	$s0, $sp, 184
@@ -4020,379 +4042,375 @@ GCC_except_table2:
 	.byte	1                               # Call site Encoding = uleb128
 	.uleb128 .Lcst_end1-.Lcst_begin1
 .Lcst_begin1:
-	.uleb128 .Lfunc_begin1-.Lfunc_begin1    # >> Call Site 1 <<
-	.uleb128 .Ltmp23-.Lfunc_begin1          #   Call between .Lfunc_begin1 and .Ltmp23
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp23-.Lfunc_begin1          # >> Call Site 2 <<
+	.uleb128 .Ltmp23-.Lfunc_begin1          # >> Call Site 1 <<
 	.uleb128 .Ltmp24-.Ltmp23                #   Call between .Ltmp23 and .Ltmp24
 	.uleb128 .Ltmp25-.Lfunc_begin1          #     jumps to .Ltmp25
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp26-.Lfunc_begin1          # >> Call Site 3 <<
+	.uleb128 .Ltmp26-.Lfunc_begin1          # >> Call Site 2 <<
 	.uleb128 .Ltmp27-.Ltmp26                #   Call between .Ltmp26 and .Ltmp27
 	.uleb128 .Ltmp28-.Lfunc_begin1          #     jumps to .Ltmp28
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp29-.Lfunc_begin1          # >> Call Site 4 <<
+	.uleb128 .Ltmp29-.Lfunc_begin1          # >> Call Site 3 <<
 	.uleb128 .Ltmp30-.Ltmp29                #   Call between .Ltmp29 and .Ltmp30
 	.uleb128 .Ltmp545-.Lfunc_begin1         #     jumps to .Ltmp545
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp31-.Lfunc_begin1          # >> Call Site 5 <<
+	.uleb128 .Ltmp31-.Lfunc_begin1          # >> Call Site 4 <<
 	.uleb128 .Ltmp36-.Ltmp31                #   Call between .Ltmp31 and .Ltmp36
 	.uleb128 .Ltmp37-.Lfunc_begin1          #     jumps to .Ltmp37
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp38-.Lfunc_begin1          # >> Call Site 6 <<
+	.uleb128 .Ltmp38-.Lfunc_begin1          # >> Call Site 5 <<
 	.uleb128 .Ltmp49-.Ltmp38                #   Call between .Ltmp38 and .Ltmp49
 	.uleb128 .Ltmp50-.Lfunc_begin1          #     jumps to .Ltmp50
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp51-.Lfunc_begin1          # >> Call Site 7 <<
+	.uleb128 .Ltmp51-.Lfunc_begin1          # >> Call Site 6 <<
 	.uleb128 .Ltmp64-.Ltmp51                #   Call between .Ltmp51 and .Ltmp64
 	.uleb128 .Ltmp65-.Lfunc_begin1          #     jumps to .Ltmp65
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp66-.Lfunc_begin1          # >> Call Site 8 <<
+	.uleb128 .Ltmp66-.Lfunc_begin1          # >> Call Site 7 <<
 	.uleb128 .Ltmp67-.Ltmp66                #   Call between .Ltmp66 and .Ltmp67
 	.uleb128 .Ltmp68-.Lfunc_begin1          #     jumps to .Ltmp68
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp69-.Lfunc_begin1          # >> Call Site 9 <<
+	.uleb128 .Ltmp69-.Lfunc_begin1          # >> Call Site 8 <<
 	.uleb128 .Ltmp74-.Ltmp69                #   Call between .Ltmp69 and .Ltmp74
 	.uleb128 .Ltmp75-.Lfunc_begin1          #     jumps to .Ltmp75
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp76-.Lfunc_begin1          # >> Call Site 10 <<
+	.uleb128 .Ltmp76-.Lfunc_begin1          # >> Call Site 9 <<
 	.uleb128 .Ltmp83-.Ltmp76                #   Call between .Ltmp76 and .Ltmp83
 	.uleb128 .Ltmp84-.Lfunc_begin1          #     jumps to .Ltmp84
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp85-.Lfunc_begin1          # >> Call Site 11 <<
+	.uleb128 .Ltmp85-.Lfunc_begin1          # >> Call Site 10 <<
 	.uleb128 .Ltmp90-.Ltmp85                #   Call between .Ltmp85 and .Ltmp90
 	.uleb128 .Ltmp91-.Lfunc_begin1          #     jumps to .Ltmp91
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp92-.Lfunc_begin1          # >> Call Site 12 <<
+	.uleb128 .Ltmp92-.Lfunc_begin1          # >> Call Site 11 <<
 	.uleb128 .Ltmp95-.Ltmp92                #   Call between .Ltmp92 and .Ltmp95
 	.uleb128 .Ltmp96-.Lfunc_begin1          #     jumps to .Ltmp96
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp97-.Lfunc_begin1          # >> Call Site 13 <<
+	.uleb128 .Ltmp97-.Lfunc_begin1          # >> Call Site 12 <<
 	.uleb128 .Ltmp102-.Ltmp97               #   Call between .Ltmp97 and .Ltmp102
 	.uleb128 .Ltmp103-.Lfunc_begin1         #     jumps to .Ltmp103
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp104-.Lfunc_begin1         # >> Call Site 14 <<
+	.uleb128 .Ltmp104-.Lfunc_begin1         # >> Call Site 13 <<
 	.uleb128 .Ltmp105-.Ltmp104              #   Call between .Ltmp104 and .Ltmp105
 	.uleb128 .Ltmp106-.Lfunc_begin1         #     jumps to .Ltmp106
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp107-.Lfunc_begin1         # >> Call Site 15 <<
+	.uleb128 .Ltmp107-.Lfunc_begin1         # >> Call Site 14 <<
 	.uleb128 .Ltmp112-.Ltmp107              #   Call between .Ltmp107 and .Ltmp112
 	.uleb128 .Ltmp113-.Lfunc_begin1         #     jumps to .Ltmp113
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp114-.Lfunc_begin1         # >> Call Site 16 <<
+	.uleb128 .Ltmp114-.Lfunc_begin1         # >> Call Site 15 <<
 	.uleb128 .Ltmp115-.Ltmp114              #   Call between .Ltmp114 and .Ltmp115
 	.uleb128 .Ltmp116-.Lfunc_begin1         #     jumps to .Ltmp116
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp117-.Lfunc_begin1         # >> Call Site 17 <<
+	.uleb128 .Ltmp117-.Lfunc_begin1         # >> Call Site 16 <<
 	.uleb128 .Ltmp122-.Ltmp117              #   Call between .Ltmp117 and .Ltmp122
 	.uleb128 .Ltmp123-.Lfunc_begin1         #     jumps to .Ltmp123
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp122-.Lfunc_begin1         # >> Call Site 18 <<
+	.uleb128 .Ltmp122-.Lfunc_begin1         # >> Call Site 17 <<
 	.uleb128 .Ltmp124-.Ltmp122              #   Call between .Ltmp122 and .Ltmp124
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp124-.Lfunc_begin1         # >> Call Site 19 <<
+	.uleb128 .Ltmp124-.Lfunc_begin1         # >> Call Site 18 <<
 	.uleb128 .Ltmp125-.Ltmp124              #   Call between .Ltmp124 and .Ltmp125
 	.uleb128 .Ltmp126-.Lfunc_begin1         #     jumps to .Ltmp126
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp127-.Lfunc_begin1         # >> Call Site 20 <<
+	.uleb128 .Ltmp127-.Lfunc_begin1         # >> Call Site 19 <<
 	.uleb128 .Ltmp128-.Ltmp127              #   Call between .Ltmp127 and .Ltmp128
 	.uleb128 .Ltmp129-.Lfunc_begin1         #     jumps to .Ltmp129
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp130-.Lfunc_begin1         # >> Call Site 21 <<
+	.uleb128 .Ltmp130-.Lfunc_begin1         # >> Call Site 20 <<
 	.uleb128 .Ltmp131-.Ltmp130              #   Call between .Ltmp130 and .Ltmp131
 	.uleb128 .Ltmp542-.Lfunc_begin1         #     jumps to .Ltmp542
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp132-.Lfunc_begin1         # >> Call Site 22 <<
+	.uleb128 .Ltmp132-.Lfunc_begin1         # >> Call Site 21 <<
 	.uleb128 .Ltmp137-.Ltmp132              #   Call between .Ltmp132 and .Ltmp137
 	.uleb128 .Ltmp138-.Lfunc_begin1         #     jumps to .Ltmp138
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp139-.Lfunc_begin1         # >> Call Site 23 <<
+	.uleb128 .Ltmp139-.Lfunc_begin1         # >> Call Site 22 <<
 	.uleb128 .Ltmp150-.Ltmp139              #   Call between .Ltmp139 and .Ltmp150
 	.uleb128 .Ltmp151-.Lfunc_begin1         #     jumps to .Ltmp151
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp152-.Lfunc_begin1         # >> Call Site 24 <<
+	.uleb128 .Ltmp152-.Lfunc_begin1         # >> Call Site 23 <<
 	.uleb128 .Ltmp165-.Ltmp152              #   Call between .Ltmp152 and .Ltmp165
 	.uleb128 .Ltmp166-.Lfunc_begin1         #     jumps to .Ltmp166
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp167-.Lfunc_begin1         # >> Call Site 25 <<
+	.uleb128 .Ltmp167-.Lfunc_begin1         # >> Call Site 24 <<
 	.uleb128 .Ltmp168-.Ltmp167              #   Call between .Ltmp167 and .Ltmp168
 	.uleb128 .Ltmp169-.Lfunc_begin1         #     jumps to .Ltmp169
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp170-.Lfunc_begin1         # >> Call Site 26 <<
+	.uleb128 .Ltmp170-.Lfunc_begin1         # >> Call Site 25 <<
 	.uleb128 .Ltmp175-.Ltmp170              #   Call between .Ltmp170 and .Ltmp175
 	.uleb128 .Ltmp176-.Lfunc_begin1         #     jumps to .Ltmp176
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp177-.Lfunc_begin1         # >> Call Site 27 <<
+	.uleb128 .Ltmp177-.Lfunc_begin1         # >> Call Site 26 <<
 	.uleb128 .Ltmp184-.Ltmp177              #   Call between .Ltmp177 and .Ltmp184
 	.uleb128 .Ltmp185-.Lfunc_begin1         #     jumps to .Ltmp185
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp186-.Lfunc_begin1         # >> Call Site 28 <<
+	.uleb128 .Ltmp186-.Lfunc_begin1         # >> Call Site 27 <<
 	.uleb128 .Ltmp191-.Ltmp186              #   Call between .Ltmp186 and .Ltmp191
 	.uleb128 .Ltmp192-.Lfunc_begin1         #     jumps to .Ltmp192
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp193-.Lfunc_begin1         # >> Call Site 29 <<
+	.uleb128 .Ltmp193-.Lfunc_begin1         # >> Call Site 28 <<
 	.uleb128 .Ltmp196-.Ltmp193              #   Call between .Ltmp193 and .Ltmp196
 	.uleb128 .Ltmp197-.Lfunc_begin1         #     jumps to .Ltmp197
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp198-.Lfunc_begin1         # >> Call Site 30 <<
+	.uleb128 .Ltmp198-.Lfunc_begin1         # >> Call Site 29 <<
 	.uleb128 .Ltmp203-.Ltmp198              #   Call between .Ltmp198 and .Ltmp203
 	.uleb128 .Ltmp204-.Lfunc_begin1         #     jumps to .Ltmp204
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp205-.Lfunc_begin1         # >> Call Site 31 <<
+	.uleb128 .Ltmp205-.Lfunc_begin1         # >> Call Site 30 <<
 	.uleb128 .Ltmp206-.Ltmp205              #   Call between .Ltmp205 and .Ltmp206
 	.uleb128 .Ltmp207-.Lfunc_begin1         #     jumps to .Ltmp207
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp208-.Lfunc_begin1         # >> Call Site 32 <<
+	.uleb128 .Ltmp208-.Lfunc_begin1         # >> Call Site 31 <<
 	.uleb128 .Ltmp213-.Ltmp208              #   Call between .Ltmp208 and .Ltmp213
 	.uleb128 .Ltmp214-.Lfunc_begin1         #     jumps to .Ltmp214
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp215-.Lfunc_begin1         # >> Call Site 33 <<
+	.uleb128 .Ltmp215-.Lfunc_begin1         # >> Call Site 32 <<
 	.uleb128 .Ltmp216-.Ltmp215              #   Call between .Ltmp215 and .Ltmp216
 	.uleb128 .Ltmp217-.Lfunc_begin1         #     jumps to .Ltmp217
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp218-.Lfunc_begin1         # >> Call Site 34 <<
+	.uleb128 .Ltmp218-.Lfunc_begin1         # >> Call Site 33 <<
 	.uleb128 .Ltmp223-.Ltmp218              #   Call between .Ltmp218 and .Ltmp223
 	.uleb128 .Ltmp224-.Lfunc_begin1         #     jumps to .Ltmp224
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp223-.Lfunc_begin1         # >> Call Site 35 <<
+	.uleb128 .Ltmp223-.Lfunc_begin1         # >> Call Site 34 <<
 	.uleb128 .Ltmp225-.Ltmp223              #   Call between .Ltmp223 and .Ltmp225
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp225-.Lfunc_begin1         # >> Call Site 36 <<
+	.uleb128 .Ltmp225-.Lfunc_begin1         # >> Call Site 35 <<
 	.uleb128 .Ltmp226-.Ltmp225              #   Call between .Ltmp225 and .Ltmp226
 	.uleb128 .Ltmp227-.Lfunc_begin1         #     jumps to .Ltmp227
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp228-.Lfunc_begin1         # >> Call Site 37 <<
+	.uleb128 .Ltmp228-.Lfunc_begin1         # >> Call Site 36 <<
 	.uleb128 .Ltmp229-.Ltmp228              #   Call between .Ltmp228 and .Ltmp229
 	.uleb128 .Ltmp230-.Lfunc_begin1         #     jumps to .Ltmp230
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp231-.Lfunc_begin1         # >> Call Site 38 <<
+	.uleb128 .Ltmp231-.Lfunc_begin1         # >> Call Site 37 <<
 	.uleb128 .Ltmp232-.Ltmp231              #   Call between .Ltmp231 and .Ltmp232
 	.uleb128 .Ltmp539-.Lfunc_begin1         #     jumps to .Ltmp539
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp233-.Lfunc_begin1         # >> Call Site 39 <<
+	.uleb128 .Ltmp233-.Lfunc_begin1         # >> Call Site 38 <<
 	.uleb128 .Ltmp238-.Ltmp233              #   Call between .Ltmp233 and .Ltmp238
 	.uleb128 .Ltmp239-.Lfunc_begin1         #     jumps to .Ltmp239
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp240-.Lfunc_begin1         # >> Call Site 40 <<
+	.uleb128 .Ltmp240-.Lfunc_begin1         # >> Call Site 39 <<
 	.uleb128 .Ltmp251-.Ltmp240              #   Call between .Ltmp240 and .Ltmp251
 	.uleb128 .Ltmp252-.Lfunc_begin1         #     jumps to .Ltmp252
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp253-.Lfunc_begin1         # >> Call Site 41 <<
+	.uleb128 .Ltmp253-.Lfunc_begin1         # >> Call Site 40 <<
 	.uleb128 .Ltmp266-.Ltmp253              #   Call between .Ltmp253 and .Ltmp266
 	.uleb128 .Ltmp267-.Lfunc_begin1         #     jumps to .Ltmp267
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp268-.Lfunc_begin1         # >> Call Site 42 <<
+	.uleb128 .Ltmp268-.Lfunc_begin1         # >> Call Site 41 <<
 	.uleb128 .Ltmp269-.Ltmp268              #   Call between .Ltmp268 and .Ltmp269
 	.uleb128 .Ltmp270-.Lfunc_begin1         #     jumps to .Ltmp270
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp271-.Lfunc_begin1         # >> Call Site 43 <<
+	.uleb128 .Ltmp271-.Lfunc_begin1         # >> Call Site 42 <<
 	.uleb128 .Ltmp276-.Ltmp271              #   Call between .Ltmp271 and .Ltmp276
 	.uleb128 .Ltmp277-.Lfunc_begin1         #     jumps to .Ltmp277
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp278-.Lfunc_begin1         # >> Call Site 44 <<
+	.uleb128 .Ltmp278-.Lfunc_begin1         # >> Call Site 43 <<
 	.uleb128 .Ltmp285-.Ltmp278              #   Call between .Ltmp278 and .Ltmp285
 	.uleb128 .Ltmp286-.Lfunc_begin1         #     jumps to .Ltmp286
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp287-.Lfunc_begin1         # >> Call Site 45 <<
+	.uleb128 .Ltmp287-.Lfunc_begin1         # >> Call Site 44 <<
 	.uleb128 .Ltmp292-.Ltmp287              #   Call between .Ltmp287 and .Ltmp292
 	.uleb128 .Ltmp293-.Lfunc_begin1         #     jumps to .Ltmp293
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp294-.Lfunc_begin1         # >> Call Site 46 <<
+	.uleb128 .Ltmp294-.Lfunc_begin1         # >> Call Site 45 <<
 	.uleb128 .Ltmp297-.Ltmp294              #   Call between .Ltmp294 and .Ltmp297
 	.uleb128 .Ltmp298-.Lfunc_begin1         #     jumps to .Ltmp298
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp299-.Lfunc_begin1         # >> Call Site 47 <<
+	.uleb128 .Ltmp299-.Lfunc_begin1         # >> Call Site 46 <<
 	.uleb128 .Ltmp304-.Ltmp299              #   Call between .Ltmp299 and .Ltmp304
 	.uleb128 .Ltmp305-.Lfunc_begin1         #     jumps to .Ltmp305
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp306-.Lfunc_begin1         # >> Call Site 48 <<
+	.uleb128 .Ltmp306-.Lfunc_begin1         # >> Call Site 47 <<
 	.uleb128 .Ltmp307-.Ltmp306              #   Call between .Ltmp306 and .Ltmp307
 	.uleb128 .Ltmp308-.Lfunc_begin1         #     jumps to .Ltmp308
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp309-.Lfunc_begin1         # >> Call Site 49 <<
+	.uleb128 .Ltmp309-.Lfunc_begin1         # >> Call Site 48 <<
 	.uleb128 .Ltmp314-.Ltmp309              #   Call between .Ltmp309 and .Ltmp314
 	.uleb128 .Ltmp315-.Lfunc_begin1         #     jumps to .Ltmp315
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp316-.Lfunc_begin1         # >> Call Site 50 <<
+	.uleb128 .Ltmp316-.Lfunc_begin1         # >> Call Site 49 <<
 	.uleb128 .Ltmp317-.Ltmp316              #   Call between .Ltmp316 and .Ltmp317
 	.uleb128 .Ltmp318-.Lfunc_begin1         #     jumps to .Ltmp318
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp319-.Lfunc_begin1         # >> Call Site 51 <<
+	.uleb128 .Ltmp319-.Lfunc_begin1         # >> Call Site 50 <<
 	.uleb128 .Ltmp324-.Ltmp319              #   Call between .Ltmp319 and .Ltmp324
 	.uleb128 .Ltmp325-.Lfunc_begin1         #     jumps to .Ltmp325
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp324-.Lfunc_begin1         # >> Call Site 52 <<
+	.uleb128 .Ltmp324-.Lfunc_begin1         # >> Call Site 51 <<
 	.uleb128 .Ltmp326-.Ltmp324              #   Call between .Ltmp324 and .Ltmp326
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp326-.Lfunc_begin1         # >> Call Site 53 <<
+	.uleb128 .Ltmp326-.Lfunc_begin1         # >> Call Site 52 <<
 	.uleb128 .Ltmp327-.Ltmp326              #   Call between .Ltmp326 and .Ltmp327
 	.uleb128 .Ltmp328-.Lfunc_begin1         #     jumps to .Ltmp328
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp329-.Lfunc_begin1         # >> Call Site 54 <<
+	.uleb128 .Ltmp329-.Lfunc_begin1         # >> Call Site 53 <<
 	.uleb128 .Ltmp330-.Ltmp329              #   Call between .Ltmp329 and .Ltmp330
 	.uleb128 .Ltmp331-.Lfunc_begin1         #     jumps to .Ltmp331
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp332-.Lfunc_begin1         # >> Call Site 55 <<
+	.uleb128 .Ltmp332-.Lfunc_begin1         # >> Call Site 54 <<
 	.uleb128 .Ltmp333-.Ltmp332              #   Call between .Ltmp332 and .Ltmp333
 	.uleb128 .Ltmp536-.Lfunc_begin1         #     jumps to .Ltmp536
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp334-.Lfunc_begin1         # >> Call Site 56 <<
+	.uleb128 .Ltmp334-.Lfunc_begin1         # >> Call Site 55 <<
 	.uleb128 .Ltmp339-.Ltmp334              #   Call between .Ltmp334 and .Ltmp339
 	.uleb128 .Ltmp340-.Lfunc_begin1         #     jumps to .Ltmp340
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp341-.Lfunc_begin1         # >> Call Site 57 <<
+	.uleb128 .Ltmp341-.Lfunc_begin1         # >> Call Site 56 <<
 	.uleb128 .Ltmp352-.Ltmp341              #   Call between .Ltmp341 and .Ltmp352
 	.uleb128 .Ltmp353-.Lfunc_begin1         #     jumps to .Ltmp353
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp354-.Lfunc_begin1         # >> Call Site 58 <<
+	.uleb128 .Ltmp354-.Lfunc_begin1         # >> Call Site 57 <<
 	.uleb128 .Ltmp367-.Ltmp354              #   Call between .Ltmp354 and .Ltmp367
 	.uleb128 .Ltmp368-.Lfunc_begin1         #     jumps to .Ltmp368
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp369-.Lfunc_begin1         # >> Call Site 59 <<
+	.uleb128 .Ltmp369-.Lfunc_begin1         # >> Call Site 58 <<
 	.uleb128 .Ltmp370-.Ltmp369              #   Call between .Ltmp369 and .Ltmp370
 	.uleb128 .Ltmp371-.Lfunc_begin1         #     jumps to .Ltmp371
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp372-.Lfunc_begin1         # >> Call Site 60 <<
+	.uleb128 .Ltmp372-.Lfunc_begin1         # >> Call Site 59 <<
 	.uleb128 .Ltmp377-.Ltmp372              #   Call between .Ltmp372 and .Ltmp377
 	.uleb128 .Ltmp378-.Lfunc_begin1         #     jumps to .Ltmp378
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp379-.Lfunc_begin1         # >> Call Site 61 <<
+	.uleb128 .Ltmp379-.Lfunc_begin1         # >> Call Site 60 <<
 	.uleb128 .Ltmp386-.Ltmp379              #   Call between .Ltmp379 and .Ltmp386
 	.uleb128 .Ltmp387-.Lfunc_begin1         #     jumps to .Ltmp387
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp388-.Lfunc_begin1         # >> Call Site 62 <<
+	.uleb128 .Ltmp388-.Lfunc_begin1         # >> Call Site 61 <<
 	.uleb128 .Ltmp393-.Ltmp388              #   Call between .Ltmp388 and .Ltmp393
 	.uleb128 .Ltmp394-.Lfunc_begin1         #     jumps to .Ltmp394
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp395-.Lfunc_begin1         # >> Call Site 63 <<
+	.uleb128 .Ltmp395-.Lfunc_begin1         # >> Call Site 62 <<
 	.uleb128 .Ltmp398-.Ltmp395              #   Call between .Ltmp395 and .Ltmp398
 	.uleb128 .Ltmp399-.Lfunc_begin1         #     jumps to .Ltmp399
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp400-.Lfunc_begin1         # >> Call Site 64 <<
+	.uleb128 .Ltmp400-.Lfunc_begin1         # >> Call Site 63 <<
 	.uleb128 .Ltmp405-.Ltmp400              #   Call between .Ltmp400 and .Ltmp405
 	.uleb128 .Ltmp406-.Lfunc_begin1         #     jumps to .Ltmp406
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp407-.Lfunc_begin1         # >> Call Site 65 <<
+	.uleb128 .Ltmp407-.Lfunc_begin1         # >> Call Site 64 <<
 	.uleb128 .Ltmp408-.Ltmp407              #   Call between .Ltmp407 and .Ltmp408
 	.uleb128 .Ltmp409-.Lfunc_begin1         #     jumps to .Ltmp409
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp410-.Lfunc_begin1         # >> Call Site 66 <<
+	.uleb128 .Ltmp410-.Lfunc_begin1         # >> Call Site 65 <<
 	.uleb128 .Ltmp415-.Ltmp410              #   Call between .Ltmp410 and .Ltmp415
 	.uleb128 .Ltmp416-.Lfunc_begin1         #     jumps to .Ltmp416
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp417-.Lfunc_begin1         # >> Call Site 67 <<
+	.uleb128 .Ltmp417-.Lfunc_begin1         # >> Call Site 66 <<
 	.uleb128 .Ltmp418-.Ltmp417              #   Call between .Ltmp417 and .Ltmp418
 	.uleb128 .Ltmp419-.Lfunc_begin1         #     jumps to .Ltmp419
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp420-.Lfunc_begin1         # >> Call Site 68 <<
+	.uleb128 .Ltmp420-.Lfunc_begin1         # >> Call Site 67 <<
 	.uleb128 .Ltmp425-.Ltmp420              #   Call between .Ltmp420 and .Ltmp425
 	.uleb128 .Ltmp426-.Lfunc_begin1         #     jumps to .Ltmp426
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp425-.Lfunc_begin1         # >> Call Site 69 <<
+	.uleb128 .Ltmp425-.Lfunc_begin1         # >> Call Site 68 <<
 	.uleb128 .Ltmp427-.Ltmp425              #   Call between .Ltmp425 and .Ltmp427
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp427-.Lfunc_begin1         # >> Call Site 70 <<
+	.uleb128 .Ltmp427-.Lfunc_begin1         # >> Call Site 69 <<
 	.uleb128 .Ltmp428-.Ltmp427              #   Call between .Ltmp427 and .Ltmp428
 	.uleb128 .Ltmp429-.Lfunc_begin1         #     jumps to .Ltmp429
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp430-.Lfunc_begin1         # >> Call Site 71 <<
+	.uleb128 .Ltmp430-.Lfunc_begin1         # >> Call Site 70 <<
 	.uleb128 .Ltmp431-.Ltmp430              #   Call between .Ltmp430 and .Ltmp431
 	.uleb128 .Ltmp432-.Lfunc_begin1         #     jumps to .Ltmp432
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp433-.Lfunc_begin1         # >> Call Site 72 <<
+	.uleb128 .Ltmp433-.Lfunc_begin1         # >> Call Site 71 <<
 	.uleb128 .Ltmp434-.Ltmp433              #   Call between .Ltmp433 and .Ltmp434
 	.uleb128 .Ltmp533-.Lfunc_begin1         #     jumps to .Ltmp533
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp435-.Lfunc_begin1         # >> Call Site 73 <<
+	.uleb128 .Ltmp435-.Lfunc_begin1         # >> Call Site 72 <<
 	.uleb128 .Ltmp440-.Ltmp435              #   Call between .Ltmp435 and .Ltmp440
 	.uleb128 .Ltmp441-.Lfunc_begin1         #     jumps to .Ltmp441
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp442-.Lfunc_begin1         # >> Call Site 74 <<
+	.uleb128 .Ltmp442-.Lfunc_begin1         # >> Call Site 73 <<
 	.uleb128 .Ltmp453-.Ltmp442              #   Call between .Ltmp442 and .Ltmp453
 	.uleb128 .Ltmp454-.Lfunc_begin1         #     jumps to .Ltmp454
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp455-.Lfunc_begin1         # >> Call Site 75 <<
+	.uleb128 .Ltmp455-.Lfunc_begin1         # >> Call Site 74 <<
 	.uleb128 .Ltmp468-.Ltmp455              #   Call between .Ltmp455 and .Ltmp468
 	.uleb128 .Ltmp469-.Lfunc_begin1         #     jumps to .Ltmp469
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp470-.Lfunc_begin1         # >> Call Site 76 <<
+	.uleb128 .Ltmp470-.Lfunc_begin1         # >> Call Site 75 <<
 	.uleb128 .Ltmp471-.Ltmp470              #   Call between .Ltmp470 and .Ltmp471
 	.uleb128 .Ltmp472-.Lfunc_begin1         #     jumps to .Ltmp472
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp473-.Lfunc_begin1         # >> Call Site 77 <<
+	.uleb128 .Ltmp473-.Lfunc_begin1         # >> Call Site 76 <<
 	.uleb128 .Ltmp478-.Ltmp473              #   Call between .Ltmp473 and .Ltmp478
 	.uleb128 .Ltmp479-.Lfunc_begin1         #     jumps to .Ltmp479
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp480-.Lfunc_begin1         # >> Call Site 78 <<
+	.uleb128 .Ltmp480-.Lfunc_begin1         # >> Call Site 77 <<
 	.uleb128 .Ltmp487-.Ltmp480              #   Call between .Ltmp480 and .Ltmp487
 	.uleb128 .Ltmp488-.Lfunc_begin1         #     jumps to .Ltmp488
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp489-.Lfunc_begin1         # >> Call Site 79 <<
+	.uleb128 .Ltmp489-.Lfunc_begin1         # >> Call Site 78 <<
 	.uleb128 .Ltmp494-.Ltmp489              #   Call between .Ltmp489 and .Ltmp494
 	.uleb128 .Ltmp495-.Lfunc_begin1         #     jumps to .Ltmp495
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp496-.Lfunc_begin1         # >> Call Site 80 <<
+	.uleb128 .Ltmp496-.Lfunc_begin1         # >> Call Site 79 <<
 	.uleb128 .Ltmp499-.Ltmp496              #   Call between .Ltmp496 and .Ltmp499
 	.uleb128 .Ltmp500-.Lfunc_begin1         #     jumps to .Ltmp500
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp501-.Lfunc_begin1         # >> Call Site 81 <<
+	.uleb128 .Ltmp501-.Lfunc_begin1         # >> Call Site 80 <<
 	.uleb128 .Ltmp506-.Ltmp501              #   Call between .Ltmp501 and .Ltmp506
 	.uleb128 .Ltmp507-.Lfunc_begin1         #     jumps to .Ltmp507
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp508-.Lfunc_begin1         # >> Call Site 82 <<
+	.uleb128 .Ltmp508-.Lfunc_begin1         # >> Call Site 81 <<
 	.uleb128 .Ltmp509-.Ltmp508              #   Call between .Ltmp508 and .Ltmp509
 	.uleb128 .Ltmp510-.Lfunc_begin1         #     jumps to .Ltmp510
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp511-.Lfunc_begin1         # >> Call Site 83 <<
+	.uleb128 .Ltmp511-.Lfunc_begin1         # >> Call Site 82 <<
 	.uleb128 .Ltmp516-.Ltmp511              #   Call between .Ltmp511 and .Ltmp516
 	.uleb128 .Ltmp517-.Lfunc_begin1         #     jumps to .Ltmp517
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp518-.Lfunc_begin1         # >> Call Site 84 <<
+	.uleb128 .Ltmp518-.Lfunc_begin1         # >> Call Site 83 <<
 	.uleb128 .Ltmp519-.Ltmp518              #   Call between .Ltmp518 and .Ltmp519
 	.uleb128 .Ltmp520-.Lfunc_begin1         #     jumps to .Ltmp520
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp521-.Lfunc_begin1         # >> Call Site 85 <<
+	.uleb128 .Ltmp521-.Lfunc_begin1         # >> Call Site 84 <<
 	.uleb128 .Ltmp526-.Ltmp521              #   Call between .Ltmp521 and .Ltmp526
 	.uleb128 .Ltmp527-.Lfunc_begin1         #     jumps to .Ltmp527
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp526-.Lfunc_begin1         # >> Call Site 86 <<
+	.uleb128 .Ltmp526-.Lfunc_begin1         # >> Call Site 85 <<
 	.uleb128 .Ltmp543-.Ltmp526              #   Call between .Ltmp526 and .Ltmp543
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp543-.Lfunc_begin1         # >> Call Site 87 <<
+	.uleb128 .Ltmp543-.Lfunc_begin1         # >> Call Site 86 <<
 	.uleb128 .Ltmp544-.Ltmp543              #   Call between .Ltmp543 and .Ltmp544
 	.uleb128 .Ltmp545-.Lfunc_begin1         #     jumps to .Ltmp545
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp540-.Lfunc_begin1         # >> Call Site 88 <<
+	.uleb128 .Ltmp540-.Lfunc_begin1         # >> Call Site 87 <<
 	.uleb128 .Ltmp541-.Ltmp540              #   Call between .Ltmp540 and .Ltmp541
 	.uleb128 .Ltmp542-.Lfunc_begin1         #     jumps to .Ltmp542
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp537-.Lfunc_begin1         # >> Call Site 89 <<
+	.uleb128 .Ltmp537-.Lfunc_begin1         # >> Call Site 88 <<
 	.uleb128 .Ltmp538-.Ltmp537              #   Call between .Ltmp537 and .Ltmp538
 	.uleb128 .Ltmp539-.Lfunc_begin1         #     jumps to .Ltmp539
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp534-.Lfunc_begin1         # >> Call Site 90 <<
+	.uleb128 .Ltmp534-.Lfunc_begin1         # >> Call Site 89 <<
 	.uleb128 .Ltmp535-.Ltmp534              #   Call between .Ltmp534 and .Ltmp535
 	.uleb128 .Ltmp536-.Lfunc_begin1         #     jumps to .Ltmp536
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp531-.Lfunc_begin1         # >> Call Site 91 <<
+	.uleb128 .Ltmp531-.Lfunc_begin1         # >> Call Site 90 <<
 	.uleb128 .Ltmp532-.Ltmp531              #   Call between .Ltmp531 and .Ltmp532
 	.uleb128 .Ltmp533-.Lfunc_begin1         #     jumps to .Ltmp533
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp532-.Lfunc_begin1         # >> Call Site 92 <<
+	.uleb128 .Ltmp532-.Lfunc_begin1         # >> Call Site 91 <<
 	.uleb128 .Ltmp528-.Ltmp532              #   Call between .Ltmp532 and .Ltmp528
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp528-.Lfunc_begin1         # >> Call Site 93 <<
+	.uleb128 .Ltmp528-.Lfunc_begin1         # >> Call Site 92 <<
 	.uleb128 .Ltmp529-.Ltmp528              #   Call between .Ltmp528 and .Ltmp529
 	.uleb128 .Ltmp530-.Lfunc_begin1         #     jumps to .Ltmp530
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp529-.Lfunc_begin1         # >> Call Site 94 <<
+	.uleb128 .Ltmp529-.Lfunc_begin1         # >> Call Site 93 <<
 	.uleb128 .Lfunc_end2-.Ltmp529           #   Call between .Ltmp529 and .Lfunc_end2
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
@@ -12063,7 +12081,7 @@ _GLOBAL__sub_I_user_counters_thousands_test.cc: # @_GLOBAL__sub_I_user_counters_
 	ld.d	$a0, $sp, 768
 	addi.d	$a1, $sp, 784
 	beq	$a0, $a1, .LBB16_1041
-# %bb.593:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
+# %bb.593:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i964
 	ld.d	$a1, $sp, 784
 	addi.d	$a1, $a1, 1
 	b	.LBB16_1040
@@ -15005,16 +15023,14 @@ _GLOBAL__sub_I_user_counters_thousands_test.cc: # @_GLOBAL__sub_I_user_counters_
 .Ltmp575:                               # EH_LABEL
 	ld.d	$a2, $sp, 768
 	move	$s4, $a0
-	bne	$a2, $s2, .LBB16_1038
-# %bb.1037:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s1, .LBB16_1039
-	b	.LBB16_1041
-.LBB16_1038:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beq	$a2, $s2, .LBB16_1038
+# %bb.1037:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 784
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB16_1038:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s1, .LBB16_1041
 .LBB16_1039:
 	ori	$a1, $zero, 232

@@ -41399,7 +41399,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ld.d	$a0, $sp, 304
 	addi.d	$a1, $sp, 320
 	beq	$a0, $a1, .LBB39_2275
-# %bb.2170:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
+# %bb.2170:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i90
 	ld.d	$a1, $sp, 320
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -41820,7 +41820,7 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 .Ltmp2391:                              # EH_LABEL
 .LBB39_2239:
 	move	$s2, $a0
-	b	.LBB39_2272
+	b	.LBB39_2274
 .LBB39_2240:                            # %.loopexit.loopexit.i
 .Ltmp2388:                              # EH_LABEL
 .LBB39_2241:                            # %.loopexit.i1
@@ -41945,85 +41945,93 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2261:
 .Ltmp3481:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2262:
 .Ltmp3374:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2263:
 .Ltmp3267:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2264:
 .Ltmp2833:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2265:
 .Ltmp2726:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2266:
 .Ltmp2622:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2267:
 .Ltmp2503:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2268:
 .Ltmp2396:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	beq	$a2, $a0, .LBB39_2274
-	b	.LBB39_2271
+	beq	$a2, $a0, .LBB39_2273
+	b	.LBB39_2272
 .LBB39_2269:
 .Ltmp3160:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-	b	.LBB39_2274
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
 .LBB39_2270:
 .Ltmp3051:                              # EH_LABEL
 	ld.d	$a2, $sp, 304
 	move	$s2, $a0
 	addi.d	$a0, $sp, 320
-	beq	$a2, $a0, .LBB39_2274
-.LBB39_2271:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $a0, .LBB39_2272
+	b	.LBB39_2273
+.LBB39_2271:
+.Ltmp2942:                              # EH_LABEL
+	ld.d	$a2, $sp, 304
+	move	$s2, $a0
+	addi.d	$a0, $sp, 320
+	beq	$a2, $a0, .LBB39_2273
+.LBB39_2272:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 320
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB39_2273:                            # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s1, .LBB39_2275
-.LBB39_2272:
+.LBB39_2274:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -42031,14 +42039,6 @@ _GLOBAL__sub_I_user_counters_test.cc:   # @_GLOBAL__sub_I_user_counters_test.cc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB39_2273:
-.Ltmp2942:                              # EH_LABEL
-	ld.d	$a2, $sp, 304
-	move	$s2, $a0
-	addi.d	$a0, $sp, 320
-	bne	$a2, $a0, .LBB39_2271
-.LBB39_2274:                            # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i998
-	bnez	$s1, .LBB39_2272
 .LBB39_2275:                            # %common.resume
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Unwind_Resume)

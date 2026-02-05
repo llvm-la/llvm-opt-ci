@@ -91,7 +91,7 @@ addString:                              # @addString
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	move	$s0, $a0
+	move	$s1, $a0
 	ld.d	$s4, $a0, 0
 	move	$fp, $a3
 	move	$s3, $a2
@@ -100,8 +100,8 @@ addString:                              # @addString
 	.p2align	4, , 16
 .LBB2_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s1, $s4, 0
-	ld.d	$a1, $s1, 0
+	ld.d	$s0, $s4, 0
+	ld.d	$a1, $s0, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
@@ -113,39 +113,39 @@ addString:                              # @addString
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(zalloc)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $s3
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(newIntList)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 8
+	st.d	$a0, $s0, 8
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(zalloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s0, 0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 0
-	move	$a0, $s1
+	ld.d	$a1, $s1, 0
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(newList)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s0, 0
+	st.d	$a0, $s1, 0
 	ori	$a1, $zero, 1
 	b	.LBB2_5
 .LBB2_4:                                # %.thread
-	ld.d	$a1, $s1, 8
+	ld.d	$a1, $s0, 8
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(newIntList)
 	jirl	$ra, $ra, 0
 	move	$a1, $zero
-	st.d	$a0, $s1, 8
+	st.d	$a0, $s0, 8
 .LBB2_5:
 	st.w	$a1, $fp, 0
-	move	$a0, $s1
+	move	$a0, $s0
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

@@ -312,7 +312,7 @@ ab:                                     # @ab
 .LBB1_46:
 	ori	$a0, $zero, 7
 	beqz	$s4, .LBB1_53
-# %bb.47:                               # %.lr.ph173.preheader
+# %bb.47:                               # %.lr.ph.preheader
 	move	$s7, $s0
 	addi.d	$fp, $s3, -7
 	slli.d	$a0, $s3, 2
@@ -334,7 +334,7 @@ ab:                                     # @ab
 	addi.d	$s4, $s4, 4
 	addi.w	$s1, $s1, 1
 	beqz	$fp, .LBB1_52
-.LBB1_49:                               # %.lr.ph173
+.LBB1_49:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s0, 0
 	blt	$s5, $a1, .LBB1_48
@@ -588,30 +588,24 @@ ab:                                     # @ab
 .LBB1_87:
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
+	move	$fp, $zero
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	sub.d	$a0, $a0, $a1
-	ori	$a1, $zero, 2
-	ori	$fp, $zero, 1
-	bltu	$a0, $a1, .LBB1_90
-# %bb.88:                               # %.lr.ph.preheader
-	ori	$a1, $zero, 1
-	ori	$fp, $zero, 1
-.LBB1_89:                               # %.lr.ph
-                                        # =>This Inner Loop Header: Depth=1
+.LBB1_88:                               # =>This Inner Loop Header: Depth=1
 	srai.d	$a0, $a0, 1
 	addi.w	$fp, $fp, 1
-	bltu	$a1, $a0, .LBB1_89
-.LBB1_90:                               # %._crit_edge
+	bnez	$a0, .LBB1_88
+# %bb.89:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB1_92
-# %bb.91:
+	bne	$a0, $a1, .LBB1_91
+# %bb.90:
 	move	$a0, $s2
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(transtore)
 	jirl	$ra, $ra, 0
-	b	.LBB1_93
-.LBB1_92:
+	b	.LBB1_92
+.LBB1_91:
 	srai.d	$a0, $a0, 5
 	sub.d	$a0, $zero, $a0
 	xor	$a0, $s2, $a0
@@ -621,11 +615,11 @@ ab:                                     # @ab
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(transrestore)
 	jirl	$ra, $ra, 0
-.LBB1_93:
+.LBB1_92:
 	ld.w	$a0, $s6, 0
 	ori	$a1, $zero, 8
 	bne	$a0, $a1, .LBB1_54
-# %bb.94:
+# %bb.93:
 	pcaddu18i	$ra, %call36(printMoves)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -826,25 +820,19 @@ solve:                                  # @solve
 	st.d	$a0, $s0, %pc_lo12(msecs)
 	addi.w	$a0, $zero, -2
 	ori	$a1, $zero, 2
-	ori	$s2, $zero, 2
 	pcaddu18i	$ra, %call36(ab)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(posed)
 	ld.d	$a0, $a0, %got_pc_lo12(posed)
 	ld.d	$a0, $a0, 0
-	ori	$s1, $zero, 1
-	bltu	$a0, $s2, .LBB2_28
-# %bb.26:                               # %.lr.ph.preheader
-	ori	$a1, $zero, 1
-	ori	$s1, $zero, 1
+	move	$s1, $zero
 	.p2align	4, , 16
-.LBB2_27:                               # %.lr.ph
-                                        # =>This Inner Loop Header: Depth=1
+.LBB2_26:                               # =>This Inner Loop Header: Depth=1
 	srai.d	$a0, $a0, 1
 	addi.w	$s1, $s1, 1
-	bltu	$a1, $a0, .LBB2_27
-.LBB2_28:                               # %._crit_edge
+	bnez	$a0, .LBB2_26
+# %bb.27:
 	pcaddu18i	$ra, %call36(millisecs)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, %pc_lo12(msecs)

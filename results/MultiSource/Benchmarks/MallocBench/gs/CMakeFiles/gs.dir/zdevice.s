@@ -73,13 +73,12 @@ zcopyscanlines:                         # @zcopyscanlines
 	bltz	$a0, .LBB1_8
 # %bb.10:
 	vld	$vr0, $s0, 0
-	addi.d	$a0, $s0, -32
-	ld.h	$a2, $sp, 4
-	vst	$vr0, $a0, 0
-	ld.h	$a0, $s0, -24
-	st.h	$a2, $s0, -22
-	lu12i.w	$a2, 8
-	or	$a0, $a0, $a2
+	ld.h	$a0, $sp, 4
+	vst	$vr0, $s0, -32
+	ld.h	$a2, $s0, -24
+	st.h	$a0, $s0, -22
+	lu12i.w	$a0, 8
+	or	$a0, $a2, $a0
 	st.h	$a0, $s0, -24
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)

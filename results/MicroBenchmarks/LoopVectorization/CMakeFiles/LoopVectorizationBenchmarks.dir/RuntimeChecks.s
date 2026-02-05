@@ -1778,70 +1778,69 @@ _GLOBAL__sub_I_RuntimeChecks.cpp:       # @_GLOBAL__sub_I_RuntimeChecks.cpp
 .LBB9_38:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i28
 .Ltmp105:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_39:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i19
 .Ltmp93:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_40:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i10
 .Ltmp81:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_41:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
 .Ltmp69:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_42:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp57:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB9_48
+	b	.LBB9_50
 .LBB9_43:
 .Ltmp114:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB9_47
-	b	.LBB9_51
+	bne	$a2, $s1, .LBB9_48
+	b	.LBB9_49
 .LBB9_44:
 .Ltmp102:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB9_47
-	b	.LBB9_51
+	bne	$a2, $s1, .LBB9_48
+	b	.LBB9_49
 .LBB9_45:
 .Ltmp90:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB9_47
-	b	.LBB9_51
+	bne	$a2, $s1, .LBB9_48
+	b	.LBB9_49
 .LBB9_46:
 .Ltmp78:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB9_51
-.LBB9_47:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB9_48
+	b	.LBB9_49
+.LBB9_47:
+.Ltmp66:                                # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	beq	$a2, $s1, .LBB9_49
+.LBB9_48:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB9_49
-.LBB9_48:                               # %common.resume.sink.split
+.LBB9_49:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s3, .LBB9_51
+.LBB9_50:                               # %common.resume.sink.split
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB9_49:                               # %common.resume
+.LBB9_51:                               # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB9_50:
-.Ltmp66:                                # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB9_47
-.LBB9_51:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s3, .LBB9_49
-	b	.LBB9_48
 .Lfunc_end9:
 	.size	_GLOBAL__sub_I_RuntimeChecks.cpp, .Lfunc_end9-_GLOBAL__sub_I_RuntimeChecks.cpp
 	.cfi_endproc

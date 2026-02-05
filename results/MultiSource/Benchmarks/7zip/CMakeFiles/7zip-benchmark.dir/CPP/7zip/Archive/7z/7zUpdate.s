@@ -61,10 +61,6 @@ _ZNK8NArchive3N7z11CUpdateItem15GetExtensionPosEv: # @_ZNK8NArchive3N7z11CUpdate
 _ZNK8NArchive3N7z11CUpdateItem12GetExtensionEv: # @_ZNK8NArchive3N7z11CUpdateItem12GetExtensionEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	.cfi_def_cfa_offset 16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	.cfi_offset 1, -8
 	move	$a2, $a1
 	ld.w	$a3, $a1, 48
 	addi.d	$a1, $a1, 40
@@ -79,48 +75,49 @@ _ZNK8NArchive3N7z11CUpdateItem12GetExtensionEv: # @_ZNK8NArchive3N7z11CUpdateIte
 	.p2align	4, , 16
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
 	ldx.w	$t1, $a2, $a7
-	beq	$t1, $t0, .LBB1_5
+	beq	$t1, $t0, .LBB1_6
 # %bb.3:                                #   in Loop: Header=BB1_2 Depth=1
 	addi.d	$a7, $a7, -4
 	bne	$a7, $a5, .LBB1_2
-	b	.LBB1_6
+	b	.LBB1_7
 .LBB1_4:
 	move	$a2, $zero
-	b	.LBB1_12
-.LBB1_5:
+.LBB1_5:                                # %_ZNK8NArchive3N7z11CUpdateItem15GetExtensionPosEv.exit
+	sub.w	$a3, $a3, $a2
+	pcaddu18i	$t8, %call36(_ZNK11CStringBaseIwE3MidEii)
+	jr	$t8
+.LBB1_6:
 	srli.d	$a4, $a7, 2
-.LBB1_6:                                # %_ZN8NArchive3N7zL18GetReverseSlashPosERK11CStringBaseIwE.exit.i
+.LBB1_7:                                # %_ZN8NArchive3N7zL18GetReverseSlashPosERK11CStringBaseIwE.exit.i
 	addi.d	$a6, $a6, -4
 	ori	$a7, $zero, 46
 	.p2align	4, , 16
-.LBB1_7:                                # =>This Inner Loop Header: Depth=1
+.LBB1_8:                                # =>This Inner Loop Header: Depth=1
 	ldx.w	$t0, $a2, $a6
-	beq	$t0, $a7, .LBB1_10
-# %bb.8:                                #   in Loop: Header=BB1_7 Depth=1
+	beq	$t0, $a7, .LBB1_11
+# %bb.9:                                #   in Loop: Header=BB1_8 Depth=1
 	addi.d	$a6, $a6, -4
-	bne	$a6, $a5, .LBB1_7
-# %bb.9:
+	bne	$a6, $a5, .LBB1_8
+# %bb.10:
 	move	$a2, $a3
-	b	.LBB1_12
-.LBB1_10:                               # %_ZNK11CStringBaseIwE11ReverseFindEw.exit.i
+	sub.w	$a3, $a3, $a3
+	pcaddu18i	$t8, %call36(_ZNK11CStringBaseIwE3MidEii)
+	jr	$t8
+.LBB1_11:                               # %_ZNK11CStringBaseIwE11ReverseFindEw.exit.i
 	srli.d	$a5, $a6, 2
 	addi.w	$a6, $a5, 0
 	move	$a2, $a3
-	bltz	$a6, .LBB1_12
-# %bb.11:
+	bltz	$a6, .LBB1_5
+# %bb.12:
 	addi.w	$a2, $a4, 0
 	slt	$a2, $a6, $a2
 	addi.w	$a4, $a5, 1
 	masknez	$a4, $a4, $a2
 	maskeqz	$a2, $a3, $a2
 	or	$a2, $a2, $a4
-.LBB1_12:                               # %_ZNK8NArchive3N7z11CUpdateItem15GetExtensionPosEv.exit
 	sub.w	$a3, $a3, $a2
-	pcaddu18i	$ra, %call36(_ZNK11CStringBaseIwE3MidEii)
-	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-	ret
+	pcaddu18i	$t8, %call36(_ZNK11CStringBaseIwE3MidEii)
+	jr	$t8
 .Lfunc_end1:
 	.size	_ZNK8NArchive3N7z11CUpdateItem12GetExtensionEv, .Lfunc_end1-_ZNK8NArchive3N7z11CUpdateItem12GetExtensionEv
 	.cfi_endproc
@@ -162,10 +159,9 @@ _ZN8NArchive3N7z11GetExtIndexEPKc:      # @_ZN8NArchive3N7z11GetExtIndexEPKc
                                         # =>  This Inner Loop Header: Depth=2
 	bne	$a5, $a7, .LBB2_7
 # %bb.6:                                #   in Loop: Header=BB2_5 Depth=2
-	ldx.b	$t0, $a4, $a6
+	ldx.bu	$a5, $a4, $a6
 	ldx.bu	$a7, $a2, $a6
-	andi	$a5, $t0, 255
-	andi	$t0, $t0, 223
+	andi	$t0, $a5, 223
 	or	$t0, $a7, $t0
 	addi.d	$a6, $a6, 1
 	bnez	$t0, .LBB2_5
@@ -7437,10 +7433,9 @@ _ZN8NArchive3N7z8CRefItemC2EjRKNS0_11CUpdateItemEb: # @_ZN8NArchive3N7z8CRefItem
                                         # =>  This Inner Loop Header: Depth=2
 	bne	$a4, $a6, .LBB22_51
 # %bb.50:                               #   in Loop: Header=BB22_49 Depth=2
-	ldx.b	$a7, $a3, $a5
+	ldx.bu	$a4, $a3, $a5
 	ldx.bu	$a6, $a1, $a5
-	andi	$a4, $a7, 255
-	andi	$a7, $a7, 223
+	andi	$a7, $a4, 223
 	or	$a7, $a6, $a7
 	addi.d	$a5, $a5, 1
 	bnez	$a7, .LBB22_49

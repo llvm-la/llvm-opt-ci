@@ -666,7 +666,7 @@ def_ExtractDefsFromTerm:                # @def_ExtractDefsFromTerm
 	.type	def_ExtractDefsFromClauselist,@function
 def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 # %bb.0:
-	beqz	$a1, .LBB5_47
+	beqz	$a1, .LBB5_46
 # %bb.1:                                # %.lr.ph173
 	addi.d	$sp, $sp, -176
 	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
@@ -709,15 +709,15 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	st.d	$a3, $a0, 0
 .LBB5_3:                                #   in Loop: Header=BB5_4 Depth=1
 	ld.d	$s4, $s4, 0
-	beqz	$s4, .LBB5_34
+	beqz	$s4, .LBB5_33
 .LBB5_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_6 Depth 2
                                         #     Child Loop BB5_22 Depth 2
-                                        #     Child Loop BB5_32 Depth 2
+                                        #     Child Loop BB5_31 Depth 2
                                         #     Child Loop BB5_14 Depth 2
                                         #     Child Loop BB5_16 Depth 2
                                         #     Child Loop BB5_19 Depth 2
-                                        #     Child Loop BB5_29 Depth 2
+                                        #     Child Loop BB5_28 Depth 2
 	ld.d	$s3, $s4, 8
 	addi.d	$a3, $sp, 84
 	addi.d	$a4, $sp, 72
@@ -827,7 +827,7 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 .LBB5_18:                               # %list_Delete.exit125
                                         #   in Loop: Header=BB5_4 Depth=1
 	ld.d	$a0, $a1, 8
-	beqz	$a0, .LBB5_28
+	beqz	$a0, .LBB5_27
 	.p2align	4, , 16
 .LBB5_19:                               # %.lr.ph.i127
                                         #   Parent Loop BB5_4 Depth=1
@@ -844,23 +844,24 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	st.d	$a0, $a1, 0
 	move	$a0, $a4
 	bnez	$a4, .LBB5_19
-	b	.LBB5_28
+	b	.LBB5_27
 	.p2align	4, , 16
 .LBB5_20:                               #   in Loop: Header=BB5_4 Depth=1
 	ld.w	$a0, $s3, 48
 	bstrpick.d	$s2, $a0, 3, 3
+	move	$a0, $zero
 	beqz	$s6, .LBB5_23
 # %bb.21:                               # %.lr.ph156.preheader
                                         #   in Loop: Header=BB5_4 Depth=1
-	move	$s5, $zero
 	move	$s4, $s6
 	ori	$s8, $zero, 1
 	.p2align	4, , 16
 .LBB5_22:                               # %.lr.ph156
                                         #   Parent Loop BB5_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s4, 8
-	ld.w	$s1, $a0, 0
+	ld.d	$a1, $s4, 8
+	ld.w	$s1, $a1, 0
+	move	$s5, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -874,12 +875,8 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	masknez	$a2, $s8, $a1
 	maskeqz	$a1, $s2, $a1
 	or	$s2, $a1, $a2
-	move	$s5, $a0
 	bnez	$s4, .LBB5_22
-	b	.LBB5_24
-.LBB5_23:                               #   in Loop: Header=BB5_4 Depth=1
-	move	$a0, $zero
-.LBB5_24:                               # %._crit_edge157
+.LBB5_23:                               # %._crit_edge157
                                         #   in Loop: Header=BB5_4 Depth=1
 	ld.w	$s1, $s3, 0
 	move	$s4, $a0
@@ -910,8 +907,8 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	sub.w	$a5, $zero, $a3
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	move	$s7, $zero
-	bne	$a4, $a5, .LBB5_30
-.LBB5_25:                               # %._crit_edge167
+	bne	$a4, $a5, .LBB5_29
+.LBB5_24:                               # %._crit_edge167
                                         #   in Loop: Header=BB5_4 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(fol_OR)
 	ld.d	$a0, $a0, %got_pc_lo12(fol_OR)
@@ -960,8 +957,8 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	st.d	$a0, $s4, 0
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a0, $s2, 148
-	beqz	$a0, .LBB5_27
-# %bb.26:                               #   in Loop: Header=BB5_4 Depth=1
+	beqz	$a0, .LBB5_26
+# %bb.25:                               #   in Loop: Header=BB5_4 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a3, $a0, 0
@@ -974,15 +971,15 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(def_Print)
 	jirl	$ra, $ra, 0
-.LBB5_27:                               #   in Loop: Header=BB5_4 Depth=1
+.LBB5_26:                               #   in Loop: Header=BB5_4 Depth=1
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-.LBB5_28:                               # %list_Delete.exit131
+.LBB5_27:                               # %list_Delete.exit131
                                         #   in Loop: Header=BB5_4 Depth=1
 	beqz	$s6, .LBB5_2
 	.p2align	4, , 16
-.LBB5_29:                               # %.lr.ph.i133
+.LBB5_28:                               # %.lr.ph.i133
                                         #   Parent Loop BB5_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $fp, 128
@@ -996,25 +993,25 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	ld.d	$a0, $fp, 128
 	st.d	$s6, $a0, 0
 	move	$s6, $a3
-	bnez	$a3, .LBB5_29
+	bnez	$a3, .LBB5_28
 	b	.LBB5_2
-.LBB5_30:                               # %.lr.ph166.preheader
+.LBB5_29:                               # %.lr.ph166.preheader
                                         #   in Loop: Header=BB5_4 Depth=1
 	move	$s4, $zero
 	move	$s7, $zero
-	b	.LBB5_32
+	b	.LBB5_31
 	.p2align	4, , 16
-.LBB5_31:                               #   in Loop: Header=BB5_32 Depth=2
+.LBB5_30:                               #   in Loop: Header=BB5_31 Depth=2
 	addi.w	$s4, $s4, 1
 	add.d	$a0, $a2, $a1
 	add.w	$a0, $a0, $a3
-	bgeu	$s4, $a0, .LBB5_25
-.LBB5_32:                               # %.lr.ph166
+	bgeu	$s4, $a0, .LBB5_24
+.LBB5_31:                               # %.lr.ph166
                                         #   Parent Loop BB5_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a0, $sp, 84
-	beq	$s4, $a0, .LBB5_31
-# %bb.33:                               #   in Loop: Header=BB5_32 Depth=2
+	beq	$s4, $a0, .LBB5_30
+# %bb.32:                               #   in Loop: Header=BB5_31 Depth=2
 	ld.d	$a0, $s3, 56
 	slli.d	$a1, $s4, 3
 	ldx.d	$a0, $a0, $a1
@@ -1031,14 +1028,14 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	ld.w	$a2, $s3, 68
 	ld.w	$a3, $s3, 72
 	move	$s7, $a0
-	b	.LBB5_31
-.LBB5_34:                               # %._crit_edge174
+	b	.LBB5_30
+.LBB5_33:                               # %._crit_edge174
 	ld.w	$a0, $s2, 148
-	beqz	$a0, .LBB5_38
-# %bb.35:                               # %._crit_edge174
+	beqz	$a0, .LBB5_37
+# %bb.34:                               # %._crit_edge174
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	beqz	$a0, .LBB5_38
-# %bb.36:
+	beqz	$a0, .LBB5_37
+# %bb.35:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$fp, $a0, %got_pc_lo12(stdout)
 	ld.d	$a3, $fp, 0
@@ -1052,7 +1049,7 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	addi.d	$s0, $a0, %pc_lo12(.L.str.2)
 	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_37:                               # =>This Inner Loop Header: Depth=1
+.LBB5_36:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 8
 	pcaddu18i	$ra, %call36(def_Print)
 	jirl	$ra, $ra, 0
@@ -1063,11 +1060,11 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s1, 0
-	bnez	$s1, .LBB5_37
-.LBB5_38:                               # %.loopexit
+	bnez	$s1, .LBB5_36
+.LBB5_37:                               # %.loopexit
 	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
-	beqz	$a5, .LBB5_41
-# %bb.39:                               # %.lr.ph180
+	beqz	$a5, .LBB5_40
+# %bb.38:                               # %.lr.ph180
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
 	ld.w	$a0, $a0, 0
@@ -1076,7 +1073,7 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	ld.d	$a1, $a1, 0
 	move	$a2, $a5
 	.p2align	4, , 16
-.LBB5_40:                               # =>This Inner Loop Header: Depth=1
+.LBB5_39:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a2, 8
 	ld.d	$a3, $a3, 8
 	ld.w	$a3, $a3, 0
@@ -1088,29 +1085,29 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	ori	$a4, $a4, 128
 	st.w	$a4, $a3, 20
 	ld.d	$a2, $a2, 0
-	bnez	$a2, .LBB5_40
-.LBB5_41:                               # %._crit_edge181
+	bnez	$a2, .LBB5_39
+.LBB5_40:                               # %._crit_edge181
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a3, $a0, 0
 	sltui	$a1, $a3, 1
 	masknez	$a2, $a3, $a1
 	maskeqz	$a1, $a5, $a1
 	or	$a1, $a1, $a2
-	beqz	$a3, .LBB5_46
-# %bb.42:                               # %._crit_edge181
-	beqz	$a5, .LBB5_46
-# %bb.43:
+	beqz	$a3, .LBB5_45
+# %bb.41:                               # %._crit_edge181
+	beqz	$a5, .LBB5_45
+# %bb.42:
 	move	$a1, $a3
 	.p2align	4, , 16
-.LBB5_44:                               # %.preheader.i
+.LBB5_43:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a2, $a1
 	ld.d	$a1, $a1, 0
-	bnez	$a1, .LBB5_44
-# %bb.45:
+	bnez	$a1, .LBB5_43
+# %bb.44:
 	st.d	$a5, $a2, 0
 	move	$a1, $a3
-.LBB5_46:
+.LBB5_45:
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
@@ -1125,7 +1122,7 @@ def_ExtractDefsFromClauselist:          # @def_ExtractDefsFromClauselist
 	addi.d	$sp, $sp, 176
 	st.d	$a1, $a0, 0
 	ret
-.LBB5_47:                               # %._crit_edge181.thread
+.LBB5_46:                               # %._crit_edge181.thread
 	ld.d	$a1, $a0, 0
 	st.d	$a1, $a0, 0
 	ret

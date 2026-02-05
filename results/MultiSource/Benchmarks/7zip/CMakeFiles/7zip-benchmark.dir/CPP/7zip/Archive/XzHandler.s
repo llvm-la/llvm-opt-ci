@@ -16,13 +16,11 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTV10IInArchive+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV10IInArchive+16)
@@ -37,7 +35,7 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 	addi.d	$a0, $a0, %pc_lo12(_ZTV14ISetProperties+16)
 	st.d	$a0, $s0, 24
 	addi.d	$fp, $s0, 32
-	addi.d	$s1, $s0, 40
+	addi.d	$s2, $s0, 40
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $s0, 48
@@ -67,26 +65,23 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 	vst	$vr0, $s0, 168
 .Ltmp3:                                 # EH_LABEL
 	ori	$a0, $zero, 4
-	ori	$s3, $zero, 4
+	ori	$s1, $zero, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
 # %bb.2:
-	addi.d	$s1, $s0, 168
 	st.d	$a0, $s0, 168
 	st.b	$zero, $a0, 0
-	st.w	$s3, $s0, 180
-	addi.d	$s2, $s0, 208
+	st.w	$s1, $s0, 180
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s0, 208
-	st.w	$s3, $s0, 224
+	st.w	$s1, $s0, 224
 .Ltmp6:                                 # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive11COutHandler4InitEv)
 	jirl	$ra, $ra, 0
 .Ltmp7:                                 # EH_LABEL
 # %bb.3:                                # %_ZN8NArchive3NXz8CHandler4InitEv.exit
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
@@ -97,7 +92,7 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 .LBB0_4:
 .Ltmp8:                                 # EH_LABEL
 	ld.d	$a1, $s0, 216
-	move	$s0, $a0
+	move	$s1, $a0
 	beqz	$a1, .LBB0_6
 # %bb.5:
 	ld.d	$a0, $a1, 0
@@ -107,7 +102,7 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 	jirl	$ra, $a2, 0
 .Ltmp10:                                # EH_LABEL
 .LBB0_6:                                # %_ZN9CMyComPtrI19ISequentialInStreamED2Ev.exit
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s0, 208
 	beqz	$a0, .LBB0_8
 # %bb.7:
 	ld.d	$a1, $a0, 0
@@ -116,7 +111,7 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp13:                                # EH_LABEL
 .LBB0_8:                                # %_ZN9CMyComPtrI9IInStreamED2Ev.exit
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 168
 	beqz	$a0, .LBB0_13
 # %bb.9:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -124,7 +119,7 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive11COutHandlerD2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB0_10:
@@ -137,21 +132,21 @@ _ZN8NArchive3NXz8CHandlerC2Ev:          # @_ZN8NArchive3NXz8CHandlerC2Ev
 	jirl	$ra, $ra, 0
 .LBB0_12:
 .Ltmp5:                                 # EH_LABEL
-	move	$s0, $a0
+	move	$s1, $a0
 .LBB0_13:                               # %_ZN11CStringBaseIcED2Ev.exit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN8NArchive11COutHandlerD2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB0_14:
 .Ltmp2:                                 # EH_LABEL
-	move	$s0, $a0
-	move	$a0, $s1
+	move	$s1, $a0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN13CObjectVectorIN8NArchive14COneMethodInfoEED2Ev)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:
@@ -7126,7 +7121,7 @@ GCC_except_table53:
 	.type	_ZN10IInArchiveD0Ev,@function
 _ZN10IInArchiveD0Ev:                    # @_ZN10IInArchiveD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end54:
 	.size	_ZN10IInArchiveD0Ev, .Lfunc_end54-_ZN10IInArchiveD0Ev
                                         # -- End function
@@ -7136,7 +7131,7 @@ _ZN10IInArchiveD0Ev:                    # @_ZN10IInArchiveD0Ev
 	.type	_ZN15IArchiveOpenSeqD0Ev,@function
 _ZN15IArchiveOpenSeqD0Ev:               # @_ZN15IArchiveOpenSeqD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end55:
 	.size	_ZN15IArchiveOpenSeqD0Ev, .Lfunc_end55-_ZN15IArchiveOpenSeqD0Ev
                                         # -- End function
@@ -7146,7 +7141,7 @@ _ZN15IArchiveOpenSeqD0Ev:               # @_ZN15IArchiveOpenSeqD0Ev
 	.type	_ZN11IOutArchiveD0Ev,@function
 _ZN11IOutArchiveD0Ev:                   # @_ZN11IOutArchiveD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end56:
 	.size	_ZN11IOutArchiveD0Ev, .Lfunc_end56-_ZN11IOutArchiveD0Ev
                                         # -- End function
@@ -7156,7 +7151,7 @@ _ZN11IOutArchiveD0Ev:                   # @_ZN11IOutArchiveD0Ev
 	.type	_ZN14ISetPropertiesD0Ev,@function
 _ZN14ISetPropertiesD0Ev:                # @_ZN14ISetPropertiesD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end57:
 	.size	_ZN14ISetPropertiesD0Ev, .Lfunc_end57-_ZN14ISetPropertiesD0Ev
                                         # -- End function

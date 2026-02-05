@@ -114,7 +114,7 @@ Q_do_exact:                             # @Q_do_exact
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	blt	$a2, $s3, .LBB0_15
-# %bb.14:                               # %._crit_edge
+# %bb.14:                               # %.preheader.thread148
                                         #   in Loop: Header=BB0_3 Depth=1
 	beqz	$s4, .LBB0_3
 	b	.LBB0_20
@@ -174,7 +174,7 @@ Q_do_exact:                             # @Q_do_exact
 	addi.w	$s7, $s7, 1
 	addi.d	$s1, $s1, 8
 	bne	$s3, $s2, .LBB0_18
-# %bb.19:                               # %._crit_edge.loopexit
+# %bb.19:                               # %._crit_edge
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	beqz	$s4, .LBB0_3

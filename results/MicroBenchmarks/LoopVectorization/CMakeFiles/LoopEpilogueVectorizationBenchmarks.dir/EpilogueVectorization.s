@@ -3576,80 +3576,79 @@ _GLOBAL__sub_I_EpilogueVectorization.cpp: # @_GLOBAL__sub_I_EpilogueVectorizatio
 .LBB19_45:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i37
 .Ltmp200:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB19_57
+	b	.LBB19_59
 .LBB19_46:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i28
 .Ltmp188:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB19_57
+	b	.LBB19_59
 .LBB19_47:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i19
 .Ltmp176:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB19_57
+	b	.LBB19_59
 .LBB19_48:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i10
 .Ltmp164:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB19_57
+	b	.LBB19_59
 .LBB19_49:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
 .Ltmp152:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB19_57
+	b	.LBB19_59
 .LBB19_50:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp140:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB19_57
+	b	.LBB19_59
 .LBB19_51:
 .Ltmp209:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB19_56
-	b	.LBB19_60
+	bne	$a2, $s1, .LBB19_57
+	b	.LBB19_58
 .LBB19_52:
 .Ltmp197:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB19_56
-	b	.LBB19_60
+	bne	$a2, $s1, .LBB19_57
+	b	.LBB19_58
 .LBB19_53:
 .Ltmp185:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB19_56
-	b	.LBB19_60
+	bne	$a2, $s1, .LBB19_57
+	b	.LBB19_58
 .LBB19_54:
 .Ltmp173:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB19_56
-	b	.LBB19_60
+	bne	$a2, $s1, .LBB19_57
+	b	.LBB19_58
 .LBB19_55:
 .Ltmp161:                               # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB19_60
-.LBB19_56:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB19_57
+	b	.LBB19_58
+.LBB19_56:
+.Ltmp149:                               # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	beq	$a2, $s1, .LBB19_58
+.LBB19_57:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB19_58
-.LBB19_57:                              # %common.resume.sink.split
+.LBB19_58:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s3, .LBB19_60
+.LBB19_59:                              # %common.resume.sink.split
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB19_58:                              # %common.resume
+.LBB19_60:                              # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB19_59:
-.Ltmp149:                               # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB19_56
-.LBB19_60:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s3, .LBB19_58
-	b	.LBB19_57
 .Lfunc_end19:
 	.size	_GLOBAL__sub_I_EpilogueVectorization.cpp, .Lfunc_end19-_GLOBAL__sub_I_EpilogueVectorization.cpp
 	.cfi_endproc

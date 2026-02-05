@@ -485,14 +485,14 @@ hypre_SeqVectorCopy:                    # @hypre_SeqVectorCopy
 	.type	hypre_SeqVectorCloneDeep,@function
 hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$s1, $a0, 8
 	ld.w	$s2, $a0, 16
@@ -503,14 +503,18 @@ hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	st.d	$zero, $a0, 0
-	st.w	$zero, $a0, 20
+	st.w	$zero, $sp, 28
+	st.w	$s3, $sp, 20
+	st.w	$s2, $sp, 24
+	st.w	$s1, $sp, 16
+	vld	$vr0, $sp, 16
+	vst	$vr0, $a0, 8
+	ld.w	$a0, $fp, 24
 	ld.w	$s4, $fp, 20
-	st.w	$s1, $a0, 8
-	st.w	$s3, $a0, 12
-	st.w	$s2, $a0, 16
-	st.w	$s4, $a0, 20
-	ld.d	$a0, $fp, 24
-	st.d	$a0, $s0, 24
+	ld.w	$a1, $fp, 28
+	st.w	$a0, $s0, 24
+	st.w	$s4, $s0, 20
+	st.w	$a1, $s0, 28
 	mul.w	$a0, $s2, $s1
 	ori	$a1, $zero, 8
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -574,14 +578,14 @@ hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 	bnez	$a2, .LBB9_11
 .LBB9_12:                               # %hypre_SeqVectorCopy.exit
 	move	$a0, $s0
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end9:
 	.size	hypre_SeqVectorCloneDeep, .Lfunc_end9-hypre_SeqVectorCloneDeep
@@ -606,35 +610,35 @@ hypre_SeqVectorCloneShallow:            # @hypre_SeqVectorCloneShallow
 	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	st.w	$zero, $a0, 20
-	ld.w	$s3, $fp, 20
 	st.d	$zero, $a0, 0
-	st.w	$s0, $a0, 8
-	st.w	$s1, $a0, 16
-	st.w	$s3, $a0, 20
 	ld.d	$a1, $fp, 24
 	st.d	$a1, $a0, 24
 	ld.d	$a1, $fp, 0
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $s0, 0
+	vinsgr2vr.w	$vr0, $s1, 2
+	vst	$vr0, $a0, 8
+	ld.w	$fp, $fp, 20
 	st.d	$a1, $a0, 0
-	st.w	$zero, $a0, 12
+	st.w	$fp, $a0, 20
 	beqz	$a1, .LBB10_2
 # %bb.1:
-	bnez	$s3, .LBB10_3
+	bnez	$fp, .LBB10_3
 	b	.LBB10_5
 .LBB10_2:
 	mul.w	$a2, $s1, $s0
 	ori	$a1, $zero, 8
-	move	$fp, $a0
+	move	$s3, $a0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $fp
-	st.d	$a1, $fp, 0
-	beqz	$s3, .LBB10_5
+	move	$a0, $s3
+	st.d	$a1, $s3, 0
+	beqz	$fp, .LBB10_5
 .LBB10_3:
 	ori	$s0, $zero, 1
-	bne	$s3, $s0, .LBB10_6
+	bne	$fp, $s0, .LBB10_6
 # %bb.4:
 	move	$s2, $s1
 .LBB10_5:                               # %.sink.split.i

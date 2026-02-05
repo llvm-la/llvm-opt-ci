@@ -174,11 +174,10 @@ GenTree:                                # @GenTree
 # %bb.5:                                # %NewEdge.exit
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$s2, $a0
-	addi.d	$a0, $s1, 8
-	st.w	$zero, $s2, 0
+	st.w	$zero, $a0, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $s2, 16
-	st.d	$s2, $a0, 0
+	vst	$vr0, $a0, 16
+	st.d	$a0, $s1, 8
 	pcaddu18i	$ra, %call36(random)
 	jirl	$ra, $ra, 0
 	mod.d	$a0, $a0, $s4

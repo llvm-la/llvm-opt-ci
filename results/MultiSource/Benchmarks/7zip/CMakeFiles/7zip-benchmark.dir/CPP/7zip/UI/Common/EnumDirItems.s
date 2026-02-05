@@ -379,21 +379,14 @@ GCC_except_table1:
 _ZNK9CDirItems10GetPhyPathEi:           # @_ZNK9CDirItems10GetPhyPathEi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	.cfi_def_cfa_offset 16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	.cfi_offset 1, -8
 	ld.d	$a3, $a1, 112
 	slli.d	$a2, $a2, 3
 	ldx.d	$a4, $a3, $a2
 	ld.w	$a3, $a4, 52
 	addi.d	$a2, $a1, 32
 	addi.d	$a4, $a4, 32
-	pcaddu18i	$ra, %call36(_ZNK9CDirItems15GetPrefixesPathERK13CRecordVectorIiEiRK11CStringBaseIwE)
-	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-	ret
+	pcaddu18i	$t8, %call36(_ZNK9CDirItems15GetPrefixesPathERK13CRecordVectorIiEiRK11CStringBaseIwE)
+	jr	$t8
 .Lfunc_end2:
 	.size	_ZNK9CDirItems10GetPhyPathEi, .Lfunc_end2-_ZNK9CDirItems10GetPhyPathEi
 	.cfi_endproc
@@ -404,21 +397,14 @@ _ZNK9CDirItems10GetPhyPathEi:           # @_ZNK9CDirItems10GetPhyPathEi
 _ZNK9CDirItems10GetLogPathEi:           # @_ZNK9CDirItems10GetLogPathEi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	.cfi_def_cfa_offset 16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	.cfi_offset 1, -8
 	ld.d	$a3, $a1, 112
 	slli.d	$a2, $a2, 3
 	ldx.d	$a4, $a3, $a2
 	ld.w	$a3, $a4, 56
 	addi.d	$a2, $a1, 64
 	addi.d	$a4, $a4, 32
-	pcaddu18i	$ra, %call36(_ZNK9CDirItems15GetPrefixesPathERK13CRecordVectorIiEiRK11CStringBaseIwE)
-	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-	ret
+	pcaddu18i	$t8, %call36(_ZNK9CDirItems15GetPrefixesPathERK13CRecordVectorIiEiRK11CStringBaseIwE)
+	jr	$t8
 .Lfunc_end3:
 	.size	_ZNK9CDirItems10GetLogPathEi, .Lfunc_end3-_ZNK9CDirItems10GetLogPathEi
 	.cfi_endproc

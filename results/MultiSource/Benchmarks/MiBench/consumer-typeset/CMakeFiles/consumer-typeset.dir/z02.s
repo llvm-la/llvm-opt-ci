@@ -102,39 +102,42 @@ LexInit:                                # @LexInit
 	.type	LexPush,@function
 LexPush:                                # @LexPush
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$s4, %pc_hi20(stack_free)
 	ld.w	$a5, $s4, %pc_lo12(stack_free)
-	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
-	move	$s6, $a2
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	move	$s7, $a0
+	move	$s0, $a4
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	move	$s2, $a2
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ori	$a0, $zero, 9
 	pcalau12i	$a1, %pc_hi20(lex_stack)
-	addi.d	$a1, $a1, %pc_lo12(lex_stack)
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$s1, $a1, %pc_lo12(lex_stack)
 	blt	$a5, $a0, .LBB2_8
 # %bb.1:
 	move	$s3, $s4
-	move	$a0, $s7
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(PosOfFile)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	move	$s4, $a0
-	move	$a0, $s7
-	bne	$s6, $a1, .LBB2_3
+	move	$s8, $s2
+	move	$s7, $s0
+	move	$s6, $s1
+	move	$a0, $fp
+	bne	$s2, $a1, .LBB2_3
 # %bb.2:
 	pcaddu18i	$ra, %call36(FullFileName)
 	jirl	$ra, $ra, 0
@@ -163,8 +166,7 @@ LexPush:                                # @LexPush
 	addi.d	$fp, $a0, 1
 	ori	$a1, $zero, 120
 	mul.d	$a0, $a0, $a1
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $s6
 	addi.d	$s0, $a0, -72
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$s1, $a0, %got_pc_lo12(no_fpos)
@@ -202,60 +204,66 @@ LexPush:                                # @LexPush
 	jirl	$ra, $ra, 0
 	move	$s4, $s3
 	ld.w	$a5, $s3, %pc_lo12(stack_free)
+	move	$s1, $s6
+	move	$s0, $s7
+	move	$s2, $s8
 .LBB2_8:
-	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	pcalau12i	$s3, %pc_hi20(chpt)
-	pcalau12i	$s5, %pc_hi20(buf)
-	pcalau12i	$fp, %pc_hi20(last_char)
-	pcalau12i	$s7, %pc_hi20(this_file)
+	pcalau12i	$s8, %pc_hi20(chpt)
+	pcalau12i	$s7, %pc_hi20(buf)
+	pcalau12i	$a0, %pc_hi20(last_char)
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(this_file)
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(fp)
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	pcalau12i	$s2, %pc_hi20(ftype)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(ftype)
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(next_token)
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	pcalau12i	$s6, %pc_hi20(offset)
-	pcalau12i	$s8, %pc_hi20(first_line_num)
-	pcalau12i	$s0, %pc_hi20(same_file)
-	pcalau12i	$s1, %pc_hi20(mem_block)
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	pcalau12i	$s3, %pc_hi20(offset)
+	pcalau12i	$s5, %pc_hi20(first_line_num)
+	pcalau12i	$s6, %pc_hi20(same_file)
+	pcalau12i	$fp, %pc_hi20(mem_block)
 	bltz	$a5, .LBB2_10
 # %bb.9:
-	ld.d	$a0, $s3, %pc_lo12(chpt)
+	ld.d	$a0, $s8, %pc_lo12(chpt)
 	ori	$a1, $zero, 120
 	mul.d	$a1, $a5, $a1
 	pcalau12i	$a2, %pc_hi20(frst)
 	ld.d	$a2, $a2, %pc_lo12(frst)
 	pcalau12i	$a3, %pc_hi20(limit)
 	ld.d	$a3, $a3, %pc_lo12(limit)
-	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a4, $a6, $a1
-	stx.d	$a0, $a6, $a1
+	add.d	$a4, $s1, $a1
+	stx.d	$a0, $s1, $a1
 	st.d	$a2, $a4, 8
 	st.d	$a3, $a4, 16
-	ld.d	$a0, $s5, %pc_lo12(buf)
+	ld.d	$a0, $s7, %pc_lo12(buf)
 	pcalau12i	$a1, %pc_hi20(blksize)
 	ld.w	$a1, $a1, %pc_lo12(blksize)
-	ld.b	$a2, $fp, %pc_lo12(last_char)
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.b	$a2, $a2, %pc_lo12(last_char)
 	pcalau12i	$a3, %pc_hi20(startline)
 	ld.d	$a3, $a3, %pc_lo12(startline)
 	st.d	$a0, $a4, 24
 	st.w	$a1, $a4, 32
 	st.b	$a2, $a4, 36
 	st.d	$a3, $a4, 40
-	ld.h	$a0, $s7, %pc_lo12(this_file)
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.h	$a0, $a0, %pc_lo12(this_file)
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, %pc_lo12(fp)
-	ld.h	$a2, $s2, %pc_lo12(ftype)
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.h	$a2, $a2, %pc_lo12(ftype)
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a3, $a3, %pc_lo12(next_token)
 	st.h	$a0, $a4, 48
 	st.d	$a1, $a4, 56
 	st.h	$a2, $a4, 72
 	st.d	$a3, $a4, 80
-	ld.w	$a0, $s6, %pc_lo12(offset)
-	ld.w	$a1, $s8, %pc_lo12(first_line_num)
-	ld.w	$a2, $s0, %pc_lo12(same_file)
-	ld.d	$a3, $s1, %pc_lo12(mem_block)
+	ld.w	$a0, $s3, %pc_lo12(offset)
+	ld.w	$a1, $s5, %pc_lo12(first_line_num)
+	ld.w	$a2, $s6, %pc_lo12(same_file)
+	ld.d	$a3, $fp, %pc_lo12(mem_block)
 	st.w	$a0, $a4, 88
 	st.w	$a1, $a4, 92
 	st.w	$a2, $a4, 96
@@ -273,26 +281,21 @@ LexPush:                                # @LexPush
 	ori	$a0, $a0, 2050
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, %pc_lo12(mem_block)
+	st.d	$a0, $fp, %pc_lo12(mem_block)
 	bnez	$a0, .LBB2_12
 # %bb.11:
-	move	$a1, $s1
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	move	$s5, $s3
-	move	$s3, $s7
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	move	$a0, $s1
+	move	$a1, $fp
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	move	$a0, $fp
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(PosOfFile)
 	jirl	$ra, $ra, 0
-	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
+	move	$s2, $s0
+	move	$s0, $s1
+	move	$s1, $s4
 	move	$s4, $a0
-	move	$a0, $s1
-	move	$s7, $s3
-	move	$s3, $s5
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(FullFileName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -302,7 +305,10 @@ LexPush:                                # @LexPush
 	ori	$a1, $zero, 3
 	ori	$a3, $zero, 1
 	move	$a4, $s4
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	move	$s4, $s1
+	move	$s1, $s0
+	move	$s0, $s2
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
@@ -310,52 +316,52 @@ LexPush:                                # @LexPush
 .LBB2_12:
 	ori	$a1, $zero, 2048
 	add.d	$a2, $a0, $a1
-	st.d	$a2, $s3, %pc_lo12(chpt)
-	st.d	$a2, $s5, %pc_lo12(buf)
+	st.d	$a2, $s8, %pc_lo12(chpt)
+	st.d	$a2, $s7, %pc_lo12(buf)
 	ori	$a2, $zero, 10
-	st.b	$a2, $fp, %pc_lo12(last_char)
-	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
-	st.h	$a2, $s7, %pc_lo12(this_file)
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	st.b	$a2, $a3, %pc_lo12(last_char)
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	st.h	$a2, $a3, %pc_lo12(this_file)
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	st.w	$a2, $s3, %pc_lo12(offset)
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	st.w	$a2, $s5, %pc_lo12(first_line_num)
+	st.w	$s0, $s6, %pc_lo12(same_file)
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	st.w	$a2, $s6, %pc_lo12(offset)
+	st.h	$s2, $a2, %pc_lo12(ftype)
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	st.w	$a2, $s8, %pc_lo12(first_line_num)
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	st.w	$a2, $s0, %pc_lo12(same_file)
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
-	st.h	$a3, $s2, %pc_lo12(ftype)
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
-	st.d	$zero, $a3, %pc_lo12(next_token)
+	st.d	$zero, $a2, %pc_lo12(next_token)
 	stx.b	$zero, $a0, $a1
-	beqz	$a2, .LBB2_14
+	beqz	$s0, .LBB2_14
 # %bb.13:
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(fp)
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, %pc_lo12(stack_free)
 	ori	$a2, $zero, 120
 	mul.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	add.d	$a1, $a2, $a1
+	add.d	$a1, $s1, $a1
 	st.d	$a0, $a1, -16
 	b	.LBB2_15
 .LBB2_14:
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	st.d	$zero, $a0, %pc_lo12(fp)
 .LBB2_15:
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end2:
 	.size	LexPush, .Lfunc_end2-LexPush
@@ -1354,14 +1360,13 @@ LexGetToken:                            # @LexGetToken
 	sub.d	$a0, $s0, $a0
 	bstrins.d	$a1, $a0, 63, 20
 	st.w	$a1, $s8, 4
-	ori	$a5, $zero, 9
+	ori	$s8, $zero, 9
 	pcalau12i	$a0, %pc_hi20(.L.str.39)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.39)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LJTI5_1)
 	addi.d	$s4, $a0, %pc_lo12(.LJTI5_1)
 	ori	$s3, $zero, 48
-	ori	$s8, $zero, 55
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.38)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
@@ -1376,7 +1381,6 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ori	$a5, $zero, 9
 	.p2align	4, , 16
 .LBB5_87:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_92 Depth 2
@@ -1387,7 +1391,7 @@ LexGetToken:                            # @LexGetToken
 	ldx.bu	$a0, $s1, $a0
 	addi.d	$s6, $s6, 1
 	addi.d	$fp, $fp, 1
-	bltu	$a5, $a0, .LBB5_86
+	bltu	$s8, $a0, .LBB5_86
 # %bb.88:                               #   in Loop: Header=BB5_87 Depth=1
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $s4, $a0
@@ -1407,7 +1411,8 @@ LexGetToken:                            # @LexGetToken
 	move	$a2, $zero
 	move	$a1, $zero
 	addi.d	$a4, $s7, 2
-	ori	$a6, $zero, 2
+	ori	$a5, $zero, 2
+	ori	$a6, $zero, 55
 	.p2align	4, , 16
 .LBB5_92:                               # %.preheader
                                         #   Parent Loop BB5_87 Depth=1
@@ -1419,12 +1424,12 @@ LexGetToken:                            # @LexGetToken
 	addi.w	$a1, $a1, -48
 	bltu	$a0, $s3, .LBB5_95
 # %bb.93:                               #   in Loop: Header=BB5_92 Depth=2
-	bltu	$s8, $a0, .LBB5_95
+	bltu	$a6, $a0, .LBB5_95
 # %bb.94:                               #   in Loop: Header=BB5_92 Depth=2
 	move	$a3, $a2
 	addi.w	$a2, $a2, 1
 	addi.d	$a4, $s6, 1
-	bltu	$a3, $a6, .LBB5_92
+	bltu	$a3, $a5, .LBB5_92
 .LBB5_95:                               # %.critedge
                                         #   in Loop: Header=BB5_87 Depth=1
 	beqz	$a1, .LBB5_98
@@ -1443,7 +1448,6 @@ LexGetToken:                            # @LexGetToken
 	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ori	$a5, $zero, 9
 	move	$fp, $s2
 	b	.LBB5_87
 .LBB5_99:

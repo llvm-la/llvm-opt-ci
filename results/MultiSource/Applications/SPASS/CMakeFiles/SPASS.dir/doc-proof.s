@@ -31,7 +31,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$s6, $a0
 	ld.d	$a0, $a0, 112
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	move	$s5, $a2
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	move	$s7, $a1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(pcheck_ConvertParentsInSPASSProof)
@@ -167,8 +167,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(pcheck_MarkRecursive)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 48                    # 8-byte Folded Spill
 	beqz	$s2, .LBB1_24
 # %bb.23:                               # %._crit_edge156.thread
 	move	$a0, $s0
@@ -235,8 +234,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(pcheck_ParentPointersToParentNumbers)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ori	$s7, $zero, 1
 	beqz	$s2, .LBB1_43
 # %bb.35:                               # %.lr.ph161.preheader
 	move	$s3, $zero
@@ -286,12 +284,15 @@ dp_PrintProof:                          # @dp_PrintProof
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
+	move	$s7, $zero
 	b	.LBB1_45
 .LBB1_43:
 	move	$s8, $s2
+	move	$s3, $zero
+	b	.LBB1_45
 .LBB1_44:
 	move	$s3, $zero
+	ori	$s7, $zero, 1
 .LBB1_45:                               # %._crit_edge162.thread
 	ld.w	$s2, $s5, %pc_lo12(dp_DEPTH)
 	move	$s5, $s8
@@ -311,25 +312,26 @@ dp_PrintProof:                          # @dp_PrintProof
 	ld.w	$a0, $a0, 124
 	beqz	$a0, .LBB1_75
 # %bb.46:
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$s8, $s6, 104
-	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
-	move	$a0, $s6
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 5
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
+	move	$s6, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
-	move	$a0, $s2
-	move	$a2, $s6
+	move	$a0, $s6
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	move	$a0, $s2
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(misc_OpenFile)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
@@ -354,7 +356,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$a3, $s7
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	move	$a0, $s6
+	move	$a0, $s2
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
@@ -424,7 +426,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$a3, $s7
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
 	beqz	$s5, .LBB1_54
 # %bb.47:                               # %.lr.ph.i.preheader
@@ -433,47 +435,44 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$s5, $zero
 	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
 	ori	$s8, $zero, 16
-	b	.LBB1_49
+	b	.LBB1_50
 	.p2align	4, , 16
-.LBB1_48:                               #   in Loop: Header=BB1_49 Depth=1
+.LBB1_48:                               #   in Loop: Header=BB1_50 Depth=1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s2, $a0, 8
 	st.d	$s5, $a0, 0
 	move	$s5, $a0
+.LBB1_49:                               #   in Loop: Header=BB1_50 Depth=1
 	ld.d	$s6, $s6, 0
 	beqz	$s6, .LBB1_55
-.LBB1_49:                               # %.lr.ph.i
+.LBB1_50:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s2, $s6, 8
 	ld.w	$a0, $s2, 76
 	bne	$a0, $s8, .LBB1_48
-# %bb.50:                               #   in Loop: Header=BB1_49 Depth=1
-	move	$s8, $s7
+# %bb.51:                               #   in Loop: Header=BB1_50 Depth=1
 	ld.wu	$a0, $s2, 48
-	andi	$s7, $a0, 8
+	andi	$s8, $a0, 8
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s2, $a0, 8
-	bnez	$s7, .LBB1_52
-# %bb.51:                               #   in Loop: Header=BB1_49 Depth=1
+	bnez	$s8, .LBB1_53
+# %bb.52:                               #   in Loop: Header=BB1_50 Depth=1
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	b	.LBB1_53
+	ori	$s8, $zero, 16
+	b	.LBB1_49
 	.p2align	4, , 16
-.LBB1_52:                               #   in Loop: Header=BB1_49 Depth=1
+.LBB1_53:                               #   in Loop: Header=BB1_50 Depth=1
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 0
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-.LBB1_53:                               #   in Loop: Header=BB1_49 Depth=1
-	move	$s7, $s8
 	ori	$s8, $zero, 16
-	ld.d	$s6, $s6, 0
-	bnez	$s6, .LBB1_49
-	b	.LBB1_55
+	b	.LBB1_49
 .LBB1_54:
 	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
 	move	$s5, $zero
@@ -573,6 +572,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$s8, $a5
 	bnez	$a5, .LBB1_60
 .LBB1_61:                               # %list_Delete.exit.i
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	beqz	$s2, .LBB1_64
 # %bb.62:                               # %.lr.ph.i68.i.preheader
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
@@ -595,17 +595,16 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$s2, $a5
 	bnez	$a5, .LBB1_63
 .LBB1_64:                               # %list_Delete.exit72.i
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$s5, .LBB1_67
 # %bb.65:                               # %.lr.ph.i74.i.preheader
-	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
-	ld.d	$a6, $a1, %got_pc_lo12(memory_ARRAY)
+	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
+	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_FREEDBYTES)
 	.p2align	4, , 16
 .LBB1_66:                               # %.lr.ph.i74.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a2, $a6, 128
+	ld.d	$a2, $a0, 128
 	ld.w	$a3, $a2, 32
 	ld.d	$a4, $a1, 0
 	ld.d	$a5, $s5, 0
@@ -613,11 +612,12 @@ dp_PrintProof:                          # @dp_PrintProof
 	st.d	$a3, $a1, 0
 	ld.d	$a2, $a2, 0
 	st.d	$a2, $s5, 0
-	ld.d	$a2, $a6, 128
+	ld.d	$a2, $a0, 128
 	st.d	$s5, $a2, 0
 	move	$s5, $a5
 	bnez	$a5, .LBB1_66
 .LBB1_67:                               # %list_Delete.exit78.i
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 5
@@ -638,7 +638,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	st.d	$a2, $s6, 0
 	ldx.d	$a0, $a1, $a0
 	st.d	$s6, $a0, 0
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB1_75
 .LBB1_69:
 	pcalau12i	$a1, %got_pc_hi20(memory_ALIGN)
@@ -655,7 +655,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	sub.d	$a1, $s6, $a1
 	ld.d	$a3, $a1, -16
 	ld.d	$a2, $a1, -8
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a3, .LBB1_92
 # %bb.70:
 	st.d	$a2, $a3, 8
@@ -692,7 +692,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
-	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
 	beqz	$s0, .LBB1_78
 # %bb.76:                               # %.lr.ph.i109.preheader
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
@@ -781,8 +781,7 @@ dp_PrintProof:                          # @dp_PrintProof
 	move	$s1, $a5
 	bnez	$a5, .LBB1_86
 .LBB1_87:                               # %list_Delete.exit132
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bnez	$a0, .LBB1_90
+	bnez	$s7, .LBB1_90
 # %bb.88:                               # %.lr.ph.i134.preheader
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)

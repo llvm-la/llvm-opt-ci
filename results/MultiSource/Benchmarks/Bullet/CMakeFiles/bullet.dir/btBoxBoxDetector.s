@@ -1018,7 +1018,8 @@ _Z8dBoxBox2RK9btVector3PKfS1_S1_S3_S1_RS_PfPiiP12dContactGeomiRN36btDiscreteColl
 	fcmp.cule.s	$fcc0, $ft5, $fs1
 	bcnez	$fcc0, .LBB3_51
 # %bb.49:
-	fsqrt.s	$ft5, $ft5
+	fadd.s	$fa2, $ft5, $fs1
+	fsqrt.s	$ft5, $fa2
 	fdiv.s	$ft1, $ft1, $ft5
 	lu12i.w	$t0, 260198
 	ori	$t0, $t0, 1638
@@ -1060,7 +1061,8 @@ _Z8dBoxBox2RK9btVector3PKfS1_S1_S3_S1_RS_PfPiiP12dContactGeomiRN36btDiscreteColl
 	fcmp.cule.s	$fcc0, $ft5, $fs1
 	bcnez	$fcc0, .LBB3_55
 # %bb.53:
-	fsqrt.s	$ft5, $ft5
+	fadd.s	$fa2, $ft5, $fs1
+	fsqrt.s	$ft5, $fa2
 	fdiv.s	$ft1, $ft1, $ft5
 	lu12i.w	$a0, 260198
 	ori	$a0, $a0, 1638
@@ -1106,7 +1108,8 @@ _Z8dBoxBox2RK9btVector3PKfS1_S1_S3_S1_RS_PfPiiP12dContactGeomiRN36btDiscreteColl
 	fcmp.cule.s	$fcc0, $ft2, $fs1
 	bcnez	$fcc0, .LBB3_59
 # %bb.57:
-	fsqrt.s	$ft2, $ft2
+	fadd.s	$fa2, $ft2, $fs1
+	fsqrt.s	$ft2, $fa2
 	fdiv.s	$ft0, $ft0, $ft2
 	lu12i.w	$a0, 260198
 	ori	$a0, $a0, 1638

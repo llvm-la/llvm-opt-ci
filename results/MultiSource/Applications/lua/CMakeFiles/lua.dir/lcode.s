@@ -121,14 +121,14 @@ luaK_jump:                              # @luaK_jump
 	addi.w	$a4, $a4, 1
 	bne	$a4, $s1, .LBB2_3
 .LBB2_5:
-	nor	$a4, $a3, $zero
-	add.w	$s0, $s0, $a4
-	srai.d	$a4, $s0, 31
-	xor	$a5, $s0, $a4
-	sub.d	$a4, $a5, $a4
-	bstrpick.d	$a4, $a4, 31, 17
 	alsl.d	$s1, $a3, $a2, 2
-	beqz	$a4, .LBB2_7
+	nor	$a2, $a3, $zero
+	add.d	$a2, $s0, $a2
+	addu16i.d	$a3, $a2, -2
+	addi.w	$a3, $a3, 0
+	lu12i.w	$a4, -64
+	addi.w	$s0, $a2, 0
+	bltu	$a4, $a3, .LBB2_7
 # %bb.6:
 	ld.d	$a2, $fp, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -206,26 +206,26 @@ luaK_concat:                            # @luaK_concat
 	addi.w	$a6, $a6, 1
 	bne	$a6, $a3, .LBB4_3
 .LBB4_5:
+	alsl.d	$fp, $a5, $a4, 2
 	nor	$a3, $a5, $zero
-	add.w	$fp, $a2, $a3
-	srai.d	$a2, $fp, 31
-	xor	$a3, $fp, $a2
-	sub.d	$a2, $a3, $a2
-	bstrpick.d	$a2, $a2, 31, 17
-	alsl.d	$s0, $a5, $a4, 2
-	beqz	$a2, .LBB4_7
+	add.d	$a2, $a2, $a3
+	addu16i.d	$a3, $a2, -2
+	addi.w	$a3, $a3, 0
+	lu12i.w	$a4, -64
+	addi.w	$s0, $a2, 0
+	bltu	$a4, $a3, .LBB4_7
 # %bb.6:
 	ld.d	$a0, $a0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, 0
+	ld.w	$a1, $fp, 0
 .LBB4_7:                                # %fixjump.exit
-	bstrins.d	$a1, $fp, 63, 14
+	bstrins.d	$a1, $s0, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $s0, 0
+	st.w	$a0, $fp, 0
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -275,18 +275,18 @@ luaK_getlabel:                          # @luaK_getlabel
 	.type	luaK_patchlist,@function
 luaK_patchlist:                         # @luaK_patchlist
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 48
 	move	$s1, $a2
@@ -316,14 +316,14 @@ luaK_patchlist:                         # @luaK_patchlist
 	addi.w	$a4, $a4, 1
 	bne	$a4, $a1, .LBB7_4
 .LBB7_6:
-	nor	$a1, $a3, $zero
-	add.w	$s0, $s0, $a1
-	srai.d	$a1, $s0, 31
-	xor	$a4, $s0, $a1
-	sub.d	$a1, $a4, $a1
-	bstrpick.d	$a1, $a1, 31, 17
 	alsl.d	$s1, $a3, $a2, 2
-	beqz	$a1, .LBB7_8
+	nor	$a1, $a3, $zero
+	add.d	$a1, $s0, $a1
+	addu16i.d	$a2, $a1, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a3, -64
+	addi.w	$s0, $a1, 0
+	bltu	$a3, $a2, .LBB7_8
 # %bb.7:
 	ld.d	$a0, $fp, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -343,16 +343,19 @@ luaK_patchlist:                         # @luaK_patchlist
 # %bb.10:                               # %.lr.ph.i
 	pcalau12i	$a0, %pc_hi20(luaP_opmodes)
 	addi.d	$s4, $a0, %pc_lo12(luaP_opmodes)
-	ori	$a4, $zero, 27
+	ori	$a3, $zero, 27
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 4032
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	lu12i.w	$a0, 2044
 	ori	$a0, $a0, 26
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	lu12i.w	$a0, -64
+	ori	$a0, $a0, 1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.1)
-	lu12i.w	$s7, 524284
+	lu12i.w	$s8, 524284
 	.p2align	4, , 16
 .LBB7_11:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
@@ -362,52 +365,52 @@ luaK_patchlist:                         # @luaK_patchlist
 	alsl.d	$s5, $s0, $a0, 2
 	blez	$s0, .LBB7_13
 # %bb.12:                               #   in Loop: Header=BB7_11 Depth=1
-	ld.wu	$a1, $s5, -4
-	andi	$a0, $a1, 63
-	ldx.b	$a0, $s4, $a0
-	bltz	$a0, .LBB7_15
+	ld.wu	$a0, $s5, -4
+	andi	$a1, $a0, 63
+	ldx.b	$a1, $s4, $a1
+	bltz	$a1, .LBB7_15
 .LBB7_13:                               #   in Loop: Header=BB7_11 Depth=1
-	move	$a1, $s6
-	move	$a0, $s5
-	andi	$a2, $a1, 63
-	bne	$a2, $a4, .LBB7_16
+	move	$a0, $s6
+	move	$a1, $s5
+	andi	$a2, $a0, 63
+	bne	$a2, $a3, .LBB7_16
 .LBB7_14:                               #   in Loop: Header=BB7_11 Depth=1
-	srli.d	$a2, $a1, 17
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	and	$a2, $a2, $a3
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	and	$a1, $a1, $a3
-	or	$a1, $a2, $a1
-	nor	$a2, $s0, $zero
-	add.w	$s8, $s1, $a2
-	srai.d	$a2, $s8, 31
-	xor	$a3, $s8, $a2
-	sub.d	$a2, $a3, $a2
-	bstrpick.d	$a2, $a2, 31, 17
-	st.w	$a1, $a0, 0
-	bnez	$a2, .LBB7_17
+	srli.d	$a2, $a0, 17
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	and	$a2, $a2, $a4
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	and	$a0, $a0, $a4
+	or	$a0, $a2, $a0
+	st.w	$a0, $a1, 0
+	nor	$a0, $s0, $zero
+	add.d	$a0, $s1, $a0
+	addu16i.d	$a1, $a0, -2
+	addi.w	$a1, $a1, 0
+	addi.w	$s7, $a0, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	bltu	$a1, $a0, .LBB7_17
 	b	.LBB7_18
 	.p2align	4, , 16
 .LBB7_15:                               #   in Loop: Header=BB7_11 Depth=1
-	addi.d	$a0, $s5, -4
-	andi	$a2, $a1, 63
-	beq	$a2, $a4, .LBB7_14
+	addi.d	$a1, $s5, -4
+	andi	$a2, $a0, 63
+	beq	$a2, $a3, .LBB7_14
 .LBB7_16:                               #   in Loop: Header=BB7_11 Depth=1
 	nor	$a0, $s0, $zero
-	add.w	$s8, $s1, $a0
-	srai.d	$a0, $s8, 31
-	xor	$a1, $s8, $a0
-	sub.d	$a0, $a1, $a0
-	bstrpick.d	$a1, $a0, 31, 17
+	add.d	$a0, $s1, $a0
+	addu16i.d	$a1, $a0, -2
+	addi.w	$a1, $a1, 0
+	addi.w	$s7, $a0, 0
 	move	$a0, $s6
-	beqz	$a1, .LBB7_19
+	lu12i.w	$a2, -64
+	bltu	$a2, $a1, .LBB7_19
 .LBB7_17:                               # %fixjump.exit16.sink.split.sink.split.i
                                         #   in Loop: Header=BB7_11 Depth=1
 	ld.d	$a0, $fp, 24
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ori	$a4, $zero, 27
+	ori	$a3, $zero, 27
 .LBB7_18:                               # %fixjump.exit16.sink.split.i
                                         #   in Loop: Header=BB7_11 Depth=1
 	ld.w	$a0, $s5, 0
@@ -416,8 +419,8 @@ luaK_patchlist:                         # @luaK_patchlist
 	srli.d	$a1, $s6, 14
 	addu16i.d	$a1, $a1, -2
 	addi.d	$a1, $a1, 1
-	bstrins.d	$a0, $s8, 63, 14
-	add.d	$a0, $a0, $s7
+	bstrins.d	$a0, $s7, 63, 14
+	add.d	$a0, $a0, $s8
 	st.w	$a0, $s5, 0
 	beq	$a1, $s3, .LBB7_22
 # %bb.20:                               # %fixjump.exit16.i
@@ -429,18 +432,18 @@ luaK_patchlist:                         # @luaK_patchlist
 .LBB7_21:
 	st.w	$s0, $fp, 56
 .LBB7_22:                               # %luaK_patchtohere.exit
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end7:
 	.size	luaK_patchlist, .Lfunc_end7-luaK_patchlist
@@ -479,26 +482,26 @@ luaK_patchtohere:                       # @luaK_patchtohere
 	addi.w	$a6, $a6, 1
 	bne	$a6, $a3, .LBB8_3
 .LBB8_5:
+	alsl.d	$fp, $a5, $a4, 2
 	nor	$a3, $a5, $zero
-	add.w	$fp, $a1, $a3
-	srai.d	$a1, $fp, 31
-	xor	$a3, $fp, $a1
-	sub.d	$a1, $a3, $a1
-	bstrpick.d	$a1, $a1, 31, 17
-	alsl.d	$s0, $a5, $a4, 2
-	beqz	$a1, .LBB8_7
+	add.d	$a1, $a1, $a3
+	addu16i.d	$a3, $a1, -2
+	addi.w	$a3, $a3, 0
+	lu12i.w	$a4, -64
+	addi.w	$s0, $a1, 0
+	bltu	$a4, $a3, .LBB8_7
 # %bb.6:
 	ld.d	$a0, $a0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s0, 0
+	ld.w	$a2, $fp, 0
 .LBB8_7:                                # %fixjump.exit.i
-	bstrins.d	$a2, $fp, 63, 14
+	bstrins.d	$a2, $s0, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a2, $a0
-	st.w	$a0, $s0, 0
+	st.w	$a0, $fp, 0
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -515,21 +518,21 @@ luaK_patchtohere:                       # @luaK_patchtohere
 	.type	patchlistaux,@function
 patchlistaux:                           # @patchlistaux
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	addi.w	$s5, $zero, -1
-	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
 	beq	$a1, $s5, .LBB9_16
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a3
@@ -538,20 +541,23 @@ patchlistaux:                           # @patchlistaux
 	slli.d	$a0, $a3, 6
 	bstrpick.d	$a0, $a0, 13, 6
 	slli.d	$a0, $a0, 6
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(luaP_opmodes)
 	addi.d	$s7, $a0, %pc_lo12(luaP_opmodes)
-	ori	$a4, $zero, 27
+	ori	$a3, $zero, 27
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 4032
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	lu12i.w	$a0, 2044
 	ori	$a0, $a0, 26
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	lu12i.w	$a0, -64
+	ori	$a0, $a0, 1
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a0, -4
 	ori	$a0, $a0, 27
 	lu32i.d	$a0, 0
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.1)
 	lu12i.w	$s6, 524284
@@ -572,7 +578,7 @@ patchlistaux:                           # @patchlistaux
 	move	$a1, $s1
 	move	$a0, $fp
 	andi	$a2, $a1, 63
-	bne	$a2, $a4, .LBB9_11
+	bne	$a2, $a3, .LBB9_11
 .LBB9_5:                                #   in Loop: Header=BB9_2 Depth=1
 	ori	$a2, $zero, 255
 	beq	$s0, $a2, .LBB9_8
@@ -580,52 +586,52 @@ patchlistaux:                           # @patchlistaux
 	srli.d	$a2, $a1, 23
 	beq	$s0, $a2, .LBB9_8
 # %bb.7:                                #   in Loop: Header=BB9_2 Depth=1
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	and	$a1, $a1, $a2
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	or	$a1, $a1, $a2
 	b	.LBB9_9
 	.p2align	4, , 16
 .LBB9_8:                                #   in Loop: Header=BB9_2 Depth=1
 	srli.d	$a2, $a1, 17
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	and	$a2, $a2, $a3
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	and	$a1, $a1, $a3
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	and	$a2, $a2, $a4
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	and	$a1, $a1, $a4
 	or	$a1, $a2, $a1
 .LBB9_9:                                #   in Loop: Header=BB9_2 Depth=1
-	nor	$a2, $s3, $zero
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	add.w	$s8, $a3, $a2
-	srai.d	$a2, $s8, 31
-	xor	$a3, $s8, $a2
-	sub.d	$a2, $a3, $a2
-	bstrpick.d	$a2, $a2, 31, 17
 	st.w	$a1, $a0, 0
-	bnez	$a2, .LBB9_12
+	nor	$a0, $s3, $zero
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	add.d	$a0, $a1, $a0
+	addu16i.d	$a1, $a0, -2
+	addi.w	$a1, $a1, 0
+	addi.w	$s8, $a0, 0
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	bltu	$a1, $a0, .LBB9_12
 	b	.LBB9_13
 	.p2align	4, , 16
 .LBB9_10:                               #   in Loop: Header=BB9_2 Depth=1
 	addi.d	$a0, $fp, -4
 	andi	$a2, $a1, 63
-	beq	$a2, $a4, .LBB9_5
+	beq	$a2, $a3, .LBB9_5
 .LBB9_11:                               #   in Loop: Header=BB9_2 Depth=1
 	nor	$a0, $s3, $zero
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	add.w	$s8, $a1, $a0
-	srai.d	$a0, $s8, 31
-	xor	$a1, $s8, $a0
-	sub.d	$a0, $a1, $a0
-	bstrpick.d	$a1, $a0, 31, 17
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	add.d	$a0, $a1, $a0
+	addu16i.d	$a1, $a0, -2
+	addi.w	$a1, $a1, 0
+	addi.w	$s8, $a0, 0
 	move	$a0, $s1
-	beqz	$a1, .LBB9_14
+	lu12i.w	$a2, -64
+	bltu	$a2, $a1, .LBB9_14
 .LBB9_12:                               # %fixjump.exit16.sink.split.sink.split
                                         #   in Loop: Header=BB9_2 Depth=1
 	ld.d	$a0, $s2, 24
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ori	$a4, $zero, 27
+	ori	$a3, $zero, 27
 .LBB9_13:                               # %fixjump.exit16.sink.split
                                         #   in Loop: Header=BB9_2 Depth=1
 	ld.w	$a0, $fp, 0
@@ -644,18 +650,18 @@ patchlistaux:                           # @patchlistaux
 	addi.w	$s3, $a0, 1
 	bne	$s3, $s5, .LBB9_2
 .LBB9_16:                               # %._crit_edge
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end9:
 	.size	patchlistaux, .Lfunc_end9-patchlistaux
@@ -970,14 +976,14 @@ luaK_setreturns:                        # @luaK_setreturns
 	and	$a2, $a2, $a4
 	bstrins.d	$a2, $a6, 13, 6
 	stx.w	$a2, $a5, $a1
-	ld.w	$a1, $a0, 60
-	ld.bu	$a2, $a3, 115
-	addi.w	$fp, $a1, 1
-	blt	$a1, $a2, .LBB15_7
+	ld.w	$a2, $a0, 60
+	ld.bu	$a1, $a3, 115
+	addi.d	$fp, $a2, 1
+	blt	$a2, $a1, .LBB15_7
 # %bb.4:
-	ori	$a2, $zero, 250
+	ori	$a4, $zero, 249
 	move	$a1, $fp
-	bltu	$fp, $a2, .LBB15_6
+	bltu	$a2, $a4, .LBB15_6
 # %bb.5:
 	ld.d	$a2, $a0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -1201,14 +1207,14 @@ luaK_exp2nextreg:                       # @luaK_exp2nextreg
 	st.w	$a0, $s0, 60
 .LBB18_4:                               # %freeexp.exit
 	ld.d	$a0, $s0, 0
-	ld.w	$a1, $s0, 60
-	ld.bu	$a2, $a0, 115
-	addi.w	$s1, $a1, 1
-	blt	$a1, $a2, .LBB18_8
+	ld.w	$a2, $s0, 60
+	ld.bu	$a1, $a0, 115
+	addi.d	$s1, $a2, 1
+	blt	$a2, $a1, .LBB18_8
 # %bb.5:
-	ori	$a2, $zero, 250
+	ori	$a3, $zero, 249
 	move	$a1, $s1
-	bltu	$s1, $a2, .LBB18_7
+	bltu	$a2, $a3, .LBB18_7
 # %bb.6:
 	ld.d	$a0, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -1281,26 +1287,26 @@ exp2reg:                                # @exp2reg
 	addi.w	$a5, $a5, 1
 	bne	$a5, $a2, .LBB19_4
 .LBB19_6:
+	alsl.d	$s2, $a4, $a3, 2
 	nor	$a2, $a4, $zero
-	add.w	$s2, $a0, $a2
-	srai.d	$a0, $s2, 31
-	xor	$a2, $s2, $a0
-	sub.d	$a0, $a2, $a0
-	bstrpick.d	$a0, $a0, 31, 17
-	alsl.d	$s3, $a4, $a3, 2
-	beqz	$a0, .LBB19_8
+	add.d	$a0, $a0, $a2
+	addu16i.d	$a2, $a0, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a3, -64
+	addi.w	$s3, $a0, 0
+	bltu	$a3, $a2, .LBB19_8
 # %bb.7:
 	ld.d	$a0, $s1, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s3, 0
+	ld.w	$a1, $s2, 0
 .LBB19_8:                               # %fixjump.exit.i
-	bstrins.d	$a1, $s2, 63, 14
+	bstrins.d	$a1, $s3, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $s3, 0
+	st.w	$a0, $s2, 0
 .LBB19_9:                               # %luaK_concat.exit
 	ld.w	$a2, $fp, 16
 	ld.w	$a0, $fp, 20
@@ -1420,14 +1426,14 @@ exp2reg:                                # @exp2reg
 	addi.w	$a3, $a3, 1
 	bne	$a3, $s4, .LBB19_31
 .LBB19_33:
-	nor	$a3, $a2, $zero
-	add.w	$s3, $s3, $a3
-	srai.d	$a3, $s3, 31
-	xor	$a4, $s3, $a3
-	sub.d	$a3, $a4, $a3
-	bstrpick.d	$a3, $a3, 31, 17
 	alsl.d	$s4, $a2, $a1, 2
-	beqz	$a3, .LBB19_35
+	nor	$a1, $a2, $zero
+	add.d	$a1, $s3, $a1
+	addu16i.d	$a2, $a1, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a3, -64
+	addi.w	$s3, $a1, 0
+	bltu	$a3, $a2, .LBB19_35
 # %bb.34:
 	ld.d	$a0, $s1, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -1478,33 +1484,33 @@ exp2reg:                                # @exp2reg
 	beq	$s2, $s5, .LBB19_47
 # %bb.39:
 	ld.w	$a4, $s1, 56
-	addi.w	$a2, $zero, -1
-	beq	$a4, $a2, .LBB19_46
+	addi.w	$a1, $zero, -1
+	beq	$a4, $a1, .LBB19_46
 # %bb.40:                               # %.preheader.i.i58
 	ld.d	$a0, $s1, 0
-	ld.d	$a1, $a0, 24
+	ld.d	$a2, $a0, 24
 	.p2align	4, , 16
 .LBB19_41:                              # =>This Inner Loop Header: Depth=1
 	move	$a3, $a4
 	slli.d	$a0, $a4, 2
-	ldx.wu	$a0, $a1, $a0
+	ldx.wu	$a0, $a2, $a0
 	srli.d	$a4, $a0, 14
 	addu16i.d	$a4, $a4, -2
 	addi.d	$a4, $a4, 1
-	beq	$a4, $a2, .LBB19_43
+	beq	$a4, $a1, .LBB19_43
 # %bb.42:                               #   in Loop: Header=BB19_41 Depth=1
 	add.d	$a4, $a3, $a4
 	addi.w	$a4, $a4, 1
-	bne	$a4, $a2, .LBB19_41
+	bne	$a4, $a1, .LBB19_41
 .LBB19_43:
-	nor	$a2, $a3, $zero
-	add.w	$s2, $s2, $a2
-	srai.d	$a2, $s2, 31
-	xor	$a4, $s2, $a2
-	sub.d	$a2, $a4, $a2
-	bstrpick.d	$a2, $a2, 31, 17
-	alsl.d	$s5, $a3, $a1, 2
-	beqz	$a2, .LBB19_45
+	alsl.d	$s5, $a3, $a2, 2
+	nor	$a1, $a3, $zero
+	add.d	$a1, $s2, $a1
+	addu16i.d	$a2, $a1, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a3, -64
+	addi.w	$s2, $a1, 0
+	bltu	$a3, $a2, .LBB19_45
 # %bb.44:
 	ld.d	$a0, $s1, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -1604,14 +1610,14 @@ luaK_exp2anyreg:                        # @luaK_exp2anyreg
 	st.w	$a0, $s0, 60
 .LBB20_7:                               # %freeexp.exit.i
 	ld.d	$a0, $s0, 0
-	ld.w	$a1, $s0, 60
-	ld.bu	$a2, $a0, 115
-	addi.w	$s1, $a1, 1
-	blt	$a1, $a2, .LBB20_11
+	ld.w	$a2, $s0, 60
+	ld.bu	$a1, $a0, 115
+	addi.d	$s1, $a2, 1
+	blt	$a2, $a1, .LBB20_11
 # %bb.8:
-	ori	$a2, $zero, 250
+	ori	$a3, $zero, 249
 	move	$a1, $s1
-	bltu	$s1, $a2, .LBB20_10
+	bltu	$a2, $a3, .LBB20_10
 # %bb.9:
 	ld.d	$a0, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -1928,9 +1934,9 @@ luaK_self:                              # @luaK_self
 	addi.w	$s3, $s2, 2
 	bge	$a1, $s3, .LBB24_8
 # %bb.5:
-	ori	$a2, $zero, 250
+	ori	$a2, $zero, 248
 	move	$a1, $s3
-	bltu	$s3, $a2, .LBB24_7
+	blt	$s2, $a2, .LBB24_7
 # %bb.6:
 	ld.d	$a0, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -2051,14 +2057,14 @@ luaK_goiftrue:                          # @luaK_goiftrue
 	addi.w	$a4, $a4, 1
 	bne	$a4, $s2, .LBB25_5
 .LBB25_7:
-	nor	$a4, $a3, $zero
-	add.w	$s1, $s1, $a4
-	srai.d	$a4, $s1, 31
-	xor	$a5, $s1, $a4
-	sub.d	$a4, $a5, $a4
-	bstrpick.d	$a4, $a4, 31, 17
 	alsl.d	$s2, $a3, $a2, 2
-	beqz	$a4, .LBB25_9
+	nor	$a2, $a3, $zero
+	add.d	$a2, $s1, $a2
+	addu16i.d	$a3, $a2, -2
+	addi.w	$a3, $a3, 0
+	lu12i.w	$a4, -64
+	addi.w	$s1, $a2, 0
+	bltu	$a4, $a3, .LBB25_9
 # %bb.8:
 	ld.d	$a2, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -2075,8 +2081,8 @@ luaK_goiftrue:                          # @luaK_goiftrue
 	add.d	$a1, $a1, $a2
 	st.w	$a1, $s2, 0
 	ld.w	$a5, $fp, 20
-	addi.w	$a4, $zero, -1
-	bne	$a5, $a4, .LBB25_13
+	addi.w	$a2, $zero, -1
+	bne	$a5, $a2, .LBB25_13
 	b	.LBB25_23
 .LBB25_10:
 	move	$a0, $s0
@@ -2089,46 +2095,45 @@ luaK_goiftrue:                          # @luaK_goiftrue
 	beq	$a0, $a1, .LBB25_26
 .LBB25_12:                              # %luaK_jump.exit.thread
 	ld.w	$a5, $fp, 20
-	addi.w	$a4, $zero, -1
-	beq	$a5, $a4, .LBB25_23
+	addi.w	$a2, $zero, -1
+	beq	$a5, $a2, .LBB25_23
 .LBB25_13:                              # %.preheader.i
 	ld.d	$a1, $s0, 0
-	ld.d	$a2, $a1, 24
+	ld.d	$a3, $a1, 24
 	.p2align	4, , 16
 .LBB25_14:                              # =>This Inner Loop Header: Depth=1
-	move	$a3, $a5
+	move	$a4, $a5
 	slli.d	$a1, $a5, 2
-	ldx.wu	$a1, $a2, $a1
+	ldx.wu	$a1, $a3, $a1
 	srli.d	$a5, $a1, 14
 	addu16i.d	$a5, $a5, -2
 	addi.d	$a5, $a5, 1
-	beq	$a5, $a4, .LBB25_16
+	beq	$a5, $a2, .LBB25_16
 # %bb.15:                               #   in Loop: Header=BB25_14 Depth=1
-	add.d	$a5, $a3, $a5
+	add.d	$a5, $a4, $a5
 	addi.w	$a5, $a5, 1
-	bne	$a5, $a4, .LBB25_14
+	bne	$a5, $a2, .LBB25_14
 .LBB25_16:
-	nor	$a4, $a3, $zero
-	add.d	$a0, $a0, $a4
-	addi.w	$s1, $a0, 0
-	srai.d	$a4, $s1, 31
-	xor	$a0, $a0, $a4
-	sub.d	$a0, $a0, $a4
-	bstrpick.d	$a0, $a0, 31, 17
-	alsl.d	$s2, $a3, $a2, 2
-	beqz	$a0, .LBB25_18
+	alsl.d	$s1, $a4, $a3, 2
+	nor	$a2, $a4, $zero
+	add.d	$a0, $a0, $a2
+	addu16i.d	$a2, $a0, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a3, -64
+	addi.w	$s2, $a0, 0
+	bltu	$a3, $a2, .LBB25_18
 # %bb.17:
 	ld.d	$a0, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s1, 0
 .LBB25_18:                              # %fixjump.exit.i
-	bstrins.d	$a1, $s1, 63, 14
+	bstrins.d	$a1, $s2, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $s2, 0
+	st.w	$a0, $s1, 0
 	b	.LBB25_26
 .LBB25_19:
 	ld.d	$a0, $s0, 0
@@ -2149,8 +2154,8 @@ luaK_goiftrue:                          # @luaK_goiftrue
 .LBB25_22:
 	move	$a0, $s1
 	ld.w	$a5, $fp, 20
-	addi.w	$a4, $zero, -1
-	bne	$a5, $a4, .LBB25_13
+	addi.w	$a2, $zero, -1
+	bne	$a5, $a2, .LBB25_13
 .LBB25_23:
 	st.w	$a0, $fp, 20
 	b	.LBB25_26
@@ -2196,26 +2201,26 @@ luaK_goiftrue:                          # @luaK_goiftrue
 	addi.w	$a4, $a4, 1
 	bne	$a4, $s1, .LBB25_29
 .LBB25_31:
-	nor	$a4, $a3, $zero
-	add.w	$s2, $a0, $a4
-	srai.d	$a0, $s2, 31
-	xor	$a4, $s2, $a0
-	sub.d	$a0, $a4, $a0
-	bstrpick.d	$a0, $a0, 31, 17
-	alsl.d	$s3, $a3, $a2, 2
-	beqz	$a0, .LBB25_33
+	alsl.d	$s2, $a3, $a2, 2
+	nor	$a2, $a3, $zero
+	add.d	$a0, $a0, $a2
+	addu16i.d	$a2, $a0, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a3, -64
+	addi.w	$s3, $a0, 0
+	bltu	$a3, $a2, .LBB25_33
 # %bb.32:
 	ld.d	$a0, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s3, 0
+	ld.w	$a1, $s2, 0
 .LBB25_33:                              # %fixjump.exit.i.i27
-	bstrins.d	$a1, $s2, 63, 14
+	bstrins.d	$a1, $s3, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $s3, 0
+	st.w	$a0, $s2, 0
 	b	.LBB25_35
 .LBB25_34:
 	st.w	$a0, $s0, 56
@@ -2284,15 +2289,15 @@ jumponcond:                             # @jumponcond
 	b	.LBB26_13
 .LBB26_4:                               # %.thread.thread
 	ld.d	$a1, $a0, 0
-	ld.w	$a2, $a0, 60
-	ld.bu	$a3, $a1, 115
-	addi.w	$s2, $a2, 1
+	ld.w	$a3, $a0, 60
+	ld.bu	$a2, $a1, 115
+	addi.d	$s2, $a3, 1
 	move	$s1, $a0
-	blt	$a2, $a3, .LBB26_8
+	blt	$a3, $a2, .LBB26_8
 # %bb.5:
-	ori	$a3, $zero, 250
+	ori	$a4, $zero, 249
 	move	$a2, $s2
-	bltu	$s2, $a3, .LBB26_7
+	bltu	$a3, $a4, .LBB26_7
 # %bb.6:
 	ld.d	$a0, $a0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -2469,14 +2474,14 @@ luaK_prefix:                            # @luaK_prefix
 	b	.LBB28_47
 .LBB28_17:
 	ld.d	$a0, $fp, 0
-	ld.w	$a1, $fp, 60
-	ld.bu	$a2, $a0, 115
-	addi.w	$s1, $a1, 1
-	blt	$a1, $a2, .LBB28_21
+	ld.w	$a2, $fp, 60
+	ld.bu	$a1, $a0, 115
+	addi.d	$s1, $a2, 1
+	blt	$a2, $a1, .LBB28_21
 # %bb.18:
-	ori	$a2, $zero, 250
+	ori	$a3, $zero, 249
 	move	$a1, $s1
-	bltu	$s1, $a2, .LBB28_20
+	bltu	$a2, $a3, .LBB28_20
 # %bb.19:
 	ld.d	$a0, $fp, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -2928,14 +2933,14 @@ luaK_infix:                             # @luaK_infix
 	st.w	$a1, $a0, 60
 .LBB30_10:                              # %freeexp.exit.i
 	ld.d	$a1, $a0, 0
-	ld.w	$a2, $a0, 60
-	ld.bu	$a3, $a1, 115
-	addi.w	$s1, $a2, 1
-	blt	$a2, $a3, .LBB30_14
+	ld.w	$a3, $a0, 60
+	ld.bu	$a2, $a1, 115
+	addi.d	$s1, $a3, 1
+	blt	$a3, $a2, .LBB30_14
 # %bb.11:
-	ori	$a3, $zero, 250
+	ori	$a4, $zero, 249
 	move	$a2, $s1
-	bltu	$s1, $a3, .LBB30_13
+	bltu	$a3, $a4, .LBB30_13
 # %bb.12:
 	ld.d	$a0, $a0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -3025,14 +3030,14 @@ luaK_infix:                             # @luaK_infix
 	addi.w	$a5, $a5, 1
 	bne	$a5, $s2, .LBB30_21
 .LBB30_23:
-	nor	$a5, $a4, $zero
-	add.w	$s1, $s1, $a5
-	srai.d	$a5, $s1, 31
-	xor	$a6, $s1, $a5
-	sub.d	$a5, $a6, $a5
-	bstrpick.d	$a5, $a5, 31, 17
 	alsl.d	$s2, $a4, $a2, 2
-	beqz	$a5, .LBB30_25
+	nor	$a2, $a4, $zero
+	add.d	$a2, $s1, $a2
+	addu16i.d	$a4, $a2, -2
+	addi.w	$a4, $a4, 0
+	lu12i.w	$a5, -64
+	addi.w	$s1, $a2, 0
+	bltu	$a5, $a4, .LBB30_25
 # %bb.24:
 	ld.d	$a2, $a3, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -3050,8 +3055,8 @@ luaK_infix:                             # @luaK_infix
 	add.d	$a1, $a1, $a2
 	st.w	$a1, $s2, 0
 	ld.w	$a6, $fp, 16
-	addi.w	$a5, $zero, -1
-	bne	$a6, $a5, .LBB30_31
+	addi.w	$a2, $zero, -1
+	bne	$a6, $a2, .LBB30_31
 	b	.LBB30_38
 .LBB30_26:
 	ld.w	$a0, $fp, 8
@@ -3069,34 +3074,33 @@ luaK_infix:                             # @luaK_infix
 	beq	$a0, $a1, .LBB30_39
 # %bb.30:                               # %luaK_jump.exit.thread.i
 	ld.w	$a6, $fp, 16
-	addi.w	$a5, $zero, -1
-	beq	$a6, $a5, .LBB30_38
+	addi.w	$a2, $zero, -1
+	beq	$a6, $a2, .LBB30_38
 .LBB30_31:                              # %.preheader.i.i
 	ld.d	$a1, $a3, 0
-	ld.d	$a2, $a1, 24
+	ld.d	$a4, $a1, 24
 	.p2align	4, , 16
 .LBB30_32:                              # =>This Inner Loop Header: Depth=1
-	move	$a4, $a6
+	move	$a5, $a6
 	slli.d	$a1, $a6, 2
-	ldx.wu	$a1, $a2, $a1
+	ldx.wu	$a1, $a4, $a1
 	srli.d	$a6, $a1, 14
 	addu16i.d	$a6, $a6, -2
 	addi.d	$a6, $a6, 1
-	beq	$a6, $a5, .LBB30_34
+	beq	$a6, $a2, .LBB30_34
 # %bb.33:                               #   in Loop: Header=BB30_32 Depth=1
-	add.d	$a6, $a4, $a6
+	add.d	$a6, $a5, $a6
 	addi.w	$a6, $a6, 1
-	bne	$a6, $a5, .LBB30_32
+	bne	$a6, $a2, .LBB30_32
 .LBB30_34:
-	nor	$a5, $a4, $zero
-	add.d	$a0, $a0, $a5
-	addi.w	$s1, $a0, 0
-	srai.d	$a5, $s1, 31
-	xor	$a0, $a0, $a5
-	sub.d	$a0, $a0, $a5
-	bstrpick.d	$a0, $a0, 31, 17
-	alsl.d	$s2, $a4, $a2, 2
-	beqz	$a0, .LBB30_36
+	alsl.d	$s1, $a5, $a4, 2
+	nor	$a2, $a5, $zero
+	add.d	$a0, $a0, $a2
+	addu16i.d	$a2, $a0, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a4, -64
+	addi.w	$s2, $a0, 0
+	bltu	$a4, $a2, .LBB30_36
 # %bb.35:
 	ld.d	$a0, $a3, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -3104,19 +3108,19 @@ luaK_infix:                             # @luaK_infix
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
 	move	$a3, $s0
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s1, 0
 .LBB30_36:                              # %fixjump.exit.i.i
-	bstrins.d	$a1, $s1, 63, 14
+	bstrins.d	$a1, $s2, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $s2, 0
+	st.w	$a0, $s1, 0
 	b	.LBB30_39
 .LBB30_37:
 	move	$a0, $s1
 	move	$a3, $s0
 	ld.w	$a6, $fp, 16
-	addi.w	$a5, $zero, -1
-	bne	$a6, $a5, .LBB30_31
+	addi.w	$a2, $zero, -1
+	bne	$a6, $a2, .LBB30_31
 .LBB30_38:
 	st.w	$a0, $fp, 16
 .LBB30_39:                              # %luaK_concat.exit.i
@@ -3145,26 +3149,26 @@ luaK_infix:                             # @luaK_infix
 	addi.w	$a5, $a5, 1
 	bne	$a5, $s0, .LBB30_42
 .LBB30_44:
-	nor	$a5, $a4, $zero
-	add.w	$s1, $a0, $a5
-	srai.d	$a0, $s1, 31
-	xor	$a5, $s1, $a0
-	sub.d	$a0, $a5, $a0
-	bstrpick.d	$a0, $a0, 31, 17
-	alsl.d	$s2, $a4, $a2, 2
-	beqz	$a0, .LBB30_46
+	alsl.d	$s1, $a4, $a2, 2
+	nor	$a2, $a4, $zero
+	add.d	$a0, $a0, $a2
+	addu16i.d	$a2, $a0, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a4, -64
+	addi.w	$s2, $a0, 0
+	bltu	$a4, $a2, .LBB30_46
 # %bb.45:
 	ld.d	$a0, $a3, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s1, 0
 .LBB30_46:                              # %fixjump.exit.i.i20.i
-	bstrins.d	$a1, $s1, 63, 14
+	bstrins.d	$a1, $s2, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $s2, 0
+	st.w	$a0, $s1, 0
 	b	.LBB30_48
 .LBB30_47:
 	st.w	$a0, $a3, 56
@@ -3486,26 +3490,26 @@ luaK_posfix:                            # @luaK_posfix
 	addi.w	$a5, $a5, 1
 	bne	$a5, $a2, .LBB31_53
 .LBB31_55:
+	alsl.d	$s2, $a4, $a3, 2
 	nor	$a2, $a4, $zero
-	add.w	$s2, $a0, $a2
-	srai.d	$a0, $s2, 31
-	xor	$a2, $s2, $a0
-	sub.d	$a0, $a2, $a0
-	bstrpick.d	$a0, $a0, 31, 17
-	alsl.d	$s3, $a4, $a3, 2
-	beqz	$a0, .LBB31_57
+	add.d	$a0, $a0, $a2
+	addu16i.d	$a2, $a0, -2
+	addi.w	$a2, $a2, 0
+	lu12i.w	$a3, -64
+	addi.w	$s3, $a0, 0
+	bltu	$a3, $a2, .LBB31_57
 # %bb.56:
 	ld.d	$a0, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s3, 0
+	ld.w	$a1, $s2, 0
 .LBB31_57:                              # %fixjump.exit.i
-	bstrins.d	$a1, $s2, 63, 14
+	bstrins.d	$a1, $s3, 63, 14
 	lu12i.w	$a0, 524284
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $s3, 0
+	st.w	$a0, $s2, 0
 	b	.LBB31_100
 .LBB31_58:
 	ld.w	$a0, $s1, 16
@@ -3681,14 +3685,14 @@ luaK_posfix:                            # @luaK_posfix
 	st.w	$a0, $s0, 60
 .LBB31_92:                              # %freeexp.exit.i
 	ld.d	$a0, $s0, 0
-	ld.w	$a1, $s0, 60
-	ld.bu	$a2, $a0, 115
-	addi.w	$s2, $a1, 1
-	blt	$a1, $a2, .LBB31_96
+	ld.w	$a2, $s0, 60
+	ld.bu	$a1, $a0, 115
+	addi.d	$s2, $a2, 1
+	blt	$a2, $a1, .LBB31_96
 # %bb.93:
-	ori	$a2, $zero, 250
+	ori	$a3, $zero, 249
 	move	$a1, $s2
-	bltu	$s2, $a2, .LBB31_95
+	bltu	$a2, $a3, .LBB31_95
 # %bb.94:
 	ld.d	$a0, $s0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -3803,21 +3807,24 @@ luaK_code:                              # @luaK_code
 	move	$s3, $a1
 	beq	$s6, $s5, .LBB33_13
 # %bb.1:                                # %.lr.ph.i.i
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(luaP_opmodes)
 	addi.d	$s7, $a0, %pc_lo12(luaP_opmodes)
-	ori	$a4, $zero, 27
+	ori	$a3, $zero, 27
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 4032
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a0, 2044
 	ori	$a0, $a0, 26
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	lu12i.w	$a0, -64
+	ori	$a0, $a0, 1
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.1)
-	lu12i.w	$s1, 524284
+	lu12i.w	$s3, 524284
 	.p2align	4, , 16
 .LBB33_2:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
@@ -3827,54 +3834,52 @@ luaK_code:                              # @luaK_code
 	alsl.d	$s8, $s6, $a0, 2
 	blez	$s6, .LBB33_4
 # %bb.3:                                #   in Loop: Header=BB33_2 Depth=1
-	ld.wu	$a1, $s8, -4
-	andi	$a0, $a1, 63
-	ldx.b	$a0, $s7, $a0
-	bltz	$a0, .LBB33_6
+	ld.wu	$a0, $s8, -4
+	andi	$a1, $a0, 63
+	ldx.b	$a1, $s7, $a1
+	bltz	$a1, .LBB33_6
 .LBB33_4:                               #   in Loop: Header=BB33_2 Depth=1
-	move	$a1, $s0
-	move	$a0, $s8
-	andi	$a2, $a1, 63
-	bne	$a2, $a4, .LBB33_7
+	move	$a0, $s0
+	move	$a1, $s8
+	andi	$a2, $a0, 63
+	bne	$a2, $a3, .LBB33_7
 .LBB33_5:                               #   in Loop: Header=BB33_2 Depth=1
-	srli.d	$a2, $a1, 17
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	and	$a2, $a2, $a3
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	and	$a1, $a1, $a3
-	or	$a1, $a2, $a1
-	nor	$a2, $s6, $zero
-	add.d	$a2, $s4, $a2
-	addi.w	$s3, $a2, 0
-	srai.d	$a3, $s3, 31
-	xor	$a2, $a2, $a3
-	sub.d	$a2, $a2, $a3
-	bstrpick.d	$a2, $a2, 31, 17
-	st.w	$a1, $a0, 0
-	bnez	$a2, .LBB33_8
+	srli.d	$a2, $a0, 17
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
+	and	$a2, $a2, $a4
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
+	and	$a0, $a0, $a4
+	or	$a0, $a2, $a0
+	st.w	$a0, $a1, 0
+	nor	$a0, $s6, $zero
+	add.d	$a0, $s4, $a0
+	addu16i.d	$a1, $a0, -2
+	addi.w	$a1, $a1, 0
+	addi.w	$s1, $a0, 0
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	bltu	$a1, $a0, .LBB33_8
 	b	.LBB33_9
 	.p2align	4, , 16
 .LBB33_6:                               #   in Loop: Header=BB33_2 Depth=1
-	addi.d	$a0, $s8, -4
-	andi	$a2, $a1, 63
-	beq	$a2, $a4, .LBB33_5
+	addi.d	$a1, $s8, -4
+	andi	$a2, $a0, 63
+	beq	$a2, $a3, .LBB33_5
 .LBB33_7:                               #   in Loop: Header=BB33_2 Depth=1
 	nor	$a0, $s6, $zero
 	add.d	$a0, $s4, $a0
-	addi.w	$s3, $a0, 0
-	srai.d	$a1, $s3, 31
-	xor	$a0, $a0, $a1
-	sub.d	$a0, $a0, $a1
-	bstrpick.d	$a1, $a0, 31, 17
+	addu16i.d	$a1, $a0, -2
+	addi.w	$a1, $a1, 0
+	addi.w	$s1, $a0, 0
 	move	$a0, $s0
-	beqz	$a1, .LBB33_10
+	lu12i.w	$a2, -64
+	bltu	$a2, $a1, .LBB33_10
 .LBB33_8:                               # %fixjump.exit16.sink.split.sink.split.i.i
                                         #   in Loop: Header=BB33_2 Depth=1
 	ld.d	$a0, $fp, 24
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ori	$a4, $zero, 27
+	ori	$a3, $zero, 27
 .LBB33_9:                               # %fixjump.exit16.sink.split.i.i
                                         #   in Loop: Header=BB33_2 Depth=1
 	ld.w	$a0, $s8, 0
@@ -3883,8 +3888,8 @@ luaK_code:                              # @luaK_code
 	srli.d	$a1, $s0, 14
 	addu16i.d	$a1, $a1, -2
 	addi.d	$a1, $a1, 1
-	bstrins.d	$a0, $s3, 63, 14
-	add.d	$a0, $a0, $s1
+	bstrins.d	$a0, $s1, 63, 14
+	add.d	$a0, $a0, $s3
 	st.w	$a0, $s8, 0
 	beq	$a1, $s5, .LBB33_12
 # %bb.11:                               # %fixjump.exit16.i.i
@@ -3894,9 +3899,9 @@ luaK_code:                              # @luaK_code
 	bne	$s6, $s5, .LBB33_2
 .LBB33_12:                              # %dischargejpc.exit.loopexit
 	ld.w	$s4, $fp, 48
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 .LBB33_13:                              # %dischargejpc.exit
 	ld.w	$a0, $s2, 80
 	lu32i.d	$s5, 0
@@ -4238,14 +4243,14 @@ condjump:                               # @condjump
 	addi.w	$a4, $a4, 1
 	bne	$a4, $s1, .LBB36_3
 .LBB36_5:
-	nor	$a4, $a3, $zero
-	add.w	$s0, $s0, $a4
-	srai.d	$a4, $s0, 31
-	xor	$a5, $s0, $a4
-	sub.d	$a4, $a5, $a4
-	bstrpick.d	$a4, $a4, 31, 17
 	alsl.d	$s1, $a3, $a2, 2
-	beqz	$a4, .LBB36_7
+	nor	$a2, $a3, $zero
+	add.d	$a2, $s0, $a2
+	addu16i.d	$a3, $a2, -2
+	addi.w	$a3, $a3, 0
+	lu12i.w	$a4, -64
+	addi.w	$s0, $a2, 0
+	bltu	$a4, $a3, .LBB36_7
 # %bb.6:
 	ld.d	$a2, $fp, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.1)

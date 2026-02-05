@@ -6153,7 +6153,7 @@ __clang_call_terminate:                 # @__clang_call_terminate
 	.type	_ZN14ICompressCoderD0Ev,@function
 _ZN14ICompressCoderD0Ev:                # @_ZN14ICompressCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end54:
 	.size	_ZN14ICompressCoderD0Ev, .Lfunc_end54-_ZN14ICompressCoderD0Ev
                                         # -- End function
@@ -6163,7 +6163,7 @@ _ZN14ICompressCoderD0Ev:                # @_ZN14ICompressCoderD0Ev
 	.type	_ZN27ICompressSetCoderPropertiesD0Ev,@function
 _ZN27ICompressSetCoderPropertiesD0Ev:   # @_ZN27ICompressSetCoderPropertiesD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end55:
 	.size	_ZN27ICompressSetCoderPropertiesD0Ev, .Lfunc_end55-_ZN27ICompressSetCoderPropertiesD0Ev
                                         # -- End function
@@ -6442,8 +6442,7 @@ _ZN8NArchive3NGz8CHandlerC2Ev:          # @_ZN8NArchive3NGz8CHandlerC2Ev
 	jirl	$ra, $a1, 0
 .Ltmp387:                               # EH_LABEL
 .LBB58_11:                              # %_ZN9CMyComPtrI14ICompressCoderED2Ev.exit
-	addi.d	$a0, $fp, 120
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 120
 	beqz	$a0, .LBB58_13
 # %bb.12:
 	ld.d	$a1, $a0, 0

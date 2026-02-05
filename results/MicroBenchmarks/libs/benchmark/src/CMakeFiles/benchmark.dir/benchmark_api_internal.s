@@ -803,8 +803,7 @@ _ZN9benchmark8internal17BenchmarkInstanceC2EPNS0_9BenchmarkEiiRKSt6vectorIlSaIlE
 	ld.d	$a0, $fp, 256
 .LBB0_127:
 	vld	$vr0, $a0, 208
-	addi.d	$a0, $fp, 408
-	vst	$vr0, $a0, 0
+	vst	$vr0, $fp, 408
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload

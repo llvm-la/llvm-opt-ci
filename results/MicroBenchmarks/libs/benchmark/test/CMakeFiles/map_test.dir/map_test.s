@@ -2700,7 +2700,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	.type	_ZN10MapFixtureD0Ev,@function
 _ZN10MapFixtureD0Ev:                    # @_ZN10MapFixtureD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end21:
 	.size	_ZN10MapFixtureD0Ev, .Lfunc_end21-_ZN10MapFixtureD0Ev
                                         # -- End function
@@ -2812,29 +2812,35 @@ _GLOBAL__sub_I_map_test.cc:             # @_GLOBAL__sub_I_map_test.cc
 .Ltmp90:                                # EH_LABEL
 	move	$s0, $a0
 	ori	$a1, $zero, 272
-	b	.LBB22_12
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
 .LBB22_8:
 .Ltmp87:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB22_10
-# %bb.9:                                # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s2, .LBB22_11
-	b	.LBB22_13
-.LBB22_10:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB22_11
+# %bb.9:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bnez	$s2, .LBB22_12
+.LBB22_10:                              # %common.resume
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB22_11:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s2, .LBB22_13
-.LBB22_11:
+	beqz	$s2, .LBB22_10
+.LBB22_12:
 	ori	$a1, $zero, 232
-.LBB22_12:                              # %common.resume
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB22_13:                              # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

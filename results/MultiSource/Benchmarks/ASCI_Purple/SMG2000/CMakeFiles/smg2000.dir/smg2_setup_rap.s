@@ -3688,11 +3688,11 @@ hypre_SMG2BuildRAPNoSym:                # @hypre_SMG2BuildRAPNoSym
 	sltu	$a4, $a3, $a1
 	sltu	$a5, $s6, $ra
 	and	$a4, $a4, $a5
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	bnez	$a4, .LBB2_190
 # %bb.111:                              # %vector.memcheck1404
                                         #   in Loop: Header=BB2_98 Depth=3
 	alsl.d	$s7, $s4, $a7, 3
-	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	alsl.d	$a4, $s4, $a1, 3
 	st.d	$a4, $sp, 552                   # 8-byte Folded Spill
 	sltu	$a4, $a3, $a4

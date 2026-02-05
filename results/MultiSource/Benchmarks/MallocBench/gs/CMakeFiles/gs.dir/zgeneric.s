@@ -38,7 +38,6 @@ zcopy:                                  # @zcopy
 	ld.hu	$a1, $a0, 10
 	bltu	$a1, $a2, .LBB0_12
 # %bb.6:
-	addi.d	$fp, $a0, -16
 	beqz	$a3, .LBB0_9
 # %bb.7:
 	ori	$a1, $zero, 13
@@ -49,7 +48,7 @@ zcopy:                                  # @zcopy
 .LBB0_9:
 	ld.d	$a3, $a0, 0
 	ld.d	$a1, $a0, -16
-	move	$s0, $a0
+	move	$fp, $a0
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(refcpy)
 	jirl	$ra, $ra, 0
@@ -111,17 +110,17 @@ zcopy:                                  # @zcopy
 .LBB0_16:
 	ld.d	$a3, $a0, 0
 	ld.d	$a1, $a0, -16
-	move	$s0, $a0
+	move	$fp, $a0
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 .LBB0_17:
-	move	$a0, $s0
+	move	$a0, $fp
 .LBB0_18:
 	ld.h	$a1, $a0, -6
 	st.h	$a1, $a0, 10
 	vld	$vr0, $a0, 0
-	vst	$vr0, $fp, 0
+	vst	$vr0, $a0, -16
 	ld.h	$a1, $a0, -8
 	lu12i.w	$a2, 8
 	or	$a1, $a1, $a2

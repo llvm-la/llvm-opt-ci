@@ -527,10 +527,10 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	b	.LBB1_20
 .LBB1_9:
 	pcalau12i	$a0, %got_pc_hi20(stkptr)
-	ld.d	$s6, $a0, %got_pc_lo12(stkptr)
-	ld.d	$s8, $s6, 0
-	ld.d	$s4, $s8, -16
-	ld.d	$a0, $s4, 0
+	ld.d	$s4, $a0, %got_pc_lo12(stkptr)
+	ld.d	$s8, $s4, 0
+	ld.d	$s6, $s8, -16
+	ld.d	$a0, $s6, 0
 	ld.w	$a1, $a0, 4
 	ori	$a2, $zero, 1
 	bne	$a1, $a2, .LBB1_11
@@ -546,9 +546,9 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ori	$a3, $zero, 1
 	ld.d	$s3, $s8, -8
 	ld.w	$a1, $s3, 16
+	ori	$a3, $zero, 1
 	move	$s1, $a0
 	sltu	$a0, $a1, $s5
 	masknez	$a2, $s5, $a0
@@ -571,11 +571,11 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	ori	$a2, $zero, 5
 	st.w	$a2, $a0, 12
 	st.d	$a0, $s1, 0
-	st.d	$s4, $s1, 24
+	st.d	$s6, $s1, 24
 	st.d	$fp, $s1, 32
 	st.w	$zero, $s2, 8
 	ori	$a0, $zero, 10
-	st.d	$a1, $s6, 0
+	st.d	$a1, $s4, 0
 	bne	$s0, $a0, .LBB1_17
 # %bb.13:
 	ld.d	$a0, $s3, 0
@@ -702,7 +702,7 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	ld.d	$s3, $s8, -8
 	addi.d	$a1, $s8, -8
 	ori	$a2, $zero, 10
-	st.d	$a1, $s6, 0
+	st.d	$a1, $s4, 0
 	bne	$s0, $a2, .LBB1_34
 # %bb.30:
 	ld.d	$a1, $s3, 0
@@ -721,11 +721,11 @@ _Z5doputP9Classfile:                    # @_Z5doputP9Classfile
 	addi.d	$a1, $a1, 312
 	st.d	$a1, $s3, 0
 .LBB1_34:
-	st.d	$a0, $s6, 0
+	st.d	$a0, $s4, 0
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s4, 16
+	ld.w	$a1, $s6, 16
 	move	$s2, $a0
 	sltu	$a0, $s5, $a1
 	ld.d	$a2, $fp, 0

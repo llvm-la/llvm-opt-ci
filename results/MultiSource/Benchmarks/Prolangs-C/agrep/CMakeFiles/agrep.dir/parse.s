@@ -81,8 +81,8 @@ parse_cset:                             # @parse_cset
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a0
-	ld.d	$s2, $a0, 0
-	ld.bu	$s5, $s2, 0
+	ld.d	$s3, $a0, 0
+	ld.bu	$s5, $s3, 0
 	move	$a0, $zero
 	beqz	$s5, .LBB1_15
 # %bb.1:
@@ -93,7 +93,7 @@ parse_cset:                             # @parse_cset
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	ori	$s3, $zero, 45
+	ori	$s2, $zero, 45
                                         # implicit-def: $r5
 	b	.LBB1_5
 	.p2align	4, , 16
@@ -106,7 +106,7 @@ parse_cset:                             # @parse_cset
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, 8
 	ld.bu	$s5, $s6, 0
-	move	$s2, $s6
+	move	$s3, $s6
 	move	$a1, $s4
 .LBB1_5:                                # =>This Inner Loop Header: Depth=1
 	move	$s4, $a0
@@ -119,32 +119,32 @@ parse_cset:                             # @parse_cset
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, 0
-	addi.d	$s6, $s2, 1
+	addi.d	$s6, $s3, 1
 	st.d	$s6, $s0, 0
-	ld.b	$a2, $s2, 0
-	beq	$a2, $s3, .LBB1_14
+	ld.b	$a2, $s3, 0
+	beq	$a2, $s2, .LBB1_14
 # %bb.8:                                #   in Loop: Header=BB1_5 Depth=1
 	move	$a1, $a0
 	st.b	$a2, $a0, 0
 	ld.bu	$a0, $s6, 0
-	bne	$a0, $s3, .LBB1_3
+	bne	$a0, $s2, .LBB1_3
 # %bb.9:                                #   in Loop: Header=BB1_5 Depth=1
-	addi.d	$a0, $s2, 2
+	addi.d	$a0, $s3, 2
 	st.d	$a0, $s0, 0
-	ld.bu	$a3, $s2, 2
+	ld.bu	$a3, $s3, 2
 	move	$a0, $zero
 	beqz	$a3, .LBB1_15
 # %bb.10:                               #   in Loop: Header=BB1_5 Depth=1
-	beq	$a3, $s3, .LBB1_15
+	beq	$a3, $s2, .LBB1_15
 # %bb.11:                               #   in Loop: Header=BB1_5 Depth=1
 	beq	$a3, $s1, .LBB1_15
 # %bb.12:                               #   in Loop: Header=BB1_5 Depth=1
 	ext.w.b	$a0, $a3
 	blt	$a0, $a2, .LBB1_14
 # %bb.13:                               #   in Loop: Header=BB1_5 Depth=1
-	addi.d	$s6, $s2, 3
+	addi.d	$s6, $s3, 3
 	st.d	$s6, $s0, 0
-	ld.bu	$a2, $s2, 2
+	ld.bu	$a2, $s3, 2
 	b	.LBB1_4
 .LBB1_14:
 	move	$a0, $zero

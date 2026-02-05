@@ -289,7 +289,6 @@ main:                                   # @main
 	vst	$vr0, $sp, 432
 	st.d	$s0, $sp, 416
 	addi.d	$a0, $sp, 416
-	vld	$vr0, $sp, 432
 	st.d	$a0, $s0, 8
 	st.d	$s0, $sp, 384
 	st.d	$a1, $sp, 392
@@ -409,7 +408,6 @@ main:                                   # @main
 	vst	$vr0, $sp, 192
 	st.d	$fp, $sp, 176
 	addi.d	$a0, $sp, 176
-	vld	$vr0, $sp, 192
 	st.d	$a0, $fp, 8
 	st.d	$fp, $sp, 144
 	st.d	$a1, $sp, 152

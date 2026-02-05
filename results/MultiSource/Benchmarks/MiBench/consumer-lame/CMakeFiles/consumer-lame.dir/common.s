@@ -2,31 +2,13 @@
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function decode_header
 .LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-.LCPI0_1:
-	.word	12                              # 0xc
-	.word	0                               # 0x0
-	.word	9                               # 0x9
-	.word	8                               # 0x8
-	.word	6                               # 0x6
-	.word	4                               # 0x4
-	.word	3                               # 0x3
-	.word	2                               # 0x2
-.LCPI0_2:
+	.word	4294967295                      # 0xffffffff
 	.word	15                              # 0xf
 	.word	4294967295                      # 0xffffffff
 	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.word	3                               # 0x3
 	.word	3                               # 0x3
-	.word	1                               # 0x1
 	.word	1                               # 0x1
 	.text
 	.globl	decode_header
@@ -36,7 +18,6 @@ decode_header:                          # @decode_header
 # %bb.0:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	lu12i.w	$a2, 256
 	and	$a2, $a1, $a2
 	sltui	$a4, $a2, 1
@@ -45,52 +26,59 @@ decode_header:                          # @decode_header
 	xor	$a2, $a3, $a2
 	sltu	$a2, $zero, $a2
 	st.w	$a2, $a0, 12
+	st.w	$a4, $a0, 16
 	bstrpick.d	$a3, $a1, 18, 17
 	ori	$a5, $zero, 4
-	sub.d	$a5, $a5, $a3
-	st.w	$a5, $a0, 24
+	sub.w	$a3, $a5, $a3
 	bstrpick.d	$a5, $a1, 11, 10
 	ori	$a6, $zero, 3
-	st.w	$a4, $a0, 16
-	beq	$a5, $a6, .LBB0_13
+	st.w	$a3, $a0, 24
+	beq	$a5, $a6, .LBB0_12
 # %bb.1:
 	maskeqz	$a6, $a6, $a2
 	add.w	$a6, $a6, $a5
 	addi.w	$a5, $a5, 6
+	nor	$a7, $a1, $zero
 	maskeqz	$a5, $a5, $a4
 	masknez	$a4, $a6, $a4
 	or	$a4, $a5, $a4
-	vinsgr2vr.w	$vr0, $a1, 0
+	bstrpick.d	$a5, $a7, 16, 16
+	bstrpick.d	$a6, $a1, 31, 3
+	bstrpick.d	$a7, $a1, 31, 4
+	bstrpick.d	$t0, $a1, 31, 6
+	bstrpick.d	$t1, $a1, 31, 8
+	bstrpick.d	$t2, $a1, 31, 9
+	bstrpick.d	$t3, $a1, 31, 12
+	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr0, $t3, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $t2, 3
+	vinsgr2vr.w	$vr1, $t1, 0
+	vinsgr2vr.w	$vr1, $t0, 1
+	vinsgr2vr.w	$vr1, $a7, 2
 	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	xvld	$xr1, $a5, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a5, %pc_hi20(.LCPI0_1)
-	xvld	$xr2, $a5, %pc_lo12(.LCPI0_1)
-	vinsgr2vr.w	$vr0, $a4, 1
-	xvpermi.d	$xr0, $xr0, 68
-	xvshuf.w	$xr1, $xr0, $xr0
-	xvsrl.w	$xr1, $xr1, $xr2
-	pcalau12i	$a5, %pc_hi20(.LCPI0_2)
-	xvld	$xr0, $a5, %pc_lo12(.LCPI0_2)
-	nor	$a5, $a1, $zero
-	bstrpick.d	$a5, $a5, 16, 16
-	st.w	$a5, $a0, 28
-	xvand.v	$xr0, $xr1, $xr0
-	xvst	$xr0, $a0, 32
+	xvld	$xr2, $a5, %pc_lo12(.LCPI0_0)
+	vinsgr2vr.w	$vr1, $a6, 3
+	xvpermi.q	$xr0, $xr1, 2
+	bstrpick.d	$a5, $a1, 31, 0
+	xvand.v	$xr0, $xr0, $xr2
+	xvst	$xr0, $a0, 28
+	bstrpick.d	$a6, $a1, 2, 2
+	st.w	$a6, $a0, 60
 	andi	$a1, $a1, 3
 	st.w	$a1, $a0, 64
-	xvpickve2gr.w	$a1, $xr1, 4
-	andi	$a1, $a1, 3
+	bstrpick.d	$a1, $a5, 7, 6
 	addi.d	$a1, $a1, -3
 	sltui	$a1, $a1, 1
 	ori	$a5, $zero, 2
 	sub.d	$a5, $a5, $a1
-	xvpickve2gr.w	$a1, $xr0, 0
+	xvpickve2gr.w	$a1, $xr0, 1
 	andi	$a6, $a1, 15
 	st.w	$a5, $a0, 0
-	beqz	$a6, .LBB0_8
+	beqz	$a6, .LBB0_7
 # %bb.2:
-	ori	$fp, $zero, 1
-	bne	$a3, $fp, .LBB0_5
+	ori	$a5, $zero, 3
+	bne	$a3, $a5, .LBB0_4
 # %bb.3:
 	alsl.d	$a3, $a2, $a2, 1
 	slli.d	$a3, $a3, 6
@@ -108,62 +96,65 @@ decode_header:                          # @decode_header
 	ldx.d	$a3, $a4, $a3
 	sll.d	$a2, $a3, $a2
 	div.d	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 2
+	xvpickve2gr.w	$a2, $xr0, 3
 	add.d	$a1, $a1, $a2
 	addi.d	$a1, $a1, -4
 	st.w	$a1, $a0, 68
-.LBB0_4:
-	move	$a0, $fp
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ori	$a0, $zero, 1
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
-.LBB0_5:
-	beqz	$a3, .LBB0_9
-# %bb.6:
+.LBB0_4:
 	ori	$a0, $zero, 2
-	bne	$a3, $a0, .LBB0_11
-# %bb.7:
-	pcalau12i	$a0, %got_pc_hi20(stderr)
-	ld.d	$a0, $a0, %got_pc_lo12(stderr)
-	ld.d	$a3, $a0, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	b	.LBB0_12
-.LBB0_8:
-	pcalau12i	$a0, %got_pc_hi20(stderr)
-	ld.d	$a0, $a0, %got_pc_lo12(stderr)
-	ld.d	$a3, $a0, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	b	.LBB0_10
-.LBB0_9:
-	pcalau12i	$a0, %got_pc_hi20(stderr)
-	ld.d	$a0, $a0, %got_pc_lo12(stderr)
-	ld.d	$a3, $a0, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.4)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
-.LBB0_10:
-	ori	$a1, $zero, 27
-	ori	$a2, $zero, 1
-	pcaddu18i	$ra, %call36(fwrite)
-	jirl	$ra, $ra, 0
-	move	$fp, $zero
-	b	.LBB0_4
-.LBB0_11:
+	beq	$a3, $a0, .LBB0_8
+# %bb.5:
+	ori	$a0, $zero, 1
+	bne	$a3, $a0, .LBB0_10
+# %bb.6:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-.LBB0_12:
+	b	.LBB0_9
+.LBB0_7:
+	pcalau12i	$a0, %got_pc_hi20(stderr)
+	ld.d	$a0, $a0, %got_pc_lo12(stderr)
+	ld.d	$a3, $a0, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.1)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
+	b	.LBB0_11
+.LBB0_8:
+	pcalau12i	$a0, %got_pc_hi20(stderr)
+	ld.d	$a0, $a0, %got_pc_lo12(stderr)
+	ld.d	$a3, $a0, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+.LBB0_9:
 	ori	$a1, $zero, 23
 	ori	$a2, $zero, 1
-	ori	$fp, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB0_4
-.LBB0_13:
+	ori	$a0, $zero, 1
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
+	ret
+.LBB0_10:
+	pcalau12i	$a0, %got_pc_hi20(stderr)
+	ld.d	$a0, $a0, %got_pc_lo12(stderr)
+	ld.d	$a3, $a0, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.4)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
+.LBB0_11:
+	ori	$a1, $zero, 27
+	ori	$a2, $zero, 1
+	pcaddu18i	$ra, %call36(fwrite)
+	jirl	$ra, $ra, 0
+	move	$a0, $zero
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
+	ret
+.LBB0_12:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a3, $a0, 0

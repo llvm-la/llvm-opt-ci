@@ -239,50 +239,46 @@ StringQuotedWord:                       # @StringQuotedWord
 .LBB6_2:
 	pcalau12i	$a0, %pc_hi20(StringQuotedWord.buff)
 	addi.d	$a1, $a0, %pc_lo12(StringQuotedWord.buff)
-	ld.bu	$a5, $fp, 64
+	ld.bu	$a4, $fp, 64
 	ori	$a0, $zero, 34
 	st.b	$a0, $a1, 0
-	beqz	$a5, .LBB6_9
+	beqz	$a4, .LBB6_8
 # %bb.3:                                # %.lr.ph21.preheader
-	addi.d	$a2, $fp, 64
-	addi.d	$a3, $a1, 1
-	pcalau12i	$a1, %pc_hi20(quoted_string)
-	addi.d	$a1, $a1, %pc_lo12(quoted_string)
-	b	.LBB6_6
-	.p2align	4, , 16
-.LBB6_4:                                #   in Loop: Header=BB6_6 Depth=1
-	move	$a4, $a3
-.LBB6_5:                                # %._crit_edge
-                                        #   in Loop: Header=BB6_6 Depth=1
-	ld.bu	$a5, $a2, 1
-	addi.d	$a2, $a2, 1
-	move	$a3, $a4
-	beqz	$a5, .LBB6_10
-.LBB6_6:                                # %.lr.ph21
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_8 Depth 2
-	slli.d	$a4, $a5, 3
-	ldx.d	$a4, $a1, $a4
-	ld.bu	$a5, $a4, 0
-	beqz	$a5, .LBB6_4
-# %bb.7:                                # %.lr.ph.preheader
-                                        #   in Loop: Header=BB6_6 Depth=1
-	addi.d	$a6, $a4, 1
-	.p2align	4, , 16
-.LBB6_8:                                # %.lr.ph
-                                        #   Parent Loop BB6_6 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	st.b	$a5, $a3, 0
-	ld.bu	$a5, $a6, 0
-	addi.d	$a4, $a3, 1
-	addi.d	$a6, $a6, 1
-	move	$a3, $a4
-	bnez	$a5, .LBB6_8
+	addi.d	$a3, $fp, 64
+	addi.d	$a1, $a1, 1
+	pcalau12i	$a2, %pc_hi20(quoted_string)
+	addi.d	$a2, $a2, %pc_lo12(quoted_string)
 	b	.LBB6_5
-.LBB6_9:
-	addi.d	$a4, $a1, 1
-.LBB6_10:                               # %._crit_edge22
-	st.h	$a0, $a4, 0
+	.p2align	4, , 16
+.LBB6_4:                                # %._crit_edge
+                                        #   in Loop: Header=BB6_5 Depth=1
+	ld.bu	$a4, $a3, 1
+	addi.d	$a3, $a3, 1
+	beqz	$a4, .LBB6_9
+.LBB6_5:                                # %.lr.ph21
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB6_7 Depth 2
+	slli.d	$a4, $a4, 3
+	ldx.d	$a5, $a2, $a4
+	ld.bu	$a4, $a5, 0
+	beqz	$a4, .LBB6_4
+# %bb.6:                                # %.lr.ph.preheader
+                                        #   in Loop: Header=BB6_5 Depth=1
+	addi.d	$a5, $a5, 1
+	.p2align	4, , 16
+.LBB6_7:                                # %.lr.ph
+                                        #   Parent Loop BB6_5 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	st.b	$a4, $a1, 0
+	ld.bu	$a4, $a5, 0
+	addi.d	$a1, $a1, 1
+	addi.d	$a5, $a5, 1
+	bnez	$a4, .LBB6_7
+	b	.LBB6_4
+.LBB6_8:
+	addi.d	$a1, $a1, 1
+.LBB6_9:                                # %._crit_edge22
+	st.h	$a0, $a1, 0
 	pcalau12i	$a0, %pc_hi20(StringQuotedWord.buff)
 	addi.d	$a0, $a0, %pc_lo12(StringQuotedWord.buff)
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload

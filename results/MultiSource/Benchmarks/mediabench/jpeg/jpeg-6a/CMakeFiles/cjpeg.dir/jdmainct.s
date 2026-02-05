@@ -456,15 +456,18 @@ start_pass_main:                        # @start_pass_main
 	.type	process_data_context_main,@function
 process_data_context_main:              # @process_data_context_main
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$s3, $a0, 536
 	ld.w	$a0, $s3, 96
@@ -484,7 +487,7 @@ process_data_context_main:              # @process_data_context_main
 	ld.d	$a1, $a0, 104
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB2_52
+	beqz	$a0, .LBB2_42
 # %bb.3:
 	ld.w	$a0, $s3, 132
 	ori	$a1, $zero, 1
@@ -498,7 +501,7 @@ process_data_context_main:              # @process_data_context_main
 	beq	$a0, $a1, .LBB2_23
 # %bb.5:
 	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB2_52
+	bne	$a0, $a1, .LBB2_42
 # %bb.6:
 	ld.d	$a0, $fp, 552
 	ld.w	$a1, $s3, 120
@@ -514,11 +517,11 @@ process_data_context_main:              # @process_data_context_main
 	jirl	$ra, $a7, 0
 	ld.w	$a0, $s3, 100
 	ld.w	$a1, $s3, 128
-	bltu	$a0, $a1, .LBB2_52
+	bltu	$a0, $a1, .LBB2_42
 # %bb.7:
 	st.w	$zero, $s3, 124
 	ld.w	$a0, $s1, 0
-	bgeu	$a0, $s0, .LBB2_52
+	bgeu	$a0, $s0, .LBB2_42
 .LBB2_8:
 	ld.w	$a0, $fp, 396
 	ld.w	$a1, $s3, 132
@@ -638,189 +641,208 @@ process_data_context_main:              # @process_data_context_main
 	jirl	$ra, $a7, 0
 	ld.w	$a0, $s3, 100
 	ld.w	$a1, $s3, 128
-	bltu	$a0, $a1, .LBB2_52
+	bltu	$a0, $a1, .LBB2_42
 # %bb.24:
 	ld.w	$a2, $fp, 396
 	ld.w	$a3, $s3, 132
 	ori	$a4, $zero, 1
 	addi.d	$a0, $a2, 1
 	addi.d	$a1, $a2, 2
-	bne	$a3, $a4, .LBB2_51
+	bne	$a3, $a4, .LBB2_41
 # %bb.25:
 	ld.w	$a3, $fp, 48
-	blez	$a3, .LBB2_51
+	blez	$a3, .LBB2_41
 # %bb.26:                               # %.lr.ph49.i
-	ld.d	$a6, $fp, 536
-	ld.d	$a4, $fp, 296
-	ld.d	$a5, $a6, 104
-	ld.d	$a6, $a6, 112
-	move	$a7, $zero
-	ori	$t0, $zero, 24
-	ori	$t1, $zero, 32
+	ld.d	$a7, $fp, 536
+	move	$a4, $zero
+	ld.d	$a5, $fp, 296
+	ld.d	$a6, $a7, 104
+	ld.d	$a7, $a7, 112
+	ori	$s6, $zero, 24
+	xvrepli.d	$xr0, 32
 	b	.LBB2_28
 	.p2align	4, , 16
 .LBB2_27:                               # %._crit_edge.i51
                                         #   in Loop: Header=BB2_28 Depth=1
-	addi.d	$a7, $a7, 1
-	addi.d	$a4, $a4, 96
-	beq	$a7, $a3, .LBB2_51
+	addi.d	$a4, $a4, 1
+	addi.d	$a5, $a5, 96
+	beq	$a4, $a3, .LBB2_41
 .LBB2_28:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_49 Depth 2
+                                        #     Child Loop BB2_38 Depth 2
                                         #     Child Loop BB2_32 Depth 2
-	ld.w	$t2, $a4, 12
-	ld.w	$t3, $a4, 36
+	ld.w	$t2, $a5, 12
+	ld.w	$t3, $a5, 36
 	mul.w	$t2, $t3, $t2
 	div.w	$t5, $t2, $a2
 	blez	$t5, .LBB2_27
 # %bb.29:                               # %.lr.ph.i52
                                         #   in Loop: Header=BB2_28 Depth=1
-	slli.d	$t3, $a7, 3
-	ldx.d	$t2, $a5, $t3
-	ldx.d	$t3, $a6, $t3
+	slli.d	$t3, $a4, 3
+	ldx.d	$t2, $a6, $t3
+	ldx.d	$t3, $a7, $t3
 	mul.w	$t4, $t5, $a0
 	mul.w	$t7, $t5, $a1
 	slli.d	$t6, $t5, 3
-	bgeu	$t5, $t0, .LBB2_33
-.LBB2_30:                               #   in Loop: Header=BB2_28 Depth=1
-	move	$t8, $zero
+	bgeu	$t5, $s6, .LBB2_33
+# %bb.30:                               #   in Loop: Header=BB2_28 Depth=1
+	move	$s1, $zero
 .LBB2_31:                               # %scalar.ph89.preheader
                                         #   in Loop: Header=BB2_28 Depth=1
-	move	$fp, $zero
-	sub.d	$t5, $t5, $t8
-	slli.d	$s4, $t8, 3
-	alsl.d	$s0, $t8, $t3, 3
-	add.d	$s1, $t8, $t7
-	alsl.d	$t7, $s1, $t3, 3
-	alsl.d	$s1, $s1, $t2, 3
-	alsl.d	$s2, $t8, $t2, 3
-	sub.d	$s4, $s4, $t6
-	add.d	$t6, $t3, $s4
-	add.d	$s4, $t2, $s4
-	add.d	$t4, $t8, $t4
-	alsl.d	$t3, $t4, $t3, 3
-	alsl.d	$t2, $t4, $t2, 3
+	move	$t8, $zero
+	sub.d	$t5, $t5, $s1
+	slli.d	$t0, $s1, 3
+	alsl.d	$fp, $s1, $t3, 3
+	add.d	$t1, $s1, $t7
+	alsl.d	$t7, $t1, $t3, 3
+	alsl.d	$s0, $t1, $t2, 3
+	alsl.d	$s2, $s1, $t2, 3
+	sub.d	$t0, $t0, $t6
+	add.d	$t6, $t3, $t0
+	add.d	$s4, $t2, $t0
+	add.d	$t0, $s1, $t4
+	alsl.d	$t3, $t0, $t3, 3
+	alsl.d	$t2, $t0, $t2, 3
 	.p2align	4, , 16
 .LBB2_32:                               # %scalar.ph89
                                         #   Parent Loop BB2_28 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.d	$t4, $t2, $fp
-	stx.d	$t4, $s4, $fp
-	ldx.d	$t4, $t3, $fp
-	stx.d	$t4, $t6, $fp
-	ldx.d	$t4, $s2, $fp
-	stx.d	$t4, $s1, $fp
-	ldx.d	$t4, $s0, $fp
-	stx.d	$t4, $t7, $fp
+	ldx.d	$t0, $t2, $t8
+	stx.d	$t0, $s4, $t8
+	ldx.d	$t0, $t3, $t8
+	stx.d	$t0, $t6, $t8
+	ldx.d	$t0, $s2, $t8
+	stx.d	$t0, $s0, $t8
+	ldx.d	$t0, $fp, $t8
+	stx.d	$t0, $t7, $t8
 	addi.d	$t5, $t5, -1
-	addi.d	$fp, $fp, 8
+	addi.d	$t8, $t8, 8
 	bnez	$t5, .LBB2_32
 	b	.LBB2_27
 	.p2align	4, , 16
 .LBB2_33:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_28 Depth=1
-	sub.d	$t8, $t3, $t2
-	bltu	$t8, $t1, .LBB2_30
-# %bb.34:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
-	add.d	$t8, $t7, $t5
-	bstrpick.d	$t8, $t8, 60, 2
-	slli.d	$t8, $t8, 2
-	beqz	$t8, .LBB2_30
-# %bb.35:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
-	alsl.d	$t8, $t7, $t3, 3
-	alsl.d	$fp, $t5, $t8, 3
-	sub.d	$fp, $fp, $t2
-	bltu	$fp, $t1, .LBB2_30
-# %bb.36:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
-	add.d	$fp, $t4, $t5
-	slli.d	$fp, $fp, 3
-	sub.d	$fp, $zero, $fp
-	bltu	$fp, $t1, .LBB2_30
-# %bb.37:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
+	slli.d	$t8, $t4, 3
 	alsl.d	$s1, $t4, $t3, 3
-	alsl.d	$fp, $t5, $s1, 3
-	sub.d	$fp, $fp, $t2
-	bltu	$fp, $t1, .LBB2_30
-# %bb.38:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
-	alsl.d	$fp, $t5, $t3, 3
-	sub.d	$fp, $fp, $t2
-	bltu	$fp, $t1, .LBB2_30
-# %bb.39:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
-	alsl.d	$s2, $t7, $t2, 3
-	alsl.d	$fp, $t5, $s2, 3
-	sub.d	$fp, $fp, $t3
-	bltu	$fp, $t1, .LBB2_30
-# %bb.40:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
 	alsl.d	$fp, $t4, $t2, 3
 	alsl.d	$fp, $t5, $fp, 3
-	sub.d	$fp, $t3, $fp
-	bltu	$fp, $t1, .LBB2_30
-# %bb.41:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
-	alsl.d	$fp, $t5, $t2, 3
-	sub.d	$fp, $fp, $t3
-	bltu	$fp, $t1, .LBB2_30
-# %bb.42:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
+	alsl.d	$s0, $t5, $t2, 3
+	alsl.d	$s2, $t5, $t3, 3
+	alsl.d	$s4, $t5, $s1, 3
+	add.d	$s5, $t4, $t5
+	sub.d	$s6, $s0, $t3
+	sub.d	$s7, $t3, $fp
+	sub.d	$s2, $s2, $t2
+	sub.d	$s4, $s4, $t2
+	slli.d	$fp, $s5, 3
+	sub.d	$s5, $zero, $fp
+	sub.d	$s8, $t3, $t2
 	slli.d	$fp, $t7, 3
-	slli.d	$s0, $t4, 3
-	sub.d	$s4, $fp, $s0
-	bltu	$s4, $t1, .LBB2_30
-# %bb.43:                               # %vector.memcheck
+	alsl.d	$s0, $t7, $t3, 3
+	alsl.d	$ra, $t7, $t2, 3
+	alsl.d	$t1, $t5, $ra, 3
+	alsl.d	$t0, $t5, $s0, 3
+	sub.d	$t1, $t1, $t3
+	sub.d	$t0, $t0, $t2
+	vinsgr2vr.d	$vr1, $s2, 0
+	vinsgr2vr.d	$vr1, $t1, 1
+	vinsgr2vr.d	$vr2, $s7, 0
+	vinsgr2vr.d	$vr2, $s6, 1
+	xvpermi.q	$xr1, $xr2, 2
+	vinsgr2vr.d	$vr2, $s8, 0
+	vinsgr2vr.d	$vr2, $t0, 1
+	vinsgr2vr.d	$vr3, $s5, 0
+	vinsgr2vr.d	$vr3, $s4, 1
+	xvpermi.q	$xr2, $xr3, 2
+	xvslt.du	$xr2, $xr2, $xr0
+	xvpickve2gr.d	$t0, $xr2, 0
+	vinsgr2vr.h	$vr3, $t0, 0
+	xvpickve2gr.d	$t0, $xr2, 1
+	vinsgr2vr.h	$vr3, $t0, 1
+	xvpickve2gr.d	$t0, $xr2, 2
+	vinsgr2vr.h	$vr3, $t0, 2
+	xvpickve2gr.d	$t0, $xr2, 3
+	vinsgr2vr.h	$vr3, $t0, 3
+	xvslt.du	$xr1, $xr1, $xr0
+	xvpickve2gr.d	$t0, $xr1, 0
+	vinsgr2vr.h	$vr3, $t0, 4
+	xvpickve2gr.d	$t0, $xr1, 1
+	vinsgr2vr.h	$vr3, $t0, 5
+	xvpickve2gr.d	$t0, $xr1, 2
+	vinsgr2vr.h	$vr3, $t0, 6
+	xvpickve2gr.d	$t0, $xr1, 3
+	vinsgr2vr.h	$vr3, $t0, 7
+	sub.d	$t0, $fp, $t8
+	sub.d	$t1, $ra, $s1
+	sub.d	$s1, $t3, $ra
+	vinsgr2vr.d	$vr1, $fp, 0
+	vinsgr2vr.d	$vr1, $s1, 1
+	vinsgr2vr.d	$vr2, $t0, 0
+	vinsgr2vr.d	$vr2, $t1, 1
+	xvpermi.q	$xr2, $xr1, 2
+	xvslt.du	$xr1, $xr2, $xr0
+	xvpickve2gr.d	$t0, $xr1, 3
+	xvpickve2gr.d	$t1, $xr1, 2
+	xvpickve2gr.d	$s1, $xr1, 1
+	xvpickve2gr.d	$s2, $xr1, 0
+	vinsgr2vr.h	$vr1, $s2, 0
+	vinsgr2vr.h	$vr1, $s1, 1
+	vinsgr2vr.h	$vr1, $t1, 2
+	vinsgr2vr.h	$vr1, $t0, 3
+	vor.v	$vr1, $vr3, $vr1
+	vshuf4i.d	$vr1, $vr3, 12
+	vslli.h	$vr1, $vr1, 15
+	vmskltz.h	$vr1, $vr1
+	vpickve2gr.hu	$t0, $vr1, 0
+	move	$s1, $zero
+	bnez	$t0, .LBB2_40
+# %bb.34:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_28 Depth=1
-	sub.d	$s1, $s2, $s1
-	bltu	$s1, $t1, .LBB2_30
-# %bb.44:                               # %vector.memcheck
+	sub.d	$s0, $s0, $t2
+	sub.d	$t0, $s0, $t8
+	ori	$s6, $zero, 24
+	ori	$t1, $zero, 32
+	bltu	$t0, $t1, .LBB2_31
+# %bb.35:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_28 Depth=1
-	bltu	$fp, $t1, .LBB2_30
-# %bb.45:                               # %vector.memcheck
+	bltu	$s0, $t1, .LBB2_31
+# %bb.36:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_28 Depth=1
-	sub.d	$s1, $t3, $s2
-	bltu	$s1, $t1, .LBB2_30
-# %bb.46:                               # %vector.memcheck
+	add.d	$t0, $t7, $t5
+	bstrpick.d	$t0, $t0, 60, 2
+	slli.d	$t0, $t0, 2
+	beqz	$t0, .LBB2_31
+# %bb.37:                               # %vector.ph91
                                         #   in Loop: Header=BB2_28 Depth=1
-	sub.d	$s1, $t8, $t2
-	sub.d	$t8, $s1, $s0
-	bltu	$t8, $t1, .LBB2_30
-# %bb.47:                               # %vector.memcheck
-                                        #   in Loop: Header=BB2_28 Depth=1
-	move	$t8, $zero
-	bltu	$s1, $t1, .LBB2_31
-# %bb.48:                               # %vector.ph91
-                                        #   in Loop: Header=BB2_28 Depth=1
-	bstrpick.d	$t8, $t5, 30, 2
-	slli.d	$t8, $t8, 2
-	sub.d	$s1, $zero, $t6
+	bstrpick.d	$t0, $t5, 30, 2
+	slli.d	$s1, $t0, 2
+	sub.d	$s0, $zero, $t6
 	move	$s2, $t2
 	move	$s4, $t3
-	move	$s5, $t8
+	move	$s5, $s1
 	.p2align	4, , 16
-.LBB2_49:                               # %vector.body94
+.LBB2_38:                               # %vector.body94
                                         #   Parent Loop BB2_28 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvldx	$xr0, $s2, $s0
-	xvstx	$xr0, $s2, $s1
-	xvldx	$xr0, $s4, $s0
-	xvstx	$xr0, $s4, $s1
-	xvld	$xr0, $s2, 0
-	xvstx	$xr0, $s2, $fp
-	xvld	$xr0, $s4, 0
-	xvstx	$xr0, $s4, $fp
+	xvldx	$xr1, $s2, $t8
+	xvstx	$xr1, $s2, $s0
+	xvldx	$xr1, $s4, $t8
+	xvstx	$xr1, $s4, $s0
+	xvld	$xr1, $s2, 0
+	xvstx	$xr1, $s2, $fp
+	xvld	$xr1, $s4, 0
+	xvstx	$xr1, $s4, $fp
 	addi.d	$s5, $s5, -4
 	addi.d	$s4, $s4, 32
 	addi.d	$s2, $s2, 32
-	bnez	$s5, .LBB2_49
-# %bb.50:                               # %middle.block100
+	bnez	$s5, .LBB2_38
+# %bb.39:                               # %middle.block100
                                         #   in Loop: Header=BB2_28 Depth=1
-	beq	$t8, $t5, .LBB2_27
+	beq	$s1, $t5, .LBB2_27
 	b	.LBB2_31
-.LBB2_51:                               # %set_wraparound_pointers.exit
+.LBB2_40:                               #   in Loop: Header=BB2_28 Depth=1
+	ori	$s6, $zero, 24
+	b	.LBB2_31
+.LBB2_41:                               # %set_wraparound_pointers.exit
 	ld.w	$a2, $s3, 120
 	xori	$a2, $a2, 1
 	st.w	$a2, $s3, 120
@@ -829,16 +851,19 @@ process_data_context_main:              # @process_data_context_main
 	st.w	$a1, $s3, 128
 	ori	$a0, $zero, 2
 	st.w	$a0, $s3, 124
-.LBB2_52:
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+.LBB2_42:
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end2:
 	.size	process_data_context_main, .Lfunc_end2-process_data_context_main

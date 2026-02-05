@@ -174,132 +174,132 @@ prefetch_for_read:                      # @prefetch_for_read
 	ld.d	$a1, $a0, 0
 	preld	0, $a1, 0
 	ld.d	$a1, $a0, 8
+	ld.d	$a2, $a0, 16
+	ld.d	$a3, $a0, 24
+	ld.d	$a4, $a0, 32
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 16
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 24
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 32
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 40
+	ld.d	$a2, $a0, 48
+	ld.d	$a3, $a0, 56
+	ld.d	$a4, $a0, 64
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 48
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 56
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 64
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 72
+	ld.d	$a2, $a0, 80
+	ld.d	$a3, $a0, 88
+	ld.d	$a4, $a0, 96
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 80
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 88
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 96
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 104
+	ld.d	$a2, $a0, 112
+	ld.d	$a3, $a0, 120
+	ld.d	$a4, $a0, 128
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 112
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 120
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 128
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 136
+	ld.d	$a2, $a0, 144
+	ld.d	$a3, $a0, 152
+	ld.d	$a4, $a0, 160
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 144
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 152
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 160
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 168
+	ld.d	$a2, $a0, 176
+	ld.d	$a3, $a0, 184
+	ld.d	$a4, $a0, 192
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 176
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 184
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 192
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 200
+	ld.d	$a2, $a0, 208
+	ld.d	$a3, $a0, 216
+	ld.d	$a4, $a0, 224
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 208
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 216
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 224
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 232
+	ld.d	$a2, $a0, 240
+	ld.d	$a3, $a0, 248
+	ld.d	$a4, $a0, 256
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 240
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 248
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 256
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 264
+	ld.d	$a2, $a0, 272
+	ld.d	$a3, $a0, 280
+	ld.d	$a4, $a0, 288
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 272
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 280
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 288
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 296
+	ld.d	$a2, $a0, 304
+	ld.d	$a3, $a0, 312
+	ld.d	$a4, $a0, 320
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 304
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 312
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 320
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 328
+	ld.d	$a2, $a0, 336
+	ld.d	$a3, $a0, 344
+	ld.d	$a4, $a0, 352
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 336
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 344
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 352
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 360
+	ld.d	$a2, $a0, 368
+	ld.d	$a3, $a0, 376
+	ld.d	$a4, $a0, 384
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 368
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 376
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 384
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 392
+	ld.d	$a2, $a0, 400
+	ld.d	$a3, $a0, 408
+	ld.d	$a4, $a0, 416
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 400
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 408
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 416
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 424
+	ld.d	$a2, $a0, 432
+	ld.d	$a3, $a0, 440
+	ld.d	$a4, $a0, 448
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 432
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 440
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 448
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 456
+	ld.d	$a2, $a0, 464
+	ld.d	$a3, $a0, 472
+	ld.d	$a4, $a0, 480
 	preld	0, $a1, 0
-	ld.d	$a1, $a0, 464
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 472
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 480
-	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
+	preld	0, $a4, 0
 	ld.d	$a1, $a0, 488
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 496
-	preld	0, $a1, 0
-	ld.d	$a1, $a0, 504
-	preld	0, $a1, 0
+	ld.d	$a2, $a0, 496
+	ld.d	$a3, $a0, 504
 	ld.d	$a0, $a0, 512
+	preld	0, $a1, 0
+	preld	0, $a2, 0
+	preld	0, $a3, 0
 	preld	0, $a0, 0
 	ret
 .Lfunc_end1:

@@ -366,438 +366,391 @@ f883b:                                  # @f883b
 main:                                   # @main
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(arg4)
-	addi.d	$a3, $a0, %pc_lo12(arg4)
+	addi.d	$a5, $a0, %pc_lo12(arg4)
 	lu12i.w	$a0, 12320
 	ori	$a0, $a0, 256
-	st.w	$a0, $a3, 0
-	lu12i.w	$a0, 28768
-	ori	$a0, $a0, 1284
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
-	lu32i.d	$a0, -390904
-	lu52i.d	$a0, $a0, 176
-	st.d	$a0, $a3, 4
-	pcalau12i	$a0, %pc_hi20(arg1)
-	addi.d	$a0, $a0, %pc_lo12(arg1)
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
-	xvst	$xr0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(arg2)
-	addi.d	$a1, $a1, %pc_lo12(arg2)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_2)
-	vld	$vr0, $a2, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_3)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI1_3)
-	vst	$vr1, $a1, 0
-	vst	$vr0, $a1, 16
-	pcalau12i	$a2, %pc_hi20(arg3)
-	addi.d	$a2, $a2, %pc_lo12(arg3)
+	st.w	$a0, $a5, 0
+	lu12i.w	$a1, 28768
+	ori	$a1, $a1, 1284
+	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
+	xvld	$xr0, $a2, %pc_lo12(.LCPI1_0)
+	lu32i.d	$a1, -390904
+	lu52i.d	$a1, $a1, 176
+	st.d	$a1, $a5, 4
+	pcalau12i	$a1, %pc_hi20(arg1)
+	addi.d	$a1, $a1, %pc_lo12(arg1)
+	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
+	vld	$vr1, $a2, %pc_lo12(.LCPI1_1)
+	xvst	$xr0, $a1, 0
+	pcalau12i	$a2, %pc_hi20(arg2)
+	addi.d	$a2, $a2, %pc_lo12(arg2)
+	pcalau12i	$a3, %pc_hi20(.LCPI1_2)
+	vld	$vr0, $a3, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI1_3)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI1_3)
+	vst	$vr1, $a2, 0
+	vst	$vr0, $a2, 16
+	pcalau12i	$a3, %pc_hi20(arg3)
+	addi.d	$a3, $a3, %pc_lo12(arg3)
 	pcalau12i	$a4, %pc_hi20(.LCPI1_4)
 	xvld	$xr0, $a4, %pc_lo12(.LCPI1_4)
-	xvst	$xr2, $a2, 0
-	xvst	$xr0, $a2, 32
-	pcalau12i	$a4, %pc_hi20(.LCPI1_5)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_5)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_6)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_6)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_7)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI1_7)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_8)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI1_8)
-	vst	$vr0, $a1, 32
-	vst	$vr1, $a1, 48
-	xvst	$xr2, $a2, 64
-	xvst	$xr3, $a2, 96
-	pcalau12i	$a4, %pc_hi20(.LCPI1_9)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_9)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_10)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_10)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_11)
-	vld	$vr2, $a4, %pc_lo12(.LCPI1_11)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_12)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI1_12)
-	vst	$vr0, $a0, 32
-	vst	$vr1, $a1, 64
-	vst	$vr2, $a1, 80
-	xvst	$xr3, $a2, 128
-	pcalau12i	$a4, %pc_hi20(.LCPI1_13)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_13)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_14)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_14)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_15)
-	vld	$vr2, $a4, %pc_lo12(.LCPI1_15)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_16)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI1_16)
-	xvst	$xr0, $a2, 160
-	vst	$vr1, $a1, 96
-	vst	$vr2, $a1, 112
-	xvst	$xr3, $a2, 192
-	pcalau12i	$a4, %pc_hi20(.LCPI1_17)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_17)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_18)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_18)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_19)
-	vld	$vr2, $a4, %pc_lo12(.LCPI1_19)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_20)
-	vld	$vr3, $a4, %pc_lo12(.LCPI1_20)
-	xvst	$xr0, $a2, 224
-	vst	$vr1, $a0, 64
-	vst	$vr2, $a1, 128
-	vst	$vr3, $a1, 144
-	pcalau12i	$a4, %pc_hi20(.LCPI1_21)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_21)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_22)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_22)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_23)
-	vld	$vr2, $a4, %pc_lo12(.LCPI1_23)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_24)
-	vld	$vr3, $a4, %pc_lo12(.LCPI1_24)
-	xvst	$xr0, $a2, 256
-	xvst	$xr1, $a2, 288
-	vst	$vr2, $a0, 80
-	vst	$vr3, $a1, 160
-	pcalau12i	$a4, %pc_hi20(.LCPI1_25)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_25)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_26)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_26)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_27)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI1_27)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_28)
-	vld	$vr3, $a4, %pc_lo12(.LCPI1_28)
-	vst	$vr0, $a1, 176
-	xvst	$xr1, $a2, 320
-	xvst	$xr2, $a2, 352
-	vst	$vr3, $a0, 96
-	pcalau12i	$a4, %pc_hi20(.LCPI1_29)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_29)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_30)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_30)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_31)
-	xvld	$xr2, $a4, %pc_lo12(.LCPI1_31)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_32)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI1_32)
-	vst	$vr0, $a1, 192
-	vst	$vr1, $a1, 208
-	xvst	$xr2, $a2, 384
-	xvst	$xr3, $a2, 416
-	pcalau12i	$a4, %pc_hi20(.LCPI1_33)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_33)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_34)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_34)
+	xvst	$xr2, $a3, 0
+	xvst	$xr0, $a3, 32
 	lu12i.w	$a4, 61664
+	pcalau12i	$a6, %pc_hi20(.LCPI1_5)
+	vld	$vr0, $a6, %pc_lo12(.LCPI1_5)
+	pcalau12i	$a6, %pc_hi20(.LCPI1_6)
+	vld	$vr1, $a6, %pc_lo12(.LCPI1_6)
 	ori	$a4, $a4, 3340
 	lu32i.d	$a4, 135440
+	vst	$vr0, $a2, 32
+	vst	$vr1, $a2, 48
+	pcalau12i	$a6, %pc_hi20(.LCPI1_7)
+	xvld	$xr0, $a6, %pc_lo12(.LCPI1_7)
+	pcalau12i	$a6, %pc_hi20(.LCPI1_8)
+	xvld	$xr1, $a6, %pc_lo12(.LCPI1_8)
 	lu52i.d	$a4, $a4, 305
-	st.d	$a4, $a3, 12
-	vst	$vr0, $a0, 112
-	vst	$vr1, $a1, 224
-	pcalau12i	$a4, %pc_hi20(.LCPI1_35)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_35)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_36)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_36)
+	st.d	$a4, $a5, 12
+	xvst	$xr0, $a3, 64
+	xvst	$xr1, $a3, 96
 	lu12i.w	$a4, 94561
 	ori	$a4, $a4, 1300
-	st.w	$a4, $a3, 20
-	vst	$vr0, $a1, 240
-	xvst	$xr1, $a2, 448
-	pcalau12i	$a4, %pc_hi20(.LCPI1_37)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_37)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_38)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_38)
+	pcalau12i	$a6, %pc_hi20(.LCPI1_9)
+	vld	$vr0, $a6, %pc_lo12(.LCPI1_9)
+	st.w	$a4, $a5, 20
+	pcalau12i	$a4, %pc_hi20(.LCPI1_10)
+	vld	$vr1, $a4, %pc_lo12(.LCPI1_10)
+	vst	$vr0, $a1, 32
+	pcalau12i	$a4, %pc_hi20(.LCPI1_11)
+	vld	$vr0, $a4, %pc_lo12(.LCPI1_11)
+	vst	$vr1, $a2, 64
+	pcalau12i	$a4, %pc_hi20(.LCPI1_12)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI1_12)
+	vst	$vr0, $a2, 80
+	pcalau12i	$a4, %pc_hi20(.LCPI1_13)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI1_13)
+	xvst	$xr1, $a3, 128
 	lu12i.w	$a4, 111009
 	ori	$a4, $a4, 2328
-	lu32i.d	$a4, -123620
-	lu52i.d	$a4, $a4, 497
-	st.d	$a4, $a3, 24
-	xvst	$xr0, $a2, 480
-	vst	$vr1, $a0, 128
-	pcalau12i	$a4, %pc_hi20(.LCPI1_39)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_39)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_40)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_40)
-	lu12i.w	$a4, 400
-	ori	$a4, $a4, 24
-	lu32i.d	$a4, -327654
-	lu52i.d	$a4, $a4, 1
-	st.d	$a4, $a0, 48
-	vst	$vr0, $a1, 256
-	vst	$vr1, $a1, 272
-	pcalau12i	$a4, %pc_hi20(.LCPI1_41)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_41)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_42)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_42)
-	lu12i.w	$a4, 464
-	ori	$a4, $a4, 28
-	lu32i.d	$a4, -65506
-	lu52i.d	$a4, $a4, 1
-	st.d	$a4, $a0, 56
-	xvst	$xr0, $a2, 512
-	xvst	$xr1, $a2, 544
-	pcalau12i	$a4, %pc_hi20(.LCPI1_43)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_43)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_44)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_44)
-	lu12i.w	$a4, 143906
-	ori	$a4, $a4, 288
-	lu32i.d	$a4, 402724
-	lu52i.d	$a4, $a4, 626
-	st.d	$a4, $a3, 32
-	vst	$vr0, $a0, 144
-	vst	$vr1, $a1, 288
-	pcalau12i	$a4, %pc_hi20(.LCPI1_45)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_45)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_46)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_46)
-	lu12i.w	$a4, 176802
-	ori	$a4, $a4, 2344
-	lu32i.d	$a4, -119508
-	lu52i.d	$a4, $a4, 754
-	st.d	$a4, $a3, 40
-	vst	$vr0, $a1, 304
-	xvst	$xr1, $a2, 576
-	pcalau12i	$a4, %pc_hi20(.LCPI1_47)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_47)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_48)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_48)
-	lu12i.w	$a4, 209699
-	ori	$a4, $a4, 304
-	lu32i.d	$a4, 406836
-	lu52i.d	$a4, $a4, 883
-	st.d	$a4, $a3, 48
-	xvst	$xr0, $a2, 608
-	vst	$vr1, $a0, 160
-	pcalau12i	$a4, %pc_hi20(.LCPI1_49)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_49)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_50)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_50)
-	lu12i.w	$a4, 242595
-	ori	$a4, $a4, 2360
-	lu32i.d	$a4, -115396
-	lu52i.d	$a4, $a4, 1011
-	st.d	$a4, $a3, 56
-	vst	$vr0, $a1, 320
-	vst	$vr1, $a1, 336
-	pcalau12i	$a4, %pc_hi20(.LCPI1_51)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_51)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_52)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_52)
-	lu12i.w	$a4, 275492
-	ori	$a4, $a4, 320
-	lu32i.d	$a4, 410948
-	lu52i.d	$a4, $a4, 1140
-	st.d	$a4, $a3, 64
-	xvst	$xr0, $a2, 640
-	xvst	$xr1, $a2, 672
-	pcalau12i	$a4, %pc_hi20(.LCPI1_53)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_53)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_54)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_54)
-	lu12i.w	$a4, 308388
-	ori	$a4, $a4, 2376
-	lu32i.d	$a4, -111284
-	lu52i.d	$a4, $a4, 1268
-	st.d	$a4, $a3, 72
-	vst	$vr0, $a0, 176
-	vst	$vr1, $a1, 352
-	pcalau12i	$a4, %pc_hi20(.LCPI1_55)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_55)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_56)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_56)
-	lu12i.w	$a4, 341285
-	ori	$a4, $a4, 336
-	lu32i.d	$a4, 415060
-	lu52i.d	$a4, $a4, 1397
-	st.d	$a4, $a3, 80
-	vst	$vr0, $a1, 368
-	xvst	$xr1, $a2, 704
-	pcalau12i	$a4, %pc_hi20(.LCPI1_57)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_57)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_58)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_58)
-	lu12i.w	$a4, 374181
-	ori	$a4, $a4, 2392
-	lu32i.d	$a4, -107172
-	lu52i.d	$a4, $a4, 1525
-	st.d	$a4, $a3, 88
-	xvst	$xr1, $a2, 736
+	xvst	$xr0, $a3, 160
+	move	$a6, $a4
+	lu32i.d	$a6, -123620
+	lu52i.d	$a6, $a6, 497
+	st.d	$a6, $a5, 24
+	lu12i.w	$a6, 400
+	ori	$a6, $a6, 24
+	pcalau12i	$a7, %pc_hi20(.LCPI1_14)
+	vld	$vr0, $a7, %pc_lo12(.LCPI1_14)
+	lu32i.d	$a6, -327654
+	lu52i.d	$a6, $a6, 1
+	st.d	$a6, $a1, 48
+	vst	$vr0, $a2, 96
+	pcalau12i	$a6, %pc_hi20(.LCPI1_15)
+	vld	$vr0, $a6, %pc_lo12(.LCPI1_15)
+	pcalau12i	$a6, %pc_hi20(.LCPI1_16)
+	xvld	$xr1, $a6, %pc_lo12(.LCPI1_16)
+	lu12i.w	$a6, 464
+	ori	$a6, $a6, 28
+	vst	$vr0, $a2, 112
+	xvst	$xr1, $a3, 192
+	pcalau12i	$a7, %pc_hi20(.LCPI1_17)
+	xvld	$xr0, $a7, %pc_lo12(.LCPI1_17)
+	pcalau12i	$a7, %pc_hi20(.LCPI1_18)
+	vld	$vr1, $a7, %pc_lo12(.LCPI1_18)
+	lu32i.d	$a6, -65506
+	lu52i.d	$a7, $a6, 1
+	xvst	$xr0, $a3, 224
+	vst	$vr1, $a1, 64
+	pcalau12i	$a6, %pc_hi20(.LCPI1_19)
+	vld	$vr0, $a6, %pc_lo12(.LCPI1_19)
+	pcalau12i	$a6, %pc_hi20(.LCPI1_20)
+	vld	$vr1, $a6, %pc_lo12(.LCPI1_20)
+	lu12i.w	$a6, 143906
+	ori	$a6, $a6, 288
+	vst	$vr0, $a2, 128
+	vst	$vr1, $a2, 144
+	pcalau12i	$t0, %pc_hi20(.LCPI1_21)
+	xvld	$xr0, $t0, %pc_lo12(.LCPI1_21)
+	pcalau12i	$t0, %pc_hi20(.LCPI1_22)
+	xvld	$xr1, $t0, %pc_lo12(.LCPI1_22)
+	st.d	$a7, $a1, 56
+	move	$a7, $a6
+	lu32i.d	$a7, 402724
+	xvst	$xr0, $a3, 256
+	xvst	$xr1, $a3, 288
+	pcalau12i	$t0, %pc_hi20(.LCPI1_23)
+	vld	$vr0, $t0, %pc_lo12(.LCPI1_23)
+	pcalau12i	$t0, %pc_hi20(.LCPI1_24)
+	vld	$vr1, $t0, %pc_lo12(.LCPI1_24)
+	lu52i.d	$t0, $a7, 626
+	lu12i.w	$a7, 176802
+	vst	$vr0, $a1, 80
+	vst	$vr1, $a2, 160
+	pcalau12i	$t1, %pc_hi20(.LCPI1_25)
+	vld	$vr0, $t1, %pc_lo12(.LCPI1_25)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_26)
+	xvld	$xr1, $t1, %pc_lo12(.LCPI1_26)
+	ori	$a7, $a7, 2344
+	st.d	$t0, $a5, 32
+	move	$t0, $a7
+	vst	$vr0, $a2, 176
+	xvst	$xr1, $a3, 320
+	pcalau12i	$t1, %pc_hi20(.LCPI1_27)
+	xvld	$xr0, $t1, %pc_lo12(.LCPI1_27)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_28)
+	vld	$vr1, $t1, %pc_lo12(.LCPI1_28)
+	lu32i.d	$t0, -119508
+	lu52i.d	$t1, $t0, 754
+	xvst	$xr0, $a3, 352
+	vst	$vr1, $a1, 96
+	pcalau12i	$t0, %pc_hi20(.LCPI1_29)
+	vld	$vr0, $t0, %pc_lo12(.LCPI1_29)
+	pcalau12i	$t0, %pc_hi20(.LCPI1_30)
+	vld	$vr1, $t0, %pc_lo12(.LCPI1_30)
+	lu12i.w	$t0, 209699
+	ori	$t0, $t0, 304
+	vst	$vr0, $a2, 192
+	vst	$vr1, $a2, 208
+	pcalau12i	$t2, %pc_hi20(.LCPI1_31)
+	xvld	$xr0, $t2, %pc_lo12(.LCPI1_31)
+	pcalau12i	$t2, %pc_hi20(.LCPI1_32)
+	xvld	$xr1, $t2, %pc_lo12(.LCPI1_32)
+	st.d	$t1, $a5, 40
+	move	$t1, $t0
+	lu32i.d	$t1, 406836
+	xvst	$xr0, $a3, 384
+	xvst	$xr1, $a3, 416
+	pcalau12i	$t2, %pc_hi20(.LCPI1_33)
+	vld	$vr0, $t2, %pc_lo12(.LCPI1_33)
+	pcalau12i	$t2, %pc_hi20(.LCPI1_34)
+	vld	$vr1, $t2, %pc_lo12(.LCPI1_34)
+	lu52i.d	$t2, $t1, 883
+	lu12i.w	$t1, 242595
+	vst	$vr0, $a1, 112
+	vst	$vr1, $a2, 224
+	pcalau12i	$t3, %pc_hi20(.LCPI1_35)
+	vld	$vr0, $t3, %pc_lo12(.LCPI1_35)
+	pcalau12i	$t3, %pc_hi20(.LCPI1_36)
+	xvld	$xr1, $t3, %pc_lo12(.LCPI1_36)
+	ori	$t1, $t1, 2360
+	st.d	$t2, $a5, 48
+	move	$t2, $t1
+	vst	$vr0, $a2, 240
+	xvst	$xr1, $a3, 448
+	pcalau12i	$t3, %pc_hi20(.LCPI1_37)
+	xvld	$xr0, $t3, %pc_lo12(.LCPI1_37)
+	pcalau12i	$t3, %pc_hi20(.LCPI1_38)
+	vld	$vr1, $t3, %pc_lo12(.LCPI1_38)
+	lu32i.d	$t2, -115396
+	lu52i.d	$t3, $t2, 1011
+	xvst	$xr0, $a3, 480
+	vst	$vr1, $a1, 128
+	pcalau12i	$t2, %pc_hi20(.LCPI1_39)
+	vld	$vr0, $t2, %pc_lo12(.LCPI1_39)
+	pcalau12i	$t2, %pc_hi20(.LCPI1_40)
+	vld	$vr1, $t2, %pc_lo12(.LCPI1_40)
+	lu12i.w	$t2, 275492
+	ori	$t2, $t2, 320
+	vst	$vr0, $a2, 256
+	vst	$vr1, $a2, 272
+	pcalau12i	$t4, %pc_hi20(.LCPI1_41)
+	xvld	$xr0, $t4, %pc_lo12(.LCPI1_41)
+	pcalau12i	$t4, %pc_hi20(.LCPI1_42)
+	xvld	$xr1, $t4, %pc_lo12(.LCPI1_42)
+	st.d	$t3, $a5, 56
+	move	$t3, $t2
+	lu32i.d	$t3, 410948
+	xvst	$xr0, $a3, 512
+	xvst	$xr1, $a3, 544
+	pcalau12i	$t4, %pc_hi20(.LCPI1_43)
+	vld	$vr0, $t4, %pc_lo12(.LCPI1_43)
+	pcalau12i	$t4, %pc_hi20(.LCPI1_44)
+	vld	$vr1, $t4, %pc_lo12(.LCPI1_44)
+	lu52i.d	$t4, $t3, 1140
+	lu12i.w	$t3, 308388
+	vst	$vr0, $a1, 144
+	vst	$vr1, $a2, 288
+	pcalau12i	$t5, %pc_hi20(.LCPI1_45)
+	vld	$vr0, $t5, %pc_lo12(.LCPI1_45)
+	pcalau12i	$t5, %pc_hi20(.LCPI1_46)
+	xvld	$xr1, $t5, %pc_lo12(.LCPI1_46)
+	ori	$t3, $t3, 2376
+	st.d	$t4, $a5, 64
+	move	$t4, $t3
+	vst	$vr0, $a2, 304
+	xvst	$xr1, $a3, 576
+	pcalau12i	$t5, %pc_hi20(.LCPI1_47)
+	xvld	$xr0, $t5, %pc_lo12(.LCPI1_47)
+	pcalau12i	$t5, %pc_hi20(.LCPI1_48)
+	vld	$vr1, $t5, %pc_lo12(.LCPI1_48)
+	lu32i.d	$t4, -111284
+	lu52i.d	$t5, $t4, 1268
+	xvst	$xr0, $a3, 608
+	vst	$vr1, $a1, 160
+	pcalau12i	$t4, %pc_hi20(.LCPI1_49)
+	vld	$vr0, $t4, %pc_lo12(.LCPI1_49)
+	pcalau12i	$t4, %pc_hi20(.LCPI1_50)
+	vld	$vr1, $t4, %pc_lo12(.LCPI1_50)
+	lu12i.w	$t4, 341285
+	ori	$t4, $t4, 336
+	vst	$vr0, $a2, 320
+	vst	$vr1, $a2, 336
+	pcalau12i	$t6, %pc_hi20(.LCPI1_51)
+	xvld	$xr0, $t6, %pc_lo12(.LCPI1_51)
+	pcalau12i	$t6, %pc_hi20(.LCPI1_52)
+	xvld	$xr1, $t6, %pc_lo12(.LCPI1_52)
+	st.d	$t5, $a5, 72
+	move	$t5, $t4
+	lu32i.d	$t5, 415060
+	xvst	$xr0, $a3, 640
+	xvst	$xr1, $a3, 672
+	pcalau12i	$t6, %pc_hi20(.LCPI1_53)
+	vld	$vr0, $t6, %pc_lo12(.LCPI1_53)
+	pcalau12i	$t6, %pc_hi20(.LCPI1_54)
+	vld	$vr1, $t6, %pc_lo12(.LCPI1_54)
+	lu52i.d	$t5, $t5, 1397
+	st.d	$t5, $a5, 80
+	vst	$vr0, $a1, 176
+	vst	$vr1, $a2, 352
+	pcalau12i	$t5, %pc_hi20(.LCPI1_55)
+	vld	$vr0, $t5, %pc_lo12(.LCPI1_55)
+	pcalau12i	$t5, %pc_hi20(.LCPI1_56)
+	xvld	$xr1, $t5, %pc_lo12(.LCPI1_56)
+	lu12i.w	$t5, 374181
+	ori	$t5, $t5, 2392
+	vst	$vr0, $a2, 368
+	xvst	$xr1, $a3, 704
+	pcalau12i	$t6, %pc_hi20(.LCPI1_57)
+	xvld	$xr1, $t6, %pc_lo12(.LCPI1_57)
+	pcalau12i	$t6, %pc_hi20(.LCPI1_58)
+	vld	$vr0, $t6, %pc_lo12(.LCPI1_58)
+	move	$t6, $t5
+	lu32i.d	$t6, -107172
+	lu52i.d	$t6, $t6, 1525
+	st.d	$t6, $a5, 88
+	xvst	$xr1, $a3, 736
 	vrepli.w	$vr1, 32
-	pcalau12i	$a3, %pc_hi20(result)
-	addi.d	$a3, $a3, %pc_lo12(result)
-	move	$a4, $zero
-	ori	$a5, $zero, 96
+	pcalau12i	$a5, %pc_hi20(result)
+	addi.d	$a5, $a5, %pc_lo12(result)
+	move	$t6, $zero
+	ori	$t7, $zero, 96
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body26
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a0, 0
-	vinsgr2vr.d	$vr2, $a6, 0
+	ld.d	$t8, $a1, 0
+	vinsgr2vr.d	$vr2, $t8, 0
 	vmini.h	$vr2, $vr2, 1
 	vilvl.h	$vr2, $vr2, $vr2
-	vld	$vr3, $a1, 0
+	vld	$vr3, $a2, 0
 	vslli.w	$vr2, $vr2, 16
 	vsrai.w	$vr2, $vr2, 16
-	xvld	$xr4, $a2, 0
+	xvld	$xr4, $a3, 0
 	vsra.w	$vr2, $vr2, $vr3
 	vadd.w	$vr2, $vr2, $vr1
 	vsrli.w	$vr2, $vr2, 7
-	xvpickve2gr.d	$a6, $xr4, 0
-	vinsgr2vr.b	$vr3, $a6, 0
-	xvpickve2gr.d	$a6, $xr4, 1
-	vinsgr2vr.b	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr4, 2
-	vinsgr2vr.b	$vr3, $a6, 2
-	xvpickve2gr.d	$a6, $xr4, 3
-	vinsgr2vr.b	$vr3, $a6, 3
+	xvpickve2gr.d	$t8, $xr4, 0
+	vinsgr2vr.b	$vr3, $t8, 0
+	xvpickve2gr.d	$t8, $xr4, 1
+	vinsgr2vr.b	$vr3, $t8, 1
+	xvpickve2gr.d	$t8, $xr4, 2
+	vinsgr2vr.b	$vr3, $t8, 2
+	xvpickve2gr.d	$t8, $xr4, 3
+	vinsgr2vr.b	$vr3, $t8, 3
 	vshuf.b	$vr2, $vr0, $vr2, $vr0
 	vori.b	$vr2, $vr2, 251
 	vand.v	$vr2, $vr2, $vr3
-	add.d	$a6, $a3, $a4
-	vstelm.w	$vr2, $a6, 0, 0
-	addi.d	$a4, $a4, 4
-	addi.d	$a2, $a2, 32
-	addi.d	$a1, $a1, 16
-	addi.d	$a0, $a0, 8
-	bne	$a4, $a5, .LBB1_1
-# %bb.2:                                # %vector.body33.preheader
-	pcalau12i	$a0, %pc_hi20(.L__const.main.correct)
-	addi.d	$a0, $a0, %pc_lo12(.L__const.main.correct)
-	move	$a5, $zero
-	vrepli.b	$vr0, -1
-	ori	$a1, $zero, 92
-	.p2align	4, , 16
-.LBB1_3:                                # %vector.body33
-                                        # =>This Inner Loop Header: Depth=1
-	ldx.w	$a4, $a3, $a5
-	vinsgr2vr.w	$vr1, $a4, 0
-	vilvl.b	$vr1, $vr1, $vr1
-	vld	$vr2, $a0, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 24
-	vsrai.w	$vr1, $vr1, 24
-	vseq.w	$vr1, $vr2, $vr1
-	vxor.v	$vr1, $vr1, $vr0
-	vmskltz.w	$vr1, $vr1
-	vpickve2gr.hu	$a4, $vr1, 0
-	bnez	$a4, .LBB1_5
+	add.d	$t8, $a5, $t6
+	vstelm.w	$vr2, $t8, 0, 0
+	addi.d	$t6, $t6, 4
+	addi.d	$a3, $a3, 32
+	addi.d	$a2, $a2, 16
+	addi.d	$a1, $a1, 8
+	bne	$t6, $t7, .LBB1_1
+# %bb.2:                                # %vector.body33
+	ld.w	$a1, $a5, 0
+	bne	$a1, $a0, .LBB1_27
+# %bb.3:                                # %vector.body33
+	ld.w	$a1, $a5, 4
+	bne	$a1, $a0, .LBB1_27
 # %bb.4:                                # %vector.body33
-                                        #   in Loop: Header=BB1_3 Depth=1
-	move	$a2, $a5
-	addi.d	$a5, $a5, 4
-	addi.d	$a0, $a0, 16
-	bne	$a2, $a1, .LBB1_3
-.LBB1_5:                                # %middle.split
-	andi	$a0, $a4, 15
-	bnez	$a0, .LBB1_7
-# %bb.6:                                # %middle.block38
+	ld.w	$a1, $a5, 8
+	lu12i.w	$a0, 45216
+	ori	$a0, $a0, 2312
+	bne	$a1, $a0, .LBB1_27
+# %bb.5:                                # %vector.body33
+	ld.w	$a1, $a5, 12
+	bne	$a1, $a0, .LBB1_27
+# %bb.6:                                # %vector.body33
+	ld.w	$a1, $a5, 16
+	lu12i.w	$a0, 78113
+	ori	$a0, $a0, 272
+	bne	$a1, $a0, .LBB1_27
+# %bb.7:                                # %vector.body33
+	ld.w	$a1, $a5, 20
+	bne	$a1, $a0, .LBB1_27
+# %bb.8:                                # %vector.body33
+	ld.w	$a0, $a5, 24
+	bne	$a0, $a4, .LBB1_27
+# %bb.9:                                # %vector.body33
+	ld.w	$a0, $a5, 28
+	bne	$a0, $a4, .LBB1_27
+# %bb.10:                               # %vector.body33
+	ld.w	$a0, $a5, 32
+	bne	$a0, $a6, .LBB1_27
+# %bb.11:                               # %vector.body33
+	ld.w	$a0, $a5, 36
+	bne	$a0, $a6, .LBB1_27
+# %bb.12:                               # %vector.body33
+	ld.w	$a0, $a5, 40
+	bne	$a0, $a7, .LBB1_27
+# %bb.13:                               # %vector.body33
+	ld.w	$a0, $a5, 44
+	bne	$a0, $a7, .LBB1_27
+# %bb.14:                               # %vector.body33
+	ld.w	$a0, $a5, 48
+	bne	$a0, $t0, .LBB1_27
+# %bb.15:                               # %vector.body33
+	ld.w	$a0, $a5, 52
+	bne	$a0, $t0, .LBB1_27
+# %bb.16:                               # %vector.body33
+	ld.w	$a0, $a5, 56
+	bne	$a0, $t1, .LBB1_27
+# %bb.17:                               # %vector.body33
+	ld.w	$a0, $a5, 60
+	bne	$a0, $t1, .LBB1_27
+# %bb.18:                               # %vector.body33
+	ld.w	$a0, $a5, 64
+	bne	$a0, $t2, .LBB1_27
+# %bb.19:                               # %vector.body33
+	ld.w	$a0, $a5, 68
+	bne	$a0, $t2, .LBB1_27
+# %bb.20:                               # %vector.body33
+	ld.w	$a0, $a5, 72
+	bne	$a0, $t3, .LBB1_27
+# %bb.21:                               # %vector.body33
+	ld.w	$a0, $a5, 76
+	bne	$a0, $t3, .LBB1_27
+# %bb.22:                               # %vector.body33
+	ld.w	$a0, $a5, 80
+	bne	$a0, $t4, .LBB1_27
+# %bb.23:                               # %vector.body33
+	ld.w	$a0, $a5, 84
+	bne	$a0, $t4, .LBB1_27
+# %bb.24:                               # %vector.body33
+	ld.w	$a0, $a5, 88
+	bne	$a0, $t5, .LBB1_27
+# %bb.25:                               # %vector.body33
+	ld.w	$a0, $a5, 92
+	bne	$a0, $t5, .LBB1_27
+# %bb.26:                               # %vector.body.interim.23
 	move	$a0, $zero
 	ret
-.LBB1_7:                                # %vector.early.exit
+.LBB1_27:                               # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:
 	.size	main, .Lfunc_end1-main
                                         # -- End function
-	.type	.L__const.main.correct,@object  # @__const.main.correct
-	.section	.rodata,"a",@progbits
-	.p2align	2, 0x0
-.L__const.main.correct:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	8                               # 0x8
-	.word	9                               # 0x9
-	.word	10                              # 0xa
-	.word	11                              # 0xb
-	.word	8                               # 0x8
-	.word	9                               # 0x9
-	.word	10                              # 0xa
-	.word	11                              # 0xb
-	.word	16                              # 0x10
-	.word	17                              # 0x11
-	.word	18                              # 0x12
-	.word	19                              # 0x13
-	.word	16                              # 0x10
-	.word	17                              # 0x11
-	.word	18                              # 0x12
-	.word	19                              # 0x13
-	.word	24                              # 0x18
-	.word	25                              # 0x19
-	.word	26                              # 0x1a
-	.word	27                              # 0x1b
-	.word	24                              # 0x18
-	.word	25                              # 0x19
-	.word	26                              # 0x1a
-	.word	27                              # 0x1b
-	.word	32                              # 0x20
-	.word	33                              # 0x21
-	.word	34                              # 0x22
-	.word	35                              # 0x23
-	.word	32                              # 0x20
-	.word	33                              # 0x21
-	.word	34                              # 0x22
-	.word	35                              # 0x23
-	.word	40                              # 0x28
-	.word	41                              # 0x29
-	.word	42                              # 0x2a
-	.word	43                              # 0x2b
-	.word	40                              # 0x28
-	.word	41                              # 0x29
-	.word	42                              # 0x2a
-	.word	43                              # 0x2b
-	.word	48                              # 0x30
-	.word	49                              # 0x31
-	.word	50                              # 0x32
-	.word	51                              # 0x33
-	.word	48                              # 0x30
-	.word	49                              # 0x31
-	.word	50                              # 0x32
-	.word	51                              # 0x33
-	.word	56                              # 0x38
-	.word	57                              # 0x39
-	.word	58                              # 0x3a
-	.word	59                              # 0x3b
-	.word	56                              # 0x38
-	.word	57                              # 0x39
-	.word	58                              # 0x3a
-	.word	59                              # 0x3b
-	.word	64                              # 0x40
-	.word	65                              # 0x41
-	.word	66                              # 0x42
-	.word	67                              # 0x43
-	.word	64                              # 0x40
-	.word	65                              # 0x41
-	.word	66                              # 0x42
-	.word	67                              # 0x43
-	.word	72                              # 0x48
-	.word	73                              # 0x49
-	.word	74                              # 0x4a
-	.word	75                              # 0x4b
-	.word	72                              # 0x48
-	.word	73                              # 0x49
-	.word	74                              # 0x4a
-	.word	75                              # 0x4b
-	.word	80                              # 0x50
-	.word	81                              # 0x51
-	.word	82                              # 0x52
-	.word	83                              # 0x53
-	.word	80                              # 0x50
-	.word	81                              # 0x51
-	.word	82                              # 0x52
-	.word	83                              # 0x53
-	.word	88                              # 0x58
-	.word	89                              # 0x59
-	.word	90                              # 0x5a
-	.word	91                              # 0x5b
-	.word	88                              # 0x58
-	.word	89                              # 0x59
-	.word	90                              # 0x5a
-	.word	91                              # 0x5b
-	.size	.L__const.main.correct, 384
-
 	.type	arg4,@object                    # @arg4
 	.bss
 	.globl	arg4
@@ -829,6 +782,7 @@ arg3:
 
 	.type	result,@object                  # @result
 	.globl	result
+	.p2align	2, 0x0
 result:
 	.space	96
 	.size	result, 96

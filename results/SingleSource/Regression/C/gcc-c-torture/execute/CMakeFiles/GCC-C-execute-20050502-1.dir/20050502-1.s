@@ -66,19 +66,18 @@ foo:                                    # @foo
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_10
 # %bb.5:                                # %.lr.ph.split.preheader39
-	ori	$a1, $zero, 1
+	ori	$s3, $zero, 1
 	.p2align	4, , 16
 .LBB2_6:                                # %.lr.ph.split
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$s3, $a1, 1
-	stx.b	$s1, $fp, $a1
+	stx.b	$s1, $fp, $s3
+	addi.d	$s3, $s3, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(bar)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(baz)
 	jirl	$ra, $ra, 0
-	move	$a1, $s3
 	bnez	$a0, .LBB2_6
 	b	.LBB2_10
 .LBB2_7:                                # %.lr.ph.split.us.preheader
@@ -120,8 +119,10 @@ foo:                                    # @foo
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	st.d	$a0, $sp, 16
@@ -138,12 +139,13 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB3_15
 # %bb.1:
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
-	addi.d	$a0, $sp, 24
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 24
+	ld.hu	$a1, $sp, 28
+	lu12i.w	$a2, 411190
+	ori	$fp, $a2, 609
+	xor	$a0, $a0, $fp
+	xori	$a1, $a1, 101
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB3_15
 # %bb.2:                                # %sub_0
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
@@ -169,7 +171,8 @@ main:                                   # @main
 # %bb.5:
 	ld.d	$a0, $sp, 24
 	lu12i.w	$a1, 279604
-	ori	$a1, $a1, 577
+	ori	$s0, $a1, 577
+	move	$a1, $s0
 	lu32i.d	$a1, 476741
 	lu52i.d	$a1, $a1, 4
 	bne	$a0, $a1, .LBB3_15
@@ -190,12 +193,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB3_15
 # %bb.7:
-	pcalau12i	$a0, %pc_hi20(.L.str.8)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.8)
-	addi.d	$a0, $sp, 24
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 24
+	ld.bu	$a1, $sp, 28
+	xor	$a0, $a0, $fp
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB3_15
 # %bb.8:
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
@@ -214,12 +215,13 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB3_15
 # %bb.9:
-	pcalau12i	$a0, %pc_hi20(.L.str.11)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.11)
-	addi.d	$a0, $sp, 24
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 24
+	ld.w	$a1, $sp, 27
+	xor	$a0, $a0, $s0
+	lu12i.w	$a2, 1124
+	ori	$a2, $a2, 1348
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB3_15
 # %bb.10:                               # %sub_015
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
@@ -243,17 +245,20 @@ main:                                   # @main
 	ld.bu	$a0, $a0, 2
 	bnez	$a0, .LBB3_15
 # %bb.13:
-	pcalau12i	$a0, %pc_hi20(.L.str.14)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
-	addi.d	$a0, $sp, 24
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 24
+	ld.w	$a1, $sp, 27
+	xor	$a0, $a0, $fp
+	lu12i.w	$a2, 1638
+	ori	$a2, $a2, 1380
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB3_15
 # %bb.14:
 	move	$a0, $zero
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .LBB3_15:
 	pcaddu18i	$ra, %call36(abort)

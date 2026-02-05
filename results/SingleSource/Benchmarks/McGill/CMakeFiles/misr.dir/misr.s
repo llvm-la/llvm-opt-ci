@@ -72,12 +72,13 @@ main:                                   # @main
 	bltz	$a0, .LBB0_9
 # %bb.7:                                # %.lr.ph.i.preheader
 	addi.d	$fp, $a0, 1
-	addi.d	$s2, $sp, 136
+	addi.d	$a0, $sp, 136
 	ori	$s0, $zero, 1
 	lu32i.d	$s0, 1
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
+	move	$s2, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -85,7 +86,6 @@ main:                                   # @main
 	st.d	$zero, $a0, 8
 	addi.w	$fp, $fp, -1
 	st.d	$a0, $s2, 8
-	move	$s2, $a0
 	bnez	$fp, .LBB0_8
 .LBB0_9:                                # %create_link_list.exit
 	move	$s2, $zero
@@ -116,11 +116,11 @@ main:                                   # @main
 .LBB0_13:                               # %.lr.ph.i38
                                         #   Parent Loop BB0_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a2, $a0
+	move	$a2, $a1
 	ld.w	$a3, $a1, 0
+	move	$a1, $a0
 	ld.d	$a0, $a0, 8
-	st.w	$a3, $a1, 4
-	move	$a1, $a2
+	st.w	$a3, $a2, 4
 	bnez	$a0, .LBB0_13
 	b	.LBB0_10
 .LBB0_14:                               # %.thread49
@@ -210,22 +210,21 @@ create_link_list:                       # @create_link_list
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
-	addi.d	$s0, $a1, 1
-	ori	$s1, $zero, 1
-	lu32i.d	$s1, 1
+	addi.d	$fp, $a1, 1
+	ori	$s0, $zero, 1
+	lu32i.d	$s0, 1
 	.p2align	4, , 16
 .LBB1_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
+	move	$s1, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $a0, 0
+	st.d	$s0, $a0, 0
 	st.d	$zero, $a0, 8
-	addi.w	$s0, $s0, -1
-	st.d	$a0, $fp, 8
-	move	$fp, $a0
-	bnez	$s0, .LBB1_2
+	addi.w	$fp, $fp, -1
+	st.d	$a0, $s1, 8
+	bnez	$fp, .LBB1_2
 # %bb.3:
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -247,11 +246,11 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB2_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a1
+	move	$a2, $a0
 	ld.w	$a3, $a0, 0
+	move	$a0, $a1
 	ld.d	$a1, $a1, 8
-	st.w	$a3, $a0, 4
-	move	$a0, $a2
+	st.w	$a3, $a2, 4
 	bnez	$a1, .LBB2_1
 .LBB2_2:                                # %._crit_edge
 	ret

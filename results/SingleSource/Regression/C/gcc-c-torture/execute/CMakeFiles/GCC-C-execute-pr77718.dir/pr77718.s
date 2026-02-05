@@ -5,13 +5,20 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcalau12i	$a1, %pc_hi20(a)
-	addi.d	$a1, $a1, %pc_lo12(a)
-	ori	$a2, $zero, 6
-	pcaddu18i	$t8, %call36(memcmp)
-	jr	$t8
+	pcalau12i	$a0, %pc_hi20(a)
+	addi.d	$a0, $a0, %pc_lo12(a)
+	ld.hu	$a1, $a0, 4
+	ld.wu	$a0, $a0, 0
+	slli.d	$a1, $a1, 32
+	or	$a0, $a0, $a1
+	revb.d	$a0, $a0
+	lu12i.w	$a1, 402976
+	lu32i.d	$a1, 156258
+	lu52i.d	$a1, $a1, 1574
+	sltu	$a2, $a1, $a0
+	sltu	$a0, $a0, $a1
+	sub.d	$a0, $a0, $a2
+	ret
 .Lfunc_end0:
 	.size	foo, .Lfunc_end0-foo
                                         # -- End function
@@ -22,11 +29,18 @@ bar:                                    # @bar
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(a)
 	addi.d	$a0, $a0, %pc_lo12(a)
-	pcalau12i	$a1, %pc_hi20(.L.str)
-	addi.d	$a1, $a1, %pc_lo12(.L.str)
-	ori	$a2, $zero, 6
-	pcaddu18i	$t8, %call36(memcmp)
-	jr	$t8
+	ld.hu	$a1, $a0, 4
+	ld.wu	$a0, $a0, 0
+	slli.d	$a1, $a1, 32
+	or	$a0, $a0, $a1
+	revb.d	$a0, $a0
+	lu12i.w	$a1, 402976
+	lu32i.d	$a1, 156258
+	lu52i.d	$a1, $a1, 1574
+	sltu	$a2, $a0, $a1
+	sltu	$a0, $a1, $a0
+	sub.d	$a0, $a0, $a2
+	ret
 .Lfunc_end1:
 	.size	bar, .Lfunc_end1-bar
                                         # -- End function

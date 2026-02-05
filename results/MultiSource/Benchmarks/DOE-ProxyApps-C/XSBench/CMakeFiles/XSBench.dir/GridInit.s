@@ -361,22 +361,22 @@ generate_energy_grid:                   # @generate_energy_grid
                                         # =>This Inner Loop Header: Depth=1
 	xvaddi.du	$xr2, $xr0, 4
 	xvmul.d	$xr3, $xr0, $xr1
-	xvmul.d	$xr2, $xr2, $xr1
 	xvpickve2gr.d	$a4, $xr3, 0
-	alsl.d	$a4, $a4, $a0, 2
 	xvpickve2gr.d	$a5, $xr3, 1
-	alsl.d	$a5, $a5, $a0, 2
 	xvpickve2gr.d	$a6, $xr3, 2
-	alsl.d	$a6, $a6, $a0, 2
 	xvpickve2gr.d	$a7, $xr3, 3
-	alsl.d	$a7, $a7, $a0, 2
+	xvmul.d	$xr2, $xr2, $xr1
 	xvpickve2gr.d	$t0, $xr2, 0
-	alsl.d	$t0, $t0, $a0, 2
 	xvpickve2gr.d	$t1, $xr2, 1
-	alsl.d	$t1, $t1, $a0, 2
 	xvpickve2gr.d	$t2, $xr2, 2
-	alsl.d	$t2, $t2, $a0, 2
 	xvpickve2gr.d	$t3, $xr2, 3
+	alsl.d	$a4, $a4, $a0, 2
+	alsl.d	$a5, $a5, $a0, 2
+	alsl.d	$a6, $a6, $a0, 2
+	alsl.d	$a7, $a7, $a0, 2
+	alsl.d	$t0, $t0, $a0, 2
+	alsl.d	$t1, $t1, $a0, 2
+	alsl.d	$t2, $t2, $a0, 2
 	alsl.d	$t3, $t3, $a0, 2
 	st.d	$a4, $a2, -64
 	st.d	$a5, $a2, -48

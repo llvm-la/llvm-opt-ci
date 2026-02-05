@@ -682,92 +682,92 @@ density:                                # @density
                                         #   Parent Loop BB0_80 Depth=1
                                         #     Parent Loop BB0_84 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr5, $s3, -32
-	xvld	$xr6, $s3, 0
-	xvpermi.q	$xr7, $xr5, 1
-	vpickve2gr.w	$s5, $vr7, 2
-	vinsgr2vr.d	$vr4, $s5, 0
-	vpickve2gr.w	$s5, $vr7, 3
-	vinsgr2vr.d	$vr4, $s5, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$s5, $vr7, 0
-	vinsgr2vr.d	$vr8, $s5, 0
-	vpickve2gr.w	$s5, $vr7, 1
-	vinsgr2vr.d	$vr8, $s5, 1
-	vpickve2gr.w	$s5, $vr5, 2
+	xvld	$xr4, $s3, -32
+	xvld	$xr5, $s3, 0
+	xvpermi.q	$xr6, $xr4, 1
+	vpickve2gr.w	$s5, $vr6, 2
 	vinsgr2vr.d	$vr7, $s5, 0
-	vpickve2gr.w	$s5, $vr5, 3
+	vpickve2gr.w	$s5, $vr6, 3
 	vinsgr2vr.d	$vr7, $s5, 1
 	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$s5, $vr5, 0
-	vinsgr2vr.d	$vr9, $s5, 0
-	vpickve2gr.w	$s5, $vr5, 1
-	vinsgr2vr.d	$vr9, $s5, 1
-	xvpermi.q	$xr10, $xr6, 1
-	vpickve2gr.w	$s5, $vr10, 2
-	vinsgr2vr.d	$vr5, $s5, 0
-	vpickve2gr.w	$s5, $vr10, 3
-	vinsgr2vr.d	$vr5, $s5, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$s5, $vr10, 0
-	vinsgr2vr.d	$vr11, $s5, 0
-	vpickve2gr.w	$s5, $vr10, 1
-	vinsgr2vr.d	$vr11, $s5, 1
-	vpickve2gr.w	$s5, $vr6, 2
-	vinsgr2vr.d	$vr10, $s5, 0
-	vpickve2gr.w	$s5, $vr6, 3
-	vinsgr2vr.d	$vr10, $s5, 1
-	xvpermi.q	$xr10, $xr10, 2
 	vpickve2gr.w	$s5, $vr6, 0
-	vinsgr2vr.d	$vr12, $s5, 0
+	vinsgr2vr.d	$vr8, $s5, 0
 	vpickve2gr.w	$s5, $vr6, 1
-	vinsgr2vr.d	$vr12, $s5, 1
+	vinsgr2vr.d	$vr8, $s5, 1
+	vpickve2gr.w	$s5, $vr4, 2
+	vinsgr2vr.d	$vr6, $s5, 0
+	vpickve2gr.w	$s5, $vr4, 3
+	vinsgr2vr.d	$vr6, $s5, 1
+	xvpermi.q	$xr6, $xr6, 2
+	vpickve2gr.w	$s5, $vr4, 0
+	vinsgr2vr.d	$vr9, $s5, 0
+	vpickve2gr.w	$s5, $vr4, 1
+	vinsgr2vr.d	$vr9, $s5, 1
 	xvpickve2gr.d	$s5, $xr9, 0
+	xvpickve2gr.d	$s6, $xr9, 1
+	xvpickve2gr.d	$s7, $xr6, 2
+	xvpickve2gr.d	$s8, $xr6, 3
+	xvpickve2gr.d	$ra, $xr8, 0
+	xvpickve2gr.d	$a0, $xr8, 1
+	xvpickve2gr.d	$a1, $xr7, 2
+	xvpickve2gr.d	$a5, $xr7, 3
+	xvpermi.q	$xr4, $xr5, 1
+	vpickve2gr.w	$a6, $vr4, 2
+	vinsgr2vr.d	$vr6, $a6, 0
+	vpickve2gr.w	$a6, $vr4, 3
+	vinsgr2vr.d	$vr6, $a6, 1
+	xvpermi.q	$xr6, $xr6, 2
+	vpickve2gr.w	$a6, $vr4, 0
+	vinsgr2vr.d	$vr7, $a6, 0
+	vpickve2gr.w	$a6, $vr4, 1
+	vinsgr2vr.d	$vr7, $a6, 1
+	vpickve2gr.w	$a6, $vr5, 2
+	vinsgr2vr.d	$vr4, $a6, 0
+	vpickve2gr.w	$a6, $vr5, 3
+	vinsgr2vr.d	$vr4, $a6, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$a6, $vr5, 0
+	vinsgr2vr.d	$vr8, $a6, 0
+	vpickve2gr.w	$a6, $vr5, 1
+	vinsgr2vr.d	$vr8, $a6, 1
+	xvpickve2gr.d	$a6, $xr8, 0
+	xvpickve2gr.d	$a7, $xr8, 1
+	xvpickve2gr.d	$a2, $xr4, 2
+	xvpickve2gr.d	$a3, $xr4, 3
+	xvpickve2gr.d	$t3, $xr7, 0
+	xvpickve2gr.d	$t2, $xr7, 1
+	xvpickve2gr.d	$s2, $xr6, 2
+	xvpickve2gr.d	$t4, $xr6, 3
 	mul.d	$s5, $s5, $t0
 	add.d	$s5, $t6, $s5
-	xvpickve2gr.d	$s6, $xr9, 1
 	mul.d	$s6, $s6, $t0
 	add.d	$s6, $t6, $s6
-	xvpickve2gr.d	$s7, $xr7, 2
 	mul.d	$s7, $s7, $t0
 	add.d	$s7, $t6, $s7
-	xvpickve2gr.d	$s8, $xr7, 3
 	mul.d	$s8, $s8, $t0
 	add.d	$s8, $t6, $s8
-	xvpickve2gr.d	$ra, $xr8, 0
 	mul.d	$ra, $ra, $t0
 	add.d	$ra, $t6, $ra
-	xvpickve2gr.d	$a0, $xr8, 1
 	mul.d	$a0, $a0, $t0
 	add.d	$a0, $t6, $a0
-	xvpickve2gr.d	$a1, $xr4, 2
 	mul.d	$a1, $a1, $t0
 	add.d	$a1, $t6, $a1
-	xvpickve2gr.d	$a5, $xr4, 3
 	mul.d	$a5, $a5, $t0
 	add.d	$a5, $t6, $a5
-	xvpickve2gr.d	$a6, $xr12, 0
 	mul.d	$a6, $a6, $t0
 	add.d	$a6, $t6, $a6
-	xvpickve2gr.d	$a7, $xr12, 1
 	mul.d	$a7, $a7, $t0
 	add.d	$a7, $t6, $a7
-	xvpickve2gr.d	$a2, $xr10, 2
 	mul.d	$a2, $a2, $t0
 	add.d	$a2, $t6, $a2
-	xvpickve2gr.d	$a3, $xr10, 3
 	mul.d	$a3, $a3, $t0
 	add.d	$a3, $t6, $a3
-	xvpickve2gr.d	$t3, $xr11, 0
 	mul.d	$t3, $t3, $t0
 	add.d	$t3, $t6, $t3
-	xvpickve2gr.d	$t2, $xr11, 1
 	mul.d	$t2, $t2, $t0
 	add.d	$t2, $t6, $t2
-	xvpickve2gr.d	$s2, $xr5, 2
 	mul.d	$s2, $s2, $t0
 	add.d	$s2, $t6, $s2
-	xvpickve2gr.d	$t4, $xr5, 3
 	mul.d	$t4, $t4, $t0
 	add.d	$t4, $t6, $t4
 	ld.w	$s5, $s5, 8
@@ -856,15 +856,15 @@ density:                                # @density
 	vpickve2gr.w	$a0, $vr3, 1
 	vinsgr2vr.d	$vr5, $a0, 1
 	xvpickve2gr.d	$a0, $xr5, 0
+	xvpickve2gr.d	$a1, $xr5, 1
+	xvpickve2gr.d	$a2, $xr4, 2
+	xvpickve2gr.d	$a3, $xr4, 3
 	mul.d	$a0, $a0, $t0
 	add.d	$a0, $t6, $a0
-	xvpickve2gr.d	$a1, $xr5, 1
 	mul.d	$a1, $a1, $t0
 	add.d	$a1, $t6, $a1
-	xvpickve2gr.d	$a2, $xr4, 2
 	mul.d	$a2, $a2, $t0
 	add.d	$a2, $t6, $a2
-	xvpickve2gr.d	$a3, $xr4, 3
 	mul.d	$a3, $a3, $t0
 	add.d	$a3, $t6, $a3
 	ld.w	$a0, $a0, 8
@@ -1084,92 +1084,92 @@ density:                                # @density
                                         #   Parent Loop BB0_117 Depth=1
                                         #     Parent Loop BB0_121 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	xvld	$xr5, $s1, -32
-	xvld	$xr6, $s1, 0
-	xvpermi.q	$xr7, $xr5, 1
-	vpickve2gr.w	$s3, $vr7, 2
-	vinsgr2vr.d	$vr4, $s3, 0
-	vpickve2gr.w	$s3, $vr7, 3
-	vinsgr2vr.d	$vr4, $s3, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$s3, $vr7, 0
-	vinsgr2vr.d	$vr8, $s3, 0
-	vpickve2gr.w	$s3, $vr7, 1
-	vinsgr2vr.d	$vr8, $s3, 1
-	vpickve2gr.w	$s3, $vr5, 2
+	xvld	$xr4, $s1, -32
+	xvld	$xr5, $s1, 0
+	xvpermi.q	$xr6, $xr4, 1
+	vpickve2gr.w	$s3, $vr6, 2
 	vinsgr2vr.d	$vr7, $s3, 0
-	vpickve2gr.w	$s3, $vr5, 3
+	vpickve2gr.w	$s3, $vr6, 3
 	vinsgr2vr.d	$vr7, $s3, 1
 	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$s3, $vr5, 0
-	vinsgr2vr.d	$vr9, $s3, 0
-	vpickve2gr.w	$s3, $vr5, 1
-	vinsgr2vr.d	$vr9, $s3, 1
-	xvpermi.q	$xr10, $xr6, 1
-	vpickve2gr.w	$s3, $vr10, 2
-	vinsgr2vr.d	$vr5, $s3, 0
-	vpickve2gr.w	$s3, $vr10, 3
-	vinsgr2vr.d	$vr5, $s3, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$s3, $vr10, 0
-	vinsgr2vr.d	$vr11, $s3, 0
-	vpickve2gr.w	$s3, $vr10, 1
-	vinsgr2vr.d	$vr11, $s3, 1
-	vpickve2gr.w	$s3, $vr6, 2
-	vinsgr2vr.d	$vr10, $s3, 0
-	vpickve2gr.w	$s3, $vr6, 3
-	vinsgr2vr.d	$vr10, $s3, 1
-	xvpermi.q	$xr10, $xr10, 2
 	vpickve2gr.w	$s3, $vr6, 0
-	vinsgr2vr.d	$vr12, $s3, 0
+	vinsgr2vr.d	$vr8, $s3, 0
 	vpickve2gr.w	$s3, $vr6, 1
-	vinsgr2vr.d	$vr12, $s3, 1
+	vinsgr2vr.d	$vr8, $s3, 1
+	vpickve2gr.w	$s3, $vr4, 2
+	vinsgr2vr.d	$vr6, $s3, 0
+	vpickve2gr.w	$s3, $vr4, 3
+	vinsgr2vr.d	$vr6, $s3, 1
+	xvpermi.q	$xr6, $xr6, 2
+	vpickve2gr.w	$s3, $vr4, 0
+	vinsgr2vr.d	$vr9, $s3, 0
+	vpickve2gr.w	$s3, $vr4, 1
+	vinsgr2vr.d	$vr9, $s3, 1
 	xvpickve2gr.d	$s3, $xr9, 0
+	xvpickve2gr.d	$s4, $xr9, 1
+	xvpickve2gr.d	$s5, $xr6, 2
+	xvpickve2gr.d	$s6, $xr6, 3
+	xvpickve2gr.d	$s7, $xr8, 0
+	xvpickve2gr.d	$s8, $xr8, 1
+	xvpickve2gr.d	$ra, $xr7, 2
+	xvpickve2gr.d	$a3, $xr7, 3
+	xvpermi.q	$xr4, $xr5, 1
+	vpickve2gr.w	$a4, $vr4, 2
+	vinsgr2vr.d	$vr6, $a4, 0
+	vpickve2gr.w	$a4, $vr4, 3
+	vinsgr2vr.d	$vr6, $a4, 1
+	xvpermi.q	$xr6, $xr6, 2
+	vpickve2gr.w	$a4, $vr4, 0
+	vinsgr2vr.d	$vr7, $a4, 0
+	vpickve2gr.w	$a4, $vr4, 1
+	vinsgr2vr.d	$vr7, $a4, 1
+	vpickve2gr.w	$a4, $vr5, 2
+	vinsgr2vr.d	$vr4, $a4, 0
+	vpickve2gr.w	$a4, $vr5, 3
+	vinsgr2vr.d	$vr4, $a4, 1
+	xvpermi.q	$xr4, $xr4, 2
+	vpickve2gr.w	$a4, $vr5, 0
+	vinsgr2vr.d	$vr8, $a4, 0
+	vpickve2gr.w	$a4, $vr5, 1
+	vinsgr2vr.d	$vr8, $a4, 1
+	xvpickve2gr.d	$a4, $xr8, 0
+	xvpickve2gr.d	$a5, $xr8, 1
+	xvpickve2gr.d	$a1, $xr4, 2
+	xvpickve2gr.d	$a0, $xr4, 3
+	xvpickve2gr.d	$t1, $xr7, 0
+	xvpickve2gr.d	$t0, $xr7, 1
+	xvpickve2gr.d	$s0, $xr6, 2
+	xvpickve2gr.d	$t2, $xr6, 3
 	mul.d	$s3, $s3, $a6
 	add.d	$s3, $t4, $s3
-	xvpickve2gr.d	$s4, $xr9, 1
 	mul.d	$s4, $s4, $a6
 	add.d	$s4, $t4, $s4
-	xvpickve2gr.d	$s5, $xr7, 2
 	mul.d	$s5, $s5, $a6
 	add.d	$s5, $t4, $s5
-	xvpickve2gr.d	$s6, $xr7, 3
 	mul.d	$s6, $s6, $a6
 	add.d	$s6, $t4, $s6
-	xvpickve2gr.d	$s7, $xr8, 0
 	mul.d	$s7, $s7, $a6
 	add.d	$s7, $t4, $s7
-	xvpickve2gr.d	$s8, $xr8, 1
 	mul.d	$s8, $s8, $a6
 	add.d	$s8, $t4, $s8
-	xvpickve2gr.d	$ra, $xr4, 2
 	mul.d	$ra, $ra, $a6
 	add.d	$ra, $t4, $ra
-	xvpickve2gr.d	$a3, $xr4, 3
 	mul.d	$a3, $a3, $a6
 	add.d	$a3, $t4, $a3
-	xvpickve2gr.d	$a4, $xr12, 0
 	mul.d	$a4, $a4, $a6
 	add.d	$a4, $t4, $a4
-	xvpickve2gr.d	$a5, $xr12, 1
 	mul.d	$a5, $a5, $a6
 	add.d	$a5, $t4, $a5
-	xvpickve2gr.d	$a1, $xr10, 2
 	mul.d	$a1, $a1, $a6
 	add.d	$a1, $t4, $a1
-	xvpickve2gr.d	$a0, $xr10, 3
 	mul.d	$a0, $a0, $a6
 	add.d	$a0, $t4, $a0
-	xvpickve2gr.d	$t1, $xr11, 0
 	mul.d	$t1, $t1, $a6
 	add.d	$t1, $t4, $t1
-	xvpickve2gr.d	$t0, $xr11, 1
 	mul.d	$t0, $t0, $a6
 	add.d	$t0, $t4, $t0
-	xvpickve2gr.d	$s0, $xr5, 2
 	mul.d	$s0, $s0, $a6
 	add.d	$s0, $t4, $s0
-	xvpickve2gr.d	$t2, $xr5, 3
 	mul.d	$t2, $t2, $a6
 	add.d	$t2, $t4, $t2
 	ld.w	$s3, $s3, 8
@@ -1258,15 +1258,15 @@ density:                                # @density
 	vpickve2gr.w	$a0, $vr3, 1
 	vinsgr2vr.d	$vr5, $a0, 1
 	xvpickve2gr.d	$a0, $xr5, 0
+	xvpickve2gr.d	$a1, $xr5, 1
+	xvpickve2gr.d	$a3, $xr4, 2
+	xvpickve2gr.d	$a4, $xr4, 3
 	mul.d	$a0, $a0, $a6
 	add.d	$a0, $t4, $a0
-	xvpickve2gr.d	$a1, $xr5, 1
 	mul.d	$a1, $a1, $a6
 	add.d	$a1, $t4, $a1
-	xvpickve2gr.d	$a3, $xr4, 2
 	mul.d	$a3, $a3, $a6
 	add.d	$a3, $t4, $a3
-	xvpickve2gr.d	$a4, $xr4, 3
 	mul.d	$a4, $a4, $a6
 	add.d	$a4, $t4, $a4
 	ld.w	$a0, $a0, 8

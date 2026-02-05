@@ -163,21 +163,19 @@ zcurrenttime:                           # @zcurrenttime
 	addi.d	$sp, $sp, 32
 	ret
 .LBB1_2:
+	fld.d	$fa0, $sp, 8
+	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
+	fld.d	$fa1, $a0, %pc_lo12(.LCPI1_0)
 	move	$a0, $zero
-	ld.d	$a1, $sp, 0
-	ld.d	$a2, $sp, 8
-	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
-	fld.d	$fa0, $a3, %pc_lo12(.LCPI1_0)
-	movgr2fr.d	$fa1, $a1
-	movgr2fr.d	$fa2, $a2
-	ffint.d.l	$fa2, $fa2
-	fdiv.d	$fa0, $fa2, $fa0
+	fld.d	$fa2, $sp, 0
+	ffint.d.l	$fa0, $fa0
+	fdiv.d	$fa0, $fa0, $fa1
 	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
-	fld.d	$fa2, $a1, %pc_lo12(.LCPI1_1)
+	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_1)
 	ori	$a1, $zero, 44
 	st.h	$a1, $fp, 24
-	ffint.d.l	$fa1, $fa1
-	fmadd.d	$fa0, $fa1, $fa2, $fa0
+	ffint.d.l	$fa2, $fa2
+	fmadd.d	$fa0, $fa2, $fa1, $fa0
 	fcvt.s.d	$fa0, $fa0
 	fst.s	$fa0, $fp, 16
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -326,9 +324,8 @@ ztype1encrypt:                          # @ztype1encrypt
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a2, $a0, -32
-	st.h	$a2, $sp, 6
+	st.h	$a2, $sp, 14
 	srli.d	$a2, $a2, 16
 	addi.w	$a3, $zero, -15
 	bnez	$a2, .LBB4_5
@@ -347,7 +344,6 @@ ztype1encrypt:                          # @ztype1encrypt
 .LBB4_5:
 	move	$a1, $a3
 .LBB4_6:
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -371,22 +367,21 @@ ztype1encrypt:                          # @ztype1encrypt
 # %bb.11:
 	ld.d	$a4, $a0, 0
 	ld.d	$a1, $a0, -16
-	addi.d	$fp, $a0, -16
-	addi.d	$a3, $sp, 6
-	move	$s0, $a0
+	addi.d	$a3, $sp, 14
+	move	$fp, $a0
 	move	$a0, $a4
 	pcaddu18i	$ra, %call36(gs_type1_encrypt)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $s0, 0
-	ld.hu	$a0, $sp, 6
-	ld.h	$a1, $s0, 10
-	vst	$vr0, $fp, 0
-	ld.h	$a2, $s0, -8
-	st.d	$a0, $s0, -32
-	st.h	$a1, $s0, -6
+	vld	$vr0, $fp, 0
+	ld.hu	$a0, $sp, 14
+	ld.h	$a1, $fp, 10
+	vst	$vr0, $fp, -16
+	ld.h	$a2, $fp, -8
+	st.d	$a0, $fp, -32
+	st.h	$a1, $fp, -6
 	lu12i.w	$a0, 8
 	or	$a0, $a2, $a0
-	st.h	$a0, $s0, -8
+	st.h	$a0, $fp, -8
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
 	ld.d	$a2, $a0, 0
@@ -411,9 +406,8 @@ type1crypt:                             # @type1crypt
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a2, $a0, -32
-	st.h	$a2, $sp, 6
+	st.h	$a2, $sp, 14
 	srli.d	$a2, $a2, 16
 	addi.w	$a4, $zero, -15
 	bnez	$a2, .LBB5_5
@@ -432,7 +426,6 @@ type1crypt:                             # @type1crypt
 .LBB5_5:
 	move	$a3, $a4
 .LBB5_6:
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -456,23 +449,22 @@ type1crypt:                             # @type1crypt
 # %bb.11:
 	ld.d	$a4, $a0, 0
 	ld.d	$a5, $a0, -16
-	addi.d	$fp, $a0, -16
-	addi.d	$a3, $sp, 6
-	move	$s0, $a0
+	addi.d	$a3, $sp, 14
+	move	$fp, $a0
 	move	$a0, $a4
 	move	$a4, $a1
 	move	$a1, $a5
 	jirl	$ra, $a4, 0
-	vld	$vr0, $s0, 0
-	ld.hu	$a0, $sp, 6
-	ld.h	$a1, $s0, 10
-	vst	$vr0, $fp, 0
-	ld.h	$a2, $s0, -8
-	st.d	$a0, $s0, -32
-	st.h	$a1, $s0, -6
+	vld	$vr0, $fp, 0
+	ld.hu	$a0, $sp, 14
+	ld.h	$a1, $fp, 10
+	vst	$vr0, $fp, -16
+	ld.h	$a2, $fp, -8
+	st.d	$a0, $fp, -32
+	st.h	$a1, $fp, -6
 	lu12i.w	$a0, 8
 	or	$a0, $a2, $a0
-	st.h	$a0, $s0, -8
+	st.h	$a0, $fp, -8
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
 	ld.d	$a1, $a0, 0
@@ -497,9 +489,8 @@ ztype1decrypt:                          # @ztype1decrypt
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a2, $a0, -32
-	st.h	$a2, $sp, 6
+	st.h	$a2, $sp, 14
 	srli.d	$a2, $a2, 16
 	addi.w	$a3, $zero, -15
 	bnez	$a2, .LBB6_5
@@ -518,7 +509,6 @@ ztype1decrypt:                          # @ztype1decrypt
 .LBB6_5:
 	move	$a1, $a3
 .LBB6_6:
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -542,22 +532,21 @@ ztype1decrypt:                          # @ztype1decrypt
 # %bb.11:
 	ld.d	$a4, $a0, 0
 	ld.d	$a1, $a0, -16
-	addi.d	$fp, $a0, -16
-	addi.d	$a3, $sp, 6
-	move	$s0, $a0
+	addi.d	$a3, $sp, 14
+	move	$fp, $a0
 	move	$a0, $a4
 	pcaddu18i	$ra, %call36(gs_type1_decrypt)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $s0, 0
-	ld.hu	$a0, $sp, 6
-	ld.h	$a1, $s0, 10
-	vst	$vr0, $fp, 0
-	ld.h	$a2, $s0, -8
-	st.d	$a0, $s0, -32
-	st.h	$a1, $s0, -6
+	vld	$vr0, $fp, 0
+	ld.hu	$a0, $sp, 14
+	ld.h	$a1, $fp, 10
+	vst	$vr0, $fp, -16
+	ld.h	$a2, $fp, -8
+	st.d	$a0, $fp, -32
+	st.h	$a1, $fp, -6
 	lu12i.w	$a0, 8
 	or	$a0, $a2, $a0
-	st.h	$a0, $s0, -8
+	st.h	$a0, $fp, -8
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
 	ld.d	$a2, $a0, 0

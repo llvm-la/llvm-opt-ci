@@ -6,18 +6,17 @@
 Xz_WriteVarInt:                         # @Xz_WriteVarInt
 # %bb.0:
 	move	$a2, $zero
-	ori	$a3, $zero, 127
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	move	$a4, $a1
+	move	$a3, $a1
 	ori	$a1, $a1, 128
 	st.b	$a1, $a0, 0
-	srli.d	$a1, $a4, 7
+	srli.d	$a1, $a3, 7
 	addi.d	$a0, $a0, 1
 	addi.w	$a2, $a2, 1
-	bltu	$a3, $a4, .LBB0_1
+	bnez	$a1, .LBB0_1
 # %bb.2:
-	st.b	$a4, $a0, -1
+	st.b	$a3, $a0, -1
 	move	$a0, $a2
 	ret
 .Lfunc_end0:

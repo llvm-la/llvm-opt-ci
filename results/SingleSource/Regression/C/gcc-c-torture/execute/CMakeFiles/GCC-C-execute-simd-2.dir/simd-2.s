@@ -40,11 +40,11 @@ main:                                   # @main
 	vst	$vr0, $s0, %pc_lo12(k)
 	pcalau12i	$s1, %pc_hi20(res)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3
@@ -59,11 +59,11 @@ main:                                   # @main
 	vmul.h	$vr0, $vr1, $vr0
 	vst	$vr0, $s0, %pc_lo12(k)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3
@@ -79,11 +79,11 @@ main:                                   # @main
 	vdiv.h	$vr0, $vr0, $vr1
 	vst	$vr0, $s0, %pc_lo12(k)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3
@@ -98,11 +98,11 @@ main:                                   # @main
 	vand.v	$vr0, $vr1, $vr0
 	vst	$vr0, $s0, %pc_lo12(k)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3
@@ -117,11 +117,11 @@ main:                                   # @main
 	vor.v	$vr0, $vr1, $vr0
 	vst	$vr0, $s0, %pc_lo12(k)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3
@@ -136,11 +136,11 @@ main:                                   # @main
 	vxor.v	$vr0, $vr1, $vr0
 	vst	$vr0, $s0, %pc_lo12(k)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3
@@ -154,11 +154,11 @@ main:                                   # @main
 	vneg.h	$vr0, $vr0
 	vst	$vr0, $s0, %pc_lo12(k)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3
@@ -173,11 +173,11 @@ main:                                   # @main
 	vxor.v	$vr0, $vr0, $vr1
 	vst	$vr0, $s0, %pc_lo12(k)
 	vst	$vr0, $s1, %pc_lo12(res)
-	vpickve2gr.w	$a0, $vr0, 0
-	ext.w.h	$a0, $a0
+	vpickve2gr.h	$a0, $vr0, 0
 	vpickve2gr.h	$a1, $vr0, 1
 	vpickve2gr.h	$a2, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 3
+	ext.w.h	$a0, $a0
 	ext.w.h	$a1, $a1
 	ext.w.h	$a2, $a2
 	ext.w.h	$a3, $a3

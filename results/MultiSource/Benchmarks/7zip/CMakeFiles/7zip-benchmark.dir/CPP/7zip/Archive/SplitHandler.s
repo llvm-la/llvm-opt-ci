@@ -260,7 +260,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 .Ltmp18:                                # EH_LABEL
 # %bb.4:                                # %_ZNK9CMyComPtrI20IArchiveOpenCallbackE14QueryInterfaceI26IArchiveOpenVolumeCallbackEEiRK4GUIDPPT_.exit
 	ori	$s5, $zero, 1
-	bnez	$a0, .LBB5_210
+	bnez	$a0, .LBB5_212
 # %bb.5:
 	st.d	$zero, $sp, 168
 .Ltmp20:                                # EH_LABEL
@@ -290,7 +290,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	b	.LBB5_21
 .LBB5_9:
 	ori	$s5, $zero, 1
-	b	.LBB5_213
+	b	.LBB5_215
 .LBB5_10:
 	ld.hu	$a0, $sp, 72
 	ori	$a1, $zero, 8
@@ -383,7 +383,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	b	.LBB5_29
 .LBB5_27:
 	move	$s5, $s2
-	b	.LBB5_208
+	b	.LBB5_210
 .LBB5_28:
 	srli.d	$s3, $a1, 2
 .LBB5_29:                               # %_ZNK11CStringBaseIwE11ReverseFindEw.exit
@@ -709,7 +709,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	jirl	$ra, $ra, 0
 .LBB5_80:                               # %_ZN11CStringBaseIwED2Ev.exit240
 	ori	$s5, $zero, 1
-	bnez	$s3, .LBB5_198
+	bnez	$s3, .LBB5_200
 # %bb.81:                               # %.preheader349
 	ld.w	$a0, $sp, 120
 	ori	$a1, $zero, 3
@@ -735,7 +735,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 .LBB5_86:                               # %._crit_edge
 	ld.w	$a0, $sp, 136
 	beq	$s7, $a0, .LBB5_92
-	b	.LBB5_198
+	b	.LBB5_200
 .LBB5_87:                               # %.preheader347
 	ld.w	$a0, $sp, 120
 	ori	$a1, $zero, 3
@@ -1143,7 +1143,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	jirl	$ra, $ra, 0
 .Ltmp131:                               # EH_LABEL
 # %bb.165:                              # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit305
-	beqz	$s5, .LBB5_197
+	beqz	$s5, .LBB5_199
 # %bb.166:
 	ld.d	$a0, $s1, 104
 	add.d	$a0, $a0, $s6
@@ -1173,7 +1173,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 .Ltmp137:                               # EH_LABEL
 # %bb.168:
 	move	$s5, $a0
-	bnez	$a0, .LBB5_198
+	bnez	$a0, .LBB5_200
 # %bb.169:
 	lu12i.w	$a0, -524176
 	ori	$a0, $a0, 87
@@ -1182,7 +1182,7 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	b	.LBB5_171
 .LBB5_170:                              # %_ZN11CStringBaseIwED2Ev.exit320
                                         #   in Loop: Header=BB5_171 Depth=1
-	bnez	$s7, .LBB5_214
+	bnez	$s7, .LBB5_197
 .LBB5_171:                              # =>This Inner Loop Header: Depth=1
 .Ltmp139:                               # EH_LABEL
 	addi.d	$a0, $sp, 56
@@ -1330,61 +1330,67 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	b	.LBB5_170
-.LBB5_197:
+.LBB5_197:                              # %_ZN11CStringBaseIwED2Ev.exit320
+	ori	$a0, $zero, 6
+	bne	$s7, $a0, .LBB5_199
+# %bb.198:                              # %.loopexit364.loopexit
+	move	$s5, $zero
+	b	.LBB5_200
+.LBB5_199:                              # %.loopexit364.loopexit470
 	move	$s5, $s4
-.LBB5_198:                              # %.loopexit364
+.LBB5_200:                              # %.loopexit364
 	ld.d	$a0, $sp, 88
-	beqz	$a0, .LBB5_200
-# %bb.199:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-.LBB5_200:                              # %_ZN11CStringBaseIwED2Ev.exit.i324
-	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB5_202
 # %bb.201:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_202:                              # %_ZN8NArchive6NSplit8CSeqNameD2Ev.exit
-	ld.d	$a0, $sp, 112
+.LBB5_202:                              # %_ZN11CStringBaseIwED2Ev.exit.i324
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB5_204
 # %bb.203:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_204:                              # %_ZN11CStringBaseIwED2Ev.exit325
-	ld.d	$a0, $sp, 128
+.LBB5_204:                              # %_ZN8NArchive6NSplit8CSeqNameD2Ev.exit
+	ld.d	$a0, $sp, 112
 	beqz	$a0, .LBB5_206
 # %bb.205:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_206:                              # %_ZN11CStringBaseIwED2Ev.exit326
-	ld.d	$a0, $sp, 144
+.LBB5_206:                              # %_ZN11CStringBaseIwED2Ev.exit325
+	ld.d	$a0, $sp, 128
 	beqz	$a0, .LBB5_208
 # %bb.207:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_208:
-	ld.d	$a0, $sp, 160
+.LBB5_208:                              # %_ZN11CStringBaseIwED2Ev.exit326
+	ld.d	$a0, $sp, 144
 	beqz	$a0, .LBB5_210
 # %bb.209:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB5_210:
+	ld.d	$a0, $sp, 160
+	beqz	$a0, .LBB5_212
+# %bb.211:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+.LBB5_212:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 16
 .Ltmp181:                               # EH_LABEL
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .Ltmp182:                               # EH_LABEL
-# %bb.211:                              # %_ZN9CMyComPtrI20IArchiveOpenCallbackED2Ev.exit
+# %bb.213:                              # %_ZN9CMyComPtrI20IArchiveOpenCallbackED2Ev.exit
 	ld.d	$a0, $sp, 176
-	beqz	$a0, .LBB5_213
-# %bb.212:
+	beqz	$a0, .LBB5_215
+# %bb.214:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 .Ltmp184:                               # EH_LABEL
 	jirl	$ra, $a1, 0
 .Ltmp185:                               # EH_LABEL
-.LBB5_213:
+.LBB5_215:
 	addi.w	$a0, $s5, 0
 	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
@@ -1399,23 +1405,13 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 272
 	ret
-.LBB5_214:                              # %_ZN11CStringBaseIwED2Ev.exit320
-	ori	$a0, $zero, 6
-	bne	$s7, $a0, .LBB5_216
-# %bb.215:                              # %.loopexit364.loopexit
-	move	$s5, $zero
-	b	.LBB5_198
-.LBB5_216:                              # %.loopexit
-	sltui	$a0, $s7, 1
-	masknez	$s5, $s4, $a0
-	b	.LBB5_198
-.LBB5_217:
+.LBB5_216:
 .Ltmp123:                               # EH_LABEL
-	b	.LBB5_269
-.LBB5_218:
+	b	.LBB5_268
+.LBB5_217:
 .Ltmp120:                               # EH_LABEL
-	b	.LBB5_259
-.LBB5_219:
+	b	.LBB5_258
+.LBB5_218:
 .Ltmp159:                               # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
@@ -1423,41 +1419,41 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB5_272
-.LBB5_220:
-.Ltmp165:                               # EH_LABEL
 	b	.LBB5_271
-.LBB5_221:
+.LBB5_219:
+.Ltmp165:                               # EH_LABEL
+	b	.LBB5_270
+.LBB5_220:
 .Ltmp43:                                # EH_LABEL
-	b	.LBB5_253
-.LBB5_222:
+	b	.LBB5_252
+.LBB5_221:
 .Ltmp28:                                # EH_LABEL
-	b	.LBB5_288
-.LBB5_223:
+	b	.LBB5_287
+.LBB5_222:
 .Ltmp138:                               # EH_LABEL
-	b	.LBB5_269
-.LBB5_224:
+	b	.LBB5_268
+.LBB5_223:
 .Ltmp135:                               # EH_LABEL
-	b	.LBB5_269
-.LBB5_225:
+	b	.LBB5_268
+.LBB5_224:
 .Ltmp114:                               # EH_LABEL
-	b	.LBB5_259
-.LBB5_226:
+	b	.LBB5_258
+.LBB5_225:
 .Ltmp108:                               # EH_LABEL
-	b	.LBB5_244
-.LBB5_227:
+	b	.LBB5_243
+.LBB5_226:
 .Ltmp102:                               # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
-	b	.LBB5_246
-.LBB5_228:
+	b	.LBB5_245
+.LBB5_227:
 .Ltmp117:                               # EH_LABEL
-	b	.LBB5_269
-.LBB5_229:
+	b	.LBB5_268
+.LBB5_228:
 .Ltmp96:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_230:                              # %.body247.thread
+.LBB5_229:                              # %.body247.thread
 .Ltmp87:                                # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
@@ -1465,28 +1461,28 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB5_256
-.LBB5_231:
+	b	.LBB5_255
+.LBB5_230:
 .Ltmp82:                                # EH_LABEL
-	b	.LBB5_269
-.LBB5_232:
+	b	.LBB5_268
+.LBB5_231:
 .Ltmp55:                                # EH_LABEL
-	b	.LBB5_234
-.LBB5_233:
+	b	.LBB5_233
+.LBB5_232:
 .Ltmp49:                                # EH_LABEL
-.LBB5_234:
+.LBB5_233:
 	ld.d	$a2, $sp, 72
 	move	$s1, $a1
 	move	$s2, $a0
-	beqz	$a2, .LBB5_279
-# %bb.235:
+	beqz	$a2, .LBB5_278
+# %bb.234:
 	move	$a0, $a2
-	b	.LBB5_278
-.LBB5_236:
+	b	.LBB5_277
+.LBB5_235:
 .Ltmp152:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_237:
+.LBB5_236:
 .Ltmp146:                               # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
@@ -1495,16 +1491,16 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp148:                               # EH_LABEL
-	b	.LBB5_272
-.LBB5_238:
+	b	.LBB5_271
+.LBB5_237:
 .Ltmp149:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_239:
+.LBB5_238:
 .Ltmp132:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_240:
+.LBB5_239:
 .Ltmp126:                               # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
@@ -1513,177 +1509,177 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp128:                               # EH_LABEL
-	b	.LBB5_276
-.LBB5_241:
+	b	.LBB5_275
+.LBB5_240:
 .Ltmp129:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_242:
+.LBB5_241:
 .Ltmp111:                               # EH_LABEL
-	b	.LBB5_269
-.LBB5_243:
+	b	.LBB5_268
+.LBB5_242:
 .Ltmp105:                               # EH_LABEL
-.LBB5_244:
+.LBB5_243:
 	ld.d	$a2, $sp, 56
 	move	$s1, $a1
 	move	$s2, $a0
-	beqz	$a2, .LBB5_246
-# %bb.245:
+	beqz	$a2, .LBB5_245
+# %bb.244:
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_246:                              # %.body254
+.LBB5_245:                              # %.body254
 	ld.d	$a0, $sp, 40
-	bnez	$a0, .LBB5_275
-	b	.LBB5_276
-.LBB5_247:
+	bnez	$a0, .LBB5_274
+	b	.LBB5_275
+.LBB5_246:
 .Ltmp99:                                # EH_LABEL
-	b	.LBB5_269
-.LBB5_248:
+	b	.LBB5_268
+.LBB5_247:
 .Ltmp58:                                # EH_LABEL
-	b	.LBB5_253
-.LBB5_249:
+	b	.LBB5_252
+.LBB5_248:
 .Ltmp79:                                # EH_LABEL
-	b	.LBB5_259
-.LBB5_250:
+	b	.LBB5_258
+.LBB5_249:
 .Ltmp76:                                # EH_LABEL
-	b	.LBB5_269
-.LBB5_251:
+	b	.LBB5_268
+.LBB5_250:
 .Ltmp52:                                # EH_LABEL
-	b	.LBB5_253
-.LBB5_252:
+	b	.LBB5_252
+.LBB5_251:
 .Ltmp46:                                # EH_LABEL
-.LBB5_253:
+.LBB5_252:
 	move	$s1, $a1
 	move	$s2, $a0
-	b	.LBB5_279
-.LBB5_254:
+	b	.LBB5_278
+.LBB5_253:
 .Ltmp180:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_255:                              # %.body247
+.LBB5_254:                              # %.body247
 .Ltmp90:                                # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
-	beqz	$s0, .LBB5_276
-.LBB5_256:
+	beqz	$s0, .LBB5_275
+.LBB5_255:
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 16
 .Ltmp91:                                # EH_LABEL
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
 .Ltmp92:                                # EH_LABEL
-	b	.LBB5_276
-.LBB5_257:
+	b	.LBB5_275
+.LBB5_256:
 .Ltmp93:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_258:
+.LBB5_257:
 .Ltmp73:                                # EH_LABEL
-.LBB5_259:
+.LBB5_258:
 	ld.d	$a2, $sp, 56
 	move	$s1, $a1
 	move	$s2, $a0
-	beqz	$a2, .LBB5_276
-# %bb.260:
+	beqz	$a2, .LBB5_275
+# %bb.259:
 	move	$a0, $a2
-	b	.LBB5_275
-.LBB5_261:
+	b	.LBB5_274
+.LBB5_260:
 .Ltmp70:                                # EH_LABEL
-	b	.LBB5_269
-.LBB5_262:                              # %_ZN11CStringBaseIwED2Ev.exit.i
+	b	.LBB5_268
+.LBB5_261:                              # %_ZN11CStringBaseIwED2Ev.exit.i
 .Ltmp67:                                # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB5_277
-.LBB5_263:
+	b	.LBB5_276
+.LBB5_262:
 .Ltmp64:                                # EH_LABEL
-	b	.LBB5_265
-.LBB5_264:
+	b	.LBB5_264
+.LBB5_263:
 .Ltmp61:                                # EH_LABEL
-.LBB5_265:
-	move	$s1, $a1
-	move	$s2, $a0
-	b	.LBB5_277
-.LBB5_266:
-.Ltmp40:                                # EH_LABEL
-	move	$s1, $a1
-	move	$s2, $a0
-	b	.LBB5_281
-.LBB5_267:
-.Ltmp37:                                # EH_LABEL
-	move	$s1, $a1
-	move	$s2, $a0
-	b	.LBB5_283
-.LBB5_268:
-.Ltmp141:                               # EH_LABEL
-.LBB5_269:                              # %_ZN9CMyComPtrI9IInStreamED2Ev.exit288
+.LBB5_264:
 	move	$s1, $a1
 	move	$s2, $a0
 	b	.LBB5_276
-.LBB5_270:
-.Ltmp162:                               # EH_LABEL
-.LBB5_271:                              # %.body315
+.LBB5_265:
+.Ltmp40:                                # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
-.LBB5_272:                              # %.body315
+	b	.LBB5_280
+.LBB5_266:
+.Ltmp37:                                # EH_LABEL
+	move	$s1, $a1
+	move	$s2, $a0
+	b	.LBB5_282
+.LBB5_267:
+.Ltmp141:                               # EH_LABEL
+.LBB5_268:                              # %_ZN9CMyComPtrI9IInStreamED2Ev.exit288
+	move	$s1, $a1
+	move	$s2, $a0
+	b	.LBB5_275
+.LBB5_269:
+.Ltmp162:                               # EH_LABEL
+.LBB5_270:                              # %.body315
+	move	$s1, $a1
+	move	$s2, $a0
+.LBB5_271:                              # %.body315
 	ld.d	$a0, $sp, 32
-	beqz	$a0, .LBB5_274
-# %bb.273:
+	beqz	$a0, .LBB5_273
+# %bb.272:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 .Ltmp166:                               # EH_LABEL
 	jirl	$ra, $a1, 0
 .Ltmp167:                               # EH_LABEL
-.LBB5_274:                              # %_ZN9CMyComPtrI9IInStreamED2Ev.exit322
+.LBB5_273:                              # %_ZN9CMyComPtrI9IInStreamED2Ev.exit322
 	ld.d	$a0, $sp, 56
-	beqz	$a0, .LBB5_276
-.LBB5_275:
+	beqz	$a0, .LBB5_275
+.LBB5_274:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_276:                              # %_ZN9CMyComPtrI9IInStreamED2Ev.exit288
+.LBB5_275:                              # %_ZN9CMyComPtrI9IInStreamED2Ev.exit288
 	addi.d	$a0, $sp, 72
 	pcaddu18i	$ra, %call36(_ZN8NArchive6NSplit8CSeqNameD2Ev)
 	jirl	$ra, $ra, 0
-.LBB5_277:
+.LBB5_276:
 	ld.d	$a0, $sp, 112
-	beqz	$a0, .LBB5_279
+	beqz	$a0, .LBB5_278
+.LBB5_277:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
 .LBB5_278:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
-.LBB5_279:
 	ld.d	$a0, $sp, 128
-	beqz	$a0, .LBB5_281
-# %bb.280:
+	beqz	$a0, .LBB5_280
+# %bb.279:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_281:                              # %_ZN11CStringBaseIwED2Ev.exit332
+.LBB5_280:                              # %_ZN11CStringBaseIwED2Ev.exit332
 	ld.d	$a0, $sp, 144
-	beqz	$a0, .LBB5_283
-# %bb.282:
+	beqz	$a0, .LBB5_282
+# %bb.281:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB5_283:
+.LBB5_282:
 	ld.d	$a0, $sp, 160
-	beqz	$a0, .LBB5_295
-# %bb.284:
+	beqz	$a0, .LBB5_294
+# %bb.283:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB5_295
-.LBB5_285:
+	b	.LBB5_294
+.LBB5_284:
 .Ltmp168:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_286:
+.LBB5_285:
 .Ltmp34:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_287:
+.LBB5_286:
 .Ltmp25:                                # EH_LABEL
-.LBB5_288:
+.LBB5_287:
 	move	$s1, $a1
 	move	$s2, $a0
 .Ltmp29:                                # EH_LABEL
@@ -1691,77 +1687,77 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp30:                                # EH_LABEL
-	b	.LBB5_283
-.LBB5_289:
+	b	.LBB5_282
+.LBB5_288:
 .Ltmp31:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_290:
+.LBB5_289:
 .Ltmp22:                                # EH_LABEL
-	b	.LBB5_294
-.LBB5_291:
+	b	.LBB5_293
+.LBB5_290:
 .Ltmp186:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_292:
+.LBB5_291:
 .Ltmp183:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_293:
+.LBB5_292:
 .Ltmp19:                                # EH_LABEL
-.LBB5_294:
+.LBB5_293:
 	move	$s1, $a1
 	move	$s2, $a0
-.LBB5_295:
+.LBB5_294:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 16
 .Ltmp169:                               # EH_LABEL
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .Ltmp170:                               # EH_LABEL
-# %bb.296:                              # %_ZN9CMyComPtrI20IArchiveOpenCallbackED2Ev.exit336
+# %bb.295:                              # %_ZN9CMyComPtrI20IArchiveOpenCallbackED2Ev.exit336
 	ld.d	$a0, $sp, 176
-	beqz	$a0, .LBB5_302
-.LBB5_297:
+	beqz	$a0, .LBB5_301
+.LBB5_296:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 .Ltmp172:                               # EH_LABEL
 	jirl	$ra, $a1, 0
 .Ltmp173:                               # EH_LABEL
-	b	.LBB5_302
-.LBB5_298:
+	b	.LBB5_301
+.LBB5_297:
 .Ltmp174:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_299:
+.LBB5_298:
 .Ltmp171:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_300:
+.LBB5_299:
 .Ltmp16:                                # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
 	ld.d	$a0, $sp, 176
-	bnez	$a0, .LBB5_297
-	b	.LBB5_302
-.LBB5_301:
+	bnez	$a0, .LBB5_296
+	b	.LBB5_301
+.LBB5_300:
 .Ltmp13:                                # EH_LABEL
 	move	$s1, $a1
 	move	$s2, $a0
-.LBB5_302:
+.LBB5_301:
 	addi.w	$s0, $s1, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(__cxa_begin_catch)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
-	beq	$s0, $a1, .LBB5_304
-# %bb.303:
+	beq	$s0, $a1, .LBB5_303
+# %bb.302:
 	pcaddu18i	$ra, %call36(__cxa_end_catch)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, -524176
 	ori	$s5, $a0, 14
-	b	.LBB5_213
-.LBB5_304:
+	b	.LBB5_215
+.LBB5_303:
 	move	$fp, $a0
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(__cxa_allocate_exception)
@@ -1774,8 +1770,8 @@ _ZN8NArchive6NSplit8CHandler4OpenEP9IInStreamPKyP20IArchiveOpenCallback: # @_ZN8
 	pcaddu18i	$ra, %call36(__cxa_throw)
 	jirl	$ra, $ra, 0
 .Ltmp176:                               # EH_LABEL
-# %bb.305:
-.LBB5_306:
+# %bb.304:
+.LBB5_305:
 .Ltmp177:                               # EH_LABEL
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(__cxa_end_catch)

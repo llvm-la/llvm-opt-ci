@@ -614,8 +614,7 @@ MixCoder_SetFromMethod:                 # @MixCoder_SetFromMethod
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	slli.d	$a3, $a1, 5
 	alsl.d	$a3, $a1, $a3, 3
-	add.d	$a3, $a0, $a3
-	addi.d	$fp, $a3, 112
+	add.d	$fp, $a0, $a3
 	alsl.d	$a3, $a1, $a0, 3
 	ori	$a4, $zero, 33
 	st.d	$a2, $a3, 80
@@ -625,23 +624,23 @@ MixCoder_SetFromMethod:                 # @MixCoder_SetFromMethod
 	ld.d	$a2, $a0, 0
 	ori	$a1, $zero, 168
 	jirl	$ra, $a2, 0
-	st.d	$a0, $fp, 0
+	st.d	$a0, $fp, 112
 	beqz	$a0, .LBB9_7
 # %bb.2:
 	move	$a1, $a0
 	pcalau12i	$a0, %pc_hi20(Lzma2State_Free)
 	addi.d	$a0, $a0, %pc_lo12(Lzma2State_Free)
-	st.d	$a0, $fp, 8
+	st.d	$a0, $fp, 120
 	pcalau12i	$a0, %pc_hi20(Lzma2State_SetProps)
 	addi.d	$a0, $a0, %pc_lo12(Lzma2State_SetProps)
-	st.d	$a0, $fp, 16
+	st.d	$a0, $fp, 128
 	pcalau12i	$a0, %pc_hi20(Lzma2State_Init)
 	addi.d	$a0, $a0, %pc_lo12(Lzma2State_Init)
-	st.d	$a0, $fp, 24
+	st.d	$a0, $fp, 136
 	pcalau12i	$a0, %pc_hi20(Lzma2State_Code)
 	addi.d	$a2, $a0, %pc_lo12(Lzma2State_Code)
 	move	$a0, $zero
-	st.d	$a2, $fp, 32
+	st.d	$a2, $fp, 144
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a1, 16
 	b	.LBB9_8
@@ -657,27 +656,27 @@ MixCoder_SetFromMethod:                 # @MixCoder_SetFromMethod
 	move	$s0, $a2
 	ld.d	$a0, $a3, 0
 	ld.d	$a2, $a0, 0
-	st.d	$zero, $fp, 0
+	st.d	$zero, $fp, 112
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 304
 	jirl	$ra, $a2, 0
 	beqz	$a0, .LBB9_7
 # %bb.6:
 	st.w	$s0, $a0, 24
-	st.d	$a0, $fp, 0
+	st.d	$a0, $fp, 112
 	pcalau12i	$a0, %pc_hi20(BraState_Free)
 	addi.d	$a0, $a0, %pc_lo12(BraState_Free)
-	st.d	$a0, $fp, 8
+	st.d	$a0, $fp, 120
 	pcalau12i	$a0, %pc_hi20(BraState_SetProps)
 	addi.d	$a0, $a0, %pc_lo12(BraState_SetProps)
-	st.d	$a0, $fp, 16
+	st.d	$a0, $fp, 128
 	pcalau12i	$a0, %pc_hi20(BraState_Init)
 	addi.d	$a0, $a0, %pc_lo12(BraState_Init)
-	st.d	$a0, $fp, 24
+	st.d	$a0, $fp, 136
 	pcalau12i	$a0, %pc_hi20(BraState_Code)
 	addi.d	$a1, $a0, %pc_lo12(BraState_Code)
 	move	$a0, $zero
-	st.d	$a1, $fp, 32
+	st.d	$a1, $fp, 144
 	b	.LBB9_8
 .LBB9_7:
 	ori	$a0, $zero, 2
@@ -1637,16 +1636,10 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB16_3
 .LBB16_1:                               #   in Loop: Header=BB16_3 Depth=1
+	ld.w	$a0, $s4, 80
+	ld.w	$a1, $s4, 768
 	ori	$s7, $zero, 3
-	ld.bu	$a0, $s4, 770
-	ld.hu	$a1, $s4, 768
-	ld.b	$a2, $s4, 771
-	ld.w	$a3, $s4, 80
-	slli.w	$a0, $a0, 16
-	or	$a0, $a1, $a0
-	slli.w	$a1, $a2, 24
-	or	$a0, $a0, $a1
-	xor	$a0, $a0, $a3
+	xor	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	st.d	$s7, $s4, 0
 	bne	$a0, $a1, .LBB16_66
@@ -1804,9 +1797,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	ld.hu	$a0, $s4, 16
 	ori	$a1, $zero, 6
 	st.w	$a1, $s4, 0
-	addi.d	$a1, $s4, 24
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $a1, 0
+	vst	$vr0, $s4, 24
 	andi	$a1, $a0, 15
 	addi.d	$a0, $s4, 512
 	pcaddu18i	$ra, %call36(XzCheck_Init)
@@ -1915,7 +1907,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	bne	$a0, $a1, .LBB16_66
 # %bb.33:                               #   in Loop: Header=BB16_3 Depth=1
 	ld.hu	$s0, $s4, 16
-	ld.w	$s6, $s4, 768
+	addi.d	$a0, $s4, 768
+	ld.w	$s6, $a0, 0
 	ori	$a1, $zero, 6
 	addi.d	$a0, $s4, 772
 	pcaddu18i	$ra, %call36(CrcCalc)
@@ -1928,14 +1921,13 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	bne	$a0, $s0, .LBB16_66
 # %bb.35:                               # %Xz_CheckFooter.exit
                                         #   in Loop: Header=BB16_3 Depth=1
-	pcalau12i	$a0, %got_pc_hi20(XZ_FOOTER_SIG)
-	ld.d	$a0, $a0, %got_pc_lo12(XZ_FOOTER_SIG)
-	ld.hu	$a0, $a0, 0
-	addi.d	$a1, $s4, 778
+	ld.hu	$a0, $s4, 778
+	pcalau12i	$a1, %got_pc_hi20(XZ_FOOTER_SIG)
+	ld.d	$a1, $a1, %got_pc_lo12(XZ_FOOTER_SIG)
 	ld.hu	$a1, $a1, 0
 	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	beq	$a1, $a0, .LBB16_2
+	beq	$a0, $a1, .LBB16_2
 	b	.LBB16_66
 .LBB16_36:                              #   in Loop: Header=BB16_3 Depth=1
 	ld.bu	$a1, $s5, 0
@@ -2000,9 +1992,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	pcaddu18i	$ra, %call36(Sha256_Init)
 	jirl	$ra, $ra, 0
 	st.w	$zero, $s4, 4
-	addi.d	$a0, $s4, 40
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $a0, 0
+	vst	$vr0, $s4, 40
 	ld.d	$a0, $s1, 0
 	b	.LBB16_3
 .LBB16_44:                              #   in Loop: Header=BB16_3 Depth=1
@@ -2158,11 +2149,21 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	addi.d	$a0, $s4, 632
 	pcaddu18i	$ra, %call36(Sha256_Final)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 88
-	ori	$a2, $zero, 32
-	addi.d	$a1, $s4, 736
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 88
+	ld.d	$a1, $s4, 736
+	ld.d	$a2, $sp, 96
+	ld.d	$a3, $s4, 744
+	ld.d	$a4, $sp, 104
+	ld.d	$a5, $s4, 752
+	ld.d	$a6, $sp, 112
+	ld.d	$a7, $s4, 760
+	xor	$a0, $a0, $a1
+	xor	$a1, $a2, $a3
+	xor	$a2, $a4, $a5
+	xor	$a3, $a6, $a7
+	or	$a0, $a0, $a1
+	or	$a1, $a2, $a3
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB16_2
 .LBB16_59:
 	ori	$s7, $zero, 3

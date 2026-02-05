@@ -344,11 +344,11 @@ main:                                   # @main
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(ptr)
 	ld.d	$a0, $a1, %pc_lo12(ptr)
+	pcalau12i	$a2, %pc_hi20(arrindex)
+	ld.w	$a3, $a2, %pc_lo12(arrindex)
 	preld	0, $a0, 0
 	preld	0, $a0, 0
 	preld	0, $a0, 16
-	pcalau12i	$a2, %pc_hi20(arrindex)
-	ld.w	$a3, $a2, %pc_lo12(arrindex)
 	alsl.d	$a4, $a3, $a0, 2
 	preld	0, $a4, 0
 	addi.d	$a4, $a0, 4
@@ -379,9 +379,9 @@ main:                                   # @main
 	preld	0, $a4, 0
 	preld	0, $a0, 12
 	st.w	$a3, $a2, %pc_lo12(arrindex)
-	preld	0, $a4, 0
 	pcalau12i	$a1, %pc_hi20(getptrcnt)
 	ld.w	$a2, $a1, %pc_lo12(getptrcnt)
+	preld	0, $a4, 0
 	preld	0, $a0, 4
 	addi.d	$a3, $a2, 1
 	st.w	$a3, $a1, %pc_lo12(getptrcnt)

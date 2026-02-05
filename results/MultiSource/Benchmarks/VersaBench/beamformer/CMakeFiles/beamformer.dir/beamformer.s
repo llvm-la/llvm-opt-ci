@@ -2167,20 +2167,20 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvmul.d	$xr26, $xr25, $xr0
 	xvmul.d	$xr27, $xr24, $xr0
 	xvpickve2gr.d	$fp, $xr27, 0
-	add.d	$t2, $s7, $fp
 	xvpickve2gr.d	$s0, $xr27, 1
-	add.d	$t4, $s7, $s0
 	xvpickve2gr.d	$s1, $xr27, 2
-	add.d	$t5, $s7, $s1
 	xvpickve2gr.d	$s2, $xr27, 3
-	add.d	$t6, $s7, $s2
 	xvpickve2gr.d	$s3, $xr26, 0
-	add.d	$t7, $s7, $s3
 	xvpickve2gr.d	$s5, $xr26, 1
-	add.d	$t8, $s7, $s5
 	xvpickve2gr.d	$s6, $xr26, 2
-	add.d	$t3, $s7, $s6
 	xvpickve2gr.d	$s8, $xr26, 3
+	add.d	$t3, $s7, $fp
+	add.d	$t4, $s7, $s0
+	add.d	$t5, $s7, $s1
+	add.d	$t6, $s7, $s2
+	add.d	$t7, $s7, $s3
+	add.d	$t8, $s7, $s5
+	add.d	$t2, $s7, $s6
 	add.d	$t1, $s7, $s8
 	xvslli.d	$xr26, $xr25, 3
 	xvslli.d	$xr27, $xr24, 3
@@ -2209,13 +2209,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvpermi.q	$xr27, $xr30, 2
 	xvld	$xr4, $sp, 304                  # 32-byte Folded Reload
 	xvfmul.s	$xr0, $xr4, $xr27
-	fld.s	$fa1, $t2, 4
+	fld.s	$fa1, $t3, 4
 	fld.s	$fs2, $t4, 4
 	fld.s	$fs4, $t5, 4
 	fld.s	$fs5, $t6, 4
 	fld.s	$fs6, $t7, 4
 	fld.s	$fs7, $t8, 4
-	fld.s	$fa2, $t3, 4
+	fld.s	$fa2, $t2, 4
 	vextrins.w	$vr1, $vr26, 16
 	fld.s	$fs2, $t1, 4
 	vextrins.w	$vr1, $vr28, 32
@@ -2232,13 +2232,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr27, $xr28
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr0, $xr3
-	fld.s	$fs4, $t2, 8
+	fld.s	$fs4, $t3, 8
 	fld.s	$fa0, $t4, 8
 	fld.s	$fa1, $t5, 8
 	fld.s	$fa2, $t6, 8
 	fld.s	$fs5, $t7, 8
 	fld.s	$fs6, $t8, 8
-	fld.s	$fs7, $t3, 8
+	fld.s	$fs7, $t2, 8
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 8
 	vextrins.w	$vr28, $vr1, 32
@@ -2247,14 +2247,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 12
+	fld.s	$fa0, $t3, 12
 	fld.s	$fa1, $t4, 12
 	fld.s	$fa2, $t5, 12
 	fld.s	$fs5, $t6, 12
 	fld.s	$fs6, $t7, 12
 	fld.s	$fs7, $t8, 12
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 12
+	fld.s	$fa1, $t2, 12
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 12
 	vextrins.w	$vr0, $vr29, 48
@@ -2272,13 +2272,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr2
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 16
+	fld.s	$fs4, $t3, 16
 	fld.s	$fa0, $t4, 16
 	fld.s	$fa1, $t5, 16
 	fld.s	$fa2, $t6, 16
 	fld.s	$fs5, $t7, 16
 	fld.s	$fs6, $t8, 16
-	fld.s	$fs7, $t3, 16
+	fld.s	$fs7, $t2, 16
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 16
 	vextrins.w	$vr28, $vr1, 32
@@ -2287,14 +2287,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 20
+	fld.s	$fa0, $t3, 20
 	fld.s	$fa1, $t4, 20
 	fld.s	$fa2, $t5, 20
 	fld.s	$fs5, $t6, 20
 	fld.s	$fs6, $t7, 20
 	fld.s	$fs7, $t8, 20
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 20
+	fld.s	$fa1, $t2, 20
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 20
 	vextrins.w	$vr0, $vr29, 48
@@ -2311,13 +2311,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr5
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 24
+	fld.s	$fs4, $t3, 24
 	fld.s	$fa0, $t4, 24
 	fld.s	$fa1, $t5, 24
 	fld.s	$fa2, $t6, 24
 	fld.s	$fs5, $t7, 24
 	fld.s	$fs6, $t8, 24
-	fld.s	$fs7, $t3, 24
+	fld.s	$fs7, $t2, 24
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 24
 	vextrins.w	$vr28, $vr1, 32
@@ -2326,14 +2326,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 28
+	fld.s	$fa0, $t3, 28
 	fld.s	$fa1, $t4, 28
 	fld.s	$fa2, $t5, 28
 	fld.s	$fs5, $t6, 28
 	fld.s	$fs6, $t7, 28
 	fld.s	$fs7, $t8, 28
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 28
+	fld.s	$fa1, $t2, 28
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 28
 	vextrins.w	$vr0, $vr29, 48
@@ -2349,13 +2349,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr7
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 32
+	fld.s	$fs4, $t3, 32
 	fld.s	$fa0, $t4, 32
 	fld.s	$fa1, $t5, 32
 	fld.s	$fa2, $t6, 32
 	fld.s	$fs5, $t7, 32
 	fld.s	$fs6, $t8, 32
-	fld.s	$fs7, $t3, 32
+	fld.s	$fs7, $t2, 32
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 32
 	vextrins.w	$vr28, $vr1, 32
@@ -2364,14 +2364,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 36
+	fld.s	$fa0, $t3, 36
 	fld.s	$fa1, $t4, 36
 	fld.s	$fa2, $t5, 36
 	fld.s	$fs5, $t6, 36
 	fld.s	$fs6, $t7, 36
 	fld.s	$fs7, $t8, 36
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 36
+	fld.s	$fa1, $t2, 36
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 36
 	vextrins.w	$vr0, $vr29, 48
@@ -2387,13 +2387,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr9
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 40
+	fld.s	$fs4, $t3, 40
 	fld.s	$fa0, $t4, 40
 	fld.s	$fa1, $t5, 40
 	fld.s	$fa2, $t6, 40
 	fld.s	$fs5, $t7, 40
 	fld.s	$fs6, $t8, 40
-	fld.s	$fs7, $t3, 40
+	fld.s	$fs7, $t2, 40
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 40
 	vextrins.w	$vr28, $vr1, 32
@@ -2402,14 +2402,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 44
+	fld.s	$fa0, $t3, 44
 	fld.s	$fa1, $t4, 44
 	fld.s	$fa2, $t5, 44
 	fld.s	$fs5, $t6, 44
 	fld.s	$fs6, $t7, 44
 	fld.s	$fs7, $t8, 44
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 44
+	fld.s	$fa1, $t2, 44
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 44
 	vextrins.w	$vr0, $vr29, 48
@@ -2425,13 +2425,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr11
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 48
+	fld.s	$fs4, $t3, 48
 	fld.s	$fa0, $t4, 48
 	fld.s	$fa1, $t5, 48
 	fld.s	$fa2, $t6, 48
 	fld.s	$fs5, $t7, 48
 	fld.s	$fs6, $t8, 48
-	fld.s	$fs7, $t3, 48
+	fld.s	$fs7, $t2, 48
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 48
 	vextrins.w	$vr28, $vr1, 32
@@ -2440,14 +2440,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 52
+	fld.s	$fa0, $t3, 52
 	fld.s	$fa1, $t4, 52
 	fld.s	$fa2, $t5, 52
 	fld.s	$fs5, $t6, 52
 	fld.s	$fs6, $t7, 52
 	fld.s	$fs7, $t8, 52
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 52
+	fld.s	$fa1, $t2, 52
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 52
 	vextrins.w	$vr0, $vr29, 48
@@ -2463,13 +2463,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr13
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 56
+	fld.s	$fs4, $t3, 56
 	fld.s	$fa0, $t4, 56
 	fld.s	$fa1, $t5, 56
 	fld.s	$fa2, $t6, 56
 	fld.s	$fs5, $t7, 56
 	fld.s	$fs6, $t8, 56
-	fld.s	$fs7, $t3, 56
+	fld.s	$fs7, $t2, 56
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 56
 	vextrins.w	$vr28, $vr1, 32
@@ -2478,14 +2478,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 60
+	fld.s	$fa0, $t3, 60
 	fld.s	$fa1, $t4, 60
 	fld.s	$fa2, $t5, 60
 	fld.s	$fs5, $t6, 60
 	fld.s	$fs6, $t7, 60
 	fld.s	$fs7, $t8, 60
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 60
+	fld.s	$fa1, $t2, 60
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 60
 	vextrins.w	$vr0, $vr29, 48
@@ -2501,13 +2501,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr15
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 64
+	fld.s	$fs4, $t3, 64
 	fld.s	$fa0, $t4, 64
 	fld.s	$fa1, $t5, 64
 	fld.s	$fa2, $t6, 64
 	fld.s	$fs5, $t7, 64
 	fld.s	$fs6, $t8, 64
-	fld.s	$fs7, $t3, 64
+	fld.s	$fs7, $t2, 64
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 64
 	vextrins.w	$vr28, $vr1, 32
@@ -2516,14 +2516,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 68
+	fld.s	$fa0, $t3, 68
 	fld.s	$fa1, $t4, 68
 	fld.s	$fa2, $t5, 68
 	fld.s	$fs5, $t6, 68
 	fld.s	$fs6, $t7, 68
 	fld.s	$fs7, $t8, 68
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 68
+	fld.s	$fa1, $t2, 68
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 68
 	vextrins.w	$vr0, $vr29, 48
@@ -2539,13 +2539,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr17
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 72
+	fld.s	$fs4, $t3, 72
 	fld.s	$fa0, $t4, 72
 	fld.s	$fa1, $t5, 72
 	fld.s	$fa2, $t6, 72
 	fld.s	$fs5, $t7, 72
 	fld.s	$fs6, $t8, 72
-	fld.s	$fs7, $t3, 72
+	fld.s	$fs7, $t2, 72
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 72
 	vextrins.w	$vr28, $vr1, 32
@@ -2554,14 +2554,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 76
+	fld.s	$fa0, $t3, 76
 	fld.s	$fa1, $t4, 76
 	fld.s	$fa2, $t5, 76
 	fld.s	$fs5, $t6, 76
 	fld.s	$fs6, $t7, 76
 	fld.s	$fs7, $t8, 76
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 76
+	fld.s	$fa1, $t2, 76
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 76
 	vextrins.w	$vr0, $vr29, 48
@@ -2577,13 +2577,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr19
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 80
+	fld.s	$fs4, $t3, 80
 	fld.s	$fa0, $t4, 80
 	fld.s	$fa1, $t5, 80
 	fld.s	$fa2, $t6, 80
 	fld.s	$fs5, $t7, 80
 	fld.s	$fs6, $t8, 80
-	fld.s	$fs7, $t3, 80
+	fld.s	$fs7, $t2, 80
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 80
 	vextrins.w	$vr28, $vr1, 32
@@ -2592,14 +2592,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 84
+	fld.s	$fa0, $t3, 84
 	fld.s	$fa1, $t4, 84
 	fld.s	$fa2, $t5, 84
 	fld.s	$fs5, $t6, 84
 	fld.s	$fs6, $t7, 84
 	fld.s	$fs7, $t8, 84
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 84
+	fld.s	$fa1, $t2, 84
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 84
 	vextrins.w	$vr0, $vr29, 48
@@ -2615,13 +2615,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvfmul.s	$xr1, $xr28, $xr21
 	xvfadd.s	$xr0, $xr1, $xr0
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 88
+	fld.s	$fs4, $t3, 88
 	fld.s	$fa0, $t4, 88
 	fld.s	$fa1, $t5, 88
 	fld.s	$fa2, $t6, 88
 	fld.s	$fs5, $t7, 88
 	fld.s	$fs6, $t8, 88
-	fld.s	$fs7, $t3, 88
+	fld.s	$fs7, $t2, 88
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 88
 	vextrins.w	$vr28, $vr1, 32
@@ -2630,14 +2630,14 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 92
+	fld.s	$fa0, $t3, 92
 	fld.s	$fa1, $t4, 92
 	fld.s	$fa2, $t5, 92
 	fld.s	$fs5, $t6, 92
 	fld.s	$fs6, $t7, 92
 	fld.s	$fs7, $t8, 92
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 92
+	fld.s	$fa1, $t2, 92
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 92
 	vextrins.w	$vr0, $vr29, 48
@@ -2806,29 +2806,29 @@ begin_StrictFP:                         # @begin_StrictFP
 	xvslli.d	$xr2, $xr0, 3
 	xvslli.d	$xr3, $xr1, 3
 	xvpickve2gr.d	$a0, $xr3, 0
-	add.d	$a1, $s4, $a0
-	xvpickve2gr.d	$a3, $xr3, 1
-	add.d	$a4, $s4, $a3
-	xvpickve2gr.d	$a5, $xr3, 2
-	add.d	$a6, $s4, $a5
-	xvpickve2gr.d	$a7, $xr3, 3
-	add.d	$t0, $s4, $a7
-	xvpickve2gr.d	$t1, $xr2, 0
-	add.d	$t2, $s4, $t1
-	xvpickve2gr.d	$t3, $xr2, 1
-	add.d	$t4, $s4, $t3
-	xvpickve2gr.d	$t5, $xr2, 2
-	add.d	$t6, $s4, $t5
-	xvpickve2gr.d	$t7, $xr2, 3
-	add.d	$t8, $s4, $t7
+	xvpickve2gr.d	$a1, $xr3, 1
+	xvpickve2gr.d	$a3, $xr3, 2
+	xvpickve2gr.d	$a4, $xr3, 3
+	xvpickve2gr.d	$a5, $xr2, 0
+	xvpickve2gr.d	$a6, $xr2, 1
+	xvpickve2gr.d	$a7, $xr2, 2
+	xvpickve2gr.d	$t0, $xr2, 3
+	add.d	$t1, $s4, $a0
+	add.d	$t2, $s4, $a1
+	add.d	$t3, $s4, $a3
+	add.d	$t4, $s4, $a4
+	add.d	$t5, $s4, $a5
+	add.d	$t6, $s4, $a6
+	add.d	$t7, $s4, $a7
+	add.d	$t8, $s4, $t0
 	fldx.s	$fa2, $a0, $s4
-	fldx.s	$fa3, $a3, $s4
-	fldx.s	$fa4, $a5, $s4
-	fldx.s	$fa5, $a7, $s4
-	fldx.s	$fa6, $t1, $s4
-	fldx.s	$fa7, $t3, $s4
-	fldx.s	$ft0, $t5, $s4
-	fldx.s	$ft1, $t7, $s4
+	fldx.s	$fa3, $a1, $s4
+	fldx.s	$fa4, $a3, $s4
+	fldx.s	$fa5, $a4, $s4
+	fldx.s	$fa6, $a5, $s4
+	fldx.s	$fa7, $a6, $s4
+	fldx.s	$ft0, $a7, $s4
+	fldx.s	$ft1, $t0, $s4
 	vextrins.w	$vr2, $vr3, 16
 	vextrins.w	$vr2, $vr4, 32
 	vextrins.w	$vr2, $vr5, 48
@@ -2837,13 +2837,13 @@ begin_StrictFP:                         # @begin_StrictFP
 	vextrins.w	$vr6, $vr9, 48
 	xvpermi.q	$xr2, $xr6, 2
 	xvfmul.s	$xr2, $xr2, $xr2
-	fld.s	$fa3, $a1, 4
-	fld.s	$fa4, $a4, 4
-	fld.s	$fa5, $a6, 4
-	fld.s	$fa6, $t0, 4
-	fld.s	$fa7, $t2, 4
-	fld.s	$ft0, $t4, 4
-	fld.s	$ft1, $t6, 4
+	fld.s	$fa3, $t1, 4
+	fld.s	$fa4, $t2, 4
+	fld.s	$fa5, $t3, 4
+	fld.s	$fa6, $t4, 4
+	fld.s	$fa7, $t5, 4
+	fld.s	$ft0, $t6, 4
+	fld.s	$ft1, $t7, 4
 	fld.s	$ft2, $t8, 4
 	vextrins.w	$vr3, $vr4, 16
 	vextrins.w	$vr3, $vr5, 32
@@ -4942,7 +4942,7 @@ begin:                                  # @begin
 	ori	$a0, $zero, 512
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 2408
-	add.d	$s2, $sp, $a1
+	add.d	$ra, $sp, $a1
 	lu12i.w	$a1, 3
 	ori	$a1, $a1, 2408
 	add.d	$s0, $sp, $a1
@@ -4955,23 +4955,20 @@ begin:                                  # @begin
 	xvmul.d	$xr27, $xr24, $xr26
 	xvmul.d	$xr26, $xr25, $xr26
 	xvpickve2gr.d	$fp, $xr26, 0
-	add.d	$t2, $s2, $fp
 	xvpickve2gr.d	$s1, $xr26, 1
-	add.d	$t4, $s2, $s1
-	lu12i.w	$a1, 4
-	ori	$a1, $a1, 2408
-	add.d	$ra, $sp, $a1
 	xvpickve2gr.d	$s2, $xr26, 2
-	add.d	$t5, $ra, $s2
 	xvpickve2gr.d	$s3, $xr26, 3
-	add.d	$t6, $ra, $s3
 	xvpickve2gr.d	$s4, $xr27, 0
-	add.d	$t7, $ra, $s4
 	xvpickve2gr.d	$s5, $xr27, 1
-	add.d	$t8, $ra, $s5
 	xvpickve2gr.d	$s6, $xr27, 2
-	add.d	$t3, $ra, $s6
 	xvpickve2gr.d	$s7, $xr27, 3
+	add.d	$t3, $ra, $fp
+	add.d	$t4, $ra, $s1
+	add.d	$t5, $ra, $s2
+	add.d	$t6, $ra, $s3
+	add.d	$t7, $ra, $s4
+	add.d	$t8, $ra, $s5
+	add.d	$t2, $ra, $s6
 	add.d	$t1, $ra, $s7
 	xvslli.d	$xr26, $xr24, 3
 	xvslli.d	$xr27, $xr25, 3
@@ -4986,14 +4983,11 @@ begin:                                  # @begin
 	fldx.s	$fs3, $fp, $ra
 	fldx.s	$fs2, $s1, $ra
 	fldx.s	$fs4, $s2, $ra
-	lu12i.w	$fp, 4
-	ori	$fp, $fp, 2408
-	add.d	$s2, $sp, $fp
-	fldx.s	$fs5, $s3, $s2
-	fldx.s	$fs6, $s4, $s2
-	fldx.s	$fs7, $s5, $s2
-	fldx.s	$fa0, $s6, $s2
-	fldx.s	$fa1, $s7, $s2
+	fldx.s	$fs5, $s3, $ra
+	fldx.s	$fs6, $s4, $ra
+	fldx.s	$fs7, $s5, $ra
+	fldx.s	$fa0, $s6, $ra
+	fldx.s	$fa1, $s7, $ra
 	vextrins.w	$vr27, $vr26, 16
 	vextrins.w	$vr27, $vr28, 32
 	vextrins.w	$vr27, $vr29, 48
@@ -5001,13 +4995,13 @@ begin:                                  # @begin
 	vextrins.w	$vr30, $vr0, 32
 	vextrins.w	$vr30, $vr1, 48
 	xvpermi.q	$xr27, $xr30, 2
-	fld.s	$fa0, $t2, 4
+	fld.s	$fa0, $t3, 4
 	fld.s	$fa1, $t4, 4
 	fld.s	$fs2, $t5, 4
 	fld.s	$fs4, $t6, 4
 	fld.s	$fs5, $t7, 4
 	fld.s	$fs6, $t8, 4
-	fld.s	$fs7, $t3, 4
+	fld.s	$fs7, $t2, 4
 	fld.s	$fa2, $t1, 4
 	vextrins.w	$vr0, $vr1, 16
 	vextrins.w	$vr0, $vr26, 32
@@ -5026,13 +5020,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr27, $xr29
 	xvfmadd.s	$xr0, $xr28, $xr0, $xr1
 	xvfadd.s	$xr27, $xr0, $xr2
-	fld.s	$fs4, $t2, 8
+	fld.s	$fs4, $t3, 8
 	fld.s	$fa0, $t4, 8
 	fld.s	$fa1, $t5, 8
 	fld.s	$fa2, $t6, 8
 	fld.s	$fs5, $t7, 8
 	fld.s	$fs6, $t8, 8
-	fld.s	$fs7, $t3, 8
+	fld.s	$fs7, $t2, 8
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 8
 	vextrins.w	$vr28, $vr1, 32
@@ -5041,14 +5035,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 12
+	fld.s	$fa0, $t3, 12
 	fld.s	$fa1, $t4, 12
 	fld.s	$fa2, $t5, 12
 	fld.s	$fs5, $t6, 12
 	fld.s	$fs6, $t7, 12
 	fld.s	$fs7, $t8, 12
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 12
+	fld.s	$fa1, $t2, 12
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 12
 	vextrins.w	$vr0, $vr29, 48
@@ -5064,13 +5058,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr3
 	xvfmadd.s	$xr0, $xr2, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 16
+	fld.s	$fs4, $t3, 16
 	fld.s	$fa0, $t4, 16
 	fld.s	$fa1, $t5, 16
 	fld.s	$fa2, $t6, 16
 	fld.s	$fs5, $t7, 16
 	fld.s	$fs6, $t8, 16
-	fld.s	$fs7, $t3, 16
+	fld.s	$fs7, $t2, 16
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 16
 	vextrins.w	$vr28, $vr1, 32
@@ -5079,14 +5073,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 20
+	fld.s	$fa0, $t3, 20
 	fld.s	$fa1, $t4, 20
 	fld.s	$fa2, $t5, 20
 	fld.s	$fs5, $t6, 20
 	fld.s	$fs6, $t7, 20
 	fld.s	$fs7, $t8, 20
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 20
+	fld.s	$fa1, $t2, 20
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 20
 	vextrins.w	$vr0, $vr29, 48
@@ -5101,13 +5095,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr5
 	xvfmadd.s	$xr0, $xr4, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 24
+	fld.s	$fs4, $t3, 24
 	fld.s	$fa0, $t4, 24
 	fld.s	$fa1, $t5, 24
 	fld.s	$fa2, $t6, 24
 	fld.s	$fs5, $t7, 24
 	fld.s	$fs6, $t8, 24
-	fld.s	$fs7, $t3, 24
+	fld.s	$fs7, $t2, 24
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 24
 	vextrins.w	$vr28, $vr1, 32
@@ -5116,14 +5110,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 28
+	fld.s	$fa0, $t3, 28
 	fld.s	$fa1, $t4, 28
 	fld.s	$fa2, $t5, 28
 	fld.s	$fs5, $t6, 28
 	fld.s	$fs6, $t7, 28
 	fld.s	$fs7, $t8, 28
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 28
+	fld.s	$fa1, $t2, 28
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 28
 	vextrins.w	$vr0, $vr29, 48
@@ -5138,13 +5132,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr7
 	xvfmadd.s	$xr0, $xr6, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 32
+	fld.s	$fs4, $t3, 32
 	fld.s	$fa0, $t4, 32
 	fld.s	$fa1, $t5, 32
 	fld.s	$fa2, $t6, 32
 	fld.s	$fs5, $t7, 32
 	fld.s	$fs6, $t8, 32
-	fld.s	$fs7, $t3, 32
+	fld.s	$fs7, $t2, 32
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 32
 	vextrins.w	$vr28, $vr1, 32
@@ -5153,14 +5147,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 36
+	fld.s	$fa0, $t3, 36
 	fld.s	$fa1, $t4, 36
 	fld.s	$fa2, $t5, 36
 	fld.s	$fs5, $t6, 36
 	fld.s	$fs6, $t7, 36
 	fld.s	$fs7, $t8, 36
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 36
+	fld.s	$fa1, $t2, 36
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 36
 	vextrins.w	$vr0, $vr29, 48
@@ -5175,13 +5169,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr9
 	xvfmadd.s	$xr0, $xr8, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 40
+	fld.s	$fs4, $t3, 40
 	fld.s	$fa0, $t4, 40
 	fld.s	$fa1, $t5, 40
 	fld.s	$fa2, $t6, 40
 	fld.s	$fs5, $t7, 40
 	fld.s	$fs6, $t8, 40
-	fld.s	$fs7, $t3, 40
+	fld.s	$fs7, $t2, 40
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 40
 	vextrins.w	$vr28, $vr1, 32
@@ -5190,14 +5184,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 44
+	fld.s	$fa0, $t3, 44
 	fld.s	$fa1, $t4, 44
 	fld.s	$fa2, $t5, 44
 	fld.s	$fs5, $t6, 44
 	fld.s	$fs6, $t7, 44
 	fld.s	$fs7, $t8, 44
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 44
+	fld.s	$fa1, $t2, 44
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 44
 	vextrins.w	$vr0, $vr29, 48
@@ -5212,13 +5206,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr11
 	xvfmadd.s	$xr0, $xr10, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 48
+	fld.s	$fs4, $t3, 48
 	fld.s	$fa0, $t4, 48
 	fld.s	$fa1, $t5, 48
 	fld.s	$fa2, $t6, 48
 	fld.s	$fs5, $t7, 48
 	fld.s	$fs6, $t8, 48
-	fld.s	$fs7, $t3, 48
+	fld.s	$fs7, $t2, 48
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 48
 	vextrins.w	$vr28, $vr1, 32
@@ -5227,14 +5221,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 52
+	fld.s	$fa0, $t3, 52
 	fld.s	$fa1, $t4, 52
 	fld.s	$fa2, $t5, 52
 	fld.s	$fs5, $t6, 52
 	fld.s	$fs6, $t7, 52
 	fld.s	$fs7, $t8, 52
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 52
+	fld.s	$fa1, $t2, 52
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 52
 	vextrins.w	$vr0, $vr29, 48
@@ -5249,13 +5243,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr13
 	xvfmadd.s	$xr0, $xr12, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 56
+	fld.s	$fs4, $t3, 56
 	fld.s	$fa0, $t4, 56
 	fld.s	$fa1, $t5, 56
 	fld.s	$fa2, $t6, 56
 	fld.s	$fs5, $t7, 56
 	fld.s	$fs6, $t8, 56
-	fld.s	$fs7, $t3, 56
+	fld.s	$fs7, $t2, 56
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 56
 	vextrins.w	$vr28, $vr1, 32
@@ -5264,14 +5258,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 60
+	fld.s	$fa0, $t3, 60
 	fld.s	$fa1, $t4, 60
 	fld.s	$fa2, $t5, 60
 	fld.s	$fs5, $t6, 60
 	fld.s	$fs6, $t7, 60
 	fld.s	$fs7, $t8, 60
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 60
+	fld.s	$fa1, $t2, 60
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 60
 	vextrins.w	$vr0, $vr29, 48
@@ -5286,13 +5280,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr15
 	xvfmadd.s	$xr0, $xr14, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 64
+	fld.s	$fs4, $t3, 64
 	fld.s	$fa0, $t4, 64
 	fld.s	$fa1, $t5, 64
 	fld.s	$fa2, $t6, 64
 	fld.s	$fs5, $t7, 64
 	fld.s	$fs6, $t8, 64
-	fld.s	$fs7, $t3, 64
+	fld.s	$fs7, $t2, 64
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 64
 	vextrins.w	$vr28, $vr1, 32
@@ -5301,14 +5295,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 68
+	fld.s	$fa0, $t3, 68
 	fld.s	$fa1, $t4, 68
 	fld.s	$fa2, $t5, 68
 	fld.s	$fs5, $t6, 68
 	fld.s	$fs6, $t7, 68
 	fld.s	$fs7, $t8, 68
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 68
+	fld.s	$fa1, $t2, 68
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 68
 	vextrins.w	$vr0, $vr29, 48
@@ -5323,13 +5317,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr17
 	xvfmadd.s	$xr0, $xr16, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 72
+	fld.s	$fs4, $t3, 72
 	fld.s	$fa0, $t4, 72
 	fld.s	$fa1, $t5, 72
 	fld.s	$fa2, $t6, 72
 	fld.s	$fs5, $t7, 72
 	fld.s	$fs6, $t8, 72
-	fld.s	$fs7, $t3, 72
+	fld.s	$fs7, $t2, 72
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 72
 	vextrins.w	$vr28, $vr1, 32
@@ -5338,14 +5332,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 76
+	fld.s	$fa0, $t3, 76
 	fld.s	$fa1, $t4, 76
 	fld.s	$fa2, $t5, 76
 	fld.s	$fs5, $t6, 76
 	fld.s	$fs6, $t7, 76
 	fld.s	$fs7, $t8, 76
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 76
+	fld.s	$fa1, $t2, 76
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 76
 	vextrins.w	$vr0, $vr29, 48
@@ -5360,13 +5354,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr19
 	xvfmadd.s	$xr0, $xr18, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 80
+	fld.s	$fs4, $t3, 80
 	fld.s	$fa0, $t4, 80
 	fld.s	$fa1, $t5, 80
 	fld.s	$fa2, $t6, 80
 	fld.s	$fs5, $t7, 80
 	fld.s	$fs6, $t8, 80
-	fld.s	$fs7, $t3, 80
+	fld.s	$fs7, $t2, 80
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 80
 	vextrins.w	$vr28, $vr1, 32
@@ -5375,14 +5369,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 84
+	fld.s	$fa0, $t3, 84
 	fld.s	$fa1, $t4, 84
 	fld.s	$fa2, $t5, 84
 	fld.s	$fs5, $t6, 84
 	fld.s	$fs6, $t7, 84
 	fld.s	$fs7, $t8, 84
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 84
+	fld.s	$fa1, $t2, 84
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 84
 	vextrins.w	$vr0, $vr29, 48
@@ -5397,13 +5391,13 @@ begin:                                  # @begin
 	xvfmul.s	$xr1, $xr28, $xr21
 	xvfmadd.s	$xr0, $xr20, $xr0, $xr1
 	xvfadd.s	$xr27, $xr27, $xr0
-	fld.s	$fs4, $t2, 88
+	fld.s	$fs4, $t3, 88
 	fld.s	$fa0, $t4, 88
 	fld.s	$fa1, $t5, 88
 	fld.s	$fa2, $t6, 88
 	fld.s	$fs5, $t7, 88
 	fld.s	$fs6, $t8, 88
-	fld.s	$fs7, $t3, 88
+	fld.s	$fs7, $t2, 88
 	vextrins.w	$vr28, $vr0, 16
 	fld.s	$fa0, $t1, 88
 	vextrins.w	$vr28, $vr1, 32
@@ -5412,14 +5406,14 @@ begin:                                  # @begin
 	vextrins.w	$vr29, $vr31, 32
 	vextrins.w	$vr29, $vr0, 48
 	xvpermi.q	$xr28, $xr29, 2
-	fld.s	$fa0, $t2, 92
+	fld.s	$fa0, $t3, 92
 	fld.s	$fa1, $t4, 92
 	fld.s	$fa2, $t5, 92
 	fld.s	$fs5, $t6, 92
 	fld.s	$fs6, $t7, 92
 	fld.s	$fs7, $t8, 92
 	vextrins.w	$vr0, $vr1, 16
-	fld.s	$fa1, $t3, 92
+	fld.s	$fa1, $t2, 92
 	vextrins.w	$vr0, $vr2, 32
 	fld.s	$fa2, $t1, 92
 	vextrins.w	$vr0, $vr29, 48
@@ -5599,29 +5593,29 @@ begin:                                  # @begin
 	xvslli.d	$xr2, $xr0, 3
 	xvslli.d	$xr3, $xr1, 3
 	xvpickve2gr.d	$a0, $xr3, 0
-	add.d	$a1, $s0, $a0
-	xvpickve2gr.d	$a3, $xr3, 1
-	add.d	$a4, $s0, $a3
-	xvpickve2gr.d	$a5, $xr3, 2
-	add.d	$a6, $s0, $a5
-	xvpickve2gr.d	$a7, $xr3, 3
-	add.d	$t0, $s0, $a7
-	xvpickve2gr.d	$t1, $xr2, 0
-	add.d	$t2, $s0, $t1
-	xvpickve2gr.d	$t3, $xr2, 1
-	add.d	$t4, $s0, $t3
-	xvpickve2gr.d	$t5, $xr2, 2
-	add.d	$t6, $s0, $t5
-	xvpickve2gr.d	$t7, $xr2, 3
-	add.d	$t8, $s0, $t7
+	xvpickve2gr.d	$a1, $xr3, 1
+	xvpickve2gr.d	$a3, $xr3, 2
+	xvpickve2gr.d	$a4, $xr3, 3
+	xvpickve2gr.d	$a5, $xr2, 0
+	xvpickve2gr.d	$a6, $xr2, 1
+	xvpickve2gr.d	$a7, $xr2, 2
+	xvpickve2gr.d	$t0, $xr2, 3
+	add.d	$t1, $s0, $a0
+	add.d	$t2, $s0, $a1
+	add.d	$t3, $s0, $a3
+	add.d	$t4, $s0, $a4
+	add.d	$t5, $s0, $a5
+	add.d	$t6, $s0, $a6
+	add.d	$t7, $s0, $a7
+	add.d	$t8, $s0, $t0
 	fldx.s	$fa2, $a0, $s0
-	fldx.s	$fa3, $a3, $s0
-	fldx.s	$fa4, $a5, $s0
-	fldx.s	$fa5, $a7, $s0
-	fldx.s	$fa6, $t1, $s0
-	fldx.s	$fa7, $t3, $s0
-	fldx.s	$ft0, $t5, $s0
-	fldx.s	$ft1, $t7, $s0
+	fldx.s	$fa3, $a1, $s0
+	fldx.s	$fa4, $a3, $s0
+	fldx.s	$fa5, $a4, $s0
+	fldx.s	$fa6, $a5, $s0
+	fldx.s	$fa7, $a6, $s0
+	fldx.s	$ft0, $a7, $s0
+	fldx.s	$ft1, $t0, $s0
 	vextrins.w	$vr2, $vr3, 16
 	vextrins.w	$vr2, $vr4, 32
 	vextrins.w	$vr2, $vr5, 48
@@ -5629,13 +5623,13 @@ begin:                                  # @begin
 	vextrins.w	$vr6, $vr8, 32
 	vextrins.w	$vr6, $vr9, 48
 	xvpermi.q	$xr2, $xr6, 2
-	fld.s	$fa3, $a1, 4
-	fld.s	$fa4, $a4, 4
-	fld.s	$fa5, $a6, 4
-	fld.s	$fa6, $t0, 4
-	fld.s	$fa7, $t2, 4
-	fld.s	$ft0, $t4, 4
-	fld.s	$ft1, $t6, 4
+	fld.s	$fa3, $t1, 4
+	fld.s	$fa4, $t2, 4
+	fld.s	$fa5, $t3, 4
+	fld.s	$fa6, $t4, 4
+	fld.s	$fa7, $t5, 4
+	fld.s	$ft0, $t6, 4
+	fld.s	$ft1, $t7, 4
 	fld.s	$ft2, $t8, 4
 	vextrins.w	$vr3, $vr4, 16
 	vextrins.w	$vr3, $vr5, 32
@@ -6401,29 +6395,29 @@ Magnitude:                              # @Magnitude
 	xvslli.d	$xr2, $xr0, 3
 	xvslli.d	$xr3, $xr1, 3
 	xvpickve2gr.d	$a6, $xr3, 0
-	add.d	$a7, $a0, $a6
-	xvpickve2gr.d	$t0, $xr3, 1
-	add.d	$t1, $a0, $t0
-	xvpickve2gr.d	$t2, $xr3, 2
-	add.d	$t3, $a0, $t2
-	xvpickve2gr.d	$t4, $xr3, 3
-	add.d	$t5, $a0, $t4
-	xvpickve2gr.d	$t6, $xr2, 0
-	add.d	$t7, $a0, $t6
-	xvpickve2gr.d	$t8, $xr2, 1
-	add.d	$fp, $a0, $t8
-	xvpickve2gr.d	$s0, $xr2, 2
-	add.d	$s1, $a0, $s0
-	xvpickve2gr.d	$s2, $xr2, 3
-	add.d	$s3, $a0, $s2
+	xvpickve2gr.d	$a7, $xr3, 1
+	xvpickve2gr.d	$t0, $xr3, 2
+	xvpickve2gr.d	$t1, $xr3, 3
+	xvpickve2gr.d	$t2, $xr2, 0
+	xvpickve2gr.d	$t3, $xr2, 1
+	xvpickve2gr.d	$t4, $xr2, 2
+	xvpickve2gr.d	$t5, $xr2, 3
+	add.d	$t6, $a0, $a6
+	add.d	$t7, $a0, $a7
+	add.d	$t8, $a0, $t0
+	add.d	$fp, $a0, $t1
+	add.d	$s0, $a0, $t2
+	add.d	$s1, $a0, $t3
+	add.d	$s2, $a0, $t4
+	add.d	$s3, $a0, $t5
 	fldx.s	$fa2, $a0, $a6
-	fldx.s	$fa3, $a0, $t0
-	fldx.s	$fa4, $a0, $t2
-	fldx.s	$fa5, $a0, $t4
-	fldx.s	$fa6, $a0, $t6
-	fldx.s	$fa7, $a0, $t8
-	fldx.s	$ft0, $a0, $s0
-	fldx.s	$ft1, $a0, $s2
+	fldx.s	$fa3, $a0, $a7
+	fldx.s	$fa4, $a0, $t0
+	fldx.s	$fa5, $a0, $t1
+	fldx.s	$fa6, $a0, $t2
+	fldx.s	$fa7, $a0, $t3
+	fldx.s	$ft0, $a0, $t4
+	fldx.s	$ft1, $a0, $t5
 	vextrins.w	$vr2, $vr3, 16
 	vextrins.w	$vr2, $vr4, 32
 	vextrins.w	$vr2, $vr5, 48
@@ -6431,13 +6425,13 @@ Magnitude:                              # @Magnitude
 	vextrins.w	$vr6, $vr8, 32
 	vextrins.w	$vr6, $vr9, 48
 	xvpermi.q	$xr2, $xr6, 2
-	fld.s	$fa3, $a7, 4
-	fld.s	$fa4, $t1, 4
-	fld.s	$fa5, $t3, 4
-	fld.s	$fa6, $t5, 4
-	fld.s	$fa7, $t7, 4
-	fld.s	$ft0, $fp, 4
-	fld.s	$ft1, $s1, 4
+	fld.s	$fa3, $t6, 4
+	fld.s	$fa4, $t7, 4
+	fld.s	$fa5, $t8, 4
+	fld.s	$fa6, $fp, 4
+	fld.s	$fa7, $s0, 4
+	fld.s	$ft0, $s1, 4
+	fld.s	$ft1, $s2, 4
 	fld.s	$ft2, $s3, 4
 	vextrins.w	$vr3, $vr4, 16
 	vextrins.w	$vr3, $vr5, 32
@@ -7238,29 +7232,29 @@ Magnitude_StrictFP:                     # @Magnitude_StrictFP
 	xvslli.d	$xr2, $xr0, 3
 	xvslli.d	$xr3, $xr1, 3
 	xvpickve2gr.d	$a6, $xr3, 0
-	add.d	$a7, $a0, $a6
-	xvpickve2gr.d	$t0, $xr3, 1
-	add.d	$t1, $a0, $t0
-	xvpickve2gr.d	$t2, $xr3, 2
-	add.d	$t3, $a0, $t2
-	xvpickve2gr.d	$t4, $xr3, 3
-	add.d	$t5, $a0, $t4
-	xvpickve2gr.d	$t6, $xr2, 0
-	add.d	$t7, $a0, $t6
-	xvpickve2gr.d	$t8, $xr2, 1
-	add.d	$fp, $a0, $t8
-	xvpickve2gr.d	$s0, $xr2, 2
-	add.d	$s1, $a0, $s0
-	xvpickve2gr.d	$s2, $xr2, 3
-	add.d	$s3, $a0, $s2
+	xvpickve2gr.d	$a7, $xr3, 1
+	xvpickve2gr.d	$t0, $xr3, 2
+	xvpickve2gr.d	$t1, $xr3, 3
+	xvpickve2gr.d	$t2, $xr2, 0
+	xvpickve2gr.d	$t3, $xr2, 1
+	xvpickve2gr.d	$t4, $xr2, 2
+	xvpickve2gr.d	$t5, $xr2, 3
+	add.d	$t6, $a0, $a6
+	add.d	$t7, $a0, $a7
+	add.d	$t8, $a0, $t0
+	add.d	$fp, $a0, $t1
+	add.d	$s0, $a0, $t2
+	add.d	$s1, $a0, $t3
+	add.d	$s2, $a0, $t4
+	add.d	$s3, $a0, $t5
 	fldx.s	$fa2, $a0, $a6
-	fldx.s	$fa3, $a0, $t0
-	fldx.s	$fa4, $a0, $t2
-	fldx.s	$fa5, $a0, $t4
-	fldx.s	$fa6, $a0, $t6
-	fldx.s	$fa7, $a0, $t8
-	fldx.s	$ft0, $a0, $s0
-	fldx.s	$ft1, $a0, $s2
+	fldx.s	$fa3, $a0, $a7
+	fldx.s	$fa4, $a0, $t0
+	fldx.s	$fa5, $a0, $t1
+	fldx.s	$fa6, $a0, $t2
+	fldx.s	$fa7, $a0, $t3
+	fldx.s	$ft0, $a0, $t4
+	fldx.s	$ft1, $a0, $t5
 	vextrins.w	$vr2, $vr3, 16
 	vextrins.w	$vr2, $vr4, 32
 	vextrins.w	$vr2, $vr5, 48
@@ -7269,13 +7263,13 @@ Magnitude_StrictFP:                     # @Magnitude_StrictFP
 	vextrins.w	$vr6, $vr9, 48
 	xvpermi.q	$xr2, $xr6, 2
 	xvfmul.s	$xr2, $xr2, $xr2
-	fld.s	$fa3, $a7, 4
-	fld.s	$fa4, $t1, 4
-	fld.s	$fa5, $t3, 4
-	fld.s	$fa6, $t5, 4
-	fld.s	$fa7, $t7, 4
-	fld.s	$ft0, $fp, 4
-	fld.s	$ft1, $s1, 4
+	fld.s	$fa3, $t6, 4
+	fld.s	$fa4, $t7, 4
+	fld.s	$fa5, $t8, 4
+	fld.s	$fa6, $fp, 4
+	fld.s	$fa7, $s0, 4
+	fld.s	$ft0, $s1, 4
+	fld.s	$ft1, $s2, 4
 	fld.s	$ft2, $s3, 4
 	vextrins.w	$vr3, $vr4, 16
 	vextrins.w	$vr3, $vr5, 32

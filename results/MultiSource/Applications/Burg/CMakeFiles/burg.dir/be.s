@@ -381,7 +381,7 @@ makeRuleTable:                          # @makeRuleTable
 	ld.w	$a3, $a1, 16
 	pcalau12i	$a1, %got_pc_hi20(last_user_nonterminal)
 	ld.d	$a1, $a1, %got_pc_lo12(last_user_nonterminal)
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	move	$s0, $a1
 	ld.w	$a1, $a1, 0
 	addi.w	$a4, $a1, -1
 	pcalau12i	$a1, %pc_hi20(.L.str.16)
@@ -391,13 +391,14 @@ makeRuleTable:                          # @makeRuleTable
 	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $fp, 0
 	ld.w	$a1, $a0, 16
-	blez	$a1, .LBB2_17
+	blez	$a1, .LBB2_16
 # %bb.1:                                # %.lr.ph25.preheader
 	pcalau12i	$a1, %pc_hi20(.L.str.18)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.22)
-	addi.d	$s0, $a1, %pc_lo12(.L.str.22)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.22)
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a1, -209716
 	ori	$a1, $a1, 3277
 	lu32i.d	$a1, 0
@@ -421,10 +422,10 @@ makeRuleTable:                          # @makeRuleTable
 	ld.d	$a0, $a0, 0
 	ld.w	$a1, $a0, 16
 	addi.d	$s3, $s3, 1
-	bge	$s3, $a1, .LBB2_17
+	bge	$s3, $a1, .LBB2_16
 .LBB2_3:                                # %.lr.ph25
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_13 Depth 2
+                                        #     Child Loop BB2_12 Depth 2
 	ld.d	$a0, $a0, 24
 	slli.d	$a1, $s3, 3
 	ldx.d	$s2, $a0, $a1
@@ -446,8 +447,7 @@ makeRuleTable:                          # @makeRuleTable
 	ori	$a0, $zero, 123
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
+	ld.w	$a0, $s0, 0
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB2_2
 # %bb.6:                                #   in Loop: Header=BB2_3 Depth=1
@@ -462,45 +462,47 @@ makeRuleTable:                          # @makeRuleTable
 	ld.d	$a1, $a0, 24
 	ld.d	$a0, $s5, %pc_lo12(outfile)
 	ld.w	$a2, $a1, 8
-	move	$a1, $s0
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(fprintf)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $s0, 0
+	ori	$a1, $zero, 3
+	blt	$a0, $a1, .LBB2_2
 	b	.LBB2_9
 .LBB2_8:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a0, $s5, %pc_lo12(outfile)
-	move	$a1, $s0
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $zero
-.LBB2_9:                                #   in Loop: Header=BB2_3 Depth=1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
+	ld.w	$a0, $s0, 0
 	ori	$a1, $zero, 3
 	blt	$a0, $a1, .LBB2_2
-# %bb.10:                               # %.peel.next.preheader
+.LBB2_9:                                # %.peel.next.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	move	$s4, $zero
 	ori	$s6, $zero, 2
 	ori	$fp, $zero, 40
 	ori	$s1, $zero, 2
-	b	.LBB2_13
+	b	.LBB2_12
 	.p2align	4, , 16
-.LBB2_11:                               #   in Loop: Header=BB2_13 Depth=2
+.LBB2_10:                               #   in Loop: Header=BB2_12 Depth=2
 	ld.d	$a0, $s5, %pc_lo12(outfile)
-	move	$a1, $s0
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	move	$a2, $zero
-.LBB2_12:                               #   in Loop: Header=BB2_13 Depth=2
+.LBB2_11:                               #   in Loop: Header=BB2_12 Depth=2
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$a0, $a0, 0
-	addi.d	$s6, $s6, 1
-	addi.w	$s1, $s1, 1
+	ld.w	$a0, $s0, 0
+	addi.d	$s1, $s1, 1
+	addi.w	$s6, $s6, 1
 	addi.d	$fp, $fp, 16
 	move	$s4, $s8
-	bge	$s6, $a0, .LBB2_2
-.LBB2_13:                               # %.peel.next
+	bge	$s1, $a0, .LBB2_2
+.LBB2_12:                               # %.peel.next
                                         #   Parent Loop BB2_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$a0, $s1, 31, 0
+	bstrpick.d	$a0, $s6, 31, 0
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 35
@@ -512,8 +514,8 @@ makeRuleTable:                          # @makeRuleTable
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	addi.w	$s8, $s4, 1
-	bne	$s7, $s4, .LBB2_15
-# %bb.14:                               #   in Loop: Header=BB2_13 Depth=2
+	bne	$s7, $s4, .LBB2_14
+# %bb.13:                               #   in Loop: Header=BB2_12 Depth=2
 	ld.d	$a0, $s5, %pc_lo12(outfile)
 	addi.w	$a3, $s4, -8
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
@@ -521,11 +523,11 @@ makeRuleTable:                          # @makeRuleTable
 	move	$a4, $s8
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB2_15:                               #   in Loop: Header=BB2_13 Depth=2
+.LBB2_14:                               #   in Loop: Header=BB2_12 Depth=2
 	ld.d	$a0, $s2, 56
 	ldx.d	$a0, $a0, $fp
-	beqz	$a0, .LBB2_11
-# %bb.16:                               #   in Loop: Header=BB2_13 Depth=2
+	beqz	$a0, .LBB2_10
+# %bb.15:                               #   in Loop: Header=BB2_12 Depth=2
 	ld.b	$a1, $a0, 40
 	ori	$a1, $a1, 1
 	st.b	$a1, $a0, 40
@@ -533,9 +535,9 @@ makeRuleTable:                          # @makeRuleTable
 	ldx.d	$a1, $a0, $fp
 	ld.d	$a0, $s5, %pc_lo12(outfile)
 	ld.w	$a2, $a1, 8
-	move	$a1, $s0
-	b	.LBB2_12
-.LBB2_17:                               # %._crit_edge26
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	b	.LBB2_11
+.LBB2_16:                               # %._crit_edge26
 	ld.d	$a3, $s5, %pc_lo12(outfile)
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
@@ -682,14 +684,14 @@ doMakeTable:                            # @doMakeTable
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.w	$a0, $a0, 16
-	addi.d	$s7, $s7, 1
-	addi.w	$s6, $s6, 1
+	addi.d	$s6, $s6, 1
+	addi.w	$s7, $s7, 1
 	addi.w	$s3, $s3, 1
 	addi.d	$s8, $s8, 8
-	bge	$s7, $a0, .LBB4_20
+	bge	$s6, $a0, .LBB4_20
 .LBB4_7:                                # %.peel.next
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $s6, 31, 0
+	bstrpick.d	$a0, $s7, 31, 0
 	mul.d	$a0, $a0, $s1
 	srli.d	$a0, $a0, 35
 	ld.d	$a3, $s4, %pc_lo12(outfile)
@@ -1123,8 +1125,8 @@ makeClosureArray:                       # @makeClosureArray
                                         #   in Loop: Header=BB6_5 Depth=1
 	ori	$fp, $zero, 1
 	ori	$s2, $zero, 40
-	addi.d	$s1, $zero, -1
-	ori	$s8, $zero, 1
+	ori	$s1, $zero, 1
+	addi.d	$s8, $zero, -1
 	b	.LBB6_13
 	.p2align	4, , 16
 .LBB6_11:                               #   in Loop: Header=BB6_13 Depth=2
@@ -1135,20 +1137,20 @@ makeClosureArray:                       # @makeClosureArray
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	addi.d	$s8, $s8, 1
-	addi.d	$s1, $s1, -1
-	addi.w	$fp, $fp, 1
+	addi.d	$fp, $fp, 1
+	addi.d	$s8, $s8, -1
+	addi.w	$s1, $s1, 1
 	addi.d	$s2, $s2, 40
-	bge	$s8, $a0, .LBB6_4
+	bge	$fp, $a0, .LBB6_4
 .LBB6_13:                               # %.peel.next
                                         #   Parent Loop BB6_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$a0, $fp, 31, 0
+	bstrpick.d	$a0, $s1, 31, 0
 	mul.d	$a0, $a0, $s7
 	srli.d	$a0, $a0, 35
 	slli.d	$a1, $a0, 3
 	alsl.d	$a0, $a0, $a1, 1
-	add.w	$a0, $s1, $a0
+	add.w	$a0, $s8, $a0
 	bnez	$a0, .LBB6_15
 # %bb.14:                               #   in Loop: Header=BB6_13 Depth=2
 	ld.d	$a3, $s3, %pc_lo12(outfile)
@@ -4309,14 +4311,14 @@ makeIndex_Map:                          # @makeIndex_Map
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s3, 0
 	ld.w	$a0, $a0, 16
-	addi.d	$s5, $s5, 1
-	addi.w	$s8, $s8, 1
+	addi.d	$s8, $s8, 1
+	addi.w	$s5, $s5, 1
 	addi.w	$s2, $s2, 1
 	addi.d	$s6, $s6, 8
-	bge	$s5, $a0, .LBB32_6
+	bge	$s8, $a0, .LBB32_6
 .LBB32_4:                               # %.peel.next
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $s8, 31, 0
+	bstrpick.d	$a0, $s5, 31, 0
 	mul.d	$a0, $a0, $s7
 	srli.d	$a0, $a0, 35
 	ld.d	$a1, $s4, %pc_lo12(outfile)

@@ -7,8 +7,8 @@ main:                                   # @main
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(f)
 	ld.w	$a1, $a0, %pc_lo12(f)
-	beqz	$a1, .LBB0_4
-# %bb.1:                                # %.lr.ph.preheader
+	beqz	$a1, .LBB0_6
+# %bb.1:
 	pcalau12i	$a2, %pc_hi20(.L__const.main.m)
 	addi.d	$a4, $a2, %pc_lo12(.L__const.main.m)
 	ld.b	$a2, $a4, 8
@@ -24,10 +24,24 @@ main:                                   # @main
 	slli.d	$a5, $a1, 31
 	st.d	$a4, $a3, 0
 	bgez	$a5, .LBB0_2
-# %bb.3:                                # %.thread
+# %bb.3:                                # %._crit_edge
 	st.w	$zero, $a0, %pc_lo12(f)
-	b	.LBB0_5
+	ori	$a0, $zero, 9
+	ori	$a1, $zero, 81
+	sub.d	$a1, $zero, $a1
+	beq	$a0, $a1, .LBB0_5
 .LBB0_4:
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	ori	$a0, $zero, 49
+	pcaddu18i	$ra, %call36(putchar)
+	jirl	$ra, $ra, 0
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
+.LBB0_5:
+	move	$a0, $zero
+	ret
+.LBB0_6:                                # %._crit_edge3
 	pcalau12i	$a0, %pc_hi20(h)
 	ld.d	$a0, $a0, %pc_lo12(h)
 	srli.d	$a1, $a0, 50
@@ -36,18 +50,8 @@ main:                                   # @main
 	bstrins.d	$a0, $a1, 63, 7
 	mul.d	$a1, $a0, $a0
 	sub.d	$a1, $zero, $a1
-	beq	$a0, $a1, .LBB0_6
-.LBB0_5:
-	addi.d	$sp, $sp, -16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	ori	$a0, $zero, 49
-	pcaddu18i	$ra, %call36(putchar)
-	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-.LBB0_6:
-	move	$a0, $zero
-	ret
+	bne	$a0, $a1, .LBB0_4
+	b	.LBB0_5
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main
                                         # -- End function

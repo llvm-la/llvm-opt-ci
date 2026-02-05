@@ -471,7 +471,7 @@ main:                                   # @main
 	move	$s3, $zero
 	b	.LBB7_32
 	.p2align	4, , 16
-.LBB7_29:                               # %vector.body125.preheader
+.LBB7_29:                               # %vector.ph124
                                         #   in Loop: Header=BB7_27 Depth=2
 	fld.d	$fa3, $t7, 0
 	fmul.d	$fa3, $fa3, $fa2
@@ -591,7 +591,7 @@ main:                                   # @main
 	move	$s3, $zero
 	b	.LBB7_45
 	.p2align	4, , 16
-.LBB7_42:                               # %vector.body157.preheader
+.LBB7_42:                               # %vector.ph156
                                         #   in Loop: Header=BB7_40 Depth=2
 	fld.d	$fa3, $t7, 0
 	fmul.d	$fa3, $fa3, $fa2

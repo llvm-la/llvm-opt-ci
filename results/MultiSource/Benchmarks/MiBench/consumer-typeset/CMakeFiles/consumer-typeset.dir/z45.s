@@ -407,7 +407,7 @@ SortFile:                               # @SortFile
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s0, $a0
 	bnez	$a0, .LBB5_2
 # %bb.1:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -427,7 +427,7 @@ SortFile:                               # @SortFile
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$fp, $a0
 	bnez	$a0, .LBB5_4
 # %bb.3:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -443,7 +443,7 @@ SortFile:                               # @SortFile
 	jirl	$ra, $ra, 0
 .LBB5_4:
 	addi.d	$a3, $sp, 4
-	move	$a0, $fp
+	move	$a0, $s0
 	move	$a1, $s1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(ReadLines)
@@ -466,7 +466,7 @@ SortFile:                               # @SortFile
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	blez	$s1, .LBB5_6
@@ -474,18 +474,18 @@ SortFile:                               # @SortFile
 .LBB5_5:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 0
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 10
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	addi.d	$s1, $s1, -1
 	addi.d	$s2, $s2, 8
 	bnez	$s1, .LBB5_5
 .LBB5_6:                                # %WriteLines.exit
-	move	$a0, $s0
+	move	$a0, $fp
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

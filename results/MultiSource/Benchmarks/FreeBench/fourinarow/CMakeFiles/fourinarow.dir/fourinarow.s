@@ -1589,17 +1589,16 @@ value:                                  # @value
 	ld.d	$t4, $a0, %pc_lo12(C2HORIZ)
 	pcalau12i	$a0, %pc_hi20(C2UP_R)
 	pcalau12i	$a1, %pc_hi20(off)
-	ld.w	$a1, $a1, %pc_lo12(off)
-	ld.d	$t5, $a0, %pc_lo12(C2UP_R)
+	fld.s	$fa0, $a1, %pc_lo12(off)
+	ld.d	$a1, $a0, %pc_lo12(C2UP_R)
 	pcalau12i	$a0, %pc_hi20(C2UP_L)
-	ld.d	$t6, $a0, %pc_lo12(C2UP_L)
-	movgr2fr.w	$fa0, $a1
+	ld.d	$t5, $a0, %pc_lo12(C2UP_L)
 	ffint.s.w	$fa0, $fa0
 	vldi	$vr1, -1244
 	fdiv.s	$fa0, $fa0, $fa1
-	slli.d	$a0, $t6, 12
+	slli.d	$a0, $t5, 12
 	st.d	$a0, $sp, 1728                  # 8-byte Folded Spill
-	slli.d	$a0, $t6, 15
+	slli.d	$a0, $t5, 15
 	st.d	$a0, $sp, 1720                  # 8-byte Folded Spill
 	slli.d	$a0, $a3, 1
 	st.d	$a0, $sp, 1712                  # 8-byte Folded Spill
@@ -1999,47 +1998,47 @@ value:                                  # @value
 	st.d	$t4, $sp, 1592                  # 8-byte Folded Spill
 	slli.d	$a0, $t4, 35
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 1
+	slli.d	$a0, $a1, 1
 	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 2
+	slli.d	$a0, $a1, 2
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 3
+	slli.d	$a0, $a1, 3
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 6
+	slli.d	$a0, $a1, 6
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 7
+	slli.d	$a0, $a1, 7
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 8
+	slli.d	$a0, $a1, 8
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 9
+	slli.d	$a0, $a1, 9
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 12
+	slli.d	$a0, $a1, 12
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 13
+	slli.d	$a0, $a1, 13
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	slli.d	$a0, $t5, 14
+	slli.d	$a0, $a1, 14
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	st.d	$t5, $sp, 1744                  # 8-byte Folded Spill
-	slli.d	$a0, $t5, 15
+	st.d	$a1, $sp, 1744                  # 8-byte Folded Spill
+	slli.d	$a0, $a1, 15
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 1
+	slli.d	$a0, $t5, 1
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 2
+	slli.d	$a0, $t5, 2
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 3
+	slli.d	$a0, $t5, 3
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 6
+	slli.d	$a0, $t5, 6
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 7
+	slli.d	$a0, $t5, 7
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 8
+	slli.d	$a0, $t5, 8
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 9
+	slli.d	$a0, $t5, 9
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	slli.d	$a0, $t6, 13
+	slli.d	$a0, $t5, 13
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$t6, $sp, 1736                  # 8-byte Folded Spill
-	slli.d	$a0, $t6, 14
+	st.d	$t5, $sp, 1736                  # 8-byte Folded Spill
+	slli.d	$a0, $t5, 14
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	.p2align	4, , 16

@@ -416,20 +416,19 @@ TreeCCStreamDestroy:                    # @TreeCCStreamDestroy
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 32
-	addi.d	$s0, $fp, 32
 	beqz	$a0, .LBB4_2
 	.p2align	4, , 16
 .LBB4_1:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ldptr.d	$s1, $a0, 2048
+	ldptr.d	$s0, $a0, 2048
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s1
-	bnez	$s1, .LBB4_1
+	move	$a0, $s0
+	bnez	$s0, .LBB4_1
 .LBB4_2:                                # %TreeCCStreamClear.exit
 	ld.bu	$a0, $fp, 52
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 0
+	vst	$vr0, $fp, 32
 	andi	$a0, $a0, 239
 	st.b	$a0, $fp, 52
 	ld.d	$s0, $fp, 56
@@ -482,30 +481,27 @@ TreeCCStreamClear:                      # @TreeCCStreamClear
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 32
-	addi.d	$s0, $fp, 32
 	beqz	$a0, .LBB5_2
 	.p2align	4, , 16
 .LBB5_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ldptr.d	$s1, $a0, 2048
+	ldptr.d	$s0, $a0, 2048
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s1
-	bnez	$s1, .LBB5_1
+	move	$a0, $s0
+	bnez	$s0, .LBB5_1
 .LBB5_2:                                # %._crit_edge
 	ld.bu	$a0, $fp, 52
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 0
+	vst	$vr0, $fp, 32
 	andi	$a0, $a0, 239
 	st.b	$a0, $fp, 52
 	ori	$a0, $zero, 2048
 	st.w	$a0, $fp, 48
 	ori	$a0, $zero, 1
 	st.d	$a0, $fp, 24
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

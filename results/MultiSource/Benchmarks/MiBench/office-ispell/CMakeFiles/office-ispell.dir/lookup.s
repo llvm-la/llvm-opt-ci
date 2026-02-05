@@ -131,7 +131,7 @@ linit:                                  # @linit
 	st.w	$s7, $s6, 0
 	pcalau12i	$a1, %got_pc_hi20(numpflags)
 	ld.d	$a1, $a1, %got_pc_lo12(numpflags)
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	st.w	$a0, $a1, 0
 	add.w	$a0, $a0, $s7
 	slli.d	$a0, $a0, 8
@@ -139,7 +139,7 @@ linit:                                  # @linit
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(sflaglist)
 	ld.d	$a1, $a1, %got_pc_lo12(sflaglist)
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a1, 0
 	beqz	$a0, .LBB0_86
 # %bb.14:
@@ -151,7 +151,7 @@ linit:                                  # @linit
 	add.d	$a0, $a0, $a1
 	pcalau12i	$a1, %got_pc_hi20(pflaglist)
 	ld.d	$a1, $a1, %got_pc_lo12(pflaglist)
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a1, 0
 	beqz	$s5, .LBB0_19
 # %bb.17:
@@ -197,9 +197,9 @@ linit:                                  # @linit
 	bne	$a0, $a1, .LBB0_85
 .LBB0_21:
 	ld.w	$a0, $s6, 0
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a2, $s1, 0
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	add.d	$a0, $a2, $a0
 	bstrpick.d	$a0, $a0, 31, 0
@@ -260,14 +260,14 @@ linit:                                  # @linit
 	bltu	$a4, $a2, .LBB0_27
 .LBB0_28:                               # %.loopexit180
 	ld.w	$s1, $s6, 0
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	ld.w	$s3, $s8, 0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$s8, $a0, 0
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s0, $a0, 0
-	add.w	$a0, $s3, $s1
+	add.w	$a0, $s8, $s1
 	blez	$a0, .LBB0_35
 # %bb.29:                               # %.lr.ph184.preheader
-	add.d	$a0, $s1, $s3
+	add.d	$a0, $s1, $s8
 	addi.d	$a0, $a0, 1
 	ori	$a1, $zero, 1
 	move	$a2, $s0
@@ -390,7 +390,7 @@ linit:                                  # @linit
 # %bb.52:                               #   in Loop: Header=BB0_40 Depth=1
 	ld.w	$a0, $fp, 36
 	ld.w	$s1, $s6, 0
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $a1, 0
 	addi.d	$a0, $a0, 128
 	bstrpick.d	$a0, $a0, 31, 0
@@ -415,13 +415,13 @@ linit:                                  # @linit
 	bnez	$a0, .LBB0_50
 	b	.LBB0_37
 .LBB0_56:                               # %._crit_edge.loopexit
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	ld.w	$s3, $s8, 0
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$s8, $a0, 0
 .LBB0_57:                               # %._crit_edge
-	blez	$s3, .LBB0_76
+	blez	$s8, .LBB0_76
 # %bb.58:                               # %.lr.ph209.preheader
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $a0, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s3, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(pflagindex)
 	ld.d	$s0, $a0, %got_pc_lo12(pflagindex)
 	ori	$s1, $zero, 1
@@ -429,23 +429,23 @@ linit:                                  # @linit
 	.p2align	4, , 16
 .LBB0_59:                               # %.thread239
                                         #   in Loop: Header=BB0_62 Depth=1
-	st.d	$s6, $s5, 0
+	st.d	$s3, $s5, 0
 	ori	$a0, $zero, 1
 .LBB0_60:                               # %.sink.split241
                                         #   in Loop: Header=BB0_62 Depth=1
 	st.w	$a0, $s5, 8
 .LBB0_61:                               #   in Loop: Header=BB0_62 Depth=1
-	move	$a0, $s3
-	addi.w	$s3, $s3, -1
-	addi.d	$s6, $s6, 256
+	move	$a0, $s8
+	addi.w	$s8, $s8, -1
+	addi.d	$s3, $s3, 256
 	bge	$s1, $a0, .LBB0_76
 .LBB0_62:                               # %.lr.ph209
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_66 Depth 2
-	ld.hu	$a0, $s6, 20
+	ld.hu	$a0, $s3, 20
 	beqz	$a0, .LBB0_69
 # %bb.63:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.d	$a1, $s6, 8
+	ld.d	$a1, $s3, 8
 	ld.bu	$a0, $a1, 0
 	alsl.d	$s5, $a0, $s0, 4
 	ld.w	$a2, $s5, 8
@@ -495,15 +495,16 @@ linit:                                  # @linit
 	bnez	$a0, .LBB0_61
 # %bb.72:                               #   in Loop: Header=BB0_62 Depth=1
 	ld.d	$s4, $s5, 0
-	ld.d	$a0, $s6, 8
+	ld.d	$a0, $s3, 8
 	ld.d	$a1, $s4, 8
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_61
 # %bb.73:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.w	$s3, $s8, 0
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$s6, $a0, 0
 	ld.w	$a0, $fp, 36
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s7, $a1, 0
 	addi.w	$a0, $a0, 128
 	ori	$a1, $zero, 16
@@ -513,10 +514,10 @@ linit:                                  # @linit
 	beqz	$a0, .LBB0_99
 # %bb.74:                               #   in Loop: Header=BB0_62 Depth=1
 	move	$a0, $zero
-	addi.d	$s6, $s4, -256
-	sub.d	$a1, $s6, $s7
+	addi.d	$s3, $s4, -256
+	sub.d	$a1, $s3, $s7
 	srli.d	$a1, $a1, 8
-	sub.w	$s3, $s3, $a1
+	sub.w	$s8, $s6, $a1
 	b	.LBB0_60
 .LBB0_75:                               #   in Loop: Header=BB0_62 Depth=1
 	move	$a1, $zero
@@ -630,16 +631,16 @@ linit:                                  # @linit
 # %bb.89:                               # %vector.ph
 	bstrpick.d	$a2, $a1, 30, 2
 	slli.d	$a4, $a2, 2
+	ld.d	$a6, $a0, 0
+	ld.d	$a7, $s2, 0
 	slli.d	$a3, $a2, 5
 	slli.d	$a2, $a2, 6
 	add.d	$a2, $a2, $a3
 	add.d	$a2, $a5, $a2
-	ld.d	$a6, $s2, 0
-	ld.d	$a7, $a0, 0
 	sub.d	$a3, $a1, $a4
 	addi.d	$a5, $a5, 48
-	xvreplgr2vr.d	$xr0, $a6
-	xvreplgr2vr.d	$xr1, $a7
+	xvreplgr2vr.d	$xr0, $a7
+	xvreplgr2vr.d	$xr1, $a6
 	xvrepli.d	$xr2, 24
 	move	$a6, $a4
 	.p2align	4, , 16
@@ -677,18 +678,18 @@ linit:                                  # @linit
 	xvmadd.d	$xr6, $xr4, $xr2
 	xvseqi.d	$xr4, $xr5, -1
 	xvandn.v	$xr4, $xr4, $xr6
+	xvpickve2gr.d	$t2, $xr4, 1
+	xvpickve2gr.d	$t3, $xr4, 2
+	xvpickve2gr.d	$t4, $xr4, 3
 	vpackev.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, -48
-	xvpickve2gr.d	$t2, $xr4, 1
 	vinsgr2vr.d	$vr3, $t2, 0
 	vinsgr2vr.d	$vr3, $a7, 1
 	vst	$vr3, $a5, -24
-	xvpickve2gr.d	$a7, $xr4, 2
-	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t3, 0
 	vinsgr2vr.d	$vr3, $t0, 1
 	vst	$vr3, $a5, 0
-	xvpickve2gr.d	$a7, $xr4, 3
-	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t4, 0
 	vinsgr2vr.d	$vr3, $t1, 1
 	vst	$vr3, $a5, 24
 	addi.d	$a6, $a6, -4

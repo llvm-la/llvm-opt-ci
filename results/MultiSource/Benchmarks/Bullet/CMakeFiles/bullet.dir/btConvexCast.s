@@ -15,7 +15,7 @@ _ZN12btConvexCastD2Ev:                  # @_ZN12btConvexCastD2Ev
 	.type	_ZN12btConvexCastD0Ev,@function
 _ZN12btConvexCastD0Ev:                  # @_ZN12btConvexCastD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end1:
 	.size	_ZN12btConvexCastD0Ev, .Lfunc_end1-_ZN12btConvexCastD0Ev
                                         # -- End function

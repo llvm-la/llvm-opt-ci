@@ -1871,7 +1871,7 @@ TreeCCGenerateJava:                     # @TreeCCGenerateJava
 	jirl	$ra, $ra, 0
 	ldptr.d	$fp, $fp, 8200
 	beqz	$fp, .LBB14_23
-# %bb.17:                               # %.lr.ph.i14.preheader
+# %bb.17:                               # %.lr.ph.i13.preheader
 	ori	$s0, $zero, 8
 	b	.LBB14_20
 	.p2align	4, , 16
@@ -1882,7 +1882,7 @@ TreeCCGenerateJava:                     # @TreeCCGenerateJava
 .LBB14_19:                              #   in Loop: Header=BB14_20 Depth=1
 	ld.d	$fp, $fp, 72
 	beqz	$fp, .LBB14_23
-.LBB14_20:                              # %.lr.ph.i14
+.LBB14_20:                              # %.lr.ph.i13
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a0, $fp, 52
 	andi	$a1, $a0, 24

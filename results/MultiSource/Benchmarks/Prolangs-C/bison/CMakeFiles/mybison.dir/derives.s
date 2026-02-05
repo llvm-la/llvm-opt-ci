@@ -75,48 +75,46 @@ set_derives:                            # @set_derives
 	pcalau12i	$a2, %got_pc_hi20(nsyms)
 	ld.d	$a2, $a2, %got_pc_lo12(nsyms)
 	ld.w	$a2, $a2, 0
-	bge	$a1, $a2, .LBB0_9
+	bge	$a1, $a2, .LBB0_8
 # %bb.4:                                # %.lr.ph47
 	ld.d	$a3, $s3, %pc_lo12(derives)
 	lu12i.w	$a4, 15
 	ori	$a4, $a4, 4095
 	move	$a5, $a1
-	b	.LBB0_7
+	b	.LBB0_6
 	.p2align	4, , 16
-.LBB0_5:                                #   in Loop: Header=BB0_7 Depth=1
-	move	$a7, $a0
-.LBB0_6:                                # %._crit_edge43
-                                        #   in Loop: Header=BB0_7 Depth=1
-	addi.d	$a0, $a7, 2
+.LBB0_5:                                # %._crit_edge43
+                                        #   in Loop: Header=BB0_6 Depth=1
+	addi.d	$a6, $a0, 2
 	addi.d	$a5, $a5, 1
-	st.h	$a4, $a7, 0
-	beq	$a5, $a2, .LBB0_10
-.LBB0_7:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_8 Depth 2
+	st.h	$a4, $a0, 0
+	move	$a0, $a6
+	beq	$a5, $a2, .LBB0_9
+.LBB0_6:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_7 Depth 2
 	slli.d	$a7, $a5, 3
 	ldx.d	$a6, $s1, $a7
 	stx.d	$a0, $a3, $a7
 	beqz	$a6, .LBB0_5
 	.p2align	4, , 16
-.LBB0_8:                                # %.lr.ph42
-                                        #   Parent Loop BB0_7 Depth=1
+.LBB0_7:                                # %.lr.ph42
+                                        #   Parent Loop BB0_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.h	$t0, $a6, 8
+	ld.h	$a7, $a6, 8
 	ld.d	$a6, $a6, 0
-	addi.d	$a7, $a0, 2
-	st.h	$t0, $a0, 0
-	move	$a0, $a7
-	bnez	$a6, .LBB0_8
-	b	.LBB0_6
-.LBB0_9:                                # %._crit_edge48
-	beqz	$s0, .LBB0_11
-.LBB0_10:                               # %._crit_edge48.thread
+	st.h	$a7, $a0, 0
+	addi.d	$a0, $a0, 2
+	bnez	$a6, .LBB0_7
+	b	.LBB0_5
+.LBB0_8:                                # %._crit_edge48
+	beqz	$s0, .LBB0_10
+.LBB0_9:                                # %._crit_edge48.thread
 	alsl.d	$a0, $a1, $s1, 3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB0_11:
-	beqz	$fp, .LBB0_13
-# %bb.12:
+.LBB0_10:
+	beqz	$fp, .LBB0_12
+# %bb.11:
 	move	$a0, $fp
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -128,7 +126,7 @@ set_derives:                            # @set_derives
 	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
-.LBB0_13:
+.LBB0_12:
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

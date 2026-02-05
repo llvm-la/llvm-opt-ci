@@ -24,19 +24,18 @@ list_Copy:                              # @list_Copy
 	beqz	$fp, .LBB0_5
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s0, $a0
-	move	$s1, $a0
 	.p2align	4, , 16
 .LBB0_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s2, $fp, 8
+	ld.d	$s1, $fp, 8
+	move	$s2, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $a0, 8
+	st.d	$s1, $a0, 8
 	st.d	$zero, $a0, 0
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s2, 0
 	ld.d	$fp, $fp, 0
-	move	$s1, $a0
 	bnez	$fp, .LBB0_3
 # %bb.4:
 	move	$a0, $s0
@@ -83,11 +82,12 @@ list_CopyWithElement:                   # @list_CopyWithElement
 	beqz	$s1, .LBB1_5
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s2, $a0
-	move	$s3, $a0
 	.p2align	4, , 16
 .LBB1_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 8
+	ld.d	$a1, $s1, 8
+	move	$s3, $a0
+	move	$a0, $a1
 	jirl	$ra, $fp, 0
 	move	$s0, $a0
 	ori	$a0, $zero, 16
@@ -97,7 +97,6 @@ list_CopyWithElement:                   # @list_CopyWithElement
 	st.d	$zero, $a0, 0
 	st.d	$a0, $s3, 0
 	ld.d	$s1, $s1, 0
-	move	$s3, $a0
 	bnez	$s1, .LBB1_3
 # %bb.4:
 	move	$a0, $s2
@@ -218,18 +217,18 @@ list_Reverse:                           # @list_Reverse
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
-	move	$s0, $zero
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB5_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s1, $fp, 8
+	ld.d	$s0, $fp, 8
+	move	$s1, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $a0, 8
-	st.d	$s0, $a0, 0
+	st.d	$s0, $a0, 8
+	st.d	$s1, $a0, 0
 	ld.d	$fp, $fp, 0
-	move	$s0, $a0
 	bnez	$fp, .LBB5_2
 # %bb.3:
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
@@ -2544,21 +2543,21 @@ list_NListTimes:                        # @list_NListTimes
 	beqz	$s2, .LBB40_11
 # %bb.9:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB40_7 Depth=2
-	move	$s7, $s1
+	move	$a0, $s1
 	.p2align	4, , 16
 .LBB40_10:                              # %.lr.ph.i
                                         #   Parent Loop BB40_4 Depth=1
                                         #     Parent Loop BB40_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$s8, $s2, 8
+	ld.d	$s7, $s2, 8
+	move	$s8, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s8, $a0, 8
+	st.d	$s7, $a0, 8
 	st.d	$zero, $a0, 0
-	st.d	$a0, $s7, 0
+	st.d	$a0, $s8, 0
 	ld.d	$s2, $s2, 0
-	move	$s7, $a0
 	bnez	$s2, .LBB40_10
 .LBB40_11:                              # %list_Copy.exit
                                         #   in Loop: Header=BB40_7 Depth=2
@@ -2582,21 +2581,21 @@ list_NListTimes:                        # @list_NListTimes
 	beqz	$s6, .LBB40_17
 # %bb.15:                               # %.lr.ph.i20.i.preheader
                                         #   in Loop: Header=BB40_7 Depth=2
-	move	$s7, $s2
+	move	$a0, $s2
 	.p2align	4, , 16
 .LBB40_16:                              # %.lr.ph.i20.i
                                         #   Parent Loop BB40_4 Depth=1
                                         #     Parent Loop BB40_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$s8, $s6, 8
+	ld.d	$s7, $s6, 8
+	move	$s8, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s8, $a0, 8
+	st.d	$s7, $a0, 8
 	st.d	$zero, $a0, 0
-	st.d	$a0, $s7, 0
+	st.d	$a0, $s8, 0
 	ld.d	$s6, $s6, 0
-	move	$s7, $a0
 	bnez	$s6, .LBB40_16
 .LBB40_17:                              # %list_Copy.exit27.i.preheader
                                         #   in Loop: Header=BB40_7 Depth=2
@@ -2617,21 +2616,21 @@ list_NListTimes:                        # @list_NListTimes
 	beqz	$s6, .LBB40_6
 # %bb.21:                               # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB40_7 Depth=2
-	move	$s1, $s2
+	move	$a0, $s2
 	.p2align	4, , 16
 .LBB40_22:                              # %.lr.ph.i.i
                                         #   Parent Loop BB40_4 Depth=1
                                         #     Parent Loop BB40_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$s7, $s6, 8
+	ld.d	$s1, $s6, 8
+	move	$s7, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $a0, 8
+	st.d	$s1, $a0, 8
 	st.d	$zero, $a0, 0
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s7, 0
 	ld.d	$s6, $s6, 0
-	move	$s1, $a0
 	bnez	$s6, .LBB40_22
 	b	.LBB40_6
 .LBB40_23:                              # %.loopexit

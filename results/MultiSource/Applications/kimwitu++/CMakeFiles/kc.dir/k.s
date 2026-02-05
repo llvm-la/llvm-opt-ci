@@ -23146,16 +23146,15 @@ _ZN2kc11IncludeFileEPNS_20impl_casestring__StrE: # @_ZN2kc11IncludeFileEPNS_20im
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc17impl_includefilesE+16)
 	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc17impl_includefilesE+16)
 	st.d	$s3, $s0, 0
-	addi.d	$a0, $s0, 8
 	beqz	$s2, .LBB799_9
 # %bb.8:
-	st.d	$fp, $a0, 0
+	st.d	$fp, $s0, 8
 	move	$a0, $s0
 	move	$s0, $s2
 	b	.LBB799_10
 .LBB799_9:
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $a0, 0
+	vst	$vr0, $s0, 8
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -24894,16 +24893,15 @@ _ZN2kc6FnFileEPNS_20impl_casestring__StrE: # @_ZN2kc6FnFileEPNS_20impl_casestrin
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc12impl_fnfilesE+16)
 	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc12impl_fnfilesE+16)
 	st.d	$s3, $s0, 0
-	addi.d	$a0, $s0, 8
 	beqz	$s2, .LBB844_9
 # %bb.8:
-	st.d	$fp, $a0, 0
+	st.d	$fp, $s0, 8
 	move	$a0, $s0
 	move	$s0, $s2
 	b	.LBB844_10
 .LBB844_9:
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $a0, 0
+	vst	$vr0, $s0, 8
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -32580,16 +32578,15 @@ _ZN2kc22AddedPhylumdeclarationEPNS_11impl_uniqIDE: # @_ZN2kc22AddedPhylumdeclara
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc28impl_addedphylumdeclarationsE+16)
 	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc28impl_addedphylumdeclarationsE+16)
 	st.d	$s3, $s0, 0
-	addi.d	$a0, $s0, 8
 	beqz	$s2, .LBB1068_2
 # %bb.1:
-	st.d	$fp, $a0, 0
+	st.d	$fp, $s0, 8
 	move	$a0, $s0
 	move	$s0, $s2
 	b	.LBB1068_3
 .LBB1068_2:
 	vrepli.b	$vr0, 0
-	vst	$vr0, $a0, 0
+	vst	$vr0, $s0, 8
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -32759,16 +32756,15 @@ _ZN2kc24CountedPhylumdeclarationEPNS_11impl_uniqIDE: # @_ZN2kc24CountedPhylumdec
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc30impl_countedphylumdeclarationsE+16)
 	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc30impl_countedphylumdeclarationsE+16)
 	st.d	$s3, $s0, 0
-	addi.d	$a0, $s0, 8
 	beqz	$s2, .LBB1071_9
 # %bb.8:
-	st.d	$fp, $a0, 0
+	st.d	$fp, $s0, 8
 	move	$a0, $s0
 	move	$s0, $s2
 	b	.LBB1071_10
 .LBB1071_9:
 	vrepli.b	$vr0, 0
-	vst	$vr0, $a0, 0
+	vst	$vr0, $s0, 8
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -38609,54 +38605,49 @@ _ZNK2kc23impl_phylumdeclarations7reverseEv: # @_ZNK2kc23impl_phylumdeclarations7
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc23impl_phylumdeclarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc23impl_phylumdeclarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc23impl_phylumdeclarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1097_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1097_2
-	.p2align	4, , 16
-.LBB1097_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1097_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1097_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1097_1
-	b	.LBB1097_3
-.LBB1097_2:
-	move	$s1, $s0
+	b	.LBB1097_1
 .LBB1097_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc23impl_phylumdeclarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc23impl_phylumdeclarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -39033,54 +39024,49 @@ _ZNK2kc16impl_phylumnames7reverseEv:    # @_ZNK2kc16impl_phylumnames7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc16impl_phylumnamesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc16impl_phylumnamesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc16impl_phylumnamesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1106_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1106_2
-	.p2align	4, , 16
-.LBB1106_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1106_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1106_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1106_1
-	b	.LBB1106_3
-.LBB1106_2:
-	move	$s1, $s0
+	b	.LBB1106_1
 .LBB1106_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc16impl_phylumnamesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc16impl_phylumnamesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -39459,8 +39445,8 @@ _ZNK2kc19impl_storageclasses7reverseEv: # @_ZNK2kc19impl_storageclasses7reverseE
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc19impl_storageclassesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc19impl_storageclassesE+16)
-	st.d	$s3, $s0, 0
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc19impl_storageclassesE+16)
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $s0, 16
@@ -39468,9 +39454,9 @@ _ZNK2kc19impl_storageclasses7reverseEv: # @_ZNK2kc19impl_storageclasses7reverseE
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(_ZTVN2kc16impl_phylumnamesE+16)
-	addi.d	$s4, $a1, %pc_lo12(_ZTVN2kc16impl_phylumnamesE+16)
+	addi.d	$s3, $a1, %pc_lo12(_ZTVN2kc16impl_phylumnamesE+16)
 	ld.d	$a1, $fp, 0
-	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 8
 	st.d	$a0, $s0, 8
@@ -39484,25 +39470,26 @@ _ZNK2kc19impl_storageclasses7reverseEv: # @_ZNK2kc19impl_storageclasses7reverseE
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s4, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
-	st.d	$s2, $a0, 16
-	st.d	$s0, $a0, 24
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
+	st.d	$s1, $a0, 16
+	st.d	$s4, $a0, 24
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 8
 	ld.d	$a1, $fp, 0
-	st.d	$a0, $s1, 8
+	st.d	$a0, $s0, 8
 	ld.d	$a2, $a1, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
@@ -39513,17 +39500,13 @@ _ZNK2kc19impl_storageclasses7reverseEv: # @_ZNK2kc19impl_storageclasses7reverseE
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s0, $s1
 	bnez	$a0, .LBB1115_1
-	b	.LBB1115_3
-.LBB1115_2:
-	move	$s1, $s0
-.LBB1115_3:                             # %.loopexit
+.LBB1115_2:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc19impl_storageclassesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc19impl_storageclassesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
@@ -39911,54 +39894,49 @@ _ZNK2kc17impl_alternatives7reverseEv:   # @_ZNK2kc17impl_alternatives7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc17impl_alternativesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc17impl_alternativesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc17impl_alternativesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1124_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1124_2
-	.p2align	4, , 16
-.LBB1124_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1124_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1124_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1124_1
-	b	.LBB1124_3
-.LBB1124_2:
-	move	$s1, $s0
+	b	.LBB1124_1
 .LBB1124_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc17impl_alternativesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc17impl_alternativesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -40335,54 +40313,49 @@ _ZNK2kc14impl_arguments7reverseEv:      # @_ZNK2kc14impl_arguments7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc14impl_argumentsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc14impl_argumentsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc14impl_argumentsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 16
+	.p2align	4, , 16
+.LBB1133_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1133_2
-	.p2align	4, , 16
-.LBB1133_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1133_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1133_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 16
-	st.d	$s0, $s1, 24
+	st.d	$s1, $s0, 16
+	st.d	$s3, $s0, 24
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1133_1
-	b	.LBB1133_3
-.LBB1133_2:
-	move	$s1, $s0
+	b	.LBB1133_1
 .LBB1133_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc14impl_argumentsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc14impl_argumentsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -40759,54 +40732,49 @@ _ZNK2kc15impl_attributes7reverseEv:     # @_ZNK2kc15impl_attributes7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc15impl_attributesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc15impl_attributesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc15impl_attributesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1142_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1142_2
-	.p2align	4, , 16
-.LBB1142_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1142_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1142_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1142_1
-	b	.LBB1142_3
-.LBB1142_2:
-	move	$s1, $s0
+	b	.LBB1142_1
 .LBB1142_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc15impl_attributesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc15impl_attributesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -41187,8 +41155,8 @@ _ZNK2kc16impl_Cexpression7reverseEv:    # @_ZNK2kc16impl_Cexpression7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc16impl_CexpressionE+16)
-	addi.d	$s5, $a0, %pc_lo12(_ZTVN2kc16impl_CexpressionE+16)
-	st.d	$s5, $s0, 0
+	addi.d	$s4, $a0, %pc_lo12(_ZTVN2kc16impl_CexpressionE+16)
+	st.d	$s4, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 24
 	st.w	$zero, $s0, 8
@@ -41213,24 +41181,25 @@ _ZNK2kc16impl_Cexpression7reverseEv:    # @_ZNK2kc16impl_Cexpression7reverseEv
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s5, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	st.d	$s5, $a0, 0
-	st.d	$s4, $a0, 24
-	st.d	$s0, $a0, 32
+	move	$s0, $a0
+	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 24
+	st.d	$s5, $a0, 32
 	st.w	$zero, $a0, 8
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
-	st.d	$a0, $s3, 16
+	st.d	$a0, $s0, 16
 	ld.d	$a2, $a1, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
@@ -41241,17 +41210,13 @@ _ZNK2kc16impl_Cexpression7reverseEv:    # @_ZNK2kc16impl_Cexpression7reverseEv
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s0, $s3
 	bnez	$a0, .LBB1151_2
-	b	.LBB1151_4
-.LBB1151_3:
-	move	$s3, $s0
-.LBB1151_4:                             # %.loopexit
+.LBB1151_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc16impl_CexpressionE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc16impl_CexpressionE)
-	move	$a0, $s3
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -41637,54 +41602,49 @@ _ZNK2kc18impl_CexpressionDQ7reverseEv:  # @_ZNK2kc18impl_CexpressionDQ7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc18impl_CexpressionDQE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc18impl_CexpressionDQE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc18impl_CexpressionDQE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1160_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1160_2
-	.p2align	4, , 16
-.LBB1160_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1160_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1160_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1160_1
-	b	.LBB1160_3
-.LBB1160_2:
-	move	$s1, $s0
+	b	.LBB1160_1
 .LBB1160_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc18impl_CexpressionDQE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc18impl_CexpressionDQE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -42061,54 +42021,49 @@ _ZNK2kc18impl_CexpressionSQ7reverseEv:  # @_ZNK2kc18impl_CexpressionSQ7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc18impl_CexpressionSQE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc18impl_CexpressionSQE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc18impl_CexpressionSQE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1169_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1169_2
-	.p2align	4, , 16
-.LBB1169_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1169_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1169_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1169_1
-	b	.LBB1169_3
-.LBB1169_2:
-	move	$s1, $s0
+	b	.LBB1169_1
 .LBB1169_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc18impl_CexpressionSQE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc18impl_CexpressionSQE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -42485,54 +42440,49 @@ _ZNK2kc19impl_idCexpressions7reverseEv: # @_ZNK2kc19impl_idCexpressions7reverseE
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc19impl_idCexpressionsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc19impl_idCexpressionsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc19impl_idCexpressionsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1178_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1178_2
-	.p2align	4, , 16
-.LBB1178_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1178_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1178_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1178_1
-	b	.LBB1178_3
-.LBB1178_2:
-	move	$s1, $s0
+	b	.LBB1178_1
 .LBB1178_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc19impl_idCexpressionsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc19impl_idCexpressionsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -42909,54 +42859,49 @@ _ZNK2kc11impl_Ctexts7reverseEv:         # @_ZNK2kc11impl_Ctexts7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc11impl_CtextsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc11impl_CtextsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc11impl_CtextsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1187_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1187_2
-	.p2align	4, , 16
-.LBB1187_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1187_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1187_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1187_1
-	b	.LBB1187_3
-.LBB1187_2:
-	move	$s1, $s0
+	b	.LBB1187_1
 .LBB1187_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc11impl_CtextsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc11impl_CtextsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -43333,54 +43278,49 @@ _ZNK2kc17impl_includefiles7reverseEv:   # @_ZNK2kc17impl_includefiles7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc17impl_includefilesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc17impl_includefilesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc17impl_includefilesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1196_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1196_2
-	.p2align	4, , 16
-.LBB1196_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1196_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1196_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1196_1
-	b	.LBB1196_3
-.LBB1196_2:
-	move	$s1, $s0
+	b	.LBB1196_1
 .LBB1196_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc17impl_includefilesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc17impl_includefilesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -43757,54 +43697,49 @@ _ZNK2kc24impl_includedeclarations7reverseEv: # @_ZNK2kc24impl_includedeclaration
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc24impl_includedeclarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc24impl_includedeclarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc24impl_includedeclarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1205_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1205_2
-	.p2align	4, , 16
-.LBB1205_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1205_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1205_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1205_1
-	b	.LBB1205_3
-.LBB1205_2:
-	move	$s1, $s0
+	b	.LBB1205_1
 .LBB1205_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc24impl_includedeclarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc24impl_includedeclarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -44181,54 +44116,49 @@ _ZNK2kc19impl_rwdeclarations7reverseEv: # @_ZNK2kc19impl_rwdeclarations7reverseE
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc19impl_rwdeclarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc19impl_rwdeclarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc19impl_rwdeclarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1214_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1214_2
-	.p2align	4, , 16
-.LBB1214_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1214_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1214_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1214_1
-	b	.LBB1214_3
-.LBB1214_2:
-	move	$s1, $s0
+	b	.LBB1214_1
 .LBB1214_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc19impl_rwdeclarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc19impl_rwdeclarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -44605,54 +44535,49 @@ _ZNK2kc19impl_rewriteclauses7reverseEv: # @_ZNK2kc19impl_rewriteclauses7reverseE
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc19impl_rewriteclausesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc19impl_rewriteclausesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc19impl_rewriteclausesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1223_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1223_2
-	.p2align	4, , 16
-.LBB1223_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1223_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1223_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1223_1
-	b	.LBB1223_3
-.LBB1223_2:
-	move	$s1, $s0
+	b	.LBB1223_1
 .LBB1223_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc19impl_rewriteclausesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc19impl_rewriteclausesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -45033,8 +44958,8 @@ _ZNK2kc18impl_patternchains7reverseEv:  # @_ZNK2kc18impl_patternchains7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc18impl_patternchainsE+16)
-	addi.d	$s5, $a0, %pc_lo12(_ZTVN2kc18impl_patternchainsE+16)
-	st.d	$s5, $s0, 0
+	addi.d	$s4, $a0, %pc_lo12(_ZTVN2kc18impl_patternchainsE+16)
+	st.d	$s4, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 24
 	st.w	$zero, $s0, 8
@@ -45059,24 +44984,25 @@ _ZNK2kc18impl_patternchains7reverseEv:  # @_ZNK2kc18impl_patternchains7reverseEv
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s5, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	st.d	$s5, $a0, 0
-	st.d	$s4, $a0, 24
-	st.d	$s0, $a0, 32
+	move	$s0, $a0
+	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 24
+	st.d	$s5, $a0, 32
 	st.w	$zero, $a0, 8
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
-	st.d	$a0, $s3, 16
+	st.d	$a0, $s0, 16
 	ld.d	$a2, $a1, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
@@ -45087,17 +45013,13 @@ _ZNK2kc18impl_patternchains7reverseEv:  # @_ZNK2kc18impl_patternchains7reverseEv
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s0, $s3
 	bnez	$a0, .LBB1232_2
-	b	.LBB1232_4
-.LBB1232_3:
-	move	$s3, $s0
-.LBB1232_4:                             # %.loopexit
+.LBB1232_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc18impl_patternchainsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc18impl_patternchainsE)
-	move	$a0, $s3
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -45487,8 +45409,8 @@ _ZNK2kc17impl_patternchain7reverseEv:   # @_ZNK2kc17impl_patternchain7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc17impl_patternchainE+16)
-	addi.d	$s5, $a0, %pc_lo12(_ZTVN2kc17impl_patternchainE+16)
-	st.d	$s5, $s0, 0
+	addi.d	$s4, $a0, %pc_lo12(_ZTVN2kc17impl_patternchainE+16)
+	st.d	$s4, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 24
 	st.w	$zero, $s0, 8
@@ -45513,24 +45435,25 @@ _ZNK2kc17impl_patternchain7reverseEv:   # @_ZNK2kc17impl_patternchain7reverseEv
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s5, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	st.d	$s5, $a0, 0
-	st.d	$s4, $a0, 24
-	st.d	$s0, $a0, 32
+	move	$s0, $a0
+	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 24
+	st.d	$s5, $a0, 32
 	st.w	$zero, $a0, 8
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
-	st.d	$a0, $s3, 16
+	st.d	$a0, $s0, 16
 	ld.d	$a2, $a1, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
@@ -45541,17 +45464,13 @@ _ZNK2kc17impl_patternchain7reverseEv:   # @_ZNK2kc17impl_patternchain7reverseEv
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s0, $s3
 	bnez	$a0, .LBB1241_2
-	b	.LBB1241_4
-.LBB1241_3:
-	move	$s3, $s0
-.LBB1241_4:                             # %.loopexit
+.LBB1241_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc17impl_patternchainE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc17impl_patternchainE)
-	move	$a0, $s3
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -45937,54 +45856,49 @@ _ZNK2kc20impl_outmostpatterns7reverseEv: # @_ZNK2kc20impl_outmostpatterns7revers
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc20impl_outmostpatternsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc20impl_outmostpatternsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc20impl_outmostpatternsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1250_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1250_2
-	.p2align	4, , 16
-.LBB1250_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1250_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1250_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1250_1
-	b	.LBB1250_3
-.LBB1250_2:
-	move	$s1, $s0
+	b	.LBB1250_1
 .LBB1250_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_outmostpatternsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc20impl_outmostpatternsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -46361,54 +46275,49 @@ _ZNK2kc13impl_patterns7reverseEv:       # @_ZNK2kc13impl_patterns7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc13impl_patternsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc13impl_patternsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc13impl_patternsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1259_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1259_2
-	.p2align	4, , 16
-.LBB1259_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1259_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1259_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1259_1
-	b	.LBB1259_3
-.LBB1259_2:
-	move	$s1, $s0
+	b	.LBB1259_1
 .LBB1259_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc13impl_patternsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc13impl_patternsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -46785,54 +46694,49 @@ _ZNK2kc10impl_terms7reverseEv:          # @_ZNK2kc10impl_terms7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc10impl_termsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc10impl_termsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc10impl_termsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1268_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1268_2
-	.p2align	4, , 16
-.LBB1268_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1268_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1268_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1268_1
-	b	.LBB1268_3
-.LBB1268_2:
-	move	$s1, $s0
+	b	.LBB1268_1
 .LBB1268_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc10impl_termsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc10impl_termsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -47209,54 +47113,49 @@ _ZNK2kc12impl_fnfiles7reverseEv:        # @_ZNK2kc12impl_fnfiles7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc12impl_fnfilesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc12impl_fnfilesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc12impl_fnfilesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1277_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1277_2
-	.p2align	4, , 16
-.LBB1277_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1277_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1277_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1277_1
-	b	.LBB1277_3
-.LBB1277_2:
-	move	$s1, $s0
+	b	.LBB1277_1
 .LBB1277_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc12impl_fnfilesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc12impl_fnfilesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -47633,54 +47532,49 @@ _ZNK2kc19impl_fndeclarations7reverseEv: # @_ZNK2kc19impl_fndeclarations7reverseE
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc19impl_fndeclarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc19impl_fndeclarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc19impl_fndeclarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1286_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1286_2
-	.p2align	4, , 16
-.LBB1286_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1286_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1286_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1286_1
-	b	.LBB1286_3
-.LBB1286_2:
-	move	$s1, $s0
+	b	.LBB1286_1
 .LBB1286_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc19impl_fndeclarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc19impl_fndeclarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -48061,8 +47955,8 @@ _ZNK2kc10impl_Ctext7reverseEv:          # @_ZNK2kc10impl_Ctext7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc10impl_CtextE+16)
-	addi.d	$s5, $a0, %pc_lo12(_ZTVN2kc10impl_CtextE+16)
-	st.d	$s5, $s0, 0
+	addi.d	$s4, $a0, %pc_lo12(_ZTVN2kc10impl_CtextE+16)
+	st.d	$s4, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 24
 	st.w	$zero, $s0, 8
@@ -48087,24 +47981,25 @@ _ZNK2kc10impl_Ctext7reverseEv:          # @_ZNK2kc10impl_Ctext7reverseEv
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s5, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	st.d	$s5, $a0, 0
-	st.d	$s4, $a0, 24
-	st.d	$s0, $a0, 32
+	move	$s0, $a0
+	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 24
+	st.d	$s5, $a0, 32
 	st.w	$zero, $a0, 8
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
-	st.d	$a0, $s3, 16
+	st.d	$a0, $s0, 16
 	ld.d	$a2, $a1, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
@@ -48115,17 +48010,13 @@ _ZNK2kc10impl_Ctext7reverseEv:          # @_ZNK2kc10impl_Ctext7reverseEv
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s0, $s3
 	bnez	$a0, .LBB1295_2
-	b	.LBB1295_4
-.LBB1295_3:
-	move	$s3, $s0
-.LBB1295_4:                             # %.loopexit
+.LBB1295_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc10impl_CtextE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc10impl_CtextE)
-	move	$a0, $s3
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -48511,35 +48402,38 @@ _ZNK2kc20impl_withexpressions7reverseEv: # @_ZNK2kc20impl_withexpressions7revers
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc20impl_withexpressionsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc20impl_withexpressionsE+16)
-	st.d	$s3, $s0, 0
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc20impl_withexpressionsE+16)
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN2kc12_GLOBAL__N_129kc_initialize_withexpressionsEPNS_20impl_withexpressionsE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
+	.p2align	4, , 16
+.LBB1304_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1304_2
-	.p2align	4, , 16
-.LBB1304_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1304_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1304_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
-	st.d	$s2, $a0, 32
-	st.d	$s0, $a0, 40
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
+	st.d	$s1, $a0, 32
+	st.d	$s3, $a0, 40
 	pcaddu18i	$ra, %call36(_ZN2kc12_GLOBAL__N_129kc_initialize_withexpressionsEPNS_20impl_withexpressionsE)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
@@ -48549,21 +48443,13 @@ _ZNK2kc20impl_withexpressions7reverseEv: # @_ZNK2kc20impl_withexpressions7revers
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1304_1
-	b	.LBB1304_3
-.LBB1304_2:
-	move	$s1, $s0
+	b	.LBB1304_1
 .LBB1304_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_withexpressionsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc20impl_withexpressionsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -48943,54 +48829,49 @@ _ZNK2kc14impl_withcases7reverseEv:      # @_ZNK2kc14impl_withcases7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc14impl_withcasesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc14impl_withcasesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc14impl_withcasesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 16
+	.p2align	4, , 16
+.LBB1313_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1313_2
-	.p2align	4, , 16
-.LBB1313_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1313_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1313_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 16
-	st.d	$s0, $s1, 24
+	st.d	$s1, $s0, 16
+	st.d	$s3, $s0, 24
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1313_1
-	b	.LBB1313_3
-.LBB1313_2:
-	move	$s1, $s0
+	b	.LBB1313_1
 .LBB1313_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc14impl_withcasesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc14impl_withcasesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -49367,54 +49248,49 @@ _ZNK2kc24impl_unparsedeclarations7reverseEv: # @_ZNK2kc24impl_unparsedeclaration
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc24impl_unparsedeclarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc24impl_unparsedeclarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc24impl_unparsedeclarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1322_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1322_2
-	.p2align	4, , 16
-.LBB1322_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1322_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1322_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1322_1
-	b	.LBB1322_3
-.LBB1322_2:
-	move	$s1, $s0
+	b	.LBB1322_1
 .LBB1322_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc24impl_unparsedeclarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc24impl_unparsedeclarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -49791,54 +49667,49 @@ _ZNK2kc19impl_unparseclauses7reverseEv: # @_ZNK2kc19impl_unparseclauses7reverseE
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc19impl_unparseclausesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc19impl_unparseclausesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc19impl_unparseclausesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1331_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1331_2
-	.p2align	4, , 16
-.LBB1331_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1331_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1331_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1331_1
-	b	.LBB1331_3
-.LBB1331_2:
-	move	$s1, $s0
+	b	.LBB1331_1
 .LBB1331_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc19impl_unparseclausesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc19impl_unparseclausesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -50215,56 +50086,51 @@ _ZNK2kc14impl_viewnames7reverseEv:      # @_ZNK2kc14impl_viewnames7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc14impl_viewnamesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc14impl_viewnamesE+16)
-	st.d	$s3, $s0, 0
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc14impl_viewnamesE+16)
+	st.d	$s2, $s0, 0
 	ld.d	$a0, $fp, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 16
 	st.b	$zero, $s0, 8
+	.p2align	4, , 16
+.LBB1340_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1340_2
-	.p2align	4, , 16
-.LBB1340_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1340_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1340_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 16
-	st.d	$s0, $s1, 24
-	st.b	$zero, $s1, 8
+	st.d	$s1, $s0, 16
+	st.d	$s3, $s0, 24
+	st.b	$zero, $s0, 8
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1340_1
-	b	.LBB1340_3
-.LBB1340_2:
-	move	$s1, $s0
+	b	.LBB1340_1
 .LBB1340_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc14impl_viewnamesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc14impl_viewnamesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -50642,54 +50508,49 @@ _ZNK2kc17impl_unparseitems7reverseEv:   # @_ZNK2kc17impl_unparseitems7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc17impl_unparseitemsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc17impl_unparseitemsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc17impl_unparseitemsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1349_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1349_2
-	.p2align	4, , 16
-.LBB1349_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1349_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1349_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1349_1
-	b	.LBB1349_3
-.LBB1349_2:
-	move	$s1, $s0
+	b	.LBB1349_1
 .LBB1349_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc17impl_unparseitemsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc17impl_unparseitemsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -51066,54 +50927,49 @@ _ZNK2kc18impl_unpattributes7reverseEv:  # @_ZNK2kc18impl_unpattributes7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc18impl_unpattributesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc18impl_unpattributesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc18impl_unpattributesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1358_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1358_2
-	.p2align	4, , 16
-.LBB1358_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1358_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1358_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1358_1
-	b	.LBB1358_3
-.LBB1358_2:
-	move	$s1, $s0
+	b	.LBB1358_1
 .LBB1358_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc18impl_unpattributesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc18impl_unpattributesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -51490,54 +51346,49 @@ _ZNK2kc18impl_languagenames7reverseEv:  # @_ZNK2kc18impl_languagenames7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc18impl_languagenamesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc18impl_languagenamesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc18impl_languagenamesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1367_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1367_2
-	.p2align	4, , 16
-.LBB1367_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1367_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1367_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1367_1
-	b	.LBB1367_3
-.LBB1367_2:
-	move	$s1, $s0
+	b	.LBB1367_1
 .LBB1367_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc18impl_languagenamesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc18impl_languagenamesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -51914,54 +51765,49 @@ _ZNK2kc27impl_scopetypefilelinestack7reverseEv: # @_ZNK2kc27impl_scopetypefileli
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc27impl_scopetypefilelinestackE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc27impl_scopetypefilelinestackE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc27impl_scopetypefilelinestackE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1376_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1376_2
-	.p2align	4, , 16
-.LBB1376_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1376_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1376_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1376_1
-	b	.LBB1376_3
-.LBB1376_2:
-	move	$s1, $s0
+	b	.LBB1376_1
 .LBB1376_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc27impl_scopetypefilelinestackE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc27impl_scopetypefilelinestackE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -52338,54 +52184,49 @@ _ZNK2kc14impl_operators7reverseEv:      # @_ZNK2kc14impl_operators7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc14impl_operatorsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc14impl_operatorsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc14impl_operatorsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1385_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1385_2
-	.p2align	4, , 16
-.LBB1385_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1385_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1385_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1385_1
-	b	.LBB1385_3
-.LBB1385_2:
-	move	$s1, $s0
+	b	.LBB1385_1
 .LBB1385_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc14impl_operatorsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc14impl_operatorsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -52762,54 +52603,49 @@ _ZNK2kc10impl_phyla7reverseEv:          # @_ZNK2kc10impl_phyla7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc10impl_phylaE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc10impl_phylaE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc10impl_phylaE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1394_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1394_2
-	.p2align	4, , 16
-.LBB1394_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1394_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1394_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1394_1
-	b	.LBB1394_3
-.LBB1394_2:
-	move	$s1, $s0
+	b	.LBB1394_1
 .LBB1394_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc10impl_phylaE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc10impl_phylaE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -53186,54 +53022,49 @@ _ZNK2kc14impl_variables7reverseEv:      # @_ZNK2kc14impl_variables7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc14impl_variablesE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc14impl_variablesE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc14impl_variablesE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1403_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1403_2
-	.p2align	4, , 16
-.LBB1403_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1403_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1403_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1403_1
-	b	.LBB1403_3
-.LBB1403_2:
-	move	$s1, $s0
+	b	.LBB1403_1
 .LBB1403_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc14impl_variablesE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc14impl_variablesE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -53610,54 +53441,49 @@ _ZNK2kc27impl_patternrepresentations7reverseEv: # @_ZNK2kc27impl_patternrepresen
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc27impl_patternrepresentationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc27impl_patternrepresentationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc27impl_patternrepresentationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1412_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1412_2
-	.p2align	4, , 16
-.LBB1412_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1412_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1412_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1412_1
-	b	.LBB1412_3
-.LBB1412_2:
-	move	$s1, $s0
+	b	.LBB1412_1
 .LBB1412_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc27impl_patternrepresentationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc27impl_patternrepresentationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -54034,54 +53860,49 @@ _ZNK2kc26impl_patternrepresentation7reverseEv: # @_ZNK2kc26impl_patternrepresent
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc26impl_patternrepresentationE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc26impl_patternrepresentationE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc26impl_patternrepresentationE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1421_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1421_2
-	.p2align	4, , 16
-.LBB1421_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1421_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1421_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1421_1
-	b	.LBB1421_3
-.LBB1421_2:
-	move	$s1, $s0
+	b	.LBB1421_1
 .LBB1421_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc26impl_patternrepresentationE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc26impl_patternrepresentationE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -54458,8 +54279,8 @@ _ZNK2kc9impl_path7reverseEv:            # @_ZNK2kc9impl_path7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc9impl_pathE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc9impl_pathE+16)
-	st.d	$s3, $s0, 0
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc9impl_pathE+16)
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 24
 	pcaddu18i	$ra, %call36(_ZN2kc9f_emptyIdEv)
@@ -54479,24 +54300,25 @@ _ZNK2kc9impl_path7reverseEv:            # @_ZNK2kc9impl_path7reverseEv
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
-	st.d	$s2, $a0, 24
-	st.d	$s0, $a0, 32
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
+	st.d	$s1, $a0, 24
+	st.d	$s3, $a0, 32
 	pcaddu18i	$ra, %call36(_ZN2kc9f_emptyIdEv)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 8
+	st.d	$a0, $s0, 8
 	pcaddu18i	$ra, %call36(_ZN2kc9f_emptyIdEv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
-	st.d	$a0, $s1, 16
+	st.d	$a0, $s0, 16
 	ld.d	$a2, $a1, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
@@ -54507,17 +54329,13 @@ _ZNK2kc9impl_path7reverseEv:            # @_ZNK2kc9impl_path7reverseEv
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	move	$s0, $s1
 	bnez	$a0, .LBB1430_1
-	b	.LBB1430_3
-.LBB1430_2:
-	move	$s1, $s0
-.LBB1430_3:                             # %.loopexit
+.LBB1430_2:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc9impl_pathE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc9impl_pathE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -54900,54 +54718,49 @@ _ZNK2kc10impl_paths7reverseEv:          # @_ZNK2kc10impl_paths7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc10impl_pathsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc10impl_pathsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc10impl_pathsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1439_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1439_2
-	.p2align	4, , 16
-.LBB1439_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1439_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1439_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1439_1
-	b	.LBB1439_3
-.LBB1439_2:
-	move	$s1, $s0
+	b	.LBB1439_1
 .LBB1439_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc10impl_pathsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc10impl_pathsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -55324,54 +55137,49 @@ _ZNK2kc16impl_argsnumbers7reverseEv:    # @_ZNK2kc16impl_argsnumbers7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc16impl_argsnumbersE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc16impl_argsnumbersE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc16impl_argsnumbersE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1448_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1448_2
-	.p2align	4, , 16
-.LBB1448_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1448_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1448_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1448_1
-	b	.LBB1448_3
-.LBB1448_2:
-	move	$s1, $s0
+	b	.LBB1448_1
 .LBB1448_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc16impl_argsnumbersE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc16impl_argsnumbersE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -55748,54 +55556,49 @@ _ZNK2kc21impl_rewriterulesinfo7reverseEv: # @_ZNK2kc21impl_rewriterulesinfo7reve
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc21impl_rewriterulesinfoE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc21impl_rewriterulesinfoE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc21impl_rewriterulesinfoE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1457_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1457_2
-	.p2align	4, , 16
-.LBB1457_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1457_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1457_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1457_1
-	b	.LBB1457_3
-.LBB1457_2:
-	move	$s1, $s0
+	b	.LBB1457_1
 .LBB1457_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc21impl_rewriterulesinfoE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc21impl_rewriterulesinfoE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -56172,54 +55975,49 @@ _ZNK2kc18impl_withcasesinfo7reverseEv:  # @_ZNK2kc18impl_withcasesinfo7reverseEv
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc18impl_withcasesinfoE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc18impl_withcasesinfoE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc18impl_withcasesinfoE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1466_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1466_2
-	.p2align	4, , 16
-.LBB1466_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1466_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1466_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1466_1
-	b	.LBB1466_3
-.LBB1466_2:
-	move	$s1, $s0
+	b	.LBB1466_1
 .LBB1466_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc18impl_withcasesinfoE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc18impl_withcasesinfoE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -56596,54 +56394,49 @@ _ZNK2kc21impl_rewriteviewsinfo7reverseEv: # @_ZNK2kc21impl_rewriteviewsinfo7reve
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc21impl_rewriteviewsinfoE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc21impl_rewriteviewsinfoE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc21impl_rewriteviewsinfoE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1475_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1475_2
-	.p2align	4, , 16
-.LBB1475_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1475_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1475_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1475_1
-	b	.LBB1475_3
-.LBB1475_2:
-	move	$s1, $s0
+	b	.LBB1475_1
 .LBB1475_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc21impl_rewriteviewsinfoE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc21impl_rewriteviewsinfoE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -57020,54 +56813,49 @@ _ZNK2kc21impl_unparseviewsinfo7reverseEv: # @_ZNK2kc21impl_unparseviewsinfo7reve
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc21impl_unparseviewsinfoE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc21impl_unparseviewsinfoE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc21impl_unparseviewsinfoE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1484_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1484_2
-	.p2align	4, , 16
-.LBB1484_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1484_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1484_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1484_1
-	b	.LBB1484_3
-.LBB1484_2:
-	move	$s1, $s0
+	b	.LBB1484_1
 .LBB1484_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc21impl_unparseviewsinfoE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc21impl_unparseviewsinfoE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -57444,54 +57232,49 @@ _ZNK2kc21impl_unparsedeclsinfo7reverseEv: # @_ZNK2kc21impl_unparsedeclsinfo7reve
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc21impl_unparsedeclsinfoE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc21impl_unparsedeclsinfoE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc21impl_unparsedeclsinfoE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1493_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1493_2
-	.p2align	4, , 16
-.LBB1493_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1493_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1493_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1493_1
-	b	.LBB1493_3
-.LBB1493_2:
-	move	$s1, $s0
+	b	.LBB1493_1
 .LBB1493_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc21impl_unparsedeclsinfoE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc21impl_unparsedeclsinfoE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -57868,54 +57651,49 @@ _ZNK2kc24impl_ac_declaration_list7reverseEv: # @_ZNK2kc24impl_ac_declaration_lis
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc24impl_ac_declaration_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc24impl_ac_declaration_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc24impl_ac_declaration_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1502_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1502_2
-	.p2align	4, , 16
-.LBB1502_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1502_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1502_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1502_1
-	b	.LBB1502_3
-.LBB1502_2:
-	move	$s1, $s0
+	b	.LBB1502_1
 .LBB1502_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc24impl_ac_declaration_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc24impl_ac_declaration_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -58292,54 +58070,49 @@ _ZNK2kc30impl_ac_declaration_specifiers7reverseEv: # @_ZNK2kc30impl_ac_declarati
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc30impl_ac_declaration_specifiersE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc30impl_ac_declaration_specifiersE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc30impl_ac_declaration_specifiersE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1511_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1511_2
-	.p2align	4, , 16
-.LBB1511_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1511_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1511_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1511_1
-	b	.LBB1511_3
-.LBB1511_2:
-	move	$s1, $s0
+	b	.LBB1511_1
 .LBB1511_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc30impl_ac_declaration_specifiersE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc30impl_ac_declaration_specifiersE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -58716,54 +58489,49 @@ _ZNK2kc28impl_ac_init_declarator_list7reverseEv: # @_ZNK2kc28impl_ac_init_declar
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc28impl_ac_init_declarator_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc28impl_ac_init_declarator_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc28impl_ac_init_declarator_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1520_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1520_2
-	.p2align	4, , 16
-.LBB1520_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1520_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1520_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1520_1
-	b	.LBB1520_3
-.LBB1520_2:
-	move	$s1, $s0
+	b	.LBB1520_1
 .LBB1520_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc28impl_ac_init_declarator_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc28impl_ac_init_declarator_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -59140,54 +58908,49 @@ _ZNK2kc33impl_ac_class_qualifier_help_list7reverseEv: # @_ZNK2kc33impl_ac_class_
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc33impl_ac_class_qualifier_help_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc33impl_ac_class_qualifier_help_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc33impl_ac_class_qualifier_help_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1529_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1529_2
-	.p2align	4, , 16
-.LBB1529_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1529_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1529_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1529_1
-	b	.LBB1529_3
-.LBB1529_2:
-	move	$s1, $s0
+	b	.LBB1529_1
 .LBB1529_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc33impl_ac_class_qualifier_help_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc33impl_ac_class_qualifier_help_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -59564,54 +59327,49 @@ _ZNK2kc28impl_ac_class_qualifier_list7reverseEv: # @_ZNK2kc28impl_ac_class_quali
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc28impl_ac_class_qualifier_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc28impl_ac_class_qualifier_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc28impl_ac_class_qualifier_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1538_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1538_2
-	.p2align	4, , 16
-.LBB1538_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1538_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1538_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1538_1
-	b	.LBB1538_3
-.LBB1538_2:
-	move	$s1, $s0
+	b	.LBB1538_1
 .LBB1538_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc28impl_ac_class_qualifier_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc28impl_ac_class_qualifier_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -59988,54 +59746,49 @@ _ZNK2kc27impl_ac_type_qualifier_list7reverseEv: # @_ZNK2kc27impl_ac_type_qualifi
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc27impl_ac_type_qualifier_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc27impl_ac_type_qualifier_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc27impl_ac_type_qualifier_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1547_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1547_2
-	.p2align	4, , 16
-.LBB1547_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1547_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1547_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1547_1
-	b	.LBB1547_3
-.LBB1547_2:
-	move	$s1, $s0
+	b	.LBB1547_1
 .LBB1547_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc27impl_ac_type_qualifier_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc27impl_ac_type_qualifier_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -60412,54 +60165,49 @@ _ZNK2kc22impl_ac_parameter_list7reverseEv: # @_ZNK2kc22impl_ac_parameter_list7re
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc22impl_ac_parameter_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc22impl_ac_parameter_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc22impl_ac_parameter_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1556_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1556_2
-	.p2align	4, , 16
-.LBB1556_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1556_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1556_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1556_1
-	b	.LBB1556_3
-.LBB1556_2:
-	move	$s1, $s0
+	b	.LBB1556_1
 .LBB1556_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc22impl_ac_parameter_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc22impl_ac_parameter_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -60836,54 +60584,49 @@ _ZNK2kc23impl_ac_identifier_list7reverseEv: # @_ZNK2kc23impl_ac_identifier_list7
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc23impl_ac_identifier_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc23impl_ac_identifier_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc23impl_ac_identifier_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1565_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1565_2
-	.p2align	4, , 16
-.LBB1565_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1565_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1565_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1565_1
-	b	.LBB1565_3
-.LBB1565_2:
-	move	$s1, $s0
+	b	.LBB1565_1
 .LBB1565_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc23impl_ac_identifier_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc23impl_ac_identifier_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -61260,54 +61003,49 @@ _ZNK2kc32impl_ac_constant_expression_list7reverseEv: # @_ZNK2kc32impl_ac_constan
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc32impl_ac_constant_expression_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc32impl_ac_constant_expression_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc32impl_ac_constant_expression_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1574_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1574_2
-	.p2align	4, , 16
-.LBB1574_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1574_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1574_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1574_1
-	b	.LBB1574_3
-.LBB1574_2:
-	move	$s1, $s0
+	b	.LBB1574_1
 .LBB1574_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc32impl_ac_constant_expression_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc32impl_ac_constant_expression_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -61684,54 +61422,49 @@ _ZNK2kc22impl_ac_base_init_list7reverseEv: # @_ZNK2kc22impl_ac_base_init_list7re
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc22impl_ac_base_init_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc22impl_ac_base_init_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc22impl_ac_base_init_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1583_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1583_2
-	.p2align	4, , 16
-.LBB1583_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1583_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1583_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1583_1
-	b	.LBB1583_3
-.LBB1583_2:
-	move	$s1, $s0
+	b	.LBB1583_1
 .LBB1583_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc22impl_ac_base_init_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc22impl_ac_base_init_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -62108,54 +61841,49 @@ _ZNK2kc27impl_baseclass_declarations7reverseEv: # @_ZNK2kc27impl_baseclass_decla
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc27impl_baseclass_declarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc27impl_baseclass_declarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc27impl_baseclass_declarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1592_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1592_2
-	.p2align	4, , 16
-.LBB1592_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1592_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1592_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1592_1
-	b	.LBB1592_3
-.LBB1592_2:
-	move	$s1, $s0
+	b	.LBB1592_1
 .LBB1592_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc27impl_baseclass_declarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc27impl_baseclass_declarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -62532,54 +62260,49 @@ _ZNK2kc19impl_baseclass_list7reverseEv: # @_ZNK2kc19impl_baseclass_list7reverseE
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc19impl_baseclass_listE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc19impl_baseclass_listE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc19impl_baseclass_listE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1601_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1601_2
-	.p2align	4, , 16
-.LBB1601_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1601_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1601_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1601_1
-	b	.LBB1601_3
-.LBB1601_2:
-	move	$s1, $s0
+	b	.LBB1601_1
 .LBB1601_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc19impl_baseclass_listE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc19impl_baseclass_listE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -62956,54 +62679,49 @@ _ZNK2kc28impl_addedphylumdeclarations7reverseEv: # @_ZNK2kc28impl_addedphylumdec
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc28impl_addedphylumdeclarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc28impl_addedphylumdeclarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc28impl_addedphylumdeclarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1610_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1610_2
-	.p2align	4, , 16
-.LBB1610_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1610_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1610_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1610_1
-	b	.LBB1610_3
-.LBB1610_2:
-	move	$s1, $s0
+	b	.LBB1610_1
 .LBB1610_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc28impl_addedphylumdeclarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc28impl_addedphylumdeclarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -63380,54 +63098,49 @@ _ZNK2kc30impl_countedphylumdeclarations7reverseEv: # @_ZNK2kc30impl_countedphylu
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTVN2kc30impl_countedphylumdeclarationsE+16)
-	addi.d	$s3, $a0, %pc_lo12(_ZTVN2kc30impl_countedphylumdeclarationsE+16)
+	addi.d	$s2, $a0, %pc_lo12(_ZTVN2kc30impl_countedphylumdeclarationsE+16)
 	ld.d	$a0, $fp, 0
-	st.d	$s3, $s0, 0
+	st.d	$s2, $s0, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $s0, 8
+	.p2align	4, , 16
+.LBB1619_1:                             # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB1619_2
-	.p2align	4, , 16
-.LBB1619_1:                             # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
+	beqz	$a0, .LBB1619_3
+# %bb.2:                                # %.lr.ph.i
+                                        #   in Loop: Header=BB1619_1 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
+	move	$s3, $s0
 	move	$a0, $fp
 	move	$a1, $zero
 	jirl	$ra, $a2, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	st.d	$s3, $a0, 0
+	move	$s0, $a0
+	st.d	$s2, $a0, 0
 	ld.d	$a0, $fp, 0
-	st.d	$s2, $s1, 8
-	st.d	$s0, $s1, 16
+	st.d	$s1, $s0, 8
+	st.d	$s3, $s0, 16
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $a0, 8
-	ori	$a1, $zero, 1
-	move	$a0, $fp
-	jirl	$ra, $a2, 0
-	move	$s0, $s1
-	bnez	$a0, .LBB1619_1
-	b	.LBB1619_3
-.LBB1619_2:
-	move	$s1, $s0
+	b	.LBB1619_1
 .LBB1619_3:                             # %.loopexit
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc20impl_abstract_phylumE)
 	addi.d	$a1, $a0, %pc_lo12(_ZTIN2kc20impl_abstract_phylumE)
 	pcalau12i	$a0, %pc_hi20(_ZTIN2kc30impl_countedphylumdeclarationsE)
 	addi.d	$a2, $a0, %pc_lo12(_ZTIN2kc30impl_countedphylumdeclarationsE)
-	move	$a0, $s1
+	move	$a0, $s0
 	move	$a3, $zero
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -64586,7 +64299,7 @@ _ZN2kc20impl_abstract_phylum11post_createEv: # @_ZN2kc20impl_abstract_phylum11po
 	.type	_ZN2kc20impl_abstract_phylumD0Ev,@function
 _ZN2kc20impl_abstract_phylumD0Ev:       # @_ZN2kc20impl_abstract_phylumD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end1641:
 	.size	_ZN2kc20impl_abstract_phylumD0Ev, .Lfunc_end1641-_ZN2kc20impl_abstract_phylumD0Ev
                                         # -- End function

@@ -52,16 +52,14 @@ gs_currentpoint:                        # @gs_currentpoint
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB2_2
 # %bb.1:
-	ld.d	$a0, $sp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $sp, 8
 	ffint.d.l	$fa0, $fa0
 	lu52i.d	$a0, $zero, 1011
 	movgr2fr.d	$fa1, $a0
-	ld.d	$a0, $sp, 16
+	fld.d	$fa2, $sp, 16
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
-	movgr2fr.d	$fa2, $a0
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa2, $fa1
 	fcvt.s.d	$fa1, $fa1
@@ -701,16 +699,14 @@ gs_arcto:                               # @gs_arcto
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB11_12
 # %bb.3:                                # %gs_currentpoint.exit
-	ld.d	$a0, $sp, 40
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $sp, 40
 	ffint.d.l	$fa0, $fa0
 	lu52i.d	$a0, $zero, 1011
 	movgr2fr.d	$fa1, $a0
-	ld.d	$a0, $sp, 48
+	fld.d	$fa2, $sp, 48
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
-	movgr2fr.d	$fa2, $a0
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa2, $fa1
 	fcvt.s.d	$fa1, $fa1

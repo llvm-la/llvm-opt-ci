@@ -92,15 +92,15 @@ encfile:                                # @encfile
 	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	move	$s2, $a0
 	pcalau12i	$s7, %pc_hi20(fillrand.mt)
 	ld.bu	$a0, $s7, %pc_lo12(fillrand.mt)
 	pcalau12i	$s5, %pc_hi20(fillrand.a.0)
 	pcalau12i	$s4, %pc_hi20(fillrand.a.1)
-	lu12i.w	$a3, 14
+	lu12i.w	$a4, 14
 	lu12i.w	$a1, 3
+	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	beqz	$a0, .LBB1_2
 # %bb.1:                                # %._crit_edge5.i
@@ -110,7 +110,7 @@ encfile:                                # @encfile
 .LBB1_2:
 	ori	$a0, $zero, 1
 	st.b	$a0, $s7, %pc_lo12(fillrand.mt)
-	ori	$a0, $a3, 2803
+	ori	$a0, $a4, 2803
 	st.d	$a0, $s5, %pc_lo12(fillrand.a.0)
 	ori	$a1, $a1, 1534
 	st.d	$a1, $s4, %pc_lo12(fillrand.a.1)
@@ -259,9 +259,9 @@ encfile:                                # @encfile
 # %bb.15:
 	addi.w	$s3, $zero, -8
 .LBB1_16:                               # %.sink.split
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	b	.LBB1_29

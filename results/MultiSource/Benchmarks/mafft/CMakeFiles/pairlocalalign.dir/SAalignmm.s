@@ -881,19 +881,17 @@ Aalign:                                 # @Aalign
 	.p2align	4, , 16
 .LBB0_76:                               # %vector.body366
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a4, -16
-	vld	$vr2, $a4, 0
-	vshuf4i.w	$vr3, $vr0, 8
-	vaddi.wu	$vr4, $vr3, 1
-	vaddi.wu	$vr3, $vr3, 3
-	vpickve2gr.d	$a6, $vr1, 0
-	vstelm.w	$vr4, $a6, 0, 0
-	vpickve2gr.d	$a6, $vr1, 1
-	vstelm.w	$vr4, $a6, 0, 1
-	vpickve2gr.d	$a6, $vr2, 0
-	vstelm.w	$vr3, $a6, 0, 0
-	vpickve2gr.d	$a6, $vr2, 1
-	vstelm.w	$vr3, $a6, 0, 1
+	ld.d	$a6, $a4, -16
+	ld.d	$a7, $a4, -8
+	ld.d	$t0, $a4, 0
+	ld.d	$t1, $a4, 8
+	vshuf4i.w	$vr1, $vr0, 8
+	vaddi.wu	$vr2, $vr1, 1
+	vaddi.wu	$vr1, $vr1, 3
+	vstelm.w	$vr2, $a6, 0, 0
+	vstelm.w	$vr2, $a7, 0, 1
+	vstelm.w	$vr1, $t0, 0, 0
+	vstelm.w	$vr1, $t1, 0, 1
 	vaddi.du	$vr0, $vr0, 4
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
@@ -1558,12 +1556,14 @@ Aalign:                                 # @Aalign
 	.type	match_calc,@function
 match_calc:                             # @match_calc
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	fst.d	$fs0, $sp, 152                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 144                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 136                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 128                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 120                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	fst.d	$fs0, $sp, 168                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 160                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 152                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 144                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 136                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 120                  # 8-byte Folded Spill
 	beqz	$a7, .LBB1_8
 # %bb.1:
 	blez	$a4, .LBB1_8
@@ -1626,7 +1626,7 @@ match_calc:                             # @match_calc
 	ld.d	$a7, $a1, 56
 	ld.d	$t0, $a1, 64
 	ld.d	$t1, $a1, 72
-	fldx.s	$fa7, $a3, $a2
+	fldx.s	$fa6, $a3, $a2
 	fldx.s	$ft0, $a7, $a2
 	fldx.s	$ft1, $t0, $a2
 	fldx.s	$ft2, $t1, $a2
@@ -1665,119 +1665,99 @@ match_calc:                             # @match_calc
 	pcalau12i	$a1, %got_pc_hi20(n_dis)
 	ld.d	$a1, $a1, %got_pc_lo12(n_dis)
 	move	$a2, $zero
-	movgr2fr.w	$fa6, $zero
-	addi.d	$a3, $sp, 16
-	ori	$a7, $zero, 104
+	movgr2fr.w	$fa7, $zero
+	ori	$a3, $zero, 2080
+	ori	$a7, $zero, 2184
+	ori	$t0, $zero, 2288
+	ori	$t1, $zero, 2392
+	ori	$t2, $zero, 2496
+	ori	$t3, $zero, 2600
+	addi.d	$t4, $sp, 16
+	ori	$t5, $zero, 104
 	.p2align	4, , 16
 .LBB1_9:                                # =>This Inner Loop Header: Depth=1
-	ldx.w	$t1, $a1, $a2
-	add.d	$t0, $a1, $a2
-	ld.w	$t2, $t0, 104
-	movgr2fr.w	$fs3, $t1
+	fldx.s	$fs3, $a1, $a2
+	add.d	$t6, $a1, $a2
+	fld.s	$fs4, $t6, 104
 	ffint.s.w	$fs3, $fs3
-	fmadd.s	$fs3, $fs3, $fa0, $fa6
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 208
+	fmadd.s	$fs3, $fs3, $fa0, $fa7
+	fld.s	$fs5, $t6, 208
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $fa1, $fs3
-	ld.w	$t2, $t0, 312
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $fa2, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 416
+	fld.s	$fs4, $t6, 312
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $fa2, $fs3
+	fld.s	$fs5, $t6, 416
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $fa3, $fs3
-	ld.w	$t2, $t0, 520
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $fa4, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 624
+	fld.s	$fs4, $t6, 520
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $fa4, $fs3
+	fld.s	$fs5, $t6, 624
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $fa5, $fs3
-	ld.w	$t2, $t0, 728
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $fa7, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 832
+	fld.s	$fs4, $t6, 728
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $fa6, $fs3
+	fld.s	$fs5, $t6, 832
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft0, $fs3
-	ld.w	$t2, $t0, 936
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft1, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 1040
+	fld.s	$fs4, $t6, 936
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft1, $fs3
+	fld.s	$fs5, $t6, 1040
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft2, $fs3
-	ld.w	$t2, $t0, 1144
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft3, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 1248
+	fld.s	$fs4, $t6, 1144
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft3, $fs3
+	fld.s	$fs5, $t6, 1248
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft4, $fs3
-	ld.w	$t2, $t0, 1352
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft5, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 1456
+	fld.s	$fs4, $t6, 1352
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft5, $fs3
+	fld.s	$fs5, $t6, 1456
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft6, $fs3
-	ld.w	$t2, $t0, 1560
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft7, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 1664
+	fld.s	$fs4, $t6, 1560
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft7, $fs3
+	fld.s	$fs5, $t6, 1664
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft8, $fs3
-	ld.w	$t2, $t0, 1768
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft9, $fs3
-	movgr2fr.w	$fs4, $t2
-	ld.w	$t1, $t0, 1872
+	fld.s	$fs4, $t6, 1768
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft9, $fs3
+	fld.s	$fs5, $t6, 1872
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft10, $fs3
-	ld.w	$t2, $t0, 1976
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft11, $fs3
-	movgr2fr.w	$fs4, $t2
-	ldptr.w	$t1, $t0, 2080
+	fld.s	$fs4, $t6, 1976
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft11, $fs3
+	fldx.s	$fs5, $t6, $a3
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft12, $fs3
-	ldptr.w	$t2, $t0, 2184
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft13, $fs3
-	movgr2fr.w	$fs4, $t2
-	ldptr.w	$t1, $t0, 2288
+	fldx.s	$fs4, $t6, $a7
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft13, $fs3
+	fldx.s	$fs5, $t6, $t0
 	ffint.s.w	$fs4, $fs4
 	fmadd.s	$fs3, $fs4, $ft14, $fs3
-	ldptr.w	$t2, $t0, 2392
-	movgr2fr.w	$fs4, $t1
+	fldx.s	$fs4, $t6, $t1
+	ffint.s.w	$fs5, $fs5
+	fmadd.s	$fs3, $fs5, $ft15, $fs3
+	fldx.s	$fs5, $t6, $t2
 	ffint.s.w	$fs4, $fs4
-	fmadd.s	$fs3, $fs4, $ft15, $fs3
-	movgr2fr.w	$fs4, $t2
-	ldptr.w	$t1, $t0, 2496
-	ffint.s.w	$fs4, $fs4
+	fldx.s	$fs6, $t6, $t3
 	fmadd.s	$fs3, $fs4, $fs0, $fs3
-	ldptr.w	$t0, $t0, 2600
-	movgr2fr.w	$fs4, $t1
-	ffint.s.w	$fs4, $fs4
+	ffint.s.w	$fs4, $fs5
 	fmadd.s	$fs3, $fs4, $fs1, $fs3
-	movgr2fr.w	$fs4, $t0
-	ffint.s.w	$fs4, $fs4
+	ffint.s.w	$fs4, $fs6
 	fmadd.s	$fs3, $fs4, $fs2, $fs3
-	fstx.s	$fs3, $a2, $a3
+	fstx.s	$fs3, $a2, $t4
 	addi.d	$a2, $a2, 4
-	bne	$a2, $a7, .LBB1_9
+	bne	$a2, $t5, .LBB1_9
 # %bb.10:                               # %.preheader
 	blez	$a4, .LBB1_16
 # %bb.11:                               # %.lr.ph70
@@ -1803,7 +1783,7 @@ match_calc:                             # @match_calc
 	alsl.d	$t0, $a2, $a0, 2
 	move	$t1, $a3
 	move	$t3, $a5
-	fmov.s	$fa0, $fa6
+	fmov.s	$fa0, $fa7
 	.p2align	4, , 16
 .LBB1_15:                               # %.lr.ph
                                         #   Parent Loop BB1_13 Depth=1
@@ -1822,12 +1802,14 @@ match_calc:                             # @match_calc
 	bgez	$t4, .LBB1_15
 	b	.LBB1_12
 .LBB1_16:                               # %._crit_edge71
-	fld.d	$fs4, $sp, 120                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 128                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 136                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 144                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 152                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	fld.d	$fs6, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 128                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 136                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 144                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 152                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 168                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .Lfunc_end1:
 	.size	match_calc, .Lfunc_end1-match_calc

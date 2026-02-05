@@ -34,14 +34,12 @@ str2llu:                                # @str2llu
 sqrtllu:                                # @sqrtllu
 # %bb.0:
 	addi.d	$a1, $zero, -1
-	ori	$a2, $zero, 1
-	move	$a3, $a0
+	move	$a2, $a0
 	.p2align	4, , 16
 .LBB1_1:                                # =>This Inner Loop Header: Depth=1
-	move	$a4, $a3
-	srli.d	$a3, $a3, 1
+	srli.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 1
-	bltu	$a2, $a4, .LBB1_1
+	bnez	$a2, .LBB1_1
 # %bb.2:
 	addi.d	$a2, $a1, 1
 	srli.d	$a2, $a2, 1
@@ -102,10 +100,9 @@ plist:                                  # @plist
 	.p2align	4, , 16
 .LBB2_6:                                #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$t0, $a7
 	srli.d	$a7, $a7, 1
 	addi.d	$a6, $a6, 1
-	bltu	$a4, $t0, .LBB2_6
+	bnez	$a7, .LBB2_6
 # %bb.7:                                #   in Loop: Header=BB2_5 Depth=1
 	addi.d	$a7, $a6, 1
 	srli.d	$a7, $a7, 1
@@ -185,10 +182,9 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB3_4:                                #   Parent Loop BB3_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$a7, $a6
 	srli.d	$a6, $a6, 1
 	addi.d	$a5, $a5, 1
-	bltu	$a1, $a7, .LBB3_4
+	bnez	$a6, .LBB3_4
 # %bb.5:                                #   in Loop: Header=BB3_3 Depth=1
 	addi.d	$a6, $a5, 1
 	srli.d	$a6, $a6, 1

@@ -197,287 +197,287 @@ createFccLattice:                       # @createFccLattice
 	fst.d	$fs4, $sp, 80                   # 8-byte Folded Spill
 	fst.d	$fs5, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$fs6, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 56                   # 8-byte Folded Spill
 	move	$fp, $a3
 	ld.d	$s1, $a3, 16
 	fld.d	$fa1, $s1, 96
-	fmov.d	$fs0, $fa0
+	fmov.d	$fa4, $fa0
 	fdiv.d	$fa0, $fa1, $fa0
 	vreplvei.d	$vr0, $vr0, 0
 	fld.d	$fa1, $s1, 120
 	vfrintrm.d	$vr0, $vr0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a3, $fa0
-	fdiv.d	$fa0, $fa1, $fs0
+	movfr2gr.s	$a4, $fa0
+	fdiv.d	$fa0, $fa1, $fa4
 	vreplvei.d	$vr0, $vr0, 0
 	vfrintrp.d	$vr0, $vr0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	bge	$a3, $a0, .LBB2_37
-# %bb.1:                                # %.lr.ph73
-	fld.d	$fa0, $s1, 104
-	fdiv.d	$fa0, $fa0, $fs0
-	vreplvei.d	$vr0, $vr0, 0
-	fld.d	$fa1, $s1, 128
-	vfrintrm.d	$vr0, $vr0
-	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a0, $fa0
-	fdiv.d	$fa0, $fa1, $fs0
-	vreplvei.d	$vr0, $vr0, 0
-	vfrintrp.d	$vr0, $vr0
-	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s5, $fa0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	bge	$a0, $s5, .LBB2_37
-# %bb.2:                                # %.lr.ph73
-	fld.d	$fa0, $s1, 112
-	fdiv.d	$fa0, $fa0, $fs0
-	vreplvei.d	$vr0, $vr0, 0
-	fld.d	$fa1, $s1, 136
+	bge	$a4, $a0, .LBB2_36
+# %bb.1:                                # %.lr.ph73
+	vld	$vr0, $s1, 104
+	vld	$vr1, $s1, 128
+	vreplvei.d	$vr2, $vr4, 0
+	vfdiv.d	$vr0, $vr0, $vr2
 	vfrintrm.d	$vr0, $vr0
-	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s3, $fa0
-	fdiv.d	$fa0, $fa1, $fs0
-	vreplvei.d	$vr0, $vr0, 0
-	vfrintrp.d	$vr0, $vr0
-	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s7, $fa0
-	bge	$s3, $s7, .LBB2_37
-# %bb.3:                                # %.lr.ph.us.us.preheader
-	mul.d	$a0, $a3, $a1
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	add.d	$a0, $a4, $a0
+	vfdiv.d	$vr1, $vr1, $vr2
+	vfrintrp.d	$vr1, $vr1
+	xvftintrz.l.d	$xr0, $xr0
+	xvpermi.d	$xr2, $xr0, 238
+	xvpickev.w	$xr0, $xr2, $xr0
+	xvftintrz.l.d	$xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 238
+	xvpickev.w	$xr1, $xr2, $xr1
+	vslt.w	$vr2, $vr0, $vr1
+	vshuf4i.w	$vr3, $vr2, 16
+	vpickve2gr.d	$a0, $vr2, 0
+	vpickve2gr.d	$a3, $vr3, 1
+	and	$a0, $a0, $a3
+	andi	$a0, $a0, 1
+	beqz	$a0, .LBB2_36
+# %bb.2:                                # %.lr.ph.us.us.preheader
+	vpickve2gr.w	$a3, $vr0, 0
+	vpickve2gr.w	$s2, $vr0, 1
+	vpickve2gr.w	$s6, $vr1, 0
+	vpickve2gr.w	$s7, $vr1, 1
+	mul.d	$a0, $a4, $a1
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	add.d	$a0, $a3, $a0
 	mul.d	$a0, $a2, $a0
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s2, $a0
 	slli.d	$a0, $a0, 2
 	addi.w	$s8, $a0, 3
 	mul.d	$a0, $a2, $a1
 	slli.d	$a0, $a0, 2
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	slli.d	$s4, $a2, 2
 	vldi	$vr2, -944
 	vldi	$vr3, -920
-	movgr2fr.d	$fs1, $zero
-	b	.LBB2_5
+	movgr2fr.d	$fs0, $zero
+	vst	$vr4, $sp, 48                   # 16-byte Folded Spill
+	b	.LBB2_4
 	.p2align	4, , 16
-.LBB2_4:                                # %._crit_edge71.split.us.us.us
-                                        #   in Loop: Header=BB2_5 Depth=1
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	addi.w	$a3, $a3, 1
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+.LBB2_3:                                # %._crit_edge71.split.us.us.us
+                                        #   in Loop: Header=BB2_4 Depth=1
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$a4, $a4, 1
+	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	add.w	$s8, $s8, $a0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	beq	$a3, $a0, .LBB2_37
-.LBB2_5:                                # %.lr.ph.us.us
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	beq	$a4, $a0, .LBB2_36
+.LBB2_4:                                # %.lr.ph.us.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB2_7 Depth 2
-                                        #       Child Loop BB2_9 Depth 3
-	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
-	movgr2fr.w	$fa0, $a3
+                                        #     Child Loop BB2_6 Depth 2
+                                        #       Child Loop BB2_8 Depth 3
+	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	movgr2fr.w	$fa0, $a4
 	ffint.d.w	$fa0, $fa0
 	fadd.d	$fa1, $fa0, $fa2
-	fmul.d	$fs2, $fs0, $fa1
+	fmul.d	$fs1, $fa4, $fa1
 	fadd.d	$fa0, $fa0, $fa3
-	fmul.d	$fs3, $fs0, $fa0
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	b	.LBB2_7
+	fmul.d	$fs2, $fa4, $fa0
+	st.d	$s8, $sp, 32                    # 8-byte Folded Spill
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	b	.LBB2_6
 	.p2align	4, , 16
-.LBB2_6:                                # %._crit_edge.us.us.us
-                                        #   in Loop: Header=BB2_7 Depth=2
-	addi.w	$s2, $s2, 1
+.LBB2_5:                                # %._crit_edge.us.us.us
+                                        #   in Loop: Header=BB2_6 Depth=2
+	addi.w	$s3, $s3, 1
 	add.w	$s8, $s8, $s4
-	beq	$s2, $s5, .LBB2_4
-.LBB2_7:                                # %.preheader.lr.ph.us.us.us
-                                        #   Parent Loop BB2_5 Depth=1
+	beq	$s3, $s6, .LBB2_3
+.LBB2_6:                                # %.preheader.lr.ph.us.us.us
+                                        #   Parent Loop BB2_4 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB2_9 Depth 3
-	movgr2fr.w	$fa0, $s2
+                                        #       Child Loop BB2_8 Depth 3
+	movgr2fr.w	$fa0, $s3
 	ffint.d.w	$fa0, $fa0
 	fadd.d	$fa1, $fa0, $fa2
-	fmul.d	$fs4, $fs0, $fa1
+	fmul.d	$fs3, $fa4, $fa1
 	fadd.d	$fa0, $fa0, $fa3
-	fmul.d	$fs5, $fs0, $fa0
+	fmul.d	$fs4, $fa4, $fa0
 	move	$s0, $s8
-	move	$s6, $s3
-	b	.LBB2_9
+	move	$s5, $s2
+	b	.LBB2_8
 	.p2align	4, , 16
-.LBB2_8:                                #   in Loop: Header=BB2_9 Depth=3
-	addi.w	$s6, $s6, 1
+.LBB2_7:                                #   in Loop: Header=BB2_8 Depth=3
+	addi.w	$s5, $s5, 1
 	addi.w	$s0, $s0, 4
-	beq	$s7, $s6, .LBB2_6
-.LBB2_9:                                # %.preheader.us.us.us
-                                        #   Parent Loop BB2_5 Depth=1
-                                        #     Parent Loop BB2_7 Depth=2
+	beq	$s7, $s5, .LBB2_5
+.LBB2_8:                                # %.preheader.us.us.us
+                                        #   Parent Loop BB2_4 Depth=1
+                                        #     Parent Loop BB2_6 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa0, $s1, 96
-	movgr2fr.w	$fa1, $s6
-	ffint.d.w	$fs7, $fa1
-	fadd.d	$fa1, $fs7, $fa2
-	fcmp.clt.d	$fcc0, $fs2, $fa0
-	fmul.d	$fs6, $fs0, $fa1
-	bcnez	$fcc0, .LBB2_16
-# %bb.10:                               #   in Loop: Header=BB2_9 Depth=3
+	movgr2fr.w	$fa1, $s5
+	ffint.d.w	$fs6, $fa1
+	fadd.d	$fa1, $fs6, $fa2
+	fcmp.clt.d	$fcc0, $fs1, $fa0
+	fmul.d	$fs5, $fa4, $fa1
+	bcnez	$fcc0, .LBB2_15
+# %bb.9:                                #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 120
-	fcmp.cle.d	$fcc0, $fa1, $fs2
-	bcnez	$fcc0, .LBB2_16
-# %bb.11:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs1
+	bcnez	$fcc0, .LBB2_15
+# %bb.10:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 104
-	fcmp.clt.d	$fcc0, $fs4, $fa1
-	bcnez	$fcc0, .LBB2_16
-# %bb.12:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs3, $fa1
+	bcnez	$fcc0, .LBB2_15
+# %bb.11:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 128
-	fcmp.cle.d	$fcc0, $fa1, $fs4
-	bcnez	$fcc0, .LBB2_16
-# %bb.13:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs3
+	bcnez	$fcc0, .LBB2_15
+# %bb.12:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 112
-	fcmp.clt.d	$fcc0, $fs6, $fa1
-	bcnez	$fcc0, .LBB2_16
-# %bb.14:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs5, $fa1
+	bcnez	$fcc0, .LBB2_15
+# %bb.13:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 136
-	fcmp.cle.d	$fcc0, $fa1, $fs6
-	bcnez	$fcc0, .LBB2_16
-# %bb.15:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs5
+	bcnez	$fcc0, .LBB2_15
+# %bb.14:                               #   in Loop: Header=BB2_8 Depth=3
 	ld.d	$a0, $fp, 24
 	ld.d	$a1, $fp, 32
 	addi.w	$a2, $s0, -3
 	move	$a3, $zero
-	fmov.d	$fa0, $fs2
-	fmov.d	$fa1, $fs4
-	fmov.d	$fa2, $fs6
-	fmov.d	$fa3, $fs1
-	fmov.d	$fa4, $fs1
-	fmov.d	$fa5, $fs1
+	fmov.d	$fa0, $fs1
+	fmov.d	$fa1, $fs3
+	fmov.d	$fa2, $fs5
+	fmov.d	$fa3, $fs0
+	fmov.d	$fa4, $fs0
+	fmov.d	$fa5, $fs0
 	pcaddu18i	$ra, %call36(putAtomInBox)
 	jirl	$ra, $ra, 0
 	vldi	$vr3, -920
 	vldi	$vr2, -944
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	fld.d	$fa0, $s1, 96
 	.p2align	4, , 16
-.LBB2_16:                               #   in Loop: Header=BB2_9 Depth=3
-	fadd.d	$fa1, $fs7, $fa3
-	fcmp.clt.d	$fcc0, $fs2, $fa0
-	fmul.d	$fs7, $fs0, $fa1
-	bcnez	$fcc0, .LBB2_23
-# %bb.17:                               #   in Loop: Header=BB2_9 Depth=3
+.LBB2_15:                               #   in Loop: Header=BB2_8 Depth=3
+	fadd.d	$fa1, $fs6, $fa3
+	fcmp.clt.d	$fcc0, $fs1, $fa0
+	fmul.d	$fs6, $fa4, $fa1
+	bcnez	$fcc0, .LBB2_22
+# %bb.16:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 120
-	fcmp.cle.d	$fcc0, $fa1, $fs2
-	bcnez	$fcc0, .LBB2_23
-# %bb.18:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs1
+	bcnez	$fcc0, .LBB2_22
+# %bb.17:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 104
-	fcmp.clt.d	$fcc0, $fs5, $fa1
-	bcnez	$fcc0, .LBB2_23
-# %bb.19:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs4, $fa1
+	bcnez	$fcc0, .LBB2_22
+# %bb.18:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 128
-	fcmp.cle.d	$fcc0, $fa1, $fs5
-	bcnez	$fcc0, .LBB2_23
-# %bb.20:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs4
+	bcnez	$fcc0, .LBB2_22
+# %bb.19:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 112
-	fcmp.clt.d	$fcc0, $fs7, $fa1
-	bcnez	$fcc0, .LBB2_23
-# %bb.21:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs6, $fa1
+	bcnez	$fcc0, .LBB2_22
+# %bb.20:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 136
-	fcmp.cle.d	$fcc0, $fa1, $fs7
-	bcnez	$fcc0, .LBB2_23
-# %bb.22:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs6
+	bcnez	$fcc0, .LBB2_22
+# %bb.21:                               #   in Loop: Header=BB2_8 Depth=3
 	ld.d	$a0, $fp, 24
 	ld.d	$a1, $fp, 32
 	addi.w	$a2, $s0, -2
 	move	$a3, $zero
-	fmov.d	$fa0, $fs2
-	fmov.d	$fa1, $fs5
-	fmov.d	$fa2, $fs7
-	fmov.d	$fa3, $fs1
-	fmov.d	$fa4, $fs1
-	fmov.d	$fa5, $fs1
+	fmov.d	$fa0, $fs1
+	fmov.d	$fa1, $fs4
+	fmov.d	$fa2, $fs6
+	fmov.d	$fa3, $fs0
+	fmov.d	$fa4, $fs0
+	fmov.d	$fa5, $fs0
 	pcaddu18i	$ra, %call36(putAtomInBox)
 	jirl	$ra, $ra, 0
 	vldi	$vr3, -920
 	vldi	$vr2, -944
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	fld.d	$fa0, $s1, 96
 	.p2align	4, , 16
-.LBB2_23:                               #   in Loop: Header=BB2_9 Depth=3
-	fcmp.clt.d	$fcc0, $fs3, $fa0
-	bcnez	$fcc0, .LBB2_30
-# %bb.24:                               #   in Loop: Header=BB2_9 Depth=3
+.LBB2_22:                               #   in Loop: Header=BB2_8 Depth=3
+	fcmp.clt.d	$fcc0, $fs2, $fa0
+	bcnez	$fcc0, .LBB2_29
+# %bb.23:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 120
-	fcmp.cle.d	$fcc0, $fa1, $fs3
-	bcnez	$fcc0, .LBB2_30
-# %bb.25:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs2
+	bcnez	$fcc0, .LBB2_29
+# %bb.24:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 104
-	fcmp.clt.d	$fcc0, $fs4, $fa1
-	bcnez	$fcc0, .LBB2_30
-# %bb.26:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs3, $fa1
+	bcnez	$fcc0, .LBB2_29
+# %bb.25:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 128
-	fcmp.cle.d	$fcc0, $fa1, $fs4
-	bcnez	$fcc0, .LBB2_30
-# %bb.27:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs3
+	bcnez	$fcc0, .LBB2_29
+# %bb.26:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 112
-	fcmp.clt.d	$fcc0, $fs7, $fa1
-	bcnez	$fcc0, .LBB2_30
-# %bb.28:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs6, $fa1
+	bcnez	$fcc0, .LBB2_29
+# %bb.27:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa1, $s1, 136
-	fcmp.cle.d	$fcc0, $fa1, $fs7
-	bcnez	$fcc0, .LBB2_30
-# %bb.29:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa1, $fs6
+	bcnez	$fcc0, .LBB2_29
+# %bb.28:                               #   in Loop: Header=BB2_8 Depth=3
 	ld.d	$a0, $fp, 24
 	ld.d	$a1, $fp, 32
 	addi.w	$a2, $s0, -1
 	move	$a3, $zero
-	fmov.d	$fa0, $fs3
-	fmov.d	$fa1, $fs4
-	fmov.d	$fa2, $fs7
-	fmov.d	$fa3, $fs1
-	fmov.d	$fa4, $fs1
-	fmov.d	$fa5, $fs1
+	fmov.d	$fa0, $fs2
+	fmov.d	$fa1, $fs3
+	fmov.d	$fa2, $fs6
+	fmov.d	$fa3, $fs0
+	fmov.d	$fa4, $fs0
+	fmov.d	$fa5, $fs0
 	pcaddu18i	$ra, %call36(putAtomInBox)
 	jirl	$ra, $ra, 0
 	vldi	$vr3, -920
 	vldi	$vr2, -944
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
 	fld.d	$fa0, $s1, 96
 	.p2align	4, , 16
-.LBB2_30:                               #   in Loop: Header=BB2_9 Depth=3
-	fcmp.clt.d	$fcc0, $fs3, $fa0
-	bcnez	$fcc0, .LBB2_8
-# %bb.31:                               #   in Loop: Header=BB2_9 Depth=3
+.LBB2_29:                               #   in Loop: Header=BB2_8 Depth=3
+	fcmp.clt.d	$fcc0, $fs2, $fa0
+	bcnez	$fcc0, .LBB2_7
+# %bb.30:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa0, $s1, 120
-	fcmp.cle.d	$fcc0, $fa0, $fs3
-	bcnez	$fcc0, .LBB2_8
-# %bb.32:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa0, $fs2
+	bcnez	$fcc0, .LBB2_7
+# %bb.31:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa0, $s1, 104
-	fcmp.clt.d	$fcc0, $fs5, $fa0
-	bcnez	$fcc0, .LBB2_8
-# %bb.33:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs4, $fa0
+	bcnez	$fcc0, .LBB2_7
+# %bb.32:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa0, $s1, 128
-	fcmp.cle.d	$fcc0, $fa0, $fs5
-	bcnez	$fcc0, .LBB2_8
-# %bb.34:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa0, $fs4
+	bcnez	$fcc0, .LBB2_7
+# %bb.33:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa0, $s1, 112
-	fcmp.clt.d	$fcc0, $fs6, $fa0
-	bcnez	$fcc0, .LBB2_8
-# %bb.35:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.clt.d	$fcc0, $fs5, $fa0
+	bcnez	$fcc0, .LBB2_7
+# %bb.34:                               #   in Loop: Header=BB2_8 Depth=3
 	fld.d	$fa0, $s1, 136
-	fcmp.cle.d	$fcc0, $fa0, $fs6
-	bcnez	$fcc0, .LBB2_8
-# %bb.36:                               #   in Loop: Header=BB2_9 Depth=3
+	fcmp.cle.d	$fcc0, $fa0, $fs5
+	bcnez	$fcc0, .LBB2_7
+# %bb.35:                               #   in Loop: Header=BB2_8 Depth=3
 	ld.d	$a0, $fp, 24
 	ld.d	$a1, $fp, 32
 	move	$a2, $s0
 	move	$a3, $zero
-	fmov.d	$fa0, $fs3
-	fmov.d	$fa1, $fs5
-	fmov.d	$fa2, $fs6
-	fmov.d	$fa3, $fs1
-	fmov.d	$fa4, $fs1
-	fmov.d	$fa5, $fs1
+	fmov.d	$fa0, $fs2
+	fmov.d	$fa1, $fs4
+	fmov.d	$fa2, $fs5
+	fmov.d	$fa3, $fs0
+	fmov.d	$fa4, $fs0
+	fmov.d	$fa5, $fs0
 	pcaddu18i	$ra, %call36(putAtomInBox)
 	jirl	$ra, $ra, 0
 	vldi	$vr3, -920
 	vldi	$vr2, -944
-	b	.LBB2_8
-.LBB2_37:                               # %._crit_edge
+	vld	$vr4, $sp, 48                   # 16-byte Folded Reload
+	b	.LBB2_7
+.LBB2_36:                               # %._crit_edge
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(profileStart)
 	jirl	$ra, $ra, 0
@@ -487,7 +487,6 @@ createFccLattice:                       # @createFccLattice
 	pcaddu18i	$ra, %call36(addIntParallel)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 10
-	fld.d	$fs7, $sp, 56                   # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$fs5, $sp, 72                   # 8-byte Folded Reload
 	fld.d	$fs4, $sp, 80                   # 8-byte Folded Reload

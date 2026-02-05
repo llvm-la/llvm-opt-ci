@@ -73,35 +73,37 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$a1, $zero
-	move	$a2, $zero
 	add.d	$a0, $s1, $fp
-	addi.d	$a3, $s0, 20
+	addi.d	$a2, $s0, 36
+	ori	$a3, $zero, 3
 	.p2align	4, , 16
 .LBB0_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$a1, $a3, -20
-	addi.d	$a4, $a2, 1
-	st.w	$a4, $a3, -16
-	addi.d	$a4, $a2, 2
-	st.w	$a4, $a3, -12
-	addi.d	$a4, $a2, 3
-	st.w	$a4, $a3, -8
-	addi.d	$a4, $a2, 4
-	st.w	$a4, $a3, -4
-	addi.d	$a4, $a2, 5
-	st.w	$a4, $a3, 0
-	addi.d	$a4, $a2, 6
-	st.w	$a4, $a3, 4
-	addi.d	$a4, $a2, 7
-	st.w	$a4, $a3, 8
-	addi.d	$a4, $a2, 8
-	st.w	$a4, $a3, 12
-	addi.d	$a4, $a2, 9
-	st.w	$a4, $a3, 16
-	addi.d	$a2, $a2, 10
+	addi.d	$a4, $a3, 4
+	addi.d	$a5, $a3, 3
+	addi.d	$a6, $a3, 2
+	addi.d	$a7, $a3, 1
+	addi.d	$t0, $a3, -1
+	addi.d	$t1, $a3, -2
+	addi.d	$t2, $a3, -3
+	vinsgr2vr.w	$vr0, $a7, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	vinsgr2vr.w	$vr0, $a5, 2
+	vinsgr2vr.w	$vr0, $a4, 3
+	vinsgr2vr.w	$vr1, $t2, 0
+	vinsgr2vr.w	$vr1, $t1, 1
+	vinsgr2vr.w	$vr1, $t0, 2
+	vinsgr2vr.w	$vr1, $a3, 3
+	xvpermi.q	$xr1, $xr0, 2
+	xvst	$xr1, $a2, -36
+	addi.d	$a4, $a1, 8
+	st.w	$a4, $a2, -4
+	addi.d	$a4, $a1, 9
+	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, 10
-	addi.d	$a3, $a3, 40
-	bltu	$a2, $s3, .LBB0_6
+	addi.d	$a3, $a3, 10
+	addi.d	$a2, $a2, 40
+	bltu	$a1, $s3, .LBB0_6
 # %bb.7:                                # %.lr.ph164.preheader
 	addi.d	$a1, $s3, 10
 	slli.d	$a2, $s3, 2

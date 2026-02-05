@@ -61,8 +61,7 @@ main:                                   # @main
 # %bb.2:                                # %vector.ph
 	move	$fp, $a0
 	ld.d	$a2, $s0, %pc_lo12(inputImage)
-	addu16i.d	$a0, $a0, 16
-	addi.d	$s2, $a0, -2048
+	addu16i.d	$s2, $a0, 16
 	ori	$a0, $zero, 512
 	ori	$a1, $zero, 512
 	ori	$a4, $zero, 10
@@ -85,122 +84,122 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
 	xvld	$xr1, $a0, %pc_lo12(.LCPI0_1)
 	xvrepli.b	$xr2, 0
-	xvst	$xr2, $s2, 0
-	xvst	$xr2, $s2, 32
-	xvst	$xr2, $s2, 64
-	xvst	$xr2, $s2, 96
-	xvst	$xr2, $s2, 128
-	xvst	$xr2, $s2, 160
-	xvst	$xr2, $s2, 192
-	xvst	$xr2, $s2, 224
-	xvst	$xr2, $s2, 256
-	xvst	$xr2, $s2, 288
-	xvst	$xr2, $s2, 320
-	xvst	$xr2, $s2, 352
-	xvst	$xr2, $s2, 384
-	xvst	$xr2, $s2, 416
-	xvst	$xr2, $s2, 448
-	xvst	$xr2, $s2, 480
-	xvst	$xr2, $s2, 512
-	xvst	$xr2, $s2, 544
-	xvst	$xr2, $s2, 576
-	xvst	$xr2, $s2, 608
-	xvst	$xr2, $s2, 640
-	xvst	$xr2, $s2, 672
-	xvst	$xr2, $s2, 704
-	xvst	$xr2, $s2, 736
-	xvst	$xr2, $s2, 768
-	xvst	$xr2, $s2, 800
-	xvst	$xr2, $s2, 832
-	xvst	$xr2, $s2, 864
-	xvst	$xr2, $s2, 896
-	xvst	$xr2, $s2, 928
-	xvst	$xr2, $s2, 960
-	xvst	$xr2, $s2, 992
-	xvst	$xr2, $s2, 1024
-	xvst	$xr2, $s2, 1056
-	xvst	$xr2, $s2, 1088
-	xvst	$xr2, $s2, 1120
-	xvst	$xr2, $s2, 1152
-	xvst	$xr2, $s2, 1184
-	xvst	$xr2, $s2, 1216
-	xvst	$xr2, $s2, 1248
-	xvst	$xr2, $s2, 1280
-	xvst	$xr2, $s2, 1312
-	xvst	$xr2, $s2, 1344
-	xvst	$xr2, $s2, 1376
-	xvst	$xr2, $s2, 1408
-	xvst	$xr2, $s2, 1440
-	xvst	$xr2, $s2, 1472
-	xvst	$xr2, $s2, 1504
-	xvst	$xr2, $s2, 1536
-	xvst	$xr2, $s2, 1568
-	xvst	$xr2, $s2, 1600
-	xvst	$xr2, $s2, 1632
-	xvst	$xr2, $s2, 1664
-	xvst	$xr2, $s2, 1696
-	xvst	$xr2, $s2, 1728
-	xvst	$xr2, $s2, 1760
-	xvst	$xr2, $s2, 1792
-	xvst	$xr2, $s2, 1824
-	xvst	$xr2, $s2, 1856
-	xvst	$xr2, $s2, 1888
-	xvst	$xr2, $s2, 1920
-	xvst	$xr2, $s2, 1952
-	xvst	$xr2, $s2, 1984
-	xvst	$xr2, $s2, 2016
+	xvst	$xr2, $s2, -2048
+	xvst	$xr2, $s2, -2016
+	xvst	$xr2, $s2, -1984
+	xvst	$xr2, $s2, -1952
+	xvst	$xr2, $s2, -1920
+	xvst	$xr2, $s2, -1888
+	xvst	$xr2, $s2, -1856
+	xvst	$xr2, $s2, -1824
+	xvst	$xr2, $s2, -1792
+	xvst	$xr2, $s2, -1760
+	xvst	$xr2, $s2, -1728
+	xvst	$xr2, $s2, -1696
+	xvst	$xr2, $s2, -1664
+	xvst	$xr2, $s2, -1632
+	xvst	$xr2, $s2, -1600
+	xvst	$xr2, $s2, -1568
+	xvst	$xr2, $s2, -1536
+	xvst	$xr2, $s2, -1504
+	xvst	$xr2, $s2, -1472
+	xvst	$xr2, $s2, -1440
+	xvst	$xr2, $s2, -1408
+	xvst	$xr2, $s2, -1376
+	xvst	$xr2, $s2, -1344
+	xvst	$xr2, $s2, -1312
+	xvst	$xr2, $s2, -1280
+	xvst	$xr2, $s2, -1248
+	xvst	$xr2, $s2, -1216
+	xvst	$xr2, $s2, -1184
+	xvst	$xr2, $s2, -1152
+	xvst	$xr2, $s2, -1120
+	xvst	$xr2, $s2, -1088
+	xvst	$xr2, $s2, -1056
+	xvst	$xr2, $s2, -1024
+	xvst	$xr2, $s2, -992
+	xvst	$xr2, $s2, -960
+	xvst	$xr2, $s2, -928
+	xvst	$xr2, $s2, -896
+	xvst	$xr2, $s2, -864
+	xvst	$xr2, $s2, -832
+	xvst	$xr2, $s2, -800
+	xvst	$xr2, $s2, -768
+	xvst	$xr2, $s2, -736
+	xvst	$xr2, $s2, -704
+	xvst	$xr2, $s2, -672
+	xvst	$xr2, $s2, -640
+	xvst	$xr2, $s2, -608
+	xvst	$xr2, $s2, -576
+	xvst	$xr2, $s2, -544
+	xvst	$xr2, $s2, -512
+	xvst	$xr2, $s2, -480
+	xvst	$xr2, $s2, -448
+	xvst	$xr2, $s2, -416
+	xvst	$xr2, $s2, -384
+	xvst	$xr2, $s2, -352
+	xvst	$xr2, $s2, -320
+	xvst	$xr2, $s2, -288
+	xvst	$xr2, $s2, -256
+	xvst	$xr2, $s2, -224
+	xvst	$xr2, $s2, -192
+	xvst	$xr2, $s2, -160
+	xvst	$xr2, $s2, -128
+	xvst	$xr2, $s2, -96
+	xvst	$xr2, $s2, -64
+	xvst	$xr2, $s2, -32
 	.p2align	4, , 16
 .LBB0_3:                                # %vector.body37
                                         # =>This Inner Loop Header: Depth=1
 	xvslli.d	$xr2, $xr0, 11
 	xvslli.d	$xr3, $xr1, 11
 	xvpickve2gr.d	$a0, $xr3, 0
-	add.d	$a1, $fp, $a0
-	xvpickve2gr.d	$a2, $xr3, 1
-	add.d	$a3, $fp, $a2
-	xvpickve2gr.d	$a4, $xr3, 2
-	add.d	$a5, $fp, $a4
-	xvpickve2gr.d	$a6, $xr3, 3
-	add.d	$a7, $fp, $a6
-	xvpickve2gr.d	$t0, $xr2, 0
-	add.d	$t1, $fp, $t0
-	xvpickve2gr.d	$t2, $xr2, 1
-	add.d	$t3, $fp, $t2
-	xvpickve2gr.d	$t4, $xr2, 2
-	add.d	$t5, $fp, $t4
-	xvpickve2gr.d	$t6, $xr2, 3
-	add.d	$t7, $fp, $t6
+	xvpickve2gr.d	$a1, $xr3, 1
+	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a3, $xr3, 3
+	xvpickve2gr.d	$a4, $xr2, 0
+	xvpickve2gr.d	$a5, $xr2, 1
+	xvpickve2gr.d	$a6, $xr2, 2
+	xvpickve2gr.d	$a7, $xr2, 3
+	add.d	$t0, $fp, $a0
+	add.d	$t1, $fp, $a1
+	add.d	$t2, $fp, $a2
+	add.d	$t3, $fp, $a3
+	add.d	$t4, $fp, $a4
+	add.d	$t5, $fp, $a5
+	add.d	$t6, $fp, $a6
+	add.d	$t7, $fp, $a7
 	stx.w	$zero, $fp, $a0
+	stx.w	$zero, $fp, $a1
 	stx.w	$zero, $fp, $a2
+	stx.w	$zero, $fp, $a3
 	stx.w	$zero, $fp, $a4
+	stx.w	$zero, $fp, $a5
 	stx.w	$zero, $fp, $a6
-	stx.w	$zero, $fp, $t0
-	stx.w	$zero, $fp, $t2
-	stx.w	$zero, $fp, $t4
-	stx.w	$zero, $fp, $t6
-	st.w	$zero, $a1, 4
-	st.w	$zero, $a3, 4
-	st.w	$zero, $a5, 4
-	st.w	$zero, $a7, 4
+	stx.w	$zero, $fp, $a7
+	st.w	$zero, $t0, 4
 	st.w	$zero, $t1, 4
+	st.w	$zero, $t2, 4
 	st.w	$zero, $t3, 4
+	st.w	$zero, $t4, 4
 	st.w	$zero, $t5, 4
+	st.w	$zero, $t6, 4
 	st.w	$zero, $t7, 4
-	st.w	$zero, $a1, 2044
-	st.w	$zero, $a3, 2044
-	st.w	$zero, $a5, 2044
-	st.w	$zero, $a7, 2044
+	st.w	$zero, $t0, 2044
 	st.w	$zero, $t1, 2044
+	st.w	$zero, $t2, 2044
 	st.w	$zero, $t3, 2044
+	st.w	$zero, $t4, 2044
 	st.w	$zero, $t5, 2044
+	st.w	$zero, $t6, 2044
 	st.w	$zero, $t7, 2044
-	st.w	$zero, $a1, 2040
-	st.w	$zero, $a3, 2040
-	st.w	$zero, $a5, 2040
-	st.w	$zero, $a7, 2040
+	st.w	$zero, $t0, 2040
 	st.w	$zero, $t1, 2040
+	st.w	$zero, $t2, 2040
 	st.w	$zero, $t3, 2040
+	st.w	$zero, $t4, 2040
 	st.w	$zero, $t5, 2040
+	st.w	$zero, $t6, 2040
 	st.w	$zero, $t7, 2040
 	xvaddi.du	$xr1, $xr1, 8
 	addi.d	$s1, $s1, -8
@@ -471,28 +470,30 @@ _GLOBAL__sub_I_main.cpp:                # @_GLOBAL__sub_I_main.cpp
 .LBB2_11:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp2:                                 # EH_LABEL
 	move	$s0, $a0
-	b	.LBB2_15
+	b	.LBB2_16
 .LBB2_12:
 .Ltmp17:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB2_14
-# %bb.13:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s2, .LBB2_15
-	b	.LBB2_16
-.LBB2_14:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB2_15
+# %bb.13:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bnez	$s2, .LBB2_16
+.LBB2_14:
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB2_15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s2, .LBB2_16
-.LBB2_15:
+	beqz	$s2, .LBB2_14
+.LBB2_16:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_16:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

@@ -954,7 +954,7 @@ init_array:                             # @init_array
 	bnez	$t6, .LBB8_26
 	b	.LBB8_23
 	.p2align	4, , 16
-.LBB8_27:                               # %vector.body21.preheader
+.LBB8_27:                               # %vector.ph20
                                         #   in Loop: Header=BB8_24 Depth=2
 	xvldrepl.d	$xr0, $t4, 0
 	move	$t4, $a2

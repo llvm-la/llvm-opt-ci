@@ -45,11 +45,11 @@ hsfc2d:                                 # @hsfc2d
 	move	$a1, $zero
 	slli.d	$a3, $s2, 4
 	sub.w	$a3, $zero, $a3
-	ori	$a4, $zero, 1
-	ori	$a5, $zero, 2
-	ori	$a6, $zero, 32
-	ori	$a7, $zero, 3
 	ori	$t0, $zero, 1
+	ori	$a4, $zero, 2
+	ori	$a5, $zero, 32
+	ori	$a6, $zero, 3
+	ori	$a7, $zero, 1
 	b	.LBB0_7
 	.p2align	4, , 16
 .LBB0_4:                                #   in Loop: Header=BB0_7 Depth=1
@@ -57,9 +57,9 @@ hsfc2d:                                 # @hsfc2d
 .LBB0_5:                                #   in Loop: Header=BB0_7 Depth=1
 	move	$t1, $t0
 .LBB0_6:                                #   in Loop: Header=BB0_7 Depth=1
-	addi.w	$a4, $a4, 1
+	addi.w	$a7, $a7, 1
 	addi.w	$a0, $a0, -1
-	addi.d	$a5, $a5, 2
+	addi.d	$a4, $a4, 2
 	move	$t0, $a2
 	move	$a2, $t1
 	beq	$a3, $a0, .LBB0_10
@@ -76,21 +76,21 @@ hsfc2d:                                 # @hsfc2d
 	or	$t1, $t2, $t1
 	xor	$t1, $t1, $a1
 	ldx.bu	$t1, $s1, $t1
-	bstrpick.d	$t2, $a4, 31, 4
-	andi	$t3, $a5, 30
+	bstrpick.d	$t2, $a7, 31, 4
+	andi	$t3, $a4, 30
 	sltui	$t4, $t3, 1
 	sub.d	$t2, $t2, $t4
 	bstrpick.d	$t2, $t2, 31, 0
 	slli.d	$t2, $t2, 2
 	ldx.w	$t5, $fp, $t2
-	sub.d	$t3, $a6, $t3
+	sub.d	$t3, $a5, $t3
 	masknez	$t3, $t3, $t4
 	sll.w	$t3, $t1, $t3
 	or	$t3, $t5, $t3
 	stx.w	$t3, $fp, $t2
 	beqz	$t1, .LBB0_5
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1
-	beq	$t1, $a7, .LBB0_4
+	beq	$t1, $a6, .LBB0_4
 # %bb.9:                                #   in Loop: Header=BB0_7 Depth=1
 	move	$t1, $a2
 	move	$a2, $t0
@@ -360,11 +360,11 @@ fhsfc2d:                                # @fhsfc2d
 	move	$a1, $zero
 	slli.d	$a3, $s3, 4
 	sub.w	$a3, $zero, $a3
-	ori	$a4, $zero, 1
-	ori	$a5, $zero, 2
-	ori	$a6, $zero, 32
-	ori	$a7, $zero, 3
 	ori	$t0, $zero, 1
+	ori	$a4, $zero, 2
+	ori	$a5, $zero, 32
+	ori	$a6, $zero, 3
+	ori	$a7, $zero, 1
 	b	.LBB2_7
 	.p2align	4, , 16
 .LBB2_4:                                #   in Loop: Header=BB2_7 Depth=1
@@ -372,9 +372,9 @@ fhsfc2d:                                # @fhsfc2d
 .LBB2_5:                                #   in Loop: Header=BB2_7 Depth=1
 	move	$t1, $t0
 .LBB2_6:                                #   in Loop: Header=BB2_7 Depth=1
-	addi.w	$a4, $a4, 1
+	addi.w	$a7, $a7, 1
 	addi.w	$a0, $a0, -1
-	addi.d	$a5, $a5, 2
+	addi.d	$a4, $a4, 2
 	move	$t0, $a2
 	move	$a2, $t1
 	beq	$a3, $a0, .LBB2_10
@@ -389,21 +389,21 @@ fhsfc2d:                                # @fhsfc2d
 	or	$t1, $t1, $t2
 	xor	$t1, $t1, $a1
 	ldx.bu	$t1, $s0, $t1
-	bstrpick.d	$t2, $a4, 31, 4
-	andi	$t3, $a5, 30
+	bstrpick.d	$t2, $a7, 31, 4
+	andi	$t3, $a4, 30
 	sltui	$t4, $t3, 1
 	sub.d	$t2, $t2, $t4
 	bstrpick.d	$t2, $t2, 31, 0
 	slli.d	$t2, $t2, 2
 	ldx.w	$t5, $fp, $t2
-	sub.d	$t3, $a6, $t3
+	sub.d	$t3, $a5, $t3
 	masknez	$t3, $t3, $t4
 	sll.w	$t3, $t1, $t3
 	or	$t3, $t3, $t5
 	stx.w	$t3, $fp, $t2
 	beqz	$t1, .LBB2_5
 # %bb.8:                                #   in Loop: Header=BB2_7 Depth=1
-	beq	$t1, $a7, .LBB2_4
+	beq	$t1, $a6, .LBB2_4
 # %bb.9:                                #   in Loop: Header=BB2_7 Depth=1
 	move	$t1, $a2
 	move	$a2, $t0

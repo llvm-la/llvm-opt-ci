@@ -36,6 +36,11 @@ jinit_read_gif:                         # @jinit_read_gif
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
+.LCPI1_1:
+	.word	1                               # 0x1
+	.word	0                               # 0x0
+	.word	2                               # 0x2
+	.word	1                               # 0x1
 	.text
 	.p2align	5
 	.type	start_input_gif,@function
@@ -480,17 +485,19 @@ start_input_gif:                        # @start_input_gif
 	st.w	$a2, $s0, 344
 	addi.d	$a3, $a2, 1
 	st.w	$a3, $s0, 348
-	st.w	$s4, $s0, 364
-	addi.d	$a3, $a1, 1
-	st.w	$a3, $s0, 352
 	ori	$a3, $zero, 2
-	sll.w	$a1, $a3, $a1
-	ld.w	$a3, $s0, 408
-	st.w	$a1, $s0, 356
-	addi.d	$a1, $a2, 2
-	st.w	$a1, $s0, 360
+	sll.w	$a3, $a3, $a1
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a1, 0
+	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_1)
+	vinsgr2vr.w	$vr0, $a3, 1
+	ld.w	$a1, $s0, 408
+	vinsgr2vr.w	$vr0, $a2, 2
+	vadd.w	$vr0, $vr0, $vr1
+	vst	$vr0, $s0, 352
 	st.d	$a0, $s0, 400
-	beqz	$a3, .LBB1_62
+	beqz	$a1, .LBB1_62
 # %bb.60:
 	ld.d	$a0, $fp, 8
 	ld.d	$a6, $a0, 32

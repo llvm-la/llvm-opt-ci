@@ -1,41 +1,6 @@
 	.file	"IntToString.cpp"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z21ConvertUInt64ToStringyPcj
-.LCPI0_0:
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
 	.text
-	.globl	_Z21ConvertUInt64ToStringyPcj
+	.globl	_Z21ConvertUInt64ToStringyPcj   # -- Begin function _Z21ConvertUInt64ToStringyPcj
 	.p2align	5
 	.type	_Z21ConvertUInt64ToStringyPcj,@function
 _Z21ConvertUInt64ToStringyPcj:          # @_Z21ConvertUInt64ToStringyPcj
@@ -71,8 +36,8 @@ _Z21ConvertUInt64ToStringyPcj:          # @_Z21ConvertUInt64ToStringyPcj
 	ori	$a0, $zero, 1
 	bge	$a4, $a2, .LBB0_6
 # %bb.5:
-	move	$a2, $a4
-	move	$a3, $a1
+	move	$a3, $a4
+	move	$a2, $a1
 	b	.LBB0_9
 .LBB0_6:                                # %vector.ph
 	slt	$a2, $a0, $a4
@@ -81,10 +46,8 @@ _Z21ConvertUInt64ToStringyPcj:          # @_Z21ConvertUInt64ToStringyPcj
 	or	$a5, $a2, $a3
 	bstrpick.d	$a2, $a5, 30, 5
 	slli.d	$a6, $a2, 5
-	sub.d	$a2, $a4, $a6
-	add.d	$a3, $a1, $a6
-	pcalau12i	$a7, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI0_0)
+	sub.d	$a3, $a4, $a6
+	add.d	$a2, $a1, $a6
 	addi.d	$a7, $sp, 8
 	add.d	$a4, $a7, $a4
 	addi.d	$a4, $a4, -32
@@ -92,10 +55,11 @@ _Z21ConvertUInt64ToStringyPcj:          # @_Z21ConvertUInt64ToStringyPcj
 	.p2align	4, , 16
 .LBB0_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a4, 0
-	xvpermi.d	$xr1, $xr1, 78
-	xvshuf.b	$xr1, $xr0, $xr1, $xr0
-	xvst	$xr1, $a1, 0
+	xvld	$xr0, $a4, 0
+	xvpermi.d	$xr0, $xr0, 78
+	xvshuf4i.w	$xr0, $xr0, 27
+	xvshuf4i.b	$xr0, $xr0, 27
+	xvst	$xr0, $a1, 0
 	addi.d	$a4, $a4, -32
 	addi.d	$a7, $a7, -32
 	addi.d	$a1, $a1, 32
@@ -104,19 +68,17 @@ _Z21ConvertUInt64ToStringyPcj:          # @_Z21ConvertUInt64ToStringyPcj
 	beq	$a5, $a6, .LBB0_11
 .LBB0_9:                                # %.preheader.preheader29
 	addi.d	$a1, $sp, 7
-	move	$a4, $a3
 	.p2align	4, , 16
 .LBB0_10:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a2
-	ldx.b	$a6, $a1, $a2
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a4, 1
-	st.b	$a6, $a4, 0
 	move	$a4, $a3
-	blt	$a0, $a5, .LBB0_10
+	ldx.b	$a5, $a1, $a3
+	addi.d	$a3, $a3, -1
+	st.b	$a5, $a2, 0
+	addi.d	$a2, $a2, 1
+	blt	$a0, $a4, .LBB0_10
 .LBB0_11:                               # %.loopexit
-	st.b	$zero, $a3, 0
+	st.b	$zero, $a2, 0
 	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end0:
@@ -189,16 +151,14 @@ _Z21ConvertUInt64ToStringyPw:           # @_Z21ConvertUInt64ToStringyPw
 	addi.d	$a3, $sp, 16
 	alsl.d	$a3, $a4, $a3, 2
 	addi.d	$a3, $a3, -4
-	move	$a4, $a2
 	.p2align	4, , 16
 .LBB1_8:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, 0
-	addi.d	$a2, $a4, 4
-	st.w	$a5, $a4, 0
+	ld.w	$a4, $a3, 0
+	st.w	$a4, $a2, 0
+	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, -4
-	move	$a4, $a2
 	blt	$a0, $a1, .LBB1_8
 .LBB1_9:                                # %.loopexit
 	st.w	$zero, $a2, 0
@@ -207,43 +167,7 @@ _Z21ConvertUInt64ToStringyPw:           # @_Z21ConvertUInt64ToStringyPw
 .Lfunc_end1:
 	.size	_Z21ConvertUInt64ToStringyPw, .Lfunc_end1-_Z21ConvertUInt64ToStringyPw
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z21ConvertUInt32ToStringjPc
-.LCPI2_0:
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.text
-	.globl	_Z21ConvertUInt32ToStringjPc
+	.globl	_Z21ConvertUInt32ToStringjPc    # -- Begin function _Z21ConvertUInt32ToStringjPc
 	.p2align	5
 	.type	_Z21ConvertUInt32ToStringjPc,@function
 _Z21ConvertUInt32ToStringjPc:           # @_Z21ConvertUInt32ToStringjPc
@@ -275,8 +199,8 @@ _Z21ConvertUInt32ToStringjPc:           # @_Z21ConvertUInt32ToStringjPc
 	ori	$a0, $zero, 1
 	bge	$a4, $a2, .LBB2_4
 # %bb.3:
-	move	$a2, $a4
-	move	$a3, $a1
+	move	$a3, $a4
+	move	$a2, $a1
 	b	.LBB2_7
 .LBB2_4:                                # %vector.ph
 	slt	$a2, $a0, $a4
@@ -285,10 +209,8 @@ _Z21ConvertUInt32ToStringjPc:           # @_Z21ConvertUInt32ToStringjPc
 	or	$a5, $a2, $a3
 	bstrpick.d	$a2, $a5, 30, 5
 	slli.d	$a6, $a2, 5
-	sub.d	$a2, $a4, $a6
-	add.d	$a3, $a1, $a6
-	pcalau12i	$a7, %pc_hi20(.LCPI2_0)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI2_0)
+	sub.d	$a3, $a4, $a6
+	add.d	$a2, $a1, $a6
 	addi.d	$a7, $sp, 8
 	add.d	$a4, $a7, $a4
 	addi.d	$a4, $a4, -32
@@ -296,10 +218,11 @@ _Z21ConvertUInt32ToStringjPc:           # @_Z21ConvertUInt32ToStringjPc
 	.p2align	4, , 16
 .LBB2_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a4, 0
-	xvpermi.d	$xr1, $xr1, 78
-	xvshuf.b	$xr1, $xr0, $xr1, $xr0
-	xvst	$xr1, $a1, 0
+	xvld	$xr0, $a4, 0
+	xvpermi.d	$xr0, $xr0, 78
+	xvshuf4i.w	$xr0, $xr0, 27
+	xvshuf4i.b	$xr0, $xr0, 27
+	xvst	$xr0, $a1, 0
 	addi.d	$a4, $a4, -32
 	addi.d	$a7, $a7, -32
 	addi.d	$a1, $a1, 32
@@ -308,19 +231,17 @@ _Z21ConvertUInt32ToStringjPc:           # @_Z21ConvertUInt32ToStringjPc
 	beq	$a5, $a6, .LBB2_9
 .LBB2_7:                                # %.preheader.i.preheader
 	addi.d	$a1, $sp, 7
-	move	$a4, $a3
 	.p2align	4, , 16
 .LBB2_8:                                # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a2
-	ldx.b	$a6, $a1, $a2
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a4, 1
-	st.b	$a6, $a4, 0
 	move	$a4, $a3
-	blt	$a0, $a5, .LBB2_8
+	ldx.b	$a5, $a1, $a3
+	addi.d	$a3, $a3, -1
+	st.b	$a5, $a2, 0
+	addi.d	$a2, $a2, 1
+	blt	$a0, $a4, .LBB2_8
 .LBB2_9:                                # %_Z21ConvertUInt64ToStringyPcj.exit
-	st.b	$zero, $a3, 0
+	st.b	$zero, $a2, 0
 	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end2:
@@ -394,16 +315,14 @@ _Z21ConvertUInt32ToStringjPw:           # @_Z21ConvertUInt32ToStringjPw
 	addi.d	$a3, $sp, 16
 	alsl.d	$a3, $a4, $a3, 2
 	addi.d	$a3, $a3, -4
-	move	$a4, $a2
 	.p2align	4, , 16
 .LBB3_8:                                # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, 0
-	addi.d	$a2, $a4, 4
-	st.w	$a5, $a4, 0
+	ld.w	$a4, $a3, 0
+	st.w	$a4, $a2, 0
+	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, -4
-	move	$a4, $a2
 	blt	$a0, $a1, .LBB3_8
 .LBB3_9:                                # %_Z21ConvertUInt64ToStringyPw.exit
 	st.w	$zero, $a2, 0
@@ -412,43 +331,7 @@ _Z21ConvertUInt32ToStringjPw:           # @_Z21ConvertUInt32ToStringjPw
 .Lfunc_end3:
 	.size	_Z21ConvertUInt32ToStringjPw, .Lfunc_end3-_Z21ConvertUInt32ToStringjPw
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z20ConvertInt64ToStringxPc
-.LCPI4_0:
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.text
-	.globl	_Z20ConvertInt64ToStringxPc
+	.globl	_Z20ConvertInt64ToStringxPc     # -- Begin function _Z20ConvertInt64ToStringxPc
 	.p2align	5
 	.type	_Z20ConvertInt64ToStringxPc,@function
 _Z20ConvertInt64ToStringxPc:            # @_Z20ConvertInt64ToStringxPc
@@ -486,8 +369,8 @@ _Z20ConvertInt64ToStringxPc:            # @_Z20ConvertInt64ToStringxPc
 	ori	$a0, $zero, 1
 	bge	$a4, $a2, .LBB4_6
 # %bb.5:
-	move	$a2, $a4
-	move	$a3, $a1
+	move	$a3, $a4
+	move	$a2, $a1
 	b	.LBB4_9
 .LBB4_6:                                # %vector.ph
 	slt	$a2, $a0, $a4
@@ -496,10 +379,8 @@ _Z20ConvertInt64ToStringxPc:            # @_Z20ConvertInt64ToStringxPc
 	or	$a5, $a2, $a3
 	bstrpick.d	$a2, $a5, 30, 5
 	slli.d	$a6, $a2, 5
-	sub.d	$a2, $a4, $a6
-	add.d	$a3, $a1, $a6
-	pcalau12i	$a7, %pc_hi20(.LCPI4_0)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI4_0)
+	sub.d	$a3, $a4, $a6
+	add.d	$a2, $a1, $a6
 	addi.d	$a7, $sp, 8
 	add.d	$a4, $a7, $a4
 	addi.d	$a4, $a4, -32
@@ -507,10 +388,11 @@ _Z20ConvertInt64ToStringxPc:            # @_Z20ConvertInt64ToStringxPc
 	.p2align	4, , 16
 .LBB4_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a4, 0
-	xvpermi.d	$xr1, $xr1, 78
-	xvshuf.b	$xr1, $xr0, $xr1, $xr0
-	xvst	$xr1, $a1, 0
+	xvld	$xr0, $a4, 0
+	xvpermi.d	$xr0, $xr0, 78
+	xvshuf4i.w	$xr0, $xr0, 27
+	xvshuf4i.b	$xr0, $xr0, 27
+	xvst	$xr0, $a1, 0
 	addi.d	$a4, $a4, -32
 	addi.d	$a7, $a7, -32
 	addi.d	$a1, $a1, 32
@@ -519,19 +401,17 @@ _Z20ConvertInt64ToStringxPc:            # @_Z20ConvertInt64ToStringxPc
 	beq	$a5, $a6, .LBB4_11
 .LBB4_9:                                # %.preheader.i.preheader
 	addi.d	$a1, $sp, 7
-	move	$a4, $a3
 	.p2align	4, , 16
 .LBB4_10:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$a5, $a2
-	ldx.b	$a6, $a1, $a2
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a4, 1
-	st.b	$a6, $a4, 0
 	move	$a4, $a3
-	blt	$a0, $a5, .LBB4_10
+	ldx.b	$a5, $a1, $a3
+	addi.d	$a3, $a3, -1
+	st.b	$a5, $a2, 0
+	addi.d	$a2, $a2, 1
+	blt	$a0, $a4, .LBB4_10
 .LBB4_11:                               # %_Z21ConvertUInt64ToStringyPcj.exit
-	st.b	$zero, $a3, 0
+	st.b	$zero, $a2, 0
 	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end4:
@@ -611,16 +491,14 @@ _Z20ConvertInt64ToStringxPw:            # @_Z20ConvertInt64ToStringxPw
 	addi.d	$a3, $sp, 16
 	alsl.d	$a3, $a4, $a3, 2
 	addi.d	$a3, $a3, -4
-	move	$a4, $a2
 	.p2align	4, , 16
 .LBB5_10:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, 0
-	addi.d	$a2, $a4, 4
-	st.w	$a5, $a4, 0
+	ld.w	$a4, $a3, 0
+	st.w	$a4, $a2, 0
+	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, -4
-	move	$a4, $a2
 	blt	$a0, $a1, .LBB5_10
 .LBB5_11:                               # %_Z21ConvertUInt64ToStringyPw.exit
 	st.w	$zero, $a2, 0

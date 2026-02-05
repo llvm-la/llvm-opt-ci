@@ -365,7 +365,7 @@ ADD_TO_TEXT_RECORD:                     # @ADD_TO_TEXT_RECORD
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$s1, $a2
-	move	$s4, $a1
+	move	$s7, $a1
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -375,9 +375,9 @@ ADD_TO_TEXT_RECORD:                     # @ADD_TO_TEXT_RECORD
 # %bb.1:
 	move	$s0, $a0
 	pcalau12i	$a1, %pc_hi20(MAX_SIZE)
-	ld.w	$s7, $a1, %pc_lo12(MAX_SIZE)
+	ld.w	$s4, $a1, %pc_lo12(MAX_SIZE)
 	addi.w	$a0, $a0, 0
-	blt	$s7, $a0, .LBB5_11
+	blt	$s4, $a0, .LBB5_11
 # %bb.2:
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$s6, %pc_hi20(NEXT_COL)
@@ -388,14 +388,14 @@ ADD_TO_TEXT_RECORD:                     # @ADD_TO_TEXT_RECORD
 	add.w	$a1, $a0, $a1
 	srli.d	$a1, $a1, 1
 	add.w	$a1, $a1, $s2
-	beq	$a1, $s4, .LBB5_6
+	beq	$a1, $s7, .LBB5_6
 # %bb.3:
 	pcalau12i	$a0, %pc_hi20(RECORD)
 	addi.d	$s3, $a0, %pc_lo12(RECORD)
 	pcalau12i	$a0, %pc_hi20(INIT_RECORD)
-	addi.d	$s2, $a0, %pc_lo12(INIT_RECORD)
+	addi.d	$s4, $a0, %pc_lo12(INIT_RECORD)
 	move	$a0, $s3
-	move	$a1, $s2
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB5_5
@@ -427,31 +427,31 @@ ADD_TO_TEXT_RECORD:                     # @ADD_TO_TEXT_RECORD
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 .LBB5_5:                                # %INITIALIZE_TEXT_RECORD.exit
-	st.w	$s4, $s8, %pc_lo12(LOCATION)
-	st.b	$zero, $s2, 0
+	st.w	$s7, $s8, %pc_lo12(LOCATION)
+	st.b	$zero, $s4, 0
 	st.b	$zero, $s3, 0
-	ori	$s7, $zero, 60
+	ori	$s4, $zero, 60
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	st.w	$s7, $a0, %pc_lo12(MAX_SIZE)
+	st.w	$s4, $a0, %pc_lo12(MAX_SIZE)
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s6, %pc_lo12(NEXT_COL)
 	ori	$a1, $zero, 1
 	st.w	$a1, $s5, %pc_lo12(IS_INITIALIZED)
-	move	$s2, $s4
+	move	$s2, $s7
 .LBB5_6:
 	pcalau12i	$a1, %pc_hi20(RECORD)
 	addi.d	$a1, $a1, %pc_lo12(RECORD)
 	add.w	$s3, $a0, $s0
-	bge	$s7, $s3, .LBB5_10
+	bge	$s4, $s3, .LBB5_10
 # %bb.7:
-	move	$s7, $a1
+	move	$s4, $a1
 	pcalau12i	$a0, %pc_hi20(RECORD)
-	addi.d	$s4, $a0, %pc_lo12(RECORD)
+	addi.d	$s7, $a0, %pc_lo12(RECORD)
 	pcalau12i	$a0, %pc_hi20(INIT_RECORD)
 	addi.d	$s3, $a0, %pc_lo12(INIT_RECORD)
-	move	$a0, $s4
+	move	$a0, $s7
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
@@ -485,25 +485,25 @@ ADD_TO_TEXT_RECORD:                     # @ADD_TO_TEXT_RECORD
 	jirl	$ra, $ra, 0
 	ld.w	$s2, $s8, %pc_lo12(LOCATION)
 .LBB5_9:
-	move	$a0, $s4
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	srli.d	$a0, $a0, 1
 	add.d	$a0, $s2, $a0
 	st.w	$a0, $s8, %pc_lo12(LOCATION)
 	st.b	$zero, $s3, 0
-	st.b	$zero, $s4, 0
+	st.b	$zero, $s7, 0
 	ori	$a0, $zero, 60
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.w	$a0, $a1, %pc_lo12(MAX_SIZE)
-	move	$a0, $s4
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s6, %pc_lo12(NEXT_COL)
 	ori	$a1, $zero, 1
 	st.w	$a1, $s5, %pc_lo12(IS_INITIALIZED)
 	add.d	$s3, $a0, $s0
-	move	$a1, $s7
+	move	$a1, $s4
 .LBB5_10:                               # %.critedge
 	addi.w	$a0, $a0, 0
 	add.d	$a0, $a1, $a0

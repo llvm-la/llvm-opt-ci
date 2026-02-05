@@ -1312,27 +1312,48 @@ Puzzle:                                 # @Puzzle
 	ori	$a1, $zero, 12
 	st.w	$a1, $a0, %pc_lo12(piececount)
 	addi.d	$a1, $fp, 292
-	addi.w	$a0, $zero, -65
-	addi.w	$a2, $zero, -489
+	addi.w	$a0, $zero, -73
+	addi.w	$a2, $zero, -505
 .LBB6_56:                               # %vector.body344
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a1, 0
-	move	$a3, $a0
 	xvseqi.w	$xr0, $xr0, 0
 	xvmskltz.w	$xr1, $xr0
-	xvpickve2gr.wu	$a4, $xr1, 0
-	xvpickve2gr.wu	$a0, $xr1, 4
-	bstrins.d	$a4, $a0, 7, 4
-	addi.d	$a0, $a3, -8
-	bnez	$a4, .LBB6_58
-# %bb.57:                               # %vector.body344
+	xvpickve2gr.wu	$a3, $xr1, 0
+	xvpickve2gr.wu	$a4, $xr1, 4
+	bstrins.d	$a3, $a4, 7, 4
+	bnez	$a3, .LBB6_66
+# %bb.57:                               # %vector.body.interim
                                         #   in Loop: Header=BB6_56 Depth=1
+	addi.d	$a0, $a0, -8
 	addi.d	$a1, $a1, 32
-	bne	$a3, $a2, .LBB6_56
-.LBB6_58:                               # %middle.split
-	andi	$a1, $a4, 255
-	beqz	$a1, .LBB6_60
-# %bb.59:                               # %vector.early.exit
+	bne	$a0, $a2, .LBB6_56
+# %bb.58:                               # %.lr.ph22.i
+	ld.w	$a0, $fp, 2020
+	beqz	$a0, .LBB6_67
+# %bb.59:                               # %.lr.ph22.i.1
+	ld.w	$a0, $fp, 2024
+	beqz	$a0, .LBB6_68
+# %bb.60:                               # %.lr.ph22.i.2
+	ld.w	$a0, $fp, 2028
+	beqz	$a0, .LBB6_69
+# %bb.61:                               # %.lr.ph22.i.3
+	ld.w	$a0, $fp, 2032
+	beqz	$a0, .LBB6_70
+# %bb.62:                               # %.lr.ph22.i.4
+	ld.w	$a0, $fp, 2036
+	beqz	$a0, .LBB6_71
+# %bb.63:                               # %.lr.ph22.i.5
+	ld.w	$a0, $fp, 2040
+	beqz	$a0, .LBB6_72
+# %bb.64:                               # %.lr.ph22.i.6
+	ld.w	$a0, $fp, 2044
+	beqz	$a0, .LBB6_73
+# %bb.65:
+	move	$a0, $zero
+	st.w	$zero, $s1, %pc_lo12(n)
+	b	.LBB6_25
+.LBB6_66:                               # %vector.early.exit
 	xvpickve2gr.w	$a1, $xr0, 0
 	vinsgr2vr.b	$vr1, $a1, 0
 	xvpickve2gr.w	$a1, $xr0, 1
@@ -1368,56 +1389,31 @@ Puzzle:                                 # @Puzzle
 	sub.w	$a0, $a1, $a0
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
-.LBB6_60:                               # %.lr.ph22.i
-	ld.w	$a0, $fp, 2020
-	beqz	$a0, .LBB6_68
-# %bb.61:                               # %.lr.ph22.i.1
-	ld.w	$a0, $fp, 2024
-	beqz	$a0, .LBB6_69
-# %bb.62:                               # %.lr.ph22.i.2
-	ld.w	$a0, $fp, 2028
-	beqz	$a0, .LBB6_70
-# %bb.63:                               # %.lr.ph22.i.3
-	ld.w	$a0, $fp, 2032
-	beqz	$a0, .LBB6_71
-# %bb.64:                               # %.lr.ph22.i.4
-	ld.w	$a0, $fp, 2036
-	beqz	$a0, .LBB6_72
-# %bb.65:                               # %.lr.ph22.i.5
-	ld.w	$a0, $fp, 2040
-	beqz	$a0, .LBB6_73
-# %bb.66:                               # %.lr.ph22.i.6
-	ld.w	$a0, $fp, 2044
-	beqz	$a0, .LBB6_74
-# %bb.67:
-	move	$a0, $zero
-	st.w	$zero, $s1, %pc_lo12(n)
-	b	.LBB6_25
-.LBB6_68:
+.LBB6_67:
 	ori	$a0, $zero, 505
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
-.LBB6_69:
+.LBB6_68:
 	ori	$a0, $zero, 506
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
-.LBB6_70:
+.LBB6_69:
 	ori	$a0, $zero, 507
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
-.LBB6_71:
+.LBB6_70:
 	ori	$a0, $zero, 508
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
-.LBB6_72:
+.LBB6_71:
 	ori	$a0, $zero, 509
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
-.LBB6_73:
+.LBB6_72:
 	ori	$a0, $zero, 510
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25
-.LBB6_74:
+.LBB6_73:
 	ori	$a0, $zero, 511
 	st.w	$a0, $s1, %pc_lo12(n)
 	b	.LBB6_25

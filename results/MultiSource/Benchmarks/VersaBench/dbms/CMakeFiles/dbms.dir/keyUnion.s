@@ -1,26 +1,34 @@
 	.file	"keyUnion.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function keyUnion
-.LCPI0_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
-	.globl	keyUnion
+	.globl	keyUnion                        # -- Begin function keyUnion
 	.p2align	5
 	.type	keyUnion,@function
 keyUnion:                               # @keyUnion
 # %bb.0:
 	xvld	$xr0, $a0, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI0_0)
-	xvld	$xr2, $a1, 0
-	xvori.b	$xr3, $xr1, 0
-	xvshuf.d	$xr3, $xr2, $xr0
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvfcmp.clt.s	$xr1, $xr3, $xr1
-	xvbitsel.v	$xr0, $xr2, $xr0, $xr1
+	xvld	$xr1, $a1, 0
+	xvfcmp.clt.s	$xr2, $xr1, $xr0
+	xvpickve2gr.w	$a0, $xr2, 7
+	xvpickve2gr.w	$a1, $xr2, 6
+	xvpickve2gr.w	$a3, $xr2, 5
+	xvpickve2gr.w	$a4, $xr2, 4
+	xvfcmp.clt.s	$xr2, $xr0, $xr1
+	xvpickve2gr.w	$a5, $xr2, 3
+	xvpickve2gr.w	$a6, $xr2, 2
+	xvpickve2gr.w	$a7, $xr2, 1
+	xvpickve2gr.w	$t0, $xr2, 0
+	vinsgr2vr.w	$vr2, $a4, 0
+	vinsgr2vr.w	$vr2, $a3, 1
+	vinsgr2vr.w	$vr2, $a1, 2
+	vinsgr2vr.w	$vr2, $a0, 3
+	vinsgr2vr.w	$vr3, $t0, 0
+	vinsgr2vr.w	$vr3, $a7, 1
+	vinsgr2vr.w	$vr3, $a6, 2
+	vinsgr2vr.w	$vr3, $a5, 3
+	xvpermi.q	$xr3, $xr2, 2
+	xvslli.w	$xr2, $xr3, 31
+	xvsrai.w	$xr2, $xr2, 31
+	xvbitsel.v	$xr0, $xr1, $xr0, $xr2
 	xvst	$xr0, $a2, 0
 	ret
 .Lfunc_end0:

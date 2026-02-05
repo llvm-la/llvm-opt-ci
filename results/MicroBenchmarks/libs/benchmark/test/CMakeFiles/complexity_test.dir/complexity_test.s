@@ -4012,8 +4012,7 @@ _Z17BM_Complexity_O_NRN9benchmark5StateE: # @_Z17BM_Complexity_O_NRN9benchmark5S
 	beq	$a1, $a0, .LBB2_19
 # %bb.14:                               # %_ZNK9benchmark5State5rangeEm.exit30
                                         #   in Loop: Header=BB2_3 Depth=1
-	ld.d	$a0, $a0, 0
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $a0, 0
 	ffint.d.l	$fa0, $fa0
 	fmul.d	$fa0, $fa0, $fs0
 	fmul.d	$fa0, $fa0, $fs1
@@ -4211,8 +4210,7 @@ _ZL23BM_Complexity_O_N_log_NRN9benchmark5StateE: # @_ZL23BM_Complexity_O_N_log_N
 	beq	$a1, $a0, .LBB3_19
 # %bb.14:                               # %_ZNK9benchmark5State5rangeEm.exit31
                                         #   in Loop: Header=BB3_3 Depth=1
-	ld.d	$a0, $a0, 0
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $a0, 0
 	ffint.d.l	$fa0, $fa0
 	fmul.d	$fs4, $fa0, $fs0
 	pcaddu18i	$ra, %call36(log)
@@ -4413,8 +4411,7 @@ _Z24BM_ComplexityCaptureArgsRN9benchmark5StateEi: # @_Z24BM_ComplexityCaptureArg
 	beq	$a1, $a0, .LBB4_18
 # %bb.14:                               # %_ZNK9benchmark5State5rangeEm.exit
                                         #   in Loop: Header=BB4_3 Depth=1
-	ld.d	$a0, $a0, 0
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $a0, 0
 	ffint.d.l	$fa0, $fa0
 	fmul.d	$fa0, $fa0, $fs0
 	fmul.d	$fa0, $fa0, $fs1
@@ -6017,8 +6014,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	st.d	$a0, $sp, 64
 	stx.b	$zero, $a1, $a0
 	ld.d	$fp, $s6, %pc_lo12(enum_auto_big_o_1)
-	addi.d	$s6, $sp, 32
-	st.d	$s6, $sp, 16
+	addi.d	$s1, $sp, 32
+	st.d	$s1, $sp, 16
 	beqz	$fp, .LBB18_482
 # %bb.88:
 	move	$a0, $fp
@@ -6027,7 +6024,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	move	$s0, $a0
 	ori	$a1, $zero, 16
 	st.d	$a0, $sp, 48
-	move	$a0, $s6
+	move	$a0, $s1
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	bltu	$s0, $a1, .LBB18_91
 # %bb.89:                               # %.noexc.i21.i47
 .Ltmp282:                               # EH_LABEL
@@ -6071,7 +6069,7 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp285:                               # EH_LABEL
 # %bb.96:
 	ld.d	$a0, $sp, 16
-	beq	$a0, $s6, .LBB18_98
+	beq	$a0, $s1, .LBB18_98
 # %bb.97:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i36
 	ld.d	$a1, $sp, 32
 	addi.d	$a1, $a1, 1
@@ -6087,7 +6085,6 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB18_100:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit27.i39
 	ld.d	$a0, $sp, 88
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	beq	$a0, $s7, .LBB18_102
 # %bb.101:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i28.i40
 	ld.d	$a1, $sp, 104
@@ -6236,8 +6233,8 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	stx.b	$zero, $a1, $a0
 	pcalau12i	$a0, %pc_hi20(lambda_big_o_1)
 	ld.d	$fp, $a0, %pc_lo12(lambda_big_o_1)
-	addi.d	$s5, $sp, 32
-	st.d	$s5, $sp, 16
+	addi.d	$s1, $sp, 32
+	st.d	$s1, $sp, 16
 	beqz	$fp, .LBB18_488
 # %bb.128:
 	move	$a0, $fp
@@ -6246,7 +6243,7 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	move	$s0, $a0
 	ori	$a1, $zero, 16
 	st.d	$a0, $sp, 48
-	move	$a0, $s5
+	move	$a0, $s1
 	bltu	$s0, $a1, .LBB18_131
 # %bb.129:                              # %.noexc.i21.i88
 .Ltmp291:                               # EH_LABEL
@@ -6290,7 +6287,7 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .Ltmp294:                               # EH_LABEL
 # %bb.136:
 	ld.d	$a0, $sp, 16
-	beq	$a0, $s5, .LBB18_138
+	beq	$a0, $s1, .LBB18_138
 # %bb.137:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i77
 	ld.d	$a1, $sp, 32
 	addi.d	$a1, $a1, 1
@@ -8373,7 +8370,7 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 .LBB18_464:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit16.i
 	ld.d	$a0, $sp, 120
 	beq	$a0, $s2, .LBB18_466
-# %bb.465:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.i
+# %bb.465:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.i428
 	ld.d	$a1, $sp, 136
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -8644,368 +8641,401 @@ _GLOBAL__sub_I_complexity_test.cc:      # @_GLOBAL__sub_I_complexity_test.cc
 	jirl	$ra, $ra, 0
 .LBB18_528:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit22.i
 	ld.d	$a2, $sp, 88
-	beq	$a2, $s1, .LBB18_594
-	b	.LBB18_601
+	beq	$a2, $s1, .LBB18_592
+	b	.LBB18_598
 .LBB18_529:
 .Ltmp465:                               # EH_LABEL
 	ld.d	$a2, $sp, 88
 	move	$fp, $a0
-	beqz	$a2, .LBB18_594
+	beqz	$a2, .LBB18_592
 # %bb.530:
 	ld.d	$a0, $sp, 104
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
-	b	.LBB18_593
+	b	.LBB18_591
 .LBB18_531:
 .Ltmp462:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
+	b	.LBB18_592
 .LBB18_532:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit19.thread.i
 .Ltmp450:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
+	b	.LBB18_612
 .LBB18_533:
 .Ltmp447:                               # EH_LABEL
-	b	.LBB18_541
+	b	.LBB18_548
 .LBB18_534:
 .Ltmp438:                               # EH_LABEL
-	b	.LBB18_552
+	b	.LBB18_554
 .LBB18_535:
 .Ltmp429:                               # EH_LABEL
-	b	.LBB18_552
+	b	.LBB18_554
 .LBB18_536:                             # %.thread.i288
 .Ltmp420:                               # EH_LABEL
-	b	.LBB18_603
+	b	.LBB18_600
 .LBB18_537:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit11.thread.i281
 .Ltmp406:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
+	b	.LBB18_612
 .LBB18_538:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i270
 .Ltmp390:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
+	b	.LBB18_612
 .LBB18_539:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i259
 .Ltmp374:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
+	b	.LBB18_612
 .LBB18_540:
 .Ltmp371:                               # EH_LABEL
+	b	.LBB18_548
 .LBB18_541:
-	ld.d	$a2, $sp, 16
-	move	$fp, $a0
-	bne	$a2, $s1, .LBB18_549
-	b	.LBB18_578
-.LBB18_542:
 .Ltmp362:                               # EH_LABEL
-	b	.LBB18_552
-.LBB18_543:
+	b	.LBB18_554
+.LBB18_542:
 .Ltmp353:                               # EH_LABEL
-	b	.LBB18_552
-.LBB18_544:                             # %.thread.i129
+	b	.LBB18_554
+.LBB18_543:                             # %.thread.i129
 .Ltmp344:                               # EH_LABEL
-	b	.LBB18_603
-.LBB18_545:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit11.thread.i122
+	b	.LBB18_600
+.LBB18_544:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit11.thread.i122
 .Ltmp330:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
-.LBB18_546:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i111
+	b	.LBB18_612
+.LBB18_545:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i111
 .Ltmp314:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
-.LBB18_547:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i100
+	b	.LBB18_612
+.LBB18_546:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i100
 .Ltmp298:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
-.LBB18_548:
+	b	.LBB18_612
+.LBB18_547:
 .Ltmp295:                               # EH_LABEL
+.LBB18_548:
 	ld.d	$a2, $sp, 16
 	move	$fp, $a0
-	beq	$a2, $s5, .LBB18_578
-.LBB18_549:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i34.i62
+	bne	$a2, $s1, .LBB18_551
+# %bb.549:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36.i63
+	ld.d	$a0, $sp, 56
+	bne	$a0, $s4, .LBB18_582
+.LBB18_550:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit39.i66
+	ld.d	$a0, $sp, 88
+	bne	$a0, $s3, .LBB18_590
+	b	.LBB18_592
+.LBB18_551:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i34.i62
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB18_578
-.LBB18_550:
-.Ltmp286:                               # EH_LABEL
-	ld.d	$a2, $sp, 16
-	move	$fp, $a0
-	bne	$a2, $s6, .LBB18_553
-	b	.LBB18_589
-.LBB18_551:
-.Ltmp277:                               # EH_LABEL
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s4, .LBB18_550
+	b	.LBB18_582
 .LBB18_552:
+.Ltmp286:                               # EH_LABEL
+	b	.LBB18_554
+.LBB18_553:
+.Ltmp277:                               # EH_LABEL
+.LBB18_554:
 	ld.d	$a2, $sp, 16
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB18_589
-.LBB18_553:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i34.i
+	bne	$a2, $s1, .LBB18_557
+# %bb.555:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36.i
+	ld.d	$a0, $sp, 56
+	bne	$a0, $s8, .LBB18_558
+.LBB18_556:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit39.i
+	ld.d	$a0, $sp, 88
+	bne	$a0, $s7, .LBB18_590
+	b	.LBB18_592
+.LBB18_557:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i34.i
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB18_589
-.LBB18_554:                             # %.thread.i
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s8, .LBB18_556
+.LBB18_558:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i37.i
+	ld.d	$a1, $sp, 72
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 88
+	beq	$a0, $s7, .LBB18_592
+	b	.LBB18_590
+.LBB18_559:                             # %.thread.i
 .Ltmp268:                               # EH_LABEL
-	b	.LBB18_603
-.LBB18_555:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit11.thread.i
+	b	.LBB18_600
+.LBB18_560:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit11.thread.i
 .Ltmp256:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
-.LBB18_556:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
+	b	.LBB18_612
+.LBB18_561:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
 .Ltmp242:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
-.LBB18_557:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
+	b	.LBB18_612
+.LBB18_562:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp228:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_615
-.LBB18_558:
+	b	.LBB18_612
+.LBB18_563:
 .Ltmp489:                               # EH_LABEL
-	b	.LBB18_577
-.LBB18_559:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s4, .LBB18_550
+	b	.LBB18_582
+.LBB18_564:
 .Ltmp492:                               # EH_LABEL
-	b	.LBB18_581
-.LBB18_560:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 88
+	bne	$a0, $s3, .LBB18_590
+	b	.LBB18_592
+.LBB18_565:
 .Ltmp495:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_561:
+	b	.LBB18_592
+.LBB18_566:
 .Ltmp498:                               # EH_LABEL
-	b	.LBB18_588
-.LBB18_562:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s8, .LBB18_556
+	b	.LBB18_558
+.LBB18_567:
 .Ltmp501:                               # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 88
-	bne	$a0, $s7, .LBB18_592
-	b	.LBB18_594
-.LBB18_563:
+	bne	$a0, $s7, .LBB18_590
+	b	.LBB18_592
+.LBB18_568:
 .Ltmp504:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_564:
+	b	.LBB18_592
+.LBB18_569:
 .Ltmp507:                               # EH_LABEL
-	b	.LBB18_588
-.LBB18_565:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s8, .LBB18_556
+	b	.LBB18_558
+.LBB18_570:
 .Ltmp510:                               # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 88
-	bne	$a0, $s7, .LBB18_592
-	b	.LBB18_594
-.LBB18_566:
+	bne	$a0, $s7, .LBB18_590
+	b	.LBB18_592
+.LBB18_571:
 .Ltmp513:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_567:
+	b	.LBB18_592
+.LBB18_572:
 .Ltmp516:                               # EH_LABEL
-	b	.LBB18_577
-.LBB18_568:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s4, .LBB18_550
+	b	.LBB18_582
+.LBB18_573:
 .Ltmp519:                               # EH_LABEL
-	b	.LBB18_581
-.LBB18_569:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 88
+	bne	$a0, $s3, .LBB18_590
+	b	.LBB18_592
+.LBB18_574:
 .Ltmp522:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_570:
+	b	.LBB18_592
+.LBB18_575:
 .Ltmp525:                               # EH_LABEL
-	b	.LBB18_588
-.LBB18_571:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s8, .LBB18_556
+	b	.LBB18_558
+.LBB18_576:
 .Ltmp528:                               # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 88
-	bne	$a0, $s7, .LBB18_592
-	b	.LBB18_594
-.LBB18_572:
+	bne	$a0, $s7, .LBB18_590
+	b	.LBB18_592
+.LBB18_577:
 .Ltmp531:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_573:
+	b	.LBB18_592
+.LBB18_578:
 .Ltmp534:                               # EH_LABEL
-	b	.LBB18_588
-.LBB18_574:
+	move	$fp, $a0
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s8, .LBB18_556
+	b	.LBB18_558
+.LBB18_579:
 .Ltmp537:                               # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 88
-	bne	$a0, $s7, .LBB18_592
-	b	.LBB18_594
-.LBB18_575:
+	bne	$a0, $s7, .LBB18_590
+	b	.LBB18_592
+.LBB18_580:
 .Ltmp540:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_576:
+	b	.LBB18_592
+.LBB18_581:
 .Ltmp543:                               # EH_LABEL
-.LBB18_577:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36.i63
 	move	$fp, $a0
-.LBB18_578:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36.i63
 	ld.d	$a0, $sp, 56
-	beq	$a0, $s4, .LBB18_582
-# %bb.579:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i37.i65
+	beq	$a0, $s4, .LBB18_550
+.LBB18_582:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i37.i65
 	ld.d	$a1, $sp, 72
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	b	.LBB18_582
-.LBB18_580:
-.Ltmp546:                               # EH_LABEL
-.LBB18_581:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit39.i66
-	move	$fp, $a0
-.LBB18_582:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit39.i66
 	ld.d	$a0, $sp, 88
-	bne	$a0, $s3, .LBB18_592
-	b	.LBB18_594
+	bne	$a0, $s3, .LBB18_590
+	b	.LBB18_592
 .LBB18_583:
+.Ltmp546:                               # EH_LABEL
+	move	$fp, $a0
+	ld.d	$a0, $sp, 88
+	bne	$a0, $s3, .LBB18_590
+	b	.LBB18_592
+.LBB18_584:
 .Ltmp549:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_584:
-.Ltmp552:                               # EH_LABEL
-	b	.LBB18_588
+	b	.LBB18_592
 .LBB18_585:
+.Ltmp552:                               # EH_LABEL
+	move	$fp, $a0
+	ld.d	$a0, $sp, 56
+	beq	$a0, $s8, .LBB18_556
+	b	.LBB18_558
+.LBB18_586:
 .Ltmp555:                               # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 88
-	bne	$a0, $s7, .LBB18_592
-	b	.LBB18_594
-.LBB18_586:
+	bne	$a0, $s7, .LBB18_590
+	b	.LBB18_592
+.LBB18_587:
 .Ltmp558:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_587:
+	b	.LBB18_592
+.LBB18_588:
 .Ltmp561:                               # EH_LABEL
-.LBB18_588:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36.i
 	move	$fp, $a0
-.LBB18_589:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit36.i
 	ld.d	$a0, $sp, 56
-	beq	$a0, $s8, .LBB18_591
-# %bb.590:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i37.i
-	ld.d	$a1, $sp, 72
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB18_591:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit39.i
-	ld.d	$a0, $sp, 88
-	beq	$a0, $s7, .LBB18_594
-.LBB18_592:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i40.i
-	ld.d	$a1, $sp, 104
-	addi.d	$a1, $a1, 1
-.LBB18_593:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit42.i
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB18_594:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit42.i
-	ld.d	$a0, $sp, 120
-	beq	$a0, $s2, .LBB18_617
-# %bb.595:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i43.i
-	ld.d	$a1, $sp, 136
-	addi.d	$a1, $a1, 1
-	b	.LBB18_616
-.LBB18_596:
+	beq	$a0, $s8, .LBB18_556
+	b	.LBB18_558
+.LBB18_589:
 .Ltmp564:                               # EH_LABEL
 	move	$fp, $a0
 	ld.d	$a0, $sp, 88
-	bne	$a0, $s7, .LBB18_592
-	b	.LBB18_594
-.LBB18_597:
+	beq	$a0, $s7, .LBB18_592
+.LBB18_590:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i40.i
+	ld.d	$a1, $sp, 104
+	addi.d	$a1, $a1, 1
+.LBB18_591:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit42.i
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+.LBB18_592:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit42.i
+	ld.d	$a0, $sp, 120
+	beq	$a0, $s2, .LBB18_614
+# %bb.593:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i43.i
+	ld.d	$a1, $sp, 136
+	addi.d	$a1, $a1, 1
+	b	.LBB18_613
+.LBB18_594:
 .Ltmp567:                               # EH_LABEL
 	move	$fp, $a0
-	b	.LBB18_594
-.LBB18_598:
+	b	.LBB18_592
+.LBB18_595:
 .Ltmp459:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-	b	.LBB18_612
-.LBB18_599:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_596:
 .Ltmp265:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-	b	.LBB18_612
-.LBB18_600:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_597:
 .Ltmp483:                               # EH_LABEL
 	ld.d	$a2, $sp, 88
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB18_594
-.LBB18_601:                             # %.body.i.sink.split
+	beq	$a2, $s1, .LBB18_592
+.LBB18_598:                             # %.body.i.sink.split
 	ld.d	$a0, $sp, 104
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
-	b	.LBB18_593
-.LBB18_602:
+	b	.LBB18_591
+.LBB18_599:
 .Ltmp486:                               # EH_LABEL
-.LBB18_603:                             # %.thread.i
+.LBB18_600:                             # %.thread.i
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_617
-# %bb.604:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit11.thread25.i
+	beq	$a2, $s2, .LBB18_614
+# %bb.601:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i9.thread.i
 	ld.d	$a0, $sp, 136
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
-	b	.LBB18_616
-.LBB18_605:
+	b	.LBB18_613
+.LBB18_602:
 .Ltmp417:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-	b	.LBB18_612
-.LBB18_606:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_603:
 .Ltmp341:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-	b	.LBB18_612
-.LBB18_607:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_604:
 .Ltmp253:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-	b	.LBB18_612
-.LBB18_608:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_605:
 .Ltmp239:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	bne	$a2, $s2, .LBB18_612
-	b	.LBB18_614
-.LBB18_609:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_606:
 .Ltmp403:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-	b	.LBB18_612
-.LBB18_610:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_607:
 .Ltmp387:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-	b	.LBB18_612
-.LBB18_611:
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_608:
 .Ltmp327:                               # EH_LABEL
 	ld.d	$a2, $sp, 120
 	move	$fp, $a0
-	beq	$a2, $s2, .LBB18_614
-.LBB18_612:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s2, .LBB18_610
+	b	.LBB18_611
+.LBB18_609:
+.Ltmp311:                               # EH_LABEL
+	ld.d	$a2, $sp, 120
+	move	$fp, $a0
+	beq	$a2, $s2, .LBB18_611
+.LBB18_610:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i105
 	ld.d	$a0, $sp, 136
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s1, .LBB18_617
-	b	.LBB18_615
-.LBB18_613:
-.Ltmp311:                               # EH_LABEL
-	ld.d	$a2, $sp, 120
-	move	$fp, $a0
-	bne	$a2, $s2, .LBB18_612
-.LBB18_614:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s1, .LBB18_617
-.LBB18_615:
+.LBB18_611:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i106
+	beqz	$s1, .LBB18_614
+.LBB18_612:
 	ori	$a1, $zero, 232
 	move	$a0, $s0
-.LBB18_616:                             # %common.resume
+.LBB18_613:                             # %common.resume
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB18_617:                             # %common.resume
+.LBB18_614:                             # %common.resume
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

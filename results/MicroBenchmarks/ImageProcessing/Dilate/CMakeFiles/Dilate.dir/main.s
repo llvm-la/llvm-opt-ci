@@ -98,36 +98,36 @@ main:                                   # @main
 	xvslli.d	$xr2, $xr0, 12
 	xvslli.d	$xr3, $xr1, 12
 	xvpickve2gr.d	$a0, $xr3, 0
-	add.d	$a1, $fp, $a0
-	xvpickve2gr.d	$a2, $xr3, 1
-	add.d	$a3, $fp, $a2
-	xvpickve2gr.d	$a4, $xr3, 2
-	add.d	$a5, $fp, $a4
-	xvpickve2gr.d	$a6, $xr3, 3
-	add.d	$a7, $fp, $a6
-	xvpickve2gr.d	$t0, $xr2, 0
-	add.d	$t1, $fp, $t0
-	xvpickve2gr.d	$t2, $xr2, 1
-	add.d	$t3, $fp, $t2
-	xvpickve2gr.d	$t4, $xr2, 2
-	add.d	$t5, $fp, $t4
-	xvpickve2gr.d	$t6, $xr2, 3
-	add.d	$t7, $fp, $t6
+	xvpickve2gr.d	$a1, $xr3, 1
+	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a3, $xr3, 3
+	xvpickve2gr.d	$a4, $xr2, 0
+	xvpickve2gr.d	$a5, $xr2, 1
+	xvpickve2gr.d	$a6, $xr2, 2
+	xvpickve2gr.d	$a7, $xr2, 3
+	add.d	$t0, $fp, $a0
+	add.d	$t1, $fp, $a1
+	add.d	$t2, $fp, $a2
+	add.d	$t3, $fp, $a3
+	add.d	$t4, $fp, $a4
+	add.d	$t5, $fp, $a5
+	add.d	$t6, $fp, $a6
+	add.d	$t7, $fp, $a7
 	stx.w	$zero, $fp, $a0
+	stx.w	$zero, $fp, $a1
 	stx.w	$zero, $fp, $a2
+	stx.w	$zero, $fp, $a3
 	stx.w	$zero, $fp, $a4
+	stx.w	$zero, $fp, $a5
 	stx.w	$zero, $fp, $a6
-	stx.w	$zero, $fp, $t0
-	stx.w	$zero, $fp, $t2
-	stx.w	$zero, $fp, $t4
-	stx.w	$zero, $fp, $t6
-	stptr.w	$zero, $a1, 4092
-	stptr.w	$zero, $a3, 4092
-	stptr.w	$zero, $a5, 4092
-	stptr.w	$zero, $a7, 4092
+	stx.w	$zero, $fp, $a7
+	stptr.w	$zero, $t0, 4092
 	stptr.w	$zero, $t1, 4092
+	stptr.w	$zero, $t2, 4092
 	stptr.w	$zero, $t3, 4092
+	stptr.w	$zero, $t4, 4092
 	stptr.w	$zero, $t5, 4092
+	stptr.w	$zero, $t6, 4092
 	stptr.w	$zero, $t7, 4092
 	xvaddi.du	$xr1, $xr1, 8
 	addi.d	$s3, $s3, -8
@@ -395,28 +395,30 @@ _GLOBAL__sub_I_main.cpp:                # @_GLOBAL__sub_I_main.cpp
 .LBB2_9:                                # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp2:                                 # EH_LABEL
 	move	$s0, $a0
-	b	.LBB2_13
+	b	.LBB2_14
 .LBB2_10:
 .Ltmp13:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	bne	$a2, $s1, .LBB2_12
-# %bb.11:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s2, .LBB2_13
-	b	.LBB2_14
-.LBB2_12:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB2_13
+# %bb.11:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bnez	$s2, .LBB2_14
+.LBB2_12:
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.LBB2_13:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s2, .LBB2_14
-.LBB2_13:
+	beqz	$s2, .LBB2_12
+.LBB2_14:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB2_14:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

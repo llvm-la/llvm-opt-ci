@@ -23,8 +23,7 @@ shortpath:                              # @shortpath
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	ori	$a3, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(numnodes)
 	ld.d	$s3, $a0, %got_pc_lo12(numnodes)
 	pcalau12i	$a0, %got_pc_hi20(pnodeArray)
@@ -35,7 +34,8 @@ shortpath:                              # @shortpath
 	lu12i.w	$a0, 244140
 	ori	$a0, $a0, 2560
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	ori	$a3, $zero, 1
+	ori	$a0, $zero, 1
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph50
                                         # =>This Loop Header: Depth=1
@@ -63,8 +63,8 @@ shortpath:                              # @shortpath
 	add.d	$s4, $s6, $a1
 	bstrpick.d	$a1, $s0, 31, 0
 	mul.d	$a1, $a1, $a2
-	add.d	$s2, $s6, $a1
-	addi.d	$s8, $s6, 16
+	add.d	$s8, $s6, $a1
+	addi.d	$s2, $s6, 16
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a0, $a0, 31, 0
@@ -73,12 +73,12 @@ shortpath:                              # @shortpath
 	.p2align	4, , 16
 .LBB0_4:                                #   in Loop: Header=BB0_6 Depth=2
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.w	$a0, $s8, 0
+	st.w	$a0, $s2, 0
 .LBB0_5:                                #   in Loop: Header=BB0_6 Depth=2
 	ld.w	$a0, $s3, 0
 	add.w	$a0, $a0, $fp
 	addi.d	$s1, $s1, 1
-	addi.d	$s8, $s8, 12
+	addi.d	$s2, $s2, 12
 	bge	$s1, $a0, .LBB0_12
 .LBB0_6:                                #   Parent Loop BB0_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -89,7 +89,7 @@ shortpath:                              # @shortpath
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
-	st.w	$zero, $s2, 4
+	st.w	$zero, $s8, 4
 	st.h	$zero, $s4, 8
 	b	.LBB0_5
 	.p2align	4, , 16

@@ -315,67 +315,63 @@ image_setup:                            # @image_setup
 .LBB5_22:
 	bltz	$a0, .LBB5_18
 # %bb.23:
-	move	$a1, $s5
 	ld.d	$a0, $s2, 0
 	st.h	$zero, $a0, 16
-	ori	$a2, $zero, 33
-	st.h	$a2, $a0, 24
-	addi.d	$a2, $a0, 32
-	st.d	$a2, $s2, 0
+	ori	$a1, $zero, 33
+	st.h	$a1, $a0, 24
+	addi.d	$a1, $a0, 32
+	st.d	$a1, $s2, 0
 	vld	$vr0, $s5, 0
-	addi.w	$a2, $zero, -2
+	addi.w	$a1, $zero, -2
 	vst	$vr0, $a0, 32
-	bge	$a2, $s0, .LBB5_25
+	bge	$a1, $s0, .LBB5_25
 # %bb.24:
 	st.d	$zero, $a0, 48
-	ori	$a3, $zero, 32
-	st.h	$a3, $a0, 56
+	ori	$a2, $zero, 32
+	st.h	$a2, $a0, 56
 	b	.LBB5_26
 .LBB5_25:
-	vld	$vr0, $a1, 16
-	addi.d	$a3, $a0, 48
-	vst	$vr0, $a3, 0
+	vld	$vr0, $s5, 16
+	vst	$vr0, $a0, 48
 .LBB5_26:
-	bltu	$s3, $a2, .LBB5_28
+	bltu	$s3, $a1, .LBB5_28
 # %bb.27:                               # %.thread
 	st.d	$zero, $a0, 64
-	ori	$a2, $zero, 32
-	st.h	$a2, $a0, 72
+	ori	$a1, $zero, 32
+	st.h	$a1, $a0, 72
 	b	.LBB5_29
 .LBB5_28:
-	vld	$vr0, $a1, 32
-	addi.d	$a2, $a0, 64
-	addi.w	$a3, $zero, -3
-	vst	$vr0, $a2, 0
-	bne	$s0, $a3, .LBB5_30
+	vld	$vr0, $s5, 32
+	addi.w	$a1, $zero, -3
+	vst	$vr0, $a0, 64
+	bne	$s0, $a1, .LBB5_30
 .LBB5_29:
 	st.d	$zero, $a0, 80
-	ori	$a2, $zero, 32
-	st.h	$a2, $a0, 88
+	ori	$a1, $zero, 32
+	st.h	$a1, $a0, 88
 	b	.LBB5_31
 .LBB5_30:
-	vld	$vr0, $a1, 48
-	addi.d	$a2, $a0, 80
-	vst	$vr0, $a2, 0
+	vld	$vr0, $s5, 48
+	vst	$vr0, $a0, 80
 .LBB5_31:
 	st.d	$zero, $a0, 96
-	ori	$a2, $zero, 20
-	st.h	$a2, $a0, 104
-	nor	$a2, $s3, $zero
-	st.h	$a2, $a0, 106
-	ld.h	$a2, $s4, 0
+	ori	$a1, $zero, 20
+	st.h	$a1, $a0, 104
+	nor	$a1, $s3, $zero
+	st.h	$a1, $a0, 106
+	ld.h	$a1, $s4, 0
 	st.d	$fp, $a0, 112
-	ori	$a3, $zero, 52
-	st.h	$a3, $a0, 120
-	st.h	$a2, $a0, 122
-	pcalau12i	$a2, %pc_hi20(image_continue)
-	addi.d	$a2, $a2, %pc_lo12(image_continue)
-	st.d	$a2, $a0, 128
-	ori	$a2, $zero, 37
-	st.w	$a2, $a0, 136
-	addi.d	$a2, $a0, 144
-	st.d	$a2, $s2, 0
-	vld	$vr0, $a1, 0
+	ori	$a2, $zero, 52
+	st.h	$a2, $a0, 120
+	st.h	$a1, $a0, 122
+	pcalau12i	$a1, %pc_hi20(image_continue)
+	addi.d	$a1, $a1, %pc_lo12(image_continue)
+	st.d	$a1, $a0, 128
+	ori	$a1, $zero, 37
+	st.w	$a1, $a0, 136
+	addi.d	$a1, $a0, 144
+	st.d	$a1, $s2, 0
+	vld	$vr0, $s5, 0
 	vst	$vr0, $a0, 144
 	ori	$a0, $zero, 1
 	b	.LBB5_18

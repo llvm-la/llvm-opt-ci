@@ -2339,7 +2339,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.d	$a0, $s8, 136
 	st.w	$s6, $s8, 176
 	beq	$a2, $a0, .LBB5_141
-# %bb.139:                              # %iter.check1425
+# %bb.139:                              # %iter.check1424
 	sub.d	$a1, $a0, $a2
 	addi.d	$a3, $a1, -4
 	ori	$a1, $zero, 12
@@ -2351,7 +2351,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_141:
 	move	$a3, $zero
 	b	.LBB5_152
-.LBB5_142:                              # %vector.main.loop.iter.check1427
+.LBB5_142:                              # %vector.main.loop.iter.check1426
 	srli.d	$a1, $a3, 2
 	ori	$a4, $zero, 60
 	addi.d	$a1, $a1, 1
@@ -2360,7 +2360,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a5, $zero
 	move	$a3, $zero
 	b	.LBB5_148
-.LBB5_144:                              # %vector.ph1428
+.LBB5_144:                              # %vector.ph1427
 	andi	$a4, $a1, 12
 	bstrpick.d	$a3, $a1, 62, 4
 	slli.d	$a5, $a3, 4
@@ -2369,7 +2369,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a6, $a5
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB5_145:                              # %vector.body1431
+.LBB5_145:                              # %vector.body1430
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a3, -32
 	xvld	$xr3, $a3, 0
@@ -2378,7 +2378,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a6, $a6, -16
 	addi.d	$a3, $a3, 64
 	bnez	$a6, .LBB5_145
-# %bb.146:                              # %middle.block1439
+# %bb.146:                              # %middle.block1438
 	xvadd.w	$xr0, $xr1, $xr0
 	xvhaddw.d.w	$xr0, $xr0, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
@@ -2386,9 +2386,9 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a1, $a5, .LBB5_152
-# %bb.147:                              # %vec.epilog.iter.check1445
+# %bb.147:                              # %vec.epilog.iter.check1444
 	beqz	$a4, .LBB5_489
-.LBB5_148:                              # %vec.epilog.ph1447
+.LBB5_148:                              # %vec.epilog.ph1446
 	bstrpick.d	$a4, $a1, 62, 2
 	slli.d	$a6, $a4, 2
 	alsl.d	$a4, $a4, $a2, 4
@@ -2397,14 +2397,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a2, $a5, $a2, 2
 	sub.d	$a3, $a5, $a6
 	.p2align	4, , 16
-.LBB5_149:                              # %vec.epilog.vector.body1450
+.LBB5_149:                              # %vec.epilog.vector.body1449
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a2, 0
 	vadd.w	$vr0, $vr1, $vr0
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB5_149
-# %bb.150:                              # %vec.epilog.middle.block1457
+# %bb.150:                              # %vec.epilog.middle.block1456
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
@@ -2422,7 +2422,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	st.w	$a3, $s8, 180
 	st.d	$fp, $sp, 264                   # 8-byte Folded Spill
 	beq	$a2, $a0, .LBB5_155
-# %bb.153:                              # %iter.check1464
+# %bb.153:                              # %iter.check1463
 	sub.d	$a1, $a0, $a2
 	addi.d	$a3, $a1, -4
 	ori	$a1, $zero, 12
@@ -2434,7 +2434,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 .LBB5_155:
 	move	$a3, $zero
 	b	.LBB5_166
-.LBB5_156:                              # %vector.main.loop.iter.check1466
+.LBB5_156:                              # %vector.main.loop.iter.check1465
 	srli.d	$a1, $a3, 2
 	ori	$a4, $zero, 60
 	addi.d	$a1, $a1, 1
@@ -2443,7 +2443,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a5, $zero
 	move	$a3, $zero
 	b	.LBB5_162
-.LBB5_158:                              # %vector.ph1467
+.LBB5_158:                              # %vector.ph1466
 	andi	$a4, $a1, 12
 	bstrpick.d	$a3, $a1, 62, 4
 	slli.d	$a5, $a3, 4
@@ -2452,7 +2452,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a6, $a5
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB5_159:                              # %vector.body1470
+.LBB5_159:                              # %vector.body1469
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a3, -32
 	xvld	$xr3, $a3, 0
@@ -2461,7 +2461,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a6, $a6, -16
 	addi.d	$a3, $a3, 64
 	bnez	$a6, .LBB5_159
-# %bb.160:                              # %middle.block1478
+# %bb.160:                              # %middle.block1477
 	xvadd.w	$xr0, $xr1, $xr0
 	xvhaddw.d.w	$xr0, $xr0, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
@@ -2469,9 +2469,9 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a1, $a5, .LBB5_166
-# %bb.161:                              # %vec.epilog.iter.check1484
+# %bb.161:                              # %vec.epilog.iter.check1483
 	beqz	$a4, .LBB5_490
-.LBB5_162:                              # %vec.epilog.ph1486
+.LBB5_162:                              # %vec.epilog.ph1485
 	bstrpick.d	$a4, $a1, 62, 2
 	slli.d	$a6, $a4, 2
 	alsl.d	$a4, $a4, $a2, 4
@@ -2480,14 +2480,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a2, $a5, $a2, 2
 	sub.d	$a3, $a5, $a6
 	.p2align	4, , 16
-.LBB5_163:                              # %vec.epilog.vector.body1489
+.LBB5_163:                              # %vec.epilog.vector.body1488
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a2, 0
 	vadd.w	$vr0, $vr1, $vr0
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 16
 	bnez	$a3, .LBB5_163
-# %bb.164:                              # %vec.epilog.middle.block1496
+# %bb.164:                              # %vec.epilog.middle.block1495
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
@@ -2606,7 +2606,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp345:                               # EH_LABEL
-# %bb.186:                              # %_ZSt6fill_nIPimiET_S1_T0_RKT1_.exit.loopexit.i.i.i.i.i372
+# %bb.186:                              # %.noexc377
 	alsl.d	$a1, $s1, $a0, 2
 	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	st.w	$zero, $a0, 0
@@ -2640,17 +2640,17 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	blez	$a0, .LBB5_249
-# %bb.191:                              # %iter.check1504
+# %bb.191:                              # %iter.check1503
 	ld.d	$a1, $s8, 104
 	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$a0, $a3, .LBB5_247
-# %bb.192:                              # %iter.check1504
+# %bb.192:                              # %iter.check1503
 	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	sub.d	$a3, $a3, $a1
 	ori	$a4, $zero, 64
 	bltu	$a3, $a4, .LBB5_247
-# %bb.193:                              # %vector.main.loop.iter.check1506
+# %bb.193:                              # %vector.main.loop.iter.check1505
 	ori	$a2, $zero, 16
 	bgeu	$a0, $a2, .LBB5_240
 # %bb.194:
@@ -2954,7 +2954,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.w	$s1, $s1, 1
 	blt	$s1, $a0, .LBB5_231
 	b	.LBB5_99
-.LBB5_240:                              # %vector.ph1507
+.LBB5_240:                              # %vector.ph1506
 	andi	$a3, $a0, 12
 	bstrpick.d	$a2, $a0, 30, 4
 	slli.d	$a2, $a2, 4
@@ -2964,7 +2964,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	xvrepli.w	$xr0, 3
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB5_241:                              # %vector.body1510
+.LBB5_241:                              # %vector.body1509
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr1, $a5, -32
 	xvld	$xr2, $a5, 0
@@ -2976,11 +2976,11 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a4, $a4, 64
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB5_241
-# %bb.242:                              # %middle.block1515
+# %bb.242:                              # %middle.block1514
 	beq	$a2, $a0, .LBB5_249
-# %bb.243:                              # %vec.epilog.iter.check1519
+# %bb.243:                              # %vec.epilog.iter.check1518
 	beqz	$a3, .LBB5_247
-.LBB5_244:                              # %vec.epilog.ph1521
+.LBB5_244:                              # %vec.epilog.ph1520
 	move	$a5, $a2
 	bstrpick.d	$a2, $a0, 30, 2
 	slli.d	$a2, $a2, 2
@@ -2990,7 +2990,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a5, $a5, $a1, 2
 	vrepli.w	$vr0, 3
 	.p2align	4, , 16
-.LBB5_245:                              # %vec.epilog.vector.body1524
+.LBB5_245:                              # %vec.epilog.vector.body1523
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a5, 0
 	vmul.w	$vr1, $vr1, $vr0
@@ -2999,15 +2999,15 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
 	bnez	$a3, .LBB5_245
-# %bb.246:                              # %vec.epilog.middle.block1528
+# %bb.246:                              # %vec.epilog.middle.block1527
 	beq	$a2, $a0, .LBB5_249
-.LBB5_247:                              # %vec.epilog.scalar.ph1518.preheader
+.LBB5_247:                              # %vec.epilog.scalar.ph1517.preheader
 	alsl.d	$a1, $a2, $a1, 2
 	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a3, $a2, $a3, 2
 	sub.d	$a0, $a0, $a2
 	.p2align	4, , 16
-.LBB5_248:                              # %vec.epilog.scalar.ph1518
+.LBB5_248:                              # %vec.epilog.scalar.ph1517
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
 	alsl.d	$a2, $a2, $a2, 1
@@ -3434,23 +3434,23 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.d	$a1, $sp, 288                   # 8-byte Folded Reload
 	ld.w	$a7, $a1, 0
 	blez	$a7, .LBB5_325
-# %bb.312:                              # %iter.check1535
+# %bb.312:                              # %iter.check1534
 	ld.d	$a1, $s8, 128
 	ori	$a3, $zero, 4
 	move	$a2, $zero
 	bltu	$a7, $a3, .LBB5_323
-# %bb.313:                              # %iter.check1535
+# %bb.313:                              # %iter.check1534
 	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	sub.d	$a3, $a3, $a1
 	ori	$a4, $zero, 64
 	bltu	$a3, $a4, .LBB5_323
-# %bb.314:                              # %vector.main.loop.iter.check1537
+# %bb.314:                              # %vector.main.loop.iter.check1536
 	ori	$a2, $zero, 16
 	bgeu	$a7, $a2, .LBB5_316
 # %bb.315:
 	move	$a2, $zero
 	b	.LBB5_320
-.LBB5_316:                              # %vector.ph1538
+.LBB5_316:                              # %vector.ph1537
 	andi	$a3, $a7, 12
 	bstrpick.d	$a2, $a7, 30, 4
 	slli.d	$a2, $a2, 4
@@ -3459,7 +3459,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a5, $a1, 32
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB5_317:                              # %vector.body1541
+.LBB5_317:                              # %vector.body1540
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a5, -32
 	xvld	$xr1, $a5, 0
@@ -3471,11 +3471,11 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a4, $a4, 64
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB5_317
-# %bb.318:                              # %middle.block1546
+# %bb.318:                              # %middle.block1545
 	beq	$a2, $a7, .LBB5_325
-# %bb.319:                              # %vec.epilog.iter.check1550
+# %bb.319:                              # %vec.epilog.iter.check1549
 	beqz	$a3, .LBB5_323
-.LBB5_320:                              # %vec.epilog.ph1552
+.LBB5_320:                              # %vec.epilog.ph1551
 	move	$a5, $a2
 	bstrpick.d	$a2, $a7, 30, 2
 	slli.d	$a2, $a2, 2
@@ -3484,7 +3484,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a4, $a5, $a4, 2
 	alsl.d	$a5, $a5, $a1, 2
 	.p2align	4, , 16
-.LBB5_321:                              # %vec.epilog.vector.body1555
+.LBB5_321:                              # %vec.epilog.vector.body1554
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, 0
 	vslli.w	$vr0, $vr0, 2
@@ -3493,15 +3493,15 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a4, $a4, 16
 	addi.d	$a5, $a5, 16
 	bnez	$a3, .LBB5_321
-# %bb.322:                              # %vec.epilog.middle.block1559
+# %bb.322:                              # %vec.epilog.middle.block1558
 	beq	$a2, $a7, .LBB5_325
-.LBB5_323:                              # %vec.epilog.scalar.ph1549.preheader
+.LBB5_323:                              # %vec.epilog.scalar.ph1548.preheader
 	alsl.d	$a1, $a2, $a1, 2
 	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 	alsl.d	$a3, $a2, $a3, 2
 	sub.d	$a4, $a7, $a2
 	.p2align	4, , 16
-.LBB5_324:                              # %vec.epilog.scalar.ph1549
+.LBB5_324:                              # %vec.epilog.scalar.ph1548
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
 	slli.d	$a2, $a2, 2
@@ -4082,7 +4082,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 # %bb.408:
 	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
 	beq	$s3, $a5, .LBB5_426
-# %bb.409:                              # %iter.check1565
+# %bb.409:                              # %iter.check1564
 	sub.d	$a0, $a5, $s3
 	addi.d	$a1, $a0, -4
 	ori	$a0, $zero, 12
@@ -4091,7 +4091,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a3, $zero
 	move	$a1, $s3
 	b	.LBB5_420
-.LBB5_411:                              # %vector.main.loop.iter.check1567
+.LBB5_411:                              # %vector.main.loop.iter.check1566
 	srli.d	$a0, $a1, 2
 	ori	$a2, $zero, 60
 	addi.d	$a0, $a0, 1
@@ -4100,7 +4100,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a2, $zero
 	move	$a3, $zero
 	b	.LBB5_417
-.LBB5_413:                              # %vector.ph1568
+.LBB5_413:                              # %vector.ph1567
 	andi	$a1, $a0, 12
 	bstrpick.d	$a2, $a0, 62, 4
 	slli.d	$a2, $a2, 4
@@ -4109,7 +4109,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	move	$a4, $a2
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB5_414:                              # %vector.body1571
+.LBB5_414:                              # %vector.body1570
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a3, -32
 	xvld	$xr3, $a3, 0
@@ -4118,7 +4118,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	addi.d	$a4, $a4, -16
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB5_414
-# %bb.415:                              # %middle.block1579
+# %bb.415:                              # %middle.block1578
 	xvadd.w	$xr0, $xr1, $xr0
 	xvhaddw.d.w	$xr0, $xr0, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
@@ -4126,9 +4126,9 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
 	beq	$a0, $a2, .LBB5_421
-# %bb.416:                              # %vec.epilog.iter.check1585
+# %bb.416:                              # %vec.epilog.iter.check1584
 	beqz	$a1, .LBB5_491
-.LBB5_417:                              # %vec.epilog.ph1587
+.LBB5_417:                              # %vec.epilog.ph1586
 	bstrpick.d	$a1, $a0, 62, 2
 	slli.d	$a4, $a1, 2
 	alsl.d	$a1, $a1, $s3, 4
@@ -4137,14 +4137,14 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	alsl.d	$a3, $a2, $s3, 2
 	sub.d	$a2, $a2, $a4
 	.p2align	4, , 16
-.LBB5_418:                              # %vec.epilog.vector.body1590
+.LBB5_418:                              # %vec.epilog.vector.body1589
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a3, 0
 	vadd.w	$vr0, $vr1, $vr0
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 16
 	bnez	$a2, .LBB5_418
-# %bb.419:                              # %vec.epilog.middle.block1597
+# %bb.419:                              # %vec.epilog.middle.block1596
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
@@ -4779,12 +4779,12 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp587:                               # EH_LABEL
 # %bb.523:                              # %.noexc367
-.LBB5_524:                              # %.invoke1392
+.LBB5_524:                              # %.invoke1391
 .Ltmp583:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp584:                               # EH_LABEL
-# %bb.525:                              # %.cont1393
+# %bb.525:                              # %.cont1392
 .LBB5_526:
 .Ltmp574:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
@@ -4793,12 +4793,12 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp575:                               # EH_LABEL
 # %bb.527:                              # %.noexc398
-.LBB5_528:                              # %.invoke1394
+.LBB5_528:                              # %.invoke1393
 .Ltmp568:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp569:                               # EH_LABEL
-# %bb.529:                              # %.cont1395
+# %bb.529:                              # %.cont1394
 .LBB5_530:
 .Ltmp559:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
@@ -4815,12 +4815,12 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp557:                               # EH_LABEL
 # %bb.533:                              # %.noexc447
-.LBB5_534:                              # %.invoke1396
+.LBB5_534:                              # %.invoke1395
 .Ltmp550:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp551:                               # EH_LABEL
-# %bb.535:                              # %.cont1397
+# %bb.535:                              # %.cont1396
 .LBB5_536:                              # %.invoke
 .Ltmp616:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
@@ -4835,12 +4835,12 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 .Ltmp620:                               # EH_LABEL
 # %bb.539:                              # %.cont.i.i
-.LBB5_540:                              # %.invoke1390
+.LBB5_540:                              # %.invoke1389
 .Ltmp604:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
 .Ltmp605:                               # EH_LABEL
-# %bb.541:                              # %.cont1391
+# %bb.541:                              # %.cont1390
 .LBB5_542:
 .Ltmp478:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
@@ -5126,7 +5126,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	b	.LBB5_603
 .LBB5_597:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit541.thread
 .Ltmp388:                               # EH_LABEL
-.LBB5_598:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit541.thread1365
+.LBB5_598:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit541.thread1364
 	move	$s1, $a0
 	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
@@ -5141,7 +5141,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	b	.LBB5_606
 .LBB5_600:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit535.thread
 .Ltmp448:                               # EH_LABEL
-.LBB5_601:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit535.thread1355
+.LBB5_601:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit535.thread1354
 	move	$s1, $a0
 	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
@@ -5298,7 +5298,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	beqz	$a2, .LBB5_624
-.LBB5_637:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit535.thread1355
+.LBB5_637:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit535.thread1354
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $a2
 	move	$a0, $a2
@@ -5323,7 +5323,7 @@ _ZN10ExportGold12writeGeoFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	beqz	$a0, .LBB5_627
-.LBB5_641:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit541.thread1365
+.LBB5_641:                              # %_ZNSt6vectorIiSaIiEED2Ev.exit541.thread1364
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -6192,12 +6192,12 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	vpickve2gr.w	$a6, $vr0, 1
 	vinsgr2vr.d	$vr2, $a6, 1
 	xvpickve2gr.d	$a6, $xr2, 0
-	slli.d	$a6, $a6, 3
 	xvpickve2gr.d	$a7, $xr2, 1
-	slli.d	$a7, $a7, 3
 	xvpickve2gr.d	$t0, $xr1, 2
-	slli.d	$t0, $t0, 3
 	xvpickve2gr.d	$t1, $xr1, 3
+	slli.d	$a6, $a6, 3
+	slli.d	$a7, $a7, 3
+	slli.d	$t0, $t0, 3
 	slli.d	$t1, $t1, 3
 	fldx.d	$fa0, $s1, $a6
 	fldx.d	$fa1, $s1, $a7
@@ -6462,12 +6462,12 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	vpickve2gr.w	$a7, $vr0, 1
 	vinsgr2vr.d	$vr2, $a7, 1
 	xvpickve2gr.d	$a7, $xr2, 0
-	slli.d	$a7, $a7, 3
 	xvpickve2gr.d	$t0, $xr2, 1
-	slli.d	$t0, $t0, 3
 	xvpickve2gr.d	$t1, $xr1, 2
-	slli.d	$t1, $t1, 3
 	xvpickve2gr.d	$t2, $xr1, 3
+	slli.d	$a7, $a7, 3
+	slli.d	$t0, $t0, 3
+	slli.d	$t1, $t1, 3
 	slli.d	$t2, $t2, 3
 	fldx.d	$fa0, $s1, $a7
 	fldx.d	$fa1, $s1, $t0
@@ -6730,12 +6730,12 @@ _ZN10ExportGold12writeVarFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaI
 	vpickve2gr.w	$a7, $vr0, 1
 	vinsgr2vr.d	$vr2, $a7, 1
 	xvpickve2gr.d	$a7, $xr2, 0
-	slli.d	$a7, $a7, 3
 	xvpickve2gr.d	$t0, $xr2, 1
-	slli.d	$t0, $t0, 3
 	xvpickve2gr.d	$t1, $xr1, 2
-	slli.d	$t1, $t1, 3
 	xvpickve2gr.d	$t2, $xr1, 3
+	slli.d	$a7, $a7, 3
+	slli.d	$t0, $t0, 3
+	slli.d	$t1, $t1, 3
 	slli.d	$t2, $t2, 3
 	fldx.d	$fa0, $s1, $a7
 	fldx.d	$fa1, $s1, $t0

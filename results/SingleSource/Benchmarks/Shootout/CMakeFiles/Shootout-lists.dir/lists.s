@@ -278,18 +278,16 @@ list_sequence:                          # @list_sequence
 	mul.d	$a3, $a4, $a6
 	add.d	$a3, $a3, $a0
 	addi.d	$a3, $a3, -24
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB7_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a5, $a5, -16
 	st.d	$a3, $a3, 40
-	addi.d	$a1, $a4, 1
-	st.w	$a4, $a5, -24
+	st.w	$a1, $a5, -24
+	addi.d	$a1, $a1, 1
 	addi.d	$a5, $a5, 24
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 24
-	move	$a4, $a1
 	bnez	$a2, .LBB7_7
 .LBB7_8:                                # %._crit_edge
 	addi.w	$a2, $s1, 1

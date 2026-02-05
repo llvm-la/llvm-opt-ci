@@ -1092,42 +1092,40 @@ cc_Tautology:                           # @cc_Tautology
 # %bb.53:                               # %._crit_edge114.i
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	st.d	$fp, $a0, %pc_lo12(cc_CLOSURE.3)
-	ori	$a3, $zero, 1
+	ori	$a0, $zero, 1
 	st.d	$a2, $s6, %pc_lo12(cc_CLOSURE.4)
-	move	$a0, $zero
-	beq	$a1, $a3, .LBB2_56
+	move	$a3, $zero
+	beq	$a1, $a0, .LBB2_56
 	.p2align	4, , 16
 .LBB2_54:                               # %.lr.ph118.i
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$a2, $s0, 0
 	bstrpick.d	$s0, $s0, 31, 1
-	addi.d	$a0, $a0, 1
-	bltu	$a3, $a2, .LBB2_54
+	add.w	$a3, $a3, $a1
+	bnez	$s0, .LBB2_54
 	b	.LBB2_56
 .LBB2_55:                               # %._crit_edge114.thread.i
-	move	$a0, $zero
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
-	st.d	$fp, $a3, %pc_lo12(cc_CLOSURE.3)
+	move	$a3, $zero
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	st.d	$fp, $a0, %pc_lo12(cc_CLOSURE.3)
 	st.d	$a2, $s6, %pc_lo12(cc_CLOSURE.4)
 .LBB2_56:                               # %._crit_edge119.i
 	pcalau12i	$s0, %pc_hi20(cc_CLOSURE.6)
-	ld.d	$a2, $s0, %pc_lo12(cc_CLOSURE.6)
-	ld.w	$a4, $a2, -8
-	mul.w	$a3, $a0, $a1
-	addi.d	$a0, $a2, -16
-	blt	$a3, $a4, .LBB2_66
+	ld.d	$a1, $s0, %pc_lo12(cc_CLOSURE.6)
+	ld.w	$a2, $a1, -8
+	addi.d	$a0, $a1, -16
+	blt	$a3, $a2, .LBB2_66
 # %bb.57:
-	slli.d	$a1, $a4, 32
+	slli.d	$a2, $a2, 32
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 2
-	add.d	$a1, $a1, $a4
-	srli.d	$a1, $a1, 29
-	addi.w	$a4, $a1, 0
+	add.d	$a2, $a2, $a4
+	srli.d	$a2, $a2, 29
+	addi.w	$a4, $a2, 0
 	ori	$a5, $zero, 1024
 	addi.w	$fp, $a3, 1
 	bgeu	$a4, $a5, .LBB2_59
 # %bb.58:
-	andi	$a1, $a1, 1016
+	andi	$a1, $a2, 1016
 	slli.d	$a1, $a1, 3
 	pcalau12i	$a2, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a2, $a2, %got_pc_lo12(memory_ARRAY)
@@ -1151,7 +1149,7 @@ cc_Tautology:                           # @cc_Tautology
 	sltui	$a5, $a4, 1
 	sub.d	$a3, $a3, $a4
 	masknez	$a3, $a3, $a5
-	add.w	$a1, $a3, $a1
+	add.w	$a2, $a3, $a2
 	pcalau12i	$a3, %got_pc_hi20(memory_OFFSET)
 	ld.d	$a3, $a3, %got_pc_lo12(memory_OFFSET)
 	ld.wu	$a3, $a3, 0
@@ -1169,23 +1167,23 @@ cc_Tautology:                           # @cc_Tautology
 	pcalau12i	$a0, %got_pc_hi20(memory_MARKSIZE)
 	ld.d	$a0, $a0, %got_pc_lo12(memory_MARKSIZE)
 	ld.w	$a0, $a0, 0
-	add.d	$a0, $a1, $a0
+	add.d	$a0, $a2, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$a0, $a0, 16
-	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
-	ld.d	$a1, $a1, %got_pc_lo12(memory_FREEDBYTES)
-	ld.d	$a3, $a1, 0
+	pcalau12i	$a2, %got_pc_hi20(memory_FREEDBYTES)
+	ld.d	$a2, $a2, %got_pc_lo12(memory_FREEDBYTES)
+	ld.d	$a3, $a2, 0
 	add.d	$a3, $a0, $a3
-	st.d	$a3, $a1, 0
-	pcalau12i	$a1, %got_pc_hi20(memory_MAXMEM)
-	ld.d	$a1, $a1, %got_pc_lo12(memory_MAXMEM)
-	ld.d	$a3, $a1, 0
+	st.d	$a3, $a2, 0
+	pcalau12i	$a2, %got_pc_hi20(memory_MAXMEM)
+	ld.d	$a2, $a2, %got_pc_lo12(memory_MAXMEM)
+	ld.d	$a3, $a2, 0
 	bltz	$a3, .LBB2_64
 # %bb.63:
 	add.d	$a0, $a3, $a0
-	st.d	$a0, $a1, 0
+	st.d	$a0, $a2, 0
 .LBB2_64:
-	addi.d	$a0, $a2, -32
+	addi.d	$a0, $a1, -32
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB2_65:                               # %ras_Free.exit.i97.i
@@ -1193,12 +1191,12 @@ cc_Tautology:                           # @cc_Tautology
 	alsl.w	$a0, $fp, $a0, 3
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $a0, 16
+	addi.d	$a1, $a0, 16
 	st.d	$fp, $a0, 8
 .LBB2_66:
 	st.d	$zero, $a0, 0
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a2, $s0, %pc_lo12(cc_CLOSURE.6)
+	st.d	$a1, $s0, %pc_lo12(cc_CLOSURE.6)
 	ld.w	$a0, $s5, 64
 	ld.w	$a1, $s5, 68
 	add.w	$a0, $a1, $a0

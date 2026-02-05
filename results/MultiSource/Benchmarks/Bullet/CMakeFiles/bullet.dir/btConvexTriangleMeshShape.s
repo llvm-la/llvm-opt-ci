@@ -1305,12 +1305,11 @@ _ZN26LocalSupportVertexCallback28internalProcessTriangleIndexEP9btVector3ii: # @
 	fmadd.s	$fa4, $fa0, $fa5, $fa4
 	fmadd.s	$fa4, $fa1, $fa6, $fa4
 	fcmp.cule.s	$fcc0, $fa4, $fa3
-	addi.d	$a2, $a0, 8
 	bcnez	$fcc0, .LBB23_2
 # %bb.1:
 	fst.s	$fa4, $a0, 24
 	vld	$vr3, $a1, 0
-	vst	$vr3, $a2, 0
+	vst	$vr3, $a0, 8
 	fmov.s	$fa3, $fa4
 .LBB23_2:
 	fld.s	$fa4, $a1, 20
@@ -1322,10 +1321,9 @@ _ZN26LocalSupportVertexCallback28internalProcessTriangleIndexEP9btVector3ii: # @
 	fcmp.cule.s	$fcc0, $fa4, $fa3
 	bcnez	$fcc0, .LBB23_4
 # %bb.3:
-	addi.d	$a3, $a1, 16
 	fst.s	$fa4, $a0, 24
-	vld	$vr3, $a3, 0
-	vst	$vr3, $a2, 0
+	vld	$vr3, $a1, 16
+	vst	$vr3, $a0, 8
 	fmov.s	$fa3, $fa4
 .LBB23_4:
 	fld.s	$fa4, $a1, 36
@@ -1337,10 +1335,9 @@ _ZN26LocalSupportVertexCallback28internalProcessTriangleIndexEP9btVector3ii: # @
 	fcmp.cule.s	$fcc0, $fa0, $fa3
 	bcnez	$fcc0, .LBB23_6
 # %bb.5:
-	addi.d	$a1, $a1, 32
 	fst.s	$fa0, $a0, 24
-	vld	$vr0, $a1, 0
-	vst	$vr0, $a2, 0
+	vld	$vr0, $a1, 32
+	vst	$vr0, $a0, 8
 .LBB23_6:
 	ret
 .Lfunc_end23:
@@ -1417,8 +1414,7 @@ _ZZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransform
 	beqz	$a2, .LBB25_2
 # %bb.1:
 	vld	$vr0, $a1, 0
-	addi.d	$a1, $a0, 12
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a0, 12
 	st.b	$zero, $a0, 8
 	ret
 .LBB25_2:

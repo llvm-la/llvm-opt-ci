@@ -25,15 +25,13 @@ _ZN9benchmark15ProcessCPUUsageEv:       # @_ZN9benchmark15ProcessCPUUsageEv
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_2
 # %bb.1:
-	ld.d	$a0, $sp, 8
-	ld.d	$a1, $sp, 16
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $sp, 8
+	fld.d	$fa1, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_0)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI0_0)
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa2, $a1
-	ffint.d.l	$fa2, $fa2
-	fmadd.d	$fa0, $fa2, $fa1, $fa0
+	ffint.d.l	$fa1, $fa1
+	fmadd.d	$fa0, $fa1, $fa2, $fa0
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
@@ -99,15 +97,13 @@ _ZN9benchmark14ThreadCPUUsageEv:        # @_ZN9benchmark14ThreadCPUUsageEv
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_2
 # %bb.1:
-	ld.d	$a0, $sp, 8
-	ld.d	$a1, $sp, 16
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $sp, 8
+	fld.d	$fa1, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI2_0)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI2_0)
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa2, $a1
-	ffint.d.l	$fa2, $fa2
-	fmadd.d	$fa0, $fa2, $fa1, $fa0
+	ffint.d.l	$fa1, $fa1
+	fmadd.d	$fa0, $fa1, $fa2, $fa0
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret

@@ -20,7 +20,7 @@ gcc_crash:                              # @gcc_crash
 	st.w	$a2, $a0, 0
 	ret
 .LBB0_4:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end0:
 	.size	gcc_crash, .Lfunc_end0-gcc_crash
                                         # -- End function

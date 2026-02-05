@@ -128,21 +128,21 @@ getpath:                                # @getpath
 	b	.LBB0_5
 .LBB0_14:
 	pcalau12i	$a0, %got_pc_hi20(pathfile)
-	ld.d	$s1, $a0, %got_pc_lo12(pathfile)
-	ld.d	$a0, $s1, 0
+	ld.d	$s0, $a0, %got_pc_lo12(pathfile)
+	ld.d	$a0, $s0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s0, %pc_hi20(getpath.file)
-	st.d	$a0, $s0, %pc_lo12(getpath.file)
+	pcalau12i	$s1, %pc_hi20(getpath.file)
+	st.d	$a0, $s1, %pc_lo12(getpath.file)
 	beqz	$a0, .LBB0_29
 # %bb.15:
 	ori	$a2, $zero, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, %pc_lo12(getpath.file)
+	ld.d	$a0, $s1, %pc_lo12(getpath.file)
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -219,7 +219,7 @@ getpath:                                # @getpath
 	ori	$s3, $zero, 68
 	b	.LBB0_31
 .LBB0_29:                               # %.thread
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	pcaddu18i	$ra, %call36(printf)

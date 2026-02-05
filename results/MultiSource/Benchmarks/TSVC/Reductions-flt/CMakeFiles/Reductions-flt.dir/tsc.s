@@ -32,28 +32,26 @@ set1d:                                  # @set1d
 	.p2align	4, , 16
 .LBB0_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -139,28 +137,26 @@ set1ds:                                 # @set1ds
 	.p2align	4, , 16
 .LBB1_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a1, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -1923,28 +1919,26 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_153:                              # %vector.body5417
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a6, $xr2, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	xvpickve2gr.d	$a6, $xr2, 1
-	vinsgr2vr.w	$vr4, $a6, 1
-	xvpickve2gr.d	$a6, $xr2, 2
-	vinsgr2vr.w	$vr4, $a6, 2
-	xvpickve2gr.d	$a6, $xr2, 3
-	vinsgr2vr.w	$vr4, $a6, 3
-	xvpickve2gr.d	$a6, $xr3, 0
+	xvpickve2gr.d	$a6, $xr1, 0
 	vinsgr2vr.w	$vr2, $a6, 0
-	xvpickve2gr.d	$a6, $xr3, 1
+	xvpickve2gr.d	$a6, $xr1, 1
 	vinsgr2vr.w	$vr2, $a6, 1
-	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a6, $xr1, 2
 	vinsgr2vr.w	$vr2, $a6, 2
-	xvpickve2gr.d	$a6, $xr3, 3
+	xvpickve2gr.d	$a6, $xr1, 3
 	vinsgr2vr.w	$vr2, $a6, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a6, $xr0, 0
+	vinsgr2vr.w	$vr3, $a6, 0
+	xvpickve2gr.d	$a6, $xr0, 1
+	vinsgr2vr.w	$vr3, $a6, 1
+	xvpickve2gr.d	$a6, $xr0, 2
+	vinsgr2vr.w	$vr3, $a6, 2
+	xvpickve2gr.d	$a6, $xr0, 3
+	vinsgr2vr.w	$vr3, $a6, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a4, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -1962,28 +1956,26 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_155:                              # %vector.body5424
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a6, $xr2, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	xvpickve2gr.d	$a6, $xr2, 1
-	vinsgr2vr.w	$vr4, $a6, 1
-	xvpickve2gr.d	$a6, $xr2, 2
-	vinsgr2vr.w	$vr4, $a6, 2
-	xvpickve2gr.d	$a6, $xr2, 3
-	vinsgr2vr.w	$vr4, $a6, 3
-	xvpickve2gr.d	$a6, $xr3, 0
+	xvpickve2gr.d	$a6, $xr1, 0
 	vinsgr2vr.w	$vr2, $a6, 0
-	xvpickve2gr.d	$a6, $xr3, 1
+	xvpickve2gr.d	$a6, $xr1, 1
 	vinsgr2vr.w	$vr2, $a6, 1
-	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a6, $xr1, 2
 	vinsgr2vr.w	$vr2, $a6, 2
-	xvpickve2gr.d	$a6, $xr3, 3
+	xvpickve2gr.d	$a6, $xr1, 3
 	vinsgr2vr.w	$vr2, $a6, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a6, $xr0, 0
+	vinsgr2vr.w	$vr3, $a6, 0
+	xvpickve2gr.d	$a6, $xr0, 1
+	vinsgr2vr.w	$vr3, $a6, 1
+	xvpickve2gr.d	$a6, $xr0, 2
+	vinsgr2vr.w	$vr3, $a6, 2
+	xvpickve2gr.d	$a6, $xr0, 3
+	vinsgr2vr.w	$vr3, $a6, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a4, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -2001,28 +1993,26 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_157:                              # %vector.body5431
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a6, $xr2, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	xvpickve2gr.d	$a6, $xr2, 1
-	vinsgr2vr.w	$vr4, $a6, 1
-	xvpickve2gr.d	$a6, $xr2, 2
-	vinsgr2vr.w	$vr4, $a6, 2
-	xvpickve2gr.d	$a6, $xr2, 3
-	vinsgr2vr.w	$vr4, $a6, 3
-	xvpickve2gr.d	$a6, $xr3, 0
+	xvpickve2gr.d	$a6, $xr1, 0
 	vinsgr2vr.w	$vr2, $a6, 0
-	xvpickve2gr.d	$a6, $xr3, 1
+	xvpickve2gr.d	$a6, $xr1, 1
 	vinsgr2vr.w	$vr2, $a6, 1
-	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a6, $xr1, 2
 	vinsgr2vr.w	$vr2, $a6, 2
-	xvpickve2gr.d	$a6, $xr3, 3
+	xvpickve2gr.d	$a6, $xr1, 3
 	vinsgr2vr.w	$vr2, $a6, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a6, $xr0, 0
+	vinsgr2vr.w	$vr3, $a6, 0
+	xvpickve2gr.d	$a6, $xr0, 1
+	vinsgr2vr.w	$vr3, $a6, 1
+	xvpickve2gr.d	$a6, $xr0, 2
+	vinsgr2vr.w	$vr3, $a6, 2
+	xvpickve2gr.d	$a6, $xr0, 3
+	vinsgr2vr.w	$vr3, $a6, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a4, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -2040,28 +2030,26 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_159:                              # %vector.body5438
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -2097,28 +2085,26 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_163:                              # %vector.body5405
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -2154,28 +2140,26 @@ init:                                   # @init
 	.p2align	4, , 16
 .LBB5_167:                              # %vector.body5393
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -2635,28 +2619,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_193:                              # %vector.body5320
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -2690,28 +2672,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_197:                              # %vector.body5308
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -3317,28 +3297,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_243:                              # %vector.body5189
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -3531,28 +3509,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_257:                              # %vector.body5150
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -3852,28 +3828,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_287:                              # %vector.body5072
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -3907,28 +3881,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_291:                              # %vector.body5060
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -3962,28 +3934,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_295:                              # %vector.body5048
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -4017,28 +3987,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_299:                              # %vector.body5036
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -4072,28 +4040,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_303:                              # %vector.body5024
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -5930,28 +5896,26 @@ init:                                   # @init
 	ori	$a5, $a1, 3328
 .LBB5_446:                              # %vector.body4644
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr3, $xr2, 1
-	xvaddi.du	$xr4, $xr1, 1
-	xvmul.d	$xr4, $xr4, $xr4
-	xvmul.d	$xr3, $xr3, $xr3
-	xvpickve2gr.d	$a6, $xr3, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	xvpickve2gr.d	$a6, $xr3, 1
-	vinsgr2vr.w	$vr5, $a6, 1
-	xvpickve2gr.d	$a6, $xr3, 2
-	vinsgr2vr.w	$vr5, $a6, 2
-	xvpickve2gr.d	$a6, $xr3, 3
-	vinsgr2vr.w	$vr5, $a6, 3
-	xvpickve2gr.d	$a6, $xr4, 0
+	xvpickve2gr.d	$a6, $xr2, 0
 	vinsgr2vr.w	$vr3, $a6, 0
-	xvpickve2gr.d	$a6, $xr4, 1
+	xvpickve2gr.d	$a6, $xr2, 1
 	vinsgr2vr.w	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr4, 2
+	xvpickve2gr.d	$a6, $xr2, 2
 	vinsgr2vr.w	$vr3, $a6, 2
-	xvpickve2gr.d	$a6, $xr4, 3
+	xvpickve2gr.d	$a6, $xr2, 3
 	vinsgr2vr.w	$vr3, $a6, 3
-	xvpermi.q	$xr5, $xr3, 2
-	xvffint.s.wu	$xr3, $xr5
+	xvpickve2gr.d	$a6, $xr1, 0
+	vinsgr2vr.w	$vr4, $a6, 0
+	xvpickve2gr.d	$a6, $xr1, 1
+	vinsgr2vr.w	$vr4, $a6, 1
+	xvpickve2gr.d	$a6, $xr1, 2
+	vinsgr2vr.w	$vr4, $a6, 2
+	xvpickve2gr.d	$a6, $xr1, 3
+	vinsgr2vr.w	$vr4, $a6, 3
+	xvpermi.q	$xr3, $xr4, 2
+	xvaddi.wu	$xr3, $xr3, 1
+	xvmul.w	$xr3, $xr3, $xr3
+	xvffint.s.wu	$xr3, $xr3
 	xvfrecip.s	$xr3, $xr3
 	xvst	$xr3, $a4, 0
 	xvaddi.du	$xr2, $xr2, 8
@@ -5968,28 +5932,26 @@ init:                                   # @init
 	ori	$a3, $a1, 3328
 .LBB5_448:                              # %vector.body4651
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr3, $xr2, 1
-	xvaddi.du	$xr4, $xr1, 1
-	xvmul.d	$xr4, $xr4, $xr4
-	xvmul.d	$xr3, $xr3, $xr3
-	xvpickve2gr.d	$a4, $xr3, 0
-	vinsgr2vr.w	$vr5, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	vinsgr2vr.w	$vr5, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	vinsgr2vr.w	$vr5, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	vinsgr2vr.w	$vr5, $a4, 3
-	xvpickve2gr.d	$a4, $xr4, 0
+	xvpickve2gr.d	$a4, $xr2, 0
 	vinsgr2vr.w	$vr3, $a4, 0
-	xvpickve2gr.d	$a4, $xr4, 1
+	xvpickve2gr.d	$a4, $xr2, 1
 	vinsgr2vr.w	$vr3, $a4, 1
-	xvpickve2gr.d	$a4, $xr4, 2
+	xvpickve2gr.d	$a4, $xr2, 2
 	vinsgr2vr.w	$vr3, $a4, 2
-	xvpickve2gr.d	$a4, $xr4, 3
+	xvpickve2gr.d	$a4, $xr2, 3
 	vinsgr2vr.w	$vr3, $a4, 3
-	xvpermi.q	$xr5, $xr3, 2
-	xvffint.s.wu	$xr3, $xr5
+	xvpickve2gr.d	$a4, $xr1, 0
+	vinsgr2vr.w	$vr4, $a4, 0
+	xvpickve2gr.d	$a4, $xr1, 1
+	vinsgr2vr.w	$vr4, $a4, 1
+	xvpickve2gr.d	$a4, $xr1, 2
+	vinsgr2vr.w	$vr4, $a4, 2
+	xvpickve2gr.d	$a4, $xr1, 3
+	vinsgr2vr.w	$vr4, $a4, 3
+	xvpermi.q	$xr3, $xr4, 2
+	xvaddi.wu	$xr3, $xr3, 1
+	xvmul.w	$xr3, $xr3, $xr3
+	xvffint.s.wu	$xr3, $xr3
 	xvfrecip.s	$xr3, $xr3
 	xvst	$xr3, $a2, 0
 	xvaddi.du	$xr2, $xr2, 8
@@ -7771,28 +7733,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_603:                              # %vector.body4256
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -8028,28 +7988,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_628:                              # %vector.body4204
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -8801,28 +8759,26 @@ init:                                   # @init
 	ori	$a2, $a0, 3328
 .LBB5_689:                              # %vector.body4051
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a3, $xr2, 0
-	vinsgr2vr.w	$vr4, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 1
-	vinsgr2vr.w	$vr4, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 2
-	vinsgr2vr.w	$vr4, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 3
-	vinsgr2vr.w	$vr4, $a3, 3
-	xvpickve2gr.d	$a3, $xr3, 0
+	xvpickve2gr.d	$a3, $xr1, 0
 	vinsgr2vr.w	$vr2, $a3, 0
-	xvpickve2gr.d	$a3, $xr3, 1
+	xvpickve2gr.d	$a3, $xr1, 1
 	vinsgr2vr.w	$vr2, $a3, 1
-	xvpickve2gr.d	$a3, $xr3, 2
+	xvpickve2gr.d	$a3, $xr1, 2
 	vinsgr2vr.w	$vr2, $a3, 2
-	xvpickve2gr.d	$a3, $xr3, 3
+	xvpickve2gr.d	$a3, $xr1, 3
 	vinsgr2vr.w	$vr2, $a3, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a3, $xr0, 0
+	vinsgr2vr.w	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr0, 1
+	vinsgr2vr.w	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr0, 2
+	vinsgr2vr.w	$vr3, $a3, 2
+	xvpickve2gr.d	$a3, $xr0, 3
+	vinsgr2vr.w	$vr3, $a3, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a1, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -8866,28 +8822,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_695:                              # %vector.body4044
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -8914,28 +8868,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_697:                              # %vector.body4032
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -8967,28 +8919,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_701:                              # %vector.body4025
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -9022,28 +8972,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_705:                              # %vector.body4013
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -9077,28 +9025,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_709:                              # %vector.body4001
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -9497,28 +9443,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_745:                              # %vector.body3904
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -9915,28 +9859,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_783:                              # %vector.body3812
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -10302,28 +10244,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_811:                              # %vector.body3733
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -10351,28 +10291,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_813:                              # %vector.body3726
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -10400,28 +10338,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_815:                              # %vector.body3719
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -10449,28 +10385,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_817:                              # %vector.body3712
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -10498,28 +10432,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_819:                              # %vector.body3705
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -10645,28 +10577,26 @@ init:                                   # @init
 	ori	$a1, $a1, 3328
 .LBB5_833:                              # %vector.body3673
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a2, $xr2, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr2, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr2, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr2, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpickve2gr.d	$a2, $xr3, 0
+	xvpickve2gr.d	$a2, $xr1, 0
 	vinsgr2vr.w	$vr2, $a2, 0
-	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a2, $xr1, 1
 	vinsgr2vr.w	$vr2, $a2, 1
-	xvpickve2gr.d	$a2, $xr3, 2
+	xvpickve2gr.d	$a2, $xr1, 2
 	vinsgr2vr.w	$vr2, $a2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
+	xvpickve2gr.d	$a2, $xr1, 3
 	vinsgr2vr.w	$vr2, $a2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a2, $xr0, 0
+	vinsgr2vr.w	$vr3, $a2, 0
+	xvpickve2gr.d	$a2, $xr0, 1
+	vinsgr2vr.w	$vr3, $a2, 1
+	xvpickve2gr.d	$a2, $xr0, 2
+	vinsgr2vr.w	$vr3, $a2, 2
+	xvpickve2gr.d	$a2, $xr0, 3
+	vinsgr2vr.w	$vr3, $a2, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -10686,28 +10616,26 @@ init:                                   # @init
 	ori	$a2, $a0, 3328
 .LBB5_835:                              # %vector.body3653
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr2, $xr1, 1
-	xvaddi.du	$xr3, $xr0, 1
-	xvmul.d	$xr3, $xr3, $xr3
-	xvmul.d	$xr2, $xr2, $xr2
-	xvpickve2gr.d	$a3, $xr2, 0
-	vinsgr2vr.w	$vr4, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 1
-	vinsgr2vr.w	$vr4, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 2
-	vinsgr2vr.w	$vr4, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 3
-	vinsgr2vr.w	$vr4, $a3, 3
-	xvpickve2gr.d	$a3, $xr3, 0
+	xvpickve2gr.d	$a3, $xr1, 0
 	vinsgr2vr.w	$vr2, $a3, 0
-	xvpickve2gr.d	$a3, $xr3, 1
+	xvpickve2gr.d	$a3, $xr1, 1
 	vinsgr2vr.w	$vr2, $a3, 1
-	xvpickve2gr.d	$a3, $xr3, 2
+	xvpickve2gr.d	$a3, $xr1, 2
 	vinsgr2vr.w	$vr2, $a3, 2
-	xvpickve2gr.d	$a3, $xr3, 3
+	xvpickve2gr.d	$a3, $xr1, 3
 	vinsgr2vr.w	$vr2, $a3, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvffint.s.wu	$xr2, $xr4
+	xvpickve2gr.d	$a3, $xr0, 0
+	vinsgr2vr.w	$vr3, $a3, 0
+	xvpickve2gr.d	$a3, $xr0, 1
+	vinsgr2vr.w	$vr3, $a3, 1
+	xvpickve2gr.d	$a3, $xr0, 2
+	vinsgr2vr.w	$vr3, $a3, 2
+	xvpickve2gr.d	$a3, $xr0, 3
+	vinsgr2vr.w	$vr3, $a3, 3
+	xvpermi.q	$xr2, $xr3, 2
+	xvaddi.wu	$xr2, $xr2, 1
+	xvmul.w	$xr2, $xr2, $xr2
+	xvffint.s.wu	$xr2, $xr2
 	xvfrecip.s	$xr2, $xr2
 	xvst	$xr2, $a1, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -11613,7 +11541,6 @@ s315:                                   # @s315
 	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.76)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.76)
 	pcaddu18i	$ra, %call36(init)
@@ -11644,7 +11571,7 @@ s315:                                   # @s315
 	bnez	$a2, .LBB12_1
 # %bb.2:                                # %.preheader
 	pcalau12i	$a1, %pc_hi20(ntimes)
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a1, $a1, %pc_lo12(ntimes)
 	blez	$a1, .LBB12_8
 # %bb.3:                                # %.lr.ph.preheader
@@ -11652,7 +11579,7 @@ s315:                                   # @s315
 	addi.d	$fp, $a1, %pc_lo12(global_data)
 	move	$s8, $zero
 	ori	$a0, $a0, 3328
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	lu12i.w	$a0, 31
 	ori	$a0, $a0, 1040
 	add.d	$s0, $fp, $a0
@@ -11681,7 +11608,7 @@ s315:                                   # @s315
 	fld.s	$fs0, $fp, 0
 	move	$a0, $zero
 	move	$s7, $zero
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	move	$a2, $fp
 	.p2align	4, , 16
 .LBB12_5:                               #   Parent Loop BB12_4 Depth=1
@@ -11712,38 +11639,37 @@ s315:                                   # @s315
 	move	$a7, $s6
 	pcaddu18i	$ra, %call36(dummy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	addi.w	$s8, $s8, 1
 	blt	$s8, $a0, .LBB12_4
 # %bb.7:                                # %._crit_edge.loopexit
 	movgr2fr.w	$fa0, $s7
-	ffint.s.w	$fs1, $fa0
+	ffint.s.w	$fa0, $fa0
+	fadd.s	$fa0, $fs0, $fa0
+	vldi	$vr1, -1168
+	fadd.s	$fs0, $fa0, $fa1
 	b	.LBB12_9
 .LBB12_8:
-	movgr2fr.w	$fs1, $zero
-                                        # implicit-def: $f24
+	lu12i.w	$a0, 523264
+	movgr2fr.w	$fs0, $a0
 .LBB12_9:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.L.str.142)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.142)
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	fadd.s	$fa0, $fs0, $fs1
-	vldi	$vr1, -1168
-	fadd.s	$fa0, $fa0, $fa1
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
 	pcalau12i	$a0, %pc_hi20(temp)
-	pcalau12i	$a1, %pc_hi20(digits)
-	ld.w	$a1, $a1, %pc_lo12(digits)
-	fst.s	$fa0, $a0, %pc_lo12(temp)
-	fcvt.d.s	$fa0, $fa0
+	fst.s	$fs0, $a0, %pc_lo12(temp)
+	fcvt.d.s	$fa0, $fs0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
@@ -12014,43 +11940,42 @@ s317:                                   # @s317
 	.type	s318,@function
 s318:                                   # @s318
 # %bb.0:
-	addi.d	$sp, $sp, -144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.79)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.79)
 	pcaddu18i	$ra, %call36(init)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(ntimes)
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB15_5
+	blt	$a0, $a1, .LBB15_6
 # %bb.1:                                # %.lr.ph.preheader
 	slli.d	$s8, $s0, 2
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$fp, $a0, %pc_lo12(global_data)
 	move	$s7, $zero
 	alsl.d	$a0, $s0, $fp, 2
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	lu12i.w	$a0, 7
 	ori	$s0, $a0, 3327
 	lu12i.w	$a0, 31
 	ori	$a0, $a0, 1040
 	add.d	$a0, $fp, $a0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	lu12i.w	$a0, 62
 	ori	$a0, $a0, 2096
 	add.d	$s1, $fp, $a0
@@ -12076,16 +12001,16 @@ s318:                                   # @s318
 	fld.s	$fa0, $fp, 0
 	move	$a0, $zero
 	move	$a1, $zero
-	fabs.s	$fs0, $fa0
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	fabs.s	$fa0, $fa0
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB15_3:                               #   Parent Loop BB15_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.s	$fa0, $a2, 0
+	fld.s	$fa1, $a2, 0
 	addi.w	$a0, $a0, 1
-	fabs.s	$fa0, $fa0
-	fcmp.cult.s	$fcc0, $fs0, $fa0
-	fsel	$fs0, $fs0, $fa0, $fcc0
+	fabs.s	$fa1, $fa1
+	fcmp.cult.s	$fcc0, $fa0, $fa1
+	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a3, $fcc0
 	masknez	$a1, $a1, $a3
 	maskeqz	$a3, $a0, $a3
@@ -12094,64 +12019,64 @@ s318:                                   # @s318
 	bne	$a0, $s0, .LBB15_3
 # %bb.4:                                #   in Loop: Header=BB15_2 Depth=1
 	bstrpick.d	$a0, $a1, 31, 0
-	movgr2fr.d	$fa0, $a0
-	ffint.s.l	$fs1, $fa0
-	fadd.s	$fa0, $fs0, $fs1
+	movgr2fr.d	$fa1, $a0
+	ffint.s.l	$fa1, $fa1
+	fadd.s	$fs0, $fa0, $fa1
 	move	$a0, $fp
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	move	$a2, $s1
 	move	$a3, $s2
 	move	$a4, $s3
 	move	$a5, $s4
 	move	$a6, $s5
 	move	$a7, $s6
+	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(dummy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.wu	$a0, $a0, %pc_lo12(ntimes)
 	addi.w	$s7, $s7, 1
 	srli.d	$a1, $a0, 31
 	add.w	$a0, $a0, $a1
 	srai.d	$a0, $a0, 1
 	blt	$s7, $a0, .LBB15_2
-	b	.LBB15_6
-.LBB15_5:
-	movgr2fr.w	$fs1, $zero
-                                        # implicit-def: $f24
-.LBB15_6:                               # %._crit_edge
+# %bb.5:                                # %._crit_edge.loopexit
+	vldi	$vr0, -1168
+	fadd.s	$fs0, $fs0, $fa0
+	b	.LBB15_7
+.LBB15_6:
+	lu12i.w	$a0, 523264
+	movgr2fr.w	$fs0, $a0
+.LBB15_7:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.L.str.145)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.145)
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	fadd.s	$fa0, $fs0, $fs1
-	vldi	$vr1, -1168
-	fadd.s	$fa0, $fa0, $fa1
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
 	pcalau12i	$a0, %pc_hi20(temp)
-	pcalau12i	$a1, %pc_hi20(digits)
-	ld.w	$a1, $a1, %pc_lo12(digits)
-	fst.s	$fa0, $a0, %pc_lo12(temp)
-	fcvt.d.s	$fa0, $fa0
+	fst.s	$fs0, $a0, %pc_lo12(temp)
+	fcvt.d.s	$fa0, $fs0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end15:
 	.size	s318, .Lfunc_end15-s318
@@ -12311,29 +12236,28 @@ s3110:                                  # @s3110
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 32                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.81)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.81)
 	pcaddu18i	$ra, %call36(init)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(ntimes)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	ori	$s8, $zero, 256
-	blt	$a0, $s8, .LBB17_7
+	blt	$a0, $s8, .LBB17_8
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$fp, $a0, %pc_lo12(global_data)
 	move	$s7, $zero
 	lu12i.w	$a0, 156
 	ori	$a0, $a0, 1216
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	add.d	$s0, $fp, $a0
 	ori	$s1, $zero, 1024
 	lu12i.w	$a0, 31
 	ori	$a0, $a0, 1040
 	add.d	$a0, $fp, $a0
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	lu12i.w	$a0, 62
 	ori	$a0, $a0, 2096
 	add.d	$s2, $fp, $a0
@@ -12354,8 +12278,8 @@ s3110:                                  # @s3110
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB17_3 Depth 2
                                         #       Child Loop BB17_4 Depth 3
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	fldx.s	$fs0, $fp, $a0
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	fldx.s	$fa0, $fp, $a0
 	move	$a0, $zero
 	move	$a2, $zero
 	move	$a1, $zero
@@ -12371,9 +12295,9 @@ s3110:                                  # @s3110
 .LBB17_4:                               #   Parent Loop BB17_2 Depth=1
                                         #     Parent Loop BB17_3 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	fldx.s	$fa0, $a3, $a5
-	fcmp.clt.s	$fcc0, $fs0, $fa0
-	fsel	$fs0, $fs0, $fa0, $fcc0
+	fldx.s	$fa1, $a3, $a5
+	fcmp.clt.s	$fcc0, $fa0, $fa1
+	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a6, $fcc0
 	masknez	$a1, $a1, $a6
 	maskeqz	$a7, $a4, $a6
@@ -12389,14 +12313,14 @@ s3110:                                  # @s3110
 	addi.d	$a3, $a3, 1024
 	bne	$a0, $s8, .LBB17_3
 # %bb.6:                                #   in Loop: Header=BB17_2 Depth=1
-	movgr2fr.w	$fa0, $a2
-	ffint.s.w	$fs2, $fa0
-	fadd.s	$fa0, $fs0, $fs2
-	movgr2fr.w	$fa1, $a1
-	ffint.s.w	$fs1, $fa1
-	fadd.s	$fa0, $fa0, $fs1
+	movgr2fr.w	$fa1, $a2
+	ffint.s.w	$fa1, $fa1
+	fadd.s	$fs0, $fa0, $fa1
+	movgr2fr.w	$fa0, $a1
+	ffint.s.w	$fs1, $fa0
+	fadd.s	$fa0, $fs0, $fs1
 	move	$a0, $fp
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	move	$a2, $s2
 	move	$a3, $s3
 	move	$a4, $s4
@@ -12405,7 +12329,7 @@ s3110:                                  # @s3110
 	move	$a7, $s6
 	pcaddu18i	$ra, %call36(dummy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	addi.w	$s7, $s7, 1
 	bstrpick.d	$a1, $a0, 62, 55
@@ -12414,34 +12338,32 @@ s3110:                                  # @s3110
 	ori	$a1, $zero, 100
 	mul.d	$a0, $a0, $a1
 	blt	$s7, $a0, .LBB17_2
-	b	.LBB17_8
-.LBB17_7:
-	movgr2fr.w	$fs1, $zero
-                                        # implicit-def: $f24
-	fmov.s	$fs2, $fs1
-.LBB17_8:                               # %._crit_edge
+# %bb.7:                                # %._crit_edge.loopexit
+	vldi	$vr0, -1168
+	fadd.s	$fa1, $fs0, $fa0
+	fadd.s	$fa1, $fa1, $fs1
+	fadd.s	$fs0, $fa1, $fa0
+	b	.LBB17_9
+.LBB17_8:
+	lu12i.w	$a0, 523264
+	movgr2fr.w	$fs0, $a0
+.LBB17_9:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(.L.str.147)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.147)
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	fadd.s	$fa0, $fs0, $fs2
-	vldi	$vr1, -1168
-	fadd.s	$fa0, $fa0, $fa1
-	fadd.s	$fa0, $fa0, $fs1
-	fadd.s	$fa0, $fa0, $fa1
+	pcalau12i	$a0, %pc_hi20(digits)
+	ld.w	$a1, $a0, %pc_lo12(digits)
 	pcalau12i	$a0, %pc_hi20(temp)
-	pcalau12i	$a1, %pc_hi20(digits)
-	ld.w	$a1, $a1, %pc_lo12(digits)
-	fst.s	$fa0, $a0, %pc_lo12(temp)
-	fcvt.d.s	$fa0, $fa0
+	fst.s	$fs0, $a0, %pc_lo12(temp)
+	fcvt.d.s	$fa0, $fs0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	fld.d	$fs2, $sp, 32                   # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
@@ -12497,7 +12419,7 @@ s13110:                                 # @s13110
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	add.d	$s0, $fp, $a0
 	ori	$s1, $zero, 1024
-	movgr2fr.w	$fs1, $zero
+	movgr2fr.w	$fs0, $zero
 	lu12i.w	$a0, 31
 	ori	$a0, $a0, 1040
 	add.d	$a0, $fp, $a0
@@ -12523,7 +12445,7 @@ s13110:                                 # @s13110
                                         #     Child Loop BB18_3 Depth 2
                                         #       Child Loop BB18_4 Depth 3
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	fldx.s	$fa0, $fp, $a0
+	fldx.s	$fs1, $fp, $a0
 	move	$a0, $zero
 	move	$a1, $s0
 	.p2align	4, , 16
@@ -12536,17 +12458,17 @@ s13110:                                 # @s13110
 .LBB18_4:                               #   Parent Loop BB18_2 Depth=1
                                         #     Parent Loop BB18_3 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	fldx.s	$fa1, $a1, $a2
-	fcmp.clt.s	$fcc0, $fa0, $fa1
+	fldx.s	$fa0, $a1, $a2
+	fcmp.clt.s	$fcc0, $fs1, $fa0
 	addi.d	$a2, $a2, 4
-	fsel	$fa0, $fa0, $fa1, $fcc0
+	fsel	$fs1, $fs1, $fa0, $fcc0
 	bne	$a2, $s1, .LBB18_4
 # %bb.5:                                #   in Loop: Header=BB18_3 Depth=2
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1024
 	bne	$a0, $s8, .LBB18_3
 # %bb.6:                                #   in Loop: Header=BB18_2 Depth=1
-	fadd.s	$fs0, $fa0, $fs1
+	fadd.s	$fa0, $fs1, $fs0
 	move	$a0, $fp
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	move	$a2, $s2
@@ -12555,7 +12477,6 @@ s13110:                                 # @s13110
 	move	$a5, $s0
 	move	$a6, $s5
 	move	$a7, $s6
-	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(dummy)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -12569,7 +12490,7 @@ s13110:                                 # @s13110
 	blt	$s7, $a0, .LBB18_2
 # %bb.7:                                # %._crit_edge.loopexit
 	vldi	$vr0, -1168
-	fadd.s	$fa1, $fs0, $fa0
+	fadd.s	$fa1, $fs1, $fa0
 	fadd.s	$fs0, $fa1, $fa0
 	b	.LBB18_9
 .LBB18_8:
@@ -13053,7 +12974,7 @@ set:                                    # @set
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	addi.d	$a1, $s1, 20
+	addi.d	$a1, $s1, 28
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 2304
 	.p2align	4, , 16
@@ -13061,23 +12982,24 @@ set:                                    # @set
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a3, $a0, 5
 	addi.d	$a4, $a0, 4
-	addi.d	$a5, $a0, 9
-	st.w	$a4, $a1, -20
-	st.w	$a5, $a1, 0
+	st.w	$a4, $a1, -28
 	addi.d	$a4, $a0, 2
-	addi.d	$a5, $a0, 7
-	st.w	$a4, $a1, -16
+	st.w	$a0, $a1, -20
+	addi.d	$a5, $a0, 8
 	st.w	$a5, $a1, 4
-	st.w	$a0, $a1, -12
-	st.w	$a3, $a1, 8
-	addi.d	$a3, $a0, 3
-	addi.d	$a4, $a0, 8
-	st.w	$a3, $a1, -8
-	st.w	$a4, $a1, 12
-	addi.d	$a3, $a0, 1
-	addi.d	$a4, $a0, 6
-	st.w	$a3, $a1, -4
-	st.w	$a4, $a1, 16
+	addi.d	$a5, $a0, 6
+	st.w	$a4, $a1, -24
+	st.w	$a3, $a1, 0
+	addi.d	$a3, $a0, 7
+	addi.d	$a4, $a0, 9
+	addi.d	$a6, $a0, 1
+	addi.d	$a7, $a0, 3
+	vinsgr2vr.w	$vr0, $a7, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $a3, 3
+	vst	$vr0, $a1, -16
+	st.w	$a5, $a1, 8
 	addi.d	$a0, $a0, 10
 	addi.d	$a2, $a2, -2
 	addi.d	$a1, $a1, 40

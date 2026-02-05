@@ -15,7 +15,7 @@ _ZN23btStridingMeshInterfaceD2Ev:       # @_ZN23btStridingMeshInterfaceD2Ev
 	.type	_ZN23btStridingMeshInterfaceD0Ev,@function
 _ZN23btStridingMeshInterfaceD0Ev:       # @_ZN23btStridingMeshInterfaceD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end1:
 	.size	_ZN23btStridingMeshInterfaceD0Ev, .Lfunc_end1-_ZN23btStridingMeshInterfaceD0Ev
                                         # -- End function

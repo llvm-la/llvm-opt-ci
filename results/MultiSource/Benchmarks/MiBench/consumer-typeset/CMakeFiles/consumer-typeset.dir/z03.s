@@ -1480,33 +1480,33 @@ DatabaseFileNum:                        # @DatabaseFileNum
 	ld.d	$a2, $s2, %pc_lo12(file_tab)
 	ori	$s3, $zero, 3
 	ori	$s4, $zero, 10
-	pcalau12i	$s0, %pc_hi20(no_fpos)
+	pcalau12i	$s1, %pc_hi20(no_fpos)
 	pcalau12i	$a1, %pc_hi20(.L.str.9)
 	addi.d	$fp, $a1, %pc_lo12(.L.str.9)
 	b	.LBB7_3
 	.p2align	4, , 16
 .LBB7_1:                                #   in Loop: Header=BB7_3 Depth=1
-	ld.hu	$a0, $s1, 34
+	ld.hu	$a0, $s0, 34
 	beqz	$a0, .LBB7_14
 .LBB7_2:                                # %tailrecurse.backedge
                                         #   in Loop: Header=BB7_3 Depth=1
-	addi.d	$a0, $s1, 32
+	addi.d	$a0, $s0, 32
 .LBB7_3:                                # %tailrecurse
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$a1, $a0, 2
 	alsl.d	$a3, $a1, $a2, 4
-	ld.d	$s1, $a3, 8
-	ld.w	$a3, $s1, 40
+	ld.d	$s0, $a3, 8
+	ld.w	$a3, $s0, 40
 	bstrpick.d	$a3, $a3, 21, 12
 	beq	$a3, $s3, .LBB7_1
 # %bb.4:                                # %tailrecurse
                                         #   in Loop: Header=BB7_3 Depth=1
 	bne	$a3, $s4, .LBB7_7
 # %bb.5:                                #   in Loop: Header=BB7_3 Depth=1
-	ld.hu	$a0, $s1, 34
+	ld.hu	$a0, $s0, 34
 	bnez	$a0, .LBB7_2
 # %bb.6:                                #   in Loop: Header=BB7_3 Depth=1
-	ld.d	$a4, $s0, %pc_lo12(no_fpos)
+	ld.d	$a4, $s1, %pc_lo12(no_fpos)
 	ori	$a0, $zero, 3
 	ori	$a1, $zero, 7
 	move	$a2, $fp
@@ -1514,25 +1514,25 @@ DatabaseFileNum:                        # @DatabaseFileNum
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $s2, %pc_lo12(file_tab)
-	addi.d	$a0, $s1, 32
+	addi.d	$a0, $s0, 32
 	b	.LBB7_3
 .LBB7_7:                                # %tailrecurse
 	ori	$a1, $zero, 1
 	bltu	$a1, $a3, .LBB7_13
 # %bb.8:
 	move	$fp, $a0
-	ld.d	$a0, $s1, 8
-	beq	$a0, $s1, .LBB7_11
+	ld.d	$a0, $s0, 8
+	beq	$a0, $s0, .LBB7_11
 # %bb.9:                                # %.preheader.i.preheader
-	move	$s1, $a0
+	move	$s0, $a0
 	.p2align	4, , 16
 .LBB7_10:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s1, $s1, 16
-	ld.bu	$a0, $s1, 32
+	ld.d	$s0, $s0, 16
+	ld.bu	$a0, $s0, 32
 	beqz	$a0, .LBB7_10
 .LBB7_11:                               # %FileName.exit
-	addi.d	$s0, $s1, 64
+	addi.d	$s0, $s0, 64
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
 	move	$a0, $s0
@@ -1558,7 +1558,7 @@ DatabaseFileNum:                        # @DatabaseFileNum
 	pcaddu18i	$t8, %call36(DefineFile)
 	jr	$t8
 .LBB7_13:
-	ld.d	$a4, $s0, %pc_lo12(no_fpos)
+	ld.d	$a4, $s1, %pc_lo12(no_fpos)
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.10)
 	ori	$a0, $zero, 3
@@ -2151,9 +2151,9 @@ EchoFileSource:                         # @EchoFileSource
 # %bb.4:
 	slli.d	$a0, $s2, 9
 	add.d	$s1, $s3, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	beqz	$s0, .LBB13_6
 # %bb.5:
+	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.16)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 11
@@ -2166,6 +2166,7 @@ EchoFileSource:                         # @EchoFileSource
 	move	$a1, $a0
 	b	.LBB13_7
 .LBB13_6:
+	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
 	move	$s0, $zero
 .LBB13_7:
@@ -2182,9 +2183,9 @@ EchoFileSource:                         # @EchoFileSource
 .LBB13_8:                               # %._crit_edge
 	slli.d	$a0, $s2, 9
 	add.d	$s1, $s3, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	beqz	$s0, .LBB13_10
 # %bb.9:
+	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a3, $a0, %pc_lo12(.L.str.17)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 12
@@ -2195,6 +2196,7 @@ EchoFileSource:                         # @EchoFileSource
 	move	$a1, $a0
 	b	.LBB13_11
 .LBB13_10:
+	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.17)
 .LBB13_11:
 	move	$a0, $s1

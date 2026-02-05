@@ -116,13 +116,11 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	movgr2fr.d	$fa0, $a0
-	ld.d	$a0, $fp, 8
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	fld.d	$fs1, $a1, %pc_lo12(.LCPI0_0)
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_0)
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs2, $fa1, $fs1, $fa0
 	fst.d	$fs2, $s4, 16
@@ -132,11 +130,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs4, $fa1, $fs1, $fa0
 	fst.d	$fs4, $s4, 16
@@ -176,11 +172,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs7, $fa1, $fs1, $fa0
 	fst.d	$fs7, $s4, 16
@@ -219,11 +213,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs4, $fa1, $fs1, $fa0
 	fst.d	$fs4, $s4, 16
@@ -254,11 +246,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs5, $fa1, $fs1, $fa0
 	fst.d	$fs5, $s4, 16
@@ -268,11 +258,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fld.d	$fa1, $s1, 8
@@ -359,11 +347,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs2, $fa1, $fs1, $fa0
 	fst.d	$fs2, $s4, 16
@@ -392,11 +378,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs4, $fa1, $fs1, $fa0
 	fld.d	$fa0, $s1, 8
@@ -416,11 +400,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs7, $fa1, $fs1, $fa0
 	fst.d	$fs7, $s4, 16
@@ -456,11 +438,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fld.d	$fa1, $s1, 8
@@ -535,11 +515,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs6, $fa1, $fs1, $fa0
 	fst.d	$fs6, $s4, 16
@@ -548,7 +526,7 @@ main:                                   # @main
 	ori	$a1, $zero, 2
 	pcalau12i	$a0, %pc_hi20(A6)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$s5, %pc_hi20(A5)
+	pcalau12i	$s7, %pc_hi20(A5)
 	pcalau12i	$a0, %pc_hi20(A4)
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$s2, %pc_hi20(A3)
@@ -559,7 +537,7 @@ main:                                   # @main
 	fmov.d	$fs5, $fs0
 	blt	$s0, $a1, .LBB0_19
 # %bb.17:                               # %.lr.ph349
-	fld.d	$fa2, $s5, %pc_lo12(A5)
+	fld.d	$fa2, $s7, %pc_lo12(A5)
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	fld.d	$fa0, $a0, %pc_lo12(one)
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -595,11 +573,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fst.d	$fa0, $s4, 16
@@ -609,12 +585,12 @@ main:                                   # @main
 	fld.d	$fa2, $a0, %pc_lo12(nulltime)
 	fst.d	$fa0, $s4, 8
 	fld.d	$fa3, $s3, %pc_lo12(piref)
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	fld.d	$fa4, $s6, %pc_lo12(three)
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	fld.d	$fa4, $s5, %pc_lo12(three)
 	fmsub.d	$fa0, $fa1, $fa0, $fa2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa1, $a0, %pc_lo12(A6)
-	fld.d	$fa2, $s5, %pc_lo12(A5)
+	fld.d	$fa2, $s7, %pc_lo12(A5)
 	fdiv.d	$fa3, $fa3, $fa4
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	fld.d	$fa4, $a0, %pc_lo12(A4)
@@ -663,32 +639,30 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s2, %pc_lo12(A3)
-	fld.d	$fa1, $s5, %pc_lo12(A5)
+	fld.d	$fa1, $s7, %pc_lo12(A5)
 	fneg.d	$fa0, $fa0
 	fst.d	$fa0, $s2, %pc_lo12(A3)
 	fneg.d	$fa0, $fa1
-	fld.d	$fa1, $s6, %pc_lo12(three)
+	fld.d	$fa1, $s5, %pc_lo12(three)
 	fld.d	$fa2, $s3, %pc_lo12(piref)
 	fld.d	$fs2, $s4, 16
-	fst.d	$fa0, $s5, %pc_lo12(A5)
+	fst.d	$fa0, $s7, %pc_lo12(A5)
 	fmul.d	$fa0, $fa1, $fs3
 	fdiv.d	$fs4, $fa2, $fa0
 	move	$a0, $fp
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs6, $fa1, $fs1, $fa0
 	fst.d	$fs6, $s4, 16
 	fsub.d	$fa0, $fs6, $fs2
 	fst.d	$fa0, $s4, 8
-	pcalau12i	$s6, %pc_hi20(B6)
-	pcalau12i	$s7, %pc_hi20(B5)
+	pcalau12i	$s5, %pc_hi20(B6)
+	pcalau12i	$s6, %pc_hi20(B5)
 	pcalau12i	$a0, %pc_hi20(B4)
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(B3)
@@ -701,8 +675,8 @@ main:                                   # @main
 	ori	$a0, $zero, 2
 	blt	$s0, $a0, .LBB0_22
 # %bb.20:                               # %.lr.ph356
-	fld.d	$fa0, $s6, %pc_lo12(B6)
-	fld.d	$fa1, $s7, %pc_lo12(B5)
+	fld.d	$fa0, $s5, %pc_lo12(B6)
+	fld.d	$fa1, $s6, %pc_lo12(B5)
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	fld.d	$fa2, $a0, %pc_lo12(B4)
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
@@ -735,11 +709,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fst.d	$fa0, $s4, 16
@@ -753,8 +725,8 @@ main:                                   # @main
 	fst.d	$fa0, $s4, 8
 	fmsub.d	$fa0, $fa1, $fa0, $fa2
 	fdiv.d	$fa1, $fa3, $fa4
-	fld.d	$fa2, $s6, %pc_lo12(B6)
-	fld.d	$fa3, $s7, %pc_lo12(B5)
+	fld.d	$fa2, $s5, %pc_lo12(B6)
+	fld.d	$fa3, $s6, %pc_lo12(B5)
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	fld.d	$fa4, $a0, %pc_lo12(B4)
 	fmul.d	$fa5, $fa1, $fa1
@@ -779,7 +751,7 @@ main:                                   # @main
 	fmul.d	$fa2, $fs4, $fa2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa4, $a0, %pc_lo12(A6)
-	fld.d	$fa7, $s5, %pc_lo12(A5)
+	fld.d	$fa7, $s7, %pc_lo12(A5)
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	fld.d	$ft0, $a0, %pc_lo12(A4)
 	fst.d	$fa0, $s1, 96
@@ -829,11 +801,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs6, $fa1, $fs1, $fa0
 	fst.d	$fs6, $s4, 16
@@ -845,7 +815,7 @@ main:                                   # @main
 # %bb.23:                               # %.lr.ph363
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa0, $a0, %pc_lo12(A6)
-	fld.d	$fa1, $s5, %pc_lo12(A5)
+	fld.d	$fa1, $s7, %pc_lo12(A5)
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	fld.d	$fa2, $a0, %pc_lo12(A4)
 	fld.d	$fa3, $s2, %pc_lo12(A3)
@@ -855,8 +825,8 @@ main:                                   # @main
 	fld.d	$fa5, $a0, %pc_lo12(A1)
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	fld.d	$fa6, $a0, %pc_lo12(one)
-	fld.d	$fa7, $s6, %pc_lo12(B6)
-	fld.d	$ft0, $s7, %pc_lo12(B5)
+	fld.d	$fa7, $s5, %pc_lo12(B6)
+	fld.d	$ft0, $s6, %pc_lo12(B5)
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	fld.d	$ft1, $a0, %pc_lo12(B4)
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
@@ -895,11 +865,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fst.d	$fa0, $s4, 16
@@ -914,7 +882,7 @@ main:                                   # @main
 	fmsub.d	$fa0, $fa1, $fa0, $fa2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa1, $a0, %pc_lo12(A6)
-	fld.d	$fa2, $s5, %pc_lo12(A5)
+	fld.d	$fa2, $s7, %pc_lo12(A5)
 	fdiv.d	$fa3, $fa3, $fa4
 	fmul.d	$fa4, $fa3, $fa3
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -931,8 +899,8 @@ main:                                   # @main
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	fld.d	$fa2, $a0, %pc_lo12(one)
 	fmadd.d	$fa1, $fa1, $fa4, $fa5
-	fld.d	$fa5, $s6, %pc_lo12(B6)
-	fld.d	$fa6, $s7, %pc_lo12(B5)
+	fld.d	$fa5, $s5, %pc_lo12(B6)
+	fld.d	$fa6, $s6, %pc_lo12(B5)
 	fmadd.d	$fa1, $fa1, $fa4, $fa2
 	fmul.d	$fa1, $fa3, $fa1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -994,11 +962,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs6, $fa1, $fs1, $fa0
 	fst.d	$fs6, $s4, 16
@@ -1010,7 +976,7 @@ main:                                   # @main
 # %bb.26:                               # %.lr.ph370
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa0, $a0, %pc_lo12(A6)
-	fld.d	$fa1, $s5, %pc_lo12(A5)
+	fld.d	$fa1, $s7, %pc_lo12(A5)
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	fld.d	$fa2, $a0, %pc_lo12(A4)
 	fld.d	$fa3, $s2, %pc_lo12(A3)
@@ -1020,8 +986,8 @@ main:                                   # @main
 	fld.d	$fa5, $a0, %pc_lo12(A1)
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	fld.d	$fa6, $a0, %pc_lo12(one)
-	fld.d	$fa7, $s6, %pc_lo12(B6)
-	fld.d	$ft0, $s7, %pc_lo12(B5)
+	fld.d	$fa7, $s5, %pc_lo12(B6)
+	fld.d	$ft0, $s6, %pc_lo12(B5)
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	fld.d	$ft1, $a0, %pc_lo12(B4)
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
@@ -1059,11 +1025,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fst.d	$fa0, $s4, 16
@@ -1078,7 +1042,7 @@ main:                                   # @main
 	fmsub.d	$fa0, $fa1, $fa0, $fa2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa1, $a0, %pc_lo12(A6)
-	fld.d	$fa2, $s5, %pc_lo12(A5)
+	fld.d	$fa2, $s7, %pc_lo12(A5)
 	fdiv.d	$fa3, $fa3, $fa4
 	fmul.d	$fa4, $fa3, $fa3
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -1095,8 +1059,8 @@ main:                                   # @main
 	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
 	fld.d	$fa2, $s3, %pc_lo12(one)
 	fmadd.d	$fa1, $fa1, $fa4, $fa5
-	fld.d	$fa5, $s6, %pc_lo12(B6)
-	fld.d	$fa6, $s7, %pc_lo12(B5)
+	fld.d	$fa5, $s5, %pc_lo12(B6)
+	fld.d	$fa6, $s6, %pc_lo12(B5)
 	fmadd.d	$fa1, $fa1, $fa4, $fa2
 	fmul.d	$fa1, $fa3, $fa1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -1157,11 +1121,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs2, $fa1, $fs1, $fa0
 	fst.d	$fs2, $s4, 16
@@ -1196,11 +1158,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fld.d	$fa1, $s1, 8
@@ -1276,11 +1236,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs4, $fa1, $fs1, $fa0
 	fst.d	$fs4, $s4, 16
@@ -1288,8 +1246,8 @@ main:                                   # @main
 	fst.d	$fa0, $s4, 8
 	blt	$s0, $s3, .LBB0_34
 # %bb.32:                               # %.lr.ph384
-	fld.d	$fa0, $s6, %pc_lo12(B6)
-	fld.d	$fa1, $s7, %pc_lo12(B5)
+	fld.d	$fa0, $s5, %pc_lo12(B6)
+	fld.d	$fa1, $s6, %pc_lo12(B5)
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	fld.d	$fa2, $a0, %pc_lo12(B4)
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
@@ -1302,7 +1260,7 @@ main:                                   # @main
 	fld.d	$fa6, $a0, %pc_lo12(one)
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa7, $a0, %pc_lo12(A6)
-	fld.d	$ft0, $s5, %pc_lo12(A5)
+	fld.d	$ft0, $s7, %pc_lo12(A5)
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	fld.d	$ft1, $a0, %pc_lo12(A4)
 	fld.d	$ft2, $s2, %pc_lo12(A3)
@@ -1340,11 +1298,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $fp, 8
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, 0
+	fld.d	$fa1, $fp, 8
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fa0, $fa1, $fs1, $fa0
 	fst.d	$fa0, $s4, 16
@@ -1360,7 +1316,7 @@ main:                                   # @main
 	fmsub.d	$fa0, $fa1, $fa0, $fa2
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	fld.d	$fa1, $a0, %pc_lo12(A6)
-	fld.d	$fa2, $s5, %pc_lo12(A5)
+	fld.d	$fa2, $s7, %pc_lo12(A5)
 	fdiv.d	$fa3, $fa3, $fa4
 	fmul.d	$fa4, $fa3, $fa3
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
@@ -1377,8 +1333,8 @@ main:                                   # @main
 	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
 	fld.d	$fa2, $fp, %pc_lo12(one)
 	fmadd.d	$fa1, $fa1, $fa4, $fa5
-	fld.d	$fa5, $s6, %pc_lo12(B6)
-	fld.d	$fa6, $s7, %pc_lo12(B5)
+	fld.d	$fa5, $s5, %pc_lo12(B6)
+	fld.d	$fa6, $s6, %pc_lo12(B5)
 	fmadd.d	$fa1, $fa1, $fa4, $fa2
 	fmul.d	$fa1, $fa3, $fa1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -1571,15 +1527,13 @@ dtime:                                  # @dtime
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 0
-	movgr2fr.d	$fa0, $a0
-	ld.d	$a0, $s0, 8
-	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_0)
+	fld.d	$fa0, $s0, 0
+	fld.d	$fa1, $s0, 8
+	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_0)
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa2, $a0
-	ffint.d.l	$fa2, $fa2
-	fmadd.d	$fa0, $fa2, $fa1, $fa0
+	ffint.d.l	$fa1, $fa1
+	fmadd.d	$fa0, $fa1, $fa2, $fa0
 	fst.d	$fa0, $fp, 16
 	fsub.d	$fa0, $fa0, $fs0
 	fst.d	$fa0, $fp, 8

@@ -174,21 +174,20 @@ _ZN4CruxD2Ev:                           # @_ZN4CruxD2Ev
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, %pc_lo12(checkpoint_timing_count)
-	fld.s	$fa0, $s1, %pc_lo12(checkpoint_timing_sum)
-	movgr2fr.w	$fa1, $a0
-	ffint.s.w	$fa1, $fa1
-	fdiv.s	$fa1, $fa0, $fa1
-	fcvt.d.s	$fa1, $fa1
-	fld.s	$fa2, $s2, %pc_lo12(checkpoint_timing_size)
-	fmul.d	$fa1, $fa1, $fs0
+	fld.s	$fa0, $s0, %pc_lo12(checkpoint_timing_count)
 	pcalau12i	$s0, %pc_hi20(crux_time_fp)
+	fld.s	$fa1, $s1, %pc_lo12(checkpoint_timing_sum)
 	ld.d	$a0, $s0, %pc_lo12(crux_time_fp)
-	fdiv.s	$fa0, $fa2, $fa0
+	ffint.s.w	$fa0, $fa0
+	fld.s	$fa2, $s2, %pc_lo12(checkpoint_timing_size)
+	fdiv.s	$fa0, $fa1, $fa0
 	fcvt.d.s	$fa0, $fa0
-	fmul.d	$fa0, $fa0, $fs1
-	movfr2gr.d	$a3, $fa0
-	movfr2gr.d	$a2, $fa1
+	fmul.d	$fa0, $fa0, $fs0
+	fdiv.s	$fa1, $fa2, $fa1
+	fcvt.d.s	$fa1, $fa1
+	fmul.d	$fa1, $fa1, $fs1
+	movfr2gr.d	$a3, $fa1
+	movfr2gr.d	$a2, $fa0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0

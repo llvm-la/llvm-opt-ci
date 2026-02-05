@@ -21,15 +21,14 @@ gx_default_get_initial_matrix:          # @gx_default_get_initial_matrix
 	fdiv.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a1, 0
 	st.w	$zero, $a1, 16
-	st.w	$zero, $a1, 32
 	fld.s	$fa0, $a0, 36
+	st.w	$zero, $a1, 32
 	lu12i.w	$a2, -251648
 	movgr2fr.w	$fa1, $a2
-	ld.w	$a0, $a0, 28
 	fdiv.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a1, 48
 	st.w	$zero, $a1, 64
-	movgr2fr.w	$fa0, $a0
+	fld.s	$fa0, $a0, 28
 	ffint.s.w	$fa0, $fa0
 	fst.s	$fa0, $a1, 80
 	ret

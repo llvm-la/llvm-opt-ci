@@ -14084,22 +14084,21 @@ _GLOBAL__sub_I_repetitions_test.cc:     # @_GLOBAL__sub_I_repetitions_test.cc
 	ld.d	$a2, $sp, 760
 	move	$fp, $a0
 	addi.d	$a0, $sp, 776
+	bne	$a2, $a0, .LBB5_1728
+	b	.LBB5_1729
+.LBB5_1727:
+.Ltmp9:                                 # EH_LABEL
+	ld.d	$a2, $sp, 760
+	move	$fp, $a0
+	addi.d	$a0, $sp, 776
 	beq	$a2, $a0, .LBB5_1729
-.LBB5_1727:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+.LBB5_1728:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 776
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s1, .LBB5_1723
-	b	.LBB5_1730
-.LBB5_1728:
-.Ltmp9:                                 # EH_LABEL
-	ld.d	$a2, $sp, 760
-	move	$fp, $a0
-	addi.d	$a0, $sp, 776
-	bne	$a2, $a0, .LBB5_1727
-.LBB5_1729:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
+.LBB5_1729:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s1, .LBB5_1723
 .LBB5_1730:
 	ori	$a1, $zero, 232

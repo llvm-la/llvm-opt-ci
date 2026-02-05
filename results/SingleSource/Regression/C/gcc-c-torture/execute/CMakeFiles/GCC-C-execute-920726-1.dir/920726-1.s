@@ -152,20 +152,20 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(second)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	addi.d	$a1, $sp, 108
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_3
+	ld.w	$a1, $sp, 108
+	ld.hu	$a2, $sp, 112
+	lu12i.w	$a0, 197410
+	ori	$a0, $a0, 53
+	xor	$a1, $a1, $a0
+	xori	$a2, $a2, 32
+	or	$a1, $a1, $a2
+	bnez	$a1, .LBB2_3
 # %bb.1:
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	addi.d	$a1, $sp, 8
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $sp, 8
+	ld.hu	$a2, $sp, 12
+	xor	$a0, $a1, $a0
+	xori	$a1, $a2, 32
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB2_3
 # %bb.2:
 	move	$a0, $zero

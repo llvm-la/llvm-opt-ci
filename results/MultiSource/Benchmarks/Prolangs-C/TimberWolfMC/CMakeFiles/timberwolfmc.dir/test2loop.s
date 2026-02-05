@@ -18,14 +18,14 @@ test2loop:                              # @test2loop
 	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 192                  # 8-byte Folded Spill
-	move	$s3, $a0
+	move	$s4, $a0
 	pcalau12i	$a0, %got_pc_hi20(totFunc)
 	ld.d	$a0, $a0, %got_pc_lo12(totFunc)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	st.d	$zero, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(totPen)
 	ld.d	$a0, $a0, %got_pc_lo12(totPen)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	st.d	$zero, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(T)
 	ld.d	$s0, $a0, %got_pc_lo12(T)
@@ -89,41 +89,41 @@ test2loop:                              # @test2loop
 	srli.d	$a0, $a0, 32
 	add.w	$s6, $a0, $a1
 	pcalau12i	$a0, %got_pc_hi20(fpo)
-	ld.d	$s4, $a0, %got_pc_lo12(fpo)
-	ld.d	$a0, $s4, 0
+	ld.d	$s3, $a0, %got_pc_lo12(fpo)
+	ld.d	$a0, $s3, 0
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	ld.w	$a2, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.2)
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	ld.w	$a2, $s2, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.3)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.3)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
-	st.d	$s5, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
 	move	$a2, $s5
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	blez	$s3, .LBB0_39
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	blez	$s4, .LBB0_39
 # %bb.1:                                # %.preheader240.lr.ph.preheader
 	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(randVar)
@@ -131,28 +131,28 @@ test2loop:                              # @test2loop
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(bigcell)
 	ld.d	$a0, $a0, %got_pc_lo12(bigcell)
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(toobig)
 	ld.d	$a0, $a0, %got_pc_lo12(toobig)
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(blockl)
 	ld.d	$a0, $a0, %got_pc_lo12(blockl)
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(blockr)
 	ld.d	$a0, $a0, %got_pc_lo12(blockr)
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(blockb)
 	ld.d	$a0, $a0, %got_pc_lo12(blockb)
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(blockt)
 	ld.d	$a0, $a0, %got_pc_lo12(blockt)
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	move	$a2, $zero
 	lu12i.w	$a0, 269412
 	ori	$s4, $a0, 3693
@@ -161,7 +161,7 @@ test2loop:                              # @test2loop
 	lu12i.w	$a0, -1024
 	lu52i.d	$a0, $a0, 1053
 	movgr2fr.d	$fs0, $a0
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %.outer.sink.split
@@ -171,7 +171,7 @@ test2loop:                              # @test2loop
 	pcalau12i	$a0, %got_pc_hi20(funccost)
 	ld.d	$a0, $a0, %got_pc_lo12(funccost)
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	fld.d	$fa0, $a1, 0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
@@ -180,38 +180,38 @@ test2loop:                              # @test2loop
 	pcalau12i	$a0, %got_pc_hi20(penalty)
 	ld.d	$a0, $a0, %got_pc_lo12(penalty)
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	fld.d	$fa0, $a1, 0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fadd.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $a1, 0
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	bge	$a2, $a0, .LBB0_40
 .LBB0_3:                                # %.preheader240.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_5 Depth 2
                                         #       Child Loop BB0_6 Depth 3
 	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ld.w	$a7, $a1, 0
 	movgr2fr.w	$fa0, $a0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	ld.w	$t0, $a1, 0
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.w	$t0, $a1, 0
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a3, $a3, 0
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a4, $a4, 0
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	ld.w	$a5, $a5, 0
-	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a6, $a6, 0
 	ffint.d.w	$fa0, $fa0
 	movgr2fr.w	$fa1, $t0
@@ -259,11 +259,11 @@ test2loop:                              # @test2loop
 	ld.w	$t0, $s6, 8
 	bge	$t1, $a0, .LBB0_4
 # %bb.9:                                #   in Loop: Header=BB0_5 Depth=2
-	addi.w	$t1, $zero, -1
-	beq	$t0, $t1, .LBB0_5
+	addi.w	$s2, $zero, -1
+	beq	$t0, $s2, .LBB0_5
 # %bb.10:                               #   in Loop: Header=BB0_5 Depth=2
-	slli.d	$s2, $s7, 3
-	ldx.d	$s8, $a2, $s2
+	slli.d	$s3, $s7, 3
+	ldx.d	$s8, $a2, $s3
 	ld.w	$t1, $s8, 8
 	bne	$t0, $t1, .LBB0_5
 	b	.LBB0_29
@@ -285,23 +285,23 @@ test2loop:                              # @test2loop
 .LBB0_15:                               #   in Loop: Header=BB0_5 Depth=2
 	div.w	$t2, $t4, $ra
 .LBB0_16:                               #   in Loop: Header=BB0_5 Depth=2
-	ld.d	$s7, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 184                   # 8-byte Folded Reload
 	ld.w	$t1, $s6, 16
 	sub.w	$t3, $t1, $s1
 	sub.w	$t6, $a6, $t1
 	sub.w	$t7, $a5, $t1
 	bge	$t3, $a5, .LBB0_18
 # %bb.17:                               #   in Loop: Header=BB0_5 Depth=2
-	div.w	$t3, $t7, $s7
+	div.w	$t3, $t7, $s3
 	b	.LBB0_21
 .LBB0_18:                               #   in Loop: Header=BB0_5 Depth=2
 	bge	$t3, $a6, .LBB0_20
 # %bb.19:                               #   in Loop: Header=BB0_5 Depth=2
-	div.w	$t3, $s1, $s7
+	div.w	$t3, $s1, $s3
 	sub.w	$t3, $zero, $t3
 	b	.LBB0_21
 .LBB0_20:                               #   in Loop: Header=BB0_5 Depth=2
-	div.w	$t3, $t6, $s7
+	div.w	$t3, $t6, $s3
 .LBB0_21:                               #   in Loop: Header=BB0_5 Depth=2
 	add.w	$t8, $t0, $s0
 	slt	$s2, $a4, $t8
@@ -322,7 +322,7 @@ test2loop:                              # @test2loop
 	maskeqz	$t6, $t6, $t8
 	masknez	$t5, $t5, $t8
 	or	$t5, $t6, $t5
-	div.w	$t5, $t5, $s7
+	div.w	$t5, $t5, $s3
 	sub.d	$t4, $t4, $t2
 	addi.d	$t4, $t4, 1
 	movgr2fr.w	$fa2, $t4
@@ -435,52 +435,55 @@ test2loop:                              # @test2loop
 	alsl.d	$a0, $a1, $s6, 3
 	ld.d	$a0, $a0, 152
 	ld.w	$a1, $s8, 56
-	ld.d	$s3, $a0, 88
+	ld.d	$a4, $a0, 88
+	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
 	alsl.d	$a0, $a1, $s8, 3
 	ld.d	$a0, $a0, 152
 	ld.w	$a1, $s8, 12
-	ld.w	$a2, $s3, 8
+	ld.w	$a2, $a4, 8
 	ld.w	$a3, $s8, 16
-	ld.w	$a4, $s3, 12
+	ld.w	$a4, $a4, 12
 	ld.d	$a0, $a0, 88
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	add.w	$a0, $a2, $a1
 	add.w	$a1, $a4, $a3
 	pcaddu18i	$ra, %call36(forceGrid)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(newxx)
 	ld.d	$a0, $a0, %got_pc_lo12(newxx)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 0
-	ld.w	$a1, $s3, 8
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$a1, $a2, 8
 	sub.w	$a0, $a0, $a1
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(newyy)
 	ld.d	$a0, $a0, %got_pc_lo12(newyy)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 0
-	ld.w	$a1, $s3, 12
+	ld.w	$a1, $a2, 12
 	ld.w	$a2, $s6, 12
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.w	$a3, $s3, 8
+	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
+	ld.w	$a3, $a5, 8
 	ld.w	$a4, $s6, 16
-	ld.w	$a5, $s3, 12
+	ld.w	$a5, $a5, 12
 	sub.w	$a0, $a0, $a1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	add.w	$a0, $a3, $a2
 	add.w	$a1, $a5, $a4
 	pcaddu18i	$ra, %call36(forceGrid)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.w	$a1, $s3, 8
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.w	$a1, $a3, 8
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a2, $a2, 0
-	ld.w	$a3, $s3, 12
+	ld.w	$a3, $a3, 12
 	sub.w	$a4, $a0, $a1
 	sub.w	$a5, $a2, $a3
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	move	$a0, $s5
 	move	$a1, $s7
 	pcaddu18i	$ra, %call36(usite2)
@@ -505,8 +508,9 @@ test2loop:                              # @test2loop
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	ldx.d	$a2, $a1, $s2
-	ld.w	$s2, $a2, 56
+	ldx.d	$a2, $a1, $s3
+	ld.w	$a1, $a2, 56
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
 	move	$s3, $a0
 	ori	$a1, $zero, 4
 	move	$a0, $a2
@@ -516,21 +520,22 @@ test2loop:                              # @test2loop
 # %bb.33:                               #   in Loop: Header=BB0_3 Depth=1
 	bltz	$a0, .LBB0_38
 .LBB0_34:                               #   in Loop: Header=BB0_3 Depth=1
-	slti	$a1, $s3, 0
-	slti	$a2, $a0, 0
-	masknez	$a3, $a0, $a2
-	maskeqz	$a2, $s2, $a2
-	or	$a2, $a2, $a3
-	masknez	$a3, $s3, $a1
+	slt	$a1, $s2, $a0
+	slti	$a2, $s3, 0
+	masknez	$a3, $s3, $a2
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	maskeqz	$a4, $a4, $a1
-	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
-	ld.w	$a5, $a5, 0
+	maskeqz	$a4, $a4, $a2
 	or	$a6, $a4, $a3
-	masknez	$a2, $a2, $a1
-	maskeqz	$a0, $a0, $a1
-	or	$a7, $a0, $a2
-	beqz	$a5, .LBB0_36
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	masknez	$a3, $a3, $a1
+	maskeqz	$a1, $a0, $a1
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.w	$a4, $a4, 0
+	or	$a1, $a1, $a3
+	masknez	$a1, $a1, $a2
+	maskeqz	$a0, $a0, $a2
+	or	$a7, $a0, $a1
+	beqz	$a4, .LBB0_36
 # %bb.35:                               #   in Loop: Header=BB0_3 Depth=1
 	alsl.d	$a0, $a6, $s6, 3
 	ld.d	$a0, $a0, 152
@@ -544,7 +549,7 @@ test2loop:                              # @test2loop
 	ld.d	$s3, $a0, 88
 	add.w	$a0, $a2, $a1
 	add.w	$a1, $a4, $a3
-	st.d	$a6, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 152                   # 8-byte Folded Spill
 	st.d	$a7, $sp, 56                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(forceGrid)
 	jirl	$ra, $ra, 0
@@ -569,7 +574,7 @@ test2loop:                              # @test2loop
 	pcaddu18i	$ra, %call36(forceGrid)
 	jirl	$ra, $ra, 0
 	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ld.w	$a1, $s3, 8
@@ -592,9 +597,9 @@ test2loop:                              # @test2loop
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_2
 .LBB0_38:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	blt	$a2, $a0, .LBB0_3
 	b	.LBB0_40
 .LBB0_39:

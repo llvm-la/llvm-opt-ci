@@ -11,8 +11,8 @@ ffs:                                    # @ffs
 	ori	$a1, $zero, 1
 	bnez	$a2, .LBB0_4
 # %bb.2:                                # %.lr.ph.preheader
-	ori	$a2, $zero, 1
 	ori	$a1, $zero, 1
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB0_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

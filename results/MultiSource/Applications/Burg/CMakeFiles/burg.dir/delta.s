@@ -221,11 +221,11 @@ CHECKDIVERGE:                           # @CHECKDIVERGE
 	bge	$a4, $a5, .LBB6_8
 # %bb.6:
 	move	$fp, $a3
-	move	$s1, $a1
-	addi.d	$s2, $a0, 6
+	move	$s0, $a1
+	addi.d	$s1, $a0, 6
 	b	.LBB6_12
 .LBB6_7:
-	blt	$a4, $a5, .LBB6_14
+	blt	$a4, $a5, .LBB6_13
 .LBB6_8:                                # %.loopexit
 	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
@@ -236,18 +236,18 @@ CHECKDIVERGE:                           # @CHECKDIVERGE
 	ret
 .LBB6_9:
 	move	$fp, $a3
-	move	$s2, $a0
-	move	$s1, $a1
+	move	$s1, $a0
+	move	$s0, $a1
 	b	.LBB6_12
 .LBB6_10:
 	move	$fp, $a3
-	move	$s1, $a1
-	addi.d	$s2, $a0, 2
+	move	$s0, $a1
+	addi.d	$s1, $a0, 2
 	b	.LBB6_12
 .LBB6_11:
 	move	$fp, $a3
-	move	$s1, $a1
-	addi.d	$s2, $a0, 4
+	move	$s0, $a1
+	addi.d	$s1, $a0, 4
 .LBB6_12:
 	addi.d	$a0, $sp, 116
 	move	$a1, $a2
@@ -258,49 +258,48 @@ CHECKDIVERGE:                           # @CHECKDIVERGE
 	pcaddu18i	$ra, %call36(nonTerminalName)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(stderr)
-	ld.d	$s0, $a0, %got_pc_lo12(stderr)
-	ld.d	$a3, $s0, 0
+	ld.d	$s2, $a0, %got_pc_lo12(stderr)
+	ld.d	$a3, $s2, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	ori	$a1, $zero, 39
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 0
-	ld.h	$a4, $s2, 0
+	ld.d	$a0, $s2, 0
+	ld.h	$a4, $s1, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	addi.d	$a2, $sp, 16
 	addi.d	$a3, $sp, 116
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, 8
-	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
+	ld.d	$a0, $s2, 0
 	ld.d	$a2, $a1, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.2)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $s0, 0
+	ld.d	$a3, $s2, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
 	ori	$a1, $zero, 17
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 0
-	move	$a1, $s1
-.LBB6_13:
+	ld.d	$a0, $s2, 0
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(printRepresentative)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $s2, 0
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB6_14:
+.LBB6_13:
 	move	$s1, $a0
 	addi.d	$a0, $sp, 116
 	move	$fp, $a1
@@ -345,7 +344,15 @@ CHECKDIVERGE:                           # @CHECKDIVERGE
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	move	$a1, $fp
-	b	.LBB6_13
+	pcaddu18i	$ra, %call36(printRepresentative)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s0, 0
+	ori	$a0, $zero, 10
+	pcaddu18i	$ra, %call36(fputc)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 1
+	pcaddu18i	$ra, %call36(exit)
+	jirl	$ra, $ra, 0
 .Lfunc_end6:
 	.size	CHECKDIVERGE, .Lfunc_end6-CHECKDIVERGE
                                         # -- End function

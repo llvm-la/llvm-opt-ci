@@ -309,8 +309,8 @@ yc_poly_emulator:                       # @yc_poly_emulator
 	andi	$a3, $s0, 255
 	bne	$s1, $t6, .LBB1_25
 # %bb.14:                               #   in Loop: Header=BB1_7 Depth=2
-	srl.w	$s0, $a3, $t7
-	sll.w	$a3, $a3, $t8
+	srl.d	$s0, $a3, $t7
+	sll.d	$a3, $a3, $t8
 	or	$s0, $s0, $a3
 	b	.LBB1_6
 .LBB1_15:                               #   in Loop: Header=BB1_7 Depth=2
@@ -327,8 +327,8 @@ yc_poly_emulator:                       # @yc_poly_emulator
 	sub.d	$s0, $a5, $s1
 	bne	$s3, $t5, .LBB1_26
 # %bb.18:                               #   in Loop: Header=BB1_7 Depth=2
-	sll.w	$s1, $a3, $s1
-	srl.w	$a3, $a3, $s0
+	sll.d	$s1, $a3, $s1
+	srl.d	$a3, $a3, $s0
 	or	$s0, $a3, $s1
 	b	.LBB1_6
 .LBB1_19:                               #   in Loop: Header=BB1_7 Depth=2
@@ -358,13 +358,13 @@ yc_poly_emulator:                       # @yc_poly_emulator
 	add.d	$s0, $a3, $s0
 	b	.LBB1_6
 .LBB1_25:                               #   in Loop: Header=BB1_7 Depth=2
-	sll.w	$s0, $a3, $t7
-	srl.w	$a3, $a3, $t8
+	sll.d	$s0, $a3, $t7
+	srl.d	$a3, $a3, $t8
 	or	$s0, $s0, $a3
 	b	.LBB1_6
 .LBB1_26:                               #   in Loop: Header=BB1_7 Depth=2
-	srl.w	$s1, $a3, $s1
-	sll.w	$a3, $a3, $s0
+	srl.d	$s1, $a3, $s1
+	sll.d	$a3, $a3, $s0
 	or	$s0, $a3, $s1
 	b	.LBB1_6
 .LBB1_27:

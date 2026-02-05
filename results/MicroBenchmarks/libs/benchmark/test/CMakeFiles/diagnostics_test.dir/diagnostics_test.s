@@ -427,40 +427,39 @@ _GLOBAL__sub_I_diagnostics_test.cc:     # @_GLOBAL__sub_I_diagnostics_test.cc
 .LBB5_11:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
 .Ltmp13:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB5_15
+	b	.LBB5_17
 .LBB5_12:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp5:                                 # EH_LABEL
 	move	$s0, $a0
-	b	.LBB5_15
+	b	.LBB5_17
 .LBB5_13:
 .Ltmp18:                                # EH_LABEL
 	ld.d	$a2, $sp, 8
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB5_18
-.LBB5_14:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	bne	$a2, $s1, .LBB5_15
+	b	.LBB5_16
+.LBB5_14:
+.Ltmp10:                                # EH_LABEL
+	ld.d	$a2, $sp, 8
+	move	$s0, $a0
+	beq	$a2, $s1, .LBB5_16
+.LBB5_15:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 24
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB5_16
-.LBB5_15:                               # %common.resume.sink.split
+.LBB5_16:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s3, .LBB5_18
+.LBB5_17:                               # %common.resume.sink.split
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_16:                               # %common.resume
+.LBB5_18:                               # %common.resume
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB5_17:
-.Ltmp10:                                # EH_LABEL
-	ld.d	$a2, $sp, 8
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB5_14
-.LBB5_18:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s3, .LBB5_16
-	b	.LBB5_15
 .Lfunc_end5:
 	.size	_GLOBAL__sub_I_diagnostics_test.cc, .Lfunc_end5-_GLOBAL__sub_I_diagnostics_test.cc
 	.cfi_endproc

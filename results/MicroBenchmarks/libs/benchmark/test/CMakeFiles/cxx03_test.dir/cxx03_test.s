@@ -334,15 +334,15 @@ _ZN9benchmark8internal9Benchmark9RangePairEllll: # @_ZN9benchmark8internal9Bench
 	move	$s2, $a3
 	move	$s3, $a2
 	move	$s4, $a1
-	move	$fp, $a0
+	move	$s0, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$fp, $a0
 	st.d	$s4, $a0, 0
 	st.d	$s3, $a0, 8
 	addi.d	$a0, $a0, 16
-	st.d	$s0, $sp, 16
+	st.d	$fp, $sp, 16
 	st.d	$a0, $sp, 24
 	st.d	$a0, $sp, 32
 .Ltmp7:                                 # EH_LABEL
@@ -352,11 +352,11 @@ _ZN9benchmark8internal9Benchmark9RangePairEllll: # @_ZN9benchmark8internal9Bench
 .Ltmp8:                                 # EH_LABEL
 # %bb.1:                                # %.lr.ph.i.i.i.i.i.i.i18.preheader
 	move	$s3, $a0
-	vld	$vr0, $s0, 0
+	vld	$vr0, $fp, 0
 	st.d	$s2, $a0, 16
 	st.d	$s1, $a0, 24
 	vst	$vr0, $a0, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $s3, 32
@@ -365,7 +365,7 @@ _ZN9benchmark8internal9Benchmark9RangePairEllll: # @_ZN9benchmark8internal9Bench
 	st.d	$a0, $sp, 32
 .Ltmp10:                                # EH_LABEL
 	addi.d	$a1, $sp, 16
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN9benchmark8internal9Benchmark6RangesERKSt6vectorISt4pairIllESaIS4_EE)
 	jirl	$ra, $ra, 0
 .Ltmp11:                                # EH_LABEL
@@ -390,19 +390,19 @@ _ZN9benchmark8internal9Benchmark9RangePairEllll: # @_ZN9benchmark8internal9Bench
 	ret
 .LBB4_5:
 .Ltmp12:                                # EH_LABEL
-	ld.d	$s0, $sp, 16
-	move	$fp, $a0
-	bnez	$s0, .LBB4_7
+	ld.d	$fp, $sp, 16
+	move	$s0, $a0
+	bnez	$fp, .LBB4_7
 	b	.LBB4_8
 .LBB4_6:                                # %.thread43
 .Ltmp9:                                 # EH_LABEL
-	move	$fp, $a0
+	move	$s0, $a0
 .LBB4_7:
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 .LBB4_8:                                # %_ZNSt6vectorISt4pairIllESaIS1_EED2Ev.exit30
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end4:
@@ -2822,77 +2822,76 @@ _GLOBAL__sub_I_cxx03_test.cc:           # @_GLOBAL__sub_I_cxx03_test.cc
 .LBB26_33:
 .Ltmp104:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB26_45
+	b	.LBB26_47
 .LBB26_34:
 .Ltmp101:                               # EH_LABEL
 	move	$s0, $a0
-	b	.LBB26_45
+	b	.LBB26_47
 .LBB26_35:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i24
 .Ltmp93:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB26_45
+	b	.LBB26_47
 .LBB26_36:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i15
 .Ltmp85:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB26_45
+	b	.LBB26_47
 .LBB26_37:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i6
 .Ltmp77:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB26_45
+	b	.LBB26_47
 .LBB26_38:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp65:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB26_45
+	b	.LBB26_47
 .LBB26_39:
 .Ltmp109:                               # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	beq	$a1, $s1, .LBB26_48
-	b	.LBB26_44
+	bne	$a1, $s1, .LBB26_45
+	b	.LBB26_46
 .LBB26_40:
 .Ltmp98:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	beq	$a1, $s1, .LBB26_48
-	b	.LBB26_44
+	bne	$a1, $s1, .LBB26_45
+	b	.LBB26_46
 .LBB26_41:
 .Ltmp90:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	beq	$a1, $s1, .LBB26_48
-	b	.LBB26_44
+	bne	$a1, $s1, .LBB26_45
+	b	.LBB26_46
 .LBB26_42:
 .Ltmp82:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	beq	$a1, $s1, .LBB26_48
-	b	.LBB26_44
+	bne	$a1, $s1, .LBB26_45
+	b	.LBB26_46
 .LBB26_43:
 .Ltmp62:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	beq	$a1, $s1, .LBB26_48
-.LBB26_44:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZdlPv)
-	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB26_46
-.LBB26_45:                              # %common.resume.sink.split
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZdlPv)
-	jirl	$ra, $ra, 0
-.LBB26_46:                              # %common.resume
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB26_47:
+	beq	$a1, $s1, .LBB26_46
+	b	.LBB26_45
+.LBB26_44:
 .Ltmp74:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s1, .LBB26_44
-.LBB26_48:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s3, .LBB26_45
-	b	.LBB26_46
+	beq	$a1, $s1, .LBB26_46
+.LBB26_45:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+.LBB26_46:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s3, .LBB26_48
+.LBB26_47:                              # %common.resume.sink.split
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+.LBB26_48:                              # %common.resume
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
 .Lfunc_end26:
 	.size	_GLOBAL__sub_I_cxx03_test.cc, .Lfunc_end26-_GLOBAL__sub_I_cxx03_test.cc
 	.cfi_endproc

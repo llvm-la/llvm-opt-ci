@@ -908,7 +908,7 @@ _ZN23MyFixture_Bar_BenchmarkD0Ev:       # @_ZN23MyFixture_Bar_BenchmarkD0Ev
 	.type	_ZN9MyFixtureD0Ev,@function
 _ZN9MyFixtureD0Ev:                      # @_ZN9MyFixtureD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end13:
 	.size	_ZN9MyFixtureD0Ev, .Lfunc_end13-_ZN9MyFixtureD0Ev
                                         # -- End function

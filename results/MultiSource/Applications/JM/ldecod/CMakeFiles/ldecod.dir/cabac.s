@@ -939,8 +939,12 @@ unary_exp_golomb_mv_decode:             # @unary_exp_golomb_mv_decode
 	move	$s2, $zero
 	addi.d	$a0, $s0, -2
 	sltui	$a0, $a0, 1
-	alsl.d	$a0, $a0, $s1, 2
-	addi.d	$s1, $a0, 8
+	ori	$a1, $zero, 8
+	masknez	$a1, $a1, $a0
+	ori	$a2, $zero, 12
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a1
+	add.d	$s1, $s1, $a0
 	ori	$a0, $zero, 3
 	sub.w	$s0, $a0, $s0
 	addi.w	$s3, $zero, -5
@@ -1259,7 +1263,6 @@ readMB_typeInfo_CABAC:                  # @readMB_typeInfo_CABAC
 	b	.LBB13_26
 .LBB13_8:
 	ori	$a0, $zero, 1
-	move	$s7, $a1
 	bne	$s6, $a0, .LBB13_12
 # %bb.9:
 	ld.d	$a0, $s1, 24
@@ -1267,13 +1270,15 @@ readMB_typeInfo_CABAC:                  # @readMB_typeInfo_CABAC
 # %bb.10:
 	ld.w	$a0, $a0, 40
 	sltu	$a0, $zero, $a0
-	ld.d	$a1, $s1, 32
-	beqz	$a1, .LBB13_39
+	ld.d	$a2, $s1, 32
+	beqz	$a2, .LBB13_39
 .LBB13_11:
-	ld.w	$a1, $a1, 40
+	move	$s7, $a1
+	ld.w	$a1, $a2, 40
 	sltu	$a1, $zero, $a1
 	b	.LBB13_40
 .LBB13_12:
+	move	$s7, $a1
 	addi.d	$a1, $s5, 60
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_decode_symbol)
@@ -1285,13 +1290,12 @@ readMB_typeInfo_CABAC:                  # @readMB_typeInfo_CABAC
 	pcaddu18i	$ra, %call36(biari_decode_symbol)
 	jirl	$ra, $ra, 0
 	ori	$s1, $zero, 7
-	move	$a1, $s7
 	beqz	$a0, .LBB13_50
 .LBB13_14:                              # %.thread249
 	ori	$a0, $zero, 23
 	bltu	$a0, $s1, .LBB13_16
 # %bb.15:                               # %.thread249
-	ld.w	$a0, $a1, 44
+	ld.w	$a0, $s7, 44
 	ori	$a1, $zero, 1
 	beq	$a0, $a1, .LBB13_60
 .LBB13_16:
@@ -1431,9 +1435,10 @@ readMB_typeInfo_CABAC:                  # @readMB_typeInfo_CABAC
 	b	.LBB13_60
 .LBB13_38:
 	move	$a0, $zero
-	ld.d	$a1, $s1, 32
-	bnez	$a1, .LBB13_11
+	ld.d	$a2, $s1, 32
+	bnez	$a2, .LBB13_11
 .LBB13_39:
+	move	$s7, $a1
 	move	$a1, $zero
 .LBB13_40:
 	alsl.d	$a1, $a1, $s5, 2
@@ -1488,12 +1493,11 @@ readMB_typeInfo_CABAC:                  # @readMB_typeInfo_CABAC
 	maskeqz	$a1, $a1, $a0
 	masknez	$a0, $a2, $a0
 	or	$a0, $a1, $a0
-	ori	$a2, $zero, 24
-	move	$a1, $s7
-	beq	$a0, $a2, .LBB13_61
+	ori	$a1, $zero, 24
+	beq	$a0, $a1, .LBB13_61
 # %bb.44:
-	ori	$a2, $zero, 26
-	bne	$a0, $a2, .LBB13_62
+	ori	$a1, $zero, 26
+	bne	$a0, $a1, .LBB13_62
 # %bb.45:
 	ori	$s1, $zero, 22
 	b	.LBB13_14
@@ -1594,7 +1598,6 @@ readMB_typeInfo_CABAC:                  # @readMB_typeInfo_CABAC
 	or	$a1, $a2, $a1
 	sltu	$a0, $zero, $a0
 	add.d	$s1, $a1, $a0
-	move	$a1, $s7
 	bgeu	$s1, $a3, .LBB13_14
 	b	.LBB13_60
 .LBB13_58:
@@ -1637,7 +1640,6 @@ readMB_typeInfo_CABAC:                  # @readMB_typeInfo_CABAC
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(biari_decode_symbol)
 	jirl	$ra, $ra, 0
-	move	$a1, $s7
 	sltu	$a0, $zero, $a0
 	add.d	$s1, $s2, $a0
 	b	.LBB13_14
@@ -2105,7 +2107,7 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	pcaddu18i	$ra, %call36(getLuma4x4Neighbour)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 8
-	beqz	$a0, .LBB18_6
+	beqz	$a0, .LBB18_7
 # %bb.5:
 	ld.w	$a0, $sp, 12
 	ldptr.d	$a1, $s1, 5600
@@ -2114,11 +2116,8 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 40
 	ori	$a2, $zero, 14
-	bne	$a1, $a2, .LBB18_7
-.LBB18_6:
-	move	$a0, $zero
-	b	.LBB18_8
-.LBB18_7:
+	beq	$a1, $a2, .LBB18_7
+# %bb.6:
 	ld.wu	$a1, $sp, 20
 	ld.w	$a0, $a0, 300
 	srli.d	$a2, $a1, 31
@@ -2128,29 +2127,29 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 2
 	sltui	$a0, $a0, 1
-.LBB18_8:
-	or	$a0, $a0, $s2
-	alsl.d	$a1, $a0, $s5, 2
+	or	$s2, $s2, $a0
+.LBB18_7:
+	alsl.d	$a1, $s2, $s5, 2
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_decode_symbol)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s4, 24
 	move	$s2, $a0
 	sltu	$s6, $zero, $a0
-	beqz	$a1, .LBB18_10
-# %bb.9:
+	beqz	$a1, .LBB18_9
+# %bb.8:
 	ld.w	$a0, $a1, 40
 	ori	$a2, $zero, 14
-	bne	$a0, $a2, .LBB18_11
-.LBB18_10:
+	bne	$a0, $a2, .LBB18_10
+.LBB18_9:
 	move	$a0, $zero
-	b	.LBB18_12
-.LBB18_11:
+	b	.LBB18_11
+.LBB18_10:
 	ld.w	$a0, $a1, 300
 	nor	$a0, $a0, $zero
 	srli.d	$a0, $a0, 2
 	andi	$a0, $a0, 2
-.LBB18_12:
+.LBB18_11:
 	xori	$a1, $s6, 1
 	or	$a0, $a1, $a0
 	alsl.d	$a1, $a0, $s5, 2
@@ -2167,8 +2166,8 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	pcaddu18i	$ra, %call36(getLuma4x4Neighbour)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 8
-	beqz	$a0, .LBB18_14
-# %bb.13:
+	beqz	$a0, .LBB18_13
+# %bb.12:
 	ld.w	$a0, $sp, 12
 	ldptr.d	$a1, $s1, 5600
 	ori	$a2, $zero, 408
@@ -2176,11 +2175,11 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 40
 	ori	$a2, $zero, 14
-	bne	$a1, $a2, .LBB18_15
-.LBB18_14:
+	bne	$a1, $a2, .LBB18_14
+.LBB18_13:
 	move	$a0, $zero
-	b	.LBB18_16
-.LBB18_15:
+	b	.LBB18_15
+.LBB18_14:
 	ld.wu	$a1, $sp, 20
 	ld.w	$a0, $a0, 300
 	srli.d	$a2, $a1, 31
@@ -2190,7 +2189,7 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 2
 	sltui	$a0, $a0, 1
-.LBB18_16:
+.LBB18_15:
 	sltui	$a1, $s2, 1
 	alsl.d	$a0, $a0, $s5, 2
 	alsl.d	$a1, $a1, $a0, 3
@@ -2218,102 +2217,102 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	lu12i.w	$a1, 77
 	ori	$a1, $a1, 1652
 	ldx.w	$a0, $a0, $a1
-	beqz	$a0, .LBB18_30
-# %bb.17:
+	beqz	$a0, .LBB18_29
+# %bb.16:
 	ld.d	$a1, $s4, 24
-	beqz	$a1, .LBB18_23
-# %bb.18:
+	beqz	$a1, .LBB18_22
+# %bb.17:
 	ld.w	$a2, $a1, 40
 	ori	$a3, $zero, 14
 	ori	$a0, $zero, 2
-	beq	$a2, $a3, .LBB18_20
-# %bb.19:
+	beq	$a2, $a3, .LBB18_19
+# %bb.18:
 	ld.w	$a0, $a1, 300
 	ori	$a1, $zero, 15
 	slt	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
-.LBB18_20:
+.LBB18_19:
 	ld.d	$a1, $s4, 32
-	beqz	$a1, .LBB18_24
-.LBB18_21:
+	beqz	$a1, .LBB18_23
+.LBB18_20:
 	ld.w	$a3, $a1, 40
 	ori	$a4, $zero, 14
 	ori	$a2, $zero, 1
-	beq	$a3, $a4, .LBB18_25
-# %bb.22:
+	beq	$a3, $a4, .LBB18_24
+# %bb.21:
 	ld.w	$a1, $a1, 300
 	ori	$a2, $zero, 15
 	slt	$a2, $a2, $a1
-	b	.LBB18_25
-.LBB18_23:
+	b	.LBB18_24
+.LBB18_22:
 	move	$a0, $zero
 	ld.d	$a1, $s4, 32
-	bnez	$a1, .LBB18_21
-.LBB18_24:
+	bnez	$a1, .LBB18_20
+.LBB18_23:
 	move	$a2, $zero
-.LBB18_25:
+.LBB18_24:
 	alsl.d	$a1, $a2, $s3, 2
 	alsl.d	$a0, $a0, $a1, 2
 	addi.d	$a1, $a0, 40
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_decode_symbol)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB18_30
-# %bb.26:
+	beqz	$a0, .LBB18_29
+# %bb.25:
 	ld.d	$a1, $s4, 24
-	beqz	$a1, .LBB18_32
-# %bb.27:
+	beqz	$a1, .LBB18_31
+# %bb.26:
 	ld.w	$a2, $a1, 40
 	ori	$a3, $zero, 14
 	ori	$a0, $zero, 2
-	beq	$a2, $a3, .LBB18_33
-# %bb.28:
+	beq	$a2, $a3, .LBB18_32
+# %bb.27:
 	ld.w	$a0, $a1, 300
 	ori	$a1, $zero, 16
-	blt	$a0, $a1, .LBB18_37
-# %bb.29:
+	blt	$a0, $a1, .LBB18_36
+# %bb.28:
 	bstrpick.d	$a0, $a0, 30, 4
 	slli.d	$a0, $a0, 4
 	addi.d	$a0, $a0, -32
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 1
 	ld.d	$a2, $s4, 32
-	bnez	$a2, .LBB18_34
-	b	.LBB18_38
-.LBB18_30:
+	bnez	$a2, .LBB18_33
+	b	.LBB18_37
+.LBB18_29:
 	st.w	$s1, $fp, 4
-	bnez	$s1, .LBB18_40
-# %bb.31:
+	bnez	$s1, .LBB18_39
+# %bb.30:
 	pcalau12i	$a0, %pc_hi20(last_dquant)
 	st.w	$zero, $a0, %pc_lo12(last_dquant)
-	b	.LBB18_40
-.LBB18_32:
+	b	.LBB18_39
+.LBB18_31:
 	move	$a0, $zero
-.LBB18_33:
+.LBB18_32:
 	ld.d	$a2, $s4, 32
-	beqz	$a2, .LBB18_38
-.LBB18_34:
+	beqz	$a2, .LBB18_37
+.LBB18_33:
 	ld.w	$a3, $a2, 40
 	ori	$a4, $zero, 14
 	ori	$a1, $zero, 1
-	beq	$a3, $a4, .LBB18_39
-# %bb.35:
+	beq	$a3, $a4, .LBB18_38
+# %bb.34:
 	ld.w	$a1, $a2, 300
 	ori	$a2, $zero, 16
-	blt	$a1, $a2, .LBB18_38
-# %bb.36:
+	blt	$a1, $a2, .LBB18_37
+# %bb.35:
 	bstrpick.d	$a1, $a1, 30, 4
 	slli.d	$a1, $a1, 4
 	addi.d	$a1, $a1, -32
 	sltui	$a1, $a1, 1
-	b	.LBB18_39
-.LBB18_37:
+	b	.LBB18_38
+.LBB18_36:
 	move	$a0, $zero
 	ld.d	$a2, $s4, 32
-	bnez	$a2, .LBB18_34
-.LBB18_38:
+	bnez	$a2, .LBB18_33
+.LBB18_37:
 	move	$a1, $zero
-.LBB18_39:                              # %.thread
+.LBB18_38:                              # %.thread
 	alsl.d	$a1, $a1, $s3, 2
 	alsl.d	$a0, $a0, $a1, 2
 	addi.d	$a1, $a0, 56
@@ -2329,7 +2328,7 @@ readCBP_CABAC:                          # @readCBP_CABAC
 	or	$a0, $a0, $a1
 	or	$a0, $a0, $s1
 	st.w	$a0, $fp, 4
-.LBB18_40:
+.LBB18_39:
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
@@ -2523,7 +2522,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 # %bb.2:
 	ori	$a0, $zero, 7
 	bne	$s0, $a0, .LBB21_5
-# %bb.3:                                # %.thread145
+# %bb.3:                                # %.thread140
 	ldptr.w	$a0, $s2, 5620
 	move	$a2, $zero
 	move	$a4, $zero
@@ -2548,9 +2547,9 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	move	$a4, $zero
 	ori	$a0, $zero, 5
 	bltu	$s7, $a0, .LBB21_10
-.LBB21_6:                               # %switch.edge.thread148
+.LBB21_6:                               # %switch.edge.thread143
 	bnez	$a3, .LBB21_10
-# %bb.7:                                # %switch.edge.thread148
+# %bb.7:                                # %switch.edge.thread143
 	bnez	$s5, .LBB21_10
 # %bb.8:
 	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
@@ -2559,7 +2558,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	bnez	$s0, .LBB21_11
-.LBB21_9:                               # %.thread150
+.LBB21_9:                               # %.thread145
 	ldptr.w	$a0, $s2, 5616
 	move	$s6, $zero
 	sltu	$s1, $zero, $a0
@@ -2631,7 +2630,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	move	$a3, $s1
 	bnez	$a1, .LBB21_22
 	b	.LBB21_24
-.LBB21_16:                              # %.thread153
+.LBB21_16:                              # %.thread147
 	ori	$a0, $zero, 35
 	masknez	$a0, $a0, $a3
 	ori	$a1, $zero, 19
@@ -2673,7 +2672,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	masknez	$a0, $a2, $a0
 	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a1, .LBB21_36
-# %bb.19:                               # %.thread158.thread181
+# %bb.19:                               # %.thread151.thread173
 	ld.w	$a1, $sp, 68
 	ld.w	$a2, $sp, 64
 	alsl.w	$a2, $a1, $a2, 2
@@ -2713,7 +2712,7 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 	sll.d	$a3, $a3, $a2
 	and	$a1, $a1, $a3
 	sra.d	$a3, $a1, $a2
-.LBB21_24:                              # %.thread158.thread
+.LBB21_24:                              # %.thread151.thread
 	ld.w	$a1, $sp, 80
 	beqz	$a1, .LBB21_27
 .LBB21_25:
@@ -2751,10 +2750,10 @@ read_and_store_CBP_block_bit:           # @read_and_store_CBP_block_bit
 # %bb.28:
 	ori	$a1, $zero, 5
 	bltu	$a1, $s0, .LBB21_32
-# %bb.29:                               # %..thread168_crit_edge
+# %bb.29:                               # %..thread161_crit_edge
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	slli.d	$s3, $a1, 2
-.LBB21_30:                              # %.thread168
+.LBB21_30:                              # %.thread161
 	add.d	$a1, $s8, $s3
 	addi.d	$a1, $a1, 1
 	bnez	$a0, .LBB21_38

@@ -20,7 +20,7 @@ upx_inflate2b:                          # @upx_inflate2b
 	move	$t3, $zero
 	move	$t7, $zero
 	bstrpick.d	$a7, $a1, 31, 0
-	addi.w	$t6, $zero, -1
+	addi.d	$t6, $zero, -1
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	lu12i.w	$t2, -1
@@ -282,21 +282,20 @@ upx_inflate2b:                          # @upx_inflate2b
 	b	.LBB0_2
 .LBB0_55:                               # %vector.scevcheck
 	addi.d	$s4, $s1, -1
-	addi.w	$s5, $s4, 0
+	addi.w	$s6, $s4, 0
 	nor	$s2, $t8, $zero
-	addi.w	$s6, $s2, 0
+	addi.w	$s5, $s2, 0
 	move	$s2, $zero
-	bltu	$s6, $s5, .LBB0_52
+	bltu	$s5, $s6, .LBB0_52
 # %bb.56:                               # %vector.scevcheck
-	add.d	$s6, $t6, $t8
-	addi.w	$s7, $s6, 0
-	nor	$s7, $s7, $zero
-	bltu	$s7, $s5, .LBB0_52
+	add.w	$s5, $t6, $t8
+	nor	$s7, $s5, $zero
+	bltu	$s7, $s6, .LBB0_52
 # %bb.57:                               # %vector.scevcheck
 	srli.d	$s4, $s4, 32
 	bnez	$s4, .LBB0_52
 # %bb.58:                               # %vector.memcheck
-	bstrpick.d	$s2, $s6, 31, 0
+	bstrpick.d	$s2, $s5, 31, 0
 	sub.d	$s2, $s3, $s2
 	bltu	$s2, $t5, .LBB0_51
 # %bb.59:                               # %vector.main.loop.iter.check
@@ -959,7 +958,7 @@ upx_inflate2d:                          # @upx_inflate2d
 	move	$t3, $zero
 	move	$t6, $zero
 	bstrpick.d	$a7, $a1, 31, 0
-	addi.w	$t7, $zero, -1
+	addi.d	$t7, $zero, -1
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	ori	$t2, $zero, 1
@@ -1244,21 +1243,20 @@ upx_inflate2d:                          # @upx_inflate2d
 	b	.LBB2_2
 .LBB2_62:                               # %vector.scevcheck
 	addi.d	$s4, $s1, -1
-	addi.w	$s5, $s4, 0
+	addi.w	$s6, $s4, 0
 	nor	$s2, $t8, $zero
-	addi.w	$s6, $s2, 0
+	addi.w	$s5, $s2, 0
 	move	$s2, $zero
-	bltu	$s6, $s5, .LBB2_59
+	bltu	$s5, $s6, .LBB2_59
 # %bb.63:                               # %vector.scevcheck
-	add.d	$s6, $t7, $t8
-	addi.w	$s7, $s6, 0
-	nor	$s7, $s7, $zero
-	bltu	$s7, $s5, .LBB2_59
+	add.w	$s5, $t7, $t8
+	nor	$s7, $s5, $zero
+	bltu	$s7, $s6, .LBB2_59
 # %bb.64:                               # %vector.scevcheck
 	srli.d	$s4, $s4, 32
 	bnez	$s4, .LBB2_59
 # %bb.65:                               # %vector.memcheck
-	bstrpick.d	$s2, $s6, 31, 0
+	bstrpick.d	$s2, $s5, 31, 0
 	sub.d	$s2, $s3, $s2
 	bltu	$s2, $t5, .LBB2_58
 # %bb.66:                               # %vector.main.loop.iter.check
@@ -1359,7 +1357,7 @@ upx_inflate2e:                          # @upx_inflate2e
 	move	$t4, $zero
 	move	$t6, $zero
 	bstrpick.d	$a7, $a1, 31, 0
-	addi.w	$t7, $zero, -1
+	addi.d	$t7, $zero, -1
 	ori	$t0, $zero, 4
 	ori	$t1, $zero, 3
 	ori	$t2, $zero, 1
@@ -1661,21 +1659,20 @@ upx_inflate2e:                          # @upx_inflate2e
 	b	.LBB3_2
 .LBB3_67:                               # %vector.scevcheck
 	addi.d	$s4, $s1, -1
-	addi.w	$s5, $s4, 0
+	addi.w	$s6, $s4, 0
 	nor	$s2, $t8, $zero
-	addi.w	$s6, $s2, 0
+	addi.w	$s5, $s2, 0
 	move	$s2, $zero
-	bltu	$s6, $s5, .LBB3_64
+	bltu	$s5, $s6, .LBB3_64
 # %bb.68:                               # %vector.scevcheck
-	add.d	$s6, $t7, $t8
-	addi.w	$s7, $s6, 0
-	nor	$s7, $s7, $zero
-	bltu	$s7, $s5, .LBB3_64
+	add.w	$s5, $t7, $t8
+	nor	$s7, $s5, $zero
+	bltu	$s7, $s6, .LBB3_64
 # %bb.69:                               # %vector.scevcheck
 	srli.d	$s4, $s4, 32
 	bnez	$s4, .LBB3_64
 # %bb.70:                               # %vector.memcheck
-	bstrpick.d	$s2, $s6, 31, 0
+	bstrpick.d	$s2, $s5, 31, 0
 	sub.d	$s2, $s3, $s2
 	bltu	$s2, $t5, .LBB3_63
 # %bb.71:                               # %vector.main.loop.iter.check

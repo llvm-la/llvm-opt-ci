@@ -677,6 +677,8 @@ inf_GetURPartnerLits:                   # @inf_GetURPartnerLits
 	beqz	$a0, .LBB2_13
 # %bb.1:                                # %.lr.ph16
 	move	$s0, $a0
+	beqz	$s1, .LBB2_15
+# %bb.2:                                # %.lr.ph16.split.us.split.preheader
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
 	ld.d	$s3, $a0, %got_pc_lo12(fol_NOT)
 	ori	$s4, $zero, 1
@@ -684,8 +686,6 @@ inf_GetURPartnerLits:                   # @inf_GetURPartnerLits
 	ld.d	$s5, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s6, $a0, %got_pc_lo12(memory_FREEDBYTES)
-	beqz	$s1, .LBB2_15
-# %bb.2:                                # %.lr.ph16.split.us.split.preheader
 	move	$s1, $zero
 	b	.LBB2_4
 	.p2align	4, , 16
@@ -772,6 +772,13 @@ inf_GetURPartnerLits:                   # @inf_GetURPartnerLits
 	addi.d	$sp, $sp, 96
 	ret
 .LBB2_15:                               # %.lr.ph16.split.split.us.preheader
+	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
+	ld.d	$s3, $a0, %got_pc_lo12(fol_NOT)
+	ori	$s4, $zero, 1
+	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
+	ld.d	$s5, $a0, %got_pc_lo12(memory_ARRAY)
+	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
+	ld.d	$s6, $a0, %got_pc_lo12(memory_FREEDBYTES)
 	move	$s1, $zero
 	b	.LBB2_17
 	.p2align	4, , 16

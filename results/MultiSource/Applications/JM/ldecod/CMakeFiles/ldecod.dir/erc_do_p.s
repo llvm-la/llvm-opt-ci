@@ -1236,8 +1236,9 @@ conceal_lost_frames:                    # @conceal_lost_frames
 	sub.d	$a1, $zero, $a1
 	stptr.w	$a1, $fp, 6056
 	stptr.w	$zero, $fp, 6072
-	ldptr.w	$s1, $fp, 5676
-	beq	$s1, $s3, .LBB3_3
+	ldptr.w	$a1, $fp, 5676
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	beq	$a1, $s3, .LBB3_3
 	b	.LBB3_4
 .LBB3_2:
 	ori	$a1, $a0, 1564
@@ -1245,14 +1246,16 @@ conceal_lost_frames:                    # @conceal_lost_frames
 	ldptr.w	$a2, $fp, 5816
 	addi.w	$a1, $a1, 1
 	mod.wu	$s3, $a1, $a2
-	ldptr.w	$s1, $fp, 5676
-	bne	$s1, $s3, .LBB3_4
+	ldptr.w	$a1, $fp, 5676
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	bne	$a1, $s3, .LBB3_4
 .LBB3_3:                                # %._crit_edge
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	stptr.w	$a0, $fp, 5696
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	stptr.w	$a0, $fp, 5700
-	stptr.w	$s1, $fp, 5676
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	stptr.w	$a0, $fp, 5676
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
@@ -1271,12 +1274,11 @@ conceal_lost_frames:                    # @conceal_lost_frames
 	ori	$s5, $a1, 1432
 	ori	$s6, $zero, 1
 	ori	$a2, $a0, 1960
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	ori	$a0, $a0, 1964
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	pcalau12i	$a0, %got_pc_hi20(dpb)
-	ld.d	$a0, $a0, %got_pc_lo12(dpb)
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	pcalau12i	$a0, %got_pc_hi20(dpb)
+	ld.d	$s1, $a0, %got_pc_lo12(dpb)
 	ori	$s2, $zero, 3
 	ori	$s7, $a1, 1452
 	ori	$a0, $zero, 2
@@ -1313,7 +1315,8 @@ conceal_lost_frames:                    # @conceal_lost_frames
 	addi.w	$a0, $s3, 1
 	mod.w	$s3, $a0, $a2
 	st.w	$zero, $s8, 0
-	beq	$s1, $s3, .LBB3_3
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	beq	$a0, $s3, .LBB3_3
 .LBB3_6:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_9 Depth 2
 	ld.w	$a1, $fp, 48
@@ -1330,17 +1333,16 @@ conceal_lost_frames:                    # @conceal_lost_frames
 	stx.w	$s3, $a0, $s5
 	st.w	$zero, $s4, 32
 	st.d	$s6, $s4, 24
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ldx.w	$a0, $fp, $a0
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ldx.w	$a1, $fp, $a1
 	st.w	$s6, $s4, 272
 	st.w	$zero, $s4, 216
 	stptr.w	$s3, $fp, 5676
 	add.d	$a1, $a1, $a0
 	st.w	$a1, $s0, 8
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	ld.w	$a0, $a2, 28
+	ld.w	$a0, $s1, 28
 	st.w	$a1, $s0, 12
 	st.w	$a1, $s0, 16
 	st.w	$a1, $s0, 4
@@ -1349,7 +1351,7 @@ conceal_lost_frames:                    # @conceal_lost_frames
 	bltz	$a0, .LBB3_12
 # %bb.7:                                # %.lr.ph.i.i
                                         #   in Loop: Header=BB3_6 Depth=1
-	ld.d	$a2, $a2, 0
+	ld.d	$a2, $s1, 0
 	addi.d	$a1, $a0, 1
 	alsl.d	$a2, $a0, $a2, 3
 	b	.LBB3_9
@@ -1385,14 +1387,12 @@ conceal_lost_frames:                    # @conceal_lost_frames
 	ldptr.w	$a0, $fp, 6080
 	bne	$a0, $s6, .LBB3_5
 # %bb.14:                               #   in Loop: Header=BB3_6 Depth=1
-	addi.d	$s6, $s0, 4
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	st.d	$a0, $s4, 200
 	pcaddu18i	$ra, %call36(flush_dpb)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $s6, 0
-	ori	$s6, $zero, 1
+	vst	$vr0, $s0, 4
 	stptr.w	$zero, $fp, 6056
 	b	.LBB3_5
 .Lfunc_end3:

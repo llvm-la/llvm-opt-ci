@@ -1000,12 +1000,11 @@ main:                                   # @main
 # %bb.105:                              #   in Loop: Header=BB0_104 Depth=4
 	ld.d	$t0, $a6, 0
 	ld.d	$t1, $a7, 0
-	ldx.w	$t0, $t0, $a2
 	fld.s	$fa0, $a5, 0
-	fldx.s	$fa1, $t1, $a2
-	movgr2fr.w	$fa2, $t0
-	ffint.s.w	$fa2, $fa2
-	fmadd.s	$fa0, $fa0, $fa2, $fa1
+	fldx.s	$fa1, $t0, $a2
+	fldx.s	$fa2, $t1, $a2
+	ffint.s.w	$fa1, $fa1
+	fmadd.s	$fa0, $fa0, $fa1, $fa2
 	fstx.s	$fa0, $t1, $a2
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 4
@@ -1310,13 +1309,12 @@ run:                                    # @run
 .LBB1_8:                                #   Parent Loop BB1_6 Depth=1
                                         #     Parent Loop BB1_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$t4, $t2, 0
-	fld.s	$fa1, $t0, 0
-	movgr2fr.w	$fa2, $t4
-	ffint.s.w	$fa2, $fa2
+	fld.s	$fa1, $t2, 0
+	fld.s	$fa2, $t0, 0
+	ffint.s.w	$fa1, $fa1
 	movgr2fr.w	$fa3, $t3
 	ffint.s.w	$fa3, $fa3
-	fmadd.s	$fa1, $fa1, $fa2, $fa3
+	fmadd.s	$fa1, $fa2, $fa1, $fa3
 	ftintrz.w.s	$fa1, $fa1
 	movfr2gr.s	$t3, $fa1
 	addi.d	$t0, $t0, 4
@@ -1635,11 +1633,10 @@ runcont:                                # @runcont
 .LBB2_12:                               #   Parent Loop BB2_7 Depth=1
                                         #     Parent Loop BB2_10 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a2, $a1, 0
-	fld.s	$fa1, $a0, 0
-	movgr2fr.w	$fa2, $a2
-	ffint.s.w	$fa2, $fa2
-	fmadd.s	$fa0, $fa1, $fa2, $fa0
+	fld.s	$fa1, $a1, 0
+	fld.s	$fa2, $a0, 0
+	ffint.s.w	$fa1, $fa1
+	fmadd.s	$fa0, $fa2, $fa1, $fa0
 	addi.d	$a1, $a1, 4
 	addi.d	$s8, $s8, -1
 	addi.d	$a0, $a0, 4
@@ -1990,8 +1987,7 @@ runcont:                                # @runcont
 .LBB2_65:                               # %.lr.ph128
                                         #   Parent Loop BB2_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a3, $a2, 0
-	movgr2fr.w	$fa0, $a3
+	fld.s	$fa0, $a2, 0
 	ffint.s.w	$fa0, $fa0
 	fst.s	$fa0, $a1, 0
 	addi.d	$a1, $a1, 4

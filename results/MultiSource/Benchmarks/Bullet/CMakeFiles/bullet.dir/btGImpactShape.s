@@ -3175,7 +3175,7 @@ GCC_except_table81:
 	.type	_ZN23btGImpactShapeInterfaceD0Ev,@function
 _ZN23btGImpactShapeInterfaceD0Ev:       # @_ZN23btGImpactShapeInterfaceD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end82:
 	.size	_ZN23btGImpactShapeInterfaceD0Ev, .Lfunc_end82-_ZN23btGImpactShapeInterfaceD0Ev
                                         # -- End function

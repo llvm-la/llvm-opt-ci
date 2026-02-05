@@ -37,10 +37,8 @@ sat_add2:                               # @sat_add2
 	.type	sat_add3,@function
 sat_add3:                               # @sat_add3
 # %bb.0:
-	addi.d	$a1, $a0, -1
-	sltu	$a0, $a0, $a1
-	masknez	$a0, $a1, $a0
-	addi.w	$a0, $a0, 0
+	sltu	$a1, $zero, $a0
+	sub.w	$a0, $a0, $a1
 	ret
 .Lfunc_end2:
 	.size	sat_add3, .Lfunc_end2-sat_add3
@@ -50,10 +48,8 @@ sat_add3:                               # @sat_add3
 	.type	sat_add4,@function
 sat_add4:                               # @sat_add4
 # %bb.0:
-	addi.d	$a1, $a0, -1
-	sltu	$a0, $a0, $a1
-	masknez	$a0, $a1, $a0
-	addi.w	$a0, $a0, 0
+	sltu	$a1, $zero, $a0
+	sub.w	$a0, $a0, $a1
 	ret
 .Lfunc_end3:
 	.size	sat_add4, .Lfunc_end3-sat_add4

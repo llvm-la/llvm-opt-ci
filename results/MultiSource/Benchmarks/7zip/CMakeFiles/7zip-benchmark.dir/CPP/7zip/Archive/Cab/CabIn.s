@@ -1427,7 +1427,7 @@ _ZN8NArchive4NCab10CInArchive4OpenEPKyRNS0_11CDatabaseExE: # @_ZN8NArchive4NCab1
 	jirl	$ra, $ra, 0
 	ld.hu	$a0, $fp, 12
 	beqz	$a0, .LBB8_60
-# %bb.39:                               # %.lr.ph120
+# %bb.39:                               # %.lr.ph119
 	move	$s6, $zero
 	move	$s3, $zero
 	ori	$s4, $zero, 4
@@ -2266,18 +2266,18 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	ld.w	$a0, $fp, 44
 	blt	$a0, $a4, .LBB11_71
 # %bb.67:                               # %.lr.ph117
-	ori	$s0, $zero, 1
-	ori	$s5, $zero, 8
 	ori	$s3, $zero, 1
+	ori	$s0, $zero, 8
+	ori	$s5, $zero, 1
 	ori	$s2, $zero, 1
 	b	.LBB11_69
 	.p2align	4, , 16
 .LBB11_68:                              #   in Loop: Header=BB11_69 Depth=1
 	ld.w	$a0, $fp, 44
-	addi.d	$s0, $s0, 1
+	addi.d	$s5, $s5, 1
 	addi.w	$s3, $s3, 1
-	addi.d	$s5, $s5, 8
-	bge	$s0, $a0, .LBB11_71
+	addi.d	$s0, $s0, 8
+	bge	$s5, $a0, .LBB11_71
 .LBB11_69:                              # =>This Inner Loop Header: Depth=1
 	addi.w	$a2, $s3, -1
 	move	$a0, $fp
@@ -2287,7 +2287,7 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	bnez	$a0, .LBB11_68
 # %bb.70:                               #   in Loop: Header=BB11_69 Depth=1
 	ld.d	$a0, $fp, 48
-	ldx.d	$a1, $a0, $s5
+	ldx.d	$a1, $a0, $s0
 	slli.d	$a2, $s2, 3
 	addi.w	$s2, $s2, 1
 	stx.d	$a1, $a0, $a2

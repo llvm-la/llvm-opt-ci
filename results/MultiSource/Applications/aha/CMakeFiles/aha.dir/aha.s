@@ -440,20 +440,20 @@ print_pgm:                              # @print_pgm
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(numi)
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(numi)
 	blez	$a0, .LBB24_15
 # %bb.1:                                # %.lr.ph29.preheader
 	pcalau12i	$a0, %pc_hi20(pgm)
 	addi.d	$a0, $a0, %pc_lo12(pgm)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	addi.d	$s1, $a0, 4
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$fp, $a0, 4
 	pcalau12i	$a0, %pc_hi20(isa)
 	addi.d	$a0, $a0, %pc_lo12(isa)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$s5, $zero, 10
 	pcalau12i	$a0, %pc_hi20(r)
 	addi.d	$s6, $a0, %pc_lo12(r)
@@ -461,9 +461,7 @@ print_pgm:                              # @print_pgm
 	addi.d	$a0, $a0, %pc_lo12(.L.str.28)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.29)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.29)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	ori	$fp, $zero, 11
+	addi.d	$s1, $a0, %pc_lo12(.L.str.29)
 	pcalau12i	$a0, %pc_hi20(.L.str.34)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.34)
 	pcalau12i	$a0, %pc_hi20(.L.str.35)
@@ -476,23 +474,23 @@ print_pgm:                              # @print_pgm
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(numi)
-	addi.d	$s1, $s1, 16
+	addi.d	$fp, $fp, 16
 	bge	$s4, $a0, .LBB24_15
 .LBB24_3:                               # %.lr.ph29
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB24_6 Depth 2
 	slli.d	$a0, $s4, 4
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ldx.w	$a0, $a1, $a0
 	ori	$a1, $zero, 56
 	mul.d	$a0, $a0, $a1
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$s8, $a1, $a0
 	ld.d	$a1, $s8, 32
 	addi.d	$s4, $s4, 1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
@@ -501,7 +499,7 @@ print_pgm:                              # @print_pgm
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB24_3 Depth=1
 	move	$s0, $zero
-	move	$s7, $s1
+	move	$s7, $fp
 	b	.LBB24_6
 	.p2align	4, , 16
 .LBB24_5:                               #   in Loop: Header=BB24_6 Depth=2
@@ -523,7 +521,8 @@ print_pgm:                              # @print_pgm
 	b	.LBB24_13
 	.p2align	4, , 16
 .LBB24_9:                               #   in Loop: Header=BB24_6 Depth=2
-	bne	$a0, $fp, .LBB24_12
+	ori	$a1, $zero, 11
+	bne	$a0, $a1, .LBB24_12
 # %bb.10:                               #   in Loop: Header=BB24_6 Depth=2
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(printf)
@@ -534,7 +533,7 @@ print_pgm:                              # @print_pgm
 	b	.LBB24_14
 	.p2align	4, , 16
 .LBB24_11:                              #   in Loop: Header=BB24_6 Depth=2
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	move	$a0, $s1
 	b	.LBB24_13
 	.p2align	4, , 16
 .LBB24_12:                              #   in Loop: Header=BB24_6 Depth=2
@@ -557,7 +556,7 @@ print_pgm:                              # @print_pgm
 	addi.d	$a0, $a0, %pc_lo12(.L.str.38)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(numi)
 	addi.w	$a0, $a0, 11
 	pcaddu18i	$ra, %call36(print_expr)

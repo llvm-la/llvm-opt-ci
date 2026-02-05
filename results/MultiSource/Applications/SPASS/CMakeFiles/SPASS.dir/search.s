@@ -151,16 +151,14 @@ prfs_Check:                             # @prfs_Check
 	.type	prfs_DeleteDocProof,@function
 prfs_DeleteDocProof:                    # @prfs_DeleteDocProof
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 96
 	ld.d	$a1, $fp, 88
 	ld.d	$a2, $fp, 112
 	ld.d	$a3, $fp, 104
-	addi.d	$s0, $fp, 88
 	pcaddu18i	$ra, %call36(clause_DeleteSharedClauseList)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 88
@@ -170,11 +168,10 @@ prfs_DeleteDocProof:                    # @prfs_DeleteDocProof
 	jirl	$ra, $ra, 0
 .LBB1_2:
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 0
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	vst	$vr0, $fp, 88
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end1:
 	.size	prfs_DeleteDocProof, .Lfunc_end1-prfs_DeleteDocProof
@@ -3214,17 +3211,17 @@ prfs_InstallFiniteMonadicPredicates:    # @prfs_InstallFiniteMonadicPredicates
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a0
-	move	$s1, $zero
+	move	$s0, $zero
 	beqz	$a1, .LBB27_14
 # %bb.1:
-	move	$s0, $a2
+	move	$s1, $a2
 	beqz	$a2, .LBB27_14
 # %bb.2:                                # %.lr.ph.split.preheader
 	move	$s2, $a1
 	ori	$s5, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
 	ld.d	$s6, $a0, %got_pc_lo12(fol_NOT)
-	move	$s1, $zero
+	move	$s0, $zero
 	b	.LBB27_5
 .LBB27_3:                               #   in Loop: Header=BB27_5 Depth=1
 	ld.d	$a0, $s4, 16
@@ -3249,8 +3246,8 @@ prfs_InstallFiniteMonadicPredicates:    # @prfs_InstallFiniteMonadicPredicates
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s3, $a0, 8
-	st.d	$s1, $a0, 0
-	move	$s1, $a0
+	st.d	$s0, $a0, 0
+	move	$s0, $a0
 	.p2align	4, , 16
 .LBB27_4:                               # %list_PointerMember.exit.thread
                                         #   in Loop: Header=BB27_5 Depth=1
@@ -3283,7 +3280,7 @@ prfs_InstallFiniteMonadicPredicates:    # @prfs_InstallFiniteMonadicPredicates
 	ld.w	$a1, $s4, 0
 .LBB27_9:                               # %clause_GetLiteralAtom.exit
                                         #   in Loop: Header=BB27_5 Depth=1
-	move	$a0, $s0
+	move	$a0, $s1
 	.p2align	4, , 16
 .LBB27_10:                              # %.lr.ph.i
                                         #   Parent Loop BB27_5 Depth=1
@@ -3297,7 +3294,7 @@ prfs_InstallFiniteMonadicPredicates:    # @prfs_InstallFiniteMonadicPredicates
 	.p2align	4, , 16
 .LBB27_12:                              # %list_PointerMember.exit
                                         #   in Loop: Header=BB27_5 Depth=1
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(list_AssocListPair)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_3
@@ -3322,7 +3319,7 @@ prfs_InstallFiniteMonadicPredicates:    # @prfs_InstallFiniteMonadicPredicates
 	addi.d	$a1, $a1, %pc_lo12(term_DeleteTermList)
 	pcaddu18i	$ra, %call36(list_DeleteAssocListWithValues)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $fp, 24
+	st.d	$s0, $fp, 24
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload

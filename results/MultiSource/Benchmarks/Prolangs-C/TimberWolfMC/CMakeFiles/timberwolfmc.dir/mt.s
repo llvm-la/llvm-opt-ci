@@ -265,42 +265,28 @@ MTMX:                                   # @MTMX
 	.type	MTRotate,@function
 MTRotate:                               # @MTRotate
 # %bb.0:
-	beqz	$a1, .LBB6_5
+	beqz	$a1, .LBB6_3
 # %bb.1:
-	bnez	$a2, .LBB6_8
-# %bb.2:
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a3, $a3, $a2
-	ori	$a2, $zero, 1
-	sltu	$a3, $a2, $a3
-	srai.d	$a4, $a1, 31
-	ori	$a4, $a4, 1
-	masknez	$a1, $a1, $a3
-	maskeqz	$a3, $a4, $a3
-	or	$a1, $a3, $a1
-	addi.w	$a3, $zero, -1
-	beq	$a1, $a3, .LBB6_10
-# %bb.3:
-	bne	$a1, $a2, .LBB6_8
-# %bb.4:
-	ret
-.LBB6_5:
-	srai.d	$a1, $a2, 31
-	xor	$a3, $a2, $a1
-	sub.w	$a3, $a3, $a1
-	ori	$a1, $zero, 1
-	sltu	$a3, $a1, $a3
-	srai.d	$a4, $a2, 31
-	ori	$a4, $a4, 1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $a4, $a3
-	or	$a2, $a3, $a2
-	addi.w	$a3, $zero, -1
-	beq	$a2, $a3, .LBB6_9
-# %bb.6:
-	bne	$a2, $a1, .LBB6_8
-# %bb.7:
+	beqz	$a2, .LBB6_6
+.LBB6_2:                                # %.thread87..loopexit_crit_edge
+	ori	$a1, $zero, 3604
+	ldx.w	$a1, $a0, $a1
+	ori	$a2, $zero, 3616
+	ldx.w	$a3, $a0, $a2
+	ori	$a2, $zero, 3608
+	ldx.w	$a2, $a0, $a2
+	ori	$a4, $zero, 3620
+	ldx.w	$a4, $a0, $a4
+	ori	$a5, $zero, 3628
+	ldx.w	$a5, $a0, $a5
+	ori	$a6, $zero, 3632
+	ldx.w	$a6, $a0, $a6
+	b	.LBB6_12
+.LBB6_3:
+	bltz	$a2, .LBB6_8
+# %bb.4:                                # %.thread83
+	beqz	$a2, .LBB6_2
+# %bb.5:
 	ori	$a1, $zero, 3608
 	ldx.w	$a1, $a0, $a1
 	ori	$a2, $zero, 3604
@@ -321,22 +307,12 @@ MTRotate:                               # @MTRotate
 	stptr.w	$a4, $a0, 3620
 	sub.d	$a5, $zero, $a5
 	stptr.w	$a5, $a0, 3628
-	b	.LBB6_12
-.LBB6_8:                                # %.thread87..loopexit_crit_edge
-	ori	$a1, $zero, 3604
-	ldx.w	$a1, $a0, $a1
-	ori	$a2, $zero, 3616
-	ldx.w	$a3, $a0, $a2
-	ori	$a2, $zero, 3608
-	ldx.w	$a2, $a0, $a2
-	ori	$a4, $zero, 3620
-	ldx.w	$a4, $a0, $a4
-	ori	$a5, $zero, 3628
-	ldx.w	$a5, $a0, $a5
-	ori	$a6, $zero, 3632
-	ldx.w	$a6, $a0, $a6
-	b	.LBB6_13
-.LBB6_9:
+	b	.LBB6_11
+.LBB6_6:
+	blez	$a1, .LBB6_9
+# %bb.7:
+	ret
+.LBB6_8:
 	ori	$a2, $zero, 3604
 	ori	$a1, $zero, 3608
 	ldx.w	$a1, $a0, $a1
@@ -355,8 +331,8 @@ MTRotate:                               # @MTRotate
 	ldx.w	$a6, $a0, $a6
 	sub.d	$a4, $zero, $a4
 	stptr.w	$a4, $a0, 3620
-	b	.LBB6_11
-.LBB6_10:                               # %.preheader93
+	b	.LBB6_10
+.LBB6_9:                                # %.preheader92
 	ori	$a1, $zero, 3604
 	ldx.w	$a1, $a0, $a1
 	ori	$a2, $zero, 3608
@@ -378,12 +354,12 @@ MTRotate:                               # @MTRotate
 	ldx.w	$a6, $a0, $a6
 	stptr.w	$a4, $a0, 3620
 	sub.d	$a5, $zero, $a5
-.LBB6_11:                               # %.loopexit
+.LBB6_10:                               # %.loopexit
 	stptr.w	$a5, $a0, 3628
 	sub.d	$a6, $zero, $a6
-.LBB6_12:                               # %.loopexit
+.LBB6_11:                               # %.loopexit
 	stptr.w	$a6, $a0, 3632
-.LBB6_13:                               # %.loopexit
+.LBB6_12:                               # %.loopexit
 	stptr.w	$a1, $a0, 3640
 	stptr.w	$a3, $a0, 3644
 	stptr.w	$a2, $a0, 3652

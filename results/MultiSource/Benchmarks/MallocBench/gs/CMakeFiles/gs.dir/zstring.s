@@ -118,11 +118,10 @@ zanchorsearch:                          # @zanchorsearch
 	addi.d	$sp, $sp, 48
 	ret
 .LBB1_9:
-	addi.d	$a1, $a0, -16
-	lu12i.w	$a2, 8
-	or	$a2, $s1, $a2
-	st.h	$a2, $a0, -8
-	vld	$vr0, $a1, 0
+	lu12i.w	$a1, 8
+	or	$a1, $s1, $a1
+	st.h	$a1, $a0, -8
+	vld	$vr0, $a0, -16
 	vst	$vr0, $a0, 0
 	st.h	$fp, $a0, 10
 	add.d	$a1, $s0, $fp
@@ -156,58 +155,57 @@ zanchorsearch:                          # @zanchorsearch
 	.type	zsearch,@function
 zsearch:                                # @zsearch
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	move	$a1, $a0
 	ld.hu	$s2, $a0, -8
 	andi	$a2, $s2, 252
 	ori	$a3, $zero, 52
-	addi.w	$a1, $zero, -20
+	addi.w	$a0, $zero, -20
 	bne	$a2, $a3, .LBB2_16
 # %bb.1:
 	andi	$a3, $s2, 512
 	addi.w	$a2, $zero, -7
 	bnez	$a3, .LBB2_3
 # %bb.2:
-	move	$a1, $a2
+	move	$a0, $a2
 	b	.LBB2_16
 .LBB2_3:
-	ld.hu	$a3, $a0, 8
+	ld.hu	$a3, $a1, 8
 	andi	$a4, $a3, 252
 	ori	$a5, $zero, 52
 	bne	$a4, $a5, .LBB2_16
 # %bb.4:
 	andi	$a3, $a3, 512
-	move	$a1, $a2
+	move	$a0, $a2
 	beqz	$a3, .LBB2_16
 # %bb.5:
-	ld.hu	$fp, $a0, 10
-	ld.hu	$a1, $a0, -6
-	bgeu	$a1, $fp, .LBB2_7
+	ld.hu	$fp, $a1, 10
+	ld.hu	$a0, $a1, -6
+	bgeu	$a0, $fp, .LBB2_7
 # %bb.6:
-	move	$a1, $zero
-	st.h	$zero, $a0, 0
+	move	$a0, $zero
+	st.h	$zero, $a1, 0
 	ori	$a2, $zero, 4
-	st.h	$a2, $a0, 8
+	st.h	$a2, $a1, 8
 	b	.LBB2_16
 .LBB2_7:
-	addi.d	$s3, $a0, -16
-	sub.d	$a1, $a1, $fp
-	ld.d	$s0, $a0, -16
-	bstrpick.d	$a1, $a1, 15, 0
-	move	$s6, $a0
-	ld.d	$s1, $a0, 0
-	sub.d	$s5, $zero, $a1
-	sub.d	$s4, $zero, $s0
-	ori	$s7, $zero, 1
+	sub.d	$a0, $a0, $fp
+	ld.d	$s0, $a1, -16
+	bstrpick.d	$a0, $a0, 15, 0
+	move	$s5, $a1
+	ld.d	$s1, $a1, 0
+	sub.d	$s4, $zero, $a0
+	sub.d	$s3, $zero, $s0
+	ori	$s6, $zero, 1
 	.p2align	4, , 16
 .LBB2_8:                                # =>This Inner Loop Header: Depth=1
 	move	$a0, $s0
@@ -218,71 +216,69 @@ zsearch:                                # @zsearch
 	beqz	$a0, .LBB2_11
 # %bb.9:                                #   in Loop: Header=BB2_8 Depth=1
 	addi.d	$s0, $s0, 1
-	addi.w	$s5, $s5, 1
-	addi.d	$s4, $s4, -1
-	bne	$s5, $s7, .LBB2_8
+	addi.w	$s4, $s4, 1
+	addi.d	$s3, $s3, -1
+	bne	$s4, $s6, .LBB2_8
 # %bb.10:
-	move	$a1, $zero
-	st.h	$zero, $s6, 0
-	ori	$a0, $zero, 4
-	st.h	$a0, $s6, 8
+	move	$a0, $zero
+	st.h	$zero, $s5, 0
+	ori	$a1, $zero, 4
+	st.h	$a1, $s5, 8
 	b	.LBB2_16
 .LBB2_11:
 	lu12i.w	$a0, 8
-	or	$a1, $s2, $a0
-	move	$a0, $s6
-	st.h	$a1, $s6, 8
-	st.d	$s0, $s6, 0
-	addi.d	$a1, $s6, 16
+	or	$a0, $s2, $a0
+	move	$a1, $s5
+	st.h	$a0, $s5, 8
+	st.d	$s0, $s5, 0
+	addi.d	$a0, $s5, 16
 	pcalau12i	$a2, %got_pc_hi20(osp)
 	ld.d	$a2, $a2, %got_pc_lo12(osp)
-	st.d	$a1, $a2, 0
+	st.d	$a0, $a2, 0
 	pcalau12i	$a3, %got_pc_hi20(ostop)
 	ld.d	$a3, $a3, %got_pc_lo12(ostop)
 	ld.d	$a4, $a3, 0
-	bgeu	$a4, $a1, .LBB2_13
+	bgeu	$a4, $a0, .LBB2_13
 # %bb.12:
-	st.d	$a0, $a2, 0
-	addi.w	$a1, $zero, -16
+	st.d	$a1, $a2, 0
+	addi.w	$a0, $zero, -16
 	b	.LBB2_16
 .LBB2_13:
-	vld	$vr0, $s3, 0
-	vst	$vr0, $a1, 0
-	ld.d	$a4, $a0, 16
-	sub.d	$a5, $zero, $s5
-	add.d	$a4, $a4, $s4
+	vld	$vr0, $a1, -16
+	vst	$vr0, $a0, 0
+	ld.d	$a4, $a1, 16
+	sub.d	$a5, $zero, $s4
+	add.d	$a4, $a4, $s3
 	sub.d	$a4, $zero, $a4
 	add.d	$a6, $s0, $fp
-	st.d	$a6, $a0, -16
+	st.d	$a6, $a1, -16
 	ld.d	$a3, $a3, 0
-	st.h	$a4, $a0, 26
-	st.h	$a5, $a0, -6
-	addi.d	$a4, $a0, 32
+	st.h	$a4, $a1, 26
+	st.h	$a5, $a1, -6
+	addi.d	$a4, $a1, 32
 	st.d	$a4, $a2, 0
 	bgeu	$a3, $a4, .LBB2_15
 # %bb.14:
-	st.d	$a1, $a2, 0
-	addi.w	$a1, $zero, -16
+	st.d	$a0, $a2, 0
+	addi.w	$a0, $zero, -16
 	b	.LBB2_16
 .LBB2_15:
-	move	$a1, $zero
+	move	$a0, $zero
 	ori	$a2, $zero, 1
-	st.h	$a2, $a0, 32
+	st.h	$a2, $a1, 32
 	ori	$a2, $zero, 4
-	st.h	$a2, $a0, 40
+	st.h	$a2, $a1, 40
 .LBB2_16:
-	move	$a0, $a1
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end2:
 	.size	zsearch, .Lfunc_end2-zsearch

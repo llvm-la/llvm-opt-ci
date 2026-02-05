@@ -167,12 +167,11 @@ OpenSndFile:                            # @OpenSndFile
 	fld.d	$fa1, $a1, %pc_lo12(.LCPI1_0)
 	movgr2fr.w	$fa2, $a0
 	ffint.d.w	$fa2, $fa2
-	ld.w	$a0, $s3, %pc_lo12(samp_freq)
+	fld.s	$fa3, $s3, %pc_lo12(samp_freq)
 	fmul.d	$fa1, $fa2, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
-	movgr2fr.w	$fa1, $a0
-	ffint.s.w	$fa1, $fa1
+	ffint.s.w	$fa1, $fa3
 	fmul.s	$fa0, $fa1, $fa0
 	lu12i.w	$a0, 389120
 	movgr2fr.w	$fa1, $a0
@@ -571,45 +570,45 @@ get_audio:                              # @get_audio
 	xvslli.d	$xr2, $xr0, 2
 	xvslli.d	$xr3, $xr1, 2
 	xvpickve2gr.d	$a1, $xr3, 0
-	add.d	$a2, $a3, $a1
-	xvpickve2gr.d	$a7, $xr3, 1
-	add.d	$t0, $a3, $a7
-	xvpickve2gr.d	$t1, $xr3, 2
-	add.d	$t2, $a3, $t1
-	xvpickve2gr.d	$t3, $xr3, 3
-	add.d	$t4, $a3, $t3
-	xvpickve2gr.d	$t5, $xr2, 0
-	add.d	$t6, $a3, $t5
-	xvpickve2gr.d	$t7, $xr2, 1
-	add.d	$t8, $a3, $t7
-	xvpickve2gr.d	$s2, $xr2, 2
-	add.d	$s3, $a3, $s2
-	xvpickve2gr.d	$s4, $xr2, 3
-	add.d	$s5, $a3, $s4
+	xvpickve2gr.d	$a2, $xr3, 1
+	xvpickve2gr.d	$a7, $xr3, 2
+	xvpickve2gr.d	$t0, $xr3, 3
+	xvpickve2gr.d	$t1, $xr2, 0
+	xvpickve2gr.d	$t2, $xr2, 1
+	xvpickve2gr.d	$t3, $xr2, 2
+	xvpickve2gr.d	$t4, $xr2, 3
+	add.d	$t5, $a3, $a1
+	add.d	$t6, $a3, $a2
+	add.d	$t7, $a3, $a7
+	add.d	$t8, $a3, $t0
+	add.d	$s2, $a3, $t1
+	add.d	$s3, $a3, $t2
+	add.d	$s4, $a3, $t3
+	add.d	$s5, $a3, $t4
 	ldx.h	$a1, $a1, $a3
+	ldx.h	$a2, $a2, $a3
 	ldx.h	$a7, $a7, $a3
+	ldx.h	$t0, $t0, $a3
 	ldx.h	$t1, $t1, $a3
+	ldx.h	$t2, $t2, $a3
 	ldx.h	$t3, $t3, $a3
-	ldx.h	$t5, $t5, $a3
-	ldx.h	$t7, $t7, $a3
-	ldx.h	$s2, $s2, $a3
-	ldx.h	$s4, $s4, $a3
+	ldx.h	$t4, $t4, $a3
 	vinsgr2vr.h	$vr2, $a1, 0
-	vinsgr2vr.h	$vr2, $a7, 1
-	vinsgr2vr.h	$vr2, $t1, 2
-	vinsgr2vr.h	$vr2, $t3, 3
-	vinsgr2vr.h	$vr2, $t5, 4
-	vinsgr2vr.h	$vr2, $t7, 5
-	vinsgr2vr.h	$vr2, $s2, 6
-	vinsgr2vr.h	$vr2, $s4, 7
+	vinsgr2vr.h	$vr2, $a2, 1
+	vinsgr2vr.h	$vr2, $a7, 2
+	vinsgr2vr.h	$vr2, $t0, 3
+	vinsgr2vr.h	$vr2, $t1, 4
+	vinsgr2vr.h	$vr2, $t2, 5
+	vinsgr2vr.h	$vr2, $t3, 6
+	vinsgr2vr.h	$vr2, $t4, 7
 	vst	$vr2, $a5, 0
-	ld.h	$a1, $a2, 2
-	ld.h	$a2, $t0, 2
-	ld.h	$a7, $t2, 2
-	ld.h	$t0, $t4, 2
-	ld.h	$t1, $t6, 2
-	ld.h	$t2, $t8, 2
-	ld.h	$t3, $s3, 2
+	ld.h	$a1, $t5, 2
+	ld.h	$a2, $t6, 2
+	ld.h	$a7, $t7, 2
+	ld.h	$t0, $t8, 2
+	ld.h	$t1, $s2, 2
+	ld.h	$t2, $s3, 2
+	ld.h	$t3, $s4, 2
 	ld.h	$t4, $s5, 2
 	vinsgr2vr.h	$vr2, $a1, 0
 	vinsgr2vr.h	$vr2, $a2, 1
@@ -1314,22 +1313,22 @@ parse_file_header:                      # @parse_file_header
 	move	$s3, $a0
 	blez	$s2, .LBB13_32
 # %bb.28:                               # %.lr.ph.i49.i15.preheader
-	ori	$fp, $zero, 1024
-	move	$s1, $s2
+	ori	$s1, $zero, 1024
+	move	$fp, $s2
 	.p2align	4, , 16
 .LBB13_29:                              # %.lr.ph.i49.i15
                                         # =>This Inner Loop Header: Depth=1
-	sltui	$a0, $s1, 1024
-	masknez	$a1, $fp, $a0
-	maskeqz	$a0, $s1, $a0
+	sltui	$a0, $fp, 1024
+	masknez	$a1, $s1, $a0
+	maskeqz	$a0, $fp, $a0
 	or	$a2, $a0, $a1
 	addi.d	$a0, $sp, 32
 	ori	$a1, $zero, 1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	sub.d	$s1, $s1, $a0
-	bgtz	$s1, .LBB13_29
+	sub.d	$fp, $fp, $a0
+	bgtz	$fp, .LBB13_29
 	b	.LBB13_33
 .LBB13_30:
 	ori	$a0, $zero, 16
@@ -1349,9 +1348,9 @@ parse_file_header:                      # @parse_file_header
 	st.w	$a0, $a1, 120
 	b	.LBB13_42
 .LBB13_32:
-	move	$s1, $s2
+	move	$fp, $s2
 .LBB13_33:                              # %fskip.exit51.i12
-	slli.d	$a0, $s1, 32
+	slli.d	$a0, $fp, 32
 	beqz	$a0, .LBB13_37
 .LBB13_34:                              # %parse_wave_header.exit.thread
 	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload

@@ -464,182 +464,168 @@ main:                                   # @main
 	b	.LBB7_32
 .LBB7_30:                               # %vector.body65
                                         #   in Loop: Header=BB7_32 Depth=1
-	xvld	$xr6, $t2, 0
-	xvld	$xr7, $t2, 32
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvld	$xr8, $t3, 0
-	xvld	$xr9, $t3, 32
-	fld.d	$ft2, $t1, 0
+	fld.d	$fa6, $t3, 0
+	xvreplve0.d	$xr6, $xr6
+	xvld	$xr7, $t1, 0
+	xvld	$xr8, $t1, 32
+	xvld	$xr9, $t2, 0
+	xvld	$xr10, $t2, 32
 	xvfmul.d	$xr7, $xr7, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr6, $xr6, $xr8
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
 	xvfadd.d	$xr7, $xr7, $xr9
-	xvfadd.d	$xr6, $xr6, $xr5
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvst	$xr6, $t2, 0
-	xvst	$xr7, $t2, 32
-	xvld	$xr6, $t2, 64
-	xvld	$xr7, $t2, 96
-	xvld	$xr8, $t3, 64
-	xvld	$xr9, $t3, 96
-	xvfmul.d	$xr6, $xr6, $xr3
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 0
+	xvst	$xr8, $t1, 32
+	xvld	$xr7, $t1, 64
+	xvld	$xr8, $t1, 96
+	xvld	$xr9, $t2, 64
+	xvld	$xr10, $t2, 96
 	xvfmul.d	$xr7, $xr7, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr6, $xr6, $xr8
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
 	xvfadd.d	$xr7, $xr7, $xr9
-	xvfadd.d	$xr6, $xr6, $xr5
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvst	$xr6, $t2, 64
-	xvst	$xr7, $t2, 96
-	xvld	$xr6, $t2, 128
-	xvld	$xr7, $t2, 160
-	xvld	$xr8, $t3, 128
-	xvld	$xr9, $t3, 160
-	xvfmul.d	$xr6, $xr6, $xr3
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 64
+	xvst	$xr8, $t1, 96
+	xvld	$xr7, $t1, 128
+	xvld	$xr8, $t1, 160
+	xvld	$xr9, $t2, 128
+	xvld	$xr10, $t2, 160
 	xvfmul.d	$xr7, $xr7, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr6, $xr6, $xr8
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
 	xvfadd.d	$xr7, $xr7, $xr9
-	xvfadd.d	$xr6, $xr6, $xr5
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvld	$xr8, $t2, 192
-	xvst	$xr6, $t2, 128
-	xvst	$xr7, $t2, 160
-	xvld	$xr6, $t2, 224
-	xvfmul.d	$xr7, $xr8, $xr3
-	xvld	$xr8, $t3, 192
-	xvld	$xr9, $t3, 224
-	fld.d	$ft2, $t1, 0
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 128
+	xvst	$xr8, $t1, 160
+	xvld	$xr7, $t1, 192
+	xvld	$xr8, $t1, 224
+	xvld	$xr9, $t2, 192
+	xvld	$xr10, $t2, 224
+	xvfmul.d	$xr7, $xr7, $xr3
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr7, $xr7, $xr8
-	xvfadd.d	$xr6, $xr6, $xr9
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
+	xvfadd.d	$xr7, $xr7, $xr9
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvfadd.d	$xr6, $xr6, $xr5
-	xvld	$xr8, $t2, 256
-	xvst	$xr7, $t2, 192
-	xvst	$xr6, $t2, 224
-	xvld	$xr6, $t2, 288
-	xvfmul.d	$xr7, $xr8, $xr3
-	xvld	$xr8, $t3, 256
-	xvld	$xr9, $t3, 288
-	fld.d	$ft2, $t1, 0
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 192
+	xvst	$xr8, $t1, 224
+	xvld	$xr7, $t1, 256
+	xvld	$xr8, $t1, 288
+	xvld	$xr9, $t2, 256
+	xvld	$xr10, $t2, 288
+	xvfmul.d	$xr7, $xr7, $xr3
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr7, $xr7, $xr8
-	xvfadd.d	$xr6, $xr6, $xr9
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
+	xvfadd.d	$xr7, $xr7, $xr9
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvfadd.d	$xr6, $xr6, $xr5
-	xvld	$xr8, $t2, 320
-	xvst	$xr7, $t2, 256
-	xvst	$xr6, $t2, 288
-	xvld	$xr6, $t2, 352
-	xvfmul.d	$xr7, $xr8, $xr3
-	xvld	$xr8, $t3, 320
-	xvld	$xr9, $t3, 352
-	fld.d	$ft2, $t1, 0
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 256
+	xvst	$xr8, $t1, 288
+	xvld	$xr7, $t1, 320
+	xvld	$xr8, $t1, 352
+	xvld	$xr9, $t2, 320
+	xvld	$xr10, $t2, 352
+	xvfmul.d	$xr7, $xr7, $xr3
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr7, $xr7, $xr8
-	xvfadd.d	$xr6, $xr6, $xr9
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
+	xvfadd.d	$xr7, $xr7, $xr9
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvfadd.d	$xr6, $xr6, $xr5
-	xvld	$xr8, $t2, 384
-	xvst	$xr7, $t2, 320
-	xvst	$xr6, $t2, 352
-	xvld	$xr6, $t2, 416
-	xvfmul.d	$xr7, $xr8, $xr3
-	xvld	$xr8, $t3, 384
-	xvld	$xr9, $t3, 416
-	fld.d	$ft2, $t1, 0
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 320
+	xvst	$xr8, $t1, 352
+	xvld	$xr7, $t1, 384
+	xvld	$xr8, $t1, 416
+	xvld	$xr9, $t2, 384
+	xvld	$xr10, $t2, 416
+	xvfmul.d	$xr7, $xr7, $xr3
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr7, $xr7, $xr8
-	xvfadd.d	$xr6, $xr6, $xr9
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
+	xvfadd.d	$xr7, $xr7, $xr9
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvfadd.d	$xr6, $xr6, $xr5
-	xvld	$xr8, $t2, 448
-	xvst	$xr7, $t2, 384
-	xvst	$xr6, $t2, 416
-	xvld	$xr6, $t2, 480
-	xvfmul.d	$xr7, $xr8, $xr3
-	xvld	$xr8, $t3, 448
-	xvld	$xr9, $t3, 480
-	fld.d	$ft2, $t1, 0
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 384
+	xvst	$xr8, $t1, 416
+	xvld	$xr7, $t1, 448
+	xvld	$xr8, $t1, 480
+	xvld	$xr9, $t2, 448
+	xvld	$xr10, $t2, 480
+	xvfmul.d	$xr7, $xr7, $xr3
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr7, $xr7, $xr8
-	xvfadd.d	$xr6, $xr6, $xr9
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
+	xvfadd.d	$xr7, $xr7, $xr9
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvfadd.d	$xr6, $xr6, $xr5
-	xvld	$xr8, $t2, 512
-	xvst	$xr7, $t2, 448
-	xvst	$xr6, $t2, 480
-	xvld	$xr6, $t2, 544
-	xvfmul.d	$xr7, $xr8, $xr3
-	xvld	$xr8, $t3, 512
-	xvld	$xr9, $t3, 544
-	fld.d	$ft2, $t1, 0
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 448
+	xvst	$xr8, $t1, 480
+	xvld	$xr7, $t1, 512
+	xvld	$xr8, $t1, 544
+	xvld	$xr9, $t2, 512
+	xvld	$xr10, $t2, 544
+	xvfmul.d	$xr7, $xr7, $xr3
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr7, $xr7, $xr8
-	xvfadd.d	$xr6, $xr6, $xr9
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr10, $xr10, $xr6
+	xvfadd.d	$xr7, $xr7, $xr9
+	xvfadd.d	$xr8, $xr8, $xr10
 	xvfadd.d	$xr7, $xr7, $xr5
-	xvfadd.d	$xr6, $xr6, $xr5
-	xvld	$xr8, $t2, 576
-	xvst	$xr7, $t2, 512
-	xvst	$xr6, $t2, 544
-	xvld	$xr6, $t2, 608
-	xvfmul.d	$xr7, $xr8, $xr3
-	xvld	$xr8, $t3, 576
-	xvld	$xr9, $t3, 608
-	fld.d	$ft2, $t1, 0
-	xvfmul.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr8, $xr8, $xr4
+	xvfadd.d	$xr8, $xr8, $xr5
+	xvst	$xr7, $t1, 512
+	xvst	$xr8, $t1, 544
+	xvld	$xr7, $t1, 576
+	xvld	$xr8, $t1, 608
+	xvld	$xr9, $t2, 576
+	xvld	$xr10, $t2, 608
+	xvfmul.d	$xr7, $xr7, $xr3
+	xvfmul.d	$xr8, $xr8, $xr3
 	xvfmul.d	$xr9, $xr9, $xr4
-	xvreplve0.d	$xr10, $xr10
-	xvfmul.d	$xr8, $xr8, $xr10
-	xvfmul.d	$xr9, $xr9, $xr10
-	xvfadd.d	$xr7, $xr7, $xr8
-	xvfadd.d	$xr6, $xr6, $xr9
+	xvfmul.d	$xr10, $xr10, $xr4
+	xvfmul.d	$xr9, $xr9, $xr6
+	xvfmul.d	$xr6, $xr10, $xr6
+	xvfadd.d	$xr7, $xr7, $xr9
+	xvfadd.d	$xr6, $xr8, $xr6
 	xvfadd.d	$xr7, $xr7, $xr5
 	xvfadd.d	$xr6, $xr6, $xr5
-	xvst	$xr7, $t2, 576
-	xvst	$xr6, $t2, 608
+	xvst	$xr7, $t1, 576
+	xvst	$xr6, $t1, 608
 	.p2align	4, , 16
 .LBB7_31:                               # %.split.us.i
                                         #   in Loop: Header=BB7_32 Depth=1
@@ -654,12 +640,12 @@ main:                                   # @main
                                         #       Child Loop BB7_35 Depth 3
                                         #     Child Loop BB7_39 Depth 2
 	alsl.d	$t1, $a0, $a0, 2
-	slli.d	$t1, $t1, 7
-	add.d	$t2, $fp, $t1
-	add.d	$t3, $s1, $t1
-	mul.d	$t1, $a0, $a2
-	add.d	$t1, $s0, $t1
-	alsl.d	$t1, $a0, $t1, 3
+	slli.d	$t2, $t1, 7
+	add.d	$t1, $fp, $t2
+	add.d	$t2, $s1, $t2
+	mul.d	$t3, $a0, $a2
+	add.d	$t3, $s0, $t3
+	alsl.d	$t3, $a0, $t3, 3
 	beqz	$a0, .LBB7_37
 # %bb.33:                               # %.preheader.us.i.preheader
                                         #   in Loop: Header=BB7_32 Depth=1
@@ -671,7 +657,7 @@ main:                                   # @main
                                         #   Parent Loop BB7_32 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB7_35 Depth 3
-	alsl.d	$t7, $t4, $t3, 3
+	alsl.d	$t7, $t4, $t2, 3
 	move	$t8, $t0
 	move	$s2, $t5
 	move	$s3, $t6
@@ -700,16 +686,16 @@ main:                                   # @main
 # %bb.36:                               # %._crit_edge.us.i
                                         #   in Loop: Header=BB7_34 Depth=2
 	slli.d	$t8, $t4, 3
-	fldx.d	$fa7, $t2, $t8
+	fldx.d	$fa7, $t1, $t8
 	fld.d	$ft0, $t7, 0
-	fld.d	$ft1, $t1, 0
+	fld.d	$ft1, $t3, 0
 	fmul.d	$fa7, $fa7, $fa0
 	fmul.d	$ft0, $ft0, $fa1
 	fmul.d	$ft0, $ft0, $ft1
 	fadd.d	$fa7, $fa7, $ft0
 	fmul.d	$fa6, $fa6, $fa1
 	fadd.d	$fa6, $fa6, $fa7
-	fstx.d	$fa6, $t2, $t8
+	fstx.d	$fa6, $t1, $t8
 	addi.d	$t4, $t4, 1
 	addi.d	$t6, $t6, 8
 	addi.d	$t5, $t5, 8
@@ -721,22 +707,22 @@ main:                                   # @main
 	beqz	$a1, .LBB7_30
 # %bb.38:                               # %.preheader.i22.preheader
                                         #   in Loop: Header=BB7_32 Depth=1
-	move	$t2, $zero
+	move	$t1, $zero
 	.p2align	4, , 16
 .LBB7_39:                               # %.preheader.i22
                                         #   Parent Loop BB7_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fldx.d	$fa6, $a6, $t2
-	fldx.d	$fa7, $a7, $t2
-	fld.d	$ft0, $t1, 0
+	fldx.d	$fa6, $a6, $t1
+	fldx.d	$fa7, $a7, $t1
+	fld.d	$ft0, $t3, 0
 	fmul.d	$fa6, $fa6, $fa0
 	fmul.d	$fa7, $fa7, $fa1
 	fmul.d	$fa7, $fa7, $ft0
 	fadd.d	$fa6, $fa6, $fa7
 	fadd.d	$fa6, $fa6, $fa2
-	fstx.d	$fa6, $a6, $t2
-	addi.d	$t2, $t2, 8
-	bne	$t2, $a3, .LBB7_39
+	fstx.d	$fa6, $a6, $t1
+	addi.d	$t1, $t1, 8
+	bne	$t1, $a3, .LBB7_39
 	b	.LBB7_31
 .LBB7_40:                               # %kernel_symm.exit
 	ori	$a0, $zero, 1281

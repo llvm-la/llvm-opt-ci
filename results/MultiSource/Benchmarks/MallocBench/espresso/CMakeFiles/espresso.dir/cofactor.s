@@ -1006,7 +1006,7 @@ binate_split_select:                    # @binate_split_select
 	ld.d	$a0, $s5, 16
 	ldx.w	$a0, $a0, $s6
 	addi.w	$a1, $s4, 1
-	blt	$s4, $a0, .LBB3_14
+	blt	$s4, $a0, .LBB3_18
 # %bb.1:                                # %iter.check
 	sub.w	$a2, $a1, $a0
 	ori	$a3, $zero, 4
@@ -1063,56 +1063,56 @@ binate_split_select:                    # @binate_split_select
 	vinsgr2vr.d	$vr11, $a7, 0
 	vpickve2gr.w	$a7, $vr6, 1
 	vinsgr2vr.d	$vr11, $a7, 1
-	xvpermi.q	$xr6, $xr7, 1
-	vpickve2gr.w	$a7, $vr6, 2
-	vinsgr2vr.d	$vr12, $a7, 0
-	vpickve2gr.w	$a7, $vr6, 3
-	vinsgr2vr.d	$vr12, $a7, 1
-	xvpermi.q	$xr12, $xr12, 2
-	vpickve2gr.w	$a7, $vr6, 0
-	vinsgr2vr.d	$vr13, $a7, 0
-	vpickve2gr.w	$a7, $vr6, 1
-	vinsgr2vr.d	$vr13, $a7, 1
-	vpickve2gr.w	$a7, $vr7, 2
-	vinsgr2vr.d	$vr6, $a7, 0
-	vpickve2gr.w	$a7, $vr7, 3
-	vinsgr2vr.d	$vr6, $a7, 1
-	xvpermi.q	$xr6, $xr6, 2
-	vpickve2gr.w	$a7, $vr7, 0
-	vinsgr2vr.d	$vr14, $a7, 0
-	vpickve2gr.w	$a7, $vr7, 1
-	vinsgr2vr.d	$vr14, $a7, 1
 	xvpickve2gr.d	$a7, $xr11, 0
-	alsl.d	$a7, $a7, $s3, 2
 	xvpickve2gr.d	$t0, $xr11, 1
-	alsl.d	$t0, $t0, $s3, 2
 	xvpickve2gr.d	$t1, $xr8, 2
-	alsl.d	$t1, $t1, $s3, 2
 	xvpickve2gr.d	$t2, $xr8, 3
-	alsl.d	$t2, $t2, $s3, 2
 	xvpickve2gr.d	$t3, $xr10, 0
-	alsl.d	$t3, $t3, $s3, 2
 	xvpickve2gr.d	$t4, $xr10, 1
-	alsl.d	$t4, $t4, $s3, 2
 	xvpickve2gr.d	$t5, $xr9, 2
-	alsl.d	$t5, $t5, $s3, 2
 	xvpickve2gr.d	$t6, $xr9, 3
-	alsl.d	$t6, $t6, $s3, 2
-	xvpickve2gr.d	$t7, $xr14, 0
-	alsl.d	$t7, $t7, $s3, 2
-	xvpickve2gr.d	$t8, $xr14, 1
-	alsl.d	$t8, $t8, $s3, 2
+	xvpermi.q	$xr6, $xr7, 1
+	vpickve2gr.w	$t7, $vr6, 2
+	vinsgr2vr.d	$vr8, $t7, 0
+	vpickve2gr.w	$t7, $vr6, 3
+	vinsgr2vr.d	$vr8, $t7, 1
+	xvpermi.q	$xr8, $xr8, 2
+	vpickve2gr.w	$t7, $vr6, 0
+	vinsgr2vr.d	$vr9, $t7, 0
+	vpickve2gr.w	$t7, $vr6, 1
+	vinsgr2vr.d	$vr9, $t7, 1
+	vpickve2gr.w	$t7, $vr7, 2
+	vinsgr2vr.d	$vr6, $t7, 0
+	vpickve2gr.w	$t7, $vr7, 3
+	vinsgr2vr.d	$vr6, $t7, 1
+	xvpermi.q	$xr6, $xr6, 2
+	vpickve2gr.w	$t7, $vr7, 0
+	vinsgr2vr.d	$vr10, $t7, 0
+	vpickve2gr.w	$t7, $vr7, 1
+	vinsgr2vr.d	$vr10, $t7, 1
+	xvpickve2gr.d	$t7, $xr10, 0
+	xvpickve2gr.d	$t8, $xr10, 1
 	xvpickve2gr.d	$s5, $xr6, 2
-	alsl.d	$s5, $s5, $s3, 2
 	xvpickve2gr.d	$s6, $xr6, 3
+	xvpickve2gr.d	$s7, $xr9, 0
+	xvpickve2gr.d	$s8, $xr9, 1
+	xvpickve2gr.d	$ra, $xr8, 2
+	xvpickve2gr.d	$a5, $xr8, 3
+	alsl.d	$a7, $a7, $s3, 2
+	alsl.d	$t0, $t0, $s3, 2
+	alsl.d	$t1, $t1, $s3, 2
+	alsl.d	$t2, $t2, $s3, 2
+	alsl.d	$t3, $t3, $s3, 2
+	alsl.d	$t4, $t4, $s3, 2
+	alsl.d	$t5, $t5, $s3, 2
+	alsl.d	$t6, $t6, $s3, 2
+	alsl.d	$t7, $t7, $s3, 2
+	alsl.d	$t8, $t8, $s3, 2
+	alsl.d	$s5, $s5, $s3, 2
 	alsl.d	$s6, $s6, $s3, 2
-	xvpickve2gr.d	$s7, $xr13, 0
 	alsl.d	$s7, $s7, $s3, 2
-	xvpickve2gr.d	$s8, $xr13, 1
 	alsl.d	$s8, $s8, $s3, 2
-	xvpickve2gr.d	$ra, $xr12, 2
 	alsl.d	$ra, $ra, $s3, 2
-	xvpickve2gr.d	$a5, $xr12, 3
 	alsl.d	$a5, $a5, $s3, 2
 	ld.w	$a7, $a7, 4
 	ld.w	$t0, $t0, 4
@@ -1197,12 +1197,12 @@ binate_split_select:                    # @binate_split_select
 	vpickve2gr.w	$a6, $vr4, 1
 	vinsgr2vr.d	$vr6, $a6, 1
 	xvpickve2gr.d	$a6, $xr6, 0
-	alsl.d	$a6, $a6, $s3, 2
 	xvpickve2gr.d	$a7, $xr6, 1
-	alsl.d	$a7, $a7, $s3, 2
 	xvpickve2gr.d	$t0, $xr5, 2
-	alsl.d	$t0, $t0, $s3, 2
 	xvpickve2gr.d	$t1, $xr5, 3
+	alsl.d	$a6, $a6, $s3, 2
+	alsl.d	$a7, $a7, $s3, 2
+	alsl.d	$t0, $t0, $s3, 2
 	alsl.d	$t1, $t1, $s3, 2
 	ld.w	$a6, $a6, 4
 	ld.w	$a7, $a7, 4
@@ -1237,18 +1237,40 @@ binate_split_select:                    # @binate_split_select
 	add.w	$a6, $a2, $a6
 	bne	$a1, $a3, .LBB3_12
 .LBB3_13:                               # %._crit_edge
-	addi.w	$a2, $a6, 0
-	ori	$a3, $zero, 2
-	bgeu	$a2, $a3, .LBB3_23
-.LBB3_14:                               # %.preheader
-	bge	$s4, $a0, .LBB3_19
-.LBB3_15:                               # %._crit_edge59
+	bstrpick.d	$a2, $a6, 31, 1
+	beqz	$a2, .LBB3_18
+# %bb.14:
+	ori	$a3, $zero, 1
+	b	.LBB3_16
+	.p2align	4, , 16
+.LBB3_15:                               #   in Loop: Header=BB3_16 Depth=1
+	addi.w	$a4, $a2, 0
+	addi.w	$a0, $a0, 1
+	blez	$a4, .LBB3_18
+.LBB3_16:                               # %.lr.ph54
+                                        # =>This Inner Loop Header: Depth=1
+	srai.d	$a4, $a0, 5
+	addi.d	$a4, $a4, 1
+	slli.d	$a4, $a4, 2
+	ldx.w	$a6, $s3, $a4
+	sll.w	$a5, $a3, $a0
+	and	$a6, $a6, $a5
+	bnez	$a6, .LBB3_15
+# %bb.17:                               #   in Loop: Header=BB3_16 Depth=1
+	ldx.w	$a6, $s1, $a4
+	addi.d	$a2, $a2, -1
+	or	$a5, $a6, $a5
+	stx.w	$a5, $s1, $a4
+	b	.LBB3_15
+.LBB3_18:                               # %.preheader
+	bge	$s4, $a0, .LBB3_23
+.LBB3_19:                               # %._crit_edge59
 	pcalau12i	$a0, %got_pc_hi20(debug)
 	ld.d	$a0, $a0, %got_pc_lo12(debug)
 	ld.w	$a0, $a0, 0
 	and	$a0, $a0, $s2
-	beqz	$a0, .LBB3_18
-# %bb.16:
+	beqz	$a0, .LBB3_22
+# %bb.20:
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	move	$a1, $fp
@@ -1257,8 +1279,8 @@ binate_split_select:                    # @binate_split_select
 	pcalau12i	$a0, %got_pc_hi20(verbose_debug)
 	ld.d	$a0, $a0, %got_pc_lo12(verbose_debug)
 	ld.w	$a0, $a0, 0
-	beqz	$a0, .LBB3_18
-# %bb.17:
+	beqz	$a0, .LBB3_22
+# %bb.21:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(pc1)
 	jirl	$ra, $ra, 0
@@ -1272,7 +1294,7 @@ binate_split_select:                    # @binate_split_select
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-.LBB3_18:
+.LBB3_22:
 	move	$a0, $fp
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
@@ -1287,14 +1309,14 @@ binate_split_select:                    # @binate_split_select
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB3_19:                               # %.lr.ph58.preheader
+.LBB3_23:                               # %.lr.ph58.preheader
 	ori	$a2, $zero, 1
-	b	.LBB3_21
+	b	.LBB3_25
 	.p2align	4, , 16
-.LBB3_20:                               #   in Loop: Header=BB3_21 Depth=1
+.LBB3_24:                               #   in Loop: Header=BB3_25 Depth=1
 	addi.w	$a0, $a0, 1
-	beq	$a1, $a0, .LBB3_15
-.LBB3_21:                               # %.lr.ph58
+	beq	$a1, $a0, .LBB3_19
+.LBB3_25:                               # %.lr.ph58
                                         # =>This Inner Loop Header: Depth=1
 	srai.d	$a3, $a0, 5
 	addi.d	$a3, $a3, 1
@@ -1302,35 +1324,11 @@ binate_split_select:                    # @binate_split_select
 	ldx.w	$a5, $s3, $a3
 	sll.w	$a4, $a2, $a0
 	and	$a5, $a5, $a4
-	bnez	$a5, .LBB3_20
-# %bb.22:                               #   in Loop: Header=BB3_21 Depth=1
+	bnez	$a5, .LBB3_24
+# %bb.26:                               #   in Loop: Header=BB3_25 Depth=1
 	ldx.w	$a5, $s0, $a3
 	or	$a4, $a5, $a4
 	stx.w	$a4, $s0, $a3
-	b	.LBB3_20
-.LBB3_23:                               # %.lr.ph54.preheader
-	bstrpick.d	$a2, $a6, 31, 1
-	ori	$a3, $zero, 1
-	b	.LBB3_25
-	.p2align	4, , 16
-.LBB3_24:                               #   in Loop: Header=BB3_25 Depth=1
-	addi.w	$a4, $a2, 0
-	addi.w	$a0, $a0, 1
-	blez	$a4, .LBB3_14
-.LBB3_25:                               # %.lr.ph54
-                                        # =>This Inner Loop Header: Depth=1
-	srai.d	$a4, $a0, 5
-	addi.d	$a4, $a4, 1
-	slli.d	$a4, $a4, 2
-	ldx.w	$a6, $s3, $a4
-	sll.w	$a5, $a3, $a0
-	and	$a6, $a6, $a5
-	bnez	$a6, .LBB3_24
-# %bb.26:                               #   in Loop: Header=BB3_25 Depth=1
-	ldx.w	$a6, $s1, $a4
-	addi.d	$a2, $a2, -1
-	or	$a5, $a6, $a5
-	stx.w	$a5, $s1, $a4
 	b	.LBB3_24
 .Lfunc_end3:
 	.size	binate_split_select, .Lfunc_end3-binate_split_select
@@ -1383,18 +1381,14 @@ cube1list:                              # @cube1list
 	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
 .LBB4_4:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a4, $a0, 8
 	st.d	$a1, $a0, 0
 	add.d	$a1, $a1, $a3
-	move	$a0, $a4
+	addi.d	$a0, $a0, 8
 	bltu	$a1, $a2, .LBB4_4
-	b	.LBB4_6
-.LBB4_5:
-	move	$a4, $a0
-.LBB4_6:                                # %._crit_edge
-	addi.d	$a0, $a4, 8
-	st.d	$zero, $a4, 0
-	st.d	$a0, $fp, 8
+.LBB4_5:                                # %._crit_edge
+	addi.d	$a1, $a0, 8
+	st.d	$zero, $a0, 0
+	st.d	$a1, $fp, 8
 	move	$a0, $fp
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -1446,51 +1440,40 @@ cube2list:                              # @cube2list
 	pcaddu18i	$ra, %call36(set_clear)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 12
-	ld.w	$a4, $s1, 0
+	ld.w	$a3, $s1, 0
 	st.d	$a0, $fp, 0
-	mul.w	$a0, $a4, $a1
-	addi.d	$a1, $fp, 16
-	blez	$a0, .LBB5_8
+	mul.w	$a2, $a3, $a1
+	addi.d	$a0, $fp, 16
+	blez	$a2, .LBB5_5
 # %bb.3:                                # %.lr.ph
-	ld.d	$a2, $s1, 24
-	alsl.d	$a3, $a0, $a2, 2
-	slli.d	$a4, $a4, 2
+	ld.d	$a1, $s1, 24
+	alsl.d	$a2, $a2, $a1, 2
+	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
 .LBB5_4:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $a1, 8
-	st.d	$a2, $a1, 0
-	add.d	$a2, $a2, $a4
-	move	$a1, $a0
-	bltu	$a2, $a3, .LBB5_4
-# %bb.5:                                # %._crit_edge
+	st.d	$a1, $a0, 0
+	add.d	$a1, $a1, $a3
+	addi.d	$a0, $a0, 8
+	bltu	$a1, $a2, .LBB5_4
+.LBB5_5:                                # %._crit_edge
 	ld.w	$a1, $s0, 12
 	ld.w	$a3, $s0, 0
 	mul.w	$a2, $a3, $a1
-	blez	$a2, .LBB5_9
-.LBB5_6:                                # %.lr.ph36
+	blez	$a2, .LBB5_8
+# %bb.6:                                # %.lr.ph36
 	ld.d	$a1, $s0, 24
 	alsl.d	$a2, $a2, $a1, 2
 	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
 .LBB5_7:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a4, $a0, 8
 	st.d	$a1, $a0, 0
 	add.d	$a1, $a1, $a3
-	move	$a0, $a4
+	addi.d	$a0, $a0, 8
 	bltu	$a1, $a2, .LBB5_7
-	b	.LBB5_10
-.LBB5_8:
-	move	$a0, $a1
-	ld.w	$a1, $s0, 12
-	ld.w	$a3, $s0, 0
-	mul.w	$a2, $a3, $a1
-	bgtz	$a2, .LBB5_6
-.LBB5_9:
-	move	$a4, $a0
-.LBB5_10:                               # %._crit_edge37
-	addi.d	$a0, $a4, 8
-	st.d	$zero, $a4, 0
-	st.d	$a0, $fp, 8
+.LBB5_8:                                # %._crit_edge37
+	addi.d	$a1, $a0, 8
+	st.d	$zero, $a0, 0
+	st.d	$a1, $fp, 8
 	move	$a0, $fp
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1547,73 +1530,55 @@ cube3list:                              # @cube3list
 	pcaddu18i	$ra, %call36(set_clear)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 12
-	ld.w	$a4, $s2, 0
+	ld.w	$a3, $s2, 0
 	st.d	$a0, $fp, 0
-	mul.w	$a0, $a4, $a1
-	addi.d	$a1, $fp, 16
-	blez	$a0, .LBB6_11
+	mul.w	$a2, $a3, $a1
+	addi.d	$a0, $fp, 16
+	blez	$a2, .LBB6_5
 # %bb.3:                                # %.lr.ph
-	ld.d	$a2, $s2, 24
-	alsl.d	$a3, $a0, $a2, 2
-	slli.d	$a4, $a4, 2
+	ld.d	$a1, $s2, 24
+	alsl.d	$a2, $a2, $a1, 2
+	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
 .LBB6_4:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $a1, 8
-	st.d	$a2, $a1, 0
-	add.d	$a2, $a2, $a4
-	move	$a1, $a0
-	bltu	$a2, $a3, .LBB6_4
-# %bb.5:                                # %._crit_edge
-	ld.w	$a2, $s1, 12
-	ld.w	$a1, $s1, 0
-	mul.w	$a3, $a1, $a2
-	blez	$a3, .LBB6_12
-.LBB6_6:                                # %.lr.ph49
-	ld.d	$a2, $s1, 24
-	alsl.d	$a3, $a3, $a2, 2
-	slli.d	$a4, $a1, 2
+	st.d	$a1, $a0, 0
+	add.d	$a1, $a1, $a3
+	addi.d	$a0, $a0, 8
+	bltu	$a1, $a2, .LBB6_4
+.LBB6_5:                                # %._crit_edge
+	ld.w	$a1, $s1, 12
+	ld.w	$a3, $s1, 0
+	mul.w	$a2, $a3, $a1
+	blez	$a2, .LBB6_8
+# %bb.6:                                # %.lr.ph49
+	ld.d	$a1, $s1, 24
+	alsl.d	$a2, $a2, $a1, 2
+	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
 .LBB6_7:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a1, $a0, 8
-	st.d	$a2, $a0, 0
-	add.d	$a2, $a2, $a4
-	move	$a0, $a1
-	bltu	$a2, $a3, .LBB6_7
-# %bb.8:                                # %._crit_edge50
-	ld.w	$a0, $s0, 12
+	st.d	$a1, $a0, 0
+	add.d	$a1, $a1, $a3
+	addi.d	$a0, $a0, 8
+	bltu	$a1, $a2, .LBB6_7
+.LBB6_8:                                # %._crit_edge50
+	ld.w	$a1, $s0, 12
 	ld.w	$a3, $s0, 0
-	mul.w	$a2, $a3, $a0
-	blez	$a2, .LBB6_13
-.LBB6_9:                                # %.lr.ph55
-	ld.d	$a0, $s0, 24
-	alsl.d	$a2, $a2, $a0, 2
+	mul.w	$a2, $a3, $a1
+	blez	$a2, .LBB6_11
+# %bb.9:                                # %.lr.ph55
+	ld.d	$a1, $s0, 24
+	alsl.d	$a2, $a2, $a1, 2
 	slli.d	$a3, $a3, 2
 	.p2align	4, , 16
 .LBB6_10:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a4, $a1, 8
-	st.d	$a0, $a1, 0
-	add.d	$a0, $a0, $a3
-	move	$a1, $a4
-	bltu	$a0, $a2, .LBB6_10
-	b	.LBB6_14
-.LBB6_11:
-	move	$a0, $a1
-	ld.w	$a2, $s1, 12
-	ld.w	$a1, $s1, 0
-	mul.w	$a3, $a1, $a2
-	bgtz	$a3, .LBB6_6
-.LBB6_12:
-	move	$a1, $a0
-	ld.w	$a0, $s0, 12
-	ld.w	$a3, $s0, 0
-	mul.w	$a2, $a3, $a0
-	bgtz	$a2, .LBB6_9
-.LBB6_13:
-	move	$a4, $a1
-.LBB6_14:                               # %._crit_edge56
-	addi.d	$a0, $a4, 8
-	st.d	$zero, $a4, 0
-	st.d	$a0, $fp, 8
+	st.d	$a1, $a0, 0
+	add.d	$a1, $a1, $a3
+	addi.d	$a0, $a0, 8
+	bltu	$a1, $a2, .LBB6_10
+.LBB6_11:                               # %._crit_edge56
+	addi.d	$a1, $a0, 8
+	st.d	$zero, $a0, 0
+	st.d	$a1, $fp, 8
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload

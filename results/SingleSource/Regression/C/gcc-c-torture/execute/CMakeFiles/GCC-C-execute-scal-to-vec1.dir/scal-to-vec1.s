@@ -97,8 +97,7 @@ main:                                   # @main
 	bne	$a3, $a2, .LBB0_17
 # %bb.13:
 	vsrli.h	$vr1, $vr0, 15
-	vadd.h	$vr0, $vr0, $vr1
-	vsrai.h	$vr0, $vr0, 1
+	vavg.h	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a2, $vr0, 0
 	bstrpick.d	$a3, $a2, 15, 0
 	bstrpick.d	$a2, $a0, 15, 15

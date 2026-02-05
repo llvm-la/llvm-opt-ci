@@ -2013,7 +2013,7 @@ emit_dqt:                               # @emit_dqt
 	vmskltz.h	$vr0, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0
 	andi	$s2, $a1, 255
-	bnez	$a0, .LBB7_31
+	bnez	$a0, .LBB7_33
 # %bb.3:
 	ld.d	$a0, $fp, 32
 	ld.d	$a1, $a0, 0
@@ -2120,32 +2120,26 @@ emit_dqt:                               # @emit_dqt
 	ld.d	$a1, $a0, 8
 	addi.d	$a1, $a1, -1
 	st.d	$a1, $a0, 8
-	bnez	$a1, .LBB7_18
+	bnez	$a1, .LBB7_17
 # %bb.16:
 	ld.d	$a1, $a0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	bnez	$a0, .LBB7_18
-# %bb.17:
-	ld.d	$a0, $fp, 0
-	ld.d	$a1, $a0, 0
-	ori	$a2, $zero, 22
-	st.w	$a2, $a0, 40
-	move	$a0, $fp
-	jirl	$ra, $a1, 0
-.LBB7_18:                               # %emit_byte.exit
+	beqz	$a0, .LBB7_26
+.LBB7_17:                               # %emit_byte.exit
+	beqz	$s2, .LBB7_27
+.LBB7_18:                               # %emit_byte.exit.split.preheader
 	pcalau12i	$a0, %got_pc_hi20(jpeg_natural_order)
 	ld.d	$s0, $a0, %got_pc_lo12(jpeg_natural_order)
 	move	$s3, $zero
 	ori	$s4, $zero, 22
 	ori	$s5, $zero, 256
-	bnez	$s2, .LBB7_20
-	b	.LBB7_27
+	b	.LBB7_20
 	.p2align	4, , 16
 .LBB7_19:                               # %emit_byte.exit37
                                         #   in Loop: Header=BB7_20 Depth=1
 	addi.d	$s3, $s3, 4
-	beq	$s3, $s5, .LBB7_30
+	beq	$s3, $s5, .LBB7_32
 .LBB7_20:                               # %emit_byte.exit.split
                                         # =>This Inner Loop Header: Depth=1
 	ldx.w	$a1, $s0, $s3
@@ -2196,12 +2190,27 @@ emit_dqt:                               # @emit_dqt
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	b	.LBB7_19
+.LBB7_26:
+	ld.d	$a0, $fp, 0
+	ld.d	$a1, $a0, 0
+	ori	$a2, $zero, 22
+	st.w	$a2, $a0, 40
+	move	$a0, $fp
+	jirl	$ra, $a1, 0
+	bnez	$s2, .LBB7_18
+.LBB7_27:                               # %emit_byte.exit35.us.preheader
+	pcalau12i	$a0, %got_pc_hi20(jpeg_natural_order)
+	ld.d	$s0, $a0, %got_pc_lo12(jpeg_natural_order)
+	move	$s3, $zero
+	ori	$s4, $zero, 22
+	ori	$s5, $zero, 256
+	b	.LBB7_29
 	.p2align	4, , 16
-.LBB7_26:                               # %emit_byte.exit37.us
-                                        #   in Loop: Header=BB7_27 Depth=1
+.LBB7_28:                               # %emit_byte.exit37.us
+                                        #   in Loop: Header=BB7_29 Depth=1
 	addi.d	$s3, $s3, 4
-	beq	$s3, $s5, .LBB7_30
-.LBB7_27:                               # %emit_byte.exit35.us
+	beq	$s3, $s5, .LBB7_32
+.LBB7_29:                               # %emit_byte.exit35.us
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 32
 	ldx.w	$a1, $s0, $s3
@@ -2214,23 +2223,23 @@ emit_dqt:                               # @emit_dqt
 	ld.d	$a1, $a0, 8
 	addi.d	$a1, $a1, -1
 	st.d	$a1, $a0, 8
-	bnez	$a1, .LBB7_26
-# %bb.28:                               #   in Loop: Header=BB7_27 Depth=1
+	bnez	$a1, .LBB7_28
+# %bb.30:                               #   in Loop: Header=BB7_29 Depth=1
 	ld.d	$a1, $a0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	bnez	$a0, .LBB7_26
-# %bb.29:                               #   in Loop: Header=BB7_27 Depth=1
+	bnez	$a0, .LBB7_28
+# %bb.31:                               #   in Loop: Header=BB7_29 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	st.w	$s4, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	b	.LBB7_26
-.LBB7_30:                               # %.split.us
+	b	.LBB7_28
+.LBB7_32:                               # %.split.us
 	ori	$a0, $zero, 1
 	st.w	$a0, $s1, 128
-.LBB7_31:
+.LBB7_33:
 	sltu	$a0, $zero, $s2
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload

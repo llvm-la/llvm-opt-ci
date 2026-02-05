@@ -10074,10 +10074,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_0E9_M_invokeERKSt9_Any_d
 	beqz	$a0, .LBB17_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 48
 	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
@@ -10239,57 +10238,59 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_d
 	.cfi_def_cfa_offset 2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 2112
+	.cfi_offset 23, -24
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 2128
 	ld.d	$a2, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 24
+	st.d	$zero, $sp, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 8
-	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB19_10
+	vst	$vr0, $sp, 16
+	st.d	$a2, $sp, 40
+	beqz	$a0, .LBB19_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
-	vst	$vr1, $sp, 8
-	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
+	vst	$vr1, $sp, 16
+	st.d	$a0, $sp, 32
+	vst	$vr0, $a1, 16
+	addi.d	$s0, $sp, 48
+	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	st.d	$s0, $a0, 0
 .Ltmp1291:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 2088
+	addi.d	$a0, $sp, 16
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	jirl	$ra, $a2, 0
 .Ltmp1292:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 8
-	ori	$a1, $zero, 2016
+	move	$a1, $zero
+	move	$a0, $zero
+	addi.w	$fp, $zero, -1
+	ori	$a2, $zero, 2048
 	.p2align	4, , 16
 .LBB19_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	xvldx	$xr0, $a4, $fp
+	xvldx	$xr0, $a1, $s0
 	xvseqi.w	$xr0, $xr0, 0
 	xvmskltz.w	$xr1, $xr0
 	xvpickve2gr.wu	$a3, $xr1, 0
 	xvpickve2gr.wu	$a4, $xr1, 4
 	bstrins.d	$a3, $a4, 7, 4
-	addi.d	$a0, $a0, -8
-	bnez	$a3, .LBB19_5
-# %bb.4:                                # %vector.body
+	bnez	$a3, .LBB19_6
+# %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB19_3 Depth=1
-	addi.d	$a4, $a2, 32
-	bne	$a2, $a1, .LBB19_3
-.LBB19_5:                               # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB19_7
-# %bb.6:                                # %.split.loop.exit.i.i.i
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, -8
+	bne	$a1, $a2, .LBB19_3
+# %bb.5:                                # %.loopexit.i.i
+	ld.d	$a3, $sp, 32
+	bnez	$a3, .LBB19_7
+	b	.LBB19_8
+.LBB19_6:                               # %.split.loop.exit.i.i.i
 	xvpickve2gr.w	$a1, $xr0, 0
 	vinsgr2vr.b	$vr1, $a1, 0
 	xvpickve2gr.w	$a1, $xr0, 1
@@ -10323,58 +10324,54 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_1E9_M_invokeERKSt9_Any_d
 	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255
 	sub.w	$fp, $a1, $a0
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB19_8
-	b	.LBB19_9
+	ld.d	$a3, $sp, 32
+	beqz	$a3, .LBB19_8
 .LBB19_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB19_9
-.LBB19_8:
 .Ltmp1293:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1294:                              # EH_LABEL
-.LBB19_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_1JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+.LBB19_8:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_1JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
 	move	$a0, $fp
-	addi.d	$sp, $sp, 80
+	addi.d	$sp, $sp, 96
+	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB19_10:
-	addi.d	$a0, $sp, 40
-	ori	$a1, $zero, 2088
+.LBB19_9:
+	addi.d	$a0, $sp, 48
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .Ltmp1296:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1297:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB19_12:
+# %bb.10:                               # %.noexc.i.i
+.LBB19_11:
 .Ltmp1295:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB19_13:
+.LBB19_12:
 .Ltmp1298:                              # EH_LABEL
-	ld.d	$a3, $sp, 24
+	ld.d	$a3, $sp, 32
 	move	$fp, $a0
-	beqz	$a3, .LBB19_15
-# %bb.14:
+	beqz	$a3, .LBB19_14
+# %bb.13:
 .Ltmp1299:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1300:                              # EH_LABEL
-.LBB19_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB19_14:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB19_16:
+.LBB19_15:
 .Ltmp1301:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -10462,57 +10459,59 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_d
 	.cfi_def_cfa_offset 2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 2112
+	.cfi_offset 23, -24
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 2128
 	ld.d	$a2, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 24
+	st.d	$zero, $sp, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 8
-	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB21_10
+	vst	$vr0, $sp, 16
+	st.d	$a2, $sp, 40
+	beqz	$a0, .LBB21_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
-	vst	$vr1, $sp, 8
-	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
+	vst	$vr1, $sp, 16
+	st.d	$a0, $sp, 32
+	vst	$vr0, $a1, 16
+	addi.d	$s0, $sp, 48
+	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	st.d	$s0, $a0, 0
 .Ltmp1302:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 2088
+	addi.d	$a0, $sp, 16
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	jirl	$ra, $a2, 0
 .Ltmp1303:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 8
-	ori	$a1, $zero, 2016
+	move	$a1, $zero
+	move	$a0, $zero
+	addi.w	$fp, $zero, -1
+	ori	$a2, $zero, 2048
 	.p2align	4, , 16
 .LBB21_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	xvldx	$xr0, $a4, $fp
+	xvldx	$xr0, $a1, $s0
 	xvseqi.w	$xr0, $xr0, 0
 	xvmskltz.w	$xr1, $xr0
 	xvpickve2gr.wu	$a3, $xr1, 0
 	xvpickve2gr.wu	$a4, $xr1, 4
 	bstrins.d	$a3, $a4, 7, 4
-	addi.d	$a0, $a0, -8
-	bnez	$a3, .LBB21_5
-# %bb.4:                                # %vector.body
+	bnez	$a3, .LBB21_6
+# %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB21_3 Depth=1
-	addi.d	$a4, $a2, 32
-	bne	$a2, $a1, .LBB21_3
-.LBB21_5:                               # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB21_7
-# %bb.6:                                # %.split.loop.exit.i.i.i
+	addi.d	$a1, $a1, 32
+	addi.d	$a0, $a0, -8
+	bne	$a1, $a2, .LBB21_3
+# %bb.5:                                # %.loopexit.i.i
+	ld.d	$a3, $sp, 32
+	bnez	$a3, .LBB21_7
+	b	.LBB21_8
+.LBB21_6:                               # %.split.loop.exit.i.i.i
 	xvpickve2gr.w	$a1, $xr0, 0
 	vinsgr2vr.b	$vr1, $a1, 0
 	xvpickve2gr.w	$a1, $xr0, 1
@@ -10546,58 +10545,54 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_d
 	sub.d	$a1, $a2, $a1
 	andi	$a1, $a1, 255
 	sub.w	$fp, $a1, $a0
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB21_8
-	b	.LBB21_9
+	ld.d	$a3, $sp, 32
+	beqz	$a3, .LBB21_8
 .LBB21_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB21_9
-.LBB21_8:
 .Ltmp1304:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1305:                              # EH_LABEL
-.LBB21_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_2JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+.LBB21_8:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_2JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
 	move	$a0, $fp
-	addi.d	$sp, $sp, 80
+	addi.d	$sp, $sp, 96
+	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB21_10:
-	addi.d	$a0, $sp, 40
-	ori	$a1, $zero, 2088
+.LBB21_9:
+	addi.d	$a0, $sp, 48
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .Ltmp1307:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1308:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB21_12:
+# %bb.10:                               # %.noexc.i.i
+.LBB21_11:
 .Ltmp1306:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB21_13:
+.LBB21_12:
 .Ltmp1309:                              # EH_LABEL
-	ld.d	$a3, $sp, 24
+	ld.d	$a3, $sp, 32
 	move	$fp, $a0
-	beqz	$a3, .LBB21_15
-# %bb.14:
+	beqz	$a3, .LBB21_14
+# %bb.13:
 .Ltmp1310:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1311:                              # EH_LABEL
-.LBB21_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB21_14:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB21_16:
+.LBB21_15:
 .Ltmp1312:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -10695,17 +10690,16 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_d
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 8
 	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB23_10
+	beqz	$a0, .LBB23_32
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
-	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	vst	$vr0, $a1, 16
+	addi.d	$a0, $sp, 40
+	ori	$a1, $zero, 2088
+	add.d	$a1, $sp, $a1
+	st.d	$a0, $a1, 0
 .Ltmp1313:                              # EH_LABEL
 	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 2088
@@ -10713,190 +10707,1266 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_d
 	jirl	$ra, $a2, 0
 .Ltmp1314:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 32
-	ori	$a1, $zero, 1920
-	.p2align	4, , 16
-.LBB23_3:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	add.d	$a3, $fp, $a4
-	xvldx	$xr0, $a4, $fp
-	xvld	$xr1, $a3, 32
-	xvld	$xr4, $a3, 64
-	xvld	$xr5, $a3, 96
-	xvseqi.w	$xr2, $xr0, 0
-	xvseqi.w	$xr3, $xr1, 0
-	xvor.v	$xr0, $xr2, $xr3
-	xvseqi.w	$xr1, $xr4, 0
-	xvor.v	$xr4, $xr0, $xr1
-	xvseqi.w	$xr0, $xr5, 0
-	xvor.v	$xr4, $xr4, $xr0
-	xvmskltz.w	$xr4, $xr4
-	xvpickve2gr.wu	$a3, $xr4, 0
-	xvpickve2gr.wu	$a4, $xr4, 4
-	bstrins.d	$a3, $a4, 7, 4
-	addi.d	$a0, $a0, -32
-	bnez	$a3, .LBB23_5
-# %bb.4:                                # %vector.body
-                                        #   in Loop: Header=BB23_3 Depth=1
-	addi.d	$a4, $a2, 128
-	bne	$a2, $a1, .LBB23_3
-.LBB23_5:                               # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB23_7
-# %bb.6:                                # %.split.loop.exit.i.i.i
+	xvld	$xr0, $sp, 40
+	xvld	$xr2, $sp, 72
+	xvld	$xr3, $sp, 104
+	xvld	$xr4, $sp, 136
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_4
+# %bb.3:
+	move	$a0, $zero
+	xvpickve2gr.w	$a1, $xr1, 0
+	vinsgr2vr.h	$vr0, $a1, 0
+	xvpickve2gr.w	$a1, $xr1, 1
+	vinsgr2vr.h	$vr0, $a1, 1
+	xvpickve2gr.w	$a1, $xr1, 2
+	vinsgr2vr.h	$vr0, $a1, 2
+	xvpickve2gr.w	$a1, $xr1, 3
+	vinsgr2vr.h	$vr0, $a1, 3
+	xvpickve2gr.w	$a1, $xr1, 4
+	vinsgr2vr.h	$vr0, $a1, 4
+	xvpickve2gr.w	$a1, $xr1, 5
+	vinsgr2vr.h	$vr0, $a1, 5
+	xvpickve2gr.w	$a1, $xr1, 6
+	vinsgr2vr.h	$vr0, $a1, 6
+	xvpickve2gr.w	$a1, $xr1, 7
+	vinsgr2vr.h	$vr0, $a1, 7
 	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.b	$vr4, $a1, 0
+	vinsgr2vr.h	$vr1, $a1, 0
 	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.b	$vr4, $a1, 1
+	vinsgr2vr.h	$vr1, $a1, 1
 	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.b	$vr4, $a1, 2
+	vinsgr2vr.h	$vr1, $a1, 2
 	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.b	$vr4, $a1, 3
+	vinsgr2vr.h	$vr1, $a1, 3
 	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.b	$vr4, $a1, 4
+	vinsgr2vr.h	$vr1, $a1, 4
 	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.b	$vr4, $a1, 5
+	vinsgr2vr.h	$vr1, $a1, 5
 	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.b	$vr4, $a1, 6
+	vinsgr2vr.h	$vr1, $a1, 6
 	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.b	$vr4, $a1, 7
-	lu12i.w	$a1, 20576
-	ori	$a1, $a1, 1800
-	lu32i.d	$a1, 131844
-	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr2, $a1
-	vand.v	$vr4, $vr4, $vr2
-	vbsrl.v	$vr5, $vr4, 4
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 2
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 1
-	vmax.bu	$vr4, $vr5, $vr4
-	vpickve2gr.b	$a1, $vr4, 0
-	ori	$a3, $zero, 8
-	sub.d	$a1, $a3, $a1
-	andi	$a1, $a1, 255
-	addi.d	$a2, $a1, -8
-	sltui	$a2, $a2, 1
-	xvpickve2gr.w	$a4, $xr3, 0
-	vinsgr2vr.b	$vr4, $a4, 0
-	xvpickve2gr.w	$a4, $xr3, 1
-	vinsgr2vr.b	$vr4, $a4, 1
-	xvpickve2gr.w	$a4, $xr3, 2
-	vinsgr2vr.b	$vr4, $a4, 2
-	xvpickve2gr.w	$a4, $xr3, 3
-	vinsgr2vr.b	$vr4, $a4, 3
-	xvpickve2gr.w	$a4, $xr3, 4
-	vinsgr2vr.b	$vr4, $a4, 4
-	xvpickve2gr.w	$a4, $xr3, 5
-	vinsgr2vr.b	$vr4, $a4, 5
-	xvpickve2gr.w	$a4, $xr3, 6
-	vinsgr2vr.b	$vr4, $a4, 6
-	xvpickve2gr.w	$a4, $xr3, 7
-	vinsgr2vr.b	$vr4, $a4, 7
-	vand.v	$vr3, $vr4, $vr2
-	vbsrl.v	$vr4, $vr3, 4
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 2
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 1
-	vmax.bu	$vr3, $vr4, $vr3
-	vpickve2gr.b	$a4, $vr3, 0
-	sub.d	$a4, $a3, $a4
-	andi	$a4, $a4, 255
-	addi.d	$a5, $a4, -8
-	sltui	$a5, $a5, 1
-	xvpickve2gr.w	$a6, $xr1, 0
-	vinsgr2vr.b	$vr3, $a6, 0
-	xvpickve2gr.w	$a6, $xr1, 1
-	vinsgr2vr.b	$vr3, $a6, 1
-	xvpickve2gr.w	$a6, $xr1, 2
-	vinsgr2vr.b	$vr3, $a6, 2
-	xvpickve2gr.w	$a6, $xr1, 3
-	vinsgr2vr.b	$vr3, $a6, 3
-	xvpickve2gr.w	$a6, $xr1, 4
-	vinsgr2vr.b	$vr3, $a6, 4
-	xvpickve2gr.w	$a6, $xr1, 5
-	vinsgr2vr.b	$vr3, $a6, 5
-	xvpickve2gr.w	$a6, $xr1, 6
-	vinsgr2vr.b	$vr3, $a6, 6
-	xvpickve2gr.w	$a6, $xr1, 7
-	vinsgr2vr.b	$vr3, $a6, 7
-	vand.v	$vr1, $vr3, $vr2
-	vbsrl.v	$vr3, $vr1, 4
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 2
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 1
-	vmax.bu	$vr1, $vr3, $vr1
-	vpickve2gr.b	$a6, $vr1, 0
-	sub.d	$a6, $a3, $a6
-	andi	$a6, $a6, 255
-	addi.d	$a7, $a6, -8
-	sltui	$a7, $a7, 1
-	xvpickve2gr.w	$t0, $xr0, 0
-	vinsgr2vr.b	$vr1, $t0, 0
-	xvpickve2gr.w	$t0, $xr0, 1
-	vinsgr2vr.b	$vr1, $t0, 1
-	xvpickve2gr.w	$t0, $xr0, 2
-	vinsgr2vr.b	$vr1, $t0, 2
-	xvpickve2gr.w	$t0, $xr0, 3
-	vinsgr2vr.b	$vr1, $t0, 3
-	xvpickve2gr.w	$t0, $xr0, 4
-	vinsgr2vr.b	$vr1, $t0, 4
-	xvpickve2gr.w	$t0, $xr0, 5
-	vinsgr2vr.b	$vr1, $t0, 5
-	xvpickve2gr.w	$t0, $xr0, 6
-	vinsgr2vr.b	$vr1, $t0, 6
-	xvpickve2gr.w	$t0, $xr0, 7
-	vinsgr2vr.b	$vr1, $t0, 7
-	vand.v	$vr0, $vr1, $vr2
-	vbsrl.v	$vr1, $vr0, 4
-	vmax.bu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 2
-	vmax.bu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 1
-	vmax.bu	$vr0, $vr1, $vr0
-	vpickve2gr.b	$t0, $vr0, 0
-	sub.d	$a3, $a3, $t0
-	andi	$a3, $a3, 255
-	addi.d	$a3, $a3, 24
-	addi.d	$a6, $a6, 16
-	masknez	$a6, $a6, $a7
-	maskeqz	$a3, $a3, $a7
-	or	$a3, $a3, $a6
-	addi.d	$a4, $a4, 8
-	maskeqz	$a3, $a3, $a5
-	masknez	$a4, $a4, $a5
-	or	$a3, $a3, $a4
-	maskeqz	$a3, $a3, $a2
-	masknez	$a1, $a1, $a2
-	or	$a1, $a3, $a1
-	sub.w	$fp, $a1, $a0
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB23_8
-	b	.LBB23_9
-.LBB23_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB23_9
-.LBB23_8:
-.Ltmp1315:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
-	ori	$a2, $zero, 3
-	jirl	$ra, $a3, 0
-.Ltmp1316:                              # EH_LABEL
-.LBB23_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_3JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
-	move	$a0, $fp
-	addi.d	$sp, $sp, 80
-	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 2032
-	ret
-.LBB23_10:
+	vinsgr2vr.h	$vr1, $a1, 7
+	xvpickve2gr.w	$a1, $xr3, 0
+	vinsgr2vr.h	$vr2, $a1, 0
+	xvpickve2gr.w	$a1, $xr3, 1
+	vinsgr2vr.h	$vr2, $a1, 1
+	xvpickve2gr.w	$a1, $xr3, 2
+	vinsgr2vr.h	$vr2, $a1, 2
+	xvpickve2gr.w	$a1, $xr3, 3
+	vinsgr2vr.h	$vr2, $a1, 3
+	xvpickve2gr.w	$a1, $xr3, 4
+	vinsgr2vr.h	$vr2, $a1, 4
+	xvpickve2gr.w	$a1, $xr3, 5
+	vinsgr2vr.h	$vr2, $a1, 5
+	xvpickve2gr.w	$a1, $xr3, 6
+	vinsgr2vr.h	$vr2, $a1, 6
+	xvpickve2gr.w	$a1, $xr3, 7
+	vinsgr2vr.h	$vr2, $a1, 7
+	xvpickve2gr.w	$a1, $xr4, 0
+	vinsgr2vr.h	$vr3, $a1, 0
+	xvpickve2gr.w	$a1, $xr4, 1
+	vinsgr2vr.h	$vr3, $a1, 1
+	xvpickve2gr.w	$a1, $xr4, 2
+	vinsgr2vr.h	$vr3, $a1, 2
+	xvpickve2gr.w	$a1, $xr4, 3
+	vinsgr2vr.h	$vr3, $a1, 3
+	xvpickve2gr.w	$a1, $xr4, 4
+	vinsgr2vr.h	$vr3, $a1, 4
+	xvpickve2gr.w	$a1, $xr4, 5
+	vinsgr2vr.h	$vr3, $a1, 5
+	xvpickve2gr.w	$a1, $xr4, 6
+	vinsgr2vr.h	$vr3, $a1, 6
+	xvpickve2gr.w	$a1, $xr4, 7
+	vinsgr2vr.h	$vr3, $a1, 7
+	b	.LBB23_36
+.LBB23_4:                               # %vector.body.interim
+	xvld	$xr0, $sp, 168
+	xvld	$xr2, $sp, 200
+	xvld	$xr3, $sp, 232
+	xvld	$xr4, $sp, 264
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_6
+# %bb.5:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 32
+	b	.LBB23_36
+.LBB23_6:                               # %vector.body.interim.1
+	xvld	$xr0, $sp, 296
+	xvld	$xr2, $sp, 328
+	xvld	$xr3, $sp, 360
+	xvld	$xr4, $sp, 392
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_8
+# %bb.7:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 64
+	b	.LBB23_36
+.LBB23_8:                               # %vector.body.interim.2
+	xvld	$xr0, $sp, 424
+	xvld	$xr2, $sp, 456
+	xvld	$xr3, $sp, 488
+	xvld	$xr4, $sp, 520
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_10
+# %bb.9:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 96
+	b	.LBB23_36
+.LBB23_10:                              # %vector.body.interim.3
+	xvld	$xr0, $sp, 552
+	xvld	$xr2, $sp, 584
+	xvld	$xr3, $sp, 616
+	xvld	$xr4, $sp, 648
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_12
+# %bb.11:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 128
+	b	.LBB23_36
+.LBB23_12:                              # %vector.body.interim.4
+	xvld	$xr0, $sp, 680
+	xvld	$xr2, $sp, 712
+	xvld	$xr3, $sp, 744
+	xvld	$xr4, $sp, 776
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_14
+# %bb.13:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 160
+	b	.LBB23_36
+.LBB23_14:                              # %vector.body.interim.5
+	xvld	$xr0, $sp, 808
+	xvld	$xr2, $sp, 840
+	xvld	$xr3, $sp, 872
+	xvld	$xr4, $sp, 904
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_16
+# %bb.15:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 192
+	b	.LBB23_36
+.LBB23_16:                              # %vector.body.interim.6
+	xvld	$xr0, $sp, 936
+	xvld	$xr2, $sp, 968
+	xvld	$xr3, $sp, 1000
+	xvld	$xr4, $sp, 1032
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_18
+# %bb.17:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 224
+	b	.LBB23_36
+.LBB23_18:                              # %vector.body.interim.7
+	xvld	$xr0, $sp, 1064
+	xvld	$xr2, $sp, 1096
+	xvld	$xr3, $sp, 1128
+	xvld	$xr4, $sp, 1160
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_20
+# %bb.19:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 256
+	b	.LBB23_36
+.LBB23_20:                              # %vector.body.interim.8
+	xvld	$xr0, $sp, 1192
+	xvld	$xr2, $sp, 1224
+	xvld	$xr3, $sp, 1256
+	xvld	$xr4, $sp, 1288
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_22
+# %bb.21:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 288
+	b	.LBB23_36
+.LBB23_22:                              # %vector.body.interim.9
+	xvld	$xr0, $sp, 1320
+	xvld	$xr2, $sp, 1352
+	xvld	$xr3, $sp, 1384
+	xvld	$xr4, $sp, 1416
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_24
+# %bb.23:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 320
+	b	.LBB23_36
+.LBB23_24:                              # %vector.body.interim.10
+	xvld	$xr0, $sp, 1448
+	xvld	$xr2, $sp, 1480
+	xvld	$xr3, $sp, 1512
+	xvld	$xr4, $sp, 1544
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_26
+# %bb.25:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 352
+	b	.LBB23_36
+.LBB23_26:                              # %vector.body.interim.11
+	xvld	$xr0, $sp, 1576
+	xvld	$xr2, $sp, 1608
+	xvld	$xr3, $sp, 1640
+	xvld	$xr4, $sp, 1672
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_28
+# %bb.27:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 384
+	b	.LBB23_36
+.LBB23_28:                              # %vector.body.interim.12
+	xvld	$xr0, $sp, 1704
+	xvld	$xr2, $sp, 1736
+	xvld	$xr3, $sp, 1768
+	xvld	$xr4, $sp, 1800
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_30
+# %bb.29:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 416
+	b	.LBB23_36
+.LBB23_30:                              # %vector.body.interim.13
+	xvld	$xr0, $sp, 1832
+	xvld	$xr2, $sp, 1864
+	xvld	$xr3, $sp, 1896
+	xvld	$xr4, $sp, 1928
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_34
+# %bb.31:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 448
+	b	.LBB23_36
+.LBB23_32:
 	addi.d	$a0, $sp, 40
 	ori	$a1, $zero, 2088
 	add.d	$a1, $sp, $a1
@@ -10905,28 +11975,212 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_3E9_M_invokeERKSt9_Any_d
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1319:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB23_12:
+# %bb.33:                               # %.noexc.i.i
+.LBB23_34:                              # %vector.body.interim.14
+	xvld	$xr0, $sp, 1960
+	xvld	$xr2, $sp, 1992
+	xvld	$xr3, $sp, 2024
+	ori	$a0, $zero, 2056
+	add.d	$a0, $sp, $a0
+	xvld	$xr4, $a0, 0
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB23_39
+# %bb.35:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 480
+.LBB23_36:                              # %.split.loop.exit.i.i.i
+	vpickev.b	$vr0, $vr0, $vr0
+	vslli.b	$vr0, $vr0, 7
+	vsrai.b	$vr0, $vr0, 7
+	lu12i.w	$a1, 20576
+	ori	$a1, $a1, 1800
+	lu32i.d	$a1, 131844
+	lu52i.d	$a1, $a1, 16
+	vreplgr2vr.d	$vr4, $a1
+	vand.v	$vr0, $vr0, $vr4
+	vbsrl.v	$vr5, $vr0, 4
+	vmax.bu	$vr0, $vr5, $vr0
+	vbsrl.v	$vr5, $vr0, 2
+	vmax.bu	$vr0, $vr5, $vr0
+	vbsrl.v	$vr5, $vr0, 1
+	vmax.bu	$vr0, $vr5, $vr0
+	vpickve2gr.b	$a1, $vr0, 0
+	ori	$a2, $zero, 8
+	sub.d	$a1, $a2, $a1
+	andi	$a1, $a1, 255
+	addi.d	$a3, $a1, -8
+	sltui	$a3, $a3, 1
+	vpickev.b	$vr0, $vr1, $vr1
+	vslli.b	$vr0, $vr0, 7
+	vsrai.b	$vr0, $vr0, 7
+	vand.v	$vr0, $vr0, $vr4
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a4, $vr0, 0
+	sub.d	$a4, $a2, $a4
+	andi	$a4, $a4, 255
+	addi.d	$a5, $a4, -8
+	sltui	$a5, $a5, 1
+	vpickev.b	$vr0, $vr2, $vr2
+	vslli.b	$vr0, $vr0, 7
+	vsrai.b	$vr0, $vr0, 7
+	vand.v	$vr0, $vr0, $vr4
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a6, $vr0, 0
+	sub.d	$a6, $a2, $a6
+	andi	$a6, $a6, 255
+	addi.d	$a7, $a6, -8
+	sltui	$a7, $a7, 1
+	vpickev.b	$vr0, $vr3, $vr3
+	vslli.b	$vr0, $vr0, 7
+	vsrai.b	$vr0, $vr0, 7
+	vand.v	$vr0, $vr0, $vr4
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$t0, $vr0, 0
+	sub.d	$a2, $a2, $t0
+	andi	$a2, $a2, 255
+	addi.d	$a2, $a2, 24
+	addi.d	$a6, $a6, 16
+	masknez	$a6, $a6, $a7
+	maskeqz	$a2, $a2, $a7
+	or	$a2, $a2, $a6
+	addi.d	$a4, $a4, 8
+	maskeqz	$a2, $a2, $a5
+	masknez	$a4, $a4, $a5
+	or	$a2, $a2, $a4
+	maskeqz	$a2, $a2, $a3
+	masknez	$a1, $a1, $a3
+	or	$a1, $a2, $a1
+	add.d	$fp, $a0, $a1
+	ld.d	$a3, $sp, 24
+	beqz	$a3, .LBB23_38
+.LBB23_37:
+.Ltmp1315:                              # EH_LABEL
+	addi.d	$a0, $sp, 8
+	addi.d	$a1, $sp, 8
+	ori	$a2, $zero, 3
+	jirl	$ra, $a3, 0
+.Ltmp1316:                              # EH_LABEL
+.LBB23_38:                              # %"_ZSt10__invoke_rIjRZ4mainE3$_3JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+	move	$a0, $fp
+	addi.d	$sp, $sp, 80
+	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 2032
+	ret
+.LBB23_39:
+	addi.w	$fp, $zero, -1
+	ld.d	$a3, $sp, 24
+	bnez	$a3, .LBB23_37
+	b	.LBB23_38
+.LBB23_40:
 .Ltmp1317:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB23_13:
+.LBB23_41:
 .Ltmp1320:                              # EH_LABEL
 	ld.d	$a3, $sp, 24
 	move	$fp, $a0
-	beqz	$a3, .LBB23_15
-# %bb.14:
+	beqz	$a3, .LBB23_43
+# %bb.42:
 .Ltmp1321:                              # EH_LABEL
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1322:                              # EH_LABEL
-.LBB23_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB23_43:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB23_16:
+.LBB23_44:
 .Ltmp1323:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -10945,26 +12199,22 @@ GCC_except_table23:
 	.uleb128 .Lcst_end12-.Lcst_begin12
 .Lcst_begin12:
 	.uleb128 .Ltmp1313-.Lfunc_begin12       # >> Call Site 1 <<
-	.uleb128 .Ltmp1314-.Ltmp1313            #   Call between .Ltmp1313 and .Ltmp1314
+	.uleb128 .Ltmp1319-.Ltmp1313            #   Call between .Ltmp1313 and .Ltmp1319
 	.uleb128 .Ltmp1320-.Lfunc_begin12       #     jumps to .Ltmp1320
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp1315-.Lfunc_begin12       # >> Call Site 2 <<
 	.uleb128 .Ltmp1316-.Ltmp1315            #   Call between .Ltmp1315 and .Ltmp1316
 	.uleb128 .Ltmp1317-.Lfunc_begin12       #     jumps to .Ltmp1317
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp1318-.Lfunc_begin12       # >> Call Site 3 <<
-	.uleb128 .Ltmp1319-.Ltmp1318            #   Call between .Ltmp1318 and .Ltmp1319
-	.uleb128 .Ltmp1320-.Lfunc_begin12       #     jumps to .Ltmp1320
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp1319-.Lfunc_begin12       # >> Call Site 4 <<
-	.uleb128 .Ltmp1321-.Ltmp1319            #   Call between .Ltmp1319 and .Ltmp1321
+	.uleb128 .Ltmp1316-.Lfunc_begin12       # >> Call Site 3 <<
+	.uleb128 .Ltmp1321-.Ltmp1316            #   Call between .Ltmp1316 and .Ltmp1321
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp1321-.Lfunc_begin12       # >> Call Site 5 <<
+	.uleb128 .Ltmp1321-.Lfunc_begin12       # >> Call Site 4 <<
 	.uleb128 .Ltmp1322-.Ltmp1321            #   Call between .Ltmp1321 and .Ltmp1322
 	.uleb128 .Ltmp1323-.Lfunc_begin12       #     jumps to .Ltmp1323
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp1322-.Lfunc_begin12       # >> Call Site 6 <<
+	.uleb128 .Ltmp1322-.Lfunc_begin12       # >> Call Site 5 <<
 	.uleb128 .Lfunc_end23-.Ltmp1322         #   Call between .Ltmp1322 and .Lfunc_end23
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
@@ -11014,55 +12264,57 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_4E9_M_invokeERKSt9_Any_d
 	.cfi_def_cfa_offset 2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 2112
+	.cfi_offset 23, -24
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 2128
 	ld.d	$a2, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 24
+	st.d	$zero, $sp, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 8
-	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB25_10
+	vst	$vr0, $sp, 16
+	st.d	$a2, $sp, 40
+	beqz	$a0, .LBB25_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
-	vst	$vr1, $sp, 8
-	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
+	vst	$vr1, $sp, 16
+	st.d	$a0, $sp, 32
+	vst	$vr0, $a1, 16
+	addi.d	$s0, $sp, 48
+	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	st.d	$s0, $a0, 0
 .Ltmp1324:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 2088
+	addi.d	$a0, $sp, 16
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	jirl	$ra, $a2, 0
 .Ltmp1325:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 4
-	ori	$a1, $zero, 2032
+	move	$a1, $zero
+	move	$a0, $zero
+	addi.w	$fp, $zero, -1
+	ori	$a2, $zero, 2048
 	.p2align	4, , 16
 .LBB25_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vldx	$vr0, $a4, $fp
+	vldx	$vr0, $a1, $s0
 	vseqi.w	$vr0, $vr0, 0
 	vmskltz.w	$vr1, $vr0
 	vpickve2gr.hu	$a3, $vr1, 0
-	addi.d	$a0, $a0, -4
-	bnez	$a3, .LBB25_5
-# %bb.4:                                # %vector.body
+	bnez	$a3, .LBB25_6
+# %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB25_3 Depth=1
-	move	$a2, $a4
-	addi.d	$a4, $a4, 16
-	bne	$a2, $a1, .LBB25_3
-.LBB25_5:                               # %middle.split
-	andi	$a1, $a3, 15
-	beqz	$a1, .LBB25_7
-# %bb.6:                                # %.split.loop.exit.i.i.i
+	addi.d	$a1, $a1, 16
+	addi.d	$a0, $a0, -4
+	bne	$a1, $a2, .LBB25_3
+# %bb.5:                                # %.loopexit.i.i
+	ld.d	$a3, $sp, 32
+	bnez	$a3, .LBB25_7
+	b	.LBB25_8
+.LBB25_6:                               # %.split.loop.exit.i.i.i
 	vpickve2gr.w	$a1, $vr0, 3
 	andi	$a1, $a1, 1
 	ori	$a2, $zero, 4
@@ -11083,58 +12335,54 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_4E9_M_invokeERKSt9_Any_d
 	andi	$a2, $a2, 1
 	masknez	$a1, $a1, $a2
 	sub.w	$fp, $a1, $a0
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB25_8
-	b	.LBB25_9
+	ld.d	$a3, $sp, 32
+	beqz	$a3, .LBB25_8
 .LBB25_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB25_9
-.LBB25_8:
 .Ltmp1326:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1327:                              # EH_LABEL
-.LBB25_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_4JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+.LBB25_8:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_4JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
 	move	$a0, $fp
-	addi.d	$sp, $sp, 80
+	addi.d	$sp, $sp, 96
+	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB25_10:
-	addi.d	$a0, $sp, 40
-	ori	$a1, $zero, 2088
+.LBB25_9:
+	addi.d	$a0, $sp, 48
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .Ltmp1329:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1330:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB25_12:
+# %bb.10:                               # %.noexc.i.i
+.LBB25_11:
 .Ltmp1328:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB25_13:
+.LBB25_12:
 .Ltmp1331:                              # EH_LABEL
-	ld.d	$a3, $sp, 24
+	ld.d	$a3, $sp, 32
 	move	$fp, $a0
-	beqz	$a3, .LBB25_15
-# %bb.14:
+	beqz	$a3, .LBB25_14
+# %bb.13:
 .Ltmp1332:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1333:                              # EH_LABEL
-.LBB25_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB25_14:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB25_16:
+.LBB25_15:
 .Ltmp1334:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -11237,10 +12485,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_5E9_M_invokeERKSt9_Any_d
 	beqz	$a0, .LBB27_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 48
 	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
@@ -11402,57 +12649,59 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_d
 	.cfi_def_cfa_offset 2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 2112
+	.cfi_offset 23, -24
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 2128
 	ld.d	$a2, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 24
+	st.d	$zero, $sp, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 8
-	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB29_10
+	vst	$vr0, $sp, 16
+	st.d	$a2, $sp, 40
+	beqz	$a0, .LBB29_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
-	vst	$vr1, $sp, 8
-	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
+	vst	$vr1, $sp, 16
+	st.d	$a0, $sp, 32
+	vst	$vr0, $a1, 16
+	addi.d	$s0, $sp, 48
+	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	st.d	$s0, $a0, 0
 .Ltmp1346:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 2088
+	addi.d	$a0, $sp, 16
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	jirl	$ra, $a2, 0
 .Ltmp1347:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 8
-	ori	$a1, $zero, 2016
+	move	$a1, $zero
+	move	$a0, $zero
+	addi.w	$fp, $zero, -1
+	ori	$a2, $zero, 2048
 	.p2align	4, , 16
 .LBB29_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	xvldx	$xr0, $a4, $fp
+	xvldx	$xr0, $a1, $s0
 	xvseqi.w	$xr0, $xr0, 0
 	xvmskltz.w	$xr1, $xr0
 	xvpickve2gr.wu	$a3, $xr1, 0
 	xvpickve2gr.wu	$a4, $xr1, 4
 	bstrins.d	$a3, $a4, 7, 4
-	addi.w	$a0, $a0, -8
-	bnez	$a3, .LBB29_5
-# %bb.4:                                # %vector.body
+	bnez	$a3, .LBB29_6
+# %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB29_3 Depth=1
-	addi.d	$a4, $a2, 32
-	bne	$a2, $a1, .LBB29_3
-.LBB29_5:                               # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB29_7
-# %bb.6:                                # %vector.early.exit
+	addi.d	$a1, $a1, 32
+	addi.w	$a0, $a0, -8
+	bne	$a1, $a2, .LBB29_3
+# %bb.5:                                # %middle.block
+	ld.d	$a3, $sp, 32
+	bnez	$a3, .LBB29_7
+	b	.LBB29_8
+.LBB29_6:                               # %vector.early.exit
 	xvpickve2gr.w	$a1, $xr0, 0
 	vinsgr2vr.b	$vr1, $a1, 0
 	xvpickve2gr.w	$a1, $xr0, 1
@@ -11488,58 +12737,54 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_6E9_M_invokeERKSt9_Any_d
 	sub.d	$a0, $a1, $a0
 	alsl.d	$a0, $a0, $a0, 1
 	addi.w	$fp, $a0, 2
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB29_8
-	b	.LBB29_9
+	ld.d	$a3, $sp, 32
+	beqz	$a3, .LBB29_8
 .LBB29_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB29_9
-.LBB29_8:
 .Ltmp1348:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1349:                              # EH_LABEL
-.LBB29_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_6JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+.LBB29_8:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_6JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
 	move	$a0, $fp
-	addi.d	$sp, $sp, 80
+	addi.d	$sp, $sp, 96
+	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB29_10:
-	addi.d	$a0, $sp, 40
-	ori	$a1, $zero, 2088
+.LBB29_9:
+	addi.d	$a0, $sp, 48
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .Ltmp1351:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1352:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB29_12:
+# %bb.10:                               # %.noexc.i.i
+.LBB29_11:
 .Ltmp1350:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB29_13:
+.LBB29_12:
 .Ltmp1353:                              # EH_LABEL
-	ld.d	$a3, $sp, 24
+	ld.d	$a3, $sp, 32
 	move	$fp, $a0
-	beqz	$a3, .LBB29_15
-# %bb.14:
+	beqz	$a3, .LBB29_14
+# %bb.13:
 .Ltmp1354:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1355:                              # EH_LABEL
-.LBB29_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB29_14:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB29_16:
+.LBB29_15:
 .Ltmp1356:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -11627,57 +12872,59 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_d
 	.cfi_def_cfa_offset 2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 2112
+	.cfi_offset 23, -24
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 2128
 	ld.d	$a2, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 24
+	st.d	$zero, $sp, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 8
-	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB31_10
+	vst	$vr0, $sp, 16
+	st.d	$a2, $sp, 40
+	beqz	$a0, .LBB31_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
-	vst	$vr1, $sp, 8
-	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
+	vst	$vr1, $sp, 16
+	st.d	$a0, $sp, 32
+	vst	$vr0, $a1, 16
+	addi.d	$s0, $sp, 48
+	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	st.d	$s0, $a0, 0
 .Ltmp1357:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 2088
+	addi.d	$a0, $sp, 16
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	jirl	$ra, $a2, 0
 .Ltmp1358:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 8
-	ori	$a1, $zero, 2016
+	move	$a1, $zero
+	move	$a0, $zero
+	addi.w	$fp, $zero, -1
+	ori	$a2, $zero, 2048
 	.p2align	4, , 16
 .LBB31_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	xvldx	$xr0, $a4, $fp
+	xvldx	$xr0, $a1, $s0
 	xvseqi.w	$xr0, $xr0, 0
 	xvmskltz.w	$xr1, $xr0
 	xvpickve2gr.wu	$a3, $xr1, 0
 	xvpickve2gr.wu	$a4, $xr1, 4
 	bstrins.d	$a3, $a4, 7, 4
-	addi.w	$a0, $a0, -8
-	bnez	$a3, .LBB31_5
-# %bb.4:                                # %vector.body
+	bnez	$a3, .LBB31_6
+# %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB31_3 Depth=1
-	addi.d	$a4, $a2, 32
-	bne	$a2, $a1, .LBB31_3
-.LBB31_5:                               # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB31_7
-# %bb.6:                                # %vector.early.exit
+	addi.d	$a1, $a1, 32
+	addi.w	$a0, $a0, -8
+	bne	$a1, $a2, .LBB31_3
+# %bb.5:                                # %middle.block
+	ld.d	$a3, $sp, 32
+	bnez	$a3, .LBB31_7
+	b	.LBB31_8
+.LBB31_6:                               # %vector.early.exit
 	xvpickve2gr.w	$a1, $xr0, 0
 	vinsgr2vr.b	$vr1, $a1, 0
 	xvpickve2gr.w	$a1, $xr0, 1
@@ -11713,58 +12960,54 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_d
 	sub.d	$a0, $a1, $a0
 	alsl.d	$a0, $a0, $a0, 1
 	addi.w	$fp, $a0, 2
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB31_8
-	b	.LBB31_9
+	ld.d	$a3, $sp, 32
+	beqz	$a3, .LBB31_8
 .LBB31_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB31_9
-.LBB31_8:
 .Ltmp1359:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1360:                              # EH_LABEL
-.LBB31_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_7JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+.LBB31_8:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_7JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
 	move	$a0, $fp
-	addi.d	$sp, $sp, 80
+	addi.d	$sp, $sp, 96
+	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB31_10:
-	addi.d	$a0, $sp, 40
-	ori	$a1, $zero, 2088
+.LBB31_9:
+	addi.d	$a0, $sp, 48
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .Ltmp1362:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1363:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB31_12:
+# %bb.10:                               # %.noexc.i.i
+.LBB31_11:
 .Ltmp1361:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB31_13:
+.LBB31_12:
 .Ltmp1364:                              # EH_LABEL
-	ld.d	$a3, $sp, 24
+	ld.d	$a3, $sp, 32
 	move	$fp, $a0
-	beqz	$a3, .LBB31_15
-# %bb.14:
+	beqz	$a3, .LBB31_14
+# %bb.13:
 .Ltmp1365:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1366:                              # EH_LABEL
-.LBB31_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB31_14:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB31_16:
+.LBB31_15:
 .Ltmp1367:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -11862,17 +13105,16 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_d
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 8
 	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB33_10
+	beqz	$a0, .LBB33_32
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
-	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	vst	$vr0, $a1, 16
+	addi.d	$a0, $sp, 40
+	ori	$a1, $zero, 2088
+	add.d	$a1, $sp, $a1
+	st.d	$a0, $a1, 0
 .Ltmp1368:                              # EH_LABEL
 	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 2088
@@ -11880,192 +13122,1266 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_d
 	jirl	$ra, $a2, 0
 .Ltmp1369:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 32
-	ori	$a1, $zero, 1920
-	.p2align	4, , 16
-.LBB33_3:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	add.d	$a3, $fp, $a4
-	xvldx	$xr0, $a4, $fp
-	xvld	$xr1, $a3, 32
-	xvld	$xr2, $a3, 64
-	xvld	$xr4, $a3, 96
-	xvseqi.w	$xr0, $xr0, 0
-	xvseqi.w	$xr1, $xr1, 0
-	xvor.v	$xr5, $xr0, $xr1
-	xvseqi.w	$xr3, $xr2, 0
-	xvor.v	$xr5, $xr5, $xr3
-	xvseqi.w	$xr2, $xr4, 0
-	xvor.v	$xr4, $xr5, $xr2
-	xvmskltz.w	$xr4, $xr4
-	xvpickve2gr.wu	$a3, $xr4, 0
-	xvpickve2gr.wu	$a4, $xr4, 4
-	bstrins.d	$a3, $a4, 7, 4
-	addi.w	$a0, $a0, -32
-	bnez	$a3, .LBB33_5
-# %bb.4:                                # %vector.body
-                                        #   in Loop: Header=BB33_3 Depth=1
-	addi.d	$a4, $a2, 128
-	bne	$a2, $a1, .LBB33_3
-.LBB33_5:                               # %middle.split
-	andi	$a1, $a3, 255
-	beqz	$a1, .LBB33_7
-# %bb.6:                                # %vector.early.exit
+	xvld	$xr0, $sp, 40
+	xvld	$xr2, $sp, 72
+	xvld	$xr3, $sp, 104
+	xvld	$xr4, $sp, 136
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_4
+# %bb.3:
+	move	$a0, $zero
+	xvpickve2gr.w	$a1, $xr1, 0
+	vinsgr2vr.h	$vr0, $a1, 0
+	xvpickve2gr.w	$a1, $xr1, 1
+	vinsgr2vr.h	$vr0, $a1, 1
+	xvpickve2gr.w	$a1, $xr1, 2
+	vinsgr2vr.h	$vr0, $a1, 2
+	xvpickve2gr.w	$a1, $xr1, 3
+	vinsgr2vr.h	$vr0, $a1, 3
+	xvpickve2gr.w	$a1, $xr1, 4
+	vinsgr2vr.h	$vr0, $a1, 4
+	xvpickve2gr.w	$a1, $xr1, 5
+	vinsgr2vr.h	$vr0, $a1, 5
+	xvpickve2gr.w	$a1, $xr1, 6
+	vinsgr2vr.h	$vr0, $a1, 6
+	xvpickve2gr.w	$a1, $xr1, 7
+	vinsgr2vr.h	$vr0, $a1, 7
 	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.b	$vr4, $a1, 0
+	vinsgr2vr.h	$vr1, $a1, 0
 	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.b	$vr4, $a1, 1
+	vinsgr2vr.h	$vr1, $a1, 1
 	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.b	$vr4, $a1, 2
+	vinsgr2vr.h	$vr1, $a1, 2
 	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.b	$vr4, $a1, 3
+	vinsgr2vr.h	$vr1, $a1, 3
 	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.b	$vr4, $a1, 4
+	vinsgr2vr.h	$vr1, $a1, 4
 	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.b	$vr4, $a1, 5
+	vinsgr2vr.h	$vr1, $a1, 5
 	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.b	$vr4, $a1, 6
+	vinsgr2vr.h	$vr1, $a1, 6
 	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.b	$vr4, $a1, 7
-	lu12i.w	$a1, 20576
-	ori	$a1, $a1, 1800
-	lu32i.d	$a1, 131844
-	lu52i.d	$a1, $a1, 16
-	vreplgr2vr.d	$vr2, $a1
-	vand.v	$vr4, $vr4, $vr2
-	vbsrl.v	$vr5, $vr4, 4
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 2
-	vmax.bu	$vr4, $vr5, $vr4
-	vbsrl.v	$vr5, $vr4, 1
-	vmax.bu	$vr4, $vr5, $vr4
-	vpickve2gr.b	$a2, $vr4, 0
-	ori	$a1, $zero, 8
-	sub.d	$a2, $a1, $a2
-	andi	$a2, $a2, 255
-	addi.d	$a2, $a2, 24
-	xvpickve2gr.w	$a3, $xr3, 0
-	vinsgr2vr.b	$vr4, $a3, 0
-	xvpickve2gr.w	$a3, $xr3, 1
-	vinsgr2vr.b	$vr4, $a3, 1
-	xvpickve2gr.w	$a3, $xr3, 2
-	vinsgr2vr.b	$vr4, $a3, 2
-	xvpickve2gr.w	$a3, $xr3, 3
-	vinsgr2vr.b	$vr4, $a3, 3
-	xvpickve2gr.w	$a3, $xr3, 4
-	vinsgr2vr.b	$vr4, $a3, 4
-	xvpickve2gr.w	$a3, $xr3, 5
-	vinsgr2vr.b	$vr4, $a3, 5
-	xvpickve2gr.w	$a3, $xr3, 6
-	vinsgr2vr.b	$vr4, $a3, 6
-	xvpickve2gr.w	$a3, $xr3, 7
-	vinsgr2vr.b	$vr4, $a3, 7
-	vand.v	$vr3, $vr4, $vr2
-	vbsrl.v	$vr4, $vr3, 4
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 2
-	vmax.bu	$vr3, $vr4, $vr3
-	vbsrl.v	$vr4, $vr3, 1
-	vmax.bu	$vr3, $vr4, $vr3
-	vpickve2gr.b	$a3, $vr3, 0
-	sub.d	$a3, $a1, $a3
-	andi	$a3, $a3, 255
-	addi.d	$a4, $a3, 16
-	addi.d	$a3, $a3, -8
-	sltui	$a3, $a3, 1
-	masknez	$a4, $a4, $a3
-	maskeqz	$a2, $a2, $a3
-	or	$a2, $a2, $a4
-	xvpickve2gr.w	$a3, $xr1, 0
-	vinsgr2vr.b	$vr3, $a3, 0
-	xvpickve2gr.w	$a3, $xr1, 1
-	vinsgr2vr.b	$vr3, $a3, 1
-	xvpickve2gr.w	$a3, $xr1, 2
-	vinsgr2vr.b	$vr3, $a3, 2
-	xvpickve2gr.w	$a3, $xr1, 3
-	vinsgr2vr.b	$vr3, $a3, 3
-	xvpickve2gr.w	$a3, $xr1, 4
-	vinsgr2vr.b	$vr3, $a3, 4
-	xvpickve2gr.w	$a3, $xr1, 5
-	vinsgr2vr.b	$vr3, $a3, 5
-	xvpickve2gr.w	$a3, $xr1, 6
-	vinsgr2vr.b	$vr3, $a3, 6
-	xvpickve2gr.w	$a3, $xr1, 7
-	vinsgr2vr.b	$vr3, $a3, 7
-	vand.v	$vr1, $vr3, $vr2
-	vbsrl.v	$vr3, $vr1, 4
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 2
-	vmax.bu	$vr1, $vr3, $vr1
-	vbsrl.v	$vr3, $vr1, 1
-	vmax.bu	$vr1, $vr3, $vr1
-	vpickve2gr.b	$a3, $vr1, 0
-	sub.d	$a3, $a1, $a3
-	andi	$a3, $a3, 255
-	addi.d	$a4, $a3, 8
-	addi.d	$a3, $a3, -8
-	sltui	$a3, $a3, 1
-	maskeqz	$a2, $a2, $a3
-	masknez	$a3, $a4, $a3
-	or	$a2, $a2, $a3
-	xvpickve2gr.w	$a3, $xr0, 0
-	vinsgr2vr.b	$vr1, $a3, 0
-	xvpickve2gr.w	$a3, $xr0, 1
-	vinsgr2vr.b	$vr1, $a3, 1
-	xvpickve2gr.w	$a3, $xr0, 2
-	vinsgr2vr.b	$vr1, $a3, 2
-	xvpickve2gr.w	$a3, $xr0, 3
-	vinsgr2vr.b	$vr1, $a3, 3
-	xvpickve2gr.w	$a3, $xr0, 4
-	vinsgr2vr.b	$vr1, $a3, 4
-	xvpickve2gr.w	$a3, $xr0, 5
-	vinsgr2vr.b	$vr1, $a3, 5
-	xvpickve2gr.w	$a3, $xr0, 6
-	vinsgr2vr.b	$vr1, $a3, 6
-	xvpickve2gr.w	$a3, $xr0, 7
-	vinsgr2vr.b	$vr1, $a3, 7
-	vand.v	$vr0, $vr1, $vr2
-	vbsrl.v	$vr1, $vr0, 4
-	vmax.bu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 2
-	vmax.bu	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 1
-	vmax.bu	$vr0, $vr1, $vr0
-	vpickve2gr.b	$a3, $vr0, 0
-	sub.d	$a1, $a1, $a3
-	andi	$a1, $a1, 255
-	addi.d	$a3, $a1, -8
-	sltui	$a3, $a3, 1
-	maskeqz	$a2, $a2, $a3
-	masknez	$a1, $a1, $a3
-	or	$a1, $a2, $a1
-	sub.d	$a0, $a1, $a0
-	alsl.d	$a0, $a0, $a0, 1
-	addi.w	$fp, $a0, 2
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB33_8
-	b	.LBB33_9
-.LBB33_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB33_9
-.LBB33_8:
-.Ltmp1370:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
-	ori	$a2, $zero, 3
-	jirl	$ra, $a3, 0
-.Ltmp1371:                              # EH_LABEL
-.LBB33_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_8JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
-	move	$a0, $fp
-	addi.d	$sp, $sp, 80
-	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 2032
-	ret
-.LBB33_10:
+	vinsgr2vr.h	$vr1, $a1, 7
+	xvpickve2gr.w	$a1, $xr3, 0
+	vinsgr2vr.h	$vr2, $a1, 0
+	xvpickve2gr.w	$a1, $xr3, 1
+	vinsgr2vr.h	$vr2, $a1, 1
+	xvpickve2gr.w	$a1, $xr3, 2
+	vinsgr2vr.h	$vr2, $a1, 2
+	xvpickve2gr.w	$a1, $xr3, 3
+	vinsgr2vr.h	$vr2, $a1, 3
+	xvpickve2gr.w	$a1, $xr3, 4
+	vinsgr2vr.h	$vr2, $a1, 4
+	xvpickve2gr.w	$a1, $xr3, 5
+	vinsgr2vr.h	$vr2, $a1, 5
+	xvpickve2gr.w	$a1, $xr3, 6
+	vinsgr2vr.h	$vr2, $a1, 6
+	xvpickve2gr.w	$a1, $xr3, 7
+	vinsgr2vr.h	$vr2, $a1, 7
+	xvpickve2gr.w	$a1, $xr4, 0
+	vinsgr2vr.h	$vr3, $a1, 0
+	xvpickve2gr.w	$a1, $xr4, 1
+	vinsgr2vr.h	$vr3, $a1, 1
+	xvpickve2gr.w	$a1, $xr4, 2
+	vinsgr2vr.h	$vr3, $a1, 2
+	xvpickve2gr.w	$a1, $xr4, 3
+	vinsgr2vr.h	$vr3, $a1, 3
+	xvpickve2gr.w	$a1, $xr4, 4
+	vinsgr2vr.h	$vr3, $a1, 4
+	xvpickve2gr.w	$a1, $xr4, 5
+	vinsgr2vr.h	$vr3, $a1, 5
+	xvpickve2gr.w	$a1, $xr4, 6
+	vinsgr2vr.h	$vr3, $a1, 6
+	xvpickve2gr.w	$a1, $xr4, 7
+	vinsgr2vr.h	$vr3, $a1, 7
+	b	.LBB33_36
+.LBB33_4:                               # %vector.body.interim
+	xvld	$xr0, $sp, 168
+	xvld	$xr2, $sp, 200
+	xvld	$xr3, $sp, 232
+	xvld	$xr4, $sp, 264
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_6
+# %bb.5:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 32
+	b	.LBB33_36
+.LBB33_6:                               # %vector.body.interim.1
+	xvld	$xr0, $sp, 296
+	xvld	$xr2, $sp, 328
+	xvld	$xr3, $sp, 360
+	xvld	$xr4, $sp, 392
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_8
+# %bb.7:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 64
+	b	.LBB33_36
+.LBB33_8:                               # %vector.body.interim.2
+	xvld	$xr0, $sp, 424
+	xvld	$xr2, $sp, 456
+	xvld	$xr3, $sp, 488
+	xvld	$xr4, $sp, 520
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_10
+# %bb.9:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 96
+	b	.LBB33_36
+.LBB33_10:                              # %vector.body.interim.3
+	xvld	$xr0, $sp, 552
+	xvld	$xr2, $sp, 584
+	xvld	$xr3, $sp, 616
+	xvld	$xr4, $sp, 648
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_12
+# %bb.11:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 128
+	b	.LBB33_36
+.LBB33_12:                              # %vector.body.interim.4
+	xvld	$xr0, $sp, 680
+	xvld	$xr2, $sp, 712
+	xvld	$xr3, $sp, 744
+	xvld	$xr4, $sp, 776
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_14
+# %bb.13:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 160
+	b	.LBB33_36
+.LBB33_14:                              # %vector.body.interim.5
+	xvld	$xr0, $sp, 808
+	xvld	$xr2, $sp, 840
+	xvld	$xr3, $sp, 872
+	xvld	$xr4, $sp, 904
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_16
+# %bb.15:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 192
+	b	.LBB33_36
+.LBB33_16:                              # %vector.body.interim.6
+	xvld	$xr0, $sp, 936
+	xvld	$xr2, $sp, 968
+	xvld	$xr3, $sp, 1000
+	xvld	$xr4, $sp, 1032
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_18
+# %bb.17:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 224
+	b	.LBB33_36
+.LBB33_18:                              # %vector.body.interim.7
+	xvld	$xr0, $sp, 1064
+	xvld	$xr2, $sp, 1096
+	xvld	$xr3, $sp, 1128
+	xvld	$xr4, $sp, 1160
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_20
+# %bb.19:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 256
+	b	.LBB33_36
+.LBB33_20:                              # %vector.body.interim.8
+	xvld	$xr0, $sp, 1192
+	xvld	$xr2, $sp, 1224
+	xvld	$xr3, $sp, 1256
+	xvld	$xr4, $sp, 1288
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_22
+# %bb.21:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 288
+	b	.LBB33_36
+.LBB33_22:                              # %vector.body.interim.9
+	xvld	$xr0, $sp, 1320
+	xvld	$xr2, $sp, 1352
+	xvld	$xr3, $sp, 1384
+	xvld	$xr4, $sp, 1416
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_24
+# %bb.23:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 320
+	b	.LBB33_36
+.LBB33_24:                              # %vector.body.interim.10
+	xvld	$xr0, $sp, 1448
+	xvld	$xr2, $sp, 1480
+	xvld	$xr3, $sp, 1512
+	xvld	$xr4, $sp, 1544
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_26
+# %bb.25:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 352
+	b	.LBB33_36
+.LBB33_26:                              # %vector.body.interim.11
+	xvld	$xr0, $sp, 1576
+	xvld	$xr2, $sp, 1608
+	xvld	$xr3, $sp, 1640
+	xvld	$xr4, $sp, 1672
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_28
+# %bb.27:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 384
+	b	.LBB33_36
+.LBB33_28:                              # %vector.body.interim.12
+	xvld	$xr0, $sp, 1704
+	xvld	$xr2, $sp, 1736
+	xvld	$xr3, $sp, 1768
+	xvld	$xr4, $sp, 1800
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_30
+# %bb.29:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 416
+	b	.LBB33_36
+.LBB33_30:                              # %vector.body.interim.13
+	xvld	$xr0, $sp, 1832
+	xvld	$xr2, $sp, 1864
+	xvld	$xr3, $sp, 1896
+	xvld	$xr4, $sp, 1928
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_34
+# %bb.31:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 448
+	b	.LBB33_36
+.LBB33_32:
 	addi.d	$a0, $sp, 40
 	ori	$a1, $zero, 2088
 	add.d	$a1, $sp, $a1
@@ -12074,28 +14390,214 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_8E9_M_invokeERKSt9_Any_d
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1374:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB33_12:
+# %bb.33:                               # %.noexc.i.i
+.LBB33_34:                              # %vector.body.interim.14
+	xvld	$xr0, $sp, 1960
+	xvld	$xr2, $sp, 1992
+	xvld	$xr3, $sp, 2024
+	ori	$a0, $zero, 2056
+	add.d	$a0, $sp, $a0
+	xvld	$xr4, $a0, 0
+	xvseqi.w	$xr1, $xr0, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvseqi.w	$xr3, $xr3, 0
+	xvseqi.w	$xr4, $xr4, 0
+	xvor.v	$xr0, $xr1, $xr2
+	xvor.v	$xr0, $xr0, $xr3
+	xvor.v	$xr0, $xr0, $xr4
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
+	beqz	$a0, .LBB33_39
+# %bb.35:
+	xvpickve2gr.w	$a0, $xr1, 0
+	vinsgr2vr.h	$vr0, $a0, 0
+	xvpickve2gr.w	$a0, $xr1, 1
+	vinsgr2vr.h	$vr0, $a0, 1
+	xvpickve2gr.w	$a0, $xr1, 2
+	vinsgr2vr.h	$vr0, $a0, 2
+	xvpickve2gr.w	$a0, $xr1, 3
+	vinsgr2vr.h	$vr0, $a0, 3
+	xvpickve2gr.w	$a0, $xr1, 4
+	vinsgr2vr.h	$vr0, $a0, 4
+	xvpickve2gr.w	$a0, $xr1, 5
+	vinsgr2vr.h	$vr0, $a0, 5
+	xvpickve2gr.w	$a0, $xr1, 6
+	vinsgr2vr.h	$vr0, $a0, 6
+	xvpickve2gr.w	$a0, $xr1, 7
+	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickve2gr.w	$a0, $xr2, 0
+	vinsgr2vr.h	$vr1, $a0, 0
+	xvpickve2gr.w	$a0, $xr2, 1
+	vinsgr2vr.h	$vr1, $a0, 1
+	xvpickve2gr.w	$a0, $xr2, 2
+	vinsgr2vr.h	$vr1, $a0, 2
+	xvpickve2gr.w	$a0, $xr2, 3
+	vinsgr2vr.h	$vr1, $a0, 3
+	xvpickve2gr.w	$a0, $xr2, 4
+	vinsgr2vr.h	$vr1, $a0, 4
+	xvpickve2gr.w	$a0, $xr2, 5
+	vinsgr2vr.h	$vr1, $a0, 5
+	xvpickve2gr.w	$a0, $xr2, 6
+	vinsgr2vr.h	$vr1, $a0, 6
+	xvpickve2gr.w	$a0, $xr2, 7
+	vinsgr2vr.h	$vr1, $a0, 7
+	xvpickve2gr.w	$a0, $xr3, 0
+	vinsgr2vr.h	$vr2, $a0, 0
+	xvpickve2gr.w	$a0, $xr3, 1
+	vinsgr2vr.h	$vr2, $a0, 1
+	xvpickve2gr.w	$a0, $xr3, 2
+	vinsgr2vr.h	$vr2, $a0, 2
+	xvpickve2gr.w	$a0, $xr3, 3
+	vinsgr2vr.h	$vr2, $a0, 3
+	xvpickve2gr.w	$a0, $xr3, 4
+	vinsgr2vr.h	$vr2, $a0, 4
+	xvpickve2gr.w	$a0, $xr3, 5
+	vinsgr2vr.h	$vr2, $a0, 5
+	xvpickve2gr.w	$a0, $xr3, 6
+	vinsgr2vr.h	$vr2, $a0, 6
+	xvpickve2gr.w	$a0, $xr3, 7
+	vinsgr2vr.h	$vr2, $a0, 7
+	xvpickve2gr.w	$a0, $xr4, 0
+	vinsgr2vr.h	$vr3, $a0, 0
+	xvpickve2gr.w	$a0, $xr4, 1
+	vinsgr2vr.h	$vr3, $a0, 1
+	xvpickve2gr.w	$a0, $xr4, 2
+	vinsgr2vr.h	$vr3, $a0, 2
+	xvpickve2gr.w	$a0, $xr4, 3
+	vinsgr2vr.h	$vr3, $a0, 3
+	xvpickve2gr.w	$a0, $xr4, 4
+	vinsgr2vr.h	$vr3, $a0, 4
+	xvpickve2gr.w	$a0, $xr4, 5
+	vinsgr2vr.h	$vr3, $a0, 5
+	xvpickve2gr.w	$a0, $xr4, 6
+	vinsgr2vr.h	$vr3, $a0, 6
+	xvpickve2gr.w	$a0, $xr4, 7
+	vinsgr2vr.h	$vr3, $a0, 7
+	ori	$a0, $zero, 480
+.LBB33_36:                              # %vector.early.exit
+	vpickev.b	$vr3, $vr3, $vr3
+	vslli.b	$vr3, $vr3, 7
+	vsrai.b	$vr3, $vr3, 7
+	lu12i.w	$a1, 20576
+	ori	$a1, $a1, 1800
+	lu32i.d	$a1, 131844
+	lu52i.d	$a1, $a1, 16
+	vreplgr2vr.d	$vr4, $a1
+	vand.v	$vr3, $vr3, $vr4
+	vbsrl.v	$vr5, $vr3, 4
+	vmax.bu	$vr3, $vr5, $vr3
+	vbsrl.v	$vr5, $vr3, 2
+	vmax.bu	$vr3, $vr5, $vr3
+	vbsrl.v	$vr5, $vr3, 1
+	vmax.bu	$vr3, $vr5, $vr3
+	vpickve2gr.b	$a1, $vr3, 0
+	ori	$a2, $zero, 8
+	sub.d	$a1, $a2, $a1
+	andi	$a1, $a1, 255
+	addi.d	$a1, $a1, 24
+	vpickev.b	$vr2, $vr2, $vr2
+	vslli.b	$vr2, $vr2, 7
+	vsrai.b	$vr2, $vr2, 7
+	vand.v	$vr2, $vr2, $vr4
+	vbsrl.v	$vr3, $vr2, 4
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 2
+	vmax.bu	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr2, 1
+	vmax.bu	$vr2, $vr3, $vr2
+	vpickve2gr.b	$a3, $vr2, 0
+	sub.d	$a3, $a2, $a3
+	andi	$a3, $a3, 255
+	addi.d	$a4, $a3, 16
+	addi.d	$a3, $a3, -8
+	sltui	$a3, $a3, 1
+	masknez	$a4, $a4, $a3
+	maskeqz	$a1, $a1, $a3
+	or	$a1, $a1, $a4
+	vpickev.b	$vr1, $vr1, $vr1
+	vslli.b	$vr1, $vr1, 7
+	vsrai.b	$vr1, $vr1, 7
+	vand.v	$vr1, $vr1, $vr4
+	vbsrl.v	$vr2, $vr1, 4
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 2
+	vmax.bu	$vr1, $vr2, $vr1
+	vbsrl.v	$vr2, $vr1, 1
+	vmax.bu	$vr1, $vr2, $vr1
+	vpickve2gr.b	$a3, $vr1, 0
+	sub.d	$a3, $a2, $a3
+	andi	$a3, $a3, 255
+	addi.d	$a4, $a3, 8
+	addi.d	$a3, $a3, -8
+	sltui	$a3, $a3, 1
+	maskeqz	$a1, $a1, $a3
+	masknez	$a3, $a4, $a3
+	or	$a1, $a1, $a3
+	vpickev.b	$vr0, $vr0, $vr0
+	vslli.b	$vr0, $vr0, 7
+	vsrai.b	$vr0, $vr0, 7
+	vand.v	$vr0, $vr0, $vr4
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a3, $vr0, 0
+	sub.d	$a2, $a2, $a3
+	andi	$a2, $a2, 255
+	addi.d	$a3, $a2, -8
+	sltui	$a3, $a3, 1
+	maskeqz	$a1, $a1, $a3
+	masknez	$a2, $a2, $a3
+	or	$a1, $a1, $a2
+	add.d	$a0, $a0, $a1
+	alsl.d	$a0, $a0, $a0, 1
+	addi.w	$fp, $a0, 2
+	ld.d	$a3, $sp, 24
+	beqz	$a3, .LBB33_38
+.LBB33_37:
+.Ltmp1370:                              # EH_LABEL
+	addi.d	$a0, $sp, 8
+	addi.d	$a1, $sp, 8
+	ori	$a2, $zero, 3
+	jirl	$ra, $a3, 0
+.Ltmp1371:                              # EH_LABEL
+.LBB33_38:                              # %"_ZSt10__invoke_rIjRZ4mainE3$_8JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+	move	$a0, $fp
+	addi.d	$sp, $sp, 80
+	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 2032
+	ret
+.LBB33_39:
+	addi.w	$fp, $zero, -1
+	ld.d	$a3, $sp, 24
+	bnez	$a3, .LBB33_37
+	b	.LBB33_38
+.LBB33_40:
 .Ltmp1372:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB33_13:
+.LBB33_41:
 .Ltmp1375:                              # EH_LABEL
 	ld.d	$a3, $sp, 24
 	move	$fp, $a0
-	beqz	$a3, .LBB33_15
-# %bb.14:
+	beqz	$a3, .LBB33_43
+# %bb.42:
 .Ltmp1376:                              # EH_LABEL
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1377:                              # EH_LABEL
-.LBB33_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB33_43:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB33_16:
+.LBB33_44:
 .Ltmp1378:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -12114,26 +14616,22 @@ GCC_except_table33:
 	.uleb128 .Lcst_end17-.Lcst_begin17
 .Lcst_begin17:
 	.uleb128 .Ltmp1368-.Lfunc_begin17       # >> Call Site 1 <<
-	.uleb128 .Ltmp1369-.Ltmp1368            #   Call between .Ltmp1368 and .Ltmp1369
+	.uleb128 .Ltmp1374-.Ltmp1368            #   Call between .Ltmp1368 and .Ltmp1374
 	.uleb128 .Ltmp1375-.Lfunc_begin17       #     jumps to .Ltmp1375
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp1370-.Lfunc_begin17       # >> Call Site 2 <<
 	.uleb128 .Ltmp1371-.Ltmp1370            #   Call between .Ltmp1370 and .Ltmp1371
 	.uleb128 .Ltmp1372-.Lfunc_begin17       #     jumps to .Ltmp1372
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp1373-.Lfunc_begin17       # >> Call Site 3 <<
-	.uleb128 .Ltmp1374-.Ltmp1373            #   Call between .Ltmp1373 and .Ltmp1374
-	.uleb128 .Ltmp1375-.Lfunc_begin17       #     jumps to .Ltmp1375
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp1374-.Lfunc_begin17       # >> Call Site 4 <<
-	.uleb128 .Ltmp1376-.Ltmp1374            #   Call between .Ltmp1374 and .Ltmp1376
+	.uleb128 .Ltmp1371-.Lfunc_begin17       # >> Call Site 3 <<
+	.uleb128 .Ltmp1376-.Ltmp1371            #   Call between .Ltmp1371 and .Ltmp1376
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp1376-.Lfunc_begin17       # >> Call Site 5 <<
+	.uleb128 .Ltmp1376-.Lfunc_begin17       # >> Call Site 4 <<
 	.uleb128 .Ltmp1377-.Ltmp1376            #   Call between .Ltmp1376 and .Ltmp1377
 	.uleb128 .Ltmp1378-.Lfunc_begin17       #     jumps to .Ltmp1378
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp1377-.Lfunc_begin17       # >> Call Site 6 <<
+	.uleb128 .Ltmp1377-.Lfunc_begin17       # >> Call Site 5 <<
 	.uleb128 .Lfunc_end33-.Ltmp1377         #   Call between .Ltmp1377 and .Lfunc_end33
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
@@ -12183,55 +14681,57 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_9E9_M_invokeERKSt9_Any_d
 	.cfi_def_cfa_offset 2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 2008                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 2112
+	.cfi_offset 23, -24
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 2128
 	ld.d	$a2, $a1, 24
 	ld.d	$a0, $a1, 16
-	st.d	$zero, $sp, 24
+	st.d	$zero, $sp, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 8
-	st.d	$a2, $sp, 32
-	beqz	$a0, .LBB35_10
+	vst	$vr0, $sp, 16
+	st.d	$a2, $sp, 40
+	beqz	$a0, .LBB35_9
 # %bb.1:                                # %_ZNKSt8functionIFvPiEEclES0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
-	vst	$vr1, $sp, 8
-	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
-	addi.d	$fp, $sp, 40
-	ori	$a0, $zero, 2088
+	vst	$vr1, $sp, 16
+	st.d	$a0, $sp, 32
+	vst	$vr0, $a1, 16
+	addi.d	$s0, $sp, 48
+	ori	$a0, $zero, 2096
 	add.d	$a0, $sp, $a0
-	st.d	$fp, $a0, 0
+	st.d	$s0, $a0, 0
 .Ltmp1379:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	ori	$a1, $zero, 2088
+	addi.d	$a0, $sp, 16
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	jirl	$ra, $a2, 0
 .Ltmp1380:                              # EH_LABEL
 # %bb.2:                                # %.noexc3.i.i
-	move	$a4, $zero
-	ori	$a0, $zero, 4
-	ori	$a1, $zero, 2032
+	move	$a1, $zero
+	move	$a0, $zero
+	addi.w	$fp, $zero, -1
+	ori	$a2, $zero, 2048
 	.p2align	4, , 16
 .LBB35_3:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vldx	$vr0, $a4, $fp
+	vldx	$vr0, $a1, $s0
 	vseqi.w	$vr0, $vr0, 0
 	vmskltz.w	$vr1, $vr0
 	vpickve2gr.hu	$a3, $vr1, 0
-	addi.w	$a0, $a0, -4
-	bnez	$a3, .LBB35_5
-# %bb.4:                                # %vector.body
+	bnez	$a3, .LBB35_6
+# %bb.4:                                # %vector.body.interim
                                         #   in Loop: Header=BB35_3 Depth=1
-	move	$a2, $a4
-	addi.d	$a4, $a4, 16
-	bne	$a2, $a1, .LBB35_3
-.LBB35_5:                               # %middle.split
-	andi	$a1, $a3, 15
-	beqz	$a1, .LBB35_7
-# %bb.6:                                # %vector.early.exit
+	addi.d	$a1, $a1, 16
+	addi.w	$a0, $a0, -4
+	bne	$a1, $a2, .LBB35_3
+# %bb.5:                                # %middle.block
+	ld.d	$a3, $sp, 32
+	bnez	$a3, .LBB35_7
+	b	.LBB35_8
+.LBB35_6:                               # %vector.early.exit
 	vpickve2gr.w	$a1, $vr0, 3
 	andi	$a1, $a1, 1
 	ori	$a2, $zero, 4
@@ -12254,58 +14754,54 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_9E9_M_invokeERKSt9_Any_d
 	sub.d	$a0, $a1, $a0
 	alsl.d	$a0, $a0, $a0, 1
 	addi.w	$fp, $a0, 2
-	ld.d	$a3, $sp, 24
-	bnez	$a3, .LBB35_8
-	b	.LBB35_9
+	ld.d	$a3, $sp, 32
+	beqz	$a3, .LBB35_8
 .LBB35_7:
-	addi.w	$fp, $zero, -1
-	ld.d	$a3, $sp, 24
-	beqz	$a3, .LBB35_9
-.LBB35_8:
 .Ltmp1381:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1382:                              # EH_LABEL
-.LBB35_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_9JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
+.LBB35_8:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_9JSt8functionIFvPiEEEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES7_E4typeEOS8_DpOS9_.exit"
 	move	$a0, $fp
-	addi.d	$sp, $sp, 80
+	addi.d	$sp, $sp, 96
+	ld.d	$s0, $sp, 2008                  # 8-byte Folded Reload
 	ld.d	$fp, $sp, 2016                  # 8-byte Folded Reload
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB35_10:
-	addi.d	$a0, $sp, 40
-	ori	$a1, $zero, 2088
+.LBB35_9:
+	addi.d	$a0, $sp, 48
+	ori	$a1, $zero, 2096
 	add.d	$a1, $sp, $a1
 	st.d	$a0, $a1, 0
 .Ltmp1384:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt25__throw_bad_function_callv)
 	jirl	$ra, $ra, 0
 .Ltmp1385:                              # EH_LABEL
-# %bb.11:                               # %.noexc.i.i
-.LBB35_12:
+# %bb.10:                               # %.noexc.i.i
+.LBB35_11:
 .Ltmp1383:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB35_13:
+.LBB35_12:
 .Ltmp1386:                              # EH_LABEL
-	ld.d	$a3, $sp, 24
+	ld.d	$a3, $sp, 32
 	move	$fp, $a0
-	beqz	$a3, .LBB35_15
-# %bb.14:
+	beqz	$a3, .LBB35_14
+# %bb.13:
 .Ltmp1387:                              # EH_LABEL
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
 	jirl	$ra, $a3, 0
 .Ltmp1388:                              # EH_LABEL
-.LBB35_15:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
+.LBB35_14:                              # %_ZNSt14_Function_baseD2Ev.exit5.i.i
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB35_16:
+.LBB35_15:
 .Ltmp1389:                              # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -13050,10 +15546,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_10E9_M_invokeERKSt
 	beqz	$a0, .LBB48_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -13280,10 +15775,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_11E9_M_invokeERKSt
 	beqz	$a0, .LBB50_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -13510,10 +16004,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_12E9_M_invokeERKSt
 	beqz	$a0, .LBB52_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -13740,10 +16233,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_13E9_M_invokeERKSt
 	beqz	$a0, .LBB54_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -13970,10 +16462,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_14E9_M_invokeERKSt
 	beqz	$a0, .LBB56_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -14200,10 +16691,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_15E9_M_invokeERKSt
 	beqz	$a0, .LBB58_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -14432,10 +16922,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_16E9_M_invokeERKSt
 	beqz	$a0, .LBB60_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -14664,10 +17153,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_17E9_M_invokeERKSt
 	beqz	$a0, .LBB62_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -14896,10 +17384,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_18E9_M_invokeERKSt
 	beqz	$a0, .LBB64_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -15128,10 +17615,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_19E9_M_invokeERKSt
 	beqz	$a0, .LBB66_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -15360,10 +17846,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_20E9_M_invokeERKSt
 	beqz	$a0, .LBB68_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -15590,10 +18075,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_21E9_M_invokeERKSt
 	beqz	$a0, .LBB70_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -15820,10 +18304,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_22E9_M_invokeERKSt
 	beqz	$a0, .LBB72_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -16050,10 +18533,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_23E9_M_invokeERKSt
 	beqz	$a0, .LBB74_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -16280,10 +18762,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_24E9_M_invokeERKSt
 	beqz	$a0, .LBB76_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 40
 	add.d	$s0, $sp, $a0
@@ -17063,10 +19544,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_25E9_M_invokeERKSt
 	beqz	$a0, .LBB87_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -17304,10 +19784,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_26E9_M_invokeERKSt
 	beqz	$a0, .LBB89_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -17545,10 +20024,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_27E9_M_invokeERKSt
 	beqz	$a0, .LBB91_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -17786,10 +20264,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_28E9_M_invokeERKSt
 	beqz	$a0, .LBB93_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -18027,10 +20504,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_29E9_M_invokeERKSt
 	beqz	$a0, .LBB95_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -18268,10 +20744,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_30E9_M_invokeERKSt
 	beqz	$a0, .LBB97_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -18513,10 +20988,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_31E9_M_invokeERKSt
 	beqz	$a0, .LBB99_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -18758,10 +21232,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_32E9_M_invokeERKSt
 	beqz	$a0, .LBB101_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -19003,10 +21476,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_33E9_M_invokeERKSt
 	beqz	$a0, .LBB103_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -19248,10 +21720,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_34E9_M_invokeERKSt
 	beqz	$a0, .LBB105_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 48
 	add.d	$s0, $sp, $a0
@@ -20052,10 +22523,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_35E9_M_invokeERKSt
 	beqz	$a0, .LBB116_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -20282,10 +22752,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_36E9_M_invokeERKSt
 	beqz	$a0, .LBB118_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -20512,10 +22981,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_37E9_M_invokeERKSt
 	beqz	$a0, .LBB120_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -20742,10 +23210,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_38E9_M_invokeERKSt
 	beqz	$a0, .LBB122_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -20972,10 +23439,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_39E9_M_invokeERKSt
 	beqz	$a0, .LBB124_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -21202,10 +23668,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_40E9_M_invokeERKSt
 	beqz	$a0, .LBB126_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -21434,10 +23899,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_41E9_M_invokeERKSt
 	beqz	$a0, .LBB128_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -21666,10 +24130,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_42E9_M_invokeERKSt
 	beqz	$a0, .LBB130_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -21898,10 +24361,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_43E9_M_invokeERKSt
 	beqz	$a0, .LBB132_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -22130,10 +24592,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_44E9_M_invokeERKSt
 	beqz	$a0, .LBB134_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 44
 	add.d	$s0, $sp, $a0
@@ -22925,10 +25386,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_45E9_M_invokeERKSt
 	beqz	$a0, .LBB145_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 36
 	add.d	$s0, $sp, $a0
@@ -23166,10 +25626,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_46E9_M_invokeERKSt
 	beqz	$a0, .LBB147_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 36
 	add.d	$s0, $sp, $a0
@@ -23407,10 +25866,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_47E9_M_invokeERKSt
 	beqz	$a0, .LBB149_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 36
 	add.d	$s0, $sp, $a0
@@ -23648,10 +26106,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_48E9_M_invokeERKSt
 	beqz	$a0, .LBB151_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 36
 	add.d	$s0, $sp, $a0
@@ -23889,10 +26346,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_49E9_M_invokeERKSt
 	beqz	$a0, .LBB153_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 36
 	add.d	$s0, $sp, $a0
@@ -25135,10 +27591,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_50E9_M_invokeERKSt
 	beqz	$a0, .LBB164_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -25328,10 +27783,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_51E9_M_invokeERKSt
 	beqz	$a0, .LBB166_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -25521,10 +27975,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	beqz	$a0, .LBB168_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -25714,10 +28167,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_53E9_M_invokeERKSt
 	beqz	$a0, .LBB170_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -25907,10 +28359,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_54E9_M_invokeERKSt
 	beqz	$a0, .LBB172_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -27113,10 +29564,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_55E9_M_invokeERKSt
 	beqz	$a0, .LBB183_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 560
 	st.d	$s0, $sp, 832
 	addi.d	$s1, $sp, 304
@@ -27317,10 +29767,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_56E9_M_invokeERKSt
 	beqz	$a0, .LBB185_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 560
 	st.d	$s0, $sp, 832
 	addi.d	$s1, $sp, 304
@@ -27521,10 +29970,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_57E9_M_invokeERKSt
 	beqz	$a0, .LBB187_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 560
 	st.d	$s0, $sp, 832
 	addi.d	$s1, $sp, 304
@@ -27725,10 +30173,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_58E9_M_invokeERKSt
 	beqz	$a0, .LBB189_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 560
 	st.d	$s0, $sp, 832
 	addi.d	$s1, $sp, 304
@@ -27929,10 +30376,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_59E9_M_invokeERKSt
 	beqz	$a0, .LBB191_13
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 16
 	st.d	$a0, $sp, 32
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 560
 	st.d	$s0, $sp, 832
 	addi.d	$s1, $sp, 304
@@ -28131,10 +30577,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_60E9_M_invokeERKSt
 	beqz	$a0, .LBB193_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -28326,10 +30771,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_61E9_M_invokeERKSt
 	beqz	$a0, .LBB195_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -28521,10 +30965,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	beqz	$a0, .LBB197_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -28716,10 +31159,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_63E9_M_invokeERKSt
 	beqz	$a0, .LBB199_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296
@@ -28911,10 +31353,9 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_64E9_M_invokeERKSt
 	beqz	$a0, .LBB201_11
 # %bb.1:                                # %_ZNKSt8functionIFvPiS0_S0_EEclES0_S0_S0_.exit.i.i.i
 	vld	$vr1, $a1, 0
-	addi.d	$a1, $a1, 16
 	vst	$vr1, $sp, 8
 	st.d	$a0, $sp, 24
-	vst	$vr0, $a1, 0
+	vst	$vr0, $a1, 16
 	addi.d	$s0, $sp, 552
 	st.d	$s0, $sp, 824
 	addi.d	$s1, $sp, 296

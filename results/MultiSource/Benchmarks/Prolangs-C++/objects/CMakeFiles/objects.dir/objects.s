@@ -1073,7 +1073,7 @@ _ZN6ObjectD2Ev:                         # @_ZN6ObjectD2Ev
 	.type	_ZN5TableD0Ev,@function
 _ZN5TableD0Ev:                          # @_ZN5TableD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end19:
 	.size	_ZN5TableD0Ev, .Lfunc_end19-_ZN5TableD0Ev
                                         # -- End function

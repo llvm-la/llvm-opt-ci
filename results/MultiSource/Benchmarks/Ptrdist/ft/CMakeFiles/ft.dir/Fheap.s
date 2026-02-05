@@ -337,10 +337,10 @@ DeleteMin:                              # @DeleteMin
 	st.w	$a0, $s6, 0
 	b	.LBB7_11
 .LBB7_19:
-	ld.d	$a0, $fp, 16
-	beqz	$a0, .LBB7_35
+	ld.d	$s2, $fp, 16
+	beqz	$s2, .LBB7_35
 # %bb.20:                               # %.preheader.preheader
-	move	$s3, $a0
+	move	$a0, $s2
 	b	.LBB7_23
 	.p2align	4, , 16
 .LBB7_21:                               # %._crit_edge131.loopexit
@@ -348,59 +348,59 @@ DeleteMin:                              # @DeleteMin
 	ld.d	$a0, $fp, 16
 .LBB7_22:                               # %._crit_edge131
                                         #   in Loop: Header=BB7_23 Depth=1
-	st.d	$s3, $s4, 0
+	st.d	$s2, $s4, 0
 	slt	$a2, $s1, $a1
 	masknez	$a3, $s1, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$s1, $a1, $a3
-	move	$s3, $s2
-	beq	$s2, $a0, .LBB7_35
+	move	$s2, $s3
+	beq	$s3, $a0, .LBB7_35
 .LBB7_23:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_28 Depth 2
-	ld.d	$s2, $s3, 24
-	ld.w	$a1, $s3, 40
-	st.d	$s3, $s3, 24
-	st.d	$s3, $s3, 32
-	st.d	$zero, $s3, 8
+	ld.d	$s3, $s2, 24
+	ld.w	$a1, $s2, 40
+	st.d	$s2, $s2, 24
+	st.d	$s2, $s2, 32
+	st.d	$zero, $s2, 8
 	slli.d	$a2, $a1, 3
 	ldx.d	$a2, $s0, $a2
 	alsl.d	$s4, $a1, $s0, 3
 	beqz	$a2, .LBB7_22
 # %bb.24:                               # %.lr.ph130.preheader
                                         #   in Loop: Header=BB7_23 Depth=1
-	addi.d	$s5, $s3, 40
+	addi.d	$s5, $s2, 40
 	b	.LBB7_28
 	.p2align	4, , 16
 .LBB7_25:                               #   in Loop: Header=BB7_28 Depth=2
 	ld.d	$a2, $a0, 24
-	ld.d	$a3, $s3, 24
-	st.d	$s3, $a2, 32
+	ld.d	$a3, $s2, 24
+	st.d	$s2, $a2, 32
 	st.d	$a0, $a3, 32
 	st.d	$a3, $a0, 24
-	st.d	$a2, $s3, 24
+	st.d	$a2, $s2, 24
 .LBB7_26:                               # %AddEntry.exit114
                                         #   in Loop: Header=BB7_28 Depth=2
 	ld.w	$a0, $a1, 40
 	ld.w	$a2, $s5, 0
-	st.d	$a1, $s3, 8
-	ld.d	$s3, $s4, 0
+	st.d	$a1, $s2, 8
+	ld.d	$s2, $s4, 0
 	add.d	$a0, $a0, $a2
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a1, 40
 .LBB7_27:                               #   in Loop: Header=BB7_28 Depth=2
-	ld.w	$a1, $s3, 40
+	ld.w	$a1, $s2, 40
 	st.d	$zero, $s4, 0
 	slli.d	$a0, $a1, 3
 	ldx.d	$a2, $s0, $a0
-	addi.d	$s5, $s3, 40
+	addi.d	$s5, $s2, 40
 	alsl.d	$s4, $a1, $s0, 3
 	beqz	$a2, .LBB7_21
 .LBB7_28:                               # %.lr.ph130
                                         #   Parent Loop BB7_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $a2, 0
-	ld.d	$a1, $s3, 0
+	ld.d	$a1, $s2, 0
 	pcaddu18i	$ra, %call36(LessThan)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s4, 0
@@ -409,11 +409,11 @@ DeleteMin:                              # @DeleteMin
 	ld.d	$a0, $a1, 16
 	bnez	$a0, .LBB7_25
 # %bb.30:                               #   in Loop: Header=BB7_28 Depth=2
-	st.d	$s3, $a1, 16
+	st.d	$s2, $a1, 16
 	b	.LBB7_26
 	.p2align	4, , 16
 .LBB7_31:                               #   in Loop: Header=BB7_28 Depth=2
-	ld.d	$a0, $s3, 16
+	ld.d	$a0, $s2, 16
 	beqz	$a0, .LBB7_33
 # %bb.32:                               #   in Loop: Header=BB7_28 Depth=2
 	ld.d	$a2, $a0, 24
@@ -424,12 +424,12 @@ DeleteMin:                              # @DeleteMin
 	st.d	$a2, $a1, 24
 	b	.LBB7_34
 .LBB7_33:                               #   in Loop: Header=BB7_28 Depth=2
-	st.d	$a1, $s3, 16
+	st.d	$a1, $s2, 16
 .LBB7_34:                               # %AddEntry.exit115
                                         #   in Loop: Header=BB7_28 Depth=2
 	ld.w	$a0, $s5, 0
 	ld.w	$a2, $a1, 40
-	st.d	$s3, $a1, 8
+	st.d	$s2, $a1, 8
 	add.d	$a0, $a0, $a2
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s5, 0

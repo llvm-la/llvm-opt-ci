@@ -5,45 +5,41 @@
 	.type	_ZN11AccessFlags8toStringEPc,@function
 _ZN11AccessFlags8toStringEPc:           # @_ZN11AccessFlags8toStringEPc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a1
 	st.b	$zero, $a1, 0
-	ld.hu	$a0, $a0, 0
-	beqz	$a0, .LBB0_5
+	ld.hu	$s0, $a0, 0
+	beqz	$s0, .LBB0_5
 # %bb.1:                                # %.lr.ph.preheader
-	pcalau12i	$a1, %pc_hi20(flag2str)
-	addi.d	$s0, $a1, %pc_lo12(flag2str)
-	ori	$s1, $zero, 1
+	pcalau12i	$a0, %pc_hi20(flag2str)
+	addi.d	$s1, $a0, %pc_lo12(flag2str)
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_3 Depth=1
-	srli.d	$a0, $s2, 1
-	addi.d	$s0, $s0, 8
-	bgeu	$s1, $s2, .LBB0_5
+	srli.d	$s0, $s0, 1
+	addi.d	$s1, $s1, 8
+	beqz	$s0, .LBB0_5
 .LBB0_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$s2, $a0
-	andi	$a0, $a0, 1
+	andi	$a0, $s0, 1
 	beqz	$a0, .LBB0_2
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $s1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
 	b	.LBB0_2
 .LBB0_5:                                # %._crit_edge
 	move	$a0, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end0:
 	.size	_ZN11AccessFlags8toStringEPc, .Lfunc_end0-_ZN11AccessFlags8toStringEPc
@@ -53,26 +49,24 @@ _ZN11AccessFlags8toStringEPc:           # @_ZN11AccessFlags8toStringEPc
 	.type	_ZN11AccessFlags6strlenEv,@function
 _ZN11AccessFlags6strlenEv:              # @_ZN11AccessFlags6strlenEv
 # %bb.0:
-	ld.hu	$a3, $a0, 0
-	beqz	$a3, .LBB1_5
+	ld.hu	$a0, $a0, 0
+	beqz	$a0, .LBB1_5
 # %bb.1:                                # %.lr.ph.preheader
-	pcalau12i	$a0, %pc_hi20(flag2strlen)
-	addi.d	$a0, $a0, %pc_lo12(flag2strlen)
+	pcalau12i	$a1, %pc_hi20(flag2strlen)
+	addi.d	$a2, $a1, %pc_lo12(flag2strlen)
 	move	$a1, $zero
-	ori	$a2, $zero, 1
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
-	srli.d	$a3, $a4, 1
-	addi.d	$a0, $a0, 4
-	bgeu	$a2, $a4, .LBB1_6
+	srli.d	$a0, $a0, 1
+	addi.d	$a2, $a2, 4
+	beqz	$a0, .LBB1_6
 .LBB1_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a4, $a3
-	andi	$a3, $a3, 1
+	andi	$a3, $a0, 1
 	beqz	$a3, .LBB1_2
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
-	ld.h	$a3, $a0, 0
+	ld.h	$a3, $a2, 0
 	add.d	$a1, $a1, $a3
 	b	.LBB1_2
 .LBB1_5:

@@ -337,7 +337,7 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 # %bb.1:
 	ld.bu	$a0, $sp, 86
 	ori	$a1, $zero, 255
-	move	$s7, $zero
+	move	$s5, $zero
 	bne	$a0, $a1, .LBB1_40
 # %bb.2:
 	ld.bu	$a0, $sp, 87
@@ -346,47 +346,51 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 # %bb.3:                                # %.preheader
 	addi.d	$a1, $sp, 86
 	ori	$a2, $zero, 4
-	ori	$s1, $zero, 4
+	ori	$s3, $zero, 4
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s1, .LBB1_39
+	bne	$a0, $s3, .LBB1_39
 # %bb.4:                                # %.lr.ph
-	ori	$s3, $zero, 255
-	addi.w	$s5, $zero, -3
-	pcalau12i	$a0, %pc_hi20(.L.str.9)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
+	ori	$s1, $zero, 255
+	addi.w	$s7, $zero, -3
+	lu12i.w	$a0, 476918
+	ori	$a0, $a0, 2128
+	lu32i.d	$a0, -494737
+	lu52i.d	$a0, $a0, 1782
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	lu12i.w	$a0, 132870
+	ori	$a0, $a0, 3944
+	lu32i.d	$a0, 11827
+	lu52i.d	$a0, $a0, 3
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	lu12i.w	$a0, 316564
-	ori	$s6, $a0, 568
+	ori	$s2, $a0, 568
 	addi.w	$s0, $zero, -1
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.13)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ori	$s7, $zero, 1
+	ori	$s5, $zero, 1
 	b	.LBB1_7
 	.p2align	4, , 16
 .LBB1_5:                                #   in Loop: Header=BB1_7 Depth=1
-	add.d	$a0, $s2, $s8
-	addi.d	$s2, $a0, -2
+	add.d	$a0, $s4, $s6
+	addi.d	$s4, $a0, -2
 	move	$a0, $fp
-	move	$a1, $s2
+	move	$a1, $s4
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB1_42
+	bne	$a0, $s4, .LBB1_42
 .LBB1_6:                                # %.backedge
                                         #   in Loop: Header=BB1_7 Depth=1
 	addi.d	$a1, $sp, 86
@@ -394,47 +398,45 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s1, .LBB1_39
+	bne	$a0, $s3, .LBB1_39
 .LBB1_7:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_18 Depth 2
 	ld.bu	$a1, $sp, 86
 	ld.bu	$a0, $sp, 87
-	bne	$a1, $s3, .LBB1_10
+	bne	$a1, $s1, .LBB1_10
 # %bb.8:                                #   in Loop: Header=BB1_7 Depth=1
-	bne	$a0, $s3, .LBB1_10
+	bne	$a0, $s1, .LBB1_10
 # %bb.9:                                #   in Loop: Header=BB1_7 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $fp
-	move	$a1, $s5
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 	b	.LBB1_6
 	.p2align	4, , 16
 .LBB1_10:                               #   in Loop: Header=BB1_7 Depth=1
 	addi.d	$a2, $a1, -255
-	sltui	$a2, $a2, 1
-	addi.d	$a3, $a0, -254
-	ld.b	$a4, $sp, 88
-	sltui	$a3, $a3, 1
-	and	$a3, $a2, $a3
-	ld.b	$a5, $sp, 89
-	andi	$a2, $a4, 255
 	sltui	$a4, $a2, 1
-	and	$a4, $a3, $a4
-	andi	$a3, $a5, 255
+	addi.d	$a3, $a0, -254
+	ld.bu	$a2, $sp, 88
+	sltui	$a5, $a3, 1
+	ld.bu	$a3, $sp, 89
+	and	$a4, $a4, $a5
+	sltui	$a5, $a2, 1
+	and	$a4, $a4, $a5
 	sltui	$a5, $a3, 2
 	and	$a4, $a4, $a5
 	bnez	$a4, .LBB1_41
 # %bb.11:                               #   in Loop: Header=BB1_7 Depth=1
-	bne	$a1, $s3, .LBB1_41
+	bne	$a1, $s1, .LBB1_41
 # %bb.12:                               #   in Loop: Header=BB1_7 Depth=1
 	ori	$a1, $zero, 218
 	beq	$a0, $a1, .LBB1_39
 # %bb.13:                               #   in Loop: Header=BB1_7 Depth=1
 	slli.d	$a0, $a2, 8
-	or	$s2, $a0, $a3
+	or	$s4, $a0, $a3
 	ori	$a0, $zero, 2
-	bltu	$s2, $a0, .LBB1_40
+	bltu	$s4, $a0, .LBB1_40
 # %bb.14:                               #   in Loop: Header=BB1_7 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $fp
@@ -442,7 +444,7 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 	ld.bu	$a1, $sp, 87
-	move	$s8, $a0
+	move	$s6, $a0
 	ori	$a0, $zero, 237
 	bne	$a1, $a0, .LBB1_5
 # %bb.15:                               #   in Loop: Header=BB1_7 Depth=1
@@ -454,14 +456,16 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	ori	$a1, $zero, 14
 	bne	$a0, $a1, .LBB1_5
 # %bb.16:                               #   in Loop: Header=BB1_7 Depth=1
-	addi.d	$a0, $sp, 90
-	ori	$a2, $zero, 14
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 90
+	ld.d	$a1, $sp, 96
+	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB1_5
 # %bb.17:                               #   in Loop: Header=BB1_7 Depth=1
-	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
@@ -473,20 +477,21 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	move	$s5, $a0
+	move	$s7, $a0
 	addi.d	$a1, $sp, 115
 	ori	$a2, $zero, 4
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s1, .LBB1_21
+	bne	$a0, $s3, .LBB1_21
 # %bb.19:                               #   in Loop: Header=BB1_18 Depth=2
 	ld.w	$a0, $sp, 115
-	beq	$a0, $s6, .LBB1_25
+	beq	$a0, $s2, .LBB1_25
 # %bb.20:                               #   in Loop: Header=BB1_18 Depth=2
 	st.b	$zero, $sp, 119
+	pcalau12i	$a0, %pc_hi20(.L.str.13)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	addi.d	$a1, $sp, 115
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB1_22
@@ -498,7 +503,7 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	jirl	$ra, $ra, 0
 .LBB1_22:                               # %jpeg_check_photoshop_8bim.exit
                                         #   in Loop: Header=BB1_18 Depth=2
-	move	$s4, $s0
+	move	$s8, $s0
 .LBB1_23:                               # %jpeg_check_photoshop_8bim.exit
                                         #   in Loop: Header=BB1_18 Depth=2
 	ori	$a2, $zero, 1
@@ -506,10 +511,10 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	bnez	$s4, .LBB1_37
+	bnez	$s8, .LBB1_37
 # %bb.24:                               # %jpeg_check_photoshop_8bim.exit
                                         #   in Loop: Header=BB1_18 Depth=2
-	blt	$s5, $a0, .LBB1_18
+	blt	$s7, $a0, .LBB1_18
 	b	.LBB1_37
 .LBB1_25:                               #   in Loop: Header=BB1_18 Depth=2
 	addi.d	$a1, $sp, 112
@@ -517,7 +522,7 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	move	$s4, $s0
+	move	$s8, $s0
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB1_23
 # %bb.26:                               #   in Loop: Header=BB1_18 Depth=2
@@ -525,7 +530,7 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	revb.2h	$a0, $a0
 	st.h	$a0, $sp, 112
 	bstrpick.d	$a1, $a0, 15, 0
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $sp, 111
@@ -533,7 +538,7 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	move	$s4, $s0
+	move	$s8, $s0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB1_23
 # %bb.27:                               #   in Loop: Header=BB1_18 Depth=2
@@ -548,13 +553,13 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	move	$s4, $s0
-	bne	$a0, $s1, .LBB1_23
+	move	$s8, $s0
+	bne	$a0, $s3, .LBB1_23
 # %bb.28:                               #   in Loop: Header=BB1_18 Depth=2
 	ld.w	$a1, $sp, 104
 	revb.2w	$a0, $a1
 	st.w	$a0, $sp, 104
-	move	$s4, $s0
+	move	$s8, $s0
 	beqz	$a1, .LBB1_23
 # %bb.29:                               #   in Loop: Header=BB1_18 Depth=2
 	andi	$a1, $a0, 1
@@ -587,9 +592,9 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cli_check_jpeg_exploit)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s8, $a0
 	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB1_35
+	bne	$s8, $a0, .LBB1_35
 # %bb.34:                               #   in Loop: Header=BB1_18 Depth=2
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -609,20 +614,20 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	move	$s4, $zero
+	move	$s8, $zero
 	b	.LBB1_23
 .LBB1_37:                               #   in Loop: Header=BB1_7 Depth=1
 	addi.w	$a0, $zero, -1
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	beq	$s4, $a0, .LBB1_5
+	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
+	beq	$s8, $a0, .LBB1_5
 # %bb.38:                               # %jpeg_check_photoshop.exit
                                         #   in Loop: Header=BB1_7 Depth=1
-	beqz	$s4, .LBB1_5
+	beqz	$s8, .LBB1_5
 	b	.LBB1_40
 .LBB1_39:
-	move	$s7, $zero
+	move	$s5, $zero
 .LBB1_40:                               # %.loopexit
-	move	$a0, $s7
+	move	$a0, $s5
 	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
@@ -638,10 +643,10 @@ cli_check_jpeg_exploit:                 # @cli_check_jpeg_exploit
 	ret
 .LBB1_41:                               # %.loopexit.split.loop.exit54
 	addi.d	$a0, $a4, -1
-	ori	$s7, $a0, 1
+	ori	$s5, $a0, 1
 	b	.LBB1_40
 .LBB1_42:
-	addi.w	$s7, $zero, -1
+	addi.w	$s5, $zero, -1
 	b	.LBB1_40
 .Lfunc_end1:
 	.size	cli_check_jpeg_exploit, .Lfunc_end1-cli_check_jpeg_exploit

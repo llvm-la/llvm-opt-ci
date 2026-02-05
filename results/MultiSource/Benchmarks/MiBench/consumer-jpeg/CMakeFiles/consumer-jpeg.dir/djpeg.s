@@ -386,7 +386,7 @@ COM_handler:                            # @COM_handler
 	addi.d	$s5, $a0, -2
 	ori	$s7, $zero, 10
 	ori	$s8, $zero, 13
-	ori	$s0, $zero, 92
+	ori	$s1, $zero, 92
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.49)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -408,7 +408,7 @@ COM_handler:                            # @COM_handler
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s6, $fp, 32
 	ld.d	$a0, $s6, 8
-	move	$s1, $s2
+	move	$s0, $s2
 	bnez	$a0, .LBB1_20
 # %bb.18:                               #   in Loop: Header=BB1_17 Depth=1
 	ld.d	$a1, $s6, 24
@@ -438,7 +438,7 @@ COM_handler:                            # @COM_handler
 	beq	$s2, $s8, .LBB1_15
 # %bb.22:                               # %jpeg_getc.exit27.us
                                         #   in Loop: Header=BB1_17 Depth=1
-	beq	$s2, $s0, .LBB1_26
+	beq	$s2, $s1, .LBB1_26
 # %bb.23:                               #   in Loop: Header=BB1_17 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
@@ -455,7 +455,7 @@ COM_handler:                            # @COM_handler
 	b	.LBB1_16
 	.p2align	4, , 16
 .LBB1_25:                               #   in Loop: Header=BB1_17 Depth=1
-	bne	$s1, $s8, .LBB1_15
+	bne	$s0, $s8, .LBB1_15
 	b	.LBB1_16
 .LBB1_26:                               #   in Loop: Header=BB1_17 Depth=1
 	ld.d	$a3, $s4, 0
@@ -503,19 +503,19 @@ COM_handler:                            # @COM_handler
 	.type	parse_switches,@function
 parse_switches:                         # @parse_switches
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -272
+	st.d	$ra, $sp, 264                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 136                   # 8-byte Folded Spill
 	move	$s1, $a1
 	move	$s2, $a0
 	pcalau12i	$s8, %pc_hi20(requested_fmt)
@@ -536,52 +536,55 @@ parse_switches:                         # @parse_switches
 	addi.d	$s5, $a0, %pc_lo12(.L.str.51)
 	pcalau12i	$a0, %pc_hi20(.L.str.52)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.52)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.53)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.53)
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.54)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.54)
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.55)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.55)
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.57)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.57)
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.61)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.61)
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.65)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.65)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.66)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.66)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.59)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.59)
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.70)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.70)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.71)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.71)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.72)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.72)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.73)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.73)
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.74)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.74)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.76)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.76)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.77)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.77)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	lu12i.w	$a0, 244
+	ori	$a0, $a0, 576
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$s4, $zero, 1
 	b	.LBB2_5
 	.p2align	4, , 16
@@ -611,28 +614,28 @@ parse_switches:                         # @parse_switches
 .LBB2_8:                                #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_12
 # %bb.9:                                #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_12
 # %bb.10:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_12
 # %bb.11:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_15
@@ -644,13 +647,13 @@ parse_switches:                         # @parse_switches
 	ldx.d	$a0, $fp, $a0
 	pcalau12i	$a1, %pc_hi20(.L.str.56)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.56)
-	addi.d	$a2, $sp, 164
+	addi.d	$a2, $sp, 180
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB2_75
 # %bb.14:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.w	$a0, $sp, 164
+	ld.w	$a0, $sp, 180
 	st.w	$a0, $s2, 112
 	ori	$s6, $zero, 1
 	st.w	$a1, $s2, 100
@@ -658,7 +661,7 @@ parse_switches:                         # @parse_switches
 .LBB2_15:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 2
 	move	$a0, $s3
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_19
@@ -680,7 +683,7 @@ parse_switches:                         # @parse_switches
 .LBB2_19:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 2
 	move	$a0, $s3
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_25
@@ -715,14 +718,14 @@ parse_switches:                         # @parse_switches
 .LBB2_25:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_27
 # %bb.26:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_35
@@ -774,7 +777,7 @@ parse_switches:                         # @parse_switches
 .LBB2_35:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_39
@@ -793,7 +796,7 @@ parse_switches:                         # @parse_switches
 .LBB2_39:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s3
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_42
@@ -817,14 +820,14 @@ parse_switches:                         # @parse_switches
 .LBB2_42:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 2
 	move	$a0, $s3
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB2_44
 # %bb.43:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 2
 	move	$a0, $s3
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_45
@@ -834,7 +837,7 @@ parse_switches:                         # @parse_switches
 .LBB2_45:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 3
 	move	$a0, $s3
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_50
@@ -842,7 +845,7 @@ parse_switches:                         # @parse_switches
 	addi.w	$s4, $s4, 1
 	bge	$s4, $s1, .LBB2_75
 # %bb.47:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	beqz	$a0, .LBB2_4
 # %bb.48:                               #   in Loop: Header=BB2_5 Depth=1
 	slli.d	$a0, $s4, 3
@@ -866,44 +869,44 @@ parse_switches:                         # @parse_switches
 .LBB2_50:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 3
 	move	$a0, $s3
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_54
 # %bb.51:                               #   in Loop: Header=BB2_5 Depth=1
 	addi.w	$s4, $s4, 1
 	ori	$a0, $zero, 120
-	st.b	$a0, $sp, 151
+	st.b	$a0, $sp, 167
 	bge	$s4, $s1, .LBB2_75
 # %bb.52:                               #   in Loop: Header=BB2_5 Depth=1
 	slli.d	$a0, $s4, 3
 	ldx.d	$a0, $fp, $a0
 	pcalau12i	$a1, %pc_hi20(.L.str.75)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.75)
-	addi.d	$a2, $sp, 152
-	addi.d	$a3, $sp, 151
+	addi.d	$a2, $sp, 168
+	addi.d	$a3, $sp, 167
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	blez	$a0, .LBB2_75
 # %bb.53:                               #   in Loop: Header=BB2_5 Depth=1
-	ld.bu	$a0, $sp, 151
-	ld.d	$a1, $sp, 152
+	ld.bu	$a0, $sp, 167
 	andi	$a0, $a0, 223
 	addi.d	$a0, $a0, -77
 	sltui	$a0, $a0, 1
-	ori	$a4, $zero, 1000
-	mul.d	$a2, $a1, $a4
-	masknez	$a1, $a1, $a0
+	ld.d	$a1, $sp, 168
+	ori	$a2, $zero, 1000
+	masknez	$a2, $a2, $a0
 	ld.d	$a3, $s2, 8
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
-	mul.d	$a0, $a0, $a4
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	maskeqz	$a0, $a4, $a0
+	or	$a0, $a0, $a2
+	mul.d	$a0, $a0, $a1
 	st.d	$a0, $a3, 88
 	b	.LBB2_4
 .LBB2_54:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 3
 	move	$a0, $s3
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_56
@@ -913,7 +916,7 @@ parse_switches:                         # @parse_switches
 .LBB2_56:                               #   in Loop: Header=BB2_5 Depth=1
 	ori	$a2, $zero, 3
 	move	$a0, $s3
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(keymatch)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_58
@@ -1015,18 +1018,18 @@ parse_switches:                         # @parse_switches
 	b	.LBB2_60
 .LBB2_74:                               # %._crit_edge
 	move	$a0, $s4
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 264                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 272
 	ret
 .LBB2_75:
 	pcaddu18i	$ra, %call36(usage)

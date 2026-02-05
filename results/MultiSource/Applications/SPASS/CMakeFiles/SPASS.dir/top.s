@@ -4750,7 +4750,7 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	pcaddu18i	$ra, %call36(clause_IsHornClause)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB6_3
-.LBB6_1:
+# %bb.1:
 	move	$s6, $zero
 .LBB6_2:                                # %list_Delete.exit104
 	move	$a0, $s6
@@ -4821,25 +4821,25 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	b	.LBB6_6
 .LBB6_9:                                # %.preheader110
 	add.w	$a4, $a2, $a1
-	bge	$s4, $a4, .LBB6_14
+	bge	$s4, $a4, .LBB6_13
 # %bb.10:
 	move	$s2, $zero
 	move	$s6, $zero
 	add.d	$a0, $a4, $a3
 	addi.w	$a0, $a0, -1
-	bgez	$a0, .LBB6_31
-	b	.LBB6_36
+	bgez	$a0, .LBB6_30
+	b	.LBB6_35
 .LBB6_11:
 	ld.w	$a2, $s0, 72
 	add.w	$a1, $a1, $a0
 	add.d	$a0, $a1, $a2
+	move	$s6, $zero
 	addi.w	$a0, $a0, -1
-	blt	$a0, $a1, .LBB6_1
-# %bb.12:                               # %.lr.ph149.preheader
-	move	$fp, $zero
+	blt	$a0, $a1, .LBB6_2
 	.p2align	4, , 16
-.LBB6_13:                               # %.lr.ph149
+.LBB6_12:                               # %.lr.ph149
                                         # =>This Inner Loop Header: Depth=1
+	move	$fp, $s6
 	move	$s1, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -4851,82 +4851,81 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	ld.w	$a1, $s0, 68
 	add.w	$a1, $a1, $a0
 	addi.d	$a0, $s1, -1
-	move	$fp, $s6
-	blt	$a1, $s1, .LBB6_13
+	blt	$a1, $s1, .LBB6_12
 	b	.LBB6_2
-.LBB6_14:                               # %.lr.ph130.preheader
+.LBB6_13:                               # %.lr.ph130.preheader
 	move	$s6, $zero
 	move	$s2, $zero
 	move	$a0, $s4
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	b	.LBB6_17
+	b	.LBB6_16
 	.p2align	4, , 16
-.LBB6_15:                               # %list_PointerMember.exit.sink.split
-                                        #   in Loop: Header=BB6_17 Depth=1
+.LBB6_14:                               # %list_PointerMember.exit.sink.split
+                                        #   in Loop: Header=BB6_16 Depth=1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s5, $a0, 8
 	st.d	$s6, $a0, 0
 	move	$s6, $a0
-.LBB6_16:                               # %list_PointerMember.exit
-                                        #   in Loop: Header=BB6_17 Depth=1
+.LBB6_15:                               # %list_PointerMember.exit
+                                        #   in Loop: Header=BB6_16 Depth=1
 	ld.w	$a1, $s0, 64
 	ld.w	$a2, $s0, 68
 	addi.d	$a0, $s5, -1
 	add.w	$a4, $a2, $a1
 	addi.w	$s4, $s4, -1
-	bge	$a4, $s5, .LBB6_30
-.LBB6_17:                               # %.lr.ph130
+	bge	$a4, $s5, .LBB6_29
+.LBB6_16:                               # %.lr.ph130
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_20 Depth 2
-                                        #     Child Loop BB6_24 Depth 2
+                                        #     Child Loop BB6_19 Depth 2
+                                        #     Child Loop BB6_23 Depth 2
 	move	$s5, $a0
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $s3, $a0
-	beqz	$a0, .LBB6_15
-# %bb.18:                               #   in Loop: Header=BB6_17 Depth=1
-	beqz	$s2, .LBB6_22
-# %bb.19:                               # %.lr.ph.i.preheader
-                                        #   in Loop: Header=BB6_17 Depth=1
+	beqz	$a0, .LBB6_14
+# %bb.17:                               #   in Loop: Header=BB6_16 Depth=1
+	beqz	$s2, .LBB6_21
+# %bb.18:                               # %.lr.ph.i.preheader
+                                        #   in Loop: Header=BB6_16 Depth=1
 	move	$a0, $s2
 	.p2align	4, , 16
-.LBB6_20:                               # %.lr.ph.i
-                                        #   Parent Loop BB6_17 Depth=1
+.LBB6_19:                               # %.lr.ph.i
+                                        #   Parent Loop BB6_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a3, $a0, 8
-	beq	$a3, $s5, .LBB6_16
-# %bb.21:                               #   in Loop: Header=BB6_20 Depth=2
+	beq	$a3, $s5, .LBB6_15
+# %bb.20:                               #   in Loop: Header=BB6_19 Depth=2
 	ld.d	$a0, $a0, 0
-	bnez	$a0, .LBB6_20
-.LBB6_22:                               # %.loopexit
-                                        #   in Loop: Header=BB6_17 Depth=1
+	bnez	$a0, .LBB6_19
+.LBB6_21:                               # %.loopexit
+                                        #   in Loop: Header=BB6_16 Depth=1
 	ld.w	$a0, $s0, 72
 	add.d	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	addi.w	$a0, $a0, -1
-	bltz	$a0, .LBB6_15
-# %bb.23:                               # %.lr.ph121.preheader
-                                        #   in Loop: Header=BB6_17 Depth=1
+	bltz	$a0, .LBB6_14
+# %bb.22:                               # %.lr.ph121.preheader
+                                        #   in Loop: Header=BB6_16 Depth=1
 	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
 	move	$a0, $zero
 	bstrpick.d	$s6, $s4, 31, 0
 	alsl.d	$s7, $s5, $s3, 3
 	move	$s8, $s3
 	.p2align	4, , 16
-.LBB6_24:                               # %.lr.ph121
-                                        #   Parent Loop BB6_17 Depth=1
+.LBB6_23:                               # %.lr.ph121
+                                        #   Parent Loop BB6_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$fp, $a0
 	ori	$s1, $zero, 1
-	beq	$s6, $a0, .LBB6_27
-# %bb.25:                               #   in Loop: Header=BB6_24 Depth=2
+	beq	$s6, $a0, .LBB6_26
+# %bb.24:                               #   in Loop: Header=BB6_23 Depth=2
 	ld.d	$a0, $s7, 0
 	ld.d	$a1, $s8, 0
 	pcaddu18i	$ra, %call36(list_HasIntersection)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB6_27
-# %bb.26:                               #   in Loop: Header=BB6_24 Depth=2
+	beqz	$a0, .LBB6_26
+# %bb.25:                               #   in Loop: Header=BB6_23 Depth=2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -4940,9 +4939,9 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	move	$s1, $zero
 	st.d	$fp, $a0, 8
 	st.d	$s3, $a0, 0
-.LBB6_27:                               #   in Loop: Header=BB6_24 Depth=2
-	beqz	$s1, .LBB6_29
-# %bb.28:                               #   in Loop: Header=BB6_24 Depth=2
+.LBB6_26:                               #   in Loop: Header=BB6_23 Depth=2
+	beqz	$s1, .LBB6_28
+# %bb.27:                               #   in Loop: Header=BB6_23 Depth=2
 	ld.w	$a1, $s0, 64
 	ld.w	$a2, $s0, 68
 	ld.w	$a3, $s0, 72
@@ -4951,43 +4950,43 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	add.d	$a1, $a1, $a3
 	addi.w	$a1, $a1, -1
 	addi.d	$s8, $s8, 8
-	blt	$fp, $a1, .LBB6_24
-.LBB6_29:                               # %._crit_edge
-                                        #   in Loop: Header=BB6_17 Depth=1
+	blt	$fp, $a1, .LBB6_23
+.LBB6_28:                               # %._crit_edge
+                                        #   in Loop: Header=BB6_16 Depth=1
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	bnez	$s1, .LBB6_15
-	b	.LBB6_16
-.LBB6_30:                               # %.preheader.loopexit
+	bnez	$s1, .LBB6_14
+	b	.LBB6_15
+.LBB6_29:                               # %.preheader.loopexit
 	ld.w	$a3, $s0, 72
 	add.d	$a0, $a4, $a3
 	addi.w	$a0, $a0, -1
-	bltz	$a0, .LBB6_36
-.LBB6_31:                               # %.lr.ph138.preheader
+	bltz	$a0, .LBB6_35
+.LBB6_30:                               # %.lr.ph138.preheader
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a4, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$a5, $a4, %got_pc_lo12(memory_FREEDBYTES)
 	move	$a7, $zero
-	b	.LBB6_33
+	b	.LBB6_32
 	.p2align	4, , 16
-.LBB6_32:                               # %list_Delete.exit
-                                        #   in Loop: Header=BB6_33 Depth=1
+.LBB6_31:                               # %list_Delete.exit
+                                        #   in Loop: Header=BB6_32 Depth=1
 	add.d	$a4, $a2, $a1
 	add.d	$a7, $a4, $a3
 	addi.w	$t0, $a7, -1
 	addi.d	$a7, $a6, 1
-	bge	$a6, $t0, .LBB6_36
-.LBB6_33:                               # %.lr.ph138
+	bge	$a6, $t0, .LBB6_35
+.LBB6_32:                               # %.lr.ph138
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB6_34 Depth 2
+                                        #     Child Loop BB6_33 Depth 2
 	move	$a6, $a7
 	slli.d	$a4, $a7, 3
 	ldx.d	$a4, $s3, $a4
-	beqz	$a4, .LBB6_32
+	beqz	$a4, .LBB6_31
 	.p2align	4, , 16
-.LBB6_34:                               # %.lr.ph.i93
-                                        #   Parent Loop BB6_33 Depth=1
+.LBB6_33:                               # %.lr.ph.i93
+                                        #   Parent Loop BB6_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $a0, 128
 	ld.w	$a2, $a1, 32
@@ -5000,19 +4999,19 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	ld.d	$a1, $a0, 128
 	st.d	$a4, $a1, 0
 	move	$a4, $a7
-	bnez	$a7, .LBB6_34
-# %bb.35:                               # %list_Delete.exit.loopexit
-                                        #   in Loop: Header=BB6_33 Depth=1
+	bnez	$a7, .LBB6_33
+# %bb.34:                               # %list_Delete.exit.loopexit
+                                        #   in Loop: Header=BB6_32 Depth=1
 	ld.w	$a1, $s0, 64
 	ld.w	$a2, $s0, 68
 	ld.w	$a3, $s0, 72
-	b	.LBB6_32
-.LBB6_36:                               # %._crit_edge139
+	b	.LBB6_31
+.LBB6_35:                               # %._crit_edge139
 	add.d	$a0, $a4, $a3
 	slli.w	$a0, $a0, 3
 	ori	$a1, $zero, 1024
-	bgeu	$a0, $a1, .LBB6_38
-# %bb.37:
+	bgeu	$a0, $a1, .LBB6_37
+# %bb.36:
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_ARRAY)
@@ -5027,9 +5026,9 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	st.d	$a2, $s3, 0
 	ldx.d	$a0, $a1, $a0
 	st.d	$s3, $a0, 0
-	bnez	$s2, .LBB6_44
+	bnez	$s2, .LBB6_43
 	b	.LBB6_2
-.LBB6_38:
+.LBB6_37:
 	pcalau12i	$a1, %got_pc_hi20(memory_ALIGN)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_ALIGN)
 	ld.w	$a1, $a1, 0
@@ -5044,14 +5043,14 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	sub.d	$a1, $s3, $a1
 	ld.d	$a3, $a1, -16
 	ld.d	$a2, $a1, -8
-	beqz	$a3, .LBB6_46
-# %bb.39:
+	beqz	$a3, .LBB6_45
+# %bb.38:
 	st.d	$a2, $a3, 8
-	beqz	$a2, .LBB6_41
-.LBB6_40:
+	beqz	$a2, .LBB6_40
+.LBB6_39:
 	ld.d	$a1, $a1, -16
 	st.d	$a1, $a2, 0
-.LBB6_41:
+.LBB6_40:
 	pcalau12i	$a1, %got_pc_hi20(memory_MARKSIZE)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_MARKSIZE)
 	ld.w	$a1, $a1, 0
@@ -5066,22 +5065,22 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	pcalau12i	$a1, %got_pc_hi20(memory_MAXMEM)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_MAXMEM)
 	ld.d	$a2, $a1, 0
-	bltz	$a2, .LBB6_43
-# %bb.42:
+	bltz	$a2, .LBB6_42
+# %bb.41:
 	add.d	$a0, $a2, $a0
 	st.d	$a0, $a1, 0
-.LBB6_43:
+.LBB6_42:
 	addi.d	$a0, $s3, -16
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	beqz	$s2, .LBB6_2
-.LBB6_44:                               # %.lr.ph.i100.preheader
+.LBB6_43:                               # %.lr.ph.i100.preheader
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$a1, $a1, %got_pc_lo12(memory_FREEDBYTES)
 	.p2align	4, , 16
-.LBB6_45:                               # %.lr.ph.i100
+.LBB6_44:                               # %.lr.ph.i100
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $a0, 128
 	ld.w	$a3, $a2, 32
@@ -5094,14 +5093,14 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	ld.d	$a2, $a0, 128
 	st.d	$s2, $a2, 0
 	move	$s2, $a5
-	bnez	$a5, .LBB6_45
+	bnez	$a5, .LBB6_44
 	b	.LBB6_2
-.LBB6_46:
+.LBB6_45:
 	pcalau12i	$a3, %got_pc_hi20(memory_BIGBLOCKS)
 	ld.d	$a3, $a3, %got_pc_lo12(memory_BIGBLOCKS)
 	st.d	$a2, $a3, 0
-	bnez	$a2, .LBB6_40
-	b	.LBB6_41
+	bnez	$a2, .LBB6_39
+	b	.LBB6_40
 .Lfunc_end6:
 	.size	top_GetLiteralsForSplitting, .Lfunc_end6-top_GetLiteralsForSplitting
                                         # -- End function

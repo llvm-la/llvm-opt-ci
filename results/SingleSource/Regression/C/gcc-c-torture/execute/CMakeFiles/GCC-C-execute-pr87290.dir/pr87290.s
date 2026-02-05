@@ -124,7 +124,8 @@ main:                                   # @main
 .LBB5_6:                                #   in Loop: Header=BB5_2 Depth=1
 	bne	$a6, $a4, .LBB5_8
 # %bb.7:                                #   in Loop: Header=BB5_2 Depth=1
-	slt	$a6, $a3, $a1
+	slli.d	$a6, $a1, 32
+	slt	$a6, $a3, $a6
 	addi.d	$a7, $a6, 1
 	st.w	$a7, $a0, %pc_lo12(c)
 .LBB5_8:                                # %f4.exit

@@ -118,7 +118,7 @@ calculate_bm_table:                     # @calculate_bm_table
 	bnez	$a3, .LBB0_5
 # %bb.6:                                # %middle.block29
 	beq	$a1, $fp, .LBB0_9
-.LBB0_7:                                # %.lr.ph.preheader30
+.LBB0_7:                                # %.lr.ph.preheader31
 	nor	$a2, $a1, $zero
 	add.d	$a2, $a2, $fp
 	add.d	$a3, $s0, $a1

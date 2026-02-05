@@ -90,18 +90,16 @@ internet_checksum:                      # @internet_checksum
 	beq	$a4, $a3, .LBB0_9
 .LBB0_7:                                # %.lr.ph.preheader40
 	ori	$a0, $zero, 3
-	move	$a3, $a2
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.hu	$a4, $a3, 0
-	move	$a6, $a1
-	addi.d	$a2, $a3, 2
-	nor	$a1, $a4, $zero
+	ld.hu	$a3, $a2, 0
+	move	$a4, $a1
+	addi.d	$a2, $a2, 2
+	nor	$a1, $a3, $zero
 	add.d	$a5, $a5, $a1
-	addi.w	$a1, $a6, -2
-	move	$a3, $a2
-	bltu	$a0, $a6, .LBB0_8
+	addi.w	$a1, $a4, -2
+	bltu	$a0, $a4, .LBB0_8
 .LBB0_9:                                # %._crit_edge
 	ori	$a0, $zero, 1
 	bne	$a1, $a0, .LBB0_12
@@ -112,7 +110,6 @@ internet_checksum:                      # @internet_checksum
 	.p2align	4, , 16
 .LBB0_11:                               # %.lr.ph23
                                         #   in Loop: Header=BB0_12 Depth=1
-	srli.d	$a0, $a5, 16
 	bstrpick.d	$a1, $a5, 15, 0
 	add.d	$a5, $a1, $a0
 .LBB0_12:                               # %.lr.ph23

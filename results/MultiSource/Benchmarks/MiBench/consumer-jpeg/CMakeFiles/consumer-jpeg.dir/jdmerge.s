@@ -329,22 +329,13 @@ h2v2_merged_upsample:                   # @h2v2_merged_upsample
 	slli.d	$a2, $a2, 3
 	ldx.d	$t3, $t3, $a2
 	ldx.d	$t4, $a1, $a2
+	ld.wu	$t5, $a0, 128
 	ld.d	$a2, $a3, 0
-	ld.w	$t5, $a0, 128
 	ld.d	$a1, $a3, 8
-	ori	$a3, $zero, 2
-	bgeu	$t5, $a3, .LBB3_3
-# %bb.1:                                # %._crit_edge
-	andi	$a0, $t5, 1
-	bnez	$a0, .LBB3_6
-.LBB3_2:
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-	ret
-.LBB3_3:                                # %.lr.ph.preheader
-	bstrpick.d	$a3, $t5, 31, 1
+	srli.d	$a3, $t5, 1
+	beqz	$a3, .LBB3_3
 	.p2align	4, , 16
-.LBB3_4:                                # %.lr.ph
+.LBB3_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$t5, $t4, 0
 	ld.bu	$t6, $t3, 0
@@ -405,12 +396,13 @@ h2v2_merged_upsample:                   # @h2v2_merged_upsample
 	st.b	$t5, $a1, 5
 	addi.w	$a3, $a3, -1
 	addi.d	$a1, $a1, 6
-	bnez	$a3, .LBB3_4
-# %bb.5:                                # %._crit_edge.loopexit
+	bnez	$a3, .LBB3_1
+# %bb.2:                                # %._crit_edge.loopexit
 	ld.w	$t5, $a0, 128
+.LBB3_3:                                # %._crit_edge
 	andi	$a0, $t5, 1
-	beqz	$a0, .LBB3_2
-.LBB3_6:
+	beqz	$a0, .LBB3_5
+# %bb.4:
 	ld.bu	$a0, $t4, 0
 	ld.bu	$a3, $t3, 0
 	slli.d	$t3, $a0, 2
@@ -443,6 +435,7 @@ h2v2_merged_upsample:                   # @h2v2_merged_upsample
 	add.w	$a0, $a3, $a2
 	ldx.b	$a0, $a4, $a0
 	st.b	$a0, $a1, 2
+.LBB3_5:
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
@@ -492,24 +485,17 @@ h2v1_merged_upsample:                   # @h2v1_merged_upsample
 	ld.d	$t1, $a1, 0
 	bstrpick.d	$a2, $a2, 31, 0
 	ld.d	$t2, $a1, 8
+	slli.d	$t4, $a2, 3
 	ld.d	$a1, $a1, 16
-	slli.d	$t3, $a2, 3
-	ldx.d	$a2, $t1, $t3
-	ldx.d	$t1, $t2, $t3
-	ldx.d	$t2, $a1, $t3
-	ld.w	$t3, $a0, 128
+	ldx.d	$a2, $t1, $t4
+	ldx.d	$t1, $t2, $t4
+	ld.wu	$t3, $a0, 128
+	ldx.d	$t2, $a1, $t4
 	ld.d	$a1, $a3, 0
-	ori	$a3, $zero, 2
-	bgeu	$t3, $a3, .LBB5_3
-# %bb.1:                                # %._crit_edge
-	andi	$a0, $t3, 1
-	bnez	$a0, .LBB5_6
-.LBB5_2:
-	ret
-.LBB5_3:                                # %.lr.ph.preheader
-	bstrpick.d	$a3, $t3, 31, 1
+	srli.d	$a3, $t3, 1
+	beqz	$a3, .LBB5_3
 	.p2align	4, , 16
-.LBB5_4:                                # %.lr.ph
+.LBB5_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$t3, $t2, 0
 	ld.bu	$t4, $t1, 0
@@ -548,12 +534,13 @@ h2v1_merged_upsample:                   # @h2v1_merged_upsample
 	st.b	$t3, $a1, 5
 	addi.w	$a3, $a3, -1
 	addi.d	$a1, $a1, 6
-	bnez	$a3, .LBB5_4
-# %bb.5:                                # %._crit_edge.loopexit
+	bnez	$a3, .LBB5_1
+# %bb.2:                                # %._crit_edge.loopexit
 	ld.w	$t3, $a0, 128
+.LBB5_3:                                # %._crit_edge
 	andi	$a0, $t3, 1
-	beqz	$a0, .LBB5_2
-.LBB5_6:
+	beqz	$a0, .LBB5_5
+# %bb.4:
 	ld.bu	$a0, $t2, 0
 	ld.bu	$a3, $t1, 0
 	slli.d	$t1, $a0, 2
@@ -576,6 +563,7 @@ h2v1_merged_upsample:                   # @h2v1_merged_upsample
 	add.w	$a0, $a3, $a2
 	ldx.b	$a0, $a4, $a0
 	st.b	$a0, $a1, 2
+.LBB5_5:
 	ret
 .Lfunc_end5:
 	.size	h2v1_merged_upsample, .Lfunc_end5-h2v1_merged_upsample

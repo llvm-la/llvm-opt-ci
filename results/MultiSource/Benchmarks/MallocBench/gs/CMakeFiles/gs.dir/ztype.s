@@ -727,18 +727,16 @@ zcvrs:                                  # @zcvrs
 	ori	$a5, $zero, 20
 	bne	$a1, $a5, .LBB13_11
 # %bb.7:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $a0, -32
-	ld.d	$a5, $fp, 0
-	addi.d	$a2, $sp, 48
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a5, $a0, -32
+	addi.d	$a2, $sp, 40
 	srai.d	$a1, $a5, 63
 	xor	$a6, $a5, $a1
 	sub.d	$a7, $a6, $a1
-	addi.d	$a1, $sp, 47
+	addi.d	$a1, $sp, 39
 	ori	$a6, $zero, 55
 	ori	$t0, $zero, 48
 	.p2align	4, , 16
@@ -768,23 +766,23 @@ zcvrs:                                  # @zcvrs
 	st.b	$a4, $a1, 0
 .LBB13_13:
 	ld.hu	$a4, $a0, 10
-	sub.d	$s0, $a2, $a1
+	sub.d	$fp, $a2, $a1
 	move	$a2, $a3
-	blt	$a4, $s0, .LBB13_15
+	blt	$a4, $fp, .LBB13_15
 # %bb.14:
 	ld.d	$a3, $a0, 0
-	bstrpick.d	$a2, $s0, 31, 0
-	move	$s1, $a0
+	bstrpick.d	$a2, $fp, 31, 0
+	move	$s0, $a0
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.h	$a0, $s1, 8
-	st.h	$s0, $s1, 10
+	ld.h	$a0, $s0, 8
+	st.h	$fp, $s0, 10
 	lu12i.w	$a1, 8
 	or	$a0, $a0, $a1
-	st.h	$a0, $s1, 8
-	vld	$vr0, $s1, 0
-	vst	$vr0, $fp, 0
+	st.h	$a0, $s0, 8
+	vld	$vr0, $s0, 0
+	vst	$vr0, $s0, -32
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
 	ld.d	$a1, $a0, 0
@@ -792,11 +790,10 @@ zcvrs:                                  # @zcvrs
 	addi.d	$a1, $a1, -32
 	st.d	$a1, $a0, 0
 .LBB13_15:
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	move	$a0, $a2
 	ret
 .Lfunc_end13:

@@ -2465,13 +2465,14 @@ scan_number:                            # @scan_number
 # %bb.118:                              # %.lr.ph277.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI5_0)
-	ori	$a0, $zero, 6
+	ori	$a0, $zero, 12
 	.p2align	4, , 16
 .LBB5_119:                              # %.lr.ph277
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$s3, $s3, -6
+	move	$a1, $s3
 	fmul.d	$fs0, $fs0, $fa0
-	bltu	$a0, $s3, .LBB5_119
+	addi.w	$s3, $s3, -6
+	bltu	$a0, $a1, .LBB5_119
 .LBB5_120:                              # %._crit_edge278
 	slli.d	$a0, $s3, 2
 	pcalau12i	$a1, %pc_hi20(scan_number.powers_10)

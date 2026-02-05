@@ -5,13 +5,10 @@
 	.type	CeilLog2,@function
 CeilLog2:                               # @CeilLog2
 # %bb.0:                                # %._crit_edge
-	addi.w	$a0, $a0, -1
-	sltui	$a1, $a0, 1
-	slli.d	$a0, $a0, 32
-	clz.d	$a0, $a0
-	ori	$a2, $zero, 32
-	sub.d	$a0, $a2, $a0
-	masknez	$a0, $a0, $a1
+	addi.d	$a0, $a0, -1
+	clz.w	$a0, $a0
+	ori	$a1, $zero, 32
+	sub.w	$a0, $a1, $a0
 	ret
 .Lfunc_end0:
 	.size	CeilLog2, .Lfunc_end0-CeilLog2
@@ -1011,13 +1008,10 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	mul.d	$a0, $a2, $a0
 	sub.w	$a0, $a1, $a0
 	sltu	$a0, $zero, $a0
-	add.w	$a0, $a2, $a0
-	sltui	$a1, $a0, 1
-	slli.d	$a0, $a0, 32
-	clz.d	$a0, $a0
-	ori	$a2, $zero, 32
-	sub.d	$a0, $a2, $a0
-	masknez	$a0, $a0, $a1
+	add.d	$a0, $a2, $a0
+	clz.w	$a0, $a0
+	ori	$a1, $zero, 32
+	sub.w	$a0, $a1, $a0
 	pcalau12i	$a1, %pc_hi20(.L.str.25)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.25)
 	move	$a2, $fp

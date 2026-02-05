@@ -306,24 +306,23 @@ stroke:                                 # @stroke
 # %bb.29:                               #   in Loop: Header=BB1_16 Depth=2
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	fld.s	$fa3, $a1, 56
+	fld.s	$fa4, $a1, 40
 	fmul.s	$fa3, $fa1, $fa3
 	ftintrz.l.s	$fa3, $fa3
-	fld.s	$fa4, $a1, 40
 	movfr2gr.d	$a1, $fa3
-	sub.d	$a1, $a1, $a2
-	st.d	$a1, $sp, 632
 	fmul.s	$fa3, $fa2, $fa4
 	ftintrz.l.s	$fa3, $fa3
-	movfr2gr.d	$a2, $fa3
-	sub.d	$a0, $a0, $a2
+	movfr2gr.d	$a3, $fa3
+	sub.d	$a1, $a1, $a2
+	sub.d	$a0, $a0, $a3
+	st.d	$a1, $sp, 632
 	st.d	$a0, $sp, 640
 .LBB1_30:                               #   in Loop: Header=BB1_16 Depth=2
-	srai.d	$a2, $a1, 63
-	xor	$a3, $a1, $a2
-	sub.d	$a2, $a3, $a2
-	srai.d	$a3, $a0, 63
-	xor	$a4, $a0, $a3
-	sub.d	$a3, $a4, $a3
+	vinsgr2vr.d	$vr3, $a1, 0
+	vinsgr2vr.d	$vr3, $a0, 1
+	vsigncov.d	$vr3, $vr3, $vr3
+	vpickve2gr.d	$a2, $vr3, 0
+	vpickve2gr.d	$a3, $vr3, 1
 	add.d	$a2, $a3, $a2
 	srli.d	$a2, $a2, 10
 	sltui	$a3, $a2, 3

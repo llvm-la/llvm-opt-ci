@@ -1155,7 +1155,7 @@ __clang_call_terminate:                 # @__clang_call_terminate
 	.type	_ZN14ICompressCoderD0Ev,@function
 _ZN14ICompressCoderD0Ev:                # @_ZN14ICompressCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end29:
 	.size	_ZN14ICompressCoderD0Ev, .Lfunc_end29-_ZN14ICompressCoderD0Ev
                                         # -- End function
@@ -1175,7 +1175,7 @@ _ZN8IUnknownD2Ev:                       # @_ZN8IUnknownD2Ev
 	.type	_ZN27ICompressSetCoderPropertiesD0Ev,@function
 _ZN27ICompressSetCoderPropertiesD0Ev:   # @_ZN27ICompressSetCoderPropertiesD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end31:
 	.size	_ZN27ICompressSetCoderPropertiesD0Ev, .Lfunc_end31-_ZN27ICompressSetCoderPropertiesD0Ev
                                         # -- End function

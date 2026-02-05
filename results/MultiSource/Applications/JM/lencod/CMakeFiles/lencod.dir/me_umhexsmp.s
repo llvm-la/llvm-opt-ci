@@ -211,7 +211,8 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	move	$a3, $zero
 	move	$a0, $zero
 .LBB3_11:                               # %.thread
-	ld.h	$t8, $s3, 0
+	ld.h	$a6, $s3, 0
+	st.d	$a6, $sp, 136                   # 8-byte Folded Spill
 	add.w	$t5, $s2, $t7
 	ld.w	$a6, $a5, 76
 	st.d	$a6, $sp, 264                   # 8-byte Folded Spill
@@ -272,8 +273,10 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	ld.d	$t2, $t2, %got_pc_lo12(offset_luma)
 	st.w	$t1, $t2, 0
 .LBB3_13:
+	st.d	$t7, $sp, 96                    # 8-byte Folded Spill
 	ld.d	$s7, $sp, 400
-	add.w	$t1, $s1, $t8
+	ld.d	$t1, $sp, 136                   # 8-byte Folded Reload
+	add.w	$t1, $s1, $t1
 	st.d	$t1, $sp, 288                   # 8-byte Folded Spill
 	pcalau12i	$t1, %got_pc_hi20(ChromaMEEnable)
 	ld.d	$t1, $t1, %got_pc_lo12(ChromaMEEnable)
@@ -323,8 +326,6 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	alsl.w	$a1, $s1, $s8, 2
 	st.d	$a1, $sp, 200                   # 8-byte Folded Spill
 	st.d	$t6, $sp, 80                    # 8-byte Folded Spill
-	st.d	$t7, $sp, 104                   # 8-byte Folded Spill
-	st.d	$t8, $sp, 96                    # 8-byte Folded Spill
 	bge	$s7, $t5, .LBB3_21
 # %bb.17:
 	ext.w.h	$a3, $a4
@@ -399,11 +400,11 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	or	$a5, $a0, $a1
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	or	$a0, $s8, $a3
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	srai.d	$a1, $a2, 31
 	xor	$a2, $a2, $a1
 	sub.w	$a6, $a2, $a1
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	srai.d	$a1, $a2, 31
 	xor	$a2, $a2, $a1
 	sub.w	$a1, $a2, $a1
@@ -460,7 +461,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	move	$s4, $s6
 	st.d	$a7, $sp, 184                   # 8-byte Folded Spill
 .LBB3_28:
-	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(ConvergeThreshold)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.hu	$a0, $a0, %pc_lo12(ConvergeThreshold)
@@ -1023,11 +1024,11 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 .LBB3_76:                               # %.loopexit777
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	bstrpick.d	$fp, $a2, 15, 0
 	ori	$a0, $zero, 2
-	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
-	bstrpick.d	$s1, $a3, 15, 0
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	bstrpick.d	$s1, $a1, 15, 0
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	blt	$a1, $a0, .LBB3_83
 # %bb.77:
@@ -1041,7 +1042,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	srai.d	$a2, $a1, 31
 	xor	$a1, $a1, $a2
 	sub.w	$a1, $a1, $a2
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	blt	$s7, $a1, .LBB3_81
 # %bb.78:
@@ -1051,7 +1052,8 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	add.d	$a1, $a1, $a2
 	ext.w.h	$a1, $a1
 	srai.d	$a1, $a1, 2
-	sub.w	$a2, $a1, $a3
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	sub.w	$a2, $a1, $a2
 	srai.d	$a3, $a2, 31
 	xor	$a2, $a2, $a3
 	sub.w	$a2, $a2, $a3
@@ -1094,7 +1096,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	move	$a5, $s6
 	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
 	add.w	$a0, $s3, $a0
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	bge	$a0, $s4, .LBB3_81
 # %bb.80:
 	st.d	$s0, $sp, 176                   # 8-byte Folded Spill
@@ -1110,7 +1112,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB3_133
 .LBB3_83:
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	or	$a0, $fp, $s1
 	slli.d	$a0, $a0, 48
@@ -1196,14 +1198,14 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	slli.d	$a0, $s1, 2
 	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	sub.w	$a0, $a0, $a1
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	alsl.w	$a0, $s1, $a3, 2
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	ori	$fp, $zero, 1
+	alsl.w	$a0, $s1, $a3, 2
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	ori	$s6, $zero, 1
+	ori	$fp, $zero, 1
 	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB3_93
 	.p2align	4, , 16
 .LBB3_91:                               #   in Loop: Header=BB3_93 Depth=1
@@ -1211,7 +1213,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	move	$a5, $s4
 	move	$s4, $s5
 	move	$s5, $s8
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
 .LBB3_92:                               #   in Loop: Header=BB3_93 Depth=1
 	addi.d	$s6, $s6, 1
 	bstrpick.d	$fp, $s6, 15, 0
@@ -1329,7 +1331,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
 	sub.w	$a0, $a0, $a1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	slli.d	$fp, $a1, 2
 	bgeu	$s7, $a0, .LBB3_104
 # %bb.103:                              #   in Loop: Header=BB3_93 Depth=1
@@ -1362,7 +1364,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	jirl	$ra, $a6, 0
 	add.w	$a0, $s2, $a0
 	bge	$a0, $s3, .LBB3_106
@@ -1405,14 +1407,14 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	jirl	$ra, $a6, 0
 	move	$a5, $s4
 	add.w	$a0, $fp, $a0
 	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
 	move	$s4, $s5
 	move	$s5, $s8
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 128                   # 8-byte Folded Reload
 	bge	$a0, $s1, .LBB3_92
 # %bb.108:                              #   in Loop: Header=BB3_93 Depth=1
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
@@ -1425,13 +1427,13 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	add.w	$a0, $s7, $a0
 	srai.d	$a0, $a0, 2
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
-	ori	$s1, $zero, 1
+	ori	$a1, $zero, 1
 	pcalau12i	$a0, %pc_hi20(Big_Hexagon_X)
-	addi.d	$s4, $a0, %pc_lo12(Big_Hexagon_X)
+	addi.d	$s1, $a0, %pc_lo12(Big_Hexagon_X)
 	pcalau12i	$a0, %pc_hi20(Big_Hexagon_Y)
 	addi.d	$s5, $a0, %pc_lo12(Big_Hexagon_Y)
 	ori	$a3, $zero, 32
-	ori	$a1, $zero, 1
+	ori	$fp, $zero, 1
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
@@ -1440,9 +1442,9 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 .LBB3_110:                              #   in Loop: Header=BB3_111 Depth=1
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
-	bstrpick.d	$s1, $a1, 15, 0
+	bstrpick.d	$fp, $a1, 15, 0
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	blt	$a0, $s1, .LBB3_76
+	blt	$a0, $fp, .LBB3_76
 .LBB3_111:                              # %.preheader775
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_113 Depth 2
@@ -1455,8 +1457,8 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	beq	$s8, $a3, .LBB3_110
 .LBB3_113:                              #   Parent Loop BB3_111 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.h	$a0, $s4, $s8
-	mul.d	$a0, $s1, $a0
+	ldx.h	$a0, $s1, $s8
+	mul.d	$a0, $fp, $a0
 	add.w	$s0, $a0, $s3
 	sub.w	$a0, $s0, $a4
 	srai.d	$a1, $a0, 31
@@ -1465,11 +1467,11 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	blt	$s7, $a0, .LBB3_112
 # %bb.114:                              #   in Loop: Header=BB3_113 Depth=2
 	ldx.h	$a0, $s5, $s8
-	mul.d	$a0, $s1, $a0
+	mul.d	$a0, $fp, $a0
 	ld.d	$a1, $sp, 280                   # 8-byte Folded Reload
-	add.w	$fp, $a0, $a1
+	add.w	$s4, $a0, $a1
 	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
-	sub.w	$a0, $fp, $a0
+	sub.w	$a0, $s4, $a0
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
 	sub.w	$a0, $a0, $a1
@@ -1482,7 +1484,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	sub.w	$a1, $a1, $a2
 	slli.d	$a1, $a1, 2
 	ldx.w	$a1, $a0, $a1
-	slli.d	$a2, $fp, 2
+	slli.d	$a2, $s4, 2
 	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
 	sub.w	$a2, $a2, $a3
 	slli.d	$a2, $a2, 2
@@ -1501,7 +1503,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	ori	$a0, $zero, 80
 	alsl.w	$a4, $s0, $a0, 2
 	move	$s2, $a5
-	alsl.w	$a5, $fp, $a0, 2
+	alsl.w	$a5, $s4, $a0, 2
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 272                   # 8-byte Folded Reload
@@ -1514,7 +1516,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 	bge	$a0, $s6, .LBB3_112
 # %bb.116:                              #   in Loop: Header=BB3_113 Depth=2
 	st.d	$s0, $sp, 176                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
 	move	$a5, $a0
 	b	.LBB3_112
 .LBB3_117:
@@ -2354,7 +2356,7 @@ smpUMHEXIntegerPelBlockMotionSearch:    # @smpUMHEXIntegerPelBlockMotionSearch
 .LBB3_185:                              # %.preheader.3
 	move	$a5, $a0
 .LBB3_186:                              # %.preheader.3
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	sub.d	$a0, $s2, $a0
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	st.h	$a0, $a1, 0
@@ -2935,8 +2937,8 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	move	$s0, $a7
-	move	$ra, $a5
+	move	$s5, $a7
+	move	$s6, $a5
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$a0, $a0, %got_pc_lo12(img)
@@ -2976,7 +2978,7 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ld.d	$a0, $a0, %pc_lo12(active_pps)
 	ld.d	$a2, $a2, 0
 	ld.w	$t2, $a0, 192
-	alsl.d	$t1, $ra, $a2, 3
+	alsl.d	$t1, $s6, $a2, 3
 	lu12i.w	$a7, 1
 	ori	$t6, $a7, 2296
 	ori	$t5, $a7, 2300
@@ -3010,7 +3012,7 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ld.w	$a2, $t1, 72
 	pcalau12i	$t2, %pc_hi20(ref_pic_ptr)
 	ld.d	$t4, $t2, %pc_lo12(ref_pic_ptr)
-	ld.w	$s2, $t1, 76
+	ld.w	$s0, $t1, 76
 	ldx.w	$t1, $t0, $t6
 	ldx.w	$t0, $t0, $t5
 	ldptr.d	$t8, $t4, 6448
@@ -3100,10 +3102,11 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	st.w	$a3, $a5, 0
 	st.w	$a1, $a5, 4
 .LBB5_16:
-	ld.h	$s4, $t6, 0
+	ld.h	$a1, $t6, 0
 	ld.d	$s8, $sp, 232
+	ext.w.h	$s3, $a1
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a3, $a1, $s4
+	add.w	$a3, $a1, $s3
 	ori	$a1, $zero, 1
 	alsl.w	$a4, $a4, $t2, 2
 	st.d	$a4, $sp, 120                   # 8-byte Folded Spill
@@ -3123,7 +3126,7 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ori	$a4, $zero, 2
 	blt	$a3, $a4, .LBB5_22
 # %bb.19:
-	sub.d	$a4, $t0, $s2
+	sub.d	$a4, $t0, $s0
 	slli.d	$a4, $a4, 2
 	addi.d	$a4, $a4, 160
 	ext.w.h	$a4, $a4
@@ -3141,65 +3144,65 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ld.d	$a5, $sp, 264
 	ld.d	$t2, $sp, 256
 	ext.w.h	$a7, $a2
-	ext.w.h	$t0, $s2
+	ext.w.h	$t0, $s0
 	pcalau12i	$a2, %got_pc_hi20(ref_access_method)
 	ld.d	$a2, $a2, %got_pc_lo12(ref_access_method)
 	st.w	$a1, $a2, 0
-	sub.d	$a1, $a6, $s4
+	sub.d	$a1, $a6, $s3
 	bstrpick.d	$a2, $a1, 31, 30
+	add.d	$a2, $a1, $a2
 	pcalau12i	$t1, %pc_hi20(smpUMHEX_SearchState)
 	ld.d	$a3, $t1, %pc_lo12(smpUMHEX_SearchState)
-	add.d	$a2, $a1, $a2
 	bstrpick.d	$a2, $a2, 31, 2
+	slli.d	$a2, $a2, 2
 	pcalau12i	$a4, %pc_hi20(smpUMHEX_pred_MV_uplayer_X)
 	ld.d	$a3, $a3, 0
-	ld.hu	$fp, $a4, %pc_lo12(smpUMHEX_pred_MV_uplayer_X)
+	ld.hu	$s7, $a4, %pc_lo12(smpUMHEX_pred_MV_uplayer_X)
 	pcalau12i	$a4, %pc_hi20(smpUMHEX_pred_MV_uplayer_Y)
-	ld.hu	$t7, $a4, %pc_lo12(smpUMHEX_pred_MV_uplayer_Y)
+	ld.hu	$t8, $a4, %pc_lo12(smpUMHEX_pred_MV_uplayer_Y)
 	st.b	$zero, $a3, 48
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a3, 32
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $a3, 0
 	ld.d	$a3, $t1, %pc_lo12(smpUMHEX_SearchState)
-	slli.d	$a2, $a2, 2
-	sub.w	$s7, $a1, $a2
-	sub.d	$a1, $s0, $s1
-	ld.d	$a2, $a3, 24
-	bstrpick.d	$a3, $a1, 31, 30
-	add.d	$a3, $a1, $a3
+	sub.w	$s2, $a1, $a2
+	sub.d	$a1, $s5, $s1
+	addi.w	$a2, $a1, 0
+	ld.d	$a3, $a3, 24
+	bstrpick.d	$a2, $a2, 62, 61
+	add.d	$a2, $a1, $a2
 	ori	$a4, $zero, 1
-	st.b	$a4, $a2, 3
-	pcalau12i	$a2, %pc_hi20(start_me_refinement_hp)
-	ld.w	$a2, $a2, %pc_lo12(start_me_refinement_hp)
-	ld.h	$s2, $t6, 0
-	ld.h	$s6, $s8, 0
-	bstrpick.d	$a3, $a3, 31, 2
-	slli.d	$a3, $a3, 2
-	sub.w	$a3, $a1, $a3
+	st.b	$a4, $a3, 3
+	pcalau12i	$a3, %pc_hi20(start_me_refinement_hp)
+	ld.w	$a3, $a3, %pc_lo12(start_me_refinement_hp)
+	ld.h	$s0, $t6, 0
+	ld.h	$fp, $s8, 0
+	bstrpick.d	$a2, $a2, 31, 2
+	slli.d	$a2, $a2, 2
+	sub.w	$a4, $a1, $a2
 	st.d	$a6, $sp, 88                    # 8-byte Folded Spill
 	st.d	$t6, $sp, 104                   # 8-byte Folded Spill
 	st.d	$a5, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a7, $sp, 72                    # 8-byte Folded Spill
 	st.d	$t0, $sp, 64                    # 8-byte Folded Spill
 	st.d	$t1, $sp, 96                    # 8-byte Folded Spill
-	beqz	$a2, .LBB5_25
+	beqz	$a3, .LBB5_25
 # %bb.24:
-	bstrpick.d	$a0, $s2, 15, 0
+	bstrpick.d	$a0, $s0, 15, 0
 	slli.d	$a1, $a0, 48
 	pcalau12i	$a2, %pc_hi20(block_type_shift_factor)
-	addi.d	$s5, $a2, %pc_lo12(block_type_shift_factor)
-	bnez	$a1, .LBB5_32
+	addi.d	$s4, $a2, %pc_lo12(block_type_shift_factor)
+	bnez	$a1, .LBB5_29
 	b	.LBB5_26
 .LBB5_25:                               # %thread-pre-split
 	pcalau12i	$a1, %got_pc_hi20(mvbits)
 	ld.d	$a1, $a1, %got_pc_lo12(mvbits)
 	ld.d	$a1, $a1, 0
-	sub.d	$a2, $s2, $a6
+	sub.d	$a2, $s0, $a6
 	slli.d	$a2, $a2, 2
 	ldx.w	$a2, $a1, $a2
-	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
-	sub.d	$a3, $s6, $s0
+	sub.d	$a3, $fp, $s5
 	slli.d	$a3, $a3, 2
 	ldx.w	$a1, $a1, $a3
 	add.d	$a1, $a1, $a2
@@ -3212,19 +3215,19 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ldx.d	$a6, $a1, $a0
 	sub.w	$a3, $t2, $a2
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a4, $a0, $s2
+	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	add.w	$a4, $a0, $s0
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	add.w	$a5, $a0, $s6
+	add.w	$a5, $a0, $fp
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	move	$a1, $t0
 	move	$a2, $a7
-	move	$s5, $t2
-	move	$s3, $ra
-	st.d	$t7, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 48                    # 8-byte Folded Spill
+	move	$s6, $t2
+	move	$s4, $t8
 	jirl	$ra, $a6, 0
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$t7, $sp, 40                    # 8-byte Folded Reload
-	move	$ra, $s3
+	move	$t8, $s4
+	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
@@ -3233,54 +3236,63 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $a0
-	slt	$a2, $a1, $s5
-	maskeqz	$s2, $s2, $a2
-	maskeqz	$s6, $s6, $a2
+	slt	$a2, $a1, $s6
+	maskeqz	$s0, $s0, $a2
+	maskeqz	$fp, $fp, $a2
 	ld.hu	$a0, $t6, 0
 	maskeqz	$a1, $a1, $a2
-	masknez	$a2, $s5, $a2
+	masknez	$a2, $s6, $a2
+	ld.d	$s6, $sp, 48                    # 8-byte Folded Reload
 	or	$t2, $a1, $a2
 	slli.d	$a1, $a0, 48
 	pcalau12i	$a2, %pc_hi20(block_type_shift_factor)
-	addi.d	$s5, $a2, %pc_lo12(block_type_shift_factor)
-	bnez	$a1, .LBB5_32
+	addi.d	$s4, $a2, %pc_lo12(block_type_shift_factor)
+	bnez	$a1, .LBB5_29
 .LBB5_26:
 	ld.hu	$a1, $s8, 0
-	bnez	$a1, .LBB5_32
+	bnez	$a1, .LBB5_29
 # %bb.27:
-	bnez	$s7, .LBB5_32
+	bstrpick.d	$a1, $t8, 31, 0
+	bstrpick.d	$a2, $s7, 31, 0
+	sub.d	$a1, $a1, $s1
+	sub.d	$a2, $a2, $s3
+	vinsgr2vr.w	$vr0, $s2, 0
+	vinsgr2vr.w	$vr0, $a2, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $a1, 3
+	addi.w	$a1, $zero, -1
+	lu32i.d	$a1, 3
+	vreplgr2vr.d	$vr1, $a1
+	vand.v	$vr0, $vr0, $vr1
+	vseqi.w	$vr0, $vr0, 0
+	vrepli.b	$vr1, -1
+	vxor.v	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
+	andi	$a1, $a1, 15
+	bnez	$a1, .LBB5_29
 # %bb.28:
-	sub.d	$a1, $fp, $s4
-	andi	$a1, $a1, 3
-	bnez	$a1, .LBB5_32
-# %bb.29:
-	bnez	$a3, .LBB5_32
-# %bb.30:
-	sub.d	$a1, $t7, $s1
-	andi	$a1, $a1, 3
-	bnez	$a1, .LBB5_32
-# %bb.31:
 	pcalau12i	$a1, %pc_hi20(SubPelThreshold1)
 	ld.hu	$a1, $a1, %pc_lo12(SubPelThreshold1)
-	slli.d	$a2, $ra, 1
-	ldx.hu	$a2, $s5, $a2
+	slli.d	$a2, $s6, 1
+	ldx.hu	$a2, $s4, $a2
 	srl.w	$a1, $a1, $a2
 	blt	$t2, $a1, .LBB5_64
-.LBB5_32:
-	or	$a1, $s7, $a3
-	beqz	$a1, .LBB5_35
-# %bb.33:
+.LBB5_29:
+	or	$a1, $s2, $a4
+	beqz	$a1, .LBB5_32
+# %bb.30:
 	ld.h	$a1, $s8, 0
 	ext.w.h	$a0, $a0
-	add.d	$fp, $s7, $a0
-	add.d	$s1, $a3, $a1
+	add.d	$s1, $s2, $a0
+	add.d	$s2, $a4, $a1
 	pcalau12i	$a0, %got_pc_hi20(mvbits)
 	ld.d	$a0, $a0, %got_pc_lo12(mvbits)
 	ld.d	$a0, $a0, 0
-	sub.w	$a1, $fp, $a6
+	sub.w	$a1, $s1, $a6
 	slli.d	$a1, $a1, 2
 	ldx.w	$a1, $a0, $a1
-	sub.w	$a2, $s1, $s0
+	sub.w	$a2, $s2, $s5
 	slli.d	$a2, $a2, 2
 	ldx.w	$a0, $a0, $a2
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
@@ -3294,17 +3306,17 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ldx.d	$a6, $a1, $a0
 	sub.w	$a3, $t2, $s3
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a4, $fp, $a0
+	add.w	$a4, $s1, $a0
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	add.w	$a5, $s1, $a0
+	add.w	$a5, $s2, $a0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	move	$a1, $t0
 	move	$a2, $a7
-	move	$s4, $t2
-	move	$s7, $ra
+	move	$s7, $s6
+	move	$s6, $t2
 	jirl	$ra, $a6, 0
-	move	$ra, $s7
-	move	$t2, $s4
+	move	$t2, $s6
+	move	$s6, $s7
 	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
@@ -3313,24 +3325,24 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
 	ld.h	$a1, $s8, 0
 	ld.d	$a2, $t1, %pc_lo12(smpUMHEX_SearchState)
-	sub.w	$a1, $s1, $a1
+	sub.w	$a1, $s2, $a1
 	alsl.d	$a1, $a1, $a2, 3
 	ld.h	$a2, $t6, 0
 	ld.d	$a1, $a1, 24
 	add.w	$a0, $s3, $a0
-	sub.w	$a2, $fp, $a2
+	sub.w	$a2, $s1, $a2
 	add.d	$a1, $a1, $a2
 	ori	$a2, $zero, 1
 	st.b	$a2, $a1, 3
-	bge	$a0, $s4, .LBB5_35
-# %bb.34:
-	move	$s2, $fp
-	move	$s6, $s1
+	bge	$a0, $t2, .LBB5_32
+# %bb.31:
+	move	$s0, $s1
+	move	$fp, $s2
 	move	$t2, $a0
-.LBB5_35:
-	alsl.d	$a0, $ra, $s5, 1
+.LBB5_32:
+	alsl.d	$a0, $s6, $s4, 1
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	ori	$s7, $zero, 3
+	ori	$s1, $zero, 6
 	pcalau12i	$a0, %got_pc_hi20(mvbits)
 	ld.d	$a0, $a0, %got_pc_lo12(mvbits)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -3340,68 +3352,57 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	move	$a1, $zero
 	pcalau12i	$a0, %pc_hi20(SubPelThreshold3)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$t3, $zero, 2
-	move	$s3, $s6
-	move	$s5, $s2
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	ori	$a4, $zero, 2
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	.p2align	4, , 16
-.LBB5_36:                               # %.preheader
+.LBB5_33:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a0, $t6, 0
-	addi.d	$fp, $s5, -1
-	sub.w	$a2, $fp, $a0
-	srai.d	$a3, $a2, 31
-	xor	$a4, $a2, $a3
-	sub.w	$a3, $a4, $a3
-	move	$s1, $a1
-	bltu	$s7, $a3, .LBB5_39
-# %bb.37:                               #   in Loop: Header=BB5_36 Depth=1
+	addi.d	$s2, $s0, -1
+	sub.w	$a2, $s2, $a0
+	addi.w	$a3, $a2, 3
+	move	$s3, $a1
+	bltu	$s1, $a3, .LBB5_36
+# %bb.34:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.h	$a1, $s8, 0
-	sub.w	$a1, $s3, $a1
-	srai.d	$a3, $a1, 31
-	xor	$a4, $a1, $a3
-	sub.w	$a3, $a4, $a3
-	bltu	$s7, $a3, .LBB5_39
-# %bb.38:                               #   in Loop: Header=BB5_36 Depth=1
+	sub.w	$a1, $fp, $a1
+	addi.w	$a3, $a1, 3
+	bltu	$s1, $a3, .LBB5_36
+# %bb.35:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a3, $t1, %pc_lo12(smpUMHEX_SearchState)
 	alsl.d	$a1, $a1, $a3, 3
 	ld.d	$a1, $a1, 24
 	add.d	$a1, $a1, $a2
 	ld.bu	$a1, $a1, 3
-	beqz	$a1, .LBB5_57
+	beqz	$a1, .LBB5_41
 	.p2align	4, , 16
-.LBB5_39:                               #   in Loop: Header=BB5_36 Depth=1
-	move	$s2, $s5
-	ori	$s4, $zero, 1
-.LBB5_40:                               #   in Loop: Header=BB5_36 Depth=1
-	addi.d	$fp, $s5, 1
-	sub.w	$a1, $fp, $a0
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a2, $a3, $a2
-	bltu	$s7, $a2, .LBB5_45
-# %bb.41:                               #   in Loop: Header=BB5_36 Depth=1
+.LBB5_36:                               #   in Loop: Header=BB5_33 Depth=1
+	move	$s2, $s0
+	ori	$s7, $zero, 1
+	addi.d	$s4, $s0, 1
+	sub.w	$a1, $s4, $a0
+	addi.w	$a2, $a1, 3
+	bltu	$s1, $a2, .LBB5_43
+.LBB5_37:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.h	$a2, $s8, 0
-	sub.w	$a2, $s3, $a2
-	srai.d	$a3, $a2, 31
-	xor	$a4, $a2, $a3
-	sub.w	$a3, $a4, $a3
-	bltu	$s7, $a3, .LBB5_45
-# %bb.42:                               #   in Loop: Header=BB5_36 Depth=1
+	sub.w	$a2, $fp, $a2
+	addi.w	$a3, $a2, 3
+	bltu	$s1, $a3, .LBB5_43
+# %bb.38:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a3, $t1, %pc_lo12(smpUMHEX_SearchState)
 	alsl.d	$a2, $a2, $a3, 3
 	ld.d	$a2, $a2, 24
 	add.d	$a1, $a2, $a1
 	ld.bu	$a1, $a1, 3
-	bnez	$a1, .LBB5_45
-# %bb.43:                               #   in Loop: Header=BB5_36 Depth=1
+	bnez	$a1, .LBB5_43
+# %bb.39:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	sub.w	$a1, $fp, $a6
+	sub.w	$a1, $s4, $a6
 	slli.d	$a1, $a1, 2
 	ldx.w	$a1, $a0, $a1
-	sub.w	$a2, $s3, $s0
+	sub.w	$a2, $fp, $s5
 	slli.d	$a2, $a2, 2
 	ldx.w	$a0, $a0, $a2
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
@@ -3413,11 +3414,11 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a6, $a1, $a0
 	sub.w	$a3, $t2, $s6
-	addi.w	$s0, $t2, 0
+	addi.w	$s5, $t2, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a4, $fp, $a0
+	add.w	$a4, $s4, $a0
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	add.w	$a5, $s3, $a0
+	add.w	$a5, $fp, $a0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	move	$a1, $t0
 	move	$a2, $a7
@@ -3426,240 +3427,247 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	ld.d	$t6, $sp, 104                   # 8-byte Folded Reload
 	ld.h	$a1, $s8, 0
 	ld.d	$a2, $t1, %pc_lo12(smpUMHEX_SearchState)
-	sub.w	$a1, $s3, $a1
+	sub.w	$a1, $fp, $a1
 	alsl.d	$a1, $a1, $a2, 3
 	ld.h	$a2, $t6, 0
 	ld.d	$a1, $a1, 24
 	add.w	$a0, $s6, $a0
-	sub.w	$a2, $fp, $a2
+	sub.w	$a2, $s4, $a2
 	add.d	$a1, $a1, $a2
 	ori	$a2, $zero, 1
 	st.b	$a2, $a1, 3
-	slt	$a1, $a0, $s0
+	slt	$a1, $a0, $s5
 	maskeqz	$a0, $a0, $a1
-	masknez	$a2, $s0, $a1
+	masknez	$a2, $s5, $a1
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	ld.hu	$a3, $a3, %pc_lo12(SubPelThreshold3)
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	ld.hu	$a4, $a4, 0
 	or	$t2, $a0, $a2
 	masknez	$a0, $s2, $a1
-	maskeqz	$a2, $fp, $a1
+	maskeqz	$a2, $s4, $a1
 	srl.w	$a3, $a3, $a4
 	or	$s2, $a2, $a0
-	blt	$t2, $a3, .LBB5_63
-# %bb.44:                               # %._crit_edge250
-                                        #   in Loop: Header=BB5_36 Depth=1
+	blt	$t2, $a3, .LBB5_62
+# %bb.40:                               # %._crit_edge250
+                                        #   in Loop: Header=BB5_33 Depth=1
 	ld.h	$a0, $t6, 0
-	masknez	$s4, $s4, $a1
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	masknez	$s7, $s7, $a1
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
-	ori	$t3, $zero, 2
-	.p2align	4, , 16
-.LBB5_45:                               #   in Loop: Header=BB5_36 Depth=1
-	sub.w	$a0, $s5, $a0
-	srai.d	$a1, $a0, 31
-	xor	$a2, $a0, $a1
-	sub.w	$a1, $a2, $a1
-	bltu	$s7, $a1, .LBB5_54
-# %bb.46:                               #   in Loop: Header=BB5_36 Depth=1
+	ori	$a4, $zero, 2
+	b	.LBB5_43
+.LBB5_41:                               #   in Loop: Header=BB5_33 Depth=1
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $a0, 0
+	sub.w	$a1, $s2, $a6
+	slli.d	$a1, $a1, 2
+	ldx.w	$a1, $a0, $a1
+	sub.w	$a2, $fp, $s5
+	slli.d	$a2, $a2, 2
+	ldx.w	$a0, $a0, $a2
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	ld.w	$a2, $a2, %pc_lo12(dist_method)
+	add.d	$a0, $a0, $a1
+	mul.w	$a0, $a0, $a5
+	srai.d	$s4, $a0, 16
+	slli.d	$a0, $a2, 3
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ldx.d	$a6, $a1, $a0
+	sub.w	$a3, $t2, $s4
+	addi.w	$s5, $t2, 0
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	add.w	$a4, $s2, $a0
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	add.w	$a5, $fp, $a0
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	move	$a1, $t0
+	move	$a2, $a7
+	jirl	$ra, $a6, 0
+	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 104                   # 8-byte Folded Reload
 	ld.h	$a1, $s8, 0
-	addi.d	$fp, $s3, -1
+	ld.d	$a2, $t1, %pc_lo12(smpUMHEX_SearchState)
 	sub.w	$a1, $fp, $a1
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a2, $a3, $a2
-	bltu	$s7, $a2, .LBB5_48
-# %bb.47:                               #   in Loop: Header=BB5_36 Depth=1
+	alsl.d	$a1, $a1, $a2, 3
+	ld.h	$a2, $t6, 0
+	ld.d	$a1, $a1, 24
+	add.w	$a0, $s4, $a0
+	sub.w	$a2, $s2, $a2
+	add.d	$a1, $a1, $a2
+	ori	$a2, $zero, 1
+	st.b	$a2, $a1, 3
+	slt	$a1, $a0, $s5
+	xori	$s7, $a1, 1
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $s5, $a1
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.hu	$a2, $a2, %pc_lo12(SubPelThreshold3)
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.hu	$a3, $a3, 0
+	masknez	$a4, $s2, $s7
+	or	$t2, $a0, $a1
+	maskeqz	$a0, $s0, $s7
+	srl.w	$a1, $a2, $a3
+	or	$s2, $a0, $a4
+	blt	$t2, $a1, .LBB5_62
+# %bb.42:                               # %._crit_edge
+                                        #   in Loop: Header=BB5_33 Depth=1
+	ld.h	$a0, $t6, 0
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
+	ori	$a4, $zero, 2
+	addi.d	$s4, $s0, 1
+	sub.w	$a1, $s4, $a0
+	addi.w	$a2, $a1, 3
+	bgeu	$s1, $a2, .LBB5_37
+	.p2align	4, , 16
+.LBB5_43:                               #   in Loop: Header=BB5_33 Depth=1
+	sub.w	$a0, $s0, $a0
+	addi.w	$a1, $a0, 3
+	bltu	$s1, $a1, .LBB5_50
+# %bb.44:                               #   in Loop: Header=BB5_33 Depth=1
+	ld.h	$a1, $s8, 0
+	addi.d	$s6, $fp, -1
+	sub.w	$a1, $s6, $a1
+	addi.w	$a2, $a1, 3
+	bltu	$s1, $a2, .LBB5_46
+# %bb.45:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a2, $t1, %pc_lo12(smpUMHEX_SearchState)
 	alsl.d	$a1, $a1, $a2, 3
 	ld.d	$a1, $a1, 24
 	add.d	$a1, $a1, $a0
 	ld.bu	$a1, $a1, 3
-	beqz	$a1, .LBB5_59
-.LBB5_48:                               #   in Loop: Header=BB5_36 Depth=1
-	move	$s6, $s3
-.LBB5_49:                               # %.thread279
-                                        #   in Loop: Header=BB5_36 Depth=1
+	beqz	$a1, .LBB5_53
+.LBB5_46:                               #   in Loop: Header=BB5_33 Depth=1
+	move	$s4, $fp
+.LBB5_47:                               # %.thread279
+                                        #   in Loop: Header=BB5_33 Depth=1
 	ld.h	$a1, $s8, 0
-	addi.d	$fp, $s3, 1
+	addi.d	$fp, $fp, 1
 	sub.w	$a1, $fp, $a1
-	srai.d	$a2, $a1, 31
-	xor	$a3, $a1, $a2
-	sub.w	$a2, $a3, $a2
-	bltu	$s7, $a2, .LBB5_55
-# %bb.50:                               #   in Loop: Header=BB5_36 Depth=1
+	addi.w	$a2, $a1, 3
+	bltu	$s1, $a2, .LBB5_49
+# %bb.48:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a2, $t1, %pc_lo12(smpUMHEX_SearchState)
 	alsl.d	$a1, $a1, $a2, 3
 	ld.d	$a1, $a1, 24
 	add.d	$a0, $a1, $a0
 	ld.bu	$a0, $a0, 3
-	bnez	$a0, .LBB5_55
-# %bb.51:                               #   in Loop: Header=BB5_36 Depth=1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, 0
-	sub.w	$a1, $s5, $a6
-	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $a0, $a1
-	sub.w	$a2, $fp, $s0
-	slli.d	$a2, $a2, 2
-	ldx.w	$a0, $a0, $a2
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	ld.w	$a2, $a2, %pc_lo12(dist_method)
-	add.d	$a0, $a0, $a1
-	mul.w	$a0, $a0, $a5
-	srai.d	$s0, $a0, 16
-	slli.d	$a0, $a2, 3
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	ldx.d	$a6, $a1, $a0
-	sub.w	$a3, $t2, $s0
-	addi.w	$s3, $t2, 0
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a4, $s5, $a0
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	add.w	$a5, $fp, $a0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	move	$a1, $t0
-	move	$a2, $a7
-	move	$s8, $t2
-	jirl	$ra, $a6, 0
-	move	$t2, $s8
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$t6, $sp, 104                   # 8-byte Folded Reload
-	ld.h	$a1, $s8, 0
-	ld.d	$a2, $t1, %pc_lo12(smpUMHEX_SearchState)
-	sub.w	$a1, $fp, $a1
-	alsl.d	$a1, $a1, $a2, 3
-	ld.h	$a2, $t6, 0
-	ld.d	$a1, $a1, 24
-	add.w	$a0, $s0, $a0
-	sub.w	$a2, $s5, $a2
-	add.d	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	st.b	$a2, $a1, 3
-	bge	$a0, $s3, .LBB5_53
-# %bb.52:                               #   in Loop: Header=BB5_36 Depth=1
-	move	$s4, $zero
-	move	$s2, $s5
-	move	$s6, $fp
-	move	$t2, $a0
-.LBB5_53:                               #   in Loop: Header=BB5_36 Depth=1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.hu	$a0, $a0, %pc_lo12(SubPelThreshold3)
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	ld.hu	$a1, $a1, 0
-	srl.w	$a0, $a0, $a1
-	addi.w	$a1, $t2, 0
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
-	ori	$t3, $zero, 2
-	bge	$a1, $a0, .LBB5_55
-	b	.LBB5_64
+	beqz	$a0, .LBB5_58
+.LBB5_49:                               #   in Loop: Header=BB5_33 Depth=1
+	move	$s0, $s2
+	move	$fp, $s4
+	b	.LBB5_51
 	.p2align	4, , 16
-.LBB5_54:                               #   in Loop: Header=BB5_36 Depth=1
-	move	$s6, $s3
-.LBB5_55:                               # %.thread291
-                                        #   in Loop: Header=BB5_36 Depth=1
-	bnez	$s4, .LBB5_64
-# %bb.56:                               # %.thread291
-                                        #   in Loop: Header=BB5_36 Depth=1
-	addi.d	$a1, $s1, 1
-	move	$s3, $s6
-	move	$s5, $s2
-	bltu	$s1, $t3, .LBB5_36
+.LBB5_50:                               #   in Loop: Header=BB5_33 Depth=1
+	move	$s0, $s2
+.LBB5_51:                               # %.thread291
+                                        #   in Loop: Header=BB5_33 Depth=1
+	bnez	$s7, .LBB5_64
+# %bb.52:                               # %.thread291
+                                        #   in Loop: Header=BB5_33 Depth=1
+	addi.d	$a1, $s3, 1
+	bltu	$s3, $a4, .LBB5_33
 	b	.LBB5_64
-.LBB5_57:                               #   in Loop: Header=BB5_36 Depth=1
+.LBB5_53:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	sub.w	$a1, $fp, $a6
+	sub.w	$a1, $s0, $a6
 	slli.d	$a1, $a1, 2
 	ldx.w	$a1, $a0, $a1
-	sub.w	$a2, $s3, $s0
+	sub.w	$a2, $s6, $s5
 	slli.d	$a2, $a2, 2
 	ldx.w	$a0, $a0, $a2
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a2, $a2, %pc_lo12(dist_method)
 	add.d	$a0, $a0, $a1
 	mul.w	$a0, $a0, $a5
-	srai.d	$s2, $a0, 16
+	srai.d	$s4, $a0, 16
 	slli.d	$a0, $a2, 3
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a6, $a1, $a0
-	sub.w	$a3, $t2, $s2
-	addi.w	$s0, $t2, 0
+	sub.w	$a3, $t2, $s4
+	addi.w	$s5, $t2, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a4, $fp, $a0
+	add.w	$a4, $s0, $a0
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	add.w	$a5, $s3, $a0
+	add.w	$a5, $s6, $a0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	move	$a1, $t0
 	move	$a2, $a7
+	move	$s8, $t2
 	jirl	$ra, $a6, 0
+	move	$t2, $s8
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$t6, $sp, 104                   # 8-byte Folded Reload
 	ld.h	$a1, $s8, 0
 	ld.d	$a2, $t1, %pc_lo12(smpUMHEX_SearchState)
-	sub.w	$a1, $s3, $a1
+	sub.w	$a1, $s6, $a1
 	alsl.d	$a1, $a1, $a2, 3
 	ld.h	$a2, $t6, 0
 	ld.d	$a1, $a1, 24
-	add.w	$a0, $s2, $a0
-	sub.w	$a2, $fp, $a2
+	add.w	$a0, $s4, $a0
+	sub.w	$a2, $s0, $a2
 	add.d	$a1, $a1, $a2
 	ori	$a2, $zero, 1
 	st.b	$a2, $a1, 3
-	slt	$a1, $a0, $s0
-	xori	$s4, $a1, 1
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s0, $a1
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	ld.hu	$a2, $a2, %pc_lo12(SubPelThreshold3)
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
-	ld.hu	$a3, $a3, 0
-	masknez	$a4, $fp, $s4
-	or	$t2, $a0, $a1
-	maskeqz	$a0, $s5, $s4
-	srl.w	$a1, $a2, $a3
-	or	$s2, $a0, $a4
-	blt	$t2, $a1, .LBB5_63
-# %bb.58:                               # %._crit_edge
-                                        #   in Loop: Header=BB5_36 Depth=1
+	move	$s4, $fp
+	bge	$a0, $s5, .LBB5_55
+# %bb.54:                               #   in Loop: Header=BB5_33 Depth=1
+	move	$s7, $zero
+	move	$s2, $s0
+	move	$s4, $s6
+	move	$t2, $a0
+.LBB5_55:                               #   in Loop: Header=BB5_33 Depth=1
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.hu	$a0, $a0, %pc_lo12(SubPelThreshold3)
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.hu	$a1, $a1, 0
+	srl.w	$a0, $a0, $a1
+	addi.w	$a1, $t2, 0
+	ori	$a4, $zero, 2
+	blt	$a1, $a0, .LBB5_63
+# %bb.56:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.h	$a0, $t6, 0
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	sub.w	$a0, $s0, $a0
+	addi.w	$a1, $a0, 3
+	bltu	$s1, $a1, .LBB5_61
+# %bb.57:                               #   in Loop: Header=BB5_33 Depth=1
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
-	ori	$t3, $zero, 2
-	b	.LBB5_40
-.LBB5_59:                               #   in Loop: Header=BB5_36 Depth=1
+	b	.LBB5_47
+.LBB5_58:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	sub.w	$a1, $s5, $a6
+	sub.w	$a1, $s0, $a6
 	slli.d	$a1, $a1, 2
 	ldx.w	$a1, $a0, $a1
-	sub.w	$a2, $fp, $s0
+	sub.w	$a2, $fp, $s5
 	slli.d	$a2, $a2, 2
 	ldx.w	$a0, $a0, $a2
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a2, $a2, %pc_lo12(dist_method)
 	add.d	$a0, $a0, $a1
 	mul.w	$a0, $a0, $a5
-	srai.d	$s6, $a0, 16
+	srai.d	$s5, $a0, 16
 	slli.d	$a0, $a2, 3
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$a6, $a1, $a0
-	sub.w	$a3, $t2, $s6
-	addi.w	$s0, $t2, 0
+	sub.w	$a3, $t2, $s5
+	addi.w	$s6, $t2, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	add.w	$a4, $s5, $a0
+	add.w	$a4, $s0, $a0
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	add.w	$a5, $fp, $a0
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
@@ -3677,46 +3685,53 @@ smpUMHEXSubPelBlockMotionSearch:        # @smpUMHEXSubPelBlockMotionSearch
 	alsl.d	$a1, $a1, $a2, 3
 	ld.h	$a2, $t6, 0
 	ld.d	$a1, $a1, 24
-	add.w	$a0, $s6, $a0
-	sub.w	$a2, $s5, $a2
+	add.w	$a0, $s5, $a0
+	sub.w	$a2, $s0, $a2
 	add.d	$a1, $a1, $a2
 	ori	$a2, $zero, 1
 	st.b	$a2, $a1, 3
-	move	$s6, $s3
-	bge	$a0, $s0, .LBB5_61
-# %bb.60:                               #   in Loop: Header=BB5_36 Depth=1
-	move	$s4, $zero
-	move	$s2, $s5
-	move	$s6, $fp
+	bge	$a0, $s6, .LBB5_60
+# %bb.59:                               #   in Loop: Header=BB5_33 Depth=1
+	move	$s7, $zero
+	move	$s2, $s0
+	move	$s4, $fp
 	move	$t2, $a0
-.LBB5_61:                               #   in Loop: Header=BB5_36 Depth=1
+.LBB5_60:                               #   in Loop: Header=BB5_33 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.hu	$a0, $a0, %pc_lo12(SubPelThreshold3)
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.hu	$a1, $a1, 0
 	srl.w	$a0, $a0, $a1
 	addi.w	$a1, $t2, 0
-	ori	$t3, $zero, 2
-	blt	$a1, $a0, .LBB5_64
-# %bb.62:                               #   in Loop: Header=BB5_36 Depth=1
-	ld.h	$a0, $t6, 0
-	sub.w	$a0, $s5, $a0
-	srai.d	$a1, $a0, 31
-	xor	$a2, $a0, $a1
-	sub.w	$a1, $a2, $a1
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	move	$s0, $s2
+	move	$fp, $s4
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
-	bgeu	$s7, $a1, .LBB5_49
-	b	.LBB5_55
+	ori	$a4, $zero, 2
+	bge	$a1, $a0, .LBB5_51
+	b	.LBB5_64
+.LBB5_61:                               #   in Loop: Header=BB5_33 Depth=1
+	move	$s0, $s2
+	move	$fp, $s4
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
+	b	.LBB5_51
+.LBB5_62:
+	move	$s0, $s2
+	b	.LBB5_64
 .LBB5_63:
-	move	$s6, $s3
+	move	$s0, $s2
+	move	$fp, $s4
 .LBB5_64:                               # %.loopexit
-	st.h	$s2, $t6, 0
+	st.h	$s0, $t6, 0
 	addi.w	$a0, $t2, 0
-	st.h	$s6, $s8, 0
+	st.h	$fp, $s8, 0
 	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload

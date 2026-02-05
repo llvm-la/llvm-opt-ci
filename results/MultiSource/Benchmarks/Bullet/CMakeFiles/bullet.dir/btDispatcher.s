@@ -15,7 +15,7 @@ _ZN12btDispatcherD2Ev:                  # @_ZN12btDispatcherD2Ev
 	.type	_ZN12btDispatcherD0Ev,@function
 _ZN12btDispatcherD0Ev:                  # @_ZN12btDispatcherD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end1:
 	.size	_ZN12btDispatcherD0Ev, .Lfunc_end1-_ZN12btDispatcherD0Ev
                                         # -- End function

@@ -1188,8 +1188,8 @@ chunk:                                  # @chunk
 	pcaddu18i	$ra, %call36(luaX_next)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 16
-	addi.w	$s6, $s6, 1
-	addi.d	$s3, $s3, 1
+	addi.w	$s3, $s3, 1
+	addi.d	$s6, $s6, 1
 	ori	$a1, $zero, 285
 	beq	$a0, $a1, .LBB2_76
 .LBB2_75:                               #   in Loop: Header=BB2_5 Depth=1
@@ -1212,7 +1212,7 @@ chunk:                                  # @chunk
                                         #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$s0, $fp, 24
-	addi.w	$s4, $s6, -1
+	addi.w	$s4, $s3, -1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaX_next)
 	jirl	$ra, $ra, 0
@@ -1265,7 +1265,7 @@ chunk:                                  # @chunk
 	ld.w	$a0, $sp, 104
 	ld.d	$s0, $fp, 48
 	addi.d	$a1, $a0, -13
-	sub.w	$s5, $s6, $s1
+	sub.w	$s5, $s3, $s1
 	ori	$a2, $zero, 2
 	bgeu	$a1, $a2, .LBB2_153
 # %bb.82:                               #   in Loop: Header=BB2_5 Depth=1
@@ -1539,7 +1539,7 @@ chunk:                                  # @chunk
                                         #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$s0, $fp, 48
 	st.w	$zero, $sp, 104
-	move	$s5, $s6
+	move	$s5, $s3
 	b	.LBB2_156
 .LBB2_115:                              #   in Loop: Header=BB2_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
@@ -1867,12 +1867,12 @@ chunk:                                  # @chunk
 	ld.d	$a3, $fp, 48
 	ld.bu	$a2, $a3, 74
 	ld.d	$a1, $a3, 0
-	add.d	$a0, $a2, $s6
+	add.d	$a0, $a2, $s3
 	st.b	$a0, $a3, 74
 	ld.w	$a0, $a3, 48
 	ld.d	$a1, $a1, 48
-	bstrpick.d	$a5, $s6, 31, 0
-	add.d	$a4, $a2, $s3
+	bstrpick.d	$a5, $s3, 31, 0
+	add.d	$a4, $a2, $s6
 	ori	$a2, $zero, 7
 	bgeu	$s4, $a2, .LBB2_159
 # %bb.158:                              #   in Loop: Header=BB2_5 Depth=1
@@ -1938,20 +1938,20 @@ chunk:                                  # @chunk
 	bstrpick.d	$t1, $t1, 15, 0
 	vinsgr2vr.d	$vr4, $t1, 1
 	xvpickve2gr.d	$t1, $xr4, 0
-	alsl.d	$t1, $t1, $a1, 4
 	xvpickve2gr.d	$t2, $xr4, 1
-	alsl.d	$t2, $t2, $a1, 4
 	xvpickve2gr.d	$t3, $xr3, 2
-	alsl.d	$t3, $t3, $a1, 4
 	xvpickve2gr.d	$t4, $xr3, 3
-	alsl.d	$t4, $t4, $a1, 4
 	xvpickve2gr.d	$t5, $xr2, 0
-	alsl.d	$t5, $t5, $a1, 4
 	xvpickve2gr.d	$t6, $xr2, 1
-	alsl.d	$t6, $t6, $a1, 4
 	xvpickve2gr.d	$t7, $xr1, 2
-	alsl.d	$t7, $t7, $a1, 4
 	xvpickve2gr.d	$t8, $xr1, 3
+	alsl.d	$t1, $t1, $a1, 4
+	alsl.d	$t2, $t2, $a1, 4
+	alsl.d	$t3, $t3, $a1, 4
+	alsl.d	$t4, $t4, $a1, 4
+	alsl.d	$t5, $t5, $a1, 4
+	alsl.d	$t6, $t6, $a1, 4
+	alsl.d	$t7, $t7, $a1, 4
 	alsl.d	$t8, $t8, $a1, 4
 	st.w	$a0, $t1, 8
 	st.w	$a0, $t2, 8
@@ -4302,20 +4302,20 @@ parlist:                                # @parlist
 	bstrpick.d	$t1, $t1, 15, 0
 	vinsgr2vr.d	$vr4, $t1, 1
 	xvpickve2gr.d	$t1, $xr4, 0
-	alsl.d	$t1, $t1, $a2, 4
 	xvpickve2gr.d	$t2, $xr4, 1
-	alsl.d	$t2, $t2, $a2, 4
 	xvpickve2gr.d	$t3, $xr3, 2
-	alsl.d	$t3, $t3, $a2, 4
 	xvpickve2gr.d	$t4, $xr3, 3
-	alsl.d	$t4, $t4, $a2, 4
 	xvpickve2gr.d	$t5, $xr2, 0
-	alsl.d	$t5, $t5, $a2, 4
 	xvpickve2gr.d	$t6, $xr2, 1
-	alsl.d	$t6, $t6, $a2, 4
 	xvpickve2gr.d	$t7, $xr1, 2
-	alsl.d	$t7, $t7, $a2, 4
 	xvpickve2gr.d	$t8, $xr1, 3
+	alsl.d	$t1, $t1, $a2, 4
+	alsl.d	$t2, $t2, $a2, 4
+	alsl.d	$t3, $t3, $a2, 4
+	alsl.d	$t4, $t4, $a2, 4
+	alsl.d	$t5, $t5, $a2, 4
+	alsl.d	$t6, $t6, $a2, 4
+	alsl.d	$t7, $t7, $a2, 4
 	alsl.d	$t8, $t8, $a2, 4
 	st.w	$a1, $t1, 8
 	st.w	$a1, $t2, 8
@@ -4792,10 +4792,10 @@ singlevaraux:                           # @singlevaraux
 	beqz	$a0, .LBB17_9
 # %bb.1:
 	move	$s0, $a0
-	ld.bu	$a4, $a0, 74
-	slli.d	$a0, $a4, 1
+	ld.bu	$a2, $a0, 74
+	slli.d	$a0, $a2, 1
 	addi.d	$a0, $a0, 194
-	move	$a2, $a4
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB17_2:                               # =>This Inner Loop Header: Depth=1
 	blez	$a2, .LBB17_10
@@ -5138,20 +5138,20 @@ forbody:                                # @forbody
 	bstrpick.d	$t0, $t0, 15, 0
 	vinsgr2vr.d	$vr4, $t0, 1
 	xvpickve2gr.d	$t0, $xr4, 0
-	alsl.d	$t0, $t0, $a2, 4
 	xvpickve2gr.d	$t1, $xr4, 1
-	alsl.d	$t1, $t1, $a2, 4
 	xvpickve2gr.d	$t2, $xr3, 2
-	alsl.d	$t2, $t2, $a2, 4
 	xvpickve2gr.d	$t3, $xr3, 3
-	alsl.d	$t3, $t3, $a2, 4
 	xvpickve2gr.d	$t4, $xr2, 0
-	alsl.d	$t4, $t4, $a2, 4
 	xvpickve2gr.d	$t5, $xr2, 1
-	alsl.d	$t5, $t5, $a2, 4
 	xvpickve2gr.d	$t6, $xr1, 2
-	alsl.d	$t6, $t6, $a2, 4
 	xvpickve2gr.d	$t7, $xr1, 3
+	alsl.d	$t0, $t0, $a2, 4
+	alsl.d	$t1, $t1, $a2, 4
+	alsl.d	$t2, $t2, $a2, 4
+	alsl.d	$t3, $t3, $a2, 4
+	alsl.d	$t4, $t4, $a2, 4
+	alsl.d	$t5, $t5, $a2, 4
+	alsl.d	$t6, $t6, $a2, 4
 	alsl.d	$t7, $t7, $a2, 4
 	st.w	$a0, $t0, 8
 	st.w	$a0, $t1, 8

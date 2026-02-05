@@ -883,8 +883,7 @@ zkshow:                                 # @zkshow
 	ld.d	$a1, $fp, 0
 	bltz	$a0, .LBB7_13
 # %bb.11:
-	addi.d	$a0, $s1, -16
-	vld	$vr0, $a0, 0
+	vld	$vr0, $s1, -16
 	vst	$vr0, $a1, -16
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a1, $a0, %got_pc_lo12(osp)
@@ -1777,8 +1776,7 @@ ztype1imagepath:                        # @ztype1imagepath
 	bltz	$a0, .LBB14_9
 # %bb.8:
 	vld	$vr0, $fp, 0
-	addi.d	$a1, $fp, -112
-	vst	$vr0, $a1, 0
+	vst	$vr0, $fp, -112
 	st.h	$a0, $fp, -102
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a1, $a0, %got_pc_lo12(osp)

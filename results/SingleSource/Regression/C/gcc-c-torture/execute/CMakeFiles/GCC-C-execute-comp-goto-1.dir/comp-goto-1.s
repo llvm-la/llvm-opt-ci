@@ -52,11 +52,11 @@ simulator_kernel:                       # @simulator_kernel
 	vslli.d	$vr6, $vr4, 46
 	vslli.d	$vr7, $vr5, 46
 	vsrai.d	$vr6, $vr6, 43
-	vsrai.d	$vr7, $vr7, 43
 	vpickve2gr.d	$t2, $vr6, 0
 	vpickve2gr.d	$t3, $vr6, 1
-	vpickve2gr.d	$t4, $vr7, 0
-	vpickve2gr.d	$t5, $vr7, 1
+	vsrai.d	$vr6, $vr7, 43
+	vpickve2gr.d	$t4, $vr6, 0
+	vpickve2gr.d	$t5, $vr6, 1
 	ldx.d	$t2, $a1, $t2
 	ldx.d	$t3, $a1, $t3
 	ldx.d	$t4, $a1, $t4

@@ -1411,11 +1411,13 @@ _ZN2PP8Function8evaluateERSt6vectorIdSaIdEERNSt7__cxx1118basic_stringstreamIcSt1
 	bne	$a2, $a0, .LBB2_126
 # %bb.120:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit128
 	ld.d	$a0, $s4, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.27)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.27)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	ld.bu	$a0, $a0, 4
+	lu12i.w	$a2, 452119
+	ori	$a2, $a2, 1121
+	xor	$a1, $a1, $a2
+	xori	$a0, $a0, 50
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB2_126
 # %bb.121:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit128.thread
 	fmov.d	$fa0, $fs0
@@ -1473,12 +1475,13 @@ _ZN2PP8Function8evaluateERSt6vectorIdSaIdEERNSt7__cxx1118basic_stringstreamIcSt1
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_142
 # %bb.125:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit134
-	pcalau12i	$a0, %pc_hi20(.L.str.30)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.30)
-	ori	$a2, $zero, 3
-	move	$a0, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.hu	$a0, $s5, 0
+	ld.bu	$a1, $s5, 2
+	lu12i.w	$a2, 6
+	ori	$a2, $a2, 2413
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 110
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB2_143
 .LBB2_126:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit134.thread218
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
@@ -2709,11 +2712,15 @@ _ZN2PP8Function8evaluateERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	bne	$a0, $a1, .LBB7_27
 # %bb.20:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit
 	ld.d	$a0, $s1, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.35)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.35)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 444199
+	ori	$a2, $a2, 1139
+	ld.hu	$a0, $a0, 4
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 6
+	ori	$a2, $a2, 3685
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB7_27
 # %bb.21:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread
 	ld.w	$s0, $sp, 504
@@ -2757,11 +2764,15 @@ _ZN2PP8Function8evaluateERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	b	.LBB7_114
 .LBB7_26:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit84
 	ld.d	$a0, $s1, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.36)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.36)
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 476967
+	ori	$a2, $a2, 1139
+	ld.w	$a0, $a0, 3
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 448151
+	ori	$a2, $a2, 628
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
 	beqz	$a0, .LBB7_105
 .LBB7_27:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit84.thread212
 	ld.d	$a0, $sp, 496
@@ -2861,11 +2872,15 @@ _ZN2PP8Function8evaluateERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	bne	$a0, $a1, .LBB7_46
 # %bb.45:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit115
 	ld.d	$a0, $s1, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.38)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.38)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 407335
+	ori	$a2, $a2, 1139
+	ld.hu	$a0, $a0, 4
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 1121
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
 	beqz	$a0, .LBB7_97
 .LBB7_46:                               # %.critedge72
 	ld.d	$a0, $sp, 496
@@ -3061,21 +3076,27 @@ _ZN2PP8Function8evaluateERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	stx.b	$zero, $a0, $a1
 	b	.LBB7_121
 .LBB7_79:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit159
-	ld.d	$s0, $s1, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.40)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.40)
-	ori	$a2, $zero, 9
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB7_111
+	ld.d	$a0, $s1, 0
+	ld.d	$a1, $a0, 0
+	lu12i.w	$a2, 431911
+	ori	$a2, $a2, 1139
+	ld.bu	$a3, $a0, 8
+	lu32i.d	$a2, 357230
+	lu52i.d	$a2, $a2, 1830
+	xor	$a1, $a1, $a2
+	xori	$a2, $a3, 116
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB7_111
 # %bb.80:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit165
-	pcalau12i	$a0, %pc_hi20(.L.str.41)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.41)
-	ori	$a2, $zero, 9
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	lu12i.w	$a2, 472871
+	ori	$a2, $a2, 1139
+	ld.bu	$a0, $a0, 8
+	lu32i.d	$a2, 221813
+	lu52i.d	$a2, $a2, 1863
+	xor	$a1, $a1, $a2
+	xori	$a0, $a0, 114
+	or	$a0, $a1, $a0
 	beqz	$a0, .LBB7_117
 .LBB7_81:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit165.thread216
 	ld.d	$a0, $sp, 72
@@ -3249,10 +3270,10 @@ _ZN2PP8Function8evaluateERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	addi.w	$a1, $a0, 1
 	bltu	$a3, $a1, .LBB7_149
 # %bb.108:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE8_M_checkEmPKc.exit.i
-	sub.w	$a0, $s1, $a1
-	beq	$a0, $a2, .LBB7_134
+	sub.d	$a0, $s1, $a1
+	addi.w	$a0, $a0, 1
+	beqz	$a0, .LBB7_134
 # %bb.109:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE8_M_checkEmPKc.exit.i
-	addi.w	$a2, $zero, -2
 	bne	$a0, $a2, .LBB7_133
 # %bb.110:
 	ld.d	$a0, $sp, 496
@@ -3436,7 +3457,6 @@ _ZN2PP8Function8evaluateERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIc
 	st.b	$zero, $sp, 512
 	b	.LBB7_139
 .LBB7_133:
-	addi.w	$a0, $a0, 1
 	sub.d	$a2, $a3, $a1
 	sltu	$a3, $a0, $a2
 	masknez	$a2, $a2, $a3

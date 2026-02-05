@@ -46,11 +46,11 @@ va1:                                    # @va1
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
+	movgr2fr.d	$fa0, $a1
 	addi.d	$a0, $sp, 24
 	st.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 40
 	st.d	$a1, $sp, 8
-	fld.d	$fa0, $sp, 24
 	pcalau12i	$a1, %pc_hi20(pts)
 	addi.d	$a1, $a1, %pc_lo12(pts)
 	fld.d	$fa1, $a1, 0

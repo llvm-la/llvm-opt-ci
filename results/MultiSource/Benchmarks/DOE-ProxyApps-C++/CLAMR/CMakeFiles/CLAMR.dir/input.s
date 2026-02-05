@@ -2250,14 +2250,14 @@ _Z10parseInputiPPc:                     # @_Z10parseInputiPPc
 	pcalau12i	$a1, %got_pc_hi20(graphic_outputInterval)
 	ld.d	$s7, $a1, %got_pc_lo12(graphic_outputInterval)
 	lu12i.w	$a1, 524287
-	ori	$s8, $a1, 4095
-	st.w	$s8, $s7, 0
+	ori	$s3, $a1, 4095
+	st.w	$s3, $s7, 0
 	pcalau12i	$a1, %got_pc_hi20(graphics_type)
 	ld.d	$s0, $a1, %got_pc_lo12(graphics_type)
 	st.w	$zero, $s0, 0
 	pcalau12i	$a1, %got_pc_hi20(checkpoint_outputInterval)
 	ld.d	$s2, $a1, %got_pc_lo12(checkpoint_outputInterval)
-	st.w	$s8, $s2, 0
+	st.w	$s3, $s2, 0
 	pcalau12i	$a1, %got_pc_hi20(num_of_rollback_states)
 	ld.d	$a2, $a1, %got_pc_lo12(num_of_rollback_states)
 	ori	$a1, $zero, 2
@@ -2294,7 +2294,7 @@ _Z10parseInputiPPc:                     # @_Z10parseInputiPPc
 	ori	$s1, $zero, 2
 	ori	$s6, $zero, 55
 	pcalau12i	$a1, %pc_hi20(.LJTI2_0)
-	addi.d	$s3, $a1, %pc_lo12(.LJTI2_0)
+	addi.d	$s8, $a1, %pc_lo12(.LJTI2_0)
 	b	.LBB2_6
 .LBB2_3:                                #   in Loop: Header=BB2_6 Depth=1
 	slli.d	$a0, $s1, 3
@@ -2329,8 +2329,8 @@ _Z10parseInputiPPc:                     # @_Z10parseInputiPPc
 # %bb.7:                                # %.lr.ph
                                         #   in Loop: Header=BB2_6 Depth=1
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $s3, $a1
-	add.d	$a1, $s3, $a1
+	ldx.w	$a1, $s8, $a1
+	add.d	$a1, $s8, $a1
 	jr	$a1
 .LBB2_8:                                #   in Loop: Header=BB2_6 Depth=1
 	slli.d	$a0, $s1, 3
@@ -2799,7 +2799,7 @@ _Z10parseInputiPPc:                     # @_Z10parseInputiPPc
 	b	.LBB2_5
 .LBB2_66:                               #   in Loop: Header=BB2_6 Depth=1
 	st.w	$zero, $s0, 0
-	st.w	$s8, $s7, 0
+	st.w	$s3, $s7, 0
 	move	$s1, $s4
 	b	.LBB2_5
 .LBB2_67:                               #   in Loop: Header=BB2_6 Depth=1

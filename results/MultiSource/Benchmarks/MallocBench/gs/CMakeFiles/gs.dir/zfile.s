@@ -850,22 +850,20 @@ zreadhexstring:                         # @zreadhexstring
 	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
 	move	$fp, $a0
-	addi.d	$s1, $a0, -16
 	ld.hu	$a1, $a0, -8
 	addi.w	$a0, $zero, -1
 	lu32i.d	$a0, 0
-	st.w	$a0, $sp, 12
+	st.w	$a0, $sp, 20
 	bstrpick.d	$a0, $a1, 7, 2
 	ori	$a2, $zero, 13
-	addi.w	$s2, $zero, -20
+	addi.w	$s1, $zero, -20
 	beq	$a0, $a2, .LBB7_5
 # %bb.1:
 	ori	$a2, $zero, 3
 	bne	$a0, $a2, .LBB7_9
 # %bb.2:
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, -16
 	ld.d	$s0, $a0, 0
 	addi.w	$a0, $zero, -7
 	beqz	$s0, .LBB7_10
@@ -879,15 +877,15 @@ zreadhexstring:                         # @zreadhexstring
 .LBB7_5:
 	ld.d	$a1, $fp, -16
 	ld.hu	$a2, $fp, -6
-	addi.d	$a0, $sp, 16
-	addi.d	$s0, $sp, 16
+	addi.d	$a0, $sp, 24
+	addi.d	$s0, $sp, 24
 	pcaddu18i	$ra, %call36(sread_string)
 	jirl	$ra, $ra, 0
 .LBB7_6:
 	ld.hu	$a1, $fp, 8
 	andi	$a2, $a1, 252
 	ori	$a3, $zero, 52
-	move	$a0, $s2
+	move	$a0, $s1
 	bne	$a2, $a3, .LBB7_10
 # %bb.7:
 	andi	$a0, $a1, 256
@@ -896,9 +894,8 @@ zreadhexstring:                         # @zreadhexstring
 	addi.w	$a0, $zero, -7
 	b	.LBB7_10
 .LBB7_9:
-	move	$a0, $s2
+	move	$a0, $s1
 .LBB7_10:
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
@@ -908,8 +905,8 @@ zreadhexstring:                         # @zreadhexstring
 .LBB7_11:
 	ld.d	$a1, $fp, 0
 	ld.hu	$a2, $fp, 10
-	addi.d	$a3, $sp, 8
-	addi.d	$a4, $sp, 12
+	addi.d	$a3, $sp, 16
+	addi.d	$a4, $sp, 20
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(sreadhex)
 	jirl	$ra, $ra, 0
@@ -918,26 +915,26 @@ zreadhexstring:                         # @zreadhexstring
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB7_16
 # %bb.13:
-	ld.h	$a1, $sp, 8
+	ld.h	$a1, $sp, 16
 	ld.h	$a2, $fp, 8
 	st.h	$a1, $fp, 10
 	lu12i.w	$a1, 8
 	or	$a1, $a2, $a1
 	st.h	$a1, $fp, 8
 .LBB7_14:
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 24
 	beq	$s0, $a1, .LBB7_17
 # %bb.15:
 	vld	$vr0, $fp, 0
-	vst	$vr0, $s1, 0
+	vst	$vr0, $fp, -16
 	b	.LBB7_19
 .LBB7_16:
 	addi.w	$a0, $zero, -12
 	b	.LBB7_10
 .LBB7_17:
-	ld.d	$a1, $sp, 16
-	ld.d	$a2, $sp, 32
-	ld.d	$a3, $sp, 48
+	ld.d	$a1, $sp, 24
+	ld.d	$a2, $sp, 40
+	ld.d	$a3, $sp, 56
 	ld.h	$a4, $fp, -6
 	sub.d	$a1, $a1, $a2
 	add.d	$a1, $a1, $a3
@@ -1102,65 +1099,61 @@ zreadstring:                            # @zreadstring
 	andi	$a1, $a4, 252
 	ori	$a2, $zero, 12
 	addi.w	$a0, $zero, -20
-	bne	$a1, $a2, .LBB9_9
+	bne	$a1, $a2, .LBB9_7
 # %bb.1:
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	addi.d	$s0, $a3, -16
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $a3, -16
 	ld.d	$a2, $a1, 0
 	addi.w	$a1, $zero, -7
-	beqz	$a2, .LBB9_7
+	beqz	$a2, .LBB9_8
 # %bb.2:
 	andi	$a4, $a4, 512
-	beqz	$a4, .LBB9_7
+	beqz	$a4, .LBB9_8
 # %bb.3:
 	ld.bu	$a4, $a2, 28
-	bnez	$a4, .LBB9_7
+	bnez	$a4, .LBB9_8
 # %bb.4:
 	ld.hu	$a4, $a3, 8
 	andi	$a5, $a4, 252
 	ori	$a6, $zero, 52
-	bne	$a5, $a6, .LBB9_8
+	bne	$a5, $a6, .LBB9_7
 # %bb.5:
 	andi	$a4, $a4, 256
 	move	$a0, $a1
-	beqz	$a4, .LBB9_8
+	beqz	$a4, .LBB9_7
 # %bb.6:
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	ld.hu	$fp, $a3, 10
 	ld.d	$a1, $a3, 0
-	move	$s1, $a3
+	move	$s0, $a3
 	move	$a0, $a2
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(sgets)
 	jirl	$ra, $ra, 0
-	ld.h	$a2, $s1, 8
+	ld.h	$a2, $s0, 8
 	move	$a1, $a0
-	st.h	$a0, $s1, 10
+	st.h	$a0, $s0, 10
 	lu12i.w	$a0, 8
 	or	$a0, $a2, $a0
-	st.h	$a0, $s1, 8
-	vld	$vr0, $s1, 0
+	st.h	$a0, $s0, 8
+	vld	$vr0, $s0, 0
 	move	$a0, $zero
-	vst	$vr0, $s0, 0
+	vst	$vr0, $s0, -16
 	xor	$a1, $a1, $fp
 	sltui	$a1, $a1, 1
-	st.h	$a1, $s1, 0
+	st.h	$a1, $s0, 0
 	ori	$a1, $zero, 4
-	st.h	$a1, $s1, 8
-	b	.LBB9_8
-.LBB9_7:
-	move	$a0, $a1
-.LBB9_8:
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	st.h	$a1, $s0, 8
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
-.LBB9_9:
+.LBB9_7:
+	ret
+.LBB9_8:
+	move	$a0, $a1
 	ret
 .Lfunc_end9:
 	.size	zreadstring, .Lfunc_end9-zreadstring
@@ -1284,9 +1277,7 @@ zreadline:                              # @zreadline
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	addi.d	$fp, $a1, -16
-	ld.d	$a2, $fp, 0
+	ld.d	$a2, $a1, -16
 	ld.d	$a3, $a2, 0
 	addi.w	$a2, $zero, -7
 	beqz	$a3, .LBB12_8
@@ -1307,30 +1298,29 @@ zreadline:                              # @zreadline
 	beqz	$a4, .LBB12_9
 # %bb.6:
 	ld.d	$a0, $a1, 0
-	move	$s0, $a1
+	move	$fp, $a1
 	ld.hu	$a1, $a1, 10
-	addi.d	$a2, $sp, 4
+	addi.d	$a2, $sp, 12
 	pcaddu18i	$ra, %call36(zreadline_from)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB12_9
 # %bb.7:
-	ld.h	$a1, $sp, 4
-	ld.h	$a2, $s0, 8
-	st.h	$a1, $s0, 10
+	ld.h	$a1, $sp, 12
+	ld.h	$a2, $fp, 8
+	st.h	$a1, $fp, 10
 	lu12i.w	$a1, 8
 	or	$a1, $a2, $a1
-	st.h	$a1, $s0, 8
-	vld	$vr0, $s0, 0
-	vst	$vr0, $fp, 0
-	st.h	$a0, $s0, 0
+	st.h	$a1, $fp, 8
+	vld	$vr0, $fp, 0
+	vst	$vr0, $fp, -16
+	st.h	$a0, $fp, 0
 	ori	$a0, $zero, 4
-	st.h	$a0, $s0, 8
+	st.h	$a0, $fp, 8
 	move	$a0, $zero
 	b	.LBB12_9
 .LBB12_8:
 	move	$a0, $a2
 .LBB12_9:
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
@@ -2520,10 +2510,8 @@ ztype1decryptfile:                      # @ztype1decryptfile
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	addi.d	$fp, $a1, -16
-	ld.d	$s0, $fp, 0
-	srli.d	$a2, $s0, 16
+	ld.d	$fp, $a1, -16
+	srli.d	$a2, $fp, 16
 	bnez	$a2, .LBB33_7
 # %bb.2:
 	ld.hu	$a2, $a1, 8
@@ -2539,27 +2527,27 @@ ztype1decryptfile:                      # @ztype1decryptfile
 	ld.bu	$a2, $a2, 28
 	bnez	$a2, .LBB33_8
 # %bb.5:                                # %.critedge
-	move	$s1, $a1
+	move	$s0, $a1
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.9)
-	addi.d	$a3, $sp, 0
+	addi.d	$a3, $sp, 8
 	move	$a0, $zero
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(file_open)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB33_8
 # %bb.6:
-	ld.d	$a0, $sp, 0
-	ld.d	$a1, $s1, 0
+	ld.d	$a0, $sp, 8
+	ld.d	$a1, $s0, 0
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a0, 16
 	ld.w	$a3, $a0, 24
-	bstrpick.d	$a4, $s0, 15, 0
+	bstrpick.d	$a4, $fp, 15, 0
 	pcaddu18i	$ra, %call36(sread_decrypt)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 0
-	vst	$vr0, $fp, 0
+	vld	$vr0, $sp, 8
+	vst	$vr0, $s0, -16
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a1, $a0, %got_pc_lo12(osp)
 	ld.d	$a2, $a1, 0
@@ -2570,7 +2558,6 @@ ztype1decryptfile:                      # @ztype1decryptfile
 .LBB33_7:
 	addi.w	$a0, $zero, -15
 .LBB33_8:
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload

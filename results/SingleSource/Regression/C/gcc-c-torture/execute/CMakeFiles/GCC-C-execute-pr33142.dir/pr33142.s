@@ -13,8 +13,7 @@ lisp_atan2:                             # @lisp_atan2
 # %bb.2:
 	vinsgr2vr.w	$vr0, $a1, 0
 	vinsgr2vr.w	$vr0, $a2, 1
-	vneg.w	$vr1, $vr0
-	vmax.w	$vr0, $vr0, $vr1
+	vsigncov.w	$vr0, $vr0, $vr0
 	vpickve2gr.w	$a0, $vr0, 0
 	vpickve2gr.w	$a1, $vr0, 1
 	sltu	$a0, $a1, $a0

@@ -286,7 +286,7 @@ main:                                   # @main
 	move	$a6, $a3
 	xvori.b	$xr7, $xr2, 0
 	.p2align	4, , 16
-.LBB7_14:                               # %vector.body47
+.LBB7_14:                               # %vector.body44
                                         #   Parent Loop BB7_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.du	$xr8, $xr7, 1
@@ -310,7 +310,7 @@ main:                                   # @main
 	addi.d	$a6, $a6, 32
 	xvaddi.du	$xr7, $xr7, 4
 	bnez	$a6, .LBB7_14
-# %bb.15:                               # %middle.block52
+# %bb.15:                               # %middle.block49
                                         #   in Loop: Header=BB7_13 Depth=1
 	addi.d	$a0, $a0, 1
 	add.d	$a5, $a5, $s4

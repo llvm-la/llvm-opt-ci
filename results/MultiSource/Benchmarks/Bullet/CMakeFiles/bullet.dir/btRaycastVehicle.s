@@ -1754,21 +1754,18 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 # %bb.19:                               # %.lr.ph116
 	ld.d	$a1, $fp, 168
 	ld.w	$a2, $fp, 184
-	ld.d	$a5, $fp, 208
-	alsl.d	$a4, $a2, $a1, 2
-	addi.d	$a2, $a4, 8
-	addi.d	$a3, $a4, 24
-	addi.d	$a4, $a4, 40
-	addi.d	$a5, $a5, 244
-	lu12i.w	$a6, 260055
-	ori	$a6, $a6, 164
-	movgr2fr.w	$fa0, $a6
+	ld.d	$a3, $fp, 208
+	alsl.d	$a2, $a2, $a1, 2
+	addi.d	$a3, $a3, 244
+	lu12i.w	$a4, 260055
+	ori	$a4, $a4, 164
+	movgr2fr.w	$fa0, $a4
 	b	.LBB15_22
 	.p2align	4, , 16
 .LBB15_20:                              #   in Loop: Header=BB15_22 Depth=1
-	fld.s	$fa1, $a5, -200
+	fld.s	$fa1, $a3, -200
 	fld.s	$fa2, $a1, 64
-	fld.s	$fa3, $a5, -204
+	fld.s	$fa3, $a3, -204
 	fld.s	$fa4, $a1, 60
 	fld.s	$fa5, $a1, 348
 	fld.s	$fa6, $a1, 352
@@ -1778,7 +1775,7 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fmul.s	$fa3, $fa6, $fa3
 	fld.s	$fa4, $a1, 328
 	fmadd.s	$fa3, $fa5, $fa1, $fa3
-	fld.s	$fa7, $a5, -208
+	fld.s	$fa7, $a3, -208
 	fld.s	$ft0, $a1, 56
 	fadd.s	$fa3, $fa4, $fa3
 	fld.s	$fa4, $a1, 344
@@ -1792,12 +1789,12 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fmul.s	$fa5, $fa5, $fa6
 	fmadd.s	$fa2, $fa4, $fa2, $fa5
 	fld.s	$fa4, $a1, 336
-	fld.s	$fa5, $a2, 0
-	fld.s	$fa6, $a3, 0
-	fld.s	$fa7, $a4, 0
-	fld.s	$ft0, $a5, -240
-	fld.s	$ft1, $a5, -244
-	fld.s	$ft2, $a5, -236
+	fld.s	$fa5, $a2, 8
+	fld.s	$fa6, $a2, 24
+	fld.s	$fa7, $a2, 40
+	fld.s	$ft0, $a3, -240
+	fld.s	$ft1, $a3, -244
+	fld.s	$ft2, $a3, -236
 	fadd.s	$fa2, $fa4, $fa2
 	fmul.s	$fa4, $fa6, $ft0
 	fmadd.s	$fa4, $fa5, $ft1, $fa4
@@ -1810,25 +1807,25 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fsub.s	$fa4, $fa7, $fa4
 	fmul.s	$fa1, $fa1, $fa6
 	fmadd.s	$fa1, $fa5, $fa3, $fa1
-	fld.s	$fa3, $a5, -28
-	fld.s	$fa5, $a5, -4
+	fld.s	$fa3, $a3, -28
+	fld.s	$fa5, $a3, -4
 	fmadd.s	$fa1, $fa4, $fa2, $fa1
 	fmul.s	$fa1, $fs0, $fa1
 	fdiv.s	$fa1, $fa1, $fa3
 	fadd.s	$fa2, $fa5, $fa1
 .LBB15_21:                              #   in Loop: Header=BB15_22 Depth=1
-	fst.s	$fa2, $a5, -4
+	fst.s	$fa2, $a3, -4
 	fmul.s	$fa1, $fa1, $fa0
-	fst.s	$fa1, $a5, 0
+	fst.s	$fa1, $a3, 0
 	addi.d	$a0, $a0, -1
-	addi.d	$a5, $a5, 288
+	addi.d	$a3, $a3, 288
 	beqz	$a0, .LBB15_24
 .LBB15_22:                              # =>This Inner Loop Header: Depth=1
-	ld.bu	$a6, $a5, -160
-	bnez	$a6, .LBB15_20
+	ld.bu	$a4, $a3, -160
+	bnez	$a4, .LBB15_20
 # %bb.23:                               #   in Loop: Header=BB15_22 Depth=1
-	fld.s	$fa1, $a5, 0
-	fld.s	$fa2, $a5, -4
+	fld.s	$fa1, $a3, 0
+	fld.s	$fa2, $a3, -4
 	fadd.s	$fa2, $fa1, $fa2
 	b	.LBB15_21
 .LBB15_24:                              # %._crit_edge117

@@ -44,17 +44,16 @@ bar:                                    # @bar
 main:                                   # @main
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(c)
-	ld.h	$a1, $a0, %pc_lo12(c)
-	bstrpick.d	$a5, $a1, 15, 0
+	ld.hu	$a5, $a0, %pc_lo12(c)
+	sltu	$a7, $zero, $a5
 	pcalau12i	$a1, %pc_hi20(p)
 	pcalau12i	$a2, %pc_hi20(k)
 	ld.w	$a4, $a2, %pc_lo12(k)
-	ld.d	$a1, $a1, %pc_lo12(p)
 	pcalau12i	$a3, %pc_hi20(i)
 	ld.w	$a6, $a3, %pc_lo12(i)
-	sltu	$a7, $zero, $a4
-	sltu	$t0, $zero, $a5
-	and	$a7, $a7, $t0
+	ld.d	$a1, $a1, %pc_lo12(p)
+	sltu	$t0, $zero, $a4
+	and	$a7, $t0, $a7
 	slti	$t0, $a6, 1
 	xor	$a7, $a7, $t0
 	bnez	$a7, .LBB3_2

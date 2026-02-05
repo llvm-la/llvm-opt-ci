@@ -585,19 +585,19 @@ tremove:                                # @tremove
 	.p2align	4, , 16
 .LBB7_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$s3, $s2, 1
+	move	$s3, $s2
+	addi.w	$s2, $s2, 1
 	ori	$a1, $zero, 1
 	move	$a0, $fp
-	move	$a2, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(lua_rawgeti)
 	jirl	$ra, $ra, 0
-	addi.w	$a2, $s2, 0
+	addi.w	$a2, $s3, 0
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_rawseti)
 	jirl	$ra, $ra, 0
-	move	$s2, $s3
-	bne	$s0, $s3, .LBB7_3
+	bne	$s0, $s2, .LBB7_3
 .LBB7_4:                                # %._crit_edge
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_pushnil)

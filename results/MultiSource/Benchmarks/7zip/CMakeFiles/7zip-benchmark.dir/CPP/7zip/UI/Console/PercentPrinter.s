@@ -373,44 +373,38 @@ _ZN15CPercentPrinter12RePrintRatioEv:   # @_ZN15CPercentPrinter12RePrintRatioEv
 	beq	$a2, $a0, .LBB4_14
 .LBB4_12:                               # %.lr.ph.preheader43
 	ori	$a3, $zero, 8
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB4_13:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a1, $a4, 1
+	st.b	$a3, $a1, 0
 	addi.w	$a2, $a2, 1
-	st.b	$a3, $a4, 0
-	move	$a4, $a1
+	addi.d	$a1, $a1, 1
 	blt	$a2, $a0, .LBB4_13
 .LBB4_14:                               # %._crit_edge
 	st.w	$s2, $fp, 32
 	bge	$s1, $s2, .LBB4_17
 # %bb.15:                               # %.lr.ph32.preheader
-	ori	$a2, $zero, 32
+	ori	$a0, $zero, 32
 	.p2align	4, , 16
 .LBB4_16:                               # %.lr.ph32
                                         # =>This Inner Loop Header: Depth=1
-	st.b	$a2, $a1, 0
-	ld.w	$a3, $fp, 32
-	addi.d	$a0, $a1, 1
+	st.b	$a0, $a1, 0
+	ld.w	$a2, $fp, 32
 	addi.w	$s1, $s1, 1
-	move	$a1, $a0
-	blt	$s1, $a3, .LBB4_16
-	b	.LBB4_18
-.LBB4_17:
-	move	$a0, $a1
-.LBB4_18:                               # %.preheader.preheader
-	addi.d	$a1, $sp, 128
-	.p2align	4, , 16
-.LBB4_19:                               # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $a1, 0
 	addi.d	$a1, $a1, 1
-	addi.d	$a3, $a0, 1
-	st.b	$a2, $a0, 0
-	move	$a0, $a3
-	bnez	$a2, .LBB4_19
-# %bb.20:                               # %_Z12MyStringCopyIcEPT_S1_PKS0_.exit
+	blt	$s1, $a2, .LBB4_16
+.LBB4_17:                               # %.preheader.preheader
+	addi.d	$a0, $sp, 128
+	.p2align	4, , 16
+.LBB4_18:                               # %.preheader
+                                        # =>This Inner Loop Header: Depth=1
+	ld.bu	$a2, $a0, 0
+	addi.d	$a0, $a0, 1
+	addi.d	$a3, $a1, 1
+	st.b	$a2, $a1, 0
+	move	$a1, $a3
+	bnez	$a2, .LBB4_18
+# %bb.19:                               # %_Z12MyStringCopyIcEPT_S1_PKS0_.exit
 	ld.d	$a0, $fp, 40
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN13CStdOutStreamlsEPKc)

@@ -23,13 +23,15 @@ Xz_ReadHeader:                          # @Xz_ReadHeader
 	addi.d	$sp, $sp, 32
 	ret
 .LBB0_2:
-	pcalau12i	$a0, %got_pc_hi20(XZ_SIG)
-	ld.d	$a1, $a0, %got_pc_lo12(XZ_SIG)
-	addi.d	$a0, $sp, 4
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
+	ld.w	$a0, $sp, 4
+	pcalau12i	$a1, %got_pc_hi20(XZ_SIG)
+	ld.d	$a1, $a1, %got_pc_lo12(XZ_SIG)
+	ld.w	$a2, $a1, 0
+	ld.hu	$a3, $sp, 8
+	ld.hu	$a1, $a1, 4
+	xor	$a0, $a0, $a2
+	xor	$a1, $a3, $a1
+	or	$a1, $a0, $a1
 	ori	$a0, $zero, 17
 	bnez	$a1, .LBB0_1
 # %bb.3:
@@ -413,23 +415,20 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	andi	$a1, $a1, 3
 	bnez	$a1, .LBB8_1
 # %bb.4:                                # %.lr.ph
-	addi.d	$s7, $sp, 1142
-	addi.d	$s4, $sp, 1136
-	addi.w	$a0, $zero, -12
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ori	$s8, $zero, 1
+	addi.d	$s6, $sp, 1136
+	addi.w	$s4, $zero, -12
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(XZ_FOOTER_SIG)
 	ld.d	$a0, $a0, %got_pc_lo12(XZ_FOOTER_SIG)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -16
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	addi.d	$s6, $sp, 104
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$s8, $sp, 104
 .LBB8_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_10 Depth 2
                                         #       Child Loop BB8_13 Depth 3
                                         #     Child Loop BB8_29 Depth 2
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	st.d	$a0, $s2, 0
+	st.d	$s4, $s2, 0
 	ld.d	$a3, $fp, 24
 	ori	$a2, $zero, 1
 	move	$a0, $fp
@@ -445,10 +444,10 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB8_1
 # %bb.7:                                #   in Loop: Header=BB8_5 Depth=1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.hu	$a0, $a0, 0
-	ld.hu	$a1, $s7, 0
-	beq	$a1, $a0, .LBB8_23
+	ld.hu	$a0, $sp, 1142
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.hu	$a1, $a1, 0
+	beq	$a0, $a1, .LBB8_23
 # %bb.8:                                #   in Loop: Header=BB8_5 Depth=1
 	ld.d	$a1, $s2, 0
 	addi.d	$a0, $a1, 12
@@ -456,8 +455,9 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	bltz	$a1, .LBB8_49
 # %bb.9:                                # %.lr.ph179.i.preheader
                                         #   in Loop: Header=BB8_5 Depth=1
-	move	$s4, $s7
-	move	$s7, $zero
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	move	$s4, $s6
+	move	$s6, $zero
 .LBB8_10:                               # %.lr.ph179.i
                                         #   Parent Loop BB8_5 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -485,19 +485,19 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	bnez	$a0, .LBB8_47
 # %bb.12:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB8_10 Depth=2
-	add.d	$s7, $s5, $s7
+	add.d	$s6, $s5, $s6
 	.p2align	4, , 16
 .LBB8_13:                               # %.lr.ph.i
                                         #   Parent Loop BB8_5 Depth=1
                                         #     Parent Loop BB8_10 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	addi.w	$a0, $s5, 0
-	add.d	$a1, $s6, $a0
+	add.d	$a1, $s8, $a0
 	ld.bu	$a1, $a1, -1
 	bnez	$a1, .LBB8_17
 # %bb.14:                               #   in Loop: Header=BB8_13 Depth=3
 	addi.d	$s5, $s5, -1
-	blt	$s8, $a0, .LBB8_13
+	blt	$s7, $a0, .LBB8_13
 # %bb.15:                               # %._crit_edge.i
                                         #   in Loop: Header=BB8_10 Depth=2
 	ld.d	$a0, $s2, 0
@@ -507,7 +507,7 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 # %bb.16:                               # %._crit_edge.i
                                         #   in Loop: Header=BB8_10 Depth=2
 	lu12i.w	$a1, 16
-	bgeu	$a1, $s7, .LBB8_10
+	bgeu	$a1, $s6, .LBB8_10
 	b	.LBB8_48
 .LBB8_17:                               # %.thread.i
                                         #   in Loop: Header=BB8_5 Depth=1
@@ -538,14 +538,14 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB8_47
 # %bb.21:                               #   in Loop: Header=BB8_5 Depth=1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.hu	$a0, $a0, 0
-	ld.hu	$a1, $s4, 0
-	bne	$a1, $a0, .LBB8_48
+	ld.hu	$a0, $sp, 1142
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.hu	$a1, $a1, 0
+	bne	$a0, $a1, .LBB8_48
 # %bb.22:                               # %.thread161.i
                                         #   in Loop: Header=BB8_5 Depth=1
-	move	$s7, $s4
-	addi.d	$s4, $sp, 1136
+	move	$s6, $s4
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 .LBB8_23:                               #   in Loop: Header=BB8_5 Depth=1
 	ld.hu	$a0, $sp, 1140
 	revb.d	$a0, $a0
@@ -556,7 +556,7 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 # %bb.24:                               #   in Loop: Header=BB8_5 Depth=1
 	ld.w	$s5, $sp, 1132
 	ori	$a1, $zero, 6
-	move	$a0, $s4
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(CrcCalc)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
@@ -574,7 +574,7 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	or	$a2, $a2, $a3
 	or	$a1, $a2, $a1
 	or	$s5, $a1, $a0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	sub.d	$a0, $a0, $s5
 	st.d	$a0, $s2, 0
 	ld.d	$a3, $fp, 24
@@ -648,23 +648,23 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	ld.hu	$a1, $sp, 102
 	bne	$a0, $a1, .LBB8_51
 # %bb.37:                               #   in Loop: Header=BB8_5 Depth=1
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a1, $s2, 0
 	ld.d	$a0, $s3, 0
 	ld.d	$a2, $s3, 8
 	st.d	$a1, $sp, 80
 	bne	$a0, $a2, .LBB8_40
 # %bb.38:                               #   in Loop: Header=BB8_5 Depth=1
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	move	$s1, $s4
-	move	$s4, $s7
+	move	$s4, $s6
 	srli.d	$a1, $a0, 2
 	add.d	$a0, $a0, $a1
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a2, $s0, 0
-	addi.d	$s7, $a0, 1
-	slli.d	$a0, $s7, 5
-	alsl.d	$a1, $s7, $a0, 3
+	addi.d	$s6, $a0, 1
+	slli.d	$a0, $s6, 5
+	alsl.d	$a1, $s6, $a0, 3
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 	beqz	$a0, .LBB8_54
@@ -672,7 +672,7 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	move	$s5, $a0
 	ld.d	$a0, $s3, 0
 	ld.d	$a1, $s3, 16
-	st.d	$s7, $s3, 8
+	st.d	$s6, $s3, 8
 	slli.d	$a2, $a0, 5
 	alsl.d	$a2, $a0, $a2, 3
 	move	$a0, $s5
@@ -684,9 +684,9 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	jirl	$ra, $a2, 0
 	ld.d	$a0, $s3, 0
 	st.d	$s5, $s3, 16
-	move	$s7, $s4
+	move	$s6, $s4
 	move	$s4, $s1
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB8_41
 .LBB8_40:                               # %._crit_edge
                                         #   in Loop: Header=BB8_5 Depth=1
@@ -731,7 +731,7 @@ Xzs_ReadBackward:                       # @Xzs_ReadBackward
 	blt	$a1, $a2, .LBB8_1
 # %bb.46:                               #   in Loop: Header=BB8_5 Depth=1
 	andi	$a1, $a1, 3
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a1, .LBB8_5
 	b	.LBB8_1
 .LBB8_47:

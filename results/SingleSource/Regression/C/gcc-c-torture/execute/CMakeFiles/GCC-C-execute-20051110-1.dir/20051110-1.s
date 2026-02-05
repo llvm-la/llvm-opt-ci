@@ -6,24 +6,21 @@
 add_unwind_adjustsp:                    # @add_unwind_adjustsp
 # %bb.0:
 	addi.d	$a0, $a0, -516
-	ori	$a1, $zero, 4
-	bltu	$a0, $a1, .LBB0_3
+	srai.d	$a0, $a0, 2
+	beqz	$a0, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
-	srai.d	$a1, $a0, 2
-	pcalau12i	$a0, %pc_hi20(bytes)
-	addi.d	$a0, $a0, %pc_lo12(bytes)
-	ori	$a2, $zero, 127
+	pcalau12i	$a1, %pc_hi20(bytes)
+	addi.d	$a1, $a1, %pc_lo12(bytes)
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a3, $a1
-	srli.d	$a1, $a1, 7
-	sltu	$a4, $a2, $a3
-	move	$a5, $a3
-	bstrins.d	$a5, $a4, 63, 7
-	st.b	$a5, $a0, 0
-	addi.d	$a0, $a0, 1
-	bltu	$a2, $a3, .LBB0_2
+	srli.d	$a2, $a0, 7
+	sltu	$a3, $zero, $a2
+	bstrins.d	$a0, $a3, 63, 7
+	st.b	$a0, $a1, 0
+	addi.d	$a1, $a1, 1
+	move	$a0, $a2
+	bnez	$a2, .LBB0_2
 .LBB0_3:                                # %._crit_edge
 	ret
 .Lfunc_end0:

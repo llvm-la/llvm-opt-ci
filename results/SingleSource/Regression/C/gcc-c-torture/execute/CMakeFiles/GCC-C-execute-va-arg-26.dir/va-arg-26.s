@@ -13,8 +13,8 @@ f:                                      # @f
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
+	movgr2fr.d	$fa0, $a0
 	st.d	$a0, $sp, 16
-	fld.d	$fa0, $sp, 16
 	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end0:

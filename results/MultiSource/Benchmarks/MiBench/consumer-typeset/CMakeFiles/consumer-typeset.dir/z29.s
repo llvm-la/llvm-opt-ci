@@ -270,17 +270,17 @@ SwitchScope:                            # @SwitchScope
 	pcalau12i	$a0, %pc_hi20(vis_only)
 	addi.d	$fp, $a0, %pc_lo12(vis_only)
 	pcalau12i	$a0, %pc_hi20(body_ok)
-	addi.d	$s0, $a0, %pc_lo12(body_ok)
+	addi.d	$s8, $a0, %pc_lo12(body_ok)
 	b	.LBB7_7
 	.p2align	4, , 16
 .LBB7_6:                                # %PushScope.exit10
                                         #   in Loop: Header=BB7_7 Depth=1
 	slli.d	$a1, $a0, 3
-	stx.d	$s8, $s5, $a1
+	stx.d	$s0, $s5, $a1
 	slli.d	$a1, $a0, 2
 	stx.w	$zero, $s6, $a1
 	stx.w	$zero, $fp, $a1
-	stx.w	$zero, $s0, $a1
+	stx.w	$zero, $s8, $a1
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s7, %pc_lo12(scope_top)
 	addi.d	$s2, $s2, -1
@@ -290,7 +290,7 @@ SwitchScope:                            # @SwitchScope
 .LBB7_7:                                # %.lr.ph16
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a0, $s4, %pc_lo12(suppress_scope)
-	ld.d	$s8, $s3, 0
+	ld.d	$s0, $s3, 0
 	beqz	$a0, .LBB7_9
 # %bb.8:                                #   in Loop: Header=BB7_7 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -307,7 +307,7 @@ SwitchScope:                            # @SwitchScope
 	ori	$a1, $zero, 300
 	blt	$a0, $a1, .LBB7_6
 # %bb.10:                               #   in Loop: Header=BB7_7 Depth=1
-	addi.d	$a4, $s8, 32
+	addi.d	$a4, $s0, 32
 	ori	$a0, $zero, 29
 	ori	$a1, $zero, 2
 	move	$a2, $s1
@@ -2860,8 +2860,8 @@ FullSymName:                            # @FullSymName
 	beqz	$a0, .LBB19_18
 .LBB19_3:                               # %.lr.ph.preheader
 	pcalau12i	$a1, %pc_hi20(.L.str.25)
-	addi.d	$s1, $a1, %pc_lo12(.L.str.25)
-	move	$s4, $zero
+	addi.d	$s4, $a1, %pc_lo12(.L.str.25)
+	move	$s1, $zero
 	addi.d	$a1, $sp, 40
 	ori	$a2, $zero, 19
 	.p2align	4, , 16
@@ -2870,8 +2870,8 @@ FullSymName:                            # @FullSymName
 	st.d	$fp, $a1, 0
 	move	$fp, $a0
 	ld.d	$a0, $a0, 48
-	move	$a3, $s4
-	addi.d	$s4, $s4, 1
+	move	$a3, $s1
+	addi.d	$s1, $s1, 1
 	beqz	$a0, .LBB19_6
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB19_4 Depth=1
@@ -2881,7 +2881,7 @@ FullSymName:                            # @FullSymName
 	pcalau12i	$a0, %pc_hi20(FullSymName.buff)
 	ori	$a1, $zero, 1
 	st.b	$zero, $a0, %pc_lo12(FullSymName.buff)
-	beq	$s4, $a1, .LBB19_19
+	beq	$s1, $a1, .LBB19_19
 # %bb.7:                                # %.lr.ph34
 	pcalau12i	$a0, %pc_hi20(FullSymName.buff)
 	addi.d	$s2, $a0, %pc_lo12(FullSymName.buff)
@@ -2912,12 +2912,12 @@ FullSymName:                            # @FullSymName
 	bgeu	$s5, $s3, .LBB19_19
 .LBB19_9:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB19_11 Depth 2
-	move	$s3, $s4
-	addi.d	$s4, $s4, -1
-	slli.d	$a0, $s4, 3
+	move	$s3, $s1
+	addi.d	$s1, $s1, -1
+	slli.d	$a0, $s1, 3
 	addi.d	$a1, $sp, 40
 	ldx.d	$a0, $a0, $a1
-	move	$s6, $s1
+	move	$s6, $s4
 	beqz	$a0, .LBB19_15
 # %bb.10:                               #   in Loop: Header=BB19_9 Depth=1
 	ld.d	$s6, $a0, 24

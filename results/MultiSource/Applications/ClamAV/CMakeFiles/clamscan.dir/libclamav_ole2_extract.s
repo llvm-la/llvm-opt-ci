@@ -73,10 +73,10 @@ cli_ole2_extract:                       # @cli_ole2_extract
 	st.d	$a0, $sp, 680
 	beqz	$a0, .LBB0_11
 # %bb.7:
-	pcalau12i	$a0, %pc_hi20(magic_id)
-	ld.d	$a0, $a0, %pc_lo12(magic_id)
-	ld.d	$a1, $sp, 144
-	beq	$a1, $a0, .LBB0_13
+	ld.d	$a0, $sp, 144
+	pcalau12i	$a1, %pc_hi20(magic_id)
+	ld.d	$a1, $a1, %pc_lo12(magic_id)
+	beq	$a0, $a1, .LBB0_13
 # %bb.8:
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
@@ -453,53 +453,51 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	pcaddu18i	$t8, %call36(cli_dbgmsg)
 	jr	$t8
 .LBB2_13:                               # %.critedge
-	ori	$a0, $zero, 4
-	bgeu	$s5, $a0, .LBB2_15
-# %bb.14:                               # %._crit_edge
-	bgez	$a2, .LBB2_18
-	b	.LBB2_4
-.LBB2_15:
 	bstrpick.d	$s6, $s5, 31, 2
+	beqz	$s6, .LBB2_16
 	.p2align	4, , 16
-.LBB2_16:                               # %.lr.ph
+.LBB2_14:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s2
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(ole2_get_next_block_number)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB2_4
-# %bb.17:                               #   in Loop: Header=BB2_16 Depth=1
+# %bb.15:                               #   in Loop: Header=BB2_14 Depth=1
 	move	$a2, $a0
 	addi.w	$s6, $s6, -1
-	bnez	$s6, .LBB2_16
-.LBB2_18:                               # %._crit_edge.thread
+	bnez	$s6, .LBB2_14
+	b	.LBB2_17
+.LBB2_16:                               # %._crit_edge
+	bltz	$a2, .LBB2_4
+.LBB2_17:                               # %._crit_edge.thread
 	ld.hu	$a1, $s1, 30
 	ld.d	$a0, $s1, 520
 	sll.w	$a2, $a2, $a1
 	addi.w	$s6, $a2, 512
-	beqz	$a0, .LBB2_22
-# %bb.19:
+	beqz	$a0, .LBB2_21
+# %bb.18:
 	ori	$a2, $zero, 1
 	sll.w	$a2, $a2, $a1
 	add.d	$a1, $s6, $a2
 	blez	$a1, .LBB2_4
-# %bb.20:
+# %bb.19:
 	ld.d	$a3, $s1, 528
 	blt	$a3, $a1, .LBB2_4
-# %bb.21:
+# %bb.20:
 	add.d	$a1, $a0, $s6
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	b	.LBB2_24
-.LBB2_22:
+	b	.LBB2_23
+.LBB2_21:
 	move	$a0, $s2
 	move	$a1, $s6
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB2_4
-# %bb.23:
+# %bb.22:
 	ld.hu	$a0, $s1, 30
 	ori	$s6, $zero, 1
 	sll.w	$a2, $s6, $a0
@@ -510,14 +508,14 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	ld.hu	$a1, $s1, 30
 	sll.w	$a1, $s6, $a1
 	bne	$a0, $a1, .LBB2_4
-.LBB2_24:                               # %ole2_read_block.exit
+.LBB2_23:                               # %ole2_read_block.exit
 	andi	$a0, $s5, 3
 	slli.d	$a0, $a0, 7
 	addi.d	$a1, $sp, 16
 	add.d	$s6, $a1, $a0
 	ld.bu	$a0, $s6, 66
 	beqz	$a0, .LBB2_4
-# %bb.25:
+# %bb.24:
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(print_ole2_property)
 	jirl	$ra, $ra, 0
@@ -525,44 +523,44 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(cli_bitset_test)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB2_28
-# %bb.26:
+	beqz	$a0, .LBB2_27
+# %bb.25:
 	pcalau12i	$a0, %pc_hi20(.L.str.27)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.27)
 	move	$a1, $s5
-.LBB2_27:                               # %ole2_read_block.exit.thread
+.LBB2_26:                               # %ole2_read_block.exit.thread
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB2_4
-.LBB2_28:
+.LBB2_27:
 	ld.d	$a0, $s1, 536
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(cli_bitset_set)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_4
-# %bb.29:
+# %bb.28:
 	ld.bu	$a1, $s6, 66
 	ori	$a0, $zero, 1
-	beq	$a1, $a0, .LBB2_39
-# %bb.30:
+	beq	$a1, $a0, .LBB2_38
+# %bb.29:
 	ori	$a0, $zero, 2
-	beq	$a1, $a0, .LBB2_35
-# %bb.31:
+	beq	$a1, $a0, .LBB2_34
+# %bb.30:
 	ori	$a0, $zero, 5
-	bne	$a1, $a0, .LBB2_43
-# %bb.32:
+	bne	$a1, $a0, .LBB2_42
+# %bb.31:
 	or	$a0, $s4, $s5
-	bnez	$a0, .LBB2_34
-# %bb.33:
+	bnez	$a0, .LBB2_33
+# %bb.32:
 	ld.w	$a0, $s0, 0
-	beqz	$a0, .LBB2_44
-.LBB2_34:
+	beqz	$a0, .LBB2_43
+.LBB2_33:
 	pcalau12i	$a0, %pc_hi20(.L.str.28)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.28)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB2_4
-.LBB2_35:
+.LBB2_34:
 	ld.w	$a0, $s0, 0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 0
@@ -572,13 +570,13 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	move	$a3, $s3
 	pcaddu18i	$ra, %call36(handler_writefile)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_37
-# %bb.36:
+	bnez	$a0, .LBB2_36
+# %bb.35:
 	pcalau12i	$a0, %pc_hi20(.L.str.29)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.29)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB2_37:
+.LBB2_36:
 	ld.w	$a3, $s6, 68
 	move	$a0, $s2
 	move	$a1, $s1
@@ -602,13 +600,13 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	move	$a1, $s1
 	move	$a2, $s3
 	move	$a4, $s4
-.LBB2_38:                               # %ole2_read_block.exit.thread
+.LBB2_37:                               # %ole2_read_block.exit.thread
 	move	$a5, $s0
 	move	$a6, $fp
 	pcaddu18i	$ra, %call36(ole2_walk_property_tree)
 	jirl	$ra, $ra, 0
 	b	.LBB2_4
-.LBB2_39:
+.LBB2_38:
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -616,7 +614,7 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_4
-# %bb.40:
+# %bb.39:
 	move	$s7, $a0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
@@ -633,8 +631,8 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(mkdir)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB2_42
-# %bb.41:
+	bnez	$a0, .LBB2_41
+# %bb.40:
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.31)
 	move	$a1, $s7
@@ -668,16 +666,16 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	move	$a6, $fp
 	pcaddu18i	$ra, %call36(ole2_walk_property_tree)
 	jirl	$ra, $ra, 0
-.LBB2_42:
+.LBB2_41:
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB2_4
-.LBB2_43:
+.LBB2_42:
 	pcalau12i	$a0, %pc_hi20(.L.str.32)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.32)
-	b	.LBB2_27
-.LBB2_44:
+	b	.LBB2_26
+.LBB2_43:
 	ld.w	$a0, $s6, 116
 	ld.w	$a3, $s6, 68
 	st.w	$a0, $s1, 512
@@ -703,7 +701,7 @@ ole2_walk_property_tree:                # @ole2_walk_property_tree
 	move	$a0, $s2
 	move	$a1, $s1
 	move	$a2, $s3
-	b	.LBB2_38
+	b	.LBB2_37
 .Lfunc_end2:
 	.size	ole2_walk_property_tree, .Lfunc_end2-ole2_walk_property_tree
                                         # -- End function
@@ -855,11 +853,10 @@ handler_writefile:                      # @handler_writefile
 	ld.w	$a2, $fp, 512
 	bltz	$a2, .LBB3_60
 # %bb.19:                               #   in Loop: Header=BB3_14 Depth=1
-	ori	$a0, $zero, 8
-	bltu	$s4, $a0, .LBB3_23
-# %bb.20:                               # %.lr.ph.preheader.i
-                                        #   in Loop: Header=BB3_14 Depth=1
 	bstrpick.d	$a0, $s4, 31, 3
+	beqz	$a0, .LBB3_23
+# %bb.20:                               # %.lr.ph.i.preheader
+                                        #   in Loop: Header=BB3_14 Depth=1
 	addi.d	$s5, $a0, 1
 	.p2align	4, , 16
 .LBB3_21:                               # %.lr.ph.i
@@ -998,14 +995,13 @@ handler_writefile:                      # @handler_writefile
 	bne	$a0, $s5, .LBB3_63
 # %bb.38:                               #   in Loop: Header=BB3_14 Depth=1
 	ld.w	$a2, $fp, 60
-	ori	$a0, $zero, 128
-	bltu	$s4, $a0, .LBB3_41
-# %bb.39:                               # %.lr.ph.preheader.i136
-                                        #   in Loop: Header=BB3_14 Depth=1
 	bstrpick.d	$a0, $s4, 31, 7
+	beqz	$a0, .LBB3_41
+# %bb.39:                               # %.lr.ph.i136.preheader
+                                        #   in Loop: Header=BB3_14 Depth=1
 	addi.d	$s6, $a0, 1
 	.p2align	4, , 16
-.LBB3_40:                               # %.lr.ph.i137
+.LBB3_40:                               # %.lr.ph.i136
                                         #   Parent Loop BB3_14 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a0, $s0
@@ -1015,7 +1011,7 @@ handler_writefile:                      # @handler_writefile
 	addi.w	$s6, $s6, -1
 	move	$a2, $a0
 	bltu	$s1, $s6, .LBB3_40
-.LBB3_41:                               # %._crit_edge.i139
+.LBB3_41:                               # %._crit_edge.i138
                                         #   in Loop: Header=BB3_14 Depth=1
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	bltz	$a2, .LBB3_49

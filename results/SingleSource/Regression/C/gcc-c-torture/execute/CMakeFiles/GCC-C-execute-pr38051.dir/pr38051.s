@@ -6,140 +6,158 @@
 mymemcmp:                               # @mymemcmp
 # %bb.0:
 	addi.d	$sp, $sp, -16
-	andi	$a4, $a0, 7
-	srli.d	$a3, $a2, 3
-	beqz	$a4, .LBB0_4
+	andi	$a3, $a0, 7
+	srli.d	$a2, $a2, 3
+	beqz	$a3, .LBB0_4
 # %bb.1:
-	slli.d	$a4, $a0, 3
-	andi	$a4, $a4, 56
-	ori	$a5, $zero, 64
-	sub.d	$a5, $a5, $a4
+	slli.d	$a3, $a0, 3
+	andi	$a3, $a3, 56
+	ori	$a4, $zero, 64
+	sub.d	$a4, $a4, $a3
 	bstrins.d	$a0, $zero, 2, 0
-	andi	$a6, $a3, 3
-	slli.d	$a6, $a6, 2
-	pcalau12i	$a7, %pc_hi20(.LJTI0_0)
-	addi.d	$a7, $a7, %pc_lo12(.LJTI0_0)
-	ldx.w	$a6, $a7, $a6
-	add.d	$a6, $a7, $a6
-	jr	$a6
+	andi	$a5, $a2, 3
+	slli.d	$a5, $a5, 2
+	pcalau12i	$a6, %pc_hi20(.LJTI0_0)
+	addi.d	$a6, $a6, %pc_lo12(.LJTI0_0)
+	ldx.w	$a5, $a6, $a5
+	add.d	$a5, $a6, $a5
+	jr	$a5
 .LBB0_2:
-	ori	$a6, $zero, 8
-	bgeu	$a2, $a6, .LBB0_15
+	beqz	$a2, .LBB0_23
 # %bb.3:
-	move	$a0, $zero
-	addi.d	$sp, $sp, 16
-	ret
+	ld.d	$a6, $a0, 0
+	addi.d	$a0, $a0, 8
+	move	$a5, $a1
+	b	.LBB0_15
 .LBB0_4:
-	andi	$a4, $a3, 3
-	slli.d	$a4, $a4, 2
-	pcalau12i	$a5, %pc_hi20(.LJTI0_1)
-	addi.d	$a5, $a5, %pc_lo12(.LJTI0_1)
-	ldx.w	$a4, $a5, $a4
-	add.d	$a4, $a5, $a4
-	jr	$a4
+	andi	$a3, $a2, 3
+	slli.d	$a3, $a3, 2
+	pcalau12i	$a4, %pc_hi20(.LJTI0_1)
+	addi.d	$a4, $a4, %pc_lo12(.LJTI0_1)
+	ldx.w	$a3, $a4, $a3
+	add.d	$a3, $a4, $a3
+	jr	$a3
 .LBB0_5:
-	ori	$a4, $zero, 8
-	bgeu	$a2, $a4, .LBB0_16
+	beqz	$a2, .LBB0_23
 # %bb.6:
-	move	$a0, $zero
-	addi.d	$sp, $sp, 16
-	ret
+	move	$a3, $a0
+	move	$a4, $a1
+	b	.LBB0_32
 .LBB0_7:
 	ld.d	$a6, $a0, 0
 	addi.d	$t0, $a0, 8
 	addi.d	$a0, $a0, -8
-	addi.d	$a2, $a1, -16
-	addi.d	$a3, $a3, 2
-	b	.LBB0_37
+	addi.d	$a5, $a1, -16
+	addi.d	$a2, $a2, 2
+	b	.LBB0_17
 .LBB0_8:
 	ld.d	$a7, $a0, 0
-	addi.d	$a2, $a1, -8
-	addi.d	$a3, $a3, 1
-	b	.LBB0_36
+	addi.d	$a5, $a1, -8
+	addi.d	$a2, $a2, 1
+	b	.LBB0_16
 .LBB0_9:
 	ld.d	$t0, $a0, 0
 	ld.d	$a6, $a0, 8
 	ld.d	$a7, $a1, 0
-	addi.d	$a3, $a3, -1
-	beqz	$a3, .LBB0_39
+	addi.d	$a2, $a2, -1
+	beqz	$a2, .LBB0_22
 # %bb.10:                               # %._crit_edge.i
-	addi.d	$a2, $a1, 8
+	addi.d	$a5, $a1, 8
 	addi.d	$a0, $a0, 16
-	b	.LBB0_34
-.LBB0_11:
-	addi.d	$a2, $a0, -16
-	addi.d	$a4, $a1, -16
-	addi.d	$a3, $a3, 2
 	b	.LBB0_19
+.LBB0_11:
+	addi.d	$a3, $a0, -16
+	addi.d	$a4, $a1, -16
+	addi.d	$a2, $a2, 2
+	b	.LBB0_34
 .LBB0_12:
-	addi.d	$a2, $a0, -8
+	addi.d	$a3, $a0, -8
 	addi.d	$a4, $a1, -8
-	addi.d	$a3, $a3, 1
-	b	.LBB0_18
+	addi.d	$a2, $a2, 1
+	b	.LBB0_33
 .LBB0_13:
 	ld.d	$a6, $a0, 0
 	ld.d	$a5, $a1, 0
-	addi.d	$a3, $a3, -1
-	beqz	$a3, .LBB0_24
+	addi.d	$a2, $a2, -1
+	beqz	$a2, .LBB0_39
 # %bb.14:
-	addi.d	$a2, $a0, 8
+	addi.d	$a3, $a0, 8
 	addi.d	$a4, $a1, 8
-	b	.LBB0_21
+	b	.LBB0_36
 .LBB0_15:
-	ld.d	$a6, $a0, 0
-	addi.d	$a0, $a0, 8
-	move	$a2, $a1
-	b	.LBB0_35
+	ld.d	$a7, $a0, 0
+	ld.d	$t0, $a5, 0
+	srl.d	$a1, $a6, $a3
+	sll.d	$a6, $a7, $a4
+	or	$a6, $a6, $a1
+	addi.d	$a1, $a5, 8
+	bne	$a6, $t0, .LBB0_24
 .LBB0_16:
-	move	$a2, $a0
-	move	$a4, $a1
+	ld.d	$a6, $a0, 8
+	ld.d	$t1, $a1, 0
+	addi.d	$t0, $a0, 16
+	srl.d	$a1, $a7, $a3
+	sll.d	$a7, $a6, $a4
+	or	$a7, $a7, $a1
+	addi.d	$a1, $a5, 16
+	bne	$a7, $t1, .LBB0_28
 .LBB0_17:
-	ld.d	$a5, $a4, 0
-	ld.d	$a6, $a2, 0
-	addi.d	$a0, $a2, 8
-	addi.d	$a1, $a4, 8
-	bne	$a6, $a5, .LBB0_26
-.LBB0_18:
-	ld.d	$a5, $a1, 0
-	ld.d	$a6, $a0, 0
-	addi.d	$a0, $a2, 16
-	addi.d	$a1, $a4, 16
-	bne	$a6, $a5, .LBB0_30
-.LBB0_19:
+	ld.d	$t0, $t0, 0
 	ld.d	$a1, $a1, 0
-	ld.d	$a0, $a0, 0
-	bne	$a0, $a1, .LBB0_28
+	srl.d	$a6, $a6, $a3
+	sll.d	$a7, $t0, $a4
+	or	$a6, $a7, $a6
+	bne	$a6, $a1, .LBB0_26
+# %bb.18:
+	ld.d	$a7, $a5, 24
+	ld.d	$a6, $a0, 24
+	addi.d	$a0, $a0, 32
+	addi.d	$a2, $a2, -4
+	addi.d	$a5, $a5, 32
+	beqz	$a2, .LBB0_22
+.LBB0_19:
+	srl.d	$a1, $t0, $a3
+	sll.d	$t0, $a6, $a4
+	or	$a1, $t0, $a1
+	beq	$a1, $a7, .LBB0_15
 # %bb.20:
-	ld.d	$a5, $a4, 24
-	ld.d	$a6, $a2, 24
-	addi.d	$a2, $a2, 32
-	addi.d	$a3, $a3, -4
-	addi.d	$a4, $a4, 32
-	beqz	$a3, .LBB0_24
-.LBB0_21:
-	beq	$a6, $a5, .LBB0_17
-# %bb.22:
-	st.d	$a6, $sp, 8
-	st.d	$a5, $sp, 0
+	st.d	$a1, $sp, 8
+	st.d	$a7, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
-.LBB0_23:                               # =>This Inner Loop Header: Depth=1
+.LBB0_21:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a0, 0
 	ld.bu	$a3, $a1, 0
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
-	beq	$a2, $a3, .LBB0_23
-	b	.LBB0_51
-.LBB0_24:
-	bne	$a6, $a5, .LBB0_32
-# %bb.25:
+	beq	$a2, $a3, .LBB0_21
+	b	.LBB0_49
+.LBB0_22:
+	srl.d	$a0, $t0, $a3
+	sll.d	$a1, $a6, $a4
+	or	$a0, $a1, $a0
+	bne	$a0, $a7, .LBB0_30
+.LBB0_23:
 	move	$a0, $zero
 	addi.d	$sp, $sp, 16
 	ret
+.LBB0_24:
+	st.d	$a6, $sp, 8
+	st.d	$t0, $sp, 0
+	addi.d	$a0, $sp, 8
+	addi.d	$a1, $sp, 0
+	.p2align	4, , 16
+.LBB0_25:                               # =>This Inner Loop Header: Depth=1
+	ld.bu	$a2, $a0, 0
+	ld.bu	$a3, $a1, 0
+	addi.d	$a0, $a0, 1
+	addi.d	$a1, $a1, 1
+	beq	$a2, $a3, .LBB0_25
+	b	.LBB0_49
 .LBB0_26:
 	st.d	$a6, $sp, 8
-	st.d	$a5, $sp, 0
+	st.d	$a1, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
@@ -149,10 +167,10 @@ mymemcmp:                               # @mymemcmp
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
 	beq	$a2, $a3, .LBB0_27
-	b	.LBB0_51
+	b	.LBB0_49
 .LBB0_28:
-	st.d	$a0, $sp, 8
-	st.d	$a1, $sp, 0
+	st.d	$a7, $sp, 8
+	st.d	$t1, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
@@ -162,10 +180,10 @@ mymemcmp:                               # @mymemcmp
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
 	beq	$a2, $a3, .LBB0_29
-	b	.LBB0_51
+	b	.LBB0_49
 .LBB0_30:
-	st.d	$a6, $sp, 8
-	st.d	$a5, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a7, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
@@ -175,68 +193,54 @@ mymemcmp:                               # @mymemcmp
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
 	beq	$a2, $a3, .LBB0_31
-	b	.LBB0_51
+	b	.LBB0_49
 .LBB0_32:
+	ld.d	$a5, $a4, 0
+	ld.d	$a6, $a3, 0
+	addi.d	$a0, $a3, 8
+	addi.d	$a1, $a4, 8
+	bne	$a6, $a5, .LBB0_41
+.LBB0_33:
+	ld.d	$a5, $a1, 0
+	ld.d	$a6, $a0, 0
+	addi.d	$a0, $a3, 16
+	addi.d	$a1, $a4, 16
+	bne	$a6, $a5, .LBB0_45
+.LBB0_34:
+	ld.d	$a1, $a1, 0
+	ld.d	$a0, $a0, 0
+	bne	$a0, $a1, .LBB0_43
+# %bb.35:
+	ld.d	$a5, $a4, 24
+	ld.d	$a6, $a3, 24
+	addi.d	$a3, $a3, 32
+	addi.d	$a2, $a2, -4
+	addi.d	$a4, $a4, 32
+	beqz	$a2, .LBB0_39
+.LBB0_36:
+	beq	$a6, $a5, .LBB0_32
+# %bb.37:
 	st.d	$a6, $sp, 8
 	st.d	$a5, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
-.LBB0_33:                               # =>This Inner Loop Header: Depth=1
+.LBB0_38:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $a0, 0
 	ld.bu	$a3, $a1, 0
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
-	beq	$a2, $a3, .LBB0_33
-	b	.LBB0_51
-.LBB0_34:
-	srl.d	$a1, $t0, $a4
-	sll.d	$t0, $a6, $a5
-	or	$a1, $t0, $a1
-	bne	$a1, $a7, .LBB0_43
-.LBB0_35:
-	ld.d	$a7, $a0, 0
-	ld.d	$t0, $a2, 0
-	srl.d	$a1, $a6, $a4
-	sll.d	$a6, $a7, $a5
-	or	$a6, $a6, $a1
-	addi.d	$a1, $a2, 8
-	bne	$a6, $t0, .LBB0_41
-.LBB0_36:
-	ld.d	$a6, $a0, 8
-	ld.d	$t1, $a1, 0
-	addi.d	$t0, $a0, 16
-	srl.d	$a1, $a7, $a4
-	sll.d	$a7, $a6, $a5
-	or	$a7, $a7, $a1
-	addi.d	$a1, $a2, 16
-	bne	$a7, $t1, .LBB0_47
-.LBB0_37:
-	ld.d	$t0, $t0, 0
-	ld.d	$a1, $a1, 0
-	srl.d	$a6, $a6, $a4
-	sll.d	$a7, $t0, $a5
-	or	$a6, $a7, $a6
-	bne	$a6, $a1, .LBB0_45
-# %bb.38:
-	ld.d	$a7, $a2, 24
-	ld.d	$a6, $a0, 24
-	addi.d	$a0, $a0, 32
-	addi.d	$a3, $a3, -4
-	addi.d	$a2, $a2, 32
-	bnez	$a3, .LBB0_34
+	beq	$a2, $a3, .LBB0_38
+	b	.LBB0_49
 .LBB0_39:
-	srl.d	$a0, $t0, $a4
-	sll.d	$a1, $a6, $a5
-	or	$a0, $a1, $a0
-	bne	$a0, $a7, .LBB0_49
+	bne	$a6, $a5, .LBB0_47
 # %bb.40:
 	move	$a0, $zero
 	addi.d	$sp, $sp, 16
 	ret
 .LBB0_41:
 	st.d	$a6, $sp, 8
-	st.d	$t0, $sp, 0
+	st.d	$a5, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
@@ -246,10 +250,10 @@ mymemcmp:                               # @mymemcmp
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
 	beq	$a2, $a3, .LBB0_42
-	b	.LBB0_51
+	b	.LBB0_49
 .LBB0_43:
-	st.d	$a1, $sp, 8
-	st.d	$a7, $sp, 0
+	st.d	$a0, $sp, 8
+	st.d	$a1, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
@@ -259,10 +263,10 @@ mymemcmp:                               # @mymemcmp
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
 	beq	$a2, $a3, .LBB0_44
-	b	.LBB0_51
+	b	.LBB0_49
 .LBB0_45:
 	st.d	$a6, $sp, 8
-	st.d	$a1, $sp, 0
+	st.d	$a5, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
@@ -272,10 +276,10 @@ mymemcmp:                               # @mymemcmp
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
 	beq	$a2, $a3, .LBB0_46
-	b	.LBB0_51
+	b	.LBB0_49
 .LBB0_47:
-	st.d	$a7, $sp, 8
-	st.d	$t1, $sp, 0
+	st.d	$a6, $sp, 8
+	st.d	$a5, $sp, 0
 	addi.d	$a0, $sp, 8
 	addi.d	$a1, $sp, 0
 	.p2align	4, , 16
@@ -285,20 +289,7 @@ mymemcmp:                               # @mymemcmp
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 1
 	beq	$a2, $a3, .LBB0_48
-	b	.LBB0_51
-.LBB0_49:
-	st.d	$a0, $sp, 8
-	st.d	$a7, $sp, 0
-	addi.d	$a0, $sp, 8
-	addi.d	$a1, $sp, 0
-	.p2align	4, , 16
-.LBB0_50:                               # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $a0, 0
-	ld.bu	$a3, $a1, 0
-	addi.d	$a0, $a0, 1
-	addi.d	$a1, $a1, 1
-	beq	$a2, $a3, .LBB0_50
-.LBB0_51:                               # %mymemcmp1.exit128.i
+.LBB0_49:                               # %mymemcmp1.exit128.i
 	sub.d	$a0, $a2, $a3
 	addi.d	$sp, $sp, 16
 	ret

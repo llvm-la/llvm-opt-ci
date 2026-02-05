@@ -140,7 +140,7 @@ jpeg_calc_output_dimensions:            # @jpeg_calc_output_dimensions
 	bnez	$a6, .LBB0_20
 # %bb.21:                               # %middle.block
 	beq	$a2, $a1, .LBB0_24
-.LBB0_22:                               # %.critedge.preheader140
+.LBB0_22:                               # %.critedge.preheader139
 	addi.d	$a3, $a3, 36
 	sub.d	$a1, $a1, $a2
 	ori	$a2, $zero, 8
@@ -600,34 +600,34 @@ jinit_master_decompress:                # @jinit_master_decompress
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	move	$fp, $a0
+	move	$s0, $a0
 	ld.d	$a0, $a0, 8
 	ld.d	$a3, $a0, 0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 48
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a3, 0
-	move	$s0, $a0
-	st.d	$a0, $fp, 528
+	move	$fp, $a0
+	st.d	$a0, $s0, 528
 	pcalau12i	$a0, %pc_hi20(prepare_for_output_pass)
 	addi.d	$a0, $a0, %pc_lo12(prepare_for_output_pass)
-	st.d	$a0, $s0, 0
+	st.d	$a0, $fp, 0
 	pcalau12i	$a0, %pc_hi20(finish_output_pass)
 	addi.d	$a0, $a0, %pc_lo12(finish_output_pass)
-	st.d	$a0, $s0, 8
-	st.w	$zero, $s0, 16
-	move	$a0, $fp
+	st.d	$a0, $fp, 8
+	st.w	$zero, $fp, 16
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jpeg_calc_output_dimensions)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 8
+	ld.d	$a0, $s0, 8
 	ld.d	$a3, $a0, 0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1408
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a3, 0
 	move	$s1, $a0
 	addi.d	$a0, $a0, 256
-	st.d	$a0, $fp, 408
+	st.d	$a0, $s0, 408
 	ori	$a2, $zero, 256
 	move	$a0, $s1
 	move	$a1, $zero
@@ -667,47 +667,47 @@ jinit_master_decompress:                # @jinit_master_decompress
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 408
+	ld.d	$a1, $s0, 408
 	addi.d	$a0, $s1, 1280
 	ori	$a2, $zero, 128
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.wu	$a0, $fp, 128
-	ld.w	$a1, $fp, 136
+	ld.wu	$a0, $s0, 128
+	ld.w	$a1, $s0, 136
 	mul.d	$a0, $a1, $a0
 	srli.d	$a0, $a0, 32
 	beqz	$a0, .LBB2_2
 # %bb.1:
-	ld.d	$a0, $fp, 0
+	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 69
 	st.w	$a2, $a0, 40
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
 .LBB2_2:
-	ld.w	$a0, $fp, 92
-	st.w	$zero, $s0, 24
+	ld.w	$a0, $s0, 92
+	st.w	$zero, $fp, 24
 	bnez	$a0, .LBB2_17
 # %bb.3:
-	ld.w	$a0, $fp, 384
+	ld.w	$a0, $s0, 384
 	bnez	$a0, .LBB2_17
 # %bb.4:
-	ld.w	$a1, $fp, 52
+	ld.w	$a1, $s0, 52
 	ori	$a0, $zero, 3
 	bne	$a1, $a0, .LBB2_17
 # %bb.5:
-	ld.w	$a1, $fp, 48
+	ld.w	$a1, $s0, 48
 	bne	$a1, $a0, .LBB2_17
 # %bb.6:
-	ld.w	$a0, $fp, 56
+	ld.w	$a0, $s0, 56
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB2_17
 # %bb.7:
-	ld.w	$a0, $fp, 136
+	ld.w	$a0, $s0, 136
 	ori	$a1, $zero, 3
 	bne	$a0, $a1, .LBB2_17
 # %bb.8:
-	ld.d	$a0, $fp, 296
+	ld.d	$a0, $s0, 296
 	ld.w	$a1, $a0, 8
 	ori	$a2, $zero, 2
 	bne	$a1, $a2, .LBB2_17
@@ -731,7 +731,7 @@ jinit_master_decompress:                # @jinit_master_decompress
 	bne	$a2, $a1, .LBB2_17
 # %bb.14:
 	ld.w	$a1, $a0, 36
-	ld.w	$a2, $fp, 396
+	ld.w	$a2, $s0, 396
 	bne	$a1, $a2, .LBB2_17
 # %bb.15:
 	ld.w	$a2, $a0, 132
@@ -745,141 +745,140 @@ jinit_master_decompress:                # @jinit_master_decompress
 	move	$a0, $zero
 .LBB2_18:                               # %use_merged_upsample.exit.i
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 32
-	ld.w	$a1, $fp, 100
-	st.w	$a0, $s0, 28
+	vst	$vr0, $fp, 32
+	ld.w	$a1, $s0, 100
+	st.w	$a0, $fp, 28
 	beqz	$a1, .LBB2_26
 # %bb.19:
-	ld.w	$a0, $fp, 80
+	ld.w	$a0, $s0, 80
 	bnez	$a0, .LBB2_21
 # %bb.20:
-	st.d	$zero, $fp, 116
-	st.w	$zero, $fp, 124
+	st.d	$zero, $s0, 116
+	st.w	$zero, $s0, 124
 .LBB2_21:                               # %.thread.i
-	ld.w	$a0, $fp, 84
+	ld.w	$a0, $s0, 84
 	beqz	$a0, .LBB2_23
 # %bb.22:
-	ld.d	$a0, $fp, 0
+	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 46
 	st.w	$a2, $a0, 40
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
 .LBB2_23:
-	ld.w	$a0, $fp, 136
+	ld.w	$a0, $s0, 136
 	ori	$a1, $zero, 3
 	bne	$a0, $a1, .LBB2_27
 # %bb.24:
-	ld.d	$a0, $fp, 152
+	ld.d	$a0, $s0, 152
 	beqz	$a0, .LBB2_51
 # %bb.25:
 	ori	$a0, $zero, 1
-	st.w	$a0, $fp, 120
+	st.w	$a0, $s0, 120
 	b	.LBB2_28
 .LBB2_26:                               # %.thread104.i
-	st.d	$zero, $fp, 116
-	st.w	$zero, $fp, 124
+	st.d	$zero, $s0, 116
+	st.w	$zero, $s0, 124
 	b	.LBB2_33
 .LBB2_27:
 	ori	$a0, $zero, 1
-	st.d	$a0, $fp, 116
-	st.w	$zero, $fp, 124
-	st.d	$zero, $fp, 152
+	st.d	$a0, $s0, 116
+	st.w	$zero, $s0, 124
+	st.d	$zero, $s0, 152
 .LBB2_28:
-	ld.w	$a0, $fp, 116
+	ld.w	$a0, $s0, 116
 	beqz	$a0, .LBB2_30
 # %bb.29:
-	addi.d	$s1, $s0, 32
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_1pass_quantizer)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 608
-	st.d	$a0, $s1, 0
+	ld.d	$a0, $s0, 608
+	st.d	$a0, $fp, 32
 .LBB2_30:
-	ld.w	$a0, $fp, 124
+	ld.w	$a0, $s0, 124
 	bnez	$a0, .LBB2_32
 # %bb.31:
-	ld.w	$a0, $fp, 120
+	ld.w	$a0, $s0, 120
 	beqz	$a0, .LBB2_33
 .LBB2_32:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_2pass_quantizer)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 608
-	st.d	$a0, $s0, 40
+	ld.d	$a0, $s0, 608
+	st.d	$a0, $fp, 40
 .LBB2_33:
-	ld.w	$a0, $fp, 84
+	ld.w	$a0, $s0, 84
 	beqz	$a0, .LBB2_44
 # %bb.34:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_inverse_dct)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, 308
+	ld.w	$a0, $s0, 308
 	beqz	$a0, .LBB2_48
 .LBB2_35:
-	ld.d	$a0, $fp, 0
+	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 1
 	st.w	$a2, $a0, 40
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	ld.d	$a0, $fp, 560
+	ld.d	$a0, $s0, 560
 	ld.w	$a0, $a0, 32
 	ori	$a1, $zero, 1
 	bnez	$a0, .LBB2_37
 .LBB2_36:
-	ld.w	$a0, $fp, 80
+	ld.w	$a0, $s0, 80
 	sltu	$a1, $zero, $a0
 .LBB2_37:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_d_coef_controller)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, 84
+	ld.w	$a0, $s0, 84
 	bnez	$a0, .LBB2_39
 # %bb.38:
-	move	$a0, $fp
+	move	$a0, $s0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(jinit_d_main_controller)
 	jirl	$ra, $ra, 0
 .LBB2_39:
-	ld.d	$a0, $fp, 8
+	ld.d	$a0, $s0, 8
 	ld.d	$a1, $a0, 48
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	ld.d	$a0, $fp, 560
+	ld.d	$a0, $s0, 560
 	ld.d	$a1, $a0, 16
-	move	$a0, $fp
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	ld.d	$a0, $fp, 16
+	ld.d	$a0, $s0, 16
 	beqz	$a0, .LBB2_43
 # %bb.40:
-	ld.w	$a1, $fp, 80
+	ld.w	$a1, $s0, 80
 	bnez	$a1, .LBB2_43
 # %bb.41:
-	ld.d	$a1, $fp, 560
+	ld.d	$a1, $s0, 560
 	ld.w	$a1, $a1, 32
 	beqz	$a1, .LBB2_43
 # %bb.42:
-	ld.w	$a1, $fp, 304
-	ld.w	$a2, $fp, 48
+	ld.w	$a1, $s0, 304
+	ld.w	$a2, $s0, 48
 	sltui	$a1, $a1, 1
 	alsl.d	$a3, $a2, $a2, 1
 	addi.w	$a3, $a3, 2
 	maskeqz	$a2, $a2, $a1
-	ld.wu	$a4, $fp, 400
+	ld.wu	$a4, $s0, 400
 	masknez	$a1, $a3, $a1
 	or	$a1, $a2, $a1
 	st.d	$zero, $a0, 8
 	mul.d	$a1, $a1, $a4
-	ld.w	$a2, $fp, 124
+	ld.w	$a2, $s0, 124
 	st.d	$a1, $a0, 16
 	st.w	$zero, $a0, 24
-	ld.w	$a1, $s0, 24
+	ld.w	$a1, $fp, 24
 	sltui	$a2, $a2, 1
 	xori	$a2, $a2, 3
 	st.w	$a2, $a0, 28
 	addi.d	$a0, $a1, 1
-	st.w	$a0, $s0, 24
+	st.w	$a0, $fp, 24
 .LBB2_43:                               # %master_selection.exit
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -888,61 +887,61 @@ jinit_master_decompress:                # @jinit_master_decompress
 	addi.d	$sp, $sp, 32
 	ret
 .LBB2_44:
-	ld.w	$a0, $s0, 28
+	ld.w	$a0, $fp, 28
 	beqz	$a0, .LBB2_46
 # %bb.45:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_merged_upsampler)
 	jirl	$ra, $ra, 0
 	b	.LBB2_47
 .LBB2_46:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_color_deconverter)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_upsampler)
 	jirl	$ra, $ra, 0
 .LBB2_47:
-	ld.w	$a1, $fp, 124
-	move	$a0, $fp
+	ld.w	$a1, $s0, 124
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_d_post_controller)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_inverse_dct)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, 308
+	ld.w	$a0, $s0, 308
 	bnez	$a0, .LBB2_35
 .LBB2_48:
-	ld.w	$a0, $fp, 304
+	ld.w	$a0, $s0, 304
 	beqz	$a0, .LBB2_50
 # %bb.49:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_phuff_decoder)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 560
+	ld.d	$a0, $s0, 560
 	ld.w	$a0, $a0, 32
 	ori	$a1, $zero, 1
 	bnez	$a0, .LBB2_37
 	b	.LBB2_36
 .LBB2_50:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(jinit_huff_decoder)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 560
+	ld.d	$a0, $s0, 560
 	ld.w	$a0, $a0, 32
 	ori	$a1, $zero, 1
 	bnez	$a0, .LBB2_37
 	b	.LBB2_36
 .LBB2_51:
-	ld.w	$a0, $fp, 108
+	ld.w	$a0, $s0, 108
 	beqz	$a0, .LBB2_53
 # %bb.52:
 	ori	$a0, $zero, 1
-	st.w	$a0, $fp, 124
+	st.w	$a0, $s0, 124
 	b	.LBB2_28
 .LBB2_53:
 	ori	$a0, $zero, 1
-	st.w	$a0, $fp, 116
+	st.w	$a0, $s0, 116
 	b	.LBB2_28
 .Lfunc_end2:
 	.size	jinit_master_decompress, .Lfunc_end2-jinit_master_decompress

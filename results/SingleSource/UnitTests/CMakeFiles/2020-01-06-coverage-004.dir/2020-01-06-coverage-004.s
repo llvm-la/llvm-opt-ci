@@ -32,84 +32,41 @@ j:                                      # @j
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(d)
 	ld.hu	$a1, $a0, %pc_lo12(d)
-	beqz	$a1, .LBB1_8
+	beqz	$a1, .LBB1_7
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a2, %pc_hi20(f)
 	ld.d	$a2, $a2, %pc_lo12(f)
 	pcalau12i	$a3, %pc_hi20(a)
 	ld.w	$a4, $a3, %pc_lo12(a)
-	lu12i.w	$a6, 15
-	ori	$a7, $a6, 4092
 	pcalau12i	$a3, %pc_hi20(x)
-	addi.d	$a3, $a3, %pc_lo12(x)
 	lu12i.w	$a5, 253973
-	bltu	$a7, $a1, .LBB1_9
-# %bb.2:                                # %vector.memcheck
-	addi.d	$a7, $a2, 8
-	bgeu	$a3, $a7, .LBB1_4
-# %bb.3:                                # %vector.memcheck
-	addi.d	$a7, $a3, 8
-	bltu	$a2, $a7, .LBB1_9
-.LBB1_4:                                # %vector.ph
-	ori	$a6, $a6, 4095
-	xor	$a6, $a1, $a6
-	addi.d	$a6, $a6, 1
-	bstrpick.d	$a7, $a6, 16, 2
-	ld.wu	$t1, $a2, 0
-	slli.w	$t0, $a7, 2
-	alsl.d	$a1, $a7, $a1, 2
-	xvinsgr2vr.d	$xr0, $a4, 3
-	sltu	$a7, $zero, $t1
-	sltui	$t1, $t1, 1
-	xvinsgr2vr.d	$xr1, $t1, 3
-	xvslli.d	$xr1, $xr1, 63
-	xvsrai.d	$xr1, $xr1, 63
-	xvrepli.d	$xr2, 1
-	xvbitsel.v	$xr0, $xr0, $xr2, $xr1
-	xvpickve2gr.d	$t1, $xr0, 3
-	ori	$t2, $a5, 4095
-	lu32i.d	$t2, 474
-	div.d	$t1, $t2, $t1
-	sltu	$t1, $zero, $t1
-	and	$a7, $t1, $a7
-	st.d	$a7, $a3, 0
-	move	$t1, $t0
-	.p2align	4, , 16
-.LBB1_5:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	addi.w	$t1, $t1, -4
-	bnez	$t1, .LBB1_5
-# %bb.6:                                # %middle.block
-	bne	$a6, $t0, .LBB1_9
-.LBB1_7:                                # %._crit_edge
-	pcalau12i	$a1, %pc_hi20(b)
-	st.w	$a7, $a1, %pc_lo12(b)
-	st.h	$zero, $a0, %pc_lo12(d)
-.LBB1_8:
-	ret
-.LBB1_9:                                # %scalar.ph.preheader
 	ori	$a5, $a5, 4095
 	lu32i.d	$a5, 474
 	div.d	$a4, $a5, $a4
 	sltu	$a4, $zero, $a4
-	b	.LBB1_12
+	b	.LBB1_4
 	.p2align	4, , 16
-.LBB1_10:                               #   in Loop: Header=BB1_12 Depth=1
-	move	$a7, $a4
-.LBB1_11:                               # %h.exit
-                                        #   in Loop: Header=BB1_12 Depth=1
+.LBB1_2:                                #   in Loop: Header=BB1_4 Depth=1
+	move	$a5, $a4
+.LBB1_3:                                # %h.exit
+                                        #   in Loop: Header=BB1_4 Depth=1
 	bstrpick.d	$a1, $a1, 15, 0
 	addi.d	$a1, $a1, 1
-	slli.d	$a5, $a1, 47
-	st.d	$a7, $a3, 0
-	bltz	$a5, .LBB1_7
-.LBB1_12:                               # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
+	slli.d	$a6, $a1, 47
+	st.d	$a5, $a3, %pc_lo12(x)
+	bltz	$a6, .LBB1_6
+.LBB1_4:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, 0
-	bnez	$a5, .LBB1_10
-# %bb.13:                               #   in Loop: Header=BB1_12 Depth=1
-	move	$a7, $zero
-	b	.LBB1_11
+	bnez	$a5, .LBB1_2
+# %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
+	move	$a5, $zero
+	b	.LBB1_3
+.LBB1_6:                                # %._crit_edge
+	pcalau12i	$a1, %pc_hi20(b)
+	st.w	$a5, $a1, %pc_lo12(b)
+	st.h	$zero, $a0, %pc_lo12(d)
+.LBB1_7:
+	ret
 .Lfunc_end1:
 	.size	j, .Lfunc_end1-j
                                         # -- End function

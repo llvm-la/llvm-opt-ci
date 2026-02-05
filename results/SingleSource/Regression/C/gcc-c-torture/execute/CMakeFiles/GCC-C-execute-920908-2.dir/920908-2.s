@@ -5,8 +5,8 @@
 	.type	f,@function
 f:                                      # @f
 # %bb.0:
-	slli.w	$a0, $a0, 16
-	srai.d	$a0, $a0, 24
+	srli.d	$a0, $a0, 8
+	ext.w.b	$a0, $a0
 	ret
 .Lfunc_end0:
 	.size	f, .Lfunc_end0-f

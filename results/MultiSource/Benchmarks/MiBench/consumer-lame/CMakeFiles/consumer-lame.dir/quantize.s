@@ -1911,7 +1911,7 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	jirl	$ra, $ra, 0
 	addi.d	$a3, $sp, 320
 	addi.d	$a4, $sp, 368
-	st.d	$s1, $sp, 8
+	st.d	$fp, $sp, 8
 	move	$a0, $s0
 	move	$a1, $s8
 	move	$a2, $s5
@@ -1925,10 +1925,10 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	ld.d	$s0, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
 .LBB4_87:                               #   in Loop: Header=BB4_88 Depth=2
-	addi.d	$fp, $fp, 1
+	addi.d	$s1, $s1, 1
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 204
-	addi.w	$s1, $s1, 1
+	addi.w	$fp, $fp, 1
 	addi.d	$s2, $s2, 120
 	add.d	$s8, $s8, $a3
 	addi.d	$s7, $s7, 244
@@ -1936,7 +1936,7 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	addi.d	$s6, $a1, 257
 	addi.d	$s3, $s3, 4
 	addi.d	$s4, $s4, 976
-	bge	$fp, $a0, .LBB4_70
+	bge	$s1, $a0, .LBB4_70
 .LBB4_88:                               # %.peel.next444
                                         #   Parent Loop BB4_72 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -3142,25 +3142,25 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr6, $xr5, $xr3
 	xvpickve2gr.d	$t7, $xr6, 0
-	add.d	$t8, $a0, $t7
-	xvpickve2gr.d	$fp, $xr6, 1
-	add.d	$s0, $a0, $fp
-	xvpickve2gr.d	$s1, $xr6, 2
-	xvpickve2gr.d	$s2, $xr6, 3
+	xvpickve2gr.d	$t8, $xr6, 1
+	xvpickve2gr.d	$fp, $xr6, 2
+	xvpickve2gr.d	$s0, $xr6, 3
+	add.d	$s1, $a0, $t7
+	add.d	$s2, $a0, $t8
 	fldx.d	$fa6, $a0, $t7
-	fldx.d	$fa7, $a0, $s1
-	fldx.d	$ft0, $a0, $s2
-	fldx.d	$ft1, $a0, $fp
-	add.d	$t7, $a0, $s1
-	add.d	$fp, $a0, $s2
+	fldx.d	$fa7, $a0, $fp
+	fldx.d	$ft0, $a0, $s0
+	fldx.d	$ft1, $a0, $t8
+	add.d	$t7, $a0, $fp
+	add.d	$t8, $a0, $s0
 	vextrins.d	$vr7, $vr8, 16
 	vextrins.d	$vr6, $vr9, 16
 	xvpermi.q	$xr6, $xr7, 2
 	xvfmul.d	$xr6, $xr4, $xr6
-	xvstelm.d	$xr6, $t8, 0, 0
-	xvstelm.d	$xr6, $s0, 0, 1
+	xvstelm.d	$xr6, $s1, 0, 0
+	xvstelm.d	$xr6, $s2, 0, 1
 	xvstelm.d	$xr6, $t7, 0, 2
-	xvstelm.d	$xr6, $fp, 0, 3
+	xvstelm.d	$xr6, $t8, 0, 3
 	addi.d	$t6, $t6, -4
 	xvaddi.du	$xr5, $xr5, 4
 	bnez	$t6, .LBB8_28
@@ -3270,12 +3270,12 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr6, $xr5, $xr3
 	xvpickve2gr.d	$fp, $xr6, 0
-	add.d	$fp, $a0, $fp
 	xvpickve2gr.d	$s0, $xr6, 1
-	add.d	$s0, $a0, $s0
 	xvpickve2gr.d	$s1, $xr6, 2
-	add.d	$s1, $a0, $s1
 	xvpickve2gr.d	$s2, $xr6, 3
+	add.d	$fp, $a0, $fp
+	add.d	$s0, $a0, $s0
+	add.d	$s1, $a0, $s1
 	add.d	$s2, $a0, $s2
 	fld.d	$fa6, $fp, 8
 	fld.d	$fa7, $s1, 8
@@ -3382,12 +3382,12 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
                                         # =>  This Inner Loop Header: Depth=2
 	xvmul.d	$xr6, $xr5, $xr3
 	xvpickve2gr.d	$t6, $xr6, 0
-	add.d	$t6, $a0, $t6
 	xvpickve2gr.d	$t7, $xr6, 1
-	add.d	$t7, $a0, $t7
 	xvpickve2gr.d	$t8, $xr6, 2
-	add.d	$t8, $a0, $t8
 	xvpickve2gr.d	$fp, $xr6, 3
+	add.d	$t6, $a0, $t6
+	add.d	$t7, $a0, $t7
+	add.d	$t8, $a0, $t8
 	add.d	$fp, $a0, $fp
 	fld.d	$fa6, $t6, 16
 	fld.d	$fa7, $t8, 16

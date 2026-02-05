@@ -281,12 +281,13 @@ parseCommandLine:                       # @parseCommandLine
 	ld.bu	$a0, $s1, 1024
 	bnez	$a0, .LBB0_5
 # %bb.1:
-	pcalau12i	$a0, %pc_hi20(.L.str.37)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.37)
-	ori	$a2, $zero, 6
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s0, 0
+	ld.hu	$a1, $s0, 4
+	lu12i.w	$a2, 419654
+	ori	$a2, $a2, 1395
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 108
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_3
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
@@ -296,12 +297,15 @@ parseCommandLine:                       # @parseCommandLine
 	st.d	$a1, $s3, 7
 	st.d	$a0, $s3, 0
 .LBB0_3:
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
-	ori	$a2, $zero, 7
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s0, 0
+	lu12i.w	$a1, 407271
+	ori	$a1, $a1, 1382
+	ld.w	$a2, $s0, 3
+	xor	$a0, $a0, $a1
+	lu12i.w	$a1, 1734
+	ori	$a1, $a1, 1635
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_5
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(.L.str.39)

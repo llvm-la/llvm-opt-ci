@@ -22,13 +22,13 @@ va_double:                              # @va_double
 	st.d	$a4, $sp, 48
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
-	st.d	$a1, $sp, 24
-	addi.d	$a0, $sp, 32
-	st.d	$a0, $sp, 8
-	fld.d	$fa0, $sp, 24
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_0)
-	fcmp.ceq.d	$fcc0, $fa0, $fa1
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_0)
+	st.d	$a1, $sp, 24
+	movgr2fr.d	$fa1, $a1
+	addi.d	$a0, $sp, 32
+	fcmp.ceq.d	$fcc0, $fa1, $fa0
+	st.d	$a0, $sp, 8
 	bceqz	$fcc0, .LBB0_5
 # %bb.1:
 	addi.d	$a0, $sp, 24

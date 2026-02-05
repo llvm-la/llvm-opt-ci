@@ -866,13 +866,12 @@ fileblobSetFilename:                    # @fileblobSetFilename
 	bnez	$a0, .LBB16_16
 # %bb.15:
 	ld.d	$a0, $fp, 16
-	addi.d	$s0, $fp, 16
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.b	$a0, $fp, 56
-	st.d	$zero, $s0, 16
+	st.d	$zero, $fp, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 0
+	vst	$vr0, $fp, 16
 	ori	$a0, $a0, 1
 	st.b	$a0, $fp, 56
 .LBB16_16:

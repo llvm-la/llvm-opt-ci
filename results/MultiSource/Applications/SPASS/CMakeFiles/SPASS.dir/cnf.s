@@ -4526,24 +4526,24 @@ cnf_MakeClauseList:                     # @cnf_MakeClauseList
 	blez	$a0, .LBB24_42
 # %bb.40:                               # %.lr.ph239
                                         #   in Loop: Header=BB24_32 Depth=1
-	move	$s2, $zero
 	move	$s7, $zero
+	move	$s2, $zero
 	.p2align	4, , 16
 .LBB24_41:                              #   Parent Loop BB24_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s6, 56
-	ldx.d	$a0, $a0, $s2
+	ldx.d	$a0, $a0, $s7
 	ld.d	$a0, $a0, 24
 	pcaddu18i	$ra, %call36(term_Rename)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 64
 	ld.w	$a1, $s6, 68
 	ld.w	$a2, $s6, 72
-	addi.d	$s7, $s7, 1
+	addi.d	$s2, $s2, 1
 	add.d	$a0, $a1, $a0
 	add.w	$a0, $a0, $a2
-	addi.d	$s2, $s2, 8
-	blt	$s7, $a0, .LBB24_41
+	addi.d	$s7, $s7, 8
+	blt	$s2, $a0, .LBB24_41
 .LBB24_42:                              # %._crit_edge240
                                         #   in Loop: Header=BB24_32 Depth=1
 	ori	$a0, $zero, 16
@@ -10994,9 +10994,9 @@ cnf_HandleDefinition:                   # @cnf_HandleDefinition
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 0
 	ld.d	$s3, $a0, 8
-	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	beqz	$s4, .LBB45_32
 # %bb.20:
+	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	ld.d	$s8, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s7, $a0, %got_pc_lo12(memory_FREEDBYTES)
@@ -11106,6 +11106,7 @@ cnf_HandleDefinition:                   # @cnf_HandleDefinition
 	st.d	$a0, $s6, 0
 	b	.LBB45_22
 .LBB45_32:                              # %.lr.ph.split.us.preheader
+	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	ld.d	$fp, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s4, $a0, %got_pc_lo12(memory_FREEDBYTES)
@@ -11271,13 +11272,14 @@ cnf_ApplyDefinitionToClause:            # @cnf_ApplyDefinitionToClause
 	beq	$a0, $a5, .LBB46_3
 # %bb.1:                                # %.lr.ph
 	move	$fp, $zero
-	move	$s0, $zero
+	move	$a1, $zero
 	.p2align	4, , 16
 .LBB46_2:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s3, 56
-	slli.d	$a1, $fp, 3
-	ldx.d	$a0, $a0, $a1
+	slli.d	$a2, $fp, 3
+	ldx.d	$a0, $a0, $a2
 	ld.d	$a0, $a0, 24
+	move	$s0, $a1
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
@@ -11293,7 +11295,6 @@ cnf_ApplyDefinitionToClause:            # @cnf_ApplyDefinitionToClause
 	addi.w	$fp, $fp, 1
 	add.d	$a0, $a2, $a0
 	add.w	$a0, $a0, $a3
-	move	$s0, $a1
 	bltu	$fp, $a0, .LBB46_2
 .LBB46_3:                               # %._crit_edge
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
@@ -12373,39 +12374,38 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$s7, $sp, 256                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 248                   # 8-byte Folded Spill
 	move	$fp, $a4
-	ld.w	$s1, $sp, 344
-	ld.d	$a4, $sp, 336
-	st.d	$a4, $sp, 208                   # 8-byte Folded Spill
-	ld.w	$a4, $fp, 0
-	move	$s2, $a7
-	move	$s4, $a6
-	st.d	$a5, $sp, 136                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
-	move	$s8, $a2
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
-	move	$s7, $a0
+	ld.w	$s2, $sp, 344
+	ld.d	$s4, $sp, 336
+	ld.w	$a4, $a4, 0
+	move	$s1, $a7
+	st.d	$a6, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
+	move	$s7, $a2
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	move	$s0, $a0
 	pcalau12i	$a0, %got_pc_hi20(fol_ALL)
-	ld.d	$s0, $a0, %got_pc_lo12(fol_ALL)
-	ld.w	$a0, $s0, 0
+	ld.d	$s8, $a0, %got_pc_lo12(fol_ALL)
+	ld.w	$a0, $s8, 0
 	pcalau12i	$a1, %got_pc_hi20(fol_EXIST)
 	ld.d	$a2, $a1, %got_pc_lo12(fol_EXIST)
 	beq	$a0, $a4, .LBB54_2
 # %bb.1:
 	ld.w	$a1, $a2, 0
-	bne	$a1, $a4, .LBB54_238
+	bne	$a1, $a4, .LBB54_234
 .LBB54_2:                               # %.lr.ph373.lr.ph
-	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
 	xor	$a0, $a0, $a4
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %got_pc_hi20(term_Delete)
 	ld.d	$a1, $a1, %got_pc_lo12(term_Delete)
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
 	ld.d	$s3, $a1, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
 	ld.d	$s6, $a1, %got_pc_lo12(memory_FREEDBYTES)
 	pcalau12i	$a1, %pc_hi20(cnf_VARIABLEDEPTHARRAY)
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(fol_AND)
 	ld.d	$a1, $a1, %got_pc_lo12(fol_AND)
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
@@ -12413,13 +12413,13 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ori	$a1, $a1, 283
 	lu32i.d	$a1, -289263
 	lu52i.d	$a1, $a1, 423
-	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB54_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB54_18 Depth 2
@@ -12430,18 +12430,18 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
                                         #       Child Loop BB54_42 Depth 3
                                         #       Child Loop BB54_50 Depth 3
                                         #       Child Loop BB54_52 Depth 3
-                                        #     Child Loop BB54_191 Depth 2
-                                        #     Child Loop BB54_198 Depth 2
+                                        #     Child Loop BB54_183 Depth 2
+                                        #     Child Loop BB54_190 Depth 2
+                                        #       Child Loop BB54_193 Depth 3
+                                        #         Child Loop BB54_196 Depth 4
                                         #       Child Loop BB54_201 Depth 3
                                         #         Child Loop BB54_204 Depth 4
-                                        #       Child Loop BB54_209 Depth 3
-                                        #         Child Loop BB54_212 Depth 4
-                                        #     Child Loop BB54_216 Depth 2
-                                        #       Child Loop BB54_221 Depth 3
-                                        #       Child Loop BB54_223 Depth 3
-                                        #       Child Loop BB54_225 Depth 3
-                                        #       Child Loop BB54_228 Depth 3
-                                        #     Child Loop BB54_233 Depth 2
+                                        #     Child Loop BB54_208 Depth 2
+                                        #       Child Loop BB54_213 Depth 3
+                                        #       Child Loop BB54_215 Depth 3
+                                        #       Child Loop BB54_217 Depth 3
+                                        #       Child Loop BB54_220 Depth 3
+                                        #     Child Loop BB54_225 Depth 2
                                         #     Child Loop BB54_60 Depth 2
                                         #     Child Loop BB54_89 Depth 2
                                         #     Child Loop BB54_94 Depth 2
@@ -12454,19 +12454,19 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
                                         #       Child Loop BB54_126 Depth 3
                                         #     Child Loop BB54_130 Depth 2
                                         #     Child Loop BB54_132 Depth 2
-                                        #     Child Loop BB54_135 Depth 2
-                                        #     Child Loop BB54_139 Depth 2
-                                        #       Child Loop BB54_142 Depth 3
-                                        #       Child Loop BB54_149 Depth 3
-                                        #       Child Loop BB54_153 Depth 3
-                                        #       Child Loop BB54_159 Depth 3
-                                        #         Child Loop BB54_161 Depth 4
-                                        #           Child Loop BB54_163 Depth 5
-                                        #           Child Loop BB54_167 Depth 5
-                                        #       Child Loop BB54_169 Depth 3
+                                        #     Child Loop BB54_134 Depth 2
+                                        #     Child Loop BB54_138 Depth 2
+                                        #       Child Loop BB54_141 Depth 3
+                                        #       Child Loop BB54_147 Depth 3
+                                        #       Child Loop BB54_151 Depth 3
+                                        #       Child Loop BB54_157 Depth 3
+                                        #         Child Loop BB54_159 Depth 4
+                                        #           Child Loop BB54_161 Depth 5
+                                        #           Child Loop BB54_165 Depth 5
+                                        #       Child Loop BB54_167 Depth 3
+                                        #     Child Loop BB54_169 Depth 2
                                         #     Child Loop BB54_171 Depth 2
                                         #     Child Loop BB54_173 Depth 2
-                                        #     Child Loop BB54_175 Depth 2
                                         #     Child Loop BB54_64 Depth 2
                                         #     Child Loop BB54_69 Depth 2
                                         #     Child Loop BB54_73 Depth 2
@@ -12475,10 +12475,10 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
                                         #         Child Loop BB54_81 Depth 4
                                         #     Child Loop BB54_83 Depth 2
                                         #     Child Loop BB54_85 Depth 2
-                                        #     Child Loop BB54_179 Depth 2
+                                        #     Child Loop BB54_230 Depth 2
                                         #     Child Loop BB54_7 Depth 2
                                         #     Child Loop BB54_11 Depth 2
-	ld.d	$s4, $s7, 112
+	ld.d	$s4, $s0, 112
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB54_14
 # %bb.4:                                #   in Loop: Header=BB54_3 Depth=1
@@ -12491,7 +12491,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	beqz	$a1, .LBB54_9
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(cnf_VARIABLEDEPTHARRAY)
 	.p2align	4, , 16
 .LBB54_7:                               #   Parent Loop BB54_3 Depth=1
@@ -12499,7 +12499,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a2, $a1, 8
 	ld.w	$a2, $a2, 0
 	slli.d	$a2, $a2, 2
-	stx.w	$s1, $a0, $a2
+	stx.w	$s2, $a0, $a2
 	ld.d	$a1, $a1, 0
 	bnez	$a1, .LBB54_7
 # %bb.8:                                # %._crit_edge.loopexit
@@ -12507,11 +12507,11 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $fp, 16
 .LBB54_9:                               # %._crit_edge
                                         #   in Loop: Header=BB54_3 Depth=1
-	addi.w	$s1, $s1, 1
+	addi.w	$s2, $s2, 1
 .LBB54_10:                              #   in Loop: Header=BB54_3 Depth=1
 	ld.d	$a0, $a0, 8
 	ld.d	$a0, $a0, 16
-	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(list_DeleteWithElement)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s3, 256
@@ -12569,18 +12569,18 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a1, $s3, 256
 	st.d	$a0, $a1, 0
 	ld.w	$a4, $fp, 0
-	ld.w	$a1, $s0, 0
+	ld.w	$a1, $s8, 0
 	xor	$a0, $a1, $a4
 	sltui	$a0, $a0, 1
 	beq	$a1, $a4, .LBB54_3
 # %bb.13:                               # %cnf_PopAllQuantifier.exit
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	beq	$a1, $a4, .LBB54_3
-	b	.LBB54_237
+	b	.LBB54_233
 .LBB54_14:                              #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $s7, 104
+	ld.d	$a0, $s0, 104
 	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fol_FreeVariables)
@@ -12592,7 +12592,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a4, $a4, 0
 	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	bne	$a3, $a4, .LBB54_62
 # %bb.15:                               #   in Loop: Header=BB54_3 Depth=1
 	ld.w	$a0, $s4, 212
@@ -12603,8 +12603,8 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 # %bb.17:                               # %.lr.ph382
                                         #   in Loop: Header=BB54_3 Depth=1
 	ld.d	$a0, $a1, 8
-	ld.d	$s1, $a0, 16
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
+	ld.d	$s2, $a0, 16
+	st.d	$s2, $sp, 224                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB54_18:                              #   Parent Loop BB54_3 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -12615,10 +12615,10 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
                                         #       Child Loop BB54_42 Depth 3
                                         #       Child Loop BB54_50 Depth 3
                                         #       Child Loop BB54_52 Depth 3
-	bnez	$s2, .LBB54_187
+	bnez	$s1, .LBB54_179
 # %bb.19:                               #   in Loop: Header=BB54_18 Depth=2
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	bnez	$a0, .LBB54_185
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	bnez	$a0, .LBB54_177
 # %bb.20:                               #   in Loop: Header=BB54_18 Depth=2
 	ld.d	$a0, $s5, 8
 	pcaddu18i	$ra, %call36(term_Copy)
@@ -12626,10 +12626,10 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(term_Copy)
 	ld.d	$a1, $a0, %got_pc_lo12(term_Copy)
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(list_CopyWithElement)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$s0, $a1, 0
 	move	$s1, $a0
 	ori	$a0, $zero, 16
@@ -12645,7 +12645,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(fol_FreeVariables)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 120                   # 8-byte Folded Spill
 	beqz	$a0, .LBB54_24
 # %bb.21:                               #   in Loop: Header=BB54_18 Depth=2
 	move	$s1, $a0
@@ -12674,8 +12674,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	bnez	$a3, .LBB54_22
 # %bb.23:                               # %list_Delete.exit.i
                                         #   in Loop: Header=BB54_18 Depth=2
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$s1, $a0, 0
+	ld.w	$s1, $s8, 0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -12701,14 +12700,15 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $s7, 112
-	ld.d	$s0, $s7, 104
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$fp, $a1, 112
+	ld.d	$s0, $a1, 104
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(term_AddFatherLinks)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 	move	$a1, $s0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cnf_Cnf)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -12720,10 +12720,11 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
+	st.d	$s0, $sp, 144                   # 8-byte Folded Spill
 	beqz	$s0, .LBB54_37
 # %bb.25:                               # %.lr.ph.i
                                         #   in Loop: Header=BB54_18 Depth=2
-	move	$s2, $s0
+	ld.d	$s2, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB54_28
 	.p2align	4, , 16
 .LBB54_26:                              #   in Loop: Header=BB54_28 Depth=3
@@ -12731,23 +12732,24 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.d	$s8, $a0, 8
+	ld.d	$s0, $sp, 192                   # 8-byte Folded Reload
+	st.d	$s0, $a0, 8
 	st.d	$zero, $a0, 0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
 	st.d	$s7, $a0, 8
+	move	$s7, $s0
 	st.d	$s1, $a0, 0
 	ld.d	$s1, $s5, 0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s8, $a0, 8
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	st.d	$s1, $a0, 0
 	st.d	$a0, $s5, 0
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
 .LBB54_27:                              # %hsh_Put.exit.i
                                         #   in Loop: Header=BB54_28 Depth=3
 	ld.d	$s2, $s2, 0
@@ -12765,7 +12767,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	beqz	$a0, .LBB54_27
 # %bb.29:                               #   in Loop: Header=BB54_28 Depth=3
 	ld.d	$s7, $s2, 8
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	mulh.du	$a0, $s7, $a0
 	sub.d	$a1, $s7, $a0
 	srli.d	$a1, $a1, 1
@@ -12774,7 +12776,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ori	$a1, $zero, 29
 	mul.d	$a0, $a0, $a1
 	sub.d	$a0, $s7, $a0
-	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 200                   # 8-byte Folded Reload
 	alsl.d	$s5, $a0, $a1, 3
 	move	$a0, $s5
 	.p2align	4, , 16
@@ -12790,7 +12792,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	bne	$a1, $s7, .LBB54_30
 # %bb.32:                               #   in Loop: Header=BB54_28 Depth=3
 	ld.d	$s5, $s1, 0
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
 	beqz	$s5, .LBB54_36
 # %bb.33:                               # %.lr.ph.i.i.i.preheader
                                         #   in Loop: Header=BB54_28 Depth=3
@@ -12802,7 +12804,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
                                         #       Parent Loop BB54_28 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$a1, $a0, 8
-	beq	$s8, $a1, .LBB54_27
+	beq	$s7, $a1, .LBB54_27
 # %bb.35:                               #   in Loop: Header=BB54_34 Depth=4
 	ld.d	$a0, $a0, 0
 	bnez	$a0, .LBB54_34
@@ -12811,29 +12813,29 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s8, $a0, 8
+	st.d	$s7, $a0, 8
 	st.d	$s5, $a0, 0
 	st.d	$a0, $s1, 0
 	b	.LBB54_27
 	.p2align	4, , 16
 .LBB54_37:                              # %._crit_edge.i
                                         #   in Loop: Header=BB54_18 Depth=2
-	move	$a0, $s7
-	move	$a1, $s0
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cnf_SatUnit)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	ld.d	$s5, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
 	beqz	$a0, .LBB54_47
 # %bb.38:                               #   in Loop: Header=BB54_18 Depth=2
 	ld.w	$a0, $fp, 36
 	beqz	$a0, .LBB54_46
 # %bb.39:                               #   in Loop: Header=BB54_18 Depth=2
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s1, $a0, 0
 	ld.d	$a0, $s0, 8
-	move	$a1, $s7
-	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cnf_GetUsedTerms)
 	jirl	$ra, $ra, 0
 	beqz	$s1, .LBB54_44
@@ -12857,7 +12859,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$s1, $a0
 .LBB54_45:                              # %list_Nconc.exit.i
                                         #   in Loop: Header=BB54_18 Depth=2
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	st.d	$s1, $a0, 0
 .LBB54_46:                              #   in Loop: Header=BB54_18 Depth=2
 	move	$a0, $s0
@@ -12866,7 +12868,8 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	pcaddu18i	$ra, %call36(clause_DeleteClauseList)
 	jirl	$ra, $ra, 0
 .LBB54_47:                              #   in Loop: Header=BB54_18 Depth=2
-	ld.d	$a0, $s7, 56
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a0, $a0, 56
 	pcaddu18i	$ra, %call36(list_Copy)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB54_53
@@ -12877,7 +12880,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	b	.LBB54_50
 	.p2align	4, , 16
 .LBB54_49:                              #   in Loop: Header=BB54_50 Depth=3
-	move	$a0, $s7
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(prfs_DeleteUsable)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $s2, 0
@@ -12889,7 +12892,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a1, $s2, 8
 	beqz	$a0, .LBB54_49
 # %bb.51:                               #   in Loop: Header=BB54_50 Depth=3
-	move	$a0, $s7
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(prfs_MoveUsableDocProof)
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $s2, 0
@@ -12913,10 +12916,10 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	bnez	$a3, .LBB54_52
 .LBB54_53:                              # %cnf_HaveProofOptSkolem.exit
                                         #   in Loop: Header=BB54_18 Depth=2
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	bnez	$s0, .LBB54_187
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 224                   # 8-byte Folded Reload
+	bnez	$s0, .LBB54_179
 # %bb.54:                               #   in Loop: Header=BB54_18 Depth=2
 	ld.d	$s5, $s5, 0
 	bnez	$s5, .LBB54_18
@@ -12925,13 +12928,14 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.w	$a0, $s4, 216
 	beqz	$a0, .LBB54_66
 # %bb.56:                               #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $s7, 112
+	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a0, $a1, 112
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 216
-	ld.d	$s2, $s7, 104
+	ld.d	$s2, $a1, 104
 	beqz	$a0, .LBB54_58
 # %bb.57:                               #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_MaxVar)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(symbol_STANDARDVARCOUNTER)
@@ -12962,12 +12966,12 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	bnez	$fp, .LBB54_60
 # %bb.61:                               # %cnf_GetSymbolList.exit.loopexit
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a0, $fp, 16
 	ld.d	$a0, $a0, 8
 	b	.LBB54_88
 .LBB54_62:                              #   in Loop: Header=BB54_3 Depth=1
-	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
 	ld.d	$a0, $a1, 8
 	ld.d	$fp, $a0, 16
 	beqz	$fp, .LBB54_67
@@ -12991,9 +12995,10 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 # %bb.65:                               # %cnf_GetSymbolList.exit.loopexit.i
                                         #   in Loop: Header=BB54_3 Depth=1
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a0, $fp, 16
 	ld.d	$a0, $a0, 8
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB54_68
 .LBB54_66:                              # %.thread.cnf_StrongSkolemization.exit_crit_edge
                                         #   in Loop: Header=BB54_3 Depth=1
@@ -13003,7 +13008,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	bnez	$fp, .LBB54_63
 .LBB54_67:                              #   in Loop: Header=BB54_3 Depth=1
 	st.d	$zero, $sp, 224                 # 8-byte Folded Spill
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
 .LBB54_68:                              # %.lr.ph.i21thread-pre-split.lr.ph.i
                                         #   in Loop: Header=BB54_3 Depth=1
 	pcaddu18i	$ra, %call36(term_Delete)
@@ -13083,7 +13088,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a1, %got_pc_hi20(vec_VECTOR)
 	ld.d	$s7, $a1, %got_pc_lo12(vec_VECTOR)
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	stx.d	$a1, $s7, $a0
 	move	$a0, $s0
 	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
@@ -13191,12 +13196,12 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	bnez	$a4, .LBB54_83
 # %bb.84:                               # %.lr.ph.i35.i.preheader
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB54_85:                              # %.lr.ph.i35.i
                                         #   Parent Loop BB54_3 Depth=1
@@ -13213,21 +13218,20 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$fp, $a0, 0
 	move	$fp, $a3
 	bnez	$a3, .LBB54_85
-	b	.LBB54_178
+	b	.LBB54_229
 .LBB54_86:                              # %list_Delete.exit33.thread.i
                                         #   in Loop: Header=BB54_3 Depth=1
 	st.w	$s8, $s4, 0
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
-	bnez	$a4, .LBB54_179
-	b	.LBB54_180
+	bnez	$a4, .LBB54_230
+	b	.LBB54_231
 .LBB54_87:                              #   in Loop: Header=BB54_3 Depth=1
 	move	$s7, $zero
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
 .LBB54_88:                              # %.lr.ph.i292thread-pre-split.lr.ph
                                         #   in Loop: Header=BB54_3 Depth=1
 	st.d	$s2, $sp, 232                   # 8-byte Folded Spill
@@ -13391,7 +13395,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	beqz	$a1, .LBB54_111
 # %bb.108:                              # %.lr.ph.i265
                                         #   in Loop: Header=BB54_105 Depth=3
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a2, $a0, %pc_lo12(cnf_VARIABLEDEPTHARRAY)
 	move	$a0, $zero
 	.p2align	4, , 16
@@ -13420,7 +13424,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	beqz	$a1, .LBB54_104
 .LBB54_112:                             # %.lr.ph31.i
                                         #   in Loop: Header=BB54_105 Depth=3
-	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(cnf_VARIABLEDEPTHARRAY)
 	.p2align	4, , 16
 .LBB54_113:                             #   Parent Loop BB54_3 Depth=1
@@ -13468,7 +13472,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$s8, $zero
 .LBB54_120:                             # %._crit_edge394
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fol_FreeVariables)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
@@ -13521,16 +13525,17 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
-	beqz	$s7, .LBB54_182
+	move	$a0, $zero
+	beqz	$s7, .LBB54_131
 # %bb.129:                              # %.lr.ph399.preheader
                                         #   in Loop: Header=BB54_3 Depth=1
-	move	$s5, $zero
 	move	$s4, $s7
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB54_130:                             # %.lr.ph399
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	move	$s5, $a0
 	move	$a0, $fp
 	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(symbol_CreateSkolemFunction)
@@ -13556,9 +13561,8 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$s2, $a0, 8
 	st.d	$s5, $a0, 0
 	ld.d	$s4, $s4, 0
-	move	$s5, $a0
 	bnez	$s4, .LBB54_130
-# %bb.131:                              # %._crit_edge400
+.LBB54_131:                             # %._crit_edge400
                                         #   in Loop: Header=BB54_3 Depth=1
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	beqz	$s1, .LBB54_133
@@ -13580,142 +13584,135 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	bnez	$a3, .LBB54_132
 .LBB54_133:                             # %list_Delete.exit255
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	blez	$fp, .LBB54_183
-# %bb.134:                              # %.lr.ph404.preheader
-                                        #   in Loop: Header=BB54_3 Depth=1
-	move	$s0, $zero
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	move	$s5, $zero
+	blez	$fp, .LBB54_135
 	.p2align	4, , 16
-.LBB54_135:                             # %.lr.ph404
+.LBB54_134:                             # %.lr.ph404
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	move	$s0, $s5
 	pcaddu18i	$ra, %call36(term_CreateStandardVariable)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
+	move	$s1, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $a0, 8
+	move	$s5, $a0
+	st.d	$s1, $a0, 8
 	addi.w	$fp, $fp, -1
 	st.d	$s0, $a0, 0
-	move	$s0, $a0
-	bnez	$fp, .LBB54_135
-# %bb.136:                              # %.preheader343
+	bnez	$fp, .LBB54_134
+.LBB54_135:                             # %.preheader343
                                         #   in Loop: Header=BB54_3 Depth=1
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	beqz	$a0, .LBB54_184
-.LBB54_137:                             # %.lr.ph417
+	beqz	$a0, .LBB54_176
+# %bb.136:                              # %.lr.ph417
                                         #   in Loop: Header=BB54_3 Depth=1
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
+	move	$fp, $zero
 	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
-	move	$s5, $zero
 	move	$a1, $a0
-	b	.LBB54_139
+	b	.LBB54_138
 	.p2align	4, , 16
-.LBB54_138:                             # %list_Delete.exit225
-                                        #   in Loop: Header=BB54_139 Depth=2
-	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$a0, $s0, 8
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	sltui	$a1, $a1, 1
+.LBB54_137:                             # %list_Delete.exit225
+                                        #   in Loop: Header=BB54_138 Depth=2
+	ld.d	$s8, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $s8, 8
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	sltui	$a1, $s5, 1
 	ld.d	$a4, $a0, 8
 	ori	$a0, $zero, 1
 	masknez	$a0, $a0, $a1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	maskeqz	$a1, $a2, $a1
-	or	$a0, $a1, $a0
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	st.d	$s1, $sp, 8
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	st.d	$fp, $sp, 0
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	move	$a0, $s7
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
-	move	$a2, $s8
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
-	move	$a6, $s4
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	move	$a7, $s2
+	or	$fp, $a1, $a0
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	st.d	$s2, $sp, 8
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	st.d	$s4, $sp, 0
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	move	$a0, $s0
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	move	$a2, $s7
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	move	$a7, $s1
 	pcaddu18i	$ra, %call36(cnf_OptimizedSkolemFormula)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 0
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	beqz	$a1, .LBB54_170
-.LBB54_139:                             #   Parent Loop BB54_3 Depth=1
+	ld.d	$a1, $s8, 0
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	beqz	$a1, .LBB54_168
+.LBB54_138:                             #   Parent Loop BB54_3 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB54_142 Depth 3
-                                        #       Child Loop BB54_149 Depth 3
-                                        #       Child Loop BB54_153 Depth 3
-                                        #       Child Loop BB54_159 Depth 3
-                                        #         Child Loop BB54_161 Depth 4
-                                        #           Child Loop BB54_163 Depth 5
-                                        #           Child Loop BB54_167 Depth 5
-                                        #       Child Loop BB54_169 Depth 3
+                                        #       Child Loop BB54_141 Depth 3
+                                        #       Child Loop BB54_147 Depth 3
+                                        #       Child Loop BB54_151 Depth 3
+                                        #       Child Loop BB54_157 Depth 3
+                                        #         Child Loop BB54_159 Depth 4
+                                        #           Child Loop BB54_161 Depth 5
+                                        #           Child Loop BB54_165 Depth 5
+                                        #       Child Loop BB54_167 Depth 3
 	ld.d	$a0, $a1, 8
-	ld.d	$a0, $a0, 0
+	ld.d	$a3, $a0, 0
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
-	beqz	$s5, .LBB54_144
-# %bb.140:                              #   in Loop: Header=BB54_139 Depth=2
-	beqz	$a0, .LBB54_145
-# %bb.141:                              # %.preheader.i243.preheader
-                                        #   in Loop: Header=BB54_139 Depth=2
-	move	$a2, $s5
+	beqz	$a0, .LBB54_143
+# %bb.139:                              #   in Loop: Header=BB54_138 Depth=2
+	beqz	$a3, .LBB54_144
+# %bb.140:                              # %.preheader.i243.preheader
+                                        #   in Loop: Header=BB54_138 Depth=2
+	move	$a2, $a0
 	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB54_142:                             # %.preheader.i243
+.LBB54_141:                             # %.preheader.i243
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
+                                        #     Parent Loop BB54_138 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$a1, $a2
 	ld.d	$a2, $a2, 0
-	bnez	$a2, .LBB54_142
-# %bb.143:                              #   in Loop: Header=BB54_139 Depth=2
-	st.d	$a0, $a1, 0
-	b	.LBB54_146
+	bnez	$a2, .LBB54_141
+# %bb.142:                              #   in Loop: Header=BB54_138 Depth=2
+	st.d	$a3, $a1, 0
+	b	.LBB54_145
 	.p2align	4, , 16
-.LBB54_144:                             #   in Loop: Header=BB54_139 Depth=2
-	move	$s5, $a0
-.LBB54_145:                             #   in Loop: Header=BB54_139 Depth=2
+.LBB54_143:                             #   in Loop: Header=BB54_138 Depth=2
+	move	$a0, $a3
+.LBB54_144:                             #   in Loop: Header=BB54_138 Depth=2
 	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-.LBB54_146:                             # %list_Nconc.exit248
-                                        #   in Loop: Header=BB54_139 Depth=2
-	pcalau12i	$a0, %got_pc_hi20(term_Equal)
-	ld.d	$a1, $a0, %got_pc_lo12(term_Equal)
-	move	$a0, $s5
+.LBB54_145:                             # %list_Nconc.exit248
+                                        #   in Loop: Header=BB54_138 Depth=2
+	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
+	pcalau12i	$a1, %got_pc_hi20(term_Equal)
+	ld.d	$a1, $a1, %got_pc_lo12(term_Equal)
 	pcaddu18i	$ra, %call36(list_DeleteDuplicates)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB54_148
-# %bb.147:                              #   in Loop: Header=BB54_139 Depth=2
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	b	.LBB54_150
-	.p2align	4, , 16
-.LBB54_148:                             # %.lr.ph408.preheader
-                                        #   in Loop: Header=BB54_139 Depth=2
+	beq	$a0, $s2, .LBB54_148
+# %bb.146:                              # %.lr.ph408.preheader
+                                        #   in Loop: Header=BB54_138 Depth=2
 	move	$fp, $zero
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB54_149:                             # %.lr.ph408
+.LBB54_147:                             # %.lr.ph408
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
+                                        #     Parent Loop BB54_138 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a0, $s0, 8
+	move	$s0, $s5
+	ld.d	$a0, $s5, 8
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s3, 128
 	ld.w	$a1, $a0, 32
 	ld.d	$a2, $s6, 0
-	ld.d	$s4, $s0, 0
+	ld.d	$s5, $s5, 0
 	add.d	$a1, $a2, $a1
 	st.d	$a1, $s6, 0
 	ld.d	$a0, $a0, 0
@@ -13727,10 +13724,9 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
 	sub.w	$a0, $a0, $s2
-	move	$s0, $s4
-	bltu	$fp, $a0, .LBB54_149
-.LBB54_150:                             # %._crit_edge409
-                                        #   in Loop: Header=BB54_139 Depth=2
+	bltu	$fp, $a0, .LBB54_147
+.LBB54_148:                             # %._crit_edge409
+                                        #   in Loop: Header=BB54_138 Depth=2
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
@@ -13739,41 +13735,41 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	pcaddu18i	$ra, %call36(list_Copy)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(list_Copy)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 120                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 104                   # 8-byte Folded Spill
-	beqz	$s2, .LBB54_155
-# %bb.151:                              #   in Loop: Header=BB54_139 Depth=2
-	beqz	$a0, .LBB54_156
-# %bb.152:                              # %.preheader.i238.preheader
-                                        #   in Loop: Header=BB54_139 Depth=2
+	beqz	$s2, .LBB54_153
+# %bb.149:                              #   in Loop: Header=BB54_138 Depth=2
+	beqz	$a0, .LBB54_154
+# %bb.150:                              # %.preheader.i238.preheader
+                                        #   in Loop: Header=BB54_138 Depth=2
 	move	$a2, $s2
 	.p2align	4, , 16
-.LBB54_153:                             # %.preheader.i238
+.LBB54_151:                             # %.preheader.i238
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
+                                        #     Parent Loop BB54_138 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$a1, $a2
 	ld.d	$a2, $a2, 0
-	bnez	$a2, .LBB54_153
-# %bb.154:                              #   in Loop: Header=BB54_139 Depth=2
+	bnez	$a2, .LBB54_151
+# %bb.152:                              #   in Loop: Header=BB54_138 Depth=2
 	st.d	$a0, $a1, 0
-	b	.LBB54_156
+	b	.LBB54_154
 	.p2align	4, , 16
-.LBB54_155:                             #   in Loop: Header=BB54_139 Depth=2
+.LBB54_153:                             #   in Loop: Header=BB54_138 Depth=2
 	move	$s2, $a0
-.LBB54_156:                             # %list_Nconc.exit
-                                        #   in Loop: Header=BB54_139 Depth=2
+.LBB54_154:                             # %list_Nconc.exit
+                                        #   in Loop: Header=BB54_138 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(vec_MAX)
 	ld.d	$s7, $a0, %got_pc_lo12(vec_MAX)
 	ld.w	$s0, $s7, 0
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	beqz	$a0, .LBB54_168
-# %bb.157:                              # %.lr.ph40.preheader.i
-                                        #   in Loop: Header=BB54_139 Depth=2
+	beqz	$a0, .LBB54_166
+# %bb.155:                              # %.lr.ph40.preheader.i
+                                        #   in Loop: Header=BB54_138 Depth=2
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 8
 	ld.d	$a0, $a0, 8
@@ -13783,19 +13779,19 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	alsl.d	$a0, $s0, $fp, 3
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
-	b	.LBB54_159
+	b	.LBB54_157
 	.p2align	4, , 16
-.LBB54_158:                             # %._crit_edge.i230
-                                        #   in Loop: Header=BB54_159 Depth=3
+.LBB54_156:                             # %._crit_edge.i230
+                                        #   in Loop: Header=BB54_157 Depth=3
 	ld.d	$s4, $s4, 0
-	beqz	$s4, .LBB54_168
-.LBB54_159:                             # %.lr.ph.preheader.i
+	beqz	$s4, .LBB54_166
+.LBB54_157:                             # %.lr.ph.preheader.i
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
+                                        #     Parent Loop BB54_138 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB54_161 Depth 4
-                                        #           Child Loop BB54_163 Depth 5
-                                        #           Child Loop BB54_167 Depth 5
+                                        #         Child Loop BB54_159 Depth 4
+                                        #           Child Loop BB54_161 Depth 5
+                                        #           Child Loop BB54_165 Depth 5
 	addi.d	$a1, $s0, 1
 	st.w	$a1, $s7, 0
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
@@ -13803,35 +13799,35 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$a0, $a2, 0
 	ld.d	$a0, $s4, 8
 	ld.w	$s5, $a0, 8
-	ld.d	$s8, $a0, 0
-	b	.LBB54_161
+	ld.d	$s1, $a0, 0
+	b	.LBB54_159
 	.p2align	4, , 16
-.LBB54_160:                             # %.loopexit.i
-                                        #   in Loop: Header=BB54_161 Depth=4
-	beq	$s0, $a1, .LBB54_158
-.LBB54_161:                             # %.lr.ph.i226
+.LBB54_158:                             # %.loopexit.i
+                                        #   in Loop: Header=BB54_159 Depth=4
+	beq	$s0, $a1, .LBB54_156
+.LBB54_159:                             # %.lr.ph.i226
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
-                                        #       Parent Loop BB54_159 Depth=3
+                                        #     Parent Loop BB54_138 Depth=2
+                                        #       Parent Loop BB54_157 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB54_163 Depth 5
-                                        #           Child Loop BB54_167 Depth 5
+                                        #           Child Loop BB54_161 Depth 5
+                                        #           Child Loop BB54_165 Depth 5
 	addi.w	$a1, $a1, -1
 	slli.d	$a0, $a1, 3
-	ldx.d	$s1, $fp, $a0
+	ldx.d	$s8, $fp, $a0
 	st.w	$a1, $s7, 0
-	ld.w	$a0, $s1, 0
-	bne	$a0, $s5, .LBB54_165
-# %bb.162:                              #   in Loop: Header=BB54_161 Depth=4
-	ld.d	$a0, $s1, 16
-	st.w	$s8, $s1, 0
-	beqz	$a0, .LBB54_164
+	ld.w	$a0, $s8, 0
+	bne	$a0, $s5, .LBB54_163
+# %bb.160:                              #   in Loop: Header=BB54_159 Depth=4
+	ld.d	$a0, $s8, 16
+	st.w	$s1, $s8, 0
+	beqz	$a0, .LBB54_162
 	.p2align	4, , 16
-.LBB54_163:                             # %.lr.ph.i.i232
+.LBB54_161:                             # %.lr.ph.i.i232
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
-                                        #       Parent Loop BB54_159 Depth=3
-                                        #         Parent Loop BB54_161 Depth=4
+                                        #     Parent Loop BB54_138 Depth=2
+                                        #       Parent Loop BB54_157 Depth=3
+                                        #         Parent Loop BB54_159 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld.d	$a1, $s3, 128
 	ld.w	$a2, $a1, 32
@@ -13844,31 +13840,31 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a1, $s3, 128
 	st.d	$a0, $a1, 0
 	move	$a0, $a4
-	bnez	$a4, .LBB54_163
-.LBB54_164:                             # %list_Delete.exit.i236
-                                        #   in Loop: Header=BB54_161 Depth=4
+	bnez	$a4, .LBB54_161
+.LBB54_162:                             # %list_Delete.exit.i236
+                                        #   in Loop: Header=BB54_159 Depth=4
 	pcalau12i	$a0, %got_pc_hi20(term_Copy)
 	ld.d	$a1, $a0, %got_pc_lo12(term_Copy)
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(list_CopyWithElement)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 16
+	st.d	$a0, $s8, 16
 	ld.w	$a1, $s7, 0
-	bnez	$a0, .LBB54_166
-	b	.LBB54_160
+	bnez	$a0, .LBB54_164
+	b	.LBB54_158
 	.p2align	4, , 16
-.LBB54_165:                             # %.lr.ph._crit_edge.i
-                                        #   in Loop: Header=BB54_161 Depth=4
-	ld.d	$a0, $s1, 16
-	beqz	$a0, .LBB54_160
-.LBB54_166:                             # %.preheader.i
-                                        #   in Loop: Header=BB54_161 Depth=4
+.LBB54_163:                             # %.lr.ph._crit_edge.i
+                                        #   in Loop: Header=BB54_159 Depth=4
+	ld.d	$a0, $s8, 16
+	beqz	$a0, .LBB54_158
+.LBB54_164:                             # %.preheader.i
+                                        #   in Loop: Header=BB54_159 Depth=4
 	alsl.d	$a2, $a1, $fp, 3
 	.p2align	4, , 16
-.LBB54_167:                             #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
-                                        #       Parent Loop BB54_159 Depth=3
-                                        #         Parent Loop BB54_161 Depth=4
+.LBB54_165:                             #   Parent Loop BB54_3 Depth=1
+                                        #     Parent Loop BB54_138 Depth=2
+                                        #       Parent Loop BB54_157 Depth=3
+                                        #         Parent Loop BB54_159 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld.d	$a3, $a0, 8
 	addi.w	$a1, $a1, 1
@@ -13876,17 +13872,17 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$a3, $a2, 0
 	ld.d	$a0, $a0, 0
 	addi.d	$a2, $a2, 8
-	bnez	$a0, .LBB54_167
-	b	.LBB54_160
+	bnez	$a0, .LBB54_165
+	b	.LBB54_158
 	.p2align	4, , 16
-.LBB54_168:                             # %cnf_SkolemFunctionFormulaMapped.exit
-                                        #   in Loop: Header=BB54_139 Depth=2
+.LBB54_166:                             # %cnf_SkolemFunctionFormulaMapped.exit
+                                        #   in Loop: Header=BB54_138 Depth=2
 	st.w	$s0, $s7, 0
-	beqz	$s2, .LBB54_138
+	beqz	$s2, .LBB54_137
 	.p2align	4, , 16
-.LBB54_169:                             # %.lr.ph.i220
+.LBB54_167:                             # %.lr.ph.i220
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_139 Depth=2
+                                        #     Parent Loop BB54_138 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $s3, 128
 	ld.w	$a1, $a0, 32
@@ -13899,41 +13895,19 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $s3, 128
 	st.d	$s2, $a0, 0
 	move	$s2, $a3
-	bnez	$a3, .LBB54_169
-	b	.LBB54_138
-.LBB54_170:                             # %.preheader.loopexit
+	bnez	$a3, .LBB54_167
+	b	.LBB54_137
+.LBB54_168:                             # %.preheader.loopexit
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	sltu	$a0, $zero, $a0
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$fp, $sp, 152                   # 8-byte Folded Reload
-	beqz	$fp, .LBB54_172
+	sltu	$fp, $zero, $fp
+	beqz	$s5, .LBB54_170
 	.p2align	4, , 16
-.LBB54_171:                             # %.lr.ph423
+.LBB54_169:                             # %.lr.ph423
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $fp, 8
+	ld.d	$a0, $s5, 8
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, 128
-	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s6, 0
-	ld.d	$a3, $fp, 0
-	add.d	$a1, $a2, $a1
-	st.d	$a1, $s6, 0
-	ld.d	$a0, $a0, 0
-	st.d	$a0, $fp, 0
-	ld.d	$a0, $s3, 128
-	st.d	$fp, $a0, 0
-	move	$fp, $a3
-	bnez	$a3, .LBB54_171
-.LBB54_172:                             # %._crit_edge424
-                                        #   in Loop: Header=BB54_3 Depth=1
-	beqz	$s5, .LBB54_174
-	.p2align	4, , 16
-.LBB54_173:                             # %.lr.ph.i212
-                                        #   Parent Loop BB54_3 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s3, 128
 	ld.w	$a1, $a0, 32
 	ld.d	$a2, $s6, 0
@@ -13945,18 +13919,13 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $s3, 128
 	st.d	$s5, $a0, 0
 	move	$s5, $a3
-	bnez	$a3, .LBB54_173
-.LBB54_174:                             # %list_Delete.exit217
+	bnez	$a3, .LBB54_169
+.LBB54_170:                             # %._crit_edge424
                                         #   in Loop: Header=BB54_3 Depth=1
-	pcalau12i	$a0, %pc_hi20(list_PairFree)
-	addi.d	$a1, $a0, %pc_lo12(list_PairFree)
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(list_DeleteWithElement)
-	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
-	beqz	$a4, .LBB54_176
+	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
+	beqz	$a4, .LBB54_172
 	.p2align	4, , 16
-.LBB54_175:                             # %.lr.ph.i205
+.LBB54_171:                             # %.lr.ph.i212
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s3, 128
@@ -13970,8 +13939,33 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $s3, 128
 	st.d	$a4, $a0, 0
 	move	$a4, $a3
-	bnez	$a3, .LBB54_175
-.LBB54_176:                             # %list_Delete.exit210
+	bnez	$a3, .LBB54_171
+.LBB54_172:                             # %list_Delete.exit217
+                                        #   in Loop: Header=BB54_3 Depth=1
+	pcalau12i	$a0, %pc_hi20(list_PairFree)
+	addi.d	$a1, $a0, %pc_lo12(list_PairFree)
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(list_DeleteWithElement)
+	jirl	$ra, $ra, 0
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	beqz	$a4, .LBB54_174
+	.p2align	4, , 16
+.LBB54_173:                             # %.lr.ph.i205
+                                        #   Parent Loop BB54_3 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.d	$a0, $s3, 128
+	ld.w	$a1, $a0, 32
+	ld.d	$a2, $s6, 0
+	ld.d	$a3, $a4, 0
+	add.d	$a1, $a2, $a1
+	st.d	$a1, $s6, 0
+	ld.d	$a0, $a0, 0
+	st.d	$a0, $a4, 0
+	ld.d	$a0, $s3, 128
+	st.d	$a4, $a0, 0
+	move	$a4, $a3
+	bnez	$a3, .LBB54_173
+.LBB54_174:                             # %list_Delete.exit210
                                         #   in Loop: Header=BB54_3 Depth=1
 	pcalau12i	$a0, %pc_hi20(list_PairFree)
 	addi.d	$a1, $a0, %pc_lo12(list_PairFree)
@@ -13981,10 +13975,9 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 136
 	sltu	$a0, $zero, $a0
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB54_178
-# %bb.177:                              #   in Loop: Header=BB54_3 Depth=1
+	and	$a0, $a0, $fp
+	beqz	$a0, .LBB54_229
+# %bb.175:                              #   in Loop: Header=BB54_3 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a3, $a0, 0
@@ -13994,62 +13987,18 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB54_178:                             #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
-	beqz	$a4, .LBB54_180
-	.p2align	4, , 16
-.LBB54_179:                             # %.lr.ph.i200
-                                        #   Parent Loop BB54_3 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s3, 128
-	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s6, 0
-	ld.d	$a3, $a4, 0
-	add.d	$a1, $a2, $a1
-	st.d	$a1, $s6, 0
-	ld.d	$a0, $a0, 0
-	st.d	$a0, $a4, 0
-	ld.d	$a0, $s3, 128
-	st.d	$a4, $a0, 0
-	move	$a4, $a3
-	bnez	$a3, .LBB54_179
-.LBB54_180:                             # %list_Delete.exit
-                                        #   in Loop: Header=BB54_3 Depth=1
-	ld.w	$a4, $fp, 0
-	ld.w	$a1, $s0, 0
-	xor	$a0, $a1, $a4
-	sltui	$a0, $a0, 1
-	beq	$a1, $a4, .LBB54_3
-# %bb.181:                              # %list_Delete.exit
-                                        #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
-	ld.w	$a1, $a1, 0
-	beq	$a1, $a4, .LBB54_3
-	b	.LBB54_238
-.LBB54_182:                             #   in Loop: Header=BB54_3 Depth=1
-	move	$a0, $zero
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	bnez	$s1, .LBB54_132
-	b	.LBB54_133
-.LBB54_183:                             #   in Loop: Header=BB54_3 Depth=1
-	move	$a0, $zero
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bnez	$a0, .LBB54_137
-.LBB54_184:                             #   in Loop: Header=BB54_3 Depth=1
-	move	$s5, $zero
-	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 152                   # 8-byte Folded Reload
-	bnez	$fp, .LBB54_171
-	b	.LBB54_172
-.LBB54_185:                             #   in Loop: Header=BB54_3 Depth=1
+	b	.LBB54_229
+.LBB54_176:                             #   in Loop: Header=BB54_3 Depth=1
+	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	move	$fp, $zero
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
+	bnez	$s5, .LBB54_169
+	b	.LBB54_170
+.LBB54_177:                             #   in Loop: Header=BB54_3 Depth=1
 	ld.w	$a0, $s4, 132
-	beqz	$a0, .LBB54_189
-# %bb.186:                              #   in Loop: Header=BB54_3 Depth=1
+	beqz	$a0, .LBB54_181
+# %bb.178:                              #   in Loop: Header=BB54_3 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a3, $a0, 0
@@ -14059,11 +14008,11 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB54_187:                             # %cnf_HaveProofOptSkolem.exit.thread
+.LBB54_179:                             # %cnf_HaveProofOptSkolem.exit.thread
                                         #   in Loop: Header=BB54_3 Depth=1
 	ld.w	$a0, $s4, 132
-	beqz	$a0, .LBB54_189
-# %bb.188:                              #   in Loop: Header=BB54_3 Depth=1
+	beqz	$a0, .LBB54_181
+# %bb.180:                              #   in Loop: Header=BB54_3 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$fp, $a0, %got_pc_lo12(stdout)
 	ld.d	$a3, $fp, 0
@@ -14073,11 +14022,11 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(term_Print)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $fp, 0
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
 	pcalau12i	$a0, %pc_hi20(.L.str.26)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.26)
 	ori	$a1, $zero, 10
@@ -14091,7 +14040,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	addi.d	$a0, $a0, %pc_lo12(.L.str.27)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-.LBB54_189:                             # %cnf_HaveProofOptSkolem.exit.thread.thread
+.LBB54_181:                             # %cnf_HaveProofOptSkolem.exit.thread.thread
                                         #   in Loop: Header=BB54_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a0, $a0, 0
@@ -14101,18 +14050,18 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(list_PointerDeleteElement)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
 	st.d	$a0, $s0, 16
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB54_193
-# %bb.190:                              #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	bltu	$a1, $a0, .LBB54_185
+# %bb.182:                              #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 16
 	ld.d	$a0, $a1, 8
 	.p2align	4, , 16
-.LBB54_191:                             # %.lr.ph.i.i174
+.LBB54_183:                             # %.lr.ph.i.i174
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $s3, 128
@@ -14126,11 +14075,11 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a2, $s3, 128
 	st.d	$a1, $a2, 0
 	move	$a1, $a5
-	bnez	$a5, .LBB54_191
-# %bb.192:                              # %list_Delete.exit.i178
+	bnez	$a5, .LBB54_183
+# %bb.184:                              # %list_Delete.exit.i178
                                         #   in Loop: Header=BB54_3 Depth=1
 	ld.w	$a1, $a0, 0
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	st.w	$a1, $a2, 0
 	ld.d	$a1, $a0, 16
 	st.d	$a1, $a2, 16
@@ -14143,18 +14092,18 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$a1, $a0, 0
 	ld.d	$a1, $s3, 256
 	st.d	$a0, $a1, 0
-.LBB54_193:                             #   in Loop: Header=BB54_3 Depth=1
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	bnez	$s1, .LBB54_198
-.LBB54_194:                             # %._crit_edge.i168
+.LBB54_185:                             #   in Loop: Header=BB54_3 Depth=1
+	st.d	$fp, $sp, 120                   # 8-byte Folded Spill
+	bnez	$s2, .LBB54_190
+.LBB54_186:                             # %._crit_edge.i168
                                         #   in Loop: Header=BB54_3 Depth=1
 	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
-	beqz	$s1, .LBB54_229
-# %bb.195:                              #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$fp, $a0, 0
-	pcalau12i	$a0, %got_pc_hi20(term_Copy)
-	ld.d	$a1, $a0, %got_pc_lo12(term_Copy)
+	beqz	$s1, .LBB54_221
+# %bb.187:                              #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ld.w	$fp, $s8, 0
+	pcalau12i	$a1, %got_pc_hi20(term_Copy)
+	ld.d	$a1, $a1, %got_pc_lo12(term_Copy)
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(list_CopyWithElement)
 	jirl	$ra, $ra, 0
@@ -14163,7 +14112,7 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 8
 	st.d	$zero, $a2, 0
 	move	$a0, $fp
@@ -14174,12 +14123,12 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	ori	$s1, $zero, 2
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	bltu	$a0, $s1, .LBB54_230
-# %bb.196:                              #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ori	$s0, $zero, 2
+	st.d	$fp, $sp, 120                   # 8-byte Folded Spill
+	bltu	$a0, $s0, .LBB54_222
+# %bb.188:                              #   in Loop: Header=BB54_3 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(vec_MAX)
 	ld.d	$s2, $a0, %got_pc_lo12(vec_MAX)
 	ld.w	$s5, $s2, 0
@@ -14189,28 +14138,27 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a2, $a2, %got_pc_lo12(vec_VECTOR)
 	st.d	$a2, $sp, 224                   # 8-byte Folded Spill
 	stx.d	$fp, $a2, $a1
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	st.d	$s5, $sp, 152                   # 8-byte Folded Spill
-	b	.LBB54_216
+	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
+	b	.LBB54_208
 	.p2align	4, , 16
-.LBB54_197:                             # %cnf_RplacVarsymbFunction.exit75.i
-                                        #   in Loop: Header=BB54_198 Depth=2
+.LBB54_189:                             # %cnf_RplacVarsymbFunction.exit75.i
+                                        #   in Loop: Header=BB54_190 Depth=2
 	st.w	$s8, $s1, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s1, $s1, 0
-	beqz	$s1, .LBB54_194
-.LBB54_198:                             # %.lr.ph.i164
+	ld.d	$s2, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s2, $s2, 0
+	beqz	$s2, .LBB54_186
+.LBB54_190:                             # %.lr.ph.i164
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB54_193 Depth 3
+                                        #         Child Loop BB54_196 Depth 4
                                         #       Child Loop BB54_201 Depth 3
                                         #         Child Loop BB54_204 Depth 4
-                                        #       Child Loop BB54_209 Depth 3
-                                        #         Child Loop BB54_212 Depth 4
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	ld.d	$a0, $s1, 8
+	st.d	$s2, $sp, 224                   # 8-byte Folded Spill
+	ld.d	$a0, $s2, 8
 	ld.w	$s0, $a0, 0
 	ld.d	$s1, $sp, 240                   # 8-byte Folded Reload
 	move	$a0, $s1
@@ -14237,11 +14185,67 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	pcalau12i	$a0, %got_pc_hi20(vec_VECTOR)
 	ld.d	$s2, $a0, %got_pc_lo12(vec_VECTOR)
 	alsl.d	$a0, $s8, $s2, 3
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	slli.d	$a0, $s8, 3
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	stx.d	$a1, $s2, $a0
 	move	$a0, $s7
+	b	.LBB54_193
+	.p2align	4, , 16
+.LBB54_191:                             #   in Loop: Header=BB54_193 Depth=3
+	ld.w	$a0, $fp, 0
+	st.w	$a0, $s5, 0
+	ld.d	$a0, $fp, 16
+	pcalau12i	$a1, %got_pc_hi20(term_Copy)
+	ld.d	$a1, $a1, %got_pc_lo12(term_Copy)
+	pcaddu18i	$ra, %call36(list_CopyWithElement)
+	jirl	$ra, $ra, 0
+	ld.w	$a2, $s1, 0
+	st.d	$a0, $s5, 16
+.LBB54_192:                             # %.loopexit.i.i166
+                                        #   in Loop: Header=BB54_193 Depth=3
+	move	$a0, $a2
+	beq	$s8, $a2, .LBB54_198
+.LBB54_193:                             #   Parent Loop BB54_3 Depth=1
+                                        #     Parent Loop BB54_190 Depth=2
+                                        # =>    This Loop Header: Depth=3
+                                        #         Child Loop BB54_196 Depth 4
+	addi.w	$a2, $a0, -1
+	slli.d	$a1, $a2, 3
+	ldx.d	$s5, $s2, $a1
+	st.w	$a2, $s1, 0
+	ld.w	$a1, $s5, 0
+	beq	$a1, $s0, .LBB54_191
+# %bb.194:                              #   in Loop: Header=BB54_193 Depth=3
+	ld.d	$a1, $s5, 16
+	beqz	$a1, .LBB54_192
+# %bb.195:                              # %.preheader.i.i165.preheader
+                                        #   in Loop: Header=BB54_193 Depth=3
+	alsl.d	$a2, $a0, $s2, 3
+	addi.d	$a2, $a2, -8
+	.p2align	4, , 16
+.LBB54_196:                             # %.preheader.i.i165
+                                        #   Parent Loop BB54_3 Depth=1
+                                        #     Parent Loop BB54_190 Depth=2
+                                        #       Parent Loop BB54_193 Depth=3
+                                        # =>      This Inner Loop Header: Depth=4
+	ld.d	$a3, $a1, 8
+	st.w	$a0, $s1, 0
+	st.d	$a3, $a2, 0
+	ld.d	$a1, $a1, 0
+	addi.d	$a2, $a2, 8
+	addi.d	$a0, $a0, 1
+	bnez	$a1, .LBB54_196
+# %bb.197:                              # %.loopexit.i.i166.loopexit
+                                        #   in Loop: Header=BB54_193 Depth=3
+	addi.w	$a2, $a0, -1
+	b	.LBB54_192
+	.p2align	4, , 16
+.LBB54_198:                             # %cnf_RplacVarsymbFunction.exit.i
+                                        #   in Loop: Header=BB54_190 Depth=2
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	st.d	$a0, $a1, 0
 	b	.LBB54_201
 	.p2align	4, , 16
 .LBB54_199:                             #   in Loop: Header=BB54_201 Depth=3
@@ -14252,90 +14256,34 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a1, $a1, %got_pc_lo12(term_Copy)
 	pcaddu18i	$ra, %call36(list_CopyWithElement)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s1, 0
-	st.d	$a0, $s5, 16
-.LBB54_200:                             # %.loopexit.i.i166
-                                        #   in Loop: Header=BB54_201 Depth=3
-	move	$a0, $a2
-	beq	$s8, $a2, .LBB54_206
-.LBB54_201:                             #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_198 Depth=2
-                                        # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB54_204 Depth 4
-	addi.w	$a2, $a0, -1
-	slli.d	$a1, $a2, 3
-	ldx.d	$s5, $s2, $a1
-	st.w	$a2, $s1, 0
-	ld.w	$a1, $s5, 0
-	beq	$a1, $s0, .LBB54_199
-# %bb.202:                              #   in Loop: Header=BB54_201 Depth=3
-	ld.d	$a1, $s5, 16
-	beqz	$a1, .LBB54_200
-# %bb.203:                              # %.preheader.i.i165.preheader
-                                        #   in Loop: Header=BB54_201 Depth=3
-	alsl.d	$a2, $a0, $s2, 3
-	addi.d	$a2, $a2, -8
-	.p2align	4, , 16
-.LBB54_204:                             # %.preheader.i.i165
-                                        #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_198 Depth=2
-                                        #       Parent Loop BB54_201 Depth=3
-                                        # =>      This Inner Loop Header: Depth=4
-	ld.d	$a3, $a1, 8
-	st.w	$a0, $s1, 0
-	st.d	$a3, $a2, 0
-	ld.d	$a1, $a1, 0
-	addi.d	$a2, $a2, 8
-	addi.d	$a0, $a0, 1
-	bnez	$a1, .LBB54_204
-# %bb.205:                              # %.loopexit.i.i166.loopexit
-                                        #   in Loop: Header=BB54_201 Depth=3
-	addi.w	$a2, $a0, -1
-	b	.LBB54_200
-	.p2align	4, , 16
-.LBB54_206:                             # %cnf_RplacVarsymbFunction.exit.i
-                                        #   in Loop: Header=BB54_198 Depth=2
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	st.d	$a0, $a1, 0
-	b	.LBB54_209
-	.p2align	4, , 16
-.LBB54_207:                             #   in Loop: Header=BB54_209 Depth=3
-	ld.w	$a0, $fp, 0
-	st.w	$a0, $s5, 0
-	ld.d	$a0, $fp, 16
-	pcalau12i	$a1, %got_pc_hi20(term_Copy)
-	ld.d	$a1, $a1, %got_pc_lo12(term_Copy)
-	pcaddu18i	$ra, %call36(list_CopyWithElement)
-	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 0
 	st.d	$a0, $s5, 16
-.LBB54_208:                             # %.loopexit.i70.i
-                                        #   in Loop: Header=BB54_209 Depth=3
+.LBB54_200:                             # %.loopexit.i70.i
+                                        #   in Loop: Header=BB54_201 Depth=3
 	move	$s7, $a1
-	beq	$s8, $a1, .LBB54_197
-.LBB54_209:                             #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_198 Depth=2
+	beq	$s8, $a1, .LBB54_189
+.LBB54_201:                             #   Parent Loop BB54_3 Depth=1
+                                        #     Parent Loop BB54_190 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB54_212 Depth 4
+                                        #         Child Loop BB54_204 Depth 4
 	addi.w	$a1, $s7, -1
 	slli.d	$a0, $a1, 3
 	ldx.d	$s5, $s2, $a0
 	st.w	$a1, $s1, 0
 	ld.w	$a0, $s5, 0
-	beq	$a0, $s0, .LBB54_207
-# %bb.210:                              #   in Loop: Header=BB54_209 Depth=3
+	beq	$a0, $s0, .LBB54_199
+# %bb.202:                              #   in Loop: Header=BB54_201 Depth=3
 	ld.d	$a0, $s5, 16
-	beqz	$a0, .LBB54_208
-# %bb.211:                              # %.preheader.i63.i.preheader
-                                        #   in Loop: Header=BB54_209 Depth=3
+	beqz	$a0, .LBB54_200
+# %bb.203:                              # %.preheader.i63.i.preheader
+                                        #   in Loop: Header=BB54_201 Depth=3
 	alsl.d	$a1, $s7, $s2, 3
 	addi.d	$a1, $a1, -8
 	.p2align	4, , 16
-.LBB54_212:                             # %.preheader.i63.i
+.LBB54_204:                             # %.preheader.i63.i
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_198 Depth=2
-                                        #       Parent Loop BB54_209 Depth=3
+                                        #     Parent Loop BB54_190 Depth=2
+                                        #       Parent Loop BB54_201 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$a2, $a0, 8
 	st.w	$s7, $s1, 0
@@ -14343,64 +14291,64 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $a1, 8
 	addi.d	$s7, $s7, 1
-	bnez	$a0, .LBB54_212
-# %bb.213:                              # %.loopexit.i70.i.loopexit
-                                        #   in Loop: Header=BB54_209 Depth=3
+	bnez	$a0, .LBB54_204
+# %bb.205:                              # %.loopexit.i70.i.loopexit
+                                        #   in Loop: Header=BB54_201 Depth=3
 	addi.w	$a1, $s7, -1
-	b	.LBB54_208
+	b	.LBB54_200
 	.p2align	4, , 16
-.LBB54_214:                             #   in Loop: Header=BB54_216 Depth=2
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
-.LBB54_215:                             # %.loopexit.i80.i
-                                        #   in Loop: Header=BB54_216 Depth=2
-	beq	$s5, $a0, .LBB54_231
-.LBB54_216:                             # %.lr.ph64.i.i
+.LBB54_206:                             #   in Loop: Header=BB54_208 Depth=2
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+.LBB54_207:                             # %.loopexit.i80.i
+                                        #   in Loop: Header=BB54_208 Depth=2
+	beq	$s5, $a0, .LBB54_223
+.LBB54_208:                             # %.lr.ph64.i.i
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB54_221 Depth 3
-                                        #       Child Loop BB54_223 Depth 3
-                                        #       Child Loop BB54_225 Depth 3
-                                        #       Child Loop BB54_228 Depth 3
+                                        #       Child Loop BB54_213 Depth 3
+                                        #       Child Loop BB54_215 Depth 3
+                                        #       Child Loop BB54_217 Depth 3
+                                        #       Child Loop BB54_220 Depth 3
 	addi.w	$a0, $a0, -1
 	slli.d	$a1, $a0, 3
 	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
 	ldx.d	$s7, $a2, $a1
 	st.w	$a0, $s2, 0
 	ld.w	$a1, $s7, 0
-	ld.w	$a0, $s0, 0
-	beq	$a0, $a1, .LBB54_218
-# %bb.217:                              # %.lr.ph64.i.i
-                                        #   in Loop: Header=BB54_216 Depth=2
-	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
+	ld.w	$a0, $s8, 0
+	beq	$a0, $a1, .LBB54_210
+# %bb.209:                              # %.lr.ph64.i.i
+                                        #   in Loop: Header=BB54_208 Depth=2
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	bne	$a0, $a1, .LBB54_226
-.LBB54_218:                             #   in Loop: Header=BB54_216 Depth=2
+	bne	$a0, $a1, .LBB54_218
+.LBB54_210:                             #   in Loop: Header=BB54_208 Depth=2
 	ld.d	$a0, $s7, 16
 	ld.d	$a0, $a0, 8
 	ld.d	$a0, $a0, 16
 	move	$fp, $a1
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
-	bltu	$a0, $s1, .LBB54_226
-# %bb.219:                              #   in Loop: Header=BB54_216 Depth=2
+	bltu	$a0, $s0, .LBB54_218
+# %bb.211:                              #   in Loop: Header=BB54_208 Depth=2
 	ld.d	$a0, $s7, 16
 	ld.d	$a0, $a0, 8
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(list_Copy)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB54_226
-# %bb.220:                              # %.lr.ph.i82.i.preheader
-                                        #   in Loop: Header=BB54_216 Depth=2
+	beqz	$a0, .LBB54_218
+# %bb.212:                              # %.lr.ph.i82.i.preheader
+                                        #   in Loop: Header=BB54_208 Depth=2
 	move	$a1, $fp
 	move	$fp, $a0
 	move	$s5, $a0
 	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
 	.p2align	4, , 16
-.LBB54_221:                             # %.lr.ph.i82.i
+.LBB54_213:                             # %.lr.ph.i82.i
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_216 Depth=2
+                                        #     Parent Loop BB54_208 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $s7, 16
 	ld.d	$a0, $a0, 0
@@ -14426,14 +14374,14 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a1, $a1, 0
 	st.d	$a0, $a1, 8
 	ld.d	$s5, $s5, 0
-	bnez	$s5, .LBB54_221
-# %bb.222:                              # %.lr.ph60.i.i.preheader
-                                        #   in Loop: Header=BB54_216 Depth=2
+	bnez	$s5, .LBB54_213
+# %bb.214:                              # %.lr.ph60.i.i.preheader
+                                        #   in Loop: Header=BB54_208 Depth=2
 	move	$s0, $fp
 	.p2align	4, , 16
-.LBB54_223:                             # %.lr.ph60.i.i
+.LBB54_215:                             # %.lr.ph60.i.i
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_216 Depth=2
+                                        #     Parent Loop BB54_208 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $s7, 16
 	ld.d	$s1, $a0, 8
@@ -14443,17 +14391,17 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 16
 	ld.d	$s0, $s0, 0
-	bnez	$s0, .LBB54_223
-# %bb.224:                              # %.lr.ph.i.i.i172.preheader
-                                        #   in Loop: Header=BB54_216 Depth=2
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ori	$s1, $zero, 2
-	ld.d	$s5, $sp, 152                   # 8-byte Folded Reload
+	bnez	$s0, .LBB54_215
+# %bb.216:                              # %.lr.ph.i.i.i172.preheader
+                                        #   in Loop: Header=BB54_208 Depth=2
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	ori	$s0, $zero, 2
+	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB54_225:                             # %.lr.ph.i.i.i172
+.LBB54_217:                             # %.lr.ph.i.i.i172
                                         #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_216 Depth=2
+                                        #     Parent Loop BB54_208 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $s3, 128
 	ld.w	$a1, $a0, 32
@@ -14466,22 +14414,22 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $s3, 128
 	st.d	$fp, $a0, 0
 	move	$fp, $a3
-	bnez	$a3, .LBB54_225
+	bnez	$a3, .LBB54_217
 	.p2align	4, , 16
-.LBB54_226:                             # %list_Delete.exit.i.i
-                                        #   in Loop: Header=BB54_216 Depth=2
+.LBB54_218:                             # %list_Delete.exit.i.i
+                                        #   in Loop: Header=BB54_208 Depth=2
 	ld.d	$a1, $s7, 16
 	ld.w	$a0, $s2, 0
-	beqz	$a1, .LBB54_214
-# %bb.227:                              # %.preheader.i77.i
-                                        #   in Loop: Header=BB54_216 Depth=2
+	beqz	$a1, .LBB54_206
+# %bb.219:                              # %.preheader.i77.i
+                                        #   in Loop: Header=BB54_208 Depth=2
 	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
 	alsl.d	$a2, $a0, $a2, 3
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB54_228:                             #   Parent Loop BB54_3 Depth=1
-                                        #     Parent Loop BB54_216 Depth=2
+.LBB54_220:                             #   Parent Loop BB54_3 Depth=1
+                                        #     Parent Loop BB54_208 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a3, $a1, 8
 	addi.w	$a0, $a0, 1
@@ -14489,34 +14437,32 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$a3, $a2, 0
 	ld.d	$a1, $a1, 0
 	addi.d	$a2, $a2, 8
-	bnez	$a1, .LBB54_228
-	b	.LBB54_215
-.LBB54_229:                             #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
-	b	.LBB54_232
-.LBB54_230:                             #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
-	b	.LBB54_232
-.LBB54_231:                             # %cnf_QuantMakeOneVar.exit.i
+	bnez	$a1, .LBB54_220
+	b	.LBB54_207
+.LBB54_221:                             #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
+	b	.LBB54_224
+.LBB54_222:                             #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	b	.LBB54_224
+.LBB54_223:                             # %cnf_QuantMakeOneVar.exit.i
                                         #   in Loop: Header=BB54_3 Depth=1
 	st.w	$s5, $s2, 0
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
-.LBB54_232:                             #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+.LBB54_224:                             #   in Loop: Header=BB54_3 Depth=1
 	ld.d	$a0, $fp, 16
 	ld.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 16
-	beqz	$a0, .LBB54_234
+	beqz	$a0, .LBB54_226
 	.p2align	4, , 16
-.LBB54_233:                             # %.lr.ph.i85.i
+.LBB54_225:                             # %.lr.ph.i85.i
                                         #   Parent Loop BB54_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $s3, 128
@@ -14530,10 +14476,10 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a1, $s3, 128
 	st.d	$a0, $a1, 0
 	move	$a0, $a4
-	bnez	$a4, .LBB54_233
-.LBB54_234:                             # %cnf_MoveProvedTermToTopLevel.exit
+	bnez	$a4, .LBB54_225
+.LBB54_226:                             # %cnf_MoveProvedTermToTopLevel.exit
                                         #   in Loop: Header=BB54_3 Depth=1
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a0, $a3, 0
 	st.w	$a0, $fp, 0
 	ld.d	$a0, $a3, 16
@@ -14547,18 +14493,18 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	st.d	$a0, $a3, 0
 	ld.d	$a0, $s3, 256
 	st.d	$a3, $a0, 0
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$fp, $s0, 16
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a1, $a0, 8
 	st.d	$fp, $a0, 0
 	st.d	$a0, $s0, 16
 	ld.w	$a0, $s4, 132
-	beqz	$a0, .LBB54_236
-# %bb.235:                              #   in Loop: Header=BB54_3 Depth=1
+	beqz	$a0, .LBB54_228
+# %bb.227:                              #   in Loop: Header=BB54_3 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$fp, $a0, %got_pc_lo12(stdout)
 	ld.d	$a3, $fp, 0
@@ -14575,30 +14521,58 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-.LBB54_236:                             # %._crit_edge383
+.LBB54_228:                             # %._crit_edge383
                                         #   in Loop: Header=BB54_3 Depth=1
-	st.d	$s1, $sp, 8
+	st.d	$s2, $sp, 8
 	ori	$a3, $zero, 1
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 0
-	move	$a0, $s7
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	st.d	$s4, $sp, 0
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	move	$a1, $s0
-	move	$a2, $s8
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
-	move	$a6, $s4
-	move	$a7, $s2
+	move	$s0, $a0
+	move	$a2, $s7
+	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 136                   # 8-byte Folded Reload
+	move	$a7, $s1
 	pcaddu18i	$ra, %call36(cnf_OptimizedSkolemFormula)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+.LBB54_229:                             #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 240                   # 8-byte Folded Reload
-	bnez	$a4, .LBB54_179
-	b	.LBB54_180
-.LBB54_237:
-	ld.d	$s4, $sp, 112                   # 8-byte Folded Reload
-.LBB54_238:                             # %tailrecurse.outer._crit_edge
+	beqz	$a4, .LBB54_231
+	.p2align	4, , 16
+.LBB54_230:                             # %.lr.ph.i200
+                                        #   Parent Loop BB54_3 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.d	$a0, $s3, 128
+	ld.w	$a1, $a0, 32
+	ld.d	$a2, $s6, 0
+	ld.d	$a3, $a4, 0
+	add.d	$a1, $a2, $a1
+	st.d	$a1, $s6, 0
+	ld.d	$a0, $a0, 0
+	st.d	$a0, $a4, 0
+	ld.d	$a0, $s3, 128
+	st.d	$a4, $a0, 0
+	move	$a4, $a3
+	bnez	$a3, .LBB54_230
+.LBB54_231:                             # %list_Delete.exit
+                                        #   in Loop: Header=BB54_3 Depth=1
+	ld.w	$a4, $fp, 0
+	ld.w	$a1, $s8, 0
+	xor	$a0, $a1, $a4
+	sltui	$a0, $a0, 1
+	beq	$a1, $a4, .LBB54_3
+# %bb.232:                              # %list_Delete.exit
+                                        #   in Loop: Header=BB54_3 Depth=1
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.w	$a1, $a1, 0
+	beq	$a1, $a4, .LBB54_3
+	b	.LBB54_234
+.LBB54_233:
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+.LBB54_234:                             # %tailrecurse.outer._crit_edge
 	pcalau12i	$a0, %got_pc_hi20(fol_AND)
 	ld.d	$a0, $a0, %got_pc_lo12(fol_AND)
 	ld.w	$a1, $a0, 0
@@ -14606,37 +14580,38 @@ cnf_OptimizedSkolemFormula:             # @cnf_OptimizedSkolemFormula
 	ld.d	$a0, $a0, %got_pc_lo12(fol_OR)
 	ld.w	$a0, $a0, 0
 	ld.d	$s3, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 208                   # 8-byte Folded Reload
-	beq	$a4, $a1, .LBB54_240
-# %bb.239:                              # %tailrecurse.outer._crit_edge
-	bne	$a4, $a0, .LBB54_243
-.LBB54_240:
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	move	$s8, $s0
+	beq	$a4, $a1, .LBB54_236
+# %bb.235:                              # %tailrecurse.outer._crit_edge
+	bne	$a4, $a0, .LBB54_239
+.LBB54_236:
 	ld.d	$s0, $fp, 16
-	beqz	$s0, .LBB54_243
-# %bb.241:                              # %.lr.ph442.preheader
+	beqz	$s0, .LBB54_239
+# %bb.237:                              # %.lr.ph442.preheader
 	xor	$a0, $a4, $a0
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	masknez	$fp, $a1, $a0
 	.p2align	4, , 16
-.LBB54_242:                             # %.lr.ph442
+.LBB54_238:                             # %.lr.ph442
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $s0, 8
-	st.d	$s1, $sp, 8
-	st.d	$s6, $sp, 0
-	move	$a0, $s7
-	move	$a1, $s5
-	move	$a2, $s8
+	st.d	$s2, $sp, 8
+	st.d	$s4, $sp, 0
+	move	$a0, $s8
+	move	$a1, $s6
+	move	$a2, $s7
 	move	$a3, $fp
-	move	$a5, $s3
-	move	$a6, $s4
-	move	$a7, $s2
+	move	$a5, $s5
+	move	$a6, $s3
+	move	$a7, $s1
 	pcaddu18i	$ra, %call36(cnf_OptimizedSkolemFormula)
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $s0, 0
-	bnez	$s0, .LBB54_242
-.LBB54_243:                             # %.loopexit
+	bnez	$s0, .LBB54_238
+.LBB54_239:                             # %.loopexit
 	ld.d	$s8, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload

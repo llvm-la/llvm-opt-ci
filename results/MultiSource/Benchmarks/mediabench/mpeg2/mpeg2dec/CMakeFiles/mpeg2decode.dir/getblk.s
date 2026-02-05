@@ -227,9 +227,9 @@ Decode_MPEG1_Intra_Block:               # @Decode_MPEG1_Intra_Block
 	ldx.w	$a3, $a3, $a5
 	mul.d	$a4, $a4, $s6
 	mul.w	$a3, $a4, $a3
-	sltui	$a4, $a3, 8
-	srli.d	$a3, $a3, 3
-	addi.w	$a3, $a3, -1
+	srai.d	$a3, $a3, 3
+	sltui	$a4, $a3, 1
+	addi.d	$a3, $a3, -1
 	ori	$a3, $a3, 1
 	addi.w	$a5, $a0, 0
 	masknez	$a0, $a3, $a4
@@ -499,9 +499,9 @@ Decode_MPEG1_Non_Intra_Block:           # @Decode_MPEG1_Non_Intra_Block
 	addi.d	$a5, $a5, 1
 	mul.d	$a4, $a4, $a5
 	mul.w	$a3, $a4, $a3
-	sltui	$a4, $a3, 16
-	srli.d	$a3, $a3, 4
-	addi.w	$a3, $a3, -1
+	srai.d	$a3, $a3, 4
+	sltui	$a4, $a3, 1
+	addi.d	$a3, $a3, -1
 	ori	$a3, $a3, 1
 	addi.w	$a5, $a0, 0
 	masknez	$a0, $a3, $a4

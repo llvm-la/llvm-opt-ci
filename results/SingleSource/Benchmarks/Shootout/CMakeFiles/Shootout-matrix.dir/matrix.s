@@ -94,16 +94,14 @@ mkmatrix:                               # @mkmatrix
                                         #   in Loop: Header=BB0_4 Depth=1
 	alsl.d	$a0, $a2, $a0, 2
 	sub.d	$a2, $s2, $a2
-	move	$a3, $a1
 	.p2align	4, , 16
 .LBB0_10:                               # %scalar.ph
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a1, $a3, 1
-	st.w	$a3, $a0, 0
+	st.w	$a1, $a0, 0
+	addi.d	$a1, $a1, 1
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 4
-	move	$a3, $a1
 	bnez	$a2, .LBB0_10
 	b	.LBB0_3
 .LBB0_11:

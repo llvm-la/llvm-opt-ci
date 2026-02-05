@@ -493,7 +493,7 @@ BtGetMatches:                           # @BtGetMatches
 	st.w	$a0, $fp, 4
 	ori	$a1, $zero, 3
 	ori	$s5, $zero, 2
-	bltu	$s6, $a1, .LBB7_15
+	bltu	$s6, $a1, .LBB7_14
 # %bb.1:                                # %.outer.split.lr.ph
 	move	$s1, $zero
 	addi.d	$s7, $s0, 872
@@ -513,7 +513,7 @@ BtGetMatches:                           # @BtGetMatches
 	sltui	$a1, $a1, 1
 	masknez	$a1, $s2, $a1
 	st.w	$a1, $s0, 856
-	bgeu	$s5, $s6, .LBB7_15
+	bgeu	$s5, $s6, .LBB7_14
 	.p2align	4, , 16
 .LBB7_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_9 Depth 2
@@ -635,22 +635,19 @@ BtGetMatches:                           # @BtGetMatches
 	lu12i.w	$s8, 14
 	b	.LBB7_3
 .LBB7_12:                               # %.preheader
-	beqz	$a0, .LBB7_15
-# %bb.13:                               # %.lr.ph112.preheader
-	move	$a0, $s5
+	beqz	$a0, .LBB7_14
 	.p2align	4, , 16
-.LBB7_14:                               # %.lr.ph112
+.LBB7_13:                               # %.lr.ph112
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a1, $a0, 31, 0
-	slli.d	$a1, $a1, 2
-	stx.w	$zero, $fp, $a1
-	ld.w	$a1, $s0, 816
-	addi.w	$s5, $a0, 1
-	addi.w	$a1, $a1, -1
-	st.w	$a1, $s0, 816
-	move	$a0, $s5
-	bnez	$a1, .LBB7_14
-.LBB7_15:                               # %.loopexit
+	bstrpick.d	$a0, $s5, 31, 0
+	slli.d	$a0, $a0, 2
+	stx.w	$zero, $fp, $a0
+	ld.w	$a0, $s0, 816
+	addi.w	$s5, $s5, 1
+	addi.w	$a0, $a0, -1
+	st.w	$a0, $s0, 816
+	bnez	$a0, .LBB7_13
+.LBB7_14:                               # %.loopexit
 	st.w	$s5, $fp, 0
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload

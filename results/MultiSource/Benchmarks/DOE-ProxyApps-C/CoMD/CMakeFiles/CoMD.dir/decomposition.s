@@ -41,12 +41,12 @@ initDecomposition:                      # @initDecomposition
 	vst	$vr1, $fp, 32
 	st.d	$a3, $fp, 48
 	vst	$vr0, $fp, 56
-	st.d	$a3, $fp, 72
-	fld.d	$fa1, $fp, 72
 	vst	$vr0, $fp, 80
-	movgr2fr.w	$fa0, $s3
-	ffint.d.w	$fa0, $fa0
-	fdiv.d	$fa0, $fa1, $fa0
+	st.d	$a3, $fp, 72
+	movgr2fr.d	$fa0, $a3
+	movgr2fr.w	$fa1, $s3
+	ffint.d.w	$fa1, $fa1
+	fdiv.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $fp, 144
 	movgr2fr.w	$fa1, $a2
 	ffint.d.w	$fa1, $fa1

@@ -478,11 +478,11 @@ getAffNeighbour:                        # @getAffNeighbour
 	ldptr.w	$a6, $a5, 5952
 	ldptr.w	$a5, $a5, 5948
 	st.w	$zero, $a4, 0
-	bge	$a2, $a6, .LBB6_68
+	bge	$a2, $a6, .LBB6_70
 # %bb.1:
 	bltz	$a2, .LBB6_3
 # %bb.2:
-	bge	$a1, $a5, .LBB6_68
+	bge	$a1, $a5, .LBB6_70
 .LBB6_3:
 	bstrpick.d	$t1, $a0, 31, 0
 	ori	$t2, $zero, 408
@@ -494,11 +494,11 @@ getAffNeighbour:                        # @getAffNeighbour
 # %bb.5:
 	bltz	$a2, .LBB6_25
 # %bb.6:
-	bnez	$a2, .LBB6_66
+	bnez	$a2, .LBB6_68
 # %bb.7:
 	ldptr.w	$a7, $a7, 5628
 	ori	$t0, $zero, 2
-	bne	$a7, $t0, .LBB6_66
+	bne	$a7, $t0, .LBB6_68
 # %bb.8:
 	ld.w	$a0, $t1, 368
 	addi.d	$a0, $a0, 1
@@ -506,7 +506,7 @@ getAffNeighbour:                        # @getAffNeighbour
 	ori	$a0, $zero, 1
 	st.w	$a0, $a4, 0
 	addi.d	$a2, $zero, -1
-	b	.LBB6_67
+	b	.LBB6_69
 .LBB6_9:
 	ld.w	$t2, $t1, 356
 	andi	$t3, $a0, 1
@@ -520,40 +520,40 @@ getAffNeighbour:                        # @getAffNeighbour
 # %bb.11:
 	bnez	$t3, .LBB6_36
 # %bb.12:
-	beqz	$t1, .LBB6_63
+	beqz	$t1, .LBB6_65
 # %bb.13:
 	ori	$a7, $zero, 408
 	mul.d	$a7, $a0, $a7
 	add.d	$a7, $t0, $a7
 	ld.w	$a7, $a7, 356
-	bnez	$a7, .LBB6_67
+	bnez	$a7, .LBB6_69
 # %bb.14:
 	bstrpick.d	$a7, $a6, 31, 1
-	bgeu	$a2, $a7, .LBB6_69
+	bgeu	$a2, $a7, .LBB6_71
 # %bb.15:
 	slli.d	$a2, $a2, 1
-	b	.LBB6_67
+	b	.LBB6_69
 .LBB6_16:
 	addi.d	$t2, $zero, -1
-	bgez	$a2, .LBB6_64
+	bgez	$a2, .LBB6_66
 # %bb.17:
 	ld.w	$t3, $t1, 356
 	andi	$a0, $a0, 1
 	beqz	$t3, .LBB6_42
 # %bb.18:
 	ld.w	$t3, $t1, 372
-	bnez	$a0, .LBB6_55
+	bnez	$a0, .LBB6_56
 # %bb.19:
 	ld.w	$a0, $t1, 388
 	st.w	$t3, $a4, 4
 	st.w	$a0, $a4, 0
-	beqz	$a0, .LBB6_64
+	beqz	$a0, .LBB6_66
 # %bb.20:
 	ori	$a0, $zero, 408
 	mul.d	$a0, $t3, $a0
 	add.d	$a0, $t0, $a0
 	ld.w	$a0, $a0, 356
-	bnez	$a0, .LBB6_67
+	bnez	$a0, .LBB6_69
 # %bb.21:
 	addi.d	$a0, $t3, 1
 	b	.LBB6_30
@@ -567,166 +567,171 @@ getAffNeighbour:                        # @getAffNeighbour
 	st.w	$t2, $a4, 4
 	st.w	$a0, $a4, 0
 	bnez	$a0, .LBB6_28
-	b	.LBB6_63
+	b	.LBB6_65
 .LBB6_25:
 	ld.w	$t2, $t1, 356
 	andi	$t3, $a0, 1
 	beqz	$t2, .LBB6_45
 # %bb.26:
 	ld.w	$t2, $t1, 368
-	bnez	$t3, .LBB6_56
+	bnez	$t3, .LBB6_57
 # %bb.27:
 	ld.w	$a0, $t1, 384
 	st.w	$t2, $a4, 4
 	st.w	$a0, $a4, 0
-	beqz	$a0, .LBB6_63
+	beqz	$a0, .LBB6_65
 .LBB6_28:
 	ori	$a0, $zero, 408
 	mul.d	$a0, $t2, $a0
 	add.d	$a0, $t0, $a0
 	ld.w	$a0, $a0, 356
-	bnez	$a0, .LBB6_67
+	bnez	$a0, .LBB6_69
 # %bb.29:
 	addi.d	$a0, $t2, 1
 .LBB6_30:                               # %.thread223
 	st.w	$a0, $a4, 4
 	slli.d	$a2, $a2, 1
-	b	.LBB6_67
+	b	.LBB6_69
 .LBB6_31:
-	bnez	$t3, .LBB6_49
+	bnez	$t3, .LBB6_50
 # %bb.32:
-	beqz	$t1, .LBB6_63
+	beqz	$t1, .LBB6_65
 # %bb.33:
 	ori	$a7, $zero, 408
 	mul.d	$a7, $a0, $a7
 	add.d	$a7, $t0, $a7
 	ld.w	$a7, $a7, 356
-	beqz	$a7, .LBB6_67
+	beqz	$a7, .LBB6_69
 # %bb.34:
 	andi	$a7, $a2, 1
-	bnez	$a7, .LBB6_70
+	bnez	$a7, .LBB6_72
 # %bb.35:
 	bstrpick.d	$a2, $a2, 31, 1
-	b	.LBB6_67
+	b	.LBB6_69
 .LBB6_36:
-	beqz	$t1, .LBB6_63
+	beqz	$t1, .LBB6_65
 # %bb.37:
 	ori	$a7, $zero, 408
 	mul.d	$a7, $a0, $a7
 	add.d	$a7, $t0, $a7
 	ld.w	$a7, $a7, 356
-	bnez	$a7, .LBB6_54
+	bnez	$a7, .LBB6_55
 # %bb.38:
 	bstrpick.d	$a7, $a6, 31, 1
-	bgeu	$a2, $a7, .LBB6_71
+	bgeu	$a2, $a7, .LBB6_73
 # %bb.39:
 	slli.d	$a0, $a2, 1
 	addi.d	$a2, $a0, 1
-	b	.LBB6_67
+	b	.LBB6_69
 .LBB6_40:
-	bnez	$t3, .LBB6_60
+	bnez	$t3, .LBB6_62
 # %bb.41:
 	ld.w	$t0, $t1, 376
 	ld.w	$a0, $t1, 392
 	addi.d	$t0, $t0, 1
-	b	.LBB6_58
+	b	.LBB6_59
 .LBB6_42:
-	bnez	$a0, .LBB6_64
+	bnez	$a0, .LBB6_66
 # %bb.43:
 	ld.w	$t0, $t1, 372
 	ld.w	$a0, $t1, 388
 	addi.d	$t0, $t0, 1
-	b	.LBB6_58
+	b	.LBB6_59
 .LBB6_44:
 	ld.w	$a0, $t1, 392
-	b	.LBB6_57
+	b	.LBB6_58
 .LBB6_45:
-	bnez	$t3, .LBB6_65
+	bnez	$t3, .LBB6_67
 # %bb.46:
 	ld.w	$t2, $t1, 368
 	ld.w	$a0, $t1, 384
 	st.w	$t2, $a4, 4
-	beqz	$a0, .LBB6_59
+	beqz	$a0, .LBB6_60
 # %bb.47:
-	ldptr.w	$t1, $a7, 5628
-	ori	$t3, $zero, 1
-	bne	$t1, $t3, .LBB6_57
+	ldptr.w	$t3, $a7, 5628
+	ori	$t1, $zero, 1
+	bne	$t3, $t1, .LBB6_49
 # %bb.48:
-	ori	$t1, $zero, 408
-	mul.d	$t1, $t2, $t1
-	add.d	$t0, $t0, $t1
+	ori	$t3, $zero, 408
+	mul.d	$t3, $t2, $t3
+	add.d	$t0, $t0, $t3
 	ld.w	$t0, $t0, 356
-	bnez	$t0, .LBB6_59
-	b	.LBB6_57
+	bnez	$t0, .LBB6_61
 .LBB6_49:
-	beqz	$t1, .LBB6_63
-# %bb.50:
+	addi.d	$t0, $t2, 1
+	st.w	$t0, $a4, 4
+	b	.LBB6_61
+.LBB6_50:
+	beqz	$t1, .LBB6_65
+# %bb.51:
 	ori	$a7, $zero, 408
 	mul.d	$a7, $a0, $a7
 	add.d	$a7, $t0, $a7
 	ld.w	$a7, $a7, 356
-	beqz	$a7, .LBB6_54
-# %bb.51:
-	andi	$a7, $a2, 1
-	beqz	$a7, .LBB6_53
+	beqz	$a7, .LBB6_55
 # %bb.52:
+	andi	$a7, $a2, 1
+	beqz	$a7, .LBB6_54
+# %bb.53:
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a4, 4
-.LBB6_53:
+.LBB6_54:
 	add.d	$a0, $a6, $a2
 	bstrpick.d	$a2, $a0, 31, 1
-	b	.LBB6_67
-.LBB6_54:
+	b	.LBB6_69
+.LBB6_55:
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a4, 4
-	b	.LBB6_67
-.LBB6_55:
+	b	.LBB6_69
+.LBB6_56:
 	ld.w	$a0, $t1, 388
 	addi.d	$t0, $t3, 1
-	b	.LBB6_58
-.LBB6_56:
+	b	.LBB6_59
+.LBB6_57:
 	ld.w	$a0, $t1, 384
-.LBB6_57:                               # %thread-pre-split
-	addi.d	$t0, $t2, 1
 .LBB6_58:                               # %thread-pre-split
-	st.w	$t0, $a4, 4
+	addi.d	$t0, $t2, 1
 .LBB6_59:                               # %thread-pre-split
+	st.w	$t0, $a4, 4
+.LBB6_60:                               # %thread-pre-split
+	move	$t1, $a0
+.LBB6_61:                               # %thread-pre-split
 	st.w	$a0, $a4, 0
 	move	$t2, $a2
-	bnez	$a0, .LBB6_67
-	b	.LBB6_64
-.LBB6_60:
+	bnez	$t1, .LBB6_69
+	b	.LBB6_66
+.LBB6_62:
 	ld.w	$a0, $t1, 364
 	ld.w	$t1, $t1, 380
 	st.w	$a0, $a4, 4
 	st.w	$t1, $a4, 0
-	beqz	$t1, .LBB6_63
-# %bb.61:
+	beqz	$t1, .LBB6_65
+# %bb.63:
 	ori	$a7, $zero, 408
 	mul.d	$a7, $a0, $a7
 	add.d	$a7, $t0, $a7
 	ld.w	$a7, $a7, 356
-	beqz	$a7, .LBB6_67
-# %bb.62:
+	beqz	$a7, .LBB6_69
+# %bb.64:
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a4, 4
 	add.w	$a0, $a6, $a2
 	srai.d	$a2, $a0, 1
-	b	.LBB6_67
-.LBB6_63:
+	b	.LBB6_69
+.LBB6_65:
 	addi.d	$t2, $zero, -1
-.LBB6_64:                               # %.thread
+.LBB6_66:                               # %.thread
 	ldptr.w	$a0, $a7, 5628
 	move	$a2, $t2
-	bnez	$a0, .LBB6_67
-	b	.LBB6_68
-.LBB6_65:
+	bnez	$a0, .LBB6_69
+	b	.LBB6_70
+.LBB6_67:
 	addi.d	$a0, $a0, -1
-.LBB6_66:
+.LBB6_68:
 	st.w	$a0, $a4, 4
 	ori	$a0, $zero, 1
 	st.w	$a0, $a4, 0
-.LBB6_67:                               # %.thread223
+.LBB6_69:                               # %.thread223
 	addi.d	$a0, $a6, -1
 	addi.d	$a5, $a5, -1
 	and	$a1, $a5, $a1
@@ -759,31 +764,31 @@ getAffNeighbour:                        # @getAffNeighbour
 	st.w	$a1, $s0, 16
 	add.d	$a0, $a4, $a0
 	st.w	$a0, $s0, 20
-.LBB6_68:
+.LBB6_70:
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB6_69:
-	addi.d	$a0, $a0, 1
-	st.w	$a0, $a4, 4
-	slli.d	$a0, $a2, 1
-	sub.d	$a2, $a0, $a6
-	b	.LBB6_67
-.LBB6_70:
-	addi.d	$a0, $a0, 1
-	st.w	$a0, $a4, 4
-	bstrpick.d	$a2, $a2, 31, 1
-	b	.LBB6_67
 .LBB6_71:
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $a4, 4
 	slli.d	$a0, $a2, 1
+	sub.d	$a2, $a0, $a6
+	b	.LBB6_69
+.LBB6_72:
+	addi.d	$a0, $a0, 1
+	st.w	$a0, $a4, 4
+	bstrpick.d	$a2, $a2, 31, 1
+	b	.LBB6_69
+.LBB6_73:
+	addi.d	$a0, $a0, 1
+	st.w	$a0, $a4, 4
+	slli.d	$a0, $a2, 1
 	addi.d	$a0, $a0, 1
 	sub.d	$a2, $a0, $a6
-	b	.LBB6_67
+	b	.LBB6_69
 .Lfunc_end6:
 	.size	getAffNeighbour, .Lfunc_end6-getAffNeighbour
                                         # -- End function

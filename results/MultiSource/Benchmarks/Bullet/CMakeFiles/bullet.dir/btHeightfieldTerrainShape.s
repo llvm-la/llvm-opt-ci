@@ -709,183 +709,164 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	.cfi_offset 31, -88
 	.cfi_offset 56, -96
 	.cfi_offset 57, -104
-	move	$fp, $a1
-	move	$s0, $a0
+	move	$fp, $a0
 	fld.s	$fa0, $a0, 124
+	move	$s0, $a1
 	fld.s	$fa1, $a0, 128
-	fld.s	$fa2, $a2, 0
-	fld.s	$fa3, $a2, 4
+	frecip.s	$fa2, $fa0
+	fld.s	$fa0, $a0, 132
+	fld.s	$fa3, $a2, 0
+	frecip.s	$fa4, $fa1
+	fld.s	$fa1, $a3, 0
 	frecip.s	$fa0, $fa0
-	frecip.s	$fa1, $fa1
-	fmul.s	$fa2, $fa0, $fa2
-	fmul.s	$fa3, $fa1, $fa3
-	fld.s	$fa4, $a3, 0
-	fld.s	$fa5, $a3, 4
-	fld.s	$fa6, $a0, 60
-	fld.s	$fa7, $a0, 64
-	fmul.s	$fa0, $fa0, $fa4
-	fmul.s	$fa1, $fa1, $fa5
-	fadd.s	$fa2, $fa2, $fa6
-	fadd.s	$fa3, $fa3, $fa7
-	fld.s	$fa4, $a0, 28
-	fadd.s	$fa5, $fa0, $fa6
-	fadd.s	$fa6, $fa1, $fa7
-	fld.s	$fa7, $a0, 32
-	fcmp.clt.s	$fcc0, $fa2, $fa4
-	fsel	$fa0, $fa2, $fa4, $fcc0
+	fmul.s	$fa5, $fa2, $fa3
+	fld.s	$fa3, $a3, 4
+	fmul.s	$fa1, $fa2, $fa1
+	fld.s	$fa2, $a0, 60
+	fld.s	$fa6, $a2, 8
+	fmul.s	$ft0, $fa4, $fa3
+	fld.s	$fa7, $a2, 4
+	fadd.s	$fa3, $fa1, $fa2
+	fmul.s	$fa6, $fa0, $fa6
+	fld.s	$fa1, $a0, 68
+	fmul.s	$fa4, $fa4, $fa7
+	fld.s	$ft1, $a0, 64
+	vextrins.w	$vr5, $vr6, 16
+	vextrins.w	$vr2, $vr1, 16
+	vfadd.s	$vr7, $vr5, $vr2
+	fadd.s	$fa6, $fa4, $ft1
+	fld.s	$ft2, $a0, 28
+	fadd.s	$fa4, $ft0, $ft1
+	fld.s	$fa2, $a0, 36
+	fld.s	$fa5, $a0, 32
+	fcmp.clt.s	$fcc0, $fa3, $ft2
+	fsel	$fa3, $fa3, $ft2, $fcc0
+	vextrins.w	$vr10, $vr2, 16
+	vfcmp.clt.s	$vr8, $vr7, $vr10
+	vbitsel.v	$vr7, $vr7, $vr10, $vr8
+	fcmp.clt.s	$fcc0, $fa6, $fa5
 	fld.s	$ft0, $a0, 44
-	fcmp.clt.s	$fcc0, $fa3, $fa7
-	fld.s	$ft1, $a0, 48
-	fsel	$fa1, $fa3, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $ft0, $fa0
-	fsel	$fa2, $fa0, $ft0, $fcc0
-	fcmp.clt.s	$fcc0, $ft1, $fa1
-	fsel	$fa3, $fa1, $ft1, $fcc0
-	fcvt.d.s	$ft2, $fa2
-	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa2, $fa0
-	vldi	$vr1, -800
-	vldi	$vr2, -928
-	fsel	$ft3, $fa2, $fa1, $fcc0
-	fadd.d	$ft2, $ft3, $ft2
-	ftintrz.w.d	$ft2, $ft2
-	movfr2gr.s	$a0, $ft2
-	fcvt.d.s	$ft2, $fa3
-	fcmp.clt.s	$fcc0, $fa3, $fa0
-	fsel	$fa3, $fa2, $fa1, $fcc0
-	fadd.d	$fa3, $fa3, $ft2
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$a4, $fa3
-	fcmp.clt.s	$fcc0, $fa5, $fa4
-	fsel	$fa3, $fa5, $fa4, $fcc0
-	fcmp.clt.s	$fcc0, $fa6, $fa7
-	fsel	$fa4, $fa6, $fa7, $fcc0
+	fsel	$ft1, $fa6, $fa5, $fcc0
+	fld.s	$fa6, $a0, 52
+	fld.s	$ft3, $a0, 48
 	fcmp.clt.s	$fcc0, $ft0, $fa3
-	fsel	$fa3, $fa3, $ft0, $fcc0
-	fcmp.clt.s	$fcc0, $ft1, $fa4
-	fsel	$fa4, $fa4, $ft1, $fcc0
-	fcvt.d.s	$fa5, $fa3
-	fcmp.clt.s	$fcc0, $fa3, $fa0
-	fsel	$fa3, $fa2, $fa1, $fcc0
-	fadd.d	$fa3, $fa3, $fa5
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$a1, $fa3
-	fcvt.d.s	$fa3, $fa4
-	fcmp.clt.s	$fcc0, $fa4, $fa0
-	fsel	$fa4, $fa2, $fa1, $fcc0
-	fadd.d	$fa3, $fa4, $fa3
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$a7, $fa3
-	addi.w	$a5, $a0, -1
-	addi.w	$a1, $a1, 1
-	addi.w	$a0, $a4, -1
-	ld.w	$t0, $s0, 76
-	ld.w	$t1, $s0, 80
-	ld.w	$a6, $s0, 120
-	addi.w	$a4, $a7, 1
-	addi.w	$s5, $t0, -1
-	ori	$a7, $zero, 2
-	addi.w	$s6, $t1, -1
-	beq	$a6, $a7, .LBB9_6
-# %bb.1:
-	fld.s	$fa3, $s0, 132
-	fld.s	$fa4, $a2, 8
-	fld.s	$fa5, $a3, 8
-	frecip.s	$fa3, $fa3
-	fld.s	$fa6, $s0, 68
-	fmul.s	$fa4, $fa3, $fa4
-	fmul.s	$fa3, $fa3, $fa5
-	fld.s	$fa5, $s0, 36
-	fadd.s	$fa4, $fa4, $fa6
-	fld.s	$fa7, $s0, 52
-	fadd.s	$fa3, $fa3, $fa6
+	fsel	$ft4, $fa3, $ft0, $fcc0
+	vextrins.w	$vr8, $vr6, 16
+	vfcmp.clt.s	$vr3, $vr8, $vr7
+	vbitsel.v	$vr8, $vr7, $vr8, $vr3
+	fcmp.clt.s	$fcc0, $ft3, $ft1
+	fsel	$ft1, $ft1, $ft3, $fcc0
+	vrepli.b	$vr3, 0
+	vfcmp.clt.s	$vr7, $vr8, $vr3
+	vshuf4i.w	$vr7, $vr7, 16
+	vslli.d	$vr7, $vr7, 32
+	vsrai.d	$vr10, $vr7, 32
+	movgr2fr.w	$fa7, $zero
+	fcmp.clt.s	$fcc0, $ft1, $fa7
+	vreplvei.w	$vr13, $vr8, 1
+	fcvt.d.s	$ft5, $ft5
+	vreplvei.w	$vr8, $vr8, 0
+	fcvt.d.s	$ft6, $ft0
+	vextrins.d	$vr14, $vr13, 16
+	fcvt.d.s	$ft5, $ft1
+	vldi	$vr8, -800
+	vldi	$vr9, -928
+	vbitsel.v	$vr10, $vr9, $vr8, $vr10
+	fsel	$ft7, $ft1, $ft0, $fcc0
+	vfadd.d	$vr10, $vr10, $vr14
+	fadd.d	$ft5, $ft7, $ft5
+	vori.b	$vr14, $vr10, 0
+	vextrins.d	$vr14, $vr13, 16
+	xvftintrz.l.d	$xr13, $xr14
+	xvpermi.d	$xr14, $xr13, 238
+	xvpickev.w	$xr13, $xr14, $xr13
 	fcmp.clt.s	$fcc0, $fa4, $fa5
 	fsel	$fa4, $fa4, $fa5, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fa4
-	fsel	$fa4, $fa4, $fa7, $fcc0
-	fcvt.d.s	$fa6, $fa4
-	fcmp.clt.s	$fcc0, $fa4, $fa0
-	fsel	$fa4, $fa2, $fa1, $fcc0
-	fadd.d	$fa4, $fa4, $fa6
+	fcmp.clt.s	$fcc0, $ft3, $fa4
+	fsel	$fa4, $fa4, $ft3, $fcc0
+	fcvt.d.s	$fa5, $ft4
+	fcmp.clt.s	$fcc0, $ft4, $fa7
+	fsel	$ft3, $ft1, $ft0, $fcc0
+	fadd.d	$fa5, $ft3, $fa5
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a0, $fa5
+	fcvt.d.s	$fa5, $fa4
+	fcmp.clt.s	$fcc0, $fa4, $fa7
+	fsel	$fa4, $ft1, $ft0, $fcc0
+	fadd.d	$fa4, $fa4, $fa5
 	ftintrz.w.d	$fa4, $fa4
-	movfr2gr.s	$a2, $fa4
-	fcmp.clt.s	$fcc0, $fa3, $fa5
-	fsel	$fa3, $fa3, $fa5, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fa3
-	fsel	$fa3, $fa3, $fa7, $fcc0
-	fcvt.d.s	$fa4, $fa3
-	fcmp.clt.s	$fcc0, $fa3, $fa0
-	fsel	$fa0, $fa2, $fa1, $fcc0
-	fadd.d	$fa0, $fa0, $fa4
+	movfr2gr.s	$a1, $fa4
+	addi.w	$a0, $a0, 1
+	vrepli.b	$vr5, -1
+	vadd.w	$vr4, $vr13, $vr5
+	ld.w	$a4, $fp, 76
+	ld.w	$a5, $fp, 80
+	ld.w	$a2, $fp, 120
+	addi.w	$a1, $a1, 1
+	addi.w	$s5, $a4, -1
+	ori	$a4, $zero, 2
+	addi.w	$s6, $a5, -1
+	beq	$a2, $a4, .LBB9_113
+# %bb.1:
+	fld.s	$ft3, $a3, 8
+	fmul.s	$fa0, $fa0, $ft3
+	fadd.s	$fa0, $fa0, $fa1
+	xvftintrz.l.d	$xr1, $xr10
+	xvpermi.d	$xr10, $xr1, 238
+	xvpickev.w	$xr1, $xr10, $xr1
+	fcmp.clt.s	$fcc0, $fa0, $fa2
+	fsel	$fa0, $fa0, $fa2, $fcc0
+	fcmp.clt.s	$fcc0, $fa6, $fa0
+	fsel	$fa0, $fa0, $fa6, $fcc0
+	fcvt.d.s	$fa2, $fa0
+	fcmp.clt.s	$fcc0, $fa0, $fa7
+	fsel	$fa0, $ft1, $ft0, $fcc0
+	fadd.d	$fa0, $fa0, $fa2
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a7, $fa0
-	addi.w	$a3, $a2, -1
-	ori	$t0, $zero, 1
-	addi.w	$a2, $a7, 1
-	beq	$a6, $t0, .LBB9_4
+	movfr2gr.s	$a3, $fa0
+	vadd.w	$vr0, $vr1, $vr5
+	ori	$a4, $zero, 1
+	addi.w	$a3, $a3, 1
+	beq	$a2, $a4, .LBB9_4
 # %bb.2:
-	bnez	$a6, .LBB9_7
+	bnez	$a2, .LBB9_6
 # %bb.3:
-	srai.d	$a1, $a0, 63
-	andn	$a0, $a0, $a1
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	slt	$a0, $a4, $s5
-	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $a4, $a0
-	or	$s5, $a0, $a1
+	slt	$a0, $a1, $s5
+	masknez	$a2, $s5, $a0
+	maskeqz	$a0, $a1, $a0
+	or	$s5, $a0, $a2
+	vpackod.w	$vr0, $vr0, $vr4
 	b	.LBB9_5
 .LBB9_4:
-	srai.d	$a0, $a5, 63
-	andn	$a0, $a5, $a0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	slt	$a0, $a1, $s5
-	masknez	$a4, $s5, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$s5, $a0, $a4
+	slt	$a1, $a0, $s5
+	masknez	$a2, $s5, $a1
+	maskeqz	$a0, $a0, $a1
+	or	$s5, $a0, $a2
 .LBB9_5:
-	srai.d	$a0, $a3, 63
-	andn	$s1, $a3, $a0
-	slt	$a0, $a2, $s6
+	vmaxi.w	$vr3, $vr0, 0
+	slt	$a0, $a3, $s6
 	masknez	$a1, $s6, $a0
-	maskeqz	$a0, $a2, $a0
+	maskeqz	$a0, $a3, $a0
 	or	$s6, $a0, $a1
-	blt	$s1, $s6, .LBB9_8
-	b	.LBB9_114
 .LBB9_6:
-	srai.d	$a2, $a5, 63
-	andn	$a2, $a5, $a2
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	slt	$a2, $a1, $s5
-	masknez	$a3, $s5, $a2
-	maskeqz	$a1, $a1, $a2
-	or	$s5, $a1, $a3
-	srai.d	$a1, $a0, 63
-	andn	$s1, $a0, $a1
-	slt	$a0, $a4, $s6
-	masknez	$a1, $s6, $a0
-	maskeqz	$a0, $a4, $a0
-	or	$s6, $a0, $a1
-	blt	$s1, $s6, .LBB9_8
-	b	.LBB9_114
-.LBB9_7:
-	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
-	move	$s1, $zero
+	vpickve2gr.w	$s1, $vr3, 1
 	bge	$s1, $s6, .LBB9_114
-.LBB9_8:                                # %.preheader.lr.ph
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+.LBB9_7:                                # %.preheader.lr.ph
+	vpickve2gr.w	$a0, $vr3, 0
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	bge	$a0, $s5, .LBB9_114
-# %bb.9:                                # %.preheader.us.preheader
+# %bb.8:                                # %.preheader.us.preheader
 	ori	$s8, $zero, 1
 	ori	$s7, $zero, 2
-	b	.LBB9_11
+	b	.LBB9_10
 	.p2align	4, , 16
-.LBB9_10:                               # %._crit_edge.us
-                                        #   in Loop: Header=BB9_11 Depth=1
+.LBB9_9:                                # %._crit_edge.us
+                                        #   in Loop: Header=BB9_10 Depth=1
 	move	$s1, $s2
 	beq	$s2, $s6, .LBB9_114
-.LBB9_11:                               # %.preheader.us
+.LBB9_10:                               # %.preheader.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB9_17 Depth 2
+                                        #     Child Loop BB9_16 Depth 2
 	bstrpick.d	$a0, $s1, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.s.l	$fs0, $fa0
@@ -894,908 +875,920 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	movgr2fr.d	$fa0, $a0
 	ffint.s.l	$fs1, $fa0
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	b	.LBB9_17
-.LBB9_12:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_16
+.LBB9_11:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
-.LBB9_13:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_12:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-.LBB9_14:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_13:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs1, $fa0
-.LBB9_15:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_14:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	st.w	$zero, $sp, 68
-.LBB9_16:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
-	fld.s	$fa4, $s0, 128
+.LBB9_15:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
+	fld.s	$fa4, $fp, 128
 	fmul.s	$fa1, $fa1, $fa3
 	fst.s	$fa1, $sp, 56
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa4
-	ld.d	$a0, $fp, 0
+	ld.d	$a0, $s0, 0
 	fst.s	$fa2, $sp, 60
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 64
 	ld.d	$a4, $a0, 16
 	addi.d	$a1, $sp, 24
-	move	$a0, $fp
+	move	$a0, $s0
 	move	$a2, $s4
 	move	$a3, $s1
 	jirl	$ra, $a4, 0
-	beq	$s5, $s3, .LBB9_10
-.LBB9_17:                               #   Parent Loop BB9_11 Depth=1
+	beq	$s5, $s3, .LBB9_9
+.LBB9_16:                               #   Parent Loop BB9_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a0, $s0, 116
+	ld.bu	$a0, $fp, 116
 	move	$s4, $s3
 	addi.w	$s3, $s3, 1
-	beqz	$a0, .LBB9_22
-.LBB9_18:                               #   in Loop: Header=BB9_17 Depth=2
-	ld.d	$a0, $s0, 0
+	beqz	$a0, .LBB9_21
+.LBB9_17:                               #   in Loop: Header=BB9_16 Depth=2
+	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 104
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s4
 	move	$a2, $s1
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_29
-# %bb.19:                               #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_28
-# %bb.20:                               #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_31
-# %bb.21:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_28
+# %bb.18:                               #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_27
+# %bb.19:                               #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_30
+# %bb.20:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs0, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 36
-	b	.LBB9_32
+	b	.LBB9_31
 	.p2align	4, , 16
-.LBB9_22:                               #   in Loop: Header=BB9_17 Depth=2
-	ld.bu	$a0, $s0, 117
-	beqz	$a0, .LBB9_24
-# %bb.23:                               #   in Loop: Header=BB9_17 Depth=2
+.LBB9_21:                               #   in Loop: Header=BB9_16 Depth=2
+	ld.bu	$a0, $fp, 117
+	beqz	$a0, .LBB9_23
+# %bb.22:                               #   in Loop: Header=BB9_16 Depth=2
 	add.d	$a0, $s1, $s4
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB9_18
-.LBB9_24:                               #   in Loop: Header=BB9_17 Depth=2
-	ld.d	$a0, $s0, 0
+	beqz	$a0, .LBB9_17
+.LBB9_23:                               #   in Loop: Header=BB9_16 Depth=2
+	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 104
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s4
 	move	$a2, $s1
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_70
-# %bb.25:                               #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_69
-# %bb.26:                               #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_72
-# %bb.27:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_69
+# %bb.24:                               #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_68
+# %bb.25:                               #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_71
+# %bb.26:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs0, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 36
-	b	.LBB9_73
-.LBB9_28:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_72
+.LBB9_27:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_30
-.LBB9_29:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_29
+.LBB9_28:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s4, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_30:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_29:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs0, $fa0
 	st.w	$zero, $sp, 36
-	b	.LBB9_32
-.LBB9_31:                               # %._crit_edge.i.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_31
+.LBB9_30:                               # %._crit_edge.i.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 24
 	fld.s	$fa2, $sp, 28
 	fld.s	$fa0, $sp, 32
-.LBB9_32:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_31:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 24
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 28
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 32
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s3
 	move	$a2, $s1
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_37
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_36
+# %bb.32:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_35
 # %bb.33:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_36
-# %bb.34:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_39
-# %bb.35:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_38
+# %bb.34:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs0, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 52
-	b	.LBB9_40
-.LBB9_36:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_39
+.LBB9_35:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_38
-.LBB9_37:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_37
+.LBB9_36:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s3, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_38:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_37:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs0, $fa0
 	st.w	$zero, $sp, 52
-	b	.LBB9_40
-.LBB9_39:                               # %._crit_edge.i131.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_39
+.LBB9_38:                               # %._crit_edge.i131.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 40
 	fld.s	$fa2, $sp, 44
 	fld.s	$fa0, $sp, 48
-.LBB9_40:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_39:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 40
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 44
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 48
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s3
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_45
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_44
+# %bb.40:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_43
 # %bb.41:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_44
-# %bb.42:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_47
-# %bb.43:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_46
+# %bb.42:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs1, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 68
-	b	.LBB9_48
-.LBB9_44:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_47
+.LBB9_43:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_46
-.LBB9_45:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_45
+.LBB9_44:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s3, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_46:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_45:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs1, $fa0
 	st.w	$zero, $sp, 68
-	b	.LBB9_48
-.LBB9_47:                               # %._crit_edge.i138.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_47
+.LBB9_46:                               # %._crit_edge.i138.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 56
 	fld.s	$fa2, $sp, 60
 	fld.s	$fa0, $sp, 64
-.LBB9_48:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
-	fld.s	$fa4, $s0, 128
+.LBB9_47:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
+	fld.s	$fa4, $fp, 128
 	fmul.s	$fa1, $fa1, $fa3
 	fst.s	$fa1, $sp, 56
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa4
-	ld.d	$a0, $fp, 0
+	ld.d	$a0, $s0, 0
 	fst.s	$fa2, $sp, 60
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 64
 	ld.d	$a4, $a0, 16
 	addi.d	$a1, $sp, 24
-	move	$a0, $fp
+	move	$a0, $s0
 	move	$a2, $s4
 	move	$a3, $s1
 	jirl	$ra, $a4, 0
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 104
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s4
 	move	$a2, $s1
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_53
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_52
+# %bb.48:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_51
 # %bb.49:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_52
-# %bb.50:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_55
-# %bb.51:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_54
+# %bb.50:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs0, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 36
-	b	.LBB9_56
-.LBB9_52:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_55
+.LBB9_51:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_54
-.LBB9_53:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_53
+.LBB9_52:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s4, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_54:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_53:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs0, $fa0
 	st.w	$zero, $sp, 36
-	b	.LBB9_56
-.LBB9_55:                               # %._crit_edge.i145.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_55
+.LBB9_54:                               # %._crit_edge.i145.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 24
 	fld.s	$fa2, $sp, 28
 	fld.s	$fa0, $sp, 32
-.LBB9_56:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_55:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 24
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 28
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 32
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s3
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_61
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_60
+# %bb.56:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_59
 # %bb.57:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_60
-# %bb.58:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_63
-# %bb.59:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_62
+# %bb.58:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs1, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 52
-	b	.LBB9_64
-.LBB9_60:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_63
+.LBB9_59:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_62
-.LBB9_61:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_61
+.LBB9_60:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s3, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_62:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_61:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs1, $fa0
 	st.w	$zero, $sp, 52
-	b	.LBB9_64
-.LBB9_63:                               # %._crit_edge.i152.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_63
+.LBB9_62:                               # %._crit_edge.i152.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 40
 	fld.s	$fa2, $sp, 44
 	fld.s	$fa0, $sp, 48
-.LBB9_64:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_63:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 40
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 44
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 48
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s4
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_68
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_67
+# %bb.64:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_11
 # %bb.65:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_12
-# %bb.66:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_110
-# %bb.67:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_109
+# %bb.66:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
-	b	.LBB9_109
-.LBB9_68:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_108
+.LBB9_67:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s4, 31, 0
-	b	.LBB9_113
-.LBB9_69:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_112
+.LBB9_68:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_71
-.LBB9_70:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_70
+.LBB9_69:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s4, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_71:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_70:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs0, $fa0
 	st.w	$zero, $sp, 36
-	b	.LBB9_73
-.LBB9_72:                               # %._crit_edge.i166.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_72
+.LBB9_71:                               # %._crit_edge.i166.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 24
 	fld.s	$fa2, $sp, 28
 	fld.s	$fa0, $sp, 32
-.LBB9_73:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_72:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 24
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 28
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 32
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s4
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_78
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_77
+# %bb.73:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_76
 # %bb.74:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_77
-# %bb.75:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_80
-# %bb.76:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_79
+# %bb.75:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs1, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 52
-	b	.LBB9_81
-.LBB9_77:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_80
+.LBB9_76:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_79
-.LBB9_78:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_78
+.LBB9_77:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s4, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_79:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_78:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs1, $fa0
 	st.w	$zero, $sp, 52
-	b	.LBB9_81
-.LBB9_80:                               # %._crit_edge.i173.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_80
+.LBB9_79:                               # %._crit_edge.i173.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 40
 	fld.s	$fa2, $sp, 44
 	fld.s	$fa0, $sp, 48
-.LBB9_81:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_80:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 40
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 44
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 48
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s3
 	move	$a2, $s1
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_86
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_85
+# %bb.81:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_84
 # %bb.82:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_85
-# %bb.83:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_88
-# %bb.84:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_87
+# %bb.83:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs0, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 68
-	b	.LBB9_89
-.LBB9_85:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_88
+.LBB9_84:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_87
-.LBB9_86:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_86
+.LBB9_85:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s3, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_87:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_86:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs0, $fa0
 	st.w	$zero, $sp, 68
-	b	.LBB9_89
-.LBB9_88:                               # %._crit_edge.i180.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_88
+.LBB9_87:                               # %._crit_edge.i180.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 56
 	fld.s	$fa2, $sp, 60
 	fld.s	$fa0, $sp, 64
-.LBB9_89:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
-	fld.s	$fa4, $s0, 128
+.LBB9_88:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
+	fld.s	$fa4, $fp, 128
 	fmul.s	$fa1, $fa1, $fa3
 	fst.s	$fa1, $sp, 56
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa4
-	ld.d	$a0, $fp, 0
+	ld.d	$a0, $s0, 0
 	fst.s	$fa2, $sp, 60
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 64
 	ld.d	$a4, $a0, 16
 	addi.d	$a1, $sp, 24
-	move	$a0, $fp
+	move	$a0, $s0
 	move	$a2, $s4
 	move	$a3, $s1
 	jirl	$ra, $a4, 0
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 104
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s3
 	move	$a2, $s1
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_94
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_93
+# %bb.89:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_92
 # %bb.90:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_93
-# %bb.91:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_96
-# %bb.92:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_95
+# %bb.91:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs0, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 36
-	b	.LBB9_97
-.LBB9_93:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_96
+.LBB9_92:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_95
-.LBB9_94:                               #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_94
+.LBB9_93:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s3, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_95:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_94:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs0, $fa0
 	st.w	$zero, $sp, 36
-	b	.LBB9_97
-.LBB9_96:                               # %._crit_edge.i187.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_96
+.LBB9_95:                               # %._crit_edge.i187.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 24
 	fld.s	$fa2, $sp, 28
 	fld.s	$fa0, $sp, 32
-.LBB9_97:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_96:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 24
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 28
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 32
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s4
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_102
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_101
+# %bb.97:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_100
 # %bb.98:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_101
-# %bb.99:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_104
-# %bb.100:                              #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_103
+# %bb.99:                               #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs1, $fa2
 	fsub.s	$fa0, $fa0, $fa4
 	st.w	$zero, $sp, 52
-	b	.LBB9_105
-.LBB9_101:                              #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_104
+.LBB9_100:                              #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 64
-	fld.s	$fa4, $s0, 96
+	fld.s	$fa3, $fp, 64
+	fld.s	$fa4, $fp, 96
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa1, $fa2, $fa1
 	fsub.s	$fa2, $fa0, $fa3
 	fmul.s	$fa0, $fa4, $fa5
-	b	.LBB9_103
-.LBB9_102:                              #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_102
+.LBB9_101:                              #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s4, 31, 0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-.LBB9_103:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_102:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fsub.s	$fa0, $fs1, $fa0
 	st.w	$zero, $sp, 52
-	b	.LBB9_105
-.LBB9_104:                              # %._crit_edge.i194.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+	b	.LBB9_104
+.LBB9_103:                              # %._crit_edge.i194.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 40
 	fld.s	$fa2, $sp, 44
 	fld.s	$fa0, $sp, 48
-.LBB9_105:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 124
+.LBB9_104:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 124
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa3, $s0, 128
-	ld.d	$a0, $s0, 0
+	fld.s	$fa3, $fp, 128
+	ld.d	$a0, $fp, 0
 	fst.s	$fa1, $sp, 40
-	fld.s	$fa1, $s0, 132
+	fld.s	$fa1, $fp, 132
 	fmul.s	$fa2, $fa2, $fa3
 	ld.d	$a3, $a0, 104
 	fst.s	$fa2, $sp, 44
 	fmul.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $sp, 48
-	move	$a0, $s0
+	move	$a0, $fp
 	move	$a1, $s3
 	move	$a2, $s2
 	jirl	$ra, $a3, 0
-	ld.w	$a0, $s0, 120
-	beqz	$a0, .LBB9_112
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB9_111
+# %bb.105:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	beq	$a0, $s8, .LBB9_110
 # %bb.106:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	beq	$a0, $s8, .LBB9_111
-# %bb.107:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	bne	$a0, $s7, .LBB9_110
-# %bb.108:                              #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+                                        #   in Loop: Header=BB9_16 Depth=2
+	bne	$a0, $s7, .LBB9_109
+# %bb.107:                              #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
-.LBB9_109:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_108:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	movgr2fr.d	$fa2, $a0
-	fld.s	$fa3, $s0, 96
+	fld.s	$fa3, $fp, 96
 	ffint.s.l	$fa2, $fa2
-	fld.s	$fa4, $s0, 68
+	fld.s	$fa4, $fp, 68
 	fsub.s	$fa1, $fa2, $fa1
 	fmul.s	$fa2, $fa3, $fa5
 	fsub.s	$fa2, $fs1, $fa2
 	fsub.s	$fa0, $fa0, $fa4
-	b	.LBB9_15
+	b	.LBB9_14
 	.p2align	4, , 16
-.LBB9_110:                              # %._crit_edge.i159.us
-                                        #   in Loop: Header=BB9_17 Depth=2
+.LBB9_109:                              # %._crit_edge.i159.us
+                                        #   in Loop: Header=BB9_16 Depth=2
 	fld.s	$fa1, $sp, 56
 	fld.s	$fa2, $sp, 60
 	fld.s	$fa0, $sp, 64
-	b	.LBB9_16
-.LBB9_111:                              #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 92
+	b	.LBB9_15
+.LBB9_110:                              #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 92
 	vldi	$vr5, -1184
 	fmul.s	$fa1, $fa1, $fa5
 	bstrpick.d	$a0, $s3, 31, 0
-	b	.LBB9_13
-.LBB9_112:                              #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa1, $s0, 60
-	fld.s	$fa2, $s0, 92
+	b	.LBB9_12
+.LBB9_111:                              #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
 	fsub.s	$fa1, $fa0, $fa1
 	vldi	$vr4, -1184
 	fmul.s	$fa0, $fa2, $fa4
 	bstrpick.d	$a0, $s3, 31, 0
-.LBB9_113:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
-                                        #   in Loop: Header=BB9_17 Depth=2
-	fld.s	$fa3, $s0, 96
+.LBB9_112:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_16 Depth=2
+	fld.s	$fa3, $fp, 96
 	movgr2fr.d	$fa2, $a0
 	ffint.s.l	$fa2, $fa2
 	fsub.s	$fa2, $fa2, $fa0
 	fmul.s	$fa0, $fa3, $fa4
-	b	.LBB9_14
+	b	.LBB9_13
+.LBB9_113:
+	slt	$a2, $a0, $s5
+	masknez	$a3, $s5, $a2
+	maskeqz	$a0, $a0, $a2
+	or	$s5, $a0, $a3
+	vmaxi.w	$vr3, $vr4, 0
+	slt	$a0, $a1, $s6
+	masknez	$a2, $s6, $a0
+	maskeqz	$a0, $a1, $a0
+	or	$s6, $a0, $a2
+	vpickve2gr.w	$s1, $vr3, 1
+	blt	$s1, $s6, .LBB9_7
 .LBB9_114:                              # %._crit_edge229
 	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload

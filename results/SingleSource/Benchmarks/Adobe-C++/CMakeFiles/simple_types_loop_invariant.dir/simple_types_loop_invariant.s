@@ -43807,7 +43807,6 @@ _Z14test_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI150_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -43822,7 +43821,6 @@ _Z14test_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fs0, $fa1
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
@@ -43965,7 +43963,7 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blez	$a1, .LBB151_15
+	blez	$a1, .LBB151_17
 # %bb.1:                                # %.preheader.lr.ph
 	movgr2fr.w	$fa0, $s0
 	ffint.s.w	$fs1, $fa0
@@ -43987,7 +43985,7 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 .LBB151_3:                              # %_Z26check_shifted_variable_sumIf19custom_add_variableIfEEvT_S2_.exit.us
                                         #   in Loop: Header=BB151_4 Depth=1
 	addi.w	$s7, $s7, 1
-	bge	$s7, $a1, .LBB151_15
+	bge	$s7, $a1, .LBB151_17
 .LBB151_4:                              # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB151_5 Depth 2
@@ -44039,18 +44037,19 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI151_1)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs3, $a0
+	fcmp.clt.d	$fcc0, $fa2, $fa1
+	bceqz	$fcc0, .LBB151_13
+# %bb.9:                                # %.preheader.us20.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
-	fcmp.clt.d	$fcc0, $fa2, $fa1
-	bcnez	$fcc0, .LBB151_10
-	b	.LBB151_13
+	b	.LBB151_11
 	.p2align	4, , 16
-.LBB151_9:                              # %_Z26check_shifted_variable_sumIf19custom_add_variableIfEEvT_S2_.exit.us22
-                                        #   in Loop: Header=BB151_10 Depth=1
+.LBB151_10:                             # %_Z26check_shifted_variable_sumIf19custom_add_variableIfEEvT_S2_.exit.us22
+                                        #   in Loop: Header=BB151_11 Depth=1
 	addi.w	$s2, $s2, 1
-	bge	$s2, $a1, .LBB151_15
-.LBB151_10:                             # %.preheader.us20
+	bge	$s2, $a1, .LBB151_17
+.LBB151_11:                             # %.preheader.us20
                                         # =>This Inner Loop Header: Depth=1
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fs0, $fa1
@@ -44060,21 +44059,26 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
-	bcnez	$fcc0, .LBB151_9
-# %bb.11:                               #   in Loop: Header=BB151_10 Depth=1
+	bcnez	$fcc0, .LBB151_10
+# %bb.12:                               #   in Loop: Header=BB151_11 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	ld.w	$a1, $s5, %pc_lo12(iterations)
-	b	.LBB151_9
+	b	.LBB151_10
+.LBB151_13:                             # %.preheader.preheader
+	pcalau12i	$a0, %pc_hi20(.L.str.179)
+	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
+	move	$s2, $zero
+	b	.LBB151_15
 	.p2align	4, , 16
-.LBB151_12:                             # %_Z26check_shifted_variable_sumIf19custom_add_variableIfEEvT_S2_.exit
-                                        #   in Loop: Header=BB151_13 Depth=1
+.LBB151_14:                             # %_Z26check_shifted_variable_sumIf19custom_add_variableIfEEvT_S2_.exit
+                                        #   in Loop: Header=BB151_15 Depth=1
 	addi.w	$s2, $s2, 1
-	bge	$s2, $a1, .LBB151_15
-.LBB151_13:                             # %.preheader
+	bge	$s2, $a1, .LBB151_17
+.LBB151_15:                             # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fs0, $fa1
@@ -44083,16 +44087,16 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
-	bcnez	$fcc0, .LBB151_12
-# %bb.14:                               #   in Loop: Header=BB151_13 Depth=1
+	bcnez	$fcc0, .LBB151_14
+# %bb.16:                               #   in Loop: Header=BB151_15 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	ld.w	$a1, $s5, %pc_lo12(iterations)
-	b	.LBB151_12
-.LBB151_15:                             # %._crit_edge19
+	b	.LBB151_14
+.LBB151_17:                             # %._crit_edge19
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s4, %pc_lo12(start_time)
@@ -44103,11 +44107,11 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
-	beqz	$a2, .LBB151_17
-# %bb.16:                               # %._crit_edge19
+	beqz	$a2, .LBB151_19
+# %bb.18:                               # %._crit_edge19
 	ld.w	$a0, $s3, %pc_lo12(current_test)
-	blt	$a0, $a1, .LBB151_19
-.LBB151_17:
+	blt	$a0, $a1, .LBB151_21
+.LBB151_19:
 	addi.w	$a0, $a1, 10
 	st.w	$a0, $s2, %pc_lo12(allocated_results)
 	slli.d	$a1, $a0, 4
@@ -44115,11 +44119,11 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, %pc_lo12(results)
-	beqz	$a0, .LBB151_20
-# %bb.18:                               # %._crit_edge.i
+	beqz	$a0, .LBB151_22
+# %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
-.LBB151_19:                             # %_Z13record_resultdPKc.exit
+.LBB151_21:                             # %_Z13record_resultdPKc.exit
 	pcalau12i	$a1, %pc_hi20(.LCPI151_2)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI151_2)
 	sub.d	$a1, $s0, $s1
@@ -44150,7 +44154,7 @@ _Z22test_hoisted_variable1If19custom_add_variableIfEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 144
 	ret
-.LBB151_20:
+.LBB151_22:
 	ld.w	$a1, $s2, %pc_lo12(allocated_results)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
@@ -44302,7 +44306,6 @@ _Z14test_variable4If28custom_add_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI152_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs5, $a0
-	movgr2fr.w	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -44320,7 +44323,6 @@ _Z14test_variable4If28custom_add_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fadd.s	$fa1, $fs1, $fa1
 	fadd.s	$fa1, $fs0, $fa1
 	fmul.s	$fa1, $fa1, $fs5
-	fadd.s	$fa1, $fa1, $fs6
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs4
@@ -44530,7 +44532,6 @@ _Z14test_variable1If19custom_sub_variableIfEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI153_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -44545,7 +44546,6 @@ _Z14test_variable1If19custom_sub_variableIfEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fcvt.s.d	$fa1, $fa0
 	fsub.s	$fa1, $fa1, $fs0
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
@@ -44767,7 +44767,6 @@ _Z14test_variable4If28custom_sub_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI154_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs5, $a0
-	movgr2fr.w	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -44785,7 +44784,6 @@ _Z14test_variable4If28custom_sub_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fsub.s	$fa1, $fa1, $fs1
 	fsub.s	$fa1, $fa1, $fs0
 	fmul.s	$fa1, $fa1, $fs5
-	fadd.s	$fa1, $fa1, $fs6
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs4
@@ -44995,7 +44993,6 @@ _Z14test_variable1If24custom_multiply_variableIfEEvPT_iS2_PKc: # @_Z14test_varia
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI155_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -45010,7 +45007,6 @@ _Z14test_variable1If24custom_multiply_variableIfEEvPT_iS2_PKc: # @_Z14test_varia
 	fcvt.s.d	$fa1, $fa0
 	fmul.s	$fa1, $fs0, $fa1
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
@@ -45232,7 +45228,6 @@ _Z14test_variable4If33custom_multiply_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc:
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI156_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs5, $a0
-	movgr2fr.w	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -45250,7 +45245,6 @@ _Z14test_variable4If33custom_multiply_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc:
 	fmul.s	$fa1, $fs1, $fa1
 	fmul.s	$fa1, $fs0, $fa1
 	fmul.s	$fa1, $fa1, $fs5
-	fadd.s	$fa1, $fa1, $fs6
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs4
@@ -45467,7 +45461,6 @@ _Z14test_variable4If34custom_multiply_multiple_variable2IfEEvPT_iS2_S2_S2_S2_PKc
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI157_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs3, $a0
-	movgr2fr.w	$fs4, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -45482,7 +45475,6 @@ _Z14test_variable4If34custom_multiply_multiple_variable2IfEEvPT_iS2_S2_S2_S2_PKc
 	fcvt.s.d	$fa1, $fa0
 	fmadd.s	$fa1, $fs1, $fs0, $fa1
 	fmul.s	$fa1, $fa1, $fs3
-	fadd.s	$fa1, $fa1, $fs4
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
@@ -45690,7 +45682,6 @@ _Z14test_variable1If22custom_divide_variableIfEEvPT_iS2_PKc: # @_Z14test_variabl
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI158_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -45705,7 +45696,6 @@ _Z14test_variable1If22custom_divide_variableIfEEvPT_iS2_PKc: # @_Z14test_variabl
 	fcvt.s.d	$fa1, $fa0
 	fdiv.s	$fa1, $fa1, $fs0
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
@@ -45927,7 +45917,6 @@ _Z14test_variable4If31custom_divide_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: #
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI159_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs5, $a0
-	movgr2fr.w	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -45945,7 +45934,6 @@ _Z14test_variable4If31custom_divide_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: #
 	fdiv.s	$fa1, $fa1, $fs1
 	fdiv.s	$fa1, $fa1, $fs0
 	fmul.s	$fa1, $fa1, $fs5
-	fadd.s	$fa1, $fa1, $fs6
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs4
@@ -46161,7 +46149,6 @@ _Z14test_variable4If32custom_divide_multiple_variable2IfEEvPT_iS2_S2_S2_S2_PKc: 
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI160_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs2, $a0
-	movgr2fr.w	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -46176,7 +46163,6 @@ _Z14test_variable4If32custom_divide_multiple_variable2IfEEvPT_iS2_S2_S2_S2_PKc: 
 	fcvt.s.d	$fa1, $fa0
 	fadd.s	$fa1, $fs0, $fa1
 	fmul.s	$fa1, $fa1, $fs2
-	fadd.s	$fa1, $fa1, $fs3
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs1
@@ -46392,7 +46378,6 @@ _Z14test_variable4If30custom_mixed_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # 
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI161_0)
 	lu12i.w	$a0, -237664
 	movgr2fr.w	$fs3, $a0
-	movgr2fr.w	$fs4, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -46408,7 +46393,6 @@ _Z14test_variable4If30custom_mixed_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc: # 
 	fadd.s	$fa1, $fs0, $fa1
 	fsub.s	$fa1, $fa1, $fs1
 	fmul.s	$fa1, $fa1, $fs3
-	fadd.s	$fa1, $fa1, $fs4
 	fabs.s	$fa1, $fa1
 	fcvt.d.s	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
@@ -46615,7 +46599,6 @@ _Z14test_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI162_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI162_1)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI162_1)
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -46629,7 +46612,6 @@ _Z14test_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fs0, $fa0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB162_9
@@ -46773,7 +46755,7 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blez	$a1, .LBB163_15
+	blez	$a1, .LBB163_17
 # %bb.1:                                # %.preheader.lr.ph
 	movgr2fr.w	$fa0, $s0
 	ffint.d.w	$fs1, $fa0
@@ -46795,7 +46777,7 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 .LBB163_3:                              # %_Z26check_shifted_variable_sumId19custom_add_variableIdEEvT_S2_.exit.us
                                         #   in Loop: Header=BB163_4 Depth=1
 	addi.w	$s7, $s7, 1
-	bge	$s7, $a1, .LBB163_15
+	bge	$s7, $a1, .LBB163_17
 .LBB163_4:                              # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB163_5 Depth 2
@@ -46843,18 +46825,19 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI163_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI163_2)
 	fld.d	$fs3, $a0, %pc_lo12(.LCPI163_2)
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	bceqz	$fcc0, .LBB163_13
+# %bb.9:                                # %.preheader.us20.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
-	fcmp.clt.d	$fcc0, $fa1, $fa2
-	bcnez	$fcc0, .LBB163_10
-	b	.LBB163_13
+	b	.LBB163_11
 	.p2align	4, , 16
-.LBB163_9:                              # %_Z26check_shifted_variable_sumId19custom_add_variableIdEEvT_S2_.exit.us22
-                                        #   in Loop: Header=BB163_10 Depth=1
+.LBB163_10:                             # %_Z26check_shifted_variable_sumId19custom_add_variableIdEEvT_S2_.exit.us22
+                                        #   in Loop: Header=BB163_11 Depth=1
 	addi.w	$s2, $s2, 1
-	bge	$s2, $a1, .LBB163_15
-.LBB163_10:                             # %.preheader.us20
+	bge	$s2, $a1, .LBB163_17
+.LBB163_11:                             # %.preheader.us20
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fs0, $fa0
 	fmul.d	$fa1, $fa1, $fs2
@@ -46862,37 +46845,42 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 	fdiv.d	$fa1, $fa1, $fs1
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs3
-	bcnez	$fcc0, .LBB163_9
-# %bb.11:                               #   in Loop: Header=BB163_10 Depth=1
+	bcnez	$fcc0, .LBB163_10
+# %bb.12:                               #   in Loop: Header=BB163_11 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	ld.w	$a1, $s5, %pc_lo12(iterations)
-	b	.LBB163_9
+	b	.LBB163_10
+.LBB163_13:                             # %.preheader.preheader
+	pcalau12i	$a0, %pc_hi20(.L.str.179)
+	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
+	move	$s2, $zero
+	b	.LBB163_15
 	.p2align	4, , 16
-.LBB163_12:                             # %_Z26check_shifted_variable_sumId19custom_add_variableIdEEvT_S2_.exit
-                                        #   in Loop: Header=BB163_13 Depth=1
+.LBB163_14:                             # %_Z26check_shifted_variable_sumId19custom_add_variableIdEEvT_S2_.exit
+                                        #   in Loop: Header=BB163_15 Depth=1
 	addi.w	$s2, $s2, 1
-	bge	$s2, $a1, .LBB163_15
-.LBB163_13:                             # %.preheader
+	bge	$s2, $a1, .LBB163_17
+.LBB163_15:                             # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fs0, $fa0
 	fmul.d	$fa1, $fa1, $fs2
 	fadd.d	$fa1, $fs1, $fa1
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs3
-	bcnez	$fcc0, .LBB163_12
-# %bb.14:                               #   in Loop: Header=BB163_13 Depth=1
+	bcnez	$fcc0, .LBB163_14
+# %bb.16:                               #   in Loop: Header=BB163_15 Depth=1
 	ld.w	$a1, $s3, %pc_lo12(current_test)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s1, %pc_lo12(init_value)
 	ld.w	$a1, $s5, %pc_lo12(iterations)
-	b	.LBB163_12
-.LBB163_15:                             # %._crit_edge19
+	b	.LBB163_14
+.LBB163_17:                             # %._crit_edge19
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s4, %pc_lo12(start_time)
@@ -46903,11 +46891,11 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
-	beqz	$a2, .LBB163_17
-# %bb.16:                               # %._crit_edge19
+	beqz	$a2, .LBB163_19
+# %bb.18:                               # %._crit_edge19
 	ld.w	$a0, $s3, %pc_lo12(current_test)
-	blt	$a0, $a1, .LBB163_19
-.LBB163_17:
+	blt	$a0, $a1, .LBB163_21
+.LBB163_19:
 	addi.w	$a0, $a1, 10
 	st.w	$a0, $s2, %pc_lo12(allocated_results)
 	slli.d	$a1, $a0, 4
@@ -46915,11 +46903,11 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s4, %pc_lo12(results)
-	beqz	$a0, .LBB163_20
-# %bb.18:                               # %._crit_edge.i
+	beqz	$a0, .LBB163_22
+# %bb.20:                               # %._crit_edge.i
 	move	$a2, $a0
 	ld.w	$a0, $s3, %pc_lo12(current_test)
-.LBB163_19:                             # %_Z13record_resultdPKc.exit
+.LBB163_21:                             # %_Z13record_resultdPKc.exit
 	pcalau12i	$a1, %pc_hi20(.LCPI163_3)
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI163_3)
 	sub.d	$a1, $s0, $s1
@@ -46950,7 +46938,7 @@ _Z22test_hoisted_variable1Id19custom_add_variableIdEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 144
 	ret
-.LBB163_20:
+.LBB163_22:
 	ld.w	$a1, $s2, %pc_lo12(allocated_results)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
@@ -47101,7 +47089,6 @@ _Z14test_variable4Id28custom_add_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI164_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI164_1)
 	fld.d	$fs5, $a0, %pc_lo12(.LCPI164_1)
-	movgr2fr.d	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -47118,7 +47105,6 @@ _Z14test_variable4Id28custom_add_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fadd.d	$fa1, $fs1, $fa1
 	fadd.d	$fa1, $fs0, $fa1
 	fmul.d	$fa1, $fa1, $fs4
-	fadd.d	$fa1, $fa1, $fs6
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs5
 	bcnez	$fcc0, .LBB164_9
@@ -47326,7 +47312,6 @@ _Z14test_variable1Id19custom_sub_variableIdEEvPT_iS2_PKc: # @_Z14test_variable1I
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI165_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI165_1)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI165_1)
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -47340,7 +47325,6 @@ _Z14test_variable1Id19custom_sub_variableIdEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         # =>This Inner Loop Header: Depth=1
 	fsub.d	$fa1, $fa0, $fs0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB165_9
@@ -47560,7 +47544,6 @@ _Z14test_variable4Id28custom_sub_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI166_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI166_1)
 	fld.d	$fs5, $a0, %pc_lo12(.LCPI166_1)
-	movgr2fr.d	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -47577,7 +47560,6 @@ _Z14test_variable4Id28custom_sub_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # @_
 	fsub.d	$fa1, $fa1, $fs1
 	fsub.d	$fa1, $fa1, $fs0
 	fmul.d	$fa1, $fa1, $fs4
-	fadd.d	$fa1, $fa1, $fs6
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs5
 	bcnez	$fcc0, .LBB166_9
@@ -47785,7 +47767,6 @@ _Z14test_variable1Id24custom_multiply_variableIdEEvPT_iS2_PKc: # @_Z14test_varia
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI167_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI167_1)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI167_1)
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -47799,7 +47780,6 @@ _Z14test_variable1Id24custom_multiply_variableIdEEvPT_iS2_PKc: # @_Z14test_varia
                                         # =>This Inner Loop Header: Depth=1
 	fmul.d	$fa1, $fs0, $fa0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB167_9
@@ -48019,7 +47999,6 @@ _Z14test_variable4Id33custom_multiply_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc:
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI168_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI168_1)
 	fld.d	$fs5, $a0, %pc_lo12(.LCPI168_1)
-	movgr2fr.d	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -48036,7 +48015,6 @@ _Z14test_variable4Id33custom_multiply_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc:
 	fmul.d	$fa1, $fs1, $fa1
 	fmul.d	$fa1, $fs0, $fa1
 	fmul.d	$fa1, $fa1, $fs4
-	fadd.d	$fa1, $fa1, $fs6
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs5
 	bcnez	$fcc0, .LBB168_9
@@ -48251,7 +48229,6 @@ _Z14test_variable4Id34custom_multiply_multiple_variable2IdEEvPT_iS2_S2_S2_S2_PKc
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI169_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI169_1)
 	fld.d	$fs3, $a0, %pc_lo12(.LCPI169_1)
-	movgr2fr.d	$fs4, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -48265,7 +48242,6 @@ _Z14test_variable4Id34custom_multiply_multiple_variable2IdEEvPT_iS2_S2_S2_S2_PKc
                                         # =>This Inner Loop Header: Depth=1
 	fmadd.d	$fa1, $fs1, $fs0, $fa0
 	fmul.d	$fa1, $fa1, $fs2
-	fadd.d	$fa1, $fa1, $fs4
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs3
 	bcnez	$fcc0, .LBB169_9
@@ -48471,7 +48447,6 @@ _Z14test_variable1Id22custom_divide_variableIdEEvPT_iS2_PKc: # @_Z14test_variabl
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI170_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI170_1)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI170_1)
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -48485,7 +48460,6 @@ _Z14test_variable1Id22custom_divide_variableIdEEvPT_iS2_PKc: # @_Z14test_variabl
                                         # =>This Inner Loop Header: Depth=1
 	fdiv.d	$fa1, $fa0, $fs0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB170_9
@@ -48705,7 +48679,6 @@ _Z14test_variable4Id31custom_divide_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: #
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI171_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI171_1)
 	fld.d	$fs5, $a0, %pc_lo12(.LCPI171_1)
-	movgr2fr.d	$fs6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -48722,7 +48695,6 @@ _Z14test_variable4Id31custom_divide_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: #
 	fdiv.d	$fa1, $fa1, $fs1
 	fdiv.d	$fa1, $fa1, $fs0
 	fmul.d	$fa1, $fa1, $fs4
-	fadd.d	$fa1, $fa1, $fs6
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs5
 	bcnez	$fcc0, .LBB171_9
@@ -48936,7 +48908,6 @@ _Z14test_variable4Id32custom_divide_multiple_variable2IdEEvPT_iS2_S2_S2_S2_PKc: 
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI172_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI172_1)
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI172_1)
-	movgr2fr.d	$fs3, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -48950,7 +48921,6 @@ _Z14test_variable4Id32custom_divide_multiple_variable2IdEEvPT_iS2_S2_S2_S2_PKc: 
                                         # =>This Inner Loop Header: Depth=1
 	fadd.d	$fa1, $fs0, $fa0
 	fmul.d	$fa1, $fa1, $fs1
-	fadd.d	$fa1, $fa1, $fs3
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs2
 	bcnez	$fcc0, .LBB172_9
@@ -49164,7 +49134,6 @@ _Z14test_variable4Id30custom_mixed_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # 
 	fld.d	$fs2, $a0, %pc_lo12(.LCPI173_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI173_1)
 	fld.d	$fs3, $a0, %pc_lo12(.LCPI173_1)
-	movgr2fr.d	$fs4, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.179)
 	move	$s2, $zero
@@ -49179,7 +49148,6 @@ _Z14test_variable4Id30custom_mixed_multiple_variableIdEEvPT_iS2_S2_S2_S2_PKc: # 
 	fadd.d	$fa1, $fs0, $fa0
 	fsub.d	$fa1, $fa1, $fs1
 	fmul.d	$fa1, $fa1, $fs2
-	fadd.d	$fa1, $fa1, $fs4
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa1, $fs3
 	bcnez	$fcc0, .LBB173_9

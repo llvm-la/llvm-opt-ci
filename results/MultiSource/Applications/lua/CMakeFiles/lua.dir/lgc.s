@@ -1367,7 +1367,7 @@ propagatemark:                          # @propagatemark
 	addi.d	$a1, $a2, -5
 	ori	$a2, $zero, 4
 	st.b	$a3, $fp, 9
-	bltu	$a2, $a1, .LBB14_121
+	bltu	$a2, $a1, .LBB14_90
 # %bb.1:
 	slli.d	$a1, $a1, 2
 	pcalau12i	$a2, %pc_hi20(.LJTI14_0)
@@ -1379,7 +1379,7 @@ propagatemark:                          # @propagatemark
 	ld.d	$a0, $fp, 48
 	ld.d	$a3, $fp, 16
 	st.d	$a0, $s0, 56
-	beqz	$a3, .LBB14_62
+	beqz	$a3, .LBB14_63
 # %bb.3:
 	ld.bu	$a0, $a3, 9
 	andi	$a0, $a0, 3
@@ -1390,22 +1390,22 @@ propagatemark:                          # @propagatemark
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $fp, 16
-	beqz	$a3, .LBB14_62
+	beqz	$a3, .LBB14_63
 .LBB14_5:                               # %.thread.i
 	ld.bu	$a0, $a3, 10
 	andi	$a0, $a0, 8
-	bnez	$a0, .LBB14_62
+	bnez	$a0, .LBB14_63
 # %bb.6:
 	ld.d	$a2, $s0, 320
 	ori	$a1, $zero, 3
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(luaT_gettm)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB14_62
+	beqz	$a0, .LBB14_63
 # %bb.7:
 	ld.w	$a1, $a0, 8
 	ori	$a2, $zero, 4
-	bne	$a1, $a2, .LBB14_62
+	bne	$a1, $a2, .LBB14_63
 # %bb.8:
 	ld.d	$a0, $a0, 0
 	addi.d	$s2, $a0, 24
@@ -1419,7 +1419,7 @@ propagatemark:                          # @propagatemark
 	pcaddu18i	$ra, %call36(strchr)
 	jirl	$ra, $ra, 0
 	or	$a1, $s1, $a0
-	beqz	$a1, .LBB14_62
+	beqz	$a1, .LBB14_63
 # %bb.9:
 	ld.bu	$a1, $fp, 9
 	sltu	$a2, $zero, $a0
@@ -1433,25 +1433,24 @@ propagatemark:                          # @propagatemark
 	st.b	$a1, $fp, 9
 	st.d	$a4, $fp, 48
 	st.d	$fp, $s0, 72
-	beqz	$s1, .LBB14_11
+	beqz	$s1, .LBB14_91
 # %bb.10:
-	bnez	$a0, .LBB14_119
-.LBB14_11:
-	beqz	$a0, .LBB14_95
-# %bb.12:                               # %.loopexit.thread.i
+	beqz	$a0, .LBB14_91
+.LBB14_11:                              # %.loopexit
+	ld.bu	$a0, $fp, 9
+	andi	$a0, $a0, 251
+	st.b	$a0, $fp, 9
+.LBB14_12:                              # %traversetable.exit
 	ld.bu	$a0, $fp, 11
-	addi.d	$a1, $zero, -1
-	sll.w	$a0, $a1, $a0
-	nor	$a0, $a0, $zero
-	bstrpick.d	$a0, $a0, 31, 0
-	slli.d	$a1, $a0, 5
-	beqz	$s1, .LBB14_122
-# %bb.13:                               # %.split.us.split.us.i.preheader
-	alsl.d	$a1, $a0, $a1, 3
-	ori	$a2, $zero, 4
-	ori	$a3, $zero, 11
-	b	.LBB14_92
-.LBB14_14:
+	ld.w	$a1, $fp, 56
+	ori	$a2, $zero, 1
+	sll.w	$a0, $a2, $a0
+	slli.d	$a2, $a0, 5
+	alsl.d	$a0, $a0, $a2, 3
+	alsl.d	$a0, $a1, $a0, 4
+	addi.d	$a0, $a0, 64
+	b	.LBB14_90
+.LBB14_13:
 	ld.d	$a0, $fp, 160
 	st.d	$a0, $s0, 56
 	ld.d	$a0, $s0, 64
@@ -1462,26 +1461,26 @@ propagatemark:                          # @propagatemark
 	andi	$a0, $a1, 251
 	ori	$a1, $zero, 4
 	st.b	$a0, $fp, 9
-	blt	$a2, $a1, .LBB14_17
-# %bb.15:
+	blt	$a2, $a1, .LBB14_16
+# %bb.14:
 	ld.d	$a1, $fp, 120
 	ld.bu	$a0, $a1, 9
 	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_17
-# %bb.16:
+	beqz	$a0, .LBB14_16
+# %bb.15:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
-.LBB14_17:
+.LBB14_16:
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 80
 	ld.d	$a2, $fp, 40
 	move	$s1, $a0
-	bltu	$a2, $a1, .LBB14_20
-# %bb.18:                               # %.lr.ph.i49.preheader
+	bltu	$a2, $a1, .LBB14_19
+# %bb.17:                               # %.lr.ph.i49.preheader
 	move	$s1, $a0
 	.p2align	4, , 16
-.LBB14_19:                              # %.lr.ph.i49
+.LBB14_18:                              # %.lr.ph.i49
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a1, 16
 	sltu	$a4, $s1, $a3
@@ -1489,35 +1488,35 @@ propagatemark:                          # @propagatemark
 	maskeqz	$a3, $a3, $a4
 	addi.d	$a1, $a1, 40
 	or	$s1, $a3, $a5
-	bgeu	$a2, $a1, .LBB14_19
-.LBB14_20:                              # %._crit_edge.i
+	bgeu	$a2, $a1, .LBB14_18
+.LBB14_19:                              # %._crit_edge.i
 	ld.d	$s2, $fp, 64
-	bgeu	$s2, $a0, .LBB14_26
-# %bb.21:
+	bgeu	$s2, $a0, .LBB14_25
+# %bb.20:
 	ori	$s3, $zero, 4
-	b	.LBB14_23
+	b	.LBB14_22
 	.p2align	4, , 16
-.LBB14_22:                              #   in Loop: Header=BB14_23 Depth=1
+.LBB14_21:                              #   in Loop: Header=BB14_22 Depth=1
 	addi.d	$s2, $s2, 16
-	bgeu	$s2, $a0, .LBB14_26
-.LBB14_23:                              # %.lr.ph38.i
+	bgeu	$s2, $a0, .LBB14_25
+.LBB14_22:                              # %.lr.ph38.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s2, 8
-	blt	$a1, $s3, .LBB14_22
-# %bb.24:                               #   in Loop: Header=BB14_23 Depth=1
+	blt	$a1, $s3, .LBB14_21
+# %bb.23:                               #   in Loop: Header=BB14_22 Depth=1
 	ld.d	$a1, $s2, 0
 	ld.bu	$a2, $a1, 9
 	andi	$a2, $a2, 3
-	beqz	$a2, .LBB14_22
-# %bb.25:                               #   in Loop: Header=BB14_23 Depth=1
+	beqz	$a2, .LBB14_21
+# %bb.24:                               #   in Loop: Header=BB14_22 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 16
-	b	.LBB14_22
-.LBB14_26:                              # %.preheader.i50
-	bltu	$s1, $s2, .LBB14_83
-# %bb.27:                               # %.lr.ph42.i.preheader
+	b	.LBB14_21
+.LBB14_25:                              # %.preheader.i50
+	bltu	$s1, $s2, .LBB14_82
+# %bb.26:                               # %.lr.ph42.i.preheader
 	addi.d	$a0, $s2, 16
 	addi.d	$a1, $s1, 1
 	sltu	$a2, $a1, $a0
@@ -1526,191 +1525,207 @@ propagatemark:                          # @propagatemark
 	or	$a0, $a0, $a1
 	nor	$a1, $s2, $zero
 	add.d	$a0, $a0, $a1
-	ori	$a1, $zero, 16
-	bgeu	$a0, $a1, .LBB14_79
-# %bb.28:
-	move	$a0, $s2
+	srli.d	$a0, $a0, 4
+	beqz	$a0, .LBB14_80
+# %bb.27:                               # %vector.ph
+	addi.d	$a1, $a0, 1
+	bstrpick.d	$a0, $a1, 60, 1
+	slli.d	$a2, $a0, 1
+	slli.d	$a0, $a0, 5
+	add.d	$a0, $s2, $a0
+	addi.d	$a3, $s2, 24
+	move	$a4, $a2
+	.p2align	4, , 16
+.LBB14_28:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	st.w	$zero, $a3, -16
+	st.w	$zero, $a3, 0
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB14_28
+# %bb.29:                               # %middle.block
+	bne	$a1, $a2, .LBB14_81
 	b	.LBB14_82
-.LBB14_29:
+.LBB14_30:
 	ld.d	$a0, $fp, 16
 	st.d	$a0, $s0, 56
 	ld.d	$a1, $fp, 24
 	ld.bu	$a0, $a1, 9
 	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_31
-# %bb.30:
+	beqz	$a0, .LBB14_32
+# %bb.31:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
-.LBB14_31:
+.LBB14_32:
 	ld.bu	$a0, $fp, 10
-	beqz	$a0, .LBB14_70
-# %bb.32:                               # %.preheader.i
+	beqz	$a0, .LBB14_71
+# %bb.33:                               # %.preheader.i
 	ld.bu	$a0, $fp, 11
-	beqz	$a0, .LBB14_77
-# %bb.33:                               # %.lr.ph.i44
+	beqz	$a0, .LBB14_78
+# %bb.34:                               # %.lr.ph.i44
 	move	$s1, $zero
 	addi.d	$s2, $fp, 48
 	ori	$s3, $zero, 4
-	b	.LBB14_35
+	b	.LBB14_36
 	.p2align	4, , 16
-.LBB14_34:                              #   in Loop: Header=BB14_35 Depth=1
+.LBB14_35:                              #   in Loop: Header=BB14_36 Depth=1
 	addi.d	$s1, $s1, 1
 	addi.d	$s2, $s2, 16
-	bgeu	$s1, $a0, .LBB14_78
-.LBB14_35:                              # =>This Inner Loop Header: Depth=1
+	bgeu	$s1, $a0, .LBB14_79
+.LBB14_36:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a1, $s2, 0
-	blt	$a1, $s3, .LBB14_34
-# %bb.36:                               #   in Loop: Header=BB14_35 Depth=1
+	blt	$a1, $s3, .LBB14_35
+# %bb.37:                               #   in Loop: Header=BB14_36 Depth=1
 	ld.d	$a1, $s2, -8
 	ld.bu	$a2, $a1, 9
 	andi	$a2, $a2, 3
-	beqz	$a2, .LBB14_34
-# %bb.37:                               #   in Loop: Header=BB14_35 Depth=1
+	beqz	$a2, .LBB14_35
+# %bb.38:                               #   in Loop: Header=BB14_36 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 11
-	b	.LBB14_34
-.LBB14_38:
+	b	.LBB14_35
+.LBB14_39:
 	ld.d	$a1, $fp, 104
 	ld.d	$a0, $fp, 64
 	st.d	$a1, $s0, 56
-	beqz	$a0, .LBB14_40
-# %bb.39:
+	beqz	$a0, .LBB14_41
+# %bb.40:
 	ld.bu	$a1, $a0, 9
 	andi	$a1, $a1, 252
 	st.b	$a1, $a0, 9
-.LBB14_40:
+.LBB14_41:
 	ld.w	$a0, $fp, 76
-	blez	$a0, .LBB14_46
-# %bb.41:                               # %.lr.ph.i56
+	blez	$a0, .LBB14_47
+# %bb.42:                               # %.lr.ph.i56
 	move	$s1, $zero
 	move	$s2, $zero
 	ori	$s3, $zero, 4
-	b	.LBB14_43
+	b	.LBB14_44
 	.p2align	4, , 16
-.LBB14_42:                              #   in Loop: Header=BB14_43 Depth=1
+.LBB14_43:                              #   in Loop: Header=BB14_44 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 16
-	bge	$s2, $a0, .LBB14_46
-.LBB14_43:                              # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB14_47
+.LBB14_44:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 16
 	add.d	$a1, $a1, $s1
 	ld.w	$a2, $a1, 8
-	blt	$a2, $s3, .LBB14_42
-# %bb.44:                               #   in Loop: Header=BB14_43 Depth=1
+	blt	$a2, $s3, .LBB14_43
+# %bb.45:                               #   in Loop: Header=BB14_44 Depth=1
 	ld.d	$a1, $a1, 0
 	ld.bu	$a2, $a1, 9
 	andi	$a2, $a2, 3
-	beqz	$a2, .LBB14_42
-# %bb.45:                               #   in Loop: Header=BB14_43 Depth=1
+	beqz	$a2, .LBB14_43
+# %bb.46:                               #   in Loop: Header=BB14_44 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 76
-	b	.LBB14_42
-.LBB14_46:                              # %.preheader45.i
+	b	.LBB14_43
+.LBB14_47:                              # %.preheader45.i
 	ld.w	$a0, $fp, 72
-	blez	$a0, .LBB14_51
-# %bb.47:                               # %.lr.ph48.i
+	blez	$a0, .LBB14_52
+# %bb.48:                               # %.lr.ph48.i
 	move	$a1, $zero
 	move	$a2, $zero
-	b	.LBB14_49
+	b	.LBB14_50
 	.p2align	4, , 16
-.LBB14_48:                              #   in Loop: Header=BB14_49 Depth=1
+.LBB14_49:                              #   in Loop: Header=BB14_50 Depth=1
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 8
-	bge	$a2, $a0, .LBB14_51
-.LBB14_49:                              # =>This Inner Loop Header: Depth=1
+	bge	$a2, $a0, .LBB14_52
+.LBB14_50:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $fp, 56
 	ldx.d	$a3, $a3, $a1
-	beqz	$a3, .LBB14_48
-# %bb.50:                               #   in Loop: Header=BB14_49 Depth=1
+	beqz	$a3, .LBB14_49
+# %bb.51:                               #   in Loop: Header=BB14_50 Depth=1
 	ld.bu	$a0, $a3, 9
 	andi	$a0, $a0, 252
 	st.b	$a0, $a3, 9
 	ld.w	$a0, $fp, 72
-	b	.LBB14_48
-.LBB14_51:                              # %.preheader44.i
+	b	.LBB14_49
+.LBB14_52:                              # %.preheader44.i
 	ld.w	$a0, $fp, 88
-	blez	$a0, .LBB14_57
-# %bb.52:                               # %.lr.ph50.i
+	blez	$a0, .LBB14_58
+# %bb.53:                               # %.lr.ph50.i
 	move	$s1, $zero
 	move	$s2, $zero
-	b	.LBB14_54
+	b	.LBB14_55
 	.p2align	4, , 16
-.LBB14_53:                              #   in Loop: Header=BB14_54 Depth=1
+.LBB14_54:                              #   in Loop: Header=BB14_55 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB14_57
-.LBB14_54:                              # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB14_58
+.LBB14_55:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 32
 	ldx.d	$a1, $a1, $s1
-	beqz	$a1, .LBB14_53
-# %bb.55:                               #   in Loop: Header=BB14_54 Depth=1
+	beqz	$a1, .LBB14_54
+# %bb.56:                               #   in Loop: Header=BB14_55 Depth=1
 	ld.bu	$a2, $a1, 9
 	andi	$a2, $a2, 3
-	beqz	$a2, .LBB14_53
-# %bb.56:                               #   in Loop: Header=BB14_54 Depth=1
+	beqz	$a2, .LBB14_54
+# %bb.57:                               #   in Loop: Header=BB14_55 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 88
-	b	.LBB14_53
-.LBB14_57:                              # %.preheader.i54
+	b	.LBB14_54
+.LBB14_58:                              # %.preheader.i54
 	ld.w	$a1, $fp, 92
-	blez	$a1, .LBB14_69
-# %bb.58:                               # %.lr.ph52.i
+	blez	$a1, .LBB14_70
+# %bb.59:                               # %.lr.ph52.i
 	move	$a0, $zero
 	move	$a2, $zero
-	b	.LBB14_60
+	b	.LBB14_61
 	.p2align	4, , 16
-.LBB14_59:                              #   in Loop: Header=BB14_60 Depth=1
+.LBB14_60:                              #   in Loop: Header=BB14_61 Depth=1
 	addi.d	$a2, $a2, 1
 	addi.d	$a0, $a0, 16
-	bge	$a2, $a1, .LBB14_68
-.LBB14_60:                              # =>This Inner Loop Header: Depth=1
+	bge	$a2, $a1, .LBB14_69
+.LBB14_61:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $fp, 48
 	ldx.d	$a3, $a3, $a0
-	beqz	$a3, .LBB14_59
-# %bb.61:                               #   in Loop: Header=BB14_60 Depth=1
+	beqz	$a3, .LBB14_60
+# %bb.62:                               #   in Loop: Header=BB14_61 Depth=1
 	ld.bu	$a1, $a3, 9
 	andi	$a1, $a1, 252
 	st.b	$a1, $a3, 9
 	ld.w	$a1, $fp, 92
-	b	.LBB14_59
-.LBB14_62:
+	b	.LBB14_60
+.LBB14_63:
 	move	$s1, $zero
 	ld.w	$s2, $fp, 56
-	beqz	$s2, .LBB14_96
-.LBB14_63:                              # %.lr.ph.i
+	beqz	$s2, .LBB14_99
+.LBB14_64:                              # %.lr.ph.i
 	slli.d	$s3, $s2, 4
 	ori	$s4, $zero, 4
-	b	.LBB14_65
+	b	.LBB14_66
 	.p2align	4, , 16
-.LBB14_64:                              #   in Loop: Header=BB14_65 Depth=1
+.LBB14_65:                              #   in Loop: Header=BB14_66 Depth=1
 	addi.d	$s2, $s2, -1
 	addi.d	$s3, $s3, -16
-	beqz	$s2, .LBB14_96
-.LBB14_65:                              # =>This Inner Loop Header: Depth=1
+	beqz	$s2, .LBB14_99
+.LBB14_66:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 24
 	add.d	$a0, $a0, $s3
 	ld.w	$a1, $a0, -8
-	blt	$a1, $s4, .LBB14_64
-# %bb.66:                               #   in Loop: Header=BB14_65 Depth=1
+	blt	$a1, $s4, .LBB14_65
+# %bb.67:                               #   in Loop: Header=BB14_66 Depth=1
 	ld.d	$a1, $a0, -16
 	ld.bu	$a0, $a1, 9
 	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_64
-# %bb.67:                               #   in Loop: Header=BB14_65 Depth=1
+	beqz	$a0, .LBB14_65
+# %bb.68:                               #   in Loop: Header=BB14_66 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
-	b	.LBB14_64
-.LBB14_68:                              # %traverseproto.exit.loopexit
+	b	.LBB14_65
+.LBB14_69:                              # %traverseproto.exit.loopexit
 	ld.w	$a0, $fp, 88
-.LBB14_69:                              # %traverseproto.exit
+.LBB14_70:                              # %traverseproto.exit
 	ld.w	$a2, $fp, 80
 	ld.w	$a3, $fp, 76
 	ld.w	$a4, $fp, 72
@@ -1722,42 +1737,42 @@ propagatemark:                          # @propagatemark
 	alsl.d	$a1, $a1, $a2, 4
 	alsl.d	$a0, $a0, $a1, 3
 	addi.d	$a0, $a0, 120
-	b	.LBB14_121
-.LBB14_70:
+	b	.LBB14_90
+.LBB14_71:
 	ld.d	$a1, $fp, 32
 	ld.bu	$a0, $a1, 9
 	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_72
-# %bb.71:
+	beqz	$a0, .LBB14_73
+# %bb.72:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
-.LBB14_72:
+.LBB14_73:
 	ld.bu	$a0, $fp, 11
-	beqz	$a0, .LBB14_77
-# %bb.73:                               # %.lr.ph32.i
+	beqz	$a0, .LBB14_78
+# %bb.74:                               # %.lr.ph32.i
 	move	$s1, $zero
 	addi.d	$s2, $fp, 40
-	b	.LBB14_75
+	b	.LBB14_76
 	.p2align	4, , 16
-.LBB14_74:                              #   in Loop: Header=BB14_75 Depth=1
+.LBB14_75:                              #   in Loop: Header=BB14_76 Depth=1
 	addi.d	$s1, $s1, 1
 	addi.d	$s2, $s2, 8
-	bgeu	$s1, $a0, .LBB14_78
-.LBB14_75:                              # =>This Inner Loop Header: Depth=1
+	bgeu	$s1, $a0, .LBB14_79
+.LBB14_76:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s2, 0
 	ld.bu	$a2, $a1, 9
 	andi	$a2, $a2, 3
-	beqz	$a2, .LBB14_74
-# %bb.76:                               #   in Loop: Header=BB14_75 Depth=1
+	beqz	$a2, .LBB14_75
+# %bb.77:                               #   in Loop: Header=BB14_76 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 11
-	b	.LBB14_74
-.LBB14_77:
+	b	.LBB14_75
+.LBB14_78:
 	move	$a0, $zero
-.LBB14_78:                              # %traverseclosure.exit
+.LBB14_79:                              # %traverseclosure.exit
 	ld.bu	$a1, $fp, 10
 	sltui	$a1, $a1, 1
 	ori	$a2, $zero, 4
@@ -1766,43 +1781,26 @@ propagatemark:                          # @propagatemark
 	addi.d	$a0, $a0, 40
 	bstrpick.d	$a0, $a0, 15, 3
 	slli.d	$a0, $a0, 3
-	b	.LBB14_121
-.LBB14_79:                              # %vector.ph
-	srli.d	$a0, $a0, 4
-	addi.d	$a1, $a0, 1
-	bstrpick.d	$a0, $a1, 60, 1
-	slli.d	$a2, $a0, 1
-	slli.d	$a0, $a0, 5
-	add.d	$a0, $s2, $a0
-	addi.d	$a3, $s2, 24
-	move	$a4, $a2
+	b	.LBB14_90
+.LBB14_80:
+	move	$a0, $s2
 	.p2align	4, , 16
-.LBB14_80:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$zero, $a3, -16
-	st.w	$zero, $a3, 0
-	addi.d	$a4, $a4, -2
-	addi.d	$a3, $a3, 32
-	bnez	$a4, .LBB14_80
-# %bb.81:                               # %middle.block
-	beq	$a1, $a2, .LBB14_83
-	.p2align	4, , 16
-.LBB14_82:                              # %.lr.ph42.i
+.LBB14_81:                              # %.lr.ph42.i
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a0, 8
 	addi.d	$a0, $a0, 16
-	bgeu	$s1, $a0, .LBB14_82
-.LBB14_83:                              # %._crit_edge43.i
+	bgeu	$s1, $a0, .LBB14_81
+.LBB14_82:                              # %._crit_edge43.i
 	ld.w	$a0, $fp, 92
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 3616
-	blt	$a1, $a0, .LBB14_90
-# %bb.84:
+	blt	$a1, $a0, .LBB14_89
+# %bb.83:
 	ld.d	$a1, $fp, 64
 	ori	$a2, $zero, 17
 	sub.d	$s0, $s1, $a1
-	blt	$a0, $a2, .LBB14_87
-# %bb.85:
+	blt	$a0, $a2, .LBB14_86
+# %bb.84:
 	ld.d	$a1, $fp, 40
 	ld.d	$a2, $fp, 80
 	sub.d	$a1, $a1, $a2
@@ -1810,178 +1808,36 @@ propagatemark:                          # @propagatemark
 	lu12i.w	$a2, 209715
 	ori	$a2, $a2, 820
 	mul.w	$a1, $a1, $a2
-	bge	$a1, $a0, .LBB14_87
-# %bb.86:
+	bge	$a1, $a0, .LBB14_86
+# %bb.85:
 	bstrpick.d	$a1, $a0, 31, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaD_reallocCI)
 	jirl	$ra, $ra, 0
-.LBB14_87:
+.LBB14_86:
 	srli.d	$a1, $s0, 2
 	addi.w	$a2, $zero, -4
 	ld.w	$a0, $fp, 88
 	lu32i.d	$a2, 0
 	and	$a1, $a1, $a2
 	addi.w	$a1, $a1, 0
-	bge	$a1, $a0, .LBB14_90
-# %bb.88:
+	bge	$a1, $a0, .LBB14_89
+# %bb.87:
 	ori	$a1, $zero, 91
-	blt	$a0, $a1, .LBB14_90
-# %bb.89:
+	blt	$a0, $a1, .LBB14_89
+# %bb.88:
 	bstrpick.d	$a1, $a0, 31, 1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaD_reallocstack)
 	jirl	$ra, $ra, 0
-.LBB14_90:                              # %traversestack.exit
+.LBB14_89:                              # %traversestack.exit
 	ld.w	$a0, $fp, 92
 	ld.w	$a1, $fp, 88
 	slli.d	$a2, $a0, 5
 	alsl.d	$a0, $a0, $a2, 3
 	alsl.d	$a0, $a1, $a0, 4
 	addi.d	$a0, $a0, 184
-	b	.LBB14_121
-.LBB14_91:                              # %removeentry.exit.us.us.i
-                                        #   in Loop: Header=BB14_92 Depth=1
-	addi.d	$a0, $a5, -1
-	addi.d	$a1, $a1, -40
-	ori	$a4, $zero, 1
-	ori	$a6, $zero, 1
-	beqz	$a5, .LBB14_118
-.LBB14_92:                              # %.split.us.split.us.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $fp, 32
-	add.d	$a4, $a4, $a1
-	ld.w	$a6, $a4, 8
-	move	$a5, $a0
-	bnez	$a6, .LBB14_91
-# %bb.93:                               #   in Loop: Header=BB14_92 Depth=1
-	ld.w	$a0, $a4, 24
-	blt	$a0, $a2, .LBB14_91
-# %bb.94:                               #   in Loop: Header=BB14_92 Depth=1
-	st.w	$a3, $a4, 24
-	b	.LBB14_91
-.LBB14_95:
-	sltu	$s1, $zero, $s1
-	ld.w	$s2, $fp, 56
-	bnez	$s2, .LBB14_63
-.LBB14_96:                              # %.loopexit.i
-	ld.bu	$a0, $fp, 11
-	addi.d	$a1, $zero, -1
-	sll.w	$a0, $a1, $a0
-	nor	$a0, $a0, $zero
-	bstrpick.d	$a0, $a0, 31, 0
-	slli.d	$a1, $a0, 5
-	beqz	$s1, .LBB14_105
-# %bb.97:                               # %.split.us.split.i.preheader
-	alsl.d	$s1, $a0, $a1, 3
-	ori	$s2, $zero, 4
-	ori	$s3, $zero, 11
-	b	.LBB14_99
-	.p2align	4, , 16
-.LBB14_98:                              # %removeentry.exit.us.i
-                                        #   in Loop: Header=BB14_99 Depth=1
-	addi.d	$a0, $s4, -1
-	addi.d	$s1, $s1, -40
-	beqz	$s4, .LBB14_116
-.LBB14_99:                              # %.split.us.split.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $fp, 32
-	add.d	$a1, $a1, $s1
-	ld.w	$a2, $a1, 8
-	move	$s4, $a0
-	beqz	$a2, .LBB14_103
-# %bb.100:                              #   in Loop: Header=BB14_99 Depth=1
-	blt	$a2, $s2, .LBB14_98
-# %bb.101:                              #   in Loop: Header=BB14_99 Depth=1
-	ld.d	$a1, $a1, 0
-	ld.bu	$a0, $a1, 9
-	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_98
-# %bb.102:                              #   in Loop: Header=BB14_99 Depth=1
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(reallymarkobject)
-	jirl	$ra, $ra, 0
-	b	.LBB14_98
-	.p2align	4, , 16
-.LBB14_103:                             #   in Loop: Header=BB14_99 Depth=1
-	ld.w	$a0, $a1, 24
-	blt	$a0, $s2, .LBB14_98
-# %bb.104:                              #   in Loop: Header=BB14_99 Depth=1
-	st.w	$s3, $a1, 24
-	b	.LBB14_98
-.LBB14_105:                             # %.split.split.i.preheader
-	alsl.d	$s1, $a0, $a1, 3
-	ori	$s2, $zero, 4
-	ori	$s3, $zero, 11
-	b	.LBB14_107
-	.p2align	4, , 16
-.LBB14_106:                             # %removeentry.exit.i
-                                        #   in Loop: Header=BB14_107 Depth=1
-	addi.d	$a0, $s4, -1
-	addi.d	$s1, $s1, -40
-	beqz	$s4, .LBB14_117
-.LBB14_107:                             # %.split.split.i
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a1, $fp, 32
-	add.d	$s5, $a1, $s1
-	ld.w	$a2, $s5, 8
-	ld.w	$a1, $s5, 24
-	move	$s4, $a0
-	beqz	$a2, .LBB14_114
-# %bb.108:                              #   in Loop: Header=BB14_107 Depth=1
-	blt	$a1, $s2, .LBB14_111
-# %bb.109:                              #   in Loop: Header=BB14_107 Depth=1
-	ld.d	$a1, $s5, 16
-	ld.bu	$a0, $a1, 9
-	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_111
-# %bb.110:                              #   in Loop: Header=BB14_107 Depth=1
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(reallymarkobject)
-	jirl	$ra, $ra, 0
-	ld.w	$a2, $s5, 8
-.LBB14_111:                             #   in Loop: Header=BB14_107 Depth=1
-	blt	$a2, $s2, .LBB14_106
-# %bb.112:                              #   in Loop: Header=BB14_107 Depth=1
-	ld.d	$a1, $s5, 0
-	ld.bu	$a0, $a1, 9
-	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_106
-# %bb.113:                              #   in Loop: Header=BB14_107 Depth=1
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(reallymarkobject)
-	jirl	$ra, $ra, 0
-	b	.LBB14_106
-	.p2align	4, , 16
-.LBB14_114:                             #   in Loop: Header=BB14_107 Depth=1
-	blt	$a1, $s2, .LBB14_106
-# %bb.115:                              #   in Loop: Header=BB14_107 Depth=1
-	st.w	$s3, $s5, 24
-	b	.LBB14_106
-.LBB14_116:
-	move	$a6, $zero
-	ori	$a4, $zero, 1
-	b	.LBB14_118
-.LBB14_117:
-	move	$a4, $zero
-	move	$a6, $zero
-.LBB14_118:                             # %traversetable.exit
-	or	$a0, $a6, $a4
-	beqz	$a0, .LBB14_120
-.LBB14_119:                             # %traversetable.exit.thread
-	ld.bu	$a0, $fp, 9
-	andi	$a0, $a0, 251
-	st.b	$a0, $fp, 9
-.LBB14_120:
-	ld.bu	$a0, $fp, 11
-	ld.w	$a1, $fp, 56
-	ori	$a2, $zero, 1
-	sll.w	$a0, $a2, $a0
-	slli.d	$a2, $a0, 5
-	alsl.d	$a0, $a0, $a2, 3
-	alsl.d	$a0, $a1, $a0, 4
-	addi.d	$a0, $a0, 64
-.LBB14_121:
+.LBB14_90:
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
@@ -1992,53 +1848,182 @@ propagatemark:                          # @propagatemark
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 80
 	ret
-.LBB14_122:                             # %.split.split.us.i.preheader
+.LBB14_91:
+	beqz	$a0, .LBB14_98
+# %bb.92:                               # %.loopexit.thread.i
+	ld.bu	$a0, $fp, 11
+	addi.d	$a1, $zero, -1
+	sll.w	$a0, $a1, $a0
+	nor	$a0, $a0, $zero
+	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a1, $a0, 5
+	beqz	$s1, .LBB14_119
+# %bb.93:                               # %.split.us.split.us.i.preheader
+	alsl.d	$a1, $a0, $a1, 3
+	ori	$a2, $zero, 4
+	ori	$a3, $zero, 11
+	b	.LBB14_95
+.LBB14_94:                              # %removeentry.exit.us.us.i
+                                        #   in Loop: Header=BB14_95 Depth=1
+	addi.d	$a0, $a4, -1
+	addi.d	$a1, $a1, -40
+	beqz	$a4, .LBB14_11
+.LBB14_95:                              # %.split.us.split.us.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a4, $fp, 32
+	add.d	$a5, $a4, $a1
+	ld.w	$a6, $a5, 8
+	move	$a4, $a0
+	bnez	$a6, .LBB14_94
+# %bb.96:                               #   in Loop: Header=BB14_95 Depth=1
+	ld.w	$a0, $a5, 24
+	blt	$a0, $a2, .LBB14_94
+# %bb.97:                               #   in Loop: Header=BB14_95 Depth=1
+	st.w	$a3, $a5, 24
+	b	.LBB14_94
+.LBB14_98:
+	sltu	$s1, $zero, $s1
+	ld.w	$s2, $fp, 56
+	bnez	$s2, .LBB14_64
+.LBB14_99:                              # %.loopexit.i
+	ld.bu	$a0, $fp, 11
+	addi.d	$a1, $zero, -1
+	sll.w	$a0, $a1, $a0
+	nor	$a0, $a0, $zero
+	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a1, $a0, 5
+	beqz	$s1, .LBB14_108
+# %bb.100:                              # %.split.us.split.i.preheader
 	alsl.d	$s1, $a0, $a1, 3
 	ori	$s2, $zero, 4
 	ori	$s3, $zero, 11
-	b	.LBB14_124
-.LBB14_123:                             # %removeentry.exit.us88.i
-                                        #   in Loop: Header=BB14_124 Depth=1
-	move	$a4, $zero
+	b	.LBB14_102
+	.p2align	4, , 16
+.LBB14_101:                             # %removeentry.exit.us.i
+                                        #   in Loop: Header=BB14_102 Depth=1
 	addi.d	$a0, $s4, -1
 	addi.d	$s1, $s1, -40
-	ori	$a6, $zero, 1
-	beqz	$s4, .LBB14_118
-.LBB14_124:                             # %.split.split.us.i
+	beqz	$s4, .LBB14_11
+.LBB14_102:                             # %.split.us.split.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a1, $fp, 32
+	add.d	$a1, $a1, $s1
+	ld.w	$a2, $a1, 8
+	move	$s4, $a0
+	beqz	$a2, .LBB14_106
+# %bb.103:                              #   in Loop: Header=BB14_102 Depth=1
+	blt	$a2, $s2, .LBB14_101
+# %bb.104:                              #   in Loop: Header=BB14_102 Depth=1
+	ld.d	$a1, $a1, 0
+	ld.bu	$a0, $a1, 9
+	andi	$a0, $a0, 3
+	beqz	$a0, .LBB14_101
+# %bb.105:                              #   in Loop: Header=BB14_102 Depth=1
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(reallymarkobject)
+	jirl	$ra, $ra, 0
+	b	.LBB14_101
+	.p2align	4, , 16
+.LBB14_106:                             #   in Loop: Header=BB14_102 Depth=1
+	ld.w	$a0, $a1, 24
+	blt	$a0, $s2, .LBB14_101
+# %bb.107:                              #   in Loop: Header=BB14_102 Depth=1
+	st.w	$s3, $a1, 24
+	b	.LBB14_101
+.LBB14_108:                             # %.split.split.i.preheader
+	alsl.d	$s1, $a0, $a1, 3
+	ori	$s2, $zero, 4
+	ori	$s3, $zero, 11
+	b	.LBB14_110
+	.p2align	4, , 16
+.LBB14_109:                             # %removeentry.exit.i
+                                        #   in Loop: Header=BB14_110 Depth=1
+	addi.d	$a0, $s4, -1
+	addi.d	$s1, $s1, -40
+	beqz	$s4, .LBB14_12
+.LBB14_110:                             # %.split.split.i
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a1, $fp, 32
+	add.d	$s5, $a1, $s1
+	ld.w	$a2, $s5, 8
+	ld.w	$a1, $s5, 24
+	move	$s4, $a0
+	beqz	$a2, .LBB14_117
+# %bb.111:                              #   in Loop: Header=BB14_110 Depth=1
+	blt	$a1, $s2, .LBB14_114
+# %bb.112:                              #   in Loop: Header=BB14_110 Depth=1
+	ld.d	$a1, $s5, 16
+	ld.bu	$a0, $a1, 9
+	andi	$a0, $a0, 3
+	beqz	$a0, .LBB14_114
+# %bb.113:                              #   in Loop: Header=BB14_110 Depth=1
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(reallymarkobject)
+	jirl	$ra, $ra, 0
+	ld.w	$a2, $s5, 8
+.LBB14_114:                             #   in Loop: Header=BB14_110 Depth=1
+	blt	$a2, $s2, .LBB14_109
+# %bb.115:                              #   in Loop: Header=BB14_110 Depth=1
+	ld.d	$a1, $s5, 0
+	ld.bu	$a0, $a1, 9
+	andi	$a0, $a0, 3
+	beqz	$a0, .LBB14_109
+# %bb.116:                              #   in Loop: Header=BB14_110 Depth=1
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(reallymarkobject)
+	jirl	$ra, $ra, 0
+	b	.LBB14_109
+	.p2align	4, , 16
+.LBB14_117:                             #   in Loop: Header=BB14_110 Depth=1
+	blt	$a1, $s2, .LBB14_109
+# %bb.118:                              #   in Loop: Header=BB14_110 Depth=1
+	st.w	$s3, $s5, 24
+	b	.LBB14_109
+.LBB14_119:                             # %.split.split.us.i.preheader
+	alsl.d	$s1, $a0, $a1, 3
+	ori	$s2, $zero, 4
+	ori	$s3, $zero, 11
+	b	.LBB14_121
+.LBB14_120:                             # %removeentry.exit.us88.i
+                                        #   in Loop: Header=BB14_121 Depth=1
+	addi.d	$a0, $s4, -1
+	addi.d	$s1, $s1, -40
+	beqz	$s4, .LBB14_11
+.LBB14_121:                             # %.split.split.us.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 32
 	add.d	$a1, $a1, $s1
 	ld.w	$a3, $a1, 8
 	ld.w	$a2, $a1, 24
 	move	$s4, $a0
-	beqz	$a3, .LBB14_128
-# %bb.125:                              #   in Loop: Header=BB14_124 Depth=1
-	blt	$a2, $s2, .LBB14_123
-# %bb.126:                              #   in Loop: Header=BB14_124 Depth=1
+	beqz	$a3, .LBB14_125
+# %bb.122:                              #   in Loop: Header=BB14_121 Depth=1
+	blt	$a2, $s2, .LBB14_120
+# %bb.123:                              #   in Loop: Header=BB14_121 Depth=1
 	ld.d	$a1, $a1, 16
 	ld.bu	$a0, $a1, 9
 	andi	$a0, $a0, 3
-	beqz	$a0, .LBB14_123
-# %bb.127:                              #   in Loop: Header=BB14_124 Depth=1
+	beqz	$a0, .LBB14_120
+# %bb.124:                              #   in Loop: Header=BB14_121 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(reallymarkobject)
 	jirl	$ra, $ra, 0
-	b	.LBB14_123
-.LBB14_128:                             #   in Loop: Header=BB14_124 Depth=1
-	blt	$a2, $s2, .LBB14_123
-# %bb.129:                              #   in Loop: Header=BB14_124 Depth=1
+	b	.LBB14_120
+.LBB14_125:                             #   in Loop: Header=BB14_121 Depth=1
+	blt	$a2, $s2, .LBB14_120
+# %bb.126:                              #   in Loop: Header=BB14_121 Depth=1
 	st.w	$s3, $a1, 24
-	b	.LBB14_123
+	b	.LBB14_120
 .Lfunc_end14:
 	.size	propagatemark, .Lfunc_end14-propagatemark
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI14_0:
 	.word	.LBB14_2-.LJTI14_0
-	.word	.LBB14_29-.LJTI14_0
-	.word	.LBB14_121-.LJTI14_0
-	.word	.LBB14_14-.LJTI14_0
-	.word	.LBB14_38-.LJTI14_0
+	.word	.LBB14_30-.LJTI14_0
+	.word	.LBB14_90-.LJTI14_0
+	.word	.LBB14_13-.LJTI14_0
+	.word	.LBB14_39-.LJTI14_0
                                         # -- End function
 	.text
 	.p2align	5                               # -- Begin function markmt

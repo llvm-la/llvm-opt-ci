@@ -13891,15 +13891,15 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 8
 	pcalau12i	$a1, %pc_hi20(_ZL17dollarvarsallowed)
-	addi.d	$s4, $a1, %pc_lo12(_ZL17dollarvarsallowed)
-	ld.d	$a2, $s4, 64
-	ld.d	$a1, $s4, 48
+	addi.d	$s3, $a1, %pc_lo12(_ZL17dollarvarsallowed)
+	ld.d	$a2, $s3, 64
+	ld.d	$a1, $s3, 48
 	addi.d	$a2, $a2, -8
 	beq	$a1, $a2, .LBB34_188
 # %bb.187:
 	st.d	$a0, $a1, 0
 	addi.d	$a0, $a1, 8
-	st.d	$a0, $s4, 48
+	st.d	$a0, $s3, 48
 	b	.LBB34_189
 .LBB34_188:
 	pcalau12i	$a0, %pc_hi20(_ZL17dollarvarsallowed)
@@ -13909,15 +13909,15 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	jirl	$ra, $ra, 0
 .LBB34_189:                             # %_ZNSt5stackIPN2kc20impl_dollarvarstatusESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit
 	pcalau12i	$a0, %pc_hi20(_ZL11phylumstack)
-	addi.d	$s3, $a0, %pc_lo12(_ZL11phylumstack)
-	ld.d	$a1, $s3, 64
-	ld.d	$a0, $s3, 48
+	addi.d	$s4, $a0, %pc_lo12(_ZL11phylumstack)
+	ld.d	$a1, $s4, 64
+	ld.d	$a0, $s4, 48
 	addi.d	$a1, $a1, -8
 	beq	$a0, $a1, .LBB34_191
 # %bb.190:
 	st.d	$s5, $a0, 0
 	addi.d	$a0, $a0, 8
-	st.d	$a0, $s3, 48
+	st.d	$a0, $s4, 48
 	b	.LBB34_192
 .LBB34_191:
 	pcalau12i	$a0, %pc_hi20(_ZL11phylumstack)
@@ -13962,35 +13962,14 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	st.d	$a1, $s2, 64
 	addi.d	$a1, $a0, 504
 .LBB34_197:                             # %_ZNSt5stackIPN2kc14impl_operatorsESt5dequeIS2_SaIS2_EEE3popEv.exit
-	ld.d	$a2, $s4, 48
-	ld.d	$a0, $s4, 56
+	ld.d	$a2, $s3, 48
+	ld.d	$a0, $s3, 56
 	st.d	$a1, $s2, 48
 	beq	$a2, $a0, .LBB34_199
 # %bb.198:
 	addi.d	$a1, $a2, -8
 	b	.LBB34_200
 .LBB34_199:
-	ori	$a1, $zero, 512
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 72
-	addi.d	$a1, $a0, -8
-	st.d	$a1, $s4, 72
-	ld.d	$a0, $a0, -8
-	st.d	$a0, $s4, 56
-	addi.d	$a1, $a0, 512
-	st.d	$a1, $s4, 64
-	addi.d	$a1, $a0, 504
-.LBB34_200:                             # %_ZNSt5stackIPN2kc20impl_dollarvarstatusESt5dequeIS2_SaIS2_EEE3popEv.exit
-	ld.d	$a2, $s3, 48
-	ld.d	$a0, $s3, 56
-	st.d	$a1, $s4, 48
-	beq	$a2, $a0, .LBB34_202
-# %bb.201:
-	addi.d	$a0, $a2, -8
-	st.d	$a0, $s3, 48
-	b	.LBB34_248
-.LBB34_202:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -14001,8 +13980,29 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration10do_unparseERNS_21printer_funct
 	st.d	$a0, $s3, 56
 	addi.d	$a1, $a0, 512
 	st.d	$a1, $s3, 64
+	addi.d	$a1, $a0, 504
+.LBB34_200:                             # %_ZNSt5stackIPN2kc20impl_dollarvarstatusESt5dequeIS2_SaIS2_EEE3popEv.exit
+	ld.d	$a2, $s4, 48
+	ld.d	$a0, $s4, 56
+	st.d	$a1, $s3, 48
+	beq	$a2, $a0, .LBB34_202
+# %bb.201:
+	addi.d	$a0, $a2, -8
+	st.d	$a0, $s4, 48
+	b	.LBB34_248
+.LBB34_202:
+	ori	$a1, $zero, 512
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s4, 72
+	addi.d	$a1, $a0, -8
+	st.d	$a1, $s4, 72
+	ld.d	$a0, $a0, -8
+	st.d	$a0, $s4, 56
+	addi.d	$a1, $a0, 512
+	st.d	$a1, $s4, 64
 	addi.d	$a0, $a0, 504
-	st.d	$a0, $s3, 48
+	st.d	$a0, $s4, 48
 	b	.LBB34_248
 .LBB34_203:
 	ld.d	$a0, $s1, 40
@@ -16754,7 +16754,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 27
 	bne	$a0, $a1, .LBB46_60
-# %bb.14:                               # %.thread413
+# %bb.14:                               # %.thread412
 	ld.d	$a0, $s1, 8
 	ld.d	$a1, $s0, 0
 	ld.d	$s2, $a0, 40
@@ -17076,11 +17076,11 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1281)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1281)
-.LBB46_27:                              # %.thread411
+.LBB46_27:                              # %.thread410
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-.LBB46_28:                              # %.thread411
+.LBB46_28:                              # %.thread410
 	st.w	$s5, $s4, %pc_lo12(_ZN12_GLOBAL__N_113gl_no_of_argsE)
 	st.d	$s1, $s6, %pc_lo12(_ZN12_GLOBAL__N_17gl_argsE)
 	st.d	$s2, $s7, %pc_lo12(_ZN12_GLOBAL__N_19gl_identsE)
@@ -17092,7 +17092,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	jirl	$ra, $a1, 0
 	ori	$a1, $zero, 27
 	bne	$a0, $a1, .LBB46_60
-# %bb.30:                               # %.thread432
+# %bb.30:                               # %.thread431
 	ld.d	$a0, $s1, 16
 	ld.d	$a1, $s1, 8
 	ld.d	$a2, $a0, 0
@@ -17185,7 +17185,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	move	$a0, $s0
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
-.LBB46_36:                              # %.thread409
+.LBB46_36:                              # %.thread408
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.361)
@@ -17447,9 +17447,9 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	ld.d	$a3, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1261)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1261)
-.LBB46_55:                              # %.thread409
+.LBB46_55:                              # %.thread408
 	move	$a0, $s0
-.LBB46_56:                              # %.thread409
+.LBB46_56:                              # %.thread408
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
@@ -17586,7 +17586,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN2kc20impl_abstract_phylum4freeEb)
 	jirl	$ra, $ra, 0
-.LBB46_63:                              # %.thread415
+.LBB46_63:                              # %.thread414
 	st.d	$zero, $s8, %pc_lo12(_ZN12_GLOBAL__N_17gl_argsE)
 	st.d	$zero, $s4, %pc_lo12(_ZN12_GLOBAL__N_111gl_operatorE)
 	ori	$a0, $zero, 1
@@ -17824,7 +17824,7 @@ _ZN2kc17impl_alternatives10do_unparseERNS_21printer_functor_classERNS_11uview_cl
 	pcalau12i	$a0, %pc_hi20(.L.str.1288)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1288)
 	move	$a0, $s0
-.LBB46_70:                              # %.thread430
+.LBB46_70:                              # %.thread429
 	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s0, 0
@@ -26950,7 +26950,7 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	beq	$a3, $a4, .LBB104_9
 # %bb.1:
 	ori	$a4, $zero, 10
-	beq	$a3, $a4, .LBB104_57
+	beq	$a3, $a4, .LBB104_76
 # %bb.2:
 	ori	$a4, $zero, 8
 	bne	$a3, $a4, .LBB104_15
@@ -26962,7 +26962,7 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2kc18f_useoccuroperatorEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB104_57
+	beqz	$a0, .LBB104_76
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(_ZL11phylumstack)
 	addi.d	$s1, $a0, %pc_lo12(_ZL11phylumstack)
@@ -26998,7 +26998,7 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN2kc18f_useoccuroperatorEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB104_57
+	beqz	$a0, .LBB104_76
 # %bb.10:
 	pcalau12i	$a0, %pc_hi20(_ZL11phylumstack)
 	addi.d	$s4, $a0, %pc_lo12(_ZL11phylumstack)
@@ -27065,18 +27065,18 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	ld.d	$a2, $s2, 56
 	move	$s1, $a0
 	st.d	$a0, $sp, 24
-	beq	$a3, $a2, .LBB104_58
+	beq	$a3, $a2, .LBB104_57
 # %bb.21:
 	ld.d	$a1, $s2, 64
 	addi.d	$a0, $a3, -8
 	addi.d	$a1, $a1, -8
 	st.d	$a0, $s2, 48
-	beq	$a0, $a1, .LBB104_59
+	beq	$a0, $a1, .LBB104_58
 .LBB104_22:
 	st.d	$s1, $a0, 0
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $s2, 48
-	b	.LBB104_60
+	b	.LBB104_59
 .LBB104_23:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -27172,15 +27172,15 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	jirl	$ra, $a1, 0
 	st.d	$a0, $sp, 16
 	pcalau12i	$a1, %pc_hi20(_ZL14argumentsstack)
-	addi.d	$s4, $a1, %pc_lo12(_ZL14argumentsstack)
-	ld.d	$a2, $s4, 64
-	ld.d	$a1, $s4, 48
+	addi.d	$s1, $a1, %pc_lo12(_ZL14argumentsstack)
+	ld.d	$a2, $s1, 64
+	ld.d	$a1, $s1, 48
 	addi.d	$a2, $a2, -8
 	beq	$a1, $a2, .LBB104_36
 # %bb.35:
 	st.d	$a0, $a1, 0
 	addi.d	$a0, $a1, 8
-	st.d	$a0, $s4, 48
+	st.d	$a0, $s1, 48
 	b	.LBB104_37
 .LBB104_36:
 	pcalau12i	$a0, %pc_hi20(_ZL14argumentsstack)
@@ -27190,9 +27190,9 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	jirl	$ra, $ra, 0
 .LBB104_37:                             # %_ZNSt5stackIPN2kc14impl_argumentsESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit38
 	pcalau12i	$a0, %pc_hi20(_ZL13operatorstack)
-	addi.d	$s1, $a0, %pc_lo12(_ZL13operatorstack)
-	ld.d	$a1, $s1, 64
-	ld.d	$a0, $s1, 48
+	addi.d	$s4, $a0, %pc_lo12(_ZL13operatorstack)
+	ld.d	$a1, $s4, 64
+	ld.d	$a0, $s4, 48
 	addi.d	$a3, $a1, -8
 	beq	$a0, $a3, .LBB104_39
 # %bb.38:
@@ -27200,7 +27200,7 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	move	$a2, $s3
 	st.d	$s0, $a0, 0
 	addi.d	$a0, $a0, 8
-	st.d	$a0, $s1, 48
+	st.d	$a0, $s4, 48
 	b	.LBB104_40
 .LBB104_39:
 	pcalau12i	$a0, %pc_hi20(_ZL13operatorstack)
@@ -27215,8 +27215,8 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	ld.d	$a3, $a0, 72
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s4, 48
-	ld.d	$a1, $s4, 56
+	ld.d	$a0, $s1, 48
+	ld.d	$a1, $s1, 56
 	beq	$a0, $a1, .LBB104_45
 # %bb.41:                               # %_ZNSt5stackIPN2kc14impl_argumentsESt5dequeIS2_SaIS2_EEE3topEv.exit41
 	ld.d	$a0, $a0, -8
@@ -27224,20 +27224,20 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB104_46
 .LBB104_42:
-	ld.d	$a1, $s4, 48
-	ld.d	$a0, $s4, 56
+	ld.d	$a1, $s1, 48
+	ld.d	$a0, $s1, 56
 	beq	$a1, $a0, .LBB104_47
 .LBB104_43:
 	addi.d	$a1, $a1, -8
-	ld.d	$a2, $s1, 48
-	ld.d	$a0, $s1, 56
-	st.d	$a1, $s4, 48
+	ld.d	$a2, $s4, 48
+	ld.d	$a0, $s4, 56
+	st.d	$a1, $s1, 48
 	beq	$a2, $a0, .LBB104_48
 .LBB104_44:
 	addi.d	$a0, $a2, -8
 	b	.LBB104_49
 .LBB104_45:
-	ld.d	$a0, $s4, 72
+	ld.d	$a0, $s1, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 512
 	ld.d	$a0, $a0, -8
@@ -27262,26 +27262,10 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8v_reportEPNS_10impl_errorE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s4, 48
-	ld.d	$a0, $s4, 56
+	ld.d	$a1, $s1, 48
+	ld.d	$a0, $s1, 56
 	bne	$a1, $a0, .LBB104_43
 .LBB104_47:
-	ori	$a1, $zero, 512
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $s4, 72
-	addi.d	$a1, $a0, -8
-	st.d	$a1, $s4, 72
-	ld.d	$a0, $a0, -8
-	st.d	$a0, $s4, 56
-	addi.d	$a1, $a0, 512
-	st.d	$a1, $s4, 64
-	addi.d	$a1, $a0, 504
-	ld.d	$a2, $s1, 48
-	ld.d	$a0, $s1, 56
-	st.d	$a1, $s4, 48
-	bne	$a2, $a0, .LBB104_44
-.LBB104_48:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -27292,10 +27276,26 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	st.d	$a0, $s1, 56
 	addi.d	$a1, $a0, 512
 	st.d	$a1, $s1, 64
+	addi.d	$a1, $a0, 504
+	ld.d	$a2, $s4, 48
+	ld.d	$a0, $s4, 56
+	st.d	$a1, $s1, 48
+	bne	$a2, $a0, .LBB104_44
+.LBB104_48:
+	ori	$a1, $zero, 512
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s4, 72
+	addi.d	$a1, $a0, -8
+	st.d	$a1, $s4, 72
+	ld.d	$a0, $a0, -8
+	st.d	$a0, $s4, 56
+	addi.d	$a1, $a0, 512
+	st.d	$a1, $s4, 64
 	addi.d	$a0, $a0, 504
 .LBB104_49:                             # %_ZNSt5stackIPN2kc7impl_IDESt5dequeIS2_SaIS2_EEE3popEv.exit47
-	st.d	$a0, $s1, 48
-	b	.LBB104_57
+	st.d	$a0, $s4, 48
+	b	.LBB104_76
 .LBB104_50:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -27317,7 +27317,7 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	ld.d	$a1, $s1, 48
 	addi.d	$a2, $a2, -8
 	st.d	$a0, $sp, 24
-	beq	$a1, $a2, .LBB104_62
+	beq	$a1, $a2, .LBB104_61
 # %bb.52:
 	st.d	$a0, $a1, 0
 	addi.d	$a1, $a1, 8
@@ -27361,17 +27361,8 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8v_reportEPNS_10impl_errorE)
 	jirl	$ra, $ra, 0
+	b	.LBB104_76
 .LBB104_57:
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
-	ret
-.LBB104_58:
 	ori	$a1, $zero, 512
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -27387,13 +27378,13 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	addi.d	$a1, $a1, -8
 	st.d	$a0, $s2, 48
 	bne	$a0, $a1, .LBB104_22
-.LBB104_59:
+.LBB104_58:
 	pcalau12i	$a0, %pc_hi20(_ZL16outmostoperators)
 	addi.d	$a0, $a0, %pc_lo12(_ZL16outmostoperators)
 	addi.d	$a1, $sp, 24
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc14impl_operatorsESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.LBB104_60:                             # %_ZNSt5stackIPN2kc14impl_operatorsESt5dequeIS2_SaIS2_EEE4pushERKS2_.exit
+.LBB104_59:                             # %_ZNSt5stackIPN2kc14impl_operatorsESt5dequeIS2_SaIS2_EEE4pushERKS2_.exit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN2kc21f_argumentsofoperatorEPNS_7impl_IDE)
 	jirl	$ra, $ra, 0
@@ -27402,17 +27393,17 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	jirl	$ra, $a1, 0
 	st.d	$a0, $sp, 16
 	pcalau12i	$a1, %pc_hi20(_ZL14argumentsstack)
-	addi.d	$s2, $a1, %pc_lo12(_ZL14argumentsstack)
-	ld.d	$a2, $s2, 64
-	ld.d	$a1, $s2, 48
+	addi.d	$s1, $a1, %pc_lo12(_ZL14argumentsstack)
+	ld.d	$a2, $s1, 64
+	ld.d	$a1, $s1, 48
 	addi.d	$a2, $a2, -8
-	beq	$a1, $a2, .LBB104_63
-# %bb.61:
+	beq	$a1, $a2, .LBB104_62
+# %bb.60:
 	st.d	$a0, $a1, 0
 	addi.d	$a0, $a1, 8
-	st.d	$a0, $s2, 48
-	b	.LBB104_64
-.LBB104_62:
+	st.d	$a0, $s1, 48
+	b	.LBB104_63
+.LBB104_61:
 	addi.d	$a1, $sp, 24
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc7impl_IDESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
@@ -27421,66 +27412,68 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	ld.d	$a0, $s1, 56
 	bne	$a1, $a0, .LBB104_17
 	b	.LBB104_53
-.LBB104_63:
+.LBB104_62:
 	pcalau12i	$a0, %pc_hi20(_ZL14argumentsstack)
 	addi.d	$a0, $a0, %pc_lo12(_ZL14argumentsstack)
 	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc14impl_argumentsESaIS2_EE16_M_push_back_auxIJS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.LBB104_64:                             # %_ZNSt5stackIPN2kc14impl_argumentsESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit
+.LBB104_63:                             # %_ZNSt5stackIPN2kc14impl_argumentsESt5dequeIS2_SaIS2_EEE4pushEOS2_.exit
 	pcalau12i	$a0, %pc_hi20(_ZL13operatorstack)
-	addi.d	$s1, $a0, %pc_lo12(_ZL13operatorstack)
-	ld.d	$a1, $s1, 64
-	ld.d	$a0, $s1, 48
+	addi.d	$s2, $a0, %pc_lo12(_ZL13operatorstack)
+	ld.d	$a1, $s2, 64
+	ld.d	$a0, $s2, 48
 	addi.d	$a2, $a1, -8
-	beq	$a0, $a2, .LBB104_66
-# %bb.65:
+	beq	$a0, $a2, .LBB104_65
+# %bb.64:
 	move	$a1, $s3
 	st.d	$fp, $a0, 0
 	addi.d	$a0, $a0, 8
-	st.d	$a0, $s1, 48
-	b	.LBB104_67
-.LBB104_66:
+	st.d	$a0, $s2, 48
+	b	.LBB104_66
+.LBB104_65:
 	pcalau12i	$a0, %pc_hi20(_ZL13operatorstack)
 	addi.d	$a0, $a0, %pc_lo12(_ZL13operatorstack)
 	addi.d	$a1, $sp, 32
 	pcaddu18i	$ra, %call36(_ZNSt5dequeIPN2kc7impl_IDESaIS2_EE16_M_push_back_auxIJRKS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 	move	$a1, $s3
-.LBB104_67:                             # %_ZNSt5stackIPN2kc7impl_IDESt5dequeIS2_SaIS2_EEE4pushERKS2_.exit
+.LBB104_66:                             # %_ZNSt5stackIPN2kc7impl_IDESt5dequeIS2_SaIS2_EEE4pushERKS2_.exit
 	ld.d	$a0, $s0, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %pc_hi20(_ZN2kc10view_checkE)
 	addi.d	$a2, $a0, %pc_lo12(_ZN2kc10view_checkE)
 	move	$a0, $s0
 	jirl	$ra, $a3, 0
-	ld.d	$a0, $s2, 48
-	ld.d	$a1, $s2, 56
+	ld.d	$a0, $s1, 48
+	ld.d	$a1, $s1, 56
 	beq	$a0, $a1, .LBB104_71
-# %bb.68:                               # %_ZNSt5stackIPN2kc14impl_argumentsESt5dequeIS2_SaIS2_EEE3topEv.exit
+# %bb.67:                               # %_ZNSt5stackIPN2kc14impl_argumentsESt5dequeIS2_SaIS2_EEE3topEv.exit
 	ld.d	$a0, $a0, -8
 	pcaddu18i	$ra, %call36(_ZN2kc14f_NilargumentsEPNS_14impl_argumentsE)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB104_72
-.LBB104_69:
-	ld.d	$a1, $s2, 48
-	ld.d	$a0, $s2, 56
-	beq	$a1, $a0, .LBB104_73
-.LBB104_70:
-	addi.d	$a1, $a1, -8
-	ld.d	$a2, $s1, 48
+.LBB104_68:
+	ld.d	$a1, $s1, 48
 	ld.d	$a0, $s1, 56
-	st.d	$a1, $s2, 48
-	bne	$a2, $a0, .LBB104_44
-	b	.LBB104_48
+	beq	$a1, $a0, .LBB104_73
+.LBB104_69:
+	addi.d	$a1, $a1, -8
+	ld.d	$a2, $s2, 48
+	ld.d	$a0, $s2, 56
+	st.d	$a1, $s1, 48
+	beq	$a2, $a0, .LBB104_74
+.LBB104_70:
+	addi.d	$a0, $a2, -8
+	b	.LBB104_75
 .LBB104_71:
-	ld.d	$a0, $s2, 72
+	ld.d	$a0, $s1, 72
 	ld.d	$a0, $a0, -8
 	addi.d	$a0, $a0, 512
 	ld.d	$a0, $a0, -8
 	pcaddu18i	$ra, %call36(_ZN2kc14f_NilargumentsEPNS_14impl_argumentsE)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB104_69
+	bnez	$a0, .LBB104_68
 .LBB104_72:
 	ld.d	$a1, $sp, 32
 	ld.d	$a0, $a1, 32
@@ -27499,10 +27492,26 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc8v_reportEPNS_10impl_errorE)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s2, 48
-	ld.d	$a0, $s2, 56
-	bne	$a1, $a0, .LBB104_70
+	ld.d	$a1, $s1, 48
+	ld.d	$a0, $s1, 56
+	bne	$a1, $a0, .LBB104_69
 .LBB104_73:
+	ori	$a1, $zero, 512
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $s1, 72
+	addi.d	$a1, $a0, -8
+	st.d	$a1, $s1, 72
+	ld.d	$a0, $a0, -8
+	st.d	$a0, $s1, 56
+	addi.d	$a1, $a0, 512
+	st.d	$a1, $s1, 64
+	addi.d	$a1, $a0, 504
+	ld.d	$a2, $s2, 48
+	ld.d	$a0, $s2, 56
+	st.d	$a1, $s1, 48
+	bne	$a2, $a0, .LBB104_70
+.LBB104_74:
 	ori	$a1, $zero, 512
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
@@ -27513,12 +27522,19 @@ _ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classER
 	st.d	$a0, $s2, 56
 	addi.d	$a1, $a0, 512
 	st.d	$a1, $s2, 64
-	addi.d	$a1, $a0, 504
-	ld.d	$a2, $s1, 48
-	ld.d	$a0, $s1, 56
-	st.d	$a1, $s2, 48
-	bne	$a2, $a0, .LBB104_44
-	b	.LBB104_48
+	addi.d	$a0, $a0, 504
+.LBB104_75:
+	st.d	$a0, $s2, 48
+.LBB104_76:
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
+	ret
 .Lfunc_end104:
 	.size	_ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classERNS_11uview_classE, .Lfunc_end104-_ZN2kc30impl_outmostpattern_OPOperator10do_unparseERNS_21printer_functor_classERNS_11uview_classE
 	.cfi_endproc

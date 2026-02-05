@@ -1595,7 +1595,7 @@ _ZN7NCrypto6NWzAes10CBaseCoderD2Ev:     # @_ZN7NCrypto6NWzAes10CBaseCoderD2Ev
 	.type	_ZN7NCrypto6NWzAes10CBaseCoderD0Ev,@function
 _ZN7NCrypto6NWzAes10CBaseCoderD0Ev:     # @_ZN7NCrypto6NWzAes10CBaseCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end25:
 	.size	_ZN7NCrypto6NWzAes10CBaseCoderD0Ev, .Lfunc_end25-_ZN7NCrypto6NWzAes10CBaseCoderD0Ev
                                         # -- End function
@@ -1631,7 +1631,7 @@ _ZThn8_N7NCrypto6NWzAes10CBaseCoderD1Ev: # @_ZThn8_N7NCrypto6NWzAes10CBaseCoderD
 	.type	_ZThn8_N7NCrypto6NWzAes10CBaseCoderD0Ev,@function
 _ZThn8_N7NCrypto6NWzAes10CBaseCoderD0Ev: # @_ZThn8_N7NCrypto6NWzAes10CBaseCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end27:
 	.size	_ZThn8_N7NCrypto6NWzAes10CBaseCoderD0Ev, .Lfunc_end27-_ZThn8_N7NCrypto6NWzAes10CBaseCoderD0Ev
                                         # -- End function

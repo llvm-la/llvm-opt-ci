@@ -48,85 +48,87 @@ sum_vec:                                # @sum_vec
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 136                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 128                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 120                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 96                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 192                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 184                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 176                  # 8-byte Folded Spill
 	move	$fp, $zero
-	movgr2fr.d	$fs5, $zero
+	xvrepli.b	$xr8, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI2_0)
+	xvldi	$xr0, -912
+	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
 	lu12i.w	$a0, 610
 	ori	$s0, $a0, 1440
-	fmov.d	$fs4, $fs5
-	fmov.d	$fs3, $fs5
-	fmov.d	$fs2, $fs5
 	vldi	$vr0, -912
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB2_1:                                # =>This Inner Loop Header: Depth=1
+	xvst	$xr8, $sp, 128                  # 32-byte Folded Spill
 	movgr2fr.w	$fa0, $fp
 	ffint.d.w	$fa1, $fa0
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(pow)
 	jirl	$ra, $ra, 0
-	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 160                  # 16-byte Folded Reload
 	fsqrt.d	$fa1, $fa1
+	xvst	$xr1, $sp, 96                   # 32-byte Folded Spill
 	fcmp.cor.d	$fcc0, $fa1, $fa1
+                                        # kill: def $f0_64 killed $f0_64 def $xr0
+	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	bceqz	$fcc0, .LBB2_3
 .LBB2_2:                                # %.split
                                         #   in Loop: Header=BB2_1 Depth=1
-	fadd.d	$fs5, $fs5, $fa0
-	frecip.d	$fa0, $fa1
-	fadd.d	$fs4, $fs4, $fa0
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	fmul.d	$fa1, $fa0, $fa0
-	fmul.d	$fs6, $fa1, $fa0
+	fmul.d	$fs2, $fa1, $fa0
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs1, $fa0
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
-	fmul.d	$fa1, $fs6, $fs1
+	fmul.d	$fa1, $fs2, $fs1
 	fmul.d	$fa1, $fs1, $fa1
-	frecip.d	$fa1, $fa1
-	fadd.d	$fs3, $fs3, $fa1
-	fmul.d	$fa1, $fs6, $fa0
-	fmul.d	$fa0, $fa0, $fa1
-	frecip.d	$fa0, $fa0
-	fadd.d	$fs2, $fs2, $fa0
+	fmul.d	$fa2, $fs2, $fa0
+	fmul.d	$fa0, $fa0, $fa2
+	xvld	$xr3, $sp, 32                   # 32-byte Folded Reload
+	xvori.b	$xr2, $xr3, 0
+	xvld	$xr4, $sp, 64                   # 32-byte Folded Reload
+	xvinsve0.d	$xr2, $xr4, 0
+	xvld	$xr4, $sp, 96                   # 32-byte Folded Reload
+	xvinsve0.d	$xr3, $xr4, 1
+	xvinsve0.d	$xr3, $xr1, 2
+	xvinsve0.d	$xr3, $xr0, 3
+	xvfdiv.d	$xr0, $xr2, $xr3
+	xvld	$xr8, $sp, 128                  # 32-byte Folded Reload
+	xvfadd.d	$xr8, $xr8, $xr0
 	addi.w	$fp, $fp, 1
 	vldi	$vr0, -912
-	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 160                  # 16-byte Folded Reload
 	fadd.d	$fa1, $fa1, $fa0
-	vst	$vr1, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr1, $sp, 160                  # 16-byte Folded Spill
 	bne	$fp, $s0, .LBB2_1
 	b	.LBB2_4
 .LBB2_3:                                # %call.sqrt
                                         #   in Loop: Header=BB2_1 Depth=1
-	fmov.d	$fs1, $fa0
-	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	fmov.d	$fa1, $fa0
-	fmov.d	$fa0, $fs1
+                                        # kill: def $f0_64 killed $f0_64 def $xr0
+	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	b	.LBB2_2
 .LBB2_4:                                # %.preheader.preheader
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
 	vld	$vr0, $a0, %pc_lo12(.LCPI2_1)
-	vrepli.b	$vr11, 0
+	vrepli.b	$vr12, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI2_2)
 	vld	$vr1, $a0, %pc_lo12(.LCPI2_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
@@ -134,46 +136,48 @@ main:                                   # @main
 	vldi	$vr3, -912
 	vldi	$vr4, -784
 	vldi	$vr5, -1024
-	vori.b	$vr10, $vr11, 0
-	vori.b	$vr12, $vr11, 0
-	vori.b	$vr9, $vr11, 0
-	vori.b	$vr8, $vr11, 0
+	vori.b	$vr11, $vr12, 0
+	vori.b	$vr13, $vr12, 0
+	vori.b	$vr10, $vr12, 0
+	vori.b	$vr9, $vr12, 0
 	.p2align	4, , 16
 .LBB2_5:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	vfadd.d	$vr6, $vr0, $vr3
 	vfmul.d	$vr6, $vr0, $vr6
 	vfrecip.d	$vr6, $vr6
-	vfadd.d	$vr12, $vr12, $vr6
+	vfadd.d	$vr13, $vr13, $vr6
 	vfrecip.d	$vr6, $vr0
-	vfadd.d	$vr11, $vr6, $vr11
+	vfadd.d	$vr12, $vr6, $vr12
 	vfmul.d	$vr6, $vr0, $vr0
 	vfrecip.d	$vr6, $vr6
-	vfadd.d	$vr10, $vr6, $vr10
+	vfadd.d	$vr11, $vr6, $vr11
 	vfdiv.d	$vr6, $vr1, $vr0
-	vfadd.d	$vr9, $vr6, $vr9
+	vfadd.d	$vr10, $vr6, $vr10
 	vfmadd.d	$vr6, $vr0, $vr5, $vr4
 	vfadd.d	$vr0, $vr0, $vr5
 	vreplvei.d	$vr7, $vr0, 0
 	fcmp.cle.d	$fcc0, $fa7, $fa2
 	vfdiv.d	$vr6, $vr1, $vr6
-	vfadd.d	$vr8, $vr8, $vr6
+	vfadd.d	$vr9, $vr9, $vr6
 	bcnez	$fcc0, .LBB2_5
 # %bb.6:
-	movfr2gr.d	$a1, $fs5
+	xvpickve2gr.d	$a1, $xr8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$fp, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.1)
 	move	$a0, $fp
-	vst	$vr8, $sp, 80                   # 16-byte Folded Spill
-	vst	$vr9, $sp, 64                   # 16-byte Folded Spill
-	vst	$vr10, $sp, 48                  # 16-byte Folded Spill
-	vst	$vr11, $sp, 32                  # 16-byte Folded Spill
-	vst	$vr12, $sp, 16                  # 16-byte Folded Spill
+	xvst	$xr8, $sp, 128                  # 32-byte Folded Spill
+	vst	$vr9, $sp, 160                  # 16-byte Folded Spill
+	vst	$vr10, $sp, 96                  # 16-byte Folded Spill
+	vst	$vr11, $sp, 64                  # 16-byte Folded Spill
+	vst	$vr12, $sp, 32                  # 16-byte Folded Spill
+	vst	$vr13, $sp, 16                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	movfr2gr.d	$a1, $fs4
+	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
+	xvpickve2gr.d	$a1, $xr0, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.2)
 	move	$a0, $fp
@@ -189,13 +193,15 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	movfr2gr.d	$a1, $fs3
+	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
+	xvpickve2gr.d	$a1, $xr0, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.4)
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	movfr2gr.d	$a1, $fs2
+	xvld	$xr0, $sp, 128                  # 32-byte Folded Reload
+	xvpickve2gr.d	$a1, $xr0, 3
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.5)
 	move	$a0, $fp
@@ -211,7 +217,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
 	vreplvei.d	$vr0, $vr1, 0
 	vreplvei.d	$vr1, $vr1, 1
 	fadd.d	$fa0, $fa0, $fa1
@@ -221,7 +227,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
 	vreplvei.d	$vr0, $vr1, 0
 	vreplvei.d	$vr1, $vr1, 1
 	fadd.d	$fa0, $fa0, $fa1
@@ -231,7 +237,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 160                  # 16-byte Folded Reload
 	vreplvei.d	$vr0, $vr1, 0
 	vreplvei.d	$vr1, $vr1, 1
 	fadd.d	$fa0, $fa0, $fa1
@@ -242,17 +248,13 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	fld.d	$fs6, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 112                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 120                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 128                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 136                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 144                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	fld.d	$fs2, $sp, 176                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 192                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end2:
 	.size	main, .Lfunc_end2-main

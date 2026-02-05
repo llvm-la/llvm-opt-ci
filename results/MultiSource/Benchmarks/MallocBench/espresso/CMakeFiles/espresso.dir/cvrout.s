@@ -1635,9 +1635,9 @@ print_expanded_cube:                    # @print_expanded_cube
 	ldx.w	$a1, $a1, $s3
 	blt	$a1, $a0, .LBB8_19
 # %bb.14:                               # %.lr.ph65
-	pcalau12i	$a1, %pc_hi20(.L.str.3)
 	beqz	$s1, .LBB8_17
 # %bb.15:
+	pcalau12i	$a1, %pc_hi20(.L.str.3)
 	addi.d	$s4, $a1, %pc_lo12(.L.str.3)
 	pcalau12i	$a1, %pc_hi20(.L.str.5)
 	addi.d	$s5, $a1, %pc_lo12(.L.str.5)
@@ -1668,6 +1668,7 @@ print_expanded_cube:                    # @print_expanded_cube
 	blt	$s6, $a1, .LBB8_16
 	b	.LBB8_19
 .LBB8_17:                               # %.lr.ph65.split.us.preheader
+	pcalau12i	$a1, %pc_hi20(.L.str.3)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.3)
 	.p2align	4, , 16
 .LBB8_18:                               # %.lr.ph65.split.us
@@ -2214,10 +2215,10 @@ kiss_print_cube:                        # @kiss_print_cube
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	move	$s0, $a3
+	move	$fp, $a3
 	move	$s1, $a2
 	move	$s2, $a1
-	move	$fp, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %got_pc_hi20(cube)
 	ld.d	$s4, $a0, %got_pc_lo12(cube)
 	ld.w	$s5, $s4, 8
@@ -2239,7 +2240,7 @@ kiss_print_cube:                        # @kiss_print_cube
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 3
 	ldx.b	$a0, $s3, $a0
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.w	$s5, $s4, 8
@@ -2259,7 +2260,7 @@ kiss_print_cube:                        # @kiss_print_cube
 .LBB16_5:                               #   in Loop: Header=BB16_7 Depth=1
 	ori	$a0, $zero, 45
 .LBB16_6:                               #   in Loop: Header=BB16_7 Depth=1
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 4
@@ -2269,7 +2270,7 @@ kiss_print_cube:                        # @kiss_print_cube
 .LBB16_7:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB16_12 Depth 2
 	ori	$a0, $zero, 32
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 72
@@ -2325,7 +2326,7 @@ kiss_print_cube:                        # @kiss_print_cube
 	ld.d	$a0, $s2, 56
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 4
@@ -2344,7 +2345,7 @@ kiss_print_cube:                        # @kiss_print_cube
 	beq	$s2, $a0, .LBB16_21
 # %bb.19:
 	ori	$a0, $zero, 32
-	move	$a1, $fp
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 16
@@ -2362,8 +2363,8 @@ kiss_print_cube:                        # @kiss_print_cube
 	ld.w	$a0, $a0, 4
 	srl.w	$a0, $a0, $s3
 	andi	$a0, $a0, 1
-	ldx.b	$a0, $s0, $a0
-	move	$a1, $fp
+	ldx.b	$a0, $fp, $a0
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 24
@@ -2372,7 +2373,7 @@ kiss_print_cube:                        # @kiss_print_cube
 	blt	$s3, $a1, .LBB16_20
 .LBB16_21:                              # %.loopexit
 	ori	$a0, $zero, 10
-	move	$a1, $fp
+	move	$a1, $s0
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -2900,8 +2901,8 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	move	$a3, $a1
 	bstrpick.d	$a1, $s3, 30, 2
 	slli.d	$a1, $a1, 2
-	vreplgr2vr.w	$vr1, $a3
 	vldrepl.w	$vr0, $a0, 0
+	vreplgr2vr.w	$vr1, $a3
 	vld	$vr2, $sp, 48                   # 16-byte Folded Reload
 	vor.v	$vr1, $vr1, $vr2
 	sub.d	$a2, $a3, $a1

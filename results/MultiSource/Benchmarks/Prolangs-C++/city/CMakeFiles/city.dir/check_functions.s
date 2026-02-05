@@ -495,20 +495,15 @@ _Z24green_OR_plan_rightONredP20intersection_roadletP7vehicle9direction: # @_Z24g
 	ori	$a2, $zero, 7
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	move	$s0, $zero
-	ori	$s2, $zero, 1
+	ori	$s0, $zero, 1
 	b	.LBB7_11
 .LBB7_10:
-	move	$s2, $zero
 	move	$s0, $zero
 .LBB7_11:                               # %.thread40
 	ld.d	$a0, $fp, 8
 	sltui	$a0, $a0, 1
 	maskeqz	$a0, $fp, $a0
-	maskeqz	$a1, $a0, $s2
 	maskeqz	$a0, $a0, $s0
-	masknez	$a0, $a0, $s2
-	or	$a0, $a1, $a0
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload

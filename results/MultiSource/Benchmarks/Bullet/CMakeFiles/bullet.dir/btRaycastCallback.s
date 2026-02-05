@@ -80,7 +80,7 @@ _ZN25btTriangleRaycastCallback15processTriangleEP9btVector3ii: # @_ZN25btTriangl
 	st.d	$a1, $sp, 24
 	bcnez	$fcc0, .LBB1_3
 # %bb.1:
-	ld.wu	$a1, $a0, 40
+	ld.w	$a1, $a0, 40
 	fcmp.cule.s	$fcc0, $fa4, $ft0
 	bcnez	$fcc0, .LBB1_4
 # %bb.2:
@@ -503,7 +503,7 @@ _ZN12btConvexCast10CastResultD2Ev:      # @_ZN12btConvexCast10CastResultD2Ev
 	.type	_ZN25btTriangleRaycastCallbackD0Ev,@function
 _ZN25btTriangleRaycastCallbackD0Ev:     # @_ZN25btTriangleRaycastCallbackD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end7:
 	.size	_ZN25btTriangleRaycastCallbackD0Ev, .Lfunc_end7-_ZN25btTriangleRaycastCallbackD0Ev
                                         # -- End function
@@ -513,7 +513,7 @@ _ZN25btTriangleRaycastCallbackD0Ev:     # @_ZN25btTriangleRaycastCallbackD0Ev
 	.type	_ZN28btTriangleConvexcastCallbackD0Ev,@function
 _ZN28btTriangleConvexcastCallbackD0Ev:  # @_ZN28btTriangleConvexcastCallbackD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end8:
 	.size	_ZN28btTriangleConvexcastCallbackD0Ev, .Lfunc_end8-_ZN28btTriangleConvexcastCallbackD0Ev
                                         # -- End function

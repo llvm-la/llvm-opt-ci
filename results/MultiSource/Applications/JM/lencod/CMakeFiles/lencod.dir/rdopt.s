@@ -10426,77 +10426,53 @@ store_adaptive_rounding_parameters:     # @store_adaptive_rounding_parameters
 	move	$s0, $a1
 	ld.w	$a1, $a1, 472
 	move	$fp, $a0
-	addi.d	$a0, $a0, -9
+	pcalau12i	$a0, %got_pc_hi20(img)
+	ld.d	$s1, $a0, %got_pc_lo12(img)
+	ld.d	$a0, $s1, 0
 	beqz	$a1, .LBB18_6
 # %bb.1:
-	ori	$a1, $zero, 2
-	bltu	$a0, $a1, .LBB18_5
+	ldptr.d	$a0, $a0, 14184
+	addi.d	$a1, $fp, -9
+	ori	$a2, $zero, 2
+	bltu	$a1, $a2, .LBB18_5
 # %bb.2:
-	ori	$a0, $zero, 13
-	beq	$fp, $a0, .LBB18_5
+	ori	$a1, $zero, 13
+	beq	$fp, $a1, .LBB18_5
 # %bb.3:
-	ori	$a0, $zero, 8
-	bne	$fp, $a0, .LBB18_11
+	pcalau12i	$a1, %pc_hi20(bestInterFAdjust8x8)
+	addi.d	$a1, $a1, %pc_lo12(bestInterFAdjust8x8)
+	ori	$a2, $zero, 8
+	bne	$fp, $a2, .LBB18_11
 # %bb.4:
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ldptr.d	$a0, $a0, 14184
 	addi.d	$a0, $a0, 16
-	b	.LBB18_12
+	b	.LBB18_11
 .LBB18_5:
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ldptr.d	$a0, $a0, 14184
 	addi.d	$a0, $a0, 8
 	pcalau12i	$a1, %pc_hi20(bestIntraFAdjust8x8)
 	addi.d	$a1, $a1, %pc_lo12(bestIntraFAdjust8x8)
-	b	.LBB18_15
+	b	.LBB18_11
 .LBB18_6:
-	ori	$a1, $zero, 2
-	bltu	$a0, $a1, .LBB18_10
+	ldptr.d	$a0, $a0, 14176
+	addi.d	$a1, $fp, -9
+	ori	$a2, $zero, 2
+	bltu	$a1, $a2, .LBB18_10
 # %bb.7:
-	ori	$a1, $zero, 13
-	beq	$fp, $a1, .LBB18_10
+	ori	$a2, $zero, 13
+	beq	$fp, $a2, .LBB18_10
 # %bb.8:
-	ori	$a0, $zero, 8
-	bne	$fp, $a0, .LBB18_13
-# %bb.9:
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ldptr.d	$a0, $a0, 14176
-	addi.d	$a0, $a0, 24
-	b	.LBB18_14
-.LBB18_10:
-	pcalau12i	$a1, %got_pc_hi20(img)
-	ld.d	$a1, $a1, %got_pc_lo12(img)
-	ld.d	$a1, $a1, 0
-	ldptr.d	$a1, $a1, 14176
-	sltui	$a0, $a0, 1
-	alsl.d	$a0, $a0, $a1, 3
-	pcalau12i	$a1, %pc_hi20(bestIntraFAdjust4x4)
-	addi.d	$a1, $a1, %pc_lo12(bestIntraFAdjust4x4)
-	b	.LBB18_15
-.LBB18_11:
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ldptr.d	$a0, $a0, 14184
-.LBB18_12:
-	pcalau12i	$a1, %pc_hi20(bestInterFAdjust8x8)
-	addi.d	$a1, $a1, %pc_lo12(bestInterFAdjust8x8)
-	b	.LBB18_15
-.LBB18_13:
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$a0, $a0, %got_pc_lo12(img)
-	ld.d	$a0, $a0, 0
-	ldptr.d	$a0, $a0, 14176
-.LBB18_14:
 	pcalau12i	$a1, %pc_hi20(bestInterFAdjust4x4)
 	addi.d	$a1, $a1, %pc_lo12(bestInterFAdjust4x4)
-.LBB18_15:
+	ori	$a2, $zero, 8
+	bne	$fp, $a2, .LBB18_11
+# %bb.9:
+	addi.d	$a0, $a0, 24
+	b	.LBB18_11
+.LBB18_10:
+	sltui	$a1, $a1, 1
+	alsl.d	$a0, $a1, $a0, 3
+	pcalau12i	$a1, %pc_hi20(bestIntraFAdjust4x4)
+	addi.d	$a1, $a1, %pc_lo12(bestIntraFAdjust4x4)
+.LBB18_11:
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a0, 0
 	ld.d	$a0, $a1, 0
@@ -10508,193 +10484,179 @@ store_adaptive_rounding_parameters:     # @store_adaptive_rounding_parameters
 	ld.d	$a0, $a0, %got_pc_lo12(input)
 	ld.d	$a0, $a0, 0
 	ldptr.w	$a0, $a0, 5660
-	beqz	$a0, .LBB18_33
-# %bb.16:
-	ori	$a0, $zero, 8
-	bne	$fp, $a0, .LBB18_21
-# %bb.17:
-	ld.w	$a1, $s0, 472
-	beqz	$a1, .LBB18_21
-# %bb.18:                               # %.preheader
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$fp, $a0, %got_pc_lo12(img)
-	ld.d	$a1, $fp, 0
+	beqz	$a0, .LBB18_29
+# %bb.12:
+	ld.d	$a1, $s1, 0
 	ldptr.w	$a0, $a1, 15548
-	blez	$a0, .LBB18_33
-# %bb.19:                               # %.lr.ph53.preheader
+	ori	$a2, $zero, 8
+	bne	$fp, $a2, .LBB18_17
+# %bb.13:
+	ld.w	$a3, $s0, 472
+	beqz	$a3, .LBB18_17
+# %bb.14:                               # %.preheader
+	blez	$a0, .LBB18_29
+# %bb.15:                               # %.lr.ph53.preheader
+	move	$fp, $zero
 	move	$s0, $zero
-	move	$s1, $zero
 	pcalau12i	$s2, %pc_hi20(bestInterFAdjust4x4Cr)
 	.p2align	4, , 16
-.LBB18_20:                              # %.lr.ph53
+.LBB18_16:                              # %.lr.ph53
                                         # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $a1, 14200
 	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $a0, 0
-	ldx.d	$a0, $a2, $s0
+	ldx.d	$a0, $a2, $fp
 	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
+	ldx.d	$a1, $a3, $fp
 	slli.d	$a2, $a2, 2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s1, 0
 	ldptr.d	$a0, $a1, 14200
 	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a2, 8
 	ld.d	$a3, $a0, 8
-	ldx.d	$a0, $a2, $s0
+	ldx.d	$a0, $a2, $fp
 	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
+	ldx.d	$a1, $a3, $fp
 	slli.d	$a2, $a2, 2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s1, 0
 	ldptr.w	$a0, $a1, 15548
-	addi.d	$s1, $s1, 1
-	addi.d	$s0, $s0, 8
-	blt	$s1, $a0, .LBB18_20
-	b	.LBB18_33
+	addi.d	$s0, $s0, 1
+	addi.d	$fp, $fp, 8
+	blt	$s0, $a0, .LBB18_16
+	b	.LBB18_29
+.LBB18_17:
+	bne	$fp, $a2, .LBB18_21
+# %bb.18:                               # %.preheader42
+	blez	$a0, .LBB18_29
+# %bb.19:                               # %.lr.ph51.preheader
+	move	$fp, $zero
+	move	$s0, $zero
+	pcalau12i	$s2, %pc_hi20(bestInterFAdjust4x4Cr)
+	.p2align	4, , 16
+.LBB18_20:                              # %.lr.ph51
+                                        # =>This Inner Loop Header: Depth=1
+	ldptr.d	$a0, $a1, 14192
+	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
+	ld.d	$a0, $a0, 16
+	ld.d	$a2, $a2, 0
+	ld.d	$a3, $a0, 0
+	ldx.d	$a0, $a2, $fp
+	ldptr.w	$a2, $a1, 15544
+	ldx.d	$a1, $a3, $fp
+	slli.d	$a2, $a2, 2
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s1, 0
+	ldptr.d	$a0, $a1, 14192
+	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
+	ld.d	$a0, $a0, 16
+	ld.d	$a2, $a2, 8
+	ld.d	$a3, $a0, 8
+	ldx.d	$a0, $a2, $fp
+	ldptr.w	$a2, $a1, 15544
+	ldx.d	$a1, $a3, $fp
+	slli.d	$a2, $a2, 2
+	pcaddu18i	$ra, %call36(memcpy)
+	jirl	$ra, $ra, 0
+	ld.d	$a1, $s1, 0
+	ldptr.w	$a0, $a1, 15548
+	addi.d	$s0, $s0, 1
+	addi.d	$fp, $fp, 8
+	blt	$s0, $a0, .LBB18_20
+	b	.LBB18_29
 .LBB18_21:
-	bne	$fp, $a0, .LBB18_25
-# %bb.22:                               # %.preheader42
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$fp, $a0, %got_pc_lo12(img)
-	ld.d	$a1, $fp, 0
-	ldptr.w	$a0, $a1, 15548
-	blez	$a0, .LBB18_33
-# %bb.23:                               # %.lr.ph51.preheader
+	ori	$a2, $zero, 13
+	bltu	$a2, $fp, .LBB18_26
+# %bb.22:
+	ori	$a2, $zero, 1
+	sll.d	$a2, $a2, $fp
+	lu12i.w	$a3, 2
+	ori	$a3, $a3, 1536
+	and	$a2, $a2, $a3
+	beqz	$a2, .LBB18_26
+# %bb.23:
+	blez	$a0, .LBB18_29
+# %bb.24:                               # %.lr.ph.preheader
+	move	$fp, $zero
 	move	$s0, $zero
-	move	$s1, $zero
-	pcalau12i	$s2, %pc_hi20(bestInterFAdjust4x4Cr)
-	.p2align	4, , 16
-.LBB18_24:                              # %.lr.ph51
-                                        # =>This Inner Loop Header: Depth=1
-	ldptr.d	$a0, $a1, 14192
-	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
-	ld.d	$a0, $a0, 16
-	ld.d	$a2, $a2, 0
-	ld.d	$a3, $a0, 0
-	ldx.d	$a0, $a2, $s0
-	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
-	slli.d	$a2, $a2, 2
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
-	ldptr.d	$a0, $a1, 14192
-	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
-	ld.d	$a0, $a0, 16
-	ld.d	$a2, $a2, 8
-	ld.d	$a3, $a0, 8
-	ldx.d	$a0, $a2, $s0
-	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
-	slli.d	$a2, $a2, 2
-	pcaddu18i	$ra, %call36(memcpy)
-	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
-	ldptr.w	$a0, $a1, 15548
-	addi.d	$s1, $s1, 1
-	addi.d	$s0, $s0, 8
-	blt	$s1, $a0, .LBB18_24
-	b	.LBB18_33
-.LBB18_25:
-	ori	$a0, $zero, 13
-	bltu	$a0, $fp, .LBB18_30
-# %bb.26:
-	ori	$a0, $zero, 1
-	sll.d	$a0, $a0, $fp
-	lu12i.w	$a1, 2
-	ori	$a1, $a1, 1536
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB18_30
-# %bb.27:
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$fp, $a0, %got_pc_lo12(img)
-	ld.d	$a1, $fp, 0
-	ldptr.w	$a0, $a1, 15548
-	blez	$a0, .LBB18_33
-# %bb.28:                               # %.lr.ph.preheader
-	move	$s0, $zero
-	move	$s1, $zero
 	pcalau12i	$s2, %pc_hi20(bestIntraFAdjust4x4Cr)
 	.p2align	4, , 16
-.LBB18_29:                              # %.lr.ph
+.LBB18_25:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $a1, 14192
 	ld.d	$a2, $s2, %pc_lo12(bestIntraFAdjust4x4Cr)
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $a0, 0
-	ldx.d	$a0, $a2, $s0
+	ldx.d	$a0, $a2, $fp
 	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
+	ldx.d	$a1, $a3, $fp
 	slli.d	$a2, $a2, 2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s1, 0
 	ldptr.d	$a0, $a1, 14192
 	ld.d	$a2, $s2, %pc_lo12(bestIntraFAdjust4x4Cr)
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a2, 8
 	ld.d	$a3, $a0, 8
-	ldx.d	$a0, $a2, $s0
+	ldx.d	$a0, $a2, $fp
 	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
+	ldx.d	$a1, $a3, $fp
 	slli.d	$a2, $a2, 2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s1, 0
 	ldptr.w	$a0, $a1, 15548
-	addi.d	$s1, $s1, 1
-	addi.d	$s0, $s0, 8
-	blt	$s1, $a0, .LBB18_29
-	b	.LBB18_33
-.LBB18_30:                              # %.preheader44
-	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$fp, $a0, %got_pc_lo12(img)
-	ld.d	$a1, $fp, 0
-	ldptr.w	$a0, $a1, 15548
-	blez	$a0, .LBB18_33
-# %bb.31:                               # %.lr.ph49.preheader
+	addi.d	$s0, $s0, 1
+	addi.d	$fp, $fp, 8
+	blt	$s0, $a0, .LBB18_25
+	b	.LBB18_29
+.LBB18_26:                              # %.preheader44
+	blez	$a0, .LBB18_29
+# %bb.27:                               # %.lr.ph49.preheader
+	move	$fp, $zero
 	move	$s0, $zero
-	move	$s1, $zero
 	pcalau12i	$s2, %pc_hi20(bestInterFAdjust4x4Cr)
 	.p2align	4, , 16
-.LBB18_32:                              # %.lr.ph49
+.LBB18_28:                              # %.lr.ph49
                                         # =>This Inner Loop Header: Depth=1
 	ldptr.d	$a0, $a1, 14192
 	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $a0, 0
-	ldx.d	$a0, $a2, $s0
+	ldx.d	$a0, $a2, $fp
 	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
+	ldx.d	$a1, $a3, $fp
 	slli.d	$a2, $a2, 2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s1, 0
 	ldptr.d	$a0, $a1, 14192
 	ld.d	$a2, $s2, %pc_lo12(bestInterFAdjust4x4Cr)
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a2, 8
 	ld.d	$a3, $a0, 8
-	ldx.d	$a0, $a2, $s0
+	ldx.d	$a0, $a2, $fp
 	ldptr.w	$a2, $a1, 15544
-	ldx.d	$a1, $a3, $s0
+	ldx.d	$a1, $a3, $fp
 	slli.d	$a2, $a2, 2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s1, 0
 	ldptr.w	$a0, $a1, 15548
-	addi.d	$s1, $s1, 1
-	addi.d	$s0, $s0, 8
-	blt	$s1, $a0, .LBB18_32
-.LBB18_33:                              # %.loopexit
+	addi.d	$s0, $s0, 1
+	addi.d	$fp, $fp, 8
+	blt	$s0, $a0, .LBB18_28
+.LBB18_29:                              # %.loopexit
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -17709,14 +17671,14 @@ assign_enc_picture_params:              # @assign_enc_picture_params
 	st.h	$s0, $s1, 0
 	ld.h	$t8, $t8, 2
 	ld.d	$t5, $t5, 8
-	ld.d	$s0, $t2, 0
+	ld.d	$s0, $t2, 288
 	st.h	$t8, $s1, 2
 	addi.d	$t8, $t3, 24
 	ld.h	$s1, $t5, 0
 	ldx.d	$t4, $t4, $t8
 	stx.d	$s0, $t1, $t3
 	stx.d	$s0, $t1, $t6
-	ld.d	$t2, $t2, 0
+	ld.d	$t2, $t2, 288
 	st.h	$s1, $t4, 0
 	ld.h	$t3, $t5, 2
 	stx.d	$t2, $t1, $t7
@@ -17739,19 +17701,18 @@ assign_enc_picture_params:              # @assign_enc_picture_params
 	ld.d	$t0, $a0, 0
 	ldptr.d	$t1, $t0, 6496
 	ld.d	$t1, $t1, 8
-	add.d	$t2, $t0, $a5
 	ldx.d	$t1, $t1, $t4
+	add.d	$t2, $t0, $a5
 	alsl.d	$t2, $s2, $t2, 3
-	addi.d	$t2, $t2, 288
 	slli.d	$t3, $t5, 3
 	bgez	$s2, .LBB30_65
 # %bb.67:                               # %.split322.preheader
                                         #   in Loop: Header=BB30_66 Depth=1
-	ld.d	$t4, $t2, 0
+	ld.d	$t4, $t2, 288
 	alsl.d	$t5, $t5, $t1, 3
 	stx.d	$t4, $t1, $t3
 	st.d	$t4, $t5, 8
-	ld.d	$t1, $t2, 0
+	ld.d	$t1, $t2, 288
 	st.d	$t1, $t5, 16
 	st.d	$t1, $t5, 24
 	addi.d	$a3, $a3, 8

@@ -601,7 +601,6 @@ st_EntryDelete:                         # @st_EntryDelete
 	move	$s1, $a1
 	move	$s7, $a0
 	addu16i.d	$fp, $a3, 1
-	addi.d	$s5, $fp, -1496
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $fp, -1504
@@ -611,11 +610,11 @@ st_EntryDelete:                         # @st_EntryDelete
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 2600
 	stx.d	$s2, $s0, $a1
-	st.d	$s0, $s5, 8
+	st.d	$s0, $fp, -1488
 	pcalau12i	$a1, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s4, $a1, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a1, $s4, 0
-	st.d	$a1, $s5, 16
+	st.d	$a1, $fp, -1480
 	st.d	$a0, $s4, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s5, $a0, %got_pc_lo12(cont_BINDINGS)
@@ -1053,22 +1052,21 @@ st_GetUnifier:                          # @st_GetUnifier
 	move	$s1, $a2
 	move	$s2, $a1
 	move	$fp, $a0
-	addu16i.d	$s3, $a0, 1
-	addi.d	$s4, $s3, -1496
+	addu16i.d	$s4, $a0, 1
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $s3, -1504
+	addi.d	$a0, $s4, -1504
 	pcalau12i	$a1, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s3, $a1, %got_pc_lo12(cont_CURRENTBINDING)
 	st.d	$a0, $s3, 0
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 2600
 	stx.d	$s0, $fp, $a1
-	st.d	$s1, $s4, 8
+	st.d	$s1, $s4, -1488
 	pcalau12i	$a1, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s1, $a1, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a1, $s1, 0
-	st.d	$a1, $s4, 16
+	st.d	$a1, $s4, -1480
 	st.d	$a0, $s1, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s4, $a0, %got_pc_lo12(cont_BINDINGS)
@@ -1317,25 +1315,24 @@ st_GetGen:                              # @st_GetGen
 	move	$s0, $a2
 	move	$s1, $a1
 	move	$fp, $a0
-	addu16i.d	$s2, $a0, 1
-	addi.d	$s4, $s2, -1496
+	addu16i.d	$s4, $a0, 1
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_INSTANCECONTEXT)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_INSTANCECONTEXT)
 	ld.d	$a0, $a0, 0
-	addi.d	$a1, $s2, -1504
+	addi.d	$a1, $s4, -1504
 	pcalau12i	$a2, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s2, $a2, %got_pc_lo12(cont_CURRENTBINDING)
 	st.d	$a1, $s2, 0
 	lu12i.w	$a2, 15
 	ori	$a2, $a2, 2600
 	stx.d	$s0, $fp, $a2
-	st.d	$a0, $s4, 8
+	st.d	$a0, $s4, -1488
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a0, $s3, 0
-	st.d	$a0, $s4, 16
+	st.d	$a0, $s4, -1480
 	st.d	$a1, $s3, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s4, $a0, %got_pc_lo12(cont_BINDINGS)
@@ -1585,7 +1582,6 @@ st_GetGenPreTest:                       # @st_GetGenPreTest
 	move	$s1, $a1
 	move	$s3, $a0
 	addu16i.d	$fp, $a0, 1
-	addi.d	$s4, $fp, -1496
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_INSTANCECONTEXT)
@@ -1599,11 +1595,11 @@ st_GetGenPreTest:                       # @st_GetGenPreTest
 	ori	$a2, $a2, 2600
 	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
 	stx.d	$s0, $s3, $a2
-	st.d	$a0, $s4, 8
+	st.d	$a0, $fp, -1488
 	pcalau12i	$a0, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a0, $s3, 0
-	st.d	$a0, $s4, 16
+	st.d	$a0, $fp, -1480
 	st.d	$a1, $s3, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s4, $a0, %got_pc_lo12(cont_BINDINGS)
@@ -1854,22 +1850,21 @@ st_GetInstance:                         # @st_GetInstance
 	move	$s0, $a2
 	move	$s1, $a1
 	move	$fp, $a0
-	addu16i.d	$s2, $a0, 1
-	addi.d	$s4, $s2, -1496
+	addu16i.d	$s4, $a0, 1
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $s2, -1504
+	addi.d	$a0, $s4, -1504
 	pcalau12i	$a1, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s2, $a1, %got_pc_lo12(cont_CURRENTBINDING)
 	st.d	$a0, $s2, 0
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 2600
 	stx.d	$s0, $fp, $a1
-	st.d	$fp, $s4, 8
+	st.d	$fp, $s4, -1488
 	pcalau12i	$a1, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s3, $a1, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a1, $s3, 0
-	st.d	$a1, $s4, 16
+	st.d	$a1, $s4, -1480
 	st.d	$a0, $s3, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s4, $a0, %got_pc_lo12(cont_BINDINGS)
@@ -2119,7 +2114,6 @@ st_GetInstancePreTest:                  # @st_GetInstancePreTest
 	move	$s1, $a1
 	move	$s3, $a0
 	addu16i.d	$fp, $a0, 1
-	addi.d	$s4, $fp, -1496
 	pcaddu18i	$ra, %call36(cont_Check)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $fp, -1504
@@ -2130,11 +2124,11 @@ st_GetInstancePreTest:                  # @st_GetInstancePreTest
 	ori	$a1, $a1, 2600
 	stx.d	$s0, $s3, $a1
 	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $s4, 8
+	st.d	$s3, $fp, -1488
 	pcalau12i	$a1, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s3, $a1, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a1, $s3, 0
-	st.d	$a1, $s4, 16
+	st.d	$a1, $fp, -1480
 	st.d	$a0, $s3, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s4, $a0, %got_pc_lo12(cont_BINDINGS)
@@ -2499,50 +2493,49 @@ st_ExistUnifier:                        # @st_ExistUnifier
 	beqz	$a0, .LBB13_11
 .LBB13_3:                               # %st_Exist.exit.thread12
 	addu16i.d	$a0, $fp, 1
-	addi.d	$a1, $a0, -1496
 	pcalau12i	$s5, %pc_hi20(st_CURRENT_RETRIEVAL)
-	ori	$a2, $zero, 1
-	st.w	$a2, $s5, %pc_lo12(st_CURRENT_RETRIEVAL)
-	pcalau12i	$a2, %pc_hi20(st_WHICH_CONTEXTS)
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	st.b	$zero, $a2, %pc_lo12(st_WHICH_CONTEXTS)
+	ori	$a1, $zero, 1
+	st.w	$a1, $s5, %pc_lo12(st_CURRENT_RETRIEVAL)
+	pcalau12i	$a1, %pc_hi20(st_WHICH_CONTEXTS)
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.b	$zero, $a1, %pc_lo12(st_WHICH_CONTEXTS)
 	pcalau12i	$s8, %pc_hi20(st_STACKPOINTER)
-	ld.w	$a2, $s8, %pc_lo12(st_STACKPOINTER)
+	ld.w	$a1, $s8, %pc_lo12(st_STACKPOINTER)
 	pcalau12i	$s4, %pc_hi20(st_INDEX_CONTEXT)
 	st.d	$fp, $s4, %pc_lo12(st_INDEX_CONTEXT)
 	pcalau12i	$s3, %pc_hi20(st_STACKSAVE)
-	st.w	$a2, $s3, %pc_lo12(st_STACKSAVE)
-	addi.d	$a0, $a0, -1504
+	st.w	$a1, $s3, %pc_lo12(st_STACKSAVE)
+	addi.d	$a2, $a0, -1504
 	pcalau12i	$a3, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s6, $a3, %got_pc_lo12(cont_CURRENTBINDING)
-	st.d	$a0, $s6, 0
-	st.d	$s2, $a1, 0
-	st.d	$s1, $a1, 8
+	st.d	$a2, $s6, 0
+	st.d	$s2, $a0, -1496
+	st.d	$s1, $a0, -1488
 	pcalau12i	$a3, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s1, $a3, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a3, $s1, 0
-	st.d	$a3, $a1, 16
-	st.d	$a0, $s1, 0
+	st.d	$a3, $a0, -1480
+	st.d	$a2, $s1, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s2, $a0, %got_pc_lo12(cont_BINDINGS)
 	ld.w	$a0, $s2, 0
 	addi.d	$a0, $a0, 1
-	pcalau12i	$a1, %got_pc_hi20(cont_STACKPOINTER)
-	ld.d	$s7, $a1, %got_pc_lo12(cont_STACKPOINTER)
-	ld.w	$a1, $s7, 0
+	pcalau12i	$a2, %got_pc_hi20(cont_STACKPOINTER)
+	ld.d	$s7, $a2, %got_pc_lo12(cont_STACKPOINTER)
+	ld.w	$a2, $s7, 0
 	pcalau12i	$a3, %got_pc_hi20(cont_STACK)
 	ld.d	$a3, $a3, %got_pc_lo12(cont_STACK)
-	alsl.d	$a4, $a1, $a3, 2
-	slli.d	$a5, $a1, 2
+	alsl.d	$a4, $a2, $a3, 2
+	slli.d	$a5, $a2, 2
 	stx.w	$a0, $a3, $a5
 	ld.d	$a0, $s0, 8
-	addi.d	$a3, $a2, 1
+	addi.d	$a3, $a1, 1
 	st.w	$a3, $s8, %pc_lo12(st_STACKPOINTER)
-	slli.d	$a2, $a2, 3
+	slli.d	$a1, $a1, 3
 	pcalau12i	$a3, %pc_hi20(st_STACK)
 	addi.d	$a3, $a3, %pc_lo12(st_STACK)
-	stx.d	$a0, $a3, $a2
-	addi.d	$a0, $a1, 2
+	stx.d	$a0, $a3, $a1
+	addi.d	$a0, $a2, 2
 	st.w	$a0, $s7, 0
 	st.w	$zero, $a4, 4
 	st.w	$zero, $s2, 0
@@ -2841,53 +2834,52 @@ st_ExistGen:                            # @st_ExistGen
 	beqz	$a0, .LBB15_11
 .LBB15_3:                               # %st_Exist.exit.thread11
 	addu16i.d	$a0, $fp, 1
-	addi.d	$a1, $a0, -1496
 	pcalau12i	$s4, %pc_hi20(st_CURRENT_RETRIEVAL)
-	ori	$a2, $zero, 2
-	st.w	$a2, $s4, %pc_lo12(st_CURRENT_RETRIEVAL)
-	pcalau12i	$a2, %pc_hi20(st_WHICH_CONTEXTS)
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	st.b	$zero, $a2, %pc_lo12(st_WHICH_CONTEXTS)
+	ori	$a1, $zero, 2
+	st.w	$a1, $s4, %pc_lo12(st_CURRENT_RETRIEVAL)
+	pcalau12i	$a1, %pc_hi20(st_WHICH_CONTEXTS)
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.b	$zero, $a1, %pc_lo12(st_WHICH_CONTEXTS)
 	pcalau12i	$s8, %pc_hi20(st_STACKPOINTER)
-	ld.w	$a2, $s8, %pc_lo12(st_STACKPOINTER)
+	ld.w	$a1, $s8, %pc_lo12(st_STACKPOINTER)
 	pcalau12i	$s3, %pc_hi20(st_INDEX_CONTEXT)
 	st.d	$fp, $s3, %pc_lo12(st_INDEX_CONTEXT)
 	pcalau12i	$s2, %pc_hi20(st_STACKSAVE)
-	st.w	$a2, $s2, %pc_lo12(st_STACKSAVE)
-	pcalau12i	$a3, %got_pc_hi20(cont_INSTANCECONTEXT)
-	ld.d	$a3, $a3, %got_pc_lo12(cont_INSTANCECONTEXT)
-	ld.d	$a3, $a3, 0
-	addi.d	$a0, $a0, -1504
+	st.w	$a1, $s2, %pc_lo12(st_STACKSAVE)
+	pcalau12i	$a2, %got_pc_hi20(cont_INSTANCECONTEXT)
+	ld.d	$a2, $a2, %got_pc_lo12(cont_INSTANCECONTEXT)
+	ld.d	$a2, $a2, 0
+	addi.d	$a3, $a0, -1504
 	pcalau12i	$a4, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s5, $a4, %got_pc_lo12(cont_CURRENTBINDING)
-	st.d	$a0, $s5, 0
-	st.d	$s1, $a1, 0
-	st.d	$a3, $a1, 8
-	pcalau12i	$a3, %got_pc_hi20(cont_LASTBINDING)
-	ld.d	$s1, $a3, %got_pc_lo12(cont_LASTBINDING)
-	ld.d	$a3, $s1, 0
-	st.d	$a3, $a1, 16
-	st.d	$a0, $s1, 0
+	st.d	$a3, $s5, 0
+	st.d	$s1, $a0, -1496
+	st.d	$a2, $a0, -1488
+	pcalau12i	$a2, %got_pc_hi20(cont_LASTBINDING)
+	ld.d	$s1, $a2, %got_pc_lo12(cont_LASTBINDING)
+	ld.d	$a2, $s1, 0
+	st.d	$a2, $a0, -1480
+	st.d	$a3, $s1, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s6, $a0, %got_pc_lo12(cont_BINDINGS)
 	ld.w	$a0, $s6, 0
 	addi.d	$a0, $a0, 1
-	pcalau12i	$a1, %got_pc_hi20(cont_STACKPOINTER)
-	ld.d	$s7, $a1, %got_pc_lo12(cont_STACKPOINTER)
-	ld.w	$a1, $s7, 0
+	pcalau12i	$a2, %got_pc_hi20(cont_STACKPOINTER)
+	ld.d	$s7, $a2, %got_pc_lo12(cont_STACKPOINTER)
+	ld.w	$a2, $s7, 0
 	pcalau12i	$a3, %got_pc_hi20(cont_STACK)
 	ld.d	$a3, $a3, %got_pc_lo12(cont_STACK)
-	alsl.d	$a4, $a1, $a3, 2
-	slli.d	$a5, $a1, 2
+	alsl.d	$a4, $a2, $a3, 2
+	slli.d	$a5, $a2, 2
 	stx.w	$a0, $a3, $a5
 	ld.d	$a0, $s0, 8
-	addi.d	$a3, $a2, 1
+	addi.d	$a3, $a1, 1
 	st.w	$a3, $s8, %pc_lo12(st_STACKPOINTER)
-	slli.d	$a2, $a2, 3
+	slli.d	$a1, $a1, 3
 	pcalau12i	$a3, %pc_hi20(st_STACK)
 	addi.d	$a3, $a3, %pc_lo12(st_STACK)
-	stx.d	$a0, $a3, $a2
-	addi.d	$a0, $a1, 2
+	stx.d	$a0, $a3, $a1
+	addi.d	$a0, $a2, 2
 	st.w	$a0, $s7, 0
 	st.w	$zero, $a4, 4
 	st.w	$zero, $s6, 0
@@ -3185,8 +3177,7 @@ st_ExistGenPreTest:                     # @st_ExistGenPreTest
 	ld.d	$a0, $s0, 8
 	beqz	$a0, .LBB17_11
 .LBB17_3:                               # %st_Exist.exit.thread13
-	addu16i.d	$s6, $fp, 1
-	addi.d	$s7, $s6, -1496
+	addu16i.d	$s7, $fp, 1
 	pcalau12i	$s5, %pc_hi20(st_CURRENT_RETRIEVAL)
 	ori	$a0, $zero, 3
 	st.w	$a0, $s5, %pc_lo12(st_CURRENT_RETRIEVAL)
@@ -3205,16 +3196,16 @@ st_ExistGenPreTest:                     # @st_ExistGenPreTest
 	jirl	$ra, $ra, 0
 	pcalau12i	$s8, %pc_hi20(st_EXIST_MINMAX)
 	st.h	$a0, $s8, %pc_lo12(st_EXIST_MINMAX)
-	addi.d	$a0, $s6, -1504
+	addi.d	$a0, $s7, -1504
 	pcalau12i	$a1, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s6, $a1, %got_pc_lo12(cont_CURRENTBINDING)
 	st.d	$a0, $s6, 0
-	st.d	$s1, $s7, 0
-	st.d	$fp, $s7, 8
+	st.d	$s1, $s7, -1496
+	st.d	$fp, $s7, -1488
 	pcalau12i	$a1, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s1, $a1, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a1, $s1, 0
-	st.d	$a1, $s7, 16
+	st.d	$a1, $s7, -1480
 	st.d	$a0, $s1, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s7, $a0, %got_pc_lo12(cont_BINDINGS)
@@ -3541,50 +3532,49 @@ st_ExistInstance:                       # @st_ExistInstance
 	beqz	$a0, .LBB19_11
 .LBB19_3:                               # %st_Exist.exit.thread12
 	addu16i.d	$a0, $fp, 1
-	addi.d	$a1, $a0, -1496
 	pcalau12i	$s4, %pc_hi20(st_CURRENT_RETRIEVAL)
-	ori	$a2, $zero, 4
-	st.w	$a2, $s4, %pc_lo12(st_CURRENT_RETRIEVAL)
-	pcalau12i	$a2, %pc_hi20(st_WHICH_CONTEXTS)
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	st.b	$zero, $a2, %pc_lo12(st_WHICH_CONTEXTS)
+	ori	$a1, $zero, 4
+	st.w	$a1, $s4, %pc_lo12(st_CURRENT_RETRIEVAL)
+	pcalau12i	$a1, %pc_hi20(st_WHICH_CONTEXTS)
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.b	$zero, $a1, %pc_lo12(st_WHICH_CONTEXTS)
 	pcalau12i	$s8, %pc_hi20(st_STACKPOINTER)
-	ld.w	$a2, $s8, %pc_lo12(st_STACKPOINTER)
+	ld.w	$a1, $s8, %pc_lo12(st_STACKPOINTER)
 	pcalau12i	$s3, %pc_hi20(st_INDEX_CONTEXT)
 	st.d	$fp, $s3, %pc_lo12(st_INDEX_CONTEXT)
 	pcalau12i	$s2, %pc_hi20(st_STACKSAVE)
-	st.w	$a2, $s2, %pc_lo12(st_STACKSAVE)
-	addi.d	$a0, $a0, -1504
+	st.w	$a1, $s2, %pc_lo12(st_STACKSAVE)
+	addi.d	$a2, $a0, -1504
 	pcalau12i	$a3, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s5, $a3, %got_pc_lo12(cont_CURRENTBINDING)
-	st.d	$a0, $s5, 0
-	st.d	$s1, $a1, 0
-	st.d	$fp, $a1, 8
+	st.d	$a2, $s5, 0
+	st.d	$s1, $a0, -1496
+	st.d	$fp, $a0, -1488
 	pcalau12i	$a3, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s1, $a3, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a3, $s1, 0
-	st.d	$a3, $a1, 16
-	st.d	$a0, $s1, 0
+	st.d	$a3, $a0, -1480
+	st.d	$a2, $s1, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s6, $a0, %got_pc_lo12(cont_BINDINGS)
 	ld.w	$a0, $s6, 0
 	addi.d	$a0, $a0, 1
-	pcalau12i	$a1, %got_pc_hi20(cont_STACKPOINTER)
-	ld.d	$s7, $a1, %got_pc_lo12(cont_STACKPOINTER)
-	ld.w	$a1, $s7, 0
+	pcalau12i	$a2, %got_pc_hi20(cont_STACKPOINTER)
+	ld.d	$s7, $a2, %got_pc_lo12(cont_STACKPOINTER)
+	ld.w	$a2, $s7, 0
 	pcalau12i	$a3, %got_pc_hi20(cont_STACK)
 	ld.d	$a3, $a3, %got_pc_lo12(cont_STACK)
-	alsl.d	$a4, $a1, $a3, 2
-	slli.d	$a5, $a1, 2
+	alsl.d	$a4, $a2, $a3, 2
+	slli.d	$a5, $a2, 2
 	stx.w	$a0, $a3, $a5
 	ld.d	$a0, $s0, 8
-	addi.d	$a3, $a2, 1
+	addi.d	$a3, $a1, 1
 	st.w	$a3, $s8, %pc_lo12(st_STACKPOINTER)
-	slli.d	$a2, $a2, 3
+	slli.d	$a1, $a1, 3
 	pcalau12i	$a3, %pc_hi20(st_STACK)
 	addi.d	$a3, $a3, %pc_lo12(st_STACK)
-	stx.d	$a0, $a3, $a2
-	addi.d	$a0, $a1, 2
+	stx.d	$a0, $a3, $a1
+	addi.d	$a0, $a2, 2
 	st.w	$a0, $s7, 0
 	st.w	$zero, $a4, 4
 	st.w	$zero, $s6, 0
@@ -3882,8 +3872,7 @@ st_ExistInstancePreTest:                # @st_ExistInstancePreTest
 	ld.d	$a0, $s0, 8
 	beqz	$a0, .LBB21_11
 .LBB21_3:                               # %st_Exist.exit.thread13
-	addu16i.d	$s6, $fp, 1
-	addi.d	$s7, $s6, -1496
+	addu16i.d	$s7, $fp, 1
 	pcalau12i	$s5, %pc_hi20(st_CURRENT_RETRIEVAL)
 	ori	$a0, $zero, 5
 	st.w	$a0, $s5, %pc_lo12(st_CURRENT_RETRIEVAL)
@@ -3902,16 +3891,16 @@ st_ExistInstancePreTest:                # @st_ExistInstancePreTest
 	jirl	$ra, $ra, 0
 	pcalau12i	$s8, %pc_hi20(st_EXIST_MINMAX)
 	st.h	$a0, $s8, %pc_lo12(st_EXIST_MINMAX)
-	addi.d	$a0, $s6, -1504
+	addi.d	$a0, $s7, -1504
 	pcalau12i	$a1, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s6, $a1, %got_pc_lo12(cont_CURRENTBINDING)
 	st.d	$a0, $s6, 0
-	st.d	$s1, $s7, 0
-	st.d	$fp, $s7, 8
+	st.d	$s1, $s7, -1496
+	st.d	$fp, $s7, -1488
 	pcalau12i	$a1, %got_pc_hi20(cont_LASTBINDING)
 	ld.d	$s1, $a1, %got_pc_lo12(cont_LASTBINDING)
 	ld.d	$a1, $s1, 0
-	st.d	$a1, $s7, 16
+	st.d	$a1, $s7, -1480
 	st.d	$a0, $s1, 0
 	pcalau12i	$a0, %got_pc_hi20(cont_BINDINGS)
 	ld.d	$s7, $a0, %got_pc_lo12(cont_BINDINGS)

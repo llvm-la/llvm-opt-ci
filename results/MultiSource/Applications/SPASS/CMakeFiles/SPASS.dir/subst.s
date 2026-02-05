@@ -315,30 +315,13 @@ subst_Compose:                          # @subst_Compose
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a1
-	beqz	$a0, .LBB7_14
+	beqz	$a0, .LBB7_16
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s0, $a0
+	beqz	$fp, .LBB7_14
+# %bb.2:                                # %.preheader.preheader
 	move	$s2, $zero
-	bnez	$fp, .LBB7_5
-	.p2align	4, , 16
-.LBB7_2:                                # %.preheader.us.us
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$s3, $s0, 8
-	ld.d	$a0, $s0, 16
-	pcaddu18i	$ra, %call36(term_Copy)
-	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	ori	$a0, $zero, 24
-	pcaddu18i	$ra, %call36(memory_Malloc)
-	jirl	$ra, $ra, 0
-	move	$fp, $a0
-	st.d	$s2, $a0, 0
-	st.w	$s3, $a0, 8
-	st.d	$s1, $a0, 16
-	ld.d	$s0, $s0, 0
-	move	$s2, $a0
-	bnez	$s0, .LBB7_2
-	b	.LBB7_14
+	b	.LBB7_5
 	.p2align	4, , 16
 .LBB7_3:                                # %.loopexit
                                         #   in Loop: Header=BB7_5 Depth=1
@@ -387,7 +370,7 @@ subst_Compose:                          # @subst_Compose
 	bnez	$a0, .LBB7_8
 	b	.LBB7_3
 .LBB7_10:                               # %._crit_edge34
-	beqz	$s2, .LBB7_14
+	beqz	$s2, .LBB7_16
 # %bb.11:                               # %.preheader.i.preheader
 	move	$a1, $fp
 	.p2align	4, , 16
@@ -398,7 +381,28 @@ subst_Compose:                          # @subst_Compose
 	bnez	$a1, .LBB7_12
 # %bb.13:
 	st.d	$s2, $a0, 0
-.LBB7_14:                               # %subst_NUnion.exit
+	b	.LBB7_16
+.LBB7_14:                               # %.preheader.us.us.preheader
+	move	$fp, $zero
+	.p2align	4, , 16
+.LBB7_15:                               # %.preheader.us.us
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$s2, $s0, 8
+	ld.d	$a0, $s0, 16
+	move	$s3, $fp
+	pcaddu18i	$ra, %call36(term_Copy)
+	jirl	$ra, $ra, 0
+	move	$s1, $a0
+	ori	$a0, $zero, 24
+	pcaddu18i	$ra, %call36(memory_Malloc)
+	jirl	$ra, $ra, 0
+	move	$fp, $a0
+	st.d	$s3, $a0, 0
+	st.w	$s2, $a0, 8
+	st.d	$s1, $a0, 16
+	ld.d	$s0, $s0, 0
+	bnez	$s0, .LBB7_15
+.LBB7_16:                               # %subst_NUnion.exit
 	move	$a0, $fp
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
@@ -1217,20 +1221,20 @@ subst_ExtractMatcher:                   # @subst_ExtractMatcher
 	ld.d	$fp, $a0, 0
 	beqz	$fp, .LBB21_3
 # %bb.1:                                # %.lr.ph.preheader
-	move	$s0, $zero
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB21_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$s1, $fp, 0
-	ld.d	$s2, $fp, 8
+	ld.w	$s0, $fp, 0
+	ld.d	$s1, $fp, 8
+	move	$s2, $a0
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $a0, 0
-	st.w	$s1, $a0, 8
-	st.d	$s2, $a0, 16
+	st.d	$s2, $a0, 0
+	st.w	$s0, $a0, 8
+	st.d	$s1, $a0, 16
 	ld.d	$fp, $fp, 24
-	move	$s0, $a0
 	bnez	$fp, .LBB21_2
 	b	.LBB21_4
 .LBB21_3:

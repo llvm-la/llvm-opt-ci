@@ -59,30 +59,31 @@ main:                                   # @main
 	addi.d	$a2, $a2, %pc_lo12(b)
 	ld.d	$a3, $a2, 0
 	ld.d	$a4, $a2, 8
-	add.d	$a0, $a3, $a0
-	sltu	$a3, $a0, $a3
+	add.d	$a5, $a3, $a0
+	sltu	$a0, $a5, $a3
 	add.d	$a1, $a4, $a1
-	add.d	$a1, $a1, $a3
-	st.d	$a0, $a2, 0
-	pcalau12i	$a3, %pc_hi20(d)
-	ld.w	$a3, $a3, %pc_lo12(d)
-	st.d	$a1, $a2, 8
+	add.d	$a0, $a1, $a0
+	st.d	$a5, $a2, 0
+	pcalau12i	$a1, %pc_hi20(d)
+	ld.w	$a1, $a1, %pc_lo12(d)
+	st.d	$a0, $a2, 8
 	lu12i.w	$a2, 20
 	ori	$a2, $a2, 2427
-	xor	$a2, $a3, $a2
-	sltu	$a2, $zero, $a2
-	pcalau12i	$a3, %pc_hi20(c)
-	st.w	$a2, $a3, %pc_lo12(c)
-	pcalau12i	$a2, %pc_hi20(g0)
-	st.d	$a0, $a2, %pc_lo12(g0)
-	pcalau12i	$a2, %pc_hi20(g1)
-	or	$a0, $a0, $a1
-	st.d	$a1, $a2, %pc_lo12(g1)
-	bnez	$a0, .LBB2_2
+	xor	$a1, $a1, $a2
+	sltu	$a1, $zero, $a1
+	pcalau12i	$a2, %pc_hi20(c)
+	st.w	$a1, $a2, %pc_lo12(c)
+	pcalau12i	$a1, %pc_hi20(g0)
+	st.d	$a5, $a1, %pc_lo12(g0)
+	pcalau12i	$a1, %pc_hi20(g1)
+	st.d	$a0, $a1, %pc_lo12(g1)
+	bnez	$a5, .LBB2_3
 # %bb.1:
+	bnez	$a0, .LBB2_3
+# %bb.2:
 	move	$a0, $zero
 	ret
-.LBB2_2:
+.LBB2_3:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end2:

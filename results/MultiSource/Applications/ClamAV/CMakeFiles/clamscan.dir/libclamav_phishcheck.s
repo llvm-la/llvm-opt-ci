@@ -2027,7 +2027,7 @@ cleanupURL:                             # @cleanupURL
 .LBB10_59:                              # %iter.check
 	add.d	$a1, $s8, $fp
 	add.d	$a0, $s7, $s5
-	addi.d	$a2, $a0, 1
+	addi.d	$a2, $s2, 1
 	sltu	$a3, $a1, $a2
 	masknez	$a4, $a1, $a3
 	maskeqz	$a2, $a2, $a3

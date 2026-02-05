@@ -21,21 +21,20 @@ _ZN10CByteSwap26FilterEPhj:             # @_ZN10CByteSwap26FilterEPhj
 	move	$a0, $zero
 	ret
 .LBB1_2:                                # %.lr.ph.preheader
-	move	$a3, $zero
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB1_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $a3, 1
-	bstrpick.d	$a4, $a0, 31, 0
-	ldx.b	$a0, $a1, $a4
-	bstrpick.d	$a5, $a3, 31, 0
-	ldx.b	$a6, $a1, $a5
-	stx.b	$a0, $a1, $a5
-	addi.w	$a0, $a3, 2
-	addi.w	$a5, $a3, 4
+	bstrpick.d	$a3, $a0, 31, 0
+	addi.d	$a4, $a0, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	ldx.b	$a5, $a1, $a4
+	ldx.b	$a6, $a1, $a3
+	stx.b	$a5, $a1, $a3
 	stx.b	$a6, $a1, $a4
-	move	$a3, $a0
-	bgeu	$a2, $a5, .LBB1_3
+	addi.w	$a3, $a0, 4
+	addi.w	$a0, $a0, 2
+	bgeu	$a2, $a3, .LBB1_3
 # %bb.4:                                # %._crit_edge
 	ret
 .Lfunc_end1:
@@ -62,29 +61,28 @@ _ZN10CByteSwap46FilterEPhj:             # @_ZN10CByteSwap46FilterEPhj
 	move	$a0, $zero
 	ret
 .LBB3_2:                                # %.lr.ph.preheader
-	move	$a3, $zero
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB3_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $a3, 31, 0
-	addi.d	$a4, $a3, 1
+	bstrpick.d	$a3, $a0, 31, 0
+	addi.d	$a4, $a0, 1
 	bstrpick.d	$a4, $a4, 31, 0
-	addi.d	$a5, $a3, 3
+	addi.d	$a5, $a0, 3
 	bstrpick.d	$a5, $a5, 31, 0
 	ldx.b	$a6, $a1, $a5
-	addi.d	$a7, $a3, 2
+	addi.d	$a7, $a0, 2
 	bstrpick.d	$a7, $a7, 31, 0
 	ldx.b	$t0, $a1, $a7
 	ldx.b	$t1, $a1, $a4
-	ldx.b	$t2, $a1, $a0
-	stx.b	$a6, $a1, $a0
+	ldx.b	$t2, $a1, $a3
+	stx.b	$a6, $a1, $a3
 	stx.b	$t0, $a1, $a4
 	stx.b	$t1, $a1, $a7
-	addi.w	$a0, $a3, 4
-	addi.w	$a4, $a3, 8
 	stx.b	$t2, $a1, $a5
-	move	$a3, $a0
-	bgeu	$a2, $a4, .LBB3_3
+	addi.w	$a3, $a0, 8
+	addi.w	$a0, $a0, 4
+	bgeu	$a2, $a3, .LBB3_3
 # %bb.4:                                # %._crit_edge
 	ret
 .Lfunc_end3:

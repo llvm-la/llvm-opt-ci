@@ -552,26 +552,25 @@ recSearch:                              # @recSearch
 	ld.d	$a0, $a0, %pc_lo12(workList)
 	add.w	$a1, $a1, $t0
 	alsl.d	$a0, $a1, $a0, 2
-	ld.w	$a1, $a0, -4
-	pcalau12i	$a0, %pc_hi20(goal)
-	ld.w	$a2, $a0, %pc_lo12(goal)
-	sub.w	$a0, $a1, $a2
+	pcalau12i	$a1, %pc_hi20(goal)
+	ld.w	$a1, $a1, %pc_lo12(goal)
 	pcalau12i	$a4, %pc_hi20(best)
 	ld.w	$a3, $a4, %pc_lo12(best)
-	srai.d	$a5, $a0, 31
-	xor	$a0, $a0, $a5
-	sub.w	$a0, $a0, $a5
-	sub.w	$a3, $a3, $a2
-	srai.d	$a5, $a3, 31
-	xor	$a3, $a3, $a5
-	sub.w	$a3, $a3, $a5
+	ld.w	$a2, $a0, -4
+	sub.d	$a0, $a3, $a1
+	sub.d	$a3, $a2, $a1
+	vinsgr2vr.w	$vr0, $a3, 0
+	vinsgr2vr.w	$vr0, $a0, 1
+	vsigncov.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$a0, $vr0, 0
+	vpickve2gr.w	$a3, $vr0, 1
 	bgeu	$a0, $a3, .LBB8_1
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(solution)
 	ld.d	$a3, $a0, %pc_lo12(solution)
 	pcalau12i	$a0, %pc_hi20(combList)
 	ld.d	$a0, $a0, %pc_lo12(combList)
-	st.w	$a1, $a4, %pc_lo12(best)
+	st.w	$a2, $a4, %pc_lo12(best)
 	pcalau12i	$a4, %pc_hi20(bestDepth)
 	st.w	$t0, $a4, %pc_lo12(bestDepth)
 	blez	$t0, .LBB8_7
@@ -595,7 +594,7 @@ recSearch:                              # @recSearch
 	alsl.d	$a4, $t0, $a4, 2
 	add.d	$a3, $a3, $a4
 	st.w	$zero, $a3, 8
-	bne	$a1, $a2, .LBB8_1
+	bne	$a2, $a1, .LBB8_1
 # %bb.8:
 	move	$a1, $t0
 	pcaddu18i	$ra, %call36(printSolution)

@@ -115,7 +115,7 @@ FlushGalley:                            # @FlushGalley
                                         #     Child Loop BB0_271 Depth 2
                                         #     Child Loop BB0_273 Depth 2
                                         #     Child Loop BB0_278 Depth 2
-                                        #     Child Loop BB0_378 Depth 2
+                                        #     Child Loop BB0_377 Depth 2
                                         #     Child Loop BB0_401 Depth 2
                                         #       Child Loop BB0_402 Depth 3
                                         #       Child Loop BB0_405 Depth 3
@@ -1548,7 +1548,7 @@ FlushGalley:                            # @FlushGalley
 	bnez	$a0, .LBB0_178
 	b	.LBB0_179
 	.p2align	4, , 16
-.LBB0_177:                              # %.thread1717
+.LBB0_177:                              # %.thread1716
                                         #   in Loop: Header=BB0_169 Depth=2
 	st.d	$s2, $s5, 0
 .LBB0_178:                              #   in Loop: Header=BB0_169 Depth=2
@@ -1859,8 +1859,8 @@ FlushGalley:                            # @FlushGalley
 	ld.d	$s7, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$a1, $s7, 96
 	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
 	ori	$s1, $zero, 9
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
 	bnez	$a1, .LBB0_1
 # %bb.211:                              # %._crit_edge1245._crit_edge
                                         #   in Loop: Header=BB0_1 Depth=1
@@ -1901,7 +1901,7 @@ FlushGalley:                            # @FlushGalley
 	jirl	$ra, $ra, 0
 	move	$s0, $fp
 	b	.LBB0_1
-.LBB0_220:                              # %.thread1718
+.LBB0_220:                              # %.thread1717
                                         #   in Loop: Header=BB0_1 Depth=1
 	ld.hu	$a1, $a0, 42
 	andi	$a2, $a1, 1
@@ -2458,7 +2458,7 @@ FlushGalley:                            # @FlushGalley
 	st.d	$s0, $s8, 0
 	bnez	$a0, .LBB0_269
 	b	.LBB0_270
-.LBB0_268:                              # %.thread1716
+.LBB0_268:                              # %.thread1715
                                         #   in Loop: Header=BB0_1 Depth=1
 	st.d	$s0, $s8, 0
 .LBB0_269:                              #   in Loop: Header=BB0_1 Depth=1
@@ -3060,7 +3060,7 @@ FlushGalley:                            # @FlushGalley
 	b	.LBB0_1
 .LBB0_334:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $s7, 104
-	beqz	$a0, .LBB0_366
+	beqz	$a0, .LBB0_381
 .LBB0_335:                              # %.thread
                                         #   in Loop: Header=BB0_1 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(zz_lengths)
@@ -3073,7 +3073,7 @@ FlushGalley:                            # @FlushGalley
 	ld.d	$fp, $a1, %got_pc_lo12(zz_free)
 	slli.d	$a1, $a0, 3
 	ldx.d	$s0, $fp, $a1
-	beqz	$s0, .LBB0_367
+	beqz	$s0, .LBB0_366
 # %bb.336:                              #   in Loop: Header=BB0_1 Depth=1
 	alsl.d	$a0, $a0, $fp, 3
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
@@ -3081,7 +3081,7 @@ FlushGalley:                            # @FlushGalley
 	st.d	$s0, $a1, 0
 	ld.d	$a1, $s0, 0
 	st.d	$a1, $a0, 0
-	b	.LBB0_368
+	b	.LBB0_367
 .LBB0_337:                              #   in Loop: Header=BB0_1 Depth=1
 	beqz	$a0, .LBB0_339
 # %bb.338:                              #   in Loop: Header=BB0_1 Depth=1
@@ -3351,9 +3351,6 @@ FlushGalley:                            # @FlushGalley
 	beq	$a0, $a1, .LBB0_315
 	b	.LBB0_316
 .LBB0_366:                              #   in Loop: Header=BB0_1 Depth=1
-	move	$s0, $s5
-	b	.LBB0_387
-.LBB0_367:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a1, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	move	$s0, $a7
@@ -3364,7 +3361,7 @@ FlushGalley:                            # @FlushGalley
 	pcalau12i	$a0, %got_pc_hi20(zz_hold)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_hold)
 	st.d	$s0, $a0, 0
-.LBB0_368:                              #   in Loop: Header=BB0_1 Depth=1
+.LBB0_367:                              #   in Loop: Header=BB0_1 Depth=1
 	ori	$a0, $zero, 26
 	st.b	$a0, $s0, 32
 	st.d	$s0, $s0, 24
@@ -3379,16 +3376,16 @@ FlushGalley:                            # @FlushGalley
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $fp, $a0
 	st.w	$a2, $s1, 0
-	beqz	$a0, .LBB0_370
-# %bb.369:                              #   in Loop: Header=BB0_1 Depth=1
+	beqz	$a0, .LBB0_369
+# %bb.368:                              #   in Loop: Header=BB0_1 Depth=1
 	alsl.d	$a1, $a2, $fp, 3
 	pcalau12i	$a2, %got_pc_hi20(zz_hold)
 	ld.d	$a2, $a2, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a2, 0
 	ld.d	$a2, $a0, 0
 	st.d	$a2, $a1, 0
-	b	.LBB0_371
-.LBB0_370:                              #   in Loop: Header=BB0_1 Depth=1
+	b	.LBB0_370
+.LBB0_369:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
 	move	$a0, $a2
@@ -3400,7 +3397,7 @@ FlushGalley:                            # @FlushGalley
 	move	$a7, $s1
 	move	$s1, $fp
 	ld.d	$fp, $sp, 152                   # 8-byte Folded Reload
-.LBB0_371:                              #   in Loop: Header=BB0_1 Depth=1
+.LBB0_370:                              #   in Loop: Header=BB0_1 Depth=1
 	st.b	$zero, $a0, 32
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
@@ -3416,8 +3413,8 @@ FlushGalley:                            # @FlushGalley
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a4, $a1, 0
-	beqz	$a4, .LBB0_373
-# %bb.372:                              #   in Loop: Header=BB0_1 Depth=1
+	beqz	$a4, .LBB0_372
+# %bb.371:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a5, $a4, 0
 	pcalau12i	$a6, %got_pc_hi20(zz_tmp)
 	ld.d	$a6, $a6, %got_pc_lo12(zz_tmp)
@@ -3435,12 +3432,12 @@ FlushGalley:                            # @FlushGalley
 	st.d	$a4, $a6, 8
 	st.d	$a0, $a3, 0
 	st.d	$s0, $a1, 0
-	bnez	$a0, .LBB0_374
-	b	.LBB0_375
-.LBB0_373:                              # %.thread1672
+	bnez	$a0, .LBB0_373
+	b	.LBB0_374
+.LBB0_372:                              # %.thread1671
                                         #   in Loop: Header=BB0_1 Depth=1
 	st.d	$s0, $a1, 0
-.LBB0_374:                              #   in Loop: Header=BB0_1 Depth=1
+.LBB0_373:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a4, $s0, 16
 	pcalau12i	$a5, %got_pc_hi20(zz_tmp)
 	ld.d	$a5, $a5, %got_pc_lo12(zz_tmp)
@@ -3450,23 +3447,23 @@ FlushGalley:                            # @FlushGalley
 	st.d	$s0, $a6, 24
 	st.d	$a4, $a0, 16
 	st.d	$a0, $a4, 24
-.LBB0_375:                              #   in Loop: Header=BB0_1 Depth=1
+.LBB0_374:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a4, $s7, 120
-	beqz	$a4, .LBB0_381
-# %bb.376:                              #   in Loop: Header=BB0_1 Depth=1
+	beqz	$a4, .LBB0_380
+# %bb.375:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $a4, 8
-	beq	$a0, $a4, .LBB0_381
-# %bb.377:                              # %.preheader1025.preheader
+	beq	$a0, $a4, .LBB0_380
+# %bb.376:                              # %.preheader1025.preheader
                                         #   in Loop: Header=BB0_1 Depth=1
 	move	$s0, $s5
 	.p2align	4, , 16
-.LBB0_378:                              # %.preheader1025
+.LBB0_377:                              # %.preheader1025
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $a0, 16
 	ld.bu	$a4, $a0, 32
-	beqz	$a4, .LBB0_378
-# %bb.379:                              #   in Loop: Header=BB0_1 Depth=1
+	beqz	$a4, .LBB0_377
+# %bb.378:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.w	$a4, $a0, 48
 	ld.w	$a5, $s7, 160
 	add.d	$a4, $a4, $a5
@@ -3476,7 +3473,7 @@ FlushGalley:                            # @FlushGalley
 	ld.d	$a5, $a0, 24
 	st.d	$a0, $a2, 0
 	beq	$a5, $a0, .LBB0_382
-# %bb.380:                              #   in Loop: Header=BB0_1 Depth=1
+# %bb.379:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a4, $a0, 16
 	st.d	$a5, $a3, 0
 	st.d	$a4, $a5, 16
@@ -3484,11 +3481,13 @@ FlushGalley:                            # @FlushGalley
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
 	b	.LBB0_383
-.LBB0_381:                              #   in Loop: Header=BB0_1 Depth=1
+.LBB0_380:                              #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	st.w	$a0, $s7, 160
+.LBB0_381:                              #   in Loop: Header=BB0_1 Depth=1
+	ori	$s1, $zero, 9
 	move	$s0, $s5
-	b	.LBB0_387
+	b	.LBB0_388
 .LBB0_382:                              #   in Loop: Header=BB0_1 Depth=1
 	move	$a5, $zero
 .LBB0_383:                              #   in Loop: Header=BB0_1 Depth=1
@@ -3646,7 +3645,7 @@ FlushGalley:                            # @FlushGalley
 	bne	$a2, $a3, .LBB0_400
 	b	.LBB0_408
 	.p2align	4, , 16
-.LBB0_407:                              # %.loopexit1006.loopexit2670
+.LBB0_407:                              # %.loopexit1006.loopexit2668
                                         #   in Loop: Header=BB0_401 Depth=2
 	move	$s0, $a1
 	andi	$a2, $a2, 252
@@ -4093,11 +4092,11 @@ FlushGalley:                            # @FlushGalley
 	ld.d	$a0, $s7, 104
 	bnez	$a0, .LBB0_461
 	b	.LBB0_471
-.LBB0_458:                              # %.thread1688
+.LBB0_458:                              # %.thread1687
 	move	$s4, $s0
 	ld.d	$a0, $s7, 8
 	beq	$a0, $s7, .LBB0_460
-# %bb.459:                              # %.thread1706
+# %bb.459:                              # %.thread1705
 	ori	$a3, $zero, 1
 	move	$a0, $s7
 	move	$a1, $s7
@@ -4215,7 +4214,7 @@ FlushGalley:                            # @FlushGalley
 	st.d	$s0, $a3, 0
 	bnez	$a0, .LBB0_470
 	b	.LBB0_471
-.LBB0_469:                              # %.thread1714
+.LBB0_469:                              # %.thread1713
 	st.d	$s0, $a3, 0
 .LBB0_470:
 	ld.d	$a1, $s0, 16

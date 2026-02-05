@@ -4,7 +4,7 @@
 	.p2align	5
 	.type	f,@function
 f:                                      # @f
-# %bb.0:                                # %select.unfold12.preheader
+# %bb.0:                                # %select.unfold.preheader
 	pcalau12i	$a0, %pc_hi20(a)
 	ld.w	$a0, $a0, %pc_lo12(a)
 	pcalau12i	$a1, %pc_hi20(x)
@@ -14,7 +14,7 @@ f:                                      # @f
 .LBB0_1:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	b	.LBB0_1
-.LBB0_2:                                # %select.unfold12.preheader.split
+.LBB0_2:                                # %select.unfold.preheader.split
 	pcalau12i	$a0, %pc_hi20(d)
 	ld.hu	$a0, $a0, %pc_lo12(d)
 	beqz	$a0, .LBB0_5
@@ -26,7 +26,7 @@ f:                                      # @f
 	move	$a0, $zero
 	ret
 	.p2align	4, , 16
-.LBB0_5:                                # %select.unfold12
+.LBB0_5:                                # %select.unfold
                                         # =>This Inner Loop Header: Depth=1
 	b	.LBB0_5
 .LBB0_6:

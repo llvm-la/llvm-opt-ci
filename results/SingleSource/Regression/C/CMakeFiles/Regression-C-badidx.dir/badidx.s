@@ -65,26 +65,25 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.d	$xr2, $xr0, $xr0
-	xvmul.d	$xr3, $xr1, $xr1
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr4, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr4, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr4, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr4, $a5, 3
-	xvpickve2gr.d	$a5, $xr2, 0
+	xvpickve2gr.d	$a5, $xr1, 0
+	vinsgr2vr.w	$vr2, $a5, 0
+	xvpickve2gr.d	$a5, $xr1, 1
+	vinsgr2vr.w	$vr2, $a5, 1
+	xvpickve2gr.d	$a5, $xr1, 2
+	vinsgr2vr.w	$vr2, $a5, 2
+	xvpickve2gr.d	$a5, $xr1, 3
+	vinsgr2vr.w	$vr2, $a5, 3
+	xvpickve2gr.d	$a5, $xr0, 0
 	vinsgr2vr.w	$vr3, $a5, 0
-	xvpickve2gr.d	$a5, $xr2, 1
+	xvpickve2gr.d	$a5, $xr0, 1
 	vinsgr2vr.w	$vr3, $a5, 1
-	xvpickve2gr.d	$a5, $xr2, 2
+	xvpickve2gr.d	$a5, $xr0, 2
 	vinsgr2vr.w	$vr3, $a5, 2
-	xvpickve2gr.d	$a5, $xr2, 3
+	xvpickve2gr.d	$a5, $xr0, 3
 	vinsgr2vr.w	$vr3, $a5, 3
-	xvpermi.q	$xr4, $xr3, 2
-	xvst	$xr4, $a3, 0
+	xvpermi.q	$xr2, $xr3, 2
+	xvmul.w	$xr2, $xr2, $xr2
+	xvst	$xr2, $a3, 0
 	xvaddi.du	$xr1, $xr1, 8
 	xvaddi.du	$xr0, $xr0, 8
 	addi.d	$a4, $a4, -8

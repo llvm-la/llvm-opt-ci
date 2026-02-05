@@ -1274,17 +1274,15 @@ PDFPage_Translate:                      # @PDFPage_Translate
 	pcaddu18i	$ra, %call36(PDFPage_Write)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(g_page_h_origin)
-	ld.w	$a1, $a0, %pc_lo12(g_page_h_origin)
-	movgr2fr.w	$fa0, $a1
+	fld.s	$fa0, $a0, %pc_lo12(g_page_h_origin)
 	ffint.s.w	$fa0, $fa0
 	fadd.s	$fa0, $fs1, $fa0
 	pcalau12i	$a1, %pc_hi20(g_page_v_origin)
-	ld.w	$a2, $a1, %pc_lo12(g_page_v_origin)
+	fld.s	$fa1, $a1, %pc_lo12(g_page_v_origin)
 	ftintrz.w.s	$fa0, $fa0
-	movfr2gr.s	$a3, $fa0
-	st.w	$a3, $a0, %pc_lo12(g_page_h_origin)
-	movgr2fr.w	$fa0, $a2
-	ffint.s.w	$fa0, $fa0
+	movfr2gr.s	$a2, $fa0
+	st.w	$a2, $a0, %pc_lo12(g_page_h_origin)
+	ffint.s.w	$fa0, $fa1
 	fadd.s	$fa0, $fs0, $fa0
 	ftintrz.w.s	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
@@ -1303,146 +1301,203 @@ PDFPage_Translate:                      # @PDFPage_Translate
 	.type	PDFPage_WriteGraphic,@function
 PDFPage_WriteGraphic:                   # @PDFPage_WriteGraphic
 # %bb.0:
-	addi.d	$sp, $sp, -784
-	st.d	$ra, $sp, 776                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 768                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 760                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 752                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 744                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 736                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 728                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 720                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 712                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 704                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 696                   # 8-byte Folded Spill
-	move	$s7, $a1
+	addi.d	$sp, $sp, -880
+	st.d	$ra, $sp, 872                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 864                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 856                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 848                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 840                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 832                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 824                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 816                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 808                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 800                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 792                   # 8-byte Folded Spill
+	move	$s4, $a1
 	ld.bu	$a1, $a1, 0
-	beqz	$a1, .LBB17_86
+	beqz	$a1, .LBB17_87
 # %bb.1:
 	move	$fp, $a0
 	pcalau12i	$s1, %pc_hi20(g_expr_depth)
 	ld.w	$a0, $s1, %pc_lo12(g_expr_depth)
 	beqz	$a0, .LBB17_4
 # %bb.2:
-	addi.d	$a1, $sp, 180
-	addi.d	$a2, $sp, 176
-	move	$a0, $s7
+	addi.d	$a1, $sp, 276
+	addi.d	$a2, $sp, 272
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(PDFPage_CollectExpr)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 180
-	move	$s7, $a0
+	ld.w	$a1, $sp, 276
+	move	$s4, $a0
 	beqz	$a1, .LBB17_4
 # %bb.3:
-	fld.s	$fa0, $sp, 176
+	fld.s	$fa0, $sp, 272
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
-	addi.d	$a0, $sp, 184
+	addi.d	$a0, $sp, 280
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 184
+	addi.d	$a0, $sp, 280
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(g_link_depth)
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(g_link_depth)
 	bnez	$a0, .LBB17_5
 	b	.LBB17_6
 .LBB17_4:
 	move	$s0, $zero
 	pcalau12i	$a0, %pc_hi20(g_link_depth)
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(g_link_depth)
 	beqz	$a0, .LBB17_6
 .LBB17_5:
-	move	$a0, $s7
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(PDFPage_CollectLink)
 	jirl	$ra, $ra, 0
-	move	$s7, $a0
+	move	$s4, $a0
 .LBB17_6:
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	ld.bu	$a0, $s7, 0
-	addi.d	$s5, $sp, 184
-	add.d	$s8, $s5, $s0
-	beqz	$a0, .LBB17_80
+	st.d	$fp, $sp, 216                   # 8-byte Folded Spill
+	ld.bu	$a0, $s4, 0
+	addi.d	$s6, $sp, 280
+	add.d	$s3, $s6, $s0
+	beqz	$a0, .LBB17_81
 # %bb.7:                                # %.lr.ph.preheader
 	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
-	ori	$fp, $zero, 512
+	ori	$s7, $zero, 512
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
-	ld.d	$s4, $a1, %got_pc_lo12(no_fpos)
+	ld.d	$fp, $a1, %got_pc_lo12(no_fpos)
 	pcalau12i	$a1, %pc_hi20(.L.str.75)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.75)
-	ori	$s3, $zero, 95
-	pcalau12i	$a1, %pc_hi20(.L.str.109)
-	addi.d	$s2, $a1, %pc_lo12(.L.str.109)
-	pcalau12i	$a1, %pc_hi20(g_graphic_keywords)
-	addi.d	$a1, $a1, %pc_lo12(g_graphic_keywords)
-	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(g_graphics_vars)
-	addi.d	$a1, $a1, %pc_lo12(g_graphics_vars)
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.17)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.17)
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.110)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.110)
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.111)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.111)
-	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.112)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.112)
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.113)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.113)
-	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	ori	$s8, $zero, 95
+	lu12i.w	$a1, 501399
+	ori	$a2, $a1, 888
+	st.d	$a2, $sp, 264                   # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(g_graphic_keywords)
+	addi.d	$a2, $a2, %pc_lo12(g_graphic_keywords)
+	st.d	$a2, $sp, 256                   # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(g_graphics_vars)
+	addi.d	$a2, $a2, %pc_lo12(g_graphics_vars)
+	st.d	$a2, $sp, 248                   # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(.L.str.17)
+	addi.d	$a2, $a2, %pc_lo12(.L.str.17)
+	st.d	$a2, $sp, 240                   # 8-byte Folded Spill
+	ori	$a1, $a1, 889
+	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
+	lu12i.w	$a1, 468502
+	ori	$a2, $a1, 3448
+	st.d	$a2, $sp, 224                   # 8-byte Folded Spill
+	lu12i.w	$a2, 440038
+	ori	$a2, $a2, 2412
+	ori	$a1, $a1, 3449
+	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	move	$a1, $a2
+	lu32i.d	$a1, -36001
+	lu52i.d	$a1, $a1, 1878
+	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	lu12i.w	$a1, 407335
+	ori	$a1, $a1, 1391
+	lu32i.d	$a1, -246427
+	lu52i.d	$a1, $a1, 963
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(g_link_keywords)
 	addi.d	$a1, $a1, %pc_lo12(g_link_keywords)
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(g_link_index)
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(g_link_keyword)
+	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+	move	$a1, $a2
+	lu32i.d	$a1, -498337
+	lu52i.d	$a1, $a1, 1863
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	lu12i.w	$a1, 399079
+	ori	$a1, $a1, 613
+	lu32i.d	$a1, -246420
+	lu52i.d	$a1, $a1, 963
+	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	move	$a1, $a2
+	lu32i.d	$a1, 152927
+	lu52i.d	$a1, $a1, 1173
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	lu12i.w	$a1, 337237
+	ori	$a1, $a1, 3947
+	lu32i.d	$a1, -246455
+	lu52i.d	$a1, $a1, 963
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	lu32i.d	$a2, 95327
+	lu52i.d	$a4, $a2, 1830
+	lu12i.w	$a1, 415351
+	ori	$a1, $a1, 609
+	lu32i.d	$a1, -246412
+	lu52i.d	$a1, $a1, 963
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	lu12i.w	$a1, 390982
+	ori	$a1, $a1, 1383
+	lu32i.d	$a1, 159590
+	lu52i.d	$a1, $a1, 1527
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	lu12i.w	$a1, 456455
+	ori	$a1, $a1, 2149
+	lu32i.d	$a1, -166798
+	lu52i.d	$a1, $a1, 963
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
+	lu12i.w	$a1, 427847
+	ori	$a1, $a1, 1377
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	lu12i.w	$a1, 251686
+	ori	$a1, $a1, 3944
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	lu12i.w	$a1, 444230
+	ori	$a1, $a1, 2420
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.114)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.114)
+	lu12i.w	$a1, 3
+	ori	$a1, $a1, 3429
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.115)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.115)
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(.L.str.116)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.116)
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a1, 435751
 	ori	$a1, $a1, 1395
 	lu32i.d	$a1, 287589
 	lu52i.d	$a1, $a1, 983
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	lu12i.w	$a1, 489366
+	ori	$a1, $a1, 1387
+	lu32i.d	$a1, 291439
+	lu52i.d	$a1, $a1, 1846
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	lu12i.w	$a1, 6
+	ori	$a1, $a1, 1121
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	lu12i.w	$a1, 7
+	ori	$a1, $a1, 1395
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	lu12i.w	$a1, 439862
 	ori	$a1, $a1, 2416
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	lu12i.w	$a1, 5
 	ori	$a1, $a1, 3935
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	move	$s2, $a4
 	b	.LBB17_10
 	.p2align	4, , 16
 .LBB17_8:                               #   in Loop: Header=BB17_10 Depth=1
-	addi.d	$s6, $s7, 1
+	addi.d	$s5, $s4, 1
 	addi.d	$s0, $s0, 1
-	st.b	$a0, $s8, 0
+	st.b	$a0, $s3, 0
 .LBB17_9:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.bu	$a0, $s6, 0
-	add.d	$s8, $s5, $s0
-	move	$s7, $s6
-	beqz	$a0, .LBB17_80
+	ld.bu	$a0, $s5, 0
+	add.d	$s3, $s6, $s0
+	move	$s4, $s5
+	beqz	$a0, .LBB17_81
 .LBB17_10:                              # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB17_75 Depth 2
-                                        #     Child Loop BB17_47 Depth 2
-	blt	$s0, $fp, .LBB17_12
+                                        #     Child Loop BB17_46 Depth 2
+	blt	$s0, $s7, .LBB17_12
 # %bb.11:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a4, $s4, 0
+	ld.d	$a4, $fp, 0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 2
 	move	$a2, $s1
@@ -1450,178 +1505,200 @@ PDFPage_WriteGraphic:                   # @PDFPage_WriteGraphic
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $s7, 0
+	move	$a4, $s2
+	ld.bu	$a0, $s4, 0
 .LBB17_12:                              # %Assert.exit
                                         #   in Loop: Header=BB17_10 Depth=1
-	bne	$a0, $s3, .LBB17_8
+	bne	$a0, $s8, .LBB17_8
 # %bb.13:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.bu	$a1, $s7, 1
-	bne	$a1, $s3, .LBB17_8
+	ld.bu	$a1, $s4, 1
+	bne	$a1, $s8, .LBB17_8
 # %bb.14:                               #   in Loop: Header=BB17_10 Depth=1
-	addi.d	$s6, $s7, 2
-	ori	$a2, $zero, 5
-	move	$a0, $s2
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s4, 2
+	ld.bu	$a1, $s4, 6
+	ld.d	$a2, $sp, 264                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 101
+	or	$a0, $a0, $a1
+	addi.d	$s5, $s4, 2
 	beqz	$a0, .LBB17_35
 # %bb.15:                               #   in Loop: Header=BB17_10 Depth=1
-	ori	$a2, $zero, 5
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s5, 0
+	ld.bu	$a1, $s5, 4
+	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 101
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB17_36
 # %bb.16:                               #   in Loop: Header=BB17_10 Depth=1
-	ori	$a2, $zero, 5
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s5, 0
+	ld.bu	$a1, $s5, 4
+	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 107
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB17_37
 # %bb.17:                               #   in Loop: Header=BB17_10 Depth=1
-	ori	$a2, $zero, 5
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $s5, 0
+	ld.bu	$a1, $s5, 4
+	ld.d	$a2, $sp, 208                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 107
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB17_38
 # %bb.18:                               # %PDFKeyword_Find.exit.thread.preheader
                                         #   in Loop: Header=BB17_10 Depth=1
-	ori	$a2, $zero, 14
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_41
+	ld.d	$a0, $s5, 0
+	ld.d	$a1, $s5, 6
+	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_40
 # %bb.19:                               # %PDFKeyword_Find.exit.thread.1
                                         #   in Loop: Header=BB17_10 Depth=1
-	ori	$a2, $zero, 16
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_42
+	ld.d	$a0, $s5, 0
+	ld.d	$a1, $s5, 8
+	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_41
 # %bb.20:                               # %PDFKeyword_Find.exit.thread.2
                                         #   in Loop: Header=BB17_10 Depth=1
-	ori	$a2, $zero, 11
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_43
+	ld.d	$a0, $s5, 0
+	ld.d	$a1, $s5, 3
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_42
 # %bb.21:                               # %PDFKeyword_Find.exit.thread.3
                                         #   in Loop: Header=BB17_10 Depth=1
-	ori	$a2, $zero, 14
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_44
+	ld.d	$a0, $s5, 0
+	ld.d	$a1, $s5, 6
+	xor	$a0, $a0, $a4
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_43
 # %bb.22:                               # %PDFKeyword_Find.exit.thread.4
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.117)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.117)
-	ori	$a2, $zero, 25
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_45
+	ld.d	$a0, $s5, 0
+	ld.d	$a1, $s5, 8
+	ld.d	$a2, $s5, 16
+	ld.bu	$a3, $s5, 24
+	xor	$a0, $a0, $a4
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	xor	$a1, $a1, $a4
+	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	xor	$a2, $a2, $a4
+	xori	$a3, $a3, 60
+	or	$a0, $a0, $a1
+	or	$a1, $a2, $a3
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_44
 # %bb.23:                               # %PDFKeyword_Find.exit81.thread.preheader
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.118)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.118)
-	ori	$a2, $zero, 7
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_49
+	ld.w	$a0, $s5, 0
+	ld.w	$a1, $s5, 3
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_48
 # %bb.24:                               # %PDFKeyword_Find.exit81.thread.1
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.119)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.119)
-	ori	$a2, $zero, 6
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_53
+	ld.w	$a0, $s5, 0
+	ld.hu	$a1, $s5, 4
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_52
 # %bb.25:                               # %PDFKeyword_Find.exit81.thread.2
                                         #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a0, $s6, 0
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB17_57
+	ld.d	$a0, $s5, 0
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	beq	$a0, $a1, .LBB17_56
 # %bb.26:                               # %PDFKeyword_Find.exit81.thread.3
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.121)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.121)
-	ori	$a2, $zero, 9
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_61
+	ld.d	$a0, $s5, 0
+	ld.bu	$a1, $s5, 8
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 61
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_60
 # %bb.27:                               # %PDFKeyword_Find.exit87.thread.preheader
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.126)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.126)
-	ori	$a2, $zero, 3
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_65
+	ld.hu	$a0, $s5, 0
+	ld.bu	$a1, $s5, 2
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 100
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_64
 # %bb.28:                               # %PDFKeyword_Find.exit87.thread.1
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.127)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.127)
-	ori	$a2, $zero, 3
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_66
+	ld.hu	$a0, $s5, 0
+	ld.bu	$a1, $s5, 2
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 98
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_65
 # %bb.29:                               # %PDFKeyword_Find.exit87.thread.2
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.128)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.128)
-	ori	$a2, $zero, 3
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_70
+	ld.hu	$a0, $s5, 0
+	ld.bu	$a1, $s5, 2
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 1389
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 108
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_69
 # %bb.30:                               # %PDFKeyword_Find.exit87.thread.3
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.129)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.129)
-	ori	$a2, $zero, 3
-	ori	$s7, $zero, 3
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_74
+	ld.hu	$a0, $s5, 0
+	ld.bu	$a1, $s5, 2
+	lu12i.w	$a3, 6
+	ori	$a2, $a3, 2404
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 118
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB17_70
 # %bb.31:                               # %PDFKeyword_Find.exit87.thread.4
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.130)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.130)
-	ori	$a2, $zero, 3
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.hu	$a0, $s5, 0
+	ld.bu	$a1, $s5, 2
+	ori	$a2, $a3, 2419
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 110
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB17_71
 # %bb.32:                               # %PDFKeyword_Find.exit87.thread.5
                                         #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$a0, %pc_hi20(.L.str.131)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.131)
-	ori	$a2, $zero, 3
-	move	$a1, $s6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.hu	$a0, $s5, 0
+	ld.bu	$a1, $s5, 2
+	ori	$a2, $a3, 3939
+	xor	$a0, $a0, $a2
+	xori	$a1, $a1, 115
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB17_72
 # %bb.33:                               # %PDFKeyword_Find.exit87.thread.6
                                         #   in Loop: Header=BB17_10 Depth=1
-	ld.w	$a0, $s6, 0
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$a0, $s5, 0
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB17_73
 # %bb.34:                               # %PDFKeyword_Find.exit94.thread
                                         #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a4, $s4, 0
+	ld.d	$a4, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.20)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.20)
 	ori	$a0, $zero, 48
@@ -1629,254 +1706,260 @@ PDFPage_WriteGraphic:                   # @PDFPage_WriteGraphic
 	ori	$a3, $zero, 2
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	st.h	$a0, $s8, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	st.h	$a0, $s3, 0
 	addi.d	$s0, $s0, 2
+	move	$a4, $s2
 	b	.LBB17_9
 .LBB17_35:                              #   in Loop: Header=BB17_10 Depth=1
-	move	$s7, $zero
+	move	$s4, $zero
 	b	.LBB17_39
 .LBB17_36:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 1
+	ori	$s4, $zero, 1
 	b	.LBB17_39
 .LBB17_37:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 2
+	ori	$s4, $zero, 2
 	b	.LBB17_39
 .LBB17_38:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 3
+	ori	$s4, $zero, 3
 	.p2align	4, , 16
 .LBB17_39:                              # %PDFKeyword_Find.exit
                                         #   in Loop: Header=BB17_10 Depth=1
-	slli.d	$a0, $s7, 3
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	slli.d	$a0, $s4, 3
+	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	ldx.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	slli.d	$a1, $s7, 2
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
+	slli.d	$a1, $s4, 2
+	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
 	ldx.w	$a2, $a2, $a1
-	add.d	$s6, $s6, $a0
-	move	$a0, $s8
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-.LBB17_40:                              #   in Loop: Header=BB17_10 Depth=1
+	add.d	$s5, $s5, $a0
+	move	$a0, $s3
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
-	move	$a0, $s8
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	add.d	$s0, $a0, $s0
+	move	$a4, $s2
 	b	.LBB17_9
+.LBB17_40:                              #   in Loop: Header=BB17_10 Depth=1
+	move	$s5, $zero
+	b	.LBB17_45
 .LBB17_41:                              #   in Loop: Header=BB17_10 Depth=1
-	move	$s8, $zero
-	b	.LBB17_46
+	ori	$s5, $zero, 1
+	b	.LBB17_45
 .LBB17_42:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s8, $zero, 1
-	b	.LBB17_46
+	ori	$s5, $zero, 2
+	b	.LBB17_45
 .LBB17_43:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s8, $zero, 2
-	b	.LBB17_46
+	ori	$s5, $zero, 3
+	b	.LBB17_45
 .LBB17_44:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s8, $zero, 3
-	b	.LBB17_46
-.LBB17_45:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s8, $zero, 4
-.LBB17_46:                              # %PDFKeyword_Find.exit81
+	ori	$s5, $zero, 4
+.LBB17_45:                              # %PDFKeyword_Find.exit81
                                         #   in Loop: Header=BB17_10 Depth=1
-	slli.d	$a0, $s8, 3
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	slli.d	$a0, $s5, 3
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ldx.d	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$s6, $a0
+	move	$s3, $a0
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $a0, 0
-	add.d	$a0, $s7, $s6
+	add.d	$a0, $s4, $s3
 	addi.d	$a0, $a0, 1
 	.p2align	4, , 16
-.LBB17_47:                              #   Parent Loop BB17_10 Depth=1
+.LBB17_46:                              #   Parent Loop BB17_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a2, $a0, 1
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a2, $a1, $a2
 	slli.d	$a2, $a2, 50
 	addi.d	$a0, $a0, 1
-	bltz	$a2, .LBB17_47
-# %bb.48:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	bltz	$a2, .LBB17_46
+# %bb.47:                               #   in Loop: Header=BB17_10 Depth=1
+	ld.d	$a2, $sp, 200                   # 8-byte Folded Reload
 	ld.w	$a1, $a2, %pc_lo12(g_link_depth)
-	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	st.w	$zero, $a3, %pc_lo12(g_link_index)
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a2, %pc_lo12(g_link_depth)
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	st.w	$s8, $a1, %pc_lo12(g_link_keyword)
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	st.w	$s5, $a1, %pc_lo12(g_link_keyword)
 	pcaddu18i	$ra, %call36(PDFPage_CollectLink)
 	jirl	$ra, $ra, 0
-	move	$s6, $a0
+	move	$s5, $a0
+	move	$a4, $s2
 	b	.LBB17_9
-.LBB17_49:                              #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$s8, %pc_hi20(g_doc_author)
-	ld.d	$a0, $s8, %pc_lo12(g_doc_author)
-	beqz	$a0, .LBB17_51
-# %bb.50:                               #   in Loop: Header=BB17_10 Depth=1
+.LBB17_48:                              #   in Loop: Header=BB17_10 Depth=1
+	pcalau12i	$s5, %pc_hi20(g_doc_author)
+	ld.d	$a0, $s5, %pc_lo12(g_doc_author)
+	beqz	$a0, .LBB17_50
+# %bb.49:                               #   in Loop: Header=BB17_10 Depth=1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB17_51:                              #   in Loop: Header=BB17_10 Depth=1
-	addi.d	$s6, $s7, 9
-	move	$a0, $s6
+.LBB17_50:                              #   in Loop: Header=BB17_10 Depth=1
+	addi.d	$s3, $s4, 9
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s8, %pc_lo12(g_doc_author)
-	bnez	$a0, .LBB17_64
-# %bb.52:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a4, $s4, 0
+	st.d	$a0, $s5, %pc_lo12(g_doc_author)
+	bnez	$a0, .LBB17_63
+# %bb.51:                               #   in Loop: Header=BB17_10 Depth=1
+	ld.d	$a4, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.122)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.122)
 	ori	$a0, $zero, 48
 	ori	$a1, $zero, 26
-	b	.LBB17_68
-.LBB17_53:                              #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$s8, %pc_hi20(g_doc_title)
-	ld.d	$a0, $s8, %pc_lo12(g_doc_title)
-	beqz	$a0, .LBB17_55
-# %bb.54:                               #   in Loop: Header=BB17_10 Depth=1
+	b	.LBB17_67
+.LBB17_52:                              #   in Loop: Header=BB17_10 Depth=1
+	pcalau12i	$s5, %pc_hi20(g_doc_title)
+	ld.d	$a0, $s5, %pc_lo12(g_doc_title)
+	beqz	$a0, .LBB17_54
+# %bb.53:                               #   in Loop: Header=BB17_10 Depth=1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB17_55:                              #   in Loop: Header=BB17_10 Depth=1
-	addi.d	$s6, $s7, 8
-	move	$a0, $s6
+.LBB17_54:                              #   in Loop: Header=BB17_10 Depth=1
+	addi.d	$s3, $s4, 8
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s8, %pc_lo12(g_doc_title)
-	bnez	$a0, .LBB17_64
-# %bb.56:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a4, $s4, 0
+	st.d	$a0, $s5, %pc_lo12(g_doc_title)
+	bnez	$a0, .LBB17_63
+# %bb.55:                               #   in Loop: Header=BB17_10 Depth=1
+	ld.d	$a4, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.123)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.123)
 	ori	$a0, $zero, 48
 	ori	$a1, $zero, 27
-	b	.LBB17_68
-.LBB17_57:                              #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$s8, %pc_hi20(g_doc_subject)
-	ld.d	$a0, $s8, %pc_lo12(g_doc_subject)
-	beqz	$a0, .LBB17_59
-# %bb.58:                               #   in Loop: Header=BB17_10 Depth=1
+	b	.LBB17_67
+.LBB17_56:                              #   in Loop: Header=BB17_10 Depth=1
+	pcalau12i	$s5, %pc_hi20(g_doc_subject)
+	ld.d	$a0, $s5, %pc_lo12(g_doc_subject)
+	beqz	$a0, .LBB17_58
+# %bb.57:                               #   in Loop: Header=BB17_10 Depth=1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB17_59:                              #   in Loop: Header=BB17_10 Depth=1
-	addi.d	$s6, $s7, 10
-	move	$a0, $s6
+.LBB17_58:                              #   in Loop: Header=BB17_10 Depth=1
+	addi.d	$s3, $s4, 10
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s8, %pc_lo12(g_doc_subject)
-	bnez	$a0, .LBB17_64
-# %bb.60:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a4, $s4, 0
+	st.d	$a0, $s5, %pc_lo12(g_doc_subject)
+	bnez	$a0, .LBB17_63
+# %bb.59:                               #   in Loop: Header=BB17_10 Depth=1
+	ld.d	$a4, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.124)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.124)
 	ori	$a0, $zero, 47
 	ori	$a1, $zero, 28
-	b	.LBB17_68
-.LBB17_61:                              #   in Loop: Header=BB17_10 Depth=1
-	pcalau12i	$s8, %pc_hi20(g_doc_keywords)
-	ld.d	$a0, $s8, %pc_lo12(g_doc_keywords)
-	beqz	$a0, .LBB17_63
-# %bb.62:                               #   in Loop: Header=BB17_10 Depth=1
+	b	.LBB17_67
+.LBB17_60:                              #   in Loop: Header=BB17_10 Depth=1
+	pcalau12i	$s5, %pc_hi20(g_doc_keywords)
+	ld.d	$a0, $s5, %pc_lo12(g_doc_keywords)
+	beqz	$a0, .LBB17_62
+# %bb.61:                               #   in Loop: Header=BB17_10 Depth=1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB17_63:                              #   in Loop: Header=BB17_10 Depth=1
-	addi.d	$s6, $s7, 11
-	move	$a0, $s6
+.LBB17_62:                              #   in Loop: Header=BB17_10 Depth=1
+	addi.d	$s3, $s4, 11
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s8, %pc_lo12(g_doc_keywords)
-	beqz	$a0, .LBB17_67
-.LBB17_64:                              #   in Loop: Header=BB17_10 Depth=1
-	move	$a1, $s6
+	st.d	$a0, $s5, %pc_lo12(g_doc_keywords)
+	beqz	$a0, .LBB17_66
+.LBB17_63:                              #   in Loop: Header=BB17_10 Depth=1
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	b	.LBB17_69
+	b	.LBB17_68
+.LBB17_64:                              #   in Loop: Header=BB17_10 Depth=1
+	move	$a0, $zero
+	b	.LBB17_74
 .LBB17_65:                              #   in Loop: Header=BB17_10 Depth=1
-	move	$s7, $zero
+	ori	$a0, $zero, 1
 	b	.LBB17_74
 .LBB17_66:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 1
-	b	.LBB17_74
-.LBB17_67:                              #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a4, $s4, 0
+	ld.d	$a4, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.125)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.125)
 	ori	$a0, $zero, 48
 	ori	$a1, $zero, 29
-.LBB17_68:                              # %PDFPage_ProcessDocInfoKeyword.exit
+.LBB17_67:                              # %PDFPage_ProcessDocInfoKeyword.exit
                                         #   in Loop: Header=BB17_10 Depth=1
 	ori	$a3, $zero, 2
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB17_69:                              # %PDFPage_ProcessDocInfoKeyword.exit
+.LBB17_68:                              # %PDFPage_ProcessDocInfoKeyword.exit
                                         #   in Loop: Header=BB17_10 Depth=1
-	move	$a0, $s6
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	add.d	$s6, $s6, $a0
+	add.d	$s5, $s3, $a0
+	move	$a4, $s2
 	b	.LBB17_9
+.LBB17_69:                              #   in Loop: Header=BB17_10 Depth=1
+	ori	$a0, $zero, 2
+	b	.LBB17_74
 .LBB17_70:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 2
+	ori	$a0, $zero, 3
 	b	.LBB17_74
 .LBB17_71:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 4
+	ori	$a0, $zero, 4
 	b	.LBB17_74
 .LBB17_72:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 5
+	ori	$a0, $zero, 5
 	b	.LBB17_74
 .LBB17_73:                              #   in Loop: Header=BB17_10 Depth=1
-	ori	$s7, $zero, 6
+	ori	$a0, $zero, 6
 .LBB17_74:                              # %PDFKeyword_Find.exit94
                                         #   in Loop: Header=BB17_10 Depth=1
-	slli.d	$a0, $s7, 3
+	slli.d	$a0, $a0, 3
 	pcalau12i	$a1, %pc_hi20(g_arithmetic_keywords)
 	addi.d	$a1, $a1, %pc_lo12(g_arithmetic_keywords)
-	ldx.d	$s7, $a1, $a0
+	ldx.d	$s4, $a1, $a0
 	pcalau12i	$a0, %pc_hi20(g_expr)
 	addi.d	$a0, $a0, %pc_lo12(g_expr)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	move	$a1, $s7
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	add.d	$s6, $s6, $a0
+	add.d	$s4, $s5, $a0
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
 	.p2align	4, , 16
 .LBB17_75:                              #   Parent Loop BB17_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a1, $s6, 0
+	ld.bu	$a1, $s4, 0
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a2, $a0, $a2
 	slli.d	$a2, $a2, 50
-	addi.d	$s6, $s6, 1
+	addi.d	$s4, $s4, 1
 	bltz	$a2, .LBB17_75
 # %bb.76:                               #   in Loop: Header=BB17_10 Depth=1
 	ori	$a0, $zero, 40
 	beq	$a1, $a0, .LBB17_78
 # %bb.77:                               #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$a4, $s4, 0
+	ld.d	$a4, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.18)
 	ori	$a0, $zero, 48
@@ -1885,13 +1968,13 @@ PDFPage_WriteGraphic:                   # @PDFPage_WriteGraphic
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB17_78:                              #   in Loop: Header=BB17_10 Depth=1
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	move	$a0, $s7
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 40
-	stx.h	$a1, $s7, $a0
-	move	$a0, $s7
+	stx.h	$a1, $s5, $a0
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
@@ -1900,70 +1983,78 @@ PDFPage_WriteGraphic:                   # @PDFPage_WriteGraphic
 	st.w	$a0, $a2, %pc_lo12(g_expr_index)
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $a3, %pc_lo12(g_expr_depth)
-	addi.d	$a1, $sp, 176
-	addi.d	$a2, $sp, 180
-	move	$a0, $s6
+	addi.d	$a1, $sp, 272
+	addi.d	$a2, $sp, 276
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(PDFPage_CollectExpr)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 176
-	move	$s6, $a0
-	beqz	$a1, .LBB17_9
+	ld.w	$a1, $sp, 272
+	move	$s5, $a0
+	beqz	$a1, .LBB17_80
 # %bb.79:                               #   in Loop: Header=BB17_10 Depth=1
-	fld.s	$fa0, $sp, 180
+	fld.s	$fa0, $sp, 276
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.16)
-	move	$a0, $s8
-	b	.LBB17_40
-.LBB17_80:                              # %._crit_edge
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(sprintf)
+	jirl	$ra, $ra, 0
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	add.d	$s0, $a0, $s0
+.LBB17_80:                              #   in Loop: Header=BB17_10 Depth=1
+	move	$a4, $s2
+	b	.LBB17_9
+.LBB17_81:                              # %._crit_edge
 	pcalau12i	$a1, %pc_hi20(g_in_buffering_mode)
 	ld.bu	$a0, $a1, %pc_lo12(g_in_buffering_mode)
-	st.b	$zero, $s8, 0
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	beqz	$a0, .LBB17_85
-# %bb.81:
+	st.b	$zero, $s3, 0
+	ld.d	$s1, $sp, 216                   # 8-byte Folded Reload
+	beqz	$a0, .LBB17_86
+# %bb.82:
 	pcalau12i	$fp, %pc_hi20(g_qsave_marking_stack)
 	ld.d	$a0, $fp, %pc_lo12(g_qsave_marking_stack)
 	st.b	$zero, $a1, %pc_lo12(g_in_buffering_mode)
-	beqz	$a0, .LBB17_83
+	beqz	$a0, .LBB17_84
 	.p2align	4, , 16
-.LBB17_82:                              # %.lr.ph.i
+.LBB17_83:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s0, $a0, 0
 	st.d	$s0, $fp, %pc_lo12(g_qsave_marking_stack)
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	bnez	$s0, .LBB17_82
-.LBB17_83:                              # %._crit_edge.i
+	bnez	$s0, .LBB17_83
+.LBB17_84:                              # %._crit_edge.i
 	pcalau12i	$a0, %pc_hi20(g_buffer)
 	ld.bu	$a0, $a0, %pc_lo12(g_buffer)
-	beqz	$a0, .LBB17_85
-# %bb.84:
+	beqz	$a0, .LBB17_86
+# %bb.85:
 	pcalau12i	$a0, %pc_hi20(g_buffer)
 	addi.d	$a0, $a0, %pc_lo12(g_buffer)
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-.LBB17_85:                              # %PDFPage_FlushBuffer.exit
-	addi.d	$a1, $sp, 184
+.LBB17_86:                              # %PDFPage_FlushBuffer.exit
+	addi.d	$a1, $sp, 280
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(PDFPage_Write)
 	jirl	$ra, $ra, 0
-.LBB17_86:
-	ld.d	$s8, $sp, 696                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 704                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 712                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 720                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 728                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 736                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 744                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 752                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 760                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 768                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 776                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 784
+.LBB17_87:
+	ld.d	$s8, $sp, 792                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 800                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 808                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 816                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 824                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 832                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 840                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 848                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 856                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 864                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 872                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 880
 	ret
 .Lfunc_end17:
 	.size	PDFPage_WriteGraphic, .Lfunc_end17-PDFPage_WriteGraphic
@@ -1998,9 +2089,9 @@ PDFPage_CollectExpr:                    # @PDFPage_CollectExpr
 	pcalau12i	$a3, %got_pc_hi20(no_fpos)
 	ld.d	$s7, $a3, %got_pc_lo12(no_fpos)
 	pcalau12i	$a3, %pc_hi20(.L.str.80)
-	addi.d	$s2, $a3, %pc_lo12(.L.str.80)
+	addi.d	$s3, $a3, %pc_lo12(.L.str.80)
 	pcalau12i	$a3, %pc_hi20(g_expr)
-	addi.d	$s3, $a3, %pc_lo12(g_expr)
+	addi.d	$s2, $a3, %pc_lo12(g_expr)
 	ori	$s8, $zero, 41
 	pcalau12i	$s0, %pc_hi20(g_expr_depth)
 	pcalau12i	$a3, %pc_hi20(.L.str.75)
@@ -2029,13 +2120,13 @@ PDFPage_CollectExpr:                    # @PDFPage_CollectExpr
 	ori	$a0, $zero, 48
 	ori	$a1, $zero, 34
 	ori	$a3, $zero, 1
-	move	$a2, $s2
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.bu	$a4, $s1, -1
 	ld.w	$a0, $s5, %pc_lo12(g_expr_index)
 .LBB18_7:                               #   in Loop: Header=BB18_5 Depth=1
-	stx.b	$a4, $s3, $a0
+	stx.b	$a4, $s2, $a0
 	addi.w	$a0, $a0, 1
 	st.w	$a0, $s5, %pc_lo12(g_expr_index)
 	beq	$a4, $s8, .LBB18_2
@@ -2061,8 +2152,8 @@ PDFPage_CollectExpr:                    # @PDFPage_CollectExpr
 	st.w	$a1, $s0, %pc_lo12(g_expr_depth)
 	bnez	$a1, .LBB18_4
 .LBB18_11:                              # %.thread
-	stx.b	$zero, $s3, $a0
-	move	$a0, $s3
+	stx.b	$zero, $s2, $a0
+	move	$a0, $s2
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(PDFPage_EvalExpr)
 	jirl	$ra, $ra, 0
@@ -2107,19 +2198,19 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	ld.bu	$a2, $a0, 0
 	beqz	$a2, .LBB19_15
 # %bb.1:                                # %.lr.ph.preheader
-	pcalau12i	$s2, %pc_hi20(g_link_index)
-	ld.w	$a1, $s2, %pc_lo12(g_link_index)
-	ori	$s3, $zero, 512
+	pcalau12i	$s3, %pc_hi20(g_link_index)
+	ld.w	$a1, $s3, %pc_lo12(g_link_index)
+	ori	$s4, $zero, 512
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$s8, $a0, %got_pc_lo12(no_fpos)
 	pcalau12i	$a0, %pc_hi20(.L.str.94)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.94)
 	pcalau12i	$a0, %pc_hi20(g_link)
-	addi.d	$s5, $a0, %pc_lo12(g_link)
-	ori	$s4, $zero, 62
+	addi.d	$s1, $a0, %pc_lo12(g_link)
+	ori	$s5, $zero, 62
 	pcalau12i	$s6, %pc_hi20(g_link_depth)
 	pcalau12i	$a0, %pc_hi20(.L.str.75)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.75)
+	addi.d	$s2, $a0, %pc_lo12(.L.str.75)
 	ori	$s7, $zero, 60
 	b	.LBB19_4
 	.p2align	4, , 16
@@ -2132,7 +2223,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 .LBB19_4:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a3, $a1
-	bltu	$a1, $s3, .LBB19_6
+	bltu	$a1, $s4, .LBB19_6
 # %bb.5:                                #   in Loop: Header=BB19_4 Depth=1
 	ld.d	$a4, $s8, 0
 	ori	$a0, $zero, 48
@@ -2142,13 +2233,13 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.bu	$a2, $fp, 0
-	ld.w	$a3, $s2, %pc_lo12(g_link_index)
+	ld.w	$a3, $s3, %pc_lo12(g_link_index)
 .LBB19_6:                               #   in Loop: Header=BB19_4 Depth=1
 	addi.d	$a0, $fp, 1
 	addi.w	$a1, $a3, 1
-	st.w	$a1, $s2, %pc_lo12(g_link_index)
-	stx.b	$a2, $s5, $a3
-	beq	$a2, $s4, .LBB19_10
+	st.w	$a1, $s3, %pc_lo12(g_link_index)
+	stx.b	$a2, $s1, $a3
+	beq	$a2, $s5, .LBB19_10
 # %bb.7:                                #   in Loop: Header=BB19_4 Depth=1
 	bne	$a2, $s7, .LBB19_2
 # %bb.8:                                #   in Loop: Header=BB19_4 Depth=1
@@ -2157,16 +2248,16 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 # %bb.9:                                #   in Loop: Header=BB19_4 Depth=1
 	addi.d	$a0, $fp, 2
 	ld.w	$a2, $s6, %pc_lo12(g_link_depth)
-	stx.b	$s7, $s5, $a1
+	stx.b	$s7, $s1, $a1
 	addi.w	$a1, $a3, 2
-	st.w	$a1, $s2, %pc_lo12(g_link_index)
+	st.w	$a1, $s3, %pc_lo12(g_link_index)
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $s6, %pc_lo12(g_link_depth)
 	b	.LBB19_2
 	.p2align	4, , 16
 .LBB19_10:                              #   in Loop: Header=BB19_4 Depth=1
 	ld.bu	$a2, $a0, 0
-	bne	$a2, $s4, .LBB19_3
+	bne	$a2, $s5, .LBB19_3
 # %bb.11:                               #   in Loop: Header=BB19_4 Depth=1
 	ld.w	$a0, $s6, %pc_lo12(g_link_depth)
 	bnez	$a0, .LBB19_13
@@ -2174,7 +2265,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	ld.d	$a4, $s8, 0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 2
-	move	$a2, $s1
+	move	$a2, $s2
 	move	$a3, $zero
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
@@ -2186,12 +2277,12 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	st.w	$a0, $s6, %pc_lo12(g_link_depth)
 	beqz	$a0, .LBB19_17
 # %bb.14:                               #   in Loop: Header=BB19_4 Depth=1
-	ld.w	$a2, $s2, %pc_lo12(g_link_index)
+	ld.w	$a2, $s3, %pc_lo12(g_link_index)
 	ld.b	$a3, $fp, 1
 	addi.d	$a0, $fp, 2
 	addi.w	$a1, $a2, 1
-	st.w	$a1, $s2, %pc_lo12(g_link_index)
-	stx.b	$a3, $s5, $a2
+	st.w	$a1, $s3, %pc_lo12(g_link_index)
+	stx.b	$a3, $s1, $a2
 	b	.LBB19_2
 .LBB19_15:
 	move	$a0, $fp
@@ -2210,19 +2301,19 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	addi.d	$sp, $sp, 112
 	ret
 .LBB19_17:
-	ld.w	$a0, $s2, %pc_lo12(g_link_index)
+	ld.w	$a0, $s3, %pc_lo12(g_link_index)
 	addi.w	$a0, $a0, -1
-	stx.b	$zero, $s5, $a0
+	stx.b	$zero, $s1, $a0
 	pcalau12i	$a1, %pc_hi20(g_link_keyword)
-	ld.bu	$s1, $s5, 0
+	ld.bu	$s2, $s1, 0
 	ld.w	$s6, $a1, %pc_lo12(g_link_keyword)
-	st.w	$a0, $s2, %pc_lo12(g_link_index)
-	beqz	$s1, .LBB19_25
+	st.w	$a0, $s3, %pc_lo12(g_link_index)
+	beqz	$s2, .LBB19_25
 # %bb.18:                               # %.lr.ph.i
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(g_link+1)
-	addi.d	$s5, $a1, %pc_lo12(g_link+1)
+	addi.d	$s1, $a1, %pc_lo12(g_link+1)
 	ld.d	$a0, $a0, 0
 	move	$s0, $zero
 	ori	$a1, $zero, 95
@@ -2231,36 +2322,36 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 .LBB19_19:                              # %.critedge71.i
                                         #   in Loop: Header=BB19_20 Depth=1
 	addi.w	$s0, $s0, 1
-	addi.d	$s5, $s5, 1
-	beqz	$s1, .LBB19_24
+	addi.d	$s1, $s1, 1
+	beqz	$s2, .LBB19_24
 .LBB19_20:                              # =>This Inner Loop Header: Depth=1
-	slli.d	$a2, $s1, 1
+	slli.d	$a2, $s2, 1
 	ldx.hu	$a2, $a0, $a2
-	ld.bu	$s1, $s5, 0
+	ld.bu	$s2, $s1, 0
 	slli.d	$a2, $a2, 50
 	bgez	$a2, .LBB19_19
 # %bb.21:                               #   in Loop: Header=BB19_20 Depth=1
-	bne	$s1, $a1, .LBB19_19
+	bne	$s2, $a1, .LBB19_19
 # %bb.22:                               #   in Loop: Header=BB19_20 Depth=1
-	ld.bu	$a2, $s5, 1
-	ori	$s1, $zero, 95
-	bne	$a2, $s1, .LBB19_19
+	ld.bu	$a2, $s1, 1
+	ori	$s2, $zero, 95
+	bne	$a2, $s2, .LBB19_19
 # %bb.23:
-	move	$s2, $zero
-	move	$s7, $s5
-	move	$s1, $s5
+	move	$s3, $zero
+	move	$s2, $s1
+	move	$s7, $s1
 	b	.LBB19_27
 .LBB19_24:                              # %.loopexit.i.loopexit
-	addi.d	$s5, $s5, -1
+	addi.d	$s1, $s1, -1
 	b	.LBB19_26
 .LBB19_25:
 	move	$s0, $zero
 .LBB19_26:                              # %.loopexit.i
-	move	$s1, $zero
-	addi.d	$s7, $s5, 1
-	ori	$s2, $zero, 1
+	move	$s7, $zero
+	addi.d	$s2, $s1, 1
+	ori	$s3, $zero, 1
 .LBB19_27:                              # %.loopexit
-	move	$a0, $s5
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	beqz	$s0, .LBB19_38
@@ -2274,45 +2365,44 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	fmul.s	$fa1, $fa0, $fa1
 	ftintrz.w.s	$fa1, $fa1
 	pcalau12i	$a2, %pc_hi20(g_page_v_origin)
-	ld.w	$a5, $a2, %pc_lo12(g_page_v_origin)
+	ld.w	$a2, $a2, %pc_lo12(g_page_v_origin)
 	pcalau12i	$a3, %pc_hi20(g_page_v_scale_factor)
 	fld.s	$fa2, $a3, %pc_lo12(g_page_v_scale_factor)
-	movfr2gr.s	$a2, $fa1
-	movgr2fr.w	$fa1, $a5
+	movfr2gr.s	$a7, $fa1
+	movgr2fr.w	$fa1, $a2
 	ffint.s.w	$fa1, $fa1
 	fmul.s	$fa1, $fa2, $fa1
 	ftintrz.w.s	$fa1, $fa1
-	movfr2gr.s	$a3, $fa1
-	pcalau12i	$a4, %pc_hi20(g_graphics_vars)
-	addi.d	$a6, $a4, %pc_lo12(g_graphics_vars)
-	ld.w	$a4, $a6, 0
+	movfr2gr.s	$t0, $fa1
+	pcalau12i	$a3, %pc_hi20(g_graphics_vars)
+	addi.d	$a3, $a3, %pc_lo12(g_graphics_vars)
+	ld.w	$a4, $a3, 0
 	add.d	$a1, $a4, $a1
 	movgr2fr.w	$fa1, $a1
 	ffint.s.w	$fa1, $fa1
-	ld.w	$a1, $a6, 4
+	ld.w	$a1, $a3, 4
 	fmul.s	$fa0, $fa0, $fa1
 	ftintrz.w.s	$fa0, $fa0
-	movfr2gr.s	$s3, $fa0
-	add.d	$a1, $a1, $a5
+	movfr2gr.s	$s4, $fa0
+	add.d	$a1, $a1, $a2
 	movgr2fr.w	$fa0, $a1
 	ffint.s.w	$fa0, $fa0
 	fmul.s	$fa0, $fa2, $fa0
 	ftintrz.w.s	$fa0, $fa0
-	addi.d	$a4, $s6, -1
+	addi.d	$a2, $s6, -1
 	ori	$a1, $zero, 2
-	movfr2gr.s	$s4, $fa0
-	bltu	$a4, $a1, .LBB19_39
+	movfr2gr.s	$s5, $fa0
+	bltu	$a2, $a1, .LBB19_39
 # %bb.29:
-	addi.d	$a4, $s6, -3
-	bgeu	$a4, $a1, .LBB19_43
+	addi.d	$a2, $s6, -3
+	bgeu	$a2, $a1, .LBB19_43
 # %bb.30:
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	move	$s3, $a3
-	move	$s2, $a2
+	st.d	$t0, $sp, 16                    # 8-byte Folded Spill
+	move	$s3, $a7
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$s5, $a0
+	move	$s1, $a0
 	bnez	$a0, .LBB19_32
 # %bb.31:
 	ld.d	$a4, $s8, 0
@@ -2324,13 +2414,13 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB19_32:
-	addi.d	$s1, $s6, -4
+	addi.d	$s2, $s6, -4
 	addi.d	$a0, $s0, 1
 	bstrpick.d	$a0, $a0, 31, 0
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	st.d	$a0, $s5, 8
+	st.d	$a0, $s1, 8
 	bnez	$a0, .LBB19_34
 # %bb.33:
 	ld.d	$a4, $s8, 0
@@ -2342,7 +2432,7 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB19_34:
-	sltui	$s1, $s1, 1
+	sltui	$s2, $s2, 1
 	bstrpick.d	$s0, $s0, 31, 0
 	pcalau12i	$a0, %pc_hi20(g_link)
 	addi.d	$a1, $a0, %pc_lo12(g_link)
@@ -2367,24 +2457,24 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 .LBB19_36:                              # %Assert.exit.i.i
 	pcalau12i	$a0, %pc_hi20(g_page_object_num)
 	ld.w	$a0, $a0, %pc_lo12(g_page_object_num)
-	st.w	$a0, $s5, 16
-	st.w	$s2, $s5, 20
-	st.w	$s3, $s5, 24
+	st.w	$a0, $s1, 16
+	st.w	$s3, $s1, 20
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	st.w	$a0, $s1, 24
 	pcalau12i	$a0, %pc_hi20(g_target_annot_list)
 	ld.d	$a1, $a0, %pc_lo12(g_target_annot_list)
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	st.w	$a2, $s5, 28
-	st.w	$s4, $s5, 32
-	st.w	$s1, $s5, 36
-	st.d	$a1, $s5, 0
+	st.w	$s4, $s1, 28
+	st.w	$s5, $s1, 32
+	st.w	$s2, $s1, 36
+	st.d	$a1, $s1, 0
 	ori	$a1, $zero, 4
-	st.d	$s5, $a0, %pc_lo12(g_target_annot_list)
-	bne	$s6, $a1, .LBB19_46
+	st.d	$s1, $a0, %pc_lo12(g_target_annot_list)
+	bne	$s6, $a1, .LBB19_54
 # %bb.37:
 	pcalau12i	$a0, %pc_hi20(g_has_exported_targets)
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, %pc_lo12(g_has_exported_targets)
-	b	.LBB19_46
+	b	.LBB19_54
 .LBB19_38:
 	ld.d	$a4, $s8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.95)
@@ -2399,24 +2489,30 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 .LBB19_39:
 	move	$a0, $s6
 	move	$a1, $s0
-	move	$a4, $s3
-	move	$a5, $s4
+	move	$a2, $a7
+	move	$a3, $t0
+	move	$a4, $s4
+	move	$a5, $s5
 	move	$a6, $zero
 	pcaddu18i	$ra, %call36(PDFSourceAnnot_New)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	bne	$s6, $a1, .LBB19_46
+	bne	$s6, $a1, .LBB19_54
 # %bb.40:
-	bnez	$s2, .LBB19_42
+	bnez	$s3, .LBB19_42
 # %bb.41:                               # %.preheader83.i
-	move	$s3, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.107)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.107)
-	ori	$a2, $zero, 10
-	move	$a1, $s7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_56
+	ld.d	$a1, $s2, 0
+	lu12i.w	$a2, 431813
+	ori	$a2, $a2, 3935
+	lu32i.d	$a2, -38034
+	lu52i.d	$a2, $a2, 1861
+	ld.hu	$a3, $s2, 8
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 3
+	ori	$a2, $a2, 3439
+	xor	$a2, $a3, $a2
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB19_57
 .LBB19_42:                              # %.thread.i
 	ld.d	$a4, $s8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.96)
@@ -2429,112 +2525,131 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	addi.d	$a0, $fp, 2
 	b	.LBB19_16
 .LBB19_43:
-	bnez	$s6, .LBB19_46
+	bnez	$s6, .LBB19_54
 # %bb.44:
-	beqz	$s2, .LBB19_47
-# %bb.45:
-	move	$a6, $zero
-	b	.LBB19_68
-.LBB19_46:                              # %.thread
-	addi.d	$a0, $fp, 2
-	b	.LBB19_16
-.LBB19_47:                              # %.preheader82.preheader.i
-	move	$s2, $a3
-	move	$s1, $a2
-	add.d	$s5, $s5, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.98)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.98)
-	ori	$a2, $zero, 13
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_60
-# %bb.48:                               # %.preheader82.1.i
-	pcalau12i	$a0, %pc_hi20(.L.str.99)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.99)
-	ori	$a2, $zero, 5
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_61
-# %bb.49:                               # %.preheader82.2.i
-	pcalau12i	$a0, %pc_hi20(.L.str.100)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.100)
-	ori	$a2, $zero, 6
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_62
-# %bb.50:                               # %.preheader82.3.i
-	pcalau12i	$a0, %pc_hi20(.L.str.101)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.101)
-	ori	$a2, $zero, 6
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_63
-# %bb.51:                               # %.preheader82.4.i
-	pcalau12i	$a0, %pc_hi20(.L.str.102)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.102)
-	ori	$a2, $zero, 6
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_64
-# %bb.52:                               # %.preheader82.5.i
-	pcalau12i	$a0, %pc_hi20(.L.str.103)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.103)
-	ori	$a2, $zero, 6
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_65
-# %bb.53:                               # %.preheader82.6.i
-	pcalau12i	$a0, %pc_hi20(.L.str.104)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.104)
-	ori	$a2, $zero, 7
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB19_66
-# %bb.54:                               # %.preheader82.7.i
-	pcalau12i	$a0, %pc_hi20(.L.str.105)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.105)
-	ori	$a2, $zero, 7
-	move	$a1, $s5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	ori	$a6, $zero, 7
-	move	$a2, $s1
-	move	$a3, $s2
-	beqz	$a0, .LBB19_68
-# %bb.55:                               # %.preheader.preheader.i
-	move	$a0, $s5
+	bnez	$s3, .LBB19_55
+# %bb.45:                               # %.preheader82.preheader.i
+	add.d	$s1, $s1, $a0
+	ld.d	$a1, $s1, 0
+	lu12i.w	$a0, 431205
+	ori	$a0, $a0, 3935
+	move	$a2, $a0
+	lu32i.d	$a2, -45452
+	lu52i.d	$a2, $a2, 1078
+	xor	$a1, $a1, $a2
+	ld.d	$a2, $s1, 5
+	lu12i.w	$a3, 427062
+	ori	$a3, $a3, 3918
+	lu32i.d	$a3, 487009
+	lu52i.d	$a3, $a3, 1622
+	xor	$a2, $a2, $a3
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB19_55
+# %bb.46:                               # %.preheader82.1.i
+	ld.w	$a1, $s1, 0
+	ld.bu	$a2, $s1, 4
+	xor	$a1, $a1, $a0
+	xori	$a2, $a2, 116
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB19_61
+# %bb.47:                               # %.preheader82.2.i
+	ld.w	$a1, $s1, 0
+	ld.hu	$a2, $s1, 4
+	xor	$a3, $a1, $a0
+	lu12i.w	$a1, 4
+	ori	$a4, $a1, 2164
+	xor	$a2, $a2, $a4
+	or	$a2, $a3, $a2
+	beqz	$a2, .LBB19_62
+# %bb.48:                               # %.preheader82.3.i
+	ld.w	$a2, $s1, 0
+	ld.hu	$a3, $s1, 4
+	xor	$a4, $a2, $a0
+	lu12i.w	$a2, 5
+	ori	$a5, $a2, 1652
+	xor	$a3, $a3, $a5
+	or	$a3, $a4, $a3
+	beqz	$a3, .LBB19_63
+# %bb.49:                               # %.preheader82.4.i
+	ld.w	$a3, $s1, 0
+	ld.hu	$a4, $s1, 4
+	xor	$a3, $a3, $a0
+	ori	$a2, $a2, 628
+	xor	$a2, $a4, $a2
+	or	$a2, $a3, $a2
+	beqz	$a2, .LBB19_64
+# %bb.50:                               # %.preheader82.5.i
+	ld.w	$a2, $s1, 0
+	ld.hu	$a3, $s1, 4
+	xor	$a2, $a2, $a0
+	ori	$a1, $a1, 628
+	xor	$a1, $a3, $a1
+	or	$a1, $a2, $a1
+	beqz	$a1, .LBB19_65
+# %bb.51:                               # %.preheader82.6.i
+	ld.w	$a1, $s1, 0
+	ld.w	$a2, $s1, 3
+	xor	$a1, $a1, $a0
+	lu12i.w	$a3, 295975
+	ori	$a3, $a3, 1129
+	xor	$a2, $a2, $a3
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB19_66
+# %bb.52:                               # %.preheader82.7.i
+	ld.w	$a1, $s1, 0
+	ld.w	$a2, $s1, 3
+	xor	$a0, $a1, $a0
+	lu12i.w	$a1, 353319
+	ori	$a1, $a1, 1129
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
+	beqz	$a0, .LBB19_67
+# %bb.53:                               # %.preheader.preheader.i
+	move	$a0, $s1
+	move	$s0, $a7
+	move	$s2, $t0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$a3, $s2
-	move	$a2, $s1
-	add.d	$a0, $s5, $a0
+	move	$t0, $s2
+	move	$a7, $s0
+	add.d	$a0, $s1, $a0
 	pcalau12i	$a1, %pc_hi20(g_link)
 	addi.d	$a1, $a1, %pc_lo12(g_link)
 	move	$a6, $zero
 	sub.w	$s0, $a0, $a1
-	b	.LBB19_68
-.LBB19_56:                              # %PDFKeyword_Find.exit78.i
-	addi.d	$s0, $s1, 10
+	b	.LBB19_56
+.LBB19_54:                              # %.thread
+	addi.d	$a0, $fp, 2
+	b	.LBB19_16
+.LBB19_55:
+	move	$a6, $zero
+.LBB19_56:                              # %PDFKeyword_Find.exit.thread.i
+	move	$a0, $zero
+	move	$a1, $s0
+	move	$a2, $a7
+	move	$a3, $t0
+	move	$a4, $s4
+	move	$a5, $s5
+	pcaddu18i	$ra, %call36(PDFSourceAnnot_New)
+	jirl	$ra, $ra, 0
+	addi.d	$a0, $fp, 2
+	b	.LBB19_16
+.LBB19_57:                              # %PDFKeyword_Find.exit78.i
+	addi.d	$s0, $s7, 10
+	move	$s1, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	slli.d	$a1, $a0, 32
 	beqz	$a1, .LBB19_42
-# %bb.57:
+# %bb.58:
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a0, $a0, 31, 0
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s3, 24
-	bnez	$a0, .LBB19_59
-# %bb.58:
+	st.d	$a0, $s1, 24
+	bnez	$a0, .LBB19_60
+# %bb.59:
 	ld.d	$a4, $s8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.97)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.97)
@@ -2543,45 +2658,34 @@ PDFPage_CollectLink:                    # @PDFPage_CollectLink
 	ori	$a3, $zero, 1
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s3, 24
-.LBB19_59:
+	ld.d	$a0, $s1, 24
+.LBB19_60:
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $fp, 2
 	b	.LBB19_16
-.LBB19_60:
-	move	$a6, $zero
-	b	.LBB19_67
 .LBB19_61:
 	ori	$a6, $zero, 1
-	b	.LBB19_67
+	b	.LBB19_56
 .LBB19_62:
 	ori	$a6, $zero, 2
-	b	.LBB19_67
+	b	.LBB19_56
 .LBB19_63:
 	ori	$a6, $zero, 3
-	b	.LBB19_67
+	b	.LBB19_56
 .LBB19_64:
 	ori	$a6, $zero, 4
-	b	.LBB19_67
+	b	.LBB19_56
 .LBB19_65:
 	ori	$a6, $zero, 5
-	b	.LBB19_67
+	b	.LBB19_56
 .LBB19_66:
 	ori	$a6, $zero, 6
-.LBB19_67:                              # %PDFKeyword_Find.exit.thread.i
-	move	$a2, $s1
-	move	$a3, $s2
-.LBB19_68:                              # %PDFKeyword_Find.exit.thread.i
-	move	$a0, $zero
-	move	$a1, $s0
-	move	$a4, $s3
-	move	$a5, $s4
-	pcaddu18i	$ra, %call36(PDFSourceAnnot_New)
-	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 2
-	b	.LBB19_16
+	b	.LBB19_56
+.LBB19_67:
+	ori	$a6, $zero, 7
+	b	.LBB19_56
 .Lfunc_end19:
 	.size	PDFPage_CollectLink, .Lfunc_end19-PDFPage_CollectLink
                                         # -- End function
@@ -2984,13 +3088,10 @@ PDFPage_Cleanup:                        # @PDFPage_Cleanup
 	move	$s0, $a0
 	beqz	$a0, .LBB22_33
 # %bb.30:
-	ori	$a0, $zero, 63
-	bltu	$a0, $s5, .LBB22_34
+	beqz	$s5, .LBB22_34
 .LBB22_31:
-	pcalau12i	$a0, %pc_hi20(g_page_block_list)
-	addi.d	$s5, $a0, %pc_lo12(g_page_block_list)
-	ld.d	$a0, $s5, 0
-	beqz	$a0, .LBB22_36
+	ld.d	$s5, $s2, %pc_lo12(g_cur_page_block)
+	bnez	$s5, .LBB22_36
 # %bb.32:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -3003,6 +3104,7 @@ PDFPage_Cleanup:                        # @PDFPage_Cleanup
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
+	ld.d	$s5, $s2, %pc_lo12(g_cur_page_block)
 	b	.LBB22_36
 .LBB22_33:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -3015,11 +3117,12 @@ PDFPage_Cleanup:                        # @PDFPage_Cleanup
 	ori	$a3, $zero, 1
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 63
-	bgeu	$a0, $s5, .LBB22_31
+	bnez	$s5, .LBB22_31
 .LBB22_34:
-	ld.d	$s5, $s2, %pc_lo12(g_cur_page_block)
-	bnez	$s5, .LBB22_36
+	pcalau12i	$a0, %pc_hi20(g_page_block_list)
+	addi.d	$s5, $a0, %pc_lo12(g_page_block_list)
+	ld.d	$a0, $s5, 0
+	beqz	$a0, .LBB22_36
 # %bb.35:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -3032,7 +3135,6 @@ PDFPage_Cleanup:                        # @PDFPage_Cleanup
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $s2, %pc_lo12(g_cur_page_block)
 .LBB22_36:                              # %Assert.exit106
 	st.d	$s0, $s5, 0
 	st.d	$zero, $s0, 0
@@ -3351,6 +3453,7 @@ PDFObject_WriteObj:                     # @PDFObject_WriteObj
 	move	$fp, $a1
 	move	$s0, $a0
 	addi.w	$s3, $a1, -1
+	bstrpick.d	$s4, $s3, 31, 8
 	beqz	$a1, .LBB23_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(g_next_objnum)
@@ -3369,11 +3472,36 @@ PDFObject_WriteObj:                     # @PDFObject_WriteObj
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB23_3:                               # %Assert.exit.i
-	ori	$a0, $zero, 256
-	bgeu	$s3, $a0, .LBB23_9
-.LBB23_4:                               # %._crit_edge.i
-	bnez	$s2, .LBB23_6
-# %bb.5:
+	addi.w	$a0, $s4, 0
+	beqz	$a0, .LBB23_8
+# %bb.4:                                # %.lr.ph.i.preheader
+	pcalau12i	$a0, %got_pc_hi20(no_fpos)
+	ld.d	$s5, $a0, %got_pc_lo12(no_fpos)
+	pcalau12i	$a0, %pc_hi20(.L.str.75)
+	addi.d	$s1, $a0, %pc_lo12(.L.str.75)
+	b	.LBB23_6
+	.p2align	4, , 16
+.LBB23_5:                               # %Assert.exit15.i
+                                        #   in Loop: Header=BB23_6 Depth=1
+	ld.d	$s2, $s2, 0
+	addi.w	$s4, $s4, -1
+	beqz	$s4, .LBB23_8
+.LBB23_6:                               # %.lr.ph.i
+                                        # =>This Inner Loop Header: Depth=1
+	bnez	$s2, .LBB23_5
+# %bb.7:                                #   in Loop: Header=BB23_6 Depth=1
+	ld.d	$a4, $s5, 0
+	ori	$a0, $zero, 1
+	ori	$a1, $zero, 2
+	move	$a2, $s1
+	move	$a3, $zero
+	move	$a5, $a4
+	pcaddu18i	$ra, %call36(Error)
+	jirl	$ra, $ra, 0
+	b	.LBB23_5
+.LBB23_8:                               # %._crit_edge.i
+	bnez	$s2, .LBB23_10
+# %bb.9:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a4, $a0, 0
@@ -3385,13 +3513,12 @@ PDFObject_WriteObj:                     # @PDFObject_WriteObj
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB23_6:                               # %PDFObject_FindOffsetBlock.exit
+.LBB23_10:                              # %PDFObject_FindOffsetBlock.exit
 	andi	$a0, $s3, 255
-	alsl.d	$a0, $a0, $s2, 2
-	ld.w	$a1, $a0, 8
-	addi.d	$s1, $a0, 8
-	beqz	$a1, .LBB23_8
-# %bb.7:
+	alsl.d	$s1, $a0, $s2, 2
+	ld.w	$a0, $s1, 8
+	beqz	$a0, .LBB23_12
+# %bb.11:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a4, $a0, 0
@@ -3403,11 +3530,11 @@ PDFObject_WriteObj:                     # @PDFObject_WriteObj
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB23_8:                               # %Assert.exit
+.LBB23_12:                              # %Assert.exit
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
-	st.w	$a0, $s1, 0
+	st.w	$a0, $s1, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.135)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.135)
 	move	$a0, $s0
@@ -3423,32 +3550,6 @@ PDFObject_WriteObj:                     # @PDFObject_WriteObj
 	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(fprintf)
 	jr	$t8
-.LBB23_9:                               # %.lr.ph.i.preheader
-	bstrpick.d	$s4, $s3, 31, 8
-	pcalau12i	$a0, %got_pc_hi20(no_fpos)
-	ld.d	$s5, $a0, %got_pc_lo12(no_fpos)
-	pcalau12i	$a0, %pc_hi20(.L.str.75)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.75)
-	b	.LBB23_11
-	.p2align	4, , 16
-.LBB23_10:                              # %Assert.exit15.i
-                                        #   in Loop: Header=BB23_11 Depth=1
-	ld.d	$s2, $s2, 0
-	addi.w	$s4, $s4, -1
-	beqz	$s4, .LBB23_4
-.LBB23_11:                              # %.lr.ph.i
-                                        # =>This Inner Loop Header: Depth=1
-	bnez	$s2, .LBB23_10
-# %bb.12:                               #   in Loop: Header=BB23_11 Depth=1
-	ld.d	$a4, $s5, 0
-	ori	$a0, $zero, 1
-	ori	$a1, $zero, 2
-	move	$a2, $s1
-	move	$a3, $zero
-	move	$a5, $a4
-	pcaddu18i	$ra, %call36(Error)
-	jirl	$ra, $ra, 0
-	b	.LBB23_10
 .Lfunc_end23:
 	.size	PDFObject_WriteObj, .Lfunc_end23-PDFObject_WriteObj
                                         # -- End function
@@ -4482,51 +4583,45 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	ld.d	$s2, $a0, 0
-	addi.d	$a0, $s0, -2
+	addi.d	$s0, $s0, -2
 	.p2align	4, , 16
 .LBB27_1:                               # =>This Inner Loop Header: Depth=1
-	ld.b	$a1, $a0, 2
-	slli.d	$a1, $a1, 1
-	ldx.hu	$a1, $s2, $a1
-	slli.d	$a1, $a1, 50
-	addi.d	$a0, $a0, 1
-	bltz	$a1, .LBB27_1
+	ld.b	$a0, $s0, 2
+	slli.d	$a0, $a0, 1
+	ldx.hu	$a0, $s2, $a0
+	slli.d	$a0, $a0, 50
+	addi.d	$s0, $s0, 1
+	bltz	$a0, .LBB27_1
 # %bb.2:                                # %.preheader89.preheader
-	ori	$a2, $zero, 95
+	ori	$a1, $zero, 95
 	.p2align	4, , 16
 .LBB27_3:                               # %.preheader89
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a1, $a0, 1
-	addi.d	$a0, $a0, 1
-	beq	$a1, $a2, .LBB27_3
+	ld.bu	$a0, $s0, 1
+	addi.d	$s0, $s0, 1
+	beq	$a0, $a1, .LBB27_3
 # %bb.4:                                # %.preheader89
-	ori	$a2, $zero, 43
-	bne	$a1, $a2, .LBB27_7
+	ori	$a1, $zero, 43
+	bne	$a0, $a1, .LBB27_6
 	.p2align	4, , 16
 .LBB27_5:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a1, $a0, 1
-	addi.d	$s0, $a0, 1
-	move	$a0, $s0
-	beq	$a1, $a2, .LBB27_5
-# %bb.6:                                # %._crit_edge
-	ori	$a0, $zero, 46
-	bne	$a1, $a0, .LBB27_8
-	b	.LBB27_12
-.LBB27_7:                               # %._crit_edge.loopexit147
-	move	$s0, $a0
-	ori	$a0, $zero, 46
-	beq	$a1, $a0, .LBB27_12
-.LBB27_8:                               # %._crit_edge
-	ext.w.b	$a0, $a1
-	slli.d	$a0, $a0, 1
-	ldx.hu	$a0, $s2, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB27_12
+	ld.bu	$a0, $s0, 1
+	addi.d	$s0, $s0, 1
+	beq	$a0, $a1, .LBB27_5
+.LBB27_6:                               # %._crit_edge
+	ori	$a1, $zero, 46
+	beq	$a0, $a1, .LBB27_11
+# %bb.7:                                # %._crit_edge
+	ext.w.b	$a1, $a0
+	slli.d	$a1, $a1, 1
+	ldx.hu	$a1, $s2, $a1
+	andi	$a1, $a1, 2048
+	bnez	$a1, .LBB27_11
+# %bb.8:
+	ori	$a1, $zero, 45
+	bne	$a0, $a1, .LBB27_23
 # %bb.9:
-	ori	$a0, $zero, 45
-	bne	$a1, $a0, .LBB27_24
-# %bb.10:
 	addi.d	$a0, $s0, 1
 	addi.d	$a1, $sp, 20
 	pcaddu18i	$ra, %call36(PDFPage_EvalExpr)
@@ -4534,10 +4629,10 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	fld.s	$fa0, $sp, 20
 	move	$s0, $a0
 	fneg.s	$fa0, $fa0
-.LBB27_11:                              # %PDFPage_GetFloat.exit
+.LBB27_10:                              # %PDFPage_GetFloat.exit
 	fst.s	$fa0, $fp, 0
-	b	.LBB27_23
-.LBB27_12:
+	b	.LBB27_22
+.LBB27_11:
 	pcalau12i	$a0, %pc_hi20(.L.str.85)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.85)
 	move	$a0, $s0
@@ -4545,42 +4640,42 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB27_21
-# %bb.13:                               # %.preheader.i
+	bne	$a0, $a1, .LBB27_20
+# %bb.12:                               # %.preheader.i
 	ld.d	$a0, $s1, 0
 	.p2align	4, , 16
-.LBB27_14:                              # =>This Inner Loop Header: Depth=1
+.LBB27_13:                              # =>This Inner Loop Header: Depth=1
 	ld.bu	$a1, $s0, 0
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a2, $a0, $a2
 	slli.d	$a2, $a2, 50
 	addi.d	$s0, $s0, 1
-	bltz	$a2, .LBB27_14
-# %bb.15:
+	bltz	$a2, .LBB27_13
+# %bb.14:
 	ori	$a2, $zero, 43
-	beq	$a1, $a2, .LBB27_18
-# %bb.16:
+	beq	$a1, $a2, .LBB27_17
+# %bb.15:
 	ori	$a2, $zero, 45
-	beq	$a1, $a2, .LBB27_18
-# %bb.17:                               # %..critedge.i.preheader_crit_edge
+	beq	$a1, $a2, .LBB27_17
+# %bb.16:                               # %..critedge.i.preheader_crit_edge
 	addi.d	$s0, $s0, -1
-.LBB27_18:                              # %.critedge.i.preheader
+.LBB27_17:                              # %.critedge.i.preheader
 	addi.d	$s0, $s0, -1
 	ori	$a1, $zero, 46
 	.p2align	4, , 16
-.LBB27_19:                              # %.critedge.i
+.LBB27_18:                              # %.critedge.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $s0, 1
 	addi.d	$s0, $s0, 1
-	beq	$a2, $a1, .LBB27_19
-# %bb.20:                               # %.critedge.i
-                                        #   in Loop: Header=BB27_19 Depth=1
+	beq	$a2, $a1, .LBB27_18
+# %bb.19:                               # %.critedge.i
+                                        #   in Loop: Header=BB27_18 Depth=1
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a2, $a0, $a2
 	andi	$a2, $a2, 2048
-	bnez	$a2, .LBB27_19
-	b	.LBB27_23
-.LBB27_21:
+	bnez	$a2, .LBB27_18
+	b	.LBB27_22
+.LBB27_20:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a4, $a0, 0
@@ -4588,11 +4683,11 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	addi.d	$a2, $a0, %pc_lo12(.L.str.86)
 	ori	$a0, $zero, 48
 	ori	$a1, $zero, 21
-.LBB27_22:                              # %PDFPage_GetFloat.exit
+.LBB27_21:                              # %PDFPage_GetFloat.exit
 	ori	$a3, $zero, 1
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-.LBB27_23:                              # %PDFPage_GetFloat.exit
+.LBB27_22:                              # %PDFPage_GetFloat.exit
 	move	$a0, $s0
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
@@ -4601,136 +4696,135 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
 	ret
-.LBB27_24:                              # %.preheader.preheader
-	pcalau12i	$a0, %pc_hi20(.L.str.126)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.126)
-	ori	$a2, $zero, 3
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_43
-# %bb.25:                               # %.preheader.1
-	pcalau12i	$a0, %pc_hi20(.L.str.127)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.127)
-	ori	$a2, $zero, 3
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_44
-# %bb.26:                               # %.preheader.2
-	pcalau12i	$a0, %pc_hi20(.L.str.128)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.128)
-	ori	$a2, $zero, 3
-	ori	$s1, $zero, 3
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_45
-# %bb.27:                               # %.preheader.3
-	pcalau12i	$a0, %pc_hi20(.L.str.129)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.129)
-	ori	$a2, $zero, 3
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_49
-# %bb.28:                               # %.preheader.4
-	pcalau12i	$a0, %pc_hi20(.L.str.130)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.130)
-	ori	$a2, $zero, 3
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_46
-# %bb.29:                               # %.preheader.5
-	pcalau12i	$a0, %pc_hi20(.L.str.131)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.131)
-	ori	$a2, $zero, 3
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_47
-# %bb.30:                               # %.preheader.6
-	ld.w	$a0, $s0, 0
-	lu12i.w	$a1, 439862
-	ori	$a1, $a1, 2416
-	beq	$a0, $a1, .LBB27_48
-# %bb.31:                               # %PDFKeyword_Find.exit.thread.preheader
-	pcalau12i	$a0, %pc_hi20(.L.str.109)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.109)
-	ori	$a2, $zero, 5
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_74
-# %bb.32:                               # %PDFKeyword_Find.exit.thread.1
-	pcalau12i	$a0, %pc_hi20(.L.str.110)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.110)
-	ori	$a2, $zero, 5
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_75
-# %bb.33:                               # %PDFKeyword_Find.exit.thread.2
-	pcalau12i	$a0, %pc_hi20(.L.str.111)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.111)
-	ori	$a2, $zero, 5
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_76
-# %bb.34:                               # %PDFKeyword_Find.exit.thread.3
-	pcalau12i	$a0, %pc_hi20(.L.str.112)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.112)
-	ori	$a2, $zero, 5
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_77
-# %bb.35:                               # %PDFKeyword_Find.exit78.thread.preheader
+.LBB27_23:                              # %.preheader.preheader
 	ld.hu	$a1, $s0, 0
+	ld.bu	$a2, $s0, 2
 	lu12i.w	$a0, 6
-	ori	$a2, $a0, 3689
-	beq	$a1, $a2, .LBB27_80
-# %bb.36:                               # %PDFKeyword_Find.exit78.thread.1
-	ld.hu	$a1, $s0, 0
-	ori	$a2, $a0, 3427
-	beq	$a1, $a2, .LBB27_81
-# %bb.37:                               # %PDFKeyword_Find.exit78.thread.2
-	ld.hu	$a1, $s0, 0
-	lu12i.w	$a2, 7
-	ori	$a2, $a2, 1136
-	beq	$a1, $a2, .LBB27_82
-# %bb.38:                               # %PDFKeyword_Find.exit78.thread.3
+	ori	$a3, $a0, 1121
+	xor	$a1, $a1, $a3
+	xori	$a2, $a2, 100
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB27_42
+# %bb.24:                               # %.preheader.1
+	ld.hu	$a2, $s0, 0
+	ld.bu	$a3, $s0, 2
+	lu12i.w	$a1, 7
+	ori	$a4, $a1, 1395
+	xor	$a2, $a2, $a4
+	xori	$a3, $a3, 98
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB27_43
+# %bb.25:                               # %.preheader.2
+	ld.hu	$a2, $s0, 0
+	ld.bu	$a3, $s0, 2
+	ori	$a4, $a1, 1389
+	xor	$a2, $a2, $a4
+	xori	$a3, $a3, 108
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB27_44
+# %bb.26:                               # %.preheader.3
+	ld.hu	$a2, $s0, 0
+	ld.bu	$a3, $s0, 2
+	ori	$a4, $a0, 2404
+	xor	$a2, $a2, $a4
+	xori	$a3, $a3, 118
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB27_45
+# %bb.27:                               # %.preheader.4
+	ld.hu	$a2, $s0, 0
+	ld.bu	$a3, $s0, 2
+	ori	$a4, $a0, 2419
+	xor	$a2, $a2, $a4
+	xori	$a3, $a3, 110
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB27_46
+# %bb.28:                               # %.preheader.5
+	ld.hu	$a2, $s0, 0
+	ld.bu	$a3, $s0, 2
+	ori	$a4, $a0, 3939
+	xor	$a2, $a2, $a4
+	xori	$a3, $a3, 115
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB27_47
+# %bb.29:                               # %.preheader.6
+	ld.w	$a2, $s0, 0
+	lu12i.w	$a3, 439862
+	ori	$a3, $a3, 2416
+	beq	$a2, $a3, .LBB27_48
+# %bb.30:                               # %PDFKeyword_Find.exit.thread.preheader
+	ld.w	$a3, $s0, 0
+	ld.bu	$a4, $s0, 4
+	lu12i.w	$a2, 501399
+	ori	$a5, $a2, 888
+	xor	$a3, $a3, $a5
+	xori	$a4, $a4, 101
+	or	$a3, $a3, $a4
+	beqz	$a3, .LBB27_74
+# %bb.31:                               # %PDFKeyword_Find.exit.thread.1
+	ld.w	$a3, $s0, 0
+	ld.bu	$a4, $s0, 4
+	ori	$a2, $a2, 889
+	xor	$a2, $a3, $a2
+	xori	$a3, $a4, 101
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB27_75
+# %bb.32:                               # %PDFKeyword_Find.exit.thread.2
+	ld.w	$a3, $s0, 0
+	ld.bu	$a4, $s0, 4
+	lu12i.w	$a2, 468502
+	ori	$a5, $a2, 3448
+	xor	$a3, $a3, $a5
+	xori	$a4, $a4, 107
+	or	$a3, $a3, $a4
+	beqz	$a3, .LBB27_76
+# %bb.33:                               # %PDFKeyword_Find.exit.thread.3
+	ld.w	$a3, $s0, 0
+	ld.bu	$a4, $s0, 4
+	ori	$a2, $a2, 3449
+	xor	$a2, $a3, $a2
+	xori	$a3, $a4, 107
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB27_77
+# %bb.34:                               # %PDFKeyword_Find.exit78.thread.preheader
+	ld.hu	$a2, $s0, 0
+	ori	$a3, $a0, 3689
+	beq	$a2, $a3, .LBB27_80
+# %bb.35:                               # %PDFKeyword_Find.exit78.thread.1
+	ld.hu	$a2, $s0, 0
+	ori	$a3, $a0, 3427
+	beq	$a2, $a3, .LBB27_81
+# %bb.36:                               # %PDFKeyword_Find.exit78.thread.2
+	ld.hu	$a2, $s0, 0
+	ori	$a1, $a1, 1136
+	beq	$a2, $a1, .LBB27_82
+# %bb.37:                               # %PDFKeyword_Find.exit78.thread.3
 	ld.hu	$a1, $s0, 0
 	ori	$a0, $a0, 3429
 	beq	$a1, $a0, .LBB27_83
-# %bb.39:                               # %PDFKeyword_Find.exit78.thread.4
-	pcalau12i	$a0, %pc_hi20(.L.str.91)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.91)
-	ori	$a2, $zero, 5
-	ori	$s1, $zero, 5
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_84
-# %bb.40:                               # %PDFKeyword_Find.exit78.thread.5
-	pcalau12i	$a0, %pc_hi20(.L.str.92)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.92)
-	ori	$a2, $zero, 5
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+# %bb.38:                               # %PDFKeyword_Find.exit78.thread.4
+	ld.w	$a1, $s0, 0
+	ld.bu	$a2, $s0, 4
+	lu12i.w	$a0, 477014
+	ori	$a0, $a0, 3948
+	xor	$a1, $a1, $a0
+	xori	$a2, $a2, 102
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB27_84
+# %bb.39:                               # %PDFKeyword_Find.exit78.thread.5
+	ld.w	$a1, $s0, 0
+	ld.bu	$a2, $s0, 4
+	xor	$a1, $a1, $a0
+	xori	$a2, $a2, 118
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB27_85
+# %bb.40:                               # %PDFKeyword_Find.exit78.thread.6
+	ld.w	$a1, $s0, 0
+	ld.bu	$a2, $s0, 4
+	xor	$a0, $a1, $a0
+	xori	$a1, $a2, 115
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB27_86
-# %bb.41:                               # %PDFKeyword_Find.exit78.thread.6
-	pcalau12i	$a0, %pc_hi20(.L.str.93)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.93)
-	ori	$a2, $zero, 5
-	move	$a1, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB27_85
-# %bb.42:                               # %PDFKeyword_Find.exit84.thread
+# %bb.41:                               # %PDFKeyword_Find.exit84.thread
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a4, $a0, 0
@@ -4738,15 +4832,18 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	addi.d	$a2, $a0, %pc_lo12(.L.str.84)
 	ori	$a0, $zero, 48
 	ori	$a1, $zero, 33
-	b	.LBB27_22
-.LBB27_43:
+	b	.LBB27_21
+.LBB27_42:
 	move	$s1, $zero
 	b	.LBB27_49
-.LBB27_44:
+.LBB27_43:
 	ori	$s1, $zero, 1
 	b	.LBB27_49
-.LBB27_45:
+.LBB27_44:
 	ori	$s1, $zero, 2
+	b	.LBB27_49
+.LBB27_45:
+	ori	$s1, $zero, 3
 	b	.LBB27_49
 .LBB27_46:
 	ori	$s1, $zero, 4
@@ -4890,7 +4987,7 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	fld.s	$fa0, $sp, 16
 	fld.s	$fa1, $sp, 12
 	fadd.s	$fa0, $fa0, $fa1
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_66:
 	fld.s	$fa0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
@@ -4903,12 +5000,12 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
 	fcvt.s.d	$fa0, $fa0
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_67:
 	fld.s	$fa0, $sp, 16
 	fld.s	$fa1, $sp, 12
 	fmul.s	$fa0, $fa0, $fa1
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_68:
 	fld.s	$fa0, $sp, 12
 	movgr2fr.w	$fa1, $zero
@@ -4930,12 +5027,12 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 .LBB27_70:                              # %Assert.exit72
 	fld.s	$fa1, $sp, 16
 	fdiv.s	$fa0, $fa1, $fa0
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_71:
 	fld.s	$fa0, $sp, 16
 	fld.s	$fa1, $sp, 12
 	fsub.s	$fa0, $fa0, $fa1
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_72:
 	fld.s	$fa0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
@@ -4948,10 +5045,10 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	pcaddu18i	$ra, %call36(cos)
 	jirl	$ra, $ra, 0
 	fcvt.s.d	$fa0, $fa0
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_73:
 	fld.s	$fa0, $sp, 12
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_74:
 	move	$s1, $zero
 	b	.LBB27_78
@@ -4975,28 +5072,30 @@ PDFPage_EvalExpr:                       # @PDFPage_EvalExpr
 	pcalau12i	$a1, %pc_hi20(g_graphics_vars)
 	addi.d	$a1, $a1, %pc_lo12(g_graphics_vars)
 .LBB27_79:                              # %PDFPage_GetFloat.exit
-	ldx.w	$a0, $a1, $a0
-	movgr2fr.w	$fa0, $a0
+	fldx.s	$fa0, $a1, $a0
 	ffint.s.w	$fa0, $fa0
-	b	.LBB27_11
+	b	.LBB27_10
 .LBB27_80:
 	move	$s1, $zero
-	b	.LBB27_86
+	b	.LBB27_87
 .LBB27_81:
 	ori	$s1, $zero, 1
-	b	.LBB27_86
+	b	.LBB27_87
 .LBB27_82:
 	ori	$s1, $zero, 2
-	b	.LBB27_86
+	b	.LBB27_87
 .LBB27_83:
 	ori	$s1, $zero, 3
-	b	.LBB27_86
+	b	.LBB27_87
 .LBB27_84:
 	ori	$s1, $zero, 4
-	b	.LBB27_86
+	b	.LBB27_87
 .LBB27_85:
+	ori	$s1, $zero, 5
+	b	.LBB27_87
+.LBB27_86:
 	ori	$s1, $zero, 6
-.LBB27_86:                              # %PDFKeyword_Find.exit84
+.LBB27_87:                              # %PDFKeyword_Find.exit84
 	slli.d	$a0, $s1, 3
 	pcalau12i	$a1, %pc_hi20(g_unit_keywords)
 	addi.d	$a1, $a1, %pc_lo12(g_unit_keywords)
@@ -5198,13 +5297,11 @@ PDFObject_New:                          # @PDFObject_New
 	move	$fp, $a0
 	beqz	$a0, .LBB29_7
 # %bb.4:
-	ori	$a0, $zero, 255
-	bltu	$a0, $s2, .LBB29_8
+	beqz	$s2, .LBB29_8
 .LBB29_5:
-	pcalau12i	$a0, %pc_hi20(g_obj_offset_list)
-	addi.d	$s2, $a0, %pc_lo12(g_obj_offset_list)
-	ld.d	$a0, $s2, 0
-	beqz	$a0, .LBB29_10
+	pcalau12i	$s3, %pc_hi20(g_cur_obj_offset_block)
+	ld.d	$s2, $s3, %pc_lo12(g_cur_obj_offset_block)
+	bnez	$s2, .LBB29_10
 # %bb.6:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -5217,6 +5314,7 @@ PDFObject_New:                          # @PDFObject_New
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
+	ld.d	$s2, $s3, %pc_lo12(g_cur_obj_offset_block)
 	b	.LBB29_10
 .LBB29_7:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -5229,12 +5327,12 @@ PDFObject_New:                          # @PDFObject_New
 	ori	$a3, $zero, 1
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 255
-	bgeu	$a0, $s2, .LBB29_5
+	bnez	$s2, .LBB29_5
 .LBB29_8:
-	pcalau12i	$s3, %pc_hi20(g_cur_obj_offset_block)
-	ld.d	$s2, $s3, %pc_lo12(g_cur_obj_offset_block)
-	bnez	$s2, .LBB29_10
+	pcalau12i	$a0, %pc_hi20(g_obj_offset_list)
+	addi.d	$s2, $a0, %pc_lo12(g_obj_offset_list)
+	ld.d	$a0, $s2, 0
+	beqz	$a0, .LBB29_10
 # %bb.9:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -5247,7 +5345,6 @@ PDFObject_New:                          # @PDFObject_New
 	move	$a5, $a4
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$s2, $s3, %pc_lo12(g_cur_obj_offset_block)
 .LBB29_10:                              # %Assert.exit
 	st.d	$fp, $s2, 0
 	st.d	$zero, $fp, 0

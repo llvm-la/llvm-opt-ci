@@ -202,53 +202,52 @@ crc32_z:                                # @crc32_z
 	bltu	$a7, $a2, .LBB1_8
 .LBB1_9:                                # %.preheader84.i
 	ori	$a3, $zero, 4
-	bltu	$a2, $a3, .LBB1_16
+	bltu	$a2, $a3, .LBB1_12
 # %bb.10:
-	lu12i.w	$a4, -4096
-	lu32i.d	$a4, 0
-	ori	$a5, $zero, 3072
-	ori	$a6, $zero, 2048
-	ori	$a7, $zero, 3
+	lu12i.w	$a3, -4096
+	lu32i.d	$a3, 0
+	ori	$a4, $zero, 3072
+	ori	$a5, $zero, 2048
+	ori	$a6, $zero, 3
 	.p2align	4, , 16
 .LBB1_11:                               # %.lr.ph101.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t1, $a1, 0
-	addi.d	$a3, $a1, 4
-	xor	$a1, $t1, $t0
-	and	$t0, $a1, $a4
-	andi	$t1, $a1, 255
+	ld.w	$a7, $a1, 0
+	addi.d	$a1, $a1, 4
+	xor	$a7, $a7, $t0
+	and	$t0, $a7, $a3
+	andi	$t1, $a7, 255
 	alsl.d	$t1, $t1, $a0, 2
-	ldx.w	$t1, $t1, $a5
-	srli.d	$t2, $a1, 6
+	ldx.w	$t1, $t1, $a4
+	srli.d	$t2, $a7, 6
 	andi	$t2, $t2, 1020
 	add.d	$t2, $a0, $t2
-	ldx.w	$t2, $t2, $a6
-	srli.d	$a1, $a1, 14
-	andi	$a1, $a1, 1020
-	add.d	$a1, $a0, $a1
-	ld.w	$a1, $a1, 1024
+	ldx.w	$t2, $t2, $a5
+	srli.d	$a7, $a7, 14
+	andi	$a7, $a7, 1020
+	add.d	$a7, $a0, $a7
+	ld.w	$a7, $a7, 1024
 	srli.d	$t0, $t0, 22
 	ldx.w	$t0, $a0, $t0
 	xor	$t1, $t2, $t1
-	xor	$a1, $t1, $a1
+	xor	$a7, $t1, $a7
 	addi.d	$a2, $a2, -4
-	xor	$t0, $a1, $t0
-	move	$a1, $a3
-	bltu	$a7, $a2, .LBB1_11
-# %bb.12:                               # %._crit_edge.i
+	xor	$t0, $a7, $t0
+	bltu	$a6, $a2, .LBB1_11
+.LBB1_12:                               # %._crit_edge.i
 	beqz	$a2, .LBB1_14
 	.p2align	4, , 16
 .LBB1_13:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a1, $a3, 0
-	xor	$a1, $a1, $t0
-	andi	$a1, $a1, 255
-	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $a0, $a1
-	addi.d	$a3, $a3, 1
+	ld.b	$a3, $a1, 0
+	xor	$a3, $a3, $t0
+	andi	$a3, $a3, 255
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $a0, $a3
+	addi.d	$a1, $a1, 1
 	bstrpick.d	$a4, $t0, 31, 8
 	addi.d	$a2, $a2, -1
-	xor	$t0, $a1, $a4
+	xor	$t0, $a3, $a4
 	bnez	$a2, .LBB1_13
 .LBB1_14:                               # %crc32_little.exit
 	nor	$a0, $t0, $zero
@@ -257,10 +256,6 @@ crc32_z:                                # @crc32_z
 .LBB1_15:
 	move	$a0, $zero
 	ret
-.LBB1_16:
-	move	$a3, $a1
-	bnez	$a2, .LBB1_13
-	b	.LBB1_14
 .Lfunc_end1:
 	.size	crc32_z, .Lfunc_end1-crc32_z
                                         # -- End function
@@ -363,97 +358,92 @@ crc32_combine_:                         # @crc32_combine_
 	addi.d	$a4, $sp, 16
 	addi.d	$a5, $sp, 272
 	ori	$a6, $zero, 32
-	ori	$a7, $zero, 1
 	b	.LBB4_4
 	.p2align	4, , 16
 .LBB4_2:                                #   in Loop: Header=BB4_4 Depth=1
-	move	$t1, $zero
+	move	$t0, $zero
 .LBB4_3:                                # %gf2_matrix_times.exit.i
                                         #   in Loop: Header=BB4_4 Depth=1
 	addi.d	$a3, $a3, 1
-	stx.d	$t1, $t0, $a5
+	stx.d	$t0, $a7, $a5
 	beq	$a3, $a6, .LBB4_9
 .LBB4_4:                                # %.preheader80
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_7 Depth 2
-	slli.d	$t0, $a3, 3
-	ldx.d	$t3, $t0, $a4
-	beqz	$t3, .LBB4_2
+	slli.d	$a7, $a3, 3
+	ldx.d	$t1, $a7, $a4
+	beqz	$t1, .LBB4_2
 # %bb.5:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB4_4 Depth=1
-	move	$t1, $zero
+	move	$t0, $zero
 	addi.d	$t2, $sp, 16
 	b	.LBB4_7
 	.p2align	4, , 16
 .LBB4_6:                                #   in Loop: Header=BB4_7 Depth=2
-	srli.d	$t3, $t4, 1
+	srli.d	$t1, $t1, 1
 	addi.d	$t2, $t2, 8
-	bgeu	$a7, $t4, .LBB4_3
+	beqz	$t1, .LBB4_3
 .LBB4_7:                                # %.lr.ph.i.i
                                         #   Parent Loop BB4_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$t4, $t3
-	andi	$t3, $t3, 1
+	andi	$t3, $t1, 1
 	beqz	$t3, .LBB4_6
 # %bb.8:                                #   in Loop: Header=BB4_7 Depth=2
 	ld.d	$t3, $t2, 0
-	xor	$t1, $t3, $t1
+	xor	$t0, $t3, $t0
 	b	.LBB4_6
 .LBB4_9:                                # %gf2_matrix_square.exit.preheader
 	move	$a3, $zero
 	addi.d	$a4, $sp, 272
 	addi.d	$a5, $sp, 16
 	ori	$a6, $zero, 32
-	ori	$a7, $zero, 1
 	b	.LBB4_12
 	.p2align	4, , 16
 .LBB4_10:                               #   in Loop: Header=BB4_12 Depth=1
-	move	$t1, $zero
+	move	$t0, $zero
 .LBB4_11:                               # %gf2_matrix_times.exit.i37
                                         #   in Loop: Header=BB4_12 Depth=1
 	addi.d	$a3, $a3, 1
-	stx.d	$t1, $t0, $a5
+	stx.d	$t0, $a7, $a5
 	beq	$a3, $a6, .LBB4_17
 .LBB4_12:                               # %gf2_matrix_square.exit
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_15 Depth 2
-	slli.d	$t0, $a3, 3
-	ldx.d	$t3, $t0, $a4
-	beqz	$t3, .LBB4_10
+	slli.d	$a7, $a3, 3
+	ldx.d	$t1, $a7, $a4
+	beqz	$t1, .LBB4_10
 # %bb.13:                               # %.lr.ph.i.i30.preheader
                                         #   in Loop: Header=BB4_12 Depth=1
-	move	$t1, $zero
+	move	$t0, $zero
 	addi.d	$t2, $sp, 272
 	b	.LBB4_15
 	.p2align	4, , 16
 .LBB4_14:                               #   in Loop: Header=BB4_15 Depth=2
-	srli.d	$t3, $t4, 1
+	srli.d	$t1, $t1, 1
 	addi.d	$t2, $t2, 8
-	bgeu	$a7, $t4, .LBB4_11
+	beqz	$t1, .LBB4_11
 .LBB4_15:                               # %.lr.ph.i.i30
                                         #   Parent Loop BB4_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$t4, $t3
-	andi	$t3, $t3, 1
+	andi	$t3, $t1, 1
 	beqz	$t3, .LBB4_14
 # %bb.16:                               #   in Loop: Header=BB4_15 Depth=2
 	ld.d	$t3, $t2, 0
-	xor	$t1, $t3, $t1
+	xor	$t0, $t3, $t0
 	b	.LBB4_14
 .LBB4_17:                               # %gf2_matrix_square.exit41.preheader
 	addi.d	$a3, $sp, 16
 	addi.d	$a4, $sp, 272
 	ori	$a5, $zero, 32
 	ori	$a6, $zero, 2
-	ori	$a7, $zero, 3
-	ori	$t0, $zero, 1
 	b	.LBB4_20
 	.p2align	4, , 16
 .LBB4_18:                               #   in Loop: Header=BB4_20 Depth=1
-	move	$a0, $t2
+	move	$a0, $a7
 .LBB4_19:                               # %gf2_matrix_times.exit79
                                         #   in Loop: Header=BB4_20 Depth=1
-	bgeu	$a7, $t1, .LBB4_51
+	srli.d	$a2, $a2, 2
+	beqz	$a2, .LBB4_51
 .LBB4_20:                               # %gf2_matrix_square.exit41
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_23 Depth 2
@@ -462,148 +452,142 @@ crc32_combine_:                         # @crc32_combine_
                                         #     Child Loop BB4_35 Depth 2
                                         #       Child Loop BB4_38 Depth 3
                                         #     Child Loop BB4_44 Depth 2
-	move	$t2, $zero
-	move	$t1, $a2
+	move	$a7, $zero
 	b	.LBB4_23
 	.p2align	4, , 16
 .LBB4_21:                               #   in Loop: Header=BB4_23 Depth=2
-	move	$t3, $zero
+	move	$t1, $zero
 .LBB4_22:                               # %gf2_matrix_times.exit.i51
                                         #   in Loop: Header=BB4_23 Depth=2
-	addi.d	$t2, $t2, 1
-	stx.d	$t3, $a2, $a4
-	beq	$t2, $a5, .LBB4_28
+	addi.d	$a7, $a7, 1
+	stx.d	$t1, $t0, $a4
+	beq	$a7, $a5, .LBB4_28
 .LBB4_23:                               #   Parent Loop BB4_20 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB4_26 Depth 3
-	slli.d	$a2, $t2, 3
-	ldx.d	$t5, $a2, $a3
-	beqz	$t5, .LBB4_21
+	slli.d	$t0, $a7, 3
+	ldx.d	$t2, $t0, $a3
+	beqz	$t2, .LBB4_21
 # %bb.24:                               # %.lr.ph.i.i44.preheader
                                         #   in Loop: Header=BB4_23 Depth=2
-	move	$t3, $zero
-	addi.d	$t4, $sp, 16
+	move	$t1, $zero
+	addi.d	$t3, $sp, 16
 	b	.LBB4_26
 	.p2align	4, , 16
 .LBB4_25:                               #   in Loop: Header=BB4_26 Depth=3
-	srli.d	$t5, $t6, 1
-	addi.d	$t4, $t4, 8
-	bgeu	$t0, $t6, .LBB4_22
+	srli.d	$t2, $t2, 1
+	addi.d	$t3, $t3, 8
+	beqz	$t2, .LBB4_22
 .LBB4_26:                               # %.lr.ph.i.i44
                                         #   Parent Loop BB4_20 Depth=1
                                         #     Parent Loop BB4_23 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	move	$t6, $t5
-	andi	$t5, $t5, 1
-	beqz	$t5, .LBB4_25
+	andi	$t4, $t2, 1
+	beqz	$t4, .LBB4_25
 # %bb.27:                               #   in Loop: Header=BB4_26 Depth=3
-	ld.d	$t5, $t4, 0
-	xor	$t3, $t5, $t3
+	ld.d	$t4, $t3, 0
+	xor	$t1, $t4, $t1
 	b	.LBB4_25
 	.p2align	4, , 16
 .LBB4_28:                               # %gf2_matrix_square.exit55
                                         #   in Loop: Header=BB4_20 Depth=1
-	andi	$a2, $t1, 1
-	bnez	$a2, .LBB4_30
+	andi	$a7, $a2, 1
+	bnez	$a7, .LBB4_30
 # %bb.29:                               #   in Loop: Header=BB4_20 Depth=1
-	move	$t2, $a0
+	move	$a7, $a0
 	b	.LBB4_31
 	.p2align	4, , 16
 .LBB4_30:                               #   in Loop: Header=BB4_20 Depth=1
-	move	$t2, $zero
+	move	$a7, $zero
 	bnez	$a0, .LBB4_46
 .LBB4_31:                               # %gf2_matrix_times.exit
                                         #   in Loop: Header=BB4_20 Depth=1
-	bltu	$t1, $a6, .LBB4_50
+	bltu	$a2, $a6, .LBB4_50
 # %bb.32:                               # %.preheader.preheader
                                         #   in Loop: Header=BB4_20 Depth=1
 	move	$a0, $zero
-	srli.d	$a2, $t1, 2
 	b	.LBB4_35
 	.p2align	4, , 16
 .LBB4_33:                               #   in Loop: Header=BB4_35 Depth=2
-	move	$t4, $zero
+	move	$t1, $zero
 .LBB4_34:                               # %gf2_matrix_times.exit.i65
                                         #   in Loop: Header=BB4_35 Depth=2
 	addi.d	$a0, $a0, 1
-	stx.d	$t4, $t3, $a3
+	stx.d	$t1, $t0, $a3
 	beq	$a0, $a5, .LBB4_40
 .LBB4_35:                               # %.preheader
                                         #   Parent Loop BB4_20 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB4_38 Depth 3
-	slli.d	$t3, $a0, 3
-	ldx.d	$t6, $t3, $a4
-	beqz	$t6, .LBB4_33
+	slli.d	$t0, $a0, 3
+	ldx.d	$t2, $t0, $a4
+	beqz	$t2, .LBB4_33
 # %bb.36:                               # %.lr.ph.i.i58.preheader
                                         #   in Loop: Header=BB4_35 Depth=2
-	move	$t4, $zero
-	addi.d	$t5, $sp, 272
+	move	$t1, $zero
+	addi.d	$t3, $sp, 272
 	b	.LBB4_38
 	.p2align	4, , 16
 .LBB4_37:                               #   in Loop: Header=BB4_38 Depth=3
-	srli.d	$t6, $t7, 1
-	addi.d	$t5, $t5, 8
-	bgeu	$t0, $t7, .LBB4_34
+	srli.d	$t2, $t2, 1
+	addi.d	$t3, $t3, 8
+	beqz	$t2, .LBB4_34
 .LBB4_38:                               # %.lr.ph.i.i58
                                         #   Parent Loop BB4_20 Depth=1
                                         #     Parent Loop BB4_35 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	move	$t7, $t6
-	andi	$t6, $t6, 1
-	beqz	$t6, .LBB4_37
+	andi	$t4, $t2, 1
+	beqz	$t4, .LBB4_37
 # %bb.39:                               #   in Loop: Header=BB4_38 Depth=3
-	ld.d	$t6, $t5, 0
-	xor	$t4, $t6, $t4
+	ld.d	$t4, $t3, 0
+	xor	$t1, $t4, $t1
 	b	.LBB4_37
 	.p2align	4, , 16
 .LBB4_40:                               # %gf2_matrix_square.exit69
                                         #   in Loop: Header=BB4_20 Depth=1
-	andi	$a0, $t1, 2
+	andi	$a0, $a2, 2
 	beqz	$a0, .LBB4_18
 # %bb.41:                               #   in Loop: Header=BB4_20 Depth=1
 	move	$a0, $zero
-	beqz	$t2, .LBB4_19
+	beqz	$a7, .LBB4_19
 # %bb.42:                               # %.lr.ph.i71.preheader
                                         #   in Loop: Header=BB4_20 Depth=1
-	addi.d	$t3, $sp, 16
+	addi.d	$t0, $sp, 16
 	b	.LBB4_44
 	.p2align	4, , 16
 .LBB4_43:                               #   in Loop: Header=BB4_44 Depth=2
-	srli.d	$t2, $t4, 1
-	addi.d	$t3, $t3, 8
-	bgeu	$t0, $t4, .LBB4_19
+	srli.d	$a7, $a7, 1
+	addi.d	$t0, $t0, 8
+	beqz	$a7, .LBB4_19
 .LBB4_44:                               # %.lr.ph.i71
                                         #   Parent Loop BB4_20 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$t4, $t2
-	andi	$t2, $t2, 1
-	beqz	$t2, .LBB4_43
+	andi	$t1, $a7, 1
+	beqz	$t1, .LBB4_43
 # %bb.45:                               #   in Loop: Header=BB4_44 Depth=2
-	ld.d	$t2, $t3, 0
-	xor	$a0, $t2, $a0
+	ld.d	$t1, $t0, 0
+	xor	$a0, $t1, $a0
 	b	.LBB4_43
 .LBB4_46:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB4_20 Depth=1
-	addi.d	$a2, $sp, 272
+	addi.d	$t0, $sp, 272
 	b	.LBB4_48
 	.p2align	4, , 16
 .LBB4_47:                               #   in Loop: Header=BB4_48 Depth=2
-	srli.d	$a0, $t3, 1
-	addi.d	$a2, $a2, 8
-	bgeu	$t0, $t3, .LBB4_31
+	srli.d	$a0, $a0, 1
+	addi.d	$t0, $t0, 8
+	beqz	$a0, .LBB4_31
 .LBB4_48:                               # %.lr.ph.i
                                         #   Parent Loop BB4_20 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$t3, $a0
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB4_47
+	andi	$t1, $a0, 1
+	beqz	$t1, .LBB4_47
 # %bb.49:                               #   in Loop: Header=BB4_48 Depth=2
-	ld.d	$a0, $a2, 0
-	xor	$t2, $a0, $t2
+	ld.d	$t1, $t0, 0
+	xor	$a7, $t1, $a7
 	b	.LBB4_47
 .LBB4_50:
-	move	$a0, $t2
+	move	$a0, $a7
 .LBB4_51:
 	xor	$a0, $a0, $a1
 	addi.d	$sp, $sp, 528

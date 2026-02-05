@@ -187,8 +187,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	bnez	$a3, .LBB0_22
 # %bb.23:                               # %middle.block78
 	xvmul.w	$xr0, $xr2, $xr1
-	xvpermi.d	$xr1, $xr0, 238
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvpermi.d	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1
 	xvshuf4i.w	$xr1, $xr0, 14
 	xvmul.w	$xr0, $xr0, $xr1
@@ -1041,7 +1040,7 @@ color_quantize:                         # @color_quantize
 	move	$a7, $zero
 	bstrpick.d	$a4, $a1, 30, 3
 	slli.d	$a4, $a4, 3
-	addi.d	$a5, $a0, 16
+	addi.d	$a5, $a0, 32
 	ori	$a6, $zero, 8
 	vrepli.b	$vr0, 0
 	xvrepli.b	$xr1, 0
@@ -1099,74 +1098,73 @@ color_quantize:                         # @color_quantize
                                         #   Parent Loop BB6_5 Depth=1
                                         #     Parent Loop BB6_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$t5, $a7, $t3
-	ldx.w	$t6, $a7, $t3
-	ld.w	$t5, $t5, 4
-	xvld	$xr4, $t4, 16
-	vinsgr2vr.w	$vr6, $t6, 0
-	vinsgr2vr.w	$vr5, $t5, 0
-	vpickve2gr.b	$t5, $vr6, 0
-	xvreplgr2vr.b	$xr7, $t5
-	xvpermi.q	$xr7, $xr1, 18
-	xvori.b	$xr8, $xr1, 0
-	xvextrins.b	$xr8, $xr7, 0
-	vpickve2gr.b	$t5, $vr6, 1
-	xvreplgr2vr.b	$xr7, $t5
-	xvpermi.q	$xr7, $xr8, 18
-	xvpickve2gr.d	$t5, $xr8, 0
-	xvextrins.b	$xr8, $xr7, 136
-	vpickve2gr.b	$t6, $vr6, 2
-	xvreplgr2vr.b	$xr7, $t6
-	xvpermi.q	$xr7, $xr8, 48
-	xvpickve2gr.d	$t6, $xr8, 1
-	xvextrins.b	$xr8, $xr7, 0
-	vpickve2gr.b	$t7, $vr6, 3
-	xvreplgr2vr.b	$xr6, $t7
-	xvpermi.q	$xr6, $xr8, 48
-	xvpickve2gr.d	$t7, $xr8, 2
-	xvextrins.b	$xr8, $xr6, 136
-	vpickve2gr.b	$t8, $vr5, 0
-	xvreplgr2vr.b	$xr6, $t8
+	add.d	$t7, $a7, $t3
+	ld.d	$s2, $t4, -32
+	ld.d	$s3, $t4, -24
+	ld.d	$s4, $t4, -16
+	ld.d	$s5, $t4, -8
+	ld.d	$t5, $t4, 0
+	ld.d	$t6, $t4, 8
+	ldx.w	$s6, $a7, $t3
+	ld.w	$s7, $t7, 4
+	ld.d	$t7, $t4, 16
+	ld.d	$t8, $t4, 24
+	vinsgr2vr.w	$vr4, $s6, 0
+	vinsgr2vr.w	$vr5, $s7, 0
+	vpickve2gr.b	$s6, $vr4, 0
+	xvreplgr2vr.b	$xr6, $s6
 	xvpermi.q	$xr6, $xr1, 18
 	xvori.b	$xr7, $xr1, 0
 	xvextrins.b	$xr7, $xr6, 0
-	vpickve2gr.b	$t8, $vr5, 1
-	xvreplgr2vr.b	$xr6, $t8
+	vpickve2gr.b	$s6, $vr4, 1
+	xvreplgr2vr.b	$xr6, $s6
 	xvpermi.q	$xr6, $xr7, 18
-	xvpickve2gr.d	$t8, $xr7, 0
+	xvpickve2gr.d	$s6, $xr7, 0
 	xvextrins.b	$xr7, $xr6, 136
-	vpickve2gr.b	$s2, $vr5, 2
-	xvreplgr2vr.b	$xr6, $s2
+	vpickve2gr.b	$s7, $vr4, 2
+	xvreplgr2vr.b	$xr6, $s7
 	xvpermi.q	$xr6, $xr7, 48
-	xvpickve2gr.d	$s2, $xr7, 1
+	xvpickve2gr.d	$s7, $xr7, 1
 	xvextrins.b	$xr7, $xr6, 0
-	vpickve2gr.b	$s3, $vr5, 3
-	xvreplgr2vr.b	$xr5, $s3
-	xvpermi.q	$xr5, $xr7, 48
-	xvpickve2gr.d	$s3, $xr7, 2
-	xvextrins.b	$xr7, $xr5, 136
-	ld.d	$s4, $t4, -16
-	ld.d	$s5, $t4, -8
-	ld.d	$s6, $t4, 0
-	ld.d	$s7, $t4, 8
-	xvpickve2gr.d	$s8, $xr8, 3
-	xvpickve2gr.d	$ra, $xr4, 0
-	xvpickve2gr.d	$s1, $xr4, 1
-	xvpickve2gr.d	$s0, $xr4, 2
-	xvpickve2gr.d	$fp, $xr4, 3
-	xvpickve2gr.d	$a3, $xr7, 3
-	ldx.b	$t5, $s4, $t5
-	ldx.b	$t6, $s5, $t6
-	ldx.b	$t7, $s6, $t7
-	ldx.b	$s4, $s7, $s8
-	vinsgr2vr.b	$vr4, $t5, 0
-	vinsgr2vr.b	$vr4, $t6, 1
-	vinsgr2vr.b	$vr4, $t7, 2
-	vinsgr2vr.b	$vr4, $s4, 3
-	ldx.b	$t5, $ra, $t8
-	ldx.b	$t6, $s1, $s2
-	ldx.b	$t7, $s0, $s3
-	ldx.b	$a3, $fp, $a3
+	vpickve2gr.b	$s8, $vr4, 3
+	xvreplgr2vr.b	$xr4, $s8
+	xvpermi.q	$xr4, $xr7, 48
+	xvpickve2gr.d	$s8, $xr7, 2
+	xvextrins.b	$xr7, $xr4, 136
+	xvpickve2gr.d	$ra, $xr7, 3
+	vpickve2gr.b	$s1, $vr5, 0
+	xvreplgr2vr.b	$xr4, $s1
+	xvpermi.q	$xr4, $xr1, 18
+	xvori.b	$xr6, $xr1, 0
+	xvextrins.b	$xr6, $xr4, 0
+	vpickve2gr.b	$s1, $vr5, 1
+	xvreplgr2vr.b	$xr4, $s1
+	xvpermi.q	$xr4, $xr6, 18
+	xvpickve2gr.d	$s1, $xr6, 0
+	xvextrins.b	$xr6, $xr4, 136
+	vpickve2gr.b	$s0, $vr5, 2
+	xvreplgr2vr.b	$xr4, $s0
+	xvpermi.q	$xr4, $xr6, 48
+	xvpickve2gr.d	$s0, $xr6, 1
+	xvextrins.b	$xr6, $xr4, 0
+	vpickve2gr.b	$fp, $vr5, 3
+	xvreplgr2vr.b	$xr4, $fp
+	xvpermi.q	$xr4, $xr6, 48
+	xvpickve2gr.d	$fp, $xr6, 2
+	xvextrins.b	$xr6, $xr4, 136
+	xvpickve2gr.d	$a3, $xr6, 3
+	ldx.b	$s2, $s2, $s6
+	ldx.b	$s3, $s3, $s7
+	ldx.b	$s4, $s4, $s8
+	ldx.b	$s5, $s5, $ra
+	vinsgr2vr.b	$vr4, $s2, 0
+	vinsgr2vr.b	$vr4, $s3, 1
+	vinsgr2vr.b	$vr4, $s4, 2
+	vinsgr2vr.b	$vr4, $s5, 3
+	ldx.b	$t5, $t5, $s1
+	ldx.b	$t6, $t6, $s0
+	ldx.b	$t7, $t7, $fp
+	ldx.b	$a3, $t8, $a3
 	vinsgr2vr.b	$vr5, $t5, 0
 	vinsgr2vr.b	$vr5, $t6, 1
 	vinsgr2vr.b	$vr5, $t7, 2
@@ -1637,10 +1635,9 @@ quantize_fs_dither:                     # @quantize_fs_dither
 .LBB9_15:                               # %.lr.ph101.us.us.preheader
 	move	$s2, $zero
 	bstrpick.d	$a0, $s4, 30, 3
-	slli.d	$s7, $a0, 3
-	addi.d	$s8, $s3, 168
-	addi.d	$fp, $s3, 144
-	ori	$s1, $zero, 8
+	slli.d	$s1, $a0, 3
+	addi.d	$s7, $s3, 168
+	ori	$s8, $zero, 8
 	slli.d	$s6, $s6, 1
 	b	.LBB9_17
 	.p2align	4, , 16
@@ -1665,8 +1662,8 @@ quantize_fs_dither:                     # @quantize_fs_dither
 	beqz	$a0, .LBB9_20
 # %bb.18:                               # %.lr.ph101.split.us.split.us113.us.preheader
                                         #   in Loop: Header=BB9_17 Depth=1
-	addi.d	$t3, $s3, 112
-	bgeu	$s4, $s1, .LBB9_22
+	addi.d	$t4, $s3, 112
+	bgeu	$s4, $s8, .LBB9_22
 # %bb.19:                               #   in Loop: Header=BB9_17 Depth=1
 	move	$a2, $zero
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
@@ -1674,8 +1671,8 @@ quantize_fs_dither:                     # @quantize_fs_dither
 	.p2align	4, , 16
 .LBB9_20:                               # %.lr.ph101.split.us.split.us.us.us.preheader
                                         #   in Loop: Header=BB9_17 Depth=1
-	addi.d	$a5, $s3, 112
-	bgeu	$s4, $s1, .LBB9_27
+	addi.d	$t4, $s3, 112
+	bgeu	$s4, $s8, .LBB9_27
 # %bb.21:                               #   in Loop: Header=BB9_17 Depth=1
 	move	$a2, $zero
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
@@ -1683,20 +1680,21 @@ quantize_fs_dither:                     # @quantize_fs_dither
 	.p2align	4, , 16
 .LBB9_22:                               # %vector.body153.preheader
                                         #   in Loop: Header=BB9_17 Depth=1
-	move	$a1, $s8
-	move	$a2, $s7
+	move	$t3, $s7
+	move	$a2, $s1
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB9_23:                               # %vector.body153
                                         #   Parent Loop BB9_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a3, $a1, -56
-	ld.d	$a4, $a1, -48
-	ld.d	$a5, $a1, -40
-	ld.d	$a6, $a1, -32
-	ld.d	$a7, $a1, -24
-	ld.d	$t0, $a1, -16
-	ld.d	$t1, $a1, -8
-	ld.d	$t2, $a1, 0
+	ld.d	$a3, $t3, -56
+	ld.d	$a4, $t3, -48
+	ld.d	$a5, $t3, -40
+	ld.d	$a6, $t3, -32
+	ld.d	$a7, $t3, -24
+	ld.d	$t0, $t3, -16
+	ld.d	$t1, $t3, -8
+	ld.d	$t2, $t3, 0
 	stx.h	$zero, $a3, $s6
 	stx.h	$zero, $a4, $s6
 	stx.h	$zero, $a5, $s6
@@ -1706,16 +1704,15 @@ quantize_fs_dither:                     # @quantize_fs_dither
 	stx.h	$zero, $t1, $s6
 	stx.h	$zero, $t2, $s6
 	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 64
+	addi.d	$t3, $t3, 64
 	bnez	$a2, .LBB9_23
 # %bb.24:                               # %middle.block158
                                         #   in Loop: Header=BB9_17 Depth=1
-	move	$a2, $s7
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	beq	$s7, $s4, .LBB9_16
+	move	$a2, $s1
+	beq	$s1, $s4, .LBB9_16
 .LBB9_25:                               # %.lr.ph101.split.us.split.us113.us.preheader162
                                         #   in Loop: Header=BB9_17 Depth=1
-	alsl.d	$a4, $a2, $t3, 3
+	alsl.d	$a4, $a2, $t4, 3
 	sub.d	$a2, $s4, $a2
 	.p2align	4, , 16
 .LBB9_26:                               # %.lr.ph101.split.us.split.us113.us
@@ -1729,41 +1726,39 @@ quantize_fs_dither:                     # @quantize_fs_dither
 	b	.LBB9_16
 .LBB9_27:                               # %vector.body.preheader
                                         #   in Loop: Header=BB9_17 Depth=1
-	move	$a4, $fp
-	move	$a2, $s7
+	move	$t3, $s7
+	move	$a2, $s1
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB9_28:                               # %vector.body
                                         #   Parent Loop BB9_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvpickve2gr.d	$a3, $xr0, 0
+	ld.d	$a3, $t3, -56
+	ld.d	$a4, $t3, -48
+	ld.d	$a5, $t3, -40
+	ld.d	$a6, $t3, -32
+	ld.d	$a7, $t3, -24
+	ld.d	$t0, $t3, -16
+	ld.d	$t1, $t3, -8
+	ld.d	$t2, $t3, 0
 	st.h	$zero, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 1
-	st.h	$zero, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 2
-	st.h	$zero, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 3
-	st.h	$zero, $a3, 0
-	xvpickve2gr.d	$a3, $xr1, 0
-	st.h	$zero, $a3, 0
-	xvpickve2gr.d	$a3, $xr1, 1
-	st.h	$zero, $a3, 0
-	xvpickve2gr.d	$a3, $xr1, 2
-	st.h	$zero, $a3, 0
-	xvpickve2gr.d	$a3, $xr1, 3
-	st.h	$zero, $a3, 0
+	st.h	$zero, $a4, 0
+	st.h	$zero, $a5, 0
+	st.h	$zero, $a6, 0
+	st.h	$zero, $a7, 0
+	st.h	$zero, $t0, 0
+	st.h	$zero, $t1, 0
+	st.h	$zero, $t2, 0
 	addi.d	$a2, $a2, -8
-	addi.d	$a4, $a4, 64
+	addi.d	$t3, $t3, 64
 	bnez	$a2, .LBB9_28
 # %bb.29:                               # %middle.block
                                         #   in Loop: Header=BB9_17 Depth=1
-	move	$a2, $s7
-	beq	$s7, $s4, .LBB9_16
+	move	$a2, $s1
+	beq	$s1, $s4, .LBB9_16
 .LBB9_30:                               # %.lr.ph101.split.us.split.us.us.us.preheader161
                                         #   in Loop: Header=BB9_17 Depth=1
-	alsl.d	$a4, $a2, $a5, 3
+	alsl.d	$a4, $a2, $t4, 3
 	sub.d	$a2, $s4, $a2
 	.p2align	4, , 16
 .LBB9_31:                               # %.lr.ph101.split.us.split.us.us.us

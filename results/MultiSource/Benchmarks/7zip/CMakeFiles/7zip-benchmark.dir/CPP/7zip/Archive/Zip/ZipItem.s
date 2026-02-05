@@ -302,7 +302,7 @@ _ZNK8NArchive4NZip5CItem16GetWinAttributesEv: # @_ZNK8NArchive4NZip5CItem16GetWi
 	ori	$a3, $a3, 2113
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB6_14
-# %bb.11:
+# %bb.11:                               # %_ZNK8NArchive4NZip5CItem5IsDirEv.exit
 	ld.w	$a0, $fp, 84
 	andi	$a0, $a0, 16
 	bnez	$a0, .LBB6_7
@@ -328,7 +328,7 @@ _ZNK8NArchive4NZip5CItem16GetWinAttributesEv: # @_ZNK8NArchive4NZip5CItem16GetWi
 	ret
 .LBB6_14:
 	bne	$a0, $a1, .LBB6_13
-# %bb.15:                               # %_ZNK8NArchive4NZip5CItem5IsDirEv.exit
+# %bb.15:
 	ld.w	$a0, $fp, 84
 	lu12i.w	$a1, 49152
 	and	$a0, $a0, $a1

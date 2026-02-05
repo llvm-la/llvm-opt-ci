@@ -185,7 +185,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_Z23ConvertFileTimeToStringRK9_FILETIMEbb)
 	jirl	$ra, $ra, 0
-	b	.LBB1_22
+	b	.LBB1_95
 .LBB1_6:
 	st.d	$zero, $a0, 8
 	move	$fp, $a0
@@ -196,7 +196,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	st.w	$zero, $a0, 0
 	ori	$a0, $zero, 4
 	st.w	$a0, $fp, 12
-	b	.LBB1_22
+	b	.LBB1_95
 .LBB1_7:
 	ld.hu	$a2, $a1, 0
 	ori	$a3, $zero, 19
@@ -239,10 +239,10 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	or	$a2, $a3, $a2
 	slli.d	$a3, $s3, 52
 	st.w	$a2, $sp, 100
-	bltz	$a3, .LBB1_23
+	bltz	$a3, .LBB1_22
 # %bb.9:
 	andi	$a2, $s3, 1024
-	bnez	$a2, .LBB1_24
+	bnez	$a2, .LBB1_23
 .LBB1_10:
 	andi	$a2, $s3, 512
 	beqz	$a2, .LBB1_12
@@ -264,10 +264,10 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	move	$s1, $a0
 	addi.w	$s5, $a0, 1
 	ori	$a0, $zero, 4
-	bne	$s5, $a0, .LBB1_25
+	bne	$s5, $a0, .LBB1_24
 # %bb.13:
 	move	$a0, $fp
-	b	.LBB1_27
+	b	.LBB1_26
 .LBB1_14:
 	ld.hu	$a2, $a1, 0
 	ori	$a3, $zero, 19
@@ -275,10 +275,10 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 # %bb.15:
 	ld.wu	$a1, $a1, 8
 	andi	$a2, $a1, 1
-	bnez	$a2, .LBB1_33
+	bnez	$a2, .LBB1_32
 # %bb.16:
 	move	$a2, $zero
-	b	.LBB1_34
+	b	.LBB1_33
 .LBB1_17:
 	ld.hu	$a2, $a1, 0
 	ori	$a3, $zero, 19
@@ -336,11 +336,8 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	bnez	$a1, .LBB1_19
 # %bb.20:                               # %_ZN11CStringBaseIwEC2EPKw.exit
 	st.w	$fp, $s1, 8
-	b	.LBB1_22
+	b	.LBB1_95
 .LBB1_21:
-	pcaddu18i	$ra, %call36(_Z26ConvertPropVariantToStringRK14tagPROPVARIANT)
-	jirl	$ra, $ra, 0
-.LBB1_22:
 	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
@@ -350,8 +347,9 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 256
-	ret
-.LBB1_23:
+	pcaddu18i	$t8, %call36(_Z26ConvertPropVariantToStringRK14tagPROPVARIANT)
+	jr	$t8
+.LBB1_22:
 	xvpickve2gr.w	$a2, $xr0, 2
 	andi	$a2, $a2, 1
 	ori	$a3, $zero, 115
@@ -362,7 +360,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	st.w	$a2, $sp, 76
 	andi	$a2, $s3, 1024
 	beqz	$a2, .LBB1_10
-.LBB1_24:
+.LBB1_23:
 	xvpickve2gr.w	$a2, $xr0, 5
 	andi	$a2, $a2, 1
 	ori	$a3, $zero, 115
@@ -374,7 +372,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	andi	$a2, $s3, 512
 	bnez	$a2, .LBB1_11
 	b	.LBB1_12
-.LBB1_25:
+.LBB1_24:
 	addi.w	$a0, $s1, 0
 	slti	$a0, $a0, -1
 	slli.d	$a1, $s5, 2
@@ -386,7 +384,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
-# %bb.26:
+# %bb.25:
 	move	$s2, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -398,20 +396,20 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	stx.w	$zero, $s2, $a1
 	st.w	$s5, $fp, 12
 	move	$s0, $s2
-.LBB1_27:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i82.preheader
+.LBB1_26:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i82.preheader
 	move	$a1, $zero
 	.p2align	4, , 16
-.LBB1_28:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i82
+.LBB1_27:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i82
                                         # =>This Inner Loop Header: Depth=1
 	ldx.w	$a2, $a1, $s4
 	stx.w	$a2, $s0, $a1
 	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB1_28
-# %bb.29:
+	bnez	$a2, .LBB1_27
+# %bb.28:
 	srli.d	$a1, $s3, 16
 	st.w	$s1, $a0, 8
-	beqz	$a1, .LBB1_22
-# %bb.30:
+	beqz	$a1, .LBB1_95
+# %bb.29:
 	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
 	vld	$vr0, $a0, %pc_lo12(.LCPI1_2)
 	vrepli.w	$vr1, 48
@@ -440,8 +438,8 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	addi.w	$s2, $a0, 1
 	addi.w	$s4, $a0, 0
 	slli.d	$s5, $s2, 2
-	beqz	$s2, .LBB1_65
-# %bb.31:
+	beqz	$s2, .LBB1_64
+# %bb.30:
 	slti	$a0, $s4, -1
 	masknez	$a1, $s5, $a0
 	addi.w	$a2, $zero, -1
@@ -451,63 +449,63 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp4:                                 # EH_LABEL
-# %bb.32:                               # %.noexc91
+# %bb.31:                               # %.noexc91
 	move	$s0, $a0
 	st.w	$zero, $a0, 0
-	b	.LBB1_66
-.LBB1_33:
+	b	.LBB1_65
+.LBB1_32:
 	ori	$a2, $zero, 82
 	st.w	$a2, $sp, 64
 	ori	$a2, $zero, 1
-.LBB1_34:
+.LBB1_33:
 	andi	$a3, $a1, 2
-	bnez	$a3, .LBB1_52
-# %bb.35:
+	bnez	$a3, .LBB1_51
+# %bb.34:
 	andi	$a3, $a1, 4
+	bnez	$a3, .LBB1_52
+.LBB1_35:
+	andi	$a3, $a1, 8
 	bnez	$a3, .LBB1_53
 .LBB1_36:
-	andi	$a3, $a1, 8
+	andi	$a3, $a1, 16
 	bnez	$a3, .LBB1_54
 .LBB1_37:
-	andi	$a3, $a1, 16
+	andi	$a3, $a1, 32
 	bnez	$a3, .LBB1_55
 .LBB1_38:
-	andi	$a3, $a1, 32
+	andi	$a3, $a1, 64
 	bnez	$a3, .LBB1_56
 .LBB1_39:
-	andi	$a3, $a1, 64
+	andi	$a3, $a1, 256
 	bnez	$a3, .LBB1_57
 .LBB1_40:
-	andi	$a3, $a1, 256
+	andi	$a3, $a1, 512
 	bnez	$a3, .LBB1_58
 .LBB1_41:
-	andi	$a3, $a1, 512
+	andi	$a3, $a1, 1024
 	bnez	$a3, .LBB1_59
 .LBB1_42:
-	andi	$a3, $a1, 1024
-	bnez	$a3, .LBB1_60
-.LBB1_43:
 	slli.d	$a3, $a1, 52
+	bltz	$a3, .LBB1_60
+.LBB1_43:
+	slli.d	$a3, $a1, 51
 	bltz	$a3, .LBB1_61
 .LBB1_44:
-	slli.d	$a3, $a1, 51
+	slli.d	$a3, $a1, 50
 	bltz	$a3, .LBB1_62
 .LBB1_45:
-	slli.d	$a3, $a1, 50
+	slli.d	$a3, $a1, 49
 	bltz	$a3, .LBB1_63
 .LBB1_46:
-	slli.d	$a3, $a1, 49
-	bltz	$a3, .LBB1_64
-.LBB1_47:
 	slli.d	$a1, $a1, 48
-	bgez	$a1, .LBB1_49
-.LBB1_48:
+	bgez	$a1, .LBB1_48
+.LBB1_47:
 	slli.d	$a1, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $sp, 64
 	ori	$a4, $zero, 95
 	stx.w	$a4, $a1, $a3
-.LBB1_49:
+.LBB1_48:
 	slli.d	$a1, $a2, 2
 	addi.d	$s0, $sp, 64
 	stx.w	$zero, $a1, $s0
@@ -533,133 +531,133 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	st.w	$zero, $a0, 0
 	st.w	$s2, $s1, 12
 	.p2align	4, , 16
-.LBB1_50:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i75
+.LBB1_49:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i75
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $s0, 0
 	addi.d	$s0, $s0, 4
 	addi.d	$a3, $a0, 4
 	st.w	$a2, $a0, 0
 	move	$a0, $a3
-	bnez	$a2, .LBB1_50
-# %bb.51:                               # %_ZN11CStringBaseIwEC2EPKw.exit79
+	bnez	$a2, .LBB1_49
+# %bb.50:                               # %_ZN11CStringBaseIwEC2EPKw.exit79
 	st.w	$fp, $a1, 8
-	b	.LBB1_22
-.LBB1_52:
+	b	.LBB1_95
+.LBB1_51:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 72
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 4
-	beqz	$a3, .LBB1_36
-.LBB1_53:
+	beqz	$a3, .LBB1_35
+.LBB1_52:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 83
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 8
-	beqz	$a3, .LBB1_37
-.LBB1_54:
+	beqz	$a3, .LBB1_36
+.LBB1_53:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 56
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 16
-	beqz	$a3, .LBB1_38
-.LBB1_55:
+	beqz	$a3, .LBB1_37
+.LBB1_54:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 68
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 32
-	beqz	$a3, .LBB1_39
-.LBB1_56:
+	beqz	$a3, .LBB1_38
+.LBB1_55:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 65
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 64
-	beqz	$a3, .LBB1_40
-.LBB1_57:
+	beqz	$a3, .LBB1_39
+.LBB1_56:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 100
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 256
-	beqz	$a3, .LBB1_41
-.LBB1_58:
+	beqz	$a3, .LBB1_40
+.LBB1_57:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 84
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 512
-	beqz	$a3, .LBB1_42
-.LBB1_59:
+	beqz	$a3, .LBB1_41
+.LBB1_58:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 115
 	stx.w	$a5, $a3, $a4
 	andi	$a3, $a1, 1024
-	beqz	$a3, .LBB1_43
-.LBB1_60:
+	beqz	$a3, .LBB1_42
+.LBB1_59:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 114
 	stx.w	$a5, $a3, $a4
 	slli.d	$a3, $a1, 52
-	bgez	$a3, .LBB1_44
-.LBB1_61:
+	bgez	$a3, .LBB1_43
+.LBB1_60:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 67
 	stx.w	$a5, $a3, $a4
 	slli.d	$a3, $a1, 51
-	bgez	$a3, .LBB1_45
-.LBB1_62:
+	bgez	$a3, .LBB1_44
+.LBB1_61:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 79
 	stx.w	$a5, $a3, $a4
 	slli.d	$a3, $a1, 50
-	bgez	$a3, .LBB1_46
-.LBB1_63:
+	bgez	$a3, .LBB1_45
+.LBB1_62:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 110
 	stx.w	$a5, $a3, $a4
 	slli.d	$a3, $a1, 49
-	bgez	$a3, .LBB1_47
-.LBB1_64:
+	bgez	$a3, .LBB1_46
+.LBB1_63:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 69
 	stx.w	$a5, $a3, $a4
 	slli.d	$a1, $a1, 48
-	bltz	$a1, .LBB1_48
-	b	.LBB1_49
-.LBB1_65:
+	bltz	$a1, .LBB1_47
+	b	.LBB1_48
+.LBB1_64:
 	move	$s0, $zero
-.LBB1_66:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i87
+.LBB1_65:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i87
 	move	$a0, $zero
 	.p2align	4, , 16
-.LBB1_67:                               # =>This Inner Loop Header: Depth=1
+.LBB1_66:                               # =>This Inner Loop Header: Depth=1
 	ldx.w	$a1, $a0, $s3
 	stx.w	$a1, $s0, $a0
 	addi.d	$a0, $a0, 4
-	bnez	$a1, .LBB1_67
-# %bb.68:                               # %_ZN11CStringBaseIwEC2EPKw.exit92
+	bnez	$a1, .LBB1_66
+# %bb.67:                               # %_ZN11CStringBaseIwEC2EPKw.exit92
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	vst	$vr0, $sp, 32
@@ -672,19 +670,19 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp7:                                 # EH_LABEL
-# %bb.69:                               # %.noexc93
+# %bb.68:                               # %.noexc93
 	move	$a1, $zero
 	st.d	$a0, $sp, 32
 	st.w	$zero, $a0, 0
 	st.w	$s2, $sp, 44
 	.p2align	4, , 16
-.LBB1_70:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
+.LBB1_69:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ldx.w	$a2, $s0, $a1
 	stx.w	$a2, $a0, $a1
 	addi.d	$a1, $a1, 4
-	bnez	$a2, .LBB1_70
-# %bb.71:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.i
+	bnez	$a2, .LBB1_69
+# %bb.70:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.i
 	st.w	$s1, $sp, 40
 .Ltmp9:                                 # EH_LABEL
 	addi.d	$a0, $sp, 32
@@ -692,18 +690,18 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLEw)
 	jirl	$ra, $ra, 0
 .Ltmp10:                                # EH_LABEL
-# %bb.72:                               # %_ZplIwE11CStringBaseIT_ERKS2_S1_.exit
+# %bb.71:                               # %_ZplIwE11CStringBaseIT_ERKS2_S1_.exit
 	ld.w	$s1, $sp, 40
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
 	slli.d	$a0, $s2, 31
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 48
-	bgez	$a0, .LBB1_74
-# %bb.73:
+	bgez	$a0, .LBB1_73
+# %bb.72:
 	move	$a0, $zero
-	b	.LBB1_76
-.LBB1_74:
+	b	.LBB1_75
+.LBB1_73:
 	addi.w	$a0, $s2, 0
 	slti	$a1, $s1, -1
 	slli.d	$a0, $a0, 2
@@ -714,21 +712,21 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp13:                                # EH_LABEL
-# %bb.75:                               # %.noexc100
+# %bb.74:                               # %.noexc100
 	st.d	$a0, $sp, 48
 	st.w	$zero, $a0, 0
 	st.w	$s2, $sp, 60
-.LBB1_76:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i94
+.LBB1_75:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i94
 	ld.d	$a1, $sp, 32
 	.p2align	4, , 16
-.LBB1_77:                               # =>This Inner Loop Header: Depth=1
+.LBB1_76:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
 	addi.d	$a1, $a1, 4
 	addi.d	$a3, $a0, 4
 	st.w	$a2, $a0, 0
 	move	$a0, $a3
-	bnez	$a2, .LBB1_77
-# %bb.78:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.i98
+	bnez	$a2, .LBB1_76
+# %bb.77:                               # %_ZN11CStringBaseIwEC2ERKS0_.exit.i98
 	st.w	$s1, $sp, 56
 .Ltmp15:                                # EH_LABEL
 	addi.d	$a0, $sp, 48
@@ -737,9 +735,9 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcaddu18i	$ra, %call36(_ZN11CStringBaseIwEpLERKS0_)
 	jirl	$ra, $ra, 0
 .Ltmp16:                                # EH_LABEL
-# %bb.79:                               # %_ZplIwE11CStringBaseIT_ERKS2_S4_.exit
-	beq	$s1, $fp, .LBB1_90
-# %bb.80:
+# %bb.78:                               # %_ZplIwE11CStringBaseIT_ERKS2_S4_.exit
+	beq	$s1, $fp, .LBB1_89
+# %bb.79:
 	move	$a0, $fp
 	ld.d	$s2, $fp, 0
 	st.w	$zero, $fp, 8
@@ -747,11 +745,11 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	ld.w	$a1, $sp, 56
 	ld.w	$s5, $fp, 12
 	addi.w	$s4, $a1, 1
-	bne	$s4, $s5, .LBB1_82
-# %bb.81:
+	bne	$s4, $s5, .LBB1_81
+# %bb.80:
 	move	$s1, $s2
-	b	.LBB1_87
-.LBB1_82:
+	b	.LBB1_86
+.LBB1_81:
 	slti	$a0, $a1, -1
 	slli.d	$a1, $s4, 2
 	masknez	$a1, $a1, $a0
@@ -761,56 +759,66 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp19:                                # EH_LABEL
-# %bb.83:                               # %.noexc109
+# %bb.82:                               # %.noexc109
 	move	$s1, $a0
-	blez	$s5, .LBB1_85
-# %bb.84:                               # %._crit_edge.thread.i.i107
+	blez	$s5, .LBB1_84
+# %bb.83:                               # %._crit_edge.thread.i.i107
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	ld.w	$a1, $fp, 8
-	b	.LBB1_86
-.LBB1_85:
+	b	.LBB1_85
+.LBB1_84:
 	move	$a1, $zero
 	move	$a0, $fp
-.LBB1_86:
+.LBB1_85:
 	st.d	$s1, $a0, 0
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $s1, $a1
 	st.w	$s4, $a0, 12
-.LBB1_87:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i103
+.LBB1_86:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i103
 	ld.d	$a1, $sp, 48
 	.p2align	4, , 16
-.LBB1_88:                               # =>This Inner Loop Header: Depth=1
+.LBB1_87:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, 0
 	addi.d	$a1, $a1, 4
 	addi.d	$a3, $s1, 4
 	st.w	$a2, $s1, 0
 	move	$s1, $a3
-	bnez	$a2, .LBB1_88
-# %bb.89:                               # %_Z12MyStringCopyIwEPT_S1_PKS0_.exit.i
+	bnez	$a2, .LBB1_87
+# %bb.88:                               # %_Z12MyStringCopyIwEPT_S1_PKS0_.exit.i
 	ld.w	$a1, $sp, 56
 	st.w	$a1, $a0, 8
-.LBB1_90:                               # %_ZN11CStringBaseIwEaSERKS0_.exit
+.LBB1_89:                               # %_ZN11CStringBaseIwEaSERKS0_.exit
 	ld.d	$a0, $sp, 48
-	beqz	$a0, .LBB1_92
-# %bb.91:
+	beqz	$a0, .LBB1_91
+# %bb.90:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB1_92:                               # %_ZN11CStringBaseIwED2Ev.exit
+.LBB1_91:                               # %_ZN11CStringBaseIwED2Ev.exit
 	ld.d	$a0, $sp, 32
-	beqz	$a0, .LBB1_94
-# %bb.93:
+	beqz	$a0, .LBB1_93
+# %bb.92:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB1_94:                               # %_ZN11CStringBaseIwED2Ev.exit110
-	beqz	$s0, .LBB1_22
-# %bb.95:
+.LBB1_93:                               # %_ZN11CStringBaseIwED2Ev.exit110
+	beqz	$s0, .LBB1_95
+# %bb.94:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB1_22
+.LBB1_95:
+	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 256
+	ret
 .LBB1_96:
 .Ltmp20:                                # EH_LABEL
 	b	.LBB1_100

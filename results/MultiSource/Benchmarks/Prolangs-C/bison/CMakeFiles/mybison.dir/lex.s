@@ -962,146 +962,149 @@ parse_percent_token:                    # @parse_percent_token
 	jirl	$ra, $ra, 0
 	st.b	$zero, $s6, 0
 	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.7)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.7)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
+	addi.d	$a1, $a0, %pc_lo12(token_buffer)
+	ld.w	$a0, $a1, 0
+	ld.hu	$a2, $a1, 4
+	lu12i.w	$a3, 415414
+	ori	$a3, $a3, 3956
+	xor	$a0, $a0, $a3
+	xori	$a2, $a2, 110
+	or	$a2, $a0, $a2
 	ori	$a0, $zero, 9
-	beqz	$a1, .LBB4_30
+	beqz	$a2, .LBB4_30
 # %bb.12:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.8)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.8)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	ori	$a0, $zero, 9
-	beqz	$a1, .LBB4_30
+	ld.w	$a2, $a1, 0
+	ld.bu	$a3, $a1, 4
+	lu12i.w	$a4, 448294
+	ori	$a4, $a4, 1396
+	xor	$a2, $a2, $a4
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB4_30
 # %bb.13:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.9)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.9)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a1, 0
+	ld.hu	$a2, $a1, 4
+	lu12i.w	$a3, 468567
+	ori	$a3, $a3, 1134
+	xor	$a0, $a0, $a3
+	xori	$a2, $a2, 109
+	or	$a0, $a0, $a2
 	beqz	$a0, .LBB4_31
 # %bb.14:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.10)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.10)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_32
+	ld.w	$a2, $a1, 0
+	ld.bu	$a3, $a1, 4
+	lu12i.w	$a0, 415495
+	ori	$a4, $a0, 2420
+	xor	$a2, $a2, $a4
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB4_32
 # %bb.15:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.11)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.11)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_33
+	ld.w	$a3, $a1, 0
+	ld.hu	$a4, $a1, 4
+	lu12i.w	$a2, 468503
+	ori	$a5, $a2, 1383
+	xor	$a3, $a3, $a5
+	xori	$a4, $a4, 100
+	or	$a3, $a3, $a4
+	beqz	$a3, .LBB4_33
 # %bb.16:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.12)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.12)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_34
+	ld.w	$a3, $a1, 0
+	ld.hu	$a4, $a1, 4
+	lu12i.w	$a5, 456342
+	ori	$a5, $a5, 3701
+	xor	$a3, $a3, $a5
+	xori	$a4, $a4, 110
+	or	$a3, $a3, $a4
+	beqz	$a3, .LBB4_34
 # %bb.17:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.13)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.13)
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a3, $a1, 0
+	ori	$a0, $a0, 2149
+	ld.w	$a4, $a1, 3
+	xor	$a0, $a3, $a0
+	lu12i.w	$a3, 1862
+	ori	$a3, $a3, 869
+	xor	$a3, $a4, $a3
+	or	$a0, $a0, $a3
 	beqz	$a0, .LBB4_35
 # %bb.18:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.14)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.14)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a1, 0
+	ld.hu	$a3, $a1, 4
+	ori	$a4, $a2, 1139
+	xor	$a0, $a0, $a4
+	xori	$a3, $a3, 116
+	or	$a0, $a0, $a3
 	beqz	$a0, .LBB4_36
 # %bb.19:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.15)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.15)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a1, 0
+	ld.bu	$a3, $a1, 4
+	lu12i.w	$a4, 476774
+	ori	$a4, $a4, 1388
+	xor	$a0, $a0, $a4
+	or	$a0, $a0, $a3
 	beqz	$a0, .LBB4_26
 # %bb.20:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.16)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.16)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a1, 0
+	ld.hu	$a3, $a1, 4
+	lu12i.w	$a4, 427638
+	ori	$a4, $a4, 2418
+	xor	$a0, $a0, $a4
+	xori	$a3, $a3, 116
+	or	$a0, $a0, $a3
 	beqz	$a0, .LBB4_27
 # %bb.21:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.17)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.17)
-	ori	$a2, $zero, 9
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
+	ld.d	$a0, $a1, 0
+	lu12i.w	$a3, 399078
+	ori	$a4, $a3, 3950
+	ld.bu	$a5, $a1, 8
+	lu32i.d	$a4, -35981
+	lu52i.d	$a4, $a4, 1590
+	xor	$a0, $a0, $a4
+	or	$a4, $a0, $a5
 	ori	$a0, $zero, 17
-	beqz	$a1, .LBB4_30
+	beqz	$a4, .LBB4_30
 # %bb.22:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.18)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	ori	$a0, $zero, 17
-	beqz	$a1, .LBB4_30
+	ld.w	$a4, $a1, 0
+	ori	$a3, $a3, 2402
+	ld.w	$a5, $a1, 3
+	xor	$a3, $a4, $a3
+	lu12i.w	$a4, 1943
+	ori	$a4, $a4, 609
+	xor	$a4, $a5, $a4
+	or	$a3, $a3, $a4
+	beqz	$a3, .LBB4_30
 # %bb.23:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.19)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.19)
-	ori	$a2, $zero, 16
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $a1, 0
+	lu12i.w	$a3, 399062
+	ori	$a3, $a3, 1395
+	lu32i.d	$a3, -428946
+	lu52i.d	$a3, $a3, 1590
+	xor	$a0, $a0, $a3
+	ld.d	$a3, $a1, 8
+	ori	$a2, $a2, 95
+	lu32i.d	$a2, 157043
+	lu52i.d	$a2, $a2, 7
+	xor	$a2, $a3, $a2
+	or	$a0, $a0, $a2
 	beqz	$a0, .LBB4_37
 # %bb.24:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.20)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.20)
-	ori	$a2, $zero, 12
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $a1, 0
+	lu12i.w	$a2, 415527
+	ori	$a2, $a2, 1392
+	lu32i.d	$a2, 94303
+	lu52i.d	$a2, $a2, 1830
+	ld.wu	$a3, $a1, 8
+	xor	$a0, $a0, $a2
+	lu12i.w	$a2, 1830
+	ori	$a2, $a2, 1395
+	xor	$a2, $a3, $a2
+	or	$a0, $a0, $a2
 	beqz	$a0, .LBB4_38
 # %bb.25:
-	pcalau12i	$a0, %pc_hi20(token_buffer)
-	addi.d	$a0, $a0, %pc_lo12(token_buffer)
-	pcalau12i	$a1, %pc_hi20(.L.str.21)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.21)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a1, 0
+	ld.bu	$a1, $a1, 4
+	lu12i.w	$a2, 407127
+	ori	$a2, $a2, 624
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	ori	$a1, $zero, 24
 	masknez	$a1, $a1, $a0

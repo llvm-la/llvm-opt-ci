@@ -32,87 +32,76 @@ main:                                   # @main
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(buf)
 	addi.d	$a0, $a0, %pc_lo12(buf)
-	move	$a4, $zero
+	xvld	$xr0, $a0, 0
 	ori	$a1, $zero, 2
-	st.b	$a1, $a0, 64
-	ori	$a1, $zero, 32
-	.p2align	4, , 16
-.LBB1_1:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a2, $a4
-	xvldx	$xr0, $a0, $a4
 	xvmsknz.b	$xr0, $xr0
-	xvpickve2gr.wu	$a3, $xr0, 0
-	xvpickve2gr.wu	$a4, $xr0, 4
-	bstrins.d	$a3, $a4, 31, 16
-	addi.w	$a3, $a3, 0
-	bnez	$a3, .LBB1_3
-# %bb.2:                                # %vector.body
-                                        #   in Loop: Header=BB1_1 Depth=1
-	addi.d	$a4, $a2, 32
-	bne	$a2, $a1, .LBB1_1
-.LBB1_3:                                # %middle.split
-	bnez	$a3, .LBB1_13
-# %bb.4:                                # %middle.block
-	move	$a2, $zero
+	xvpickve2gr.wu	$a2, $xr0, 0
+	xvpickve2gr.wu	$a3, $xr0, 4
+	bstrins.d	$a2, $a3, 31, 16
+	addi.w	$a2, $a2, 0
+	st.b	$a1, $a0, 64
+	bnez	$a2, .LBB1_7
+# %bb.1:                                # %vector.body.interim
+	xvld	$xr0, $a0, 32
+	xvmsknz.b	$xr0, $xr0
+	xvpickve2gr.wu	$a1, $xr0, 0
+	xvpickve2gr.wu	$a2, $xr0, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
+	bnez	$a1, .LBB1_7
+# %bb.2:                                # %vector.body.interim.1
 	lu12i.w	$a1, 4112
 	ori	$a1, $a1, 257
 	bstrins.d	$a1, $a1, 56, 32
-	st.d	$a1, $a0, 56
-	st.d	$a1, $a0, 48
-	st.d	$a1, $a0, 40
-	st.d	$a1, $a0, 32
 	st.d	$a1, $a0, 24
 	st.d	$a1, $a0, 16
 	st.d	$a1, $a0, 8
 	st.d	$a1, $a0, 0
-	ori	$a1, $zero, 32
-	.p2align	4, , 16
-.LBB1_5:                                # %vector.body22
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a3, $a2
-	xvldx	$xr0, $a0, $a2
+	xvld	$xr0, $a0, 0
 	xvseqi.b	$xr0, $xr0, 1
 	xvxori.b	$xr0, $xr0, 255
 	xvmskltz.b	$xr0, $xr0
 	xvpickve2gr.wu	$a2, $xr0, 0
-	xvpickve2gr.wu	$a4, $xr0, 4
-	bstrins.d	$a2, $a4, 31, 16
-	addi.w	$a4, $a2, 0
-	bnez	$a4, .LBB1_7
-# %bb.6:                                # %vector.body22
-                                        #   in Loop: Header=BB1_5 Depth=1
-	addi.d	$a2, $a3, 32
-	bne	$a3, $a1, .LBB1_5
-.LBB1_7:                                # %middle.split26
-	bnez	$a4, .LBB1_13
-# %bb.8:                                # %middle.block27
-	move	$a3, $zero
+	xvpickve2gr.wu	$a3, $xr0, 4
+	bstrins.d	$a2, $a3, 31, 16
+	st.d	$a1, $a0, 56
+	st.d	$a1, $a0, 48
+	st.d	$a1, $a0, 40
+	addi.w	$a2, $a2, 0
+	st.d	$a1, $a0, 32
+	bnez	$a2, .LBB1_7
+# %bb.3:                                # %vector.body.interim26
+	xvld	$xr0, $a0, 32
+	xvseqi.b	$xr0, $xr0, 1
+	xvxori.b	$xr0, $xr0, 255
+	xvmskltz.b	$xr0, $xr0
+	xvpickve2gr.wu	$a1, $xr0, 0
+	xvpickve2gr.wu	$a2, $xr0, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
+	bnez	$a1, .LBB1_7
+# %bb.4:                                # %vector.body.interim26.1
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $a0, 32
+	xvmsknz.b	$xr1, $xr0
+	xvpickve2gr.wu	$a1, $xr1, 0
+	xvpickve2gr.wu	$a2, $xr1, 4
+	bstrins.d	$a1, $a2, 31, 16
+	addi.w	$a1, $a1, 0
 	xvst	$xr0, $a0, 0
-	ori	$a1, $zero, 32
-	.p2align	4, , 16
-.LBB1_9:                                # %vector.body30
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a2, $a3
-	xvldx	$xr0, $a0, $a3
+	bnez	$a1, .LBB1_7
+# %bb.5:                                # %vector.body.interim34
+	xvld	$xr0, $a0, 32
 	xvmsknz.b	$xr0, $xr0
-	xvpickve2gr.wu	$a3, $xr0, 0
-	xvpickve2gr.wu	$a4, $xr0, 4
-	bstrins.d	$a3, $a4, 31, 16
-	addi.w	$a4, $a3, 0
-	bnez	$a4, .LBB1_11
-# %bb.10:                               # %vector.body30
-                                        #   in Loop: Header=BB1_9 Depth=1
-	addi.d	$a3, $a2, 32
-	bne	$a2, $a1, .LBB1_9
-.LBB1_11:                               # %middle.split34
-	bnez	$a4, .LBB1_13
-# %bb.12:                               # %middle.block35
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 31, 16
+	addi.w	$a0, $a0, 0
+	bnez	$a0, .LBB1_7
+# %bb.6:                                # %vector.body.interim34.1
 	move	$a0, $zero
 	ret
-.LBB1_13:                               # %vector.early.exit
+.LBB1_7:                                # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:
@@ -121,7 +110,7 @@ main:                                   # @main
 	.type	buf,@object                     # @buf
 	.bss
 	.globl	buf
-	.p2align	3, 0x0
+	.p2align	5, 0x0
 buf:
 	.space	65
 	.size	buf, 65

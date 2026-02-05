@@ -694,14 +694,13 @@ Decode_Picture:                         # @Decode_Picture
 	bnez	$a0, .LBB0_95
 # %bb.94:                               #   in Loop: Header=BB0_43 Depth=2
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
-	sltui	$a0, $a0, 1
+	sub.d	$a0, $zero, $a0
 	pcalau12i	$a1, %got_pc_hi20(block_count)
 	ld.d	$a1, $a1, %got_pc_lo12(block_count)
 	ld.wu	$a1, $a1, 0
 	addi.d	$a2, $zero, -1
 	sll.w	$a1, $a2, $a1
-	nor	$a1, $a1, $zero
-	masknez	$s4, $a1, $a0
+	andn	$s4, $a0, $a1
 	b	.LBB0_100
 	.p2align	4, , 16
 .LBB0_95:                               #   in Loop: Header=BB0_43 Depth=2
@@ -2555,12 +2554,12 @@ macroblock_modes:                       # @macroblock_modes
 	ori	$a1, $zero, 3
 	beq	$a0, $a1, .LBB2_15
 .LBB2_13:
-	move	$a1, $zero
+	move	$a2, $zero
 	move	$s0, $zero
 	addi.d	$a0, $s8, -2
 	sltui	$a0, $a0, 1
 	addi.d	$s5, $a0, 1
-	ori	$a2, $zero, 1
+	ori	$a1, $zero, 1
 	b	.LBB2_16
 .LBB2_14:                               # %thread-pre-split
 	pcalau12i	$a0, %got_pc_hi20(picture_structure)
@@ -2569,25 +2568,24 @@ macroblock_modes:                       # @macroblock_modes
 	ori	$a1, $zero, 3
 	bne	$a0, $a1, .LBB2_13
 .LBB2_15:                               # %.thread
-	move	$a2, $zero
+	move	$a1, $zero
 	addi.d	$a0, $s8, -1
 	sltui	$a0, $a0, 1
-	ori	$a1, $zero, 1
-	sll.d	$a3, $a1, $fp
-	andi	$a3, $a3, 27
-	sltu	$a3, $zero, $a3
-	and	$a0, $a0, $a3
+	ori	$a2, $zero, 27
+	srl.d	$a2, $a2, $fp
+	and	$a0, $a0, $a2
 	addi.d	$s5, $a0, 1
 	addi.d	$a0, $s8, -2
 	sltui	$s0, $a0, 1
+	ori	$a2, $zero, 1
 .LBB2_16:
 	move	$a0, $zero
 	ld.d	$s2, $sp, 160
 	addi.d	$a3, $s8, -3
 	sltui	$s3, $a3, 1
 	sltui	$a3, $s0, 1
-	and	$s4, $a1, $a3
-	bnez	$a2, .LBB2_20
+	and	$s4, $a2, $a3
+	bnez	$a1, .LBB2_20
 # %bb.17:
 	pcalau12i	$a1, %got_pc_hi20(frame_pred_frame_dct)
 	ld.d	$a1, $a1, %got_pc_lo12(frame_pred_frame_dct)

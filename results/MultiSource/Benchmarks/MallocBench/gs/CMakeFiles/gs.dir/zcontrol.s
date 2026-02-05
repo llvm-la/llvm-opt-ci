@@ -317,20 +317,20 @@ for_int_continue:                       # @for_int_continue
 # %bb.0:
 	pcalau12i	$a1, %got_pc_hi20(esp)
 	ld.d	$a1, $a1, %got_pc_lo12(esp)
-	ld.d	$a3, $a1, 0
-	ld.d	$a2, $a3, -48
-	ld.d	$a4, $a3, -32
-	ld.d	$a5, $a3, -16
+	ld.d	$a2, $a1, 0
+	ld.d	$a3, $a2, -48
+	ld.d	$a4, $a2, -32
+	ld.d	$a5, $a2, -16
 	bltz	$a4, .LBB4_3
 # %bb.1:
-	bge	$a5, $a2, .LBB4_4
+	bge	$a5, $a3, .LBB4_4
 .LBB4_2:
-	addi.d	$a0, $a3, -80
+	addi.d	$a0, $a2, -80
 	st.d	$a0, $a1, 0
 	ori	$a0, $zero, 1
 	ret
 .LBB4_3:
-	blt	$a2, $a5, .LBB4_2
+	blt	$a3, $a5, .LBB4_2
 .LBB4_4:
 	addi.d	$a5, $a0, 16
 	pcalau12i	$a6, %got_pc_hi20(osp)
@@ -346,11 +346,10 @@ for_int_continue:                       # @for_int_continue
 	ret
 .LBB4_6:
 	addi.d	$sp, $sp, -16
-	addi.d	$a0, $a3, -48
-	vld	$vr0, $a0, 0
+	vld	$vr0, $a2, -48
 	vst	$vr0, $a5, 0
-	add.d	$a2, $a4, $a2
-	st.d	$a2, $a0, 0
+	add.d	$a0, $a4, $a3
+	st.d	$a0, $a2, -48
 	ld.d	$a0, $a1, 0
 	ld.d	$a2, $a0, 0
 	ld.d	$a3, $a0, 8
@@ -411,11 +410,10 @@ for_real_continue:                      # @for_real_continue
 	ret
 .LBB5_6:
 	addi.d	$sp, $sp, -16
-	addi.d	$a0, $a2, -48
-	vld	$vr2, $a0, 0
+	vld	$vr2, $a2, -48
 	vst	$vr2, $a3, 0
 	fadd.s	$fa0, $fa1, $fa0
-	fst.s	$fa0, $a0, 0
+	fst.s	$fa0, $a2, -48
 	ld.d	$a0, $a1, 0
 	ld.d	$a2, $a0, 0
 	ld.d	$a3, $a0, 8
@@ -446,18 +444,17 @@ zrepeat:                                # @zrepeat
 	ori	$a2, $zero, 20
 	bne	$a1, $a2, .LBB6_4
 # %bb.1:
-	addi.d	$a4, $a0, -16
-	ld.d	$a1, $a4, 0
+	ld.d	$a1, $a0, -16
 	bltz	$a1, .LBB6_5
 # %bb.2:
 	pcalau12i	$a1, %got_pc_hi20(esp)
 	ld.d	$a1, $a1, %got_pc_lo12(esp)
 	ld.d	$a3, $a1, 0
 	addi.d	$a2, $a3, 80
-	pcalau12i	$a5, %got_pc_hi20(estop)
-	ld.d	$a5, $a5, %got_pc_lo12(estop)
-	ld.d	$a5, $a5, 0
-	bgeu	$a5, $a2, .LBB6_6
+	pcalau12i	$a4, %got_pc_hi20(estop)
+	ld.d	$a4, $a4, %got_pc_lo12(estop)
+	ld.d	$a4, $a4, 0
+	bgeu	$a4, $a2, .LBB6_6
 # %bb.3:
 	addi.w	$a0, $zero, -5
 	ret
@@ -468,15 +465,15 @@ zrepeat:                                # @zrepeat
 	addi.w	$a0, $zero, -15
 	ret
 .LBB6_6:
-	ori	$a5, $zero, 2
-	st.h	$a5, $a3, 16
-	ori	$a5, $zero, 33
-	st.h	$a5, $a3, 24
-	addi.d	$a5, $a3, 32
-	st.d	$a5, $a1, 0
-	ld.d	$a5, $a4, 0
+	ori	$a4, $zero, 2
+	st.h	$a4, $a3, 16
+	ori	$a4, $zero, 33
+	st.h	$a4, $a3, 24
+	addi.d	$a4, $a3, 32
+	st.d	$a4, $a1, 0
+	ld.d	$a5, $a0, -16
 	st.d	$a5, $a3, 32
-	ld.d	$a4, $a4, 8
+	ld.d	$a4, $a0, -8
 	st.d	$a4, $a3, 40
 	addi.d	$a4, $a3, 48
 	st.d	$a4, $a1, 0

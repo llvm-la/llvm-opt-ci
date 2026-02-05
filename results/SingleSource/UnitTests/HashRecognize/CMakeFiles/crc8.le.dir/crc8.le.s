@@ -368,8 +368,8 @@ main:                                   # @main
 	vpickve2gr.b	$s0, $vr2, 14
 	st.b	$s0, $a1, 186
 	vpickve2gr.b	$s0, $vr2, 15
-	st.b	$s0, $a1, 190
 	xvpermi.d	$xr2, $xr2, 14
+	st.b	$s0, $a1, 190
 	vpickve2gr.b	$s0, $vr2, 0
 	st.b	$s0, $a1, 194
 	vpickve2gr.b	$s0, $vr2, 1

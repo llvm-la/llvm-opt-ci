@@ -52,21 +52,21 @@ main:                                   # @main
 	add.d	$a4, $a0, $a3
 	xvldx	$xr2, $a4, $a2
 	xvldx	$xr3, $a4, $a1
-	xvfadd.d	$xr1, $xr1, $xr2
+	xvfadd.d	$xr0, $xr0, $xr2
 	addi.d	$a3, $a3, 64
-	xvfadd.d	$xr0, $xr0, $xr3
+	xvfadd.d	$xr1, $xr1, $xr3
 	bnez	$a3, .LBB0_3
 # %bb.4:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	xvstelm.d	$xr1, $sp, 0, 3
-	xvpickve2gr.d	$a1, $xr0, 0
-	xvpickve2gr.d	$a2, $xr0, 1
-	xvpickve2gr.d	$a3, $xr0, 2
-	xvpickve2gr.d	$a4, $xr0, 3
-	xvpickve2gr.d	$a5, $xr1, 0
-	xvpickve2gr.d	$a6, $xr1, 1
-	xvpickve2gr.d	$a7, $xr1, 2
+	xvstelm.d	$xr0, $sp, 0, 3
+	xvpickve2gr.d	$a1, $xr1, 0
+	xvpickve2gr.d	$a2, $xr1, 1
+	xvpickve2gr.d	$a3, $xr1, 2
+	xvpickve2gr.d	$a4, $xr1, 3
+	xvpickve2gr.d	$a5, $xr0, 0
+	xvpickve2gr.d	$a6, $xr0, 1
+	xvpickve2gr.d	$a7, $xr0, 2
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)

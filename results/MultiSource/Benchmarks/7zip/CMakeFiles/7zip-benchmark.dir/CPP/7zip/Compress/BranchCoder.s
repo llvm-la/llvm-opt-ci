@@ -200,7 +200,7 @@ _ZN8IUnknownD2Ev:                       # @_ZN8IUnknownD2Ev
 	.type	_ZN16CBranchConverterD0Ev,@function
 _ZN16CBranchConverterD0Ev:              # @_ZN16CBranchConverterD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end6:
 	.size	_ZN16CBranchConverterD0Ev, .Lfunc_end6-_ZN16CBranchConverterD0Ev
                                         # -- End function

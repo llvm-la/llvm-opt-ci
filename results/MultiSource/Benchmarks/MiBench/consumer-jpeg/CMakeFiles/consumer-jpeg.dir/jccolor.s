@@ -20,22 +20,21 @@ jinit_color_converter:                  # @jinit_color_converter
 	move	$s0, $a0
 	st.d	$a0, $fp, 464
 	pcalau12i	$a0, %pc_hi20(null_method)
-	addi.d	$a2, $a0, %pc_lo12(null_method)
-	ld.w	$a0, $fp, 52
-	addi.d	$a3, $a0, -2
-	ori	$a1, $zero, 2
-	st.d	$a2, $s0, 0
-	bltu	$a3, $a1, .LBB0_3
-# %bb.1:
-	addi.d	$a2, $a0, -4
-	bgeu	$a2, $a1, .LBB0_13
-# %bb.2:
+	addi.d	$a3, $a0, %pc_lo12(null_method)
+	ld.w	$a1, $fp, 52
 	ld.w	$a0, $fp, 48
+	addi.d	$a4, $a1, -2
+	ori	$a2, $zero, 2
+	st.d	$a3, $s0, 0
+	bltu	$a4, $a2, .LBB0_3
+# %bb.1:
+	addi.d	$a3, $a1, -4
+	bgeu	$a3, $a2, .LBB0_13
+# %bb.2:
 	ori	$a1, $zero, 4
 	bne	$a0, $a1, .LBB0_4
 	b	.LBB0_5
 .LBB0_3:
-	ld.w	$a0, $fp, 48
 	ori	$a1, $zero, 3
 	beq	$a0, $a1, .LBB0_5
 .LBB0_4:                                # %.sink.split
@@ -83,11 +82,10 @@ jinit_color_converter:                  # @jinit_color_converter
 	addi.d	$a0, $a0, %pc_lo12(grayscale_convert)
 	b	.LBB0_37
 .LBB0_13:
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_28
+	ori	$a2, $zero, 1
+	bne	$a1, $a2, .LBB0_28
 # %bb.14:
-	ld.w	$a0, $fp, 48
-	bne	$a0, $a1, .LBB0_4
+	bne	$a0, $a2, .LBB0_4
 	b	.LBB0_5
 .LBB0_15:
 	ld.w	$a0, $fp, 68
@@ -154,7 +152,6 @@ jinit_color_converter:                  # @jinit_color_converter
 	bne	$a0, $s1, .LBB0_32
 	b	.LBB0_36
 .LBB0_28:
-	ld.w	$a0, $fp, 48
 	bgtz	$a0, .LBB0_5
 	b	.LBB0_4
 .LBB0_29:

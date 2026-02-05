@@ -945,7 +945,7 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	addi.w	$a1, $a1, -1
 	addi.d	$a0, $a0, 6
 	bnez	$a1, .LBB2_77
-.LBB2_78:                               # %.loopexit346
+.LBB2_78:                               # %.loopexit344
 	ld.w	$a0, $sp, 12
 	ld.w	$a1, $s0, 8
 	ld.bu	$a2, $s3, 1

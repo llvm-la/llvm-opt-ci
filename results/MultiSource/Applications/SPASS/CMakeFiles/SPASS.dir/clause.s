@@ -607,7 +607,123 @@ clause_CopySuccedentExcept:             # @clause_CopySuccedentExcept
 .Lfunc_end10:
 	.size	clause_CopySuccedentExcept, .Lfunc_end10-clause_CopySuccedentExcept
                                         # -- End function
-	.globl	clause_IsUnorderedClause        # -- Begin function clause_IsUnorderedClause
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function clause_IsUnorderedClause
+.LCPI11_0:
+	.dword	2251799813685248                # 0x8000000000000
+	.dword	1125899906842624                # 0x4000000000000
+	.dword	562949953421312                 # 0x2000000000000
+	.dword	281474976710656                 # 0x1000000000000
+.LCPI11_1:
+	.dword	36028797018963968               # 0x80000000000000
+	.dword	18014398509481984               # 0x40000000000000
+	.dword	9007199254740992                # 0x20000000000000
+	.dword	4503599627370496                # 0x10000000000000
+.LCPI11_2:
+	.dword	576460752303423488              # 0x800000000000000
+	.dword	288230376151711744              # 0x400000000000000
+	.dword	144115188075855872              # 0x200000000000000
+	.dword	72057594037927936               # 0x100000000000000
+.LCPI11_3:
+	.dword	-9223372036854775808            # 0x8000000000000000
+	.dword	4611686018427387904             # 0x4000000000000000
+	.dword	2305843009213693952             # 0x2000000000000000
+	.dword	1152921504606846976             # 0x1000000000000000
+.LCPI11_4:
+	.dword	34359738368                     # 0x800000000
+	.dword	17179869184                     # 0x400000000
+	.dword	8589934592                      # 0x200000000
+	.dword	4294967296                      # 0x100000000
+.LCPI11_5:
+	.dword	549755813888                    # 0x8000000000
+	.dword	274877906944                    # 0x4000000000
+	.dword	137438953472                    # 0x2000000000
+	.dword	68719476736                     # 0x1000000000
+.LCPI11_6:
+	.dword	8796093022208                   # 0x80000000000
+	.dword	4398046511104                   # 0x40000000000
+	.dword	2199023255552                   # 0x20000000000
+	.dword	1099511627776                   # 0x10000000000
+.LCPI11_7:
+	.dword	140737488355328                 # 0x800000000000
+	.dword	70368744177664                  # 0x400000000000
+	.dword	35184372088832                  # 0x200000000000
+	.dword	17592186044416                  # 0x100000000000
+.LCPI11_8:
+	.dword	8                               # 0x8
+	.dword	4                               # 0x4
+	.dword	2                               # 0x2
+	.dword	1                               # 0x1
+.LCPI11_9:
+	.dword	128                             # 0x80
+	.dword	64                              # 0x40
+	.dword	32                              # 0x20
+	.dword	16                              # 0x10
+.LCPI11_10:
+	.dword	2048                            # 0x800
+	.dword	1024                            # 0x400
+	.dword	512                             # 0x200
+	.dword	256                             # 0x100
+.LCPI11_11:
+	.dword	32768                           # 0x8000
+	.dword	16384                           # 0x4000
+	.dword	8192                            # 0x2000
+	.dword	4096                            # 0x1000
+.LCPI11_12:
+	.dword	524288                          # 0x80000
+	.dword	262144                          # 0x40000
+	.dword	131072                          # 0x20000
+	.dword	65536                           # 0x10000
+.LCPI11_13:
+	.dword	8388608                         # 0x800000
+	.dword	4194304                         # 0x400000
+	.dword	2097152                         # 0x200000
+	.dword	1048576                         # 0x100000
+.LCPI11_14:
+	.dword	134217728                       # 0x8000000
+	.dword	67108864                        # 0x4000000
+	.dword	33554432                        # 0x2000000
+	.dword	16777216                        # 0x1000000
+.LCPI11_15:
+	.dword	2147483648                      # 0x80000000
+	.dword	1073741824                      # 0x40000000
+	.dword	536870912                       # 0x20000000
+	.dword	268435456                       # 0x10000000
+.LCPI11_16:
+	.byte	32                              # 0x20
+	.byte	31                              # 0x1f
+	.byte	30                              # 0x1e
+	.byte	29                              # 0x1d
+	.byte	28                              # 0x1c
+	.byte	27                              # 0x1b
+	.byte	26                              # 0x1a
+	.byte	25                              # 0x19
+	.byte	24                              # 0x18
+	.byte	23                              # 0x17
+	.byte	22                              # 0x16
+	.byte	21                              # 0x15
+	.byte	20                              # 0x14
+	.byte	19                              # 0x13
+	.byte	18                              # 0x12
+	.byte	17                              # 0x11
+	.byte	16                              # 0x10
+	.byte	15                              # 0xf
+	.byte	14                              # 0xe
+	.byte	13                              # 0xd
+	.byte	12                              # 0xc
+	.byte	11                              # 0xb
+	.byte	10                              # 0xa
+	.byte	9                               # 0x9
+	.byte	8                               # 0x8
+	.byte	7                               # 0x7
+	.byte	6                               # 0x6
+	.byte	5                               # 0x5
+	.byte	4                               # 0x4
+	.byte	3                               # 0x3
+	.byte	2                               # 0x2
+	.byte	1                               # 0x1
+	.text
+	.globl	clause_IsUnorderedClause
 	.p2align	5
 	.type	clause_IsUnorderedClause,@function
 clause_IsUnorderedClause:               # @clause_IsUnorderedClause
@@ -643,23 +759,266 @@ clause_IsUnorderedClause:               # @clause_IsUnorderedClause
 	b	.LBB11_13
 .LBB11_7:
 	move	$a4, $a6
-.LBB11_8:
+.LBB11_8:                               # %vector.ph
 	slli.d	$a6, $a4, 3
-	ldx.d	$a7, $a3, $a6
-	ori	$a6, $zero, 63
-	.p2align	4, , 16
-.LBB11_9:                               # =>This Inner Loop Header: Depth=1
-	srl.d	$t0, $a7, $a6
-	andi	$t0, $t0, 1
-	bnez	$t0, .LBB11_12
-# %bb.10:                               #   in Loop: Header=BB11_9 Depth=1
-	addi.d	$a6, $a6, -1
-	bne	$a6, $a5, .LBB11_9
-# %bb.11:
-	move	$a6, $a5
+	ldx.d	$a6, $a3, $a6
+	xvreplgr2vr.d	$xr2, $a6
+	pcalau12i	$a6, %pc_hi20(.LCPI11_0)
+	xvld	$xr0, $a6, %pc_lo12(.LCPI11_0)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_1)
+	xvld	$xr1, $a6, %pc_lo12(.LCPI11_1)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_2)
+	xvld	$xr4, $a6, %pc_lo12(.LCPI11_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_3)
+	xvld	$xr7, $a6, %pc_lo12(.LCPI11_3)
+	xvand.v	$xr3, $xr2, $xr0
+	xvand.v	$xr5, $xr2, $xr1
+	xvand.v	$xr6, $xr2, $xr4
+	xvand.v	$xr1, $xr2, $xr7
+	pcalau12i	$a6, %pc_hi20(.LCPI11_4)
+	xvld	$xr0, $a6, %pc_lo12(.LCPI11_4)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_5)
+	xvld	$xr4, $a6, %pc_lo12(.LCPI11_5)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_6)
+	xvld	$xr7, $a6, %pc_lo12(.LCPI11_6)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_7)
+	xvld	$xr8, $a6, %pc_lo12(.LCPI11_7)
+	xvand.v	$xr9, $xr2, $xr0
+	xvand.v	$xr10, $xr2, $xr4
+	xvand.v	$xr7, $xr2, $xr7
+	xvand.v	$xr0, $xr2, $xr8
+	xvseqi.d	$xr4, $xr0, 0
+	xvrepli.b	$xr0, -1
+	xvxor.v	$xr8, $xr4, $xr0
+	xvpickve2gr.d	$a6, $xr8, 0
+	vinsgr2vr.b	$vr4, $a6, 0
+	xvpickve2gr.d	$a6, $xr8, 1
+	vinsgr2vr.b	$vr4, $a6, 1
+	xvpickve2gr.d	$a6, $xr8, 2
+	vinsgr2vr.b	$vr4, $a6, 2
+	xvpickve2gr.d	$a6, $xr8, 3
+	vinsgr2vr.b	$vr4, $a6, 3
+	xvseqi.d	$xr7, $xr7, 0
+	xvxor.v	$xr7, $xr7, $xr0
+	xvpickve2gr.d	$a6, $xr7, 0
+	vinsgr2vr.b	$vr4, $a6, 4
+	xvpickve2gr.d	$a6, $xr7, 1
+	vinsgr2vr.b	$vr4, $a6, 5
+	xvpickve2gr.d	$a6, $xr7, 2
+	vinsgr2vr.b	$vr4, $a6, 6
+	xvpickve2gr.d	$a6, $xr7, 3
+	vinsgr2vr.b	$vr4, $a6, 7
+	xvseqi.d	$xr7, $xr10, 0
+	xvxor.v	$xr7, $xr7, $xr0
+	xvpickve2gr.d	$a6, $xr7, 0
+	vinsgr2vr.b	$vr4, $a6, 8
+	xvpickve2gr.d	$a6, $xr7, 1
+	vinsgr2vr.b	$vr4, $a6, 9
+	xvpickve2gr.d	$a6, $xr7, 2
+	vinsgr2vr.b	$vr4, $a6, 10
+	xvpickve2gr.d	$a6, $xr7, 3
+	vinsgr2vr.b	$vr4, $a6, 11
+	xvseqi.d	$xr7, $xr9, 0
+	xvxor.v	$xr7, $xr7, $xr0
+	xvpickve2gr.d	$a6, $xr7, 0
+	vinsgr2vr.b	$vr4, $a6, 12
+	xvpickve2gr.d	$a6, $xr7, 1
+	vinsgr2vr.b	$vr4, $a6, 13
+	xvpickve2gr.d	$a6, $xr7, 2
+	vinsgr2vr.b	$vr4, $a6, 14
+	xvpickve2gr.d	$a6, $xr7, 3
+	vinsgr2vr.b	$vr4, $a6, 15
+	xvseqi.d	$xr1, $xr1, 0
+	xvxor.v	$xr7, $xr1, $xr0
+	xvpickve2gr.d	$a6, $xr7, 0
+	vinsgr2vr.b	$vr1, $a6, 0
+	xvpickve2gr.d	$a6, $xr7, 1
+	vinsgr2vr.b	$vr1, $a6, 1
+	xvpickve2gr.d	$a6, $xr7, 2
+	vinsgr2vr.b	$vr1, $a6, 2
+	xvpickve2gr.d	$a6, $xr7, 3
+	vinsgr2vr.b	$vr1, $a6, 3
+	xvseqi.d	$xr6, $xr6, 0
+	xvxor.v	$xr6, $xr6, $xr0
+	xvpickve2gr.d	$a6, $xr6, 0
+	vinsgr2vr.b	$vr1, $a6, 4
+	xvpickve2gr.d	$a6, $xr6, 1
+	vinsgr2vr.b	$vr1, $a6, 5
+	xvpickve2gr.d	$a6, $xr6, 2
+	vinsgr2vr.b	$vr1, $a6, 6
+	xvpickve2gr.d	$a6, $xr6, 3
+	vinsgr2vr.b	$vr1, $a6, 7
+	xvseqi.d	$xr5, $xr5, 0
+	xvxor.v	$xr5, $xr5, $xr0
+	xvpickve2gr.d	$a6, $xr5, 0
+	vinsgr2vr.b	$vr1, $a6, 8
+	xvpickve2gr.d	$a6, $xr5, 1
+	vinsgr2vr.b	$vr1, $a6, 9
+	xvpickve2gr.d	$a6, $xr5, 2
+	vinsgr2vr.b	$vr1, $a6, 10
+	xvpickve2gr.d	$a6, $xr5, 3
+	vinsgr2vr.b	$vr1, $a6, 11
+	xvseqi.d	$xr3, $xr3, 0
+	xvxor.v	$xr3, $xr3, $xr0
+	xvpickve2gr.d	$a6, $xr3, 0
+	vinsgr2vr.b	$vr1, $a6, 12
+	xvpickve2gr.d	$a6, $xr3, 1
+	vinsgr2vr.b	$vr1, $a6, 13
+	xvpickve2gr.d	$a6, $xr3, 2
+	vinsgr2vr.b	$vr1, $a6, 14
+	xvpickve2gr.d	$a6, $xr3, 3
+	vinsgr2vr.b	$vr1, $a6, 15
+	xvpermi.q	$xr1, $xr4, 2
+	xvmskltz.b	$xr3, $xr1
+	xvpickve2gr.wu	$a6, $xr3, 0
+	xvpickve2gr.wu	$a7, $xr3, 4
+	bstrins.d	$a6, $a7, 31, 16
+	addi.w	$a6, $a6, 0
+	beqz	$a6, .LBB11_10
+# %bb.9:
+	move	$a6, $zero
+	b	.LBB11_11
+.LBB11_10:                              # %vector.body.interim
+	pcalau12i	$a6, %pc_hi20(.LCPI11_8)
+	xvld	$xr1, $a6, %pc_lo12(.LCPI11_8)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_9)
+	xvld	$xr4, $a6, %pc_lo12(.LCPI11_9)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_10)
+	xvld	$xr5, $a6, %pc_lo12(.LCPI11_10)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_11)
+	xvld	$xr6, $a6, %pc_lo12(.LCPI11_11)
+	xvand.v	$xr3, $xr2, $xr1
+	xvand.v	$xr4, $xr2, $xr4
+	xvand.v	$xr5, $xr2, $xr5
+	xvand.v	$xr6, $xr2, $xr6
+	pcalau12i	$a6, %pc_hi20(.LCPI11_12)
+	xvld	$xr1, $a6, %pc_lo12(.LCPI11_12)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_13)
+	xvld	$xr7, $a6, %pc_lo12(.LCPI11_13)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_14)
+	xvld	$xr8, $a6, %pc_lo12(.LCPI11_14)
+	pcalau12i	$a6, %pc_hi20(.LCPI11_15)
+	xvld	$xr9, $a6, %pc_lo12(.LCPI11_15)
+	xvand.v	$xr10, $xr2, $xr1
+	xvand.v	$xr7, $xr2, $xr7
+	xvand.v	$xr8, $xr2, $xr8
+	xvand.v	$xr1, $xr2, $xr9
+	xvseqi.d	$xr1, $xr1, 0
+	xvxor.v	$xr2, $xr1, $xr0
+	xvpickve2gr.d	$a6, $xr2, 0
+	vinsgr2vr.b	$vr1, $a6, 0
+	xvpickve2gr.d	$a6, $xr2, 1
+	vinsgr2vr.b	$vr1, $a6, 1
+	xvpickve2gr.d	$a6, $xr2, 2
+	vinsgr2vr.b	$vr1, $a6, 2
+	xvpickve2gr.d	$a6, $xr2, 3
+	vinsgr2vr.b	$vr1, $a6, 3
+	xvseqi.d	$xr2, $xr8, 0
+	xvxor.v	$xr2, $xr2, $xr0
+	xvpickve2gr.d	$a6, $xr2, 0
+	vinsgr2vr.b	$vr1, $a6, 4
+	xvpickve2gr.d	$a6, $xr2, 1
+	vinsgr2vr.b	$vr1, $a6, 5
+	xvpickve2gr.d	$a6, $xr2, 2
+	vinsgr2vr.b	$vr1, $a6, 6
+	xvpickve2gr.d	$a6, $xr2, 3
+	vinsgr2vr.b	$vr1, $a6, 7
+	xvseqi.d	$xr2, $xr7, 0
+	xvxor.v	$xr2, $xr2, $xr0
+	xvpickve2gr.d	$a6, $xr2, 0
+	vinsgr2vr.b	$vr1, $a6, 8
+	xvpickve2gr.d	$a6, $xr2, 1
+	vinsgr2vr.b	$vr1, $a6, 9
+	xvpickve2gr.d	$a6, $xr2, 2
+	vinsgr2vr.b	$vr1, $a6, 10
+	xvpickve2gr.d	$a6, $xr2, 3
+	vinsgr2vr.b	$vr1, $a6, 11
+	xvseqi.d	$xr2, $xr10, 0
+	xvxor.v	$xr2, $xr2, $xr0
+	xvpickve2gr.d	$a6, $xr2, 0
+	vinsgr2vr.b	$vr1, $a6, 12
+	xvpickve2gr.d	$a6, $xr2, 1
+	vinsgr2vr.b	$vr1, $a6, 13
+	xvpickve2gr.d	$a6, $xr2, 2
+	vinsgr2vr.b	$vr1, $a6, 14
+	xvpickve2gr.d	$a6, $xr2, 3
+	vinsgr2vr.b	$vr1, $a6, 15
+	xvseqi.d	$xr2, $xr6, 0
+	xvxor.v	$xr2, $xr2, $xr0
+	xvpickve2gr.d	$a6, $xr2, 0
+	vinsgr2vr.b	$vr6, $a6, 0
+	xvpickve2gr.d	$a6, $xr2, 1
+	vinsgr2vr.b	$vr6, $a6, 1
+	xvpickve2gr.d	$a6, $xr2, 2
+	vinsgr2vr.b	$vr6, $a6, 2
+	xvpickve2gr.d	$a6, $xr2, 3
+	vinsgr2vr.b	$vr6, $a6, 3
+	xvseqi.d	$xr2, $xr5, 0
+	xvxor.v	$xr2, $xr2, $xr0
+	xvpickve2gr.d	$a6, $xr2, 0
+	vinsgr2vr.b	$vr6, $a6, 4
+	xvpickve2gr.d	$a6, $xr2, 1
+	vinsgr2vr.b	$vr6, $a6, 5
+	xvpickve2gr.d	$a6, $xr2, 2
+	vinsgr2vr.b	$vr6, $a6, 6
+	xvpickve2gr.d	$a6, $xr2, 3
+	vinsgr2vr.b	$vr6, $a6, 7
+	xvseqi.d	$xr2, $xr4, 0
+	xvxor.v	$xr2, $xr2, $xr0
+	xvpickve2gr.d	$a6, $xr2, 0
+	vinsgr2vr.b	$vr6, $a6, 8
+	xvpickve2gr.d	$a6, $xr2, 1
+	vinsgr2vr.b	$vr6, $a6, 9
+	xvpickve2gr.d	$a6, $xr2, 2
+	vinsgr2vr.b	$vr6, $a6, 10
+	xvpickve2gr.d	$a6, $xr2, 3
+	vinsgr2vr.b	$vr6, $a6, 11
+	xvseqi.d	$xr2, $xr3, 0
+	xvxor.v	$xr0, $xr2, $xr0
+	xvpickve2gr.d	$a6, $xr0, 0
+	vinsgr2vr.b	$vr6, $a6, 12
+	xvpickve2gr.d	$a6, $xr0, 1
+	vinsgr2vr.b	$vr6, $a6, 13
+	xvpickve2gr.d	$a6, $xr0, 2
+	vinsgr2vr.b	$vr6, $a6, 14
+	xvpickve2gr.d	$a6, $xr0, 3
+	vinsgr2vr.b	$vr6, $a6, 15
+	xvpermi.q	$xr1, $xr6, 2
+	xvmskltz.b	$xr0, $xr1
+	xvpickve2gr.wu	$a6, $xr0, 0
+	xvpickve2gr.wu	$a7, $xr0, 4
+	bstrins.d	$a6, $a7, 31, 16
+	addi.w	$a7, $a6, 0
+	ori	$a6, $zero, 32
+	beqz	$a7, .LBB11_12
+.LBB11_11:                              # %vector.early.exit
+	pcalau12i	$a5, %pc_hi20(.LCPI11_16)
+	xvld	$xr0, $a5, %pc_lo12(.LCPI11_16)
+	xvslli.b	$xr1, $xr1, 7
+	xvsrai.b	$xr1, $xr1, 7
+	xvand.v	$xr0, $xr1, $xr0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.bu	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 2
+	vmax.bu	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 1
+	vmax.bu	$vr0, $vr1, $vr0
+	vpickve2gr.b	$a5, $vr0, 0
+	ori	$a7, $zero, 32
+	sub.d	$a5, $a7, $a5
+	andi	$a5, $a5, 255
+	add.d	$a5, $a6, $a5
+	slli.d	$a5, $a5, 32
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 63
+	sub.d	$a5, $a6, $a5
+	srai.d	$a5, $a5, 32
 .LBB11_12:                              # %clause_CheckSplitLevel.exit
 	slli.d	$a4, $a4, 6
-	addi.w	$a5, $a6, 0
 	add.d	$a4, $a5, $a4
 	bne	$a4, $a1, .LBB11_20
 .LBB11_13:
@@ -4901,22 +5260,22 @@ clause_GetLiteralSubSetList:            # @clause_GetLiteralSubSetList
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
-	move	$s2, $zero
+	move	$a0, $zero
 	slli.d	$s0, $a1, 3
-	sub.d	$a0, $a2, $a1
-	addi.d	$s1, $a0, 1
+	sub.d	$a1, $a2, $a1
+	addi.d	$s1, $a1, 1
 	.p2align	4, , 16
 .LBB56_3:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $fp, 56
-	ldx.d	$s3, $a0, $s0
+	ld.d	$a1, $fp, 56
+	ldx.d	$s2, $a1, $s0
+	move	$s3, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s3, $a0, 8
-	st.d	$s2, $a0, 0
+	st.d	$s2, $a0, 8
+	st.d	$s3, $a0, 0
 	addi.w	$s1, $s1, -1
 	addi.d	$s0, $s0, 8
-	move	$s2, $a0
 	bnez	$s1, .LBB56_3
 # %bb.4:
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
@@ -6902,7 +7261,7 @@ clause_Create:                          # @clause_Create
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(list_Length)
 	jirl	$ra, $ra, 0
-	move	$s5, $a0
+	move	$s4, $a0
 	st.w	$a0, $s1, 64
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(list_Length)
@@ -6916,7 +7275,7 @@ clause_Create:                          # @clause_Create
 	move	$fp, $a0
 	st.w	$a0, $s1, 72
 	or	$a0, $a1, $a0
-	add.w	$s0, $s7, $s5
+	add.w	$s0, $s7, $s4
 	bnez	$a0, .LBB73_2
 # %bb.1:                                # %clause_IsEmptyClause.exit
 	ld.w	$a0, $s1, 64
@@ -6930,14 +7289,14 @@ clause_Create:                          # @clause_Create
 .LBB73_3:
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	blez	$s5, .LBB73_10
+	blez	$s4, .LBB73_10
 # %bb.4:                                # %.lr.ph
 	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
-	slli.d	$a0, $s5, 3
+	slli.d	$a0, $s4, 3
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
 	ld.d	$s0, $a0, %got_pc_lo12(fol_NOT)
-	move	$s4, $zero
+	move	$s5, $zero
 	ori	$s8, $zero, 0
 	lu32i.d	$s8, -1
 	.p2align	4, , 16
@@ -6962,18 +7321,18 @@ clause_Create:                          # @clause_Create
 	st.d	$s8, $a0, 0
 	st.d	$s1, $a0, 16
 	ld.d	$a1, $s1, 56
-	stx.d	$a0, $a1, $s4
+	stx.d	$a0, $a1, $s5
 	ld.d	$s6, $s6, 0
-	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 8
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	bne	$a0, $s4, .LBB73_5
+	bne	$a0, $s5, .LBB73_5
 # %bb.6:
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	bge	$s5, $s0, .LBB73_11
+	bge	$s4, $s0, .LBB73_11
 .LBB73_7:                               # %.lr.ph64
-	bstrpick.d	$a0, $s5, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	bstrpick.d	$a1, $s0, 31, 0
 	slli.d	$s6, $a0, 3
 	sub.d	$s7, $a1, $a0
@@ -6983,22 +7342,22 @@ clause_Create:                          # @clause_Create
 	lu32i.d	$s0, -1
 	.p2align	4, , 16
 .LBB73_8:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$s5, $fp, 0
-	ld.d	$s4, $s3, 8
+	ld.w	$s4, $fp, 0
+	ld.d	$s5, $s3, 8
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	st.d	$s4, $a0, 8
+	st.d	$s5, $a0, 8
 	st.d	$zero, $a0, 0
-	move	$a0, $s5
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
-	move	$s5, $a0
+	move	$s4, $a0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $a0, 24
+	st.d	$s4, $a0, 24
 	st.w	$zero, $a0, 8
 	st.d	$s0, $a0, 0
 	st.d	$s1, $a0, 16
@@ -7010,40 +7369,40 @@ clause_Create:                          # @clause_Create
 	bnez	$s7, .LBB73_8
 # %bb.9:
 	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	move	$s5, $s0
+	move	$s4, $s0
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	add.w	$fp, $fp, $s0
-	blt	$s5, $fp, .LBB73_12
+	blt	$s4, $fp, .LBB73_12
 	b	.LBB73_14
 .LBB73_10:
-	move	$s5, $zero
-	blt	$s5, $s0, .LBB73_7
+	move	$s4, $zero
+	blt	$s4, $s0, .LBB73_7
 .LBB73_11:
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	add.w	$fp, $fp, $s0
-	bge	$s5, $fp, .LBB73_14
+	bge	$s4, $fp, .LBB73_14
 .LBB73_12:                              # %.lr.ph70
-	bstrpick.d	$a0, $s5, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	slli.d	$s0, $a0, 3
 	ori	$s3, $zero, 0
 	lu32i.d	$s3, -1
 	.p2align	4, , 16
 .LBB73_13:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$s4, $s2, 8
+	ld.d	$s5, $s2, 8
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s4, $a0, 24
+	st.d	$s5, $a0, 24
 	st.w	$zero, $a0, 8
 	st.d	$s3, $a0, 0
 	st.d	$s1, $a0, 16
 	ld.d	$a1, $s1, 56
 	stx.d	$a0, $a1, $s0
 	ld.d	$s2, $s2, 0
-	addi.w	$s5, $s5, 1
+	addi.w	$s4, $s4, 1
 	addi.d	$s0, $s0, 8
-	blt	$s5, $fp, .LBB73_13
+	blt	$s4, $fp, .LBB73_13
 .LBB73_14:                              # %._crit_edge71
 	move	$a0, $s1
 	move	$a1, $s6
@@ -11949,6 +12308,10 @@ clause_NumberOfMaxAntecedentLits:       # @clause_NumberOfMaxAntecedentLits
 	ld.d	$t1, $a7, 8
 	ld.d	$t2, $a7, 16
 	ld.d	$t3, $a7, 24
+	ld.d	$t4, $a7, 32
+	ld.d	$t5, $a7, 40
+	ld.d	$t6, $a7, 48
+	ld.d	$a7, $a7, 56
 	ld.w	$t0, $t0, 0
 	ld.w	$t1, $t1, 0
 	ld.w	$t2, $t2, 0
@@ -11957,13 +12320,9 @@ clause_NumberOfMaxAntecedentLits:       # @clause_NumberOfMaxAntecedentLits
 	vinsgr2vr.w	$vr3, $t1, 1
 	vinsgr2vr.w	$vr3, $t2, 2
 	vinsgr2vr.w	$vr3, $t3, 3
-	ld.d	$t0, $a7, 32
-	ld.d	$t1, $a7, 40
-	ld.d	$t2, $a7, 48
-	ld.d	$a7, $a7, 56
-	ld.w	$t0, $t0, 0
-	ld.w	$t1, $t1, 0
-	ld.w	$t2, $t2, 0
+	ld.w	$t0, $t4, 0
+	ld.w	$t1, $t5, 0
+	ld.w	$t2, $t6, 0
 	ld.w	$a7, $a7, 0
 	vinsgr2vr.w	$vr4, $t0, 0
 	vinsgr2vr.w	$vr4, $t1, 1
@@ -12101,6 +12460,10 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	ld.d	$t3, $t1, 8
 	ld.d	$t4, $t1, 16
 	ld.d	$t5, $t1, 24
+	ld.d	$t6, $t1, 32
+	ld.d	$t7, $t1, 40
+	ld.d	$t8, $t1, 48
+	ld.d	$t1, $t1, 56
 	ld.w	$t2, $t2, 0
 	ld.w	$t3, $t3, 0
 	ld.w	$t4, $t4, 0
@@ -12109,13 +12472,9 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	vinsgr2vr.w	$vr3, $t3, 1
 	vinsgr2vr.w	$vr3, $t4, 2
 	vinsgr2vr.w	$vr3, $t5, 3
-	ld.d	$t2, $t1, 32
-	ld.d	$t3, $t1, 40
-	ld.d	$t4, $t1, 48
-	ld.d	$t1, $t1, 56
-	ld.w	$t2, $t2, 0
-	ld.w	$t3, $t3, 0
-	ld.w	$t4, $t4, 0
+	ld.w	$t2, $t6, 0
+	ld.w	$t3, $t7, 0
+	ld.w	$t4, $t8, 0
 	ld.w	$t1, $t1, 0
 	vinsgr2vr.w	$vr4, $t2, 0
 	vinsgr2vr.w	$vr4, $t3, 1
@@ -15274,9 +15633,9 @@ clause_PParentsFPrintParentClauses:     # @clause_PParentsFPrintParentClauses
 	beqz	$s1, .LBB132_12
 # %bb.7:                                # %.lr.ph
 	ld.d	$s2, $s2, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	beqz	$s0, .LBB132_10
 # %bb.8:
+	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.8)
 	.p2align	4, , 16
 .LBB132_9:                              # %.lr.ph.split
@@ -15293,6 +15652,7 @@ clause_PParentsFPrintParentClauses:     # @clause_PParentsFPrintParentClauses
 	bnez	$s1, .LBB132_9
 	b	.LBB132_12
 .LBB132_10:                             # %.lr.ph.split.us.preheader
+	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.8)
 	.p2align	4, , 16
 .LBB132_11:                             # %.lr.ph.split.us

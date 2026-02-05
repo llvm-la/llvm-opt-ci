@@ -163,10 +163,9 @@ _ZN2PP8VariableC2Ev:                    # @_ZN2PP8VariableC2Ev
 	bne	$a2, $s2, .LBB0_17
 # %bb.13:
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	bne	$a0, $s5, .LBB0_20
 .LBB0_14:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit15
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, 72
 	bnez	$a0, .LBB0_21
 .LBB0_15:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	move	$a0, $s0
@@ -185,28 +184,25 @@ _ZN2PP8VariableC2Ev:                    # @_ZN2PP8VariableC2Ev
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	beq	$a0, $s5, .LBB0_14
 	b	.LBB0_20
 .LBB0_18:
 .Ltmp4:                                 # EH_LABEL
 	move	$s3, $a0
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	beq	$a0, $s5, .LBB0_14
 	b	.LBB0_20
 .LBB0_19:
 .Ltmp10:                                # EH_LABEL
 	move	$s3, $a0
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	beq	$a0, $s5, .LBB0_14
 .LBB0_20:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i13
 	ld.d	$a1, $s5, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, 72
 	beqz	$a0, .LBB0_15
 .LBB0_21:
 	ld.d	$a1, $fp, 88
@@ -499,8 +495,7 @@ _ZN2PP8VariableC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_bS6_: #
 	move	$s1, $a0
 	bne	$a2, $s8, .LBB3_17
 # %bb.14:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit
-	addi.d	$a0, $fp, 72
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 72
 	bnez	$a0, .LBB3_18
 .LBB3_15:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	move	$a0, $s0
@@ -518,8 +513,7 @@ _ZN2PP8VariableC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES6_bS6_: #
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 72
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 72
 	beqz	$a0, .LBB3_15
 .LBB3_18:
 	ld.d	$a1, $fp, 88
@@ -724,10 +718,9 @@ _ZN2PP8VariableC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE: # @_ZN2P
 	bne	$a2, $s2, .LBB4_17
 # %bb.13:
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	bne	$a0, $s5, .LBB4_20
 .LBB4_14:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit14
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, 72
 	bnez	$a0, .LBB4_21
 .LBB4_15:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	move	$a0, $s0
@@ -746,28 +739,25 @@ _ZN2PP8VariableC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE: # @_ZN2P
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	beq	$a0, $s5, .LBB4_14
 	b	.LBB4_20
 .LBB4_18:
 .Ltmp24:                                # EH_LABEL
 	move	$s3, $a0
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	beq	$a0, $s5, .LBB4_14
 	b	.LBB4_20
 .LBB4_19:
 .Ltmp30:                                # EH_LABEL
 	move	$s3, $a0
 	ld.d	$a0, $s1, 0
-	addi.d	$s1, $fp, 72
 	beq	$a0, $s5, .LBB4_14
 .LBB4_20:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i12
 	ld.d	$a1, $s5, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $fp, 72
 	beqz	$a0, .LBB4_15
 .LBB4_21:
 	ld.d	$a1, $fp, 88
@@ -986,55 +976,66 @@ _ZN2PP8VariableC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vector
 .Ltmp40:                                # EH_LABEL
 	ld.d	$a2, $sp, 32
 	move	$s1, $a0
-	beq	$a2, $s0, .LBB5_16
-# %bb.14:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i11
-	ld.d	$a0, $sp, 48
-	addi.d	$a1, $a0, 1
-	move	$a0, $a2
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-	b	.LBB5_16
-.LBB5_15:
-.Ltmp37:                                # EH_LABEL
-	move	$s1, $a0
-.LBB5_16:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit13
+	bne	$a2, $s0, .LBB5_20
+# %bb.14:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit13
 	addi.d	$a0, $fp, 104
 	ld.d	$a0, $a0, 0
-	addi.d	$s0, $fp, 72
 	addi.d	$a1, $fp, 120
-	beq	$a0, $a1, .LBB5_18
-# %bb.17:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i14
-	addi.d	$a1, $fp, 120
-	ld.d	$a1, $a1, 0
-	addi.d	$a1, $a1, 1
-	pcaddu18i	$ra, %call36(_ZdlPvm)
-	jirl	$ra, $ra, 0
-.LBB5_18:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit16
-	ld.d	$a0, $s0, 0
+	bne	$a0, $a1, .LBB5_22
+.LBB5_15:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit16
+	ld.d	$a0, $fp, 72
 	addi.d	$s0, $fp, 32
-	beqz	$a0, .LBB5_20
-# %bb.19:
+	beqz	$a0, .LBB5_17
+.LBB5_16:
 	ld.d	$a1, $fp, 88
 	sub.d	$a1, $a1, $a0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_20:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
+.LBB5_17:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED2Ev)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB5_22
-# %bb.21:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17
+	beq	$a0, $a1, .LBB5_19
+# %bb.18:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	addi.d	$a1, $a1, 1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB5_22:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit19
+.LBB5_19:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit19
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
+.LBB5_20:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i11
+	ld.d	$a0, $sp, 48
+	addi.d	$a1, $a0, 1
+	move	$a0, $a2
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	addi.d	$a0, $fp, 104
+	ld.d	$a0, $a0, 0
+	addi.d	$a1, $fp, 120
+	beq	$a0, $a1, .LBB5_15
+	b	.LBB5_22
+.LBB5_21:
+.Ltmp37:                                # EH_LABEL
+	move	$s1, $a0
+	addi.d	$a0, $fp, 104
+	ld.d	$a0, $a0, 0
+	addi.d	$a1, $fp, 120
+	beq	$a0, $a1, .LBB5_15
+.LBB5_22:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i14
+	addi.d	$a1, $fp, 120
+	ld.d	$a1, $a1, 0
+	addi.d	$a1, $a1, 1
+	pcaddu18i	$ra, %call36(_ZdlPvm)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $fp, 72
+	addi.d	$s0, $fp, 32
+	bnez	$a0, .LBB5_16
+	b	.LBB5_17
 .Lfunc_end5:
 	.size	_ZN2PP8VariableC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIiSaIiEERS7_IS6_SaIS6_EEiiS6_PSt5dequeIS6_SB_ERNS1_18basic_stringstreamIcS4_S5_EERi, .Lfunc_end5-_ZN2PP8VariableC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIiSaIiEERS7_IS6_SaIS6_EEiiS6_PSt5dequeIS6_SB_ERNS1_18basic_stringstreamIcS4_S5_EERi
 	.cfi_endproc

@@ -2107,7 +2107,7 @@ GCC_except_table37:
 	.type	_ZN15CCachedInStreamD0Ev,@function
 _ZN15CCachedInStreamD0Ev:               # @_ZN15CCachedInStreamD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end38:
 	.size	_ZN15CCachedInStreamD0Ev, .Lfunc_end38-_ZN15CCachedInStreamD0Ev
                                         # -- End function

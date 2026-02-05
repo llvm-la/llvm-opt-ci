@@ -767,15 +767,14 @@ _ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__o
 	addi.d	$a3, $a3, 1
 	alsl.d	$a4, $a3, $s1, 3
 	alsl.d	$a5, $a2, $s1, 3
-	ori	$a6, $zero, 1
 	b	.LBB3_6
 	.p2align	4, , 16
 .LBB3_3:                                #   in Loop: Header=BB3_6 Depth=1
-	move	$a7, $zero
+	move	$a6, $zero
 .LBB3_4:                                # %_ZSt10__pop_heapIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__ops15_Iter_less_iterEEvT_S9_S9_RT0_.exit.us
                                         #   in Loop: Header=BB3_6 Depth=1
-	slli.d	$a7, $a7, 3
-	fstx.d	$fa0, $s1, $a7
+	slli.d	$a6, $a6, 3
+	fstx.d	$fa0, $s1, $a6
 .LBB3_5:                                #   in Loop: Header=BB3_6 Depth=1
 	addi.d	$s0, $s0, 8
 	bgeu	$s0, $fp, .LBB3_28
@@ -789,60 +788,60 @@ _ZSt13__heap_selectIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__o
 	bcnez	$fcc0, .LBB3_5
 # %bb.7:                                # %.lr.ph.i.i.preheader.us
                                         #   in Loop: Header=BB3_6 Depth=1
-	move	$a7, $zero
+	move	$a6, $zero
 	fst.d	$fa1, $s0, 0
 	.p2align	4, , 16
 .LBB3_8:                                # %.lr.ph.i.i.us
                                         #   Parent Loop BB3_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$t0, $a7
-	slli.d	$a7, $a7, 1
-	addi.d	$t1, $a7, 2
-	slli.d	$t2, $t1, 3
-	addi.d	$a7, $a7, 1
-	slli.d	$t3, $a7, 3
-	fldx.d	$fa1, $s1, $t2
-	fldx.d	$fa2, $s1, $t3
-	fcmp.clt.d	$fcc0, $fa1, $fa2
-	movcf2gr	$t2, $fcc0
-	masknez	$t1, $t1, $t2
-	maskeqz	$a7, $a7, $t2
-	or	$a7, $a7, $t1
-	slli.d	$t1, $a7, 3
+	move	$a7, $a6
+	slli.d	$a6, $a6, 1
+	addi.d	$t0, $a6, 2
+	slli.d	$t1, $t0, 3
+	addi.d	$a6, $a6, 1
+	slli.d	$t2, $a6, 3
 	fldx.d	$fa1, $s1, $t1
-	slli.d	$t0, $t0, 3
-	fstx.d	$fa1, $s1, $t0
-	blt	$a7, $a1, .LBB3_8
+	fldx.d	$fa2, $s1, $t2
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	movcf2gr	$t1, $fcc0
+	masknez	$t0, $t0, $t1
+	maskeqz	$a6, $a6, $t1
+	or	$a6, $a6, $t0
+	slli.d	$t0, $a6, 3
+	fldx.d	$fa1, $s1, $t0
+	slli.d	$a7, $a7, 3
+	fstx.d	$fa1, $s1, $a7
+	blt	$a6, $a1, .LBB3_8
 # %bb.9:                                # %._crit_edge.i.i.loopexit.us
                                         #   in Loop: Header=BB3_6 Depth=1
 	bnez	$a0, .LBB3_12
 # %bb.10:                               # %._crit_edge.i.i.loopexit.us
                                         #   in Loop: Header=BB3_6 Depth=1
-	bne	$a7, $a2, .LBB3_12
+	bne	$a6, $a2, .LBB3_12
 # %bb.11:                               # %.thread.i.us
                                         #   in Loop: Header=BB3_6 Depth=1
 	fld.d	$fa1, $a4, 0
 	fst.d	$fa1, $a5, 0
-	move	$a7, $a3
+	move	$a6, $a3
 	b	.LBB3_13
 	.p2align	4, , 16
 .LBB3_12:                               #   in Loop: Header=BB3_6 Depth=1
-	beqz	$a7, .LBB3_3
+	beqz	$a6, .LBB3_3
 	.p2align	4, , 16
 .LBB3_13:                               # %.lr.ph.i.i.i.us
                                         #   Parent Loop BB3_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$t0, $a7, -1
-	srli.d	$t1, $t0, 1
-	slli.d	$t2, $t1, 3
-	fldx.d	$fa1, $s1, $t2
+	addi.d	$a7, $a6, -1
+	srli.d	$a7, $a7, 1
+	slli.d	$t0, $a7, 3
+	fldx.d	$fa1, $s1, $t0
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB3_4
 # %bb.14:                               #   in Loop: Header=BB3_13 Depth=2
-	slli.d	$a7, $a7, 3
-	fstx.d	$fa1, $s1, $a7
-	move	$a7, $t1
-	bltu	$a6, $t0, .LBB3_13
+	slli.d	$a6, $a6, 3
+	fstx.d	$fa1, $s1, $a6
+	move	$a6, $a7
+	bnez	$a7, .LBB3_13
 	b	.LBB3_3
 .LBB3_15:                               # %.lr.ph.split
 	bnez	$a0, .LBB3_24
@@ -961,12 +960,13 @@ _ZSt11__make_heapIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__ops
 	bge	$a6, $a1, .LBB4_9
 # %bb.7:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB4_6 Depth=1
-	move	$t0, $a6
+	move	$a7, $a6
 	.p2align	4, , 16
 .LBB4_8:                                # %.lr.ph.i
                                         #   Parent Loop BB4_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.d	$a7, $t0, 1
+	move	$t0, $a7
+	slli.d	$a7, $a7, 1
 	addi.d	$t1, $a7, 2
 	slli.d	$t2, $t1, 3
 	addi.d	$a7, $a7, 1
@@ -982,7 +982,6 @@ _ZSt11__make_heapIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEENS0_5__ops
 	fldx.d	$fa1, $a0, $t1
 	slli.d	$t0, $t0, 3
 	fstx.d	$fa1, $a0, $t0
-	move	$t0, $a7
 	blt	$a7, $a1, .LBB4_8
 .LBB4_9:                                # %._crit_edge.i
                                         #   in Loop: Header=BB4_6 Depth=1

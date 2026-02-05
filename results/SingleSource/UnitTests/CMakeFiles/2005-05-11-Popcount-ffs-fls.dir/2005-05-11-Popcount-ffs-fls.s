@@ -35,8 +35,30 @@ nlz10b:                                 # @nlz10b
 nlzll:                                  # @nlzll
 # %bb.0:
 	srli.d	$a1, $a0, 32
-	bnez	$a1, .LBB1_2
+	beqz	$a1, .LBB1_2
 # %bb.1:
+	srli.d	$a0, $a1, 1
+	or	$a0, $a0, $a1
+	srli.d	$a1, $a0, 2
+	or	$a0, $a1, $a0
+	srli.d	$a1, $a0, 4
+	or	$a0, $a1, $a0
+	bstrpick.d	$a1, $a0, 31, 8
+	or	$a0, $a1, $a0
+	ori	$a1, $zero, 0
+	lu32i.d	$a1, 65535
+	orn	$a1, $a1, $a0
+	srli.d	$a1, $a1, 16
+	and	$a0, $a0, $a1
+	lu12i.w	$a1, -10492
+	ori	$a1, $a1, 2559
+	mul.d	$a0, $a0, $a1
+	bstrpick.d	$a0, $a0, 31, 26
+	pcalau12i	$a1, %pc_hi20(nlz10b.table)
+	addi.d	$a1, $a1, %pc_lo12(nlz10b.table)
+	ldx.b	$a0, $a1, $a0
+	ret
+.LBB1_2:
 	bstrpick.d	$a1, $a0, 31, 1
 	or	$a0, $a1, $a0
 	bstrpick.d	$a1, $a0, 31, 2
@@ -58,28 +80,6 @@ nlzll:                                  # @nlzll
 	addi.d	$a1, $a1, %pc_lo12(nlz10b.table)
 	ldx.b	$a0, $a1, $a0
 	addi.d	$a0, $a0, 32
-	ret
-.LBB1_2:
-	srli.d	$a0, $a0, 33
-	or	$a0, $a0, $a1
-	srli.d	$a1, $a0, 2
-	or	$a0, $a1, $a0
-	srli.d	$a1, $a0, 4
-	or	$a0, $a1, $a0
-	srli.d	$a1, $a0, 8
-	or	$a0, $a1, $a0
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 65535
-	orn	$a1, $a1, $a0
-	srli.d	$a1, $a1, 16
-	and	$a0, $a0, $a1
-	lu12i.w	$a1, -10492
-	ori	$a1, $a1, 2559
-	mul.d	$a0, $a0, $a1
-	bstrpick.d	$a0, $a0, 31, 26
-	pcalau12i	$a1, %pc_hi20(nlz10b.table)
-	addi.d	$a1, $a1, %pc_lo12(nlz10b.table)
-	ldx.b	$a0, $a1, $a0
 	ret
 .Lfunc_end1:
 	.size	nlzll, .Lfunc_end1-nlzll
@@ -225,13 +225,13 @@ main:                                   # @main
 	b	.LBB5_5
 	.p2align	4, , 16
 .LBB5_3:                                #   in Loop: Header=BB5_5 Depth=1
-	srli.d	$a1, $fp, 33
+	srli.d	$a1, $a0, 1
 	or	$a1, $a1, $a0
 	srli.d	$a2, $a1, 2
 	or	$a1, $a2, $a1
 	srli.d	$a2, $a1, 4
 	or	$a1, $a2, $a1
-	srli.d	$a2, $a1, 8
+	bstrpick.d	$a2, $a1, 31, 8
 	or	$a1, $a2, $a1
 	orn	$a2, $s7, $a1
 	srli.d	$a2, $a2, 16

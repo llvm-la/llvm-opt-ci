@@ -33,8 +33,7 @@ foo:                                    # @foo
 	beqz	$fp, .LBB1_2
 # %bb.1:
 	ld.d	$a0, $sp, 8
-	ld.w	$a0, $a0, 0
-	movgr2fr.w	$fa0, $a0
+	fld.s	$fa0, $a0, 0
 	ffint.s.w	$fa0, $fa0
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

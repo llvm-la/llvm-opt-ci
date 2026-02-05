@@ -12011,10 +12011,10 @@ s162:                                   # @s162
 	blez	$a0, .LBB8_8
 # %bb.1:                                # %.lr.ph
 	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(global_data)
-	addi.d	$fp, $a0, %pc_lo12(global_data)
 	blez	$s0, .LBB8_6
 # %bb.2:                                # %.preheader.us.preheader
+	pcalau12i	$a0, %pc_hi20(global_data)
+	addi.d	$fp, $a0, %pc_lo12(global_data)
 	move	$s4, $zero
 	alsl.d	$a0, $s0, $fp, 3
 	lu12i.w	$a1, 62
@@ -12181,6 +12181,8 @@ s162:                                   # @s162
 	blt	$s4, $a0, .LBB8_3
 	b	.LBB8_8
 .LBB8_6:                                # %.lr.ph.split.preheader
+	pcalau12i	$a0, %pc_hi20(global_data)
+	addi.d	$fp, $a0, %pc_lo12(global_data)
 	move	$s7, $zero
 	lu12i.w	$a0, 62
 	ori	$a0, $a0, 2080
@@ -15407,7 +15409,7 @@ set:                                    # @set
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	addi.d	$a1, $s1, 20
+	addi.d	$a1, $s1, 28
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 2304
 	.p2align	4, , 16
@@ -15415,23 +15417,24 @@ set:                                    # @set
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a3, $a0, 5
 	addi.d	$a4, $a0, 4
-	addi.d	$a5, $a0, 9
-	st.w	$a4, $a1, -20
-	st.w	$a5, $a1, 0
+	st.w	$a4, $a1, -28
 	addi.d	$a4, $a0, 2
-	addi.d	$a5, $a0, 7
-	st.w	$a4, $a1, -16
+	st.w	$a0, $a1, -20
+	addi.d	$a5, $a0, 8
 	st.w	$a5, $a1, 4
-	st.w	$a0, $a1, -12
-	st.w	$a3, $a1, 8
-	addi.d	$a3, $a0, 3
-	addi.d	$a4, $a0, 8
-	st.w	$a3, $a1, -8
-	st.w	$a4, $a1, 12
-	addi.d	$a3, $a0, 1
-	addi.d	$a4, $a0, 6
-	st.w	$a3, $a1, -4
-	st.w	$a4, $a1, 16
+	addi.d	$a5, $a0, 6
+	st.w	$a4, $a1, -24
+	st.w	$a3, $a1, 0
+	addi.d	$a3, $a0, 7
+	addi.d	$a4, $a0, 9
+	addi.d	$a6, $a0, 1
+	addi.d	$a7, $a0, 3
+	vinsgr2vr.w	$vr0, $a7, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $a3, 3
+	vst	$vr0, $a1, -16
+	st.w	$a5, $a1, 8
 	addi.d	$a0, $a0, 10
 	addi.d	$a2, $a2, -2
 	addi.d	$a1, $a1, 40

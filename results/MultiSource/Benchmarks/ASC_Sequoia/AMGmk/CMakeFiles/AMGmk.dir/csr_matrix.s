@@ -1503,7 +1503,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bnez	$a2, .LBB9_57
 # %bb.58:                               # %middle.block
 	beq	$a3, $s4, .LBB9_61
-.LBB9_59:                               # %.lr.ph220.split.preheader553
+.LBB9_59:                               # %.lr.ph220.split.preheader549
 	alsl.d	$a1, $a3, $s1, 2
 	sub.d	$a2, $s4, $a3
 	.p2align	4, , 16
@@ -1767,7 +1767,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bgeu	$t4, $a7, .LBB9_119
 .LBB9_104:                              #   in Loop: Header=BB9_101 Depth=1
 	move	$t4, $t1
-.LBB9_105:                              # %.lr.ph262.preheader539
+.LBB9_105:                              # %.lr.ph262.preheader535
                                         #   in Loop: Header=BB9_101 Depth=1
 	alsl.d	$t5, $t4, $s8, 2
 	sub.d	$t6, $t2, $t4

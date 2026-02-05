@@ -186,11 +186,11 @@ ApplyHouse:                             # @ApplyHouse
 .LBB1_4:                                # %vector.body
                                         #   in Loop: Header=BB1_1 Depth=1
 	fld.d	$fa0, $a5, 0
+	fneg.d	$fa0, $fa0
 	xvld	$xr1, $s2, 0
 	xvld	$xr2, $s2, 32
 	xvld	$xr3, $a4, 0
 	xvld	$xr4, $a4, 32
-	fneg.d	$fa0, $fa0
 	fmul.d	$fa0, $fs0, $fa0
 	xvreplve0.d	$xr0, $xr0
 	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
@@ -210,43 +210,31 @@ ApplyHouse:                             # @ApplyHouse
 	xvst	$xr1, $a4, 64
 	xvst	$xr2, $a4, 96
 	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr0, $xr0, $xr4, $xr6
+	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
+	xvld	$xr3, $s2, 192
+	xvld	$xr4, $s2, 224
+	xvld	$xr5, $a4, 192
+	xvld	$xr6, $a4, 224
 	xvst	$xr1, $a4, 128
-	xvst	$xr0, $a4, 160
-	fld.d	$fa0, $a5, 0
-	xvld	$xr1, $s2, 192
-	xvld	$xr2, $s2, 224
-	xvld	$xr3, $a4, 192
-	xvld	$xr4, $a4, 224
-	fneg.d	$fa0, $fa0
-	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr0, $xr0, $xr2, $xr4
+	xvst	$xr2, $a4, 160
+	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
+	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
+	xvld	$xr3, $s2, 256
+	xvld	$xr4, $s2, 288
+	xvld	$xr5, $a4, 256
+	xvld	$xr6, $a4, 288
 	xvst	$xr1, $a4, 192
-	xvst	$xr0, $a4, 224
-	fld.d	$fa0, $a5, 0
-	xvld	$xr1, $s2, 256
-	xvld	$xr2, $s2, 288
-	xvld	$xr3, $a4, 256
-	xvld	$xr4, $a4, 288
-	fneg.d	$fa0, $fa0
-	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr0, $xr0, $xr2, $xr4
+	xvst	$xr2, $a4, 224
+	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
+	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
+	xvld	$xr3, $s2, 320
+	xvld	$xr4, $s2, 352
+	xvld	$xr5, $a4, 320
+	xvld	$xr6, $a4, 352
 	xvst	$xr1, $a4, 256
-	xvst	$xr0, $a4, 288
-	fld.d	$fa0, $a5, 0
-	xvld	$xr1, $s2, 320
-	xvld	$xr2, $s2, 352
-	xvld	$xr3, $a4, 320
-	xvld	$xr4, $a4, 352
-	fneg.d	$fa0, $fa0
-	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr0, $xr0, $xr2, $xr4
+	xvst	$xr2, $a4, 288
+	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
+	xvfmadd.d	$xr0, $xr0, $xr4, $xr6
 	xvst	$xr1, $a4, 320
 	xvst	$xr0, $a4, 352
 	ori	$a6, $zero, 48
@@ -636,14 +624,14 @@ DivideAndSolve:                         # @DivideAndSolve
 	move	$a3, $zero
 	b	.LBB3_17
 	.p2align	4, , 16
-.LBB3_16:                               # %vector.body136
+.LBB3_16:                               # %vector.body138
                                         #   in Loop: Header=BB3_13 Depth=3
 	fld.d	$fa0, $a2, 0
+	fneg.d	$fa0, $fa0
 	xvld	$xr1, $s0, 0
 	xvld	$xr2, $s0, 32
 	xvld	$xr3, $a1, 0
 	xvld	$xr4, $a1, 32
-	fneg.d	$fa0, $fa0
 	fmul.d	$fa0, $fs0, $fa0
 	xvreplve0.d	$xr0, $xr0
 	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
@@ -663,43 +651,31 @@ DivideAndSolve:                         # @DivideAndSolve
 	xvst	$xr1, $a1, 64
 	xvst	$xr2, $a1, 96
 	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
-	xvfmadd.d	$xr0, $xr0, $xr4, $xr6
+	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
+	xvld	$xr3, $s0, 192
+	xvld	$xr4, $s0, 224
+	xvld	$xr5, $a1, 192
+	xvld	$xr6, $a1, 224
 	xvst	$xr1, $a1, 128
-	xvst	$xr0, $a1, 160
-	fld.d	$fa0, $a2, 0
-	xvld	$xr1, $s0, 192
-	xvld	$xr2, $s0, 224
-	xvld	$xr3, $a1, 192
-	xvld	$xr4, $a1, 224
-	fneg.d	$fa0, $fa0
-	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr0, $xr0, $xr2, $xr4
+	xvst	$xr2, $a1, 160
+	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
+	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
+	xvld	$xr3, $s0, 256
+	xvld	$xr4, $s0, 288
+	xvld	$xr5, $a1, 256
+	xvld	$xr6, $a1, 288
 	xvst	$xr1, $a1, 192
-	xvst	$xr0, $a1, 224
-	fld.d	$fa0, $a2, 0
-	xvld	$xr1, $s0, 256
-	xvld	$xr2, $s0, 288
-	xvld	$xr3, $a1, 256
-	xvld	$xr4, $a1, 288
-	fneg.d	$fa0, $fa0
-	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr0, $xr0, $xr2, $xr4
+	xvst	$xr2, $a1, 224
+	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
+	xvfmadd.d	$xr2, $xr0, $xr4, $xr6
+	xvld	$xr3, $s0, 320
+	xvld	$xr4, $s0, 352
+	xvld	$xr5, $a1, 320
+	xvld	$xr6, $a1, 352
 	xvst	$xr1, $a1, 256
-	xvst	$xr0, $a1, 288
-	fld.d	$fa0, $a2, 0
-	xvld	$xr1, $s0, 320
-	xvld	$xr2, $s0, 352
-	xvld	$xr3, $a1, 320
-	xvld	$xr4, $a1, 352
-	fneg.d	$fa0, $fa0
-	fmul.d	$fa0, $fs0, $fa0
-	xvreplve0.d	$xr0, $xr0
-	xvfmadd.d	$xr1, $xr0, $xr1, $xr3
-	xvfmadd.d	$xr0, $xr0, $xr2, $xr4
+	xvst	$xr2, $a1, 288
+	xvfmadd.d	$xr1, $xr0, $xr3, $xr5
+	xvfmadd.d	$xr0, $xr0, $xr4, $xr6
 	xvst	$xr1, $a1, 320
 	xvst	$xr0, $a1, 352
 	ori	$a3, $zero, 48

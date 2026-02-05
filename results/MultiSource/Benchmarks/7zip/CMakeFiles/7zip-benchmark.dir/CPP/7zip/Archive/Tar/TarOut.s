@@ -1062,7 +1062,6 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1070,7 +1069,6 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$s0, $a1
 	move	$fp, $a0
 	vrepli.b	$vr1, 0
@@ -1128,7 +1126,6 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 .LBB5_9:                                # %_ZN11CStringBaseIcE11SetCapacityEi.exit.i12
 	ld.d	$a0, $s0, 48
 	move	$a1, $zero
-	addi.d	$s3, $fp, 48
 	.p2align	4, , 16
 .LBB5_10:                               # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a2, $a0, $a1
@@ -1138,15 +1135,15 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 # %bb.11:
 	st.w	$s2, $fp, 56
 	vst	$vr1, $fp, 64
-	ld.wu	$s4, $s0, 72
-	addi.d	$s5, $s4, 1
-	slli.d	$a0, $s5, 31
+	ld.wu	$s3, $s0, 72
+	addi.d	$s4, $s3, 1
+	slli.d	$a0, $s4, 31
 	bgez	$a0, .LBB5_13
 # %bb.12:
 	move	$s2, $zero
 	b	.LBB5_15
 .LBB5_13:
-	addi.w	$a0, $s5, 0
+	addi.w	$a0, $s4, 0
 .Ltmp25:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -1155,7 +1152,7 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	move	$s2, $a0
 	st.d	$a0, $fp, 64
 	st.b	$zero, $a0, 0
-	st.w	$s5, $fp, 76
+	st.w	$s4, $fp, 76
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 .LBB5_15:                               # %_ZN11CStringBaseIcE11SetCapacityEi.exit.i17
 	ld.d	$a0, $s0, 64
@@ -1167,17 +1164,17 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	addi.d	$a1, $a1, 1
 	bnez	$a2, .LBB5_16
 # %bb.17:
-	st.w	$s4, $fp, 72
+	st.w	$s3, $fp, 72
 	vst	$vr1, $fp, 80
-	ld.wu	$s4, $s0, 88
-	addi.d	$s5, $s4, 1
-	slli.d	$a0, $s5, 31
+	ld.wu	$s3, $s0, 88
+	addi.d	$s4, $s3, 1
+	slli.d	$a0, $s4, 31
 	bgez	$a0, .LBB5_19
 # %bb.18:
 	move	$a0, $zero
 	b	.LBB5_21
 .LBB5_19:
-	addi.w	$a0, $s5, 0
+	addi.w	$a0, $s4, 0
 .Ltmp28:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
@@ -1185,7 +1182,7 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 # %bb.20:                               # %.noexc27
 	st.d	$a0, $fp, 80
 	st.b	$zero, $a0, 0
-	st.w	$s5, $fp, 92
+	st.w	$s4, $fp, 92
 .LBB5_21:                               # %_ZN11CStringBaseIcE11SetCapacityEi.exit.i23
 	ld.d	$a1, $s0, 80
 	.p2align	4, , 16
@@ -1197,12 +1194,11 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	move	$a0, $a3
 	bnez	$a2, .LBB5_22
 # %bb.23:
-	st.w	$s4, $fp, 88
+	st.w	$s3, $fp, 88
 	ld.d	$a0, $s0, 96
 	st.d	$a0, $fp, 96
 	ld.w	$a0, $s0, 103
 	st.w	$a0, $fp, 103
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
@@ -1229,7 +1225,7 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $s3, 0
+	ld.d	$s1, $fp, 48
 	beqz	$s1, .LBB5_26
 	b	.LBB5_30
 .LBB5_29:

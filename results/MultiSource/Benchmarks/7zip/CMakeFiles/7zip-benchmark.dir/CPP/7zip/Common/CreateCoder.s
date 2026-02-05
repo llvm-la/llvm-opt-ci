@@ -241,92 +241,97 @@ _Z11CreateCoderyR9CMyComPtrI15ICompressFilterERS_I14ICompressCoderERS_I15ICompre
 	ld.wu	$a6, $a6, %pc_lo12(g_NumCodecs)
 	move	$fp, $a2
 	move	$s0, $a1
-	beqz	$a6, .LBB3_20
+	beqz	$a6, .LBB3_22
 # %bb.1:                                # %.lr.ph
+	beqz	$a4, .LBB3_6
+# %bb.2:                                # %.lr.ph.split.us.preheader
 	pcalau12i	$a1, %pc_hi20(g_Codecs)
 	addi.d	$a1, $a1, %pc_lo12(g_Codecs)
-	bnez	$a4, .LBB3_3
-	b	.LBB3_6
+	b	.LBB3_4
 	.p2align	4, , 16
-.LBB3_2:                                #   in Loop: Header=BB3_3 Depth=1
+.LBB3_3:                                #   in Loop: Header=BB3_4 Depth=1
 	addi.d	$a6, $a6, -1
 	addi.d	$a1, $a1, 8
-	beqz	$a6, .LBB3_20
-.LBB3_3:                                # %.lr.ph.split.us
+	beqz	$a6, .LBB3_22
+.LBB3_4:                                # %.lr.ph.split.us
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s4, $a1, 0
 	ld.d	$a2, $s4, 16
-	bne	$a2, $a0, .LBB3_2
-# %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
+	bne	$a2, $a0, .LBB3_3
+# %bb.5:                                #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$a2, $s4, 8
-	beqz	$a2, .LBB3_2
+	beqz	$a2, .LBB3_3
+	b	.LBB3_10
+.LBB3_6:                                # %.lr.ph.split.preheader
+	pcalau12i	$a1, %pc_hi20(g_Codecs)
+	addi.d	$a1, $a1, %pc_lo12(g_Codecs)
 	b	.LBB3_8
 	.p2align	4, , 16
-.LBB3_5:                                #   in Loop: Header=BB3_6 Depth=1
+.LBB3_7:                                #   in Loop: Header=BB3_8 Depth=1
 	addi.d	$a6, $a6, -1
 	addi.d	$a1, $a1, 8
-	beqz	$a6, .LBB3_20
-.LBB3_6:                                # %.lr.ph.split
+	beqz	$a6, .LBB3_22
+.LBB3_8:                                # %.lr.ph.split
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$s4, $a1, 0
 	ld.d	$a2, $s4, 16
-	bne	$a2, $a0, .LBB3_5
-# %bb.7:                                #   in Loop: Header=BB3_6 Depth=1
+	bne	$a2, $a0, .LBB3_7
+# %bb.9:                                #   in Loop: Header=BB3_8 Depth=1
 	ld.d	$a2, $s4, 0
-	beqz	$a2, .LBB3_5
-.LBB3_8:                                # %.split.us
+	beqz	$a2, .LBB3_7
+.LBB3_10:                               # %.split.us
 	move	$s3, $a3
 	move	$s2, $a5
 	jirl	$ra, $a2, 0
 	ld.bu	$a1, $s4, 36
 	move	$s1, $a0
-	beqz	$a1, .LBB3_14
-# %bb.9:
-	beqz	$s1, .LBB3_11
-# %bb.10:
+	beqz	$a1, .LBB3_16
+# %bb.11:
+	beqz	$s1, .LBB3_13
+# %bb.12:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 8
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB3_11:
+.LBB3_13:
 	ld.d	$a0, $s0, 0
-	beqz	$a0, .LBB3_13
-# %bb.12:
+	beqz	$a0, .LBB3_15
+# %bb.14:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
-.LBB3_13:                               # %_ZN9CMyComPtrI15ICompressFilterEaSEPS0_.exit
+.LBB3_15:                               # %_ZN9CMyComPtrI15ICompressFilterEaSEPS0_.exit
 	st.d	$s1, $s0, 0
 	move	$a5, $s2
-	bnez	$a5, .LBB3_21
-	b	.LBB3_30
-.LBB3_14:
+	bnez	$a5, .LBB3_23
+	b	.LBB3_32
+.LBB3_16:
 	ld.w	$a0, $s4, 32
 	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB3_31
-# %bb.15:
-	beqz	$s1, .LBB3_17
-# %bb.16:
+	bne	$a0, $a2, .LBB3_33
+# %bb.17:
+	beqz	$s1, .LBB3_19
+# %bb.18:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 8
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB3_17:
+.LBB3_19:
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB3_19
-# %bb.18:
+	beqz	$a0, .LBB3_21
+# %bb.20:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
-.LBB3_19:                               # %_ZN9CMyComPtrI14ICompressCoderEaSEPS0_.exit
+.LBB3_21:                               # %_ZN9CMyComPtrI14ICompressCoderEaSEPS0_.exit
 	st.d	$s1, $fp, 0
 	move	$a5, $s2
-.LBB3_20:                               # %.thread
-	beqz	$a5, .LBB3_30
-.LBB3_21:                               # %.thread
+.LBB3_22:                               # %.thread
+	beqz	$a5, .LBB3_32
+.LBB3_23:                               # %.thread
 	ld.d	$a0, $s0, 0
-	beqz	$a0, .LBB3_30
-# %bb.22:
+	beqz	$a0, .LBB3_32
+# %bb.24:
 	ori	$a0, $zero, 200
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
@@ -335,36 +340,36 @@ _Z11CreateCoderyR9CMyComPtrI15ICompressFilterERS_I14ICompressCoderERS_I15ICompre
 	pcaddu18i	$ra, %call36(_ZN12CFilterCoderC1Ev)
 	jirl	$ra, $ra, 0
 .Ltmp1:                                 # EH_LABEL
-# %bb.23:
+# %bb.25:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 8
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $fp, 0
-	beqz	$a0, .LBB3_25
-# %bb.24:
+	beqz	$a0, .LBB3_27
+# %bb.26:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
-.LBB3_25:                               # %_ZN9CMyComPtrI14ICompressCoderEaSEPS0_.exit56
+.LBB3_27:                               # %_ZN9CMyComPtrI14ICompressCoderEaSEPS0_.exit56
 	ld.d	$s0, $s0, 0
 	st.d	$s1, $fp, 0
-	beqz	$s0, .LBB3_27
-# %bb.26:
+	beqz	$s0, .LBB3_29
+# %bb.28:
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 8
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
-.LBB3_27:
+.LBB3_29:
 	ld.d	$a0, $s1, 192
-	beqz	$a0, .LBB3_29
-# %bb.28:
+	beqz	$a0, .LBB3_31
+# %bb.30:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
-.LBB3_29:                               # %_ZN9CMyComPtrI15ICompressFilterEaSERKS1_.exit
+.LBB3_31:                               # %_ZN9CMyComPtrI15ICompressFilterEaSERKS1_.exit
 	st.d	$s0, $s1, 192
-.LBB3_30:
+.LBB3_32:
 	move	$a0, $zero
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -375,29 +380,29 @@ _Z11CreateCoderyR9CMyComPtrI15ICompressFilterERS_I14ICompressCoderERS_I15ICompre
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
 	ret
-.LBB3_31:
+.LBB3_33:
 	move	$a1, $s3
-	beqz	$s1, .LBB3_33
-# %bb.32:
+	beqz	$s1, .LBB3_35
+# %bb.34:
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $a0, 8
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
 	move	$a1, $s3
-.LBB3_33:
+.LBB3_35:
 	ld.d	$a0, $a1, 0
-	beqz	$a0, .LBB3_35
-# %bb.34:
+	beqz	$a0, .LBB3_37
+# %bb.36:
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 16
 	jirl	$ra, $a1, 0
 	move	$a1, $s3
-.LBB3_35:                               # %_ZN9CMyComPtrI15ICompressCoder2EaSEPS0_.exit
+.LBB3_37:                               # %_ZN9CMyComPtrI15ICompressCoder2EaSEPS0_.exit
 	st.d	$s1, $a1, 0
 	move	$a5, $s2
-	bnez	$a5, .LBB3_21
-	b	.LBB3_30
-.LBB3_36:
+	bnez	$a5, .LBB3_23
+	b	.LBB3_32
+.LBB3_38:
 .Ltmp2:                                 # EH_LABEL
 	move	$fp, $a0
 	ori	$a1, $zero, 200

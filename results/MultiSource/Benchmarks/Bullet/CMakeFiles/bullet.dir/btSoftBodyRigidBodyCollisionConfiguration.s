@@ -87,14 +87,14 @@ _ZN41btSoftBodyRigidBodyCollisionConfigurationC2ERK34btDefaultCollisionConstruct
 	st.d	$a0, $fp, 208
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, 8
-	beqz	$a2, .LBB0_17
+	beqz	$a2, .LBB0_16
 # %bb.6:
 	ld.d	$a0, $fp, 48
-	beqz	$a0, .LBB0_17
+	beqz	$a0, .LBB0_16
 # %bb.7:
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 247
-	blt	$a2, $a1, .LBB0_17
+	blt	$a2, $a1, .LBB0_16
 # %bb.8:
 	ld.d	$a0, $a0, 24
 .Ltmp11:                                # EH_LABEL
@@ -139,44 +139,41 @@ _ZN41btSoftBodyRigidBodyCollisionConfigurationC2ERK34btDefaultCollisionConstruct
 	ld.w	$a2, $s1, 0
 	.p2align	4, , 16
 .LBB0_14:                               # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a0, $a2
-	addi.w	$a1, $a1, -1
-	st.d	$a3, $a0, 0
-	move	$a0, $a3
-	bnez	$a1, .LBB0_14
-	b	.LBB0_16
-.LBB0_15:
 	move	$a3, $a0
-.LBB0_16:                               # %.loopexit
-	st.d	$zero, $a3, 0
+	add.d	$a0, $a0, $a2
+	addi.w	$a1, $a1, -1
+	st.d	$a0, $a3, 0
+	bnez	$a1, .LBB0_14
+.LBB0_15:                               # %.loopexit
+	st.d	$zero, $a0, 0
 	st.d	$s1, $fp, 48
-.LBB0_17:
+.LBB0_16:
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 32
 	ret
-.LBB0_18:
+.LBB0_17:
 .Ltmp20:                                # EH_LABEL
-	b	.LBB0_21
-.LBB0_19:
+	b	.LBB0_20
+.LBB0_18:
 .Ltmp15:                                # EH_LABEL
-	b	.LBB0_21
-.LBB0_20:
+	b	.LBB0_20
+.LBB0_19:
 .Ltmp10:                                # EH_LABEL
-.LBB0_21:
+.LBB0_20:
 	move	$s0, $a0
 .Ltmp21:                                # EH_LABEL
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN31btDefaultCollisionConfigurationD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp22:                                # EH_LABEL
-# %bb.22:
+# %bb.21:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB0_23:
+.LBB0_22:
 .Ltmp23:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0

@@ -13617,7 +13617,7 @@ set:                                    # @set
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	addi.d	$a1, $s1, 20
+	addi.d	$a1, $s1, 28
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 2304
 	.p2align	4, , 16
@@ -13625,23 +13625,24 @@ set:                                    # @set
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a3, $a0, 5
 	addi.d	$a4, $a0, 4
-	addi.d	$a5, $a0, 9
-	st.w	$a4, $a1, -20
-	st.w	$a5, $a1, 0
+	st.w	$a4, $a1, -28
 	addi.d	$a4, $a0, 2
-	addi.d	$a5, $a0, 7
-	st.w	$a4, $a1, -16
+	st.w	$a0, $a1, -20
+	addi.d	$a5, $a0, 8
 	st.w	$a5, $a1, 4
-	st.w	$a0, $a1, -12
-	st.w	$a3, $a1, 8
-	addi.d	$a3, $a0, 3
-	addi.d	$a4, $a0, 8
-	st.w	$a3, $a1, -8
-	st.w	$a4, $a1, 12
-	addi.d	$a3, $a0, 1
-	addi.d	$a4, $a0, 6
-	st.w	$a3, $a1, -4
-	st.w	$a4, $a1, 16
+	addi.d	$a5, $a0, 6
+	st.w	$a4, $a1, -24
+	st.w	$a3, $a1, 0
+	addi.d	$a3, $a0, 7
+	addi.d	$a4, $a0, 9
+	addi.d	$a6, $a0, 1
+	addi.d	$a7, $a0, 3
+	vinsgr2vr.w	$vr0, $a7, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $a3, 3
+	vst	$vr0, $a1, -16
+	st.w	$a5, $a1, 8
 	addi.d	$a0, $a0, 10
 	addi.d	$a2, $a2, -2
 	addi.d	$a1, $a1, 40
@@ -14035,14 +14036,14 @@ main:                                   # @main
 	move	$s0, $a1
 	move	$s1, $a0
 	lu12i.w	$s2, 62
-	ori	$s8, $s2, 2048
+	ori	$s3, $s2, 2048
 	addi.d	$a0, $sp, 40
 	ori	$a1, $zero, 32
-	move	$a2, $s8
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	pcalau12i	$s4, %pc_hi20(ntimes)
+	pcalau12i	$s8, %pc_hi20(ntimes)
 	pcalau12i	$fp, %pc_hi20(digits)
 	bge	$a0, $s1, .LBB21_3
 # %bb.1:
@@ -14051,7 +14052,7 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
-	st.w	$a0, $s4, %pc_lo12(ntimes)
+	st.w	$a0, $s8, %pc_lo12(ntimes)
 	addi.w	$a1, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.151)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.151)
@@ -14068,7 +14069,7 @@ main:                                   # @main
 	st.w	$a0, $fp, %pc_lo12(digits)
 	b	.LBB21_4
 .LBB21_3:                               # %.thread
-	ld.w	$a1, $s4, %pc_lo12(ntimes)
+	ld.w	$a1, $s8, %pc_lo12(ntimes)
 	pcalau12i	$a0, %pc_hi20(.L.str.151)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.151)
 	pcaddu18i	$ra, %call36(printf)
@@ -14088,10 +14089,10 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.L.str.124)
 	pcaddu18i	$ra, %call36(init)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s4, %pc_lo12(ntimes)
+	ld.w	$a0, $s8, %pc_lo12(ntimes)
 	blez	$a0, .LBB21_7
 # %bb.5:                                # %.preheader.i.preheader
-	move	$a2, $s4
+	move	$a2, $s3
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$s0, $a0, %pc_lo12(global_data)
 	move	$fp, $zero
@@ -14123,7 +14124,6 @@ main:                                   # @main
 	move	$a0, $s0
 	move	$a1, $s1
 	move	$s2, $a2
-	move	$a2, $s8
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
@@ -14138,7 +14138,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(dummy)
 	jirl	$ra, $ra, 0
 	move	$a2, $s2
-	ld.w	$a0, $s2, %pc_lo12(ntimes)
+	ld.w	$a0, $s8, %pc_lo12(ntimes)
 	addi.w	$fp, $fp, 1
 	slli.d	$a1, $a0, 3
 	alsl.w	$a0, $a0, $a1, 1

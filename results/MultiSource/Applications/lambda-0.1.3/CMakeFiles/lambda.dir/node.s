@@ -2351,18 +2351,16 @@ GCC_except_table27:
 _ZN8lam_nodeC2EP8arg_nodeP8exp_nodes:   # @_ZN8lam_nodeC2EP8arg_nodeP8exp_nodes
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$s1, $a3
 	move	$s0, $a2
 	move	$fp, $a0
@@ -2374,10 +2372,9 @@ _ZN8lam_nodeC2EP8arg_nodeP8exp_nodes:   # @_ZN8lam_nodeC2EP8arg_nodeP8exp_nodes
 	st.d	$zero, $fp, 24
 	beqz	$a1, .LBB28_3
 # %bb.1:
-	addi.d	$s2, $fp, 16
 	beqz	$s1, .LBB28_4
 # %bb.2:                                # %.noexc.thread
-	st.d	$a1, $s2, 0
+	st.d	$a1, $fp, 16
 	b	.LBB28_5
 .LBB28_3:                               # %_ZN8lam_node7set_argEP8arg_nodes.exit.thread
 	bnez	$s0, .LBB28_9
@@ -2388,7 +2385,7 @@ _ZN8lam_nodeC2EP8arg_nodeP8exp_nodes:   # @_ZN8lam_nodeC2EP8arg_nodeP8exp_nodes
 	move	$a0, $a1
 	jirl	$ra, $a2, 0
 	move	$a1, $a0
-	st.d	$a0, $s2, 0
+	st.d	$a0, $fp, 16
 	beqz	$a0, .LBB28_6
 .LBB28_5:
 	ld.d	$a0, $a1, 0
@@ -2426,22 +2423,20 @@ _ZN8lam_nodeC2EP8arg_nodeP8exp_nodes:   # @_ZN8lam_nodeC2EP8arg_nodeP8exp_nodes
 	ld.d	$a2, $a0, 96
 	move	$a0, $s0
 	move	$a1, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	jr	$a2
 .LBB28_14:                              # %.thread.i12
 	st.d	$zero, $fp, 24
 .LBB28_15:                              # %_ZN8lam_node8set_bodyEP8exp_nodes.exit
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end28:
 	.size	_ZN8lam_nodeC2EP8arg_nodeP8exp_nodes, .Lfunc_end28-_ZN8lam_nodeC2EP8arg_nodeP8exp_nodes
@@ -3935,16 +3930,15 @@ GCC_except_table38:
 _ZN8lam_node10eta_reduceEPK9alst_nodeiPi: # @_ZN8lam_node10eta_reduceEPK9alst_nodeiPi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -3952,7 +3946,6 @@ _ZN8lam_node10eta_reduceEPK9alst_nodeiPi: # @_ZN8lam_node10eta_reduceEPK9alst_no
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a0
 	ld.d	$a0, $a0, 24
 	beqz	$a0, .LBB39_28
@@ -3960,10 +3953,10 @@ _ZN8lam_node10eta_reduceEPK9alst_nodeiPi: # @_ZN8lam_node10eta_reduceEPK9alst_no
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$s2, $a1
-	andi	$s5, $a2, 1
-	beqz	$s5, .LBB39_4
+	beqz	$a3, .LBB39_4
 # %bb.2:
-	beqz	$s0, .LBB39_4
+	andi	$a1, $s1, 1
+	beqz	$a1, .LBB39_4
 # %bb.3:
 	ld.bu	$a1, $s0, 0
 	andi	$a1, $a1, 2
@@ -4082,7 +4075,8 @@ _ZN8lam_node10eta_reduceEPK9alst_nodeiPi: # @_ZN8lam_node10eta_reduceEPK9alst_no
 	ori	$a0, $a0, 6
 	st.w	$a0, $s0, 0
 .LBB39_23:
-	beqz	$s5, .LBB39_25
+	andi	$a0, $s1, 1
+	beqz	$a0, .LBB39_25
 .LBB39_24:
 	move	$fp, $s3
 	b	.LBB39_28
@@ -4105,15 +4099,14 @@ _ZN8lam_node10eta_reduceEPK9alst_nodeiPi: # @_ZN8lam_node10eta_reduceEPK9alst_no
 	jirl	$ra, $a1, 0
 .LBB39_28:                              # %_ZNK8arg_nodeeqEPKc.exit.thread
 	move	$a0, $fp
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end39:
 	.size	_ZN8lam_node10eta_reduceEPK9alst_nodeiPi, .Lfunc_end39-_ZN8lam_node10eta_reduceEPK9alst_nodeiPi
@@ -4840,18 +4833,16 @@ _ZNK8lam_node7extractEPKci:             # @_ZNK8lam_node7extractEPKci
 _ZN8app_nodeC2EP8exp_nodeS1_s:          # @_ZN8app_nodeC2EP8exp_nodeS1_s
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$s1, $a3
 	move	$s0, $a2
 	move	$fp, $a0
@@ -4863,10 +4854,9 @@ _ZN8app_nodeC2EP8exp_nodeS1_s:          # @_ZN8app_nodeC2EP8exp_nodeS1_s
 	st.d	$zero, $fp, 24
 	beqz	$a1, .LBB47_3
 # %bb.1:
-	addi.d	$s2, $fp, 16
 	beqz	$s1, .LBB47_4
 # %bb.2:                                # %.noexc.thread
-	st.d	$a1, $s2, 0
+	st.d	$a1, $fp, 16
 	b	.LBB47_5
 .LBB47_3:                               # %_ZN8app_node8set_leftEP8exp_nodes.exit.thread
 	bnez	$s0, .LBB47_9
@@ -4877,7 +4867,7 @@ _ZN8app_nodeC2EP8exp_nodeS1_s:          # @_ZN8app_nodeC2EP8exp_nodeS1_s
 	move	$a0, $a1
 	jirl	$ra, $a2, 0
 	move	$a1, $a0
-	st.d	$a0, $s2, 0
+	st.d	$a0, $fp, 16
 	beqz	$a0, .LBB47_6
 .LBB47_5:
 	ld.d	$a0, $a1, 0
@@ -4915,22 +4905,20 @@ _ZN8app_nodeC2EP8exp_nodeS1_s:          # @_ZN8app_nodeC2EP8exp_nodeS1_s
 	ld.d	$a2, $a0, 96
 	move	$a0, $s0
 	move	$a1, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	jr	$a2
 .LBB47_14:                              # %.thread.i12
 	st.d	$zero, $fp, 24
 .LBB47_15:                              # %_ZN8app_node9set_rightEP8exp_nodes.exit
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end47:
 	.size	_ZN8app_nodeC2EP8exp_nodeS1_s, .Lfunc_end47-_ZN8app_nodeC2EP8exp_nodeS1_s
@@ -5902,10 +5890,10 @@ _ZN8app_node6reduceEPK9alst_nodeiPi:    # @_ZN8app_node6reduceEPK9alst_nodeiPi
 	andi	$a1, $a0, 1
 	bnez	$a1, .LBB57_82
 # %bb.11:
-	andi	$a1, $s1, 1
-	beqz	$a1, .LBB57_13
-# %bb.12:
 	andi	$a0, $a0, 2
+	beqz	$a0, .LBB57_13
+# %bb.12:
+	andi	$a0, $s1, 1
 	bnez	$a0, .LBB57_82
 .LBB57_13:                              # %.thread
 	ld.d	$a0, $fp, 16
@@ -5957,10 +5945,10 @@ _ZN8app_node6reduceEPK9alst_nodeiPi:    # @_ZN8app_node6reduceEPK9alst_nodeiPi
 	andi	$a1, $a0, 1
 	bnez	$a1, .LBB57_82
 # %bb.23:
-	andi	$a1, $s1, 1
-	beqz	$a1, .LBB57_25
-# %bb.24:
 	andi	$a0, $a0, 2
+	beqz	$a0, .LBB57_25
+# %bb.24:
+	andi	$a0, $s1, 1
 	bnez	$a0, .LBB57_82
 .LBB57_25:                              # %.thread168
 	ld.d	$a0, $fp, 24
@@ -6287,10 +6275,10 @@ _ZN8app_node6reduceEPK9alst_nodeiPi:    # @_ZN8app_node6reduceEPK9alst_nodeiPi
 	andi	$a1, $a0, 1
 	bnez	$a1, .LBB57_82
 # %bb.80:
-	andi	$a1, $s1, 1
-	beqz	$a1, .LBB57_47
-# %bb.81:
 	andi	$a0, $a0, 2
+	beqz	$a0, .LBB57_47
+# %bb.81:
+	andi	$a0, $s1, 1
 	beqz	$a0, .LBB57_47
 .LBB57_82:
 	ld.w	$a0, $s5, %pc_lo12(_ZL24app_reduce_recurse_level)
@@ -8154,7 +8142,7 @@ _ZN11arglst_node4listEv:                # @_ZN11arglst_node4listEv
 	.type	_ZN4nodeD0Ev,@function
 _ZN4nodeD0Ev:                           # @_ZN4nodeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end70:
 	.size	_ZN4nodeD0Ev, .Lfunc_end70-_ZN4nodeD0Ev
                                         # -- End function
@@ -8328,7 +8316,7 @@ _ZN4nodeD2Ev:                           # @_ZN4nodeD2Ev
 	.type	_ZN8exp_nodeD0Ev,@function
 _ZN8exp_nodeD0Ev:                       # @_ZN8exp_nodeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end86:
 	.size	_ZN8exp_nodeD0Ev, .Lfunc_end86-_ZN8exp_nodeD0Ev
                                         # -- End function

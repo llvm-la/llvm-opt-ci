@@ -1283,16 +1283,15 @@ cli_strrcpy:                            # @cli_strrcpy
 # %bb.1:
 	beqz	$a1, .LBB10_5
 # %bb.2:                                # %.preheader.preheader
-	addi.d	$a2, $a0, -1
+	addi.d	$a0, $a0, -1
 	.p2align	4, , 16
 .LBB10_3:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a3, $a1, 0
-	addi.d	$a0, $a2, 1
+	ld.bu	$a2, $a1, 0
 	addi.d	$a1, $a1, 1
-	st.b	$a3, $a2, 1
-	move	$a2, $a0
-	bnez	$a3, .LBB10_3
+	st.b	$a2, $a0, 1
+	addi.d	$a0, $a0, 1
+	bnez	$a2, .LBB10_3
 # %bb.4:                                # %.loopexit
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16

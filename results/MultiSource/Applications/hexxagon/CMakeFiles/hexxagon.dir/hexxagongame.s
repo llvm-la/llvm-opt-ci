@@ -374,12 +374,19 @@ _ZN12HexxagonGame8loadGameEPc:          # @_ZN12HexxagonGame8loadGameEPc
 	jirl	$ra, $ra, 0
 	bne	$a0, $s1, .LBB8_9
 # %bb.2:
-	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 48
-	ori	$a2, $zero, 13
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 48
+	lu12i.w	$a1, 206726
+	ori	$a1, $a1, 1352
+	lu32i.d	$a1, -39071
+	lu52i.d	$a1, $a1, 1766
+	xor	$a0, $a0, $a1
+	ld.d	$a1, $sp, 53
+	lu12i.w	$a2, 132838
+	ori	$a2, $a2, 3943
+	lu32i.d	$a2, 77361
+	lu52i.d	$a2, $a2, 163
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB8_5
 # %bb.3:
 	move	$a0, $s0

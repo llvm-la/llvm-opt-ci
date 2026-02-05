@@ -1286,22 +1286,22 @@ GCC_except_table10:
 _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29QuantizedNodeTriangleCallback28internalProcessTriangleIndexEPS2_ii: # @_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29QuantizedNodeTriangleCallback28internalProcessTriangleIndexEPS2_ii
 	.cfi_startproc
 # %bb.0:                                # %_Z8btSetMinIfEvRT_RKS0_.exit.i
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 48                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 136                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 120                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 112                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 104                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 80                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1316,25 +1316,25 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	.cfi_offset 61, -96
 	.cfi_offset 62, -104
 	.cfi_offset 63, -112
-	fld.s	$ft6, $a1, 0
-	fld.s	$fs1, $a1, 4
-	fld.s	$fs4, $a1, 8
+	fld.s	$fs7, $a1, 0
 	fld.s	$fs6, $a1, 16
-	fld.s	$fs2, $a1, 20
-	fld.s	$fs5, $a1, 24
+	fld.s	$fs5, $a1, 32
 	ld.d	$a4, $a0, 16
-	fld.s	$fs0, $a1, 32
-	fld.s	$fs3, $a1, 36
-	fld.s	$fs7, $a1, 40
-	fld.s	$ft2, $a4, 8
-	fld.s	$ft4, $a4, 12
+	ld.d	$a5, $a1, 4
+	ld.d	$a6, $a1, 20
+	ld.d	$a7, $a1, 36
+	fld.s	$fa7, $a4, 8
+	fld.s	$fs2, $a4, 12
 	ld.d	$s0, $a0, 8
-	fld.s	$ft7, $a4, 16
-	fld.s	$ft3, $a4, 40
-	fld.s	$ft5, $a4, 44
+	fld.s	$fs4, $a4, 16
+	fld.s	$fs1, $a4, 40
+	fld.s	$fs3, $a4, 44
 	ld.w	$a1, $s0, 4
 	ld.w	$a0, $s0, 8
-	fld.s	$ft8, $a4, 48
+	fld.s	$fs0, $a4, 48
+	vinsgr2vr.d	$vr8, $a5, 0
+	vinsgr2vr.d	$vr6, $a6, 0
+	vinsgr2vr.d	$vr5, $a7, 0
 	bne	$a1, $a0, .LBB11_11
 # %bb.1:
 	sltui	$a0, $a1, 1
@@ -1345,13 +1345,10 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	or	$s1, $a0, $a4
 	bge	$a1, $s1, .LBB11_11
 # %bb.2:
-	fst.s	$ft2, $sp, 44                   # 4-byte Folded Spill
-	fst.s	$ft3, $sp, 40                   # 4-byte Folded Spill
-	fst.s	$ft4, $sp, 36                   # 4-byte Folded Spill
-	fst.s	$ft5, $sp, 32                   # 4-byte Folded Spill
-	fst.s	$ft6, $sp, 28                   # 4-byte Folded Spill
-	fst.s	$ft7, $sp, 24                   # 4-byte Folded Spill
-	fst.s	$ft8, $sp, 20                   # 4-byte Folded Spill
+	fst.s	$fa7, $sp, 76                   # 4-byte Folded Spill
+	vst	$vr5, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr6, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr8, $sp, 16                   # 16-byte Folded Spill
 	beqz	$s1, .LBB11_4
 # %bb.3:
 	slli.d	$a0, $s1, 4
@@ -1360,13 +1357,10 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	move	$s2, $a2
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	fld.s	$ft8, $sp, 20                   # 4-byte Folded Reload
-	fld.s	$ft7, $sp, 24                   # 4-byte Folded Reload
-	fld.s	$ft6, $sp, 28                   # 4-byte Folded Reload
-	fld.s	$ft5, $sp, 32                   # 4-byte Folded Reload
-	fld.s	$ft4, $sp, 36                   # 4-byte Folded Reload
-	fld.s	$ft3, $sp, 40                   # 4-byte Folded Reload
-	fld.s	$ft2, $sp, 44                   # 4-byte Folded Reload
+	vld	$vr8, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 48                   # 16-byte Folded Reload
+	fld.s	$fa7, $sp, 76                   # 4-byte Folded Reload
 	move	$a2, $s2
 	move	$a3, $fp
 	ld.w	$a1, $s0, 4
@@ -1398,13 +1392,10 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	move	$s3, $a2
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-	fld.s	$ft8, $sp, 20                   # 4-byte Folded Reload
-	fld.s	$ft7, $sp, 24                   # 4-byte Folded Reload
-	fld.s	$ft6, $sp, 28                   # 4-byte Folded Reload
-	fld.s	$ft5, $sp, 32                   # 4-byte Folded Reload
-	fld.s	$ft4, $sp, 36                   # 4-byte Folded Reload
-	fld.s	$ft3, $sp, 40                   # 4-byte Folded Reload
-	fld.s	$ft2, $sp, 44                   # 4-byte Folded Reload
+	vld	$vr8, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 48                   # 16-byte Folded Reload
+	fld.s	$fa7, $sp, 76                   # 4-byte Folded Reload
 	move	$a2, $s3
 	move	$a3, $s2
 .LBB11_10:                              # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE10deallocateEv.exit.i.i
@@ -1417,101 +1408,103 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	slli.d	$a0, $a2, 21
 	or	$a0, $a0, $a3
 	lu12i.w	$a2, -141856
-	ori	$a2, $a2, 2923
-	movgr2fr.w	$fa0, $a2
-	fmax.s	$fa1, $fs4, $fa0
-	fcmp.clt.s	$fcc0, $fa1, $fs5
-	fsel	$fa1, $fa1, $fs5, $fcc0
-	fcmp.clt.s	$fcc0, $fa1, $fs7
-	fsel	$fa1, $fa1, $fs7, $fcc0
+	ori	$a5, $a2, 2923
+	vreplgr2vr.w	$vr0, $a5
 	lu12i.w	$a2, 382432
-	ori	$a2, $a2, 2923
-	movgr2fr.w	$fa2, $a2
-	fmin.s	$fa3, $fs4, $fa2
-	fcmp.clt.s	$fcc0, $fs5, $fa3
-	fsel	$fa3, $fa3, $fs5, $fcc0
-	fcmp.clt.s	$fcc0, $fs7, $fa3
-	fsel	$fa3, $fa3, $fs7, $fcc0
-	fsub.s	$fa4, $fa1, $fa3
+	ori	$a4, $a2, 2923
+	vreplgr2vr.w	$vr1, $a4
+	vfmax.s	$vr0, $vr8, $vr0
+	vfcmp.clt.s	$vr2, $vr0, $vr6
+	vbitsel.v	$vr0, $vr0, $vr6, $vr2
+	vfcmp.clt.s	$vr2, $vr0, $vr5
+	vbitsel.v	$vr2, $vr0, $vr5, $vr2
+	vreplvei.w	$vr3, $vr2, 1
 	lu12i.w	$a2, 239665
 	ori	$a2, $a2, 623
-	movgr2fr.w	$fa5, $a2
-	fadd.s	$fa6, $fa1, $fa5
+	movgr2fr.w	$fa4, $a2
+	vfmin.s	$vr0, $vr8, $vr1
+	vfcmp.clt.s	$vr1, $vr6, $vr0
+	vbitsel.v	$vr0, $vr0, $vr6, $vr1
+	vfcmp.clt.s	$vr1, $vr5, $vr0
+	vbitsel.v	$vr0, $vr0, $vr5, $vr1
+	vfsub.s	$vr1, $vr2, $vr0
 	lu12i.w	$a2, 241713
-	ori	$a2, $a2, 623
-	movgr2fr.w	$fa7, $a2
-	fcmp.clt.s	$fcc0, $fa4, $fa7
-	fsel	$fa1, $fa1, $fa6, $fcc0
-	fsub.s	$fa1, $fa1, $ft7
-	fmul.s	$fa1, $fa1, $ft8
-	vldi	$vr4, -1168
-	fadd.s	$fa1, $fa1, $fa4
-	ftintrz.l.s	$fa1, $fa1
-	movfr2gr.d	$a2, $fa1
+	ori	$a6, $a2, 623
+	vreplgr2vr.w	$vr5, $a6
+	vfcmp.clt.s	$vr1, $vr1, $vr5
+	vshuf4i.w	$vr5, $vr1, 16
+	vpickve2gr.d	$a2, $vr5, 1
+	andi	$a2, $a2, 1
+	fadd.s	$fa5, $fa3, $fa4
+	movgr2cf	$fcc0, $a2
+	fsel	$fa3, $fa3, $fa5, $fcc0
+	fsub.s	$fa3, $fa3, $fs4
+	fmul.s	$fa3, $fa3, $fs0
+	vldi	$vr5, -1168
+	fadd.s	$fa3, $fa3, $fa5
+	ftintrz.l.s	$fa3, $fa3
+	movfr2gr.d	$a2, $fa3
 	ori	$a2, $a2, 1
-	fmax.s	$fa1, $fs1, $fa0
-	fcmp.clt.s	$fcc1, $fa1, $fs2
-	fsel	$fa1, $fa1, $fs2, $fcc1
-	fcmp.clt.s	$fcc1, $fa1, $fs3
-	fsel	$fa1, $fa1, $fs3, $fcc1
-	fmin.s	$fa6, $fs1, $fa2
-	fcmp.clt.s	$fcc1, $fs2, $fa6
-	fsel	$fa6, $fa6, $fs2, $fcc1
-	fcmp.clt.s	$fcc1, $fs3, $fa6
-	fsel	$fa6, $fa6, $fs3, $fcc1
-	fsub.s	$ft0, $fa1, $fa6
-	fadd.s	$ft1, $fa1, $fa5
-	fcmp.clt.s	$fcc1, $ft0, $fa7
-	fsel	$fa1, $fa1, $ft1, $fcc1
-	fsub.s	$fa1, $fa1, $ft4
-	fmul.s	$fa1, $fa1, $ft5
-	fadd.s	$fa1, $fa1, $fa4
+	vreplvei.w	$vr2, $vr2, 0
+	vpickve2gr.d	$a3, $vr1, 0
+	andi	$a3, $a3, 1
+	fadd.s	$fa1, $fa2, $fa4
+	movgr2cf	$fcc1, $a3
+	fsel	$fa1, $fa2, $fa1, $fcc1
+	fsub.s	$fa1, $fa1, $fs2
+	fmul.s	$fa1, $fa1, $fs3
+	fadd.s	$fa1, $fa1, $fa5
 	ftintrz.l.s	$fa1, $fa1
 	movfr2gr.d	$a3, $fa1
 	ori	$a3, $a3, 1
-	fmax.s	$fa0, $ft6, $fa0
-	fcmp.clt.s	$fcc2, $fa0, $fs6
-	fsel	$fa0, $fa0, $fs6, $fcc2
-	fcmp.clt.s	$fcc2, $fa0, $fs0
-	fsel	$fa0, $fa0, $fs0, $fcc2
-	fmin.s	$fa1, $ft6, $fa2
-	fcmp.clt.s	$fcc2, $fs6, $fa1
+	movgr2fr.w	$fa1, $a5
+	fmax.s	$fa1, $fs7, $fa1
+	fcmp.clt.s	$fcc2, $fa1, $fs6
 	fsel	$fa1, $fa1, $fs6, $fcc2
-	fcmp.clt.s	$fcc2, $fs0, $fa1
-	fsel	$fa1, $fa1, $fs0, $fcc2
-	fsub.s	$fa2, $fa0, $fa1
-	fadd.s	$fa5, $fa0, $fa5
-	fcmp.clt.s	$fcc2, $fa2, $fa7
-	fsel	$fa0, $fa0, $fa5, $fcc2
-	fsub.s	$fa0, $fa0, $ft2
-	fmul.s	$fa0, $fa0, $ft3
-	fadd.s	$fa0, $fa0, $fa4
-	ftintrz.l.s	$fa0, $fa0
-	movfr2gr.d	$a4, $fa0
+	fcmp.clt.s	$fcc2, $fa1, $fs5
+	fsel	$fa1, $fa1, $fs5, $fcc2
+	movgr2fr.w	$fa2, $a4
+	fmin.s	$fa2, $fs7, $fa2
+	fcmp.clt.s	$fcc2, $fs6, $fa2
+	fsel	$fa2, $fa2, $fs6, $fcc2
+	fcmp.clt.s	$fcc2, $fs5, $fa2
+	fsel	$fa2, $fa2, $fs5, $fcc2
+	fsub.s	$fa3, $fa1, $fa2
+	fadd.s	$fa4, $fa1, $fa4
+	movgr2fr.w	$fa6, $a6
+	fcmp.clt.s	$fcc2, $fa3, $fa6
+	fsel	$fa1, $fa1, $fa4, $fcc2
+	fsub.s	$fa1, $fa1, $fa7
+	fmul.s	$fa1, $fa1, $fs1
+	fadd.s	$fa1, $fa1, $fa5
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a4, $fa1
 	ori	$a4, $a4, 1
+	vreplvei.w	$vr1, $vr0, 1
 	lu12i.w	$a5, -284623
 	ori	$a5, $a5, 623
-	movgr2fr.w	$fa0, $a5
-	fadd.s	$fa2, $fa3, $fa0
-	fsel	$fa2, $fa3, $fa2, $fcc0
-	fsub.s	$fa2, $fa2, $ft7
-	fmul.s	$fa2, $fa2, $ft8
-	ftintrz.l.s	$fa2, $fa2
-	movfr2gr.d	$a5, $fa2
+	movgr2fr.w	$fa3, $a5
+	fadd.s	$fa4, $fa1, $fa3
+	fsel	$fa1, $fa1, $fa4, $fcc0
+	fsub.s	$fa1, $fa1, $fs4
+	fmul.s	$fa1, $fa1, $fs0
+	ftintrz.l.s	$fa1, $fa1
+	movfr2gr.d	$a5, $fa1
 	lu12i.w	$a6, 15
 	ori	$a6, $a6, 4094
 	and	$a5, $a5, $a6
-	fadd.s	$fa2, $fa6, $fa0
-	fsel	$fa2, $fa6, $fa2, $fcc1
-	fsub.s	$fa2, $fa2, $ft4
-	fmul.s	$fa2, $fa2, $ft5
-	ftintrz.l.s	$fa2, $fa2
-	movfr2gr.d	$a7, $fa2
+	vreplvei.w	$vr0, $vr0, 0
+	fadd.s	$fa1, $fa0, $fa3
+	fsel	$fa0, $fa0, $fa1, $fcc1
+	fsub.s	$fa0, $fa0, $fs2
+	fmul.s	$fa0, $fa0, $fs3
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$a7, $fa0
 	and	$a7, $a7, $a6
-	fadd.s	$fa0, $fa1, $fa0
-	fsel	$fa0, $fa1, $fa0, $fcc2
-	fsub.s	$fa0, $fa0, $ft2
-	fmul.s	$fa0, $fa0, $ft3
+	fadd.s	$fa0, $fa2, $fa3
+	fsel	$fa0, $fa2, $fa0, $fcc2
+	fsub.s	$fa0, $fa0, $fa7
+	fmul.s	$fa0, $fa0, $fs1
 	ld.d	$t0, $s0, 16
 	ftintrz.l.s	$fa0, $fa0
 	movfr2gr.d	$t1, $fa0
@@ -1528,21 +1521,21 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	ld.w	$a0, $s0, 4
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 4
-	fld.d	$fs7, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 104                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	fld.d	$fs7, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 104                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 112                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 120                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 128                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 136                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end11:
 	.size	_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29QuantizedNodeTriangleCallback28internalProcessTriangleIndexEPS2_ii, .Lfunc_end11-_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29QuantizedNodeTriangleCallback28internalProcessTriangleIndexEPS2_ii
@@ -1609,57 +1602,44 @@ GCC_except_table12:
 .Lcst_end3:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii
+.LCPI13_0:
+	.word	0x5d5e0b6b                      # float 9.99999984E+17
+	.word	0x5d5e0b6b                      # float 9.99999984E+17
+	.word	0x5d5e0b6b                      # float 9.99999984E+17
+	.word	0x00000000                      # float 0
+.LCPI13_1:
+	.word	0xdd5e0b6b                      # float -9.99999984E+17
+	.word	0xdd5e0b6b                      # float -9.99999984E+17
+	.word	0xdd5e0b6b                      # float -9.99999984E+17
+	.word	0x00000000                      # float 0
 	.text
-	.p2align	5                               # -- Begin function _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii
+	.p2align	5
 	.type	_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii,@function
 _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii: # @_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii
 	.cfi_startproc
 # %bb.0:                                # %_Z8btSetMinIfEvRT_RKS0_.exit.i
-	addi.d	$sp, $sp, -144
-	.cfi_def_cfa_offset 144
-	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 32                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 56, -56
-	.cfi_offset 57, -64
-	.cfi_offset 58, -72
-	.cfi_offset 59, -80
-	.cfi_offset 60, -88
-	.cfi_offset 61, -96
-	.cfi_offset 62, -104
-	.cfi_offset 63, -112
-	fld.s	$ft0, $a1, 0
-	fld.s	$fa7, $a1, 4
-	fld.s	$fa6, $a1, 8
-	fld.s	$fa5, $a1, 12
-	fld.s	$fs1, $a1, 16
-	fld.s	$fs4, $a1, 20
-	fld.s	$fs6, $a1, 24
-	fld.s	$fs5, $a1, 28
 	ld.d	$s0, $a0, 8
-	fld.s	$fs3, $a1, 32
-	fld.s	$fs7, $a1, 36
-	fld.s	$fs2, $a1, 40
+	vld	$vr3, $a1, 0
+	vld	$vr2, $a1, 16
 	ld.w	$a4, $s0, 4
 	ld.w	$a0, $s0, 8
-	fld.s	$fs0, $a1, 44
+	vld	$vr4, $a1, 32
 	bne	$a4, $a0, .LBB13_11
 # %bb.1:
 	sltui	$a0, $a4, 1
@@ -1670,10 +1650,9 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTri
 	or	$s1, $a0, $a1
 	bge	$a4, $s1, .LBB13_11
 # %bb.2:
-	fst.s	$ft0, $sp, 28                   # 4-byte Folded Spill
-	fst.s	$fa7, $sp, 24                   # 4-byte Folded Spill
-	fst.s	$fa6, $sp, 20                   # 4-byte Folded Spill
-	fst.s	$fa5, $sp, 16                   # 4-byte Folded Spill
+	vst	$vr2, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
 	beqz	$s1, .LBB13_4
 # %bb.3:
 	slli.d	$a0, $s1, 6
@@ -1682,10 +1661,9 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTri
 	move	$s2, $a2
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	fld.s	$fa5, $sp, 16                   # 4-byte Folded Reload
-	fld.s	$fa6, $sp, 20                   # 4-byte Folded Reload
-	fld.s	$fa7, $sp, 24                   # 4-byte Folded Reload
-	fld.s	$ft0, $sp, 28                   # 4-byte Folded Reload
+	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr2, $sp, 48                   # 16-byte Folded Reload
 	move	$a2, $s2
 	move	$a3, $fp
 	ld.w	$a4, $s0, 4
@@ -1721,10 +1699,9 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTri
 	move	$s3, $a2
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-	fld.s	$fa5, $sp, 16                   # 4-byte Folded Reload
-	fld.s	$fa6, $sp, 20                   # 4-byte Folded Reload
-	fld.s	$fa7, $sp, 24                   # 4-byte Folded Reload
-	fld.s	$ft0, $sp, 28                   # 4-byte Folded Reload
+	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr2, $sp, 48                   # 16-byte Folded Reload
 	move	$a2, $s3
 	move	$a3, $s2
 .LBB13_10:                              # %_ZN20btAlignedObjectArrayI18btOptimizedBvhNodeE10deallocateEv.exit.i.i
@@ -1734,64 +1711,25 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTri
 	st.d	$fp, $s0, 16
 	st.w	$s1, $s0, 8
 .LBB13_11:                              # %_ZN20btAlignedObjectArrayI18btOptimizedBvhNodeE9push_backERKS0_.exit
-	movgr2fr.w	$fa0, $zero
-	fmax.s	$fa1, $fa5, $fa0
-	fcmp.clt.s	$fcc0, $fa1, $fs5
-	fsel	$fa1, $fa1, $fs5, $fcc0
-	fcmp.clt.s	$fcc0, $fa1, $fs0
-	fsel	$fa1, $fa1, $fs0, $fcc0
-	lu12i.w	$a0, -141856
-	ori	$a0, $a0, 2923
-	movgr2fr.w	$fa2, $a0
-	fmax.s	$fa3, $fa6, $fa2
-	fcmp.clt.s	$fcc0, $fa3, $fs6
-	fsel	$fa3, $fa3, $fs6, $fcc0
-	fcmp.clt.s	$fcc0, $fa3, $fs2
-	fsel	$fa3, $fa3, $fs2, $fcc0
-	fmax.s	$fa4, $fa7, $fa2
-	fcmp.clt.s	$fcc0, $fa4, $fs4
-	fsel	$fa4, $fa4, $fs4, $fcc0
-	fcmp.clt.s	$fcc0, $fa4, $fs7
-	fsel	$fa4, $fa4, $fs7, $fcc0
-	fmax.s	$fa2, $ft0, $fa2
-	fcmp.clt.s	$fcc0, $fa2, $fs1
-	fsel	$fa2, $fa2, $fs1, $fcc0
-	fcmp.clt.s	$fcc0, $fa2, $fs3
-	fsel	$fa2, $fa2, $fs3, $fcc0
-	fmin.s	$fa0, $fa5, $fa0
-	fcmp.clt.s	$fcc0, $fs5, $fa0
-	fsel	$fa0, $fa0, $fs5, $fcc0
-	fcmp.clt.s	$fcc0, $fs0, $fa0
-	fsel	$fa0, $fa0, $fs0, $fcc0
-	lu12i.w	$a0, 382432
-	ori	$a0, $a0, 2923
-	movgr2fr.w	$fa5, $a0
-	fmin.s	$fa6, $fa6, $fa5
-	fcmp.clt.s	$fcc0, $fs6, $fa6
-	fsel	$fa6, $fa6, $fs6, $fcc0
-	fcmp.clt.s	$fcc0, $fs2, $fa6
-	fsel	$fa6, $fa6, $fs2, $fcc0
-	fmin.s	$fa7, $fa7, $fa5
-	fcmp.clt.s	$fcc0, $fs4, $fa7
-	fsel	$fa7, $fa7, $fs4, $fcc0
-	fcmp.clt.s	$fcc0, $fs7, $fa7
-	fsel	$fa7, $fa7, $fs7, $fcc0
-	fmin.s	$fa5, $ft0, $fa5
-	fcmp.clt.s	$fcc0, $fs1, $fa5
-	fsel	$fa5, $fa5, $fs1, $fcc0
+	pcalau12i	$a0, %pc_hi20(.LCPI13_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI13_0)
 	ld.d	$a0, $s0, 16
-	fcmp.clt.s	$fcc0, $fs3, $fa5
-	fsel	$fa5, $fa5, $fs3, $fcc0
+	vfmin.s	$vr0, $vr3, $vr0
+	vfcmp.clt.s	$vr1, $vr2, $vr0
+	vbitsel.v	$vr0, $vr0, $vr2, $vr1
+	vfcmp.clt.s	$vr1, $vr4, $vr0
+	vbitsel.v	$vr0, $vr0, $vr4, $vr1
+	pcalau12i	$a1, %pc_hi20(.LCPI13_1)
+	vld	$vr1, $a1, %pc_lo12(.LCPI13_1)
 	slli.d	$a1, $a4, 6
 	add.d	$a4, $a0, $a1
-	fstx.s	$fa5, $a0, $a1
-	fst.s	$fa7, $a4, 4
-	fst.s	$fa6, $a4, 8
-	fst.s	$fa0, $a4, 12
-	fst.s	$fa2, $a4, 16
-	fst.s	$fa4, $a4, 20
-	fst.s	$fa3, $a4, 24
-	fst.s	$fa1, $a4, 28
+	vstx	$vr0, $a0, $a1
+	vfmax.s	$vr0, $vr3, $vr1
+	vfcmp.clt.s	$vr1, $vr0, $vr2
+	vbitsel.v	$vr0, $vr0, $vr2, $vr1
+	vfcmp.clt.s	$vr1, $vr0, $vr4
+	vbitsel.v	$vr0, $vr0, $vr4, $vr1
+	vst	$vr0, $a4, 16
 	addi.w	$a0, $zero, -1
 	lu32i.d	$a0, 0
 	st.w	$a0, $a4, 32
@@ -1800,21 +1738,13 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTri
 	ld.w	$a0, $s0, 4
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 4
-	fld.d	$fs7, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 64                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 88                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end13:
 	.size	_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii, .Lfunc_end13-_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii

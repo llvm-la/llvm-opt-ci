@@ -65,24 +65,24 @@ main:                                   # @main
 	st.d	$a5, $a1, %pc_lo12(cp)
 	addi.d	$a5, $a2, 25
 	st.d	$a5, $a1, %pc_lo12(cp)
-	addi.d	$a6, $a2, 26
-	ld.bu	$a5, $a2, 26
-	st.d	$a6, $a1, %pc_lo12(cp)
-	addi.d	$a6, $a2, 27
-	st.d	$a6, $a1, %pc_lo12(cp)
-	addi.d	$a6, $a2, 28
-	st.d	$a6, $a1, %pc_lo12(cp)
-	addi.d	$a6, $a2, 29
-	st.d	$a6, $a1, %pc_lo12(cp)
-	addi.d	$a2, $a2, 30
+	addi.d	$a5, $a2, 26
+	st.d	$a5, $a1, %pc_lo12(cp)
+	addi.d	$a5, $a2, 27
+	st.d	$a5, $a1, %pc_lo12(cp)
+	addi.d	$a5, $a2, 28
+	st.d	$a5, $a1, %pc_lo12(cp)
+	addi.d	$a5, $a2, 29
+	st.d	$a5, $a1, %pc_lo12(cp)
+	addi.d	$a5, $a2, 30
 	andi	$a4, $a4, 2
-	st.d	$a2, $a1, %pc_lo12(cp)
+	st.d	$a5, $a1, %pc_lo12(cp)
 	bnez	$a4, .LBB0_5
 # %bb.1:
-	andi	$a2, $a3, 4
-	bnez	$a2, .LBB0_5
+	andi	$a3, $a3, 4
+	bnez	$a3, .LBB0_5
 # %bb.2:
-	andi	$a2, $a5, 1
+	ld.b	$a2, $a2, 26
+	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_5
 # %bb.3:
 	ld.d	$a1, $a1, %pc_lo12(cp)

@@ -283,7 +283,7 @@ _Z27BM_explicit_iteration_countRN9benchmark5StateE: # @_Z27BM_explicit_iteration
 # %bb.3:
 	ld.bu	$a0, $fp, 24
 	beqz	$a0, .LBB3_7
-# %bb.4:                                # %_ZNK9benchmark5State10iterationsEv.exit18
+# %bb.4:                                # %_ZNK9benchmark5State10iterationsEv.exit17
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $fp, 8
 	bne	$a1, $a0, .LBB3_9
@@ -298,7 +298,7 @@ _Z27BM_explicit_iteration_countRN9benchmark5StateE: # @_Z27BM_explicit_iteration
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB3_7:                                # %_ZNK9benchmark5State10iterationsEv.exit18.thread
+.LBB3_7:                                # %_ZNK9benchmark5State10iterationsEv.exit17.thread
 	ld.d	$a0, $fp, 16
 	bnez	$a0, .LBB3_9
 .LBB3_8:                                # %_ZNK9benchmark5State10iterationsEv.exit.thread
@@ -1749,7 +1749,7 @@ _GLOBAL__sub_I_options_test.cc:         # @_GLOBAL__sub_I_options_test.cc
 .LBB5_153:                              # %.thread.i
 	ld.d	$a0, $sp, 64
 	beq	$a0, $s1, .LBB5_183
-# %bb.154:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit19.thread33.i
+# %bb.154:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.thread.i
 	ld.d	$a1, $sp, 80
 	addi.d	$a1, $a1, 1
 	b	.LBB5_182
@@ -1757,151 +1757,148 @@ _GLOBAL__sub_I_options_test.cc:         # @_GLOBAL__sub_I_options_test.cc
 .Ltmp180:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_156:
 .Ltmp86:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_157:
 .Ltmp75:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_158:
 .Ltmp4:                                 # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	bne	$a2, $s1, .LBB5_178
-	b	.LBB5_180
+	beq	$a2, $s1, .LBB5_180
+	b	.LBB5_179
 .LBB5_159:
 .Ltmp203:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	bne	$a2, $s1, .LBB5_161
-# %bb.160:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i132
-	bnez	$s3, .LBB5_181
-	b	.LBB5_183
-.LBB5_161:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i131
+	beq	$a2, $s1, .LBB5_161
+# %bb.160:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i131
 	ld.d	$a0, $sp, 80
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB5_161:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i132
 	bnez	$s3, .LBB5_181
 	b	.LBB5_183
 .LBB5_162:
 .Ltmp193:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_163:
 .Ltmp175:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_164:
 .Ltmp159:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_165:
 .Ltmp143:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_166:
 .Ltmp136:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_167:
 .Ltmp129:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_168:
 .Ltmp122:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_169:
 .Ltmp106:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_170:
 .Ltmp99:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_171:
 .Ltmp70:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_172:
 .Ltmp54:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_173:
 .Ltmp11:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_174:
 .Ltmp168:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_175:
 .Ltmp152:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_176:
 .Ltmp115:                               # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	beq	$a2, $s1, .LBB5_180
-	b	.LBB5_178
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
 .LBB5_177:
 .Ltmp63:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
+	bne	$a2, $s1, .LBB5_179
+	b	.LBB5_180
+.LBB5_178:
+.Ltmp47:                                # EH_LABEL
+	ld.d	$a2, $sp, 64
+	move	$fp, $a0
 	beq	$a2, $s1, .LBB5_180
-.LBB5_178:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+.LBB5_179:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 80
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s4, .LBB5_183
-	b	.LBB5_181
-.LBB5_179:
-.Ltmp47:                                # EH_LABEL
-	ld.d	$a2, $sp, 64
-	move	$fp, $a0
-	bne	$a2, $s1, .LBB5_178
-.LBB5_180:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
+.LBB5_180:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s4, .LBB5_183
 .LBB5_181:
 	ori	$a1, $zero, 232
@@ -1917,27 +1914,26 @@ _GLOBAL__sub_I_options_test.cc:         # @_GLOBAL__sub_I_options_test.cc
 .Ltmp38:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
-	bne	$a2, $s1, .LBB5_186
+	bne	$a2, $s1, .LBB5_187
 	b	.LBB5_188
 .LBB5_185:
 .Ltmp29:                                # EH_LABEL
 	ld.d	$a2, $sp, 64
 	move	$fp, $a0
+	bne	$a2, $s1, .LBB5_187
+	b	.LBB5_188
+.LBB5_186:
+.Ltmp20:                                # EH_LABEL
+	ld.d	$a2, $sp, 64
+	move	$fp, $a0
 	beq	$a2, $s1, .LBB5_188
-.LBB5_186:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i7
+.LBB5_187:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i7
 	ld.d	$a0, $sp, 80
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s7, .LBB5_181
-	b	.LBB5_183
-.LBB5_187:
-.Ltmp20:                                # EH_LABEL
-	ld.d	$a2, $sp, 64
-	move	$fp, $a0
-	bne	$a2, $s1, .LBB5_186
-.LBB5_188:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i8
+.LBB5_188:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i8
 	bnez	$s7, .LBB5_181
 	b	.LBB5_183
 .Lfunc_end5:

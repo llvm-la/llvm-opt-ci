@@ -1223,29 +1223,28 @@ _GLOBAL__sub_I_benchmark_setup_teardown_test.cc: # @_GLOBAL__sub_I_benchmark_set
 .Ltmp47:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
-	beq	$a2, $s1, .LBB18_42
-	b	.LBB18_40
+	bne	$a2, $s1, .LBB18_41
+	b	.LBB18_42
 .LBB18_39:
 .Ltmp72:                                # EH_LABEL
 	ld.d	$a2, $sp, 16
 	move	$s0, $a0
+	bne	$a2, $s1, .LBB18_41
+	b	.LBB18_42
+.LBB18_40:
+.Ltmp30:                                # EH_LABEL
+	ld.d	$a2, $sp, 16
+	move	$s0, $a0
 	beq	$a2, $s1, .LBB18_42
-.LBB18_40:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+.LBB18_41:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 32
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s3, .LBB18_43
-	b	.LBB18_45
-.LBB18_41:
-.Ltmp30:                                # EH_LABEL
-	ld.d	$a2, $sp, 16
-	move	$s0, $a0
-	bne	$a2, $s1, .LBB18_40
-.LBB18_42:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
+.LBB18_42:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s3, .LBB18_45
-.LBB18_43:
+# %bb.43:
 	ori	$a1, $zero, 232
 .LBB18_44:                              # %common.resume
 	move	$a0, $fp

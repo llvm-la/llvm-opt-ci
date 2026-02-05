@@ -227,7 +227,6 @@ _ZN12YAML_ElementC2Ev:                  # @_ZN12YAML_ElementC2Ev
 	st.d	$s3, $a0, 32
 	st.d	$zero, $a0, 40
 	st.b	$zero, $a0, 48
-	addi.d	$s1, $a0, 64
 	st.d	$zero, $a0, 64
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 72
@@ -263,7 +262,7 @@ _ZN12YAML_ElementC2Ev:                  # @_ZN12YAML_ElementC2Ev
 	ret
 .LBB1_3:
 .Ltmp13:                                # EH_LABEL
-	ld.d	$a2, $s1, 0
+	ld.d	$a2, $fp, 64
 	move	$s1, $a0
 	bnez	$a2, .LBB1_7
 # %bb.4:                                # %_ZNSt6vectorIP12YAML_ElementSaIS1_EED2Ev.exit

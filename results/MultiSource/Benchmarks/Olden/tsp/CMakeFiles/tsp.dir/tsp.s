@@ -357,11 +357,11 @@ tsp:                                    # @tsp
 	.p2align	4, , 16
 .LBB0_24:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$t0, $a6
+	move	$t0, $a7
+	move	$a7, $a6
 	ld.d	$a6, $a6, 40
-	st.d	$a7, $t0, 40
-	st.d	$t0, $a7, 48
-	move	$a7, $t0
+	st.d	$t0, $a7, 40
+	st.d	$a7, $t0, 48
 	bnez	$a6, .LBB0_24
 .LBB0_25:                               # %reverse.exit.i
 	st.d	$a1, $a5, 48
@@ -391,11 +391,11 @@ tsp:                                    # @tsp
 	.p2align	4, , 16
 .LBB0_29:                               # %.lr.ph.i247.i
                                         # =>This Inner Loop Header: Depth=1
-	move	$t0, $a6
+	move	$t0, $a7
+	move	$a7, $a6
 	ld.d	$a6, $a6, 40
-	st.d	$a7, $t0, 40
-	st.d	$t0, $a7, 48
-	move	$a7, $t0
+	st.d	$t0, $a7, 40
+	st.d	$a7, $t0, 48
 	bnez	$a6, .LBB0_29
 .LBB0_30:                               # %reverse.exit252.i
 	st.d	$a2, $a5, 48

@@ -12963,19 +12963,19 @@ s128:                                   # @s128
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.du	$xr1, $xr0, 1
 	xvpickve2gr.d	$a2, $xr1, 0
-	alsl.d	$a3, $a2, $s0, 3
+	xvpickve2gr.d	$a3, $xr1, 1
+	xvpickve2gr.d	$a4, $xr1, 2
+	xvpickve2gr.d	$a5, $xr1, 3
+	alsl.d	$a6, $a2, $s0, 3
 	slli.d	$a2, $a2, 3
-	xvpickve2gr.d	$a4, $xr1, 1
-	slli.d	$a5, $a4, 3
-	xvpickve2gr.d	$a6, $xr1, 2
-	slli.d	$a7, $a6, 3
-	xvpickve2gr.d	$t0, $xr1, 3
-	slli.d	$t1, $t0, 3
+	slli.d	$a7, $a3, 3
+	slli.d	$t0, $a4, 3
+	slli.d	$t1, $a5, 3
 	fldx.d	$fa1, $s0, $a2
-	fldx.d	$fa2, $s0, $a7
+	fldx.d	$fa2, $s0, $t0
 	fldx.d	$fa3, $s0, $t1
-	fldx.d	$fa4, $s0, $a5
-	alsl.d	$a4, $a4, $s0, 3
+	fldx.d	$fa4, $s0, $a7
+	alsl.d	$a3, $a3, $s0, 3
 	xvldx	$xr5, $a0, $s8
 	vextrins.d	$vr2, $vr3, 16
 	vextrins.d	$vr1, $vr4, 16
@@ -12983,19 +12983,19 @@ s128:                                   # @s128
 	xvfsub.d	$xr1, $xr1, $xr5
 	xvst	$xr1, $a0, 0
 	fldx.d	$fa2, $s1, $a2
-	fldx.d	$fa3, $s1, $a7
+	fldx.d	$fa3, $s1, $t0
 	fldx.d	$fa4, $s1, $t1
-	fldx.d	$fa5, $s1, $a5
-	alsl.d	$a2, $a6, $s0, 3
-	alsl.d	$a5, $t0, $s0, 3
+	fldx.d	$fa5, $s1, $a7
+	alsl.d	$a2, $a4, $s0, 3
+	alsl.d	$a4, $a5, $s0, 3
 	vextrins.d	$vr3, $vr4, 16
 	vextrins.d	$vr2, $vr5, 16
 	xvpermi.q	$xr2, $xr3, 2
 	xvfadd.d	$xr1, $xr1, $xr2
-	xvstelm.d	$xr1, $a3, 0, 0
-	xvstelm.d	$xr1, $a4, 0, 1
+	xvstelm.d	$xr1, $a6, 0, 0
+	xvstelm.d	$xr1, $a3, 0, 1
 	xvstelm.d	$xr1, $a2, 0, 2
-	xvstelm.d	$xr1, $a5, 0, 3
+	xvstelm.d	$xr1, $a4, 0, 3
 	xvaddi.du	$xr0, $xr0, 8
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 32
@@ -13249,7 +13249,7 @@ set:                                    # @set
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	addi.d	$a1, $s1, 20
+	addi.d	$a1, $s1, 28
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 2304
 	.p2align	4, , 16
@@ -13257,23 +13257,24 @@ set:                                    # @set
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a3, $a0, 5
 	addi.d	$a4, $a0, 4
-	addi.d	$a5, $a0, 9
-	st.w	$a4, $a1, -20
-	st.w	$a5, $a1, 0
+	st.w	$a4, $a1, -28
 	addi.d	$a4, $a0, 2
-	addi.d	$a5, $a0, 7
-	st.w	$a4, $a1, -16
+	st.w	$a0, $a1, -20
+	addi.d	$a5, $a0, 8
 	st.w	$a5, $a1, 4
-	st.w	$a0, $a1, -12
-	st.w	$a3, $a1, 8
-	addi.d	$a3, $a0, 3
-	addi.d	$a4, $a0, 8
-	st.w	$a3, $a1, -8
-	st.w	$a4, $a1, 12
-	addi.d	$a3, $a0, 1
-	addi.d	$a4, $a0, 6
-	st.w	$a3, $a1, -4
-	st.w	$a4, $a1, 16
+	addi.d	$a5, $a0, 6
+	st.w	$a4, $a1, -24
+	st.w	$a3, $a1, 0
+	addi.d	$a3, $a0, 7
+	addi.d	$a4, $a0, 9
+	addi.d	$a6, $a0, 1
+	addi.d	$a7, $a0, 3
+	vinsgr2vr.w	$vr0, $a7, 0
+	vinsgr2vr.w	$vr0, $a6, 1
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr0, $a3, 3
+	vst	$vr0, $a1, -16
+	st.w	$a5, $a1, 8
 	addi.d	$a0, $a0, 10
 	addi.d	$a2, $a2, -2
 	addi.d	$a1, $a1, 40

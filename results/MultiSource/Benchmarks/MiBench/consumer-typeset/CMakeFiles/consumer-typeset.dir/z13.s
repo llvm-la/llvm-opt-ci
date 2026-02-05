@@ -200,10 +200,9 @@ BreakObject:                            # @BreakObject
 	ld.bu	$a0, $s0, 32
 	beqz	$a0, .LBB0_27
 # %bb.28:
-	ld.w	$a0, $s0, 64
+	fld.s	$fa0, $s0, 64
 	addi.d	$a4, $s0, 32
 	addi.d	$a5, $fp, 64
-	movgr2fr.w	$fa0, $a0
 	ffint.s.w	$fa0, $fa0
 	lu12i.w	$a0, 245760
 	movgr2fr.w	$fa1, $a0
@@ -246,10 +245,9 @@ BreakObject:                            # @BreakObject
 	masknez	$a1, $a1, $a0
 	pcalau12i	$a2, %pc_hi20(.L.str.9)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.9)
-	ld.w	$a3, $fp, 64
+	fld.s	$fa0, $fp, 64
 	maskeqz	$a0, $a2, $a0
 	or	$a5, $a0, $a1
-	movgr2fr.w	$fa0, $a3
 	ffint.s.w	$fa0, $fa0
 	lu12i.w	$a0, 245760
 	movgr2fr.w	$fa1, $a0
@@ -319,9 +317,8 @@ BreakObject:                            # @BreakObject
 	ld.bu	$a0, $fp, 32
 	beqz	$a0, .LBB0_41
 # %bb.42:
-	ld.w	$a0, $fp, 64
+	fld.s	$fa0, $fp, 64
 	addi.d	$a4, $fp, 32
-	movgr2fr.w	$fa0, $a0
 	ffint.s.w	$fa0, $fa0
 	lu12i.w	$a0, 245760
 	movgr2fr.w	$fa1, $a0

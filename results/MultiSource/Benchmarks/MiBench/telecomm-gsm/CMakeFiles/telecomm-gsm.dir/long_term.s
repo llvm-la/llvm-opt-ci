@@ -220,8 +220,8 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	sra.w	$t7, $t7, $t8
 	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
 	addi.d	$s5, $s5, -40
-	ori	$t8, $zero, 40
 	ori	$t3, $zero, 40
+	ori	$t8, $zero, 40
 	.p2align	4, , 16
 .LBB0_4:                                # =>This Inner Loop Header: Depth=1
 	ld.h	$s7, $s5, -40
@@ -507,10 +507,10 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	pcaddu18i	$ra, %call36(gsm_norm)
 	jirl	$ra, $ra, 0
 	sll.d	$a1, $s0, $a0
-	addi.w	$a1, $a1, 0
+	srli.d	$a1, $a1, 16
+	ext.w.h	$s0, $a1
 	sll.d	$a0, $s5, $a0
 	srli.d	$a0, $a0, 16
-	srai.d	$s0, $a1, 16
 	pcalau12i	$a1, %got_pc_hi20(gsm_DLB)
 	ld.d	$s1, $a1, %got_pc_lo12(gsm_DLB)
 	ld.h	$a1, $s1, 0

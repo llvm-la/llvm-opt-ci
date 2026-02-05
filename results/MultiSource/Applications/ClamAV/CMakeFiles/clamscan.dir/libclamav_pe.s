@@ -782,7 +782,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcalau12i	$a0, %pc_hi20(.L.str.83)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.83)
 	b	.LBB0_130
-.LBB0_117:                              # %.thread3131
+.LBB0_117:                              # %.thread3129
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 240
 	add.d	$a1, $sp, $a0
@@ -834,7 +834,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s0, .LBB0_138
-# %bb.121:                              # %.preheader3351
+# %bb.121:                              # %.preheader3349
 	ori	$a1, $zero, 512
 	ori	$a0, $zero, 512
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
@@ -955,7 +955,7 @@ cli_scanpe:                             # @cli_scanpe
 	addi.w	$a0, $a0, 0
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	beqz	$s2, .LBB0_195
-# %bb.143:                              # %.lr.ph3409
+# %bb.143:                              # %.lr.ph3407
 	pcalau12i	$a0, %pc_hi20(.L.str.89)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.89)
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
@@ -1083,7 +1083,7 @@ cli_scanpe:                             # @cli_scanpe
 	sltu	$a2, $zero, $a2
 	add.d	$a0, $a0, $a2
 	mul.d	$a5, $a0, $s8
-.LBB0_157:                              # %.thread3139
+.LBB0_157:                              # %.thread3137
                                         #   in Loop: Header=BB0_145 Depth=1
 	bstrpick.d	$a0, $a1, 31, 0
 	st.w	$a5, $s4, 4
@@ -1102,7 +1102,7 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	sub.d	$a0, $a0, $a1
 	st.w	$a0, $s4, 12
-.LBB0_162:                              # %.thread3137
+.LBB0_162:                              # %.thread3135
                                         #   in Loop: Header=BB0_145 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	move	$a1, $s7
@@ -1236,11 +1236,11 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a2, $a1, 24
 	ld.d	$a3, $a2, 32
 	beqz	$a3, .LBB0_189
-# %bb.181:                              # %.preheader3350
+# %bb.181:                              # %.preheader3348
                                         #   in Loop: Header=BB0_145 Depth=1
 	ld.wu	$a2, $a3, 32
 	beqz	$a2, .LBB0_189
-# %bb.182:                              # %.lr.ph3401
+# %bb.182:                              # %.lr.ph3399
                                         #   in Loop: Header=BB0_145 Depth=1
 	ld.d	$a1, $a3, 24
 .LBB0_183:                              #   Parent Loop BB0_145 Depth=1
@@ -1313,7 +1313,7 @@ cli_scanpe:                             # @cli_scanpe
 	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 160                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
-.LBB0_196:                              # %._crit_edge3410
+.LBB0_196:                              # %._crit_edge3408
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -1327,7 +1327,7 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	bnez	$a0, .LBB0_203
-# %bb.197:                              # %._crit_edge3410
+# %bb.197:                              # %._crit_edge3408
 	ld.w	$a0, $sp, 220
 	beqz	$a0, .LBB0_203
 # %bb.198:
@@ -1359,7 +1359,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 523
-	beq	$s5, $a0, .LBB0_721
+	beq	$s5, $a0, .LBB0_720
 # %bb.204:
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	bstrpick.d	$a1, $a0, 31, 0
@@ -1418,7 +1418,7 @@ cli_scanpe:                             # @cli_scanpe
 	ld.bu	$a0, $sp, 226
 	ori	$a1, $zero, 96
 	bne	$a0, $a1, .LBB0_270
-# %bb.214:                              # %.lr.ph3424.preheader
+# %bb.214:                              # %.lr.ph3422.preheader
 	pcalau12i	$a0, %pc_hi20(.L__const.cli_scanpe.kzs)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.cli_scanpe.kzs)
 	ld.w	$a1, $a0, 8
@@ -1478,7 +1478,7 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$s6, .LBB0_205
 # %bb.218:
 	ld.d	$a0, $fp, 56
-	ld.wu	$a0, $a0, 0
+	ld.w	$a0, $a0, 0
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_205
 # %bb.219:
@@ -1567,13 +1567,13 @@ cli_scanpe:                             # @cli_scanpe
 .LBB0_237:                              #   in Loop: Header=BB0_238 Depth=1
 	ori	$a0, $zero, 7
 	blt	$s4, $a0, .LBB0_269
-.LBB0_238:                              # %.lr.ph3424
+.LBB0_238:                              # %.lr.ph3422
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$s3, $s5, 1
 	addi.w	$s8, $s4, -1
 	ori	$a0, $zero, 7
 	bltu	$a0, $a1, .LBB0_266
-# %bb.239:                              # %.lr.ph3424
+# %bb.239:                              # %.lr.ph3422
                                         #   in Loop: Header=BB0_238 Depth=1
 	slli.d	$a0, $a1, 2
 	ldx.w	$a2, $s7, $a0
@@ -1682,7 +1682,7 @@ cli_scanpe:                             # @cli_scanpe
 	blt	$a2, $a1, .LBB0_258
 # %bb.257:                              #   in Loop: Header=BB0_238 Depth=1
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
-	bge	$a0, $a1, .LBB0_703
+	bge	$a0, $a1, .LBB0_702
 .LBB0_258:                              #   in Loop: Header=BB0_238 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.112)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.112)
@@ -1740,12 +1740,12 @@ cli_scanpe:                             # @cli_scanpe
 	ld.bu	$a0, $fp, 41
 	andi	$a0, $a0, 2
 	beqz	$a0, .LBB0_274
-.LBB0_270:                              # %.thread3809
+.LBB0_270:                              # %.thread3807
 	bnez	$s6, .LBB0_274
-# %bb.271:                              # %.thread3809
+# %bb.271:                              # %.thread3807
 	ori	$a0, $zero, 2
 	bltu	$s2, $a0, .LBB0_274
-# %bb.272:                              # %.thread3809
+# %bb.272:                              # %.thread3807
 	ld.d	$a0, $fp, 56
 	ld.wu	$a0, $a0, 0
 	andi	$a0, $a0, 4
@@ -1757,21 +1757,21 @@ cli_scanpe:                             # @cli_scanpe
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, -20
 	bltz	$a1, .LBB0_287
-.LBB0_274:                              # %.thread3811
+.LBB0_274:                              # %.thread3809
 	move	$s8, $s2
 	bnez	$s6, .LBB0_336
-# %bb.275:                              # %.thread3811
+# %bb.275:                              # %.thread3809
 	addi.d	$a0, $s2, -3
 	bstrpick.d	$a0, $a0, 15, 0
 	ori	$a1, $zero, 9
 	move	$s8, $s2
 	bltu	$a1, $a0, .LBB0_336
-# %bb.276:                              # %.thread3811
+# %bb.276:                              # %.thread3809
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	andi	$s0, $a0, 255
 	move	$s8, $s2
 	beqz	$s0, .LBB0_336
-# %bb.277:                              # %.thread3811
+# %bb.277:                              # %.thread3809
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 640
 	add.d	$a0, $sp, $a0
@@ -1823,7 +1823,7 @@ cli_scanpe:                             # @cli_scanpe
 	ld.wu	$a0, $a0, 12
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_866
+	beqz	$a0, .LBB0_867
 # %bb.284:
 	move	$s5, $a0
 	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
@@ -1833,8 +1833,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s3, 12
-	bne	$a0, $a1, .LBB0_657
-# %bb.285:                              # %.preheader3349
+	bne	$a0, $a1, .LBB0_655
+# %bb.285:                              # %.preheader3347
 	move	$s7, $a0
 	ori	$a0, $zero, 5
 	bne	$s7, $a0, .LBB0_300
@@ -1953,7 +1953,7 @@ cli_scanpe:                             # @cli_scanpe
 	or	$a0, $a0, $a1
 	st.d	$a0, $a3, 0
 	b	.LBB0_233
-.LBB0_300:                              # %.lr.ph3434
+.LBB0_300:                              # %.lr.ph3432
 	move	$s6, $zero
 	move	$s8, $zero
 	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
@@ -1964,7 +1964,7 @@ cli_scanpe:                             # @cli_scanpe
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	ori	$s4, $zero, 232
 	b	.LBB0_302
-.LBB0_301:                              # %._crit_edge3600
+.LBB0_301:                              # %._crit_edge3598
                                         #   in Loop: Header=BB0_302 Depth=1
 	addi.d	$s6, $s6, 1
 	addi.d	$a0, $s7, -5
@@ -2012,7 +2012,7 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$a0, .LBB0_312
 # %bb.309:                              #   in Loop: Header=BB0_302 Depth=1
 	ori	$a0, $zero, 1280
-	beq	$s8, $a0, .LBB0_808
+	beq	$s8, $a0, .LBB0_809
 # %bb.310:                              #   in Loop: Header=BB0_302 Depth=1
 	addi.d	$a0, $s8, 128
 	bstrpick.d	$a0, $a0, 31, 0
@@ -2021,10 +2021,10 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_realloc2)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_809
+	beqz	$a0, .LBB0_810
 # %bb.311:                              #   in Loop: Header=BB0_302 Depth=1
 	beqz	$s8, .LBB0_320
-.LBB0_312:                              # %.lr.ph3428.preheader
+.LBB0_312:                              # %.lr.ph3426.preheader
                                         #   in Loop: Header=BB0_302 Depth=1
 	move	$a0, $zero
 	bstrpick.d	$a1, $s8, 31, 0
@@ -2038,7 +2038,7 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 4
 	beqz	$a1, .LBB0_317
-.LBB0_315:                              # %.lr.ph3428
+.LBB0_315:                              # %.lr.ph3426
                                         #   Parent Loop BB0_302 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, 0
@@ -2046,12 +2046,12 @@ cli_scanpe:                             # @cli_scanpe
 # %bb.316:                              #   in Loop: Header=BB0_315 Depth=2
 	bne	$a3, $s0, .LBB0_313
 	b	.LBB0_318
-.LBB0_317:                              # %.loopexit3348.loopexit
+.LBB0_317:                              # %.loopexit3346.loopexit
                                         #   in Loop: Header=BB0_302 Depth=1
 	addi.w	$a1, $s8, 1
 	move	$a0, $s8
 	move	$s8, $a1
-.LBB0_318:                              # %.loopexit3348
+.LBB0_318:                              # %.loopexit3346
                                         #   in Loop: Header=BB0_302 Depth=1
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 2
@@ -2069,7 +2069,7 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $zero
 	ori	$s8, $zero, 1
 	b	.LBB0_318
-.LBB0_321:                              # %._crit_edge3435
+.LBB0_321:                              # %._crit_edge3433
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -2167,12 +2167,12 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a1, $a1, 96
 	and	$a0, $a0, $a1
 	beqz	$a0, .LBB0_360
-# %bb.337:                              # %.preheader3347
+# %bb.337:                              # %.preheader3345
 	move	$s8, $zero
 	addi.d	$a0, $s2, -1
 	beqz	$a0, .LBB0_360
-# %bb.338:                              # %.lr.ph3441.preheader
-	move	$s0, $zero
+# %bb.338:                              # %.lr.ph3439.preheader
+	move	$s3, $zero
 	bstrpick.d	$a1, $a0, 31, 0
 	ori	$a2, $zero, 36
 	mul.d	$a1, $a1, $a2
@@ -2180,12 +2180,12 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $a2, 36
 	b	.LBB0_340
 .LBB0_339:                              #   in Loop: Header=BB0_340 Depth=1
-	addi.d	$s0, $s0, 36
+	addi.d	$s3, $s3, 36
 	addi.w	$s8, $s8, 1
-	beq	$a1, $s0, .LBB0_361
-.LBB0_340:                              # %.lr.ph3441
+	beq	$a1, $s3, .LBB0_361
+.LBB0_340:                              # %.lr.ph3439
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a2, $s0
+	add.d	$a3, $a2, $s3
 	ld.w	$a4, $a3, -24
 	bnez	$a4, .LBB0_339
 # %bb.341:                              #   in Loop: Header=BB0_340 Depth=1
@@ -2218,22 +2218,22 @@ cli_scanpe:                             # @cli_scanpe
 # %bb.347:
 	ld.w	$a1, $sp, 225
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	add.w	$s3, $a1, $a0
-	ori	$a0, $zero, 335
-	beq	$s3, $a0, .LBB0_349
+	add.d	$a0, $a0, $a1
+	addi.w	$s0, $a0, 5
+	ori	$a0, $zero, 340
+	beq	$s0, $a0, .LBB0_349
 # %bb.348:
-	ori	$a0, $zero, 339
-	bne	$s3, $a0, .LBB0_362
+	ori	$a0, $zero, 344
+	bne	$s0, $a0, .LBB0_362
 .LBB0_349:
-	addi.w	$s5, $s3, 5
 	pcalau12i	$a0, %pc_hi20(.L.str.122)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.122)
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
-	move	$a3, $s5
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
-	move	$a1, $s5
+	move	$a1, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
@@ -2250,7 +2250,7 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	bne	$a0, $s4, .LBB0_469
 # %bb.351:
-	addi.d	$a0, $s5, -340
+	addi.d	$a0, $s0, -340
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.126)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.126)
@@ -2270,55 +2270,55 @@ cli_scanpe:                             # @cli_scanpe
 	add.d	$a1, $sp, $a1
 	ld.w	$a1, $a1, 0
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	add.d	$s4, $a2, $s0
-	ld.w	$s7, $s4, 36
-	sub.w	$s0, $a0, $a1
-	bgeu	$s7, $s0, .LBB0_488
+	add.d	$s3, $a2, $s3
+	ld.w	$s4, $s3, 36
+	sub.w	$s7, $a0, $a1
+	bgeu	$s4, $s7, .LBB0_488
 # %bb.352:
-	ld.w	$a0, $s4, 44
-	add.d	$a0, $s7, $a0
+	ld.w	$a0, $s3, 44
+	add.d	$a0, $s4, $a0
 	addi.w	$a0, $a0, -4
-	bgeu	$s0, $a0, .LBB0_488
+	bgeu	$s7, $a0, .LBB0_488
 # %bb.353:
-	addi.d	$s6, $s4, 36
+	addi.d	$s5, $s3, 36
 	move	$a0, $s1
-	move	$a1, $s6
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_657
+	beqz	$a0, .LBB0_655
 # %bb.354:
-	ld.w	$a2, $s4, 4
-	ld.w	$a1, $s4, 40
-	sub.w	$a3, $s0, $s7
+	ld.w	$a2, $s3, 4
+	ld.w	$s6, $s3, 40
+	sub.w	$s7, $s7, $s4
 	st.w	$a2, $sp, 216
 	pcalau12i	$a0, %pc_hi20(.L.str.128)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.128)
-	move	$s0, $a1
-	st.d	$a3, $sp, 136                   # 8-byte Folded Spill
+	move	$a1, $s6
+	move	$a3, $s7
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 32
-	beqz	$a0, .LBB0_729
+	beqz	$a0, .LBB0_728
 # %bb.355:
 	ld.d	$a2, $a0, 24
 	ld.w	$a0, $sp, 216
-	beqz	$a2, .LBB0_730
+	beqz	$a2, .LBB0_729
 # %bb.356:
-	sltu	$a1, $a0, $s0
+	sltu	$a1, $a0, $s6
 	masknez	$a3, $a0, $a1
-	maskeqz	$a1, $s0, $a1
+	maskeqz	$a1, $s6, $a1
 	or	$a1, $a1, $a3
 	bstrpick.d	$a3, $a1, 31, 0
 	bltu	$a2, $a3, .LBB0_358
 # %bb.357:
-	ld.w	$a1, $s4, 48
-	add.w	$a3, $a0, $s0
+	ld.w	$a1, $s3, 48
+	add.w	$a3, $a0, $s6
 	sltu	$a4, $a1, $a3
 	masknez	$a1, $a1, $a4
 	maskeqz	$a3, $a3, $a4
 	or	$a1, $a3, $a1
 	bstrpick.d	$a3, $a1, 31, 0
-	bgeu	$a2, $a3, .LBB0_730
+	bgeu	$a2, $a3, .LBB0_729
 .LBB0_358:
 	pcalau12i	$a0, %pc_hi20(.L.str.129)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.129)
@@ -2341,10 +2341,10 @@ cli_scanpe:                             # @cli_scanpe
 .LBB0_361:
 	move	$s6, $zero
 	move	$s8, $a0
-.LBB0_362:                              # %.thread3171
+.LBB0_362:                              # %.thread3169
 	ori	$a0, $zero, 167
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
-	bgeu	$a0, $a1, .LBB0_721
+	bgeu	$a0, $a1, .LBB0_720
 # %bb.363:
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	sltu	$a0, $zero, $a0
@@ -2597,31 +2597,31 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_866
+	beqz	$a0, .LBB0_867
 # %bb.408:
 	move	$a0, $s1
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_601
+	beqz	$a0, .LBB0_600
 # %bb.409:
 	move	$a0, $s1
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB0_601
+	bne	$a0, $s7, .LBB0_600
 # %bb.410:
 	ld.w	$a0, $s5, 0
-	bltu	$s3, $a0, .LBB0_697
+	bltu	$s3, $a0, .LBB0_696
 # %bb.411:
 	bstrpick.d	$a1, $s3, 31, 0
 	bstrpick.d	$a2, $a0, 31, 0
 	sub.d	$a1, $a1, $a2
-	bltz	$a1, .LBB0_697
+	bltz	$a1, .LBB0_696
 # %bb.412:
 	addi.d	$a3, $a1, 4
-	blt	$s0, $a3, .LBB0_697
+	blt	$s0, $a3, .LBB0_696
 # %bb.413:
 	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	ldx.w	$a1, $a3, $a1
@@ -2632,52 +2632,52 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$a4, $s5, 12
 	ori	$a5, $zero, 4
 	sub.w	$a1, $a1, $a3
-	bltu	$a4, $a5, .LBB0_704
+	bltu	$a4, $a5, .LBB0_703
 # %bb.414:
-	bltu	$a1, $a0, .LBB0_704
+	bltu	$a1, $a0, .LBB0_703
 # %bb.415:
 	addi.w	$a6, $a1, 4
 	add.w	$a5, $a4, $a0
-	bltu	$a5, $a6, .LBB0_704
+	bltu	$a5, $a6, .LBB0_703
 # %bb.416:
-	bgeu	$a0, $a6, .LBB0_704
+	bgeu	$a0, $a6, .LBB0_703
 # %bb.417:
 	ori	$a6, $zero, 32
-	bltu	$s0, $a6, .LBB0_832
+	bltu	$s0, $a6, .LBB0_833
 # %bb.418:
 	bstrpick.d	$a1, $a1, 31, 0
 	sub.d	$a1, $a1, $a2
-	bltz	$a1, .LBB0_832
+	bltz	$a1, .LBB0_833
 # %bb.419:
 	addi.d	$a2, $a1, 32
-	blt	$s0, $a2, .LBB0_832
+	blt	$s0, $a2, .LBB0_833
 # %bb.420:
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	ldx.w	$a6, $a2, $a1
 	ld.w	$a2, $s4, 0
 	sub.w	$s6, $a6, $a3
-	bne	$s6, $a2, .LBB0_877
+	bne	$s6, $a2, .LBB0_878
 # %bb.421:
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	add.d	$a1, $a2, $a1
 	ld.w	$a2, $a1, 4
 	sub.w	$s4, $a2, $a3
-	bltu	$s4, $a0, .LBB0_886
+	bltu	$s4, $a0, .LBB0_887
 # %bb.422:
 	sub.w	$a2, $s4, $a0
-	bgeu	$a2, $a4, .LBB0_886
+	bgeu	$a2, $a4, .LBB0_887
 # %bb.423:
 	ori	$a2, $zero, 16
-	bltu	$a4, $a2, .LBB0_907
+	bltu	$a4, $a2, .LBB0_908
 # %bb.424:
 	ld.w	$a1, $a1, 16
 	sub.w	$a1, $a1, $a3
-	bltu	$a1, $a0, .LBB0_907
+	bltu	$a1, $a0, .LBB0_908
 # %bb.425:
 	addi.w	$a2, $a1, 16
-	bltu	$a5, $a2, .LBB0_907
+	bltu	$a5, $a2, .LBB0_908
 # %bb.426:
-	bgeu	$a0, $a2, .LBB0_907
+	bgeu	$a0, $a2, .LBB0_908
 # %bb.427:
 	sub.d	$a0, $a1, $a0
 	addi.d	$a0, $a0, 12
@@ -2694,14 +2694,14 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_863
+	beqz	$a0, .LBB0_864
 # %bb.428:
 	move	$s7, $a0
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_945
+	beqz	$a0, .LBB0_943
 # %bb.429:
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
@@ -2709,7 +2709,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	bltz	$a0, .LBB0_962
+	bltz	$a0, .LBB0_960
 # %bb.430:
 	ld.w	$a1, $s5, 0
 	sub.d	$a0, $s4, $a1
@@ -2729,25 +2729,25 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(unfsg_200)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_966
+	beqz	$a0, .LBB0_964
 # %bb.431:
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_967
+	bne	$a0, $a1, .LBB0_965
 # %bb.432:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s0, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s0, 0
-	beqz	$a0, .LBB0_972
+	beqz	$a0, .LBB0_970
 # %bb.433:
 	pcalau12i	$a0, %pc_hi20(.L.str.165)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.165)
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_973
+	b	.LBB0_971
 .LBB0_434:
 	addi.w	$a1, $s0, 0
-	b	.LBB0_719
+	b	.LBB0_718
 .LBB0_435:
 	pcalau12i	$a0, %pc_hi20(.L.str.155)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.155)
@@ -2819,10 +2819,10 @@ cli_scanpe:                             # @cli_scanpe
 	b	.LBB0_202
 .LBB0_446:
 	ori	$a1, $zero, 26
-	bltu	$s5, $a1, .LBB0_718
+	bltu	$s5, $a1, .LBB0_717
 # %bb.447:
-	addi.w	$s0, $s5, 0
-	bgeu	$s0, $a2, .LBB0_718
+	addi.w	$s7, $s5, 0
+	bgeu	$s7, $a2, .LBB0_717
 # %bb.448:                              # %cli_rawaddr.exit
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	sltu	$a1, $a0, $a1
@@ -2832,9 +2832,9 @@ cli_scanpe:                             # @cli_scanpe
 	sltu	$a2, $a2, $a3
 	xori	$a2, $a2, 1
 	or	$a1, $a1, $a2
-	masknez	$s3, $a0, $a1
+	masknez	$s0, $a0, $a1
 	st.w	$a1, $sp, 220
-	bnez	$s3, .LBB0_464
+	bnez	$s0, .LBB0_464
 # %bb.449:                              # %cli_rawaddr.exit
 	beqz	$a1, .LBB0_464
 # %bb.450:
@@ -2882,7 +2882,7 @@ cli_scanpe:                             # @cli_scanpe
 	sub.w	$s3, $a3, $a2
 	addi.w	$a2, $a2, -224
 	bgeu	$a2, $s3, .LBB0_491
-# %bb.458:                              # %cli_rawaddr.exit3125
+# %bb.458:                              # %cli_rawaddr.exit3123
 	ld.d	$t0, $sp, 168                   # 8-byte Folded Reload
 	add.d	$s0, $t0, $a1
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
@@ -2924,21 +2924,21 @@ cli_scanpe:                             # @cli_scanpe
 	bgeu	$a2, $a1, .LBB0_471
 	b	.LBB0_387
 .LBB0_464:
-	bstrpick.d	$a1, $s3, 31, 0
+	bstrpick.d	$a1, $s0, 31, 0
 	move	$a0, $s1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s6, 8
 	ld.d	$a0, $fp, 32
-	sub.w	$s3, $a1, $s3
-	beqz	$a0, .LBB0_587
+	sub.w	$s3, $a1, $s0
+	beqz	$a0, .LBB0_586
 # %bb.465:
 	ld.d	$a2, $a0, 24
 	bstrpick.d	$a0, $s3, 31, 0
-	beqz	$a2, .LBB0_588
+	beqz	$a2, .LBB0_587
 # %bb.466:
-	bgeu	$a2, $a0, .LBB0_588
+	bgeu	$a2, $a0, .LBB0_587
 # %bb.467:
 	pcalau12i	$a0, %pc_hi20(.L.str.152)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.152)
@@ -2949,13 +2949,13 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a0, $a0, %pc_lo12(.L.str.123)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_657
+	b	.LBB0_655
 .LBB0_469:
 	move	$a3, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.124)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.124)
-	move	$a1, $s5
-	move	$a2, $s5
+	move	$a1, $s0
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_362
@@ -2966,7 +2966,7 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_866
+	beqz	$a0, .LBB0_867
 # %bb.472:
 	move	$s0, $a0
 	move	$a0, $s1
@@ -2980,7 +2980,7 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s3, .LBB0_602
+	bne	$a0, $s3, .LBB0_601
 # %bb.473:
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_475
@@ -3010,19 +3010,19 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	ld.wu	$a1, $s3, 68
-	bne	$a0, $a1, .LBB0_678
+	bne	$a0, $a1, .LBB0_675
 # %bb.476:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_724
+	beqz	$a0, .LBB0_723
 # %bb.477:
 	move	$s3, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_747
+	bltz	$a0, .LBB0_745
 # %bb.478:
 	move	$s7, $a0
 	ld.w	$a2, $sp, 216
@@ -3041,19 +3041,19 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(unupack)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_758
+	bne	$a0, $a1, .LBB0_756
 # %bb.479:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s1, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s1, 0
-	beqz	$a0, .LBB0_824
+	beqz	$a0, .LBB0_825
 # %bb.480:
 	pcalau12i	$a0, %pc_hi20(.L.str.149)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.149)
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_825
+	b	.LBB0_826
 .LBB0_481:
 	ld.w	$a5, $s0, 0
 	sub.w	$s4, $a3, $a0
@@ -3066,13 +3066,13 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$a3, $s7, 0
 	sub.w	$a0, $a4, $a0
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	bne	$a0, $a3, .LBB0_700
+	bne	$a0, $a3, .LBB0_699
 # %bb.484:
 	ld.d	$a0, $fp, 32
-	beqz	$a0, .LBB0_712
+	beqz	$a0, .LBB0_711
 # %bb.485:
 	ld.d	$a3, $a0, 24
-	beqz	$a3, .LBB0_712
+	beqz	$a3, .LBB0_711
 # %bb.486:
 	addi.w	$a0, $s5, 0
 	sltu	$a4, $a0, $a2
@@ -3080,7 +3080,7 @@ cli_scanpe:                             # @cli_scanpe
 	maskeqz	$a4, $a2, $a4
 	or	$a4, $a4, $a0
 	bstrpick.d	$a0, $a4, 31, 0
-	bgeu	$a3, $a0, .LBB0_712
+	bgeu	$a3, $a0, .LBB0_711
 # %bb.487:
 	pcalau12i	$a0, %pc_hi20(.L.str.152)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.152)
@@ -3106,7 +3106,7 @@ cli_scanpe:                             # @cli_scanpe
 .LBB0_492:                              # %.critedge171
 	ori	$a0, $zero, 199
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
-	bgeu	$a0, $a1, .LBB0_721
+	bgeu	$a0, $a1, .LBB0_720
 # %bb.493:
 	ld.bu	$a0, $sp, 224
 	ori	$a1, $zero, 184
@@ -3158,8 +3158,8 @@ cli_scanpe:                             # @cli_scanpe
 	add.d	$s6, $a2, $a0
 	bstrpick.d	$a0, $s8, 31, 0
 	mul.d	$a0, $a0, $a1
-	add.d	$s3, $a2, $a0
-	ld.w	$a2, $s3, 4
+	add.d	$s4, $a2, $a0
+	ld.w	$a2, $s4, 4
 	ld.w	$a3, $s6, 4
 	ld.wu	$a0, $s6, 12
 	ld.d	$a1, $fp, 32
@@ -3201,7 +3201,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcalau12i	$a0, %pc_hi20(.L.str.177)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.177)
 	move	$a1, $s8
-	b	.LBB0_720
+	b	.LBB0_719
 .LBB0_505:
 	ori	$a3, $zero, 2
 	bltu	$s2, $a3, .LBB0_525
@@ -3225,9 +3225,9 @@ cli_scanpe:                             # @cli_scanpe
 	andi	$a0, $a0, 512
 	beqz	$a0, .LBB0_513
 # %bb.510:
-	addi.d	$s6, $s2, -1
-	slli.d	$a0, $s6, 5
-	alsl.d	$a1, $s6, $a0, 2
+	addi.d	$s7, $s2, -1
+	slli.d	$a0, $s7, 5
+	alsl.d	$a1, $s7, $a0, 2
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ldx.w	$a0, $a0, $a1
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
@@ -3243,60 +3243,105 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	bgeu	$a1, $a0, .LBB0_513
 # %bb.512:
-	addi.d	$a0, $sp, 228
-	pcalau12i	$a1, %pc_hi20(.L.str.208)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.208)
-	ori	$a2, $zero, 10
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 228
+	ori	$a1, $zero, 232
+	lu32i.d	$a1, -226560
+	lu52i.d	$a1, $a1, 577
+	ld.hu	$a2, $sp, 236
+	xor	$a0, $a0, $a1
+	lu12i.w	$a1, 12
+	ori	$a1, $a1, 899
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_559
 .LBB0_513:
 	ld.d	$a0, $fp, 56
-	ld.wu	$s0, $a0, 0
+	ld.wu	$a0, $a0, 0
 	bltu	$s2, $s3, .LBB0_518
 # %bb.514:
-	andi	$a0, $s0, 1024
-	beqz	$a0, .LBB0_518
+	andi	$a1, $a0, 1024
+	beqz	$a1, .LBB0_518
 # %bb.515:
-	addi.d	$s6, $s2, -1
-	slli.d	$a0, $s6, 5
-	alsl.d	$s3, $s6, $a0, 2
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ldx.w	$a0, $a0, $s3
-	lu12i.w	$a1, 2
-	ori	$a1, $a1, 384
-	add.d	$a1, $sp, $a1
-	ld.w	$a1, $a1, 0
-	addi.w	$a0, $a0, 96
-	bne	$a1, $a0, .LBB0_518
+	addi.d	$s5, $s2, -1
+	slli.d	$a1, $s5, 5
+	alsl.d	$a1, $s5, $a1, 2
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	ldx.w	$a2, $a2, $a1
+	lu12i.w	$a3, 2
+	ori	$a3, $a3, 384
+	add.d	$a3, $sp, $a3
+	ld.w	$a3, $a3, 0
+	addi.w	$a2, $a2, 96
+	bne	$a3, $a2, .LBB0_518
 # %bb.516:
-	pcalau12i	$a0, %pc_hi20(.L.str.218)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.218)
-	addi.d	$a0, $sp, 224
-	ori	$a2, $zero, 51
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_518
+	ld.d	$a2, $sp, 224
+	lu12i.w	$a3, 343752
+	ori	$a3, $a3, 2901
+	lu32i.d	$a3, 22358
+	lu52i.d	$a3, $a3, -378
+	xor	$a2, $a2, $a3
+	ld.d	$a3, $sp, 232
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, -163491
+	lu52i.d	$a4, $a4, 1742
+	xor	$a3, $a3, $a4
+	ld.d	$a4, $sp, 240
+	lu12i.w	$a5, -290812
+	ori	$a5, $a5, 40
+	lu32i.d	$a5, 13405
+	lu52i.d	$a5, $a5, 4
+	xor	$a4, $a4, $a5
+	ld.d	$a5, $sp, 248
+	lu12i.w	$a6, 167022
+	ori	$a6, $a6, 2433
+	lu32i.d	$a6, -327616
+	lu52i.d	$a6, $a6, -680
+	xor	$a5, $a5, $a6
+	ld.d	$a6, $sp, 256
+	lu12i.w	$a7, 167020
+	ori	$a7, $a7, 641
+	lu32i.d	$a7, -196544
+	lu52i.d	$a7, $a7, 936
+	xor	$a6, $a6, $a7
+	ld.d	$a7, $sp, 264
+	lu12i.w	$t0, -261313
+	ori	$t0, $t0, 1931
+	lu32i.d	$t0, 1259
+	lu52i.d	$t0, $t0, -327
+	xor	$a7, $a7, $t0
+	ld.d	$t0, $sp, 267
+	lu12i.w	$t1, -458674
+	ori	$t1, $t1, 3008
+	lu32i.d	$t1, 131563
+	lu52i.d	$t1, $t1, -1332
+	xor	$t0, $t0, $t1
+	or	$a2, $a2, $a3
+	or	$a3, $a4, $a5
+	or	$a4, $a6, $a7
+	or	$a2, $a2, $a3
+	or	$a3, $a4, $t0
+	or	$a2, $a2, $a3
+	bnez	$a2, .LBB0_518
 # %bb.517:
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $s3
-	ld.w	$a0, $a0, 8
-	addi.d	$a0, $a0, 2047
-	addi.d	$a0, $a0, 1118
-	bstrpick.d	$a0, $a0, 31, 0
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
-	bgeu	$a1, $a0, .LBB0_564
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
+	add.d	$a1, $a2, $a1
+	ld.w	$a1, $a1, 8
+	addi.d	$a1, $a1, 2047
+	addi.d	$a1, $a1, 1118
+	bstrpick.d	$a1, $a1, 31, 0
+	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	bgeu	$a2, $a1, .LBB0_564
 .LBB0_518:
-	ori	$a0, $zero, 2
-	bltu	$s2, $a0, .LBB0_525
+	ori	$a1, $zero, 2
+	bltu	$s2, $a1, .LBB0_525
 .LBB0_519:
-	andi	$a0, $s0, 2048
+	andi	$a0, $a0, 2048
 	beqz	$a0, .LBB0_525
 # %bb.520:
 	addi.d	$s4, $s2, -1
-	bstrpick.d	$s6, $s4, 31, 0
-	slli.d	$a0, $s6, 5
-	alsl.d	$s7, $s6, $a0, 2
+	bstrpick.d	$a1, $s4, 31, 0
+	slli.d	$a0, $a1, 5
+	alsl.d	$s7, $a1, $a0, 2
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	add.d	$s5, $a0, $s7
 	ld.w	$s0, $s5, 8
@@ -3304,69 +3349,88 @@ cli_scanpe:                             # @cli_scanpe
 	bltu	$s0, $a0, .LBB0_525
 # %bb.521:
 	ld.w	$a0, $s5, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	bne	$a1, $a0, .LBB0_525
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	bne	$a2, $a0, .LBB0_525
 # %bb.522:
-	ld.w	$s3, $s5, 12
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	add.w	$a0, $s3, $a0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB0_525
+	ld.w	$a0, $s5, 12
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+	add.w	$a2, $a0, $a2
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	bne	$a2, $a3, .LBB0_525
 # %bb.523:
-	pcalau12i	$a0, %pc_hi20(.L.str.224)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.224)
-	addi.d	$a0, $sp, 224
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_525
+	ld.w	$a2, $sp, 224
+	lu12i.w	$a3, -96075
+	ori	$a3, $a3, 1363
+	lu32i.d	$a3, 0
+	xor	$a2, $a2, $a3
+	ld.w	$a3, $sp, 227
+	lu12i.w	$a4, -82509
+	ori	$a4, $a4, 1000
+	lu32i.d	$a4, 0
+	xor	$a3, $a3, $a4
+	or	$a2, $a2, $a3
+	addi.w	$a2, $a2, 0
+	bnez	$a2, .LBB0_525
 # %bb.524:
-	addi.d	$a0, $sp, 328
-	pcalau12i	$a1, %pc_hi20(.L.str.225)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.225)
-	ori	$a2, $zero, 19
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_680
-.LBB0_525:                              # %.thread3830
+	ld.d	$a2, $sp, 328
+	ori	$a3, $zero, 232
+	lu32i.d	$a3, -174080
+	lu52i.d	$a3, $a3, 1746
+	xor	$a2, $a2, $a3
+	ld.d	$a3, $sp, 336
+	lu12i.w	$a4, 327680
+	lu32i.d	$a4, -445600
+	lu52i.d	$a4, $a4, 1292
+	xor	$a3, $a3, $a4
+	ld.d	$a4, $sp, 339
+	lu12i.w	$a5, -224458
+	ori	$a5, $a5, 80
+	lu32i.d	$a5, 22608
+	lu52i.d	$a5, $a5, 1285
+	xor	$a4, $a4, $a5
+	or	$a2, $a2, $a3
+	or	$a2, $a2, $a4
+	beqz	$a2, .LBB0_677
+.LBB0_525:                              # %.thread3828
 	ld.d	$a0, $fp, 56
 	ld.bu	$a0, $a0, 1
 	andi	$a0, $a0, 128
-	beqz	$a0, .LBB0_629
+	beqz	$a0, .LBB0_628
 # %bb.526:
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1864
 	bstrpick.d	$a0, $a0, 31, 0
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
-	bgeu	$a0, $a1, .LBB0_629
+	bgeu	$a0, $a1, .LBB0_628
 # %bb.527:
 	ld.d	$a0, $sp, 224
 	lu12i.w	$a1, 62
 	ori	$a1, $a1, 2144
 	lu32i.d	$a1, -458752
 	lu52i.d	$a1, $a1, -322
-	bne	$a0, $a1, .LBB0_629
+	bne	$a0, $a1, .LBB0_628
 # %bb.528:
 	ori	$a0, $zero, 959
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
-	bltu	$a1, $a0, .LBB0_629
+	bltu	$a1, $a0, .LBB0_628
 # %bb.529:
-	addi.d	$a0, $sp, 1177
-	pcalau12i	$a1, %pc_hi20(.L.str.237)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.237)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_629
+	ld.w	$a0, $sp, 1177
+	ld.hu	$a1, $sp, 1181
+	xori	$a0, $a0, 104
+	lu12i.w	$a2, 12
+	ori	$a2, $a2, 768
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	bnez	$a0, .LBB0_628
 # %bb.530:
-	beqz	$s2, .LBB0_629
-# %bb.531:                              # %iter.check3961
+	beqz	$s2, .LBB0_628
+# %bb.531:                              # %iter.check3959
 	ori	$a0, $zero, 4
 	bgeu	$s2, $a0, .LBB0_570
 # %bb.532:
 	move	$a0, $zero
 	move	$s0, $zero
-	b	.LBB0_610
+	b	.LBB0_609
 .LBB0_533:
 	bgeu	$s8, $a2, .LBB0_504
 # %bb.534:
@@ -3377,7 +3441,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_866
+	beqz	$a0, .LBB0_867
 # %bb.536:
 	ld.w	$a0, $sp, 216
 	lu12i.w	$a1, 2
@@ -3386,7 +3450,7 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_863
+	beqz	$a0, .LBB0_864
 # %bb.537:
 	move	$s7, $a0
 	move	$a0, $s1
@@ -3402,16 +3466,16 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	bne	$a0, $s8, .LBB0_580
 # %bb.539:
-	addi.d	$s5, $sp, 329
+	addi.d	$s3, $sp, 329
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	ori	$a1, $zero, 24
 	ori	$a3, $zero, 13
-	move	$a2, $s5
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(cli_memstr)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(upx_inflate2b)
-	ld.d	$s4, $a1, %got_pc_lo12(upx_inflate2b)
+	ld.d	$s5, $a1, %got_pc_lo12(upx_inflate2b)
 	ori	$a1, $zero, 1
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.180)
@@ -3425,11 +3489,11 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a3, $zero, 13
 	pcaddu18i	$ra, %call36(cli_memstr)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_750
+	beqz	$a0, .LBB0_748
 .LBB0_541:
 	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 .LBB0_542:
-	ori	$s5, $zero, 1
+	ori	$s3, $zero, 1
 .LBB0_543:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -3437,7 +3501,7 @@ cli_scanpe:                             # @cli_scanpe
 	ld.bu	$a0, $sp, 225
 	ld.w	$a5, $s6, 0
 	ori	$a1, $zero, 190
-	bne	$a0, $a1, .LBB0_683
+	bne	$a0, $a1, .LBB0_681
 # %bb.544:
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 396
@@ -3449,14 +3513,14 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a0, $s0, -2048
 	addi.w	$a0, $a0, -2048
 	lu12i.w	$a1, -1
-	bgeu	$a1, $a0, .LBB0_683
+	bgeu	$a1, $a0, .LBB0_681
 # %bb.545:
 	pcalau12i	$a0, %pc_hi20(.L.str.185)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.185)
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	ld.w	$a4, $s3, 0
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s0
@@ -3465,12 +3529,12 @@ cli_scanpe:                             # @cli_scanpe
 	sub.w	$a6, $a2, $s0
 	addi.d	$a3, $sp, 216
 	move	$a2, $s7
-	jirl	$ra, $s4, 0
-	bgez	$a0, .LBB0_685
+	jirl	$ra, $s5, 0
+	bgez	$a0, .LBB0_683
 # %bb.546:
-	ld.w	$a4, $s3, 0
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
-	b	.LBB0_684
+	b	.LBB0_682
 .LBB0_547:
 	ld.d	$a1, $fp, 32
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
@@ -3506,10 +3570,10 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_586
-# %bb.553:                              # %.preheader3343
-	beqz	$s2, .LBB0_582
-# %bb.554:                              # %.lr.ph3461
+	beqz	$a0, .LBB0_585
+# %bb.553:                              # %.preheader3341
+	beqz	$s2, .LBB0_581
+# %bb.554:                              # %.lr.ph3459
 	move	$s8, $zero
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 0
@@ -3518,7 +3582,7 @@ cli_scanpe:                             # @cli_scanpe
 	b	.LBB0_556
 .LBB0_555:                              #   in Loop: Header=BB0_556 Depth=1
 	addi.d	$s8, $s8, 36
-	beq	$s5, $s8, .LBB0_582
+	beq	$s5, $s8, .LBB0_581
 .LBB0_556:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	add.d	$s3, $a0, $s8
@@ -3529,7 +3593,7 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_647
+	beqz	$a0, .LBB0_646
 # %bb.558:                              #   in Loop: Header=BB0_556 Depth=1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ldx.wu	$a0, $a0, $s8
@@ -3540,7 +3604,7 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s3, 32
 	beq	$a0, $a1, .LBB0_555
-	b	.LBB0_647
+	b	.LBB0_646
 .LBB0_559:
 	ld.d	$a0, $fp, 32
 	beqz	$a0, .LBB0_572
@@ -3571,47 +3635,47 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_866
+	beqz	$a0, .LBB0_867
 # %bb.565:
-	move	$s5, $a0
+	move	$s6, $a0
 	move	$a0, $s1
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
-	move	$a1, $s5
+	move	$a1, $s6
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
-	bne	$a1, $a0, .LBB0_649
+	bne	$a1, $a0, .LBB0_648
 # %bb.566:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_664
+	beqz	$a0, .LBB0_695
 # %bb.567:
 	move	$s0, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_723
+	bltz	$a0, .LBB0_722
 # %bb.568:
 	move	$s3, $a0
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 640
 	add.d	$a0, $sp, $a0
 	ld.w	$a4, $a0, 0
-	move	$a0, $s5
+	move	$a0, $s6
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	move	$a3, $s6
+	move	$a3, $s5
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(yc_decrypt)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_745
+	beqz	$a0, .LBB0_743
 # %bb.569:
 	pcalau12i	$a0, %pc_hi20(.L.str.223)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.223)
@@ -3623,7 +3687,7 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	move	$a0, $s5
+	move	$a0, $s6
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
@@ -3631,22 +3695,22 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 56
-	ld.w	$s0, $a0, 0
-	ori	$a0, $zero, 2
-	bgeu	$s2, $a0, .LBB0_519
+	ld.w	$a0, $a0, 0
+	ori	$a1, $zero, 2
+	bgeu	$s2, $a1, .LBB0_519
 	b	.LBB0_525
-.LBB0_570:                              # %vector.main.loop.iter.check3963
+.LBB0_570:                              # %vector.main.loop.iter.check3961
 	ori	$a0, $zero, 16
-	bgeu	$s2, $a0, .LBB0_603
+	bgeu	$s2, $a0, .LBB0_602
 # %bb.571:
 	move	$a0, $zero
 	move	$s0, $zero
-	b	.LBB0_607
+	b	.LBB0_606
 .LBB0_572:
 	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_866
+	beqz	$a0, .LBB0_867
 # %bb.573:
 	move	$s5, $a0
 	move	$a0, $s1
@@ -3660,46 +3724,46 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
-	bne	$a1, $a0, .LBB0_654
+	bne	$a1, $a0, .LBB0_653
 # %bb.574:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_664
+	beqz	$a0, .LBB0_680
 # %bb.575:
 	move	$s0, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_741
+	bltz	$a0, .LBB0_740
 # %bb.576:
-	move	$s7, $a0
+	move	$s6, $a0
 	move	$a0, $s5
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	move	$a3, $s6
+	move	$a3, $s7
 	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
-	move	$a5, $s7
+	move	$a5, $s6
 	move	$a6, $fp
 	pcaddu18i	$ra, %call36(unspin)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 2
-	beq	$a0, $a1, .LBB0_766
+	beq	$a0, $a1, .LBB0_767
 # %bb.577:
-	bnez	$a0, .LBB0_768
+	bnez	$a0, .LBB0_769
 # %bb.578:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s1, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s1, 0
-	beqz	$a0, .LBB0_834
+	beqz	$a0, .LBB0_835
 # %bb.579:
 	pcalau12i	$a0, %pc_hi20(.L.str.213)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.213)
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_835
+	b	.LBB0_836
 .LBB0_580:
 	pcalau12i	$a0, %pc_hi20(.L.str.178)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.178)
@@ -3710,24 +3774,23 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-.LBB0_581:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s7
-	b	.LBB0_658
-.LBB0_582:                              # %._crit_edge3462
+	b	.LBB0_656
+.LBB0_581:                              # %._crit_edge3460
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_653
-# %bb.583:
+	beqz	$a0, .LBB0_652
+# %bb.582:
 	move	$s5, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_696
-# %bb.584:
+	bltz	$a0, .LBB0_694
+# %bb.583:
 	move	$s8, $a0
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 396
@@ -3753,8 +3816,8 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a7, $s8
 	pcaddu18i	$ra, %call36(petite_inflate2x_1to9)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_701
-# %bb.585:
+	beqz	$a0, .LBB0_700
+# %bb.584:
 	pcalau12i	$a0, %pc_hi20(.L.str.207)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.207)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -3775,28 +3838,28 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$s3, $zero, 2
 	bgeu	$s2, $s3, .LBB0_509
 	b	.LBB0_513
-.LBB0_586:
+.LBB0_585:
 	ld.w	$a1, $sp, 216
 	pcalau12i	$a0, %pc_hi20(.L.str.203)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.203)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_866
-.LBB0_587:                              # %._crit_edge3601
+	b	.LBB0_867
+.LBB0_586:                              # %._crit_edge3599
 	bstrpick.d	$a0, $s3, 31, 0
-.LBB0_588:
+.LBB0_587:
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_866
-# %bb.589:
+	beqz	$a0, .LBB0_867
+# %bb.588:
 	move	$a0, $s1
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s3, .LBB0_645
-# %bb.590:
+	bne	$a0, $s3, .LBB0_644
+# %bb.589:
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 396
 	add.d	$a0, $sp, $a0
@@ -3806,25 +3869,25 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$a1, $s6, 0
 	sub.w	$a2, $a2, $a0
 	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	bltu	$a2, $a1, .LBB0_650
-# %bb.591:
+	bltu	$a2, $a1, .LBB0_649
+# %bb.590:
 	ld.w	$a2, $s6, 12
 	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	sub.w	$a1, $a3, $a1
-	bgeu	$a1, $a2, .LBB0_650
-# %bb.592:
+	bgeu	$a1, $a2, .LBB0_649
+# %bb.591:
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 4
 	ld.w	$a2, $s4, 0
 	sub.w	$a0, $a1, $a0
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	bne	$a0, $a2, .LBB0_753
-# %bb.593:                              # %.preheader3345
+	bne	$a0, $a2, .LBB0_751
+# %bb.592:                              # %.preheader3343
 	addi.w	$a1, $s3, -4
 	ori	$a0, $zero, 13
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
-	bltu	$a1, $a0, .LBB0_651
-# %bb.594:                              # %.lr.ph3445.preheader
+	bltu	$a1, $a0, .LBB0_650
+# %bb.593:                              # %.lr.ph3443.preheader
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 8
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
@@ -3834,56 +3897,56 @@ cli_scanpe:                             # @cli_scanpe
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-.LBB0_595:                              # %.lr.ph3445
+.LBB0_594:                              # %.lr.ph3443
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a2, $s3, 31, 0
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	ldx.w	$s7, $a1, $a2
-	beqz	$s7, .LBB0_841
-# %bb.596:                              #   in Loop: Header=BB0_595 Depth=1
+	ldx.w	$s0, $a1, $a2
+	beqz	$s0, .LBB0_842
+# %bb.595:                              #   in Loop: Header=BB0_594 Depth=1
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 396
 	add.d	$a1, $sp, $a1
 	ld.w	$a1, $a1, 0
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
-	sub.d	$a1, $a1, $s7
+	sub.d	$a1, $a1, $s0
 	nor	$a1, $a1, $zero
 	slli.d	$a1, $a1, 52
 	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
 	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
-	beqz	$a1, .LBB0_598
-# %bb.597:                              #   in Loop: Header=BB0_595 Depth=1
+	beqz	$a1, .LBB0_597
+# %bb.596:                              #   in Loop: Header=BB0_594 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-.LBB0_598:                              #   in Loop: Header=BB0_595 Depth=1
+.LBB0_597:                              #   in Loop: Header=BB0_594 Depth=1
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	nor	$a1, $a1, $zero
-	add.w	$a1, $s7, $a1
-	bltu	$a1, $a0, .LBB0_840
-# %bb.599:                              #   in Loop: Header=BB0_595 Depth=1
+	add.w	$a1, $s0, $a1
+	bltu	$a1, $a0, .LBB0_841
+# %bb.598:                              #   in Loop: Header=BB0_594 Depth=1
 	ld.w	$a2, $s4, 4
 	sub.w	$a1, $a1, $a0
-	bgeu	$a1, $a2, .LBB0_840
-# %bb.600:                              #   in Loop: Header=BB0_595 Depth=1
+	bgeu	$a1, $a2, .LBB0_841
+# %bb.599:                              #   in Loop: Header=BB0_594 Depth=1
 	addi.w	$s3, $s3, 4
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	bltu	$s3, $a1, .LBB0_595
-	b	.LBB0_651
-.LBB0_601:
+	bltu	$s3, $a1, .LBB0_594
+	b	.LBB0_650
+.LBB0_600:
 	pcalau12i	$a0, %pc_hi20(.L.str.156)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.156)
 	move	$a1, $s6
-	b	.LBB0_646
-.LBB0_602:
+	b	.LBB0_645
+.LBB0_601:
 	pcalau12i	$a0, %pc_hi20(.L.str.146)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.146)
-	b	.LBB0_679
-.LBB0_603:                              # %vector.ph3964
+	b	.LBB0_676
+.LBB0_602:                              # %vector.ph3962
 	andi	$a1, $s2, 12
 	andi	$a0, $s2, 112
 	xvrepli.b	$xr0, 0
@@ -3891,7 +3954,7 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $a2, 288
 	move	$a3, $a0
 	xvori.b	$xr1, $xr0, 0
-.LBB0_604:                              # %vector.body3967
+.LBB0_603:                              # %vector.body3965
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, -288
 	ld.w	$a5, $a2, -252
@@ -3967,8 +4030,8 @@ cli_scanpe:                             # @cli_scanpe
 	xvmax.wu	$xr1, $xr1, $xr3
 	addi.d	$a3, $a3, -16
 	addi.d	$a2, $a2, 576
-	bnez	$a3, .LBB0_604
-# %bb.605:                              # %middle.block3972
+	bnez	$a3, .LBB0_603
+# %bb.604:                              # %middle.block3970
 	xvmax.wu	$xr0, $xr0, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
@@ -3977,10 +4040,10 @@ cli_scanpe:                             # @cli_scanpe
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s0, $vr0, 0
-	beq	$a0, $s2, .LBB0_612
-# %bb.606:                              # %vec.epilog.iter.check3978
-	beqz	$a1, .LBB0_610
-.LBB0_607:                              # %vec.epilog.ph3980
+	beq	$a0, $s2, .LBB0_611
+# %bb.605:                              # %vec.epilog.iter.check3976
+	beqz	$a1, .LBB0_609
+.LBB0_606:                              # %vec.epilog.ph3978
 	move	$a2, $a0
 	andi	$a0, $s2, 124
 	vreplgr2vr.w	$vr0, $s0
@@ -3990,7 +4053,7 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
 	addi.d	$a2, $a2, 72
-.LBB0_608:                              # %vec.epilog.vector.body3985
+.LBB0_607:                              # %vec.epilog.vector.body3983
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, -72
 	ld.w	$a4, $a2, -36
@@ -4012,22 +4075,22 @@ cli_scanpe:                             # @cli_scanpe
 	vmax.wu	$vr0, $vr0, $vr1
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 144
-	bnez	$a1, .LBB0_608
-# %bb.609:                              # %vec.epilog.middle.block3989
+	bnez	$a1, .LBB0_607
+# %bb.608:                              # %vec.epilog.middle.block3987
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.wu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s0, $vr0, 0
-	beq	$a0, $s2, .LBB0_612
-.LBB0_610:                              # %.lr.ph3474.preheader
+	beq	$a0, $s2, .LBB0_611
+.LBB0_609:                              # %.lr.ph3472.preheader
 	slli.d	$a1, $a0, 5
 	alsl.d	$a1, $a0, $a1, 2
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a2
 	addi.d	$a1, $a1, 4
 	sub.d	$a0, $s2, $a0
-.LBB0_611:                              # %.lr.ph3474
+.LBB0_610:                              # %.lr.ph3472
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a1, -4
 	ld.w	$a3, $a1, 0
@@ -4038,19 +4101,19 @@ cli_scanpe:                             # @cli_scanpe
 	or	$s0, $a3, $a2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 36
-	bnez	$a0, .LBB0_611
-.LBB0_612:                              # %._crit_edge3475
-	beqz	$s0, .LBB0_629
-# %bb.613:
+	bnez	$a0, .LBB0_610
+.LBB0_611:                              # %._crit_edge3473
+	beqz	$s0, .LBB0_628
+# %bb.612:
 	ld.d	$a0, $fp, 32
-	bstrpick.d	$s6, $s0, 31, 0
-	beqz	$a0, .LBB0_618
-# %bb.614:
+	bstrpick.d	$s3, $s0, 31, 0
+	beqz	$a0, .LBB0_617
+# %bb.613:
 	ld.d	$a2, $a0, 24
-	beqz	$a2, .LBB0_618
+	beqz	$a2, .LBB0_617
+# %bb.614:
+	bgeu	$a2, $s3, .LBB0_617
 # %bb.615:
-	bgeu	$a2, $s6, .LBB0_618
-# %bb.616:
 	pcalau12i	$a0, %pc_hi20(.L.str.238)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.238)
 	move	$a1, $s0
@@ -4062,76 +4125,76 @@ cli_scanpe:                             # @cli_scanpe
 	ld.bu	$a0, $fp, 41
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_16
-# %bb.617:
+# %bb.616:
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.239)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.239)
 	b	.LBB0_202
-.LBB0_618:
+.LBB0_617:
 	ori	$a1, $zero, 1
-	move	$a0, $s6
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_866
-# %bb.619:
+	beqz	$a0, .LBB0_867
+# %bb.618:
 	move	$s5, $a0
 	move	$s4, $s2
-	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
 	move	$s7, $s2
-	b	.LBB0_621
-.LBB0_620:                              #   in Loop: Header=BB0_621 Depth=1
+	b	.LBB0_620
+.LBB0_619:                              #   in Loop: Header=BB0_620 Depth=1
 	addi.w	$s7, $s7, -1
 	addi.d	$s4, $s4, -1
-	addi.d	$s3, $s3, 36
-	beqz	$s4, .LBB0_659
-.LBB0_621:                              # %.lr.ph3478
+	addi.d	$s6, $s6, 36
+	beqz	$s4, .LBB0_657
+.LBB0_620:                              # %.lr.ph3476
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $s3, 12
-	beqz	$a0, .LBB0_620
-# %bb.622:                              #   in Loop: Header=BB0_621 Depth=1
+	ld.w	$a0, $s6, 12
+	beqz	$a0, .LBB0_619
+# %bb.621:                              #   in Loop: Header=BB0_620 Depth=1
 	move	$a0, $s1
-	move	$a1, $s3
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_626
-# %bb.623:                              #   in Loop: Header=BB0_621 Depth=1
-	ld.wu	$a0, $s3, 12
+	beqz	$a0, .LBB0_625
+# %bb.622:                              #   in Loop: Header=BB0_620 Depth=1
+	ld.wu	$a0, $s6, 12
 	addi.w	$a1, $a0, -1
-	bgeu	$a1, $s0, .LBB0_626
-# %bb.624:                              #   in Loop: Header=BB0_621 Depth=1
-	ld.wu	$a1, $s3, 0
+	bgeu	$a1, $s0, .LBB0_625
+# %bb.623:                              #   in Loop: Header=BB0_620 Depth=1
+	ld.wu	$a1, $s6, 0
 	add.d	$a2, $a1, $a0
-	bltu	$s6, $a2, .LBB0_626
-# %bb.625:                              #   in Loop: Header=BB0_621 Depth=1
+	bltu	$s3, $a2, .LBB0_625
+# %bb.624:                              #   in Loop: Header=BB0_620 Depth=1
 	addi.w	$a2, $a0, 0
 	add.d	$a1, $s5, $a1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s3, 12
-	beq	$a0, $a1, .LBB0_620
-.LBB0_626:                              # %._crit_edge3479
-	beqz	$s7, .LBB0_659
-# %bb.627:
+	ld.w	$a1, $s6, 12
+	beq	$a0, $a1, .LBB0_619
+.LBB0_625:                              # %._crit_edge3477
+	beqz	$s7, .LBB0_657
+# %bb.626:
 	pcalau12i	$a0, %pc_hi20(.L.str.240)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.240)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_628:                              # %.critedge200.sink.split
+.LBB0_627:                              # %.critedge200.sink.split
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB0_629:                              # %.critedge200
+.LBB0_628:                              # %.critedge200
 	ld.d	$a0, $fp, 56
 	ld.bu	$a0, $a0, 1
 	andi	$a0, $a0, 16
-	beqz	$a0, .LBB0_721
-# %bb.630:
+	beqz	$a0, .LBB0_720
+# %bb.629:
 	ld.bu	$a0, $sp, 224
 	ori	$a1, $zero, 233
 	addi.d	$s0, $sp, 224
-	bne	$a0, $a1, .LBB0_635
-# %bb.631:
+	bne	$a0, $a1, .LBB0_634
+# %bb.630:
 	ld.w	$a0, $sp, 225
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
@@ -4145,11 +4208,11 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_rawaddr)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
-	bnez	$a0, .LBB0_633
-# %bb.632:
+	bnez	$a0, .LBB0_632
+# %bb.631:
 	ld.w	$a0, $sp, 220
-	bnez	$a0, .LBB0_721
-.LBB0_633:
+	bnez	$a0, .LBB0_720
+.LBB0_632:
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	bstrpick.d	$a1, $a0, 31, 0
 	move	$a0, $s1
@@ -4157,8 +4220,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
-	beq	$a0, $a1, .LBB0_721
-# %bb.634:
+	beq	$a0, $a1, .LBB0_720
+# %bb.633:
 	addi.d	$s0, $sp, 192
 	addi.d	$a1, $sp, 192
 	ori	$a2, $zero, 24
@@ -4166,16 +4229,20 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s3, .LBB0_721
-.LBB0_635:
-	pcalau12i	$a0, %pc_hi20(.L.str.245)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.245)
-	ori	$a2, $zero, 13
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_721
-# %bb.636:
+	bne	$a0, $s3, .LBB0_720
+.LBB0_634:
+	ld.d	$a0, $s0, 0
+	lu12i.w	$a1, 3718
+	ori	$a1, $a1, 156
+	lu52i.d	$a1, $a1, 1488
+	ld.d	$a2, $s0, 5
+	xor	$a0, $a0, $a1
+	lu12i.w	$a1, -293424
+	lu32i.d	$a1, 7
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
+	bnez	$a0, .LBB0_720
+# %bb.635:
 	ld.w	$a0, $s0, 17
 	ori	$a1, $zero, 84
 	sub.d	$s0, $a1, $a0
@@ -4192,16 +4259,16 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
 	addi.w	$s4, $zero, -1
-	beq	$a0, $s4, .LBB0_721
-# %bb.637:
+	beq	$a0, $s4, .LBB0_720
+# %bb.636:
 	addi.d	$a1, $sp, 192
 	ori	$a2, $zero, 4
 	ori	$s0, $zero, 4
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s0, .LBB0_721
-# %bb.638:
+	bne	$a0, $s0, .LBB0_720
+# %bb.637:
 	ld.w	$a0, $sp, 192
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	add.w	$s0, $a0, $a1
@@ -4210,16 +4277,16 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s4, .LBB0_721
-# %bb.639:
+	beq	$a0, $s4, .LBB0_720
+# %bb.638:
 	addi.d	$a1, $sp, 192
 	ori	$a2, $zero, 20
 	ori	$s3, $zero, 20
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s3, .LBB0_721
-# %bb.640:
+	bne	$a0, $s3, .LBB0_720
+# %bb.639:
 	ld.w	$a0, $sp, 192
 	ld.w	$a1, $sp, 197
 	ld.w	$a2, $sp, 201
@@ -4233,18 +4300,18 @@ cli_scanpe:                             # @cli_scanpe
 	masknez	$a2, $a2, $a0
 	maskeqz	$a3, $a4, $a0
 	or	$s5, $a3, $a2
-	beqz	$a1, .LBB0_665
-# %bb.641:
+	beqz	$a1, .LBB0_662
+# %bb.640:
 	ld.d	$a2, $a1, 24
-	beqz	$a2, .LBB0_665
-# %bb.642:
+	beqz	$a2, .LBB0_662
+# %bb.641:
 	sltu	$a1, $s5, $s3
 	masknez	$a3, $s5, $a1
 	maskeqz	$a1, $s3, $a1
 	or	$a1, $a1, $a3
 	bstrpick.d	$a3, $a1, 31, 0
-	bgeu	$a2, $a3, .LBB0_665
-# %bb.643:
+	bgeu	$a2, $a3, .LBB0_662
+# %bb.642:
 	pcalau12i	$a0, %pc_hi20(.L.str.247)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.247)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -4255,74 +4322,77 @@ cli_scanpe:                             # @cli_scanpe
 	ld.bu	$a0, $fp, 41
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_16
-# %bb.644:
+# %bb.643:
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.248)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.248)
 	b	.LBB0_202
-.LBB0_645:
+.LBB0_644:
 	pcalau12i	$a0, %pc_hi20(.L.str.170)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.170)
 	move	$a1, $s3
-.LBB0_646:
+.LBB0_645:
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_647:
+.LBB0_646:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-.LBB0_648:                              # %.critedge3021
+.LBB0_647:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	b	.LBB0_658
-.LBB0_649:
+	b	.LBB0_656
+.LBB0_648:
 	pcalau12i	$a0, %pc_hi20(.L.str.219)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.219)
-	b	.LBB0_655
-.LBB0_650:
+	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	pcaddu18i	$ra, %call36(cli_dbgmsg)
+	jirl	$ra, $ra, 0
+	move	$a0, $s6
+	b	.LBB0_654
+.LBB0_649:
 	pcalau12i	$a0, %pc_hi20(.L.str.161)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.161)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_651:
+.LBB0_650:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-.LBB0_652:
+.LBB0_651:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB0_451
-.LBB0_653:
+.LBB0_652:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	b	.LBB0_725
-.LBB0_654:
+	b	.LBB0_724
+.LBB0_653:
 	pcalau12i	$a0, %pc_hi20(.L.str.211)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.211)
-.LBB0_655:                              # %.critedge3021
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	move	$a0, $s5
-.LBB0_656:
+.LBB0_654:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB0_657:
+.LBB0_655:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-.LBB0_658:                              # %.critedge3021
+.LBB0_656:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -123
 	b	.LBB0_133
-.LBB0_659:                              # %._crit_edge3479.thread
+.LBB0_657:                              # %._crit_edge3477.thread
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_664
-# %bb.660:
+	beqz	$a0, .LBB0_680
+# %bb.658:
 	move	$s6, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_743
-# %bb.661:
+	bltz	$a0, .LBB0_741
+# %bb.659:
 	move	$s7, $a0
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 396
@@ -4338,29 +4408,26 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(unaspack212)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_749
-# %bb.662:
+	bne	$a0, $a1, .LBB0_747
+# %bb.660:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s0, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s0, 0
-	beqz	$a0, .LBB0_816
-# %bb.663:
+	beqz	$a0, .LBB0_817
+# %bb.661:
 	pcalau12i	$a0, %pc_hi20(.L.str.242)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.242)
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_817
-.LBB0_664:
-	move	$a0, $s5
-	b	.LBB0_725
-.LBB0_665:
-	beqz	$s5, .LBB0_721
-# %bb.666:
+	b	.LBB0_818
+.LBB0_662:
+	beqz	$s5, .LBB0_720
+# %bb.663:
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 4
-	bne	$s5, $a1, .LBB0_721
-# %bb.667:
+	bne	$s5, $a1, .LBB0_720
+# %bb.664:
 	addi.w	$a1, $s0, 4
 	masknez	$a2, $s0, $a0
 	maskeqz	$a0, $a1, $a0
@@ -4370,19 +4437,19 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s4, .LBB0_721
-# %bb.668:
+	beq	$a0, $s4, .LBB0_720
+# %bb.665:
 	bstrpick.d	$a0, $s5, 31, 0
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_721
-# %bb.669:
+	beqz	$a0, .LBB0_720
+# %bb.666:
 	move	$s5, $a0
 	bstrpick.d	$a0, $s3, 31, 0
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_867
-# %bb.670:
+	beqz	$a0, .LBB0_868
+# %bb.667:
 	move	$s0, $a0
 	move	$a0, $s1
 	move	$a1, $s0
@@ -4398,26 +4465,26 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_rawaddr)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_672
-# %bb.671:
+	bnez	$a0, .LBB0_669
+# %bb.668:
 	ld.w	$a1, $sp, 220
-	bnez	$a1, .LBB0_833
-.LBB0_672:
+	bnez	$a1, .LBB0_834
+.LBB0_669:
 	bstrpick.d	$a1, $a0, 31, 0
 	move	$a0, $s1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s4, .LBB0_833
-# %bb.673:
+	beq	$a0, $s4, .LBB0_834
+# %bb.670:
 	addi.d	$a1, $sp, 192
 	ori	$a2, $zero, 5
 	ori	$s2, $zero, 5
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_833
-# %bb.674:
+	bne	$a0, $s2, .LBB0_834
+# %bb.671:
 	ld.w	$a0, $sp, 193
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
@@ -4430,15 +4497,15 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_923
-# %bb.675:
+	beqz	$a0, .LBB0_924
+# %bb.672:
 	move	$s1, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_933
-# %bb.676:
+	bltz	$a0, .LBB0_931
+# %bb.673:
 	move	$s2, $a0
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a3, $a0, 0
@@ -4453,8 +4520,8 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a6, $s2
 	pcaddu18i	$ra, %call36(unspack)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_941
-# %bb.677:
+	beqz	$a0, .LBB0_939
+# %bb.674:
 	pcalau12i	$a0, %pc_hi20(.L.str.253)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.253)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -4471,43 +4538,46 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	move	$s0, $s1
-	b	.LBB0_868
-.LBB0_678:
+	b	.LBB0_869
+.LBB0_675:
 	pcalau12i	$a0, %pc_hi20(.L.str.147)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.147)
-.LBB0_679:                              # %.critedge3021
+.LBB0_676:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	b	.LBB0_658
-.LBB0_680:                              # %.preheader3342
-	beqz	$s4, .LBB0_778
-# %bb.681:                              # %iter.check
-	ori	$a0, $zero, 5
-	bgeu	$s2, $a0, .LBB0_727
-# %bb.682:
-	move	$a0, $zero
-	b	.LBB0_776
-.LBB0_683:
-	ld.w	$a4, $s3, 0
-.LBB0_684:
+	b	.LBB0_656
+.LBB0_677:                              # %.preheader3340
+	beqz	$s4, .LBB0_779
+# %bb.678:                              # %iter.check
+	ori	$a2, $zero, 5
+	bgeu	$s2, $a2, .LBB0_726
+# %bb.679:
+	move	$a2, $zero
+	b	.LBB0_777
+.LBB0_680:
+	move	$a0, $s5
+	b	.LBB0_724
+.LBB0_681:
+	ld.w	$a4, $s4, 0
+.LBB0_682:
 	addi.d	$a3, $sp, 216
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s8
 	move	$a2, $s7
 	ld.d	$a6, $sp, 96                    # 8-byte Folded Reload
-	jirl	$ra, $s4, 0
-	bltz	$a0, .LBB0_707
-.LBB0_685:                              # %.thread3269
+	jirl	$ra, $s5, 0
+	bltz	$a0, .LBB0_706
+.LBB0_683:                              # %.thread3267
 	pcalau12i	$a0, %pc_hi20(.L.str.186)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.186)
-.LBB0_686:                              # %.thread3280
+.LBB0_684:                              # %.thread3278
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_687:                              # %.thread3280
+.LBB0_685:                              # %.thread3278
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -4517,15 +4587,15 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_699
-# %bb.688:
+	beqz	$a0, .LBB0_698
+# %bb.686:
 	move	$s0, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_726
-# %bb.689:
+	bltz	$a0, .LBB0_725
+# %bb.687:
 	move	$s1, $a0
 	ld.wu	$a2, $sp, 216
 	move	$a1, $s7
@@ -4533,8 +4603,8 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 216
 	addi.w	$a0, $a0, 0
-	bne	$a1, $a0, .LBB0_740
-# %bb.690:
+	bne	$a1, $a0, .LBB0_739
+# %bb.688:
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -4549,14 +4619,14 @@ cli_scanpe:                             # @cli_scanpe
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s2, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s2, 0
-	beqz	$a0, .LBB0_692
-# %bb.691:
+	beqz	$a0, .LBB0_690
+# %bb.689:
 	pcalau12i	$a0, %pc_hi20(.L.str.197)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.197)
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_692:
+.LBB0_690:
 	pcalau12i	$a0, %pc_hi20(.L.str.198)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.198)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -4571,21 +4641,21 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s2, 0
 	ori	$a1, $zero, 1
-	beq	$fp, $a1, .LBB0_812
-# %bb.693:
+	beq	$fp, $a1, .LBB0_813
+# %bb.691:
 	move	$s1, $fp
-	bnez	$a0, .LBB0_695
-# %bb.694:
+	bnez	$a0, .LBB0_693
+# %bb.692:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_695:
+.LBB0_693:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 	b	.LBB0_133
-.LBB0_696:
+.LBB0_694:
 	pcalau12i	$a0, %pc_hi20(.L.str.204)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.204)
 	move	$a1, $s5
@@ -4595,22 +4665,25 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	b	.LBB0_748
-.LBB0_697:
+	b	.LBB0_746
+.LBB0_695:
+	move	$a0, $s6
+	b	.LBB0_724
+.LBB0_696:
 	pcalau12i	$a0, %pc_hi20(.L.str.157)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.157)
-.LBB0_698:
+.LBB0_697:
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_705
-.LBB0_699:
+	b	.LBB0_704
+.LBB0_698:
 	move	$a0, $s7
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -114
 	b	.LBB0_133
-.LBB0_700:
+.LBB0_699:
 	pcalau12i	$a0, %pc_hi20(.L.str.171)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.171)
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
@@ -4618,31 +4691,31 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_491
-.LBB0_701:
+.LBB0_700:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s1, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s1, 0
-	beqz	$a0, .LBB0_759
-# %bb.702:
+	beqz	$a0, .LBB0_757
+# %bb.701:
 	pcalau12i	$a0, %pc_hi20(.L.str.205)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.205)
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_760
-.LBB0_703:
+	b	.LBB0_758
+.LBB0_702:
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.111)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.111)
 	b	.LBB0_226
-.LBB0_704:
+.LBB0_703:
 	pcalau12i	$a0, %pc_hi20(.L.str.158)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.158)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_705:
+.LBB0_704:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-.LBB0_706:
+.LBB0_705:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 56
@@ -4650,18 +4723,18 @@ cli_scanpe:                             # @cli_scanpe
 	andi	$a0, $a0, 64
 	bnez	$a0, .LBB0_437
 	b	.LBB0_451
-.LBB0_707:
+.LBB0_706:
 	pcalau12i	$a0, %pc_hi20(.L.str.187)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.187)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	beqz	$a0, .LBB0_754
-# %bb.708:
+	beqz	$a0, .LBB0_752
+# %bb.707:
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-.LBB0_709:                              # %.thread3826
-	ld.w	$a4, $s3, 0
+.LBB0_708:                              # %.thread3824
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
 	addi.d	$a3, $sp, 216
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -4671,9 +4744,9 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(upx_inflate2b)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $zero, -1
-	bne	$a0, $s0, .LBB0_711
-# %bb.710:
-	ld.w	$a4, $s3, 0
+	bne	$a0, $s0, .LBB0_710
+# %bb.709:
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 21
@@ -4684,19 +4757,19 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(upx_inflate2b)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s0, .LBB0_880
-.LBB0_711:
+	beq	$a0, $s0, .LBB0_881
+.LBB0_710:
 	pcalau12i	$a0, %pc_hi20(.L.str.189)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.189)
-	b	.LBB0_686
-.LBB0_712:
+	b	.LBB0_684
+.LBB0_711:
 	ori	$a0, $zero, 26
-	bltu	$s5, $a0, .LBB0_718
-# %bb.713:
+	bltu	$s5, $a0, .LBB0_717
+# %bb.712:
 	addi.w	$a0, $s5, 0
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	bgeu	$a0, $a2, .LBB0_718
-# %bb.714:
+	bgeu	$a0, $a2, .LBB0_717
+# %bb.713:
 	move	$a0, $s1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
@@ -4706,45 +4779,52 @@ cli_scanpe:                             # @cli_scanpe
 	sub.w	$a0, $a0, $s6
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $a0, 31, 0
-	beqz	$a1, .LBB0_795
-# %bb.715:
+	beqz	$a1, .LBB0_796
+# %bb.714:
 	ld.d	$a2, $a1, 24
-	beqz	$a2, .LBB0_795
+	beqz	$a2, .LBB0_796
+# %bb.715:
+	bgeu	$a2, $a0, .LBB0_796
 # %bb.716:
-	bgeu	$a2, $a0, .LBB0_795
-# %bb.717:
 	pcalau12i	$a0, %pc_hi20(.L.str.152)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.152)
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB0_444
-.LBB0_718:
+.LBB0_717:
 	addi.w	$a1, $s5, 0
-.LBB0_719:                              # %.critedge3021
+.LBB0_718:                              # %.critedge3021
 	pcalau12i	$a0, %pc_hi20(.L.str.154)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.154)
-.LBB0_720:                              # %.critedge3021
+.LBB0_719:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_721:
+.LBB0_720:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-.LBB0_722:                              # %.critedge3021
+.LBB0_721:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB0_16
-.LBB0_723:
+.LBB0_722:
 	pcalau12i	$a0, %pc_hi20(.L.str.220)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.220)
-	b	.LBB0_742
-.LBB0_724:
+	move	$a1, $s0
+	pcaddu18i	$ra, %call36(cli_dbgmsg)
+	jirl	$ra, $ra, 0
 	move	$a0, $s0
-.LBB0_725:                              # %.critedge3021
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	move	$a0, $s6
+	b	.LBB0_746
+.LBB0_723:
+	move	$a0, $s0
+.LBB0_724:                              # %.critedge3021
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -114
 	b	.LBB0_133
-.LBB0_726:
+.LBB0_725:
 	pcalau12i	$a0, %pc_hi20(.L.str.195)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.195)
 	move	$a1, $s0
@@ -4759,41 +4839,40 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -123
 	b	.LBB0_133
-.LBB0_727:                              # %vector.main.loop.iter.check
-	ori	$a0, $zero, 17
-	bgeu	$s2, $a0, .LBB0_769
-# %bb.728:
-	move	$a0, $zero
-	b	.LBB0_773
-.LBB0_729:                              # %._crit_edge3591
+.LBB0_726:                              # %vector.main.loop.iter.check
+	ori	$a2, $zero, 17
+	bgeu	$s2, $a2, .LBB0_770
+# %bb.727:
+	move	$a2, $zero
+	b	.LBB0_774
+.LBB0_728:                              # %._crit_edge3589
 	ld.w	$a0, $sp, 216
-.LBB0_730:                              # %.thread3822
-	add.d	$a0, $a0, $s0
+.LBB0_729:                              # %.thread3820
+	add.d	$a0, $a0, $s6
 	bstrpick.d	$a0, $a0, 31, 0
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_866
+	beqz	$a0, .LBB0_867
+# %bb.730:
+	move	$s4, $a0
+	ld.w	$a1, $s3, 48
+	addi.w	$a0, $s7, 12
+	bltu	$a1, $a0, .LBB0_765
 # %bb.731:
-	move	$s7, $a0
-	ld.w	$a1, $s4, 48
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	addi.w	$a0, $a0, 12
-	bltu	$a1, $a0, .LBB0_764
+	bltu	$s6, $a1, .LBB0_765
 # %bb.732:
-	bltu	$s0, $a1, .LBB0_764
-# %bb.733:
 	ld.wu	$a0, $sp, 216
 	bstrpick.d	$a2, $a1, 31, 0
-	add.d	$a1, $s7, $a0
+	add.d	$a1, $s4, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s6, 12
+	ld.w	$a1, $s5, 12
 	bstrpick.d	$a3, $a1, 31, 0
 	move	$a2, $a0
-	bne	$a0, $a3, .LBB0_815
-# %bb.734:
+	bne	$a0, $a3, .LBB0_816
+# %bb.733:
 	pcalau12i	$a0, %pc_hi20(.L.str.133)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.133)
 	move	$a1, $a2
@@ -4804,36 +4883,36 @@ cli_scanpe:                             # @cli_scanpe
 	add.d	$a0, $sp, $a0
 	ld.bu	$a0, $a0, 0
 	ori	$a1, $zero, 232
-	bne	$a0, $a1, .LBB0_869
-# %bb.735:
+	bne	$a0, $a1, .LBB0_870
+# %bb.734:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, 40
 	ori	$a0, $zero, 4
-	bltu	$a1, $a0, .LBB0_876
-# %bb.736:
+	bltu	$a1, $a0, .LBB0_877
+# %bb.735:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 348
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a2, $a2, 36
-	add.d	$a3, $a0, $s5
+	add.d	$a3, $a0, $s0
 	addi.w	$a4, $a3, 128
-	bltu	$a4, $a2, .LBB0_876
-# %bb.737:
+	bltu	$a4, $a2, .LBB0_877
+# %bb.736:
 	addi.w	$a3, $a3, 132
 	add.w	$a1, $a2, $a1
-	bltu	$a1, $a3, .LBB0_876
+	bltu	$a1, $a3, .LBB0_877
+# %bb.737:
+	bgeu	$a2, $a3, .LBB0_877
 # %bb.738:
-	bgeu	$a2, $a3, .LBB0_876
-# %bb.739:
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	add.d	$a0, $s3, $a0
+	add.d	$a0, $s0, $a0
 	sub.d	$a0, $a0, $a1
-	addi.w	$s3, $a0, 133
-	b	.LBB0_870
-.LBB0_740:
+	addi.w	$s3, $a0, 128
+	b	.LBB0_871
+.LBB0_739:
 	pcalau12i	$a0, %pc_hi20(.L.str.196)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.196)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -4849,40 +4928,39 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -123
 	b	.LBB0_133
-.LBB0_741:
+.LBB0_740:
 	pcalau12i	$a0, %pc_hi20(.L.str.212)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.212)
-.LBB0_742:                              # %.critedge3021
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	b	.LBB0_744
-.LBB0_743:
+	b	.LBB0_742
+.LBB0_741:
 	pcalau12i	$a0, %pc_hi20(.L.str.241)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.241)
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	move	$a0, $s6
-.LBB0_744:                              # %.critedge3021
+.LBB0_742:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s5
-	b	.LBB0_748
-.LBB0_745:
+	b	.LBB0_746
+.LBB0_743:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s1, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s1, 0
-	beqz	$a0, .LBB0_810
-# %bb.746:
+	beqz	$a0, .LBB0_811
+# %bb.744:
 	pcalau12i	$a0, %pc_hi20(.L.str.221)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.221)
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_811
-.LBB0_747:
+	b	.LBB0_812
+.LBB0_745:
 	pcalau12i	$a0, %pc_hi20(.L.str.148)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.148)
 	move	$a1, $s3
@@ -4892,14 +4970,14 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-.LBB0_748:                              # %.critedge3021
+.LBB0_746:                              # %.critedge3021
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -123
 	b	.LBB0_133
-.LBB0_749:
+.LBB0_747:
 	pcalau12i	$a0, %pc_hi20(.L.str.244)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.244)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -4915,23 +4993,23 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	move	$s5, $s6
-	b	.LBB0_628
-.LBB0_750:
+	b	.LBB0_627
+.LBB0_748:
 	pcalau12i	$a0, %pc_hi20(.L.str.181)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.181)
 	ori	$a1, $zero, 24
 	ori	$a3, $zero, 13
-	move	$a2, $s5
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(cli_memstr)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(upx_inflate2d)
-	ld.d	$s4, $a1, %got_pc_lo12(upx_inflate2d)
+	ld.d	$s5, $a1, %got_pc_lo12(upx_inflate2d)
 	ori	$a1, $zero, 1
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.182)
 	addi.d	$s0, $a1, %pc_lo12(.L.str.182)
-	bnez	$a0, .LBB0_752
-# %bb.751:
+	bnez	$a0, .LBB0_750
+# %bb.749:
 	pcalau12i	$a0, %pc_hi20(.L.str.181)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.181)
 	ori	$a1, $zero, 24
@@ -4939,22 +5017,22 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $sp, 337
 	pcaddu18i	$ra, %call36(cli_memstr)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_878
-.LBB0_752:
+	beqz	$a0, .LBB0_879
+.LBB0_750:
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	b	.LBB0_542
-.LBB0_753:
+.LBB0_751:
 	pcalau12i	$a0, %pc_hi20(.L.str.171)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.171)
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_651
-.LBB0_754:
+	b	.LBB0_650
+.LBB0_752:
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	beqz	$a0, .LBB0_881
-.LBB0_755:
-	ld.w	$a4, $s3, 0
+	beqz	$a0, .LBB0_882
+.LBB0_753:
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
 	addi.d	$a3, $sp, 216
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -4964,9 +5042,9 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(upx_inflate2d)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $zero, -1
-	bne	$a0, $s0, .LBB0_757
-# %bb.756:
-	ld.w	$a4, $s3, 0
+	bne	$a0, $s0, .LBB0_755
+# %bb.754:
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 21
@@ -4977,12 +5055,12 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(upx_inflate2d)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s0, .LBB0_888
-.LBB0_757:
+	beq	$a0, $s0, .LBB0_889
+.LBB0_755:
 	pcalau12i	$a0, %pc_hi20(.L.str.191)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.191)
-	b	.LBB0_686
-.LBB0_758:
+	b	.LBB0_684
+.LBB0_756:
 	pcalau12i	$a0, %pc_hi20(.L.str.151)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.151)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -5002,12 +5080,12 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	bnez	$s6, .LBB0_395
 	b	.LBB0_492
-.LBB0_759:
+.LBB0_757:
 	pcalau12i	$a0, %pc_hi20(.L.str.206)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.206)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_760:
+.LBB0_758:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
@@ -5037,32 +5115,41 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s1, 0
 	ori	$a1, $zero, 1
-	bne	$fp, $a1, .LBB0_930
-.LBB0_761:
-	bnez	$a0, .LBB0_763
-# %bb.762:
+	bne	$fp, $a1, .LBB0_762
+# %bb.759:
+	bnez	$a0, .LBB0_761
+# %bb.760:
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_763:
+.LBB0_761:
 	move	$a0, $s5
 	b	.LBB0_234
+.LBB0_762:
+	bnez	$a0, .LBB0_764
+# %bb.763:
+	move	$a0, $s5
+	pcaddu18i	$ra, %call36(unlink)
+	jirl	$ra, $ra, 0
 .LBB0_764:
+	move	$a0, $s5
+	b	.LBB0_721
+.LBB0_765:
 	pcalau12i	$a0, %pc_hi20(.L.str.131)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.131)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_765:                              # %.thread3171
-	move	$a0, $s7
+.LBB0_766:                              # %.thread3169
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ori	$s6, $zero, 1
 	b	.LBB0_362
-.LBB0_766:
+.LBB0_767:
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
@@ -5078,7 +5165,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	beqz	$s4, .LBB0_513
-# %bb.767:
+# %bb.768:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -5086,12 +5173,12 @@ cli_scanpe:                             # @cli_scanpe
 	pcalau12i	$a1, %pc_hi20(.L.str.216)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.216)
 	b	.LBB0_202
-.LBB0_768:
+.LBB0_769:
 	pcalau12i	$a0, %pc_hi20(.L.str.217)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.217)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
@@ -5105,57 +5192,57 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB0_513
-.LBB0_769:                              # %vector.ph3937
-	andi	$a1, $s6, 12
-	bstrpick.d	$a0, $s6, 31, 4
-	slli.d	$a0, $a0, 4
+.LBB0_770:                              # %vector.ph3935
+	andi	$a3, $a1, 12
+	bstrpick.d	$a2, $a1, 31, 4
+	slli.d	$a2, $a2, 4
 	xvreplgr2vr.w	$xr0, $s0
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$a2, $a2, 296
-	move	$a3, $a0
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$a4, $a4, 296
+	move	$a5, $a2
 	xvori.b	$xr1, $xr0, 0
-.LBB0_770:                              # %vector.body3942
+.LBB0_771:                              # %vector.body3940
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, -288
-	ld.w	$a5, $a2, -252
-	ld.w	$a6, $a2, -216
-	ld.w	$a7, $a2, -180
-	ld.w	$t0, $a2, -144
-	ld.w	$t1, $a2, -108
-	ld.w	$t2, $a2, -72
-	ld.w	$t3, $a2, -36
-	vinsgr2vr.w	$vr2, $t0, 0
-	vinsgr2vr.w	$vr2, $t1, 1
-	vinsgr2vr.w	$vr2, $t2, 2
-	vinsgr2vr.w	$vr2, $t3, 3
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr3, $a5, 1
-	vinsgr2vr.w	$vr3, $a6, 2
-	vinsgr2vr.w	$vr3, $a7, 3
+	ld.w	$a6, $a4, -288
+	ld.w	$a7, $a4, -252
+	ld.w	$t0, $a4, -216
+	ld.w	$t1, $a4, -180
+	ld.w	$t2, $a4, -144
+	ld.w	$t3, $a4, -108
+	ld.w	$t4, $a4, -72
+	ld.w	$t5, $a4, -36
+	vinsgr2vr.w	$vr2, $t2, 0
+	vinsgr2vr.w	$vr2, $t3, 1
+	vinsgr2vr.w	$vr2, $t4, 2
+	vinsgr2vr.w	$vr2, $t5, 3
+	vinsgr2vr.w	$vr3, $a6, 0
+	vinsgr2vr.w	$vr3, $a7, 1
+	vinsgr2vr.w	$vr3, $t0, 2
+	vinsgr2vr.w	$vr3, $t1, 3
 	xvpermi.q	$xr3, $xr2, 2
-	ld.w	$a4, $a2, 0
-	ld.w	$a5, $a2, 36
-	ld.w	$a6, $a2, 72
-	ld.w	$a7, $a2, 108
-	ld.w	$t0, $a2, 144
-	ld.w	$t1, $a2, 180
-	ld.w	$t2, $a2, 216
-	ld.w	$t3, $a2, 252
-	vinsgr2vr.w	$vr2, $t0, 0
-	vinsgr2vr.w	$vr2, $t1, 1
-	vinsgr2vr.w	$vr2, $t2, 2
-	vinsgr2vr.w	$vr2, $t3, 3
-	vinsgr2vr.w	$vr4, $a4, 0
-	vinsgr2vr.w	$vr4, $a5, 1
-	vinsgr2vr.w	$vr4, $a6, 2
-	vinsgr2vr.w	$vr4, $a7, 3
+	ld.w	$a6, $a4, 0
+	ld.w	$a7, $a4, 36
+	ld.w	$t0, $a4, 72
+	ld.w	$t1, $a4, 108
+	ld.w	$t2, $a4, 144
+	ld.w	$t3, $a4, 180
+	ld.w	$t4, $a4, 216
+	ld.w	$t5, $a4, 252
+	vinsgr2vr.w	$vr2, $t2, 0
+	vinsgr2vr.w	$vr2, $t3, 1
+	vinsgr2vr.w	$vr2, $t4, 2
+	vinsgr2vr.w	$vr2, $t5, 3
+	vinsgr2vr.w	$vr4, $a6, 0
+	vinsgr2vr.w	$vr4, $a7, 1
+	vinsgr2vr.w	$vr4, $t0, 2
+	vinsgr2vr.w	$vr4, $t1, 3
 	xvpermi.q	$xr4, $xr2, 2
 	xvmin.wu	$xr0, $xr3, $xr0
 	xvmin.wu	$xr1, $xr4, $xr1
-	addi.d	$a3, $a3, -16
-	addi.d	$a2, $a2, 576
-	bnez	$a3, .LBB0_770
-# %bb.771:                              # %middle.block3946
+	addi.d	$a5, $a5, -16
+	addi.d	$a4, $a4, 576
+	bnez	$a5, .LBB0_771
+# %bb.772:                              # %middle.block3944
 	xvmin.wu	$xr0, $xr0, $xr1
 	xvpermi.q	$xr1, $xr0, 1
 	vmin.wu	$vr0, $vr0, $vr1
@@ -5164,74 +5251,74 @@ cli_scanpe:                             # @cli_scanpe
 	vbsrl.v	$vr1, $vr0, 4
 	vmin.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s0, $vr0, 0
-	beq	$a0, $s6, .LBB0_778
-# %bb.772:                              # %vec.epilog.iter.check
-	beqz	$a1, .LBB0_776
-.LBB0_773:                              # %vec.epilog.ph
-	move	$a2, $a0
-	bstrpick.d	$a0, $s6, 31, 2
-	slli.d	$a0, $a0, 2
+	beq	$a2, $a1, .LBB0_779
+# %bb.773:                              # %vec.epilog.iter.check
+	beqz	$a3, .LBB0_777
+.LBB0_774:                              # %vec.epilog.ph
+	move	$a4, $a2
+	bstrpick.d	$a2, $a1, 31, 2
+	slli.d	$a2, $a2, 2
 	vreplgr2vr.w	$vr0, $s0
-	sub.d	$a1, $a2, $a0
-	slli.d	$a3, $a2, 5
-	alsl.d	$a2, $a2, $a3, 2
-	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a2, $a2, $a3
-	addi.d	$a2, $a2, 80
-.LBB0_774:                              # %vec.epilog.vector.body
+	sub.d	$a3, $a4, $a2
+	slli.d	$a5, $a4, 5
+	alsl.d	$a4, $a4, $a5, 2
+	ld.d	$a5, $sp, 168                   # 8-byte Folded Reload
+	add.d	$a4, $a4, $a5
+	addi.d	$a4, $a4, 80
+.LBB0_775:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $a2, -72
-	ld.w	$a4, $a2, -36
-	ld.w	$a5, $a2, 0
-	ld.w	$a6, $a2, 36
-	vinsgr2vr.w	$vr1, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 1
-	vinsgr2vr.w	$vr1, $a5, 2
-	vinsgr2vr.w	$vr1, $a6, 3
+	ld.w	$a5, $a4, -72
+	ld.w	$a6, $a4, -36
+	ld.w	$a7, $a4, 0
+	ld.w	$t0, $a4, 36
+	vinsgr2vr.w	$vr1, $a5, 0
+	vinsgr2vr.w	$vr1, $a6, 1
+	vinsgr2vr.w	$vr1, $a7, 2
+	vinsgr2vr.w	$vr1, $t0, 3
 	vmin.wu	$vr0, $vr1, $vr0
-	addi.d	$a1, $a1, 4
-	addi.d	$a2, $a2, 144
-	bnez	$a1, .LBB0_774
-# %bb.775:                              # %vec.epilog.middle.block
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 144
+	bnez	$a3, .LBB0_775
+# %bb.776:                              # %vec.epilog.middle.block
 	vbsrl.v	$vr1, $vr0, 8
 	vmin.wu	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vmin.wu	$vr0, $vr1, $vr0
 	vpickve2gr.w	$s0, $vr0, 0
-	beq	$a0, $s6, .LBB0_778
-.LBB0_776:                              # %.lr.ph3465.preheader
-	slli.d	$a1, $a0, 5
-	alsl.d	$a1, $a0, $a1, 2
-	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $a2
-	addi.d	$a1, $a1, 8
-	sub.d	$a0, $s6, $a0
-.LBB0_777:                              # %.lr.ph3465
+	beq	$a2, $a1, .LBB0_779
+.LBB0_777:                              # %.lr.ph3463.preheader
+	slli.d	$a3, $a2, 5
+	alsl.d	$a3, $a2, $a3, 2
+	ld.d	$a4, $sp, 168                   # 8-byte Folded Reload
+	add.d	$a3, $a3, $a4
+	addi.d	$a3, $a3, 8
+	sub.d	$a1, $a1, $a2
+.LBB0_778:                              # %.lr.ph3463
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a1, 0
-	sltu	$a3, $a2, $s0
-	masknez	$a4, $s0, $a3
-	maskeqz	$a2, $a2, $a3
-	or	$s0, $a2, $a4
-	addi.d	$a0, $a0, -1
-	addi.d	$a1, $a1, 36
-	bnez	$a0, .LBB0_777
-.LBB0_778:                              # %._crit_edge3466
-	ld.d	$a0, $fp, 32
+	ld.w	$a2, $a3, 0
+	sltu	$a4, $a2, $s0
+	masknez	$a5, $s0, $a4
+	maskeqz	$a2, $a2, $a4
+	or	$s0, $a2, $a5
+	addi.d	$a1, $a1, -1
+	addi.d	$a3, $a3, 36
+	bnez	$a1, .LBB0_778
+.LBB0_779:                              # %._crit_edge3464
+	ld.d	$a2, $fp, 32
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $s3
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
-	sub.d	$a1, $a2, $a1
-	add.w	$a1, $a1, $s0
+	add.d	$a0, $a1, $a0
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	sub.d	$a0, $a1, $a0
+	add.w	$a1, $a0, $s0
 	st.w	$a1, $sp, 216
-	beqz	$a0, .LBB0_783
-# %bb.779:
-	ld.d	$a2, $a0, 24
-	bstrpick.d	$a0, $a1, 31, 0
 	beqz	$a2, .LBB0_784
 # %bb.780:
-	bgeu	$a2, $a0, .LBB0_784
+	ld.d	$a2, $a2, 24
+	bstrpick.d	$a0, $a1, 31, 0
+	beqz	$a2, .LBB0_785
 # %bb.781:
+	bgeu	$a2, $a0, .LBB0_785
+# %bb.782:
 	pcalau12i	$a0, %pc_hi20(.L.str.226)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.226)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -5242,20 +5329,20 @@ cli_scanpe:                             # @cli_scanpe
 	ld.bu	$a0, $fp, 41
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_16
-# %bb.782:
+# %bb.783:
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.227)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.227)
 	b	.LBB0_202
-.LBB0_783:                              # %._crit_edge3466._crit_edge
+.LBB0_784:                              # %._crit_edge3464._crit_edge
 	bstrpick.d	$a0, $a1, 31, 0
-.LBB0_784:
+.LBB0_785:
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_792
-# %bb.785:
+	beqz	$a0, .LBB0_793
+# %bb.786:
 	move	$a0, $s1
 	move	$a1, $zero
 	move	$a2, $zero
@@ -5267,32 +5354,32 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a1, $s0, 31, 0
-	bne	$a0, $a1, .LBB0_793
-# %bb.786:                              # %.preheader3341
-	beqz	$s4, .LBB0_803
-# %bb.787:                              # %.lr.ph3469
+	bne	$a0, $a1, .LBB0_794
+# %bb.787:                              # %.preheader3339
+	beqz	$s4, .LBB0_804
+# %bb.788:                              # %.lr.ph3467
 	move	$s8, $zero
 	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	bstrpick.d	$a1, $a1, 31, 0
 	sub.d	$s6, $a0, $a1
-	b	.LBB0_789
-.LBB0_788:                              #   in Loop: Header=BB0_789 Depth=1
+	b	.LBB0_790
+.LBB0_789:                              #   in Loop: Header=BB0_790 Depth=1
 	addi.d	$s8, $s8, 36
-	beq	$s7, $s8, .LBB0_803
-.LBB0_789:                              # =>This Inner Loop Header: Depth=1
+	beq	$s7, $s8, .LBB0_804
+.LBB0_790:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	add.d	$s3, $a0, $s8
 	ld.w	$a0, $s3, 12
-	beqz	$a0, .LBB0_788
-# %bb.790:                              #   in Loop: Header=BB0_789 Depth=1
+	beqz	$a0, .LBB0_789
+# %bb.791:                              #   in Loop: Header=BB0_790 Depth=1
 	move	$a0, $s1
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_794
-# %bb.791:                              #   in Loop: Header=BB0_789 Depth=1
+	beqz	$a0, .LBB0_795
+# %bb.792:                              #   in Loop: Header=BB0_790 Depth=1
 	ld.wu	$a0, $s3, 0
 	ld.w	$a2, $s3, 12
 	add.d	$a1, $s6, $a0
@@ -5300,42 +5387,42 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s3, 12
-	beq	$a0, $a1, .LBB0_788
-	b	.LBB0_794
-.LBB0_792:
+	beq	$a0, $a1, .LBB0_789
+	b	.LBB0_795
+.LBB0_793:
 	ld.w	$a1, $sp, 216
 	pcalau12i	$a0, %pc_hi20(.L.str.228)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.228)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_866
-.LBB0_793:
+	b	.LBB0_867
+.LBB0_794:
 	pcalau12i	$a0, %pc_hi20(.L.str.229)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.229)
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_794:
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	b	.LBB0_656
 .LBB0_795:
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	b	.LBB0_654
+.LBB0_796:
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_866
-# %bb.796:
+	beqz	$a0, .LBB0_867
+# %bb.797:
 	move	$a0, $s1
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s6, .LBB0_875
-# %bb.797:                              # %.preheader3344
+	bne	$a0, $s6, .LBB0_876
+# %bb.798:                              # %.preheader3342
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, -2
-	beqz	$a0, .LBB0_887
-# %bb.798:                              # %.lr.ph3453
+	beqz	$a0, .LBB0_888
+# %bb.799:                              # %.lr.ph3451
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 396
 	add.d	$a1, $sp, $a1
@@ -5344,7 +5431,7 @@ cli_scanpe:                             # @cli_scanpe
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	ori	$a2, $zero, 2
 	lu12i.w	$a3, -2
-.LBB0_799:                              # =>This Inner Loop Header: Depth=1
+.LBB0_800:                              # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a4, $s6, 31, 0
 	addi.d	$a5, $s6, 1
 	bstrpick.d	$a5, $a5, 31, 0
@@ -5354,8 +5441,8 @@ cli_scanpe:                             # @cli_scanpe
 	slli.d	$a5, $a5, 8
 	or	$a5, $a5, $a4
 	addi.d	$a4, $a5, -1
-	bltu	$a4, $a2, .LBB0_890
-# %bb.800:                              #   in Loop: Header=BB0_799 Depth=1
+	bltu	$a4, $a2, .LBB0_891
+# %bb.801:                              #   in Loop: Header=BB0_800 Depth=1
 	ld.w	$a4, $s7, 0
 	slli.d	$a5, $a5, 12
 	sub.d	$a5, $a5, $a1
@@ -5363,30 +5450,30 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
 	addi.w	$a6, $a6, 1
 	st.d	$a6, $sp, 104                   # 8-byte Folded Spill
-	bltu	$a5, $a4, .LBB0_889
-# %bb.801:                              #   in Loop: Header=BB0_799 Depth=1
+	bltu	$a5, $a4, .LBB0_890
+# %bb.802:                              #   in Loop: Header=BB0_800 Depth=1
 	ld.w	$a6, $s7, 4
 	sub.w	$a4, $a5, $a4
-	bgeu	$a4, $a6, .LBB0_889
-# %bb.802:                              #   in Loop: Header=BB0_799 Depth=1
+	bgeu	$a4, $a6, .LBB0_890
+# %bb.803:                              #   in Loop: Header=BB0_800 Depth=1
 	addi.w	$s6, $s6, 2
-	bltu	$s6, $a0, .LBB0_799
-	b	.LBB0_890
-.LBB0_803:                              # %._crit_edge3470
+	bltu	$s6, $a0, .LBB0_800
+	b	.LBB0_891
+.LBB0_804:                              # %._crit_edge3468
 	ld.wu	$a0, $s5, 12
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_864
-# %bb.804:
+	beqz	$a0, .LBB0_865
+# %bb.805:
 	move	$s3, $a0
 	move	$a0, $s1
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
 	ld.w	$a7, $s5, 12
-	beqz	$a0, .LBB0_839
-# %bb.805:
+	beqz	$a0, .LBB0_840
+# %bb.806:
 	move	$a0, $s1
 	move	$a1, $s3
 	move	$a2, $a7
@@ -5394,8 +5481,8 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.w	$a7, $s5, 12
 	bstrpick.d	$a1, $a7, 31, 0
-	bne	$a0, $a1, .LBB0_839
-# %bb.806:
+	bne	$a0, $a1, .LBB0_840
+# %bb.807:
 	ld.w	$a1, $sp, 216
 	ld.w	$a4, $s5, 0
 	lu12i.w	$a0, 2
@@ -5414,8 +5501,8 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	beqz	$s0, .LBB0_915
-# %bb.807:
+	beqz	$s0, .LBB0_916
+# %bb.808:
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -5424,22 +5511,22 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_525
-.LBB0_808:                              # %.thread3163
+.LBB0_809:                              # %.thread3161
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ori	$s8, $zero, 1280
 	b	.LBB0_322
-.LBB0_809:
-	move	$a0, $s5
-	b	.LBB0_865
 .LBB0_810:
+	move	$a0, $s5
+	b	.LBB0_866
+.LBB0_811:
 	pcalau12i	$a0, %pc_hi20(.L.str.222)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.222)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_811:
-	move	$a0, $s5
+.LBB0_812:
+	move	$a0, $s6
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
@@ -5468,29 +5555,32 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s1, 0
 	ori	$a1, $zero, 1
-	bne	$fp, $a1, .LBB0_836
-.LBB0_812:
-	bnez	$a0, .LBB0_814
+	bne	$fp, $a1, .LBB0_837
 .LBB0_813:
+	bnez	$a0, .LBB0_815
+.LBB0_814:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_814:
+.LBB0_815:
 	move	$a0, $s0
 	b	.LBB0_234
-.LBB0_815:
+.LBB0_816:
 	pcalau12i	$a0, %pc_hi20(.L.str.132)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.132)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	b	.LBB0_581
-.LBB0_816:
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+	move	$a0, $s4
+	b	.LBB0_656
+.LBB0_817:
 	pcalau12i	$a0, %pc_hi20(.L.str.243)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.243)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_817:
+.LBB0_818:
 	move	$a0, $s5
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
@@ -5520,31 +5610,31 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s0, 0
 	ori	$a1, $zero, 1
-	bne	$fp, $a1, .LBB0_821
-# %bb.818:
-	bnez	$a0, .LBB0_820
+	bne	$fp, $a1, .LBB0_822
 # %bb.819:
+	bnez	$a0, .LBB0_821
+# %bb.820:
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_820:
+.LBB0_821:
 	move	$a0, $s6
 	b	.LBB0_234
-.LBB0_821:
-	bnez	$a0, .LBB0_823
-# %bb.822:
+.LBB0_822:
+	bnez	$a0, .LBB0_824
+# %bb.823:
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_823:
-	move	$a0, $s6
-	b	.LBB0_722
 .LBB0_824:
+	move	$a0, $s6
+	b	.LBB0_721
+.LBB0_825:
 	pcalau12i	$a0, %pc_hi20(.L.str.150)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.150)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_825:
+.LBB0_826:
 	move	$a0, $s0
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
@@ -5574,40 +5664,40 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s1, 0
 	ori	$a1, $zero, 1
-	bne	$fp, $a1, .LBB0_829
-# %bb.826:
-	bnez	$a0, .LBB0_828
+	bne	$fp, $a1, .LBB0_830
 # %bb.827:
+	bnez	$a0, .LBB0_829
+# %bb.828:
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_828:
+.LBB0_829:
 	move	$a0, $s3
 	b	.LBB0_234
-.LBB0_829:
-	bnez	$a0, .LBB0_831
-# %bb.830:
+.LBB0_830:
+	bnez	$a0, .LBB0_832
+# %bb.831:
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_831:
-	move	$a0, $s3
-	b	.LBB0_722
 .LBB0_832:
+	move	$a0, $s3
+	b	.LBB0_721
+.LBB0_833:
 	pcalau12i	$a0, %pc_hi20(.L.str.159)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.159)
-	b	.LBB0_698
-.LBB0_833:
+	b	.LBB0_697
+.LBB0_834:
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB0_868
-.LBB0_834:
+	b	.LBB0_869
+.LBB0_835:
 	pcalau12i	$a0, %pc_hi20(.L.str.214)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.214)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_835:
+.LBB0_836:
 	move	$a0, $s5
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
@@ -5615,10 +5705,10 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(fsync)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	move	$a0, $s6
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
@@ -5627,27 +5717,27 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a0, $a0, %pc_lo12(.L.str.138)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	move	$a0, $s6
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(cli_magic_scandesc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	move	$a0, $s7
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s1, 0
 	ori	$a1, $zero, 1
-	beq	$fp, $a1, .LBB0_812
-.LBB0_836:
-	bnez	$a0, .LBB0_838
-# %bb.837:
+	beq	$fp, $a1, .LBB0_813
+.LBB0_837:
+	bnez	$a0, .LBB0_839
+# %bb.838:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_838:
-	move	$a0, $s0
-	b	.LBB0_722
 .LBB0_839:
+	move	$a0, $s0
+	b	.LBB0_721
+.LBB0_840:
 	pcalau12i	$a0, %pc_hi20(.L.str.230)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.230)
 	move	$a1, $a7
@@ -5657,8 +5747,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s3
-	b	.LBB0_656
-.LBB0_840:                              # %.loopexit3346
+	b	.LBB0_654
+.LBB0_841:                              # %.loopexit3344
 	pcalau12i	$a0, %pc_hi20(.L.str.173)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.173)
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
@@ -5667,22 +5757,22 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ldx.w	$a0, $a0, $a1
-	bnez	$a0, .LBB0_651
-.LBB0_841:                              # %.loopexit3346.thread
+	bnez	$a0, .LBB0_650
+.LBB0_842:                              # %.loopexit3344.thread
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	addi.w	$s3, $a0, 1
 	slli.d	$a0, $s3, 5
 	alsl.d	$a0, $s3, $a0, 2
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_863
-# %bb.842:
+	beqz	$a0, .LBB0_864
+# %bb.843:
 	move	$s4, $a0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a0, $s4, 0
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	beqz	$a0, .LBB0_853
-# %bb.843:                              # %.lr.ph3449.preheader
+	beqz	$a0, .LBB0_854
+# %bb.844:                              # %.lr.ph3447.preheader
 	ori	$a0, $zero, 2
 	sltu	$a1, $a0, $s3
 	masknez	$a0, $a0, $a1
@@ -5691,17 +5781,17 @@ cli_scanpe:                             # @cli_scanpe
 	bstrpick.d	$a0, $a0, 31, 0
 	ori	$a2, $zero, 17
 	ori	$a1, $zero, 1
-	bltu	$s3, $a2, .LBB0_851
-# %bb.844:                              # %vector.scevcheck
+	bltu	$s3, $a2, .LBB0_852
+# %bb.845:                              # %vector.scevcheck
 	addi.d	$a2, $a0, -2
 	bstrpick.d	$a3, $a2, 29, 0
 	lu12i.w	$a4, 262143
 	ori	$a4, $a4, 4095
-	beq	$a3, $a4, .LBB0_851
-# %bb.845:                              # %vector.scevcheck
+	beq	$a3, $a4, .LBB0_852
+# %bb.846:                              # %vector.scevcheck
 	srli.d	$a2, $a2, 30
-	bnez	$a2, .LBB0_851
-# %bb.846:                              # %vector.memcheck
+	bnez	$a2, .LBB0_852
+# %bb.847:                              # %vector.memcheck
 	addi.d	$a2, $s4, 36
 	ori	$a3, $zero, 36
 	mul.d	$a3, $a0, $a3
@@ -5716,8 +5806,8 @@ cli_scanpe:                             # @cli_scanpe
 	add.d	$a5, $sp, $a5
 	sltu	$a5, $a5, $a3
 	and	$a4, $a4, $a5
-	bnez	$a4, .LBB0_851
-# %bb.847:                              # %vector.memcheck
+	bnez	$a4, .LBB0_852
+# %bb.848:                              # %vector.memcheck
 	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$a4, $a5, 12
 	alsl.d	$a5, $a0, $a5, 2
@@ -5725,35 +5815,33 @@ cli_scanpe:                             # @cli_scanpe
 	sltu	$a2, $a2, $a5
 	sltu	$a3, $a4, $a3
 	and	$a2, $a2, $a3
-	bnez	$a2, .LBB0_851
-# %bb.848:                              # %vector.ph
+	bnez	$a2, .LBB0_852
+# %bb.849:                              # %vector.ph
 	addi.d	$a2, $a0, -1
 	move	$a4, $zero
 	move	$a3, $a2
+	lu12i.w	$a1, 2
+	ori	$a1, $a1, 396
+	add.d	$a1, $sp, $a1
+	ld.w	$a5, $a1, 0
 	bstrins.d	$a3, $zero, 2, 0
-	ori	$a5, $zero, 1
+	ori	$a6, $zero, 1
 	move	$a1, $a2
-	bstrins.d	$a1, $a5, 2, 0
+	bstrins.d	$a1, $a6, 2, 0
+	nor	$a5, $a5, $zero
+	xvreplgr2vr.w	$xr0, $a5
 	slli.d	$a5, $a2, 2
 	bstrins.d	$a5, $zero, 4, 0
 	addi.d	$a6, $s4, 144
 	addi.w	$a7, $zero, -28
 	lu32i.d	$a7, 0
-	xvrepli.b	$xr0, -1
-.LBB0_849:                              # %vector.body
+.LBB0_850:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	lu12i.w	$t0, 2
-	ori	$t0, $t0, 396
-	add.d	$t0, $sp, $t0
-	vld	$vr1, $t0, 0
 	addi.d	$t0, $a4, 4
 	and	$t0, $t0, $a7
 	ld.d	$t1, $sp, 48                    # 8-byte Folded Reload
-	xvldx	$xr2, $t1, $t0
-	xvxor.v	$xr1, $xr1, $xr0
-	xvpermi.d	$xr1, $xr1, 68
-	xvrepl128vei.w	$xr1, $xr1, 0
-	xvadd.w	$xr1, $xr2, $xr1
+	xvldx	$xr1, $t1, $t0
+	xvadd.w	$xr1, $xr1, $xr0
 	xvstelm.w	$xr1, $a6, -108, 0
 	xvstelm.w	$xr1, $a6, -72, 1
 	xvstelm.w	$xr1, $a6, -36, 2
@@ -5764,16 +5852,16 @@ cli_scanpe:                             # @cli_scanpe
 	xvstelm.w	$xr1, $a6, 144, 7
 	addi.d	$a4, $a4, 32
 	addi.d	$a6, $a6, 288
-	bne	$a5, $a4, .LBB0_849
-# %bb.850:                              # %middle.block
-	beq	$a2, $a3, .LBB0_853
-.LBB0_851:                              # %.lr.ph3449.preheader4049
+	bne	$a5, $a4, .LBB0_850
+# %bb.851:                              # %middle.block
+	beq	$a2, $a3, .LBB0_854
+.LBB0_852:                              # %.lr.ph3447.preheader4047
 	slli.d	$a2, $a1, 2
 	slli.d	$a3, $a1, 5
 	alsl.d	$a3, $a1, $a3, 2
 	add.d	$a3, $s4, $a3
 	sub.d	$a0, $a0, $a1
-.LBB0_852:                              # %.lr.ph3449
+.LBB0_853:                              # %.lr.ph3447
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a1, $a2, 31, 2
 	slli.d	$a1, $a1, 2
@@ -5789,8 +5877,8 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $a2, 4
 	addi.d	$a0, $a0, -1
 	addi.d	$a3, $a3, 36
-	bnez	$a0, .LBB0_852
-.LBB0_853:                              # %._crit_edge3450
+	bnez	$a0, .LBB0_853
+.LBB0_854:                              # %._crit_edge3448
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -5798,27 +5886,27 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_913
-# %bb.854:
+	beqz	$a0, .LBB0_914
+# %bb.855:
 	move	$a0, $s1
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_908
-# %bb.855:
+	beqz	$a0, .LBB0_909
+# %bb.856:
 	move	$a0, $s1
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	move	$a2, $s0
+	move	$a2, $s7
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s0, .LBB0_908
-# %bb.856:
+	bne	$a0, $s7, .LBB0_909
+# %bb.857:
 	ld.wu	$a0, $sp, 216
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_939
-# %bb.857:
+	beqz	$a0, .LBB0_937
+# %bb.858:
 	move	$s7, $a0
 	ld.w	$a0, $sp, 387
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
@@ -5832,16 +5920,16 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_943
-# %bb.858:
+	beqz	$a0, .LBB0_941
+# %bb.859:
 	move	$s0, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	bltz	$a0, .LBB0_946
-# %bb.859:
+	bltz	$a0, .LBB0_944
+# %bb.860:
 	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a4, 31, 0
 	ld.wu	$a1, $s6, 0
@@ -5863,64 +5951,64 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a7, $s3
 	pcaddu18i	$ra, %call36(unfsg_133)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_964
-# %bb.860:
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_965
+	beqz	$a0, .LBB0_962
 # %bb.861:
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB0_963
+# %bb.862:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s1, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s1, 0
-	beqz	$a0, .LBB0_970
-# %bb.862:
+	beqz	$a0, .LBB0_968
+# %bb.863:
 	pcalau12i	$a0, %pc_hi20(.L.str.165)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.165)
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_971
-.LBB0_863:
+	b	.LBB0_969
+.LBB0_864:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_137
-.LBB0_864:
+.LBB0_865:
 	ld.w	$a1, $s5, 12
 	pcalau12i	$a0, %pc_hi20(.L.str.228)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.228)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-.LBB0_865:
+.LBB0_866:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB0_866:
+.LBB0_867:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	b	.LBB0_137
-.LBB0_867:
+.LBB0_868:
 	move	$s0, $s5
-.LBB0_868:                              # %.thread3311.sink.split
+.LBB0_869:                              # %.thread3309.sink.split
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB0_721
-.LBB0_869:
-	move	$s3, $zero
+	b	.LBB0_720
 .LBB0_870:
+	move	$s3, $zero
+.LBB0_871:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_885
-# %bb.871:
-	move	$s5, $a0
+	beqz	$a0, .LBB0_886
+# %bb.872:
+	move	$s0, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_912
-# %bb.872:
-	move	$s4, $a0
+	bltz	$a0, .LBB0_913
+# %bb.873:
+	move	$s5, $a0
 	ld.w	$a4, $sp, 216
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 396
@@ -5928,31 +6016,31 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$a5, $a0, 0
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$a6, $a0, 0
-	st.d	$s4, $sp, 16
+	st.d	$s5, $sp, 16
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 0
 	move	$a0, $s8
-	move	$a1, $s7
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
-	move	$a3, $s0
+	move	$a1, $s4
+	move	$a2, $s7
+	move	$a3, $s6
 	move	$a7, $s3
 	pcaddu18i	$ra, %call36(unmew11)
 	jirl	$ra, $ra, 0
 	ori	$s6, $zero, 1
-	bne	$a0, $s6, .LBB0_920
-# %bb.873:
+	bne	$a0, $s6, .LBB0_921
+# %bb.874:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s1, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s1, 0
-	beqz	$a0, .LBB0_928
-# %bb.874:
+	beqz	$a0, .LBB0_929
+# %bb.875:
 	pcalau12i	$a0, %pc_hi20(.L.str.136)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.136)
-	move	$a1, $s5
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_929
-.LBB0_875:
+	b	.LBB0_930
+.LBB0_876:
 	pcalau12i	$a0, %pc_hi20(.L.str.170)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.170)
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
@@ -5962,49 +6050,49 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	b	.LBB0_658
-.LBB0_876:
+	b	.LBB0_656
+.LBB0_877:
 	pcalau12i	$a0, %pc_hi20(.L.str.134)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.134)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_765
-.LBB0_877:
+	b	.LBB0_766
+.LBB0_878:
 	pcalau12i	$a0, %pc_hi20(.L.str.160)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.160)
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_705
-.LBB0_878:
+	b	.LBB0_704
+.LBB0_879:
 	pcalau12i	$a0, %pc_hi20(.L.str.183)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.183)
 	ori	$a1, $zero, 24
 	ori	$a3, $zero, 13
-	move	$a2, $s5
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(cli_memstr)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(upx_inflate2e)
-	ld.d	$s4, $a1, %got_pc_lo12(upx_inflate2e)
+	ld.d	$s5, $a1, %got_pc_lo12(upx_inflate2e)
 	pcalau12i	$a1, %pc_hi20(.L.str.184)
 	addi.d	$s0, $a1, %pc_lo12(.L.str.184)
-	beqz	$a0, .LBB0_909
-# %bb.879:
-	move	$s5, $zero
+	beqz	$a0, .LBB0_910
+# %bb.880:
+	move	$s3, $zero
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	b	.LBB0_911
-.LBB0_880:
+	b	.LBB0_912
+.LBB0_881:
 	pcalau12i	$a0, %pc_hi20(.L.str.188)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.188)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	bnez	$a0, .LBB0_755
-.LBB0_881:
-	beqz	$s5, .LBB0_922
+	bnez	$a0, .LBB0_753
 .LBB0_882:
-	ld.w	$a4, $s3, 0
+	beqz	$s3, .LBB0_923
+.LBB0_883:
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
 	addi.d	$a3, $sp, 216
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
@@ -6014,9 +6102,9 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(upx_inflate2e)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $zero, -1
-	bne	$a0, $s0, .LBB0_884
-# %bb.883:
-	ld.w	$a4, $s3, 0
+	bne	$a0, $s0, .LBB0_885
+# %bb.884:
+	ld.w	$a4, $s4, 0
 	ld.w	$a5, $s6, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 21
@@ -6027,55 +6115,55 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(upx_inflate2e)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s0, .LBB0_921
-.LBB0_884:
+	beq	$a0, $s0, .LBB0_922
+.LBB0_885:
 	pcalau12i	$a0, %pc_hi20(.L.str.193)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.193)
-	b	.LBB0_686
-.LBB0_885:
-	move	$a0, $s7
-	b	.LBB0_725
+	b	.LBB0_684
 .LBB0_886:
+	move	$a0, $s4
+	b	.LBB0_724
+.LBB0_887:
 	pcalau12i	$a0, %pc_hi20(.L.str.161)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.161)
-	b	.LBB0_698
-.LBB0_887:
+	b	.LBB0_697
+.LBB0_888:
 	move	$s6, $zero
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
-	b	.LBB0_890
-.LBB0_888:
+	b	.LBB0_891
+.LBB0_889:
 	pcalau12i	$a0, %pc_hi20(.L.str.190)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.190)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB0_882
-	b	.LBB0_922
-.LBB0_889:
+	bnez	$s3, .LBB0_883
+	b	.LBB0_923
+.LBB0_890:
 	pcalau12i	$a0, %pc_hi20(.L.str.173)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.173)
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_890:                              # %.thread3235
+.LBB0_891:                              # %.thread3233
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, -10
-	bgeu	$s6, $a0, .LBB0_905
-# %bb.891:
+	bgeu	$s6, $a0, .LBB0_906
+# %bb.892:
 	bstrpick.d	$a0, $s6, 31, 0
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	ld.w	$a0, $a0, 6
 	ori	$a1, $zero, 2
-	bne	$a0, $a1, .LBB0_905
-# %bb.892:
+	bne	$a0, $a1, .LBB0_906
+# %bb.893:
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 2
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_926
-# %bb.893:
+	beqz	$a0, .LBB0_927
+# %bb.894:
 	move	$s6, $a0
 	move	$a0, $zero
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
@@ -6090,7 +6178,7 @@ cli_scanpe:                             # @cli_scanpe
 	slli.d	$a3, $a2, 5
 	alsl.d	$a2, $a2, $a3, 2
 	lu12i.w	$a3, -2
-.LBB0_894:                              # =>This Inner Loop Header: Depth=1
+.LBB0_895:                              # =>This Inner Loop Header: Depth=1
 	addi.d	$a4, $a1, -1
 	bstrpick.d	$a4, $a4, 31, 0
 	bstrpick.d	$a5, $a1, 31, 0
@@ -6110,8 +6198,8 @@ cli_scanpe:                             # @cli_scanpe
 	st.w	$a4, $a5, 36
 	addi.d	$a0, $a0, 36
 	addi.w	$a1, $a1, 2
-	bne	$a2, $a0, .LBB0_894
-# %bb.895:
+	bne	$a2, $a0, .LBB0_895
+# %bb.896:
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -6119,28 +6207,28 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_936
-# %bb.896:
+	beqz	$a0, .LBB0_934
+# %bb.897:
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_seeksect)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_935
-# %bb.897:
+	beqz	$a0, .LBB0_933
+# %bb.898:
 	move	$a0, $s1
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s7, .LBB0_935
-# %bb.898:
+	bne	$a0, $s7, .LBB0_933
+# %bb.899:
 	ld.wu	$a0, $sp, 216
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_963
-# %bb.899:
+	beqz	$a0, .LBB0_961
+# %bb.900:
 	move	$s7, $a0
 	ld.bu	$a0, $sp, 240
 	addi.d	$a0, $a0, -232
@@ -6168,16 +6256,16 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_968
-# %bb.900:
+	beqz	$a0, .LBB0_966
+# %bb.901:
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	bltz	$a0, .LBB0_969
-# %bb.901:
+	bltz	$a0, .LBB0_967
+# %bb.902:
 	bstrpick.d	$a0, $s4, 31, 0
 	ld.wu	$a1, $s0, 0
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
@@ -6198,33 +6286,33 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a7, $s3
 	pcaddu18i	$ra, %call36(unfsg_133)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_974
-# %bb.902:
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_976
+	beqz	$a0, .LBB0_972
 # %bb.903:
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB0_974
+# %bb.904:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s0, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s0, 0
-	beqz	$a0, .LBB0_977
-# %bb.904:
+	beqz	$a0, .LBB0_975
+# %bb.905:
 	pcalau12i	$a0, %pc_hi20(.L.str.165)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.165)
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_978
-.LBB0_905:
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	b	.LBB0_976
 .LBB0_906:
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+.LBB0_907:
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB0_491
-.LBB0_907:
+.LBB0_908:
 	pcalau12i	$a0, %pc_hi20(.L.str.162)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.162)
-	b	.LBB0_698
-.LBB0_908:
+	b	.LBB0_697
+.LBB0_909:
 	addi.w	$a1, $s8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.156)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.156)
@@ -6234,8 +6322,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s4
-	b	.LBB0_648
-.LBB0_909:
+	b	.LBB0_647
+.LBB0_910:
 	pcalau12i	$a0, %pc_hi20(.L.str.183)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.183)
 	ori	$a1, $zero, 24
@@ -6245,44 +6333,44 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
-	beqz	$a0, .LBB0_925
-# %bb.910:
-	move	$s5, $zero
-.LBB0_911:
+	beqz	$a0, .LBB0_926
+# %bb.911:
+	move	$s3, $zero
+.LBB0_912:
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB0_543
-.LBB0_912:
+.LBB0_913:
 	pcalau12i	$a0, %pc_hi20(.L.str.135)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.135)
-	move	$a1, $s5
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s5
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
-	b	.LBB0_748
-.LBB0_913:
+	move	$a0, $s4
+	b	.LBB0_746
+.LBB0_914:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-.LBB0_914:                              # %.critedge3021
+.LBB0_915:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s4
 	b	.LBB0_137
-.LBB0_915:
+.LBB0_916:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(cli_gentemp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_927
-# %bb.916:
+	beqz	$a0, .LBB0_928
+# %bb.917:
 	move	$s0, $a0
 	ori	$a1, $zero, 578
 	ori	$a2, $zero, 448
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB0_938
-# %bb.917:
+	bltz	$a0, .LBB0_936
+# %bb.918:
 	move	$s5, $a0
 	ld.wu	$a2, $sp, 216
 	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
@@ -6290,47 +6378,47 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 216
 	addi.w	$a0, $a0, 0
-	bne	$a1, $a0, .LBB0_940
-# %bb.918:
+	bne	$a1, $a0, .LBB0_938
+# %bb.919:
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s3, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s3, 0
-	beqz	$a0, .LBB0_948
-# %bb.919:
+	beqz	$a0, .LBB0_946
+# %bb.920:
 	pcalau12i	$a0, %pc_hi20(.L.str.233)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.233)
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_949
-.LBB0_920:
+	b	.LBB0_947
+.LBB0_921:
 	pcalau12i	$a0, %pc_hi20(.L.str.139)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.139)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
-	move	$a0, $s5
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	move	$a0, $s7
+	move	$a0, $s4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
-	move	$a0, $s5
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB0_362
-.LBB0_921:
+.LBB0_922:
 	pcalau12i	$a0, %pc_hi20(.L.str.192)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.192)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_922:
+.LBB0_923:
 	pcalau12i	$a0, %pc_hi20(.L.str.194)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.194)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6342,45 +6430,45 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB0_492
-.LBB0_923:
+.LBB0_924:
 	move	$a0, $s0
 	move	$a1, $s5
-.LBB0_924:                              # %.critedge3021
+.LBB0_925:                              # %.critedge3021
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -114
 	b	.LBB0_133
-.LBB0_925:
-	ori	$s5, $zero, 1
-	b	.LBB0_709
 .LBB0_926:
+	ori	$s3, $zero, 1
+	b	.LBB0_708
+.LBB0_927:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_137
-.LBB0_927:
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	b	.LBB0_725
 .LBB0_928:
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	b	.LBB0_724
+.LBB0_929:
 	pcalau12i	$a0, %pc_hi20(.L.str.137)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.137)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_929:
-	move	$a0, $s7
+.LBB0_930:
+	move	$a0, $s4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(fsync)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
+	move	$a0, $s5
 	move	$a1, $zero
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
@@ -6389,27 +6477,19 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a0, $a0, %pc_lo12(.L.str.138)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
+	move	$a0, $s5
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(cli_magic_scandesc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	move	$a0, $s4
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s1, 0
 	ori	$a1, $zero, 1
-	beq	$fp, $a1, .LBB0_761
-.LBB0_930:
-	bnez	$a0, .LBB0_932
-# %bb.931:
-	move	$a0, $s5
-	pcaddu18i	$ra, %call36(unlink)
-	jirl	$ra, $ra, 0
-.LBB0_932:
-	move	$a0, $s5
-	b	.LBB0_722
-.LBB0_933:
+	beq	$fp, $a1, .LBB0_813
+	b	.LBB0_837
+.LBB0_931:
 	pcalau12i	$a0, %pc_hi20(.L.str.250)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.250)
 	move	$a1, $s1
@@ -6420,14 +6500,14 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
 	move	$a1, $s5
-.LBB0_934:                              # %.critedge3021
+.LBB0_932:                              # %.critedge3021
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -123
 	b	.LBB0_133
-.LBB0_935:
+.LBB0_933:
 	addi.w	$a1, $s8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.174)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.174)
@@ -6437,15 +6517,15 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s6
-	b	.LBB0_648
-.LBB0_936:
+	b	.LBB0_647
+.LBB0_934:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-.LBB0_937:                              # %.critedge3021
+.LBB0_935:                              # %.critedge3021
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s6
 	b	.LBB0_137
-.LBB0_938:
+.LBB0_936:
 	pcalau12i	$a0, %pc_hi20(.L.str.231)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.231)
 	move	$a1, $s0
@@ -6455,14 +6535,14 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
-	b	.LBB0_748
-.LBB0_939:
+	b	.LBB0_746
+.LBB0_937:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	b	.LBB0_914
-.LBB0_940:
+	b	.LBB0_915
+.LBB0_938:
 	pcalau12i	$a0, %pc_hi20(.L.str.232)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.232)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6473,35 +6553,35 @@ cli_scanpe:                             # @cli_scanpe
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB0_794
-.LBB0_941:
+	b	.LBB0_795
+.LBB0_939:
 	pcalau12i	$a0, %got_pc_hi20(cli_leavetemps_flag)
 	ld.d	$s3, $a0, %got_pc_lo12(cli_leavetemps_flag)
 	ld.bu	$a0, $s3, 0
-	beqz	$a0, .LBB0_954
-# %bb.942:
+	beqz	$a0, .LBB0_952
+# %bb.940:
 	pcalau12i	$a0, %pc_hi20(.L.str.251)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.251)
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB0_955
-.LBB0_943:
+	b	.LBB0_953
+.LBB0_941:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	move	$a2, $s4
-.LBB0_944:                              # %.critedge3021
+.LBB0_942:                              # %.critedge3021
 	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -114
 	b	.LBB0_133
-.LBB0_945:
+.LBB0_943:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
-	b	.LBB0_924
-.LBB0_946:
+	b	.LBB0_925
+.LBB0_944:
 	pcalau12i	$a0, %pc_hi20(.L.str.164)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.164)
 	move	$a1, $s0
@@ -6513,19 +6593,19 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	move	$a2, $s4
-.LBB0_947:                              # %.critedge3021
+.LBB0_945:                              # %.critedge3021
 	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -123
 	b	.LBB0_133
-.LBB0_948:
+.LBB0_946:
 	pcalau12i	$a0, %pc_hi20(.L.str.234)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.234)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_949:
+.LBB0_947:
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(fsync)
 	jirl	$ra, $ra, 0
@@ -6539,8 +6619,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_magic_scandesc)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_951
-# %bb.950:
+	bne	$a0, $a1, .LBB0_949
+# %bb.948:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
@@ -6548,29 +6628,29 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s3, 0
-	bnez	$a0, .LBB0_814
-	b	.LBB0_813
-.LBB0_951:
+	bnez	$a0, .LBB0_815
+	b	.LBB0_814
+.LBB0_949:
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s3, 0
-	bnez	$a0, .LBB0_953
-# %bb.952:
+	bnez	$a0, .LBB0_951
+# %bb.950:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_953:
+.LBB0_951:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	b	.LBB0_525
-.LBB0_954:
+.LBB0_952:
 	pcalau12i	$a0, %pc_hi20(.L.str.252)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.252)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_955:
+.LBB0_953:
 	move	$a0, $s0
 	move	$a1, $s5
 	move	$a2, $zero
@@ -6601,29 +6681,29 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	bne	$fp, $a1, .LBB0_959
-# %bb.956:
-	bnez	$a0, .LBB0_958
-# %bb.957:
+	bne	$fp, $a1, .LBB0_957
+# %bb.954:
+	bnez	$a0, .LBB0_956
+# %bb.955:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_958:
+.LBB0_956:
 	move	$a0, $s1
 	b	.LBB0_234
-.LBB0_959:
-	bnez	$a0, .LBB0_961
-# %bb.960:
+.LBB0_957:
+	bnez	$a0, .LBB0_959
+# %bb.958:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_961:
+.LBB0_959:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	b	.LBB0_133
-.LBB0_962:
+.LBB0_960:
 	pcalau12i	$a0, %pc_hi20(.L.str.164)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.164)
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
@@ -6635,14 +6715,14 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
-	b	.LBB0_934
-.LBB0_963:
+	b	.LBB0_932
+.LBB0_961:
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	b	.LBB0_937
-.LBB0_964:
+	b	.LBB0_935
+.LBB0_962:
 	pcalau12i	$a0, %pc_hi20(.L.str.167)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.167)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6657,8 +6737,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s4
-	b	.LBB0_975
-.LBB0_965:
+	b	.LBB0_973
+.LBB0_963:
 	pcalau12i	$a0, %pc_hi20(.L.str.168)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.168)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6676,8 +6756,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	b	.LBB0_652
-.LBB0_966:
+	b	.LBB0_651
+.LBB0_964:
 	pcalau12i	$a0, %pc_hi20(.L.str.167)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.167)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6690,8 +6770,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	b	.LBB0_975
-.LBB0_967:
+	b	.LBB0_973
+.LBB0_965:
 	pcalau12i	$a0, %pc_hi20(.L.str.168)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.168)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6709,13 +6789,13 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	b	.LBB0_706
-.LBB0_968:
+	b	.LBB0_705
+.LBB0_966:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	move	$a2, $s6
-	b	.LBB0_944
-.LBB0_969:
+	b	.LBB0_942
+.LBB0_967:
 	pcalau12i	$a0, %pc_hi20(.L.str.164)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.164)
 	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
@@ -6728,13 +6808,13 @@ cli_scanpe:                             # @cli_scanpe
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	move	$a2, $s6
-	b	.LBB0_947
-.LBB0_970:
+	b	.LBB0_945
+.LBB0_968:
 	pcalau12i	$a0, %pc_hi20(.L.str.166)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.166)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_971:
+.LBB0_969:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	move	$a2, $s4
@@ -6767,14 +6847,14 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s1, 0
 	ori	$a1, $zero, 1
-	beq	$fp, $a1, .LBB0_812
-	b	.LBB0_836
-.LBB0_972:
+	beq	$fp, $a1, .LBB0_813
+	b	.LBB0_837
+.LBB0_970:
 	pcalau12i	$a0, %pc_hi20(.L.str.166)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.166)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_973:
+.LBB0_971:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	move	$a2, $zero
@@ -6784,8 +6864,8 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
-	b	.LBB0_979
-.LBB0_974:
+	b	.LBB0_977
+.LBB0_972:
 	pcalau12i	$a0, %pc_hi20(.L.str.167)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.167)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6801,11 +6881,11 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s6
-.LBB0_975:                              # %.thread3280
+.LBB0_973:                              # %.thread3278
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	b	.LBB0_687
-.LBB0_976:
+	b	.LBB0_685
+.LBB0_974:
 	pcalau12i	$a0, %pc_hi20(.L.str.168)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.168)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
@@ -6824,13 +6904,13 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(cli_multifree)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	b	.LBB0_906
-.LBB0_977:
+	b	.LBB0_907
+.LBB0_975:
 	pcalau12i	$a0, %pc_hi20(.L.str.166)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.166)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-.LBB0_978:
+.LBB0_976:
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	move	$a1, $s7
 	move	$a2, $s6
@@ -6841,7 +6921,7 @@ cli_scanpe:                             # @cli_scanpe
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
-.LBB0_979:
+.LBB0_977:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fsync)
 	jirl	$ra, $ra, 0
@@ -6864,25 +6944,25 @@ cli_scanpe:                             # @cli_scanpe
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s0, 0
 	ori	$a1, $zero, 1
-	bne	$fp, $a1, .LBB0_983
-# %bb.980:
-	bnez	$a0, .LBB0_982
-# %bb.981:
+	bne	$fp, $a1, .LBB0_981
+# %bb.978:
+	bnez	$a0, .LBB0_980
+# %bb.979:
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_982:
+.LBB0_980:
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	b	.LBB0_234
-.LBB0_983:
-	bnez	$a0, .LBB0_985
-# %bb.984:
+.LBB0_981:
+	bnez	$a0, .LBB0_983
+# %bb.982:
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-.LBB0_985:
+.LBB0_983:
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	b	.LBB0_722
+	b	.LBB0_721
 .Lfunc_end0:
 	.size	cli_scanpe, .Lfunc_end0-cli_scanpe
 	.section	.rodata,"a",@progbits

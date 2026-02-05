@@ -175,10 +175,10 @@ _ZN31btDefaultCollisionConfigurationC2ERK34btDefaultCollisionConstructionInfo: #
 	st.b	$zero, $fp, 40
 	ld.d	$s2, $s0, 16
 	st.d	$s1, $fp, 32
-	beqz	$s2, .LBB0_10
+	beqz	$s2, .LBB0_9
 .LBB0_3:
 	st.b	$zero, $fp, 56
-	b	.LBB0_15
+	b	.LBB0_13
 .LBB0_4:
 	st.b	$s1, $fp, 24
 	ori	$a0, $zero, 32
@@ -228,20 +228,17 @@ _ZN31btDefaultCollisionConfigurationC2ERK34btDefaultCollisionConstructionInfo: #
 	ld.w	$a2, $s1, 0
 	.p2align	4, , 16
 .LBB0_7:                                # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a0, $a2
-	addi.w	$a1, $a1, -1
-	st.d	$a3, $a0, 0
-	move	$a0, $a3
-	bnez	$a1, .LBB0_7
-	b	.LBB0_9
-.LBB0_8:
 	move	$a3, $a0
-.LBB0_9:                                # %.loopexit61
-	st.d	$zero, $a3, 0
+	add.d	$a0, $a0, $a2
+	addi.w	$a1, $a1, -1
+	st.d	$a0, $a3, 0
+	bnez	$a1, .LBB0_7
+.LBB0_8:                                # %.loopexit61
+	st.d	$zero, $a0, 0
 	ld.d	$s2, $s0, 16
 	st.d	$s1, $fp, 32
 	bnez	$s2, .LBB0_3
-.LBB0_10:                               # %.noexc43
+.LBB0_9:                                # %.noexc43
 	ori	$a0, $zero, 160
 	slt	$a1, $a0, $s3
 	masknez	$a0, $a0, $a1
@@ -267,22 +264,19 @@ _ZN31btDefaultCollisionConfigurationC2ERK34btDefaultCollisionConstructionInfo: #
 	st.d	$a0, $s2, 16
 	addi.w	$a1, $a2, -1
 	st.w	$a2, $s2, 8
-	beqz	$a1, .LBB0_13
-# %bb.11:                               # %.lr.ph.i39
+	beqz	$a1, .LBB0_12
+# %bb.10:                               # %.lr.ph.i39
 	ld.w	$a2, $s2, 0
 	.p2align	4, , 16
-.LBB0_12:                               # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a0, $a2
-	addi.w	$a1, $a1, -1
-	st.d	$a3, $a0, 0
-	move	$a0, $a3
-	bnez	$a1, .LBB0_12
-	b	.LBB0_14
-.LBB0_13:
+.LBB0_11:                               # =>This Inner Loop Header: Depth=1
 	move	$a3, $a0
-.LBB0_14:                               # %.loopexit
-	st.d	$zero, $a3, 0
-.LBB0_15:
+	add.d	$a0, $a0, $a2
+	addi.w	$a1, $a1, -1
+	st.d	$a0, $a3, 0
+	bnez	$a1, .LBB0_11
+.LBB0_12:                               # %.loopexit
+	st.d	$zero, $a0, 0
+.LBB0_13:
 	st.d	$s2, $fp, 48
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload

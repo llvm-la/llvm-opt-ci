@@ -65,29 +65,25 @@ gs_pathbbox:                            # @gs_pathbbox
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB2_2
 # %bb.1:
-	ld.d	$a0, $sp, 24
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $sp, 24
 	ffint.d.l	$fa0, $fa0
 	lu52i.d	$a0, $zero, 1011
 	movgr2fr.d	$fa1, $a0
-	ld.d	$a0, $sp, 32
+	fld.d	$fa2, $sp, 32
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fst.s	$fa0, $sp, 8
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
-	ld.d	$a0, $sp, 40
+	ffint.d.l	$fa0, $fa2
+	fld.d	$fa2, $sp, 40
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fst.s	$fa0, $sp, 12
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
-	ld.d	$a0, $sp, 48
+	ffint.d.l	$fa0, $fa2
+	fld.d	$fa2, $sp, 48
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fst.s	$fa0, $sp, 16
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
+	ffint.d.l	$fa0, $fa2
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fst.s	$fa0, $sp, 20
@@ -141,16 +137,14 @@ gs_path_enum_next:                      # @gs_path_enum_next
 	beq	$a3, $a2, .LBB4_12
 # %bb.2:
 	move	$fp, $a1
-	ld.d	$a0, $s1, 24
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $s1, 24
 	ffint.d.l	$fa0, $fa0
 	lu52i.d	$a0, $zero, 1011
 	movgr2fr.d	$fs0, $a0
-	ld.d	$a0, $s1, 32
+	fld.d	$fa1, $s1, 32
 	fmul.d	$fa0, $fa0, $fs0
 	fcvt.s.d	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
-	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fs0
 	fcvt.s.d	$fa1, $fa1
@@ -180,14 +174,12 @@ gs_path_enum_next:                      # @gs_path_enum_next
 	ori	$a0, $zero, 2
 	b	.LBB4_12
 .LBB4_8:
-	ld.d	$a0, $s1, 40
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $s1, 40
 	ffint.d.l	$fa0, $fa0
-	ld.d	$a0, $s1, 48
+	fld.d	$fa1, $s1, 48
 	fmul.d	$fa0, $fa0, $fs0
 	fcvt.s.d	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
-	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fs0
 	fcvt.s.d	$fa1, $fa1
@@ -198,14 +190,12 @@ gs_path_enum_next:                      # @gs_path_enum_next
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB4_11
 # %bb.9:
-	ld.d	$a0, $s1, 56
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $s1, 56
 	ffint.d.l	$fa0, $fa0
-	ld.d	$a0, $s1, 64
+	fld.d	$fa1, $s1, 64
 	fmul.d	$fa0, $fa0, $fs0
 	fcvt.s.d	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
-	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fs0
 	fcvt.s.d	$fa1, $fa1

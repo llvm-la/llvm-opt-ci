@@ -395,27 +395,23 @@ createRandomArray:                      # @createRandomArray
 	.type	findDuplicate,@function
 findDuplicate:                          # @findDuplicate
 # %bb.0:
-	blez	$a1, .LBB5_3
+	blez	$a1, .LBB5_15
 # %bb.1:                                # %iter.check
 	ori	$a2, $zero, 4
-	bgeu	$a1, $a2, .LBB5_4
+	bgeu	$a1, $a2, .LBB5_3
 # %bb.2:
 	move	$a2, $zero
 	move	$a5, $zero
-	b	.LBB5_13
-.LBB5_3:
-	move	$a5, $zero
-	xor	$a0, $a5, $a1
-	ret
-.LBB5_4:                                # %vector.main.loop.iter.check
+	b	.LBB5_12
+.LBB5_3:                                # %vector.main.loop.iter.check
 	ori	$a2, $zero, 16
 	pcalau12i	$a3, %pc_hi20(.LCPI5_1)
-	bgeu	$a1, $a2, .LBB5_6
-# %bb.5:
+	bgeu	$a1, $a2, .LBB5_5
+# %bb.4:
 	move	$a2, $zero
 	move	$a5, $zero
-	b	.LBB5_10
-.LBB5_6:                                # %vector.ph
+	b	.LBB5_9
+.LBB5_5:                                # %vector.ph
 	andi	$a4, $a1, 12
 	bstrpick.d	$a2, $a1, 30, 4
 	pcalau12i	$a5, %pc_hi20(.LCPI5_0)
@@ -427,7 +423,7 @@ findDuplicate:                          # @findDuplicate
 	move	$a6, $a2
 	xvori.b	$xr3, $xr2, 0
 	.p2align	4, , 16
-.LBB5_7:                                # %vector.body
+.LBB5_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr4, $a5, -32
 	xvld	$xr5, $a5, 0
@@ -458,8 +454,8 @@ findDuplicate:                          # @findDuplicate
 	xvaddi.du	$xr0, $xr0, 16
 	addi.d	$a6, $a6, -16
 	addi.d	$a5, $a5, 64
-	bnez	$a6, .LBB5_7
-# %bb.8:                                # %middle.block
+	bnez	$a6, .LBB5_6
+# %bb.7:                                # %middle.block
 	xvxor.v	$xr0, $xr3, $xr2
 	xvpermi.q	$xr1, $xr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -468,10 +464,10 @@ findDuplicate:                          # @findDuplicate
 	vbsrl.v	$vr1, $vr0, 4
 	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
-	beq	$a2, $a1, .LBB5_15
-# %bb.9:                                # %vec.epilog.iter.check
-	beqz	$a4, .LBB5_13
-.LBB5_10:                               # %vec.epilog.ph
+	beq	$a2, $a1, .LBB5_14
+# %bb.8:                                # %vec.epilog.iter.check
+	beqz	$a4, .LBB5_12
+.LBB5_9:                                # %vec.epilog.ph
 	move	$a4, $a2
 	bstrpick.d	$a2, $a1, 30, 2
 	slli.d	$a2, $a2, 2
@@ -483,7 +479,7 @@ findDuplicate:                          # @findDuplicate
 	sub.d	$a3, $a4, $a2
 	alsl.d	$a4, $a4, $a0, 2
 	.p2align	4, , 16
-.LBB5_11:                               # %vec.epilog.vector.body
+.LBB5_10:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a4, 0
 	vxor.v	$vr1, $vr1, $vr2
@@ -500,20 +496,20 @@ findDuplicate:                          # @findDuplicate
 	xvaddi.du	$xr0, $xr0, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
-	bnez	$a3, .LBB5_11
-# %bb.12:                               # %vec.epilog.middle.block
+	bnez	$a3, .LBB5_10
+# %bb.11:                               # %vec.epilog.middle.block
 	vbsrl.v	$vr0, $vr1, 8
 	vxor.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 4
 	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
-	beq	$a2, $a1, .LBB5_15
-.LBB5_13:                               # %.lr.ph.preheader
+	beq	$a2, $a1, .LBB5_14
+.LBB5_12:                               # %.lr.ph.preheader
 	alsl.d	$a0, $a2, $a0, 2
 	sub.d	$a3, $a1, $a2
 	addi.w	$a2, $a2, 1
 	.p2align	4, , 16
-.LBB5_14:                               # %.lr.ph
+.LBB5_13:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a0, 0
 	xor	$a4, $a5, $a4
@@ -521,9 +517,11 @@ findDuplicate:                          # @findDuplicate
 	addi.d	$a0, $a0, 4
 	addi.d	$a3, $a3, -1
 	addi.w	$a2, $a2, 1
-	bnez	$a3, .LBB5_14
+	bnez	$a3, .LBB5_13
+.LBB5_14:                               # %._crit_edge.loopexit
+	xor	$a1, $a5, $a1
 .LBB5_15:                               # %._crit_edge
-	xor	$a0, $a5, $a1
+	move	$a0, $a1
 	ret
 .Lfunc_end5:
 	.size	findDuplicate, .Lfunc_end5-findDuplicate

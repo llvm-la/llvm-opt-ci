@@ -79,8 +79,7 @@ ScaleToConstraint:                      # @ScaleToConstraint
 # %bb.0:
 	blez	$a0, .LBB3_6
 # %bb.1:
-	ld.w	$a3, $a2, 0
-	movgr2fr.w	$fa0, $a3
+	fld.s	$fa0, $a2, 0
 	ffint.s.w	$fa0, $fa0
 	bstrpick.d	$a3, $a0, 31, 0
 	movgr2fr.d	$fa1, $a3
@@ -92,8 +91,7 @@ ScaleToConstraint:                      # @ScaleToConstraint
 	add.w	$a0, $a1, $a0
 	blez	$a0, .LBB3_3
 .LBB3_2:
-	ld.w	$a3, $a2, 4
-	movgr2fr.w	$fa1, $a3
+	fld.s	$fa1, $a2, 4
 	ffint.s.w	$fa1, $fa1
 	bstrpick.d	$a0, $a0, 31, 0
 	movgr2fr.d	$fa2, $a0
@@ -104,8 +102,7 @@ ScaleToConstraint:                      # @ScaleToConstraint
 .LBB3_3:
 	blez	$a1, .LBB3_5
 # %bb.4:
-	ld.w	$a0, $a2, 8
-	movgr2fr.w	$fa1, $a0
+	fld.s	$fa1, $a2, 8
 	ffint.s.w	$fa1, $fa1
 	bstrpick.d	$a0, $a1, 31, 0
 	movgr2fr.d	$fa2, $a0
@@ -681,8 +678,7 @@ InsertScale:                            # @InsertScale
 	ld.w	$a0, $a0, 56
 	blez	$a2, .LBB6_9
 # %bb.1:
-	ld.w	$a3, $a1, 0
-	movgr2fr.w	$fa0, $a3
+	fld.s	$fa0, $a1, 0
 	ffint.s.w	$fa0, $fa0
 	bstrpick.d	$a3, $a2, 31, 0
 	movgr2fr.d	$fa1, $a3
@@ -694,8 +690,7 @@ InsertScale:                            # @InsertScale
 	add.w	$a2, $a0, $a2
 	blez	$a2, .LBB6_3
 .LBB6_2:
-	ld.w	$a3, $a1, 4
-	movgr2fr.w	$fa1, $a3
+	fld.s	$fa1, $a1, 4
 	ffint.s.w	$fa1, $fa1
 	bstrpick.d	$a2, $a2, 31, 0
 	movgr2fr.d	$fa2, $a2
@@ -706,8 +701,7 @@ InsertScale:                            # @InsertScale
 .LBB6_3:
 	blez	$a0, .LBB6_5
 # %bb.4:
-	ld.w	$a2, $a1, 8
-	movgr2fr.w	$fa1, $a2
+	fld.s	$fa1, $a1, 8
 	ffint.s.w	$fa1, $fa1
 	bstrpick.d	$a0, $a0, 31, 0
 	movgr2fr.d	$fa2, $a0
@@ -931,18 +925,18 @@ InsertScale:                            # @InsertScale
 	.type	Constrained,@function
 Constrained:                            # @Constrained
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$s2, $a3
 	move	$s0, $a2
 	move	$fp, $a1
@@ -974,7 +968,7 @@ Constrained:                            # @Constrained
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB7_5
 .LBB7_3:
-	ld.h	$a0, $s4, 42
+	ld.hu	$a0, $s4, 42
 	addi.d	$a1, $s0, -1
 	sltu	$a1, $zero, $a1
 	andi	$a2, $a0, 16
@@ -1038,39 +1032,38 @@ Constrained:                            # @Constrained
 	sltu	$a1, $zero, $a1
 	beq	$a1, $a0, .LBB7_40
 # %bb.13:
-	addi.d	$a1, $sp, 52
+	addi.d	$a1, $sp, 84
 	move	$a0, $s1
 	move	$a2, $s0
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 52
+	ld.w	$a1, $sp, 84
 	lu12i.w	$s6, 2047
 	ori	$a0, $s6, 4095
 	bne	$a1, $a0, .LBB7_16
 # %bb.14:
-	ld.w	$a2, $sp, 56
+	ld.w	$a2, $sp, 88
 	ori	$a1, $s6, 4095
 	bne	$a2, $a1, .LBB7_16
 # %bb.15:
-	ld.w	$a2, $sp, 60
-	move	$a7, $a0
-	move	$t1, $a0
-	beq	$a2, $a1, .LBB7_134
+	ld.w	$a2, $sp, 92
+	vldi	$vr0, -2177
+	beq	$a2, $a1, .LBB7_142
 .LBB7_16:
 	ld.d	$a0, $s7, 0
-	addi.d	$a2, $sp, 40
-	addi.d	$a3, $sp, 32
-	addi.d	$a4, $sp, 8
-	addi.d	$a5, $sp, 24
-	addi.d	$a6, $sp, 68
+	addi.d	$a2, $sp, 72
+	addi.d	$a3, $sp, 64
+	addi.d	$a4, $sp, 40
+	addi.d	$a5, $sp, 56
+	addi.d	$a6, $sp, 100
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(SetNeighbours)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 40
+	ld.d	$a1, $sp, 72
 	beqz	$a1, .LBB7_93
 # %bb.17:
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 64
 	alsl.d	$a0, $s0, $a0, 2
 	ld.w	$a0, $a0, 56
 	addi.d	$a2, $a1, 44
@@ -1195,7 +1188,7 @@ Constrained:                            # @Constrained
 	sltu	$a0, $zero, $a0
 	beq	$s8, $a0, .LBB7_35
 # %bb.34:
-	addi.d	$a1, $sp, 52
+	addi.d	$a1, $sp, 84
 	move	$a0, $s1
 	move	$a2, $s0
 	move	$a3, $s2
@@ -1206,13 +1199,13 @@ Constrained:                            # @Constrained
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(FindShift)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 52
-	ld.w	$a2, $sp, 56
+	ld.w	$a1, $sp, 84
+	ld.w	$a2, $sp, 88
 	slt	$a3, $a1, $a2
 	masknez	$a4, $a2, $a3
 	maskeqz	$a1, $a1, $a3
 	or	$a1, $a1, $a4
-	ld.w	$a3, $sp, 60
+	ld.w	$a3, $sp, 92
 	sub.d	$a1, $a1, $a0
 	st.w	$a1, $fp, 0
 	st.w	$a2, $fp, 4
@@ -1228,18 +1221,18 @@ Constrained:                            # @Constrained
 	move	$a1, $fp
 	move	$a2, $s0
 	move	$a3, $s2
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	pcaddu18i	$t8, %call36(Constrained)
 	jr	$t8
 .LBB7_36:
@@ -1261,33 +1254,33 @@ Constrained:                            # @Constrained
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB7_38:
-	addi.d	$a1, $sp, 52
+	addi.d	$a1, $sp, 84
 	move	$a0, $s1
 	move	$a2, $s0
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 56
+	ld.w	$a0, $sp, 88
 	lu12i.w	$a1, 2047
 	ori	$a1, $a1, 4095
 	bne	$a0, $a1, .LBB7_57
 # %bb.39:                               # %.thread
-	ld.w	$a2, $sp, 52
+	ld.w	$a2, $sp, 84
 	slt	$a3, $a2, $a1
 	masknez	$a4, $a1, $a3
 	maskeqz	$a2, $a2, $a3
 	or	$a2, $a2, $a4
 	b	.LBB7_58
 .LBB7_40:
-	addi.d	$a1, $sp, 52
+	addi.d	$a1, $sp, 84
 	move	$a0, $s1
 	move	$a2, $s0
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $sp, 52
-	ld.w	$a0, $sp, 56
-	ld.w	$a1, $sp, 60
+	ld.w	$a2, $sp, 84
+	ld.w	$a0, $sp, 88
+	ld.w	$a1, $sp, 92
 	lu12i.w	$a3, 2047
 	ori	$a3, $a3, 4095
 	bne	$a2, $a3, .LBB7_49
@@ -1302,21 +1295,21 @@ Constrained:                            # @Constrained
 	st.w	$a3, $fp, 8
 	b	.LBB7_89
 .LBB7_44:
-	addi.d	$a1, $sp, 52
+	addi.d	$a1, $sp, 84
 	move	$a0, $s1
 	move	$a2, $zero
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 8
+	addi.d	$a1, $sp, 40
 	ori	$a2, $zero, 1
 	move	$a0, $s1
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(Constrained)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s1, 76
-	addi.d	$a3, $sp, 52
-	addi.d	$a4, $sp, 8
+	addi.d	$a3, $sp, 84
+	addi.d	$a4, $sp, 40
 	move	$a0, $fp
 	move	$a1, $s4
 	move	$a5, $s0
@@ -1324,7 +1317,7 @@ Constrained:                            # @Constrained
 	jirl	$ra, $ra, 0
 	b	.LBB7_89
 .LBB7_45:
-	addi.d	$a1, $sp, 52
+	addi.d	$a1, $sp, 84
 	move	$a0, $s1
 	move	$a2, $s0
 	move	$a3, $s2
@@ -1341,9 +1334,9 @@ Constrained:                            # @Constrained
 	ld.w	$a2, $s1, 64
 	ld.w	$a0, $s1, 68
 	ld.w	$a1, $s1, 72
-	st.w	$a2, $sp, 52
-	st.w	$a0, $sp, 56
-	st.w	$a1, $sp, 60
+	st.w	$a2, $sp, 84
+	st.w	$a0, $sp, 88
+	st.w	$a1, $sp, 92
 .LBB7_49:
 	ld.d	$a4, $s6, 0
 	beq	$a4, $s1, .LBB7_61
@@ -1377,7 +1370,7 @@ Constrained:                            # @Constrained
 .LBB7_57:
 	alsl.d	$a1, $s0, $s1, 2
 	ld.w	$a2, $a1, 56
-	ld.w	$a3, $sp, 52
+	ld.w	$a3, $sp, 84
 	sub.w	$a2, $a0, $a2
 	slt	$a4, $a3, $a2
 	ld.w	$a1, $a1, 48
@@ -1386,7 +1379,7 @@ Constrained:                            # @Constrained
 	or	$a2, $a3, $a2
 	sub.w	$a1, $a0, $a1
 .LBB7_58:
-	ld.w	$a3, $sp, 60
+	ld.w	$a3, $sp, 92
 	slt	$a4, $a3, $a1
 	masknez	$a1, $a1, $a4
 	maskeqz	$a3, $a3, $a4
@@ -1409,18 +1402,18 @@ Constrained:                            # @Constrained
 	ori	$a1, $zero, 3
 	move	$a3, $zero
 	move	$a4, $fp
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	pcaddu18i	$t8, %call36(Error)
 	jr	$t8
 .LBB7_61:
@@ -1537,7 +1530,7 @@ Constrained:                            # @Constrained
 	ld.w	$a1, $s1, 64
 	beqz	$a1, .LBB7_88
 .LBB7_87:
-	addi.d	$a2, $sp, 52
+	addi.d	$a2, $sp, 84
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(InvScaleConstraint)
 	jirl	$ra, $ra, 0
@@ -1549,18 +1542,18 @@ Constrained:                            # @Constrained
 	bstrins.d	$a0, $a0, 54, 32
 	st.d	$a0, $fp, 0
 .LBB7_89:
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .LBB7_90:
 	move	$a2, $zero
@@ -1589,10 +1582,10 @@ Constrained:                            # @Constrained
 .LBB7_93:
 	move	$s2, $zero
 .LBB7_94:
-	ld.d	$a0, $sp, 8
+	ld.d	$a0, $sp, 40
 	beqz	$a0, .LBB7_96
 # %bb.95:
-	ld.d	$a1, $sp, 24
+	ld.d	$a1, $sp, 56
 	alsl.d	$a1, $s0, $a1, 2
 	ld.w	$a1, $a1, 48
 	addi.d	$a2, $a0, 44
@@ -1606,14 +1599,16 @@ Constrained:                            # @Constrained
 	move	$s3, $zero
 .LBB7_97:
 	ld.bu	$a0, $s4, 32
-	ld.d	$a3, $sp, 40
+	ld.d	$a3, $sp, 72
 	addi.d	$a0, $a0, -2
 	ori	$a1, $zero, 6
+	vrepli.b	$vr0, -1
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	bltu	$a1, $a0, .LBB7_100
 # %bb.98:
 	beqz	$a3, .LBB7_104
 # %bb.99:
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 64
 	alsl.d	$a0, $s0, $a0, 2
 	ld.w	$a0, $a0, 56
 	addi.d	$a3, $a3, 44
@@ -1627,7 +1622,7 @@ Constrained:                            # @Constrained
 	alsl.d	$s7, $s0, $s4, 2
 	beqz	$a3, .LBB7_107
 # %bb.101:
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 64
 	alsl.d	$a0, $s0, $a0, 2
 	ld.w	$a0, $a0, 56
 	ld.w	$a1, $s7, 48
@@ -1635,9 +1630,9 @@ Constrained:                            # @Constrained
 	addi.d	$a3, $a3, 44
 	pcaddu18i	$ra, %call36(MinGap)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 32
+	ld.d	$a1, $sp, 64
 	alsl.d	$a1, $s0, $a1, 2
-	ld.d	$a2, $sp, 40
+	ld.d	$a2, $sp, 72
 	ld.w	$a1, $a1, 56
 	move	$s4, $a0
 	addi.d	$a3, $a2, 44
@@ -1667,10 +1662,10 @@ Constrained:                            # @Constrained
 .LBB7_104:
 	move	$s4, $zero
 .LBB7_105:
-	ld.d	$a0, $sp, 8
+	ld.d	$a0, $sp, 40
 	beqz	$a0, .LBB7_114
 # %bb.106:
-	ld.d	$a1, $sp, 24
+	ld.d	$a1, $sp, 56
 	alsl.d	$a2, $s0, $a1, 2
 	ld.w	$a1, $a2, 48
 	ld.w	$a2, $a2, 56
@@ -1683,21 +1678,21 @@ Constrained:                            # @Constrained
 .LBB7_107:
 	ld.w	$s5, $s7, 48
 .LBB7_108:
-	ld.d	$a3, $sp, 8
+	ld.d	$a3, $sp, 40
 	ld.w	$a0, $s7, 56
 	beqz	$a3, .LBB7_110
 # %bb.109:
-	ld.d	$a1, $sp, 24
+	ld.d	$a1, $sp, 56
 	alsl.d	$a2, $s0, $a1, 2
 	ld.w	$a1, $a2, 48
 	ld.w	$a2, $a2, 56
 	addi.d	$a3, $a3, 44
 	pcaddu18i	$ra, %call36(MinGap)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 24
+	ld.d	$a1, $sp, 56
 	alsl.d	$a2, $s0, $a1, 2
 	ld.w	$a1, $a2, 48
-	ld.d	$a3, $sp, 8
+	ld.d	$a3, $sp, 40
 	ld.w	$a2, $a2, 56
 	move	$s4, $a0
 	addi.d	$a3, $a3, 44
@@ -1706,7 +1701,8 @@ Constrained:                            # @Constrained
 	jirl	$ra, $ra, 0
 	sub.d	$a0, $s4, $a0
 .LBB7_110:
-	ld.w	$a2, $sp, 68
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	ld.w	$a2, $sp, 100
 	ori	$a1, $zero, 153
 	beq	$a2, $a1, .LBB7_121
 # %bb.111:
@@ -1725,27 +1721,29 @@ Constrained:                            # @Constrained
 .LBB7_114:
 	move	$s5, $zero
 .LBB7_115:
-	ld.d	$a0, $sp, 40
-	ld.d	$a3, $sp, 8
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	ld.d	$a0, $sp, 72
+	ld.d	$a3, $sp, 40
 	beqz	$a0, .LBB7_118
 # %bb.116:
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 64
 	alsl.d	$a0, $s0, $a0, 2
 	ld.w	$a0, $a0, 56
 	beqz	$a3, .LBB7_123
 # %bb.117:
-	ld.d	$a1, $sp, 24
+	ld.d	$a1, $sp, 56
 	alsl.d	$a2, $s0, $a1, 2
 	ld.w	$a1, $a2, 48
 	ld.w	$a2, $a2, 56
 	addi.d	$a3, $a3, 44
 	pcaddu18i	$ra, %call36(MinGap)
 	jirl	$ra, $ra, 0
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	b	.LBB7_123
 .LBB7_118:
 	beqz	$a3, .LBB7_122
 # %bb.119:
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 56
 	alsl.d	$a0, $s0, $a0, 2
 	ld.w	$a0, $a0, 48
 	b	.LBB7_123
@@ -1766,7 +1764,7 @@ Constrained:                            # @Constrained
 .LBB7_122:
 	move	$a0, $zero
 .LBB7_123:
-	ld.w	$a2, $sp, 68
+	ld.w	$a2, $sp, 100
 	ori	$a1, $zero, 153
 	beq	$a2, $a1, .LBB7_129
 # %bb.124:
@@ -1784,7 +1782,7 @@ Constrained:                            # @Constrained
 	add.w	$a3, $a0, $a3
 	b	.LBB7_130
 .LBB7_127:                              # %.thread304
-	ld.w	$a6, $sp, 52
+	ld.w	$a6, $sp, 84
 	move	$a1, $a2
                                         # implicit-def: $r7
                                         # implicit-def: $r6
@@ -1803,118 +1801,111 @@ Constrained:                            # @Constrained
 	sub.d	$a0, $a2, $a0
 	add.d	$a2, $a0, $a4
 .LBB7_130:
-	ld.w	$a6, $sp, 52
+	ld.w	$a6, $sp, 84
 	bge	$a6, $a3, .LBB7_132
 # %bb.131:
 	addi.d	$a0, $zero, -1
-	b	.LBB7_133
+	b	.LBB7_142
 .LBB7_132:
-	ld.w	$a4, $sp, 56
+	ld.w	$a4, $sp, 88
 	add.w	$a5, $a2, $a3
 	addi.d	$a0, $zero, -1
-	bge	$a4, $a5, .LBB7_135
-.LBB7_133:
-	addi.d	$a7, $zero, -1
-	addi.d	$t1, $zero, -1
-.LBB7_134:                              # %CatConstrained.exit.sink.split
-	st.w	$a0, $fp, 0
-	st.w	$a7, $fp, 4
-	st.w	$t1, $fp, 8
-	b	.LBB7_89
-.LBB7_135:
-	ld.w	$t0, $sp, 60
-	addi.w	$t2, $a2, 0
-	addi.d	$a7, $zero, -1
-	addi.d	$t1, $zero, -1
-	blt	$t0, $t2, .LBB7_134
-# %bb.136:
+	blt	$a4, $a5, .LBB7_142
+# %bb.133:
+	ld.w	$a7, $sp, 92
+	addi.w	$t0, $a2, 0
+	blt	$a7, $t0, .LBB7_142
+# %bb.134:
 	ori	$a0, $zero, 153
-	beq	$a1, $a0, .LBB7_141
-# %bb.137:
+	beq	$a1, $a0, .LBB7_139
+# %bb.135:
 	ori	$a0, $zero, 152
-	beq	$a1, $a0, .LBB7_140
-# %bb.138:
+	beq	$a1, $a0, .LBB7_138
+# %bb.136:
 	ori	$a0, $zero, 151
 	bne	$a1, $a0, .LBB7_89
-# %bb.139:
-	ori	$a1, $s6, 4095
-	xor	$a0, $a6, $a1
-	sltui	$a0, $a0, 1
+# %bb.137:
+	ori	$a0, $s6, 4095
+	xor	$a1, $a6, $a0
+	sltui	$a1, $a1, 1
 	sub.w	$a2, $a6, $a3
-	b	.LBB7_142
-.LBB7_140:
-	ori	$a1, $s6, 4095
-	xor	$a0, $a6, $a1
-	sltui	$a0, $a0, 1
+	b	.LBB7_140
+.LBB7_138:
+	ori	$a0, $s6, 4095
+	xor	$a1, $a6, $a0
+	sltui	$a1, $a1, 1
 	sub.w	$a3, $a6, $a3
-	masknez	$a3, $a3, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a3
-	xor	$a3, $a4, $a1
+	masknez	$a3, $a3, $a1
+	maskeqz	$a1, $a0, $a1
+	or	$a1, $a1, $a3
+	xor	$a3, $a4, $a0
 	sltui	$a3, $a3, 1
 	sub.w	$a4, $a4, $a5
 	masknez	$a4, $a4, $a3
-	maskeqz	$a3, $a1, $a3
+	maskeqz	$a3, $a0, $a3
 	or	$a3, $a3, $a4
-	xor	$a4, $t0, $a1
+	xor	$a4, $a7, $a0
 	sltui	$a4, $a4, 1
-	sub.w	$a2, $t0, $a2
+	sub.w	$a2, $a7, $a2
 	masknez	$a2, $a2, $a4
-	maskeqz	$a4, $a1, $a4
+	maskeqz	$a4, $a0, $a4
 	or	$a2, $a4, $a2
-	slt	$a4, $a0, $a3
+	slt	$a4, $a1, $a3
 	masknez	$a5, $a3, $a4
-	maskeqz	$a0, $a0, $a4
-	or	$a0, $a0, $a5
+	maskeqz	$a1, $a1, $a4
+	or	$a1, $a1, $a5
 	slt	$a4, $a2, $a3
 	masknez	$a5, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a5
-	add.w	$a0, $a0, $s2
-	slt	$a4, $a0, $a1
-	maskeqz	$a0, $a0, $a4
-	masknez	$a4, $a1, $a4
-	or	$a0, $a0, $a4
-	add.d	$a4, $s3, $s2
-	add.w	$a3, $a4, $a3
-	b	.LBB7_143
-.LBB7_141:
-	ori	$a1, $s6, 4095
-	xor	$a0, $t0, $a1
-	sltui	$a0, $a0, 1
-	sub.w	$a2, $t0, $a2
-.LBB7_142:                              # %CatConstrained.exit.sink.split
-	masknez	$a2, $a2, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a2
-	xor	$a2, $a4, $a1
+	add.w	$a1, $a1, $s2
+	slt	$a4, $a1, $a0
+	maskeqz	$a1, $a1, $a4
+	masknez	$a0, $a0, $a4
+	or	$a0, $a1, $a0
+	add.d	$a1, $s3, $s2
+	add.d	$a2, $a2, $s3
+	add.d	$a1, $a1, $a3
+	vinsgr2vr.w	$vr0, $a1, 0
+	vinsgr2vr.w	$vr0, $a2, 1
+	b	.LBB7_141
+.LBB7_139:
+	ori	$a0, $s6, 4095
+	xor	$a1, $a7, $a0
+	sltui	$a1, $a1, 1
+	sub.w	$a2, $a7, $a2
+.LBB7_140:                              # %CatConstrained.exit.sink.split
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $a0, $a1
+	or	$a1, $a1, $a2
+	xor	$a2, $a4, $a0
 	sltui	$a2, $a2, 1
 	sub.w	$a3, $a4, $a5
 	masknez	$a3, $a3, $a2
-	maskeqz	$a2, $a1, $a2
+	maskeqz	$a2, $a0, $a2
 	or	$a2, $a2, $a3
-	slt	$a3, $a0, $a2
+	slt	$a3, $a1, $a2
 	masknez	$a2, $a2, $a3
-	maskeqz	$a0, $a0, $a3
-	or	$a2, $a0, $a2
-	add.w	$a0, $a2, $s2
-	slt	$a3, $a0, $a1
-	maskeqz	$a0, $a0, $a3
-	masknez	$a3, $a1, $a3
-	or	$a0, $a0, $a3
-	add.d	$a3, $s3, $s2
-	add.w	$a3, $a3, $a2
-.LBB7_143:                              # %CatConstrained.exit.sink.split
-	slt	$a4, $a3, $a1
-	maskeqz	$a3, $a3, $a4
-	masknez	$a4, $a1, $a4
-	or	$a7, $a3, $a4
-	add.w	$a2, $a2, $s3
-	slt	$a3, $a2, $a1
+	maskeqz	$a1, $a1, $a3
+	or	$a1, $a1, $a2
+	add.w	$a2, $a1, $s2
+	slt	$a3, $a2, $a0
 	maskeqz	$a2, $a2, $a3
-	masknez	$a1, $a1, $a3
-	or	$t1, $a2, $a1
-	b	.LBB7_134
+	masknez	$a0, $a0, $a3
+	or	$a0, $a2, $a0
+	add.d	$a2, $s3, $s2
+	add.d	$a3, $a1, $s3
+	add.d	$a1, $a2, $a1
+	vinsgr2vr.w	$vr0, $a1, 0
+	vinsgr2vr.w	$vr0, $a3, 1
+.LBB7_141:                              # %CatConstrained.exit.sink.split
+	vldi	$vr1, -2177
+	vmin.w	$vr0, $vr0, $vr1
+.LBB7_142:                              # %CatConstrained.exit.sink.split
+	st.w	$a0, $fp, 0
+	vstelm.w	$vr0, $fp, 4, 0
+	vstelm.w	$vr0, $fp, 8, 1
+	b	.LBB7_89
 .Lfunc_end7:
 	.size	Constrained, .Lfunc_end7-Constrained
 	.section	.rodata,"a",@progbits

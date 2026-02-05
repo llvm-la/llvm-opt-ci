@@ -154,30 +154,27 @@ BitBufferUnpackBERSize:                 # @BitBufferUnpackBERSize
 	st.w	$a1, $a0, 16
 	slli.d	$a6, $a5, 48
 	bstrpick.d	$a2, $a5, 14, 8
-	bltz	$a6, .LBB6_2
-# %bb.1:
-	addi.w	$a0, $a2, 0
-	ret
-.LBB6_2:                                # %.peel.next.preheader
+	bgez	$a6, .LBB6_3
+# %bb.1:                                # %.peel.next.preheader
 	add.d	$a3, $a4, $a3
 	addi.d	$a3, $a3, 1
 	.p2align	4, , 16
-.LBB6_3:                                # %.peel.next
+.LBB6_2:                                # %.peel.next
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$a4, $a3, -1
-	revb.d	$a4, $a4
-	srli.d	$a4, $a4, 48
-	sll.w	$a5, $a4, $a1
-	srli.d	$a4, $a5, 8
+	move	$a5, $a2
+	revb.d	$a2, $a4
+	srli.d	$a2, $a2, 48
+	sll.w	$a4, $a2, $a1
+	srli.d	$a2, $a4, 8
 	st.d	$a3, $a0, 0
 	st.w	$a1, $a0, 16
-	bstrins.d	$a4, $a2, 63, 7
-	slli.d	$a5, $a5, 48
+	bstrins.d	$a2, $a5, 63, 7
+	slli.d	$a4, $a4, 48
 	addi.d	$a3, $a3, 1
-	move	$a2, $a4
-	bltz	$a5, .LBB6_3
-# %bb.4:                                # %.loopexit
-	addi.w	$a0, $a4, 0
+	bltz	$a4, .LBB6_2
+.LBB6_3:                                # %.loopexit
+	addi.w	$a0, $a2, 0
 	ret
 .Lfunc_end6:
 	.size	BitBufferUnpackBERSize, .Lfunc_end6-BitBufferUnpackBERSize

@@ -17,12 +17,11 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	move	$s0, $a4
 	move	$s1, $a3
 	move	$fp, $a2
-	alsl.d	$a1, $a1, $s2, 3
 	ori	$a2, $zero, 100
-	addi.d	$s3, $a1, 88
+	alsl.d	$s3, $a1, $s2, 3
 	bne	$a0, $a2, .LBB0_4
 # %bb.1:
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s3, 88
 	beqz	$a0, .LBB0_5
 .LBB0_2:
 	xvreplgr2vr.d	$xr0, $s1
@@ -722,13 +721,13 @@ jpeg_add_quant_table:                   # @jpeg_add_quant_table
 	st.w	$a0, $a1, 40
 	move	$a0, $s2
 	jirl	$ra, $a2, 0
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s3, 88
 	bnez	$a0, .LBB0_2
 .LBB0_5:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(jpeg_alloc_quant_table)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s3, 0
+	st.d	$a0, $s3, 88
 	xvreplgr2vr.d	$xr0, $s1
 	bnez	$s0, .LBB0_3
 .LBB0_6:                                # %vector.body40

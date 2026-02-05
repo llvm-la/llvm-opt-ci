@@ -234,10 +234,10 @@ _ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN23MyFixtu
 	xvpickve2gr.d	$a0, $xr0, 0
 .LBB1_6:                                # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $a0, 1
 	blez	$s1, .LBB1_10
 # %bb.7:                                #   in Loop: Header=BB1_6 Depth=1
 	addi.d	$s1, $s1, -1
+	addi.d	$a0, $a0, 1
 	bnez	$s1, .LBB1_6
 # %bb.8:                                # %._crit_edge
 	st.w	$a0, $s0, 224
@@ -252,6 +252,7 @@ _ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN23MyFixtu
 	pcaddu18i	$t8, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jr	$t8
 .LBB1_10:
+	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 224
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)

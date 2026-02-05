@@ -1195,47 +1195,43 @@ getEas:                                 # @getEas
 	fst.d	$fs1, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 80                   # 8-byte Folded Spill
 	fst.d	$fs3, $sp, 72                   # 8-byte Folded Spill
+	st.d	$zero, $sp, 64
+	beqz	$a4, .LBB13_14
+# %bb.1:
 	move	$s1, $a4
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa0, $a4
-	ffint.d.l	$fa0, $fa0
-	vldi	$vr1, -912
-	fadd.d	$fa0, $fa0, $fa1
-	frecip.d	$fs1, $fa0
-	vldi	$vr0, -1000
-	vldi	$vr1, -1024
-	fmadd.d	$fa0, $fs1, $fa1, $fa0
-	fsqrt.d	$fs0, $fa0
-	fcmp.cor.d	$fcc0, $fs0, $fs0
 	move	$s3, $a3
 	move	$s8, $a2
 	move	$s4, $a1
-	move	$fp, $a0
-	bceqz	$fcc0, .LBB13_24
-# %bb.1:                                # %.split
-	st.d	$zero, $sp, 64
-	beqz	$s1, .LBB13_25
-.LBB13_2:
-	addi.d	$a0, $s1, 1
+	move	$s0, $a0
+	addi.d	$a0, $a4, 1
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 4
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB13_25
-# %bb.3:
-	move	$s0, $a0
-	frecip.d	$fs0, $fs0
+	beqz	$a0, .LBB13_14
+# %bb.2:
+	move	$fp, $a0
+	bstrpick.d	$a0, $s1, 31, 0
+	movgr2fr.d	$fa0, $a0
+	ffint.d.l	$fa0, $fa0
+	vldi	$vr1, -912
+	fadd.d	$fa0, $fa0, $fa1
+	frecip.d	$fs0, $fa0
+	vldi	$vr0, -1000
+	vldi	$vr1, -1024
+	fmadd.d	$fa0, $fs0, $fa1, $fa0
+	frsqrt.d	$fs1, $fa0
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(utop)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB13_5
-# %bb.4:
-	ld.h	$a1, $fp, 0
+	beqz	$s0, .LBB13_4
+# %bb.3:
+	ld.h	$a1, $s0, 0
 	addi.d	$a1, $a1, 1
-	st.h	$a1, $fp, 0
-.LBB13_5:                               # %.lr.ph81
-	fmul.d	$fs2, $fs1, $fs0
-	move	$a1, $fp
+	st.h	$a1, $s0, 0
+.LBB13_4:                               # %.lr.ph81
+	fmul.d	$fs2, $fs0, $fs1
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(pmul)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(ptod)
@@ -1244,7 +1240,7 @@ getEas:                                 # @getEas
 	vrepli.b	$vr2, 0
 	vst	$vr2, $sp, 32                   # 16-byte Folded Spill
 	beqz	$s3, .LBB13_16
-# %bb.6:                                # %.lr.ph.us.preheader
+# %bb.5:                                # %.lr.ph.us.preheader
 	bstrpick.d	$s6, $s3, 31, 0
 	movgr2fr.d	$fs3, $zero
 	ori	$a0, $zero, 1
@@ -1259,14 +1255,14 @@ getEas:                                 # @getEas
 	pcalau12i	$a1, %got_pc_hi20(stdout)
 	ld.d	$a1, $a1, %got_pc_lo12(stdout)
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-.LBB13_7:                               # %.lr.ph.us
+.LBB13_6:                               # %.lr.ph.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB13_9 Depth 2
+                                        #     Child Loop BB13_8 Depth 2
 	move	$s3, $a0
 	addi.d	$s7, $a0, -1
 	bstrpick.d	$s2, $s7, 31, 0
 	slli.d	$a0, $s2, 4
-	vstx	$vr2, $s0, $a0
+	vstx	$vr2, $fp, $a0
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
@@ -1276,11 +1272,11 @@ getEas:                                 # @getEas
 	fmul.d	$fa1, $fs1, $fa0
 	fsqrt.d	$fa0, $fa1
 	fcmp.cor.d	$fcc0, $fa0, $fa0
-	bceqz	$fcc0, .LBB13_14
-.LBB13_8:                               # %.lr.ph.us.split
-                                        #   in Loop: Header=BB13_7 Depth=1
+	bceqz	$fcc0, .LBB13_13
+.LBB13_7:                               # %.lr.ph.us.split
+                                        #   in Loop: Header=BB13_6 Depth=1
 	bstrpick.d	$a0, $s3, 31, 0
-	alsl.d	$s4, $s2, $s0, 4
+	alsl.d	$s4, $s2, $fp, 4
 	addi.d	$s5, $s4, 8
 	fadd.d	$fs3, $fs2, $fs3
 	vldi	$vr1, -880
@@ -1317,22 +1313,22 @@ getEas:                                 # @getEas
 	move	$s2, $s8
 	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB13_9:                               #   Parent Loop BB13_7 Depth=1
+.LBB13_8:                               #   Parent Loop BB13_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a2, $s2, 0
-	bgeu	$a2, $a3, .LBB13_11
-# %bb.10:                               #   in Loop: Header=BB13_9 Depth=2
+	bgeu	$a2, $a3, .LBB13_10
+# %bb.9:                                #   in Loop: Header=BB13_8 Depth=2
 	addi.d	$a0, $a0, -1
 	addi.d	$s2, $s2, 4
-	bnez	$a0, .LBB13_9
+	bnez	$a0, .LBB13_8
 	b	.LBB13_15
 	.p2align	4, , 16
-.LBB13_11:                              #   in Loop: Header=BB13_7 Depth=1
+.LBB13_10:                              #   in Loop: Header=BB13_6 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	ori	$a1, $zero, 2
-	blt	$a0, $a1, .LBB13_13
-# %bb.12:                               #   in Loop: Header=BB13_7 Depth=1
+	blt	$a0, $a1, .LBB13_12
+# %bb.11:                               #   in Loop: Header=BB13_6 Depth=1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(printf)
@@ -1349,7 +1345,7 @@ getEas:                                 # @getEas
 	ld.d	$a0, $s7, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
-.LBB13_13:                              #   in Loop: Header=BB13_7 Depth=1
+.LBB13_12:                              #   in Loop: Header=BB13_6 Depth=1
 	ld.d	$a1, $sp, 64
 	st.d	$s2, $s4, 0
 	move	$a0, $s5
@@ -1357,14 +1353,17 @@ getEas:                                 # @getEas
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $s3, 1
 	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
-	bgeu	$s1, $a0, .LBB13_7
+	bgeu	$s1, $a0, .LBB13_6
 	b	.LBB13_18
-.LBB13_14:                              # %call.sqrt121
-                                        #   in Loop: Header=BB13_7 Depth=1
+.LBB13_13:                              # %call.sqrt
+                                        #   in Loop: Header=BB13_6 Depth=1
 	fmov.d	$fa0, $fa1
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	b	.LBB13_8
+	b	.LBB13_7
+.LBB13_14:
+	move	$fp, $zero
+	b	.LBB13_24
 .LBB13_15:                              # %.loopexit.loopexit
 	addi.w	$s3, $s7, 0
 	b	.LBB13_18
@@ -1376,7 +1375,7 @@ getEas:                                 # @getEas
 	fmul.d	$fa0, $fs2, $fa0
 	vldi	$vr1, -912
 	fadd.d	$fs3, $fa0, $fa1
-	vst	$vr2, $s0, 0
+	vst	$vr2, $fp, 0
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
@@ -1386,7 +1385,7 @@ getEas:                                 # @getEas
 	fmul.d	$fa1, $fs1, $fa0
 	fsqrt.d	$fa0, $fa1
 	fcmp.cor.d	$fcc0, $fa0, $fa0
-	bceqz	$fcc0, .LBB13_27
+	bceqz	$fcc0, .LBB13_25
 .LBB13_17:                              # %.lr.ph81.split.split
 	fmul.d	$fa0, $fs2, $fa0
 	pcaddu18i	$ra, %call36(exp)
@@ -1408,7 +1407,7 @@ getEas:                                 # @getEas
 	ld.d	$a0, $sp, 64
 	bstrpick.d	$a1, $s3, 31, 0
 	slli.d	$a1, $a1, 4
-	vstx	$vr2, $s0, $a1
+	vstx	$vr2, $fp, $a1
 	beqz	$a0, .LBB13_21
 # %bb.19:
 	ld.h	$a1, $a0, 0
@@ -1420,28 +1419,19 @@ getEas:                                 # @getEas
 	pcaddu18i	$ra, %call36(pfree)
 	jirl	$ra, $ra, 0
 .LBB13_21:
-	beqz	$fp, .LBB13_26
+	beqz	$s0, .LBB13_24
 # %bb.22:
-	ld.h	$a0, $fp, 0
+	ld.h	$a0, $s0, 0
 	addi.d	$a0, $a0, -1
 	slli.d	$a1, $a0, 48
-	st.h	$a0, $fp, 0
-	bnez	$a1, .LBB13_26
+	st.h	$a0, $s0, 0
+	bnez	$a1, .LBB13_24
 # %bb.23:
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(pfree)
 	jirl	$ra, $ra, 0
-	b	.LBB13_26
-.LBB13_24:                              # %call.sqrt
-	pcaddu18i	$ra, %call36(sqrt)
-	jirl	$ra, $ra, 0
-	fmov.d	$fs0, $fa0
-	st.d	$zero, $sp, 64
-	bnez	$s1, .LBB13_2
-.LBB13_25:
-	move	$s0, $zero
-.LBB13_26:
-	move	$a0, $s0
+.LBB13_24:
+	move	$a0, $fp
 	fld.d	$fs3, $sp, 72                   # 8-byte Folded Reload
 	fld.d	$fs2, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 88                   # 8-byte Folded Reload
@@ -1459,7 +1449,7 @@ getEas:                                 # @getEas
 	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 192
 	ret
-.LBB13_27:                              # %call.sqrt122
+.LBB13_25:                              # %call.sqrt121
 	fmov.d	$fa0, $fa1
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0

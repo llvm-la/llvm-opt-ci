@@ -243,22 +243,20 @@ _ZN7NCrypto10NZipStrong8CDecoder10ReadHeaderEP19ISequentialInStreamjy: # @_ZN7NC
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a1
 	move	$s0, $a0
-	addi.d	$a1, $sp, 4
+	addi.d	$a1, $sp, 12
 	ori	$a2, $zero, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Z16ReadStream_FALSEP19ISequentialInStreamPvm)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB4_11
 # %bb.1:
-	ld.hu	$a1, $sp, 4
+	ld.hu	$a1, $sp, 12
 	st.w	$a1, $s0, 408
 	lu12i.w	$a0, -524284
 	ori	$a2, $zero, 16
@@ -273,14 +271,14 @@ _ZN7NCrypto10NZipStrong8CDecoder10ReadHeaderEP19ISequentialInStreamjy: # @_ZN7NC
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB4_11
 # %bb.3:
-	addi.d	$a1, $sp, 4
+	addi.d	$a1, $sp, 12
 	ori	$a2, $zero, 4
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Z16ReadStream_FALSEP19ISequentialInStreamPvm)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB4_11
 # %bb.4:
-	ld.w	$a2, $sp, 4
+	ld.w	$a2, $sp, 12
 	addu16i.d	$a0, $a2, -4
 	addi.w	$a1, $a0, -1
 	lu12i.w	$a0, -64
@@ -295,7 +293,6 @@ _ZN7NCrypto10NZipStrong8CDecoder10ReadHeaderEP19ISequentialInStreamjy: # @_ZN7NC
 # %bb.6:
 	ld.d	$a0, $s0, 392
 	addi.d	$s1, $s0, 376
-	addi.d	$s2, $s0, 384
 	beqz	$a0, .LBB4_8
 # %bb.7:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -305,7 +302,7 @@ _ZN7NCrypto10NZipStrong8CDecoder10ReadHeaderEP19ISequentialInStreamjy: # @_ZN7NC
 	bstrpick.d	$a1, $a0, 31, 0
 .LBB4_8:                                # %_ZN7CBufferIhE4FreeEv.exit
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s2, 0
+	vst	$vr0, $s0, 384
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN7CBufferIhE11SetCapacityEm)
 	jirl	$ra, $ra, 0
@@ -323,7 +320,6 @@ _ZN7NCrypto10NZipStrong8CDecoder10ReadHeaderEP19ISequentialInStreamjy: # @_ZN7NC
 	pcaddu18i	$ra, %call36(_Z16ReadStream_FALSEP19ISequentialInStreamPvm)
 	jirl	$ra, $ra, 0
 .LBB4_11:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
@@ -859,7 +855,7 @@ _ZN7NCrypto10NZipStrong10CBaseCoderD2Ev: # @_ZN7NCrypto10NZipStrong10CBaseCoderD
 	.type	_ZN7NCrypto10NZipStrong10CBaseCoderD0Ev,@function
 _ZN7NCrypto10NZipStrong10CBaseCoderD0Ev: # @_ZN7NCrypto10NZipStrong10CBaseCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end11:
 	.size	_ZN7NCrypto10NZipStrong10CBaseCoderD0Ev, .Lfunc_end11-_ZN7NCrypto10NZipStrong10CBaseCoderD0Ev
                                         # -- End function
@@ -959,7 +955,7 @@ _ZThn8_N7NCrypto10NZipStrong10CBaseCoderD1Ev: # @_ZThn8_N7NCrypto10NZipStrong10C
 	.type	_ZThn8_N7NCrypto10NZipStrong10CBaseCoderD0Ev,@function
 _ZThn8_N7NCrypto10NZipStrong10CBaseCoderD0Ev: # @_ZThn8_N7NCrypto10NZipStrong10CBaseCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end16:
 	.size	_ZThn8_N7NCrypto10NZipStrong10CBaseCoderD0Ev, .Lfunc_end16-_ZThn8_N7NCrypto10NZipStrong10CBaseCoderD0Ev
                                         # -- End function
@@ -997,7 +993,7 @@ _ZThn328_N7NCrypto10NZipStrong10CBaseCoderD1Ev: # @_ZThn328_N7NCrypto10NZipStron
 	.type	_ZThn328_N7NCrypto10NZipStrong10CBaseCoderD0Ev,@function
 _ZThn328_N7NCrypto10NZipStrong10CBaseCoderD0Ev: # @_ZThn328_N7NCrypto10NZipStrong10CBaseCoderD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end18:
 	.size	_ZThn328_N7NCrypto10NZipStrong10CBaseCoderD0Ev, .Lfunc_end18-_ZThn328_N7NCrypto10NZipStrong10CBaseCoderD0Ev
                                         # -- End function

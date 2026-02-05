@@ -72,7 +72,6 @@ luaD_throw:                             # @luaD_throw
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$a2, $a0, 168
 	bnez	$a2, .LBB1_6
 # %bb.1:
@@ -140,14 +139,13 @@ luaD_throw:                             # @luaD_throw
 	st.w	$s1, $s0, 8
 .LBB1_10:                               # %luaD_seterrorobj.exit.i
 	ld.h	$a1, $a0, 98
-	addi.d	$s1, $a0, 168
 	addi.d	$a2, $s0, 16
 	st.d	$a2, $a0, 16
 	st.h	$a1, $a0, 96
 	ld.w	$a1, $a0, 92
 	ori	$a2, $zero, 1
-	lu12i.w	$s2, 4
-	ori	$a3, $s2, 3617
+	lu12i.w	$s1, 4
+	ori	$a3, $s1, 3617
 	st.b	$a2, $a0, 101
 	blt	$a1, $a3, .LBB1_13
 # %bb.11:
@@ -158,13 +156,13 @@ luaD_throw:                             # @luaD_throw
 	lu12i.w	$a3, -209716
 	ori	$a3, $a3, 3277
 	mul.w	$a2, $a2, $a3
-	ori	$a3, $s2, 3614
+	ori	$a3, $s1, 3614
 	blt	$a3, $a2, .LBB1_13
 # %bb.12:
 	alsl.d	$a0, $a1, $a1, 2
 	slli.d	$a2, $a0, 3
-	lu12i.w	$s3, 195
-	ori	$a3, $s3, 1280
+	lu12i.w	$s2, 195
+	ori	$a3, $s2, 1280
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(luaM_realloc_)
@@ -173,18 +171,18 @@ luaD_throw:                             # @luaD_throw
 	move	$a0, $fp
 	ld.d	$a2, $fp, 40
 	st.d	$a1, $fp, 80
-	ori	$a3, $s2, 3616
+	ori	$a3, $s1, 3616
 	st.w	$a3, $fp, 92
 	sub.d	$a2, $a2, $s0
 	add.d	$a2, $a1, $a2
 	st.d	$a2, $fp, 40
-	ori	$a2, $s3, 1240
+	ori	$a2, $s2, 1240
 	add.d	$a1, $a1, $a2
 	st.d	$a1, $fp, 72
 .LBB1_13:                               # %resetstack.exit
 	ld.d	$a1, $a0, 32
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s1, 0
+	vst	$vr0, $a0, 168
 	ld.d	$a1, $a1, 152
 	jirl	$ra, $a1, 0
 .LBB1_14:
@@ -807,14 +805,12 @@ luaD_precall:                           # @luaD_precall
 	beq	$a2, $a3, .LBB7_43
 .LBB7_41:                               # %.lr.ph.i99.preheader165
 	sub.d	$a2, $s6, $a6
-	move	$a3, $a1
 	.p2align	4, , 16
 .LBB7_42:                               # %.lr.ph.i99
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a1, $a3, 16
+	st.w	$zero, $a1, 8
 	addi.w	$a2, $a2, -1
-	st.w	$zero, $a3, 8
-	move	$a3, $a1
+	addi.d	$a1, $a1, 16
 	bnez	$a2, .LBB7_42
 .LBB7_43:                               # %._crit_edge.i100
 	st.d	$a1, $fp, 16
@@ -994,13 +990,9 @@ luaD_precall:                           # @luaD_precall
 	or	$a3, $a3, $a4
 	nor	$a4, $a5, $zero
 	add.d	$a3, $a3, $a4
-	ori	$a4, $zero, 16
-	bgeu	$a3, $a4, .LBB7_66
-# %bb.65:
-	move	$a3, $a5
-	b	.LBB7_69
-.LBB7_66:                               # %vector.ph152
 	srli.d	$a3, $a3, 4
+	beqz	$a3, .LBB7_68
+# %bb.65:                               # %vector.ph152
 	addi.d	$a4, $a3, 1
 	bstrpick.d	$a3, $a4, 60, 1
 	slli.d	$a6, $a3, 1
@@ -1009,15 +1001,18 @@ luaD_precall:                           # @luaD_precall
 	addi.d	$a5, $a5, 24
 	move	$a7, $a6
 	.p2align	4, , 16
-.LBB7_67:                               # %vector.body155
+.LBB7_66:                               # %vector.body155
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a5, -16
 	st.w	$zero, $a5, 0
 	addi.d	$a7, $a7, -2
 	addi.d	$a5, $a5, 32
-	bnez	$a7, .LBB7_67
-# %bb.68:                               # %middle.block161
-	beq	$a4, $a6, .LBB7_70
+	bnez	$a7, .LBB7_66
+# %bb.67:                               # %middle.block161
+	bne	$a4, $a6, .LBB7_69
+	b	.LBB7_70
+.LBB7_68:
+	move	$a3, $a5
 	.p2align	4, , 16
 .LBB7_69:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -1246,7 +1241,7 @@ luaD_poscall:                           # @luaD_poscall
 	slli.d	$a3, $a5, 31
 	addi.d	$a4, $a4, 16
 	bgez	$a3, .LBB8_12
-# %bb.14:                               # %._crit_edge.loopexit73
+# %bb.14:                               # %._crit_edge.loopexit72
 	add.d	$a3, $a2, $a4
 	b	.LBB8_23
 .LBB8_15:
@@ -1280,17 +1275,15 @@ luaD_poscall:                           # @luaD_poscall
 	bnez	$a2, .LBB8_19
 # %bb.20:                               # %middle.block
 	beq	$a0, $a7, .LBB8_23
-.LBB8_21:                               # %.lr.ph40.preheader62
+.LBB8_21:                               # %.lr.ph40.preheader61
 	addi.d	$a0, $a6, 1
 	ori	$a2, $zero, 1
-	move	$a4, $a3
 	.p2align	4, , 16
 .LBB8_22:                               # %.lr.ph40
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a3, $a4, 16
+	st.w	$zero, $a3, 8
 	addi.w	$a0, $a0, -1
-	st.w	$zero, $a4, 8
-	move	$a4, $a3
+	addi.d	$a3, $a3, 16
 	bltu	$a2, $a0, .LBB8_22
 .LBB8_23:                               # %._crit_edge
 	addi.w	$a0, $a1, 1

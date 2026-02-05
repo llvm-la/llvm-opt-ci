@@ -813,37 +813,36 @@ gs_bbox_transform_inverse:              # @gs_bbox_transform_inverse
 	.type	gs_point_transform2fixed,@function
 gs_point_transform2fixed:               # @gs_point_transform2fixed
 # %bb.0:
-	fld.s	$fa2, $a0, 0
+	fld.s	$fa2, $a0, 48
+	fld.s	$fa3, $a0, 0
+                                        # kill: def $f1_64 killed $f1_64 def $vr1
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
 	fcvt.d.s	$fa2, $fa2
-	fmul.d	$fa3, $fa0, $fa2
+	fcvt.d.s	$fa3, $fa3
+	vori.b	$vr4, $vr0, 0
+	vextrins.d	$vr4, $vr1, 16
+	vextrins.d	$vr3, $vr2, 16
+	vfmul.d	$vr2, $vr4, $vr3
 	lu52i.d	$a2, $zero, 1035
-	movgr2fr.d	$fa2, $a2
-	fmul.d	$fa3, $fa3, $fa2
-	ld.d	$a2, $a0, 96
-	ftintrz.l.d	$fa3, $fa3
-	fld.s	$fa4, $a0, 48
-	movfr2gr.d	$a3, $fa3
-	add.d	$a3, $a2, $a3
-	st.d	$a3, $a1, 0
-	fcvt.d.s	$fa3, $fa4
-	fmul.d	$fa3, $fa1, $fa3
-	ld.d	$a2, $a0, 104
-	fmul.d	$fa3, $fa3, $fa2
-	ftintrz.l.d	$fa3, $fa3
-	movfr2gr.d	$a4, $fa3
-	add.d	$a2, $a2, $a4
-	st.d	$a2, $a1, 8
-	ld.d	$a4, $a0, 32
-	slli.d	$a5, $a4, 1
-	beqz	$a5, .LBB12_2
+	vld	$vr3, $a0, 96
+	vreplgr2vr.d	$vr4, $a2
+	vfmul.d	$vr2, $vr2, $vr4
+	vftintrz.l.d	$vr2, $vr2
+	vadd.d	$vr2, $vr3, $vr2
+	vst	$vr2, $a1, 0
+	ld.d	$a3, $a0, 32
+	slli.d	$a4, $a3, 1
+	beqz	$a4, .LBB12_2
 # %bb.1:
-	movgr2fr.w	$fa3, $a4
+	movgr2fr.w	$fa3, $a3
 	fcvt.d.s	$fa3, $fa3
 	fmul.d	$fa1, $fa1, $fa3
-	fmul.d	$fa1, $fa1, $fa2
+	movgr2fr.d	$fa3, $a2
+	fmul.d	$fa1, $fa1, $fa3
 	ftintrz.l.d	$fa1, $fa1
-	movfr2gr.d	$a4, $fa1
-	add.d	$a3, $a3, $a4
+	movfr2gr.d	$a3, $fa1
+	vpickve2gr.d	$a4, $vr2, 0
+	add.d	$a3, $a4, $a3
 	st.d	$a3, $a1, 0
 .LBB12_2:
 	ld.d	$a0, $a0, 16
@@ -853,9 +852,11 @@ gs_point_transform2fixed:               # @gs_point_transform2fixed
 	movgr2fr.w	$fa1, $a0
 	fcvt.d.s	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa2
+	movgr2fr.d	$fa1, $a2
+	fmul.d	$fa0, $fa0, $fa1
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
+	vpickve2gr.d	$a2, $vr2, 1
 	add.d	$a0, $a2, $a0
 	st.d	$a0, $a1, 8
 .LBB12_4:

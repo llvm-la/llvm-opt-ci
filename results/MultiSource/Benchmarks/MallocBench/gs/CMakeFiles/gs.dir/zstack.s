@@ -202,11 +202,12 @@ zroll:                                  # @zroll
 	beq	$a3, $a5, .LBB4_11
 # %bb.14:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_13 Depth=1
-	move	$a7, $a3
+	move	$a5, $a3
 	.p2align	4, , 16
 .LBB4_15:                               # %.lr.ph
                                         #   Parent Loop BB4_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	move	$a7, $a5
 	move	$a5, $a6
 	slli.d	$a6, $a6, 4
 	vldx	$vr0, $a0, $a6
@@ -215,10 +216,9 @@ zroll:                                  # @zroll
 	vstx	$vr0, $a0, $a6
 	add.w	$a6, $a4, $a5
 	mod.w	$a6, $a6, $a2
-	bstrpick.d	$t0, $a6, 31, 0
+	bstrpick.d	$a7, $a6, 31, 0
 	addi.w	$a1, $a1, -1
-	move	$a7, $a5
-	bne	$a3, $t0, .LBB4_15
+	bne	$a3, $a7, .LBB4_15
 	b	.LBB4_12
 .LBB4_16:
 	move	$a1, $zero

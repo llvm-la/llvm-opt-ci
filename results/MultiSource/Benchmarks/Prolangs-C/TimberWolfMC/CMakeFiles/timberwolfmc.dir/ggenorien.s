@@ -5,25 +5,25 @@
 	.type	ggenorien,@function
 ggenorien:                              # @ggenorien
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 0
 	pcalau12i	$a1, %got_pc_hi20(numpads)
 	ld.d	$a1, $a1, %got_pc_lo12(numpads)
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a1, $a1, 0
 	add.w	$a2, $a1, $a0
 	blez	$a2, .LBB0_99
@@ -32,18 +32,18 @@ ggenorien:                              # @ggenorien
 	pcalau12i	$a2, %got_pc_hi20(cellarray)
 	ld.d	$a5, $a2, %got_pc_lo12(cellarray)
 	ori	$a2, $zero, 1
-	st.d	$a5, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a5, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                # %.loopexit305.loopexit
                                         #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	ori	$a4, $zero, 1
-	ld.d	$a5, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a6, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
 .LBB0_3:                                # %.loopexit305
                                         #   in Loop: Header=BB0_4 Depth=1
 	add.w	$a3, $a1, $a0
@@ -72,9 +72,9 @@ ggenorien:                              # @ggenorien
 	ld.w	$a2, $s6, 76
 	beq	$a2, $a4, .LBB0_3
 # %bb.6:                                #   in Loop: Header=BB0_4 Depth=1
-	st.d	$a6, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a6, $sp, 40                    # 8-byte Folded Spill
 	ld.d	$a0, $s6, 152
-	ld.w	$s5, $a0, 68
+	ld.w	$s4, $a0, 68
 	ld.w	$s1, $a0, 64
 	ld.w	$s2, $a0, 60
 	ld.d	$a1, $s6, 160
@@ -281,28 +281,28 @@ ggenorien:                              # @ggenorien
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB0_48:                               #   in Loop: Header=BB0_4 Depth=1
-	ld.w	$s4, $s6, 52
+	ld.w	$s5, $s6, 52
 	ori	$a0, $zero, 7
-	bltu	$a0, $s4, .LBB0_98
+	bltu	$a0, $s5, .LBB0_98
 # %bb.49:                               #   in Loop: Header=BB0_4 Depth=1
-	slli.d	$a0, $s4, 2
+	slli.d	$a0, $s5, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI0_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI0_0)
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB0_50:                               #   in Loop: Header=BB0_4 Depth=1
-	move	$fp, $s4
+	move	$fp, $s5
 .LBB0_51:                               #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$s8, $s6, 152
 	ld.d	$a0, $s8, 0
 	ld.d	$s3, $a0, 88
-	sub.w	$s5, $s5, $s1
+	sub.w	$s4, $s4, $s1
 	sub.d	$s7, $s2, $s0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	slli.d	$a1, $s4, 3
+	slli.d	$a1, $s5, 3
 	ldx.d	$a1, $s8, $a1
 	move	$s0, $a0
 	st.d	$a0, $a1, 88
@@ -321,15 +321,15 @@ ggenorien:                              # @ggenorien
 	andi	$a2, $fp, 13
 	addi.d	$a0, $a2, -4
 	sltui	$a0, $a0, 1
-	and	$a0, $s5, $a0
-	andi	$s4, $s7, 1
+	and	$a0, $a0, $s4
 	andi	$a1, $fp, 14
 	bnez	$a0, .LBB0_54
 # %bb.52:                               #   in Loop: Header=BB0_4 Depth=1
-	beqz	$s4, .LBB0_55
-# %bb.53:                               #   in Loop: Header=BB0_4 Depth=1
 	ori	$a3, $zero, 2
 	bne	$a1, $a3, .LBB0_55
+# %bb.53:                               #   in Loop: Header=BB0_4 Depth=1
+	andi	$a3, $s7, 1
+	beqz	$a3, .LBB0_55
 .LBB0_54:                               #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a3, $s2, 0
 	addi.d	$a3, $a3, 1
@@ -339,19 +339,19 @@ ggenorien:                              # @ggenorien
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a3, $s2, 0
 .LBB0_56:                               #   in Loop: Header=BB0_4 Depth=1
-	andi	$a4, $s5, 1
+	st.w	$a3, $s3, 16
 	addi.d	$a2, $a2, -1
 	sltui	$a2, $a2, 1
-	and	$s5, $a4, $a2
-	st.w	$a3, $s3, 16
-	beqz	$s5, .LBB0_58
+	and	$s4, $a2, $s4
+	andi	$s5, $s7, 1
+	beqz	$s4, .LBB0_58
 .LBB0_57:                               #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a2, $s1, 0
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $s1, 0
 	b	.LBB0_61
 .LBB0_58:                               #   in Loop: Header=BB0_4 Depth=1
-	beqz	$s4, .LBB0_61
+	beqz	$s5, .LBB0_61
 # %bb.59:                               #   in Loop: Header=BB0_4 Depth=1
 	ori	$a2, $zero, 7
 	beq	$fp, $a2, .LBB0_57
@@ -373,10 +373,10 @@ ggenorien:                              # @ggenorien
 	ld.w	$a2, $a0, 64
 	ld.w	$a3, $a0, 60
 	ld.w	$a0, $a0, 56
-	sub.d	$a1, $a1, $a2
-	sub.d	$a0, $a3, $a0
-	andi	$s5, $a1, 1
-	andi	$s3, $a0, 1
+	sub.w	$s5, $a1, $a2
+	sub.w	$a0, $a3, $a0
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	andi	$s8, $a0, 1
 	ori	$fp, $zero, 1
 	b	.LBB0_64
 	.p2align	4, , 16
@@ -399,18 +399,18 @@ ggenorien:                              # @ggenorien
 # %bb.66:                               #   in Loop: Header=BB0_64 Depth=2
 	addi.d	$s0, $s6, 152
 	ld.d	$a0, $s0, 0
-	ld.d	$s8, $a0, 88
+	ld.d	$s3, $a0, 88
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	slli.d	$a1, $fp, 3
 	ldx.d	$a1, $s0, $a1
-	ld.w	$a2, $s8, 24
+	ld.w	$a2, $s3, 24
 	move	$s0, $a0
 	st.d	$a0, $a1, 88
 	st.d	$zero, $a0, 0
 	st.w	$a2, $a0, 24
-	ld.d	$a0, $s8, 8
+	ld.d	$a0, $s3, 8
 	addi.d	$s1, $s0, 8
 	st.d	$a0, $s0, 8
 	addi.d	$s2, $s0, 12
@@ -428,14 +428,14 @@ ggenorien:                              # @ggenorien
 	andi	$a4, $fp, 5
 	addi.d	$a0, $a4, -4
 	sltui	$a0, $a0, 1
-	and	$a0, $s5, $a0
+	and	$a0, $a0, $s5
 	andi	$a1, $fp, 6
 	bnez	$a0, .LBB0_69
 # %bb.67:                               #   in Loop: Header=BB0_64 Depth=2
-	beqz	$s3, .LBB0_70
-# %bb.68:                               #   in Loop: Header=BB0_64 Depth=2
 	ori	$a5, $zero, 2
 	bne	$a1, $a5, .LBB0_70
+# %bb.68:                               #   in Loop: Header=BB0_64 Depth=2
+	beqz	$s8, .LBB0_70
 .LBB0_69:                               #   in Loop: Header=BB0_64 Depth=2
 	addi.d	$a3, $a3, 1
 	st.w	$a3, $s0, 8
@@ -443,7 +443,7 @@ ggenorien:                              # @ggenorien
 .LBB0_70:                               #   in Loop: Header=BB0_64 Depth=2
 	addi.d	$a3, $a4, -1
 	sltui	$a3, $a3, 1
-	and	$a3, $s5, $a3
+	and	$a3, $a3, $s5
 	beqz	$a3, .LBB0_72
 .LBB0_71:                               #   in Loop: Header=BB0_64 Depth=2
 	addi.d	$a2, $a2, 1
@@ -451,7 +451,7 @@ ggenorien:                              # @ggenorien
 	st.w	$a2, $s0, 20
 	b	.LBB0_75
 .LBB0_72:                               #   in Loop: Header=BB0_64 Depth=2
-	beqz	$s3, .LBB0_75
+	beqz	$s8, .LBB0_75
 # %bb.73:                               #   in Loop: Header=BB0_64 Depth=2
 	ori	$a4, $zero, 7
 	beq	$fp, $a4, .LBB0_71
@@ -465,10 +465,10 @@ ggenorien:                              # @ggenorien
 	blt	$a2, $a4, .LBB0_63
 # %bb.76:                               # %.lr.ph321
                                         #   in Loop: Header=BB0_64 Depth=2
-	sltu	$a2, $zero, $s3
 	addi.d	$a1, $a1, -2
 	sltui	$a1, $a1, 1
-	and	$a1, $a2, $a1
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	and	$a1, $a1, $a2
 	or	$s7, $a0, $a1
 	ori	$s4, $zero, 1
 	bnez	$a3, .LBB0_78
@@ -486,17 +486,17 @@ ggenorien:                              # @ggenorien
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_64 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$s8, $s8, 0
+	ld.d	$s3, $s3, 0
 	move	$s1, $s0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s8, 24
+	ld.w	$a1, $s3, 24
 	move	$s0, $a0
 	st.d	$a0, $s1, 0
 	st.d	$zero, $a0, 0
 	st.w	$a1, $a0, 24
-	ld.d	$a0, $s8, 8
+	ld.d	$a0, $s3, 8
 	addi.d	$s1, $s0, 8
 	st.d	$a0, $s0, 8
 	addi.d	$s2, $s0, 12
@@ -528,17 +528,17 @@ ggenorien:                              # @ggenorien
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_64 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$s8, $s8, 0
+	ld.d	$s3, $s3, 0
 	move	$s1, $s0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s8, 24
+	ld.w	$a1, $s3, 24
 	move	$s0, $a0
 	st.d	$a0, $s1, 0
 	st.d	$zero, $a0, 0
 	st.w	$a1, $a0, 24
-	ld.d	$a0, $s8, 8
+	ld.d	$a0, $s3, 8
 	addi.d	$s1, $s0, 8
 	st.d	$a0, $s0, 8
 	addi.d	$s2, $s0, 12
@@ -559,7 +559,7 @@ ggenorien:                              # @ggenorien
 	st.w	$a1, $s0, 8
 	st.w	$a1, $s0, 16
 .LBB0_84:                               #   in Loop: Header=BB0_82 Depth=3
-	beqz	$s3, .LBB0_81
+	beqz	$s8, .LBB0_81
 # %bb.85:                               #   in Loop: Header=BB0_82 Depth=3
 	ori	$a1, $zero, 7
 	beq	$fp, $a1, .LBB0_80
@@ -571,7 +571,7 @@ ggenorien:                              # @ggenorien
                                         #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$a1, $a1, -2
 	sltui	$a1, $a1, 1
-	and	$a1, $s7, $a1
+	and	$a1, $a1, $s7
 	or	$a0, $a0, $a1
 	ori	$s7, $zero, 1
 	andi	$s8, $a0, 1
@@ -615,9 +615,9 @@ ggenorien:                              # @ggenorien
 	st.w	$a0, $s2, 0
 .LBB0_92:                               #   in Loop: Header=BB0_90 Depth=2
 	st.w	$a0, $s3, 16
-	bnez	$s5, .LBB0_88
+	bnez	$s4, .LBB0_88
 # %bb.93:                               #   in Loop: Header=BB0_90 Depth=2
-	beqz	$s4, .LBB0_89
+	beqz	$s5, .LBB0_89
 # %bb.94:                               #   in Loop: Header=BB0_90 Depth=2
 	ori	$a0, $zero, 7
 	beq	$fp, $a0, .LBB0_88
@@ -687,9 +687,9 @@ ggenorien:                              # @ggenorien
 	st.d	$s4, $a0, 8
 	b	.LBB0_104
 .LBB0_107:                              # %.preheader302
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	add.w	$a2, $a1, $a0
 	blez	$a2, .LBB0_117
@@ -782,18 +782,18 @@ ggenorien:                              # @ggenorien
 	ld.w	$a2, $a1, 0
 	add.d	$a0, $a2, $a0
 	st.w	$a0, $a1, 0
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .Lfunc_end0:
 	.size	ggenorien, .Lfunc_end0-ggenorien

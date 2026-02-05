@@ -313,7 +313,7 @@ main:                                   # @main
 	move	$t0, $zero
 	b	.LBB7_22
 	.p2align	4, , 16
-.LBB7_19:                               # %vector.body44.preheader
+.LBB7_19:                               # %vector.ph43
                                         #   in Loop: Header=BB7_15 Depth=1
 	xvldrepl.d	$xr1, $a7, 0
 	move	$t0, $a4

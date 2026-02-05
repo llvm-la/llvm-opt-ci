@@ -403,19 +403,19 @@ _Z9iinclocalP9Classfile:                # @_Z9iinclocalP9Classfile
 	st.w	$a1, $a3, 0
 	addi.d	$a1, $a5, 2
 	st.d	$a1, $a6, 0
-	ld.bu	$a1, $a5, 1
+	ld.bu	$s2, $a5, 1
 	addi.w	$s4, $a0, -1
-	ori	$a0, $zero, 1
-	ext.w.b	$s5, $a1
-	beq	$a1, $a0, .LBB1_7
-# %bb.6:
-	ori	$a0, $zero, 255
-	bne	$a1, $a0, .LBB1_13
-.LBB1_7:
+	ext.w.b	$s5, $s2
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 1
 	move	$s0, $a0
+	beq	$s2, $a1, .LBB1_7
+# %bb.6:
+	ori	$a0, $zero, 255
+	bne	$s2, $a0, .LBB1_13
+.LBB1_7:
 .Ltmp8:                                 # EH_LABEL
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -477,10 +477,6 @@ _Z9iinclocalP9Classfile:                # @_Z9iinclocalP9Classfile
 	ori	$a0, $zero, 1
 	b	.LBB1_22
 .LBB1_13:
-	ori	$a0, $zero, 64
-	pcaddu18i	$ra, %call36(_Znwm)
-	jirl	$ra, $ra, 0
-	move	$s0, $a0
 .Ltmp16:                                # EH_LABEL
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(_Znwm)

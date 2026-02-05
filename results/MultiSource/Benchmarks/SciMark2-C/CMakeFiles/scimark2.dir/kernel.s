@@ -1243,7 +1243,7 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	add.d	$a6, $a6, $a7
 	add.d	$t4, $t4, $a7
 	beq	$a2, $s3, .LBB3_30
-.LBB3_4:                                # %iter.check91
+.LBB3_4:                                # %iter.check90
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_9 Depth 2
                                         #     Child Loop BB3_13 Depth 2
@@ -1263,14 +1263,14 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	move	$t6, $zero
 	b	.LBB3_15
 	.p2align	4, , 16
-.LBB3_6:                                # %vector.main.loop.iter.check93
+.LBB3_6:                                # %vector.main.loop.iter.check92
                                         #   in Loop: Header=BB3_4 Depth=1
 	bgeu	$s6, $t3, .LBB3_8
 # %bb.7:                                #   in Loop: Header=BB3_4 Depth=1
 	move	$t7, $zero
 	b	.LBB3_12
 	.p2align	4, , 16
-.LBB3_8:                                # %vector.ph94
+.LBB3_8:                                # %vector.ph93
                                         #   in Loop: Header=BB3_4 Depth=1
 	pcalau12i	$t6, %pc_hi20(.LCPI3_0)
 	xvld	$xr0, $t6, %pc_lo12(.LCPI3_0)
@@ -1278,7 +1278,7 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	move	$t6, $a6
 	move	$t7, $a4
 	.p2align	4, , 16
-.LBB3_9:                                # %vector.body99
+.LBB3_9:                                # %vector.body98
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.wu	$xr2, $xr0, 8
@@ -1290,15 +1290,15 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	addi.d	$t7, $t7, -16
 	addi.d	$t6, $t6, 64
 	bnez	$t7, .LBB3_9
-# %bb.10:                               # %middle.block105
+# %bb.10:                               # %middle.block104
                                         #   in Loop: Header=BB3_4 Depth=1
 	beq	$a4, $s6, .LBB3_3
-# %bb.11:                               # %vec.epilog.iter.check109
+# %bb.11:                               # %vec.epilog.iter.check108
                                         #   in Loop: Header=BB3_4 Depth=1
 	move	$t7, $a4
 	move	$t6, $a4
 	beqz	$a3, .LBB3_15
-.LBB3_12:                               # %vec.epilog.ph111
+.LBB3_12:                               # %vec.epilog.ph110
                                         #   in Loop: Header=BB3_4 Depth=1
 	pcalau12i	$t6, %pc_hi20(.LCPI3_1)
 	vld	$vr1, $t6, %pc_lo12(.LCPI3_1)
@@ -1308,7 +1308,7 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	add.d	$t6, $t0, $t7
 	alsl.d	$t7, $t7, $t4, 2
 	.p2align	4, , 16
-.LBB3_13:                               # %vec.epilog.vector.body119
+.LBB3_13:                               # %vec.epilog.vector.body118
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmul.w	$vr2, $vr0, $vr1
@@ -1317,16 +1317,16 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	addi.d	$t6, $t6, 4
 	addi.d	$t7, $t7, 16
 	bnez	$t6, .LBB3_13
-# %bb.14:                               # %vec.epilog.middle.block124
+# %bb.14:                               # %vec.epilog.middle.block123
                                         #   in Loop: Header=BB3_4 Depth=1
 	move	$t6, $a5
 	beq	$a5, $s6, .LBB3_3
-.LBB3_15:                               # %vec.epilog.scalar.ph108.preheader
+.LBB3_15:                               # %vec.epilog.scalar.ph107.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
 	slli.d	$t7, $t6, 2
 	sub.d	$t8, $s6, $t6
 	.p2align	4, , 16
-.LBB3_16:                               # %vec.epilog.scalar.ph108
+.LBB3_16:                               # %vec.epilog.scalar.ph107
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	mul.d	$s7, $t5, $t6

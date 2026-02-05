@@ -2333,7 +2333,7 @@ GCC_except_table12:
 	.type	_ZN21MultipleRangesFixtureD0Ev,@function
 _ZN21MultipleRangesFixtureD0Ev:         # @_ZN21MultipleRangesFixtureD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end13:
 	.size	_ZN21MultipleRangesFixtureD0Ev, .Lfunc_end13-_ZN21MultipleRangesFixtureD0Ev
                                         # -- End function
@@ -3557,7 +3557,7 @@ _GLOBAL__sub_I_multiple_ranges_test.cc: # @_GLOBAL__sub_I_multiple_ranges_test.c
 .LBB22_36:                              # %.thread.i
 	ld.d	$a0, $sp, 32
 	beq	$a0, $s1, .LBB22_55
-# %bb.37:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit19.thread36.i
+# %bb.37:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.thread.i
 	ld.d	$a1, $sp, 48
 	addi.d	$a1, $a1, 1
 	b	.LBB22_54
@@ -3604,21 +3604,20 @@ _GLOBAL__sub_I_multiple_ranges_test.cc: # @_GLOBAL__sub_I_multiple_ranges_test.c
 .Ltmp189:                               # EH_LABEL
 	ld.d	$a2, $sp, 32
 	move	$fp, $a0
+	bne	$a2, $s1, .LBB22_50
+	b	.LBB22_51
+.LBB22_49:
+.Ltmp175:                               # EH_LABEL
+	ld.d	$a2, $sp, 32
+	move	$fp, $a0
 	beq	$a2, $s1, .LBB22_51
-.LBB22_49:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit19.i
+.LBB22_50:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.i
 	ld.d	$a0, $sp, 48
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	bnez	$s3, .LBB22_52
-	b	.LBB22_55
-.LBB22_50:
-.Ltmp175:                               # EH_LABEL
-	ld.d	$a2, $sp, 32
-	move	$fp, $a0
-	bne	$a2, $s1, .LBB22_49
-.LBB22_51:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i18.i
+.LBB22_51:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit19.i
 	beqz	$s3, .LBB22_55
 .LBB22_52:
 	ori	$a1, $zero, 232

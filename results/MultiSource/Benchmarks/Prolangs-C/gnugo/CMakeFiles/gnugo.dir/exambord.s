@@ -45,6 +45,7 @@ examboard:                              # @examboard
 	move	$t1, $zero
 	move	$a1, $zero
 	move	$a2, $zero
+	ori	$t7, $zero, 6
 	ori	$t8, $zero, 7
 	ori	$s0, $zero, 8
 	ori	$s1, $zero, 9
@@ -68,297 +69,297 @@ examboard:                              # @examboard
 .LBB0_3:                                # %.preheader.us
                                         # =>This Inner Loop Header: Depth=1
 	ldx.bu	$t4, $a7, $t1
-	bne	$fp, $t4, .LBB0_6
+	bne	$fp, $t4, .LBB0_5
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
 	ldx.bu	$t4, $t0, $t1
-	bnez	$t4, .LBB0_6
-# %bb.5:                                #   in Loop: Header=BB0_3 Depth=1
+	beqz	$t4, .LBB0_8
+.LBB0_5:                                #   in Loop: Header=BB0_3 Depth=1
+	add.d	$t4, $a7, $t1
+	ld.bu	$t6, $t4, 1
+	add.d	$t5, $t0, $t1
+	bne	$fp, $t6, .LBB0_9
+.LBB0_6:                                #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 1
+	bnez	$t6, .LBB0_9
+# %bb.7:                                #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 1
+	st.w	$a1, $a3, 0
+	ori	$t6, $zero, 1
+	st.w	$t6, $a4, 0
+	addi.d	$a6, $a6, 1
+	st.w	$a6, $a5, 0
+	addi.w	$a2, $a2, 1
+	b	.LBB0_9
+.LBB0_8:                                #   in Loop: Header=BB0_3 Depth=1
 	stx.b	$zero, $a7, $t1
 	st.w	$a1, $a3, 0
 	st.w	$zero, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
+	add.d	$t4, $a7, $t1
+	ld.bu	$t6, $t4, 1
+	add.d	$t5, $t0, $t1
+	beq	$fp, $t6, .LBB0_6
 	.p2align	4, , 16
-.LBB0_6:                                #   in Loop: Header=BB0_3 Depth=1
-	add.d	$t5, $a7, $t1
-	ld.bu	$t7, $t5, 1
-	addi.d	$t4, $t5, 9
-	add.d	$t6, $t0, $t1
-	bne	$fp, $t7, .LBB0_8
-# %bb.7:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 1
-	beqz	$t7, .LBB0_11
-.LBB0_8:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 2
-	bne	$fp, $t7, .LBB0_12
 .LBB0_9:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 2
-	bnez	$t7, .LBB0_12
+	ld.bu	$t6, $t4, 2
+	bne	$fp, $t6, .LBB0_11
 # %bb.10:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -7
-	st.w	$a1, $a3, 0
-	ori	$t7, $zero, 2
-	st.w	$t7, $a4, 0
-	addi.d	$a6, $a6, 1
-	st.w	$a6, $a5, 0
-	addi.w	$a2, $a2, 1
-	b	.LBB0_12
+	ld.bu	$t6, $t5, 2
+	beqz	$t6, .LBB0_14
 .LBB0_11:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -8
-	st.w	$a1, $a3, 0
-	ori	$t7, $zero, 1
-	st.w	$t7, $a4, 0
-	addi.d	$a6, $a6, 1
-	st.w	$a6, $a5, 0
-	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 2
-	beq	$fp, $t7, .LBB0_9
-	.p2align	4, , 16
+	ld.bu	$t6, $t4, 3
+	bne	$fp, $t6, .LBB0_15
 .LBB0_12:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 3
-	bne	$fp, $t7, .LBB0_14
+	ld.bu	$t6, $t5, 3
+	bnez	$t6, .LBB0_15
 # %bb.13:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 3
-	beqz	$t7, .LBB0_17
+	st.b	$zero, $t4, 3
+	st.w	$a1, $a3, 0
+	ori	$t6, $zero, 3
+	st.w	$t6, $a4, 0
+	addi.d	$a6, $a6, 1
+	st.w	$a6, $a5, 0
+	addi.w	$a2, $a2, 1
+	b	.LBB0_15
 .LBB0_14:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 4
-	bne	$fp, $t7, .LBB0_18
+	st.b	$zero, $t4, 2
+	st.w	$a1, $a3, 0
+	ori	$t6, $zero, 2
+	st.w	$t6, $a4, 0
+	addi.d	$a6, $a6, 1
+	st.w	$a6, $a5, 0
+	addi.w	$a2, $a2, 1
+	ld.bu	$t6, $t4, 3
+	beq	$fp, $t6, .LBB0_12
+	.p2align	4, , 16
 .LBB0_15:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 4
-	bnez	$t7, .LBB0_18
+	ld.bu	$t6, $t4, 4
+	bne	$fp, $t6, .LBB0_17
 # %bb.16:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -5
-	st.w	$a1, $a3, 0
-	ori	$t7, $zero, 4
-	st.w	$t7, $a4, 0
-	addi.d	$a6, $a6, 1
-	st.w	$a6, $a5, 0
-	addi.w	$a2, $a2, 1
-	b	.LBB0_18
+	ld.bu	$t6, $t5, 4
+	beqz	$t6, .LBB0_20
 .LBB0_17:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -6
-	st.w	$a1, $a3, 0
-	ori	$t7, $zero, 3
-	st.w	$t7, $a4, 0
-	addi.d	$a6, $a6, 1
-	st.w	$a6, $a5, 0
-	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 4
-	beq	$fp, $t7, .LBB0_15
-	.p2align	4, , 16
+	ld.bu	$t6, $t4, 5
+	bne	$fp, $t6, .LBB0_21
 .LBB0_18:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 5
-	bne	$fp, $t7, .LBB0_20
+	ld.bu	$t6, $t5, 5
+	bnez	$t6, .LBB0_21
 # %bb.19:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 5
-	beqz	$t7, .LBB0_23
+	st.b	$zero, $t4, 5
+	st.w	$a1, $a3, 0
+	ori	$t6, $zero, 5
+	st.w	$t6, $a4, 0
+	addi.d	$a6, $a6, 1
+	st.w	$a6, $a5, 0
+	addi.w	$a2, $a2, 1
+	b	.LBB0_21
 .LBB0_20:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 6
-	bne	$fp, $t7, .LBB0_24
-.LBB0_21:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 6
-	bnez	$t7, .LBB0_24
-# %bb.22:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -3
+	st.b	$zero, $t4, 4
 	st.w	$a1, $a3, 0
-	ori	$t7, $zero, 6
-	st.w	$t7, $a4, 0
+	ori	$t6, $zero, 4
+	st.w	$t6, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	b	.LBB0_24
-.LBB0_23:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -4
-	st.w	$a1, $a3, 0
-	ori	$t7, $zero, 5
-	st.w	$t7, $a4, 0
-	addi.d	$a6, $a6, 1
-	st.w	$a6, $a5, 0
-	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 6
-	beq	$fp, $t7, .LBB0_21
+	ld.bu	$t6, $t4, 5
+	beq	$fp, $t6, .LBB0_18
 	.p2align	4, , 16
+.LBB0_21:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 6
+	bne	$fp, $t6, .LBB0_23
+# %bb.22:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 6
+	beqz	$t6, .LBB0_26
+.LBB0_23:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 7
+	bne	$fp, $t6, .LBB0_27
 .LBB0_24:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 7
-	bne	$fp, $t7, .LBB0_26
+	ld.bu	$t6, $t5, 7
+	bnez	$t6, .LBB0_27
 # %bb.25:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 7
-	beqz	$t7, .LBB0_29
-.LBB0_26:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 8
-	bne	$fp, $t7, .LBB0_30
-.LBB0_27:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 8
-	bnez	$t7, .LBB0_30
-# %bb.28:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -1
-	st.w	$a1, $a3, 0
-	st.w	$s0, $a4, 0
-	addi.d	$a6, $a6, 1
-	st.w	$a6, $a5, 0
-	addi.w	$a2, $a2, 1
-	b	.LBB0_30
-.LBB0_29:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, -2
+	st.b	$zero, $t4, 7
 	st.w	$a1, $a3, 0
 	st.w	$t8, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 8
-	beq	$fp, $t7, .LBB0_27
-	.p2align	4, , 16
-.LBB0_30:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 9
-	bne	$fp, $t7, .LBB0_32
-# %bb.31:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 9
-	beqz	$t7, .LBB0_35
-.LBB0_32:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 10
-	bne	$fp, $t7, .LBB0_36
-.LBB0_33:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 10
-	bnez	$t7, .LBB0_36
-# %bb.34:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 1
+	b	.LBB0_27
+.LBB0_26:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 6
 	st.w	$a1, $a3, 0
-	st.w	$s2, $a4, 0
+	st.w	$t7, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	b	.LBB0_36
-.LBB0_35:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t5, 9
+	ld.bu	$t6, $t4, 7
+	beq	$fp, $t6, .LBB0_24
+	.p2align	4, , 16
+.LBB0_27:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 8
+	bne	$fp, $t6, .LBB0_29
+# %bb.28:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 8
+	beqz	$t6, .LBB0_32
+.LBB0_29:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 9
+	bne	$fp, $t6, .LBB0_33
+.LBB0_30:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 9
+	bnez	$t6, .LBB0_33
+# %bb.31:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 9
 	st.w	$a1, $a3, 0
 	st.w	$s1, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 10
-	beq	$fp, $t7, .LBB0_33
-	.p2align	4, , 16
-.LBB0_36:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 11
-	bne	$fp, $t7, .LBB0_38
-# %bb.37:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 11
-	beqz	$t7, .LBB0_41
-.LBB0_38:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 12
-	bne	$fp, $t7, .LBB0_42
-.LBB0_39:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 12
-	bnez	$t7, .LBB0_42
-# %bb.40:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 3
+	b	.LBB0_33
+.LBB0_32:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 8
 	st.w	$a1, $a3, 0
-	st.w	$s4, $a4, 0
+	st.w	$s0, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	b	.LBB0_42
-.LBB0_41:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 2
+	ld.bu	$t6, $t4, 9
+	beq	$fp, $t6, .LBB0_30
+	.p2align	4, , 16
+.LBB0_33:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 10
+	bne	$fp, $t6, .LBB0_35
+# %bb.34:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 10
+	beqz	$t6, .LBB0_38
+.LBB0_35:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 11
+	bne	$fp, $t6, .LBB0_39
+.LBB0_36:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 11
+	bnez	$t6, .LBB0_39
+# %bb.37:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 11
 	st.w	$a1, $a3, 0
 	st.w	$s3, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 12
-	beq	$fp, $t7, .LBB0_39
-	.p2align	4, , 16
-.LBB0_42:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 13
-	bne	$fp, $t7, .LBB0_44
-# %bb.43:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 13
-	beqz	$t7, .LBB0_47
-.LBB0_44:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 14
-	bne	$fp, $t7, .LBB0_48
-.LBB0_45:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 14
-	bnez	$t7, .LBB0_48
-# %bb.46:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 5
+	b	.LBB0_39
+.LBB0_38:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 10
 	st.w	$a1, $a3, 0
-	st.w	$s6, $a4, 0
+	st.w	$s2, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	b	.LBB0_48
-.LBB0_47:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 4
+	ld.bu	$t6, $t4, 11
+	beq	$fp, $t6, .LBB0_36
+	.p2align	4, , 16
+.LBB0_39:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 12
+	bne	$fp, $t6, .LBB0_41
+# %bb.40:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 12
+	beqz	$t6, .LBB0_44
+.LBB0_41:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 13
+	bne	$fp, $t6, .LBB0_45
+.LBB0_42:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 13
+	bnez	$t6, .LBB0_45
+# %bb.43:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 13
 	st.w	$a1, $a3, 0
 	st.w	$s5, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 14
-	beq	$fp, $t7, .LBB0_45
-	.p2align	4, , 16
-.LBB0_48:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 15
-	bne	$fp, $t7, .LBB0_50
-# %bb.49:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 15
-	beqz	$t7, .LBB0_53
-.LBB0_50:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 16
-	bne	$fp, $t7, .LBB0_54
-.LBB0_51:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 16
-	bnez	$t7, .LBB0_54
-# %bb.52:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 7
+	b	.LBB0_45
+.LBB0_44:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 12
 	st.w	$a1, $a3, 0
-	st.w	$s8, $a4, 0
+	st.w	$s4, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	b	.LBB0_54
-.LBB0_53:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 6
+	ld.bu	$t6, $t4, 13
+	beq	$fp, $t6, .LBB0_42
+	.p2align	4, , 16
+.LBB0_45:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 14
+	bne	$fp, $t6, .LBB0_47
+# %bb.46:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 14
+	beqz	$t6, .LBB0_50
+.LBB0_47:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 15
+	bne	$fp, $t6, .LBB0_51
+.LBB0_48:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 15
+	bnez	$t6, .LBB0_51
+# %bb.49:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 15
 	st.w	$a1, $a3, 0
 	st.w	$s7, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t5, 16
-	beq	$fp, $t7, .LBB0_51
+	b	.LBB0_51
+.LBB0_50:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 14
+	st.w	$a1, $a3, 0
+	st.w	$s6, $a4, 0
+	addi.d	$a6, $a6, 1
+	st.w	$a6, $a5, 0
+	addi.w	$a2, $a2, 1
+	ld.bu	$t6, $t4, 15
+	beq	$fp, $t6, .LBB0_48
 	.p2align	4, , 16
+.LBB0_51:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 16
+	bne	$fp, $t6, .LBB0_53
+# %bb.52:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t5, 16
+	beqz	$t6, .LBB0_56
+.LBB0_53:                               #   in Loop: Header=BB0_3 Depth=1
+	ld.bu	$t6, $t4, 17
+	bne	$fp, $t6, .LBB0_57
 .LBB0_54:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t5, 17
-	bne	$fp, $t7, .LBB0_56
+	ld.bu	$t6, $t5, 17
+	bnez	$t6, .LBB0_57
 # %bb.55:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t7, $t6, 17
-	beqz	$t7, .LBB0_59
+	st.b	$zero, $t4, 17
+	st.w	$a1, $a3, 0
+	st.w	$ra, $a4, 0
+	addi.d	$a6, $a6, 1
+	st.w	$a6, $a5, 0
+	addi.w	$a2, $a2, 1
+	b	.LBB0_57
 .LBB0_56:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t5, $t5, 18
-	bne	$fp, $t5, .LBB0_2
+	st.b	$zero, $t4, 16
+	st.w	$a1, $a3, 0
+	st.w	$s8, $a4, 0
+	addi.d	$a6, $a6, 1
+	st.w	$a6, $a5, 0
+	addi.w	$a2, $a2, 1
+	ld.bu	$t6, $t4, 17
+	beq	$fp, $t6, .LBB0_54
+	.p2align	4, , 16
 .LBB0_57:                               #   in Loop: Header=BB0_3 Depth=1
-	ld.bu	$t5, $t6, 18
-	bnez	$t5, .LBB0_2
+	ld.bu	$t6, $t4, 18
+	bne	$fp, $t6, .LBB0_2
 # %bb.58:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 9
+	ld.bu	$t5, $t5, 18
+	bnez	$t5, .LBB0_2
+# %bb.59:                               #   in Loop: Header=BB0_3 Depth=1
+	st.b	$zero, $t4, 18
 	st.w	$a1, $a3, 0
 	st.w	$t2, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
 	b	.LBB0_2
-.LBB0_59:                               #   in Loop: Header=BB0_3 Depth=1
-	st.b	$zero, $t4, 8
-	st.w	$a1, $a3, 0
-	st.w	$ra, $a4, 0
-	addi.d	$a6, $a6, 1
-	st.w	$a6, $a5, 0
-	addi.w	$a2, $a2, 1
-	ld.bu	$t5, $t5, 18
-	bne	$fp, $t5, .LBB0_2
-	b	.LBB0_57
 .LBB0_60:                               # %.preheader.preheader
 	pcalau12i	$a1, %got_pc_hi20(uik)
 	ld.d	$a3, $a1, %got_pc_lo12(uik)
@@ -378,6 +379,7 @@ examboard:                              # @examboard
 	move	$t1, $zero
 	move	$t2, $zero
 	move	$a2, $zero
+	ori	$t7, $zero, 5
 	ori	$t8, $zero, 6
 	ori	$s0, $zero, 7
 	ori	$s1, $zero, 8
@@ -407,19 +409,18 @@ examboard:                              # @examboard
 	ldx.bu	$t5, $t0, $t1
 	beqz	$t5, .LBB0_67
 .LBB0_64:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t6, $a7, $t1
-	ld.bu	$t7, $t6, 1
-	addi.d	$t5, $t6, 9
-	bne	$fp, $t7, .LBB0_68
+	add.d	$t5, $a7, $t1
+	ld.bu	$t6, $t5, 1
+	bne	$fp, $t6, .LBB0_68
 .LBB0_65:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 1
-	bnez	$t7, .LBB0_68
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 1
+	bnez	$t6, .LBB0_68
 # %bb.66:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -8
+	st.b	$zero, $t5, 1
 	st.w	$t2, $a3, 0
-	ori	$t7, $zero, 1
-	st.w	$t7, $a4, 0
+	ori	$t6, $zero, 1
+	st.w	$t6, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
@@ -431,95 +432,93 @@ examboard:                              # @examboard
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	add.d	$t6, $a7, $t1
-	ld.bu	$t7, $t6, 1
-	addi.d	$t5, $t6, 9
-	beq	$fp, $t7, .LBB0_65
+	add.d	$t5, $a7, $t1
+	ld.bu	$t6, $t5, 1
+	beq	$fp, $t6, .LBB0_65
 	.p2align	4, , 16
 .LBB0_68:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 2
-	bne	$fp, $t7, .LBB0_70
+	ld.bu	$t6, $t5, 2
+	bne	$fp, $t6, .LBB0_70
 # %bb.69:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 2
-	beqz	$t7, .LBB0_73
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 2
+	beqz	$t6, .LBB0_73
 .LBB0_70:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 3
-	bne	$fp, $t7, .LBB0_74
+	ld.bu	$t6, $t5, 3
+	bne	$fp, $t6, .LBB0_74
 .LBB0_71:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 3
-	bnez	$t7, .LBB0_74
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 3
+	bnez	$t6, .LBB0_74
 # %bb.72:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -6
+	st.b	$zero, $t5, 3
 	st.w	$t2, $a3, 0
-	ori	$t7, $zero, 3
-	st.w	$t7, $a4, 0
+	ori	$t6, $zero, 3
+	st.w	$t6, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
 	b	.LBB0_74
 .LBB0_73:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -7
+	st.b	$zero, $t5, 2
 	st.w	$t2, $a3, 0
-	ori	$t7, $zero, 2
-	st.w	$t7, $a4, 0
+	ori	$t6, $zero, 2
+	st.w	$t6, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 3
-	beq	$fp, $t7, .LBB0_71
+	ld.bu	$t6, $t5, 3
+	beq	$fp, $t6, .LBB0_71
 	.p2align	4, , 16
 .LBB0_74:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 4
-	bne	$fp, $t7, .LBB0_76
+	ld.bu	$t6, $t5, 4
+	bne	$fp, $t6, .LBB0_76
 # %bb.75:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 4
-	beqz	$t7, .LBB0_79
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 4
+	beqz	$t6, .LBB0_79
 .LBB0_76:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 5
-	bne	$fp, $t7, .LBB0_80
+	ld.bu	$t6, $t5, 5
+	bne	$fp, $t6, .LBB0_80
 .LBB0_77:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 5
-	bnez	$t7, .LBB0_80
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 5
+	bnez	$t6, .LBB0_80
 # %bb.78:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -4
+	st.b	$zero, $t5, 5
 	st.w	$t2, $a3, 0
-	ori	$t7, $zero, 5
 	st.w	$t7, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
 	b	.LBB0_80
 .LBB0_79:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -5
+	st.b	$zero, $t5, 4
 	st.w	$t2, $a3, 0
-	ori	$t7, $zero, 4
-	st.w	$t7, $a4, 0
+	ori	$t6, $zero, 4
+	st.w	$t6, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 5
-	beq	$fp, $t7, .LBB0_77
+	ld.bu	$t6, $t5, 5
+	beq	$fp, $t6, .LBB0_77
 	.p2align	4, , 16
 .LBB0_80:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 6
-	bne	$fp, $t7, .LBB0_82
+	ld.bu	$t6, $t5, 6
+	bne	$fp, $t6, .LBB0_82
 # %bb.81:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 6
-	beqz	$t7, .LBB0_85
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 6
+	beqz	$t6, .LBB0_85
 .LBB0_82:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 7
-	bne	$fp, $t7, .LBB0_86
+	ld.bu	$t6, $t5, 7
+	bne	$fp, $t6, .LBB0_86
 .LBB0_83:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 7
-	bnez	$t7, .LBB0_86
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 7
+	bnez	$t6, .LBB0_86
 # %bb.84:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -2
+	st.b	$zero, $t5, 7
 	st.w	$t2, $a3, 0
 	st.w	$s0, $a4, 0
 	addi.d	$a6, $a6, 1
@@ -527,31 +526,31 @@ examboard:                              # @examboard
 	addi.w	$a2, $a2, 1
 	b	.LBB0_86
 .LBB0_85:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -3
+	st.b	$zero, $t5, 6
 	st.w	$t2, $a3, 0
 	st.w	$t8, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 7
-	beq	$fp, $t7, .LBB0_83
+	ld.bu	$t6, $t5, 7
+	beq	$fp, $t6, .LBB0_83
 	.p2align	4, , 16
 .LBB0_86:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 8
-	bne	$fp, $t7, .LBB0_88
+	ld.bu	$t6, $t5, 8
+	bne	$fp, $t6, .LBB0_88
 # %bb.87:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 8
-	beqz	$t7, .LBB0_91
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 8
+	beqz	$t6, .LBB0_91
 .LBB0_88:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 9
-	bne	$fp, $t7, .LBB0_92
+	ld.bu	$t6, $t5, 9
+	bne	$fp, $t6, .LBB0_92
 .LBB0_89:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 9
-	bnez	$t7, .LBB0_92
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 9
+	bnez	$t6, .LBB0_92
 # %bb.90:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t6, 9
+	st.b	$zero, $t5, 9
 	st.w	$t2, $a3, 0
 	st.w	$s2, $a4, 0
 	addi.d	$a6, $a6, 1
@@ -559,31 +558,31 @@ examboard:                              # @examboard
 	addi.w	$a2, $a2, 1
 	b	.LBB0_92
 .LBB0_91:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, -1
+	st.b	$zero, $t5, 8
 	st.w	$t2, $a3, 0
 	st.w	$s1, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 9
-	beq	$fp, $t7, .LBB0_89
+	ld.bu	$t6, $t5, 9
+	beq	$fp, $t6, .LBB0_89
 	.p2align	4, , 16
 .LBB0_92:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 10
-	bne	$fp, $t7, .LBB0_94
+	ld.bu	$t6, $t5, 10
+	bne	$fp, $t6, .LBB0_94
 # %bb.93:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 10
-	beqz	$t7, .LBB0_97
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 10
+	beqz	$t6, .LBB0_97
 .LBB0_94:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 11
-	bne	$fp, $t7, .LBB0_98
+	ld.bu	$t6, $t5, 11
+	bne	$fp, $t6, .LBB0_98
 .LBB0_95:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 11
-	bnez	$t7, .LBB0_98
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 11
+	bnez	$t6, .LBB0_98
 # %bb.96:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 2
+	st.b	$zero, $t5, 11
 	st.w	$t2, $a3, 0
 	st.w	$s4, $a4, 0
 	addi.d	$a6, $a6, 1
@@ -591,31 +590,31 @@ examboard:                              # @examboard
 	addi.w	$a2, $a2, 1
 	b	.LBB0_98
 .LBB0_97:                               #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 1
+	st.b	$zero, $t5, 10
 	st.w	$t2, $a3, 0
 	st.w	$s3, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 11
-	beq	$fp, $t7, .LBB0_95
+	ld.bu	$t6, $t5, 11
+	beq	$fp, $t6, .LBB0_95
 	.p2align	4, , 16
 .LBB0_98:                               #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 12
-	bne	$fp, $t7, .LBB0_100
+	ld.bu	$t6, $t5, 12
+	bne	$fp, $t6, .LBB0_100
 # %bb.99:                               #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 12
-	beqz	$t7, .LBB0_103
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 12
+	beqz	$t6, .LBB0_103
 .LBB0_100:                              #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 13
-	bne	$fp, $t7, .LBB0_104
+	ld.bu	$t6, $t5, 13
+	bne	$fp, $t6, .LBB0_104
 .LBB0_101:                              #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 13
-	bnez	$t7, .LBB0_104
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 13
+	bnez	$t6, .LBB0_104
 # %bb.102:                              #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 4
+	st.b	$zero, $t5, 13
 	st.w	$t2, $a3, 0
 	st.w	$s6, $a4, 0
 	addi.d	$a6, $a6, 1
@@ -623,31 +622,31 @@ examboard:                              # @examboard
 	addi.w	$a2, $a2, 1
 	b	.LBB0_104
 .LBB0_103:                              #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 3
+	st.b	$zero, $t5, 12
 	st.w	$t2, $a3, 0
 	st.w	$s5, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 13
-	beq	$fp, $t7, .LBB0_101
+	ld.bu	$t6, $t5, 13
+	beq	$fp, $t6, .LBB0_101
 	.p2align	4, , 16
 .LBB0_104:                              #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 14
-	bne	$fp, $t7, .LBB0_106
+	ld.bu	$t6, $t5, 14
+	bne	$fp, $t6, .LBB0_106
 # %bb.105:                              #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 14
-	beqz	$t7, .LBB0_109
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 14
+	beqz	$t6, .LBB0_109
 .LBB0_106:                              #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 15
-	bne	$fp, $t7, .LBB0_110
+	ld.bu	$t6, $t5, 15
+	bne	$fp, $t6, .LBB0_110
 .LBB0_107:                              #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 15
-	bnez	$t7, .LBB0_110
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 15
+	bnez	$t6, .LBB0_110
 # %bb.108:                              #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 6
+	st.b	$zero, $t5, 15
 	st.w	$t2, $a3, 0
 	st.w	$s8, $a4, 0
 	addi.d	$a6, $a6, 1
@@ -655,31 +654,31 @@ examboard:                              # @examboard
 	addi.w	$a2, $a2, 1
 	b	.LBB0_110
 .LBB0_109:                              #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 5
+	st.b	$zero, $t5, 14
 	st.w	$t2, $a3, 0
 	st.w	$s7, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 15
-	beq	$fp, $t7, .LBB0_107
+	ld.bu	$t6, $t5, 15
+	beq	$fp, $t6, .LBB0_107
 	.p2align	4, , 16
 .LBB0_110:                              #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 16
-	bne	$fp, $t7, .LBB0_112
+	ld.bu	$t6, $t5, 16
+	bne	$fp, $t6, .LBB0_112
 # %bb.111:                              #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 16
-	beqz	$t7, .LBB0_115
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 16
+	beqz	$t6, .LBB0_115
 .LBB0_112:                              #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t7, $t6, 17
-	bne	$fp, $t7, .LBB0_116
+	ld.bu	$t6, $t5, 17
+	bne	$fp, $t6, .LBB0_116
 .LBB0_113:                              #   in Loop: Header=BB0_62 Depth=1
-	add.d	$t7, $t0, $t1
-	ld.bu	$t7, $t7, 17
-	bnez	$t7, .LBB0_116
+	add.d	$t6, $t0, $t1
+	ld.bu	$t6, $t6, 17
+	bnez	$t6, .LBB0_116
 # %bb.114:                              #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 8
+	st.b	$zero, $t5, 17
 	st.w	$t2, $a3, 0
 	st.w	$a1, $a4, 0
 	addi.d	$a6, $a6, 1
@@ -687,24 +686,24 @@ examboard:                              # @examboard
 	addi.w	$a2, $a2, 1
 	b	.LBB0_116
 .LBB0_115:                              #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 7
+	st.b	$zero, $t5, 16
 	st.w	$t2, $a3, 0
 	st.w	$ra, $a4, 0
 	addi.d	$a6, $a6, 1
 	st.w	$a6, $a5, 0
 	addi.w	$a2, $a2, 1
-	ld.bu	$t7, $t6, 17
-	beq	$fp, $t7, .LBB0_113
+	ld.bu	$t6, $t5, 17
+	beq	$fp, $t6, .LBB0_113
 	.p2align	4, , 16
 .LBB0_116:                              #   in Loop: Header=BB0_62 Depth=1
-	ld.bu	$t6, $t6, 18
+	ld.bu	$t6, $t5, 18
 	bne	$fp, $t6, .LBB0_61
 # %bb.117:                              #   in Loop: Header=BB0_62 Depth=1
 	add.d	$t6, $t0, $t1
 	ld.bu	$t6, $t6, 18
 	bnez	$t6, .LBB0_61
 # %bb.118:                              #   in Loop: Header=BB0_62 Depth=1
-	st.b	$zero, $t5, 9
+	st.b	$zero, $t5, 18
 	st.w	$t2, $a3, 0
 	st.w	$t3, $a4, 0
 	addi.d	$a6, $a6, 1

@@ -1838,9 +1838,7 @@ LongestPathVCG:                         # @LongestPathVCG
 	.p2align	4, , 16
 .LBB14_5:                               # =>This Inner Loop Header: Depth=1
 	sltu	$a3, $zero, $a0
-	addi.d	$a4, $a0, -1
-	sltu	$a0, $a0, $a4
-	masknez	$a0, $a4, $a0
+	sub.d	$a0, $a0, $a3
 	st.d	$a3, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, -8
@@ -1880,12 +1878,10 @@ LongestPathVCG:                         # @LongestPathVCG
 	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB14_11:                              # =>This Inner Loop Header: Depth=1
-	sltu	$a4, $zero, $a0
-	addi.d	$a5, $a0, -1
-	st.d	$a4, $a2, 0
+	sltu	$a5, $zero, $a0
+	st.d	$a5, $a2, 0
 	ld.d	$a4, $s1, 0
-	sltu	$a0, $a0, $a5
-	masknez	$a0, $a5, $a0
+	sub.d	$a0, $a0, $a5
 	addi.d	$a3, $a3, 1
 	addi.d	$a2, $a2, 8
 	bgeu	$a4, $a3, .LBB14_11
@@ -2100,9 +2096,9 @@ VCV:                                    # @VCV
 	slli.d	$a0, $a1, 6
 	add.d	$s6, $s2, $a0
 	addi.d	$s7, $s2, 112
-	ori	$a0, $zero, 1
-	vrepli.b	$vr0, 0
 	ori	$s4, $zero, 1
+	vrepli.b	$vr0, 0
+	ori	$a0, $zero, 1
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB17_5
 	.p2align	4, , 16

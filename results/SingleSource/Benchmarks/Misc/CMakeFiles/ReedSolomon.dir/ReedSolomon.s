@@ -456,20 +456,20 @@ rsdec_204:                              # @rsdec_204
 	vpickve2gr.w	$a2, $vr1, 1
 	vinsgr2vr.d	$vr5, $a2, 1
 	xvpickve2gr.d	$a2, $xr5, 0
-	slli.d	$a2, $a2, 2
 	xvpickve2gr.d	$a3, $xr5, 1
-	slli.d	$a3, $a3, 2
 	xvpickve2gr.d	$a4, $xr2, 2
-	slli.d	$a4, $a4, 2
 	xvpickve2gr.d	$a5, $xr2, 3
-	slli.d	$a5, $a5, 2
 	xvpickve2gr.d	$a6, $xr4, 0
-	slli.d	$a6, $a6, 2
 	xvpickve2gr.d	$a7, $xr4, 1
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t0, $xr3, 2
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t1, $xr3, 3
+	slli.d	$a2, $a2, 2
+	slli.d	$a3, $a3, 2
+	slli.d	$a4, $a4, 2
+	slli.d	$a5, $a5, 2
+	slli.d	$a6, $a6, 2
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
 	slli.d	$t1, $t1, 2
 	ldx.w	$a2, $s3, $a2
 	ldx.w	$a3, $s3, $a3
@@ -820,20 +820,20 @@ rsdec_204:                              # @rsdec_204
 	vpickve2gr.w	$a7, $vr0, 1
 	vinsgr2vr.d	$vr4, $a7, 1
 	xvpickve2gr.d	$a7, $xr4, 0
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t0, $xr4, 1
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t4, $xr1, 2
-	slli.d	$t4, $t4, 2
 	xvpickve2gr.d	$t5, $xr1, 3
-	slli.d	$t5, $t5, 2
 	xvpickve2gr.d	$t6, $xr3, 0
-	slli.d	$t6, $t6, 2
 	xvpickve2gr.d	$fp, $xr3, 1
-	slli.d	$fp, $fp, 2
 	xvpickve2gr.d	$s0, $xr2, 2
-	slli.d	$s0, $s0, 2
 	xvpickve2gr.d	$s7, $xr2, 3
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$t4, $t4, 2
+	slli.d	$t5, $t5, 2
+	slli.d	$t6, $t6, 2
+	slli.d	$fp, $fp, 2
+	slli.d	$s0, $s0, 2
 	slli.d	$s7, $s7, 2
 	ldx.w	$a7, $s3, $a7
 	ldx.w	$t0, $s3, $t0
@@ -917,20 +917,20 @@ rsdec_204:                              # @rsdec_204
 	vpickve2gr.w	$a7, $vr0, 1
 	vinsgr2vr.d	$vr4, $a7, 1
 	xvpickve2gr.d	$a7, $xr4, 0
-	slli.d	$a7, $a7, 2
 	xvpickve2gr.d	$t4, $xr4, 1
-	slli.d	$t4, $t4, 2
 	xvpickve2gr.d	$t5, $xr1, 2
-	slli.d	$t5, $t5, 2
 	xvpickve2gr.d	$t6, $xr1, 3
-	slli.d	$t6, $t6, 2
 	xvpickve2gr.d	$fp, $xr3, 0
-	slli.d	$fp, $fp, 2
 	xvpickve2gr.d	$t0, $xr3, 1
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$s7, $xr2, 2
-	slli.d	$s7, $s7, 2
 	xvpickve2gr.d	$t1, $xr2, 3
+	slli.d	$a7, $a7, 2
+	slli.d	$t4, $t4, 2
+	slli.d	$t5, $t5, 2
+	slli.d	$t6, $t6, 2
+	slli.d	$fp, $fp, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$s7, $s7, 2
 	slli.d	$t1, $t1, 2
 	ldx.w	$a7, $s3, $a7
 	ldx.w	$t4, $s3, $t4

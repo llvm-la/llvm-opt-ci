@@ -1761,7 +1761,7 @@ test_wp_P_slice:                        # @test_wp_P_slice
 	addi.d	$t0, $sp, 16
 	ori	$t1, $zero, 32
 	ori	$t2, $zero, 66
-	ori	$t3, $zero, 2
+	addi.w	$t3, $zero, -5
 .LBB2_49:                               # %.preheader132
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_60 Depth 2
@@ -1826,28 +1826,22 @@ test_wp_P_slice:                        # @test_wp_P_slice
 # %bb.61:                               # %.preheader
                                         #   in Loop: Header=BB2_60 Depth=2
 	ld.w	$t7, $t5, -8
-	srai.d	$t8, $t7, 31
-	xor	$t7, $t7, $t8
-	sub.w	$t7, $t7, $t8
-	bltu	$t3, $t7, .LBB2_77
+	addi.w	$t7, $t7, -3
+	bltu	$t7, $t3, .LBB2_77
 # %bb.62:                               #   in Loop: Header=BB2_60 Depth=2
 	ld.w	$t7, $t6, -4
 	bne	$t7, $t1, .LBB2_77
 # %bb.63:                               #   in Loop: Header=BB2_60 Depth=2
 	ld.w	$t7, $t5, -4
-	srai.d	$t8, $t7, 31
-	xor	$t7, $t7, $t8
-	sub.w	$t7, $t7, $t8
-	bltu	$t3, $t7, .LBB2_77
+	addi.w	$t7, $t7, -3
+	bltu	$t7, $t3, .LBB2_77
 # %bb.64:                               #   in Loop: Header=BB2_60 Depth=2
 	ld.w	$t7, $t6, 0
 	bne	$t7, $t1, .LBB2_77
 # %bb.65:                               #   in Loop: Header=BB2_60 Depth=2
 	ld.w	$t7, $t5, 0
-	srai.d	$t8, $t7, 31
-	xor	$t7, $t7, $t8
-	sub.w	$t7, $t7, $t8
-	bltu	$t3, $t7, .LBB2_77
+	addi.w	$t7, $t7, -3
+	bltu	$t7, $t3, .LBB2_77
 # %bb.66:                               # %.critedge131
                                         #   in Loop: Header=BB2_60 Depth=2
 	addi.d	$t4, $t4, -1
@@ -2167,10 +2161,8 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	vmin.w	$vr12, $vr12, $vr2
 	vshuf.b	$vr15, $vr0, $vr12, $vr15
 	vsrli.b	$vr16, $vr15, 7
-	vadd.b	$vr15, $vr15, $vr16
-	vsrai.b	$vr15, $vr15, 1
-	vneg.b	$vr16, $vr15
-	vmax.b	$vr15, $vr15, $vr16
+	vavg.b	$vr15, $vr15, $vr16
+	vsigncov.b	$vr15, $vr15, $vr15
 	vilvl.b	$vr15, $vr3, $vr15
 	vbitseti.h	$vr15, $vr15, 14
 	vpickev.h	$vr12, $vr12, $vr12
@@ -2216,17 +2208,17 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	vsub.w	$vr14, $vr9, $vr12
 	vbitsel.v	$vr12, $vr12, $vr0, $vr13
 	vbitsel.v	$vr13, $vr14, $vr0, $vr13
+	vpickve2gr.w	$t0, $vr13, 0
+	vpickve2gr.w	$s0, $vr13, 1
+	vpickve2gr.w	$s7, $vr13, 2
+	vpickve2gr.w	$s8, $vr13, 3
 	vstelm.w	$vr12, $s4, -44, 0
 	vstelm.w	$vr12, $s4, -32, 1
 	vstelm.w	$vr12, $s4, -20, 2
 	vstelm.w	$vr12, $s4, -8, 3
-	vpickve2gr.w	$t0, $vr13, 0
 	stptr.w	$t0, $s4, -12332
-	vpickve2gr.w	$s0, $vr13, 1
 	stptr.w	$s0, $s4, -12320
-	vpickve2gr.w	$s7, $vr13, 2
 	stptr.w	$s7, $s4, -12308
-	vpickve2gr.w	$s8, $vr13, 3
 	stptr.w	$s8, $s4, -12296
 	vstelm.w	$vr12, $s4, -40, 0
 	vstelm.w	$vr12, $s4, -28, 1

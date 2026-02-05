@@ -1377,27 +1377,27 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 .LBB2_24:                               # %vector.ph101
 	addi.d	$a5, $fp, 10
 	bstrpick.d	$a4, $a2, 31, 2
+	slli.d	$a4, $a4, 2
 	pcalau12i	$a6, %pc_hi20(.LCPI2_0)
 	vld	$vr1, $a6, %pc_lo12(.LCPI2_0)
-	slli.d	$a4, $a4, 2
 	vinsgr2vr.h	$vr0, $a3, 3
 	vrepli.b	$vr2, 0
+	vrepli.w	$vr3, 1
 	move	$a3, $a4
 	.p2align	4, , 16
 .LBB2_25:                               # %vector.body104
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a5, 0
-	vori.b	$vr3, $vr0, 0
+	vori.b	$vr4, $vr0, 0
 	vinsgr2vr.d	$vr0, $a6, 0
-	vori.b	$vr4, $vr1, 0
-	vshuf.h	$vr4, $vr0, $vr3
-	vilvl.h	$vr3, $vr2, $vr4
-	vilvl.h	$vr4, $vr2, $vr0
-	vsub.w	$vr3, $vr3, $vr4
-	vaddi.wu	$vr3, $vr3, 1
-	vsrli.w	$vr3, $vr3, 1
-	vpickev.h	$vr3, $vr3, $vr3
-	vpickve2gr.d	$a6, $vr3, 0
+	vori.b	$vr5, $vr1, 0
+	vshuf.h	$vr5, $vr0, $vr4
+	vilvl.h	$vr4, $vr2, $vr5
+	vilvl.h	$vr5, $vr2, $vr0
+	vsub.w	$vr4, $vr4, $vr5
+	vavg.wu	$vr4, $vr4, $vr3
+	vpickev.h	$vr4, $vr4, $vr4
+	vpickve2gr.d	$a6, $vr4, 0
 	st.d	$a6, $a5, -2
 	addi.d	$a3, $a3, -4
 	addi.d	$a5, $a5, 8

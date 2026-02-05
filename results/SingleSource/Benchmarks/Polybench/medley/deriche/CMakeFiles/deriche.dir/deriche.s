@@ -264,13 +264,13 @@ main:                                   # @main
 # %bb.14:                               # %.preheader180.i.preheader
 	move	$a0, $zero
 	move	$a1, $zero
-	movgr2fr.w	$fa3, $zero
+	movgr2fr.w	$fa4, $zero
 	lu12i.w	$a3, 253467
 	ori	$a3, $a3, 1356
 	movgr2fr.w	$fa2, $a3
 	lu12i.w	$a3, -269293
 	ori	$a3, $a3, 1476
-	movgr2fr.w	$fa4, $a3
+	movgr2fr.w	$fa3, $a3
 	lu12i.w	$a3, 259444
 	ori	$a3, $a3, 1277
 	movgr2fr.w	$fa0, $a3
@@ -285,24 +285,24 @@ main:                                   # @main
 	add.d	$a6, $s2, $a0
 	add.d	$a7, $fp, $a0
 	move	$t0, $a3
-	fmov.s	$ft0, $fa3
-	fmov.s	$fa5, $fa3
-	fmov.s	$ft1, $fa3
+	fmov.s	$ft1, $fa4
+	fmov.s	$ft0, $fa4
+	fmov.s	$fa5, $fa4
 	.p2align	4, , 16
 .LBB7_16:                               #   Parent Loop BB7_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t1, $a7, $t0
 	fldx.s	$ft2, $t1, $s5
 	fmov.s	$ft3, $fa5
-	fmul.s	$fa5, $ft0, $fa2
-	fmadd.s	$fa5, $ft2, $fa4, $fa5
-	fmadd.s	$fa5, $ft3, $fa0, $fa5
-	fmadd.s	$fa5, $ft1, $fa1, $fa5
+	fmov.s	$fa5, $ft0
+	fmul.s	$ft0, $ft1, $fa2
+	fmadd.s	$ft0, $ft2, $fa3, $ft0
+	fmadd.s	$ft0, $fa5, $fa0, $ft0
+	fmadd.s	$ft0, $ft3, $fa1, $ft0
 	add.d	$t2, $a6, $t0
-	fstx.s	$fa5, $t2, $s5
-	fldx.s	$ft0, $t1, $s5
+	fstx.s	$ft0, $t2, $s5
+	fldx.s	$ft1, $t1, $s5
 	addi.d	$t0, $t0, 4
-	fmov.s	$ft1, $ft3
 	bnez	$t0, .LBB7_16
 # %bb.17:                               #   in Loop: Header=BB7_15 Depth=1
 	addi.d	$a1, $a1, 1
@@ -315,7 +315,7 @@ main:                                   # @main
 	ori	$a6, $a2, 444
 	lu12i.w	$a3, 253606
 	ori	$a3, $a3, 40
-	movgr2fr.w	$fa3, $a3
+	movgr2fr.w	$fa4, $a3
 	lu12i.w	$a3, -269375
 	ori	$a3, $a3, 1812
 	movgr2fr.w	$fa5, $a3
@@ -327,23 +327,23 @@ main:                                   # @main
 	add.d	$a7, $fp, $a0
 	add.d	$t0, $s3, $a0
 	move	$t1, $a6
-	fmov.s	$ft1, $ft0
-	fmov.s	$ft3, $ft0
 	fmov.s	$ft2, $ft0
+	fmov.s	$ft3, $ft0
 	fmov.s	$ft4, $ft0
+	fmov.s	$ft1, $ft0
 	.p2align	4, , 16
 .LBB7_20:                               #   Parent Loop BB7_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fmov.s	$ft5, $ft2
-	fmul.s	$ft2, $ft3, $fa3
-	fmov.s	$ft3, $ft1
-	fmadd.s	$ft1, $ft1, $fa5, $ft2
-	fmadd.s	$ft1, $ft5, $fa0, $ft1
-	fmadd.s	$ft2, $ft4, $fa1, $ft1
-	fstx.s	$ft2, $t0, $t1
-	fldx.s	$ft1, $a7, $t1
+	fmov.s	$ft5, $ft1
+	fmov.s	$ft1, $ft4
+	fmul.s	$ft4, $ft3, $fa4
+	fmov.s	$ft3, $ft2
+	fmadd.s	$ft2, $ft2, $fa5, $ft4
+	fmadd.s	$ft2, $ft1, $fa0, $ft2
+	fmadd.s	$ft4, $ft5, $fa1, $ft2
+	fstx.s	$ft4, $t0, $t1
+	fldx.s	$ft2, $a7, $t1
 	addi.d	$t1, $t1, -4
-	fmov.s	$ft4, $ft5
 	bne	$t1, $a3, .LBB7_20
 # %bb.21:                               #   in Loop: Header=BB7_19 Depth=1
 	addi.d	$a1, $a1, 1
@@ -422,23 +422,23 @@ main:                                   # @main
                                         #     Child Loop BB7_29 Depth 2
 	move	$t2, $a6
 	move	$t3, $s4
-	fmov.s	$ft1, $ft0
 	fmov.s	$ft2, $ft0
 	fmov.s	$ft3, $ft0
+	fmov.s	$ft1, $ft0
 	.p2align	4, , 16
 .LBB7_29:                               #   Parent Loop BB7_28 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fldx.s	$ft4, $s0, $t2
-	fmov.s	$ft5, $ft2
-	fmul.s	$ft1, $ft1, $fa2
-	fmadd.s	$ft1, $ft4, $fa4, $ft1
-	fmadd.s	$ft1, $ft2, $fa0, $ft1
-	fmadd.s	$ft2, $ft3, $fa1, $ft1
-	fstx.s	$ft2, $s2, $t2
-	fldx.s	$ft1, $s0, $t2
+	fmov.s	$ft5, $ft1
+	fmov.s	$ft1, $ft3
+	fmul.s	$ft2, $ft2, $fa2
+	fmadd.s	$ft2, $ft4, $fa3, $ft2
+	fmadd.s	$ft2, $ft3, $fa0, $ft2
+	fmadd.s	$ft3, $ft5, $fa1, $ft2
+	fstx.s	$ft3, $s2, $t2
+	fldx.s	$ft2, $s0, $t2
 	addi.d	$t3, $t3, -1
 	add.d	$t2, $t2, $s5
-	fmov.s	$ft3, $ft5
 	bnez	$t3, .LBB7_29
 # %bb.30:                               #   in Loop: Header=BB7_28 Depth=1
 	addi.d	$a7, $a7, 1
@@ -458,24 +458,24 @@ main:                                   # @main
                                         #     Child Loop BB7_33 Depth 2
 	move	$t5, $t2
 	move	$t6, $t3
-	fmov.s	$ft1, $ft0
-	fmov.s	$ft3, $ft0
 	fmov.s	$ft2, $ft0
+	fmov.s	$ft3, $ft0
 	fmov.s	$ft4, $ft0
+	fmov.s	$ft1, $ft0
 	.p2align	4, , 16
 .LBB7_33:                               #   Parent Loop BB7_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fmov.s	$ft5, $ft2
-	fmul.s	$ft2, $ft3, $fa3
-	fmov.s	$ft3, $ft1
-	fmadd.s	$ft1, $ft1, $fa5, $ft2
-	fmadd.s	$ft1, $ft5, $fa0, $ft1
-	fmadd.s	$ft2, $ft4, $fa1, $ft1
-	fstx.s	$ft2, $s3, $t5
-	fldx.s	$ft1, $s0, $t5
+	fmov.s	$ft5, $ft1
+	fmov.s	$ft1, $ft4
+	fmul.s	$ft4, $ft3, $fa4
+	fmov.s	$ft3, $ft2
+	fmadd.s	$ft2, $ft2, $fa5, $ft4
+	fmadd.s	$ft2, $ft1, $fa0, $ft2
+	fmadd.s	$ft4, $ft5, $fa1, $ft2
+	fstx.s	$ft4, $s3, $t5
+	fldx.s	$ft2, $s0, $t5
 	addi.d	$t6, $t6, 1
 	add.d	$t5, $t5, $t1
-	fmov.s	$ft4, $ft5
 	bnez	$t6, .LBB7_33
 # %bb.34:                               #   in Loop: Header=BB7_32 Depth=1
 	addi.d	$a7, $a7, 1
@@ -613,19 +613,18 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t4, $t2, $t3
 	fldx.s	$ft2, $t4, $s5
-	fmul.s	$ft1, $ft1, $fa1
-	fmov.s	$ft3, $ft0
-	fmul.s	$ft0, $ft2, $fa4
+	fmul.s	$ft3, $ft1, $fa1
+	fmov.s	$ft1, $ft0
+	fmul.s	$ft0, $ft2, $fa3
 	fmul.s	$fa7, $fa7, $fa2
 	fadd.s	$fa7, $fa7, $ft0
-	fmul.s	$ft0, $ft3, $fa0
+	fmul.s	$ft0, $ft1, $fa0
 	fadd.s	$fa7, $ft0, $fa7
-	fadd.s	$ft0, $fa7, $ft1
+	fadd.s	$ft0, $fa7, $ft3
 	add.d	$t5, $t1, $t3
 	fstx.s	$ft0, $t5, $s5
 	fldx.s	$fa7, $t4, $s5
 	addi.d	$t3, $t3, 4
-	fmov.s	$ft1, $ft3
 	bnez	$t3, .LBB7_46
 # %bb.47:                               #   in Loop: Header=BB7_45 Depth=1
 	addi.d	$a5, $a5, 1
@@ -643,26 +642,25 @@ main:                                   # @main
 	add.d	$t0, $fp, $a4
 	add.d	$t1, $s3, $a4
 	move	$t2, $a2
+	fmov.s	$ft0, $fa6
 	fmov.s	$fa7, $fa6
 	fmov.s	$ft1, $fa6
-	fmov.s	$ft0, $fa6
 	fmov.s	$ft2, $fa6
 	.p2align	4, , 16
 .LBB7_50:                               #   Parent Loop BB7_49 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fmul.s	$ft2, $ft2, $fa1
-	fmov.s	$ft3, $ft0
-	fmul.s	$ft0, $ft1, $fa3
-	fmov.s	$ft1, $fa7
-	fmul.s	$fa7, $fa7, $fa5
-	fadd.s	$fa7, $ft0, $fa7
-	fmul.s	$ft0, $ft3, $fa0
-	fadd.s	$fa7, $ft0, $fa7
-	fadd.s	$ft0, $fa7, $ft2
-	fstx.s	$ft0, $t1, $t2
-	fldx.s	$fa7, $t0, $t2
+	fmul.s	$ft3, $ft2, $fa1
+	fmov.s	$ft2, $ft1
+	fmul.s	$ft1, $fa7, $fa4
+	fmov.s	$fa7, $ft0
+	fmul.s	$ft0, $ft0, $fa5
+	fadd.s	$ft0, $ft1, $ft0
+	fmul.s	$ft1, $ft2, $fa0
+	fadd.s	$ft0, $ft1, $ft0
+	fadd.s	$ft1, $ft0, $ft3
+	fstx.s	$ft1, $t1, $t2
+	fldx.s	$ft0, $t0, $t2
 	addi.d	$t2, $t2, -4
-	fmov.s	$ft2, $ft3
 	bne	$t2, $a3, .LBB7_50
 # %bb.51:                               #   in Loop: Header=BB7_49 Depth=1
 	addi.d	$a5, $a5, 1
@@ -746,17 +744,16 @@ main:                                   # @main
 .LBB7_59:                               #   Parent Loop BB7_58 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fldx.s	$ft2, $s1, $t0
-	fmul.s	$ft1, $ft1, $fa1
-	fmov.s	$ft3, $ft0
-	fmul.s	$ft0, $ft2, $fa4
+	fmul.s	$ft3, $ft1, $fa1
+	fmov.s	$ft1, $ft0
+	fmul.s	$ft0, $ft2, $fa3
 	fmul.s	$fa7, $fa7, $fa2
 	fadd.s	$fa7, $fa7, $ft0
-	fmul.s	$ft0, $ft3, $fa0
+	fmul.s	$ft0, $ft1, $fa0
 	fadd.s	$fa7, $ft0, $fa7
-	fadd.s	$ft0, $fa7, $ft1
+	fadd.s	$ft0, $fa7, $ft3
 	fstx.s	$ft0, $s2, $t0
 	fldx.s	$fa7, $s1, $t0
-	fmov.s	$ft1, $ft3
 	addi.d	$t1, $t1, -1
 	add.d	$t0, $t0, $s5
 	bnez	$t1, .LBB7_59
@@ -777,25 +774,24 @@ main:                                   # @main
                                         #     Child Loop BB7_63 Depth 2
 	move	$t0, $a5
 	move	$t1, $a6
-	fmov.s	$fa4, $fa2
-	fmov.s	$fa7, $fa2
 	fmov.s	$fa6, $fa2
+	fmov.s	$fa3, $fa2
+	fmov.s	$fa7, $fa2
 	fmov.s	$ft0, $fa2
 	.p2align	4, , 16
 .LBB7_63:                               #   Parent Loop BB7_62 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fmul.s	$ft0, $ft0, $fa1
-	fmov.s	$ft1, $fa6
-	fmul.s	$fa6, $fa7, $fa3
-	fmov.s	$fa7, $fa4
-	fmul.s	$fa4, $fa4, $fa5
-	fadd.s	$fa4, $fa6, $fa4
-	fmul.s	$fa6, $ft1, $fa0
-	fadd.s	$fa4, $fa6, $fa4
-	fadd.s	$fa6, $fa4, $ft0
-	fstx.s	$fa6, $s3, $t0
-	fldx.s	$fa4, $s1, $t0
-	fmov.s	$ft0, $ft1
+	fmul.s	$ft1, $ft0, $fa1
+	fmov.s	$ft0, $fa7
+	fmul.s	$fa7, $fa3, $fa4
+	fmov.s	$fa3, $fa6
+	fmul.s	$fa6, $fa6, $fa5
+	fadd.s	$fa6, $fa7, $fa6
+	fmul.s	$fa7, $ft0, $fa0
+	fadd.s	$fa6, $fa7, $fa6
+	fadd.s	$fa7, $fa6, $ft1
+	fstx.s	$fa7, $s3, $t0
+	fldx.s	$fa6, $s1, $t0
 	addi.d	$t1, $t1, 1
 	add.d	$t0, $t0, $a3
 	bnez	$t1, .LBB7_63

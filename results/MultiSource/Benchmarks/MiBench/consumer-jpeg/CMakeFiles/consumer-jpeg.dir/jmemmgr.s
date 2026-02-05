@@ -94,15 +94,16 @@ jinit_memory_mgr:                       # @jinit_memory_mgr
 # %bb.4:
 	ld.bu	$a0, $sp, 15
 	andi	$a0, $a0, 223
-	ld.d	$a1, $sp, 16
 	addi.d	$a0, $a0, -77
 	sltui	$a0, $a0, 1
+	ld.d	$a1, $sp, 16
 	ori	$a2, $zero, 1000
-	mul.d	$a3, $a1, $a2
-	masknez	$a1, $a1, $a0
+	masknez	$a2, $a2, $a0
+	lu12i.w	$a3, 244
+	ori	$a3, $a3, 576
 	maskeqz	$a0, $a3, $a0
-	or	$a0, $a0, $a1
-	mul.d	$a0, $a0, $a2
+	or	$a0, $a0, $a2
+	mul.d	$a0, $a0, $a1
 	st.d	$a0, $fp, 88
 .LBB0_5:
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -249,8 +250,7 @@ alloc_small:                            # @alloc_small
 	jirl	$ra, $a1, 0
 	b	.LBB1_13
 .LBB1_16:
-	addi.d	$a1, $s3, 96
-	st.d	$a0, $a1, 0
+	st.d	$a0, $s3, 96
 .LBB1_17:                               # %.loopexit
 	ld.d	$a2, $a0, 8
 	add.d	$a1, $a0, $a2
@@ -406,7 +406,7 @@ alloc_sarray:                           # @alloc_sarray
 	pcaddu18i	$ra, %call36(alloc_small)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	beqz	$s0, .LBB3_15
+	beqz	$s0, .LBB3_14
 # %bb.3:                                # %.lr.ph47
 	move	$s8, $zero
 	bstrpick.d	$s7, $s3, 31, 0
@@ -416,16 +416,13 @@ alloc_sarray:                           # @alloc_sarray
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	lu32i.d	$a0, 4
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	b	.LBB3_6
+	b	.LBB3_5
 	.p2align	4, , 16
-.LBB3_4:                                #   in Loop: Header=BB3_6 Depth=1
-	move	$a1, $s8
-.LBB3_5:                                # %.loopexit
-                                        #   in Loop: Header=BB3_6 Depth=1
-	move	$s8, $a1
-	bgeu	$a1, $s0, .LBB3_15
-.LBB3_6:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_14 Depth 2
+.LBB3_4:                                # %.loopexit
+                                        #   in Loop: Header=BB3_5 Depth=1
+	bgeu	$s8, $s0, .LBB3_14
+.LBB3_5:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_13 Depth 2
 	sub.w	$a0, $s0, $s8
 	sltu	$a1, $s6, $a0
 	masknez	$a0, $a0, $a1
@@ -434,8 +431,8 @@ alloc_sarray:                           # @alloc_sarray
 	or	$s6, $a1, $a0
 	mul.d	$fp, $s6, $s7
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	bltu	$fp, $a0, .LBB3_8
-# %bb.7:                                #   in Loop: Header=BB3_6 Depth=1
+	bltu	$fp, $a0, .LBB3_7
+# %bb.6:                                #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 40
@@ -443,11 +440,11 @@ alloc_sarray:                           # @alloc_sarray
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB3_8:                                #   in Loop: Header=BB3_6 Depth=1
+.LBB3_7:                                #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ori	$a1, $zero, 2
-	bltu	$a0, $a1, .LBB3_10
-# %bb.9:                                #   in Loop: Header=BB3_6 Depth=1
+	bltu	$a0, $a1, .LBB3_9
+# %bb.8:                                #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 44
@@ -457,7 +454,7 @@ alloc_sarray:                           # @alloc_sarray
 	st.w	$a2, $a0, 40
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB3_10:                               #   in Loop: Header=BB3_6 Depth=1
+.LBB3_9:                                #   in Loop: Header=BB3_5 Depth=1
 	addi.d	$a0, $fp, 7
 	bstrpick.d	$a0, $a0, 62, 3
 	slli.d	$fp, $a0, 3
@@ -467,8 +464,8 @@ alloc_sarray:                           # @alloc_sarray
 	pcaddu18i	$ra, %call36(jpeg_get_large)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	bnez	$a0, .LBB3_12
-# %bb.11:                               #   in Loop: Header=BB3_6 Depth=1
+	bnez	$a0, .LBB3_11
+# %bb.10:                               #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a1, $a0, 40
@@ -476,8 +473,8 @@ alloc_sarray:                           # @alloc_sarray
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB3_12:                               # %alloc_large.exit
-                                        #   in Loop: Header=BB3_6 Depth=1
+.LBB3_11:                               # %alloc_large.exit
+                                        #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $s5, 144
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $s5, 3
@@ -489,24 +486,23 @@ alloc_sarray:                           # @alloc_sarray
 	st.d	$zero, $s3, 16
 	st.d	$s3, $a1, 112
 	beqz	$s6, .LBB3_4
-# %bb.13:                               # %.lr.ph.preheader
-                                        #   in Loop: Header=BB3_6 Depth=1
+# %bb.12:                               # %.lr.ph.preheader
+                                        #   in Loop: Header=BB3_5 Depth=1
 	addi.d	$a0, $s3, 24
-	move	$a2, $s6
+	move	$a1, $s6
 	.p2align	4, , 16
-.LBB3_14:                               # %.lr.ph
-                                        #   Parent Loop BB3_6 Depth=1
+.LBB3_13:                               # %.lr.ph
+                                        #   Parent Loop BB3_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$a1, $s8, 1
-	bstrpick.d	$a3, $s8, 31, 0
-	slli.d	$a3, $a3, 3
-	stx.d	$a0, $s2, $a3
-	addi.w	$a2, $a2, -1
+	bstrpick.d	$a2, $s8, 31, 0
+	addi.w	$s8, $s8, 1
+	slli.d	$a2, $a2, 3
+	stx.d	$a0, $s2, $a2
+	addi.w	$a1, $a1, -1
 	add.d	$a0, $a0, $s7
-	move	$s8, $a1
-	bnez	$a2, .LBB3_14
-	b	.LBB3_5
-.LBB3_15:                               # %._crit_edge
+	bnez	$a1, .LBB3_13
+	b	.LBB3_4
+.LBB3_14:                               # %._crit_edge
 	move	$a0, $s2
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
@@ -572,7 +568,7 @@ alloc_barray:                           # @alloc_barray
 	pcaddu18i	$ra, %call36(alloc_small)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	beqz	$s0, .LBB4_15
+	beqz	$s0, .LBB4_14
 # %bb.3:                                # %.lr.ph48
 	move	$s8, $zero
 	ori	$a0, $fp, 2537
@@ -583,16 +579,13 @@ alloc_barray:                           # @alloc_barray
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	lu32i.d	$a0, 4
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	b	.LBB4_6
+	b	.LBB4_5
 	.p2align	4, , 16
-.LBB4_4:                                #   in Loop: Header=BB4_6 Depth=1
-	move	$a1, $s8
-.LBB4_5:                                # %.loopexit
-                                        #   in Loop: Header=BB4_6 Depth=1
-	move	$s8, $a1
-	bgeu	$a1, $s0, .LBB4_15
-.LBB4_6:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_14 Depth 2
+.LBB4_4:                                # %.loopexit
+                                        #   in Loop: Header=BB4_5 Depth=1
+	bgeu	$s8, $s0, .LBB4_14
+.LBB4_5:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_13 Depth 2
 	sub.w	$a0, $s0, $s8
 	addi.w	$a1, $s6, 0
 	sltu	$a2, $a1, $a0
@@ -602,8 +595,8 @@ alloc_barray:                           # @alloc_barray
 	or	$s6, $a1, $a0
 	mul.d	$s7, $s5, $s6
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	bltu	$s7, $a0, .LBB4_8
-# %bb.7:                                #   in Loop: Header=BB4_6 Depth=1
+	bltu	$s7, $a0, .LBB4_7
+# %bb.6:                                #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a1, $a0, 40
@@ -611,11 +604,11 @@ alloc_barray:                           # @alloc_barray
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB4_8:                                #   in Loop: Header=BB4_6 Depth=1
+.LBB4_7:                                #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ori	$a1, $zero, 2
-	bltu	$a0, $a1, .LBB4_10
-# %bb.9:                                #   in Loop: Header=BB4_6 Depth=1
+	bltu	$a0, $a1, .LBB4_9
+# %bb.8:                                #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 44
@@ -625,15 +618,15 @@ alloc_barray:                           # @alloc_barray
 	st.w	$a2, $a0, 40
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB4_10:                               #   in Loop: Header=BB4_6 Depth=1
+.LBB4_9:                                #   in Loop: Header=BB4_5 Depth=1
 	addi.d	$s4, $s7, 24
 	move	$a0, $s1
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(jpeg_get_large)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	bnez	$a0, .LBB4_12
-# %bb.11:                               #   in Loop: Header=BB4_6 Depth=1
+	bnez	$a0, .LBB4_11
+# %bb.10:                               #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a1, $a0, 40
@@ -641,8 +634,8 @@ alloc_barray:                           # @alloc_barray
 	ld.d	$a1, $a0, 0
 	move	$a0, $s1
 	jirl	$ra, $a1, 0
-.LBB4_12:                               # %alloc_large.exit
-                                        #   in Loop: Header=BB4_6 Depth=1
+.LBB4_11:                               # %alloc_large.exit
+                                        #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $fp, 144
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	alsl.d	$a1, $a1, $fp, 3
@@ -654,24 +647,23 @@ alloc_barray:                           # @alloc_barray
 	st.d	$zero, $s3, 16
 	st.d	$s3, $a1, 112
 	beqz	$s6, .LBB4_4
-# %bb.13:                               # %.lr.ph.preheader
-                                        #   in Loop: Header=BB4_6 Depth=1
+# %bb.12:                               # %.lr.ph.preheader
+                                        #   in Loop: Header=BB4_5 Depth=1
 	addi.d	$a0, $s3, 24
-	move	$a2, $s6
+	move	$a1, $s6
 	.p2align	4, , 16
-.LBB4_14:                               # %.lr.ph
-                                        #   Parent Loop BB4_6 Depth=1
+.LBB4_13:                               # %.lr.ph
+                                        #   Parent Loop BB4_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$a1, $s8, 1
-	bstrpick.d	$a3, $s8, 31, 0
-	slli.d	$a3, $a3, 3
-	stx.d	$a0, $s2, $a3
-	addi.w	$a2, $a2, -1
+	bstrpick.d	$a2, $s8, 31, 0
+	addi.w	$s8, $s8, 1
+	slli.d	$a2, $a2, 3
+	stx.d	$a0, $s2, $a2
+	addi.w	$a1, $a1, -1
 	add.d	$a0, $a0, $s5
-	move	$s8, $a1
-	bnez	$a2, .LBB4_14
-	b	.LBB4_5
-.LBB4_15:                               # %._crit_edge
+	bnez	$a1, .LBB4_13
+	b	.LBB4_4
+.LBB4_14:                               # %._crit_edge
 	move	$a0, $s2
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload

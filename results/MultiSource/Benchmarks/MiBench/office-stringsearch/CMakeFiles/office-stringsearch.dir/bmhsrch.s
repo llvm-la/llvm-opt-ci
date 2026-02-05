@@ -127,7 +127,7 @@ bmh_init:                               # @bmh_init
 	bnez	$a6, .LBB0_4
 # %bb.5:                                # %middle.block35
 	beq	$a1, $a4, .LBB0_8
-.LBB0_6:                                # %.lr.ph.preheader72
+.LBB0_6:                                # %.lr.ph.preheader73
 	nor	$a5, $a4, $zero
 	add.d	$a5, $a5, $a0
 	add.d	$a6, $fp, $a4
@@ -251,7 +251,7 @@ bmh_init:                               # @bmh_init
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
 	ret
-.LBB0_17:                               # %.lr.ph20.preheader71
+.LBB0_17:                               # %.lr.ph20.preheader72
 	add.d	$a5, $fp, $a4
 	nor	$a6, $a4, $zero
 	add.d	$a0, $a6, $a0

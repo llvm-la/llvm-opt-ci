@@ -202,7 +202,7 @@ GCC_except_table3:
 	.type	_ZN21btSimpleDynamicsWorldD0Ev,@function
 _ZN21btSimpleDynamicsWorldD0Ev:         # @_ZN21btSimpleDynamicsWorldD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end4:
 	.size	_ZN21btSimpleDynamicsWorldD0Ev, .Lfunc_end4-_ZN21btSimpleDynamicsWorldD0Ev
                                         # -- End function
@@ -238,10 +238,57 @@ _ZN21btSimpleDynamicsWorld14stepSimulationEfif: # @_ZN21btSimpleDynamicsWorld14s
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 56, -64
-	fmov.s	$fs0, $fa0
 	move	$fp, $a0
-	pcaddu18i	$ra, %call36(_ZN21btSimpleDynamicsWorld25predictUnconstraintMotionEf)
+	ld.w	$a0, $a0, 12
+	fmov.s	$fs0, $fa0
+	blez	$a0, .LBB5_9
+# %bb.1:                                # %.lr.ph.i
+	move	$s1, $zero
+	move	$s2, $zero
+	ori	$s3, $zero, 2
+	ori	$s4, $zero, 5
+	b	.LBB5_3
+	.p2align	4, , 16
+.LBB5_2:                                #   in Loop: Header=BB5_3 Depth=1
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 8
+	bge	$s2, $a0, .LBB5_9
+.LBB5_3:                                # =>This Inner Loop Header: Depth=1
+	ld.d	$a1, $fp, 24
+	ldx.d	$s0, $a1, $s1
+	beqz	$s0, .LBB5_2
+# %bb.4:                                #   in Loop: Header=BB5_3 Depth=1
+	ld.w	$a1, $s0, 256
+	bne	$a1, $s3, .LBB5_2
+# %bb.5:                                #   in Loop: Header=BB5_3 Depth=1
+	ld.wu	$a1, $s0, 216
+	andi	$a1, $a1, 1
+	bnez	$a1, .LBB5_2
+# %bb.6:                                #   in Loop: Header=BB5_3 Depth=1
+	ld.w	$a1, $s0, 228
+	beq	$a1, $s3, .LBB5_2
+# %bb.7:                                #   in Loop: Header=BB5_3 Depth=1
+	beq	$a1, $s4, .LBB5_2
+# %bb.8:                                #   in Loop: Header=BB5_3 Depth=1
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_ZN11btRigidBody12applyGravityEv)
 	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	fmov.s	$fa0, $fs0
+	pcaddu18i	$ra, %call36(_ZN11btRigidBody19integrateVelocitiesEf)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	fmov.s	$fa0, $fs0
+	pcaddu18i	$ra, %call36(_ZN11btRigidBody12applyDampingEf)
+	jirl	$ra, $ra, 0
+	addi.d	$a1, $s0, 72
+	move	$a0, $s0
+	fmov.s	$fa0, $fs0
+	pcaddu18i	$ra, %call36(_ZN11btRigidBody26predictIntegratedTransformEfR11btTransform)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, 12
+	b	.LBB5_2
+.LBB5_9:                                # %_ZN21btSimpleDynamicsWorld25predictUnconstraintMotionEf.exit
 	ld.d	$a0, $fp, 0
 	fst.s	$fs0, $fp, 48
 	st.w	$zero, $fp, 52
@@ -257,8 +304,8 @@ _ZN21btSimpleDynamicsWorld14stepSimulationEfif: # @_ZN21btSimpleDynamicsWorld14s
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 72
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB5_2
-# %bb.1:
+	beqz	$a0, .LBB5_11
+# %bb.10:
 	move	$s0, $a0
 	ld.d	$a0, $fp, 40
 	ld.d	$a1, $a0, 0
@@ -322,37 +369,37 @@ _ZN21btSimpleDynamicsWorld14stepSimulationEfif: # @_ZN21btSimpleDynamicsWorld14s
 	ld.d	$a4, $a1, 32
 	addi.d	$a1, $sp, 44
 	jirl	$ra, $a4, 0
-.LBB5_2:
+.LBB5_11:
 	ld.w	$a0, $fp, 12
-	blez	$a0, .LBB5_11
-# %bb.3:                                # %.lr.ph.i
+	blez	$a0, .LBB5_20
+# %bb.12:                               # %.lr.ph.i11
 	move	$s1, $zero
 	move	$s2, $zero
 	ori	$s3, $zero, 2
 	ori	$s4, $zero, 5
-	b	.LBB5_5
+	b	.LBB5_14
 	.p2align	4, , 16
-.LBB5_4:                                #   in Loop: Header=BB5_5 Depth=1
+.LBB5_13:                               #   in Loop: Header=BB5_14 Depth=1
 	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	bge	$s2, $a0, .LBB5_11
-.LBB5_5:                                # =>This Inner Loop Header: Depth=1
+	bge	$s2, $a0, .LBB5_20
+.LBB5_14:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 24
 	ldx.d	$s0, $a1, $s1
-	beqz	$s0, .LBB5_4
-# %bb.6:                                #   in Loop: Header=BB5_5 Depth=1
+	beqz	$s0, .LBB5_13
+# %bb.15:                               #   in Loop: Header=BB5_14 Depth=1
 	ld.w	$a1, $s0, 256
-	bne	$a1, $s3, .LBB5_4
-# %bb.7:                                #   in Loop: Header=BB5_5 Depth=1
+	bne	$a1, $s3, .LBB5_13
+# %bb.16:                               #   in Loop: Header=BB5_14 Depth=1
 	ld.w	$a1, $s0, 228
-	beq	$a1, $s3, .LBB5_4
-# %bb.8:                                #   in Loop: Header=BB5_5 Depth=1
-	beq	$a1, $s4, .LBB5_4
-# %bb.9:                                #   in Loop: Header=BB5_5 Depth=1
-	ld.bu	$a1, $s0, 216
+	beq	$a1, $s3, .LBB5_13
+# %bb.17:                               #   in Loop: Header=BB5_14 Depth=1
+	beq	$a1, $s4, .LBB5_13
+# %bb.18:                               #   in Loop: Header=BB5_14 Depth=1
+	ld.wu	$a1, $s0, 216
 	andi	$a1, $a1, 1
-	bnez	$a1, .LBB5_4
-# %bb.10:                               #   in Loop: Header=BB5_5 Depth=1
+	bnez	$a1, .LBB5_13
+# %bb.19:                               #   in Loop: Header=BB5_14 Depth=1
 	addi.d	$a1, $sp, 44
 	move	$a0, $s0
 	fmov.s	$fa0, $fs0
@@ -363,8 +410,8 @@ _ZN21btSimpleDynamicsWorld14stepSimulationEfif: # @_ZN21btSimpleDynamicsWorld14s
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody18proceedToTransformERK11btTransform)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 12
-	b	.LBB5_4
-.LBB5_11:                               # %_ZN21btSimpleDynamicsWorld19integrateTransformsEf.exit
+	b	.LBB5_13
+.LBB5_20:                               # %_ZN21btSimpleDynamicsWorld19integrateTransformsEf.exit
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 16
 	move	$a0, $fp
@@ -439,7 +486,7 @@ _ZN21btSimpleDynamicsWorld25predictUnconstraintMotionEf: # @_ZN21btSimpleDynamic
 	ld.w	$a1, $s0, 256
 	bne	$a1, $s3, .LBB6_2
 # %bb.5:                                #   in Loop: Header=BB6_3 Depth=1
-	ld.bu	$a1, $s0, 216
+	ld.wu	$a1, $s0, 216
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB6_2
 # %bb.6:                                #   in Loop: Header=BB6_3 Depth=1
@@ -533,7 +580,7 @@ _ZN21btSimpleDynamicsWorld19integrateTransformsEf: # @_ZN21btSimpleDynamicsWorld
 # %bb.6:                                #   in Loop: Header=BB7_3 Depth=1
 	beq	$a1, $s4, .LBB7_2
 # %bb.7:                                #   in Loop: Header=BB7_3 Depth=1
-	ld.bu	$a1, $s0, 216
+	ld.wu	$a1, $s0, 216
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB7_2
 # %bb.8:                                #   in Loop: Header=BB7_3 Depth=1
@@ -798,7 +845,7 @@ _ZN21btSimpleDynamicsWorld11updateAabbsEv: # @_ZN21btSimpleDynamicsWorld11update
 # %bb.6:                                #   in Loop: Header=BB14_3 Depth=1
 	beq	$a1, $s3, .LBB14_2
 # %bb.7:                                #   in Loop: Header=BB14_3 Depth=1
-	ld.bu	$a1, $s4, 216
+	ld.wu	$a1, $s4, 216
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB14_2
 # %bb.8:                                #   in Loop: Header=BB14_3 Depth=1

@@ -34,15 +34,14 @@ foo:                                    # @foo
 	bne	$t0, $a3, .LBB0_6
 # %bb.4:                                # %.preheader.preheader
                                         #   in Loop: Header=BB0_2 Depth=1
-	move	$a0, $a4
+	move	$a7, $a4
 	.p2align	4, , 16
 .LBB0_5:                                # %.preheader
                                         #   Parent Loop BB0_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a6, $a0, 1
-	addi.d	$a7, $a0, 1
-	move	$a0, $a7
-	beq	$a6, $a5, .LBB0_5
+	ld.bu	$a0, $a7, 1
+	addi.d	$a7, $a7, 1
+	beq	$a0, $a5, .LBB0_5
 	b	.LBB0_1
 .LBB0_6:
 	andi	$a0, $a0, 255

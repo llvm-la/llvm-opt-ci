@@ -630,7 +630,7 @@ CrossAddTag:                            # @CrossAddTag
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-.LBB3_18:                               # %.loopexit109
+.LBB3_18:                               # %.critedge
 	ld.d	$a1, $a0, 80
 	ld.d	$s4, $a1, 8
 	beq	$s4, $a1, .LBB3_62
@@ -939,7 +939,7 @@ CrossAddTag:                            # @CrossAddTag
 	st.d	$fp, $a0, 24
 	st.d	$a2, $a1, 16
 	st.d	$a1, $a2, 24
-.LBB3_62:                               # %.critedge
+.LBB3_62:                               # %.thread
 	ld.d	$s8, $sp, 536                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 544                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 552                   # 8-byte Folded Reload

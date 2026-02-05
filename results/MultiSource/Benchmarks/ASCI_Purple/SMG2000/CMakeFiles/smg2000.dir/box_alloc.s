@@ -93,12 +93,13 @@ hypre_BoxAlloc:                         # @hypre_BoxAlloc
 	.p2align	4, , 16
 .LBB2_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a7, $a6, 24
-	st.d	$a0, $a6, 24
-	st.d	$a7, $a6, 0
-	addi.d	$a5, $a5, -2
+	move	$a7, $a0
 	move	$a0, $a6
-	addi.d	$a6, $a6, -48
+	addi.d	$a6, $a6, 24
+	st.d	$a7, $a0, 24
+	st.d	$a6, $a0, 0
+	addi.d	$a5, $a5, -2
+	addi.d	$a6, $a0, -48
 	bnez	$a5, .LBB2_5
 # %bb.6:                                # %middle.block
 	addi.d	$a0, $a6, 48
@@ -113,9 +114,10 @@ hypre_BoxAlloc:                         # @hypre_BoxAlloc
 	.p2align	4, , 16
 .LBB2_8:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a0, $a2, 0
-	addi.d	$a3, $a3, -1
+	move	$a4, $a0
 	move	$a0, $a2
+	st.d	$a4, $a2, 0
+	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, -24
 	bltu	$a1, $a3, .LBB2_8
 # %bb.9:                                # %hypre_AllocateBoxBlock.exit.loopexit

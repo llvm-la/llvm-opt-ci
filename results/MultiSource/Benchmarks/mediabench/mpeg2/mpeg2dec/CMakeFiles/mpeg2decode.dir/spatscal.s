@@ -21,25 +21,25 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.d	$a0, $a0, %got_pc_lo12(Frame_Store_Flag)
 	ld.w	$a0, $a0, 0
 	pcalau12i	$a1, %got_pc_hi20(lower_layer_prediction_horizontal_size)
-	ld.d	$s6, $a1, %got_pc_lo12(lower_layer_prediction_horizontal_size)
-	ld.w	$a1, $s6, 0
+	ld.d	$s0, $a1, %got_pc_lo12(lower_layer_prediction_horizontal_size)
+	ld.w	$a1, $s0, 0
 	pcalau12i	$a2, %got_pc_hi20(lower_layer_prediction_vertical_size)
-	ld.d	$fp, $a2, %got_pc_lo12(lower_layer_prediction_vertical_size)
-	ld.w	$a2, $fp, 0
+	ld.d	$s6, $a2, %got_pc_lo12(lower_layer_prediction_vertical_size)
+	ld.w	$a2, $s6, 0
 	beqz	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(Read_Lower_Layer_Component_Framewise)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s6, 0
-	ld.w	$a2, $fp, 0
+	ld.w	$a0, $s0, 0
+	ld.w	$a2, $s6, 0
 	srai.d	$a1, $a0, 1
 	srai.d	$a2, $a2, 1
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(Read_Lower_Layer_Component_Framewise)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s6, 0
-	ld.w	$a2, $fp, 0
+	ld.w	$a0, $s0, 0
+	ld.w	$a2, $s6, 0
 	srai.d	$a1, $a0, 1
 	srai.d	$a2, $a2, 1
 	ori	$a0, $zero, 2
@@ -50,15 +50,15 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(Read_Lower_Layer_Component_Fieldwise)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s6, 0
-	ld.w	$a2, $fp, 0
+	ld.w	$a0, $s0, 0
+	ld.w	$a2, $s6, 0
 	srai.d	$a1, $a0, 1
 	srai.d	$a2, $a2, 1
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(Read_Lower_Layer_Component_Fieldwise)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s6, 0
-	ld.w	$a2, $fp, 0
+	ld.w	$a0, $s0, 0
+	ld.w	$a2, $s6, 0
 	srai.d	$a1, $a0, 1
 	srai.d	$a2, $a2, 1
 	ori	$a0, $zero, 2
@@ -89,14 +89,14 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.d	$a5, $s4, 0
 	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a6, %got_pc_hi20(lower_layer_horizontal_offset)
-	ld.d	$s0, $a6, %got_pc_lo12(lower_layer_horizontal_offset)
-	ld.w	$a6, $s0, 0
+	ld.d	$fp, $a6, %got_pc_lo12(lower_layer_horizontal_offset)
+	ld.w	$a6, $fp, 0
 	pcalau12i	$a7, %got_pc_hi20(lower_layer_vertical_offset)
 	ld.d	$s5, $a7, %got_pc_lo12(lower_layer_vertical_offset)
 	ld.w	$a7, $s5, 0
 	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	ld.w	$t0, $s6, 0
-	ld.w	$t1, $fp, 0
+	ld.w	$t0, $s0, 0
+	ld.w	$t1, $s6, 0
 	pcalau12i	$t2, %got_pc_hi20(horizontal_size)
 	ld.d	$t2, $t2, %got_pc_lo12(horizontal_size)
 	st.d	$t2, $sp, 168                   # 8-byte Folded Spill
@@ -120,7 +120,7 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	pcalau12i	$t7, %got_pc_hi20(horizontal_subsampling_factor_n)
 	ld.d	$s1, $t7, %got_pc_lo12(horizontal_subsampling_factor_n)
 	ld.w	$t7, $s1, 0
-	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$t8, %got_pc_hi20(picture_structure)
 	ld.d	$t8, $t8, %got_pc_lo12(picture_structure)
 	ld.w	$t8, $t8, 0
@@ -141,7 +141,7 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.w	$a0, $a0, 0
 	ld.w	$a1, $s7, 0
 	ld.d	$a2, $s2, 8
-	ld.wu	$a6, $s0, 0
+	ld.wu	$a6, $fp, 0
 	ld.d	$a3, $s8, 8
 	ld.d	$a4, $s3, 0
 	ld.d	$a5, $s4, 8
@@ -149,12 +149,12 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.wu	$t0, $s5, 0
 	add.w	$a6, $a6, $a7
 	srai.d	$a6, $a6, 1
-	ld.w	$t1, $s6, 0
+	ld.w	$t1, $s0, 0
 	srli.d	$a7, $t0, 31
 	add.w	$a7, $t0, $a7
 	srai.d	$a7, $a7, 1
 	srai.d	$t0, $t1, 1
-	ld.w	$t1, $fp, 0
+	ld.w	$t1, $s6, 0
 	ld.d	$s7, $sp, 168                   # 8-byte Folded Reload
 	ld.w	$t2, $s7, 0
 	ld.d	$s8, $sp, 160                   # 8-byte Folded Reload
@@ -166,7 +166,7 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.d	$s5, $sp, 136                   # 8-byte Folded Reload
 	ld.w	$t6, $s5, 0
 	ld.w	$t7, $s1, 0
-	move	$fp, $s1
+	move	$s6, $s1
 	srai.d	$t1, $t1, 1
 	srai.d	$t2, $t2, 1
 	srai.d	$t3, $t3, 1
@@ -188,7 +188,7 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.w	$a1, $a1, 0
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 16
-	ld.wu	$a6, $s0, 0
+	ld.wu	$a6, $fp, 0
 	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a3, $a3, 16
 	ld.d	$a4, $s3, 0
@@ -199,7 +199,7 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.wu	$t0, $t0, 0
 	add.w	$a6, $a6, $a7
 	srai.d	$a6, $a6, 1
-	ld.w	$t1, $s6, 0
+	ld.w	$t1, $s0, 0
 	srli.d	$a7, $t0, 31
 	add.w	$a7, $t0, $a7
 	srai.d	$a7, $a7, 1
@@ -211,7 +211,7 @@ Spatial_Prediction:                     # @Spatial_Prediction
 	ld.w	$t4, $s2, 0
 	ld.w	$t5, $s4, 0
 	ld.w	$t6, $s5, 0
-	ld.w	$t7, $fp, 0
+	ld.w	$t7, $s6, 0
 	srai.d	$t1, $t1, 1
 	srai.d	$t2, $t2, 1
 	srai.d	$t3, $t3, 1

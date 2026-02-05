@@ -519,178 +519,171 @@ printPerformanceResults:                # @printPerformanceResults
 	pcaddu18i	$ra, %call36(maxRankDoubleParallel)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $sp, 16
-	fld.d	$fa1, $sp, 32
-	fld.d	$fa2, $sp, 48
-	fld.d	$fa3, $sp, 64
+	ld.w	$a0, $sp, 24
 	fst.d	$fa0, $s4, 48
-	fst.d	$fa1, $s4, 120
-	fst.d	$fa2, $s4, 192
-	fst.d	$fa3, $s4, 264
-	fld.d	$fa0, $sp, 80
-	fld.d	$fa1, $sp, 96
-	fld.d	$fa2, $sp, 112
-	fld.d	$fa3, $sp, 128
-	fst.d	$fa0, $s4, 336
-	fst.d	$fa1, $s4, 408
-	fst.d	$fa2, $s4, 480
-	fst.d	$fa3, $s4, 552
-	fld.d	$fa0, $sp, 144
-	fld.d	$fa1, $sp, 160
-	fld.d	$fa2, $sp, 176
+	st.w	$a0, $s4, 36
+	fld.d	$fa0, $sp, 32
+	ld.w	$a0, $sp, 40
+	fld.d	$fa1, $sp, 48
+	ld.w	$a1, $sp, 56
+	fst.d	$fa0, $s4, 120
+	st.w	$a0, $s4, 108
+	fst.d	$fa1, $s4, 192
+	st.w	$a1, $s4, 180
+	fld.d	$fa0, $sp, 64
+	ld.w	$a0, $sp, 72
+	fld.d	$fa1, $sp, 80
+	ld.w	$a1, $sp, 88
+	fst.d	$fa0, $s4, 264
+	st.w	$a0, $s4, 252
+	fst.d	$fa1, $s4, 336
+	st.w	$a1, $s4, 324
+	fld.d	$fa0, $sp, 96
+	ld.w	$a0, $sp, 104
+	fld.d	$fa1, $sp, 112
+	ld.w	$a1, $sp, 120
+	fst.d	$fa0, $s4, 408
+	st.w	$a0, $s4, 396
+	fst.d	$fa1, $s4, 480
+	st.w	$a1, $s4, 468
+	fld.d	$fa0, $sp, 128
+	ld.w	$a0, $sp, 136
+	fld.d	$fa1, $sp, 144
+	ld.w	$a1, $sp, 152
+	fst.d	$fa0, $s4, 552
+	st.w	$a0, $s4, 540
+	fst.d	$fa1, $s4, 624
+	st.w	$a1, $s4, 612
+	fld.d	$fa0, $sp, 160
+	ld.w	$a0, $sp, 168
+	fld.d	$fa1, $sp, 176
+	ld.w	$a1, $sp, 184
+	fst.d	$fa0, $s4, 696
+	st.w	$a0, $s4, 684
+	fst.d	$fa1, $s4, 768
+	st.w	$a1, $s4, 756
 	ld.d	$a0, $s4, 8
-	fst.d	$fa0, $s4, 624
-	fst.d	$fa1, $s4, 696
-	fst.d	$fa2, $s4, 768
+	xvld	$xr0, $s4, 56
+	ld.d	$a1, $s4, 80
+	fld.d	$fa1, $s4, 128
+	ld.d	$a2, $s4, 224
+	ld.d	$a3, $s4, 152
+	fld.d	$fa2, $s4, 200
+	fld.d	$fa3, $s4, 272
+	srli.d	$a4, $a2, 32
+	or	$a4, $a4, $s2
+	movgr2fr.d	$fa4, $a4
+	fsub.d	$fa4, $fa4, $fs0
+	bstrins.d	$a2, $s3, 63, 32
+	movgr2fr.d	$fa5, $a2
+	fadd.d	$fa4, $fa5, $fa4
+	srli.d	$a2, $a3, 32
+	or	$a2, $a2, $s2
+	movgr2fr.d	$fa5, $a2
+	fsub.d	$fa5, $fa5, $fs0
+	bstrins.d	$a3, $s3, 63, 32
+	movgr2fr.d	$fa6, $a3
+	fadd.d	$fa5, $fa6, $fa5
+	srli.d	$a2, $a1, 32
+	or	$a2, $a2, $s2
+	movgr2fr.d	$fa6, $a2
+	fsub.d	$fa6, $fa6, $fs0
+	bstrins.d	$a1, $s3, 63, 32
+	movgr2fr.d	$fa7, $a1
+	fadd.d	$fa6, $fa7, $fa6
+	srli.d	$a1, $a0, 32
+	or	$a1, $a1, $s2
+	movgr2fr.d	$fa7, $a1
+	fsub.d	$fa7, $fa7, $fs0
+	bstrins.d	$a0, $s3, 63, 32
+	movgr2fr.d	$ft0, $a0
+	fadd.d	$fa7, $ft0, $fa7
+	vextrins.d	$vr5, $vr4, 16
+	vextrins.d	$vr7, $vr6, 16
+	xvpermi.q	$xr7, $xr5, 2
+	xvinsve0.d	$xr0, $xr1, 1
+	xvinsve0.d	$xr0, $xr2, 2
+	xvinsve0.d	$xr0, $xr3, 3
+	xvfsub.d	$xr0, $xr7, $xr0
+	xvfmul.d	$xr0, $xr0, $xr0
+	xvst	$xr0, $sp, 456
+	ld.d	$a0, $s4, 296
+	xvld	$xr0, $s4, 344
+	ld.d	$a1, $s4, 368
+	fld.d	$fa1, $s4, 416
+	ld.d	$a2, $s4, 512
+	ld.d	$a3, $s4, 440
+	fld.d	$fa2, $s4, 488
+	fld.d	$fa3, $s4, 560
+	srli.d	$a4, $a2, 32
+	or	$a4, $a4, $s2
+	movgr2fr.d	$fa4, $a4
+	fsub.d	$fa4, $fa4, $fs0
+	bstrins.d	$a2, $s3, 63, 32
+	movgr2fr.d	$fa5, $a2
+	fadd.d	$fa4, $fa5, $fa4
+	srli.d	$a2, $a3, 32
+	or	$a2, $a2, $s2
+	movgr2fr.d	$fa5, $a2
+	fsub.d	$fa5, $fa5, $fs0
+	bstrins.d	$a3, $s3, 63, 32
+	movgr2fr.d	$fa6, $a3
+	fadd.d	$fa5, $fa6, $fa5
+	srli.d	$a2, $a1, 32
+	or	$a2, $a2, $s2
+	movgr2fr.d	$fa6, $a2
+	fsub.d	$fa6, $fa6, $fs0
+	bstrins.d	$a1, $s3, 63, 32
+	movgr2fr.d	$fa7, $a1
+	fadd.d	$fa6, $fa7, $fa6
+	srli.d	$a1, $a0, 32
+	or	$a1, $a1, $s2
+	movgr2fr.d	$fa7, $a1
+	fsub.d	$fa7, $fa7, $fs0
+	bstrins.d	$a0, $s3, 63, 32
+	movgr2fr.d	$ft0, $a0
+	fadd.d	$fa7, $ft0, $fa7
+	vextrins.d	$vr5, $vr4, 16
+	vextrins.d	$vr7, $vr6, 16
+	xvpermi.q	$xr7, $xr5, 2
+	xvinsve0.d	$xr0, $xr1, 1
+	xvinsve0.d	$xr0, $xr2, 2
+	xvinsve0.d	$xr0, $xr3, 3
+	xvfsub.d	$xr0, $xr7, $xr0
+	xvfmul.d	$xr0, $xr0, $xr0
+	xvst	$xr0, $sp, 488
+	ld.d	$a0, $s4, 656
+	ld.d	$a1, $s4, 584
+	vld	$vr0, $s4, 632
+	fld.d	$fa1, $s4, 704
+	srli.d	$a2, $a0, 32
+	or	$a2, $a2, $s2
+	movgr2fr.d	$fa2, $a2
+	fsub.d	$fa2, $fa2, $fs0
+	bstrins.d	$a0, $s3, 63, 32
+	movgr2fr.d	$fa3, $a0
+	fadd.d	$fa2, $fa3, $fa2
+	srli.d	$a0, $a1, 32
+	or	$a0, $a0, $s2
+	movgr2fr.d	$fa3, $a0
+	fsub.d	$fa3, $fa3, $fs0
+	bstrins.d	$a1, $s3, 63, 32
+	movgr2fr.d	$fa4, $a1
+	fadd.d	$fa3, $fa4, $fa3
+	vextrins.d	$vr3, $vr2, 16
+	vextrins.d	$vr0, $vr1, 16
+	ld.d	$a0, $s4, 728
+	vfsub.d	$vr0, $vr3, $vr0
+	vfmul.d	$vr0, $vr0, $vr0
+	vst	$vr0, $sp, 520
 	srli.d	$a1, $a0, 32
 	or	$a1, $a1, $s2
 	movgr2fr.d	$fa0, $a1
 	fsub.d	$fa0, $fa0, $fs0
+	fld.d	$fa1, $s4, 776
 	bstrins.d	$a0, $s3, 63, 32
-	fld.d	$fa1, $s4, 56
 	movgr2fr.d	$fa2, $a0
 	fadd.d	$fa0, $fa2, $fa0
-	ld.d	$a0, $s4, 80
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 456
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s2
-	movgr2fr.d	$fa0, $a1
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fld.d	$fa2, $s4, 128
-	fadd.d	$fa0, $fa1, $fa0
-	ld.w	$a0, $sp, 24
-	ld.d	$a1, $s4, 152
-	fsub.d	$fa0, $fa0, $fa2
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 464
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 200
-	st.w	$a0, $s4, 36
-	ld.w	$a0, $sp, 40
-	ld.d	$a1, $s4, 224
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 472
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 272
-	st.w	$a0, $s4, 108
-	ld.w	$a0, $sp, 56
-	ld.d	$a1, $s4, 296
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 480
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 344
-	st.w	$a0, $s4, 180
-	ld.w	$a0, $sp, 72
-	ld.d	$a1, $s4, 368
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 488
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 416
-	st.w	$a0, $s4, 252
-	ld.w	$a0, $sp, 88
-	ld.d	$a1, $s4, 440
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 496
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 488
-	st.w	$a0, $s4, 324
-	ld.w	$a0, $sp, 104
-	ld.d	$a1, $s4, 512
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 504
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 560
-	st.w	$a0, $s4, 396
-	ld.w	$a0, $sp, 120
-	ld.d	$a1, $s4, 584
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 512
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 632
-	st.w	$a0, $s4, 468
-	ld.w	$a0, $sp, 136
-	ld.d	$a1, $s4, 656
-	fsub.d	$fa0, $fa0, $fa1
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 520
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa0, $a2
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
-	fld.d	$fa1, $s4, 704
-	ld.d	$a1, $s4, 728
-	st.w	$a0, $s4, 540
-	ld.w	$a0, $sp, 152
-	fsub.d	$fa0, $fa0, $fa1
-	srli.d	$a2, $a1, 32
-	or	$a2, $a2, $s2
-	movgr2fr.d	$fa1, $a2
-	ld.w	$a2, $sp, 168
-	fmul.d	$fa0, $fa0, $fa0
-	fst.d	$fa0, $sp, 528
-	bstrins.d	$a1, $s3, 63, 32
-	movgr2fr.d	$fa0, $a1
-	ld.w	$a1, $sp, 184
-	fsub.d	$fa1, $fa1, $fs0
-	fadd.d	$fa0, $fa0, $fa1
-	fld.d	$fa1, $s4, 776
-	st.w	$a0, $s4, 612
-	st.w	$a2, $s4, 684
-	st.w	$a1, $s4, 756
 	fsub.d	$fa0, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa0
 	fst.d	$fa0, $sp, 536

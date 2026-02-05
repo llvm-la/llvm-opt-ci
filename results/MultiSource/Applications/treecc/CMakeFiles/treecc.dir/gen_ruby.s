@@ -804,7 +804,7 @@ Ruby_GenCaseInline:                     # @Ruby_GenCaseInline
 	addi.w	$a0, $s5, -1
 	ori	$a1, $zero, 2
 	bltu	$a1, $a0, .LBB8_35
-# %bb.34:                               # %switch.lookup60
+# %bb.34:                               # %switch.lookup63
 	slli.d	$a0, $a0, 3
 	ldx.d	$a1, $s2, $a0
 	move	$a0, $fp
@@ -1300,7 +1300,7 @@ TreeCCGenerateRuby:                     # @TreeCCGenerateRuby
 	jirl	$ra, $ra, 0
 	ldptr.d	$s0, $fp, 8200
 	beqz	$s0, .LBB14_19
-# %bb.12:                               # %.lr.ph.i10
+# %bb.12:                               # %.lr.ph.i12
 	ori	$s2, $zero, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.18)
@@ -1720,7 +1720,7 @@ BuildTypeDecls:                         # @BuildTypeDecls
 .LBB17_22:
 	ld.d	$s3, $s0, 72
 	beqz	$s3, .LBB17_30
-# %bb.23:                               # %.lr.ph113.preheader
+# %bb.23:                               # %.lr.ph117.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.58)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.58)
 	b	.LBB17_27
@@ -1736,7 +1736,7 @@ BuildTypeDecls:                         # @BuildTypeDecls
 .LBB17_26:                              #   in Loop: Header=BB17_27 Depth=1
 	ld.d	$s3, $s3, 48
 	beqz	$s3, .LBB17_30
-.LBB17_27:                              # %.lr.ph113
+.LBB17_27:                              # %.lr.ph117
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a0, $s3, 24
 	andi	$a0, $a0, 1
@@ -1749,7 +1749,7 @@ BuildTypeDecls:                         # @BuildTypeDecls
 	move	$a0, $fp
 	move	$a1, $s2
 	b	.LBB17_25
-.LBB17_30:                              # %._crit_edge114
+.LBB17_30:                              # %._crit_edge118
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.37)
 	move	$a0, $fp

@@ -4530,16 +4530,16 @@ term_MakePseudoLinear:                  # @term_MakePseudoLinear
 	pcalau12i	$a1, %got_pc_hi20(symbol_STANDARDVARCOUNTER)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_STANDARDVARCOUNTER)
 	ld.w	$a2, $a1, 0
-	addi.w	$s1, $a2, 1
-	st.w	$s1, $a1, 0
-	st.w	$s1, $a0, 0
+	addi.w	$s0, $a2, 1
+	st.w	$s0, $a1, 0
+	st.w	$s0, $a0, 0
 .LBB74_15:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	st.d	$s0, $a0, 8
-	st.d	$s1, $a0, 0
+	st.d	$s1, $a0, 8
+	st.d	$s0, $a0, 0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0

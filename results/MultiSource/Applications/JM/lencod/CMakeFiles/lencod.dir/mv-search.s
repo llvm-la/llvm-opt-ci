@@ -681,8 +681,8 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	maskeqz	$a0, $a0, $a2
 	or	$fp, $a0, $a1
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$s7, $a0, %got_pc_lo12(img)
-	ld.d	$s2, $s7, 0
+	ld.d	$s8, $a0, %got_pc_lo12(img)
+	ld.d	$s2, $s8, 0
 	ld.w	$a0, $s2, 32
 	ori	$a1, $zero, 15
 	slt	$a2, $a1, $a0
@@ -747,7 +747,7 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 .LBB1_2:
-	movfr2gr.s	$s8, $fs0
+	movfr2gr.s	$s7, $fs0
 	ori	$a1, $zero, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(calloc)
@@ -762,7 +762,7 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 .LBB1_4:
-	addi.d	$s5, $s8, 1
+	addi.d	$s5, $s7, 1
 	ori	$a1, $zero, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(calloc)
@@ -808,7 +808,7 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 .LBB1_10:
-	slli.d	$s8, $s8, 1
+	slli.d	$s7, $s7, 1
 	addi.w	$a0, $fp, 0
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(calloc)
@@ -823,7 +823,7 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	jirl	$ra, $ra, 0
 .LBB1_12:
 	ld.w	$a0, $s2, %pc_lo12(byte_abs_range)
-	addi.w	$s8, $s8, 1
+	addi.w	$s7, $s7, 1
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
@@ -836,7 +836,7 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 .LBB1_14:
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s8, 0
 	ld.w	$a3, $a0, 32
 	pcalau12i	$a0, %pc_hi20(motion_cost)
 	addi.d	$a0, $a0, %pc_lo12(motion_cost)
@@ -896,7 +896,7 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	ld.d	$a1, $s4, %pc_lo12(refbits)
 	ori	$a2, $zero, 3
 	st.w	$a3, $a1, 0
-	bge	$s8, $a2, .LBB1_32
+	bge	$s7, $a2, .LBB1_32
 .LBB1_21:                               # %._crit_edge127
 	st.w	$zero, $a0, 0
 	ld.w	$a1, $s2, %pc_lo12(byte_abs_range)
@@ -910,17 +910,17 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 	.p2align	4, , 16
 .LBB1_23:                               # %.lr.ph130
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$a2, $a1, 0
-	st.w	$a2, $a0, 0
+	st.w	$a3, $a1, 0
+	st.w	$a3, $a0, 0
 	ld.wu	$a4, $s2, %pc_lo12(byte_abs_range)
-	addi.d	$a3, $a3, 1
+	addi.d	$a2, $a2, 1
 	srli.d	$a5, $a4, 31
 	add.w	$a4, $a4, $a5
 	srai.d	$a4, $a4, 1
-	addi.d	$a2, $a2, 1
+	addi.d	$a3, $a3, 1
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 4
-	blt	$a3, $a4, .LBB1_23
+	blt	$a2, $a4, .LBB1_23
 .LBB1_24:                               # %._crit_edge131
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a4, $a0, %pc_lo12(spiral_search_y)
@@ -1047,7 +1047,7 @@ Init_Motion_Search_Module:              # @Init_Motion_Search_Module
 .LBB1_33:                               # %._crit_edge122
                                         #   in Loop: Header=BB1_34 Depth=1
 	addi.w	$a6, $a6, 2
-	blt	$s8, $a6, .LBB1_21
+	blt	$s7, $a6, .LBB1_21
 .LBB1_34:                               # %.lr.ph126
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_40 Depth 2
@@ -5527,8 +5527,8 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	slli.d	$a3, $s5, 1
 	andi	$s5, $a3, 254
 .LBB11_24:
-	addi.w	$a4, $zero, -1
-	move	$a3, $a4
+	addi.d	$a4, $zero, -1
+	addi.d	$a3, $zero, -1
 	beqz	$a5, .LBB11_28
 # %bb.25:
 	ld.w	$a3, $sp, 156
@@ -5549,7 +5549,7 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	slli.d	$a3, $a3, 1
 	andi	$a3, $a3, 254
 .LBB11_28:
-	move	$a5, $a4
+	addi.d	$a5, $zero, -1
 	beqz	$a6, .LBB11_32
 # %bb.29:
 	ld.w	$a5, $sp, 132
@@ -5903,8 +5903,8 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	b	.LBB11_58
 .LBB11_67:
 	ld.w	$a2, $sp, 136
-	addi.w	$s5, $zero, -1
-	move	$a0, $s5
+	addi.d	$s5, $zero, -1
+	addi.d	$a0, $zero, -1
 	beqz	$a2, .LBB11_69
 # %bb.68:
 	ld.w	$a0, $sp, 156
@@ -5914,7 +5914,7 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	ldx.b	$a0, $a0, $a1
 .LBB11_69:
 	ld.w	$a6, $sp, 112
-	move	$a1, $s5
+	addi.d	$a1, $zero, -1
 	beqz	$a6, .LBB11_71
 # %bb.70:
 	ld.w	$a1, $sp, 132
@@ -5941,8 +5941,8 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	ld.w	$a4, $sp, 80
 	ldx.b	$s5, $a3, $a4
 .LBB11_75:
-	addi.w	$a4, $zero, -1
-	move	$a3, $a4
+	addi.d	$a4, $zero, -1
+	addi.d	$a3, $zero, -1
 	beqz	$a2, .LBB11_77
 # %bb.76:
 	ld.w	$a2, $sp, 156
@@ -5951,7 +5951,7 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	ld.w	$a3, $sp, 152
 	ldx.b	$a3, $a2, $a3
 .LBB11_77:
-	move	$a5, $a4
+	addi.d	$a5, $zero, -1
 	beqz	$a6, .LBB11_79
 # %bb.78:
 	ld.w	$a2, $sp, 132
@@ -5977,8 +5977,8 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	ldx.b	$a4, $a2, $a4
 	b	.LBB11_115
 .LBB11_83:
-	addi.w	$s5, $zero, -1
-	move	$a0, $s5
+	addi.d	$s5, $zero, -1
+	addi.d	$a0, $zero, -1
 	beqz	$a5, .LBB11_87
 # %bb.84:
 	ld.w	$a0, $sp, 156
@@ -5999,7 +5999,7 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	srai.d	$a0, $a0, 1
 .LBB11_87:
 	ld.w	$a6, $sp, 112
-	move	$a1, $s5
+	addi.d	$a1, $zero, -1
 	beqz	$a6, .LBB11_91
 # %bb.88:
 	ld.w	$a1, $sp, 132
@@ -6059,8 +6059,8 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 .LBB11_98:                              # %._crit_edge633
 	srai.d	$s5, $s5, 1
 .LBB11_99:
-	addi.w	$a4, $zero, -1
-	move	$a3, $a4
+	addi.d	$a4, $zero, -1
+	addi.d	$a3, $zero, -1
 	beqz	$a5, .LBB11_103
 # %bb.100:
 	ld.w	$a3, $sp, 156
@@ -6080,7 +6080,7 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 .LBB11_102:                             # %._crit_edge644
 	srai.d	$a3, $a3, 1
 .LBB11_103:
-	move	$a5, $a4
+	addi.d	$a5, $zero, -1
 	beqz	$a6, .LBB11_107
 # %bb.104:
 	ld.w	$a5, $sp, 132
@@ -6139,65 +6139,63 @@ Get_Direct_Motion_Vectors:              # @Get_Direct_Motion_Vectors
 	srai.d	$a4, $a4, 1
 .LBB11_115:
 	or	$a2, $a0, $a1
-	addi.w	$a2, $a2, 0
-	addi.w	$a1, $a1, 0
-	addi.w	$a6, $zero, -1
-	slt	$a2, $a6, $a2
-	sltu	$a7, $a0, $a1
-	masknez	$t0, $a1, $a7
-	maskeqz	$a7, $a0, $a7
-	or	$a7, $a7, $t0
-	slt	$t0, $a1, $a0
-	masknez	$a1, $a1, $t0
-	maskeqz	$a0, $a0, $t0
-	or	$a0, $a0, $a1
+	slli.d	$a2, $a2, 32
+	vinsgr2vr.w	$vr0, $a3, 0
+	vinsgr2vr.w	$vr0, $a0, 1
+	vinsgr2vr.w	$vr1, $a5, 0
+	vinsgr2vr.w	$vr1, $a1, 1
+	vmin.wu	$vr2, $vr0, $vr1
+	vmax.w	$vr0, $vr0, $vr1
+	addi.w	$a0, $s5, 0
+	addi.w	$a1, $zero, -1
+	slt	$a6, $a1, $a0
+	or	$a3, $a3, $a5
+	slli.d	$a3, $a3, 32
+	slt	$a2, $a1, $a2
+	slt	$a3, $a1, $a3
+	vinsgr2vr.w	$vr1, $a3, 0
+	vinsgr2vr.w	$vr1, $a2, 1
+	vslli.w	$vr1, $vr1, 31
+	vsrai.w	$vr1, $vr1, 31
+	vbitsel.v	$vr0, $vr0, $vr2, $vr1
+	vrepli.b	$vr1, -1
+	vslt.w	$vr1, $vr1, $vr0
+	vshuf4i.w	$vr2, $vr1, 16
+	vpickve2gr.d	$a2, $vr2, 1
+	andi	$a2, $a2, 1
+	vpickve2gr.w	$a3, $vr0, 1
+	sltu	$a5, $a3, $a0
+	maskeqz	$a7, $a3, $a5
+	masknez	$a5, $a0, $a5
+	or	$a5, $a7, $a5
+	slt	$a7, $a0, $a3
+	maskeqz	$a3, $a3, $a7
+	masknez	$a0, $a0, $a7
+	or	$a0, $a3, $a0
+	masknez	$a3, $a0, $a6
+	maskeqz	$a5, $a5, $a6
+	or	$a3, $a5, $a3
+	maskeqz	$a3, $a3, $a2
 	masknez	$a0, $a0, $a2
-	maskeqz	$a1, $a7, $a2
-	or	$a0, $a1, $a0
-	or	$a1, $a0, $s5
-	addi.w	$a1, $a1, 0
-	addi.w	$a2, $s5, 0
-	slt	$a1, $a6, $a1
-	sltu	$a7, $a0, $a2
-	maskeqz	$t0, $a0, $a7
-	masknez	$a7, $a2, $a7
-	or	$a7, $t0, $a7
-	slt	$t0, $a2, $a0
-	maskeqz	$a0, $a0, $t0
-	masknez	$a2, $a2, $t0
-	or	$a0, $a0, $a2
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a7, $a1
-	or	$fp, $a1, $a0
-	or	$a0, $a3, $a5
-	addi.w	$a0, $a0, 0
-	addi.w	$a1, $a5, 0
-	slt	$a0, $a6, $a0
-	sltu	$a2, $a3, $a1
-	masknez	$a5, $a1, $a2
-	maskeqz	$a2, $a3, $a2
-	or	$a2, $a2, $a5
-	slt	$a5, $a1, $a3
-	masknez	$a1, $a1, $a5
+	or	$fp, $a3, $a0
+	addi.w	$a0, $a4, 0
+	slt	$a1, $a1, $a0
+	vpickve2gr.d	$a2, $vr1, 0
+	andi	$a2, $a2, 1
+	vpickve2gr.w	$a3, $vr0, 0
+	sltu	$a4, $a3, $a0
+	maskeqz	$a5, $a3, $a4
+	masknez	$a4, $a0, $a4
+	or	$a4, $a5, $a4
+	slt	$a5, $a0, $a3
 	maskeqz	$a3, $a3, $a5
-	or	$a1, $a3, $a1
-	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
-	or	$a1, $a0, $a4
-	addi.w	$a1, $a1, 0
-	addi.w	$a2, $a4, 0
-	slt	$a1, $a6, $a1
-	sltu	$a3, $a0, $a2
-	maskeqz	$a4, $a0, $a3
-	masknez	$a3, $a2, $a3
-	or	$a3, $a4, $a3
-	slt	$a4, $a2, $a0
-	maskeqz	$a0, $a0, $a4
-	masknez	$a2, $a2, $a4
-	or	$a0, $a0, $a2
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a3, $a1
+	masknez	$a0, $a0, $a5
+	or	$a0, $a3, $a0
+	masknez	$a3, $a0, $a1
+	maskeqz	$a1, $a4, $a1
+	or	$a1, $a1, $a3
+	maskeqz	$a1, $a1, $a2
+	masknez	$a0, $a0, $a2
 	slli.d	$a2, $fp, 48
 	or	$s8, $a1, $a0
 	bltz	$a2, .LBB11_117

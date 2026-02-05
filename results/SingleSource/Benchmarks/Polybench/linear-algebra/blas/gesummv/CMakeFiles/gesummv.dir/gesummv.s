@@ -207,13 +207,15 @@ main:                                   # @main
 	ori	$t0, $zero, 720
 	pcalau12i	$t1, %pc_hi20(.LCPI7_1)
 	xvld	$xr2, $t1, %pc_lo12(.LCPI7_1)
-	vreplgr2vr.w	$vr3, $a6
+	vrepli.w	$vr3, 1
+	vreplgr2vr.w	$vr4, $a6
 	lu32i.d	$a6, 0
-	vrepli.w	$vr4, 90
+	vrepli.w	$vr5, 90
 	ori	$t1, $zero, 0
 	lu32i.d	$t1, 425984
 	lu52i.d	$t1, $t1, 1029
-	xvreplgr2vr.d	$xr5, $t1
+	xvreplgr2vr.d	$xr6, $t1
+	vrepli.w	$vr7, 2
 	ori	$t1, $zero, 704
 	move	$t2, $fp
 	move	$t3, $s0
@@ -224,15 +226,15 @@ main:                                   # @main
                                         #     Child Loop BB7_17 Depth 2
 	srli.d	$t4, $a1, 32
 	or	$t4, $t4, $a3
-	movgr2fr.d	$fa6, $t4
-	fsub.d	$fa6, $fa6, $fa0
+	movgr2fr.d	$ft0, $t4
+	fsub.d	$ft0, $ft0, $fa0
 	move	$t4, $a1
 	bstrins.d	$t4, $a4, 63, 32
-	movgr2fr.d	$fa7, $t4
-	fadd.d	$fa6, $fa7, $fa6
-	fdiv.d	$fa6, $fa6, $fa1
+	movgr2fr.d	$ft1, $t4
+	fadd.d	$ft0, $ft1, $ft0
+	fdiv.d	$ft0, $ft0, $fa1
 	slli.d	$t4, $a1, 3
-	fstx.d	$fa6, $s2, $t4
+	fstx.d	$ft0, $s2, $t4
 	bgeu	$a2, $a5, .LBB7_13
 # %bb.12:                               #   in Loop: Header=BB7_11 Depth=1
 	move	$t5, $zero
@@ -241,41 +243,41 @@ main:                                   # @main
 .LBB7_13:                               # %vector.ph
                                         #   in Loop: Header=BB7_11 Depth=1
 	move	$t4, $zero
-	xvreplgr2vr.d	$xr6, $a1
-	xvori.b	$xr7, $xr2, 0
+	xvreplgr2vr.d	$xr8, $a1
+	xvori.b	$xr9, $xr2, 0
 	.p2align	4, , 16
 .LBB7_14:                               # %vector.body
                                         #   Parent Loop BB7_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvmul.d	$xr8, $xr7, $xr6
-	xvpickve2gr.d	$t5, $xr8, 0
-	vinsgr2vr.w	$vr9, $t5, 0
-	xvpickve2gr.d	$t5, $xr8, 1
-	vinsgr2vr.w	$vr9, $t5, 1
-	xvpickve2gr.d	$t5, $xr8, 2
-	vinsgr2vr.w	$vr9, $t5, 2
-	xvpickve2gr.d	$t5, $xr8, 3
-	vinsgr2vr.w	$vr9, $t5, 3
-	vaddi.wu	$vr8, $vr9, 1
-	vsrli.w	$vr10, $vr8, 1
-	vmuh.wu	$vr10, $vr10, $vr3
-	vsrli.w	$vr10, $vr10, 5
-	vmsub.w	$vr8, $vr10, $vr4
-	vext2xv.du.wu	$xr8, $xr8
-	xvffint.d.lu	$xr8, $xr8
-	xvfdiv.d	$xr8, $xr8, $xr5
-	xvstx	$xr8, $t2, $t4
-	vaddi.wu	$vr8, $vr9, 2
-	vsrli.w	$vr9, $vr8, 1
-	vmuh.wu	$vr9, $vr9, $vr3
-	vsrli.w	$vr9, $vr9, 5
-	vmsub.w	$vr8, $vr9, $vr4
-	vext2xv.du.wu	$xr8, $xr8
-	xvffint.d.lu	$xr8, $xr8
-	xvfdiv.d	$xr8, $xr8, $xr5
-	xvstx	$xr8, $t3, $t4
+	xvmul.d	$xr10, $xr9, $xr8
+	xvpickve2gr.d	$t5, $xr10, 0
+	vinsgr2vr.w	$vr11, $t5, 0
+	xvpickve2gr.d	$t5, $xr10, 1
+	vinsgr2vr.w	$vr11, $t5, 1
+	xvpickve2gr.d	$t5, $xr10, 2
+	vinsgr2vr.w	$vr11, $t5, 2
+	xvpickve2gr.d	$t5, $xr10, 3
+	vinsgr2vr.w	$vr11, $t5, 3
+	vaddi.wu	$vr10, $vr11, 1
+	vavg.wu	$vr12, $vr11, $vr3
+	vmuh.wu	$vr12, $vr12, $vr4
+	vsrli.w	$vr12, $vr12, 5
+	vmsub.w	$vr10, $vr12, $vr5
+	vext2xv.du.wu	$xr10, $xr10
+	xvffint.d.lu	$xr10, $xr10
+	xvfdiv.d	$xr10, $xr10, $xr6
+	xvstx	$xr10, $t2, $t4
+	vaddi.wu	$vr10, $vr11, 2
+	vavg.wu	$vr11, $vr11, $vr7
+	vmuh.wu	$vr11, $vr11, $vr4
+	vsrli.w	$vr11, $vr11, 5
+	vmsub.w	$vr10, $vr11, $vr5
+	vext2xv.du.wu	$xr10, $xr10
+	xvffint.d.lu	$xr10, $xr10
+	xvfdiv.d	$xr10, $xr10, $xr6
+	xvstx	$xr10, $t3, $t4
 	addi.d	$t4, $t4, 32
-	xvaddi.du	$xr7, $xr7, 4
+	xvaddi.du	$xr9, $xr9, 4
 	bne	$t4, $t1, .LBB7_14
 # %bb.15:                               #   in Loop: Header=BB7_11 Depth=1
 	ori	$t5, $zero, 88
@@ -301,14 +303,14 @@ main:                                   # @main
 	mul.d	$t8, $t8, $a7
 	sub.d	$t8, $t6, $t8
 	bstrpick.d	$t8, $t8, 31, 0
-	movgr2fr.d	$fa6, $t8
-	ffint.d.l	$fa6, $fa6
-	fdiv.d	$fa6, $fa6, $fa1
-	fstx.d	$fa6, $t2, $t4
-	movgr2fr.d	$fa6, $t7
-	ffint.d.l	$fa6, $fa6
-	fdiv.d	$fa6, $fa6, $fa1
-	fstx.d	$fa6, $t3, $t4
+	movgr2fr.d	$ft0, $t8
+	ffint.d.l	$ft0, $ft0
+	fdiv.d	$ft0, $ft0, $fa1
+	fstx.d	$ft0, $t2, $t4
+	movgr2fr.d	$ft0, $t7
+	ffint.d.l	$ft0, $ft0
+	fdiv.d	$ft0, $ft0, $fa1
+	fstx.d	$ft0, $t3, $t4
 	addi.d	$t4, $t4, 8
 	add.w	$t5, $t5, $a0
 	add.w	$t6, $t6, $a0

@@ -78,22 +78,22 @@ main:                                   # @main
                                         #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvslli.d	$xr4, $xr3, 4
-	xvadd.d	$xr5, $xr4, $xr1
 	xvpickve2gr.d	$a6, $xr4, 0
-	add.d	$a6, $a4, $a6
 	xvpickve2gr.d	$a7, $xr4, 1
-	add.d	$a7, $a4, $a7
 	xvpickve2gr.d	$t0, $xr4, 2
-	add.d	$t0, $a4, $t0
 	xvpickve2gr.d	$t1, $xr4, 3
+	xvadd.d	$xr4, $xr4, $xr1
+	xvpickve2gr.d	$t2, $xr4, 0
+	xvpickve2gr.d	$t3, $xr4, 1
+	xvpickve2gr.d	$t4, $xr4, 2
+	xvpickve2gr.d	$t5, $xr4, 3
+	add.d	$a6, $a4, $a6
+	add.d	$a7, $a4, $a7
+	add.d	$t0, $a4, $t0
 	add.d	$t1, $a4, $t1
-	xvpickve2gr.d	$t2, $xr5, 0
 	add.d	$t2, $a4, $t2
-	xvpickve2gr.d	$t3, $xr5, 1
 	add.d	$t3, $a4, $t3
-	xvpickve2gr.d	$t4, $xr5, 2
 	add.d	$t4, $a4, $t4
-	xvpickve2gr.d	$t5, $xr5, 3
 	add.d	$t5, $a4, $t5
 	st.d	$a2, $a6, 8
 	st.d	$a2, $a7, 8
@@ -586,17 +586,17 @@ fourn:                                  # @fourn
 	fneg.d	$ft0, $fa5
 	fmul.d	$ft0, $fa3, $ft0
 	fmadd.d	$ft0, $fa4, $fa6, $ft0
-	fsub.d	$ft1, $fa7, $ft0
-	fstx.d	$ft1, $a5, $a0
-	fld.d	$ft1, $a5, 8
+	fsub.d	$fa7, $fa7, $ft0
+	fstx.d	$fa7, $a5, $a0
+	fld.d	$fa7, $a5, 8
 	fmul.d	$fa6, $fa3, $fa6
 	fmadd.d	$fa5, $fa4, $fa5, $fa6
-	fsub.d	$fa6, $ft1, $fa5
-	fst.d	$fa6, $a7, 8
-	fadd.d	$fa6, $ft0, $fa7
-	fst.d	$fa6, $a5, 0
-	fadd.d	$fa5, $fa5, $ft1
-	fst.d	$fa5, $a5, 8
+	vld	$vr6, $a5, 0
+	fsub.d	$fa7, $fa7, $fa5
+	fst.d	$fa7, $a7, 8
+	vextrins.d	$vr8, $vr5, 16
+	vfadd.d	$vr5, $vr8, $vr6
+	vst	$vr5, $a5, 0
 	add.d	$a6, $a6, $s7
 	add.d	$a5, $a5, $a1
 	bge	$s5, $a6, .LBB1_18
@@ -701,23 +701,21 @@ fourn:                                  # @fourn
 .LBB1_33:                               # %.preheader5.1
 	bgeu	$s1, $s2, .LBB1_45
 # %bb.34:                               # %.lr.ph32.preheader.1
-	addi.d	$s4, $fp, 8
-	addi.d	$fp, $fp, 16
 	movgr2fr.d	$fs3, $zero
-	move	$s5, $s1
+	move	$s4, $s1
 	b	.LBB1_36
 	.p2align	4, , 16
 .LBB1_35:                               # %.loopexit.1
                                         #   in Loop: Header=BB1_36 Depth=1
-	bge	$s5, $s2, .LBB1_45
+	bge	$s4, $s2, .LBB1_45
 .LBB1_36:                               # %.lr.ph32.1
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_39 Depth 2
                                         #       Child Loop BB1_42 Depth 3
                                         #         Child Loop BB1_44 Depth 4
-	addi.w	$s6, $s5, 0
-	slli.w	$s5, $s5, 1
-	div.w	$a0, $s5, $s1
+	addi.w	$s5, $s4, 0
+	slli.w	$s4, $s4, 1
+	div.w	$a0, $s4, $s1
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
 	fdiv.d	$fs1, $fs2, $fa0
@@ -729,18 +727,19 @@ fourn:                                  # @fourn
 	fmov.d	$fa0, $fs1
 	pcaddu18i	$ra, %call36(sin)
 	jirl	$ra, $ra, 0
-	blez	$s6, .LBB1_35
+	blez	$s5, .LBB1_35
 # %bb.37:                               # %.preheader1.lr.ph.1
                                         #   in Loop: Header=BB1_36 Depth=1
+	move	$a0, $zero
 	vldi	$vr1, -896
 	fmul.d	$fa1, $fs0, $fa1
 	fmul.d	$fa1, $fs0, $fa1
 	fneg.d	$fa2, $fa0
-	slli.d	$a0, $s5, 3
-	alsl.d	$a1, $s6, $fp, 3
-	ori	$a2, $zero, 1
+	slli.d	$a1, $s4, 3
+	alsl.d	$a2, $s5, $fp, 3
+	addi.d	$a2, $a2, 16
+	ori	$a3, $zero, 1
 	vldi	$vr4, -912
-	move	$a3, $s4
 	fmov.d	$fa3, $fs3
 	ori	$a5, $zero, 1
 	b	.LBB1_39
@@ -753,12 +752,11 @@ fourn:                                  # @fourn
 	fadd.d	$fa4, $fa4, $fa5
 	fmadd.d	$fa5, $fa3, $fa1, $fa6
 	fadd.d	$fa3, $fa3, $fa5
-	add.d	$a2, $a2, $s1
-	add.d	$a3, $a3, $s0
-	add.d	$a1, $a1, $s0
+	add.d	$a3, $a3, $s1
+	add.d	$a0, $a0, $s0
                                         # kill: def $f4_64 killed $f4_64 def $vr4
 	move	$a5, $a4
-	blt	$s6, $a4, .LBB1_35
+	blt	$s5, $a4, .LBB1_35
 .LBB1_39:                               # %.preheader1.1
                                         #   Parent Loop BB1_36 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -769,16 +767,14 @@ fourn:                                  # @fourn
 	blt	$a6, $a5, .LBB1_38
 # %bb.40:                               # %.preheader.1.preheader
                                         #   in Loop: Header=BB1_39 Depth=2
-	move	$a7, $a1
+	move	$a7, $a0
 	move	$t0, $a3
-	move	$t1, $a2
 	b	.LBB1_42
 	.p2align	4, , 16
 .LBB1_41:                               # %._crit_edge23.1
                                         #   in Loop: Header=BB1_42 Depth=3
 	addi.w	$a5, $a5, 2
-	addi.d	$t1, $t1, 2
-	addi.d	$t0, $t0, 16
+	addi.d	$t0, $t0, 2
 	addi.d	$a7, $a7, 16
 	blt	$a6, $a5, .LBB1_38
 .LBB1_42:                               # %.preheader.1
@@ -789,37 +785,36 @@ fourn:                                  # @fourn
 	blt	$s3, $a5, .LBB1_41
 # %bb.43:                               # %.lr.ph22.1.preheader
                                         #   in Loop: Header=BB1_42 Depth=3
-	move	$t2, $zero
-	move	$t3, $t1
+	move	$t1, $a7
+	move	$t2, $t0
 	.p2align	4, , 16
 .LBB1_44:                               # %.lr.ph22.1
                                         #   Parent Loop BB1_36 Depth=1
                                         #     Parent Loop BB1_39 Depth=2
                                         #       Parent Loop BB1_42 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	fldx.d	$fa5, $a7, $t2
-	add.d	$t4, $a7, $t2
-	fld.d	$fa6, $t4, -8
-	fneg.d	$fa7, $fa5
-	fldx.d	$ft0, $t0, $t2
-	fmul.d	$fa7, $fa3, $fa7
-	fmadd.d	$fa7, $fa4, $fa6, $fa7
-	add.d	$t5, $t0, $t2
-	fsub.d	$ft0, $ft0, $fa7
-	fst.d	$ft0, $t4, -8
-	fld.d	$ft0, $t5, 8
+	add.d	$t3, $a2, $t1
+	fldx.d	$fa5, $a2, $t1
+	add.d	$t4, $fp, $t1
+	fld.d	$fa6, $t3, -8
+	fld.d	$fa7, $t4, 8
+	fneg.d	$ft0, $fa5
+	fmul.d	$ft0, $fa3, $ft0
+	fmadd.d	$ft0, $fa4, $fa6, $ft0
+	fsub.d	$fa7, $fa7, $ft0
+	fst.d	$fa7, $t3, -8
+	fld.d	$fa7, $t4, 16
 	fmul.d	$fa6, $fa3, $fa6
-	fldx.d	$ft1, $t0, $t2
 	fmadd.d	$fa5, $fa4, $fa5, $fa6
-	fsub.d	$fa6, $ft0, $fa5
-	fstx.d	$fa6, $a7, $t2
-	fadd.d	$fa6, $fa7, $ft1
-	fstx.d	$fa6, $t0, $t2
-	fadd.d	$fa5, $fa5, $ft0
-	fst.d	$fa5, $t5, 8
-	add.d	$t3, $t3, $s5
-	add.d	$t2, $t2, $a0
-	bge	$s3, $t3, .LBB1_44
+	vld	$vr6, $t4, 8
+	fsub.d	$fa7, $fa7, $fa5
+	fstx.d	$fa7, $a2, $t1
+	vextrins.d	$vr8, $vr5, 16
+	vfadd.d	$vr5, $vr8, $vr6
+	vst	$vr5, $t4, 8
+	add.d	$t2, $t2, $s4
+	add.d	$t1, $t1, $a1
+	bge	$s3, $t2, .LBB1_44
 	b	.LBB1_41
 .LBB1_45:                               # %._crit_edge33.1
 	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload

@@ -358,6 +358,7 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	ld.d	$a0, $a0, %got_pc_lo12(_ZN9benchmark31FLAGS_benchmark_min_warmup_timeE)
 	fld.d	$fa0, $a0, 0
 .LBB1_10:
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 	ld.bu	$s6, $s2, 0
 	movgr2fr.d	$fa1, $zero
 	fcmp.cule.d	$fcc0, $fa0, $fa1
@@ -386,13 +387,12 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	or	$s7, $a1, $a2
 	st.b	$s7, $fp, 112
 	st.w	$zero, $fp, 116
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	blez	$a0, .LBB1_26
 # %bb.13:                               # %_ZNSt6vectorISt6threadSaIS0_EE17_S_check_init_lenEmRKS1_.exit.i
 	addi.d	$s2, $fp, 120
 	addi.w	$s8, $a0, -1
 	st.d	$zero, $s2, 16
-	vst	$vr0, $s2, 0
+	vst	$vr2, $s2, 0
 	beqz	$s8, .LBB1_16
 # %bb.14:                               # %.lr.ph.preheader.i.i.i.i.i
 	slli.d	$s3, $s8, 3
@@ -410,17 +410,17 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s4, $s3
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 	b	.LBB1_17
 .LBB1_16:                               # %_ZNSt12_Vector_baseISt6threadSaIS0_EEC2EmRKS1_.exit.thread.i
 	move	$s8, $zero
 	move	$a0, $zero
-	vst	$vr0, $s2, 0
+	vst	$vr2, $s2, 0
 .LBB1_17:
 	st.d	$s8, $fp, 136
 	st.d	$a0, $fp, 128
 	st.d	$zero, $fp, 144
-	vst	$vr0, $fp, 152
+	vst	$vr2, $fp, 152
 	xori	$a0, $s6, 1
 	and	$a1, $a0, $s7
 	ori	$a0, $zero, 1
@@ -466,7 +466,6 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	beqz	$a0, .LBB1_25
 # %bb.24:
 .Ltmp9:                                 # EH_LABEL
-	addi.d	$s0, $fp, 144
 	pcalau12i	$a1, %pc_hi20(.L.str.8)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.8)
 	ori	$a2, $zero, 53
@@ -526,7 +525,7 @@ _ZN9benchmark8internal15BenchmarkRunnerC2ERKNS0_17BenchmarkInstanceEPNS0_23PerfC
 	b	.LBB1_20
 .LBB1_32:
 .Ltmp11:                                # EH_LABEL
-	ld.d	$a2, $s0, 0
+	ld.d	$a2, $fp, 144
 	move	$s0, $a0
 	beqz	$a2, .LBB1_34
 # %bb.33:
@@ -2037,12 +2036,11 @@ _ZNK9benchmark8internal15BenchmarkRunner21PredictNumItersNeededERKNS1_16Iteratio
 	fld.d	$fa4, $a0, %pc_lo12(.LCPI8_2)
 	fdiv.d	$fa1, $fa1, $fa3
 	fdiv.d	$fa0, $fa2, $fa0
-	ld.d	$a0, $a1, 160
+	fld.d	$fa2, $a1, 160
 	fcmp.clt.d	$fcc0, $fa4, $fa0
 	vldi	$vr0, -988
 	fsel	$fs0, $fa0, $fa1, $fcc0
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
+	ffint.d.l	$fa0, $fa2
 	fmul.d	$fa1, $fs0, $fa0
 	vldi	$vr2, -912
 	fadd.d	$fa0, $fa0, $fa2
@@ -3398,8 +3396,7 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 	blez	$s0, .LBB15_49
 # %bb.48:
 	st.d	$s1, $sp, 560
-	ld.d	$a0, $s1, 0
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $s1, 0
 	ffint.d.l	$fa0, $fa0
 	movgr2fr.d	$fa1, $s0
 	ffint.d.l	$fa1, $fa1

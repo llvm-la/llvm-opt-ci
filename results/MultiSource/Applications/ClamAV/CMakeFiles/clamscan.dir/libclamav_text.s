@@ -365,25 +365,26 @@ textToBlob:                             # @textToBlob
 	jirl	$ra, $ra, 0
 .LBB3_11:
 	move	$s0, $zero
-	b	.LBB3_29
+	b	.LBB3_31
 .LBB3_12:
 	move	$s0, $s2
-	b	.LBB3_29
+	b	.LBB3_31
 .LBB3_13:
+	beqz	$s1, .LBB3_20
+# %bb.14:
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.6)
 	move	$s4, $fp
-	bnez	$s1, .LBB3_15
-	b	.LBB3_20
+	b	.LBB3_16
 	.p2align	4, , 16
-.LBB3_14:                               #   in Loop: Header=BB3_15 Depth=1
+.LBB3_15:                               #   in Loop: Header=BB3_16 Depth=1
 	ld.d	$s4, $s4, 8
-	beqz	$s4, .LBB3_22
-.LBB3_15:                               # %.lr.ph.i
+	beqz	$s4, .LBB3_24
+.LBB3_16:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s4, 0
-	beqz	$a0, .LBB3_17
-# %bb.16:                               #   in Loop: Header=BB3_15 Depth=1
+	beqz	$a0, .LBB3_18
+# %bb.17:                               #   in Loop: Header=BB3_16 Depth=1
 	pcaddu18i	$ra, %call36(lineGetData)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -394,35 +395,40 @@ textToBlob:                             # @textToBlob
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
-.LBB3_17:                               # %addToBlob.exit35
-                                        #   in Loop: Header=BB3_15 Depth=1
+.LBB3_18:                               # %addToBlob.exit35
+                                        #   in Loop: Header=BB3_16 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
-	beqz	$a0, .LBB3_14
-# %bb.18:                               #   in Loop: Header=BB3_15 Depth=1
+	beqz	$a0, .LBB3_15
+# %bb.19:                               #   in Loop: Header=BB3_16 Depth=1
 	pcaddu18i	$ra, %call36(lineUnlink)
 	jirl	$ra, $ra, 0
 	st.d	$zero, $s4, 0
-	b	.LBB3_14
+	b	.LBB3_15
+.LBB3_20:
+	pcalau12i	$a0, %pc_hi20(.L.str.6)
+	addi.d	$s2, $a0, %pc_lo12(.L.str.6)
+	move	$s4, $fp
+	b	.LBB3_22
 	.p2align	4, , 16
-.LBB3_19:                               # %addToBlob.exit
-                                        #   in Loop: Header=BB3_20 Depth=1
+.LBB3_21:                               # %addToBlob.exit
+                                        #   in Loop: Header=BB3_22 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
 	ld.d	$s4, $s4, 8
-	beqz	$s4, .LBB3_22
-.LBB3_20:                               # %.lr.ph24.i26
+	beqz	$s4, .LBB3_24
+.LBB3_22:                               # %.lr.ph24.i26
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s4, 0
-	beqz	$a0, .LBB3_19
-# %bb.21:                               #   in Loop: Header=BB3_20 Depth=1
+	beqz	$a0, .LBB3_21
+# %bb.23:                               #   in Loop: Header=BB3_22 Depth=1
 	pcaddu18i	$ra, %call36(lineGetData)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
@@ -433,36 +439,36 @@ textToBlob:                             # @textToBlob
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
-	b	.LBB3_19
-.LBB3_22:                               # %textIterate.exit29
-	beqz	$s1, .LBB3_28
-# %bb.23:
+	b	.LBB3_21
+.LBB3_24:                               # %textIterate.exit29
+	beqz	$s1, .LBB3_30
+# %bb.25:
 	ld.d	$s1, $fp, 8
-	bnez	$s1, .LBB3_25
-	b	.LBB3_28
+	bnez	$s1, .LBB3_27
+	b	.LBB3_30
 	.p2align	4, , 16
-.LBB3_24:                               #   in Loop: Header=BB3_25 Depth=1
+.LBB3_26:                               #   in Loop: Header=BB3_27 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$s1, $s2
-	beqz	$s2, .LBB3_27
-.LBB3_25:                               # %.lr.ph.i30
+	beqz	$s2, .LBB3_29
+.LBB3_27:                               # %.lr.ph.i30
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$s2, $s1, 8
-	beqz	$a0, .LBB3_24
-# %bb.26:                               #   in Loop: Header=BB3_25 Depth=1
+	beqz	$a0, .LBB3_26
+# %bb.28:                               #   in Loop: Header=BB3_27 Depth=1
 	pcaddu18i	$ra, %call36(lineUnlink)
 	jirl	$ra, $ra, 0
-	b	.LBB3_24
-.LBB3_27:                               # %textDestroy.exit
+	b	.LBB3_26
+.LBB3_29:                               # %textDestroy.exit
 	st.d	$zero, $fp, 8
-.LBB3_28:
+.LBB3_30:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(blobClose)
 	jirl	$ra, $ra, 0
-.LBB3_29:
+.LBB3_31:
 	move	$a0, $s0
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload

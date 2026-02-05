@@ -468,7 +468,7 @@ EXAMINE:                                # @EXAMINE
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
-.LBB3_9:                                # %._crit_edge
+.LBB3_9:                                # %._crit_edge108
 	move	$s1, $zero
 	b	.LBB3_41
 .LBB3_10:

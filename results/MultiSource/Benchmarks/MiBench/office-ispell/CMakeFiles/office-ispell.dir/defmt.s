@@ -198,7 +198,7 @@ checkline:                              # @checkline
 	ld.bu	$a1, $s2, 0
 	beqz	$a1, .LBB1_235
 	.p2align	4, , 16
-.LBB1_7:                                # %.lr.ph109.i
+.LBB1_7:                                # %.lr.ph111.i
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_39 Depth 3
@@ -223,7 +223,7 @@ checkline:                              # @checkline
 	jirl	$ra, $ra, 0
 	ld.bu	$s3, $s2, 0
 	blez	$a0, .LBB1_10
-# %bb.9:                                # %._crit_edge153.i
+# %bb.9:                                # %._crit_edge155.i
                                         #   in Loop: Header=BB1_7 Depth=2
 	ld.w	$a0, $s4, 0
 	b	.LBB1_12
@@ -274,7 +274,7 @@ checkline:                              # @checkline
 .LBB1_19:                               #   in Loop: Header=BB1_7 Depth=2
 	beqz	$a0, .LBB1_237
 # %bb.20:                               #   in Loop: Header=BB1_7 Depth=2
-	ld.wu	$a0, $s8, 0
+	ld.w	$a0, $s8, 0
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB1_237
 .LBB1_21:                               # %.critedge2.thread.i
@@ -322,7 +322,7 @@ checkline:                              # @checkline
 	ld.bu	$fp, $a1, 0
 	ori	$a1, $zero, 109
 	bne	$fp, $a1, .LBB1_43
-.LBB1_29:                               # %TeX_strncmp.exit.thread72.i
+.LBB1_29:                               # %TeX_strncmp.exit.thread74.i
                                         #   in Loop: Header=BB1_7 Depth=2
 	addi.d	$a1, $sp, 96
 	move	$a0, $zero
@@ -505,18 +505,17 @@ checkline:                              # @checkline
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	addi.d	$a1, $s2, 1
+	addi.d	$s2, $s2, 1
 	.p2align	4, , 16
 .LBB1_70:                               #   Parent Loop BB1_6 Depth=1
                                         #     Parent Loop BB1_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.b	$a2, $a1, 1
-	slli.d	$a2, $a2, 1
-	ldx.hu	$a2, $a0, $a2
-	addi.d	$s2, $a1, 1
-	slli.d	$a2, $a2, 51
-	move	$a1, $s2
-	bltz	$a2, .LBB1_70
+	ld.b	$a1, $s2, 1
+	slli.d	$a1, $a1, 1
+	ldx.hu	$a1, $a0, $a1
+	slli.d	$a1, $a1, 51
+	addi.d	$s2, $s2, 1
+	bltz	$a1, .LBB1_70
 	b	.LBB1_67
 .LBB1_71:                               #   in Loop: Header=BB1_7 Depth=2
 	ld.bu	$a2, $s7, 52
@@ -530,11 +529,11 @@ checkline:                              # @checkline
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.bu	$a0, $a0, %pc_lo12(TeX_comment)
 	beqz	$a0, .LBB1_131
-.LBB1_75:                               # %thread-pre-split69.i
+.LBB1_75:                               # %thread-pre-split71.i
                                         #   in Loop: Header=BB1_7 Depth=2
 	ld.w	$a0, $s8, 0
 	b	.LBB1_60
-.LBB1_76:                               # %._crit_edge143.i
+.LBB1_76:                               # %._crit_edge146.i
                                         #   in Loop: Header=BB1_7 Depth=2
 	ld.d	$s2, $sp, 96
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
@@ -1486,7 +1485,7 @@ checkline:                              # @checkline
 	.p2align	4, , 16
 .LBB1_236:                              #   in Loop: Header=BB1_6 Depth=1
 	move	$s3, $zero
-.LBB1_237:                              # %.critedge.loopexit113.i
+.LBB1_237:                              # %.critedge.loopexit115.i
                                         #   in Loop: Header=BB1_6 Depth=1
 	andi	$a0, $s3, 255
 	sltui	$a0, $a0, 1
@@ -1573,7 +1572,7 @@ checkline:                              # @checkline
 	move	$fp, $s2
 	b	.LBB1_247
 	.p2align	4, , 16
-.LBB1_255:                              # %._crit_edge.i96
+.LBB1_255:                              # %._crit_edge.i97
                                         #   in Loop: Header=BB1_6 Depth=1
 	ld.bu	$a1, $s3, %pc_lo12(TeX_comment)
 	beqz	$a1, .LBB1_258
@@ -1600,7 +1599,7 @@ checkline:                              # @checkline
 	move	$a1, $s1
 	ori	$t0, $zero, 118
 	bgeu	$a2, $a0, .LBB1_272
-# %bb.259:                              # %.lr.ph165.preheader
+# %bb.259:                              # %.lr.ph166.preheader
                                         #   in Loop: Header=BB1_6 Depth=1
 	nor	$a1, $a2, $zero
 	add.d	$a1, $a1, $a0
@@ -1608,14 +1607,14 @@ checkline:                              # @checkline
 	bgeu	$a1, $a3, .LBB1_265
 # %bb.260:                              #   in Loop: Header=BB1_6 Depth=1
 	move	$a1, $zero
-.LBB1_261:                              # %.lr.ph165.preheader420
+.LBB1_261:                              # %.lr.ph166.preheader421
                                         #   in Loop: Header=BB1_6 Depth=1
 	move	$a3, $a2
-.LBB1_262:                              # %.lr.ph165.preheader420
+.LBB1_262:                              # %.lr.ph166.preheader421
                                         #   in Loop: Header=BB1_6 Depth=1
 	addi.d	$a2, $a3, 1
 	.p2align	4, , 16
-.LBB1_263:                              # %.lr.ph165
+.LBB1_263:                              # %.lr.ph166
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	st.d	$a2, $s0, 0
@@ -1624,7 +1623,7 @@ checkline:                              # @checkline
 	addi.d	$a1, $a1, 1
 	stx.b	$a4, $s1, $a3
 	bgeu	$a2, $a0, .LBB1_271
-# %bb.264:                              # %.lr.ph165
+# %bb.264:                              # %.lr.ph166
                                         #   in Loop: Header=BB1_263 Depth=2
 	addi.d	$a2, $a2, 1
 	bltu	$a3, $t0, .LBB1_263
@@ -1687,10 +1686,10 @@ checkline:                              # @checkline
 	st.d	$a2, $s0, 0
 	bne	$a4, $a1, .LBB1_262
 	.p2align	4, , 16
-.LBB1_271:                              # %._crit_edge166.loopexit
+.LBB1_271:                              # %._crit_edge167.loopexit
                                         #   in Loop: Header=BB1_6 Depth=1
 	add.d	$a1, $s1, $a1
-.LBB1_272:                              # %._crit_edge166
+.LBB1_272:                              # %._crit_edge167
                                         #   in Loop: Header=BB1_6 Depth=1
 	st.b	$zero, $a1, 0
 	pcalau12i	$a0, %got_pc_hi20(itoken)
@@ -2038,7 +2037,7 @@ checkline:                              # @checkline
 	slli.d	$a0, $a0, 50
 	bgez	$a0, .LBB1_315
 	.p2align	4, , 16
-.LBB1_313:                              # %.lr.ph395
+.LBB1_313:                              # %.lr.ph396
                                         # =>This Inner Loop Header: Depth=1
 	ori	$a1, $zero, 1
 	move	$a0, $s0
@@ -2072,16 +2071,16 @@ checkline:                              # @checkline
 	ld.bu	$a0, $s2, 3
 	ori	$a1, $zero, 32
 	beq	$a0, $a1, .LBB1_323
-.LBB1_320:                              # %sub_1108
+.LBB1_320:                              # %sub_1109
 	ld.bu	$a0, $s2, 2
 	ori	$a1, $zero, 101
 	beq	$a0, $a1, .LBB1_322
 	b	.LBB1_331
-.LBB1_321:                              # %sub_1113
+.LBB1_321:                              # %sub_1114
 	ld.bu	$a0, $s2, 2
 	ori	$a1, $zero, 114
 	bne	$a0, $a1, .LBB1_331
-.LBB1_322:                              # %.tail111
+.LBB1_322:                              # %.tail112
 	ld.bu	$a0, $s2, 3
 	ori	$a1, $zero, 32
 	bne	$a0, $a1, .LBB1_331
@@ -2093,7 +2092,7 @@ checkline:                              # @checkline
 	ld.d	$s2, $s0, 0
 	ld.b	$s3, $s2, 0
 	blez	$s3, .LBB1_327
-# %bb.324:                              # %.lr.ph156
+# %bb.324:                              # %.lr.ph157
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
@@ -2103,7 +2102,7 @@ checkline:                              # @checkline
 	slli.d	$a0, $a0, 50
 	bgez	$a0, .LBB1_329
 	.p2align	4, , 16
-.LBB1_325:                              # %.lr.ph401
+.LBB1_325:                              # %.lr.ph402
                                         # =>This Inner Loop Header: Depth=1
 	ori	$a1, $zero, 1
 	move	$a0, $s0
@@ -2132,7 +2131,7 @@ checkline:                              # @checkline
 	ld.d	$s2, $s0, 0
 	ld.bu	$s3, $s2, 0
 	beqz	$s3, .LBB1_340
-.LBB1_329:                              # %.lr.ph159
+.LBB1_329:                              # %.lr.ph160
                                         # =>This Inner Loop Header: Depth=1
 	ext.w.b	$a0, $s3
 	bltz	$a0, .LBB1_328
@@ -2154,7 +2153,7 @@ checkline:                              # @checkline
 	bne	$a0, $a1, .LBB1_3
 # %bb.333:                              # %.preheader
 	beqz	$a0, .LBB1_340
-# %bb.334:                              # %.lr.ph161.preheader
+# %bb.334:                              # %.lr.ph162.preheader
 	pcalau12i	$a0, %got_pc_hi20(aflag)
 	ld.d	$fp, $a0, %got_pc_lo12(aflag)
 	pcalau12i	$a0, %got_pc_hi20(lflag)
@@ -2167,7 +2166,7 @@ checkline:                              # @checkline
 	ld.bu	$s3, $s2, 1
 	move	$s2, $a0
 	beqz	$s3, .LBB1_340
-.LBB1_336:                              # %.lr.ph161
+.LBB1_336:                              # %.lr.ph162
                                         # =>This Inner Loop Header: Depth=1
 	ext.w.b	$s1, $s3
 	bltz	$s1, .LBB1_338
@@ -2561,9 +2560,9 @@ TeX_LR_check:                           # @TeX_LR_check
 	addi.d	$a0, $a0, 1
 	bne	$a1, $a2, .LBB3_4
 .LBB3_7:                                # %TeX_open_paren.exit
-	pcalau12i	$a0, %got_pc_hi20(LaTeX_Mode)
 	beqz	$a1, .LBB3_10
 # %bb.8:
+	pcalau12i	$a0, %got_pc_hi20(LaTeX_Mode)
 	ld.d	$a0, $a0, %got_pc_lo12(LaTeX_Mode)
 	ori	$a1, $zero, 80
 	st.b	$a1, $a0, 0
@@ -2582,6 +2581,7 @@ TeX_LR_check:                           # @TeX_LR_check
 	st.d	$s3, $fp, 0
 	b	.LBB3_31
 .LBB3_10:
+	pcalau12i	$a0, %got_pc_hi20(LaTeX_Mode)
 	ld.d	$a1, $a0, %got_pc_lo12(LaTeX_Mode)
 	move	$a0, $zero
 	ori	$a2, $zero, 109

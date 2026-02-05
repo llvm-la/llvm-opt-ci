@@ -242,7 +242,7 @@ hashlookup:                             # @hashlookup
 	st.w	$t0, $a4, 0
 	ld.bu	$t0, $a7, 21
 	andi	$t0, $t0, 127
-	bge	$t0, $a3, .LBB1_26
+	bge	$t0, $a3, .LBB1_27
 .LBB1_6:
 	pcalau12i	$a7, %got_pc_hi20(g_flipV_hashkey)
 	ld.d	$t0, $a7, %got_pc_lo12(g_flipV_hashkey)
@@ -284,7 +284,7 @@ hashlookup:                             # @hashlookup
 	st.w	$t0, $a4, 0
 	ld.bu	$t0, $a7, 21
 	andi	$t0, $t0, 127
-	bge	$t0, $a3, .LBB1_29
+	bge	$t0, $a3, .LBB1_28
 .LBB1_12:
 	pcalau12i	$a7, %got_pc_hi20(g_flipH_hashkey)
 	ld.d	$t0, $a7, %got_pc_lo12(g_flipH_hashkey)
@@ -326,7 +326,7 @@ hashlookup:                             # @hashlookup
 	st.w	$t0, $a4, 0
 	ld.bu	$t0, $a7, 21
 	andi	$t0, $t0, 127
-	bge	$t0, $a3, .LBB1_32
+	bge	$t0, $a3, .LBB1_29
 .LBB1_18:
 	pcalau12i	$a7, %got_pc_hi20(g_flipVH_hashkey)
 	ld.d	$a7, $a7, %got_pc_lo12(g_flipVH_hashkey)
@@ -335,24 +335,24 @@ hashlookup:                             # @hashlookup
 	alsl.d	$t0, $t0, $t1, 3
 	ldx.w	$t1, $a6, $t0
 	ld.w	$t2, $a7, 0
-	bne	$t1, $t2, .LBB1_48
+	bne	$t1, $t2, .LBB1_39
 # %bb.19:
 	add.d	$a6, $a6, $t0
 	ld.w	$t0, $a6, 4
 	ld.w	$t1, $a7, 4
-	bne	$t0, $t1, .LBB1_48
+	bne	$t0, $t1, .LBB1_39
 # %bb.20:
 	ld.w	$t0, $a6, 8
 	ld.w	$t1, $a7, 8
-	bne	$t0, $t1, .LBB1_48
+	bne	$t0, $t1, .LBB1_39
 # %bb.21:
 	ld.w	$t0, $a6, 12
 	ld.w	$a7, $a7, 12
-	bne	$t0, $a7, .LBB1_48
+	bne	$t0, $a7, .LBB1_39
 # %bb.22:
 	ld.bu	$a7, $a6, 21
 	srli.d	$a7, $a7, 7
-	bne	$a5, $a7, .LBB1_48
+	bne	$a5, $a7, .LBB1_39
 # %bb.23:
 	ld.bu	$a7, $a6, 20
 	slli.d	$a5, $a5, 2
@@ -368,106 +368,125 @@ hashlookup:                             # @hashlookup
 	st.w	$a5, $a4, 0
 	ld.bu	$a4, $a6, 21
 	andi	$a4, $a4, 127
-	blt	$a4, $a3, .LBB1_48
+	blt	$a4, $a3, .LBB1_39
 # %bb.24:
-	ld.hu	$a3, $a6, 22
-	srli.d	$a4, $a3, 14
-	ori	$a5, $zero, 1
-	bne	$a4, $a5, .LBB1_39
-# %bb.25:
-	slli.d	$a1, $a3, 50
-	srai.d	$a1, $a1, 50
-	st.w	$a1, $a0, 0
+	ld.hu	$a4, $a6, 22
+	srli.d	$a3, $a4, 14
+	slli.d	$a3, $a3, 2
+	pcalau12i	$a5, %pc_hi20(.LJTI1_3)
+	addi.d	$a5, $a5, %pc_lo12(.LJTI1_3)
+	ldx.w	$a3, $a5, $a3
+	add.d	$a5, $a5, $a3
+	move	$a3, $zero
+	jr	$a5
+.LBB1_25:
+	ld.w	$a3, $a2, 0
+	slli.d	$a2, $a4, 50
+	srai.d	$a2, $a2, 50
+	blt	$a2, $a3, .LBB1_31
+.LBB1_26:
+	st.w	$a2, $a0, 0
 	ori	$a0, $zero, 1
 	ret
-.LBB1_26:
+.LBB1_27:
 	ld.hu	$a7, $a7, 22
 	srli.d	$t0, $a7, 14
-	ori	$t1, $zero, 1
-	beq	$t0, $t1, .LBB1_33
-# %bb.27:
-	beqz	$t0, .LBB1_36
-# %bb.28:
-	ori	$t1, $zero, 2
-	bne	$t0, $t1, .LBB1_6
-	b	.LBB1_43
+	slli.d	$t0, $t0, 2
+	pcalau12i	$t1, %pc_hi20(.LJTI1_0)
+	addi.d	$t1, $t1, %pc_lo12(.LJTI1_0)
+	ldx.w	$t0, $t1, $t0
+	add.d	$t0, $t1, $t0
+	jr	$t0
+.LBB1_28:
+	ld.hu	$a7, $a7, 22
+	srli.d	$t0, $a7, 14
+	slli.d	$t0, $t0, 2
+	pcalau12i	$t1, %pc_hi20(.LJTI1_1)
+	addi.d	$t1, $t1, %pc_lo12(.LJTI1_1)
+	ldx.w	$t0, $t1, $t0
+	add.d	$t0, $t1, $t0
+	jr	$t0
 .LBB1_29:
 	ld.hu	$a7, $a7, 22
 	srli.d	$t0, $a7, 14
-	ori	$t1, $zero, 1
-	beq	$t0, $t1, .LBB1_33
-# %bb.30:
-	beqz	$t0, .LBB1_36
-# %bb.31:
-	ori	$t1, $zero, 2
-	bne	$t0, $t1, .LBB1_12
-	b	.LBB1_43
-.LBB1_32:
-	ld.hu	$a7, $a7, 22
-	srli.d	$t0, $a7, 14
-	ori	$t1, $zero, 1
-	bne	$t0, $t1, .LBB1_35
+	slli.d	$t0, $t0, 2
+	pcalau12i	$t1, %pc_hi20(.LJTI1_2)
+	addi.d	$t1, $t1, %pc_lo12(.LJTI1_2)
+	ldx.w	$t0, $t1, $t0
+	add.d	$t0, $t1, $t0
+	jr	$t0
+.LBB1_30:
+	ld.w	$a3, $a2, 0
+	slli.d	$a2, $a7, 50
+	srai.d	$a2, $a2, 50
+	bge	$a2, $a3, .LBB1_26
+.LBB1_31:
+	ld.w	$a0, $a1, 0
+	bge	$a0, $a2, .LBB1_39
+# %bb.32:
+	st.w	$a2, $a1, 0
+	move	$a0, $zero
+	ret
 .LBB1_33:
+	ld.w	$a3, $a1, 0
 	slli.d	$a1, $a7, 50
 	srai.d	$a1, $a1, 50
+	bge	$a3, $a1, .LBB1_41
+	b	.LBB1_36
 .LBB1_34:
+	slli.d	$a1, $a7, 50
+	srai.d	$a1, $a1, 50
 	st.w	$a1, $a0, 0
 	ori	$a0, $zero, 1
 	ret
 .LBB1_35:
-	bnez	$t0, .LBB1_42
+	ld.w	$a3, $a1, 0
+	slli.d	$a1, $a4, 50
+	srai.d	$a1, $a1, 50
+	bge	$a3, $a1, .LBB1_41
 .LBB1_36:
-	ld.w	$a3, $a2, 0
-	slli.d	$a2, $a7, 50
-	srai.d	$a2, $a2, 50
-	bge	$a2, $a3, .LBB1_41
-.LBB1_37:
-	ld.w	$a0, $a1, 0
-	bge	$a0, $a2, .LBB1_48
-# %bb.38:
-	move	$a0, $zero
-	st.w	$a2, $a1, 0
+	ld.w	$a0, $a2, 0
+	bge	$a1, $a0, .LBB1_39
+# %bb.37:
+	move	$a3, $zero
+	st.w	$a1, $a2, 0
+.LBB1_38:
+	move	$a0, $a3
 	ret
 .LBB1_39:
-	bnez	$a4, .LBB1_44
-# %bb.40:
-	ld.w	$a4, $a2, 0
-	slli.d	$a2, $a3, 50
-	srai.d	$a2, $a2, 50
-	blt	$a2, $a4, .LBB1_37
+	move	$a0, $zero
+	ret
+.LBB1_40:
+	slli.d	$a1, $a4, 50
+	srai.d	$a1, $a1, 50
 .LBB1_41:
-	st.w	$a2, $a0, 0
+	st.w	$a1, $a0, 0
 	ori	$a0, $zero, 1
-	ret
-.LBB1_42:
-	ori	$t1, $zero, 2
-	bne	$t0, $t1, .LBB1_18
-.LBB1_43:
-	ld.w	$a3, $a1, 0
-	slli.d	$a1, $a7, 50
-	srai.d	$a1, $a1, 50
-	bge	$a3, $a1, .LBB1_34
-	b	.LBB1_46
-.LBB1_44:
-	ori	$a5, $zero, 2
-	bne	$a4, $a5, .LBB1_48
-# %bb.45:
-	ld.w	$a4, $a1, 0
-	slli.d	$a1, $a3, 50
-	srai.d	$a1, $a1, 50
-	bge	$a4, $a1, .LBB1_34
-.LBB1_46:
-	ld.w	$a0, $a2, 0
-	bge	$a1, $a0, .LBB1_48
-# %bb.47:
-	move	$a0, $zero
-	st.w	$a1, $a2, 0
-	ret
-.LBB1_48:
-	move	$a0, $zero
 	ret
 .Lfunc_end1:
 	.size	hashlookup, .Lfunc_end1-hashlookup
+	.section	.rodata,"a",@progbits
+	.p2align	2, 0x0
+.LJTI1_0:
+	.word	.LBB1_30-.LJTI1_0
+	.word	.LBB1_34-.LJTI1_0
+	.word	.LBB1_33-.LJTI1_0
+	.word	.LBB1_6-.LJTI1_0
+.LJTI1_1:
+	.word	.LBB1_30-.LJTI1_1
+	.word	.LBB1_34-.LJTI1_1
+	.word	.LBB1_33-.LJTI1_1
+	.word	.LBB1_12-.LJTI1_1
+.LJTI1_2:
+	.word	.LBB1_30-.LJTI1_2
+	.word	.LBB1_34-.LJTI1_2
+	.word	.LBB1_33-.LJTI1_2
+	.word	.LBB1_18-.LJTI1_2
+.LJTI1_3:
+	.word	.LBB1_25-.LJTI1_3
+	.word	.LBB1_40-.LJTI1_3
+	.word	.LBB1_35-.LJTI1_3
+	.word	.LBB1_38-.LJTI1_3
                                         # -- End function
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

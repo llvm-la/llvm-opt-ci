@@ -460,14 +460,15 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 # %bb.47:
 	andi	$a0, $a0, 2
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$s4, $sp, 384
 	beqz	$a0, .LBB1_351
 # %bb.48:
 	addi.d	$s0, $sp, 968
-.Ltmp18:                                # EH_LABEL
+.Ltmp16:                                # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt13basic_filebufIcSt11char_traitsIcEE5closeEv)
 	jirl	$ra, $ra, 0
-.Ltmp19:                                # EH_LABEL
+.Ltmp17:                                # EH_LABEL
 # %bb.49:                               # %.noexc36.i.i
 	bnez	$a0, .LBB1_51
 # %bb.50:
@@ -477,16 +478,15 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 32
 	ori	$a1, $a1, 4
-.Ltmp20:                                # EH_LABEL
+.Ltmp18:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate)
 	jirl	$ra, $ra, 0
-.Ltmp21:                                # EH_LABEL
+.Ltmp19:                                # EH_LABEL
 .LBB1_51:                               # %_ZNSt14basic_ifstreamIcSt11char_traitsIcEE5closeEv.exit.i.i
 	addi.w	$a0, $s6, 1
 	bne	$a0, $fp, .LBB1_310
 # %bb.52:
 	ld.d	$a0, $sp, 144
-	addi.d	$s4, $sp, 384
 	beq	$a0, $s3, .LBB1_54
 .LBB1_53:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i38.i.i
 	ld.d	$a1, $sp, 160
@@ -516,9 +516,15 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	addi.d	$s1, $a0, %pc_lo12(.L.str.13)
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.14)
-	ori	$s5, $zero, 11
-	pcalau12i	$a0, %pc_hi20(.L.str.15)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.15)
+	ori	$s3, $zero, 11
+	lu12i.w	$a0, 419622
+	ori	$a0, $a0, 1392
+	lu32i.d	$a0, -167313
+	lu52i.d	$s5, $a0, 1558
+	lu12i.w	$a0, 448294
+	ori	$a0, $a0, 3942
+	lu32i.d	$a0, 224865
+	lu52i.d	$s6, $a0, 1622
 	b	.LBB1_59
 	.p2align	4, , 16
 .LBB1_58:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit15.i
@@ -526,35 +532,36 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ld.w	$a0, $sp, 144
 	addi.w	$a0, $a0, 1
 	st.w	$a0, $sp, 144
-	bge	$a0, $fp, .LBB1_172
+	bge	$a0, $fp, .LBB1_171
 .LBB1_59:                               # =>This Inner Loop Header: Depth=1
-.Ltmp22:                                # EH_LABEL
+.Ltmp20:                                # EH_LABEL
 	addi.d	$a0, $sp, 368
 	addi.d	$a2, $sp, 144
 	move	$a1, $s1
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(_ZN9benchmark6StrCatIJRA28_KcRiRA26_S1_EEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp23:                                # EH_LABEL
+.Ltmp21:                                # EH_LABEL
 # %bb.60:                               #   in Loop: Header=BB1_59 Depth=1
-.Ltmp25:                                # EH_LABEL
+.Ltmp23:                                # EH_LABEL
 	addi.d	$a0, $sp, 368
 	addi.d	$a1, $sp, 952
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_112ReadFromFileINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEbRKS7_PT_)
 	jirl	$ra, $ra, 0
-.Ltmp26:                                # EH_LABEL
+.Ltmp24:                                # EH_LABEL
 # %bb.61:                               #   in Loop: Header=BB1_59 Depth=1
 	beqz	$a0, .LBB1_64
 # %bb.62:                               #   in Loop: Header=BB1_59 Depth=1
 	ld.d	$a0, $sp, 960
-	bne	$a0, $s5, .LBB1_67
+	bne	$a0, $s3, .LBB1_67
 # %bb.63:                               # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.i
                                         #   in Loop: Header=BB1_59 Depth=1
 	ld.d	$a0, $sp, 952
-	ori	$a2, $zero, 11
-	move	$a1, $s3
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	ld.d	$a0, $a0, 3
+	xor	$a1, $a1, $s5
+	xor	$a0, $a0, $s6
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB1_67
 .LBB1_64:                               # %.critedge.i
                                         #   in Loop: Header=BB1_59 Depth=1
@@ -600,13 +607,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$s4, $sp, 368
 	ori	$a0, $zero, 41
 	st.d	$a0, $sp, 952
-.Ltmp28:                                # EH_LABEL
+.Ltmp26:                                # EH_LABEL
 	addi.d	$a0, $sp, 368
 	addi.d	$a1, $sp, 952
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp29:                                # EH_LABEL
+.Ltmp27:                                # EH_LABEL
 # %bb.72:                               # %.noexc.i
 	ld.d	$a1, $sp, 952
 	st.d	$a0, $sp, 368
@@ -623,12 +630,12 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	stx.b	$zero, $a0, $a1
 	ld.d	$a1, $sp, 368
 	st.d	$zero, $sp, 920
-.Ltmp31:                                # EH_LABEL
+.Ltmp29:                                # EH_LABEL
 	addi.d	$a0, $sp, 952
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEEC1EPKcSt13_Ios_Openmode)
 	jirl	$ra, $ra, 0
-.Ltmp32:                                # EH_LABEL
+.Ltmp30:                                # EH_LABEL
 # %bb.73:                               # %.noexc122.i
 	addi.d	$s5, $sp, 160
 	addi.d	$a0, $sp, 1072
@@ -636,13 +643,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_77
 # %bb.74:
-.Ltmp34:                                # EH_LABEL
+.Ltmp32:                                # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 920
 	addi.d	$fp, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSi10_M_extractIlEERSiRT_)
 	jirl	$ra, $ra, 0
-.Ltmp35:                                # EH_LABEL
+.Ltmp33:                                # EH_LABEL
 # %bb.75:
 	ld.d	$a0, $sp, 952
 	ld.d	$a0, $a0, -24
@@ -651,7 +658,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	addi.d	$a0, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB1_171
+	beqz	$fp, .LBB1_170
 # %bb.76:
 	ori	$a0, $zero, 2
 	beq	$s1, $a0, .LBB1_78
@@ -667,13 +674,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$a0, $sp, 112
 	ori	$a0, $zero, 53
 	st.d	$a0, $sp, 952
-.Ltmp37:                                # EH_LABEL
+.Ltmp35:                                # EH_LABEL
 	addi.d	$a0, $sp, 112
 	addi.d	$a1, $sp, 952
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp38:                                # EH_LABEL
+.Ltmp36:                                # EH_LABEL
 # %bb.79:                               # %.noexc125.i
 	ld.d	$a1, $sp, 952
 	st.d	$a0, $sp, 112
@@ -690,25 +697,25 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	stx.b	$zero, $a0, $a1
 	ld.d	$a1, $sp, 112
 	st.d	$zero, $sp, 920
-.Ltmp40:                                # EH_LABEL
+.Ltmp38:                                # EH_LABEL
 	addi.d	$a0, $sp, 952
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEEC1EPKcSt13_Ios_Openmode)
 	jirl	$ra, $ra, 0
-.Ltmp41:                                # EH_LABEL
+.Ltmp39:                                # EH_LABEL
 # %bb.80:                               # %.noexc129.i
 	addi.d	$a0, $sp, 1072
 	pcaddu18i	$ra, %call36(_ZNKSt12__basic_fileIcE7is_openEv)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_84
 # %bb.81:
-.Ltmp43:                                # EH_LABEL
+.Ltmp41:                                # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 920
 	addi.d	$fp, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSi10_M_extractIlEERSiRT_)
 	jirl	$ra, $ra, 0
-.Ltmp44:                                # EH_LABEL
+.Ltmp42:                                # EH_LABEL
 # %bb.82:
 	ld.d	$a0, $sp, 952
 	ld.d	$a0, $a0, -24
@@ -729,13 +736,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$s5, $sp, 144
 	ori	$a0, $zero, 53
 	st.d	$a0, $sp, 952
-.Ltmp46:                                # EH_LABEL
+.Ltmp44:                                # EH_LABEL
 	addi.d	$a0, $sp, 144
 	addi.d	$a1, $sp, 952
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp47:                                # EH_LABEL
+.Ltmp45:                                # EH_LABEL
 # %bb.86:                               # %.noexc135.i
 	ld.d	$a1, $sp, 952
 	st.d	$a0, $sp, 144
@@ -752,25 +759,25 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	stx.b	$zero, $a0, $a1
 	ld.d	$a1, $sp, 144
 	st.d	$zero, $sp, 920
-.Ltmp49:                                # EH_LABEL
+.Ltmp47:                                # EH_LABEL
 	addi.d	$a0, $sp, 952
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEEC1EPKcSt13_Ios_Openmode)
 	jirl	$ra, $ra, 0
-.Ltmp50:                                # EH_LABEL
+.Ltmp48:                                # EH_LABEL
 # %bb.87:                               # %.noexc139.i
 	addi.d	$a0, $sp, 1072
 	pcaddu18i	$ra, %call36(_ZNKSt12__basic_fileIcE7is_openEv)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_90
 # %bb.88:
-.Ltmp52:                                # EH_LABEL
+.Ltmp50:                                # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 920
 	addi.d	$fp, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSi10_M_extractIlEERSiRT_)
 	jirl	$ra, $ra, 0
-.Ltmp53:                                # EH_LABEL
+.Ltmp51:                                # EH_LABEL
 # %bb.89:                               # %_ZNSirsERl.exit.i138.i
 	ld.d	$a0, $sp, 952
 	ld.d	$a0, $a0, -24
@@ -819,12 +826,11 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	addi.d	$s3, $sp, 1520
 	beqz	$fp, .LBB1_99
 # %bb.98:
-	ld.d	$a0, $sp, 920
-	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_3)
-	movgr2fr.d	$fa1, $a0
-	ffint.d.l	$fa1, $fa1
-	fmul.d	$fa0, $fa1, $fa0
+	fld.d	$fa0, $sp, 920
+	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
+	fld.d	$fa1, $a0, %pc_lo12(.LCPI1_3)
+	ffint.d.l	$fa0, $fa0
+	fmul.d	$fa0, $fa0, $fa1
 	b	.LBB1_180
 .LBB1_99:
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -872,29 +878,29 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	b	.LBB1_106
 	.p2align	4, , 16
 .LBB1_104:                              #   in Loop: Header=BB1_101 Depth=1
-.Ltmp58:                                # EH_LABEL
+.Ltmp56:                                # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
-.Ltmp59:                                # EH_LABEL
+.Ltmp57:                                # EH_LABEL
 # %bb.105:                              # %.noexc160.i
                                         #   in Loop: Header=BB1_101 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $a0, 48
-.Ltmp60:                                # EH_LABEL
+.Ltmp58:                                # EH_LABEL
 	ori	$a1, $zero, 10
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
-.Ltmp61:                                # EH_LABEL
+.Ltmp59:                                # EH_LABEL
 .LBB1_106:                              # %_ZNKSt9basic_iosIcSt11char_traitsIcEE5widenEc.exit.i.i
                                         #   in Loop: Header=BB1_101 Depth=1
-.Ltmp62:                                # EH_LABEL
+.Ltmp60:                                # EH_LABEL
 	ext.w.b	$a2, $a0
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 1504
 	pcaddu18i	$ra, %call36(_ZSt7getlineIcSt11char_traitsIcESaIcEERSt13basic_istreamIT_T0_ES7_RNSt7__cxx1112basic_stringIS4_S5_T1_EES4_)
 	jirl	$ra, $ra, 0
-.Ltmp63:                                # EH_LABEL
+.Ltmp61:                                # EH_LABEL
 # %bb.107:                              #   in Loop: Header=BB1_101 Depth=1
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, -24
@@ -930,13 +936,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bltu	$s1, $a1, .LBB1_114
 # %bb.112:                              # %.noexc10.i.i.i
                                         #   in Loop: Header=BB1_101 Depth=1
-.Ltmp90:                                # EH_LABEL
+.Ltmp88:                                # EH_LABEL
 	addi.d	$a0, $sp, 144
 	addi.d	$a1, $sp, 1472
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp91:                                # EH_LABEL
+.Ltmp89:                                # EH_LABEL
 # %bb.113:                              # %.noexc164.i
                                         #   in Loop: Header=BB1_101 Depth=1
 	ld.d	$a1, $sp, 1472
@@ -1302,7 +1308,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	b	.LBB1_152
 .LBB1_166:
-.Ltmp55:                                # EH_LABEL
+.Ltmp53:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
 	pcalau12i	$a1, %pc_hi20(.L.str.19)
@@ -1310,7 +1316,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ori	$a2, $zero, 29
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-.Ltmp56:                                # EH_LABEL
+.Ltmp54:                                # EH_LABEL
 # %bb.167:
 	vldi	$vr0, -784
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
@@ -1322,36 +1328,36 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	add.d	$a0, $a1, $a0
 	ld.wu	$a0, $a0, 32
 	andi	$a1, $a0, 1
-	bnez	$a1, .LBB1_173
+	beqz	$a1, .LBB1_172
 # %bb.169:
-	andi	$a0, $a0, 2
-	bnez	$a0, .LBB1_300
-# %bb.170:
-	ori	$a2, $zero, 39
-	pcalau12i	$a0, %pc_hi20(.L.str.23)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.23)
+	ori	$a2, $zero, 30
+	pcalau12i	$a0, %pc_hi20(.L.str.22)
+	addi.d	$a1, $a0, %pc_lo12(.L.str.22)
 	b	.LBB1_174
-.LBB1_171:
+.LBB1_170:
 	ori	$fp, $zero, 1
 	ld.d	$a0, $sp, 368
 	bne	$a0, $s4, .LBB1_96
 	b	.LBB1_97
-.LBB1_172:
+.LBB1_171:
 	ori	$s1, $zero, 2
 	ld.d	$a0, $sp, 952
 	bne	$a0, $s0, .LBB1_70
 	b	.LBB1_71
-.LBB1_173:
-	ori	$a2, $zero, 30
-	pcalau12i	$a0, %pc_hi20(.L.str.22)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.22)
+.LBB1_172:
+	andi	$a0, $a0, 2
+	bnez	$a0, .LBB1_300
+# %bb.173:
+	ori	$a2, $zero, 39
+	pcalau12i	$a0, %pc_hi20(.L.str.23)
+	addi.d	$a1, $a0, %pc_lo12(.L.str.23)
 .LBB1_174:                              # %.invoke.i
-.Ltmp85:                                # EH_LABEL
+.Ltmp83:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-.Ltmp86:                                # EH_LABEL
+.Ltmp84:                                # EH_LABEL
 # %bb.175:
 	vldi	$vr0, -784
 .LBB1_176:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit211.i
@@ -1382,13 +1388,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$a0, $sp, 920
 	ori	$a0, $zero, 35
 	st.d	$a0, $sp, 952
-.Ltmp106:                               # EH_LABEL
+.Ltmp104:                               # EH_LABEL
 	addi.d	$a0, $sp, 920
 	addi.d	$a1, $sp, 952
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp107:                               # EH_LABEL
+.Ltmp105:                               # EH_LABEL
 # %bb.181:                              # %.noexc.i.i
 	ld.d	$a1, $sp, 952
 	addi.d	$s1, $sp, 968
@@ -1428,7 +1434,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$zero, $sp, 152
 	st.b	$zero, $sp, 160
 	st.w	$fp, $sp, 952
-.Ltmp109:                               # EH_LABEL
+.Ltmp107:                               # EH_LABEL
 	addi.d	$a0, $sp, 888
 	addi.d	$a1, $sp, 920
 	addi.d	$a3, $sp, 952
@@ -1436,23 +1442,23 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN9benchmark6StrCatIJRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA6_KciRA2_S8_EEES6_DpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp110:                               # EH_LABEL
+.Ltmp108:                               # EH_LABEL
 # %bb.184:                              #   in Loop: Header=BB1_183 Depth=1
-.Ltmp112:                               # EH_LABEL
+.Ltmp110:                               # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 888
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN9benchmark6StrCatIJRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA5_KcEEES6_DpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp113:                               # EH_LABEL
+.Ltmp111:                               # EH_LABEL
 # %bb.185:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a1, $sp, 952
-.Ltmp115:                               # EH_LABEL
+.Ltmp113:                               # EH_LABEL
 	addi.d	$a0, $sp, 368
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEEC1EPKcSt13_Ios_Openmode)
 	jirl	$ra, $ra, 0
-.Ltmp116:                               # EH_LABEL
+.Ltmp114:                               # EH_LABEL
 # %bb.186:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a0, $sp, 952
 	beq	$a0, $s1, .LBB1_188
@@ -1474,12 +1480,12 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$a0, $sp, 336
 	st.d	$zero, $sp, 344
 	st.b	$zero, $sp, 352
-.Ltmp118:                               # EH_LABEL
+.Ltmp116:                               # EH_LABEL
 	addi.d	$a0, $sp, 368
 	addi.d	$a1, $sp, 180
 	pcaddu18i	$ra, %call36(_ZNSirsERi)
 	jirl	$ra, $ra, 0
-.Ltmp119:                               # EH_LABEL
+.Ltmp117:                               # EH_LABEL
 # %bb.190:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a0, $sp, 368
 	ld.d	$a0, $a0, -24
@@ -1491,12 +1497,12 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 # %bb.191:                              #   in Loop: Header=BB1_183 Depth=1
 	bnez	$a0, .LBB1_200
 # %bb.192:                              #   in Loop: Header=BB1_183 Depth=1
-.Ltmp122:                               # EH_LABEL
+.Ltmp120:                               # EH_LABEL
 	addi.d	$a0, $sp, 368
 	addi.d	$a1, $sp, 336
 	pcaddu18i	$ra, %call36(_ZStrsIcSt11char_traitsIcESaIcEERSt13basic_istreamIT_T0_ES7_RNSt7__cxx1112basic_stringIS4_S5_T1_EE)
 	jirl	$ra, $ra, 0
-.Ltmp123:                               # EH_LABEL
+.Ltmp121:                               # EH_LABEL
 # %bb.193:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a0, $sp, 368
 	ld.d	$a0, $a0, -24
@@ -1504,20 +1510,20 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	add.d	$a0, $a1, $a0
 	ld.wu	$a0, $a0, 32
 	andi	$a1, $a0, 1
-	bnez	$a1, .LBB1_345
+	bnez	$a1, .LBB1_347
 # %bb.194:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a1, $sp, 344
 	andi	$a0, $a0, 4
 	bnez	$a0, .LBB1_197
 # %bb.195:                              #   in Loop: Header=BB1_183 Depth=1
-	bne	$a1, $s6, .LBB1_347
+	bne	$a1, $s6, .LBB1_345
 # %bb.196:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a0, $sp, 336
 	ld.bu	$a0, $a0, 0
 	ori	$a1, $zero, 75
 	beq	$a0, $a1, .LBB1_199
-	b	.LBB1_347
+	b	.LBB1_345
 .LBB1_197:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread104thread-pre-split.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
 	bne	$a1, $s6, .LBB1_200
@@ -1534,21 +1540,21 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.w	$a0, $sp, 180
 .LBB1_200:                              # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread105.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
-.Ltmp129:                               # EH_LABEL
+.Ltmp125:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.36)
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 888
 	pcaddu18i	$ra, %call36(_ZN9benchmark6StrCatIJRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA5_KcEEES6_DpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp130:                               # EH_LABEL
+.Ltmp126:                               # EH_LABEL
 # %bb.201:                              #   in Loop: Header=BB1_183 Depth=1
-.Ltmp132:                               # EH_LABEL
+.Ltmp128:                               # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_112ReadFromFileINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEbRKS7_PT_)
 	jirl	$ra, $ra, 0
-.Ltmp133:                               # EH_LABEL
+.Ltmp129:                               # EH_LABEL
 # %bb.202:                              #   in Loop: Header=BB1_183 Depth=1
 	move	$s0, $a0
 	ld.d	$a0, $sp, 952
@@ -1563,23 +1569,23 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
                                         #   in Loop: Header=BB1_183 Depth=1
 	beqz	$s0, .LBB1_341
 # %bb.205:                              #   in Loop: Header=BB1_183 Depth=1
-.Ltmp137:                               # EH_LABEL
+.Ltmp133:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.38)
 	addi.d	$a0, $sp, 1504
 	addi.d	$a1, $sp, 888
 	pcaddu18i	$ra, %call36(_ZN9benchmark6StrCatIJRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA6_KcEEES6_DpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp138:                               # EH_LABEL
+.Ltmp134:                               # EH_LABEL
 # %bb.206:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a1, $sp, 1504
 	st.w	$zero, $sp, 176
-.Ltmp140:                               # EH_LABEL
+.Ltmp136:                               # EH_LABEL
 	addi.d	$a0, $sp, 952
 	ori	$a2, $zero, 8
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEEC1EPKcSt13_Ios_Openmode)
 	jirl	$ra, $ra, 0
-.Ltmp141:                               # EH_LABEL
+.Ltmp137:                               # EH_LABEL
 # %bb.207:                              # %.noexc38.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
 	addi.d	$a0, $sp, 1072
@@ -1588,12 +1594,12 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
 	beqz	$a0, .LBB1_210
 # %bb.208:                              #   in Loop: Header=BB1_183 Depth=1
-.Ltmp143:                               # EH_LABEL
+.Ltmp139:                               # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 176
 	pcaddu18i	$ra, %call36(_ZNSirsERi)
 	jirl	$ra, $ra, 0
-.Ltmp144:                               # EH_LABEL
+.Ltmp140:                               # EH_LABEL
 # %bb.209:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a0, $sp, 952
 	ld.d	$a0, $a0, -24
@@ -1629,21 +1635,21 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.d	$a0, $sp, 304
 	st.d	$zero, $sp, 312
 	st.b	$zero, $sp, 320
-.Ltmp149:                               # EH_LABEL
+.Ltmp144:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.39)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.39)
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 888
 	pcaddu18i	$ra, %call36(_ZN9benchmark6StrCatIJRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA15_KcEEES6_DpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp150:                               # EH_LABEL
+.Ltmp145:                               # EH_LABEL
 # %bb.214:                              #   in Loop: Header=BB1_183 Depth=1
-.Ltmp152:                               # EH_LABEL
+.Ltmp147:                               # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 304
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_112ReadFromFileINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEbRKS7_PT_)
 	jirl	$ra, $ra, 0
-.Ltmp153:                               # EH_LABEL
+.Ltmp148:                               # EH_LABEL
 # %bb.215:                              #   in Loop: Header=BB1_183 Depth=1
 	move	$s0, $a0
 	ld.d	$a0, $sp, 952
@@ -1666,13 +1672,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bltu	$s0, $s7, .LBB1_221
 # %bb.219:                              # %.noexc.i52.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
-.Ltmp158:                               # EH_LABEL
+.Ltmp153:                               # EH_LABEL
 	addi.d	$a0, $sp, 272
 	addi.d	$a1, $sp, 952
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp159:                               # EH_LABEL
+.Ltmp154:                               # EH_LABEL
 # %bb.220:                              # %.noexc53.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a1, $sp, 952
@@ -1742,13 +1748,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bltu	$s4, $s7, .LBB1_232
 # %bb.230:                              # %.noexc10.i.i.i.i.i
                                         #   in Loop: Header=BB1_229 Depth=2
-.Ltmp160:                               # EH_LABEL
+.Ltmp155:                               # EH_LABEL
 	addi.d	$a0, $sp, 952
 	addi.d	$a1, $sp, 1504
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp161:                               # EH_LABEL
+.Ltmp156:                               # EH_LABEL
 # %bb.231:                              # %.noexc57.i.i
                                         #   in Loop: Header=BB1_229 Depth=2
 	ld.d	$a1, $sp, 1504
@@ -1776,11 +1782,11 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ld.d	$a1, $sp, 952
 	st.d	$a0, $sp, 960
 	stx.b	$zero, $a1, $a0
-.Ltmp162:                               # EH_LABEL
+.Ltmp157:                               # EH_LABEL
 	addi.d	$a0, $sp, 952
 	pcaddu18i	$ra, %call36(_ZZN9benchmark12_GLOBAL__N_120CountSetBitsInCPUMapENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEENK3$_0clES6_)
 	jirl	$ra, $ra, 0
-.Ltmp163:                               # EH_LABEL
+.Ltmp158:                               # EH_LABEL
 # %bb.237:                              #   in Loop: Header=BB1_229 Depth=2
 	move	$s0, $a0
 	ld.d	$a0, $sp, 952
@@ -1806,13 +1812,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bltu	$s2, $s7, .LBB1_243
 # %bb.241:                              # %.noexc10.i.i12.i.i.i
                                         #   in Loop: Header=BB1_229 Depth=2
-.Ltmp168:                               # EH_LABEL
+.Ltmp163:                               # EH_LABEL
 	addi.d	$a0, $sp, 1504
 	addi.d	$a1, $sp, 1536
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp169:                               # EH_LABEL
+.Ltmp164:                               # EH_LABEL
 # %bb.242:                              # %.noexc59.i.i
                                         #   in Loop: Header=BB1_229 Depth=2
 	ld.d	$a1, $sp, 1536
@@ -1918,13 +1924,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bltu	$s0, $s7, .LBB1_264
 # %bb.262:                              # %._crit_edge.i.i.thread.i.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
-.Ltmp171:                               # EH_LABEL
+.Ltmp166:                               # EH_LABEL
 	addi.d	$a0, $sp, 1472
 	addi.d	$a1, $sp, 1504
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp172:                               # EH_LABEL
+.Ltmp167:                               # EH_LABEL
 # %bb.263:                              # %.noexc60.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a1, $sp, 1504
@@ -1953,12 +1959,12 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
                                         #   in Loop: Header=BB1_183 Depth=1
 	st.d	$a0, $sp, 1480
 	stx.b	$zero, $a1, $a0
-.Ltmp174:                               # EH_LABEL
+.Ltmp169:                               # EH_LABEL
 	addi.d	$a0, $sp, 1472
 	pcaddu18i	$ra, %call36(_ZZN9benchmark12_GLOBAL__N_120CountSetBitsInCPUMapENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEENK3$_0clES6_)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-.Ltmp175:                               # EH_LABEL
+.Ltmp170:                               # EH_LABEL
 # %bb.268:                              #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a0, $sp, 1472
 	add.d	$s8, $a1, $s8
@@ -1997,13 +2003,13 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bltu	$s2, $s7, .LBB1_276
 # %bb.274:                              # %.noexc.i.i.i.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
-.Ltmp177:                               # EH_LABEL
+.Ltmp172:                               # EH_LABEL
 	addi.d	$a1, $sp, 952
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERmm)
 	jirl	$ra, $ra, 0
-.Ltmp178:                               # EH_LABEL
+.Ltmp173:                               # EH_LABEL
 # %bb.275:                              # %.noexc68.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
 	st.d	$a0, $s0, 0
@@ -2020,12 +2026,12 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.b	$a1, $a0, 0
 	b	.LBB1_289
 .LBB1_279:                              #   in Loop: Header=BB1_183 Depth=1
-.Ltmp179:                               # EH_LABEL
+.Ltmp174:                               # EH_LABEL
 	addi.d	$a1, $sp, 144
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIN9benchmark7CPUInfo9CacheInfoESaIS2_EE17_M_realloc_appendIJRKS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp180:                               # EH_LABEL
+.Ltmp175:                               # EH_LABEL
 # %bb.280:                              # %_ZNSt6vectorIN9benchmark7CPUInfo9CacheInfoESaIS2_EE9push_backERKS2_.exit.i.i
                                         #   in Loop: Header=BB1_183 Depth=1
 	ld.d	$a0, $sp, 304
@@ -2106,11 +2112,11 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB1_292:                              # %_ZN9benchmark12_GLOBAL__N_113GetCacheSizesEv.exit
-.Ltmp182:                               # EH_LABEL
+.Ltmp177:                               # EH_LABEL
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-.Ltmp183:                               # EH_LABEL
+.Ltmp178:                               # EH_LABEL
 # %bb.293:                              # %.noexc
 	move	$s0, $a0
 	st.d	$a0, $s8, 40
@@ -2131,11 +2137,11 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 # %bb.295:
 	addi.d	$s0, $s8, 40
 	addi.d	$a1, $a0, -3
-.Ltmp185:                               # EH_LABEL
+.Ltmp180:                               # EH_LABEL
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIdSaIdEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-.Ltmp186:                               # EH_LABEL
+.Ltmp181:                               # EH_LABEL
 	b	.LBB1_299
 .LBB1_296:
 	ori	$a1, $zero, 3
@@ -2162,10 +2168,10 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ret
 .LBB1_300:
 	addi.d	$a0, $sp, 968
-.Ltmp65:                                # EH_LABEL
+.Ltmp63:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt13basic_filebufIcSt11char_traitsIcEE5closeEv)
 	jirl	$ra, $ra, 0
-.Ltmp66:                                # EH_LABEL
+.Ltmp64:                                # EH_LABEL
 # %bb.301:                              # %.noexc215.i
 	bnez	$a0, .LBB1_303
 # %bb.302:
@@ -2175,10 +2181,10 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	add.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 32
 	ori	$a1, $a1, 4
-.Ltmp67:                                # EH_LABEL
+.Ltmp65:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSt9basic_iosIcSt11char_traitsIcEE5clearESt12_Ios_Iostate)
 	jirl	$ra, $ra, 0
-.Ltmp68:                                # EH_LABEL
+.Ltmp66:                                # EH_LABEL
 .LBB1_303:                              # %_ZNSt14basic_ifstreamIcSt11char_traitsIcEE5closeEv.exit.i
 	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
 	fcmp.cle.d	$fcc0, $fs0, $fa0
@@ -2198,7 +2204,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 .LBB1_305:                              # %.sink.split.i.i
 	st.b	$zero, $sp, 504
 .LBB1_306:
-.Ltmp69:                                # EH_LABEL
+.Ltmp67:                                # EH_LABEL
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$s1, $a0, %got_pc_lo12(_ZSt4cerr)
 	pcalau12i	$a0, %pc_hi20(.L.str.25)
@@ -2207,7 +2213,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-.Ltmp70:                                # EH_LABEL
+.Ltmp68:                                # EH_LABEL
 # %bb.307:                              # %.noexc218.i
 	ld.d	$a0, $s1, 0
 	ld.d	$a0, $a0, -24
@@ -2231,7 +2237,6 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 144
-	addi.d	$s4, $sp, 384
 	bne	$a0, $s3, .LBB1_53
 	b	.LBB1_54
 .LBB1_311:
@@ -2277,32 +2282,32 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	move	$a4, $zero
 	b	.LBB1_313
 .LBB1_318:
-.Ltmp71:                                # EH_LABEL
+.Ltmp69:                                # EH_LABEL
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
-.Ltmp72:                                # EH_LABEL
+.Ltmp70:                                # EH_LABEL
 # %bb.319:                              # %.noexc220.i
 	ld.d	$a0, $s1, 0
 	ld.d	$a2, $a0, 48
-.Ltmp73:                                # EH_LABEL
+.Ltmp71:                                # EH_LABEL
 	ori	$a1, $zero, 10
 	move	$a0, $s1
 	jirl	$ra, $a2, 0
-.Ltmp74:                                # EH_LABEL
+.Ltmp72:                                # EH_LABEL
 .LBB1_320:                              # %_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_.exit.i.i
-.Ltmp75:                                # EH_LABEL
+.Ltmp73:                                # EH_LABEL
 	ext.w.b	$a1, $a0
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cerr)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cerr)
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
-.Ltmp76:                                # EH_LABEL
+.Ltmp74:                                # EH_LABEL
 # %bb.321:                              # %.noexc222.i
-.Ltmp77:                                # EH_LABEL
+.Ltmp75:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZNSo5flushEv)
 	jirl	$ra, $ra, 0
-.Ltmp78:                                # EH_LABEL
+.Ltmp76:                                # EH_LABEL
 .LBB1_322:
 	pcaddu18i	$ra, %call36(_ZNSt6chrono3_V212steady_clock3nowEv)
 	jirl	$ra, $ra, 0
@@ -2428,7 +2433,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bnez	$a0, .LBB1_306
 	b	.LBB1_322
 .LBB1_331:
-.Ltmp165:                               # EH_LABEL
+.Ltmp160:                               # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	pcalau12i	$a1, %pc_hi20(.L.str.8)
@@ -2436,7 +2441,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZSt24__throw_out_of_range_fmtPKcz)
 	jirl	$ra, $ra, 0
-.Ltmp166:                               # EH_LABEL
+.Ltmp161:                               # EH_LABEL
 # %bb.332:                              # %.noexc58.i.i
 .LBB1_333:
 .Ltmp201:                               # EH_LABEL
@@ -2445,63 +2450,63 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 .Ltmp202:                               # EH_LABEL
 # %bb.334:                              # %.noexc21.i.i
 .LBB1_335:
-.Ltmp155:                               # EH_LABEL
+.Ltmp150:                               # EH_LABEL
 	addi.d	$a0, $sp, 888
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA26_KcRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA15_S2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp156:                               # EH_LABEL
+.Ltmp151:                               # EH_LABEL
 # %bb.336:
 .LBB1_337:
-.Ltmp120:                               # EH_LABEL
+.Ltmp118:                               # EH_LABEL
 	addi.d	$a0, $sp, 888
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA28_KcRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA6_S2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp121:                               # EH_LABEL
+.Ltmp119:                               # EH_LABEL
 # %bb.338:
 .LBB1_339:
-.Ltmp146:                               # EH_LABEL
+.Ltmp142:                               # EH_LABEL
 	addi.d	$a0, $sp, 888
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA26_KcRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA6_S2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp147:                               # EH_LABEL
+.Ltmp143:                               # EH_LABEL
 # %bb.340:
 .LBB1_341:
-.Ltmp135:                               # EH_LABEL
+.Ltmp131:                               # EH_LABEL
 	addi.d	$a0, $sp, 888
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA26_KcRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERA5_S2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp136:                               # EH_LABEL
+.Ltmp132:                               # EH_LABEL
 # %bb.342:
 .LBB1_343:
-.Ltmp103:                               # EH_LABEL
+.Ltmp101:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
-.Ltmp104:                               # EH_LABEL
+.Ltmp102:                               # EH_LABEL
 # %bb.344:                              # %.noexc159.i
-.LBB1_345:
-.Ltmp125:                               # EH_LABEL
-	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA54_KcEEEvDpOT_)
-	jirl	$ra, $ra, 0
-.Ltmp126:                               # EH_LABEL
-# %bb.346:
-.LBB1_347:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread.i.i
-.Ltmp127:                               # EH_LABEL
+.LBB1_345:                              # %_ZStneIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit.thread.i.i
+.Ltmp123:                               # EH_LABEL
 	addi.d	$a0, $sp, 336
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA43_KcRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp128:                               # EH_LABEL
+.Ltmp124:                               # EH_LABEL
+# %bb.346:
+.LBB1_347:
+.Ltmp183:                               # EH_LABEL
+	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA54_KcEEEvDpOT_)
+	jirl	$ra, $ra, 0
+.Ltmp184:                               # EH_LABEL
 # %bb.348:
 .LBB1_349:
-.Ltmp16:                                # EH_LABEL
+.Ltmp188:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA30_KcEEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp17:                                # EH_LABEL
+.Ltmp189:                               # EH_LABEL
 # %bb.350:
 .LBB1_351:
-.Ltmp188:                               # EH_LABEL
+.Ltmp186:                               # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA39_KcEEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp189:                               # EH_LABEL
+.Ltmp187:                               # EH_LABEL
 # %bb.352:
 .LBB1_353:
 .Ltmp190:                               # EH_LABEL
@@ -2515,7 +2520,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 .Ltmp191:                               # EH_LABEL
 # %bb.354:                              # %.noexc25.i.i
 .LBB1_355:
-.Ltmp87:                                # EH_LABEL
+.Ltmp85:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	pcalau12i	$a1, %pc_hi20(.L.str.8)
@@ -2523,7 +2528,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(_ZSt24__throw_out_of_range_fmtPKcz)
 	jirl	$ra, $ra, 0
-.Ltmp88:                                # EH_LABEL
+.Ltmp86:                                # EH_LABEL
 # %bb.356:                              # %.noexc163.i
 .LBB1_357:
 .Ltmp198:                               # EH_LABEL
@@ -2542,57 +2547,57 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 .Ltmp197:                               # EH_LABEL
 # %bb.360:
 .LBB1_361:
-.Ltmp82:                                # EH_LABEL
+.Ltmp80:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
 	jirl	$ra, $ra, 0
-.Ltmp83:                                # EH_LABEL
+.Ltmp81:                                # EH_LABEL
 # %bb.362:                              # %.noexc219.i
 .LBB1_363:
-.Ltmp79:                                # EH_LABEL
+.Ltmp77:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZN9benchmark12_GLOBAL__N_116PrintErrorAndDieIJRA32_KcEEEvDpOT_)
 	jirl	$ra, $ra, 0
-.Ltmp80:                                # EH_LABEL
+.Ltmp78:                                # EH_LABEL
 # %bb.364:
 .LBB1_365:
-.Ltmp100:                               # EH_LABEL
-	pcalau12i	$a0, %pc_hi20(.L.str.24)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
-	pcaddu18i	$ra, %call36(_ZSt24__throw_invalid_argumentPKc)
-	jirl	$ra, $ra, 0
-.Ltmp101:                               # EH_LABEL
-# %bb.366:
-.LBB1_367:                              # %.critedge.i.i.i
 .Ltmp98:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
-	pcaddu18i	$ra, %call36(_ZSt20__throw_out_of_rangePKc)
+	pcaddu18i	$ra, %call36(_ZSt24__throw_invalid_argumentPKc)
 	jirl	$ra, $ra, 0
 .Ltmp99:                                # EH_LABEL
+# %bb.366:
+.LBB1_367:                              # %.critedge.i.i.i
+.Ltmp96:                                # EH_LABEL
+	pcalau12i	$a0, %pc_hi20(.L.str.24)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
+	pcaddu18i	$ra, %call36(_ZSt20__throw_out_of_rangePKc)
+	jirl	$ra, $ra, 0
+.Ltmp97:                                # EH_LABEL
 # %bb.368:
 .LBB1_369:
-.Ltmp95:                                # EH_LABEL
+.Ltmp93:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	pcaddu18i	$ra, %call36(_ZSt24__throw_invalid_argumentPKc)
 	jirl	$ra, $ra, 0
-.Ltmp96:                                # EH_LABEL
+.Ltmp94:                                # EH_LABEL
 # %bb.370:
 .LBB1_371:                              # %.critedge.i.i196.i
-.Ltmp93:                                # EH_LABEL
+.Ltmp91:                                # EH_LABEL
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_out_of_rangePKc)
 	jirl	$ra, $ra, 0
-.Ltmp94:                                # EH_LABEL
+.Ltmp92:                                # EH_LABEL
 # %bb.372:
 .LBB1_373:
-.Ltmp97:                                # EH_LABEL
+.Ltmp95:                                # EH_LABEL
 	ld.w	$a1, $s0, 0
 	move	$s2, $a0
 	beqz	$a1, .LBB1_375
 	b	.LBB1_381
 .LBB1_374:
-.Ltmp102:                               # EH_LABEL
+.Ltmp100:                               # EH_LABEL
 	ld.w	$a1, $s0, 0
 	move	$s2, $a0
 	bnez	$a1, .LBB1_381
@@ -2600,17 +2605,17 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	st.w	$s7, $s0, 0
 	b	.LBB1_381
 .LBB1_376:
-.Ltmp81:                                # EH_LABEL
+.Ltmp79:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB1_377:                              # %.loopexit256.i
-.Ltmp92:                                # EH_LABEL
+.LBB1_377:                              # %.loopexit255.i
+.Ltmp90:                                # EH_LABEL
 	b	.LBB1_380
 .LBB1_378:
-.Ltmp84:                                # EH_LABEL
+.Ltmp82:                                # EH_LABEL
 	b	.LBB1_430
-.LBB1_379:                              # %.loopexit.split-lp257.i
-.Ltmp89:                                # EH_LABEL
+.LBB1_379:                              # %.loopexit.split-lp256.i
+.Ltmp87:                                # EH_LABEL
 .LBB1_380:                              # %.body177.i
 	move	$s2, $a0
 .LBB1_381:                              # %.body177.i
@@ -2622,7 +2627,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB1_431
-.LBB1_383:                              # %.loopexit59.i.i
+.LBB1_383:                              # %.loopexit58.i.i
 .Ltmp195:                               # EH_LABEL
 	b	.LBB1_392
 .LBB1_384:
@@ -2647,16 +2652,16 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	bne	$a0, $a1, .LBB1_450
 	b	.LBB1_452
 .LBB1_389:
-.Ltmp45:                                # EH_LABEL
+.Ltmp43:                                # EH_LABEL
 	move	$s2, $a0
 	addi.d	$a0, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB1_407
 .LBB1_390:
-.Ltmp57:                                # EH_LABEL
+.Ltmp55:                                # EH_LABEL
 	b	.LBB1_401
-.LBB1_391:                              # %.loopexit.split-lp60.i.i
+.LBB1_391:                              # %.loopexit.split-lp59.i.i
 .Ltmp192:                               # EH_LABEL
 .LBB1_392:                              # %.body.i.i
 	move	$s2, $a0
@@ -2671,7 +2676,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	beq	$a0, $s3, .LBB1_388
 	b	.LBB1_449
 .LBB1_394:
-.Ltmp187:                               # EH_LABEL
+.Ltmp182:                               # EH_LABEL
 	ld.d	$a2, $s0, 0
 	move	$s2, $a0
 	beqz	$a2, .LBB1_460
@@ -2689,21 +2694,21 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB1_396:
-.Ltmp54:                                # EH_LABEL
+.Ltmp52:                                # EH_LABEL
 	move	$s2, $a0
 	addi.d	$a0, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB1_403
 .LBB1_397:
-.Ltmp42:                                # EH_LABEL
+.Ltmp40:                                # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_407
 .LBB1_398:
-.Ltmp39:                                # EH_LABEL
+.Ltmp37:                                # EH_LABEL
 	b	.LBB1_413
 .LBB1_399:
-.Ltmp36:                                # EH_LABEL
+.Ltmp34:                                # EH_LABEL
 	move	$s2, $a0
 	addi.d	$a0, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev)
@@ -2720,7 +2725,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB1_402:
-.Ltmp51:                                # EH_LABEL
+.Ltmp49:                                # EH_LABEL
 	move	$s2, $a0
 .LBB1_403:                              # %.body140.i
 	ld.d	$a0, $sp, 144
@@ -2732,7 +2737,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	jirl	$ra, $ra, 0
 	b	.LBB1_406
 .LBB1_405:
-.Ltmp48:                                # EH_LABEL
+.Ltmp46:                                # EH_LABEL
 	move	$s2, $a0
 .LBB1_406:                              # %.body130.i
 	ori	$a0, $zero, 2
@@ -2748,10 +2753,10 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	jirl	$ra, $ra, 0
 	b	.LBB1_414
 .LBB1_409:
-.Ltmp184:                               # EH_LABEL
+.Ltmp179:                               # EH_LABEL
 	b	.LBB1_411
 .LBB1_410:
-.Ltmp108:                               # EH_LABEL
+.Ltmp106:                               # EH_LABEL
 .LBB1_411:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit100.i.i
 	move	$s2, $a0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -2761,7 +2766,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB1_412:
-.Ltmp33:                                # EH_LABEL
+.Ltmp31:                                # EH_LABEL
 .LBB1_413:                              # %.critedge111.i
 	move	$s2, $a0
 .LBB1_414:                              # %.critedge111.i
@@ -2771,18 +2776,18 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ld.d	$a1, $sp, 384
 	b	.LBB1_423
 .LBB1_416:
-.Ltmp30:                                # EH_LABEL
+.Ltmp28:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB1_417:                              # %.loopexit.split-lp.loopexit.i.i
-.Ltmp173:                               # EH_LABEL
-	b	.LBB1_465
+.Ltmp168:                               # EH_LABEL
+	b	.LBB1_468
 .LBB1_418:
-.Ltmp24:                                # EH_LABEL
+.Ltmp22:                                # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_421
 .LBB1_419:
-.Ltmp27:                                # EH_LABEL
+.Ltmp25:                                # EH_LABEL
 	ld.d	$a2, $sp, 368
 	move	$s2, $a0
 	beq	$a2, $s4, .LBB1_421
@@ -2806,25 +2811,25 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB1_425:
-.Ltmp145:                               # EH_LABEL
+.Ltmp141:                               # EH_LABEL
 	move	$s2, $a0
 	addi.d	$a0, $sp, 952
 	pcaddu18i	$ra, %call36(_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev)
 	jirl	$ra, $ra, 0
 	b	.LBB1_435
 .LBB1_426:                              # %.loopexit.split-lp.i
-.Ltmp105:                               # EH_LABEL
+.Ltmp103:                               # EH_LABEL
 	b	.LBB1_430
 .LBB1_427:
-.Ltmp176:                               # EH_LABEL
+.Ltmp171:                               # EH_LABEL
 	ld.d	$a2, $sp, 1472
 	move	$s2, $a0
 	beq	$a2, $fp, .LBB1_469
 # %bb.428:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i23.i.i.i
 	ld.d	$a0, $sp, 1488
-	b	.LBB1_468
+	b	.LBB1_466
 .LBB1_429:                              # %.loopexit.i7
-.Ltmp64:                                # EH_LABEL
+.Ltmp62:                                # EH_LABEL
 .LBB1_430:
 	move	$s2, $a0
 .LBB1_431:
@@ -2834,11 +2839,11 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ld.d	$a1, $sp, 1520
 	b	.LBB1_451
 .LBB1_433:
-.Ltmp131:                               # EH_LABEL
+.Ltmp127:                               # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_476
 .LBB1_434:
-.Ltmp142:                               # EH_LABEL
+.Ltmp138:                               # EH_LABEL
 	move	$s2, $a0
 .LBB1_435:                              # %.body.i.i27
 	ld.d	$a0, $sp, 1504
@@ -2847,7 +2852,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	ld.d	$a1, $sp, 1520
 	b	.LBB1_474
 .LBB1_437:
-.Ltmp154:                               # EH_LABEL
+.Ltmp149:                               # EH_LABEL
 	ld.d	$a2, $sp, 952
 	move	$s2, $a0
 	beq	$a2, $s1, .LBB1_472
@@ -2857,7 +2862,7 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	move	$a0, $a2
 	b	.LBB1_471
 .LBB1_439:
-.Ltmp134:                               # EH_LABEL
+.Ltmp130:                               # EH_LABEL
 	ld.d	$a2, $sp, 952
 	move	$s2, $a0
 	beq	$a2, $s1, .LBB1_476
@@ -2867,26 +2872,26 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	move	$a0, $a2
 	b	.LBB1_475
 .LBB1_441:
-.Ltmp139:                               # EH_LABEL
+.Ltmp135:                               # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_476
 .LBB1_442:
-.Ltmp151:                               # EH_LABEL
+.Ltmp146:                               # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_472
-.LBB1_443:                              # %.loopexit.split-lp114.i.i
-.Ltmp157:                               # EH_LABEL
+.LBB1_443:                              # %.loopexit.split-lp113.i.i
+.Ltmp152:                               # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_472
 .LBB1_444:                              # %.loopexit.split-lp.i.i
 .Ltmp203:                               # EH_LABEL
 	b	.LBB1_448
-.LBB1_445:                              # %.loopexit113.i.i
-.Ltmp181:                               # EH_LABEL
+.LBB1_445:                              # %.loopexit112.i.i
+.Ltmp176:                               # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_472
-.LBB1_446:                              # %.loopexit108.i.i
-.Ltmp124:                               # EH_LABEL
+.LBB1_446:                              # %.loopexit107.i.i
+.Ltmp122:                               # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_476
 .LBB1_447:                              # %.loopexit.i.i
@@ -2917,21 +2922,21 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .LBB1_453:
-.Ltmp111:                               # EH_LABEL
+.Ltmp109:                               # EH_LABEL
 	move	$s2, $a0
 	ld.d	$a0, $sp, 144
 	addi.d	$a1, $sp, 160
 	beq	$a0, $a1, .LBB1_458
 	b	.LBB1_480
 .LBB1_454:
-.Ltmp114:                               # EH_LABEL
+.Ltmp112:                               # EH_LABEL
 	move	$s2, $a0
 	ld.d	$a0, $sp, 888
 	addi.d	$a1, $sp, 904
 	beq	$a0, $a1, .LBB1_457
 	b	.LBB1_479
 .LBB1_455:
-.Ltmp117:                               # EH_LABEL
+.Ltmp115:                               # EH_LABEL
 	ld.d	$a2, $sp, 952
 	move	$s2, $a0
 	bne	$a2, $s1, .LBB1_461
@@ -2969,30 +2974,30 @@ _ZN9benchmark7CPUInfoC2Ev:              # @_ZN9benchmark7CPUInfoC2Ev
 	addi.d	$a1, $sp, 904
 	beq	$a0, $a1, .LBB1_457
 	b	.LBB1_479
-.LBB1_462:                              # %.loopexit.split-lp109.i.i
-.Ltmp148:                               # EH_LABEL
+.LBB1_462:                              # %.loopexit.split-lp108.i.i
+.Ltmp185:                               # EH_LABEL
 	move	$s2, $a0
 	b	.LBB1_476
-.LBB1_463:                              # %.loopexit.split-lp.loopexit.split-lp.i.i
-.Ltmp167:                               # EH_LABEL
-	b	.LBB1_465
-.LBB1_464:                              # %.loopexit.i.i31
-.Ltmp170:                               # EH_LABEL
-.LBB1_465:                              # %.body61.i.i
-	move	$s2, $a0
-	b	.LBB1_469
-.LBB1_466:
-.Ltmp164:                               # EH_LABEL
+.LBB1_463:                              # %.loopexit.i.i31
+.Ltmp165:                               # EH_LABEL
+	b	.LBB1_468
+.LBB1_464:
+.Ltmp159:                               # EH_LABEL
 	ld.d	$a2, $sp, 952
 	move	$s2, $a0
 	beq	$a2, $s1, .LBB1_469
-# %bb.467:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.i.i.i
+# %bb.465:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i17.i.i.i
 	ld.d	$a0, $sp, 968
-.LBB1_468:                              # %.body61.i.i
+.LBB1_466:                              # %.body61.i.i
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+	b	.LBB1_469
+.LBB1_467:                              # %.loopexit.split-lp.loopexit.split-lp.i.i
+.Ltmp162:                               # EH_LABEL
+.LBB1_468:                              # %.body61.i.i
+	move	$s2, $a0
 .LBB1_469:                              # %.body61.i.i
 	ld.d	$a0, $sp, 272
 	addi.d	$a1, $sp, 288
@@ -3086,335 +3091,335 @@ GCC_except_table1:
 	.uleb128 .Ltmp8-.Lfunc_begin1           #     jumps to .Ltmp8
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp7-.Lfunc_begin1           # >> Call Site 7 <<
-	.uleb128 .Ltmp18-.Ltmp7                 #   Call between .Ltmp7 and .Ltmp18
+	.uleb128 .Ltmp16-.Ltmp7                 #   Call between .Ltmp7 and .Ltmp16
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp18-.Lfunc_begin1          # >> Call Site 8 <<
-	.uleb128 .Ltmp21-.Ltmp18                #   Call between .Ltmp18 and .Ltmp21
+	.uleb128 .Ltmp16-.Lfunc_begin1          # >> Call Site 8 <<
+	.uleb128 .Ltmp19-.Ltmp16                #   Call between .Ltmp16 and .Ltmp19
 	.uleb128 .Ltmp203-.Lfunc_begin1         #     jumps to .Ltmp203
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp21-.Lfunc_begin1          # >> Call Site 9 <<
-	.uleb128 .Ltmp22-.Ltmp21                #   Call between .Ltmp21 and .Ltmp22
+	.uleb128 .Ltmp19-.Lfunc_begin1          # >> Call Site 9 <<
+	.uleb128 .Ltmp20-.Ltmp19                #   Call between .Ltmp19 and .Ltmp20
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp22-.Lfunc_begin1          # >> Call Site 10 <<
-	.uleb128 .Ltmp23-.Ltmp22                #   Call between .Ltmp22 and .Ltmp23
-	.uleb128 .Ltmp24-.Lfunc_begin1          #     jumps to .Ltmp24
+	.uleb128 .Ltmp20-.Lfunc_begin1          # >> Call Site 10 <<
+	.uleb128 .Ltmp21-.Ltmp20                #   Call between .Ltmp20 and .Ltmp21
+	.uleb128 .Ltmp22-.Lfunc_begin1          #     jumps to .Ltmp22
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp25-.Lfunc_begin1          # >> Call Site 11 <<
-	.uleb128 .Ltmp26-.Ltmp25                #   Call between .Ltmp25 and .Ltmp26
-	.uleb128 .Ltmp27-.Lfunc_begin1          #     jumps to .Ltmp27
+	.uleb128 .Ltmp23-.Lfunc_begin1          # >> Call Site 11 <<
+	.uleb128 .Ltmp24-.Ltmp23                #   Call between .Ltmp23 and .Ltmp24
+	.uleb128 .Ltmp25-.Lfunc_begin1          #     jumps to .Ltmp25
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp26-.Lfunc_begin1          # >> Call Site 12 <<
-	.uleb128 .Ltmp28-.Ltmp26                #   Call between .Ltmp26 and .Ltmp28
+	.uleb128 .Ltmp24-.Lfunc_begin1          # >> Call Site 12 <<
+	.uleb128 .Ltmp26-.Ltmp24                #   Call between .Ltmp24 and .Ltmp26
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp28-.Lfunc_begin1          # >> Call Site 13 <<
-	.uleb128 .Ltmp29-.Ltmp28                #   Call between .Ltmp28 and .Ltmp29
-	.uleb128 .Ltmp30-.Lfunc_begin1          #     jumps to .Ltmp30
+	.uleb128 .Ltmp26-.Lfunc_begin1          # >> Call Site 13 <<
+	.uleb128 .Ltmp27-.Ltmp26                #   Call between .Ltmp26 and .Ltmp27
+	.uleb128 .Ltmp28-.Lfunc_begin1          #     jumps to .Ltmp28
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp31-.Lfunc_begin1          # >> Call Site 14 <<
-	.uleb128 .Ltmp32-.Ltmp31                #   Call between .Ltmp31 and .Ltmp32
-	.uleb128 .Ltmp33-.Lfunc_begin1          #     jumps to .Ltmp33
+	.uleb128 .Ltmp29-.Lfunc_begin1          # >> Call Site 14 <<
+	.uleb128 .Ltmp30-.Ltmp29                #   Call between .Ltmp29 and .Ltmp30
+	.uleb128 .Ltmp31-.Lfunc_begin1          #     jumps to .Ltmp31
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp32-.Lfunc_begin1          # >> Call Site 15 <<
-	.uleb128 .Ltmp34-.Ltmp32                #   Call between .Ltmp32 and .Ltmp34
+	.uleb128 .Ltmp30-.Lfunc_begin1          # >> Call Site 15 <<
+	.uleb128 .Ltmp32-.Ltmp30                #   Call between .Ltmp30 and .Ltmp32
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp34-.Lfunc_begin1          # >> Call Site 16 <<
-	.uleb128 .Ltmp35-.Ltmp34                #   Call between .Ltmp34 and .Ltmp35
-	.uleb128 .Ltmp36-.Lfunc_begin1          #     jumps to .Ltmp36
+	.uleb128 .Ltmp32-.Lfunc_begin1          # >> Call Site 16 <<
+	.uleb128 .Ltmp33-.Ltmp32                #   Call between .Ltmp32 and .Ltmp33
+	.uleb128 .Ltmp34-.Lfunc_begin1          #     jumps to .Ltmp34
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp35-.Lfunc_begin1          # >> Call Site 17 <<
-	.uleb128 .Ltmp37-.Ltmp35                #   Call between .Ltmp35 and .Ltmp37
+	.uleb128 .Ltmp33-.Lfunc_begin1          # >> Call Site 17 <<
+	.uleb128 .Ltmp35-.Ltmp33                #   Call between .Ltmp33 and .Ltmp35
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp37-.Lfunc_begin1          # >> Call Site 18 <<
-	.uleb128 .Ltmp38-.Ltmp37                #   Call between .Ltmp37 and .Ltmp38
-	.uleb128 .Ltmp39-.Lfunc_begin1          #     jumps to .Ltmp39
+	.uleb128 .Ltmp35-.Lfunc_begin1          # >> Call Site 18 <<
+	.uleb128 .Ltmp36-.Ltmp35                #   Call between .Ltmp35 and .Ltmp36
+	.uleb128 .Ltmp37-.Lfunc_begin1          #     jumps to .Ltmp37
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp40-.Lfunc_begin1          # >> Call Site 19 <<
-	.uleb128 .Ltmp41-.Ltmp40                #   Call between .Ltmp40 and .Ltmp41
-	.uleb128 .Ltmp42-.Lfunc_begin1          #     jumps to .Ltmp42
+	.uleb128 .Ltmp38-.Lfunc_begin1          # >> Call Site 19 <<
+	.uleb128 .Ltmp39-.Ltmp38                #   Call between .Ltmp38 and .Ltmp39
+	.uleb128 .Ltmp40-.Lfunc_begin1          #     jumps to .Ltmp40
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp41-.Lfunc_begin1          # >> Call Site 20 <<
-	.uleb128 .Ltmp43-.Ltmp41                #   Call between .Ltmp41 and .Ltmp43
+	.uleb128 .Ltmp39-.Lfunc_begin1          # >> Call Site 20 <<
+	.uleb128 .Ltmp41-.Ltmp39                #   Call between .Ltmp39 and .Ltmp41
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp43-.Lfunc_begin1          # >> Call Site 21 <<
-	.uleb128 .Ltmp44-.Ltmp43                #   Call between .Ltmp43 and .Ltmp44
-	.uleb128 .Ltmp45-.Lfunc_begin1          #     jumps to .Ltmp45
+	.uleb128 .Ltmp41-.Lfunc_begin1          # >> Call Site 21 <<
+	.uleb128 .Ltmp42-.Ltmp41                #   Call between .Ltmp41 and .Ltmp42
+	.uleb128 .Ltmp43-.Lfunc_begin1          #     jumps to .Ltmp43
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp44-.Lfunc_begin1          # >> Call Site 22 <<
-	.uleb128 .Ltmp46-.Ltmp44                #   Call between .Ltmp44 and .Ltmp46
+	.uleb128 .Ltmp42-.Lfunc_begin1          # >> Call Site 22 <<
+	.uleb128 .Ltmp44-.Ltmp42                #   Call between .Ltmp42 and .Ltmp44
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp46-.Lfunc_begin1          # >> Call Site 23 <<
-	.uleb128 .Ltmp47-.Ltmp46                #   Call between .Ltmp46 and .Ltmp47
-	.uleb128 .Ltmp48-.Lfunc_begin1          #     jumps to .Ltmp48
+	.uleb128 .Ltmp44-.Lfunc_begin1          # >> Call Site 23 <<
+	.uleb128 .Ltmp45-.Ltmp44                #   Call between .Ltmp44 and .Ltmp45
+	.uleb128 .Ltmp46-.Lfunc_begin1          #     jumps to .Ltmp46
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp49-.Lfunc_begin1          # >> Call Site 24 <<
-	.uleb128 .Ltmp50-.Ltmp49                #   Call between .Ltmp49 and .Ltmp50
-	.uleb128 .Ltmp51-.Lfunc_begin1          #     jumps to .Ltmp51
+	.uleb128 .Ltmp47-.Lfunc_begin1          # >> Call Site 24 <<
+	.uleb128 .Ltmp48-.Ltmp47                #   Call between .Ltmp47 and .Ltmp48
+	.uleb128 .Ltmp49-.Lfunc_begin1          #     jumps to .Ltmp49
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp50-.Lfunc_begin1          # >> Call Site 25 <<
-	.uleb128 .Ltmp52-.Ltmp50                #   Call between .Ltmp50 and .Ltmp52
+	.uleb128 .Ltmp48-.Lfunc_begin1          # >> Call Site 25 <<
+	.uleb128 .Ltmp50-.Ltmp48                #   Call between .Ltmp48 and .Ltmp50
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp52-.Lfunc_begin1          # >> Call Site 26 <<
-	.uleb128 .Ltmp53-.Ltmp52                #   Call between .Ltmp52 and .Ltmp53
-	.uleb128 .Ltmp54-.Lfunc_begin1          #     jumps to .Ltmp54
+	.uleb128 .Ltmp50-.Lfunc_begin1          # >> Call Site 26 <<
+	.uleb128 .Ltmp51-.Ltmp50                #   Call between .Ltmp50 and .Ltmp51
+	.uleb128 .Ltmp52-.Lfunc_begin1          #     jumps to .Ltmp52
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp53-.Lfunc_begin1          # >> Call Site 27 <<
-	.uleb128 .Ltmp58-.Ltmp53                #   Call between .Ltmp53 and .Ltmp58
+	.uleb128 .Ltmp51-.Lfunc_begin1          # >> Call Site 27 <<
+	.uleb128 .Ltmp56-.Ltmp51                #   Call between .Ltmp51 and .Ltmp56
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp58-.Lfunc_begin1          # >> Call Site 28 <<
-	.uleb128 .Ltmp63-.Ltmp58                #   Call between .Ltmp58 and .Ltmp63
-	.uleb128 .Ltmp64-.Lfunc_begin1          #     jumps to .Ltmp64
+	.uleb128 .Ltmp56-.Lfunc_begin1          # >> Call Site 28 <<
+	.uleb128 .Ltmp61-.Ltmp56                #   Call between .Ltmp56 and .Ltmp61
+	.uleb128 .Ltmp62-.Lfunc_begin1          #     jumps to .Ltmp62
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp63-.Lfunc_begin1          # >> Call Site 29 <<
-	.uleb128 .Ltmp90-.Ltmp63                #   Call between .Ltmp63 and .Ltmp90
+	.uleb128 .Ltmp61-.Lfunc_begin1          # >> Call Site 29 <<
+	.uleb128 .Ltmp88-.Ltmp61                #   Call between .Ltmp61 and .Ltmp88
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp90-.Lfunc_begin1          # >> Call Site 30 <<
-	.uleb128 .Ltmp91-.Ltmp90                #   Call between .Ltmp90 and .Ltmp91
-	.uleb128 .Ltmp92-.Lfunc_begin1          #     jumps to .Ltmp92
+	.uleb128 .Ltmp88-.Lfunc_begin1          # >> Call Site 30 <<
+	.uleb128 .Ltmp89-.Ltmp88                #   Call between .Ltmp88 and .Ltmp89
+	.uleb128 .Ltmp90-.Lfunc_begin1          #     jumps to .Ltmp90
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp91-.Lfunc_begin1          # >> Call Site 31 <<
-	.uleb128 .Ltmp55-.Ltmp91                #   Call between .Ltmp91 and .Ltmp55
+	.uleb128 .Ltmp89-.Lfunc_begin1          # >> Call Site 31 <<
+	.uleb128 .Ltmp53-.Ltmp89                #   Call between .Ltmp89 and .Ltmp53
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp55-.Lfunc_begin1          # >> Call Site 32 <<
-	.uleb128 .Ltmp56-.Ltmp55                #   Call between .Ltmp55 and .Ltmp56
-	.uleb128 .Ltmp57-.Lfunc_begin1          #     jumps to .Ltmp57
+	.uleb128 .Ltmp53-.Lfunc_begin1          # >> Call Site 32 <<
+	.uleb128 .Ltmp54-.Ltmp53                #   Call between .Ltmp53 and .Ltmp54
+	.uleb128 .Ltmp55-.Lfunc_begin1          #     jumps to .Ltmp55
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp85-.Lfunc_begin1          # >> Call Site 33 <<
-	.uleb128 .Ltmp86-.Ltmp85                #   Call between .Ltmp85 and .Ltmp86
-	.uleb128 .Ltmp105-.Lfunc_begin1         #     jumps to .Ltmp105
+	.uleb128 .Ltmp83-.Lfunc_begin1          # >> Call Site 33 <<
+	.uleb128 .Ltmp84-.Ltmp83                #   Call between .Ltmp83 and .Ltmp84
+	.uleb128 .Ltmp103-.Lfunc_begin1         #     jumps to .Ltmp103
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp86-.Lfunc_begin1          # >> Call Site 34 <<
-	.uleb128 .Ltmp106-.Ltmp86               #   Call between .Ltmp86 and .Ltmp106
+	.uleb128 .Ltmp84-.Lfunc_begin1          # >> Call Site 34 <<
+	.uleb128 .Ltmp104-.Ltmp84               #   Call between .Ltmp84 and .Ltmp104
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp106-.Lfunc_begin1         # >> Call Site 35 <<
-	.uleb128 .Ltmp107-.Ltmp106              #   Call between .Ltmp106 and .Ltmp107
-	.uleb128 .Ltmp108-.Lfunc_begin1         #     jumps to .Ltmp108
+	.uleb128 .Ltmp104-.Lfunc_begin1         # >> Call Site 35 <<
+	.uleb128 .Ltmp105-.Ltmp104              #   Call between .Ltmp104 and .Ltmp105
+	.uleb128 .Ltmp106-.Lfunc_begin1         #     jumps to .Ltmp106
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp109-.Lfunc_begin1         # >> Call Site 36 <<
-	.uleb128 .Ltmp110-.Ltmp109              #   Call between .Ltmp109 and .Ltmp110
-	.uleb128 .Ltmp111-.Lfunc_begin1         #     jumps to .Ltmp111
+	.uleb128 .Ltmp107-.Lfunc_begin1         # >> Call Site 36 <<
+	.uleb128 .Ltmp108-.Ltmp107              #   Call between .Ltmp107 and .Ltmp108
+	.uleb128 .Ltmp109-.Lfunc_begin1         #     jumps to .Ltmp109
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp112-.Lfunc_begin1         # >> Call Site 37 <<
-	.uleb128 .Ltmp113-.Ltmp112              #   Call between .Ltmp112 and .Ltmp113
-	.uleb128 .Ltmp114-.Lfunc_begin1         #     jumps to .Ltmp114
+	.uleb128 .Ltmp110-.Lfunc_begin1         # >> Call Site 37 <<
+	.uleb128 .Ltmp111-.Ltmp110              #   Call between .Ltmp110 and .Ltmp111
+	.uleb128 .Ltmp112-.Lfunc_begin1         #     jumps to .Ltmp112
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp115-.Lfunc_begin1         # >> Call Site 38 <<
-	.uleb128 .Ltmp116-.Ltmp115              #   Call between .Ltmp115 and .Ltmp116
-	.uleb128 .Ltmp117-.Lfunc_begin1         #     jumps to .Ltmp117
+	.uleb128 .Ltmp113-.Lfunc_begin1         # >> Call Site 38 <<
+	.uleb128 .Ltmp114-.Ltmp113              #   Call between .Ltmp113 and .Ltmp114
+	.uleb128 .Ltmp115-.Lfunc_begin1         #     jumps to .Ltmp115
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp116-.Lfunc_begin1         # >> Call Site 39 <<
-	.uleb128 .Ltmp118-.Ltmp116              #   Call between .Ltmp116 and .Ltmp118
+	.uleb128 .Ltmp114-.Lfunc_begin1         # >> Call Site 39 <<
+	.uleb128 .Ltmp116-.Ltmp114              #   Call between .Ltmp114 and .Ltmp116
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp118-.Lfunc_begin1         # >> Call Site 40 <<
-	.uleb128 .Ltmp123-.Ltmp118              #   Call between .Ltmp118 and .Ltmp123
-	.uleb128 .Ltmp124-.Lfunc_begin1         #     jumps to .Ltmp124
+	.uleb128 .Ltmp116-.Lfunc_begin1         # >> Call Site 40 <<
+	.uleb128 .Ltmp121-.Ltmp116              #   Call between .Ltmp116 and .Ltmp121
+	.uleb128 .Ltmp122-.Lfunc_begin1         #     jumps to .Ltmp122
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp129-.Lfunc_begin1         # >> Call Site 41 <<
-	.uleb128 .Ltmp130-.Ltmp129              #   Call between .Ltmp129 and .Ltmp130
-	.uleb128 .Ltmp131-.Lfunc_begin1         #     jumps to .Ltmp131
+	.uleb128 .Ltmp125-.Lfunc_begin1         # >> Call Site 41 <<
+	.uleb128 .Ltmp126-.Ltmp125              #   Call between .Ltmp125 and .Ltmp126
+	.uleb128 .Ltmp127-.Lfunc_begin1         #     jumps to .Ltmp127
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp132-.Lfunc_begin1         # >> Call Site 42 <<
-	.uleb128 .Ltmp133-.Ltmp132              #   Call between .Ltmp132 and .Ltmp133
-	.uleb128 .Ltmp134-.Lfunc_begin1         #     jumps to .Ltmp134
+	.uleb128 .Ltmp128-.Lfunc_begin1         # >> Call Site 42 <<
+	.uleb128 .Ltmp129-.Ltmp128              #   Call between .Ltmp128 and .Ltmp129
+	.uleb128 .Ltmp130-.Lfunc_begin1         #     jumps to .Ltmp130
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp133-.Lfunc_begin1         # >> Call Site 43 <<
-	.uleb128 .Ltmp137-.Ltmp133              #   Call between .Ltmp133 and .Ltmp137
+	.uleb128 .Ltmp129-.Lfunc_begin1         # >> Call Site 43 <<
+	.uleb128 .Ltmp133-.Ltmp129              #   Call between .Ltmp129 and .Ltmp133
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp137-.Lfunc_begin1         # >> Call Site 44 <<
-	.uleb128 .Ltmp138-.Ltmp137              #   Call between .Ltmp137 and .Ltmp138
-	.uleb128 .Ltmp139-.Lfunc_begin1         #     jumps to .Ltmp139
+	.uleb128 .Ltmp133-.Lfunc_begin1         # >> Call Site 44 <<
+	.uleb128 .Ltmp134-.Ltmp133              #   Call between .Ltmp133 and .Ltmp134
+	.uleb128 .Ltmp135-.Lfunc_begin1         #     jumps to .Ltmp135
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp140-.Lfunc_begin1         # >> Call Site 45 <<
-	.uleb128 .Ltmp141-.Ltmp140              #   Call between .Ltmp140 and .Ltmp141
-	.uleb128 .Ltmp142-.Lfunc_begin1         #     jumps to .Ltmp142
+	.uleb128 .Ltmp136-.Lfunc_begin1         # >> Call Site 45 <<
+	.uleb128 .Ltmp137-.Ltmp136              #   Call between .Ltmp136 and .Ltmp137
+	.uleb128 .Ltmp138-.Lfunc_begin1         #     jumps to .Ltmp138
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp141-.Lfunc_begin1         # >> Call Site 46 <<
-	.uleb128 .Ltmp143-.Ltmp141              #   Call between .Ltmp141 and .Ltmp143
+	.uleb128 .Ltmp137-.Lfunc_begin1         # >> Call Site 46 <<
+	.uleb128 .Ltmp139-.Ltmp137              #   Call between .Ltmp137 and .Ltmp139
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp143-.Lfunc_begin1         # >> Call Site 47 <<
-	.uleb128 .Ltmp144-.Ltmp143              #   Call between .Ltmp143 and .Ltmp144
-	.uleb128 .Ltmp145-.Lfunc_begin1         #     jumps to .Ltmp145
+	.uleb128 .Ltmp139-.Lfunc_begin1         # >> Call Site 47 <<
+	.uleb128 .Ltmp140-.Ltmp139              #   Call between .Ltmp139 and .Ltmp140
+	.uleb128 .Ltmp141-.Lfunc_begin1         #     jumps to .Ltmp141
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp144-.Lfunc_begin1         # >> Call Site 48 <<
-	.uleb128 .Ltmp149-.Ltmp144              #   Call between .Ltmp144 and .Ltmp149
+	.uleb128 .Ltmp140-.Lfunc_begin1         # >> Call Site 48 <<
+	.uleb128 .Ltmp144-.Ltmp140              #   Call between .Ltmp140 and .Ltmp144
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp149-.Lfunc_begin1         # >> Call Site 49 <<
-	.uleb128 .Ltmp150-.Ltmp149              #   Call between .Ltmp149 and .Ltmp150
-	.uleb128 .Ltmp151-.Lfunc_begin1         #     jumps to .Ltmp151
+	.uleb128 .Ltmp144-.Lfunc_begin1         # >> Call Site 49 <<
+	.uleb128 .Ltmp145-.Ltmp144              #   Call between .Ltmp144 and .Ltmp145
+	.uleb128 .Ltmp146-.Lfunc_begin1         #     jumps to .Ltmp146
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp152-.Lfunc_begin1         # >> Call Site 50 <<
-	.uleb128 .Ltmp153-.Ltmp152              #   Call between .Ltmp152 and .Ltmp153
-	.uleb128 .Ltmp154-.Lfunc_begin1         #     jumps to .Ltmp154
+	.uleb128 .Ltmp147-.Lfunc_begin1         # >> Call Site 50 <<
+	.uleb128 .Ltmp148-.Ltmp147              #   Call between .Ltmp147 and .Ltmp148
+	.uleb128 .Ltmp149-.Lfunc_begin1         #     jumps to .Ltmp149
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp153-.Lfunc_begin1         # >> Call Site 51 <<
-	.uleb128 .Ltmp158-.Ltmp153              #   Call between .Ltmp153 and .Ltmp158
+	.uleb128 .Ltmp148-.Lfunc_begin1         # >> Call Site 51 <<
+	.uleb128 .Ltmp153-.Ltmp148              #   Call between .Ltmp148 and .Ltmp153
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp158-.Lfunc_begin1         # >> Call Site 52 <<
-	.uleb128 .Ltmp159-.Ltmp158              #   Call between .Ltmp158 and .Ltmp159
-	.uleb128 .Ltmp181-.Lfunc_begin1         #     jumps to .Ltmp181
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp159-.Lfunc_begin1         # >> Call Site 53 <<
-	.uleb128 .Ltmp160-.Ltmp159              #   Call between .Ltmp159 and .Ltmp160
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp160-.Lfunc_begin1         # >> Call Site 54 <<
-	.uleb128 .Ltmp161-.Ltmp160              #   Call between .Ltmp160 and .Ltmp161
-	.uleb128 .Ltmp170-.Lfunc_begin1         #     jumps to .Ltmp170
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp161-.Lfunc_begin1         # >> Call Site 55 <<
-	.uleb128 .Ltmp162-.Ltmp161              #   Call between .Ltmp161 and .Ltmp162
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp162-.Lfunc_begin1         # >> Call Site 56 <<
-	.uleb128 .Ltmp163-.Ltmp162              #   Call between .Ltmp162 and .Ltmp163
-	.uleb128 .Ltmp164-.Lfunc_begin1         #     jumps to .Ltmp164
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp163-.Lfunc_begin1         # >> Call Site 57 <<
-	.uleb128 .Ltmp168-.Ltmp163              #   Call between .Ltmp163 and .Ltmp168
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp168-.Lfunc_begin1         # >> Call Site 58 <<
-	.uleb128 .Ltmp169-.Ltmp168              #   Call between .Ltmp168 and .Ltmp169
-	.uleb128 .Ltmp170-.Lfunc_begin1         #     jumps to .Ltmp170
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp169-.Lfunc_begin1         # >> Call Site 59 <<
-	.uleb128 .Ltmp171-.Ltmp169              #   Call between .Ltmp169 and .Ltmp171
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp171-.Lfunc_begin1         # >> Call Site 60 <<
-	.uleb128 .Ltmp172-.Ltmp171              #   Call between .Ltmp171 and .Ltmp172
-	.uleb128 .Ltmp173-.Lfunc_begin1         #     jumps to .Ltmp173
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp172-.Lfunc_begin1         # >> Call Site 61 <<
-	.uleb128 .Ltmp174-.Ltmp172              #   Call between .Ltmp172 and .Ltmp174
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp174-.Lfunc_begin1         # >> Call Site 62 <<
-	.uleb128 .Ltmp175-.Ltmp174              #   Call between .Ltmp174 and .Ltmp175
+	.uleb128 .Ltmp153-.Lfunc_begin1         # >> Call Site 52 <<
+	.uleb128 .Ltmp154-.Ltmp153              #   Call between .Ltmp153 and .Ltmp154
 	.uleb128 .Ltmp176-.Lfunc_begin1         #     jumps to .Ltmp176
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp175-.Lfunc_begin1         # >> Call Site 63 <<
+	.uleb128 .Ltmp154-.Lfunc_begin1         # >> Call Site 53 <<
+	.uleb128 .Ltmp155-.Ltmp154              #   Call between .Ltmp154 and .Ltmp155
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp155-.Lfunc_begin1         # >> Call Site 54 <<
+	.uleb128 .Ltmp156-.Ltmp155              #   Call between .Ltmp155 and .Ltmp156
+	.uleb128 .Ltmp165-.Lfunc_begin1         #     jumps to .Ltmp165
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp156-.Lfunc_begin1         # >> Call Site 55 <<
+	.uleb128 .Ltmp157-.Ltmp156              #   Call between .Ltmp156 and .Ltmp157
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp157-.Lfunc_begin1         # >> Call Site 56 <<
+	.uleb128 .Ltmp158-.Ltmp157              #   Call between .Ltmp157 and .Ltmp158
+	.uleb128 .Ltmp159-.Lfunc_begin1         #     jumps to .Ltmp159
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp158-.Lfunc_begin1         # >> Call Site 57 <<
+	.uleb128 .Ltmp163-.Ltmp158              #   Call between .Ltmp158 and .Ltmp163
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp163-.Lfunc_begin1         # >> Call Site 58 <<
+	.uleb128 .Ltmp164-.Ltmp163              #   Call between .Ltmp163 and .Ltmp164
+	.uleb128 .Ltmp165-.Lfunc_begin1         #     jumps to .Ltmp165
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp164-.Lfunc_begin1         # >> Call Site 59 <<
+	.uleb128 .Ltmp166-.Ltmp164              #   Call between .Ltmp164 and .Ltmp166
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp166-.Lfunc_begin1         # >> Call Site 60 <<
+	.uleb128 .Ltmp167-.Ltmp166              #   Call between .Ltmp166 and .Ltmp167
+	.uleb128 .Ltmp168-.Lfunc_begin1         #     jumps to .Ltmp168
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp167-.Lfunc_begin1         # >> Call Site 61 <<
+	.uleb128 .Ltmp169-.Ltmp167              #   Call between .Ltmp167 and .Ltmp169
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp169-.Lfunc_begin1         # >> Call Site 62 <<
+	.uleb128 .Ltmp170-.Ltmp169              #   Call between .Ltmp169 and .Ltmp170
+	.uleb128 .Ltmp171-.Lfunc_begin1         #     jumps to .Ltmp171
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp170-.Lfunc_begin1         # >> Call Site 63 <<
+	.uleb128 .Ltmp172-.Ltmp170              #   Call between .Ltmp170 and .Ltmp172
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp172-.Lfunc_begin1         # >> Call Site 64 <<
+	.uleb128 .Ltmp175-.Ltmp172              #   Call between .Ltmp172 and .Ltmp175
+	.uleb128 .Ltmp176-.Lfunc_begin1         #     jumps to .Ltmp176
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp175-.Lfunc_begin1         # >> Call Site 65 <<
 	.uleb128 .Ltmp177-.Ltmp175              #   Call between .Ltmp175 and .Ltmp177
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp177-.Lfunc_begin1         # >> Call Site 64 <<
-	.uleb128 .Ltmp180-.Ltmp177              #   Call between .Ltmp177 and .Ltmp180
-	.uleb128 .Ltmp181-.Lfunc_begin1         #     jumps to .Ltmp181
+	.uleb128 .Ltmp177-.Lfunc_begin1         # >> Call Site 66 <<
+	.uleb128 .Ltmp178-.Ltmp177              #   Call between .Ltmp177 and .Ltmp178
+	.uleb128 .Ltmp179-.Lfunc_begin1         #     jumps to .Ltmp179
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp180-.Lfunc_begin1         # >> Call Site 65 <<
-	.uleb128 .Ltmp182-.Ltmp180              #   Call between .Ltmp180 and .Ltmp182
+	.uleb128 .Ltmp178-.Lfunc_begin1         # >> Call Site 67 <<
+	.uleb128 .Ltmp180-.Ltmp178              #   Call between .Ltmp178 and .Ltmp180
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp182-.Lfunc_begin1         # >> Call Site 66 <<
-	.uleb128 .Ltmp183-.Ltmp182              #   Call between .Ltmp182 and .Ltmp183
-	.uleb128 .Ltmp184-.Lfunc_begin1         #     jumps to .Ltmp184
+	.uleb128 .Ltmp180-.Lfunc_begin1         # >> Call Site 68 <<
+	.uleb128 .Ltmp181-.Ltmp180              #   Call between .Ltmp180 and .Ltmp181
+	.uleb128 .Ltmp182-.Lfunc_begin1         #     jumps to .Ltmp182
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp183-.Lfunc_begin1         # >> Call Site 67 <<
-	.uleb128 .Ltmp185-.Ltmp183              #   Call between .Ltmp183 and .Ltmp185
+	.uleb128 .Ltmp63-.Lfunc_begin1          # >> Call Site 69 <<
+	.uleb128 .Ltmp66-.Ltmp63                #   Call between .Ltmp63 and .Ltmp66
+	.uleb128 .Ltmp103-.Lfunc_begin1         #     jumps to .Ltmp103
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp66-.Lfunc_begin1          # >> Call Site 70 <<
+	.uleb128 .Ltmp67-.Ltmp66                #   Call between .Ltmp66 and .Ltmp67
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp185-.Lfunc_begin1         # >> Call Site 68 <<
-	.uleb128 .Ltmp186-.Ltmp185              #   Call between .Ltmp185 and .Ltmp186
-	.uleb128 .Ltmp187-.Lfunc_begin1         #     jumps to .Ltmp187
+	.uleb128 .Ltmp67-.Lfunc_begin1          # >> Call Site 71 <<
+	.uleb128 .Ltmp68-.Ltmp67                #   Call between .Ltmp67 and .Ltmp68
+	.uleb128 .Ltmp82-.Lfunc_begin1          #     jumps to .Ltmp82
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp65-.Lfunc_begin1          # >> Call Site 69 <<
-	.uleb128 .Ltmp68-.Ltmp65                #   Call between .Ltmp65 and .Ltmp68
-	.uleb128 .Ltmp105-.Lfunc_begin1         #     jumps to .Ltmp105
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp68-.Lfunc_begin1          # >> Call Site 70 <<
+	.uleb128 .Ltmp68-.Lfunc_begin1          # >> Call Site 72 <<
 	.uleb128 .Ltmp69-.Ltmp68                #   Call between .Ltmp68 and .Ltmp69
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp69-.Lfunc_begin1          # >> Call Site 71 <<
-	.uleb128 .Ltmp70-.Ltmp69                #   Call between .Ltmp69 and .Ltmp70
-	.uleb128 .Ltmp84-.Lfunc_begin1          #     jumps to .Ltmp84
+	.uleb128 .Ltmp69-.Lfunc_begin1          # >> Call Site 73 <<
+	.uleb128 .Ltmp76-.Ltmp69                #   Call between .Ltmp69 and .Ltmp76
+	.uleb128 .Ltmp82-.Lfunc_begin1          #     jumps to .Ltmp82
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp70-.Lfunc_begin1          # >> Call Site 72 <<
-	.uleb128 .Ltmp71-.Ltmp70                #   Call between .Ltmp70 and .Ltmp71
+	.uleb128 .Ltmp76-.Lfunc_begin1          # >> Call Site 74 <<
+	.uleb128 .Ltmp160-.Ltmp76               #   Call between .Ltmp76 and .Ltmp160
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp71-.Lfunc_begin1          # >> Call Site 73 <<
-	.uleb128 .Ltmp78-.Ltmp71                #   Call between .Ltmp71 and .Ltmp78
-	.uleb128 .Ltmp84-.Lfunc_begin1          #     jumps to .Ltmp84
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp78-.Lfunc_begin1          # >> Call Site 74 <<
-	.uleb128 .Ltmp165-.Ltmp78               #   Call between .Ltmp78 and .Ltmp165
-	.byte	0                               #     has no landing pad
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp165-.Lfunc_begin1         # >> Call Site 75 <<
-	.uleb128 .Ltmp166-.Ltmp165              #   Call between .Ltmp165 and .Ltmp166
-	.uleb128 .Ltmp167-.Lfunc_begin1         #     jumps to .Ltmp167
+	.uleb128 .Ltmp160-.Lfunc_begin1         # >> Call Site 75 <<
+	.uleb128 .Ltmp161-.Ltmp160              #   Call between .Ltmp160 and .Ltmp161
+	.uleb128 .Ltmp162-.Lfunc_begin1         #     jumps to .Ltmp162
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp201-.Lfunc_begin1         # >> Call Site 76 <<
 	.uleb128 .Ltmp202-.Ltmp201              #   Call between .Ltmp201 and .Ltmp202
 	.uleb128 .Ltmp203-.Lfunc_begin1         #     jumps to .Ltmp203
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp155-.Lfunc_begin1         # >> Call Site 77 <<
-	.uleb128 .Ltmp156-.Ltmp155              #   Call between .Ltmp155 and .Ltmp156
-	.uleb128 .Ltmp157-.Lfunc_begin1         #     jumps to .Ltmp157
+	.uleb128 .Ltmp150-.Lfunc_begin1         # >> Call Site 77 <<
+	.uleb128 .Ltmp151-.Ltmp150              #   Call between .Ltmp150 and .Ltmp151
+	.uleb128 .Ltmp152-.Lfunc_begin1         #     jumps to .Ltmp152
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp120-.Lfunc_begin1         # >> Call Site 78 <<
-	.uleb128 .Ltmp136-.Ltmp120              #   Call between .Ltmp120 and .Ltmp136
-	.uleb128 .Ltmp148-.Lfunc_begin1         #     jumps to .Ltmp148
+	.uleb128 .Ltmp118-.Lfunc_begin1         # >> Call Site 78 <<
+	.uleb128 .Ltmp132-.Ltmp118              #   Call between .Ltmp118 and .Ltmp132
+	.uleb128 .Ltmp185-.Lfunc_begin1         #     jumps to .Ltmp185
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp103-.Lfunc_begin1         # >> Call Site 79 <<
-	.uleb128 .Ltmp104-.Ltmp103              #   Call between .Ltmp103 and .Ltmp104
-	.uleb128 .Ltmp105-.Lfunc_begin1         #     jumps to .Ltmp105
+	.uleb128 .Ltmp101-.Lfunc_begin1         # >> Call Site 79 <<
+	.uleb128 .Ltmp102-.Ltmp101              #   Call between .Ltmp101 and .Ltmp102
+	.uleb128 .Ltmp103-.Lfunc_begin1         #     jumps to .Ltmp103
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp125-.Lfunc_begin1         # >> Call Site 80 <<
-	.uleb128 .Ltmp128-.Ltmp125              #   Call between .Ltmp125 and .Ltmp128
-	.uleb128 .Ltmp148-.Lfunc_begin1         #     jumps to .Ltmp148
+	.uleb128 .Ltmp123-.Lfunc_begin1         # >> Call Site 80 <<
+	.uleb128 .Ltmp184-.Ltmp123              #   Call between .Ltmp123 and .Ltmp184
+	.uleb128 .Ltmp185-.Lfunc_begin1         #     jumps to .Ltmp185
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp16-.Lfunc_begin1          # >> Call Site 81 <<
-	.uleb128 .Ltmp189-.Ltmp16               #   Call between .Ltmp16 and .Ltmp189
+	.uleb128 .Ltmp188-.Lfunc_begin1         # >> Call Site 81 <<
+	.uleb128 .Ltmp187-.Ltmp188              #   Call between .Ltmp188 and .Ltmp187
 	.uleb128 .Ltmp203-.Lfunc_begin1         #     jumps to .Ltmp203
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp190-.Lfunc_begin1         # >> Call Site 82 <<
 	.uleb128 .Ltmp191-.Ltmp190              #   Call between .Ltmp190 and .Ltmp191
 	.uleb128 .Ltmp192-.Lfunc_begin1         #     jumps to .Ltmp192
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp87-.Lfunc_begin1          # >> Call Site 83 <<
-	.uleb128 .Ltmp88-.Ltmp87                #   Call between .Ltmp87 and .Ltmp88
-	.uleb128 .Ltmp89-.Lfunc_begin1          #     jumps to .Ltmp89
+	.uleb128 .Ltmp85-.Lfunc_begin1          # >> Call Site 83 <<
+	.uleb128 .Ltmp86-.Ltmp85                #   Call between .Ltmp85 and .Ltmp86
+	.uleb128 .Ltmp87-.Lfunc_begin1          #     jumps to .Ltmp87
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp198-.Lfunc_begin1         # >> Call Site 84 <<
 	.uleb128 .Ltmp197-.Ltmp198              #   Call between .Ltmp198 and .Ltmp197
 	.uleb128 .Ltmp200-.Lfunc_begin1         #     jumps to .Ltmp200
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp82-.Lfunc_begin1          # >> Call Site 85 <<
-	.uleb128 .Ltmp83-.Ltmp82                #   Call between .Ltmp82 and .Ltmp83
-	.uleb128 .Ltmp84-.Lfunc_begin1          #     jumps to .Ltmp84
+	.uleb128 .Ltmp80-.Lfunc_begin1          # >> Call Site 85 <<
+	.uleb128 .Ltmp81-.Ltmp80                #   Call between .Ltmp80 and .Ltmp81
+	.uleb128 .Ltmp82-.Lfunc_begin1          #     jumps to .Ltmp82
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp79-.Lfunc_begin1          # >> Call Site 86 <<
-	.uleb128 .Ltmp80-.Ltmp79                #   Call between .Ltmp79 and .Ltmp80
-	.uleb128 .Ltmp81-.Lfunc_begin1          #     jumps to .Ltmp81
+	.uleb128 .Ltmp77-.Lfunc_begin1          # >> Call Site 86 <<
+	.uleb128 .Ltmp78-.Ltmp77                #   Call between .Ltmp77 and .Ltmp78
+	.uleb128 .Ltmp79-.Lfunc_begin1          #     jumps to .Ltmp79
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp100-.Lfunc_begin1         # >> Call Site 87 <<
-	.uleb128 .Ltmp99-.Ltmp100               #   Call between .Ltmp100 and .Ltmp99
-	.uleb128 .Ltmp102-.Lfunc_begin1         #     jumps to .Ltmp102
+	.uleb128 .Ltmp98-.Lfunc_begin1          # >> Call Site 87 <<
+	.uleb128 .Ltmp97-.Ltmp98                #   Call between .Ltmp98 and .Ltmp97
+	.uleb128 .Ltmp100-.Lfunc_begin1         #     jumps to .Ltmp100
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp95-.Lfunc_begin1          # >> Call Site 88 <<
-	.uleb128 .Ltmp94-.Ltmp95                #   Call between .Ltmp95 and .Ltmp94
-	.uleb128 .Ltmp97-.Lfunc_begin1          #     jumps to .Ltmp97
+	.uleb128 .Ltmp93-.Lfunc_begin1          # >> Call Site 88 <<
+	.uleb128 .Ltmp92-.Ltmp93                #   Call between .Ltmp93 and .Ltmp92
+	.uleb128 .Ltmp95-.Lfunc_begin1          #     jumps to .Ltmp95
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp94-.Lfunc_begin1          # >> Call Site 89 <<
-	.uleb128 .Lfunc_end1-.Ltmp94            #   Call between .Ltmp94 and .Lfunc_end1
+	.uleb128 .Ltmp92-.Lfunc_begin1          # >> Call Site 89 <<
+	.uleb128 .Lfunc_end1-.Ltmp92            #   Call between .Ltmp92 and .Lfunc_end1
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
 .Lcst_end1:

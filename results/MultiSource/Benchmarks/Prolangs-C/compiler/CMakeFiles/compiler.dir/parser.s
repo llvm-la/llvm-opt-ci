@@ -198,7 +198,7 @@ factor:                                 # @factor
 	pcaddu18i	$ra, %call36(emit)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, %pc_lo12(lookahead)
-	bne	$a0, $s2, .LBB1_77
+	bne	$a0, $s2, .LBB1_79
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(PreviousLookahead)
 	ld.w	$a1, $s0, %pc_lo12(tokenval)
@@ -218,12 +218,12 @@ factor:                                 # @factor
 	st.w	$a1, $s0, %pc_lo12(tokenval)
 	ori	$a1, $zero, 260
 	fst.s	$fa0, $fp, %pc_lo12(ftokenval)
-	beq	$a0, $a1, .LBB1_81
+	beq	$a0, $a1, .LBB1_83
 # %bb.5:
 	pcaddu18i	$ra, %call36(lexan)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s2, %pc_lo12(NextLookahead)
-	b	.LBB1_81
+	b	.LBB1_83
 .LBB1_6:
 	ori	$a1, $zero, 40
 	beq	$a0, $a1, .LBB1_12
@@ -232,7 +232,7 @@ factor:                                 # @factor
 	beq	$a0, $a1, .LBB1_22
 # %bb.8:
 	ori	$s0, $zero, 256
-	bne	$a0, $s0, .LBB1_36
+	bne	$a0, $s0, .LBB1_38
 # %bb.9:
 	pcalau12i	$fp, %pc_hi20(tokenval)
 	ld.w	$a1, $fp, %pc_lo12(tokenval)
@@ -241,7 +241,7 @@ factor:                                 # @factor
 	pcaddu18i	$ra, %call36(emit)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, %pc_lo12(lookahead)
-	bne	$a0, $s0, .LBB1_72
+	bne	$a0, $s0, .LBB1_74
 # %bb.10:
 	pcalau12i	$a0, %pc_hi20(PreviousLookahead)
 	ori	$a1, $zero, 256
@@ -263,12 +263,12 @@ factor:                                 # @factor
 	st.w	$a2, $fp, %pc_lo12(tokenval)
 	ori	$a2, $zero, 260
 	fst.s	$fa0, $a1, %pc_lo12(ftokenval)
-	beq	$a0, $a2, .LBB1_76
+	beq	$a0, $a2, .LBB1_78
 # %bb.11:
 	pcaddu18i	$ra, %call36(lexan)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s0, %pc_lo12(NextLookahead)
-	b	.LBB1_76
+	b	.LBB1_78
 .LBB1_12:
 	pcalau12i	$a0, %pc_hi20(PreviousLookahead)
 	st.w	$a1, $a0, %pc_lo12(PreviousLookahead)
@@ -299,40 +299,40 @@ factor:                                 # @factor
 	pcalau12i	$fp, %pc_hi20(ErrorFlag)
 	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
 	addi.w	$a0, $zero, -99
-	bnez	$a1, .LBB1_136
+	bnez	$a1, .LBB1_138
 # %bb.15:
 	ld.w	$a1, $s1, %pc_lo12(lookahead)
 	move	$s0, $a0
 	ori	$a2, $zero, 2003
-	beq	$a1, $a2, .LBB1_129
+	beq	$a1, $a2, .LBB1_131
 # %bb.16:
 	ori	$a0, $zero, 2002
-	bne	$a1, $a0, .LBB1_134
+	bne	$a1, $a0, .LBB1_136
 # %bb.17:
 	ori	$a0, $zero, 2002
 	pcaddu18i	$ra, %call36(match)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
+	bnez	$a0, .LBB1_137
 # %bb.18:
 	ori	$a0, $zero, 41
 	pcaddu18i	$ra, %call36(match)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
+	bnez	$a0, .LBB1_137
 # %bb.19:
 	pcaddu18i	$ra, %call36(factor)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
 	move	$a1, $a0
 	move	$a0, $s0
-	bnez	$a2, .LBB1_136
+	bnez	$a2, .LBB1_138
 # %bb.20:
-	beqz	$a1, .LBB1_37
+	beqz	$a1, .LBB1_39
 # %bb.21:
 	movgr2fr.w	$fa0, $zero
 	ori	$a0, $zero, 2002
-	b	.LBB1_146
+	b	.LBB1_148
 .LBB1_22:
 	pcalau12i	$a0, %pc_hi20(PreviousLookahead)
 	st.w	$a1, $a0, %pc_lo12(PreviousLookahead)
@@ -363,7 +363,7 @@ factor:                                 # @factor
 	pcalau12i	$fp, %pc_hi20(ErrorFlag)
 	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
 	addi.w	$a0, $zero, -99
-	bnez	$a1, .LBB1_136
+	bnez	$a1, .LBB1_138
 # %bb.25:
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(factor)
@@ -371,10 +371,10 @@ factor:                                 # @factor
 	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
 	move	$fp, $a0
 	move	$a0, $s0
-	bnez	$a1, .LBB1_136
+	bnez	$a1, .LBB1_138
 # %bb.26:
 	movgr2fr.w	$fa0, $zero
-	beqz	$fp, .LBB1_145
+	beqz	$fp, .LBB1_147
 # %bb.27:
 	ori	$a0, $zero, 2039
 	move	$a1, $zero
@@ -382,17 +382,17 @@ factor:                                 # @factor
 	jirl	$ra, $ra, 0
 .LBB1_28:                               # %match.exit102.thread
 	move	$a0, $fp
-	b	.LBB1_136
+	b	.LBB1_138
 .LBB1_29:
 	ori	$a1, $zero, 259
-	bne	$a0, $a1, .LBB1_36
+	bne	$a0, $a1, .LBB1_38
 # %bb.30:
 	pcalau12i	$s2, %pc_hi20(NextLookahead)
 	ld.w	$a0, $s2, %pc_lo12(NextLookahead)
 	pcalau12i	$fp, %pc_hi20(LocalIndex)
 	ld.w	$s0, $fp, %pc_lo12(LocalIndex)
 	ori	$s3, $zero, 40
-	bne	$a0, $s3, .LBB1_82
+	bne	$a0, $s3, .LBB1_84
 # %bb.31:                               # %match.exit97
 	pcalau12i	$a0, %pc_hi20(GlobalIndex)
 	ld.w	$fp, $a0, %pc_lo12(GlobalIndex)
@@ -421,888 +421,30 @@ factor:                                 # @factor
 	fst.s	$fa0, $a0, %pc_lo12(ftokenval)
 	pcaddu18i	$ra, %call36(lexan)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s3, %pc_hi20(ErrorFlag)
-	ld.w	$a1, $s3, %pc_lo12(ErrorFlag)
+	pcalau12i	$s4, %pc_hi20(ErrorFlag)
+	ld.w	$a1, $s4, %pc_lo12(ErrorFlag)
 	st.w	$a0, $s2, %pc_lo12(NextLookahead)
 	addi.w	$a0, $zero, -99
-	bnez	$a1, .LBB1_136
+	bnez	$a1, .LBB1_138
 # %bb.32:
-	move	$s4, $a0
+	move	$s3, $a0
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(match)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_35
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_119
 # %bb.33:
 	pcaddu18i	$ra, %call36(ExprList)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_35
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_119
 # %bb.34:
 	ori	$a0, $zero, 41
 	pcaddu18i	$ra, %call36(match)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s3, %pc_lo12(ErrorFlag)
-	beqz	$a0, .LBB1_160
-.LBB1_35:
-	move	$a0, $s4
-	b	.LBB1_136
-.LBB1_36:
-	pcalau12i	$a0, %pc_hi20(.L.str.19)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-.LBB1_37:                               # %match.exit102.thread
-	move	$a0, $zero
-	b	.LBB1_136
-.LBB1_38:
-	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
-	ori	$a0, $zero, 2045
-	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
-	pcalau12i	$s2, %pc_hi20(tokenval)
-	ld.w	$a0, $s2, %pc_lo12(tokenval)
-	pcalau12i	$s3, %pc_hi20(ftokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
-	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
-	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	pcalau12i	$s0, %pc_hi20(NextLookahead)
-	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
-	pcalau12i	$s7, %pc_hi20(NextTokenval)
-	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
-	pcalau12i	$s8, %pc_hi20(NextFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a0, $s1, %pc_lo12(lookahead)
-	st.w	$a1, $s2, %pc_lo12(tokenval)
-	ori	$a1, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a0, $a1, .LBB1_40
-# %bb.39:
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	st.w	$a0, $s0, %pc_lo12(NextLookahead)
-.LBB1_40:                               # %match.exit132
-	pcalau12i	$fp, %pc_hi20(ErrorFlag)
-	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
-	addi.w	$a0, $zero, -99
-	bnez	$a2, .LBB1_136
-# %bb.41:
-	ld.w	$a3, $s1, %pc_lo12(lookahead)
-	ori	$a2, $zero, 40
-	bne	$a3, $a2, .LBB1_87
-# %bb.42:
-	ld.w	$a3, $s2, %pc_lo12(tokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
-	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
-	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a1, $s1, %pc_lo12(lookahead)
-	st.w	$a2, $s2, %pc_lo12(tokenval)
-	ori	$a2, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a1, $a2, .LBB1_90
-# %bb.43:
-	move	$s1, $a0
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s1
-	st.w	$a1, $s0, %pc_lo12(NextLookahead)
-	b	.LBB1_90
-.LBB1_44:
-	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
-	ori	$a0, $zero, 2044
-	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
-	pcalau12i	$s2, %pc_hi20(tokenval)
-	ld.w	$a0, $s2, %pc_lo12(tokenval)
-	pcalau12i	$s3, %pc_hi20(ftokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
-	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
-	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	pcalau12i	$s0, %pc_hi20(NextLookahead)
-	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
-	pcalau12i	$s7, %pc_hi20(NextTokenval)
-	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
-	pcalau12i	$s8, %pc_hi20(NextFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a0, $s1, %pc_lo12(lookahead)
-	st.w	$a1, $s2, %pc_lo12(tokenval)
-	ori	$a1, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a0, $a1, .LBB1_46
-# %bb.45:
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	st.w	$a0, $s0, %pc_lo12(NextLookahead)
-.LBB1_46:                               # %match.exit122
-	pcalau12i	$fp, %pc_hi20(ErrorFlag)
-	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
-	addi.w	$a0, $zero, -99
-	bnez	$a2, .LBB1_136
-# %bb.47:
-	ld.w	$a3, $s1, %pc_lo12(lookahead)
-	ori	$a2, $zero, 40
-	bne	$a3, $a2, .LBB1_96
-# %bb.48:
-	ld.w	$a3, $s2, %pc_lo12(tokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
-	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
-	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a1, $s1, %pc_lo12(lookahead)
-	st.w	$a2, $s2, %pc_lo12(tokenval)
-	ori	$a2, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a1, $a2, .LBB1_99
-# %bb.49:
-	move	$s1, $a0
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s1
-	st.w	$a1, $s0, %pc_lo12(NextLookahead)
-	b	.LBB1_99
-.LBB1_50:
-	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
-	ori	$a0, $zero, 2011
-	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
-	pcalau12i	$s2, %pc_hi20(tokenval)
-	ld.w	$a0, $s2, %pc_lo12(tokenval)
-	pcalau12i	$s3, %pc_hi20(ftokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
-	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
-	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	pcalau12i	$s0, %pc_hi20(NextLookahead)
-	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
-	pcalau12i	$s7, %pc_hi20(NextTokenval)
-	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
-	pcalau12i	$s8, %pc_hi20(NextFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a0, $s1, %pc_lo12(lookahead)
-	st.w	$a1, $s2, %pc_lo12(tokenval)
-	ori	$a1, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a0, $a1, .LBB1_52
-# %bb.51:
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	st.w	$a0, $s0, %pc_lo12(NextLookahead)
-.LBB1_52:                               # %match.exit152
-	pcalau12i	$fp, %pc_hi20(ErrorFlag)
-	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
-	addi.w	$a0, $zero, -99
-	bnez	$a2, .LBB1_136
-# %bb.53:
-	ld.w	$a3, $s1, %pc_lo12(lookahead)
-	ori	$a2, $zero, 40
-	bne	$a3, $a2, .LBB1_102
-# %bb.54:
-	ld.w	$a3, $s2, %pc_lo12(tokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
-	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
-	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a1, $s1, %pc_lo12(lookahead)
-	st.w	$a2, $s2, %pc_lo12(tokenval)
-	ori	$a2, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a1, $a2, .LBB1_105
-# %bb.55:
-	move	$s1, $a0
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s1
-	st.w	$a1, $s0, %pc_lo12(NextLookahead)
-	b	.LBB1_105
-.LBB1_56:
-	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
-	ori	$a0, $zero, 2043
-	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
-	pcalau12i	$s2, %pc_hi20(tokenval)
-	ld.w	$a0, $s2, %pc_lo12(tokenval)
-	pcalau12i	$s3, %pc_hi20(ftokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
-	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
-	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	pcalau12i	$s0, %pc_hi20(NextLookahead)
-	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
-	pcalau12i	$s7, %pc_hi20(NextTokenval)
-	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
-	pcalau12i	$s8, %pc_hi20(NextFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a0, $s1, %pc_lo12(lookahead)
-	st.w	$a1, $s2, %pc_lo12(tokenval)
-	ori	$a1, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a0, $a1, .LBB1_58
-# %bb.57:
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	st.w	$a0, $s0, %pc_lo12(NextLookahead)
-.LBB1_58:                               # %match.exit112
-	pcalau12i	$fp, %pc_hi20(ErrorFlag)
-	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
-	addi.w	$a0, $zero, -99
-	bnez	$a2, .LBB1_136
-# %bb.59:
-	ld.w	$a3, $s1, %pc_lo12(lookahead)
-	ori	$a2, $zero, 40
-	bne	$a3, $a2, .LBB1_108
-# %bb.60:
-	ld.w	$a3, $s2, %pc_lo12(tokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
-	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
-	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a1, $s1, %pc_lo12(lookahead)
-	st.w	$a2, $s2, %pc_lo12(tokenval)
-	ori	$a2, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a1, $a2, .LBB1_111
-# %bb.61:
-	move	$s1, $a0
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s1
-	st.w	$a1, $s0, %pc_lo12(NextLookahead)
-	b	.LBB1_111
-.LBB1_62:
-	pcalau12i	$a0, %pc_hi20(LocalIndex)
-	ld.w	$s0, $a0, %pc_lo12(LocalIndex)
-	pcalau12i	$a0, %pc_hi20(GlobalIndex)
-	ld.w	$fp, $a0, %pc_lo12(GlobalIndex)
-	pcaddu18i	$ra, %call36(PushArrayCellAddr)
-	jirl	$ra, $ra, 0
-	pcalau12i	$s2, %pc_hi20(ErrorFlag)
-	ld.w	$a1, $s2, %pc_lo12(ErrorFlag)
-	addi.w	$a0, $zero, -99
-	bnez	$a1, .LBB1_136
-# %bb.63:
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a3, %pc_hi20(ArrayParsed)
-	ori	$a2, $zero, 2006
-	st.w	$zero, $a3, %pc_lo12(ArrayParsed)
-	bne	$a1, $a2, .LBB1_115
-# %bb.64:
-	pcalau12i	$a1, %pc_hi20(PreviousLookahead)
-	st.w	$a2, $a1, %pc_lo12(PreviousLookahead)
-	pcalau12i	$a1, %pc_hi20(tokenval)
-	ld.w	$a2, $a1, %pc_lo12(tokenval)
-	pcalau12i	$a3, %pc_hi20(ftokenval)
-	fld.s	$fa0, $a3, %pc_lo12(ftokenval)
-	pcalau12i	$a4, %pc_hi20(PreviousTokenval)
-	st.w	$a2, $a4, %pc_lo12(PreviousTokenval)
-	pcalau12i	$a2, %pc_hi20(PreviousFtokenval)
-	fst.s	$fa0, $a2, %pc_lo12(PreviousFtokenval)
-	pcalau12i	$s3, %pc_hi20(NextLookahead)
-	ld.w	$a2, $s3, %pc_lo12(NextLookahead)
-	pcalau12i	$a4, %pc_hi20(NextTokenval)
-	ld.w	$a4, $a4, %pc_lo12(NextTokenval)
-	pcalau12i	$a5, %pc_hi20(NextFtokenval)
-	fld.s	$fa0, $a5, %pc_lo12(NextFtokenval)
-	st.w	$a2, $s1, %pc_lo12(lookahead)
-	st.w	$a4, $a1, %pc_lo12(tokenval)
-	ori	$a1, $zero, 260
-	fst.s	$fa0, $a3, %pc_lo12(ftokenval)
-	beq	$a2, $a1, .LBB1_138
-# %bb.65:
-	move	$s1, $a0
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s1
-	st.w	$a1, $s3, %pc_lo12(NextLookahead)
-	b	.LBB1_138
-.LBB1_66:
-	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
-	ori	$a0, $zero, 2046
-	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
-	pcalau12i	$s2, %pc_hi20(tokenval)
-	ld.w	$a0, $s2, %pc_lo12(tokenval)
-	pcalau12i	$s3, %pc_hi20(ftokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
-	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
-	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	pcalau12i	$s0, %pc_hi20(NextLookahead)
-	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
-	pcalau12i	$s7, %pc_hi20(NextTokenval)
-	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
-	pcalau12i	$s8, %pc_hi20(NextFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a0, $s1, %pc_lo12(lookahead)
-	st.w	$a1, $s2, %pc_lo12(tokenval)
-	ori	$a1, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a0, $a1, .LBB1_68
-# %bb.67:
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	st.w	$a0, $s0, %pc_lo12(NextLookahead)
-.LBB1_68:                               # %match.exit142
-	pcalau12i	$fp, %pc_hi20(ErrorFlag)
-	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
-	addi.w	$a0, $zero, -99
-	bnez	$a2, .LBB1_136
-# %bb.69:
-	ld.w	$a3, $s1, %pc_lo12(lookahead)
-	ori	$a2, $zero, 40
-	bne	$a3, $a2, .LBB1_118
-# %bb.70:
-	ld.w	$a3, $s2, %pc_lo12(tokenval)
-	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
-	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
-	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
-	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
-	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
-	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
-	st.w	$a1, $s1, %pc_lo12(lookahead)
-	st.w	$a2, $s2, %pc_lo12(tokenval)
-	ori	$a2, $zero, 260
-	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
-	beq	$a1, $a2, .LBB1_121
-# %bb.71:
-	move	$s1, $a0
-	pcaddu18i	$ra, %call36(lexan)
-	jirl	$ra, $ra, 0
-	move	$a1, $a0
-	move	$a0, $s1
-	st.w	$a1, $s0, %pc_lo12(NextLookahead)
-	b	.LBB1_121
-.LBB1_72:
-	addi.w	$a0, $a0, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_74
-# %bb.73:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-.LBB1_74:
-	pcalau12i	$a0, %pc_hi20(ErrorFlag)
-	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_76
-# %bb.75:
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-.LBB1_76:                               # %match.exit87
-	pcalau12i	$a0, %pc_hi20(ErrorFlag)
-	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
-	sltui	$a0, $a0, 1
-	addi.w	$a1, $zero, -99
-	masknez	$a0, $a1, $a0
-	b	.LBB1_136
-.LBB1_77:
-	addi.w	$a0, $a0, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_79
-# %bb.78:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-.LBB1_79:
-	pcalau12i	$a0, %pc_hi20(ErrorFlag)
-	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_81
-# %bb.80:
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-.LBB1_81:                               # %match.exit92
-	pcalau12i	$a0, %pc_hi20(ErrorFlag)
-	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
-	sltui	$a0, $a0, 1
-	addi.w	$a1, $zero, -99
-	masknez	$a1, $a1, $a0
-	ori	$a2, $zero, 1
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a1
-	b	.LBB1_136
-.LBB1_82:
-	pcalau12i	$s1, %pc_hi20(GlobalIndex)
-	ld.w	$a1, $s1, %pc_lo12(GlobalIndex)
-	or	$a0, $s0, $a1
-	beqz	$a0, .LBB1_85
-# %bb.83:
-	beqz	$s0, .LBB1_141
-# %bb.84:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2051
-	move	$a1, $s0
-	b	.LBB1_143
-.LBB1_85:
-	pcalau12i	$a0, %pc_hi20(.L.str.16)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
-.LBB1_86:                               # %match.exit102.thread
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	addi.w	$a0, $zero, -99
-	b	.LBB1_136
-.LBB1_87:
-	move	$s0, $a0
-	addi.w	$a0, $a3, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_89
-# %bb.88:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-.LBB1_89:                               # %.thread194
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-.LBB1_90:                               # %match.exit137
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.91:
-	move	$s0, $a0
-	pcalau12i	$s1, %pc_hi20(FloatFlag)
-	st.w	$zero, $s1, %pc_lo12(FloatFlag)
-	pcaddu18i	$ra, %call36(exprAssg)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-# %bb.92:
-	ld.w	$a0, $s1, %pc_lo12(FloatFlag)
-	bnez	$a0, .LBB1_94
-# %bb.93:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2003
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	st.w	$a0, $s1, %pc_lo12(FloatFlag)
-.LBB1_94:
-	ori	$a0, $zero, 41
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	move	$a0, $s0
-	bnez	$a1, .LBB1_136
-# %bb.95:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2045
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2001
-	ori	$a1, $zero, 1
-	vldi	$vr0, -1168
-	b	.LBB1_114
-.LBB1_96:
-	move	$s0, $a0
-	addi.w	$a0, $a3, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_98
-# %bb.97:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-.LBB1_98:                               # %.thread192
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-.LBB1_99:                               # %match.exit127
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.100:
-	move	$s0, $a0
-	ori	$a0, $zero, 41
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.101:
-	movgr2fr.w	$fs0, $zero
-	ori	$a0, $zero, 2009
-	move	$a1, $zero
-	fmov.s	$fa0, $fs0
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2002
-	move	$a1, $zero
-	b	.LBB1_128
-.LBB1_102:
-	move	$s0, $a0
-	addi.w	$a0, $a3, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_104
-# %bb.103:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-.LBB1_104:                              # %.thread198
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-.LBB1_105:                              # %match.exit157
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.106:
-	move	$s0, $a0
-	ori	$a0, $zero, 41
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.107:
-	movgr2fr.w	$fs0, $zero
-	ori	$a0, $zero, 2011
-	b	.LBB1_127
-.LBB1_108:
-	move	$s0, $a0
-	addi.w	$a0, $a3, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_110
-# %bb.109:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-.LBB1_110:                              # %.thread190
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-.LBB1_111:                              # %match.exit117
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.112:
-	move	$s0, $a0
-	ori	$a0, $zero, 41
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.113:
-	movgr2fr.w	$fs0, $zero
-	ori	$a0, $zero, 2009
-	move	$a1, $zero
-	fmov.s	$fa0, $fs0
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2003
-	move	$a1, $zero
-	fmov.s	$fa0, $fs0
-.LBB1_114:                              # %match.exit102.thread
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	b	.LBB1_136
-.LBB1_115:
-	move	$s3, $a0
-	addi.w	$a0, $a1, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_137
-# %bb.116:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $s2, %pc_lo12(ErrorFlag)
-	beqz	$a0, .LBB1_137
-# %bb.117:
-	move	$a0, $s3
-	b	.LBB1_136
-.LBB1_118:
-	move	$s0, $a0
-	addi.w	$a0, $a3, -2007
-	ori	$a1, $zero, 1
-	bltu	$a1, $a0, .LBB1_120
-# %bb.119:
-	pcalau12i	$a0, %pc_hi20(.L.str)
-	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-.LBB1_120:                              # %.thread196
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	move	$a0, $s0
-.LBB1_121:                              # %match.exit147
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.122:
-	move	$s0, $a0
-	pcalau12i	$s1, %pc_hi20(FloatFlag)
-	st.w	$zero, $s1, %pc_lo12(FloatFlag)
-	pcaddu18i	$ra, %call36(exprAssg)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-# %bb.123:
-	ld.w	$a0, $s1, %pc_lo12(FloatFlag)
-	beqz	$a0, .LBB1_125
-# %bb.124:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2002
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	st.w	$zero, $s1, %pc_lo12(FloatFlag)
-.LBB1_125:
-	ori	$a0, $zero, 41
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	move	$a0, $s0
-	bnez	$a1, .LBB1_136
-# %bb.126:
-	movgr2fr.w	$fs0, $zero
-	ori	$a0, $zero, 2046
-.LBB1_127:                              # %match.exit102.thread
-	move	$a1, $zero
-	fmov.s	$fa0, $fs0
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 256
-	ori	$a1, $zero, 1
-.LBB1_128:                              # %match.exit102.thread
-	fmov.s	$fa0, $fs0
-	b	.LBB1_147
-.LBB1_129:
-	ori	$a0, $zero, 2003
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-# %bb.130:
-	ori	$a0, $zero, 41
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	bnez	$a0, .LBB1_135
-# %bb.131:
-	pcaddu18i	$ra, %call36(factor)
-	jirl	$ra, $ra, 0
-	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
-	move	$a1, $a0
-	move	$a0, $s0
-	bnez	$a2, .LBB1_136
-# %bb.132:
-	ori	$a0, $zero, 1
-	bnez	$a1, .LBB1_136
-# %bb.133:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2003
-	move	$a1, $zero
-	b	.LBB1_114
-.LBB1_134:
-	pcalau12i	$s1, %pc_hi20(FloatFlag)
-	st.w	$zero, $s1, %pc_lo12(FloatFlag)
-	pcaddu18i	$ra, %call36(exprAssg)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
-	beqz	$a0, .LBB1_148
-.LBB1_135:
-	move	$a0, $s0
-.LBB1_136:                              # %match.exit102.thread
-	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 144
-	ret
-.LBB1_137:                              # %.thread
-	ld.w	$a1, $s1, %pc_lo12(lookahead)
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	move	$a0, $s3
-.LBB1_138:                              # %match.exit102
-	ld.w	$a1, $s2, %pc_lo12(ErrorFlag)
-	bnez	$a1, .LBB1_136
-# %bb.139:
-	beqz	$s0, .LBB1_153
-# %bb.140:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2063
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	slli.d	$a0, $s0, 5
-	b	.LBB1_152
-.LBB1_141:
-	beqz	$a1, .LBB1_155
-# %bb.142:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2052
-.LBB1_143:
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	ld.w	$fp, $fp, %pc_lo12(LocalIndex)
-	ld.w	$s0, $s1, %pc_lo12(GlobalIndex)
-	ori	$a0, $zero, 259
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(ErrorFlag)
-	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
-	beqz	$a0, .LBB1_150
-# %bb.144:
-	addi.w	$a0, $zero, -99
-	b	.LBB1_136
-.LBB1_145:
-	ori	$a0, $zero, 2038
-.LBB1_146:                              # %match.exit102.thread
-	move	$a1, $zero
-.LBB1_147:                              # %match.exit102.thread
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	move	$a0, $zero
-	b	.LBB1_136
-.LBB1_148:
-	ori	$a0, $zero, 41
-	pcaddu18i	$ra, %call36(match)
-	jirl	$ra, $ra, 0
-	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
-	move	$a0, $s0
-	bnez	$a1, .LBB1_136
-# %bb.149:
-	ld.w	$a0, $s1, %pc_lo12(FloatFlag)
-	sltu	$a0, $zero, $a0
-	b	.LBB1_136
-.LBB1_150:
-	beqz	$fp, .LBB1_156
-# %bb.151:
-	slli.d	$a0, $fp, 5
-.LBB1_152:                              # %match.exit102.thread
-	pcalau12i	$a1, %pc_hi20(LocalTable)
-	addi.d	$a1, $a1, %pc_lo12(LocalTable)
-	b	.LBB1_158
-.LBB1_153:
-	beqz	$fp, .LBB1_159
-# %bb.154:
-	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 2023
-	move	$a1, $zero
-	pcaddu18i	$ra, %call36(emit)
-	jirl	$ra, $ra, 0
-	slli.d	$a0, $fp, 5
-	b	.LBB1_157
-.LBB1_155:
-	pcalau12i	$a0, %pc_hi20(.L.str.17)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
-	b	.LBB1_86
-.LBB1_156:
-	slli.d	$a0, $s0, 5
-.LBB1_157:                              # %match.exit102.thread
-	pcalau12i	$a1, %pc_hi20(GlobalTable)
-	addi.d	$a1, $a1, %pc_lo12(GlobalTable)
-.LBB1_158:                              # %match.exit102.thread
-	add.d	$a0, $a1, $a0
-	ld.w	$a0, $a0, 12
-	addi.d	$a0, $a0, -2003
-	sltui	$a0, $a0, 1
-	b	.LBB1_136
-.LBB1_159:
-	pcalau12i	$a1, %pc_hi20(.L.str.18)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
-	move	$fp, $a0
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(error)
-	jirl	$ra, $ra, 0
-	b	.LBB1_28
-.LBB1_160:
+	ld.w	$a0, $s4, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_119
+# %bb.35:
 	pcalau12i	$s5, %pc_hi20(LabelCounter)
 	ld.w	$a1, $s5, %pc_lo12(LabelCounter)
 	pcalau12i	$s1, %pc_hi20(CallReturnAddr)
@@ -1325,29 +467,884 @@ factor:                                 # @factor
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(emit)
 	jirl	$ra, $ra, 0
-	beqz	$s0, .LBB1_163
-# %bb.161:
+	beqz	$s0, .LBB1_162
+# %bb.36:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
-.LBB1_162:                              # %match.exit102.thread
+.LBB1_37:                               # %match.exit102.thread
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
-	b	.LBB1_136
-.LBB1_163:
-	beqz	$fp, .LBB1_166
-# %bb.164:
+	move	$a0, $s3
+	b	.LBB1_138
+.LBB1_38:
+	pcalau12i	$a0, %pc_hi20(.L.str.19)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+.LBB1_39:                               # %match.exit102.thread
+	move	$a0, $zero
+	b	.LBB1_138
+.LBB1_40:
+	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
+	ori	$a0, $zero, 2045
+	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
+	pcalau12i	$s2, %pc_hi20(tokenval)
+	ld.w	$a0, $s2, %pc_lo12(tokenval)
+	pcalau12i	$s3, %pc_hi20(ftokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
+	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
+	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	pcalau12i	$s0, %pc_hi20(NextLookahead)
+	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
+	pcalau12i	$s7, %pc_hi20(NextTokenval)
+	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
+	pcalau12i	$s8, %pc_hi20(NextFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a0, $s1, %pc_lo12(lookahead)
+	st.w	$a1, $s2, %pc_lo12(tokenval)
+	ori	$a1, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a0, $a1, .LBB1_42
+# %bb.41:
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	st.w	$a0, $s0, %pc_lo12(NextLookahead)
+.LBB1_42:                               # %match.exit132
+	pcalau12i	$fp, %pc_hi20(ErrorFlag)
+	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
+	addi.w	$a0, $zero, -99
+	bnez	$a2, .LBB1_138
+# %bb.43:
+	ld.w	$a3, $s1, %pc_lo12(lookahead)
+	ori	$a2, $zero, 40
+	bne	$a3, $a2, .LBB1_89
+# %bb.44:
+	ld.w	$a3, $s2, %pc_lo12(tokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
+	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
+	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a1, $s1, %pc_lo12(lookahead)
+	st.w	$a2, $s2, %pc_lo12(tokenval)
+	ori	$a2, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a1, $a2, .LBB1_92
+# %bb.45:
+	move	$s1, $a0
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s1
+	st.w	$a1, $s0, %pc_lo12(NextLookahead)
+	b	.LBB1_92
+.LBB1_46:
+	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
+	ori	$a0, $zero, 2044
+	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
+	pcalau12i	$s2, %pc_hi20(tokenval)
+	ld.w	$a0, $s2, %pc_lo12(tokenval)
+	pcalau12i	$s3, %pc_hi20(ftokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
+	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
+	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	pcalau12i	$s0, %pc_hi20(NextLookahead)
+	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
+	pcalau12i	$s7, %pc_hi20(NextTokenval)
+	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
+	pcalau12i	$s8, %pc_hi20(NextFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a0, $s1, %pc_lo12(lookahead)
+	st.w	$a1, $s2, %pc_lo12(tokenval)
+	ori	$a1, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a0, $a1, .LBB1_48
+# %bb.47:
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	st.w	$a0, $s0, %pc_lo12(NextLookahead)
+.LBB1_48:                               # %match.exit122
+	pcalau12i	$fp, %pc_hi20(ErrorFlag)
+	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
+	addi.w	$a0, $zero, -99
+	bnez	$a2, .LBB1_138
+# %bb.49:
+	ld.w	$a3, $s1, %pc_lo12(lookahead)
+	ori	$a2, $zero, 40
+	bne	$a3, $a2, .LBB1_98
+# %bb.50:
+	ld.w	$a3, $s2, %pc_lo12(tokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
+	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
+	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a1, $s1, %pc_lo12(lookahead)
+	st.w	$a2, $s2, %pc_lo12(tokenval)
+	ori	$a2, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a1, $a2, .LBB1_101
+# %bb.51:
+	move	$s1, $a0
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s1
+	st.w	$a1, $s0, %pc_lo12(NextLookahead)
+	b	.LBB1_101
+.LBB1_52:
+	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
+	ori	$a0, $zero, 2011
+	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
+	pcalau12i	$s2, %pc_hi20(tokenval)
+	ld.w	$a0, $s2, %pc_lo12(tokenval)
+	pcalau12i	$s3, %pc_hi20(ftokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
+	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
+	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	pcalau12i	$s0, %pc_hi20(NextLookahead)
+	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
+	pcalau12i	$s7, %pc_hi20(NextTokenval)
+	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
+	pcalau12i	$s8, %pc_hi20(NextFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a0, $s1, %pc_lo12(lookahead)
+	st.w	$a1, $s2, %pc_lo12(tokenval)
+	ori	$a1, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a0, $a1, .LBB1_54
+# %bb.53:
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	st.w	$a0, $s0, %pc_lo12(NextLookahead)
+.LBB1_54:                               # %match.exit152
+	pcalau12i	$fp, %pc_hi20(ErrorFlag)
+	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
+	addi.w	$a0, $zero, -99
+	bnez	$a2, .LBB1_138
+# %bb.55:
+	ld.w	$a3, $s1, %pc_lo12(lookahead)
+	ori	$a2, $zero, 40
+	bne	$a3, $a2, .LBB1_104
+# %bb.56:
+	ld.w	$a3, $s2, %pc_lo12(tokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
+	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
+	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a1, $s1, %pc_lo12(lookahead)
+	st.w	$a2, $s2, %pc_lo12(tokenval)
+	ori	$a2, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a1, $a2, .LBB1_107
+# %bb.57:
+	move	$s1, $a0
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s1
+	st.w	$a1, $s0, %pc_lo12(NextLookahead)
+	b	.LBB1_107
+.LBB1_58:
+	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
+	ori	$a0, $zero, 2043
+	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
+	pcalau12i	$s2, %pc_hi20(tokenval)
+	ld.w	$a0, $s2, %pc_lo12(tokenval)
+	pcalau12i	$s3, %pc_hi20(ftokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
+	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
+	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	pcalau12i	$s0, %pc_hi20(NextLookahead)
+	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
+	pcalau12i	$s7, %pc_hi20(NextTokenval)
+	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
+	pcalau12i	$s8, %pc_hi20(NextFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a0, $s1, %pc_lo12(lookahead)
+	st.w	$a1, $s2, %pc_lo12(tokenval)
+	ori	$a1, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a0, $a1, .LBB1_60
+# %bb.59:
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	st.w	$a0, $s0, %pc_lo12(NextLookahead)
+.LBB1_60:                               # %match.exit112
+	pcalau12i	$fp, %pc_hi20(ErrorFlag)
+	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
+	addi.w	$a0, $zero, -99
+	bnez	$a2, .LBB1_138
+# %bb.61:
+	ld.w	$a3, $s1, %pc_lo12(lookahead)
+	ori	$a2, $zero, 40
+	bne	$a3, $a2, .LBB1_110
+# %bb.62:
+	ld.w	$a3, $s2, %pc_lo12(tokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
+	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
+	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a1, $s1, %pc_lo12(lookahead)
+	st.w	$a2, $s2, %pc_lo12(tokenval)
+	ori	$a2, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a1, $a2, .LBB1_113
+# %bb.63:
+	move	$s1, $a0
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s1
+	st.w	$a1, $s0, %pc_lo12(NextLookahead)
+	b	.LBB1_113
+.LBB1_64:
+	pcalau12i	$a0, %pc_hi20(LocalIndex)
+	ld.w	$s0, $a0, %pc_lo12(LocalIndex)
+	pcalau12i	$a0, %pc_hi20(GlobalIndex)
+	ld.w	$fp, $a0, %pc_lo12(GlobalIndex)
+	pcaddu18i	$ra, %call36(PushArrayCellAddr)
+	jirl	$ra, $ra, 0
+	pcalau12i	$s2, %pc_hi20(ErrorFlag)
+	ld.w	$a1, $s2, %pc_lo12(ErrorFlag)
+	addi.w	$a0, $zero, -99
+	bnez	$a1, .LBB1_138
+# %bb.65:
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a3, %pc_hi20(ArrayParsed)
+	ori	$a2, $zero, 2006
+	st.w	$zero, $a3, %pc_lo12(ArrayParsed)
+	bne	$a1, $a2, .LBB1_117
+# %bb.66:
+	pcalau12i	$a1, %pc_hi20(PreviousLookahead)
+	st.w	$a2, $a1, %pc_lo12(PreviousLookahead)
+	pcalau12i	$a1, %pc_hi20(tokenval)
+	ld.w	$a2, $a1, %pc_lo12(tokenval)
+	pcalau12i	$a3, %pc_hi20(ftokenval)
+	fld.s	$fa0, $a3, %pc_lo12(ftokenval)
+	pcalau12i	$a4, %pc_hi20(PreviousTokenval)
+	st.w	$a2, $a4, %pc_lo12(PreviousTokenval)
+	pcalau12i	$a2, %pc_hi20(PreviousFtokenval)
+	fst.s	$fa0, $a2, %pc_lo12(PreviousFtokenval)
+	pcalau12i	$s3, %pc_hi20(NextLookahead)
+	ld.w	$a2, $s3, %pc_lo12(NextLookahead)
+	pcalau12i	$a4, %pc_hi20(NextTokenval)
+	ld.w	$a4, $a4, %pc_lo12(NextTokenval)
+	pcalau12i	$a5, %pc_hi20(NextFtokenval)
+	fld.s	$fa0, $a5, %pc_lo12(NextFtokenval)
+	st.w	$a2, $s1, %pc_lo12(lookahead)
+	st.w	$a4, $a1, %pc_lo12(tokenval)
+	ori	$a1, $zero, 260
+	fst.s	$fa0, $a3, %pc_lo12(ftokenval)
+	beq	$a2, $a1, .LBB1_140
+# %bb.67:
+	move	$s1, $a0
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s1
+	st.w	$a1, $s3, %pc_lo12(NextLookahead)
+	b	.LBB1_140
+.LBB1_68:
+	pcalau12i	$s4, %pc_hi20(PreviousLookahead)
+	ori	$a0, $zero, 2046
+	st.w	$a0, $s4, %pc_lo12(PreviousLookahead)
+	pcalau12i	$s2, %pc_hi20(tokenval)
+	ld.w	$a0, $s2, %pc_lo12(tokenval)
+	pcalau12i	$s3, %pc_hi20(ftokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	pcalau12i	$s6, %pc_hi20(PreviousTokenval)
+	st.w	$a0, $s6, %pc_lo12(PreviousTokenval)
+	pcalau12i	$s5, %pc_hi20(PreviousFtokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	pcalau12i	$s0, %pc_hi20(NextLookahead)
+	ld.w	$a0, $s0, %pc_lo12(NextLookahead)
+	pcalau12i	$s7, %pc_hi20(NextTokenval)
+	ld.w	$a1, $s7, %pc_lo12(NextTokenval)
+	pcalau12i	$s8, %pc_hi20(NextFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a0, $s1, %pc_lo12(lookahead)
+	st.w	$a1, $s2, %pc_lo12(tokenval)
+	ori	$a1, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a0, $a1, .LBB1_70
+# %bb.69:
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	st.w	$a0, $s0, %pc_lo12(NextLookahead)
+.LBB1_70:                               # %match.exit142
+	pcalau12i	$fp, %pc_hi20(ErrorFlag)
+	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
+	addi.w	$a0, $zero, -99
+	bnez	$a2, .LBB1_138
+# %bb.71:
+	ld.w	$a3, $s1, %pc_lo12(lookahead)
+	ori	$a2, $zero, 40
+	bne	$a3, $a2, .LBB1_120
+# %bb.72:
+	ld.w	$a3, $s2, %pc_lo12(tokenval)
+	fld.s	$fa0, $s3, %pc_lo12(ftokenval)
+	st.w	$a2, $s4, %pc_lo12(PreviousLookahead)
+	st.w	$a3, $s6, %pc_lo12(PreviousTokenval)
+	ld.w	$a2, $s7, %pc_lo12(NextTokenval)
+	fst.s	$fa0, $s5, %pc_lo12(PreviousFtokenval)
+	fld.s	$fa0, $s8, %pc_lo12(NextFtokenval)
+	st.w	$a1, $s1, %pc_lo12(lookahead)
+	st.w	$a2, $s2, %pc_lo12(tokenval)
+	ori	$a2, $zero, 260
+	fst.s	$fa0, $s3, %pc_lo12(ftokenval)
+	beq	$a1, $a2, .LBB1_123
+# %bb.73:
+	move	$s1, $a0
+	pcaddu18i	$ra, %call36(lexan)
+	jirl	$ra, $ra, 0
+	move	$a1, $a0
+	move	$a0, $s1
+	st.w	$a1, $s0, %pc_lo12(NextLookahead)
+	b	.LBB1_123
+.LBB1_74:
+	addi.w	$a0, $a0, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_76
+# %bb.75:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+.LBB1_76:
+	pcalau12i	$a0, %pc_hi20(ErrorFlag)
+	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_78
+# %bb.77:
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+.LBB1_78:                               # %match.exit87
+	pcalau12i	$a0, %pc_hi20(ErrorFlag)
+	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
+	sltui	$a0, $a0, 1
+	addi.w	$a1, $zero, -99
+	masknez	$a0, $a1, $a0
+	b	.LBB1_138
+.LBB1_79:
+	addi.w	$a0, $a0, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_81
+# %bb.80:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+.LBB1_81:
+	pcalau12i	$a0, %pc_hi20(ErrorFlag)
+	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_83
+# %bb.82:
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+.LBB1_83:                               # %match.exit92
+	pcalau12i	$a0, %pc_hi20(ErrorFlag)
+	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
+	sltui	$a0, $a0, 1
+	addi.w	$a1, $zero, -99
+	masknez	$a1, $a1, $a0
+	ori	$a2, $zero, 1
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a1
+	b	.LBB1_138
+.LBB1_84:
+	pcalau12i	$s1, %pc_hi20(GlobalIndex)
+	ld.w	$a1, $s1, %pc_lo12(GlobalIndex)
+	or	$a0, $s0, $a1
+	beqz	$a0, .LBB1_87
+# %bb.85:
+	beqz	$s0, .LBB1_143
+# %bb.86:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2051
+	move	$a1, $s0
+	b	.LBB1_145
+.LBB1_87:
+	pcalau12i	$a0, %pc_hi20(.L.str.16)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
+.LBB1_88:                               # %match.exit102.thread
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	addi.w	$a0, $zero, -99
+	b	.LBB1_138
+.LBB1_89:
+	move	$s0, $a0
+	addi.w	$a0, $a3, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_91
+# %bb.90:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+.LBB1_91:                               # %.thread194
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+.LBB1_92:                               # %match.exit137
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.93:
+	move	$s0, $a0
+	pcalau12i	$s1, %pc_hi20(FloatFlag)
+	st.w	$zero, $s1, %pc_lo12(FloatFlag)
+	pcaddu18i	$ra, %call36(exprAssg)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+# %bb.94:
+	ld.w	$a0, $s1, %pc_lo12(FloatFlag)
+	bnez	$a0, .LBB1_96
+# %bb.95:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2003
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 1
+	st.w	$a0, $s1, %pc_lo12(FloatFlag)
+.LBB1_96:
+	ori	$a0, $zero, 41
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	move	$a0, $s0
+	bnez	$a1, .LBB1_138
+# %bb.97:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2045
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 2001
+	ori	$a1, $zero, 1
+	vldi	$vr0, -1168
+	b	.LBB1_116
+.LBB1_98:
+	move	$s0, $a0
+	addi.w	$a0, $a3, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_100
+# %bb.99:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+.LBB1_100:                              # %.thread192
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+.LBB1_101:                              # %match.exit127
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.102:
+	move	$s0, $a0
+	ori	$a0, $zero, 41
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.103:
+	movgr2fr.w	$fs0, $zero
+	ori	$a0, $zero, 2009
+	move	$a1, $zero
+	fmov.s	$fa0, $fs0
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 2002
+	move	$a1, $zero
+	b	.LBB1_130
+.LBB1_104:
+	move	$s0, $a0
+	addi.w	$a0, $a3, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_106
+# %bb.105:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+.LBB1_106:                              # %.thread198
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+.LBB1_107:                              # %match.exit157
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.108:
+	move	$s0, $a0
+	ori	$a0, $zero, 41
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.109:
+	movgr2fr.w	$fs0, $zero
+	ori	$a0, $zero, 2011
+	b	.LBB1_129
+.LBB1_110:
+	move	$s0, $a0
+	addi.w	$a0, $a3, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_112
+# %bb.111:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+.LBB1_112:                              # %.thread190
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+.LBB1_113:                              # %match.exit117
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.114:
+	move	$s0, $a0
+	ori	$a0, $zero, 41
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.115:
+	movgr2fr.w	$fs0, $zero
+	ori	$a0, $zero, 2009
+	move	$a1, $zero
+	fmov.s	$fa0, $fs0
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 2003
+	move	$a1, $zero
+	fmov.s	$fa0, $fs0
+.LBB1_116:                              # %match.exit102.thread
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 1
+	b	.LBB1_138
+.LBB1_117:
+	move	$s3, $a0
+	addi.w	$a0, $a1, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_139
+# %bb.118:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $s2, %pc_lo12(ErrorFlag)
+	beqz	$a0, .LBB1_139
+.LBB1_119:
+	move	$a0, $s3
+	b	.LBB1_138
+.LBB1_120:
+	move	$s0, $a0
+	addi.w	$a0, $a3, -2007
+	ori	$a1, $zero, 1
+	bltu	$a1, $a0, .LBB1_122
+# %bb.121:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+.LBB1_122:                              # %.thread196
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+.LBB1_123:                              # %match.exit147
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.124:
+	move	$s0, $a0
+	pcalau12i	$s1, %pc_hi20(FloatFlag)
+	st.w	$zero, $s1, %pc_lo12(FloatFlag)
+	pcaddu18i	$ra, %call36(exprAssg)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+# %bb.125:
+	ld.w	$a0, $s1, %pc_lo12(FloatFlag)
+	beqz	$a0, .LBB1_127
+# %bb.126:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2002
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	st.w	$zero, $s1, %pc_lo12(FloatFlag)
+.LBB1_127:
+	ori	$a0, $zero, 41
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	move	$a0, $s0
+	bnez	$a1, .LBB1_138
+# %bb.128:
+	movgr2fr.w	$fs0, $zero
+	ori	$a0, $zero, 2046
+.LBB1_129:                              # %match.exit102.thread
+	move	$a1, $zero
+	fmov.s	$fa0, $fs0
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 256
+	ori	$a1, $zero, 1
+.LBB1_130:                              # %match.exit102.thread
+	fmov.s	$fa0, $fs0
+	b	.LBB1_149
+.LBB1_131:
+	ori	$a0, $zero, 2003
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+# %bb.132:
+	ori	$a0, $zero, 41
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	bnez	$a0, .LBB1_137
+# %bb.133:
+	pcaddu18i	$ra, %call36(factor)
+	jirl	$ra, $ra, 0
+	ld.w	$a2, $fp, %pc_lo12(ErrorFlag)
+	move	$a1, $a0
+	move	$a0, $s0
+	bnez	$a2, .LBB1_138
+# %bb.134:
+	ori	$a0, $zero, 1
+	bnez	$a1, .LBB1_138
+# %bb.135:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2003
+	move	$a1, $zero
+	b	.LBB1_116
+.LBB1_136:
+	pcalau12i	$s1, %pc_hi20(FloatFlag)
+	st.w	$zero, $s1, %pc_lo12(FloatFlag)
+	pcaddu18i	$ra, %call36(exprAssg)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $fp, %pc_lo12(ErrorFlag)
+	beqz	$a0, .LBB1_150
+.LBB1_137:
+	move	$a0, $s0
+.LBB1_138:                              # %match.exit102.thread
+	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
+	ret
+.LBB1_139:                              # %.thread
+	ld.w	$a1, $s1, %pc_lo12(lookahead)
+	pcalau12i	$a0, %pc_hi20(.L.str.2)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.3)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	move	$a0, $s3
+.LBB1_140:                              # %match.exit102
+	ld.w	$a1, $s2, %pc_lo12(ErrorFlag)
+	bnez	$a1, .LBB1_138
+# %bb.141:
+	beqz	$s0, .LBB1_155
+# %bb.142:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2063
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	slli.d	$a0, $s0, 5
+	b	.LBB1_154
+.LBB1_143:
+	beqz	$a1, .LBB1_157
+# %bb.144:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2052
+.LBB1_145:
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	ld.w	$fp, $fp, %pc_lo12(LocalIndex)
+	ld.w	$s0, $s1, %pc_lo12(GlobalIndex)
+	ori	$a0, $zero, 259
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(ErrorFlag)
+	ld.w	$a0, $a0, %pc_lo12(ErrorFlag)
+	beqz	$a0, .LBB1_152
+# %bb.146:
+	addi.w	$a0, $zero, -99
+	b	.LBB1_138
+.LBB1_147:
+	ori	$a0, $zero, 2038
+.LBB1_148:                              # %match.exit102.thread
+	move	$a1, $zero
+.LBB1_149:                              # %match.exit102.thread
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	move	$a0, $zero
+	b	.LBB1_138
+.LBB1_150:
+	ori	$a0, $zero, 41
+	pcaddu18i	$ra, %call36(match)
+	jirl	$ra, $ra, 0
+	ld.w	$a1, $fp, %pc_lo12(ErrorFlag)
+	move	$a0, $s0
+	bnez	$a1, .LBB1_138
+# %bb.151:
+	ld.w	$a0, $s1, %pc_lo12(FloatFlag)
+	sltu	$a0, $zero, $a0
+	b	.LBB1_138
+.LBB1_152:
+	beqz	$fp, .LBB1_158
+# %bb.153:
+	slli.d	$a0, $fp, 5
+.LBB1_154:                              # %match.exit102.thread
+	pcalau12i	$a1, %pc_hi20(LocalTable)
+	addi.d	$a1, $a1, %pc_lo12(LocalTable)
+	b	.LBB1_160
+.LBB1_155:
+	beqz	$fp, .LBB1_161
+# %bb.156:
+	movgr2fr.w	$fa0, $zero
+	ori	$a0, $zero, 2023
+	move	$a1, $zero
+	pcaddu18i	$ra, %call36(emit)
+	jirl	$ra, $ra, 0
+	slli.d	$a0, $fp, 5
+	b	.LBB1_159
+.LBB1_157:
+	pcalau12i	$a0, %pc_hi20(.L.str.17)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.17)
+	b	.LBB1_88
+.LBB1_158:
+	slli.d	$a0, $s0, 5
+.LBB1_159:                              # %match.exit102.thread
+	pcalau12i	$a1, %pc_hi20(GlobalTable)
+	addi.d	$a1, $a1, %pc_lo12(GlobalTable)
+.LBB1_160:                              # %match.exit102.thread
+	add.d	$a0, $a1, $a0
+	ld.w	$a0, $a0, 12
+	addi.d	$a0, $a0, -2003
+	sltui	$a0, $a0, 1
+	b	.LBB1_138
+.LBB1_161:
+	pcalau12i	$a1, %pc_hi20(.L.str.18)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
+	move	$fp, $a0
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(error)
+	jirl	$ra, $ra, 0
+	b	.LBB1_28
+.LBB1_162:
+	beqz	$fp, .LBB1_165
+# %bb.163:
 	slli.d	$a0, $fp, 5
 	pcalau12i	$a1, %pc_hi20(GlobalTable)
 	addi.d	$a1, $a1, %pc_lo12(GlobalTable)
 	add.d	$a0, $a1, $a0
 	ld.w	$a0, $a0, 20
-	bnez	$a0, .LBB1_169
-# %bb.165:
+	bnez	$a0, .LBB1_168
+# %bb.164:
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
-	b	.LBB1_162
-.LBB1_166:
+	b	.LBB1_37
+.LBB1_165:
 	ld.w	$a5, $s5, %pc_lo12(LabelCounter)
 	addi.d	$a0, $sp, 18
 	ori	$a1, $zero, 259
@@ -1356,16 +1353,16 @@ factor:                                 # @factor
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(GlobalInsert)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s3, %pc_lo12(ErrorFlag)
+	ld.w	$a1, $s4, %pc_lo12(ErrorFlag)
 	move	$fp, $a0
-	beqz	$a1, .LBB1_168
-# %bb.167:
-	st.w	$zero, $s3, %pc_lo12(ErrorFlag)
-.LBB1_168:
+	beqz	$a1, .LBB1_167
+# %bb.166:
+	st.w	$zero, $s4, %pc_lo12(ErrorFlag)
+.LBB1_167:
 	ld.w	$a0, $s5, %pc_lo12(LabelCounter)
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s5, %pc_lo12(LabelCounter)
-.LBB1_169:
+.LBB1_168:
 	slli.d	$a0, $fp, 5
 	pcalau12i	$a1, %pc_hi20(GlobalTable)
 	addi.d	$a1, $a1, %pc_lo12(GlobalTable)
@@ -1397,63 +1394,63 @@ factor:                                 # @factor
 	pcaddu18i	$ra, %call36(emit)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 20
-	bgez	$a0, .LBB1_37
-# %bb.170:
+	bgez	$a0, .LBB1_39
+# %bb.169:
 	ld.w	$a0, $fp, 12
 	addi.d	$a0, $a0, -2002
 	sltu	$a0, $zero, $a0
-	b	.LBB1_136
+	b	.LBB1_138
 .Lfunc_end1:
 	.size	factor, .Lfunc_end1-factor
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI1_0:
 	.word	.LBB1_3-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_62-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_50-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_36-.LJTI1_0
-	.word	.LBB1_56-.LJTI1_0
-	.word	.LBB1_44-.LJTI1_0
 	.word	.LBB1_38-.LJTI1_0
-	.word	.LBB1_66-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_64-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_52-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_38-.LJTI1_0
+	.word	.LBB1_58-.LJTI1_0
+	.word	.LBB1_46-.LJTI1_0
+	.word	.LBB1_40-.LJTI1_0
+	.word	.LBB1_68-.LJTI1_0
                                         # -- End function
 	.text
 	.globl	match                           # -- Begin function match
@@ -2174,18 +2171,18 @@ DeclOrF:                                # @DeclOrF
 	ld.w	$a1, $s5, %pc_lo12(ErrorFlag)
 	bnez	$a1, .LBB5_40
 # %bb.35:
-	move	$fp, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.7)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	pcalau12i	$a1, %pc_hi20(lexbuf)
 	addi.d	$a1, $a1, %pc_lo12(lexbuf)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_37
+	ld.w	$a2, $a1, 0
+	ld.bu	$a1, $a1, 4
+	lu12i.w	$a3, 452246
+	ori	$a3, $a3, 365
+	xor	$a2, $a2, $a3
+	or	$a1, $a2, $a1
+	bnez	$a1, .LBB5_37
 # %bb.36:
-	pcalau12i	$a0, %pc_hi20(GlobalIndex)
-	st.w	$fp, $a0, %pc_lo12(GlobalIndex)
+	pcalau12i	$a1, %pc_hi20(GlobalIndex)
+	st.w	$a0, $a1, %pc_lo12(GlobalIndex)
 .LBB5_37:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$fp, $a0, %pc_lo12(PreviousLookahead)
@@ -2241,18 +2238,18 @@ DeclOrF:                                # @DeclOrF
 	addi.d	$sp, $sp, 144
 	ret
 .LBB5_41:
-	move	$s0, $a0
-	pcalau12i	$a0, %pc_hi20(.L.str.7)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	pcalau12i	$a1, %pc_hi20(lexbuf)
 	addi.d	$a1, $a1, %pc_lo12(lexbuf)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB5_38
+	ld.w	$a2, $a1, 0
+	ld.bu	$a1, $a1, 4
+	lu12i.w	$a3, 452246
+	ori	$a3, $a3, 365
+	xor	$a2, $a2, $a3
+	or	$a1, $a2, $a1
+	bnez	$a1, .LBB5_38
 # %bb.42:
-	pcalau12i	$a0, %pc_hi20(GlobalIndex)
-	st.w	$s0, $a0, %pc_lo12(GlobalIndex)
+	pcalau12i	$a1, %pc_hi20(GlobalIndex)
+	st.w	$a0, $a1, %pc_lo12(GlobalIndex)
 	b	.LBB5_38
 .Lfunc_end5:
 	.size	DeclOrF, .Lfunc_end5-DeclOrF

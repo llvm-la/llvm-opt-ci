@@ -33,15 +33,14 @@ wireestx:                               # @wireestx
 	srai.d	$a1, $a1, 1
 	b	.LBB0_7
 .LBB0_3:
-	sub.w	$a7, $a1, $a6
-	srai.d	$t0, $a7, 31
-	xor	$a7, $a7, $t0
-	sub.w	$a7, $a7, $t0
-	sub.w	$a6, $a2, $a6
-	srai.d	$t0, $a6, 31
-	xor	$a6, $a6, $t0
-	sub.w	$a6, $a6, $t0
-	bgeu	$a6, $a7, .LBB0_5
+	sub.d	$a7, $a1, $a6
+	sub.d	$a6, $a2, $a6
+	vinsgr2vr.w	$vr1, $a7, 0
+	vinsgr2vr.w	$vr1, $a6, 1
+	vsigncov.w	$vr1, $vr1, $vr1
+	vpickve2gr.w	$a6, $vr1, 0
+	vpickve2gr.w	$a7, $vr1, 1
+	bgeu	$a7, $a6, .LBB0_5
 # %bb.4:
 	pcalau12i	$a1, %got_pc_hi20(blockb)
 	ld.d	$a1, $a1, %got_pc_lo12(blockb)
@@ -128,15 +127,14 @@ wireesty:                               # @wireesty
 	srai.d	$a1, $a1, 1
 	b	.LBB1_7
 .LBB1_3:
-	sub.w	$a7, $a1, $a6
-	srai.d	$t0, $a7, 31
-	xor	$a7, $a7, $t0
-	sub.w	$a7, $a7, $t0
-	sub.w	$a6, $a2, $a6
-	srai.d	$t0, $a6, 31
-	xor	$a6, $a6, $t0
-	sub.w	$a6, $a6, $t0
-	bgeu	$a6, $a7, .LBB1_5
+	sub.d	$a7, $a1, $a6
+	sub.d	$a6, $a2, $a6
+	vinsgr2vr.w	$vr1, $a7, 0
+	vinsgr2vr.w	$vr1, $a6, 1
+	vsigncov.w	$vr1, $vr1, $vr1
+	vpickve2gr.w	$a6, $vr1, 0
+	vpickve2gr.w	$a7, $vr1, 1
+	bgeu	$a7, $a6, .LBB1_5
 # %bb.4:
 	pcalau12i	$a1, %got_pc_hi20(blockl)
 	ld.d	$a1, $a1, %got_pc_lo12(blockl)

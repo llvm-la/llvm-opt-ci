@@ -31,29 +31,21 @@ Bounds_Infinite:                        # @Bounds_Infinite
 .Lfunc_end1:
 	.size	Bounds_Infinite, .Lfunc_end1-Bounds_Infinite
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Bounds_AddBounds
-.LCPI2_0:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-	.text
-	.globl	Bounds_AddBounds
+	.globl	Bounds_AddBounds                # -- Begin function Bounds_AddBounds
 	.p2align	5
 	.type	Bounds_AddBounds,@function
 Bounds_AddBounds:                       # @Bounds_AddBounds
 # %bb.0:
-	xvld	$xr0, $a0, 0
-	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI2_0)
-	xvld	$xr2, $a1, 0
-	xvori.b	$xr3, $xr1, 0
-	xvshuf.d	$xr3, $xr2, $xr0
-	xvshuf.d	$xr1, $xr0, $xr2
-	xvfcmp.clt.d	$xr1, $xr3, $xr1
-	xvbitsel.v	$xr0, $xr2, $xr0, $xr1
-	xvst	$xr0, $a0, 0
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a1, 0
+	vfcmp.clt.d	$vr2, $vr0, $vr1
+	vbitsel.v	$vr0, $vr1, $vr0, $vr2
+	vst	$vr0, $a0, 0
+	vld	$vr0, $a0, 16
+	vld	$vr1, $a1, 16
+	vfcmp.clt.d	$vr2, $vr1, $vr0
+	vbitsel.v	$vr0, $vr1, $vr0, $vr2
+	vst	$vr0, $a0, 16
 	ret
 .Lfunc_end2:
 	.size	Bounds_AddBounds, .Lfunc_end2-Bounds_AddBounds

@@ -85,11 +85,12 @@ GET_LABEL:                              # @GET_LABEL
 	ld.b	$a5, $a4, 0
 	addi.d	$a6, $a5, -97
 	sltui	$a6, $a6, 26
-	addi.d	$a7, $a5, -32
-	masknez	$a5, $a5, $a6
-	maskeqz	$a6, $a7, $a6
-	or	$a5, $a6, $a5
-	addi.d	$a5, $a5, -65
+	addi.d	$a7, $zero, -65
+	masknez	$a7, $a7, $a6
+	addi.d	$t0, $zero, -97
+	maskeqz	$a6, $t0, $a6
+	or	$a6, $a6, $a7
+	add.d	$a5, $a6, $a5
 	andi	$a5, $a5, 255
 	ori	$a6, $zero, 25
 	bltu	$a6, $a5, .LBB4_8
@@ -196,48 +197,44 @@ GET_OPCODE_STR:                         # @GET_OPCODE_STR
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$fp, $a1, 0
-	ld.b	$a4, $fp, 0
-	addi.d	$a5, $a4, -97
-	sltui	$a5, $a5, 26
-	addi.d	$a6, $a4, -32
-	masknez	$a4, $a4, $a5
-	maskeqz	$a5, $a6, $a5
-	or	$a4, $a5, $a4
-	addi.d	$a4, $a4, -65
-	andi	$a4, $a4, 255
-	ori	$a5, $zero, 25
-	bltu	$a5, $a4, .LBB5_8
+	ld.b	$a6, $fp, 0
+	addi.d	$a4, $a6, -97
+	sltui	$a7, $a4, 26
+	addi.d	$a4, $zero, -65
+	masknez	$t0, $a4, $a7
+	addi.d	$a5, $zero, -97
+	maskeqz	$a7, $a5, $a7
+	or	$a7, $a7, $t0
+	add.d	$a6, $a7, $a6
+	andi	$a6, $a6, 255
+	ori	$a7, $zero, 25
+	bltu	$a7, $a6, .LBB5_7
 # %bb.1:                                # %.preheader.preheader
 	move	$s0, $zero
 	addi.d	$s1, $fp, 1
-	ori	$a4, $zero, 229
+	ori	$a6, $zero, 26
 	.p2align	4, , 16
 .LBB5_2:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$s1, $a1, 0
-	ld.bu	$a5, $s1, 0
+	ld.b	$a7, $s1, 0
+	addi.d	$t0, $a7, -97
+	sltui	$t0, $t0, 26
+	masknez	$t1, $a4, $t0
+	maskeqz	$t0, $a5, $t0
+	or	$t0, $t0, $t1
+	add.d	$a7, $t0, $a7
+	andi	$a7, $a7, 255
 	addi.d	$s1, $s1, 1
 	addi.w	$s0, $s0, 1
-	beqz	$a5, .LBB5_4
-# %bb.3:                                # %.preheader
-                                        #   in Loop: Header=BB5_2 Depth=1
-	ext.w.b	$a6, $a5
-	addi.d	$a6, $a6, -97
-	sltui	$a6, $a6, 26
-	addi.d	$a7, $a5, -32
-	masknez	$a5, $a5, $a6
-	maskeqz	$a6, $a7, $a6
-	or	$a5, $a6, $a5
-	addi.d	$a5, $a5, -91
-	andi	$a5, $a5, 255
-	bltu	$a4, $a5, .LBB5_2
-.LBB5_4:                                # %.critedge
+	bltu	$a7, $a6, .LBB5_2
+# %bb.3:                                # %.critedge
 	ori	$a1, $zero, 9
-	bltu	$s0, $a1, .LBB5_7
-# %bb.5:
+	bltu	$s0, $a1, .LBB5_6
+# %bb.4:
 	ori	$s0, $zero, 8
-	bnez	$a2, .LBB5_7
-# %bb.6:
+	bnez	$a2, .LBB5_6
+# %bb.5:
 	ld.b	$s3, $s1, -1
 	st.b	$zero, $s1, -1
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
@@ -252,17 +249,17 @@ GET_OPCODE_STR:                         # @GET_OPCODE_STR
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
 	st.b	$s3, $s1, -1
-.LBB5_7:
+.LBB5_6:
 	move	$s1, $a0
 	move	$a1, $fp
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(strncpy)
 	jirl	$ra, $ra, 0
 	stx.b	$zero, $s1, $s0
-	b	.LBB5_9
-.LBB5_8:
+	b	.LBB5_8
+.LBB5_7:
 	st.b	$zero, $a0, 0
-.LBB5_9:
+.LBB5_8:
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -315,7 +312,7 @@ SCAN_LINE:                              # @SCAN_LINE
 	st.b	$zero, $s4, 0
 	st.w	$zero, $s3, 0
 	st.b	$zero, $s2, 0
-	b	.LBB6_38
+	b	.LBB6_37
 .LBB6_3:
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
@@ -387,52 +384,48 @@ SCAN_LINE:                              # @SCAN_LINE
 .LBB6_16:                               # %.loopexit
 	st.d	$s4, $sp, 8
 	st.w	$a0, $s3, 0
-	ld.b	$a0, $s4, 0
-	addi.d	$a1, $a0, -97
-	sltui	$a1, $a1, 26
-	addi.d	$a2, $a0, -32
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a2, $a1
-	or	$a0, $a1, $a0
-	addi.d	$a0, $a0, -65
-	andi	$a0, $a0, 255
-	ori	$a1, $zero, 25
-	bltu	$a1, $a0, .LBB6_24
+	ld.b	$a2, $s4, 0
+	addi.d	$a0, $a2, -97
+	sltui	$a3, $a0, 26
+	addi.d	$a0, $zero, -65
+	masknez	$a4, $a0, $a3
+	addi.d	$a1, $zero, -97
+	maskeqz	$a3, $a1, $a3
+	or	$a3, $a3, $a4
+	add.d	$a2, $a3, $a2
+	andi	$a2, $a2, 255
+	ori	$a3, $zero, 25
+	bltu	$a3, $a2, .LBB6_23
 # %bb.17:                               # %.preheader.i.preheader
-	move	$a0, $zero
-	ori	$a1, $zero, 229
+	move	$a2, $zero
+	ori	$a3, $zero, 26
 	move	$s6, $s4
 	.p2align	4, , 16
 .LBB6_18:                               # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $s6, 1
+	ld.b	$a4, $s6, 1
 	addi.d	$s6, $s6, 1
-	addi.w	$a0, $a0, 1
-	beqz	$a2, .LBB6_20
-# %bb.19:                               # %.preheader.i
-                                        #   in Loop: Header=BB6_18 Depth=1
-	ext.w.b	$a3, $a2
-	addi.d	$a3, $a3, -97
-	sltui	$a3, $a3, 26
-	addi.d	$a4, $a2, -32
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $a4, $a3
-	or	$a2, $a3, $a2
-	addi.d	$a2, $a2, -91
-	andi	$a2, $a2, 255
-	bltu	$a1, $a2, .LBB6_18
-.LBB6_20:                               # %.critedge.i
+	addi.d	$a5, $a4, -97
+	sltui	$a5, $a5, 26
+	masknez	$a6, $a0, $a5
+	maskeqz	$a5, $a1, $a5
+	or	$a5, $a5, $a6
+	add.d	$a4, $a5, $a4
+	andi	$a4, $a4, 255
+	addi.w	$a2, $a2, 1
+	bltu	$a4, $a3, .LBB6_18
+# %bb.19:                               # %.critedge.i
 	st.d	$s6, $sp, 8
-	sltui	$a1, $a0, 8
-	ori	$a2, $zero, 8
-	masknez	$a2, $a2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$s5, $a1, $a2
-	bnez	$s1, .LBB6_23
-# %bb.21:                               # %.critedge.i
-	ori	$a1, $zero, 9
-	bltu	$a0, $a1, .LBB6_23
-# %bb.22:
+	sltui	$a0, $a2, 8
+	ori	$a1, $zero, 8
+	masknez	$a1, $a1, $a0
+	maskeqz	$a0, $a2, $a0
+	or	$s5, $a0, $a1
+	bnez	$s1, .LBB6_22
+# %bb.20:                               # %.critedge.i
+	ori	$a0, $zero, 9
+	bltu	$a2, $a0, .LBB6_22
+# %bb.21:
 	ld.b	$s7, $s6, 0
 	st.b	$zero, $s6, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -444,7 +437,7 @@ SCAN_LINE:                              # @SCAN_LINE
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	st.b	$s7, $s6, 0
-.LBB6_23:
+.LBB6_22:
 	move	$a0, $s2
 	move	$a1, $s4
 	move	$a2, $s5
@@ -453,19 +446,19 @@ SCAN_LINE:                              # @SCAN_LINE
 	stx.b	$zero, $s2, $s5
 	ld.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB6_25
-	b	.LBB6_28
-.LBB6_24:
+	beq	$a0, $a1, .LBB6_24
+	b	.LBB6_27
+.LBB6_23:
 	st.b	$zero, $s2, 0
 	ld.w	$a0, $s3, 0
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB6_28
-.LBB6_25:
-	bnez	$s1, .LBB6_28
-# %bb.26:
+	bne	$a0, $a1, .LBB6_27
+.LBB6_24:
+	bnez	$s1, .LBB6_27
+# %bb.25:
 	ld.bu	$a0, $s2, 0
-	bnez	$a0, .LBB6_28
-# %bb.27:
+	bnez	$a0, .LBB6_27
+# %bb.26:
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
 	ori	$a1, $zero, 45
@@ -473,44 +466,44 @@ SCAN_LINE:                              # @SCAN_LINE
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB6_28:
+.LBB6_27:
 	ld.d	$s2, $sp, 8
 	ld.bu	$a0, $s2, 0
 	ori	$a1, $zero, 32
-	bltu	$a1, $a0, .LBB6_30
-# %bb.29:
+	bltu	$a1, $a0, .LBB6_29
+# %bb.28:
 	ori	$a1, $zero, 1
 	sll.d	$a1, $a1, $a0
 	ori	$a2, $zero, 513
 	lu32i.d	$a2, 1
 	and	$a1, $a1, $a2
-	bnez	$a1, .LBB6_33
-.LBB6_30:
-	bnez	$s1, .LBB6_32
-# %bb.31:
+	bnez	$a1, .LBB6_32
+.LBB6_29:
+	bnez	$s1, .LBB6_31
+# %bb.30:
 	ext.w.b	$a2, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.6)
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB6_32:
+.LBB6_31:
 	addi.d	$s2, $s2, 1
-.LBB6_33:                               # %.preheader
+.LBB6_32:                               # %.preheader
 	ori	$a0, $zero, 32
 	ori	$a1, $zero, 9
-	b	.LBB6_35
+	b	.LBB6_34
 	.p2align	4, , 16
-.LBB6_34:                               #   in Loop: Header=BB6_35 Depth=1
+.LBB6_33:                               #   in Loop: Header=BB6_34 Depth=1
 	addi.d	$s2, $s2, 1
-.LBB6_35:                               # =>This Inner Loop Header: Depth=1
+.LBB6_34:                               # =>This Inner Loop Header: Depth=1
 	ld.bu	$a2, $s2, 0
-	beq	$a2, $a0, .LBB6_34
-# %bb.36:                               #   in Loop: Header=BB6_35 Depth=1
-	beq	$a2, $a1, .LBB6_34
-# %bb.37:                               # %.critedge3
+	beq	$a2, $a0, .LBB6_33
+# %bb.35:                               #   in Loop: Header=BB6_34 Depth=1
+	beq	$a2, $a1, .LBB6_33
+# %bb.36:                               # %.critedge3
 	st.d	$s2, $fp, 0
-.LBB6_38:
+.LBB6_37:
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload

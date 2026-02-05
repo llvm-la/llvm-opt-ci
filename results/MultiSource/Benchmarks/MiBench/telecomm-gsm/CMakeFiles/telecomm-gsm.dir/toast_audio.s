@@ -389,25 +389,26 @@ put_u32:                                # @put_u32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
-	addi.w	$s1, $a1, 0
-	srai.d	$a0, $s1, 24
+	srli.d	$a0, $a1, 24
+	ext.w.b	$a0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
 	beq	$a0, $a1, .LBB2_4
 # %bb.1:
-	srai.d	$a0, $s1, 16
+	srli.d	$a0, $s0, 16
+	ext.w.b	$a0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
 	beq	$a0, $a1, .LBB2_4
 # %bb.2:
-	srai.d	$a0, $s1, 8
+	srli.d	$a0, $s0, 8
+	ext.w.b	$a0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
@@ -423,7 +424,6 @@ put_u32:                                # @put_u32
 	sub.d	$a1, $zero, $a0
 .LBB2_4:
 	move	$a0, $a1
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

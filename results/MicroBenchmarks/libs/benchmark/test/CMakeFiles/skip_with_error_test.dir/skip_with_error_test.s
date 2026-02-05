@@ -8661,77 +8661,72 @@ _GLOBAL__sub_I_skip_with_error_test.cc: # @_GLOBAL__sub_I_skip_with_error_test.c
 .Ltmp247:                               # EH_LABEL
 	ld.d	$a2, $sp, 152
 	move	$s7, $a0
-	beq	$a2, $s8, .LBB39_212
-	b	.LBB39_210
+	bne	$a2, $s8, .LBB39_211
+	b	.LBB39_212
 .LBB39_200:
 .Ltmp236:                               # EH_LABEL
 	ld.d	$a2, $sp, 152
 	move	$s7, $a0
-	bne	$a2, $s8, .LBB39_202
-# %bb.201:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i30
-	bnez	$s5, .LBB39_213
-	b	.LBB39_215
-.LBB39_202:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i29
+	beq	$a2, $s8, .LBB39_202
+# %bb.201:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i29
 	ld.d	$a0, $sp, 168
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB39_202:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i30
 	bnez	$s5, .LBB39_213
 	b	.LBB39_215
 .LBB39_203:
 .Ltmp225:                               # EH_LABEL
 	ld.d	$a2, $sp, 152
 	move	$s7, $a0
-	bne	$a2, $s8, .LBB39_210
+	bne	$a2, $s8, .LBB39_211
 	b	.LBB39_212
 .LBB39_204:
 .Ltmp214:                               # EH_LABEL
 	ld.d	$a2, $sp, 152
 	move	$s7, $a0
-	bne	$a2, $s8, .LBB39_206
-# %bb.205:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s3, .LBB39_213
-	b	.LBB39_215
-.LBB39_206:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beq	$a2, $s8, .LBB39_206
+# %bb.205:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 168
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB39_206:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	bnez	$s3, .LBB39_213
 	b	.LBB39_215
 .LBB39_207:
 .Ltmp294:                               # EH_LABEL
 	ld.d	$a2, $sp, 152
 	move	$s7, $a0
-	beq	$a2, $s8, .LBB39_212
-	b	.LBB39_210
+	bne	$a2, $s8, .LBB39_211
+	b	.LBB39_212
 .LBB39_208:
 .Ltmp311:                               # EH_LABEL
 	ld.d	$a2, $sp, 152
 	move	$s7, $a0
-	beq	$a2, $s8, .LBB39_212
-	b	.LBB39_210
+	bne	$a2, $s8, .LBB39_211
+	b	.LBB39_212
 .LBB39_209:
 .Ltmp281:                               # EH_LABEL
 	ld.d	$a2, $sp, 152
 	move	$s7, $a0
+	bne	$a2, $s8, .LBB39_211
+	b	.LBB39_212
+.LBB39_210:
+.Ltmp264:                               # EH_LABEL
+	ld.d	$a2, $sp, 152
+	move	$s7, $a0
 	beq	$a2, $s8, .LBB39_212
-.LBB39_210:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i8
+.LBB39_211:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i71
 	ld.d	$a0, $sp, 168
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	beqz	$s4, .LBB39_215
-	b	.LBB39_213
-.LBB39_211:
-.Ltmp264:                               # EH_LABEL
-	ld.d	$a2, $sp, 152
-	move	$s7, $a0
-	bne	$a2, $s8, .LBB39_210
-.LBB39_212:                             # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i9
+.LBB39_212:                             # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i72
 	beqz	$s4, .LBB39_215
 .LBB39_213:
 	ori	$a1, $zero, 232

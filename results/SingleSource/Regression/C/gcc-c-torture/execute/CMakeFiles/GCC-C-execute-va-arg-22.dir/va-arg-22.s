@@ -1032,7 +1032,7 @@ foo:                                    # @foo
 	addi.w	$a3, $a3, 0
 	addi.w	$a1, $a1, 1
 	bne	$a4, $a6, .LBB1_150
-# %bb.152:                              # %.loopexit537
+# %bb.152:                              # %.loopexit534
 	ld.d	$a2, $a0, 200
 	addi.d	$a3, $a0, 208
 	ld.d	$a4, $a2, 8
@@ -1069,7 +1069,7 @@ foo:                                    # @foo
 	addi.w	$a3, $a3, 0
 	addi.w	$a1, $a1, 1
 	bne	$a2, $a5, .LBB1_155
-# %bb.157:                              # %.loopexit543
+# %bb.157:                              # %.loopexit540
 	ld.d	$a2, $a0, 208
 	addi.d	$a3, $a0, 216
 	ld.d	$a4, $a2, 8
@@ -1110,7 +1110,7 @@ foo:                                    # @foo
 	addi.w	$a4, $a4, 0
 	addi.w	$s1, $s1, 1
 	bne	$a3, $a1, .LBB1_160
-# %bb.162:                              # %.loopexit550
+# %bb.162:                              # %.loopexit547
 	ld.d	$a1, $a0, 216
 	addi.d	$a0, $a0, 224
 	st.d	$a0, $sp, 16
@@ -1148,7 +1148,7 @@ foo:                                    # @foo
 	addi.w	$a3, $a3, 0
 	addi.d	$a2, $a2, 1
 	bne	$a1, $a5, .LBB1_165
-# %bb.167:                              # %.loopexit557
+# %bb.167:                              # %.loopexit554
 	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload

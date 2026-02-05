@@ -1340,53 +1340,55 @@ _ZN8NArchive5NLzma8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive5NL
 	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
+	.cfi_offset 27, -56
 	move	$fp, $a3
 	ori	$a1, $zero, 22
-	st.w	$zero, $sp, 80
+	st.w	$zero, $sp, 72
 	beq	$a2, $a1, .LBB11_8
 # %bb.1:
 	ori	$a1, $zero, 8
 	beq	$a2, $a1, .LBB11_5
 # %bb.2:
 	ori	$a1, $zero, 7
-	bne	$a2, $a1, .LBB11_85
+	bne	$a2, $a1, .LBB11_19
 # %bb.3:
 	ld.d	$a1, $a0, 72
-	beqz	$a1, .LBB11_85
+	beqz	$a1, .LBB11_19
 # %bb.4:
 	ld.d	$a1, $a0, 24
 	addi.w	$a0, $zero, -1
 	bne	$a1, $a0, .LBB11_7
-	b	.LBB11_85
+	b	.LBB11_19
 .LBB11_5:
 	ld.bu	$a1, $a0, 64
-	beqz	$a1, .LBB11_85
+	beqz	$a1, .LBB11_19
 # %bb.6:
 	ld.d	$a1, $a0, 56
 .LBB11_7:                               # %.invoke
 .Ltmp84:                                # EH_LABEL
-	addi.d	$a0, $sp, 80
+	addi.d	$a0, $sp, 72
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariantaSEy)
 	jirl	$ra, $ra, 0
 .Ltmp85:                                # EH_LABEL
-	b	.LBB11_85
+	b	.LBB11_19
 .LBB11_8:
 	ld.d	$a1, $a0, 72
-	beqz	$a1, .LBB11_85
+	beqz	$a1, .LBB11_19
 # %bb.9:
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 32
-	st.b	$zero, $sp, 16
+	st.b	$zero, $sp, 8
 	beqz	$a0, .LBB11_11
 # %bb.10:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit.loopexit
-	addi.d	$a0, $sp, 16
-	addi.d	$s1, $sp, 16
+	addi.d	$a0, $sp, 8
+	addi.d	$s1, $sp, 8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
@@ -1398,296 +1400,99 @@ _ZN8NArchive5NLzma8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive5NL
 	stx.w	$a3, $a0, $s1
 	st.b	$a2, $a1, 4
 .LBB11_11:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	addi.d	$a0, $sp, 16
-	addi.d	$s3, $sp, 16
+	addi.d	$a0, $sp, 8
+	addi.d	$s4, $sp, 8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
-	add.d	$a1, $s3, $a0
+	add.d	$a1, $s4, $a0
 	pcalau12i	$a2, %pc_hi20(.L.str.1)
 	addi.d	$a2, $a2, %pc_lo12(.L.str.1)
 	ld.w	$a3, $a2, 0
-	stx.w	$a3, $a0, $s3
+	stx.w	$a3, $a0, $s4
 	ld.h	$a0, $a2, 4
 	ld.bu	$a2, $s0, 36
 	ld.hu	$s1, $s0, 34
 	ld.b	$a3, $s0, 37
 	st.h	$a0, $a1, 4
 	slli.d	$a0, $a2, 16
-	or	$s2, $s1, $a0
+	or	$s3, $s1, $a0
 	slli.d	$a0, $a3, 24
-	or	$s0, $s2, $a0
-	addi.d	$a0, $sp, 16
+	or	$s2, $s3, $a0
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $a0, 0
-	addi.w	$a0, $s0, 0
-	lu12i.w	$a2, 7
-	ori	$a2, $a2, 4095
-	add.d	$a1, $s3, $a1
-	blt	$a2, $a0, .LBB11_16
-# %bb.12:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a2, $zero, 127
-	blt	$a2, $a0, .LBB11_22
-# %bb.13:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	addi.d	$a2, $a0, -1
-	ori	$a3, $zero, 63
-	bltu	$a3, $a2, .LBB11_62
-# %bb.14:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	slli.d	$a0, $a2, 2
-	pcalau12i	$a2, %pc_hi20(.LJTI11_0)
-	addi.d	$a2, $a2, %pc_lo12(.LJTI11_0)
-	ldx.w	$a0, $a2, $a0
-	add.d	$a2, $a2, $a0
-	move	$a0, $zero
-	jr	$a2
-.LBB11_15:                              # %.fold.split.i
-	ori	$a0, $zero, 1
-	b	.LBB11_83
-.LBB11_16:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 2047
-	ori	$a2, $a2, 4095
-	blt	$a2, $a0, .LBB11_27
-# %bb.17:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 127
-	ori	$a2, $a2, 4095
-	blt	$a2, $a0, .LBB11_32
-# %bb.18:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 31
-	ori	$a2, $a2, 4095
-	blt	$a2, $a0, .LBB11_44
-# %bb.19:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 8
-	beq	$a0, $a2, .LBB11_71
-# %bb.20:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 16
-	bne	$a0, $a2, .LBB11_69
-# %bb.21:                               # %.fold.split41.i
-	ori	$a0, $zero, 16
-	b	.LBB11_83
-.LBB11_22:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a2, $zero, 2047
-	blt	$a2, $a0, .LBB11_36
-# %bb.23:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a2, $zero, 511
-	blt	$a2, $a0, .LBB11_47
-# %bb.24:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a2, $zero, 128
-	beq	$a0, $a2, .LBB11_72
-# %bb.25:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a2, $zero, 256
-	bne	$a0, $a2, .LBB11_69
-# %bb.26:                               # %.fold.split33.i
-	ori	$a0, $zero, 8
-	b	.LBB11_83
-.LBB11_27:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 32767
-	ori	$a2, $a2, 4095
-	blt	$a2, $a0, .LBB11_40
-# %bb.28:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 8191
-	ori	$a2, $a2, 4095
-	blt	$a2, $a0, .LBB11_50
-# %bb.29:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 2048
-	beq	$a0, $a2, .LBB11_73
-# %bb.30:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 4096
-	bne	$a0, $a2, .LBB11_69
-# %bb.31:                               # %.fold.split49.i
-	ori	$a0, $zero, 24
-	b	.LBB11_83
-.LBB11_32:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 511
-	ori	$a2, $a2, 4095
-	blt	$a2, $a0, .LBB11_53
-# %bb.33:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 128
-	beq	$a0, $a2, .LBB11_74
-# %bb.34:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 256
-	bne	$a0, $a2, .LBB11_69
-# %bb.35:                               # %.fold.split45.i
-	ori	$a0, $zero, 20
-	b	.LBB11_83
-.LBB11_36:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 1
-	ori	$a3, $a2, 4095
-	blt	$a3, $a0, .LBB11_56
-# %bb.37:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a3, $zero, 2048
-	beq	$a0, $a3, .LBB11_75
-# %bb.38:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	bne	$a0, $a2, .LBB11_69
-# %bb.39:                               # %.fold.split37.i
-	ori	$a0, $zero, 12
-	b	.LBB11_83
-.LBB11_40:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 131071
-	ori	$a2, $a2, 4095
-	blt	$a2, $a0, .LBB11_59
-# %bb.41:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 32768
-	beq	$a0, $a2, .LBB11_76
-# %bb.42:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 65536
-	bne	$a0, $a2, .LBB11_69
-# %bb.43:                               # %.fold.split53.i
-	ori	$a0, $zero, 28
-	b	.LBB11_83
-.LBB11_44:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 32
-	beq	$a0, $a2, .LBB11_77
-# %bb.45:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 64
-	bne	$a0, $a2, .LBB11_69
-# %bb.46:                               # %.fold.split43.i
-	ori	$a0, $zero, 18
-	b	.LBB11_83
-.LBB11_47:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a2, $zero, 512
-	beq	$a0, $a2, .LBB11_78
-# %bb.48:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	ori	$a2, $zero, 1024
-	bne	$a0, $a2, .LBB11_69
-# %bb.49:                               # %.fold.split35.i
-	ori	$a0, $zero, 10
-	b	.LBB11_83
-.LBB11_50:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 8192
-	beq	$a0, $a2, .LBB11_79
-# %bb.51:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 16384
-	bne	$a0, $a2, .LBB11_69
-# %bb.52:                               # %.fold.split51.i
-	ori	$a0, $zero, 26
-	b	.LBB11_83
-.LBB11_53:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 512
-	beq	$a0, $a2, .LBB11_80
-# %bb.54:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 1024
-	bne	$a0, $a2, .LBB11_69
-# %bb.55:                               # %.fold.split47.i
-	ori	$a0, $zero, 22
-	b	.LBB11_83
-.LBB11_56:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 2
-	beq	$a0, $a2, .LBB11_81
-# %bb.57:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 4
-	bne	$a0, $a2, .LBB11_69
-# %bb.58:                               # %.fold.split39.i
-	ori	$a0, $zero, 14
-	b	.LBB11_83
-.LBB11_59:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 131072
-	beq	$a0, $a2, .LBB11_82
-# %bb.60:                               # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, 262144
-	bne	$a0, $a2, .LBB11_69
-# %bb.61:                               # %.fold.split55.i
-	ori	$a0, $zero, 30
-	b	.LBB11_83
-.LBB11_62:                              # %_ZN8NArchive5NLzmaL8MyStrCatEPcPKc.exit
-	lu12i.w	$a2, -524288
-	bne	$a0, $a2, .LBB11_69
-# %bb.63:                               # %.fold.split56.i
-	ori	$a0, $zero, 31
-	b	.LBB11_83
-.LBB11_64:                              # %.fold.split27.i
-	ori	$a0, $zero, 2
-	b	.LBB11_83
-.LBB11_65:                              # %.fold.split28.i
-	ori	$a0, $zero, 3
-	b	.LBB11_83
-.LBB11_66:                              # %.fold.split30.i
-	ori	$a0, $zero, 5
-	b	.LBB11_83
-.LBB11_67:                              # %.fold.split29.i
-	ori	$a0, $zero, 4
-	b	.LBB11_83
-.LBB11_68:                              # %.fold.split31.i
-	ori	$a0, $zero, 6
-	b	.LBB11_83
-.LBB11_69:
-	slli.d	$a0, $s2, 44
-	beqz	$a0, .LBB11_88
-# %bb.70:
+	addi.w	$a0, $a0, 0
+	addi.w	$a1, $s2, -1
+	xor	$a2, $s2, $a1
+	addi.w	$a2, $a2, 0
+	add.d	$s0, $s4, $a0
+	bgeu	$a1, $a2, .LBB11_13
+# %bb.12:                               # %.split.i
+	ctz.d	$a0, $s2
+.Ltmp79:                                # EH_LABEL
+	move	$a1, $s0
+	pcaddu18i	$ra, %call36(_Z21ConvertUInt32ToStringjPc)
+	jirl	$ra, $ra, 0
+.Ltmp80:                                # EH_LABEL
+	b	.LBB11_18
+.LBB11_13:
+	slli.d	$a0, $s3, 44
+	beqz	$a0, .LBB11_15
+# %bb.14:
 	andi	$a0, $s1, 1023
 	sltui	$a0, $a0, 1
-	bstrpick.d	$a2, $s0, 31, 10
-	ori	$a3, $zero, 98
-	masknez	$a3, $a3, $a0
-	ori	$a4, $zero, 107
-	maskeqz	$a4, $a4, $a0
-	or	$s1, $a4, $a3
-	masknez	$a3, $s0, $a0
-	maskeqz	$a0, $a2, $a0
-	or	$a0, $a0, $a3
-	b	.LBB11_89
-.LBB11_71:                              # %.fold.split40.i
-	ori	$a0, $zero, 15
-	b	.LBB11_83
-.LBB11_72:                              # %.fold.split32.i
-	ori	$a0, $zero, 7
-	b	.LBB11_83
-.LBB11_73:                              # %.fold.split48.i
-	ori	$a0, $zero, 23
-	b	.LBB11_83
-.LBB11_74:                              # %.fold.split44.i
-	ori	$a0, $zero, 19
-	b	.LBB11_83
-.LBB11_75:                              # %.fold.split36.i
-	ori	$a0, $zero, 11
-	b	.LBB11_83
-.LBB11_76:                              # %.fold.split52.i
-	ori	$a0, $zero, 27
-	b	.LBB11_83
-.LBB11_77:                              # %.fold.split42.i
-	ori	$a0, $zero, 17
-	b	.LBB11_83
-.LBB11_78:                              # %.fold.split34.i
-	ori	$a0, $zero, 9
-	b	.LBB11_83
-.LBB11_79:                              # %.fold.split50.i
-	ori	$a0, $zero, 25
-	b	.LBB11_83
-.LBB11_80:                              # %.fold.split46.i
-	ori	$a0, $zero, 21
-	b	.LBB11_83
-.LBB11_81:                              # %.fold.split38.i
-	ori	$a0, $zero, 13
-	b	.LBB11_83
-.LBB11_82:                              # %.fold.split54.i
-	ori	$a0, $zero, 29
-.LBB11_83:
+	bstrpick.d	$a1, $s2, 31, 10
+	ori	$a2, $zero, 98
+	masknez	$a2, $a2, $a0
+	ori	$a3, $zero, 107
+	maskeqz	$a3, $a3, $a0
+	or	$s1, $a3, $a2
+	masknez	$a2, $s2, $a0
+	maskeqz	$a0, $a1, $a0
+	or	$a0, $a0, $a2
+	b	.LBB11_16
+.LBB11_15:
+	bstrpick.d	$a0, $s2, 31, 20
+	ori	$s1, $zero, 109
+.LBB11_16:
 .Ltmp77:                                # EH_LABEL
+	addi.w	$a0, $a0, 0
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(_Z21ConvertUInt32ToStringjPc)
 	jirl	$ra, $ra, 0
 .Ltmp78:                                # EH_LABEL
-.LBB11_84:                              # %_ZN8NArchive5NLzmaL16DictSizeToStringEjPc.exit
+# %bb.17:                               # %.noexc16
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(strlen)
+	jirl	$ra, $ra, 0
+	addi.w	$a0, $a0, 0
+	add.d	$a1, $s0, $a0
+	stx.b	$s1, $s0, $a0
+	st.b	$zero, $a1, 1
+.LBB11_18:                              # %_ZN8NArchive5NLzmaL16DictSizeToStringEjPc.exit
 .Ltmp81:                                # EH_LABEL
-	addi.d	$a0, $sp, 80
-	addi.d	$a1, $sp, 16
+	addi.d	$a0, $sp, 72
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariantaSEPKc)
 	jirl	$ra, $ra, 0
 .Ltmp82:                                # EH_LABEL
-.LBB11_85:
+.LBB11_19:
 .Ltmp86:                                # EH_LABEL
-	addi.d	$a0, $sp, 80
+	addi.d	$a0, $sp, 72
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant6DetachEP14tagPROPVARIANT)
 	jirl	$ra, $ra, 0
 .Ltmp87:                                # EH_LABEL
-# %bb.86:
+# %bb.20:
 .Ltmp92:                                # EH_LABEL
-	addi.d	$a0, $sp, 80
+	addi.d	$a0, $sp, 72
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp93:                                # EH_LABEL
-# %bb.87:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit
+# %bb.21:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit
 	move	$a0, $zero
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
@@ -1696,119 +1501,33 @@ _ZN8NArchive5NLzma8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive5NL
 	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 144
 	ret
-.LBB11_88:
-	bstrpick.d	$a0, $s0, 31, 20
-	ori	$s1, $zero, 109
-.LBB11_89:
-.Ltmp79:                                # EH_LABEL
-	addi.w	$a0, $a0, 0
-	move	$s0, $a1
-	pcaddu18i	$ra, %call36(_Z21ConvertUInt32ToStringjPc)
-	jirl	$ra, $ra, 0
-.Ltmp80:                                # EH_LABEL
-# %bb.90:                               # %.noexc16
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(strlen)
-	jirl	$ra, $ra, 0
-	addi.w	$a0, $a0, 0
-	add.d	$a1, $s0, $a0
-	stx.b	$s1, $s0, $a0
-	st.b	$zero, $a1, 1
-	b	.LBB11_84
-.LBB11_91:
+.LBB11_22:
 .Ltmp83:                                # EH_LABEL
-	b	.LBB11_94
-.LBB11_92:
+	b	.LBB11_25
+.LBB11_23:
 .Ltmp94:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB11_93:
+.LBB11_24:
 .Ltmp88:                                # EH_LABEL
-.LBB11_94:
+.LBB11_25:
 	move	$fp, $a0
 .Ltmp89:                                # EH_LABEL
-	addi.d	$a0, $sp, 80
+	addi.d	$a0, $sp, 72
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
 .Ltmp90:                                # EH_LABEL
-# %bb.95:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit17
+# %bb.26:                               # %_ZN8NWindows4NCOM12CPropVariantD2Ev.exit17
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB11_96:
+.LBB11_27:
 .Ltmp91:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
 .Lfunc_end11:
 	.size	_ZN8NArchive5NLzma8CHandler11GetPropertyEjjP14tagPROPVARIANT, .Lfunc_end11-_ZN8NArchive5NLzma8CHandler11GetPropertyEjjP14tagPROPVARIANT
 	.cfi_endproc
-	.section	.rodata,"a",@progbits
-	.p2align	2, 0x0
-.LJTI11_0:
-	.word	.LBB11_83-.LJTI11_0
-	.word	.LBB11_15-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_64-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_65-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_67-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_66-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_69-.LJTI11_0
-	.word	.LBB11_68-.LJTI11_0
 	.section	.gcc_except_table,"a",@progbits
 	.p2align	2, 0x0
 GCC_except_table11:
@@ -1825,34 +1544,38 @@ GCC_except_table11:
 	.uleb128 .Ltmp88-.Lfunc_begin4          #     jumps to .Ltmp88
 	.byte	0                               #   On action: cleanup
 	.uleb128 .Ltmp85-.Lfunc_begin4          # >> Call Site 2 <<
-	.uleb128 .Ltmp77-.Ltmp85                #   Call between .Ltmp85 and .Ltmp77
+	.uleb128 .Ltmp79-.Ltmp85                #   Call between .Ltmp85 and .Ltmp79
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp77-.Lfunc_begin4          # >> Call Site 3 <<
-	.uleb128 .Ltmp82-.Ltmp77                #   Call between .Ltmp77 and .Ltmp82
+	.uleb128 .Ltmp79-.Lfunc_begin4          # >> Call Site 3 <<
+	.uleb128 .Ltmp78-.Ltmp79                #   Call between .Ltmp79 and .Ltmp78
 	.uleb128 .Ltmp83-.Lfunc_begin4          #     jumps to .Ltmp83
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp86-.Lfunc_begin4          # >> Call Site 4 <<
+	.uleb128 .Ltmp78-.Lfunc_begin4          # >> Call Site 4 <<
+	.uleb128 .Ltmp81-.Ltmp78                #   Call between .Ltmp78 and .Ltmp81
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp81-.Lfunc_begin4          # >> Call Site 5 <<
+	.uleb128 .Ltmp82-.Ltmp81                #   Call between .Ltmp81 and .Ltmp82
+	.uleb128 .Ltmp83-.Lfunc_begin4          #     jumps to .Ltmp83
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp86-.Lfunc_begin4          # >> Call Site 6 <<
 	.uleb128 .Ltmp87-.Ltmp86                #   Call between .Ltmp86 and .Ltmp87
 	.uleb128 .Ltmp88-.Lfunc_begin4          #     jumps to .Ltmp88
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp92-.Lfunc_begin4          # >> Call Site 5 <<
+	.uleb128 .Ltmp92-.Lfunc_begin4          # >> Call Site 7 <<
 	.uleb128 .Ltmp93-.Ltmp92                #   Call between .Ltmp92 and .Ltmp93
 	.uleb128 .Ltmp94-.Lfunc_begin4          #     jumps to .Ltmp94
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp79-.Lfunc_begin4          # >> Call Site 6 <<
-	.uleb128 .Ltmp80-.Ltmp79                #   Call between .Ltmp79 and .Ltmp80
-	.uleb128 .Ltmp83-.Lfunc_begin4          #     jumps to .Ltmp83
-	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp80-.Lfunc_begin4          # >> Call Site 7 <<
-	.uleb128 .Ltmp89-.Ltmp80                #   Call between .Ltmp80 and .Ltmp89
+	.uleb128 .Ltmp93-.Lfunc_begin4          # >> Call Site 8 <<
+	.uleb128 .Ltmp89-.Ltmp93                #   Call between .Ltmp93 and .Ltmp89
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup
-	.uleb128 .Ltmp89-.Lfunc_begin4          # >> Call Site 8 <<
+	.uleb128 .Ltmp89-.Lfunc_begin4          # >> Call Site 9 <<
 	.uleb128 .Ltmp90-.Ltmp89                #   Call between .Ltmp89 and .Ltmp90
 	.uleb128 .Ltmp91-.Lfunc_begin4          #     jumps to .Ltmp91
 	.byte	1                               #   On action: 1
-	.uleb128 .Ltmp90-.Lfunc_begin4          # >> Call Site 9 <<
+	.uleb128 .Ltmp90-.Lfunc_begin4          # >> Call Site 10 <<
 	.uleb128 .Lfunc_end11-.Ltmp90           #   Call between .Ltmp90 and .Lfunc_end11
 	.byte	0                               #     has no landing pad
 	.byte	0                               #   On action: cleanup

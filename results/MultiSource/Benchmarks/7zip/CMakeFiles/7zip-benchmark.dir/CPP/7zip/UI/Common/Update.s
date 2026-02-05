@@ -461,7 +461,7 @@ _ZN18COutMultiVolStream5WriteEPKvjPj:   # @_ZN18COutMultiVolStream5WriteEPKvjPj
 	beqz	$a0, .LBB1_46
 # %bb.43:                               #   in Loop: Header=BB1_5 Depth=2
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s6, $a0, 120
+	ld.d	$s5, $a0, 120
 .Ltmp35:                                # EH_LABEL
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -469,13 +469,13 @@ _ZN18COutMultiVolStream5WriteEPKvjPj:   # @_ZN18COutMultiVolStream5WriteEPKvjPj
 .Ltmp36:                                # EH_LABEL
 # %bb.44:                               # %.noexc120
                                         #   in Loop: Header=BB1_5 Depth=2
-	move	$s5, $a0
+	move	$s6, $a0
 	ld.w	$fp, $sp, 112
 	bstrpick.d	$a0, $fp, 31, 0
 	addi.d	$s1, $a0, 1
 	slli.d	$a0, $s1, 31
 	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
-	vst	$vr0, $s5, 0
+	vst	$vr0, $s6, 0
 	bgez	$a0, .LBB1_47
 # %bb.45:                               #   in Loop: Header=BB1_5 Depth=2
 	move	$a0, $zero
@@ -501,9 +501,9 @@ _ZN18COutMultiVolStream5WriteEPKvjPj:   # @_ZN18COutMultiVolStream5WriteEPKvjPj
 .Ltmp38:                                # EH_LABEL
 # %bb.48:                               # %.noexc.i
                                         #   in Loop: Header=BB1_5 Depth=2
-	st.d	$a0, $s5, 0
+	st.d	$a0, $s6, 0
 	st.w	$zero, $a0, 0
-	st.w	$s1, $s5, 12
+	st.w	$s1, $s6, 12
 .LBB1_49:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i116
                                         #   in Loop: Header=BB1_5 Depth=2
 	ld.d	$a1, $sp, 104
@@ -518,19 +518,19 @@ _ZN18COutMultiVolStream5WriteEPKvjPj:   # @_ZN18COutMultiVolStream5WriteEPKvjPj
 	move	$a0, $a3
 	bnez	$a2, .LBB1_50
 # %bb.51:                               #   in Loop: Header=BB1_5 Depth=2
-	st.w	$fp, $s5, 8
+	st.w	$fp, $s6, 8
 .Ltmp40:                                # EH_LABEL
-	move	$a0, $s6
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 .Ltmp41:                                # EH_LABEL
 # %bb.52:                               #   in Loop: Header=BB1_5 Depth=2
-	ld.w	$a0, $s6, 12
-	ld.d	$a1, $s6, 16
+	ld.w	$a0, $s5, 12
+	ld.d	$a1, $s5, 16
 	slli.d	$a2, $a0, 3
-	stx.d	$s5, $a1, $a2
+	stx.d	$s6, $a1, $a2
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $s6, 12
+	st.w	$a0, $s5, 12
 	ld.d	$s5, $sp, 216
 	st.w	$zero, $sp, 224
 	addi.d	$a0, $sp, 232
@@ -781,7 +781,7 @@ _ZN18COutMultiVolStream5WriteEPKvjPj:   # @_ZN18COutMultiVolStream5WriteEPKvjPj
 .Ltmp39:                                # EH_LABEL
 	move	$fp, $a0
 	ori	$a1, $zero, 16
-	move	$a0, $s5
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	b	.LBB1_100

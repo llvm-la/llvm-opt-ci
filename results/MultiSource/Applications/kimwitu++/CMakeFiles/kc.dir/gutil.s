@@ -98,7 +98,7 @@ _ZN2kc25f_something_to_initializeEPNS_17impl_Ccode_optionE: # @_ZN2kc25f_somethi
 	ori	$a1, $zero, 148
 	pcaddu18i	$ra, %call36(_ZN2kc21kc_no_default_in_withEPKciS1_)
 	jirl	$ra, $ra, 0
-.LBB0_11:                               # %_ZN2kcL26f_attributes_to_initializeEPNS_15impl_attributesE.exit.thread
+.LBB0_11:                               # %.loopexit
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	move	$a0, $fp

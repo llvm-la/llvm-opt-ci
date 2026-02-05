@@ -48,25 +48,25 @@ MtxuntDouble:                           # @MtxuntDouble
 .LBB0_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $fp, $a1
-	ld.d	$a5, $a4, 8
-	ld.d	$a6, $a4, 16
-	ld.d	$a7, $a4, 24
-	ldx.d	$t0, $fp, $a1
-	add.d	$a5, $a5, $a1
-	add.d	$a6, $a6, $a1
-	add.d	$a7, $a7, $a1
+	ldx.d	$a5, $fp, $a1
+	ld.d	$a6, $a4, 8
+	ld.d	$a7, $a4, 16
+	ld.d	$t0, $a4, 24
 	ld.d	$t1, $a4, 32
 	ld.d	$t2, $a4, 40
 	ld.d	$t3, $a4, 48
 	ld.d	$a4, $a4, 56
+	add.d	$a6, $a6, $a1
+	add.d	$a7, $a7, $a1
+	add.d	$t0, $t0, $a1
 	add.d	$t1, $t1, $a1
 	add.d	$t2, $t2, $a1
 	add.d	$t3, $t3, $a1
 	add.d	$a4, $a4, $a1
-	stx.d	$a3, $t0, $a1
-	st.d	$a3, $a5, 8
-	st.d	$a3, $a6, 16
-	st.d	$a3, $a7, 24
+	stx.d	$a3, $a5, $a1
+	st.d	$a3, $a6, 8
+	st.d	$a3, $a7, 16
+	st.d	$a3, $t0, 24
 	st.d	$a3, $t1, 32
 	st.d	$a3, $t2, 40
 	st.d	$a3, $t3, 48

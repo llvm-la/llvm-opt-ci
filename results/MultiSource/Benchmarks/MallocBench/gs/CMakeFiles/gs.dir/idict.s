@@ -12,7 +12,7 @@ dict_create:                            # @dict_create
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	move	$s0, $a1
+	move	$fp, $a1
 	move	$s2, $a0
 	ori	$s3, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -24,7 +24,7 @@ dict_create:                            # @dict_create
 	addi.w	$s1, $zero, -25
 	beqz	$a0, .LBB0_10
 # %bb.1:
-	move	$fp, $a0
+	move	$s0, $a0
 	sltu	$a0, $s3, $s2
 	masknez	$a1, $s3, $a0
 	maskeqz	$a0, $s2, $a0
@@ -38,20 +38,20 @@ dict_create:                            # @dict_create
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_9
 # %bb.2:
-	st.d	$zero, $fp, 0
+	st.d	$zero, $s0, 0
 	ori	$a1, $zero, 20
-	st.h	$a1, $fp, 8
-	st.d	$a0, $fp, 16
+	st.h	$a1, $s0, 8
+	st.d	$a0, $s0, 16
 	ori	$a0, $zero, 770
-	st.h	$a0, $fp, 24
+	st.h	$a0, $s0, 24
 	slli.d	$a0, $s2, 1
-	st.h	$a0, $fp, 26
-	st.d	$fp, $s0, 0
+	st.h	$a0, $s0, 26
+	st.d	$s0, $fp, 0
 	ori	$a0, $zero, 778
-	st.h	$a0, $s0, 8
+	st.h	$a0, $fp, 8
 	beqz	$s2, .LBB0_8
 # %bb.3:                                # %.lr.ph.preheader
-	ld.d	$a1, $fp, 16
+	ld.d	$a1, $s0, 16
 	bstrpick.d	$a2, $s2, 31, 0
 	bstrpick.d	$a0, $s2, 31, 1
 	slli.d	$a4, $a0, 1
@@ -92,7 +92,7 @@ dict_create:                            # @dict_create
 	addi.d	$a3, $a0, %pc_lo12(.L.str)
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 32
-	move	$a0, $fp
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
 .LBB0_10:                               # %.loopexit
@@ -418,11 +418,76 @@ dict_copy:                              # @dict_copy
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
 	ld.hu	$a2, $a0, 26
-	ori	$a3, $zero, 2
-	bgeu	$a2, $a3, .LBB6_3
-.LBB6_1:
+	srli.d	$s1, $a2, 1
+	beqz	$s1, .LBB6_14
+# %bb.1:                                # %.lr.ph.preheader
+	move	$fp, $a1
+	ld.d	$s0, $a0, 16
+	ori	$s2, $zero, 32
+	ori	$s3, $zero, 28
+	pcalau12i	$a0, %got_pc_hi20(dstack)
+	ld.d	$s4, $a0, %got_pc_lo12(dstack)
+	b	.LBB6_5
+	.p2align	4, , 16
+.LBB6_2:                                # %._crit_edge.i
+                                        #   in Loop: Header=BB6_5 Depth=1
+	ld.d	$a0, $sp, 16
+.LBB6_3:                                # %dict_put.exit.thread
+                                        #   in Loop: Header=BB6_5 Depth=1
+	vld	$vr0, $s0, 16
+	vst	$vr0, $a0, 0
+.LBB6_4:                                #   in Loop: Header=BB6_5 Depth=1
+	addi.w	$s1, $s1, -1
+	addi.d	$s0, $s0, 32
+	beqz	$s1, .LBB6_14
+.LBB6_5:                                # %.lr.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.hu	$a0, $s0, 8
+	andi	$a0, $a0, 252
+	beq	$a0, $s2, .LBB6_4
+# %bb.6:                                #   in Loop: Header=BB6_5 Depth=1
+	addi.d	$a3, $sp, 16
+	move	$a0, $fp
+	move	$a1, $fp
+	move	$a2, $s0
+	pcaddu18i	$ra, %call36(dict_lookup)
+	jirl	$ra, $ra, 0
+	bgtz	$a0, .LBB6_2
+# %bb.7:                                #   in Loop: Header=BB6_5 Depth=1
+	ld.d	$a1, $fp, 0
+	ld.hu	$a2, $a1, 26
+	ld.d	$a0, $a1, 0
+	srli.d	$a2, $a2, 1
+	addi.d	$a2, $a2, -1
+	beq	$a0, $a2, .LBB6_16
+# %bb.8:                                #   in Loop: Header=BB6_5 Depth=1
+	addi.d	$a0, $a0, 1
+	st.d	$a0, $a1, 0
+	ld.d	$a0, $sp, 16
+	vld	$vr0, $s0, 0
+	vst	$vr0, $a0, -16
+	ld.hu	$a2, $s0, 8
+	andi	$a2, $a2, 252
+	bne	$a2, $s3, .LBB6_3
+# %bb.9:                                #   in Loop: Header=BB6_5 Depth=1
+	ld.d	$a2, $s0, 0
+	ld.d	$a4, $a2, 24
+	ori	$a3, $zero, 1
+	bnez	$a4, .LBB6_13
+# %bb.10:                               #   in Loop: Header=BB6_5 Depth=1
+	ld.d	$a4, $s4, 0
+	beq	$a1, $a4, .LBB6_12
+# %bb.11:                               #   in Loop: Header=BB6_5 Depth=1
+	ld.d	$a4, $s4, 16
+	bne	$a1, $a4, .LBB6_13
+.LBB6_12:                               #   in Loop: Header=BB6_5 Depth=1
+	move	$a3, $a0
+.LBB6_13:                               #   in Loop: Header=BB6_5 Depth=1
+	st.d	$a3, $a2, 24
+	b	.LBB6_3
+.LBB6_14:
 	move	$a0, $zero
-.LBB6_2:                                # %.loopexit
+.LBB6_15:                               # %.loopexit
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
@@ -432,76 +497,9 @@ dict_copy:                              # @dict_copy
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 80
 	ret
-.LBB6_3:                                # %.lr.ph.preheader
-	move	$fp, $a1
-	ld.d	$s0, $a0, 16
-	srli.d	$s1, $a2, 1
-	ori	$s2, $zero, 32
-	ori	$s3, $zero, 28
-	pcalau12i	$a0, %got_pc_hi20(dstack)
-	ld.d	$s4, $a0, %got_pc_lo12(dstack)
-	b	.LBB6_7
-	.p2align	4, , 16
-.LBB6_4:                                # %._crit_edge.i
-                                        #   in Loop: Header=BB6_7 Depth=1
-	ld.d	$a0, $sp, 16
-.LBB6_5:                                # %dict_put.exit.thread
-                                        #   in Loop: Header=BB6_7 Depth=1
-	addi.d	$a1, $s0, 16
-	vld	$vr0, $a1, 0
-	vst	$vr0, $a0, 0
-.LBB6_6:                                #   in Loop: Header=BB6_7 Depth=1
-	addi.w	$s1, $s1, -1
-	addi.d	$s0, $s0, 32
-	beqz	$s1, .LBB6_1
-.LBB6_7:                                # %.lr.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ld.hu	$a0, $s0, 8
-	andi	$a0, $a0, 252
-	beq	$a0, $s2, .LBB6_6
-# %bb.8:                                #   in Loop: Header=BB6_7 Depth=1
-	addi.d	$a3, $sp, 16
-	move	$a0, $fp
-	move	$a1, $fp
-	move	$a2, $s0
-	pcaddu18i	$ra, %call36(dict_lookup)
-	jirl	$ra, $ra, 0
-	bgtz	$a0, .LBB6_4
-# %bb.9:                                #   in Loop: Header=BB6_7 Depth=1
-	ld.d	$a1, $fp, 0
-	ld.hu	$a2, $a1, 26
-	ld.d	$a0, $a1, 0
-	srli.d	$a2, $a2, 1
-	addi.d	$a2, $a2, -1
-	beq	$a0, $a2, .LBB6_16
-# %bb.10:                               #   in Loop: Header=BB6_7 Depth=1
-	addi.d	$a0, $a0, 1
-	st.d	$a0, $a1, 0
-	ld.d	$a0, $sp, 16
-	vld	$vr0, $s0, 0
-	vst	$vr0, $a0, -16
-	ld.hu	$a2, $s0, 8
-	andi	$a2, $a2, 252
-	bne	$a2, $s3, .LBB6_5
-# %bb.11:                               #   in Loop: Header=BB6_7 Depth=1
-	ld.d	$a2, $s0, 0
-	ld.d	$a4, $a2, 24
-	ori	$a3, $zero, 1
-	bnez	$a4, .LBB6_15
-# %bb.12:                               #   in Loop: Header=BB6_7 Depth=1
-	ld.d	$a4, $s4, 0
-	beq	$a1, $a4, .LBB6_14
-# %bb.13:                               #   in Loop: Header=BB6_7 Depth=1
-	ld.d	$a4, $s4, 16
-	bne	$a1, $a4, .LBB6_15
-.LBB6_14:                               #   in Loop: Header=BB6_7 Depth=1
-	move	$a3, $a0
-.LBB6_15:                               #   in Loop: Header=BB6_7 Depth=1
-	st.d	$a3, $a2, 24
-	b	.LBB6_5
 .LBB6_16:                               # %dict_put.exit
 	addi.w	$a0, $zero, -2
-	b	.LBB6_2
+	b	.LBB6_15
 .Lfunc_end6:
 	.size	dict_copy, .Lfunc_end6-dict_copy
                                         # -- End function
@@ -531,7 +529,7 @@ dict_resize:                            # @dict_resize
 	pcaddu18i	$ra, %call36(alloc)
 	jirl	$ra, $ra, 0
 	addi.w	$s1, $zero, -25
-	beqz	$a0, .LBB7_11
+	beqz	$a0, .LBB7_24
 # %bb.1:
 	move	$fp, $a0
 	sltu	$a0, $s4, $s2
@@ -545,7 +543,7 @@ dict_resize:                            # @dict_resize
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(alloc)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB7_10
+	beqz	$a0, .LBB7_23
 # %bb.2:
 	st.d	$zero, $fp, 0
 	ori	$a1, $zero, 20
@@ -595,9 +593,72 @@ dict_resize:                            # @dict_resize
 .LBB7_8:                                # %dict_create.exit
 	ld.d	$a0, $s0, 0
 	ld.hu	$a1, $a0, 26
-	ori	$a2, $zero, 2
-	bgeu	$a1, $a2, .LBB7_12
-.LBB7_9:                                # %dict_copy.exit
+	srli.d	$s2, $a1, 1
+	beqz	$s2, .LBB7_22
+# %bb.9:                                # %.lr.ph.preheader.i8
+	ld.d	$s1, $a0, 16
+	ori	$s4, $zero, 32
+	ori	$s5, $zero, 28
+	pcalau12i	$a0, %got_pc_hi20(dstack)
+	ld.d	$s6, $a0, %got_pc_lo12(dstack)
+	b	.LBB7_13
+	.p2align	4, , 16
+.LBB7_10:                               # %._crit_edge.i.i
+                                        #   in Loop: Header=BB7_13 Depth=1
+	ld.d	$a0, $sp, 32
+.LBB7_11:                               # %dict_put.exit.thread.i
+                                        #   in Loop: Header=BB7_13 Depth=1
+	vld	$vr0, $s1, 16
+	vst	$vr0, $a0, 0
+.LBB7_12:                               #   in Loop: Header=BB7_13 Depth=1
+	addi.w	$s2, $s2, -1
+	addi.d	$s1, $s1, 32
+	beqz	$s2, .LBB7_22
+.LBB7_13:                               # %.lr.ph.i9
+                                        # =>This Inner Loop Header: Depth=1
+	ld.hu	$a0, $s1, 8
+	andi	$a0, $a0, 252
+	beq	$a0, $s4, .LBB7_12
+# %bb.14:                               #   in Loop: Header=BB7_13 Depth=1
+	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
+	addi.d	$a3, $sp, 32
+	move	$a2, $s1
+	pcaddu18i	$ra, %call36(dict_lookup)
+	jirl	$ra, $ra, 0
+	bgtz	$a0, .LBB7_10
+# %bb.15:                               #   in Loop: Header=BB7_13 Depth=1
+	ld.hu	$a1, $fp, 26
+	ld.d	$a0, $fp, 0
+	srli.d	$a1, $a1, 1
+	addi.d	$a1, $a1, -1
+	beq	$a0, $a1, .LBB7_22
+# %bb.16:                               #   in Loop: Header=BB7_13 Depth=1
+	addi.d	$a0, $a0, 1
+	st.d	$a0, $fp, 0
+	ld.d	$a0, $sp, 32
+	vld	$vr0, $s1, 0
+	vst	$vr0, $a0, -16
+	ld.hu	$a1, $s1, 8
+	andi	$a1, $a1, 252
+	bne	$a1, $s5, .LBB7_11
+# %bb.17:                               #   in Loop: Header=BB7_13 Depth=1
+	ld.d	$a1, $s1, 0
+	ld.d	$a3, $a1, 24
+	ori	$a2, $zero, 1
+	bnez	$a3, .LBB7_21
+# %bb.18:                               #   in Loop: Header=BB7_13 Depth=1
+	ld.d	$a3, $s6, 0
+	beq	$fp, $a3, .LBB7_20
+# %bb.19:                               #   in Loop: Header=BB7_13 Depth=1
+	ld.d	$a3, $s6, 16
+	bne	$fp, $a3, .LBB7_21
+.LBB7_20:                               #   in Loop: Header=BB7_13 Depth=1
+	move	$a2, $a0
+.LBB7_21:                               #   in Loop: Header=BB7_13 Depth=1
+	st.d	$a2, $a1, 24
+	b	.LBB7_11
+.LBB7_22:                               # %dict_copy.exit
 	ld.d	$a0, $s0, 0
 	ld.hu	$a1, $a0, 26
 	ld.d	$a0, $s3, 16
@@ -618,8 +679,8 @@ dict_resize:                            # @dict_resize
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
 	move	$s1, $zero
-	b	.LBB7_11
-.LBB7_10:
+	b	.LBB7_24
+.LBB7_23:
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a3, $a0, %pc_lo12(.L.str)
 	ori	$a1, $zero, 1
@@ -627,7 +688,7 @@ dict_resize:                            # @dict_resize
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(alloc_free)
 	jirl	$ra, $ra, 0
-.LBB7_11:                               # %dict_create.exit.thread
+.LBB7_24:                               # %dict_create.exit.thread
 	move	$a0, $s1
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
@@ -640,71 +701,6 @@ dict_resize:                            # @dict_resize
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB7_12:                               # %.lr.ph.preheader.i8
-	ld.d	$s1, $a0, 16
-	srli.d	$s2, $a1, 1
-	ori	$s4, $zero, 32
-	ori	$s5, $zero, 28
-	pcalau12i	$a0, %got_pc_hi20(dstack)
-	ld.d	$s6, $a0, %got_pc_lo12(dstack)
-	b	.LBB7_16
-	.p2align	4, , 16
-.LBB7_13:                               # %._crit_edge.i.i
-                                        #   in Loop: Header=BB7_16 Depth=1
-	ld.d	$a0, $sp, 32
-.LBB7_14:                               # %dict_put.exit.thread.i
-                                        #   in Loop: Header=BB7_16 Depth=1
-	addi.d	$a1, $s1, 16
-	vld	$vr0, $a1, 0
-	vst	$vr0, $a0, 0
-.LBB7_15:                               #   in Loop: Header=BB7_16 Depth=1
-	addi.w	$s2, $s2, -1
-	addi.d	$s1, $s1, 32
-	beqz	$s2, .LBB7_9
-.LBB7_16:                               # %.lr.ph.i9
-                                        # =>This Inner Loop Header: Depth=1
-	ld.hu	$a0, $s1, 8
-	andi	$a0, $a0, 252
-	beq	$a0, $s4, .LBB7_15
-# %bb.17:                               #   in Loop: Header=BB7_16 Depth=1
-	addi.d	$a0, $sp, 16
-	addi.d	$a1, $sp, 16
-	addi.d	$a3, $sp, 32
-	move	$a2, $s1
-	pcaddu18i	$ra, %call36(dict_lookup)
-	jirl	$ra, $ra, 0
-	bgtz	$a0, .LBB7_13
-# %bb.18:                               #   in Loop: Header=BB7_16 Depth=1
-	ld.hu	$a1, $fp, 26
-	ld.d	$a0, $fp, 0
-	srli.d	$a1, $a1, 1
-	addi.d	$a1, $a1, -1
-	beq	$a0, $a1, .LBB7_9
-# %bb.19:                               #   in Loop: Header=BB7_16 Depth=1
-	addi.d	$a0, $a0, 1
-	st.d	$a0, $fp, 0
-	ld.d	$a0, $sp, 32
-	vld	$vr0, $s1, 0
-	vst	$vr0, $a0, -16
-	ld.hu	$a1, $s1, 8
-	andi	$a1, $a1, 252
-	bne	$a1, $s5, .LBB7_14
-# %bb.20:                               #   in Loop: Header=BB7_16 Depth=1
-	ld.d	$a1, $s1, 0
-	ld.d	$a3, $a1, 24
-	ori	$a2, $zero, 1
-	bnez	$a3, .LBB7_24
-# %bb.21:                               #   in Loop: Header=BB7_16 Depth=1
-	ld.d	$a3, $s6, 0
-	beq	$fp, $a3, .LBB7_23
-# %bb.22:                               #   in Loop: Header=BB7_16 Depth=1
-	ld.d	$a3, $s6, 16
-	bne	$fp, $a3, .LBB7_24
-.LBB7_23:                               #   in Loop: Header=BB7_16 Depth=1
-	move	$a2, $a0
-.LBB7_24:                               #   in Loop: Header=BB7_16 Depth=1
-	st.d	$a2, $a1, 24
-	b	.LBB7_14
 .Lfunc_end7:
 	.size	dict_resize, .Lfunc_end7-dict_resize
                                         # -- End function

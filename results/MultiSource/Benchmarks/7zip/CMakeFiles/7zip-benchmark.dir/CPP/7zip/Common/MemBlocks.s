@@ -37,22 +37,22 @@ _ZN16CMemBlockManager13AllocateSpaceEm: # @_ZN16CMemBlockManager13AllocateSpaceE
 	st.d	$a0, $fp, 0
 	beqz	$a0, .LBB0_8
 # %bb.4:                                # %.preheader
-	ori	$a1, $zero, 2
-	move	$a3, $a0
-	bltu	$s0, $a1, .LBB0_7
+	ori	$a2, $zero, 2
+	move	$a1, $a0
+	bltu	$s0, $a2, .LBB0_7
 # %bb.5:                                # %.lr.ph
-	ld.d	$a1, $fp, 8
-	addi.d	$a2, $s0, -1
-	move	$a4, $a0
+	ld.d	$a2, $fp, 8
+	addi.d	$a3, $s0, -1
+	move	$a1, $a0
 	.p2align	4, , 16
 .LBB0_6:                                # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a4, $a1
-	addi.d	$a2, $a2, -1
-	st.d	$a3, $a4, 0
-	move	$a4, $a3
-	bnez	$a2, .LBB0_6
+	move	$a4, $a1
+	add.d	$a1, $a1, $a2
+	addi.d	$a3, $a3, -1
+	st.d	$a1, $a4, 0
+	bnez	$a3, .LBB0_6
 .LBB0_7:                                # %._crit_edge
-	st.d	$zero, $a3, 0
+	st.d	$zero, $a1, 0
 	st.d	$a0, $fp, 16
 	ori	$a0, $zero, 1
 	b	.LBB0_9
@@ -188,22 +188,22 @@ _ZN18CMemBlockManagerMt13AllocateSpaceEPN8NWindows16NSynchronization8CSynchroEmm
 	st.d	$a1, $fp, 0
 	beqz	$a1, .LBB4_2
 # %bb.7:                                # %.preheader.i
-	ori	$a0, $zero, 2
-	move	$a3, $a1
-	bltu	$s0, $a0, .LBB4_10
+	ori	$a2, $zero, 2
+	move	$a0, $a1
+	bltu	$s0, $a2, .LBB4_10
 # %bb.8:                                # %.lr.ph.i
-	ld.d	$a0, $fp, 8
-	addi.d	$a2, $s0, -1
-	move	$a4, $a1
+	ld.d	$a2, $fp, 8
+	addi.d	$a3, $s0, -1
+	move	$a0, $a1
 	.p2align	4, , 16
 .LBB4_9:                                # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a4, $a0
-	addi.d	$a2, $a2, -1
-	st.d	$a3, $a4, 0
-	move	$a4, $a3
-	bnez	$a2, .LBB4_9
+	move	$a4, $a0
+	add.d	$a0, $a0, $a2
+	addi.d	$a3, $a3, -1
+	st.d	$a0, $a4, 0
+	bnez	$a3, .LBB4_9
 .LBB4_10:                               # %.loopexit
-	st.d	$zero, $a3, 0
+	st.d	$zero, $a0, 0
 	st.d	$a1, $fp, 16
 	sub.w	$a1, $s0, $s2
 	st.d	$zero, $fp, 72
@@ -302,21 +302,21 @@ _ZN18CMemBlockManagerMt19AllocateSpaceAlwaysEPN8NWindows16NSynchronization8CSync
 	st.d	$a0, $fp, 0
 	beqz	$a0, .LBB5_4
 # %bb.10:                               # %.preheader.i.i
-	move	$a3, $a0
+	move	$a1, $a0
 	bltu	$s3, $s6, .LBB5_13
 # %bb.11:                               # %.lr.ph.i.i
-	ld.d	$a1, $fp, 8
-	addi.d	$a2, $s3, -1
-	move	$a4, $a0
+	ld.d	$a2, $fp, 8
+	addi.d	$a3, $s3, -1
+	move	$a1, $a0
 	.p2align	4, , 16
 .LBB5_12:                               # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a4, $a1
-	addi.d	$a2, $a2, -1
-	st.d	$a3, $a4, 0
-	move	$a4, $a3
-	bnez	$a2, .LBB5_12
+	move	$a4, $a1
+	add.d	$a1, $a1, $a2
+	addi.d	$a3, $a3, -1
+	st.d	$a1, $a4, 0
+	bnez	$a3, .LBB5_12
 .LBB5_13:                               # %.loopexit.i
-	st.d	$zero, $a3, 0
+	st.d	$zero, $a1, 0
 	st.d	$a0, $fp, 16
 	addi.w	$a0, $s4, 0
 	st.d	$zero, $fp, 72

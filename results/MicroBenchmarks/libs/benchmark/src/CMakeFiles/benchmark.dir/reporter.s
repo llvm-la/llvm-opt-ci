@@ -40,7 +40,7 @@ _ZN9benchmark17BenchmarkReporterD2Ev:   # @_ZN9benchmark17BenchmarkReporterD2Ev
 	.type	_ZN9benchmark17BenchmarkReporterD0Ev,@function
 _ZN9benchmark17BenchmarkReporterD0Ev:   # @_ZN9benchmark17BenchmarkReporterD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end2:
 	.size	_ZN9benchmark17BenchmarkReporterD0Ev, .Lfunc_end2-_ZN9benchmark17BenchmarkReporterD0Ev
                                         # -- End function

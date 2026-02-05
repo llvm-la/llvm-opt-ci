@@ -43,38 +43,35 @@ CHAR_TO_DIGIT:                          # @CHAR_TO_DIGIT
 NUM_TO_STR:                             # @NUM_TO_STR
 # %bb.0:
 	stx.b	$zero, $a3, $a2
-	blez	$a2, .LBB2_5
+	blez	$a2, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a3, $a3, -1
 	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
+	move	$a5, $a0
 	move	$a6, $a2
 	addi.d	$a2, $a2, -1
-	div.w	$a5, $a0, $a1
-	mul.d	$a7, $a5, $a1
-	sub.w	$a0, $a0, $a7
-	sltui	$a7, $a0, 10
-	ori	$t0, $a0, 48
-	addi.d	$a0, $a0, 55
-	masknez	$a0, $a0, $a7
+	div.w	$a0, $a0, $a1
+	mul.d	$a7, $a0, $a1
+	sub.w	$a5, $a5, $a7
+	sltui	$a7, $a5, 10
+	ori	$t0, $a5, 48
+	addi.d	$a5, $a5, 55
+	masknez	$a5, $a5, $a7
 	maskeqz	$a7, $t0, $a7
-	or	$a0, $a7, $a0
-	stx.b	$a0, $a3, $a6
-	move	$a0, $a5
+	or	$a5, $a7, $a5
+	stx.b	$a5, $a3, $a6
 	bltu	$a4, $a6, .LBB2_2
-# %bb.3:                                # %._crit_edge
-	beqz	$a5, .LBB2_6
-.LBB2_4:
+.LBB2_3:                                # %._crit_edge
+	beqz	$a0, .LBB2_5
+# %bb.4:
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$t8, %call36(puts)
 	jr	$t8
 .LBB2_5:
-	move	$a5, $a0
-	bnez	$a5, .LBB2_4
-.LBB2_6:
 	ret
 .Lfunc_end2:
 	.size	NUM_TO_STR, .Lfunc_end2-NUM_TO_STR

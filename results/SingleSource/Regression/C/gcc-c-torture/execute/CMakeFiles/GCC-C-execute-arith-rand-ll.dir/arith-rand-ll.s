@@ -127,7 +127,7 @@ main:                                   # @main
 	and	$t2, $t3, $t2
 	or	$t0, $t2, $t0
 	bltu	$t1, $a6, .LBB2_6
-.LBB2_8:                                # %random_bitstring.exit194
+.LBB2_8:                                # %random_bitstring.exit189
                                         #   in Loop: Header=BB2_2 Depth=1
 	beqz	$t0, .LBB2_1
 # %bb.9:                                #   in Loop: Header=BB2_2 Depth=1
@@ -188,13 +188,15 @@ main:                                   # @main
 	andi	$t1, $t0, 255
 	beqz	$t1, .LBB2_1
 # %bb.21:                               #   in Loop: Header=BB2_2 Depth=1
-	ext.w.b	$t0, $t0
 	ext.w.b	$a7, $a7
+	ext.w.b	$t0, $t0
 	mod.d	$a7, $a7, $t0
-	srai.d	$t1, $a7, 63
+	ext.w.h	$t1, $a7
+	srai.d	$t1, $t1, 15
 	xor	$a7, $a7, $t1
 	sub.d	$a7, $a7, $t1
-	srai.d	$t1, $t0, 31
+	bstrpick.d	$a7, $a7, 15, 0
+	srai.d	$t1, $t0, 63
 	xor	$t0, $t0, $t1
 	sub.d	$t0, $t0, $t1
 	bltu	$a7, $t0, .LBB2_1

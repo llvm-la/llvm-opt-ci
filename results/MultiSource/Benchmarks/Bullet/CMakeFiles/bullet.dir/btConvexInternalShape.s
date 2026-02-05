@@ -678,7 +678,7 @@ _ZN32btConvexInternalAabbCachingShape15recalcLocalAabbEv: # @_ZN32btConvexIntern
 	.type	_ZN21btConvexInternalShapeD0Ev,@function
 _ZN21btConvexInternalShapeD0Ev:         # @_ZN21btConvexInternalShapeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end8:
 	.size	_ZN21btConvexInternalShapeD0Ev, .Lfunc_end8-_ZN21btConvexInternalShapeD0Ev
                                         # -- End function
@@ -756,7 +756,7 @@ _ZNK21btConvexInternalShape32getPreferredPenetrationDirectionEiR9btVector3: # @_
 	.type	_ZN32btConvexInternalAabbCachingShapeD0Ev,@function
 _ZN32btConvexInternalAabbCachingShapeD0Ev: # @_ZN32btConvexInternalAabbCachingShapeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end15:
 	.size	_ZN32btConvexInternalAabbCachingShapeD0Ev, .Lfunc_end15-_ZN32btConvexInternalAabbCachingShapeD0Ev
                                         # -- End function

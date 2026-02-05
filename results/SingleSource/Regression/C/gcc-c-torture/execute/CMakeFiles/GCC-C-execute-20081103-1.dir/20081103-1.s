@@ -7,10 +7,10 @@ foo:                                    # @foo
 # %bb.0:
 	addi.d	$sp, $sp, -16
 	st.d	$a0, $sp, 0
-	pcalau12i	$a0, %pc_hi20(A)
-	ld.w	$a0, $a0, %pc_lo12(A)
-	ld.w	$a1, $sp, 1
-	bne	$a1, $a0, .LBB0_2
+	ld.w	$a0, $sp, 1
+	pcalau12i	$a1, %pc_hi20(A)
+	ld.w	$a1, $a1, %pc_lo12(A)
+	bne	$a0, $a1, .LBB0_2
 # %bb.1:
 	addi.d	$sp, $sp, 16
 	ret
@@ -27,10 +27,10 @@ main:                                   # @main
 # %bb.0:
 	addi.d	$sp, $sp, -16
 	pcalau12i	$a0, %pc_hi20(A)
-	ld.wu	$a1, $a0, %pc_lo12(A)
+	ld.w	$a0, $a0, %pc_lo12(A)
+	bstrpick.d	$a1, $a0, 31, 0
 	slli.d	$a1, $a1, 8
 	st.d	$a1, $sp, 0
-	ld.w	$a0, $a0, %pc_lo12(A)
 	ld.w	$a1, $sp, 1
 	bne	$a1, $a0, .LBB1_2
 # %bb.1:                                # %foo.exit

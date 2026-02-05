@@ -495,7 +495,7 @@ closure:                                # @closure
 	st.d	$a3, $a0, %pc_lo12(itemsetend)
 	move	$a0, $fp
 	bltu	$a0, $s3, .LBB3_52
-	b	.LBB3_61
+	b	.LBB3_60
 .LBB3_26:                               # %vector.memcheck122
 	alsl.d	$a2, $a3, $a1, 2
 	sub.d	$a2, $s1, $a2
@@ -535,7 +535,7 @@ closure:                                # @closure
 # %bb.32:                               # %middle.block139
 	beq	$a2, $a5, .LBB3_38
 # %bb.33:                               # %vec.epilog.iter.check143
-	beqz	$a4, .LBB3_62
+	beqz	$a4, .LBB3_61
 .LBB3_34:                               # %vec.epilog.ph145
 	bstrpick.d	$a4, $a2, 62, 2
 	slli.d	$a6, $a4, 2
@@ -639,7 +639,7 @@ closure:                                # @closure
 	bltu	$s1, $s4, .LBB3_40
 .LBB3_51:                               # %.preheader.loopexit
 	ld.d	$a3, $a1, %pc_lo12(itemsetend)
-	bgeu	$a0, $s3, .LBB3_61
+	bgeu	$a0, $s3, .LBB3_60
 .LBB3_52:                               # %.lr.ph84.preheader
 	slli.d	$a1, $s0, 1
 	add.d	$a1, $a1, $fp
@@ -661,8 +661,8 @@ closure:                                # @closure
 	addi.d	$a4, $a1, 1
 	move	$a5, $a4
 	bstrins.d	$a5, $zero, 4, 0
-	alsl.d	$a1, $a5, $a0, 1
-	alsl.d	$a2, $a5, $a3, 1
+	alsl.d	$a2, $a5, $a0, 1
+	alsl.d	$a1, $a5, $a3, 1
 	addi.d	$a3, $a3, 32
 	addi.d	$a0, $a0, 32
 	move	$a6, $a5
@@ -679,26 +679,23 @@ closure:                                # @closure
 	bnez	$a6, .LBB3_55
 # %bb.56:                               # %middle.block181
 	bne	$a4, $a5, .LBB3_58
-	b	.LBB3_60
+	b	.LBB3_59
 .LBB3_57:
-	move	$a1, $a0
-	move	$a2, $a3
-.LBB3_58:                               # %.lr.ph84.preheader185
-	move	$a0, $a2
+	move	$a2, $a0
+	move	$a1, $a3
 	.p2align	4, , 16
-.LBB3_59:                               # %.lr.ph84
+.LBB3_58:                               # %.lr.ph84
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a3, $a1, 0
-	addi.d	$a4, $a1, 2
-	addi.d	$a2, $a0, 2
-	st.h	$a3, $a0, 0
-	move	$a1, $a4
-	move	$a0, $a2
-	bltu	$a4, $s3, .LBB3_59
-.LBB3_60:                               # %._crit_edge
+	ld.h	$a0, $a2, 0
+	addi.d	$a3, $a2, 2
+	st.h	$a0, $a1, 0
+	addi.d	$a1, $a1, 2
+	move	$a2, $a3
+	bltu	$a3, $s3, .LBB3_58
+.LBB3_59:                               # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(itemsetend)
-	st.d	$a2, $a0, %pc_lo12(itemsetend)
-.LBB3_61:
+	st.d	$a1, $a0, %pc_lo12(itemsetend)
+.LBB3_60:
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -712,7 +709,7 @@ closure:                                # @closure
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB3_62:
+.LBB3_61:
 	alsl.d	$a0, $a5, $a0, 2
 	alsl.d	$a4, $a5, $s1, 2
 	b	.LBB3_37

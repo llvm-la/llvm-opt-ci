@@ -53,8 +53,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 524
 	ld.w	$a3, $a2, 588
 	ld.w	$a4, $a2, 652
@@ -71,8 +70,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 528
 	ld.w	$a3, $a2, 592
 	ld.w	$a4, $a2, 656
@@ -89,8 +87,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 532
 	ld.w	$a3, $a2, 596
 	ld.w	$a4, $a2, 660
@@ -107,8 +104,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 536
 	ld.w	$a3, $a2, 600
 	ld.w	$a4, $a2, 664
@@ -125,8 +121,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 540
 	ld.w	$a3, $a2, 604
 	ld.w	$a4, $a2, 668
@@ -143,8 +138,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 544
 	ld.w	$a3, $a2, 608
 	ld.w	$a4, $a2, 672
@@ -161,8 +155,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 548
 	ld.w	$a3, $a2, 612
 	ld.w	$a4, $a2, 676
@@ -179,8 +172,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 552
 	ld.w	$a3, $a2, 616
 	ld.w	$a4, $a2, 680
@@ -197,8 +189,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 556
 	ld.w	$a3, $a2, 620
 	ld.w	$a4, $a2, 684
@@ -215,8 +206,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 560
 	ld.w	$a3, $a2, 624
 	ld.w	$a4, $a2, 688
@@ -233,8 +223,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 564
 	ld.w	$a3, $a2, 628
 	ld.w	$a4, $a2, 692
@@ -251,8 +240,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 568
 	ld.w	$a3, $a2, 632
 	ld.w	$a4, $a2, 696
@@ -269,8 +257,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr1, $xr2
-	xvmax.w	$xr1, $xr2, $xr1
+	xvsigncov.w	$xr1, $xr2, $xr2
 	xvld	$xr2, $a2, 572
 	ld.w	$a3, $a2, 636
 	ld.w	$a4, $a2, 700
@@ -287,11 +274,10 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr2, $a4, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a6, 7
-	xvneg.w	$xr3, $xr2
 	xvld	$xr1, $a2, 0
 	ld.w	$a3, $a2, 64
 	ld.w	$a4, $a2, 128
-	xvmax.w	$xr2, $xr2, $xr3
+	xvsigncov.w	$xr2, $xr2, $xr2
 	xvadd.w	$xr0, $xr0, $xr2
 	xvinsgr2vr.w	$xr1, $a3, 1
 	xvinsgr2vr.w	$xr1, $a4, 2
@@ -336,8 +322,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 12
 	ld.w	$a3, $a2, 76
 	ld.w	$a4, $a2, 140
@@ -354,8 +339,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 16
 	ld.w	$a3, $a2, 80
 	ld.w	$a4, $a2, 144
@@ -372,8 +356,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 20
 	ld.w	$a3, $a2, 84
 	ld.w	$a4, $a2, 148
@@ -390,8 +373,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 24
 	ld.w	$a3, $a2, 88
 	ld.w	$a4, $a2, 152
@@ -408,8 +390,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 28
 	ld.w	$a3, $a2, 92
 	ld.w	$a4, $a2, 156
@@ -426,8 +407,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 32
 	ld.w	$a3, $a2, 96
 	ld.w	$a4, $a2, 160
@@ -444,8 +424,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 36
 	ld.w	$a3, $a2, 100
 	ld.w	$a4, $a2, 164
@@ -462,8 +441,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 40
 	ld.w	$a3, $a2, 104
 	ld.w	$a4, $a2, 168
@@ -480,8 +458,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 44
 	ld.w	$a3, $a2, 108
 	ld.w	$a4, $a2, 172
@@ -498,8 +475,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 48
 	ld.w	$a3, $a2, 112
 	ld.w	$a4, $a2, 176
@@ -516,35 +492,33 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
-	xvld	$xr3, $a2, 52
+	xvsigncov.w	$xr2, $xr3, $xr3
+	xvadd.w	$xr1, $xr1, $xr2
+	xvld	$xr2, $a2, 52
 	ld.w	$a3, $a2, 116
 	ld.w	$a4, $a2, 180
 	ld.w	$a5, $a2, 244
-	xvadd.w	$xr1, $xr1, $xr2
-	xvinsgr2vr.w	$xr3, $a3, 1
-	xvinsgr2vr.w	$xr3, $a4, 2
-	xvinsgr2vr.w	$xr3, $a5, 3
-	ld.w	$a3, $a2, 308
-	ld.w	$a4, $a2, 372
-	ld.w	$a5, $a2, 436
-	ld.w	$a6, $a2, 500
-	xvinsgr2vr.w	$xr3, $a3, 4
-	xvinsgr2vr.w	$xr3, $a4, 5
-	xvinsgr2vr.w	$xr3, $a5, 6
-	xvinsgr2vr.w	$xr3, $a6, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	ld.w	$a6, $a2, 308
+	xvinsgr2vr.w	$xr2, $a3, 1
+	xvinsgr2vr.w	$xr2, $a4, 2
+	xvinsgr2vr.w	$xr2, $a5, 3
+	xvinsgr2vr.w	$xr2, $a6, 4
+	ld.w	$a3, $a2, 372
+	ld.w	$a4, $a2, 436
+	ld.w	$a5, $a2, 500
 	xvld	$xr3, $a2, 56
-	ld.w	$a3, $a2, 120
-	ld.w	$a4, $a2, 184
-	ld.w	$a5, $a2, 248
-	ld.w	$a6, $a2, 312
-	xvinsgr2vr.w	$xr3, $a3, 1
-	xvinsgr2vr.w	$xr3, $a4, 2
-	xvinsgr2vr.w	$xr3, $a5, 3
-	xvinsgr2vr.w	$xr3, $a6, 4
+	ld.w	$a6, $a2, 120
+	xvinsgr2vr.w	$xr2, $a3, 5
+	xvinsgr2vr.w	$xr2, $a4, 6
+	xvinsgr2vr.w	$xr2, $a5, 7
+	xvinsgr2vr.w	$xr3, $a6, 1
+	ld.w	$a3, $a2, 184
+	ld.w	$a4, $a2, 248
+	ld.w	$a5, $a2, 312
+	xvsigncov.w	$xr2, $xr2, $xr2
+	xvinsgr2vr.w	$xr3, $a3, 2
+	xvinsgr2vr.w	$xr3, $a4, 3
+	xvinsgr2vr.w	$xr3, $a5, 4
 	ld.w	$a3, $a2, 376
 	ld.w	$a4, $a2, 440
 	ld.w	$a5, $a2, 504
@@ -552,8 +526,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a3, 5
 	xvinsgr2vr.w	$xr3, $a4, 6
 	xvinsgr2vr.w	$xr3, $a5, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvld	$xr3, $a2, 60
 	ld.w	$a3, $a2, 124
 	ld.w	$a4, $a2, 188
@@ -570,8 +543,7 @@ update_rc:                              # @update_rc
 	xvinsgr2vr.w	$xr3, $a4, 5
 	xvinsgr2vr.w	$xr3, $a5, 6
 	xvinsgr2vr.w	$xr3, $a2, 7
-	xvneg.w	$xr2, $xr3
-	xvmax.w	$xr2, $xr3, $xr2
+	xvsigncov.w	$xr2, $xr3, $xr3
 	xvadd.w	$xr1, $xr1, $xr2
 	pcalau12i	$a2, %pc_hi20(generic_RC)
 	ld.d	$a4, $a2, %pc_lo12(generic_RC)
@@ -660,246 +632,232 @@ calc_MAD:                               # @calc_MAD
 	xvld	$xr0, $a0, 572
 	ld.w	$a1, $a0, 636
 	ld.w	$a2, $a0, 700
-	ld.w	$a3, $a0, 764
 	xvinsgr2vr.w	$xr0, $a1, 1
 	xvinsgr2vr.w	$xr0, $a2, 2
-	xvinsgr2vr.w	$xr0, $a3, 3
-	ld.w	$a1, $a0, 828
-	ld.w	$a2, $a0, 892
-	ld.w	$a3, $a0, 956
-	ld.w	$a4, $a0, 1020
-	xvinsgr2vr.w	$xr0, $a1, 4
-	xvinsgr2vr.w	$xr0, $a2, 5
-	xvinsgr2vr.w	$xr0, $a3, 6
-	xvinsgr2vr.w	$xr0, $a4, 7
-	xvneg.w	$xr1, $xr0
-	xvld	$xr2, $a0, 568
-	ld.w	$a1, $a0, 632
-	ld.w	$a2, $a0, 696
-	ld.w	$a3, $a0, 760
-	xvmax.w	$xr0, $xr0, $xr1
-	xvinsgr2vr.w	$xr2, $a1, 1
-	xvinsgr2vr.w	$xr2, $a2, 2
-	xvinsgr2vr.w	$xr2, $a3, 3
-	ld.w	$a1, $a0, 824
-	ld.w	$a2, $a0, 888
-	ld.w	$a3, $a0, 952
-	ld.w	$a4, $a0, 1016
-	xvinsgr2vr.w	$xr2, $a1, 4
-	xvinsgr2vr.w	$xr2, $a2, 5
-	xvinsgr2vr.w	$xr2, $a3, 6
-	xvinsgr2vr.w	$xr2, $a4, 7
-	xvneg.w	$xr1, $xr2
+	ld.w	$a1, $a0, 764
+	ld.w	$a2, $a0, 828
+	ld.w	$a3, $a0, 892
+	ld.w	$a4, $a0, 956
+	xvinsgr2vr.w	$xr0, $a1, 3
+	xvinsgr2vr.w	$xr0, $a2, 4
+	xvinsgr2vr.w	$xr0, $a3, 5
+	xvinsgr2vr.w	$xr0, $a4, 6
+	ld.w	$a1, $a0, 1020
+	xvld	$xr1, $a0, 568
+	ld.w	$a2, $a0, 632
+	ld.w	$a3, $a0, 696
+	xvinsgr2vr.w	$xr0, $a1, 7
+	xvsigncov.w	$xr0, $xr0, $xr0
+	xvinsgr2vr.w	$xr1, $a2, 1
+	xvinsgr2vr.w	$xr1, $a3, 2
+	ld.w	$a1, $a0, 760
+	ld.w	$a2, $a0, 824
+	ld.w	$a3, $a0, 888
+	ld.w	$a4, $a0, 952
+	xvinsgr2vr.w	$xr1, $a1, 3
+	xvinsgr2vr.w	$xr1, $a2, 4
+	xvinsgr2vr.w	$xr1, $a3, 5
+	xvinsgr2vr.w	$xr1, $a4, 6
+	ld.w	$a1, $a0, 1016
 	xvld	$xr3, $a0, 564
-	ld.w	$a1, $a0, 628
-	ld.w	$a2, $a0, 692
-	ld.w	$a3, $a0, 756
-	xvmax.w	$xr1, $xr2, $xr1
-	xvinsgr2vr.w	$xr3, $a1, 1
-	xvinsgr2vr.w	$xr3, $a2, 2
-	xvinsgr2vr.w	$xr3, $a3, 3
-	ld.w	$a1, $a0, 820
-	ld.w	$a2, $a0, 884
-	ld.w	$a3, $a0, 948
-	ld.w	$a4, $a0, 1012
-	xvinsgr2vr.w	$xr3, $a1, 4
-	xvinsgr2vr.w	$xr3, $a2, 5
-	xvinsgr2vr.w	$xr3, $a3, 6
-	xvinsgr2vr.w	$xr3, $a4, 7
-	xvneg.w	$xr2, $xr3
+	ld.w	$a2, $a0, 628
+	ld.w	$a3, $a0, 692
+	xvinsgr2vr.w	$xr1, $a1, 7
+	xvsigncov.w	$xr2, $xr1, $xr1
+	xvinsgr2vr.w	$xr3, $a2, 1
+	xvinsgr2vr.w	$xr3, $a3, 2
+	ld.w	$a1, $a0, 756
+	ld.w	$a2, $a0, 820
+	ld.w	$a3, $a0, 884
+	ld.w	$a4, $a0, 948
+	xvinsgr2vr.w	$xr3, $a1, 3
+	xvinsgr2vr.w	$xr3, $a2, 4
+	xvinsgr2vr.w	$xr3, $a3, 5
+	xvinsgr2vr.w	$xr3, $a4, 6
+	ld.w	$a1, $a0, 1012
 	xvld	$xr4, $a0, 560
-	ld.w	$a1, $a0, 624
-	ld.w	$a2, $a0, 688
-	ld.w	$a3, $a0, 752
-	xvmax.w	$xr2, $xr3, $xr2
-	xvinsgr2vr.w	$xr4, $a1, 1
-	xvinsgr2vr.w	$xr4, $a2, 2
-	xvinsgr2vr.w	$xr4, $a3, 3
-	ld.w	$a1, $a0, 816
-	ld.w	$a2, $a0, 880
-	ld.w	$a3, $a0, 944
-	ld.w	$a4, $a0, 1008
-	xvinsgr2vr.w	$xr4, $a1, 4
-	xvinsgr2vr.w	$xr4, $a2, 5
-	xvinsgr2vr.w	$xr4, $a3, 6
-	xvinsgr2vr.w	$xr4, $a4, 7
-	xvneg.w	$xr3, $xr4
+	ld.w	$a2, $a0, 624
+	ld.w	$a3, $a0, 688
+	xvinsgr2vr.w	$xr3, $a1, 7
+	xvsigncov.w	$xr1, $xr3, $xr3
+	xvinsgr2vr.w	$xr4, $a2, 1
+	xvinsgr2vr.w	$xr4, $a3, 2
+	ld.w	$a1, $a0, 752
+	ld.w	$a2, $a0, 816
+	ld.w	$a3, $a0, 880
+	ld.w	$a4, $a0, 944
+	xvinsgr2vr.w	$xr4, $a1, 3
+	xvinsgr2vr.w	$xr4, $a2, 4
+	xvinsgr2vr.w	$xr4, $a3, 5
+	xvinsgr2vr.w	$xr4, $a4, 6
+	ld.w	$a1, $a0, 1008
 	xvld	$xr5, $a0, 556
-	ld.w	$a1, $a0, 620
-	ld.w	$a2, $a0, 684
-	ld.w	$a3, $a0, 748
-	xvmax.w	$xr3, $xr4, $xr3
-	xvinsgr2vr.w	$xr5, $a1, 1
-	xvinsgr2vr.w	$xr5, $a2, 2
-	xvinsgr2vr.w	$xr5, $a3, 3
-	ld.w	$a1, $a0, 812
-	ld.w	$a2, $a0, 876
-	ld.w	$a3, $a0, 940
-	ld.w	$a4, $a0, 1004
-	xvinsgr2vr.w	$xr5, $a1, 4
-	xvinsgr2vr.w	$xr5, $a2, 5
-	xvinsgr2vr.w	$xr5, $a3, 6
-	xvinsgr2vr.w	$xr5, $a4, 7
-	xvneg.w	$xr4, $xr5
+	ld.w	$a2, $a0, 620
+	ld.w	$a3, $a0, 684
+	xvinsgr2vr.w	$xr4, $a1, 7
+	xvsigncov.w	$xr3, $xr4, $xr4
+	xvinsgr2vr.w	$xr5, $a2, 1
+	xvinsgr2vr.w	$xr5, $a3, 2
+	ld.w	$a1, $a0, 748
+	ld.w	$a2, $a0, 812
+	ld.w	$a3, $a0, 876
+	ld.w	$a4, $a0, 940
+	xvinsgr2vr.w	$xr5, $a1, 3
+	xvinsgr2vr.w	$xr5, $a2, 4
+	xvinsgr2vr.w	$xr5, $a3, 5
+	xvinsgr2vr.w	$xr5, $a4, 6
+	ld.w	$a1, $a0, 1004
 	xvld	$xr6, $a0, 552
-	ld.w	$a1, $a0, 616
-	ld.w	$a2, $a0, 680
-	ld.w	$a3, $a0, 744
-	xvmax.w	$xr4, $xr5, $xr4
-	xvinsgr2vr.w	$xr6, $a1, 1
-	xvinsgr2vr.w	$xr6, $a2, 2
-	xvinsgr2vr.w	$xr6, $a3, 3
-	ld.w	$a1, $a0, 808
-	ld.w	$a2, $a0, 872
-	ld.w	$a3, $a0, 936
-	ld.w	$a4, $a0, 1000
-	xvinsgr2vr.w	$xr6, $a1, 4
-	xvinsgr2vr.w	$xr6, $a2, 5
-	xvinsgr2vr.w	$xr6, $a3, 6
-	xvinsgr2vr.w	$xr6, $a4, 7
-	xvneg.w	$xr5, $xr6
+	ld.w	$a2, $a0, 616
+	ld.w	$a3, $a0, 680
+	xvinsgr2vr.w	$xr5, $a1, 7
+	xvsigncov.w	$xr4, $xr5, $xr5
+	xvinsgr2vr.w	$xr6, $a2, 1
+	xvinsgr2vr.w	$xr6, $a3, 2
+	ld.w	$a1, $a0, 744
+	ld.w	$a2, $a0, 808
+	ld.w	$a3, $a0, 872
+	ld.w	$a4, $a0, 936
+	xvinsgr2vr.w	$xr6, $a1, 3
+	xvinsgr2vr.w	$xr6, $a2, 4
+	xvinsgr2vr.w	$xr6, $a3, 5
+	xvinsgr2vr.w	$xr6, $a4, 6
+	ld.w	$a1, $a0, 1000
 	xvld	$xr7, $a0, 548
-	ld.w	$a1, $a0, 612
-	ld.w	$a2, $a0, 676
-	ld.w	$a3, $a0, 740
-	xvmax.w	$xr5, $xr6, $xr5
-	xvinsgr2vr.w	$xr7, $a1, 1
-	xvinsgr2vr.w	$xr7, $a2, 2
-	xvinsgr2vr.w	$xr7, $a3, 3
-	ld.w	$a1, $a0, 804
-	ld.w	$a2, $a0, 868
-	ld.w	$a3, $a0, 932
-	ld.w	$a4, $a0, 996
-	xvinsgr2vr.w	$xr7, $a1, 4
-	xvinsgr2vr.w	$xr7, $a2, 5
-	xvinsgr2vr.w	$xr7, $a3, 6
-	xvinsgr2vr.w	$xr7, $a4, 7
-	xvneg.w	$xr6, $xr7
+	ld.w	$a2, $a0, 612
+	ld.w	$a3, $a0, 676
+	xvinsgr2vr.w	$xr6, $a1, 7
+	xvsigncov.w	$xr5, $xr6, $xr6
+	xvinsgr2vr.w	$xr7, $a2, 1
+	xvinsgr2vr.w	$xr7, $a3, 2
+	ld.w	$a1, $a0, 740
+	ld.w	$a2, $a0, 804
+	ld.w	$a3, $a0, 868
+	ld.w	$a4, $a0, 932
+	xvinsgr2vr.w	$xr7, $a1, 3
+	xvinsgr2vr.w	$xr7, $a2, 4
+	xvinsgr2vr.w	$xr7, $a3, 5
+	xvinsgr2vr.w	$xr7, $a4, 6
+	ld.w	$a1, $a0, 996
 	xvld	$xr8, $a0, 544
-	ld.w	$a1, $a0, 608
-	ld.w	$a2, $a0, 672
-	ld.w	$a3, $a0, 736
-	xvmax.w	$xr6, $xr7, $xr6
-	xvinsgr2vr.w	$xr8, $a1, 1
-	xvinsgr2vr.w	$xr8, $a2, 2
-	xvinsgr2vr.w	$xr8, $a3, 3
-	ld.w	$a1, $a0, 800
-	ld.w	$a2, $a0, 864
-	ld.w	$a3, $a0, 928
-	ld.w	$a4, $a0, 992
-	xvinsgr2vr.w	$xr8, $a1, 4
-	xvinsgr2vr.w	$xr8, $a2, 5
-	xvinsgr2vr.w	$xr8, $a3, 6
-	xvinsgr2vr.w	$xr8, $a4, 7
-	xvneg.w	$xr7, $xr8
+	ld.w	$a2, $a0, 608
+	ld.w	$a3, $a0, 672
+	xvinsgr2vr.w	$xr7, $a1, 7
+	xvsigncov.w	$xr6, $xr7, $xr7
+	xvinsgr2vr.w	$xr8, $a2, 1
+	xvinsgr2vr.w	$xr8, $a3, 2
+	ld.w	$a1, $a0, 736
+	ld.w	$a2, $a0, 800
+	ld.w	$a3, $a0, 864
+	ld.w	$a4, $a0, 928
+	xvinsgr2vr.w	$xr8, $a1, 3
+	xvinsgr2vr.w	$xr8, $a2, 4
+	xvinsgr2vr.w	$xr8, $a3, 5
+	xvinsgr2vr.w	$xr8, $a4, 6
+	ld.w	$a1, $a0, 992
 	xvld	$xr9, $a0, 540
-	ld.w	$a1, $a0, 604
-	ld.w	$a2, $a0, 668
-	ld.w	$a3, $a0, 732
-	xvmax.w	$xr7, $xr8, $xr7
-	xvinsgr2vr.w	$xr9, $a1, 1
-	xvinsgr2vr.w	$xr9, $a2, 2
-	xvinsgr2vr.w	$xr9, $a3, 3
-	ld.w	$a1, $a0, 796
-	ld.w	$a2, $a0, 860
-	ld.w	$a3, $a0, 924
-	ld.w	$a4, $a0, 988
-	xvinsgr2vr.w	$xr9, $a1, 4
-	xvinsgr2vr.w	$xr9, $a2, 5
-	xvinsgr2vr.w	$xr9, $a3, 6
-	xvinsgr2vr.w	$xr9, $a4, 7
-	xvneg.w	$xr8, $xr9
+	ld.w	$a2, $a0, 604
+	ld.w	$a3, $a0, 668
+	xvinsgr2vr.w	$xr8, $a1, 7
+	xvsigncov.w	$xr7, $xr8, $xr8
+	xvinsgr2vr.w	$xr9, $a2, 1
+	xvinsgr2vr.w	$xr9, $a3, 2
+	ld.w	$a1, $a0, 732
+	ld.w	$a2, $a0, 796
+	ld.w	$a3, $a0, 860
+	ld.w	$a4, $a0, 924
+	xvinsgr2vr.w	$xr9, $a1, 3
+	xvinsgr2vr.w	$xr9, $a2, 4
+	xvinsgr2vr.w	$xr9, $a3, 5
+	xvinsgr2vr.w	$xr9, $a4, 6
+	ld.w	$a1, $a0, 988
 	xvld	$xr10, $a0, 536
-	ld.w	$a1, $a0, 600
-	ld.w	$a2, $a0, 664
-	ld.w	$a3, $a0, 728
-	xvmax.w	$xr8, $xr9, $xr8
-	xvinsgr2vr.w	$xr10, $a1, 1
-	xvinsgr2vr.w	$xr10, $a2, 2
-	xvinsgr2vr.w	$xr10, $a3, 3
-	ld.w	$a1, $a0, 792
-	ld.w	$a2, $a0, 856
-	ld.w	$a3, $a0, 920
-	ld.w	$a4, $a0, 984
-	xvinsgr2vr.w	$xr10, $a1, 4
-	xvinsgr2vr.w	$xr10, $a2, 5
-	xvinsgr2vr.w	$xr10, $a3, 6
-	xvinsgr2vr.w	$xr10, $a4, 7
-	xvneg.w	$xr9, $xr10
+	ld.w	$a2, $a0, 600
+	ld.w	$a3, $a0, 664
+	xvinsgr2vr.w	$xr9, $a1, 7
+	xvsigncov.w	$xr8, $xr9, $xr9
+	xvinsgr2vr.w	$xr10, $a2, 1
+	xvinsgr2vr.w	$xr10, $a3, 2
+	ld.w	$a1, $a0, 728
+	ld.w	$a2, $a0, 792
+	ld.w	$a3, $a0, 856
+	ld.w	$a4, $a0, 920
+	xvinsgr2vr.w	$xr10, $a1, 3
+	xvinsgr2vr.w	$xr10, $a2, 4
+	xvinsgr2vr.w	$xr10, $a3, 5
+	xvinsgr2vr.w	$xr10, $a4, 6
+	ld.w	$a1, $a0, 984
 	xvld	$xr11, $a0, 532
-	ld.w	$a1, $a0, 596
-	ld.w	$a2, $a0, 660
-	ld.w	$a3, $a0, 724
-	xvmax.w	$xr9, $xr10, $xr9
-	xvinsgr2vr.w	$xr11, $a1, 1
-	xvinsgr2vr.w	$xr11, $a2, 2
-	xvinsgr2vr.w	$xr11, $a3, 3
-	ld.w	$a1, $a0, 788
-	ld.w	$a2, $a0, 852
-	ld.w	$a3, $a0, 916
-	ld.w	$a4, $a0, 980
-	xvinsgr2vr.w	$xr11, $a1, 4
-	xvinsgr2vr.w	$xr11, $a2, 5
-	xvinsgr2vr.w	$xr11, $a3, 6
-	xvinsgr2vr.w	$xr11, $a4, 7
-	xvneg.w	$xr10, $xr11
+	ld.w	$a2, $a0, 596
+	ld.w	$a3, $a0, 660
+	xvinsgr2vr.w	$xr10, $a1, 7
+	xvsigncov.w	$xr9, $xr10, $xr10
+	xvinsgr2vr.w	$xr11, $a2, 1
+	xvinsgr2vr.w	$xr11, $a3, 2
+	ld.w	$a1, $a0, 724
+	ld.w	$a2, $a0, 788
+	ld.w	$a3, $a0, 852
+	ld.w	$a4, $a0, 916
+	xvinsgr2vr.w	$xr11, $a1, 3
+	xvinsgr2vr.w	$xr11, $a2, 4
+	xvinsgr2vr.w	$xr11, $a3, 5
+	xvinsgr2vr.w	$xr11, $a4, 6
+	ld.w	$a1, $a0, 980
 	xvld	$xr12, $a0, 528
-	ld.w	$a1, $a0, 592
-	ld.w	$a2, $a0, 656
-	ld.w	$a3, $a0, 720
-	xvmax.w	$xr10, $xr11, $xr10
-	xvinsgr2vr.w	$xr12, $a1, 1
-	xvinsgr2vr.w	$xr12, $a2, 2
-	xvinsgr2vr.w	$xr12, $a3, 3
-	ld.w	$a1, $a0, 784
-	ld.w	$a2, $a0, 848
-	ld.w	$a3, $a0, 912
-	ld.w	$a4, $a0, 976
-	xvinsgr2vr.w	$xr12, $a1, 4
-	xvinsgr2vr.w	$xr12, $a2, 5
-	xvinsgr2vr.w	$xr12, $a3, 6
-	xvinsgr2vr.w	$xr12, $a4, 7
-	xvneg.w	$xr11, $xr12
+	ld.w	$a2, $a0, 592
+	ld.w	$a3, $a0, 656
+	xvinsgr2vr.w	$xr11, $a1, 7
+	xvsigncov.w	$xr10, $xr11, $xr11
+	xvinsgr2vr.w	$xr12, $a2, 1
+	xvinsgr2vr.w	$xr12, $a3, 2
+	ld.w	$a1, $a0, 720
+	ld.w	$a2, $a0, 784
+	ld.w	$a3, $a0, 848
+	ld.w	$a4, $a0, 912
+	xvinsgr2vr.w	$xr12, $a1, 3
+	xvinsgr2vr.w	$xr12, $a2, 4
+	xvinsgr2vr.w	$xr12, $a3, 5
+	xvinsgr2vr.w	$xr12, $a4, 6
+	ld.w	$a1, $a0, 976
 	xvld	$xr13, $a0, 524
-	ld.w	$a1, $a0, 588
-	ld.w	$a2, $a0, 652
-	ld.w	$a3, $a0, 716
-	xvmax.w	$xr11, $xr12, $xr11
-	xvinsgr2vr.w	$xr13, $a1, 1
-	xvinsgr2vr.w	$xr13, $a2, 2
-	xvinsgr2vr.w	$xr13, $a3, 3
-	ld.w	$a1, $a0, 780
-	ld.w	$a2, $a0, 844
-	ld.w	$a3, $a0, 908
-	ld.w	$a4, $a0, 972
-	xvinsgr2vr.w	$xr13, $a1, 4
-	xvinsgr2vr.w	$xr13, $a2, 5
-	xvinsgr2vr.w	$xr13, $a3, 6
-	xvinsgr2vr.w	$xr13, $a4, 7
-	xvneg.w	$xr12, $xr13
+	ld.w	$a2, $a0, 588
+	ld.w	$a3, $a0, 652
+	xvinsgr2vr.w	$xr12, $a1, 7
+	xvsigncov.w	$xr11, $xr12, $xr12
+	xvinsgr2vr.w	$xr13, $a2, 1
+	xvinsgr2vr.w	$xr13, $a3, 2
+	ld.w	$a1, $a0, 716
+	ld.w	$a2, $a0, 780
+	ld.w	$a3, $a0, 844
+	ld.w	$a4, $a0, 908
+	xvinsgr2vr.w	$xr13, $a1, 3
+	xvinsgr2vr.w	$xr13, $a2, 4
+	xvinsgr2vr.w	$xr13, $a3, 5
+	xvinsgr2vr.w	$xr13, $a4, 6
+	ld.w	$a1, $a0, 972
 	xvld	$xr14, $a0, 520
-	ld.w	$a1, $a0, 584
-	ld.w	$a2, $a0, 648
-	ld.w	$a3, $a0, 712
-	xvmax.w	$xr12, $xr13, $xr12
-	xvinsgr2vr.w	$xr14, $a1, 1
-	xvinsgr2vr.w	$xr14, $a2, 2
-	xvinsgr2vr.w	$xr14, $a3, 3
-	ld.w	$a1, $a0, 776
-	ld.w	$a2, $a0, 840
-	ld.w	$a3, $a0, 904
-	ld.w	$a4, $a0, 968
-	xvinsgr2vr.w	$xr14, $a1, 4
-	xvinsgr2vr.w	$xr14, $a2, 5
-	xvinsgr2vr.w	$xr14, $a3, 6
-	xvinsgr2vr.w	$xr14, $a4, 7
+	ld.w	$a2, $a0, 584
+	ld.w	$a3, $a0, 648
+	xvinsgr2vr.w	$xr13, $a1, 7
+	xvsigncov.w	$xr12, $xr13, $xr13
+	xvinsgr2vr.w	$xr14, $a2, 1
+	xvinsgr2vr.w	$xr14, $a3, 2
+	ld.w	$a1, $a0, 712
+	ld.w	$a2, $a0, 776
+	ld.w	$a3, $a0, 840
+	ld.w	$a4, $a0, 904
+	xvinsgr2vr.w	$xr14, $a1, 3
+	xvinsgr2vr.w	$xr14, $a2, 4
+	xvinsgr2vr.w	$xr14, $a3, 5
+	xvinsgr2vr.w	$xr14, $a4, 6
+	ld.w	$a1, $a0, 968
 	xvld	$xr13, $a0, 516
-	ld.w	$a1, $a0, 580
-	ld.w	$a2, $a0, 644
-	xvneg.w	$xr15, $xr14
-	xvmax.w	$xr14, $xr14, $xr15
-	xvinsgr2vr.w	$xr13, $a1, 1
-	xvinsgr2vr.w	$xr13, $a2, 2
+	ld.w	$a2, $a0, 580
+	ld.w	$a3, $a0, 644
+	xvinsgr2vr.w	$xr14, $a1, 7
+	xvsigncov.w	$xr14, $xr14, $xr14
+	xvinsgr2vr.w	$xr13, $a2, 1
+	xvinsgr2vr.w	$xr13, $a3, 2
 	ld.w	$a1, $a0, 708
 	ld.w	$a2, $a0, 772
 	ld.w	$a3, $a0, 836
@@ -937,279 +895,265 @@ calc_MAD:                               # @calc_MAD
 	xvadd.w	$xr5, $xr5, $xr6
 	xvadd.w	$xr4, $xr4, $xr5
 	xvadd.w	$xr3, $xr3, $xr4
-	xvadd.w	$xr2, $xr2, $xr3
-	xvadd.w	$xr1, $xr1, $xr2
-	xvld	$xr2, $a0, 60
+	xvadd.w	$xr3, $xr1, $xr3
+	xvld	$xr1, $a0, 60
 	ld.w	$a1, $a0, 124
 	ld.w	$a2, $a0, 188
-	ld.w	$a3, $a0, 252
-	xvadd.w	$xr0, $xr0, $xr1
-	xvinsgr2vr.w	$xr2, $a1, 1
-	xvinsgr2vr.w	$xr2, $a2, 2
-	xvinsgr2vr.w	$xr2, $a3, 3
-	ld.w	$a1, $a0, 316
-	ld.w	$a2, $a0, 380
-	ld.w	$a3, $a0, 444
-	ld.w	$a4, $a0, 508
-	xvinsgr2vr.w	$xr2, $a1, 4
-	xvinsgr2vr.w	$xr2, $a2, 5
-	xvinsgr2vr.w	$xr2, $a3, 6
-	xvinsgr2vr.w	$xr2, $a4, 7
-	xvneg.w	$xr1, $xr2
-	xvld	$xr3, $a0, 56
-	ld.w	$a1, $a0, 120
-	ld.w	$a2, $a0, 184
-	ld.w	$a3, $a0, 248
-	xvmax.w	$xr1, $xr2, $xr1
-	xvinsgr2vr.w	$xr3, $a1, 1
-	xvinsgr2vr.w	$xr3, $a2, 2
-	xvinsgr2vr.w	$xr3, $a3, 3
+	xvadd.w	$xr2, $xr2, $xr3
+	xvadd.w	$xr0, $xr0, $xr2
+	xvinsgr2vr.w	$xr1, $a1, 1
+	xvinsgr2vr.w	$xr1, $a2, 2
+	ld.w	$a1, $a0, 252
+	ld.w	$a2, $a0, 316
+	ld.w	$a3, $a0, 380
+	ld.w	$a4, $a0, 444
+	xvinsgr2vr.w	$xr1, $a1, 3
+	xvinsgr2vr.w	$xr1, $a2, 4
+	xvinsgr2vr.w	$xr1, $a3, 5
+	xvinsgr2vr.w	$xr1, $a4, 6
+	ld.w	$a1, $a0, 508
+	xvld	$xr2, $a0, 56
+	ld.w	$a2, $a0, 120
+	ld.w	$a3, $a0, 184
+	ld.w	$a4, $a0, 248
+	xvinsgr2vr.w	$xr1, $a1, 7
+	xvinsgr2vr.w	$xr2, $a2, 1
+	xvinsgr2vr.w	$xr2, $a3, 2
+	xvinsgr2vr.w	$xr2, $a4, 3
 	ld.w	$a1, $a0, 312
 	ld.w	$a2, $a0, 376
 	ld.w	$a3, $a0, 440
 	ld.w	$a4, $a0, 504
-	xvinsgr2vr.w	$xr3, $a1, 4
-	xvinsgr2vr.w	$xr3, $a2, 5
-	xvinsgr2vr.w	$xr3, $a3, 6
-	xvinsgr2vr.w	$xr3, $a4, 7
-	xvneg.w	$xr2, $xr3
-	xvld	$xr4, $a0, 52
+	xvinsgr2vr.w	$xr2, $a1, 4
+	xvinsgr2vr.w	$xr2, $a2, 5
+	xvinsgr2vr.w	$xr2, $a3, 6
+	xvinsgr2vr.w	$xr2, $a4, 7
+	xvld	$xr3, $a0, 52
 	ld.w	$a1, $a0, 116
 	ld.w	$a2, $a0, 180
 	ld.w	$a3, $a0, 244
-	xvmax.w	$xr2, $xr3, $xr2
-	xvinsgr2vr.w	$xr4, $a1, 1
-	xvinsgr2vr.w	$xr4, $a2, 2
-	xvinsgr2vr.w	$xr4, $a3, 3
-	ld.w	$a1, $a0, 308
-	ld.w	$a2, $a0, 372
-	ld.w	$a3, $a0, 436
-	ld.w	$a4, $a0, 500
-	xvinsgr2vr.w	$xr4, $a1, 4
-	xvinsgr2vr.w	$xr4, $a2, 5
-	xvinsgr2vr.w	$xr4, $a3, 6
-	xvinsgr2vr.w	$xr4, $a4, 7
-	xvneg.w	$xr3, $xr4
-	xvld	$xr5, $a0, 48
-	ld.w	$a1, $a0, 112
-	ld.w	$a2, $a0, 176
-	ld.w	$a3, $a0, 240
-	xvmax.w	$xr3, $xr4, $xr3
-	xvinsgr2vr.w	$xr5, $a1, 1
-	xvinsgr2vr.w	$xr5, $a2, 2
-	xvinsgr2vr.w	$xr5, $a3, 3
-	ld.w	$a1, $a0, 304
-	ld.w	$a2, $a0, 368
-	ld.w	$a3, $a0, 432
-	ld.w	$a4, $a0, 496
-	xvinsgr2vr.w	$xr5, $a1, 4
-	xvinsgr2vr.w	$xr5, $a2, 5
-	xvinsgr2vr.w	$xr5, $a3, 6
-	xvinsgr2vr.w	$xr5, $a4, 7
-	xvneg.w	$xr4, $xr5
-	xvld	$xr6, $a0, 44
-	ld.w	$a1, $a0, 108
-	ld.w	$a2, $a0, 172
-	ld.w	$a3, $a0, 236
-	xvmax.w	$xr4, $xr5, $xr4
-	xvinsgr2vr.w	$xr6, $a1, 1
-	xvinsgr2vr.w	$xr6, $a2, 2
-	xvinsgr2vr.w	$xr6, $a3, 3
-	ld.w	$a1, $a0, 300
-	ld.w	$a2, $a0, 364
-	ld.w	$a3, $a0, 428
-	ld.w	$a4, $a0, 492
-	xvinsgr2vr.w	$xr6, $a1, 4
-	xvinsgr2vr.w	$xr6, $a2, 5
-	xvinsgr2vr.w	$xr6, $a3, 6
-	xvinsgr2vr.w	$xr6, $a4, 7
-	xvneg.w	$xr5, $xr6
-	xvld	$xr7, $a0, 40
-	ld.w	$a1, $a0, 104
-	ld.w	$a2, $a0, 168
-	ld.w	$a3, $a0, 232
-	xvmax.w	$xr5, $xr6, $xr5
-	xvinsgr2vr.w	$xr7, $a1, 1
-	xvinsgr2vr.w	$xr7, $a2, 2
-	xvinsgr2vr.w	$xr7, $a3, 3
+	ld.w	$a4, $a0, 308
+	xvinsgr2vr.w	$xr3, $a1, 1
+	xvinsgr2vr.w	$xr3, $a2, 2
+	xvinsgr2vr.w	$xr3, $a3, 3
+	xvinsgr2vr.w	$xr3, $a4, 4
+	ld.w	$a1, $a0, 372
+	ld.w	$a2, $a0, 436
+	ld.w	$a3, $a0, 500
+	xvld	$xr4, $a0, 48
+	ld.w	$a4, $a0, 112
+	xvinsgr2vr.w	$xr3, $a1, 5
+	xvinsgr2vr.w	$xr3, $a2, 6
+	xvinsgr2vr.w	$xr3, $a3, 7
+	xvinsgr2vr.w	$xr4, $a4, 1
+	ld.w	$a1, $a0, 176
+	ld.w	$a2, $a0, 240
+	ld.w	$a3, $a0, 304
+	ld.w	$a4, $a0, 368
+	xvinsgr2vr.w	$xr4, $a1, 2
+	xvinsgr2vr.w	$xr4, $a2, 3
+	xvinsgr2vr.w	$xr4, $a3, 4
+	xvinsgr2vr.w	$xr4, $a4, 5
+	ld.w	$a1, $a0, 432
+	ld.w	$a2, $a0, 496
+	xvld	$xr5, $a0, 44
+	ld.w	$a3, $a0, 108
+	ld.w	$a4, $a0, 172
+	xvinsgr2vr.w	$xr4, $a1, 6
+	xvinsgr2vr.w	$xr4, $a2, 7
+	xvinsgr2vr.w	$xr5, $a3, 1
+	xvinsgr2vr.w	$xr5, $a4, 2
+	ld.w	$a1, $a0, 236
+	ld.w	$a2, $a0, 300
+	ld.w	$a3, $a0, 364
+	ld.w	$a4, $a0, 428
+	xvinsgr2vr.w	$xr5, $a1, 3
+	xvinsgr2vr.w	$xr5, $a2, 4
+	xvinsgr2vr.w	$xr5, $a3, 5
+	xvinsgr2vr.w	$xr5, $a4, 6
+	ld.w	$a1, $a0, 492
+	xvld	$xr6, $a0, 40
+	ld.w	$a2, $a0, 104
+	ld.w	$a3, $a0, 168
+	ld.w	$a4, $a0, 232
+	xvinsgr2vr.w	$xr5, $a1, 7
+	xvinsgr2vr.w	$xr6, $a2, 1
+	xvinsgr2vr.w	$xr6, $a3, 2
+	xvinsgr2vr.w	$xr6, $a4, 3
 	ld.w	$a1, $a0, 296
 	ld.w	$a2, $a0, 360
 	ld.w	$a3, $a0, 424
 	ld.w	$a4, $a0, 488
-	xvinsgr2vr.w	$xr7, $a1, 4
-	xvinsgr2vr.w	$xr7, $a2, 5
-	xvinsgr2vr.w	$xr7, $a3, 6
-	xvinsgr2vr.w	$xr7, $a4, 7
-	xvneg.w	$xr6, $xr7
-	xvld	$xr8, $a0, 36
+	xvinsgr2vr.w	$xr6, $a1, 4
+	xvinsgr2vr.w	$xr6, $a2, 5
+	xvinsgr2vr.w	$xr6, $a3, 6
+	xvinsgr2vr.w	$xr6, $a4, 7
+	xvld	$xr7, $a0, 36
 	ld.w	$a1, $a0, 100
 	ld.w	$a2, $a0, 164
 	ld.w	$a3, $a0, 228
-	xvmax.w	$xr6, $xr7, $xr6
-	xvinsgr2vr.w	$xr8, $a1, 1
-	xvinsgr2vr.w	$xr8, $a2, 2
-	xvinsgr2vr.w	$xr8, $a3, 3
-	ld.w	$a1, $a0, 292
-	ld.w	$a2, $a0, 356
-	ld.w	$a3, $a0, 420
-	ld.w	$a4, $a0, 484
-	xvinsgr2vr.w	$xr8, $a1, 4
-	xvinsgr2vr.w	$xr8, $a2, 5
-	xvinsgr2vr.w	$xr8, $a3, 6
-	xvinsgr2vr.w	$xr8, $a4, 7
-	xvneg.w	$xr7, $xr8
-	xvld	$xr9, $a0, 32
-	ld.w	$a1, $a0, 96
-	ld.w	$a2, $a0, 160
-	ld.w	$a3, $a0, 224
-	xvmax.w	$xr7, $xr8, $xr7
-	xvinsgr2vr.w	$xr9, $a1, 1
-	xvinsgr2vr.w	$xr9, $a2, 2
-	xvinsgr2vr.w	$xr9, $a3, 3
-	ld.w	$a1, $a0, 288
-	ld.w	$a2, $a0, 352
-	ld.w	$a3, $a0, 416
-	ld.w	$a4, $a0, 480
-	xvinsgr2vr.w	$xr9, $a1, 4
-	xvinsgr2vr.w	$xr9, $a2, 5
-	xvinsgr2vr.w	$xr9, $a3, 6
-	xvinsgr2vr.w	$xr9, $a4, 7
-	xvneg.w	$xr8, $xr9
-	xvld	$xr10, $a0, 28
-	ld.w	$a1, $a0, 92
-	ld.w	$a2, $a0, 156
-	ld.w	$a3, $a0, 220
-	xvmax.w	$xr8, $xr9, $xr8
-	xvinsgr2vr.w	$xr10, $a1, 1
-	xvinsgr2vr.w	$xr10, $a2, 2
-	xvinsgr2vr.w	$xr10, $a3, 3
-	ld.w	$a1, $a0, 284
-	ld.w	$a2, $a0, 348
-	ld.w	$a3, $a0, 412
-	ld.w	$a4, $a0, 476
-	xvinsgr2vr.w	$xr10, $a1, 4
-	xvinsgr2vr.w	$xr10, $a2, 5
-	xvinsgr2vr.w	$xr10, $a3, 6
-	xvinsgr2vr.w	$xr10, $a4, 7
-	xvneg.w	$xr9, $xr10
-	xvld	$xr11, $a0, 24
-	ld.w	$a1, $a0, 88
-	ld.w	$a2, $a0, 152
-	ld.w	$a3, $a0, 216
-	xvmax.w	$xr9, $xr10, $xr9
-	xvinsgr2vr.w	$xr11, $a1, 1
-	xvinsgr2vr.w	$xr11, $a2, 2
-	xvinsgr2vr.w	$xr11, $a3, 3
+	ld.w	$a4, $a0, 292
+	xvinsgr2vr.w	$xr7, $a1, 1
+	xvinsgr2vr.w	$xr7, $a2, 2
+	xvinsgr2vr.w	$xr7, $a3, 3
+	xvinsgr2vr.w	$xr7, $a4, 4
+	ld.w	$a1, $a0, 356
+	ld.w	$a2, $a0, 420
+	ld.w	$a3, $a0, 484
+	xvld	$xr8, $a0, 32
+	ld.w	$a4, $a0, 96
+	xvinsgr2vr.w	$xr7, $a1, 5
+	xvinsgr2vr.w	$xr7, $a2, 6
+	xvinsgr2vr.w	$xr7, $a3, 7
+	xvinsgr2vr.w	$xr8, $a4, 1
+	ld.w	$a1, $a0, 160
+	ld.w	$a2, $a0, 224
+	ld.w	$a3, $a0, 288
+	ld.w	$a4, $a0, 352
+	xvinsgr2vr.w	$xr8, $a1, 2
+	xvinsgr2vr.w	$xr8, $a2, 3
+	xvinsgr2vr.w	$xr8, $a3, 4
+	xvinsgr2vr.w	$xr8, $a4, 5
+	ld.w	$a1, $a0, 416
+	ld.w	$a2, $a0, 480
+	xvld	$xr9, $a0, 28
+	ld.w	$a3, $a0, 92
+	ld.w	$a4, $a0, 156
+	xvinsgr2vr.w	$xr8, $a1, 6
+	xvinsgr2vr.w	$xr8, $a2, 7
+	xvinsgr2vr.w	$xr9, $a3, 1
+	xvinsgr2vr.w	$xr9, $a4, 2
+	ld.w	$a1, $a0, 220
+	ld.w	$a2, $a0, 284
+	ld.w	$a3, $a0, 348
+	ld.w	$a4, $a0, 412
+	xvinsgr2vr.w	$xr9, $a1, 3
+	xvinsgr2vr.w	$xr9, $a2, 4
+	xvinsgr2vr.w	$xr9, $a3, 5
+	xvinsgr2vr.w	$xr9, $a4, 6
+	ld.w	$a1, $a0, 476
+	xvld	$xr10, $a0, 24
+	ld.w	$a2, $a0, 88
+	ld.w	$a3, $a0, 152
+	ld.w	$a4, $a0, 216
+	xvinsgr2vr.w	$xr9, $a1, 7
+	xvinsgr2vr.w	$xr10, $a2, 1
+	xvinsgr2vr.w	$xr10, $a3, 2
+	xvinsgr2vr.w	$xr10, $a4, 3
 	ld.w	$a1, $a0, 280
 	ld.w	$a2, $a0, 344
 	ld.w	$a3, $a0, 408
 	ld.w	$a4, $a0, 472
-	xvinsgr2vr.w	$xr11, $a1, 4
-	xvinsgr2vr.w	$xr11, $a2, 5
-	xvinsgr2vr.w	$xr11, $a3, 6
-	xvinsgr2vr.w	$xr11, $a4, 7
-	xvneg.w	$xr10, $xr11
-	xvld	$xr12, $a0, 20
+	xvinsgr2vr.w	$xr10, $a1, 4
+	xvinsgr2vr.w	$xr10, $a2, 5
+	xvinsgr2vr.w	$xr10, $a3, 6
+	xvinsgr2vr.w	$xr10, $a4, 7
+	xvld	$xr11, $a0, 20
 	ld.w	$a1, $a0, 84
 	ld.w	$a2, $a0, 148
 	ld.w	$a3, $a0, 212
-	xvmax.w	$xr10, $xr11, $xr10
-	xvinsgr2vr.w	$xr12, $a1, 1
-	xvinsgr2vr.w	$xr12, $a2, 2
-	xvinsgr2vr.w	$xr12, $a3, 3
-	ld.w	$a1, $a0, 276
-	ld.w	$a2, $a0, 340
-	ld.w	$a3, $a0, 404
-	ld.w	$a4, $a0, 468
-	xvinsgr2vr.w	$xr12, $a1, 4
-	xvinsgr2vr.w	$xr12, $a2, 5
-	xvinsgr2vr.w	$xr12, $a3, 6
-	xvinsgr2vr.w	$xr12, $a4, 7
-	xvneg.w	$xr11, $xr12
-	xvld	$xr13, $a0, 16
-	ld.w	$a1, $a0, 80
-	ld.w	$a2, $a0, 144
-	ld.w	$a3, $a0, 208
-	xvmax.w	$xr11, $xr12, $xr11
-	xvinsgr2vr.w	$xr13, $a1, 1
-	xvinsgr2vr.w	$xr13, $a2, 2
-	xvinsgr2vr.w	$xr13, $a3, 3
-	ld.w	$a1, $a0, 272
-	ld.w	$a2, $a0, 336
-	ld.w	$a3, $a0, 400
-	ld.w	$a4, $a0, 464
-	xvinsgr2vr.w	$xr13, $a1, 4
-	xvinsgr2vr.w	$xr13, $a2, 5
-	xvinsgr2vr.w	$xr13, $a3, 6
-	xvinsgr2vr.w	$xr13, $a4, 7
-	xvneg.w	$xr12, $xr13
-	xvld	$xr14, $a0, 12
-	ld.w	$a1, $a0, 76
-	ld.w	$a2, $a0, 140
-	ld.w	$a3, $a0, 204
-	xvmax.w	$xr12, $xr13, $xr12
-	xvinsgr2vr.w	$xr14, $a1, 1
-	xvinsgr2vr.w	$xr14, $a2, 2
-	xvinsgr2vr.w	$xr14, $a3, 3
-	ld.w	$a1, $a0, 268
-	ld.w	$a2, $a0, 332
-	ld.w	$a3, $a0, 396
-	ld.w	$a4, $a0, 460
-	xvinsgr2vr.w	$xr14, $a1, 4
-	xvinsgr2vr.w	$xr14, $a2, 5
-	xvinsgr2vr.w	$xr14, $a3, 6
-	xvinsgr2vr.w	$xr14, $a4, 7
-	xvneg.w	$xr13, $xr14
-	xvld	$xr15, $a0, 8
-	ld.w	$a1, $a0, 72
-	ld.w	$a2, $a0, 136
-	ld.w	$a3, $a0, 200
-	xvmax.w	$xr13, $xr14, $xr13
-	xvinsgr2vr.w	$xr15, $a1, 1
-	xvinsgr2vr.w	$xr15, $a2, 2
-	xvinsgr2vr.w	$xr15, $a3, 3
+	ld.w	$a4, $a0, 276
+	xvinsgr2vr.w	$xr11, $a1, 1
+	xvinsgr2vr.w	$xr11, $a2, 2
+	xvinsgr2vr.w	$xr11, $a3, 3
+	xvinsgr2vr.w	$xr11, $a4, 4
+	ld.w	$a1, $a0, 340
+	ld.w	$a2, $a0, 404
+	ld.w	$a3, $a0, 468
+	xvld	$xr12, $a0, 16
+	ld.w	$a4, $a0, 80
+	xvinsgr2vr.w	$xr11, $a1, 5
+	xvinsgr2vr.w	$xr11, $a2, 6
+	xvinsgr2vr.w	$xr11, $a3, 7
+	xvinsgr2vr.w	$xr12, $a4, 1
+	ld.w	$a1, $a0, 144
+	ld.w	$a2, $a0, 208
+	ld.w	$a3, $a0, 272
+	ld.w	$a4, $a0, 336
+	xvinsgr2vr.w	$xr12, $a1, 2
+	xvinsgr2vr.w	$xr12, $a2, 3
+	xvinsgr2vr.w	$xr12, $a3, 4
+	xvinsgr2vr.w	$xr12, $a4, 5
+	ld.w	$a1, $a0, 400
+	ld.w	$a2, $a0, 464
+	xvld	$xr13, $a0, 12
+	ld.w	$a3, $a0, 76
+	ld.w	$a4, $a0, 140
+	xvinsgr2vr.w	$xr12, $a1, 6
+	xvinsgr2vr.w	$xr12, $a2, 7
+	xvinsgr2vr.w	$xr13, $a3, 1
+	xvinsgr2vr.w	$xr13, $a4, 2
+	ld.w	$a1, $a0, 204
+	ld.w	$a2, $a0, 268
+	ld.w	$a3, $a0, 332
+	ld.w	$a4, $a0, 396
+	xvinsgr2vr.w	$xr13, $a1, 3
+	xvinsgr2vr.w	$xr13, $a2, 4
+	xvinsgr2vr.w	$xr13, $a3, 5
+	xvinsgr2vr.w	$xr13, $a4, 6
+	ld.w	$a1, $a0, 460
+	xvld	$xr14, $a0, 8
+	ld.w	$a2, $a0, 72
+	ld.w	$a3, $a0, 136
+	ld.w	$a4, $a0, 200
+	xvinsgr2vr.w	$xr13, $a1, 7
+	xvinsgr2vr.w	$xr14, $a2, 1
+	xvinsgr2vr.w	$xr14, $a3, 2
+	xvinsgr2vr.w	$xr14, $a4, 3
 	ld.w	$a1, $a0, 264
 	ld.w	$a2, $a0, 328
 	ld.w	$a3, $a0, 392
 	ld.w	$a4, $a0, 456
-	xvinsgr2vr.w	$xr15, $a1, 4
-	xvinsgr2vr.w	$xr15, $a2, 5
-	xvinsgr2vr.w	$xr15, $a3, 6
-	xvinsgr2vr.w	$xr15, $a4, 7
-	xvld	$xr14, $a0, 4
+	xvinsgr2vr.w	$xr14, $a1, 4
+	xvinsgr2vr.w	$xr14, $a2, 5
+	xvinsgr2vr.w	$xr14, $a3, 6
+	xvinsgr2vr.w	$xr14, $a4, 7
+	xvld	$xr15, $a0, 4
 	ld.w	$a1, $a0, 68
 	ld.w	$a2, $a0, 132
-	xvneg.w	$xr16, $xr15
-	xvmax.w	$xr15, $xr15, $xr16
-	xvinsgr2vr.w	$xr14, $a1, 1
-	xvinsgr2vr.w	$xr14, $a2, 2
-	ld.w	$a1, $a0, 196
-	ld.w	$a2, $a0, 260
-	ld.w	$a3, $a0, 324
-	ld.w	$a4, $a0, 388
-	xvinsgr2vr.w	$xr14, $a1, 3
-	xvinsgr2vr.w	$xr14, $a2, 4
-	xvinsgr2vr.w	$xr14, $a3, 5
-	xvinsgr2vr.w	$xr14, $a4, 6
-	ld.w	$a1, $a0, 452
+	ld.w	$a3, $a0, 196
+	ld.w	$a4, $a0, 260
+	xvinsgr2vr.w	$xr15, $a1, 1
+	xvinsgr2vr.w	$xr15, $a2, 2
+	xvinsgr2vr.w	$xr15, $a3, 3
+	xvinsgr2vr.w	$xr15, $a4, 4
+	ld.w	$a1, $a0, 324
+	ld.w	$a2, $a0, 388
+	ld.w	$a3, $a0, 452
 	xvld	$xr16, $a0, 0
-	ld.w	$a2, $a0, 64
-	ld.w	$a3, $a0, 128
-	ld.w	$a4, $a0, 192
-	xvinsgr2vr.w	$xr14, $a1, 7
-	xvinsgr2vr.w	$xr16, $a2, 1
-	xvinsgr2vr.w	$xr16, $a3, 2
-	xvinsgr2vr.w	$xr16, $a4, 3
+	ld.w	$a4, $a0, 64
+	xvinsgr2vr.w	$xr15, $a1, 5
+	xvinsgr2vr.w	$xr15, $a2, 6
+	xvinsgr2vr.w	$xr15, $a3, 7
+	xvinsgr2vr.w	$xr16, $a4, 1
+	ld.w	$a1, $a0, 128
+	xvsigncov.w	$xr1, $xr1, $xr1
+	xvsigncov.w	$xr2, $xr2, $xr2
+	xvsigncov.w	$xr3, $xr3, $xr3
+	xvinsgr2vr.w	$xr16, $a1, 2
+	ld.w	$a1, $a0, 192
+	xvsigncov.w	$xr4, $xr4, $xr4
+	xvsigncov.w	$xr5, $xr5, $xr5
+	xvsigncov.w	$xr6, $xr6, $xr6
+	xvinsgr2vr.w	$xr16, $a1, 3
 	ld.w	$a1, $a0, 256
-	ld.w	$a2, $a0, 320
-	ld.w	$a3, $a0, 384
-	ld.w	$a0, $a0, 448
+	xvsigncov.w	$xr7, $xr7, $xr7
+	xvsigncov.w	$xr8, $xr8, $xr8
+	xvsigncov.w	$xr9, $xr9, $xr9
 	xvinsgr2vr.w	$xr16, $a1, 4
-	xvinsgr2vr.w	$xr16, $a2, 5
-	xvinsgr2vr.w	$xr16, $a3, 6
+	ld.w	$a1, $a0, 320
+	xvsigncov.w	$xr10, $xr10, $xr10
+	xvsigncov.w	$xr11, $xr11, $xr11
+	xvsigncov.w	$xr12, $xr12, $xr12
+	xvinsgr2vr.w	$xr16, $a1, 5
+	ld.w	$a1, $a0, 384
+	ld.w	$a0, $a0, 448
+	xvsigncov.w	$xr13, $xr13, $xr13
+	xvsigncov.w	$xr14, $xr14, $xr14
+	xvinsgr2vr.w	$xr16, $a1, 6
 	xvinsgr2vr.w	$xr16, $a0, 7
-	xvadda.w	$xr14, $xr14, $xr16
-	xvadd.w	$xr14, $xr15, $xr14
+	xvadda.w	$xr15, $xr15, $xr16
+	xvadd.w	$xr14, $xr14, $xr15
 	xvadd.w	$xr13, $xr13, $xr14
 	xvadd.w	$xr12, $xr12, $xr13
 	xvadd.w	$xr11, $xr11, $xr12
@@ -1285,53 +1229,52 @@ Qstep2QP:                               # @Qstep2QP
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI3_0)
 	fcmp.clt.d	$fcc0, $fa1, $fa0
 	ori	$a0, $zero, 51
-	bceqz	$fcc0, .LBB3_4
-# %bb.3:
-	ret
-.LBB3_4:                                # %.preheader
+	bcnez	$fcc0, .LBB3_13
+# %bb.3:                                # %.preheader
 	vldi	$vr1, -910
 	move	$a0, $zero
 	fcmp.cule.d	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB3_7
-# %bb.5:                                # %.lr.ph.preheader
+	bcnez	$fcc0, .LBB3_6
+# %bb.4:                                # %.lr.ph.preheader
 	vldi	$vr1, -928
 	vldi	$vr2, -910
 	.p2align	4, , 16
-.LBB3_6:                                # %.lr.ph
+.LBB3_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	fmul.d	$fa0, $fa0, $fa1
 	fcmp.clt.d	$fcc0, $fa2, $fa0
 	addi.d	$a0, $a0, 6
-	bcnez	$fcc0, .LBB3_6
-.LBB3_7:                                # %._crit_edge
+	bcnez	$fcc0, .LBB3_5
+.LBB3_6:                                # %._crit_edge
 	vldi	$vr1, -923
 	fcmp.cle.d	$fcc0, $fa0, $fa1
-	bcnez	$fcc0, .LBB3_13
-# %bb.8:
+	bcnez	$fcc0, .LBB3_11
+# %bb.7:
 	vldi	$vr1, -920
 	fcmp.cle.d	$fcc0, $fa0, $fa1
 	ori	$a1, $zero, 1
 	bcnez	$fcc0, .LBB3_12
-# %bb.9:
+# %bb.8:
 	vldi	$vr1, -917
 	fcmp.cle.d	$fcc0, $fa0, $fa1
 	ori	$a1, $zero, 2
 	bcnez	$fcc0, .LBB3_12
-# %bb.10:
+# %bb.9:
 	vldi	$vr1, -914
 	fcmp.cle.d	$fcc0, $fa0, $fa1
 	ori	$a1, $zero, 3
 	bcnez	$fcc0, .LBB3_12
-# %bb.11:
+# %bb.10:
 	vldi	$vr1, -911
 	fcmp.cult.d	$fcc0, $fa1, $fa0
 	movcf2gr	$a1, $fcc0
 	addi.d	$a1, $a1, 4
+	b	.LBB3_12
+.LBB3_11:
+	move	$a1, $zero
 .LBB3_12:
 	add.w	$a0, $a1, $a0
-	ret
 .LBB3_13:
-	add.w	$a0, $zero, $a0
 	ret
 .Lfunc_end3:
 	.size	Qstep2QP, .Lfunc_end3-Qstep2QP

@@ -1440,15 +1440,8 @@ GCC_except_table7:
 _ZNK9InputFile9getStringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_: # @_ZNK9InputFile9getStringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	.cfi_def_cfa_offset 16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	.cfi_offset 1, -8
-	pcaddu18i	$ra, %call36(_ZNK9InputFile3getINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEET_RKS6_RKS7_)
-	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-	ret
+	pcaddu18i	$t8, %call36(_ZNK9InputFile3getINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEET_RKS6_RKS7_)
+	jr	$t8
 .Lfunc_end8:
 	.size	_ZNK9InputFile9getStringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_, .Lfunc_end8-_ZNK9InputFile9getStringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
 	.cfi_endproc

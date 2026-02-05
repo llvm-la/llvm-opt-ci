@@ -36,12 +36,15 @@ readnets:                               # @readnets
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.4)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
-	addi.d	$a0, $sp, 16
-	ori	$a2, $zero, 10
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16
+	lu12i.w	$a1, 415605
+	ori	$a1, $a1, 1608
+	ld.hu	$a2, $sp, 24
+	lu32i.d	$a1, -497815
+	lu52i.d	$s3, $a1, 1862
+	xor	$a0, $a0, $s3
+	xori	$a1, $a2, 115
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_24
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
@@ -127,10 +130,8 @@ readnets:                               # @readnets
 	ori	$s5, $a0, 1390
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s0, $a0, %pc_lo12(.L.str)
-	pcalau12i	$a0, %pc_hi20(.L.str.4)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.4)
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.6)
+	addi.d	$s1, $a0, %pc_lo12(.L.str.6)
 	ori	$s6, $zero, 2
 	pcalau12i	$a0, %got_pc_hi20(netarray)
 	ld.d	$s7, $a0, %got_pc_lo12(netarray)
@@ -150,30 +151,30 @@ readnets:                               # @readnets
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_18
 # %bb.14:                               #   in Loop: Header=BB0_12 Depth=1
-	move	$s3, $a0
+	move	$s2, $a0
 	addi.d	$a2, $sp, 16
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 16
-	ori	$a2, $zero, 10
-	move	$a1, $s1
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 16
+	ld.hu	$a1, $sp, 24
+	xor	$a0, $a0, $s3
+	xori	$a1, $a1, 115
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_20
 # %bb.15:                               #   in Loop: Header=BB0_12 Depth=1
 	addi.d	$a2, $sp, 1048
 	addi.d	$a3, $sp, 1040
 	move	$a0, $fp
-	move	$a1, $s2
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s6, .LBB0_19
 # %bb.16:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.d	$a0, $s7, 0
 	fld.d	$fa0, $sp, 1048
-	slli.d	$a1, $s3, 3
+	slli.d	$a1, $s2, 3
 	ldx.d	$a0, $a0, $a1
 	fld.d	$fa1, $sp, 1040
 	fst.d	$fa0, $a0, 48

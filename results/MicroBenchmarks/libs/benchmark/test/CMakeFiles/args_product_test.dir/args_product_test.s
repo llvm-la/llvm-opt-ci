@@ -1962,7 +1962,7 @@ GCC_except_table11:
 	.type	_ZN18ArgsProductFixtureD0Ev,@function
 _ZN18ArgsProductFixtureD0Ev:            # @_ZN18ArgsProductFixtureD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end12:
 	.size	_ZN18ArgsProductFixtureD0Ev, .Lfunc_end12-_ZN18ArgsProductFixtureD0Ev
                                         # -- End function

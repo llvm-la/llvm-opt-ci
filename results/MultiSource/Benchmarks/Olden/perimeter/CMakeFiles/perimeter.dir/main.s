@@ -263,9 +263,9 @@ gtequal_adj_neighbor:                   # @gtequal_adj_neighbor
 	ldx.w	$a1, $a2, $a1
 	add.d	$a1, $a2, $a1
 	jr	$a1
-.LBB2_2:
-	ori	$a1, $zero, 2
-	bltu	$s0, $a1, .LBB2_7
+.LBB2_2:                                # %adj.exit
+	ori	$a1, $zero, 1
+	bgeu	$a1, $s0, .LBB2_7
 	b	.LBB2_8
 .LBB2_3:
 	move	$a0, $zero
@@ -276,7 +276,7 @@ gtequal_adj_neighbor:                   # @gtequal_adj_neighbor
 	ori	$a2, $zero, 2
 	beq	$a1, $a2, .LBB2_7
 	b	.LBB2_8
-.LBB2_5:                                # %adj.exit
+.LBB2_5:
 	addi.w	$a1, $zero, -3
 	lu32i.d	$a1, 0
 	and	$a1, $s0, $a1

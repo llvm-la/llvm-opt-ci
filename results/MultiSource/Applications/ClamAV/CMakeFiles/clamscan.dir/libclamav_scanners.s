@@ -1138,7 +1138,7 @@ cli_scanraw:                            # @cli_scanraw
 .LBB2_24:                               #   in Loop: Header=BB2_18 Depth=1
 	bne	$s1, $s6, .LBB2_17
 # %bb.25:                               #   in Loop: Header=BB2_18 Depth=1
-	ld.wu	$a0, $s0, 40
+	ld.w	$a0, $s0, 40
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB2_17
 # %bb.26:                               #   in Loop: Header=BB2_18 Depth=1
@@ -1168,7 +1168,7 @@ cli_scanraw:                            # @cli_scanraw
 .LBB2_29:                               #   in Loop: Header=BB2_18 Depth=1
 	bne	$s1, $s6, .LBB2_17
 # %bb.30:                               #   in Loop: Header=BB2_18 Depth=1
-	ld.wu	$a0, $s0, 40
+	ld.w	$a0, $s0, 40
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB2_17
 # %bb.31:                               #   in Loop: Header=BB2_18 Depth=1
@@ -1194,7 +1194,7 @@ cli_scanraw:                            # @cli_scanraw
 .LBB2_33:                               #   in Loop: Header=BB2_18 Depth=1
 	bne	$s1, $s6, .LBB2_17
 # %bb.34:                               #   in Loop: Header=BB2_18 Depth=1
-	ld.wu	$a0, $s0, 40
+	ld.w	$a0, $s0, 40
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB2_17
 # %bb.35:                               #   in Loop: Header=BB2_18 Depth=1
@@ -1223,7 +1223,7 @@ cli_scanraw:                            # @cli_scanraw
 .LBB2_38:                               #   in Loop: Header=BB2_18 Depth=1
 	bne	$s1, $s6, .LBB2_17
 # %bb.39:                               #   in Loop: Header=BB2_18 Depth=1
-	ld.wu	$a0, $s0, 40
+	ld.w	$a0, $s0, 40
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB2_17
 # %bb.40:                               #   in Loop: Header=BB2_18 Depth=1
@@ -1248,7 +1248,7 @@ cli_scanraw:                            # @cli_scanraw
 .LBB2_42:                               #   in Loop: Header=BB2_18 Depth=1
 	bne	$s1, $s6, .LBB2_17
 # %bb.43:                               #   in Loop: Header=BB2_18 Depth=1
-	ld.wu	$a0, $s0, 40
+	ld.w	$a0, $s0, 40
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB2_17
 # %bb.44:                               #   in Loop: Header=BB2_18 Depth=1

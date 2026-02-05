@@ -61,15 +61,13 @@ luaO_log2:                              # @luaO_log2
 	bltu	$a0, $a1, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a1, $zero, -1
-	move	$a2, $a0
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a0, $a2, 31, 8
-	bstrpick.d	$a3, $a2, 31, 16
 	addi.d	$a1, $a1, 8
-	move	$a2, $a0
-	bnez	$a3, .LBB2_2
+	bstrpick.d	$a2, $a0, 31, 16
+	bstrpick.d	$a0, $a0, 31, 8
+	bnez	$a2, .LBB2_2
 	b	.LBB2_4
 .LBB2_3:
 	addi.d	$a1, $zero, -1

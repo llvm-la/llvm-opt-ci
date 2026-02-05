@@ -903,26 +903,25 @@ sf_union:                               # @sf_union
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a3, $s0, 0
-	mul.w	$a2, $a3, $fp
+	mul.w	$a1, $a3, $fp
 	move	$s1, $a0
-	move	$a1, $a0
-	blez	$a2, .LBB4_3
+	move	$a2, $a0
+	blez	$a1, .LBB4_3
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a0, $s0, 24
-	alsl.d	$a2, $a2, $a0, 2
+	alsl.d	$a1, $a1, $a0, 2
 	slli.d	$a3, $a3, 2
-	move	$a4, $s1
+	move	$a2, $s1
 	.p2align	4, , 16
 .LBB4_2:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a1, $a4, 8
-	st.d	$a0, $a4, 0
+	st.d	$a0, $a2, 0
 	add.d	$a0, $a0, $a3
-	move	$a4, $a1
-	bltu	$a0, $a2, .LBB4_2
+	addi.d	$a2, $a2, 8
+	bltu	$a0, $a1, .LBB4_2
 .LBB4_3:                                # %sf_list.exit
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$s0, $s5, 12
-	st.d	$zero, $a1, 0
+	st.d	$zero, $a2, 0
 	slli.d	$a0, $s0, 3
 	addi.d	$a0, $a0, 8
 	pcaddu18i	$ra, %call36(malloc)
@@ -936,13 +935,12 @@ sf_union:                               # @sf_union
 	ld.d	$a0, $s5, 24
 	alsl.d	$a1, $a1, $a0, 2
 	slli.d	$a2, $a2, 2
-	move	$a4, $s2
+	move	$a3, $s2
 	.p2align	4, , 16
 .LBB4_5:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$a3, $a4, 8
-	st.d	$a0, $a4, 0
+	st.d	$a0, $a3, 0
 	add.d	$a0, $a0, $a2
-	move	$a4, $a3
+	addi.d	$a3, $a3, 8
 	bltu	$a0, $a1, .LBB4_5
 .LBB4_6:                                # %sf_list.exit27
 	st.d	$zero, $a3, 0
@@ -957,16 +955,16 @@ sf_union:                               # @sf_union
 	ld.d	$a1, $s1, 0
 	move	$s3, $a0
 	move	$s6, $a0
-	move	$s8, $s2
+	move	$s7, $s2
 	move	$s4, $s2
-	move	$s7, $s1
+	move	$s8, $s1
 	beqz	$a1, .LBB4_20
 # %bb.7:                                # %.lr.ph.i28.preheader
 	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a0, $s2, 0
 	move	$s6, $s3
-	move	$s8, $s2
-	move	$s7, $s1
+	move	$s7, $s2
+	move	$s8, $s1
 	move	$s5, $s1
 	move	$s4, $s2
 	beqz	$a0, .LBB4_17
@@ -975,8 +973,8 @@ sf_union:                               # @sf_union
 	addi.w	$s0, $zero, -1
 	move	$s4, $s2
 	move	$s5, $s1
-	move	$s7, $s1
-	move	$s8, $s2
+	move	$s8, $s1
+	move	$s7, $s2
 	move	$s6, $s3
 	.p2align	4, , 16
 .LBB4_9:                                # %.lr.ph
@@ -995,9 +993,9 @@ sf_union:                               # @sf_union
 # %bb.12:                               #   in Loop: Header=BB4_9 Depth=1
 	ld.d	$a0, $s5, 0
 	addi.d	$s5, $s5, 8
-	addi.d	$a1, $s7, 8
-	st.d	$a0, $s7, 0
-	move	$s7, $a1
+	addi.d	$a1, $s8, 8
+	st.d	$a0, $s8, 0
+	move	$s8, $a1
 	ld.d	$a1, $s5, 0
 	bnez	$a1, .LBB4_15
 	b	.LBB4_19
@@ -1020,9 +1018,9 @@ sf_union:                               # @sf_union
 .LBB4_16:                               #   in Loop: Header=BB4_9 Depth=1
 	ld.d	$a0, $s4, 0
 	addi.d	$s4, $s4, 8
-	addi.d	$a1, $s8, 8
-	st.d	$a0, $s8, 0
-	move	$s8, $a1
+	addi.d	$a1, $s7, 8
+	st.d	$a0, $s7, 0
+	move	$s7, $a1
 	ld.d	$a1, $s5, 0
 	bnez	$a1, .LBB4_15
 	b	.LBB4_19
@@ -1031,9 +1029,9 @@ sf_union:                               # @sf_union
 	.p2align	4, , 16
 .LBB4_18:                               # %.lr.ph61.i
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a1, $s7, 0
+	st.d	$a1, $s8, 0
 	ld.d	$a1, $a0, 0
-	addi.d	$s7, $s7, 8
+	addi.d	$s8, $s8, 8
 	addi.d	$a0, $a0, 8
 	bnez	$a1, .LBB4_18
 .LBB4_19:
@@ -1047,21 +1045,19 @@ sf_union:                               # @sf_union
 	.p2align	4, , 16
 .LBB4_22:                               # %.lr.ph66.i
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 	ld.d	$a0, $a1, 0
-	addi.d	$a3, $s8, 8
+	addi.d	$s7, $s7, 8
 	addi.d	$a1, $a1, 8
-	move	$s8, $a3
 	bnez	$a0, .LBB4_22
 	b	.LBB4_24
 .LBB4_23:
-	move	$a3, $s8
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 .LBB4_24:                               # %rm2_equal.exit
-	st.d	$zero, $s7, 0
+	st.d	$zero, $s8, 0
 	ld.d	$a2, $s1, 0
 	st.d	$zero, $s6, 0
-	st.d	$zero, $a3, 0
+	st.d	$zero, $s7, 0
 	move	$a0, $s1
 	beqz	$a2, .LBB4_36
 # %bb.25:                               # %.preheader.i29.preheader
@@ -1862,16 +1858,12 @@ rm2_equal:                              # @rm2_equal
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a0, $s5, 0
 	ld.d	$a0, $a1, 0
-	addi.d	$a2, $s5, 8
+	addi.d	$s5, $s5, 8
 	addi.d	$a1, $a1, 8
-	move	$s5, $a2
 	bnez	$a0, .LBB11_17
-	b	.LBB11_19
-.LBB11_18:
-	move	$a2, $s5
-.LBB11_19:                              # %._crit_edge
+.LBB11_18:                              # %._crit_edge
 	st.d	$zero, $s3, 0
-	st.d	$zero, $a2, 0
+	st.d	$zero, $s5, 0
 	sub.d	$a0, $s3, $fp
 	srli.d	$a0, $a0, 3
 	addi.w	$a0, $a0, 0
@@ -2056,13 +2048,12 @@ sf_list:                                # @sf_list
 	ld.d	$a1, $fp, 24
 	alsl.d	$a2, $a2, $a1, 2
 	slli.d	$a3, $a3, 2
-	move	$a5, $a0
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB14_2:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a4, $a5, 8
-	st.d	$a1, $a5, 0
+	st.d	$a1, $a4, 0
 	add.d	$a1, $a1, $a3
-	move	$a5, $a4
+	addi.d	$a4, $a4, 8
 	bltu	$a1, $a2, .LBB14_2
 .LBB14_3:                               # %._crit_edge
 	st.d	$zero, $a4, 0

@@ -5139,7 +5139,7 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwR11CStringBaseIwE: # @_ZN8NWi
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
+	move	$s3, $a0
 	st.w	$zero, $a0, 0
 .Ltmp151:                               # EH_LABEL
 	ori	$a0, $zero, 32
@@ -5147,17 +5147,17 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwR11CStringBaseIwE: # @_ZN8NWi
 	jirl	$ra, $ra, 0
 .Ltmp152:                               # EH_LABEL
 # %bb.1:
-	move	$s3, $a0
-	move	$a0, $s2
+	move	$s2, $a0
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI26_0)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI26_0)
-	xvst	$xr0, $s3, 0
+	xvst	$xr0, $s2, 0
 .Ltmp153:                               # EH_LABEL
-	move	$s2, $s3
+	move	$s3, $s2
 	move	$a0, $s1
-	move	$a1, $s3
+	move	$a1, $s2
 	move	$a2, $s0
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(_ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwS4_R11CStringBaseIwE)
@@ -5165,7 +5165,7 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwR11CStringBaseIwE: # @_ZN8NWi
 .Ltmp154:                               # EH_LABEL
 # %bb.2:                                # %_ZN11CStringBaseIwED2Ev.exit5
 	sltu	$fp, $zero, $a0
-	move	$a0, $s3
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -5180,7 +5180,7 @@ _ZN8NWindows5NFile10NDirectory9CTempFile6CreateEPKwR11CStringBaseIwE: # @_ZN8NWi
 .LBB26_3:                               # %_ZN11CStringBaseIwED2Ev.exit
 .Ltmp155:                               # EH_LABEL
 	move	$fp, $a0
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp

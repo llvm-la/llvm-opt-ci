@@ -2452,7 +2452,7 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fa3, $ft7
 	fst.d	$fa7, $sp, 32                   # 8-byte Folded Spill
 	fmov.d	$fs5, $ft0
-	fst.d	$ft2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$ft2, $sp, 48                   # 8-byte Folded Spill
 	fmov.d	$fs2, $ft3
 	fst.d	$ft4, $sp, 80                   # 8-byte Folded Spill
 	fmov.d	$fs4, $ft5
@@ -2469,7 +2469,7 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$ft5, $fs4
 	fld.d	$ft4, $sp, 80                   # 8-byte Folded Reload
 	fmov.d	$ft3, $fs2
-	fld.d	$ft2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 48                   # 8-byte Folded Reload
 	fmov.d	$ft0, $fs5
 	fld.d	$fa7, $sp, 32                   # 8-byte Folded Reload
 	fmov.d	$fs4, $fa0
@@ -2489,10 +2489,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fa3, $ft0
 	fst.d	$fa7, $sp, 32                   # 8-byte Folded Spill
 	fst.d	$ft0, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$ft2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$ft2, $sp, 48                   # 8-byte Folded Spill
 	fst.d	$ft3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$ft4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$ft5, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$ft5, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$ft6, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$ft7, $sp, 64                   # 8-byte Folded Spill
 	movcf2gr	$a0, $fcc1
@@ -2507,10 +2507,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	movgr2cf	$fcc1, $a0
 	fld.d	$ft7, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$ft6, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$ft5, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$ft5, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$ft4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$ft3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$ft2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 48                   # 8-byte Folded Reload
 	fld.d	$ft0, $sp, 16                   # 8-byte Folded Reload
 	fld.d	$fa7, $sp, 32                   # 8-byte Folded Reload
 	fmov.d	$fa2, $fa0
@@ -2526,10 +2526,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fa0, $fa4
 	fst.d	$fa7, $sp, 32                   # 8-byte Folded Spill
 	fmov.d	$fs4, $ft0
-	fst.d	$ft2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$ft2, $sp, 48                   # 8-byte Folded Spill
 	fst.d	$ft3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$ft4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$ft5, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$ft5, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$ft6, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$ft7, $sp, 64                   # 8-byte Folded Spill
 	movcf2gr	$a0, $fcc1
@@ -2544,10 +2544,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	movgr2cf	$fcc1, $a0
 	fld.d	$ft7, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$ft6, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$ft5, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$ft5, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$ft4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$ft3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$ft2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 48                   # 8-byte Folded Reload
 	fld.d	$ft1, $sp, 296                  # 8-byte Folded Reload
 	fmov.d	$ft0, $fs4
 	fld.d	$fa7, $sp, 32                   # 8-byte Folded Reload
@@ -2568,7 +2568,7 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fs3, $ft2
 	fst.d	$ft3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$ft4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$ft5, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$ft5, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$ft6, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$ft7, $sp, 64                   # 8-byte Folded Spill
 	movcf2gr	$a0, $fcc1
@@ -2579,7 +2579,7 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	movgr2cf	$fcc1, $a0
 	fld.d	$ft7, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$ft6, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$ft5, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$ft5, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$ft4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$ft3, $sp, 88                   # 8-byte Folded Reload
 	fmov.d	$ft2, $fs3
@@ -2604,20 +2604,20 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fs6, $ft2
 	fst.d	$ft3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$ft4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$ft5, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$ft5, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$ft6, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$ft7, $sp, 64                   # 8-byte Folded Spill
 	movcf2gr	$a0, $fcc1
 	st.d	$a0, $sp, 56
-	fst.d	$fa4, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fa4, $sp, 48                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
-	fld.d	$fa4, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 48                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 56
 	movgr2cf	$fcc1, $a0
 	fld.d	$ft7, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$ft6, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$ft5, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$ft5, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$ft4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$ft3, $sp, 88                   # 8-byte Folded Reload
 	fmov.d	$ft2, $fs6
@@ -2639,10 +2639,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fa3, $ft3
 	fmov.d	$fs6, $fa7
 	fmov.d	$fs3, $ft0
-	fst.d	$ft2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$ft2, $sp, 48                   # 8-byte Folded Spill
 	fst.d	$ft3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$ft4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$ft5, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$ft5, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$ft6, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$ft7, $sp, 64                   # 8-byte Folded Spill
 	movcf2gr	$a0, $fcc1
@@ -2655,10 +2655,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	movgr2cf	$fcc1, $a0
 	fld.d	$ft7, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$ft6, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$ft5, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$ft5, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$ft4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$ft3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$ft2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 48                   # 8-byte Folded Reload
 	fld.d	$ft1, $sp, 296                  # 8-byte Folded Reload
 	fmov.d	$ft0, $fs3
 	fmov.d	$fa7, $fs6
@@ -2675,10 +2675,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fa0, $fa4
 	fmov.d	$fs6, $fa7
 	fmov.d	$fs3, $ft0
-	fst.d	$ft2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$ft2, $sp, 48                   # 8-byte Folded Spill
 	fst.d	$ft3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$ft4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$ft5, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$ft5, $sp, 40                   # 8-byte Folded Spill
 	fst.d	$ft6, $sp, 72                   # 8-byte Folded Spill
 	fst.d	$ft7, $sp, 64                   # 8-byte Folded Spill
 	movcf2gr	$a0, $fcc1
@@ -2691,10 +2691,10 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	movgr2cf	$fcc1, $a0
 	fld.d	$ft7, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$ft6, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$ft5, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$ft5, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$ft4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$ft3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$ft2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 48                   # 8-byte Folded Reload
 	fld.d	$ft1, $sp, 296                  # 8-byte Folded Reload
 	fmov.d	$ft0, $fs3
 	fmov.d	$fa7, $fs6
@@ -2738,14 +2738,14 @@ _ZL16BM_COUPLE_LAMBDARN9benchmark5StateE: # @_ZL16BM_COUPLE_LAMBDARN9benchmark5S
 	fmov.d	$fa3, $ft5
 	fmov.d	$fs1, $fa7
 	fmov.d	$fs7, $ft0
-	fst.d	$ft2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$ft2, $sp, 48                   # 8-byte Folded Spill
 	fst.d	$ft3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$ft8, $sp, 80                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
 	fld.d	$ft8, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$ft3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$ft2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$ft2, $sp, 48                   # 8-byte Folded Reload
 	fld.d	$ft1, $sp, 296                  # 8-byte Folded Reload
 	fmov.d	$ft0, $fs7
 	fmov.d	$fa7, $fs1
@@ -3990,81 +3990,78 @@ _GLOBAL__sub_I_LambdaSubsetAbenchmarks.cxx: # @_GLOBAL__sub_I_LambdaSubsetAbench
 .LBB7_54:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i28
 .Ltmp81:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_67
+	b	.LBB7_69
 .LBB7_55:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i19
 .Ltmp65:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_67
+	b	.LBB7_69
 .LBB7_56:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i10
 .Ltmp49:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_67
+	b	.LBB7_69
 .LBB7_57:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i1
 .Ltmp33:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_67
+	b	.LBB7_69
 .LBB7_58:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.thread.i
 .Ltmp17:                                # EH_LABEL
 	move	$s0, $a0
-	b	.LBB7_67
+	b	.LBB7_69
 .LBB7_59:
 .Ltmp107:                               # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_61
-# %bb.60:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i39
-	bnez	$s2, .LBB7_67
-	b	.LBB7_68
-.LBB7_61:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i38
+	beq	$a1, $s3, .LBB7_61
+# %bb.60:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i38
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	bnez	$s2, .LBB7_67
-	b	.LBB7_68
+.LBB7_61:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i39
+	bnez	$s2, .LBB7_69
+	b	.LBB7_70
 .LBB7_62:
 .Ltmp94:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_66
-	b	.LBB7_70
+	bne	$a1, $s3, .LBB7_67
+	b	.LBB7_68
 .LBB7_63:
 .Ltmp78:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_66
-	b	.LBB7_70
+	bne	$a1, $s3, .LBB7_67
+	b	.LBB7_68
 .LBB7_64:
 .Ltmp62:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_66
-	b	.LBB7_70
+	bne	$a1, $s3, .LBB7_67
+	b	.LBB7_68
 .LBB7_65:
 .Ltmp46:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	beq	$a1, $s3, .LBB7_70
-.LBB7_66:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
-	move	$a0, $a1
-	pcaddu18i	$ra, %call36(_ZdlPv)
-	jirl	$ra, $ra, 0
-	beqz	$s5, .LBB7_68
-.LBB7_67:                               # %common.resume.sink.split
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZdlPv)
-	jirl	$ra, $ra, 0
-.LBB7_68:                               # %common.resume
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(_Unwind_Resume)
-	jirl	$ra, $ra, 0
-.LBB7_69:
+	bne	$a1, $s3, .LBB7_67
+	b	.LBB7_68
+.LBB7_66:
 .Ltmp30:                                # EH_LABEL
 	ld.d	$a1, $sp, 16
 	move	$s0, $a0
-	bne	$a1, $s3, .LBB7_66
-.LBB7_70:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	beqz	$s5, .LBB7_68
-	b	.LBB7_67
+	beq	$a1, $s3, .LBB7_68
+.LBB7_67:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
+	move	$a0, $a1
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+.LBB7_68:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beqz	$s5, .LBB7_70
+.LBB7_69:                               # %common.resume.sink.split
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+.LBB7_70:                               # %common.resume
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
 .Lfunc_end7:
 	.size	_GLOBAL__sub_I_LambdaSubsetAbenchmarks.cxx, .Lfunc_end7-_GLOBAL__sub_I_LambdaSubsetAbenchmarks.cxx
 	.cfi_endproc

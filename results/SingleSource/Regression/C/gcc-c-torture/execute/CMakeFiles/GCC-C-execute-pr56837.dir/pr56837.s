@@ -42,40 +42,37 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, -2
-	ori	$s0, $a0, 64
-	pcalau12i	$a0, %pc_hi20(a)
-	addi.d	$a0, $a0, %pc_lo12(a)
-	lu12i.w	$t8, 1
-	ori	$a1, $t8, 4032
-	ori	$a2, $t8, 4040
-	ori	$a3, $t8, 4048
-	ori	$a4, $t8, 4056
-	ori	$a5, $t8, 4064
-	ori	$a6, $t8, 4072
-	ori	$a7, $t8, 4080
-	ori	$t0, $t8, 4088
-	ori	$t1, $t8, 4036
-	ori	$t2, $t8, 4044
-	ori	$t3, $t8, 4052
-	ori	$t4, $t8, 4060
-	ori	$t5, $t8, 4068
-	ori	$t6, $t8, 4076
-	ori	$t7, $t8, 4084
-	ori	$t8, $t8, 4092
+	pcalau12i	$a1, %pc_hi20(a)
+	addi.d	$a1, $a1, %pc_lo12(a)
+	lu12i.w	$a2, 2
+	ori	$a3, $a2, 8
+	ori	$a4, $a2, 16
+	ori	$a5, $a2, 24
+	ori	$a6, $a2, 32
+	ori	$a7, $a2, 40
+	ori	$t0, $a2, 48
+	ori	$t1, $a2, 56
+	ori	$t2, $a2, 4
+	ori	$t3, $a2, 12
+	ori	$t4, $a2, 20
+	ori	$t5, $a2, 28
+	ori	$t6, $a2, 36
+	ori	$t7, $a2, 44
+	ori	$t8, $a2, 52
+	ori	$fp, $a2, 60
 	xvrepli.b	$xr0, -1
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	move	$fp, $s0
-	add.d	$s0, $a0, $s0
-	ldx.w	$s1, $s0, $a1
-	ldx.w	$s2, $s0, $a2
-	ldx.w	$s3, $s0, $a3
-	ldx.w	$s4, $s0, $a4
-	ldx.w	$s5, $s0, $a5
-	ldx.w	$s6, $s0, $a6
-	ldx.w	$s7, $s0, $a7
-	ldx.w	$s8, $s0, $t0
+	add.d	$s0, $a1, $a0
+	ldx.w	$s1, $s0, $a2
+	ldx.w	$s2, $s0, $a3
+	ldx.w	$s3, $s0, $a4
+	ldx.w	$s4, $s0, $a5
+	ldx.w	$s5, $s0, $a6
+	ldx.w	$s6, $s0, $a7
+	ldx.w	$s7, $s0, $t0
+	ldx.w	$s8, $s0, $t1
 	vinsgr2vr.w	$vr1, $s5, 0
 	vinsgr2vr.w	$vr1, $s6, 1
 	vinsgr2vr.w	$vr1, $s7, 2
@@ -85,14 +82,14 @@ main:                                   # @main
 	vinsgr2vr.w	$vr2, $s3, 2
 	vinsgr2vr.w	$vr2, $s4, 3
 	xvpermi.q	$xr2, $xr1, 2
-	ldx.w	$s1, $s0, $t1
-	ldx.w	$s2, $s0, $t2
-	ldx.w	$s3, $s0, $t3
-	ldx.w	$s4, $s0, $t4
-	ldx.w	$s5, $s0, $t5
-	ldx.w	$s6, $s0, $t6
-	ldx.w	$s7, $s0, $t7
-	ldx.w	$s0, $s0, $t8
+	ldx.w	$s1, $s0, $t2
+	ldx.w	$s2, $s0, $t3
+	ldx.w	$s3, $s0, $t4
+	ldx.w	$s4, $s0, $t5
+	ldx.w	$s5, $s0, $t6
+	ldx.w	$s6, $s0, $t7
+	ldx.w	$s7, $s0, $t8
+	ldx.w	$s0, $s0, $fp
 	vinsgr2vr.w	$vr1, $s5, 0
 	vinsgr2vr.w	$vr1, $s6, 1
 	vinsgr2vr.w	$vr1, $s7, 2
@@ -107,18 +104,15 @@ main:                                   # @main
 	xvseqi.w	$xr2, $xr3, 0
 	xvorn.v	$xr1, $xr1, $xr2
 	xvmskltz.w	$xr1, $xr1
-	xvpickve2gr.wu	$s1, $xr1, 0
-	xvpickve2gr.wu	$s0, $xr1, 4
-	bstrins.d	$s1, $s0, 7, 4
-	bnez	$s1, .LBB1_3
-# %bb.2:                                # %vector.body
+	xvpickve2gr.wu	$s0, $xr1, 0
+	xvpickve2gr.wu	$s1, $xr1, 4
+	bstrins.d	$s0, $s1, 7, 4
+	bnez	$s0, .LBB1_4
+# %bb.2:                                # %vector.body.interim
                                         #   in Loop: Header=BB1_1 Depth=1
-	addi.d	$s0, $fp, 64
-	bnez	$fp, .LBB1_1
-.LBB1_3:                                # %middle.split
-	andi	$a0, $s1, 255
-	bnez	$a0, .LBB1_5
-# %bb.4:                                # %middle.block
+	addi.d	$a0, $a0, 64
+	bnez	$a0, .LBB1_1
+# %bb.3:                                # %middle.block
 	move	$a0, $zero
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
@@ -133,7 +127,7 @@ main:                                   # @main
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 96
 	ret
-.LBB1_5:                                # %vector.early.exit
+.LBB1_4:                                # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:

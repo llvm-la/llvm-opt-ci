@@ -56,16 +56,16 @@ endgame:                                # @endgame
 	addi.d	$a1, $sp, 30
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	lu12i.w	$a2, 460535
+	ori	$s2, $a2, 1139
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(p)
-	ld.d	$s2, $a0, %got_pc_lo12(p)
+	ld.d	$s1, $a0, %got_pc_lo12(p)
 	pcalau12i	$a0, %got_pc_hi20(mymove)
 	ld.d	$s3, $a0, %got_pc_lo12(mymove)
 	pcalau12i	$a0, %got_pc_hi20(mk)
@@ -74,8 +74,6 @@ endgame:                                # @endgame
 	addi.d	$fp, $a0, %pc_lo12(.L.str.8)
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.9)
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$s1, $a0, %pc_lo12(.L.str.10)
 	pcalau12i	$a0, %got_pc_hi20(umove)
 	ld.d	$s5, $a0, %got_pc_lo12(umove)
 	pcalau12i	$a0, %got_pc_hi20(uk)
@@ -98,11 +96,10 @@ endgame:                                # @endgame
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	move	$a1, $s1
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_6
 .LBB0_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -115,7 +112,7 @@ endgame:                                # @endgame
 	ld.w	$a0, $sp, 20
 	alsl.d	$a2, $a1, $a1, 3
 	alsl.d	$a1, $a2, $a1, 1
-	add.d	$a1, $s2, $a1
+	add.d	$a1, $s1, $a1
 	ldx.bu	$a3, $a1, $a0
 	ld.w	$a4, $s3, 0
 	move	$a2, $s4
@@ -147,12 +144,10 @@ endgame:                                # @endgame
 	addi.d	$a1, $sp, 30
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB0_9
 # %bb.7:
 	pcalau12i	$a0, %got_pc_hi20(umove)
@@ -168,8 +163,6 @@ endgame:                                # @endgame
 	ld.d	$s6, $a0, %got_pc_lo12(mymove)
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.14)
-	pcalau12i	$a0, %pc_hi20(.L.str.10)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.10)
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph38
                                         # =>This Inner Loop Header: Depth=1
@@ -211,11 +204,10 @@ endgame:                                # @endgame
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 30
-	ori	$a2, $zero, 5
-	move	$a1, $s2
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $sp, 30
+	ld.bu	$a1, $sp, 34
+	xor	$a0, $a0, $s2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_8
 .LBB0_9:                                # %.critedge31.preheader
 	st.w	$zero, $sp, 24
@@ -868,188 +860,188 @@ endgame:                                # @endgame
 .LBB0_18:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $s1, $a2
-	ld.b	$a5, $a4, 304
-	andi	$a5, $a5, 255
+	ld.bu	$a5, $a4, 304
+	bstrpick.d	$a5, $a5, 31, 0
 	xor	$a6, $a0, $a5
 	sltu	$a7, $zero, $a6
 	sltui	$a6, $a6, 1
 	xor	$a5, $a1, $a5
 	add.d	$a6, $fp, $a6
-	ld.b	$t0, $a4, 305
+	ld.bu	$t0, $a4, 305
 	sltui	$a5, $a5, 1
 	and	$a5, $a7, $a5
 	add.d	$a5, $s0, $a5
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 306
+	ld.bu	$t0, $a4, 306
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 307
+	ld.bu	$t0, $a4, 307
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 308
+	ld.bu	$t0, $a4, 308
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 309
+	ld.bu	$t0, $a4, 309
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 310
+	ld.bu	$t0, $a4, 310
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 311
+	ld.bu	$t0, $a4, 311
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 312
+	ld.bu	$t0, $a4, 312
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 313
+	ld.bu	$t0, $a4, 313
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 314
+	ld.bu	$t0, $a4, 314
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 315
+	ld.bu	$t0, $a4, 315
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 316
+	ld.bu	$t0, $a4, 316
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 317
+	ld.bu	$t0, $a4, 317
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 318
+	ld.bu	$t0, $a4, 318
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 319
+	ld.bu	$t0, $a4, 319
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 320
+	ld.bu	$t0, $a4, 320
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	add.d	$a6, $a6, $t0
-	ld.b	$t0, $a4, 321
+	ld.bu	$t0, $a4, 321
 	sltui	$a7, $a7, 1
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a7, $t0, 255
+	bstrpick.d	$a7, $t0, 31, 0
 	xor	$t0, $a0, $a7
 	sltu	$t1, $zero, $t0
 	sltui	$t0, $t0, 1
 	xor	$a7, $a1, $a7
 	sltui	$a7, $a7, 1
-	ld.b	$a4, $a4, 322
+	ld.bu	$a4, $a4, 322
 	add.d	$a6, $a6, $t0
 	and	$a7, $t1, $a7
 	add.d	$a5, $a5, $a7
-	andi	$a4, $a4, 255
+	bstrpick.d	$a4, $a4, 31, 0
 	xor	$a7, $a0, $a4
 	sltu	$t0, $zero, $a7
 	sltui	$a7, $a7, 1

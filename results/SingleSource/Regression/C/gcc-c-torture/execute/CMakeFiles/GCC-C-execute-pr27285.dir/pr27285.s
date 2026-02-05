@@ -44,24 +44,24 @@ foo:                                    # @foo
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.w	$zero, $sp, 31
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.w	$zero, $sp, 15
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16
+	vst	$vr0, $sp, 0
 	pcalau12i	$a0, %pc_hi20(.L__const.main.x)
 	addi.d	$a0, $a0, %pc_lo12(.L__const.main.x)
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(foo)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 19
+	ld.w	$a0, $sp, 3
 	lu12i.w	$a1, -521013
 	ori	$a1, $a1, 2986
 	bne	$a0, $a1, .LBB1_2
 # %bb.1:
 	move	$a0, $zero
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB1_2:
 	pcaddu18i	$ra, %call36(abort)

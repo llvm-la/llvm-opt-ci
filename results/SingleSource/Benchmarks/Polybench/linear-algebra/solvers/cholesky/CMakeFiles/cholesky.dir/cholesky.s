@@ -403,7 +403,7 @@ main:                                   # @main
 	bnez	$t6, .LBB7_29
 	b	.LBB7_26
 	.p2align	4, , 16
-.LBB7_30:                               # %vector.body119.preheader
+.LBB7_30:                               # %vector.ph118
                                         #   in Loop: Header=BB7_27 Depth=2
 	xvldrepl.d	$xr0, $t4, 0
 	move	$t4, $a2

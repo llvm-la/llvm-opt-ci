@@ -1185,21 +1185,27 @@ main:                                   # @main
 .LBB4_78:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit145.i
                                         #   in Loop: Header=BB4_74 Depth=2
 	ld.d	$a0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.60)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.60)
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 468550
+	ori	$a2, $a2, 3950
+	ld.hu	$a0, $a0, 4
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 111
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB4_85
 	b	.LBB4_72
 .LBB4_79:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit147.i
                                         #   in Loop: Header=BB4_74 Depth=2
 	ld.d	$a0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.61)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.61)
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	ld.bu	$a0, $a0, 4
+	lu12i.w	$a2, 431959
+	ori	$a2, $a2, 357
+	xor	$a1, $a1, $a2
+	xori	$a0, $a0, 118
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB4_85
 # %bb.80:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit147.thread.i
                                         #   in Loop: Header=BB4_74 Depth=2
@@ -1209,22 +1215,28 @@ main:                                   # @main
 	b	.LBB4_73
 .LBB4_81:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit149.i
                                         #   in Loop: Header=BB4_74 Depth=2
-	ld.d	$s4, $a0, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.62)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.62)
-	ori	$a2, $zero, 7
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_89
+	ld.d	$a0, $a0, 0
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 464470
+	ori	$a2, $a2, 3950
+	ld.w	$a3, $a0, 3
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 485015
+	ori	$a2, $a2, 1393
+	xor	$a2, $a3, $a2
+	or	$a1, $a1, $a2
+	beqz	$a1, .LBB4_89
 # %bb.82:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit151.i
                                         #   in Loop: Header=BB4_74 Depth=2
-	pcalau12i	$a0, %pc_hi20(.L.str.63)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.63)
-	ori	$a2, $zero, 7
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a1, $a0, 0
+	lu12i.w	$a2, 468567
+	ori	$a2, $a2, 1647
+	ld.w	$a0, $a0, 3
+	xor	$a1, $a1, $a2
+	lu12i.w	$a2, 460310
+	ori	$a2, $a2, 3186
+	xor	$a0, $a0, $a2
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB4_85
 # %bb.83:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit151.thread.i
                                         #   in Loop: Header=BB4_74 Depth=2
@@ -1235,11 +1247,15 @@ main:                                   # @main
 .LBB4_84:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit153.i
                                         #   in Loop: Header=BB4_74 Depth=2
 	ld.d	$a0, $a0, 0
-	pcalau12i	$a1, %pc_hi20(.L.str.64)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.64)
-	ori	$a2, $zero, 9
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $a0, 0
+	lu12i.w	$a2, 415590
+	ori	$a2, $a2, 3950
+	ld.bu	$a0, $a0, 8
+	lu32i.d	$a2, 93298
+	lu52i.d	$a2, $a2, 1798
+	xor	$a1, $a1, $a2
+	xori	$a0, $a0, 111
+	or	$a0, $a1, $a0
 	beqz	$a0, .LBB4_90
 	.p2align	4, , 16
 .LBB4_85:                               # %_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_.exit153.thread320.i
@@ -1423,9 +1439,9 @@ main:                                   # @main
 # %bb.110:                              # %.lr.ph615.i
 	addi.d	$s6, $sp, 264
 	addi.d	$s5, $sp, 296
-	sub.d	$fp, $s8, $a0
+	sub.d	$s0, $s8, $a0
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	alsl.d	$s0, $a0, $a1, 3
+	alsl.d	$fp, $a0, $a1, 3
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	lu52i.d	$a0, $a0, 1023
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
@@ -1446,7 +1462,7 @@ main:                                   # @main
 .LBB4_111:                              #   in Loop: Header=BB4_113 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $fp, 0
 	move	$s4, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.72)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.72)
@@ -1461,12 +1477,12 @@ main:                                   # @main
 	ld.d	$s8, $sp, 176                   # 8-byte Folded Reload
 	move	$s5, $s7
 .LBB4_112:                              #   in Loop: Header=BB4_113 Depth=1
-	addi.w	$fp, $fp, -1
-	addi.d	$s0, $s0, 8
-	beqz	$fp, .LBB4_218
+	addi.w	$s0, $s0, -1
+	addi.d	$fp, $fp, 8
+	beqz	$s0, .LBB4_218
 .LBB4_113:                              # =>This Inner Loop Header: Depth=1
 	move	$s7, $s5
-	ld.d	$s5, $s0, 0
+	ld.d	$s5, $fp, 0
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -1860,7 +1876,7 @@ main:                                   # @main
 	b	.LBB4_167
 	.p2align	4, , 16
 .LBB4_162:                              #   in Loop: Header=BB4_113 Depth=1
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.83)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.83)
 	pcaddu18i	$ra, %call36(fopen)
@@ -1877,7 +1893,7 @@ main:                                   # @main
 .LBB4_164:                              #   in Loop: Header=BB4_113 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $fp, 0
 	move	$s4, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.84)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.84)
@@ -2245,7 +2261,7 @@ main:                                   # @main
 # %bb.212:                              #   in Loop: Header=BB4_113 Depth=1
 	move	$s4, $a0
 	ld.d	$a0, $sp, 440
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $fp, 0
 .Ltmp88:                                # EH_LABEL
 	pcaddu18i	$ra, %call36(_ZN2kc9Problem2SEPKcS1_)
 	jirl	$ra, $ra, 0
@@ -4336,11 +4352,11 @@ main:                                   # @main
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(v_ccfile_printer)
-	ld.d	$s0, $a0, %got_pc_lo12(v_ccfile_printer)
+	ld.d	$s8, $a0, %got_pc_lo12(v_ccfile_printer)
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc12view_gen_k_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc12view_gen_k_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -4382,35 +4398,35 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc24view_gen_subphylumdefs_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc24view_gen_subphylumdefs_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc28view_gen_set_subphylumdefs_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc28view_gen_set_subphylumdefs_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc26view_gen_copy_attributes_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc26view_gen_copy_attributes_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc20view_gen_phylummap_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc20view_gen_phylummap_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc22view_gen_operatormap_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc22view_gen_operatormap_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
@@ -4418,7 +4434,7 @@ main:                                   # @main
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc18view_gen_uniqmap_cE)
 	ld.d	$a2, $a1, %got_pc_lo12(_ZN2kc18view_gen_uniqmap_cE)
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -4445,29 +4461,33 @@ main:                                   # @main
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	move	$a2, $s3
 	jirl	$ra, $a3, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.16)
-	addi.w	$fp, $zero, -1
+	addi.w	$s7, $zero, -1
 	move	$a0, $s3
-	move	$a1, $fp
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	move	$a0, $s3
-	move	$a1, $fp
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s4, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	ori	$fp, $zero, 24
+	masknez	$a1, $fp, $a0
+	ori	$s0, $zero, 16
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s4, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc17view_gen_includesE)
@@ -4478,26 +4498,28 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.L.str.17)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.17)
 	move	$a0, $s4
-	move	$a1, $fp
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	move	$a0, $s4
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	move	$a1, $fp
+	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s5, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	masknez	$a1, $fp, $a0
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s5, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
-	move	$a1, $s0
+	move	$a1, $s8
 	move	$a2, $s3
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
@@ -4511,7 +4533,7 @@ main:                                   # @main
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	move	$a2, $s3
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
@@ -4526,7 +4548,7 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc23view_gen_assertmacros_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc23view_gen_assertmacros_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -4547,7 +4569,7 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc20view_gen_classdefs_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc20view_gen_classdefs_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -4561,7 +4583,7 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc16view_gen_alloc_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc16view_gen_alloc_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -4575,14 +4597,14 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc23view_gen_operatordefs_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc23view_gen_operatordefs_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc21view_gen_hashtables_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc21view_gen_hashtables_cE)
 	move	$a0, $s1
-	move	$a1, $s0
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -4596,8 +4618,8 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc21view_gen_error_defs_cE)
 	ld.d	$a2, $a0, %got_pc_lo12(_ZN2kc21view_gen_error_defs_cE)
 	move	$a0, $s1
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	move	$a1, $s0
+	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
+	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 69
@@ -5014,23 +5036,27 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s3, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	ori	$a1, $zero, 24
+	masknez	$a1, $a1, $a0
+	ori	$a2, $zero, 16
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s3, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc17view_gen_includesE)
-	ld.d	$s0, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
+	ld.d	$s7, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
 	move	$a1, $s8
-	move	$a2, $s0
+	move	$a2, $s7
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc19view_open_namespaceE)
-	ld.d	$s7, $a0, %got_pc_lo12(_ZN2kc19view_open_namespaceE)
+	ld.d	$fp, $a0, %got_pc_lo12(_ZN2kc19view_open_namespaceE)
 	move	$a0, $s1
 	move	$a1, $s8
-	move	$a2, $s7
+	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5042,10 +5068,10 @@ main:                                   # @main
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc20view_close_namespaceE)
-	ld.d	$fp, $a0, %got_pc_lo12(_ZN2kc20view_close_namespaceE)
+	ld.d	$s0, $a0, %got_pc_lo12(_ZN2kc20view_close_namespaceE)
 	move	$a0, $s1
 	move	$a1, $s8
-	move	$a2, $fp
+	move	$a2, $s0
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5077,19 +5103,23 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s2, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	ori	$a1, $zero, 24
+	masknez	$a1, $a1, $a0
+	ori	$a2, $zero, 16
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s2, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	move	$a1, $s4
-	move	$a2, $s0
+	move	$a2, $s7
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
 	move	$a1, $s4
-	move	$a2, $s7
+	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5102,7 +5132,7 @@ main:                                   # @main
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
 	move	$a1, $s4
-	move	$a2, $fp
+	move	$a2, $s0
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s4, 8
 	beqz	$a0, .LBB4_423
@@ -5254,10 +5284,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .Ltmp186:                               # EH_LABEL
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	addi.d	$fp, $a0, 216
+	addi.d	$a2, $a0, 216
 	addi.d	$a0, $sp, 440
 	addi.d	$a1, $sp, 408
-	move	$a2, $fp
+	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_RKS8_)
 	jirl	$ra, $ra, 0
 .Ltmp187:                               # EH_LABEL
@@ -5361,30 +5391,34 @@ main:                                   # @main
 	jirl	$ra, $a3, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.30)
-	addi.w	$s0, $zero, -1
+	addi.w	$s7, $zero, -1
 	move	$a0, $s2
-	move	$a1, $s0
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	move	$a0, $s2
-	move	$a1, $s0
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s3, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	ori	$a1, $zero, 24
+	masknez	$a1, $a1, $a0
+	ori	$s0, $zero, 16
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s3, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc17view_gen_includesE)
-	ld.d	$s7, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
+	ld.d	$fp, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
 	move	$a1, $s4
-	move	$a2, $s7
+	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5441,26 +5475,30 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.L.str.31)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.31)
 	move	$a0, $s3
-	move	$a1, $s0
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	move	$a0, $s3
-	move	$a1, $s0
+	move	$s3, $s7
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZN2kc12mkcasestringEPKci)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s5, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	ori	$a1, $zero, 24
+	masknez	$a1, $a1, $a0
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s5, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	move	$a1, $s8
-	move	$a2, $s7
+	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5501,7 +5539,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	st.d	$zero, $s8, 8
-	bne	$a0, $s0, .LBB4_458
+	bne	$a0, $s3, .LBB4_458
 # %bb.457:
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
@@ -5525,7 +5563,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
 	st.d	$zero, $s4, 8
-	bne	$a0, $s0, .LBB4_461
+	bne	$a0, $s3, .LBB4_461
 # %bb.460:
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
@@ -5552,7 +5590,7 @@ main:                                   # @main
 .Ltmp200:                               # EH_LABEL
 	addi.d	$a0, $sp, 440
 	addi.d	$a1, $sp, 408
-	move	$a2, $fp
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_RKS8_)
 	jirl	$ra, $ra, 0
 .Ltmp201:                               # EH_LABEL
@@ -5645,10 +5683,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .Ltmp212:                               # EH_LABEL
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
-	addi.d	$fp, $a0, 216
+	addi.d	$a2, $a0, 216
 	addi.d	$a0, $sp, 440
 	addi.d	$a1, $sp, 408
-	move	$a2, $fp
+	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_RKS8_)
 	jirl	$ra, $ra, 0
 .Ltmp213:                               # EH_LABEL
@@ -5768,23 +5806,27 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s3, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	ori	$a1, $zero, 24
+	masknez	$a1, $a1, $a0
+	ori	$s0, $zero, 16
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s3, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc17view_gen_includesE)
-	ld.d	$s0, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
+	ld.d	$s7, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
 	move	$a1, $s6
-	move	$a2, $s0
+	move	$a2, $s7
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc19view_open_namespaceE)
-	ld.d	$s7, $a0, %got_pc_lo12(_ZN2kc19view_open_namespaceE)
+	ld.d	$fp, $a0, %got_pc_lo12(_ZN2kc19view_open_namespaceE)
 	move	$a0, $s1
 	move	$a1, $s6
-	move	$a2, $s7
+	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5844,19 +5886,22 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZN2kc11IncludeFileEPNS_20impl_casestring__StrE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 8
-	sltu	$a0, $zero, $a0
-	alsl.d	$a0, $a0, $s2, 3
-	ld.d	$a0, $a0, 16
+	sltui	$a0, $a0, 1
+	ori	$a1, $zero, 24
+	masknez	$a1, $a1, $a0
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $a1
+	ldx.d	$a0, $s2, $a0
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	move	$a1, $s4
-	move	$a2, $s0
+	move	$a2, $s7
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
 	move	$a1, $s4
-	move	$a2, $s7
+	move	$a2, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5928,7 +5973,7 @@ main:                                   # @main
 .Ltmp226:                               # EH_LABEL
 	addi.d	$a0, $sp, 440
 	addi.d	$a1, $sp, 408
-	move	$a2, $fp
+	ld.d	$a2, $sp, 176                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_RKS8_)
 	jirl	$ra, $ra, 0
 .Ltmp227:                               # EH_LABEL

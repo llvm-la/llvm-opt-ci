@@ -276,7 +276,6 @@ _ZN8LoopStatC2Ej:                       # @_ZN8LoopStatC2Ej
 .Ltmp25:                                # EH_LABEL
 # %bb.10:                               # %.noexc92
 	move	$s4, $a0
-	addi.d	$s3, $fp, 208
 	st.d	$a0, $fp, 232
 	alsl.d	$a0, $s5, $a0, 2
 	st.d	$a0, $fp, 248
@@ -332,35 +331,28 @@ _ZN8LoopStatC2Ej:                       # @_ZN8LoopStatC2Ej
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $s3, 0
+	ld.d	$s3, $fp, 208
 	bnez	$s3, .LBB1_24
 # %bb.15:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit103
-	addi.d	$a0, $fp, 184
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 184
 	bnez	$a0, .LBB1_26
 .LBB1_16:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit
-	addi.d	$a0, $fp, 160
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 160
 	bnez	$a0, .LBB1_28
 .LBB1_17:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit106
-	addi.d	$a0, $fp, 136
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 136
 	bnez	$a0, .LBB1_30
 .LBB1_18:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit108
-	addi.d	$a0, $fp, 112
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 112
 	bnez	$a0, .LBB1_32
 .LBB1_19:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit110
-	addi.d	$a0, $fp, 88
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 88
 	bnez	$a0, .LBB1_34
 .LBB1_20:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit112
-	addi.d	$a0, $fp, 64
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 64
 	bnez	$a0, .LBB1_36
 .LBB1_21:                               # %_ZNSt6vectorIeSaIeEED2Ev.exit114
-	addi.d	$a0, $fp, 40
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 40
 	bnez	$a0, .LBB1_38
 .LBB1_22:                               # %_ZNSt6vectorImSaImEED2Ev.exit
 	move	$a0, $s0
@@ -376,93 +368,79 @@ _ZN8LoopStatC2Ej:                       # @_ZN8LoopStatC2Ej
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 184
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 184
 	beqz	$a0, .LBB1_16
 	b	.LBB1_26
 .LBB1_25:
 .Ltmp23:                                # EH_LABEL
 	move	$s1, $a0
-	addi.d	$a0, $fp, 184
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 184
 	beqz	$a0, .LBB1_16
 .LBB1_26:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 160
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 160
 	beqz	$a0, .LBB1_17
 	b	.LBB1_28
 .LBB1_27:
 .Ltmp20:                                # EH_LABEL
 	move	$s1, $a0
-	addi.d	$a0, $fp, 160
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 160
 	beqz	$a0, .LBB1_17
 .LBB1_28:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 136
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 136
 	beqz	$a0, .LBB1_18
 	b	.LBB1_30
 .LBB1_29:
 .Ltmp17:                                # EH_LABEL
 	move	$s1, $a0
-	addi.d	$a0, $fp, 136
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 136
 	beqz	$a0, .LBB1_18
 .LBB1_30:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 112
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 112
 	beqz	$a0, .LBB1_19
 	b	.LBB1_32
 .LBB1_31:
 .Ltmp14:                                # EH_LABEL
 	move	$s1, $a0
-	addi.d	$a0, $fp, 112
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 112
 	beqz	$a0, .LBB1_19
 .LBB1_32:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 88
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 88
 	beqz	$a0, .LBB1_20
 	b	.LBB1_34
 .LBB1_33:
 .Ltmp11:                                # EH_LABEL
 	move	$s1, $a0
-	addi.d	$a0, $fp, 88
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 88
 	beqz	$a0, .LBB1_20
 .LBB1_34:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 64
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 64
 	beqz	$a0, .LBB1_21
 	b	.LBB1_36
 .LBB1_35:
 .Ltmp8:                                 # EH_LABEL
 	move	$s1, $a0
-	addi.d	$a0, $fp, 64
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 64
 	beqz	$a0, .LBB1_21
 .LBB1_36:
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $fp, 40
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 40
 	beqz	$a0, .LBB1_22
 	b	.LBB1_38
 .LBB1_37:
 .Ltmp5:                                 # EH_LABEL
 	move	$s1, $a0
-	addi.d	$a0, $fp, 40
-	ld.d	$a0, $a0, 0
+	ld.d	$a0, $fp, 40
 	beqz	$a0, .LBB1_22
 .LBB1_38:
 	pcaddu18i	$ra, %call36(_ZdlPv)
@@ -1439,8 +1417,7 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 	jirl	$ra, $ra, 0
 .Ltmp73:                                # EH_LABEL
 # %bb.57:
-	addi.d	$a0, $s0, 152
-	vld	$vr0, $a0, 0
+	vld	$vr0, $s0, 152
 	vst	$vr0, $sp, 64
 	addi.d	$a0, $sp, 80
 .Ltmp75:                                # EH_LABEL

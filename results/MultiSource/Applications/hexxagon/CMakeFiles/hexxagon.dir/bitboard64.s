@@ -332,16 +332,16 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $a0
 	ld.b	$a0, $a0, 0
-	move	$fp, $a1
+	move	$s0, $a1
 	st.b	$a0, $sp, 7
 	addi.d	$a0, $sp, 7
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	ori	$s2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	addi.w	$s0, $zero, -1
+	addi.w	$fp, $zero, -1
 	bne	$a0, $s2, .LBB10_8
 # %bb.1:
 	ld.b	$a0, $s1, 1
@@ -349,7 +349,7 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	addi.d	$a0, $sp, 7
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB10_8
@@ -360,7 +360,7 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	ori	$s2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB10_8
@@ -370,7 +370,7 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	addi.d	$a0, $sp, 7
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB10_8
@@ -381,7 +381,7 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	ori	$s2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB10_8
@@ -391,7 +391,7 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	addi.d	$a0, $sp, 6
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB10_8
@@ -402,7 +402,7 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	ori	$s2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s2, .LBB10_8
@@ -412,14 +412,14 @@ _ZN10BitBoard6411writeToFileEP8_IO_FILE: # @_ZN10BitBoard6411writeToFileEP8_IO_F
 	addi.d	$a0, $sp, 6
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
-	move	$a3, $fp
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $a0, -1
 	sltu	$a0, $zero, $a0
-	sub.d	$s0, $zero, $a0
+	sub.d	$fp, $zero, $a0
 .LBB10_8:                               # %.thread
-	move	$a0, $s0
+	move	$a0, $fp
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload

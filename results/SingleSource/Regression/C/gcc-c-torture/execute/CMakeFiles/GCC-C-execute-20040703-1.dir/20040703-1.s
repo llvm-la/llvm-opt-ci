@@ -46,13 +46,12 @@ num_lshift:                             # @num_lshift
 	lu32i.d	$t2, 0
 	or	$a1, $a1, $t2
 	add.d	$a1, $a1, $a2
-	ori	$t2, $zero, 1
-	sll.w	$a1, $t2, $a1
-	and	$a1, $t1, $a1
-	addi.w	$a1, $a1, 0
-	sltu	$t1, $zero, $a1
+	nor	$t1, $t1, $zero
+	srl.w	$a1, $t1, $a1
+	addi.w	$t1, $zero, -2
+	or	$t1, $a1, $t1
 	ori	$a1, $zero, 31
-	sub.d	$t1, $zero, $t1
+	addi.d	$t1, $t1, 1
 	bltu	$a1, $a2, .LBB0_11
 # %bb.6:                                # %.thread94
 	sltu	$a1, $a1, $a3
@@ -81,10 +80,8 @@ num_lshift:                             # @num_lshift
 	or	$a0, $a5, $a0
 	addi.w	$a0, $a0, 0
 	sltu	$a0, $zero, $a0
-	slli.d	$a0, $a0, 32
-	maskeqz	$a0, $a0, $a2
-	bstrins.d	$a0, $a1, 31, 0
-	move	$a1, $a0
+	and	$a0, $a2, $a0
+	bstrins.d	$a1, $a0, 63, 32
 	move	$a0, $zero
 	ret
 .LBB0_9:

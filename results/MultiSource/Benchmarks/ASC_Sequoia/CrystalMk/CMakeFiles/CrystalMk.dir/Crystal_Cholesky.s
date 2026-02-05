@@ -101,25 +101,25 @@ Crystal_Cholesky:                       # @Crystal_Cholesky
                                         # =>This Inner Loop Header: Depth=1
 	xvmul.d	$xr4, $xr1, $xr3
 	xvpickve2gr.d	$a7, $xr4, 0
-	add.d	$t0, $a1, $a7
-	xvpickve2gr.d	$t1, $xr4, 1
-	add.d	$t2, $a1, $t1
-	xvpickve2gr.d	$t3, $xr4, 2
-	xvpickve2gr.d	$t4, $xr4, 3
+	xvpickve2gr.d	$t0, $xr4, 1
+	xvpickve2gr.d	$t1, $xr4, 2
+	xvpickve2gr.d	$t2, $xr4, 3
+	add.d	$t3, $a1, $a7
+	add.d	$t4, $a1, $t0
 	fldx.d	$fa4, $a1, $a7
-	fldx.d	$fa5, $a1, $t3
-	fldx.d	$fa6, $a1, $t4
-	fldx.d	$fa7, $a1, $t1
-	add.d	$a7, $a1, $t3
-	add.d	$t1, $a1, $t4
+	fldx.d	$fa5, $a1, $t1
+	fldx.d	$fa6, $a1, $t2
+	fldx.d	$fa7, $a1, $t0
+	add.d	$a7, $a1, $t1
+	add.d	$t0, $a1, $t2
 	vextrins.d	$vr5, $vr6, 16
 	vextrins.d	$vr4, $vr7, 16
 	xvpermi.q	$xr4, $xr5, 2
 	xvfdiv.d	$xr4, $xr4, $xr2
-	xvstelm.d	$xr4, $t0, 0, 0
-	xvstelm.d	$xr4, $t2, 0, 1
+	xvstelm.d	$xr4, $t3, 0, 0
+	xvstelm.d	$xr4, $t4, 0, 1
 	xvstelm.d	$xr4, $a7, 0, 2
-	xvstelm.d	$xr4, $t1, 0, 3
+	xvstelm.d	$xr4, $t0, 0, 3
 	addi.d	$a6, $a6, -4
 	xvaddi.du	$xr1, $xr1, 4
 	bnez	$a6, .LBB0_13

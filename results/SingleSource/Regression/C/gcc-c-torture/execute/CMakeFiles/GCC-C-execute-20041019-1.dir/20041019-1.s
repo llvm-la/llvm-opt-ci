@@ -5,17 +5,12 @@
 	.type	test_store_ccp,@function
 test_store_ccp:                         # @test_store_ccp
 # %bb.0:                                # %.cont
-	slti	$a1, $a0, 5
-	ori	$a2, $zero, 8
-	slt	$a0, $a2, $a0
+	slti	$a0, $a0, 9
+	ori	$a1, $zero, 5
+	masknez	$a1, $a1, $a0
 	ori	$a2, $zero, 12
-	masknez	$a3, $a2, $a0
-	ori	$a4, $zero, 5
-	maskeqz	$a0, $a4, $a0
-	or	$a0, $a0, $a3
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $a2, $a1
-	or	$a0, $a1, $a0
+	maskeqz	$a0, $a2, $a0
+	or	$a0, $a0, $a1
 	ret
 .Lfunc_end0:
 	.size	test_store_ccp, .Lfunc_end0-test_store_ccp

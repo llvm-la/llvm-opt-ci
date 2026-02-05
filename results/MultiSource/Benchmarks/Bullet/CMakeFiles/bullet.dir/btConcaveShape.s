@@ -31,7 +31,7 @@ _ZN14btConcaveShapeD2Ev:                # @_ZN14btConcaveShapeD2Ev
 	.type	_ZN14btConcaveShapeD0Ev,@function
 _ZN14btConcaveShapeD0Ev:                # @_ZN14btConcaveShapeD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end2:
 	.size	_ZN14btConcaveShapeD0Ev, .Lfunc_end2-_ZN14btConcaveShapeD0Ev
                                         # -- End function

@@ -28,13 +28,12 @@ profile:                                # @profile
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(total_blocks)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	ld.d	$a0, $a0, %pc_lo12(total_blocks)
-	pcalau12i	$a1, %pc_hi20(x_block_size)
-	st.d	$a1, $sp, 272                   # 8-byte Folded Spill
-	ld.w	$a1, $a1, %pc_lo12(x_block_size)
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $a0, %pc_lo12(total_blocks)
+	pcalau12i	$a0, %pc_hi20(x_block_size)
+	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
+	ld.w	$a0, $a0, %pc_lo12(x_block_size)
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.w	$fa1, $a1
+	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	pcalau12i	$a0, %pc_hi20(y_block_size)
 	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
@@ -667,12 +666,11 @@ profile:                                # @profile
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, %pc_lo12(total_blocks)
-	ld.w	$a1, $s0, %pc_lo12(num_tsteps)
-	ld.w	$a2, $fp, %pc_lo12(stages_per_ts)
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $a0, %pc_lo12(total_blocks)
+	ld.w	$a0, $s0, %pc_lo12(num_tsteps)
+	ld.w	$a1, $fp, %pc_lo12(stages_per_ts)
 	ffint.d.l	$fa0, $fa0
-	mul.d	$a0, $a2, $a1
+	mul.d	$a0, $a1, $a0
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
 	fdiv.d	$fa0, $fa0, $fa1
@@ -1605,14 +1603,13 @@ profile:                                # @profile
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, %pc_lo12(total_blocks)
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
-	ld.w	$a1, $a1, %pc_lo12(num_tsteps)
-	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
-	ld.w	$a2, $a2, %pc_lo12(stages_per_ts)
-	movgr2fr.d	$fa0, $a0
+	fld.d	$fa0, $fp, %pc_lo12(total_blocks)
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.w	$a0, $a0, %pc_lo12(num_tsteps)
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	ld.w	$a1, $a1, %pc_lo12(stages_per_ts)
 	ffint.d.l	$fa0, $fa0
-	mul.d	$a0, $a2, $a1
+	mul.d	$a0, $a1, $a0
 	movgr2fr.w	$fa1, $a0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a3, $a0, %pc_lo12(nb_min)

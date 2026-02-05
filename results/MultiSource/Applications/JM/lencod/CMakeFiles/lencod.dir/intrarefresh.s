@@ -190,20 +190,20 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
 	vpickve2gr.w	$t0, $vr2, 1
 	vinsgr2vr.d	$vr6, $t0, 1
 	xvpickve2gr.d	$t0, $xr6, 0
-	slli.d	$t0, $t0, 2
 	xvpickve2gr.d	$t1, $xr6, 1
-	slli.d	$t1, $t1, 2
 	xvpickve2gr.d	$t2, $xr3, 2
-	slli.d	$t2, $t2, 2
 	xvpickve2gr.d	$t3, $xr3, 3
-	slli.d	$t3, $t3, 2
 	xvpickve2gr.d	$t4, $xr5, 0
-	slli.d	$t4, $t4, 2
 	xvpickve2gr.d	$t5, $xr5, 1
-	slli.d	$t5, $t5, 2
 	xvpickve2gr.d	$t6, $xr4, 2
-	slli.d	$t6, $t6, 2
 	xvpickve2gr.d	$t7, $xr4, 3
+	slli.d	$t0, $t0, 2
+	slli.d	$t1, $t1, 2
+	slli.d	$t2, $t2, 2
+	slli.d	$t3, $t3, 2
+	slli.d	$t4, $t4, 2
+	slli.d	$t5, $t5, 2
+	slli.d	$t6, $t6, 2
 	slli.d	$t7, $t7, 2
 	ldx.w	$t0, $a0, $t0
 	ldx.w	$t1, $a0, $t1

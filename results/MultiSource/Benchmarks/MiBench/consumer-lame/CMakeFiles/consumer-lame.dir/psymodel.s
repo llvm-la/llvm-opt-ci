@@ -1878,9 +1878,9 @@ L3psycho_anal:                          # @L3psycho_anal
 	ld.d	$a2, $sp, 496                   # 8-byte Folded Reload
 	alsl.d	$a2, $a3, $a2, 3
 	sub.d	$a3, $a4, $a3
-	movgr2fr.d	$fa0, $zero
+	movgr2fr.d	$fs3, $zero
 	addi.d	$a3, $a3, 1
-	fmov.d	$fs3, $fa0
+	fmov.d	$fa0, $fs3
 	.p2align	4, , 16
 .LBB0_143:                              #   Parent Loop BB0_69 Depth=1
                                         #     Parent Loop BB0_141 Depth=2
@@ -2435,15 +2435,13 @@ L3psycho_anal:                          # @L3psycho_anal
 	fcmp.cult.d	$fcc0, $fa2, $fa1
 	bcnez	$fcc0, .LBB0_206
 # %bb.205:                              #   in Loop: Header=BB0_203 Depth=1
-	addi.d	$a6, $a5, 1656
 	fld.d	$fa1, $a1, 0
-	fld.d	$fa2, $a6, -16
-	addi.d	$a7, $a4, 1152
-	fld.d	$fa3, $a7, 488
+	fld.d	$fa2, $a5, 1640
+	fld.d	$fa3, $a4, 1640
 	fmul.d	$fa2, $fa1, $fa2
-	fld.d	$fa4, $a7, 0
+	fld.d	$fa4, $a4, 1152
 	fcmp.clt.d	$fcc0, $fa3, $fa2
-	fld.d	$fa5, $a6, -504
+	fld.d	$fa5, $a5, 1152
 	fsel	$fa2, $fa2, $fa3, $fcc0
 	fcmp.clt.d	$fcc0, $fa2, $fa4
 	fsel	$fa2, $fa2, $fa4, $fcc0
@@ -2452,8 +2450,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	fsel	$fa1, $fa1, $fa4, $fcc0
 	fcmp.clt.d	$fcc0, $fa1, $fa3
 	fsel	$fa1, $fa1, $fa3, $fcc0
-	fst.d	$fa2, $a7, 0
-	fst.d	$fa1, $a7, 488
+	fst.d	$fa2, $a4, 1152
+	fst.d	$fa1, $a4, 1640
 .LBB0_206:                              #   in Loop: Header=BB0_203 Depth=1
 	fld.d	$fa1, $a4, 184
 	fld.d	$fa2, $a4, 672

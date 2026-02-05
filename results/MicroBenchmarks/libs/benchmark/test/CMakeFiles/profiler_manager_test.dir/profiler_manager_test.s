@@ -1725,18 +1725,16 @@ _GLOBAL__sub_I_profiler_manager_test.cc: # @_GLOBAL__sub_I_profiler_manager_test
 .Ltmp11:                                # EH_LABEL
 	ld.d	$a2, $sp, 400
 	move	$s3, $a0
-	bne	$a2, $s2, .LBB8_163
-# %bb.162:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.thread.i.i7.i
-	bnez	$s1, .LBB8_164
-	b	.LBB8_166
-.LBB8_163:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
+	beq	$a2, $s2, .LBB8_163
+# %bb.162:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i6.i
 	ld.d	$a0, $sp, 416
 	addi.d	$a1, $a0, 1
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
+.LBB8_163:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit8.i
 	beqz	$s1, .LBB8_166
-.LBB8_164:
+# %bb.164:
 	ori	$a1, $zero, 232
 	move	$a0, $fp
 .LBB8_165:                              # %common.resume

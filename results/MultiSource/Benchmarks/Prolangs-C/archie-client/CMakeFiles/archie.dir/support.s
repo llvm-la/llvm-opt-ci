@@ -889,44 +889,75 @@ parse_attribute:                        # @parse_attribute
 	move	$fp, $a0
 	bne	$s0, $a1, .LBB7_12
 # %bb.3:
-	pcalau12i	$a0, %pc_hi20(.L.str.30)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.30)
 	lu12i.w	$a0, 9
 	ori	$a0, $a0, 1472
 	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 7
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a0, 0
+	lu12i.w	$a1, 295988
+	ori	$a1, $a1, 323
+	lu12i.w	$a2, 9
+	ori	$a2, $a2, 1475
+	add.d	$a2, $sp, $a2
+	ld.w	$a2, $a2, 0
+	xor	$a0, $a0, $a1
+	lu12i.w	$a1, 1092
+	ori	$a1, $a1, 1352
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB7_8
 # %bb.4:
-	pcalau12i	$a0, %pc_hi20(.L.str.31)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.31)
 	lu12i.w	$a0, 9
 	ori	$a0, $a0, 1472
 	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a0, 0
+	lu12i.w	$a1, 9
+	ori	$a1, $a1, 1476
+	add.d	$a1, $sp, $a1
+	ld.bu	$a1, $a1, 0
+	lu12i.w	$a2, 308452
+	ori	$a2, $a2, 2380
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB7_9
 # %bb.5:
-	pcalau12i	$a0, %pc_hi20(.L.str.32)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.32)
 	lu12i.w	$a0, 9
 	ori	$a0, $a0, 1472
 	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 12
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $a0, 0
+	lu12i.w	$a1, 312580
+	ori	$a1, $a1, 1362
+	lu32i.d	$a1, 344897
+	lu52i.d	$a1, $a1, 1236
+	lu12i.w	$a2, 9
+	ori	$a2, $a2, 1480
+	add.d	$a2, $sp, $a2
+	ld.wu	$a2, $a2, 0
+	xor	$a0, $a0, $a1
+	lu12i.w	$a1, 1348
+	ori	$a1, $a1, 3653
+	xor	$a1, $a2, $a1
+	or	$a0, $a0, $a1
 	beqz	$a0, .LBB7_10
 # %bb.6:
-	pcalau12i	$a0, %pc_hi20(.L.str.33)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.33)
 	lu12i.w	$a0, 9
 	ori	$a0, $a0, 1472
 	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 11
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.d	$a0, $a0, 0
+	lu12i.w	$a1, 300100
+	ori	$a1, $a1, 1089
+	lu32i.d	$a1, -46764
+	lu52i.d	$a1, $a1, 1252
+	xor	$a0, $a0, $a1
+	lu12i.w	$a1, 9
+	ori	$a1, $a1, 1475
+	add.d	$a1, $sp, $a1
+	ld.d	$a1, $a1, 0
+	lu12i.w	$a2, 324757
+	ori	$a2, $a2, 1097
+	lu32i.d	$a2, -245426
+	lu52i.d	$a2, $a2, 4
+	xor	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB7_12
 # %bb.7:
 	ori	$a0, $zero, 65
@@ -953,25 +984,34 @@ parse_attribute:                        # @parse_attribute
 	add.d	$a0, $sp, $a0
 	pcaddu18i	$ra, %call36(stcopy)
 	jirl	$ra, $ra, 0
+	lu12i.w	$a1, 7
+	ori	$a1, $a1, 1152
+	add.d	$a1, $sp, $a1
+	ld.w	$a1, $a1, 0
+	lu12i.w	$a2, 7
+	ori	$a2, $a2, 1156
+	add.d	$a2, $sp, $a2
+	ld.hu	$a2, $a2, 0
+	lu12i.w	$a3, 300085
+	ori	$a3, $a3, 833
+	xor	$a1, $a1, $a3
+	xori	$a2, $a2, 73
+	or	$a1, $a1, $a2
 	st.d	$a0, $fp, 16
-	pcalau12i	$a0, %pc_hi20(.L.str.34)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.34)
-	lu12i.w	$a0, 7
-	ori	$a0, $a0, 1152
-	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 6
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB7_23
+	beqz	$a1, .LBB7_23
 # %bb.13:
-	pcalau12i	$a0, %pc_hi20(.L.str.31)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.31)
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 1152
 	add.d	$a0, $sp, $a0
-	ori	$a2, $zero, 5
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	ld.w	$a0, $a0, 0
+	lu12i.w	$a1, 7
+	ori	$a1, $a1, 1156
+	add.d	$a1, $sp, $a1
+	ld.bu	$a1, $a1, 0
+	lu12i.w	$a2, 308452
+	ori	$a2, $a2, 2380
+	xor	$a0, $a0, $a2
+	or	$a0, $a0, $a1
 	bnez	$a0, .LBB7_26
 # %bb.14:
 	pcaddu18i	$ra, %call36(vlalloc)

@@ -53,17 +53,17 @@ makedent:                               # @makedent
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_49
 # %bb.5:
-	ori	$a0, $zero, 2
-	move	$a1, $s0
-	blt	$s2, $a0, .LBB0_48
+	ori	$a1, $zero, 2
+	move	$a0, $s0
+	blt	$s2, $a1, .LBB0_48
 # %bb.6:                                # %.lr.ph33.i
 	ld.bu	$a3, $sp, 16
-	move	$a1, $s0
+	move	$a0, $s0
 	beqz	$a3, .LBB0_14
 # %bb.7:                                # %.lr.ph.i.preheader
-	addi.d	$a0, $sp, 16
+	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 2
-	move	$a1, $s0
+	move	$a0, $s0
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph.i
                                         # =>This Loop Header: Depth=1
@@ -71,9 +71,9 @@ makedent:                               # @makedent
 	ext.w.b	$a4, $a3
 	bltz	$a4, .LBB0_10
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=1
-	addi.d	$a4, $a1, 1
-	st.b	$a3, $a1, 0
-	move	$a1, $a4
+	addi.d	$a4, $a0, 1
+	st.b	$a3, $a0, 0
+	move	$a0, $a4
 	b	.LBB0_12
 	.p2align	4, , 16
 .LBB0_10:                               #   in Loop: Header=BB0_8 Depth=1
@@ -81,27 +81,26 @@ makedent:                               # @makedent
 	alsl.d	$a4, $a3, $a3, 2
 	alsl.d	$a3, $a4, $a3, 1
 	add.d	$a3, $s3, $a3
-	addi.d	$a4, $a3, 2022
-	addi.d	$a3, $a1, -1
+	addi.d	$a3, $a3, 2022
+	addi.d	$a0, $a0, -1
 	.p2align	4, , 16
 .LBB0_11:                               #   Parent Loop BB0_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a5, $a4, 0
-	addi.d	$a1, $a3, 1
-	addi.d	$a4, $a4, 1
-	st.b	$a5, $a3, 1
-	move	$a3, $a1
-	bnez	$a5, .LBB0_11
+	ld.bu	$a4, $a3, 0
+	addi.d	$a3, $a3, 1
+	st.b	$a4, $a0, 1
+	addi.d	$a0, $a0, 1
+	bnez	$a4, .LBB0_11
 .LBB0_12:                               # %.loopexit.i
                                         #   in Loop: Header=BB0_8 Depth=1
 	bgeu	$a2, $s2, .LBB0_48
 # %bb.13:                               #   in Loop: Header=BB0_8 Depth=1
-	addi.d	$a0, $a0, 1
-	ld.bu	$a3, $a0, 0
+	addi.d	$a1, $a1, 1
+	ld.bu	$a3, $a1, 0
 	addi.w	$s2, $s2, -1
 	bnez	$a3, .LBB0_8
 .LBB0_14:                               # %ichartostr.exit
-	st.b	$zero, $a1, 0
+	st.b	$zero, $a0, 0
 	ld.bu	$s5, $sp, 16
 	beqz	$s5, .LBB0_28
 # %bb.15:                               # %.lr.ph.preheader
@@ -265,7 +264,7 @@ makedent:                               # @makedent
 	beqz	$a3, .LBB0_46
 	b	.LBB0_29
 .LBB0_48:                               # %ichartostr.exit.thread
-	st.b	$zero, $a1, 0
+	st.b	$zero, $a0, 0
 .LBB0_49:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -512,17 +511,16 @@ ichartostr:                             # @ichartostr
 	alsl.d	$a5, $a4, $a4, 2
 	alsl.d	$a4, $a5, $a4, 1
 	add.d	$a4, $a3, $a4
-	addi.d	$a5, $a4, 2022
-	addi.d	$a4, $a0, -1
+	addi.d	$a4, $a4, 2022
+	addi.d	$a0, $a0, -1
 	.p2align	4, , 16
 .LBB2_7:                                #   Parent Loop BB2_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a6, $a5, 0
-	addi.d	$a0, $a4, 1
-	addi.d	$a5, $a5, 1
-	st.b	$a6, $a4, 1
-	move	$a4, $a0
-	bnez	$a6, .LBB2_7
+	ld.bu	$a5, $a4, 0
+	addi.d	$a4, $a4, 1
+	st.b	$a5, $a0, 1
+	addi.d	$a0, $a0, 1
+	bnez	$a5, .LBB2_7
 .LBB2_8:                                # %.loopexit
                                         #   in Loop: Header=BB2_4 Depth=1
 	ori	$a4, $zero, 1
@@ -594,17 +592,16 @@ ichartostr:                             # @ichartostr
 	alsl.d	$a7, $a6, $a6, 2
 	alsl.d	$a6, $a7, $a6, 1
 	add.d	$a6, $a3, $a6
-	addi.d	$a7, $a6, 2022
-	addi.d	$a6, $a0, -1
+	addi.d	$a6, $a6, 2022
+	addi.d	$a0, $a0, -1
 	.p2align	4, , 16
 .LBB2_22:                               #   Parent Loop BB2_13 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t0, $a7, 0
-	addi.d	$a0, $a6, 1
-	addi.d	$a7, $a7, 1
-	st.b	$t0, $a6, 1
-	move	$a6, $a0
-	bnez	$t0, .LBB2_22
+	ld.bu	$a7, $a6, 0
+	addi.d	$a6, $a6, 1
+	st.b	$a7, $a0, 1
+	addi.d	$a0, $a0, 1
+	bnez	$a7, .LBB2_22
 .LBB2_23:                               # %.loopexit.us
                                         #   in Loop: Header=BB2_13 Depth=1
 	ori	$a6, $zero, 1
@@ -775,17 +772,16 @@ chupcase:                               # @chupcase
 	alsl.d	$a4, $a3, $a3, 2
 	alsl.d	$a3, $a4, $a3, 1
 	add.d	$a3, $a2, $a3
-	addi.d	$a4, $a3, 2022
-	addi.d	$a3, $fp, -1
+	addi.d	$a3, $a3, 2022
+	addi.d	$fp, $fp, -1
 	.p2align	4, , 16
 .LBB4_13:                               #   Parent Loop BB4_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a5, $a4, 0
-	addi.d	$fp, $a3, 1
-	addi.d	$a4, $a4, 1
-	st.b	$a5, $a3, 1
-	move	$a3, $fp
-	bnez	$a5, .LBB4_13
+	ld.bu	$a4, $a3, 0
+	addi.d	$a3, $a3, 1
+	st.b	$a4, $fp, 1
+	addi.d	$fp, $fp, 1
+	bnez	$a4, .LBB4_13
 .LBB4_14:                               # %.loopexit.i
                                         #   in Loop: Header=BB4_10 Depth=1
 	addi.w	$a3, $a0, 0
@@ -1066,10 +1062,10 @@ combine_two_entries:                    # @combine_two_entries
 	and	$a1, $s2, $a0
 	lu12i.w	$a2, 65536
 	beq	$a1, $a2, .LBB7_12
-# %bb.6:                                # %acoversb.exit
+# %bb.6:
 	lu12i.w	$a2, 131072
 	bne	$a1, $a2, .LBB7_10
-# %bb.7:                                # %acoversb.exit
+# %bb.7:
 	and	$a0, $s3, $a0
 	beqz	$a0, .LBB7_12
 	b	.LBB7_10
@@ -1077,7 +1073,7 @@ combine_two_entries:                    # @combine_two_entries
 	lu12i.w	$a0, 196608
 	and	$a1, $s3, $a0
 	bne	$a1, $a0, .LBB7_12
-# %bb.9:
+# %bb.9:                                # %acoversb.exit
 	ld.d	$a0, $s1, 8
 	ld.d	$a1, $s0, 8
 	pcaddu18i	$ra, %call36(strcmp)
@@ -1126,11 +1122,11 @@ combine_two_entries:                    # @combine_two_entries
 	and	$a1, $s3, $a0
 	lu12i.w	$a2, 65536
 	beq	$a1, $a2, .LBB7_24
-# %bb.18:                               # %acoversb.exit46
+# %bb.18:
 	and	$a2, $s2, $a0
 	move	$a0, $zero
 	bnez	$a2, .LBB7_23
-# %bb.19:                               # %acoversb.exit46
+# %bb.19:
 	lu12i.w	$a2, 131072
 	beq	$a1, $a2, .LBB7_24
 	b	.LBB7_23
@@ -1138,7 +1134,7 @@ combine_two_entries:                    # @combine_two_entries
 	lu12i.w	$a0, 196608
 	and	$a1, $s2, $a0
 	bne	$a1, $a0, .LBB7_24
-# %bb.21:
+# %bb.21:                               # %acoversb.exit46
 	ld.d	$a0, $s0, 8
 	ld.d	$a1, $s1, 8
 	pcaddu18i	$ra, %call36(strcmp)
@@ -1399,17 +1395,16 @@ toutent:                                # @toutent
 	alsl.d	$a4, $a3, $a3, 2
 	alsl.d	$a3, $a4, $a3, 1
 	add.d	$a3, $fp, $a3
-	addi.d	$a4, $a3, 2022
-	addi.d	$a3, $a1, -1
+	addi.d	$a3, $a3, 2022
+	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB11_12:                              #   Parent Loop BB11_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a5, $a4, 0
-	addi.d	$a1, $a3, 1
-	addi.d	$a4, $a4, 1
-	st.b	$a5, $a3, 1
-	move	$a3, $a1
-	bnez	$a5, .LBB11_12
+	ld.bu	$a4, $a3, 0
+	addi.d	$a3, $a3, 1
+	st.b	$a4, $a1, 1
+	addi.d	$a1, $a1, 1
+	bnez	$a4, .LBB11_12
 .LBB11_13:                              # %.loopexit.i.i
                                         #   in Loop: Header=BB11_9 Depth=1
 	bgeu	$s6, $a0, .LBB11_72
@@ -1497,17 +1492,16 @@ toutent:                                # @toutent
 	alsl.d	$a4, $a3, $a3, 2
 	alsl.d	$a3, $a4, $a3, 1
 	add.d	$a3, $fp, $a3
-	addi.d	$a4, $a3, 2022
-	addi.d	$a3, $a1, -1
+	addi.d	$a3, $a3, 2022
+	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB11_30:                              #   Parent Loop BB11_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a5, $a4, 0
-	addi.d	$a1, $a3, 1
-	addi.d	$a4, $a4, 1
-	st.b	$a5, $a3, 1
-	move	$a3, $a1
-	bnez	$a5, .LBB11_30
+	ld.bu	$a4, $a3, 0
+	addi.d	$a3, $a3, 1
+	st.b	$a4, $a1, 1
+	addi.d	$a1, $a1, 1
+	bnez	$a4, .LBB11_30
 .LBB11_31:                              # %.loopexit.i.i63
                                         #   in Loop: Header=BB11_27 Depth=1
 	bgeu	$s6, $a0, .LBB11_71
@@ -1599,17 +1593,16 @@ toutent:                                # @toutent
 	alsl.d	$a4, $a3, $a3, 2
 	alsl.d	$a3, $a4, $a3, 1
 	add.d	$a3, $fp, $a3
-	addi.d	$a4, $a3, 2022
-	addi.d	$a3, $a1, -1
+	addi.d	$a3, $a3, 2022
+	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB11_49:                              #   Parent Loop BB11_46 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a5, $a4, 0
-	addi.d	$a1, $a3, 1
-	addi.d	$a4, $a4, 1
-	st.b	$a5, $a3, 1
-	move	$a3, $a1
-	bnez	$a5, .LBB11_49
+	ld.bu	$a4, $a3, 0
+	addi.d	$a3, $a3, 1
+	st.b	$a4, $a1, 1
+	addi.d	$a1, $a1, 1
+	bnez	$a4, .LBB11_49
 .LBB11_50:                              # %.loopexit.i.i35
                                         #   in Loop: Header=BB11_46 Depth=1
 	bgeu	$s6, $a0, .LBB11_73
@@ -1830,17 +1823,16 @@ ichartosstr:                            # @ichartosstr
 	alsl.d	$a6, $a5, $a5, 2
 	alsl.d	$a5, $a6, $a5, 1
 	add.d	$a5, $a4, $a5
-	addi.d	$a6, $a5, 2022
-	addi.d	$a5, $a1, -1
+	addi.d	$a5, $a5, 2022
+	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB12_6:                               #   Parent Loop BB12_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$a7, $a6, 0
-	addi.d	$a1, $a5, 1
-	addi.d	$a6, $a6, 1
-	st.b	$a7, $a5, 1
-	move	$a5, $a1
-	bnez	$a7, .LBB12_6
+	ld.bu	$a6, $a5, 0
+	addi.d	$a5, $a5, 1
+	st.b	$a6, $a1, 1
+	addi.d	$a1, $a1, 1
+	bnez	$a6, .LBB12_6
 .LBB12_7:                               # %.loopexit.i
                                         #   in Loop: Header=BB12_3 Depth=1
 	bgeu	$a3, $a2, .LBB12_26
@@ -1909,17 +1901,16 @@ ichartosstr:                            # @ichartosstr
 	alsl.d	$a7, $a6, $a6, 2
 	alsl.d	$a6, $a7, $a6, 1
 	add.d	$a6, $a4, $a6
-	addi.d	$a7, $a6, 2022
-	addi.d	$a6, $a1, -1
+	addi.d	$a6, $a6, 2022
+	addi.d	$a1, $a1, -1
 	.p2align	4, , 16
 .LBB12_20:                              #   Parent Loop BB12_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t0, $a7, 0
-	addi.d	$a1, $a6, 1
-	addi.d	$a7, $a7, 1
-	st.b	$t0, $a6, 1
-	move	$a6, $a1
-	bnez	$t0, .LBB12_20
+	ld.bu	$a7, $a6, 0
+	addi.d	$a6, $a6, 1
+	st.b	$a7, $a1, 1
+	addi.d	$a1, $a1, 1
+	bnez	$a7, .LBB12_20
 .LBB12_21:                              # %.loopexit.us.i
                                         #   in Loop: Header=BB12_11 Depth=1
 	bgeu	$a3, $a2, .LBB12_26

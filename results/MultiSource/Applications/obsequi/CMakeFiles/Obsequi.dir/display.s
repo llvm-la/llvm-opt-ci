@@ -1028,14 +1028,13 @@ check_board_sanity:                     # @check_board_sanity
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB1_14 Depth 4
 	move	$a0, $zero
-	alsl.d	$a1, $s2, $s3, 2
-	addi.d	$s1, $a1, 128
+	alsl.d	$s1, $s2, $s3, 2
 	.p2align	4, , 16
 .LBB1_14:                               #   Parent Loop BB1_5 Depth=1
                                         #     Parent Loop BB1_9 Depth=2
                                         #       Parent Loop BB1_13 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.w	$a1, $s1, 4
+	ld.w	$a1, $s1, 132
 	addi.w	$fp, $a0, 1
 	srl.w	$a0, $a1, $a0
 	andi	$a0, $a0, 2

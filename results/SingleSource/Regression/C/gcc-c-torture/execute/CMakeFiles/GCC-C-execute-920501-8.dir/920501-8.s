@@ -86,13 +86,49 @@ main:                                   # @main
 	st.d	$t0, $sp, 0
 	pcaddu18i	$ra, %call36(va)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	pcalau12i	$a1, %pc_hi20(buf)
-	addi.d	$a1, $a1, %pc_lo12(buf)
-	ori	$a2, $zero, 45
-	pcaddu18i	$ra, %call36(bcmp)
-	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(buf)
+	addi.d	$a0, $a0, %pc_lo12(buf)
+	ld.d	$a1, $a0, 0
+	lu12i.w	$a2, 189202
+	ori	$a2, $a2, 3121
+	lu32i.d	$a2, 12336
+	lu52i.d	$a2, $a2, 771
+	xor	$a1, $a1, $a2
+	ld.d	$a2, $a0, 8
+	lu12i.w	$a3, 205507
+	ori	$a3, $a3, 48
+	lu32i.d	$a3, -249044
+	lu52i.d	$a3, $a3, 834
+	xor	$a2, $a2, $a3
+	ld.d	$a3, $a0, 16
+	lu12i.w	$a4, 221891
+	ori	$a4, $a4, 1324
+	lu32i.d	$a4, -248020
+	lu52i.d	$a4, $a4, 898
+	xor	$a3, $a3, $a4
+	ld.d	$a4, $a0, 24
+	lu12i.w	$a5, 201411
+	ori	$a5, $a5, 2348
+	lu32i.d	$a5, 76848
+	lu52i.d	$a5, $a5, 787
+	xor	$a4, $a4, $a5
+	ld.d	$a5, $a0, 32
+	lu12i.w	$a6, 181027
+	ori	$a6, $a6, 300
+	lu32i.d	$a6, -249039
+	lu52i.d	$a6, $a6, 786
+	xor	$a5, $a5, $a6
+	ld.d	$a0, $a0, 37
+	lu12i.w	$a6, 213778
+	ori	$a6, $a6, 3123
+	lu32i.d	$a6, 340268
+	lu52i.d	$a6, $a6, 3
+	xor	$a0, $a0, $a6
+	or	$a1, $a1, $a2
+	or	$a2, $a3, $a4
+	or	$a0, $a5, $a0
+	or	$a1, $a1, $a2
+	or	$a0, $a1, $a0
 	bnez	$a0, .LBB1_2
 # %bb.1:
 	move	$a0, $zero

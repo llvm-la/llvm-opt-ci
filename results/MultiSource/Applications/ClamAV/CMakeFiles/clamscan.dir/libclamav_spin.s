@@ -34,42 +34,9 @@
 	.byte	227                             # 0xe3
 	.byte	226                             # 0xe2
 	.byte	225                             # 0xe1
-.LCPI0_1:
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_2:
+.LCPI0_1:
 	.byte	0                               # 0x0
 	.byte	255                             # 0xff
 	.byte	254                             # 0xfe
@@ -86,23 +53,6 @@
 	.byte	243                             # 0xf3
 	.byte	242                             # 0xf2
 	.byte	241                             # 0xf1
-.LCPI0_3:
-	.byte	15                              # 0xf
-	.byte	14                              # 0xe
-	.byte	13                              # 0xd
-	.byte	12                              # 0xc
-	.byte	11                              # 0xb
-	.byte	10                              # 0xa
-	.byte	9                               # 0x9
-	.byte	8                               # 0x8
-	.byte	7                               # 0x7
-	.byte	6                               # 0x6
-	.byte	5                               # 0x5
-	.byte	4                               # 0x4
-	.byte	3                               # 0x3
-	.byte	2                               # 0x2
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
 	.text
 	.globl	unspin
 	.p2align	5
@@ -225,36 +175,34 @@ unspin:                                 # @unspin
 	xvreplgr2vr.b	$xr1, $s8
 	xvadd.b	$xr0, $xr1, $xr0
 	ori	$a1, $a2, 451
-	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI0_1)
 	add.d	$a1, $s4, $a1
 	lu12i.w	$a5, 1
 	ori	$a2, $a5, 480
-	xvrepli.b	$xr2, -32
+	xvrepli.b	$xr1, -32
 	.p2align	4, , 16
 .LBB0_14:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvldx	$xr3, $s7, $a1
-	xvpermi.d	$xr4, $xr0, 78
-	xvshuf.b	$xr4, $xr0, $xr4, $xr1
-	xvxor.v	$xr3, $xr3, $xr4
-	xvstx	$xr3, $s7, $a1
-	xvadd.b	$xr0, $xr0, $xr2
+	xvldx	$xr2, $s7, $a1
+	xvpermi.d	$xr3, $xr0, 78
+	xvshuf4i.w	$xr3, $xr3, 27
+	xvshuf4i.b	$xr3, $xr3, 27
+	xvxor.v	$xr2, $xr2, $xr3
+	xvstx	$xr2, $s7, $a1
+	xvadd.b	$xr0, $xr0, $xr1
 	addi.d	$a2, $a2, -32
 	addi.d	$a1, $a1, -32
 	bnez	$a2, .LBB0_14
 # %bb.15:                               # %vec.epilog.ph
-	vreplgr2vr.b	$vr0, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_1)
+	vreplgr2vr.b	$vr1, $a0
+	vadd.b	$vr0, $vr1, $vr0
 	ori	$a0, $a5, 4083
-	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
-	vld	$vr2, $a1, %pc_lo12(.LCPI0_3)
-	vldx	$vr3, $fp, $a0
-	vadd.b	$vr0, $vr0, $vr1
+	vldx	$vr1, $fp, $a0
 	addi.d	$a1, $s8, 16
-	vshuf.b	$vr0, $vr0, $vr0, $vr2
-	vxor.v	$vr0, $vr3, $vr0
+	vshuf4i.w	$vr0, $vr0, 27
+	vshuf4i.b	$vr0, $vr0, 27
+	vxor.v	$vr0, $vr1, $vr0
 	ori	$a2, $a5, 4082
 	ldx.b	$a3, $fp, $a2
 	vstx	$vr0, $fp, $a0
@@ -1218,8 +1166,8 @@ exec86:                                 # @exec86
 	sub.d	$t7, $t2, $t8
 	bne	$s1, $t1, .LBB2_24
 # %bb.17:                               #   in Loop: Header=BB2_4 Depth=1
-	sll.w	$t8, $a3, $t8
-	srl.w	$a3, $a3, $t7
+	sll.d	$t8, $a3, $t8
+	srl.d	$a3, $a3, $t7
 	b	.LBB2_25
 .LBB2_18:                               #   in Loop: Header=BB2_4 Depth=1
 	bne	$a3, $a5, .LBB2_31
@@ -1241,8 +1189,8 @@ exec86:                                 # @exec86
 	sub.d	$s0, $s0, $a3
 	b	.LBB2_2
 .LBB2_24:                               #   in Loop: Header=BB2_4 Depth=1
-	srl.w	$t8, $a3, $t8
-	sll.w	$a3, $a3, $t7
+	srl.d	$t8, $a3, $t8
+	sll.d	$a3, $a3, $t7
 .LBB2_25:                               #   in Loop: Header=BB2_4 Depth=1
 	or	$s0, $a3, $t8
 	addi.w	$t5, $t5, 3

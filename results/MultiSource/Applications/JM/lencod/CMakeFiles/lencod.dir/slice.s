@@ -20,15 +20,14 @@ init_ref_pic_list_reordering:           # @init_ref_pic_list_reordering
 	.type	start_slice,@function
 start_slice:                            # @start_slice
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$a0, $a0, %got_pc_lo12(img)
 	ld.d	$a0, $a0, 0
@@ -38,9 +37,12 @@ start_slice:                            # @start_slice
 	ld.d	$a1, $s2, 0
 	ldptr.d	$a2, $a0, 14208
 	ori	$a3, $zero, 4016
-	ldx.w	$s4, $a1, $a3
-	ld.w	$s5, $a2, 4
+	ldx.w	$a1, $a1, $a3
+	ld.w	$a2, $a2, 4
 	ldptr.w	$a0, $a0, 14248
+	sltu	$a1, $zero, $a1
+	sltui	$a2, $a2, 1
+	and	$s4, $a2, $a1
 	pcaddu18i	$ra, %call36(RTPUpdateTimestamp)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s3, 24
@@ -72,15 +74,13 @@ start_slice:                            # @start_slice
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(cabac_new_slice)
 	jirl	$ra, $ra, 0
-	beqz	$s5, .LBB1_3
-	b	.LBB1_9
+	bnez	$s4, .LBB1_3
+	b	.LBB1_8
 .LBB1_2:
 	pcaddu18i	$ra, %call36(CAVLC_init)
 	jirl	$ra, $ra, 0
-	bnez	$s5, .LBB1_9
-.LBB1_3:
-	beqz	$s4, .LBB1_9
-# %bb.4:                                # %.peel.next
+	beqz	$s4, .LBB1_8
+.LBB1_3:                                # %.peel.next
 	ld.d	$a0, $s3, 24
 	ld.d	$s0, $a0, 104
 	st.w	$zero, $s0, 40
@@ -91,8 +91,8 @@ start_slice:                            # @start_slice
 	ld.d	$a1, $s2, 0
 	ldptr.w	$a1, $a1, 4008
 	add.d	$s1, $a0, $fp
-	bne	$a1, $s4, .LBB1_6
-# %bb.5:
+	bne	$a1, $s4, .LBB1_5
+# %bb.4:
 	ld.d	$a0, $s3, 24
 	ld.w	$a1, $s0, 4
 	addi.d	$fp, $a0, 112
@@ -110,11 +110,11 @@ start_slice:                            # @start_slice
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(cabac_new_slice)
 	jirl	$ra, $ra, 0
-	b	.LBB1_7
-.LBB1_6:
+	b	.LBB1_6
+.LBB1_5:
 	pcaddu18i	$ra, %call36(CAVLC_init)
 	jirl	$ra, $ra, 0
-.LBB1_7:                                # %.peel.next.1
+.LBB1_6:                                # %.peel.next.1
 	ld.d	$a0, $s3, 24
 	ld.d	$s0, $a0, 208
 	st.w	$zero, $s0, 40
@@ -125,8 +125,8 @@ start_slice:                            # @start_slice
 	ldptr.w	$a1, $a1, 4008
 	ori	$a2, $zero, 1
 	add.w	$fp, $a0, $s1
-	bne	$a1, $a2, .LBB1_12
-# %bb.8:
+	bne	$a1, $a2, .LBB1_11
+# %bb.7:
 	ld.d	$a0, $s3, 24
 	ld.w	$a1, $s0, 4
 	addi.d	$s1, $a0, 216
@@ -144,34 +144,33 @@ start_slice:                            # @start_slice
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(cabac_new_slice)
 	jirl	$ra, $ra, 0
-.LBB1_9:                                # %.loopexit
+.LBB1_8:                                # %.loopexit
 	ld.d	$a0, $s2, 0
 	ldptr.w	$a0, $a0, 4008
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB1_11
-.LBB1_10:
+	bne	$a0, $a1, .LBB1_10
+.LBB1_9:
 	pcaddu18i	$ra, %call36(init_contexts)
 	jirl	$ra, $ra, 0
-.LBB1_11:
+.LBB1_10:
 	move	$a0, $fp
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
-.LBB1_12:
+.LBB1_11:
 	pcaddu18i	$ra, %call36(CAVLC_init)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 0
 	ldptr.w	$a0, $a0, 4008
 	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB1_10
-	b	.LBB1_11
+	beq	$a0, $a1, .LBB1_9
+	b	.LBB1_10
 .Lfunc_end1:
 	.size	start_slice, .Lfunc_end1-start_slice
                                         # -- End function
@@ -236,7 +235,7 @@ terminate_slice:                        # @terminate_slice
 	ori	$a0, $a0, 2731
 	lu32i.d	$a0, 0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB2_6
 	.p2align	4, , 16
 .LBB2_4:                                #   in Loop: Header=BB2_6 Depth=1
@@ -300,8 +299,8 @@ terminate_slice:                        # @terminate_slice
 	slli.d	$a2, $a2, 8
 	mul.d	$a1, $a3, $a1
 	mul.d	$a0, $a1, $a0
-	move	$s5, $s4
-	move	$s4, $s0
+	move	$s4, $s5
+	move	$s5, $s0
 	move	$s0, $s6
 	alsl.w	$s6, $a0, $a2, 1
 	pcaddu18i	$ra, %call36(get_pic_bin_count)
@@ -313,9 +312,9 @@ terminate_slice:                        # @terminate_slice
 	slli.d	$a0, $a0, 5
 	mul.d	$a2, $s6, $a2
 	move	$s6, $s0
-	move	$s0, $s4
-	move	$s4, $s5
-	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	move	$s0, $s5
+	move	$s5, $s4
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
 	alsl.d	$a2, $a2, $a2, 1
 	sub.d	$a0, $a0, $a2
 	addi.w	$a2, $a0, 1023
@@ -483,20 +482,18 @@ encode_one_slice:                       # @encode_one_slice
 	ld.d	$s3, $a1, 0
 	st.d	$a0, $s1, 40
 .LBB3_11:
-	ori	$a0, $zero, 4016
-	ld.d	$a1, $s8, 0
-	ldx.w	$a0, $s3, $a0
-	ldptr.d	$a1, $a1, 14208
-	sltui	$a2, $a0, 1
-	ori	$a3, $zero, 3
+	ld.d	$a0, $s8, 0
+	ldptr.d	$a0, $a0, 14208
+	ori	$a1, $zero, 4016
+	ldx.w	$a1, $s3, $a1
+	ld.w	$a0, $a0, 4
+	sltu	$a2, $zero, $a1
+	sltui	$a0, $a0, 1
+	and	$a2, $a0, $a2
+	ori	$a3, $zero, 1
 	masknez	$a3, $a3, $a2
-	ld.w	$a1, $a1, 4
-	ori	$a4, $zero, 1
+	ori	$a4, $zero, 3
 	maskeqz	$a2, $a4, $a2
-	or	$a2, $a2, $a3
-	sltui	$a1, $a1, 1
-	maskeqz	$a2, $a2, $a1
-	masknez	$a3, $a4, $a1
 	or	$s3, $a2, $a3
 	st.w	$s3, $s1, 16
 	pcalau12i	$a2, %got_pc_hi20(assignSE2partition)
@@ -504,16 +501,16 @@ encode_one_slice:                       # @encode_one_slice
 	pcalau12i	$a3, %got_pc_hi20(assignSE2partition_NoDP)
 	ld.d	$a3, $a3, %got_pc_lo12(assignSE2partition_NoDP)
 	st.d	$a3, $a2, 0
-	addi.d	$a0, $a0, -1
-	sltui	$a0, $a0, 1
-	masknez	$a4, $a3, $a0
+	addi.d	$a1, $a1, -1
+	sltui	$a1, $a1, 1
+	masknez	$a4, $a3, $a1
 	pcalau12i	$a5, %got_pc_hi20(assignSE2partition_DP)
 	ld.d	$a5, $a5, %got_pc_lo12(assignSE2partition_DP)
-	maskeqz	$a0, $a5, $a0
-	or	$a0, $a0, $a4
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a3, $a1
-	or	$a0, $a0, $a1
+	maskeqz	$a1, $a5, $a1
+	or	$a1, $a1, $a4
+	maskeqz	$a1, $a1, $a0
+	masknez	$a0, $a3, $a0
+	or	$a0, $a1, $a0
 	st.d	$a0, $a2, 8
 	ori	$a1, $zero, 104
 	move	$a0, $s3
@@ -2827,12 +2824,12 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	blt	$a0, $a1, .LBB6_2
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB6_3 Depth=1
-	sub.w	$s4, $zero, $a0
+	sub.w	$s7, $zero, $a0
 	slli.d	$a0, $a0, 3
 	sub.d	$s8, $zero, $a0
 	slli.d	$a0, $s2, 3
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	move	$s7, $s4
+	move	$s4, $s7
 	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB6_7
 	.p2align	4, , 16
@@ -3295,28 +3292,19 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	bne	$s2, $a5, .LBB6_77
 .LBB6_79:                               #   in Loop: Header=BB6_7 Depth=2
 	ldptr.w	$a1, $s0, 2964
-	bne	$a1, $s5, .LBB6_82
+	bne	$a1, $s5, .LBB6_81
 # %bb.80:                               #   in Loop: Header=BB6_7 Depth=2
 	ldptr.w	$a1, $a4, 14364
 	sltui	$a1, $a1, 1
 	movgr2cf	$fcc0, $a1
 	vldi	$vr1, -912
 	fsel	$fa1, $fa1, $fa4, $fcc0
-	ldptr.w	$a1, $s0, 2968
 	fmul.d	$fa0, $fa0, $fa1
-	fstx.d	$fa0, $fp, $s8
-	beq	$a1, $s5, .LBB6_83
 .LBB6_81:                               #   in Loop: Header=BB6_7 Depth=2
-	pcalau12i	$a1, %pc_hi20(.LCPI6_5)
-	fld.d	$fa1, $a1, %pc_lo12(.LCPI6_5)
-	b	.LBB6_84
-.LBB6_82:                               #   in Loop: Header=BB6_7 Depth=2
-	vldi	$vr1, -912
 	ldptr.w	$a1, $s0, 2968
-	fmul.d	$fa0, $fa0, $fa1
 	fstx.d	$fa0, $fp, $s8
-	bne	$a1, $s5, .LBB6_81
-.LBB6_83:                               #   in Loop: Header=BB6_7 Depth=2
+	bne	$a1, $s5, .LBB6_83
+# %bb.82:                               #   in Loop: Header=BB6_7 Depth=2
 	ldptr.w	$a1, $a4, 14364
 	pcalau12i	$a2, %pc_hi20(gop_structure)
 	ld.d	$a2, $a2, %pc_lo12(gop_structure)
@@ -3335,6 +3323,10 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	fsel	$fa1, $fa1, $fa2, $fcc0
 	vldi	$vr2, -912
 	fsub.d	$fa1, $fa2, $fa1
+	b	.LBB6_84
+.LBB6_83:                               #   in Loop: Header=BB6_7 Depth=2
+	pcalau12i	$a1, %pc_hi20(.LCPI6_5)
+	fld.d	$fa1, $a1, %pc_lo12(.LCPI6_5)
 .LBB6_84:                               #   in Loop: Header=BB6_7 Depth=2
 	ldptr.d	$s5, $a4, 15488
 	ldptr.d	$s6, $a4, 15496
@@ -3715,10 +3707,10 @@ SetLagrangianMultipliers:               # @SetLagrangianMultipliers
 	ldx.d	$s6, $a2, $a5
 	move	$s2, $a5
 	ldx.d	$s3, $a3, $a5
-	sub.w	$s4, $zero, $a0
+	sub.w	$s8, $zero, $a0
 	slli.d	$a0, $a0, 3
 	sub.d	$s7, $zero, $a0
-	move	$s8, $s4
+	move	$s4, $s8
 	b	.LBB6_135
 	.p2align	4, , 16
 .LBB6_132:                              #   in Loop: Header=BB6_135 Depth=2

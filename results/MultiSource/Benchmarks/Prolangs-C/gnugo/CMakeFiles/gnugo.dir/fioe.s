@@ -128,8 +128,7 @@ fioe:                                   # @fioe
 	ld.bu	$a1, $a0, 341
 	bne	$a2, $a1, .LBB0_36
 # %bb.27:
-	addi.d	$a0, $a0, 342
-	ld.bu	$a1, $a0, 1
+	ld.bu	$a1, $a0, 343
 	ori	$a0, $zero, 1
 	beq	$a2, $a1, .LBB0_6
 	b	.LBB0_36

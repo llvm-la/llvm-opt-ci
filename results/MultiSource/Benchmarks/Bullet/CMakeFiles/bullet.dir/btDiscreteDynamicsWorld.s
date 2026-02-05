@@ -1215,27 +1215,24 @@ GCC_except_table8:
 _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -368
-	.cfi_def_cfa_offset 368
-	st.d	$ra, $sp, 360                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 280                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 272                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 264                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 256                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 248                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 240                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 232                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 224                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 216                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -336
+	.cfi_def_cfa_offset 336
+	st.d	$ra, $sp, 328                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 264                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 256                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 248                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 240                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 232                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 224                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 216                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 208                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1244,17 +1241,14 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	.cfi_offset 31, -88
-	.cfi_offset 56, -96
-	.cfi_offset 57, -104
-	.cfi_offset 58, -112
-	.cfi_offset 59, -120
-	.cfi_offset 60, -128
-	.cfi_offset 61, -136
-	.cfi_offset 62, -144
-	.cfi_offset 63, -152
+	.cfi_offset 56, -72
+	.cfi_offset 57, -80
+	.cfi_offset 58, -88
+	.cfi_offset 59, -96
+	.cfi_offset 60, -104
+	.cfi_offset 61, -112
+	.cfi_offset 62, -120
+	.cfi_offset 63, -128
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a0, 32
@@ -1294,11 +1288,11 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 .LBB9_3:
 	lu12i.w	$a0, 260096
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 156
-	st.w	$a0, $sp, 172
+	vst	$vr0, $sp, 148
+	st.w	$a0, $sp, 164
 	ld.d	$a1, $s0, 24
-	vst	$vr0, $sp, 176
-	st.d	$a0, $sp, 192
+	vst	$vr0, $sp, 168
+	st.d	$a0, $sp, 184
 	fld.s	$fa0, $s0, 352
 	fld.s	$fa1, $a1, 12
 	fld.s	$fa2, $s0, 348
@@ -1326,16 +1320,16 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fadd.s	$fa3, $fa6, $fa3
 	fmadd.s	$fa0, $fa2, $fa4, $fa0
 	fadd.s	$fa0, $fa5, $fa0
-	fst.s	$fa1, $sp, 200
+	fst.s	$fa1, $sp, 192
 	ld.d	$a1, $fp, 0
-	fst.s	$fa3, $sp, 204
-	fst.s	$fa0, $sp, 208
-	st.w	$zero, $sp, 212
+	fst.s	$fa3, $sp, 196
+	fst.s	$fa0, $sp, 200
+	st.w	$zero, $sp, 204
 	ld.d	$a1, $a1, 32
-	st.w	$a0, $sp, 152
+	st.w	$a0, $sp, 144
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -1367,17 +1361,17 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fadd.s	$fa3, $fa6, $fa3
 	fmadd.s	$fa0, $fa2, $fa4, $fa0
 	fadd.s	$fa0, $fa5, $fa0
-	fst.s	$fa1, $sp, 200
-	fst.s	$fa3, $sp, 204
-	fst.s	$fa0, $sp, 208
-	st.w	$zero, $sp, 212
+	fst.s	$fa1, $sp, 192
+	fst.s	$fa3, $sp, 196
+	fst.s	$fa0, $sp, 200
+	st.w	$zero, $sp, 204
 	beqz	$s2, .LBB9_36
 # %bb.4:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 32
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -1385,18 +1379,18 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 .LBB9_5:
 	xvld	$xr0, $s0, 844
 	xvld	$xr1, $s0, 876
-	xvst	$xr0, $sp, 152
-	addi.d	$s3, $sp, 168
-	addi.d	$s4, $sp, 184
-	xvst	$xr1, $sp, 184
-	addi.d	$s5, $sp, 200
+	xvst	$xr0, $sp, 144
+	addi.d	$s3, $sp, 160
+	addi.d	$s4, $sp, 176
+	xvst	$xr1, $sp, 176
+	addi.d	$s5, $sp, 192
 	bnez	$s2, .LBB9_16
 # %bb.6:                                # %.critedge238
 	vld	$vr0, $s0, 908
 	vld	$vr1, $s0, 924
 	vld	$vr2, $s0, 940
 	vld	$vr3, $s0, 956
-	vst	$vr0, $sp, 152
+	vst	$vr0, $sp, 144
 	vst	$vr1, $s3, 0
 	vst	$vr2, $s4, 0
 	vst	$vr3, $s5, 0
@@ -1472,20 +1466,20 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa4
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fa0, $sp, 152
-	fst.s	$fa1, $sp, 156
-	fst.s	$ft5, $sp, 160
-	st.w	$zero, $sp, 164
-	fst.s	$ft10, $sp, 168
-	fst.s	$ft11, $sp, 172
-	fst.s	$ft14, $sp, 176
-	st.w	$zero, $sp, 180
-	fst.s	$fa5, $sp, 184
-	fst.s	$fa7, $sp, 188
-	fst.s	$ft0, $sp, 192
-	st.w	$zero, $sp, 196
-	st.d	$a0, $sp, 200
-	st.d	$a1, $sp, 208
+	fst.s	$fa0, $sp, 144
+	fst.s	$fa1, $sp, 148
+	fst.s	$ft5, $sp, 152
+	st.w	$zero, $sp, 156
+	fst.s	$ft10, $sp, 160
+	fst.s	$ft11, $sp, 164
+	fst.s	$ft14, $sp, 168
+	st.w	$zero, $sp, 172
+	fst.s	$fa5, $sp, 176
+	fst.s	$fa7, $sp, 180
+	fst.s	$ft0, $sp, 184
+	st.w	$zero, $sp, 188
+	st.d	$a0, $sp, 192
+	st.d	$a1, $sp, 200
 	bnez	$s2, .LBB9_18
 # %bb.8:                                # %.critedge234
 	ld.d	$a0, $s0, 32
@@ -1557,37 +1551,37 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa4
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fa0, $sp, 152
-	fst.s	$fa1, $sp, 156
-	fst.s	$ft5, $sp, 160
-	st.w	$zero, $sp, 164
-	fst.s	$ft10, $sp, 168
-	fst.s	$ft11, $sp, 172
-	fst.s	$ft14, $sp, 176
-	st.w	$zero, $sp, 180
-	fst.s	$fa5, $sp, 184
-	fst.s	$fa7, $sp, 188
-	fst.s	$ft0, $sp, 192
-	st.w	$zero, $sp, 196
-	st.d	$a0, $sp, 200
-	st.d	$a1, $sp, 208
+	fst.s	$fa0, $sp, 144
+	fst.s	$fa1, $sp, 148
+	fst.s	$ft5, $sp, 152
+	st.w	$zero, $sp, 156
+	fst.s	$ft10, $sp, 160
+	fst.s	$ft11, $sp, 164
+	fst.s	$ft14, $sp, 168
+	st.w	$zero, $sp, 172
+	fst.s	$fa5, $sp, 176
+	fst.s	$fa7, $sp, 180
+	fst.s	$ft0, $sp, 184
+	st.w	$zero, $sp, 188
+	st.d	$a0, $sp, 192
+	st.d	$a1, $sp, 200
 	bnez	$s1, .LBB9_19
 	b	.LBB9_36
 .LBB9_9:
 	xvld	$xr0, $s0, 1040
 	xvld	$xr1, $s0, 1072
-	xvst	$xr0, $sp, 152
-	addi.d	$s3, $sp, 168
-	addi.d	$s5, $sp, 184
-	xvst	$xr1, $sp, 184
-	addi.d	$s4, $sp, 200
+	xvst	$xr0, $sp, 144
+	addi.d	$s3, $sp, 160
+	addi.d	$s5, $sp, 176
+	xvst	$xr1, $sp, 176
+	addi.d	$s4, $sp, 192
 	beqz	$s2, .LBB9_11
 # %bb.10:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 32
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -1599,39 +1593,35 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	vst	$vr1, $s5, 0
 	vst	$vr2, $s4, 0
 	ld.d	$a1, $a0, 32
-	vst	$vr0, $sp, 152
+	vst	$vr0, $sp, 144
 	vst	$vr3, $s3, 0
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
 .LBB9_11:                               # %.critedge236
 	beqz	$s1, .LBB9_36
 # %bb.12:
-	addi.d	$s7, $s0, 1040
-	addi.d	$s2, $s0, 1056
-	addi.d	$s6, $s0, 1072
-	vld	$vr0, $s7, 0
-	vld	$vr1, $s2, 0
-	addi.d	$s8, $s0, 1088
-	vld	$vr2, $s6, 0
-	vst	$vr0, $sp, 152
+	vld	$vr0, $s0, 1040
+	vld	$vr1, $s0, 1056
+	vld	$vr2, $s0, 1072
+	vst	$vr0, $sp, 144
 	vst	$vr1, $s3, 0
-	vld	$vr0, $s8, 0
+	vld	$vr0, $s0, 1088
 	vst	$vr2, $s5, 0
-	ld.w	$a0, $sp, 176
-	ld.wu	$a1, $sp, 160
-	vst	$vr0, $s4, 0
-	ld.wu	$a2, $sp, 192
-	slli.d	$a0, $a0, 32
-	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 136
 	ld.w	$a0, $sp, 168
 	ld.wu	$a1, $sp, 152
-	st.d	$a2, $sp, 144
+	vst	$vr0, $s4, 0
 	ld.wu	$a2, $sp, 184
+	slli.d	$a0, $a0, 32
+	or	$a0, $a0, $a1
+	st.d	$a0, $sp, 128
+	ld.w	$a0, $sp, 160
+	ld.wu	$a1, $sp, 144
+	st.d	$a2, $sp, 136
+	ld.wu	$a2, $sp, 176
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a1
 	fld.s	$fs1, $s0, 924
@@ -1641,8 +1631,8 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fld.s	$fs4, $s0, 984
 	ld.d	$a1, $a1, 32
 	addi.d	$s1, $s0, 1152
-	st.d	$a0, $sp, 120
-	st.d	$a2, $sp, 128
+	st.d	$a0, $sp, 112
+	st.d	$a2, $sp, 120
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	lu12i.w	$a1, 259686
@@ -1651,10 +1641,10 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fmul.s	$fa0, $fs0, $fa0
 	vrepli.b	$vr1, 0
 	vst	$vr1, $sp, 16                   # 16-byte Folded Spill
-	vst	$vr1, $sp, 104
-	addi.d	$a2, $sp, 136
-	addi.d	$a3, $sp, 120
-	addi.d	$a4, $sp, 104
+	vst	$vr1, $sp, 96
+	addi.d	$a2, $sp, 128
+	addi.d	$a3, $sp, 112
+	addi.d	$a4, $sp, 96
 	vldi	$vr5, -1244
 	move	$a1, $s1
 	fmov.s	$fa1, $fs1
@@ -1663,13 +1653,13 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fmov.s	$fa4, $fs4
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw15drawSpherePatchERK9btVector3S2_S2_fffffS2_f)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 172
-	ld.wu	$a1, $sp, 156
-	ld.wu	$a2, $sp, 188
+	ld.w	$a0, $sp, 164
+	ld.wu	$a1, $sp, 148
+	ld.wu	$a2, $sp, 180
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 120
-	st.d	$a2, $sp, 128
+	st.d	$a0, $sp, 112
+	st.d	$a2, $sp, 120
 	ori	$a1, $zero, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK23btGeneric6DofConstraint8getAngleEi)
@@ -1696,36 +1686,36 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	pcaddu18i	$ra, %call36(sinf)
 	jirl	$ra, $ra, 0
 	fmul.s	$fa1, $fs3, $fs4
-	fld.s	$fa2, $sp, 124
-	fld.s	$fa3, $sp, 120
+	fld.s	$fa2, $sp, 116
+	fld.s	$fa3, $sp, 112
 	fmul.s	$fa4, $fs3, $fa0
-	fld.s	$fa5, $sp, 128
+	fld.s	$fa5, $sp, 120
 	fmul.s	$fa4, $fa4, $fa2
 	fmadd.s	$fa1, $fa1, $fa3, $fa4
 	fneg.s	$fa4, $fs1
 	fmadd.s	$fa1, $fa4, $fa5, $fa1
-	fst.s	$fa1, $sp, 104
+	fst.s	$fa1, $sp, 96
 	fneg.s	$fa1, $fa0
 	fmul.s	$fa4, $fs4, $fa2
 	fmadd.s	$fa1, $fa1, $fa3, $fa4
-	fst.s	$fa1, $sp, 108
+	fst.s	$fa1, $sp, 100
 	fmul.s	$fa1, $fs1, $fs4
 	fmul.s	$fa0, $fs1, $fa0
 	fmul.s	$fa0, $fa0, $fa2
 	fmadd.s	$fa0, $fa1, $fa3, $fa0
 	fmadd.s	$fa0, $fs3, $fa5, $fa0
-	fst.s	$fa0, $sp, 112
+	fst.s	$fa0, $sp, 104
 	vld	$vr0, $s0, 1104
 	vld	$vr1, $s0, 1120
 	vld	$vr2, $s0, 1136
 	vld	$vr3, $s0, 1152
-	vst	$vr0, $sp, 152
+	vst	$vr0, $sp, 144
 	vst	$vr1, $s3, 0
 	vst	$vr2, $s5, 0
 	vst	$vr3, $s4, 0
-	ld.wu	$a0, $sp, 152
-	ld.w	$a1, $sp, 168
-	ld.wu	$a2, $sp, 184
+	ld.wu	$a0, $sp, 144
+	ld.w	$a1, $sp, 160
+	ld.wu	$a2, $sp, 176
 	lu12i.w	$a3, -524288
 	lu32i.d	$a3, 0
 	xor	$a0, $a0, $a3
@@ -1735,9 +1725,9 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fld.s	$fs2, $s0, 872
 	or	$a0, $a1, $a0
 	xor	$a1, $a2, $a3
-	st.d	$a0, $sp, 88
+	st.d	$a0, $sp, 80
 	fcmp.cule.s	$fcc0, $fs1, $fs2
-	st.d	$a1, $sp, 96
+	st.d	$a1, $sp, 88
 	bcnez	$fcc0, .LBB9_32
 # %bb.13:
 	ld.d	$a0, $fp, 0
@@ -1745,16 +1735,16 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 72
+	vst	$vr0, $sp, 64
 	lu12i.w	$a1, -260976
 	ori	$a1, $a1, 4059
 	movgr2fr.w	$fa2, $a1
 	lu12i.w	$a1, 263312
 	ori	$a1, $a1, 4059
 	movgr2fr.w	$fa3, $a1
-	addi.d	$a2, $sp, 88
-	addi.d	$a3, $sp, 104
-	addi.d	$a4, $sp, 72
+	addi.d	$a2, $sp, 80
+	addi.d	$a3, $sp, 96
+	addi.d	$a4, $sp, 64
 	vldi	$vr4, -1244
 	move	$a1, $s1
 	fmov.s	$fa0, $fs0
@@ -1831,20 +1821,20 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa4
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fa0, $sp, 152
-	fst.s	$fa1, $sp, 156
-	fst.s	$ft5, $sp, 160
-	st.w	$zero, $sp, 164
-	fst.s	$ft10, $sp, 168
-	fst.s	$ft11, $sp, 172
-	fst.s	$ft14, $sp, 176
-	st.w	$zero, $sp, 180
-	fst.s	$fa5, $sp, 184
-	fst.s	$fa7, $sp, 188
-	fst.s	$ft0, $sp, 192
-	st.w	$zero, $sp, 196
-	st.d	$a0, $sp, 200
-	st.d	$a1, $sp, 208
+	fst.s	$fa0, $sp, 144
+	fst.s	$fa1, $sp, 148
+	fst.s	$ft5, $sp, 152
+	st.w	$zero, $sp, 156
+	fst.s	$ft10, $sp, 160
+	fst.s	$ft11, $sp, 164
+	fst.s	$ft14, $sp, 168
+	st.w	$zero, $sp, 172
+	fst.s	$fa5, $sp, 176
+	fst.s	$fa7, $sp, 180
+	fst.s	$ft0, $sp, 184
+	st.w	$zero, $sp, 188
+	st.d	$a0, $sp, 192
+	st.d	$a1, $sp, 200
 	bnez	$s2, .LBB9_25
 # %bb.15:                               # %.critedge
 	ld.d	$a0, $s0, 32
@@ -1916,27 +1906,27 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa4
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fa0, $sp, 152
-	fst.s	$fa1, $sp, 156
-	fst.s	$ft5, $sp, 160
-	st.w	$zero, $sp, 164
-	fst.s	$ft10, $sp, 168
-	fst.s	$ft11, $sp, 172
-	fst.s	$ft14, $sp, 176
-	st.w	$zero, $sp, 180
-	fst.s	$fa5, $sp, 184
-	fst.s	$fa7, $sp, 188
-	fst.s	$ft0, $sp, 192
-	st.w	$zero, $sp, 196
-	st.d	$a0, $sp, 200
-	st.d	$a1, $sp, 208
+	fst.s	$fa0, $sp, 144
+	fst.s	$fa1, $sp, 148
+	fst.s	$ft5, $sp, 152
+	st.w	$zero, $sp, 156
+	fst.s	$ft10, $sp, 160
+	fst.s	$ft11, $sp, 164
+	fst.s	$ft14, $sp, 168
+	st.w	$zero, $sp, 172
+	fst.s	$fa5, $sp, 176
+	fst.s	$fa7, $sp, 180
+	fst.s	$ft0, $sp, 184
+	st.w	$zero, $sp, 188
+	st.d	$a0, $sp, 192
+	st.d	$a1, $sp, 200
 	b	.LBB9_26
 .LBB9_16:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 32
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -1948,11 +1938,11 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	vst	$vr1, $s4, 0
 	vst	$vr2, $s5, 0
 	ld.d	$a1, $a0, 32
-	vst	$vr0, $sp, 152
+	vst	$vr0, $sp, 144
 	vst	$vr3, $s3, 0
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -1989,8 +1979,8 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	movfr2gr.s	$a1, $fa4
 	fld.s	$fa4, $s0, 236
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $sp, 136
-	st.d	$a1, $sp, 144
+	st.d	$a0, $sp, 128
+	st.d	$a1, $sp, 136
 	fmadd.s	$fa7, $fs5, $fa4, $fa7
 	fmadd.s	$fa0, $fa0, $fs1, $fa7
 	fadd.s	$fa0, $fa3, $fa0
@@ -2004,29 +1994,29 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	ld.d	$a1, $fp, 0
 	fmadd.s	$fa0, $fa2, $fs1, $fa3
 	fadd.s	$fa0, $fa6, $fa0
-	st.d	$a0, $sp, 120
+	st.d	$a0, $sp, 112
 	ld.d	$a1, $a1, 32
 	movfr2gr.s	$a0, $fa0
 	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 128
+	st.d	$a0, $sp, 120
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vst	$vr0, $sp, 104
+	vst	$vr0, $sp, 96
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
-	addi.d	$a1, $sp, 136
-	addi.d	$a2, $sp, 120
-	addi.d	$a3, $sp, 104
+	addi.d	$a1, $sp, 128
+	addi.d	$a2, $sp, 112
+	addi.d	$a3, $sp, 96
 	jirl	$ra, $a4, 0
 	movfr2gr.s	$a0, $fs5
 	movfr2gr.s	$a1, $fs6
 	movfr2gr.s	$a2, $fs7
 	bstrins.d	$a0, $a1, 63, 32
 	bstrpick.d	$a1, $a2, 31, 0
-	st.d	$a0, $sp, 104
-	st.d	$a1, $sp, 112
+	st.d	$a0, $sp, 96
+	st.d	$a1, $sp, 104
 	movfr2gr.s	$a0, $fs2
 	movfr2gr.s	$a1, $fs3
 	movfr2gr.s	$a2, $fs4
@@ -2036,16 +2026,16 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fld.s	$fs1, $s0, 240
 	fld.s	$fs2, $s0, 244
 	ld.d	$a1, $a1, 32
-	st.d	$a0, $sp, 88
-	st.d	$a2, $sp, 96
+	st.d	$a0, $sp, 80
+	st.d	$a2, $sp, 88
 	addi.d	$s0, $s0, 956
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 72
-	addi.d	$a2, $sp, 104
-	addi.d	$a3, $sp, 88
-	addi.d	$a4, $sp, 72
+	vst	$vr0, $sp, 64
+	addi.d	$a2, $sp, 96
+	addi.d	$a3, $sp, 80
+	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 1
 	vldi	$vr4, -1244
 	move	$a1, $s0
@@ -2059,7 +2049,7 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	ld.d	$a1, $a0, 32
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -2132,31 +2122,31 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa5
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fa0, $sp, 152
-	fst.s	$fa1, $sp, 156
-	fst.s	$ft10, $sp, 160
-	st.w	$zero, $sp, 164
-	fst.s	$ft11, $sp, 168
-	fst.s	$fa6, $sp, 184
-	fst.s	$ft0, $sp, 188
-	st.d	$a0, $sp, 200
+	fst.s	$fa0, $sp, 144
+	fst.s	$fa1, $sp, 148
+	fst.s	$ft10, $sp, 152
+	st.w	$zero, $sp, 156
+	fst.s	$ft11, $sp, 160
+	fst.s	$fa6, $sp, 176
+	fst.s	$ft0, $sp, 180
+	st.d	$a0, $sp, 192
 	ld.d	$a0, $fp, 0
-	fst.s	$ft1, $sp, 192
-	st.w	$zero, $sp, 196
-	st.d	$a1, $sp, 208
+	fst.s	$ft1, $sp, 184
+	st.w	$zero, $sp, 188
+	st.d	$a1, $sp, 200
 	ld.d	$a1, $a0, 32
-	fst.s	$fa4, $sp, 172
-	fst.s	$ft14, $sp, 176
-	st.w	$zero, $sp, 180
+	fst.s	$fa4, $sp, 164
+	fst.s	$ft14, $sp, 168
+	st.w	$zero, $sp, 172
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
 	beqz	$s1, .LBB9_36
 .LBB9_19:
-	addi.d	$s1, $sp, 200
+	addi.d	$s1, $sp, 192
 	lu12i.w	$a0, 265260
 	ori	$a0, $a0, 1883
 	movgr2fr.w	$fa0, $a0
@@ -2165,22 +2155,22 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	pcaddu18i	$ra, %call36(_ZNK21btConeTwistConstraint16GetPointForAngleEff)
 	jirl	$ra, $ra, 0
 	move	$s2, $zero
-	fld.s	$fa0, $sp, 152
-	fld.s	$fa1, $sp, 156
+	fld.s	$fa0, $sp, 144
+	fld.s	$fa1, $sp, 148
 	movgr2fr.w	$fa2, $a0
 	srli.d	$a0, $a0, 32
 	movgr2fr.w	$fa3, $a0
 	fmul.s	$fa1, $fa1, $fa3
-	fld.s	$fa4, $sp, 160
-	fld.s	$fa5, $sp, 200
+	fld.s	$fa4, $sp, 152
+	fld.s	$fa5, $sp, 192
 	fmadd.s	$fa0, $fa0, $fa2, $fa1
 	movgr2fr.w	$fa1, $a1
 	fmadd.s	$fa0, $fa4, $fa1, $fa0
 	fadd.s	$fa0, $fa0, $fa5
-	fld.s	$fa4, $sp, 172
-	fld.s	$fa5, $sp, 168
-	fld.s	$fa6, $sp, 176
-	fld.s	$fa7, $sp, 204
+	fld.s	$fa4, $sp, 164
+	fld.s	$fa5, $sp, 160
+	fld.s	$fa6, $sp, 168
+	fld.s	$fa7, $sp, 196
 	fmul.s	$fa4, $fa4, $fa3
 	fmadd.s	$fa4, $fa5, $fa2, $fa4
 	fmadd.s	$fa4, $fa6, $fa1, $fa4
@@ -2188,18 +2178,18 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	movfr2gr.s	$a0, $fa0
 	movfr2gr.s	$a1, $fa4
 	bstrins.d	$a0, $a1, 63, 32
-	fld.s	$fa0, $sp, 188
-	fld.s	$fa4, $sp, 184
-	fld.s	$fa5, $sp, 192
-	fld.s	$fa6, $sp, 208
+	fld.s	$fa0, $sp, 180
+	fld.s	$fa4, $sp, 176
+	fld.s	$fa5, $sp, 184
+	fld.s	$fa6, $sp, 200
 	fmul.s	$fa0, $fa0, $fa3
 	fmadd.s	$fa0, $fa4, $fa2, $fa0
 	fmadd.s	$fa0, $fa5, $fa1, $fa0
 	fadd.s	$fa0, $fa6, $fa0
-	st.d	$a0, $sp, 136
+	st.d	$a0, $sp, 128
 	movfr2gr.s	$a0, $fa0
 	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 144
+	st.d	$a0, $sp, 136
 	lu12i.w	$a0, 265360
 	ori	$a0, $a0, 4058
 	movgr2fr.w	$fs2, $a0
@@ -2211,9 +2201,9 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	b	.LBB9_21
 	.p2align	4, , 16
 .LBB9_20:                               #   in Loop: Header=BB9_21 Depth=1
-	vld	$vr0, $sp, 120
+	vld	$vr0, $sp, 112
 	addi.w	$s2, $s2, 1
-	vst	$vr0, $sp, 136
+	vst	$vr0, $sp, 128
 	beq	$s2, $s3, .LBB9_23
 .LBB9_21:                               # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a0, $s2, 31, 0
@@ -2225,52 +2215,52 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fmov.s	$fa1, $fs0
 	pcaddu18i	$ra, %call36(_ZNK21btConeTwistConstraint16GetPointForAngleEff)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 152
-	fld.s	$fa1, $sp, 156
+	fld.s	$fa0, $sp, 144
+	fld.s	$fa1, $sp, 148
 	movgr2fr.w	$fa2, $a0
 	srli.d	$a0, $a0, 32
 	movgr2fr.w	$fa3, $a0
 	fmul.s	$fa1, $fa1, $fa3
 	fmadd.s	$fa0, $fa0, $fa2, $fa1
-	fld.s	$fa1, $sp, 160
+	fld.s	$fa1, $sp, 152
 	movgr2fr.w	$fa4, $a1
-	fld.s	$fa5, $sp, 200
-	fld.s	$fa6, $sp, 172
-	fld.s	$fa7, $sp, 168
+	fld.s	$fa5, $sp, 192
+	fld.s	$fa6, $sp, 164
+	fld.s	$fa7, $sp, 160
 	fmadd.s	$fa0, $fa1, $fa4, $fa0
 	fadd.s	$fa0, $fa0, $fa5
 	fmul.s	$fa1, $fa6, $fa3
 	fmadd.s	$fa1, $fa7, $fa2, $fa1
-	fld.s	$fa5, $sp, 176
-	fld.s	$fa6, $sp, 204
-	fld.s	$fa7, $sp, 188
-	fld.s	$ft0, $sp, 184
+	fld.s	$fa5, $sp, 168
+	fld.s	$fa6, $sp, 196
+	fld.s	$fa7, $sp, 180
+	fld.s	$ft0, $sp, 176
 	fmadd.s	$fa1, $fa5, $fa4, $fa1
 	fadd.s	$fa1, $fa6, $fa1
 	fmul.s	$fa3, $fa7, $fa3
 	fmadd.s	$fa2, $ft0, $fa2, $fa3
-	fld.s	$fa3, $sp, 192
-	fld.s	$fa5, $sp, 208
+	fld.s	$fa3, $sp, 184
+	fld.s	$fa5, $sp, 200
 	movfr2gr.s	$a0, $fa0
 	movfr2gr.s	$a1, $fa1
 	bstrins.d	$a0, $a1, 63, 32
 	ld.d	$a1, $fp, 0
 	fmadd.s	$fa0, $fa3, $fa4, $fa2
 	fadd.s	$fa0, $fa5, $fa0
-	st.d	$a0, $sp, 120
+	st.d	$a0, $sp, 112
 	ld.d	$a1, $a1, 32
 	movfr2gr.s	$a0, $fa0
 	bstrpick.d	$a0, $a0, 31, 0
-	st.d	$a0, $sp, 128
+	st.d	$a0, $sp, 120
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 104
+	vst	$vr0, $sp, 96
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
-	addi.d	$a1, $sp, 136
-	addi.d	$a2, $sp, 120
-	addi.d	$a3, $sp, 104
+	addi.d	$a1, $sp, 128
+	addi.d	$a2, $sp, 112
+	addi.d	$a3, $sp, 96
 	jirl	$ra, $a4, 0
 	andi	$a0, $s2, 3
 	bnez	$a0, .LBB9_20
@@ -2280,11 +2270,11 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 104
+	vst	$vr0, $sp, 96
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
-	addi.d	$a2, $sp, 120
-	addi.d	$a3, $sp, 104
+	addi.d	$a2, $sp, 112
+	addi.d	$a3, $sp, 96
 	move	$a1, $s1
 	jirl	$ra, $a4, 0
 	b	.LBB9_20
@@ -2350,7 +2340,7 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	ld.d	$a1, $a0, 32
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -2423,25 +2413,25 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa5
 	bstrpick.d	$a1, $a1, 31, 0
-	fst.s	$fa0, $sp, 152
-	fst.s	$fa1, $sp, 156
-	fst.s	$ft10, $sp, 160
-	st.w	$zero, $sp, 164
-	fst.s	$ft11, $sp, 168
-	fst.s	$fa6, $sp, 184
-	fst.s	$ft0, $sp, 188
-	st.d	$a0, $sp, 200
+	fst.s	$fa0, $sp, 144
+	fst.s	$fa1, $sp, 148
+	fst.s	$ft10, $sp, 152
+	st.w	$zero, $sp, 156
+	fst.s	$ft11, $sp, 160
+	fst.s	$fa6, $sp, 176
+	fst.s	$ft0, $sp, 180
+	st.d	$a0, $sp, 192
 	ld.d	$a0, $fp, 0
-	fst.s	$ft1, $sp, 192
-	st.w	$zero, $sp, 196
-	st.d	$a1, $sp, 208
+	fst.s	$ft1, $sp, 184
+	st.w	$zero, $sp, 188
+	st.d	$a1, $sp, 200
 	ld.d	$a1, $a0, 32
-	fst.s	$fa4, $sp, 172
-	fst.s	$ft14, $sp, 176
-	st.w	$zero, $sp, 180
+	fst.s	$fa4, $sp, 164
+	fst.s	$ft14, $sp, 168
+	st.w	$zero, $sp, 172
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	addi.d	$a1, $sp, 152
+	addi.d	$a1, $sp, 144
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw13drawTransformERK11btTransformf)
 	jirl	$ra, $ra, 0
@@ -2453,38 +2443,38 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	fcmp.ceq.s	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB9_36
 # %bb.28:
-	addi.d	$s0, $sp, 200
+	addi.d	$s0, $sp, 192
 	fcmp.cule.s	$fcc0, $fa1, $fa0
 	fsel	$fs1, $fs1, $fa1, $fcc0
 	movcf2gr	$a0, $fcc0
 	st.d	$a0, $sp, 16
 	lu12i.w	$a0, 265360
 	ori	$a0, $a0, 4059
-	ld.w	$a1, $sp, 176
-	ld.wu	$a2, $sp, 160
-	movgr2fr.w	$fa1, $a0
-	ld.wu	$a0, $sp, 192
-	slli.d	$a1, $a1, 32
-	or	$a1, $a1, $a2
-	st.d	$a1, $sp, 136
 	ld.w	$a1, $sp, 168
 	ld.wu	$a2, $sp, 152
-	st.d	$a0, $sp, 144
+	movgr2fr.w	$fa1, $a0
+	ld.wu	$a0, $sp, 184
+	slli.d	$a1, $a1, 32
+	or	$a1, $a1, $a2
+	st.d	$a1, $sp, 128
+	ld.w	$a1, $sp, 160
+	ld.wu	$a2, $sp, 144
+	st.d	$a0, $sp, 136
 	ld.d	$a0, $fp, 0
 	slli.d	$a1, $a1, 32
 	or	$a1, $a1, $a2
-	ld.wu	$a2, $sp, 184
+	ld.wu	$a2, $sp, 176
 	ld.d	$a3, $a0, 32
 	fsel	$fs2, $fa1, $fa0, $fcc0
-	st.d	$a1, $sp, 120
-	st.d	$a2, $sp, 128
+	st.d	$a1, $sp, 112
+	st.d	$a2, $sp, 120
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 104
-	addi.d	$a2, $sp, 136
-	addi.d	$a3, $sp, 120
-	addi.d	$a4, $sp, 104
+	vst	$vr0, $sp, 96
+	addi.d	$a2, $sp, 128
+	addi.d	$a3, $sp, 112
+	addi.d	$a4, $sp, 96
 	vldi	$vr4, -1244
 	move	$a1, $s0
 	fmov.s	$fa0, $fs0
@@ -2564,51 +2554,51 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	movfr2gr.s	$a0, $ft1
 	movfr2gr.s	$a1, $ft2
 	bstrins.d	$a0, $a1, 63, 32
-	fst.s	$fa0, $sp, 152
-	fst.s	$fa1, $sp, 156
-	fst.s	$fa3, $sp, 160
-	st.w	$zero, $sp, 164
-	fst.s	$fa2, $sp, 168
-	fst.s	$fa4, $sp, 172
-	fst.s	$fa7, $sp, 176
-	st.w	$zero, $sp, 180
-	fst.s	$fa6, $sp, 184
-	fst.s	$fa5, $sp, 188
-	fst.s	$ft0, $sp, 192
-	st.w	$zero, $sp, 196
+	fst.s	$fa0, $sp, 144
+	fst.s	$fa1, $sp, 148
+	fst.s	$fa3, $sp, 152
+	st.w	$zero, $sp, 156
+	fst.s	$fa2, $sp, 160
+	fst.s	$fa4, $sp, 164
+	fst.s	$fa7, $sp, 168
+	st.w	$zero, $sp, 172
+	fst.s	$fa6, $sp, 176
+	fst.s	$fa5, $sp, 180
+	fst.s	$ft0, $sp, 184
+	st.w	$zero, $sp, 188
 	movfr2gr.s	$a1, $ft3
 	bstrpick.d	$a1, $a1, 31, 0
 	movfr2gr.s	$a2, $fa0
 	movfr2gr.s	$a3, $fa2
 	movfr2gr.s	$a4, $fa6
-	st.d	$a0, $sp, 200
-	st.d	$a1, $sp, 208
+	st.d	$a0, $sp, 192
+	st.d	$a1, $sp, 200
 	vld	$vr0, $s1, 0
 	movfr2gr.s	$a0, $fa1
 	movfr2gr.s	$a1, $fa4
 	movfr2gr.s	$a5, $fa5
-	vst	$vr0, $sp, 120
+	vst	$vr0, $sp, 112
 	bstrins.d	$a2, $a3, 63, 32
 	bstrpick.d	$a3, $a4, 31, 0
 	ld.d	$a4, $fp, 0
-	st.d	$a2, $sp, 104
-	st.d	$a3, $sp, 112
+	st.d	$a2, $sp, 96
+	st.d	$a3, $sp, 104
 	bstrins.d	$a0, $a1, 63, 32
 	ld.d	$a1, $a4, 32
 	bstrpick.d	$a2, $a5, 31, 0
-	st.d	$a0, $sp, 88
-	st.d	$a2, $sp, 96
+	st.d	$a0, $sp, 80
+	st.d	$a2, $sp, 88
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	fneg.s	$fa0, $fs3
 	fsub.s	$fa2, $fa0, $fs2
 	fsub.s	$fa3, $fs2, $fs3
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 72
-	addi.d	$a1, $sp, 120
-	addi.d	$a2, $sp, 104
-	addi.d	$a3, $sp, 88
-	addi.d	$a4, $sp, 72
+	vst	$vr0, $sp, 64
+	addi.d	$a1, $sp, 112
+	addi.d	$a2, $sp, 96
+	addi.d	$a3, $sp, 80
+	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 1
 	vldi	$vr4, -1244
 	fmov.s	$fa0, $fs0
@@ -2626,10 +2616,10 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 72
-	addi.d	$a2, $sp, 88
-	addi.d	$a3, $sp, 104
-	addi.d	$a4, $sp, 72
+	vst	$vr0, $sp, 64
+	addi.d	$a2, $sp, 80
+	addi.d	$a3, $sp, 96
+	addi.d	$a4, $sp, 64
 	ori	$a5, $zero, 1
 	vldi	$vr4, -1244
 	move	$a1, $s1
@@ -2641,11 +2631,11 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw7drawArcERK9btVector3S2_S2_ffffS2_bf)
 	jirl	$ra, $ra, 0
 .LBB9_35:
-	vld	$vr0, $s7, 0
-	vld	$vr1, $s6, 0
-	vst	$vr0, $sp, 152
-	vld	$vr0, $s8, 0
-	vld	$vr2, $s2, 0
+	vld	$vr0, $s0, 1040
+	vld	$vr1, $s0, 1072
+	vst	$vr0, $sp, 144
+	vld	$vr0, $s0, 1088
+	vld	$vr2, $s0, 1056
 	vst	$vr1, $s5, 0
 	ld.d	$a0, $fp, 0
 	vst	$vr0, $s4, 0
@@ -2653,39 +2643,36 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	vld	$vr1, $s0, 744
 	ld.d	$a1, $a0, 32
 	vst	$vr2, $s3, 0
-	vst	$vr0, $sp, 72
-	vst	$vr1, $sp, 56
+	vst	$vr0, $sp, 64
+	vst	$vr1, $sp, 48
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 40
-	addi.d	$a1, $sp, 72
-	addi.d	$a2, $sp, 56
-	addi.d	$a3, $sp, 152
-	addi.d	$a4, $sp, 40
+	vst	$vr0, $sp, 32
+	addi.d	$a1, $sp, 64
+	addi.d	$a2, $sp, 48
+	addi.d	$a3, $sp, 144
+	addi.d	$a4, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN12btIDebugDraw7drawBoxERK9btVector3S2_RK11btTransformS2_)
 	jirl	$ra, $ra, 0
 .LBB9_36:
-	fld.d	$fs7, $sp, 216                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 224                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 232                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 240                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 248                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 256                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 264                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 272                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 360                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 368
+	fld.d	$fs7, $sp, 208                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 216                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 224                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 232                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 240                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 248                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 256                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 264                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 336
 	ret
 .Lfunc_end9:
 	.size	_ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint, .Lfunc_end9-_ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint
@@ -2736,19 +2723,17 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception4
 # %bb.0:
-	addi.d	$sp, $sp, -416
-	.cfi_def_cfa_offset 416
-	st.d	$ra, $sp, 408                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 400                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 392                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 384                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 376                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 328                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -400
+	.cfi_def_cfa_offset 400
+	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 328                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 320                  # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 312                  # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 304                  # 8-byte Folded Spill
@@ -2766,16 +2751,14 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	.cfi_offset 31, -88
-	.cfi_offset 56, -96
-	.cfi_offset 57, -104
-	.cfi_offset 58, -112
-	.cfi_offset 59, -120
-	.cfi_offset 60, -128
-	.cfi_offset 61, -136
-	.cfi_offset 62, -144
-	.cfi_offset 63, -152
+	.cfi_offset 56, -80
+	.cfi_offset 57, -88
+	.cfi_offset 58, -96
+	.cfi_offset 59, -104
+	.cfi_offset 60, -112
+	.cfi_offset 61, -120
+	.cfi_offset 62, -128
+	.cfi_offset 63, -136
 	move	$s1, $a0
 	ld.d	$a0, $a0, 0
 	move	$s0, $a1
@@ -2814,17 +2797,15 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	movfr2gr.s	$a1, $fa0
 	movfr2gr.s	$a2, $fa1
 	bstrins.d	$a1, $a2, 63, 32
+	pcalau12i	$a2, %pc_hi20(.LCPI10_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI10_0)
 	movfr2gr.s	$a2, $fa2
-	pcalau12i	$a3, %pc_hi20(.LCPI10_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI10_0)
 	bstrpick.d	$a2, $a2, 31, 0
 	st.d	$a1, $sp, 240
 	st.d	$a2, $sp, 248
 	vst	$vr0, $sp, 224
 	ld.d	$a1, $a0, 0
 	ld.d	$a4, $a1, 40
-	addi.d	$s6, $s0, 16
-	addi.d	$s5, $s0, 32
 	addi.d	$a1, $sp, 80
 	addi.d	$a2, $sp, 240
 	addi.d	$a3, $sp, 224
@@ -2939,7 +2920,6 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 .LBB10_3:
 	addi.w	$a1, $a0, -21
 	ori	$a2, $zero, 8
-	addi.d	$s4, $s0, 48
 	bltu	$a2, $a1, .LBB10_7
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(.LCPI10_3)
@@ -2956,17 +2936,17 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	addi.d	$a1, $a1, %pc_lo12(_ZTV17DebugDrawcallback)
 	vld	$vr0, $fp, 0
 	vld	$vr1, $s0, 0
-	vld	$vr2, $s6, 0
+	vld	$vr2, $s0, 16
 	vst	$vr0, $sp, 104
 	vst	$vr1, $sp, 120
 	addi.d	$a2, $a1, 16
 	vst	$vr2, $sp, 136
-	vld	$vr0, $s4, 0
+	vld	$vr0, $s0, 48
 	st.d	$a2, $sp, 80
 	ld.d	$a2, $s2, 0
 	addi.d	$a1, $a1, 64
 	vst	$vr0, $sp, 168
-	vld	$vr0, $s5, 0
+	vld	$vr0, $s0, 32
 	ld.d	$a4, $a2, 96
 	st.d	$a1, $sp, 88
 	st.d	$a0, $sp, 96
@@ -3008,16 +2988,16 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	addi.d	$a1, $a1, %pc_lo12(_ZTV17DebugDrawcallback)
 	vld	$vr0, $fp, 0
 	vld	$vr1, $s0, 0
-	vld	$vr2, $s6, 0
+	vld	$vr2, $s0, 16
 	vst	$vr0, $sp, 104
 	vst	$vr1, $sp, 120
 	vst	$vr2, $sp, 136
-	vld	$vr0, $s5, 0
+	vld	$vr0, $s0, 32
 	addi.d	$a2, $a1, 16
 	st.d	$a2, $sp, 80
 	addi.d	$a2, $a1, 64
 	vst	$vr0, $sp, 152
-	vld	$vr0, $s4, 0
+	vld	$vr0, $s0, 48
 	ld.d	$a1, $s2, 104
 	st.d	$a2, $sp, 88
 	st.d	$a0, $sp, 96
@@ -3364,16 +3344,16 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	bltu	$s5, $s3, .LBB10_22
 	b	.LBB10_30
 .LBB10_23:
-	ld.w	$s7, $s2, 64
-	addi.w	$a1, $s7, 2
+	ld.w	$s5, $s2, 64
+	addi.w	$a1, $s5, 2
 	lu12i.w	$a0, 349525
-	ori	$s8, $a0, 1366
-	mul.d	$a0, $a1, $s8
+	ori	$s6, $a0, 1366
+	mul.d	$a0, $a1, $s6
 	srli.d	$a2, $a0, 63
 	srli.d	$a0, $a0, 32
 	add.d	$a2, $a0, $a2
 	addi.d	$a0, $s2, 40
-	slli.d	$a3, $s7, 2
+	slli.d	$a3, $s5, 2
 	fldx.s	$fa0, $a0, $a3
 	alsl.d	$a2, $a2, $a2, 1
 	sub.w	$a1, $a1, $a2
@@ -3386,10 +3366,10 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	vst	$vr2, $sp, 224
 	vld	$vr1, $s0, 0
 	addi.d	$s4, $sp, 224
-	vld	$vr2, $s6, 0
+	vld	$vr2, $s0, 16
 	fstx.s	$fa0, $a3, $s4
 	vst	$vr1, $sp, 80
-	vld	$vr0, $s5, 0
+	vld	$vr0, $s0, 32
 	vst	$vr2, $sp, 96
 	fld.s	$fa1, $s0, 4
 	fld.s	$fa2, $sp, 244
@@ -3434,9 +3414,9 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	pcaddu18i	$ra, %call36(_ZN23btDiscreteDynamicsWorld15debugDrawSphereEfRK11btTransformRK9btVector3)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $s0, 0
-	vld	$vr1, $s6, 0
+	vld	$vr1, $s0, 16
 	vst	$vr0, $sp, 80
-	vld	$vr0, $s5, 0
+	vld	$vr0, $s0, 32
 	vst	$vr1, $sp, 96
 	fld.s	$fa1, $s0, 4
 	fld.s	$fa2, $sp, 228
@@ -3482,8 +3462,8 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fld.s	$fs1, $s0, 48
 	fld.s	$fs2, $s0, 52
 	fld.s	$fs3, $s0, 56
-	addi.w	$a0, $s7, 1
-	mul.d	$a1, $a0, $s8
+	addi.w	$a0, $s5, 1
+	mul.d	$a1, $a0, $s6
 	srli.d	$a2, $a1, 63
 	srli.d	$a1, $a1, 32
 	add.d	$a1, $a1, $a2
@@ -4434,18 +4414,16 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fld.d	$fs2, $sp, 304                  # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 312                  # 8-byte Folded Reload
 	fld.d	$fs0, $sp, 320                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 376                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 416
+	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 400
 	ret
 .LBB10_31:
 .Ltmp138:                               # EH_LABEL
@@ -4997,16 +4975,16 @@ _ZN23btDiscreteDynamicsWorld28synchronizeSingleMotionStateEP11btRigidBody: # @_Z
 _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # @_ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 48                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5085,12 +5063,12 @@ _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # 
 	pcaddu18i	$ra, %call36(cosf)
 	jirl	$ra, $ra, 0
 	fmov.s	$fs0, $fa0
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 32
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16
-	ld.d	$a1, $sp, 24
+	ld.d	$a0, $sp, 32
+	ld.d	$a1, $sp, 40
 	movgr2fr.w	$fa0, $a0
 	srli.d	$a0, $a0, 32
 	movgr2fr.w	$fa1, $a0
@@ -5151,10 +5129,7 @@ _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # 
 	fadd.s	$ft4, $fa2, $ft0
 	fadd.s	$fa0, $ft1, $fa0
 	fadd.s	$fa1, $fa5, $fa1
-	fsub.s	$fa1, $ft2, $fa1
-	fsub.s	$ft1, $fa3, $fa7
-	fsub.s	$fa2, $fa2, $ft0
-	fadd.s	$fa3, $fa3, $fa7
+	fadd.s	$ft1, $fa3, $fa7
 	fadd.s	$fa5, $fa5, $fa6
 	fsub.s	$fa5, $ft2, $fa5
 	fst.s	$fa4, $fp, 0
@@ -5162,22 +5137,30 @@ _ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_: # 
 	fst.s	$ft4, $fp, 8
 	st.w	$zero, $fp, 12
 	fst.s	$fa0, $fp, 16
-	fst.s	$fa1, $fp, 20
-	fst.s	$ft1, $fp, 24
-	st.w	$zero, $fp, 28
-	fst.s	$fa2, $fp, 32
-	fst.s	$fa3, $fp, 36
+	movgr2fr.w	$fa0, $zero
+	fst.s	$fa0, $sp, 24
+	fst.s	$ft2, $sp, 16
+	fst.s	$fa2, $sp, 28
+	fst.s	$fa3, $sp, 20
+	vld	$vr0, $sp, 16
+	vrepli.b	$vr2, 0
+	vextrins.w	$vr2, $vr1, 0
+	vextrins.w	$vr2, $vr7, 16
+	vextrins.w	$vr2, $vr8, 48
+	vfsub.s	$vr0, $vr0, $vr2
+	vst	$vr0, $fp, 20
+	fst.s	$ft1, $fp, 36
 	fst.s	$fa5, $fp, 40
 	st.w	$zero, $fp, 44
-	fld.d	$fs4, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	fld.d	$fs4, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end15:
 	.size	_ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_, .Lfunc_end15-_ZN15btTransformUtil18integrateTransformERK11btTransformRK9btVector3S5_fRS0_
@@ -6429,19 +6412,40 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBody: # @_ZN23btDiscreteDyn
 	ld.bu	$a1, $a1, 216
 	andi	$a1, $a1, 3
 	move	$s0, $a0
-	beqz	$a1, .LBB27_15
+	beqz	$a1, .LBB27_4
 # %bb.1:
 	ld.d	$a0, $fp, 200
-	beqz	$a0, .LBB27_16
+	beqz	$a0, .LBB27_5
 .LBB27_2:
-	ld.bu	$a0, $fp, 216
+	ld.wu	$a0, $fp, 216
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB27_17
+	beqz	$a0, .LBB27_6
 # %bb.3:
+	ori	$a1, $zero, 2
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZN17btCollisionObject18setActivationStateEi)
+	jirl	$ra, $ra, 0
+	b	.LBB27_24
+.LBB27_4:
+	addi.d	$a1, $s0, 312
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setGravityERK9btVector3)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $fp, 200
+	bnez	$a0, .LBB27_2
+.LBB27_5:
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
+	ret
+.LBB27_6:
 	ld.w	$a1, $s0, 284
 	ld.w	$a0, $s0, 288
 	bne	$a1, $a0, .LBB27_23
-# %bb.4:
+# %bb.7:
 	sltui	$a0, $a1, 1
 	slli.w	$a2, $a1, 1
 	masknez	$a2, $a2, $a0
@@ -6449,9 +6453,9 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBody: # @_ZN23btDiscreteDyn
 	maskeqz	$a0, $a3, $a0
 	or	$s2, $a0, $a2
 	bge	$a1, $s2, .LBB27_23
-# %bb.5:
+# %bb.8:
 	beqz	$s2, .LBB27_18
-# %bb.6:
+# %bb.9:
 	slli.d	$a0, $s2, 3
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -6460,22 +6464,22 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBody: # @_ZN23btDiscreteDyn
 	move	$s1, $a0
 	ld.d	$a0, $s0, 296
 	blez	$a1, .LBB27_19
-.LBB27_7:                               # %.lr.ph.i.i.i
+.LBB27_10:                              # %.lr.ph.i.i.i
 	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB27_12
-# %bb.8:                                # %.lr.ph.i.i.i
+	bltu	$a1, $a3, .LBB27_15
+# %bb.11:                               # %.lr.ph.i.i.i
 	sub.d	$a3, $s1, $a0
 	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB27_12
-# %bb.9:                                # %vector.ph
+	bltu	$a3, $a4, .LBB27_15
+# %bb.12:                               # %vector.ph
 	bstrpick.d	$a2, $a1, 30, 3
 	slli.d	$a2, $a2, 3
 	addi.d	$a3, $a0, 32
 	addi.d	$a4, $s1, 32
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB27_10:                              # %vector.body
+.LBB27_13:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a3, -32
 	xvld	$xr1, $a3, 0
@@ -6484,51 +6488,30 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBody: # @_ZN23btDiscreteDyn
 	addi.d	$a5, $a5, -8
 	addi.d	$a3, $a3, 64
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB27_10
-# %bb.11:                               # %middle.block
-	beq	$a2, $a1, .LBB27_14
-.LBB27_12:                              # %scalar.ph.preheader
+	bnez	$a5, .LBB27_13
+# %bb.14:                               # %middle.block
+	beq	$a2, $a1, .LBB27_17
+.LBB27_15:                              # %scalar.ph.preheader
 	sub.d	$a3, $a1, $a2
 	alsl.d	$a4, $a2, $a0, 3
 	alsl.d	$a2, $a2, $s1, 3
 	.p2align	4, , 16
-.LBB27_13:                              # %scalar.ph
+.LBB27_16:                              # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a4, 0
 	st.d	$a5, $a2, 0
 	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 8
 	addi.d	$a2, $a2, 8
-	bnez	$a3, .LBB27_13
-.LBB27_14:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.thread.i.i
+	bnez	$a3, .LBB27_16
+.LBB27_17:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a2, $s0, 304
 	bnez	$a2, .LBB27_21
 	b	.LBB27_22
-.LBB27_15:
-	addi.d	$a1, $s0, 312
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setGravityERK9btVector3)
-	jirl	$ra, $ra, 0
-	ld.d	$a0, $fp, 200
-	bnez	$a0, .LBB27_2
-.LBB27_16:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
-	ret
-.LBB27_17:
-	ori	$a1, $zero, 2
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZN17btCollisionObject18setActivationStateEi)
-	jirl	$ra, $ra, 0
-	b	.LBB27_24
 .LBB27_18:
 	move	$s1, $zero
 	ld.d	$a0, $s0, 296
-	bgtz	$a1, .LBB27_7
+	bgtz	$a1, .LBB27_10
 .LBB27_19:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
 	beqz	$a0, .LBB27_22
 # %bb.20:                               # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
@@ -6602,89 +6585,28 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBodyss: # @_ZN23btDiscreteD
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$s2, $a0
-	beqz	$a1, .LBB28_15
+	beqz	$a1, .LBB28_4
 # %bb.1:
 	ld.d	$a0, $fp, 200
-	beqz	$a0, .LBB28_16
+	beqz	$a0, .LBB28_5
 .LBB28_2:
-	ld.bu	$a0, $fp, 216
+	ld.wu	$a0, $fp, 216
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB28_17
+	beqz	$a0, .LBB28_6
 # %bb.3:
-	ld.w	$a1, $s2, 284
-	ld.w	$a0, $s2, 288
-	bne	$a1, $a0, .LBB28_23
-# %bb.4:
-	sltui	$a0, $a1, 1
-	slli.w	$a2, $a1, 1
-	masknez	$a2, $a2, $a0
-	ori	$a3, $zero, 1
-	maskeqz	$a0, $a3, $a0
-	or	$s4, $a0, $a2
-	bge	$a1, $s4, .LBB28_23
-# %bb.5:
-	beqz	$s4, .LBB28_18
-# %bb.6:
-	slli.d	$a0, $s4, 3
-	ori	$a1, $zero, 16
-	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
+	ori	$a1, $zero, 2
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZN17btCollisionObject18setActivationStateEi)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 284
-	move	$s3, $a0
-	ld.d	$a0, $s2, 296
-	blez	$a1, .LBB28_19
-.LBB28_7:                               # %.lr.ph.i.i.i
-	ori	$a3, $zero, 8
-	move	$a2, $zero
-	bltu	$a1, $a3, .LBB28_12
-# %bb.8:                                # %.lr.ph.i.i.i
-	sub.d	$a3, $s3, $a0
-	ori	$a4, $zero, 64
-	bltu	$a3, $a4, .LBB28_12
-# %bb.9:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 30, 3
-	slli.d	$a2, $a2, 3
-	addi.d	$a3, $a0, 32
-	addi.d	$a4, $s3, 32
-	move	$a5, $a2
-	.p2align	4, , 16
-.LBB28_10:                              # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a3, -32
-	xvld	$xr1, $a3, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB28_10
-# %bb.11:                               # %middle.block
-	beq	$a2, $a1, .LBB28_14
-.LBB28_12:                              # %scalar.ph.preheader
-	sub.d	$a3, $a1, $a2
-	alsl.d	$a4, $a2, $a0, 3
-	alsl.d	$a2, $a2, $s3, 3
-	.p2align	4, , 16
-.LBB28_13:                              # %scalar.ph
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a4, 0
-	st.d	$a5, $a2, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 8
-	addi.d	$a2, $a2, 8
-	bnez	$a3, .LBB28_13
-.LBB28_14:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.thread.i.i
-	ld.bu	$a2, $s2, 304
-	bnez	$a2, .LBB28_21
-	b	.LBB28_22
-.LBB28_15:
+	b	.LBB28_24
+.LBB28_4:
 	addi.d	$a1, $s2, 312
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody10setGravityERK9btVector3)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 200
 	bnez	$a0, .LBB28_2
-.LBB28_16:
+.LBB28_5:
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -6694,16 +6616,77 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBodyss: # @_ZN23btDiscreteD
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 64
 	ret
-.LBB28_17:
-	ori	$a1, $zero, 2
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(_ZN17btCollisionObject18setActivationStateEi)
+.LBB28_6:
+	ld.w	$a1, $s2, 284
+	ld.w	$a0, $s2, 288
+	bne	$a1, $a0, .LBB28_23
+# %bb.7:
+	sltui	$a0, $a1, 1
+	slli.w	$a2, $a1, 1
+	masknez	$a2, $a2, $a0
+	ori	$a3, $zero, 1
+	maskeqz	$a0, $a3, $a0
+	or	$s4, $a0, $a2
+	bge	$a1, $s4, .LBB28_23
+# %bb.8:
+	beqz	$s4, .LBB28_18
+# %bb.9:
+	slli.d	$a0, $s4, 3
+	ori	$a1, $zero, 16
+	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
-	b	.LBB28_24
+	ld.w	$a1, $s2, 284
+	move	$s3, $a0
+	ld.d	$a0, $s2, 296
+	blez	$a1, .LBB28_19
+.LBB28_10:                              # %.lr.ph.i.i.i
+	ori	$a3, $zero, 8
+	move	$a2, $zero
+	bltu	$a1, $a3, .LBB28_15
+# %bb.11:                               # %.lr.ph.i.i.i
+	sub.d	$a3, $s3, $a0
+	ori	$a4, $zero, 64
+	bltu	$a3, $a4, .LBB28_15
+# %bb.12:                               # %vector.ph
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 32
+	addi.d	$a4, $s3, 32
+	move	$a5, $a2
+	.p2align	4, , 16
+.LBB28_13:                              # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvld	$xr0, $a3, -32
+	xvld	$xr1, $a3, 0
+	xvst	$xr0, $a4, -32
+	xvst	$xr1, $a4, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 64
+	addi.d	$a4, $a4, 64
+	bnez	$a5, .LBB28_13
+# %bb.14:                               # %middle.block
+	beq	$a2, $a1, .LBB28_17
+.LBB28_15:                              # %scalar.ph.preheader
+	sub.d	$a3, $a1, $a2
+	alsl.d	$a4, $a2, $a0, 3
+	alsl.d	$a2, $a2, $s3, 3
+	.p2align	4, , 16
+.LBB28_16:                              # %scalar.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a5, $a4, 0
+	st.d	$a5, $a2, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 8
+	addi.d	$a2, $a2, 8
+	bnez	$a3, .LBB28_16
+.LBB28_17:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.thread.i.i
+	ld.bu	$a2, $s2, 304
+	bnez	$a2, .LBB28_21
+	b	.LBB28_22
 .LBB28_18:
 	move	$s3, $zero
 	ld.d	$a0, $s2, 296
-	bgtz	$a1, .LBB28_7
+	bgtz	$a1, .LBB28_10
 .LBB28_19:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
 	beqz	$a0, .LBB28_22
 # %bb.20:                               # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
@@ -7813,8 +7796,7 @@ _ZN23btDiscreteDynamicsWorld19integrateTransformsEf: # @_ZN23btDiscreteDynamicsW
 	jirl	$ra, $a1, 0
 .Ltmp273:                               # EH_LABEL
 # %bb.17:                               #   in Loop: Header=BB40_8 Depth=1
-	addi.d	$a1, $s1, 56
-	vld	$vr0, $a1, 0
+	vld	$vr0, $s1, 56
 	addi.d	$a1, $sp, 256
 	vld	$vr1, $a1, 0
 	ld.d	$a1, $fp, 40
@@ -9403,8 +9385,8 @@ _ZN12btIDebugDraw15drawSpherePatchERK9btVector3S2_S2_fffffS2_f: # @_ZN12btIDebug
 	addi.d	$s8, $a0, 16
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	addi.d	$s5, $a0, 16
-	ori	$s7, $zero, 1
 	ori	$s4, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB47_17
 	.p2align	4, , 16
 .LBB47_16:                              #   in Loop: Header=BB47_17 Depth=2
@@ -10589,24 +10571,21 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	fcmp.cor.s	$fcc0, $fa0, $fa0
 	bceqz	$fcc0, .LBB59_6
 .LBB59_2:                               # %.split
-	fld.s	$fa1, $a0, 36
-	fld.s	$fa2, $a0, 24
-	fld.s	$fa3, $a0, 8
-	fld.s	$fa4, $a0, 32
-	fsub.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $a0, 16
-	fld.s	$fa5, $a0, 4
+	vldi	$vr2, -1184
+	fmul.s	$fa1, $fa0, $fa2
+	fld.s	$fa3, $a0, 36
+	fld.s	$fa4, $a0, 24
+	fdiv.s	$fa5, $fa2, $fa0
+	fld.s	$fa0, $a0, 8
+	fld.s	$fa2, $a0, 32
 	fsub.s	$fa3, $fa3, $fa4
-	vldi	$vr4, -1184
-	fdiv.s	$fa4, $fa4, $fa0
-	fsub.s	$fa2, $fa2, $fa5
-	vextrins.w	$vr4, $vr0, 16
-	vshuf4i.w	$vr0, $vr4, 64
-	vldi	$vr4, -3265
-	vextrins.w	$vr4, $vr1, 0
-	vextrins.w	$vr4, $vr3, 16
-	vextrins.w	$vr4, $vr2, 32
-	vfmul.s	$vr0, $vr0, $vr4
+	fld.s	$fa4, $a0, 16
+	fld.s	$fa6, $a0, 4
+	fsub.s	$fa2, $fa0, $fa2
+	fmul.s	$fa0, $fa5, $fa3
+	fmul.s	$fa2, $fa5, $fa2
+	fsub.s	$fa3, $fa4, $fa6
+	fmul.s	$fa3, $fa5, $fa3
 	b	.LBB59_5
 .LBB59_3:
 	fcmp.clt.s	$fcc0, $fa2, $fa1
@@ -10649,11 +10628,10 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 .LBB59_4:                               # %.split47
 	vldi	$vr1, -1184
 	fmul.s	$fa2, $fa0, $fa1
-	addi.d	$a0, $sp, 16
 	fldx.s	$fa3, $s3, $s0
 	fldx.s	$fa4, $s4, $s2
-	or	$a2, $a0, $s1
-	fst.s	$fa2, $a2, 0
+	addi.d	$a0, $sp, 16
+	fstx.s	$fa2, $s1, $a0
 	fdiv.s	$fa0, $fa1, $fa0
 	fsub.s	$fa1, $fa3, $fa4
 	fmul.s	$fa1, $fa0, $fa1
@@ -10668,9 +10646,15 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	fadd.s	$fa1, $fa1, $fa4
 	fmul.s	$fa0, $fa0, $fa1
 	fstx.s	$fa0, $s2, $a0
-	vld	$vr0, $sp, 16
+	fld.s	$fa0, $sp, 16
+	fld.s	$fa2, $sp, 20
+	fld.s	$fa3, $sp, 24
+	fld.s	$fa1, $sp, 28
 .LBB59_5:
-	vst	$vr0, $a1, 0
+	fst.s	$fa0, $a1, 0
+	fst.s	$fa2, $a1, 4
+	fst.s	$fa3, $a1, 8
+	fst.s	$fa1, $a1, 12
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
@@ -10689,7 +10673,6 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
 	move	$a1, $fp
-                                        # kill: def $f0 killed $f0 def $vr0
 	b	.LBB59_2
 .LBB59_7:                               # %call.sqrt48
 	fmov.s	$fa0, $fa1
@@ -11057,8 +11040,7 @@ _ZN34btClosestNotMeConvexResultCallback15addSingleResultERN16btCollisionWorld17L
 	st.d	$a3, $a0, 80
 	beqz	$a2, .LBB64_6
 # %bb.4:
-	addi.d	$a2, $a1, 16
-	vld	$vr0, $a2, 0
+	vld	$vr0, $a1, 16
 	vst	$vr0, $a0, 48
 	vld	$vr0, $a1, 32
 	vst	$vr0, $a0, 64

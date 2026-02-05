@@ -3032,32 +3032,31 @@ build_scanners:                         # @build_scanners
 	addi.d	$t1, $a5, -5
 	addi.d	$t2, $a5, -4
 	addi.d	$t3, $a5, -3
-	xvld	$xr0, $a4, -32
 	addi.d	$t4, $a5, -2
 	addi.d	$t5, $a5, -1
-	xvld	$xr1, $a4, 0
-	xvpickve2gr.d	$t6, $xr0, 0
+	ld.d	$t6, $a4, -32
+	ld.d	$t7, $a4, -24
+	ld.d	$t8, $a4, -16
+	ld.d	$fp, $a4, -8
+	ld.d	$s0, $a4, 0
+	ld.d	$s1, $a4, 8
+	ld.d	$s2, $a4, 16
+	ld.d	$s3, $a4, 24
 	st.w	$a7, $t6, 0
-	xvpickve2gr.d	$a7, $xr0, 1
-	st.w	$t0, $a7, 0
-	xvpickve2gr.d	$a7, $xr0, 2
-	st.w	$t1, $a7, 0
-	xvpickve2gr.d	$a7, $xr0, 3
-	st.w	$t2, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 0
-	st.w	$t3, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	st.w	$t4, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 2
-	st.w	$t5, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 3
-	st.w	$a5, $a7, 0
+	st.w	$t0, $t7, 0
+	st.w	$t1, $t8, 0
+	st.w	$t2, $fp, 0
+	st.w	$t3, $s0, 0
+	st.w	$t4, $s1, 0
+	st.w	$t5, $s2, 0
+	st.w	$a5, $s3, 0
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 8
 	addi.d	$a4, $a4, 64
 	bnez	$a6, .LBB0_467
 # %bb.468:                              # %middle.block
                                         #   in Loop: Header=BB0_17 Depth=1
+	ori	$s2, $zero, 2
 	beq	$a1, $a3, .LBB0_471
 .LBB0_469:                              # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_17 Depth=1

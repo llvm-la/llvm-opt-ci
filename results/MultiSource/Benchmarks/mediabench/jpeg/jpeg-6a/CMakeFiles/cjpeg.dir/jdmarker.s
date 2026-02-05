@@ -383,13 +383,13 @@ read_markers:                           # @read_markers
 	ori	$s1, $zero, 253
 	lu12i.w	$a0, 4112
 	ori	$a0, $a0, 257
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	lu12i.w	$a0, 20560
 	ori	$a0, $a0, 1285
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	lu12i.w	$a0, 16
 	ori	$a0, $a0, 1
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
 	b	.LBB4_3
@@ -409,8 +409,8 @@ read_markers:                           # @read_markers
 	st.w	$zero, $fp, 524
 .LBB4_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_53 Depth 2
-                                        #       Child Loop BB4_67 Depth 3
-                                        #       Child Loop BB4_62 Depth 3
+                                        #       Child Loop BB4_63 Depth 3
+                                        #       Child Loop BB4_71 Depth 3
                                         #     Child Loop BB4_173 Depth 2
                                         #     Child Loop BB4_93 Depth 2
                                         #       Child Loop BB4_151 Depth 3
@@ -636,22 +636,20 @@ read_markers:                           # @read_markers
                                         #   in Loop: Header=BB4_3 Depth=1
 	st.d	$zero, $s8, 8
 	st.d	$zero, $s8, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	bstrins.d	$a1, $a1, 56, 32
 	addi.d	$a2, $fp, 328
 	st.d	$a1, $a2, 0
 	st.d	$a1, $a2, 8
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	bstrins.d	$a1, $a1, 58, 32
-	addi.d	$a2, $fp, 344
-	st.d	$a1, $a2, 0
-	st.d	$a1, $a2, 8
+	st.d	$a1, $fp, 344
+	st.d	$a1, $fp, 352
 	st.w	$zero, $fp, 52
 	st.w	$zero, $fp, 384
-	addi.d	$a1, $fp, 360
-	st.d	$zero, $a1, 0
-	st.b	$zero, $a1, 8
-	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	st.d	$zero, $fp, 360
+	st.b	$zero, $fp, 368
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	st.w	$a1, $fp, 370
 	st.w	$zero, $fp, 376
 	st.b	$zero, $fp, 380
@@ -692,9 +690,9 @@ read_markers:                           # @read_markers
 .LBB4_50:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.bu	$a2, $a0, 0
 	slli.d	$a3, $s0, 8
-	addi.d	$s6, $a1, -1
+	addi.d	$s5, $a1, -1
 	or	$a1, $a3, $a2
-	addi.d	$s5, $a0, 1
+	addi.d	$s4, $a0, 1
 	ori	$a0, $zero, 3
 	bltu	$a1, $a0, .LBB4_75
 # %bb.51:                               # %.lr.ph.i88
@@ -704,44 +702,45 @@ read_markers:                           # @read_markers
 	.p2align	4, , 16
 .LBB4_52:                               # %.loopexit.i96
                                         #   in Loop: Header=BB4_53 Depth=2
-	sltui	$a0, $s4, 16
+	sltui	$a0, $s6, 1
 	addi.w	$a1, $zero, -129
 	masknez	$a1, $a1, $a0
 	addi.w	$a2, $zero, -65
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$s3, $a0, $s3
+	ori	$s6, $zero, 255
 	blez	$s3, .LBB4_75
 .LBB4_53:                               #   Parent Loop BB4_3 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB4_67 Depth 3
-                                        #       Child Loop BB4_62 Depth 3
-	bnez	$s6, .LBB4_56
+                                        #       Child Loop BB4_63 Depth 3
+                                        #       Child Loop BB4_71 Depth 3
+	bnez	$s5, .LBB4_56
 # %bb.54:                               #   in Loop: Header=BB4_53 Depth=2
 	ld.d	$a1, $s1, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB4_232
 # %bb.55:                               #   in Loop: Header=BB4_53 Depth=2
-	ld.d	$s5, $s1, 0
-	ld.d	$s6, $s1, 8
+	ld.d	$s4, $s1, 0
+	ld.d	$s5, $s1, 8
 .LBB4_56:                               #   in Loop: Header=BB4_53 Depth=2
-	ld.bu	$s4, $s5, 0
-	ld.d	$a0, $fp, 0
-	andi	$s2, $s4, 15
-	st.w	$s2, $a0, 44
+	ld.bu	$a0, $s4, 0
 	ld.d	$a1, $fp, 0
-	srli.d	$a2, $s4, 4
-	ori	$a3, $zero, 80
-	st.w	$a3, $a0, 40
-	st.w	$a2, $a1, 48
+	andi	$s2, $a0, 15
+	st.w	$s2, $a1, 44
+	ld.d	$a2, $fp, 0
+	srli.d	$s6, $a0, 4
+	ori	$a0, $zero, 80
+	st.w	$a0, $a1, 40
+	st.w	$s6, $a2, 48
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	ori	$a0, $zero, 4
-	bltu	$s2, $a0, .LBB4_58
+	bltu	$s2, $a0, .LBB4_59
 # %bb.57:                               #   in Loop: Header=BB4_53 Depth=2
 	ld.d	$a0, $fp, 0
 	st.w	$s2, $a0, 44
@@ -751,12 +750,11 @@ read_markers:                           # @read_markers
 	st.w	$a2, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-.LBB4_58:                               #   in Loop: Header=BB4_53 Depth=2
 	slli.d	$a0, $s2, 3
 	addi.d	$a1, $fp, 192
 	ldx.d	$s0, $a1, $a0
 	bnez	$s0, .LBB4_60
-# %bb.59:                               #   in Loop: Header=BB4_53 Depth=2
+.LBB4_58:                               #   in Loop: Header=BB4_53 Depth=2
 	addi.d	$a0, $fp, 192
 	alsl.d	$s2, $s2, $a0, 3
 	move	$a0, $fp
@@ -764,44 +762,27 @@ read_markers:                           # @read_markers
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	st.d	$a0, $s2, 0
-.LBB4_60:                               #   in Loop: Header=BB4_53 Depth=2
-	addi.d	$s6, $s6, -1
-	addi.d	$s5, $s5, 1
+	addi.d	$s5, $s5, -1
+	addi.d	$s4, $s4, 1
 	move	$s2, $zero
-	ori	$a0, $zero, 16
-	bltu	$s4, $a0, .LBB4_62
-	b	.LBB4_67
+	bnez	$s6, .LBB4_63
+	b	.LBB4_71
 	.p2align	4, , 16
-.LBB4_61:                               #   in Loop: Header=BB4_62 Depth=3
-	ld.bu	$a0, $s5, 0
-	pcalau12i	$a1, %got_pc_hi20(jpeg_natural_order)
-	ld.d	$a1, $a1, %got_pc_lo12(jpeg_natural_order)
-	ldx.w	$a1, $a1, $s2
-	slli.d	$a1, $a1, 1
-	stx.h	$a0, $s0, $a1
-	addi.d	$s6, $s6, -1
-	addi.d	$s2, $s2, 4
-	addi.d	$s5, $s5, 1
-	ori	$a0, $zero, 256
-	beq	$s2, $a0, .LBB4_73
-.LBB4_62:                               # %.split.us.i
-                                        #   Parent Loop BB4_3 Depth=1
-                                        #     Parent Loop BB4_53 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	bnez	$s6, .LBB4_61
-# %bb.63:                               #   in Loop: Header=BB4_62 Depth=3
-	ld.d	$a1, $s1, 24
-	move	$a0, $fp
-	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_232
-# %bb.64:                               #   in Loop: Header=BB4_62 Depth=3
-	ld.d	$s5, $s1, 0
-	ld.d	$s6, $s1, 8
-	b	.LBB4_61
+.LBB4_59:                               #   in Loop: Header=BB4_53 Depth=2
+	slli.d	$a0, $s2, 3
+	addi.d	$a1, $fp, 192
+	ldx.d	$s0, $a1, $a0
+	beqz	$s0, .LBB4_58
+.LBB4_60:                               #   in Loop: Header=BB4_53 Depth=2
+	addi.d	$s5, $s5, -1
+	addi.d	$s4, $s4, 1
+	move	$s2, $zero
+	bnez	$s6, .LBB4_63
+	b	.LBB4_71
 	.p2align	4, , 16
-.LBB4_65:                               #   in Loop: Header=BB4_67 Depth=3
-	addi.d	$a0, $s5, 1
-.LBB4_66:                               #   in Loop: Header=BB4_67 Depth=3
+.LBB4_61:                               #   in Loop: Header=BB4_63 Depth=3
+	addi.d	$a0, $s4, 1
+.LBB4_62:                               #   in Loop: Header=BB4_63 Depth=3
 	ld.bu	$a2, $a0, 0
 	slli.d	$a3, $s7, 8
 	or	$a2, $a3, $a2
@@ -810,42 +791,69 @@ read_markers:                           # @read_markers
 	ldx.w	$a3, $a3, $s2
 	slli.d	$a3, $a3, 1
 	stx.h	$a2, $s0, $a3
-	addi.d	$s6, $a1, -1
+	addi.d	$s5, $a1, -1
 	addi.d	$s2, $s2, 4
-	addi.d	$s5, $a0, 1
+	addi.d	$s4, $a0, 1
 	ori	$a0, $zero, 256
 	beq	$s2, $a0, .LBB4_73
-.LBB4_67:                               # %.split.i
+.LBB4_63:                               # %.split.i
                                         #   Parent Loop BB4_3 Depth=1
                                         #     Parent Loop BB4_53 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	beqz	$s6, .LBB4_69
-# %bb.68:                               #   in Loop: Header=BB4_67 Depth=3
-	ld.b	$s7, $s5, 0
-	addi.d	$a1, $s6, -1
-	bnez	$a1, .LBB4_65
-	b	.LBB4_71
+	beqz	$s5, .LBB4_65
+# %bb.64:                               #   in Loop: Header=BB4_63 Depth=3
+	ld.b	$s7, $s4, 0
+	addi.d	$a1, $s5, -1
+	bnez	$a1, .LBB4_61
+	b	.LBB4_67
 	.p2align	4, , 16
-.LBB4_69:                               #   in Loop: Header=BB4_67 Depth=3
+.LBB4_65:                               #   in Loop: Header=BB4_63 Depth=3
 	ld.d	$a1, $s1, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB4_232
-# %bb.70:                               #   in Loop: Header=BB4_67 Depth=3
-	ld.d	$s5, $s1, 0
-	ld.d	$s6, $s1, 8
-	ld.b	$s7, $s5, 0
-	addi.d	$a1, $s6, -1
-	bnez	$a1, .LBB4_65
-.LBB4_71:                               #   in Loop: Header=BB4_67 Depth=3
+# %bb.66:                               #   in Loop: Header=BB4_63 Depth=3
+	ld.d	$s4, $s1, 0
+	ld.d	$s5, $s1, 8
+	ld.b	$s7, $s4, 0
+	addi.d	$a1, $s5, -1
+	bnez	$a1, .LBB4_61
+.LBB4_67:                               #   in Loop: Header=BB4_63 Depth=3
 	ld.d	$a1, $s1, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB4_232
-# %bb.72:                               #   in Loop: Header=BB4_67 Depth=3
+# %bb.68:                               #   in Loop: Header=BB4_63 Depth=3
 	ld.d	$a0, $s1, 0
 	ld.d	$a1, $s1, 8
-	b	.LBB4_66
+	b	.LBB4_62
+	.p2align	4, , 16
+.LBB4_69:                               #   in Loop: Header=BB4_71 Depth=3
+	ld.d	$s4, $s1, 0
+	ld.d	$s5, $s1, 8
+.LBB4_70:                               #   in Loop: Header=BB4_71 Depth=3
+	ld.bu	$a0, $s4, 0
+	pcalau12i	$a1, %got_pc_hi20(jpeg_natural_order)
+	ld.d	$a1, $a1, %got_pc_lo12(jpeg_natural_order)
+	ldx.w	$a1, $a1, $s2
+	slli.d	$a1, $a1, 1
+	stx.h	$a0, $s0, $a1
+	addi.d	$s5, $s5, -1
+	addi.d	$s2, $s2, 4
+	addi.d	$s4, $s4, 1
+	ori	$a0, $zero, 256
+	beq	$s2, $a0, .LBB4_73
+.LBB4_71:                               # %.split.us.i
+                                        #   Parent Loop BB4_3 Depth=1
+                                        #     Parent Loop BB4_53 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	bnez	$s5, .LBB4_70
+# %bb.72:                               #   in Loop: Header=BB4_71 Depth=3
+	ld.d	$a1, $s1, 24
+	move	$a0, $fp
+	jirl	$ra, $a1, 0
+	bnez	$a0, .LBB4_69
+	b	.LBB4_232
 	.p2align	4, , 16
 .LBB4_73:                               # %.split155.us.i
                                         #   in Loop: Header=BB4_53 Depth=2
@@ -978,9 +986,8 @@ read_markers:                           # @read_markers
 	b	.LBB4_52
 .LBB4_75:                               # %get_dqt.exit
                                         #   in Loop: Header=BB4_3 Depth=1
-	st.d	$s5, $s1, 0
-	st.d	$s6, $s1, 8
-	ori	$s6, $zero, 255
+	st.d	$s4, $s1, 0
+	st.d	$s5, $s1, 8
 	ori	$s1, $zero, 253
 	b	.LBB4_2
 .LBB4_76:                               #   in Loop: Header=BB4_3 Depth=1
@@ -1050,7 +1057,7 @@ read_markers:                           # @read_markers
 .LBB4_89:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.bu	$a2, $a0, 0
 	slli.d	$a3, $s1, 8
-	addi.d	$s3, $a1, -1
+	addi.d	$s7, $a1, -1
 	or	$a1, $a3, $a2
 	addi.d	$s2, $a0, 1
 	ori	$a0, $zero, 3
@@ -1062,47 +1069,47 @@ read_markers:                           # @read_markers
 	.p2align	4, , 16
 .LBB4_91:                               #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $fp, 256
-	alsl.d	$a0, $s7, $a0, 3
+	alsl.d	$a0, $s8, $a0, 3
 	addi.d	$a1, $fp, 224
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	alsl.d	$a1, $a2, $a1, 3
-	masknez	$a0, $a0, $s4
-	maskeqz	$a1, $a1, $s4
-	or	$s4, $a1, $a0
-	ld.d	$a0, $s4, 0
+	masknez	$a0, $a0, $s1
+	maskeqz	$a1, $a1, $s1
+	or	$s1, $a1, $a0
+	ld.d	$a0, $s1, 0
 	beqz	$a0, .LBB4_157
 .LBB4_92:                               #   in Loop: Header=BB4_93 Depth=2
 	st.b	$zero, $a0, 0
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	st.b	$a1, $a0, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.b	$a1, $a0, 2
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.b	$a1, $a0, 3
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	st.b	$a1, $a0, 4
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	st.b	$a1, $a0, 5
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	st.b	$a1, $a0, 6
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	st.b	$a1, $a0, 7
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	st.b	$a1, $a0, 8
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	st.b	$a1, $a0, 9
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	st.b	$a1, $a0, 10
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.b	$a1, $a0, 11
-	st.b	$s5, $a0, 12
-	st.b	$s6, $a0, 13
-	st.b	$s8, $a0, 14
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
-	st.b	$a1, $a0, 15
-	st.b	$s1, $a0, 16
-	ld.d	$a0, $s4, 0
+	st.b	$s3, $a0, 12
+	st.b	$s4, $a0, 13
+	st.b	$s5, $a0, 14
+	st.b	$s6, $a0, 15
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	st.b	$a1, $a0, 16
+	ld.d	$a0, $s1, 0
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$s1, $a2, $a1
 	addi.d	$a0, $a0, 17
@@ -1116,7 +1123,7 @@ read_markers:                           # @read_markers
 .LBB4_93:                               #   Parent Loop BB4_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB4_151 Depth 3
-	bnez	$s3, .LBB4_96
+	bnez	$s7, .LBB4_96
 # %bb.94:                               #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
@@ -1124,11 +1131,11 @@ read_markers:                           # @read_markers
 	beqz	$a0, .LBB4_232
 # %bb.95:                               #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$s2, $s0, 0
-	ld.d	$s3, $s0, 8
+	ld.d	$s7, $s0, 8
 .LBB4_96:                               #   in Loop: Header=BB4_93 Depth=2
 	ld.bu	$a1, $s2, 0
 	ld.d	$a0, $fp, 0
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	st.w	$a1, $a0, 44
 	ld.d	$a1, $fp, 0
 	ld.d	$a2, $a1, 8
@@ -1137,72 +1144,72 @@ read_markers:                           # @read_markers
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	addi.d	$a1, $s3, -1
+	addi.d	$a1, $s7, -1
 	beqz	$a1, .LBB4_113
 # %bb.97:                               #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $s2, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_115
 .LBB4_98:                               #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_117
 .LBB4_99:                               #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_119
 .LBB4_100:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_121
 .LBB4_101:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_123
 .LBB4_102:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_125
 .LBB4_103:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_127
 .LBB4_104:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_129
 .LBB4_105:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_131
 .LBB4_106:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_133
 .LBB4_107:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_135
 .LBB4_108:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1212,25 +1219,23 @@ read_markers:                           # @read_markers
 	beqz	$a1, .LBB4_137
 .LBB4_109:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
-	ld.bu	$s6, $a0, 0
+	ld.bu	$s4, $a0, 0
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_139
 .LBB4_110:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
-	ld.bu	$s8, $a0, 0
+	ld.bu	$s5, $a0, 0
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_141
 .LBB4_111:                              #   in Loop: Header=BB4_93 Depth=2
 	addi.d	$a0, $a0, 1
-	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
+	ld.bu	$s6, $a0, 0
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB4_143
 .LBB4_112:                              #   in Loop: Header=BB4_93 Depth=2
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	move	$s5, $s3
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	move	$a5, $s1
-	addi.d	$t4, $a0, 1
+	addi.d	$t6, $a0, 1
 	b	.LBB4_145
 	.p2align	4, , 16
 .LBB4_113:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1242,7 +1247,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_98
 .LBB4_115:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1254,7 +1259,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_99
 .LBB4_117:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1266,7 +1271,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_100
 .LBB4_119:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1278,7 +1283,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_101
 .LBB4_121:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1290,7 +1295,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_102
 .LBB4_123:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1302,7 +1307,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_103
 .LBB4_125:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1314,7 +1319,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_104
 .LBB4_127:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1326,7 +1331,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_105
 .LBB4_129:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1338,7 +1343,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 80                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_106
 .LBB4_131:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1350,7 +1355,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_107
 .LBB4_133:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1362,7 +1367,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_108
 .LBB4_135:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1384,7 +1389,7 @@ read_markers:                           # @read_markers
 # %bb.138:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
-	ld.bu	$s6, $a0, 0
+	ld.bu	$s4, $a0, 0
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_110
 .LBB4_139:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1395,7 +1400,7 @@ read_markers:                           # @read_markers
 # %bb.140:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
-	ld.bu	$s8, $a0, 0
+	ld.bu	$s5, $a0, 0
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_111
 .LBB4_141:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1406,8 +1411,7 @@ read_markers:                           # @read_markers
 # %bb.142:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
-	ld.bu	$a2, $a0, 0
-	st.d	$a2, $sp, 160                   # 8-byte Folded Spill
+	ld.bu	$s6, $a0, 0
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB4_112
 .LBB4_143:                              #   in Loop: Header=BB4_93 Depth=2
@@ -1416,40 +1420,39 @@ read_markers:                           # @read_markers
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB4_232
 # %bb.144:                              #   in Loop: Header=BB4_93 Depth=2
-	move	$s5, $s3
 	move	$a5, $s1
-	ld.d	$t4, $s0, 0
+	ld.d	$t6, $s0, 0
 	ld.d	$a0, $s0, 8
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 .LBB4_145:                              #   in Loop: Header=BB4_93 Depth=2
-	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	add.d	$a0, $a3, $a2
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a4
-	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a6
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 112                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a7
-	ld.d	$t0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 104                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $t0
-	ld.d	$t1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 96                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $t1
-	ld.d	$t2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $t2
-	ld.d	$t5, $sp, 168                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $t5
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $s7
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	add.d	$a0, $a0, $s8
 	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $s2
-	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	add.d	$a0, $a0, $s3
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	add.d	$a0, $a0, $s5
 	ld.d	$a1, $fp, 0
-	add.d	$a0, $a0, $s6
-	add.d	$a0, $a0, $s8
-	st.d	$t4, $sp, 24                    # 8-byte Folded Spill
-	ld.bu	$s4, $t4, 0
+	add.d	$a0, $a0, $s4
+	add.d	$a0, $a0, $s5
+	st.d	$t6, $sp, 16                    # 8-byte Folded Spill
+	ld.bu	$s1, $t6, 0
 	st.w	$a2, $a1, 44
 	st.w	$a3, $a1, 48
 	st.w	$a4, $a1, 52
@@ -1461,26 +1464,26 @@ read_markers:                           # @read_markers
 	ori	$a2, $zero, 85
 	st.w	$a2, $a1, 40
 	ld.d	$a2, $a1, 8
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	add.d	$a0, $a0, $s7
-	add.d	$s1, $a0, $s4
+	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $s1
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	addi.d	$a0, $a5, -17
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ori	$a1, $zero, 2
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	ld.d	$a0, $fp, 0
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	st.w	$a1, $a0, 44
-	st.w	$s2, $a0, 48
-	st.w	$s3, $a0, 52
-	st.w	$s5, $a0, 56
-	st.w	$s6, $a0, 60
-	st.w	$s8, $a0, 64
+	st.w	$s7, $a0, 44
+	st.w	$s8, $a0, 48
+	st.w	$s2, $a0, 52
+	st.w	$s3, $a0, 56
+	st.w	$s4, $a0, 60
+	st.w	$s5, $a0, 64
 	ld.d	$a2, $a0, 8
-	st.w	$s7, $a0, 68
-	move	$s7, $s4
-	st.w	$s4, $a0, 72
+	st.w	$s6, $a0, 68
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.w	$s1, $a0, 72
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	ori	$a1, $zero, 85
 	st.w	$a1, $a0, 40
 	ori	$a1, $zero, 2
@@ -1499,39 +1502,37 @@ read_markers:                           # @read_markers
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .LBB4_148:                              #   in Loop: Header=BB4_93 Depth=2
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	addi.d	$s3, $a1, -1
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$s7, $a1, -1
 	beqz	$s1, .LBB4_154
 # %bb.149:                              # %.lr.ph.i78.preheader
                                         #   in Loop: Header=BB4_93 Depth=2
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	add.d	$a1, $a1, $s3
+	add.d	$a1, $a1, $s4
 	add.d	$a1, $a1, $s5
 	add.d	$a1, $a1, $s6
-	add.d	$a1, $a1, $s8
-	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
-	add.d	$a1, $a1, $a2
-	move	$s1, $s7
-	add.w	$s7, $a1, $s7
-	addi.d	$s4, $sp, 200
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	add.w	$s8, $a1, $a2
+	addi.d	$s1, $sp, 200
 	b	.LBB4_151
 	.p2align	4, , 16
 .LBB4_150:                              #   in Loop: Header=BB4_151 Depth=3
 	ld.b	$a1, $a0, 0
-	addi.d	$s3, $s3, -1
-	addi.d	$s2, $a0, 1
-	st.b	$a1, $s4, 0
 	addi.d	$s7, $s7, -1
-	addi.d	$s4, $s4, 1
+	addi.d	$s2, $a0, 1
+	st.b	$a1, $s1, 0
+	addi.d	$s8, $s8, -1
+	addi.d	$s1, $s1, 1
 	move	$a0, $s2
-	beqz	$s7, .LBB4_155
+	beqz	$s8, .LBB4_155
 .LBB4_151:                              # %.lr.ph.i78
                                         #   Parent Loop BB4_3 Depth=1
                                         #     Parent Loop BB4_93 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	bnez	$s3, .LBB4_150
+	bnez	$s7, .LBB4_150
 # %bb.152:                              #   in Loop: Header=BB4_151 Depth=3
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
@@ -1539,19 +1540,18 @@ read_markers:                           # @read_markers
 	beqz	$a0, .LBB4_232
 # %bb.153:                              #   in Loop: Header=BB4_151 Depth=3
 	ld.d	$a0, $s0, 0
-	ld.d	$s3, $s0, 8
+	ld.d	$s7, $s0, 8
 	b	.LBB4_150
 .LBB4_154:                              #   in Loop: Header=BB4_93 Depth=2
 	move	$s2, $a0
-	move	$s1, $s7
 .LBB4_155:                              # %._crit_edge.i82
                                         #   in Loop: Header=BB4_93 Depth=2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	andi	$a0, $a1, 16
-	sltui	$s4, $a0, 1
-	addi.d	$s7, $a1, -16
-	masknez	$a0, $s7, $s4
-	maskeqz	$a1, $a1, $s4
+	sltui	$s1, $a0, 1
+	addi.d	$s8, $a1, -16
+	masknez	$a0, $s8, $s1
+	maskeqz	$a1, $a1, $s1
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 4
 	blt	$a0, $a1, .LBB4_91
@@ -1569,12 +1569,12 @@ read_markers:                           # @read_markers
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(jpeg_alloc_huff_table)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s4, 0
+	st.d	$a0, $s1, 0
 	b	.LBB4_92
 .LBB4_158:                              # %get_dht.exit
                                         #   in Loop: Header=BB4_3 Depth=1
 	st.d	$s2, $s0, 0
-	st.d	$s3, $s0, 8
+	st.d	$s7, $s0, 8
 	ori	$s1, $zero, 253
 	b	.LBB4_2
 .LBB4_159:                              #   in Loop: Header=BB4_3 Depth=1

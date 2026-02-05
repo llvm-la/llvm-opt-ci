@@ -374,9 +374,9 @@ gs_type1_interpret:                     # @gs_type1_interpret
                                         #     Child Loop BB4_9 Depth 2
                                         #     Child Loop BB4_14 Depth 2
 	ld.d	$fp, $a1, 0
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	ld.hu	$s2, $a1, 8
 	move	$s8, $s6
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	bgtz	$a3, .LBB4_8
 .LBB4_7:                                #   in Loop: Header=BB4_6 Depth=1
 	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
@@ -1398,10 +1398,10 @@ gs_type1_interpret:                     # @gs_type1_interpret
 	ld.w	$a3, $a0, 24
 	addi.d	$s8, $s6, -8
 	addi.d	$a1, $a1, 16
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$a7, $sp, 200
 	ori	$a4, $zero, 1
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	bgtz	$a3, .LBB4_8
 	b	.LBB4_7
 .LBB4_125:                              #   in Loop: Header=BB4_6 Depth=1
@@ -1454,17 +1454,15 @@ gs_type1_interpret:                     # @gs_type1_interpret
 	ld.w	$a0, $s0, 24
 	beqz	$a0, .LBB4_133
 # %bb.131:
-	ld.d	$a1, $s0, 480
+	fld.d	$fa0, $s0, 480
 	ld.d	$a0, $s0, 0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	lu52i.d	$a1, $zero, 1011
 	movgr2fr.d	$fa1, $a1
-	ld.d	$a1, $s0, 488
+	fld.d	$fa2, $s0, 488
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
-	movgr2fr.d	$fa2, $a1
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa2, $fa1
 	fcvt.s.d	$fa1, $fa1
@@ -1600,17 +1598,15 @@ gs_type1_interpret:                     # @gs_type1_interpret
 	fld.s	$fa4, $sp, 200
 	fld.s	$fa5, $sp, 204
 .LBB4_145:
-	ld.d	$a1, $s0, 480
+	fld.d	$fa0, $s0, 480
 	ld.d	$a0, $s0, 0
-	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	lu52i.d	$a1, $zero, 1011
 	movgr2fr.d	$fa1, $a1
-	ld.d	$a1, $s0, 488
+	fld.d	$fa6, $s0, 488
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
-	movgr2fr.d	$fa6, $a1
 	ffint.d.l	$fa6, $fa6
 	fmul.d	$fa1, $fa6, $fa1
 	fcvt.s.d	$fa1, $fa1

@@ -187,7 +187,7 @@ GCC_except_table1:
 	.type	_ZN15ICompressFilterD0Ev,@function
 _ZN15ICompressFilterD0Ev:               # @_ZN15ICompressFilterD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end2:
 	.size	_ZN15ICompressFilterD0Ev, .Lfunc_end2-_ZN15ICompressFilterD0Ev
                                         # -- End function
@@ -197,7 +197,7 @@ _ZN15ICompressFilterD0Ev:               # @_ZN15ICompressFilterD0Ev
 	.type	_ZN18ICryptoSetPasswordD0Ev,@function
 _ZN18ICryptoSetPasswordD0Ev:            # @_ZN18ICryptoSetPasswordD0Ev
 # %bb.0:
-	amswap.w	$zero, $ra, $zero
+	ud	0
 .Lfunc_end3:
 	.size	_ZN18ICryptoSetPasswordD0Ev, .Lfunc_end3-_ZN18ICryptoSetPasswordD0Ev
                                         # -- End function

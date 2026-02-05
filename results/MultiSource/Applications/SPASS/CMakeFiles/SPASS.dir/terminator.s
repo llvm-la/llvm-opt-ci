@@ -50,17 +50,18 @@ red_Terminator:                         # @red_Terminator
 	bltz	$a0, .LBB0_3
 # %bb.1:                                # %.lr.ph.i
 	move	$s4, $zero
-	move	$s6, $zero
+	move	$a0, $zero
 	addi.w	$s5, $zero, -1
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, 56
-	ldx.d	$s7, $a0, $s4
+	ld.d	$a1, $s2, 56
+	ldx.d	$s6, $a1, $s4
+	move	$s7, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $a0, 8
-	st.d	$s6, $a0, 0
+	st.d	$s6, $a0, 8
+	st.d	$s7, $a0, 0
 	ld.w	$a1, $s2, 64
 	ld.w	$a2, $s2, 68
 	ld.w	$a3, $s2, 72
@@ -69,7 +70,6 @@ red_Terminator:                         # @red_Terminator
 	addi.w	$a1, $a1, -1
 	addi.d	$s5, $s5, 1
 	addi.d	$s4, $s4, 8
-	move	$s6, $a0
 	blt	$s5, $a1, .LBB0_2
 	b	.LBB0_4
 .LBB0_3:
@@ -154,19 +154,19 @@ red_SearchTerminator:                   # @red_SearchTerminator
 	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
-	move	$s0, $a7
-	move	$s2, $a6
 	st.d	$a5, $sp, 104                   # 8-byte Folded Spill
 	move	$s7, $a2
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	beqz	$a1, .LBB1_71
 # %bb.1:
-	move	$s3, $a3
+	move	$s0, $a3
 	move	$fp, $a1
+	st.d	$a6, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(red_TerminatorLitIsBetter)
 	addi.d	$a3, $a0, %pc_lo12(red_TerminatorLitIsBetter)
 	move	$a0, $a1
-	move	$a1, $s3
+	move	$a1, $s0
 	st.d	$a4, $sp, 144                   # 8-byte Folded Spill
 	move	$a2, $a4
 	pcaddu18i	$ra, %call36(clause_MoveBestLiteralToFront)
@@ -177,8 +177,6 @@ red_SearchTerminator:                   # @red_SearchTerminator
 	pcalau12i	$a2, %got_pc_hi20(fol_NOT)
 	ld.d	$s1, $a2, %got_pc_lo12(fol_NOT)
 	ld.w	$a2, $s1, 0
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
 	bne	$a1, $a2, .LBB1_3
 # %bb.2:
 	ld.d	$a0, $a0, 16
@@ -189,8 +187,8 @@ red_SearchTerminator:                   # @red_SearchTerminator
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	st.d	$s3, $sp, 56                    # 8-byte Folded Spill
-	move	$a0, $s3
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(subst_Apply)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
@@ -207,7 +205,7 @@ red_SearchTerminator:                   # @red_SearchTerminator
 	pcalau12i	$a0, %got_pc_hi20(cont_RIGHTCONTEXT)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_RIGHTCONTEXT)
 	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
+	move	$a1, $zero
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
@@ -226,8 +224,7 @@ red_SearchTerminator:                   # @red_SearchTerminator
 	ld.d	$a0, $a3, 16
 	ld.d	$a0, $a0, 0
 	st.d	$a2, $a0, 8
-	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ori	$a1, $zero, 1
 .LBB1_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_9 Depth 2
                                         #       Child Loop BB1_11 Depth 3
@@ -244,6 +241,7 @@ red_SearchTerminator:                   # @red_SearchTerminator
                                         #       Child Loop BB1_61 Depth 3
                                         #     Child Loop BB1_68 Depth 2
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	beqz	$a0, .LBB1_64
 # %bb.6:                                # %.lr.ph52.i
                                         #   in Loop: Header=BB1_5 Depth=1
@@ -846,8 +844,8 @@ red_SearchTerminator:                   # @red_SearchTerminator
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $zero
-	move	$a3, $s2
-	move	$a4, $s0
+	move	$a3, $a6
+	move	$a4, $a7
 	pcaddu18i	$ra, %call36(clause_Create)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0

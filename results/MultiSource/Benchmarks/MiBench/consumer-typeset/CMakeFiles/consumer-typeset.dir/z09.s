@@ -18,7 +18,7 @@ SearchEnv:                              # @SearchEnv
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a1
-	move	$s2, $a0
+	move	$s3, $a0
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$s6, $a0, %got_pc_lo12(no_fpos)
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -27,7 +27,7 @@ SearchEnv:                              # @SearchEnv
 	addi.d	$s1, $a0, %pc_lo12(.L.str.1)
 	ori	$s7, $zero, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.3)
+	addi.d	$s2, $a0, %pc_lo12(.L.str.3)
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.2)
 	ori	$s8, $zero, 82
@@ -35,9 +35,9 @@ SearchEnv:                              # @SearchEnv
 .LBB0_1:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_5 Depth 2
                                         #     Child Loop BB0_12 Depth 2
-	beqz	$s2, .LBB0_3
+	beqz	$s3, .LBB0_3
 # %bb.2:                                #   in Loop: Header=BB0_1 Depth=1
-	ld.bu	$a0, $s2, 32
+	ld.bu	$a0, $s3, 32
 	beq	$a0, $s8, .LBB0_4
 .LBB0_3:                                #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a4, $s6, 0
@@ -49,8 +49,8 @@ SearchEnv:                              # @SearchEnv
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB0_4:                                #   in Loop: Header=BB0_1 Depth=1
-	ld.d	$s5, $s2, 8
-	beq	$s5, $s2, .LBB0_15
+	ld.d	$s5, $s3, 8
+	beq	$s5, $s3, .LBB0_15
 	.p2align	4, , 16
 .LBB0_5:                                # %.preheader
                                         #   Parent Loop BB0_1 Depth=1
@@ -78,17 +78,17 @@ SearchEnv:                              # @SearchEnv
 	ld.d	$a0, $s5, 0
 	beq	$a0, $s5, .LBB0_13
 # %bb.10:                               #   in Loop: Header=BB0_1 Depth=1
-	ld.d	$a0, $s2, 0
-	ld.d	$a1, $s2, 8
+	ld.d	$a0, $s3, 0
+	ld.d	$a1, $s3, 8
 	beq	$a0, $a1, .LBB0_14
 .LBB0_11:                               # %.preheader40
                                         #   in Loop: Header=BB0_1 Depth=1
-	move	$s2, $a0
+	move	$s3, $a0
 	.p2align	4, , 16
 .LBB0_12:                               #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$s2, $s2, 16
-	ld.bu	$a0, $s2, 32
+	ld.d	$s3, $s3, 16
+	ld.bu	$a0, $s3, 32
 	beqz	$a0, .LBB0_12
 	b	.LBB0_1
 	.p2align	4, , 16
@@ -98,11 +98,11 @@ SearchEnv:                              # @SearchEnv
 	ori	$a1, $zero, 2
 	move	$a2, $s0
 	move	$a3, $zero
-	move	$a5, $s3
+	move	$a5, $s2
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
-	ld.d	$a1, $s2, 8
+	ld.d	$a0, $s3, 0
+	ld.d	$a1, $s3, 8
 	bne	$a0, $a1, .LBB0_11
 .LBB0_14:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $s5, 0
@@ -145,10 +145,10 @@ SetEnv:                                 # @SetEnv
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a1
-	move	$s0, $a0
+	move	$s1, $a0
 	beqz	$a0, .LBB1_2
 # %bb.1:
-	ld.bu	$a0, $s0, 32
+	ld.bu	$a0, $s1, 32
 	ori	$a1, $zero, 2
 	beq	$a0, $a1, .LBB1_3
 .LBB1_2:
@@ -193,14 +193,14 @@ SetEnv:                                 # @SetEnv
 	pcalau12i	$a1, %got_pc_hi20(zz_free)
 	ld.d	$s2, $a1, %got_pc_lo12(zz_free)
 	slli.d	$a1, $a0, 3
-	ldx.d	$s1, $s2, $a1
-	beqz	$s1, .LBB1_8
+	ldx.d	$s0, $s2, $a1
+	beqz	$s0, .LBB1_8
 # %bb.7:
 	alsl.d	$a0, $a0, $s2, 3
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
-	st.d	$s1, $a1, 0
-	ld.d	$a1, $s1, 0
+	st.d	$s0, $a1, 0
+	ld.d	$a1, $s0, 0
 	st.d	$a1, $a0, 0
 	b	.LBB1_9
 .LBB1_8:
@@ -209,18 +209,18 @@ SetEnv:                                 # @SetEnv
 	ld.d	$a1, $a1, 0
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %got_pc_hi20(zz_hold)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_hold)
-	st.d	$s1, $a0, 0
+	st.d	$s0, $a0, 0
 .LBB1_9:
 	ori	$a0, $zero, 82
-	st.b	$a0, $s1, 32
-	st.d	$s1, $s1, 0
+	st.b	$a0, $s0, 32
+	st.d	$s0, $s0, 0
 	ld.bu	$a2, $s4, 0
-	st.d	$s1, $s1, 24
-	st.d	$s1, $s1, 16
-	st.d	$s1, $s1, 8
+	st.d	$s0, $s0, 24
+	st.d	$s0, $s0, 16
+	st.d	$s0, $s0, 8
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $s2, $a0
 	st.w	$a2, $s3, 0
@@ -254,13 +254,13 @@ SetEnv:                                 # @SetEnv
 	st.d	$a0, $s7, 0
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$s8, $a1, %got_pc_lo12(zz_hold)
-	st.d	$s1, $s8, 0
-	ld.d	$a1, $s1, 0
+	st.d	$s0, $s8, 0
+	ld.d	$a1, $s0, 0
 	pcalau12i	$a2, %got_pc_hi20(zz_tmp)
 	ld.d	$s6, $a2, %got_pc_lo12(zz_tmp)
 	st.d	$a1, $s6, 0
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s0, 0
 	ld.d	$a0, $s7, 0
 	ld.d	$a1, $s8, 0
 	ld.d	$a2, $a0, 0
@@ -271,16 +271,16 @@ SetEnv:                                 # @SetEnv
 	ld.d	$a0, $s5, 0
 	st.d	$a1, $a3, 8
 	st.d	$a0, $s7, 0
-	st.d	$s0, $s8, 0
-	beqz	$s0, .LBB1_15
+	st.d	$s1, $s8, 0
+	beqz	$s1, .LBB1_15
 # %bb.13:
 	beqz	$a0, .LBB1_15
 # %bb.14:
-	ld.d	$a1, $s0, 16
+	ld.d	$a1, $s1, 16
 	ld.d	$a2, $a0, 16
 	st.d	$a1, $s6, 0
-	st.d	$a2, $s0, 16
-	st.d	$s0, $a2, 24
+	st.d	$a2, $s1, 16
+	st.d	$s1, $a2, 24
 	st.d	$a1, $a0, 16
 	st.d	$a0, $a1, 24
 .LBB1_15:
@@ -312,11 +312,11 @@ SetEnv:                                 # @SetEnv
 	st.d	$a0, $a0, 0
 	st.d	$a0, $s5, 0
 	st.d	$a0, $s7, 0
-	st.d	$s1, $s8, 0
-	ld.d	$a1, $s1, 0
+	st.d	$s0, $s8, 0
+	ld.d	$a1, $s0, 0
 	st.d	$a1, $s6, 0
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $s1, 0
+	st.d	$a0, $s0, 0
 	ld.d	$a0, $s7, 0
 	ld.d	$a1, $s8, 0
 	ld.d	$a2, $a0, 0
@@ -338,7 +338,7 @@ SetEnv:                                 # @SetEnv
 	st.d	$a1, $a0, 16
 	st.d	$a0, $a1, 24
 .LBB1_21:
-	move	$a0, $s1
+	move	$a0, $s0
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -989,7 +989,7 @@ ClosureExpand:                          # @ClosureExpand
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB5_58
 # %bb.32:
-	move	$s3, $a0
+	move	$s4, $a0
 	ld.bu	$a0, $a0, 32
 	ori	$a1, $zero, 2
 	beq	$a0, $a1, .LBB5_34
@@ -1007,8 +1007,8 @@ ClosureExpand:                          # @ClosureExpand
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB5_34:
-	ld.d	$s5, $s3, 0
-	bne	$s5, $s3, .LBB5_36
+	ld.d	$s5, $s4, 0
+	bne	$s5, $s4, .LBB5_36
 # %bb.35:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -1022,7 +1022,7 @@ ClosureExpand:                          # @ClosureExpand
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $s3, 0
+	ld.d	$s5, $s4, 0
 	.p2align	4, , 16
 .LBB5_36:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$s5, $s5, 16
@@ -1045,8 +1045,8 @@ ClosureExpand:                          # @ClosureExpand
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB5_39:                               # %GetEnv.exit
-	ld.d	$a0, $s3, 8
-	beq	$a0, $s3, .LBB5_74
+	ld.d	$a0, $s4, 8
+	beq	$a0, $s4, .LBB5_74
 # %bb.40:                               # %.preheader.preheader
 	ori	$a1, $zero, 10
 	b	.LBB5_42
@@ -1054,7 +1054,7 @@ ClosureExpand:                          # @ClosureExpand
 .LBB5_41:                               # %.loopexit
                                         #   in Loop: Header=BB5_42 Depth=1
 	ld.d	$a0, $a0, 8
-	beq	$a0, $s3, .LBB5_74
+	beq	$a0, $s4, .LBB5_74
 .LBB5_42:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_43 Depth 2
@@ -1089,11 +1089,11 @@ ClosureExpand:                          # @ClosureExpand
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s6, 8
 .LBB5_48:
-	move	$s4, $a0
+	move	$s3, $a0
 	.p2align	4, , 16
 .LBB5_49:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s4, $s4, 16
-	ld.bu	$a1, $s4, 32
+	ld.d	$s3, $s3, 16
+	ld.bu	$a1, $s3, 32
 	beqz	$a1, .LBB5_49
 # %bb.50:
 	ld.d	$a1, $s6, 80
@@ -1120,7 +1120,7 @@ ClosureExpand:                          # @ClosureExpand
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
 .LBB5_54:
-	addi.d	$a2, $s4, 32
+	addi.d	$a2, $s3, 32
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$fp, $a1, %got_pc_lo12(zz_hold)
 	ld.d	$a1, $a0, 8
@@ -1219,10 +1219,10 @@ ClosureExpand:                          # @ClosureExpand
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	ld.d	$a1, $a0, 0
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(CopyObject)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s3, $a0
 .LBB5_61:
 	ld.d	$a0, $s0, 24
 	beq	$a0, $s0, .LBB5_64
@@ -1237,21 +1237,21 @@ ClosureExpand:                          # @ClosureExpand
 	st.d	$a0, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(zz_res)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_res)
-	st.d	$s4, $a1, 0
+	st.d	$s3, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a1, 0
-	beqz	$s4, .LBB5_65
+	beqz	$s3, .LBB5_65
 # %bb.63:
 	ld.d	$a1, $a0, 16
 	pcalau12i	$a2, %got_pc_hi20(zz_tmp)
 	ld.d	$a2, $a2, %got_pc_lo12(zz_tmp)
-	ld.d	$a3, $s4, 16
+	ld.d	$a3, $s3, 16
 	st.d	$a1, $a2, 0
 	st.d	$a3, $a0, 16
 	st.d	$a0, $a3, 24
-	st.d	$a1, $s4, 16
-	st.d	$s4, $a1, 24
+	st.d	$a1, $s3, 16
+	st.d	$s3, $a1, 24
 	b	.LBB5_65
 .LBB5_64:                               # %.thread134
 	pcalau12i	$a0, %got_pc_hi20(xx_tmp)
@@ -1259,7 +1259,7 @@ ClosureExpand:                          # @ClosureExpand
 	st.d	$zero, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(zz_res)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_res)
-	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(zz_hold)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_hold)
 	st.d	$zero, $a0, 0
@@ -1277,7 +1277,7 @@ ClosureExpand:                          # @ClosureExpand
 	andi	$a0, $a0, 256
 	beqz	$a0, .LBB5_70
 # %bb.68:
-	move	$a0, $s3
+	move	$a0, $s4
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(SetEnv)
 	jirl	$ra, $ra, 0
@@ -1302,7 +1302,7 @@ ClosureExpand:                          # @ClosureExpand
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s7, 0
 .LBB5_72:
-	beqz	$s4, .LBB5_74
+	beqz	$s3, .LBB5_74
 # %bb.73:                               # %thread-pre-split
 	ld.d	$a0, $s7, 0
 	bnez	$a0, .LBB5_81
@@ -1315,7 +1315,7 @@ ClosureExpand:                          # @ClosureExpand
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(CopyObject)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	ld.d	$a0, $s0, 24
 	beq	$a0, $s0, .LBB5_79
 .LBB5_76:
@@ -1329,21 +1329,21 @@ ClosureExpand:                          # @ClosureExpand
 	st.d	$a0, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(zz_res)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_res)
-	st.d	$s4, $a1, 0
+	st.d	$s3, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
 	ld.d	$a1, $a1, %got_pc_lo12(zz_hold)
 	st.d	$a0, $a1, 0
-	beqz	$s4, .LBB5_80
+	beqz	$s3, .LBB5_80
 # %bb.77:
 	ld.d	$a1, $a0, 16
 	pcalau12i	$a2, %got_pc_hi20(zz_tmp)
 	ld.d	$a2, $a2, %got_pc_lo12(zz_tmp)
-	ld.d	$a3, $s4, 16
+	ld.d	$a3, $s3, 16
 	st.d	$a1, $a2, 0
 	st.d	$a3, $a0, 16
 	st.d	$a0, $a3, 24
-	st.d	$a1, $s4, 16
-	st.d	$s4, $a1, 24
+	st.d	$a1, $s3, 16
+	st.d	$s3, $a1, 24
 	b	.LBB5_80
 .LBB5_78:
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
@@ -1352,7 +1352,7 @@ ClosureExpand:                          # @ClosureExpand
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(MakeWord)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	ld.d	$a0, $s0, 24
 	bne	$a0, $s0, .LBB5_76
 .LBB5_79:                               # %.thread139
@@ -1361,7 +1361,7 @@ ClosureExpand:                          # @ClosureExpand
 	st.d	$zero, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(zz_res)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_res)
-	st.d	$s4, $a0, 0
+	st.d	$s3, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(zz_hold)
 	ld.d	$a0, $a0, %got_pc_lo12(zz_hold)
 	st.d	$zero, $a0, 0
@@ -1394,7 +1394,7 @@ ClosureExpand:                          # @ClosureExpand
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB5_83:
-	move	$a0, $s4
+	move	$a0, $s3
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload

@@ -97,8 +97,7 @@ hitRate:                                # @hitRate
 	beqz	$a0, .LBB2_2
 # %bb.1:
 	pcalau12i	$a1, %pc_hi20(hits)
-	ld.d	$a1, $a1, %pc_lo12(hits)
-	movgr2fr.d	$fa0, $a1
+	fld.d	$fa0, $a1, %pc_lo12(hits)
 	ffint.d.l	$fa0, $fa0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
@@ -805,8 +804,7 @@ htstat:                                 # @htstat
 	beqz	$a0, .LBB8_7
 # %bb.6:
 	pcalau12i	$a1, %pc_hi20(hits)
-	ld.d	$a1, $a1, %pc_lo12(hits)
-	movgr2fr.d	$fa0, $a1
+	fld.d	$fa0, $a1, %pc_lo12(hits)
 	ffint.d.l	$fa0, $fa0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1

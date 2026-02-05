@@ -1216,9 +1216,9 @@ sputs:                                  # @sputs
 .LBB26_8:
 	move	$fp, $zero
 	b	.LBB26_10
-.LBB26_9:                               # %.split.loop.exit48
+.LBB26_9:                               # %.split.loop.exit
 	sub.w	$fp, $fp, $s3
-.LBB26_10:                              # %.split.loop.exit
+.LBB26_10:                              # %.split.loop.exit48
 	move	$a0, $fp
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload

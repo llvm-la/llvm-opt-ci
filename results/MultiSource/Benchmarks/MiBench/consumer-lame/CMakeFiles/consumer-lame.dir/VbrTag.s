@@ -78,18 +78,18 @@ CheckVbrTag:                            # @CheckVbrTag
 	sltui	$a1, $a1, 1
 	ori	$a3, $zero, 191
 	sltu	$a2, $a3, $a2
-	ori	$a3, $zero, 36
-	masknez	$a3, $a3, $a2
-	ori	$a4, $zero, 21
-	maskeqz	$a5, $a4, $a2
-	or	$a3, $a5, $a3
-	masknez	$a4, $a4, $a2
+	ori	$a3, $zero, 21
+	masknez	$a4, $a3, $a2
 	ori	$a5, $zero, 13
-	maskeqz	$a2, $a5, $a2
-	or	$a2, $a2, $a4
-	masknez	$a3, $a3, $a1
-	maskeqz	$a1, $a2, $a1
-	or	$a1, $a1, $a3
+	maskeqz	$a5, $a5, $a2
+	or	$a4, $a5, $a4
+	ori	$a5, $zero, 36
+	masknez	$a5, $a5, $a2
+	maskeqz	$a2, $a3, $a2
+	or	$a2, $a2, $a5
+	masknez	$a2, $a2, $a1
+	maskeqz	$a1, $a4, $a1
+	or	$a1, $a1, $a2
 	ldx.bu	$a2, $a0, $a1
 	ori	$a3, $zero, 88
 	bne	$a2, $a3, .LBB2_4
@@ -125,18 +125,18 @@ GetVbrTag:                              # @GetVbrTag
 	sltui	$a2, $a3, 1
 	ori	$a5, $zero, 191
 	sltu	$a4, $a5, $a4
-	ori	$a5, $zero, 36
-	masknez	$a5, $a5, $a4
-	ori	$a6, $zero, 21
-	maskeqz	$a7, $a6, $a4
-	or	$a5, $a7, $a5
-	masknez	$a6, $a6, $a4
+	ori	$a5, $zero, 21
+	masknez	$a6, $a5, $a4
 	ori	$a7, $zero, 13
-	maskeqz	$a4, $a7, $a4
-	or	$a4, $a4, $a6
-	masknez	$a5, $a5, $a2
-	maskeqz	$a2, $a4, $a2
-	or	$a2, $a2, $a5
+	maskeqz	$a7, $a7, $a4
+	or	$a6, $a7, $a6
+	ori	$a7, $zero, 36
+	masknez	$a7, $a7, $a4
+	maskeqz	$a4, $a5, $a4
+	or	$a4, $a4, $a7
+	masknez	$a4, $a4, $a2
+	maskeqz	$a2, $a6, $a2
+	or	$a2, $a2, $a4
 	ldx.bu	$a4, $a1, $a2
 	ori	$a5, $zero, 88
 	bne	$a4, $a5, .LBB3_6
@@ -339,10 +339,25 @@ InitVbrTag:                             # @InitVbrTag
 .Lfunc_end4:
 	.size	InitVbrTag, .Lfunc_end4-InitVbrTag
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function PutVbrTag
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function PutVbrTag
 .LCPI5_0:
-	.dword	0x3f847ae147ae147b              # double 0.01
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
+	.word	8                               # 0x8
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI5_1:
+	.dword	0x3fef0a3d70a3d70a              # double 0.96999999999999997
+.LCPI5_2:
+	.dword	0x3fef5c28f5c28f5c              # double 0.97999999999999998
+.LCPI5_3:
+	.dword	0x3fefae147ae147ae              # double 0.98999999999999999
 	.text
 	.globl	PutVbrTag
 	.p2align	5
@@ -361,8 +376,8 @@ PutVbrTag:                              # @PutVbrTag
 	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
-	pcalau12i	$s6, %pc_hi20(nVbrNumFrames)
-	ld.w	$a3, $s6, %pc_lo12(nVbrNumFrames)
+	pcalau12i	$s8, %pc_hi20(nVbrNumFrames)
+	ld.w	$a3, $s8, %pc_lo12(nVbrNumFrames)
 	addi.w	$fp, $zero, -1
 	beqz	$a3, .LBB5_8
 # %bb.1:
@@ -370,7 +385,7 @@ PutVbrTag:                              # @PutVbrTag
 	ld.d	$a3, $s3, %pc_lo12(pVbrFrames)
 	beqz	$a3, .LBB5_8
 # %bb.2:
-	move	$s8, $a2
+	move	$s7, $a2
 	move	$s4, $a1
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.2)
@@ -395,25 +410,24 @@ PutVbrTag:                              # @PutVbrTag
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB5_8
-# %bb.4:
+# %bb.4:                                # %vector.ph
 	move	$s2, $a0
-	pcalau12i	$a0, %pc_hi20(TotalFrameSize)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ld.w	$a1, $a0, %pc_lo12(TotalFrameSize)
+	pcalau12i	$s5, %pc_hi20(TotalFrameSize)
+	ld.w	$a1, $s5, %pc_lo12(TotalFrameSize)
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
 	ori	$a2, $zero, 1
-	ori	$s7, $zero, 1
+	ori	$s6, $zero, 1
 	move	$a0, $s1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 255
 	st.b	$a0, $s1, 0
-	sltui	$a0, $s8, 1
+	sltui	$a0, $s7, 1
 	ld.bu	$a1, $s1, 2
 	addi.w	$a2, $zero, -128
 	masknez	$a2, $a2, $a0
@@ -434,59 +448,206 @@ PutVbrTag:                              # @PutVbrTag
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
-	addi.d	$s8, $sp, 96
 	addi.d	$a0, $sp, 96
 	ori	$a2, $zero, 100
-	ori	$s5, $zero, 100
+	addi.d	$s7, $sp, 96
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s6, %pc_lo12(nVbrNumFrames)
+	ld.w	$a0, $s8, %pc_lo12(nVbrNumFrames)
 	movgr2fr.w	$fa0, $a0
-	ffint.d.w	$fa0, $fa0
+	ffint.d.w	$fa1, $fa0
 	ld.d	$a1, $s3, %pc_lo12(pVbrFrames)
-	movgr2fr.d	$fa1, $s2
-	ffint.s.l	$fa1, $fa1
+	movgr2fr.d	$fa0, $s2
+	ffint.s.l	$fa0, $fa0
+	xvreplve0.d	$xr2, $xr1
 	pcalau12i	$a2, %pc_hi20(.LCPI5_0)
-	fld.d	$fa2, $a2, %pc_lo12(.LCPI5_0)
-	lu12i.w	$a2, 276480
-	movgr2fr.w	$fa3, $a2
+	xvld	$xr3, $a2, %pc_lo12(.LCPI5_0)
+	xvreplve0.w	$xr4, $xr0
+	lu12i.w	$a2, 293601
+	ori	$a2, $a2, 1147
+	lu32i.d	$a2, 293601
+	lu52i.d	$a2, $a2, 1016
+	xvreplgr2vr.d	$xr5, $a2
+	lu12i.w	$a3, 276480
+	xvreplgr2vr.w	$xr6, $a3
 	lu12i.w	$a2, 276464
-	movgr2fr.w	$fa4, $a2
-	ori	$a2, $zero, 1
+	xvreplgr2vr.w	$xr7, $a2
+	ori	$a4, $zero, 97
 	.p2align	4, , 16
-.LBB5_5:                                # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a3, $s7, 31, 0
-	movgr2fr.d	$fa5, $a3
-	ffint.d.l	$fa5, $fa5
-	fmul.d	$fa5, $fa5, $fa2
-	fmul.d	$fa5, $fa5, $fa0
+.LBB5_5:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	xvpermi.q	$xr8, $xr3, 1
+	vext2xv.du.wu	$xr8, $xr8
+	xvffint.d.lu	$xr8, $xr8
+	vext2xv.du.wu	$xr9, $xr3
+	xvffint.d.lu	$xr9, $xr9
+	xvfmul.d	$xr8, $xr8, $xr5
+	xvfmul.d	$xr9, $xr9, $xr5
+	xvfmul.d	$xr9, $xr9, $xr2
+	xvfmul.d	$xr8, $xr8, $xr2
+	xvfrintrm.d	$xr8, $xr8
+	xvfrintrm.d	$xr9, $xr9
+	xvftintrz.l.d	$xr9, $xr9
+	xvpermi.d	$xr10, $xr9, 238
+	xvpickev.w	$xr9, $xr10, $xr9
+	xvftintrz.l.d	$xr8, $xr8
+	xvpermi.d	$xr10, $xr8, 238
+	xvpickev.w	$xr8, $xr10, $xr8
+	vpickve2gr.w	$a5, $vr8, 2
+	vinsgr2vr.d	$vr10, $a5, 0
+	vpickve2gr.w	$a5, $vr8, 3
+	vinsgr2vr.d	$vr10, $a5, 1
+	xvpermi.q	$xr10, $xr10, 2
+	vpickve2gr.w	$a5, $vr8, 0
+	vinsgr2vr.d	$vr11, $a5, 0
+	vpickve2gr.w	$a5, $vr8, 1
+	vinsgr2vr.d	$vr11, $a5, 1
+	vpickve2gr.w	$a5, $vr9, 2
+	vinsgr2vr.d	$vr8, $a5, 0
+	vpickve2gr.w	$a5, $vr9, 3
+	vinsgr2vr.d	$vr8, $a5, 1
+	xvpermi.q	$xr8, $xr8, 2
+	vpickve2gr.w	$a5, $vr9, 0
+	vinsgr2vr.d	$vr12, $a5, 0
+	vpickve2gr.w	$a5, $vr9, 1
+	vinsgr2vr.d	$vr12, $a5, 1
+	xvpickve2gr.d	$a5, $xr12, 0
+	xvpickve2gr.d	$a6, $xr12, 1
+	xvpickve2gr.d	$a7, $xr8, 2
+	xvpickve2gr.d	$t0, $xr8, 3
+	xvpickve2gr.d	$t1, $xr11, 0
+	xvpickve2gr.d	$t2, $xr11, 1
+	xvpickve2gr.d	$t3, $xr10, 2
+	xvpickve2gr.d	$t4, $xr10, 3
+	slli.d	$a5, $a5, 2
+	slli.d	$a6, $a6, 2
+	slli.d	$a7, $a7, 2
+	slli.d	$t0, $t0, 2
+	slli.d	$t1, $t1, 2
+	slli.d	$t2, $t2, 2
+	slli.d	$t3, $t3, 2
+	slli.d	$t4, $t4, 2
+	ldx.w	$a5, $a1, $a5
+	ldx.w	$a6, $a1, $a6
+	ldx.w	$a7, $a1, $a7
+	ldx.w	$t0, $a1, $t0
+	ldx.w	$t1, $a1, $t1
+	ldx.w	$t2, $a1, $t2
+	ldx.w	$t3, $a1, $t3
+	ldx.w	$t4, $a1, $t4
+	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vinsgr2vr.w	$vr8, $a7, 2
+	vinsgr2vr.w	$vr8, $t0, 3
+	vinsgr2vr.w	$vr9, $t1, 0
+	vinsgr2vr.w	$vr9, $t2, 1
+	vinsgr2vr.w	$vr9, $t3, 2
+	vinsgr2vr.w	$vr9, $t4, 3
+	xvpermi.q	$xr8, $xr9, 2
+	xvffint.s.w	$xr8, $xr8
+	xvfmul.s	$xr8, $xr8, $xr6
+	xvfdiv.s	$xr8, $xr8, $xr4
+	xvfcmp.clt.s	$xr9, $xr7, $xr8
+	xvbitsel.v	$xr8, $xr8, $xr7, $xr9
+	xvpickve.w	$xr9, $xr8, 0
+	ftintrz.l.s	$ft1, $ft1
+	movfr2gr.d	$a5, $ft1
+	vinsgr2vr.b	$vr9, $a5, 0
+	xvpickve.w	$xr10, $xr8, 1
+	ftintrz.l.s	$ft2, $ft2
+	movfr2gr.d	$a5, $ft2
+	vinsgr2vr.b	$vr9, $a5, 1
+	xvpickve.w	$xr10, $xr8, 2
+	ftintrz.l.s	$ft2, $ft2
+	movfr2gr.d	$a5, $ft2
+	vinsgr2vr.b	$vr9, $a5, 2
+	xvpickve.w	$xr10, $xr8, 3
+	ftintrz.l.s	$ft2, $ft2
+	movfr2gr.d	$a5, $ft2
+	vinsgr2vr.b	$vr9, $a5, 3
+	xvpickve.w	$xr10, $xr8, 4
+	ftintrz.l.s	$ft2, $ft2
+	movfr2gr.d	$a5, $ft2
+	vinsgr2vr.b	$vr9, $a5, 4
+	xvpickve.w	$xr10, $xr8, 5
+	ftintrz.l.s	$ft2, $ft2
+	movfr2gr.d	$a5, $ft2
+	vinsgr2vr.b	$vr9, $a5, 5
+	xvpickve.w	$xr10, $xr8, 6
+	ftintrz.l.s	$ft2, $ft2
+	movfr2gr.d	$a5, $ft2
+	vinsgr2vr.b	$vr9, $a5, 6
+	xvpickve.w	$xr8, $xr8, 7
+	ftintrz.l.s	$ft0, $ft0
+	movfr2gr.d	$a5, $ft0
+	vinsgr2vr.b	$vr9, $a5, 7
+	add.d	$a5, $s7, $s6
+	vstelm.d	$vr9, $a5, 0, 0
+	addi.d	$s6, $s6, 8
+	xvaddi.wu	$xr3, $xr3, 8
+	bne	$s6, $a4, .LBB5_5
+# %bb.6:                                # %scalar.ph
+	pcalau12i	$a4, %pc_hi20(.LCPI5_1)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI5_1)
+	fmul.d	$fa2, $fa1, $fa2
+	vreplvei.d	$vr2, $vr2, 0
+	vfrintrm.d	$vr2, $vr2
+	ftintrz.w.d	$fa2, $fa2
+	movfr2gr.s	$a4, $fa2
+	slli.d	$a4, $a4, 2
+	fldx.s	$fa2, $a1, $a4
+	ffint.s.w	$fa2, $fa2
+	movgr2fr.w	$fa3, $a3
+	fmul.s	$fa2, $fa2, $fa3
+	fdiv.s	$fa2, $fa2, $fa0
+	movgr2fr.w	$fa4, $a2
+	pcalau12i	$a2, %pc_hi20(.LCPI5_2)
+	fld.d	$fa5, $a2, %pc_lo12(.LCPI5_2)
+	fcmp.clt.s	$fcc0, $fa4, $fa2
+	fsel	$fa2, $fa2, $fa4, $fcc0
+	ftintrz.l.s	$fa2, $fa2
+	fmul.d	$fa5, $fa1, $fa5
 	vreplvei.d	$vr5, $vr5, 0
 	vfrintrm.d	$vr5, $vr5
 	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	slli.d	$a3, $a3, 2
-	ldx.w	$a3, $a1, $a3
-	movgr2fr.w	$fa5, $a3
-	ffint.s.w	$fa5, $fa5
-	fmul.s	$fa5, $fa5, $fa3
-	fdiv.s	$fa5, $fa5, $fa1
-	fcmp.clt.s	$fcc0, $fa4, $fa5
-	fsel	$fa5, $fa5, $fa4, $fcc0
-	ftintrz.l.s	$fa5, $fa5
-	movfr2gr.d	$a3, $fa5
-	stx.b	$a3, $a2, $s8
-	addi.d	$a2, $a2, 1
-	addi.w	$s7, $s7, 1
-	bne	$a2, $s5, .LBB5_5
-# %bb.6:
+	movfr2gr.s	$a2, $fa5
+	pcalau12i	$a3, %pc_hi20(.LCPI5_3)
+	fld.d	$fa5, $a3, %pc_lo12(.LCPI5_3)
+	slli.d	$a2, $a2, 2
+	fldx.s	$fa6, $a1, $a2
+	movfr2gr.d	$a2, $fa2
+	fmul.d	$fa1, $fa1, $fa5
+	st.b	$a2, $sp, 193
+	ffint.s.w	$fa2, $fa6
+	fmul.s	$fa2, $fa2, $fa3
+	fdiv.s	$fa2, $fa2, $fa0
+	fcmp.clt.s	$fcc0, $fa4, $fa2
+	fsel	$fa2, $fa2, $fa4, $fcc0
+	vreplvei.d	$vr1, $vr1, 0
+	vfrintrm.d	$vr1, $vr1
+	ftintrz.w.d	$fa1, $fa1
+	movfr2gr.s	$a2, $fa1
+	slli.d	$a2, $a2, 2
+	fldx.s	$fa1, $a1, $a2
+	ftintrz.l.s	$fa2, $fa2
+	movfr2gr.d	$a1, $fa2
+	st.b	$a1, $sp, 194
+	ffint.s.w	$fa1, $fa1
+	fmul.s	$fa1, $fa1, $fa3
+	fdiv.s	$fa0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fa4, $fa0
+	fsel	$fa0, $fa0, $fa4, $fcc0
 	pcalau12i	$a1, %pc_hi20(nZeroStreamSize)
-	ld.w	$s5, $a1, %pc_lo12(nZeroStreamSize)
-	add.d	$a1, $s1, $s5
+	ld.w	$s6, $a1, %pc_lo12(nZeroStreamSize)
+	ftintrz.l.s	$fa0, $fa0
+	movfr2gr.d	$a1, $fa0
+	st.b	$a1, $sp, 195
+	add.d	$a1, $s1, $s6
 	lu12i.w	$a2, 423654
 	ori	$a2, $a2, 2392
 	lu52i.d	$a2, $a2, 240
-	stx.d	$a2, $s1, $s5
+	stx.d	$a2, $s1, $s6
 	srli.d	$a2, $a0, 24
 	st.b	$a2, $a1, 8
 	srli.d	$a2, $a0, 16
@@ -506,10 +667,10 @@ PutVbrTag:                              # @PutVbrTag
 	ori	$a2, $zero, 100
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $s5, 116
+	addi.w	$a0, $s6, 116
 	revb.2w	$a1, $s4
 	stx.w	$a1, $s1, $a0
-	addi.w	$s2, $s5, 120
+	addi.w	$s2, $s6, 120
 	pcaddu18i	$ra, %call36(get_lame_version)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
@@ -523,8 +684,7 @@ PutVbrTag:                              # @PutVbrTag
 	ori	$a2, $zero, 20
 	pcaddu18i	$ra, %call36(strncpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ld.w	$a1, $a0, %pc_lo12(TotalFrameSize)
+	ld.w	$a1, $s5, %pc_lo12(TotalFrameSize)
 	ori	$a2, $zero, 1
 	ori	$s2, $zero, 1
 	move	$a0, $s1

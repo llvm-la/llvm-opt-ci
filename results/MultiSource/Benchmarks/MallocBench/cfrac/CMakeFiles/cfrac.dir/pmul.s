@@ -85,31 +85,31 @@ pmul:                                   # @pmul
 	.p2align	4, , 16
 .LBB0_8:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_9 Depth 2
-	ld.hu	$a5, $a4, 0
-	move	$t0, $zero
+	ld.hu	$a6, $a4, 0
+	move	$a5, $zero
 	ori	$a7, $zero, 8
 	.p2align	4, , 16
 .LBB0_9:                                #   Parent Loop BB0_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.hu	$a6, $fp, $a7
+	ldx.hu	$t0, $fp, $a7
 	ldx.hu	$t1, $a3, $a7
-	mul.d	$a6, $a6, $a5
-	add.d	$t0, $t0, $t1
-	add.w	$a6, $t0, $a6
-	stx.h	$a6, $a3, $a7
+	mul.d	$t0, $t0, $a6
+	add.d	$a5, $a5, $t1
+	add.d	$a5, $a5, $t0
+	stx.h	$a5, $a3, $a7
 	addi.d	$a7, $a7, 2
-	add.d	$t1, $fp, $a7
-	bstrpick.d	$t0, $a6, 31, 16
-	bltu	$t1, $a2, .LBB0_9
+	add.d	$t0, $fp, $a7
+	bstrpick.d	$a5, $a5, 31, 16
+	bltu	$t0, $a2, .LBB0_9
 # %bb.10:                               #   in Loop: Header=BB0_8 Depth=1
-	stx.h	$t0, $a3, $a7
-	ld.hu	$a5, $s1, 4
+	stx.h	$a5, $a3, $a7
+	ld.hu	$a6, $s1, 4
 	addi.d	$a4, $a4, 2
-	alsl.d	$a5, $a5, $a1, 1
+	alsl.d	$a6, $a6, $a1, 1
 	addi.d	$a3, $a3, 2
-	bltu	$a4, $a5, .LBB0_8
+	bltu	$a4, $a6, .LBB0_8
 # %bb.11:
-	bstrpick.d	$a1, $a6, 31, 16
+	addi.w	$a1, $a5, 0
 	bnez	$a1, .LBB0_13
 # %bb.12:
 	ld.h	$a1, $a0, 4

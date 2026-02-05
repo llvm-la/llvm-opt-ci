@@ -64,16 +64,14 @@ stringappend:                           # @stringappend
 	move	$a1, $a0
 .LBB0_10:                               # %.lr.ph27.preheader34
 	sub.d	$a3, $s0, $a3
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB0_11:                               # %.lr.ph27
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a5, $a2, 0
+	ld.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
-	addi.d	$a1, $a4, 1
+	st.b	$a4, $a1, 0
 	addi.w	$a3, $a3, -1
-	st.b	$a5, $a4, 0
-	move	$a4, $a1
+	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB0_11
 	.p2align	4, , 16
 .LBB0_12:                               # %.preheader
@@ -252,16 +250,14 @@ openfiles:                              # @openfiles
 	move	$a0, $s0
 .LBB1_23:                               # %.lr.ph27.i.preheader321
 	sub.d	$a2, $fp, $a2
-	move	$a3, $a0
 	.p2align	4, , 16
 .LBB1_24:                               # %.lr.ph27.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a4, $a1, 0
+	ld.b	$a3, $a1, 0
 	addi.d	$a1, $a1, 1
-	addi.d	$a0, $a3, 1
+	st.b	$a3, $a0, 0
 	addi.w	$a2, $a2, -1
-	st.b	$a4, $a3, 0
-	move	$a3, $a0
+	addi.d	$a0, $a0, 1
 	bnez	$a2, .LBB1_24
 .LBB1_25:                               # %.preheader.i
 	lu12i.w	$a1, 402967
@@ -327,16 +323,14 @@ openfiles:                              # @openfiles
 	move	$a1, $a0
 .LBB1_35:                               # %.lr.ph27.i69.preheader319
 	sub.d	$a3, $fp, $a3
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB1_36:                               # %.lr.ph27.i69
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a5, $a2, 0
+	ld.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
-	addi.d	$a1, $a4, 1
+	st.b	$a4, $a1, 0
 	addi.w	$a3, $a3, -1
-	st.b	$a5, $a4, 0
-	move	$a4, $a1
+	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB1_36
 .LBB1_37:                               # %.preheader.i64
 	lu12i.w	$a2, 477014
@@ -402,16 +396,14 @@ openfiles:                              # @openfiles
 	move	$a1, $a0
 .LBB1_46:                               # %.lr.ph27.i81.preheader317
 	sub.d	$a3, $s1, $a3
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB1_47:                               # %.lr.ph27.i81
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a5, $a2, 0
+	ld.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
-	addi.d	$a1, $a4, 1
+	st.b	$a4, $a1, 0
 	addi.w	$a3, $a3, -1
-	st.b	$a5, $a4, 0
-	move	$a4, $a1
+	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB1_47
 .LBB1_48:                               # %.preheader.i76
 	ori	$a2, $fp, 2094
@@ -431,13 +423,13 @@ openfiles:                              # @openfiles
 	lu12i.w	$a1, 460503
 	ori	$s5, $a1, 1071
 	lu32i.d	$s5, -105937
-	lu52i.d	$s7, $s5, 1554
-	st.d	$s7, $a0, 0
+	lu52i.d	$s6, $s5, 1554
+	st.d	$s6, $a0, 0
 	lu12i.w	$a1, 7
 	ori	$a1, $a1, 1123
 	st.h	$a1, $a0, 8
-	ori	$s6, $zero, 46
-	st.b	$s6, $a0, 10
+	ori	$s7, $zero, 46
+	st.b	$s7, $a0, 10
 	lu12i.w	$a1, 361861
 	ori	$s8, $a1, 2136
 	st.w	$s8, $a0, 11
@@ -457,12 +449,12 @@ openfiles:                              # @openfiles
 	ori	$a0, $zero, 20
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $a0, 0
-	move	$s7, $fp
+	st.d	$s6, $a0, 0
+	move	$s6, $fp
 	lu12i.w	$a1, 472871
 	ori	$a1, $a1, 1140
 	st.w	$a1, $a0, 8
-	st.b	$s6, $a0, 12
+	st.b	$s7, $a0, 12
 	st.w	$s8, $a0, 13
 	st.h	$s4, $a0, 17
 	st.b	$zero, $a0, 19
@@ -480,7 +472,7 @@ openfiles:                              # @openfiles
 	st.d	$a1, $a0, 0
 	ori	$a1, $fp, 609
 	st.h	$a1, $a0, 8
-	st.b	$s6, $a0, 10
+	st.b	$s7, $a0, 10
 	st.w	$s8, $a0, 11
 	st.h	$s4, $a0, 15
 	st.b	$zero, $a0, 17
@@ -539,19 +531,17 @@ openfiles:                              # @openfiles
 	move	$a1, $a0
 .LBB1_57:                               # %.lr.ph27.i129.preheader315
 	sub.d	$a3, $s1, $a3
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB1_58:                               # %.lr.ph27.i129
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a5, $a2, 0
+	ld.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
-	addi.d	$a1, $a4, 1
+	st.b	$a4, $a1, 0
 	addi.w	$a3, $a3, -1
-	st.b	$a5, $a4, 0
-	move	$a4, $a1
+	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB1_58
 .LBB1_59:                               # %.preheader.i124
-	ori	$a2, $s7, 814
+	ori	$a2, $s6, 814
 	st.h	$a2, $a1, 0
 	st.b	$zero, $a1, 2
 .LBB1_60:                               # %stringappend.exit134
@@ -599,16 +589,14 @@ openfiles:                              # @openfiles
 	move	$a1, $a0
 .LBB1_67:                               # %.lr.ph27.i141.preheader313
 	sub.d	$a3, $fp, $a3
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB1_68:                               # %.lr.ph27.i141
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a5, $a2, 0
+	ld.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
-	addi.d	$a1, $a4, 1
+	st.b	$a4, $a1, 0
 	addi.w	$a3, $a3, -1
-	st.b	$a5, $a4, 0
-	move	$a4, $a1
+	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB1_68
 .LBB1_69:                               # %.preheader.i136
 	lu12i.w	$a2, 497479
@@ -658,16 +646,14 @@ openfiles:                              # @openfiles
 	move	$a1, $a0
 .LBB1_76:                               # %.lr.ph27.i153.preheader312
 	sub.d	$a3, $fp, $a3
-	move	$a4, $a1
 	.p2align	4, , 16
 .LBB1_77:                               # %.lr.ph27.i153
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a5, $a2, 0
+	ld.b	$a4, $a2, 0
 	addi.d	$a2, $a2, 1
-	addi.d	$a1, $a4, 1
+	st.b	$a4, $a1, 0
 	addi.w	$a3, $a3, -1
-	st.b	$a5, $a4, 0
-	move	$a4, $a1
+	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB1_77
 .LBB1_78:                               # %.preheader.i148
 	lu12i.w	$a2, 399190

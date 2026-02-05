@@ -273,56 +273,56 @@ fft_float:                              # @fft_float
                                         #       Child Loop BB0_30 Depth 3
 	move	$a2, $zero
 	add.w	$a3, $s3, $a1
-	fmov.d	$fa5, $fa3
-	fmov.d	$fa7, $fa1
-	fmov.d	$fa6, $fa4
-	fmov.d	$ft0, $fa2
+	fmov.d	$fa7, $fa3
+	fmov.d	$fa5, $fa1
+	fmov.d	$ft0, $fa4
+	fmov.d	$fa6, $fa2
 	.p2align	4, , 16
 .LBB0_30:                               #   Parent Loop BB0_21 Depth=1
                                         #     Parent Loop BB0_29 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	fmov.d	$ft1, $fa6
+	fmov.d	$fa6, $ft0
 	fmov.d	$ft2, $fa5
+	fmov.d	$fa5, $fa7
 	add.d	$a4, $a1, $a2
 	add.d	$a5, $a3, $a2
 	bstrpick.d	$a5, $a5, 31, 0
 	slli.d	$a5, $a5, 2
 	fldx.s	$ft3, $s0, $a5
 	fldx.s	$ft4, $fp, $a5
-	fmsub.d	$fa6, $fa0, $fa6, $ft0
-	fmsub.d	$fa5, $fa0, $fa5, $fa7
-	fcvt.d.s	$fa7, $ft3
-	fcvt.d.s	$ft0, $ft4
+	fmsub.d	$ft0, $fa0, $ft0, $ft1
+	fmsub.d	$fa7, $fa0, $fa7, $ft2
+	fcvt.d.s	$ft1, $ft3
+	fcvt.d.s	$ft2, $ft4
 	bstrpick.d	$a4, $a4, 31, 0
 	slli.d	$a4, $a4, 2
 	fldx.s	$ft3, $s0, $a4
-	fneg.d	$ft4, $ft0
-	fmul.d	$ft4, $fa5, $ft4
-	fmadd.d	$ft4, $fa6, $fa7, $ft4
+	fneg.d	$ft4, $ft2
+	fmul.d	$ft4, $fa7, $ft4
+	fmadd.d	$ft4, $ft0, $ft1, $ft4
 	fcvt.d.s	$ft3, $ft3
 	fsub.d	$ft3, $ft3, $ft4
 	fcvt.s.d	$ft3, $ft3
 	fstx.s	$ft3, $s0, $a5
 	fldx.s	$ft3, $fp, $a4
-	fmul.d	$fa7, $fa5, $fa7
-	fmadd.d	$fa7, $fa6, $ft0, $fa7
-	fcvt.d.s	$ft0, $ft3
-	fsub.d	$ft0, $ft0, $fa7
-	fcvt.s.d	$ft0, $ft0
-	fstx.s	$ft0, $fp, $a5
-	fldx.s	$ft0, $s0, $a4
-	fcvt.d.s	$ft0, $ft0
-	fadd.d	$ft0, $ft4, $ft0
-	fcvt.s.d	$ft0, $ft0
-	fstx.s	$ft0, $s0, $a4
-	fldx.s	$ft0, $fp, $a4
-	fcvt.d.s	$ft0, $ft0
-	fadd.d	$fa7, $fa7, $ft0
-	fcvt.s.d	$fa7, $fa7
+	fmul.d	$ft1, $fa7, $ft1
+	fmadd.d	$ft1, $ft0, $ft2, $ft1
+	fcvt.d.s	$ft2, $ft3
+	fsub.d	$ft2, $ft2, $ft1
+	fcvt.s.d	$ft2, $ft2
+	fstx.s	$ft2, $fp, $a5
+	fldx.s	$ft2, $s0, $a4
+	fcvt.d.s	$ft2, $ft2
+	fadd.d	$ft2, $ft4, $ft2
+	fcvt.s.d	$ft2, $ft2
+	fstx.s	$ft2, $s0, $a4
+	fldx.s	$ft2, $fp, $a4
+	fcvt.d.s	$ft2, $ft2
+	fadd.d	$ft1, $ft1, $ft2
+	fcvt.s.d	$ft1, $ft1
 	addi.w	$a2, $a2, 1
-	fstx.s	$fa7, $fp, $a4
-	fmov.d	$fa7, $ft2
-	fmov.d	$ft0, $ft1
+	fstx.s	$ft1, $fp, $a4
 	bne	$a0, $a2, .LBB0_30
 # %bb.31:                               # %._crit_edge.us
                                         #   in Loop: Header=BB0_29 Depth=2
@@ -791,59 +791,59 @@ fft_float_StrictFP:                     # @fft_float_StrictFP
                                         #       Child Loop BB1_30 Depth 3
 	move	$a2, $zero
 	add.w	$a3, $s3, $a1
-	fmov.d	$fa5, $fa3
-	fmov.d	$fa7, $fa1
-	fmov.d	$fa6, $fa4
-	fmov.d	$ft0, $fa2
+	fmov.d	$fa7, $fa3
+	fmov.d	$fa5, $fa1
+	fmov.d	$ft0, $fa4
+	fmov.d	$fa6, $fa2
 	.p2align	4, , 16
 .LBB1_30:                               #   Parent Loop BB1_21 Depth=1
                                         #     Parent Loop BB1_29 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	fmov.d	$ft1, $fa6
+	fmov.d	$fa6, $ft0
 	fmov.d	$ft2, $fa5
+	fmov.d	$fa5, $fa7
 	add.d	$a4, $a1, $a2
-	fmul.d	$fa5, $fa0, $fa6
+	fmul.d	$fa7, $fa0, $ft0
 	add.d	$a5, $a3, $a2
 	bstrpick.d	$a5, $a5, 31, 0
 	slli.d	$a5, $a5, 2
 	fldx.s	$ft3, $s0, $a5
-	fsub.d	$fa6, $fa5, $ft0
-	fmul.d	$fa5, $fa0, $ft2
-	fsub.d	$fa5, $fa5, $fa7
-	fcvt.d.s	$fa7, $ft3
-	fmul.d	$ft0, $fa6, $fa7
+	fsub.d	$ft0, $fa7, $ft1
+	fmul.d	$fa7, $fa0, $fa5
+	fsub.d	$fa7, $fa7, $ft2
+	fcvt.d.s	$ft1, $ft3
+	fmul.d	$ft2, $ft0, $ft1
 	fldx.s	$ft3, $fp, $a5
 	bstrpick.d	$a4, $a4, 31, 0
 	slli.d	$a4, $a4, 2
 	fldx.s	$ft4, $s0, $a4
 	fcvt.d.s	$ft3, $ft3
-	fmul.d	$ft5, $fa5, $ft3
-	fsub.d	$ft0, $ft0, $ft5
+	fmul.d	$ft5, $fa7, $ft3
+	fsub.d	$ft2, $ft2, $ft5
 	fcvt.d.s	$ft4, $ft4
-	fsub.d	$ft4, $ft4, $ft0
+	fsub.d	$ft4, $ft4, $ft2
 	fcvt.s.d	$ft4, $ft4
 	fstx.s	$ft4, $s0, $a5
 	fldx.s	$ft4, $fp, $a4
-	fmul.d	$ft3, $fa6, $ft3
-	fmul.d	$fa7, $fa5, $fa7
-	fadd.d	$fa7, $fa7, $ft3
+	fmul.d	$ft3, $ft0, $ft3
+	fmul.d	$ft1, $fa7, $ft1
+	fadd.d	$ft1, $ft1, $ft3
 	fcvt.d.s	$ft3, $ft4
-	fsub.d	$ft3, $ft3, $fa7
+	fsub.d	$ft3, $ft3, $ft1
 	fcvt.s.d	$ft3, $ft3
 	fstx.s	$ft3, $fp, $a5
 	fldx.s	$ft3, $s0, $a4
 	fcvt.d.s	$ft3, $ft3
-	fadd.d	$ft0, $ft0, $ft3
-	fcvt.s.d	$ft0, $ft0
-	fstx.s	$ft0, $s0, $a4
-	fldx.s	$ft0, $fp, $a4
-	fcvt.d.s	$ft0, $ft0
-	fadd.d	$fa7, $fa7, $ft0
-	fcvt.s.d	$fa7, $fa7
+	fadd.d	$ft2, $ft2, $ft3
+	fcvt.s.d	$ft2, $ft2
+	fstx.s	$ft2, $s0, $a4
+	fldx.s	$ft2, $fp, $a4
+	fcvt.d.s	$ft2, $ft2
+	fadd.d	$ft1, $ft1, $ft2
+	fcvt.s.d	$ft1, $ft1
 	addi.w	$a2, $a2, 1
-	fstx.s	$fa7, $fp, $a4
-	fmov.d	$fa7, $ft2
-	fmov.d	$ft0, $ft1
+	fstx.s	$ft1, $fp, $a4
 	bne	$a0, $a2, .LBB1_30
 # %bb.31:                               # %._crit_edge.us
                                         #   in Loop: Header=BB1_29 Depth=2

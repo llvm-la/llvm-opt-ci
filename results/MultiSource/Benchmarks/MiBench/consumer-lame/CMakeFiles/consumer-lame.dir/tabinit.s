@@ -83,98 +83,93 @@ make_decode_tables:                     # @make_decode_tables
 	lu32i.d	$a2, 434334
 	lu52i.d	$a2, $a2, 1022
 	st.d	$a2, $a1, 0
-	sub.d	$a0, $zero, $a0
-	pcalau12i	$a1, %pc_hi20(decwin)
-	addi.d	$a4, $a1, %pc_lo12(decwin)
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 127
-	pcalau12i	$a2, %pc_hi20(intwinbase)
-	addi.d	$a5, $a2, %pc_lo12(intwinbase)
+	sub.d	$a1, $zero, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 127
+	pcalau12i	$a2, %pc_hi20(decwin)
+	addi.d	$a2, $a2, %pc_lo12(decwin)
+	pcalau12i	$a3, %pc_hi20(intwinbase)
+	addi.d	$a5, $a3, %pc_lo12(intwinbase)
 	move	$a6, $zero
 	move	$a3, $zero
 	move	$a7, $zero
-	lu52i.d	$a2, $zero, 1007
-	movgr2fr.d	$fa0, $a2
-	lu12i.w	$a2, -2
-	ori	$a2, $a2, 8
-	ori	$t0, $zero, 2048
-	move	$t1, $a4
+	lu52i.d	$a4, $zero, 1007
+	movgr2fr.d	$fa0, $a4
+	ori	$t0, $zero, 256
+	lu12i.w	$a4, -2
+	ori	$a4, $a4, 264
+	ori	$t1, $zero, 2048
 	b	.LBB0_2
 	.p2align	4, , 16
 .LBB0_1:                                #   in Loop: Header=BB0_2 Depth=1
-	andi	$t1, $a7, 31
-	addi.d	$t1, $t1, -31
-	sltui	$t1, $t1, 1
-	add.d	$t2, $a3, $a2
-	masknez	$a3, $a3, $t1
-	maskeqz	$t1, $t2, $t1
-	or	$a3, $t1, $a3
-	andi	$t1, $a7, 63
-	addi.d	$t1, $t1, -63
-	sltui	$t1, $t1, 1
-	sub.d	$t2, $zero, $a0
-	masknez	$a0, $a0, $t1
-	maskeqz	$t1, $t2, $t1
-	or	$a0, $t1, $a0
+	andi	$t2, $a7, 31
+	addi.d	$t2, $t2, -31
+	sltui	$t2, $t2, 1
+	andi	$t3, $a7, 63
+	addi.d	$t3, $t3, -63
+	sltui	$t3, $t3, 1
+	sub.d	$t4, $zero, $a1
+	masknez	$a1, $a1, $t3
+	maskeqz	$t3, $t4, $t3
+	or	$a1, $t3, $a1
 	addi.d	$a7, $a7, 1
-	addi.d	$a3, $a3, 256
+	masknez	$t3, $t0, $t2
+	maskeqz	$t2, $a4, $t2
+	or	$t2, $t2, $t3
 	addi.d	$a6, $a6, 8
-	add.d	$t1, $a4, $a3
-	beq	$a6, $t0, .LBB0_4
+	add.d	$a3, $t2, $a3
+	beq	$a6, $t1, .LBB0_4
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	blt	$a1, $a3, .LBB0_1
+	blt	$a0, $a3, .LBB0_1
 # %bb.3:                                #   in Loop: Header=BB0_2 Depth=1
-	ldx.d	$t2, $a5, $a6
-	movgr2fr.d	$fa1, $t2
+	fldx.d	$fa1, $a5, $a6
+	add.d	$t2, $a2, $a3
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fa0
-	movgr2fr.d	$fa2, $a0
+	movgr2fr.d	$fa2, $a1
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa1, $fa2
-	fstx.d	$fa1, $a4, $a3
-	fst.d	$fa1, $t1, 128
+	fstx.d	$fa1, $a2, $a3
+	fst.d	$fa1, $t2, 128
 	b	.LBB0_1
 .LBB0_4:                                # %.lr.ph65.preheader
-	addi.d	$a4, $a5, 2047
-	addi.d	$a4, $a4, 1
-	ori	$a5, $zero, 256
-	pcalau12i	$a6, %pc_hi20(decwin)
-	addi.d	$a6, $a6, %pc_lo12(decwin)
+	addi.d	$a5, $a5, 2047
+	addi.d	$a5, $a5, 1
+	ori	$a6, $zero, 256
 	ori	$a7, $zero, 512
+	ori	$t0, $zero, 256
 	b	.LBB0_6
 	.p2align	4, , 16
 .LBB0_5:                                #   in Loop: Header=BB0_6 Depth=1
-	andi	$t0, $a5, 31
-	addi.d	$t0, $t0, -31
-	sltui	$t0, $t0, 1
-	add.d	$t1, $a3, $a2
-	masknez	$a3, $a3, $t0
-	maskeqz	$t0, $t1, $t0
-	or	$a3, $t0, $a3
-	andi	$t0, $a5, 63
-	addi.d	$t0, $t0, -63
-	sltui	$t0, $t0, 1
-	sub.d	$t1, $zero, $a0
-	masknez	$a0, $a0, $t0
-	maskeqz	$t0, $t1, $t0
-	or	$a0, $t0, $a0
-	addi.w	$a5, $a5, 1
-	addi.d	$a3, $a3, 256
-	addi.d	$a4, $a4, -8
-	beq	$a5, $a7, .LBB0_8
+	andi	$t1, $t0, 31
+	addi.d	$t1, $t1, -31
+	sltui	$t1, $t1, 1
+	andi	$t2, $t0, 63
+	addi.d	$t2, $t2, -63
+	sltui	$t2, $t2, 1
+	sub.d	$t3, $zero, $a1
+	masknez	$a1, $a1, $t2
+	maskeqz	$t2, $t3, $t2
+	or	$a1, $t2, $a1
+	addi.w	$t0, $t0, 1
+	masknez	$t2, $a6, $t1
+	maskeqz	$t1, $a4, $t1
+	or	$t1, $t1, $t2
+	add.d	$a3, $t1, $a3
+	addi.d	$a5, $a5, -8
+	beq	$t0, $a7, .LBB0_8
 .LBB0_6:                                # %.lr.ph65
                                         # =>This Inner Loop Header: Depth=1
-	blt	$a1, $a3, .LBB0_5
+	blt	$a0, $a3, .LBB0_5
 # %bb.7:                                #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$t0, $a4, 0
-	add.d	$t1, $a6, $a3
-	movgr2fr.d	$fa1, $t0
+	fld.d	$fa1, $a5, 0
+	add.d	$t1, $a2, $a3
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fa0
-	movgr2fr.d	$fa2, $a0
+	movgr2fr.d	$fa2, $a1
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa1, $fa2
-	fstx.d	$fa1, $a6, $a3
+	fstx.d	$fa1, $a2, $a3
 	fst.d	$fa1, $t1, 128
 	b	.LBB0_5
 .LBB0_8:                                # %._crit_edge66
