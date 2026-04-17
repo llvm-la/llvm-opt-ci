@@ -249,9 +249,9 @@ srad_kernel:                            # @srad_kernel
 	sltu	$a2, $a5, $a3
 	sltu	$a3, $s6, $a4
 	and	$a2, $a2, $a3
-	xvpickve2gr.d	$a3, $xr0, 2
+	xvpickve2gr.d	$t0, $xr0, 2
 	or	$a1, $a1, $a2
-	xvpickve2gr.d	$t0, $xr8, 1
+	xvpickve2gr.d	$t1, $xr8, 1
 	sltu	$a0, $a5, $a0
 	sltu	$a2, $s5, $a4
 	and	$a0, $a0, $a2
@@ -261,8 +261,8 @@ srad_kernel:                            # @srad_kernel
 	lu12i.w	$a0, 231424
 	movgr2fr.w	$fa1, $a0
 	vldi	$vr2, -928
-	lu52i.d	$a0, $zero, -1029
-	movgr2fr.d	$fa3, $a0
+	lu52i.d	$s0, $zero, -1029
+	movgr2fr.d	$fa3, $s0
 	vldi	$vr4, -944
 	vldi	$vr5, -912
 	vldi	$vr6, -1168
@@ -288,10 +288,9 @@ srad_kernel:                            # @srad_kernel
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$t7, $zero, 512
 	ori	$t2, $zero, 128
-	lu52i.d	$s0, $zero, -1175
+	lu52i.d	$s3, $zero, -1175
 	lu12i.w	$t8, -1
-	ori	$t1, $zero, 4064
-	ori	$s3, $zero, 4068
+	ori	$a3, $zero, 4064
 	st.d	$a6, $sp, 152                   # 8-byte Folded Spill
 	st.d	$a5, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 136                   # 8-byte Folded Spill
@@ -301,8 +300,8 @@ srad_kernel:                            # @srad_kernel
 	st.d	$t4, $sp, 240                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
 	st.d	$a7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 200                   # 8-byte Folded Spill
-	st.d	$t0, $sp, 192                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$t1, $sp, 192                   # 8-byte Folded Spill
 	st.d	$a4, $sp, 184                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_1:                                # %.preheader624
@@ -396,7 +395,7 @@ srad_kernel:                            # @srad_kernel
 	fadd.d	$ft2, $ft2, $fa5
 	frecip.d	$ft3, $ft2
 	fcvt.s.d	$ft4, $ft3
-	movgr2fr.d	$ft2, $s0
+	movgr2fr.d	$ft2, $s3
 	fcmp.clt.d	$fcc0, $ft3, $ft2
 	fst.s	$ft4, $a6, 0
 	bceqz	$fcc0, .LBB0_7
@@ -486,10 +485,10 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
 	fld.s	$ft4, $a0, 0
 	fsub.s	$ft4, $ft4, $ft3
-	fst.s	$ft4, $t0, 0
+	fst.s	$ft4, $t1, 0
 	fld.s	$ft4, $fp, 0
 	fsub.s	$ft4, $ft4, $ft3
-	fst.s	$ft4, $a3, 0
+	fst.s	$ft4, $t0, 0
 	fld.s	$ft4, $fp, 0
 	fsub.s	$ft4, $ft4, $ft3
 	fst.s	$ft4, $a4, 0
@@ -497,8 +496,8 @@ srad_kernel:                            # @srad_kernel
 	fldx.s	$ft4, $a0, $a1
 	fsub.s	$ft4, $ft4, $ft3
 	fst.s	$ft4, $t4, 0
-	fld.s	$ft5, $t0, 0
-	fld.s	$ft6, $a3, 0
+	fld.s	$ft5, $t1, 0
+	fld.s	$ft6, $t0, 0
 	fld.s	$ft7, $a4, 0
 	fmul.s	$ft8, $ft5, $ft5
 	fmul.s	$ft9, $ft6, $ft6
@@ -550,28 +549,28 @@ srad_kernel:                            # @srad_kernel
 	fst.s	$ft3, $a7, 0
 .LBB0_20:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
-	ori	$t0, $t5, 4092
-	fldx.s	$ft3, $a1, $t0
-	ori	$a5, $zero, 4092
-	fldx.s	$ft4, $a1, $a5
+	ori	$t1, $t5, 4092
+	fldx.s	$ft3, $a1, $t1
+	ori	$t0, $zero, 4092
+	fldx.s	$ft4, $a1, $t0
 	fsub.s	$ft4, $ft4, $ft3
 	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
 	fst.s	$ft4, $a2, -4
-	fldx.s	$ft4, $a1, $t0
+	fldx.s	$ft4, $a1, $t1
 	fsub.s	$ft4, $ft4, $ft3
-	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
-	fst.s	$ft4, $a3, -4
+	ld.d	$a4, $sp, 224                   # 8-byte Folded Reload
+	fst.s	$ft4, $a4, -4
 	ori	$a0, $t5, 4088
 	fldx.s	$ft4, $a1, $a0
 	fsub.s	$ft4, $ft4, $ft3
-	ld.d	$a4, $sp, 216                   # 8-byte Folded Reload
-	fst.s	$ft4, $a4, -4
-	fldx.s	$ft4, $a1, $t0
+	ld.d	$a5, $sp, 216                   # 8-byte Folded Reload
+	fst.s	$ft4, $a5, -4
+	fldx.s	$ft4, $a1, $t1
 	fsub.s	$ft4, $ft4, $ft3
-	fstx.s	$ft4, $t4, $a5
+	fstx.s	$ft4, $t4, $t0
 	fld.s	$ft5, $a2, -4
-	fld.s	$ft6, $a3, -4
-	fld.s	$ft7, $a4, -4
+	fld.s	$ft6, $a4, -4
+	fld.s	$ft7, $a5, -4
 	fmul.s	$ft8, $ft5, $ft5
 	fmul.s	$ft9, $ft6, $ft6
 	fadd.s	$ft8, $ft8, $ft9
@@ -610,13 +609,13 @@ srad_kernel:                            # @srad_kernel
 	bceqz	$fcc0, .LBB0_22
 # %bb.21:                               #   in Loop: Header=BB0_1 Depth=1
 	movgr2fr.w	$ft3, $zero
-	ori	$t0, $zero, 4060
+	ori	$t0, $zero, 4068
 	b	.LBB0_24
 	.p2align	4, , 16
 .LBB0_22:                               #   in Loop: Header=BB0_1 Depth=1
 	movgr2fr.d	$ft4, $ra
 	fcmp.cule.d	$fcc0, $ft3, $ft4
-	ori	$t0, $zero, 4060
+	ori	$t0, $zero, 4068
 	bcnez	$fcc0, .LBB0_25
 # %bb.23:                               #   in Loop: Header=BB0_1 Depth=1
 	vldi	$vr11, -1168
@@ -658,10 +657,10 @@ srad_kernel:                            # @srad_kernel
 	add.d	$a4, $a4, $t5
 	add.d	$t3, $t3, $t5
 	add.d	$t4, $t4, $t5
-	lu52i.d	$s0, $zero, -1175
+	lu52i.d	$s0, $zero, -1029
+	lu52i.d	$s3, $zero, -1175
 	ori	$a2, $zero, 2047
-	ori	$s3, $zero, 4068
-	ori	$t0, $zero, 4060
+	ori	$t0, $zero, 4068
 	beq	$a1, $a2, .LBB0_54
 .LBB0_27:                               # %.preheader621
                                         #   Parent Loop BB0_1 Depth=1
@@ -669,12 +668,11 @@ srad_kernel:                            # @srad_kernel
                                         #       Child Loop BB0_30 Depth 3
                                         #       Child Loop BB0_51 Depth 3
 	ori	$a2, $zero, 1
-	ld.d	$a3, $sp, 272                   # 8-byte Folded Reload
-	bnez	$a3, .LBB0_47
+	ld.d	$a5, $sp, 272                   # 8-byte Folded Reload
+	bnez	$a5, .LBB0_47
 # %bb.28:                               # %vector.body814.preheader
                                         #   in Loop: Header=BB0_27 Depth=2
 	ori	$s2, $t8, 32
-	lu52i.d	$a3, $zero, -1029
 	b	.LBB0_30
 	.p2align	4, , 16
 .LBB0_29:                               # %pred.store.continue837
@@ -686,24 +684,25 @@ srad_kernel:                            # @srad_kernel
                                         #     Parent Loop BB0_27 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a2, $s4, $s2
-	xvldx	$xr13, $a2, $t1
+	xvldx	$xr13, $a2, $a3
 	xvld	$xr14, $a2, -32
 	ori	$a5, $t5, 4064
 	xvldx	$xr15, $a2, $a5
 	xvfsub.s	$xr14, $xr14, $xr13
 	add.d	$a5, $a7, $s2
-	xvstx	$xr14, $a5, $t1
+	xvstx	$xr14, $a5, $a3
 	xvfsub.s	$xr15, $xr15, $xr13
-	xvldx	$xr16, $a2, $t0
+	ori	$a5, $zero, 4060
+	xvldx	$xr16, $a2, $a5
 	add.d	$a5, $s5, $s2
-	xvstx	$xr15, $a5, $t1
-	xvldx	$xr17, $a2, $s3
+	xvstx	$xr15, $a5, $a3
+	xvldx	$xr17, $a2, $t0
 	xvfsub.s	$xr16, $xr16, $xr13
 	add.d	$a2, $s6, $s2
-	xvstx	$xr16, $a2, $t1
+	xvstx	$xr16, $a2, $a3
 	xvfsub.s	$xr17, $xr17, $xr13
 	add.d	$a2, $t6, $s2
-	xvstx	$xr17, $a2, $t1
+	xvstx	$xr17, $a2, $a3
 	xvfmul.s	$xr18, $xr14, $xr14
 	xvfmul.s	$xr19, $xr15, $xr15
 	xvfadd.s	$xr18, $xr18, $xr19
@@ -717,194 +716,130 @@ srad_kernel:                            # @srad_kernel
 	xvfadd.s	$xr14, $xr14, $xr16
 	xvfadd.s	$xr14, $xr17, $xr14
 	xvfdiv.s	$xr13, $xr14, $xr13
+	vreplvei.w	$vr14, $vr18, 3
+	fcvt.d.s	$ft6, $ft6
+	vreplvei.w	$vr15, $vr18, 2
+	fcvt.d.s	$ft7, $ft7
+	vextrins.d	$vr15, $vr14, 16
+	vreplvei.w	$vr14, $vr18, 1
+	fcvt.d.s	$ft6, $ft6
+	vreplvei.w	$vr16, $vr18, 0
+	fcvt.d.s	$ft8, $ft8
+	vextrins.d	$vr16, $vr14, 16
+	xvpermi.q	$xr16, $xr15, 2
 	xvpermi.q	$xr14, $xr18, 1
 	vreplvei.w	$vr15, $vr14, 3
 	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr16, $vr14, 2
-	fcvt.d.s	$ft8, $ft8
-	vextrins.d	$vr16, $vr15, 16
+	vreplvei.w	$vr17, $vr14, 2
+	fcvt.d.s	$ft9, $ft9
+	vextrins.d	$vr17, $vr15, 16
 	vreplvei.w	$vr15, $vr14, 1
 	fcvt.d.s	$ft7, $ft7
 	vreplvei.w	$vr14, $vr14, 0
 	fcvt.d.s	$ft6, $ft6
 	vextrins.d	$vr14, $vr15, 16
-	xvpermi.q	$xr14, $xr16, 2
-	vreplvei.w	$vr15, $vr18, 3
+	xvpermi.q	$xr14, $xr17, 2
+	xvldi	$xr15, -928
+	xvfmul.d	$xr14, $xr14, $xr15
+	xvfmul.d	$xr15, $xr16, $xr15
+	xvfmul.s	$xr16, $xr13, $xr13
+	vreplvei.w	$vr17, $vr16, 3
+	fcvt.d.s	$ft9, $ft9
+	vreplvei.w	$vr18, $vr16, 2
+	fcvt.d.s	$ft10, $ft10
+	vextrins.d	$vr18, $vr17, 16
+	vreplvei.w	$vr17, $vr16, 1
+	fcvt.d.s	$ft9, $ft9
+	vreplvei.w	$vr19, $vr16, 0
+	fcvt.d.s	$ft11, $ft11
+	vextrins.d	$vr19, $vr17, 16
+	xvpermi.q	$xr19, $xr18, 2
+	xvpermi.q	$xr16, $xr16, 1
+	vreplvei.w	$vr17, $vr16, 3
+	fcvt.d.s	$ft9, $ft9
+	vreplvei.w	$vr18, $vr16, 2
+	fcvt.d.s	$ft10, $ft10
+	vextrins.d	$vr18, $vr17, 16
+	vreplvei.w	$vr17, $vr16, 1
+	fcvt.d.s	$ft9, $ft9
+	vreplvei.w	$vr16, $vr16, 0
+	fcvt.d.s	$ft8, $ft8
+	vextrins.d	$vr16, $vr17, 16
+	xvpermi.q	$xr16, $xr18, 2
+	xvreplgr2vr.d	$xr17, $s0
+	xvfmul.d	$xr16, $xr16, $xr17
+	xvfmul.d	$xr17, $xr19, $xr17
+	xvfadd.d	$xr15, $xr15, $xr17
+	xvfadd.d	$xr14, $xr14, $xr16
+	xvfcvt.s.d	$xr14, $xr14, $xr15
+	vreplvei.w	$vr15, $vr13, 3
 	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr16, $vr18, 2
+	vreplvei.w	$vr16, $vr13, 2
 	fcvt.d.s	$ft8, $ft8
 	vextrins.d	$vr16, $vr15, 16
-	vreplvei.w	$vr15, $vr18, 1
+	vreplvei.w	$vr15, $vr13, 1
 	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr17, $vr18, 0
+	vreplvei.w	$vr17, $vr13, 0
 	fcvt.d.s	$ft9, $ft9
 	vextrins.d	$vr17, $vr15, 16
 	xvpermi.q	$xr17, $xr16, 2
-	xvldi	$xr15, -928
-	xvfmul.d	$xr16, $xr17, $xr15
-	xvfmul.d	$xr14, $xr14, $xr15
-	xvfmul.s	$xr15, $xr13, $xr13
-	xvpermi.q	$xr17, $xr15, 1
-	vreplvei.w	$vr18, $vr17, 3
-	fcvt.d.s	$ft10, $ft10
-	vreplvei.w	$vr19, $vr17, 2
-	fcvt.d.s	$ft11, $ft11
-	vextrins.d	$vr19, $vr18, 16
-	vreplvei.w	$vr18, $vr17, 1
-	fcvt.d.s	$ft10, $ft10
-	vreplvei.w	$vr17, $vr17, 0
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr18, 16
-	xvpermi.q	$xr17, $xr19, 2
-	vreplvei.w	$vr18, $vr15, 3
-	fcvt.d.s	$ft10, $ft10
-	vreplvei.w	$vr19, $vr15, 2
-	fcvt.d.s	$ft11, $ft11
-	vextrins.d	$vr19, $vr18, 16
-	vreplvei.w	$vr18, $vr15, 1
-	fcvt.d.s	$ft10, $ft10
-	vreplvei.w	$vr15, $vr15, 0
+	xvpermi.q	$xr13, $xr13, 1
+	vreplvei.w	$vr15, $vr13, 3
 	fcvt.d.s	$ft7, $ft7
-	vextrins.d	$vr15, $vr18, 16
-	xvpermi.q	$xr15, $xr19, 2
-	xvreplgr2vr.d	$xr18, $a3
-	xvfmul.d	$xr15, $xr15, $xr18
-	xvfmul.d	$xr17, $xr17, $xr18
-	xvfadd.d	$xr17, $xr14, $xr17
-	xvfadd.d	$xr15, $xr16, $xr15
-	xvpickve.d	$xr14, $xr15, 1
-	fcvt.s.d	$ft8, $ft6
-	xvpickve.d	$xr14, $xr15, 0
-	fcvt.s.d	$ft6, $ft6
-	vextrins.w	$vr14, $vr16, 16
-	xvpickve.d	$xr16, $xr15, 2
-	fcvt.s.d	$ft8, $ft8
-	vextrins.w	$vr14, $vr16, 32
-	xvpickve.d	$xr15, $xr15, 3
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr14, $vr15, 48
-	xvpickve.d	$xr15, $xr17, 1
-	fcvt.s.d	$ft7, $ft7
-	xvpickve.d	$xr16, $xr17, 0
-	fcvt.s.d	$ft8, $ft8
-	vextrins.w	$vr16, $vr15, 16
-	xvpickve.d	$xr15, $xr17, 2
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr16, $vr15, 32
-	xvpickve.d	$xr15, $xr17, 3
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr16, $vr15, 48
-	xvpermi.q	$xr14, $xr16, 2
-	xvpermi.q	$xr15, $xr13, 1
-	vreplvei.w	$vr16, $vr15, 3
+	vreplvei.w	$vr16, $vr13, 2
 	fcvt.d.s	$ft8, $ft8
-	vreplvei.w	$vr17, $vr15, 2
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr16, 16
-	vreplvei.w	$vr16, $vr15, 1
-	fcvt.d.s	$ft8, $ft8
-	vreplvei.w	$vr15, $vr15, 0
+	vextrins.d	$vr16, $vr15, 16
+	vreplvei.w	$vr15, $vr13, 1
 	fcvt.d.s	$ft7, $ft7
-	vextrins.d	$vr15, $vr16, 16
-	xvpermi.q	$xr15, $xr17, 2
-	vreplvei.w	$vr16, $vr13, 3
-	fcvt.d.s	$ft8, $ft8
-	vreplvei.w	$vr17, $vr13, 2
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr16, 16
-	vreplvei.w	$vr16, $vr13, 1
-	fcvt.d.s	$ft8, $ft8
 	vreplvei.w	$vr13, $vr13, 0
 	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr16, 16
-	xvpermi.q	$xr13, $xr17, 2
-	xvldi	$xr16, -944
-	xvfmul.d	$xr17, $xr13, $xr16
-	xvfmul.d	$xr15, $xr15, $xr16
-	xvldi	$xr13, -912
-	xvfadd.d	$xr15, $xr15, $xr13
-	xvfadd.d	$xr16, $xr17, $xr13
-	xvpickve.d	$xr17, $xr16, 1
-	fcvt.s.d	$ft9, $ft9
-	xvpickve.d	$xr18, $xr16, 0
-	fcvt.s.d	$ft10, $ft10
-	vextrins.w	$vr18, $vr17, 16
-	xvpickve.d	$xr17, $xr16, 2
-	fcvt.s.d	$ft9, $ft9
-	vextrins.w	$vr18, $vr17, 32
-	xvpickve.d	$xr16, $xr16, 3
-	fcvt.s.d	$ft8, $ft8
-	vextrins.w	$vr18, $vr16, 48
-	xvpickve.d	$xr16, $xr15, 1
-	fcvt.s.d	$ft8, $ft8
-	xvpickve.d	$xr17, $xr15, 0
-	fcvt.s.d	$ft9, $ft9
-	vextrins.w	$vr17, $vr16, 16
-	xvpickve.d	$xr16, $xr15, 2
-	fcvt.s.d	$ft8, $ft8
-	vextrins.w	$vr17, $vr16, 32
-	xvpickve.d	$xr15, $xr15, 3
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr17, $vr15, 48
-	xvpermi.q	$xr18, $xr17, 2
-	xvfmul.s	$xr15, $xr18, $xr18
-	xvfdiv.s	$xr14, $xr14, $xr15
-	xvfsub.s	$xr14, $xr14, $xr11
-	xvfdiv.s	$xr14, $xr14, $xr12
-	xvpermi.q	$xr15, $xr14, 1
-	vreplvei.w	$vr16, $vr15, 3
-	fcvt.d.s	$ft8, $ft8
-	vreplvei.w	$vr17, $vr15, 2
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr16, 16
-	vreplvei.w	$vr16, $vr15, 1
-	fcvt.d.s	$ft8, $ft8
-	vreplvei.w	$vr15, $vr15, 0
-	fcvt.d.s	$ft7, $ft7
-	vextrins.d	$vr15, $vr16, 16
-	xvpermi.q	$xr15, $xr17, 2
-	vreplvei.w	$vr16, $vr14, 3
-	fcvt.d.s	$ft8, $ft8
-	vreplvei.w	$vr17, $vr14, 2
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr16, 16
-	vreplvei.w	$vr16, $vr14, 1
-	fcvt.d.s	$ft8, $ft8
-	vreplvei.w	$vr14, $vr14, 0
+	vextrins.d	$vr13, $vr15, 16
+	xvpermi.q	$xr13, $xr16, 2
+	xvldi	$xr15, -944
+	xvfmul.d	$xr13, $xr13, $xr15
+	xvfmul.d	$xr15, $xr17, $xr15
+	xvldi	$xr16, -912
+	xvfadd.d	$xr15, $xr15, $xr16
+	xvfadd.d	$xr13, $xr13, $xr16
+	xvfcvt.s.d	$xr13, $xr13, $xr15
+	xvfmul.s	$xr13, $xr13, $xr13
+	xvfdiv.s	$xr13, $xr14, $xr13
+	xvpermi.d	$xr13, $xr13, 216
+	xvfsub.s	$xr13, $xr13, $xr11
+	xvfdiv.s	$xr13, $xr13, $xr12
+	vreplvei.w	$vr14, $vr13, 3
 	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr16, 16
-	xvpermi.q	$xr14, $xr17, 2
-	xvfadd.d	$xr14, $xr14, $xr13
-	xvfadd.d	$xr13, $xr15, $xr13
-	xvfrecip.d	$xr13, $xr13
+	vreplvei.w	$vr15, $vr13, 2
+	fcvt.d.s	$ft7, $ft7
+	vextrins.d	$vr15, $vr14, 16
+	vreplvei.w	$vr14, $vr13, 1
+	fcvt.d.s	$ft6, $ft6
+	vreplvei.w	$vr17, $vr13, 0
+	fcvt.d.s	$ft9, $ft9
+	vextrins.d	$vr17, $vr14, 16
+	xvpermi.q	$xr17, $xr15, 2
+	xvpermi.q	$xr13, $xr13, 1
+	vreplvei.w	$vr14, $vr13, 3
+	fcvt.d.s	$ft6, $ft6
+	vreplvei.w	$vr15, $vr13, 2
+	fcvt.d.s	$ft7, $ft7
+	vextrins.d	$vr15, $vr14, 16
+	vreplvei.w	$vr14, $vr13, 1
+	fcvt.d.s	$ft6, $ft6
+	vreplvei.w	$vr13, $vr13, 0
+	fcvt.d.s	$ft5, $ft5
+	vextrins.d	$vr13, $vr14, 16
+	xvpermi.q	$xr13, $xr15, 2
+	xvfadd.d	$xr13, $xr13, $xr16
+	xvfadd.d	$xr14, $xr17, $xr16
 	xvfrecip.d	$xr14, $xr14
-	xvpickve.d	$xr15, $xr14, 1
-	fcvt.s.d	$ft7, $ft7
-	xvpickve.d	$xr16, $xr14, 0
-	fcvt.s.d	$ft8, $ft8
-	vextrins.w	$vr16, $vr15, 16
-	xvpickve.d	$xr15, $xr14, 2
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr16, $vr15, 32
-	xvpickve.d	$xr15, $xr14, 3
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr16, $vr15, 48
-	xvpickve.d	$xr15, $xr13, 1
-	fcvt.s.d	$ft7, $ft7
-	xvpickve.d	$xr17, $xr13, 0
-	fcvt.s.d	$ft9, $ft9
-	vextrins.w	$vr17, $vr15, 16
-	xvpickve.d	$xr15, $xr13, 2
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr17, $vr15, 32
-	xvpickve.d	$xr15, $xr13, 3
-	fcvt.s.d	$ft7, $ft7
-	vextrins.w	$vr17, $vr15, 48
-	xvpermi.q	$xr16, $xr17, 2
+	xvfrecip.d	$xr13, $xr13
+	xvfcvt.s.d	$xr15, $xr13, $xr14
+	xvpermi.d	$xr15, $xr15, 216
 	add.d	$s7, $s1, $s2
 	ori	$a2, $t5, 4068
-	xvstx	$xr16, $s7, $a2
-	xvreplgr2vr.d	$xr15, $s0
+	xvstx	$xr15, $s7, $a2
+	xvreplgr2vr.d	$xr15, $s3
 	xvfcmp.clt.d	$xr16, $xr14, $xr15
 	xvpickve2gr.d	$a5, $xr16, 0
 	vinsgr2vr.w	$vr17, $a5, 0
@@ -1092,18 +1027,18 @@ srad_kernel:                            # @srad_kernel
                                         #   Parent Loop BB0_1 Depth=1
                                         #     Parent Loop BB0_27 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a3, $s3, $s2
+	add.d	$t1, $s3, $s2
 	fldx.s	$ft5, $s3, $s2
-	fldx.s	$ft6, $a3, $t8
+	fldx.s	$ft6, $t1, $t8
 	fsub.s	$ft6, $ft6, $ft5
 	fstx.s	$ft6, $t0, $s2
-	fldx.s	$ft6, $a3, $t5
+	fldx.s	$ft6, $t1, $t5
 	fsub.s	$ft6, $ft6, $ft5
 	fstx.s	$ft6, $a6, $s2
-	fld.s	$ft6, $a3, -4
+	fld.s	$ft6, $t1, -4
 	fsub.s	$ft6, $ft6, $ft5
 	fstx.s	$ft6, $a2, $s2
-	fld.s	$ft6, $a3, 4
+	fld.s	$ft6, $t1, 4
 	fsub.s	$ft6, $ft6, $ft5
 	fstx.s	$ft6, $s0, $s2
 	fldx.s	$ft7, $t0, $s2
@@ -1166,9 +1101,9 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 184                   # 8-byte Folded Reload
 	b	.LBB0_59
 	.p2align	4, , 16
@@ -1181,110 +1116,90 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 184                   # 8-byte Folded Reload
+	ori	$a7, $zero, 4068
 	.p2align	4, , 16
 .LBB0_57:                               # %vector.body726
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a1, $a2, $a0
-	xvldx	$xr9, $a1, $t1
-	xvldx	$xr10, $a1, $s3
-	add.d	$a1, $t0, $a0
-	xvldx	$xr11, $a1, $t1
+	xvldx	$xr9, $a1, $a3
+	xvldx	$xr10, $a1, $a7
+	add.d	$a1, $t1, $a0
+	xvldx	$xr11, $a1, $a3
 	add.d	$a1, $a4, $a0
-	xvldx	$xr12, $a1, $t1
+	xvldx	$xr12, $a1, $a3
 	add.d	$a1, $t3, $a0
-	xvldx	$xr13, $a1, $t1
+	xvldx	$xr13, $a1, $a3
 	xvfmul.s	$xr11, $xr9, $xr11
 	xvfmul.s	$xr12, $xr9, $xr12
 	xvfadd.s	$xr11, $xr11, $xr12
 	xvfmul.s	$xr9, $xr9, $xr13
 	add.d	$a1, $t2, $a0
-	xvldx	$xr12, $a1, $t1
-	add.d	$a1, $a3, $a0
-	xvldx	$xr13, $a1, $t1
+	xvldx	$xr12, $a1, $a3
+	add.d	$a1, $t0, $a0
+	xvldx	$xr13, $a1, $a3
 	xvfadd.s	$xr9, $xr11, $xr9
 	xvfmul.s	$xr10, $xr10, $xr12
-	xvfadd.s	$xr9, $xr9, $xr10
-	vreplvei.w	$vr10, $vr13, 3
-	fcvt.d.s	$ft2, $ft2
-	vreplvei.w	$vr11, $vr13, 2
+	xvfadd.s	$xr10, $xr9, $xr10
+	xvpermi.q	$xr9, $xr13, 1
+	vreplvei.w	$vr11, $vr9, 3
 	fcvt.d.s	$ft3, $ft3
-	vextrins.d	$vr11, $vr10, 16
-	vreplvei.w	$vr10, $vr13, 1
-	fcvt.d.s	$ft4, $ft2
-	vreplvei.w	$vr10, $vr13, 0
-	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr12, 16
-	xvpermi.q	$xr10, $xr11, 2
-	xvpermi.q	$xr11, $xr13, 1
-	vreplvei.w	$vr12, $vr11, 3
+	vreplvei.w	$vr12, $vr9, 2
 	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr13, $vr11, 2
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr12, 16
-	vreplvei.w	$vr12, $vr11, 1
-	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr11, $vr11, 0
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr9, 1
 	fcvt.d.s	$ft3, $ft3
-	vextrins.d	$vr11, $vr12, 16
-	xvpermi.q	$xr11, $xr13, 2
-	xvpermi.q	$xr12, $xr9, 1
-	vreplvei.w	$vr13, $vr12, 3
-	fcvt.d.s	$ft5, $ft5
-	vreplvei.w	$vr14, $vr12, 2
-	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr13, 16
-	vreplvei.w	$vr13, $vr12, 1
-	fcvt.d.s	$ft5, $ft5
-	vreplvei.w	$vr12, $vr12, 0
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr13, 16
-	xvpermi.q	$xr12, $xr14, 2
-	vreplvei.w	$vr13, $vr9, 3
-	fcvt.d.s	$ft5, $ft5
-	vreplvei.w	$vr14, $vr9, 2
-	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr13, 16
-	vreplvei.w	$vr13, $vr9, 1
-	fcvt.d.s	$ft5, $ft5
 	vreplvei.w	$vr9, $vr9, 0
 	fcvt.d.s	$ft1, $ft1
-	vextrins.d	$vr9, $vr13, 16
-	xvpermi.q	$xr9, $xr14, 2
-	xvfmul.d	$xr9, $xr9, $xr8
-	xvfmul.d	$xr12, $xr12, $xr8
-	xvfadd.d	$xr11, $xr12, $xr11
-	xvfadd.d	$xr9, $xr9, $xr10
-	xvpickve.d	$xr10, $xr9, 1
-	fcvt.s.d	$ft2, $ft2
-	xvpickve.d	$xr12, $xr9, 0
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr12, $vr10, 16
-	xvpickve.d	$xr10, $xr9, 2
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 32
-	xvpickve.d	$xr9, $xr9, 3
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr12, $vr9, 48
-	xvpickve.d	$xr9, $xr11, 1
-	fcvt.s.d	$ft1, $ft1
-	xvpickve.d	$xr10, $xr11, 0
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr10, $vr9, 16
-	xvpickve.d	$xr9, $xr11, 2
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr10, $vr9, 32
-	xvpickve.d	$xr9, $xr11, 3
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr10, $vr9, 48
-	xvpermi.q	$xr12, $xr10, 2
+	vextrins.d	$vr9, $vr11, 16
+	xvpermi.q	$xr9, $xr12, 2
+	vreplvei.w	$vr11, $vr13, 3
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr12, $vr13, 2
+	fcvt.d.s	$ft4, $ft4
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr13, 1
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr13, $vr13, 0
+	fcvt.d.s	$ft5, $ft5
+	vextrins.d	$vr13, $vr11, 16
+	xvpermi.q	$xr13, $xr12, 2
+	vreplvei.w	$vr11, $vr10, 3
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr12, $vr10, 2
+	fcvt.d.s	$ft4, $ft4
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr10, 1
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr14, $vr10, 0
+	fcvt.d.s	$ft6, $ft6
+	vextrins.d	$vr14, $vr11, 16
+	xvpermi.q	$xr14, $xr12, 2
+	xvpermi.q	$xr10, $xr10, 1
+	vreplvei.w	$vr11, $vr10, 3
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr12, $vr10, 2
+	fcvt.d.s	$ft4, $ft4
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr10, 1
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr10, $vr10, 0
+	fcvt.d.s	$ft2, $ft2
+	vextrins.d	$vr10, $vr11, 16
+	xvpermi.q	$xr10, $xr12, 2
+	xvfmul.d	$xr10, $xr10, $xr8
+	xvfmul.d	$xr11, $xr14, $xr8
+	xvfadd.d	$xr11, $xr11, $xr13
+	xvfadd.d	$xr9, $xr10, $xr9
+	xvfcvt.s.d	$xr9, $xr9, $xr11
+	xvpermi.d	$xr9, $xr9, 216
 	addi.d	$a0, $a0, 32
-	xvstx	$xr12, $a1, $t1
+	xvstx	$xr9, $a1, $a3
 	bnez	$a0, .LBB0_57
 # %bb.58:                               #   in Loop: Header=BB0_1 Depth=1
 	ori	$a7, $zero, 1016
@@ -1292,11 +1207,11 @@ srad_kernel:                            # @srad_kernel
                                         #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	alsl.d	$a0, $a7, $a0, 2
-	alsl.d	$a1, $a7, $t0, 2
+	alsl.d	$a1, $a7, $t1, 2
 	alsl.d	$a2, $a7, $a4, 2
 	alsl.d	$a4, $a7, $t3, 2
-	alsl.d	$t0, $a7, $t2, 2
-	alsl.d	$a3, $a7, $a3, 2
+	alsl.d	$t1, $a7, $t2, 2
+	alsl.d	$t0, $a7, $t0, 2
 	addi.d	$a7, $a7, -1023
 	.p2align	4, , 16
 .LBB0_60:                               # %.preheader623
@@ -1310,9 +1225,9 @@ srad_kernel:                            # @srad_kernel
 	fld.s	$ft5, $a4, 0
 	fmul.s	$ft3, $ft1, $ft3
 	fadd.s	$ft2, $ft2, $ft3
-	fld.s	$ft3, $t0, 0
+	fld.s	$ft3, $t1, 0
 	fmul.s	$ft1, $ft1, $ft5
-	fld.s	$ft5, $a3, 0
+	fld.s	$ft5, $t0, 0
 	fadd.s	$ft1, $ft2, $ft1
 	fmul.s	$ft2, $ft4, $ft3
 	fadd.s	$ft1, $ft1, $ft2
@@ -1321,14 +1236,14 @@ srad_kernel:                            # @srad_kernel
 	fmul.d	$ft1, $ft1, $fa7
 	fadd.d	$ft1, $ft1, $ft2
 	fcvt.s.d	$ft1, $ft1
-	fst.s	$ft1, $a3, 0
+	fst.s	$ft1, $t0, 0
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, 4
-	addi.d	$t0, $t0, 4
+	addi.d	$t1, $t1, 4
 	addi.d	$a7, $a7, 1
-	addi.d	$a3, $a3, 4
+	addi.d	$t0, $t0, 4
 	bnez	$a7, .LBB0_60
 # %bb.61:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
@@ -1371,8 +1286,8 @@ srad_kernel:                            # @srad_kernel
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_65 Depth 3
                                         #       Child Loop BB0_68 Depth 3
-	ld.d	$a3, $sp, 264                   # 8-byte Folded Reload
-	beqz	$a3, .LBB0_64
+	ld.d	$t1, $sp, 264                   # 8-byte Folded Reload
+	beqz	$t1, .LBB0_64
 # %bb.63:                               #   in Loop: Header=BB0_62 Depth=2
 	move	$t3, $zero
 	b	.LBB0_67
@@ -1385,102 +1300,81 @@ srad_kernel:                            # @srad_kernel
                                         #   Parent Loop BB0_1 Depth=1
                                         #     Parent Loop BB0_62 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a3, $t0, $t6
-	xvld	$xr9, $a3, -32
-	xvldx	$xr10, $a3, $t1
-	xvld	$xr11, $a3, -28
-	add.d	$a3, $a2, $t6
-	xvldx	$xr12, $a3, $t1
-	add.d	$a3, $a4, $t6
-	xvldx	$xr13, $a3, $t1
-	add.d	$a3, $s4, $t6
-	xvldx	$xr14, $a3, $t1
+	add.d	$t1, $t0, $t6
+	xvld	$xr9, $t1, -32
+	xvldx	$xr10, $t1, $a3
+	xvld	$xr11, $t1, -28
+	add.d	$t1, $a2, $t6
+	xvldx	$xr12, $t1, $a3
+	add.d	$t1, $a4, $t6
+	xvldx	$xr13, $t1, $a3
+	add.d	$t1, $s4, $t6
+	xvldx	$xr14, $t1, $a3
 	xvfmul.s	$xr12, $xr9, $xr12
 	xvfmul.s	$xr10, $xr10, $xr13
 	xvfadd.s	$xr10, $xr12, $xr10
 	xvfmul.s	$xr9, $xr9, $xr14
-	add.d	$a3, $s3, $t6
-	xvldx	$xr12, $a3, $t1
+	add.d	$t1, $s3, $t6
+	xvldx	$xr12, $t1, $a3
 	add.d	$s0, $a7, $t6
-	xvldx	$xr13, $s0, $t1
+	xvldx	$xr13, $s0, $a3
 	xvfadd.s	$xr9, $xr10, $xr9
 	xvfmul.s	$xr10, $xr11, $xr12
-	xvfadd.s	$xr9, $xr9, $xr10
-	vreplvei.w	$vr10, $vr13, 3
-	fcvt.d.s	$ft2, $ft2
-	vreplvei.w	$vr11, $vr13, 2
+	xvfadd.s	$xr10, $xr9, $xr10
+	xvpermi.q	$xr9, $xr13, 1
+	vreplvei.w	$vr11, $vr9, 3
 	fcvt.d.s	$ft3, $ft3
-	vextrins.d	$vr11, $vr10, 16
-	vreplvei.w	$vr10, $vr13, 1
-	fcvt.d.s	$ft4, $ft2
-	vreplvei.w	$vr10, $vr13, 0
-	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr12, 16
-	xvpermi.q	$xr10, $xr11, 2
-	xvpermi.q	$xr11, $xr13, 1
-	vreplvei.w	$vr12, $vr11, 3
+	vreplvei.w	$vr12, $vr9, 2
 	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr13, $vr11, 2
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr12, 16
-	vreplvei.w	$vr12, $vr11, 1
-	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr11, $vr11, 0
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr9, 1
 	fcvt.d.s	$ft3, $ft3
-	vextrins.d	$vr11, $vr12, 16
-	xvpermi.q	$xr11, $xr13, 2
-	xvpermi.q	$xr12, $xr9, 1
-	vreplvei.w	$vr13, $vr12, 3
-	fcvt.d.s	$ft5, $ft5
-	vreplvei.w	$vr14, $vr12, 2
-	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr13, 16
-	vreplvei.w	$vr13, $vr12, 1
-	fcvt.d.s	$ft5, $ft5
-	vreplvei.w	$vr12, $vr12, 0
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr13, 16
-	xvpermi.q	$xr12, $xr14, 2
-	vreplvei.w	$vr13, $vr9, 3
-	fcvt.d.s	$ft5, $ft5
-	vreplvei.w	$vr14, $vr9, 2
-	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr13, 16
-	vreplvei.w	$vr13, $vr9, 1
-	fcvt.d.s	$ft5, $ft5
 	vreplvei.w	$vr9, $vr9, 0
 	fcvt.d.s	$ft1, $ft1
-	vextrins.d	$vr9, $vr13, 16
-	xvpermi.q	$xr9, $xr14, 2
-	xvfmul.d	$xr9, $xr9, $xr8
-	xvfmul.d	$xr12, $xr12, $xr8
-	xvfadd.d	$xr11, $xr12, $xr11
-	xvfadd.d	$xr9, $xr9, $xr10
-	xvpickve.d	$xr10, $xr9, 1
-	fcvt.s.d	$ft2, $ft2
-	xvpickve.d	$xr12, $xr9, 0
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr12, $vr10, 16
-	xvpickve.d	$xr10, $xr9, 2
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 32
-	xvpickve.d	$xr9, $xr9, 3
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr12, $vr9, 48
-	xvpickve.d	$xr9, $xr11, 1
-	fcvt.s.d	$ft1, $ft1
-	xvpickve.d	$xr10, $xr11, 0
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr10, $vr9, 16
-	xvpickve.d	$xr9, $xr11, 2
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr10, $vr9, 32
-	xvpickve.d	$xr9, $xr11, 3
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr10, $vr9, 48
-	xvpermi.q	$xr12, $xr10, 2
+	vextrins.d	$vr9, $vr11, 16
+	xvpermi.q	$xr9, $xr12, 2
+	vreplvei.w	$vr11, $vr13, 3
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr12, $vr13, 2
+	fcvt.d.s	$ft4, $ft4
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr13, 1
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr13, $vr13, 0
+	fcvt.d.s	$ft5, $ft5
+	vextrins.d	$vr13, $vr11, 16
+	xvpermi.q	$xr13, $xr12, 2
+	vreplvei.w	$vr11, $vr10, 3
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr12, $vr10, 2
+	fcvt.d.s	$ft4, $ft4
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr10, 1
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr14, $vr10, 0
+	fcvt.d.s	$ft6, $ft6
+	vextrins.d	$vr14, $vr11, 16
+	xvpermi.q	$xr14, $xr12, 2
+	xvpermi.q	$xr10, $xr10, 1
+	vreplvei.w	$vr11, $vr10, 3
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr12, $vr10, 2
+	fcvt.d.s	$ft4, $ft4
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr10, 1
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr10, $vr10, 0
+	fcvt.d.s	$ft2, $ft2
+	vextrins.d	$vr10, $vr11, 16
+	xvpermi.q	$xr10, $xr12, 2
+	xvfmul.d	$xr10, $xr10, $xr8
+	xvfmul.d	$xr11, $xr14, $xr8
+	xvfadd.d	$xr11, $xr11, $xr13
+	xvfadd.d	$xr9, $xr10, $xr9
+	xvfcvt.s.d	$xr9, $xr9, $xr11
+	xvpermi.d	$xr9, $xr9, 216
 	addi.d	$t6, $t6, 32
-	xvstx	$xr12, $s0, $t1
+	xvstx	$xr9, $s0, $a3
 	bnez	$t6, .LBB0_65
 # %bb.66:                               #   in Loop: Header=BB0_62 Depth=2
 	ori	$t3, $zero, 1016
@@ -1499,12 +1393,12 @@ srad_kernel:                            # @srad_kernel
                                         #   Parent Loop BB0_1 Depth=1
                                         #     Parent Loop BB0_62 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a3, $s2, $t2
-	fldx.s	$ft1, $a3, $t5
+	add.d	$t1, $s2, $t2
+	fldx.s	$ft1, $t1, $t5
 	fldx.s	$ft2, $s0, $t2
 	fldx.s	$ft3, $s2, $t2
 	fldx.s	$ft4, $s1, $t2
-	fld.s	$ft5, $a3, 4
+	fld.s	$ft5, $t1, 4
 	fmul.s	$ft1, $ft1, $ft2
 	fldx.s	$ft2, $fp, $t2
 	fmul.s	$ft4, $ft3, $ft4
@@ -1538,21 +1432,21 @@ srad_kernel:                            # @srad_kernel
 	add.d	$a4, $a4, $t5
 	add.d	$a2, $a2, $t5
 	add.d	$a1, $a1, $t5
-	ori	$a3, $zero, 2047
-	bne	$a0, $a3, .LBB0_62
+	ori	$t1, $zero, 2047
+	bne	$a0, $t1, .LBB0_62
 # %bb.70:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
 	addi.w	$t3, $t3, 1
 	ld.d	$t4, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
+	lu52i.d	$s0, $zero, -1029
 	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
 	ori	$t2, $zero, 128
-	lu52i.d	$s0, $zero, -1175
+	lu52i.d	$s3, $zero, -1175
 	ori	$a0, $zero, 10
-	ori	$s3, $zero, 4068
 	bne	$t3, $a0, .LBB0_1
 # %bb.71:
 	ld.d	$s8, $sp, 280                   # 8-byte Folded Reload

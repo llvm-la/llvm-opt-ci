@@ -292,7 +292,7 @@ _ZNK22btGImpactMeshShapePart21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	addi.d	$a4, $a1, -1
 	mul.d	$a4, $a4, $a3
 	add.d	$a2, $a4, $a2
-	addi.d	$a2, $a2, 16
+	addi.d	$a2, $a2, 8
 	movgr2fr.w	$fa1, $zero
 	sub.d	$a3, $zero, $a3
 	fmov.s	$fa2, $fa1
@@ -300,34 +300,33 @@ _ZNK22btGImpactMeshShapePart21calculateLocalInertiaEfR9btVector3: # @_ZNK22btGIm
 	.p2align	4, , 16
 .LBB1_3:                                # %_ZNK22btGImpactMeshShapePart9getVertexEiR9btVector3.exit.us
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a1, $a1, -1
 	fld.s	$fa4, $s0, 200
-	fld.d	$fa5, $a2, -16
-	fld.s	$fa6, $s0, 204
-	fld.d	$fa7, $a2, -8
+	fld.d	$fa5, $a2, -8
+	addi.d	$a1, $a1, -1
 	fcvt.d.s	$fa4, $fa4
 	fmul.d	$fa4, $fa5, $fa4
-	fcvt.d.s	$fa5, $fa6
-	fmul.d	$fa5, $fa7, $fa5
-	fld.s	$fa6, $s0, 208
-	fld.d	$fa7, $a2, 0
 	fcvt.s.d	$fa4, $fa4
-	fcvt.s.d	$fa5, $fa5
-	fcvt.d.s	$fa6, $fa6
-	fmul.d	$fa6, $fa7, $fa6
-	fcvt.s.d	$fa6, $fa6
+	fld.s	$fa5, $s0, 208
+	fld.s	$fa6, $s0, 204
 	fmul.s	$fa4, $fa4, $fa4
-	fmul.s	$fa5, $fa5, $fa5
-	fmul.s	$fa6, $fa6, $fa6
-	fadd.s	$fa7, $fa5, $fa6
+	vld	$vr7, $a2, 0
+	fcvt.d.s	$fa5, $fa5
+	fcvt.d.s	$fa6, $fa6
+	vextrins.d	$vr6, $vr5, 16
+	vfmul.d	$vr5, $vr7, $vr6
+	vfcvt.s.d	$vr5, $vr0, $vr5
+	vfmul.s	$vr5, $vr5, $vr5
+	vreplvei.w	$vr6, $vr5, 0
+	vreplvei.w	$vr5, $vr5, 1
+	fadd.s	$fa7, $fa6, $fa5
 	fmul.s	$fa7, $fa0, $fa7
-	fadd.s	$fa6, $fa4, $fa6
-	fmul.s	$fa6, $fa0, $fa6
-	fadd.s	$fa4, $fa4, $fa5
+	fadd.s	$fa5, $fa4, $fa5
+	fmul.s	$fa5, $fa0, $fa5
+	fadd.s	$fa4, $fa4, $fa6
 	fmul.s	$fa4, $fa0, $fa4
 	fadd.s	$fa1, $fa1, $fa7
 	fst.s	$fa1, $fp, 0
-	fadd.s	$fa2, $fa6, $fa2
+	fadd.s	$fa2, $fa5, $fa2
 	fst.s	$fa2, $fp, 4
 	fadd.s	$fa3, $fa4, $fa3
 	fst.s	$fa3, $fp, 8

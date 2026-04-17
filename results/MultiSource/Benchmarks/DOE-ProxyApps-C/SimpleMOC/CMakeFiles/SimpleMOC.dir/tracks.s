@@ -744,36 +744,15 @@ generate_polar_angles:                  # @generate_polar_angles
 	xvffint.d.lu	$xr5, $xr5
 	vext2xv.du.wu	$xr6, $xr1
 	xvffint.d.lu	$xr6, $xr6
-	xvfadd.d	$xr5, $xr5, $xr3
 	xvfadd.d	$xr6, $xr6, $xr3
-	xvfmul.d	$xr6, $xr6, $xr4
+	xvfadd.d	$xr5, $xr5, $xr3
 	xvfmul.d	$xr5, $xr5, $xr4
-	xvfdiv.d	$xr5, $xr5, $xr2
+	xvfmul.d	$xr6, $xr6, $xr4
 	xvfdiv.d	$xr6, $xr6, $xr2
-	xvpickve.d	$xr7, $xr6, 1
-	fcvt.s.d	$fa7, $fa7
-	xvpickve.d	$xr8, $xr6, 0
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr8, $vr7, 16
-	xvpickve.d	$xr7, $xr6, 2
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr8, $vr7, 32
-	xvpickve.d	$xr6, $xr6, 3
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr8, $vr6, 48
-	xvpickve.d	$xr6, $xr5, 1
-	fcvt.s.d	$fa6, $fa6
-	xvpickve.d	$xr7, $xr5, 0
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr7, $vr6, 16
-	xvpickve.d	$xr6, $xr5, 2
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr7, $vr6, 32
-	xvpickve.d	$xr5, $xr5, 3
-	fcvt.s.d	$fa5, $fa5
-	vextrins.w	$vr7, $vr5, 48
-	xvpermi.q	$xr8, $xr7, 2
-	xvst	$xr8, $a3, 0
+	xvfdiv.d	$xr5, $xr5, $xr2
+	xvfcvt.s.d	$xr5, $xr5, $xr6
+	xvpermi.d	$xr5, $xr5, 216
+	xvst	$xr5, $a3, 0
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 32

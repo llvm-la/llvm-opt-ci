@@ -1383,57 +1383,36 @@ matgen:                                 # @matgen
 	xvbitsel.v	$xr10, $xr7, $xr10, $xr11
 	xvffint.s.wu	$xr10, $xr10
 	xvfdiv.s	$xr10, $xr8, $xr10
-	xvpermi.q	$xr11, $xr10, 1
-	vreplvei.w	$vr12, $vr11, 3
-	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr13, $vr11, 2
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr12, 16
-	vreplvei.w	$vr12, $vr11, 1
-	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr11, $vr11, 0
+	vreplvei.w	$vr11, $vr10, 3
 	fcvt.d.s	$ft3, $ft3
-	vextrins.d	$vr11, $vr12, 16
-	xvpermi.q	$xr11, $xr13, 2
-	vreplvei.w	$vr12, $vr10, 3
+	vreplvei.w	$vr12, $vr10, 2
 	fcvt.d.s	$ft4, $ft4
-	vreplvei.w	$vr13, $vr10, 2
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr10, 1
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr13, $vr10, 0
 	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr12, 16
-	vreplvei.w	$vr12, $vr10, 1
+	vextrins.d	$vr13, $vr11, 16
+	xvpermi.q	$xr13, $xr12, 2
+	xvpermi.q	$xr10, $xr10, 1
+	vreplvei.w	$vr11, $vr10, 3
+	fcvt.d.s	$ft3, $ft3
+	vreplvei.w	$vr12, $vr10, 2
 	fcvt.d.s	$ft4, $ft4
+	vextrins.d	$vr12, $vr11, 16
+	vreplvei.w	$vr11, $vr10, 1
+	fcvt.d.s	$ft3, $ft3
 	vreplvei.w	$vr10, $vr10, 0
 	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr12, 16
-	xvpermi.q	$xr10, $xr13, 2
+	vextrins.d	$vr10, $vr11, 16
+	xvpermi.q	$xr10, $xr12, 2
 	xvfmul.d	$xr10, $xr10, $xr4
-	xvfmul.d	$xr11, $xr11, $xr4
+	xvfmul.d	$xr11, $xr13, $xr4
 	xvfdiv.d	$xr11, $xr11, $xr3
 	xvfdiv.d	$xr10, $xr10, $xr3
-	xvpickve.d	$xr12, $xr10, 1
-	fcvt.s.d	$ft4, $ft4
-	xvpickve.d	$xr13, $xr10, 0
-	fcvt.s.d	$ft5, $ft5
-	vextrins.w	$vr13, $vr12, 16
-	xvpickve.d	$xr12, $xr10, 2
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr13, $vr12, 32
-	xvpickve.d	$xr10, $xr10, 3
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr13, $vr10, 48
-	xvpickve.d	$xr10, $xr11, 1
-	fcvt.s.d	$ft2, $ft2
-	xvpickve.d	$xr12, $xr11, 0
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr12, $vr10, 16
-	xvpickve.d	$xr10, $xr11, 2
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 32
-	xvpickve.d	$xr10, $xr11, 3
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 48
-	xvpermi.q	$xr13, $xr12, 2
-	xvst	$xr13, $t0, 0
+	xvfcvt.s.d	$xr10, $xr10, $xr11
+	xvpermi.d	$xr10, $xr10, 216
+	xvst	$xr10, $t0, 0
 	xvaddi.wu	$xr9, $xr9, 8
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32
@@ -1793,55 +1772,34 @@ matgen:                                 # @matgen
 	xvffint.s.wu	$xr10, $xr10
 	xvfdiv.s	$xr10, $xr10, $xr8
 	xvfmul.s	$xr10, $xr10, $xr1
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
+	xvpermi.q	$xr11, $xr10, 1
+	vreplvei.w	$vr12, $vr11, 3
 	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr13, $vr10, 0
+	vreplvei.w	$vr13, $vr11, 2
 	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr11, 16
-	xvpermi.q	$xr13, $xr12, 2
-	xvpermi.q	$xr10, $xr10, 1
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
+	vextrins.d	$vr13, $vr12, 16
+	vreplvei.w	$vr12, $vr11, 1
 	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
+	vreplvei.w	$vr11, $vr11, 0
 	fcvt.d.s	$ft3, $ft3
+	vextrins.d	$vr11, $vr12, 16
+	xvpermi.q	$xr11, $xr13, 2
+	vreplvei.w	$vr12, $vr10, 3
+	fcvt.d.s	$ft4, $ft4
+	vreplvei.w	$vr13, $vr10, 2
+	fcvt.d.s	$ft5, $ft5
+	vextrins.d	$vr13, $vr12, 16
+	vreplvei.w	$vr12, $vr10, 1
+	fcvt.d.s	$ft4, $ft4
 	vreplvei.w	$vr10, $vr10, 0
 	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr11, 16
-	xvpermi.q	$xr10, $xr12, 2
+	vextrins.d	$vr10, $vr12, 16
+	xvpermi.q	$xr10, $xr13, 2
 	xvfdiv.d	$xr10, $xr10, $xr4
-	xvfdiv.d	$xr11, $xr13, $xr4
-	xvpickve.d	$xr12, $xr11, 1
-	fcvt.s.d	$ft4, $ft4
-	xvpickve.d	$xr13, $xr11, 0
-	fcvt.s.d	$ft5, $ft5
-	vextrins.w	$vr13, $vr12, 16
-	xvpickve.d	$xr12, $xr11, 2
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr13, $vr12, 32
-	xvpickve.d	$xr11, $xr11, 3
-	fcvt.s.d	$ft3, $ft3
-	vextrins.w	$vr13, $vr11, 48
-	xvpickve.d	$xr11, $xr10, 1
-	fcvt.s.d	$ft3, $ft3
-	xvpickve.d	$xr12, $xr10, 0
-	fcvt.s.d	$ft4, $ft4
-	vextrins.w	$vr12, $vr11, 16
-	xvpickve.d	$xr11, $xr10, 2
-	fcvt.s.d	$ft3, $ft3
-	vextrins.w	$vr12, $vr11, 32
-	xvpickve.d	$xr10, $xr10, 3
-	fcvt.s.d	$ft2, $ft2
-	vextrins.w	$vr12, $vr10, 48
-	xvpermi.q	$xr13, $xr12, 2
-	xvst	$xr13, $t0, 0
+	xvfdiv.d	$xr11, $xr11, $xr4
+	xvfcvt.s.d	$xr10, $xr11, $xr10
+	xvpermi.d	$xr10, $xr10, 216
+	xvst	$xr10, $t0, 0
 	xvaddi.wu	$xr9, $xr9, 8
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32

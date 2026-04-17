@@ -860,30 +860,9 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	xvfmul.d	$xr0, $xr0, $xr11
 	xvfrecip.d	$xr0, $xr0
 	xvfrecip.d	$xr1, $xr1
-	xvpickve.d	$xr2, $xr1, 1
-	fcvt.s.d	$fa2, $fa2
-	xvpickve.d	$xr3, $xr1, 0
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr1, 2
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr3, $vr2, 32
-	xvpickve.d	$xr1, $xr1, 3
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr3, $vr1, 48
-	xvpickve.d	$xr1, $xr0, 1
-	fcvt.s.d	$fa1, $fa1
-	xvpickve.d	$xr2, $xr0, 0
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	xvpickve.d	$xr1, $xr0, 2
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	xvpickve.d	$xr0, $xr0, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	xvpermi.q	$xr2, $xr3, 2
-	xvst	$xr2, $a0, 0
+	xvfcvt.s.d	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvst	$xr0, $a0, 0
 	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 16
 	addi.d	$a0, $a0, 32

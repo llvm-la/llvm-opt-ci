@@ -253,7 +253,7 @@ start_pass:                             # @start_pass
 	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 48
-	blez	$a0, .LBB1_21
+	blez	$a0, .LBB1_22
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $fp, 584
 	ld.d	$a1, $fp, 296
@@ -357,7 +357,7 @@ start_pass:                             # @start_pass
 	addi.d	$s0, $s0, 8
 	addi.d	$s1, $s1, 4
 	addi.d	$s2, $s2, 96
-	bge	$s8, $a2, .LBB1_21
+	bge	$s8, $a2, .LBB1_22
 .LBB1_4:                                # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $s2, -52
 	addi.w	$a3, $a2, -1
@@ -509,30 +509,9 @@ start_pass:                             # @start_pass
 	xvfmul.d	$xr6, $xr13, $xr6
 	xvfmul.d	$xr6, $xr6, $xr7
 	xvfmul.d	$xr7, $xr9, $xr8
-	xvpickve.d	$xr8, $xr7, 1
-	fcvt.s.d	$ft0, $ft0
-	xvpickve.d	$xr9, $xr7, 0
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr9, $vr8, 16
-	xvpickve.d	$xr8, $xr7, 2
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr9, $vr8, 32
-	xvpickve.d	$xr7, $xr7, 3
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr9, $vr7, 48
-	xvpickve.d	$xr7, $xr6, 1
-	fcvt.s.d	$fa7, $fa7
-	xvpickve.d	$xr8, $xr6, 0
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr8, $vr7, 16
-	xvpickve.d	$xr7, $xr6, 2
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr8, $vr7, 32
-	xvpickve.d	$xr6, $xr6, 3
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr8, $vr6, 48
-	xvpermi.q	$xr8, $xr9, 2
-	xvst	$xr8, $a2, 32
+	xvfcvt.s.d	$xr6, $xr7, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	xvst	$xr6, $a2, 32
 	ld.hu	$a4, $a3, 46
 	ld.hu	$a5, $a3, 44
 	ld.hu	$a6, $a3, 42
@@ -573,30 +552,9 @@ start_pass:                             # @start_pass
 	xvfmul.d	$xr6, $xr13, $xr6
 	xvfmul.d	$xr6, $xr6, $xr7
 	xvfmul.d	$xr7, $xr9, $xr8
-	xvpickve.d	$xr8, $xr7, 1
-	fcvt.s.d	$ft0, $ft0
-	xvpickve.d	$xr9, $xr7, 0
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr9, $vr8, 16
-	xvpickve.d	$xr8, $xr7, 2
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr9, $vr8, 32
-	xvpickve.d	$xr7, $xr7, 3
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr9, $vr7, 48
-	xvpickve.d	$xr7, $xr6, 1
-	fcvt.s.d	$fa7, $fa7
-	xvpickve.d	$xr8, $xr6, 0
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr8, $vr7, 16
-	xvpickve.d	$xr7, $xr6, 2
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr8, $vr7, 32
-	xvpickve.d	$xr6, $xr6, 3
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr8, $vr6, 48
-	xvpermi.q	$xr8, $xr9, 2
-	xvst	$xr8, $a2, 64
+	xvfcvt.s.d	$xr6, $xr7, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	xvst	$xr6, $a2, 64
 	ld.hu	$a4, $a3, 62
 	ld.hu	$a5, $a3, 60
 	ld.hu	$a6, $a3, 58
@@ -637,31 +595,10 @@ start_pass:                             # @start_pass
 	xvfmul.d	$xr6, $xr13, $xr6
 	xvfmul.d	$xr6, $xr6, $xr7
 	xvfmul.d	$xr7, $xr9, $xr8
-	xvpickve.d	$xr8, $xr7, 1
-	fcvt.s.d	$ft0, $ft0
-	xvpickve.d	$xr9, $xr7, 0
-	fcvt.s.d	$ft1, $ft1
-	vextrins.w	$vr9, $vr8, 16
-	xvpickve.d	$xr8, $xr7, 2
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr9, $vr8, 32
-	xvpickve.d	$xr7, $xr7, 3
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr9, $vr7, 48
-	xvpickve.d	$xr7, $xr6, 1
-	fcvt.s.d	$fa7, $fa7
-	xvpickve.d	$xr8, $xr6, 0
-	fcvt.s.d	$ft0, $ft0
-	vextrins.w	$vr8, $vr7, 16
-	xvpickve.d	$xr7, $xr6, 2
-	fcvt.s.d	$fa7, $fa7
-	vextrins.w	$vr8, $vr7, 32
-	xvpickve.d	$xr6, $xr6, 3
-	fcvt.s.d	$fa6, $fa6
-	vextrins.w	$vr8, $vr6, 48
+	xvfcvt.s.d	$xr6, $xr7, $xr6
 	ld.hu	$a4, $a3, 64
-	xvpermi.q	$xr8, $xr9, 2
-	xvst	$xr8, $a2, 96
+	xvpermi.d	$xr6, $xr6, 216
+	xvst	$xr6, $a2, 96
 	ld.hu	$a5, $a3, 66
 	movgr2fr.w	$fa6, $a4
 	ffint.s.w	$fa6, $fa6
@@ -745,30 +682,9 @@ start_pass:                             # @start_pass
 	xvfmul.d	$xr0, $xr7, $xr0
 	xvfmul.d	$xr0, $xr0, $xr1
 	xvfmul.d	$xr1, $xr3, $xr2
-	xvpickve.d	$xr2, $xr1, 1
-	fcvt.s.d	$fa2, $fa2
-	xvpickve.d	$xr3, $xr1, 0
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr1, 2
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr3, $vr2, 32
-	xvpickve.d	$xr1, $xr1, 3
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr3, $vr1, 48
-	xvpickve.d	$xr1, $xr0, 1
-	fcvt.s.d	$fa1, $fa1
-	xvpickve.d	$xr2, $xr0, 0
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	xvpickve.d	$xr1, $xr0, 2
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	xvpickve.d	$xr0, $xr0, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	xvpermi.q	$xr2, $xr3, 2
-	xvst	$xr2, $a2, 160
+	xvfcvt.s.d	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvst	$xr0, $a2, 160
 	ld.hu	$a4, $a3, 110
 	ld.hu	$a5, $a3, 108
 	ld.hu	$a6, $a3, 106
@@ -809,30 +725,9 @@ start_pass:                             # @start_pass
 	xvfmul.d	$xr0, $xr7, $xr0
 	xvfmul.d	$xr0, $xr0, $xr1
 	xvfmul.d	$xr1, $xr3, $xr2
-	xvpickve.d	$xr2, $xr1, 1
-	fcvt.s.d	$fa2, $fa2
-	xvpickve.d	$xr3, $xr1, 0
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr1, 2
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr3, $vr2, 32
-	xvpickve.d	$xr1, $xr1, 3
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr3, $vr1, 48
-	xvpickve.d	$xr1, $xr0, 1
-	fcvt.s.d	$fa1, $fa1
-	xvpickve.d	$xr2, $xr0, 0
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	xvpickve.d	$xr1, $xr0, 2
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	xvpickve.d	$xr0, $xr0, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	xvpermi.q	$xr2, $xr3, 2
-	xvst	$xr2, $a2, 192
+	xvfcvt.s.d	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvst	$xr0, $a2, 192
 	ld.hu	$a4, $a3, 126
 	ld.hu	$a5, $a3, 124
 	ld.hu	$a6, $a3, 122
@@ -873,31 +768,9 @@ start_pass:                             # @start_pass
 	xvfmul.d	$xr0, $xr7, $xr0
 	xvfmul.d	$xr0, $xr0, $xr1
 	xvfmul.d	$xr1, $xr3, $xr2
-	xvpickve.d	$xr2, $xr1, 1
-	fcvt.s.d	$fa2, $fa2
-	xvpickve.d	$xr3, $xr1, 0
-	fcvt.s.d	$fa3, $fa3
-	vextrins.w	$vr3, $vr2, 16
-	xvpickve.d	$xr2, $xr1, 2
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr3, $vr2, 32
-	xvpickve.d	$xr1, $xr1, 3
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr3, $vr1, 48
-	xvpickve.d	$xr1, $xr0, 1
-	fcvt.s.d	$fa1, $fa1
-	xvpickve.d	$xr2, $xr0, 0
-	fcvt.s.d	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	xvpickve.d	$xr1, $xr0, 2
-	fcvt.s.d	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	xvpickve.d	$xr0, $xr0, 3
-	fcvt.s.d	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	xvpermi.q	$xr2, $xr3, 2
-	xvst	$xr2, $a2, 224
-	b	.LBB1_3
+	xvfcvt.s.d	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	b	.LBB1_20
 .LBB1_16:                               #   in Loop: Header=BB1_4 Depth=1
 	move	$a0, $zero
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
@@ -905,7 +778,7 @@ start_pass:                             # @start_pass
 .LBB1_17:                               #   in Loop: Header=BB1_4 Depth=1
 	ld.w	$a0, $fp, 88
 	ori	$a1, $zero, 3
-	bgeu	$a0, $a1, .LBB1_20
+	bgeu	$a0, $a1, .LBB1_21
 # %bb.18:                               # %switch.lookup
                                         #   in Loop: Header=BB1_4 Depth=1
 	slli.d	$a1, $a0, 3
@@ -1168,15 +1041,17 @@ start_pass:                             # @start_pass
 	xvori.b	$xr0, $xr6, 0
 	xvmadd.w	$xr0, $xr1, $xr2
 	xvsrli.w	$xr0, $xr0, 12
+.LBB1_20:                               # %.loopexit
+                                        #   in Loop: Header=BB1_4 Depth=1
 	xvst	$xr0, $a2, 224
 	b	.LBB1_3
-.LBB1_20:                               #   in Loop: Header=BB1_4 Depth=1
+.LBB1_21:                               #   in Loop: Header=BB1_4 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
 	ori	$a2, $zero, 47
 	st.w	$a2, $a0, 40
 	b	.LBB1_9
-.LBB1_21:                               # %._crit_edge
+.LBB1_22:                               # %._crit_edge
 	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
