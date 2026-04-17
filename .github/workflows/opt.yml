@@ -112,7 +112,7 @@ jobs:
           sh scripts/diff-pr.sh
       
       - name: Create comment
-        uses: actions-cool/issue-helper@v3
+        uses: actions-cool/issue-helper@v3.7.6
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
