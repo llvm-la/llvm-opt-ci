@@ -358,61 +358,21 @@ fft_float:                              # @fft_float
 .LBB0_36:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a2, 0
-	xvpermi.q	$xr3, $xr2, 1
-	vreplvei.w	$vr4, $vr3, 3
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr5, $vr3, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vreplvei.w	$vr4, $vr3, 1
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr3, $vr3, 0
-	fcvt.d.s	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
-	xvpermi.q	$xr3, $xr5, 2
-	vreplvei.w	$vr4, $vr2, 3
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr5, $vr2, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vreplvei.w	$vr4, $vr2, 1
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr2, $vr2, 0
-	fcvt.d.s	$fa2, $fa2
-	vextrins.d	$vr2, $vr4, 16
-	xvpermi.q	$xr2, $xr5, 2
-	xvfdiv.d	$xr3, $xr3, $xr1
+	xvpermi.d	$xr2, $xr2, 216
+	xvfcvth.d.s	$xr3, $xr2
+	xvfcvtl.d.s	$xr2, $xr2
 	xvfdiv.d	$xr2, $xr2, $xr1
+	xvfdiv.d	$xr3, $xr3, $xr1
 	xvld	$xr4, $a3, 0
 	xvfcvt.s.d	$xr2, $xr3, $xr2
 	xvpermi.d	$xr2, $xr2, 216
 	xvst	$xr2, $a2, 0
-	xvpermi.q	$xr2, $xr4, 1
-	vreplvei.w	$vr3, $vr2, 3
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr5, $vr2, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr3, 16
-	vreplvei.w	$vr3, $vr2, 1
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr2, $vr2, 0
-	fcvt.d.s	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	xvpermi.q	$xr2, $xr5, 2
-	vreplvei.w	$vr3, $vr4, 3
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr5, $vr4, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr3, 16
-	vreplvei.w	$vr3, $vr4, 1
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr4, $vr4, 0
-	fcvt.d.s	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	xvpermi.q	$xr4, $xr5, 2
+	xvpermi.d	$xr2, $xr4, 216
+	xvfcvth.d.s	$xr3, $xr2
+	xvfcvtl.d.s	$xr2, $xr2
 	xvfdiv.d	$xr2, $xr2, $xr1
-	xvfdiv.d	$xr3, $xr4, $xr1
-	xvfcvt.s.d	$xr2, $xr2, $xr3
+	xvfdiv.d	$xr3, $xr3, $xr1
+	xvfcvt.s.d	$xr2, $xr3, $xr2
 	xvpermi.d	$xr2, $xr2, 216
 	xvst	$xr2, $a3, 0
 	addi.d	$a4, $a4, -8
@@ -838,61 +798,21 @@ fft_float_StrictFP:                     # @fft_float_StrictFP
 .LBB1_36:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a2, 0
-	xvpermi.q	$xr3, $xr2, 1
-	vreplvei.w	$vr4, $vr3, 3
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr5, $vr3, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vreplvei.w	$vr4, $vr3, 1
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr3, $vr3, 0
-	fcvt.d.s	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
-	xvpermi.q	$xr3, $xr5, 2
-	vreplvei.w	$vr4, $vr2, 3
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr5, $vr2, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vreplvei.w	$vr4, $vr2, 1
-	fcvt.d.s	$fa4, $fa4
-	vreplvei.w	$vr2, $vr2, 0
-	fcvt.d.s	$fa2, $fa2
-	vextrins.d	$vr2, $vr4, 16
-	xvpermi.q	$xr2, $xr5, 2
-	xvfdiv.d	$xr3, $xr3, $xr1
+	xvpermi.d	$xr2, $xr2, 216
+	xvfcvth.d.s	$xr3, $xr2
+	xvfcvtl.d.s	$xr2, $xr2
 	xvfdiv.d	$xr2, $xr2, $xr1
+	xvfdiv.d	$xr3, $xr3, $xr1
 	xvld	$xr4, $a3, 0
 	xvfcvt.s.d	$xr2, $xr3, $xr2
 	xvpermi.d	$xr2, $xr2, 216
 	xvst	$xr2, $a2, 0
-	xvpermi.q	$xr2, $xr4, 1
-	vreplvei.w	$vr3, $vr2, 3
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr5, $vr2, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr3, 16
-	vreplvei.w	$vr3, $vr2, 1
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr2, $vr2, 0
-	fcvt.d.s	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	xvpermi.q	$xr2, $xr5, 2
-	vreplvei.w	$vr3, $vr4, 3
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr5, $vr4, 2
-	fcvt.d.s	$fa5, $fa5
-	vextrins.d	$vr5, $vr3, 16
-	vreplvei.w	$vr3, $vr4, 1
-	fcvt.d.s	$fa3, $fa3
-	vreplvei.w	$vr4, $vr4, 0
-	fcvt.d.s	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	xvpermi.q	$xr4, $xr5, 2
+	xvpermi.d	$xr2, $xr4, 216
+	xvfcvth.d.s	$xr3, $xr2
+	xvfcvtl.d.s	$xr2, $xr2
 	xvfdiv.d	$xr2, $xr2, $xr1
-	xvfdiv.d	$xr3, $xr4, $xr1
-	xvfcvt.s.d	$xr2, $xr2, $xr3
+	xvfdiv.d	$xr3, $xr3, $xr1
+	xvfcvt.s.d	$xr2, $xr3, $xr2
 	xvpermi.d	$xr2, $xr2, 216
 	xvst	$xr2, $a3, 0
 	addi.d	$a4, $a4, -8

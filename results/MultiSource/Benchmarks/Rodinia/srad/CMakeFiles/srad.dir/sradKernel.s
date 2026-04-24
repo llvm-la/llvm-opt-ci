@@ -260,8 +260,8 @@ srad_kernel:                            # @srad_kernel
 	lu12i.w	$a0, 231424
 	movgr2fr.w	$fa1, $a0
 	vldi	$vr2, -928
-	lu52i.d	$s0, $zero, -1029
-	movgr2fr.d	$fa3, $s0
+	lu52i.d	$s3, $zero, -1029
+	movgr2fr.d	$fa3, $s3
 	vldi	$vr4, -944
 	vldi	$vr5, -912
 	vldi	$vr6, -1168
@@ -285,11 +285,11 @@ srad_kernel:                            # @srad_kernel
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a0, $a7, 4
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$t7, $zero, 512
+	ori	$s0, $zero, 512
 	ori	$t2, $zero, 128
-	lu52i.d	$s3, $zero, -1175
 	lu12i.w	$t8, -1
 	ori	$a3, $zero, 4064
+	ori	$t7, $zero, 4068
 	st.d	$a6, $sp, 152                   # 8-byte Folded Spill
 	st.d	$a5, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 136                   # 8-byte Folded Spill
@@ -334,7 +334,7 @@ srad_kernel:                            # @srad_kernel
 	fmul.s	$ft2, $ft2, $ft2
 	addi.d	$a2, $a2, 4
 	fadd.s	$ft0, $ft0, $ft2
-	bne	$a2, $t7, .LBB0_3
+	bne	$a2, $s0, .LBB0_3
 # %bb.4:                                #   in Loop: Header=BB0_2 Depth=2
 	addi.d	$a0, $a0, 1
 	add.d	$a1, $a1, $t5
@@ -394,7 +394,8 @@ srad_kernel:                            # @srad_kernel
 	fadd.d	$ft2, $ft2, $fa5
 	frecip.d	$ft3, $ft2
 	fcvt.s.d	$ft4, $ft3
-	movgr2fr.d	$ft2, $s3
+	lu52i.d	$a0, $zero, -1175
+	movgr2fr.d	$ft2, $a0
 	fcmp.clt.d	$fcc0, $ft3, $ft2
 	fst.s	$ft4, $a6, 0
 	bceqz	$fcc0, .LBB0_7
@@ -608,13 +609,13 @@ srad_kernel:                            # @srad_kernel
 	bceqz	$fcc0, .LBB0_22
 # %bb.21:                               #   in Loop: Header=BB0_1 Depth=1
 	movgr2fr.w	$ft3, $zero
-	ori	$t0, $zero, 4068
+	lu52i.d	$t0, $zero, -1175
 	b	.LBB0_24
 	.p2align	4, , 16
 .LBB0_22:                               #   in Loop: Header=BB0_1 Depth=1
 	movgr2fr.d	$ft4, $ra
 	fcmp.cule.d	$fcc0, $ft3, $ft4
-	ori	$t0, $zero, 4068
+	lu52i.d	$t0, $zero, -1175
 	bcnez	$fcc0, .LBB0_25
 # %bb.23:                               #   in Loop: Header=BB0_1 Depth=1
 	vldi	$vr11, -1168
@@ -634,8 +635,8 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$s8, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$t2, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$t6, $sp, 80                    # 8-byte Folded Reload
@@ -648,18 +649,18 @@ srad_kernel:                            # @srad_kernel
 	add.d	$t6, $t6, $t5
 	add.d	$s6, $s6, $t5
 	add.d	$s5, $s5, $t5
-	add.d	$a7, $a7, $t5
 	add.d	$s4, $s4, $t5
+	add.d	$a7, $a7, $t5
 	add.d	$t2, $t2, $t5
 	add.d	$fp, $fp, $t5
 	add.d	$s8, $s8, $t5
 	add.d	$a4, $a4, $t5
 	add.d	$t3, $t3, $t5
 	add.d	$t4, $t4, $t5
-	lu52i.d	$s0, $zero, -1029
-	lu52i.d	$s3, $zero, -1175
+	lu52i.d	$s3, $zero, -1029
+	lu52i.d	$t0, $zero, -1175
 	ori	$a2, $zero, 2047
-	ori	$t0, $zero, 4068
+	ori	$t7, $zero, 4068
 	beq	$a1, $a2, .LBB0_54
 .LBB0_27:                               # %.preheader621
                                         #   Parent Loop BB0_1 Depth=1
@@ -682,20 +683,20 @@ srad_kernel:                            # @srad_kernel
                                         #   Parent Loop BB0_1 Depth=1
                                         #     Parent Loop BB0_27 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a2, $s4, $s2
+	add.d	$a2, $a7, $s2
 	xvldx	$xr13, $a2, $a3
 	xvld	$xr14, $a2, -32
 	ori	$a5, $t5, 4064
 	xvldx	$xr15, $a2, $a5
 	xvfsub.s	$xr14, $xr14, $xr13
-	add.d	$a5, $a7, $s2
+	add.d	$a5, $s4, $s2
 	xvstx	$xr14, $a5, $a3
 	xvfsub.s	$xr15, $xr15, $xr13
 	ori	$a5, $zero, 4060
 	xvldx	$xr16, $a2, $a5
 	add.d	$a5, $s5, $s2
 	xvstx	$xr15, $a5, $a3
-	xvldx	$xr17, $a2, $t0
+	xvldx	$xr17, $a2, $t7
 	xvfsub.s	$xr16, $xr16, $xr13
 	add.d	$a2, $s6, $s2
 	xvstx	$xr16, $a2, $a3
@@ -715,88 +716,28 @@ srad_kernel:                            # @srad_kernel
 	xvfadd.s	$xr14, $xr14, $xr16
 	xvfadd.s	$xr14, $xr17, $xr14
 	xvfdiv.s	$xr13, $xr14, $xr13
-	vreplvei.w	$vr14, $vr18, 3
-	fcvt.d.s	$ft6, $ft6
-	vreplvei.w	$vr15, $vr18, 2
-	fcvt.d.s	$ft7, $ft7
-	vextrins.d	$vr15, $vr14, 16
-	vreplvei.w	$vr14, $vr18, 1
-	fcvt.d.s	$ft6, $ft6
-	vreplvei.w	$vr16, $vr18, 0
-	fcvt.d.s	$ft8, $ft8
-	vextrins.d	$vr16, $vr14, 16
-	xvpermi.q	$xr16, $xr15, 2
-	xvpermi.q	$xr14, $xr18, 1
-	vreplvei.w	$vr15, $vr14, 3
-	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr17, $vr14, 2
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr15, 16
-	vreplvei.w	$vr15, $vr14, 1
-	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr14, $vr14, 0
-	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr15, 16
-	xvpermi.q	$xr14, $xr17, 2
-	xvldi	$xr15, -928
-	xvfmul.d	$xr14, $xr14, $xr15
-	xvfmul.d	$xr15, $xr16, $xr15
+	xvpermi.d	$xr14, $xr18, 216
+	xvfcvtl.d.s	$xr15, $xr14
+	xvfcvth.d.s	$xr14, $xr14
+	xvldi	$xr16, -928
+	xvfmul.d	$xr14, $xr14, $xr16
+	xvfmul.d	$xr15, $xr15, $xr16
 	xvfmul.s	$xr16, $xr13, $xr13
-	vreplvei.w	$vr17, $vr16, 3
-	fcvt.d.s	$ft9, $ft9
-	vreplvei.w	$vr18, $vr16, 2
-	fcvt.d.s	$ft10, $ft10
-	vextrins.d	$vr18, $vr17, 16
-	vreplvei.w	$vr17, $vr16, 1
-	fcvt.d.s	$ft9, $ft9
-	vreplvei.w	$vr19, $vr16, 0
-	fcvt.d.s	$ft11, $ft11
-	vextrins.d	$vr19, $vr17, 16
-	xvpermi.q	$xr19, $xr18, 2
-	xvpermi.q	$xr16, $xr16, 1
-	vreplvei.w	$vr17, $vr16, 3
-	fcvt.d.s	$ft9, $ft9
-	vreplvei.w	$vr18, $vr16, 2
-	fcvt.d.s	$ft10, $ft10
-	vextrins.d	$vr18, $vr17, 16
-	vreplvei.w	$vr17, $vr16, 1
-	fcvt.d.s	$ft9, $ft9
-	vreplvei.w	$vr16, $vr16, 0
-	fcvt.d.s	$ft8, $ft8
-	vextrins.d	$vr16, $vr17, 16
-	xvpermi.q	$xr16, $xr18, 2
-	xvreplgr2vr.d	$xr17, $s0
-	xvfmul.d	$xr16, $xr16, $xr17
-	xvfmul.d	$xr17, $xr19, $xr17
+	xvpermi.d	$xr16, $xr16, 216
+	xvfcvtl.d.s	$xr17, $xr16
+	xvfcvth.d.s	$xr16, $xr16
+	xvreplgr2vr.d	$xr18, $s3
+	xvfmul.d	$xr16, $xr16, $xr18
+	xvfmul.d	$xr17, $xr17, $xr18
 	xvfadd.d	$xr15, $xr15, $xr17
 	xvfadd.d	$xr14, $xr14, $xr16
 	xvfcvt.s.d	$xr14, $xr14, $xr15
-	vreplvei.w	$vr15, $vr13, 3
-	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr16, $vr13, 2
-	fcvt.d.s	$ft8, $ft8
-	vextrins.d	$vr16, $vr15, 16
-	vreplvei.w	$vr15, $vr13, 1
-	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr17, $vr13, 0
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr15, 16
-	xvpermi.q	$xr17, $xr16, 2
-	xvpermi.q	$xr13, $xr13, 1
-	vreplvei.w	$vr15, $vr13, 3
-	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr16, $vr13, 2
-	fcvt.d.s	$ft8, $ft8
-	vextrins.d	$vr16, $vr15, 16
-	vreplvei.w	$vr15, $vr13, 1
-	fcvt.d.s	$ft7, $ft7
-	vreplvei.w	$vr13, $vr13, 0
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr15, 16
-	xvpermi.q	$xr13, $xr16, 2
-	xvldi	$xr15, -944
-	xvfmul.d	$xr13, $xr13, $xr15
-	xvfmul.d	$xr15, $xr17, $xr15
+	xvpermi.d	$xr13, $xr13, 216
+	xvfcvtl.d.s	$xr15, $xr13
+	xvfcvth.d.s	$xr13, $xr13
+	xvldi	$xr16, -944
+	xvfmul.d	$xr13, $xr13, $xr16
+	xvfmul.d	$xr15, $xr15, $xr16
 	xvldi	$xr16, -912
 	xvfadd.d	$xr15, $xr15, $xr16
 	xvfadd.d	$xr13, $xr13, $xr16
@@ -806,31 +747,11 @@ srad_kernel:                            # @srad_kernel
 	xvpermi.d	$xr13, $xr13, 216
 	xvfsub.s	$xr13, $xr13, $xr11
 	xvfdiv.s	$xr13, $xr13, $xr12
-	vreplvei.w	$vr14, $vr13, 3
-	fcvt.d.s	$ft6, $ft6
-	vreplvei.w	$vr15, $vr13, 2
-	fcvt.d.s	$ft7, $ft7
-	vextrins.d	$vr15, $vr14, 16
-	vreplvei.w	$vr14, $vr13, 1
-	fcvt.d.s	$ft6, $ft6
-	vreplvei.w	$vr17, $vr13, 0
-	fcvt.d.s	$ft9, $ft9
-	vextrins.d	$vr17, $vr14, 16
-	xvpermi.q	$xr17, $xr15, 2
-	xvpermi.q	$xr13, $xr13, 1
-	vreplvei.w	$vr14, $vr13, 3
-	fcvt.d.s	$ft6, $ft6
-	vreplvei.w	$vr15, $vr13, 2
-	fcvt.d.s	$ft7, $ft7
-	vextrins.d	$vr15, $vr14, 16
-	vreplvei.w	$vr14, $vr13, 1
-	fcvt.d.s	$ft6, $ft6
-	vreplvei.w	$vr13, $vr13, 0
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr14, 16
-	xvpermi.q	$xr13, $xr15, 2
+	xvpermi.d	$xr13, $xr13, 216
+	xvfcvtl.d.s	$xr14, $xr13
+	xvfcvth.d.s	$xr13, $xr13
 	xvfadd.d	$xr13, $xr13, $xr16
-	xvfadd.d	$xr14, $xr17, $xr16
+	xvfadd.d	$xr14, $xr14, $xr16
 	xvfrecip.d	$xr14, $xr14
 	xvfrecip.d	$xr13, $xr13
 	xvfcvt.s.d	$xr15, $xr13, $xr14
@@ -838,8 +759,8 @@ srad_kernel:                            # @srad_kernel
 	add.d	$s7, $s1, $s2
 	ori	$a2, $t5, 4068
 	xvstx	$xr15, $s7, $a2
-	xvreplgr2vr.d	$xr15, $s3
-	xvfcmp.clt.d	$xr16, $xr14, $xr15
+	xvreplgr2vr.d	$xr15, $t0
+	xvfcmp.clt.d	$xr16, $xr13, $xr15
 	xvpickve2gr.d	$a5, $xr16, 0
 	vinsgr2vr.w	$vr17, $a5, 0
 	xvpickve2gr.d	$a5, $xr16, 1
@@ -848,7 +769,7 @@ srad_kernel:                            # @srad_kernel
 	vinsgr2vr.w	$vr17, $a5, 2
 	xvpickve2gr.d	$a5, $xr16, 3
 	vinsgr2vr.w	$vr17, $a5, 3
-	xvfcmp.clt.d	$xr15, $xr13, $xr15
+	xvfcmp.clt.d	$xr15, $xr14, $xr15
 	xvpickve2gr.d	$a5, $xr15, 0
 	vinsgr2vr.w	$vr16, $a5, 0
 	xvpickve2gr.d	$a5, $xr15, 1
@@ -857,18 +778,18 @@ srad_kernel:                            # @srad_kernel
 	vinsgr2vr.w	$vr16, $a5, 2
 	xvpickve2gr.d	$a5, $xr15, 3
 	vinsgr2vr.w	$vr16, $a5, 3
-	xvpermi.q	$xr17, $xr16, 2
+	xvpermi.q	$xr16, $xr17, 2
 	xvreplgr2vr.d	$xr15, $ra
-	xvfcmp.clt.d	$xr14, $xr15, $xr14
-	xvpickve2gr.d	$a5, $xr14, 0
-	vinsgr2vr.w	$vr16, $a5, 0
-	xvpickve2gr.d	$a5, $xr14, 1
-	vinsgr2vr.w	$vr16, $a5, 1
-	xvpickve2gr.d	$a5, $xr14, 2
-	vinsgr2vr.w	$vr16, $a5, 2
-	xvpickve2gr.d	$a5, $xr14, 3
-	vinsgr2vr.w	$vr16, $a5, 3
 	xvfcmp.clt.d	$xr13, $xr15, $xr13
+	xvpickve2gr.d	$a5, $xr13, 0
+	vinsgr2vr.w	$vr17, $a5, 0
+	xvpickve2gr.d	$a5, $xr13, 1
+	vinsgr2vr.w	$vr17, $a5, 1
+	xvpickve2gr.d	$a5, $xr13, 2
+	vinsgr2vr.w	$vr17, $a5, 2
+	xvpickve2gr.d	$a5, $xr13, 3
+	vinsgr2vr.w	$vr17, $a5, 3
+	xvfcmp.clt.d	$xr13, $xr15, $xr14
 	xvpickve2gr.d	$a5, $xr13, 0
 	vinsgr2vr.w	$vr14, $a5, 0
 	xvpickve2gr.d	$a5, $xr13, 1
@@ -877,12 +798,12 @@ srad_kernel:                            # @srad_kernel
 	vinsgr2vr.w	$vr14, $a5, 2
 	xvpickve2gr.d	$a5, $xr13, 3
 	vinsgr2vr.w	$vr14, $a5, 3
-	xvpermi.q	$xr16, $xr14, 2
-	xvor.v	$xr15, $xr16, $xr17
+	xvpermi.q	$xr14, $xr17, 2
+	xvor.v	$xr15, $xr14, $xr16
 	xvpickve2gr.w	$a5, $xr15, 0
 	xvldi	$xr13, -1424
 	andi	$a6, $a5, 1
-	xvandn.v	$xr13, $xr17, $xr13
+	xvandn.v	$xr13, $xr16, $xr13
 	beqz	$a6, .LBB0_32
 # %bb.31:                               # %pred.store.if
                                         #   in Loop: Header=BB0_30 Depth=3
@@ -1002,23 +923,23 @@ srad_kernel:                            # @srad_kernel
 	ori	$s7, $zero, 4092
 	move	$a2, $t4
 	move	$a6, $t3
-	move	$s3, $a4
+	move	$t7, $a4
 	move	$t0, $s8
-	move	$s0, $fp
-	move	$a5, $t2
+	move	$a5, $fp
+	move	$s3, $t2
 	b	.LBB0_51
 	.p2align	4, , 16
 .LBB0_48:                               #   in Loop: Header=BB0_51 Depth=3
 	movgr2fr.w	$ft5, $zero
 .LBB0_49:                               # %.sink.split669
                                         #   in Loop: Header=BB0_51 Depth=3
-	fstx.s	$ft5, $a5, $s2
+	fstx.s	$ft5, $s3, $s2
 .LBB0_50:                               #   in Loop: Header=BB0_51 Depth=3
 	addi.d	$s7, $s7, -4
-	addi.d	$a5, $a5, 4
-	addi.d	$s0, $s0, 4
-	addi.d	$t0, $t0, 4
 	addi.d	$s3, $s3, 4
+	addi.d	$a5, $a5, 4
+	addi.d	$t0, $t0, 4
+	addi.d	$t7, $t7, 4
 	addi.d	$a6, $a6, 4
 	addi.d	$a2, $a2, 4
 	beq	$s2, $s7, .LBB0_26
@@ -1026,8 +947,8 @@ srad_kernel:                            # @srad_kernel
                                         #   Parent Loop BB0_1 Depth=1
                                         #     Parent Loop BB0_27 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$t1, $s3, $s2
-	fldx.s	$ft5, $s3, $s2
+	add.d	$t1, $t7, $s2
+	fldx.s	$ft5, $t7, $s2
 	fldx.s	$ft6, $t1, $t8
 	fsub.s	$ft6, $ft6, $ft5
 	fstx.s	$ft6, $t0, $s2
@@ -1039,7 +960,7 @@ srad_kernel:                            # @srad_kernel
 	fstx.s	$ft6, $a2, $s2
 	fld.s	$ft6, $t1, 4
 	fsub.s	$ft6, $ft6, $ft5
-	fstx.s	$ft6, $s0, $s2
+	fstx.s	$ft6, $a5, $s2
 	fldx.s	$ft7, $t0, $s2
 	fldx.s	$ft8, $a6, $s2
 	fldx.s	$ft9, $a2, $s2
@@ -1076,7 +997,7 @@ srad_kernel:                            # @srad_kernel
 	frecip.d	$ft5, $ft5
 	fcvt.s.d	$ft6, $ft5
 	fcmp.clt.d	$fcc0, $ft5, $ft2
-	fstx.s	$ft6, $a5, $s2
+	fstx.s	$ft6, $s3, $s2
 	bcnez	$fcc0, .LBB0_48
 # %bb.52:                               #   in Loop: Header=BB0_51 Depth=3
 	movgr2fr.d	$ft6, $ra
@@ -1120,14 +1041,13 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$a4, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$t3, $sp, 184                   # 8-byte Folded Reload
-	ori	$a7, $zero, 4068
 	.p2align	4, , 16
 .LBB0_57:                               # %vector.body726
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a1, $a2, $a0
 	xvldx	$xr9, $a1, $a3
-	xvldx	$xr10, $a1, $a7
+	xvldx	$xr10, $a1, $t7
 	add.d	$a1, $t1, $a0
 	xvldx	$xr11, $a1, $a3
 	add.d	$a1, $a4, $a0
@@ -1144,58 +1064,18 @@ srad_kernel:                            # @srad_kernel
 	xvldx	$xr13, $a1, $a3
 	xvfadd.s	$xr9, $xr11, $xr9
 	xvfmul.s	$xr10, $xr10, $xr12
-	xvfadd.s	$xr10, $xr9, $xr10
-	xvpermi.q	$xr9, $xr13, 1
-	vreplvei.w	$vr11, $vr9, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr9, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr9, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr9, $vr9, 0
-	fcvt.d.s	$ft1, $ft1
-	vextrins.d	$vr9, $vr11, 16
-	xvpermi.q	$xr9, $xr12, 2
-	vreplvei.w	$vr11, $vr13, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr13, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr13, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr13, $vr13, 0
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr11, 16
-	xvpermi.q	$xr13, $xr12, 2
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr14, $vr10, 0
-	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr11, 16
-	xvpermi.q	$xr14, $xr12, 2
-	xvpermi.q	$xr10, $xr10, 1
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr10, $vr10, 0
-	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr11, 16
-	xvpermi.q	$xr10, $xr12, 2
-	xvfmul.d	$xr10, $xr10, $xr8
-	xvfmul.d	$xr11, $xr14, $xr8
-	xvfadd.d	$xr11, $xr11, $xr13
-	xvfadd.d	$xr9, $xr10, $xr9
-	xvfcvt.s.d	$xr9, $xr9, $xr11
+	xvfadd.s	$xr9, $xr9, $xr10
+	xvpermi.d	$xr10, $xr13, 216
+	xvfcvth.d.s	$xr11, $xr10
+	xvfcvtl.d.s	$xr10, $xr10
+	xvpermi.d	$xr9, $xr9, 216
+	xvfcvtl.d.s	$xr12, $xr9
+	xvfcvth.d.s	$xr9, $xr9
+	xvfmul.d	$xr9, $xr9, $xr8
+	xvfmul.d	$xr12, $xr12, $xr8
+	xvfadd.d	$xr10, $xr12, $xr10
+	xvfadd.d	$xr9, $xr9, $xr11
+	xvfcvt.s.d	$xr9, $xr9, $xr10
 	xvpermi.d	$xr9, $xr9, 216
 	addi.d	$a0, $a0, 32
 	xvstx	$xr9, $a1, $a3
@@ -1293,88 +1173,48 @@ srad_kernel:                            # @srad_kernel
 	.p2align	4, , 16
 .LBB0_64:                               # %vector.body.preheader
                                         #   in Loop: Header=BB0_62 Depth=2
-	ori	$t6, $t8, 32
+	ori	$t2, $t8, 32
 	.p2align	4, , 16
 .LBB0_65:                               # %vector.body
                                         #   Parent Loop BB0_1 Depth=1
                                         #     Parent Loop BB0_62 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$t1, $t0, $t6
+	add.d	$t1, $t0, $t2
 	xvld	$xr9, $t1, -32
 	xvldx	$xr10, $t1, $a3
+	add.d	$t3, $a4, $t2
+	xvldx	$xr11, $t3, $a3
+	add.d	$t3, $a2, $t2
+	xvldx	$xr12, $t3, $a3
+	add.d	$t3, $s4, $t2
+	xvldx	$xr13, $t3, $a3
+	xvfmul.s	$xr10, $xr10, $xr11
 	xvld	$xr11, $t1, -28
-	add.d	$t1, $a2, $t6
-	xvldx	$xr12, $t1, $a3
-	add.d	$t1, $a4, $t6
-	xvldx	$xr13, $t1, $a3
-	add.d	$t1, $s4, $t6
-	xvldx	$xr14, $t1, $a3
 	xvfmul.s	$xr12, $xr9, $xr12
-	xvfmul.s	$xr10, $xr10, $xr13
 	xvfadd.s	$xr10, $xr12, $xr10
-	xvfmul.s	$xr9, $xr9, $xr14
-	add.d	$t1, $s3, $t6
+	xvfmul.s	$xr9, $xr9, $xr13
+	add.d	$t1, $s3, $t2
 	xvldx	$xr12, $t1, $a3
-	add.d	$s0, $a7, $t6
-	xvldx	$xr13, $s0, $a3
+	add.d	$t1, $a7, $t2
+	xvldx	$xr13, $t1, $a3
 	xvfadd.s	$xr9, $xr10, $xr9
 	xvfmul.s	$xr10, $xr11, $xr12
-	xvfadd.s	$xr10, $xr9, $xr10
-	xvpermi.q	$xr9, $xr13, 1
-	vreplvei.w	$vr11, $vr9, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr9, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr9, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr9, $vr9, 0
-	fcvt.d.s	$ft1, $ft1
-	vextrins.d	$vr9, $vr11, 16
-	xvpermi.q	$xr9, $xr12, 2
-	vreplvei.w	$vr11, $vr13, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr13, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr13, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr13, $vr13, 0
-	fcvt.d.s	$ft5, $ft5
-	vextrins.d	$vr13, $vr11, 16
-	xvpermi.q	$xr13, $xr12, 2
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr14, $vr10, 0
-	fcvt.d.s	$ft6, $ft6
-	vextrins.d	$vr14, $vr11, 16
-	xvpermi.q	$xr14, $xr12, 2
-	xvpermi.q	$xr10, $xr10, 1
-	vreplvei.w	$vr11, $vr10, 3
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr12, $vr10, 2
-	fcvt.d.s	$ft4, $ft4
-	vextrins.d	$vr12, $vr11, 16
-	vreplvei.w	$vr11, $vr10, 1
-	fcvt.d.s	$ft3, $ft3
-	vreplvei.w	$vr10, $vr10, 0
-	fcvt.d.s	$ft2, $ft2
-	vextrins.d	$vr10, $vr11, 16
-	xvpermi.q	$xr10, $xr12, 2
-	xvfmul.d	$xr10, $xr10, $xr8
-	xvfmul.d	$xr11, $xr14, $xr8
-	xvfadd.d	$xr11, $xr11, $xr13
-	xvfadd.d	$xr9, $xr10, $xr9
-	xvfcvt.s.d	$xr9, $xr9, $xr11
+	xvfadd.s	$xr9, $xr9, $xr10
+	xvpermi.d	$xr10, $xr13, 216
+	xvfcvth.d.s	$xr11, $xr10
+	xvfcvtl.d.s	$xr10, $xr10
 	xvpermi.d	$xr9, $xr9, 216
-	addi.d	$t6, $t6, 32
-	xvstx	$xr9, $s0, $a3
-	bnez	$t6, .LBB0_65
+	xvfcvtl.d.s	$xr12, $xr9
+	xvfcvth.d.s	$xr9, $xr9
+	xvfmul.d	$xr9, $xr9, $xr8
+	xvfmul.d	$xr12, $xr12, $xr8
+	xvfadd.d	$xr10, $xr12, $xr10
+	xvfadd.d	$xr9, $xr9, $xr11
+	xvfcvt.s.d	$xr9, $xr9, $xr10
+	xvpermi.d	$xr9, $xr9, 216
+	addi.d	$t2, $t2, 32
+	xvstx	$xr9, $t1, $a3
+	bnez	$t2, .LBB0_65
 # %bb.66:                               #   in Loop: Header=BB0_62 Depth=2
 	ori	$t3, $zero, 1016
 .LBB0_67:                               # %scalar.ph.preheader
@@ -1383,8 +1223,8 @@ srad_kernel:                            # @srad_kernel
 	addi.d	$t3, $t3, -1023
 	move	$t4, $a7
 	move	$t6, $s3
-	move	$fp, $s4
-	move	$s0, $a4
+	move	$t7, $s4
+	move	$fp, $a4
 	move	$s1, $a2
 	move	$s2, $a1
 	.p2align	4, , 16
@@ -1394,12 +1234,12 @@ srad_kernel:                            # @srad_kernel
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$t1, $s2, $t2
 	fldx.s	$ft1, $t1, $t5
-	fldx.s	$ft2, $s0, $t2
+	fldx.s	$ft2, $fp, $t2
 	fldx.s	$ft3, $s2, $t2
 	fldx.s	$ft4, $s1, $t2
 	fld.s	$ft5, $t1, 4
 	fmul.s	$ft1, $ft1, $ft2
-	fldx.s	$ft2, $fp, $t2
+	fldx.s	$ft2, $t7, $t2
 	fmul.s	$ft4, $ft3, $ft4
 	fadd.s	$ft1, $ft4, $ft1
 	fldx.s	$ft4, $t6, $t2
@@ -1416,8 +1256,8 @@ srad_kernel:                            # @srad_kernel
 	fstx.s	$ft1, $t4, $t2
 	addi.d	$s2, $s2, 4
 	addi.d	$s1, $s1, 4
-	addi.d	$s0, $s0, 4
 	addi.d	$fp, $fp, 4
+	addi.d	$t7, $t7, 4
 	addi.d	$t6, $t6, 4
 	addi.d	$t3, $t3, 1
 	addi.d	$t4, $t4, 4
@@ -1432,6 +1272,7 @@ srad_kernel:                            # @srad_kernel
 	add.d	$a2, $a2, $t5
 	add.d	$a1, $a1, $t5
 	ori	$t1, $zero, 2047
+	ori	$t7, $zero, 4068
 	bne	$a0, $t1, .LBB0_62
 # %bb.70:                               #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$t3, $sp, 168                   # 8-byte Folded Reload
@@ -1441,10 +1282,9 @@ srad_kernel:                            # @srad_kernel
 	ld.d	$a7, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$t1, $sp, 192                   # 8-byte Folded Reload
-	lu52i.d	$s0, $zero, -1029
+	lu52i.d	$s3, $zero, -1029
 	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
 	ori	$t2, $zero, 128
-	lu52i.d	$s3, $zero, -1175
 	ori	$a0, $zero, 10
 	bne	$t3, $a0, .LBB0_1
 # %bb.71:
