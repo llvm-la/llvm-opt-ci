@@ -2716,43 +2716,8 @@ GCC_except_table18:
 .Lttbase5:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
-.LCPI19_0:
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	2                               # 0x2
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	3                               # 0x3
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.text
-	.globl	_ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
+	.globl	_ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback # -- Begin function _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback
 	.p2align	2
 	.prefalign	5, .Lfunc_end19, nop
 	.type	_ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback,@function
@@ -2913,24 +2878,30 @@ _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 .LBB19_15:                              # %vector.ph308
 	move	$a3, $a2
 	bstrins.d	$a3, $zero, 2, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI19_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI19_0)
 	addi.d	$a1, $a0, 32
-	xvrepli.b	$xr1, 0
-	vrepli.b	$vr2, 50
+	xvrepli.b	$xr0, 0
+	vrepli.b	$vr1, 50
 	move	$a4, $a3
-	xvori.b	$xr3, $xr1, 0
+	xvori.b	$xr2, $xr0, 0
 	.p2align	4, , 16
 .LBB19_16:                              # %vector.body311
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a1, -32
-	ld.d	$a6, $a1, -24
-	ld.d	$a7, $a1, -16
-	ld.d	$t0, $a1, -8
-	ld.d	$t1, $a1, 0
-	ld.d	$t2, $a1, 8
-	ld.d	$t3, $a1, 16
-	ld.d	$t4, $a1, 24
+	ld.d	$t1, $a1, -32
+	ld.d	$t2, $a1, -24
+	ld.d	$t3, $a1, -16
+	ld.d	$t4, $a1, -8
+	ld.d	$a5, $a1, 0
+	ld.d	$a6, $a1, 8
+	ld.d	$a7, $a1, 16
+	ld.d	$t0, $a1, 24
+	ld.b	$t5, $t1, 104
+	ld.b	$t6, $t2, 104
+	ld.b	$t7, $t3, 104
+	ld.b	$t8, $t4, 104
+	vinsgr2vr.b	$vr3, $t5, 0
+	vinsgr2vr.b	$vr3, $t6, 1
+	vinsgr2vr.b	$vr3, $t7, 2
+	vinsgr2vr.b	$vr3, $t8, 3
 	ld.b	$t5, $a5, 104
 	ld.b	$t6, $a6, 104
 	ld.b	$t7, $a7, 104
@@ -2939,73 +2910,59 @@ _ZN8NArchive4NTar8CHandler7ExtractEPKjjiP23IArchiveExtractCallback: # @_ZN8NArch
 	vinsgr2vr.b	$vr4, $t6, 1
 	vinsgr2vr.b	$vr4, $t7, 2
 	vinsgr2vr.b	$vr4, $t8, 3
-	ld.b	$t5, $t1, 104
-	ld.b	$t6, $t2, 104
-	ld.b	$t7, $t3, 104
-	ld.b	$t8, $t4, 104
-	vinsgr2vr.b	$vr5, $t5, 0
-	vinsgr2vr.b	$vr5, $t6, 1
-	vinsgr2vr.b	$vr5, $t7, 2
-	vinsgr2vr.b	$vr5, $t8, 3
-	vseq.b	$vr4, $vr4, $vr2
-	xvpermi.d	$xr4, $xr4, 68
-	xvshuf.b	$xr4, $xr0, $xr4, $xr0
-	xvslli.d	$xr4, $xr4, 56
-	xvsrai.d	$xr4, $xr4, 56
-	vseq.b	$vr5, $vr5, $vr2
-	xvpermi.d	$xr5, $xr5, 68
-	xvshuf.b	$xr5, $xr0, $xr5, $xr0
-	xvslli.d	$xr5, $xr5, 56
-	xvsrai.d	$xr5, $xr5, 56
-	ld.d	$t5, $a7, 16
-	ld.d	$t6, $t0, 16
-	ld.d	$t7, $a5, 16
-	ld.d	$t8, $a6, 16
-	vinsgr2vr.d	$vr6, $t5, 0
-	vinsgr2vr.d	$vr6, $t6, 1
-	vinsgr2vr.d	$vr7, $t7, 0
-	vinsgr2vr.d	$vr7, $t8, 1
-	xvpermi.q	$xr7, $xr6, 2
+	vseq.b	$vr3, $vr3, $vr1
+	vext2xv.d.b	$xr3, $xr3
+	vseq.b	$vr4, $vr4, $vr1
+	vext2xv.d.b	$xr4, $xr4
 	ld.d	$t5, $t3, 16
 	ld.d	$t6, $t4, 16
 	ld.d	$t7, $t1, 16
 	ld.d	$t8, $t2, 16
-	vinsgr2vr.d	$vr6, $t5, 0
-	vinsgr2vr.d	$vr6, $t6, 1
-	vinsgr2vr.d	$vr8, $t7, 0
-	vinsgr2vr.d	$vr8, $t8, 1
-	xvpermi.q	$xr8, $xr6, 2
-	xvseqi.d	$xr6, $xr7, 0
-	xvseqi.d	$xr9, $xr8, 0
-	xvand.v	$xr4, $xr4, $xr6
-	xvand.v	$xr5, $xr5, $xr9
-	ld.w	$a5, $a5, 56
-	ld.w	$a6, $a6, 56
-	ld.w	$a7, $a7, 56
-	ld.w	$t0, $t0, 56
+	vinsgr2vr.d	$vr5, $t5, 0
+	vinsgr2vr.d	$vr5, $t6, 1
+	vinsgr2vr.d	$vr6, $t7, 0
+	vinsgr2vr.d	$vr6, $t8, 1
+	xvpermi.q	$xr6, $xr5, 2
+	ld.d	$t5, $a7, 16
+	ld.d	$t6, $t0, 16
+	ld.d	$t7, $a5, 16
+	ld.d	$t8, $a6, 16
+	vinsgr2vr.d	$vr5, $t5, 0
+	vinsgr2vr.d	$vr5, $t6, 1
+	vinsgr2vr.d	$vr7, $t7, 0
+	vinsgr2vr.d	$vr7, $t8, 1
+	xvpermi.q	$xr7, $xr5, 2
+	xvseqi.d	$xr5, $xr6, 0
+	xvseqi.d	$xr8, $xr7, 0
+	xvand.v	$xr3, $xr3, $xr5
+	xvand.v	$xr4, $xr4, $xr8
 	ld.w	$t1, $t1, 56
 	ld.w	$t2, $t2, 56
 	ld.w	$t3, $t3, 56
 	ld.w	$t4, $t4, 56
-	vinsgr2vr.d	$vr6, $a7, 0
-	vinsgr2vr.d	$vr6, $t0, 1
-	vinsgr2vr.d	$vr9, $a5, 0
-	vinsgr2vr.d	$vr9, $a6, 1
-	xvpermi.q	$xr9, $xr6, 2
-	vinsgr2vr.d	$vr6, $t3, 0
-	vinsgr2vr.d	$vr6, $t4, 1
-	vinsgr2vr.d	$vr10, $t1, 0
-	vinsgr2vr.d	$vr10, $t2, 1
-	xvpermi.q	$xr10, $xr6, 2
-	xvbitsel.v	$xr4, $xr7, $xr9, $xr4
-	xvbitsel.v	$xr5, $xr8, $xr10, $xr5
-	xvadd.d	$xr1, $xr4, $xr1
-	xvadd.d	$xr3, $xr5, $xr3
+	vinsgr2vr.w	$vr5, $t1, 0
+	vinsgr2vr.w	$vr5, $t2, 1
+	vinsgr2vr.w	$vr5, $t3, 2
+	vinsgr2vr.w	$vr5, $t4, 3
+	ld.w	$a5, $a5, 56
+	ld.w	$a6, $a6, 56
+	ld.w	$a7, $a7, 56
+	ld.w	$t0, $t0, 56
+	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vinsgr2vr.w	$vr8, $a7, 2
+	vinsgr2vr.w	$vr8, $t0, 3
+	vext2xv.d.w	$xr5, $xr5
+	vext2xv.d.w	$xr8, $xr8
+	xvbitsel.v	$xr3, $xr6, $xr5, $xr3
+	xvbitsel.v	$xr4, $xr7, $xr8, $xr4
+	xvadd.d	$xr0, $xr3, $xr0
+	xvadd.d	$xr2, $xr4, $xr2
 	addi.w	$a4, $a4, -8
 	addi.d	$a1, $a1, 64
 	bnez	$a4, .LBB19_16
 # %bb.17:                               # %middle.block317
-	xvadd.d	$xr0, $xr3, $xr1
+	xvadd.d	$xr0, $xr2, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
 	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0

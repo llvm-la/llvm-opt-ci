@@ -2809,7 +2809,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.LCPI3_1)
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(.LCPI3_0)
 	addi.d	$s7, $fp, 168
 	beqz	$a0, .LBB3_62
@@ -2818,8 +2818,8 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.22:                               # %.lr.ph155
 	move	$s4, $zero
 	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	vld	$vr0, $a0, %pc_lo12(.LCPI3_1)
 	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
 	xvld	$xr0, $s1, %pc_lo12(.LCPI3_0)
@@ -2828,9 +2828,9 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ori	$s3, $a0, 4095
 	lu12i.w	$a0, -524288
 	ori	$s8, $a0, 3
-	st.d	$s3, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB3_25
 	.p2align	4, , 16
 .LBB3_23:                               #   in Loop: Header=BB3_25 Depth=1
@@ -2892,69 +2892,37 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	xvld	$xr0, $s1, %pc_lo12(.LCPI3_0)
 	move	$a4, $a2
 	bstrins.d	$a4, $zero, 3, 0
-	xvrepli.b	$xr1, 0
 	andi	$a5, $a2, 12
 	move	$a0, $a4
-	xvori.b	$xr2, $xr1, 0
+	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
+	xvori.b	$xr1, $xr2, 0
 	.p2align	4, , 16
 .LBB3_32:                               # %vector.body253
                                         #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.wu	$xr3, $xr0, 8
 	xvpermi.q	$xr4, $xr0, 1
-	vpickve2gr.w	$a6, $vr4, 2
-	vinsgr2vr.d	$vr5, $a6, 0
-	vpickve2gr.w	$a6, $vr4, 3
-	vinsgr2vr.d	$vr5, $a6, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$a6, $vr4, 0
-	vinsgr2vr.d	$vr6, $a6, 0
-	vpickve2gr.w	$a6, $vr4, 1
-	vinsgr2vr.d	$vr6, $a6, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	vinsgr2vr.d	$vr4, $a6, 0
-	vpickve2gr.w	$a6, $vr0, 3
-	vinsgr2vr.d	$vr4, $a6, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$a6, $vr0, 0
-	vinsgr2vr.d	$vr7, $a6, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	vinsgr2vr.d	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr7, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	xvpickve2gr.d	$t0, $xr4, 2
-	xvpickve2gr.d	$t1, $xr4, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	xvpickve2gr.d	$t4, $xr5, 2
-	xvpickve2gr.d	$t5, $xr5, 3
+	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr5, $xr0
+	xvpickve2gr.d	$a6, $xr5, 0
+	xvpickve2gr.d	$a7, $xr5, 1
+	xvpickve2gr.d	$t0, $xr5, 2
+	xvpickve2gr.d	$t1, $xr5, 3
+	xvpickve2gr.d	$t2, $xr4, 0
+	xvpickve2gr.d	$t3, $xr4, 1
+	xvpickve2gr.d	$t4, $xr4, 2
+	xvpickve2gr.d	$t5, $xr4, 3
 	xvpermi.q	$xr4, $xr3, 1
-	vpickve2gr.w	$t6, $vr4, 2
-	vinsgr2vr.d	$vr5, $t6, 0
-	vpickve2gr.w	$t6, $vr4, 3
-	vinsgr2vr.d	$vr5, $t6, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$t6, $vr4, 0
-	vinsgr2vr.d	$vr6, $t6, 0
-	vpickve2gr.w	$t6, $vr4, 1
-	vinsgr2vr.d	$vr6, $t6, 1
-	vpickve2gr.w	$t6, $vr3, 2
-	vinsgr2vr.d	$vr4, $t6, 0
-	vpickve2gr.w	$t6, $vr3, 3
-	vinsgr2vr.d	$vr4, $t6, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$t6, $vr3, 0
-	vinsgr2vr.d	$vr7, $t6, 0
-	vpickve2gr.w	$t6, $vr3, 1
-	vinsgr2vr.d	$vr7, $t6, 1
-	xvpickve2gr.d	$t6, $xr7, 0
-	xvpickve2gr.d	$t7, $xr7, 1
-	xvpickve2gr.d	$t8, $xr4, 2
-	xvpickve2gr.d	$s0, $xr4, 3
-	xvpickve2gr.d	$s3, $xr6, 0
-	xvpickve2gr.d	$ra, $xr6, 1
-	xvpickve2gr.d	$s8, $xr5, 2
-	xvpickve2gr.d	$s7, $xr5, 3
+	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr3, $xr3
+	xvpickve2gr.d	$t6, $xr3, 0
+	xvpickve2gr.d	$t7, $xr3, 1
+	xvpickve2gr.d	$t8, $xr3, 2
+	xvpickve2gr.d	$s0, $xr3, 3
+	xvpickve2gr.d	$s3, $xr4, 0
+	xvpickve2gr.d	$ra, $xr4, 1
+	xvpickve2gr.d	$s8, $xr4, 2
+	xvpickve2gr.d	$s7, $xr4, 3
 	slli.d	$a6, $a6, 3
 	slli.d	$a7, $a7, 3
 	slli.d	$t0, $t0, 3
@@ -2979,15 +2947,15 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ldx.w	$t3, $a3, $t3
 	ldx.w	$t4, $a3, $t4
 	ldx.w	$t5, $a3, $t5
-	vinsgr2vr.w	$vr3, $t2, 0
-	vinsgr2vr.w	$vr3, $t3, 1
-	vinsgr2vr.w	$vr3, $t4, 2
-	vinsgr2vr.w	$vr3, $t5, 3
-	vinsgr2vr.w	$vr4, $a6, 0
-	vinsgr2vr.w	$vr4, $a7, 1
-	vinsgr2vr.w	$vr4, $t0, 2
-	vinsgr2vr.w	$vr4, $t1, 3
-	xvpermi.q	$xr4, $xr3, 2
+	vinsgr2vr.w	$vr3, $a6, 0
+	vinsgr2vr.w	$vr3, $a7, 1
+	vinsgr2vr.w	$vr3, $t0, 2
+	vinsgr2vr.w	$vr3, $t1, 3
+	vinsgr2vr.w	$vr4, $t2, 0
+	vinsgr2vr.w	$vr4, $t3, 1
+	vinsgr2vr.w	$vr4, $t4, 2
+	vinsgr2vr.w	$vr4, $t5, 3
+	xvpermi.q	$xr3, $xr4, 2
 	ldx.w	$a6, $a3, $t6
 	ldx.w	$a7, $a3, $t7
 	ldx.w	$t0, $a3, $t8
@@ -2996,17 +2964,17 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ldx.w	$t3, $a3, $ra
 	ldx.w	$t4, $a3, $s8
 	ldx.w	$t5, $a3, $s7
-	vinsgr2vr.w	$vr3, $t2, 0
-	vinsgr2vr.w	$vr3, $t3, 1
-	vinsgr2vr.w	$vr3, $t4, 2
-	vinsgr2vr.w	$vr3, $t5, 3
-	vinsgr2vr.w	$vr5, $a6, 0
-	vinsgr2vr.w	$vr5, $a7, 1
-	vinsgr2vr.w	$vr5, $t0, 2
-	vinsgr2vr.w	$vr5, $t1, 3
-	xvpermi.q	$xr5, $xr3, 2
-	xvadd.w	$xr1, $xr4, $xr1
-	xvadd.w	$xr2, $xr5, $xr2
+	vinsgr2vr.w	$vr4, $a6, 0
+	vinsgr2vr.w	$vr4, $a7, 1
+	vinsgr2vr.w	$vr4, $t0, 2
+	vinsgr2vr.w	$vr4, $t1, 3
+	vinsgr2vr.w	$vr5, $t2, 0
+	vinsgr2vr.w	$vr5, $t3, 1
+	vinsgr2vr.w	$vr5, $t4, 2
+	vinsgr2vr.w	$vr5, $t5, 3
+	xvpermi.q	$xr4, $xr5, 2
+	xvadd.w	$xr1, $xr3, $xr1
+	xvadd.w	$xr2, $xr4, $xr2
 	addi.w	$a0, $a0, -16
 	xvaddi.wu	$xr0, $xr0, 16
 	bnez	$a0, .LBB3_32
@@ -3021,13 +2989,13 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	addi.d	$s7, $fp, 168
 	bne	$a2, $a4, .LBB3_35
 # %bb.34:                               #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB3_40
 .LBB3_35:                               # %vec.epilog.iter.check268
                                         #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	beqz	$a5, .LBB3_39
 .LBB3_36:                               # %vec.epilog.ph270
                                         #   in Loop: Header=BB3_25 Depth=1
@@ -3044,17 +3012,9 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 .LBB3_37:                               # %vec.epilog.vector.body276
                                         #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vpickve2gr.w	$a5, $vr1, 2
-	vinsgr2vr.d	$vr2, $a5, 0
-	vpickve2gr.w	$a5, $vr1, 3
-	vinsgr2vr.d	$vr2, $a5, 1
-	xvpermi.q	$xr2, $xr2, 2
-	vpickve2gr.w	$a5, $vr1, 0
-	vinsgr2vr.d	$vr3, $a5, 0
-	vpickve2gr.w	$a5, $vr1, 1
-	vinsgr2vr.d	$vr3, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 0
-	xvpickve2gr.d	$a6, $xr3, 1
+	vext2xv.d.w	$xr2, $xr1
+	xvpickve2gr.d	$a5, $xr2, 0
+	xvpickve2gr.d	$a6, $xr2, 1
 	xvpickve2gr.d	$a7, $xr2, 2
 	xvpickve2gr.d	$t0, $xr2, 3
 	slli.d	$a5, $a5, 3
@@ -3118,10 +3078,10 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	move	$a5, $a3
 	bstrins.d	$a5, $zero, 3, 0
 	andi	$a6, $a3, 12
-	st.d	$a6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 72                    # 8-byte Folded Spill
 	move	$a7, $a5
 	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
-	xvld	$xr2, $sp, 48                   # 32-byte Folded Reload
+	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr2, 0
 	.p2align	4, , 16
 .LBB3_46:                               # %vector.body
@@ -3129,59 +3089,27 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.wu	$xr3, $xr1, 8
 	xvpermi.q	$xr4, $xr1, 1
-	vpickve2gr.w	$t0, $vr4, 2
-	vinsgr2vr.d	$vr5, $t0, 0
-	vpickve2gr.w	$t0, $vr4, 3
-	vinsgr2vr.d	$vr5, $t0, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$t0, $vr4, 0
-	vinsgr2vr.d	$vr6, $t0, 0
-	vpickve2gr.w	$t0, $vr4, 1
-	vinsgr2vr.d	$vr6, $t0, 1
-	vpickve2gr.w	$t0, $vr1, 2
-	vinsgr2vr.d	$vr4, $t0, 0
-	vpickve2gr.w	$t0, $vr1, 3
-	vinsgr2vr.d	$vr4, $t0, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$t0, $vr1, 0
-	vinsgr2vr.d	$vr7, $t0, 0
-	vpickve2gr.w	$t0, $vr1, 1
-	vinsgr2vr.d	$vr7, $t0, 1
-	xvpickve2gr.d	$t0, $xr7, 0
-	xvpickve2gr.d	$t1, $xr7, 1
-	xvpickve2gr.d	$t2, $xr4, 2
-	xvpickve2gr.d	$t3, $xr4, 3
-	xvpickve2gr.d	$t4, $xr6, 0
-	xvpickve2gr.d	$t5, $xr6, 1
-	xvpickve2gr.d	$t6, $xr5, 2
-	xvpickve2gr.d	$t7, $xr5, 3
+	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr5, $xr1
+	xvpickve2gr.d	$t0, $xr5, 0
+	xvpickve2gr.d	$t1, $xr5, 1
+	xvpickve2gr.d	$t2, $xr5, 2
+	xvpickve2gr.d	$t3, $xr5, 3
+	xvpickve2gr.d	$t4, $xr4, 0
+	xvpickve2gr.d	$t5, $xr4, 1
+	xvpickve2gr.d	$t6, $xr4, 2
+	xvpickve2gr.d	$t7, $xr4, 3
 	xvpermi.q	$xr4, $xr3, 1
-	vpickve2gr.w	$t8, $vr4, 2
-	vinsgr2vr.d	$vr5, $t8, 0
-	vpickve2gr.w	$t8, $vr4, 3
-	vinsgr2vr.d	$vr5, $t8, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$t8, $vr4, 0
-	vinsgr2vr.d	$vr6, $t8, 0
-	vpickve2gr.w	$t8, $vr4, 1
-	vinsgr2vr.d	$vr6, $t8, 1
-	vpickve2gr.w	$t8, $vr3, 2
-	vinsgr2vr.d	$vr4, $t8, 0
-	vpickve2gr.w	$t8, $vr3, 3
-	vinsgr2vr.d	$vr4, $t8, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$t8, $vr3, 0
-	vinsgr2vr.d	$vr7, $t8, 0
-	vpickve2gr.w	$t8, $vr3, 1
-	vinsgr2vr.d	$vr7, $t8, 1
-	xvpickve2gr.d	$t8, $xr7, 0
-	xvpickve2gr.d	$s0, $xr7, 1
-	xvpickve2gr.d	$s3, $xr4, 2
-	xvpickve2gr.d	$s7, $xr4, 3
-	xvpickve2gr.d	$s8, $xr6, 0
-	xvpickve2gr.d	$ra, $xr6, 1
-	xvpickve2gr.d	$s1, $xr5, 2
-	xvpickve2gr.d	$a6, $xr5, 3
+	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr3, $xr3
+	xvpickve2gr.d	$t8, $xr3, 0
+	xvpickve2gr.d	$s0, $xr3, 1
+	xvpickve2gr.d	$s3, $xr3, 2
+	xvpickve2gr.d	$s7, $xr3, 3
+	xvpickve2gr.d	$s8, $xr4, 0
+	xvpickve2gr.d	$ra, $xr4, 1
+	xvpickve2gr.d	$s1, $xr4, 2
+	xvpickve2gr.d	$a6, $xr4, 3
 	alsl.d	$t0, $t0, $a4, 3
 	alsl.d	$t1, $t1, $a4, 3
 	alsl.d	$t2, $t2, $a4, 3
@@ -3206,15 +3134,15 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ld.w	$t5, $t5, 4
 	ld.w	$t6, $t6, 4
 	ld.w	$t7, $t7, 4
-	vinsgr2vr.w	$vr3, $t4, 0
-	vinsgr2vr.w	$vr3, $t5, 1
-	vinsgr2vr.w	$vr3, $t6, 2
-	vinsgr2vr.w	$vr3, $t7, 3
-	vinsgr2vr.w	$vr4, $t0, 0
-	vinsgr2vr.w	$vr4, $t1, 1
-	vinsgr2vr.w	$vr4, $t2, 2
-	vinsgr2vr.w	$vr4, $t3, 3
-	xvpermi.q	$xr4, $xr3, 2
+	vinsgr2vr.w	$vr3, $t0, 0
+	vinsgr2vr.w	$vr3, $t1, 1
+	vinsgr2vr.w	$vr3, $t2, 2
+	vinsgr2vr.w	$vr3, $t3, 3
+	vinsgr2vr.w	$vr4, $t4, 0
+	vinsgr2vr.w	$vr4, $t5, 1
+	vinsgr2vr.w	$vr4, $t6, 2
+	vinsgr2vr.w	$vr4, $t7, 3
+	xvpermi.q	$xr3, $xr4, 2
 	ld.w	$t0, $t8, 4
 	ld.w	$t1, $s0, 4
 	ld.w	$t2, $s3, 4
@@ -3223,17 +3151,17 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ld.w	$t5, $ra, 4
 	ld.w	$t6, $s1, 4
 	ld.w	$a6, $a6, 4
-	vinsgr2vr.w	$vr3, $t4, 0
-	vinsgr2vr.w	$vr3, $t5, 1
-	vinsgr2vr.w	$vr3, $t6, 2
-	vinsgr2vr.w	$vr3, $a6, 3
-	vinsgr2vr.w	$vr5, $t0, 0
-	vinsgr2vr.w	$vr5, $t1, 1
-	vinsgr2vr.w	$vr5, $t2, 2
-	vinsgr2vr.w	$vr5, $t3, 3
-	xvpermi.q	$xr5, $xr3, 2
-	xvadd.w	$xr0, $xr4, $xr0
-	xvadd.w	$xr2, $xr5, $xr2
+	vinsgr2vr.w	$vr4, $t0, 0
+	vinsgr2vr.w	$vr4, $t1, 1
+	vinsgr2vr.w	$vr4, $t2, 2
+	vinsgr2vr.w	$vr4, $t3, 3
+	vinsgr2vr.w	$vr5, $t4, 0
+	vinsgr2vr.w	$vr5, $t5, 1
+	vinsgr2vr.w	$vr5, $t6, 2
+	vinsgr2vr.w	$vr5, $a6, 3
+	xvpermi.q	$xr4, $xr5, 2
+	xvadd.w	$xr0, $xr3, $xr0
+	xvadd.w	$xr2, $xr4, $xr2
 	addi.w	$a7, $a7, -16
 	xvaddi.wu	$xr1, $xr1, 16
 	bnez	$a7, .LBB3_46
@@ -3248,16 +3176,16 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	addi.d	$s7, $fp, 168
 	bne	$a3, $a5, .LBB3_49
 # %bb.48:                               #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	b	.LBB3_24
 .LBB3_49:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a6, .LBB3_53
 .LBB3_50:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB3_25 Depth=1
@@ -3274,17 +3202,9 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 .LBB3_51:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vpickve2gr.w	$a7, $vr1, 2
-	vinsgr2vr.d	$vr2, $a7, 0
-	vpickve2gr.w	$a7, $vr1, 3
-	vinsgr2vr.d	$vr2, $a7, 1
-	xvpermi.q	$xr2, $xr2, 2
-	vpickve2gr.w	$a7, $vr1, 0
-	vinsgr2vr.d	$vr3, $a7, 0
-	vpickve2gr.w	$a7, $vr1, 1
-	vinsgr2vr.d	$vr3, $a7, 1
-	xvpickve2gr.d	$a7, $xr3, 0
-	xvpickve2gr.d	$t0, $xr3, 1
+	vext2xv.d.w	$xr2, $xr1
+	xvpickve2gr.d	$a7, $xr2, 0
+	xvpickve2gr.d	$t0, $xr2, 1
 	xvpickve2gr.d	$t1, $xr2, 2
 	xvpickve2gr.d	$t2, $xr2, 3
 	alsl.d	$a7, $a7, $a4, 3
@@ -3414,7 +3334,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ld.d	$a4, $fp, 184
 	lu12i.w	$a5, 524287
 	ori	$t4, $a5, 4095
-	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 64                    # 8-byte Folded Reload
 	vld	$vr0, $a5, %pc_lo12(.LCPI3_1)
 	xvld	$xr1, $s1, %pc_lo12(.LCPI3_0)
 	lu12i.w	$a5, -524288
@@ -3466,12 +3386,12 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	b	.LBB3_87
 .LBB3_82:                               # %vector.ph290
                                         #   in Loop: Header=BB3_73 Depth=1
-	st.d	$t5, $sp, 120                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 96                    # 8-byte Folded Spill
 	st.d	$t4, $sp, 128                   # 8-byte Folded Spill
 	move	$t1, $t0
 	bstrins.d	$t1, $zero, 3, 0
 	andi	$a5, $t0, 12
-	st.d	$a5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 88                    # 8-byte Folded Spill
 	move	$t3, $t1
 	xvori.b	$xr4, $xr1, 0
 	xvori.b	$xr3, $xr2, 0
@@ -3482,59 +3402,27 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
                                         # =>  This Inner Loop Header: Depth=2
 	xvaddi.wu	$xr6, $xr4, 8
 	xvpermi.q	$xr7, $xr4, 1
-	vpickve2gr.w	$t4, $vr7, 2
-	vinsgr2vr.d	$vr8, $t4, 0
-	vpickve2gr.w	$t4, $vr7, 3
-	vinsgr2vr.d	$vr8, $t4, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$t4, $vr7, 0
-	vinsgr2vr.d	$vr9, $t4, 0
-	vpickve2gr.w	$t4, $vr7, 1
-	vinsgr2vr.d	$vr9, $t4, 1
-	vpickve2gr.w	$t4, $vr4, 2
-	vinsgr2vr.d	$vr7, $t4, 0
-	vpickve2gr.w	$t4, $vr4, 3
-	vinsgr2vr.d	$vr7, $t4, 1
-	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$t4, $vr4, 0
-	vinsgr2vr.d	$vr10, $t4, 0
-	vpickve2gr.w	$t4, $vr4, 1
-	vinsgr2vr.d	$vr10, $t4, 1
-	xvpickve2gr.d	$t4, $xr10, 0
-	xvpickve2gr.d	$t5, $xr10, 1
-	xvpickve2gr.d	$t6, $xr7, 2
-	xvpickve2gr.d	$t7, $xr7, 3
-	xvpickve2gr.d	$t8, $xr9, 0
-	xvpickve2gr.d	$s0, $xr9, 1
-	xvpickve2gr.d	$s1, $xr8, 2
-	xvpickve2gr.d	$s3, $xr8, 3
+	vext2xv.d.w	$xr7, $xr7
+	vext2xv.d.w	$xr8, $xr4
+	xvpickve2gr.d	$t4, $xr8, 0
+	xvpickve2gr.d	$t5, $xr8, 1
+	xvpickve2gr.d	$t6, $xr8, 2
+	xvpickve2gr.d	$t7, $xr8, 3
+	xvpickve2gr.d	$t8, $xr7, 0
+	xvpickve2gr.d	$s0, $xr7, 1
+	xvpickve2gr.d	$s1, $xr7, 2
+	xvpickve2gr.d	$s3, $xr7, 3
 	xvpermi.q	$xr7, $xr6, 1
-	vpickve2gr.w	$s4, $vr7, 2
-	vinsgr2vr.d	$vr8, $s4, 0
-	vpickve2gr.w	$s4, $vr7, 3
-	vinsgr2vr.d	$vr8, $s4, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$s4, $vr7, 0
-	vinsgr2vr.d	$vr9, $s4, 0
-	vpickve2gr.w	$s4, $vr7, 1
-	vinsgr2vr.d	$vr9, $s4, 1
-	vpickve2gr.w	$s4, $vr6, 2
-	vinsgr2vr.d	$vr7, $s4, 0
-	vpickve2gr.w	$s4, $vr6, 3
-	vinsgr2vr.d	$vr7, $s4, 1
-	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$s4, $vr6, 0
-	vinsgr2vr.d	$vr10, $s4, 0
-	vpickve2gr.w	$s4, $vr6, 1
-	vinsgr2vr.d	$vr10, $s4, 1
-	xvpickve2gr.d	$s4, $xr10, 0
-	xvpickve2gr.d	$s7, $xr10, 1
-	xvpickve2gr.d	$s8, $xr7, 2
-	xvpickve2gr.d	$ra, $xr7, 3
-	xvpickve2gr.d	$a7, $xr9, 0
-	xvpickve2gr.d	$t2, $xr9, 1
-	xvpickve2gr.d	$a5, $xr8, 2
-	xvpickve2gr.d	$a6, $xr8, 3
+	vext2xv.d.w	$xr7, $xr7
+	vext2xv.d.w	$xr6, $xr6
+	xvpickve2gr.d	$s4, $xr6, 0
+	xvpickve2gr.d	$s7, $xr6, 1
+	xvpickve2gr.d	$s8, $xr6, 2
+	xvpickve2gr.d	$ra, $xr6, 3
+	xvpickve2gr.d	$a7, $xr7, 0
+	xvpickve2gr.d	$t2, $xr7, 1
+	xvpickve2gr.d	$a5, $xr7, 2
+	xvpickve2gr.d	$a6, $xr7, 3
 	alsl.d	$t4, $t4, $a2, 3
 	alsl.d	$t5, $t5, $a2, 3
 	alsl.d	$t6, $t6, $a2, 3
@@ -3559,15 +3447,15 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ld.w	$s0, $s0, 4
 	ld.w	$s1, $s1, 4
 	ld.w	$s3, $s3, 4
-	vinsgr2vr.w	$vr6, $t8, 0
-	vinsgr2vr.w	$vr6, $s0, 1
-	vinsgr2vr.w	$vr6, $s1, 2
-	vinsgr2vr.w	$vr6, $s3, 3
-	vinsgr2vr.w	$vr7, $t4, 0
-	vinsgr2vr.w	$vr7, $t5, 1
-	vinsgr2vr.w	$vr7, $t6, 2
-	vinsgr2vr.w	$vr7, $t7, 3
-	xvpermi.q	$xr7, $xr6, 2
+	vinsgr2vr.w	$vr6, $t4, 0
+	vinsgr2vr.w	$vr6, $t5, 1
+	vinsgr2vr.w	$vr6, $t6, 2
+	vinsgr2vr.w	$vr6, $t7, 3
+	vinsgr2vr.w	$vr7, $t8, 0
+	vinsgr2vr.w	$vr7, $s0, 1
+	vinsgr2vr.w	$vr7, $s1, 2
+	vinsgr2vr.w	$vr7, $s3, 3
+	xvpermi.q	$xr6, $xr7, 2
 	ld.w	$t4, $s4, 4
 	ld.w	$t5, $s7, 4
 	ld.w	$t6, $s8, 4
@@ -3576,17 +3464,17 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ld.w	$t2, $t2, 4
 	ld.w	$a5, $a5, 4
 	ld.w	$a6, $a6, 4
-	vinsgr2vr.w	$vr6, $a7, 0
-	vinsgr2vr.w	$vr6, $t2, 1
-	vinsgr2vr.w	$vr6, $a5, 2
-	vinsgr2vr.w	$vr6, $a6, 3
-	vinsgr2vr.w	$vr8, $t4, 0
-	vinsgr2vr.w	$vr8, $t5, 1
-	vinsgr2vr.w	$vr8, $t6, 2
-	vinsgr2vr.w	$vr8, $t7, 3
-	xvpermi.q	$xr8, $xr6, 2
-	xvadd.w	$xr3, $xr7, $xr3
-	xvadd.w	$xr5, $xr8, $xr5
+	vinsgr2vr.w	$vr7, $t4, 0
+	vinsgr2vr.w	$vr7, $t5, 1
+	vinsgr2vr.w	$vr7, $t6, 2
+	vinsgr2vr.w	$vr7, $t7, 3
+	vinsgr2vr.w	$vr8, $a7, 0
+	vinsgr2vr.w	$vr8, $t2, 1
+	vinsgr2vr.w	$vr8, $a5, 2
+	vinsgr2vr.w	$vr8, $a6, 3
+	xvpermi.q	$xr7, $xr8, 2
+	xvadd.w	$xr3, $xr6, $xr3
+	xvadd.w	$xr5, $xr7, $xr5
 	addi.w	$t3, $t3, -16
 	xvaddi.wu	$xr4, $xr4, 16
 	bnez	$t3, .LBB3_83
@@ -3603,15 +3491,15 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	bne	$t0, $a5, .LBB3_86
 # %bb.85:                               #   in Loop: Header=BB3_73 Depth=1
 	ld.d	$t4, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 96                    # 8-byte Folded Reload
 	ori	$t6, $zero, 16
 	b	.LBB3_91
 .LBB3_86:                               # %vec.epilog.iter.check308
                                         #   in Loop: Header=BB3_73 Depth=1
 	ld.d	$t4, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$t5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 96                    # 8-byte Folded Reload
 	ori	$t6, $zero, 16
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	beqz	$a5, .LBB3_90
 .LBB3_87:                               # %vec.epilog.ph310
                                         #   in Loop: Header=BB3_73 Depth=1
@@ -3627,17 +3515,9 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 .LBB3_88:                               # %vec.epilog.vector.body316
                                         #   Parent Loop BB3_73 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vpickve2gr.w	$a5, $vr4, 2
-	vinsgr2vr.d	$vr5, $a5, 0
-	vpickve2gr.w	$a5, $vr4, 3
-	vinsgr2vr.d	$vr5, $a5, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$a5, $vr4, 0
-	vinsgr2vr.d	$vr6, $a5, 0
-	vpickve2gr.w	$a5, $vr4, 1
-	vinsgr2vr.d	$vr6, $a5, 1
-	xvpickve2gr.d	$a5, $xr6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
+	vext2xv.d.w	$xr5, $xr4
+	xvpickve2gr.d	$a5, $xr5, 0
+	xvpickve2gr.d	$a6, $xr5, 1
 	xvpickve2gr.d	$a7, $xr5, 2
 	xvpickve2gr.d	$t3, $xr5, 3
 	alsl.d	$a5, $a5, $a2, 3

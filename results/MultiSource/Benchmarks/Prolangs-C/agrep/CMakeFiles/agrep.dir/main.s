@@ -2050,9 +2050,7 @@ checksg:                                # @checksg
 	vor.v	$vr15, $vr15, $vr23
 	vor.v	$vr15, $vr15, $vr24
 	vor.v	$vr15, $vr15, $vr25
-	vilvl.b	$vr15, $vr15, $vr15
-	vslli.h	$vr15, $vr15, 8
-	vsrai.h	$vr15, $vr15, 8
+	vext2xv.h.b	$xr15, $xr15
 	vslli.h	$vr16, $vr15, 15
 	vmskltz.h	$vr16, $vr16
 	vpickve2gr.hu	$t0, $vr16, 0
@@ -2151,9 +2149,7 @@ checksg:                                # @checksg
 	vor.v	$vr13, $vr13, $vr19
 	vor.v	$vr13, $vr13, $vr20
 	vor.v	$vr13, $vr13, $vr21
-	vilvl.b	$vr13, $vr13, $vr13
-	vslli.h	$vr13, $vr13, 8
-	vsrai.h	$vr13, $vr13, 8
+	vext2xv.h.b	$xr13, $xr13
 	vslli.h	$vr14, $vr13, 15
 	vmskltz.h	$vr14, $vr14
 	vpickve2gr.hu	$t0, $vr14, 0
@@ -2270,13 +2266,9 @@ checksg:                                # @checksg
 	vseq.b	$vr4, $vr4, $vr2
 	vor.v	$vr4, $vr6, $vr4
 	vnor.v	$vr3, $vr7, $vr3
-	vilvl.b	$vr3, $vr3, $vr3
-	vslli.h	$vr3, $vr3, 8
-	vsrai.h	$vr3, $vr3, 8
+	vext2xv.h.b	$xr3, $xr3
 	vnor.v	$vr4, $vr8, $vr4
-	vilvl.b	$vr4, $vr4, $vr4
-	vslli.h	$vr4, $vr4, 8
-	vsrai.h	$vr4, $vr4, 8
+	vext2xv.h.b	$xr4, $xr4
 	vpickve2gr.h	$a7, $vr4, 0
 	vinsgr2vr.b	$vr5, $a7, 0
 	vpickve2gr.h	$a7, $vr4, 1
@@ -2339,8 +2331,7 @@ checksg:                                # @checksg
 	vseq.b	$vr4, $vr3, $vr0
 	vseq.b	$vr5, $vr3, $vr1
 	vxori.b	$vr5, $vr5, 255
-	vilvl.b	$vr5, $vr5, $vr5
-	vilvl.h	$vr5, $vr5, $vr5
+	vext2xv.w.b	$xr5, $xr5
 	vbitclri.b	$vr3, $vr3, 2
 	vseq.b	$vr3, $vr3, $vr2
 	vor.v	$vr3, $vr4, $vr3

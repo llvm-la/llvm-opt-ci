@@ -289,42 +289,39 @@ Flush_Buffer:                           # @Flush_Buffer
 	vld	$vr2, $a7, %pc_lo12(.LCPI1_0)
 	alsl.d	$a7, $a0, $a2, 3
 	slli.d	$a0, $a0, 6
-	vrepli.b	$vr1, 0
+	vrepli.b	$vr0, 0
 	add.w	$a0, $a3, $a0
-	vori.b	$vr0, $vr1, 0
-	vinsgr2vr.w	$vr0, $a5, 0
+	vori.b	$vr1, $vr0, 0
+	vinsgr2vr.w	$vr1, $a5, 0
 	vreplgr2vr.w	$vr3, $a3
 	vadd.w	$vr2, $vr3, $vr2
 	vrepli.w	$vr3, 24
 	vrepli.w	$vr4, -8
 	vrepli.w	$vr5, 64
 	move	$a3, $t0
-	vori.b	$vr6, $vr1, 0
 	.p2align	4, , 16
 .LBB1_30:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t1, $a2, 0
 	ld.w	$t2, $a2, 4
 	addi.d	$a5, $a2, 8
-	vinsgr2vr.w	$vr7, $t1, 0
-	vinsgr2vr.w	$vr8, $t2, 0
-	vilvl.b	$vr7, $vr1, $vr7
-	vilvl.h	$vr7, $vr1, $vr7
-	vilvl.b	$vr8, $vr1, $vr8
-	vilvl.h	$vr8, $vr1, $vr8
-	vsub.w	$vr9, $vr3, $vr2
-	vsub.w	$vr10, $vr4, $vr2
+	vinsgr2vr.w	$vr6, $t1, 0
+	vinsgr2vr.w	$vr7, $t2, 0
+	vext2xv.wu.bu	$xr6, $xr6
+	vext2xv.wu.bu	$xr7, $xr7
+	vsub.w	$vr8, $vr3, $vr2
+	vsub.w	$vr9, $vr4, $vr2
+	vsll.w	$vr6, $vr6, $vr8
 	vsll.w	$vr7, $vr7, $vr9
-	vsll.w	$vr8, $vr8, $vr10
+	vor.v	$vr1, $vr6, $vr1
 	vor.v	$vr0, $vr7, $vr0
-	vor.v	$vr6, $vr8, $vr6
 	addi.d	$a3, $a3, -8
 	vadd.w	$vr2, $vr2, $vr5
 	move	$a2, $a5
 	bnez	$a3, .LBB1_30
 # %bb.31:                               # %middle.block
 	stptr.d	$a5, $a1, 2056
-	vor.v	$vr0, $vr6, $vr0
+	vor.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4

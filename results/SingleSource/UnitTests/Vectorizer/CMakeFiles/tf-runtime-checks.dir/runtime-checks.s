@@ -15189,20 +15189,8 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
                                         # =>This Inner Loop Header: Depth=1
 	xvsle.du	$xr13, $xr11, $xr12
 	xvpickve2gr.d	$a3, $xr13, 0
-	vpickve2gr.w	$a4, $vr3, 2
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr15, $a4, 0
-	vpickve2gr.w	$a4, $vr3, 3
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr15, $a4, 1
-	vpickve2gr.w	$a4, $vr3, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr14, $a4, 0
-	vpickve2gr.w	$a4, $vr3, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr14, $a4, 1
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr14, $xr15, 2
+	vext2xv.du.wu	$xr14, $xr3
 	bnez	$a3, .LBB83_48
 # %bb.10:                               # %pred.store.continue
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15227,23 +15215,11 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.b	$a3, $a2, -12
 .LBB83_14:                              # %pred.store.continue13
                                         #   in Loop: Header=BB83_9 Depth=1
-	xvpermi.q	$xr14, $xr3, 1
-	vpickve2gr.w	$a3, $vr14, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 1
-	vpickve2gr.w	$a3, $vr14, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 1
+	xvpermi.q	$xr13, $xr3, 1
 	xvsle.du	$xr14, $xr10, $xr12
 	xvpickve2gr.d	$a3, $xr14, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr13, $xr15, 2
+	vext2xv.du.wu	$xr13, $xr13
 	bnez	$a3, .LBB83_51
 # %bb.15:                               # %pred.store.continue15
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15268,22 +15244,10 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.b	$a3, $a2, -8
 .LBB83_19:                              # %pred.store.continue21
                                         #   in Loop: Header=BB83_9 Depth=1
-	vpickve2gr.w	$a3, $vr2, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 0
-	vpickve2gr.w	$a3, $vr2, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 1
-	vpickve2gr.w	$a3, $vr2, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 0
-	vpickve2gr.w	$a3, $vr2, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 1
 	xvsle.du	$xr14, $xr9, $xr12
 	xvpickve2gr.d	$a3, $xr14, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr13, $xr15, 2
+	vext2xv.du.wu	$xr13, $xr2
 	bnez	$a3, .LBB83_54
 # %bb.20:                               # %pred.store.continue23
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15308,23 +15272,11 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.b	$a3, $a2, -4
 .LBB83_24:                              # %pred.store.continue29
                                         #   in Loop: Header=BB83_9 Depth=1
-	xvpermi.q	$xr14, $xr2, 1
-	vpickve2gr.w	$a3, $vr14, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 1
-	vpickve2gr.w	$a3, $vr14, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 1
+	xvpermi.q	$xr13, $xr2, 1
 	xvsle.du	$xr14, $xr8, $xr12
 	xvpickve2gr.d	$a3, $xr14, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr13, $xr15, 2
+	vext2xv.du.wu	$xr13, $xr13
 	bnez	$a3, .LBB83_57
 # %bb.25:                               # %pred.store.continue31
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15349,22 +15301,10 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.b	$a3, $a2, 0
 .LBB83_29:                              # %pred.store.continue37
                                         #   in Loop: Header=BB83_9 Depth=1
-	vpickve2gr.w	$a3, $vr1, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 0
-	vpickve2gr.w	$a3, $vr1, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 1
-	vpickve2gr.w	$a3, $vr1, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 0
-	vpickve2gr.w	$a3, $vr1, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 1
 	xvsle.du	$xr14, $xr7, $xr12
 	xvpickve2gr.d	$a3, $xr14, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr13, $xr15, 2
+	vext2xv.du.wu	$xr13, $xr1
 	bnez	$a3, .LBB83_60
 # %bb.30:                               # %pred.store.continue39
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15389,23 +15329,11 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.b	$a3, $a2, 4
 .LBB83_34:                              # %pred.store.continue45
                                         #   in Loop: Header=BB83_9 Depth=1
-	xvpermi.q	$xr14, $xr1, 1
-	vpickve2gr.w	$a3, $vr14, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 1
-	vpickve2gr.w	$a3, $vr14, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 1
+	xvpermi.q	$xr13, $xr1, 1
 	xvsle.du	$xr14, $xr6, $xr12
 	xvpickve2gr.d	$a3, $xr14, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr13, $xr15, 2
+	vext2xv.du.wu	$xr13, $xr13
 	bnez	$a3, .LBB83_63
 # %bb.35:                               # %pred.store.continue47
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15430,22 +15358,10 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.b	$a3, $a2, 8
 .LBB83_39:                              # %pred.store.continue53
                                         #   in Loop: Header=BB83_9 Depth=1
-	vpickve2gr.w	$a3, $vr0, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 0
-	vpickve2gr.w	$a3, $vr0, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 1
-	vpickve2gr.w	$a3, $vr0, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 0
-	vpickve2gr.w	$a3, $vr0, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 1
 	xvsle.du	$xr14, $xr5, $xr12
 	xvpickve2gr.d	$a3, $xr14, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr13, $xr15, 2
+	vext2xv.du.wu	$xr13, $xr0
 	bnez	$a3, .LBB83_66
 # %bb.40:                               # %pred.store.continue55
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15470,23 +15386,11 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.b	$a3, $a2, 12
 .LBB83_44:                              # %pred.store.continue61
                                         #   in Loop: Header=BB83_9 Depth=1
-	xvpermi.q	$xr14, $xr0, 1
-	vpickve2gr.w	$a3, $vr14, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr15, $a3, 1
-	vpickve2gr.w	$a3, $vr14, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 0
-	vpickve2gr.w	$a3, $vr14, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr13, $a3, 1
+	xvpermi.q	$xr13, $xr0, 1
 	xvsle.du	$xr14, $xr4, $xr12
 	xvpickve2gr.d	$a3, $xr14, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr13, $xr15, 2
+	vext2xv.du.wu	$xr13, $xr13
 	bnez	$a3, .LBB83_69
 # %bb.45:                               # %pred.store.continue63
                                         #   in Loop: Header=BB83_9 Depth=1
@@ -15907,20 +15811,8 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
                                         # =>This Inner Loop Header: Depth=1
 	xvsle.du	$xr4, $xr1, $xr3
 	xvpickve2gr.d	$a3, $xr4, 0
-	vpickve2gr.w	$a4, $vr2, 2
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr6, $a4, 0
-	vpickve2gr.w	$a4, $vr2, 3
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr6, $a4, 1
-	vpickve2gr.w	$a4, $vr2, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr5, $a4, 0
-	vpickve2gr.w	$a4, $vr2, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr5, $a4, 1
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr5, $xr6, 2
+	vext2xv.du.wu	$xr5, $xr2
 	bnez	$a3, .LBB87_18
 # %bb.10:                               # %pred.store.continue
                                         #   in Loop: Header=BB87_9 Depth=1
@@ -15946,23 +15838,11 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	st.w	$a3, $a2, -4
 .LBB87_14:                              # %pred.store.continue13
                                         #   in Loop: Header=BB87_9 Depth=1
-	xvpermi.q	$xr5, $xr2, 1
-	vpickve2gr.w	$a3, $vr5, 2
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr6, $a3, 0
-	vpickve2gr.w	$a3, $vr5, 3
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr6, $a3, 1
-	vpickve2gr.w	$a3, $vr5, 0
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr4, $a3, 0
-	vpickve2gr.w	$a3, $vr5, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	vinsgr2vr.d	$vr4, $a3, 1
+	xvpermi.q	$xr4, $xr2, 1
 	xvsle.du	$xr5, $xr0, $xr3
 	xvpickve2gr.d	$a3, $xr5, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr4, $xr6, 2
+	vext2xv.du.wu	$xr4, $xr4
 	bnez	$a3, .LBB87_21
 # %bb.15:                               # %pred.store.continue15
                                         #   in Loop: Header=BB87_9 Depth=1
@@ -16204,73 +16084,61 @@ _ZNSt17_Function_handlerIFvPmS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	beqz	$a1, .LBB91_6
 .LBB91_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsle.du	$xr3, $xr1, $xr2
-	xvpickve2gr.d	$a3, $xr3, 0
-	vpickve2gr.w	$a4, $vr0, 2
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr5, $a4, 0
-	vpickve2gr.w	$a4, $vr0, 3
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr5, $a4, 1
-	vpickve2gr.w	$a4, $vr0, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr4, $a4, 0
-	vpickve2gr.w	$a4, $vr0, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	vinsgr2vr.d	$vr4, $a4, 1
+	xvsle.du	$xr4, $xr1, $xr2
+	xvpickve2gr.d	$a3, $xr4, 0
 	andi	$a3, $a3, 1
-	xvpermi.q	$xr4, $xr5, 2
+	vext2xv.du.wu	$xr3, $xr0
 	bnez	$a3, .LBB91_13
 # %bb.10:                               # %pred.store.continue
                                         #   in Loop: Header=BB91_9 Depth=1
-	xvpickve2gr.d	$a3, $xr3, 1
+	xvpickve2gr.d	$a3, $xr4, 1
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB91_14
 .LBB91_11:                              # %pred.store.continue9
                                         #   in Loop: Header=BB91_9 Depth=1
-	xvpickve2gr.d	$a3, $xr3, 2
+	xvpickve2gr.d	$a3, $xr4, 2
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB91_15
 .LBB91_12:                              # %pred.store.continue11
                                         #   in Loop: Header=BB91_9 Depth=1
-	xvpickve2gr.d	$a3, $xr3, 3
+	xvpickve2gr.d	$a3, $xr4, 3
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB91_8
 	b	.LBB91_16
 	.p2align	4, , 16
 .LBB91_13:                              # %pred.store.if
                                         #   in Loop: Header=BB91_9 Depth=1
-	xvpickve2gr.d	$a3, $xr4, 0
+	xvpickve2gr.d	$a3, $xr3, 0
 	slli.d	$a3, $a3, 3
 	ldx.d	$a3, $a0, $a3
 	addi.d	$a3, $a3, 10
 	st.d	$a3, $a2, -16
-	xvpickve2gr.d	$a3, $xr3, 1
+	xvpickve2gr.d	$a3, $xr4, 1
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB91_11
 .LBB91_14:                              # %pred.store.if8
                                         #   in Loop: Header=BB91_9 Depth=1
-	xvpickve2gr.d	$a3, $xr4, 1
+	xvpickve2gr.d	$a3, $xr3, 1
 	slli.d	$a3, $a3, 3
 	ldx.d	$a3, $a0, $a3
 	addi.d	$a3, $a3, 10
 	st.d	$a3, $a2, -8
-	xvpickve2gr.d	$a3, $xr3, 2
+	xvpickve2gr.d	$a3, $xr4, 2
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB91_12
 .LBB91_15:                              # %pred.store.if10
                                         #   in Loop: Header=BB91_9 Depth=1
-	xvpickve2gr.d	$a3, $xr4, 2
+	xvpickve2gr.d	$a3, $xr3, 2
 	slli.d	$a3, $a3, 3
 	ldx.d	$a3, $a0, $a3
 	addi.d	$a3, $a3, 10
 	st.d	$a3, $a2, 0
-	xvpickve2gr.d	$a3, $xr3, 3
+	xvpickve2gr.d	$a3, $xr4, 3
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB91_8
 .LBB91_16:                              # %pred.store.if12
                                         #   in Loop: Header=BB91_9 Depth=1
-	xvpickve2gr.d	$a3, $xr4, 3
+	xvpickve2gr.d	$a3, $xr3, 3
 	slli.d	$a3, $a3, 3
 	ldx.d	$a3, $a0, $a3
 	addi.d	$a3, $a3, 10

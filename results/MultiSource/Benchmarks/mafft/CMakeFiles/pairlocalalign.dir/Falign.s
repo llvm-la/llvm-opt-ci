@@ -6,6 +6,13 @@
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	Fgetlag
 	.p2align	2
@@ -1202,49 +1209,58 @@ Fgetlag:                                # @Fgetlag
 	add.d	$a6, $s3, $s6
 	slli.d	$a7, $s3, 3
 	move	$a3, $a1
-	bstrins.d	$a3, $zero, 1, 0
+	bstrins.d	$a3, $zero, 2, 0
+	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI0_1)
 	add.d	$a4, $a3, $a5
-	vinsgr2vr.w	$vr0, $a6, 0
-	vinsgr2vr.w	$vr0, $a6, 1
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr1, $a5, 1
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	vadd.w	$vr1, $vr1, $vr2
+	vreplgr2vr.w	$vr0, $a6
+	vreplgr2vr.w	$vr2, $a5
+	vadd.w	$vr1, $vr2, $vr1
 	add.d	$a5, $a7, $a2
-	addi.d	$a5, $a5, 24
+	addi.d	$a5, $a5, 40
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB0_132:                              # %vector.body683
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
-	vsubi.wu	$vr3, $vr2, 2
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$a7, $vr2, 0
-	vpickve2gr.d	$t0, $vr2, 1
-	vshuf4i.w	$vr2, $vr3, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$t1, $vr2, 0
-	vpickve2gr.d	$t2, $vr2, 1
+	vsubi.wu	$vr3, $vr2, 4
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$a7, $xr2, 0
+	xvpickve2gr.d	$t0, $xr2, 1
+	xvpickve2gr.d	$t1, $xr2, 2
+	xvpickve2gr.d	$t2, $xr2, 3
+	vext2xv.d.w	$xr2, $xr3
+	xvpickve2gr.d	$t3, $xr2, 0
+	xvpickve2gr.d	$t4, $xr2, 1
+	xvpickve2gr.d	$t5, $xr2, 2
+	xvpickve2gr.d	$t6, $xr2, 3
 	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
 	slli.d	$t1, $t1, 4
 	slli.d	$t2, $t2, 4
-	fldx.d	$fa2, $a0, $a7
-	fldx.d	$fa3, $a0, $t0
-	fldx.d	$fa4, $a0, $t1
-	fldx.d	$fa5, $a0, $t2
+	slli.d	$t3, $t3, 4
+	slli.d	$t4, $t4, 4
+	slli.d	$t5, $t5, 4
+	fldx.d	$fa2, $a0, $t1
+	fldx.d	$fa3, $a0, $t2
+	slli.d	$t1, $t6, 4
+	fldx.d	$fa4, $a0, $a7
+	fldx.d	$fa5, $a0, $t0
 	vextrins.d	$vr2, $vr3, 16
+	fldx.d	$fa3, $a0, $t3
+	fldx.d	$fa6, $a0, $t5
+	fldx.d	$fa7, $a0, $t1
+	fldx.d	$ft0, $a0, $t4
 	vextrins.d	$vr4, $vr5, 16
-	vst	$vr2, $a5, -16
-	vst	$vr4, $a5, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
+	xvpermi.q	$xr4, $xr2, 2
+	vextrins.d	$vr6, $vr7, 16
+	vextrins.d	$vr3, $vr8, 16
+	xvpermi.q	$xr3, $xr6, 2
+	xvst	$xr4, $a5, -32
+	xvst	$xr3, $a5, 0
+	vaddi.wu	$vr1, $vr1, 8
+	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB0_132
 # %bb.133:                              # %middle.block689
 	move	$a5, $a4
@@ -2185,6 +2201,13 @@ mymergesort:                            # @mymergesort
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI2_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	Falign
 	.p2align	2
@@ -4308,49 +4331,58 @@ Falign:                                 # @Falign
 	add.d	$a6, $s3, $s0
 	slli.d	$a7, $s3, 3
 	move	$a3, $a1
-	bstrins.d	$a3, $zero, 1, 0
+	bstrins.d	$a3, $zero, 2, 0
+	pcalau12i	$a4, %pc_hi20(.LCPI2_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI2_1)
 	add.d	$a4, $a3, $a5
-	vinsgr2vr.w	$vr0, $a6, 0
-	vinsgr2vr.w	$vr0, $a6, 1
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr1, $a5, 1
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	vadd.w	$vr1, $vr1, $vr2
+	vreplgr2vr.w	$vr0, $a6
+	vreplgr2vr.w	$vr2, $a5
+	vadd.w	$vr1, $vr2, $vr1
 	add.d	$a5, $a7, $a2
-	addi.d	$a5, $a5, 24
+	addi.d	$a5, $a5, 40
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB2_240:                              # %vector.body791
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
-	vsubi.wu	$vr3, $vr2, 2
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$a7, $vr2, 0
-	vpickve2gr.d	$t0, $vr2, 1
-	vshuf4i.w	$vr2, $vr3, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$t1, $vr2, 0
-	vpickve2gr.d	$t2, $vr2, 1
+	vsubi.wu	$vr3, $vr2, 4
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$a7, $xr2, 0
+	xvpickve2gr.d	$t0, $xr2, 1
+	xvpickve2gr.d	$t1, $xr2, 2
+	xvpickve2gr.d	$t2, $xr2, 3
+	vext2xv.d.w	$xr2, $xr3
+	xvpickve2gr.d	$t3, $xr2, 0
+	xvpickve2gr.d	$t4, $xr2, 1
+	xvpickve2gr.d	$t5, $xr2, 2
+	xvpickve2gr.d	$t6, $xr2, 3
 	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
 	slli.d	$t1, $t1, 4
 	slli.d	$t2, $t2, 4
-	fldx.d	$fa2, $a0, $a7
-	fldx.d	$fa3, $a0, $t0
-	fldx.d	$fa4, $a0, $t1
-	fldx.d	$fa5, $a0, $t2
+	slli.d	$t3, $t3, 4
+	slli.d	$t4, $t4, 4
+	slli.d	$t5, $t5, 4
+	fldx.d	$fa2, $a0, $t1
+	fldx.d	$fa3, $a0, $t2
+	slli.d	$t1, $t6, 4
+	fldx.d	$fa4, $a0, $a7
+	fldx.d	$fa5, $a0, $t0
 	vextrins.d	$vr2, $vr3, 16
+	fldx.d	$fa3, $a0, $t3
+	fldx.d	$fa6, $a0, $t5
+	fldx.d	$fa7, $a0, $t1
+	fldx.d	$ft0, $a0, $t4
 	vextrins.d	$vr4, $vr5, 16
-	vst	$vr2, $a5, -16
-	vst	$vr4, $a5, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
+	xvpermi.q	$xr4, $xr2, 2
+	vextrins.d	$vr6, $vr7, 16
+	vextrins.d	$vr3, $vr8, 16
+	xvpermi.q	$xr3, $xr6, 2
+	xvst	$xr4, $a5, -32
+	xvst	$xr3, $a5, 0
+	vaddi.wu	$vr1, $vr1, 8
+	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB2_240
 # %bb.241:                              # %middle.block797
 	move	$a5, $a4
@@ -4508,6 +4540,13 @@ Falign:                                 # @Falign
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI3_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	Falign_noudp
 	.p2align	2
@@ -6590,48 +6629,57 @@ Falign_noudp:                           # @Falign_noudp
 	add.d	$a6, $s3, $s1
 	slli.d	$a7, $s3, 3
 	move	$a3, $a1
-	bstrins.d	$a3, $zero, 1, 0
+	bstrins.d	$a3, $zero, 2, 0
+	pcalau12i	$a4, %pc_hi20(.LCPI3_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI3_1)
 	add.d	$a4, $a3, $a5
-	vinsgr2vr.w	$vr0, $a6, 0
-	vinsgr2vr.w	$vr0, $a6, 1
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr1, $a5, 1
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	vadd.w	$vr1, $vr1, $vr2
+	vreplgr2vr.w	$vr0, $a6
+	vreplgr2vr.w	$vr2, $a5
+	vadd.w	$vr1, $vr2, $vr1
 	add.d	$a5, $a7, $a2
-	addi.d	$a5, $a5, 24
+	addi.d	$a5, $a5, 40
 	move	$a6, $a3
 .LBB3_261:                              # %vector.body899
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
-	vsubi.wu	$vr3, $vr2, 2
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$a7, $vr2, 0
-	vpickve2gr.d	$t0, $vr2, 1
-	vshuf4i.w	$vr2, $vr3, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$t1, $vr2, 0
-	vpickve2gr.d	$t2, $vr2, 1
+	vsubi.wu	$vr3, $vr2, 4
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$a7, $xr2, 0
+	xvpickve2gr.d	$t0, $xr2, 1
+	xvpickve2gr.d	$t1, $xr2, 2
+	xvpickve2gr.d	$t2, $xr2, 3
+	vext2xv.d.w	$xr2, $xr3
+	xvpickve2gr.d	$t3, $xr2, 0
+	xvpickve2gr.d	$t4, $xr2, 1
+	xvpickve2gr.d	$t5, $xr2, 2
+	xvpickve2gr.d	$t6, $xr2, 3
 	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
 	slli.d	$t1, $t1, 4
 	slli.d	$t2, $t2, 4
-	fldx.d	$fa2, $a0, $a7
-	fldx.d	$fa3, $a0, $t0
-	fldx.d	$fa4, $a0, $t1
-	fldx.d	$fa5, $a0, $t2
+	slli.d	$t3, $t3, 4
+	slli.d	$t4, $t4, 4
+	slli.d	$t5, $t5, 4
+	fldx.d	$fa2, $a0, $t1
+	fldx.d	$fa3, $a0, $t2
+	slli.d	$t1, $t6, 4
+	fldx.d	$fa4, $a0, $a7
+	fldx.d	$fa5, $a0, $t0
 	vextrins.d	$vr2, $vr3, 16
+	fldx.d	$fa3, $a0, $t3
+	fldx.d	$fa6, $a0, $t5
+	fldx.d	$fa7, $a0, $t1
+	fldx.d	$ft0, $a0, $t4
 	vextrins.d	$vr4, $vr5, 16
-	vst	$vr2, $a5, -16
-	vst	$vr4, $a5, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
+	xvpermi.q	$xr4, $xr2, 2
+	vextrins.d	$vr6, $vr7, 16
+	vextrins.d	$vr3, $vr8, 16
+	xvpermi.q	$xr3, $xr6, 2
+	xvst	$xr4, $a5, -32
+	xvst	$xr3, $a5, 0
+	vaddi.wu	$vr1, $vr1, 8
+	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB3_261
 # %bb.262:                              # %middle.block905
 	move	$a5, $a4
@@ -6754,6 +6802,13 @@ Falign_noudp:                           # @Falign_noudp
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI4_1:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	Falign_udpari_long
 	.p2align	2
@@ -8965,48 +9020,57 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	add.d	$a6, $s4, $a3
 	slli.d	$a7, $s4, 3
 	move	$a3, $a1
-	bstrins.d	$a3, $zero, 1, 0
+	bstrins.d	$a3, $zero, 2, 0
+	pcalau12i	$a4, %pc_hi20(.LCPI4_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_1)
 	add.d	$a4, $a3, $a5
-	vinsgr2vr.w	$vr0, $a6, 0
-	vinsgr2vr.w	$vr0, $a6, 1
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr1, $a5, 1
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	vreplgr2vr.d	$vr2, $a5
-	vadd.w	$vr1, $vr1, $vr2
+	vreplgr2vr.w	$vr0, $a6
+	vreplgr2vr.w	$vr2, $a5
+	vadd.w	$vr1, $vr2, $vr1
 	add.d	$a5, $a7, $a2
-	addi.d	$a5, $a5, 24
+	addi.d	$a5, $a5, 40
 	move	$a6, $a3
 .LBB4_263:                              # %vector.body818
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
-	vsubi.wu	$vr3, $vr2, 2
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$a7, $vr2, 0
-	vpickve2gr.d	$t0, $vr2, 1
-	vshuf4i.w	$vr2, $vr3, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vpickve2gr.d	$t1, $vr2, 0
-	vpickve2gr.d	$t2, $vr2, 1
+	vsubi.wu	$vr3, $vr2, 4
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$a7, $xr2, 0
+	xvpickve2gr.d	$t0, $xr2, 1
+	xvpickve2gr.d	$t1, $xr2, 2
+	xvpickve2gr.d	$t2, $xr2, 3
+	vext2xv.d.w	$xr2, $xr3
+	xvpickve2gr.d	$t3, $xr2, 0
+	xvpickve2gr.d	$t4, $xr2, 1
+	xvpickve2gr.d	$t5, $xr2, 2
+	xvpickve2gr.d	$t6, $xr2, 3
 	slli.d	$a7, $a7, 4
 	slli.d	$t0, $t0, 4
 	slli.d	$t1, $t1, 4
 	slli.d	$t2, $t2, 4
-	fldx.d	$fa2, $a0, $a7
-	fldx.d	$fa3, $a0, $t0
-	fldx.d	$fa4, $a0, $t1
-	fldx.d	$fa5, $a0, $t2
+	slli.d	$t3, $t3, 4
+	slli.d	$t4, $t4, 4
+	slli.d	$t5, $t5, 4
+	fldx.d	$fa2, $a0, $t1
+	fldx.d	$fa3, $a0, $t2
+	slli.d	$t1, $t6, 4
+	fldx.d	$fa4, $a0, $a7
+	fldx.d	$fa5, $a0, $t0
 	vextrins.d	$vr2, $vr3, 16
+	fldx.d	$fa3, $a0, $t3
+	fldx.d	$fa6, $a0, $t5
+	fldx.d	$fa7, $a0, $t1
+	fldx.d	$ft0, $a0, $t4
 	vextrins.d	$vr4, $vr5, 16
-	vst	$vr2, $a5, -16
-	vst	$vr4, $a5, 0
-	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 32
+	xvpermi.q	$xr4, $xr2, 2
+	vextrins.d	$vr6, $vr7, 16
+	vextrins.d	$vr3, $vr8, 16
+	xvpermi.q	$xr3, $xr6, 2
+	xvst	$xr4, $a5, -32
+	xvst	$xr3, $a5, 0
+	vaddi.wu	$vr1, $vr1, 8
+	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB4_263
 # %bb.264:                              # %middle.block824
 	move	$a5, $a4

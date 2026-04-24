@@ -362,57 +362,66 @@ full_verify:                            # @full_verify
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB2_1
 # %bb.2:                                # %vector.body.preheader
-	addi.d	$a1, $a0, 20
-	vrepli.b	$vr0, 0
+	addi.d	$a1, $a0, 36
+	xvrepli.b	$xr0, 0
 	lu12i.w	$a2, 8191
-	ori	$a2, $a2, 4088
-	vori.b	$vr1, $vr0, 0
+	ori	$a2, $a2, 4080
+	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB2_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a1, -20
-	vld	$vr3, $a1, -4
-	vld	$vr4, $a1, -16
-	vld	$vr5, $a1, 0
-	vslt.w	$vr2, $vr4, $vr2
-	vslt.w	$vr3, $vr5, $vr3
-	vsub.w	$vr0, $vr0, $vr2
-	vsub.w	$vr1, $vr1, $vr3
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 32
+	xvld	$xr2, $a1, -36
+	xvld	$xr3, $a1, -4
+	xvld	$xr4, $a1, -32
+	xvld	$xr5, $a1, 0
+	xvslt.w	$xr2, $xr4, $xr2
+	xvslt.w	$xr3, $xr5, $xr3
+	xvsub.w	$xr0, $xr0, $xr2
+	xvsub.w	$xr1, $xr1, $xr3
+	addi.d	$a2, $a2, -16
+	addi.d	$a1, $a1, 64
 	bnez	$a2, .LBB2_3
 # %bb.4:                                # %.preheader
-	vadd.w	$vr0, $vr1, $vr0
+	xvadd.w	$xr0, $xr1, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	lu12i.w	$a1, 32767
+	ori	$a2, $a1, 4032
+	vldx	$vr1, $a0, $a2
+	ori	$a2, $a1, 4036
+	vldx	$vr2, $a0, $a2
+	xvpickve2gr.d	$a2, $xr0, 0
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a2, 0
+	vslt.w	$vr1, $vr2, $vr1
+	ori	$a2, $a1, 4048
+	vldx	$vr2, $a0, $a2
+	ori	$a2, $a1, 4052
+	vldx	$vr3, $a0, $a2
+	ori	$a2, $a1, 4064
+	vldx	$vr4, $a0, $a2
+	ori	$a2, $a1, 4068
+	vldx	$vr5, $a0, $a2
+	vsub.w	$vr0, $vr0, $vr1
+	vslt.w	$vr1, $vr3, $vr2
+	vsub.w	$vr0, $vr0, $vr1
+	vslt.w	$vr1, $vr5, $vr4
+	vsub.w	$vr0, $vr0, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
-	lu12i.w	$a1, 32767
-	ori	$a2, $a1, 4064
+	ori	$a2, $a1, 4080
 	ldx.w	$a2, $a0, $a2
-	ori	$a3, $a1, 4068
-	ldx.w	$a3, $a0, $a3
-	ori	$a4, $a1, 4072
-	ldx.w	$a4, $a0, $a4
-	vpickve2gr.d	$a5, $vr0, 0
-	slt	$a2, $a3, $a2
-	add.d	$a2, $a5, $a2
-	slt	$a3, $a4, $a3
-	ori	$a5, $a1, 4076
-	ldx.w	$a5, $a0, $a5
-	ori	$a6, $a1, 4080
-	ldx.w	$a6, $a0, $a6
-	add.d	$a2, $a2, $a3
-	slt	$a3, $a5, $a4
-	add.d	$a2, $a2, $a3
-	slt	$a3, $a6, $a5
-	add.d	$a2, $a2, $a3
 	ori	$a3, $a1, 4084
 	ldx.w	$a3, $a0, $a3
 	ori	$a4, $a1, 4088
 	ldx.w	$a4, $a0, $a4
 	ori	$a1, $a1, 4092
 	ldx.w	$a0, $a0, $a1
-	slt	$a1, $a3, $a6
-	add.d	$a1, $a2, $a1
+	vpickve2gr.d	$a1, $vr0, 0
+	slt	$a2, $a3, $a2
+	add.d	$a1, $a1, $a2
 	slt	$a2, $a4, $a3
 	add.d	$a1, $a1, $a2
 	slt	$a0, $a0, $a4
@@ -1008,57 +1017,66 @@ main:                                   # @main
 	addi.d	$a2, $a2, 4
 	bnez	$fp, .LBB5_1
 # %bb.2:                                # %vector.body.preheader
-	addi.d	$a1, $a0, 20
-	vrepli.b	$vr0, 0
+	addi.d	$a1, $a0, 36
+	xvrepli.b	$xr0, 0
 	lu12i.w	$a2, 8191
-	ori	$a2, $a2, 4088
-	vori.b	$vr1, $vr0, 0
+	ori	$a2, $a2, 4080
+	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB5_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a1, -20
-	vld	$vr3, $a1, -4
-	vld	$vr4, $a1, -16
-	vld	$vr5, $a1, 0
-	vslt.w	$vr2, $vr4, $vr2
-	vslt.w	$vr3, $vr5, $vr3
-	vsub.w	$vr0, $vr0, $vr2
-	vsub.w	$vr1, $vr1, $vr3
-	addi.d	$a2, $a2, -8
-	addi.d	$a1, $a1, 32
+	xvld	$xr2, $a1, -36
+	xvld	$xr3, $a1, -4
+	xvld	$xr4, $a1, -32
+	xvld	$xr5, $a1, 0
+	xvslt.w	$xr2, $xr4, $xr2
+	xvslt.w	$xr3, $xr5, $xr3
+	xvsub.w	$xr0, $xr0, $xr2
+	xvsub.w	$xr1, $xr1, $xr3
+	addi.d	$a2, $a2, -16
+	addi.d	$a1, $a1, 64
 	bnez	$a2, .LBB5_3
 # %bb.4:                                # %.preheader.i
-	vadd.w	$vr0, $vr1, $vr0
+	xvadd.w	$xr0, $xr1, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	lu12i.w	$a1, 32767
+	ori	$a2, $a1, 4032
+	vldx	$vr1, $a0, $a2
+	ori	$a2, $a1, 4036
+	vldx	$vr2, $a0, $a2
+	xvpickve2gr.d	$a2, $xr0, 0
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a2, 0
+	vslt.w	$vr1, $vr2, $vr1
+	ori	$a2, $a1, 4048
+	vldx	$vr2, $a0, $a2
+	ori	$a2, $a1, 4052
+	vldx	$vr3, $a0, $a2
+	ori	$a2, $a1, 4064
+	vldx	$vr4, $a0, $a2
+	ori	$a2, $a1, 4068
+	vldx	$vr5, $a0, $a2
+	vsub.w	$vr0, $vr0, $vr1
+	vslt.w	$vr1, $vr3, $vr2
+	vsub.w	$vr0, $vr0, $vr1
+	vslt.w	$vr1, $vr5, $vr4
+	vsub.w	$vr0, $vr0, $vr1
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
-	lu12i.w	$a1, 32767
-	ori	$a2, $a1, 4064
+	ori	$a2, $a1, 4080
 	ldx.w	$a2, $a0, $a2
-	ori	$a3, $a1, 4068
-	ldx.w	$a3, $a0, $a3
-	ori	$a4, $a1, 4072
-	ldx.w	$a4, $a0, $a4
-	vpickve2gr.d	$a5, $vr0, 0
-	slt	$a2, $a3, $a2
-	add.d	$a2, $a5, $a2
-	slt	$a3, $a4, $a3
-	ori	$a5, $a1, 4076
-	ldx.w	$a5, $a0, $a5
-	ori	$a6, $a1, 4080
-	ldx.w	$a6, $a0, $a6
-	add.d	$a2, $a2, $a3
-	slt	$a3, $a5, $a4
-	add.d	$a2, $a2, $a3
-	slt	$a3, $a6, $a5
-	add.d	$a2, $a2, $a3
 	ori	$a3, $a1, 4084
 	ldx.w	$a3, $a0, $a3
 	ori	$a4, $a1, 4088
 	ldx.w	$a4, $a0, $a4
 	ori	$a1, $a1, 4092
 	ldx.w	$a0, $a0, $a1
-	slt	$a1, $a3, $a6
-	add.d	$a1, $a2, $a1
+	vpickve2gr.d	$a1, $vr0, 0
+	slt	$a2, $a3, $a2
+	add.d	$a1, $a1, $a2
 	slt	$a2, $a4, $a3
 	add.d	$a1, $a1, $a2
 	slt	$a0, $a0, $a4

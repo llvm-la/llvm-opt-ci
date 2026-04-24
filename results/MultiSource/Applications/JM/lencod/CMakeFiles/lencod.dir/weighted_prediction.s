@@ -2082,6 +2082,7 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	bstrpick.d	$a6, $a1, 30, 2
 	slli.d	$a6, $a6, 2
 	vreplgr2vr.w	$vr0, $s1
+	addi.d	$a7, $a2, 16
 	lu12i.w	$t1, 3
 	ori	$t0, $t1, 44
 	addi.d	$t2, $sp, 88
@@ -2097,13 +2098,12 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	ori	$t8, $zero, 64
 	vrepli.w	$vr1, -128
 	vrepli.w	$vr2, 127
-	vrepli.b	$vr3, 0
-	vrepli.h	$vr4, 1
-	vrepli.w	$vr5, 32
-	vldi	$vr6, -2557
-	vrepli.w	$vr7, -129
-	vrepli.w	$vr8, -193
-	vrepli.w	$vr9, 64
+	vrepli.h	$vr3, 1
+	vrepli.w	$vr4, 32
+	vldi	$vr5, -2557
+	vrepli.w	$vr6, -129
+	vrepli.w	$vr7, -193
+	vrepli.w	$vr8, 64
 	b	.LBB3_12
 	.p2align	4, , 16
 .LBB3_11:                               # %._crit_edge311.us
@@ -2135,11 +2135,11 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	.p2align	4, , 16
 .LBB3_14:                               # %vector.ph
                                         #   in Loop: Header=BB3_12 Depth=1
-	vreplgr2vr.w	$vr10, $s6
-	vreplgr2vr.w	$vr11, $fp
+	vreplgr2vr.w	$vr9, $s6
+	vreplgr2vr.w	$vr10, $fp
 	move	$s2, $a6
 	move	$s4, $t0
-	addi.d	$s5, $a2, 16
+	move	$s5, $a7
 	.p2align	4, , 16
 .LBB3_15:                               # %vector.body
                                         #   Parent Loop BB3_12 Depth=1
@@ -2152,94 +2152,93 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	ld.w	$s7, $s7, 4
 	ld.w	$s8, $s8, 4
 	ld.w	$ra, $ra, 4
-	vinsgr2vr.w	$vr12, $s0, 0
-	vinsgr2vr.w	$vr12, $s7, 1
-	vinsgr2vr.w	$vr12, $s8, 2
-	vinsgr2vr.w	$vr12, $ra, 3
-	vseq.w	$vr13, $vr12, $vr10
-	vpickev.h	$vr14, $vr13, $vr13
+	vinsgr2vr.w	$vr11, $s0, 0
+	vinsgr2vr.w	$vr11, $s7, 1
+	vinsgr2vr.w	$vr11, $s8, 2
+	vinsgr2vr.w	$vr11, $ra, 3
+	vseq.w	$vr12, $vr11, $vr9
+	vpickev.h	$vr13, $vr12, $vr12
 	pcalau12i	$s0, %pc_hi20(.LCPI3_0)
-	vld	$vr15, $s0, %pc_lo12(.LCPI3_0)
-	vsub.w	$vr12, $vr12, $vr10
-	vmax.w	$vr12, $vr12, $vr1
-	vmin.w	$vr12, $vr12, $vr2
-	vshuf.b	$vr15, $vr0, $vr12, $vr15
-	vsrli.b	$vr16, $vr15, 7
-	vavg.b	$vr15, $vr15, $vr16
-	vsigncov.b	$vr15, $vr15, $vr15
-	vilvl.b	$vr15, $vr3, $vr15
-	vbitseti.h	$vr15, $vr15, 14
-	vpickev.h	$vr12, $vr12, $vr12
-	vbitsel.v	$vr12, $vr12, $vr4, $vr14
-	vpickve2gr.h	$s0, $vr15, 3
+	vld	$vr14, $s0, %pc_lo12(.LCPI3_0)
+	vsub.w	$vr11, $vr11, $vr9
+	vmax.w	$vr11, $vr11, $vr1
+	vmin.w	$vr11, $vr11, $vr2
+	vshuf.b	$vr14, $vr0, $vr11, $vr14
+	vsrli.b	$vr15, $vr14, 7
+	vavg.b	$vr14, $vr14, $vr15
+	vsigncov.b	$vr14, $vr14, $vr14
+	vext2xv.hu.bu	$xr14, $xr14
+	vbitseti.h	$vr14, $vr14, 14
+	vpickev.h	$vr11, $vr11, $vr11
+	vbitsel.v	$vr11, $vr11, $vr3, $vr13
+	vpickve2gr.h	$s0, $vr14, 1
 	ori	$s7, $t5, 127
 	and	$s0, $s0, $s7
-	vpickve2gr.h	$s8, $vr12, 3
+	vpickve2gr.h	$s8, $vr11, 1
 	ext.w.h	$s8, $s8
 	div.d	$s0, $s0, $s8
-	vpickve2gr.h	$s8, $vr15, 2
+	vpickve2gr.h	$s8, $vr14, 0
 	and	$s8, $s8, $s7
-	vpickve2gr.h	$ra, $vr12, 2
+	vpickve2gr.h	$ra, $vr11, 0
 	ext.w.h	$ra, $ra
 	div.d	$s8, $s8, $ra
-	vpickve2gr.h	$ra, $vr15, 1
-	and	$ra, $ra, $s7
-	vpickve2gr.h	$a7, $vr12, 1
-	ext.w.h	$a7, $a7
-	div.d	$a7, $ra, $a7
-	vpickve2gr.h	$ra, $vr15, 0
-	and	$s7, $ra, $s7
-	vpickve2gr.h	$ra, $vr12, 0
-	ext.w.h	$ra, $ra
-	div.d	$s7, $s7, $ra
-	vinsgr2vr.h	$vr12, $s7, 0
-	vinsgr2vr.h	$vr12, $a7, 2
-	vinsgr2vr.h	$vr12, $s8, 4
-	vinsgr2vr.h	$vr12, $s0, 6
-	vslli.w	$vr12, $vr12, 16
-	vsrai.w	$vr12, $vr12, 16
-	vori.b	$vr14, $vr5, 0
-	vmadd.w	$vr14, $vr11, $vr12
-	vsrai.w	$vr12, $vr14, 6
-	addi.d	$a7, $zero, -1024
-	vreplgr2vr.w	$vr14, $a7
-	vmax.w	$vr12, $vr12, $vr14
-	vmin.w	$vr12, $vr12, $vr6
-	vsrai.w	$vr12, $vr12, 2
-	vadd.w	$vr14, $vr12, $vr7
-	vslt.wu	$vr14, $vr14, $vr8
-	vbitsel.v	$vr12, $vr12, $vr5, $vr14
-	vsub.w	$vr14, $vr9, $vr12
-	vbitsel.v	$vr12, $vr12, $vr0, $vr13
-	vbitsel.v	$vr13, $vr14, $vr0, $vr13
-	vpickve2gr.w	$a7, $vr13, 0
-	vpickve2gr.w	$s0, $vr13, 1
-	vpickve2gr.w	$s7, $vr13, 2
-	vpickve2gr.w	$s8, $vr13, 3
-	vstelm.w	$vr12, $s4, -44, 0
-	vstelm.w	$vr12, $s4, -32, 1
-	vstelm.w	$vr12, $s4, -20, 2
-	vstelm.w	$vr12, $s4, -8, 3
-	stptr.w	$a7, $s4, -12332
-	stptr.w	$s0, $s4, -12320
-	stptr.w	$s7, $s4, -12308
-	stptr.w	$s8, $s4, -12296
-	vstelm.w	$vr12, $s4, -40, 0
-	vstelm.w	$vr12, $s4, -28, 1
-	vstelm.w	$vr12, $s4, -16, 2
-	vstelm.w	$vr12, $s4, -4, 3
-	stptr.w	$a7, $s4, -12328
-	stptr.w	$s0, $s4, -12316
-	stptr.w	$s7, $s4, -12304
-	stptr.w	$s8, $s4, -12292
-	vstelm.w	$vr12, $s4, -36, 0
-	vstelm.w	$vr12, $s4, -24, 1
-	vstelm.w	$vr12, $s4, -12, 2
-	vstelm.w	$vr12, $s4, 0, 3
-	stptr.w	$a7, $s4, -12324
-	stptr.w	$s0, $s4, -12312
-	stptr.w	$s7, $s4, -12300
-	stptr.w	$s8, $s4, -12288
+	vinsgr2vr.h	$vr13, $s8, 0
+	vinsgr2vr.h	$vr13, $s0, 1
+	vpickve2gr.h	$s0, $vr14, 2
+	and	$s0, $s0, $s7
+	vpickve2gr.h	$s8, $vr11, 2
+	ext.w.h	$s8, $s8
+	div.d	$s0, $s0, $s8
+	vinsgr2vr.h	$vr13, $s0, 2
+	vpickve2gr.h	$s0, $vr14, 3
+	and	$s0, $s0, $s7
+	vpickve2gr.h	$s7, $vr11, 3
+	ext.w.h	$s7, $s7
+	div.d	$s0, $s0, $s7
+	vinsgr2vr.h	$vr13, $s0, 3
+	vext2xv.w.h	$xr11, $xr13
+	vori.b	$vr13, $vr4, 0
+	vmadd.w	$vr13, $vr10, $vr11
+	vsrai.w	$vr11, $vr13, 6
+	addi.d	$s0, $zero, -1024
+	vreplgr2vr.w	$vr13, $s0
+	vmax.w	$vr11, $vr11, $vr13
+	vmin.w	$vr11, $vr11, $vr5
+	vsrai.w	$vr11, $vr11, 2
+	vadd.w	$vr13, $vr11, $vr6
+	vslt.wu	$vr13, $vr13, $vr7
+	vbitsel.v	$vr11, $vr11, $vr4, $vr13
+	vsub.w	$vr13, $vr8, $vr11
+	vbitsel.v	$vr11, $vr11, $vr0, $vr12
+	vbitsel.v	$vr12, $vr13, $vr0, $vr12
+	vpickve2gr.w	$s0, $vr12, 0
+	vpickve2gr.w	$s7, $vr12, 1
+	vpickve2gr.w	$s8, $vr12, 2
+	vpickve2gr.w	$ra, $vr12, 3
+	vstelm.w	$vr11, $s4, -44, 0
+	vstelm.w	$vr11, $s4, -32, 1
+	vstelm.w	$vr11, $s4, -20, 2
+	vstelm.w	$vr11, $s4, -8, 3
+	stptr.w	$s0, $s4, -12332
+	stptr.w	$s7, $s4, -12320
+	stptr.w	$s8, $s4, -12308
+	stptr.w	$ra, $s4, -12296
+	vstelm.w	$vr11, $s4, -40, 0
+	vstelm.w	$vr11, $s4, -28, 1
+	vstelm.w	$vr11, $s4, -16, 2
+	vstelm.w	$vr11, $s4, -4, 3
+	stptr.w	$s0, $s4, -12328
+	stptr.w	$s7, $s4, -12316
+	stptr.w	$s8, $s4, -12304
+	stptr.w	$ra, $s4, -12292
+	vstelm.w	$vr11, $s4, -36, 0
+	vstelm.w	$vr11, $s4, -24, 1
+	vstelm.w	$vr11, $s4, -12, 2
+	vstelm.w	$vr11, $s4, 0, 3
+	stptr.w	$s0, $s4, -12324
+	stptr.w	$s7, $s4, -12312
+	stptr.w	$s8, $s4, -12300
+	stptr.w	$ra, $s4, -12288
 	addi.d	$s5, $s5, 32
 	addi.d	$s2, $s2, -4
 	addi.d	$s4, $s4, 48
@@ -2250,11 +2249,11 @@ test_wp_B_slice:                        # @test_wp_B_slice
 	beq	$a6, $a1, .LBB3_11
 .LBB3_17:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB3_12 Depth=1
-	slli.d	$a7, $s4, 3
+	slli.d	$s5, $s4, 3
 	alsl.d	$s0, $s4, $a2, 3
 	sub.d	$s2, $a1, $s4
-	alsl.d	$a7, $s4, $a7, 2
-	add.d	$s4, $t1, $a7
+	alsl.d	$s4, $s4, $s5, 2
+	add.d	$s4, $t1, $s4
 	b	.LBB3_19
 	.p2align	4, , 16
 .LBB3_18:                               # %.split309.us314
@@ -2272,51 +2271,51 @@ test_wp_B_slice:                        # @test_wp_B_slice
 .LBB3_19:                               # %scalar.ph
                                         #   Parent Loop BB3_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a7, $s0, 0
-	ld.w	$s8, $a7, 4
+	ld.d	$s5, $s0, 0
+	ld.w	$s8, $s5, 4
 	move	$s5, $s1
 	move	$s7, $s1
 	beq	$s8, $s6, .LBB3_18
 # %bb.20:                               # %.split.us316
                                         #   in Loop: Header=BB3_19 Depth=2
-	sub.w	$a7, $s8, $s6
-	slt	$s5, $t2, $a7
-	maskeqz	$a7, $a7, $s5
-	masknez	$s5, $t2, $s5
-	or	$a7, $a7, $s5
-	slti	$s5, $a7, 127
-	maskeqz	$a7, $a7, $s5
-	masknez	$s5, $t3, $s5
-	or	$a7, $a7, $s5
-	bstrpick.d	$s5, $a7, 7, 7
-	add.d	$s5, $a7, $s5
-	ext.w.b	$s5, $s5
-	srai.d	$s5, $s5, 1
-	srai.d	$s7, $s5, 63
-	xor	$s5, $s5, $s7
-	sub.d	$s5, $s5, $s7
-	or	$s5, $s5, $t5
-	ext.w.h	$a7, $a7
-	div.d	$a7, $s5, $a7
-	ext.w.h	$a7, $a7
-	mul.d	$a7, $fp, $a7
-	addi.w	$a7, $a7, 32
-	srai.d	$a7, $a7, 6
-	addi.w	$s5, $zero, -1024
-	slt	$s7, $s5, $a7
-	maskeqz	$a7, $a7, $s7
+	sub.w	$s5, $s8, $s6
+	slt	$s7, $t2, $s5
+	maskeqz	$s5, $s5, $s7
+	masknez	$s7, $t2, $s7
+	or	$s5, $s5, $s7
+	slti	$s7, $s5, 127
+	maskeqz	$s5, $s5, $s7
+	masknez	$s7, $t3, $s7
+	or	$s5, $s5, $s7
+	bstrpick.d	$s7, $s5, 7, 7
+	add.d	$s7, $s5, $s7
+	ext.w.b	$s7, $s7
+	srai.d	$s7, $s7, 1
+	srai.d	$s8, $s7, 63
+	xor	$s7, $s7, $s8
+	sub.d	$s7, $s7, $s8
+	or	$s7, $s7, $t5
+	ext.w.h	$s5, $s5
+	div.d	$s5, $s7, $s5
+	ext.w.h	$s5, $s5
+	mul.d	$s5, $fp, $s5
+	addi.w	$s5, $s5, 32
+	srai.d	$s5, $s5, 6
+	addi.w	$s7, $zero, -1024
+	slt	$s8, $s7, $s5
+	maskeqz	$s5, $s5, $s8
+	masknez	$s7, $s7, $s8
+	or	$s5, $s5, $s7
+	slti	$s7, $s5, 1023
+	maskeqz	$s5, $s5, $s7
+	masknez	$s7, $t6, $s7
+	or	$s5, $s5, $s7
+	srai.d	$s5, $s5, 2
+	addi.d	$s7, $s5, -129
+	sltui	$s7, $s7, -193
 	masknez	$s5, $s5, $s7
-	or	$a7, $a7, $s5
-	slti	$s5, $a7, 1023
-	maskeqz	$a7, $a7, $s5
-	masknez	$s5, $t6, $s5
-	or	$a7, $a7, $s5
-	srai.d	$a7, $a7, 2
-	addi.d	$s5, $a7, -129
-	sltui	$s5, $s5, -193
-	masknez	$a7, $a7, $s5
-	maskeqz	$s5, $t7, $s5
-	or	$s5, $s5, $a7
+	maskeqz	$s7, $t7, $s7
+	or	$s5, $s7, $s5
 	sub.d	$s7, $t8, $s5
 	b	.LBB3_18
 .LBB3_21:                               # %._crit_edge313

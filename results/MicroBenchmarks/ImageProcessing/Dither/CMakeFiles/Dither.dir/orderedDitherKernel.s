@@ -344,40 +344,16 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	xvmsub.w	$xr6, $xr5, $xr2
 	xvld	$xr5, $t1, 0
 	xvpermi.q	$xr7, $xr6, 1
-	vpickve2gr.w	$t3, $vr7, 2
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr8, $t3, 0
-	vpickve2gr.w	$t3, $vr7, 3
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr8, $t3, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$t3, $vr7, 0
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr9, $t3, 0
-	vpickve2gr.w	$t3, $vr7, 1
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr9, $t3, 1
-	vpickve2gr.w	$t3, $vr6, 2
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr7, $t3, 0
-	vpickve2gr.w	$t3, $vr6, 3
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr7, $t3, 1
-	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$t3, $vr6, 0
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr10, $t3, 0
-	vpickve2gr.w	$t3, $vr6, 1
-	bstrpick.d	$t3, $t3, 31, 0
-	vinsgr2vr.d	$vr10, $t3, 1
-	xvpickve2gr.d	$t3, $xr10, 0
-	xvpickve2gr.d	$t4, $xr10, 1
-	xvpickve2gr.d	$t5, $xr7, 2
-	xvpickve2gr.d	$t6, $xr7, 3
-	xvpickve2gr.d	$t7, $xr9, 0
-	xvpickve2gr.d	$t8, $xr9, 1
-	xvpickve2gr.d	$s0, $xr8, 2
-	xvpickve2gr.d	$s1, $xr8, 3
+	vext2xv.du.wu	$xr7, $xr7
+	vext2xv.du.wu	$xr6, $xr6
+	xvpickve2gr.d	$t3, $xr6, 0
+	xvpickve2gr.d	$t4, $xr6, 1
+	xvpickve2gr.d	$t5, $xr6, 2
+	xvpickve2gr.d	$t6, $xr6, 3
+	xvpickve2gr.d	$t7, $xr7, 0
+	xvpickve2gr.d	$t8, $xr7, 1
+	xvpickve2gr.d	$s0, $xr7, 2
+	xvpickve2gr.d	$s1, $xr7, 3
 	mul.d	$t3, $t3, $a7
 	mul.d	$t4, $t4, $a7
 	mul.d	$t5, $t5, $a7

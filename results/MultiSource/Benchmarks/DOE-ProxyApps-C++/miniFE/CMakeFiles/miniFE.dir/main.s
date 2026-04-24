@@ -9656,18 +9656,18 @@ _ZN6miniFE16impose_dirichletINS_9CSRMatrixIdiiEENS_6VectorIdiiEEEEvNT_10ScalarTy
 	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a1, $a3, 16
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	vldi	$vr5, -912
+	vldi	$vr3, -912
 	movgr2fr.d	$fs1, $zero
-	xvldi	$xr6, -912
-	xvst	$xr6, $sp, 48                   # 32-byte Folded Spill
+	xvldi	$xr4, -912
+	xvst	$xr4, $sp, 48                   # 32-byte Folded Spill
 	b	.LBB12_5
 	.p2align	4, , 16
 .LBB12_4:                               # %_ZN6miniFE30zero_row_and_put_1_on_diagonalINS_9CSRMatrixIdiiEEEEvRT_NS3_17GlobalOrdinalTypeE.exit
                                         #   in Loop: Header=BB12_5 Depth=1
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPKSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
-	xvld	$xr6, $sp, 48                   # 32-byte Folded Reload
-	vldi	$vr5, -912
+	xvld	$xr4, $sp, 48                   # 32-byte Folded Reload
+	vldi	$vr3, -912
 	beq	$a0, $s3, .LBB12_26
 .LBB12_5:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_12 Depth 2
@@ -9764,27 +9764,11 @@ _ZN6miniFE16impose_dirichletINS_9CSRMatrixIdiiEENS_6VectorIdiiEEEEvNT_10ScalarTy
 	vld	$vr1, $a6, -16
 	vld	$vr2, $a6, 0
 	vseq.w	$vr1, $vr1, $vr0
-	vpickve2gr.w	$t0, $vr1, 2
-	vinsgr2vr.d	$vr3, $t0, 0
-	vpickve2gr.w	$t0, $vr1, 3
-	vinsgr2vr.d	$vr3, $t0, 1
-	vpickve2gr.w	$t0, $vr1, 0
-	vinsgr2vr.d	$vr4, $t0, 0
-	vpickve2gr.w	$t0, $vr1, 1
-	vinsgr2vr.d	$vr4, $t0, 1
-	xvpermi.q	$xr4, $xr3, 2
-	vseq.w	$vr1, $vr2, $vr0
-	vpickve2gr.w	$t0, $vr1, 2
-	vinsgr2vr.d	$vr2, $t0, 0
-	vpickve2gr.w	$t0, $vr1, 3
-	vinsgr2vr.d	$vr2, $t0, 1
-	vpickve2gr.w	$t0, $vr1, 0
-	vinsgr2vr.d	$vr3, $t0, 0
-	vpickve2gr.w	$t0, $vr1, 1
-	vinsgr2vr.d	$vr3, $t0, 1
-	xvpermi.q	$xr3, $xr2, 2
-	xvand.v	$xr1, $xr4, $xr6
-	xvand.v	$xr2, $xr3, $xr6
+	vext2xv.d.w	$xr1, $xr1
+	vseq.w	$vr2, $vr2, $vr0
+	vext2xv.d.w	$xr2, $xr2
+	xvand.v	$xr1, $xr1, $xr4
+	xvand.v	$xr2, $xr2, $xr4
 	xvst	$xr1, $a5, -32
 	xvst	$xr2, $a5, 0
 	addi.d	$a7, $a7, -8
@@ -9813,7 +9797,7 @@ _ZN6miniFE16impose_dirichletINS_9CSRMatrixIdiiEENS_6VectorIdiiEEEEvNT_10ScalarTy
 	xor	$a4, $a4, $a1
 	sltui	$a4, $a4, 1
 	movgr2cf	$fcc0, $a4
-	fsel	$fa0, $fs1, $fa5, $fcc0
+	fsel	$fa0, $fs1, $fa3, $fcc0
 	fst.d	$fa0, $a5, 0
 	addi.d	$a3, $a3, -1
 	addi.d	$a5, $a5, 8

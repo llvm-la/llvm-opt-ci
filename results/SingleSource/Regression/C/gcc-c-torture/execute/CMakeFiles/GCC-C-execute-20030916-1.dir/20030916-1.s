@@ -13,13 +13,17 @@ f:                                      # @f
 .Lfunc_end0:
 	.size	f, .Lfunc_end0-f
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function main
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function main
 .LCPI1_0:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
 	.text
 	.globl	main
 	.p2align	2
@@ -63,31 +67,32 @@ main:                                   # @main
 	xvst	$xr0, $sp, 936
 	xvst	$xr0, $sp, 968
 	xvst	$xr0, $sp, 1000
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 8
-	xvst	$xr0, $sp, 1000
+	xvrepli.b	$xr1, 0
+	xvst	$xr1, $sp, 8
+	xvst	$xr1, $sp, 1000
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI1_0)
 	addi.d	$a1, $sp, 8
-	vrepli.w	$vr1, 240
-	vrepli.w	$vr2, 1
+	xvrepli.w	$xr2, 240
 	ori	$a2, $zero, 1024
 	.p2align	4, , 16
 .LBB1_1:                                # %vector.body14
                                         # =>This Inner Loop Header: Depth=1
-	vldx	$vr3, $a0, $a1
-	vsubi.wu	$vr4, $vr0, 8
-	vslt.wu	$vr4, $vr4, $vr1
-	vand.v	$vr4, $vr4, $vr2
-	vseq.w	$vr3, $vr3, $vr4
-	vxori.b	$vr3, $vr3, 255
-	vmskltz.w	$vr3, $vr3
-	vpickve2gr.hu	$a3, $vr3, 0
+	xvldx	$xr3, $a0, $a1
+	xvsubi.wu	$xr4, $xr1, 8
+	xvslt.wu	$xr4, $xr4, $xr2
+	xvand.v	$xr4, $xr4, $xr0
+	xvseq.w	$xr3, $xr3, $xr4
+	xvxori.b	$xr3, $xr3, 255
+	xvmskltz.w	$xr3, $xr3
+	xvpickve2gr.wu	$a3, $xr3, 0
+	xvpickve2gr.wu	$a4, $xr3, 4
+	bstrins.d	$a3, $a4, 7, 4
 	bnez	$a3, .LBB1_4
 # %bb.2:                                # %vector.body.interim
                                         #   in Loop: Header=BB1_1 Depth=1
-	addi.d	$a0, $a0, 16
-	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$a0, $a0, 32
+	xvaddi.wu	$xr1, $xr1, 8
 	bne	$a0, $a2, .LBB1_1
 # %bb.3:                                # %middle.block17
 	move	$a0, $zero

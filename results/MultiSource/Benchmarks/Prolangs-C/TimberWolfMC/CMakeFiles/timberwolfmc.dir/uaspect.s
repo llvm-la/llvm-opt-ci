@@ -339,9 +339,9 @@ uaspect:                                # @uaspect
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a2, $a0, 0
 	ld.d	$a1, $s1, 0
-	ld.d	$t1, $sp, 136                   # 8-byte Folded Reload
-	move	$a0, $t1
-	xvld	$xr9, $sp, 80                   # 32-byte Folded Reload
+	ld.d	$t5, $sp, 136                   # 8-byte Folded Reload
+	move	$a0, $t5
+	xvld	$xr11, $sp, 80                  # 32-byte Folded Reload
 	beq	$a2, $a1, .LBB0_16
 # %bb.13:                               # %.preheader747.preheader
 	addi.d	$a0, $a2, 4
@@ -363,7 +363,7 @@ uaspect:                                # @uaspect
 	st.w	$a0, $a1, 0
 	slli.d	$a0, $a0, 2
 	stx.w	$s6, $a1, $a0
-	move	$a0, $t1
+	move	$a0, $t5
 	.p2align	4, , 16
 .LBB0_16:                               # %.lr.ph758
                                         # =>This Inner Loop Header: Depth=1
@@ -383,10 +383,10 @@ uaspect:                                # @uaspect
 	ffint.d.w	$fa2, $fa2
 	movgr2fr.w	$fa3, $a4
 	ffint.d.w	$fa3, $fa3
-	fmul.d	$fa0, $ft1, $fa0
-	fmul.d	$fa1, $ft1, $fa1
-	fdiv.d	$fa2, $fa2, $ft1
-	fdiv.d	$fa3, $fa3, $ft1
+	fmul.d	$fa0, $ft3, $fa0
+	fmul.d	$fa1, $ft3, $fa1
+	fdiv.d	$fa2, $fa2, $ft3
+	fdiv.d	$fa3, $fa3, $ft3
 	ftintrz.w.d	$fa4, $fa0
 	movfr2gr.s	$a1, $fa4
 	ftintrz.w.d	$fa4, $fa1
@@ -445,7 +445,7 @@ uaspect:                                # @uaspect
 	sub.d	$a1, $a1, $s3
 	movgr2fr.w	$fa2, $a1
 	ffint.d.w	$fa2, $fa2
-	fdiv.d	$fa2, $fa2, $ft1
+	fdiv.d	$fa2, $fa2, $ft3
 	ftintrz.w.d	$fa3, $fa2
 	movfr2gr.s	$a1, $fa3
 	movgr2fr.w	$fa3, $a1
@@ -460,7 +460,7 @@ uaspect:                                # @uaspect
 	sub.d	$a1, $a2, $s2
 	movgr2fr.w	$fa2, $a1
 	ffint.d.w	$fa2, $fa2
-	fmul.d	$fa2, $ft1, $fa2
+	fmul.d	$fa2, $ft3, $fa2
 	ftintrz.w.d	$fa3, $fa2
 	movfr2gr.s	$a1, $fa3
 	movgr2fr.w	$fa3, $a1
@@ -477,94 +477,162 @@ uaspect:                                # @uaspect
 	ld.w	$a0, $fp, 128
 	blez	$a0, .LBB0_27
 # %bb.21:                               # %.lr.ph764.preheader
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 8
 	ori	$a1, $zero, 1
 	bltu	$a0, $a2, .LBB0_25
 # %bb.22:                               # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a2, $a1, 2
-	srli.d	$a3, $a0, 2
+	bstrpick.d	$a1, $a0, 30, 3
+	slli.d	$a2, $a1, 3
+	srli.d	$a3, $a0, 3
 	ori	$a1, $zero, 1
-	bstrins.d	$a1, $a3, 30, 2
-	vreplgr2vr.w	$vr1, $s3
-	xvreplve0.d	$xr2, $xr9
-	vreplgr2vr.w	$vr3, $s5
-	vreplgr2vr.w	$vr4, $s2
-	vreplgr2vr.w	$vr5, $s4
+	bstrins.d	$a1, $a3, 30, 3
+	xvreplgr2vr.w	$xr1, $s3
+	xvreplve0.d	$xr2, $xr11
+	xvreplgr2vr.w	$xr3, $s5
+	xvreplgr2vr.w	$xr4, $s2
+	xvreplgr2vr.w	$xr5, $s4
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$a3, $a3, 40
+	addi.d	$a3, $a3, 72
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB0_23:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, -16
-	ld.w	$a6, $a3, 0
-	ld.w	$a7, $a3, 16
-	ld.w	$t0, $a3, 32
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	vsub.w	$vr6, $vr6, $vr1
+	ld.w	$a5, $a3, -48
+	ld.w	$a6, $a3, -32
+	ld.w	$a7, $a3, -16
+	ld.w	$t0, $a3, 0
+	ld.w	$t1, $a3, 16
+	ld.w	$t2, $a3, 32
+	ld.w	$t3, $a3, 48
+	ld.w	$t4, $a3, 64
+	vinsgr2vr.w	$vr6, $t1, 0
+	vinsgr2vr.w	$vr6, $t2, 1
+	vinsgr2vr.w	$vr6, $t3, 2
+	vinsgr2vr.w	$vr6, $t4, 3
+	vinsgr2vr.w	$vr7, $a5, 0
+	vinsgr2vr.w	$vr7, $a6, 1
+	vinsgr2vr.w	$vr7, $a7, 2
+	vinsgr2vr.w	$vr7, $t0, 3
+	xvpermi.q	$xr7, $xr6, 2
+	xvsub.w	$xr6, $xr7, $xr1
+	vext2xv.d.w	$xr7, $xr6
+	xvffint.d.l	$xr7, $xr7
+	xvpermi.q	$xr6, $xr6, 1
 	vext2xv.d.w	$xr6, $xr6
 	xvffint.d.l	$xr6, $xr6
 	xvfdiv.d	$xr6, $xr6, $xr2
-	xvftintrz.l.d	$xr7, $xr6
-	xvpermi.d	$xr8, $xr7, 238
-	xvpickev.w	$xr7, $xr8, $xr7
-	vext2xv.d.w	$xr8, $xr7
-	xvffint.d.l	$xr8, $xr8
-	xvfsub.d	$xr6, $xr6, $xr8
+	xvfdiv.d	$xr7, $xr7, $xr2
+	xvftintrz.l.d	$xr8, $xr7
+	xvpermi.d	$xr9, $xr8, 238
+	xvpickev.w	$xr8, $xr9, $xr8
+	xvftintrz.l.d	$xr9, $xr6
+	xvpermi.d	$xr10, $xr9, 238
+	xvpickev.w	$xr9, $xr10, $xr9
+	vext2xv.d.w	$xr10, $xr8
+	xvpermi.q	$xr8, $xr9, 2
+	xvffint.d.l	$xr10, $xr10
+	vext2xv.d.w	$xr9, $xr9
+	xvffint.d.l	$xr9, $xr9
+	xvfsub.d	$xr6, $xr6, $xr9
+	xvfsub.d	$xr7, $xr7, $xr10
+	xvfcmp.cle.d	$xr7, $xr0, $xr7
+	xvpickve2gr.d	$a5, $xr7, 0
+	vinsgr2vr.w	$vr9, $a5, 0
+	xvpickve2gr.d	$a5, $xr7, 1
+	vinsgr2vr.w	$vr9, $a5, 1
+	xvpickve2gr.d	$a5, $xr7, 2
+	vinsgr2vr.w	$vr9, $a5, 2
+	xvpickve2gr.d	$a5, $xr7, 3
+	vinsgr2vr.w	$vr9, $a5, 3
 	xvfcmp.cle.d	$xr6, $xr0, $xr6
 	xvpickve2gr.d	$a5, $xr6, 0
-	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr7, $a5, 0
 	xvpickve2gr.d	$a5, $xr6, 1
-	vinsgr2vr.w	$vr8, $a5, 1
+	vinsgr2vr.w	$vr7, $a5, 1
 	xvpickve2gr.d	$a5, $xr6, 2
-	vinsgr2vr.w	$vr8, $a5, 2
+	vinsgr2vr.w	$vr7, $a5, 2
 	xvpickve2gr.d	$a5, $xr6, 3
-	vinsgr2vr.w	$vr8, $a5, 3
-	vsub.w	$vr6, $vr7, $vr3
-	vsub.w	$vr6, $vr6, $vr8
-	vstelm.w	$vr6, $a3, -24, 0
-	vstelm.w	$vr6, $a3, -8, 1
-	vstelm.w	$vr6, $a3, 8, 2
-	vstelm.w	$vr6, $a3, 24, 3
-	ld.w	$a5, $a3, -12
-	ld.w	$a6, $a3, 4
-	ld.w	$a7, $a3, 20
-	ld.w	$t0, $a3, 36
-	vinsgr2vr.w	$vr6, $a5, 0
-	vinsgr2vr.w	$vr6, $a6, 1
-	vinsgr2vr.w	$vr6, $a7, 2
-	vinsgr2vr.w	$vr6, $t0, 3
-	vsub.w	$vr6, $vr6, $vr4
+	vinsgr2vr.w	$vr7, $a5, 3
+	xvpermi.q	$xr9, $xr7, 2
+	xvsub.w	$xr6, $xr8, $xr3
+	xvsub.w	$xr6, $xr6, $xr9
+	xvstelm.w	$xr6, $a3, -56, 0
+	xvstelm.w	$xr6, $a3, -40, 1
+	xvstelm.w	$xr6, $a3, -24, 2
+	xvstelm.w	$xr6, $a3, -8, 3
+	xvstelm.w	$xr6, $a3, 8, 4
+	xvstelm.w	$xr6, $a3, 24, 5
+	xvstelm.w	$xr6, $a3, 40, 6
+	xvstelm.w	$xr6, $a3, 56, 7
+	ld.w	$a5, $a3, -44
+	ld.w	$a6, $a3, -28
+	ld.w	$a7, $a3, -12
+	ld.w	$t0, $a3, 4
+	ld.w	$t1, $a3, 20
+	ld.w	$t2, $a3, 36
+	ld.w	$t3, $a3, 52
+	ld.w	$t4, $a3, 68
+	vinsgr2vr.w	$vr6, $t1, 0
+	vinsgr2vr.w	$vr6, $t2, 1
+	vinsgr2vr.w	$vr6, $t3, 2
+	vinsgr2vr.w	$vr6, $t4, 3
+	vinsgr2vr.w	$vr7, $a5, 0
+	vinsgr2vr.w	$vr7, $a6, 1
+	vinsgr2vr.w	$vr7, $a7, 2
+	vinsgr2vr.w	$vr7, $t0, 3
+	xvpermi.q	$xr7, $xr6, 2
+	xvsub.w	$xr6, $xr7, $xr4
+	vext2xv.d.w	$xr7, $xr6
+	xvffint.d.l	$xr7, $xr7
+	xvpermi.q	$xr6, $xr6, 1
 	vext2xv.d.w	$xr6, $xr6
 	xvffint.d.l	$xr6, $xr6
 	xvfmul.d	$xr6, $xr2, $xr6
-	xvftintrz.l.d	$xr7, $xr6
-	xvpermi.d	$xr8, $xr7, 238
-	xvpickev.w	$xr7, $xr8, $xr7
-	vext2xv.d.w	$xr8, $xr7
-	xvffint.d.l	$xr8, $xr8
-	xvfsub.d	$xr6, $xr6, $xr8
+	xvfmul.d	$xr7, $xr2, $xr7
+	xvftintrz.l.d	$xr8, $xr7
+	xvpermi.d	$xr9, $xr8, 238
+	xvpickev.w	$xr8, $xr9, $xr8
+	xvftintrz.l.d	$xr9, $xr6
+	xvpermi.d	$xr10, $xr9, 238
+	xvpickev.w	$xr9, $xr10, $xr9
+	vext2xv.d.w	$xr10, $xr8
+	xvpermi.q	$xr8, $xr9, 2
+	xvffint.d.l	$xr10, $xr10
+	vext2xv.d.w	$xr9, $xr9
+	xvffint.d.l	$xr9, $xr9
+	xvfsub.d	$xr6, $xr6, $xr9
+	xvfsub.d	$xr7, $xr7, $xr10
+	xvfcmp.cle.d	$xr7, $xr0, $xr7
+	xvpickve2gr.d	$a5, $xr7, 0
+	vinsgr2vr.w	$vr9, $a5, 0
+	xvpickve2gr.d	$a5, $xr7, 1
+	vinsgr2vr.w	$vr9, $a5, 1
+	xvpickve2gr.d	$a5, $xr7, 2
+	vinsgr2vr.w	$vr9, $a5, 2
+	xvpickve2gr.d	$a5, $xr7, 3
+	vinsgr2vr.w	$vr9, $a5, 3
 	xvfcmp.cle.d	$xr6, $xr0, $xr6
 	xvpickve2gr.d	$a5, $xr6, 0
-	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr7, $a5, 0
 	xvpickve2gr.d	$a5, $xr6, 1
-	vinsgr2vr.w	$vr8, $a5, 1
+	vinsgr2vr.w	$vr7, $a5, 1
 	xvpickve2gr.d	$a5, $xr6, 2
-	vinsgr2vr.w	$vr8, $a5, 2
+	vinsgr2vr.w	$vr7, $a5, 2
 	xvpickve2gr.d	$a5, $xr6, 3
-	vinsgr2vr.w	$vr8, $a5, 3
-	vsub.w	$vr6, $vr7, $vr5
-	vsub.w	$vr6, $vr6, $vr8
-	vstelm.w	$vr6, $a3, -20, 0
-	vstelm.w	$vr6, $a3, -4, 1
-	vstelm.w	$vr6, $a3, 12, 2
-	vstelm.w	$vr6, $a3, 28, 3
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 64
+	vinsgr2vr.w	$vr7, $a5, 3
+	xvpermi.q	$xr9, $xr7, 2
+	xvsub.w	$xr6, $xr8, $xr5
+	xvsub.w	$xr6, $xr6, $xr9
+	xvstelm.w	$xr6, $a3, -52, 0
+	xvstelm.w	$xr6, $a3, -36, 1
+	xvstelm.w	$xr6, $a3, -20, 2
+	xvstelm.w	$xr6, $a3, -4, 3
+	xvstelm.w	$xr6, $a3, 12, 4
+	xvstelm.w	$xr6, $a3, 28, 5
+	xvstelm.w	$xr6, $a3, 44, 6
+	xvstelm.w	$xr6, $a3, 60, 7
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 128
 	bnez	$a4, .LBB0_23
 # %bb.24:                               # %middle.block
 	beq	$a2, $a0, .LBB0_27
@@ -583,7 +651,7 @@ uaspect:                                # @uaspect
 	sub.d	$a2, $a2, $s3
 	movgr2fr.w	$fa1, $a2
 	ffint.d.w	$fa1, $fa1
-	fdiv.d	$fa1, $fa1, $ft1
+	fdiv.d	$fa1, $fa1, $ft3
 	ftintrz.w.d	$fa2, $fa1
 	movfr2gr.s	$a2, $fa2
 	movgr2fr.w	$fa2, $a2
@@ -598,7 +666,7 @@ uaspect:                                # @uaspect
 	sub.d	$a2, $a3, $s2
 	movgr2fr.w	$fa1, $a2
 	ffint.d.w	$fa1, $fa1
-	fmul.d	$fa1, $ft1, $fa1
+	fmul.d	$fa1, $ft3, $fa1
 	ftintrz.w.d	$fa2, $fa1
 	movfr2gr.s	$a2, $fa2
 	movgr2fr.w	$fa2, $a2
@@ -617,7 +685,7 @@ uaspect:                                # @uaspect
 	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
 	beqz	$s8, .LBB0_68
 # %bb.28:
-	vld	$vr0, $t1, 56
+	vld	$vr0, $t5, 56
 	vpickve2gr.w	$a0, $vr0, 2
 	vpickve2gr.w	$a1, $vr0, 3
 	sub.d	$a2, $a1, $a0

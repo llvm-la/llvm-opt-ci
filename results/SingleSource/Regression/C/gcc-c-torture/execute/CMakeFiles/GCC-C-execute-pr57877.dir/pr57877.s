@@ -45,14 +45,14 @@ main:                                   # @main
 	ext.w.h	$t0, $t1
 	xor	$t0, $t0, $a3
 	sltui	$t0, $t0, 1
-	sltu	$t2, $t0, $a1
+	sltu	$t3, $t0, $a1
 	st.w	$a5, $a0, 0
 	addi.w	$a5, $a5, 1
-	st.w	$t2, $a6, %pc_lo12(e)
+	st.w	$t3, $a6, %pc_lo12(e)
 	bne	$a5, $a7, .LBB0_6
 .LBB0_7:                                # %foo.exit
 	pcalau12i	$a0, %pc_hi20(d)
-	andi	$a1, $t2, 1
+	andi	$a1, $t3, 1
 	st.h	$t1, $a0, %pc_lo12(d)
 	bnez	$a1, .LBB0_2
 .LBB0_8:
@@ -99,26 +99,27 @@ main:                                   # @main
 	xvreplgr2vr.d	$xr0, $a1
 	bgeu	$a5, $t0, .LBB0_17
 # %bb.16:
-	move	$t3, $zero
+	move	$t2, $zero
 	move	$t0, $a6
 	b	.LBB0_21
 .LBB0_17:                               # %vector.ph
 	ld.w	$t1, $a2, 0
 	andi	$t4, $a5, 12
-	move	$t3, $a5
-	bstrins.d	$t3, $zero, 3, 0
-	add.d	$t0, $a6, $t3
-	ext.w.h	$t2, $t1
-	xor	$t2, $t2, $a3
-	sltui	$t2, $t2, 1
-	xvreplgr2vr.d	$xr1, $t2
+	move	$t2, $a5
+	bstrins.d	$t2, $zero, 3, 0
+	add.d	$t0, $a6, $t2
+	ext.w.h	$t3, $t1
+	xor	$t3, $t3, $a3
+	sltui	$t3, $t3, 1
+	vreplgr2vr.w	$vr1, $t3
+	vext2xv.du.wu	$xr1, $xr1
 	xvslt.du	$xr1, $xr1, $xr0
-	xvpickve2gr.d	$t2, $xr1, 3
-	andi	$t5, $t2, 1
+	xvpickve2gr.d	$t3, $xr1, 3
+	andi	$t5, $t3, 1
 	st.w	$t1, $a4, 0
 	st.w	$t5, $a7, 0
 	move	$t5, $a6
-	move	$t6, $t3
+	move	$t6, $t2
 	.p2align	4, , 16
 .LBB0_18:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -127,7 +128,7 @@ main:                                   # @main
 	bnez	$t6, .LBB0_18
 # %bb.19:                               # %middle.block
 	st.w	$t5, $a0, 0
-	beq	$a5, $t3, .LBB0_7
+	beq	$a5, $t2, .LBB0_7
 # %bb.20:                               # %vec.epilog.iter.check
 	beqz	$t4, .LBB0_5
 .LBB0_21:                               # %vec.epilog.ph
@@ -139,13 +140,14 @@ main:                                   # @main
 	ext.w.h	$a6, $t1
 	xor	$a6, $a6, $a3
 	sltui	$a6, $a6, 1
-	xvreplgr2vr.d	$xr1, $a6
+	vreplgr2vr.w	$vr1, $a6
+	vext2xv.du.wu	$xr1, $xr1
 	xvslt.du	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$t2, $xr0, 3
-	andi	$a6, $t2, 1
+	xvpickve2gr.d	$t3, $xr0, 3
+	andi	$a6, $t3, 1
 	st.w	$t1, $a4, 0
 	st.w	$a6, $a7, 0
-	sub.d	$a6, $t3, $t4
+	sub.d	$a6, $t2, $t4
 	.p2align	4, , 16
 .LBB0_22:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1

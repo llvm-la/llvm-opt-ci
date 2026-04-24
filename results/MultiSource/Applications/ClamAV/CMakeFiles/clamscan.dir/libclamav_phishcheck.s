@@ -2681,37 +2681,43 @@ cleanupURL:                             # @cleanupURL
 	bnez	$t0, .LBB10_178
 # %bb.171:                              # %pred.store.continue122
                                         #   in Loop: Header=BB10_170 Depth=1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_179
 .LBB10_172:                             # %pred.store.continue124
                                         #   in Loop: Header=BB10_170 Depth=1
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_180
 .LBB10_173:                             # %pred.store.continue126
                                         #   in Loop: Header=BB10_170 Depth=1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_181
 .LBB10_174:                             # %pred.store.continue128
                                         #   in Loop: Header=BB10_170 Depth=1
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_182
 .LBB10_175:                             # %pred.store.continue130
                                         #   in Loop: Header=BB10_170 Depth=1
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_183
 .LBB10_176:                             # %pred.store.continue132
                                         #   in Loop: Header=BB10_170 Depth=1
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_184
 .LBB10_177:                             # %pred.store.continue134
                                         #   in Loop: Header=BB10_170 Depth=1
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_169
@@ -2720,43 +2726,49 @@ cleanupURL:                             # @cleanupURL
 .LBB10_178:                             # %pred.store.if121
                                         #   in Loop: Header=BB10_170 Depth=1
 	st.b	$a5, $a7, -1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_172
 .LBB10_179:                             # %pred.store.if123
                                         #   in Loop: Header=BB10_170 Depth=1
 	st.b	$a5, $a7, 0
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_173
 .LBB10_180:                             # %pred.store.if125
                                         #   in Loop: Header=BB10_170 Depth=1
 	st.b	$a5, $a7, 1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_174
 .LBB10_181:                             # %pred.store.if127
                                         #   in Loop: Header=BB10_170 Depth=1
 	st.b	$a5, $a7, 2
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_175
 .LBB10_182:                             # %pred.store.if129
                                         #   in Loop: Header=BB10_170 Depth=1
 	st.b	$a5, $a7, 3
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_176
 .LBB10_183:                             # %pred.store.if131
                                         #   in Loop: Header=BB10_170 Depth=1
 	st.b	$a5, $a7, 4
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_177
 .LBB10_184:                             # %pred.store.if133
                                         #   in Loop: Header=BB10_170 Depth=1
 	st.b	$a5, $a7, 5
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_169
@@ -3200,37 +3212,43 @@ cleanupURL:                             # @cleanupURL
 	bnez	$t0, .LBB10_272
 # %bb.265:                              # %pred.store.continue269
                                         #   in Loop: Header=BB10_264 Depth=1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_273
 .LBB10_266:                             # %pred.store.continue271
                                         #   in Loop: Header=BB10_264 Depth=1
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_274
 .LBB10_267:                             # %pred.store.continue273
                                         #   in Loop: Header=BB10_264 Depth=1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_275
 .LBB10_268:                             # %pred.store.continue275
                                         #   in Loop: Header=BB10_264 Depth=1
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_276
 .LBB10_269:                             # %pred.store.continue277
                                         #   in Loop: Header=BB10_264 Depth=1
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_277
 .LBB10_270:                             # %pred.store.continue279
                                         #   in Loop: Header=BB10_264 Depth=1
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_278
 .LBB10_271:                             # %pred.store.continue281
                                         #   in Loop: Header=BB10_264 Depth=1
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_263
@@ -3239,43 +3257,49 @@ cleanupURL:                             # @cleanupURL
 .LBB10_272:                             # %pred.store.if268
                                         #   in Loop: Header=BB10_264 Depth=1
 	st.b	$a2, $a7, -1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_266
 .LBB10_273:                             # %pred.store.if270
                                         #   in Loop: Header=BB10_264 Depth=1
 	st.b	$a2, $a7, 0
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_267
 .LBB10_274:                             # %pred.store.if272
                                         #   in Loop: Header=BB10_264 Depth=1
 	st.b	$a2, $a7, 1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_268
 .LBB10_275:                             # %pred.store.if274
                                         #   in Loop: Header=BB10_264 Depth=1
 	st.b	$a2, $a7, 2
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_269
 .LBB10_276:                             # %pred.store.if276
                                         #   in Loop: Header=BB10_264 Depth=1
 	st.b	$a2, $a7, 3
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_270
 .LBB10_277:                             # %pred.store.if278
                                         #   in Loop: Header=BB10_264 Depth=1
 	st.b	$a2, $a7, 4
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_271
 .LBB10_278:                             # %pred.store.if280
                                         #   in Loop: Header=BB10_264 Depth=1
 	st.b	$a2, $a7, 5
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_263
@@ -3719,37 +3743,43 @@ cleanupURL:                             # @cleanupURL
 	bnez	$t0, .LBB10_366
 # %bb.359:                              # %pred.store.continue417
                                         #   in Loop: Header=BB10_358 Depth=1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_367
 .LBB10_360:                             # %pred.store.continue419
                                         #   in Loop: Header=BB10_358 Depth=1
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_368
 .LBB10_361:                             # %pred.store.continue421
                                         #   in Loop: Header=BB10_358 Depth=1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_369
 .LBB10_362:                             # %pred.store.continue423
                                         #   in Loop: Header=BB10_358 Depth=1
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_370
 .LBB10_363:                             # %pred.store.continue425
                                         #   in Loop: Header=BB10_358 Depth=1
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_371
 .LBB10_364:                             # %pred.store.continue427
                                         #   in Loop: Header=BB10_358 Depth=1
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_372
 .LBB10_365:                             # %pred.store.continue429
                                         #   in Loop: Header=BB10_358 Depth=1
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_357
@@ -3758,43 +3788,49 @@ cleanupURL:                             # @cleanupURL
 .LBB10_366:                             # %pred.store.if416
                                         #   in Loop: Header=BB10_358 Depth=1
 	st.b	$a2, $a7, -1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_360
 .LBB10_367:                             # %pred.store.if418
                                         #   in Loop: Header=BB10_358 Depth=1
 	st.b	$a2, $a7, 0
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_361
 .LBB10_368:                             # %pred.store.if420
                                         #   in Loop: Header=BB10_358 Depth=1
 	st.b	$a2, $a7, 1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_362
 .LBB10_369:                             # %pred.store.if422
                                         #   in Loop: Header=BB10_358 Depth=1
 	st.b	$a2, $a7, 2
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_363
 .LBB10_370:                             # %pred.store.if424
                                         #   in Loop: Header=BB10_358 Depth=1
 	st.b	$a2, $a7, 3
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_364
 .LBB10_371:                             # %pred.store.if426
                                         #   in Loop: Header=BB10_358 Depth=1
 	st.b	$a2, $a7, 4
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_365
 .LBB10_372:                             # %pred.store.if428
                                         #   in Loop: Header=BB10_358 Depth=1
 	st.b	$a2, $a7, 5
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_357
@@ -4238,37 +4274,43 @@ cleanupURL:                             # @cleanupURL
 	bnez	$t0, .LBB10_460
 # %bb.453:                              # %pred.store.continue565
                                         #   in Loop: Header=BB10_452 Depth=1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_461
 .LBB10_454:                             # %pred.store.continue567
                                         #   in Loop: Header=BB10_452 Depth=1
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_462
 .LBB10_455:                             # %pred.store.continue569
                                         #   in Loop: Header=BB10_452 Depth=1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_463
 .LBB10_456:                             # %pred.store.continue571
                                         #   in Loop: Header=BB10_452 Depth=1
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_464
 .LBB10_457:                             # %pred.store.continue573
                                         #   in Loop: Header=BB10_452 Depth=1
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_465
 .LBB10_458:                             # %pred.store.continue575
                                         #   in Loop: Header=BB10_452 Depth=1
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB10_466
 .LBB10_459:                             # %pred.store.continue577
                                         #   in Loop: Header=BB10_452 Depth=1
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_451
@@ -4277,43 +4319,49 @@ cleanupURL:                             # @cleanupURL
 .LBB10_460:                             # %pred.store.if564
                                         #   in Loop: Header=BB10_452 Depth=1
 	st.b	$a2, $a7, -1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$t0, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 1
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_454
 .LBB10_461:                             # %pred.store.if566
                                         #   in Loop: Header=BB10_452 Depth=1
 	st.b	$a2, $a7, 0
-	vpickve2gr.h	$t0, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 2
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_455
 .LBB10_462:                             # %pred.store.if568
                                         #   in Loop: Header=BB10_452 Depth=1
 	st.b	$a2, $a7, 1
-	vpickve2gr.h	$t0, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 3
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_456
 .LBB10_463:                             # %pred.store.if570
                                         #   in Loop: Header=BB10_452 Depth=1
 	st.b	$a2, $a7, 2
-	vpickve2gr.h	$t0, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 4
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_457
 .LBB10_464:                             # %pred.store.if572
                                         #   in Loop: Header=BB10_452 Depth=1
 	st.b	$a2, $a7, 3
-	vpickve2gr.h	$t0, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 5
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_458
 .LBB10_465:                             # %pred.store.if574
                                         #   in Loop: Header=BB10_452 Depth=1
 	st.b	$a2, $a7, 4
-	vpickve2gr.h	$t0, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$t0, $vr2, 6
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_459
 .LBB10_466:                             # %pred.store.if576
                                         #   in Loop: Header=BB10_452 Depth=1
 	st.b	$a2, $a7, 5
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$t0, $vr1, 7
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB10_451
@@ -4759,37 +4807,43 @@ cleanupURL:                             # @cleanupURL
 	bnez	$a7, .LBB10_555
 # %bb.548:                              # %pred.store.continue713
                                         #   in Loop: Header=BB10_547 Depth=1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$a7, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 1
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB10_556
 .LBB10_549:                             # %pred.store.continue715
                                         #   in Loop: Header=BB10_547 Depth=1
-	vpickve2gr.h	$a7, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 2
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB10_557
 .LBB10_550:                             # %pred.store.continue717
                                         #   in Loop: Header=BB10_547 Depth=1
-	vpickve2gr.h	$a7, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 3
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB10_558
 .LBB10_551:                             # %pred.store.continue719
                                         #   in Loop: Header=BB10_547 Depth=1
-	vpickve2gr.h	$a7, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 4
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB10_559
 .LBB10_552:                             # %pred.store.continue721
                                         #   in Loop: Header=BB10_547 Depth=1
-	vpickve2gr.h	$a7, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 5
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB10_560
 .LBB10_553:                             # %pred.store.continue723
                                         #   in Loop: Header=BB10_547 Depth=1
-	vpickve2gr.h	$a7, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 6
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB10_561
 .LBB10_554:                             # %pred.store.continue725
                                         #   in Loop: Header=BB10_547 Depth=1
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$a7, $vr1, 7
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_546
@@ -4798,43 +4852,49 @@ cleanupURL:                             # @cleanupURL
 .LBB10_555:                             # %pred.store.if712
                                         #   in Loop: Header=BB10_547 Depth=1
 	st.b	$a2, $a6, -1
-	vilvl.b	$vr1, $vr1, $vr1
-	vpickve2gr.h	$a7, $vr1, 1
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 1
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_549
 .LBB10_556:                             # %pred.store.if714
                                         #   in Loop: Header=BB10_547 Depth=1
 	st.b	$a2, $a6, 0
-	vpickve2gr.h	$a7, $vr1, 2
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 2
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_550
 .LBB10_557:                             # %pred.store.if716
                                         #   in Loop: Header=BB10_547 Depth=1
 	st.b	$a2, $a6, 1
-	vpickve2gr.h	$a7, $vr1, 3
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 3
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_551
 .LBB10_558:                             # %pred.store.if718
                                         #   in Loop: Header=BB10_547 Depth=1
 	st.b	$a2, $a6, 2
-	vpickve2gr.h	$a7, $vr1, 4
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 4
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_552
 .LBB10_559:                             # %pred.store.if720
                                         #   in Loop: Header=BB10_547 Depth=1
 	st.b	$a2, $a6, 3
-	vpickve2gr.h	$a7, $vr1, 5
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 5
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_553
 .LBB10_560:                             # %pred.store.if722
                                         #   in Loop: Header=BB10_547 Depth=1
 	st.b	$a2, $a6, 4
-	vpickve2gr.h	$a7, $vr1, 6
+	vext2xv.h.b	$xr2, $xr1
+	vpickve2gr.h	$a7, $vr2, 6
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_554
 .LBB10_561:                             # %pred.store.if724
                                         #   in Loop: Header=BB10_547 Depth=1
 	st.b	$a2, $a6, 5
+	vext2xv.h.b	$xr1, $xr1
 	vpickve2gr.h	$a7, $vr1, 7
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB10_546

@@ -81,34 +81,34 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	move	$s1, $a1
+	move	$s2, $a1
 	move	$s0, $a0
 	addi.d	$a0, $sp, 16
 	ori	$a2, $zero, 512
-	addi.d	$s2, $sp, 16
+	addi.d	$s1, $sp, 16
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s1, 8
+	ld.w	$a0, $s2, 8
 	lu12i.w	$a1, -524284
 	ori	$a2, $zero, 100
 	ori	$fp, $a1, 5
-	blt	$a2, $a0, .LBB2_62
+	blt	$a2, $a0, .LBB2_60
 # %bb.1:
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s2, 0
 	move	$a3, $zero
 	ori	$a1, $zero, 99
 	.p2align	4, , 16
 .LBB2_2:                                # =>This Inner Loop Header: Depth=1
 	move	$a2, $a3
 	ldx.bu	$a3, $a0, $a3
-	stx.b	$a3, $a2, $s2
+	stx.b	$a3, $a2, $s1
 	beqz	$a3, .LBB2_4
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
 	addi.d	$a3, $a2, 1
 	bne	$a2, $a1, .LBB2_2
 .LBB2_4:                                # %_ZN8NArchive4NTarL9MyStrNCpyEPcPKci.exit
-	ld.wu	$a1, $s1, 24
+	ld.wu	$a1, $s2, 24
 	addi.d	$a0, $sp, 528
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL15MakeOctalStringEy)
 	jirl	$ra, $ra, 0
@@ -116,7 +116,7 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	ori	$a0, $zero, 8
 	bge	$s3, $a0, .LBB2_30
 # %bb.5:
-	addi.d	$s2, $sp, 116
+	addi.d	$s1, $sp, 116
 	ori	$a0, $zero, 7
 	sub.w	$s4, $a0, $s3
 	beq	$s3, $a0, .LBB2_7
@@ -127,13 +127,13 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	maskeqz	$a1, $s4, $a1
 	or	$a2, $a1, $a0
 	ori	$a1, $zero, 32
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB2_7:                                # %._crit_edge.i
 	ld.d	$a0, $sp, 528
 	move	$a1, $zero
-	add.d	$a2, $s2, $s4
+	add.d	$a2, $s1, $s4
 	.p2align	4, , 16
 .LBB2_8:                                # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a3, $a0, $a1
@@ -147,9 +147,9 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	jirl	$ra, $ra, 0
 .LBB2_11:                               # %_ZN8NArchive4NTarL16MakeOctalString8EPcj.exit
 	ori	$a0, $zero, 7
-	blt	$a0, $s3, .LBB2_62
+	blt	$a0, $s3, .LBB2_60
 # %bb.12:
-	ld.wu	$a1, $s1, 28
+	ld.wu	$a1, $s2, 28
 	addi.d	$a0, $sp, 528
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL15MakeOctalStringEy)
 	jirl	$ra, $ra, 0
@@ -157,7 +157,7 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	ori	$a0, $zero, 8
 	bge	$s3, $a0, .LBB2_31
 # %bb.13:
-	addi.d	$s2, $sp, 124
+	addi.d	$s1, $sp, 124
 	ori	$a0, $zero, 7
 	sub.w	$s4, $a0, $s3
 	beq	$s3, $a0, .LBB2_15
@@ -168,13 +168,13 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	maskeqz	$a1, $s4, $a1
 	or	$a2, $a1, $a0
 	ori	$a1, $zero, 32
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB2_15:                               # %._crit_edge.i67
 	ld.d	$a0, $sp, 528
 	move	$a1, $zero
-	add.d	$a2, $s2, $s4
+	add.d	$a2, $s1, $s4
 	.p2align	4, , 16
 .LBB2_16:                               # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a3, $a0, $a1
@@ -188,9 +188,9 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	jirl	$ra, $ra, 0
 .LBB2_19:                               # %_ZN8NArchive4NTarL16MakeOctalString8EPcj.exit71
 	ori	$a0, $zero, 7
-	blt	$a0, $s3, .LBB2_62
+	blt	$a0, $s3, .LBB2_60
 # %bb.20:
-	ld.wu	$a1, $s1, 32
+	ld.wu	$a1, $s2, 32
 	addi.d	$a0, $sp, 528
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL15MakeOctalStringEy)
 	jirl	$ra, $ra, 0
@@ -198,7 +198,7 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	ori	$a0, $zero, 8
 	bge	$s3, $a0, .LBB2_32
 # %bb.21:
-	addi.d	$s2, $sp, 132
+	addi.d	$s1, $sp, 132
 	ori	$a0, $zero, 7
 	sub.w	$s4, $a0, $s3
 	beq	$s3, $a0, .LBB2_23
@@ -209,13 +209,13 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	maskeqz	$a1, $s4, $a1
 	or	$a2, $a1, $a0
 	ori	$a1, $zero, 32
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB2_23:                               # %._crit_edge.i78
 	ld.d	$a0, $sp, 528
 	move	$a1, $zero
-	add.d	$a2, $s2, $s4
+	add.d	$a2, $s1, $s4
 	.p2align	4, , 16
 .LBB2_24:                               # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a3, $a0, $a1
@@ -229,11 +229,11 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	jirl	$ra, $ra, 0
 .LBB2_27:                               # %_ZN8NArchive4NTarL16MakeOctalString8EPcj.exit82
 	ori	$a0, $zero, 7
-	blt	$a0, $s3, .LBB2_62
+	blt	$a0, $s3, .LBB2_60
 # %bb.28:
-	ld.d	$s2, $s1, 16
+	ld.d	$s1, $s2, 16
 	addi.d	$a0, $sp, 528
-	move	$a1, $s2
+	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL15MakeOctalStringEy)
 	jirl	$ra, $ra, 0
 	ld.w	$s3, $sp, 536
@@ -242,22 +242,22 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 # %bb.29:                               # %thread-pre-split.i
 	ori	$a0, $zero, 128
 	st.w	$a0, $sp, 140
-	srli.d	$a0, $s2, 56
+	srli.d	$a0, $s1, 56
 	st.b	$a0, $sp, 144
-	srli.d	$a0, $s2, 48
+	srli.d	$a0, $s1, 48
 	st.b	$a0, $sp, 145
-	srli.d	$a0, $s2, 40
+	srli.d	$a0, $s1, 40
 	st.b	$a0, $sp, 146
-	srli.d	$a0, $s2, 32
+	srli.d	$a0, $s1, 32
 	st.b	$a0, $sp, 147
-	srli.d	$a0, $s2, 24
+	srli.d	$a0, $s1, 24
 	st.b	$a0, $sp, 148
-	srli.d	$a0, $s2, 16
+	srli.d	$a0, $s1, 16
 	st.b	$a0, $sp, 149
 	ld.d	$s4, $sp, 528
-	srli.d	$a0, $s2, 8
+	srli.d	$a0, $s1, 8
 	st.b	$a0, $sp, 150
-	st.b	$s2, $sp, 151
+	st.b	$s1, $sp, 151
 	b	.LBB2_36
 .LBB2_30:                               # %._Z12MyStringCopyIcEPT_S1_PKS0_.exit_crit_edge.i
 	ld.d	$a0, $sp, 528
@@ -272,7 +272,7 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	bnez	$a0, .LBB2_26
 	b	.LBB2_27
 .LBB2_33:
-	addi.d	$s2, $sp, 140
+	addi.d	$s1, $sp, 140
 	ori	$a0, $zero, 12
 	sub.w	$s5, $a0, $s3
 	beq	$s3, $a0, .LBB2_35
@@ -283,12 +283,12 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	maskeqz	$a1, $s5, $a1
 	or	$a2, $a1, $a0
 	ori	$a1, $zero, 32
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB2_35:                               # %._crit_edge.i86
 	ld.d	$s4, $sp, 528
-	add.d	$a0, $s2, $s5
+	add.d	$a0, $s1, $s5
 	move	$a1, $s4
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memmove)
@@ -300,14 +300,14 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB2_38:                               # %_ZN8NArchive4NTarL17MakeOctalString12EPcy.exit
-	ld.wu	$s3, $s1, 36
+	ld.wu	$s3, $s2, 36
 	addi.d	$a0, $sp, 528
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL15MakeOctalStringEy)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $sp, 536
+	ld.w	$s1, $sp, 536
 	ori	$a0, $zero, 13
-	blt	$s2, $a0, .LBB2_40
+	blt	$s1, $a0, .LBB2_40
 # %bb.39:                               # %thread-pre-split.i91
 	ori	$a0, $zero, 128
 	st.b	$a0, $sp, 152
@@ -320,8 +320,8 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 .LBB2_40:
 	addi.d	$s3, $sp, 152
 	ori	$a0, $zero, 12
-	sub.w	$s5, $a0, $s2
-	beq	$s2, $a0, .LBB2_42
+	sub.w	$s5, $a0, $s1
+	beq	$s1, $a0, .LBB2_42
 # %bb.41:                               # %.lr.ph.preheader.i88
 	ori	$a0, $zero, 1
 	slt	$a1, $a0, $s5
@@ -336,7 +336,7 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	ld.d	$s4, $sp, 528
 	add.d	$a0, $s3, $s5
 	move	$a1, $s4
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB2_43:
@@ -350,16 +350,16 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	ld.d	$a0, $a0, %got_pc_lo12(_ZN8NArchive4NTar11NFileHeader15kCheckSumBlanksE)
 	ld.d	$a0, $a0, 0
 	ld.d	$a0, $a0, 0
-	ld.b	$a1, $s1, 104
-	ld.w	$a2, $s1, 56
+	ld.b	$a1, $s2, 104
+	ld.w	$a2, $s2, 56
 	st.d	$a0, $sp, 164
 	ori	$a0, $zero, 99
 	st.b	$a1, $sp, 172
-	blt	$a0, $a2, .LBB2_62
+	blt	$a0, $a2, .LBB2_60
 # %bb.46:                               # %.preheader.i.preheader
-	ld.d	$a0, $s1, 48
+	ld.d	$a0, $s2, 48
 	move	$a1, $zero
-	addi.d	$s2, $sp, 164
+	addi.d	$s1, $sp, 164
 	addi.d	$a2, $sp, 16
 	.p2align	4, , 16
 .LBB2_47:                               # %.preheader.i
@@ -370,13 +370,13 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB2_47
 # %bb.48:
-	ld.d	$a0, $s1, 96
-	ld.w	$a1, $s1, 72
+	ld.d	$a0, $s2, 96
+	ld.w	$a1, $s2, 72
 	ori	$a2, $zero, 31
 	st.d	$a0, $sp, 273
-	blt	$a2, $a1, .LBB2_62
+	blt	$a2, $a1, .LBB2_60
 # %bb.49:                               # %.preheader.i101.preheader
-	ld.d	$a0, $s1, 64
+	ld.d	$a0, $s2, 64
 	move	$a1, $zero
 	addi.d	$a2, $sp, 16
 	.p2align	4, , 16
@@ -388,11 +388,11 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB2_50
 # %bb.51:
-	ld.w	$a0, $s1, 88
+	ld.w	$a0, $s2, 88
 	ori	$a1, $zero, 31
-	blt	$a1, $a0, .LBB2_62
+	blt	$a1, $a0, .LBB2_60
 # %bb.52:                               # %.preheader.i108.preheader
-	ld.d	$a0, $s1, 80
+	ld.d	$a0, $s2, 80
 	move	$a1, $zero
 	addi.d	$a2, $sp, 16
 	.p2align	4, , 16
@@ -404,63 +404,297 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	addi.d	$a1, $a1, 1
 	bnez	$a3, .LBB2_53
 # %bb.54:
-	ld.bu	$a0, $s1, 105
+	ld.bu	$a0, $s2, 105
 	beqz	$a0, .LBB2_56
 # %bb.55:
-	ld.w	$a1, $s1, 40
+	ld.w	$a1, $s2, 40
 	addi.d	$a0, $sp, 345
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL16MakeOctalString8EPcj)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB2_62
+	beqz	$a0, .LBB2_60
 .LBB2_56:
-	ld.bu	$a0, $s1, 106
+	ld.bu	$a0, $s2, 106
 	beqz	$a0, .LBB2_58
 # %bb.57:
-	ld.w	$a1, $s1, 44
+	ld.w	$a1, $s2, 44
 	addi.d	$a0, $sp, 353
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL16MakeOctalString8EPcj)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB2_62
-.LBB2_58:                               # %vector.body.preheader
-	move	$a0, $zero
-	vrepli.b	$vr0, 0
-	addi.d	$a1, $sp, 16
-	ori	$a2, $zero, 512
-	vori.b	$vr1, $vr0, 0
-	vori.b	$vr2, $vr0, 0
-.LBB2_59:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a1, $a0
-	ldx.w	$a4, $a0, $a1
-	ld.w	$a3, $a3, 4
-	vinsgr2vr.w	$vr3, $a4, 0
-	vinsgr2vr.w	$vr4, $a3, 0
-	vilvl.b	$vr3, $vr0, $vr3
-	vilvl.h	$vr3, $vr0, $vr3
-	vilvl.b	$vr4, $vr0, $vr4
-	vilvl.h	$vr4, $vr0, $vr4
-	vadd.w	$vr1, $vr1, $vr3
-	addi.d	$a0, $a0, 8
-	vadd.w	$vr2, $vr2, $vr4
-	bne	$a0, $a2, .LBB2_59
-# %bb.60:                               # %middle.block
-	vadd.w	$vr0, $vr2, $vr1
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a0, $vr0, 0
+	beqz	$a0, .LBB2_60
+.LBB2_58:                               # %vector.body
+	ld.d	$a0, $sp, 16
+	ld.d	$a1, $sp, 24
+	vinsgr2vr.d	$vr0, $a0, 0
+	vinsgr2vr.d	$vr1, $a1, 0
+	ld.d	$a0, $sp, 32
+	ld.d	$a1, $sp, 40
+	vext2xv.wu.bu	$xr0, $xr0
+	vext2xv.wu.bu	$xr1, $xr1
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 48
+	ld.d	$a1, $sp, 56
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 64
+	ld.d	$a1, $sp, 72
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 80
+	ld.d	$a1, $sp, 88
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 96
+	ld.d	$a1, $sp, 104
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 112
+	ld.d	$a1, $sp, 120
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 128
+	ld.d	$a1, $sp, 136
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 144
+	ld.d	$a1, $sp, 152
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 160
+	ld.d	$a1, $sp, 168
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 176
+	ld.d	$a1, $sp, 184
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 192
+	ld.d	$a1, $sp, 200
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 208
+	ld.d	$a1, $sp, 216
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 224
+	ld.d	$a1, $sp, 232
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 240
+	ld.d	$a1, $sp, 248
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 256
+	ld.d	$a1, $sp, 264
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 272
+	ld.d	$a1, $sp, 280
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 288
+	ld.d	$a1, $sp, 296
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 304
+	ld.d	$a1, $sp, 312
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 320
+	ld.d	$a1, $sp, 328
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 336
+	ld.d	$a1, $sp, 344
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 352
+	ld.d	$a1, $sp, 360
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 368
+	ld.d	$a1, $sp, 376
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 384
+	ld.d	$a1, $sp, 392
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 400
+	ld.d	$a1, $sp, 408
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 416
+	ld.d	$a1, $sp, 424
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 432
+	ld.d	$a1, $sp, 440
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 448
+	ld.d	$a1, $sp, 456
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 464
+	ld.d	$a1, $sp, 472
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 480
+	ld.d	$a1, $sp, 488
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	ld.d	$a0, $sp, 496
+	ld.d	$a1, $sp, 504
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr2, $a0, 0
+	vinsgr2vr.d	$vr3, $a1, 0
+	ld.d	$a0, $sp, 512
+	vext2xv.wu.bu	$xr2, $xr2
+	xvadd.w	$xr0, $xr0, $xr2
+	ld.d	$a1, $sp, 520
+	vinsgr2vr.d	$vr2, $a0, 0
+	vext2xv.wu.bu	$xr3, $xr3
+	xvadd.w	$xr1, $xr1, $xr3
+	vinsgr2vr.d	$vr3, $a1, 0
+	vext2xv.wu.bu	$xr2, $xr2
+	vext2xv.wu.bu	$xr3, $xr3
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
+	xvadd.w	$xr0, $xr1, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a0, $xr0, 0
 	addi.w	$a1, $a0, 0
-	move	$a0, $s2
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NTarL16MakeOctalString8EPcj)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB2_62
-# %bb.61:
+	beqz	$a0, .LBB2_60
+# %bb.59:
 	ld.d	$a0, $s0, 0
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 512
 	pcaddu18i	$ra, %call36(_Z11WriteStreamP20ISequentialOutStreamPKvm)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-.LBB2_62:                               # %_ZN8NArchive4NTarL10CopyStringEPcRK11CStringBaseIcEi.exit
+.LBB2_60:                               # %_ZN8NArchive4NTarL10CopyStringEPcRK11CStringBaseIcEi.exit
 	move	$a0, $fp
 	ld.d	$s5, $sp, 544                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 552                   # 8-byte Folded Reload

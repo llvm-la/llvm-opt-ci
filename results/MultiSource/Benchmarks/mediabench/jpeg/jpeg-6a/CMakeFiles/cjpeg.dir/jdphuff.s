@@ -1399,50 +1399,75 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	add.d	$s8, $a3, $a0
 	b	.LBB5_42
 .LBB5_60:                               # %.loopexit
-	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
-	blez	$a7, .LBB5_68
+	ld.d	$t4, $sp, 56                    # 8-byte Folded Reload
+	blez	$t4, .LBB5_68
 # %bb.61:                               # %.lr.ph250.preheader
-	ori	$a0, $zero, 1
-	bne	$a7, $a0, .LBB5_63
+	ori	$a0, $zero, 8
+	bgeu	$t4, $a0, .LBB5_63
 # %bb.62:
-	move	$a1, $a7
+	move	$a0, $t4
 	b	.LBB5_66
 .LBB5_63:                               # %vector.ph
-	bstrpick.d	$a1, $a7, 30, 1
-	slli.d	$a2, $a1, 1
-	andi	$a1, $a7, 1
-	addi.d	$a3, $sp, 80
-	alsl.d	$a3, $a7, $a3, 2
-	addi.d	$a3, $a3, -4
-	move	$a4, $a2
+	bstrpick.d	$a0, $t4, 30, 3
+	slli.d	$a1, $a0, 3
+	andi	$a0, $t4, 7
+	addi.d	$a2, $sp, 80
+	alsl.d	$a2, $t4, $a2, 2
+	addi.d	$a2, $a2, -32
+	move	$a3, $a1
 	.p2align	4, , 16
 .LBB5_64:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, 0
-	ld.w	$a6, $a3, -4
+	xvld	$xr0, $a2, 0
+	xvpermi.d	$xr0, $xr0, 78
+	xvshuf4i.w	$xr0, $xr0, 27
+	xvpermi.q	$xr1, $xr0, 1
+	vext2xv.d.w	$xr1, $xr1
+	vext2xv.d.w	$xr0, $xr0
+	xvpickve2gr.d	$a4, $xr0, 0
+	xvpickve2gr.d	$a5, $xr0, 1
+	xvpickve2gr.d	$a6, $xr0, 2
+	xvpickve2gr.d	$a7, $xr0, 3
+	xvpickve2gr.d	$t0, $xr1, 0
+	xvpickve2gr.d	$t1, $xr1, 1
+	xvpickve2gr.d	$t2, $xr1, 2
+	xvpickve2gr.d	$t3, $xr1, 3
+	slli.d	$a4, $a4, 1
 	slli.d	$a5, $a5, 1
 	slli.d	$a6, $a6, 1
+	slli.d	$a7, $a7, 1
+	slli.d	$t0, $t0, 1
+	slli.d	$t1, $t1, 1
+	slli.d	$t2, $t2, 1
+	slli.d	$t3, $t3, 1
+	stx.h	$zero, $s2, $a4
 	stx.h	$zero, $s2, $a5
 	stx.h	$zero, $s2, $a6
-	addi.d	$a4, $a4, -2
+	stx.h	$zero, $s2, $a7
+	stx.h	$zero, $s2, $t0
+	stx.h	$zero, $s2, $t1
+	stx.h	$zero, $s2, $t2
+	stx.h	$zero, $s2, $t3
 	addi.d	$a3, $a3, -8
-	bnez	$a4, .LBB5_64
+	addi.d	$a2, $a2, -32
+	bnez	$a3, .LBB5_64
 # %bb.65:                               # %middle.block
-	beq	$a2, $a7, .LBB5_68
+	beq	$a1, $t4, .LBB5_68
 .LBB5_66:                               # %.lr.ph250.preheader344
-	addi.d	$a2, $a1, 1
-	addi.d	$a3, $sp, 80
-	alsl.d	$a1, $a1, $a3, 2
-	addi.d	$a1, $a1, -4
+	addi.d	$a1, $a0, 1
+	addi.d	$a2, $sp, 80
+	alsl.d	$a0, $a0, $a2, 2
+	addi.d	$a0, $a0, -4
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB5_67:                               # %.lr.ph250
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $a1, 0
+	ld.w	$a3, $a0, 0
 	slli.d	$a3, $a3, 1
 	stx.h	$zero, $s2, $a3
-	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, -4
-	bltu	$a0, $a2, .LBB5_67
+	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, -4
+	bltu	$a2, $a1, .LBB5_67
 .LBB5_68:
 	move	$a0, $zero
 .LBB5_69:                               # %process_restart.exit.thread

@@ -174,32 +174,16 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
                                         # =>This Inner Loop Header: Depth=1
 	xvmod.w	$xr2, $xr1, $xr0
 	xvpermi.q	$xr3, $xr2, 1
-	vpickve2gr.w	$t0, $vr3, 2
-	vinsgr2vr.d	$vr4, $t0, 0
-	vpickve2gr.w	$t0, $vr3, 3
-	vinsgr2vr.d	$vr4, $t0, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$t0, $vr3, 0
-	vinsgr2vr.d	$vr5, $t0, 0
-	vpickve2gr.w	$t0, $vr3, 1
-	vinsgr2vr.d	$vr5, $t0, 1
-	vpickve2gr.w	$t0, $vr2, 2
-	vinsgr2vr.d	$vr3, $t0, 0
-	vpickve2gr.w	$t0, $vr2, 3
-	vinsgr2vr.d	$vr3, $t0, 1
-	xvpermi.q	$xr3, $xr3, 2
-	vpickve2gr.w	$t0, $vr2, 0
-	vinsgr2vr.d	$vr6, $t0, 0
-	vpickve2gr.w	$t0, $vr2, 1
-	vinsgr2vr.d	$vr6, $t0, 1
-	xvpickve2gr.d	$t0, $xr6, 0
-	xvpickve2gr.d	$t1, $xr6, 1
-	xvpickve2gr.d	$t2, $xr3, 2
-	xvpickve2gr.d	$t3, $xr3, 3
-	xvpickve2gr.d	$t4, $xr5, 0
-	xvpickve2gr.d	$t5, $xr5, 1
-	xvpickve2gr.d	$t6, $xr4, 2
-	xvpickve2gr.d	$t7, $xr4, 3
+	vext2xv.d.w	$xr3, $xr3
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$t0, $xr2, 0
+	xvpickve2gr.d	$t1, $xr2, 1
+	xvpickve2gr.d	$t2, $xr2, 2
+	xvpickve2gr.d	$t3, $xr2, 3
+	xvpickve2gr.d	$t4, $xr3, 0
+	xvpickve2gr.d	$t5, $xr3, 1
+	xvpickve2gr.d	$t6, $xr3, 2
+	xvpickve2gr.d	$t7, $xr3, 3
 	slli.d	$t0, $t0, 2
 	slli.d	$t1, $t1, 2
 	slli.d	$t2, $t2, 2

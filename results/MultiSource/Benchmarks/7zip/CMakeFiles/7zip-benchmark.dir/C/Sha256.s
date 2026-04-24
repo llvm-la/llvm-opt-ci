@@ -81,61 +81,7 @@ Sha256_Update:                          # @Sha256_Update
 .Lfunc_end1:
 	.size	Sha256_Update, .Lfunc_end1-Sha256_Update
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function Sha256_WriteByteBlock
-.LCPI2_0:
-	.byte	1                               # 0x1
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	4                               # 0x4
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	9                               # 0x9
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	12                              # 0xc
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_1:
-	.byte	0                               # 0x0
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	5                               # 0x5
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	8                               # 0x8
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	13                              # 0xd
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_2:
-	.byte	2                               # 0x2
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	6                               # 0x6
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	10                              # 0xa
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	14                              # 0xe
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-	.text
-	.p2align	2
+	.p2align	2                               # -- Begin function Sha256_WriteByteBlock
 	.prefalign	5, .Lfunc_end2, nop
 	.type	Sha256_WriteByteBlock,@function
 Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
@@ -143,69 +89,168 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	addi.d	$sp, $sp, -192
 	st.d	$fp, $sp, 184                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 176                   # 8-byte Folded Spill
-	vld	$vr2, $a0, 40
-	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
-	vld	$vr1, $a1, %pc_lo12(.LCPI2_0)
-	vrepli.b	$vr0, 0
-	vshuf.b	$vr3, $vr0, $vr2, $vr1
-	pcalau12i	$a1, %pc_hi20(.LCPI2_1)
-	vld	$vr4, $a1, %pc_lo12(.LCPI2_1)
+	xvld	$xr2, $a0, 40
+	vpickve2gr.b	$a1, $vr2, 1
+	vinsgr2vr.b	$vr0, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 4
+	vinsgr2vr.b	$vr0, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 9
+	vinsgr2vr.b	$vr0, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 12
+	vinsgr2vr.b	$vr0, $a1, 3
+	xvpermi.d	$xr3, $xr2, 14
+	vpickve2gr.b	$a1, $vr3, 1
+	vinsgr2vr.b	$vr0, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 4
+	vinsgr2vr.b	$vr0, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 9
+	vinsgr2vr.b	$vr0, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 12
+	vinsgr2vr.b	$vr0, $a1, 7
+	vext2xv.wu.bu	$xr1, $xr0
 	ori	$a1, $zero, 16
 	lu32i.d	$a1, 24
-	vreplgr2vr.d	$vr5, $a1
-	vsll.w	$vr3, $vr3, $vr5
-	vshuf.b	$vr6, $vr0, $vr2, $vr4
-	pcalau12i	$a1, %pc_hi20(.LCPI2_2)
-	vld	$vr7, $a1, %pc_lo12(.LCPI2_2)
+	xvreplgr2vr.d	$xr0, $a1
+	xvsll.w	$xr4, $xr1, $xr0
+	vpickve2gr.b	$a1, $vr2, 0
+	vinsgr2vr.b	$vr1, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 5
+	vinsgr2vr.b	$vr1, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 8
+	vinsgr2vr.b	$vr1, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 13
+	vinsgr2vr.b	$vr1, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 0
+	vinsgr2vr.b	$vr1, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 5
+	vinsgr2vr.b	$vr1, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 8
+	vinsgr2vr.b	$vr1, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 13
+	vinsgr2vr.b	$vr1, $a1, 7
+	vext2xv.wu.bu	$xr5, $xr1
 	ori	$a1, $zero, 24
 	lu32i.d	$a1, 16
-	vreplgr2vr.d	$vr8, $a1
-	vsll.w	$vr6, $vr6, $vr8
-	vor.v	$vr3, $vr6, $vr3
-	vshuf.b	$vr6, $vr0, $vr2, $vr7
-	vslli.w	$vr6, $vr6, 8
-	vor.v	$vr3, $vr3, $vr6
-	vld	$vr6, $a0, 56
-	vsrli.w	$vr2, $vr2, 24
-	vor.v	$vr2, $vr3, $vr2
-	vst	$vr2, $sp, 16
-	vshuf.b	$vr2, $vr0, $vr6, $vr1
-	vsll.w	$vr2, $vr2, $vr5
-	vshuf.b	$vr3, $vr0, $vr6, $vr4
-	vsll.w	$vr3, $vr3, $vr8
-	vor.v	$vr2, $vr3, $vr2
-	vshuf.b	$vr3, $vr0, $vr6, $vr7
-	vslli.w	$vr3, $vr3, 8
-	vor.v	$vr2, $vr2, $vr3
-	vld	$vr3, $a0, 72
-	vsrli.w	$vr6, $vr6, 24
-	vor.v	$vr2, $vr2, $vr6
-	vst	$vr2, $sp, 32
-	vshuf.b	$vr2, $vr0, $vr3, $vr1
-	vsll.w	$vr2, $vr2, $vr5
-	vshuf.b	$vr6, $vr0, $vr3, $vr4
-	vsll.w	$vr6, $vr6, $vr8
-	vor.v	$vr2, $vr6, $vr2
-	vshuf.b	$vr6, $vr0, $vr3, $vr7
-	vslli.w	$vr6, $vr6, 8
-	vor.v	$vr2, $vr2, $vr6
-	vld	$vr6, $a0, 88
-	vsrli.w	$vr3, $vr3, 24
-	vor.v	$vr2, $vr2, $vr3
-	vst	$vr2, $sp, 48
-	vshuf.b	$vr1, $vr0, $vr6, $vr1
-	vsll.w	$vr1, $vr1, $vr5
-	vshuf.b	$vr2, $vr0, $vr6, $vr4
-	vsll.w	$vr2, $vr2, $vr8
-	vor.v	$vr1, $vr2, $vr1
-	vshuf.b	$vr0, $vr0, $vr6, $vr7
-	vslli.w	$vr0, $vr0, 8
-	vor.v	$vr0, $vr1, $vr0
-	xvld	$xr1, $a0, 0
-	vsrli.w	$vr2, $vr6, 24
-	vor.v	$vr0, $vr0, $vr2
-	vst	$vr0, $sp, 64
-	xvst	$xr1, $sp, 80
+	xvreplgr2vr.d	$xr1, $a1
+	xvsll.w	$xr5, $xr5, $xr1
+	xvor.v	$xr4, $xr5, $xr4
+	vpickve2gr.b	$a1, $vr2, 2
+	vinsgr2vr.b	$vr5, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 6
+	vinsgr2vr.b	$vr5, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 10
+	vinsgr2vr.b	$vr5, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 14
+	vinsgr2vr.b	$vr5, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 2
+	vinsgr2vr.b	$vr5, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 6
+	vinsgr2vr.b	$vr5, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 10
+	vinsgr2vr.b	$vr5, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 14
+	vinsgr2vr.b	$vr5, $a1, 7
+	vext2xv.wu.bu	$xr5, $xr5
+	xvslli.w	$xr5, $xr5, 8
+	xvor.v	$xr4, $xr4, $xr5
+	vpickve2gr.b	$a1, $vr2, 3
+	vinsgr2vr.b	$vr5, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 7
+	vinsgr2vr.b	$vr5, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 11
+	vinsgr2vr.b	$vr5, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 15
+	vinsgr2vr.b	$vr5, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 3
+	vinsgr2vr.b	$vr5, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 7
+	vinsgr2vr.b	$vr5, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 11
+	vinsgr2vr.b	$vr5, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 15
+	vinsgr2vr.b	$vr5, $a1, 7
+	xvld	$xr2, $a0, 72
+	vext2xv.wu.bu	$xr3, $xr5
+	xvor.v	$xr3, $xr4, $xr3
+	xvst	$xr3, $sp, 16
+	vpickve2gr.b	$a1, $vr2, 1
+	vinsgr2vr.b	$vr4, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 4
+	vinsgr2vr.b	$vr4, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 9
+	vinsgr2vr.b	$vr4, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 12
+	vinsgr2vr.b	$vr4, $a1, 3
+	xvpermi.d	$xr3, $xr2, 14
+	vpickve2gr.b	$a1, $vr3, 1
+	vinsgr2vr.b	$vr4, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 4
+	vinsgr2vr.b	$vr4, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 9
+	vinsgr2vr.b	$vr4, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 12
+	vinsgr2vr.b	$vr4, $a1, 7
+	vext2xv.wu.bu	$xr4, $xr4
+	xvsll.w	$xr0, $xr4, $xr0
+	vpickve2gr.b	$a1, $vr2, 0
+	vinsgr2vr.b	$vr4, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 5
+	vinsgr2vr.b	$vr4, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 8
+	vinsgr2vr.b	$vr4, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 13
+	vinsgr2vr.b	$vr4, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 0
+	vinsgr2vr.b	$vr4, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 5
+	vinsgr2vr.b	$vr4, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 8
+	vinsgr2vr.b	$vr4, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 13
+	vinsgr2vr.b	$vr4, $a1, 7
+	vext2xv.wu.bu	$xr4, $xr4
+	xvsll.w	$xr1, $xr4, $xr1
+	xvor.v	$xr0, $xr1, $xr0
+	vpickve2gr.b	$a1, $vr2, 2
+	vinsgr2vr.b	$vr1, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 6
+	vinsgr2vr.b	$vr1, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 10
+	vinsgr2vr.b	$vr1, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 14
+	vinsgr2vr.b	$vr1, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 2
+	vinsgr2vr.b	$vr1, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 6
+	vinsgr2vr.b	$vr1, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 10
+	vinsgr2vr.b	$vr1, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 14
+	vinsgr2vr.b	$vr1, $a1, 7
+	vext2xv.wu.bu	$xr1, $xr1
+	xvslli.w	$xr1, $xr1, 8
+	xvor.v	$xr0, $xr0, $xr1
+	vpickve2gr.b	$a1, $vr2, 3
+	vinsgr2vr.b	$vr1, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 7
+	vinsgr2vr.b	$vr1, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 11
+	vinsgr2vr.b	$vr1, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 15
+	vinsgr2vr.b	$vr1, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 3
+	vinsgr2vr.b	$vr1, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 7
+	vinsgr2vr.b	$vr1, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 11
+	vinsgr2vr.b	$vr1, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 15
+	vinsgr2vr.b	$vr1, $a1, 7
+	xvld	$xr2, $a0, 0
+	vext2xv.wu.bu	$xr1, $xr1
+	xvor.v	$xr0, $xr0, $xr1
+	xvst	$xr0, $sp, 48
+	xvst	$xr2, $sp, 80
 	pcalau12i	$a1, %pc_hi20(K)
 	addi.d	$a1, $a1, %pc_lo12(K)
 	move	$a7, $zero

@@ -4004,8 +4004,7 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	vinsgr2vr.w	$vr1, $s4, 1
 	vshuf4i.w	$vr1, $vr1, 16
 	vslli.d	$vr1, $vr1, 32
-	vrepli.b	$vr2, 0
-	vilvl.w	$vr0, $vr2, $vr0
+	vext2xv.du.wu	$xr0, $xr0
 	vor.v	$vr0, $vr1, $vr0
 	vst	$vr0, $sp, 80
 	slli.d	$a0, $s3, 2
@@ -4015,7 +4014,8 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fld.s	$fs3, $s0, 52
 	fld.s	$fa1, $s0, 56
 	fst.s	$fa1, $sp, 64                   # 4-byte Folded Spill
-	vst	$vr2, $sp, 80
+	vrepli.b	$vr1, 0
+	vst	$vr1, $sp, 80
 	fstx.s	$fa0, $a0, $a1
 	addi.w	$a0, $s3, 1
 	lu12i.w	$a1, 349525
@@ -4028,7 +4028,7 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	sub.w	$a0, $a0, $a1
 	slli.d	$a0, $a0, 2
 	ld.d	$a1, $s1, 0
-	vst	$vr2, $sp, 240
+	vst	$vr1, $sp, 240
 	addi.d	$a2, $sp, 240
 	fstx.s	$fs0, $a0, $a2
 	ld.d	$a1, $a1, 32

@@ -81,44 +81,41 @@ calculate_bm_table:                     # @calculate_bm_table
 	ld.d	$a4, $a2, 0
 	xvxori.b	$xr2, $xr1, 255
 	xvadd.w	$xr2, $xr0, $xr2
-	andi	$a5, $a4, 255
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vext2xv.du.bu	$xr4, $xr4
+	vext2xv.du.bu	$xr3, $xr3
+	xvpickve2gr.d	$a4, $xr3, 0
+	xvpickve2gr.d	$a5, $xr3, 1
+	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a7, $xr3, 3
+	xvpickve2gr.d	$t0, $xr4, 0
+	xvpickve2gr.d	$t1, $xr4, 1
+	xvpickve2gr.d	$t2, $xr4, 2
+	xvpickve2gr.d	$t3, $xr4, 3
+	alsl.d	$a4, $a4, $a0, 2
 	alsl.d	$a5, $a5, $a0, 2
-	srli.d	$a6, $a4, 6
-	andi	$a6, $a6, 1020
-	add.d	$a6, $a0, $a6
-	srli.d	$a7, $a4, 14
-	andi	$a7, $a7, 1020
-	add.d	$a7, $a0, $a7
-	srli.d	$t0, $a4, 22
-	andi	$t0, $t0, 1020
-	add.d	$t0, $a0, $t0
-	srli.d	$t1, $a4, 30
-	andi	$t1, $t1, 1020
-	add.d	$t1, $a0, $t1
-	srli.d	$t2, $a4, 38
-	andi	$t2, $t2, 1020
-	add.d	$t2, $a0, $t2
-	srli.d	$t3, $a4, 46
-	andi	$t3, $t3, 1020
-	add.d	$t3, $a0, $t3
-	srli.d	$a4, $a4, 54
-	andi	$a4, $a4, 1020
-	add.d	$a4, $a0, $a4
-	xvstelm.w	$xr2, $a5, 0, 0
-	xvstelm.w	$xr2, $a6, 0, 1
-	xvstelm.w	$xr2, $a7, 0, 2
-	xvstelm.w	$xr2, $t0, 0, 3
-	xvstelm.w	$xr2, $t1, 0, 4
-	xvstelm.w	$xr2, $t2, 0, 5
-	xvstelm.w	$xr2, $t3, 0, 6
-	xvstelm.w	$xr2, $a4, 0, 7
+	alsl.d	$a6, $a6, $a0, 2
+	alsl.d	$a7, $a7, $a0, 2
+	alsl.d	$t0, $t0, $a0, 2
+	alsl.d	$t1, $t1, $a0, 2
+	alsl.d	$t2, $t2, $a0, 2
+	alsl.d	$t3, $t3, $a0, 2
+	xvstelm.w	$xr2, $a4, 0, 0
+	xvstelm.w	$xr2, $a5, 0, 1
+	xvstelm.w	$xr2, $a6, 0, 2
+	xvstelm.w	$xr2, $a7, 0, 3
+	xvstelm.w	$xr2, $t0, 0, 4
+	xvstelm.w	$xr2, $t1, 0, 5
+	xvstelm.w	$xr2, $t2, 0, 6
+	xvstelm.w	$xr2, $t3, 0, 7
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 8
 	bnez	$a3, .LBB0_5
 # %bb.6:                                # %middle.block29
 	beq	$a1, $fp, .LBB0_9
-.LBB0_7:                                # %.lr.ph.preheader31
+.LBB0_7:                                # %.lr.ph.preheader30
 	nor	$a2, $a1, $zero
 	add.d	$a2, $a2, $fp
 	add.d	$a3, $s0, $a1
@@ -562,37 +559,34 @@ NewPatternNode:                         # @NewPatternNode
 	ld.d	$a4, $a2, 0
 	xvxori.b	$xr2, $xr1, 255
 	xvadd.w	$xr2, $xr0, $xr2
-	andi	$a5, $a4, 255
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vext2xv.du.bu	$xr4, $xr4
+	vext2xv.du.bu	$xr3, $xr3
+	xvpickve2gr.d	$a4, $xr3, 0
+	xvpickve2gr.d	$a5, $xr3, 1
+	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a7, $xr3, 3
+	xvpickve2gr.d	$t0, $xr4, 0
+	xvpickve2gr.d	$t1, $xr4, 1
+	xvpickve2gr.d	$t2, $xr4, 2
+	xvpickve2gr.d	$t3, $xr4, 3
+	alsl.d	$a4, $a4, $a0, 2
 	alsl.d	$a5, $a5, $a0, 2
-	srli.d	$a6, $a4, 6
-	andi	$a6, $a6, 1020
-	add.d	$a6, $a0, $a6
-	srli.d	$a7, $a4, 14
-	andi	$a7, $a7, 1020
-	add.d	$a7, $a0, $a7
-	srli.d	$t0, $a4, 22
-	andi	$t0, $t0, 1020
-	add.d	$t0, $a0, $t0
-	srli.d	$t1, $a4, 30
-	andi	$t1, $t1, 1020
-	add.d	$t1, $a0, $t1
-	srli.d	$t2, $a4, 38
-	andi	$t2, $t2, 1020
-	add.d	$t2, $a0, $t2
-	srli.d	$t3, $a4, 46
-	andi	$t3, $t3, 1020
-	add.d	$t3, $a0, $t3
-	srli.d	$a4, $a4, 54
-	andi	$a4, $a4, 1020
-	add.d	$a4, $a0, $a4
-	xvstelm.w	$xr2, $a5, 0, 0
-	xvstelm.w	$xr2, $a6, 0, 1
-	xvstelm.w	$xr2, $a7, 0, 2
-	xvstelm.w	$xr2, $t0, 0, 3
-	xvstelm.w	$xr2, $t1, 0, 4
-	xvstelm.w	$xr2, $t2, 0, 5
-	xvstelm.w	$xr2, $t3, 0, 6
-	xvstelm.w	$xr2, $a4, 0, 7
+	alsl.d	$a6, $a6, $a0, 2
+	alsl.d	$a7, $a7, $a0, 2
+	alsl.d	$t0, $t0, $a0, 2
+	alsl.d	$t1, $t1, $a0, 2
+	alsl.d	$t2, $t2, $a0, 2
+	alsl.d	$t3, $t3, $a0, 2
+	xvstelm.w	$xr2, $a4, 0, 0
+	xvstelm.w	$xr2, $a5, 0, 1
+	xvstelm.w	$xr2, $a6, 0, 2
+	xvstelm.w	$xr2, $a7, 0, 3
+	xvstelm.w	$xr2, $t0, 0, 4
+	xvstelm.w	$xr2, $t1, 0, 5
+	xvstelm.w	$xr2, $t2, 0, 6
+	xvstelm.w	$xr2, $t3, 0, 7
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 8
@@ -763,37 +757,34 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	ld.d	$a4, $a2, 0
 	xvxori.b	$xr2, $xr1, 255
 	xvadd.w	$xr2, $xr0, $xr2
-	andi	$a5, $a4, 255
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vext2xv.du.bu	$xr4, $xr4
+	vext2xv.du.bu	$xr3, $xr3
+	xvpickve2gr.d	$a4, $xr3, 0
+	xvpickve2gr.d	$a5, $xr3, 1
+	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a7, $xr3, 3
+	xvpickve2gr.d	$t0, $xr4, 0
+	xvpickve2gr.d	$t1, $xr4, 1
+	xvpickve2gr.d	$t2, $xr4, 2
+	xvpickve2gr.d	$t3, $xr4, 3
+	alsl.d	$a4, $a4, $a0, 2
 	alsl.d	$a5, $a5, $a0, 2
-	srli.d	$a6, $a4, 6
-	andi	$a6, $a6, 1020
-	add.d	$a6, $a0, $a6
-	srli.d	$a7, $a4, 14
-	andi	$a7, $a7, 1020
-	add.d	$a7, $a0, $a7
-	srli.d	$t0, $a4, 22
-	andi	$t0, $t0, 1020
-	add.d	$t0, $a0, $t0
-	srli.d	$t1, $a4, 30
-	andi	$t1, $t1, 1020
-	add.d	$t1, $a0, $t1
-	srli.d	$t2, $a4, 38
-	andi	$t2, $t2, 1020
-	add.d	$t2, $a0, $t2
-	srli.d	$t3, $a4, 46
-	andi	$t3, $t3, 1020
-	add.d	$t3, $a0, $t3
-	srli.d	$a4, $a4, 54
-	andi	$a4, $a4, 1020
-	add.d	$a4, $a0, $a4
-	xvstelm.w	$xr2, $a5, 0, 0
-	xvstelm.w	$xr2, $a6, 0, 1
-	xvstelm.w	$xr2, $a7, 0, 2
-	xvstelm.w	$xr2, $t0, 0, 3
-	xvstelm.w	$xr2, $t1, 0, 4
-	xvstelm.w	$xr2, $t2, 0, 5
-	xvstelm.w	$xr2, $t3, 0, 6
-	xvstelm.w	$xr2, $a4, 0, 7
+	alsl.d	$a6, $a6, $a0, 2
+	alsl.d	$a7, $a7, $a0, 2
+	alsl.d	$t0, $t0, $a0, 2
+	alsl.d	$t1, $t1, $a0, 2
+	alsl.d	$t2, $t2, $a0, 2
+	alsl.d	$t3, $t3, $a0, 2
+	xvstelm.w	$xr2, $a4, 0, 0
+	xvstelm.w	$xr2, $a5, 0, 1
+	xvstelm.w	$xr2, $a6, 0, 2
+	xvstelm.w	$xr2, $a7, 0, 3
+	xvstelm.w	$xr2, $t0, 0, 4
+	xvstelm.w	$xr2, $t1, 0, 5
+	xvstelm.w	$xr2, $t2, 0, 6
+	xvstelm.w	$xr2, $t3, 0, 7
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 8
@@ -956,37 +947,34 @@ find_lcs:                               # @find_lcs
 	ld.d	$a4, $a2, 0
 	xvxori.b	$xr2, $xr1, 255
 	xvadd.w	$xr2, $xr0, $xr2
-	andi	$a5, $a4, 255
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vext2xv.du.bu	$xr4, $xr4
+	vext2xv.du.bu	$xr3, $xr3
+	xvpickve2gr.d	$a4, $xr3, 0
+	xvpickve2gr.d	$a5, $xr3, 1
+	xvpickve2gr.d	$a6, $xr3, 2
+	xvpickve2gr.d	$a7, $xr3, 3
+	xvpickve2gr.d	$t0, $xr4, 0
+	xvpickve2gr.d	$t1, $xr4, 1
+	xvpickve2gr.d	$t2, $xr4, 2
+	xvpickve2gr.d	$t3, $xr4, 3
+	alsl.d	$a4, $a4, $a0, 2
 	alsl.d	$a5, $a5, $a0, 2
-	srli.d	$a6, $a4, 6
-	andi	$a6, $a6, 1020
-	add.d	$a6, $a0, $a6
-	srli.d	$a7, $a4, 14
-	andi	$a7, $a7, 1020
-	add.d	$a7, $a0, $a7
-	srli.d	$t0, $a4, 22
-	andi	$t0, $t0, 1020
-	add.d	$t0, $a0, $t0
-	srli.d	$t1, $a4, 30
-	andi	$t1, $t1, 1020
-	add.d	$t1, $a0, $t1
-	srli.d	$t2, $a4, 38
-	andi	$t2, $t2, 1020
-	add.d	$t2, $a0, $t2
-	srli.d	$t3, $a4, 46
-	andi	$t3, $t3, 1020
-	add.d	$t3, $a0, $t3
-	srli.d	$a4, $a4, 54
-	andi	$a4, $a4, 1020
-	add.d	$a4, $a0, $a4
-	xvstelm.w	$xr2, $a5, 0, 0
-	xvstelm.w	$xr2, $a6, 0, 1
-	xvstelm.w	$xr2, $a7, 0, 2
-	xvstelm.w	$xr2, $t0, 0, 3
-	xvstelm.w	$xr2, $t1, 0, 4
-	xvstelm.w	$xr2, $t2, 0, 5
-	xvstelm.w	$xr2, $t3, 0, 6
-	xvstelm.w	$xr2, $a4, 0, 7
+	alsl.d	$a6, $a6, $a0, 2
+	alsl.d	$a7, $a7, $a0, 2
+	alsl.d	$t0, $t0, $a0, 2
+	alsl.d	$t1, $t1, $a0, 2
+	alsl.d	$t2, $t2, $a0, 2
+	alsl.d	$t3, $t3, $a0, 2
+	xvstelm.w	$xr2, $a4, 0, 0
+	xvstelm.w	$xr2, $a5, 0, 1
+	xvstelm.w	$xr2, $a6, 0, 2
+	xvstelm.w	$xr2, $a7, 0, 3
+	xvstelm.w	$xr2, $t0, 0, 4
+	xvstelm.w	$xr2, $t1, 0, 5
+	xvstelm.w	$xr2, $t2, 0, 6
+	xvstelm.w	$xr2, $t3, 0, 7
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
 	addi.d	$a2, $a2, 8

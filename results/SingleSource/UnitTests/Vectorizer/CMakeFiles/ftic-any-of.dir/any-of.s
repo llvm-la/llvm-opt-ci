@@ -8497,9 +8497,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	vinsgr2vr.d	$vr1, $a7, 0
 	vinsgr2vr.d	$vr2, $t0, 0
 	vslt.h	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vext2xv.w.h	$xr1, $xr1
 	vor.v	$vr0, $vr0, $vr1
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 8
@@ -9231,9 +9229,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	vinsgr2vr.d	$vr1, $a7, 0
 	vinsgr2vr.d	$vr2, $t0, 0
 	vsle.h	$vr1, $vr1, $vr2
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vext2xv.w.h	$xr1, $xr1
 	vor.v	$vr0, $vr0, $vr1
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 8
@@ -10100,9 +10096,7 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	vinsgr2vr.d	$vr1, $t0, 0
 	vinsgr2vr.d	$vr2, $t1, 0
 	vslt.hu	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vext2xv.w.h	$xr1, $xr1
 	vor.v	$vr0, $vr0, $vr1
 	addi.d	$a5, $a5, 4
 	addi.d	$a6, $a6, 8
@@ -10836,9 +10830,7 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	vinsgr2vr.d	$vr1, $t0, 0
 	vinsgr2vr.d	$vr2, $t1, 0
 	vslt.hu	$vr1, $vr2, $vr1
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vext2xv.w.h	$xr1, $xr1
 	vor.v	$vr0, $vr0, $vr1
 	addi.d	$a5, $a5, 4
 	addi.d	$a6, $a6, 8

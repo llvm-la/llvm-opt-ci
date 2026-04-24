@@ -555,44 +555,11 @@ board_full:                             # @board_full
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0
 .LCPI5_2:
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	2                               # 0x2
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	3                               # 0x3
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI5_3:
 	.dword	4294967296                      # 0x100000000
 	.dword	8589934592                      # 0x200000000
 	.dword	17179869184                     # 0x400000000
 	.dword	34359738368                     # 0x800000000
-.LCPI5_4:
+.LCPI5_3:
 	.dword	68719476736                     # 0x1000000000
 	.dword	137438953472                    # 0x2000000000
 	.dword	274877906944                    # 0x4000000000
@@ -861,22 +828,14 @@ find_winner_p:                          # @find_winner_p
 	vinsgr2vr.b	$vr1, $a4, 6
 	vextrins.b	$vr1, $vr0, 113
 	vrepli.b	$vr0, 111
-	pcalau12i	$a2, %pc_hi20(.LCPI5_2)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI5_2)
 	vseq.b	$vr0, $vr1, $vr0
 	vsrli.d	$vr1, $vr0, 32
-	xvpermi.d	$xr1, $xr1, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr2
-	xvslli.d	$xr1, $xr1, 56
-	xvsrai.d	$xr1, $xr1, 56
-	xvpermi.d	$xr0, $xr0, 68
-	xvshuf.b	$xr0, $xr0, $xr0, $xr2
-	xvslli.d	$xr0, $xr0, 56
+	vext2xv.d.b	$xr1, $xr1
+	pcalau12i	$a2, %pc_hi20(.LCPI5_2)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI5_2)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_3)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI5_3)
-	pcalau12i	$a2, %pc_hi20(.LCPI5_4)
-	xvld	$xr3, $a2, %pc_lo12(.LCPI5_4)
-	xvsrai.d	$xr0, $xr0, 56
+	xvld	$xr3, $a2, %pc_lo12(.LCPI5_3)
+	vext2xv.d.b	$xr0, $xr0
 	ld.bu	$a2, $a0, 40
 	xvand.v	$xr0, $xr0, $xr2
 	xvand.v	$xr1, $xr1, $xr3
@@ -1223,44 +1182,11 @@ find_winner_p:                          # @find_winner_p
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0
 .LCPI6_2:
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	2                               # 0x2
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	3                               # 0x3
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI6_3:
 	.dword	4294967296                      # 0x100000000
 	.dword	8589934592                      # 0x200000000
 	.dword	17179869184                     # 0x400000000
 	.dword	34359738368                     # 0x800000000
-.LCPI6_4:
+.LCPI6_3:
 	.dword	68719476736                     # 0x1000000000
 	.dword	137438953472                    # 0x2000000000
 	.dword	274877906944                    # 0x4000000000
@@ -1529,22 +1455,14 @@ find_winner_c:                          # @find_winner_c
 	vinsgr2vr.b	$vr1, $a4, 6
 	vextrins.b	$vr1, $vr0, 113
 	vrepli.b	$vr0, 120
-	pcalau12i	$a2, %pc_hi20(.LCPI6_2)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI6_2)
 	vseq.b	$vr0, $vr1, $vr0
 	vsrli.d	$vr1, $vr0, 32
-	xvpermi.d	$xr1, $xr1, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr2
-	xvslli.d	$xr1, $xr1, 56
-	xvsrai.d	$xr1, $xr1, 56
-	xvpermi.d	$xr0, $xr0, 68
-	xvshuf.b	$xr0, $xr0, $xr0, $xr2
-	xvslli.d	$xr0, $xr0, 56
+	vext2xv.d.b	$xr1, $xr1
+	pcalau12i	$a2, %pc_hi20(.LCPI6_2)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI6_2)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_3)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI6_3)
-	pcalau12i	$a2, %pc_hi20(.LCPI6_4)
-	xvld	$xr3, $a2, %pc_lo12(.LCPI6_4)
-	xvsrai.d	$xr0, $xr0, 56
+	xvld	$xr3, $a2, %pc_lo12(.LCPI6_3)
+	vext2xv.d.b	$xr0, $xr0
 	ld.bu	$a2, $a0, 40
 	xvand.v	$xr0, $xr0, $xr2
 	xvand.v	$xr1, $xr1, $xr3

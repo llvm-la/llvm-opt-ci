@@ -763,20 +763,20 @@ SCCofVCG:                               # @SCCofVCG
 .LBB7_23:                               # %.preheader63
 	beqz	$a6, .LBB7_17
 .LBB7_24:                               # %.preheader.preheader
-	addi.d	$a1, $s0, 24
+	addi.d	$a1, $s0, 40
 	ori	$a2, $zero, 1
 	ori	$a3, $zero, 2
-	ori	$a4, $zero, 5
-	vrepli.b	$vr0, 0
+	ori	$a4, $zero, 9
+	xvrepli.b	$xr0, 0
 	ori	$a5, $zero, 1
 	b	.LBB7_27
 	.p2align	4, , 16
 .LBB7_25:                               #   in Loop: Header=BB7_27 Depth=1
-	move	$t0, $zero
+	move	$t1, $zero
 .LBB7_26:                               # %._crit_edge82
                                         #   in Loop: Header=BB7_27 Depth=1
 	slli.d	$a6, $a5, 3
-	stx.d	$t0, $fp, $a6
+	stx.d	$t1, $fp, $a6
 	ld.d	$a6, $a0, %pc_lo12(totalSCC)
 	addi.d	$a5, $a5, 1
 	bltu	$a6, $a5, .LBB7_17
@@ -795,41 +795,43 @@ SCCofVCG:                               # @SCCofVCG
 	or	$a6, $a6, $t0
 	bgeu	$a7, $a4, .LBB7_30
 # %bb.29:                               #   in Loop: Header=BB7_27 Depth=1
-	move	$t0, $zero
+	move	$t1, $zero
 	ori	$a7, $zero, 1
 	b	.LBB7_33
 	.p2align	4, , 16
 .LBB7_30:                               # %vector.ph
                                         #   in Loop: Header=BB7_27 Depth=1
-	addi.d	$t1, $a6, -1
-	move	$t2, $t1
-	bstrins.d	$t2, $zero, 1, 0
-	move	$a7, $t1
-	bstrins.d	$a7, $a2, 1, 0
-	vreplgr2vr.d	$vr1, $a5
-	move	$t0, $t2
+	addi.d	$t0, $a6, -1
+	move	$t2, $t0
+	bstrins.d	$t2, $zero, 2, 0
+	move	$a7, $t0
+	bstrins.d	$a7, $a2, 2, 0
+	xvreplgr2vr.d	$xr1, $a5
+	move	$t1, $t2
 	move	$t3, $a1
-	vori.b	$vr2, $vr0, 0
-	vori.b	$vr3, $vr0, 0
+	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr3, $xr0, 0
 	.p2align	4, , 16
 .LBB7_31:                               # %vector.body
                                         #   Parent Loop BB7_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr4, $t3, -16
-	vld	$vr5, $t3, 0
-	vseq.d	$vr4, $vr4, $vr1
-	vseq.d	$vr5, $vr5, $vr1
-	vsub.d	$vr2, $vr2, $vr4
-	vsub.d	$vr3, $vr3, $vr5
-	addi.d	$t0, $t0, -4
-	addi.d	$t3, $t3, 32
-	bnez	$t0, .LBB7_31
+	xvld	$xr4, $t3, -32
+	xvld	$xr5, $t3, 0
+	xvseq.d	$xr4, $xr4, $xr1
+	xvseq.d	$xr5, $xr5, $xr1
+	xvsub.d	$xr2, $xr2, $xr4
+	xvsub.d	$xr3, $xr3, $xr5
+	addi.d	$t1, $t1, -8
+	addi.d	$t3, $t3, 64
+	bnez	$t1, .LBB7_31
 # %bb.32:                               # %middle.block
                                         #   in Loop: Header=BB7_27 Depth=1
-	vadd.d	$vr1, $vr3, $vr2
-	vhaddw.q.d	$vr1, $vr1, $vr1
-	vpickve2gr.d	$t0, $vr1, 0
-	beq	$t1, $t2, .LBB7_26
+	xvadd.d	$xr1, $xr3, $xr2
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$t1, $xr1, 0
+	beq	$t0, $t2, .LBB7_26
 .LBB7_33:                               # %.lr.ph81.preheader136
                                         #   in Loop: Header=BB7_27 Depth=1
 	sub.d	$a6, $a6, $a7
@@ -838,10 +840,10 @@ SCCofVCG:                               # @SCCofVCG
 .LBB7_34:                               # %.lr.ph81
                                         #   Parent Loop BB7_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t1, $a7, 0
-	xor	$t1, $t1, $a5
-	sltui	$t1, $t1, 1
-	add.d	$t0, $t0, $t1
+	ld.d	$t0, $a7, 0
+	xor	$t0, $t0, $a5
+	sltui	$t0, $t0, 1
+	add.d	$t1, $t1, $t0
 	addi.d	$a6, $a6, -1
 	addi.d	$a7, $a7, 8
 	bnez	$a6, .LBB7_34

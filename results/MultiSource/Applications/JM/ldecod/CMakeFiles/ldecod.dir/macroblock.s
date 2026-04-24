@@ -3386,7 +3386,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	vsrai.w	$vr0, $vr0, 24
 	vrepli.b	$vr1, -1
 	vslt.w	$vr1, $vr1, $vr0
-	vshuf4i.w	$vr2, $vr1, 16
+	vext2xv.d.w	$xr2, $xr1
 	vpickve2gr.d	$a2, $vr2, 1
 	andi	$a2, $a2, 1
 	vpickve2gr.w	$a3, $vr0, 1
@@ -19061,15 +19061,13 @@ decode_one_macroblock:                  # @decode_one_macroblock
 	sra.d	$a6, $a6, $a2
 .LBB25_368:                             # %._crit_edge2391
 	vinsgr2vr.b	$vr0, $a5, 0
-	vinsgr2vr.b	$vr0, $a1, 4
-	vslli.w	$vr0, $vr0, 24
-	vsrai.w	$vr0, $vr0, 24
+	vinsgr2vr.b	$vr0, $a1, 1
+	vext2xv.w.b	$xr0, $xr0
 	or	$a1, $a1, $a0
 	slli.d	$a1, $a1, 56
 	vinsgr2vr.b	$vr1, $a4, 0
-	vinsgr2vr.b	$vr1, $a0, 4
-	vslli.w	$vr1, $vr1, 24
-	vsrai.w	$vr1, $vr1, 24
+	vinsgr2vr.b	$vr1, $a0, 1
+	vext2xv.w.b	$xr1, $xr1
 	ext.w.b	$a0, $a3
 	slt	$a2, $s0, $a0
 	or	$a3, $a5, $a4
@@ -19085,7 +19083,7 @@ decode_one_macroblock:                  # @decode_one_macroblock
 	vbitsel.v	$vr0, $vr0, $vr2, $vr1
 	vrepli.b	$vr1, -1
 	vslt.w	$vr1, $vr1, $vr0
-	vshuf4i.w	$vr2, $vr1, 16
+	vext2xv.d.w	$xr2, $xr1
 	vpickve2gr.d	$a1, $vr2, 1
 	andi	$a1, $a1, 1
 	vpickve2gr.w	$a3, $vr0, 1

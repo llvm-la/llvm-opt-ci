@@ -1522,10 +1522,9 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ori	$t8, $zero, 2047
 	vrepli.w	$vr1, -128
 	vrepli.w	$vr2, 127
-	vrepli.b	$vr3, 0
-	vrepli.h	$vr4, 1
-	vrepli.w	$vr5, 32
-	vldi	$vr6, -2553
+	vrepli.h	$vr3, 1
+	vrepli.w	$vr4, 32
+	vldi	$vr5, -2553
 	b	.LBB8_3
 	.p2align	4, , 16
 .LBB8_2:                                # %._crit_edge955.split.us
@@ -1587,50 +1586,49 @@ EPZSSliceInit:                          # @EPZSSliceInit
                                         #   in Loop: Header=BB8_6 Depth=2
 	ld.d	$a1, $s4, 0
 	ldx.d	$a3, $a1, $ra
-	vldrepl.w	$vr9, $a3, 4
-	vldrepl.w	$vr7, $s6, 0
-	vseq.w	$vr8, $vr7, $vr9
-	vpickev.h	$vr10, $vr8, $vr8
+	vldrepl.w	$vr8, $a3, 4
+	vldrepl.w	$vr6, $s6, 0
+	vseq.w	$vr7, $vr6, $vr8
+	vpickev.h	$vr9, $vr7, $vr7
 	pcalau12i	$a3, %pc_hi20(.LCPI8_0)
-	vld	$vr11, $a3, %pc_lo12(.LCPI8_0)
-	vsub.w	$vr9, $vr7, $vr9
-	vmax.w	$vr9, $vr9, $vr1
-	vmin.w	$vr9, $vr9, $vr2
-	vshuf.b	$vr11, $vr0, $vr9, $vr11
-	vsrli.b	$vr12, $vr11, 7
-	vavg.b	$vr11, $vr11, $vr12
-	vsigncov.b	$vr11, $vr11, $vr11
-	vilvl.b	$vr11, $vr3, $vr11
-	vbitseti.h	$vr11, $vr11, 14
-	vpickev.h	$vr9, $vr9, $vr9
-	vbitsel.v	$vr9, $vr9, $vr4, $vr10
-	vpickve2gr.h	$a3, $vr11, 3
+	vld	$vr10, $a3, %pc_lo12(.LCPI8_0)
+	vsub.w	$vr8, $vr6, $vr8
+	vmax.w	$vr8, $vr8, $vr1
+	vmin.w	$vr8, $vr8, $vr2
+	vshuf.b	$vr10, $vr0, $vr8, $vr10
+	vsrli.b	$vr11, $vr10, 7
+	vavg.b	$vr10, $vr10, $vr11
+	vsigncov.b	$vr10, $vr10, $vr10
+	vext2xv.hu.bu	$xr10, $xr10
+	vbitseti.h	$vr10, $vr10, 14
+	vpickev.h	$vr8, $vr8, $vr8
+	vbitsel.v	$vr8, $vr8, $vr3, $vr9
+	vpickve2gr.h	$a3, $vr10, 1
 	ori	$t0, $a7, 127
 	and	$a3, $a3, $t0
-	vpickve2gr.h	$t1, $vr9, 3
+	vpickve2gr.h	$t1, $vr8, 1
 	ext.w.h	$t1, $t1
 	div.d	$a3, $a3, $t1
-	vpickve2gr.h	$t1, $vr11, 2
+	vpickve2gr.h	$t1, $vr10, 0
 	and	$t1, $t1, $t0
-	vpickve2gr.h	$t3, $vr9, 2
+	vpickve2gr.h	$t3, $vr8, 0
 	ext.w.h	$t3, $t3
 	div.d	$t1, $t1, $t3
-	vpickve2gr.h	$t3, $vr11, 1
-	and	$t3, $t3, $t0
-	vpickve2gr.h	$fp, $vr9, 1
-	ext.w.h	$fp, $fp
-	div.d	$t3, $t3, $fp
-	vpickve2gr.h	$fp, $vr11, 0
-	and	$t0, $fp, $t0
-	vpickve2gr.h	$fp, $vr9, 0
-	ext.w.h	$fp, $fp
-	div.d	$t0, $t0, $fp
-	vinsgr2vr.h	$vr9, $t0, 0
-	vinsgr2vr.h	$vr9, $t3, 2
-	vinsgr2vr.h	$vr9, $t1, 4
-	vinsgr2vr.h	$vr9, $a3, 6
-	vslli.w	$vr9, $vr9, 16
-	vsrai.w	$vr9, $vr9, 16
+	vinsgr2vr.h	$vr9, $t1, 0
+	vinsgr2vr.h	$vr9, $a3, 1
+	vpickve2gr.h	$a3, $vr10, 2
+	and	$a3, $a3, $t0
+	vpickve2gr.h	$t1, $vr8, 2
+	ext.w.h	$t1, $t1
+	div.d	$a3, $a3, $t1
+	vinsgr2vr.h	$vr9, $a3, 2
+	vpickve2gr.h	$a3, $vr10, 3
+	and	$a3, $a3, $t0
+	vpickve2gr.h	$t0, $vr8, 3
+	ext.w.h	$t0, $t0
+	div.d	$a3, $a3, $t0
+	vinsgr2vr.h	$vr9, $a3, 3
+	vext2xv.w.h	$xr8, $xr9
 	addi.d	$a3, $a1, 16
 	move	$t0, $s8
 	move	$t1, $s5
@@ -1647,25 +1645,25 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	ld.w	$t3, $t3, 4
 	ld.w	$fp, $fp, 4
 	ld.w	$a2, $a2, 4
-	vinsgr2vr.w	$vr10, $a1, 0
-	vinsgr2vr.w	$vr10, $t3, 1
-	vinsgr2vr.w	$vr10, $fp, 2
-	vinsgr2vr.w	$vr10, $a2, 3
-	vsub.w	$vr10, $vr7, $vr10
-	vmax.w	$vr10, $vr10, $vr1
-	vmin.w	$vr10, $vr10, $vr2
-	vori.b	$vr11, $vr5, 0
-	vmadd.w	$vr11, $vr10, $vr9
-	vsrai.w	$vr10, $vr11, 6
+	vinsgr2vr.w	$vr9, $a1, 0
+	vinsgr2vr.w	$vr9, $t3, 1
+	vinsgr2vr.w	$vr9, $fp, 2
+	vinsgr2vr.w	$vr9, $a2, 3
+	vsub.w	$vr9, $vr6, $vr9
+	vmax.w	$vr9, $vr9, $vr1
+	vmin.w	$vr9, $vr9, $vr2
+	vori.b	$vr10, $vr4, 0
+	vmadd.w	$vr10, $vr9, $vr8
+	vsrai.w	$vr9, $vr10, 6
 	addi.d	$a1, $zero, -2048
-	vreplgr2vr.w	$vr11, $a1
-	vmax.w	$vr10, $vr10, $vr11
-	vmin.w	$vr10, $vr10, $vr6
-	vbitsel.v	$vr10, $vr10, $vr0, $vr8
-	vstelm.w	$vr10, $t0, -256, 0
-	vstelm.w	$vr10, $t0, -128, 1
-	vstelm.w	$vr10, $t0, 0, 2
-	vstelm.w	$vr10, $t0, 128, 3
+	vreplgr2vr.w	$vr10, $a1
+	vmax.w	$vr9, $vr9, $vr10
+	vmin.w	$vr9, $vr9, $vr5
+	vbitsel.v	$vr9, $vr9, $vr0, $vr7
+	vstelm.w	$vr9, $t0, -256, 0
+	vstelm.w	$vr9, $t0, -128, 1
+	vstelm.w	$vr9, $t0, 0, 2
+	vstelm.w	$vr9, $t0, 128, 3
 	addi.d	$t1, $t1, -4
 	addi.d	$t0, $t0, 512
 	addi.d	$a3, $a3, 32

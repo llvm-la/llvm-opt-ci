@@ -229,7 +229,7 @@ createFccLattice:                       # @createFccLattice
 	xvpermi.d	$xr2, $xr1, 238
 	xvpickev.w	$xr1, $xr2, $xr1
 	vslt.w	$vr2, $vr0, $vr1
-	vshuf4i.w	$vr3, $vr2, 16
+	vext2xv.d.w	$xr3, $xr2
 	vpickve2gr.d	$a0, $vr2, 0
 	vpickve2gr.d	$a3, $vr3, 1
 	and	$a0, $a0, $a3

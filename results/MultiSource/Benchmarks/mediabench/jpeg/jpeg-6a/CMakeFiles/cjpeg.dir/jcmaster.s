@@ -921,30 +921,14 @@ prepare_for_pass:                       # @prepare_for_pass
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a7, -16
 	vld	$vr3, $a7, 0
-	vpickve2gr.w	$t1, $vr2, 2
-	vinsgr2vr.d	$vr4, $t1, 0
-	vpickve2gr.w	$t1, $vr2, 3
-	vinsgr2vr.d	$vr4, $t1, 1
-	vpickve2gr.w	$t1, $vr2, 0
-	vinsgr2vr.d	$vr5, $t1, 0
-	vpickve2gr.w	$t1, $vr2, 1
-	vinsgr2vr.d	$vr5, $t1, 1
-	xvpermi.q	$xr5, $xr4, 2
-	vpickve2gr.w	$t1, $vr3, 2
-	vinsgr2vr.d	$vr2, $t1, 0
-	vpickve2gr.w	$t1, $vr3, 3
-	vinsgr2vr.d	$vr2, $t1, 1
-	vpickve2gr.w	$t1, $vr3, 0
-	vinsgr2vr.d	$vr4, $t1, 0
-	vpickve2gr.w	$t1, $vr3, 1
-	vinsgr2vr.d	$vr4, $t1, 1
-	xvpermi.q	$xr4, $xr2, 2
+	vext2xv.d.w	$xr2, $xr2
+	vext2xv.d.w	$xr3, $xr3
+	xvori.b	$xr4, $xr0, 0
+	xvmadd.d	$xr4, $xr2, $xr1
 	xvori.b	$xr2, $xr0, 0
-	xvmadd.d	$xr2, $xr5, $xr1
-	xvori.b	$xr3, $xr0, 0
-	xvmadd.d	$xr3, $xr4, $xr1
-	xvst	$xr2, $a6, -32
-	xvst	$xr3, $a6, 0
+	xvmadd.d	$xr2, $xr3, $xr1
+	xvst	$xr4, $a6, -32
+	xvst	$xr2, $a6, 0
 	addi.d	$t0, $t0, -8
 	addi.d	$a6, $a6, 64
 	addi.d	$a7, $a7, 32
@@ -991,30 +975,14 @@ prepare_for_pass:                       # @prepare_for_pass
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a7, -16
 	vld	$vr3, $a7, 0
-	vpickve2gr.w	$t1, $vr2, 2
-	vinsgr2vr.d	$vr4, $t1, 0
-	vpickve2gr.w	$t1, $vr2, 3
-	vinsgr2vr.d	$vr4, $t1, 1
-	vpickve2gr.w	$t1, $vr2, 0
-	vinsgr2vr.d	$vr5, $t1, 0
-	vpickve2gr.w	$t1, $vr2, 1
-	vinsgr2vr.d	$vr5, $t1, 1
-	xvpermi.q	$xr5, $xr4, 2
-	vpickve2gr.w	$t1, $vr3, 2
-	vinsgr2vr.d	$vr2, $t1, 0
-	vpickve2gr.w	$t1, $vr3, 3
-	vinsgr2vr.d	$vr2, $t1, 1
-	vpickve2gr.w	$t1, $vr3, 0
-	vinsgr2vr.d	$vr4, $t1, 0
-	vpickve2gr.w	$t1, $vr3, 1
-	vinsgr2vr.d	$vr4, $t1, 1
-	xvpermi.q	$xr4, $xr2, 2
+	vext2xv.d.w	$xr2, $xr2
+	vext2xv.d.w	$xr3, $xr3
+	xvori.b	$xr4, $xr0, 0
+	xvmadd.d	$xr4, $xr2, $xr1
 	xvori.b	$xr2, $xr0, 0
-	xvmadd.d	$xr2, $xr5, $xr1
-	xvori.b	$xr3, $xr0, 0
-	xvmadd.d	$xr3, $xr4, $xr1
-	xvst	$xr2, $a6, -32
-	xvst	$xr3, $a6, 0
+	xvmadd.d	$xr2, $xr3, $xr1
+	xvst	$xr4, $a6, -32
+	xvst	$xr2, $a6, 0
 	addi.d	$t0, $t0, -8
 	addi.d	$a6, $a6, 64
 	addi.d	$a7, $a7, 32
@@ -1281,30 +1249,14 @@ prepare_for_pass:                       # @prepare_for_pass
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a7, -16
 	vld	$vr3, $a7, 0
-	vpickve2gr.w	$t1, $vr2, 2
-	vinsgr2vr.d	$vr4, $t1, 0
-	vpickve2gr.w	$t1, $vr2, 3
-	vinsgr2vr.d	$vr4, $t1, 1
-	vpickve2gr.w	$t1, $vr2, 0
-	vinsgr2vr.d	$vr5, $t1, 0
-	vpickve2gr.w	$t1, $vr2, 1
-	vinsgr2vr.d	$vr5, $t1, 1
-	xvpermi.q	$xr5, $xr4, 2
-	vpickve2gr.w	$t1, $vr3, 2
-	vinsgr2vr.d	$vr2, $t1, 0
-	vpickve2gr.w	$t1, $vr3, 3
-	vinsgr2vr.d	$vr2, $t1, 1
-	vpickve2gr.w	$t1, $vr3, 0
-	vinsgr2vr.d	$vr4, $t1, 0
-	vpickve2gr.w	$t1, $vr3, 1
-	vinsgr2vr.d	$vr4, $t1, 1
-	xvpermi.q	$xr4, $xr2, 2
+	vext2xv.d.w	$xr2, $xr2
+	vext2xv.d.w	$xr3, $xr3
+	xvori.b	$xr4, $xr0, 0
+	xvmadd.d	$xr4, $xr2, $xr1
 	xvori.b	$xr2, $xr0, 0
-	xvmadd.d	$xr2, $xr5, $xr1
-	xvori.b	$xr3, $xr0, 0
-	xvmadd.d	$xr3, $xr4, $xr1
-	xvst	$xr2, $a6, -32
-	xvst	$xr3, $a6, 0
+	xvmadd.d	$xr2, $xr3, $xr1
+	xvst	$xr4, $a6, -32
+	xvst	$xr2, $a6, 0
 	addi.d	$t0, $t0, -8
 	addi.d	$a6, $a6, 64
 	addi.d	$a7, $a7, 32

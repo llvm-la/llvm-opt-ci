@@ -1687,150 +1687,101 @@ get_state:                              # @get_state
 	maskeqz	$a2, $s0, $a2
 	or	$a1, $a2, $a1
 	nor	$a2, $s1, $zero
-	add.d	$a1, $a1, $a2
-	ori	$a2, $zero, 6
-	bgeu	$a1, $a2, .LBB10_4
+	add.d	$a2, $a1, $a2
+	ori	$a1, $zero, 14
+	bgeu	$a2, $a1, .LBB10_4
 # %bb.2:
-	move	$a5, $zero
-	move	$a1, $s1
+	move	$a3, $zero
+	move	$a2, $s1
 	b	.LBB10_13
 .LBB10_3:
 	move	$a1, $zero
 	b	.LBB10_15
 .LBB10_4:                               # %vector.main.loop.iter.check
-	srli.d	$a2, $a1, 1
+	srli.d	$a1, $a2, 1
 	ori	$a3, $zero, 30
-	addi.d	$a2, $a2, 1
-	bgeu	$a1, $a3, .LBB10_6
+	addi.d	$a1, $a1, 1
+	bgeu	$a2, $a3, .LBB10_9
 # %bb.5:
+	move	$a4, $zero
 	move	$a3, $zero
-	move	$a5, $zero
-	b	.LBB10_10
-.LBB10_6:                               # %vector.ph
-	andi	$a4, $a2, 12
-	move	$a3, $a2
-	bstrins.d	$a3, $zero, 3, 0
-	alsl.d	$a1, $a3, $s1, 1
+.LBB10_6:                               # %vec.epilog.ph
+	move	$a5, $a1
+	bstrins.d	$a5, $zero, 2, 0
+	alsl.d	$a2, $a5, $s1, 1
 	xvrepli.b	$xr0, 0
-	addi.d	$a5, $s1, 16
-	move	$a6, $a3
+	xvinsgr2vr.w	$xr0, $a3, 0
+	alsl.d	$a3, $a4, $s1, 1
+	sub.d	$a4, $a4, $a5
+	.p2align	4, , 16
+.LBB10_7:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $a3, 0
+	vext2xv.w.h	$xr1, $xr1
+	xvadd.w	$xr0, $xr0, $xr1
+	addi.d	$a4, $a4, 8
+	addi.d	$a3, $a3, 16
+	bnez	$a4, .LBB10_7
+# %bb.8:                                # %vec.epilog.middle.block
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a3, $xr0, 0
+	bne	$a1, $a5, .LBB10_13
+	b	.LBB10_14
+.LBB10_9:                               # %vector.ph
+	xvrepli.b	$xr0, 0
+	andi	$a5, $a1, 8
+	move	$a4, $a1
+	bstrins.d	$a4, $zero, 3, 0
+	alsl.d	$a2, $a4, $s1, 1
+	addi.d	$a3, $s1, 16
+	move	$a6, $a4
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB10_7:                               # %vector.body
+.LBB10_10:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a5, -16
-	vld	$vr3, $a5, 0
-	vpickve2gr.h	$a7, $vr2, 4
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 0
-	vpickve2gr.h	$a7, $vr2, 5
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 1
-	vpickve2gr.h	$a7, $vr2, 6
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 2
-	vpickve2gr.h	$a7, $vr2, 7
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 3
-	vpickve2gr.h	$a7, $vr2, 0
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr5, $a7, 0
-	vpickve2gr.h	$a7, $vr2, 1
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr5, $a7, 1
-	vpickve2gr.h	$a7, $vr2, 2
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr5, $a7, 2
-	vpickve2gr.h	$a7, $vr2, 3
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr5, $a7, 3
-	xvpermi.q	$xr5, $xr4, 2
-	vpickve2gr.h	$a7, $vr3, 4
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr2, $a7, 0
-	vpickve2gr.h	$a7, $vr3, 5
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr2, $a7, 1
-	vpickve2gr.h	$a7, $vr3, 6
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr2, $a7, 2
-	vpickve2gr.h	$a7, $vr3, 7
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr2, $a7, 3
-	vpickve2gr.h	$a7, $vr3, 0
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 0
-	vpickve2gr.h	$a7, $vr3, 1
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 1
-	vpickve2gr.h	$a7, $vr3, 2
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 2
-	vpickve2gr.h	$a7, $vr3, 3
-	ext.w.h	$a7, $a7
-	vinsgr2vr.w	$vr4, $a7, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvadd.w	$xr0, $xr0, $xr5
-	xvadd.w	$xr1, $xr1, $xr4
+	vld	$vr2, $a3, -16
+	vld	$vr3, $a3, 0
+	vext2xv.w.h	$xr2, $xr2
+	vext2xv.w.h	$xr3, $xr3
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	addi.d	$a6, $a6, -16
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB10_7
-# %bb.8:                                # %middle.block
+	addi.d	$a3, $a3, 32
+	bnez	$a6, .LBB10_10
+# %bb.11:                               # %middle.block
 	xvadd.w	$xr0, $xr1, $xr0
 	xvhaddw.d.w	$xr0, $xr0, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
 	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$a5, $xr0, 0
-	beq	$a2, $a3, .LBB10_14
-# %bb.9:                                # %vec.epilog.iter.check
-	beqz	$a4, .LBB10_13
-.LBB10_10:                              # %vec.epilog.ph
-	move	$a4, $a2
-	bstrins.d	$a4, $zero, 1, 0
-	alsl.d	$a1, $a4, $s1, 1
-	vrepli.b	$vr0, 0
-	vinsgr2vr.w	$vr0, $a5, 0
-	alsl.d	$a5, $a3, $s1, 1
-	sub.d	$a3, $a3, $a4
-	.p2align	4, , 16
-.LBB10_11:                              # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a6, $a5, 0
-	vinsgr2vr.d	$vr1, $a6, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vadd.w	$vr0, $vr0, $vr1
-	addi.d	$a3, $a3, 4
-	addi.d	$a5, $a5, 8
-	bnez	$a3, .LBB10_11
-# %bb.12:                               # %vec.epilog.middle.block
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a5, $vr0, 0
-	beq	$a2, $a4, .LBB10_14
+	xvpickve2gr.d	$a3, $xr0, 0
+	beq	$a1, $a4, .LBB10_14
+# %bb.12:                               # %vec.epilog.iter.check
+	bnez	$a5, .LBB10_6
 	.p2align	4, , 16
 .LBB10_13:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a2, $a1, 0
-	addi.d	$a3, $a1, 2
-	add.d	$a5, $a5, $a2
-	move	$a1, $a3
-	bltu	$a3, $s0, .LBB10_13
+	ld.h	$a1, $a2, 0
+	addi.d	$a4, $a2, 2
+	add.d	$a3, $a3, $a1
+	move	$a2, $a4
+	bltu	$a4, $s0, .LBB10_13
 .LBB10_14:                              # %._crit_edge.loopexit
-	addi.w	$a1, $a5, 0
+	addi.w	$a1, $a3, 0
 	lu12i.w	$a2, -516494
 	ori	$a2, $a2, 707
 	mul.d	$a1, $a1, $a2
 	srli.d	$a1, $a1, 32
-	add.w	$a1, $a1, $a5
+	add.w	$a1, $a1, $a3
 	bstrpick.d	$a2, $a1, 31, 31
 	srli.d	$a1, $a1, 9
 	add.d	$a1, $a1, $a2
 	ori	$a2, $zero, 1009
 	mul.d	$a1, $a1, $a2
-	sub.w	$a1, $a5, $a1
+	sub.w	$a1, $a3, $a1
 .LBB10_15:                              # %._crit_edge
 	pcalau12i	$s6, %pc_hi20(state_table)
 	ld.d	$a2, $s6, %pc_lo12(state_table)
