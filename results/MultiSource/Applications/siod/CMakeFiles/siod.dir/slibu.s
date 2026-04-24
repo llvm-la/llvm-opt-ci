@@ -4286,43 +4286,7 @@ url_decode:                             # @url_decode
 .Lfunc_end75:
 	.size	url_decode, .Lfunc_end75-url_decode
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function html_encode
-.LCPI76_0:
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	2                               # 0x2
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	3                               # 0x3
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.text
-	.globl	html_encode
+	.globl	html_encode                     # -- Begin function html_encode
 	.p2align	2
 	.prefalign	5, .Lfunc_end76, nop
 	.type	html_encode,@function
@@ -4377,68 +4341,48 @@ html_encode:                            # @html_encode
 	addi.d	$a0, $s0, 4
 	xvrepli.b	$xr0, 0
 	vrepli.b	$vr1, 38
-	pcalau12i	$a2, %pc_hi20(.LCPI76_0)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI76_0)
-	vrepli.b	$vr3, 34
-	vrepli.b	$vr4, 60
-	xvrepli.d	$xr5, 4
-	xvrepli.d	$xr6, 1
-	xvrepli.d	$xr7, 5
-	xvrepli.d	$xr8, 6
+	vrepli.b	$vr2, 34
+	vrepli.b	$vr3, 60
+	xvrepli.d	$xr4, 4
+	xvrepli.d	$xr5, 1
+	xvrepli.d	$xr6, 5
+	xvrepli.d	$xr7, 6
 	move	$a2, $a1
-	xvori.b	$xr9, $xr0, 0
+	xvori.b	$xr8, $xr0, 0
 	.p2align	4, , 16
 .LBB76_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a0, -4
 	ld.w	$a4, $a0, 0
-	vinsgr2vr.w	$vr10, $a3, 0
-	vinsgr2vr.w	$vr11, $a4, 0
+	vinsgr2vr.w	$vr9, $a3, 0
+	vinsgr2vr.w	$vr10, $a4, 0
+	vseq.b	$vr11, $vr9, $vr1
+	vext2xv.d.b	$xr11, $xr11
 	vseq.b	$vr12, $vr10, $vr1
-	xvpermi.d	$xr12, $xr12, 68
-	xvshuf.b	$xr12, $xr0, $xr12, $xr2
-	xvslli.d	$xr12, $xr12, 56
-	xvsrai.d	$xr12, $xr12, 56
-	vseq.b	$vr13, $vr11, $vr1
-	xvpermi.d	$xr13, $xr13, 68
-	xvshuf.b	$xr13, $xr0, $xr13, $xr2
-	xvslli.d	$xr13, $xr13, 56
-	xvsrai.d	$xr13, $xr13, 56
-	vseq.b	$vr14, $vr10, $vr3
-	xvpermi.d	$xr14, $xr14, 68
-	xvshuf.b	$xr14, $xr0, $xr14, $xr2
-	xvslli.d	$xr14, $xr14, 56
-	xvsrai.d	$xr14, $xr14, 56
-	vseq.b	$vr15, $vr11, $vr3
-	xvpermi.d	$xr15, $xr15, 68
-	xvshuf.b	$xr15, $xr0, $xr15, $xr2
-	xvslli.d	$xr15, $xr15, 56
-	xvsrai.d	$xr15, $xr15, 56
+	vext2xv.d.b	$xr12, $xr12
+	vseq.b	$vr13, $vr9, $vr2
+	vext2xv.d.b	$xr13, $xr13
+	vseq.b	$vr14, $vr10, $vr2
+	vext2xv.d.b	$xr14, $xr14
+	vbitclri.b	$vr9, $vr9, 1
+	vseq.b	$vr9, $vr9, $vr3
+	vext2xv.d.b	$xr9, $xr9
 	vbitclri.b	$vr10, $vr10, 1
-	vseq.b	$vr10, $vr10, $vr4
-	xvpermi.d	$xr10, $xr10, 68
-	xvshuf.b	$xr10, $xr0, $xr10, $xr2
-	xvslli.d	$xr10, $xr10, 56
-	xvsrai.d	$xr10, $xr10, 56
-	vbitclri.b	$vr11, $vr11, 1
-	vseq.b	$vr11, $vr11, $vr4
-	xvpermi.d	$xr11, $xr11, 68
-	xvshuf.b	$xr11, $xr0, $xr11, $xr2
-	xvslli.d	$xr11, $xr11, 56
-	xvsrai.d	$xr11, $xr11, 56
-	xvbitsel.v	$xr10, $xr6, $xr5, $xr10
-	xvbitsel.v	$xr10, $xr10, $xr7, $xr12
-	xvbitsel.v	$xr10, $xr10, $xr8, $xr14
-	xvbitsel.v	$xr11, $xr6, $xr5, $xr11
-	xvbitsel.v	$xr11, $xr11, $xr7, $xr13
-	xvbitsel.v	$xr11, $xr11, $xr8, $xr15
-	xvadd.d	$xr0, $xr0, $xr10
-	xvadd.d	$xr9, $xr9, $xr11
+	vseq.b	$vr10, $vr10, $vr3
+	vext2xv.d.b	$xr10, $xr10
+	xvbitsel.v	$xr9, $xr5, $xr4, $xr9
+	xvbitsel.v	$xr9, $xr9, $xr6, $xr11
+	xvbitsel.v	$xr9, $xr9, $xr7, $xr13
+	xvbitsel.v	$xr10, $xr5, $xr4, $xr10
+	xvbitsel.v	$xr10, $xr10, $xr6, $xr12
+	xvbitsel.v	$xr10, $xr10, $xr7, $xr14
+	xvadd.d	$xr0, $xr0, $xr9
+	xvadd.d	$xr8, $xr8, $xr10
 	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB76_9
 # %bb.10:                               # %middle.block
-	xvadd.d	$xr0, $xr9, $xr0
+	xvadd.d	$xr0, $xr8, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
 	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0

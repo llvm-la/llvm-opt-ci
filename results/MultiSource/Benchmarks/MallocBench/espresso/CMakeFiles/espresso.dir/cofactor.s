@@ -1048,59 +1048,27 @@ binate_split_select:                    # @binate_split_select
 	xvsrai.w	$xr5, $xr1, 5
 	xvsrai.w	$xr6, $xr4, 5
 	xvpermi.q	$xr7, $xr5, 1
-	vpickve2gr.w	$a7, $vr7, 2
-	vinsgr2vr.d	$vr8, $a7, 0
-	vpickve2gr.w	$a7, $vr7, 3
-	vinsgr2vr.d	$vr8, $a7, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$a7, $vr7, 0
-	vinsgr2vr.d	$vr9, $a7, 0
-	vpickve2gr.w	$a7, $vr7, 1
-	vinsgr2vr.d	$vr9, $a7, 1
-	vpickve2gr.w	$a7, $vr5, 2
-	vinsgr2vr.d	$vr7, $a7, 0
-	vpickve2gr.w	$a7, $vr5, 3
-	vinsgr2vr.d	$vr7, $a7, 1
-	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$a7, $vr5, 0
-	vinsgr2vr.d	$vr10, $a7, 0
-	vpickve2gr.w	$a7, $vr5, 1
-	vinsgr2vr.d	$vr10, $a7, 1
-	xvpickve2gr.d	$a7, $xr10, 0
-	xvpickve2gr.d	$t0, $xr10, 1
-	xvpickve2gr.d	$t1, $xr7, 2
-	xvpickve2gr.d	$t2, $xr7, 3
-	xvpickve2gr.d	$t3, $xr9, 0
-	xvpickve2gr.d	$t4, $xr9, 1
-	xvpickve2gr.d	$t5, $xr8, 2
-	xvpickve2gr.d	$t6, $xr8, 3
+	vext2xv.d.w	$xr7, $xr7
+	vext2xv.d.w	$xr5, $xr5
+	xvpickve2gr.d	$a7, $xr5, 0
+	xvpickve2gr.d	$t0, $xr5, 1
+	xvpickve2gr.d	$t1, $xr5, 2
+	xvpickve2gr.d	$t2, $xr5, 3
+	xvpickve2gr.d	$t3, $xr7, 0
+	xvpickve2gr.d	$t4, $xr7, 1
+	xvpickve2gr.d	$t5, $xr7, 2
+	xvpickve2gr.d	$t6, $xr7, 3
 	xvpermi.q	$xr5, $xr6, 1
-	vpickve2gr.w	$t7, $vr5, 2
-	vinsgr2vr.d	$vr7, $t7, 0
-	vpickve2gr.w	$t7, $vr5, 3
-	vinsgr2vr.d	$vr7, $t7, 1
-	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$t7, $vr5, 0
-	vinsgr2vr.d	$vr8, $t7, 0
-	vpickve2gr.w	$t7, $vr5, 1
-	vinsgr2vr.d	$vr8, $t7, 1
-	vpickve2gr.w	$t7, $vr6, 2
-	vinsgr2vr.d	$vr5, $t7, 0
-	vpickve2gr.w	$t7, $vr6, 3
-	vinsgr2vr.d	$vr5, $t7, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$t7, $vr6, 0
-	vinsgr2vr.d	$vr9, $t7, 0
-	vpickve2gr.w	$t7, $vr6, 1
-	vinsgr2vr.d	$vr9, $t7, 1
-	xvpickve2gr.d	$t7, $xr9, 0
-	xvpickve2gr.d	$t8, $xr9, 1
-	xvpickve2gr.d	$s5, $xr5, 2
-	xvpickve2gr.d	$s6, $xr5, 3
-	xvpickve2gr.d	$s7, $xr8, 0
-	xvpickve2gr.d	$s8, $xr8, 1
-	xvpickve2gr.d	$ra, $xr7, 2
-	xvpickve2gr.d	$a5, $xr7, 3
+	vext2xv.d.w	$xr5, $xr5
+	vext2xv.d.w	$xr6, $xr6
+	xvpickve2gr.d	$t7, $xr6, 0
+	xvpickve2gr.d	$t8, $xr6, 1
+	xvpickve2gr.d	$s5, $xr6, 2
+	xvpickve2gr.d	$s6, $xr6, 3
+	xvpickve2gr.d	$s7, $xr5, 0
+	xvpickve2gr.d	$s8, $xr5, 1
+	xvpickve2gr.d	$ra, $xr5, 2
+	xvpickve2gr.d	$a5, $xr5, 3
 	alsl.d	$a7, $a7, $s3, 2
 	alsl.d	$t0, $t0, $s3, 2
 	alsl.d	$t1, $t1, $s3, 2
@@ -1125,15 +1093,15 @@ binate_split_select:                    # @binate_split_select
 	ld.w	$t4, $t4, 4
 	ld.w	$t5, $t5, 4
 	ld.w	$t6, $t6, 4
-	vinsgr2vr.w	$vr5, $t3, 0
-	vinsgr2vr.w	$vr5, $t4, 1
-	vinsgr2vr.w	$vr5, $t5, 2
-	vinsgr2vr.w	$vr5, $t6, 3
-	vinsgr2vr.w	$vr6, $a7, 0
-	vinsgr2vr.w	$vr6, $t0, 1
-	vinsgr2vr.w	$vr6, $t1, 2
-	vinsgr2vr.w	$vr6, $t2, 3
-	xvpermi.q	$xr6, $xr5, 2
+	vinsgr2vr.w	$vr5, $a7, 0
+	vinsgr2vr.w	$vr5, $t0, 1
+	vinsgr2vr.w	$vr5, $t1, 2
+	vinsgr2vr.w	$vr5, $t2, 3
+	vinsgr2vr.w	$vr6, $t3, 0
+	vinsgr2vr.w	$vr6, $t4, 1
+	vinsgr2vr.w	$vr6, $t5, 2
+	vinsgr2vr.w	$vr6, $t6, 3
+	xvpermi.q	$xr5, $xr6, 2
 	ld.w	$a7, $t7, 4
 	ld.w	$t0, $t8, 4
 	ld.w	$t1, $s5, 4
@@ -1142,17 +1110,17 @@ binate_split_select:                    # @binate_split_select
 	ld.w	$t4, $s8, 4
 	ld.w	$t5, $ra, 4
 	ld.w	$a5, $a5, 4
-	vinsgr2vr.w	$vr5, $t3, 0
-	vinsgr2vr.w	$vr5, $t4, 1
-	vinsgr2vr.w	$vr5, $t5, 2
-	vinsgr2vr.w	$vr5, $a5, 3
-	vinsgr2vr.w	$vr7, $a7, 0
-	vinsgr2vr.w	$vr7, $t0, 1
-	vinsgr2vr.w	$vr7, $t1, 2
-	vinsgr2vr.w	$vr7, $t2, 3
-	xvpermi.q	$xr7, $xr5, 2
-	xvxori.b	$xr5, $xr6, 255
-	xvxori.b	$xr6, $xr7, 255
+	vinsgr2vr.w	$vr6, $a7, 0
+	vinsgr2vr.w	$vr6, $t0, 1
+	vinsgr2vr.w	$vr6, $t1, 2
+	vinsgr2vr.w	$vr6, $t2, 3
+	vinsgr2vr.w	$vr7, $t3, 0
+	vinsgr2vr.w	$vr7, $t4, 1
+	vinsgr2vr.w	$vr7, $t5, 2
+	vinsgr2vr.w	$vr7, $a5, 3
+	xvpermi.q	$xr6, $xr7, 2
+	xvxori.b	$xr5, $xr5, 255
+	xvxori.b	$xr6, $xr6, 255
 	xvsrl.w	$xr5, $xr5, $xr1
 	xvsrl.w	$xr4, $xr6, $xr4
 	xvand.v	$xr5, $xr5, $xr2
@@ -1189,19 +1157,11 @@ binate_split_select:                    # @binate_split_select
 .LBB3_10:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vsrai.w	$vr3, $vr1, 5
-	vpickve2gr.w	$a6, $vr3, 2
-	vinsgr2vr.d	$vr4, $a6, 0
-	vpickve2gr.w	$a6, $vr3, 3
-	vinsgr2vr.d	$vr4, $a6, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$a6, $vr3, 0
-	vinsgr2vr.d	$vr5, $a6, 0
-	vpickve2gr.w	$a6, $vr3, 1
-	vinsgr2vr.d	$vr5, $a6, 1
-	xvpickve2gr.d	$a6, $xr5, 0
-	xvpickve2gr.d	$a7, $xr5, 1
-	xvpickve2gr.d	$t0, $xr4, 2
-	xvpickve2gr.d	$t1, $xr4, 3
+	vext2xv.d.w	$xr3, $xr3
+	xvpickve2gr.d	$a6, $xr3, 0
+	xvpickve2gr.d	$a7, $xr3, 1
+	xvpickve2gr.d	$t0, $xr3, 2
+	xvpickve2gr.d	$t1, $xr3, 3
 	alsl.d	$a6, $a6, $s3, 2
 	alsl.d	$a7, $a7, $s3, 2
 	alsl.d	$t0, $t0, $s3, 2

@@ -167,40 +167,16 @@ bigTableSetup:                          # @bigTableSetup
 	slli.d	$t0, $t0, 2
 	ldx.wu	$t0, $a1, $t0
 	xvpermi.q	$xr7, $xr6, 1
-	vpickve2gr.w	$t1, $vr7, 2
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr8, $t1, 0
-	vpickve2gr.w	$t1, $vr7, 3
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr8, $t1, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$t1, $vr7, 0
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr9, $t1, 0
-	vpickve2gr.w	$t1, $vr7, 1
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr9, $t1, 1
-	vpickve2gr.w	$t1, $vr6, 2
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr7, $t1, 0
-	vpickve2gr.w	$t1, $vr6, 3
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr7, $t1, 1
-	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$t1, $vr6, 0
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr10, $t1, 0
-	vpickve2gr.w	$t1, $vr6, 1
-	andi	$t1, $t1, 15
-	vinsgr2vr.d	$vr10, $t1, 1
-	xvpickve2gr.d	$t1, $xr10, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	xvpickve2gr.d	$t3, $xr7, 2
-	xvpickve2gr.d	$t4, $xr7, 3
-	xvpickve2gr.d	$t5, $xr9, 0
-	xvpickve2gr.d	$t6, $xr9, 1
-	xvpickve2gr.d	$t7, $xr8, 2
-	xvpickve2gr.d	$t8, $xr8, 3
+	vext2xv.du.wu	$xr7, $xr7
+	vext2xv.du.wu	$xr6, $xr6
+	xvpickve2gr.d	$t1, $xr6, 0
+	xvpickve2gr.d	$t2, $xr6, 1
+	xvpickve2gr.d	$t3, $xr6, 2
+	xvpickve2gr.d	$t4, $xr6, 3
+	xvpickve2gr.d	$t5, $xr7, 0
+	xvpickve2gr.d	$t6, $xr7, 1
+	xvpickve2gr.d	$t7, $xr7, 2
+	xvpickve2gr.d	$t8, $xr7, 3
 	slli.d	$t1, $t1, 2
 	slli.d	$t2, $t2, 2
 	slli.d	$t3, $t3, 2

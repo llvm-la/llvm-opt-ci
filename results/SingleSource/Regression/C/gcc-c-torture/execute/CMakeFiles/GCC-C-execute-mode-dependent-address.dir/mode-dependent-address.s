@@ -35,11 +35,9 @@ f883b:                                  # @f883b
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a1, 0
 	vinsgr2vr.d	$vr2, $a6, 0
-	vmini.h	$vr2, $vr2, 1
-	vilvl.h	$vr2, $vr2, $vr2
 	vld	$vr3, $a2, 0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
+	vmini.h	$vr2, $vr2, 1
+	vext2xv.w.h	$xr2, $xr2
 	xvld	$xr4, $a3, 0
 	vsra.w	$vr2, $vr2, $vr3
 	vadd.w	$vr2, $vr2, $vr1
@@ -368,17 +366,17 @@ f883b:                                  # @f883b
 main:                                   # @main
 # %bb.0:                                # %vector.ph
 	pcalau12i	$a0, %pc_hi20(arg4)
-	addi.d	$a5, $a0, %pc_lo12(arg4)
+	addi.d	$a4, $a0, %pc_lo12(arg4)
 	lu12i.w	$a0, 12320
 	ori	$a0, $a0, 256
-	st.w	$a0, $a5, 0
+	st.w	$a0, $a4, 0
 	lu12i.w	$a1, 28768
 	ori	$a1, $a1, 1284
 	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
 	xvld	$xr0, $a2, %pc_lo12(.LCPI1_0)
 	lu32i.d	$a1, -390904
 	lu52i.d	$a1, $a1, 176
-	st.d	$a1, $a5, 4
+	st.d	$a1, $a4, 4
 	pcalau12i	$a1, %pc_hi20(arg1)
 	addi.d	$a1, $a1, %pc_lo12(arg1)
 	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
@@ -394,51 +392,51 @@ main:                                   # @main
 	vst	$vr0, $a2, 16
 	pcalau12i	$a3, %pc_hi20(arg3)
 	addi.d	$a3, $a3, %pc_lo12(arg3)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_4)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_4)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_4)
+	xvld	$xr0, $a5, %pc_lo12(.LCPI1_4)
 	xvst	$xr2, $a3, 0
 	xvst	$xr0, $a3, 32
-	lu12i.w	$a4, 61664
+	lu12i.w	$a5, 61664
 	pcalau12i	$a6, %pc_hi20(.LCPI1_5)
 	vld	$vr0, $a6, %pc_lo12(.LCPI1_5)
 	pcalau12i	$a6, %pc_hi20(.LCPI1_6)
 	vld	$vr1, $a6, %pc_lo12(.LCPI1_6)
-	ori	$a4, $a4, 3340
-	lu32i.d	$a4, 135440
+	ori	$a5, $a5, 3340
+	lu32i.d	$a5, 135440
 	vst	$vr0, $a2, 32
 	vst	$vr1, $a2, 48
 	pcalau12i	$a6, %pc_hi20(.LCPI1_7)
 	xvld	$xr0, $a6, %pc_lo12(.LCPI1_7)
 	pcalau12i	$a6, %pc_hi20(.LCPI1_8)
 	xvld	$xr1, $a6, %pc_lo12(.LCPI1_8)
-	lu52i.d	$a4, $a4, 305
-	st.d	$a4, $a5, 12
+	lu52i.d	$a5, $a5, 305
+	st.d	$a5, $a4, 12
 	xvst	$xr0, $a3, 64
 	xvst	$xr1, $a3, 96
-	lu12i.w	$a4, 94561
-	ori	$a4, $a4, 1300
+	lu12i.w	$a5, 94561
+	ori	$a5, $a5, 1300
 	pcalau12i	$a6, %pc_hi20(.LCPI1_9)
 	vld	$vr0, $a6, %pc_lo12(.LCPI1_9)
-	st.w	$a4, $a5, 20
-	pcalau12i	$a4, %pc_hi20(.LCPI1_10)
-	vld	$vr1, $a4, %pc_lo12(.LCPI1_10)
+	st.w	$a5, $a4, 20
+	pcalau12i	$a5, %pc_hi20(.LCPI1_10)
+	vld	$vr1, $a5, %pc_lo12(.LCPI1_10)
 	vst	$vr0, $a1, 32
-	pcalau12i	$a4, %pc_hi20(.LCPI1_11)
-	vld	$vr0, $a4, %pc_lo12(.LCPI1_11)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_11)
+	vld	$vr0, $a5, %pc_lo12(.LCPI1_11)
 	vst	$vr1, $a2, 64
-	pcalau12i	$a4, %pc_hi20(.LCPI1_12)
-	xvld	$xr1, $a4, %pc_lo12(.LCPI1_12)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_12)
+	xvld	$xr1, $a5, %pc_lo12(.LCPI1_12)
 	vst	$vr0, $a2, 80
-	pcalau12i	$a4, %pc_hi20(.LCPI1_13)
-	xvld	$xr0, $a4, %pc_lo12(.LCPI1_13)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_13)
+	xvld	$xr0, $a5, %pc_lo12(.LCPI1_13)
 	xvst	$xr1, $a3, 128
-	lu12i.w	$a4, 111009
-	ori	$a4, $a4, 2328
+	lu12i.w	$a5, 111009
+	ori	$a5, $a5, 2328
 	xvst	$xr0, $a3, 160
-	move	$a6, $a4
+	move	$a6, $a5
 	lu32i.d	$a6, -123620
 	lu52i.d	$a6, $a6, 497
-	st.d	$a6, $a5, 24
+	st.d	$a6, $a4, 24
 	lu12i.w	$a6, 400
 	ori	$a6, $a6, 24
 	pcalau12i	$a7, %pc_hi20(.LCPI1_14)
@@ -493,7 +491,7 @@ main:                                   # @main
 	pcalau12i	$t1, %pc_hi20(.LCPI1_26)
 	xvld	$xr1, $t1, %pc_lo12(.LCPI1_26)
 	ori	$a7, $a7, 2344
-	st.d	$t0, $a5, 32
+	st.d	$t0, $a4, 32
 	move	$t0, $a7
 	vst	$vr0, $a2, 176
 	xvst	$xr1, $a3, 320
@@ -517,7 +515,7 @@ main:                                   # @main
 	xvld	$xr0, $t2, %pc_lo12(.LCPI1_31)
 	pcalau12i	$t2, %pc_hi20(.LCPI1_32)
 	xvld	$xr1, $t2, %pc_lo12(.LCPI1_32)
-	st.d	$t1, $a5, 40
+	st.d	$t1, $a4, 40
 	move	$t1, $t0
 	lu32i.d	$t1, 406836
 	xvst	$xr0, $a3, 384
@@ -535,7 +533,7 @@ main:                                   # @main
 	pcalau12i	$t3, %pc_hi20(.LCPI1_36)
 	xvld	$xr1, $t3, %pc_lo12(.LCPI1_36)
 	ori	$t1, $t1, 2360
-	st.d	$t2, $a5, 48
+	st.d	$t2, $a4, 48
 	move	$t2, $t1
 	vst	$vr0, $a2, 240
 	xvst	$xr1, $a3, 448
@@ -559,7 +557,7 @@ main:                                   # @main
 	xvld	$xr0, $t4, %pc_lo12(.LCPI1_41)
 	pcalau12i	$t4, %pc_hi20(.LCPI1_42)
 	xvld	$xr1, $t4, %pc_lo12(.LCPI1_42)
-	st.d	$t3, $a5, 56
+	st.d	$t3, $a4, 56
 	move	$t3, $t2
 	lu32i.d	$t3, 410948
 	xvst	$xr0, $a3, 512
@@ -577,7 +575,7 @@ main:                                   # @main
 	pcalau12i	$t5, %pc_hi20(.LCPI1_46)
 	xvld	$xr1, $t5, %pc_lo12(.LCPI1_46)
 	ori	$t3, $t3, 2376
-	st.d	$t4, $a5, 64
+	st.d	$t4, $a4, 64
 	move	$t4, $t3
 	vst	$vr0, $a2, 304
 	xvst	$xr1, $a3, 576
@@ -601,7 +599,7 @@ main:                                   # @main
 	xvld	$xr0, $t6, %pc_lo12(.LCPI1_51)
 	pcalau12i	$t6, %pc_hi20(.LCPI1_52)
 	xvld	$xr1, $t6, %pc_lo12(.LCPI1_52)
-	st.d	$t5, $a5, 72
+	st.d	$t5, $a4, 72
 	move	$t5, $t4
 	lu32i.d	$t5, 415060
 	xvst	$xr0, $a3, 640
@@ -611,7 +609,7 @@ main:                                   # @main
 	pcalau12i	$t6, %pc_hi20(.LCPI1_54)
 	vld	$vr1, $t6, %pc_lo12(.LCPI1_54)
 	lu52i.d	$t5, $t5, 1397
-	st.d	$t5, $a5, 80
+	st.d	$t5, $a4, 80
 	vst	$vr0, $a1, 176
 	vst	$vr1, $a2, 352
 	pcalau12i	$t5, %pc_hi20(.LCPI1_55)
@@ -629,11 +627,11 @@ main:                                   # @main
 	move	$t6, $t5
 	lu32i.d	$t6, -107172
 	lu52i.d	$t6, $t6, 1525
-	st.d	$t6, $a5, 88
+	st.d	$t6, $a4, 88
 	xvst	$xr1, $a3, 736
 	vrepli.w	$vr1, 32
-	pcalau12i	$a5, %pc_hi20(result)
-	addi.d	$a5, $a5, %pc_lo12(result)
+	pcalau12i	$a4, %pc_hi20(result)
+	addi.d	$a4, $a4, %pc_lo12(result)
 	move	$t6, $zero
 	ori	$t7, $zero, 96
 	.p2align	4, , 16
@@ -641,11 +639,9 @@ main:                                   # @main
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$t8, $a1, 0
 	vinsgr2vr.d	$vr2, $t8, 0
-	vmini.h	$vr2, $vr2, 1
-	vilvl.h	$vr2, $vr2, $vr2
 	vld	$vr3, $a2, 0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
+	vmini.h	$vr2, $vr2, 1
+	vext2xv.w.h	$xr2, $xr2
 	xvld	$xr4, $a3, 0
 	vsra.w	$vr2, $vr2, $vr3
 	vadd.w	$vr2, $vr2, $vr1
@@ -661,7 +657,7 @@ main:                                   # @main
 	vshuf.b	$vr2, $vr0, $vr2, $vr0
 	vori.b	$vr2, $vr2, 251
 	vand.v	$vr2, $vr2, $vr3
-	add.d	$t8, $a5, $t6
+	add.d	$t8, $a4, $t6
 	vstelm.w	$vr2, $t8, 0, 0
 	addi.d	$t6, $t6, 4
 	addi.d	$a3, $a3, 32
@@ -669,85 +665,61 @@ main:                                   # @main
 	addi.d	$a1, $a1, 8
 	bne	$t6, $t7, .LBB1_1
 # %bb.2:                                # %vector.body33
-	ld.w	$a1, $a5, 0
-	bne	$a1, $a0, .LBB1_27
+	ld.d	$a1, $a4, 0
+	bstrins.d	$a0, $a0, 57, 32
+	bne	$a1, $a0, .LBB1_15
 # %bb.3:                                # %vector.body33
-	ld.w	$a1, $a5, 4
-	bne	$a1, $a0, .LBB1_27
+	ld.d	$a0, $a4, 8
+	lu12i.w	$a1, 45216
+	ori	$a1, $a1, 2312
+	bstrins.d	$a1, $a1, 59, 32
+	bne	$a0, $a1, .LBB1_15
 # %bb.4:                                # %vector.body33
-	ld.w	$a1, $a5, 8
-	lu12i.w	$a0, 45216
-	ori	$a0, $a0, 2312
-	bne	$a1, $a0, .LBB1_27
+	ld.d	$a0, $a4, 16
+	lu12i.w	$a1, 78113
+	ori	$a1, $a1, 272
+	bstrins.d	$a1, $a1, 60, 32
+	bne	$a0, $a1, .LBB1_15
 # %bb.5:                                # %vector.body33
-	ld.w	$a1, $a5, 12
-	bne	$a1, $a0, .LBB1_27
+	ld.d	$a0, $a4, 24
+	bstrins.d	$a5, $a5, 60, 32
+	bne	$a0, $a5, .LBB1_15
 # %bb.6:                                # %vector.body33
-	ld.w	$a1, $a5, 16
-	lu12i.w	$a0, 78113
-	ori	$a0, $a0, 272
-	bne	$a1, $a0, .LBB1_27
+	ld.d	$a0, $a4, 32
+	bstrins.d	$a6, $a6, 61, 32
+	bne	$a0, $a6, .LBB1_15
 # %bb.7:                                # %vector.body33
-	ld.w	$a1, $a5, 20
-	bne	$a1, $a0, .LBB1_27
+	ld.d	$a0, $a4, 40
+	bstrins.d	$a7, $a7, 61, 32
+	bne	$a0, $a7, .LBB1_15
 # %bb.8:                                # %vector.body33
-	ld.w	$a0, $a5, 24
-	bne	$a0, $a4, .LBB1_27
+	ld.d	$a0, $a4, 48
+	bstrins.d	$t0, $t0, 61, 32
+	bne	$a0, $t0, .LBB1_15
 # %bb.9:                                # %vector.body33
-	ld.w	$a0, $a5, 28
-	bne	$a0, $a4, .LBB1_27
+	ld.d	$a0, $a4, 56
+	bstrins.d	$t1, $t1, 61, 32
+	bne	$a0, $t1, .LBB1_15
 # %bb.10:                               # %vector.body33
-	ld.w	$a0, $a5, 32
-	bne	$a0, $a6, .LBB1_27
+	ld.d	$a0, $a4, 64
+	bstrins.d	$t2, $t2, 62, 32
+	bne	$a0, $t2, .LBB1_15
 # %bb.11:                               # %vector.body33
-	ld.w	$a0, $a5, 36
-	bne	$a0, $a6, .LBB1_27
+	ld.d	$a0, $a4, 72
+	bstrins.d	$t3, $t3, 62, 32
+	bne	$a0, $t3, .LBB1_15
 # %bb.12:                               # %vector.body33
-	ld.w	$a0, $a5, 40
-	bne	$a0, $a7, .LBB1_27
+	ld.d	$a0, $a4, 80
+	bstrins.d	$t4, $t4, 62, 32
+	bne	$a0, $t4, .LBB1_15
 # %bb.13:                               # %vector.body33
-	ld.w	$a0, $a5, 44
-	bne	$a0, $a7, .LBB1_27
-# %bb.14:                               # %vector.body33
-	ld.w	$a0, $a5, 48
-	bne	$a0, $t0, .LBB1_27
-# %bb.15:                               # %vector.body33
-	ld.w	$a0, $a5, 52
-	bne	$a0, $t0, .LBB1_27
-# %bb.16:                               # %vector.body33
-	ld.w	$a0, $a5, 56
-	bne	$a0, $t1, .LBB1_27
-# %bb.17:                               # %vector.body33
-	ld.w	$a0, $a5, 60
-	bne	$a0, $t1, .LBB1_27
-# %bb.18:                               # %vector.body33
-	ld.w	$a0, $a5, 64
-	bne	$a0, $t2, .LBB1_27
-# %bb.19:                               # %vector.body33
-	ld.w	$a0, $a5, 68
-	bne	$a0, $t2, .LBB1_27
-# %bb.20:                               # %vector.body33
-	ld.w	$a0, $a5, 72
-	bne	$a0, $t3, .LBB1_27
-# %bb.21:                               # %vector.body33
-	ld.w	$a0, $a5, 76
-	bne	$a0, $t3, .LBB1_27
-# %bb.22:                               # %vector.body33
-	ld.w	$a0, $a5, 80
-	bne	$a0, $t4, .LBB1_27
-# %bb.23:                               # %vector.body33
-	ld.w	$a0, $a5, 84
-	bne	$a0, $t4, .LBB1_27
-# %bb.24:                               # %vector.body33
-	ld.w	$a0, $a5, 88
-	bne	$a0, $t5, .LBB1_27
-# %bb.25:                               # %vector.body33
-	ld.w	$a0, $a5, 92
-	bne	$a0, $t5, .LBB1_27
-# %bb.26:                               # %vector.body.interim.23
+	ld.d	$a0, $a4, 88
+	bstrins.d	$t5, $t5, 62, 32
+	bne	$a0, $t5, .LBB1_15
+# %bb.14:                               # %vector.body.interim.11
 	move	$a0, $zero
 	ret
-.LBB1_27:                               # %vector.early.exit
+.LBB1_15:                               # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0
 .Lfunc_end1:
@@ -784,7 +756,7 @@ arg3:
 
 	.type	result,@object                  # @result
 	.globl	result
-	.p2align	2, 0x0
+	.p2align	3, 0x0
 result:
 	.space	96
 	.size	result, 96

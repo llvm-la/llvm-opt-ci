@@ -557,7 +557,7 @@ uloop:                                  # @uloop
 	vinsgr2vr.w	$vr2, $a3, 1
 	vabsd.w	$vr1, $vr2, $vr1
 	vslt.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 16
+	vext2xv.d.w	$xr1, $xr0
 	vpickve2gr.d	$a6, $vr0, 0
 	andi	$a6, $a6, 1
 	masknez	$a1, $a1, $a6

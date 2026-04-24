@@ -488,14 +488,16 @@ _ZN9benchmark12ComputeStatsERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @
 	ld.d	$s1, $a1, 8
 	st.d	$zero, $a0, 16
 	vrepli.b	$vr0, 0
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	vst	$vr0, $a0, 0
 	sub.d	$a0, $s1, $a2
 	move	$s4, $a2
 	beq	$a2, $s1, .LBB4_3
 # %bb.1:                                # %.lr.ph.i.i.preheader
 	addi.d	$a1, $a0, -592
-	ori	$a2, $zero, 1776
-	bgeu	$a1, $a2, .LBB4_4
+	srli.d	$a2, $a1, 4
+	ori	$a3, $zero, 259
+	bgeu	$a2, $a3, .LBB4_4
 # %bb.2:
 	move	$a4, $zero
 	move	$a1, $s4
@@ -511,44 +513,74 @@ _ZN9benchmark12ComputeStatsERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @
 	mulh.du	$a1, $a1, $a2
 	srli.d	$a1, $a1, 9
 	addi.d	$a2, $a1, 1
-	bstrpick.d	$a1, $a2, 55, 2
-	slli.d	$a3, $a1, 2
-	ori	$a4, $zero, 2368
+	bstrpick.d	$a1, $a2, 55, 3
+	slli.d	$a3, $a1, 3
+	lu12i.w	$a4, 1
+	ori	$a4, $a4, 640
 	mul.d	$a1, $a1, $a4
 	add.d	$a1, $s4, $a1
-	addi.d	$a4, $s4, 1536
-	vrepli.d	$vr1, 1
-	move	$a5, $a3
-	vori.b	$vr2, $vr0, 0
+	addi.d	$a5, $s4, 2047
+	addi.d	$a5, $a5, 673
+	xvrepli.b	$xr0, 0
+	lu12i.w	$a6, -1
+	ori	$a6, $a6, 1728
+	xvrepli.d	$xr1, 1
+	move	$a7, $a3
+	xvori.b	$xr2, $xr0, 0
 	.p2align	4, , 16
 .LBB4_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a4, -1184
-	ld.w	$a7, $a4, -592
-	ld.w	$t0, $a4, 0
-	ld.w	$t1, $a4, 592
-	vinsgr2vr.w	$vr3, $a6, 0
-	vinsgr2vr.w	$vr3, $a7, 1
+	ldx.w	$t0, $a5, $a6
+	ld.w	$t1, $a5, -1776
+	ld.w	$t2, $a5, -1184
+	ld.w	$t3, $a5, -592
+	vinsgr2vr.w	$vr3, $t0, 0
+	vinsgr2vr.w	$vr3, $t1, 1
+	vinsgr2vr.w	$vr3, $t2, 2
+	vinsgr2vr.w	$vr3, $t3, 3
+	ld.w	$t0, $a5, 0
+	ld.w	$t1, $a5, 592
+	ld.w	$t2, $a5, 1184
+	ld.w	$t3, $a5, 1776
 	vinsgr2vr.w	$vr4, $t0, 0
 	vinsgr2vr.w	$vr4, $t1, 1
+	vinsgr2vr.w	$vr4, $t2, 2
+	vinsgr2vr.w	$vr4, $t3, 3
 	vseqi.w	$vr3, $vr3, 0
 	vxori.b	$vr3, $vr3, 255
-	vshuf4i.w	$vr3, $vr3, 16
-	vand.v	$vr3, $vr3, $vr1
+	vpickve2gr.w	$t0, $vr3, 2
+	vinsgr2vr.d	$vr5, $t0, 0
+	vpickve2gr.w	$t0, $vr3, 3
+	vinsgr2vr.d	$vr5, $t0, 1
+	vpickve2gr.w	$t0, $vr3, 0
+	vinsgr2vr.d	$vr6, $t0, 0
+	vpickve2gr.w	$t0, $vr3, 1
+	vinsgr2vr.d	$vr6, $t0, 1
+	xvpermi.q	$xr6, $xr5, 2
+	xvand.v	$xr3, $xr6, $xr1
 	vseqi.w	$vr4, $vr4, 0
 	vxori.b	$vr4, $vr4, 255
-	vshuf4i.w	$vr4, $vr4, 16
-	vand.v	$vr4, $vr4, $vr1
-	vadd.d	$vr0, $vr0, $vr3
-	vadd.d	$vr2, $vr2, $vr4
-	addi.d	$a5, $a5, -4
-	addi.d	$a4, $a4, 2047
-	addi.d	$a4, $a4, 321
-	bnez	$a5, .LBB4_5
+	vpickve2gr.w	$t0, $vr4, 2
+	vinsgr2vr.d	$vr5, $t0, 0
+	vpickve2gr.w	$t0, $vr4, 3
+	vinsgr2vr.d	$vr5, $t0, 1
+	vpickve2gr.w	$t0, $vr4, 0
+	vinsgr2vr.d	$vr6, $t0, 0
+	vpickve2gr.w	$t0, $vr4, 1
+	vinsgr2vr.d	$vr6, $t0, 1
+	xvpermi.q	$xr6, $xr5, 2
+	xvand.v	$xr4, $xr6, $xr1
+	xvadd.d	$xr0, $xr0, $xr3
+	xvadd.d	$xr2, $xr2, $xr4
+	addi.d	$a7, $a7, -8
+	add.d	$a5, $a5, $a4
+	bnez	$a7, .LBB4_5
 # %bb.6:                                # %middle.block
-	vadd.d	$vr0, $vr2, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a4, $vr0, 0
+	xvadd.d	$xr0, $xr2, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a4, $xr0, 0
 	beq	$a2, $a3, .LBB4_8
 	.p2align	4, , 16
 .LBB4_7:                                # %.lr.ph.i.i
@@ -571,11 +603,10 @@ _ZN9benchmark12ComputeStatsERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @
 	bltu	$a0, $a1, .LBB4_207
 # %bb.9:
 	st.d	$zero, $sp, 832
-	vrepli.b	$vr0, 0
+	vld	$vr0, $sp, 80                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 816
 	st.d	$zero, $sp, 808
 	srli.d	$a0, $s0, 60
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	vst	$vr0, $sp, 792
 	bnez	$a0, .LBB4_214
 # %bb.10:

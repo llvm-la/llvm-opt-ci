@@ -142,6 +142,7 @@ _ZN8NWindows5NTime18FileTimeToUnixTimeERK9_FILETIMERj: # @_ZN8NWindows5NTime18Fi
 	.type	_ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy,@function
 _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy
 # %bb.0:
+	addi.d	$sp, $sp, -16
 	move	$a7, $a0
 	addi.w	$t1, $a0, -1601
 	lu12i.w	$a0, 2
@@ -160,9 +161,8 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	sltui	$a2, $a5, 60
 	and	$a0, $a2, $a0
 	st.d	$zero, $a6, 0
-	beqz	$a0, .LBB4_14
+	beqz	$a0, .LBB4_10
 # %bb.1:
-	addi.d	$sp, $sp, -16
 	ori	$a2, $zero, 365
 	mul.d	$a2, $t1, $a2
 	bstrpick.d	$t2, $t1, 31, 2
@@ -186,7 +186,7 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	st.w	$t2, $sp, 8
 	andi	$t2, $a7, 3
 	st.d	$t1, $sp, 0
-	bnez	$t2, .LBB4_5
+	bnez	$t2, .LBB4_4
 # %bb.2:
 	bstrpick.d	$a7, $a7, 15, 0
 	lu12i.w	$t1, -251659
@@ -199,7 +199,7 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	ori	$t2, $t2, 3932
 	lu32i.d	$t2, -41944
 	lu52i.d	$t2, $t2, 40
-	bltu	$t2, $t1, .LBB4_4
+	bltu	$t2, $t1, .LBB4_16
 # %bb.3:
 	lu12i.w	$t1, 251658
 	ori	$t1, $t1, 984
@@ -209,63 +209,28 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	ori	$t2, $zero, 400
 	mul.d	$t1, $t1, $t2
 	sub.d	$a7, $a7, $t1
-	bnez	$a7, .LBB4_5
+	beqz	$a7, .LBB4_16
 .LBB4_4:
-	ori	$a7, $zero, 29
-	st.b	$a7, $sp, 1
-.LBB4_5:
-	beqz	$t0, .LBB4_13
-# %bb.6:                                # %.lr.ph.preheader
-	ori	$t1, $zero, 8
+	beqz	$t0, .LBB4_9
+.LBB4_5:                                # %iter.check
+	ori	$t1, $zero, 4
 	bstrpick.d	$a7, $t0, 31, 0
-	bgeu	$t0, $t1, .LBB4_8
-# %bb.7:
+	bgeu	$t0, $t1, .LBB4_11
+# %bb.6:
 	move	$t0, $zero
-	b	.LBB4_11
-.LBB4_8:                                # %vector.ph
-	bstrpick.d	$t0, $a7, 30, 3
-	vrepli.b	$vr0, 0
-	slli.d	$t0, $t0, 3
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.w	$vr1, $a2, 0
-	addi.d	$a2, $sp, 4
-	move	$t1, $t0
-	vori.b	$vr2, $vr0, 0
-	.p2align	4, , 16
-.LBB4_9:                                # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	ld.w	$t2, $a2, -4
-	ld.w	$t3, $a2, 0
-	vinsgr2vr.w	$vr3, $t2, 0
-	vinsgr2vr.w	$vr4, $t3, 0
-	vilvl.b	$vr3, $vr0, $vr3
-	vilvl.h	$vr3, $vr0, $vr3
-	vilvl.b	$vr4, $vr0, $vr4
-	vilvl.h	$vr4, $vr0, $vr4
-	vadd.w	$vr1, $vr1, $vr3
-	vadd.w	$vr2, $vr2, $vr4
-	addi.d	$t1, $t1, -8
-	addi.d	$a2, $a2, 8
-	bnez	$t1, .LBB4_9
-# %bb.10:                               # %middle.block
-	vadd.w	$vr0, $vr2, $vr1
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a2, $vr0, 0
-	beq	$t0, $a7, .LBB4_13
-.LBB4_11:                               # %.lr.ph.preheader73
+.LBB4_7:                                # %.lr.ph.preheader
 	addi.d	$t1, $sp, 0
 	add.d	$t1, $t1, $t0
 	sub.d	$a7, $a7, $t0
 	.p2align	4, , 16
-.LBB4_12:                               # %.lr.ph
+.LBB4_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$t0, $t1, 0
 	add.w	$a2, $a2, $t0
 	addi.d	$a7, $a7, -1
 	addi.d	$t1, $t1, 1
-	bnez	$a7, .LBB4_12
-.LBB4_13:                               # %._crit_edge
+	bnez	$a7, .LBB4_8
+.LBB4_9:                                # %._crit_edge
 	add.d	$a1, $a2, $a1
 	slli.d	$a2, $a1, 4
 	alsl.d	$a1, $a1, $a2, 3
@@ -277,9 +242,43 @@ _ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy: # @_ZN8NWindows5NTime19GetSeco
 	mul.d	$a1, $a1, $a2
 	add.d	$a1, $a1, $a5
 	st.d	$a1, $a6, 0
+.LBB4_10:
 	addi.d	$sp, $sp, 16
-.LBB4_14:
 	ret
+.LBB4_11:                               # %vector.main.loop.iter.check
+	ori	$t1, $zero, 16
+	bgeu	$t0, $t1, .LBB4_15
+# %bb.12:                               # %vec.epilog.ph
+	andi	$t0, $a7, 12
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a2, 0
+	addi.d	$a2, $sp, 0
+	move	$t1, $t0
+	.p2align	4, , 16
+.LBB4_13:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$t2, $a2, 0
+	vinsgr2vr.w	$vr1, $t2, 0
+	vext2xv.wu.bu	$xr1, $xr1
+	vadd.w	$vr0, $vr0, $vr1
+	addi.d	$t1, $t1, -4
+	addi.d	$a2, $a2, 4
+	bnez	$t1, .LBB4_13
+# %bb.14:                               # %vec.epilog.middle.block
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
+	bne	$t0, $a7, .LBB4_7
+	b	.LBB4_9
+	.p2align	4, , 16
+.LBB4_15:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	b	.LBB4_15
+.LBB4_16:
+	ori	$a7, $zero, 29
+	st.b	$a7, $sp, 1
+	bnez	$t0, .LBB4_5
+	b	.LBB4_9
 .Lfunc_end4:
 	.size	_ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy, .Lfunc_end4-_ZN8NWindows5NTime19GetSecondsSince1601EjjjjjjRy
                                         # -- End function

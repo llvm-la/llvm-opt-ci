@@ -961,9 +961,20 @@ FmoGetPreviousMBNr:                     # @FmoGetPreviousMBNr
 .Lfunc_end7:
 	.size	FmoGetPreviousMBNr, .Lfunc_end7-FmoGetPreviousMBNr
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function FmoGetLastCodedMBOfSliceGroup
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function FmoGetLastCodedMBOfSliceGroup
 .LCPI8_0:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI8_1:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -978,85 +989,136 @@ FmoGetLastCodedMBOfSliceGroup:          # @FmoGetLastCodedMBOfSliceGroup
 	pcalau12i	$a1, %got_pc_hi20(img)
 	ld.d	$a1, $a1, %got_pc_lo12(img)
 	ld.d	$a1, $a1, 0
-	ldptr.w	$a2, $a1, 15348
-	blez	$a2, .LBB8_3
-# %bb.1:                                # %.lr.ph
-	pcalau12i	$a1, %pc_hi20(MBAmap)
-	ld.d	$a3, $a1, %pc_lo12(MBAmap)
-	ori	$a1, $zero, 8
-	bgeu	$a2, $a1, .LBB8_4
+	ldptr.w	$a1, $a1, 15348
+	blez	$a1, .LBB8_3
+# %bb.1:                                # %iter.check
+	pcalau12i	$a2, %pc_hi20(MBAmap)
+	ld.d	$a2, $a2, %pc_lo12(MBAmap)
+	ori	$a3, $zero, 4
+	bgeu	$a1, $a3, .LBB8_4
 # %bb.2:
-	move	$a1, $zero
-	addi.d	$a4, $zero, -1
-	b	.LBB8_7
+	move	$a3, $zero
+	addi.d	$a6, $zero, -1
+	b	.LBB8_13
 .LBB8_3:
-	addi.d	$a4, $zero, -1
-	addi.w	$a0, $a4, 0
+	addi.d	$a6, $zero, -1
+	addi.w	$a0, $a6, 0
 	ret
-.LBB8_4:                                # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 3
-	slli.d	$a1, $a1, 3
-	vreplgr2vr.w	$vr0, $a0
-	pcalau12i	$a4, %pc_hi20(.LCPI8_0)
-	vld	$vr1, $a4, %pc_lo12(.LCPI8_0)
-	addi.d	$a4, $a3, 4
-	vldi	$vr2, -3200
-	vrepli.b	$vr3, 0
-	move	$a5, $a1
-	vldi	$vr4, -3200
+.LBB8_4:                                # %vector.main.loop.iter.check
+	ori	$a3, $zero, 16
+	lu12i.w	$a4, -524288
+	bgeu	$a1, $a3, .LBB8_6
+# %bb.5:
+	move	$a3, $zero
+	addi.w	$a6, $zero, -1
+	b	.LBB8_10
+.LBB8_6:                                # %vector.ph
+	andi	$a5, $a1, 12
+	bstrpick.d	$a3, $a1, 30, 4
+	slli.d	$a3, $a3, 4
+	pcalau12i	$a6, %pc_hi20(.LCPI8_0)
+	xvld	$xr0, $a6, %pc_lo12(.LCPI8_0)
+	xvreplgr2vr.w	$xr1, $a0
+	xvldi	$xr2, -3200
+	addi.d	$a6, $a2, 8
+	move	$a7, $a3
+	xvori.b	$xr3, $xr2, 0
 	.p2align	4, , 16
-.LBB8_5:                                # %vector.body
+.LBB8_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a4, -4
-	ld.w	$a7, $a4, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	vaddi.wu	$vr6, $vr1, 4
-	vinsgr2vr.w	$vr7, $a7, 0
-	vilvl.b	$vr5, $vr3, $vr5
-	vilvl.h	$vr5, $vr3, $vr5
-	vilvl.b	$vr7, $vr3, $vr7
-	vilvl.h	$vr7, $vr3, $vr7
-	vseq.w	$vr5, $vr0, $vr5
-	vseq.w	$vr7, $vr0, $vr7
-	vbitsel.v	$vr2, $vr2, $vr1, $vr5
-	vbitsel.v	$vr4, $vr4, $vr6, $vr7
-	vaddi.wu	$vr1, $vr1, 8
-	addi.d	$a5, $a5, -8
-	addi.d	$a4, $a4, 8
-	bnez	$a5, .LBB8_5
-# %bb.6:                                # %middle.block
-	vmax.w	$vr0, $vr2, $vr4
+	ld.d	$t0, $a6, -8
+	ld.d	$t1, $a6, 0
+	xvaddi.wu	$xr4, $xr0, 8
+	vinsgr2vr.d	$vr5, $t0, 0
+	vinsgr2vr.d	$vr6, $t1, 0
+	vext2xv.wu.bu	$xr5, $xr5
+	vext2xv.wu.bu	$xr6, $xr6
+	xvseq.w	$xr5, $xr1, $xr5
+	xvseq.w	$xr6, $xr1, $xr6
+	xvbitsel.v	$xr2, $xr2, $xr0, $xr5
+	xvbitsel.v	$xr3, $xr3, $xr4, $xr6
+	xvaddi.wu	$xr0, $xr0, 16
+	addi.d	$a7, $a7, -16
+	addi.d	$a6, $a6, 16
+	bnez	$a7, .LBB8_7
+# %bb.8:                                # %middle.block
+	xvmax.w	$xr0, $xr2, $xr3
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.w	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.w	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vmax.w	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a4, $vr0, 0
-	lu12i.w	$a5, -524288
-	xor	$a5, $a4, $a5
-	sltui	$a5, $a5, 1
-	masknez	$a4, $a4, $a5
-	addi.d	$a6, $zero, -1
-	maskeqz	$a5, $a6, $a5
-	or	$a4, $a5, $a4
-	beq	$a1, $a2, .LBB8_9
-.LBB8_7:                                # %scalar.ph.preheader
-	add.d	$a3, $a3, $a1
-	sub.d	$a2, $a2, $a1
+	vpickve2gr.w	$a6, $vr0, 0
+	xor	$a7, $a6, $a4
+	sltui	$a7, $a7, 1
+	masknez	$a6, $a6, $a7
+	addi.w	$t0, $zero, -1
+	maskeqz	$a7, $t0, $a7
+	or	$a6, $a7, $a6
+	beq	$a3, $a1, .LBB8_15
+# %bb.9:                                # %vec.epilog.iter.check
+	beqz	$a5, .LBB8_13
+.LBB8_10:                               # %vec.epilog.ph
+	move	$a7, $a3
+	addi.d	$a3, $a6, 1
+	sltui	$a3, $a3, 1
+	masknez	$a5, $a6, $a3
+	maskeqz	$a3, $a4, $a3
+	or	$a5, $a3, $a5
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	vld	$vr2, $a3, %pc_lo12(.LCPI8_1)
+	bstrpick.d	$a3, $a1, 30, 2
+	slli.d	$a3, $a3, 2
+	vreplgr2vr.w	$vr1, $a0
+	vreplgr2vr.w	$vr0, $a5
+	vreplgr2vr.w	$vr3, $a7
+	vor.v	$vr2, $vr3, $vr2
+	sub.d	$a5, $a7, $a3
+	add.d	$a6, $a2, $a7
 	.p2align	4, , 16
-.LBB8_8:                                # %scalar.ph
+.LBB8_11:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a5, $a3, 0
-	xor	$a5, $a0, $a5
-	sltui	$a5, $a5, 1
-	masknez	$a4, $a4, $a5
-	maskeqz	$a5, $a1, $a5
-	or	$a4, $a5, $a4
-	addi.d	$a1, $a1, 1
-	addi.d	$a2, $a2, -1
+	ld.w	$a7, $a6, 0
+	vinsgr2vr.w	$vr3, $a7, 0
+	vext2xv.wu.bu	$xr3, $xr3
+	vseq.w	$vr3, $vr1, $vr3
+	vbitsel.v	$vr0, $vr0, $vr2, $vr3
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a5, $a5, 4
+	addi.d	$a6, $a6, 4
+	bnez	$a5, .LBB8_11
+# %bb.12:                               # %vec.epilog.middle.block
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.w	$vr0, $vr1, $vr0
+	vbsrl.v	$vr1, $vr0, 4
+	vmax.w	$vr0, $vr1, $vr0
+	vpickve2gr.w	$a5, $vr0, 0
+	xor	$a4, $a5, $a4
+	sltui	$a4, $a4, 1
+	masknez	$a5, $a5, $a4
+	addi.d	$a6, $zero, -1
+	maskeqz	$a4, $a6, $a4
+	or	$a6, $a4, $a5
+	beq	$a3, $a1, .LBB8_15
+.LBB8_13:                               # %vec.epilog.scalar.ph.preheader
+	add.d	$a2, $a2, $a3
+	sub.d	$a1, $a1, $a3
+	.p2align	4, , 16
+.LBB8_14:                               # %vec.epilog.scalar.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.bu	$a4, $a2, 0
+	xor	$a4, $a0, $a4
+	sltui	$a4, $a4, 1
+	masknez	$a5, $a6, $a4
+	maskeqz	$a4, $a3, $a4
+	or	$a6, $a4, $a5
 	addi.d	$a3, $a3, 1
-	bnez	$a2, .LBB8_8
-.LBB8_9:                                # %._crit_edge
-	addi.w	$a0, $a4, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 1
+	bnez	$a1, .LBB8_14
+.LBB8_15:                               # %._crit_edge
+	addi.w	$a0, $a6, 0
 	ret
 .Lfunc_end8:
 	.size	FmoGetLastCodedMBOfSliceGroup, .Lfunc_end8-FmoGetLastCodedMBOfSliceGroup

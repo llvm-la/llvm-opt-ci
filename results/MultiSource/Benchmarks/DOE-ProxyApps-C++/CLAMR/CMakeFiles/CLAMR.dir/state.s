@@ -282,19 +282,19 @@ _ZN5State9terminateEv:                  # @_ZN5State9terminateEv
 _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	.cfi_def_cfa_offset 224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -307,163 +307,162 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
 	move	$fp, $a0
-	addi.d	$a0, $sp, 104
+	addi.d	$a0, $sp, 120
 	pcaddu18i	$ra, %call36(cpu_timer_start)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $fp, 192
-	ld.d	$s8, $a4, 1328
-	ld.d	$s7, $a4, 1336
-	ld.d	$s6, $a4, 1352
-	ld.d	$s5, $a4, 1360
-	ld.d	$s4, $a4, 1368
-	ld.d	$s3, $a4, 1376
-	ld.d	$s2, $a4, 1384
-	ld.d	$a0, $a4, 1160
-	ld.d	$s1, $a4, 1392
-	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	beqz	$a0, .LBB6_5
-# %bb.1:                                # %.lr.ph
-	ld.d	$a1, $a4, 880
-	ld.d	$a2, $a4, 904
-	ld.d	$a3, $a4, 928
-	ld.d	$a4, $a4, 952
-	ori	$a5, $zero, 8
-	bgeu	$a0, $a5, .LBB6_80
+	ld.d	$a0, $fp, 192
+	ld.d	$s8, $a0, 1328
+	ld.d	$s7, $a0, 1336
+	ld.d	$s6, $a0, 1352
+	ld.d	$s5, $a0, 1360
+	ld.d	$s4, $a0, 1368
+	ld.d	$s2, $a0, 1376
+	ld.d	$s1, $a0, 1384
+	ld.d	$s3, $a0, 1160
+	ld.d	$s0, $a0, 1392
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	beqz	$s3, .LBB6_5
+# %bb.1:                                # %iter.check
+	ld.d	$a1, $a0, 880
+	ld.d	$a2, $a0, 904
+	ld.d	$a3, $a0, 928
+	ld.d	$a4, $a0, 952
+	ori	$a5, $zero, 4
+	bgeu	$s3, $a5, .LBB6_80
 # %bb.2:
 	move	$a5, $zero
 	move	$a6, $zero
-.LBB6_3:                                # %scalar.ph.preheader
+.LBB6_3:                                # %vec.epilog.scalar.ph.preheader
 	addi.w	$a7, $a5, 1
 	.p2align	4, , 16
-.LBB6_4:                                # %scalar.ph
+.LBB6_4:                                # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
+	slli.d	$a0, $a5, 2
+	ldx.w	$a5, $s6, $a0
+	ldx.w	$t0, $s8, $a0
 	slli.d	$a5, $a5, 2
-	ldx.w	$t0, $s6, $a5
-	ldx.w	$t1, $s8, $a5
-	slli.d	$t0, $t0, 2
-	ldx.w	$t2, $a1, $t0
-	ldx.w	$t3, $a2, $t0
-	xor	$t2, $t1, $t2
-	sltui	$t2, $t2, 1
-	add.d	$a6, $a6, $t2
-	xor	$t1, $t1, $t3
-	ldx.w	$a5, $s7, $a5
-	ldx.w	$t2, $a3, $t0
+	ldx.w	$t1, $a1, $a5
+	ldx.w	$t2, $a2, $a5
+	xor	$t1, $t0, $t1
 	sltui	$t1, $t1, 1
 	add.d	$a6, $a6, $t1
-	ldx.w	$t0, $a4, $t0
-	xor	$t1, $a5, $t2
-	sltui	$t1, $t1, 1
-	add.d	$a6, $a6, $t1
-	xor	$a5, $a5, $t0
-	sltui	$a5, $a5, 1
-	add.d	$a6, $a6, $a5
+	xor	$t0, $t0, $t2
+	ldx.w	$a0, $s7, $a0
+	ldx.w	$t1, $a3, $a5
+	sltui	$t0, $t0, 1
+	add.d	$a6, $a6, $t0
+	ldx.w	$a5, $a4, $a5
+	xor	$t0, $a0, $t1
+	sltui	$t0, $t0, 1
+	add.d	$a6, $a6, $t0
+	xor	$a0, $a0, $a5
+	sltui	$a0, $a0, 1
+	add.d	$a6, $a6, $a0
 	bstrpick.d	$a5, $a7, 31, 0
 	addi.w	$a7, $a7, 1
-	bltu	$a5, $a0, .LBB6_4
+	bltu	$a5, $s3, .LBB6_4
 	b	.LBB6_6
 .LBB6_5:
 	move	$a6, $zero
 .LBB6_6:                                # %._crit_edge
 	ld.d	$a2, $fp, 200
-	add.w	$s0, $a6, $a0
+	add.w	$s3, $a6, $s3
 	move	$a0, $fp
-	move	$a1, $s0
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 208
 	st.d	$a0, $fp, 200
 	move	$a0, $fp
-	move	$a1, $s0
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $fp, 216
 	st.d	$a0, $fp, 208
 	move	$a0, $fp
-	move	$a1, $s0
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $fp, 216
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
+	move	$a1, $s3
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $a1, 1328
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
+	move	$a1, $s3
 	move	$a2, $s7
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $a1, 1336
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
+	move	$a1, $s3
 	move	$a2, $s6
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $a1, 1352
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
+	move	$a1, $s3
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $a1, 1360
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
+	move	$a1, $s3
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $a1, 1368
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
-	move	$a2, $s3
-	move	$s3, $s0
+	move	$a1, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $a1, 1376
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
-	move	$a2, $s2
+	move	$a1, $s3
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 192
 	st.d	$a0, $a1, 1384
 	addi.d	$a0, $a1, 8
-	move	$a1, $s0
-	move	$a2, $s1
+	move	$a1, $s3
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(_ZN10MallocPlus14memory_reallocEmPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $fp, 192
 	move	$s1, $a0
 	ld.d	$a0, $a3, 1328
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$s2, $a3, 1336
 	ld.d	$s6, $a3, 1352
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a4, 1312
 	ld.d	$a1, $a4, 1304
 	ld.d	$a2, $a3, 1368
-	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 112                   # 8-byte Folded Spill
 	ld.d	$s8, $a3, 1376
 	ld.d	$fp, $a3, 1384
 	sub.d	$a2, $a0, $a1
 	srai.d	$a2, $a2, 2
 	st.d	$s1, $a3, 1392
-	bgeu	$a2, $s0, .LBB6_8
+	bgeu	$a2, $s3, .LBB6_8
 # %bb.7:
 	addi.d	$a0, $a4, 1304
 	sub.d	$a1, $s3, $a2
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIiSaIiEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB6_11
 .LBB6_8:
 	bgeu	$s3, $a2, .LBB6_11
@@ -478,13 +477,13 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	sub.d	$a2, $a3, $a1
 	srai.d	$a2, $a2, 3
 	addi.d	$a0, $a4, 1416
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	bgeu	$a2, $s3, .LBB6_13
 # %bb.12:
 	sub.d	$a1, $s3, $a2
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIdSaIdEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB6_16
 .LBB6_13:
 	bgeu	$s3, $a2, .LBB6_16
@@ -499,13 +498,13 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	sub.d	$a2, $a3, $a1
 	srai.d	$a2, $a2, 3
 	addi.d	$a0, $a4, 1440
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	bgeu	$a2, $s3, .LBB6_18
 # %bb.17:
 	sub.d	$a1, $s3, $a2
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIdSaIdEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB6_21
 .LBB6_18:
 	bgeu	$s3, $a2, .LBB6_21
@@ -520,13 +519,13 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	sub.d	$a2, $a3, $a1
 	srai.d	$a2, $a2, 3
 	addi.d	$a0, $a4, 1464
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	bgeu	$a2, $s3, .LBB6_23
 # %bb.22:
 	sub.d	$a1, $s3, $a2
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIdSaIdEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB6_26
 .LBB6_23:
 	bgeu	$s3, $a2, .LBB6_26
@@ -541,13 +540,13 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	sub.d	$a2, $a3, $a1
 	srai.d	$a2, $a2, 3
 	addi.d	$a0, $a4, 1488
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	bgeu	$a2, $s3, .LBB6_28
 # %bb.27:
 	sub.d	$a1, $s3, $a2
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIdSaIdEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB6_31
 .LBB6_28:
 	bgeu	$s3, $a2, .LBB6_31
@@ -560,13 +559,13 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ld.d	$s0, $a4, 1160
 	addi.w	$t1, $s0, 0
 	bge	$t1, $s3, .LBB6_35
-# %bb.32:                               # %iter.check
+# %bb.32:                               # %iter.check582
 	sub.d	$a1, $s3, $t1
 	ori	$a0, $zero, 4
 	move	$a2, $t1
-	bgeu	$a1, $a0, .LBB6_85
+	bgeu	$a1, $a0, .LBB6_84
 .LBB6_33:                               # %.lr.ph493.preheader
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	alsl.d	$a0, $a2, $a0, 2
 	alsl.d	$a1, $a2, $s8, 2
 	alsl.d	$a3, $a2, $fp, 2
@@ -588,14 +587,14 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	addi.d	$a4, $a4, 4
 	bnez	$a2, .LBB6_34
 .LBB6_35:                               # %.preheader488
-	st.d	$t1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	st.d	$t1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	beqz	$s0, .LBB6_46
 # %bb.36:                               # %.lr.ph496
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s5, $a2, 880
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a3, $a0, 200
 	ld.d	$a4, $a0, 208
 	ld.d	$a5, $a0, 216
@@ -606,17 +605,17 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	move	$t2, $zero
 	move	$t3, $a1
 	move	$t4, $s6
-	ld.d	$t5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 112                   # 8-byte Folded Reload
 	move	$t6, $s8
 	move	$t7, $s2
 	move	$t8, $fp
 	move	$ra, $s1
 	move	$a2, $s0
-	st.d	$s5, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB6_38
 	.p2align	4, , 16
 .LBB6_37:                               #   in Loop: Header=BB6_38 Depth=1
-	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
 	addi.w	$t2, $t2, 1
 	bstrpick.d	$a0, $t2, 31, 0
 	addi.d	$t1, $t1, 8
@@ -650,14 +649,14 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	b	.LBB6_45
 	.p2align	4, , 16
 .LBB6_42:                               #   in Loop: Header=BB6_38 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	st.w	$a2, $t5, 0
 	fldx.d	$fa0, $a0, $t1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s3, $a1, 0
 	bstrpick.d	$s4, $a2, 31, 0
-	st.d	$ra, $sp, 48                    # 8-byte Folded Spill
+	st.d	$ra, $sp, 64                    # 8-byte Folded Spill
 	move	$ra, $t8
 	move	$t8, $t6
 	move	$t6, $t5
@@ -671,7 +670,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	slli.d	$s5, $s4, 3
 	fstx.d	$fa0, $a0, $s5
 	fldx.d	$fa0, $s3, $t1
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s7, $a1, 0
 	slli.d	$s4, $s4, 2
 	move	$a1, $s6
@@ -680,7 +679,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	move	$s0, $s1
 	move	$s1, $s8
 	move	$s8, $fp
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
 	stx.w	$a2, $fp, $s4
 	move	$fp, $s8
 	move	$s8, $s1
@@ -688,12 +687,12 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	move	$s0, $s2
 	move	$s2, $s6
 	move	$s6, $a1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	fstx.d	$fa0, $s3, $s5
 	fldx.d	$fa0, $s7, $t1
 	fldx.d	$fa1, $a0, $t1
 	stx.w	$t2, $s8, $s4
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.w	$s3, $t4, 0
 	fsub.d	$fa0, $fa0, $fa1
@@ -710,7 +709,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	move	$t5, $t6
 	move	$t6, $t8
 	move	$t8, $ra
-	ld.d	$ra, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 64                    # 8-byte Folded Reload
 	fstx.d	$fa0, $a0, $s5
 	fldx.d	$fa0, $a3, $t1
 	addi.d	$a0, $s3, -1
@@ -731,26 +730,26 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ldx.w	$s4, $a6, $s4
 	bne	$s3, $s4, .LBB6_40
 .LBB6_43:                               #   in Loop: Header=BB6_38 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	st.w	$a2, $t6, 0
 	fldx.d	$fa0, $a0, $t1
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s3, $s3, 0
 	bstrpick.d	$s4, $a2, 31, 0
 	slli.d	$s5, $s4, 3
 	fstx.d	$fa0, $a0, $s5
 	fldx.d	$fa0, $s3, $t1
-	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s7, $s7, 0
 	slli.d	$s4, $s4, 2
 	stx.w	$a2, $s8, $s4
 	fstx.d	$fa0, $s3, $s5
 	fldx.d	$fa0, $s7, $t1
 	fldx.d	$fa1, $a0, $t1
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	stx.w	$t2, $a0, $s4
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.w	$s3, $t4, 0
 	fadd.d	$fa0, $fa0, $fa1
@@ -778,16 +777,16 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ldx.w	$s4, $a7, $s4
 	bne	$s3, $s4, .LBB6_41
 .LBB6_44:                               #   in Loop: Header=BB6_38 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	fldx.d	$fa0, $a0, $t1
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s3, $s3, 0
 	bstrpick.d	$s4, $a2, 31, 0
 	slli.d	$s5, $s4, 3
 	fstx.d	$fa0, $a0, $s5
 	fldx.d	$fa0, $s3, $t1
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	st.w	$a2, $t8, 0
 	slli.d	$s4, $s4, 2
@@ -795,7 +794,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	fldx.d	$fa0, $a0, $t1
 	stx.w	$a2, $fp, $s4
 	stx.w	$t2, $s1, $s4
-	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $s7, 0
 	fstx.d	$fa0, $a0, $s5
 	ld.w	$a0, $t3, 0
@@ -824,16 +823,16 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ldx.w	$a0, $t0, $a0
 	bne	$s3, $a0, .LBB6_37
 .LBB6_45:                               #   in Loop: Header=BB6_38 Depth=1
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	fldx.d	$fa0, $a0, $t1
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s3, $s3, 0
 	bstrpick.d	$s4, $a2, 31, 0
 	slli.d	$s5, $s4, 3
 	fstx.d	$fa0, $a0, $s5
 	fldx.d	$fa0, $s3, $t1
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	st.w	$a2, $ra, 0
 	slli.d	$s4, $s4, 2
@@ -841,7 +840,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	fldx.d	$fa0, $a0, $t1
 	stx.w	$a2, $s1, $s4
 	stx.w	$t2, $fp, $s4
-	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $s7, 0
 	fstx.d	$fa0, $a0, $s5
 	ld.w	$a0, $t3, 0
@@ -867,9 +866,9 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	addi.w	$a2, $a2, 1
 	b	.LBB6_37
 .LBB6_46:                               # %.preheader
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$t4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$t4, $sp, 24                    # 8-byte Folded Reload
 	bge	$t4, $a0, .LBB6_79
 # %bb.47:                               # %.lr.ph498
 	move	$a7, $a1
@@ -877,7 +876,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ld.d	$a2, $s3, 904
 	ld.d	$a3, $s3, 928
 	ld.d	$a4, $s3, 952
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	alsl.d	$a5, $t4, $a0, 2
 	alsl.d	$a6, $t4, $fp, 2
 	alsl.d	$a7, $t4, $a7, 2
@@ -885,7 +884,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	alsl.d	$t1, $t4, $s2, 2
 	alsl.d	$t2, $t4, $s1, 2
 	alsl.d	$t3, $t4, $s8, 2
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	sub.d	$a0, $a0, $t4
 	move	$t4, $s0
 	b	.LBB6_51
@@ -932,7 +931,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $fp, $t5
 	slli.d	$t5, $t5, 2
-	ld.d	$t6, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 112                   # 8-byte Folded Reload
 	ldx.w	$t5, $t6, $t5
 .LBB6_54:                               #   in Loop: Header=BB6_51 Depth=1
 	st.w	$t5, $a6, 0
@@ -950,7 +949,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $s1, $t5
 	slli.d	$t5, $t5, 2
-	ld.d	$t6, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 112                   # 8-byte Folded Reload
 	ldx.w	$t5, $t6, $t5
 	st.w	$t5, $t2, 0
 .LBB6_57:                               #   in Loop: Header=BB6_51 Depth=1
@@ -1019,7 +1018,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 # %bb.68:                               #   in Loop: Header=BB6_51 Depth=1
 	ld.w	$t5, $t2, 0
 	slli.d	$t5, $t5, 2
-	ld.d	$t6, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 112                   # 8-byte Folded Reload
 	ldx.w	$t5, $t6, $t5
 	slli.d	$t5, $t5, 2
 	ldx.w	$t5, $fp, $t5
@@ -1051,7 +1050,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 # %bb.73:                               #   in Loop: Header=BB6_51 Depth=1
 	ld.w	$t7, $a6, 0
 	slli.d	$t7, $t7, 2
-	ld.d	$t8, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t8, $sp, 112                   # 8-byte Folded Reload
 	ldx.w	$t7, $t8, $t7
 	slli.d	$t7, $t7, 2
 	ldx.w	$t8, $s6, $t7
@@ -1079,238 +1078,342 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	ldx.w	$t5, $s8, $t5
 	b	.LBB6_49
 .LBB6_79:                               # %._crit_edge499
-	ld.d	$a0, $sp, 104
-	ld.d	$a1, $sp, 112
+	ld.d	$a0, $sp, 120
+	ld.d	$a1, $sp, 128
 	pcalau12i	$a2, %pc_hi20(save_ncells)
 	st.w	$s0, $a2, %pc_lo12(save_ncells)
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	st.d	$a2, $s3, 1160
 	pcaddu18i	$ra, %call36(cpu_timer_stop)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	fld.d	$fa1, $a0, 224
 	fadd.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $a0, 224
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .LBB6_80:                               # %vector.scevcheck
-	addi.d	$a6, $a0, -1
+	addi.d	$a6, $s3, -1
 	bstrpick.d	$a7, $a6, 31, 0
 	addi.w	$t0, $zero, -1
 	lu32i.d	$t0, 0
 	move	$a5, $zero
-	beq	$a7, $t0, .LBB6_93
+	beq	$a7, $t0, .LBB6_92
 # %bb.81:                               # %vector.scevcheck
 	srli.d	$a7, $a6, 32
 	move	$a6, $a5
 	bnez	$a7, .LBB6_3
-# %bb.82:                               # %vector.ph
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	bstrpick.d	$a5, $a0, 32, 3
-	slli.d	$a5, $a5, 3
-	addi.d	$a6, $s7, 16
-	addi.d	$a7, $s6, 16
-	vrepli.b	$vr0, 0
-	addi.d	$t0, $s8, 16
-	move	$t1, $a5
-	vori.b	$vr1, $vr0, 0
-	.p2align	4, , 16
-.LBB6_83:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $a7, -16
-	vld	$vr2, $t0, -16
-	vld	$vr3, $t0, 0
-	vld	$vr5, $a7, 0
-	vpickve2gr.w	$t2, $vr4, 2
-	vinsgr2vr.d	$vr6, $t2, 0
-	vpickve2gr.w	$t2, $vr4, 3
-	vinsgr2vr.d	$vr6, $t2, 1
-	xvpermi.q	$xr6, $xr6, 2
-	vpickve2gr.w	$t2, $vr4, 0
-	vinsgr2vr.d	$vr7, $t2, 0
-	vpickve2gr.w	$t2, $vr4, 1
-	vinsgr2vr.d	$vr7, $t2, 1
-	xvpickve2gr.d	$t2, $xr7, 0
-	xvpickve2gr.d	$t3, $xr7, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	vpickve2gr.w	$t6, $vr5, 2
-	vinsgr2vr.d	$vr4, $t6, 0
-	vpickve2gr.w	$t6, $vr5, 3
-	vinsgr2vr.d	$vr4, $t6, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$t6, $vr5, 0
-	vinsgr2vr.d	$vr6, $t6, 0
-	vpickve2gr.w	$t6, $vr5, 1
-	vinsgr2vr.d	$vr6, $t6, 1
-	xvpickve2gr.d	$s0, $xr6, 0
-	xvpickve2gr.d	$ra, $xr6, 1
-	xvpickve2gr.d	$s1, $xr4, 2
-	xvpickve2gr.d	$s2, $xr4, 3
-	slli.d	$t6, $t2, 2
-	slli.d	$t7, $t3, 2
-	slli.d	$t8, $t4, 2
-	slli.d	$fp, $t5, 2
-	slli.d	$t2, $s0, 2
-	slli.d	$t3, $ra, 2
-	slli.d	$t4, $s1, 2
-	slli.d	$t5, $s2, 2
-	ldx.w	$s0, $a1, $t6
-	ldx.w	$s1, $a1, $t7
-	ldx.w	$s2, $a1, $t8
-	ldx.w	$ra, $a1, $fp
-	vinsgr2vr.w	$vr4, $s0, 0
-	vinsgr2vr.w	$vr4, $s1, 1
-	vinsgr2vr.w	$vr4, $s2, 2
-	vinsgr2vr.w	$vr4, $ra, 3
-	ldx.w	$s0, $a1, $t2
-	ldx.w	$s1, $a1, $t3
-	ldx.w	$s2, $a1, $t4
-	ldx.w	$ra, $a1, $t5
-	vinsgr2vr.w	$vr5, $s0, 0
-	vinsgr2vr.w	$vr5, $s1, 1
-	vinsgr2vr.w	$vr5, $s2, 2
-	vinsgr2vr.w	$vr5, $ra, 3
-	vseq.w	$vr4, $vr2, $vr4
-	vseq.w	$vr5, $vr3, $vr5
-	vsub.w	$vr0, $vr0, $vr4
-	vsub.w	$vr1, $vr1, $vr5
-	ldx.w	$s0, $a2, $t6
-	ldx.w	$s1, $a2, $t7
-	ldx.w	$s2, $a2, $t8
-	ldx.w	$ra, $a2, $fp
-	vinsgr2vr.w	$vr4, $s0, 0
-	vinsgr2vr.w	$vr4, $s1, 1
-	vinsgr2vr.w	$vr4, $s2, 2
-	vinsgr2vr.w	$vr4, $ra, 3
-	ldx.w	$s0, $a2, $t2
-	ldx.w	$s1, $a2, $t3
-	ldx.w	$s2, $a2, $t4
-	ldx.w	$ra, $a2, $t5
-	vinsgr2vr.w	$vr5, $s0, 0
-	vinsgr2vr.w	$vr5, $s1, 1
-	vinsgr2vr.w	$vr5, $s2, 2
-	vinsgr2vr.w	$vr5, $ra, 3
-	vseq.w	$vr2, $vr2, $vr4
-	vseq.w	$vr3, $vr3, $vr5
-	vsub.w	$vr0, $vr0, $vr2
-	vsub.w	$vr1, $vr1, $vr3
-	vld	$vr2, $a6, -16
-	vld	$vr3, $a6, 0
-	ldx.w	$s0, $a3, $t6
-	ldx.w	$s1, $a3, $t7
-	ldx.w	$s2, $a3, $t8
-	ldx.w	$ra, $a3, $fp
-	vinsgr2vr.w	$vr4, $s0, 0
-	vinsgr2vr.w	$vr4, $s1, 1
-	vinsgr2vr.w	$vr4, $s2, 2
-	vinsgr2vr.w	$vr4, $ra, 3
-	ldx.w	$s0, $a3, $t2
-	ldx.w	$s1, $a3, $t3
-	ldx.w	$s2, $a3, $t4
-	ldx.w	$ra, $a3, $t5
-	vinsgr2vr.w	$vr5, $s0, 0
-	vinsgr2vr.w	$vr5, $s1, 1
-	vinsgr2vr.w	$vr5, $s2, 2
-	vinsgr2vr.w	$vr5, $ra, 3
-	vseq.w	$vr4, $vr2, $vr4
-	vseq.w	$vr5, $vr3, $vr5
-	vsub.w	$vr0, $vr0, $vr4
-	vsub.w	$vr1, $vr1, $vr5
-	ldx.w	$t6, $a4, $t6
-	ldx.w	$t7, $a4, $t7
-	ldx.w	$t8, $a4, $t8
-	ldx.w	$fp, $a4, $fp
-	vinsgr2vr.w	$vr4, $t6, 0
-	vinsgr2vr.w	$vr4, $t7, 1
-	vinsgr2vr.w	$vr4, $t8, 2
-	vinsgr2vr.w	$vr4, $fp, 3
-	ldx.w	$t2, $a4, $t2
-	ldx.w	$t3, $a4, $t3
-	ldx.w	$t4, $a4, $t4
-	ldx.w	$t5, $a4, $t5
-	vinsgr2vr.w	$vr5, $t2, 0
-	vinsgr2vr.w	$vr5, $t3, 1
-	vinsgr2vr.w	$vr5, $t4, 2
-	vinsgr2vr.w	$vr5, $t5, 3
-	vseq.w	$vr2, $vr2, $vr4
-	vseq.w	$vr3, $vr3, $vr5
-	vsub.w	$vr0, $vr0, $vr2
-	vsub.w	$vr1, $vr1, $vr3
-	addi.d	$t1, $t1, -8
-	addi.d	$a6, $a6, 32
-	addi.d	$a7, $a7, 32
-	addi.d	$t0, $t0, 32
-	bnez	$t1, .LBB6_83
-# %bb.84:                               # %middle.block
-	vadd.w	$vr0, $vr1, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a6, $vr0, 0
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	bne	$a0, $a5, .LBB6_3
-	b	.LBB6_6
-.LBB6_85:                               # %vector.memcheck
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+# %bb.82:                               # %vector.main.loop.iter.check
+	ori	$a5, $zero, 16
+	bgeu	$s3, $a5, .LBB6_93
+# %bb.83:
+	move	$a5, $zero
+	move	$a6, $zero
+	b	.LBB6_106
+.LBB6_84:                               # %vector.memcheck
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	sub.d	$a3, $s8, $a0
 	ori	$a0, $zero, 64
 	move	$a2, $t1
 	bltu	$a3, $a0, .LBB6_33
-# %bb.86:                               # %vector.memcheck
-	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
+# %bb.85:                               # %vector.memcheck
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	sub.d	$a3, $fp, $a2
 	move	$a2, $t1
 	bltu	$a3, $a0, .LBB6_33
-# %bb.87:                               # %vector.memcheck
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+# %bb.86:                               # %vector.memcheck
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	sub.d	$a3, $s1, $a0
 	ori	$a0, $zero, 64
 	move	$a2, $t1
 	bltu	$a3, $a0, .LBB6_33
-# %bb.88:                               # %vector.memcheck
+# %bb.87:                               # %vector.memcheck
 	sub.d	$a3, $fp, $s8
 	move	$a2, $t1
 	bltu	$a3, $a0, .LBB6_33
-# %bb.89:                               # %vector.memcheck
+# %bb.88:                               # %vector.memcheck
 	sub.d	$a3, $s1, $s8
 	ori	$a0, $zero, 64
 	move	$a2, $t1
 	bltu	$a3, $a0, .LBB6_33
-# %bb.90:                               # %vector.memcheck
+# %bb.89:                               # %vector.memcheck
 	sub.d	$a3, $s1, $fp
 	move	$a2, $t1
 	bltu	$a3, $a0, .LBB6_33
-# %bb.91:                               # %vector.main.loop.iter.check
+# %bb.90:                               # %vector.main.loop.iter.check571
 	ori	$a0, $zero, 16
-	bgeu	$a1, $a0, .LBB6_94
-# %bb.92:
+	bgeu	$a1, $a0, .LBB6_97
+# %bb.91:
 	move	$a0, $zero
-	b	.LBB6_98
-.LBB6_93:
+	b	.LBB6_101
+.LBB6_92:
 	move	$a6, $a5
 	b	.LBB6_3
-.LBB6_94:                               # %vector.ph561
+.LBB6_93:                               # %vector.ph
+	st.d	$s5, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	andi	$a0, $s3, 12
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
+	bstrpick.d	$a5, $s3, 32, 4
+	slli.d	$a5, $a5, 4
+	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$ra, $s7, 32
+	st.d	$s6, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$t0, $s6, 32
+	xvrepli.b	$xr0, 0
+	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$t1, $s8, 32
+	move	$a0, $a5
+	xvori.b	$xr1, $xr0, 0
+	.p2align	4, , 16
+.LBB6_94:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	xvld	$xr2, $t0, -32
+	xvld	$xr3, $t0, 0
+	xvpermi.q	$xr4, $xr2, 1
+	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$a6, $xr2, 0
+	xvpickve2gr.d	$t3, $xr2, 1
+	xvpickve2gr.d	$t4, $xr2, 2
+	xvpickve2gr.d	$t5, $xr2, 3
+	xvpickve2gr.d	$t6, $xr4, 0
+	xvpickve2gr.d	$t7, $xr4, 1
+	xvpickve2gr.d	$t8, $xr4, 2
+	xvpickve2gr.d	$fp, $xr4, 3
+	xvpermi.q	$xr2, $xr3, 1
+	vext2xv.d.w	$xr2, $xr2
+	vext2xv.d.w	$xr3, $xr3
+	xvpickve2gr.d	$s0, $xr3, 0
+	xvpickve2gr.d	$s7, $xr3, 1
+	xvpickve2gr.d	$s8, $xr3, 2
+	xvpickve2gr.d	$a0, $xr3, 3
+	xvpickve2gr.d	$t2, $xr2, 0
+	xvpickve2gr.d	$a7, $xr2, 1
+	xvpickve2gr.d	$s1, $xr2, 2
+	xvpickve2gr.d	$s2, $xr2, 3
+	slli.d	$s3, $a6, 2
+	slli.d	$s4, $t3, 2
+	slli.d	$s5, $t4, 2
+	slli.d	$s6, $t5, 2
+	slli.d	$t5, $t6, 2
+	slli.d	$a6, $t7, 2
+	slli.d	$t3, $t8, 2
+	slli.d	$t4, $fp, 2
+	slli.d	$t7, $s0, 2
+	slli.d	$t8, $s7, 2
+	slli.d	$fp, $s8, 2
+	slli.d	$s0, $a0, 2
+	slli.d	$a0, $t2, 2
+	slli.d	$a7, $a7, 2
+	slli.d	$t2, $s1, 2
+	slli.d	$t6, $s2, 2
+	ldx.w	$s1, $a1, $s3
+	ldx.w	$s2, $a1, $s4
+	ldx.w	$s7, $a1, $s5
+	ldx.w	$s8, $a1, $s6
+	vinsgr2vr.w	$vr2, $s1, 0
+	ldx.w	$s1, $a1, $t5
+	vinsgr2vr.w	$vr2, $s2, 1
+	ldx.w	$s2, $a1, $a6
+	vinsgr2vr.w	$vr2, $s7, 2
+	ldx.w	$s7, $a1, $t3
+	vinsgr2vr.w	$vr2, $s8, 3
+	ldx.w	$s8, $a1, $t4
+	vinsgr2vr.w	$vr3, $s1, 0
+	vinsgr2vr.w	$vr3, $s2, 1
+	vinsgr2vr.w	$vr3, $s7, 2
+	vinsgr2vr.w	$vr3, $s8, 3
+	ldx.w	$s1, $a1, $t7
+	ldx.w	$s2, $a1, $t8
+	ldx.w	$s7, $a1, $fp
+	ldx.w	$s8, $a1, $s0
+	vinsgr2vr.w	$vr4, $s1, 0
+	ldx.w	$s1, $a1, $a0
+	vinsgr2vr.w	$vr4, $s2, 1
+	ldx.w	$s2, $a1, $a7
+	vinsgr2vr.w	$vr4, $s7, 2
+	ldx.w	$s7, $a1, $t2
+	vinsgr2vr.w	$vr4, $s8, 3
+	ldx.w	$s8, $a1, $t6
+	vinsgr2vr.w	$vr5, $s1, 0
+	vinsgr2vr.w	$vr5, $s2, 1
+	vinsgr2vr.w	$vr5, $s7, 2
+	vinsgr2vr.w	$vr5, $s8, 3
+	ldx.w	$s1, $a2, $s3
+	ldx.w	$s2, $a2, $s4
+	ldx.w	$s7, $a2, $s5
+	ldx.w	$s8, $a2, $s6
+	vinsgr2vr.w	$vr6, $s1, 0
+	ldx.w	$s1, $a2, $t5
+	vinsgr2vr.w	$vr6, $s2, 1
+	ldx.w	$s2, $a2, $a6
+	vinsgr2vr.w	$vr6, $s7, 2
+	ldx.w	$s7, $a2, $t3
+	vinsgr2vr.w	$vr6, $s8, 3
+	ldx.w	$s8, $a2, $t4
+	vinsgr2vr.w	$vr7, $s1, 0
+	vinsgr2vr.w	$vr7, $s2, 1
+	vinsgr2vr.w	$vr7, $s7, 2
+	vinsgr2vr.w	$vr7, $s8, 3
+	ldx.w	$s1, $a2, $t7
+	ldx.w	$s2, $a2, $t8
+	ldx.w	$s7, $a2, $fp
+	ldx.w	$s8, $a2, $s0
+	vinsgr2vr.w	$vr8, $s1, 0
+	ldx.w	$s1, $a2, $a0
+	vinsgr2vr.w	$vr8, $s2, 1
+	ldx.w	$s2, $a2, $a7
+	vinsgr2vr.w	$vr8, $s7, 2
+	ldx.w	$s7, $a2, $t2
+	vinsgr2vr.w	$vr8, $s8, 3
+	ldx.w	$s8, $a2, $t6
+	vinsgr2vr.w	$vr9, $s1, 0
+	vinsgr2vr.w	$vr9, $s2, 1
+	vinsgr2vr.w	$vr9, $s7, 2
+	vinsgr2vr.w	$vr9, $s8, 3
+	ldx.w	$s1, $a3, $s3
+	ldx.w	$s2, $a3, $s4
+	ldx.w	$s7, $a3, $s5
+	ldx.w	$s8, $a3, $s6
+	vinsgr2vr.w	$vr10, $s1, 0
+	ldx.w	$s1, $a3, $t5
+	vinsgr2vr.w	$vr10, $s2, 1
+	ldx.w	$s2, $a3, $a6
+	vinsgr2vr.w	$vr10, $s7, 2
+	ldx.w	$s7, $a3, $t3
+	vinsgr2vr.w	$vr10, $s8, 3
+	ldx.w	$s8, $a3, $t4
+	vinsgr2vr.w	$vr11, $s1, 0
+	vinsgr2vr.w	$vr11, $s2, 1
+	vinsgr2vr.w	$vr11, $s7, 2
+	vinsgr2vr.w	$vr11, $s8, 3
+	ldx.w	$s1, $a3, $t7
+	ldx.w	$s2, $a3, $t8
+	ldx.w	$s7, $a3, $fp
+	ldx.w	$s8, $a3, $s0
+	vinsgr2vr.w	$vr12, $s1, 0
+	ldx.w	$s1, $a3, $a0
+	vinsgr2vr.w	$vr12, $s2, 1
+	ldx.w	$s2, $a3, $a7
+	vinsgr2vr.w	$vr12, $s7, 2
+	ldx.w	$s7, $a3, $t2
+	vinsgr2vr.w	$vr12, $s8, 3
+	ldx.w	$s8, $a3, $t6
+	vinsgr2vr.w	$vr13, $s1, 0
+	vinsgr2vr.w	$vr13, $s2, 1
+	vinsgr2vr.w	$vr13, $s7, 2
+	vinsgr2vr.w	$vr13, $s8, 3
+	ldx.w	$s1, $a4, $s3
+	ldx.w	$s2, $a4, $s4
+	ldx.w	$s3, $a4, $s5
+	ldx.w	$s4, $a4, $s6
+	vinsgr2vr.w	$vr14, $s1, 0
+	vinsgr2vr.w	$vr14, $s2, 1
+	vinsgr2vr.w	$vr14, $s3, 2
+	vinsgr2vr.w	$vr14, $s4, 3
+	ldx.w	$t5, $a4, $t5
+	ldx.w	$a6, $a4, $a6
+	ldx.w	$t3, $a4, $t3
+	ldx.w	$t4, $a4, $t4
+	vinsgr2vr.w	$vr15, $t5, 0
+	vinsgr2vr.w	$vr15, $a6, 1
+	vinsgr2vr.w	$vr15, $t3, 2
+	vinsgr2vr.w	$vr15, $t4, 3
+	ldx.w	$a6, $a4, $t7
+	ldx.w	$t3, $a4, $t8
+	ldx.w	$t4, $a4, $fp
+	ldx.w	$t5, $a4, $s0
+	vinsgr2vr.w	$vr16, $a6, 0
+	vinsgr2vr.w	$vr16, $t3, 1
+	vinsgr2vr.w	$vr16, $t4, 2
+	vinsgr2vr.w	$vr16, $t5, 3
+	ldx.w	$a0, $a4, $a0
+	ldx.w	$a6, $a4, $a7
+	ldx.w	$a7, $a4, $t2
+	ldx.w	$t2, $a4, $t6
+	vinsgr2vr.w	$vr17, $a0, 0
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	vinsgr2vr.w	$vr17, $a6, 1
+	vinsgr2vr.w	$vr17, $a7, 2
+	vinsgr2vr.w	$vr17, $t2, 3
+	xvld	$xr18, $t1, -32
+	xvpermi.q	$xr2, $xr3, 2
+	xvld	$xr3, $t1, 0
+	xvpermi.q	$xr4, $xr5, 2
+	xvseq.w	$xr2, $xr18, $xr2
+	xvsub.w	$xr0, $xr0, $xr2
+	xvseq.w	$xr2, $xr3, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
+	xvpermi.q	$xr6, $xr7, 2
+	xvpermi.q	$xr8, $xr9, 2
+	xvseq.w	$xr2, $xr18, $xr6
+	xvseq.w	$xr3, $xr3, $xr8
+	xvsub.w	$xr0, $xr0, $xr2
+	xvsub.w	$xr1, $xr1, $xr3
+	xvld	$xr2, $ra, -32
+	xvpermi.q	$xr10, $xr11, 2
+	xvld	$xr3, $ra, 0
+	xvpermi.q	$xr12, $xr13, 2
+	xvseq.w	$xr4, $xr2, $xr10
+	xvsub.w	$xr0, $xr0, $xr4
+	xvseq.w	$xr4, $xr3, $xr12
+	xvsub.w	$xr1, $xr1, $xr4
+	xvpermi.q	$xr14, $xr15, 2
+	xvpermi.q	$xr16, $xr17, 2
+	xvseq.w	$xr2, $xr2, $xr14
+	xvseq.w	$xr3, $xr3, $xr16
+	xvsub.w	$xr0, $xr0, $xr2
+	xvsub.w	$xr1, $xr1, $xr3
+	addi.d	$a0, $a0, -16
+	addi.d	$ra, $ra, 64
+	addi.d	$t0, $t0, 64
+	addi.d	$t1, $t1, 64
+	bnez	$a0, .LBB6_94
+# %bb.95:                               # %middle.block
+	xvadd.w	$xr0, $xr1, $xr0
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a6, $xr0, 0
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	bne	$s3, $a5, .LBB6_104
+# %bb.96:
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB6_6
+.LBB6_97:                               # %vector.ph573
 	andi	$a3, $a1, 12
 	move	$a0, $a1
 	bstrins.d	$a0, $zero, 3, 0
 	add.d	$a2, $t1, $a0
 	slli.d	$a4, $t1, 2
 	addi.d	$a7, $a4, 32
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	add.d	$a4, $a4, $a7
 	add.d	$a5, $s1, $a7
 	add.d	$a6, $s8, $a7
@@ -1318,7 +1421,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	xvrepli.b	$xr0, -1
 	move	$t0, $a0
 	.p2align	4, , 16
-.LBB6_95:                               # %vector.body564
+.LBB6_98:                               # %vector.body576
                                         # =>This Inner Loop Header: Depth=1
 	xvst	$xr0, $a4, -32
 	xvst	$xr0, $a4, 0
@@ -1333,12 +1436,12 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	addi.d	$a5, $a5, 64
 	addi.d	$a6, $a6, 64
 	addi.d	$a7, $a7, 64
-	bnez	$t0, .LBB6_95
-# %bb.96:                               # %middle.block567
+	bnez	$t0, .LBB6_98
+# %bb.99:                               # %middle.block579
 	beq	$a1, $a0, .LBB6_35
-# %bb.97:                               # %vec.epilog.iter.check
+# %bb.100:                              # %vec.epilog.iter.check584
 	beqz	$a3, .LBB6_33
-.LBB6_98:                               # %vec.epilog.ph
+.LBB6_101:                              # %vec.epilog.ph586
 	move	$a3, $a1
 	bstrins.d	$a3, $zero, 1, 0
 	add.d	$a2, $t1, $a3
@@ -1347,11 +1450,11 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	alsl.d	$a0, $a7, $s1, 2
 	alsl.d	$a5, $a7, $fp, 2
 	alsl.d	$a6, $a7, $s8, 2
-	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 112                   # 8-byte Folded Reload
 	alsl.d	$a7, $a7, $t0, 2
 	vrepli.b	$vr0, -1
 	.p2align	4, , 16
-.LBB6_99:                               # %vec.epilog.vector.body
+.LBB6_102:                              # %vec.epilog.vector.body589
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a7, 0
 	vst	$vr0, $a6, 0
@@ -1362,10 +1465,104 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	addi.d	$a5, $a5, 16
 	addi.d	$a6, $a6, 16
 	addi.d	$a7, $a7, 16
-	bnez	$a4, .LBB6_99
-# %bb.100:                              # %vec.epilog.middle.block
+	bnez	$a4, .LBB6_102
+# %bb.103:                              # %vec.epilog.middle.block592
 	bne	$a1, $a3, .LBB6_33
 	b	.LBB6_35
+.LBB6_104:                              # %vec.epilog.iter.check
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	beqz	$a0, .LBB6_109
+# %bb.105:
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+.LBB6_106:                              # %vec.epilog.ph
+	move	$a0, $a5
+	bstrpick.d	$a5, $s3, 32, 2
+	slli.d	$a5, $a5, 2
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a6, 0
+	sub.d	$a6, $a0, $a5
+	alsl.d	$a7, $a0, $s7, 2
+	alsl.d	$t0, $a0, $s6, 2
+	alsl.d	$t1, $a0, $s8, 2
+	.p2align	4, , 16
+.LBB6_107:                              # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $t0, 0
+	vld	$vr2, $t1, 0
+	vext2xv.d.w	$xr1, $xr1
+	xvpickve2gr.d	$a0, $xr1, 0
+	xvpickve2gr.d	$t2, $xr1, 1
+	xvpickve2gr.d	$t3, $xr1, 2
+	xvpickve2gr.d	$t4, $xr1, 3
+	slli.d	$a0, $a0, 2
+	slli.d	$t2, $t2, 2
+	slli.d	$t3, $t3, 2
+	slli.d	$t4, $t4, 2
+	ldx.w	$t5, $a1, $a0
+	ldx.w	$t6, $a1, $t2
+	ldx.w	$t7, $a1, $t3
+	ldx.w	$t8, $a1, $t4
+	vinsgr2vr.w	$vr1, $t5, 0
+	vinsgr2vr.w	$vr1, $t6, 1
+	vinsgr2vr.w	$vr1, $t7, 2
+	vinsgr2vr.w	$vr1, $t8, 3
+	vseq.w	$vr1, $vr2, $vr1
+	vsub.w	$vr0, $vr0, $vr1
+	ldx.w	$t5, $a2, $a0
+	ldx.w	$t6, $a2, $t2
+	ldx.w	$t7, $a2, $t3
+	ldx.w	$t8, $a2, $t4
+	vinsgr2vr.w	$vr1, $t5, 0
+	vinsgr2vr.w	$vr1, $t6, 1
+	vinsgr2vr.w	$vr1, $t7, 2
+	vinsgr2vr.w	$vr1, $t8, 3
+	vseq.w	$vr1, $vr2, $vr1
+	vsub.w	$vr0, $vr0, $vr1
+	vld	$vr1, $a7, 0
+	ldx.w	$t5, $a3, $a0
+	ldx.w	$t6, $a3, $t2
+	ldx.w	$t7, $a3, $t3
+	ldx.w	$t8, $a3, $t4
+	vinsgr2vr.w	$vr2, $t5, 0
+	vinsgr2vr.w	$vr2, $t6, 1
+	vinsgr2vr.w	$vr2, $t7, 2
+	vinsgr2vr.w	$vr2, $t8, 3
+	vseq.w	$vr2, $vr1, $vr2
+	vsub.w	$vr0, $vr0, $vr2
+	ldx.w	$a0, $a4, $a0
+	ldx.w	$t2, $a4, $t2
+	ldx.w	$t3, $a4, $t3
+	ldx.w	$t4, $a4, $t4
+	vinsgr2vr.w	$vr2, $a0, 0
+	vinsgr2vr.w	$vr2, $t2, 1
+	vinsgr2vr.w	$vr2, $t3, 2
+	vinsgr2vr.w	$vr2, $t4, 3
+	vseq.w	$vr1, $vr1, $vr2
+	vsub.w	$vr0, $vr0, $vr1
+	addi.d	$a6, $a6, 4
+	addi.d	$a7, $a7, 16
+	addi.d	$t0, $t0, 16
+	addi.d	$t1, $t1, 16
+	bnez	$a6, .LBB6_107
+# %bb.108:                              # %vec.epilog.middle.block
+	vhaddw.d.w	$vr0, $vr0, $vr0
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
+	bne	$s3, $a5, .LBB6_3
+	b	.LBB6_6
+.LBB6_109:
+	ld.d	$s6, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
+	b	.LBB6_3
 .Lfunc_end6:
 	.size	_ZN5State18add_boundary_cellsEv, .Lfunc_end6-_ZN5State18add_boundary_cellsEv
 	.cfi_endproc
@@ -2443,7 +2640,7 @@ _ZN5State11fill_circleEddd:             # @_ZN5State11fill_circleEddd
 	blez	$a1, .LBB12_30
 # %bb.15:                               # %.lr.ph88
 	ld.d	$a0, $fp, 200
-	ori	$a2, $zero, 4
+	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB12_25
 # %bb.16:
 	move	$a2, $zero
@@ -2497,39 +2694,45 @@ _ZN5State11fill_circleEddd:             # @_ZN5State11fill_circleEddd
 	bne	$a0, $a4, .LBB12_3
 	b	.LBB12_5
 .LBB12_25:                              # %vector.ph107
-	bstrpick.d	$a2, $a1, 30, 2
-	slli.d	$a2, $a2, 2
-	move	$a3, $s1
+	bstrpick.d	$a2, $a1, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $s1, 16
 	move	$a4, $a2
 	.p2align	4, , 16
 .LBB12_26:                              # %vector.body110
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a3, 0
-	vpickve2gr.w	$a5, $vr0, 2
-	vinsgr2vr.d	$vr1, $a5, 0
-	vpickve2gr.w	$a5, $vr0, 3
-	vinsgr2vr.d	$vr1, $a5, 1
-	xvpermi.q	$xr1, $xr1, 2
-	vpickve2gr.w	$a5, $vr0, 0
-	vinsgr2vr.d	$vr2, $a5, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	vinsgr2vr.d	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr2, 0
-	xvpickve2gr.d	$a6, $xr2, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	xvpickve2gr.d	$t0, $xr1, 3
+	vld	$vr0, $a3, -16
+	vld	$vr1, $a3, 0
+	vext2xv.d.w	$xr0, $xr0
+	xvpickve2gr.d	$a5, $xr0, 0
+	xvpickve2gr.d	$a6, $xr0, 1
+	xvpickve2gr.d	$a7, $xr0, 2
+	xvpickve2gr.d	$t0, $xr0, 3
+	vext2xv.d.w	$xr0, $xr1
+	xvpickve2gr.d	$t1, $xr0, 0
+	xvpickve2gr.d	$t2, $xr0, 1
+	xvpickve2gr.d	$t3, $xr0, 2
+	xvpickve2gr.d	$t4, $xr0, 3
 	slli.d	$a5, $a5, 3
 	slli.d	$a6, $a6, 3
 	slli.d	$a7, $a7, 3
 	slli.d	$t0, $t0, 3
+	slli.d	$t1, $t1, 3
+	slli.d	$t2, $t2, 3
+	slli.d	$t3, $t3, 3
+	slli.d	$t4, $t4, 3
 	fstx.d	$fs0, $a0, $a5
 	fstx.d	$fs0, $a0, $a6
 	fstx.d	$fs0, $a0, $a7
 	fstx.d	$fs0, $a0, $t0
-	addi.d	$a4, $a4, -4
-	addi.d	$a3, $a3, 16
+	fstx.d	$fs0, $a0, $t1
+	fstx.d	$fs0, $a0, $t2
+	fstx.d	$fs0, $a0, $t3
+	fstx.d	$fs0, $a0, $t4
+	addi.d	$a4, $a4, -8
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB12_26
-# %bb.27:                               # %middle.block113
+# %bb.27:                               # %middle.block114
 	beq	$a2, $a1, .LBB12_30
 .LBB12_28:                              # %scalar.ph105.preheader
 	alsl.d	$a3, $a2, $s1, 2

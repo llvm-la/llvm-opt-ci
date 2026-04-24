@@ -499,32 +499,16 @@ PutVbrTag:                              # @PutVbrTag
 	xvftintrz.l.d	$xr8, $xr8
 	xvpermi.d	$xr10, $xr8, 238
 	xvpickev.w	$xr8, $xr10, $xr8
-	vpickve2gr.w	$a5, $vr8, 2
-	vinsgr2vr.d	$vr10, $a5, 0
-	vpickve2gr.w	$a5, $vr8, 3
-	vinsgr2vr.d	$vr10, $a5, 1
-	xvpermi.q	$xr10, $xr10, 2
-	vpickve2gr.w	$a5, $vr8, 0
-	vinsgr2vr.d	$vr11, $a5, 0
-	vpickve2gr.w	$a5, $vr8, 1
-	vinsgr2vr.d	$vr11, $a5, 1
-	vpickve2gr.w	$a5, $vr9, 2
-	vinsgr2vr.d	$vr8, $a5, 0
-	vpickve2gr.w	$a5, $vr9, 3
-	vinsgr2vr.d	$vr8, $a5, 1
-	xvpermi.q	$xr8, $xr8, 2
-	vpickve2gr.w	$a5, $vr9, 0
-	vinsgr2vr.d	$vr12, $a5, 0
-	vpickve2gr.w	$a5, $vr9, 1
-	vinsgr2vr.d	$vr12, $a5, 1
-	xvpickve2gr.d	$a5, $xr12, 0
-	xvpickve2gr.d	$a6, $xr12, 1
-	xvpickve2gr.d	$a7, $xr8, 2
-	xvpickve2gr.d	$t0, $xr8, 3
-	xvpickve2gr.d	$t1, $xr11, 0
-	xvpickve2gr.d	$t2, $xr11, 1
-	xvpickve2gr.d	$t3, $xr10, 2
-	xvpickve2gr.d	$t4, $xr10, 3
+	vext2xv.d.w	$xr8, $xr8
+	vext2xv.d.w	$xr9, $xr9
+	xvpickve2gr.d	$a5, $xr9, 0
+	xvpickve2gr.d	$a6, $xr9, 1
+	xvpickve2gr.d	$a7, $xr9, 2
+	xvpickve2gr.d	$t0, $xr9, 3
+	xvpickve2gr.d	$t1, $xr8, 0
+	xvpickve2gr.d	$t2, $xr8, 1
+	xvpickve2gr.d	$t3, $xr8, 2
+	xvpickve2gr.d	$t4, $xr8, 3
 	slli.d	$a5, $a5, 2
 	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2

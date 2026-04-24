@@ -38,55 +38,42 @@ simulator_kernel:                       # @simulator_kernel
 .LBB1_4:                                # %vector.ph
 	bstrpick.d	$a7, $a0, 30, 2
 	slli.d	$a7, $a7, 2
-	addi.d	$t0, $a6, 16
-	vinsgr2vr.w	$vr0, $a5, 0
-	vinsgr2vr.w	$vr0, $a5, 1
+	vreplgr2vr.w	$vr0, $a5
 	vldi	$vr1, -2301
-	vrepli.b	$vr2, 0
-	lu12i.w	$t1, -64
-	vreplgr2vr.d	$vr3, $t1
+	lu12i.w	$t0, -64
+	xvreplgr2vr.d	$xr2, $t0
+	move	$t0, $a6
 	move	$t1, $a7
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr4, $t0, -16
-	vld	$vr5, $t0, 0
-	vslli.d	$vr6, $vr4, 46
-	vslli.d	$vr7, $vr5, 46
-	vsrai.d	$vr6, $vr6, 43
-	vpickve2gr.d	$t2, $vr6, 0
-	vpickve2gr.d	$t3, $vr6, 1
-	vsrai.d	$vr6, $vr7, 43
-	vpickve2gr.d	$t4, $vr6, 0
-	vpickve2gr.d	$t5, $vr6, 1
+	xvld	$xr3, $t0, 0
+	xvslli.d	$xr4, $xr3, 46
+	xvsrai.d	$xr4, $xr4, 43
+	xvpickve2gr.d	$t2, $xr4, 0
+	xvpickve2gr.d	$t3, $xr4, 1
+	xvpickve2gr.d	$t4, $xr4, 2
+	xvpickve2gr.d	$t5, $xr4, 3
 	ldx.d	$t2, $a1, $t2
 	ldx.d	$t3, $a1, $t3
 	ldx.d	$t4, $a1, $t4
 	ldx.d	$t5, $a1, $t5
-	vinsgr2vr.d	$vr6, $t2, 0
-	vinsgr2vr.d	$vr6, $t3, 1
-	vinsgr2vr.d	$vr7, $t4, 0
-	vinsgr2vr.d	$vr7, $t5, 1
-	vshuf4i.w	$vr6, $vr6, 8
-	vshuf4i.w	$vr7, $vr7, 8
-	vsub.w	$vr6, $vr6, $vr0
-	vsub.w	$vr7, $vr7, $vr0
-	vand.v	$vr6, $vr6, $vr1
-	vand.v	$vr7, $vr7, $vr1
-	vilvl.w	$vr6, $vr2, $vr6
-	vilvl.w	$vr7, $vr2, $vr7
-	vand.v	$vr4, $vr4, $vr3
-	vand.v	$vr5, $vr5, $vr3
-	vor.v	$vr4, $vr4, $vr6
-	vor.v	$vr5, $vr5, $vr7
-	vst	$vr4, $t0, -16
-	vst	$vr5, $t0, 0
+	vinsgr2vr.w	$vr4, $t2, 0
+	vinsgr2vr.w	$vr4, $t3, 1
+	vinsgr2vr.w	$vr4, $t4, 2
+	vinsgr2vr.w	$vr4, $t5, 3
+	vsub.w	$vr4, $vr4, $vr0
+	vand.v	$vr4, $vr4, $vr1
+	vext2xv.du.wu	$xr4, $xr4
+	xvand.v	$xr3, $xr3, $xr2
+	xvor.v	$xr3, $xr3, $xr4
+	xvst	$xr3, $t0, 0
 	addi.d	$t1, $t1, -4
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB1_5
 # %bb.6:                                # %middle.block
 	beq	$a7, $a0, .LBB1_10
-.LBB1_7:                                # %.lr.ph.preheader70
+.LBB1_7:                                # %.lr.ph.preheader69
 	alsl.d	$a6, $a7, $a6, 3
 	sub.d	$a0, $a0, $a7
 	.p2align	4, , 16

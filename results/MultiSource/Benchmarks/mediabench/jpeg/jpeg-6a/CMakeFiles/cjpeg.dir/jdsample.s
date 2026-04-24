@@ -363,137 +363,412 @@ fullsize_upsample:                      # @fullsize_upsample
 h2v1_fancy_upsample:                    # @h2v1_fancy_upsample
 # %bb.0:
 	ld.w	$a4, $a0, 392
-	blez	$a4, .LBB5_15
+	blez	$a4, .LBB5_21
 # %bb.1:                                # %.lr.ph42
+	addi.d	$sp, $sp, -48
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
 	move	$a4, $zero
 	ld.d	$a3, $a3, 0
-	ori	$a5, $zero, 8
-	vrepli.b	$vr0, 0
-	vrepli.h	$vr1, 3
+	ori	$a5, $zero, 16
+	ori	$a6, $zero, 32
+	xvrepli.h	$xr0, 3
 	b	.LBB5_4
 	.p2align	4, , 16
 .LBB5_2:                                #   in Loop: Header=BB5_4 Depth=1
-	move	$t1, $t2
+	move	$t2, $t6
+	move	$a7, $t4
+	move	$t0, $t8
 .LBB5_3:                                # %._crit_edge
                                         #   in Loop: Header=BB5_4 Depth=1
-	ld.bu	$t0, $a7, 0
-	ld.bu	$a7, $a7, -1
-	alsl.d	$t2, $t0, $t0, 1
-	add.d	$a7, $a7, $t2
-	addi.d	$a7, $a7, 1
-	srli.d	$a7, $a7, 2
-	st.b	$a7, $t1, 0
-	st.b	$t0, $a6, 3
-	ld.w	$a6, $a0, 392
+	ld.bu	$t1, $t2, 0
+	ld.bu	$t2, $t2, -1
+	alsl.d	$t3, $t1, $t1, 1
+	add.d	$t2, $t2, $t3
+	addi.d	$t2, $t2, 1
+	srli.d	$t2, $t2, 2
+	st.b	$t2, $t0, 0
+	st.b	$t1, $a7, 3
+	ld.w	$a7, $a0, 392
 	addi.d	$a4, $a4, 1
-	bge	$a4, $a6, .LBB5_15
+	bge	$a4, $a7, .LBB5_20
 .LBB5_4:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB5_11 Depth 2
-                                        #     Child Loop BB5_13 Depth 2
-	slli.d	$a6, $a4, 3
-	ldx.d	$t5, $a2, $a6
-	ldx.d	$a6, $a3, $a6
+                                        #     Child Loop BB5_17 Depth 2
+                                        #     Child Loop BB5_14 Depth 2
+                                        #     Child Loop BB5_9 Depth 2
+	slli.d	$a7, $a4, 3
+	ldx.d	$t5, $a2, $a7
+	ldx.d	$t4, $a3, $a7
 	ld.bu	$a7, $t5, 0
-	st.b	$a7, $a6, 0
+	st.b	$a7, $t4, 0
 	ld.bu	$t0, $t5, 1
 	alsl.d	$a7, $a7, $a7, 1
 	add.d	$a7, $a7, $t0
 	addi.d	$a7, $a7, 2
 	srli.d	$a7, $a7, 2
-	st.b	$a7, $a6, 1
-	ld.w	$t1, $a1, 40
-	addi.d	$a7, $t5, 1
-	addi.w	$t0, $t1, -2
-	addi.d	$t2, $a6, 2
-	beqz	$t0, .LBB5_2
-# %bb.5:                                # %.lr.ph.preheader
+	st.b	$a7, $t4, 1
+	ld.w	$a7, $a1, 40
+	addi.d	$t6, $t5, 1
+	addi.w	$t7, $a7, -2
+	addi.d	$t8, $t4, 2
+	beqz	$t7, .LBB5_2
+# %bb.5:                                # %iter.check
                                         #   in Loop: Header=BB5_4 Depth=1
-	bgeu	$t0, $a5, .LBB5_7
-# %bb.6:                                #   in Loop: Header=BB5_4 Depth=1
-	move	$t1, $t2
-	b	.LBB5_13
+	bltu	$t7, $a5, .LBB5_8
+# %bb.6:                                # %vector.memcheck
+                                        #   in Loop: Header=BB5_4 Depth=1
+	addi.d	$a7, $a7, -3
+	bstrpick.d	$a7, $a7, 31, 0
+	add.d	$t0, $t5, $a7
+	addi.d	$t0, $t0, 3
+	bgeu	$t8, $t0, .LBB5_11
+# %bb.7:                                # %vector.memcheck
+                                        #   in Loop: Header=BB5_4 Depth=1
+	alsl.d	$a7, $a7, $t4, 1
+	addi.d	$a7, $a7, 4
+	bgeu	$t5, $a7, .LBB5_11
+.LBB5_8:                                #   in Loop: Header=BB5_4 Depth=1
+	move	$t0, $t8
+	move	$t1, $t7
+	move	$a7, $t4
+	move	$t2, $t6
 	.p2align	4, , 16
-.LBB5_7:                                # %vector.memcheck
-                                        #   in Loop: Header=BB5_4 Depth=1
-	addi.d	$t1, $t1, -3
-	bstrpick.d	$t1, $t1, 31, 0
-	add.d	$t3, $t5, $t1
-	addi.d	$t3, $t3, 3
-	bgeu	$t2, $t3, .LBB5_10
-# %bb.8:                                # %vector.memcheck
-                                        #   in Loop: Header=BB5_4 Depth=1
-	alsl.d	$t1, $t1, $a6, 1
-	addi.d	$t1, $t1, 4
-	bgeu	$t5, $t1, .LBB5_10
-# %bb.9:                                #   in Loop: Header=BB5_4 Depth=1
-	move	$t1, $t2
-	b	.LBB5_13
-.LBB5_10:                               # %vector.ph
-                                        #   in Loop: Header=BB5_4 Depth=1
-	bstrpick.d	$t3, $t0, 31, 0
-	bstrpick.d	$t6, $t3, 31, 3
-	slli.d	$t4, $t6, 3
-	alsl.d	$t1, $t6, $t2, 4
-	sub.d	$t0, $t0, $t4
-	alsl.d	$a6, $t6, $a6, 4
-	alsl.d	$a7, $t6, $a7, 3
-	addi.d	$t5, $t5, 2
-	move	$t6, $t4
-	.p2align	4, , 16
-.LBB5_11:                               # %vector.body
+.LBB5_9:                                # %.lr.ph
                                         #   Parent Loop BB5_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t7, $t5, -1
-	ld.d	$t8, $t5, -2
-	vinsgr2vr.d	$vr2, $t7, 0
-	vilvl.b	$vr2, $vr0, $vr2
-	vinsgr2vr.d	$vr3, $t8, 0
-	vilvl.b	$vr3, $vr0, $vr3
-	ld.d	$t7, $t5, 0
-	vmadd.h	$vr3, $vr2, $vr1
-	vaddi.hu	$vr3, $vr3, 1
-	vsrli.h	$vr3, $vr3, 2
-	vinsgr2vr.d	$vr4, $t7, 0
-	vilvl.b	$vr4, $vr0, $vr4
-	vmadd.h	$vr4, $vr2, $vr1
-	vaddi.hu	$vr2, $vr4, 2
-	vsrli.h	$vr2, $vr2, 2
-	vpackev.b	$vr2, $vr2, $vr3
-	vst	$vr2, $t2, 0
-	addi.d	$t2, $t2, 16
-	addi.d	$t6, $t6, -8
-	addi.d	$t5, $t5, 8
-	bnez	$t6, .LBB5_11
-# %bb.12:                               # %middle.block
-                                        #   in Loop: Header=BB5_4 Depth=1
-	beq	$t4, $t3, .LBB5_3
-	.p2align	4, , 16
-.LBB5_13:                               # %.lr.ph
-                                        #   Parent Loop BB5_4 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t2, $a7, 0
-	ld.bu	$t3, $a7, -1
-	move	$t4, $a6
-	move	$a6, $t1
-	alsl.d	$t1, $t2, $t2, 1
-	add.d	$t2, $t3, $t1
+	ld.bu	$t3, $t2, 0
+	ld.bu	$t4, $t2, -1
+	move	$t5, $a7
+	move	$a7, $t0
+	alsl.d	$t0, $t3, $t3, 1
+	add.d	$t3, $t4, $t0
+	addi.d	$t3, $t3, 1
+	srli.d	$t3, $t3, 2
+	st.b	$t3, $a7, 0
+	ld.bu	$t3, $t2, 1
 	addi.d	$t2, $t2, 1
-	srli.d	$t2, $t2, 2
-	st.b	$t2, $a6, 0
-	ld.bu	$t2, $a7, 1
-	addi.d	$a7, $a7, 1
-	add.d	$t1, $t1, $t2
-	addi.d	$t1, $t1, 2
-	srli.d	$t1, $t1, 2
-	st.b	$t1, $t4, 3
-	addi.w	$t0, $t0, -1
-	addi.d	$t1, $a6, 2
-	bnez	$t0, .LBB5_13
-# %bb.14:                               # %._crit_edge.loopexit
+	add.d	$t0, $t0, $t3
+	addi.d	$t0, $t0, 2
+	srli.d	$t0, $t0, 2
+	st.b	$t0, $t5, 3
+	addi.w	$t1, $t1, -1
+	addi.d	$t0, $a7, 2
+	bnez	$t1, .LBB5_9
+# %bb.10:                               # %._crit_edge.loopexit
                                         #   in Loop: Header=BB5_4 Depth=1
-	addi.d	$a6, $t1, -2
+	addi.d	$a7, $t0, -2
 	b	.LBB5_3
-.LBB5_15:                               # %._crit_edge43
+.LBB5_11:                               # %vector.main.loop.iter.check
+                                        #   in Loop: Header=BB5_4 Depth=1
+	bstrpick.d	$t3, $t7, 31, 0
+	bgeu	$t7, $a6, .LBB5_16
+# %bb.12:                               #   in Loop: Header=BB5_4 Depth=1
+	move	$fp, $zero
+.LBB5_13:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB5_4 Depth=1
+	bstrpick.d	$t2, $t3, 31, 4
+	slli.d	$s0, $t2, 4
+	slli.d	$a7, $t2, 5
+	add.d	$t0, $t8, $a7
+	sub.d	$t1, $t7, $s0
+	add.d	$a7, $t4, $a7
+	alsl.d	$t2, $t2, $t6, 4
+	alsl.d	$t4, $fp, $t4, 1
+	addi.d	$t4, $t4, 2
+	sub.d	$t6, $fp, $s0
+	add.d	$t5, $t5, $fp
+	addi.d	$t5, $t5, 2
+	.p2align	4, , 16
+.LBB5_14:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB5_4 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	vld	$vr1, $t5, -1
+	vld	$vr2, $t5, -2
+	vext2xv.hu.bu	$xr3, $xr1
+	vext2xv.hu.bu	$xr1, $xr2
+	xvmadd.h	$xr1, $xr3, $xr0
+	xvaddi.hu	$xr1, $xr1, 1
+	xvsrli.h	$xr2, $xr1, 2
+	vpickve2gr.h	$t7, $vr2, 0
+	vinsgr2vr.b	$vr1, $t7, 0
+	vpickve2gr.h	$t7, $vr2, 1
+	vinsgr2vr.b	$vr1, $t7, 1
+	vpickve2gr.h	$t7, $vr2, 2
+	vinsgr2vr.b	$vr1, $t7, 2
+	vpickve2gr.h	$t7, $vr2, 3
+	vinsgr2vr.b	$vr1, $t7, 3
+	vpickve2gr.h	$t7, $vr2, 4
+	vinsgr2vr.b	$vr1, $t7, 4
+	vpickve2gr.h	$t7, $vr2, 5
+	vinsgr2vr.b	$vr1, $t7, 5
+	vpickve2gr.h	$t7, $vr2, 6
+	vinsgr2vr.b	$vr1, $t7, 6
+	vpickve2gr.h	$t7, $vr2, 7
+	vinsgr2vr.b	$vr1, $t7, 7
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$t7, $vr2, 0
+	vinsgr2vr.b	$vr1, $t7, 8
+	vpickve2gr.h	$t7, $vr2, 1
+	vinsgr2vr.b	$vr1, $t7, 9
+	vpickve2gr.h	$t7, $vr2, 2
+	vinsgr2vr.b	$vr1, $t7, 10
+	vpickve2gr.h	$t7, $vr2, 3
+	vinsgr2vr.b	$vr1, $t7, 11
+	vpickve2gr.h	$t7, $vr2, 4
+	vinsgr2vr.b	$vr1, $t7, 12
+	vpickve2gr.h	$t7, $vr2, 5
+	vpickve2gr.h	$t8, $vr2, 6
+	vpickve2gr.h	$fp, $vr2, 7
+	vld	$vr2, $t5, 0
+	vinsgr2vr.b	$vr1, $t7, 13
+	vinsgr2vr.b	$vr1, $t8, 14
+	vinsgr2vr.b	$vr1, $fp, 15
+	vext2xv.hu.bu	$xr2, $xr2
+	xvmadd.h	$xr2, $xr3, $xr0
+	xvaddi.hu	$xr2, $xr2, 2
+	xvsrli.h	$xr2, $xr2, 2
+	vpickve2gr.h	$t7, $vr2, 0
+	vinsgr2vr.b	$vr3, $t7, 0
+	vpickve2gr.h	$t7, $vr2, 1
+	vinsgr2vr.b	$vr3, $t7, 1
+	vpickve2gr.h	$t7, $vr2, 2
+	vinsgr2vr.b	$vr3, $t7, 2
+	vpickve2gr.h	$t7, $vr2, 3
+	vinsgr2vr.b	$vr3, $t7, 3
+	vpickve2gr.h	$t7, $vr2, 4
+	vinsgr2vr.b	$vr3, $t7, 4
+	vpickve2gr.h	$t7, $vr2, 5
+	vinsgr2vr.b	$vr3, $t7, 5
+	vpickve2gr.h	$t7, $vr2, 6
+	vinsgr2vr.b	$vr3, $t7, 6
+	vpickve2gr.h	$t7, $vr2, 7
+	vinsgr2vr.b	$vr3, $t7, 7
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.h	$t7, $vr2, 0
+	vinsgr2vr.b	$vr3, $t7, 8
+	vpickve2gr.h	$t7, $vr2, 1
+	vinsgr2vr.b	$vr3, $t7, 9
+	vpickve2gr.h	$t7, $vr2, 2
+	vinsgr2vr.b	$vr3, $t7, 10
+	vpickve2gr.h	$t7, $vr2, 3
+	vinsgr2vr.b	$vr3, $t7, 11
+	vpickve2gr.h	$t7, $vr2, 4
+	vinsgr2vr.b	$vr3, $t7, 12
+	vpickve2gr.h	$t7, $vr2, 5
+	vinsgr2vr.b	$vr3, $t7, 13
+	vpickve2gr.h	$t7, $vr2, 6
+	vinsgr2vr.b	$vr3, $t7, 14
+	vpickve2gr.h	$t7, $vr2, 7
+	vinsgr2vr.b	$vr3, $t7, 15
+	vilvh.b	$vr2, $vr3, $vr1
+	vilvl.b	$vr1, $vr3, $vr1
+	xvpermi.q	$xr1, $xr2, 2
+	xvst	$xr1, $t4, 0
+	addi.d	$t4, $t4, 32
+	addi.d	$t6, $t6, 16
+	addi.d	$t5, $t5, 16
+	bnez	$t6, .LBB5_14
+# %bb.15:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB5_4 Depth=1
+	bne	$s0, $t3, .LBB5_9
+	b	.LBB5_3
+.LBB5_16:                               # %vector.ph
+                                        #   in Loop: Header=BB5_4 Depth=1
+	andi	$s0, $t3, 16
+	bstrpick.d	$a7, $t3, 31, 5
+	slli.d	$fp, $a7, 5
+	slli.d	$a7, $a7, 6
+	add.d	$t0, $t8, $a7
+	sub.d	$t1, $t7, $fp
+	add.d	$a7, $t4, $a7
+	add.d	$t2, $t6, $fp
+	addi.d	$s1, $t5, 2
+	addi.d	$s2, $t4, 32
+	move	$s3, $fp
+	.p2align	4, , 16
+.LBB5_17:                               # %vector.body
+                                        #   Parent Loop BB5_4 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	xvld	$xr2, $s1, -1
+	xvld	$xr3, $s1, -2
+	xvpermi.q	$xr1, $xr2, 1
+	vext2xv.hu.bu	$xr1, $xr1
+	vext2xv.hu.bu	$xr2, $xr2
+	xvpermi.q	$xr4, $xr3, 1
+	vext2xv.hu.bu	$xr4, $xr4
+	vext2xv.hu.bu	$xr3, $xr3
+	xvmadd.h	$xr3, $xr2, $xr0
+	xvmadd.h	$xr4, $xr1, $xr0
+	xvaddi.hu	$xr4, $xr4, 1
+	xvaddi.hu	$xr3, $xr3, 1
+	xvsrli.h	$xr5, $xr3, 2
+	xvsrli.h	$xr4, $xr4, 2
+	xvpermi.d	$xr3, $xr4, 14
+	vpickve2gr.h	$s4, $vr5, 0
+	st.b	$s4, $s2, -30
+	vpickve2gr.h	$s4, $vr5, 1
+	st.b	$s4, $s2, -28
+	vpickve2gr.h	$s4, $vr5, 2
+	st.b	$s4, $s2, -26
+	vpickve2gr.h	$s4, $vr5, 3
+	st.b	$s4, $s2, -24
+	vpickve2gr.h	$s4, $vr5, 4
+	st.b	$s4, $s2, -22
+	vpickve2gr.h	$s4, $vr5, 5
+	st.b	$s4, $s2, -20
+	vpickve2gr.h	$s4, $vr5, 6
+	st.b	$s4, $s2, -18
+	vpickve2gr.h	$s4, $vr5, 7
+	xvpermi.d	$xr5, $xr5, 14
+	st.b	$s4, $s2, -16
+	vpickve2gr.h	$s4, $vr5, 0
+	st.b	$s4, $s2, -14
+	vpickve2gr.h	$s4, $vr5, 1
+	st.b	$s4, $s2, -12
+	vpickve2gr.h	$s4, $vr5, 2
+	st.b	$s4, $s2, -10
+	vpickve2gr.h	$s4, $vr5, 3
+	st.b	$s4, $s2, -8
+	vpickve2gr.h	$s4, $vr5, 4
+	st.b	$s4, $s2, -6
+	vpickve2gr.h	$s4, $vr5, 5
+	st.b	$s4, $s2, -4
+	vpickve2gr.h	$s4, $vr5, 6
+	st.b	$s4, $s2, -2
+	vpickve2gr.h	$s4, $vr5, 7
+	st.b	$s4, $s2, 0
+	vpickve2gr.h	$s4, $vr4, 0
+	st.b	$s4, $s2, 2
+	vpickve2gr.h	$s4, $vr4, 1
+	st.b	$s4, $s2, 4
+	vpickve2gr.h	$s4, $vr4, 2
+	st.b	$s4, $s2, 6
+	vpickve2gr.h	$s4, $vr4, 3
+	st.b	$s4, $s2, 8
+	vpickve2gr.h	$s4, $vr4, 4
+	st.b	$s4, $s2, 10
+	vpickve2gr.h	$s4, $vr4, 5
+	st.b	$s4, $s2, 12
+	vpickve2gr.h	$s4, $vr4, 6
+	st.b	$s4, $s2, 14
+	vpickve2gr.h	$s4, $vr4, 7
+	st.b	$s4, $s2, 16
+	vpickve2gr.h	$s4, $vr3, 0
+	st.b	$s4, $s2, 18
+	vpickve2gr.h	$s4, $vr3, 1
+	st.b	$s4, $s2, 20
+	vpickve2gr.h	$s4, $vr3, 2
+	st.b	$s4, $s2, 22
+	vpickve2gr.h	$s4, $vr3, 3
+	st.b	$s4, $s2, 24
+	vpickve2gr.h	$s4, $vr3, 4
+	st.b	$s4, $s2, 26
+	vpickve2gr.h	$s4, $vr3, 5
+	st.b	$s4, $s2, 28
+	vpickve2gr.h	$s4, $vr3, 6
+	xvld	$xr4, $s1, 0
+	st.b	$s4, $s2, 30
+	vpickve2gr.h	$s4, $vr3, 7
+	st.b	$s4, $s2, 32
+	vext2xv.hu.bu	$xr3, $xr4
+	xvmadd.h	$xr3, $xr2, $xr0
+	xvpermi.q	$xr2, $xr4, 1
+	vext2xv.hu.bu	$xr2, $xr2
+	xvmadd.h	$xr2, $xr1, $xr0
+	xvaddi.hu	$xr1, $xr2, 2
+	xvaddi.hu	$xr2, $xr3, 2
+	xvsrli.h	$xr3, $xr2, 2
+	xvsrli.h	$xr2, $xr1, 2
+	xvpermi.d	$xr1, $xr2, 14
+	xvpermi.d	$xr4, $xr3, 14
+	vpickve2gr.h	$s4, $vr3, 0
+	st.b	$s4, $s2, -29
+	vpickve2gr.h	$s4, $vr3, 1
+	st.b	$s4, $s2, -27
+	vpickve2gr.h	$s4, $vr3, 2
+	st.b	$s4, $s2, -25
+	vpickve2gr.h	$s4, $vr3, 3
+	st.b	$s4, $s2, -23
+	vpickve2gr.h	$s4, $vr3, 4
+	st.b	$s4, $s2, -21
+	vpickve2gr.h	$s4, $vr3, 5
+	st.b	$s4, $s2, -19
+	vpickve2gr.h	$s4, $vr3, 6
+	st.b	$s4, $s2, -17
+	vpickve2gr.h	$s4, $vr3, 7
+	st.b	$s4, $s2, -15
+	vpickve2gr.h	$s4, $vr4, 0
+	st.b	$s4, $s2, -13
+	vpickve2gr.h	$s4, $vr4, 1
+	st.b	$s4, $s2, -11
+	vpickve2gr.h	$s4, $vr4, 2
+	st.b	$s4, $s2, -9
+	vpickve2gr.h	$s4, $vr4, 3
+	st.b	$s4, $s2, -7
+	vpickve2gr.h	$s4, $vr4, 4
+	st.b	$s4, $s2, -5
+	vpickve2gr.h	$s4, $vr4, 5
+	st.b	$s4, $s2, -3
+	vpickve2gr.h	$s4, $vr4, 6
+	st.b	$s4, $s2, -1
+	vpickve2gr.h	$s4, $vr4, 7
+	st.b	$s4, $s2, 1
+	vpickve2gr.h	$s4, $vr2, 0
+	st.b	$s4, $s2, 3
+	vpickve2gr.h	$s4, $vr2, 1
+	st.b	$s4, $s2, 5
+	vpickve2gr.h	$s4, $vr2, 2
+	st.b	$s4, $s2, 7
+	vpickve2gr.h	$s4, $vr2, 3
+	st.b	$s4, $s2, 9
+	vpickve2gr.h	$s4, $vr2, 4
+	st.b	$s4, $s2, 11
+	vpickve2gr.h	$s4, $vr2, 5
+	st.b	$s4, $s2, 13
+	vpickve2gr.h	$s4, $vr2, 6
+	st.b	$s4, $s2, 15
+	vpickve2gr.h	$s4, $vr2, 7
+	st.b	$s4, $s2, 17
+	vpickve2gr.h	$s4, $vr1, 0
+	st.b	$s4, $s2, 19
+	vpickve2gr.h	$s4, $vr1, 1
+	st.b	$s4, $s2, 21
+	vpickve2gr.h	$s4, $vr1, 2
+	st.b	$s4, $s2, 23
+	vpickve2gr.h	$s4, $vr1, 3
+	st.b	$s4, $s2, 25
+	vpickve2gr.h	$s4, $vr1, 4
+	st.b	$s4, $s2, 27
+	vpickve2gr.h	$s4, $vr1, 5
+	st.b	$s4, $s2, 29
+	vpickve2gr.h	$s4, $vr1, 6
+	st.b	$s4, $s2, 31
+	vpickve2gr.h	$s4, $vr1, 7
+	st.b	$s4, $s2, 33
+	addi.d	$s1, $s1, 32
+	addi.d	$s3, $s3, -32
+	addi.d	$s2, $s2, 64
+	bnez	$s3, .LBB5_17
+# %bb.18:                               # %middle.block
+                                        #   in Loop: Header=BB5_4 Depth=1
+	beq	$fp, $t3, .LBB5_3
+# %bb.19:                               # %vec.epilog.iter.check
+                                        #   in Loop: Header=BB5_4 Depth=1
+	beqz	$s0, .LBB5_9
+	b	.LBB5_13
+.LBB5_20:
+	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
+.LBB5_21:                               # %._crit_edge43
 	ret
 .Lfunc_end5:
 	.size	h2v1_fancy_upsample, .Lfunc_end5-h2v1_fancy_upsample
@@ -1006,389 +1281,171 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	add.d	$t3, $s1, $t3
 	add.d	$t4, $t7, $fp
 	add.d	$t5, $t6, $fp
-	xvinsgr2vr.w	$xr3, $s2, 7
-	xvinsgr2vr.w	$xr2, $s0, 7
+	xvinsgr2vr.w	$xr2, $s2, 7
+	xvinsgr2vr.w	$xr1, $s0, 7
 	addi.d	$s0, $s1, 32
 	move	$s1, $fp
 	.p2align	4, , 16
 .LBB7_20:                               # %vector.body181
                                         #   Parent Loop BB7_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr1, $t6, 0
-	xvpermi.q	$xr6, $xr1, 1
-	vpickve2gr.b	$s2, $vr6, 4
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 0
-	vpickve2gr.b	$s2, $vr6, 5
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 1
-	vpickve2gr.b	$s2, $vr6, 6
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 2
-	vpickve2gr.b	$s2, $vr6, 7
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 3
-	vpickve2gr.b	$s2, $vr6, 0
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr4, $s2, 0
-	vpickve2gr.b	$s2, $vr6, 1
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr4, $s2, 1
-	vpickve2gr.b	$s2, $vr6, 2
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr4, $s2, 2
-	vpickve2gr.b	$s2, $vr6, 3
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr4, $s2, 3
-	xvpermi.q	$xr4, $xr5, 2
-	vpickve2gr.b	$s2, $vr6, 12
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 0
-	vpickve2gr.b	$s2, $vr6, 13
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 1
-	vpickve2gr.b	$s2, $vr6, 14
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 2
-	vpickve2gr.b	$s2, $vr6, 15
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 3
-	vpickve2gr.b	$s2, $vr6, 8
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 0
-	vpickve2gr.b	$s2, $vr6, 9
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 1
-	vpickve2gr.b	$s2, $vr6, 10
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 2
-	vpickve2gr.b	$s2, $vr6, 11
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr5, $s2, 3
-	xvpermi.q	$xr5, $xr7, 2
-	vpickve2gr.b	$s2, $vr1, 12
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 0
-	vpickve2gr.b	$s2, $vr1, 13
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 1
-	vpickve2gr.b	$s2, $vr1, 14
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 2
-	vpickve2gr.b	$s2, $vr1, 15
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 3
-	vpickve2gr.b	$s2, $vr1, 8
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr6, $s2, 0
-	vpickve2gr.b	$s2, $vr1, 9
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr6, $s2, 1
-	vpickve2gr.b	$s2, $vr1, 10
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr6, $s2, 2
-	vpickve2gr.b	$s2, $vr1, 11
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr6, $s2, 3
-	xvpermi.q	$xr6, $xr7, 2
-	vpickve2gr.b	$s2, $vr1, 4
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 0
-	vpickve2gr.b	$s2, $vr1, 5
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 1
-	vpickve2gr.b	$s2, $vr1, 6
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 2
-	vpickve2gr.b	$s2, $vr1, 7
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 3
-	vpickve2gr.b	$s2, $vr1, 0
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 0
-	vpickve2gr.b	$s2, $vr1, 1
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 1
-	vpickve2gr.b	$s2, $vr1, 2
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 2
-	vpickve2gr.b	$s2, $vr1, 3
-	xvld	$xr8, $t7, 0
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr7, $s2, 3
-	xvpermi.q	$xr7, $xr9, 2
-	xvpermi.q	$xr9, $xr8, 1
-	vpickve2gr.b	$s2, $vr9, 4
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 0
-	vpickve2gr.b	$s2, $vr9, 5
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 1
-	vpickve2gr.b	$s2, $vr9, 6
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 2
-	vpickve2gr.b	$s2, $vr9, 7
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 3
-	vpickve2gr.b	$s2, $vr9, 0
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr1, $s2, 0
-	vpickve2gr.b	$s2, $vr9, 1
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr1, $s2, 1
-	vpickve2gr.b	$s2, $vr9, 2
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr1, $s2, 2
-	vpickve2gr.b	$s2, $vr9, 3
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr1, $s2, 3
-	xvpermi.q	$xr1, $xr10, 2
-	vpickve2gr.b	$s2, $vr9, 12
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 0
-	vpickve2gr.b	$s2, $vr9, 13
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 1
-	vpickve2gr.b	$s2, $vr9, 14
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 2
-	vpickve2gr.b	$s2, $vr9, 15
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 3
-	vpickve2gr.b	$s2, $vr9, 8
-	andi	$s2, $s2, 255
-	xvpickve2gr.w	$s3, $xr2, 7
-	xvpermi.d	$xr11, $xr2, 238
-	vinsgr2vr.w	$vr2, $s2, 0
-	vpickve2gr.b	$s2, $vr9, 9
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr2, $s2, 1
-	vpickve2gr.b	$s2, $vr9, 10
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr2, $s2, 2
-	vpickve2gr.b	$s2, $vr9, 11
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr2, $s2, 3
-	xvpermi.q	$xr2, $xr10, 2
-	vpickve2gr.b	$s2, $vr8, 12
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 0
-	vpickve2gr.b	$s2, $vr8, 13
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 1
-	vpickve2gr.b	$s2, $vr8, 14
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 2
-	vpickve2gr.b	$s2, $vr8, 15
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 3
-	vpickve2gr.b	$s2, $vr8, 8
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 0
-	vpickve2gr.b	$s2, $vr8, 9
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 1
-	vpickve2gr.b	$s2, $vr8, 10
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 2
-	vpickve2gr.b	$s2, $vr8, 11
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr9, $s2, 3
-	xvpermi.q	$xr9, $xr10, 2
-	vpickve2gr.b	$s2, $vr8, 4
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr12, $s2, 0
-	vpickve2gr.b	$s2, $vr8, 5
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr12, $s2, 1
-	vpickve2gr.b	$s2, $vr8, 6
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr12, $s2, 2
-	vpickve2gr.b	$s2, $vr8, 7
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr12, $s2, 3
-	vpickve2gr.b	$s2, $vr8, 0
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 0
-	vpickve2gr.b	$s2, $vr8, 1
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 1
-	vpickve2gr.b	$s2, $vr8, 2
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 2
-	vpickve2gr.b	$s2, $vr8, 3
-	andi	$s2, $s2, 255
-	vinsgr2vr.w	$vr10, $s2, 3
-	xvpermi.q	$xr10, $xr12, 2
-	xvmadd.w	$xr2, $xr5, $xr0
-	xvmadd.w	$xr1, $xr4, $xr0
-	xvmadd.w	$xr10, $xr7, $xr0
-	xvmadd.w	$xr9, $xr6, $xr0
-	xvpickve2gr.w	$s2, $xr9, 7
-	vinsgr2vr.w	$vr4, $s2, 0
-	xvpickve2gr.w	$s2, $xr1, 0
-	vinsgr2vr.w	$vr4, $s2, 1
-	xvpickve2gr.w	$s2, $xr1, 1
-	vinsgr2vr.w	$vr4, $s2, 2
-	xvpickve2gr.w	$s2, $xr1, 2
-	vinsgr2vr.w	$vr4, $s2, 3
-	xvpickve2gr.w	$s2, $xr1, 3
-	vinsgr2vr.w	$vr5, $s2, 0
-	xvpickve2gr.w	$s2, $xr1, 4
-	vinsgr2vr.w	$vr5, $s2, 1
-	xvpickve2gr.w	$s2, $xr1, 5
-	vinsgr2vr.w	$vr5, $s2, 2
-	xvpickve2gr.w	$s2, $xr1, 6
-	vinsgr2vr.w	$vr5, $s2, 3
-	xvpermi.q	$xr4, $xr5, 2
-	xvpickve2gr.w	$s2, $xr2, 3
-	vinsgr2vr.w	$vr5, $s2, 0
-	xvpickve2gr.w	$s2, $xr2, 4
-	vinsgr2vr.w	$vr5, $s2, 1
-	xvpickve2gr.w	$s2, $xr2, 5
-	vinsgr2vr.w	$vr5, $s2, 2
+	xvld	$xr3, $t6, 0
+	vext2xv.hu.bu	$xr4, $xr3
+	xvpermi.q	$xr5, $xr4, 1
+	vext2xv.wu.hu	$xr6, $xr5
+	xvpermi.q	$xr3, $xr3, 1
+	vext2xv.hu.bu	$xr3, $xr3
+	vext2xv.wu.hu	$xr7, $xr3
+	xvld	$xr10, $t7, 0
+	xvpermi.q	$xr3, $xr3, 1
+	vext2xv.wu.hu	$xr9, $xr3
+	vext2xv.wu.hu	$xr8, $xr4
+	vext2xv.hu.bu	$xr5, $xr10
+	xvpermi.q	$xr3, $xr5, 1
+	vext2xv.wu.hu	$xr3, $xr3
+	xvpermi.q	$xr4, $xr10, 1
+	vext2xv.hu.bu	$xr10, $xr4
+	vext2xv.wu.hu	$xr4, $xr10
+	xvpermi.q	$xr10, $xr10, 1
 	xvpickve2gr.w	$s2, $xr1, 7
-	xvpermi.d	$xr7, $xr3, 238
-	vinsgr2vr.w	$vr3, $s2, 0
-	xvpickve2gr.w	$s2, $xr2, 0
-	vinsgr2vr.w	$vr3, $s2, 1
-	xvpickve2gr.w	$s2, $xr2, 1
-	vinsgr2vr.w	$vr3, $s2, 2
-	xvpickve2gr.w	$s2, $xr2, 2
-	vinsgr2vr.w	$vr3, $s2, 3
-	xvpickve2gr.w	$s2, $xr2, 6
-	vinsgr2vr.w	$vr5, $s2, 3
-	xvpermi.q	$xr3, $xr5, 2
-	vinsgr2vr.w	$vr5, $s3, 0
-	xvpickve2gr.w	$s3, $xr10, 0
-	vinsgr2vr.w	$vr5, $s3, 1
-	xvpickve2gr.w	$s3, $xr10, 1
-	vinsgr2vr.w	$vr5, $s3, 2
-	xvpickve2gr.w	$s3, $xr10, 2
-	vinsgr2vr.w	$vr5, $s3, 3
-	xvpickve2gr.w	$s3, $xr10, 3
-	vinsgr2vr.w	$vr6, $s3, 0
-	xvpickve2gr.w	$s3, $xr10, 4
+	xvpermi.d	$xr11, $xr1, 238
+	vext2xv.wu.hu	$xr1, $xr10
+	vext2xv.wu.hu	$xr5, $xr5
+	xvmadd.w	$xr1, $xr9, $xr0
+	xvmadd.w	$xr4, $xr7, $xr0
+	xvmadd.w	$xr3, $xr6, $xr0
+	xvmadd.w	$xr5, $xr8, $xr0
+	xvpickve2gr.w	$s3, $xr5, 0
+	vinsgr2vr.w	$vr6, $s2, 0
 	vinsgr2vr.w	$vr6, $s3, 1
-	xvpickve2gr.w	$s3, $xr10, 5
-	vinsgr2vr.w	$vr6, $s3, 2
-	xvpickve2gr.w	$s3, $xr10, 6
-	vinsgr2vr.w	$vr6, $s3, 3
-	xvpermi.q	$xr5, $xr6, 2
-	xvpickve2gr.w	$s3, $xr9, 3
-	vinsgr2vr.w	$vr8, $s3, 0
-	xvpickve2gr.w	$s3, $xr9, 4
-	vinsgr2vr.w	$vr8, $s3, 1
-	xvpickve2gr.w	$s3, $xr9, 5
-	vinsgr2vr.w	$vr8, $s3, 2
-	xvpickve2gr.w	$s3, $xr9, 6
-	vinsgr2vr.w	$vr8, $s3, 3
-	xvpickve2gr.w	$s3, $xr10, 7
-	vinsgr2vr.w	$vr6, $s3, 0
-	xvpickve2gr.w	$s3, $xr9, 0
-	vinsgr2vr.w	$vr6, $s3, 1
-	xvpickve2gr.w	$s3, $xr9, 1
-	vinsgr2vr.w	$vr6, $s3, 2
-	xvpickve2gr.w	$s3, $xr9, 2
-	vinsgr2vr.w	$vr6, $s3, 3
-	xvpermi.q	$xr6, $xr8, 2
-	xvpickve2gr.d	$s3, $xr2, 1
-	vinsgr2vr.d	$vr8, $s3, 0
-	xvpickve2gr.d	$s3, $xr2, 2
-	vinsgr2vr.d	$vr8, $s3, 1
-	xvpickve2gr.d	$s3, $xr1, 3
-	vinsgr2vr.d	$vr12, $s3, 0
-	xvpickve2gr.d	$s3, $xr2, 0
-	vinsgr2vr.d	$vr12, $s3, 1
-	xvpermi.q	$xr12, $xr8, 2
-	xvpickve2gr.d	$s3, $xr9, 1
-	vinsgr2vr.d	$vr8, $s3, 0
-	xvpickve2gr.d	$s3, $xr9, 2
-	vinsgr2vr.d	$vr8, $s3, 1
-	xvpickve2gr.d	$s3, $xr10, 3
+	xvpickve2gr.w	$s2, $xr5, 1
+	vinsgr2vr.w	$vr6, $s2, 2
+	xvpickve2gr.w	$s2, $xr5, 2
+	vinsgr2vr.w	$vr6, $s2, 3
+	xvpickve2gr.w	$s2, $xr5, 3
+	vinsgr2vr.w	$vr7, $s2, 0
+	xvpickve2gr.w	$s2, $xr5, 4
+	vinsgr2vr.w	$vr7, $s2, 1
+	xvpickve2gr.w	$s2, $xr5, 5
+	vinsgr2vr.w	$vr7, $s2, 2
+	xvpickve2gr.w	$s2, $xr5, 6
+	vinsgr2vr.w	$vr7, $s2, 3
+	xvpermi.q	$xr6, $xr7, 2
+	xvpickve2gr.w	$s2, $xr5, 7
+	vinsgr2vr.w	$vr7, $s2, 0
+	xvpickve2gr.w	$s2, $xr3, 0
+	vinsgr2vr.w	$vr7, $s2, 1
+	xvpickve2gr.w	$s2, $xr3, 1
+	vinsgr2vr.w	$vr7, $s2, 2
+	xvpickve2gr.w	$s2, $xr3, 2
+	vinsgr2vr.w	$vr7, $s2, 3
+	xvpickve2gr.w	$s2, $xr3, 3
+	vinsgr2vr.w	$vr8, $s2, 0
+	xvpickve2gr.w	$s2, $xr3, 4
+	vinsgr2vr.w	$vr8, $s2, 1
+	xvpickve2gr.w	$s2, $xr3, 5
+	vinsgr2vr.w	$vr8, $s2, 2
+	xvpickve2gr.w	$s2, $xr3, 6
+	vinsgr2vr.w	$vr8, $s2, 3
+	xvpermi.q	$xr7, $xr8, 2
+	xvpickve2gr.w	$s2, $xr4, 3
+	vinsgr2vr.w	$vr9, $s2, 0
+	xvpickve2gr.w	$s2, $xr4, 4
+	vinsgr2vr.w	$vr9, $s2, 1
+	xvpickve2gr.w	$s2, $xr4, 5
+	vinsgr2vr.w	$vr9, $s2, 2
+	xvpickve2gr.w	$s2, $xr4, 6
+	vinsgr2vr.w	$vr9, $s2, 3
+	xvpickve2gr.w	$s2, $xr3, 7
+	vinsgr2vr.w	$vr8, $s2, 0
+	xvpickve2gr.w	$s2, $xr4, 0
+	vinsgr2vr.w	$vr8, $s2, 1
+	xvpickve2gr.w	$s2, $xr4, 1
+	vinsgr2vr.w	$vr8, $s2, 2
+	xvpickve2gr.w	$s2, $xr4, 2
+	vinsgr2vr.w	$vr8, $s2, 3
+	xvpermi.q	$xr8, $xr9, 2
+	xvpickve2gr.w	$s2, $xr4, 7
+	xvpermi.d	$xr9, $xr2, 238
+	vinsgr2vr.w	$vr2, $s2, 0
+	xvpickve2gr.w	$s2, $xr1, 0
+	vinsgr2vr.w	$vr2, $s2, 1
+	xvpickve2gr.w	$s2, $xr1, 1
+	vinsgr2vr.w	$vr2, $s2, 2
+	xvpickve2gr.w	$s2, $xr1, 2
+	vinsgr2vr.w	$vr2, $s2, 3
+	xvpickve2gr.w	$s2, $xr1, 3
+	vinsgr2vr.w	$vr10, $s2, 0
+	xvpickve2gr.w	$s2, $xr1, 4
+	vinsgr2vr.w	$vr10, $s2, 1
+	xvpickve2gr.w	$s2, $xr1, 5
+	vinsgr2vr.w	$vr10, $s2, 2
+	xvld	$xr12, $a7, %pc_lo12(.LCPI7_0)
+	xvpickve2gr.w	$s2, $xr1, 6
+	vinsgr2vr.w	$vr10, $s2, 3
+	xvpermi.q	$xr2, $xr10, 2
+	xvshuf.w	$xr12, $xr11, $xr9
+	xvpickve2gr.d	$s3, $xr12, 0
+	vinsgr2vr.d	$vr9, $s3, 0
+	xvpickve2gr.d	$s3, $xr5, 0
+	vinsgr2vr.d	$vr9, $s3, 1
+	xvpickve2gr.d	$s3, $xr5, 1
+	vinsgr2vr.d	$vr10, $s3, 0
+	xvpickve2gr.d	$s3, $xr5, 2
+	vinsgr2vr.d	$vr10, $s3, 1
+	xvpermi.q	$xr9, $xr10, 2
+	xvpickve2gr.d	$s3, $xr5, 3
+	vinsgr2vr.d	$vr11, $s3, 0
+	xvpickve2gr.d	$s3, $xr3, 0
+	vinsgr2vr.d	$vr11, $s3, 1
+	xvpickve2gr.d	$s3, $xr3, 1
+	vinsgr2vr.d	$vr10, $s3, 0
+	xvpickve2gr.d	$s3, $xr3, 2
+	vinsgr2vr.d	$vr10, $s3, 1
+	xvpermi.q	$xr11, $xr10, 2
+	xvpickve2gr.d	$s3, $xr4, 1
+	vinsgr2vr.d	$vr10, $s3, 0
+	xvpickve2gr.d	$s3, $xr4, 2
+	vinsgr2vr.d	$vr10, $s3, 1
+	xvpickve2gr.d	$s3, $xr3, 3
 	vinsgr2vr.d	$vr13, $s3, 0
-	xvpickve2gr.d	$s3, $xr9, 0
+	xvpickve2gr.d	$s3, $xr4, 0
 	vinsgr2vr.d	$vr13, $s3, 1
-	xvpermi.q	$xr13, $xr8, 2
-	xvpickve2gr.d	$s3, $xr1, 1
-	vinsgr2vr.d	$vr8, $s3, 0
-	xvpickve2gr.d	$s3, $xr1, 2
-	vinsgr2vr.d	$vr8, $s3, 1
-	xvpickve2gr.d	$s3, $xr9, 3
+	xvpermi.q	$xr13, $xr10, 2
+	xvpickve2gr.d	$s3, $xr4, 3
 	vinsgr2vr.d	$vr14, $s3, 0
 	xvpickve2gr.d	$s3, $xr1, 0
 	vinsgr2vr.d	$vr14, $s3, 1
-	xvpermi.q	$xr14, $xr8, 2
-	xvpickve2gr.d	$s3, $xr10, 1
-	xvld	$xr8, $a7, %pc_lo12(.LCPI7_0)
-	vinsgr2vr.d	$vr15, $s3, 0
-	xvpickve2gr.d	$s3, $xr10, 2
-	vinsgr2vr.d	$vr15, $s3, 1
-	xvshuf.w	$xr8, $xr11, $xr7
-	xvpickve2gr.d	$s3, $xr8, 0
-	vinsgr2vr.d	$vr7, $s3, 0
-	xvpickve2gr.d	$s3, $xr10, 0
-	vinsgr2vr.d	$vr7, $s3, 1
-	xvpermi.q	$xr7, $xr15, 2
-	xvmadd.w	$xr12, $xr3, $xr0
-	xvmadd.w	$xr14, $xr4, $xr0
-	xvmadd.w	$xr13, $xr6, $xr0
-	xvmadd.w	$xr7, $xr5, $xr0
-	xvaddi.wu	$xr8, $xr12, 8
-	xvaddi.wu	$xr12, $xr13, 8
-	xvaddi.wu	$xr13, $xr14, 8
-	xvaddi.wu	$xr11, $xr7, 8
-	xvpickve2gr.w	$s3, $xr8, 0
-	vinsgr2vr.h	$vr7, $s3, 0
-	xvpickve2gr.w	$s3, $xr8, 1
-	vinsgr2vr.h	$vr7, $s3, 1
-	xvpickve2gr.w	$s3, $xr8, 2
-	vinsgr2vr.h	$vr7, $s3, 2
-	xvpickve2gr.w	$s3, $xr8, 3
-	vinsgr2vr.h	$vr7, $s3, 3
-	xvpickve2gr.w	$s3, $xr8, 4
-	vinsgr2vr.h	$vr7, $s3, 4
-	xvpickve2gr.w	$s3, $xr8, 5
-	vinsgr2vr.h	$vr7, $s3, 5
-	xvpickve2gr.w	$s3, $xr8, 6
-	vinsgr2vr.h	$vr7, $s3, 6
-	xvpickve2gr.w	$s3, $xr8, 7
-	vinsgr2vr.h	$vr7, $s3, 7
-	vsrli.h	$vr7, $vr7, 4
-	xvpickve2gr.w	$s3, $xr13, 0
-	vinsgr2vr.h	$vr8, $s3, 0
-	xvpickve2gr.w	$s3, $xr13, 1
-	vinsgr2vr.h	$vr8, $s3, 1
-	xvpickve2gr.w	$s3, $xr13, 2
-	vinsgr2vr.h	$vr8, $s3, 2
-	xvpickve2gr.w	$s3, $xr13, 3
-	vinsgr2vr.h	$vr8, $s3, 3
-	xvpickve2gr.w	$s3, $xr13, 4
-	vinsgr2vr.h	$vr8, $s3, 4
-	xvpickve2gr.w	$s3, $xr13, 5
-	vinsgr2vr.h	$vr8, $s3, 5
-	xvpickve2gr.w	$s3, $xr13, 6
-	vinsgr2vr.h	$vr8, $s3, 6
-	xvpickve2gr.w	$s3, $xr13, 7
-	vinsgr2vr.h	$vr8, $s3, 7
-	vsrli.h	$vr8, $vr8, 4
-	xvpickve2gr.w	$s3, $xr12, 0
+	xvpickve2gr.d	$s3, $xr1, 1
+	vinsgr2vr.d	$vr10, $s3, 0
+	xvpickve2gr.d	$s3, $xr1, 2
+	vinsgr2vr.d	$vr10, $s3, 1
+	xvpermi.q	$xr14, $xr10, 2
+	xvmadd.w	$xr14, $xr2, $xr0
+	xvmadd.w	$xr13, $xr8, $xr0
+	xvmadd.w	$xr11, $xr7, $xr0
+	xvmadd.w	$xr9, $xr6, $xr0
+	xvaddi.wu	$xr10, $xr9, 8
+	xvaddi.wu	$xr12, $xr11, 8
+	xvaddi.wu	$xr11, $xr13, 8
+	xvaddi.wu	$xr9, $xr14, 8
+	xvpickve2gr.w	$s3, $xr9, 0
 	vinsgr2vr.h	$vr13, $s3, 0
-	xvpickve2gr.w	$s3, $xr12, 1
+	xvpickve2gr.w	$s3, $xr9, 1
 	vinsgr2vr.h	$vr13, $s3, 1
-	xvpickve2gr.w	$s3, $xr12, 2
+	xvpickve2gr.w	$s3, $xr9, 2
 	vinsgr2vr.h	$vr13, $s3, 2
-	xvpickve2gr.w	$s3, $xr12, 3
+	xvpickve2gr.w	$s3, $xr9, 3
 	vinsgr2vr.h	$vr13, $s3, 3
-	xvpickve2gr.w	$s3, $xr12, 4
+	xvpickve2gr.w	$s3, $xr9, 4
 	vinsgr2vr.h	$vr13, $s3, 4
-	xvpickve2gr.w	$s3, $xr12, 5
+	xvpickve2gr.w	$s3, $xr9, 5
 	vinsgr2vr.h	$vr13, $s3, 5
-	xvpickve2gr.w	$s3, $xr12, 6
+	xvpickve2gr.w	$s3, $xr9, 6
 	vinsgr2vr.h	$vr13, $s3, 6
-	xvpickve2gr.w	$s3, $xr12, 7
+	xvpickve2gr.w	$s3, $xr9, 7
 	vinsgr2vr.h	$vr13, $s3, 7
-	vsrli.h	$vr12, $vr13, 4
+	vsrli.h	$vr9, $vr13, 4
 	xvpickve2gr.w	$s3, $xr11, 0
 	vinsgr2vr.h	$vr13, $s3, 0
 	xvpickve2gr.w	$s3, $xr11, 1
@@ -1406,21 +1463,55 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	xvpickve2gr.w	$s3, $xr11, 7
 	vinsgr2vr.h	$vr13, $s3, 7
 	vsrli.h	$vr11, $vr13, 4
-	vpickve2gr.h	$s3, $vr11, 0
+	xvpickve2gr.w	$s3, $xr12, 0
+	vinsgr2vr.h	$vr13, $s3, 0
+	xvpickve2gr.w	$s3, $xr12, 1
+	vinsgr2vr.h	$vr13, $s3, 1
+	xvpickve2gr.w	$s3, $xr12, 2
+	vinsgr2vr.h	$vr13, $s3, 2
+	xvpickve2gr.w	$s3, $xr12, 3
+	vinsgr2vr.h	$vr13, $s3, 3
+	xvpickve2gr.w	$s3, $xr12, 4
+	vinsgr2vr.h	$vr13, $s3, 4
+	xvpickve2gr.w	$s3, $xr12, 5
+	vinsgr2vr.h	$vr13, $s3, 5
+	xvpickve2gr.w	$s3, $xr12, 6
+	vinsgr2vr.h	$vr13, $s3, 6
+	xvpickve2gr.w	$s3, $xr12, 7
+	vinsgr2vr.h	$vr13, $s3, 7
+	vsrli.h	$vr12, $vr13, 4
+	xvpickve2gr.w	$s3, $xr10, 0
+	vinsgr2vr.h	$vr13, $s3, 0
+	xvpickve2gr.w	$s3, $xr10, 1
+	vinsgr2vr.h	$vr13, $s3, 1
+	xvpickve2gr.w	$s3, $xr10, 2
+	vinsgr2vr.h	$vr13, $s3, 2
+	xvpickve2gr.w	$s3, $xr10, 3
+	vinsgr2vr.h	$vr13, $s3, 3
+	xvpickve2gr.w	$s3, $xr10, 4
+	vinsgr2vr.h	$vr13, $s3, 4
+	xvpickve2gr.w	$s3, $xr10, 5
+	vinsgr2vr.h	$vr13, $s3, 5
+	xvpickve2gr.w	$s3, $xr10, 6
+	vinsgr2vr.h	$vr13, $s3, 6
+	xvpickve2gr.w	$s3, $xr10, 7
+	vinsgr2vr.h	$vr13, $s3, 7
+	vsrli.h	$vr10, $vr13, 4
+	vpickve2gr.h	$s3, $vr10, 0
 	st.b	$s3, $s0, -30
-	vpickve2gr.h	$s3, $vr11, 1
+	vpickve2gr.h	$s3, $vr10, 1
 	st.b	$s3, $s0, -28
-	vpickve2gr.h	$s3, $vr11, 2
+	vpickve2gr.h	$s3, $vr10, 2
 	st.b	$s3, $s0, -26
-	vpickve2gr.h	$s3, $vr11, 3
+	vpickve2gr.h	$s3, $vr10, 3
 	st.b	$s3, $s0, -24
-	vpickve2gr.h	$s3, $vr11, 4
+	vpickve2gr.h	$s3, $vr10, 4
 	st.b	$s3, $s0, -22
-	vpickve2gr.h	$s3, $vr11, 5
+	vpickve2gr.h	$s3, $vr10, 5
 	st.b	$s3, $s0, -20
-	vpickve2gr.h	$s3, $vr11, 6
+	vpickve2gr.h	$s3, $vr10, 6
 	st.b	$s3, $s0, -18
-	vpickve2gr.h	$s3, $vr11, 7
+	vpickve2gr.h	$s3, $vr10, 7
 	st.b	$s3, $s0, -16
 	vpickve2gr.h	$s3, $vr12, 0
 	st.b	$s3, $s0, -14
@@ -1438,98 +1529,64 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	st.b	$s3, $s0, -2
 	vpickve2gr.h	$s3, $vr12, 7
 	st.b	$s3, $s0, 0
-	vpickve2gr.h	$s3, $vr8, 0
+	vpickve2gr.h	$s3, $vr11, 0
 	st.b	$s3, $s0, 2
-	vpickve2gr.h	$s3, $vr8, 1
+	vpickve2gr.h	$s3, $vr11, 1
 	st.b	$s3, $s0, 4
-	vpickve2gr.h	$s3, $vr8, 2
+	vpickve2gr.h	$s3, $vr11, 2
 	st.b	$s3, $s0, 6
-	vpickve2gr.h	$s3, $vr8, 3
+	vpickve2gr.h	$s3, $vr11, 3
 	st.b	$s3, $s0, 8
-	vpickve2gr.h	$s3, $vr8, 4
+	vpickve2gr.h	$s3, $vr11, 4
 	st.b	$s3, $s0, 10
-	vpickve2gr.h	$s3, $vr8, 5
+	vpickve2gr.h	$s3, $vr11, 5
 	st.b	$s3, $s0, 12
-	vpickve2gr.h	$s3, $vr8, 6
+	vpickve2gr.h	$s3, $vr11, 6
 	st.b	$s3, $s0, 14
-	vpickve2gr.h	$s3, $vr8, 7
+	vpickve2gr.h	$s3, $vr11, 7
 	st.b	$s3, $s0, 16
-	vpickve2gr.h	$s3, $vr7, 0
+	vpickve2gr.h	$s3, $vr9, 0
 	st.b	$s3, $s0, 18
-	vpickve2gr.h	$s3, $vr7, 1
+	vpickve2gr.h	$s3, $vr9, 1
 	st.b	$s3, $s0, 20
-	vpickve2gr.h	$s3, $vr7, 2
+	vpickve2gr.h	$s3, $vr9, 2
 	st.b	$s3, $s0, 22
-	vpickve2gr.h	$s3, $vr7, 3
+	vpickve2gr.h	$s3, $vr9, 3
 	st.b	$s3, $s0, 24
-	vpickve2gr.h	$s3, $vr7, 4
+	vpickve2gr.h	$s3, $vr9, 4
 	st.b	$s3, $s0, 26
-	vpickve2gr.h	$s3, $vr7, 5
+	vpickve2gr.h	$s3, $vr9, 5
 	st.b	$s3, $s0, 28
-	vpickve2gr.h	$s3, $vr7, 6
+	vpickve2gr.h	$s3, $vr9, 6
 	st.b	$s3, $s0, 30
-	vpickve2gr.h	$s3, $vr7, 7
+	vpickve2gr.h	$s3, $vr9, 7
 	st.b	$s3, $s0, 32
-	xvori.b	$xr7, $xr2, 0
-	xvmadd.w	$xr7, $xr3, $xr0
-	xvmadd.w	$xr1, $xr4, $xr0
-	xvmadd.w	$xr9, $xr6, $xr0
-	xvmadd.w	$xr10, $xr5, $xr0
-	xvaddi.wu	$xr5, $xr1, 7
-	xvaddi.wu	$xr1, $xr7, 7
-	xvaddi.wu	$xr4, $xr10, 7
-	xvaddi.wu	$xr6, $xr9, 7
-	xvpickve2gr.w	$s3, $xr1, 0
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.w	$xr9, $xr2, $xr0
+	xvmadd.w	$xr4, $xr8, $xr0
+	xvmadd.w	$xr3, $xr7, $xr0
+	xvmadd.w	$xr5, $xr6, $xr0
+	xvaddi.wu	$xr5, $xr5, 7
+	xvaddi.wu	$xr6, $xr3, 7
+	xvaddi.wu	$xr4, $xr4, 7
+	xvaddi.wu	$xr3, $xr9, 7
+	xvpickve2gr.w	$s3, $xr3, 0
 	vinsgr2vr.h	$vr7, $s3, 0
-	xvpickve2gr.w	$s3, $xr1, 1
+	xvpickve2gr.w	$s3, $xr3, 1
 	vinsgr2vr.h	$vr7, $s3, 1
-	xvpickve2gr.w	$s3, $xr1, 2
+	xvpickve2gr.w	$s3, $xr3, 2
 	vinsgr2vr.h	$vr7, $s3, 2
-	xvpickve2gr.w	$s3, $xr1, 3
+	xvpickve2gr.w	$s3, $xr3, 3
 	vinsgr2vr.h	$vr7, $s3, 3
-	xvpickve2gr.w	$s3, $xr1, 4
+	xvpickve2gr.w	$s3, $xr3, 4
 	vinsgr2vr.h	$vr7, $s3, 4
-	xvpickve2gr.w	$s3, $xr1, 5
+	xvpickve2gr.w	$s3, $xr3, 5
 	vinsgr2vr.h	$vr7, $s3, 5
-	xvpickve2gr.w	$s3, $xr1, 6
+	xvpickve2gr.w	$s3, $xr3, 6
 	vinsgr2vr.h	$vr7, $s3, 6
-	xvpickve2gr.w	$s3, $xr1, 7
+	xvpickve2gr.w	$s3, $xr3, 7
 	vinsgr2vr.h	$vr7, $s3, 7
-	vsrli.h	$vr1, $vr7, 4
-	xvpickve2gr.w	$s3, $xr5, 0
-	vinsgr2vr.h	$vr7, $s3, 0
-	xvpickve2gr.w	$s3, $xr5, 1
-	vinsgr2vr.h	$vr7, $s3, 1
-	xvpickve2gr.w	$s3, $xr5, 2
-	vinsgr2vr.h	$vr7, $s3, 2
-	xvpickve2gr.w	$s3, $xr5, 3
-	vinsgr2vr.h	$vr7, $s3, 3
-	xvpickve2gr.w	$s3, $xr5, 4
-	vinsgr2vr.h	$vr7, $s3, 4
-	xvpickve2gr.w	$s3, $xr5, 5
-	vinsgr2vr.h	$vr7, $s3, 5
-	xvpickve2gr.w	$s3, $xr5, 6
-	vinsgr2vr.h	$vr7, $s3, 6
-	xvpickve2gr.w	$s3, $xr5, 7
-	vinsgr2vr.h	$vr7, $s3, 7
-	vsrli.h	$vr5, $vr7, 4
-	xvpickve2gr.w	$s3, $xr6, 0
-	vinsgr2vr.h	$vr7, $s3, 0
-	xvpickve2gr.w	$s3, $xr6, 1
-	vinsgr2vr.h	$vr7, $s3, 1
-	xvpickve2gr.w	$s3, $xr6, 2
-	vinsgr2vr.h	$vr7, $s3, 2
-	xvpickve2gr.w	$s3, $xr6, 3
-	vinsgr2vr.h	$vr7, $s3, 3
-	xvpickve2gr.w	$s3, $xr6, 4
-	vinsgr2vr.h	$vr7, $s3, 4
-	xvpickve2gr.w	$s3, $xr6, 5
-	vinsgr2vr.h	$vr7, $s3, 5
-	xvpickve2gr.w	$s3, $xr6, 6
-	vinsgr2vr.h	$vr7, $s3, 6
-	xvpickve2gr.w	$s3, $xr6, 7
-	vinsgr2vr.h	$vr7, $s3, 7
-	vsrli.h	$vr6, $vr7, 4
+	vsrli.h	$vr3, $vr7, 4
 	xvpickve2gr.w	$s3, $xr4, 0
 	vinsgr2vr.h	$vr7, $s3, 0
 	xvpickve2gr.w	$s3, $xr4, 1
@@ -1547,21 +1604,55 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	xvpickve2gr.w	$s3, $xr4, 7
 	vinsgr2vr.h	$vr7, $s3, 7
 	vsrli.h	$vr4, $vr7, 4
-	vpickve2gr.h	$s3, $vr4, 0
+	xvpickve2gr.w	$s3, $xr6, 0
+	vinsgr2vr.h	$vr7, $s3, 0
+	xvpickve2gr.w	$s3, $xr6, 1
+	vinsgr2vr.h	$vr7, $s3, 1
+	xvpickve2gr.w	$s3, $xr6, 2
+	vinsgr2vr.h	$vr7, $s3, 2
+	xvpickve2gr.w	$s3, $xr6, 3
+	vinsgr2vr.h	$vr7, $s3, 3
+	xvpickve2gr.w	$s3, $xr6, 4
+	vinsgr2vr.h	$vr7, $s3, 4
+	xvpickve2gr.w	$s3, $xr6, 5
+	vinsgr2vr.h	$vr7, $s3, 5
+	xvpickve2gr.w	$s3, $xr6, 6
+	vinsgr2vr.h	$vr7, $s3, 6
+	xvpickve2gr.w	$s3, $xr6, 7
+	vinsgr2vr.h	$vr7, $s3, 7
+	vsrli.h	$vr6, $vr7, 4
+	xvpickve2gr.w	$s3, $xr5, 0
+	vinsgr2vr.h	$vr7, $s3, 0
+	xvpickve2gr.w	$s3, $xr5, 1
+	vinsgr2vr.h	$vr7, $s3, 1
+	xvpickve2gr.w	$s3, $xr5, 2
+	vinsgr2vr.h	$vr7, $s3, 2
+	xvpickve2gr.w	$s3, $xr5, 3
+	vinsgr2vr.h	$vr7, $s3, 3
+	xvpickve2gr.w	$s3, $xr5, 4
+	vinsgr2vr.h	$vr7, $s3, 4
+	xvpickve2gr.w	$s3, $xr5, 5
+	vinsgr2vr.h	$vr7, $s3, 5
+	xvpickve2gr.w	$s3, $xr5, 6
+	vinsgr2vr.h	$vr7, $s3, 6
+	xvpickve2gr.w	$s3, $xr5, 7
+	vinsgr2vr.h	$vr7, $s3, 7
+	vsrli.h	$vr5, $vr7, 4
+	vpickve2gr.h	$s3, $vr5, 0
 	st.b	$s3, $s0, -29
-	vpickve2gr.h	$s3, $vr4, 1
+	vpickve2gr.h	$s3, $vr5, 1
 	st.b	$s3, $s0, -27
-	vpickve2gr.h	$s3, $vr4, 2
+	vpickve2gr.h	$s3, $vr5, 2
 	st.b	$s3, $s0, -25
-	vpickve2gr.h	$s3, $vr4, 3
+	vpickve2gr.h	$s3, $vr5, 3
 	st.b	$s3, $s0, -23
-	vpickve2gr.h	$s3, $vr4, 4
+	vpickve2gr.h	$s3, $vr5, 4
 	st.b	$s3, $s0, -21
-	vpickve2gr.h	$s3, $vr4, 5
+	vpickve2gr.h	$s3, $vr5, 5
 	st.b	$s3, $s0, -19
-	vpickve2gr.h	$s3, $vr4, 6
+	vpickve2gr.h	$s3, $vr5, 6
 	st.b	$s3, $s0, -17
-	vpickve2gr.h	$s3, $vr4, 7
+	vpickve2gr.h	$s3, $vr5, 7
 	st.b	$s3, $s0, -15
 	vpickve2gr.h	$s3, $vr6, 0
 	st.b	$s3, $s0, -13
@@ -1579,37 +1670,37 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	st.b	$s3, $s0, -1
 	vpickve2gr.h	$s3, $vr6, 7
 	st.b	$s3, $s0, 1
-	vpickve2gr.h	$s3, $vr5, 0
+	vpickve2gr.h	$s3, $vr4, 0
 	st.b	$s3, $s0, 3
-	vpickve2gr.h	$s3, $vr5, 1
+	vpickve2gr.h	$s3, $vr4, 1
 	st.b	$s3, $s0, 5
-	vpickve2gr.h	$s3, $vr5, 2
+	vpickve2gr.h	$s3, $vr4, 2
 	st.b	$s3, $s0, 7
-	vpickve2gr.h	$s3, $vr5, 3
+	vpickve2gr.h	$s3, $vr4, 3
 	st.b	$s3, $s0, 9
-	vpickve2gr.h	$s3, $vr5, 4
+	vpickve2gr.h	$s3, $vr4, 4
 	st.b	$s3, $s0, 11
-	vpickve2gr.h	$s3, $vr5, 5
+	vpickve2gr.h	$s3, $vr4, 5
 	st.b	$s3, $s0, 13
-	vpickve2gr.h	$s3, $vr5, 6
+	vpickve2gr.h	$s3, $vr4, 6
 	st.b	$s3, $s0, 15
-	vpickve2gr.h	$s3, $vr5, 7
+	vpickve2gr.h	$s3, $vr4, 7
 	st.b	$s3, $s0, 17
-	vpickve2gr.h	$s3, $vr1, 0
+	vpickve2gr.h	$s3, $vr3, 0
 	st.b	$s3, $s0, 19
-	vpickve2gr.h	$s3, $vr1, 1
+	vpickve2gr.h	$s3, $vr3, 1
 	st.b	$s3, $s0, 21
-	vpickve2gr.h	$s3, $vr1, 2
+	vpickve2gr.h	$s3, $vr3, 2
 	st.b	$s3, $s0, 23
-	vpickve2gr.h	$s3, $vr1, 3
+	vpickve2gr.h	$s3, $vr3, 3
 	st.b	$s3, $s0, 25
-	vpickve2gr.h	$s3, $vr1, 4
+	vpickve2gr.h	$s3, $vr3, 4
 	st.b	$s3, $s0, 27
-	vpickve2gr.h	$s3, $vr1, 5
+	vpickve2gr.h	$s3, $vr3, 5
 	st.b	$s3, $s0, 29
-	vpickve2gr.h	$s3, $vr1, 6
+	vpickve2gr.h	$s3, $vr3, 6
 	st.b	$s3, $s0, 31
-	vpickve2gr.h	$s3, $vr1, 7
+	vpickve2gr.h	$s3, $vr3, 7
 	st.b	$s3, $s0, 33
 	addi.d	$t7, $t7, 32
 	addi.d	$t6, $t6, 32
@@ -1618,7 +1709,7 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	bnez	$s1, .LBB7_20
 # %bb.21:                               # %middle.block258
                                         #   in Loop: Header=BB7_4 Depth=1
-	xvpickve2gr.w	$s0, $xr2, 7
+	xvpickve2gr.w	$s0, $xr1, 7
 	bne	$fp, $t8, .LBB7_7
 	b	.LBB7_11
 	.p2align	4, , 16
@@ -1653,389 +1744,171 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	add.d	$t2, $s0, $t2
 	add.d	$t3, $t6, $t8
 	add.d	$t4, $t5, $t8
-	xvinsgr2vr.w	$xr3, $s1, 7
-	xvinsgr2vr.w	$xr2, $fp, 7
+	xvinsgr2vr.w	$xr2, $s1, 7
+	xvinsgr2vr.w	$xr1, $fp, 7
 	addi.d	$fp, $s0, 32
 	move	$s0, $t8
 	.p2align	4, , 16
 .LBB7_25:                               # %vector.body
                                         #   Parent Loop BB7_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr1, $t5, 0
-	xvpermi.q	$xr6, $xr1, 1
-	vpickve2gr.b	$s1, $vr6, 4
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 0
-	vpickve2gr.b	$s1, $vr6, 5
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 1
-	vpickve2gr.b	$s1, $vr6, 6
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 2
-	vpickve2gr.b	$s1, $vr6, 7
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 3
-	vpickve2gr.b	$s1, $vr6, 0
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr4, $s1, 0
-	vpickve2gr.b	$s1, $vr6, 1
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr4, $s1, 1
-	vpickve2gr.b	$s1, $vr6, 2
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr4, $s1, 2
-	vpickve2gr.b	$s1, $vr6, 3
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr4, $s1, 3
-	xvpermi.q	$xr4, $xr5, 2
-	vpickve2gr.b	$s1, $vr6, 12
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 0
-	vpickve2gr.b	$s1, $vr6, 13
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 1
-	vpickve2gr.b	$s1, $vr6, 14
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 2
-	vpickve2gr.b	$s1, $vr6, 15
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 3
-	vpickve2gr.b	$s1, $vr6, 8
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 0
-	vpickve2gr.b	$s1, $vr6, 9
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 1
-	vpickve2gr.b	$s1, $vr6, 10
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 2
-	vpickve2gr.b	$s1, $vr6, 11
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr5, $s1, 3
-	xvpermi.q	$xr5, $xr7, 2
-	vpickve2gr.b	$s1, $vr1, 12
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 0
-	vpickve2gr.b	$s1, $vr1, 13
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 1
-	vpickve2gr.b	$s1, $vr1, 14
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 2
-	vpickve2gr.b	$s1, $vr1, 15
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 3
-	vpickve2gr.b	$s1, $vr1, 8
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr6, $s1, 0
-	vpickve2gr.b	$s1, $vr1, 9
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr6, $s1, 1
-	vpickve2gr.b	$s1, $vr1, 10
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr6, $s1, 2
-	vpickve2gr.b	$s1, $vr1, 11
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr6, $s1, 3
-	xvpermi.q	$xr6, $xr7, 2
-	vpickve2gr.b	$s1, $vr1, 4
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 0
-	vpickve2gr.b	$s1, $vr1, 5
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 1
-	vpickve2gr.b	$s1, $vr1, 6
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 2
-	vpickve2gr.b	$s1, $vr1, 7
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 3
-	vpickve2gr.b	$s1, $vr1, 0
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 0
-	vpickve2gr.b	$s1, $vr1, 1
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 1
-	vpickve2gr.b	$s1, $vr1, 2
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 2
-	vpickve2gr.b	$s1, $vr1, 3
-	xvld	$xr8, $t6, 0
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr7, $s1, 3
-	xvpermi.q	$xr7, $xr9, 2
-	xvpermi.q	$xr9, $xr8, 1
-	vpickve2gr.b	$s1, $vr9, 4
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 0
-	vpickve2gr.b	$s1, $vr9, 5
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 1
-	vpickve2gr.b	$s1, $vr9, 6
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 2
-	vpickve2gr.b	$s1, $vr9, 7
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 3
-	vpickve2gr.b	$s1, $vr9, 0
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr1, $s1, 0
-	vpickve2gr.b	$s1, $vr9, 1
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr1, $s1, 1
-	vpickve2gr.b	$s1, $vr9, 2
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr1, $s1, 2
-	vpickve2gr.b	$s1, $vr9, 3
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr1, $s1, 3
-	xvpermi.q	$xr1, $xr10, 2
-	vpickve2gr.b	$s1, $vr9, 12
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 0
-	vpickve2gr.b	$s1, $vr9, 13
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 1
-	vpickve2gr.b	$s1, $vr9, 14
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 2
-	vpickve2gr.b	$s1, $vr9, 15
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 3
-	vpickve2gr.b	$s1, $vr9, 8
-	andi	$s1, $s1, 255
-	xvpickve2gr.w	$s2, $xr2, 7
-	xvpermi.d	$xr11, $xr2, 238
-	vinsgr2vr.w	$vr2, $s1, 0
-	vpickve2gr.b	$s1, $vr9, 9
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr2, $s1, 1
-	vpickve2gr.b	$s1, $vr9, 10
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr2, $s1, 2
-	vpickve2gr.b	$s1, $vr9, 11
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr2, $s1, 3
-	xvpermi.q	$xr2, $xr10, 2
-	vpickve2gr.b	$s1, $vr8, 12
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 0
-	vpickve2gr.b	$s1, $vr8, 13
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 1
-	vpickve2gr.b	$s1, $vr8, 14
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 2
-	vpickve2gr.b	$s1, $vr8, 15
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 3
-	vpickve2gr.b	$s1, $vr8, 8
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 0
-	vpickve2gr.b	$s1, $vr8, 9
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 1
-	vpickve2gr.b	$s1, $vr8, 10
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 2
-	vpickve2gr.b	$s1, $vr8, 11
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr9, $s1, 3
-	xvpermi.q	$xr9, $xr10, 2
-	vpickve2gr.b	$s1, $vr8, 4
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr12, $s1, 0
-	vpickve2gr.b	$s1, $vr8, 5
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr12, $s1, 1
-	vpickve2gr.b	$s1, $vr8, 6
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr12, $s1, 2
-	vpickve2gr.b	$s1, $vr8, 7
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr12, $s1, 3
-	vpickve2gr.b	$s1, $vr8, 0
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 0
-	vpickve2gr.b	$s1, $vr8, 1
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 1
-	vpickve2gr.b	$s1, $vr8, 2
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 2
-	vpickve2gr.b	$s1, $vr8, 3
-	andi	$s1, $s1, 255
-	vinsgr2vr.w	$vr10, $s1, 3
-	xvpermi.q	$xr10, $xr12, 2
-	xvmadd.w	$xr2, $xr5, $xr0
-	xvmadd.w	$xr1, $xr4, $xr0
-	xvmadd.w	$xr10, $xr7, $xr0
-	xvmadd.w	$xr9, $xr6, $xr0
-	xvpickve2gr.w	$s1, $xr9, 7
-	vinsgr2vr.w	$vr4, $s1, 0
-	xvpickve2gr.w	$s1, $xr1, 0
-	vinsgr2vr.w	$vr4, $s1, 1
-	xvpickve2gr.w	$s1, $xr1, 1
-	vinsgr2vr.w	$vr4, $s1, 2
-	xvpickve2gr.w	$s1, $xr1, 2
-	vinsgr2vr.w	$vr4, $s1, 3
-	xvpickve2gr.w	$s1, $xr1, 3
-	vinsgr2vr.w	$vr5, $s1, 0
-	xvpickve2gr.w	$s1, $xr1, 4
-	vinsgr2vr.w	$vr5, $s1, 1
-	xvpickve2gr.w	$s1, $xr1, 5
-	vinsgr2vr.w	$vr5, $s1, 2
-	xvpickve2gr.w	$s1, $xr1, 6
-	vinsgr2vr.w	$vr5, $s1, 3
-	xvpermi.q	$xr4, $xr5, 2
-	xvpickve2gr.w	$s1, $xr2, 3
-	vinsgr2vr.w	$vr5, $s1, 0
-	xvpickve2gr.w	$s1, $xr2, 4
-	vinsgr2vr.w	$vr5, $s1, 1
-	xvpickve2gr.w	$s1, $xr2, 5
-	vinsgr2vr.w	$vr5, $s1, 2
+	xvld	$xr3, $t5, 0
+	vext2xv.hu.bu	$xr4, $xr3
+	xvpermi.q	$xr5, $xr4, 1
+	vext2xv.wu.hu	$xr6, $xr5
+	xvpermi.q	$xr3, $xr3, 1
+	vext2xv.hu.bu	$xr3, $xr3
+	vext2xv.wu.hu	$xr7, $xr3
+	xvld	$xr10, $t6, 0
+	xvpermi.q	$xr3, $xr3, 1
+	vext2xv.wu.hu	$xr9, $xr3
+	vext2xv.wu.hu	$xr8, $xr4
+	vext2xv.hu.bu	$xr5, $xr10
+	xvpermi.q	$xr3, $xr5, 1
+	vext2xv.wu.hu	$xr3, $xr3
+	xvpermi.q	$xr4, $xr10, 1
+	vext2xv.hu.bu	$xr10, $xr4
+	vext2xv.wu.hu	$xr4, $xr10
+	xvpermi.q	$xr10, $xr10, 1
 	xvpickve2gr.w	$s1, $xr1, 7
-	xvpermi.d	$xr7, $xr3, 238
-	vinsgr2vr.w	$vr3, $s1, 0
-	xvpickve2gr.w	$s1, $xr2, 0
-	vinsgr2vr.w	$vr3, $s1, 1
-	xvpickve2gr.w	$s1, $xr2, 1
-	vinsgr2vr.w	$vr3, $s1, 2
-	xvpickve2gr.w	$s1, $xr2, 2
-	vinsgr2vr.w	$vr3, $s1, 3
-	xvpickve2gr.w	$s1, $xr2, 6
-	vinsgr2vr.w	$vr5, $s1, 3
-	xvpermi.q	$xr3, $xr5, 2
-	vinsgr2vr.w	$vr5, $s2, 0
-	xvpickve2gr.w	$s2, $xr10, 0
-	vinsgr2vr.w	$vr5, $s2, 1
-	xvpickve2gr.w	$s2, $xr10, 1
-	vinsgr2vr.w	$vr5, $s2, 2
-	xvpickve2gr.w	$s2, $xr10, 2
-	vinsgr2vr.w	$vr5, $s2, 3
-	xvpickve2gr.w	$s2, $xr10, 3
-	vinsgr2vr.w	$vr6, $s2, 0
-	xvpickve2gr.w	$s2, $xr10, 4
+	xvpermi.d	$xr11, $xr1, 238
+	vext2xv.wu.hu	$xr1, $xr10
+	vext2xv.wu.hu	$xr5, $xr5
+	xvmadd.w	$xr1, $xr9, $xr0
+	xvmadd.w	$xr4, $xr7, $xr0
+	xvmadd.w	$xr3, $xr6, $xr0
+	xvmadd.w	$xr5, $xr8, $xr0
+	xvpickve2gr.w	$s2, $xr5, 0
+	vinsgr2vr.w	$vr6, $s1, 0
 	vinsgr2vr.w	$vr6, $s2, 1
-	xvpickve2gr.w	$s2, $xr10, 5
-	vinsgr2vr.w	$vr6, $s2, 2
-	xvpickve2gr.w	$s2, $xr10, 6
-	vinsgr2vr.w	$vr6, $s2, 3
-	xvpermi.q	$xr5, $xr6, 2
-	xvpickve2gr.w	$s2, $xr9, 3
-	vinsgr2vr.w	$vr8, $s2, 0
-	xvpickve2gr.w	$s2, $xr9, 4
-	vinsgr2vr.w	$vr8, $s2, 1
-	xvpickve2gr.w	$s2, $xr9, 5
-	vinsgr2vr.w	$vr8, $s2, 2
-	xvpickve2gr.w	$s2, $xr9, 6
-	vinsgr2vr.w	$vr8, $s2, 3
-	xvpickve2gr.w	$s2, $xr10, 7
-	vinsgr2vr.w	$vr6, $s2, 0
-	xvpickve2gr.w	$s2, $xr9, 0
-	vinsgr2vr.w	$vr6, $s2, 1
-	xvpickve2gr.w	$s2, $xr9, 1
-	vinsgr2vr.w	$vr6, $s2, 2
-	xvpickve2gr.w	$s2, $xr9, 2
-	vinsgr2vr.w	$vr6, $s2, 3
-	xvpermi.q	$xr6, $xr8, 2
-	xvpickve2gr.d	$s2, $xr2, 1
-	vinsgr2vr.d	$vr8, $s2, 0
-	xvpickve2gr.d	$s2, $xr2, 2
-	vinsgr2vr.d	$vr8, $s2, 1
-	xvpickve2gr.d	$s2, $xr1, 3
-	vinsgr2vr.d	$vr12, $s2, 0
-	xvpickve2gr.d	$s2, $xr2, 0
-	vinsgr2vr.d	$vr12, $s2, 1
-	xvpermi.q	$xr12, $xr8, 2
-	xvpickve2gr.d	$s2, $xr9, 1
-	vinsgr2vr.d	$vr8, $s2, 0
-	xvpickve2gr.d	$s2, $xr9, 2
-	vinsgr2vr.d	$vr8, $s2, 1
-	xvpickve2gr.d	$s2, $xr10, 3
+	xvpickve2gr.w	$s1, $xr5, 1
+	vinsgr2vr.w	$vr6, $s1, 2
+	xvpickve2gr.w	$s1, $xr5, 2
+	vinsgr2vr.w	$vr6, $s1, 3
+	xvpickve2gr.w	$s1, $xr5, 3
+	vinsgr2vr.w	$vr7, $s1, 0
+	xvpickve2gr.w	$s1, $xr5, 4
+	vinsgr2vr.w	$vr7, $s1, 1
+	xvpickve2gr.w	$s1, $xr5, 5
+	vinsgr2vr.w	$vr7, $s1, 2
+	xvpickve2gr.w	$s1, $xr5, 6
+	vinsgr2vr.w	$vr7, $s1, 3
+	xvpermi.q	$xr6, $xr7, 2
+	xvpickve2gr.w	$s1, $xr5, 7
+	vinsgr2vr.w	$vr7, $s1, 0
+	xvpickve2gr.w	$s1, $xr3, 0
+	vinsgr2vr.w	$vr7, $s1, 1
+	xvpickve2gr.w	$s1, $xr3, 1
+	vinsgr2vr.w	$vr7, $s1, 2
+	xvpickve2gr.w	$s1, $xr3, 2
+	vinsgr2vr.w	$vr7, $s1, 3
+	xvpickve2gr.w	$s1, $xr3, 3
+	vinsgr2vr.w	$vr8, $s1, 0
+	xvpickve2gr.w	$s1, $xr3, 4
+	vinsgr2vr.w	$vr8, $s1, 1
+	xvpickve2gr.w	$s1, $xr3, 5
+	vinsgr2vr.w	$vr8, $s1, 2
+	xvpickve2gr.w	$s1, $xr3, 6
+	vinsgr2vr.w	$vr8, $s1, 3
+	xvpermi.q	$xr7, $xr8, 2
+	xvpickve2gr.w	$s1, $xr4, 3
+	vinsgr2vr.w	$vr9, $s1, 0
+	xvpickve2gr.w	$s1, $xr4, 4
+	vinsgr2vr.w	$vr9, $s1, 1
+	xvpickve2gr.w	$s1, $xr4, 5
+	vinsgr2vr.w	$vr9, $s1, 2
+	xvpickve2gr.w	$s1, $xr4, 6
+	vinsgr2vr.w	$vr9, $s1, 3
+	xvpickve2gr.w	$s1, $xr3, 7
+	vinsgr2vr.w	$vr8, $s1, 0
+	xvpickve2gr.w	$s1, $xr4, 0
+	vinsgr2vr.w	$vr8, $s1, 1
+	xvpickve2gr.w	$s1, $xr4, 1
+	vinsgr2vr.w	$vr8, $s1, 2
+	xvpickve2gr.w	$s1, $xr4, 2
+	vinsgr2vr.w	$vr8, $s1, 3
+	xvpermi.q	$xr8, $xr9, 2
+	xvpickve2gr.w	$s1, $xr4, 7
+	xvpermi.d	$xr9, $xr2, 238
+	vinsgr2vr.w	$vr2, $s1, 0
+	xvpickve2gr.w	$s1, $xr1, 0
+	vinsgr2vr.w	$vr2, $s1, 1
+	xvpickve2gr.w	$s1, $xr1, 1
+	vinsgr2vr.w	$vr2, $s1, 2
+	xvpickve2gr.w	$s1, $xr1, 2
+	vinsgr2vr.w	$vr2, $s1, 3
+	xvpickve2gr.w	$s1, $xr1, 3
+	vinsgr2vr.w	$vr10, $s1, 0
+	xvpickve2gr.w	$s1, $xr1, 4
+	vinsgr2vr.w	$vr10, $s1, 1
+	xvpickve2gr.w	$s1, $xr1, 5
+	vinsgr2vr.w	$vr10, $s1, 2
+	xvld	$xr12, $a7, %pc_lo12(.LCPI7_0)
+	xvpickve2gr.w	$s1, $xr1, 6
+	vinsgr2vr.w	$vr10, $s1, 3
+	xvpermi.q	$xr2, $xr10, 2
+	xvshuf.w	$xr12, $xr11, $xr9
+	xvpickve2gr.d	$s2, $xr12, 0
+	vinsgr2vr.d	$vr9, $s2, 0
+	xvpickve2gr.d	$s2, $xr5, 0
+	vinsgr2vr.d	$vr9, $s2, 1
+	xvpickve2gr.d	$s2, $xr5, 1
+	vinsgr2vr.d	$vr10, $s2, 0
+	xvpickve2gr.d	$s2, $xr5, 2
+	vinsgr2vr.d	$vr10, $s2, 1
+	xvpermi.q	$xr9, $xr10, 2
+	xvpickve2gr.d	$s2, $xr5, 3
+	vinsgr2vr.d	$vr11, $s2, 0
+	xvpickve2gr.d	$s2, $xr3, 0
+	vinsgr2vr.d	$vr11, $s2, 1
+	xvpickve2gr.d	$s2, $xr3, 1
+	vinsgr2vr.d	$vr10, $s2, 0
+	xvpickve2gr.d	$s2, $xr3, 2
+	vinsgr2vr.d	$vr10, $s2, 1
+	xvpermi.q	$xr11, $xr10, 2
+	xvpickve2gr.d	$s2, $xr4, 1
+	vinsgr2vr.d	$vr10, $s2, 0
+	xvpickve2gr.d	$s2, $xr4, 2
+	vinsgr2vr.d	$vr10, $s2, 1
+	xvpickve2gr.d	$s2, $xr3, 3
 	vinsgr2vr.d	$vr13, $s2, 0
-	xvpickve2gr.d	$s2, $xr9, 0
+	xvpickve2gr.d	$s2, $xr4, 0
 	vinsgr2vr.d	$vr13, $s2, 1
-	xvpermi.q	$xr13, $xr8, 2
-	xvpickve2gr.d	$s2, $xr1, 1
-	vinsgr2vr.d	$vr8, $s2, 0
-	xvpickve2gr.d	$s2, $xr1, 2
-	vinsgr2vr.d	$vr8, $s2, 1
-	xvpickve2gr.d	$s2, $xr9, 3
+	xvpermi.q	$xr13, $xr10, 2
+	xvpickve2gr.d	$s2, $xr4, 3
 	vinsgr2vr.d	$vr14, $s2, 0
 	xvpickve2gr.d	$s2, $xr1, 0
 	vinsgr2vr.d	$vr14, $s2, 1
-	xvpermi.q	$xr14, $xr8, 2
-	xvpickve2gr.d	$s2, $xr10, 1
-	xvld	$xr8, $a7, %pc_lo12(.LCPI7_0)
-	vinsgr2vr.d	$vr15, $s2, 0
-	xvpickve2gr.d	$s2, $xr10, 2
-	vinsgr2vr.d	$vr15, $s2, 1
-	xvshuf.w	$xr8, $xr11, $xr7
-	xvpickve2gr.d	$s2, $xr8, 0
-	vinsgr2vr.d	$vr7, $s2, 0
-	xvpickve2gr.d	$s2, $xr10, 0
-	vinsgr2vr.d	$vr7, $s2, 1
-	xvpermi.q	$xr7, $xr15, 2
-	xvmadd.w	$xr12, $xr3, $xr0
-	xvmadd.w	$xr14, $xr4, $xr0
-	xvmadd.w	$xr13, $xr6, $xr0
-	xvmadd.w	$xr7, $xr5, $xr0
-	xvaddi.wu	$xr8, $xr12, 8
-	xvaddi.wu	$xr12, $xr13, 8
-	xvaddi.wu	$xr13, $xr14, 8
-	xvaddi.wu	$xr11, $xr7, 8
-	xvpickve2gr.w	$s2, $xr8, 0
-	vinsgr2vr.h	$vr7, $s2, 0
-	xvpickve2gr.w	$s2, $xr8, 1
-	vinsgr2vr.h	$vr7, $s2, 1
-	xvpickve2gr.w	$s2, $xr8, 2
-	vinsgr2vr.h	$vr7, $s2, 2
-	xvpickve2gr.w	$s2, $xr8, 3
-	vinsgr2vr.h	$vr7, $s2, 3
-	xvpickve2gr.w	$s2, $xr8, 4
-	vinsgr2vr.h	$vr7, $s2, 4
-	xvpickve2gr.w	$s2, $xr8, 5
-	vinsgr2vr.h	$vr7, $s2, 5
-	xvpickve2gr.w	$s2, $xr8, 6
-	vinsgr2vr.h	$vr7, $s2, 6
-	xvpickve2gr.w	$s2, $xr8, 7
-	vinsgr2vr.h	$vr7, $s2, 7
-	vsrli.h	$vr7, $vr7, 4
-	xvpickve2gr.w	$s2, $xr13, 0
-	vinsgr2vr.h	$vr8, $s2, 0
-	xvpickve2gr.w	$s2, $xr13, 1
-	vinsgr2vr.h	$vr8, $s2, 1
-	xvpickve2gr.w	$s2, $xr13, 2
-	vinsgr2vr.h	$vr8, $s2, 2
-	xvpickve2gr.w	$s2, $xr13, 3
-	vinsgr2vr.h	$vr8, $s2, 3
-	xvpickve2gr.w	$s2, $xr13, 4
-	vinsgr2vr.h	$vr8, $s2, 4
-	xvpickve2gr.w	$s2, $xr13, 5
-	vinsgr2vr.h	$vr8, $s2, 5
-	xvpickve2gr.w	$s2, $xr13, 6
-	vinsgr2vr.h	$vr8, $s2, 6
-	xvpickve2gr.w	$s2, $xr13, 7
-	vinsgr2vr.h	$vr8, $s2, 7
-	vsrli.h	$vr8, $vr8, 4
-	xvpickve2gr.w	$s2, $xr12, 0
+	xvpickve2gr.d	$s2, $xr1, 1
+	vinsgr2vr.d	$vr10, $s2, 0
+	xvpickve2gr.d	$s2, $xr1, 2
+	vinsgr2vr.d	$vr10, $s2, 1
+	xvpermi.q	$xr14, $xr10, 2
+	xvmadd.w	$xr14, $xr2, $xr0
+	xvmadd.w	$xr13, $xr8, $xr0
+	xvmadd.w	$xr11, $xr7, $xr0
+	xvmadd.w	$xr9, $xr6, $xr0
+	xvaddi.wu	$xr10, $xr9, 8
+	xvaddi.wu	$xr12, $xr11, 8
+	xvaddi.wu	$xr11, $xr13, 8
+	xvaddi.wu	$xr9, $xr14, 8
+	xvpickve2gr.w	$s2, $xr9, 0
 	vinsgr2vr.h	$vr13, $s2, 0
-	xvpickve2gr.w	$s2, $xr12, 1
+	xvpickve2gr.w	$s2, $xr9, 1
 	vinsgr2vr.h	$vr13, $s2, 1
-	xvpickve2gr.w	$s2, $xr12, 2
+	xvpickve2gr.w	$s2, $xr9, 2
 	vinsgr2vr.h	$vr13, $s2, 2
-	xvpickve2gr.w	$s2, $xr12, 3
+	xvpickve2gr.w	$s2, $xr9, 3
 	vinsgr2vr.h	$vr13, $s2, 3
-	xvpickve2gr.w	$s2, $xr12, 4
+	xvpickve2gr.w	$s2, $xr9, 4
 	vinsgr2vr.h	$vr13, $s2, 4
-	xvpickve2gr.w	$s2, $xr12, 5
+	xvpickve2gr.w	$s2, $xr9, 5
 	vinsgr2vr.h	$vr13, $s2, 5
-	xvpickve2gr.w	$s2, $xr12, 6
+	xvpickve2gr.w	$s2, $xr9, 6
 	vinsgr2vr.h	$vr13, $s2, 6
-	xvpickve2gr.w	$s2, $xr12, 7
+	xvpickve2gr.w	$s2, $xr9, 7
 	vinsgr2vr.h	$vr13, $s2, 7
-	vsrli.h	$vr12, $vr13, 4
+	vsrli.h	$vr9, $vr13, 4
 	xvpickve2gr.w	$s2, $xr11, 0
 	vinsgr2vr.h	$vr13, $s2, 0
 	xvpickve2gr.w	$s2, $xr11, 1
@@ -2053,21 +1926,55 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	xvpickve2gr.w	$s2, $xr11, 7
 	vinsgr2vr.h	$vr13, $s2, 7
 	vsrli.h	$vr11, $vr13, 4
-	vpickve2gr.h	$s2, $vr11, 0
+	xvpickve2gr.w	$s2, $xr12, 0
+	vinsgr2vr.h	$vr13, $s2, 0
+	xvpickve2gr.w	$s2, $xr12, 1
+	vinsgr2vr.h	$vr13, $s2, 1
+	xvpickve2gr.w	$s2, $xr12, 2
+	vinsgr2vr.h	$vr13, $s2, 2
+	xvpickve2gr.w	$s2, $xr12, 3
+	vinsgr2vr.h	$vr13, $s2, 3
+	xvpickve2gr.w	$s2, $xr12, 4
+	vinsgr2vr.h	$vr13, $s2, 4
+	xvpickve2gr.w	$s2, $xr12, 5
+	vinsgr2vr.h	$vr13, $s2, 5
+	xvpickve2gr.w	$s2, $xr12, 6
+	vinsgr2vr.h	$vr13, $s2, 6
+	xvpickve2gr.w	$s2, $xr12, 7
+	vinsgr2vr.h	$vr13, $s2, 7
+	vsrli.h	$vr12, $vr13, 4
+	xvpickve2gr.w	$s2, $xr10, 0
+	vinsgr2vr.h	$vr13, $s2, 0
+	xvpickve2gr.w	$s2, $xr10, 1
+	vinsgr2vr.h	$vr13, $s2, 1
+	xvpickve2gr.w	$s2, $xr10, 2
+	vinsgr2vr.h	$vr13, $s2, 2
+	xvpickve2gr.w	$s2, $xr10, 3
+	vinsgr2vr.h	$vr13, $s2, 3
+	xvpickve2gr.w	$s2, $xr10, 4
+	vinsgr2vr.h	$vr13, $s2, 4
+	xvpickve2gr.w	$s2, $xr10, 5
+	vinsgr2vr.h	$vr13, $s2, 5
+	xvpickve2gr.w	$s2, $xr10, 6
+	vinsgr2vr.h	$vr13, $s2, 6
+	xvpickve2gr.w	$s2, $xr10, 7
+	vinsgr2vr.h	$vr13, $s2, 7
+	vsrli.h	$vr10, $vr13, 4
+	vpickve2gr.h	$s2, $vr10, 0
 	st.b	$s2, $fp, -30
-	vpickve2gr.h	$s2, $vr11, 1
+	vpickve2gr.h	$s2, $vr10, 1
 	st.b	$s2, $fp, -28
-	vpickve2gr.h	$s2, $vr11, 2
+	vpickve2gr.h	$s2, $vr10, 2
 	st.b	$s2, $fp, -26
-	vpickve2gr.h	$s2, $vr11, 3
+	vpickve2gr.h	$s2, $vr10, 3
 	st.b	$s2, $fp, -24
-	vpickve2gr.h	$s2, $vr11, 4
+	vpickve2gr.h	$s2, $vr10, 4
 	st.b	$s2, $fp, -22
-	vpickve2gr.h	$s2, $vr11, 5
+	vpickve2gr.h	$s2, $vr10, 5
 	st.b	$s2, $fp, -20
-	vpickve2gr.h	$s2, $vr11, 6
+	vpickve2gr.h	$s2, $vr10, 6
 	st.b	$s2, $fp, -18
-	vpickve2gr.h	$s2, $vr11, 7
+	vpickve2gr.h	$s2, $vr10, 7
 	st.b	$s2, $fp, -16
 	vpickve2gr.h	$s2, $vr12, 0
 	st.b	$s2, $fp, -14
@@ -2085,98 +1992,64 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	st.b	$s2, $fp, -2
 	vpickve2gr.h	$s2, $vr12, 7
 	st.b	$s2, $fp, 0
-	vpickve2gr.h	$s2, $vr8, 0
+	vpickve2gr.h	$s2, $vr11, 0
 	st.b	$s2, $fp, 2
-	vpickve2gr.h	$s2, $vr8, 1
+	vpickve2gr.h	$s2, $vr11, 1
 	st.b	$s2, $fp, 4
-	vpickve2gr.h	$s2, $vr8, 2
+	vpickve2gr.h	$s2, $vr11, 2
 	st.b	$s2, $fp, 6
-	vpickve2gr.h	$s2, $vr8, 3
+	vpickve2gr.h	$s2, $vr11, 3
 	st.b	$s2, $fp, 8
-	vpickve2gr.h	$s2, $vr8, 4
+	vpickve2gr.h	$s2, $vr11, 4
 	st.b	$s2, $fp, 10
-	vpickve2gr.h	$s2, $vr8, 5
+	vpickve2gr.h	$s2, $vr11, 5
 	st.b	$s2, $fp, 12
-	vpickve2gr.h	$s2, $vr8, 6
+	vpickve2gr.h	$s2, $vr11, 6
 	st.b	$s2, $fp, 14
-	vpickve2gr.h	$s2, $vr8, 7
+	vpickve2gr.h	$s2, $vr11, 7
 	st.b	$s2, $fp, 16
-	vpickve2gr.h	$s2, $vr7, 0
+	vpickve2gr.h	$s2, $vr9, 0
 	st.b	$s2, $fp, 18
-	vpickve2gr.h	$s2, $vr7, 1
+	vpickve2gr.h	$s2, $vr9, 1
 	st.b	$s2, $fp, 20
-	vpickve2gr.h	$s2, $vr7, 2
+	vpickve2gr.h	$s2, $vr9, 2
 	st.b	$s2, $fp, 22
-	vpickve2gr.h	$s2, $vr7, 3
+	vpickve2gr.h	$s2, $vr9, 3
 	st.b	$s2, $fp, 24
-	vpickve2gr.h	$s2, $vr7, 4
+	vpickve2gr.h	$s2, $vr9, 4
 	st.b	$s2, $fp, 26
-	vpickve2gr.h	$s2, $vr7, 5
+	vpickve2gr.h	$s2, $vr9, 5
 	st.b	$s2, $fp, 28
-	vpickve2gr.h	$s2, $vr7, 6
+	vpickve2gr.h	$s2, $vr9, 6
 	st.b	$s2, $fp, 30
-	vpickve2gr.h	$s2, $vr7, 7
+	vpickve2gr.h	$s2, $vr9, 7
 	st.b	$s2, $fp, 32
-	xvori.b	$xr7, $xr2, 0
-	xvmadd.w	$xr7, $xr3, $xr0
-	xvmadd.w	$xr1, $xr4, $xr0
-	xvmadd.w	$xr9, $xr6, $xr0
-	xvmadd.w	$xr10, $xr5, $xr0
-	xvaddi.wu	$xr5, $xr1, 7
-	xvaddi.wu	$xr1, $xr7, 7
-	xvaddi.wu	$xr4, $xr10, 7
-	xvaddi.wu	$xr6, $xr9, 7
-	xvpickve2gr.w	$s2, $xr1, 0
+	xvori.b	$xr9, $xr1, 0
+	xvmadd.w	$xr9, $xr2, $xr0
+	xvmadd.w	$xr4, $xr8, $xr0
+	xvmadd.w	$xr3, $xr7, $xr0
+	xvmadd.w	$xr5, $xr6, $xr0
+	xvaddi.wu	$xr5, $xr5, 7
+	xvaddi.wu	$xr6, $xr3, 7
+	xvaddi.wu	$xr4, $xr4, 7
+	xvaddi.wu	$xr3, $xr9, 7
+	xvpickve2gr.w	$s2, $xr3, 0
 	vinsgr2vr.h	$vr7, $s2, 0
-	xvpickve2gr.w	$s2, $xr1, 1
+	xvpickve2gr.w	$s2, $xr3, 1
 	vinsgr2vr.h	$vr7, $s2, 1
-	xvpickve2gr.w	$s2, $xr1, 2
+	xvpickve2gr.w	$s2, $xr3, 2
 	vinsgr2vr.h	$vr7, $s2, 2
-	xvpickve2gr.w	$s2, $xr1, 3
+	xvpickve2gr.w	$s2, $xr3, 3
 	vinsgr2vr.h	$vr7, $s2, 3
-	xvpickve2gr.w	$s2, $xr1, 4
+	xvpickve2gr.w	$s2, $xr3, 4
 	vinsgr2vr.h	$vr7, $s2, 4
-	xvpickve2gr.w	$s2, $xr1, 5
+	xvpickve2gr.w	$s2, $xr3, 5
 	vinsgr2vr.h	$vr7, $s2, 5
-	xvpickve2gr.w	$s2, $xr1, 6
+	xvpickve2gr.w	$s2, $xr3, 6
 	vinsgr2vr.h	$vr7, $s2, 6
-	xvpickve2gr.w	$s2, $xr1, 7
+	xvpickve2gr.w	$s2, $xr3, 7
 	vinsgr2vr.h	$vr7, $s2, 7
-	vsrli.h	$vr1, $vr7, 4
-	xvpickve2gr.w	$s2, $xr5, 0
-	vinsgr2vr.h	$vr7, $s2, 0
-	xvpickve2gr.w	$s2, $xr5, 1
-	vinsgr2vr.h	$vr7, $s2, 1
-	xvpickve2gr.w	$s2, $xr5, 2
-	vinsgr2vr.h	$vr7, $s2, 2
-	xvpickve2gr.w	$s2, $xr5, 3
-	vinsgr2vr.h	$vr7, $s2, 3
-	xvpickve2gr.w	$s2, $xr5, 4
-	vinsgr2vr.h	$vr7, $s2, 4
-	xvpickve2gr.w	$s2, $xr5, 5
-	vinsgr2vr.h	$vr7, $s2, 5
-	xvpickve2gr.w	$s2, $xr5, 6
-	vinsgr2vr.h	$vr7, $s2, 6
-	xvpickve2gr.w	$s2, $xr5, 7
-	vinsgr2vr.h	$vr7, $s2, 7
-	vsrli.h	$vr5, $vr7, 4
-	xvpickve2gr.w	$s2, $xr6, 0
-	vinsgr2vr.h	$vr7, $s2, 0
-	xvpickve2gr.w	$s2, $xr6, 1
-	vinsgr2vr.h	$vr7, $s2, 1
-	xvpickve2gr.w	$s2, $xr6, 2
-	vinsgr2vr.h	$vr7, $s2, 2
-	xvpickve2gr.w	$s2, $xr6, 3
-	vinsgr2vr.h	$vr7, $s2, 3
-	xvpickve2gr.w	$s2, $xr6, 4
-	vinsgr2vr.h	$vr7, $s2, 4
-	xvpickve2gr.w	$s2, $xr6, 5
-	vinsgr2vr.h	$vr7, $s2, 5
-	xvpickve2gr.w	$s2, $xr6, 6
-	vinsgr2vr.h	$vr7, $s2, 6
-	xvpickve2gr.w	$s2, $xr6, 7
-	vinsgr2vr.h	$vr7, $s2, 7
-	vsrli.h	$vr6, $vr7, 4
+	vsrli.h	$vr3, $vr7, 4
 	xvpickve2gr.w	$s2, $xr4, 0
 	vinsgr2vr.h	$vr7, $s2, 0
 	xvpickve2gr.w	$s2, $xr4, 1
@@ -2194,21 +2067,55 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	xvpickve2gr.w	$s2, $xr4, 7
 	vinsgr2vr.h	$vr7, $s2, 7
 	vsrli.h	$vr4, $vr7, 4
-	vpickve2gr.h	$s2, $vr4, 0
+	xvpickve2gr.w	$s2, $xr6, 0
+	vinsgr2vr.h	$vr7, $s2, 0
+	xvpickve2gr.w	$s2, $xr6, 1
+	vinsgr2vr.h	$vr7, $s2, 1
+	xvpickve2gr.w	$s2, $xr6, 2
+	vinsgr2vr.h	$vr7, $s2, 2
+	xvpickve2gr.w	$s2, $xr6, 3
+	vinsgr2vr.h	$vr7, $s2, 3
+	xvpickve2gr.w	$s2, $xr6, 4
+	vinsgr2vr.h	$vr7, $s2, 4
+	xvpickve2gr.w	$s2, $xr6, 5
+	vinsgr2vr.h	$vr7, $s2, 5
+	xvpickve2gr.w	$s2, $xr6, 6
+	vinsgr2vr.h	$vr7, $s2, 6
+	xvpickve2gr.w	$s2, $xr6, 7
+	vinsgr2vr.h	$vr7, $s2, 7
+	vsrli.h	$vr6, $vr7, 4
+	xvpickve2gr.w	$s2, $xr5, 0
+	vinsgr2vr.h	$vr7, $s2, 0
+	xvpickve2gr.w	$s2, $xr5, 1
+	vinsgr2vr.h	$vr7, $s2, 1
+	xvpickve2gr.w	$s2, $xr5, 2
+	vinsgr2vr.h	$vr7, $s2, 2
+	xvpickve2gr.w	$s2, $xr5, 3
+	vinsgr2vr.h	$vr7, $s2, 3
+	xvpickve2gr.w	$s2, $xr5, 4
+	vinsgr2vr.h	$vr7, $s2, 4
+	xvpickve2gr.w	$s2, $xr5, 5
+	vinsgr2vr.h	$vr7, $s2, 5
+	xvpickve2gr.w	$s2, $xr5, 6
+	vinsgr2vr.h	$vr7, $s2, 6
+	xvpickve2gr.w	$s2, $xr5, 7
+	vinsgr2vr.h	$vr7, $s2, 7
+	vsrli.h	$vr5, $vr7, 4
+	vpickve2gr.h	$s2, $vr5, 0
 	st.b	$s2, $fp, -29
-	vpickve2gr.h	$s2, $vr4, 1
+	vpickve2gr.h	$s2, $vr5, 1
 	st.b	$s2, $fp, -27
-	vpickve2gr.h	$s2, $vr4, 2
+	vpickve2gr.h	$s2, $vr5, 2
 	st.b	$s2, $fp, -25
-	vpickve2gr.h	$s2, $vr4, 3
+	vpickve2gr.h	$s2, $vr5, 3
 	st.b	$s2, $fp, -23
-	vpickve2gr.h	$s2, $vr4, 4
+	vpickve2gr.h	$s2, $vr5, 4
 	st.b	$s2, $fp, -21
-	vpickve2gr.h	$s2, $vr4, 5
+	vpickve2gr.h	$s2, $vr5, 5
 	st.b	$s2, $fp, -19
-	vpickve2gr.h	$s2, $vr4, 6
+	vpickve2gr.h	$s2, $vr5, 6
 	st.b	$s2, $fp, -17
-	vpickve2gr.h	$s2, $vr4, 7
+	vpickve2gr.h	$s2, $vr5, 7
 	st.b	$s2, $fp, -15
 	vpickve2gr.h	$s2, $vr6, 0
 	st.b	$s2, $fp, -13
@@ -2226,37 +2133,37 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	st.b	$s2, $fp, -1
 	vpickve2gr.h	$s2, $vr6, 7
 	st.b	$s2, $fp, 1
-	vpickve2gr.h	$s2, $vr5, 0
+	vpickve2gr.h	$s2, $vr4, 0
 	st.b	$s2, $fp, 3
-	vpickve2gr.h	$s2, $vr5, 1
+	vpickve2gr.h	$s2, $vr4, 1
 	st.b	$s2, $fp, 5
-	vpickve2gr.h	$s2, $vr5, 2
+	vpickve2gr.h	$s2, $vr4, 2
 	st.b	$s2, $fp, 7
-	vpickve2gr.h	$s2, $vr5, 3
+	vpickve2gr.h	$s2, $vr4, 3
 	st.b	$s2, $fp, 9
-	vpickve2gr.h	$s2, $vr5, 4
+	vpickve2gr.h	$s2, $vr4, 4
 	st.b	$s2, $fp, 11
-	vpickve2gr.h	$s2, $vr5, 5
+	vpickve2gr.h	$s2, $vr4, 5
 	st.b	$s2, $fp, 13
-	vpickve2gr.h	$s2, $vr5, 6
+	vpickve2gr.h	$s2, $vr4, 6
 	st.b	$s2, $fp, 15
-	vpickve2gr.h	$s2, $vr5, 7
+	vpickve2gr.h	$s2, $vr4, 7
 	st.b	$s2, $fp, 17
-	vpickve2gr.h	$s2, $vr1, 0
+	vpickve2gr.h	$s2, $vr3, 0
 	st.b	$s2, $fp, 19
-	vpickve2gr.h	$s2, $vr1, 1
+	vpickve2gr.h	$s2, $vr3, 1
 	st.b	$s2, $fp, 21
-	vpickve2gr.h	$s2, $vr1, 2
+	vpickve2gr.h	$s2, $vr3, 2
 	st.b	$s2, $fp, 23
-	vpickve2gr.h	$s2, $vr1, 3
+	vpickve2gr.h	$s2, $vr3, 3
 	st.b	$s2, $fp, 25
-	vpickve2gr.h	$s2, $vr1, 4
+	vpickve2gr.h	$s2, $vr3, 4
 	st.b	$s2, $fp, 27
-	vpickve2gr.h	$s2, $vr1, 5
+	vpickve2gr.h	$s2, $vr3, 5
 	st.b	$s2, $fp, 29
-	vpickve2gr.h	$s2, $vr1, 6
+	vpickve2gr.h	$s2, $vr3, 6
 	st.b	$s2, $fp, 31
-	vpickve2gr.h	$s2, $vr1, 7
+	vpickve2gr.h	$s2, $vr3, 7
 	st.b	$s2, $fp, 33
 	addi.d	$t6, $t6, 32
 	addi.d	$t5, $t5, 32
@@ -2265,7 +2172,7 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	bnez	$s0, .LBB7_25
 # %bb.26:                               # %middle.block
                                         #   in Loop: Header=BB7_4 Depth=1
-	xvpickve2gr.w	$fp, $xr2, 7
+	xvpickve2gr.w	$fp, $xr1, 7
 	beq	$t8, $t7, .LBB7_3
 	b	.LBB7_14
 .LBB7_27:

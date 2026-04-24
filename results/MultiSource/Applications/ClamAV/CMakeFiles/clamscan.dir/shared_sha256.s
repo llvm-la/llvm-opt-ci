@@ -96,61 +96,7 @@ sha256_update:                          # @sha256_update
 .Lfunc_end1:
 	.size	sha256_update, .Lfunc_end1-sha256_update
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function sha256_block
-.LCPI2_0:
-	.byte	1                               # 0x1
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	4                               # 0x4
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	9                               # 0x9
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	12                              # 0xc
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_1:
-	.byte	0                               # 0x0
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	5                               # 0x5
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	8                               # 0x8
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	13                              # 0xd
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-.LCPI2_2:
-	.byte	2                               # 0x2
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	6                               # 0x6
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	10                              # 0xa
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	14                              # 0xe
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
-	.text
-	.p2align	2
+	.p2align	2                               # -- Begin function sha256_block
 	.prefalign	5, .Lfunc_end2, nop
 	.type	sha256_block,@function
 sha256_block:                           # @sha256_block
@@ -165,156 +111,401 @@ sha256_block:                           # @sha256_block
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a0, 36
 .LBB2_2:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	vld	$vr2, $a1, 0
-	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI2_0)
-	pcalau12i	$a2, %pc_hi20(.LCPI2_1)
-	vld	$vr3, $a2, %pc_lo12(.LCPI2_1)
-	vrepli.b	$vr0, 0
-	vshuf.b	$vr4, $vr0, $vr2, $vr1
-	vshuf.b	$vr5, $vr0, $vr2, $vr3
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	xvld	$xr2, $a1, 0
+	vpickve2gr.b	$a2, $vr2, 1
+	vinsgr2vr.b	$vr0, $a2, 0
+	vpickve2gr.b	$a2, $vr2, 4
+	vinsgr2vr.b	$vr0, $a2, 1
+	vpickve2gr.b	$a2, $vr2, 9
+	vinsgr2vr.b	$vr0, $a2, 2
+	vpickve2gr.b	$a2, $vr2, 12
+	vinsgr2vr.b	$vr0, $a2, 3
+	xvpermi.d	$xr3, $xr2, 14
+	vpickve2gr.b	$a2, $vr3, 1
+	vinsgr2vr.b	$vr0, $a2, 4
+	vpickve2gr.b	$a2, $vr3, 4
+	vinsgr2vr.b	$vr0, $a2, 5
+	vpickve2gr.b	$a2, $vr3, 9
+	vinsgr2vr.b	$vr0, $a2, 6
+	vpickve2gr.b	$a2, $vr3, 12
+	vinsgr2vr.b	$vr0, $a2, 7
+	vext2xv.wu.bu	$xr1, $xr0
+	vpickve2gr.b	$a2, $vr2, 0
+	vinsgr2vr.b	$vr0, $a2, 0
+	vpickve2gr.b	$a2, $vr2, 5
+	vinsgr2vr.b	$vr0, $a2, 1
+	vpickve2gr.b	$a2, $vr2, 8
+	vinsgr2vr.b	$vr0, $a2, 2
+	vpickve2gr.b	$a2, $vr2, 13
+	vinsgr2vr.b	$vr0, $a2, 3
+	vpickve2gr.b	$a2, $vr3, 0
+	vinsgr2vr.b	$vr0, $a2, 4
+	vpickve2gr.b	$a2, $vr3, 5
+	vinsgr2vr.b	$vr0, $a2, 5
+	vpickve2gr.b	$a2, $vr3, 8
+	vinsgr2vr.b	$vr0, $a2, 6
+	vpickve2gr.b	$a2, $vr3, 13
+	vinsgr2vr.b	$vr0, $a2, 7
+	vext2xv.wu.bu	$xr4, $xr0
 	ori	$a2, $zero, 8
 	lu32i.d	$a2, 16
-	vreplgr2vr.d	$vr6, $a2
-	vsll.w	$vr4, $vr4, $vr6
-	pcalau12i	$a2, %pc_hi20(.LCPI2_2)
-	vld	$vr7, $a2, %pc_lo12(.LCPI2_2)
+	xvreplgr2vr.d	$xr0, $a2
+	xvsll.w	$xr5, $xr1, $xr0
 	ori	$a2, $zero, 16
 	lu32i.d	$a2, 8
-	vreplgr2vr.d	$vr8, $a2
-	vsll.w	$vr5, $vr5, $vr8
-	vor.v	$vr4, $vr5, $vr4
-	vshuf.b	$vr5, $vr0, $vr2, $vr7
-	vor.v	$vr4, $vr4, $vr5
-	vslli.w	$vr4, $vr4, 8
-	vld	$vr5, $a1, 16
-	vsrli.w	$vr2, $vr2, 24
-	vor.v	$vr2, $vr4, $vr2
-	vst	$vr2, $sp, 16
-	vshuf.b	$vr2, $vr0, $vr5, $vr1
-	vshuf.b	$vr4, $vr0, $vr5, $vr3
-	vsll.w	$vr2, $vr2, $vr6
-	vsll.w	$vr4, $vr4, $vr8
-	vor.v	$vr2, $vr4, $vr2
-	vshuf.b	$vr4, $vr0, $vr5, $vr7
-	vor.v	$vr2, $vr2, $vr4
-	vslli.w	$vr2, $vr2, 8
-	vld	$vr4, $a1, 32
-	vsrli.w	$vr5, $vr5, 24
-	vor.v	$vr2, $vr2, $vr5
-	vst	$vr2, $sp, 32
-	vshuf.b	$vr2, $vr0, $vr4, $vr1
-	vshuf.b	$vr5, $vr0, $vr4, $vr3
-	vsll.w	$vr2, $vr2, $vr6
-	vsll.w	$vr5, $vr5, $vr8
-	vor.v	$vr2, $vr5, $vr2
-	vshuf.b	$vr5, $vr0, $vr4, $vr7
-	vor.v	$vr2, $vr2, $vr5
-	vslli.w	$vr2, $vr2, 8
-	vld	$vr5, $a1, 48
-	vsrli.w	$vr4, $vr4, 24
-	vor.v	$vr2, $vr2, $vr4
-	vst	$vr2, $sp, 48
-	vshuf.b	$vr1, $vr0, $vr5, $vr1
-	vshuf.b	$vr2, $vr0, $vr5, $vr3
-	vsll.w	$vr1, $vr1, $vr6
-	vsll.w	$vr2, $vr2, $vr8
-	vor.v	$vr1, $vr2, $vr1
-	vshuf.b	$vr0, $vr0, $vr5, $vr7
-	vor.v	$vr0, $vr1, $vr0
-	vslli.w	$vr0, $vr0, 8
-	vsrli.w	$vr1, $vr5, 24
-	vor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $sp, 64
-	addi.d	$a1, $sp, 16
+	xvreplgr2vr.d	$xr1, $a2
+	xvsll.w	$xr4, $xr4, $xr1
+	xvor.v	$xr4, $xr4, $xr5
+	vpickve2gr.b	$a2, $vr2, 2
+	vinsgr2vr.b	$vr5, $a2, 0
+	vpickve2gr.b	$a2, $vr2, 6
+	vinsgr2vr.b	$vr5, $a2, 1
+	vpickve2gr.b	$a2, $vr2, 10
+	vinsgr2vr.b	$vr5, $a2, 2
+	vpickve2gr.b	$a2, $vr2, 14
+	vinsgr2vr.b	$vr5, $a2, 3
+	vpickve2gr.b	$a2, $vr3, 2
+	vinsgr2vr.b	$vr5, $a2, 4
+	vpickve2gr.b	$a2, $vr3, 6
+	vinsgr2vr.b	$vr5, $a2, 5
+	vpickve2gr.b	$a2, $vr3, 10
+	vinsgr2vr.b	$vr5, $a2, 6
+	vpickve2gr.b	$a2, $vr3, 14
+	vinsgr2vr.b	$vr5, $a2, 7
+	vext2xv.wu.bu	$xr5, $xr5
+	xvor.v	$xr4, $xr4, $xr5
+	xvslli.w	$xr4, $xr4, 8
+	vpickve2gr.b	$a2, $vr2, 3
+	vinsgr2vr.b	$vr5, $a2, 0
+	vpickve2gr.b	$a2, $vr2, 7
+	vinsgr2vr.b	$vr5, $a2, 1
+	vpickve2gr.b	$a2, $vr2, 11
+	vinsgr2vr.b	$vr5, $a2, 2
+	vpickve2gr.b	$a2, $vr2, 15
+	vinsgr2vr.b	$vr5, $a2, 3
+	vpickve2gr.b	$a2, $vr3, 3
+	vinsgr2vr.b	$vr5, $a2, 4
+	vpickve2gr.b	$a2, $vr3, 7
+	vinsgr2vr.b	$vr5, $a2, 5
+	vpickve2gr.b	$a2, $vr3, 11
+	vinsgr2vr.b	$vr5, $a2, 6
+	vpickve2gr.b	$a2, $vr3, 15
+	vinsgr2vr.b	$vr5, $a2, 7
+	xvld	$xr2, $a1, 32
+	vext2xv.wu.bu	$xr3, $xr5
+	xvor.v	$xr3, $xr4, $xr3
+	xvst	$xr3, $sp, 8
+	vpickve2gr.b	$a1, $vr2, 1
+	vinsgr2vr.b	$vr4, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 4
+	vinsgr2vr.b	$vr4, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 9
+	vinsgr2vr.b	$vr4, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 12
+	vinsgr2vr.b	$vr4, $a1, 3
+	xvpermi.d	$xr3, $xr2, 14
+	vpickve2gr.b	$a1, $vr3, 1
+	vinsgr2vr.b	$vr4, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 4
+	vinsgr2vr.b	$vr4, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 9
+	vinsgr2vr.b	$vr4, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 12
+	vinsgr2vr.b	$vr4, $a1, 7
+	vext2xv.wu.bu	$xr4, $xr4
+	vpickve2gr.b	$a1, $vr2, 0
+	vinsgr2vr.b	$vr5, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 5
+	vinsgr2vr.b	$vr5, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 8
+	vinsgr2vr.b	$vr5, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 13
+	vinsgr2vr.b	$vr5, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 0
+	vinsgr2vr.b	$vr5, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 5
+	vinsgr2vr.b	$vr5, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 8
+	vinsgr2vr.b	$vr5, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 13
+	vinsgr2vr.b	$vr5, $a1, 7
+	vext2xv.wu.bu	$xr5, $xr5
+	xvsll.w	$xr0, $xr4, $xr0
+	xvsll.w	$xr1, $xr5, $xr1
+	xvor.v	$xr0, $xr1, $xr0
+	vpickve2gr.b	$a1, $vr2, 2
+	vinsgr2vr.b	$vr1, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 6
+	vinsgr2vr.b	$vr1, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 10
+	vinsgr2vr.b	$vr1, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 14
+	vinsgr2vr.b	$vr1, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 2
+	vinsgr2vr.b	$vr1, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 6
+	vinsgr2vr.b	$vr1, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 10
+	vinsgr2vr.b	$vr1, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 14
+	vinsgr2vr.b	$vr1, $a1, 7
+	vext2xv.wu.bu	$xr1, $xr1
+	xvor.v	$xr0, $xr0, $xr1
+	xvslli.w	$xr0, $xr0, 8
+	vpickve2gr.b	$a1, $vr2, 3
+	vinsgr2vr.b	$vr1, $a1, 0
+	vpickve2gr.b	$a1, $vr2, 7
+	vinsgr2vr.b	$vr1, $a1, 1
+	vpickve2gr.b	$a1, $vr2, 11
+	vinsgr2vr.b	$vr1, $a1, 2
+	vpickve2gr.b	$a1, $vr2, 15
+	vinsgr2vr.b	$vr1, $a1, 3
+	vpickve2gr.b	$a1, $vr3, 3
+	vinsgr2vr.b	$vr1, $a1, 4
+	vpickve2gr.b	$a1, $vr3, 7
+	vinsgr2vr.b	$vr1, $a1, 5
+	vpickve2gr.b	$a1, $vr3, 11
+	vinsgr2vr.b	$vr1, $a1, 6
+	vpickve2gr.b	$a1, $vr3, 15
+	vinsgr2vr.b	$vr1, $a1, 7
+	vext2xv.wu.bu	$xr1, $xr1
+	xvor.v	$xr0, $xr0, $xr1
+	xvst	$xr0, $sp, 40
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(sha256_transform)
 	jirl	$ra, $ra, 0
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end2:
 	.size	sha256_block, .Lfunc_end2-sha256_block
                                         # -- End function
-	.globl	sha256_final                    # -- Begin function sha256_final
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function sha256_final
+.LCPI3_0:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+	.dword	6                               # 0x6
+	.dword	7                               # 0x7
+.LCPI3_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+.LCPI3_2:
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	2                               # 0x2
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	3                               # 0x3
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	5                               # 0x5
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	6                               # 0x6
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	7                               # 0x7
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.text
+	.globl	sha256_final
 	.p2align	2
 	.prefalign	5, .Lfunc_end3, nop
 	.type	sha256_final,@function
 sha256_final:                           # @sha256_final
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
 	move	$fp, $a0
-	ld.wu	$a2, $a0, 104
-	addi.d	$a1, $a0, 40
+	ld.wu	$a1, $a0, 104
+	addi.d	$a2, $a0, 40
 	ori	$a3, $zero, 128
-	addi.w	$a0, $a2, 1
+	addi.w	$a0, $a1, 1
 	andi	$a4, $a0, 3
-	stx.b	$a3, $a1, $a2
+	stx.b	$a3, $a2, $a1
 	beqz	$a4, .LBB3_2
 	.p2align	4, , 16
 .LBB3_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a2, $a0, 31, 0
+	bstrpick.d	$a1, $a0, 31, 0
 	addi.w	$a0, $a0, 1
 	andi	$a3, $a0, 3
-	stx.b	$zero, $a1, $a2
+	stx.b	$zero, $a2, $a1
 	bnez	$a3, .LBB3_1
 .LBB3_2:                                # %._crit_edge
 	bstrpick.d	$a1, $a0, 31, 2
 	addi.w	$a1, $a1, 0
 	beqz	$a0, .LBB3_15
 # %bb.3:                                # %.lr.ph44.preheader
-	ori	$a2, $zero, 1
-	sltu	$a3, $a2, $a1
-	masknez	$a2, $a2, $a3
-	maskeqz	$a3, $a1, $a3
-	or	$a2, $a3, $a2
-	ori	$a3, $zero, 8
-	bstrpick.d	$a2, $a2, 31, 0
-	bgeu	$a0, $a3, .LBB3_5
+	ori	$a3, $zero, 1
+	sltu	$a4, $a3, $a1
+	masknez	$a3, $a3, $a4
+	maskeqz	$a4, $a1, $a4
+	or	$a3, $a4, $a3
+	ori	$a4, $zero, 32
+	bstrpick.d	$a3, $a3, 31, 0
+	bgeu	$a0, $a4, .LBB3_5
 # %bb.4:
-	move	$a3, $zero
+	move	$a4, $zero
 	b	.LBB3_8
 .LBB3_5:                                # %vector.ph
-	bstrpick.d	$a3, $a2, 29, 1
-	slli.d	$a3, $a3, 1
-	addi.d	$a4, $fp, 47
-	addi.d	$a5, $sp, 20
-	move	$a6, $a3
+	pcalau12i	$a4, %pc_hi20(.LCPI3_0)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI3_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI3_1)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI3_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI3_2)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI3_2)
+	bstrpick.d	$a4, $a3, 29, 3
+	slli.d	$a4, $a4, 3
+	addi.d	$a5, $sp, 16
+	move	$a6, $a4
 	.p2align	4, , 16
 .LBB3_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a7, $a4, -7
-	ld.w	$t0, $a4, -3
-	revb.2w	$a7, $a7
-	revb.2w	$t0, $t0
-	st.w	$a7, $a5, -4
-	st.w	$t0, $a5, 0
-	addi.d	$a4, $a4, 8
-	addi.d	$a6, $a6, -2
-	addi.d	$a5, $a5, 8
+	xvslli.d	$xr3, $xr0, 2
+	xvslli.d	$xr4, $xr1, 2
+	xvpickve2gr.d	$t7, $xr4, 0
+	xvpickve2gr.d	$t8, $xr4, 1
+	xvpickve2gr.d	$s0, $xr4, 2
+	xvpickve2gr.d	$s1, $xr4, 3
+	xvpickve2gr.d	$s2, $xr3, 0
+	xvpickve2gr.d	$s3, $xr3, 1
+	xvpickve2gr.d	$s4, $xr3, 2
+	xvpickve2gr.d	$s5, $xr3, 3
+	add.d	$a7, $a2, $t7
+	add.d	$t0, $a2, $t8
+	add.d	$t1, $a2, $s0
+	add.d	$t2, $a2, $s1
+	add.d	$t3, $a2, $s2
+	add.d	$t4, $a2, $s3
+	add.d	$t5, $a2, $s4
+	add.d	$t6, $a2, $s5
+	ldx.b	$t7, $a2, $t7
+	ldx.b	$t8, $a2, $t8
+	ldx.b	$s0, $a2, $s0
+	ldx.b	$s1, $a2, $s1
+	ldx.b	$s2, $a2, $s2
+	ldx.b	$s3, $a2, $s3
+	ldx.b	$s4, $a2, $s4
+	ldx.b	$s5, $a2, $s5
+	vinsgr2vr.b	$vr3, $t7, 0
+	vinsgr2vr.b	$vr3, $t8, 1
+	vinsgr2vr.b	$vr3, $s0, 2
+	vinsgr2vr.b	$vr3, $s1, 3
+	vinsgr2vr.b	$vr3, $s2, 4
+	vinsgr2vr.b	$vr3, $s3, 5
+	vinsgr2vr.b	$vr3, $s4, 6
+	vinsgr2vr.b	$vr3, $s5, 7
+	xvpermi.d	$xr3, $xr3, 68
+	xvshuf.b	$xr3, $xr0, $xr3, $xr2
+	ld.b	$t7, $a7, 1
+	ld.b	$t8, $t0, 1
+	ld.b	$s0, $t1, 1
+	ld.b	$s1, $t2, 1
+	ld.b	$s2, $t3, 1
+	ld.b	$s3, $t4, 1
+	ld.b	$s4, $t5, 1
+	ld.b	$s5, $t6, 1
+	vinsgr2vr.b	$vr4, $t7, 0
+	vinsgr2vr.b	$vr4, $t8, 1
+	vinsgr2vr.b	$vr4, $s0, 2
+	vinsgr2vr.b	$vr4, $s1, 3
+	vinsgr2vr.b	$vr4, $s2, 4
+	vinsgr2vr.b	$vr4, $s3, 5
+	vinsgr2vr.b	$vr4, $s4, 6
+	vinsgr2vr.b	$vr4, $s5, 7
+	vext2xv.wu.bu	$xr4, $xr4
+	xvslli.w	$xr3, $xr3, 16
+	xvslli.w	$xr4, $xr4, 8
+	xvor.v	$xr3, $xr4, $xr3
+	ld.b	$t7, $a7, 2
+	ld.b	$t8, $t0, 2
+	ld.b	$s0, $t1, 2
+	ld.b	$s1, $t2, 2
+	ld.b	$s2, $t3, 2
+	ld.b	$s3, $t4, 2
+	ld.b	$s4, $t5, 2
+	ld.b	$s5, $t6, 2
+	vinsgr2vr.b	$vr4, $t7, 0
+	vinsgr2vr.b	$vr4, $t8, 1
+	vinsgr2vr.b	$vr4, $s0, 2
+	vinsgr2vr.b	$vr4, $s1, 3
+	vinsgr2vr.b	$vr4, $s2, 4
+	vinsgr2vr.b	$vr4, $s3, 5
+	vinsgr2vr.b	$vr4, $s4, 6
+	vinsgr2vr.b	$vr4, $s5, 7
+	vext2xv.wu.bu	$xr4, $xr4
+	xvor.v	$xr3, $xr3, $xr4
+	xvslli.w	$xr3, $xr3, 8
+	ld.b	$a7, $a7, 3
+	ld.b	$t0, $t0, 3
+	ld.b	$t1, $t1, 3
+	ld.b	$t2, $t2, 3
+	ld.b	$t3, $t3, 3
+	ld.b	$t4, $t4, 3
+	ld.b	$t5, $t5, 3
+	ld.b	$t6, $t6, 3
+	vinsgr2vr.b	$vr4, $a7, 0
+	vinsgr2vr.b	$vr4, $t0, 1
+	vinsgr2vr.b	$vr4, $t1, 2
+	vinsgr2vr.b	$vr4, $t2, 3
+	vinsgr2vr.b	$vr4, $t3, 4
+	vinsgr2vr.b	$vr4, $t4, 5
+	vinsgr2vr.b	$vr4, $t5, 6
+	vinsgr2vr.b	$vr4, $t6, 7
+	vext2xv.wu.bu	$xr4, $xr4
+	xvor.v	$xr3, $xr3, $xr4
+	xvst	$xr3, $a5, 0
+	xvaddi.du	$xr1, $xr1, 8
+	xvaddi.du	$xr0, $xr0, 8
+	addi.d	$a6, $a6, -8
+	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB3_6
 # %bb.7:                                # %middle.block
-	beq	$a3, $a2, .LBB3_10
+	beq	$a4, $a3, .LBB3_10
 .LBB3_8:                                # %.lr.ph44.preheader64
-	addi.d	$a4, $sp, 16
-	alsl.d	$a4, $a3, $a4, 2
-	sub.d	$a2, $a2, $a3
-	alsl.d	$a3, $a3, $fp, 2
-	addi.d	$a3, $a3, 43
+	addi.d	$a2, $sp, 16
+	alsl.d	$a2, $a4, $a2, 2
+	sub.d	$a3, $a3, $a4
+	alsl.d	$a4, $a4, $fp, 2
+	addi.d	$a4, $a4, 43
 	.p2align	4, , 16
 .LBB3_9:                                # %.lr.ph44
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, -3
+	ld.w	$a5, $a4, -3
 	revb.2w	$a5, $a5
-	st.w	$a5, $a4, 0
+	st.w	$a5, $a2, 0
+	addi.d	$a2, $a2, 4
+	addi.d	$a3, $a3, -1
 	addi.d	$a4, $a4, 4
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 4
-	bnez	$a2, .LBB3_9
+	bnez	$a3, .LBB3_9
 .LBB3_10:                               # %._crit_edge45
 	ori	$a2, $zero, 56
 	bgeu	$a2, $a0, .LBB3_14
@@ -365,9 +556,15 @@ sha256_final:                           # @sha256_final
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(sha256_transform)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 	ret
 .Lfunc_end3:
 	.size	sha256_final, .Lfunc_end3-sha256_final

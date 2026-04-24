@@ -5996,43 +5996,7 @@ list_PairFree:                          # @list_PairFree
 .Lfunc_end30:
 	.size	list_PairFree, .Lfunc_end30-list_PairFree
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function cnf_Flotter
-.LCPI31_0:
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	2                               # 0x2
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	3                               # 0x3
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.text
-	.globl	cnf_Flotter
+	.globl	cnf_Flotter                     # -- Begin function cnf_Flotter
 	.p2align	2
 	.prefalign	5, .Lfunc_end31, nop
 	.type	cnf_Flotter,@function
@@ -6821,20 +6785,12 @@ cnf_Flotter:                            # @cnf_Flotter
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a5, $a3, -4
 	ld.w	$a6, $a3, 0
-	pcalau12i	$a7, %pc_hi20(.LCPI31_0)
-	xvld	$xr2, $a7, %pc_lo12(.LCPI31_0)
-	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	xvpermi.d	$xr3, $xr3, 68
-	xvshuf.b	$xr3, $xr0, $xr3, $xr2
-	xvslli.d	$xr3, $xr3, 56
-	xvsrai.d	$xr3, $xr3, 56
-	xvpermi.d	$xr4, $xr4, 68
-	xvshuf.b	$xr2, $xr0, $xr4, $xr2
-	xvslli.d	$xr2, $xr2, 56
-	xvsrai.d	$xr2, $xr2, 56
-	xvadd.d	$xr0, $xr0, $xr3
-	xvadd.d	$xr1, $xr1, $xr2
+	vinsgr2vr.w	$vr2, $a5, 0
+	vinsgr2vr.w	$vr3, $a6, 0
+	vext2xv.d.b	$xr2, $xr2
+	vext2xv.d.b	$xr3, $xr3
+	xvadd.d	$xr0, $xr0, $xr2
+	xvadd.d	$xr1, $xr1, $xr3
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 8
 	bnez	$a4, .LBB31_84

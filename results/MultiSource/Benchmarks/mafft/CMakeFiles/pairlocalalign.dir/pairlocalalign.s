@@ -902,77 +902,156 @@ arguments:                              # @arguments
 	.word	.LBB0_8-.LJTI0_0
 	.word	.LBB0_40-.LJTI0_0
                                         # -- End function
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function countamino
+.LCPI1_0:
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	2                               # 0x2
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	3                               # 0x3
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	4                               # 0x4
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	5                               # 0x5
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	6                               # 0x6
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	7                               # 0x7
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
+	.byte	0                               # 0x0
 	.text
-	.globl	countamino                      # -- Begin function countamino
+	.globl	countamino
 	.p2align	2
 	.prefalign	5, .Lfunc_end1, nop
 	.type	countamino,@function
 countamino:                             # @countamino
 # %bb.0:
 	beqz	$a1, .LBB1_3
-# %bb.1:                                # %.lr.ph.preheader
-	ori	$a2, $zero, 8
+# %bb.1:                                # %iter.check
+	ori	$a2, $zero, 4
 	bgeu	$a1, $a2, .LBB1_4
 # %bb.2:
-	move	$a5, $zero
-	move	$a2, $a0
-	b	.LBB1_7
+	move	$a6, $zero
+	move	$a2, $a1
+	move	$a3, $a0
+	b	.LBB1_13
 .LBB1_3:
-	move	$a5, $zero
-	addi.w	$a0, $a5, 0
+	move	$a6, $zero
+	addi.w	$a0, $a6, 0
 	ret
-.LBB1_4:                                # %vector.ph
-	bstrpick.d	$a3, $a1, 31, 0
-	bstrpick.d	$a2, $a3, 31, 3
-	slli.d	$a4, $a2, 3
-	sub.d	$a1, $a1, $a4
-	alsl.d	$a2, $a2, $a0, 3
-	addi.d	$a0, $a0, 4
-	vrepli.b	$vr0, 0
-	vrepli.b	$vr1, 45
-	vrepli.w	$vr2, 1
-	move	$a5, $a4
-	vori.b	$vr3, $vr0, 0
+.LBB1_4:                                # %vector.main.loop.iter.check
+	bstrpick.d	$a4, $a1, 31, 0
+	ori	$a2, $zero, 16
+	vrepli.b	$vr0, 45
+	bgeu	$a1, $a2, .LBB1_6
+# %bb.5:
+	move	$a5, $zero
+	move	$a6, $zero
+	b	.LBB1_10
+.LBB1_6:                                # %vector.ph
+	andi	$a7, $a4, 12
+	bstrpick.d	$a3, $a4, 31, 4
+	slli.d	$a5, $a3, 4
+	sub.d	$a2, $a1, $a5
+	alsl.d	$a3, $a3, $a0, 4
+	pcalau12i	$a6, %pc_hi20(.LCPI1_0)
+	xvld	$xr1, $a6, %pc_lo12(.LCPI1_0)
+	addi.d	$a6, $a0, 8
+	xvrepli.b	$xr2, 0
+	xvrepli.w	$xr3, 1
+	move	$t0, $a5
+	xvori.b	$xr4, $xr2, 0
 	.p2align	4, , 16
-.LBB1_5:                                # %vector.body
+.LBB1_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a0, -4
-	ld.w	$a7, $a0, 0
-	vinsgr2vr.w	$vr4, $a6, 0
-	vinsgr2vr.w	$vr5, $a7, 0
-	vseq.b	$vr4, $vr4, $vr1
-	vxori.b	$vr4, $vr4, 255
-	vilvl.b	$vr4, $vr4, $vr4
-	vilvl.h	$vr4, $vr4, $vr4
-	vand.v	$vr4, $vr4, $vr2
-	vseq.b	$vr5, $vr5, $vr1
+	ld.d	$t1, $a6, -8
+	ld.d	$t2, $a6, 0
+	vinsgr2vr.d	$vr5, $t1, 0
+	vinsgr2vr.d	$vr6, $t2, 0
+	vseq.b	$vr5, $vr5, $vr0
 	vxori.b	$vr5, $vr5, 255
-	vilvl.b	$vr5, $vr5, $vr5
-	vilvl.h	$vr5, $vr5, $vr5
-	vand.v	$vr5, $vr5, $vr2
-	vadd.w	$vr0, $vr0, $vr4
-	vadd.w	$vr3, $vr3, $vr5
-	addi.d	$a5, $a5, -8
-	addi.d	$a0, $a0, 8
-	bnez	$a5, .LBB1_5
-# %bb.6:                                # %middle.block
-	vadd.w	$vr0, $vr3, $vr0
-	vhaddw.d.w	$vr0, $vr0, $vr0
-	vhaddw.q.d	$vr0, $vr0, $vr0
-	vpickve2gr.d	$a5, $vr0, 0
-	beq	$a4, $a3, .LBB1_8
+	xvpermi.d	$xr5, $xr5, 68
+	xvshuf.b	$xr5, $xr0, $xr5, $xr1
+	xvand.v	$xr5, $xr5, $xr3
+	vseq.b	$vr6, $vr6, $vr0
+	vxori.b	$vr6, $vr6, 255
+	xvpermi.d	$xr6, $xr6, 68
+	xvshuf.b	$xr6, $xr0, $xr6, $xr1
+	xvand.v	$xr6, $xr6, $xr3
+	xvadd.w	$xr2, $xr2, $xr5
+	xvadd.w	$xr4, $xr4, $xr6
+	addi.d	$t0, $t0, -16
+	addi.d	$a6, $a6, 16
+	bnez	$t0, .LBB1_7
+# %bb.8:                                # %middle.block
+	xvadd.w	$xr1, $xr4, $xr2
+	xvhaddw.d.w	$xr1, $xr1, $xr1
+	xvhaddw.q.d	$xr1, $xr1, $xr1
+	xvpermi.d	$xr2, $xr1, 2
+	xvadd.d	$xr1, $xr2, $xr1
+	xvpickve2gr.d	$a6, $xr1, 0
+	beq	$a5, $a4, .LBB1_14
+# %bb.9:                                # %vec.epilog.iter.check
+	beqz	$a7, .LBB1_13
+.LBB1_10:                               # %vec.epilog.ph
+	bstrpick.d	$a3, $a4, 31, 2
+	slli.d	$a7, $a3, 2
+	sub.d	$a2, $a1, $a7
+	alsl.d	$a3, $a3, $a0, 2
+	vrepli.b	$vr1, 0
+	vinsgr2vr.w	$vr1, $a6, 0
+	sub.d	$a1, $a5, $a7
+	add.d	$a0, $a0, $a5
+	vrepli.w	$vr2, 1
 	.p2align	4, , 16
-.LBB1_7:                                # %.lr.ph
+.LBB1_11:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a0, $a2, 0
-	addi.w	$a1, $a1, -1
-	addi.d	$a2, $a2, 1
+	ld.w	$a5, $a0, 0
+	vinsgr2vr.w	$vr3, $a5, 0
+	vseq.b	$vr3, $vr3, $vr0
+	vxori.b	$vr3, $vr3, 255
+	vilvl.b	$vr3, $vr3, $vr3
+	vilvl.h	$vr3, $vr3, $vr3
+	vand.v	$vr3, $vr3, $vr2
+	vadd.w	$vr1, $vr1, $vr3
+	addi.d	$a1, $a1, 4
+	addi.d	$a0, $a0, 4
+	bnez	$a1, .LBB1_11
+# %bb.12:                               # %vec.epilog.middle.block
+	vhaddw.d.w	$vr0, $vr1, $vr1
+	vhaddw.q.d	$vr0, $vr0, $vr0
+	vpickve2gr.d	$a6, $vr0, 0
+	beq	$a7, $a4, .LBB1_14
+	.p2align	4, , 16
+.LBB1_13:                               # %.lr.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.bu	$a0, $a3, 0
+	addi.w	$a2, $a2, -1
+	addi.d	$a3, $a3, 1
 	addi.d	$a0, $a0, -45
 	sltu	$a0, $zero, $a0
-	add.d	$a5, $a5, $a0
-	bnez	$a1, .LBB1_7
-.LBB1_8:                                # %._crit_edge
-	addi.w	$a0, $a5, 0
+	add.d	$a6, $a6, $a0
+	bnez	$a2, .LBB1_13
+.LBB1_14:                               # %._crit_edge
+	addi.w	$a0, $a6, 0
 	ret
 .Lfunc_end1:
 	.size	countamino, .Lfunc_end1-countamino

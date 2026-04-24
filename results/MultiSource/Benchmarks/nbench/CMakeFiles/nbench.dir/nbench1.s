@@ -4260,10 +4260,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vinsgr2vr.d	$vr3, $a0, 0
 	vseqi.h	$vr3, $vr3, 1
 	vandn.v	$vr2, $vr3, $vr2
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr3, $vr2, 16
-	vsrai.w	$vr3, $vr3, 16
-	vpickve2gr.w	$a0, $vr3, 0
+	vpickve2gr.w	$a0, $vr2, 0
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB10_181
 # %bb.180:                              # %pred.store.if99
@@ -4274,6 +4271,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	st.h	$s4, $a0, 0
 .LBB10_181:                             # %pred.store.continue100
                                         #   in Loop: Header=BB10_112 Depth=4
+	vext2xv.w.h	$xr3, $xr2
 	vpickve2gr.w	$a0, $vr3, 1
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB10_183
@@ -4323,8 +4321,9 @@ DoAssignIteration:                      # @DoAssignIteration
 	xvpickve2gr.d	$a0, $xr0, 0
 	vori.b	$vr0, $vr7, 0
 	vinsgr2vr.h	$vr0, $a0, 0
-	vrepli.w	$vr1, 1
-	vand.v	$vr1, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr2
+	vrepli.w	$vr2, 1
+	vand.v	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a0, $vr1, 0
 	vinsgr2vr.h	$vr2, $a0, 0
 	vpickve2gr.w	$a0, $vr1, 1

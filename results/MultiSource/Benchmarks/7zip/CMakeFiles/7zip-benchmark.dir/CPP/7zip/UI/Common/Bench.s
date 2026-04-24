@@ -24810,7 +24810,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	sub.d	$a0, $a0, $a1
 	st.d	$a0, $sp, 96
 	ori	$a0, $zero, 1
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 16
 	st.w	$a0, $sp, 128
 	bgeu	$s1, $a1, .LBB13_62
 # %bb.61:
@@ -24819,31 +24819,71 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	move	$a2, $zero
 	b	.LBB13_65
 .LBB13_62:                              # %vector.ph
-	move	$a1, $zero
-	move	$a2, $zero
-	move	$a3, $zero
-	move	$a4, $zero
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bstrpick.d	$a0, $a0, 16, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a5, $fp, 400
-	move	$a6, $a0
+	bstrpick.d	$a0, $a0, 16, 3
+	slli.d	$a0, $a0, 3
+	xvrepli.b	$xr0, 0
+	addi.d	$a1, $fp, 1068
+	move	$a2, $a0
+	xvori.b	$xr3, $xr0, 0
+	xvori.b	$xr1, $xr0, 0
+	xvori.b	$xr2, $xr0, 0
 .LBB13_63:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.wu	$a7, $a5, -228
-	ld.wu	$t0, $a5, -4
-	ld.wu	$t1, $a5, -224
-	ld.wu	$t2, $a5, 0
-	add.d	$a1, $a1, $a7
-	add.d	$a2, $a2, $t0
-	add.d	$a3, $a3, $t1
-	add.d	$a4, $a4, $t2
-	addi.d	$a6, $a6, -2
-	addi.d	$a5, $a5, 448
-	bnez	$a6, .LBB13_63
+	ld.w	$a3, $a1, -896
+	ld.w	$a4, $a1, -672
+	ld.w	$a5, $a1, -448
+	ld.w	$a6, $a1, -224
+	vinsgr2vr.w	$vr4, $a3, 0
+	vinsgr2vr.w	$vr4, $a4, 1
+	vinsgr2vr.w	$vr4, $a5, 2
+	vinsgr2vr.w	$vr4, $a6, 3
+	ld.w	$a3, $a1, 0
+	ld.w	$a4, $a1, 224
+	ld.w	$a5, $a1, 448
+	ld.w	$a6, $a1, 672
+	vinsgr2vr.w	$vr5, $a3, 0
+	vinsgr2vr.w	$vr5, $a4, 1
+	vinsgr2vr.w	$vr5, $a5, 2
+	vinsgr2vr.w	$vr5, $a6, 3
+	vext2xv.du.wu	$xr4, $xr4
+	vext2xv.du.wu	$xr5, $xr5
+	xvadd.d	$xr0, $xr0, $xr4
+	xvadd.d	$xr3, $xr3, $xr5
+	ld.w	$a3, $a1, -892
+	ld.w	$a4, $a1, -668
+	ld.w	$a5, $a1, -444
+	ld.w	$a6, $a1, -220
+	vinsgr2vr.w	$vr4, $a3, 0
+	vinsgr2vr.w	$vr4, $a4, 1
+	vinsgr2vr.w	$vr4, $a5, 2
+	vinsgr2vr.w	$vr4, $a6, 3
+	ld.w	$a3, $a1, 4
+	ld.w	$a4, $a1, 228
+	ld.w	$a5, $a1, 452
+	ld.w	$a6, $a1, 676
+	vinsgr2vr.w	$vr5, $a3, 0
+	vinsgr2vr.w	$vr5, $a4, 1
+	vinsgr2vr.w	$vr5, $a5, 2
+	vinsgr2vr.w	$vr5, $a6, 3
+	vext2xv.du.wu	$xr4, $xr4
+	vext2xv.du.wu	$xr5, $xr5
+	xvadd.d	$xr1, $xr1, $xr4
+	xvadd.d	$xr2, $xr2, $xr5
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 1792
+	bnez	$a2, .LBB13_63
 # %bb.64:                               # %middle.block
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a4, $a3
+	xvadd.d	$xr0, $xr3, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr3, $xr0, 2
+	xvadd.d	$xr0, $xr3, $xr0
+	xvpickve2gr.d	$a1, $xr0, 0
+	xvadd.d	$xr0, $xr2, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a2, $xr0, 0
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a0, $a3, .LBB13_67
 .LBB13_65:                              # %.lr.ph355.preheader598
@@ -25070,7 +25110,7 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	ld.w	$a0, $fp, 80
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	sll.w	$a0, $a0, $a1
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 16
 	st.w	$a0, $sp, 128
 	bgeu	$s1, $a1, .LBB13_98
 # %bb.97:
@@ -25079,31 +25119,71 @@ _Z9LzmaBenchjjP14IBenchCallback:        # @_Z9LzmaBenchjjP14IBenchCallback
 	move	$a2, $zero
 	b	.LBB13_101
 .LBB13_98:                              # %vector.ph566
-	move	$a1, $zero
-	move	$a2, $zero
-	move	$a3, $zero
-	move	$a4, $zero
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bstrpick.d	$a0, $a0, 16, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a5, $fp, 400
-	move	$a6, $a0
+	bstrpick.d	$a0, $a0, 16, 3
+	slli.d	$a0, $a0, 3
+	xvrepli.b	$xr0, 0
+	addi.d	$a1, $fp, 1068
+	move	$a2, $a0
+	xvori.b	$xr3, $xr0, 0
+	xvori.b	$xr1, $xr0, 0
+	xvori.b	$xr2, $xr0, 0
 .LBB13_99:                              # %vector.body569
                                         # =>This Inner Loop Header: Depth=1
-	ld.wu	$a7, $a5, -228
-	ld.wu	$t0, $a5, -4
-	ld.wu	$t1, $a5, -224
-	ld.wu	$t2, $a5, 0
-	add.d	$a1, $a1, $a7
-	add.d	$a2, $a2, $t0
-	add.d	$a3, $a3, $t1
-	add.d	$a4, $a4, $t2
-	addi.d	$a6, $a6, -2
-	addi.d	$a5, $a5, 448
-	bnez	$a6, .LBB13_99
+	ld.w	$a3, $a1, -896
+	ld.w	$a4, $a1, -672
+	ld.w	$a5, $a1, -448
+	ld.w	$a6, $a1, -224
+	vinsgr2vr.w	$vr4, $a3, 0
+	vinsgr2vr.w	$vr4, $a4, 1
+	vinsgr2vr.w	$vr4, $a5, 2
+	vinsgr2vr.w	$vr4, $a6, 3
+	ld.w	$a3, $a1, 0
+	ld.w	$a4, $a1, 224
+	ld.w	$a5, $a1, 448
+	ld.w	$a6, $a1, 672
+	vinsgr2vr.w	$vr5, $a3, 0
+	vinsgr2vr.w	$vr5, $a4, 1
+	vinsgr2vr.w	$vr5, $a5, 2
+	vinsgr2vr.w	$vr5, $a6, 3
+	vext2xv.du.wu	$xr4, $xr4
+	vext2xv.du.wu	$xr5, $xr5
+	xvadd.d	$xr0, $xr0, $xr4
+	xvadd.d	$xr3, $xr3, $xr5
+	ld.w	$a3, $a1, -892
+	ld.w	$a4, $a1, -668
+	ld.w	$a5, $a1, -444
+	ld.w	$a6, $a1, -220
+	vinsgr2vr.w	$vr4, $a3, 0
+	vinsgr2vr.w	$vr4, $a4, 1
+	vinsgr2vr.w	$vr4, $a5, 2
+	vinsgr2vr.w	$vr4, $a6, 3
+	ld.w	$a3, $a1, 4
+	ld.w	$a4, $a1, 228
+	ld.w	$a5, $a1, 452
+	ld.w	$a6, $a1, 676
+	vinsgr2vr.w	$vr5, $a3, 0
+	vinsgr2vr.w	$vr5, $a4, 1
+	vinsgr2vr.w	$vr5, $a5, 2
+	vinsgr2vr.w	$vr5, $a6, 3
+	vext2xv.du.wu	$xr4, $xr4
+	vext2xv.du.wu	$xr5, $xr5
+	xvadd.d	$xr1, $xr1, $xr4
+	xvadd.d	$xr2, $xr2, $xr5
+	addi.d	$a2, $a2, -8
+	addi.d	$a1, $a1, 1792
+	bnez	$a2, .LBB13_99
 # %bb.100:                              # %middle.block576
-	add.d	$a1, $a2, $a1
-	add.d	$a2, $a4, $a3
+	xvadd.d	$xr0, $xr3, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr3, $xr0, 2
+	xvadd.d	$xr0, $xr3, $xr0
+	xvpickve2gr.d	$a1, $xr0, 0
+	xvadd.d	$xr0, $xr2, $xr1
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a2, $xr0, 0
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	beq	$a0, $a3, .LBB13_103
 .LBB13_101:                             # %.lr.ph373.preheader585

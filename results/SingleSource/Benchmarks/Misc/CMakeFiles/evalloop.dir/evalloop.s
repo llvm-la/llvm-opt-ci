@@ -934,72 +934,95 @@ eval:                                   # @eval
 	.word	.LBB1_26-.LJTI1_0
 	.word	.LBB1_16-.LJTI1_0
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
+.LCPI2_0:
+	.half	0                               # 0x0
+	.half	1                               # 0x1
+	.half	2                               # 0x2
+	.half	3                               # 0x3
+	.half	4                               # 0x4
+	.half	5                               # 0x5
+	.half	6                               # 0x6
+	.half	7                               # 0x7
+.LCPI2_1:
+	.word	18                              # 0x12
+	.word	19                              # 0x13
+	.word	20                              # 0x14
+	.word	21                              # 0x15
+.LCPI2_2:
+	.word	22                              # 0x16
+	.word	23                              # 0x17
+	.word	24                              # 0x18
+	.word	25                              # 0x19
+.LCPI2_3:
+	.word	26                              # 0x1a
+	.word	27                              # 0x1b
+	.word	28                              # 0x1c
+	.word	29                              # 0x1d
 	.text
-	.globl	main                            # -- Begin function main
+	.globl	main
 	.p2align	2
 	.prefalign	5, .Lfunc_end2, nop
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %vector.ph
+# %bb.0:                                # %iter.check
 	addi.d	$sp, $sp, -2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
 	st.d	$fp, $sp, 2016                  # 8-byte Folded Spill
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 2096
 	sub.d	$sp, $sp, $a0
-	lu12i.w	$a0, 16
-	lu32i.d	$a0, 196610
-	vreplgr2vr.d	$vr0, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
 	lu12i.w	$a0, -2
-	ori	$a0, $a0, 32
-	ori	$a1, $zero, 2115
-	vreplgr2vr.h	$vr1, $a1
+	ori	$a3, $a0, 64
+	ori	$a0, $zero, 2115
+	vreplgr2vr.h	$vr1, $a0
 	vrepli.h	$vr2, 31
-	vrepli.b	$vr3, 0
-	addi.d	$a1, $sp, 16
-	lu12i.w	$a3, 1
-	ori	$a2, $a3, 4064
-	ori	$a3, $a3, 4080
+	addi.d	$a4, $sp, 16
+	lu12i.w	$a0, 1
+	ori	$a2, $a0, 4032
+	ori	$a1, $a0, 4064
 	.p2align	4, , 16
 .LBB2_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.hu	$vr4, $vr0, 4
-	vmuh.hu	$vr5, $vr0, $vr1
-	vsub.h	$vr6, $vr0, $vr5
+	vaddi.hu	$vr3, $vr0, 8
+	vmuh.hu	$vr4, $vr0, $vr1
+	vsub.h	$vr5, $vr0, $vr4
+	vsrli.h	$vr5, $vr5, 1
+	vadd.h	$vr4, $vr5, $vr4
+	vsrli.h	$vr4, $vr4, 4
+	vori.b	$vr5, $vr0, 0
+	vmsub.h	$vr5, $vr4, $vr2
+	vmuh.hu	$vr4, $vr3, $vr1
+	vsub.h	$vr6, $vr3, $vr4
 	vsrli.h	$vr6, $vr6, 1
-	vadd.h	$vr5, $vr6, $vr5
-	vsrli.h	$vr5, $vr5, 4
-	vori.b	$vr6, $vr0, 0
-	vmsub.h	$vr6, $vr5, $vr2
-	vmuh.hu	$vr5, $vr4, $vr1
-	vsub.h	$vr7, $vr4, $vr5
-	vsrli.h	$vr7, $vr7, 1
-	vadd.h	$vr5, $vr7, $vr5
-	vsrli.h	$vr5, $vr5, 4
-	vmsub.h	$vr4, $vr5, $vr2
-	vaddi.hu	$vr5, $vr6, 1
-	vaddi.hu	$vr4, $vr4, 1
-	vilvl.h	$vr5, $vr3, $vr5
-	vilvl.h	$vr4, $vr3, $vr4
-	add.d	$a4, $a1, $a0
-	vstx	$vr5, $a4, $a2
-	vstx	$vr4, $a4, $a3
-	addi.d	$a0, $a0, 32
-	vaddi.hu	$vr0, $vr0, 8
-	bnez	$a0, .LBB2_1
-# %bb.2:                                # %scalar.ph
-	ori	$a0, $zero, 26
-	lu32i.d	$a0, 27
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 4080
-	add.d	$a1, $sp, $a1
-	stptr.d	$a0, $a1, 0
-	ori	$a0, $zero, 28
-	lu32i.d	$a0, 29
-	lu12i.w	$a1, 1
-	ori	$a1, $a1, 4088
-	add.d	$a1, $sp, $a1
-	stptr.d	$a0, $a1, 0
+	vadd.h	$vr4, $vr6, $vr4
+	vsrli.h	$vr4, $vr4, 4
+	vmsub.h	$vr3, $vr4, $vr2
+	vaddi.hu	$vr4, $vr5, 1
+	vaddi.hu	$vr3, $vr3, 1
+	vext2xv.wu.hu	$xr4, $xr4
+	vext2xv.wu.hu	$xr3, $xr3
+	add.d	$a5, $a4, $a3
+	xvstx	$xr4, $a5, $a2
+	xvstx	$xr3, $a5, $a1
+	addi.d	$a3, $a3, 64
+	vaddi.hu	$vr0, $vr0, 16
+	bnez	$a3, .LBB2_1
+# %bb.2:                                # %vec.epilog.vector.body
+	pcalau12i	$a3, %pc_hi20(.LCPI2_1)
+	vld	$vr0, $a3, %pc_lo12(.LCPI2_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI2_2)
+	vld	$vr1, $a3, %pc_lo12(.LCPI2_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI2_3)
+	vld	$vr2, $a3, %pc_lo12(.LCPI2_3)
+	addi.d	$a3, $sp, 16
+	vstx	$vr0, $a2, $a3
+	ori	$a0, $a0, 4048
+	vstx	$vr1, $a0, $a3
+	vstx	$vr2, $a1, $a3
 	ori	$a0, $zero, 30
 	lu32i.d	$a0, 31
 	lu12i.w	$a1, 2

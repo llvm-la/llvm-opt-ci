@@ -6,9 +6,16 @@
 	.type	bmha_init,@function
 bmha_init:                              # @bmha_init
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(pat)
 	st.d	$fp, $a0, %pc_lo12(pat)
@@ -19,32 +26,32 @@ bmha_init:                              # @bmha_init
 	st.w	$a0, $a1, %pc_lo12(patlen)
 	bstrpick.d	$a1, $a0, 31, 0
 	add.d	$a1, $a1, $fp
-	addi.d	$a3, $a1, -1
-	addi.w	$a2, $a0, 0
+	addi.d	$a2, $a1, -1
+	addi.w	$a5, $a0, 0
 	pcalau12i	$a1, %pc_hi20(skip)
-	addi.d	$a4, $a1, %pc_lo12(skip)
+	addi.d	$a3, $a1, %pc_lo12(skip)
 	pcalau12i	$a1, %pc_hi20(lowervec)
 	addi.d	$a1, $a1, %pc_lo12(lowervec)
-	move	$a5, $zero
+	move	$a4, $zero
 	lu12i.w	$a6, 7
 	ori	$a6, $a6, 4095
 	ori	$a7, $zero, 256
 	b	.LBB0_2
 	.p2align	4, , 16
 .LBB0_1:                                #   in Loop: Header=BB0_2 Depth=1
-	addi.d	$a5, $a5, 1
-	beq	$a5, $a7, .LBB0_10
+	addi.d	$a4, $a4, 1
+	beq	$a4, $a7, .LBB0_10
 .LBB0_2:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_4 Depth 2
-	alsl.d	$t0, $a5, $a4, 2
-	slli.d	$t1, $a5, 2
-	stx.w	$a0, $a4, $t1
-	blez	$a2, .LBB0_6
+	alsl.d	$t0, $a4, $a3, 2
+	slli.d	$t1, $a4, 2
+	stx.w	$a0, $a3, $t1
+	blez	$a5, .LBB0_6
 # %bb.3:                                # %.lr.ph36.preheader
                                         #   in Loop: Header=BB0_2 Depth=1
-	ldx.bu	$t2, $a1, $a5
+	ldx.bu	$t2, $a1, $a4
 	move	$t1, $zero
-	move	$t3, $a3
+	move	$t3, $a2
 	.p2align	4, , 16
 .LBB0_4:                                # %.lr.ph36
                                         #   Parent Loop BB0_2 Depth=1
@@ -62,7 +69,7 @@ bmha_init:                              # @bmha_init
 .LBB0_6:                                #   in Loop: Header=BB0_2 Depth=1
 	move	$t1, $a0
 	addi.w	$t1, $t1, 0
-	bne	$t1, $a2, .LBB0_1
+	bne	$t1, $a5, .LBB0_1
 	b	.LBB0_9
 	.p2align	4, , 16
 .LBB0_7:                                #   in Loop: Header=BB0_2 Depth=1
@@ -72,39 +79,161 @@ bmha_init:                              # @bmha_init
                                         #   in Loop: Header=BB0_2 Depth=1
 	add.d	$t1, $a0, $t1
 	addi.w	$t1, $t1, 0
-	bne	$t1, $a2, .LBB0_1
+	bne	$t1, $a5, .LBB0_1
 .LBB0_9:                                #   in Loop: Header=BB0_2 Depth=1
 	st.w	$a6, $t0, 0
 	b	.LBB0_1
 .LBB0_10:
-	pcalau12i	$a3, %pc_hi20(skip2)
-	ori	$a4, $zero, 2
-	st.w	$a0, $a3, %pc_lo12(skip2)
-	blt	$a2, $a4, .LBB0_15
+	pcalau12i	$a2, %pc_hi20(skip2)
+	ori	$a3, $zero, 2
+	st.w	$a0, $a2, %pc_lo12(skip2)
+	blt	$a5, $a3, .LBB0_18
 # %bb.11:                               # %.lr.ph
-	addi.w	$a0, $a0, -1
-	ldx.bu	$a2, $fp, $a0
-	ldx.bu	$a2, $a1, $a2
-	bstrpick.d	$a4, $a0, 31, 0
-	b	.LBB0_13
+	addi.w	$a4, $a0, -1
+	ldx.bu	$a3, $fp, $a4
+	ldx.bu	$a3, $a1, $a3
+	ori	$a6, $zero, 9
+	bstrpick.d	$a4, $a4, 31, 0
+	bgeu	$a5, $a6, .LBB0_13
+# %bb.12:
+	move	$a5, $zero
+	b	.LBB0_19
+.LBB0_13:                               # %vector.ph
+	move	$a6, $zero
+	bstrpick.d	$a5, $a4, 31, 3
+	slli.d	$a5, $a5, 3
+	vinsgr2vr.b	$vr0, $a3, 0
+	vinsgr2vr.b	$vr0, $a3, 1
+	vinsgr2vr.b	$vr0, $a3, 2
+	vinsgr2vr.b	$vr0, $a3, 3
+	vinsgr2vr.b	$vr0, $a3, 4
+	vinsgr2vr.b	$vr0, $a3, 5
+	vinsgr2vr.b	$vr0, $a3, 6
+	vinsgr2vr.b	$vr0, $a3, 7
+	addi.d	$a7, $zero, -2
+	addi.d	$t0, $zero, -3
+	addi.d	$t1, $zero, -4
+	addi.d	$t2, $zero, -5
+	addi.d	$t3, $zero, -6
+	addi.d	$t4, $zero, -7
+	addi.d	$t5, $zero, -8
+	move	$t6, $fp
+	move	$t7, $a5
+	b	.LBB0_15
 	.p2align	4, , 16
-.LBB0_12:                               #   in Loop: Header=BB0_13 Depth=1
-	addi.d	$fp, $fp, 1
+.LBB0_14:                               #   in Loop: Header=BB0_15 Depth=1
+	addi.d	$t7, $t7, -8
+	addi.d	$t6, $t6, 8
+	addi.d	$a6, $a6, 8
+	beqz	$t7, .LBB0_17
+.LBB0_15:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$t8, $t6, 0
+	vinsgr2vr.d	$vr1, $t8, 0
+	vsrli.d	$vr2, $vr1, 32
+	vext2xv.du.bu	$xr2, $xr2
+	vext2xv.du.bu	$xr1, $xr1
+	xvpickve2gr.d	$t8, $xr1, 0
+	xvpickve2gr.d	$s0, $xr1, 1
+	xvpickve2gr.d	$s1, $xr1, 2
+	xvpickve2gr.d	$s2, $xr1, 3
+	xvpickve2gr.d	$s3, $xr2, 0
+	xvpickve2gr.d	$s4, $xr2, 1
+	xvpickve2gr.d	$s5, $xr2, 2
+	xvpickve2gr.d	$s6, $xr2, 3
+	ldx.b	$t8, $a1, $t8
+	ldx.b	$s0, $a1, $s0
+	ldx.b	$s1, $a1, $s1
+	ldx.b	$s2, $a1, $s2
+	ldx.b	$s3, $a1, $s3
+	ldx.b	$s4, $a1, $s4
+	ldx.b	$s5, $a1, $s5
+	ldx.b	$s6, $a1, $s6
+	vinsgr2vr.b	$vr1, $t8, 0
+	vinsgr2vr.b	$vr1, $s0, 1
+	vinsgr2vr.b	$vr1, $s1, 2
+	vinsgr2vr.b	$vr1, $s2, 3
+	vinsgr2vr.b	$vr1, $s3, 4
+	vinsgr2vr.b	$vr1, $s4, 5
+	vinsgr2vr.b	$vr1, $s5, 6
+	vinsgr2vr.b	$vr1, $s6, 7
+	vseq.b	$vr1, $vr1, $vr0
+	vext2xv.h.b	$xr2, $xr1
+	vmskltz.h	$vr2, $vr2
+	vpickve2gr.hu	$t8, $vr2, 0
+	beqz	$t8, .LBB0_14
+# %bb.16:                               #   in Loop: Header=BB0_15 Depth=1
+	vext2xv.h.b	$xr1, $xr1
+	vpickve2gr.h	$t8, $vr1, 7
+	andi	$t8, $t8, 1
+	vpickve2gr.h	$s0, $vr1, 6
+	andi	$s0, $s0, 1
+	vpickve2gr.h	$s1, $vr1, 5
+	andi	$s1, $s1, 1
+	vpickve2gr.h	$s2, $vr1, 4
+	andi	$s2, $s2, 1
+	vpickve2gr.h	$s3, $vr1, 3
+	andi	$s3, $s3, 1
+	vpickve2gr.h	$s4, $vr1, 2
+	andi	$s4, $s4, 1
+	vpickve2gr.h	$s5, $vr1, 1
+	orn	$s5, $a7, $s5
+	masknez	$s5, $s5, $s4
+	maskeqz	$s4, $t0, $s4
+	or	$s4, $s4, $s5
+	masknez	$s4, $s4, $s3
+	maskeqz	$s3, $t1, $s3
+	or	$s3, $s3, $s4
+	masknez	$s3, $s3, $s2
+	maskeqz	$s2, $t2, $s2
+	or	$s2, $s2, $s3
+	masknez	$s2, $s2, $s1
+	maskeqz	$s1, $t3, $s1
+	or	$s1, $s1, $s2
+	masknez	$s1, $s1, $s0
+	maskeqz	$s0, $t4, $s0
+	or	$s0, $s0, $s1
+	masknez	$s0, $s0, $t8
+	maskeqz	$t8, $t5, $t8
+	or	$t8, $t8, $s0
+	xor	$t8, $t8, $a6
+	add.d	$t8, $t8, $a0
+	st.w	$t8, $a2, %pc_lo12(skip2)
+	b	.LBB0_14
+.LBB0_17:                               # %middle.block
+	bne	$a5, $a4, .LBB0_19
+.LBB0_18:                               # %._crit_edge
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
+	ret
+.LBB0_19:                               # %scalar.ph.preheader
+	add.d	$a6, $fp, $a5
+	nor	$a7, $a5, $zero
+	add.d	$a0, $a7, $a0
+	sub.d	$a4, $a4, $a5
+	b	.LBB0_21
+	.p2align	4, , 16
+.LBB0_20:                               #   in Loop: Header=BB0_21 Depth=1
+	addi.d	$a6, $a6, 1
 	addi.d	$a4, $a4, -1
 	addi.d	$a0, $a0, -1
-	beqz	$a4, .LBB0_15
-.LBB0_13:                               # =>This Inner Loop Header: Depth=1
-	ld.bu	$a5, $fp, 0
+	beqz	$a4, .LBB0_18
+.LBB0_21:                               # %scalar.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.bu	$a5, $a6, 0
 	ldx.bu	$a5, $a1, $a5
-	bne	$a5, $a2, .LBB0_12
-# %bb.14:                               #   in Loop: Header=BB0_13 Depth=1
-	st.w	$a0, $a3, %pc_lo12(skip2)
-	b	.LBB0_12
-.LBB0_15:                               # %._crit_edge
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
-	ret
+	bne	$a5, $a3, .LBB0_20
+# %bb.22:                               #   in Loop: Header=BB0_21 Depth=1
+	st.w	$a0, $a2, %pc_lo12(skip2)
+	b	.LBB0_20
 .Lfunc_end0:
 	.size	bmha_init, .Lfunc_end0-bmha_init
                                         # -- End function

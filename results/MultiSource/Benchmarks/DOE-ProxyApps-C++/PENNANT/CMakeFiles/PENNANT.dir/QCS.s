@@ -800,48 +800,40 @@ _ZN3QCS11setQCnForceEPKdS1_S1_P7double2ii: # @_ZN3QCS11setQCnForceEPKdS1_S1_P7do
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr5, $a4, 0
 	xvld	$xr6, $t1, 0
-	vpickve2gr.w	$t2, $vr5, 2
-	vinsgr2vr.d	$vr7, $t2, 0
-	vpickve2gr.w	$t2, $vr5, 3
-	vinsgr2vr.d	$vr7, $t2, 1
-	xvpermi.q	$xr7, $xr7, 2
-	vpickve2gr.w	$t2, $vr5, 0
-	vinsgr2vr.d	$vr8, $t2, 0
-	vpickve2gr.w	$t2, $vr5, 1
-	vinsgr2vr.d	$vr8, $t2, 1
-	xvpickve2gr.d	$t2, $xr8, 0
-	xvpickve2gr.d	$t3, $xr8, 1
-	xvpickve2gr.d	$t4, $xr7, 2
-	xvpickve2gr.d	$t5, $xr7, 3
+	vext2xv.d.w	$xr5, $xr5
+	xvpickve2gr.d	$t2, $xr5, 0
+	xvpickve2gr.d	$t3, $xr5, 1
+	xvpickve2gr.d	$t4, $xr5, 2
+	xvpickve2gr.d	$t5, $xr5, 3
 	slli.d	$t2, $t2, 3
 	slli.d	$t3, $t3, 3
 	slli.d	$t4, $t4, 3
 	slli.d	$t5, $t5, 3
 	fldx.d	$fa5, $s3, $t2
-	fldx.d	$fa7, $s3, $t3
-	fldx.d	$ft0, $s3, $t4
-	fldx.d	$ft1, $s3, $t5
+	fldx.d	$fa7, $s3, $t4
+	fldx.d	$ft0, $s3, $t5
+	fldx.d	$ft1, $s3, $t3
 	xvfmul.d	$xr6, $xr6, $xr2
-	vextrins.d	$vr5, $vr7, 16
-	vextrins.d	$vr8, $vr9, 16
-	xvpermi.q	$xr5, $xr8, 2
+	vextrins.d	$vr7, $vr8, 16
+	vextrins.d	$vr5, $vr9, 16
+	xvpermi.q	$xr5, $xr7, 2
 	xvfmul.d	$xr5, $xr3, $xr5
 	xvfmul.d	$xr5, $xr5, $xr5
 	xvfmadd.d	$xr5, $xr6, $xr6, $xr5
 	fldx.d	$fa7, $s2, $t2
-	fldx.d	$ft0, $s2, $t3
-	fldx.d	$ft1, $s2, $t4
-	fldx.d	$ft2, $s2, $t5
+	fldx.d	$ft0, $s2, $t4
+	fldx.d	$ft1, $s2, $t5
+	fldx.d	$ft2, $s2, $t3
 	xvfsqrt.d	$xr5, $xr5
 	xvfadd.d	$xr5, $xr6, $xr5
-	vextrins.d	$vr7, $vr8, 16
-	vextrins.d	$vr9, $vr10, 16
+	vextrins.d	$vr8, $vr9, 16
+	vextrins.d	$vr7, $vr10, 16
 	xvld	$xr6, $t0, 0
-	xvld	$xr8, $a7, 0
-	xvpermi.q	$xr7, $xr9, 2
+	xvld	$xr9, $a7, 0
+	xvpermi.q	$xr7, $xr8, 2
 	xvfmul.d	$xr5, $xr7, $xr5
 	xvfmul.d	$xr5, $xr6, $xr5
-	xvfcmp.cule.d	$xr6, $xr8, $xr4
+	xvfcmp.cule.d	$xr6, $xr9, $xr4
 	xvand.v	$xr5, $xr6, $xr5
 	xvst	$xr5, $a6, 0
 	addi.d	$a4, $a4, 16

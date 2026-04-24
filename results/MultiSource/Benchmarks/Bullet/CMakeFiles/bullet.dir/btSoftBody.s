@@ -4446,6 +4446,12 @@ _ZN10btSoftBody17pointersToIndicesEv:   # @_ZN10btSoftBody17pointersToIndicesEv
 	.type	_ZN10btSoftBody17indicesToPointersEPKi,@function
 _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPKi
 # %bb.0:
+	addi.d	$sp, $sp, -48
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$a4, $a0, 820
 	ld.d	$a2, $a0, 832
 	blez	$a4, .LBB19_5
@@ -4522,7 +4528,7 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	bnez	$t0, .LBB19_12
 # %bb.13:                               # %middle.block
 	beq	$a5, $a3, .LBB19_16
-.LBB19_14:                              # %.lr.ph101.split.preheader241
+.LBB19_14:                              # %.lr.ph101.split.preheader242
 	slli.d	$a6, $a5, 6
 	alsl.d	$a6, $a5, $a6, 3
 	add.d	$a4, $a6, $a4
@@ -4621,7 +4627,7 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	bnez	$t0, .LBB19_23
 # %bb.24:                               # %middle.block186
 	beq	$a5, $a3, .LBB19_27
-.LBB19_25:                              # %.lr.ph101.split.us.preheader239
+.LBB19_25:                              # %.lr.ph101.split.us.preheader240
 	slli.d	$a6, $a5, 6
 	alsl.d	$a6, $a5, $a6, 3
 	add.d	$a4, $a6, $a4
@@ -4717,7 +4723,7 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	bnez	$a7, .LBB19_38
 # %bb.39:                               # %middle.block197
 	beq	$a5, $a4, .LBB19_51
-.LBB19_40:                              # %.lr.ph109.split.preheader237
+.LBB19_40:                              # %.lr.ph109.split.preheader238
 	ori	$a6, $zero, 104
 	mul.d	$a6, $a5, $a6
 	add.d	$a3, $a3, $a6
@@ -4770,7 +4776,7 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	bnez	$a7, .LBB19_47
 # %bb.48:                               # %middle.block208
 	beq	$a5, $a4, .LBB19_51
-.LBB19_49:                              # %.lr.ph109.split.us.preheader236
+.LBB19_49:                              # %.lr.ph109.split.us.preheader237
 	ori	$a6, $zero, 104
 	mul.d	$a6, $a5, $a6
 	add.d	$a3, $a3, $a6
@@ -4794,10 +4800,11 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	beqz	$a1, .LBB19_63
 # %bb.53:                               # %.preheader.preheader
 	move	$a4, $zero
-	addi.d	$a5, $a0, 40
-	ori	$a6, $zero, 88
-	ori	$a7, $zero, 4
-	ori	$t0, $zero, 120
+	addi.d	$a5, $a0, 72
+	addi.d	$a6, $a0, 40
+	ori	$a7, $zero, 88
+	ori	$t0, $zero, 8
+	ori	$t1, $zero, 120
 	xvreplgr2vr.d	$xr0, $a2
 	xvrepli.d	$xr1, 120
 	b	.LBB19_55
@@ -4806,76 +4813,98 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
                                         #   in Loop: Header=BB19_55 Depth=1
 	addi.d	$a4, $a4, 1
 	addi.d	$a5, $a5, 88
+	addi.d	$a6, $a6, 88
 	beq	$a4, $a3, .LBB19_73
 .LBB19_55:                              # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB19_59 Depth 2
                                         #     Child Loop BB19_62 Depth 2
-	mul.d	$t1, $a4, $a6
-	add.d	$t1, $a0, $t1
-	ld.w	$t1, $t1, 32
-	blez	$t1, .LBB19_54
+	mul.d	$t2, $a4, $a7
+	add.d	$t2, $a0, $t2
+	ld.w	$t2, $t2, 32
+	blez	$t2, .LBB19_54
 # %bb.56:                               # %.lr.ph112
                                         #   in Loop: Header=BB19_55 Depth=1
-	bgeu	$t1, $a7, .LBB19_58
+	bgeu	$t2, $t0, .LBB19_58
 # %bb.57:                               #   in Loop: Header=BB19_55 Depth=1
-	move	$t2, $zero
+	move	$t3, $zero
 	b	.LBB19_61
 	.p2align	4, , 16
 .LBB19_58:                              # %vector.ph213
                                         #   in Loop: Header=BB19_55 Depth=1
-	bstrpick.d	$t2, $t1, 30, 2
-	slli.d	$t2, $t2, 2
-	move	$t3, $a5
-	move	$t4, $t2
+	bstrpick.d	$t3, $t2, 30, 3
+	slli.d	$t3, $t3, 3
+	move	$t4, $a5
+	move	$t5, $t3
 	.p2align	4, , 16
 .LBB19_59:                              # %vector.body216
                                         #   Parent Loop BB19_55 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr2, $t3, 0
-	xvpickve2gr.d	$t5, $xr2, 0
-	xvpickve2gr.d	$t6, $xr2, 1
-	xvpickve2gr.d	$t7, $xr2, 2
-	xvpickve2gr.d	$t8, $xr2, 3
-	slli.d	$t5, $t5, 2
+	xvld	$xr2, $t4, -32
+	xvld	$xr3, $t4, 0
+	xvpickve2gr.d	$t6, $xr2, 0
+	xvpickve2gr.d	$t7, $xr2, 1
+	xvpickve2gr.d	$t8, $xr2, 2
+	xvpickve2gr.d	$fp, $xr2, 3
+	xvpickve2gr.d	$s0, $xr3, 0
+	xvpickve2gr.d	$s1, $xr3, 1
+	xvpickve2gr.d	$s2, $xr3, 2
+	xvpickve2gr.d	$s3, $xr3, 3
 	slli.d	$t6, $t6, 2
 	slli.d	$t7, $t7, 2
 	slli.d	$t8, $t8, 2
+	slli.d	$fp, $fp, 2
+	slli.d	$s0, $s0, 2
+	slli.d	$s1, $s1, 2
+	slli.d	$s2, $s2, 2
+	slli.d	$s3, $s3, 2
+	ldx.w	$t6, $a1, $t6
 	ldx.w	$t7, $a1, $t7
 	ldx.w	$t8, $a1, $t8
-	ldx.w	$t5, $a1, $t5
-	ldx.w	$t6, $a1, $t6
-	vinsgr2vr.d	$vr2, $t7, 0
-	vinsgr2vr.d	$vr2, $t8, 1
-	vinsgr2vr.d	$vr3, $t5, 0
-	vinsgr2vr.d	$vr3, $t6, 1
-	xvpermi.q	$xr3, $xr2, 2
+	ldx.w	$fp, $a1, $fp
+	vinsgr2vr.w	$vr2, $t6, 0
+	vinsgr2vr.w	$vr2, $t7, 1
+	vinsgr2vr.w	$vr2, $t8, 2
+	vinsgr2vr.w	$vr2, $fp, 3
+	ldx.w	$t6, $a1, $s0
+	ldx.w	$t7, $a1, $s1
+	ldx.w	$t8, $a1, $s2
+	ldx.w	$fp, $a1, $s3
+	vinsgr2vr.w	$vr3, $t6, 0
+	vinsgr2vr.w	$vr3, $t7, 1
+	vinsgr2vr.w	$vr3, $t8, 2
+	vinsgr2vr.w	$vr3, $fp, 3
+	vext2xv.d.w	$xr2, $xr2
+	vext2xv.d.w	$xr3, $xr3
+	xvori.b	$xr4, $xr0, 0
+	xvmadd.d	$xr4, $xr2, $xr1
 	xvori.b	$xr2, $xr0, 0
 	xvmadd.d	$xr2, $xr3, $xr1
-	xvst	$xr2, $t3, 0
-	addi.d	$t4, $t4, -4
-	addi.d	$t3, $t3, 32
-	bnez	$t4, .LBB19_59
-# %bb.60:                               # %middle.block219
+	xvst	$xr4, $t4, -32
+	xvst	$xr2, $t4, 0
+	addi.d	$t5, $t5, -8
+	addi.d	$t4, $t4, 64
+	bnez	$t5, .LBB19_59
+# %bb.60:                               # %middle.block220
                                         #   in Loop: Header=BB19_55 Depth=1
-	beq	$t2, $t1, .LBB19_54
+	beq	$t3, $t2, .LBB19_54
 .LBB19_61:                              # %scalar.ph211.preheader
                                         #   in Loop: Header=BB19_55 Depth=1
-	slli.d	$t3, $t2, 3
-	sub.d	$t1, $t1, $t2
+	alsl.d	$t4, $t3, $a6, 3
+	sub.d	$t2, $t2, $t3
 	.p2align	4, , 16
 .LBB19_62:                              # %scalar.ph211
                                         #   Parent Loop BB19_55 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.d	$t2, $a5, $t3
-	slli.d	$t2, $t2, 2
-	ldx.w	$t2, $a1, $t2
-	mul.d	$t2, $t2, $t0
-	add.d	$t2, $a2, $t2
-	stx.d	$t2, $a5, $t3
-	addi.d	$t1, $t1, -1
-	addi.d	$t3, $t3, 8
-	bnez	$t1, .LBB19_62
+	ld.d	$t3, $t4, 0
+	slli.d	$t3, $t3, 2
+	ldx.w	$t3, $a1, $t3
+	mul.d	$t3, $t3, $t1
+	add.d	$t3, $a2, $t3
+	st.d	$t3, $t4, 0
+	addi.d	$t2, $t2, -1
+	addi.d	$t4, $t4, 8
+	bnez	$t2, .LBB19_62
 	b	.LBB19_54
 .LBB19_63:                              # %.preheader.us.preheader
 	move	$a1, $zero
@@ -4909,14 +4938,14 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	move	$t2, $zero
 	b	.LBB19_71
 	.p2align	4, , 16
-.LBB19_68:                              # %vector.ph224
+.LBB19_68:                              # %vector.ph225
                                         #   in Loop: Header=BB19_65 Depth=1
 	bstrpick.d	$t2, $t1, 30, 3
 	slli.d	$t2, $t2, 3
 	move	$t3, $a4
 	move	$t4, $t2
 	.p2align	4, , 16
-.LBB19_69:                              # %vector.body227
+.LBB19_69:                              # %vector.body228
                                         #   Parent Loop BB19_65 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr2, $t3, -32
@@ -4930,15 +4959,15 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	addi.d	$t4, $t4, -8
 	addi.d	$t3, $t3, 64
 	bnez	$t4, .LBB19_69
-# %bb.70:                               # %middle.block232
+# %bb.70:                               # %middle.block233
                                         #   in Loop: Header=BB19_65 Depth=1
 	beq	$t2, $t1, .LBB19_64
-.LBB19_71:                              # %scalar.ph222.preheader
+.LBB19_71:                              # %scalar.ph223.preheader
                                         #   in Loop: Header=BB19_65 Depth=1
 	alsl.d	$t3, $t2, $a5, 3
 	sub.d	$t1, $t1, $t2
 	.p2align	4, , 16
-.LBB19_72:                              # %scalar.ph222
+.LBB19_72:                              # %scalar.ph223
                                         #   Parent Loop BB19_65 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t2, $t3, 0
@@ -4950,6 +4979,12 @@ _ZN10btSoftBody17indicesToPointersEPKi: # @_ZN10btSoftBody17indicesToPointersEPK
 	bnez	$t1, .LBB19_72
 	b	.LBB19_64
 .LBB19_73:                              # %._crit_edge115
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end19:
 	.size	_ZN10btSoftBody17indicesToPointersEPKi, .Lfunc_end19-_ZN10btSoftBody17indicesToPointersEPKi

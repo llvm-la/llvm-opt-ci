@@ -1036,7 +1036,11 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 # %bb.0:
 	ld.w	$a2, $a0, 4
 	blez	$a2, .LBB8_3
-# %bb.1:                                # %.lr.ph
+# %bb.1:                                # %iter.check
+	addi.d	$sp, $sp, -32
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 16
 	fld.s	$fa0, $a1, 0
 	fld.s	$fa1, $a1, 4
@@ -1044,113 +1048,232 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	pcalau12i	$a3, %pc_hi20(planetestepsilon)
 	fld.s	$fa3, $a3, %pc_lo12(planetestepsilon)
 	fld.s	$fa4, $a1, 16
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 4
 	fneg.s	$fa5, $fa3
 	bgeu	$a2, $a1, .LBB8_4
 # %bb.2:
 	move	$a1, $zero
-	move	$a3, $zero
-	b	.LBB8_7
+	move	$a4, $zero
+	b	.LBB8_13
 .LBB8_3:
-	move	$a3, $zero
-	addi.w	$a0, $a3, 0
+	addi.w	$a0, $zero, 0
 	ret
-.LBB8_4:                                # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 3
-	slli.d	$a1, $a1, 3
-	vreplvei.w	$vr6, $vr0, 0
-	vreplvei.w	$vr7, $vr1, 0
-	vreplvei.w	$vr8, $vr2, 0
-	vreplvei.w	$vr9, $vr4, 0
-	vreplvei.w	$vr10, $vr3, 0
-	vreplvei.w	$vr11, $vr5, 0
-	addi.d	$a3, $a0, 64
-	vrepli.b	$vr12, 0
-	vrepli.w	$vr13, 1
-	vrepli.w	$vr14, 2
-	move	$a4, $a1
-	vori.b	$vr15, $vr12, 0
+.LBB8_4:                                # %vector.main.loop.iter.check
+	ori	$a1, $zero, 16
+	bgeu	$a2, $a1, .LBB8_6
+# %bb.5:
+	move	$a1, $zero
+	move	$a4, $zero
+	b	.LBB8_10
+.LBB8_6:                                # %vector.ph
+	andi	$a3, $a2, 12
+	bstrpick.d	$a1, $a2, 30, 4
+	slli.d	$a1, $a1, 4
+	xvreplve0.w	$xr6, $xr0
+	xvreplve0.w	$xr7, $xr1
+	xvreplve0.w	$xr8, $xr2
+	xvreplve0.w	$xr9, $xr4
+	xvreplve0.w	$xr10, $xr3
+	xvreplve0.w	$xr11, $xr5
+	addi.d	$a4, $a0, 128
+	xvrepli.b	$xr12, 0
+	xvrepli.w	$xr13, 1
+	xvrepli.w	$xr14, 2
+	move	$a5, $a1
+	xvori.b	$xr15, $xr12, 0
 	.p2align	4, , 16
-.LBB8_5:                                # %vector.body
+.LBB8_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$ft8, $a3, -64
-	fld.s	$ft9, $a3, -48
-	fld.s	$ft10, $a3, -32
-	fld.s	$ft11, $a3, -16
+	fld.s	$ft8, $a4, -128
+	fld.s	$ft9, $a4, -112
+	fld.s	$ft10, $a4, -96
+	fld.s	$ft11, $a4, -64
+	fld.s	$ft12, $a4, -48
+	fld.s	$ft13, $a4, -32
+	fld.s	$ft14, $a4, -16
+	fld.s	$ft15, $a4, -80
+	vextrins.w	$vr19, $vr20, 16
+	vextrins.w	$vr19, $vr21, 32
+	vextrins.w	$vr19, $vr22, 48
 	vextrins.w	$vr16, $vr17, 16
 	vextrins.w	$vr16, $vr18, 32
-	fld.s	$ft9, $a3, 0
-	fld.s	$ft10, $a3, 16
-	fld.s	$ft12, $a3, 32
-	vextrins.w	$vr16, $vr19, 48
-	fld.s	$ft11, $a3, 48
+	vextrins.w	$vr16, $vr23, 48
+	xvpermi.q	$xr16, $xr19, 2
+	fld.s	$ft9, $a4, 0
+	fld.s	$ft10, $a4, 16
+	fld.s	$ft11, $a4, 32
+	fld.s	$ft12, $a4, 64
+	fld.s	$ft13, $a4, 80
+	fld.s	$ft14, $a4, 96
+	fld.s	$ft15, $a4, 112
+	fld.s	$fs0, $a4, 48
+	vextrins.w	$vr20, $vr21, 16
+	vextrins.w	$vr20, $vr22, 32
+	vextrins.w	$vr20, $vr23, 48
 	vextrins.w	$vr17, $vr18, 16
-	vextrins.w	$vr17, $vr20, 32
-	fld.s	$ft10, $a3, -60
-	fld.s	$ft12, $a3, -44
-	fld.s	$ft13, $a3, -28
-	vextrins.w	$vr17, $vr19, 48
-	fld.s	$ft11, $a3, -12
-	vextrins.w	$vr18, $vr20, 16
-	vextrins.w	$vr18, $vr21, 32
-	fld.s	$ft12, $a3, 4
-	fld.s	$ft13, $a3, 20
-	fld.s	$ft14, $a3, 36
-	fld.s	$ft15, $a3, 52
-	vextrins.w	$vr18, $vr19, 48
-	vextrins.w	$vr20, $vr21, 16
-	vextrins.w	$vr20, $vr22, 32
-	vextrins.w	$vr20, $vr23, 48
-	vfmul.s	$vr18, $vr18, $vr7
-	vfmul.s	$vr19, $vr20, $vr7
-	vfmadd.s	$vr16, $vr16, $vr6, $vr18
-	fld.s	$ft10, $a3, -56
-	fld.s	$ft12, $a3, -40
-	fld.s	$ft13, $a3, -24
-	vfmadd.s	$vr17, $vr17, $vr6, $vr19
-	fld.s	$ft11, $a3, -8
-	vextrins.w	$vr18, $vr20, 16
-	vextrins.w	$vr18, $vr21, 32
-	fld.s	$ft12, $a3, 8
-	fld.s	$ft13, $a3, 24
-	fld.s	$ft14, $a3, 40
-	fld.s	$ft15, $a3, 56
-	vextrins.w	$vr18, $vr19, 48
-	vextrins.w	$vr20, $vr21, 16
-	vextrins.w	$vr20, $vr22, 32
-	vextrins.w	$vr20, $vr23, 48
-	vfmadd.s	$vr16, $vr18, $vr8, $vr16
-	vfmadd.s	$vr17, $vr20, $vr8, $vr17
-	vfadd.s	$vr16, $vr16, $vr9
-	vfadd.s	$vr17, $vr17, $vr9
-	vfcmp.clt.s	$vr18, $vr10, $vr16
-	vfcmp.clt.s	$vr19, $vr10, $vr17
-	vfcmp.clt.s	$vr16, $vr16, $vr11
-	vand.v	$vr16, $vr16, $vr13
-	vfcmp.clt.s	$vr17, $vr17, $vr11
-	vand.v	$vr17, $vr17, $vr13
-	vbitsel.v	$vr16, $vr16, $vr14, $vr18
-	vbitsel.v	$vr17, $vr17, $vr14, $vr19
-	vor.v	$vr12, $vr16, $vr12
-	vor.v	$vr15, $vr17, $vr15
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 128
-	bnez	$a4, .LBB8_5
-# %bb.6:                                # %middle.block
-	vor.v	$vr6, $vr15, $vr12
+	vextrins.w	$vr17, $vr19, 32
+	vextrins.w	$vr17, $vr24, 48
+	xvpermi.q	$xr17, $xr20, 2
+	fld.s	$ft10, $a4, -124
+	fld.s	$ft11, $a4, -108
+	fld.s	$ft12, $a4, -92
+	fld.s	$ft13, $a4, -60
+	fld.s	$ft14, $a4, -44
+	fld.s	$ft15, $a4, -28
+	fld.s	$fs0, $a4, -12
+	fld.s	$fs1, $a4, -76
+	vextrins.w	$vr21, $vr22, 16
+	vextrins.w	$vr21, $vr23, 32
+	vextrins.w	$vr21, $vr24, 48
+	vextrins.w	$vr18, $vr19, 16
+	vextrins.w	$vr18, $vr20, 32
+	vextrins.w	$vr18, $vr25, 48
+	xvpermi.q	$xr18, $xr21, 2
+	fld.s	$ft11, $a4, 4
+	fld.s	$ft12, $a4, 20
+	fld.s	$ft13, $a4, 36
+	fld.s	$ft14, $a4, 68
+	fld.s	$ft15, $a4, 84
+	fld.s	$fs0, $a4, 100
+	fld.s	$fs1, $a4, 116
+	fld.s	$fs2, $a4, 52
+	vextrins.w	$vr22, $vr23, 16
+	vextrins.w	$vr22, $vr24, 32
+	vextrins.w	$vr22, $vr25, 48
+	vextrins.w	$vr19, $vr20, 16
+	vextrins.w	$vr19, $vr21, 32
+	vextrins.w	$vr19, $vr26, 48
+	xvpermi.q	$xr19, $xr22, 2
+	xvfmul.s	$xr18, $xr18, $xr7
+	xvfmul.s	$xr19, $xr19, $xr7
+	xvfmadd.s	$xr16, $xr16, $xr6, $xr18
+	xvfmadd.s	$xr17, $xr17, $xr6, $xr19
+	fld.s	$ft10, $a4, -120
+	fld.s	$ft11, $a4, -104
+	fld.s	$ft12, $a4, -88
+	fld.s	$ft13, $a4, -56
+	fld.s	$ft14, $a4, -40
+	fld.s	$ft15, $a4, -24
+	fld.s	$fs0, $a4, -8
+	fld.s	$fs1, $a4, -72
+	vextrins.w	$vr21, $vr22, 16
+	vextrins.w	$vr21, $vr23, 32
+	vextrins.w	$vr21, $vr24, 48
+	vextrins.w	$vr18, $vr19, 16
+	vextrins.w	$vr18, $vr20, 32
+	vextrins.w	$vr18, $vr25, 48
+	xvpermi.q	$xr18, $xr21, 2
+	fld.s	$ft11, $a4, 8
+	fld.s	$ft12, $a4, 24
+	fld.s	$ft13, $a4, 40
+	fld.s	$ft14, $a4, 72
+	fld.s	$ft15, $a4, 88
+	fld.s	$fs0, $a4, 104
+	fld.s	$fs1, $a4, 120
+	fld.s	$fs2, $a4, 56
+	vextrins.w	$vr22, $vr23, 16
+	vextrins.w	$vr22, $vr24, 32
+	vextrins.w	$vr22, $vr25, 48
+	vextrins.w	$vr19, $vr20, 16
+	vextrins.w	$vr19, $vr21, 32
+	vextrins.w	$vr19, $vr26, 48
+	xvpermi.q	$xr19, $xr22, 2
+	xvfmadd.s	$xr16, $xr18, $xr8, $xr16
+	xvfmadd.s	$xr17, $xr19, $xr8, $xr17
+	xvfadd.s	$xr16, $xr16, $xr9
+	xvfadd.s	$xr17, $xr17, $xr9
+	xvfcmp.clt.s	$xr18, $xr10, $xr16
+	xvfcmp.clt.s	$xr19, $xr10, $xr17
+	xvfcmp.clt.s	$xr16, $xr16, $xr11
+	xvand.v	$xr16, $xr16, $xr13
+	xvfcmp.clt.s	$xr17, $xr17, $xr11
+	xvand.v	$xr17, $xr17, $xr13
+	xvbitsel.v	$xr16, $xr16, $xr14, $xr18
+	xvbitsel.v	$xr17, $xr17, $xr14, $xr19
+	xvor.v	$xr12, $xr16, $xr12
+	xvor.v	$xr15, $xr17, $xr15
+	addi.d	$a5, $a5, -16
+	addi.d	$a4, $a4, 256
+	bnez	$a5, .LBB8_7
+# %bb.8:                                # %middle.block
+	xvor.v	$xr6, $xr15, $xr12
+	xvpermi.q	$xr7, $xr6, 1
+	vor.v	$vr6, $vr6, $vr7
 	vbsrl.v	$vr7, $vr6, 8
 	vor.v	$vr6, $vr7, $vr6
 	vbsrl.v	$vr7, $vr6, 4
 	vor.v	$vr6, $vr7, $vr6
-	vpickve2gr.w	$a3, $vr6, 0
-	beq	$a1, $a2, .LBB8_9
-.LBB8_7:                                # %scalar.ph.preheader
+	vpickve2gr.w	$a4, $vr6, 0
+	beq	$a1, $a2, .LBB8_15
+# %bb.9:                                # %vec.epilog.iter.check
+	beqz	$a3, .LBB8_13
+.LBB8_10:                               # %vec.epilog.ph
+	move	$a5, $a1
+	bstrpick.d	$a1, $a2, 30, 2
+	slli.d	$a1, $a1, 2
+	vrepli.b	$vr6, 0
+	vinsgr2vr.w	$vr6, $a4, 0
+	vreplvei.w	$vr7, $vr0, 0
+	vreplvei.w	$vr8, $vr1, 0
+	vreplvei.w	$vr9, $vr2, 0
+	vreplvei.w	$vr10, $vr4, 0
+	vreplvei.w	$vr11, $vr3, 0
+	vreplvei.w	$vr12, $vr5, 0
+	sub.d	$a3, $a5, $a1
+	alsl.d	$a4, $a5, $a0, 4
+	addi.d	$a4, $a4, 32
+	vrepli.w	$vr13, 1
+	vrepli.w	$vr14, 2
+	.p2align	4, , 16
+.LBB8_11:                               # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	fld.s	$ft7, $a4, -32
+	fld.s	$ft8, $a4, -16
+	fld.s	$ft9, $a4, 0
+	fld.s	$ft10, $a4, 16
+	vextrins.w	$vr15, $vr16, 16
+	vextrins.w	$vr15, $vr17, 32
+	fld.s	$ft8, $a4, -28
+	fld.s	$ft9, $a4, -12
+	fld.s	$ft11, $a4, 4
+	fld.s	$ft12, $a4, 20
+	vextrins.w	$vr15, $vr18, 48
+	vextrins.w	$vr16, $vr17, 16
+	vextrins.w	$vr16, $vr19, 32
+	vextrins.w	$vr16, $vr20, 48
+	vfmul.s	$vr16, $vr16, $vr8
+	fld.s	$ft9, $a4, -24
+	fld.s	$ft10, $a4, -8
+	fld.s	$ft11, $a4, 8
+	fld.s	$ft12, $a4, 24
+	vfmadd.s	$vr15, $vr15, $vr7, $vr16
+	vextrins.w	$vr17, $vr18, 16
+	vextrins.w	$vr17, $vr19, 32
+	vextrins.w	$vr17, $vr20, 48
+	vfmadd.s	$vr15, $vr17, $vr9, $vr15
+	vfadd.s	$vr15, $vr15, $vr10
+	vfcmp.clt.s	$vr16, $vr11, $vr15
+	vfcmp.clt.s	$vr15, $vr15, $vr12
+	vand.v	$vr15, $vr15, $vr13
+	vbitsel.v	$vr15, $vr15, $vr14, $vr16
+	vor.v	$vr6, $vr15, $vr6
+	addi.d	$a3, $a3, 4
+	addi.d	$a4, $a4, 64
+	bnez	$a3, .LBB8_11
+# %bb.12:                               # %vec.epilog.middle.block
+	vbsrl.v	$vr7, $vr6, 8
+	vor.v	$vr6, $vr7, $vr6
+	vbsrl.v	$vr7, $vr6, 4
+	vor.v	$vr6, $vr7, $vr6
+	vpickve2gr.w	$a4, $vr6, 0
+	beq	$a1, $a2, .LBB8_15
+.LBB8_13:                               # %vec.epilog.scalar.ph.preheader
 	alsl.d	$a0, $a1, $a0, 4
 	addi.d	$a0, $a0, 8
 	sub.d	$a1, $a2, $a1
 	ori	$a2, $zero, 2
 	.p2align	4, , 16
-.LBB8_8:                                # %scalar.ph
+.LBB8_14:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa6, $a0, -4
 	fld.s	$fa7, $a0, -8
@@ -1161,17 +1284,21 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	fadd.s	$fa6, $fa6, $fa4
 	fcmp.clt.s	$fcc0, $fa3, $fa6
 	fcmp.clt.s	$fcc1, $fa6, $fa5
-	movcf2gr	$a4, $fcc1
+	movcf2gr	$a3, $fcc1
 	movcf2gr	$a5, $fcc0
-	masknez	$a4, $a4, $a5
+	masknez	$a3, $a3, $a5
 	maskeqz	$a5, $a2, $a5
-	or	$a4, $a5, $a4
-	or	$a3, $a4, $a3
+	or	$a3, $a5, $a3
+	or	$a4, $a3, $a4
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 16
-	bnez	$a1, .LBB8_8
-.LBB8_9:                                # %._crit_edge
-	addi.w	$a0, $a3, 0
+	bnez	$a1, .LBB8_14
+.LBB8_15:
+	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
+	addi.w	$a0, $a4, 0
 	ret
 .Lfunc_end8:
 	.size	_Z9SplitTestR7ConvexHRK7btPlane, .Lfunc_end8-_Z9SplitTestR7ConvexHRK7btPlane

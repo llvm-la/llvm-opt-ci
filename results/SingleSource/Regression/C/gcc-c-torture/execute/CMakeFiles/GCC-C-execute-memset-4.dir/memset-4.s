@@ -25,19 +25,14 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8
 	vinsgr2vr.d	$vr0, $a0, 0
-	vseqi.b	$vr0, $vr0, 0
 	ld.d	$a0, $sp, 16
-	vilvl.b	$vr0, $vr0, $vr0
-	vslli.h	$vr0, $vr0, 8
-	vsrai.h	$vr0, $vr0, 8
+	vseqi.b	$vr0, $vr0, 0
+	vext2xv.h.b	$xr0, $xr0
+	ld.b	$a1, $sp, 20
 	vinsgr2vr.d	$vr1, $a0, 0
 	vseqi.b	$vr1, $vr1, 0
-	vilvl.b	$vr1, $vr1, $vr1
-	ld.b	$a0, $sp, 20
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 24
-	vsrai.w	$vr1, $vr1, 24
-	andi	$a0, $a0, 255
+	vext2xv.w.b	$xr1, $xr1
+	andi	$a0, $a1, 255
 	sltui	$a0, $a0, 1
 	vpickve2gr.h	$a1, $vr0, 0
 	vinsgr2vr.w	$vr2, $a1, 0

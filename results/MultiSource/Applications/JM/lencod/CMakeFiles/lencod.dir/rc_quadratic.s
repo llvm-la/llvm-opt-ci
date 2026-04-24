@@ -5109,80 +5109,115 @@ updateRCModel:                          # @updateRCModel
 RCModelEstimator:                       # @RCModelEstimator
 # %bb.0:
 	blez	$a1, .LBB16_3
-# %bb.1:                                # %.lr.ph.preheader
-	ori	$a3, $zero, 8
+# %bb.1:                                # %iter.check
+	ori	$a3, $zero, 4
 	bgeu	$a1, $a3, .LBB16_4
 # %bb.2:
 	move	$a4, $zero
 	move	$a3, $a1
-	b	.LBB16_7
+	b	.LBB16_13
 .LBB16_3:                               # %.preheader107.thread
 	vrepli.b	$vr0, 0
 	movgr2fr.d	$fa1, $zero
 	vst	$vr0, $a0, 1296
 	fmov.d	$fa0, $fa1
-	b	.LBB16_26
-.LBB16_4:                               # %vector.ph
-	bstrpick.d	$a3, $a1, 30, 3
-	vrepli.b	$vr0, 0
-	slli.d	$a4, $a3, 3
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.w	$vr1, $a1, 0
-	addi.d	$a3, $a2, 16
-	move	$a5, $a4
+	b	.LBB16_32
+.LBB16_4:                               # %vector.main.loop.iter.check
+	ori	$a3, $zero, 16
+	bgeu	$a1, $a3, .LBB16_6
+# %bb.5:
+	move	$a4, $zero
+	move	$a3, $a1
+	b	.LBB16_10
+.LBB16_6:                               # %vector.ph
+	andi	$a5, $a1, 12
+	bstrpick.d	$a3, $a1, 30, 4
+	xvrepli.b	$xr0, 0
+	slli.d	$a4, $a3, 4
+	xvori.b	$xr1, $xr0, 0
+	xvinsgr2vr.w	$xr1, $a1, 0
+	addi.d	$a3, $a2, 32
+	move	$a6, $a4
 	.p2align	4, , 16
-.LBB16_5:                               # %vector.body
+.LBB16_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a3, -16
-	vld	$vr3, $a3, 0
-	vseqi.w	$vr2, $vr2, 0
-	vxori.b	$vr2, $vr2, 255
-	vseqi.w	$vr3, $vr3, 0
-	vxori.b	$vr3, $vr3, 255
-	vadd.w	$vr1, $vr1, $vr2
-	vadd.w	$vr0, $vr0, $vr3
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 32
-	bnez	$a5, .LBB16_5
-# %bb.6:                                # %middle.block
+	xvld	$xr2, $a3, -32
+	xvld	$xr3, $a3, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvxori.b	$xr2, $xr2, 255
+	xvseqi.w	$xr3, $xr3, 0
+	xvxori.b	$xr3, $xr3, 255
+	xvadd.w	$xr1, $xr1, $xr2
+	xvadd.w	$xr0, $xr0, $xr3
+	addi.d	$a6, $a6, -16
+	addi.d	$a3, $a3, 64
+	bnez	$a6, .LBB16_7
+# %bb.8:                                # %middle.block
+	xvadd.w	$xr0, $xr0, $xr1
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a3, $xr0, 0
+	beq	$a4, $a1, .LBB16_15
+# %bb.9:                                # %vec.epilog.iter.check
+	beqz	$a5, .LBB16_13
+.LBB16_10:                              # %vec.epilog.ph
+	move	$a5, $a4
+	bstrpick.d	$a4, $a1, 30, 2
+	slli.d	$a4, $a4, 2
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a3, 0
+	sub.d	$a3, $a5, $a4
+	alsl.d	$a5, $a5, $a2, 2
+	.p2align	4, , 16
+.LBB16_11:                              # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $a5, 0
+	vseqi.w	$vr1, $vr1, 0
+	vxori.b	$vr1, $vr1, 255
 	vadd.w	$vr0, $vr0, $vr1
+	addi.d	$a3, $a3, 4
+	addi.d	$a5, $a5, 16
+	bnez	$a3, .LBB16_11
+# %bb.12:                               # %vec.epilog.middle.block
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a4, $a1, .LBB16_9
-.LBB16_7:                               # %.lr.ph.preheader161
+	beq	$a4, $a1, .LBB16_15
+.LBB16_13:                              # %.lr.ph.preheader
 	alsl.d	$a5, $a4, $a2, 2
 	sub.d	$a4, $a1, $a4
 	.p2align	4, , 16
-.LBB16_8:                               # %.lr.ph
+.LBB16_14:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a5, 0
 	sltu	$a6, $zero, $a6
 	sub.w	$a3, $a3, $a6
 	addi.d	$a4, $a4, -1
 	addi.d	$a5, $a5, 4
-	bnez	$a4, .LBB16_8
-.LBB16_9:                               # %.lr.ph113
+	bnez	$a4, .LBB16_14
+.LBB16_15:                              # %.lr.ph113
 	addi.d	$a4, $a0, 624
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 1296
 	movgr2fr.d	$fa1, $zero
 	move	$a5, $a1
 	move	$a6, $a2
-	b	.LBB16_11
+	b	.LBB16_17
 	.p2align	4, , 16
-.LBB16_10:                              #   in Loop: Header=BB16_11 Depth=1
+.LBB16_16:                              #   in Loop: Header=BB16_17 Depth=1
 	addi.d	$a6, $a6, 4
 	addi.d	$a5, $a5, -1
 	addi.d	$a4, $a4, 8
-	beqz	$a5, .LBB16_13
-.LBB16_11:                              # =>This Inner Loop Header: Depth=1
+	beqz	$a5, .LBB16_19
+.LBB16_17:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a6, 0
-	bnez	$a7, .LBB16_10
-# %bb.12:                               #   in Loop: Header=BB16_11 Depth=1
+	bnez	$a7, .LBB16_16
+# %bb.18:                               #   in Loop: Header=BB16_17 Depth=1
 	fld.d	$fa1, $a4, 0
-	b	.LBB16_10
-.LBB16_13:                              # %.lr.ph117
+	b	.LBB16_16
+.LBB16_19:                              # %.lr.ph117
 	move	$a4, $zero
 	addi.d	$a5, $a0, 624
 	movgr2fr.w	$fa0, $a3
@@ -5191,9 +5226,9 @@ RCModelEstimator:                       # @RCModelEstimator
 	ori	$a6, $zero, 1
 	move	$a7, $a1
 	move	$t0, $a2
-	b	.LBB16_15
+	b	.LBB16_21
 	.p2align	4, , 16
-.LBB16_14:                              #   in Loop: Header=BB16_15 Depth=1
+.LBB16_20:                              #   in Loop: Header=BB16_21 Depth=1
 	fcmp.cune.d	$fcc0, $fa3, $fa1
 	sltui	$t1, $t1, 1
 	masknez	$t2, $a4, $t1
@@ -5206,26 +5241,26 @@ RCModelEstimator:                       # @RCModelEstimator
 	addi.d	$t0, $t0, 4
 	addi.d	$a7, $a7, -1
 	addi.d	$a5, $a5, 8
-	beqz	$a7, .LBB16_17
-.LBB16_15:                              # %._crit_edge147
+	beqz	$a7, .LBB16_23
+.LBB16_21:                              # %._crit_edge147
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t1, $t0, 0
 	fld.d	$fa3, $a5, 0
-	bnez	$t1, .LBB16_14
-# %bb.16:                               #   in Loop: Header=BB16_15 Depth=1
+	bnez	$t1, .LBB16_20
+# %bb.22:                               #   in Loop: Header=BB16_21 Depth=1
 	fld.d	$fa4, $a5, 168
 	fmul.d	$fa4, $fa3, $fa4
 	fdiv.d	$fa4, $fa4, $fa2
 	fadd.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $a0, 1296
-	b	.LBB16_14
-.LBB16_17:                              # %._crit_edge118
+	b	.LBB16_20
+.LBB16_23:                              # %._crit_edge118
 	addi.w	$a3, $a3, 0
 	movgr2fr.d	$fa1, $zero
-	blez	$a3, .LBB16_26
-# %bb.18:                               # %._crit_edge118
-	beqz	$a4, .LBB16_26
-# %bb.19:                               # %.lr.ph127
+	blez	$a3, .LBB16_32
+# %bb.24:                               # %._crit_edge118
+	beqz	$a4, .LBB16_32
+# %bb.25:                               # %.lr.ph127
 	addi.d	$a3, $a0, 624
 	bstrpick.d	$a1, $a1, 31, 0
 	movgr2fr.d	$fa1, $zero
@@ -5234,17 +5269,17 @@ RCModelEstimator:                       # @RCModelEstimator
 	fmov.d	$fa0, $fa1
 	fmov.d	$fa4, $fa1
 	fmov.d	$fa3, $fa1
-	b	.LBB16_21
+	b	.LBB16_27
 	.p2align	4, , 16
-.LBB16_20:                              #   in Loop: Header=BB16_21 Depth=1
+.LBB16_26:                              #   in Loop: Header=BB16_27 Depth=1
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 8
-	beqz	$a1, .LBB16_23
-.LBB16_21:                              # =>This Inner Loop Header: Depth=1
+	beqz	$a1, .LBB16_29
+.LBB16_27:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
-	bnez	$a4, .LBB16_20
-# %bb.22:                               #   in Loop: Header=BB16_21 Depth=1
+	bnez	$a4, .LBB16_26
+# %bb.28:                               #   in Loop: Header=BB16_27 Depth=1
 	fld.d	$fa6, $a3, 0
 	fadd.d	$fa3, $fa3, $fa5
 	frecip.d	$fa7, $fa6
@@ -5255,8 +5290,8 @@ RCModelEstimator:                       # @RCModelEstimator
 	fadd.d	$fa0, $fa0, $ft0
 	fmadd.d	$fa2, $fa6, $fa7, $fa2
 	fadd.d	$fa1, $fa1, $fa7
-	b	.LBB16_20
-.LBB16_23:                              # %._crit_edge128
+	b	.LBB16_26
+.LBB16_29:                              # %._crit_edge128
 	fneg.d	$fa5, $fa4
 	pcalau12i	$a1, %pc_hi20(.LCPI16_0)
 	fld.d	$fa7, $a1, %pc_lo12(.LCPI16_0)
@@ -5264,8 +5299,8 @@ RCModelEstimator:                       # @RCModelEstimator
 	fmadd.d	$fa6, $fa3, $fa0, $fa6
 	fabs.d	$ft0, $fa6
 	fcmp.cule.d	$fcc0, $ft0, $fa7
-	bcnez	$fcc0, .LBB16_25
-# %bb.24:
+	bcnez	$fcc0, .LBB16_31
+# %bb.30:
 	fneg.d	$fa4, $fa4
 	fmul.d	$fa4, $fa1, $fa4
 	fmadd.d	$fa0, $fa2, $fa0, $fa4
@@ -5275,35 +5310,35 @@ RCModelEstimator:                       # @RCModelEstimator
 	fmadd.d	$fa1, $fa1, $fa3, $fa2
 	fdiv.d	$fa1, $fa1, $fa6
 	fst.d	$fa1, $a0, 1304
-	b	.LBB16_26
-.LBB16_25:
+	b	.LBB16_32
+.LBB16_31:
 	fdiv.d	$fa0, $fa2, $fa3
 	fst.d	$fa0, $a0, 1296
 	st.d	$zero, $a0, 1304
 	movgr2fr.d	$fa1, $zero
-.LBB16_26:                              # %._crit_edge118.thread
+.LBB16_32:                              # %._crit_edge118.thread
 	pcalau12i	$a1, %got_pc_hi20(img)
 	ld.d	$a1, $a1, %got_pc_lo12(img)
 	ld.d	$a1, $a1, 0
 	ld.w	$a2, $a1, 20
-	beqz	$a2, .LBB16_28
-# %bb.27:
+	beqz	$a2, .LBB16_34
+# %bb.33:
 	pcalau12i	$a2, %got_pc_hi20(input)
 	ld.d	$a2, $a2, %got_pc_lo12(input)
 	ld.d	$a2, $a2, 0
 	ldptr.w	$a2, $a2, 5136
 	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB16_30
-.LBB16_28:
+	bne	$a2, $a3, .LBB16_36
+.LBB16_34:
 	ld.w	$a1, $a1, 0
 	pcalau12i	$a2, %got_pc_hi20(start_frame_no_in_this_IGOP)
 	ld.d	$a2, $a2, %got_pc_lo12(start_frame_no_in_this_IGOP)
 	ld.w	$a2, $a2, 0
-	beq	$a1, $a2, .LBB16_30
-# %bb.29:
+	beq	$a1, $a2, .LBB16_36
+# %bb.35:
 	fst.d	$fa0, $a0, 1312
 	fst.d	$fa1, $a0, 1320
-.LBB16_30:
+.LBB16_36:
 	ret
 .Lfunc_end16:
 	.size	RCModelEstimator, .Lfunc_end16-RCModelEstimator
@@ -5651,80 +5686,115 @@ updateMADModel:                         # @updateMADModel
 MADModelEstimator:                      # @MADModelEstimator
 # %bb.0:
 	blez	$a1, .LBB18_3
-# %bb.1:                                # %.lr.ph.preheader
-	ori	$a3, $zero, 8
+# %bb.1:                                # %iter.check
+	ori	$a3, $zero, 4
 	bgeu	$a1, $a3, .LBB18_4
 # %bb.2:
 	move	$a4, $zero
 	move	$a3, $a1
-	b	.LBB18_7
+	b	.LBB18_13
 .LBB18_3:                               # %.preheader107.thread
 	vrepli.b	$vr0, 0
 	movgr2fr.d	$fa3, $zero
 	vst	$vr0, $a0, 88
 	fmov.d	$fa0, $fa3
-	b	.LBB18_26
-.LBB18_4:                               # %vector.ph
-	bstrpick.d	$a3, $a1, 30, 3
-	vrepli.b	$vr0, 0
-	slli.d	$a4, $a3, 3
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.w	$vr1, $a1, 0
-	addi.d	$a3, $a2, 16
-	move	$a5, $a4
+	b	.LBB18_32
+.LBB18_4:                               # %vector.main.loop.iter.check
+	ori	$a3, $zero, 16
+	bgeu	$a1, $a3, .LBB18_6
+# %bb.5:
+	move	$a4, $zero
+	move	$a3, $a1
+	b	.LBB18_10
+.LBB18_6:                               # %vector.ph
+	andi	$a5, $a1, 12
+	bstrpick.d	$a3, $a1, 30, 4
+	xvrepli.b	$xr0, 0
+	slli.d	$a4, $a3, 4
+	xvori.b	$xr1, $xr0, 0
+	xvinsgr2vr.w	$xr1, $a1, 0
+	addi.d	$a3, $a2, 32
+	move	$a6, $a4
 	.p2align	4, , 16
-.LBB18_5:                               # %vector.body
+.LBB18_7:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a3, -16
-	vld	$vr3, $a3, 0
-	vseqi.w	$vr2, $vr2, 0
-	vxori.b	$vr2, $vr2, 255
-	vseqi.w	$vr3, $vr3, 0
-	vxori.b	$vr3, $vr3, 255
-	vadd.w	$vr1, $vr1, $vr2
-	vadd.w	$vr0, $vr0, $vr3
-	addi.d	$a5, $a5, -8
-	addi.d	$a3, $a3, 32
-	bnez	$a5, .LBB18_5
-# %bb.6:                                # %middle.block
+	xvld	$xr2, $a3, -32
+	xvld	$xr3, $a3, 0
+	xvseqi.w	$xr2, $xr2, 0
+	xvxori.b	$xr2, $xr2, 255
+	xvseqi.w	$xr3, $xr3, 0
+	xvxori.b	$xr3, $xr3, 255
+	xvadd.w	$xr1, $xr1, $xr2
+	xvadd.w	$xr0, $xr0, $xr3
+	addi.d	$a6, $a6, -16
+	addi.d	$a3, $a3, 64
+	bnez	$a6, .LBB18_7
+# %bb.8:                                # %middle.block
+	xvadd.w	$xr0, $xr0, $xr1
+	xvhaddw.d.w	$xr0, $xr0, $xr0
+	xvhaddw.q.d	$xr0, $xr0, $xr0
+	xvpermi.d	$xr1, $xr0, 2
+	xvadd.d	$xr0, $xr1, $xr0
+	xvpickve2gr.d	$a3, $xr0, 0
+	beq	$a4, $a1, .LBB18_15
+# %bb.9:                                # %vec.epilog.iter.check
+	beqz	$a5, .LBB18_13
+.LBB18_10:                              # %vec.epilog.ph
+	move	$a5, $a4
+	bstrpick.d	$a4, $a1, 30, 2
+	slli.d	$a4, $a4, 2
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a3, 0
+	sub.d	$a3, $a5, $a4
+	alsl.d	$a5, $a5, $a2, 2
+	.p2align	4, , 16
+.LBB18_11:                              # %vec.epilog.vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $a5, 0
+	vseqi.w	$vr1, $vr1, 0
+	vxori.b	$vr1, $vr1, 255
 	vadd.w	$vr0, $vr0, $vr1
+	addi.d	$a3, $a3, 4
+	addi.d	$a5, $a5, 16
+	bnez	$a3, .LBB18_11
+# %bb.12:                               # %vec.epilog.middle.block
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vhaddw.q.d	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a3, $vr0, 0
-	beq	$a4, $a1, .LBB18_9
-.LBB18_7:                               # %.lr.ph.preheader161
+	beq	$a4, $a1, .LBB18_15
+.LBB18_13:                              # %.lr.ph.preheader
 	alsl.d	$a5, $a4, $a2, 2
 	sub.d	$a4, $a1, $a4
 	.p2align	4, , 16
-.LBB18_8:                               # %.lr.ph
+.LBB18_14:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a5, 0
 	sltu	$a6, $zero, $a6
 	sub.w	$a3, $a3, $a6
 	addi.d	$a4, $a4, -1
 	addi.d	$a5, $a5, 4
-	bnez	$a4, .LBB18_8
-.LBB18_9:                               # %.lr.ph113
+	bnez	$a4, .LBB18_14
+.LBB18_15:                              # %.lr.ph113
 	addi.d	$a4, $a0, 288
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 88
 	movgr2fr.d	$fa1, $zero
 	move	$a5, $a1
 	move	$a6, $a2
-	b	.LBB18_11
+	b	.LBB18_17
 	.p2align	4, , 16
-.LBB18_10:                              #   in Loop: Header=BB18_11 Depth=1
+.LBB18_16:                              #   in Loop: Header=BB18_17 Depth=1
 	addi.d	$a6, $a6, 4
 	addi.d	$a5, $a5, -1
 	addi.d	$a4, $a4, 8
-	beqz	$a5, .LBB18_13
-.LBB18_11:                              # =>This Inner Loop Header: Depth=1
+	beqz	$a5, .LBB18_19
+.LBB18_17:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a6, 0
-	bnez	$a7, .LBB18_10
-# %bb.12:                               #   in Loop: Header=BB18_11 Depth=1
+	bnez	$a7, .LBB18_16
+# %bb.18:                               #   in Loop: Header=BB18_17 Depth=1
 	fld.d	$fa1, $a4, 0
-	b	.LBB18_10
-.LBB18_13:                              # %.lr.ph117
+	b	.LBB18_16
+.LBB18_19:                              # %.lr.ph117
 	move	$a4, $zero
 	addi.d	$a5, $a0, 288
 	movgr2fr.w	$fa0, $a3
@@ -5733,9 +5803,9 @@ MADModelEstimator:                      # @MADModelEstimator
 	ori	$a6, $zero, 1
 	move	$a7, $a1
 	move	$t0, $a2
-	b	.LBB18_15
+	b	.LBB18_21
 	.p2align	4, , 16
-.LBB18_14:                              #   in Loop: Header=BB18_15 Depth=1
+.LBB18_20:                              #   in Loop: Header=BB18_21 Depth=1
 	fcmp.cune.d	$fcc0, $fa3, $fa1
 	sltui	$t1, $t1, 1
 	masknez	$t2, $a4, $t1
@@ -5748,26 +5818,26 @@ MADModelEstimator:                      # @MADModelEstimator
 	addi.d	$t0, $t0, 4
 	addi.d	$a7, $a7, -1
 	addi.d	$a5, $a5, 8
-	beqz	$a7, .LBB18_17
-.LBB18_15:                              # %._crit_edge147
+	beqz	$a7, .LBB18_23
+.LBB18_21:                              # %._crit_edge147
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t1, $t0, 0
 	fld.d	$fa3, $a5, 0
-	bnez	$t1, .LBB18_14
-# %bb.16:                               #   in Loop: Header=BB18_15 Depth=1
+	bnez	$t1, .LBB18_20
+# %bb.22:                               #   in Loop: Header=BB18_21 Depth=1
 	fld.d	$fa4, $a5, 168
 	fmul.d	$fa4, $fa4, $fa2
 	fdiv.d	$fa4, $fa3, $fa4
 	fadd.d	$fa0, $fa0, $fa4
 	fst.d	$fa0, $a0, 88
-	b	.LBB18_14
-.LBB18_17:                              # %._crit_edge118
+	b	.LBB18_20
+.LBB18_23:                              # %._crit_edge118
 	addi.w	$a3, $a3, 0
 	movgr2fr.d	$fa3, $zero
-	blez	$a3, .LBB18_26
-# %bb.18:                               # %._crit_edge118
-	beqz	$a4, .LBB18_26
-# %bb.19:                               # %.lr.ph127
+	blez	$a3, .LBB18_32
+# %bb.24:                               # %._crit_edge118
+	beqz	$a4, .LBB18_32
+# %bb.25:                               # %.lr.ph127
 	addi.d	$a3, $a0, 456
 	bstrpick.d	$a1, $a1, 31, 0
 	movgr2fr.d	$fa0, $zero
@@ -5776,17 +5846,17 @@ MADModelEstimator:                      # @MADModelEstimator
 	fmov.d	$fa3, $fa0
 	fmov.d	$fa4, $fa0
 	fmov.d	$fa2, $fa0
-	b	.LBB18_21
+	b	.LBB18_27
 	.p2align	4, , 16
-.LBB18_20:                              #   in Loop: Header=BB18_21 Depth=1
+.LBB18_26:                              #   in Loop: Header=BB18_27 Depth=1
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 8
-	beqz	$a1, .LBB18_23
-.LBB18_21:                              # =>This Inner Loop Header: Depth=1
+	beqz	$a1, .LBB18_29
+.LBB18_27:                              # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
-	bnez	$a4, .LBB18_20
-# %bb.22:                               #   in Loop: Header=BB18_21 Depth=1
+	bnez	$a4, .LBB18_26
+# %bb.28:                               #   in Loop: Header=BB18_27 Depth=1
 	fld.d	$fa6, $a3, 0
 	fld.d	$fa7, $a3, -168
 	fadd.d	$fa2, $fa2, $fa5
@@ -5794,8 +5864,8 @@ MADModelEstimator:                      # @MADModelEstimator
 	fmadd.d	$fa3, $fa6, $fa6, $fa3
 	fadd.d	$fa1, $fa1, $fa7
 	fmadd.d	$fa0, $fa7, $fa6, $fa0
-	b	.LBB18_20
-.LBB18_23:                              # %._crit_edge128
+	b	.LBB18_26
+.LBB18_29:                              # %._crit_edge128
 	fneg.d	$fa5, $fa4
 	pcalau12i	$a1, %pc_hi20(.LCPI18_0)
 	fld.d	$fa7, $a1, %pc_lo12(.LCPI18_0)
@@ -5803,8 +5873,8 @@ MADModelEstimator:                      # @MADModelEstimator
 	fmadd.d	$fa6, $fa2, $fa3, $fa6
 	fabs.d	$ft0, $fa6
 	fcmp.cule.d	$fcc0, $ft0, $fa7
-	bcnez	$fcc0, .LBB18_25
-# %bb.24:
+	bcnez	$fcc0, .LBB18_31
+# %bb.30:
 	fneg.d	$fa4, $fa4
 	fmul.d	$fa4, $fa0, $fa4
 	fmadd.d	$fa3, $fa1, $fa3, $fa4
@@ -5814,35 +5884,35 @@ MADModelEstimator:                      # @MADModelEstimator
 	fmadd.d	$fa0, $fa0, $fa2, $fa1
 	fdiv.d	$fa0, $fa0, $fa6
 	fst.d	$fa0, $a0, 88
-	b	.LBB18_26
-.LBB18_25:
+	b	.LBB18_32
+.LBB18_31:
 	fdiv.d	$fa0, $fa1, $fa4
 	fst.d	$fa0, $a0, 88
 	st.d	$zero, $a0, 96
 	movgr2fr.d	$fa3, $zero
-.LBB18_26:                              # %._crit_edge118.thread
+.LBB18_32:                              # %._crit_edge118.thread
 	pcalau12i	$a1, %got_pc_hi20(img)
 	ld.d	$a1, $a1, %got_pc_lo12(img)
 	ld.d	$a1, $a1, 0
 	ld.w	$a2, $a1, 20
-	beqz	$a2, .LBB18_28
-# %bb.27:
+	beqz	$a2, .LBB18_34
+# %bb.33:
 	pcalau12i	$a2, %got_pc_hi20(input)
 	ld.d	$a2, $a2, %got_pc_lo12(input)
 	ld.d	$a2, $a2, 0
 	ldptr.w	$a2, $a2, 5136
 	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB18_30
-.LBB18_28:
+	bne	$a2, $a3, .LBB18_36
+.LBB18_34:
 	ld.w	$a1, $a1, 0
 	pcalau12i	$a2, %got_pc_hi20(start_frame_no_in_this_IGOP)
 	ld.d	$a2, $a2, %got_pc_lo12(start_frame_no_in_this_IGOP)
 	ld.w	$a2, $a2, 0
-	beq	$a1, $a2, .LBB18_30
-# %bb.29:
+	beq	$a1, $a2, .LBB18_36
+# %bb.35:
 	fst.d	$fa0, $a0, 104
 	fst.d	$fa3, $a0, 112
-.LBB18_30:
+.LBB18_36:
 	ret
 .Lfunc_end18:
 	.size	MADModelEstimator, .Lfunc_end18-MADModelEstimator

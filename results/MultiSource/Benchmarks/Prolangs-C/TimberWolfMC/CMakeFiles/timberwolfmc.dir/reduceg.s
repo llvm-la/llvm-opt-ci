@@ -45,7 +45,7 @@ reduceg:                                # @reduceg
 	pcalau12i	$a0, %got_pc_hi20(numRects)
 	ld.d	$a3, $a0, %got_pc_lo12(numRects)
 	ld.w	$a0, $a3, 0
-	vrepli.b	$vr8, 0
+	vrepli.b	$vr5, 0
 	blez	$a0, .LBB0_6
 # %bb.4:                                # %.lr.ph741
 	pcalau12i	$a0, %got_pc_hi20(rectArray)
@@ -55,7 +55,7 @@ reduceg:                                # @reduceg
 	addi.d	$a1, $a1, 84
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
-	vst	$vr8, $a1, 0
+	vst	$vr5, $a1, 0
 	ld.w	$a2, $a3, 0
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 52
@@ -69,7 +69,7 @@ reduceg:                                # @reduceg
 	lu12i.w	$a2, -251659
 	lu12i.w	$a3, 20971
 	lu12i.w	$a4, 10485
-	vst	$vr8, $sp, 160                  # 16-byte Folded Spill
+	vst	$vr5, $sp, 160                  # 16-byte Folded Spill
 	blez	$a0, .LBB0_32
 # %bb.7:                                # %.lr.ph755.preheader
 	xvrepli.b	$xr0, 0
@@ -130,7 +130,7 @@ reduceg:                                # @reduceg
 	addi.d	$a0, $sp, 192
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
-	vld	$vr8, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 160                  # 16-byte Folded Reload
 	ld.d	$a0, $s6, 8
 	ld.w	$a1, $a0, 4
 	ld.d	$a2, $s3, 0
@@ -188,7 +188,7 @@ reduceg:                                # @reduceg
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	vld	$vr8, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 160                  # 16-byte Folded Reload
 	move	$fp, $a0
 	blez	$s7, .LBB0_11
 .LBB0_18:                               # %iter.check
@@ -231,59 +231,27 @@ reduceg:                                # @reduceg
 	xvld	$xr2, $a5, -32
 	xvld	$xr3, $a5, 0
 	xvpermi.q	$xr4, $xr2, 1
-	vpickve2gr.w	$a7, $vr4, 2
-	vinsgr2vr.d	$vr5, $a7, 0
-	vpickve2gr.w	$a7, $vr4, 3
-	vinsgr2vr.d	$vr5, $a7, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$a7, $vr4, 0
-	vinsgr2vr.d	$vr6, $a7, 0
-	vpickve2gr.w	$a7, $vr4, 1
-	vinsgr2vr.d	$vr6, $a7, 1
-	vpickve2gr.w	$a7, $vr2, 2
-	vinsgr2vr.d	$vr4, $a7, 0
-	vpickve2gr.w	$a7, $vr2, 3
-	vinsgr2vr.d	$vr4, $a7, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	vinsgr2vr.d	$vr7, $a7, 0
-	vpickve2gr.w	$a7, $vr2, 1
-	vinsgr2vr.d	$vr7, $a7, 1
-	xvpickve2gr.d	$a7, $xr7, 0
-	xvpickve2gr.d	$t0, $xr7, 1
-	xvpickve2gr.d	$t1, $xr4, 2
-	xvpickve2gr.d	$t2, $xr4, 3
-	xvpickve2gr.d	$t3, $xr6, 0
-	xvpickve2gr.d	$t4, $xr6, 1
-	xvpickve2gr.d	$t5, $xr5, 2
-	xvpickve2gr.d	$t6, $xr5, 3
+	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$a7, $xr2, 0
+	xvpickve2gr.d	$t0, $xr2, 1
+	xvpickve2gr.d	$t1, $xr2, 2
+	xvpickve2gr.d	$t2, $xr2, 3
+	xvpickve2gr.d	$t3, $xr4, 0
+	xvpickve2gr.d	$t4, $xr4, 1
+	xvpickve2gr.d	$t5, $xr4, 2
+	xvpickve2gr.d	$t6, $xr4, 3
 	xvpermi.q	$xr2, $xr3, 1
-	vpickve2gr.w	$t7, $vr2, 2
-	vinsgr2vr.d	$vr4, $t7, 0
-	vpickve2gr.w	$t7, $vr2, 3
-	vinsgr2vr.d	$vr4, $t7, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$t7, $vr2, 0
-	vinsgr2vr.d	$vr5, $t7, 0
-	vpickve2gr.w	$t7, $vr2, 1
-	vinsgr2vr.d	$vr5, $t7, 1
-	vpickve2gr.w	$t7, $vr3, 2
-	vinsgr2vr.d	$vr2, $t7, 0
-	vpickve2gr.w	$t7, $vr3, 3
-	vinsgr2vr.d	$vr2, $t7, 1
-	xvpermi.q	$xr2, $xr2, 2
-	vpickve2gr.w	$t7, $vr3, 0
-	vinsgr2vr.d	$vr6, $t7, 0
-	vpickve2gr.w	$t7, $vr3, 1
-	vinsgr2vr.d	$vr6, $t7, 1
-	xvpickve2gr.d	$t7, $xr6, 0
-	xvpickve2gr.d	$t8, $xr6, 1
-	xvpickve2gr.d	$ra, $xr2, 2
-	xvpickve2gr.d	$s8, $xr2, 3
-	xvpickve2gr.d	$s2, $xr5, 0
-	xvpickve2gr.d	$a4, $xr5, 1
-	xvpickve2gr.d	$s5, $xr4, 2
-	xvpickve2gr.d	$fp, $xr4, 3
+	vext2xv.d.w	$xr2, $xr2
+	vext2xv.d.w	$xr3, $xr3
+	xvpickve2gr.d	$t7, $xr3, 0
+	xvpickve2gr.d	$t8, $xr3, 1
+	xvpickve2gr.d	$ra, $xr3, 2
+	xvpickve2gr.d	$s8, $xr3, 3
+	xvpickve2gr.d	$s2, $xr2, 0
+	xvpickve2gr.d	$a4, $xr2, 1
+	xvpickve2gr.d	$s5, $xr2, 2
+	xvpickve2gr.d	$fp, $xr2, 3
 	mul.d	$a7, $a7, $s4
 	add.d	$a7, $a0, $a7
 	mul.d	$t0, $t0, $s4
@@ -324,15 +292,15 @@ reduceg:                                # @reduceg
 	ld.w	$t4, $t4, 20
 	ld.w	$t5, $t5, 20
 	ld.w	$t6, $t6, 20
-	vinsgr2vr.w	$vr2, $t3, 0
-	vinsgr2vr.w	$vr2, $t4, 1
-	vinsgr2vr.w	$vr2, $t5, 2
-	vinsgr2vr.w	$vr2, $t6, 3
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr3, $t0, 1
-	vinsgr2vr.w	$vr3, $t1, 2
-	vinsgr2vr.w	$vr3, $t2, 3
-	xvpermi.q	$xr3, $xr2, 2
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vinsgr2vr.w	$vr2, $t2, 3
+	vinsgr2vr.w	$vr3, $t3, 0
+	vinsgr2vr.w	$vr3, $t4, 1
+	vinsgr2vr.w	$vr3, $t5, 2
+	vinsgr2vr.w	$vr3, $t6, 3
+	xvpermi.q	$xr2, $xr3, 2
 	ld.w	$a7, $t7, 20
 	ld.w	$t0, $t8, 20
 	ld.w	$t1, $ra, 20
@@ -341,17 +309,17 @@ reduceg:                                # @reduceg
 	ld.w	$a4, $a4, 20
 	ld.w	$t4, $s5, 20
 	ld.w	$t5, $fp, 20
-	vinsgr2vr.w	$vr2, $t3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vinsgr2vr.w	$vr2, $t4, 2
-	vinsgr2vr.w	$vr2, $t5, 3
-	vinsgr2vr.w	$vr4, $a7, 0
-	vinsgr2vr.w	$vr4, $t0, 1
-	vinsgr2vr.w	$vr4, $t1, 2
-	vinsgr2vr.w	$vr4, $t2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvadd.w	$xr0, $xr0, $xr3
-	xvadd.w	$xr1, $xr1, $xr4
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	vinsgr2vr.w	$vr4, $t3, 0
+	vinsgr2vr.w	$vr4, $a4, 1
+	vinsgr2vr.w	$vr4, $t4, 2
+	vinsgr2vr.w	$vr4, $t5, 3
+	xvpermi.q	$xr3, $xr4, 2
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	addi.d	$a6, $a6, -16
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB0_23
@@ -385,7 +353,7 @@ reduceg:                                # @reduceg
 	srli.d	$a6, $s7, 2
 	ori	$a2, $zero, 1
 	bstrins.d	$a2, $a6, 30, 2
-	vori.b	$vr0, $vr8, 0
+	vori.b	$vr0, $vr5, 0
 	vinsgr2vr.w	$vr0, $a5, 0
 	alsl.d	$a5, $a3, $a1, 2
 	addi.d	$a5, $a5, 4
@@ -396,19 +364,11 @@ reduceg:                                # @reduceg
                                         #     Parent Loop BB0_14 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr1, $a5, 0
-	vpickve2gr.w	$a6, $vr1, 2
-	vinsgr2vr.d	$vr2, $a6, 0
-	vpickve2gr.w	$a6, $vr1, 3
-	vinsgr2vr.d	$vr2, $a6, 1
-	xvpermi.q	$xr2, $xr2, 2
-	vpickve2gr.w	$a6, $vr1, 0
-	vinsgr2vr.d	$vr3, $a6, 0
-	vpickve2gr.w	$a6, $vr1, 1
-	vinsgr2vr.d	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr3, 0
-	xvpickve2gr.d	$a7, $xr3, 1
-	xvpickve2gr.d	$t0, $xr2, 2
-	xvpickve2gr.d	$t1, $xr2, 3
+	vext2xv.d.w	$xr1, $xr1
+	xvpickve2gr.d	$a6, $xr1, 0
+	xvpickve2gr.d	$a7, $xr1, 1
+	xvpickve2gr.d	$t0, $xr1, 2
+	xvpickve2gr.d	$t1, $xr1, 3
 	mul.d	$a6, $a6, $s4
 	add.d	$a6, $a0, $a6
 	mul.d	$a7, $a7, $s4
@@ -523,7 +483,7 @@ reduceg:                                # @reduceg
 	addi.d	$a0, $sp, 192
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
-	vld	$vr8, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 160                  # 16-byte Folded Reload
 	ld.d	$a0, $s1, 8
 	ld.w	$a1, $a0, 4
 	ld.d	$a2, $s8, 0
@@ -581,7 +541,7 @@ reduceg:                                # @reduceg
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	vld	$vr8, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr5, $sp, 160                  # 16-byte Folded Reload
 	move	$fp, $a0
 	blez	$s2, .LBB0_37
 .LBB0_44:                               # %iter.check1132
@@ -624,59 +584,27 @@ reduceg:                                # @reduceg
 	xvld	$xr2, $a5, -32
 	xvld	$xr3, $a5, 0
 	xvpermi.q	$xr4, $xr2, 1
-	vpickve2gr.w	$a7, $vr4, 2
-	vinsgr2vr.d	$vr5, $a7, 0
-	vpickve2gr.w	$a7, $vr4, 3
-	vinsgr2vr.d	$vr5, $a7, 1
-	xvpermi.q	$xr5, $xr5, 2
-	vpickve2gr.w	$a7, $vr4, 0
-	vinsgr2vr.d	$vr6, $a7, 0
-	vpickve2gr.w	$a7, $vr4, 1
-	vinsgr2vr.d	$vr6, $a7, 1
-	vpickve2gr.w	$a7, $vr2, 2
-	vinsgr2vr.d	$vr4, $a7, 0
-	vpickve2gr.w	$a7, $vr2, 3
-	vinsgr2vr.d	$vr4, $a7, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$a7, $vr2, 0
-	vinsgr2vr.d	$vr7, $a7, 0
-	vpickve2gr.w	$a7, $vr2, 1
-	vinsgr2vr.d	$vr7, $a7, 1
-	xvpickve2gr.d	$a7, $xr7, 0
-	xvpickve2gr.d	$t0, $xr7, 1
-	xvpickve2gr.d	$t1, $xr4, 2
-	xvpickve2gr.d	$t2, $xr4, 3
-	xvpickve2gr.d	$t3, $xr6, 0
-	xvpickve2gr.d	$t4, $xr6, 1
-	xvpickve2gr.d	$t5, $xr5, 2
-	xvpickve2gr.d	$t6, $xr5, 3
+	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr2, $xr2
+	xvpickve2gr.d	$a7, $xr2, 0
+	xvpickve2gr.d	$t0, $xr2, 1
+	xvpickve2gr.d	$t1, $xr2, 2
+	xvpickve2gr.d	$t2, $xr2, 3
+	xvpickve2gr.d	$t3, $xr4, 0
+	xvpickve2gr.d	$t4, $xr4, 1
+	xvpickve2gr.d	$t5, $xr4, 2
+	xvpickve2gr.d	$t6, $xr4, 3
 	xvpermi.q	$xr2, $xr3, 1
-	vpickve2gr.w	$t7, $vr2, 2
-	vinsgr2vr.d	$vr4, $t7, 0
-	vpickve2gr.w	$t7, $vr2, 3
-	vinsgr2vr.d	$vr4, $t7, 1
-	xvpermi.q	$xr4, $xr4, 2
-	vpickve2gr.w	$t7, $vr2, 0
-	vinsgr2vr.d	$vr5, $t7, 0
-	vpickve2gr.w	$t7, $vr2, 1
-	vinsgr2vr.d	$vr5, $t7, 1
-	vpickve2gr.w	$t7, $vr3, 2
-	vinsgr2vr.d	$vr2, $t7, 0
-	vpickve2gr.w	$t7, $vr3, 3
-	vinsgr2vr.d	$vr2, $t7, 1
-	xvpermi.q	$xr2, $xr2, 2
-	vpickve2gr.w	$t7, $vr3, 0
-	vinsgr2vr.d	$vr6, $t7, 0
-	vpickve2gr.w	$t7, $vr3, 1
-	vinsgr2vr.d	$vr6, $t7, 1
-	xvpickve2gr.d	$t7, $xr6, 0
-	xvpickve2gr.d	$t8, $xr6, 1
-	xvpickve2gr.d	$fp, $xr2, 2
-	xvpickve2gr.d	$ra, $xr2, 3
-	xvpickve2gr.d	$a4, $xr5, 0
-	xvpickve2gr.d	$s3, $xr5, 1
-	xvpickve2gr.d	$s5, $xr4, 2
-	xvpickve2gr.d	$s7, $xr4, 3
+	vext2xv.d.w	$xr2, $xr2
+	vext2xv.d.w	$xr3, $xr3
+	xvpickve2gr.d	$t7, $xr3, 0
+	xvpickve2gr.d	$t8, $xr3, 1
+	xvpickve2gr.d	$fp, $xr3, 2
+	xvpickve2gr.d	$ra, $xr3, 3
+	xvpickve2gr.d	$a4, $xr2, 0
+	xvpickve2gr.d	$s3, $xr2, 1
+	xvpickve2gr.d	$s5, $xr2, 2
+	xvpickve2gr.d	$s7, $xr2, 3
 	mul.d	$a7, $a7, $s4
 	add.d	$a7, $a0, $a7
 	mul.d	$t0, $t0, $s4
@@ -717,15 +645,15 @@ reduceg:                                # @reduceg
 	ld.w	$t4, $t4, 20
 	ld.w	$t5, $t5, 20
 	ld.w	$t6, $t6, 20
-	vinsgr2vr.w	$vr2, $t3, 0
-	vinsgr2vr.w	$vr2, $t4, 1
-	vinsgr2vr.w	$vr2, $t5, 2
-	vinsgr2vr.w	$vr2, $t6, 3
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr3, $t0, 1
-	vinsgr2vr.w	$vr3, $t1, 2
-	vinsgr2vr.w	$vr3, $t2, 3
-	xvpermi.q	$xr3, $xr2, 2
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vinsgr2vr.w	$vr2, $t2, 3
+	vinsgr2vr.w	$vr3, $t3, 0
+	vinsgr2vr.w	$vr3, $t4, 1
+	vinsgr2vr.w	$vr3, $t5, 2
+	vinsgr2vr.w	$vr3, $t6, 3
+	xvpermi.q	$xr2, $xr3, 2
 	ld.w	$a7, $t7, 20
 	ld.w	$t0, $t8, 20
 	ld.w	$t1, $fp, 20
@@ -734,17 +662,17 @@ reduceg:                                # @reduceg
 	ld.w	$t3, $s3, 20
 	ld.w	$t4, $s5, 20
 	ld.w	$t5, $s7, 20
-	vinsgr2vr.w	$vr2, $a4, 0
-	vinsgr2vr.w	$vr2, $t3, 1
-	vinsgr2vr.w	$vr2, $t4, 2
-	vinsgr2vr.w	$vr2, $t5, 3
-	vinsgr2vr.w	$vr4, $a7, 0
-	vinsgr2vr.w	$vr4, $t0, 1
-	vinsgr2vr.w	$vr4, $t1, 2
-	vinsgr2vr.w	$vr4, $t2, 3
-	xvpermi.q	$xr4, $xr2, 2
-	xvadd.w	$xr0, $xr0, $xr3
-	xvadd.w	$xr1, $xr1, $xr4
+	vinsgr2vr.w	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr4, $t3, 1
+	vinsgr2vr.w	$vr4, $t4, 2
+	vinsgr2vr.w	$vr4, $t5, 3
+	xvpermi.q	$xr3, $xr4, 2
+	xvadd.w	$xr0, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	addi.d	$a6, $a6, -16
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB0_49
@@ -778,7 +706,7 @@ reduceg:                                # @reduceg
 	srli.d	$a6, $s2, 2
 	ori	$a2, $zero, 1
 	bstrins.d	$a2, $a6, 30, 2
-	vori.b	$vr0, $vr8, 0
+	vori.b	$vr0, $vr5, 0
 	vinsgr2vr.w	$vr0, $a5, 0
 	alsl.d	$a5, $a3, $a1, 2
 	addi.d	$a5, $a5, 4
@@ -789,19 +717,11 @@ reduceg:                                # @reduceg
                                         #     Parent Loop BB0_40 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr1, $a5, 0
-	vpickve2gr.w	$a6, $vr1, 2
-	vinsgr2vr.d	$vr2, $a6, 0
-	vpickve2gr.w	$a6, $vr1, 3
-	vinsgr2vr.d	$vr2, $a6, 1
-	xvpermi.q	$xr2, $xr2, 2
-	vpickve2gr.w	$a6, $vr1, 0
-	vinsgr2vr.d	$vr3, $a6, 0
-	vpickve2gr.w	$a6, $vr1, 1
-	vinsgr2vr.d	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr3, 0
-	xvpickve2gr.d	$a7, $xr3, 1
-	xvpickve2gr.d	$t0, $xr2, 2
-	xvpickve2gr.d	$t1, $xr2, 3
+	vext2xv.d.w	$xr1, $xr1
+	xvpickve2gr.d	$a6, $xr1, 0
+	xvpickve2gr.d	$a7, $xr1, 1
+	xvpickve2gr.d	$t0, $xr1, 2
+	xvpickve2gr.d	$t1, $xr1, 3
 	mul.d	$a6, $a6, $s4
 	add.d	$a6, $a0, $a6
 	mul.d	$a7, $a7, $s4
@@ -858,7 +778,7 @@ reduceg:                                # @reduceg
 	ld.d	$s2, $a0, %got_pc_lo12(eArray)
 	pcalau12i	$a0, %got_pc_hi20(rectArray)
 	ld.d	$s3, $a0, %got_pc_lo12(rectArray)
-	ori	$s4, $zero, 56
+	ori	$s1, $zero, 56
 	ori	$s5, $zero, 52
 	lu12i.w	$a0, 2441
 	ori	$a0, $a0, 1664
@@ -918,7 +838,7 @@ reduceg:                                # @reduceg
                                         #       Child Loop BB0_85 Depth 3
 	slli.d	$a2, $t1, 2
 	ldx.w	$a2, $a0, $a2
-	mul.d	$t5, $a2, $s4
+	mul.d	$t5, $a2, $s1
 	ldx.w	$a2, $a5, $t5
 	mul.d	$a2, $a2, $s5
 	add.d	$a2, $a6, $a2
@@ -931,7 +851,7 @@ reduceg:                                # @reduceg
 	ldx.w	$a2, $a0, $a2
 	add.d	$t4, $a5, $t5
 	ld.w	$t6, $t4, 16
-	mul.d	$a2, $a2, $s4
+	mul.d	$a2, $a2, $s1
 	add.d	$t5, $a5, $a2
 	ld.w	$a2, $t5, 12
 	alsl.d	$t4, $t0, $a0, 2
@@ -947,14 +867,14 @@ reduceg:                                # @reduceg
                                         #   in Loop: Header=BB0_64 Depth=2
 	alsl.d	$t8, $t0, $a0, 2
 	move	$ra, $t0
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_68:                               # %.lr.ph786
                                         #   Parent Loop BB0_59 Depth=1
                                         #     Parent Loop BB0_64 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a2, $t8, 0
-	mul.d	$a2, $a2, $s4
+	mul.d	$a2, $a2, $s1
 	ldx.w	$fp, $a5, $a2
 	mul.d	$fp, $fp, $s5
 	add.d	$fp, $a6, $fp
@@ -965,27 +885,27 @@ reduceg:                                # @reduceg
 	srai.d	$s6, $fp, 31
 	xor	$fp, $fp, $s6
 	sub.w	$fp, $fp, $s6
-	slt	$s6, $fp, $s1
+	slt	$s6, $fp, $s4
 	mul.d	$a2, $a2, $s5
 	add.d	$a2, $a6, $a2
 	ld.w	$a2, $a2, 4
 	maskeqz	$fp, $fp, $s6
-	masknez	$s1, $s1, $s6
-	or	$fp, $fp, $s1
+	masknez	$s4, $s4, $s6
+	or	$fp, $fp, $s4
 	sub.w	$a2, $a2, $t7
-	srai.d	$s1, $a2, 31
-	xor	$a2, $a2, $s1
-	sub.w	$a2, $a2, $s1
-	slt	$s1, $a2, $fp
-	masknez	$s7, $s8, $s1
-	maskeqz	$s8, $ra, $s1
+	srai.d	$s4, $a2, 31
+	xor	$a2, $a2, $s4
+	sub.w	$a2, $a2, $s4
+	slt	$s4, $a2, $fp
+	masknez	$s7, $s8, $s4
+	maskeqz	$s8, $ra, $s4
 	or	$s7, $s8, $s7
 	masknez	$s7, $s7, $s6
 	maskeqz	$s6, $ra, $s6
 	or	$s8, $s6, $s7
-	masknez	$fp, $fp, $s1
-	maskeqz	$a2, $a2, $s1
-	or	$s1, $a2, $fp
+	masknez	$fp, $fp, $s4
+	maskeqz	$a2, $a2, $s4
+	or	$s4, $a2, $fp
 	addi.w	$ra, $ra, 1
 	addi.d	$t8, $t8, 4
 	bne	$t2, $ra, .LBB0_68
@@ -997,7 +917,7 @@ reduceg:                                # @reduceg
 # %bb.70:                               # %.lr.ph780.preheader
                                         #   in Loop: Header=BB0_64 Depth=2
 	lu12i.w	$a2, 2441
-	ori	$s1, $a2, 1664
+	ori	$s4, $a2, 1664
 	move	$t8, $t0
 	move	$ra, $t4
 	.p2align	4, , 16
@@ -1006,7 +926,7 @@ reduceg:                                # @reduceg
                                         #     Parent Loop BB0_64 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a2, $ra, 0
-	mul.d	$a2, $a2, $s4
+	mul.d	$a2, $a2, $s1
 	ldx.w	$fp, $a5, $a2
 	mul.d	$fp, $fp, $s5
 	ldx.w	$fp, $a6, $fp
@@ -1016,26 +936,26 @@ reduceg:                                # @reduceg
 	srai.d	$s7, $fp, 31
 	xor	$fp, $fp, $s7
 	sub.w	$fp, $fp, $s7
-	slt	$s7, $fp, $s1
+	slt	$s7, $fp, $s4
 	mul.d	$a2, $a2, $s5
 	ldx.w	$a2, $a6, $a2
 	maskeqz	$fp, $fp, $s7
-	masknez	$s1, $s1, $s7
-	or	$fp, $fp, $s1
+	masknez	$s4, $s4, $s7
+	or	$fp, $fp, $s4
 	sub.w	$a2, $a2, $t7
-	srai.d	$s1, $a2, 31
-	xor	$a2, $a2, $s1
-	sub.w	$a2, $a2, $s1
-	slt	$s1, $a2, $fp
-	masknez	$s8, $s8, $s1
-	maskeqz	$s6, $t8, $s1
+	srai.d	$s4, $a2, 31
+	xor	$a2, $a2, $s4
+	sub.w	$a2, $a2, $s4
+	slt	$s4, $a2, $fp
+	masknez	$s8, $s8, $s4
+	maskeqz	$s6, $t8, $s4
 	or	$s6, $s6, $s8
 	masknez	$s6, $s6, $s7
 	maskeqz	$s7, $t8, $s7
 	or	$s8, $s7, $s6
-	masknez	$fp, $fp, $s1
-	maskeqz	$a2, $a2, $s1
-	or	$s1, $a2, $fp
+	masknez	$fp, $fp, $s4
+	maskeqz	$a2, $a2, $s4
+	or	$s4, $a2, $fp
 	addi.w	$t8, $t8, 1
 	addi.d	$ra, $ra, 4
 	bne	$t2, $t8, .LBB0_71
@@ -1092,7 +1012,7 @@ reduceg:                                # @reduceg
                                         #   in Loop: Header=BB0_85 Depth=3
 	st.w	$s0, $a2, 36
 .LBB0_83:                               #   in Loop: Header=BB0_85 Depth=3
-	st.w	$s0, $s1, 44
+	st.w	$s0, $s4, 44
 .LBB0_84:                               #   in Loop: Header=BB0_85 Depth=3
 	addi.w	$t8, $t8, 1
 	addi.d	$t7, $t7, 4
@@ -1102,41 +1022,41 @@ reduceg:                                # @reduceg
                                         #     Parent Loop BB0_64 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.w	$a2, $t7, 0
-	move	$s1, $ra
-	mul.d	$s7, $a2, $s4
+	move	$s4, $ra
+	mul.d	$s7, $a2, $s1
 	add.d	$ra, $a5, $s7
-	bne	$t6, $s1, .LBB0_91
+	bne	$t6, $s4, .LBB0_91
 # %bb.86:                               #   in Loop: Header=BB0_85 Depth=3
 	ld.w	$a2, $t5, 0
-	mul.d	$a2, $a2, $s4
+	mul.d	$a2, $a2, $s1
 	add.d	$a2, $a5, $a2
 	ld.w	$a2, $a2, 16
 	st.w	$a2, $ra, 16
 	ld.w	$a2, $t4, 0
-	mul.d	$a2, $a2, $s4
+	mul.d	$a2, $a2, $s1
 	ld.w	$fp, $t7, 0
 	add.d	$a2, $a5, $a2
 	ld.w	$a2, $a2, 12
-	mul.d	$fp, $fp, $s4
+	mul.d	$fp, $fp, $s1
 	add.d	$fp, $a5, $fp
 	st.w	$a2, $fp, 12
 	ldx.w	$a2, $a5, $s7
 	ld.w	$s7, $ra, 4
-	addi.d	$ra, $s1, 1
-	beq	$a1, $s1, .LBB0_92
+	addi.d	$ra, $s4, 1
+	beq	$a1, $s4, .LBB0_92
 .LBB0_87:                               #   in Loop: Header=BB0_85 Depth=3
 	bge	$t0, $ra, .LBB0_84
 # %bb.88:                               #   in Loop: Header=BB0_85 Depth=3
 	bge	$ra, $t1, .LBB0_84
 # %bb.89:                               #   in Loop: Header=BB0_85 Depth=3
 	mul.d	$a2, $a2, $s5
-	add.d	$s1, $a6, $a2
+	add.d	$s4, $a6, $a2
 	mul.d	$a2, $s7, $s5
 	add.d	$a2, $a6, $a2
 	bge	$a4, $a3, .LBB0_94
 # %bb.90:                               #   in Loop: Header=BB0_85 Depth=3
-	st.w	$s0, $s1, 32
-	st.w	$s0, $s1, 40
+	st.w	$s0, $s4, 32
+	st.w	$s0, $s4, 40
 	st.w	$s0, $a2, 36
 	st.w	$s0, $a2, 44
 	b	.LBB0_84
@@ -1145,13 +1065,13 @@ reduceg:                                # @reduceg
 	st.w	$s0, $ra, 44
 	ldx.w	$a2, $a5, $s7
 	ld.w	$s7, $ra, 4
-	addi.d	$ra, $s1, 1
-	bne	$a1, $s1, .LBB0_87
+	addi.d	$ra, $s4, 1
+	bne	$a1, $s4, .LBB0_87
 .LBB0_92:                               #   in Loop: Header=BB0_85 Depth=3
 	mul.d	$a2, $a2, $s5
 	add.d	$a2, $a6, $a2
 	mul.d	$fp, $s7, $s5
-	add.d	$s1, $a6, $fp
+	add.d	$s4, $a6, $fp
 	bge	$a4, $a3, .LBB0_82
 # %bb.93:                               # %.thread1052
                                         #   in Loop: Header=BB0_85 Depth=3
@@ -1160,7 +1080,7 @@ reduceg:                                # @reduceg
 .LBB0_94:                               #   in Loop: Header=BB0_85 Depth=3
 	ori	$fp, $zero, 1
 	lu32i.d	$fp, 1
-	st.d	$fp, $s1, 32
+	st.d	$fp, $s4, 32
 	st.d	$fp, $a2, 40
 	b	.LBB0_84
 .LBB0_95:                               # %.preheader718
