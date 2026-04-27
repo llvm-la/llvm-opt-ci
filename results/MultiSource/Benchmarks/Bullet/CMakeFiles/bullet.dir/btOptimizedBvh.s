@@ -1461,7 +1461,7 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN29Quantiz
 	ori	$a6, $a2, 623
 	vreplgr2vr.w	$vr3, $a6
 	vfcmp.clt.s	$vr2, $vr2, $vr3
-	vshuf4i.w	$vr3, $vr2, 16
+	vilvl.w	$vr3, $vr2, $vr2
 	vpickve2gr.d	$a2, $vr3, 1
 	andi	$a2, $a2, 1
 	fadd.s	$fa3, $fa4, $fa5

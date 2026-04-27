@@ -1665,8 +1665,6 @@ initmask:                               # @initmask
 	vseq.b	$vr2, $vr2, $vr1
 	vor.v	$vr2, $vr3, $vr2
 	vilvl.b	$vr2, $vr2, $vr2
-	vslli.h	$vr2, $vr2, 8
-	vsrai.h	$vr2, $vr2, 8
 	vpickve2gr.h	$a4, $vr2, 0
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_92

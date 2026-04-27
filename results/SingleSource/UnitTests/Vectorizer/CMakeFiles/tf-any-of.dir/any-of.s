@@ -8992,8 +8992,6 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
                                         #   in Loop: Header=BB48_3 Depth=1
 	vslt.hu	$vr5, $vr5, $vr6
 	vilvl.h	$vr5, $vr5, $vr5
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
 	vor.v	$vr5, $vr4, $vr5
 	vaddi.du	$vr2, $vr2, 4
 	vaddi.du	$vr1, $vr1, 4

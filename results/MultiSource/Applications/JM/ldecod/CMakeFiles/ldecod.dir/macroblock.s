@@ -3394,7 +3394,7 @@ readMotionInfoFromNAL:                  # @readMotionInfoFromNAL
 	vsrai.w	$vr0, $vr0, 24
 	vrepli.b	$vr1, -1
 	vslt.w	$vr1, $vr1, $vr0
-	vshuf4i.w	$vr2, $vr1, 16
+	vilvl.w	$vr2, $vr1, $vr1
 	vpickve2gr.d	$a2, $vr2, 1
 	andi	$a2, $a2, 1
 	vpickve2gr.w	$a3, $vr0, 1

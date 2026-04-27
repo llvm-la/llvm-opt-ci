@@ -921,12 +921,10 @@ prepare_for_pass:                       # @prepare_for_pass
 	ld.d	$t2, $a7, 0
 	vinsgr2vr.d	$vr2, $t1, 0
 	vinsgr2vr.d	$vr3, $t2, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
 	vori.b	$vr4, $vr0, 0
 	vmadd.d	$vr4, $vr2, $vr1
 	vori.b	$vr2, $vr0, 0
@@ -981,12 +979,10 @@ prepare_for_pass:                       # @prepare_for_pass
 	ld.d	$t2, $a7, 0
 	vinsgr2vr.d	$vr2, $t1, 0
 	vinsgr2vr.d	$vr3, $t2, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
 	vori.b	$vr4, $vr0, 0
 	vmadd.d	$vr4, $vr2, $vr1
 	vori.b	$vr2, $vr0, 0
@@ -1261,12 +1257,10 @@ prepare_for_pass:                       # @prepare_for_pass
 	ld.d	$t2, $a7, 0
 	vinsgr2vr.d	$vr2, $t1, 0
 	vinsgr2vr.d	$vr3, $t2, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
 	vori.b	$vr4, $vr0, 0
 	vmadd.d	$vr4, $vr2, $vr1
 	vori.b	$vr2, $vr0, 0

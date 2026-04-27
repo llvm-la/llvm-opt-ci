@@ -2996,10 +2996,10 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	move	$fp, $zero
 	pcalau12i	$a0, %pc_hi20(img_padded_size_x)
 	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
-	vrepli.b	$vr12, 0
+	vrepli.b	$vr14, 0
 	st.d	$t1, $sp, 120                   # 8-byte Folded Spill
 	st.d	$t2, $sp, 112                   # 8-byte Folded Spill
-	vst	$vr12, $sp, 160                 # 16-byte Folded Spill
+	vst	$vr14, $sp, 160                 # 16-byte Folded Spill
 	b	.LBB4_28
 	.p2align	4, , 16
 .LBB4_27:                               # %.loopexit
@@ -3108,7 +3108,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	add.d	$a3, $a3, $a4
 	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	vld	$vr12, $sp, 160                 # 16-byte Folded Reload
+	vld	$vr14, $sp, 160                 # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB4_38:                               # %.preheader548
                                         #   Parent Loop BB4_28 Depth=1
@@ -3190,8 +3190,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vmaxi.w	$vr1, $vr1, 0
 	vmin.w	$vr1, $vr1, $vr0
 	vmin.w	$vr2, $vr2, $vr0
-	vilvl.h	$vr4, $vr12, $vr3
-	vilvh.h	$vr3, $vr12, $vr3
+	vilvl.h	$vr4, $vr14, $vr3
+	vilvh.h	$vr3, $vr14, $vr3
 	vsub.w	$vr2, $vr2, $vr3
 	vsub.w	$vr1, $vr1, $vr4
 	vpickve2gr.w	$fp, $vr1, 0
@@ -3279,8 +3279,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vmaxi.w	$vr1, $vr1, 0
 	vmin.w	$vr1, $vr1, $vr0
 	vmin.w	$vr2, $vr2, $vr0
-	vilvl.h	$vr4, $vr12, $vr3
-	vilvh.h	$vr3, $vr12, $vr3
+	vilvl.h	$vr4, $vr14, $vr3
+	vilvh.h	$vr3, $vr14, $vr3
 	vsub.w	$vr2, $vr2, $vr3
 	vsub.w	$vr1, $vr1, $vr4
 	vpickve2gr.w	$fp, $vr1, 0
@@ -3380,7 +3380,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	jirl	$ra, $a3, 0
-	vld	$vr12, $sp, 160                 # 16-byte Folded Reload
+	vld	$vr14, $sp, 160                 # 16-byte Folded Reload
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	move	$s1, $a0
@@ -3558,24 +3558,18 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vinsgr2vr.d	$vr11, $s6, 0
 	vilvl.h	$vr10, $vr2, $vr10
 	vilvl.h	$vr11, $vr2, $vr11
-	vsub.w	$vr9, $vr9, $vr10
-	vsub.w	$vr8, $vr8, $vr11
-	vshuf4i.w	$vr10, $vr9, 50
-	vslli.d	$vr10, $vr10, 32
-	vsrai.d	$vr10, $vr10, 32
-	vshuf4i.w	$vr9, $vr9, 16
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
+	vsub.w	$vr12, $vr9, $vr10
+	vsub.w	$vr13, $vr8, $vr11
+	vslt.w	$vr9, $vr9, $vr10
+	vilvh.w	$vr10, $vr9, $vr12
+	vilvl.w	$vr9, $vr9, $vr12
 	vpickve2gr.d	$a3, $vr9, 0
 	vpickve2gr.d	$s6, $vr9, 1
 	vpickve2gr.d	$t3, $vr10, 0
 	vpickve2gr.d	$a6, $vr10, 1
-	vshuf4i.w	$vr9, $vr8, 50
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
-	vshuf4i.w	$vr8, $vr8, 16
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
+	vslt.w	$vr8, $vr8, $vr11
+	vilvh.w	$vr9, $vr8, $vr13
+	vilvl.w	$vr8, $vr8, $vr13
 	vpickve2gr.d	$t7, $vr8, 0
 	vpickve2gr.d	$t4, $vr8, 1
 	vpickve2gr.d	$s7, $vr9, 0
@@ -3707,24 +3701,18 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vinsgr2vr.d	$vr11, $a3, 0
 	vilvl.h	$vr10, $vr2, $vr10
 	vilvl.h	$vr11, $vr2, $vr11
-	vsub.w	$vr9, $vr9, $vr10
-	vsub.w	$vr8, $vr8, $vr11
-	vshuf4i.w	$vr10, $vr9, 50
-	vslli.d	$vr10, $vr10, 32
-	vsrai.d	$vr10, $vr10, 32
-	vshuf4i.w	$vr9, $vr9, 16
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
+	vsub.w	$vr12, $vr9, $vr10
+	vsub.w	$vr13, $vr8, $vr11
+	vslt.w	$vr9, $vr9, $vr10
+	vilvh.w	$vr10, $vr9, $vr12
+	vilvl.w	$vr9, $vr9, $vr12
 	vpickve2gr.d	$a2, $vr9, 0
 	vpickve2gr.d	$a3, $vr9, 1
 	vpickve2gr.d	$a6, $vr10, 0
 	vpickve2gr.d	$t3, $vr10, 1
-	vshuf4i.w	$vr9, $vr8, 50
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
-	vshuf4i.w	$vr8, $vr8, 16
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
+	vslt.w	$vr8, $vr8, $vr11
+	vilvh.w	$vr9, $vr8, $vr13
+	vilvl.w	$vr8, $vr8, $vr13
 	vpickve2gr.d	$t4, $vr8, 0
 	vpickve2gr.d	$t7, $vr8, 1
 	vpickve2gr.d	$s3, $vr9, 0
@@ -3856,24 +3844,18 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vinsgr2vr.d	$vr11, $a3, 0
 	vilvl.h	$vr10, $vr2, $vr10
 	vilvl.h	$vr11, $vr2, $vr11
-	vsub.w	$vr9, $vr9, $vr10
-	vsub.w	$vr8, $vr8, $vr11
-	vshuf4i.w	$vr10, $vr9, 50
-	vslli.d	$vr10, $vr10, 32
-	vsrai.d	$vr10, $vr10, 32
-	vshuf4i.w	$vr9, $vr9, 16
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
+	vsub.w	$vr12, $vr9, $vr10
+	vsub.w	$vr13, $vr8, $vr11
+	vslt.w	$vr9, $vr9, $vr10
+	vilvh.w	$vr10, $vr9, $vr12
+	vilvl.w	$vr9, $vr9, $vr12
 	vpickve2gr.d	$a2, $vr9, 0
 	vpickve2gr.d	$a3, $vr9, 1
 	vpickve2gr.d	$a6, $vr10, 0
 	vpickve2gr.d	$t3, $vr10, 1
-	vshuf4i.w	$vr9, $vr8, 50
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
-	vshuf4i.w	$vr8, $vr8, 16
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
+	vslt.w	$vr8, $vr8, $vr11
+	vilvh.w	$vr9, $vr8, $vr13
+	vilvl.w	$vr8, $vr8, $vr13
 	vpickve2gr.d	$t4, $vr8, 0
 	vpickve2gr.d	$t7, $vr8, 1
 	vpickve2gr.d	$s7, $vr9, 0
@@ -3964,7 +3946,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
                                         #   in Loop: Header=BB4_50 Depth=4
 	add.d	$s6, $s4, $t6
 	add.d	$s1, $a4, $t6
-	vori.b	$vr2, $vr12, 0
+	vori.b	$vr2, $vr14, 0
 	vinsgr2vr.w	$vr2, $t8, 0
 	vreplgr2vr.w	$vr3, $fp
 	vreplgr2vr.w	$vr4, $s2
@@ -3972,7 +3954,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	addi.d	$a0, $a4, 8
 	addi.d	$a4, $s4, 8
 	move	$t8, $t5
-	vori.b	$vr6, $vr12, 0
+	vori.b	$vr6, $vr14, 0
 	.p2align	4, , 16
 .LBB4_72:                               # %vector.body
                                         #   Parent Loop BB4_28 Depth=1
@@ -3984,8 +3966,8 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	ld.d	$a3, $a0, 0
 	vinsgr2vr.d	$vr7, $a2, 0
 	vinsgr2vr.d	$vr8, $a3, 0
-	vilvl.h	$vr7, $vr12, $vr7
-	vilvl.h	$vr8, $vr12, $vr8
+	vilvl.h	$vr7, $vr14, $vr7
+	vilvl.h	$vr8, $vr14, $vr8
 	vori.b	$vr9, $vr0, 0
 	vmadd.w	$vr9, $vr4, $vr7
 	vori.b	$vr7, $vr0, 0
@@ -4002,26 +3984,20 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 	vmin.w	$vr7, $vr7, $vr3
 	vinsgr2vr.d	$vr9, $a2, 0
 	vinsgr2vr.d	$vr10, $a3, 0
-	vilvl.h	$vr9, $vr12, $vr9
-	vilvl.h	$vr10, $vr12, $vr10
-	vsub.w	$vr8, $vr8, $vr9
-	vsub.w	$vr7, $vr7, $vr10
-	vshuf4i.w	$vr9, $vr8, 50
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
-	vshuf4i.w	$vr8, $vr8, 16
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
+	vilvl.h	$vr9, $vr14, $vr9
+	vilvl.h	$vr10, $vr14, $vr10
+	vsub.w	$vr11, $vr8, $vr9
+	vsub.w	$vr12, $vr7, $vr10
+	vslt.w	$vr8, $vr8, $vr9
+	vilvh.w	$vr9, $vr8, $vr11
+	vilvl.w	$vr8, $vr8, $vr11
 	vpickve2gr.d	$a2, $vr8, 0
 	vpickve2gr.d	$a3, $vr8, 1
 	vpickve2gr.d	$a6, $vr9, 0
 	vpickve2gr.d	$t3, $vr9, 1
-	vshuf4i.w	$vr8, $vr7, 50
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
-	vshuf4i.w	$vr7, $vr7, 16
-	vslli.d	$vr7, $vr7, 32
-	vsrai.d	$vr7, $vr7, 32
+	vslt.w	$vr7, $vr7, $vr10
+	vilvh.w	$vr8, $vr7, $vr12
+	vilvl.w	$vr7, $vr7, $vr12
 	vpickve2gr.d	$t4, $vr7, 0
 	vpickve2gr.d	$t7, $vr7, 1
 	vpickve2gr.d	$s4, $vr8, 0

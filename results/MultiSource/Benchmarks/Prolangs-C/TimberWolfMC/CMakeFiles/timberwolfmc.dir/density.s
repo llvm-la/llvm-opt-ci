@@ -663,26 +663,20 @@ density:                                # @density
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr3, $s2, -16
 	vld	$vr4, $s2, 0
-	vshuf4i.w	$vr5, $vr3, 50
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
+	vslti.w	$vr5, $vr3, 0
+	vilvh.w	$vr6, $vr5, $vr3
+	vilvl.w	$vr3, $vr5, $vr3
 	vpickve2gr.d	$s4, $vr3, 0
 	vpickve2gr.d	$s5, $vr3, 1
-	vpickve2gr.d	$s6, $vr5, 0
-	vpickve2gr.d	$s7, $vr5, 1
-	vshuf4i.w	$vr3, $vr4, 50
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vshuf4i.w	$vr4, $vr4, 16
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
-	vpickve2gr.d	$s8, $vr4, 0
-	vpickve2gr.d	$ra, $vr4, 1
-	vpickve2gr.d	$a0, $vr3, 0
-	vpickve2gr.d	$a1, $vr3, 1
+	vpickve2gr.d	$s6, $vr6, 0
+	vpickve2gr.d	$s7, $vr6, 1
+	vslti.w	$vr3, $vr4, 0
+	vilvh.w	$vr5, $vr3, $vr4
+	vilvl.w	$vr3, $vr3, $vr4
+	vpickve2gr.d	$s8, $vr3, 0
+	vpickve2gr.d	$ra, $vr3, 1
+	vpickve2gr.d	$a0, $vr5, 0
+	vpickve2gr.d	$a1, $vr5, 1
 	mul.d	$s4, $s4, $t0
 	add.d	$s4, $t5, $s4
 	mul.d	$s5, $s5, $t0
@@ -903,26 +897,20 @@ density:                                # @density
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr3, $s0, -16
 	vld	$vr4, $s0, 0
-	vshuf4i.w	$vr5, $vr3, 50
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
+	vslti.w	$vr5, $vr3, 0
+	vilvh.w	$vr6, $vr5, $vr3
+	vilvl.w	$vr3, $vr5, $vr3
 	vpickve2gr.d	$s2, $vr3, 0
 	vpickve2gr.d	$s3, $vr3, 1
-	vpickve2gr.d	$s4, $vr5, 0
-	vpickve2gr.d	$s5, $vr5, 1
-	vshuf4i.w	$vr3, $vr4, 50
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vshuf4i.w	$vr4, $vr4, 16
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
-	vpickve2gr.d	$s6, $vr4, 0
-	vpickve2gr.d	$s7, $vr4, 1
-	vpickve2gr.d	$s8, $vr3, 0
-	vpickve2gr.d	$ra, $vr3, 1
+	vpickve2gr.d	$s4, $vr6, 0
+	vpickve2gr.d	$s5, $vr6, 1
+	vslti.w	$vr3, $vr4, 0
+	vilvh.w	$vr5, $vr3, $vr4
+	vilvl.w	$vr3, $vr3, $vr4
+	vpickve2gr.d	$s6, $vr3, 0
+	vpickve2gr.d	$s7, $vr3, 1
+	vpickve2gr.d	$s8, $vr5, 0
+	vpickve2gr.d	$ra, $vr5, 1
 	mul.d	$s2, $s2, $a6
 	add.d	$s2, $t3, $s2
 	mul.d	$s3, $s3, $a6

@@ -2515,25 +2515,23 @@ lame_encode_buffer:                     # @lame_encode_buffer
 .LBB5_48:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a1, 0
-	vilvl.h	$vr2, $vr1, $vr1
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vld	$vr3, $a2, 0
-	vilvh.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vilvl.h	$vr4, $vr3, $vr3
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvh.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vadd.w	$vr1, $vr3, $vr1
-	vadd.w	$vr2, $vr4, $vr2
+	vld	$vr2, $a2, 0
+	vslti.h	$vr3, $vr1, 0
+	vilvl.h	$vr4, $vr3, $vr1
+	vilvh.h	$vr1, $vr3, $vr1
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr5, $vr3, $vr2
+	vilvh.h	$vr2, $vr3, $vr2
+	vadd.w	$vr1, $vr2, $vr1
+	vadd.w	$vr2, $vr5, $vr4
 	vsrli.w	$vr3, $vr2, 31
-	vavg.wu	$vr2, $vr2, $vr3
+	vand.v	$vr3, $vr2, $vr3
+	vsrli.w	$vr2, $vr2, 1
+	vadd.w	$vr2, $vr3, $vr2
 	vsrli.w	$vr3, $vr1, 31
-	vavg.wu	$vr1, $vr1, $vr3
+	vand.v	$vr3, $vr1, $vr3
+	vsrli.w	$vr1, $vr1, 1
+	vadd.w	$vr1, $vr3, $vr1
 	vpickev.h	$vr1, $vr1, $vr2
 	vst	$vr1, $a1, 0
 	vst	$vr0, $a2, 0

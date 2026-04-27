@@ -208,12 +208,10 @@ procesnet:                              # @procesnet
 	ld.d	$t1, $a6, 0
 	vinsgr2vr.d	$vr3, $t0, 0
 	vinsgr2vr.d	$vr4, $t1, 0
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvl.h	$vr4, $vr4, $vr4
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
+	vslti.h	$vr5, $vr3, 0
+	vilvl.h	$vr3, $vr5, $vr3
+	vslti.h	$vr5, $vr4, 0
+	vilvl.h	$vr4, $vr5, $vr4
 	vslt.w	$vr3, $vr0, $vr3
 	vslt.w	$vr4, $vr0, $vr4
 	vsub.w	$vr1, $vr1, $vr3

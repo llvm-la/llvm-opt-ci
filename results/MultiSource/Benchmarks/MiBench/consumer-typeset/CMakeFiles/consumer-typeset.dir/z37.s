@@ -4043,14 +4043,11 @@ FontChange:                             # @FontChange
 .LBB1_432:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a6, 0
-	vilvl.h	$vr3, $vr2, $vr2
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr4, $vr3, $vr2
+	vilvh.h	$vr2, $vr3, $vr2
 	vmul.w	$vr2, $vr0, $vr2
-	vmul.w	$vr3, $vr0, $vr3
+	vmul.w	$vr3, $vr0, $vr4
 	vdiv.w	$vr3, $vr3, $vr1
 	vdiv.w	$vr2, $vr2, $vr1
 	vpickev.h	$vr2, $vr2, $vr3
@@ -4111,22 +4108,16 @@ FontChange:                             # @FontChange
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a6, -16
 	vld	$vr3, $a6, 0
-	vilvl.h	$vr4, $vr2, $vr2
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvh.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr5, $vr3, $vr3
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
-	vilvh.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
+	vslti.h	$vr4, $vr2, 0
+	vilvl.h	$vr5, $vr4, $vr2
+	vilvh.h	$vr2, $vr4, $vr2
+	vslti.h	$vr4, $vr3, 0
+	vilvl.h	$vr6, $vr4, $vr3
+	vilvh.h	$vr3, $vr4, $vr3
 	vmul.w	$vr2, $vr0, $vr2
-	vmul.w	$vr4, $vr0, $vr4
+	vmul.w	$vr4, $vr0, $vr5
 	vmul.w	$vr3, $vr0, $vr3
-	vmul.w	$vr5, $vr0, $vr5
+	vmul.w	$vr5, $vr0, $vr6
 	vdiv.w	$vr4, $vr4, $vr1
 	vdiv.w	$vr2, $vr2, $vr1
 	vdiv.w	$vr5, $vr5, $vr1

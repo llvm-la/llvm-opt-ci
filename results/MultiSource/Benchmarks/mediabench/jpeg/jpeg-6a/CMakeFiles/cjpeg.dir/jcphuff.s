@@ -987,16 +987,13 @@ encode_mcu_AC_refine:                   # @encode_mcu_AC_refine
 .LBB5_8:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr6, $a4, 0
-	vshuf4i.w	$vr7, $vr6, 50
-	vslli.d	$vr7, $vr7, 32
-	vsrai.d	$vr7, $vr7, 32
-	vshuf4i.w	$vr6, $vr6, 16
-	vslli.d	$vr6, $vr6, 32
-	vsrai.d	$vr6, $vr6, 32
+	vslti.w	$vr7, $vr6, 0
+	vilvh.w	$vr8, $vr7, $vr6
+	vilvl.w	$vr6, $vr7, $vr6
 	vpickve2gr.d	$a7, $vr6, 0
 	vpickve2gr.d	$t0, $vr6, 1
-	vpickve2gr.d	$t1, $vr7, 0
-	vpickve2gr.d	$t2, $vr7, 1
+	vpickve2gr.d	$t1, $vr8, 0
+	vpickve2gr.d	$t2, $vr8, 1
 	slli.d	$a7, $a7, 1
 	slli.d	$t0, $t0, 1
 	slli.d	$t1, $t1, 1

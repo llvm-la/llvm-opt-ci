@@ -754,43 +754,42 @@ main:                                   # @main
 	vadd.d	$vr11, $vr3, $vr11
 	vpickve2gr.d	$a4, $vr11, 0
 	ld.w	$a4, $a4, 0
-	vpickve2gr.d	$a5, $vr12, 0
+	vpickve2gr.d	$a5, $vr11, 1
 	ld.w	$a5, $a5, 0
-	vpickve2gr.d	$a6, $vr12, 1
+	vpickve2gr.d	$a6, $vr12, 0
 	ld.w	$a6, $a6, 0
-	vpickve2gr.d	$a7, $vr11, 1
+	vpickve2gr.d	$a7, $vr12, 1
 	ld.w	$a7, $a7, 0
-	vinsgr2vr.w	$vr11, $a5, 0
+	vinsgr2vr.w	$vr11, $a4, 0
+	vinsgr2vr.w	$vr11, $a5, 1
 	vinsgr2vr.w	$vr11, $a6, 2
-	vslli.d	$vr11, $vr11, 32
-	vsrai.d	$vr11, $vr11, 32
-	vinsgr2vr.w	$vr12, $a4, 0
-	vinsgr2vr.w	$vr12, $a7, 2
-	vslli.d	$vr12, $vr12, 32
-	vsrai.d	$vr12, $vr12, 32
-	vmuh.du	$vr13, $vr12, $vr4
-	vsub.d	$vr14, $vr12, $vr13
+	vinsgr2vr.w	$vr11, $a7, 3
+	vslti.w	$vr12, $vr11, 0
+	vilvh.w	$vr13, $vr12, $vr11
+	vilvl.w	$vr11, $vr12, $vr11
+	vmuh.du	$vr12, $vr11, $vr4
+	vsub.d	$vr14, $vr11, $vr12
 	vsrli.d	$vr14, $vr14, 1
-	vadd.d	$vr13, $vr14, $vr13
-	vsrli.d	$vr13, $vr13, 6
-	vmsub.d	$vr12, $vr13, $vr5
-	vmuh.du	$vr13, $vr11, $vr4
-	vsub.d	$vr14, $vr11, $vr13
+	vadd.d	$vr12, $vr14, $vr12
+	vsrli.d	$vr12, $vr12, 6
+	vmsub.d	$vr11, $vr12, $vr5
+	vmuh.du	$vr12, $vr13, $vr4
+	vsub.d	$vr14, $vr13, $vr12
 	vsrli.d	$vr14, $vr14, 1
-	vadd.d	$vr13, $vr14, $vr13
-	vsrli.d	$vr13, $vr13, 6
-	vmsub.d	$vr11, $vr13, $vr5
+	vadd.d	$vr12, $vr14, $vr12
+	vsrli.d	$vr12, $vr12, 6
+	vmsub.d	$vr13, $vr12, $vr5
+	vslli.d	$vr12, $vr13, 2
+	vadd.d	$vr12, $vr6, $vr12
 	vslli.d	$vr11, $vr11, 2
 	vadd.d	$vr11, $vr6, $vr11
-	vslli.d	$vr12, $vr12, 2
-	vadd.d	$vr12, $vr6, $vr12
-	vpickve2gr.d	$a4, $vr12, 0
+	vpickve2gr.d	$a4, $vr11, 0
 	ld.w	$a4, $a4, 0
-	vpickve2gr.d	$a5, $vr12, 1
+	vpickve2gr.d	$a5, $vr11, 1
 	ld.w	$a5, $a5, 0
-	vpickve2gr.d	$a6, $vr11, 0
+	vpickve2gr.d	$a6, $vr12, 0
 	ld.w	$a6, $a6, 0
-	vpickve2gr.d	$a7, $vr11, 1
+	vpickve2gr.d	$a7, $vr12, 1
 	ld.w	$a7, $a7, 0
 	vinsgr2vr.w	$vr11, $a4, 0
 	vinsgr2vr.w	$vr11, $a5, 1

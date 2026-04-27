@@ -3660,24 +3660,22 @@ DoAssignIteration:                      # @DoAssignIteration
 	vseqi.h	$vr3, $vr3, 1
 	vandn.v	$vr2, $vr3, $vr2
 	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr3, $vr2, 16
-	vsrai.w	$vr3, $vr3, 16
-	vpickve2gr.w	$a3, $vr3, 0
+	vpickve2gr.w	$a3, $vr2, 0
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB10_94
 # %bb.87:                               # %pred.store.continue68
                                         #   in Loop: Header=BB10_51 Depth=4
-	vpickve2gr.w	$a3, $vr3, 1
+	vpickve2gr.w	$a3, $vr2, 1
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB10_95
 .LBB10_88:                              # %pred.store.continue70
                                         #   in Loop: Header=BB10_51 Depth=4
-	vpickve2gr.w	$a3, $vr3, 2
+	vpickve2gr.w	$a3, $vr2, 2
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB10_96
 .LBB10_89:                              # %pred.store.continue72
                                         #   in Loop: Header=BB10_51 Depth=4
-	vpickve2gr.w	$a3, $vr3, 3
+	vpickve2gr.w	$a3, $vr2, 3
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB10_91
 .LBB10_90:                              # %pred.store.if73
@@ -3732,7 +3730,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$a3, $a3, 448
 	add.d	$a3, $sp, $a3
 	st.h	$s1, $a3, 0
-	vpickve2gr.w	$a3, $vr3, 1
+	vpickve2gr.w	$a3, $vr2, 1
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB10_88
 .LBB10_95:                              # %pred.store.if69
@@ -3741,7 +3739,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$a3, $a3, 450
 	add.d	$a3, $sp, $a3
 	st.h	$s1, $a3, 0
-	vpickve2gr.w	$a3, $vr3, 2
+	vpickve2gr.w	$a3, $vr2, 2
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB10_89
 .LBB10_96:                              # %pred.store.if71
@@ -3750,7 +3748,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$a3, $a3, 452
 	add.d	$a3, $sp, $a3
 	st.h	$s1, $a3, 0
-	vpickve2gr.w	$a3, $vr3, 3
+	vpickve2gr.w	$a3, $vr2, 3
 	andi	$a3, $a3, 1
 	bnez	$a3, .LBB10_90
 	b	.LBB10_91

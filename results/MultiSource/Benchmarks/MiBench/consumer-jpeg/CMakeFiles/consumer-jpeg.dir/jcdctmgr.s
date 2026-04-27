@@ -340,19 +340,17 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	addi.d	$a2, $a2, %pc_lo12(start_pass_fdctmgr.aanscales)
 	ldx.d	$a2, $a2, $a1
 	vinsgr2vr.d	$vr2, $a2, 0
-	vilvl.h	$vr3, $vr2, $vr2
-	vextrins.h	$vr2, $vr2, 65
-	vslli.d	$vr2, $vr2, 48
-	vsrai.d	$vr2, $vr2, 48
-	vilvh.w	$vr3, $vr3, $vr3
-	vslli.d	$vr3, $vr3, 48
-	vsrai.d	$vr3, $vr3, 48
-	vori.b	$vr4, $vr14, 0
-	vmadd.d	$vr4, $vr3, $vr0
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr2, $vr3, $vr2
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr4, $vr3, $vr2
+	vilvh.w	$vr2, $vr3, $vr2
+	vori.b	$vr3, $vr14, 0
+	vmadd.d	$vr3, $vr2, $vr0
 	vori.b	$vr0, $vr14, 0
-	vmadd.d	$vr0, $vr2, $vr1
+	vmadd.d	$vr0, $vr4, $vr1
 	vsrli.d	$vr0, $vr0, 11
-	vsrli.d	$vr1, $vr4, 11
+	vsrli.d	$vr1, $vr3, 11
 	vpickev.w	$vr0, $vr1, $vr0
 	vst	$vr0, $a0, 0
 	addi.d	$a1, $a1, 8

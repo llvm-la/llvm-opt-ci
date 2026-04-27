@@ -239,7 +239,7 @@ createFccLattice:                       # @createFccLattice
 	movfr2gr.s	$a0, $fa2
 	vinsgr2vr.w	$vr1, $a0, 1
 	vslt.w	$vr2, $vr0, $vr1
-	vshuf4i.w	$vr3, $vr2, 16
+	vilvl.w	$vr3, $vr2, $vr2
 	vpickve2gr.d	$a0, $vr2, 0
 	vpickve2gr.d	$a3, $vr3, 1
 	and	$a0, $a0, $a3

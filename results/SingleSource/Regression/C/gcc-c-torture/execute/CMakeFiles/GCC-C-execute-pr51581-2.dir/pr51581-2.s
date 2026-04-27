@@ -356,17 +356,14 @@ f9:                                     # @f9
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a1, $a0
 	vldx	$vr2, $a4, $a2
-	vshuf4i.w	$vr3, $vr2, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vshuf4i.w	$vr4, $vr2, 50
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
-	vmul.d	$vr4, $vr4, $vr0
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr4, $vr3, $vr2
+	vilvh.w	$vr3, $vr3, $vr2
 	vmul.d	$vr3, $vr3, $vr0
-	vsrai.d	$vr3, $vr3, 34
+	vmul.d	$vr4, $vr4, $vr0
 	vsrai.d	$vr4, $vr4, 34
-	vpickev.w	$vr3, $vr4, $vr3
+	vsrai.d	$vr3, $vr3, 34
+	vpickev.w	$vr3, $vr3, $vr4
 	vsrli.w	$vr4, $vr2, 31
 	vadd.w	$vr3, $vr3, $vr4
 	vmadd.w	$vr2, $vr3, $vr1
@@ -450,17 +447,14 @@ f11:                                    # @f11
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a1, $a0
 	vldx	$vr2, $a4, $a2
-	vshuf4i.w	$vr3, $vr2, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vshuf4i.w	$vr4, $vr2, 50
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
-	vmul.d	$vr4, $vr4, $vr0
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr4, $vr3, $vr2
+	vilvh.w	$vr3, $vr3, $vr2
 	vmul.d	$vr3, $vr3, $vr0
-	vsrai.d	$vr3, $vr3, 35
+	vmul.d	$vr4, $vr4, $vr0
 	vsrai.d	$vr4, $vr4, 35
-	vpickev.w	$vr3, $vr4, $vr3
+	vsrai.d	$vr3, $vr3, 35
+	vpickev.w	$vr3, $vr3, $vr4
 	vsrli.w	$vr4, $vr2, 31
 	vadd.w	$vr3, $vr3, $vr4
 	vmadd.w	$vr2, $vr3, $vr1

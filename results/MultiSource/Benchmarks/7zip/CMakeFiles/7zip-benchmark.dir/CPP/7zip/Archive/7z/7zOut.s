@@ -4807,12 +4807,10 @@ _ZN8NArchive3N7z11COutArchive11WriteHeaderERKNS0_16CArchiveDatabaseERKNS0_14CHea
 	vslli.w	$vr5, $vr5, 1
 	vaddi.wu	$vr4, $vr4, 2
 	vaddi.wu	$vr5, $vr5, 2
-	vshuf4i.w	$vr4, $vr4, 16
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
-	vshuf4i.w	$vr5, $vr5, 16
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
+	vslti.w	$vr6, $vr4, 0
+	vilvl.w	$vr4, $vr6, $vr4
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr5, $vr6, $vr5
 	vadd.d	$vr1, $vr1, $vr4
 	vadd.d	$vr2, $vr2, $vr5
 	addi.d	$a4, $a4, -4

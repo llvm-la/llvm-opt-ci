@@ -508,30 +508,29 @@ PutVbrTag:                              # @PutVbrTag
 	vfmul.d	$vr8, $vr8, $vr2
 	vfrintrm.d	$vr8, $vr8
 	vfrintrm.d	$vr9, $vr9
-	vreplvei.d	$vr10, $vr9, 1
+	vreplvei.d	$vr10, $vr9, 0
 	ftintrz.w.d	$ft2, $ft2
 	movfr2gr.s	$a5, $ft2
-	vreplvei.d	$vr9, $vr9, 0
+	vinsgr2vr.w	$vr10, $a5, 0
+	vreplvei.d	$vr9, $vr9, 1
 	ftintrz.w.d	$ft1, $ft1
-	movfr2gr.s	$a6, $ft1
-	vreplvei.d	$vr9, $vr8, 1
+	movfr2gr.s	$a5, $ft1
+	vinsgr2vr.w	$vr10, $a5, 1
+	vreplvei.d	$vr9, $vr8, 0
 	ftintrz.w.d	$ft1, $ft1
-	movfr2gr.s	$a7, $ft1
-	vreplvei.d	$vr8, $vr8, 0
+	movfr2gr.s	$a5, $ft1
+	vinsgr2vr.w	$vr10, $a5, 2
+	vreplvei.d	$vr8, $vr8, 1
 	ftintrz.w.d	$ft0, $ft0
-	movfr2gr.s	$t0, $ft0
-	vinsgr2vr.w	$vr8, $t0, 0
-	vinsgr2vr.w	$vr8, $a7, 2
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
-	vinsgr2vr.w	$vr9, $a6, 0
-	vinsgr2vr.w	$vr9, $a5, 2
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
-	vpickve2gr.d	$a5, $vr9, 0
-	vpickve2gr.d	$a6, $vr9, 1
-	vpickve2gr.d	$a7, $vr8, 0
-	vpickve2gr.d	$t0, $vr8, 1
+	movfr2gr.s	$a5, $ft0
+	vinsgr2vr.w	$vr10, $a5, 3
+	vslti.w	$vr8, $vr10, 0
+	vilvh.w	$vr9, $vr8, $vr10
+	vilvl.w	$vr8, $vr8, $vr10
+	vpickve2gr.d	$a5, $vr8, 0
+	vpickve2gr.d	$a6, $vr8, 1
+	vpickve2gr.d	$a7, $vr9, 0
+	vpickve2gr.d	$t0, $vr9, 1
 	slli.d	$a5, $a5, 2
 	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
