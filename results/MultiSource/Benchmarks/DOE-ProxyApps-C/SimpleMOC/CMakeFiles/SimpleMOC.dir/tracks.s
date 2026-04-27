@@ -895,12 +895,10 @@ load_OpenMOC_tracks:                    # @load_OpenMOC_tracks
 	ld.d	$a5, $a2, 0
 	vinsgr2vr.d	$vr2, $a4, 0
 	vinsgr2vr.d	$vr3, $a5, 0
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
 	vadd.d	$vr0, $vr0, $vr2
 	vadd.d	$vr1, $vr1, $vr3
 	addi.d	$a3, $a3, -4

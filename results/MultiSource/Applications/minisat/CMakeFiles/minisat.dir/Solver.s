@@ -2342,26 +2342,20 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	vld	$vr3, $a6, 0
 	vsrai.w	$vr2, $vr2, 1
 	vsrai.w	$vr3, $vr3, 1
-	vshuf4i.w	$vr4, $vr2, 50
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
-	vshuf4i.w	$vr2, $vr2, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
+	vslti.w	$vr4, $vr2, 0
+	vilvh.w	$vr5, $vr4, $vr2
+	vilvl.w	$vr2, $vr4, $vr2
 	vpickve2gr.d	$t0, $vr2, 0
 	vpickve2gr.d	$t1, $vr2, 1
-	vpickve2gr.d	$t2, $vr4, 0
-	vpickve2gr.d	$t3, $vr4, 1
-	vshuf4i.w	$vr2, $vr3, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr3, $vr3, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vpickve2gr.d	$t4, $vr3, 0
-	vpickve2gr.d	$t5, $vr3, 1
-	vpickve2gr.d	$t6, $vr2, 0
-	vpickve2gr.d	$t7, $vr2, 1
+	vpickve2gr.d	$t2, $vr5, 0
+	vpickve2gr.d	$t3, $vr5, 1
+	vslti.w	$vr2, $vr3, 0
+	vilvh.w	$vr4, $vr2, $vr3
+	vilvl.w	$vr2, $vr2, $vr3
+	vpickve2gr.d	$t4, $vr2, 0
+	vpickve2gr.d	$t5, $vr2, 1
+	vpickve2gr.d	$t6, $vr4, 0
+	vpickve2gr.d	$t7, $vr4, 1
 	slli.d	$t0, $t0, 2
 	slli.d	$t1, $t1, 2
 	slli.d	$t2, $t2, 2

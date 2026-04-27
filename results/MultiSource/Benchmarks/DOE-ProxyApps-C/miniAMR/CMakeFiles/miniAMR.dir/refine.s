@@ -1656,34 +1656,32 @@ refine_level:                           # @refine_level
 	ld.w	$t0, $a4, -24
 	ld.w	$t1, $a4, -16
 	ld.w	$t2, $a4, -8
-	ld.w	$t3, $a4, 0
-	ld.w	$t4, $a4, 8
-	ld.w	$t5, $a4, 16
-	ld.w	$t6, $a4, 24
-	vinsgr2vr.w	$vr2, $t1, 0
-	vinsgr2vr.w	$vr2, $t2, 2
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.w	$vr2, $t0, 1
+	vinsgr2vr.w	$vr2, $t1, 2
+	vinsgr2vr.w	$vr2, $t2, 3
+	ld.w	$a7, $a4, 0
+	ld.w	$t0, $a4, 8
+	ld.w	$t1, $a4, 16
+	ld.w	$t2, $a4, 24
 	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr3, $t0, 2
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vpickve2gr.d	$a7, $vr3, 0
-	vpickve2gr.d	$t0, $vr3, 1
-	vpickve2gr.d	$t1, $vr2, 0
-	vpickve2gr.d	$t2, $vr2, 1
-	vinsgr2vr.w	$vr2, $t5, 0
-	vinsgr2vr.w	$vr2, $t6, 2
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vinsgr2vr.w	$vr3, $t3, 0
-	vinsgr2vr.w	$vr3, $t4, 2
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vpickve2gr.d	$t3, $vr3, 0
-	vpickve2gr.d	$t4, $vr3, 1
-	vpickve2gr.d	$t5, $vr2, 0
-	vpickve2gr.d	$t6, $vr2, 1
+	vinsgr2vr.w	$vr3, $t0, 1
+	vinsgr2vr.w	$vr3, $t1, 2
+	vinsgr2vr.w	$vr3, $t2, 3
+	vslti.w	$vr4, $vr2, 0
+	vilvh.w	$vr5, $vr4, $vr2
+	vilvl.w	$vr2, $vr4, $vr2
+	vpickve2gr.d	$a7, $vr2, 0
+	vpickve2gr.d	$t0, $vr2, 1
+	vpickve2gr.d	$t1, $vr5, 0
+	vpickve2gr.d	$t2, $vr5, 1
+	vslti.w	$vr2, $vr3, 0
+	vilvh.w	$vr4, $vr2, $vr3
+	vilvl.w	$vr2, $vr2, $vr3
+	vpickve2gr.d	$t3, $vr2, 0
+	vpickve2gr.d	$t4, $vr2, 1
+	vpickve2gr.d	$t5, $vr4, 0
+	vpickve2gr.d	$t6, $vr4, 1
 	mul.d	$a7, $a7, $a5
 	add.d	$a7, $a1, $a7
 	mul.d	$t0, $t0, $a5

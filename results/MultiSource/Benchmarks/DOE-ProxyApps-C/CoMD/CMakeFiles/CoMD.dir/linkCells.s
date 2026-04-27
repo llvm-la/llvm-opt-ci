@@ -595,7 +595,7 @@ getBoxFromCoord:                        # @getBoxFromCoord
 	vpickve2gr.w	$a3, $vr0, 0
 	addi.w	$a5, $a3, -1
 	vseq.w	$vr1, $vr0, $vr1
-	vshuf4i.w	$vr2, $vr1, 16
+	vilvl.w	$vr2, $vr1, $vr1
 	vpickve2gr.d	$a6, $vr1, 0
 	andi	$a6, $a6, 1
 	masknez	$a2, $a2, $a6
@@ -866,7 +866,7 @@ updateLinkCells:                        # @updateLinkCells
 	b	.LBB7_25
 	.p2align	4, , 16
 .LBB7_16:                               #   in Loop: Header=BB7_11 Depth=2
-	vshuf4i.w	$vr2, $vr2, 16
+	vilvl.w	$vr2, $vr2, $vr2
 	addi.w	$s2, $t8, -1
 	vpickve2gr.d	$s3, $vr2, 1
 	andi	$s3, $s3, 1

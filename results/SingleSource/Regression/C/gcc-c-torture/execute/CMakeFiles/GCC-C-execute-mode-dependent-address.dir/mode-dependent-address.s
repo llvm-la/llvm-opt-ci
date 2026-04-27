@@ -14,11 +14,10 @@ f883b:                                  # @f883b
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a1, 0
 	vinsgr2vr.w	$vr1, $a6, 0
-	vmini.h	$vr1, $vr1, 1
 	ld.d	$a6, $a2, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vmini.h	$vr1, $vr1, 1
+	vslti.h	$vr2, $vr1, 0
+	vilvl.h	$vr1, $vr2, $vr1
 	vinsgr2vr.d	$vr2, $a6, 0
 	vld	$vr3, $a3, 0
 	vsra.w	$vr1, $vr1, $vr2
@@ -107,11 +106,10 @@ main:                                   # @main
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a3, 0
 	vinsgr2vr.w	$vr1, $a6, 0
-	vmini.h	$vr1, $vr1, 1
 	ld.d	$a6, $a2, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vmini.h	$vr1, $vr1, 1
+	vslti.h	$vr2, $vr1, 0
+	vilvl.h	$vr1, $vr2, $vr1
 	vinsgr2vr.d	$vr2, $a6, 0
 	vld	$vr3, $a1, 0
 	vsra.w	$vr1, $vr1, $vr2

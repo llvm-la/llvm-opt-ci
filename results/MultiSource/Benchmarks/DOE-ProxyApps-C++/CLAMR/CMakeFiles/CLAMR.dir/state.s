@@ -1133,26 +1133,20 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	vld	$vr2, $t0, -16
 	vld	$vr3, $t0, 0
 	vld	$vr5, $a7, 0
-	vshuf4i.w	$vr6, $vr4, 50
-	vslli.d	$vr6, $vr6, 32
-	vsrai.d	$vr6, $vr6, 32
-	vshuf4i.w	$vr4, $vr4, 16
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
+	vslti.w	$vr6, $vr4, 0
+	vilvh.w	$vr7, $vr6, $vr4
+	vilvl.w	$vr4, $vr6, $vr4
 	vpickve2gr.d	$t2, $vr4, 0
 	vpickve2gr.d	$t3, $vr4, 1
-	vpickve2gr.d	$t4, $vr6, 0
-	vpickve2gr.d	$t5, $vr6, 1
-	vshuf4i.w	$vr4, $vr5, 50
-	vslli.d	$vr4, $vr4, 32
-	vsrai.d	$vr4, $vr4, 32
-	vshuf4i.w	$vr5, $vr5, 16
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
-	vpickve2gr.d	$s0, $vr5, 0
-	vpickve2gr.d	$ra, $vr5, 1
-	vpickve2gr.d	$s1, $vr4, 0
-	vpickve2gr.d	$s2, $vr4, 1
+	vpickve2gr.d	$t4, $vr7, 0
+	vpickve2gr.d	$t5, $vr7, 1
+	vslti.w	$vr4, $vr5, 0
+	vilvh.w	$vr6, $vr4, $vr5
+	vilvl.w	$vr4, $vr4, $vr5
+	vpickve2gr.d	$s0, $vr4, 0
+	vpickve2gr.d	$ra, $vr4, 1
+	vpickve2gr.d	$s1, $vr6, 0
+	vpickve2gr.d	$s2, $vr6, 1
 	slli.d	$t6, $t2, 2
 	slli.d	$t7, $t3, 2
 	slli.d	$t8, $t4, 2

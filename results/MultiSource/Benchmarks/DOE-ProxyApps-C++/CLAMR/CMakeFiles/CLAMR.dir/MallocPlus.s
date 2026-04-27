@@ -3309,16 +3309,13 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 .LBB12_24:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, 0
-	vshuf4i.w	$vr1, $vr0, 50
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
-	vshuf4i.w	$vr0, $vr0, 16
-	vslli.d	$vr0, $vr0, 32
-	vsrai.d	$vr0, $vr0, 32
+	vslti.w	$vr1, $vr0, 0
+	vilvh.w	$vr2, $vr1, $vr0
+	vilvl.w	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a6, $vr0, 0
 	vpickve2gr.d	$a7, $vr0, 1
-	vpickve2gr.d	$t0, $vr1, 0
-	vpickve2gr.d	$t1, $vr1, 1
+	vpickve2gr.d	$t0, $vr2, 0
+	vpickve2gr.d	$t1, $vr2, 1
 	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
 	slli.d	$t0, $t0, 2
@@ -3581,16 +3578,13 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 .LBB13_24:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, 0
-	vshuf4i.w	$vr1, $vr0, 50
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
-	vshuf4i.w	$vr0, $vr0, 16
-	vslli.d	$vr0, $vr0, 32
-	vsrai.d	$vr0, $vr0, 32
+	vslti.w	$vr1, $vr0, 0
+	vilvh.w	$vr2, $vr1, $vr0
+	vilvl.w	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a6, $vr0, 0
 	vpickve2gr.d	$a7, $vr0, 1
-	vpickve2gr.d	$t0, $vr1, 0
-	vpickve2gr.d	$t1, $vr1, 1
+	vpickve2gr.d	$t0, $vr2, 0
+	vpickve2gr.d	$t1, $vr2, 1
 	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
 	slli.d	$t0, $t0, 2

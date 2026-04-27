@@ -556,14 +556,12 @@ unpc_block:                             # @unpc_block
 	ld.d	$s7, $s4, 0
 	vinsgr2vr.d	$vr4, $s6, 0
 	vinsgr2vr.d	$vr5, $s7, 0
-	vilvl.h	$vr4, $vr4, $vr4
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr5, $vr5, $vr5
+	vslti.h	$vr6, $vr4, 0
+	vilvl.h	$vr4, $vr6, $vr4
 	vld	$vr6, $s3, 0
 	vld	$vr7, $s3, -16
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
+	vslti.h	$vr8, $vr5, 0
+	vilvl.h	$vr5, $vr8, $vr5
 	vshuf4i.w	$vr6, $vr6, 27
 	vshuf4i.w	$vr7, $vr7, 27
 	vsub.w	$vr6, $vr6, $vr1

@@ -749,27 +749,21 @@ _Z5trainPsS_ii:                         # @_Z5trainPsS_ii
 .LBB13_9:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr4, $a6, 0
-	vilvh.h	$vr5, $vr4, $vr4
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
-	vld	$vr6, $a7, 0
-	vilvl.h	$vr4, $vr4, $vr4
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr7, $vr6, $vr6
-	vslli.w	$vr7, $vr7, 16
-	vsrai.w	$vr7, $vr7, 16
-	vilvh.h	$vr6, $vr6, $vr6
-	vslli.w	$vr6, $vr6, 16
-	vsrai.w	$vr6, $vr6, 16
-	vmul.w	$vr6, $vr0, $vr6
-	vmul.w	$vr7, $vr0, $vr7
-	vsrai.w	$vr7, $vr7, 15
+	vld	$vr5, $a7, 0
+	vslti.h	$vr6, $vr4, 0
+	vilvh.h	$vr7, $vr6, $vr4
+	vilvl.h	$vr4, $vr6, $vr4
+	vslti.h	$vr6, $vr5, 0
+	vilvl.h	$vr8, $vr6, $vr5
+	vilvh.h	$vr5, $vr6, $vr5
+	vmul.w	$vr5, $vr0, $vr5
+	vmul.w	$vr6, $vr0, $vr8
 	vsrai.w	$vr6, $vr6, 15
+	vsrai.w	$vr5, $vr5, 15
+	vavg.w	$vr5, $vr5, $vr1
 	vavg.w	$vr6, $vr6, $vr1
-	vavg.w	$vr7, $vr7, $vr1
-	vadd.w	$vr4, $vr7, $vr4
-	vadd.w	$vr5, $vr6, $vr5
+	vadd.w	$vr4, $vr6, $vr4
+	vadd.w	$vr5, $vr5, $vr7
 	vmax.w	$vr5, $vr5, $vr2
 	vmax.w	$vr4, $vr4, $vr2
 	vmin.w	$vr4, $vr4, $vr3
@@ -1884,16 +1878,13 @@ _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	vadd.w	$vr11, $vr10, $vr5
 	vand.v	$vr10, $vr10, $vr6
 	vsrai.w	$vr11, $vr11, 7
-	vshuf4i.w	$vr12, $vr11, 50
-	vslli.d	$vr12, $vr12, 32
-	vsrai.d	$vr12, $vr12, 32
-	vshuf4i.w	$vr11, $vr11, 16
-	vslli.d	$vr11, $vr11, 32
-	vsrai.d	$vr11, $vr11, 32
+	vslti.w	$vr12, $vr11, 0
+	vilvh.w	$vr13, $vr12, $vr11
+	vilvl.w	$vr11, $vr12, $vr11
 	vpickve2gr.d	$a7, $vr11, 0
 	vpickve2gr.d	$t0, $vr11, 1
-	vpickve2gr.d	$t1, $vr12, 0
-	vpickve2gr.d	$t2, $vr12, 1
+	vpickve2gr.d	$t1, $vr13, 0
+	vpickve2gr.d	$t2, $vr13, 1
 	alsl.d	$a7, $a7, $a2, 2
 	alsl.d	$t0, $t0, $a2, 2
 	alsl.d	$t1, $t1, $a2, 2
@@ -16487,27 +16478,21 @@ _ZN5Mixer6updateEv:                     # @_ZN5Mixer6updateEv
                                         #   Parent Loop BB57_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr4, $s2, 0
-	vilvh.h	$vr5, $vr4, $vr4
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
-	vld	$vr6, $s3, 0
-	vilvl.h	$vr4, $vr4, $vr4
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr7, $vr6, $vr6
-	vslli.w	$vr7, $vr7, 16
-	vsrai.w	$vr7, $vr7, 16
-	vilvh.h	$vr6, $vr6, $vr6
-	vslli.w	$vr6, $vr6, 16
-	vsrai.w	$vr6, $vr6, 16
-	vmul.w	$vr6, $vr3, $vr6
-	vmul.w	$vr7, $vr3, $vr7
-	vsrai.w	$vr7, $vr7, 15
+	vld	$vr5, $s3, 0
+	vslti.h	$vr6, $vr4, 0
+	vilvh.h	$vr7, $vr6, $vr4
+	vilvl.h	$vr4, $vr6, $vr4
+	vslti.h	$vr6, $vr5, 0
+	vilvl.h	$vr8, $vr6, $vr5
+	vilvh.h	$vr5, $vr6, $vr5
+	vmul.w	$vr5, $vr3, $vr5
+	vmul.w	$vr6, $vr3, $vr8
 	vsrai.w	$vr6, $vr6, 15
+	vsrai.w	$vr5, $vr5, 15
+	vavg.w	$vr5, $vr5, $vr0
 	vavg.w	$vr6, $vr6, $vr0
-	vavg.w	$vr7, $vr7, $vr0
-	vadd.w	$vr4, $vr7, $vr4
-	vadd.w	$vr5, $vr6, $vr5
+	vadd.w	$vr4, $vr6, $vr4
+	vadd.w	$vr5, $vr5, $vr7
 	vmax.w	$vr5, $vr5, $vr1
 	vmax.w	$vr4, $vr4, $vr1
 	vmin.w	$vr4, $vr4, $vr2
@@ -16778,8 +16763,8 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	lu12i.w	$s4, -8
 	lu12i.w	$a0, 7
 	ori	$s5, $a0, 4095
-	vrepli.w	$vr5, 1
-	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
+	vrepli.w	$vr6, 1
+	vst	$vr6, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB59_3
 	.p2align	4, , 16
 .LBB59_1:                               # %._crit_edge32.loopexit
@@ -16872,9 +16857,9 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	beqz	$a0, .LBB59_37
 # %bb.6:                                #   in Loop: Header=BB59_3 Depth=1
 	ld.w	$a2, $a0, 88
-	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
-	vreplgr2vr.w	$vr6, $s4
-	vldi	$vr7, -2433
+	vld	$vr6, $sp, 16                   # 16-byte Folded Reload
+	vreplgr2vr.w	$vr7, $s4
+	vldi	$vr8, -2433
 	blez	$a2, .LBB59_20
 # %bb.7:                                # %.lr.ph.i
                                         #   in Loop: Header=BB59_3 Depth=1
@@ -16981,31 +16966,25 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
                                         #     Parent Loop BB59_10 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr1, $s2, 0
-	vilvh.h	$vr2, $vr1, $vr1
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vld	$vr3, $a6, 0
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vilvl.h	$vr4, $vr3, $vr3
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvh.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vmul.w	$vr3, $vr0, $vr3
-	vmul.w	$vr4, $vr0, $vr4
-	vsrai.w	$vr4, $vr4, 15
+	vld	$vr2, $a6, 0
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr4, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr5, $vr3, $vr2
+	vilvh.h	$vr2, $vr3, $vr2
+	vmul.w	$vr2, $vr0, $vr2
+	vmul.w	$vr3, $vr0, $vr5
 	vsrai.w	$vr3, $vr3, 15
-	vavg.w	$vr3, $vr3, $vr5
-	vavg.w	$vr4, $vr4, $vr5
-	vadd.w	$vr1, $vr4, $vr1
-	vadd.w	$vr2, $vr3, $vr2
-	vmax.w	$vr2, $vr2, $vr6
-	vmax.w	$vr1, $vr1, $vr6
-	vmin.w	$vr1, $vr1, $vr7
-	vmin.w	$vr2, $vr2, $vr7
+	vsrai.w	$vr2, $vr2, 15
+	vavg.w	$vr2, $vr2, $vr6
+	vavg.w	$vr3, $vr3, $vr6
+	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr2, $vr2, $vr4
+	vmax.w	$vr2, $vr2, $vr7
+	vmax.w	$vr1, $vr1, $vr7
+	vmin.w	$vr1, $vr1, $vr8
+	vmin.w	$vr2, $vr2, $vr8
 	vpickev.h	$vr1, $vr2, $vr1
 	vst	$vr1, $s2, 0
 	addi.d	$t6, $t6, -8
@@ -21996,27 +21975,21 @@ _Z13contextModel2v:                     # @_Z13contextModel2v
                                         #   Parent Loop BB69_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr4, $s2, 0
-	vilvh.h	$vr5, $vr4, $vr4
-	vslli.w	$vr5, $vr5, 16
-	vsrai.w	$vr5, $vr5, 16
-	vld	$vr6, $s3, 0
-	vilvl.h	$vr4, $vr4, $vr4
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr7, $vr6, $vr6
-	vslli.w	$vr7, $vr7, 16
-	vsrai.w	$vr7, $vr7, 16
-	vilvh.h	$vr6, $vr6, $vr6
-	vslli.w	$vr6, $vr6, 16
-	vsrai.w	$vr6, $vr6, 16
-	vmul.w	$vr6, $vr3, $vr6
-	vmul.w	$vr7, $vr3, $vr7
-	vsrai.w	$vr7, $vr7, 15
+	vld	$vr5, $s3, 0
+	vslti.h	$vr6, $vr4, 0
+	vilvh.h	$vr7, $vr6, $vr4
+	vilvl.h	$vr4, $vr6, $vr4
+	vslti.h	$vr6, $vr5, 0
+	vilvl.h	$vr8, $vr6, $vr5
+	vilvh.h	$vr5, $vr6, $vr5
+	vmul.w	$vr5, $vr3, $vr5
+	vmul.w	$vr6, $vr3, $vr8
 	vsrai.w	$vr6, $vr6, 15
+	vsrai.w	$vr5, $vr5, 15
+	vavg.w	$vr5, $vr5, $vr0
 	vavg.w	$vr6, $vr6, $vr0
-	vavg.w	$vr7, $vr7, $vr0
-	vadd.w	$vr4, $vr7, $vr4
-	vadd.w	$vr5, $vr6, $vr5
+	vadd.w	$vr4, $vr6, $vr4
+	vadd.w	$vr5, $vr5, $vr7
 	vmax.w	$vr5, $vr5, $vr1
 	vmax.w	$vr4, $vr4, $vr1
 	vmin.w	$vr4, $vr4, $vr2

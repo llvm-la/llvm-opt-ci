@@ -621,11 +621,11 @@ board_full:                             # @board_full
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 .LCPI5_6:
-	.dword	268435456                       # 0x10000000
-	.dword	536870912                       # 0x20000000
-.LCPI5_7:
 	.dword	16777216                        # 0x1000000
 	.dword	33554432                        # 0x2000000
+.LCPI5_7:
+	.dword	268435456                       # 0x10000000
+	.dword	536870912                       # 0x20000000
 .LCPI5_8:
 	.dword	67108864                        # 0x4000000
 	.dword	134217728                       # 0x8000000
@@ -639,11 +639,11 @@ board_full:                             # @board_full
 	.dword	262144                          # 0x40000
 	.dword	524288                          # 0x80000
 .LCPI5_12:
-	.dword	65536                           # 0x10000
-	.dword	131072                          # 0x20000
-.LCPI5_13:
 	.dword	1048576                         # 0x100000
 	.dword	2097152                         # 0x200000
+.LCPI5_13:
+	.dword	65536                           # 0x10000
+	.dword	131072                          # 0x20000
 .LCPI5_14:
 	.dword	274877906944                    # 0x4000000000
 	.dword	549755813888                    # 0x8000000000
@@ -651,11 +651,11 @@ board_full:                             # @board_full
 	.dword	17179869184                     # 0x400000000
 	.dword	34359738368                     # 0x800000000
 .LCPI5_16:
-	.dword	4294967296                      # 0x100000000
-	.dword	8589934592                      # 0x200000000
-.LCPI5_17:
 	.dword	68719476736                     # 0x1000000000
 	.dword	137438953472                    # 0x2000000000
+.LCPI5_17:
+	.dword	4294967296                      # 0x100000000
+	.dword	8589934592                      # 0x200000000
 	.text
 	.globl	find_winner_p
 	.p2align	2
@@ -747,104 +747,89 @@ find_winner_p:                          # @find_winner_p
 	vinsgr2vr.b	$vr1, $a6, 15
 	vseq.b	$vr1, $vr1, $vr0
 	vilvl.b	$vr2, $vr1, $vr1
-	vilvh.h	$vr3, $vr2, $vr2
-	vilvl.w	$vr4, $vr3, $vr3
-	vslli.d	$vr4, $vr4, 56
-	vsrai.d	$vr8, $vr4, 56
-	vilvh.b	$vr4, $vr1, $vr1
-	vextrins.b	$vr1, $vr1, 129
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr7, $vr1, 56
-	vilvl.h	$vr1, $vr2, $vr2
-	vilvh.w	$vr1, $vr1, $vr1
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr6, $vr1, 56
-	vilvh.w	$vr1, $vr3, $vr3
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr5, $vr1, 56
-	vilvh.h	$vr1, $vr4, $vr4
-	vilvh.w	$vr2, $vr1, $vr1
-	vslli.d	$vr2, $vr2, 56
-	vsrai.d	$vr9, $vr2, 56
-	vilvl.h	$vr2, $vr4, $vr4
-	vilvh.w	$vr3, $vr2, $vr2
-	vslli.d	$vr3, $vr3, 56
-	vsrai.d	$vr3, $vr3, 56
-	vilvl.w	$vr2, $vr2, $vr2
-	vslli.d	$vr2, $vr2, 56
-	vsrai.d	$vr2, $vr2, 56
-	vilvl.w	$vr1, $vr1, $vr1
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr1, $vr1, 56
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr4, $vr3, $vr2
+	vslti.w	$vr5, $vr4, 0
+	vilvl.w	$vr9, $vr5, $vr4
+	vilvh.h	$vr2, $vr3, $vr2
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr8, $vr3, $vr2
+	vilvh.w	$vr7, $vr5, $vr4
+	vilvh.w	$vr6, $vr3, $vr2
+	vilvh.b	$vr1, $vr1, $vr1
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr3, $vr2, $vr1
+	vslti.w	$vr4, $vr3, 0
+	vilvh.w	$vr10, $vr4, $vr3
+	vilvl.h	$vr1, $vr2, $vr1
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr11, $vr2, $vr1
+	vilvl.w	$vr3, $vr4, $vr3
+	vilvl.w	$vr1, $vr2, $vr1
 	pcalau12i	$a2, %pc_hi20(.LCPI5_6)
-	vld	$vr4, $a2, %pc_lo12(.LCPI5_6)
+	vld	$vr2, $a2, %pc_lo12(.LCPI5_6)
+	vrepli.b	$vr5, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI5_7)
-	vld	$vr10, $a2, %pc_lo12(.LCPI5_7)
+	vld	$vr4, $a2, %pc_lo12(.LCPI5_7)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_8)
-	vld	$vr11, $a2, %pc_lo12(.LCPI5_8)
+	vld	$vr12, $a2, %pc_lo12(.LCPI5_8)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_9)
-	vld	$vr12, $a2, %pc_lo12(.LCPI5_9)
-	vand.v	$vr1, $vr1, $vr4
-	vand.v	$vr2, $vr2, $vr10
-	vand.v	$vr3, $vr3, $vr11
-	vand.v	$vr4, $vr9, $vr12
+	vld	$vr13, $a2, %pc_lo12(.LCPI5_9)
+	vbitsel.v	$vr1, $vr5, $vr2, $vr1
+	vbitsel.v	$vr2, $vr5, $vr4, $vr3
+	vbitsel.v	$vr3, $vr5, $vr12, $vr11
+	vbitsel.v	$vr4, $vr5, $vr13, $vr10
 	pcalau12i	$a2, %pc_hi20(.LCPI5_10)
-	vld	$vr9, $a2, %pc_lo12(.LCPI5_10)
+	vld	$vr10, $a2, %pc_lo12(.LCPI5_10)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_11)
-	vld	$vr10, $a2, %pc_lo12(.LCPI5_11)
+	vld	$vr11, $a2, %pc_lo12(.LCPI5_11)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_12)
-	vld	$vr11, $a2, %pc_lo12(.LCPI5_12)
+	vld	$vr12, $a2, %pc_lo12(.LCPI5_12)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_13)
-	vld	$vr12, $a2, %pc_lo12(.LCPI5_13)
-	vand.v	$vr5, $vr5, $vr9
-	vand.v	$vr6, $vr6, $vr10
-	vand.v	$vr7, $vr7, $vr11
-	vand.v	$vr8, $vr8, $vr12
+	vld	$vr13, $a2, %pc_lo12(.LCPI5_13)
+	vbitsel.v	$vr6, $vr5, $vr10, $vr6
+	vbitsel.v	$vr7, $vr5, $vr11, $vr7
+	vbitsel.v	$vr8, $vr5, $vr12, $vr8
+	vbitsel.v	$vr9, $vr5, $vr13, $vr9
 	ld.b	$a2, $a1, 39
 	ld.b	$a3, $a1, 46
 	ld.h	$a4, $a1, 32
 	ld.b	$a5, $a1, 5
 	ld.b	$a6, $a1, 12
 	ld.b	$a7, $a1, 19
-	vinsgr2vr.h	$vr9, $a4, 0
+	vinsgr2vr.h	$vr10, $a4, 0
 	ld.b	$a4, $a1, 26
-	vori.b	$vr10, $vr9, 0
-	vinsgr2vr.b	$vr10, $a2, 1
-	vinsgr2vr.b	$vr10, $a3, 2
-	vinsgr2vr.b	$vr10, $a5, 3
-	vinsgr2vr.b	$vr10, $a6, 4
-	vinsgr2vr.b	$vr10, $a7, 5
-	vinsgr2vr.b	$vr10, $a4, 6
-	vextrins.b	$vr10, $vr9, 113
-	vseq.b	$vr0, $vr10, $vr0
-	vilvl.b	$vr9, $vr0, $vr0
-	vilvh.h	$vr10, $vr9, $vr9
-	vilvl.w	$vr11, $vr10, $vr10
-	vslli.d	$vr11, $vr11, 56
-	vsrai.d	$vr11, $vr11, 56
-	vextrins.b	$vr0, $vr0, 129
-	vslli.d	$vr0, $vr0, 56
-	vilvl.h	$vr9, $vr9, $vr9
-	vilvh.w	$vr9, $vr9, $vr9
-	vslli.d	$vr9, $vr9, 56
-	vsrai.d	$vr9, $vr9, 56
-	vilvh.w	$vr10, $vr10, $vr10
+	vori.b	$vr11, $vr10, 0
+	vinsgr2vr.b	$vr11, $a2, 1
+	vinsgr2vr.b	$vr11, $a3, 2
+	vinsgr2vr.b	$vr11, $a5, 3
+	vinsgr2vr.b	$vr11, $a6, 4
+	vinsgr2vr.b	$vr11, $a7, 5
+	vinsgr2vr.b	$vr11, $a4, 6
+	vextrins.b	$vr11, $vr10, 113
+	vseq.b	$vr0, $vr11, $vr0
+	vilvl.b	$vr0, $vr0, $vr0
+	vilvl.h	$vr10, $vr0, $vr0
+	vslti.w	$vr11, $vr10, 0
+	vilvl.w	$vr12, $vr11, $vr10
+	vilvh.h	$vr0, $vr0, $vr0
+	vslti.w	$vr13, $vr0, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI5_14)
-	vld	$vr12, $a2, %pc_lo12(.LCPI5_14)
+	vld	$vr14, $a2, %pc_lo12(.LCPI5_14)
+	vilvl.w	$vr15, $vr13, $vr0
+	vilvh.w	$vr10, $vr11, $vr10
+	vilvh.w	$vr0, $vr13, $vr0
+	vbitsel.v	$vr0, $vr5, $vr14, $vr0
 	pcalau12i	$a2, %pc_hi20(.LCPI5_15)
-	vld	$vr13, $a2, %pc_lo12(.LCPI5_15)
-	vslli.d	$vr10, $vr10, 56
-	vsrai.d	$vr10, $vr10, 56
-	vand.v	$vr10, $vr10, $vr12
-	vand.v	$vr9, $vr9, $vr13
+	vld	$vr11, $a2, %pc_lo12(.LCPI5_15)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_16)
-	vld	$vr12, $a2, %pc_lo12(.LCPI5_16)
+	vld	$vr13, $a2, %pc_lo12(.LCPI5_16)
 	pcalau12i	$a2, %pc_hi20(.LCPI5_17)
-	vld	$vr13, $a2, %pc_lo12(.LCPI5_17)
-	vsrai.d	$vr0, $vr0, 56
+	vld	$vr14, $a2, %pc_lo12(.LCPI5_17)
+	vbitsel.v	$vr10, $vr5, $vr11, $vr10
 	ld.bu	$a2, $a1, 40
-	vand.v	$vr0, $vr0, $vr12
-	vand.v	$vr11, $vr11, $vr13
+	vbitsel.v	$vr11, $vr5, $vr13, $vr15
+	vbitsel.v	$vr5, $vr5, $vr14, $vr12
 	ld.bu	$a1, $a1, 47
 	addi.d	$a2, $a2, -111
 	sltui	$a2, $a2, 1
@@ -852,17 +837,17 @@ find_winner_p:                          # @find_winner_p
 	addi.d	$a1, $a1, -111
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 41
+	vor.v	$vr5, $vr9, $vr5
 	vor.v	$vr8, $vr8, $vr11
-	vor.v	$vr0, $vr7, $vr0
-	vor.v	$vr6, $vr6, $vr9
-	vor.v	$vr5, $vr5, $vr10
-	vor.v	$vr4, $vr5, $vr4
-	vor.v	$vr3, $vr6, $vr3
-	vor.v	$vr3, $vr3, $vr4
-	vor.v	$vr0, $vr0, $vr2
-	vor.v	$vr1, $vr8, $vr1
-	vor.v	$vr0, $vr0, $vr1
-	vor.v	$vr0, $vr0, $vr3
+	vor.v	$vr7, $vr7, $vr10
+	vor.v	$vr0, $vr6, $vr0
+	vor.v	$vr0, $vr0, $vr4
+	vor.v	$vr3, $vr7, $vr3
+	vor.v	$vr0, $vr3, $vr0
+	vor.v	$vr2, $vr8, $vr2
+	vor.v	$vr1, $vr5, $vr1
+	vor.v	$vr1, $vr1, $vr2
+	vor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
@@ -1261,11 +1246,11 @@ find_winner_p:                          # @find_winner_p
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 .LCPI6_6:
-	.dword	268435456                       # 0x10000000
-	.dword	536870912                       # 0x20000000
-.LCPI6_7:
 	.dword	16777216                        # 0x1000000
 	.dword	33554432                        # 0x2000000
+.LCPI6_7:
+	.dword	268435456                       # 0x10000000
+	.dword	536870912                       # 0x20000000
 .LCPI6_8:
 	.dword	67108864                        # 0x4000000
 	.dword	134217728                       # 0x8000000
@@ -1279,11 +1264,11 @@ find_winner_p:                          # @find_winner_p
 	.dword	262144                          # 0x40000
 	.dword	524288                          # 0x80000
 .LCPI6_12:
-	.dword	65536                           # 0x10000
-	.dword	131072                          # 0x20000
-.LCPI6_13:
 	.dword	1048576                         # 0x100000
 	.dword	2097152                         # 0x200000
+.LCPI6_13:
+	.dword	65536                           # 0x10000
+	.dword	131072                          # 0x20000
 .LCPI6_14:
 	.dword	274877906944                    # 0x4000000000
 	.dword	549755813888                    # 0x8000000000
@@ -1291,11 +1276,11 @@ find_winner_p:                          # @find_winner_p
 	.dword	17179869184                     # 0x400000000
 	.dword	34359738368                     # 0x800000000
 .LCPI6_16:
-	.dword	4294967296                      # 0x100000000
-	.dword	8589934592                      # 0x200000000
-.LCPI6_17:
 	.dword	68719476736                     # 0x1000000000
 	.dword	137438953472                    # 0x2000000000
+.LCPI6_17:
+	.dword	4294967296                      # 0x100000000
+	.dword	8589934592                      # 0x200000000
 	.text
 	.globl	find_winner_c
 	.p2align	2
@@ -1387,104 +1372,89 @@ find_winner_c:                          # @find_winner_c
 	vinsgr2vr.b	$vr1, $a6, 15
 	vseq.b	$vr1, $vr1, $vr0
 	vilvl.b	$vr2, $vr1, $vr1
-	vilvh.h	$vr3, $vr2, $vr2
-	vilvl.w	$vr4, $vr3, $vr3
-	vslli.d	$vr4, $vr4, 56
-	vsrai.d	$vr8, $vr4, 56
-	vilvh.b	$vr4, $vr1, $vr1
-	vextrins.b	$vr1, $vr1, 129
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr7, $vr1, 56
-	vilvl.h	$vr1, $vr2, $vr2
-	vilvh.w	$vr1, $vr1, $vr1
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr6, $vr1, 56
-	vilvh.w	$vr1, $vr3, $vr3
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr5, $vr1, 56
-	vilvh.h	$vr1, $vr4, $vr4
-	vilvh.w	$vr2, $vr1, $vr1
-	vslli.d	$vr2, $vr2, 56
-	vsrai.d	$vr9, $vr2, 56
-	vilvl.h	$vr2, $vr4, $vr4
-	vilvh.w	$vr3, $vr2, $vr2
-	vslli.d	$vr3, $vr3, 56
-	vsrai.d	$vr3, $vr3, 56
-	vilvl.w	$vr2, $vr2, $vr2
-	vslli.d	$vr2, $vr2, 56
-	vsrai.d	$vr2, $vr2, 56
-	vilvl.w	$vr1, $vr1, $vr1
-	vslli.d	$vr1, $vr1, 56
-	vsrai.d	$vr1, $vr1, 56
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr4, $vr3, $vr2
+	vslti.w	$vr5, $vr4, 0
+	vilvl.w	$vr9, $vr5, $vr4
+	vilvh.h	$vr2, $vr3, $vr2
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr8, $vr3, $vr2
+	vilvh.w	$vr7, $vr5, $vr4
+	vilvh.w	$vr6, $vr3, $vr2
+	vilvh.b	$vr1, $vr1, $vr1
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr3, $vr2, $vr1
+	vslti.w	$vr4, $vr3, 0
+	vilvh.w	$vr10, $vr4, $vr3
+	vilvl.h	$vr1, $vr2, $vr1
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr11, $vr2, $vr1
+	vilvl.w	$vr3, $vr4, $vr3
+	vilvl.w	$vr1, $vr2, $vr1
 	pcalau12i	$a2, %pc_hi20(.LCPI6_6)
-	vld	$vr4, $a2, %pc_lo12(.LCPI6_6)
+	vld	$vr2, $a2, %pc_lo12(.LCPI6_6)
+	vrepli.b	$vr5, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI6_7)
-	vld	$vr10, $a2, %pc_lo12(.LCPI6_7)
+	vld	$vr4, $a2, %pc_lo12(.LCPI6_7)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_8)
-	vld	$vr11, $a2, %pc_lo12(.LCPI6_8)
+	vld	$vr12, $a2, %pc_lo12(.LCPI6_8)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_9)
-	vld	$vr12, $a2, %pc_lo12(.LCPI6_9)
-	vand.v	$vr1, $vr1, $vr4
-	vand.v	$vr2, $vr2, $vr10
-	vand.v	$vr3, $vr3, $vr11
-	vand.v	$vr4, $vr9, $vr12
+	vld	$vr13, $a2, %pc_lo12(.LCPI6_9)
+	vbitsel.v	$vr1, $vr5, $vr2, $vr1
+	vbitsel.v	$vr2, $vr5, $vr4, $vr3
+	vbitsel.v	$vr3, $vr5, $vr12, $vr11
+	vbitsel.v	$vr4, $vr5, $vr13, $vr10
 	pcalau12i	$a2, %pc_hi20(.LCPI6_10)
-	vld	$vr9, $a2, %pc_lo12(.LCPI6_10)
+	vld	$vr10, $a2, %pc_lo12(.LCPI6_10)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_11)
-	vld	$vr10, $a2, %pc_lo12(.LCPI6_11)
+	vld	$vr11, $a2, %pc_lo12(.LCPI6_11)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_12)
-	vld	$vr11, $a2, %pc_lo12(.LCPI6_12)
+	vld	$vr12, $a2, %pc_lo12(.LCPI6_12)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_13)
-	vld	$vr12, $a2, %pc_lo12(.LCPI6_13)
-	vand.v	$vr5, $vr5, $vr9
-	vand.v	$vr6, $vr6, $vr10
-	vand.v	$vr7, $vr7, $vr11
-	vand.v	$vr8, $vr8, $vr12
+	vld	$vr13, $a2, %pc_lo12(.LCPI6_13)
+	vbitsel.v	$vr6, $vr5, $vr10, $vr6
+	vbitsel.v	$vr7, $vr5, $vr11, $vr7
+	vbitsel.v	$vr8, $vr5, $vr12, $vr8
+	vbitsel.v	$vr9, $vr5, $vr13, $vr9
 	ld.b	$a2, $a1, 39
 	ld.b	$a3, $a1, 46
 	ld.h	$a4, $a1, 32
 	ld.b	$a5, $a1, 5
 	ld.b	$a6, $a1, 12
 	ld.b	$a7, $a1, 19
-	vinsgr2vr.h	$vr9, $a4, 0
+	vinsgr2vr.h	$vr10, $a4, 0
 	ld.b	$a4, $a1, 26
-	vori.b	$vr10, $vr9, 0
-	vinsgr2vr.b	$vr10, $a2, 1
-	vinsgr2vr.b	$vr10, $a3, 2
-	vinsgr2vr.b	$vr10, $a5, 3
-	vinsgr2vr.b	$vr10, $a6, 4
-	vinsgr2vr.b	$vr10, $a7, 5
-	vinsgr2vr.b	$vr10, $a4, 6
-	vextrins.b	$vr10, $vr9, 113
-	vseq.b	$vr0, $vr10, $vr0
-	vilvl.b	$vr9, $vr0, $vr0
-	vilvh.h	$vr10, $vr9, $vr9
-	vilvl.w	$vr11, $vr10, $vr10
-	vslli.d	$vr11, $vr11, 56
-	vsrai.d	$vr11, $vr11, 56
-	vextrins.b	$vr0, $vr0, 129
-	vslli.d	$vr0, $vr0, 56
-	vilvl.h	$vr9, $vr9, $vr9
-	vilvh.w	$vr9, $vr9, $vr9
-	vslli.d	$vr9, $vr9, 56
-	vsrai.d	$vr9, $vr9, 56
-	vilvh.w	$vr10, $vr10, $vr10
+	vori.b	$vr11, $vr10, 0
+	vinsgr2vr.b	$vr11, $a2, 1
+	vinsgr2vr.b	$vr11, $a3, 2
+	vinsgr2vr.b	$vr11, $a5, 3
+	vinsgr2vr.b	$vr11, $a6, 4
+	vinsgr2vr.b	$vr11, $a7, 5
+	vinsgr2vr.b	$vr11, $a4, 6
+	vextrins.b	$vr11, $vr10, 113
+	vseq.b	$vr0, $vr11, $vr0
+	vilvl.b	$vr0, $vr0, $vr0
+	vilvl.h	$vr10, $vr0, $vr0
+	vslti.w	$vr11, $vr10, 0
+	vilvl.w	$vr12, $vr11, $vr10
+	vilvh.h	$vr0, $vr0, $vr0
+	vslti.w	$vr13, $vr0, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI6_14)
-	vld	$vr12, $a2, %pc_lo12(.LCPI6_14)
+	vld	$vr14, $a2, %pc_lo12(.LCPI6_14)
+	vilvl.w	$vr15, $vr13, $vr0
+	vilvh.w	$vr10, $vr11, $vr10
+	vilvh.w	$vr0, $vr13, $vr0
+	vbitsel.v	$vr0, $vr5, $vr14, $vr0
 	pcalau12i	$a2, %pc_hi20(.LCPI6_15)
-	vld	$vr13, $a2, %pc_lo12(.LCPI6_15)
-	vslli.d	$vr10, $vr10, 56
-	vsrai.d	$vr10, $vr10, 56
-	vand.v	$vr10, $vr10, $vr12
-	vand.v	$vr9, $vr9, $vr13
+	vld	$vr11, $a2, %pc_lo12(.LCPI6_15)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_16)
-	vld	$vr12, $a2, %pc_lo12(.LCPI6_16)
+	vld	$vr13, $a2, %pc_lo12(.LCPI6_16)
 	pcalau12i	$a2, %pc_hi20(.LCPI6_17)
-	vld	$vr13, $a2, %pc_lo12(.LCPI6_17)
-	vsrai.d	$vr0, $vr0, 56
+	vld	$vr14, $a2, %pc_lo12(.LCPI6_17)
+	vbitsel.v	$vr10, $vr5, $vr11, $vr10
 	ld.bu	$a2, $a1, 40
-	vand.v	$vr0, $vr0, $vr12
-	vand.v	$vr11, $vr11, $vr13
+	vbitsel.v	$vr11, $vr5, $vr13, $vr15
+	vbitsel.v	$vr5, $vr5, $vr14, $vr12
 	ld.bu	$a1, $a1, 47
 	addi.d	$a2, $a2, -120
 	sltui	$a2, $a2, 1
@@ -1492,17 +1462,17 @@ find_winner_c:                          # @find_winner_c
 	addi.d	$a1, $a1, -120
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 41
+	vor.v	$vr5, $vr9, $vr5
 	vor.v	$vr8, $vr8, $vr11
-	vor.v	$vr0, $vr7, $vr0
-	vor.v	$vr6, $vr6, $vr9
-	vor.v	$vr5, $vr5, $vr10
-	vor.v	$vr4, $vr5, $vr4
-	vor.v	$vr3, $vr6, $vr3
-	vor.v	$vr3, $vr3, $vr4
-	vor.v	$vr0, $vr0, $vr2
-	vor.v	$vr1, $vr8, $vr1
-	vor.v	$vr0, $vr0, $vr1
-	vor.v	$vr0, $vr0, $vr3
+	vor.v	$vr7, $vr7, $vr10
+	vor.v	$vr0, $vr6, $vr0
+	vor.v	$vr0, $vr0, $vr4
+	vor.v	$vr3, $vr7, $vr3
+	vor.v	$vr0, $vr3, $vr0
+	vor.v	$vr2, $vr8, $vr2
+	vor.v	$vr1, $vr5, $vr1
+	vor.v	$vr1, $vr1, $vr2
+	vor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
 	vor.v	$vr0, $vr1, $vr0
 	vpickve2gr.d	$a4, $vr0, 0

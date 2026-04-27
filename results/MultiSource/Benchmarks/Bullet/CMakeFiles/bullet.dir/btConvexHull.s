@@ -6369,7 +6369,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	ori	$a0, $a0, 1981
 	vreplgr2vr.w	$vr6, $a0
 	vfcmp.clt.s	$vr6, $vr6, $vr7
-	vshuf4i.w	$vr7, $vr6, 16
+	vilvl.w	$vr7, $vr6, $vr6
 	vpickve2gr.d	$a1, $vr6, 0
 	andi	$a1, $a1, 1
 	movgr2fr.w	$ft0, $a2
@@ -6425,7 +6425,7 @@ _ZN11HullLibrary15CleanupVerticesEjPK9btVector3jRjPS0_fRS0_: # @_ZN11HullLibrary
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	vreplgr2vr.w	$vr7, $a0
 	vfcmp.cle.s	$vr5, $vr7, $vr5
-	vshuf4i.w	$vr7, $vr5, 16
+	vilvl.w	$vr7, $vr5, $vr5
 	vpickve2gr.d	$a0, $vr5, 0
 	andi	$a0, $a0, 1
 	movgr2fr.w	$ft0, $a3

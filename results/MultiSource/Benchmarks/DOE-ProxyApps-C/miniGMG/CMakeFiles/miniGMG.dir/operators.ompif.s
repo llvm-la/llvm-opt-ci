@@ -3886,9 +3886,8 @@ restriction_betas:                      # @restriction_betas
                                         # =>      This Inner Loop Header: Depth=4
 	vadd.w	$vr7, $vr5, $vr6
 	vslli.w	$vr7, $vr7, 1
-	vshuf4i.w	$vr8, $vr7, 16
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
+	vslti.w	$vr8, $vr7, 0
+	vilvl.w	$vr8, $vr8, $vr7
 	vpickve2gr.d	$a1, $vr8, 0
 	vpickve2gr.d	$s0, $vr8, 1
 	slli.d	$a1, $a1, 3
@@ -3896,9 +3895,8 @@ restriction_betas:                      # @restriction_betas
 	fldx.d	$ft0, $s1, $a1
 	fldx.d	$ft1, $s1, $s0
 	vadd.w	$vr10, $vr7, $vr2
-	vshuf4i.w	$vr10, $vr10, 16
-	vslli.d	$vr10, $vr10, 32
-	vsrai.d	$vr10, $vr10, 32
+	vslti.w	$vr11, $vr10, 0
+	vilvl.w	$vr10, $vr11, $vr10
 	vpickve2gr.d	$a1, $vr10, 0
 	vpickve2gr.d	$s0, $vr10, 1
 	slli.d	$a1, $a1, 3
@@ -3908,9 +3906,8 @@ restriction_betas:                      # @restriction_betas
 	vextrins.d	$vr8, $vr9, 16
 	vextrins.d	$vr10, $vr11, 16
 	vadd.w	$vr9, $vr7, $vr3
-	vshuf4i.w	$vr9, $vr9, 16
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
+	vslti.w	$vr11, $vr9, 0
+	vilvl.w	$vr9, $vr11, $vr9
 	vpickve2gr.d	$a1, $vr9, 0
 	vpickve2gr.d	$s0, $vr9, 1
 	slli.d	$a1, $a1, 3
@@ -3918,9 +3915,8 @@ restriction_betas:                      # @restriction_betas
 	fldx.d	$ft1, $s1, $a1
 	fldx.d	$ft3, $s1, $s0
 	vadd.w	$vr7, $vr7, $vr4
-	vshuf4i.w	$vr7, $vr7, 16
-	vslli.d	$vr7, $vr7, 32
-	vsrai.d	$vr7, $vr7, 32
+	vslti.w	$vr12, $vr7, 0
+	vilvl.w	$vr7, $vr12, $vr7
 	vpickve2gr.d	$a1, $vr7, 0
 	vpickve2gr.d	$s0, $vr7, 1
 	slli.d	$a1, $a1, 3
@@ -4174,9 +4170,8 @@ restriction_betas:                      # @restriction_betas
                                         # =>      This Inner Loop Header: Depth=4
 	vadd.w	$vr5, $vr3, $vr4
 	vslli.w	$vr5, $vr5, 1
-	vshuf4i.w	$vr6, $vr5, 16
-	vslli.d	$vr6, $vr6, 32
-	vsrai.d	$vr6, $vr6, 32
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr6, $vr6, $vr5
 	vpickve2gr.d	$a1, $vr6, 0
 	vpickve2gr.d	$a3, $vr6, 1
 	slli.d	$a1, $a1, 3
@@ -4184,9 +4179,8 @@ restriction_betas:                      # @restriction_betas
 	fldx.d	$fa6, $s1, $a1
 	fldx.d	$fa7, $s1, $a3
 	vbitseti.w	$vr8, $vr5, 0
-	vshuf4i.w	$vr9, $vr8, 16
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
+	vslti.w	$vr9, $vr8, 0
+	vilvl.w	$vr9, $vr9, $vr8
 	vpickve2gr.d	$a1, $vr9, 0
 	vpickve2gr.d	$a3, $vr9, 1
 	slli.d	$a1, $a1, 3
@@ -4196,9 +4190,8 @@ restriction_betas:                      # @restriction_betas
 	vextrins.d	$vr6, $vr7, 16
 	vextrins.d	$vr9, $vr10, 16
 	vadd.w	$vr5, $vr5, $vr2
-	vshuf4i.w	$vr5, $vr5, 16
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
+	vslti.w	$vr7, $vr5, 0
+	vilvl.w	$vr5, $vr7, $vr5
 	vpickve2gr.d	$a1, $vr5, 0
 	vpickve2gr.d	$a3, $vr5, 1
 	slli.d	$a1, $a1, 3
@@ -4206,9 +4199,8 @@ restriction_betas:                      # @restriction_betas
 	fldx.d	$fa5, $s1, $a1
 	fldx.d	$fa7, $s1, $a3
 	vadd.w	$vr8, $vr8, $vr2
-	vshuf4i.w	$vr8, $vr8, 16
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
+	vslti.w	$vr10, $vr8, 0
+	vilvl.w	$vr8, $vr10, $vr8
 	vpickve2gr.d	$a1, $vr8, 0
 	vpickve2gr.d	$a3, $vr8, 1
 	slli.d	$a1, $a1, 3
@@ -4462,9 +4454,8 @@ restriction_betas:                      # @restriction_betas
                                         # =>      This Inner Loop Header: Depth=4
 	vadd.w	$vr5, $vr3, $vr4
 	vslli.w	$vr5, $vr5, 1
-	vshuf4i.w	$vr6, $vr5, 16
-	vslli.d	$vr6, $vr6, 32
-	vsrai.d	$vr6, $vr6, 32
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr6, $vr6, $vr5
 	vpickve2gr.d	$a1, $vr6, 0
 	vpickve2gr.d	$a3, $vr6, 1
 	slli.d	$a1, $a1, 3
@@ -4472,9 +4463,8 @@ restriction_betas:                      # @restriction_betas
 	fldx.d	$fa6, $s1, $a1
 	fldx.d	$fa7, $s1, $a3
 	vbitseti.w	$vr8, $vr5, 0
-	vshuf4i.w	$vr9, $vr8, 16
-	vslli.d	$vr9, $vr9, 32
-	vsrai.d	$vr9, $vr9, 32
+	vslti.w	$vr9, $vr8, 0
+	vilvl.w	$vr9, $vr9, $vr8
 	vpickve2gr.d	$a1, $vr9, 0
 	vpickve2gr.d	$a3, $vr9, 1
 	slli.d	$a1, $a1, 3
@@ -4484,9 +4474,8 @@ restriction_betas:                      # @restriction_betas
 	vextrins.d	$vr6, $vr7, 16
 	vextrins.d	$vr9, $vr10, 16
 	vadd.w	$vr5, $vr5, $vr2
-	vshuf4i.w	$vr5, $vr5, 16
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
+	vslti.w	$vr7, $vr5, 0
+	vilvl.w	$vr5, $vr7, $vr5
 	vpickve2gr.d	$a1, $vr5, 0
 	vpickve2gr.d	$a3, $vr5, 1
 	slli.d	$a1, $a1, 3
@@ -4494,9 +4483,8 @@ restriction_betas:                      # @restriction_betas
 	fldx.d	$fa5, $s1, $a1
 	fldx.d	$fa7, $s1, $a3
 	vadd.w	$vr8, $vr8, $vr2
-	vshuf4i.w	$vr8, $vr8, 16
-	vslli.d	$vr8, $vr8, 32
-	vsrai.d	$vr8, $vr8, 32
+	vslti.w	$vr10, $vr8, 0
+	vilvl.w	$vr8, $vr10, $vr8
 	vpickve2gr.d	$a1, $vr8, 0
 	vpickve2gr.d	$a3, $vr8, 1
 	slli.d	$a1, $a1, 3
@@ -5507,13 +5495,9 @@ initialize_grid_to_scalar:              # @initialize_grid_to_scalar
 	vor.v	$vr14, $vr9, $vr11
 	vor.v	$vr13, $vr9, $vr13
 	vslt.w	$vr14, $vr4, $vr14
-	vshuf4i.w	$vr14, $vr14, 16
-	vslli.d	$vr14, $vr14, 32
-	vsrai.d	$vr14, $vr14, 32
+	vilvl.w	$vr14, $vr14, $vr14
 	vslt.w	$vr13, $vr4, $vr13
-	vshuf4i.w	$vr13, $vr13, 16
-	vslli.d	$vr13, $vr13, 32
-	vsrai.d	$vr13, $vr13, 32
+	vilvl.w	$vr13, $vr13, $vr13
 	vslt.d	$vr15, $vr10, $vr6
 	vslt.d	$vr12, $vr12, $vr6
 	vand.v	$vr14, $vr14, $vr15

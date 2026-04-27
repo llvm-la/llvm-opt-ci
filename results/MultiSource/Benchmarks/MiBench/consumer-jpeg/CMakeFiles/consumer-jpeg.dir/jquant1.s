@@ -545,10 +545,10 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	pcalau12i	$a0, %pc_hi20(base_dither_matrix+8)
 	addi.d	$s3, $a0, %pc_lo12(base_dither_matrix+8)
 	move	$s4, $zero
-	vrepli.b	$vr3, 0
-	vrepli.w	$vr4, 255
-	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 16                   # 16-byte Folded Spill
+	vrepli.b	$vr4, 0
+	vrepli.w	$vr5, 255
+	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB1_17
 	.p2align	4, , 16
 .LBB1_15:                               #   in Loop: Header=BB1_17 Depth=1
@@ -589,8 +589,8 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	ori	$a2, $zero, 1024
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
-	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr4, $sp, 32                   # 16-byte Folded Reload
 	move	$a1, $zero
 	slli.d	$a2, $s5, 9
 	addi.d	$a2, $a2, -512
@@ -602,71 +602,59 @@ start_pass_1_quant:                     # @start_pass_1_quant
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a2, -8
 	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
+	vilvl.b	$vr1, $vr4, $vr1
+	vilvl.h	$vr1, $vr4, $vr1
 	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
+	vsub.w	$vr1, $vr5, $vr1
+	vmul.w	$vr1, $vr1, $vr5
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr3, $vr2, $vr1
+	vilvl.w	$vr1, $vr2, $vr1
 	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
+	vdiv.d	$vr2, $vr3, $vr0
 	vpickev.w	$vr1, $vr2, $vr1
 	vstx	$vr1, $a0, $a1
 	ld.w	$a3, $a2, -4
 	add.d	$a4, $a0, $a1
 	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
+	vilvl.b	$vr1, $vr4, $vr1
+	vilvl.h	$vr1, $vr4, $vr1
 	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
+	vsub.w	$vr1, $vr5, $vr1
+	vmul.w	$vr1, $vr1, $vr5
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr3, $vr2, $vr1
+	vilvl.w	$vr1, $vr2, $vr1
 	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
+	vdiv.d	$vr2, $vr3, $vr0
 	vpickev.w	$vr1, $vr2, $vr1
 	vst	$vr1, $a4, 16
 	ld.w	$a3, $a2, 0
 	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
+	vilvl.b	$vr1, $vr4, $vr1
+	vilvl.h	$vr1, $vr4, $vr1
 	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
+	vsub.w	$vr1, $vr5, $vr1
+	vmul.w	$vr1, $vr1, $vr5
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr3, $vr2, $vr1
+	vilvl.w	$vr1, $vr2, $vr1
 	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
+	vdiv.d	$vr2, $vr3, $vr0
 	vpickev.w	$vr1, $vr2, $vr1
 	vst	$vr1, $a4, 32
 	ld.w	$a3, $a2, 4
 	vinsgr2vr.w	$vr1, $a3, 0
-	vilvl.b	$vr1, $vr3, $vr1
-	vilvl.h	$vr1, $vr3, $vr1
+	vilvl.b	$vr1, $vr4, $vr1
+	vilvl.h	$vr1, $vr4, $vr1
 	vslli.w	$vr1, $vr1, 1
-	vsub.w	$vr1, $vr4, $vr1
-	vmul.w	$vr1, $vr1, $vr4
-	vshuf4i.w	$vr2, $vr1, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 16
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr1, $vr1, 32
+	vsub.w	$vr1, $vr5, $vr1
+	vmul.w	$vr1, $vr1, $vr5
+	vslti.w	$vr2, $vr1, 0
+	vilvh.w	$vr3, $vr2, $vr1
+	vilvl.w	$vr1, $vr2, $vr1
 	vdiv.d	$vr1, $vr1, $vr0
-	vdiv.d	$vr2, $vr2, $vr0
+	vdiv.d	$vr2, $vr3, $vr0
 	vpickev.w	$vr1, $vr2, $vr1
 	vst	$vr1, $a4, 48
 	addi.d	$a1, $a1, 64

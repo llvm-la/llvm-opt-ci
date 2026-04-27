@@ -1025,26 +1025,20 @@ binate_split_select:                    # @binate_split_select
 	vaddi.wu	$vr4, $vr1, 4
 	vsrai.w	$vr5, $vr1, 5
 	vsrai.w	$vr6, $vr4, 5
-	vshuf4i.w	$vr7, $vr5, 50
-	vslli.d	$vr7, $vr7, 32
-	vsrai.d	$vr7, $vr7, 32
-	vshuf4i.w	$vr5, $vr5, 16
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
+	vslti.w	$vr7, $vr5, 0
+	vilvh.w	$vr8, $vr7, $vr5
+	vilvl.w	$vr5, $vr7, $vr5
 	vpickve2gr.d	$a6, $vr5, 0
 	vpickve2gr.d	$a7, $vr5, 1
-	vpickve2gr.d	$t0, $vr7, 0
-	vpickve2gr.d	$t1, $vr7, 1
-	vshuf4i.w	$vr5, $vr6, 50
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
-	vshuf4i.w	$vr6, $vr6, 16
-	vslli.d	$vr6, $vr6, 32
-	vsrai.d	$vr6, $vr6, 32
-	vpickve2gr.d	$t2, $vr6, 0
-	vpickve2gr.d	$t3, $vr6, 1
-	vpickve2gr.d	$t4, $vr5, 0
-	vpickve2gr.d	$t5, $vr5, 1
+	vpickve2gr.d	$t0, $vr8, 0
+	vpickve2gr.d	$t1, $vr8, 1
+	vslti.w	$vr5, $vr6, 0
+	vilvh.w	$vr7, $vr5, $vr6
+	vilvl.w	$vr5, $vr5, $vr6
+	vpickve2gr.d	$t2, $vr5, 0
+	vpickve2gr.d	$t3, $vr5, 1
+	vpickve2gr.d	$t4, $vr7, 0
+	vpickve2gr.d	$t5, $vr7, 1
 	alsl.d	$a6, $a6, $s3, 2
 	alsl.d	$a7, $a7, $s3, 2
 	alsl.d	$t0, $t0, $s3, 2

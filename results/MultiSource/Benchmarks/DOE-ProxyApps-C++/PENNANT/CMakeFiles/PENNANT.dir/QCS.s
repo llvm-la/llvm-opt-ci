@@ -800,9 +800,8 @@ _ZN3QCS11setQCnForceEPKdS1_S1_P7double2ii: # @_ZN3QCS11setQCnForceEPKdS1_S1_P7do
 	ld.d	$t2, $a4, 0
 	vinsgr2vr.d	$vr5, $t2, 0
 	vld	$vr6, $t1, 0
-	vshuf4i.w	$vr5, $vr5, 16
-	vslli.d	$vr5, $vr5, 32
-	vsrai.d	$vr5, $vr5, 32
+	vslti.w	$vr7, $vr5, 0
+	vilvl.w	$vr5, $vr7, $vr5
 	vpickve2gr.d	$t2, $vr5, 0
 	vpickve2gr.d	$t3, $vr5, 1
 	slli.d	$t2, $t2, 3

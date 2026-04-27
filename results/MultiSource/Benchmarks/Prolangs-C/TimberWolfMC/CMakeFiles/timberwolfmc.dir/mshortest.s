@@ -2012,12 +2012,10 @@ mshortest:                              # @mshortest
 	ld.d	$t2, $a6, 0
 	vinsgr2vr.d	$vr0, $t1, 0
 	vinsgr2vr.d	$vr1, $t2, 0
-	vilvl.h	$vr0, $vr0, $vr0
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vslti.h	$vr2, $vr0, 0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvl.h	$vr1, $vr2, $vr1
 	vst	$vr0, $a7, -16
 	vst	$vr1, $a7, 0
 	addi.d	$a6, $a6, 16

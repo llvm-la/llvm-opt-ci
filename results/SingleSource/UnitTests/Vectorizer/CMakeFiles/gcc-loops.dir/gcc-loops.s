@@ -928,12 +928,10 @@ _Z10example10bPsS_S_PiS0_S0_:           # @_Z10example10bPsS_S_PiS0_S0_
 	ld.d	$a4, $a4, 8
 	vinsgr2vr.d	$vr0, $a5, 0
 	vinsgr2vr.d	$vr1, $a4, 0
-	vilvl.h	$vr0, $vr0, $vr0
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vslti.h	$vr2, $vr0, 0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvl.h	$vr1, $vr2, $vr1
 	vst	$vr0, $a2, -16
 	vst	$vr1, $a2, 0
 	addi.d	$a0, $a0, 16
@@ -1544,12 +1542,10 @@ _Z9example24ss:                         # @_Z9example24ss
 	ori	$a3, $a2, 16
 	pcalau12i	$a4, %pc_hi20(fb)
 	addi.d	$a4, $a4, %pc_lo12(fb)
-	vilvl.h	$vr0, $vr0, $vr0
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vslti.h	$vr2, $vr0, 0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvl.h	$vr1, $vr2, $vr1
 	pcalau12i	$a5, %pc_hi20(ic)
 	addi.d	$a5, $a5, %pc_lo12(ic)
 	.p2align	4, , 16

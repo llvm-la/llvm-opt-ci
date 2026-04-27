@@ -2105,12 +2105,10 @@ init_layer3:                            # @init_layer3
 	ld.d	$t0, $a2, -82
 	vinsgr2vr.d	$vr2, $a7, 0
 	vinsgr2vr.d	$vr3, $t0, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
+	vslti.h	$vr4, $vr2, 0
+	vilvl.h	$vr2, $vr4, $vr2
+	vslti.h	$vr4, $vr3, 0
+	vilvl.h	$vr3, $vr4, $vr3
 	vaddi.wu	$vr2, $vr2, 7
 	vaddi.wu	$vr3, $vr3, 7
 	vmuh.w	$vr2, $vr2, $vr1
@@ -2133,12 +2131,10 @@ init_layer3:                            # @init_layer3
 	vst	$vr3, $a0, -72
 	vinsgr2vr.d	$vr2, $a7, 0
 	vinsgr2vr.d	$vr3, $t0, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
+	vslti.h	$vr4, $vr2, 0
+	vilvl.h	$vr2, $vr4, $vr2
+	vslti.h	$vr4, $vr3, 0
+	vilvl.h	$vr3, $vr4, $vr3
 	vaddi.wu	$vr2, $vr2, 7
 	vaddi.wu	$vr3, $vr3, 7
 	vmuh.w	$vr2, $vr2, $vr1
@@ -2253,9 +2249,8 @@ init_layer3:                            # @init_layer3
 	ld.d	$t1, $a2, 0
 	add.d	$a7, $t0, $a1
 	vinsgr2vr.d	$vr2, $t1, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr2, $vr3, $vr2
 	vsubi.wu	$vr2, $vr2, 1
 	vmuh.w	$vr2, $vr2, $vr1
 	vsrai.w	$vr2, $vr2, 2
@@ -2267,9 +2262,8 @@ init_layer3:                            # @init_layer3
 	vbitsel.v	$vr2, $vr0, $vr3, $vr2
 	vstx	$vr2, $t0, $a1
 	vinsgr2vr.d	$vr2, $t1, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr2, $vr3, $vr2
 	vsubi.wu	$vr2, $vr2, 1
 	vmuh.w	$vr2, $vr2, $vr1
 	vsrai.w	$vr2, $vr2, 2
@@ -2281,9 +2275,8 @@ init_layer3:                            # @init_layer3
 	vbitsel.v	$vr2, $vr0, $vr3, $vr2
 	vst	$vr2, $a7, 16
 	vinsgr2vr.d	$vr2, $t0, 0
-	vilvl.h	$vr2, $vr2, $vr2
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
+	vslti.h	$vr3, $vr2, 0
+	vilvl.h	$vr2, $vr3, $vr2
 	vsubi.wu	$vr2, $vr2, 1
 	vmuh.w	$vr2, $vr2, $vr1
 	vsrai.w	$vr2, $vr2, 2

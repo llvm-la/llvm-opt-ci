@@ -3414,7 +3414,7 @@ _ZNK14btQuantizedBvh36walkStacklessQuantizedTreeAgainstRayEP21btNodeOverlapCallb
 	vfmul.s	$vr0, $vr15, $vr0
 	vshuf4i.w	$vr2, $vr0, 1
 	vfcmp.clt.s	$vr2, $vr2, $vr1
-	vshuf4i.w	$vr3, $vr2, 16
+	vilvl.w	$vr3, $vr2, $vr2
 	vpickve2gr.d	$a3, $vr2, 0
 	vpickve2gr.d	$a6, $vr3, 1
 	or	$a3, $a3, $a6

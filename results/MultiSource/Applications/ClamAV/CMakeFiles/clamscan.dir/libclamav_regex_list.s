@@ -2032,9 +2032,8 @@ load_regex_matcher:                     # @load_regex_matcher
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a5, $a4, 0
 	vinsgr2vr.d	$vr0, $a5, 0
-	vilvl.b	$vr0, $vr0, $vr0
-	vslli.h	$vr0, $vr0, 8
-	vsrai.h	$vr0, $vr0, 8
+	vslti.b	$vr1, $vr0, 0
+	vilvl.b	$vr0, $vr1, $vr0
 	vst	$vr0, $a3, 0
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, 16
@@ -2063,12 +2062,10 @@ load_regex_matcher:                     # @load_regex_matcher
 	ld.d	$a7, $a4, 0
 	vinsgr2vr.d	$vr0, $a6, 0
 	vinsgr2vr.d	$vr1, $a7, 0
-	vilvl.b	$vr0, $vr0, $vr0
-	vslli.h	$vr0, $vr0, 8
-	vsrai.h	$vr0, $vr0, 8
-	vilvl.b	$vr1, $vr1, $vr1
-	vslli.h	$vr1, $vr1, 8
-	vsrai.h	$vr1, $vr1, 8
+	vslti.b	$vr2, $vr0, 0
+	vilvl.b	$vr0, $vr2, $vr0
+	vslti.b	$vr2, $vr1, 0
+	vilvl.b	$vr1, $vr2, $vr1
 	vst	$vr0, $a3, -16
 	vst	$vr1, $a3, 0
 	addi.d	$a5, $a5, -16

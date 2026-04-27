@@ -31,15 +31,15 @@
 	.word	4                               # 0x4
 	.word	6                               # 0x6
 .LCPI0_7:
-	.word	31                              # 0x1f
-	.word	31                              # 0x1f
-	.word	15                              # 0xf
-	.word	15                              # 0xf
+	.word	7                               # 0x7
+	.word	7                               # 0x7
+	.word	3                               # 0x3
+	.word	3                               # 0x3
 .LCPI0_8:
-	.word	7                               # 0x7
-	.word	7                               # 0x7
-	.word	3                               # 0x3
-	.word	3                               # 0x3
+	.word	31                              # 0x1f
+	.word	31                              # 0x1f
+	.word	15                              # 0xf
+	.word	15                              # 0xf
 .LCPI0_9:
 	.word	4294967288                      # 0xfffffff8
 	.word	4294967288                      # 0xfffffff8
@@ -261,299 +261,239 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_4:                                # %vector.body136
 	vld	$vr0, $s0, 0
 	vld	$vr1, $s0, 16
-	vilvh.h	$vr2, $vr0, $vr0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr0, $vr0, $vr0
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vilvh.h	$vr3, $vr1, $vr1
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr4, $vr0, 14
-	vslli.w	$vr2, $vr2, 14
-	vslli.w	$vr1, $vr1, 14
+	vslti.h	$vr2, $vr0, 0
+	vilvh.h	$vr3, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr4, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	vslli.w	$vr2, $vr0, 14
 	vslli.w	$vr3, $vr3, 14
+	vslli.w	$vr1, $vr1, 14
+	vslli.w	$vr4, $vr4, 14
 	vldi	$vr0, -3776
+	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
-	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr4, $vr4, 15
 	vsrli.w	$vr2, $vr2, 15
-	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr3, $vr3, 15
-	vpickev.h	$vr2, $vr2, $vr4
-	vpickev.h	$vr1, $vr3, $vr1
+	vsrli.w	$vr1, $vr1, 15
+	vsrli.w	$vr4, $vr4, 15
+	vpickev.h	$vr2, $vr3, $vr2
+	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 32
 	vst	$vr2, $s0, 0
 	vst	$vr1, $s0, 16
 	vld	$vr1, $s0, 48
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 64
 	vst	$vr2, $s0, 32
 	vst	$vr1, $s0, 48
 	vld	$vr1, $s0, 80
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 96
 	vst	$vr2, $s0, 64
 	vst	$vr1, $s0, 80
 	vld	$vr1, $s0, 112
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 128
 	vst	$vr2, $s0, 96
 	vst	$vr1, $s0, 112
 	vld	$vr1, $s0, 144
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 160
 	vst	$vr2, $s0, 128
 	vst	$vr1, $s0, 144
 	vld	$vr1, $s0, 176
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 192
 	vst	$vr2, $s0, 160
 	vst	$vr1, $s0, 176
 	vld	$vr1, $s0, 208
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 224
 	vst	$vr2, $s0, 192
 	vst	$vr1, $s0, 208
 	vld	$vr1, $s0, 240
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 256
 	vst	$vr2, $s0, 224
 	vst	$vr1, $s0, 240
 	vld	$vr1, $s0, 272
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 288
 	vst	$vr2, $s0, 256
 	vst	$vr1, $s0, 272
 	vld	$vr1, $s0, 304
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 14
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 14
+	vslli.w	$vr3, $vr4, 14
 	vslli.w	$vr1, $vr1, 14
-	vslli.w	$vr4, $vr4, 14
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 14
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr0, $vr1, $vr0
-	vsrli.w	$vr1, $vr3, 15
-	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr1, $vr2, 15
+	vsrli.w	$vr2, $vr3, 15
 	vsrli.w	$vr0, $vr0, 15
 	vsrli.w	$vr3, $vr4, 15
 	vpickev.h	$vr1, $vr2, $vr1
@@ -573,299 +513,239 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_7:                                # %vector.body122
 	vld	$vr0, $s0, 0
 	vld	$vr1, $s0, 16
-	vilvh.h	$vr2, $vr0, $vr0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr0, $vr0, $vr0
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vilvh.h	$vr3, $vr1, $vr1
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr4, $vr0, 12
-	vslli.w	$vr2, $vr2, 12
-	vslli.w	$vr1, $vr1, 12
+	vslti.h	$vr2, $vr0, 0
+	vilvh.h	$vr3, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr4, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	vslli.w	$vr2, $vr0, 12
 	vslli.w	$vr3, $vr3, 12
+	vslli.w	$vr1, $vr1, 12
+	vslli.w	$vr4, $vr4, 12
 	vldi	$vr0, -3776
+	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
-	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr4, $vr4, 15
 	vsrli.w	$vr2, $vr2, 15
-	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr3, $vr3, 15
-	vpickev.h	$vr2, $vr2, $vr4
-	vpickev.h	$vr1, $vr3, $vr1
+	vsrli.w	$vr1, $vr1, 15
+	vsrli.w	$vr4, $vr4, 15
+	vpickev.h	$vr2, $vr3, $vr2
+	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 32
 	vst	$vr2, $s0, 0
 	vst	$vr1, $s0, 16
 	vld	$vr1, $s0, 48
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 64
 	vst	$vr2, $s0, 32
 	vst	$vr1, $s0, 48
 	vld	$vr1, $s0, 80
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 96
 	vst	$vr2, $s0, 64
 	vst	$vr1, $s0, 80
 	vld	$vr1, $s0, 112
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 128
 	vst	$vr2, $s0, 96
 	vst	$vr1, $s0, 112
 	vld	$vr1, $s0, 144
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 160
 	vst	$vr2, $s0, 128
 	vst	$vr1, $s0, 144
 	vld	$vr1, $s0, 176
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 192
 	vst	$vr2, $s0, 160
 	vst	$vr1, $s0, 176
 	vld	$vr1, $s0, 208
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 224
 	vst	$vr2, $s0, 192
 	vst	$vr1, $s0, 208
 	vld	$vr1, $s0, 240
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 256
 	vst	$vr2, $s0, 224
 	vst	$vr1, $s0, 240
 	vld	$vr1, $s0, 272
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 288
 	vst	$vr2, $s0, 256
 	vst	$vr1, $s0, 272
 	vld	$vr1, $s0, 304
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 12
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 12
+	vslli.w	$vr3, $vr4, 12
 	vslli.w	$vr1, $vr1, 12
-	vslli.w	$vr4, $vr4, 12
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 12
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr0, $vr1, $vr0
-	vsrli.w	$vr1, $vr3, 15
-	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr1, $vr2, 15
+	vsrli.w	$vr2, $vr3, 15
 	vsrli.w	$vr0, $vr0, 15
 	vsrli.w	$vr3, $vr4, 15
 	vpickev.h	$vr1, $vr2, $vr1
@@ -877,299 +757,239 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_8:                                # %vector.body115
 	vld	$vr0, $s0, 0
 	vld	$vr1, $s0, 16
-	vilvh.h	$vr2, $vr0, $vr0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr0, $vr0, $vr0
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vilvh.h	$vr3, $vr1, $vr1
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr4, $vr0, 11
-	vslli.w	$vr2, $vr2, 11
-	vslli.w	$vr1, $vr1, 11
+	vslti.h	$vr2, $vr0, 0
+	vilvh.h	$vr3, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr4, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	vslli.w	$vr2, $vr0, 11
 	vslli.w	$vr3, $vr3, 11
+	vslli.w	$vr1, $vr1, 11
+	vslli.w	$vr4, $vr4, 11
 	vldi	$vr0, -3776
+	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
-	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr4, $vr4, 15
 	vsrli.w	$vr2, $vr2, 15
-	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr3, $vr3, 15
-	vpickev.h	$vr2, $vr2, $vr4
-	vpickev.h	$vr1, $vr3, $vr1
+	vsrli.w	$vr1, $vr1, 15
+	vsrli.w	$vr4, $vr4, 15
+	vpickev.h	$vr2, $vr3, $vr2
+	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 32
 	vst	$vr2, $s0, 0
 	vst	$vr1, $s0, 16
 	vld	$vr1, $s0, 48
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 64
 	vst	$vr2, $s0, 32
 	vst	$vr1, $s0, 48
 	vld	$vr1, $s0, 80
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 96
 	vst	$vr2, $s0, 64
 	vst	$vr1, $s0, 80
 	vld	$vr1, $s0, 112
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 128
 	vst	$vr2, $s0, 96
 	vst	$vr1, $s0, 112
 	vld	$vr1, $s0, 144
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 160
 	vst	$vr2, $s0, 128
 	vst	$vr1, $s0, 144
 	vld	$vr1, $s0, 176
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 192
 	vst	$vr2, $s0, 160
 	vst	$vr1, $s0, 176
 	vld	$vr1, $s0, 208
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 224
 	vst	$vr2, $s0, 192
 	vst	$vr1, $s0, 208
 	vld	$vr1, $s0, 240
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 256
 	vst	$vr2, $s0, 224
 	vst	$vr1, $s0, 240
 	vld	$vr1, $s0, 272
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 288
 	vst	$vr2, $s0, 256
 	vst	$vr1, $s0, 272
 	vld	$vr1, $s0, 304
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 11
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 11
+	vslli.w	$vr3, $vr4, 11
 	vslli.w	$vr1, $vr1, 11
-	vslli.w	$vr4, $vr4, 11
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 11
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr0, $vr1, $vr0
-	vsrli.w	$vr1, $vr3, 15
-	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr1, $vr2, 15
+	vsrli.w	$vr2, $vr3, 15
 	vsrli.w	$vr0, $vr0, 15
 	vsrli.w	$vr3, $vr4, 15
 	vpickev.h	$vr1, $vr2, $vr1
@@ -1181,299 +1001,239 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_9:                                # %vector.body129
 	vld	$vr0, $s0, 0
 	vld	$vr1, $s0, 16
-	vilvh.h	$vr2, $vr0, $vr0
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr0, $vr0, $vr0
-	vslli.w	$vr0, $vr0, 16
-	vsrai.w	$vr0, $vr0, 16
-	vilvh.h	$vr3, $vr1, $vr1
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr4, $vr0, 13
-	vslli.w	$vr2, $vr2, 13
-	vslli.w	$vr1, $vr1, 13
+	vslti.h	$vr2, $vr0, 0
+	vilvh.h	$vr3, $vr2, $vr0
+	vilvl.h	$vr0, $vr2, $vr0
+	vslti.h	$vr2, $vr1, 0
+	vilvh.h	$vr4, $vr2, $vr1
+	vilvl.h	$vr1, $vr2, $vr1
+	vslli.w	$vr2, $vr0, 13
 	vslli.w	$vr3, $vr3, 13
+	vslli.w	$vr1, $vr1, 13
+	vslli.w	$vr4, $vr4, 13
 	vldi	$vr0, -3776
+	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
-	vadd.w	$vr3, $vr3, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr4, $vr4, 15
 	vsrli.w	$vr2, $vr2, 15
-	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr3, $vr3, 15
-	vpickev.h	$vr2, $vr2, $vr4
-	vpickev.h	$vr1, $vr3, $vr1
+	vsrli.w	$vr1, $vr1, 15
+	vsrli.w	$vr4, $vr4, 15
+	vpickev.h	$vr2, $vr3, $vr2
+	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 32
 	vst	$vr2, $s0, 0
 	vst	$vr1, $s0, 16
 	vld	$vr1, $s0, 48
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 64
 	vst	$vr2, $s0, 32
 	vst	$vr1, $s0, 48
 	vld	$vr1, $s0, 80
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 96
 	vst	$vr2, $s0, 64
 	vst	$vr1, $s0, 80
 	vld	$vr1, $s0, 112
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 128
 	vst	$vr2, $s0, 96
 	vst	$vr1, $s0, 112
 	vld	$vr1, $s0, 144
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 160
 	vst	$vr2, $s0, 128
 	vst	$vr1, $s0, 144
 	vld	$vr1, $s0, 176
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 192
 	vst	$vr2, $s0, 160
 	vst	$vr1, $s0, 176
 	vld	$vr1, $s0, 208
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 224
 	vst	$vr2, $s0, 192
 	vst	$vr1, $s0, 208
 	vld	$vr1, $s0, 240
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 256
 	vst	$vr2, $s0, 224
 	vst	$vr1, $s0, 240
 	vld	$vr1, $s0, 272
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr1, $vr1, $vr0
-	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr3, $vr3, 15
 	vsrli.w	$vr1, $vr1, 15
 	vsrli.w	$vr4, $vr4, 15
-	vpickev.h	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr4, $vr1
 	vld	$vr3, $s0, 288
 	vst	$vr2, $s0, 256
 	vst	$vr1, $s0, 272
 	vld	$vr1, $s0, 304
-	vilvh.h	$vr2, $vr3, $vr3
-	vslli.w	$vr2, $vr2, 16
-	vsrai.w	$vr2, $vr2, 16
-	vilvl.h	$vr3, $vr3, $vr3
-	vslli.w	$vr3, $vr3, 16
-	vsrai.w	$vr3, $vr3, 16
-	vilvh.h	$vr4, $vr1, $vr1
-	vslli.w	$vr4, $vr4, 16
-	vsrai.w	$vr4, $vr4, 16
-	vilvl.h	$vr1, $vr1, $vr1
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
-	vslli.w	$vr3, $vr3, 13
+	vslti.h	$vr2, $vr3, 0
+	vilvh.h	$vr4, $vr2, $vr3
+	vilvl.h	$vr2, $vr2, $vr3
+	vslti.h	$vr3, $vr1, 0
+	vilvh.h	$vr5, $vr3, $vr1
+	vilvl.h	$vr1, $vr3, $vr1
 	vslli.w	$vr2, $vr2, 13
+	vslli.w	$vr3, $vr4, 13
 	vslli.w	$vr1, $vr1, 13
-	vslli.w	$vr4, $vr4, 13
-	vadd.w	$vr2, $vr2, $vr0
+	vslli.w	$vr4, $vr5, 13
 	vadd.w	$vr3, $vr3, $vr0
+	vadd.w	$vr2, $vr2, $vr0
 	vadd.w	$vr4, $vr4, $vr0
 	vadd.w	$vr0, $vr1, $vr0
-	vsrli.w	$vr1, $vr3, 15
-	vsrli.w	$vr2, $vr2, 15
+	vsrli.w	$vr1, $vr2, 15
+	vsrli.w	$vr2, $vr3, 15
 	vsrli.w	$vr0, $vr0, 15
 	vsrli.w	$vr3, $vr4, 15
 	vpickev.h	$vr1, $vr2, $vr1
@@ -2321,69 +2081,66 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vslli.h	$vr4, $vr4, 15
 	vsrai.h	$vr4, $vr4, 15
 	vbitsel.v	$vr0, $vr0, $vr1, $vr4
-	vilvl.h	$vr1, $vr3, $vr3
-	vslli.w	$vr1, $vr1, 16
-	vsrai.w	$vr1, $vr1, 16
+	vslti.h	$vr1, $vr3, 0
+	vilvl.h	$vr1, $vr1, $vr3
 	vldi	$vr3, -3680
-	vmul.w	$vr1, $vr1, $vr3
 	vextrins.h	$vr2, $vr2, 65
 	vslli.d	$vr2, $vr2, 48
 	vsrai.d	$vr2, $vr2, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_1)
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 40960
-	vreplgr2vr.d	$vr4, $a0
-	vmadd.d	$vr3, $vr2, $vr4
-	vsrli.d	$vr2, $vr3, 32
-	vilvl.h	$vr3, $vr0, $vr0
-	vilvh.w	$vr3, $vr3, $vr3
-	vslli.d	$vr3, $vr3, 48
+	vreplgr2vr.d	$vr5, $a0
+	vmadd.d	$vr4, $vr2, $vr5
+	vslti.h	$vr2, $vr0, 0
+	vilvl.h	$vr0, $vr2, $vr0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
 	vld	$vr5, $a0, %pc_lo12(.LCPI0_4)
-	vsrai.d	$vr3, $vr3, 48
+	vslti.w	$vr6, $vr0, 0
+	vilvh.w	$vr7, $vr6, $vr0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	vld	$vr6, $a0, %pc_lo12(.LCPI0_2)
-	vmadd.d	$vr5, $vr3, $vr4
+	vmadd.d	$vr5, $vr7, $vr2
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_5)
-	vextrins.h	$vr0, $vr0, 65
-	vslli.d	$vr0, $vr0, 48
-	vsrai.d	$vr0, $vr0, 48
-	vmadd.d	$vr3, $vr0, $vr6
+	vld	$vr7, $a0, %pc_lo12(.LCPI0_5)
+	vmul.w	$vr1, $vr1, $vr3
+	vsrli.d	$vr3, $vr4, 32
+	vilvl.w	$vr0, $vr6, $vr0
+	vmadd.d	$vr7, $vr0, $vr2
 	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_6)
-	vsrli.d	$vr3, $vr3, 32
+	vsrli.d	$vr2, $vr7, 32
 	vsrli.d	$vr4, $vr5, 32
-	vpickev.w	$vr3, $vr4, $vr3
-	vshuf.w	$vr0, $vr2, $vr1
+	vpickev.w	$vr2, $vr4, $vr2
+	vshuf.w	$vr0, $vr3, $vr1
 	vldi	$vr1, -3327
+	vadd.w	$vr2, $vr2, $vr1
 	vadd.w	$vr0, $vr0, $vr1
-	vadd.w	$vr1, $vr3, $vr1
 	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
-	vld	$vr2, $a0, %pc_lo12(.LCPI0_7)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_7)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_8)
 	vld	$vr3, $a0, %pc_lo12(.LCPI0_8)
-	vsrai.w	$vr1, $vr1, 25
+	vsrai.w	$vr2, $vr2, 25
 	vsrai.w	$vr0, $vr0, 25
-	vslt.w	$vr2, $vr2, $vr0
-	vslt.w	$vr3, $vr3, $vr1
+	vslt.w	$vr1, $vr1, $vr2
+	vslt.w	$vr3, $vr3, $vr0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_9)
 	vld	$vr4, $a0, %pc_lo12(.LCPI0_9)
-	vpickev.h	$vr2, $vr3, $vr2
+	vpickev.h	$vr1, $vr1, $vr3
 	vshuf4i.w	$vr3, $vr0, 14
 	vmaxi.w	$vr3, $vr3, -16
-	vmax.w	$vr1, $vr1, $vr4
+	vmax.w	$vr2, $vr2, $vr4
 	pcalau12i	$a0, %pc_hi20(.LCPI0_10)
 	vld	$vr4, $a0, %pc_lo12(.LCPI0_10)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
 	vld	$vr5, $a0, %pc_lo12(.LCPI0_11)
 	vpackev.d	$vr0, $vr3, $vr0
-	vpickev.h	$vr0, $vr1, $vr0
+	vpickev.h	$vr0, $vr2, $vr0
 	vadd.h	$vr0, $vr0, $vr4
-	vbitsel.v	$vr0, $vr0, $vr5, $vr2
+	vbitsel.v	$vr0, $vr0, $vr5, $vr1
 	vst	$vr0, $s2, 0
 	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
