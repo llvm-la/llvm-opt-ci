@@ -234,20 +234,12 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	vneg.w	$vr5, $vr4
 	vsub.w	$vr6, $vr3, $vr4
-	vpickve2gr.w	$s8, $vr5, 1
-	movgr2fr.w	$fa7, $s8
-	ffint.d.w	$fa7, $fa7
-	vpickve2gr.w	$s8, $vr5, 0
-	movgr2fr.w	$fa5, $s8
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr7, 16
-	vpickve2gr.w	$s8, $vr6, 1
-	movgr2fr.w	$fa7, $s8
-	ffint.d.w	$fa7, $fa7
-	vpickve2gr.w	$s8, $vr6, 0
-	movgr2fr.w	$fa6, $s8
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr7, 16
+	vslti.w	$vr7, $vr5, 0
+	vilvl.w	$vr5, $vr7, $vr5
+	vffint.d.l	$vr5, $vr5
+	vslti.w	$vr7, $vr6, 0
+	vilvl.w	$vr6, $vr7, $vr6
+	vffint.d.l	$vr6, $vr6
 	ori	$s8, $zero, 0
 	lu32i.d	$s8, -49152
 	lu52i.d	$s8, $s8, 1033

@@ -1370,26 +1370,26 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	vfadd.d	$vr7, $vr7, $vr7
 	vfsub.d	$vr8, $vr4, $vr6
 	vfsub.d	$vr9, $vr4, $vr7
+	ld.w	$a5, $a3, -16
+	ld.w	$a6, $a3, -8
 	vfadd.d	$vr6, $vr6, $vr4
 	vfadd.d	$vr7, $vr7, $vr4
+	vinsgr2vr.w	$vr10, $a5, 0
+	vinsgr2vr.w	$vr10, $a6, 1
+	ld.w	$a5, $a3, 0
+	ld.w	$a6, $a3, 8
 	vfdiv.d	$vr6, $vr8, $vr6
 	vfdiv.d	$vr7, $vr9, $vr7
-	ld.w	$a5, $a3, -8
-	ld.w	$a6, $a3, -16
-	ld.w	$a7, $a3, 0
-	ld.w	$t0, $a3, 8
-	movgr2fr.w	$ft0, $a5
-	ffint.d.w	$ft0, $ft0
-	movgr2fr.w	$ft1, $a6
-	ffint.d.w	$ft1, $ft1
-	vextrins.d	$vr9, $vr8, 16
-	movgr2fr.w	$ft0, $t0
-	ffint.d.w	$ft0, $ft0
-	movgr2fr.w	$ft2, $a7
-	ffint.d.w	$ft2, $ft2
-	vextrins.d	$vr10, $vr8, 16
+	vinsgr2vr.w	$vr8, $a5, 0
+	vinsgr2vr.w	$vr8, $a6, 1
+	vslti.w	$vr9, $vr10, 0
+	vilvl.w	$vr9, $vr9, $vr10
+	vffint.d.l	$vr9, $vr9
+	vslti.w	$vr10, $vr8, 0
+	vilvl.w	$vr8, $vr10, $vr8
+	vffint.d.l	$vr8, $vr8
 	vfmul.d	$vr6, $vr6, $vr9
-	vfmul.d	$vr7, $vr7, $vr10
+	vfmul.d	$vr7, $vr7, $vr8
 	vreplvei.d	$vr8, $vr6, 0
 	ftintrz.w.d	$ft0, $ft0
 	movfr2gr.s	$a5, $ft0

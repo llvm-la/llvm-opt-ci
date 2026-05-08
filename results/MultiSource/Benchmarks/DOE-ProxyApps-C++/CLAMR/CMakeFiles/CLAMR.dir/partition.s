@@ -3446,20 +3446,11 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 .LBB4_129:                              # %vector.body869
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr4, $a3, 0
-	vpickve2gr.w	$t0, $vr4, 1
-	movgr2fr.w	$fa5, $t0
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$t0, $vr4, 0
-	movgr2fr.w	$fa6, $t0
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr5, 16
-	vpickve2gr.w	$t0, $vr4, 3
-	movgr2fr.w	$fa5, $t0
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$t0, $vr4, 2
-	movgr2fr.w	$fa4, $t0
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr5, 16
+	vslti.w	$vr5, $vr4, 0
+	vilvl.w	$vr6, $vr5, $vr4
+	vffint.d.l	$vr6, $vr6
+	vilvh.w	$vr4, $vr5, $vr4
+	vffint.d.l	$vr4, $vr4
 	vfmul.d	$vr4, $vr2, $vr4
 	vfmul.d	$vr5, $vr2, $vr6
 	vreplvei.d	$vr6, $vr5, 0
@@ -3480,20 +3471,11 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	vinsgr2vr.w	$vr6, $t0, 3
 	vst	$vr6, $a4, 0
 	vld	$vr4, $a5, 0
-	vpickve2gr.w	$t0, $vr4, 1
-	movgr2fr.w	$fa5, $t0
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$t0, $vr4, 0
-	movgr2fr.w	$fa6, $t0
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr5, 16
-	vpickve2gr.w	$t0, $vr4, 3
-	movgr2fr.w	$fa5, $t0
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$t0, $vr4, 2
-	movgr2fr.w	$fa4, $t0
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr5, 16
+	vslti.w	$vr5, $vr4, 0
+	vilvl.w	$vr6, $vr5, $vr4
+	vffint.d.l	$vr6, $vr6
+	vilvh.w	$vr4, $vr5, $vr4
+	vffint.d.l	$vr4, $vr4
 	vfmul.d	$vr4, $vr3, $vr4
 	vfmul.d	$vr5, $vr3, $vr6
 	vreplvei.d	$vr6, $vr5, 0

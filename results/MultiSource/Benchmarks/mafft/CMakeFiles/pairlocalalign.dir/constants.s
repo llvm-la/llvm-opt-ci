@@ -4429,334 +4429,294 @@ constants:                              # @constants
                                         # =>This Inner Loop Header: Depth=1
 	ldx.d	$a2, $fp, $a0
 	vld	$vr3, $a2, 0
-	vfcmp.cule.d	$vr4, $vr3, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfcmp.clt.d	$vr5, $vr3, $vr0
-	vshuf4i.w	$vr5, $vr5, 8
-	vfadd.d	$vr6, $vr3, $vr1
-	vreplvei.d	$vr7, $vr6, 0
-	ftintrz.w.d	$fa7, $fa7
-	movfr2gr.s	$a3, $fa7
-	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr3, $vr3, $vr2
-	vreplvei.d	$vr6, $vr3, 0
+	vfcmp.clt.d	$vr4, $vr3, $vr0
+	vfadd.d	$vr5, $vr3, $vr1
+	vreplvei.d	$vr6, $vr5, 0
 	ftintrz.w.d	$fa6, $fa6
 	movfr2gr.s	$a3, $fa6
 	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr3, $vr3, 1
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$a3, $fa3
+	vreplvei.d	$vr5, $vr5, 1
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
 	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr4
-	vbitsel.v	$vr3, $vr3, $vr7, $vr5
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 16
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vfadd.d	$vr5, $vr3, $vr2
+	vreplvei.d	$vr7, $vr5, 0
+	ftintrz.w.d	$fa7, $fa7
+	movfr2gr.s	$a3, $fa7
+	vinsgr2vr.w	$vr7, $a3, 0
+	vreplvei.d	$vr5, $vr5, 1
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr7, $a3, 1
+	vslti.w	$vr5, $vr6, 0
+	vilvl.w	$vr5, $vr5, $vr6
+	vslti.w	$vr6, $vr7, 0
+	vilvl.w	$vr6, $vr6, $vr7
+	vfcmp.clt.d	$vr3, $vr0, $vr3
+	vand.v	$vr3, $vr3, $vr6
+	vld	$vr6, $a2, 16
+	vbitsel.v	$vr3, $vr3, $vr5, $vr4
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 0
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 32
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 32
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 16
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 48
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 48
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 32
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 64
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 64
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 48
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 80
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 80
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 64
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 96
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 96
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 80
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 112
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 112
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 96
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 128
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 128
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 112
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 144
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 144
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 128
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	addi.d	$a0, $a0, 8
 	vst	$vr3, $a2, 144
 	bne	$a0, $a1, .LBB2_123
@@ -5576,334 +5536,294 @@ constants:                              # @constants
                                         # =>This Inner Loop Header: Depth=1
 	ldx.d	$a2, $fp, $a0
 	vld	$vr3, $a2, 0
-	vfcmp.cule.d	$vr4, $vr3, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfcmp.clt.d	$vr5, $vr3, $vr0
-	vshuf4i.w	$vr5, $vr5, 8
-	vfadd.d	$vr6, $vr3, $vr1
-	vreplvei.d	$vr7, $vr6, 0
-	ftintrz.w.d	$fa7, $fa7
-	movfr2gr.s	$a3, $fa7
-	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr3, $vr3, $vr2
-	vreplvei.d	$vr6, $vr3, 0
+	vfcmp.clt.d	$vr4, $vr3, $vr0
+	vfadd.d	$vr5, $vr3, $vr1
+	vreplvei.d	$vr6, $vr5, 0
 	ftintrz.w.d	$fa6, $fa6
 	movfr2gr.s	$a3, $fa6
 	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr3, $vr3, 1
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$a3, $fa3
+	vreplvei.d	$vr5, $vr5, 1
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
 	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr4
-	vbitsel.v	$vr3, $vr3, $vr7, $vr5
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 16
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vfadd.d	$vr5, $vr3, $vr2
+	vreplvei.d	$vr7, $vr5, 0
+	ftintrz.w.d	$fa7, $fa7
+	movfr2gr.s	$a3, $fa7
+	vinsgr2vr.w	$vr7, $a3, 0
+	vreplvei.d	$vr5, $vr5, 1
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr7, $a3, 1
+	vslti.w	$vr5, $vr6, 0
+	vilvl.w	$vr5, $vr5, $vr6
+	vslti.w	$vr6, $vr7, 0
+	vilvl.w	$vr6, $vr6, $vr7
+	vfcmp.clt.d	$vr3, $vr0, $vr3
+	vand.v	$vr3, $vr3, $vr6
+	vld	$vr6, $a2, 16
+	vbitsel.v	$vr3, $vr3, $vr5, $vr4
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 0
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 32
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 32
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 16
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 48
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 48
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 32
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 64
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 64
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 48
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 80
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 80
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 64
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 96
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 96
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 80
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 112
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 112
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 96
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 128
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 128
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 112
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	vld	$vr5, $a2, 144
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vld	$vr6, $a2, 144
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vst	$vr3, $a2, 128
-	vfcmp.cule.d	$vr3, $vr5, $vr0
-	vshuf4i.w	$vr3, $vr3, 8
-	vfcmp.clt.d	$vr4, $vr5, $vr0
-	vshuf4i.w	$vr4, $vr4, 8
-	vfadd.d	$vr6, $vr5, $vr1
-	vreplvei.d	$vr7, $vr6, 0
+	vfcmp.clt.d	$vr3, $vr6, $vr0
+	vfadd.d	$vr4, $vr6, $vr1
+	vreplvei.d	$vr5, $vr4, 0
+	ftintrz.w.d	$fa5, $fa5
+	movfr2gr.s	$a3, $fa5
+	vinsgr2vr.w	$vr5, $a3, 0
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
+	vinsgr2vr.w	$vr5, $a3, 1
+	vfadd.d	$vr4, $vr6, $vr2
+	vreplvei.d	$vr7, $vr4, 0
 	ftintrz.w.d	$fa7, $fa7
 	movfr2gr.s	$a3, $fa7
 	vinsgr2vr.w	$vr7, $a3, 0
-	vreplvei.d	$vr6, $vr6, 1
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
+	vreplvei.d	$vr4, $vr4, 1
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$a3, $fa4
 	vinsgr2vr.w	$vr7, $a3, 1
-	vfadd.d	$vr5, $vr5, $vr2
-	vreplvei.d	$vr6, $vr5, 0
-	ftintrz.w.d	$fa6, $fa6
-	movfr2gr.s	$a3, $fa6
-	vinsgr2vr.w	$vr6, $a3, 0
-	vreplvei.d	$vr5, $vr5, 1
-	ftintrz.w.d	$fa5, $fa5
-	movfr2gr.s	$a3, $fa5
-	vinsgr2vr.w	$vr6, $a3, 1
-	vbitsel.v	$vr3, $vr6, $vr0, $vr3
-	vbitsel.v	$vr3, $vr3, $vr7, $vr4
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr5, 0
+	vilvl.w	$vr4, $vr4, $vr5
+	vslti.w	$vr5, $vr7, 0
+	vilvl.w	$vr5, $vr5, $vr7
+	vfcmp.clt.d	$vr6, $vr0, $vr6
+	vand.v	$vr5, $vr6, $vr5
+	vbitsel.v	$vr3, $vr5, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	addi.d	$a0, $a0, 8
 	vst	$vr3, $a2, 144
 	bne	$a0, $a1, .LBB2_154

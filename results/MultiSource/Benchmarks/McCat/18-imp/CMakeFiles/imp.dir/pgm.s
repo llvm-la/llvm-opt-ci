@@ -469,20 +469,12 @@ PGM_LoadImage:                          # @PGM_LoadImage
 	ld.d	$t0, $a5, 0
 	vinsgr2vr.d	$vr2, $a7, 0
 	vinsgr2vr.d	$vr3, $t0, 0
-	vpickve2gr.w	$a7, $vr2, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr2, 0
-	movgr2fr.w	$fa2, $a7
-	ffint.d.w	$fa2, $fa2
-	vextrins.d	$vr2, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr2, 0
+	vilvl.w	$vr2, $vr4, $vr2
+	vffint.d.l	$vr2, $vr2
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr3, $vr4, $vr3
+	vffint.d.l	$vr3, $vr3
 	vfdiv.d	$vr2, $vr2, $vr1
 	vfdiv.d	$vr3, $vr3, $vr1
 	vst	$vr2, $a4, -16

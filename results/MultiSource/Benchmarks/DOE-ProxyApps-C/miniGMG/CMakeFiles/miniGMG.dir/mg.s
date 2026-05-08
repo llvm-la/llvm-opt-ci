@@ -2510,20 +2510,12 @@ MGBuild:                                # @MGBuild
 	vaddi.wu	$vr3, $vr1, 2
 	vsll.w	$vr4, $vr2, $vr1
 	vsll.w	$vr3, $vr2, $vr3
-	vpickve2gr.w	$a3, $vr4, 1
-	movgr2fr.w	$fa5, $a3
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$a3, $vr4, 0
-	movgr2fr.w	$fa4, $a3
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr5, 16
-	vpickve2gr.w	$a3, $vr3, 1
-	movgr2fr.w	$fa5, $a3
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$a3, $vr3, 0
-	movgr2fr.w	$fa3, $a3
-	ffint.d.w	$fa3, $fa3
-	vextrins.d	$vr3, $vr5, 16
+	vslti.w	$vr5, $vr4, 0
+	vilvl.w	$vr4, $vr5, $vr4
+	vffint.d.l	$vr4, $vr4
+	vslti.w	$vr5, $vr3, 0
+	vilvl.w	$vr3, $vr5, $vr3
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr4, $vr0, $vr4
 	vfmul.d	$vr3, $vr0, $vr3
 	vst	$vr4, $a1, -16

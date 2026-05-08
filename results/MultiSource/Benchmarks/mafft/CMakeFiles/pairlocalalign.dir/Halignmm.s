@@ -1441,27 +1441,18 @@ H__align:                               # @H__align
 .LBB2_48:                               # %vector.body920
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 3
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 2
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a5, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a5, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -1521,27 +1512,18 @@ H__align:                               # @H__align
 .LBB2_55:                               # %vector.body934
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 3
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 2
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a5, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a5, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -1684,19 +1666,19 @@ H__align:                               # @H__align
 	ld.d	$a0, $a0, %pc_lo12(impmtx)
 	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s3, $a0, %pc_lo12(H__align.ijp)
+	ld.d	$fp, $a0, %pc_lo12(H__align.ijp)
 	pcalau12i	$a0, %pc_hi20(H__align.mp)
 	ld.d	$a0, $a0, %pc_lo12(H__align.mp)
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s5, $a0, %pc_lo12(H__align.gappat2)
+	ld.d	$s3, $a0, %pc_lo12(H__align.gappat2)
 	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(H__align.diaf1)
 	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(H__align.gappat1)
 	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
-	ld.d	$fp, $s7, %pc_lo12(H__align.diaf2)
+	ld.d	$s5, $s7, %pc_lo12(H__align.diaf2)
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(H__align.gapf1)
 	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
@@ -1827,7 +1809,7 @@ H__align:                               # @H__align
 	fmadd.s	$fa0, $ft3, $fs3, $fa0
 	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	ldx.d	$s1, $a0, $a3
-	ldx.d	$a3, $s3, $a3
+	ldx.d	$a3, $fp, $a3
 	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	alsl.d	$a4, $s4, $a0, 2
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
@@ -1864,7 +1846,7 @@ H__align:                               # @H__align
                                         #       Child Loop BB2_110 Depth 3
                                         #         Child Loop BB2_112 Depth 4
 	slli.d	$a0, $t0, 3
-	ldx.d	$t5, $s5, $a0
+	ldx.d	$t5, $s3, $a0
 	fld.s	$fa4, $t5, 4
 	fld.s	$fa1, $t4, 0
 	fcmp.ceq.s	$fcc0, $fa4, $fs2
@@ -1879,7 +1861,7 @@ H__align:                               # @H__align
                                         #   in Loop: Header=BB2_83 Depth=2
 	addi.d	$a3, $a3, 4
 	slli.d	$t6, $t0, 2
-	fldx.s	$fa2, $fp, $t6
+	fldx.s	$fa2, $s5, $t6
 	fld.s	$fa6, $a5, 0
 	fld.s	$fa3, $s1, 4
 	st.w	$zero, $a3, 0
@@ -1965,7 +1947,7 @@ H__align:                               # @H__align
 # %bb.96:                               #   in Loop: Header=BB2_83 Depth=2
 	ld.w	$a0, $t3, 0
 	slli.d	$a2, $a0, 3
-	ldx.d	$a2, $s3, $a2
+	ldx.d	$a2, $fp, $a2
 	fcvt.d.s	$fa3, $fa3
 	alsl.d	$a2, $t0, $a2, 2
 	ld.w	$a2, $a2, -4
@@ -2173,27 +2155,18 @@ H__align:                               # @H__align
 	vsub.d	$vr6, $vr3, $vr1
 	vpickev.w	$vr5, $vr6, $vr5
 	vmul.w	$vr5, $vr0, $vr5
-	vpickve2gr.w	$a7, $vr5, 1
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 0
-	movgr2fr.w	$fa7, $a7
-	ffint.d.w	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a7, $vr5, 3
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 2
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vld	$vr8, $a5, 0
-	vextrins.d	$vr5, $vr6, 16
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr7, $vr6, $vr5
+	vffint.d.l	$vr7, $vr7
+	vilvh.w	$vr5, $vr6, $vr5
+	vld	$vr6, $a5, 0
+	vffint.d.l	$vr5, $vr5
 	vfmul.d	$vr5, $vr5, $vr4
-	vfmul.d	$vr6, $vr7, $vr4
-	vfcvth.d.s	$vr7, $vr8
-	vfcvtl.d.s	$vr8, $vr8
-	vfadd.d	$vr6, $vr8, $vr6
-	vfadd.d	$vr5, $vr7, $vr5
+	vfmul.d	$vr7, $vr7, $vr4
+	vfcvth.d.s	$vr8, $vr6
+	vfcvtl.d.s	$vr6, $vr6
+	vfadd.d	$vr6, $vr6, $vr7
+	vfadd.d	$vr5, $vr8, $vr5
 	vfcvt.s.d	$vr5, $vr5, $vr6
 	vst	$vr5, $a5, 0
 	vaddi.du	$vr2, $vr2, 4

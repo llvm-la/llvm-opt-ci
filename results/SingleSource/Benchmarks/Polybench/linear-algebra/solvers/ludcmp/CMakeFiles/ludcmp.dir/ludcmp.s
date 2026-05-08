@@ -715,24 +715,10 @@ init_array:                             # @init_array
 	vshuf4i.w	$vr5, $vr0, 8
 	vaddi.wu	$vr6, $vr5, 1
 	vaddi.wu	$vr5, $vr5, 3
-	vpickve2gr.w	$a7, $vr6, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a7, $vr6, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa6, $a7
-	ffint.d.l	$fa6, $fa6
-	vextrins.d	$vr6, $vr7, 16
-	vpickve2gr.w	$a7, $vr5, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa7, $a7
-	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a7, $vr5, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa5, $a7
-	ffint.d.l	$fa5, $fa5
-	vextrins.d	$vr5, $vr7, 16
+	vilvl.w	$vr6, $vr1, $vr6
+	vffint.d.lu	$vr6, $vr6
+	vilvl.w	$vr5, $vr1, $vr5
+	vffint.d.lu	$vr5, $vr5
 	vfdiv.d	$vr6, $vr6, $vr2
 	vfdiv.d	$vr5, $vr5, $vr2
 	vfmul.d	$vr6, $vr6, $vr3
@@ -779,10 +765,10 @@ init_array:                             # @init_array
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	ori	$s5, $t0, 3696
 	ori	$s4, $t0, 3712
-	ori	$a4, $zero, 4
+	ori	$a3, $zero, 4
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI8_1)
 	vldi	$vr4, -912
-	ori	$a5, $zero, 1998
+	ori	$a4, $zero, 1998
 	lu52i.d	$s2, $zero, 1023
 	ori	$s7, $zero, 2000
 	ori	$a0, $zero, 0
@@ -813,7 +799,7 @@ init_array:                             # @init_array
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_12 Depth 2
                                         #     Child Loop BB8_15 Depth 2
-	bgeu	$s6, $a4, .LBB8_11
+	bgeu	$s6, $a3, .LBB8_11
 # %bb.10:                               #   in Loop: Header=BB8_9 Depth=1
 	move	$a0, $zero
 	b	.LBB8_14
@@ -832,20 +818,12 @@ init_array:                             # @init_array
                                         # =>  This Inner Loop Header: Depth=2
 	vneg.w	$vr1, $vr0
 	vsub.w	$vr2, $vr5, $vr0
-	vpickve2gr.w	$a3, $vr1, 1
-	movgr2fr.w	$fa3, $a3
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a3, $vr1, 0
-	movgr2fr.w	$fa1, $a3
-	ffint.d.w	$fa1, $fa1
-	vextrins.d	$vr1, $vr3, 16
-	vpickve2gr.w	$a3, $vr2, 1
-	movgr2fr.w	$fa3, $a3
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a3, $vr2, 0
-	movgr2fr.w	$fa2, $a3
-	ffint.d.w	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
+	vslti.w	$vr3, $vr1, 0
+	vilvl.w	$vr1, $vr3, $vr1
+	vffint.d.l	$vr1, $vr1
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr2, $vr3, $vr2
+	vffint.d.l	$vr2, $vr2
 	vfdiv.d	$vr1, $vr1, $vr6
 	vfdiv.d	$vr2, $vr2, $vr6
 	vfadd.d	$vr1, $vr1, $vr4
@@ -879,7 +857,7 @@ init_array:                             # @init_array
 .LBB8_16:                               # %.loopexit38
                                         #   in Loop: Header=BB8_9 Depth=1
 	slli.d	$s3, $s0, 3
-	bltu	$a5, $s0, .LBB8_8
+	bltu	$a4, $s0, .LBB8_8
 # %bb.17:                               # %.lr.ph
                                         #   in Loop: Header=BB8_9 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -895,9 +873,9 @@ init_array:                             # @init_array
 	jirl	$ra, $ra, 0
 	vld	$vr6, $sp, 16                   # 16-byte Folded Reload
 	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
-	ori	$a5, $zero, 1998
+	ori	$a4, $zero, 1998
 	vldi	$vr4, -912
-	ori	$a4, $zero, 4
+	ori	$a3, $zero, 4
 	b	.LBB8_8
 .LBB8_18:
 	st.d	$zero, $sp, 72

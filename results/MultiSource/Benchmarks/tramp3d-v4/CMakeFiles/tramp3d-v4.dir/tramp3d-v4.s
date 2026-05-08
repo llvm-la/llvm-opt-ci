@@ -201874,21 +201874,21 @@ _ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3E
 	ori	$t4, $zero, 88
 	mul.d	$a0, $a0, $t4
 	add.d	$a0, $t3, $a0
-	ld.w	$s0, $a0, 32
+	ld.w	$t3, $a0, 32
 	ld.w	$t4, $a0, 28
 	ld.d	$t5, $a0, 72
 	addi.w	$t6, $a2, -1
-	mul.d	$a0, $a1, $s0
+	mul.d	$a0, $a1, $t3
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	mul.d	$a2, $a2, $t4
 	add.d	$t7, $a0, $a2
-	add.w	$t3, $t7, $a3
+	add.w	$s0, $t7, $a3
 	bstrpick.d	$a0, $t6, 31, 0
 	alsl.d	$a2, $a0, $t5, 3
 	addi.d	$fp, $a2, 8
 	addi.d	$s1, $a0, 1
 	bstrpick.d	$a0, $s1, 32, 1
-	slli.d	$a2, $a0, 1
+	slli.d	$s2, $a0, 1
 	alsl.d	$s3, $a0, $a5, 1
 	vinsgr2vr.w	$vr0, $t8, 0
 	vinsgr2vr.w	$vr0, $t8, 1
@@ -201900,17 +201900,18 @@ _ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3E
 	vadd.w	$vr1, $vr1, $vr2
 	sub.d	$s4, $zero, $t8
 	ori	$s5, $zero, 3
-	st.d	$t3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	move	$t8, $s0
+	st.d	$t3, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB969_6
 	.p2align	4, , 16
 .LBB969_5:                              # %._crit_edge30.split.i.i.i
                                         #   in Loop: Header=BB969_6 Depth=1
 	addi.w	$a1, $a1, 1
 	addi.d	$a7, $a7, 1
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
-	add.w	$t3, $t3, $s0
-	add.d	$t7, $t7, $s0
+	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
+	add.w	$t8, $t8, $t3
+	add.d	$t7, $t7, $t3
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	beq	$a1, $a0, .LBB969_1
 .LBB969_6:                              # %.preheader25.i.i.i
@@ -201919,11 +201920,11 @@ _ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3E
                                         #       Child Loop BB969_15 Depth 3
                                         #       Child Loop BB969_10 Depth 3
 	move	$s7, $zero
-	mul.d	$a0, $s0, $a7
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	add.d	$s8, $a3, $a0
+	mul.d	$a0, $t3, $a7
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	add.d	$s8, $a2, $a0
 	move	$ra, $t7
-	move	$t8, $t3
+	move	$s6, $t8
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB969_7:                              # %.preheader.i.i.i
@@ -201936,14 +201937,14 @@ _ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3E
 # %bb.8:                                # %vector.scevcheck
                                         #   in Loop: Header=BB969_7 Depth=2
 	mul.d	$a0, $t4, $s7
-	add.w	$s6, $s8, $a0
-	add.w	$s2, $s6, $t6
+	add.w	$t3, $s8, $a0
+	add.w	$a2, $t3, $t6
 	move	$a0, $a5
-	bge	$s2, $s6, .LBB969_12
+	bge	$a2, $t3, .LBB969_12
 .LBB969_9:                              # %scalar.ph.preheader
                                         #   in Loop: Header=BB969_7 Depth=2
-	sub.d	$s2, $a6, $a0
-	add.w	$s6, $ra, $a0
+	sub.d	$a2, $a6, $a0
+	add.w	$t3, $ra, $a0
 	add.w	$a0, $s4, $a0
 	.p2align	4, , 16
 .LBB969_10:                             # %scalar.ph
@@ -201958,39 +201959,39 @@ _ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3E
 	ffint.d.w	$fa5, $fa5
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
 	fmul.d	$fa2, $fa2, $fa3
-	slli.d	$s0, $s6, 3
+	slli.d	$s0, $t3, 3
 	fstx.d	$fa2, $t5, $s0
-	addi.w	$s2, $s2, -1
-	addi.w	$s6, $s6, 1
+	addi.w	$a2, $a2, -1
+	addi.w	$t3, $t3, 1
 	addi.w	$a0, $a0, 1
-	bnez	$s2, .LBB969_10
+	bnez	$a2, .LBB969_10
 .LBB969_11:                             # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB969_7 Depth=2
 	addi.w	$a3, $a3, 1
 	addi.d	$s7, $s7, 1
-	add.w	$t8, $t8, $t4
+	add.w	$s6, $s6, $t4
 	add.d	$ra, $ra, $t4
 	bne	$a3, $a4, .LBB969_7
 	b	.LBB969_5
 	.p2align	4, , 16
 .LBB969_12:                             # %vector.memcheck
                                         #   in Loop: Header=BB969_7 Depth=2
-	alsl.d	$s2, $s6, $t5, 3
-	alsl.d	$s6, $s6, $fp, 3
-	sltu	$a0, $t1, $s6
-	sltu	$s0, $s2, $t2
+	alsl.d	$a2, $t3, $t5, 3
+	alsl.d	$t3, $t3, $fp, 3
+	sltu	$a0, $t1, $t3
+	sltu	$s0, $a2, $t2
 	and	$s0, $a0, $s0
 	move	$a0, $a5
 	bnez	$s0, .LBB969_9
 # %bb.13:                               # %vector.memcheck
                                         #   in Loop: Header=BB969_7 Depth=2
 	addi.d	$a0, $t0, 104
-	sltu	$a0, $a0, $s6
-	addi.d	$s0, $t0, 136
-	sltu	$s0, $s2, $s0
-	and	$s0, $a0, $s0
+	sltu	$a0, $a0, $t3
+	addi.d	$t3, $t0, 136
+	sltu	$a2, $a2, $t3
+	and	$a2, $a0, $a2
 	move	$a0, $a5
-	bnez	$s0, .LBB969_9
+	bnez	$a2, .LBB969_9
 # %bb.14:                               # %vector.ph
                                         #   in Loop: Header=BB969_7 Depth=2
 	fld.d	$fa4, $t1, 0
@@ -201998,8 +201999,8 @@ _ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3E
 	vldrepl.d	$vr3, $t0, 128
 	fmul.d	$fa4, $fa4, $fa4
 	vreplvei.d	$vr4, $vr4, 0
-	move	$s2, $a2
-	move	$s6, $t8
+	move	$a0, $s2
+	move	$a2, $s6
 	vori.b	$vr5, $vr1, 0
 	.p2align	4, , 16
 .LBB969_15:                             # %vector.body
@@ -202007,25 +202008,21 @@ _ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3E
                                         #     Parent Loop BB969_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	vsub.w	$vr6, $vr5, $vr0
-	vpickve2gr.w	$a0, $vr6, 1
-	movgr2fr.w	$fa7, $a0
-	ffint.d.w	$fa7, $fa7
-	vpickve2gr.w	$a0, $vr6, 0
-	movgr2fr.w	$fa6, $a0
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr7, 16
+	vslti.w	$vr7, $vr6, 0
+	vilvl.w	$vr6, $vr7, $vr6
+	vffint.d.l	$vr6, $vr6
 	vfmadd.d	$vr6, $vr3, $vr6, $vr2
 	vfmul.d	$vr6, $vr4, $vr6
-	slli.d	$a0, $s6, 3
-	vstx	$vr6, $t5, $a0
+	slli.d	$t3, $a2, 3
+	vstx	$vr6, $t5, $t3
 	vaddi.wu	$vr5, $vr5, 2
-	addi.d	$s2, $s2, -2
-	addi.w	$s6, $s6, 2
-	bnez	$s2, .LBB969_15
+	addi.d	$a0, $a0, -2
+	addi.w	$a2, $a2, 2
+	bnez	$a0, .LBB969_15
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB969_7 Depth=2
 	move	$a0, $s3
-	bne	$s1, $a2, .LBB969_9
+	bne	$s1, $s2, .LBB969_9
 	b	.LBB969_11
 .Lfunc_end969:
 	.size	_ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilinearTag12CartesianTagLi3EEEd10BrickViewUES9_S9_S9_E15EvaluateLocLoopIN6Forgas5CentXILi3EEELi3EEE3runEv, .Lfunc_end969-_ZN14MultiArgKernelI9MultiArg4I5FieldI22UniformRectilinearMeshI10MeshTraitsILi3Ed21UniformRectilinearTag12CartesianTagLi3EEEd10BrickViewUES9_S9_S9_E15EvaluateLocLoopIN6Forgas5CentXILi3EEELi3EEE3runEv

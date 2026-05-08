@@ -23,41 +23,28 @@ test_matrix:                            # @test_matrix
 # %bb.3:                                # %vector.ph
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI0_0)
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 1
+	ori	$a3, $zero, 0
+	lu32i.d	$a3, 1
+	vreplgr2vr.d	$vr1, $a3
 	bstrpick.d	$a3, $a0, 30, 1
 	slli.d	$a3, $a3, 1
-	vreplgr2vr.d	$vr1, $a4
+	vrepli.b	$vr2, 0
 	move	$a4, $a2
 	move	$a5, $a1
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a7, $vr1, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
-	ffint.d.l	$fa2, $fa2
-	vpickve2gr.w	$a7, $vr1, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa3, $a7
-	ffint.d.l	$fa3, $fa3
-	vextrins.d	$vr3, $vr2, 16
+	vilvl.w	$vr3, $vr2, $vr1
+	vffint.d.lu	$vr3, $vr3
 	vst	$vr3, $a4, 0
-	vshuf4i.w	$vr2, $vr0, 8
-	vaddi.wu	$vr2, $vr2, 1
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa3, $a7
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vfmul.d	$vr2, $vr2, $vr2
-	vfmul.d	$vr2, $vr2, $vr2
-	vst	$vr2, $a5, 0
+	vshuf4i.w	$vr3, $vr0, 8
+	vaddi.wu	$vr3, $vr3, 1
+	vilvl.w	$vr3, $vr2, $vr3
+	vffint.d.lu	$vr3, $vr3
+	vfmul.d	$vr3, $vr3, $vr3
+	vfmul.d	$vr3, $vr3, $vr3
+	vst	$vr3, $a5, 0
 	vaddi.du	$vr0, $vr0, 2
 	vaddi.wu	$vr1, $vr1, 2
 	addi.d	$a6, $a6, -2
@@ -150,13 +137,13 @@ main:                                   # @main
 	ori	$s0, $zero, 1
 	ori	$s1, $zero, 6
 	ori	$s2, $zero, 32
-	vrepli.b	$vr4, 0
+	vrepli.b	$vr3, 0
 	ori	$s3, $zero, 16
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
 	vreplgr2vr.d	$vr0, $a0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr3, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_2:                                # %test_matrix.exit
@@ -178,7 +165,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 108
 	addi.w	$fp, $fp, 1
-	vld	$vr4, $sp, 32                   # 16-byte Folded Reload
+	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
 	bge	$fp, $a0, .LBB1_22
 .LBB1_4:                                # %.lr.ph16
                                         # =>This Loop Header: Depth=1
@@ -212,27 +199,13 @@ main:                                   # @main
 .LBB1_8:                                # %vector.body43
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vpickve2gr.w	$a7, $vr1, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
-	ffint.d.l	$fa2, $fa2
-	vpickve2gr.w	$a7, $vr1, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa3, $a7
-	ffint.d.l	$fa3, $fa3
-	vextrins.d	$vr3, $vr2, 16
-	vst	$vr3, $a4, 0
+	vilvl.w	$vr2, $vr3, $vr1
+	vffint.d.lu	$vr2, $vr2
+	vst	$vr2, $a4, 0
 	vshuf4i.w	$vr2, $vr0, 8
 	vaddi.wu	$vr2, $vr2, 1
-	vpickve2gr.w	$a7, $vr2, 1
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa3, $a7
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a7, $vr2, 0
-	bstrpick.d	$a7, $a7, 31, 0
-	movgr2fr.d	$fa2, $a7
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
+	vilvl.w	$vr2, $vr3, $vr2
+	vffint.d.lu	$vr2, $vr2
 	vfmul.d	$vr2, $vr2, $vr2
 	vfmul.d	$vr2, $vr2, $vr2
 	vst	$vr2, $a5, 0
@@ -325,8 +298,8 @@ main:                                   # @main
 	vstx	$vr0, $a2, $a6
 	vst	$vr1, $t0, 16
 	add.d	$t0, $a4, $a6
-	vstx	$vr4, $a4, $a6
-	vst	$vr4, $t0, 16
+	vstx	$vr3, $a4, $a6
+	vst	$vr3, $t0, 16
 	addi.d	$a7, $a7, -4
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB1_20

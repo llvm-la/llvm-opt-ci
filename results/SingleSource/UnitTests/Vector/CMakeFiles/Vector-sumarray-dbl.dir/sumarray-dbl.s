@@ -8,14 +8,15 @@ main:                                   # @main
 # %bb.0:                                # %vector.ph
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
-	vreplgr2vr.d	$vr0, $a0
+	vreplgr2vr.d	$vr1, $a0
 	lu12i.w	$a3, -2
 	ori	$a4, $a3, 1792
+	vrepli.b	$vr0, 0
 	lu12i.w	$a0, -167773
 	ori	$a0, $a0, 3441
 	lu32i.d	$a0, -479069
 	lu52i.d	$a0, $a0, 1026
-	vreplgr2vr.d	$vr1, $a0
+	vreplgr2vr.d	$vr2, $a0
 	pcalau12i	$a0, %pc_hi20(TheArray)
 	addi.d	$a0, $a0, %pc_lo12(TheArray)
 	lu12i.w	$a5, 1
@@ -24,35 +25,20 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr2, $vr0, 2
-	vpickve2gr.w	$a6, $vr0, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa3, $a6
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a6, $vr0, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa4, $a6
-	ffint.d.l	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a6, $vr2, 1
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa3, $a6
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a6, $vr2, 0
-	bstrpick.d	$a6, $a6, 31, 0
-	movgr2fr.d	$fa2, $a6
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vfmul.d	$vr3, $vr4, $vr1
-	vfmul.d	$vr2, $vr2, $vr1
+	vaddi.wu	$vr3, $vr1, 2
+	vilvl.w	$vr4, $vr0, $vr1
+	vffint.d.lu	$vr4, $vr4
+	vilvl.w	$vr3, $vr0, $vr3
+	vffint.d.lu	$vr3, $vr3
+	vfmul.d	$vr4, $vr4, $vr2
+	vfmul.d	$vr3, $vr3, $vr2
 	add.d	$a6, $a0, $a4
-	vstx	$vr3, $a6, $a1
-	vstx	$vr2, $a6, $a2
+	vstx	$vr4, $a6, $a1
+	vstx	$vr3, $a6, $a2
 	addi.d	$a4, $a4, 32
-	vaddi.wu	$vr0, $vr0, 4
+	vaddi.wu	$vr1, $vr1, 4
 	bnez	$a4, .LBB0_1
 # %bb.2:                                # %.preheader.preheader
-	vrepli.b	$vr0, 0
 	ori	$a3, $a3, 1792
 	ori	$a4, $a5, 2352
 	ori	$a5, $a5, 2336

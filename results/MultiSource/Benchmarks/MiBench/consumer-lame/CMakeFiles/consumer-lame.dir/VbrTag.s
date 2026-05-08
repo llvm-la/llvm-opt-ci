@@ -471,66 +471,53 @@ PutVbrTag:                              # @PutVbrTag
 	pcalau12i	$a2, %pc_hi20(.LCPI5_0)
 	vld	$vr3, $a2, %pc_lo12(.LCPI5_0)
 	vreplvei.w	$vr4, $vr0, 0
+	vrepli.b	$vr5, 0
 	lu12i.w	$a2, 293601
 	ori	$a2, $a2, 1147
 	lu32i.d	$a2, 293601
 	lu52i.d	$a2, $a2, 1016
-	vreplgr2vr.d	$vr5, $a2
+	vreplgr2vr.d	$vr6, $a2
 	lu12i.w	$a3, 276480
-	vreplgr2vr.w	$vr6, $a3
+	vreplgr2vr.w	$vr7, $a3
 	lu12i.w	$a2, 276464
-	vreplgr2vr.w	$vr7, $a2
+	vreplgr2vr.w	$vr8, $a2
 	ori	$a4, $zero, 97
 	.p2align	4, , 16
 .LBB5_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a5, $vr3, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$ft0, $a5
-	ffint.d.l	$ft0, $ft0
-	vpickve2gr.w	$a5, $vr3, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$ft1, $a5
-	ffint.d.l	$ft1, $ft1
-	vextrins.d	$vr9, $vr8, 16
-	vpickve2gr.w	$a5, $vr3, 3
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$ft0, $a5
-	ffint.d.l	$ft0, $ft0
-	vpickve2gr.w	$a5, $vr3, 2
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$ft2, $a5
-	ffint.d.l	$ft2, $ft2
-	vextrins.d	$vr10, $vr8, 16
-	vfmul.d	$vr8, $vr10, $vr5
-	vfmul.d	$vr9, $vr9, $vr5
+	vilvl.w	$vr9, $vr5, $vr3
+	vffint.d.lu	$vr9, $vr9
+	vilvh.w	$vr10, $vr5, $vr3
+	vffint.d.lu	$vr10, $vr10
+	vfmul.d	$vr10, $vr10, $vr6
+	vfmul.d	$vr9, $vr9, $vr6
 	vfmul.d	$vr9, $vr9, $vr2
-	vfmul.d	$vr8, $vr8, $vr2
-	vfrintrm.d	$vr8, $vr8
+	vfmul.d	$vr10, $vr10, $vr2
+	vfrintrm.d	$vr10, $vr10
 	vfrintrm.d	$vr9, $vr9
-	vreplvei.d	$vr10, $vr9, 0
-	ftintrz.w.d	$ft2, $ft2
-	movfr2gr.s	$a5, $ft2
-	vinsgr2vr.w	$vr10, $a5, 0
+	vreplvei.d	$vr11, $vr9, 0
+	ftintrz.w.d	$ft3, $ft3
+	movfr2gr.s	$a5, $ft3
+	vinsgr2vr.w	$vr11, $a5, 0
 	vreplvei.d	$vr9, $vr9, 1
 	ftintrz.w.d	$ft1, $ft1
 	movfr2gr.s	$a5, $ft1
-	vinsgr2vr.w	$vr10, $a5, 1
-	vreplvei.d	$vr9, $vr8, 0
+	vinsgr2vr.w	$vr11, $a5, 1
+	vreplvei.d	$vr9, $vr10, 0
 	ftintrz.w.d	$ft1, $ft1
 	movfr2gr.s	$a5, $ft1
-	vinsgr2vr.w	$vr10, $a5, 2
-	vreplvei.d	$vr8, $vr8, 1
-	ftintrz.w.d	$ft0, $ft0
-	movfr2gr.s	$a5, $ft0
-	vinsgr2vr.w	$vr10, $a5, 3
-	vslti.w	$vr8, $vr10, 0
-	vilvh.w	$vr9, $vr8, $vr10
-	vilvl.w	$vr8, $vr8, $vr10
-	vpickve2gr.d	$a5, $vr8, 0
-	vpickve2gr.d	$a6, $vr8, 1
-	vpickve2gr.d	$a7, $vr9, 0
-	vpickve2gr.d	$t0, $vr9, 1
+	vinsgr2vr.w	$vr11, $a5, 2
+	vreplvei.d	$vr9, $vr10, 1
+	ftintrz.w.d	$ft1, $ft1
+	movfr2gr.s	$a5, $ft1
+	vinsgr2vr.w	$vr11, $a5, 3
+	vslti.w	$vr9, $vr11, 0
+	vilvh.w	$vr10, $vr9, $vr11
+	vilvl.w	$vr9, $vr9, $vr11
+	vpickve2gr.d	$a5, $vr9, 0
+	vpickve2gr.d	$a6, $vr9, 1
+	vpickve2gr.d	$a7, $vr10, 0
+	vpickve2gr.d	$t0, $vr10, 1
 	slli.d	$a5, $a5, 2
 	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
@@ -539,33 +526,33 @@ PutVbrTag:                              # @PutVbrTag
 	ldx.w	$a6, $a1, $a6
 	ldx.w	$a7, $a1, $a7
 	ldx.w	$t0, $a1, $t0
-	vinsgr2vr.w	$vr8, $a5, 0
-	vinsgr2vr.w	$vr8, $a6, 1
-	vinsgr2vr.w	$vr8, $a7, 2
-	vinsgr2vr.w	$vr8, $t0, 3
-	vffint.s.w	$vr8, $vr8
-	vfmul.s	$vr8, $vr8, $vr6
-	vfdiv.s	$vr8, $vr8, $vr4
-	vfcmp.clt.s	$vr9, $vr7, $vr8
-	vbitsel.v	$vr8, $vr8, $vr7, $vr9
-	vreplvei.w	$vr9, $vr8, 0
+	vinsgr2vr.w	$vr9, $a5, 0
+	vinsgr2vr.w	$vr9, $a6, 1
+	vinsgr2vr.w	$vr9, $a7, 2
+	vinsgr2vr.w	$vr9, $t0, 3
+	vffint.s.w	$vr9, $vr9
+	vfmul.s	$vr9, $vr9, $vr7
+	vfdiv.s	$vr9, $vr9, $vr4
+	vfcmp.clt.s	$vr10, $vr8, $vr9
+	vbitsel.v	$vr9, $vr9, $vr8, $vr10
+	vreplvei.w	$vr10, $vr9, 0
+	ftintrz.l.s	$ft2, $ft2
+	movfr2gr.d	$a5, $ft2
+	vinsgr2vr.b	$vr10, $a5, 0
+	vreplvei.w	$vr11, $vr9, 1
+	ftintrz.l.s	$ft3, $ft3
+	movfr2gr.d	$a5, $ft3
+	vinsgr2vr.b	$vr10, $a5, 1
+	vreplvei.w	$vr11, $vr9, 2
+	ftintrz.l.s	$ft3, $ft3
+	movfr2gr.d	$a5, $ft3
+	vinsgr2vr.b	$vr10, $a5, 2
+	vreplvei.w	$vr9, $vr9, 3
 	ftintrz.l.s	$ft1, $ft1
 	movfr2gr.d	$a5, $ft1
-	vinsgr2vr.b	$vr9, $a5, 0
-	vreplvei.w	$vr10, $vr8, 1
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
-	vinsgr2vr.b	$vr9, $a5, 1
-	vreplvei.w	$vr10, $vr8, 2
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
-	vinsgr2vr.b	$vr9, $a5, 2
-	vreplvei.w	$vr8, $vr8, 3
-	ftintrz.l.s	$ft0, $ft0
-	movfr2gr.d	$a5, $ft0
-	vinsgr2vr.b	$vr9, $a5, 3
+	vinsgr2vr.b	$vr10, $a5, 3
 	add.d	$a5, $s7, $s6
-	vstelm.w	$vr9, $a5, 0, 0
+	vstelm.w	$vr10, $a5, 0, 0
 	addi.d	$s6, $s6, 4
 	vaddi.wu	$vr3, $vr3, 4
 	bne	$s6, $a4, .LBB5_5

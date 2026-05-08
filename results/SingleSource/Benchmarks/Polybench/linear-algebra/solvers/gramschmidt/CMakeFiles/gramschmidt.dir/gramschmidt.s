@@ -202,15 +202,15 @@ main:                                   # @main
 	vld	$vr3, $a7, %pc_lo12(.LCPI7_0)
 	vreplgr2vr.w	$vr4, $a5
 	vreplgr2vr.w	$vr5, $a6
+	vrepli.b	$vr6, 0
 	ori	$a7, $zero, 0
 	ori	$t0, $zero, 0
 	lu32i.d	$t0, -49152
 	lu52i.d	$t0, $t0, 1032
-	vreplgr2vr.d	$vr6, $t0
+	vreplgr2vr.d	$vr7, $t0
 	lu32i.d	$a7, -458752
 	lu52i.d	$a7, $a7, 1029
-	vreplgr2vr.d	$vr7, $a7
-	vrepli.b	$vr8, 0
+	vreplgr2vr.d	$vr8, $a7
 	move	$a7, $fp
 	move	$t0, $s0
 	b	.LBB7_8
@@ -269,22 +269,15 @@ main:                                   # @main
 	vmuh.wu	$vr12, $vr11, $vr4
 	vsrli.w	$vr12, $vr12, 6
 	vmsub.w	$vr11, $vr12, $vr5
-	vpickve2gr.w	$t2, $vr11, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	movgr2fr.d	$ft4, $t2
-	ffint.d.l	$ft4, $ft4
-	vpickve2gr.w	$t2, $vr11, 0
-	bstrpick.d	$t2, $t2, 31, 0
-	movgr2fr.d	$ft3, $t2
-	ffint.d.l	$ft3, $ft3
-	vextrins.d	$vr11, $vr12, 16
-	vfdiv.d	$vr11, $vr11, $vr6
-	vfmul.d	$vr11, $vr11, $vr7
+	vilvl.w	$vr11, $vr6, $vr11
+	vffint.d.lu	$vr11, $vr11
+	vfdiv.d	$vr11, $vr11, $vr7
+	vfmul.d	$vr11, $vr11, $vr8
 	vfadd.d	$vr11, $vr11, $vr2
 	add.d	$t2, $a7, $t1
 	vstx	$vr11, $t2, $s3
 	add.d	$t2, $t0, $t1
-	vstx	$vr8, $t2, $s3
+	vstx	$vr6, $t2, $s3
 	addi.d	$t1, $t1, 16
 	vaddi.du	$vr10, $vr10, 2
 	bnez	$t1, .LBB7_12

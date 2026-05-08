@@ -8389,42 +8389,24 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr2, $a0, $a3
 	add.d	$a4, $a0, $a3
-	vpickve2gr.w	$a5, $vr2, 1
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
-	movgr2fr.w	$fa4, $a5
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a5, $vr2, 3
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 2
-	movgr2fr.w	$fa2, $a5
-	ffint.d.w	$fa2, $fa2
-	vld	$vr5, $a4, 160
-	vextrins.d	$vr2, $vr3, 16
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr4, $vr3, $vr2
+	vffint.d.l	$vr4, $vr4
+	vilvh.w	$vr2, $vr3, $vr2
+	vld	$vr3, $a4, 160
+	vffint.d.l	$vr2, $vr2
 	vfmul.d	$vr2, $vr1, $vr2
-	vfmul.d	$vr3, $vr1, $vr4
-	vpickve2gr.w	$a4, $vr5, 1
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 0
-	movgr2fr.w	$fa6, $a4
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr4, 16
-	vpickve2gr.w	$a4, $vr5, 3
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 2
-	movgr2fr.w	$fa5, $a4
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vfmul.d	$vr4, $vr0, $vr5
+	vfmul.d	$vr4, $vr1, $vr4
+	vslti.w	$vr5, $vr3, 0
+	vilvl.w	$vr6, $vr5, $vr3
+	vffint.d.l	$vr6, $vr6
+	vilvh.w	$vr3, $vr5, $vr3
+	vffint.d.l	$vr3, $vr3
+	vfmul.d	$vr3, $vr0, $vr3
 	vfmul.d	$vr5, $vr0, $vr6
-	vfadd.d	$vr3, $vr3, $vr5
-	vfadd.d	$vr2, $vr2, $vr4
-	vfcvt.s.d	$vr2, $vr2, $vr3
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr2, $vr2, $vr3
+	vfcvt.s.d	$vr2, $vr2, $vr4
 	vstx	$vr2, $a1, $a3
 	addi.d	$a3, $a3, 16
 	bne	$a3, $a2, .LBB41_49
@@ -8501,42 +8483,24 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr2, $a0, $a3
 	add.d	$a4, $a0, $a3
-	vpickve2gr.w	$a5, $vr2, 1
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
-	movgr2fr.w	$fa4, $a5
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a5, $vr2, 3
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 2
-	movgr2fr.w	$fa2, $a5
-	ffint.d.w	$fa2, $fa2
-	vld	$vr5, $a4, 160
-	vextrins.d	$vr2, $vr3, 16
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr4, $vr3, $vr2
+	vffint.d.l	$vr4, $vr4
+	vilvh.w	$vr2, $vr3, $vr2
+	vld	$vr3, $a4, 160
+	vffint.d.l	$vr2, $vr2
 	vfmul.d	$vr2, $vr1, $vr2
-	vfmul.d	$vr3, $vr1, $vr4
-	vpickve2gr.w	$a4, $vr5, 1
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 0
-	movgr2fr.w	$fa6, $a4
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr4, 16
-	vpickve2gr.w	$a4, $vr5, 3
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 2
-	movgr2fr.w	$fa5, $a4
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vfmul.d	$vr4, $vr0, $vr5
+	vfmul.d	$vr4, $vr1, $vr4
+	vslti.w	$vr5, $vr3, 0
+	vilvl.w	$vr6, $vr5, $vr3
+	vffint.d.l	$vr6, $vr6
+	vilvh.w	$vr3, $vr5, $vr3
+	vffint.d.l	$vr3, $vr3
+	vfmul.d	$vr3, $vr0, $vr3
 	vfmul.d	$vr5, $vr0, $vr6
-	vfadd.d	$vr3, $vr3, $vr5
-	vfadd.d	$vr2, $vr2, $vr4
-	vfcvt.s.d	$vr2, $vr2, $vr3
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr2, $vr2, $vr3
+	vfcvt.s.d	$vr2, $vr2, $vr4
 	vstx	$vr2, $a1, $a3
 	addi.d	$a3, $a3, 16
 	bne	$a3, $a2, .LBB41_55
@@ -8629,42 +8593,24 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr2, $a0, $a3
 	add.d	$a4, $a0, $a3
-	vpickve2gr.w	$a5, $vr2, 1
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
-	movgr2fr.w	$fa4, $a5
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a5, $vr2, 3
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 2
-	movgr2fr.w	$fa2, $a5
-	ffint.d.w	$fa2, $fa2
-	vld	$vr5, $a4, 160
-	vextrins.d	$vr2, $vr3, 16
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr4, $vr3, $vr2
+	vffint.d.l	$vr4, $vr4
+	vilvh.w	$vr2, $vr3, $vr2
+	vld	$vr3, $a4, 160
+	vffint.d.l	$vr2, $vr2
 	vfmul.d	$vr2, $vr1, $vr2
-	vfmul.d	$vr3, $vr1, $vr4
-	vpickve2gr.w	$a4, $vr5, 1
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 0
-	movgr2fr.w	$fa6, $a4
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr4, 16
-	vpickve2gr.w	$a4, $vr5, 3
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 2
-	movgr2fr.w	$fa5, $a4
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vfmul.d	$vr4, $vr0, $vr5
+	vfmul.d	$vr4, $vr1, $vr4
+	vslti.w	$vr5, $vr3, 0
+	vilvl.w	$vr6, $vr5, $vr3
+	vffint.d.l	$vr6, $vr6
+	vilvh.w	$vr3, $vr5, $vr3
+	vffint.d.l	$vr3, $vr3
+	vfmul.d	$vr3, $vr0, $vr3
 	vfmul.d	$vr5, $vr0, $vr6
-	vfadd.d	$vr3, $vr3, $vr5
-	vfadd.d	$vr2, $vr2, $vr4
-	vfcvt.s.d	$vr2, $vr2, $vr3
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr2, $vr2, $vr3
+	vfcvt.s.d	$vr2, $vr2, $vr4
 	vstx	$vr2, $a1, $a3
 	addi.d	$a3, $a3, 16
 	bne	$a3, $a2, .LBB41_64
@@ -8741,42 +8687,24 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr2, $a0, $a3
 	add.d	$a4, $a0, $a3
-	vpickve2gr.w	$a5, $vr2, 1
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
-	movgr2fr.w	$fa4, $a5
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a5, $vr2, 3
-	movgr2fr.w	$fa3, $a5
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 2
-	movgr2fr.w	$fa2, $a5
-	ffint.d.w	$fa2, $fa2
-	vld	$vr5, $a4, 160
-	vextrins.d	$vr2, $vr3, 16
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr4, $vr3, $vr2
+	vffint.d.l	$vr4, $vr4
+	vilvh.w	$vr2, $vr3, $vr2
+	vld	$vr3, $a4, 160
+	vffint.d.l	$vr2, $vr2
 	vfmul.d	$vr2, $vr1, $vr2
-	vfmul.d	$vr3, $vr1, $vr4
-	vpickve2gr.w	$a4, $vr5, 1
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 0
-	movgr2fr.w	$fa6, $a4
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr4, 16
-	vpickve2gr.w	$a4, $vr5, 3
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a4, $vr5, 2
-	movgr2fr.w	$fa5, $a4
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vfmul.d	$vr4, $vr0, $vr5
+	vfmul.d	$vr4, $vr1, $vr4
+	vslti.w	$vr5, $vr3, 0
+	vilvl.w	$vr6, $vr5, $vr3
+	vffint.d.l	$vr6, $vr6
+	vilvh.w	$vr3, $vr5, $vr3
+	vffint.d.l	$vr3, $vr3
+	vfmul.d	$vr3, $vr0, $vr3
 	vfmul.d	$vr5, $vr0, $vr6
-	vfadd.d	$vr3, $vr3, $vr5
-	vfadd.d	$vr2, $vr2, $vr4
-	vfcvt.s.d	$vr2, $vr2, $vr3
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr2, $vr2, $vr3
+	vfcvt.s.d	$vr2, $vr2, $vr4
 	vstx	$vr2, $a1, $a3
 	addi.d	$a3, $a3, 16
 	bne	$a3, $a2, .LBB41_70
@@ -8996,7 +8924,7 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
 	pcalau12i	$a0, %pc_hi20(_mode_template)
 	addi.d	$a0, $a0, %pc_lo12(_mode_template)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	move	$s3, $zero
+	move	$s2, $zero
 	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB41_80
@@ -9005,7 +8933,7 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
                                         #   in Loop: Header=BB41_80 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	andi	$a0, $a0, 1
-	ori	$s3, $zero, 1
+	ori	$s2, $zero, 1
 	move	$a1, $zero
 	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
@@ -9029,31 +8957,31 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
 	ori	$a1, $zero, 3208
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	slli.d	$s5, $s3, 3
-	stx.d	$a0, $s0, $s5
+	slli.d	$s3, $s2, 3
+	stx.d	$a0, $s0, $s3
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	stx.d	$a0, $a1, $s5
-	slli.d	$a1, $s3, 4
+	stx.d	$a0, $a1, $s3
+	slli.d	$a1, $s2, 4
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	vldx	$vr0, $a2, $a1
 	vst	$vr0, $a0, 0
 	ld.w	$a0, $s1, 16
-	blt	$s3, $a0, .LBB41_82
+	blt	$s2, $a0, .LBB41_82
 # %bb.81:                               #   in Loop: Header=BB41_80 Depth=1
-	addi.d	$a0, $s3, 1
+	addi.d	$a0, $s2, 1
 	st.w	$a0, $s1, 16
 .LBB41_82:                              #   in Loop: Header=BB41_80 Depth=1
-	alsl.d	$a0, $s3, $s0, 3
-	slli.d	$s2, $s3, 2
+	alsl.d	$a0, $s2, $s0, 3
+	slli.d	$s5, $s2, 2
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	stx.w	$zero, $a1, $s2
+	stx.w	$zero, $a1, $s5
 	ori	$a1, $zero, 3208
-	mul.d	$a1, $s3, $a1
+	mul.d	$a1, $s2, $a1
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	add.d	$s0, $a2, $a1
 	ori	$a2, $zero, 3208
@@ -9061,9 +8989,9 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 20
-	blt	$s3, $a0, .LBB41_84
+	blt	$s2, $a0, .LBB41_84
 # %bb.83:                               #   in Loop: Header=BB41_80 Depth=1
-	addi.d	$a0, $s3, 1
+	addi.d	$a0, $s2, 1
 	st.w	$a0, $s1, 20
 .LBB41_84:                              #   in Loop: Header=BB41_80 Depth=1
 	ld.w	$a0, $s0, 0
@@ -9076,7 +9004,7 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
 	.p2align	4, , 16
 .LBB41_86:                              # %vorbis_encode_residue_setup.exit.i
                                         #   in Loop: Header=BB41_87 Depth=2
-	ldx.w	$a0, $a0, $s2
+	ldx.w	$a0, $a0, $s5
 	addi.d	$a0, $a0, -2
 	sltui	$a0, $a0, 1
 	fdiv.d	$fa0, $fa3, $fa0
@@ -9136,7 +9064,7 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
 	addi.d	$a0, $fp, 1
 	st.w	$a0, $s4, 28
 .LBB41_89:                              #   in Loop: Header=BB41_87 Depth=2
-	ldx.d	$a1, $s4, $s5
+	ldx.d	$a1, $s4, $s3
 	ori	$a0, $zero, 16
 	ori	$a2, $zero, 64
 	beq	$a1, $a2, .LBB41_93
@@ -9154,7 +9082,7 @@ vorbis_encode_setup_init:               # @vorbis_encode_setup_init
 .LBB41_93:                              #   in Loop: Header=BB41_87 Depth=2
 	ld.d	$t6, $sp, 96                    # 8-byte Folded Reload
 .LBB41_94:                              #   in Loop: Header=BB41_87 Depth=2
-	alsl.d	$a1, $s3, $s4, 3
+	alsl.d	$a1, $s2, $s4, 3
 	st.w	$a0, $s1, 16
 	ld.w	$a4, $s8, 0
 	addi.d	$a2, $s4, 2047

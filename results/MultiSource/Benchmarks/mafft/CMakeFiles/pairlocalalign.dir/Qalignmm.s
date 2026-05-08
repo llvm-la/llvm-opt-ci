@@ -1328,8 +1328,8 @@ Q__align:                               # @Q__align
 	addi.w	$a0, $zero, -1
 	vld	$vr17, $sp, 320                 # 16-byte Folded Reload
 	fcvt.d.s	$fa0, $ft9
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	move	$ra, $s1
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	blt	$s1, $a0, .LBB3_29
 # %bb.25:                               # %.lr.ph571
 	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
@@ -2327,27 +2327,18 @@ Q__align:                               # @Q__align
 .LBB3_135:                              # %vector.body1084
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 3
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 2
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a5, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a5, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -2413,27 +2404,18 @@ Q__align:                               # @Q__align
 .LBB3_143:                              # %vector.body1098
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$t0, $vr3, 1
-	movgr2fr.w	$fa4, $t0
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$t0, $vr3, 0
-	movgr2fr.w	$fa5, $t0
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$t0, $vr3, 3
-	movgr2fr.w	$fa4, $t0
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$t0, $vr3, 2
-	movgr2fr.w	$fa3, $t0
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a6, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a6, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a6, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -2948,27 +2930,18 @@ Q__align:                               # @Q__align
 	vsub.d	$vr6, $vr3, $vr1
 	vpickev.w	$vr5, $vr6, $vr5
 	vmul.w	$vr5, $vr0, $vr5
-	vpickve2gr.w	$a7, $vr5, 1
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 0
-	movgr2fr.w	$fa7, $a7
-	ffint.d.w	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a7, $vr5, 3
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 2
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vld	$vr8, $a5, 0
-	vextrins.d	$vr5, $vr6, 16
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr7, $vr6, $vr5
+	vffint.d.l	$vr7, $vr7
+	vilvh.w	$vr5, $vr6, $vr5
+	vld	$vr6, $a5, 0
+	vffint.d.l	$vr5, $vr5
 	vfmul.d	$vr5, $vr5, $vr4
-	vfmul.d	$vr6, $vr7, $vr4
-	vfcvth.d.s	$vr7, $vr8
-	vfcvtl.d.s	$vr8, $vr8
-	vfadd.d	$vr6, $vr8, $vr6
-	vfadd.d	$vr5, $vr7, $vr5
+	vfmul.d	$vr7, $vr7, $vr4
+	vfcvth.d.s	$vr8, $vr6
+	vfcvtl.d.s	$vr6, $vr6
+	vfadd.d	$vr6, $vr6, $vr7
+	vfadd.d	$vr5, $vr8, $vr5
 	vfcvt.s.d	$vr5, $vr5, $vr6
 	vst	$vr5, $a5, 0
 	vaddi.du	$vr2, $vr2, 4
@@ -6684,27 +6657,18 @@ Q__align_gapmap:                        # @Q__align_gapmap
 .LBB6_132:                              # %vector.body1043
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$t1, $vr3, 1
-	movgr2fr.w	$fa4, $t1
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$t1, $vr3, 0
-	movgr2fr.w	$fa5, $t1
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$t1, $vr3, 3
-	movgr2fr.w	$fa4, $t1
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$t1, $vr3, 2
-	movgr2fr.w	$fa3, $t1
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a7, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a7, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a7, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -6762,27 +6726,18 @@ Q__align_gapmap:                        # @Q__align_gapmap
 .LBB6_139:                              # %vector.body1057
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$t2, $vr3, 1
-	movgr2fr.w	$fa4, $t2
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$t2, $vr3, 0
-	movgr2fr.w	$fa5, $t2
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$t2, $vr3, 3
-	movgr2fr.w	$fa4, $t2
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$t2, $vr3, 2
-	movgr2fr.w	$fa3, $t2
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $t0, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $t0, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $t0, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -6981,8 +6936,8 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	or	$a1, $a1, $t3
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	addi.d	$s2, $a2, 4
-	addi.d	$s0, $a3, 4
-	addi.d	$fp, $a4, 4
+	addi.d	$fp, $a3, 4
+	addi.d	$s0, $a4, 4
 	addi.d	$s1, $a6, 4
 	addi.d	$s7, $a7, 4
 	addi.d	$s5, $t0, 4
@@ -7159,7 +7114,7 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	fadd.s	$ft2, $ft2, $ft3
 	fldx.s	$ft3, $s6, $a2
 	fmul.s	$ft4, $fa6, $ft4
-	fldx.s	$ft5, $fp, $a2
+	fldx.s	$ft5, $s0, $a2
 	fadd.s	$ft2, $ft2, $ft4
 	fmul.s	$ft3, $fa3, $ft3
 	fadd.s	$fs0, $ft2, $ft3
@@ -7182,7 +7137,7 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	fcmp.cule.s	$fcc0, $ft4, $fs0
 	bcnez	$fcc0, .LBB6_171
 # %bb.170:                              #   in Loop: Header=BB6_167 Depth=2
-	ldx.w	$t0, $s0, $a2
+	ldx.w	$t0, $fp, $a2
 	sub.d	$t0, $s8, $t0
 	stx.w	$t0, $a5, $a2
 	fmov.s	$fs0, $ft4
@@ -7194,7 +7149,7 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	bcnez	$fcc0, .LBB6_166
 # %bb.172:                              #   in Loop: Header=BB6_167 Depth=2
 	fstx.s	$ft4, $s2, $a2
-	stx.w	$t2, $s0, $a2
+	stx.w	$t2, $fp, $a2
 	b	.LBB6_166
 .LBB6_173:
 	movgr2fr.w	$fs0, $zero
@@ -7247,27 +7202,18 @@ Q__align_gapmap:                        # @Q__align_gapmap
 	vsub.d	$vr6, $vr3, $vr1
 	vpickev.w	$vr5, $vr6, $vr5
 	vmul.w	$vr5, $vr0, $vr5
-	vpickve2gr.w	$a7, $vr5, 1
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 0
-	movgr2fr.w	$fa7, $a7
-	ffint.d.w	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a7, $vr5, 3
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 2
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vld	$vr8, $a5, 0
-	vextrins.d	$vr5, $vr6, 16
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr7, $vr6, $vr5
+	vffint.d.l	$vr7, $vr7
+	vilvh.w	$vr5, $vr6, $vr5
+	vld	$vr6, $a5, 0
+	vffint.d.l	$vr5, $vr5
 	vfmul.d	$vr5, $vr5, $vr4
-	vfmul.d	$vr6, $vr7, $vr4
-	vfcvth.d.s	$vr7, $vr8
-	vfcvtl.d.s	$vr8, $vr8
-	vfadd.d	$vr6, $vr8, $vr6
-	vfadd.d	$vr5, $vr7, $vr5
+	vfmul.d	$vr7, $vr7, $vr4
+	vfcvth.d.s	$vr8, $vr6
+	vfcvtl.d.s	$vr6, $vr6
+	vfadd.d	$vr6, $vr6, $vr7
+	vfadd.d	$vr5, $vr8, $vr5
 	vfcvt.s.d	$vr5, $vr5, $vr6
 	vst	$vr5, $a5, 0
 	vaddi.du	$vr2, $vr2, 4

@@ -85,22 +85,14 @@ _ZNK12MaxBenchmark4initEv:              # @_ZNK12MaxBenchmark4initEv
 	vsub.w	$vr7, $vr2, $vr0
 	vbitsel.v	$vr6, $vr6, $vr3, $vr5
 	vbitsel.v	$vr4, $vr7, $vr4, $vr5
-	vpickve2gr.w	$a4, $vr6, 1
-	movgr2fr.w	$fa5, $a4
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$a4, $vr6, 0
-	movgr2fr.w	$fa6, $a4
-	ffint.d.w	$fa6, $fa6
-	vextrins.d	$vr6, $vr5, 16
-	vpickve2gr.w	$a4, $vr4, 1
-	movgr2fr.w	$fa5, $a4
-	ffint.d.w	$fa5, $fa5
-	vpickve2gr.w	$a4, $vr4, 0
-	movgr2fr.w	$fa4, $a4
-	ffint.d.w	$fa4, $fa4
-	vextrins.d	$vr4, $vr5, 16
+	vslti.w	$vr5, $vr6, 0
+	vilvl.w	$vr5, $vr5, $vr6
+	vffint.d.l	$vr5, $vr5
+	vslti.w	$vr6, $vr4, 0
+	vilvl.w	$vr4, $vr6, $vr4
+	vffint.d.l	$vr4, $vr4
 	add.d	$a4, $a1, $a0
-	vstx	$vr6, $a4, $a2
+	vstx	$vr5, $a4, $a2
 	vstx	$vr4, $a4, $a3
 	vaddi.wu	$vr0, $vr0, 4
 	addi.d	$a0, $a0, 32
@@ -267,6 +259,7 @@ _ZNK15MatrixBenchmark4initEv:           # @_ZNK15MatrixBenchmark4initEv
 	vld	$vr0, $a0, %pc_lo12(.LCPI6_0)
 	lu12i.w	$a0, -5
 	ori	$a0, $a0, 480
+	vrepli.b	$vr1, 0
 	pcalau12i	$a1, %pc_hi20(C)
 	addi.d	$a1, $a1, %pc_lo12(C)
 	lu12i.w	$a3, 4
@@ -277,35 +270,21 @@ _ZNK15MatrixBenchmark4initEv:           # @_ZNK15MatrixBenchmark4initEv
 	.p2align	4, , 16
 .LBB6_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vshuf4i.w	$vr1, $vr0, 8
-	vaddi.wu	$vr2, $vr1, 1
-	vaddi.wu	$vr1, $vr1, 3
-	vpickve2gr.w	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa2, $a5
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vpickve2gr.w	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr1, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa1, $a5
-	ffint.d.l	$fa1, $fa1
-	vextrins.d	$vr1, $vr3, 16
+	vshuf4i.w	$vr2, $vr0, 8
+	vaddi.wu	$vr3, $vr2, 1
+	vaddi.wu	$vr2, $vr2, 3
+	vilvl.w	$vr3, $vr1, $vr3
+	vffint.d.lu	$vr3, $vr3
+	vilvl.w	$vr2, $vr1, $vr2
+	vffint.d.lu	$vr2, $vr2
 	add.d	$a5, $a1, $a0
-	vstx	$vr2, $a5, $a2
-	vstx	$vr1, $a5, $a3
+	vstx	$vr3, $a5, $a2
+	vstx	$vr2, $a5, $a3
+	vfrecip.d	$vr3, $vr3
 	vfrecip.d	$vr2, $vr2
-	vfrecip.d	$vr1, $vr1
 	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	vstx	$vr1, $a5, $a3
+	vstx	$vr3, $a5, $a2
+	vstx	$vr2, $a5, $a3
 	addi.d	$a0, $a0, 32
 	vaddi.du	$vr0, $vr0, 4
 	bnez	$a0, .LBB6_1
@@ -429,6 +408,7 @@ _ZNK17IteratorBenchmark4initEv:         # @_ZNK17IteratorBenchmark4initEv
 	vld	$vr0, $a0, %pc_lo12(.LCPI10_0)
 	lu12i.w	$a0, -2
 	ori	$a0, $a0, 192
+	vrepli.b	$vr1, 0
 	pcalau12i	$a1, %pc_hi20(A)
 	addi.d	$a1, $a1, %pc_lo12(A)
 	lu12i.w	$a3, 1
@@ -439,35 +419,21 @@ _ZNK17IteratorBenchmark4initEv:         # @_ZNK17IteratorBenchmark4initEv
 	.p2align	4, , 16
 .LBB10_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vshuf4i.w	$vr1, $vr0, 8
-	vaddi.wu	$vr2, $vr1, 1
-	vaddi.wu	$vr1, $vr1, 3
-	vpickve2gr.w	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa2, $a5
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vpickve2gr.w	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr1, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa1, $a5
-	ffint.d.l	$fa1, $fa1
-	vextrins.d	$vr1, $vr3, 16
+	vshuf4i.w	$vr2, $vr0, 8
+	vaddi.wu	$vr3, $vr2, 1
+	vaddi.wu	$vr2, $vr2, 3
+	vilvl.w	$vr3, $vr1, $vr3
+	vffint.d.lu	$vr3, $vr3
+	vilvl.w	$vr2, $vr1, $vr2
+	vffint.d.lu	$vr2, $vr2
 	add.d	$a5, $a1, $a0
-	vstx	$vr2, $a5, $a2
-	vstx	$vr1, $a5, $a3
+	vstx	$vr3, $a5, $a2
+	vstx	$vr2, $a5, $a3
+	vfrecip.d	$vr3, $vr3
 	vfrecip.d	$vr2, $vr2
-	vfrecip.d	$vr1, $vr1
 	add.d	$a5, $a4, $a0
-	vstx	$vr2, $a5, $a2
-	vstx	$vr1, $a5, $a3
+	vstx	$vr3, $a5, $a2
+	vstx	$vr2, $a5, $a3
 	addi.d	$a0, $a0, 32
 	vaddi.du	$vr0, $vr0, 4
 	bnez	$a0, .LBB10_1

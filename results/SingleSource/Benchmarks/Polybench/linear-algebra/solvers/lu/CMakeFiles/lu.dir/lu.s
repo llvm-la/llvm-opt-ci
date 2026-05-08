@@ -567,11 +567,11 @@ init_array:                             # @init_array
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	ori	$s4, $a0, 3696
 	ori	$s2, $a0, 3712
-	ori	$a4, $zero, 4
+	ori	$a3, $zero, 4
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI8_0)
 	vldi	$vr4, -912
-	ori	$a5, $zero, 1998
+	ori	$a4, $zero, 1998
 	lu52i.d	$s3, $zero, 1023
 	ori	$s6, $zero, 2000
 	ori	$a0, $zero, 0
@@ -602,7 +602,7 @@ init_array:                             # @init_array
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_5 Depth 2
                                         #     Child Loop BB8_8 Depth 2
-	bgeu	$s5, $a4, .LBB8_4
+	bgeu	$s5, $a3, .LBB8_4
 # %bb.3:                                #   in Loop: Header=BB8_2 Depth=1
 	move	$a0, $zero
 	b	.LBB8_7
@@ -621,20 +621,12 @@ init_array:                             # @init_array
                                         # =>  This Inner Loop Header: Depth=2
 	vneg.w	$vr1, $vr0
 	vsub.w	$vr2, $vr5, $vr0
-	vpickve2gr.w	$a3, $vr1, 1
-	movgr2fr.w	$fa3, $a3
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a3, $vr1, 0
-	movgr2fr.w	$fa1, $a3
-	ffint.d.w	$fa1, $fa1
-	vextrins.d	$vr1, $vr3, 16
-	vpickve2gr.w	$a3, $vr2, 1
-	movgr2fr.w	$fa3, $a3
-	ffint.d.w	$fa3, $fa3
-	vpickve2gr.w	$a3, $vr2, 0
-	movgr2fr.w	$fa2, $a3
-	ffint.d.w	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
+	vslti.w	$vr3, $vr1, 0
+	vilvl.w	$vr1, $vr3, $vr1
+	vffint.d.l	$vr1, $vr1
+	vslti.w	$vr3, $vr2, 0
+	vilvl.w	$vr2, $vr3, $vr2
+	vffint.d.l	$vr2, $vr2
 	vfdiv.d	$vr1, $vr1, $vr6
 	vfdiv.d	$vr2, $vr2, $vr6
 	vfadd.d	$vr1, $vr1, $vr4
@@ -668,7 +660,7 @@ init_array:                             # @init_array
 .LBB8_9:                                # %.loopexit24
                                         #   in Loop: Header=BB8_2 Depth=1
 	slli.d	$s8, $s0, 3
-	bltu	$a5, $s0, .LBB8_1
+	bltu	$a4, $s0, .LBB8_1
 # %bb.10:                               # %.lr.ph
                                         #   in Loop: Header=BB8_2 Depth=1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
@@ -684,9 +676,9 @@ init_array:                             # @init_array
 	jirl	$ra, $ra, 0
 	vld	$vr6, $sp, 16                   # 16-byte Folded Reload
 	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
-	ori	$a5, $zero, 1998
+	ori	$a4, $zero, 1998
 	vldi	$vr4, -912
-	ori	$a4, $zero, 4
+	ori	$a3, $zero, 4
 	b	.LBB8_1
 .LBB8_11:
 	st.d	$zero, $sp, 72

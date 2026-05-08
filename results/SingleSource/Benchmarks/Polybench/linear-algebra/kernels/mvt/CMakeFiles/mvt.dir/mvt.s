@@ -245,10 +245,11 @@ main:                                   # @main
 	vreplgr2vr.w	$vr4, $a7
 	ori	$a7, $zero, 2000
 	vreplgr2vr.w	$vr5, $a7
+	vrepli.b	$vr6, 0
 	ori	$t0, $zero, 0
 	lu32i.d	$t0, -49152
 	lu52i.d	$t0, $t0, 1033
-	vreplgr2vr.d	$vr6, $t0
+	vreplgr2vr.d	$vr7, $t0
 	ori	$t0, $s8, 3728
 	move	$t1, $fp
 	.p2align	4, , 16
@@ -257,16 +258,16 @@ main:                                   # @main
                                         #     Child Loop BB7_16 Depth 2
 	srli.d	$t3, $t2, 32
 	or	$t3, $t3, $a0
-	movgr2fr.d	$fa7, $t3
-	fsub.d	$fa7, $fa7, $fa0
+	movgr2fr.d	$ft0, $t3
+	fsub.d	$ft0, $ft0, $fa0
 	move	$t3, $t2
 	bstrins.d	$t3, $a1, 63, 32
-	movgr2fr.d	$ft0, $t3
-	fadd.d	$fa7, $ft0, $fa7
-	fdiv.d	$fa7, $fa7, $fa1
+	movgr2fr.d	$ft1, $t3
+	fadd.d	$ft0, $ft1, $ft0
+	fdiv.d	$ft0, $ft0, $fa1
 	slli.d	$t3, $t2, 3
-	fstx.d	$fa7, $s0, $t3
-	fstx.d	$fa7, $s2, $t3
+	fstx.d	$ft0, $s0, $t3
+	fstx.d	$ft0, $s2, $t3
 	sltui	$t4, $t2, 1997
 	masknez	$t5, $a2, $t4
 	maskeqz	$t4, $a3, $t4
@@ -277,75 +278,61 @@ main:                                   # @main
 	maskeqz	$t5, $a5, $t5
 	or	$t5, $t5, $t6
 	add.d	$t5, $t5, $t2
-	vreplgr2vr.d	$vr7, $t2
+	vreplgr2vr.d	$vr8, $t2
 	addi.d	$t2, $t2, 1
 	srli.d	$t6, $t2, 32
 	or	$t6, $t6, $a0
-	movgr2fr.d	$ft0, $t6
-	fsub.d	$ft0, $ft0, $fa0
+	movgr2fr.d	$ft1, $t6
+	fsub.d	$ft1, $ft1, $fa0
 	move	$t6, $t2
 	bstrins.d	$t6, $a1, 63, 32
-	movgr2fr.d	$ft1, $t6
-	fadd.d	$ft0, $ft1, $ft0
+	movgr2fr.d	$ft2, $t6
+	fadd.d	$ft1, $ft2, $ft1
 	addi.d	$t6, $t2, -2000
 	sltui	$t6, $t6, 1
-	fdiv.d	$ft0, $ft0, $fa1
+	fdiv.d	$ft1, $ft1, $fa1
 	movgr2cf	$fcc0, $t6
-	fsel	$ft0, $ft0, $fa2, $fcc0
-	fstx.d	$ft0, $s1, $t3
-	fstx.d	$ft0, $s3, $t3
+	fsel	$ft1, $ft1, $fa2, $fcc0
+	fstx.d	$ft1, $s1, $t3
+	fstx.d	$ft1, $s3, $t3
 	bstrpick.d	$t4, $t4, 31, 0
-	movgr2fr.d	$ft0, $t4
-	ffint.d.l	$ft0, $ft0
-	fdiv.d	$ft0, $ft0, $fa1
-	fstx.d	$ft0, $s4, $t3
+	movgr2fr.d	$ft1, $t4
+	ffint.d.l	$ft1, $ft1
+	fdiv.d	$ft1, $ft1, $fa1
+	fstx.d	$ft1, $s4, $t3
 	bstrpick.d	$t4, $t5, 31, 0
-	movgr2fr.d	$ft0, $t4
-	ffint.d.l	$ft0, $ft0
-	fdiv.d	$ft0, $ft0, $fa1
-	fstx.d	$ft0, $s5, $t3
+	movgr2fr.d	$ft1, $t4
+	ffint.d.l	$ft1, $ft1
+	fdiv.d	$ft1, $ft1, $fa1
+	fstx.d	$ft1, $s5, $t3
 	move	$t3, $a6
-	vori.b	$vr8, $vr3, 0
+	vori.b	$vr9, $vr3, 0
 	.p2align	4, , 16
 .LBB7_16:                               # %vector.body
                                         #   Parent Loop BB7_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vaddi.du	$vr9, $vr8, 2
-	vmul.d	$vr10, $vr8, $vr7
-	vmul.d	$vr9, $vr9, $vr7
+	vaddi.du	$vr10, $vr9, 2
+	vmul.d	$vr11, $vr9, $vr8
+	vmul.d	$vr10, $vr10, $vr8
+	vshuf4i.w	$vr11, $vr11, 8
 	vshuf4i.w	$vr10, $vr10, 8
-	vshuf4i.w	$vr9, $vr9, 8
-	vmuh.wu	$vr11, $vr10, $vr4
-	vsrli.w	$vr11, $vr11, 7
-	vmsub.w	$vr10, $vr11, $vr5
-	vmuh.wu	$vr11, $vr9, $vr4
-	vsrli.w	$vr11, $vr11, 7
-	vmsub.w	$vr9, $vr11, $vr5
-	vpickve2gr.w	$t4, $vr10, 1
-	bstrpick.d	$t4, $t4, 31, 0
-	movgr2fr.d	$ft3, $t4
-	ffint.d.l	$ft3, $ft3
-	vpickve2gr.w	$t4, $vr10, 0
-	bstrpick.d	$t4, $t4, 31, 0
-	movgr2fr.d	$ft2, $t4
-	ffint.d.l	$ft2, $ft2
-	vextrins.d	$vr10, $vr11, 16
-	vpickve2gr.w	$t4, $vr9, 1
-	bstrpick.d	$t4, $t4, 31, 0
-	movgr2fr.d	$ft3, $t4
-	ffint.d.l	$ft3, $ft3
-	vpickve2gr.w	$t4, $vr9, 0
-	bstrpick.d	$t4, $t4, 31, 0
-	movgr2fr.d	$ft1, $t4
-	ffint.d.l	$ft1, $ft1
-	vextrins.d	$vr9, $vr11, 16
-	vfdiv.d	$vr10, $vr10, $vr6
-	vfdiv.d	$vr9, $vr9, $vr6
+	vmuh.wu	$vr12, $vr11, $vr4
+	vsrli.w	$vr12, $vr12, 7
+	vmsub.w	$vr11, $vr12, $vr5
+	vmuh.wu	$vr12, $vr10, $vr4
+	vsrli.w	$vr12, $vr12, 7
+	vmsub.w	$vr10, $vr12, $vr5
+	vilvl.w	$vr11, $vr6, $vr11
+	vffint.d.lu	$vr11, $vr11
+	vilvl.w	$vr10, $vr6, $vr10
+	vffint.d.lu	$vr10, $vr10
+	vfdiv.d	$vr11, $vr11, $vr7
+	vfdiv.d	$vr10, $vr10, $vr7
 	add.d	$t4, $t1, $t3
-	vstx	$vr10, $t4, $s6
-	vstx	$vr9, $t4, $t0
+	vstx	$vr11, $t4, $s6
+	vstx	$vr10, $t4, $t0
 	addi.d	$t3, $t3, 32
-	vaddi.du	$vr8, $vr8, 4
+	vaddi.du	$vr9, $vr9, 4
 	bnez	$t3, .LBB7_16
 # %bb.17:                               # %middle.block
                                         #   in Loop: Header=BB7_15 Depth=1

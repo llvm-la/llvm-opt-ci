@@ -680,43 +680,30 @@ generate_polar_angles:                  # @generate_polar_angles
 	pcalau12i	$a3, %pc_hi20(.LCPI6_0)
 	vld	$vr1, $a3, %pc_lo12(.LCPI6_0)
 	vreplvei.d	$vr2, $vr0, 0
-	vldi	$vr3, -928
+	vrepli.b	$vr3, 0
+	vldi	$vr4, -928
 	lu12i.w	$a3, 345154
 	ori	$a3, $a3, 3352
 	lu32i.d	$a3, -450053
 	lu52i.d	$a3, $a3, 1024
-	vreplgr2vr.d	$vr4, $a3
+	vreplgr2vr.d	$vr5, $a3
 	move	$a3, $a0
 	move	$a4, $a1
 	.p2align	4, , 16
 .LBB6_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a5, $vr1, 3
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa5, $a5
-	ffint.d.l	$fa5, $fa5
-	vpickve2gr.w	$a5, $vr1, 2
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa6, $a5
-	ffint.d.l	$fa6, $fa6
-	vextrins.d	$vr6, $vr5, 16
-	vpickve2gr.w	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa5, $a5
-	ffint.d.l	$fa5, $fa5
-	vpickve2gr.w	$a5, $vr1, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa7, $a5
-	ffint.d.l	$fa7, $fa7
-	vextrins.d	$vr7, $vr5, 16
-	vfadd.d	$vr5, $vr7, $vr3
-	vfadd.d	$vr6, $vr6, $vr3
-	vfmul.d	$vr6, $vr6, $vr4
-	vfmul.d	$vr5, $vr5, $vr4
-	vfdiv.d	$vr5, $vr5, $vr2
+	vilvh.w	$vr6, $vr3, $vr1
+	vffint.d.lu	$vr6, $vr6
+	vilvl.w	$vr7, $vr3, $vr1
+	vffint.d.lu	$vr7, $vr7
+	vfadd.d	$vr7, $vr7, $vr4
+	vfadd.d	$vr6, $vr6, $vr4
+	vfmul.d	$vr6, $vr6, $vr5
+	vfmul.d	$vr7, $vr7, $vr5
+	vfdiv.d	$vr7, $vr7, $vr2
 	vfdiv.d	$vr6, $vr6, $vr2
-	vfcvt.s.d	$vr5, $vr6, $vr5
-	vst	$vr5, $a3, 0
+	vfcvt.s.d	$vr6, $vr6, $vr7
+	vst	$vr6, $a3, 0
 	vaddi.wu	$vr1, $vr1, 4
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 16

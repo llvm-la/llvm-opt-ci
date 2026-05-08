@@ -189,109 +189,82 @@ main:                                   # @main
 	ori	$a1, $zero, 0
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
-	vreplgr2vr.d	$vr0, $a0
+	vreplgr2vr.d	$vr1, $a0
 	lu12i.w	$s6, -5
 	ori	$a0, $s6, 3680
+	vrepli.b	$vr0, 0
 	lu32i.d	$a1, 26624
 	lu52i.d	$a1, $a1, 1034
-	vreplgr2vr.d	$vr1, $a1
-	vldi	$vr2, -912
+	vreplgr2vr.d	$vr2, $a1
+	vldi	$vr3, -912
 	ori	$s7, $s7, 432
 	.p2align	4, , 16
 .LBB7_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr3, $vr0, 2
-	vpickve2gr.w	$a1, $vr0, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	movgr2fr.d	$fa4, $a1
-	ffint.d.l	$fa4, $fa4
-	vpickve2gr.w	$a1, $vr0, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	movgr2fr.d	$fa5, $a1
-	ffint.d.l	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a1, $vr3, 1
-	bstrpick.d	$a1, $a1, 31, 0
-	movgr2fr.d	$fa4, $a1
-	ffint.d.l	$fa4, $fa4
-	vpickve2gr.w	$a1, $vr3, 0
-	bstrpick.d	$a1, $a1, 31, 0
-	movgr2fr.d	$fa3, $a1
-	ffint.d.l	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
-	vfdiv.d	$vr4, $vr5, $vr1
-	vfdiv.d	$vr3, $vr3, $vr1
-	vfadd.d	$vr4, $vr4, $vr2
-	vfadd.d	$vr3, $vr3, $vr2
+	vaddi.wu	$vr4, $vr1, 2
+	vilvl.w	$vr5, $vr0, $vr1
+	vffint.d.lu	$vr5, $vr5
+	vilvl.w	$vr4, $vr0, $vr4
+	vffint.d.lu	$vr4, $vr4
+	vfdiv.d	$vr5, $vr5, $vr2
+	vfdiv.d	$vr4, $vr4, $vr2
+	vfadd.d	$vr5, $vr5, $vr3
+	vfadd.d	$vr4, $vr4, $vr3
 	add.d	$a1, $s0, $a0
-	vstx	$vr4, $a1, $s3
-	vstx	$vr3, $a1, $s7
+	vstx	$vr5, $a1, $s3
+	vstx	$vr4, $a1, $s7
 	addi.d	$a0, $a0, 32
-	vaddi.wu	$vr0, $vr0, 4
+	vaddi.wu	$vr1, $vr1, 4
 	bnez	$a0, .LBB7_9
 # %bb.10:                               # %.preheader.i.preheader
 	move	$a0, $zero
 	pcalau12i	$a1, %pc_hi20(.LCPI7_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI7_0)
+	vld	$vr1, $a1, %pc_lo12(.LCPI7_0)
 	ori	$a1, $s6, 3680
 	lu12i.w	$a2, -25965
 	ori	$a2, $a2, 1069
-	vreplgr2vr.w	$vr1, $a2
-	ori	$a2, $zero, 2100
 	vreplgr2vr.w	$vr2, $a2
+	ori	$a2, $zero, 2100
+	vreplgr2vr.w	$vr3, $a2
 	ori	$a2, $zero, 0
 	lu32i.d	$a2, 167424
 	lu52i.d	$a2, $a2, 1036
-	vreplgr2vr.d	$vr3, $a2
+	vreplgr2vr.d	$vr4, $a2
 	ori	$a2, $zero, 1900
 	move	$a3, $fp
 	.p2align	4, , 16
 .LBB7_11:                               # %.preheader.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_12 Depth 2
-	vreplgr2vr.d	$vr4, $a0
-	vaddi.du	$vr5, $vr4, 2
+	vreplgr2vr.d	$vr5, $a0
+	vaddi.du	$vr6, $vr5, 2
 	move	$a4, $a1
-	vori.b	$vr6, $vr0, 0
+	vori.b	$vr7, $vr1, 0
 	.p2align	4, , 16
 .LBB7_12:                               # %vector.body32
                                         #   Parent Loop BB7_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vadd.d	$vr7, $vr6, $vr4
-	vadd.d	$vr8, $vr6, $vr5
-	vshuf4i.w	$vr7, $vr7, 8
+	vadd.d	$vr8, $vr7, $vr5
+	vadd.d	$vr9, $vr7, $vr6
 	vshuf4i.w	$vr8, $vr8, 8
-	vmuh.wu	$vr9, $vr7, $vr1
-	vsrli.w	$vr9, $vr9, 11
-	vmsub.w	$vr7, $vr9, $vr2
-	vmuh.wu	$vr9, $vr8, $vr1
-	vsrli.w	$vr9, $vr9, 11
-	vmsub.w	$vr8, $vr9, $vr2
-	vpickve2gr.w	$a5, $vr7, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$ft1, $a5
-	ffint.d.l	$ft1, $ft1
-	vpickve2gr.w	$a5, $vr7, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa7, $a5
-	ffint.d.l	$fa7, $fa7
-	vextrins.d	$vr7, $vr9, 16
-	vpickve2gr.w	$a5, $vr8, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$ft1, $a5
-	ffint.d.l	$ft1, $ft1
-	vpickve2gr.w	$a5, $vr8, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$ft0, $a5
-	ffint.d.l	$ft0, $ft0
-	vextrins.d	$vr8, $vr9, 16
-	vfdiv.d	$vr7, $vr7, $vr3
-	vfdiv.d	$vr8, $vr8, $vr3
+	vshuf4i.w	$vr9, $vr9, 8
+	vmuh.wu	$vr10, $vr8, $vr2
+	vsrli.w	$vr10, $vr10, 11
+	vmsub.w	$vr8, $vr10, $vr3
+	vmuh.wu	$vr10, $vr9, $vr2
+	vsrli.w	$vr10, $vr10, 11
+	vmsub.w	$vr9, $vr10, $vr3
+	vilvl.w	$vr8, $vr0, $vr8
+	vffint.d.lu	$vr8, $vr8
+	vilvl.w	$vr9, $vr0, $vr9
+	vffint.d.lu	$vr9, $vr9
+	vfdiv.d	$vr8, $vr8, $vr4
+	vfdiv.d	$vr9, $vr9, $vr4
 	add.d	$a5, $a3, $a4
-	vstx	$vr7, $a5, $s3
-	vstx	$vr8, $a5, $s7
+	vstx	$vr8, $a5, $s3
+	vstx	$vr9, $a5, $s7
 	addi.d	$a4, $a4, 32
-	vaddi.du	$vr6, $vr6, 4
+	vaddi.du	$vr7, $vr7, 4
 	bnez	$a4, .LBB7_12
 # %bb.13:                               # %middle.block38
                                         #   in Loop: Header=BB7_11 Depth=1

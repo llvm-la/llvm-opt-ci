@@ -43,50 +43,37 @@ Crystal_div:                            # @Crystal_div
 	lu32i.d	$t4, 1
 	vreplgr2vr.d	$vr1, $t4
 	vldi	$vr2, -912
+	vrepli.b	$vr3, 0
 	lu12i.w	$t4, -419431
 	ori	$t4, $t4, 2458
 	lu32i.d	$t4, -419431
 	lu52i.d	$t4, $t4, 1020
-	vreplgr2vr.d	$vr3, $t4
-	vldi	$vr4, -984
+	vreplgr2vr.d	$vr4, $t4
+	vldi	$vr5, -984
 	lu12i.w	$t4, -209716
 	ori	$t4, $t4, 3277
 	lu32i.d	$t4, -209716
 	lu52i.d	$t4, $t4, 1022
-	vreplgr2vr.d	$vr5, $t4
+	vreplgr2vr.d	$vr6, $t4
 	move	$t4, $t1
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr6, $vr1, 2
+	vaddi.wu	$vr7, $vr1, 2
 	vst	$vr2, $t2, -16
 	vst	$vr2, $t2, 0
-	vpickve2gr.w	$t5, $vr1, 1
-	bstrpick.d	$t5, $t5, 31, 0
-	movgr2fr.d	$fa7, $t5
-	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t5, $vr1, 0
-	bstrpick.d	$t5, $t5, 31, 0
-	movgr2fr.d	$ft0, $t5
-	ffint.d.l	$ft0, $ft0
-	vextrins.d	$vr8, $vr7, 16
-	vpickve2gr.w	$t5, $vr6, 1
-	bstrpick.d	$t5, $t5, 31, 0
-	movgr2fr.d	$fa7, $t5
-	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t5, $vr6, 0
-	bstrpick.d	$t5, $t5, 31, 0
-	movgr2fr.d	$fa6, $t5
-	ffint.d.l	$fa6, $fa6
-	vextrins.d	$vr6, $vr7, 16
-	vfmul.d	$vr7, $vr8, $vr3
-	vfmul.d	$vr6, $vr6, $vr3
-	vfdiv.d	$vr7, $vr7, $vr4
-	vfdiv.d	$vr6, $vr6, $vr4
-	vfadd.d	$vr7, $vr7, $vr5
-	vfadd.d	$vr6, $vr6, $vr5
-	vst	$vr7, $t3, -16
-	vst	$vr6, $t3, 0
+	vilvl.w	$vr8, $vr3, $vr1
+	vffint.d.lu	$vr8, $vr8
+	vilvl.w	$vr7, $vr3, $vr7
+	vffint.d.lu	$vr7, $vr7
+	vfmul.d	$vr8, $vr8, $vr4
+	vfmul.d	$vr7, $vr7, $vr4
+	vfdiv.d	$vr8, $vr8, $vr5
+	vfdiv.d	$vr7, $vr7, $vr5
+	vfadd.d	$vr8, $vr8, $vr6
+	vfadd.d	$vr7, $vr7, $vr6
+	vst	$vr8, $t3, -16
+	vst	$vr7, $t3, 0
 	vaddi.wu	$vr1, $vr1, 4
 	addi.d	$t4, $t4, -4
 	addi.d	$t3, $t3, 32

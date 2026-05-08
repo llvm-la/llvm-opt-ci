@@ -56,6 +56,7 @@ ConvertToFloat:                         # @ConvertToFloat
 .LBB0_8:                                # %vector.ph
 	bstrpick.d	$a3, $a1, 30, 2
 	slli.d	$a3, $a3, 2
+	vrepli.b	$vr0, 0
 	move	$a4, $a2
 	move	$a5, $a0
 	move	$a6, $a3
@@ -63,27 +64,11 @@ ConvertToFloat:                         # @ConvertToFloat
 .LBB0_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a4, 0
-	vinsgr2vr.w	$vr0, $a7, 0
-	vpickve2gr.b	$a7, $vr0, 1
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa1, $a7
-	ffint.s.w	$fa1, $fa1
-	vpickve2gr.b	$a7, $vr0, 0
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa2, $a7
-	ffint.s.w	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	vpickve2gr.b	$a7, $vr0, 2
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa1, $a7
-	ffint.s.w	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	vpickve2gr.b	$a7, $vr0, 3
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa0, $a7
-	ffint.s.w	$fa0, $fa0
-	vextrins.w	$vr2, $vr0, 48
-	vst	$vr2, $a5, 0
+	vinsgr2vr.w	$vr1, $a7, 0
+	vilvl.b	$vr1, $vr0, $vr1
+	vilvl.h	$vr1, $vr0, $vr1
+	vffint.s.wu	$vr1, $vr1
+	vst	$vr1, $a5, 0
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 16
 	addi.d	$a4, $a4, 4

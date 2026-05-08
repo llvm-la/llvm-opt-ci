@@ -45,50 +45,37 @@ Crystal_pow:                            # @Crystal_pow
 	vreplgr2vr.d	$vr0, $a2
 	addi.d	$a2, $sp, 32
 	vldi	$vr1, -912
+	vrepli.b	$vr2, 0
 	lu12i.w	$a3, -419431
 	ori	$a3, $a3, 2458
 	lu32i.d	$a3, -419431
 	lu52i.d	$a3, $a3, 1020
-	vreplgr2vr.d	$vr2, $a3
+	vreplgr2vr.d	$vr3, $a3
 	lu12i.w	$a3, -209716
 	ori	$a3, $a3, 3277
 	lu32i.d	$a3, -209716
 	lu52i.d	$a3, $a3, 1022
-	vreplgr2vr.d	$vr3, $a3
-	vldi	$vr4, -984
+	vreplgr2vr.d	$vr4, $a3
+	vldi	$vr5, -984
 	move	$a3, $a0
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr5, $vr0, 2
+	vaddi.wu	$vr6, $vr0, 2
 	vst	$vr1, $a2, -16
 	vst	$vr1, $a2, 0
-	vpickve2gr.w	$a4, $vr0, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa6, $a4
-	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a4, $vr0, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa7, $a4
-	ffint.d.l	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a4, $vr5, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa6, $a4
-	ffint.d.l	$fa6, $fa6
-	vpickve2gr.w	$a4, $vr5, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa5, $a4
-	ffint.d.l	$fa5, $fa5
-	vextrins.d	$vr5, $vr6, 16
-	vfmul.d	$vr6, $vr7, $vr2
-	vfmul.d	$vr5, $vr5, $vr2
+	vilvl.w	$vr7, $vr2, $vr0
+	vffint.d.lu	$vr7, $vr7
+	vilvl.w	$vr6, $vr2, $vr6
+	vffint.d.lu	$vr6, $vr6
+	vfmul.d	$vr7, $vr7, $vr3
 	vfmul.d	$vr6, $vr6, $vr3
-	vfmul.d	$vr5, $vr5, $vr3
-	vfdiv.d	$vr6, $vr6, $vr4
-	vfdiv.d	$vr5, $vr5, $vr4
-	vst	$vr6, $a1, -16
-	vst	$vr5, $a1, 0
+	vfmul.d	$vr7, $vr7, $vr4
+	vfmul.d	$vr6, $vr6, $vr4
+	vfdiv.d	$vr7, $vr7, $vr5
+	vfdiv.d	$vr6, $vr6, $vr5
+	vst	$vr7, $a1, -16
+	vst	$vr6, $a1, 0
 	vaddi.wu	$vr0, $vr0, 4
 	addi.d	$a3, $a3, -4
 	addi.d	$a1, $a1, 32

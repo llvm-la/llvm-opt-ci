@@ -1589,46 +1589,18 @@ prepSpots:                              # @prepSpots
 	vsub.w	$vr11, $vr5, $vr11
 	vbitsel.v	$vr8, $vr10, $vr12, $vr8
 	vbitsel.v	$vr9, $vr11, $vr13, $vr9
-	vpickve2gr.w	$t3, $vr8, 3
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft2, $t3
-	ffint.d.l	$ft2, $ft2
-	vpickve2gr.w	$t3, $vr8, 2
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft3, $t3
-	ffint.d.l	$ft3, $ft3
-	vextrins.d	$vr11, $vr10, 16
-	vpickve2gr.w	$t3, $vr8, 1
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft2, $t3
-	ffint.d.l	$ft2, $ft2
-	vpickve2gr.w	$t3, $vr8, 0
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft0, $t3
-	ffint.d.l	$ft0, $ft0
-	vextrins.d	$vr8, $vr10, 16
-	vpickve2gr.w	$t3, $vr9, 3
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft2, $t3
-	ffint.d.l	$ft2, $ft2
-	vpickve2gr.w	$t3, $vr9, 2
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft4, $t3
-	ffint.d.l	$ft4, $ft4
-	vextrins.d	$vr12, $vr10, 16
-	vpickve2gr.w	$t3, $vr9, 1
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft2, $t3
-	ffint.d.l	$ft2, $ft2
-	vpickve2gr.w	$t3, $vr9, 0
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$ft1, $t3
-	ffint.d.l	$ft1, $ft1
-	vextrins.d	$vr9, $vr10, 16
+	vilvh.w	$vr10, $vr4, $vr8
+	vffint.d.lu	$vr10, $vr10
+	vilvl.w	$vr8, $vr4, $vr8
+	vffint.d.lu	$vr8, $vr8
+	vilvh.w	$vr11, $vr4, $vr9
+	vffint.d.lu	$vr11, $vr11
+	vilvl.w	$vr9, $vr4, $vr9
+	vffint.d.lu	$vr9, $vr9
 	vfmul.d	$vr8, $vr2, $vr8
-	vfmul.d	$vr10, $vr2, $vr11
+	vfmul.d	$vr10, $vr2, $vr10
 	vfmul.d	$vr9, $vr2, $vr9
-	vfmul.d	$vr11, $vr2, $vr12
+	vfmul.d	$vr11, $vr2, $vr11
 	vfmul.d	$vr10, $vr10, $vr3
 	vfmul.d	$vr8, $vr8, $vr3
 	vfmul.d	$vr11, $vr11, $vr3

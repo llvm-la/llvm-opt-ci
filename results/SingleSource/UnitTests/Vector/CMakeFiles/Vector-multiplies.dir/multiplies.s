@@ -16,37 +16,24 @@ main:                                   # @main
 	vreplgr2vr.d	$vr0, $a1
 	lu12i.w	$a1, 24
 	ori	$a1, $a1, 1696
+	vrepli.b	$vr1, 0
 	lu12i.w	$a2, -167773
 	ori	$a2, $a2, 3441
 	lu32i.d	$a2, -479069
 	lu52i.d	$a2, $a2, 1026
-	vreplgr2vr.d	$vr1, $a2
+	vreplgr2vr.d	$vr2, $a2
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr2, $vr0, 2
-	vpickve2gr.w	$a2, $vr0, 1
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa3, $a2
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa4, $a2
-	ffint.d.l	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a2, $vr2, 1
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa3, $a2
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a2, $vr2, 0
-	bstrpick.d	$a2, $a2, 31, 0
-	movgr2fr.d	$fa2, $a2
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vfmul.d	$vr3, $vr4, $vr1
-	vfmul.d	$vr2, $vr2, $vr1
-	vst	$vr3, $a0, -16
-	vst	$vr2, $a0, 0
+	vaddi.wu	$vr3, $vr0, 2
+	vilvl.w	$vr4, $vr1, $vr0
+	vffint.d.lu	$vr4, $vr4
+	vilvl.w	$vr3, $vr1, $vr3
+	vffint.d.lu	$vr3, $vr3
+	vfmul.d	$vr4, $vr4, $vr2
+	vfmul.d	$vr3, $vr3, $vr2
+	vst	$vr4, $a0, -16
+	vst	$vr3, $a0, 0
 	vaddi.wu	$vr0, $vr0, 4
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 32

@@ -546,38 +546,23 @@ init:                                   # @init
 	ori	$a4, $zero, 0
 	lu32i.d	$a4, 1
 	vreplgr2vr.d	$vr0, $a4
-	addi.w	$a4, $zero, -2
-	lu32i.d	$a4, 0
-	move	$a5, $a2
+	vrepli.b	$vr1, 0
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB2_7:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslli.w	$vr1, $vr0, 1
-	vaddi.wu	$vr2, $vr1, 4
-	vpickve2gr.w	$a6, $vr1, 1
-	and	$a6, $a6, $a4
-	movgr2fr.d	$fa3, $a6
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a6, $vr1, 0
-	and	$a6, $a6, $a4
-	movgr2fr.d	$fa1, $a6
-	ffint.d.l	$fa1, $fa1
-	vextrins.d	$vr1, $vr3, 16
-	vpickve2gr.w	$a6, $vr2, 1
-	and	$a6, $a6, $a4
-	movgr2fr.d	$fa3, $a6
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a6, $vr2, 0
-	and	$a6, $a6, $a4
-	movgr2fr.d	$fa2, $a6
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vst	$vr1, $a3, -16
-	vst	$vr2, $a3, 0
+	vslli.w	$vr2, $vr0, 1
+	vaddi.wu	$vr3, $vr2, 4
+	vilvl.w	$vr2, $vr1, $vr2
+	vffint.d.lu	$vr2, $vr2
+	vilvl.w	$vr3, $vr1, $vr3
+	vffint.d.lu	$vr3, $vr3
+	vst	$vr2, $a3, -16
+	vst	$vr3, $a3, 0
 	vaddi.wu	$vr0, $vr0, 4
-	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
-	bnez	$a5, .LBB2_7
+	bnez	$a4, .LBB2_7
 # %bb.8:                                # %middle.block
 	beq	$a2, $a1, .LBB2_11
 .LBB2_9:                                # %.lr.ph155.preheader159

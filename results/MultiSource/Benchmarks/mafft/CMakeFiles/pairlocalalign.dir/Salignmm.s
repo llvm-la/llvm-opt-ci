@@ -1224,27 +1224,18 @@ A__align:                               # @A__align
 .LBB3_53:                               # %vector.body590
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 3
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 2
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a5, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a5, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -1373,27 +1364,18 @@ A__align:                               # @A__align
 .LBB3_69:                               # %vector.body604
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 3
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 2
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a5, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a5, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -1511,7 +1493,7 @@ A__align:                               # @A__align
 	ori	$a2, $zero, 0
 	lu32i.d	$a2, -1
 	add.d	$a2, $a3, $a2
-	srai.d	$s1, $a2, 30
+	srai.d	$s0, $a2, 30
 	addi.w	$a2, $t4, -1
 	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
 	bstrpick.d	$a2, $a2, 31, 0
@@ -1540,7 +1522,7 @@ A__align:                               # @A__align
 	.p2align	4, , 16
 .LBB3_82:                               # %._crit_edge393
                                         #   in Loop: Header=BB3_83 Depth=1
-	fldx.s	$fa0, $s3, $s1
+	fldx.s	$fa0, $s3, $s0
 	addi.d	$s7, $s7, 1
 	fstx.s	$fa0, $fp, $a0
 	move	$s5, $s3
@@ -1549,8 +1531,8 @@ A__align:                               # @A__align
                                         #     Child Loop BB3_99 Depth 2
                                         #     Child Loop BB3_88 Depth 2
                                         #     Child Loop BB3_92 Depth 2
-	addi.d	$s0, $s7, -1
-	slli.d	$s4, $s0, 2
+	addi.d	$s1, $s7, -1
+	slli.d	$s4, $s1, 2
 	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
 	fldx.s	$fa0, $a0, $s4
 	move	$s3, $s6
@@ -1687,7 +1669,7 @@ A__align:                               # @A__align
 	bcnez	$fcc0, .LBB3_91
 # %bb.97:                               #   in Loop: Header=BB3_92 Depth=2
 	fst.s	$fa6, $t0, 0
-	st.w	$s0, $a7, 0
+	st.w	$s1, $a7, 0
 	b	.LBB3_91
 .LBB3_98:                               # %vector.ph705
                                         #   in Loop: Header=BB3_83 Depth=1
@@ -1722,7 +1704,7 @@ A__align:                               # @A__align
 	b	.LBB3_89
 .LBB3_101:
 	movgr2fr.w	$fs0, $zero
-	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
 	bnez	$a0, .LBB3_117
 	b	.LBB3_103
 .LBB3_102:                              # %._crit_edge402.loopexit
@@ -1733,7 +1715,7 @@ A__align:                               # @A__align
 	ld.d	$t3, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$t4, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
 	bnez	$a0, .LBB3_117
 .LBB3_103:                              # %.preheader339
 	ld.d	$a0, $sp, 264                   # 8-byte Folded Reload
@@ -1770,27 +1752,18 @@ A__align:                               # @A__align
 	vsub.d	$vr6, $vr3, $vr1
 	vpickev.w	$vr5, $vr6, $vr5
 	vmul.w	$vr5, $vr0, $vr5
-	vpickve2gr.w	$a7, $vr5, 1
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 0
-	movgr2fr.w	$fa7, $a7
-	ffint.d.w	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a7, $vr5, 3
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 2
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vld	$vr8, $a5, 0
-	vextrins.d	$vr5, $vr6, 16
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr7, $vr6, $vr5
+	vffint.d.l	$vr7, $vr7
+	vilvh.w	$vr5, $vr6, $vr5
+	vld	$vr6, $a5, 0
+	vffint.d.l	$vr5, $vr5
 	vfmul.d	$vr5, $vr5, $vr4
-	vfmul.d	$vr6, $vr7, $vr4
-	vfcvth.d.s	$vr7, $vr8
-	vfcvtl.d.s	$vr8, $vr8
-	vfadd.d	$vr6, $vr8, $vr6
-	vfadd.d	$vr5, $vr7, $vr5
+	vfmul.d	$vr7, $vr7, $vr4
+	vfcvth.d.s	$vr8, $vr6
+	vfcvtl.d.s	$vr6, $vr6
+	vfadd.d	$vr6, $vr6, $vr7
+	vfadd.d	$vr5, $vr8, $vr5
 	vfcvt.s.d	$vr5, $vr5, $vr6
 	vst	$vr5, $a5, 0
 	vaddi.du	$vr2, $vr2, 4
@@ -1822,7 +1795,7 @@ A__align:                               # @A__align
 	addi.d	$a4, $a4, 4
 	bnez	$a1, .LBB3_109
 .LBB3_110:                              # %.preheader338
-	blez	$t0, .LBB3_117
+	blez	$a7, .LBB3_117
 # %bb.111:                              # %.lr.ph410
 	bstrpick.d	$a0, $s0, 31, 0
 	pcalau12i	$a1, %got_pc_hi20(offset)
@@ -4444,27 +4417,18 @@ A__align_gapmap:                        # @A__align_gapmap
 .LBB6_49:                               # %vector.body544
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 3
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 2
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a5, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a5, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -4595,27 +4559,18 @@ A__align_gapmap:                        # @A__align_gapmap
 .LBB6_65:                               # %vector.body558
                                         # =>This Inner Loop Header: Depth=1
 	vmul.w	$vr3, $vr1, $vr0
-	vpickve2gr.w	$a7, $vr3, 1
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 0
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a7, $vr3, 3
-	movgr2fr.w	$fa4, $a7
-	ffint.d.w	$fa4, $fa4
-	vpickve2gr.w	$a7, $vr3, 2
-	movgr2fr.w	$fa3, $a7
-	ffint.d.w	$fa3, $fa3
-	vld	$vr6, $a5, 0
-	vextrins.d	$vr3, $vr4, 16
+	vslti.w	$vr4, $vr3, 0
+	vilvl.w	$vr5, $vr4, $vr3
+	vffint.d.l	$vr5, $vr5
+	vilvh.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a5, 0
+	vffint.d.l	$vr3, $vr3
 	vfmul.d	$vr3, $vr3, $vr2
-	vfmul.d	$vr4, $vr5, $vr2
-	vfcvth.d.s	$vr5, $vr6
-	vfcvtl.d.s	$vr6, $vr6
-	vfadd.d	$vr4, $vr6, $vr4
-	vfadd.d	$vr3, $vr5, $vr3
+	vfmul.d	$vr5, $vr5, $vr2
+	vfcvth.d.s	$vr6, $vr4
+	vfcvtl.d.s	$vr4, $vr4
+	vfadd.d	$vr4, $vr4, $vr5
+	vfadd.d	$vr3, $vr6, $vr3
 	vfcvt.s.d	$vr3, $vr3, $vr4
 	vst	$vr3, $a5, 0
 	vaddi.wu	$vr0, $vr0, 4
@@ -4895,7 +4850,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	movgr2fr.w	$fs0, $zero
 	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
 	bnez	$a0, .LBB6_108
 	b	.LBB6_94
 .LBB6_93:                               # %._crit_edge383.loopexit
@@ -4905,7 +4860,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
 	bnez	$a0, .LBB6_108
 .LBB6_94:                               # %.preheader320
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
@@ -4944,27 +4899,18 @@ A__align_gapmap:                        # @A__align_gapmap
 	vsub.d	$vr6, $vr3, $vr1
 	vpickev.w	$vr5, $vr6, $vr5
 	vmul.w	$vr5, $vr0, $vr5
-	vpickve2gr.w	$a7, $vr5, 1
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 0
-	movgr2fr.w	$fa7, $a7
-	ffint.d.w	$fa7, $fa7
-	vextrins.d	$vr7, $vr6, 16
-	vpickve2gr.w	$a7, $vr5, 3
-	movgr2fr.w	$fa6, $a7
-	ffint.d.w	$fa6, $fa6
-	vpickve2gr.w	$a7, $vr5, 2
-	movgr2fr.w	$fa5, $a7
-	ffint.d.w	$fa5, $fa5
-	vld	$vr8, $a5, 0
-	vextrins.d	$vr5, $vr6, 16
+	vslti.w	$vr6, $vr5, 0
+	vilvl.w	$vr7, $vr6, $vr5
+	vffint.d.l	$vr7, $vr7
+	vilvh.w	$vr5, $vr6, $vr5
+	vld	$vr6, $a5, 0
+	vffint.d.l	$vr5, $vr5
 	vfmul.d	$vr5, $vr5, $vr4
-	vfmul.d	$vr6, $vr7, $vr4
-	vfcvth.d.s	$vr7, $vr8
-	vfcvtl.d.s	$vr8, $vr8
-	vfadd.d	$vr6, $vr8, $vr6
-	vfadd.d	$vr5, $vr7, $vr5
+	vfmul.d	$vr7, $vr7, $vr4
+	vfcvth.d.s	$vr8, $vr6
+	vfcvtl.d.s	$vr6, $vr6
+	vfadd.d	$vr6, $vr6, $vr7
+	vfadd.d	$vr5, $vr8, $vr5
 	vfcvt.s.d	$vr5, $vr5, $vr6
 	vst	$vr5, $a5, 0
 	vaddi.du	$vr2, $vr2, 4
@@ -4997,7 +4943,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	addi.d	$a4, $a4, 4
 	bnez	$a1, .LBB6_100
 .LBB6_101:                              # %.preheader319
-	blez	$t0, .LBB6_108
+	blez	$a7, .LBB6_108
 # %bb.102:                              # %.lr.ph391
 	bstrpick.d	$a0, $s1, 31, 0
 	pcalau12i	$a1, %got_pc_hi20(offset)

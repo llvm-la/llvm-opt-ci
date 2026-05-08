@@ -408,31 +408,17 @@ initEamPot:                             # @initEamPot
 .LBB0_23:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr3, $vr1, 2
-	vpickve2gr.w	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa4, $a5
-	ffint.d.l	$fa4, $fa4
-	vpickve2gr.w	$a5, $vr1, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa5, $a5
-	ffint.d.l	$fa5, $fa5
-	vextrins.d	$vr5, $vr4, 16
-	vpickve2gr.w	$a5, $vr3, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa4, $a5
-	ffint.d.l	$fa4, $fa4
-	vpickve2gr.w	$a5, $vr3, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vextrins.d	$vr3, $vr4, 16
-	vld	$vr4, $a3, -16
+	vilvl.w	$vr4, $vr7, $vr1
+	vffint.d.lu	$vr4, $vr4
+	vilvl.w	$vr3, $vr7, $vr3
+	vffint.d.lu	$vr3, $vr3
+	vld	$vr5, $a3, -16
 	vld	$vr6, $a3, 0
-	vfmadd.d	$vr5, $vr5, $vr0, $vr7
+	vfmadd.d	$vr4, $vr4, $vr0, $vr7
 	vfmadd.d	$vr3, $vr3, $vr0, $vr7
-	vfdiv.d	$vr5, $vr4, $vr5
+	vfdiv.d	$vr4, $vr5, $vr4
 	vfdiv.d	$vr3, $vr6, $vr3
-	vfmul.d	$vr4, $vr4, $vr5
+	vfmul.d	$vr4, $vr5, $vr4
 	vfmul.d	$vr3, $vr6, $vr3
 	vfmul.d	$vr4, $vr4, $vr2
 	vfmul.d	$vr3, $vr3, $vr2
@@ -753,29 +739,15 @@ initEamPot:                             # @initEamPot
 .LBB0_50:                               # %vector.body75
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
-	vpickve2gr.w	$a5, $vr1, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr1, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa4, $a5
-	ffint.d.l	$fa4, $fa4
-	vextrins.d	$vr4, $vr3, 16
-	vpickve2gr.w	$a5, $vr2, 1
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa3, $a5
-	ffint.d.l	$fa3, $fa3
-	vpickve2gr.w	$a5, $vr2, 0
-	bstrpick.d	$a5, $a5, 31, 0
-	movgr2fr.d	$fa2, $a5
-	ffint.d.l	$fa2, $fa2
-	vextrins.d	$vr2, $vr3, 16
-	vld	$vr3, $a3, -16
+	vilvl.w	$vr3, $vr6, $vr1
+	vffint.d.lu	$vr3, $vr3
+	vilvl.w	$vr2, $vr6, $vr2
+	vffint.d.lu	$vr2, $vr2
+	vld	$vr4, $a3, -16
 	vld	$vr5, $a3, 0
-	vfmadd.d	$vr4, $vr4, $vr0, $vr6
+	vfmadd.d	$vr3, $vr3, $vr0, $vr6
 	vfmadd.d	$vr2, $vr2, $vr0, $vr6
-	vfdiv.d	$vr3, $vr3, $vr4
+	vfdiv.d	$vr3, $vr4, $vr3
 	vfdiv.d	$vr2, $vr5, $vr2
 	vst	$vr3, $a3, -16
 	vst	$vr2, $a3, 0
