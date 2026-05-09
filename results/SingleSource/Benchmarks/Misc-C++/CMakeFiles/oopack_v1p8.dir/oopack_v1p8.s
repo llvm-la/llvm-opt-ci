@@ -245,13 +245,6 @@ _ZNK15MatrixBenchmark9oop_styleEv:      # @_ZNK15MatrixBenchmark9oop_styleEv
 .LCPI6_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI6_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	_ZNK15MatrixBenchmark4initEv
 	.p2align	2
@@ -265,34 +258,29 @@ _ZNK15MatrixBenchmark4initEv:           # @_ZNK15MatrixBenchmark4initEv
 	ori	$a0, $a0, 480
 	pcalau12i	$a1, %pc_hi20(C)
 	addi.d	$a1, $a1, %pc_lo12(C)
-	pcalau12i	$a2, %pc_hi20(.LCPI6_1)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI6_1)
-	lu12i.w	$a4, 4
-	ori	$a2, $a4, 3616
-	pcalau12i	$a3, %pc_hi20(D)
-	addi.d	$a3, $a3, %pc_lo12(D)
-	ori	$a4, $a4, 3632
+	lu12i.w	$a3, 4
+	ori	$a2, $a3, 3616
+	ori	$a3, $a3, 3632
+	pcalau12i	$a4, %pc_hi20(D)
+	addi.d	$a4, $a4, %pc_lo12(D)
 	.p2align	4, , 16
 .LBB6_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vshuf4i.w	$vr2, $vr0, 8
-	vaddi.wu	$vr3, $vr2, 1
-	vaddi.wu	$vr2, $vr2, 3
-	vext2xv.du.wu	$xr3, $xr3
-	xvffint.d.lu	$xr3, $xr3
+	vshuf4i.w	$vr1, $vr0, 8
+	vaddi.wu	$vr2, $vr1, 1
+	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
+	vext2xv.du.wu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	add.d	$a5, $a1, $a0
-	xvpermi.d	$xr4, $xr3, 68
-	xvpermi.d	$xr5, $xr2, 68
-	xvori.b	$xr6, $xr1, 0
-	xvshuf.d	$xr6, $xr5, $xr4
-	xvstx	$xr6, $a5, $a2
-	vfrecip.d	$vr3, $vr3
+	vstx	$vr2, $a5, $a2
+	vstx	$vr1, $a5, $a3
 	vfrecip.d	$vr2, $vr2
-	add.d	$a5, $a3, $a0
-	vstx	$vr3, $a5, $a2
-	vstx	$vr2, $a5, $a4
+	vfrecip.d	$vr1, $vr1
+	add.d	$a5, $a4, $a0
+	vstx	$vr2, $a5, $a2
+	vstx	$vr1, $a5, $a3
 	addi.d	$a0, $a0, 32
 	vaddi.du	$vr0, $vr0, 4
 	bnez	$a0, .LBB6_1
@@ -405,13 +393,6 @@ _ZNK17IteratorBenchmark9oop_styleEv:    # @_ZNK17IteratorBenchmark9oop_styleEv
 .LCPI10_0:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI10_1:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	_ZNK17IteratorBenchmark4initEv
 	.p2align	2
@@ -425,34 +406,29 @@ _ZNK17IteratorBenchmark4initEv:         # @_ZNK17IteratorBenchmark4initEv
 	ori	$a0, $a0, 192
 	pcalau12i	$a1, %pc_hi20(A)
 	addi.d	$a1, $a1, %pc_lo12(A)
-	pcalau12i	$a2, %pc_hi20(.LCPI10_1)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI10_1)
-	lu12i.w	$a4, 1
-	ori	$a2, $a4, 3904
-	pcalau12i	$a3, %pc_hi20(B)
-	addi.d	$a3, $a3, %pc_lo12(B)
-	ori	$a4, $a4, 3920
+	lu12i.w	$a3, 1
+	ori	$a2, $a3, 3904
+	ori	$a3, $a3, 3920
+	pcalau12i	$a4, %pc_hi20(B)
+	addi.d	$a4, $a4, %pc_lo12(B)
 	.p2align	4, , 16
 .LBB10_1:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vshuf4i.w	$vr2, $vr0, 8
-	vaddi.wu	$vr3, $vr2, 1
-	vaddi.wu	$vr2, $vr2, 3
-	vext2xv.du.wu	$xr3, $xr3
-	xvffint.d.lu	$xr3, $xr3
+	vshuf4i.w	$vr1, $vr0, 8
+	vaddi.wu	$vr2, $vr1, 1
+	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
+	vext2xv.du.wu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	add.d	$a5, $a1, $a0
-	xvpermi.d	$xr4, $xr3, 68
-	xvpermi.d	$xr5, $xr2, 68
-	xvori.b	$xr6, $xr1, 0
-	xvshuf.d	$xr6, $xr5, $xr4
-	xvstx	$xr6, $a5, $a2
-	vfrecip.d	$vr3, $vr3
+	vstx	$vr2, $a5, $a2
+	vstx	$vr1, $a5, $a3
 	vfrecip.d	$vr2, $vr2
-	add.d	$a5, $a3, $a0
-	vstx	$vr3, $a5, $a2
-	vstx	$vr2, $a5, $a4
+	vfrecip.d	$vr1, $vr1
+	add.d	$a5, $a4, $a0
+	vstx	$vr2, $a5, $a2
+	vstx	$vr1, $a5, $a3
 	addi.d	$a0, $a0, 32
 	vaddi.du	$vr0, $vr0, 4
 	bnez	$a0, .LBB10_1

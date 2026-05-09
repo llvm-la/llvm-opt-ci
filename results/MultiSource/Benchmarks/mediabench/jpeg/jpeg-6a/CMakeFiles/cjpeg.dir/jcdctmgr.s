@@ -192,7 +192,7 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	pcalau12i	$a0, %pc_hi20(start_pass_fdctmgr.aanscalefactor)
 	addi.d	$s6, $a0, %pc_lo12(start_pass_fdctmgr.aanscalefactor)
 	move	$s3, $zero
-	xvldi	$xr10, -912
+	xvldi	$xr8, -912
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
@@ -205,12 +205,12 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI1_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
 	fld.d	$fs5, $a0, %pc_lo12(.LCPI1_5)
-	xvldi	$xr11, -992
+	xvldi	$xr9, -992
 	ori	$s8, $zero, 64
 	xvldi	$xr0, -3836
 	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill
-	xvst	$xr10, $sp, 128                 # 32-byte Folded Spill
-	xvst	$xr11, $sp, 96                  # 32-byte Folded Spill
+	xvst	$xr8, $sp, 128                  # 32-byte Folded Spill
+	xvst	$xr9, $sp, 96                   # 32-byte Folded Spill
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_4 Depth=1
@@ -220,8 +220,8 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	st.w	$a2, $a0, 40
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	xvld	$xr11, $sp, 96                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr9, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 128                  # 32-byte Folded Reload
 .LBB1_3:                                # %.loopexit
                                         #   in Loop: Header=BB1_4 Depth=1
 	ld.w	$a0, $s0, 68
@@ -246,8 +246,8 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	st.w	$a2, $a0, 40
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	xvld	$xr11, $sp, 96                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr9, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 128                  # 32-byte Folded Reload
 	slli.d	$a0, $s7, 3
 	ldx.d	$s5, $s2, $a0
 .LBB1_7:                                #   in Loop: Header=BB1_4 Depth=1
@@ -271,8 +271,8 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	ori	$a2, $zero, 256
 	move	$a0, $s0
 	jirl	$ra, $a3, 0
-	xvld	$xr11, $sp, 96                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr9, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 128                  # 32-byte Folded Reload
 	st.d	$a0, $s7, 0
 .LBB1_12:                               # %vector.body
                                         #   in Loop: Header=BB1_4 Depth=1
@@ -322,8 +322,8 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	ori	$a2, $zero, 256
 	move	$a0, $s0
 	jirl	$ra, $a3, 0
-	xvld	$xr11, $sp, 96                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr9, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 128                  # 32-byte Folded Reload
 	st.d	$a0, $s7, 0
 .LBB1_15:                               # %vector.body111
                                         #   in Loop: Header=BB1_4 Depth=1
@@ -406,8 +406,8 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	ori	$a2, $zero, 256
 	move	$a0, $s0
 	jirl	$ra, $a3, 0
-	xvld	$xr11, $sp, 96                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr9, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr8, $sp, 128                  # 32-byte Folded Reload
 	st.d	$a0, $s7, 0
 .LBB1_18:                               #   in Loop: Header=BB1_4 Depth=1
 	move	$a1, $zero
@@ -430,34 +430,20 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	ffint.d.w	$fa1, $fa1
 	ffint.d.w	$fa2, $fa2
 	vinsgr2vr.w	$vr4, $a3, 0
-	vpickve2gr.h	$a3, $vr4, 1
-	bstrpick.d	$a3, $a3, 15, 0
-	movgr2fr.w	$fa5, $a3
-	vpickve2gr.h	$a3, $vr4, 0
-	bstrpick.d	$a3, $a3, 15, 0
-	movgr2fr.w	$fa4, $a3
 	ld.w	$a3, $a2, 4
 	ffint.d.w	$fa3, $fa3
-	ffint.d.w	$fa5, $fa5
-	ffint.d.w	$fa4, $fa4
-	vinsgr2vr.w	$vr6, $a3, 0
-	vpickve2gr.h	$a3, $vr6, 1
-	bstrpick.d	$a3, $a3, 15, 0
-	movgr2fr.w	$fa7, $a3
-	ffint.d.w	$fa7, $fa7
-	vpickve2gr.h	$a3, $vr6, 0
-	bstrpick.d	$a3, $a3, 15, 0
-	movgr2fr.w	$fa6, $a3
-	ffint.d.w	$fa6, $fa6
-	xvldrepl.d	$xr8, $a4, 0
-	xvori.b	$xr9, $xr10, 0
-	xvinsve0.d	$xr9, $xr1, 1
-	xvinsve0.d	$xr9, $xr4, 2
-	xvinsve0.d	$xr9, $xr5, 3
-	xvori.b	$xr1, $xr10, 0
-	xvinsve0.d	$xr1, $xr3, 1
-	xvinsve0.d	$xr1, $xr6, 2
-	xvinsve0.d	$xr1, $xr7, 3
+	vext2xv.du.hu	$xr4, $xr4
+	vffint.d.lu	$vr4, $vr4
+	vinsgr2vr.w	$vr5, $a3, 0
+	vext2xv.du.hu	$xr5, $xr5
+	vffint.d.lu	$vr5, $vr5
+	xvldrepl.d	$xr6, $a4, 0
+	xvori.b	$xr7, $xr8, 0
+	xvinsve0.d	$xr7, $xr3, 1
+	xvori.b	$xr3, $xr8, 0
+	xvinsve0.d	$xr3, $xr1, 1
+	xvpermi.q	$xr3, $xr4, 2
+	xvpermi.q	$xr7, $xr5, 2
 	fst.d	$fs0, $sp, 184
 	fst.d	$fs1, $sp, 176
 	fst.d	$fs2, $sp, 168
@@ -467,13 +453,13 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	fst.d	$fs5, $sp, 200
 	fst.d	$fa0, $sp, 192
 	xvld	$xr0, $sp, 192
-	xvld	$xr2, $sp, 160
-	xvfmul.d	$xr1, $xr8, $xr1
-	xvfmul.d	$xr3, $xr8, $xr9
+	xvld	$xr1, $sp, 160
+	xvfmul.d	$xr2, $xr6, $xr7
+	xvfmul.d	$xr3, $xr6, $xr3
 	xvfmul.d	$xr0, $xr3, $xr0
-	xvfmul.d	$xr1, $xr1, $xr2
-	xvfmul.d	$xr1, $xr1, $xr11
-	xvfmul.d	$xr0, $xr0, $xr11
+	xvfmul.d	$xr1, $xr2, $xr1
+	xvfmul.d	$xr1, $xr1, $xr9
+	xvfmul.d	$xr0, $xr0, $xr9
 	xvfrecip.d	$xr0, $xr0
 	xvfrecip.d	$xr1, $xr1
 	xvfcvt.s.d	$xr0, $xr1, $xr0

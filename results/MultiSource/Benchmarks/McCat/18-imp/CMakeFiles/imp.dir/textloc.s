@@ -64,46 +64,9 @@ ConvertToFloat:                         # @ConvertToFloat
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a7, $a4, 0
 	vinsgr2vr.d	$vr0, $a7, 0
-	vpickve2gr.b	$a7, $vr0, 5
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa1, $a7
-	ffint.s.w	$fa1, $fa1
-	vpickve2gr.b	$a7, $vr0, 4
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa2, $a7
-	ffint.s.w	$fa2, $fa2
-	vextrins.w	$vr2, $vr1, 16
-	vpickve2gr.b	$a7, $vr0, 6
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa1, $a7
-	ffint.s.w	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 32
-	vpickve2gr.b	$a7, $vr0, 7
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa1, $a7
-	ffint.s.w	$fa1, $fa1
-	vextrins.w	$vr2, $vr1, 48
-	vpickve2gr.b	$a7, $vr0, 1
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa1, $a7
-	ffint.s.w	$fa1, $fa1
-	vpickve2gr.b	$a7, $vr0, 0
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa3, $a7
-	ffint.s.w	$fa3, $fa3
-	vextrins.w	$vr3, $vr1, 16
-	vpickve2gr.b	$a7, $vr0, 2
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa1, $a7
-	ffint.s.w	$fa1, $fa1
-	vextrins.w	$vr3, $vr1, 32
-	vpickve2gr.b	$a7, $vr0, 3
-	andi	$a7, $a7, 255
-	movgr2fr.w	$fa0, $a7
-	ffint.s.w	$fa0, $fa0
-	vextrins.w	$vr3, $vr0, 48
-	xvpermi.q	$xr3, $xr2, 2
-	xvst	$xr3, $a5, 0
+	vext2xv.wu.bu	$xr0, $xr0
+	xvffint.s.wu	$xr0, $xr0
+	xvst	$xr0, $a5, 0
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
 	addi.d	$a4, $a4, 8

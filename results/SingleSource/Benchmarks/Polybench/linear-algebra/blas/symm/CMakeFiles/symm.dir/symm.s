@@ -284,7 +284,7 @@ main:                                   # @main
 	vsrli.w	$vr9, $vr9, 5
 	vmsub.w	$vr8, $vr9, $vr2
 	vext2xv.du.wu	$xr8, $xr8
-	xvffint.d.lu	$xr8, $xr8
+	vffint.d.lu	$vr8, $vr8
 	vfdiv.d	$vr8, $vr8, $vr4
 	vstx	$vr8, $t1, $t3
 	vsub.d	$vr8, $vr6, $vr7
@@ -293,7 +293,7 @@ main:                                   # @main
 	vsrli.w	$vr9, $vr9, 5
 	vmsub.w	$vr8, $vr9, $vr2
 	vext2xv.du.wu	$xr8, $xr8
-	xvffint.d.lu	$xr8, $xr8
+	vffint.d.lu	$vr8, $vr8
 	vfdiv.d	$vr8, $vr8, $vr4
 	vstx	$vr8, $t2, $t3
 	addi.d	$t3, $t3, 16

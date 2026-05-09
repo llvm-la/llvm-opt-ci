@@ -272,7 +272,7 @@ main:                                   # @main
 	vshuf4i.w	$vr6, $vr6, 8
 	vaddi.wu	$vr6, $vr6, 2
 	vext2xv.du.wu	$xr6, $xr6
-	xvffint.d.lu	$xr6, $xr6
+	vffint.d.lu	$vr6, $vr6
 	vfdiv.d	$vr6, $vr6, $vr2
 	add.d	$t3, $t1, $a5
 	vstx	$vr6, $t3, $s3
@@ -280,7 +280,7 @@ main:                                   # @main
 	vshuf4i.w	$vr5, $vr5, 8
 	vaddi.wu	$vr5, $vr5, 3
 	vext2xv.du.wu	$xr5, $xr5
-	xvffint.d.lu	$xr5, $xr5
+	vffint.d.lu	$vr5, $vr5
 	vfdiv.d	$vr5, $vr5, $vr2
 	add.d	$t3, $t2, $a5
 	addi.d	$a5, $a5, 16
@@ -554,7 +554,7 @@ main:                                   # @main
 	vshuf4i.w	$vr8, $vr8, 8
 	vaddi.wu	$vr8, $vr8, 2
 	vext2xv.du.wu	$xr8, $xr8
-	xvffint.d.lu	$xr8, $xr8
+	vffint.d.lu	$vr8, $vr8
 	vfdiv.d	$vr8, $vr8, $vr4
 	add.d	$t0, $a5, $a7
 	vstx	$vr8, $t0, $s3
@@ -562,7 +562,7 @@ main:                                   # @main
 	vshuf4i.w	$vr7, $vr7, 8
 	vaddi.wu	$vr7, $vr7, 3
 	vext2xv.du.wu	$xr7, $xr7
-	xvffint.d.lu	$xr7, $xr7
+	vffint.d.lu	$vr7, $vr7
 	vfdiv.d	$vr7, $vr7, $vr4
 	add.d	$t0, $s7, $a7
 	addi.d	$a7, $a7, 16

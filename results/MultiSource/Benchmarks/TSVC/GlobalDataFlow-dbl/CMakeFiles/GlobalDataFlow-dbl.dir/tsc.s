@@ -53,9 +53,9 @@ set1d:                                  # @set1d
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -137,9 +137,9 @@ set1ds:                                 # @set1ds
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -1783,9 +1783,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1806,9 +1806,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1829,9 +1829,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1852,9 +1852,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -1875,9 +1875,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3030,9 +3030,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3053,9 +3053,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3111,9 +3111,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3134,9 +3134,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3475,9 +3475,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3603,9 +3603,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3626,9 +3626,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -3649,9 +3649,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -3838,9 +3838,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -3861,9 +3861,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4039,9 +4039,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -4062,9 +4062,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -4085,9 +4085,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4162,9 +4162,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4185,9 +4185,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4224,9 +4224,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4247,9 +4247,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4476,9 +4476,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4499,9 +4499,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4545,9 +4545,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -4568,9 +4568,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -4591,9 +4591,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -4617,9 +4617,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4665,9 +4665,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -4704,9 +4704,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4727,9 +4727,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -4750,9 +4750,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -5564,9 +5564,9 @@ init:                                   # @init
 	vaddi.wu	$vr3, $vr2, 1
 	vaddi.wu	$vr2, $vr2, 3
 	vext2xv.du.wu	$xr3, $xr3
-	xvffint.d.lu	$xr3, $xr3
+	vffint.d.lu	$vr3, $vr3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vfrecip.d	$vr3, $vr3
 	vfrecip.d	$vr2, $vr2
 	vst	$vr3, $a3, -16
@@ -5587,9 +5587,9 @@ init:                                   # @init
 	vaddi.wu	$vr3, $vr2, 1
 	vaddi.wu	$vr2, $vr2, 3
 	vext2xv.du.wu	$xr3, $xr3
-	xvffint.d.lu	$xr3, $xr3
+	vffint.d.lu	$vr3, $vr3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vfrecip.d	$vr3, $vr3
 	vfrecip.d	$vr2, $vr2
 	vst	$vr3, $a2, -16
@@ -5895,9 +5895,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -5918,9 +5918,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -5941,9 +5941,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -6038,9 +6038,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -6061,9 +6061,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -6084,9 +6084,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -6186,9 +6186,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6588,9 +6588,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6619,9 +6619,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6642,9 +6642,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6842,9 +6842,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -6865,9 +6865,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -6916,9 +6916,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -6939,9 +6939,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -7032,9 +7032,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7090,9 +7090,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -7113,9 +7113,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -7386,9 +7386,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7409,9 +7409,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7432,9 +7432,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7496,9 +7496,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7519,9 +7519,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7542,9 +7542,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7606,9 +7606,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7629,9 +7629,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7652,9 +7652,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7716,9 +7716,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7739,9 +7739,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7762,9 +7762,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7813,9 +7813,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7836,9 +7836,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7859,9 +7859,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7898,9 +7898,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7921,9 +7921,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -7960,9 +7960,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -7983,9 +7983,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8086,9 +8086,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8366,9 +8366,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8410,9 +8410,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -8433,9 +8433,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8458,9 +8458,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8483,9 +8483,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8508,9 +8508,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8534,9 +8534,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -8575,9 +8575,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -8598,9 +8598,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -8621,9 +8621,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -8734,9 +8734,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8785,9 +8785,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -8892,9 +8892,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -8915,9 +8915,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -8938,9 +8938,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -8964,9 +8964,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -9030,9 +9030,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9056,9 +9056,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9079,9 +9079,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9293,9 +9293,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9316,9 +9316,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9387,9 +9387,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9410,9 +9410,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9449,9 +9449,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -9472,9 +9472,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -9530,9 +9530,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -9553,9 +9553,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -9835,9 +9835,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a4, -16
@@ -9858,9 +9858,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10120,9 +10120,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -10143,9 +10143,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10214,9 +10214,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10237,9 +10237,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10260,9 +10260,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10283,9 +10283,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10322,9 +10322,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10345,9 +10345,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10373,9 +10373,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10396,9 +10396,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10530,9 +10530,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10553,9 +10553,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10592,9 +10592,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10615,9 +10615,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10638,9 +10638,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10677,9 +10677,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10700,9 +10700,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10746,9 +10746,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -10769,9 +10769,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -10808,9 +10808,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10899,9 +10899,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -10922,9 +10922,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -10948,9 +10948,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -10971,9 +10971,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -10997,9 +10997,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -11125,9 +11125,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a2, -16
@@ -11148,9 +11148,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a1, -16
@@ -11187,9 +11187,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -11210,9 +11210,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -11436,9 +11436,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -11459,9 +11459,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -11614,9 +11614,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -11640,9 +11640,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a3, -16
@@ -11663,9 +11663,9 @@ init:                                   # @init
 	vaddi.wu	$vr2, $vr1, 1
 	vaddi.wu	$vr1, $vr1, 3
 	vext2xv.du.wu	$xr2, $xr2
-	xvffint.d.lu	$xr2, $xr2
+	vffint.d.lu	$vr2, $vr2
 	vext2xv.du.wu	$xr1, $xr1
-	xvffint.d.lu	$xr1, $xr1
+	vffint.d.lu	$vr1, $vr1
 	vfrecip.d	$vr2, $vr2
 	vfrecip.d	$vr1, $vr1
 	vst	$vr2, $a0, -16
@@ -13101,9 +13101,9 @@ s452:                                   # @s452
 	vaddi.wu	$vr6, $vr5, 1
 	vaddi.wu	$vr5, $vr5, 3
 	vext2xv.du.wu	$xr6, $xr6
-	xvffint.d.lu	$xr6, $xr6
+	vffint.d.lu	$vr6, $vr6
 	vext2xv.du.wu	$xr5, $xr5
-	xvffint.d.lu	$xr5, $xr5
+	vffint.d.lu	$vr5, $vr5
 	vfmadd.d	$vr1, $vr3, $vr6, $vr1
 	vfmadd.d	$vr2, $vr4, $vr5, $vr2
 	vstx	$vr1, $fp, $a0
