@@ -41311,7 +41311,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	fst.d	$fs7, $sp, 1880                 # 8-byte Folded Spill
 	addi.d	$fp, $sp, 2032
 	lu12i.w	$a2, 7
-	ori	$a2, $a2, 2272
+	ori	$a2, $a2, 2256
 	sub.d	$sp, $sp, $a2
                                         # kill: def $f2 killed $f2 def $vr2
 	lu12i.w	$a2, -8
@@ -41325,7 +41325,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	vst	$vr1, $a2, 0                    # 16-byte Folded Spill
 	move	$s0, $a1
 	lu12i.w	$a2, -9
-	ori	$a2, $a2, 3964
+	ori	$a2, $a2, 3980
 	add.d	$a2, $fp, $a2
 	fst.s	$fa0, $a2, 0                    # 4-byte Folded Spill
 	lu12i.w	$a2, -8
@@ -41345,7 +41345,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3952
+	ori	$a1, $a1, 3968
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	lu12i.w	$a0, 7
@@ -54608,21 +54608,21 @@ setup_tone_curves:                      # @setup_tone_curves
 	fst.s	$fa0, $s3, 1788
 	b	.LBB220_1
 .LBB220_1729:                           # %.preheader288
-	move	$s7, $zero
+	move	$s5, $zero
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3964
+	ori	$a0, $a0, 3980
 	add.d	$a0, $fp, $a0
 	fld.s	$fa0, $a0, 0                    # 4-byte Folded Reload
 	fcvt.d.s	$fs2, $fa0
 	bstrpick.d	$a0, $s0, 31, 0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4048
+	ori	$a1, $a1, 4064
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$a0, $a0, 3
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4040
+	ori	$a1, $a1, 4048
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	lu12i.w	$a0, -8
@@ -54634,147 +54634,146 @@ setup_tone_curves:                      # @setup_tone_curves
 	ori	$a1, $a1, 96
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
-	lu12i.w	$a0, 256
-	lu52i.d	$a0, $a0, 1107
-	movgr2fr.d	$fs3, $a0
-	lu12i.w	$s8, 275200
 	pcalau12i	$a0, %pc_hi20(.LCPI220_2)
-	fld.d	$fs4, $a0, %pc_lo12(.LCPI220_2)
+	fld.d	$fs3, $a0, %pc_lo12(.LCPI220_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI220_3)
-	fld.d	$fs5, $a0, %pc_lo12(.LCPI220_3)
+	fld.d	$fs4, $a0, %pc_lo12(.LCPI220_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI220_4)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI220_4)
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3944
+	ori	$a0, $a0, 3960
 	add.d	$a0, $fp, $a0
 	fst.d	$fa0, $a0, 0                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI220_5)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI220_5)
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3984
+	ori	$a0, $a0, 4000
 	add.d	$a0, $fp, $a0
 	fst.d	$fa0, $a0, 0                    # 8-byte Folded Spill
-	lu12i.w	$a0, 280476
-	vreplgr2vr.w	$vr0, $a0
+	lu12i.w	$s8, 280476
+	vreplgr2vr.w	$vr0, $s8
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 4000
+	ori	$a0, $a0, 4016
 	add.d	$a0, $fp, $a0
 	vst	$vr0, $a0, 0                    # 16-byte Folded Spill
 	lu12i.w	$a0, -243812
-	movgr2fr.w	$fs0, $a0
+	movgr2fr.w	$fs7, $a0
 	lu12i.w	$a0, -248704
+	movgr2fr.w	$fs0, $a0
+	lu12i.w	$a0, 271808
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 4072
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
-	lu12i.w	$a0, 271808
-	movgr2fr.w	$fa0, $a0
-	lu12i.w	$a0, -9
-	ori	$a0, $a0, 4064
-	add.d	$a0, $fp, $a0
-	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271744
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 4028
+	ori	$a0, $a0, 4036
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271680
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3996
+	ori	$a0, $a0, 4012
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271616
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3992
+	ori	$a0, $a0, 4008
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271552
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3980
+	ori	$a0, $a0, 3996
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271488
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3940
+	ori	$a0, $a0, 3956
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271424
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3936
+	ori	$a0, $a0, 3952
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271360
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3932
+	ori	$a0, $a0, 3948
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271296
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3928
+	ori	$a0, $a0, 3944
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271232
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3924
+	ori	$a0, $a0, 3940
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271168
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3920
+	ori	$a0, $a0, 3936
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271104
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3916
+	ori	$a0, $a0, 3932
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 271040
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3912
+	ori	$a0, $a0, 3928
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 270976
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3908
+	ori	$a0, $a0, 3924
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 270912
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3904
+	ori	$a0, $a0, 3920
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
 	lu12i.w	$a0, 270848
 	movgr2fr.w	$fa0, $a0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3900
+	ori	$a0, $a0, 3916
 	add.d	$a0, $fp, $a0
 	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
+	lu12i.w	$a0, 270784
+	movgr2fr.w	$fa0, $a0
+	lu12i.w	$a0, -9
+	ori	$a0, $a0, 3912
+	add.d	$a0, $fp, $a0
+	fst.s	$fa0, $a0, 0                    # 4-byte Folded Spill
+	ori	$s1, $zero, 7
 	ori	$s2, $zero, 56
 	b	.LBB220_1731
 	.p2align	4, , 16
 .LBB220_1730:                           #   in Loop: Header=BB220_1731 Depth=1
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3968
+	ori	$a0, $a0, 3984
 	add.d	$a0, $fp, $a0
 	ld.d	$a1, $a0, 0                     # 8-byte Folded Reload
-	move	$s7, $a1
+	move	$s5, $a1
 	ori	$a0, $zero, 17
-	beq	$a1, $a0, .LBB220_1953
+	beq	$a1, $a0, .LBB220_1952
 .LBB220_1731:                           # =>This Loop Header: Depth=1
                                         #     Child Loop BB220_1735 Depth 2
                                         #       Child Loop BB220_1739 Depth 3
@@ -54794,9 +54793,9 @@ setup_tone_curves:                      # @setup_tone_curves
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	slli.d	$a2, $s7, 3
+	slli.d	$a2, $s5, 3
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3952
+	ori	$a1, $a1, 3968
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
 	lu12i.w	$a3, -8
@@ -54804,46 +54803,40 @@ setup_tone_curves:                      # @setup_tone_curves
 	add.d	$a3, $fp, $a3
 	st.d	$a0, $a3, 0                     # 8-byte Folded Spill
 	stx.d	$a0, $a1, $a2
-	addi.w	$s1, $s7, 0
-	srli.d	$a0, $s7, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs3
-	move	$a0, $s7
-	bstrins.d	$a0, $s8, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	addi.w	$s3, $s5, 0
+	vinsgr2vr.d	$vr0, $s5, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	vldi	$vr1, -928
 	fmul.d	$fs1, $fa0, $fa1
-	fadd.d	$fa0, $fs1, $fs4
-	fmul.d	$fa0, $fa0, $fs5
+	fadd.d	$fa0, $fs1, $fs3
+	fmul.d	$fa0, $fa0, $fs4
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fdiv.d	$fa0, $fa0, $fs2
 	vreplvei.d	$vr0, $vr0, 0
 	vfrintrm.d	$vr0, $vr0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s3, $fa0
-	movgr2fr.w	$fa0, $s3
+	movfr2gr.s	$s4, $fa0
+	movgr2fr.w	$fa0, $s4
 	ffint.s.w	$fa0, $fa0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3964
+	ori	$a0, $a0, 3980
 	add.d	$a0, $fp, $a0
-	fld.s	$fs6, $a0, 0                    # 4-byte Folded Reload
-	fmul.s	$fa0, $fs6, $fa0
+	fld.s	$fs5, $a0, 0                    # 4-byte Folded Reload
+	fmul.s	$fa0, $fs5, $fa0
 	vldi	$vr1, -1168
 	fadd.s	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa0, $fa0
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3944
+	ori	$a0, $a0, 3960
 	add.d	$a0, $fp, $a0
-	fld.d	$fs7, $a0, 0                    # 8-byte Folded Reload
-	fmul.d	$fa0, $fa0, $fs7
+	fld.d	$fs6, $a0, 0                    # 8-byte Folded Reload
+	fmul.d	$fa0, $fa0, $fs6
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3984
+	ori	$a0, $a0, 4000
 	add.d	$a0, $fp, $a0
 	fld.d	$fa1, $a0, 0                    # 8-byte Folded Reload
 	fadd.d	$fa0, $fa0, $fa1
@@ -54851,18 +54844,18 @@ setup_tone_curves:                      # @setup_tone_curves
 	vreplvei.d	$vr0, $vr0, 0
 	vfrintrp.d	$vr0, $vr0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s4, $fa0
-	addi.d	$a0, $s3, 1
+	movfr2gr.s	$s6, $fa0
+	addi.d	$a0, $s4, 1
 	movgr2fr.w	$fa0, $a0
 	ffint.s.w	$fa0, $fa0
-	fmul.s	$fa0, $fs6, $fa0
+	fmul.s	$fa0, $fs5, $fa0
 	fcvt.d.s	$fa0, $fa0
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
-	move	$s3, $zero
-	fmul.d	$fa0, $fa0, $fs7
+	move	$s4, $zero
+	fmul.d	$fa0, $fa0, $fs6
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3984
+	ori	$a0, $a0, 4000
 	add.d	$a0, $fp, $a0
 	fld.d	$fa1, $a0, 0                    # 8-byte Folded Reload
 	fadd.d	$fa0, $fa0, $fa1
@@ -54871,9 +54864,9 @@ setup_tone_curves:                      # @setup_tone_curves
 	vfrintrm.d	$vr0, $vr0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	slt	$a1, $s1, $s4
-	masknez	$a2, $s4, $a1
-	maskeqz	$a1, $s1, $a1
+	slt	$a1, $s3, $s6
+	masknez	$a2, $s6, $a1
+	maskeqz	$a1, $s3, $a1
 	or	$a1, $a1, $a2
 	srai.d	$a2, $a1, 63
 	andn	$a1, $a1, $a2
@@ -54890,10 +54883,10 @@ setup_tone_curves:                      # @setup_tone_curves
 	ori	$a1, $a1, 88
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
-	addi.d	$a1, $s7, 1
+	addi.d	$a1, $s5, 1
 	ori	$a0, $zero, 1792
 	lu12i.w	$a2, -9
-	ori	$a2, $a2, 3968
+	ori	$a2, $a2, 3984
 	add.d	$a2, $fp, $a2
 	st.d	$a1, $a2, 0                     # 8-byte Folded Spill
 	mul.d	$a0, $a1, $a0
@@ -54902,24 +54895,24 @@ setup_tone_curves:                      # @setup_tone_curves
 	add.d	$a1, $fp, $a1
 	add.d	$a0, $a1, $a0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4032
+	ori	$a1, $a1, 4040
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 4080
 	add.d	$a0, $fp, $a0
-	st.d	$s7, $a0, 0                     # 8-byte Folded Spill
+	st.d	$s5, $a0, 0                     # 8-byte Folded Spill
 	b	.LBB220_1735
 .LBB220_1732:                           #   in Loop: Header=BB220_1735 Depth=2
-	lu12i.w	$a1, 270784
+	lu12i.w	$a1, 270720
 .LBB220_1733:                           #   in Loop: Header=BB220_1735 Depth=2
 	movgr2fr.w	$fa0, $a1
 	.p2align	4, , 16
 .LBB220_1734:                           #   in Loop: Header=BB220_1735 Depth=2
-	addi.d	$s3, $s3, 1
+	addi.d	$s4, $s4, 1
 	fst.s	$fa0, $a0, 4
 	ori	$a0, $zero, 8
-	beq	$s3, $a0, .LBB220_1730
+	beq	$s4, $a0, .LBB220_1730
 .LBB220_1735:                           #   Parent Loop BB220_1731 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB220_1739 Depth 3
@@ -54939,13 +54932,12 @@ setup_tone_curves:                      # @setup_tone_curves
 	ori	$a0, $zero, 232
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	slli.d	$a1, $s3, 3
+	slli.d	$a1, $s4, 3
 	lu12i.w	$a2, -8
 	ori	$a2, $a2, 48
 	add.d	$a2, $fp, $a2
 	ld.d	$a2, $a2, 0                     # 8-byte Folded Reload
 	stx.d	$a0, $a2, $a1
-	lu12i.w	$a3, 280476
 	blez	$s0, .LBB220_1743
 # %bb.1736:                             # %.lr.ph.preheader
                                         #   in Loop: Header=BB220_1735 Depth=2
@@ -54962,11 +54954,11 @@ setup_tone_curves:                      # @setup_tone_curves
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4040
+	ori	$a1, $a1, 4048
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
 	lu12i.w	$a2, -9
-	ori	$a2, $a2, 4000
+	ori	$a2, $a2, 4016
 	add.d	$a2, $fp, $a2
 	vld	$vr0, $a2, 0                    # 16-byte Folded Reload
 	.p2align	4, , 16
@@ -54982,12 +54974,12 @@ setup_tone_curves:                      # @setup_tone_curves
 # %bb.1740:                             # %middle.block1167
                                         #   in Loop: Header=BB220_1735 Depth=2
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 4040
+	ori	$a0, $a0, 4048
 	add.d	$a0, $fp, $a0
 	ld.d	$a2, $a0, 0                     # 8-byte Folded Reload
 	move	$a1, $a2
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 4048
+	ori	$a0, $a0, 4064
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	beq	$a2, $a0, .LBB220_1743
@@ -54999,7 +54991,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	alsl.d	$a0, $a1, $a0, 2
 	lu12i.w	$a2, -9
-	ori	$a2, $a2, 4048
+	ori	$a2, $a2, 4064
 	add.d	$a2, $fp, $a2
 	ld.d	$a2, $a2, 0                     # 8-byte Folded Reload
 	sub.d	$a1, $a2, $a1
@@ -55008,7 +55000,7 @@ setup_tone_curves:                      # @setup_tone_curves
                                         #   Parent Loop BB220_1731 Depth=1
                                         #     Parent Loop BB220_1735 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	st.w	$a3, $a0, 0
+	st.w	$s8, $a0, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
 	bnez	$a1, .LBB220_1742
@@ -55018,13 +55010,13 @@ setup_tone_curves:                      # @setup_tone_curves
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 72
 	add.d	$a1, $fp, $a1
-	st.d	$s3, $a1, 0                     # 8-byte Folded Spill
-	mul.d	$a0, $s3, $a0
+	st.d	$s4, $a1, 0                     # 8-byte Folded Spill
+	mul.d	$a0, $s4, $a0
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 40
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
-	pcalau12i	$s4, %pc_hi20(.LCPI220_6)
+	pcalau12i	$s8, %pc_hi20(.LCPI220_6)
 	lu12i.w	$a0, -8
 	ori	$a0, $a0, 16
 	add.d	$a0, $fp, $a0
@@ -55039,60 +55031,54 @@ setup_tone_curves:                      # @setup_tone_curves
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 4080
 	add.d	$a0, $fp, $a0
-	ld.d	$s7, $a0, 0                     # 8-byte Folded Reload
-	ori	$a0, $zero, 16
-	beq	$s7, $a0, .LBB220_1851
+	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
+	ori	$a1, $zero, 16
+	beq	$a0, $a1, .LBB220_1851
 # %bb.1745:                             # %.preheader286
                                         #   in Loop: Header=BB220_1735 Depth=2
-	move	$s5, $zero
-	move	$s1, $zero
+	move	$s6, $zero
+	move	$s3, $zero
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 4032
+	ori	$a0, $a0, 4040
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 40
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
-	add.d	$s3, $a0, $a1
+	add.d	$s4, $a0, $a1
 	b	.LBB220_1748
 	.p2align	4, , 16
 .LBB220_1746:                           #   in Loop: Header=BB220_1748 Depth=3
-	move	$s1, $a0
+	move	$s3, $a0
 .LBB220_1747:                           # %._crit_edge331
                                         #   in Loop: Header=BB220_1748 Depth=3
-	addi.d	$s5, $s5, 1
-	beq	$s5, $s2, .LBB220_1830
+	addi.d	$s6, $s6, 1
+	beq	$s6, $s2, .LBB220_1830
 .LBB220_1748:                           #   Parent Loop BB220_1731 Depth=1
                                         #     Parent Loop BB220_1735 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB220_1753 Depth 4
                                         #         Child Loop BB220_1772 Depth 4
-	srli.d	$a0, $s5, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs3
-	move	$a0, $s5
-	bstrins.d	$a0, $s8, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fld.d	$fa2, $s4, %pc_lo12(.LCPI220_6)
-	fadd.d	$fa0, $fa1, $fa0
-	vldi	$vr1, -960
-	fmul.d	$fa0, $fa0, $fa1
-	fadd.d	$fs6, $fs1, $fa0
-	fadd.d	$fa0, $fs6, $fa2
-	fadd.d	$fa0, $fa0, $fs4
-	fmul.d	$fa0, $fa0, $fs5
+	vinsgr2vr.d	$vr0, $s6, 0
+	vffint.d.lu	$vr0, $vr0
+	fld.d	$fa1, $s8, %pc_lo12(.LCPI220_6)
+	vreplvei.d	$vr0, $vr0, 0
+	vldi	$vr2, -960
+	fmul.d	$fa0, $fa0, $fa2
+	fadd.d	$fs5, $fs1, $fa0
+	fadd.d	$fa0, $fs5, $fa1
+	fadd.d	$fa0, $fa0, $fs3
+	fmul.d	$fa0, $fa0, $fs4
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fdiv.d	$fa0, $fa0, $fs2
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s6, $fa0
+	movfr2gr.s	$s5, $fa0
 	vldi	$vr0, -769
-	fadd.d	$fa0, $fs6, $fa0
-	fadd.d	$fa0, $fa0, $fs4
-	fmul.d	$fa0, $fa0, $fs5
+	fadd.d	$fa0, $fs5, $fa0
+	fadd.d	$fa0, $fa0, $fs3
+	fmul.d	$fa0, $fa0, $fs4
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fdiv.d	$fa0, $fa0, $fs2
@@ -55100,15 +55086,15 @@ setup_tone_curves:                      # @setup_tone_curves
 	fadd.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
-	srai.d	$a0, $s6, 63
-	andn	$a1, $s6, $a0
+	srai.d	$a0, $s5, 63
+	andn	$a1, $s5, $a0
 	slt	$a0, $a1, $s0
 	maskeqz	$a3, $a1, $a0
 	masknez	$a0, $s0, $a0
 	or	$a0, $a3, $a0
-	slt	$a3, $a0, $s1
+	slt	$a3, $a0, $s3
 	maskeqz	$a0, $a0, $a3
-	masknez	$a3, $s1, $a3
+	masknez	$a3, $s3, $a3
 	or	$a0, $a0, $a3
 	srai.d	$a3, $a2, 63
 	andn	$a2, $a2, $a3
@@ -55119,11 +55105,11 @@ setup_tone_curves:                      # @setup_tone_curves
 	bge	$a0, $a2, .LBB220_1746
 # %bb.1749:                             # %.lr.ph330
                                         #   in Loop: Header=BB220_1748 Depth=3
-	slli.d	$a3, $s5, 2
-	fldx.s	$fa0, $s3, $a3
-	slt	$a3, $s1, $s0
+	slli.d	$a3, $s6, 2
+	fldx.s	$fa0, $s4, $a3
+	slt	$a3, $s3, $s0
 	masknez	$a4, $s0, $a3
-	maskeqz	$a3, $s1, $a3
+	maskeqz	$a3, $s3, $a3
 	or	$a3, $a3, $a4
 	bstrpick.d	$a1, $a1, 31, 0
 	slt	$a4, $a3, $a1
@@ -55133,9 +55119,8 @@ setup_tone_curves:                      # @setup_tone_curves
 	add.d	$a4, $a2, $a3
 	nor	$a1, $a0, $zero
 	add.w	$a1, $a2, $a1
-	sub.w	$s1, $a4, $a0
-	ori	$a0, $zero, 7
-	bgeu	$a1, $a0, .LBB220_1751
+	sub.w	$s3, $a4, $a0
+	bgeu	$a1, $s1, .LBB220_1751
 # %bb.1750:                             #   in Loop: Header=BB220_1748 Depth=3
 	move	$a0, $a3
 	b	.LBB220_1770
@@ -55266,7 +55251,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 2
-	sub.d	$a0, $s1, $a0
+	sub.d	$a0, $s3, $a0
 	b	.LBB220_1772
 	.p2align	4, , 16
 .LBB220_1771:                           #   in Loop: Header=BB220_1772 Depth=4
@@ -55307,12 +55292,12 @@ setup_tone_curves:                      # @setup_tone_curves
 	.p2align	4, , 16
 .LBB220_1775:                           # %._crit_edge322
                                         #   in Loop: Header=BB220_1776 Depth=3
-	addi.d	$a0, $s7, 1
+	addi.d	$a0, $s6, 1
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 88
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
-	bge	$s7, $a1, .LBB220_1744
+	bge	$s6, $a1, .LBB220_1744
 .LBB220_1776:                           # %.preheader283
                                         #   Parent Loop BB220_1731 Depth=1
                                         #     Parent Loop BB220_1735 Depth=2
@@ -55322,66 +55307,54 @@ setup_tone_curves:                      # @setup_tone_curves
                                         #           Child Loop BB220_1803 Depth 5
                                         #         Child Loop BB220_1809 Depth 4
                                         #         Child Loop BB220_1828 Depth 4
-	move	$s5, $zero
-	move	$s3, $zero
-	move	$s7, $a0
-	srli.d	$a0, $a0, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs3
-	move	$a0, $s7
-	bstrins.d	$a0, $s8, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	move	$s7, $zero
+	move	$s4, $zero
+	move	$s6, $a0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	vldi	$vr1, -928
-	fmul.d	$fs7, $fa0, $fa1
+	fmul.d	$fs6, $fa0, $fa1
 	ori	$a0, $zero, 1792
-	mul.d	$a0, $s7, $a0
+	mul.d	$a0, $s6, $a0
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 80
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
-	add.d	$s1, $a1, $a0
+	add.d	$s3, $a1, $a0
 	b	.LBB220_1779
 	.p2align	4, , 16
 .LBB220_1777:                           #   in Loop: Header=BB220_1779 Depth=4
-	move	$s3, $a0
+	move	$s4, $a0
 .LBB220_1778:                           # %._crit_edge
                                         #   in Loop: Header=BB220_1779 Depth=4
-	addi.d	$s5, $s5, 1
-	beq	$s5, $s2, .LBB220_1805
+	addi.d	$s7, $s7, 1
+	beq	$s7, $s2, .LBB220_1805
 .LBB220_1779:                           #   Parent Loop BB220_1731 Depth=1
                                         #     Parent Loop BB220_1735 Depth=2
                                         #       Parent Loop BB220_1776 Depth=3
                                         # =>      This Loop Header: Depth=4
                                         #           Child Loop BB220_1784 Depth 5
                                         #           Child Loop BB220_1803 Depth 5
-	srli.d	$a0, $s5, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs3
-	move	$a0, $s5
-	bstrins.d	$a0, $s8, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fld.d	$fa2, $s4, %pc_lo12(.LCPI220_6)
-	fadd.d	$fa0, $fa1, $fa0
-	vldi	$vr1, -960
-	fmul.d	$fa0, $fa0, $fa1
-	fadd.d	$fs6, $fs7, $fa0
-	fadd.d	$fa0, $fs6, $fa2
-	fadd.d	$fa0, $fa0, $fs4
-	fmul.d	$fa0, $fa0, $fs5
+	vinsgr2vr.d	$vr0, $s7, 0
+	vffint.d.lu	$vr0, $vr0
+	fld.d	$fa1, $s8, %pc_lo12(.LCPI220_6)
+	vreplvei.d	$vr0, $vr0, 0
+	vldi	$vr2, -960
+	fmul.d	$fa0, $fa0, $fa2
+	fadd.d	$fs5, $fs6, $fa0
+	fadd.d	$fa0, $fs5, $fa1
+	fadd.d	$fa0, $fa0, $fs3
+	fmul.d	$fa0, $fa0, $fs4
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fdiv.d	$fa0, $fa0, $fs2
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$s6, $fa0
+	movfr2gr.s	$s5, $fa0
 	vldi	$vr0, -769
-	fadd.d	$fa0, $fs6, $fa0
-	fadd.d	$fa0, $fa0, $fs4
-	fmul.d	$fa0, $fa0, $fs5
+	fadd.d	$fa0, $fs5, $fa0
+	fadd.d	$fa0, $fa0, $fs3
+	fmul.d	$fa0, $fa0, $fs4
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fdiv.d	$fa0, $fa0, $fs2
@@ -55389,15 +55362,15 @@ setup_tone_curves:                      # @setup_tone_curves
 	fadd.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
-	srai.d	$a0, $s6, 63
-	andn	$a1, $s6, $a0
+	srai.d	$a0, $s5, 63
+	andn	$a1, $s5, $a0
 	slt	$a0, $a1, $s0
 	maskeqz	$a3, $a1, $a0
 	masknez	$a0, $s0, $a0
 	or	$a0, $a3, $a0
-	slt	$a3, $a0, $s3
+	slt	$a3, $a0, $s4
 	maskeqz	$a0, $a0, $a3
-	masknez	$a3, $s3, $a3
+	masknez	$a3, $s4, $a3
 	or	$a0, $a0, $a3
 	srai.d	$a3, $a2, 63
 	andn	$a2, $a2, $a3
@@ -55408,11 +55381,11 @@ setup_tone_curves:                      # @setup_tone_curves
 	bge	$a0, $a2, .LBB220_1777
 # %bb.1780:                             # %.lr.ph315
                                         #   in Loop: Header=BB220_1779 Depth=4
-	slli.d	$a3, $s5, 2
-	fldx.s	$fa0, $s1, $a3
-	slt	$a3, $s3, $s0
+	slli.d	$a3, $s7, 2
+	fldx.s	$fa0, $s3, $a3
+	slt	$a3, $s4, $s0
 	masknez	$a4, $s0, $a3
-	maskeqz	$a3, $s3, $a3
+	maskeqz	$a3, $s4, $a3
 	or	$a3, $a3, $a4
 	bstrpick.d	$a1, $a1, 31, 0
 	slt	$a4, $a3, $a1
@@ -55422,9 +55395,8 @@ setup_tone_curves:                      # @setup_tone_curves
 	add.d	$a4, $a2, $a3
 	nor	$a1, $a0, $zero
 	add.w	$a1, $a2, $a1
-	sub.w	$s3, $a4, $a0
-	ori	$a0, $zero, 7
-	bgeu	$a1, $a0, .LBB220_1782
+	sub.w	$s4, $a4, $a0
+	bgeu	$a1, $s1, .LBB220_1782
 # %bb.1781:                             #   in Loop: Header=BB220_1779 Depth=4
 	move	$a0, $a3
 	b	.LBB220_1801
@@ -55556,7 +55528,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 2
-	sub.d	$a0, $s3, $a0
+	sub.d	$a0, $s4, $a0
 	b	.LBB220_1803
 	.p2align	4, , 16
 .LBB220_1802:                           #   in Loop: Header=BB220_1803 Depth=5
@@ -55578,25 +55550,25 @@ setup_tone_curves:                      # @setup_tone_curves
 	.p2align	4, , 16
 .LBB220_1805:                           # %.preheader
                                         #   in Loop: Header=BB220_1776 Depth=3
-	bge	$s3, $s0, .LBB220_1775
+	bge	$s4, $s0, .LBB220_1775
 # %bb.1806:                             # %.lr.ph321
                                         #   in Loop: Header=BB220_1776 Depth=3
-	fld.s	$fa0, $s1, 220
-	sub.d	$a1, $s0, $s3
-	move	$a0, $s3
+	fld.s	$fa0, $s3, 220
+	sub.d	$a1, $s0, $s4
+	move	$a0, $s4
 	ori	$a2, $zero, 8
 	bltu	$a1, $a2, .LBB220_1826
 # %bb.1807:                             # %vector.ph1099
                                         #   in Loop: Header=BB220_1776 Depth=3
 	move	$a2, $a1
 	bstrins.d	$a2, $zero, 2, 0
-	add.d	$a0, $a2, $s3
+	add.d	$a0, $a2, $s4
 	vreplvei.w	$vr1, $vr0, 0
 	lu12i.w	$a3, -8
 	ori	$a3, $a3, 96
 	add.d	$a3, $fp, $a3
 	ld.d	$a3, $a3, 0                     # 8-byte Folded Reload
-	alsl.d	$a3, $s3, $a3, 2
+	alsl.d	$a3, $s4, $a3, 2
 	move	$a4, $a2
 	b	.LBB220_1809
 	.p2align	4, , 16
@@ -55731,25 +55703,25 @@ setup_tone_curves:                      # @setup_tone_curves
 	.p2align	4, , 16
 .LBB220_1830:                           # %.preheader285
                                         #   in Loop: Header=BB220_1735 Depth=2
-	bge	$s1, $s0, .LBB220_1851
+	bge	$s3, $s0, .LBB220_1851
 # %bb.1831:                             # %.lr.ph338
                                         #   in Loop: Header=BB220_1735 Depth=2
-	fld.s	$fa0, $s3, 220
-	sub.d	$a1, $s0, $s1
-	move	$a0, $s1
+	fld.s	$fa0, $s4, 220
+	sub.d	$a1, $s0, $s3
+	move	$a0, $s3
 	ori	$a2, $zero, 8
 	bltu	$a1, $a2, .LBB220_1861
 # %bb.1832:                             # %vector.ph1041
                                         #   in Loop: Header=BB220_1735 Depth=2
 	move	$a2, $a1
 	bstrins.d	$a2, $zero, 2, 0
-	add.d	$a0, $a2, $s1
+	add.d	$a0, $a2, $s3
 	vreplvei.w	$vr1, $vr0, 0
 	lu12i.w	$a3, -8
 	ori	$a3, $a3, 96
 	add.d	$a3, $fp, $a3
 	ld.d	$a3, $a3, 0                     # 8-byte Folded Reload
-	alsl.d	$a3, $s1, $a3, 2
+	alsl.d	$a3, $s3, $a3, 2
 	move	$a4, $a2
 	b	.LBB220_1834
 	.p2align	4, , 16
@@ -55857,7 +55829,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	.p2align	4, , 16
 .LBB220_1851:                           # %.loopexit.preheader
                                         #   in Loop: Header=BB220_1735 Depth=2
-	move	$s3, $zero
+	move	$s4, $zero
 	lu12i.w	$a0, -8
 	ori	$a0, $a0, 48
 	add.d	$a0, $fp, $a0
@@ -55866,22 +55838,23 @@ setup_tone_curves:                      # @setup_tone_curves
 	ori	$a1, $a1, 72
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
-	alsl.d	$s1, $a1, $a0, 3
-	ori	$s4, $zero, 8
+	alsl.d	$s3, $a1, $a0, 3
+	ori	$s6, $zero, 8
+	ori	$s7, $zero, 232
+	lu12i.w	$s8, 280476
 	b	.LBB220_1853
 	.p2align	4, , 16
 .LBB220_1852:                           #   in Loop: Header=BB220_1853 Depth=3
-	ld.d	$a0, $s1, 0
-	fstx.s	$fa0, $a0, $s4
-	addi.d	$s4, $s4, 4
-	addi.w	$s3, $s3, 1
-	ori	$a0, $zero, 232
-	beq	$s4, $a0, .LBB220_1856
+	ld.d	$a0, $s3, 0
+	fstx.s	$fa0, $a0, $s6
+	addi.d	$s6, $s6, 4
+	addi.w	$s4, $s4, 1
+	beq	$s6, $s7, .LBB220_1856
 .LBB220_1853:                           # %.loopexit
                                         #   Parent Loop BB220_1731 Depth=1
                                         #     Parent Loop BB220_1735 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	bstrpick.d	$a0, $s3, 31, 0
+	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
 	vldi	$vr1, -960
@@ -55889,18 +55862,18 @@ setup_tone_curves:                      # @setup_tone_curves
 	fadd.d	$fa0, $fs1, $fa0
 	vldi	$vr1, -896
 	fadd.d	$fa0, $fa0, $fa1
-	fadd.d	$fa0, $fa0, $fs4
-	fmul.d	$fa0, $fa0, $fs5
+	fadd.d	$fa0, $fa0, $fs3
+	fmul.d	$fa0, $fa0, $fs4
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
 	fdiv.d	$fa0, $fa0, $fs2
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
-	fmov.s	$fa0, $fs0
+	fmov.s	$fa0, $fs7
 	bltz	$a0, .LBB220_1852
 # %bb.1854:                             # %.loopexit
                                         #   in Loop: Header=BB220_1853 Depth=3
-	fmov.s	$fa0, $fs0
+	fmov.s	$fa0, $fs7
 	bge	$a0, $s0, .LBB220_1852
 # %bb.1855:                             #   in Loop: Header=BB220_1853 Depth=3
 	slli.d	$a0, $a0, 2
@@ -55913,13 +55886,9 @@ setup_tone_curves:                      # @setup_tone_curves
 	.p2align	4, , 16
 .LBB220_1856:                           # %.preheader284
                                         #   in Loop: Header=BB220_1735 Depth=2
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s3, 0
 	fld.s	$fa0, $a0, 8
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 12
 	add.d	$a1, $fp, $a1
@@ -55928,11 +55897,11 @@ setup_tone_curves:                      # @setup_tone_curves
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 72
 	add.d	$a1, $fp, $a1
-	ld.d	$s3, $a1, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $a1, 0                     # 8-byte Folded Reload
 	bcnez	$fcc0, .LBB220_1892
 # %bb.1857:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 12
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1859
 # %bb.1858:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1168
@@ -55940,7 +55909,7 @@ setup_tone_curves:                      # @setup_tone_curves
 	.p2align	4, , 16
 .LBB220_1859:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 16
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1865
 # %bb.1860:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1280
@@ -55971,91 +55940,91 @@ setup_tone_curves:                      # @setup_tone_curves
 	b	.LBB220_1862
 .LBB220_1865:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 20
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1867
 # %bb.1866:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1272
 	b	.LBB220_1892
 .LBB220_1867:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 24
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1869
 # %bb.1868:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1264
 	b	.LBB220_1892
 .LBB220_1869:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 28
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1871
 # %bb.1870:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1260
 	b	.LBB220_1892
 .LBB220_1871:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 32
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1873
 # %bb.1872:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1256
 	b	.LBB220_1892
 .LBB220_1873:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 36
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1875
 # %bb.1874:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1252
 	b	.LBB220_1892
 .LBB220_1875:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 40
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1877
 # %bb.1876:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1248
 	b	.LBB220_1892
 .LBB220_1877:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 44
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1879
 # %bb.1878:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1246
 	b	.LBB220_1892
 .LBB220_1879:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 48
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1881
 # %bb.1880:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1244
 	b	.LBB220_1892
 .LBB220_1881:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 52
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1883
 # %bb.1882:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1242
 	b	.LBB220_1892
 .LBB220_1883:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 56
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1885
 # %bb.1884:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1240
 	b	.LBB220_1892
 .LBB220_1885:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 60
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1887
 # %bb.1886:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1238
 	b	.LBB220_1892
 .LBB220_1887:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 64
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1889
 # %bb.1888:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1236
 	b	.LBB220_1892
 .LBB220_1889:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 68
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	bceqz	$fcc0, .LBB220_1891
 # %bb.1890:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1234
@@ -56065,371 +56034,322 @@ setup_tone_curves:                      # @setup_tone_curves
 	.p2align	4, , 16
 .LBB220_1892:                           #   in Loop: Header=BB220_1735 Depth=2
 	fst.s	$fa0, $a0, 0
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s3, 0
 	fld.s	$fa0, $a0, 228
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4064
+	ori	$a1, $a1, 4072
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1893:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 224
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4028
+	ori	$a1, $a1, 4036
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1894:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 220
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3996
+	ori	$a1, $a1, 4012
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1895:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 216
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3992
+	ori	$a1, $a1, 4008
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1896:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 212
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3980
+	ori	$a1, $a1, 3996
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1897:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 208
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3940
+	ori	$a1, $a1, 3956
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1898:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 204
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3936
+	ori	$a1, $a1, 3952
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1899:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 200
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3932
+	ori	$a1, $a1, 3948
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1900:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 196
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3928
+	ori	$a1, $a1, 3944
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1901:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 192
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3924
+	ori	$a1, $a1, 3940
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1902:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 188
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3920
+	ori	$a1, $a1, 3936
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1903:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 184
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3916
+	ori	$a1, $a1, 3932
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1904:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 180
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3912
+	ori	$a1, $a1, 3928
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1905:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 176
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3908
+	ori	$a1, $a1, 3924
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1906:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 172
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3904
+	ori	$a1, $a1, 3920
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1907:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 168
-	fcmp.clt.s	$fcc0, $fa1, $fa0
+	fcmp.clt.s	$fcc0, $fs0, $fa0
 	lu12i.w	$a1, -9
-	ori	$a1, $a1, 3900
+	ori	$a1, $a1, 3916
 	add.d	$a1, $fp, $a1
 	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
                                         # kill: def $f0 killed $f0 def $vr0
 	bcnez	$fcc0, .LBB220_1734
 # %bb.1908:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 164
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bcnez	$fcc0, .LBB220_1732
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	lu12i.w	$a1, -9
+	ori	$a1, $a1, 3912
+	add.d	$a1, $fp, $a1
+	fld.s	$fa0, $a1, 0                    # 4-byte Folded Reload
+                                        # kill: def $f0 killed $f0 def $vr0
+	bcnez	$fcc0, .LBB220_1734
 # %bb.1909:                             #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 160
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1911
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bcnez	$fcc0, .LBB220_1732
 # %bb.1910:                             #   in Loop: Header=BB220_1735 Depth=2
-	lu12i.w	$a1, 270720
-	b	.LBB220_1733
-.LBB220_1911:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 156
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1913
-# %bb.1912:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1912
+# %bb.1911:                             #   in Loop: Header=BB220_1735 Depth=2
 	lu12i.w	$a1, 270656
 	b	.LBB220_1733
-.LBB220_1913:                           #   in Loop: Header=BB220_1735 Depth=2
+.LBB220_1912:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 152
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1915
-# %bb.1914:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1914
+# %bb.1913:                             #   in Loop: Header=BB220_1735 Depth=2
 	lu12i.w	$a1, 270592
 	b	.LBB220_1733
-.LBB220_1915:                           #   in Loop: Header=BB220_1735 Depth=2
+.LBB220_1914:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 148
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1917
-# %bb.1916:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1916
+# %bb.1915:                             #   in Loop: Header=BB220_1735 Depth=2
 	lu12i.w	$a1, 270528
 	b	.LBB220_1733
-.LBB220_1917:                           #   in Loop: Header=BB220_1735 Depth=2
+.LBB220_1916:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 144
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1919
-# %bb.1918:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1918
+# %bb.1917:                             #   in Loop: Header=BB220_1735 Depth=2
 	lu12i.w	$a1, 270464
 	b	.LBB220_1733
-.LBB220_1919:                           #   in Loop: Header=BB220_1735 Depth=2
+.LBB220_1918:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 140
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1921
-# %bb.1920:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1920
+# %bb.1919:                             #   in Loop: Header=BB220_1735 Depth=2
 	lu12i.w	$a1, 270400
 	b	.LBB220_1733
-.LBB220_1921:                           #   in Loop: Header=BB220_1735 Depth=2
+.LBB220_1920:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 136
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1923
-# %bb.1922:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1922
+# %bb.1921:                             #   in Loop: Header=BB220_1735 Depth=2
 	lu12i.w	$a1, 270336
 	b	.LBB220_1733
-.LBB220_1923:                           #   in Loop: Header=BB220_1735 Depth=2
+.LBB220_1922:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 132
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1925
-# %bb.1924:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1924
+# %bb.1923:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1217
-	b	.LBB220_1952
-.LBB220_1925:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1924:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 128
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1927
-# %bb.1926:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1926
+# %bb.1925:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1218
-	b	.LBB220_1952
-.LBB220_1927:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1926:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 124
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1929
-# %bb.1928:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1928
+# %bb.1927:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1219
-	b	.LBB220_1952
-.LBB220_1929:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1928:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 120
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1931
-# %bb.1930:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1930
+# %bb.1929:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1220
-	b	.LBB220_1952
-.LBB220_1931:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1930:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 116
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1933
-# %bb.1932:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1932
+# %bb.1931:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1221
-	b	.LBB220_1952
-.LBB220_1933:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1932:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 112
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1935
-# %bb.1934:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1934
+# %bb.1933:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1222
-	b	.LBB220_1952
-.LBB220_1935:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1934:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 108
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1937
-# %bb.1936:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1936
+# %bb.1935:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1223
-	b	.LBB220_1952
-.LBB220_1937:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1936:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 104
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1939
-# %bb.1938:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1938
+# %bb.1937:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1224
-	b	.LBB220_1952
-.LBB220_1939:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1938:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 100
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1941
-# %bb.1940:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1940
+# %bb.1939:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1225
-	b	.LBB220_1952
-.LBB220_1941:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1940:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 96
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1943
-# %bb.1942:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1942
+# %bb.1941:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1226
-	b	.LBB220_1952
-.LBB220_1943:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1942:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 92
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1945
-# %bb.1944:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1944
+# %bb.1943:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1227
-	b	.LBB220_1952
-.LBB220_1945:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1944:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 88
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1947
-# %bb.1946:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1946
+# %bb.1945:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1228
-	b	.LBB220_1952
-.LBB220_1947:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1946:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 84
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1949
-# %bb.1948:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1948
+# %bb.1947:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1229
-	b	.LBB220_1952
-.LBB220_1949:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1948:                           #   in Loop: Header=BB220_1735 Depth=2
 	fld.s	$fa0, $a0, 80
-	lu12i.w	$a1, -9
-	ori	$a1, $a1, 4072
-	add.d	$a1, $fp, $a1
-	fld.s	$fa1, $a1, 0                    # 4-byte Folded Reload
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	bceqz	$fcc0, .LBB220_1951
-# %bb.1950:                             #   in Loop: Header=BB220_1735 Depth=2
+	fcmp.clt.s	$fcc0, $fs0, $fa0
+	bceqz	$fcc0, .LBB220_1950
+# %bb.1949:                             #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1230
-	b	.LBB220_1952
-.LBB220_1951:                           #   in Loop: Header=BB220_1735 Depth=2
+	b	.LBB220_1951
+.LBB220_1950:                           #   in Loop: Header=BB220_1735 Depth=2
 	vldi	$vr0, -1231
-.LBB220_1952:                           #   in Loop: Header=BB220_1735 Depth=2
+.LBB220_1951:                           #   in Loop: Header=BB220_1735 Depth=2
+	lu12i.w	$s8, 280476
 	lu12i.w	$a1, -8
 	ori	$a1, $a1, 72
 	add.d	$a1, $fp, $a1
-	ld.d	$s3, $a1, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $a1, 0                     # 8-byte Folded Reload
 	b	.LBB220_1734
-.LBB220_1953:
+.LBB220_1952:
 	lu12i.w	$a0, -9
-	ori	$a0, $a0, 3952
+	ori	$a0, $a0, 3968
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	lu12i.w	$a1, 8
-	ori	$a1, $a1, 208
+	ori	$a1, $a1, 192
 	sub.d	$sp, $fp, $a1
 	lu12i.w	$a1, 7
-	ori	$a1, $a1, 2272
+	ori	$a1, $a1, 2256
 	add.d	$sp, $sp, $a1
 	fld.d	$fs7, $sp, 1880                 # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 1888                 # 8-byte Folded Reload
@@ -62348,56 +62268,41 @@ Laguerre_With_Deflation:                # @Laguerre_With_Deflation
 	slli.d	$s2, $a1, 3
 	alsl.d	$a0, $a1, $s1, 3
 	addi.d	$s3, $a0, -8
-	lu52i.d	$s4, $zero, 1107
-	lu12i.w	$a0, 256
-	lu52i.d	$a0, $a0, 1107
-	movgr2fr.d	$fa4, $a0
-	lu12i.w	$s5, 275200
 	pcalau12i	$a0, %pc_hi20(.LCPI249_1)
-	fld.d	$fa5, $a0, %pc_lo12(.LCPI249_1)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI249_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI249_2)
-	fld.d	$fs2, $a0, %pc_lo12(.LCPI249_2)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI249_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI249_0)
-	fld.d	$fa6, $a0, %pc_lo12(.LCPI249_0)
-	movgr2fr.d	$fs1, $zero
-	ori	$s7, $zero, 1
-	addi.w	$s6, $zero, -1
+	fld.d	$fs2, $a0, %pc_lo12(.LCPI249_0)
+	movgr2fr.d	$fs3, $zero
+	ori	$s5, $zero, 1
+	addi.w	$s4, $zero, -1
 .LBB249_10:                             # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB249_12 Depth 2
                                         #       Child Loop BB249_13 Depth 3
                                         #     Child Loop BB249_23 Depth 2
-	move	$s8, $a1
+	move	$s6, $a1
 	addi.d	$a1, $a1, -1
-	srli.d	$a0, $a1, 32
-	or	$a0, $a0, $s4
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fa4
-	move	$a0, $a1
-	bstrins.d	$a0, $s5, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fs6, $fa1, $fa0
-	srli.d	$a0, $s8, 32
-	or	$a0, $a0, $s4
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fa4
-	move	$a0, $s8
-	fldx.d	$fs7, $s1, $s2
-	bstrins.d	$a0, $s5, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fs0, $fa1, $fa0
-	fmov.d	$fs5, $fs1
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr4, $vr0, 0
+	fldx.d	$fs5, $s1, $s2
+	vinsgr2vr.d	$vr0, $s6, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr5, $vr0, 0
+	fmov.d	$fs4, $fs3
 	b	.LBB249_12
 	.p2align	4, , 16
 .LBB249_11:                             #   in Loop: Header=BB249_12 Depth=2
-	fdiv.d	$fa0, $fs3, $fa0
-	fsub.d	$fs5, $fs5, $fa0
+	fdiv.d	$fa0, $fs7, $fa0
+	fsub.d	$fs4, $fs4, $fa0
 	fneg.d	$fa1, $fa0
-	fcmp.clt.d	$fcc0, $fa0, $fs1
+	fcmp.clt.d	$fcc0, $fa0, $fs3
 	fsel	$fa0, $fa0, $fa1, $fcc0
-	fdiv.d	$fa0, $fa0, $fs5
+	fdiv.d	$fa0, $fa0, $fs4
 	fabs.d	$fa0, $fa0
-	fcmp.cule.d	$fcc0, $fs2, $fa0
+	fcmp.cule.d	$fcc0, $fs1, $fa0
 	bceqz	$fcc0, .LBB249_22
 .LBB249_12:                             # %.lr.ph107
                                         #   Parent Loop BB249_10 Depth=1
@@ -62405,32 +62310,32 @@ Laguerre_With_Deflation:                # @Laguerre_With_Deflation
                                         #       Child Loop BB249_13 Depth 3
 	move	$a0, $s3
 	move	$a3, $s0
-	fmov.d	$fa0, $fs1
-	fmov.d	$fs4, $fs1
-	fmov.d	$fa1, $fs7
+	fmov.d	$fa0, $fs3
+	fmov.d	$fs6, $fs3
+	fmov.d	$fa1, $fs5
 	.p2align	4, , 16
 .LBB249_13:                             #   Parent Loop BB249_10 Depth=1
                                         #     Parent Loop BB249_12 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	fmul.d	$fa0, $fs5, $fa0
-	fadd.d	$fa0, $fs4, $fa0
+	fmul.d	$fa0, $fs4, $fa0
+	fadd.d	$fa0, $fs6, $fa0
 	fld.d	$fa2, $a0, 0
-	fmul.d	$fa3, $fs5, $fs4
-	fadd.d	$fs4, $fa1, $fa3
-	fmul.d	$fa1, $fs5, $fa1
+	fmul.d	$fa3, $fs4, $fs6
+	fadd.d	$fs6, $fa1, $fa3
+	fmul.d	$fa1, $fs4, $fa1
 	fadd.d	$fa1, $fa1, $fa2
 	addi.w	$a3, $a3, -1
 	addi.d	$a0, $a0, -8
-	blt	$s7, $a3, .LBB249_13
+	blt	$s5, $a3, .LBB249_13
 # %bb.14:                               # %._crit_edge
                                         #   in Loop: Header=BB249_12 Depth=2
-	fmul.d	$fa2, $fs4, $fs6
-	fmul.d	$fa2, $fs4, $fa2
-	fmul.d	$fs3, $fa1, $fs0
-	fmul.d	$fa0, $fs3, $fa0
+	fmul.d	$fa2, $fs6, $fa4
+	fmul.d	$fa2, $fs6, $fa2
+	fmul.d	$fs7, $fa1, $fa5
+	fmul.d	$fa0, $fs7, $fa0
 	fsub.d	$fa0, $fa2, $fa0
-	fmul.d	$fa1, $fa0, $fs6
-	fcmp.clt.d	$fcc0, $fa1, $fs1
+	fmul.d	$fa1, $fa0, $fa4
+	fcmp.clt.d	$fcc0, $fa1, $fs3
 	bcnez	$fcc0, .LBB249_26
 # %bb.15:                               #   in Loop: Header=BB249_12 Depth=2
 	fsqrt.d	$fa0, $fa1
@@ -62438,44 +62343,43 @@ Laguerre_With_Deflation:                # @Laguerre_With_Deflation
 	bceqz	$fcc0, .LBB249_19
 # %bb.16:                               # %.split
                                         #   in Loop: Header=BB249_12 Depth=2
-	fcmp.cule.d	$fcc0, $fs4, $fs1
+	fcmp.cule.d	$fcc0, $fs6, $fs3
 	bcnez	$fcc0, .LBB249_20
 .LBB249_17:                             #   in Loop: Header=BB249_12 Depth=2
-	fadd.d	$fa0, $fs4, $fa0
-	fcmp.cule.d	$fcc0, $fa5, $fa0
+	fadd.d	$fa0, $fs6, $fa0
+	fcmp.cule.d	$fcc0, $fs0, $fa0
 	bcnez	$fcc0, .LBB249_11
 # %bb.18:                               #   in Loop: Header=BB249_12 Depth=2
-	fmov.d	$fa0, $fa5
+	fmov.d	$fa0, $fs0
 	b	.LBB249_11
 .LBB249_19:                             # %call.sqrt
                                         #   in Loop: Header=BB249_12 Depth=2
 	fmov.d	$fa0, $fa1
-	st.d	$a2, $fp, -168                  # 8-byte Folded Spill
-	fst.d	$fa4, $fp, -176                 # 8-byte Folded Spill
-	fst.d	$fa5, $fp, -184                 # 8-byte Folded Spill
-	fst.d	$fa6, $fp, -192                 # 8-byte Folded Spill
+	move	$s7, $a2
+	move	$s8, $a1
+	vst	$vr4, $fp, -176                 # 16-byte Folded Spill
+	vst	$vr5, $fp, -192                 # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	fld.d	$fa6, $fp, -192                 # 8-byte Folded Reload
-	fld.d	$fa5, $fp, -184                 # 8-byte Folded Reload
-	fld.d	$fa4, $fp, -176                 # 8-byte Folded Reload
-	addi.d	$a1, $s8, -1
-	ld.d	$a2, $fp, -168                  # 8-byte Folded Reload
-	fcmp.cule.d	$fcc0, $fs4, $fs1
+	vld	$vr5, $fp, -192                 # 16-byte Folded Reload
+	vld	$vr4, $fp, -176                 # 16-byte Folded Reload
+	move	$a1, $s8
+	move	$a2, $s7
+	fcmp.cule.d	$fcc0, $fs6, $fs3
 	bceqz	$fcc0, .LBB249_17
 	.p2align	4, , 16
 .LBB249_20:                             #   in Loop: Header=BB249_12 Depth=2
-	fsub.d	$fa0, $fs4, $fa0
-	fcmp.cule.d	$fcc0, $fa0, $fa6
+	fsub.d	$fa0, $fs6, $fa0
+	fcmp.cule.d	$fcc0, $fa0, $fs2
 	bcnez	$fcc0, .LBB249_11
 # %bb.21:                               #   in Loop: Header=BB249_12 Depth=2
-	fmov.d	$fa0, $fa6
+	fmov.d	$fa0, $fs2
 	b	.LBB249_11
 	.p2align	4, , 16
 .LBB249_22:                             # %.lr.ph112.preheader
                                         #   in Loop: Header=BB249_10 Depth=1
 	fldx.d	$fa0, $s1, $s2
-	fcvt.s.d	$fa1, $fs5
+	fcvt.s.d	$fa1, $fs4
 	slli.d	$a0, $a1, 2
 	fstx.s	$fa1, $a2, $a0
 	move	$a0, $s3
@@ -62485,23 +62389,23 @@ Laguerre_With_Deflation:                # @Laguerre_With_Deflation
                                         #   Parent Loop BB249_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa1, $a0, 0
-	fmul.d	$fa0, $fs5, $fa0
+	fmul.d	$fa0, $fs4, $fa0
 	fadd.d	$fa0, $fa1, $fa0
 	fst.d	$fa0, $a0, 0
 	addi.w	$a3, $a3, -1
 	addi.d	$a0, $a0, -8
-	blt	$s7, $a3, .LBB249_23
+	blt	$s5, $a3, .LBB249_23
 # %bb.24:                               # %._crit_edge113
                                         #   in Loop: Header=BB249_10 Depth=1
 	move	$a0, $zero
 	addi.d	$s0, $s0, -1
-	blt	$s7, $s8, .LBB249_10
+	blt	$s5, $s6, .LBB249_10
 	b	.LBB249_27
 .LBB249_25:
 	move	$a0, $zero
 	b	.LBB249_27
 .LBB249_26:
-	move	$a0, $s6
+	move	$a0, $s4
 .LBB249_27:                             # %.loopexit
 	addi.d	$sp, $fp, -192
 	fld.d	$fs7, $sp, 40                   # 8-byte Folded Reload

@@ -114,373 +114,332 @@ _Z13testTransposeIdLj3ELj3EEvv:         # @_Z13testTransposeIdLj3ELj3EEvv
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $a0, 52
 	div.du	$a0, $a1, $a0
-	ori	$a4, $zero, 1
-	sltu	$a1, $a4, $a0
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a4, $a1
+	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	movgr2fr.d	$fa2, $zero
-	vldi	$vr3, -912
+	movgr2fr.d	$fa1, $zero
+	vldi	$vr2, -912
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 423
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	lu52i.d	$a2, $zero, 1107
-	lu12i.w	$a3, 256
-	lu52i.d	$a3, $a3, 1107
-	movgr2fr.d	$fa0, $a3
-	lu12i.w	$a3, 275200
-	lu12i.w	$a6, -2048
-	lu52i.d	$a6, $a6, 1053
-	movgr2fr.d	$fa1, $a6
-	move	$a6, $a0
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	lu12i.w	$a4, -2048
+	lu52i.d	$a4, $a4, 1053
+	movgr2fr.d	$fa0, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_1:                                # %select.unfold.i.i.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa4, $t0
-	fsub.d	$fa4, $fa4, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa5, $a7
-	fadd.d	$fa4, $fa5, $fa4
-	fmadd.d	$fa2, $fa4, $fa3, $fa2
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa3, $fa3, $fa1
-	bnez	$a6, .LBB2_1
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr3, $a5, 0
+	vffint.d.lu	$vr3, $vr3
+	vreplvei.d	$vr3, $vr3, 0
+	fmadd.d	$fa1, $fa3, $fa2, $fa1
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa2, $fa2, $fa0
+	bnez	$a4, .LBB2_1
 # %bb.2:
-	fdiv.d	$fa2, $fa2, $fa3
-	vldi	$vr3, -912
-	fcmp.cult.d	$fcc0, $fa2, $fa3
+	fdiv.d	$fa1, $fa1, $fa2
+	vldi	$vr2, -912
+	fcmp.cult.d	$fcc0, $fa1, $fa2
 	bceqz	$fcc0, .LBB2_28
 .LBB2_3:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i
-	movgr2fr.d	$fa3, $zero
-	vldi	$vr4, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa2, $zero
+	vldi	$vr3, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_4:                                # %select.unfold.i.i.i.i.i.1
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa5, $t0
-	fsub.d	$fa5, $fa5, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa6, $a7
-	fadd.d	$fa5, $fa6, $fa5
-	fmadd.d	$fa3, $fa5, $fa4, $fa3
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa4, $fa4, $fa1
-	bnez	$a6, .LBB2_4
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr4, $a5, 0
+	vffint.d.lu	$vr4, $vr4
+	vreplvei.d	$vr4, $vr4, 0
+	fmadd.d	$fa2, $fa4, $fa3, $fa2
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa3, $fa3, $fa0
+	bnez	$a4, .LBB2_4
 # %bb.5:
-	fdiv.d	$fa3, $fa3, $fa4
-	vldi	$vr4, -912
-	fcmp.cult.d	$fcc0, $fa3, $fa4
+	fdiv.d	$fa2, $fa2, $fa3
+	vldi	$vr3, -912
+	fcmp.cult.d	$fcc0, $fa2, $fa3
 	bceqz	$fcc0, .LBB2_29
 .LBB2_6:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.1
-	movgr2fr.d	$fa4, $zero
-	vldi	$vr5, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa3, $zero
+	vldi	$vr4, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_7:                                # %select.unfold.i.i.i.i.i.2
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa6, $t0
-	fsub.d	$fa6, $fa6, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa7, $a7
-	fadd.d	$fa6, $fa7, $fa6
-	fmadd.d	$fa4, $fa6, $fa5, $fa4
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa5, $fa5, $fa1
-	bnez	$a6, .LBB2_7
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr5, $a5, 0
+	vffint.d.lu	$vr5, $vr5
+	vreplvei.d	$vr5, $vr5, 0
+	fmadd.d	$fa3, $fa5, $fa4, $fa3
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa4, $fa4, $fa0
+	bnez	$a4, .LBB2_7
 # %bb.8:
-	fdiv.d	$fa4, $fa4, $fa5
-	vldi	$vr5, -912
-	fcmp.cult.d	$fcc0, $fa4, $fa5
+	fdiv.d	$fa3, $fa3, $fa4
+	vldi	$vr4, -912
+	fcmp.cult.d	$fcc0, $fa3, $fa4
 	bceqz	$fcc0, .LBB2_30
 .LBB2_9:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.2
-	movgr2fr.d	$fa5, $zero
-	vldi	$vr6, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa4, $zero
+	vldi	$vr5, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_10:                               # %select.unfold.i.i.i.i.i.3
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa7, $t0
-	fsub.d	$fa7, $fa7, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft0, $a7
-	fadd.d	$fa7, $ft0, $fa7
-	fmadd.d	$fa5, $fa7, $fa6, $fa5
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa6, $fa6, $fa1
-	bnez	$a6, .LBB2_10
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr6, $a5, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
+	fmadd.d	$fa4, $fa6, $fa5, $fa4
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa5, $fa5, $fa0
+	bnez	$a4, .LBB2_10
 # %bb.11:
-	fdiv.d	$fa5, $fa5, $fa6
-	vldi	$vr6, -912
-	fcmp.cult.d	$fcc0, $fa5, $fa6
+	fdiv.d	$fa4, $fa4, $fa5
+	vldi	$vr5, -912
+	fcmp.cult.d	$fcc0, $fa4, $fa5
 	bceqz	$fcc0, .LBB2_31
 .LBB2_12:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.3
-	movgr2fr.d	$fa6, $zero
-	vldi	$vr7, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa5, $zero
+	vldi	$vr6, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_13:                               # %select.unfold.i.i.i.i.i.4
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft0, $t0
-	fsub.d	$ft0, $ft0, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft1, $a7
-	fadd.d	$ft0, $ft1, $ft0
-	fmadd.d	$fa6, $ft0, $fa7, $fa6
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa7, $fa7, $fa1
-	bnez	$a6, .LBB2_13
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr7, $a5, 0
+	vffint.d.lu	$vr7, $vr7
+	vreplvei.d	$vr7, $vr7, 0
+	fmadd.d	$fa5, $fa7, $fa6, $fa5
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa6, $fa6, $fa0
+	bnez	$a4, .LBB2_13
 # %bb.14:
-	fdiv.d	$fa6, $fa6, $fa7
-	vldi	$vr7, -912
-	fcmp.cult.d	$fcc0, $fa6, $fa7
+	fdiv.d	$fa5, $fa5, $fa6
+	vldi	$vr6, -912
+	fcmp.cult.d	$fcc0, $fa5, $fa6
 	bceqz	$fcc0, .LBB2_32
 .LBB2_15:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.4
-	movgr2fr.d	$fa7, $zero
-	vldi	$vr8, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa6, $zero
+	vldi	$vr7, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_16:                               # %select.unfold.i.i.i.i.i.5
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft1, $t0
-	fsub.d	$ft1, $ft1, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft2, $a7
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$fa7, $ft1, $ft0, $fa7
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft0, $ft0, $fa1
-	bnez	$a6, .LBB2_16
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr8, $a5, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa6, $ft0, $fa7, $fa6
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa7, $fa7, $fa0
+	bnez	$a4, .LBB2_16
 # %bb.17:
-	fdiv.d	$fa7, $fa7, $ft0
-	vldi	$vr8, -912
-	fcmp.cult.d	$fcc0, $fa7, $ft0
+	fdiv.d	$fa6, $fa6, $fa7
+	vldi	$vr7, -912
+	fcmp.cult.d	$fcc0, $fa6, $fa7
 	bceqz	$fcc0, .LBB2_33
 .LBB2_18:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.5
-	movgr2fr.d	$ft0, $zero
-	vldi	$vr9, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa7, $zero
+	vldi	$vr8, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_19:                               # %select.unfold.i.i.i.i.i.6
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft2, $t0
-	fsub.d	$ft2, $ft2, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft3, $a7
-	fadd.d	$ft2, $ft3, $ft2
-	fmadd.d	$ft0, $ft2, $ft1, $ft0
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft1, $ft1, $fa1
-	bnez	$a6, .LBB2_19
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr9, $a5, 0
+	vffint.d.lu	$vr9, $vr9
+	vreplvei.d	$vr9, $vr9, 0
+	fmadd.d	$fa7, $ft1, $ft0, $fa7
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft0, $ft0, $fa0
+	bnez	$a4, .LBB2_19
 # %bb.20:
-	fdiv.d	$ft0, $ft0, $ft1
-	vldi	$vr9, -912
-	fcmp.cult.d	$fcc0, $ft0, $ft1
+	fdiv.d	$fa7, $fa7, $ft0
+	vldi	$vr8, -912
+	fcmp.cult.d	$fcc0, $fa7, $ft0
 	bceqz	$fcc0, .LBB2_34
 .LBB2_21:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.6
-	movgr2fr.d	$ft1, $zero
-	vldi	$vr10, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft0, $zero
+	vldi	$vr9, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB2_22:                               # %select.unfold.i.i.i.i.i.7
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft3, $t0
-	fsub.d	$ft3, $ft3, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft4, $a7
-	fadd.d	$ft3, $ft4, $ft3
-	fmadd.d	$ft1, $ft3, $ft2, $ft1
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft2, $ft2, $fa1
-	bnez	$a6, .LBB2_22
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr10, $a5, 0
+	vffint.d.lu	$vr10, $vr10
+	vreplvei.d	$vr10, $vr10, 0
+	fmadd.d	$ft0, $ft2, $ft1, $ft0
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft1, $ft1, $fa0
+	bnez	$a4, .LBB2_22
 # %bb.23:
-	fdiv.d	$ft1, $ft1, $ft2
-	vldi	$vr10, -912
-	fcmp.cult.d	$fcc0, $ft1, $ft2
+	fdiv.d	$ft0, $ft0, $ft1
+	vldi	$vr9, -912
+	fcmp.cult.d	$fcc0, $ft0, $ft1
 	bceqz	$fcc0, .LBB2_35
 .LBB2_24:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.7
-	movgr2fr.d	$ft2, $zero
-	vldi	$vr11, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
+	movgr2fr.d	$ft1, $zero
+	vldi	$vr10, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
 	.p2align	4, , 16
 .LBB2_25:                               # %select.unfold.i.i.i.i.i.8
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a6, $a4, $a5
-	sub.d	$a7, $a4, $a6
-	srli.d	$a7, $a7, 1
-	add.d	$a6, $a7, $a6
-	srli.d	$a6, $a6, 30
-	slli.d	$a7, $a6, 31
-	sub.d	$a6, $a6, $a7
-	add.d	$a4, $a4, $a6
-	addi.d	$a6, $a4, -1
-	srli.d	$a7, $a6, 32
-	or	$a7, $a7, $a2
-	movgr2fr.d	$ft4, $a7
-	fsub.d	$ft4, $ft4, $fa0
-	bstrins.d	$a6, $a3, 63, 32
-	movgr2fr.d	$ft5, $a6
-	fadd.d	$ft4, $ft5, $ft4
-	fmadd.d	$ft2, $ft4, $ft3, $ft2
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a4, $a2, $a3
+	sub.d	$a5, $a2, $a4
+	srli.d	$a5, $a5, 1
+	add.d	$a4, $a5, $a4
+	srli.d	$a4, $a4, 30
+	slli.d	$a5, $a4, 31
+	sub.d	$a4, $a4, $a5
+	add.d	$a2, $a2, $a4
+	addi.d	$a4, $a2, -1
+	vinsgr2vr.d	$vr11, $a4, 0
+	vffint.d.lu	$vr11, $vr11
+	vreplvei.d	$vr11, $vr11, 0
+	fmadd.d	$ft1, $ft3, $ft2, $ft1
 	addi.d	$a0, $a0, -1
-	fmul.d	$ft3, $ft3, $fa1
+	fmul.d	$ft2, $ft2, $fa0
 	bnez	$a0, .LBB2_25
 # %bb.26:
-	fdiv.d	$fa0, $ft2, $ft3
-	vldi	$vr1, -912
-	fcmp.cult.d	$fcc0, $fa0, $fa1
+	fdiv.d	$fa0, $ft1, $ft2
+	vldi	$vr9, -912
+	fcmp.cult.d	$fcc0, $fa0, $ft1
 	bceqz	$fcc0, .LBB2_36
 .LBB2_27:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.8
-	vldi	$vr1, -860
+	vldi	$vr9, -860
 	vldi	$vr10, -972
-	fmadd.d	$ft0, $ft0, $ft2, $fa1
-	fmadd.d	$ft1, $ft1, $ft2, $fa1
-	fmadd.d	$fa5, $fa5, $ft2, $fa1
-	fmadd.d	$fa6, $fa6, $ft2, $fa1
-	fmadd.d	$fa7, $fa7, $ft2, $fa1
-	fmadd.d	$fa2, $fa2, $ft2, $fa1
-	fmadd.d	$fa3, $fa3, $ft2, $fa1
-	fmadd.d	$fa4, $fa4, $ft2, $fa1
-	fmadd.d	$fa0, $fa0, $ft2, $fa1
-	fst.d	$fa2, $sp, 160
-	fst.d	$fa5, $sp, 168
-	fst.d	$ft0, $sp, 176
-	fst.d	$fa3, $sp, 184
-	fst.d	$fa6, $sp, 192
-	fst.d	$ft1, $sp, 200
-	fst.d	$fa4, $sp, 208
-	fst.d	$fa7, $sp, 216
+	fmadd.d	$fa7, $fa7, $ft2, $ft1
+	fmadd.d	$ft0, $ft0, $ft2, $ft1
+	fmadd.d	$fa4, $fa4, $ft2, $ft1
+	fmadd.d	$fa5, $fa5, $ft2, $ft1
+	fmadd.d	$fa6, $fa6, $ft2, $ft1
+	fmadd.d	$fa1, $fa1, $ft2, $ft1
+	fmadd.d	$fa2, $fa2, $ft2, $ft1
+	fmadd.d	$fa3, $fa3, $ft2, $ft1
+	fmadd.d	$fa0, $fa0, $ft2, $ft1
+	fst.d	$fa1, $sp, 160
+	fst.d	$fa4, $sp, 168
+	fst.d	$fa7, $sp, 176
+	fst.d	$fa2, $sp, 184
+	fst.d	$fa5, $sp, 192
+	fst.d	$ft0, $sp, 200
+	fst.d	$fa3, $sp, 208
+	fst.d	$fa6, $sp, 216
 	fst.d	$fa0, $sp, 224
-	vextrins.d	$vr4, $vr7, 16
-	vextrins.d	$vr2, $vr5, 16
-	fst.d	$ft0, $sp, 32
-	vextrins.d	$vr8, $vr3, 16
 	vextrins.d	$vr3, $vr6, 16
-	vextrins.d	$vr6, $vr9, 16
-	vstelm.d	$vr8, $sp, 104, 0
-	vshuf4i.d	$vr8, $vr6, 9
-	vst	$vr2, $sp, 88
-	fst.d	$ft1, $sp, 128
-	vst	$vr8, $sp, 112
+	vextrins.d	$vr1, $vr4, 16
+	fst.d	$fa7, $sp, 32
+	vextrins.d	$vr7, $vr2, 16
+	vextrins.d	$vr2, $vr5, 16
+	vextrins.d	$vr5, $vr8, 16
+	vstelm.d	$vr7, $sp, 104, 0
+	vshuf4i.d	$vr7, $vr5, 9
+	vst	$vr1, $sp, 88
+	fst.d	$ft0, $sp, 128
+	vst	$vr7, $sp, 112
 	fst.d	$fa0, $sp, 152
-	vst	$vr4, $sp, 136
-	vst	$vr2, $sp, 16
-	fst.d	$ft1, $sp, 56
-	vst	$vr3, $sp, 40
+	vst	$vr3, $sp, 136
+	vst	$vr1, $sp, 16
+	fst.d	$ft0, $sp, 56
+	vst	$vr2, $sp, 40
 	fst.d	$fa0, $sp, 80
-	vst	$vr4, $sp, 64
+	vst	$vr3, $sp, 64
 	addi.d	$a0, $sp, 160
 	addi.d	$a1, $sp, 16
 	ori	$a2, $zero, 3
@@ -499,44 +458,44 @@ _Z13testTransposeIdLj3ELj3EEvv:         # @_Z13testTransposeIdLj3ELj3EEvv
 	addi.d	$sp, $sp, 256
 	ret
 .LBB2_28:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa2, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa1, $a3
 	b	.LBB2_3
 .LBB2_29:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa3, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa2, $a3
 	b	.LBB2_6
 .LBB2_30:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa4, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa3, $a3
 	b	.LBB2_9
 .LBB2_31:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa5, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa4, $a3
 	b	.LBB2_12
 .LBB2_32:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa6, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa5, $a3
 	b	.LBB2_15
 .LBB2_33:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa7, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa6, $a3
 	b	.LBB2_18
 .LBB2_34:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft0, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa7, $a3
 	b	.LBB2_21
 .LBB2_35:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft1, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft0, $a3
 	b	.LBB2_24
 .LBB2_36:
 	addi.w	$a0, $zero, -1
@@ -598,67 +557,58 @@ _Z13testTransposeIdLj3ELj10EEvv:        # @_Z13testTransposeIdLj3ELj10EEvv
 	ori	$a2, $a2, 423
 	ori	$a3, $zero, 5
 	lu32i.d	$a3, 2
-	lu52i.d	$a5, $zero, 1107
-	lu12i.w	$a6, 256
-	lu52i.d	$a6, $a6, 1107
-	movgr2fr.d	$fa1, $a6
-	lu12i.w	$a6, 275200
-	lu12i.w	$a7, -2048
-	lu52i.d	$a7, $a7, 1053
-	movgr2fr.d	$fa2, $a7
-	vldi	$vr3, -912
-	vldi	$vr4, -860
-	vldi	$vr5, -972
-	addi.d	$a7, $sp, 736
-	addi.w	$t0, $zero, -1
-	lu52i.d	$t0, $t0, 1022
-	movgr2fr.d	$fa6, $t0
-	ori	$t0, $zero, 30
+	lu12i.w	$a5, -2048
+	lu52i.d	$a5, $a5, 1053
+	movgr2fr.d	$fa1, $a5
+	vldi	$vr2, -912
+	vldi	$vr3, -860
+	vldi	$vr4, -972
+	addi.d	$a5, $sp, 736
+	addi.w	$a6, $zero, -1
+	lu52i.d	$a6, $a6, 1022
+	movgr2fr.d	$fa5, $a6
+	ori	$a6, $zero, 30
 	.p2align	4, , 16
 .LBB3_1:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_2 Depth 2
-	vldi	$vr7, -912
-	move	$t1, $a0
-	fmov.d	$ft0, $fa0
+	vldi	$vr6, -912
+	move	$a7, $a0
+	fmov.d	$fa7, $fa0
 	.p2align	4, , 16
 .LBB3_2:                                # %select.unfold.i.i.i.i.i
                                         #   Parent Loop BB3_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	mul.d	$a4, $a4, $a2
-	mulh.du	$t2, $a4, $a3
-	sub.d	$t3, $a4, $t2
-	srli.d	$t3, $t3, 1
-	add.d	$t2, $t3, $t2
-	srli.d	$t2, $t2, 30
-	slli.d	$t3, $t2, 31
-	sub.d	$t2, $t2, $t3
-	add.d	$a4, $a4, $t2
-	addi.d	$t2, $a4, -1
-	srli.d	$t3, $t2, 32
-	or	$t3, $t3, $a5
-	movgr2fr.d	$ft1, $t3
-	fsub.d	$ft1, $ft1, $fa1
-	bstrins.d	$t2, $a6, 63, 32
-	movgr2fr.d	$ft2, $t2
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$ft0, $ft1, $fa7, $ft0
-	addi.d	$t1, $t1, -1
-	fmul.d	$fa7, $fa7, $fa2
-	bnez	$t1, .LBB3_2
+	mulh.du	$t0, $a4, $a3
+	sub.d	$t1, $a4, $t0
+	srli.d	$t1, $t1, 1
+	add.d	$t0, $t1, $t0
+	srli.d	$t0, $t0, 30
+	slli.d	$t1, $t0, 31
+	sub.d	$t0, $t0, $t1
+	add.d	$a4, $a4, $t0
+	addi.d	$t0, $a4, -1
+	vinsgr2vr.d	$vr8, $t0, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa7, $ft0, $fa6, $fa7
+	addi.d	$a7, $a7, -1
+	fmul.d	$fa6, $fa6, $fa1
+	bnez	$a7, .LBB3_2
 # %bb.3:                                #   in Loop: Header=BB3_1 Depth=1
-	fdiv.d	$fa7, $ft0, $fa7
-	fcmp.cult.d	$fcc0, $fa7, $fa3
+	fdiv.d	$fa6, $fa7, $fa6
+	fcmp.cult.d	$fcc0, $fa6, $fa2
 	bceqz	$fcc0, .LBB3_5
 .LBB3_4:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i
                                         #   in Loop: Header=BB3_1 Depth=1
-	fmadd.d	$fa7, $fa7, $fa5, $fa4
-	slli.d	$t1, $a1, 3
+	fmadd.d	$fa6, $fa6, $fa4, $fa3
+	slli.d	$a7, $a1, 3
 	addi.d	$a1, $a1, 1
-	fstx.d	$fa7, $t1, $a7
-	bne	$a1, $t0, .LBB3_1
+	fstx.d	$fa6, $a7, $a5
+	bne	$a1, $a6, .LBB3_1
 	b	.LBB3_6
 .LBB3_5:                                #   in Loop: Header=BB3_1 Depth=1
-	fmov.d	$fa7, $fa6
+	fmov.d	$fa6, $fa5
 	b	.LBB3_4
 .LBB3_6:                                # %.preheader.us.i.preheader
 	fld.d	$fa0, $sp, 736
@@ -846,491 +796,438 @@ _Z13testTransposeIdLj4ELj3EEvv:         # @_Z13testTransposeIdLj4ELj3EEvv
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $a0, 52
 	div.du	$a0, $a1, $a0
-	ori	$a4, $zero, 1
-	sltu	$a1, $a4, $a0
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a4, $a1
+	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	movgr2fr.d	$fa2, $zero
-	vldi	$vr3, -912
+	movgr2fr.d	$fa1, $zero
+	vldi	$vr2, -912
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 423
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	lu52i.d	$a2, $zero, 1107
-	lu12i.w	$a3, 256
-	lu52i.d	$a3, $a3, 1107
-	movgr2fr.d	$fa0, $a3
-	lu12i.w	$a3, 275200
-	lu12i.w	$a6, -2048
-	lu52i.d	$a6, $a6, 1053
-	movgr2fr.d	$fa1, $a6
-	move	$a6, $a0
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	lu12i.w	$a4, -2048
+	lu52i.d	$a4, $a4, 1053
+	movgr2fr.d	$fa0, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_1:                                # %select.unfold.i.i.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa4, $t0
-	fsub.d	$fa4, $fa4, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa5, $a7
-	fadd.d	$fa4, $fa5, $fa4
-	fmadd.d	$fa2, $fa4, $fa3, $fa2
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa3, $fa3, $fa1
-	bnez	$a6, .LBB4_1
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr3, $a5, 0
+	vffint.d.lu	$vr3, $vr3
+	vreplvei.d	$vr3, $vr3, 0
+	fmadd.d	$fa1, $fa3, $fa2, $fa1
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa2, $fa2, $fa0
+	bnez	$a4, .LBB4_1
 # %bb.2:
-	fdiv.d	$fa2, $fa2, $fa3
-	vldi	$vr3, -912
-	fcmp.cult.d	$fcc0, $fa2, $fa3
+	fdiv.d	$fa1, $fa1, $fa2
+	vldi	$vr2, -912
+	fcmp.cult.d	$fcc0, $fa1, $fa2
 	bceqz	$fcc0, .LBB4_37
 .LBB4_3:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i
-	movgr2fr.d	$fa3, $zero
-	vldi	$vr4, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa2, $zero
+	vldi	$vr3, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_4:                                # %select.unfold.i.i.i.i.i.1
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa5, $t0
-	fsub.d	$fa5, $fa5, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa6, $a7
-	fadd.d	$fa5, $fa6, $fa5
-	fmadd.d	$fa3, $fa5, $fa4, $fa3
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa4, $fa4, $fa1
-	bnez	$a6, .LBB4_4
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr4, $a5, 0
+	vffint.d.lu	$vr4, $vr4
+	vreplvei.d	$vr4, $vr4, 0
+	fmadd.d	$fa2, $fa4, $fa3, $fa2
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa3, $fa3, $fa0
+	bnez	$a4, .LBB4_4
 # %bb.5:
-	fdiv.d	$fa3, $fa3, $fa4
-	vldi	$vr4, -912
-	fcmp.cult.d	$fcc0, $fa3, $fa4
+	fdiv.d	$fa2, $fa2, $fa3
+	vldi	$vr3, -912
+	fcmp.cult.d	$fcc0, $fa2, $fa3
 	bceqz	$fcc0, .LBB4_38
 .LBB4_6:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.1
-	movgr2fr.d	$fa4, $zero
-	vldi	$vr5, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa3, $zero
+	vldi	$vr4, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_7:                                # %select.unfold.i.i.i.i.i.2
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa6, $t0
-	fsub.d	$fa6, $fa6, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa7, $a7
-	fadd.d	$fa6, $fa7, $fa6
-	fmadd.d	$fa4, $fa6, $fa5, $fa4
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa5, $fa5, $fa1
-	bnez	$a6, .LBB4_7
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr5, $a5, 0
+	vffint.d.lu	$vr5, $vr5
+	vreplvei.d	$vr5, $vr5, 0
+	fmadd.d	$fa3, $fa5, $fa4, $fa3
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa4, $fa4, $fa0
+	bnez	$a4, .LBB4_7
 # %bb.8:
-	fdiv.d	$fa4, $fa4, $fa5
-	vldi	$vr5, -912
-	fcmp.cult.d	$fcc0, $fa4, $fa5
+	fdiv.d	$fa3, $fa3, $fa4
+	vldi	$vr4, -912
+	fcmp.cult.d	$fcc0, $fa3, $fa4
 	bceqz	$fcc0, .LBB4_39
 .LBB4_9:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.2
-	movgr2fr.d	$fa5, $zero
-	vldi	$vr6, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa4, $zero
+	vldi	$vr5, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_10:                               # %select.unfold.i.i.i.i.i.3
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa7, $t0
-	fsub.d	$fa7, $fa7, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft0, $a7
-	fadd.d	$fa7, $ft0, $fa7
-	fmadd.d	$fa5, $fa7, $fa6, $fa5
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa6, $fa6, $fa1
-	bnez	$a6, .LBB4_10
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr6, $a5, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
+	fmadd.d	$fa4, $fa6, $fa5, $fa4
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa5, $fa5, $fa0
+	bnez	$a4, .LBB4_10
 # %bb.11:
-	fdiv.d	$fa5, $fa5, $fa6
-	vldi	$vr6, -912
-	fcmp.cult.d	$fcc0, $fa5, $fa6
+	fdiv.d	$fa4, $fa4, $fa5
+	vldi	$vr5, -912
+	fcmp.cult.d	$fcc0, $fa4, $fa5
 	bceqz	$fcc0, .LBB4_40
 .LBB4_12:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.3
-	movgr2fr.d	$fa6, $zero
-	vldi	$vr7, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa5, $zero
+	vldi	$vr6, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_13:                               # %select.unfold.i.i.i.i.i.4
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft0, $t0
-	fsub.d	$ft0, $ft0, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft1, $a7
-	fadd.d	$ft0, $ft1, $ft0
-	fmadd.d	$fa6, $ft0, $fa7, $fa6
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa7, $fa7, $fa1
-	bnez	$a6, .LBB4_13
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr7, $a5, 0
+	vffint.d.lu	$vr7, $vr7
+	vreplvei.d	$vr7, $vr7, 0
+	fmadd.d	$fa5, $fa7, $fa6, $fa5
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa6, $fa6, $fa0
+	bnez	$a4, .LBB4_13
 # %bb.14:
-	fdiv.d	$fa6, $fa6, $fa7
-	vldi	$vr7, -912
-	fcmp.cult.d	$fcc0, $fa6, $fa7
+	fdiv.d	$fa5, $fa5, $fa6
+	vldi	$vr6, -912
+	fcmp.cult.d	$fcc0, $fa5, $fa6
 	bceqz	$fcc0, .LBB4_41
 .LBB4_15:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.4
-	movgr2fr.d	$fa7, $zero
-	vldi	$vr8, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa6, $zero
+	vldi	$vr7, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_16:                               # %select.unfold.i.i.i.i.i.5
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft1, $t0
-	fsub.d	$ft1, $ft1, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft2, $a7
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$fa7, $ft1, $ft0, $fa7
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft0, $ft0, $fa1
-	bnez	$a6, .LBB4_16
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr8, $a5, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa6, $ft0, $fa7, $fa6
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa7, $fa7, $fa0
+	bnez	$a4, .LBB4_16
 # %bb.17:
-	fdiv.d	$fa7, $fa7, $ft0
-	vldi	$vr8, -912
-	fcmp.cult.d	$fcc0, $fa7, $ft0
+	fdiv.d	$fa6, $fa6, $fa7
+	vldi	$vr7, -912
+	fcmp.cult.d	$fcc0, $fa6, $fa7
 	bceqz	$fcc0, .LBB4_42
 .LBB4_18:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.5
-	movgr2fr.d	$ft0, $zero
-	vldi	$vr9, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa7, $zero
+	vldi	$vr8, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_19:                               # %select.unfold.i.i.i.i.i.6
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft2, $t0
-	fsub.d	$ft2, $ft2, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft3, $a7
-	fadd.d	$ft2, $ft3, $ft2
-	fmadd.d	$ft0, $ft2, $ft1, $ft0
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft1, $ft1, $fa1
-	bnez	$a6, .LBB4_19
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr9, $a5, 0
+	vffint.d.lu	$vr9, $vr9
+	vreplvei.d	$vr9, $vr9, 0
+	fmadd.d	$fa7, $ft1, $ft0, $fa7
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft0, $ft0, $fa0
+	bnez	$a4, .LBB4_19
 # %bb.20:
-	fdiv.d	$ft0, $ft0, $ft1
-	vldi	$vr9, -912
-	fcmp.cult.d	$fcc0, $ft0, $ft1
+	fdiv.d	$fa7, $fa7, $ft0
+	vldi	$vr8, -912
+	fcmp.cult.d	$fcc0, $fa7, $ft0
 	bceqz	$fcc0, .LBB4_43
 .LBB4_21:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.6
-	movgr2fr.d	$ft1, $zero
-	vldi	$vr10, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft0, $zero
+	vldi	$vr9, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_22:                               # %select.unfold.i.i.i.i.i.7
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft3, $t0
-	fsub.d	$ft3, $ft3, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft4, $a7
-	fadd.d	$ft3, $ft4, $ft3
-	fmadd.d	$ft1, $ft3, $ft2, $ft1
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft2, $ft2, $fa1
-	bnez	$a6, .LBB4_22
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr10, $a5, 0
+	vffint.d.lu	$vr10, $vr10
+	vreplvei.d	$vr10, $vr10, 0
+	fmadd.d	$ft0, $ft2, $ft1, $ft0
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft1, $ft1, $fa0
+	bnez	$a4, .LBB4_22
 # %bb.23:
-	fdiv.d	$ft1, $ft1, $ft2
-	vldi	$vr10, -912
-	fcmp.cult.d	$fcc0, $ft1, $ft2
+	fdiv.d	$ft0, $ft0, $ft1
+	vldi	$vr9, -912
+	fcmp.cult.d	$fcc0, $ft0, $ft1
 	bceqz	$fcc0, .LBB4_44
 .LBB4_24:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.7
-	movgr2fr.d	$ft2, $zero
-	vldi	$vr11, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft1, $zero
+	vldi	$vr10, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_25:                               # %select.unfold.i.i.i.i.i.8
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft4, $t0
-	fsub.d	$ft4, $ft4, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft5, $a7
-	fadd.d	$ft4, $ft5, $ft4
-	fmadd.d	$ft2, $ft4, $ft3, $ft2
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft3, $ft3, $fa1
-	bnez	$a6, .LBB4_25
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr11, $a5, 0
+	vffint.d.lu	$vr11, $vr11
+	vreplvei.d	$vr11, $vr11, 0
+	fmadd.d	$ft1, $ft3, $ft2, $ft1
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft2, $ft2, $fa0
+	bnez	$a4, .LBB4_25
 # %bb.26:
-	fdiv.d	$ft2, $ft2, $ft3
-	vldi	$vr11, -912
-	fcmp.cult.d	$fcc0, $ft2, $ft3
+	fdiv.d	$ft1, $ft1, $ft2
+	vldi	$vr10, -912
+	fcmp.cult.d	$fcc0, $ft1, $ft2
 	bceqz	$fcc0, .LBB4_45
 .LBB4_27:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.8
-	movgr2fr.d	$ft3, $zero
-	vldi	$vr12, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft2, $zero
+	vldi	$vr11, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_28:                               # %select.unfold.i.i.i.i.i.9
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft5, $t0
-	fsub.d	$ft5, $ft5, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft6, $a7
-	fadd.d	$ft5, $ft6, $ft5
-	fmadd.d	$ft3, $ft5, $ft4, $ft3
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft4, $ft4, $fa1
-	bnez	$a6, .LBB4_28
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr12, $a5, 0
+	vffint.d.lu	$vr12, $vr12
+	vreplvei.d	$vr12, $vr12, 0
+	fmadd.d	$ft2, $ft4, $ft3, $ft2
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft3, $ft3, $fa0
+	bnez	$a4, .LBB4_28
 # %bb.29:
-	fdiv.d	$ft3, $ft3, $ft4
-	vldi	$vr12, -912
-	fcmp.cult.d	$fcc0, $ft3, $ft4
+	fdiv.d	$ft2, $ft2, $ft3
+	vldi	$vr11, -912
+	fcmp.cult.d	$fcc0, $ft2, $ft3
 	bceqz	$fcc0, .LBB4_46
 .LBB4_30:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.9
-	movgr2fr.d	$ft4, $zero
-	vldi	$vr13, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft3, $zero
+	vldi	$vr12, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB4_31:                               # %select.unfold.i.i.i.i.i.10
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft6, $t0
-	fsub.d	$ft6, $ft6, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft7, $a7
-	fadd.d	$ft6, $ft7, $ft6
-	fmadd.d	$ft4, $ft6, $ft5, $ft4
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft5, $ft5, $fa1
-	bnez	$a6, .LBB4_31
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr13, $a5, 0
+	vffint.d.lu	$vr13, $vr13
+	vreplvei.d	$vr13, $vr13, 0
+	fmadd.d	$ft3, $ft5, $ft4, $ft3
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft4, $ft4, $fa0
+	bnez	$a4, .LBB4_31
 # %bb.32:
-	fdiv.d	$ft5, $ft4, $ft5
-	vldi	$vr12, -912
-	fcmp.cult.d	$fcc0, $ft5, $ft4
+	fdiv.d	$ft4, $ft3, $ft4
+	vldi	$vr11, -912
+	fcmp.cult.d	$fcc0, $ft4, $ft3
 	bceqz	$fcc0, .LBB4_47
 .LBB4_33:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.10
-	movgr2fr.d	$ft4, $zero
-	vldi	$vr14, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
+	movgr2fr.d	$ft3, $zero
+	vldi	$vr13, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
 	.p2align	4, , 16
 .LBB4_34:                               # %select.unfold.i.i.i.i.i.11
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a6, $a4, $a5
-	sub.d	$a7, $a4, $a6
-	srli.d	$a7, $a7, 1
-	add.d	$a6, $a7, $a6
-	srli.d	$a6, $a6, 30
-	slli.d	$a7, $a6, 31
-	sub.d	$a6, $a6, $a7
-	add.d	$a4, $a4, $a6
-	addi.d	$a6, $a4, -1
-	srli.d	$a7, $a6, 32
-	or	$a7, $a7, $a2
-	movgr2fr.d	$ft7, $a7
-	fsub.d	$ft7, $ft7, $fa0
-	bstrins.d	$a6, $a3, 63, 32
-	movgr2fr.d	$ft8, $a6
-	fadd.d	$ft7, $ft8, $ft7
-	fmadd.d	$ft4, $ft7, $ft6, $ft4
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a4, $a2, $a3
+	sub.d	$a5, $a2, $a4
+	srli.d	$a5, $a5, 1
+	add.d	$a4, $a5, $a4
+	srli.d	$a4, $a4, 30
+	slli.d	$a5, $a4, 31
+	sub.d	$a4, $a4, $a5
+	add.d	$a2, $a2, $a4
+	addi.d	$a4, $a2, -1
+	vinsgr2vr.d	$vr14, $a4, 0
+	vffint.d.lu	$vr14, $vr14
+	vreplvei.d	$vr14, $vr14, 0
+	fmadd.d	$ft3, $ft6, $ft5, $ft3
 	addi.d	$a0, $a0, -1
-	fmul.d	$ft6, $ft6, $fa1
+	fmul.d	$ft5, $ft5, $fa0
 	bnez	$a0, .LBB4_34
 # %bb.35:
-	fdiv.d	$ft6, $ft4, $ft6
+	fdiv.d	$ft5, $ft3, $ft5
 	vldi	$vr0, -912
-	fcmp.cult.d	$fcc0, $ft6, $fa0
+	fcmp.cult.d	$fcc0, $ft5, $fa0
 	bceqz	$fcc0, .LBB4_48
 .LBB4_36:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.11
-	vldi	$vr15, -860
-	vldi	$vr16, -972
-	fmadd.d	$ft4, $ft2, $ft8, $ft7
-	fmadd.d	$fa0, $ft3, $ft8, $ft7
-	fmadd.d	$ft5, $ft5, $ft8, $ft7
-	fmadd.d	$ft2, $fa6, $ft8, $ft7
-	fmadd.d	$ft3, $fa7, $ft8, $ft7
-	fmadd.d	$fa7, $ft0, $ft8, $ft7
-	fmadd.d	$ft0, $ft1, $ft8, $ft7
-	fmadd.d	$fa6, $fa2, $ft8, $ft7
-	fmadd.d	$fa3, $fa3, $ft8, $ft7
-	fmadd.d	$fa2, $fa4, $ft8, $ft7
-	fmadd.d	$fa1, $fa5, $ft8, $ft7
-	fmadd.d	$fa4, $ft6, $ft8, $ft7
+	vldi	$vr14, -860
+	vldi	$vr15, -972
+	fmadd.d	$ft3, $ft1, $ft7, $ft6
+	fmadd.d	$fa0, $ft2, $ft7, $ft6
+	fmadd.d	$ft4, $ft4, $ft7, $ft6
+	fmadd.d	$ft1, $fa5, $ft7, $ft6
+	fmadd.d	$ft2, $fa6, $ft7, $ft6
+	fmadd.d	$fa7, $fa7, $ft7, $ft6
+	fmadd.d	$ft0, $ft0, $ft7, $ft6
+	fmadd.d	$fa6, $fa1, $ft7, $ft6
+	fmadd.d	$fa5, $fa2, $ft7, $ft6
+	fmadd.d	$fa2, $fa3, $ft7, $ft6
+	fmadd.d	$fa1, $fa4, $ft7, $ft6
+	fmadd.d	$fa3, $ft5, $ft7, $ft6
 	fst.d	$fa6, $sp, 200
-	fst.d	$ft2, $sp, 208
-	fst.d	$ft4, $sp, 216
-	fst.d	$fa3, $sp, 224
-	fst.d	$ft3, $sp, 232
+	fst.d	$ft1, $sp, 208
+	fst.d	$ft3, $sp, 216
+	fst.d	$fa5, $sp, 224
+	fst.d	$ft2, $sp, 232
 	fst.d	$fa0, $sp, 240
 	fst.d	$fa2, $sp, 248
 	fst.d	$fa7, $sp, 256
-	fst.d	$ft5, $sp, 264
+	fst.d	$ft4, $sp, 264
 	fst.d	$fa1, $sp, 272
 	fst.d	$ft0, $sp, 280
-	fst.d	$fa4, $sp, 288
-	fst.d	$ft5, $sp, 72
-	vextrins.d	$vr13, $vr1, 16
+	fst.d	$fa3, $sp, 288
+	fst.d	$ft4, $sp, 72
+	vextrins.d	$vr12, $vr1, 16
 	vextrins.d	$vr1, $vr8, 16
-	vextrins.d	$vr8, $vr4, 16
-	fst.d	$ft4, $sp, 24
-	vextrins.d	$vr12, $vr3, 16
-	vextrins.d	$vr3, $vr11, 16
-	vextrins.d	$vr11, $vr0, 16
-	vstelm.d	$vr12, $sp, 120, 0
-	vshuf4i.d	$vr12, $vr11, 9
-	vextrins.d	$vr6, $vr10, 16
+	vextrins.d	$vr8, $vr3, 16
+	fst.d	$ft3, $sp, 24
+	vextrins.d	$vr11, $vr5, 16
+	vextrins.d	$vr5, $vr10, 16
+	vextrins.d	$vr10, $vr0, 16
+	vstelm.d	$vr11, $sp, 120, 0
+	vshuf4i.d	$vr11, $vr10, 9
+	vextrins.d	$vr6, $vr9, 16
 	vst	$vr6, $sp, 104
 	fst.d	$fa0, $sp, 144
-	vst	$vr12, $sp, 128
-	vstelm.d	$vr13, $sp, 168, 0
-	vshuf4i.d	$vr13, $vr8, 9
+	vst	$vr11, $sp, 128
+	vstelm.d	$vr12, $sp, 168, 0
+	vshuf4i.d	$vr12, $vr8, 9
 	vextrins.d	$vr2, $vr7, 16
 	vst	$vr2, $sp, 152
-	fst.d	$fa4, $sp, 192
-	vst	$vr13, $sp, 176
+	fst.d	$fa3, $sp, 192
+	vst	$vr12, $sp, 176
 	vst	$vr6, $sp, 8
 	fst.d	$fa0, $sp, 48
-	vst	$vr3, $sp, 32
+	vst	$vr5, $sp, 32
 	vst	$vr2, $sp, 56
-	fst.d	$fa4, $sp, 96
+	fst.d	$fa3, $sp, 96
 	vst	$vr1, $sp, 80
 	addi.d	$a0, $sp, 200
 	addi.d	$a1, $sp, 8
@@ -1350,64 +1247,64 @@ _Z13testTransposeIdLj4ELj3EEvv:         # @_Z13testTransposeIdLj4ELj3EEvv
 	addi.d	$sp, $sp, 320
 	ret
 .LBB4_37:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa2, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa1, $a3
 	b	.LBB4_3
 .LBB4_38:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa3, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa2, $a3
 	b	.LBB4_6
 .LBB4_39:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa4, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa3, $a3
 	b	.LBB4_9
 .LBB4_40:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa5, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa4, $a3
 	b	.LBB4_12
 .LBB4_41:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa6, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa5, $a3
 	b	.LBB4_15
 .LBB4_42:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa7, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa6, $a3
 	b	.LBB4_18
 .LBB4_43:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft0, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa7, $a3
 	b	.LBB4_21
 .LBB4_44:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft1, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft0, $a3
 	b	.LBB4_24
 .LBB4_45:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft2, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft1, $a3
 	b	.LBB4_27
 .LBB4_46:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft3, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft2, $a3
 	b	.LBB4_30
 .LBB4_47:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft5, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft4, $a3
 	b	.LBB4_33
 .LBB4_48:
 	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 1022
-	movgr2fr.d	$ft6, $a0
+	movgr2fr.d	$ft5, $a0
 	b	.LBB4_36
 .Lfunc_end4:
 	.size	_Z13testTransposeIdLj4ELj3EEvv, .Lfunc_end4-_Z13testTransposeIdLj4ELj3EEvv
@@ -1535,17 +1432,10 @@ _Z13testTransposeIfLj31ELj17EEvv:       # @_Z13testTransposeIfLj31ELj17EEvv
 	sub.d	$a1, $a1, $a2
 	add.d	$s4, $a0, $a1
 	addi.d	$a0, $s4, -1
-	srli.d	$a1, $a0, 1
-	andi	$a2, $a0, 1
-	or	$a1, $a2, $a1
-	movgr2fr.d	$fa1, $a1
-	ffint.s.l	$fa1, $fa1
-	fadd.s	$fa1, $fa1, $fa1
-	slti	$a1, $a0, 0
-	movgr2fr.d	$fa2, $a0
-	ffint.s.l	$fa2, $fa2
-	movgr2cf	$fcc0, $a1
-	fsel	$fa1, $fa2, $fa1, $fcc0
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
+	fcvt.s.d	$fa1, $fa1
 	fmadd.s	$fs2, $fa1, $fa0, $fs2
                                         # kill: def $f0 killed $f0 killed $vr0
 	pcaddu18i	$ra, %call36(__extendsftf2)
@@ -5408,768 +5298,691 @@ _Z12testMultiplyIdLj3ELj3ELj3EEvv:      # @_Z12testMultiplyIdLj3ELj3ELj3EEvv
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $a0, 52
 	div.du	$a0, $a1, $a0
-	ori	$a4, $zero, 1
-	sltu	$a1, $a4, $a0
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a4, $a1
+	masknez	$a1, $a2, $a1
 	or	$a0, $a0, $a1
-	movgr2fr.d	$fa2, $zero
-	vldi	$vr3, -912
+	movgr2fr.d	$fa0, $zero
+	vldi	$vr2, -912
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 423
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	lu52i.d	$a2, $zero, 1107
-	lu12i.w	$a3, 256
-	lu52i.d	$a3, $a3, 1107
-	movgr2fr.d	$fa0, $a3
-	lu12i.w	$a3, 275200
-	lu12i.w	$a6, -2048
-	lu52i.d	$a6, $a6, 1053
-	movgr2fr.d	$fa1, $a6
-	move	$a6, $a0
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	lu12i.w	$a4, -2048
+	lu52i.d	$a4, $a4, 1053
+	movgr2fr.d	$fa1, $a4
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_1:                                # %select.unfold.i.i.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa4, $t0
-	fsub.d	$fa4, $fa4, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa5, $a7
-	fadd.d	$fa4, $fa5, $fa4
-	fmadd.d	$fa2, $fa4, $fa3, $fa2
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa3, $fa3, $fa1
-	bnez	$a6, .LBB7_1
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr3, $a5, 0
+	vffint.d.lu	$vr3, $vr3
+	vreplvei.d	$vr3, $vr3, 0
+	fmadd.d	$fa0, $fa3, $fa2, $fa0
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa2, $fa2, $fa1
+	bnez	$a4, .LBB7_1
 # %bb.2:
-	fdiv.d	$fa2, $fa2, $fa3
-	vldi	$vr3, -912
-	fcmp.cult.d	$fcc0, $fa2, $fa3
+	fdiv.d	$fa0, $fa0, $fa2
+	vldi	$vr2, -912
+	fcmp.cult.d	$fcc0, $fa0, $fa2
 	bceqz	$fcc0, .LBB7_55
 .LBB7_3:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i
-	movgr2fr.d	$fa3, $zero
-	vldi	$vr4, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa2, $zero
+	vldi	$vr3, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_4:                                # %select.unfold.i.i.i.i.i.1
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa5, $t0
-	fsub.d	$fa5, $fa5, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa6, $a7
-	fadd.d	$fa5, $fa6, $fa5
-	fmadd.d	$fa3, $fa5, $fa4, $fa3
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa4, $fa4, $fa1
-	bnez	$a6, .LBB7_4
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr4, $a5, 0
+	vffint.d.lu	$vr4, $vr4
+	vreplvei.d	$vr4, $vr4, 0
+	fmadd.d	$fa2, $fa4, $fa3, $fa2
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa3, $fa3, $fa1
+	bnez	$a4, .LBB7_4
 # %bb.5:
-	fdiv.d	$fa3, $fa3, $fa4
-	vldi	$vr4, -912
-	fcmp.cult.d	$fcc0, $fa3, $fa4
+	fdiv.d	$fa2, $fa2, $fa3
+	vldi	$vr3, -912
+	fcmp.cult.d	$fcc0, $fa2, $fa3
 	bceqz	$fcc0, .LBB7_56
 .LBB7_6:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.1
-	movgr2fr.d	$fa4, $zero
-	vldi	$vr5, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa3, $zero
+	vldi	$vr4, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_7:                                # %select.unfold.i.i.i.i.i.2
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa6, $t0
-	fsub.d	$fa6, $fa6, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$fa7, $a7
-	fadd.d	$fa6, $fa7, $fa6
-	fmadd.d	$fa4, $fa6, $fa5, $fa4
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa5, $fa5, $fa1
-	bnez	$a6, .LBB7_7
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr5, $a5, 0
+	vffint.d.lu	$vr5, $vr5
+	vreplvei.d	$vr5, $vr5, 0
+	fmadd.d	$fa3, $fa5, $fa4, $fa3
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa4, $fa4, $fa1
+	bnez	$a4, .LBB7_7
 # %bb.8:
-	fdiv.d	$fa4, $fa4, $fa5
-	vldi	$vr5, -912
-	fcmp.cult.d	$fcc0, $fa4, $fa5
+	fdiv.d	$fa3, $fa3, $fa4
+	vldi	$vr4, -912
+	fcmp.cult.d	$fcc0, $fa3, $fa4
 	bceqz	$fcc0, .LBB7_57
 .LBB7_9:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.2
-	movgr2fr.d	$fa5, $zero
-	vldi	$vr6, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa4, $zero
+	vldi	$vr5, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_10:                               # %select.unfold.i.i.i.i.i.3
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$fa7, $t0
-	fsub.d	$fa7, $fa7, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft0, $a7
-	fadd.d	$fa7, $ft0, $fa7
-	fmadd.d	$fa5, $fa7, $fa6, $fa5
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa6, $fa6, $fa1
-	bnez	$a6, .LBB7_10
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr6, $a5, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
+	fmadd.d	$fa4, $fa6, $fa5, $fa4
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa5, $fa5, $fa1
+	bnez	$a4, .LBB7_10
 # %bb.11:
-	fdiv.d	$fa5, $fa5, $fa6
-	vldi	$vr6, -912
-	fcmp.cult.d	$fcc0, $fa5, $fa6
+	fdiv.d	$fa4, $fa4, $fa5
+	vldi	$vr5, -912
+	fcmp.cult.d	$fcc0, $fa4, $fa5
 	bceqz	$fcc0, .LBB7_58
 .LBB7_12:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.3
-	movgr2fr.d	$fa6, $zero
-	vldi	$vr7, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa5, $zero
+	vldi	$vr6, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_13:                               # %select.unfold.i.i.i.i.i.4
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft0, $t0
-	fsub.d	$ft0, $ft0, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft1, $a7
-	fadd.d	$ft0, $ft1, $ft0
-	fmadd.d	$fa6, $ft0, $fa7, $fa6
-	addi.d	$a6, $a6, -1
-	fmul.d	$fa7, $fa7, $fa1
-	bnez	$a6, .LBB7_13
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr7, $a5, 0
+	vffint.d.lu	$vr7, $vr7
+	vreplvei.d	$vr7, $vr7, 0
+	fmadd.d	$fa5, $fa7, $fa6, $fa5
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa6, $fa6, $fa1
+	bnez	$a4, .LBB7_13
 # %bb.14:
-	fdiv.d	$fa6, $fa6, $fa7
-	vldi	$vr7, -912
-	fcmp.cult.d	$fcc0, $fa6, $fa7
+	fdiv.d	$fa5, $fa5, $fa6
+	vldi	$vr6, -912
+	fcmp.cult.d	$fcc0, $fa5, $fa6
 	bceqz	$fcc0, .LBB7_59
 .LBB7_15:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.4
-	movgr2fr.d	$fa7, $zero
-	vldi	$vr8, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa6, $zero
+	vldi	$vr7, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_16:                               # %select.unfold.i.i.i.i.i.5
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft1, $t0
-	fsub.d	$ft1, $ft1, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft2, $a7
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$fa7, $ft1, $ft0, $fa7
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft0, $ft0, $fa1
-	bnez	$a6, .LBB7_16
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr8, $a5, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa6, $ft0, $fa7, $fa6
+	addi.d	$a4, $a4, -1
+	fmul.d	$fa7, $fa7, $fa1
+	bnez	$a4, .LBB7_16
 # %bb.17:
-	fdiv.d	$fa7, $fa7, $ft0
-	vldi	$vr8, -912
-	fcmp.cult.d	$fcc0, $fa7, $ft0
+	fdiv.d	$fa6, $fa6, $fa7
+	vldi	$vr7, -912
+	fcmp.cult.d	$fcc0, $fa6, $fa7
 	bceqz	$fcc0, .LBB7_60
 .LBB7_18:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.5
-	movgr2fr.d	$ft0, $zero
-	vldi	$vr9, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$fa7, $zero
+	vldi	$vr8, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_19:                               # %select.unfold.i.i.i.i.i.6
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft2, $t0
-	fsub.d	$ft2, $ft2, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft3, $a7
-	fadd.d	$ft2, $ft3, $ft2
-	fmadd.d	$ft0, $ft2, $ft1, $ft0
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft1, $ft1, $fa1
-	bnez	$a6, .LBB7_19
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr9, $a5, 0
+	vffint.d.lu	$vr9, $vr9
+	vreplvei.d	$vr9, $vr9, 0
+	fmadd.d	$fa7, $ft1, $ft0, $fa7
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft0, $ft0, $fa1
+	bnez	$a4, .LBB7_19
 # %bb.20:
-	fdiv.d	$ft0, $ft0, $ft1
-	vldi	$vr9, -912
-	fcmp.cult.d	$fcc0, $ft0, $ft1
+	fdiv.d	$fa7, $fa7, $ft0
+	vldi	$vr8, -912
+	fcmp.cult.d	$fcc0, $fa7, $ft0
 	bceqz	$fcc0, .LBB7_61
 .LBB7_21:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.6
-	movgr2fr.d	$ft1, $zero
-	vldi	$vr10, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft0, $zero
+	vldi	$vr9, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_22:                               # %select.unfold.i.i.i.i.i.7
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft3, $t0
-	fsub.d	$ft3, $ft3, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft4, $a7
-	fadd.d	$ft3, $ft4, $ft3
-	fmadd.d	$ft1, $ft3, $ft2, $ft1
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft2, $ft2, $fa1
-	bnez	$a6, .LBB7_22
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr10, $a5, 0
+	vffint.d.lu	$vr10, $vr10
+	vreplvei.d	$vr10, $vr10, 0
+	fmadd.d	$ft0, $ft2, $ft1, $ft0
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft1, $ft1, $fa1
+	bnez	$a4, .LBB7_22
 # %bb.23:
-	fdiv.d	$ft1, $ft1, $ft2
-	vldi	$vr10, -912
-	fcmp.cult.d	$fcc0, $ft1, $ft2
+	fdiv.d	$ft0, $ft0, $ft1
+	vldi	$vr9, -912
+	fcmp.cult.d	$fcc0, $ft0, $ft1
 	bceqz	$fcc0, .LBB7_62
 .LBB7_24:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.7
-	movgr2fr.d	$ft2, $zero
-	vldi	$vr11, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft1, $zero
+	vldi	$vr10, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_25:                               # %select.unfold.i.i.i.i.i.8
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft4, $t0
-	fsub.d	$ft4, $ft4, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft5, $a7
-	fadd.d	$ft4, $ft5, $ft4
-	fmadd.d	$ft2, $ft4, $ft3, $ft2
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft3, $ft3, $fa1
-	bnez	$a6, .LBB7_25
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr11, $a5, 0
+	vffint.d.lu	$vr11, $vr11
+	vreplvei.d	$vr11, $vr11, 0
+	fmadd.d	$ft1, $ft3, $ft2, $ft1
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft2, $ft2, $fa1
+	bnez	$a4, .LBB7_25
 # %bb.26:
-	fdiv.d	$ft2, $ft2, $ft3
-	vldi	$vr11, -912
-	fcmp.cult.d	$fcc0, $ft2, $ft3
+	fdiv.d	$ft1, $ft1, $ft2
+	vldi	$vr10, -912
+	fcmp.cult.d	$fcc0, $ft1, $ft2
 	bceqz	$fcc0, .LBB7_63
 .LBB7_27:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i.8
-	ori	$a4, $zero, 1
-	movgr2fr.d	$ft3, $zero
-	vldi	$vr12, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	ori	$a2, $zero, 1
+	movgr2fr.d	$ft2, $zero
+	vldi	$vr11, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_28:                               # %select.unfold.i.i.i.i.i4
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft5, $t0
-	fsub.d	$ft5, $ft5, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft6, $a7
-	fadd.d	$ft5, $ft6, $ft5
-	fmadd.d	$ft3, $ft5, $ft4, $ft3
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft4, $ft4, $fa1
-	bnez	$a6, .LBB7_28
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr12, $a5, 0
+	vffint.d.lu	$vr12, $vr12
+	vreplvei.d	$vr12, $vr12, 0
+	fmadd.d	$ft2, $ft4, $ft3, $ft2
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft3, $ft3, $fa1
+	bnez	$a4, .LBB7_28
 # %bb.29:
-	fdiv.d	$ft3, $ft3, $ft4
-	vldi	$vr12, -912
-	fcmp.cult.d	$fcc0, $ft3, $ft4
+	fdiv.d	$ft2, $ft2, $ft3
+	vldi	$vr11, -912
+	fcmp.cult.d	$fcc0, $ft2, $ft3
 	bceqz	$fcc0, .LBB7_64
 .LBB7_30:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9
-	movgr2fr.d	$ft4, $zero
-	vldi	$vr13, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft3, $zero
+	vldi	$vr12, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_31:                               # %select.unfold.i.i.i.i.i4.1
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft6, $t0
-	fsub.d	$ft6, $ft6, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft7, $a7
-	fadd.d	$ft6, $ft7, $ft6
-	fmadd.d	$ft4, $ft6, $ft5, $ft4
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft5, $ft5, $fa1
-	bnez	$a6, .LBB7_31
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr13, $a5, 0
+	vffint.d.lu	$vr13, $vr13
+	vreplvei.d	$vr13, $vr13, 0
+	fmadd.d	$ft3, $ft5, $ft4, $ft3
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft4, $ft4, $fa1
+	bnez	$a4, .LBB7_31
 # %bb.32:
-	fdiv.d	$ft4, $ft4, $ft5
-	vldi	$vr13, -912
-	fcmp.cult.d	$fcc0, $ft4, $ft5
+	fdiv.d	$ft3, $ft3, $ft4
+	vldi	$vr12, -912
+	fcmp.cult.d	$fcc0, $ft3, $ft4
 	bceqz	$fcc0, .LBB7_65
 .LBB7_33:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.1
-	movgr2fr.d	$ft5, $zero
-	vldi	$vr14, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft4, $zero
+	vldi	$vr13, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_34:                               # %select.unfold.i.i.i.i.i4.2
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft7, $t0
-	fsub.d	$ft7, $ft7, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft8, $a7
-	fadd.d	$ft7, $ft8, $ft7
-	fmadd.d	$ft5, $ft7, $ft6, $ft5
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft6, $ft6, $fa1
-	bnez	$a6, .LBB7_34
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr14, $a5, 0
+	vffint.d.lu	$vr14, $vr14
+	vreplvei.d	$vr14, $vr14, 0
+	fmadd.d	$ft4, $ft6, $ft5, $ft4
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft5, $ft5, $fa1
+	bnez	$a4, .LBB7_34
 # %bb.35:
-	fdiv.d	$ft5, $ft5, $ft6
-	vldi	$vr14, -912
-	fcmp.cult.d	$fcc0, $ft5, $ft6
+	fdiv.d	$ft4, $ft4, $ft5
+	vldi	$vr13, -912
+	fcmp.cult.d	$fcc0, $ft4, $ft5
 	bceqz	$fcc0, .LBB7_66
 .LBB7_36:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.2
-	movgr2fr.d	$ft6, $zero
-	vldi	$vr15, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft5, $zero
+	vldi	$vr14, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_37:                               # %select.unfold.i.i.i.i.i4.3
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft8, $t0
-	fsub.d	$ft8, $ft8, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft9, $a7
-	fadd.d	$ft8, $ft9, $ft8
-	fmadd.d	$ft6, $ft8, $ft7, $ft6
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft7, $ft7, $fa1
-	bnez	$a6, .LBB7_37
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr15, $a5, 0
+	vffint.d.lu	$vr15, $vr15
+	vreplvei.d	$vr15, $vr15, 0
+	fmadd.d	$ft5, $ft7, $ft6, $ft5
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft6, $ft6, $fa1
+	bnez	$a4, .LBB7_37
 # %bb.38:
-	fdiv.d	$ft6, $ft6, $ft7
-	vldi	$vr15, -912
-	fcmp.cult.d	$fcc0, $ft6, $ft7
+	fdiv.d	$ft5, $ft5, $ft6
+	vldi	$vr14, -912
+	fcmp.cult.d	$fcc0, $ft5, $ft6
 	bceqz	$fcc0, .LBB7_67
 .LBB7_39:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.3
-	movgr2fr.d	$ft7, $zero
-	vldi	$vr16, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft6, $zero
+	vldi	$vr15, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_40:                               # %select.unfold.i.i.i.i.i4.4
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft9, $t0
-	fsub.d	$ft9, $ft9, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft10, $a7
-	fadd.d	$ft9, $ft10, $ft9
-	fmadd.d	$ft7, $ft9, $ft8, $ft7
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft8, $ft8, $fa1
-	bnez	$a6, .LBB7_40
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr16, $a5, 0
+	vffint.d.lu	$vr16, $vr16
+	vreplvei.d	$vr16, $vr16, 0
+	fmadd.d	$ft6, $ft8, $ft7, $ft6
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft7, $ft7, $fa1
+	bnez	$a4, .LBB7_40
 # %bb.41:
-	fdiv.d	$ft7, $ft7, $ft8
-	vldi	$vr16, -912
-	fcmp.cult.d	$fcc0, $ft7, $ft8
+	fdiv.d	$ft6, $ft6, $ft7
+	vldi	$vr15, -912
+	fcmp.cult.d	$fcc0, $ft6, $ft7
 	bceqz	$fcc0, .LBB7_68
 .LBB7_42:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.4
-	movgr2fr.d	$ft8, $zero
-	vldi	$vr17, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft7, $zero
+	vldi	$vr16, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_43:                               # %select.unfold.i.i.i.i.i4.5
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft10, $t0
-	fsub.d	$ft10, $ft10, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft11, $a7
-	fadd.d	$ft10, $ft11, $ft10
-	fmadd.d	$ft8, $ft10, $ft9, $ft8
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft9, $ft9, $fa1
-	bnez	$a6, .LBB7_43
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr17, $a5, 0
+	vffint.d.lu	$vr17, $vr17
+	vreplvei.d	$vr17, $vr17, 0
+	fmadd.d	$ft7, $ft9, $ft8, $ft7
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft8, $ft8, $fa1
+	bnez	$a4, .LBB7_43
 # %bb.44:
-	fdiv.d	$ft8, $ft8, $ft9
-	vldi	$vr17, -912
-	fcmp.cult.d	$fcc0, $ft8, $ft9
+	fdiv.d	$ft7, $ft7, $ft8
+	vldi	$vr16, -912
+	fcmp.cult.d	$fcc0, $ft7, $ft8
 	bceqz	$fcc0, .LBB7_69
 .LBB7_45:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.5
-	movgr2fr.d	$ft9, $zero
-	vldi	$vr18, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft8, $zero
+	vldi	$vr17, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_46:                               # %select.unfold.i.i.i.i.i4.6
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft11, $t0
-	fsub.d	$ft11, $ft11, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft12, $a7
-	fadd.d	$ft11, $ft12, $ft11
-	fmadd.d	$ft9, $ft11, $ft10, $ft9
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft10, $ft10, $fa1
-	bnez	$a6, .LBB7_46
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr18, $a5, 0
+	vffint.d.lu	$vr18, $vr18
+	vreplvei.d	$vr18, $vr18, 0
+	fmadd.d	$ft8, $ft10, $ft9, $ft8
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft9, $ft9, $fa1
+	bnez	$a4, .LBB7_46
 # %bb.47:
-	fdiv.d	$ft9, $ft9, $ft10
-	vldi	$vr18, -912
-	fcmp.cult.d	$fcc0, $ft9, $ft10
+	fdiv.d	$ft8, $ft8, $ft9
+	vldi	$vr17, -912
+	fcmp.cult.d	$fcc0, $ft8, $ft9
 	bceqz	$fcc0, .LBB7_70
 .LBB7_48:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.6
-	movgr2fr.d	$ft10, $zero
-	vldi	$vr19, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
-	move	$a6, $a0
+	movgr2fr.d	$ft9, $zero
+	vldi	$vr18, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB7_49:                               # %select.unfold.i.i.i.i.i4.7
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a7, $a4, $a5
-	sub.d	$t0, $a4, $a7
-	srli.d	$t0, $t0, 1
-	add.d	$a7, $t0, $a7
-	srli.d	$a7, $a7, 30
-	slli.d	$t0, $a7, 31
-	sub.d	$a7, $a7, $t0
-	add.d	$a4, $a4, $a7
-	addi.d	$a7, $a4, -1
-	srli.d	$t0, $a7, 32
-	or	$t0, $t0, $a2
-	movgr2fr.d	$ft12, $t0
-	fsub.d	$ft12, $ft12, $fa0
-	bstrins.d	$a7, $a3, 63, 32
-	movgr2fr.d	$ft13, $a7
-	fadd.d	$ft12, $ft13, $ft12
-	fmadd.d	$ft10, $ft12, $ft11, $ft10
-	addi.d	$a6, $a6, -1
-	fmul.d	$ft11, $ft11, $fa1
-	bnez	$a6, .LBB7_49
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a5, $a2, $a3
+	sub.d	$a6, $a2, $a5
+	srli.d	$a6, $a6, 1
+	add.d	$a5, $a6, $a5
+	srli.d	$a5, $a5, 30
+	slli.d	$a6, $a5, 31
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a2, $a5
+	addi.d	$a5, $a2, -1
+	vinsgr2vr.d	$vr19, $a5, 0
+	vffint.d.lu	$vr19, $vr19
+	vreplvei.d	$vr19, $vr19, 0
+	fmadd.d	$ft9, $ft11, $ft10, $ft9
+	addi.d	$a4, $a4, -1
+	fmul.d	$ft10, $ft10, $fa1
+	bnez	$a4, .LBB7_49
 # %bb.50:
-	fdiv.d	$ft10, $ft10, $ft11
-	vldi	$vr19, -912
-	fcmp.cult.d	$fcc0, $ft10, $ft11
+	fdiv.d	$ft9, $ft9, $ft10
+	vldi	$vr18, -912
+	fcmp.cult.d	$fcc0, $ft9, $ft10
 	bceqz	$fcc0, .LBB7_71
 .LBB7_51:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.7
-	movgr2fr.d	$ft11, $zero
-	vldi	$vr20, -912
-	ori	$a5, $zero, 5
-	lu32i.d	$a5, 2
+	movgr2fr.d	$ft10, $zero
+	vldi	$vr19, -912
+	ori	$a3, $zero, 5
+	lu32i.d	$a3, 2
 	.p2align	4, , 16
 .LBB7_52:                               # %select.unfold.i.i.i.i.i4.8
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a4, $a4, $a1
-	mulh.du	$a6, $a4, $a5
-	sub.d	$a7, $a4, $a6
-	srli.d	$a7, $a7, 1
-	add.d	$a6, $a7, $a6
-	srli.d	$a6, $a6, 30
-	slli.d	$a7, $a6, 31
-	sub.d	$a6, $a6, $a7
-	add.d	$a4, $a4, $a6
-	addi.d	$a6, $a4, -1
-	srli.d	$a7, $a6, 32
-	or	$a7, $a7, $a2
-	movgr2fr.d	$ft13, $a7
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a6, $a3, 63, 32
-	movgr2fr.d	$ft14, $a6
-	fadd.d	$ft13, $ft14, $ft13
-	fmadd.d	$ft11, $ft13, $ft12, $ft11
+	mul.d	$a2, $a2, $a1
+	mulh.du	$a4, $a2, $a3
+	sub.d	$a5, $a2, $a4
+	srli.d	$a5, $a5, 1
+	add.d	$a4, $a5, $a4
+	srli.d	$a4, $a4, 30
+	slli.d	$a5, $a4, 31
+	sub.d	$a4, $a4, $a5
+	add.d	$a2, $a2, $a4
+	addi.d	$a4, $a2, -1
+	vinsgr2vr.d	$vr20, $a4, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmadd.d	$ft10, $ft12, $ft11, $ft10
 	addi.d	$a0, $a0, -1
-	fmul.d	$ft12, $ft12, $fa1
+	fmul.d	$ft11, $ft11, $fa1
 	bnez	$a0, .LBB7_52
 # %bb.53:
-	fdiv.d	$ft11, $ft11, $ft12
-	vldi	$vr0, -912
-	fcmp.cult.d	$fcc0, $ft11, $fa0
+	fdiv.d	$ft10, $ft10, $ft11
+	vldi	$vr1, -912
+	fcmp.cult.d	$fcc0, $ft10, $fa1
 	bceqz	$fcc0, .LBB7_72
 .LBB7_54:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9.8
-	vldi	$vr20, -860
-	vldi	$vr21, -972
-	fmadd.d	$fa1, $ft9, $ft13, $ft12
-	fmadd.d	$fa0, $ft10, $ft13, $ft12
-	fmadd.d	$ft9, $ft6, $ft13, $ft12
-	fmadd.d	$ft7, $ft7, $ft13, $ft12
-	fmadd.d	$ft6, $ft8, $ft13, $ft12
-	fmadd.d	$ft8, $ft3, $ft13, $ft12
-	fmadd.d	$ft4, $ft4, $ft13, $ft12
-	fmadd.d	$ft3, $ft5, $ft13, $ft12
-	fmadd.d	$ft5, $ft0, $ft13, $ft12
-	fmadd.d	$ft1, $ft1, $ft13, $ft12
-	fmadd.d	$ft0, $ft2, $ft13, $ft12
-	fmadd.d	$ft2, $fa5, $ft13, $ft12
-	fmadd.d	$ft10, $fa2, $ft13, $ft12
-	fmadd.d	$fa2, $ft11, $ft13, $ft12
-	movgr2fr.d	$ft11, $zero
-	fmadd.d	$fa5, $ft10, $ft8, $ft11
-	fmadd.d	$fa5, $ft2, $ft4, $fa5
-	fmadd.d	$ft14, $ft5, $ft3, $fa5
-	fmadd.d	$fa5, $ft10, $ft9, $ft11
-	fmadd.d	$fa5, $ft2, $ft7, $fa5
-	fmadd.d	$ft15, $ft5, $ft6, $fa5
-	fmadd.d	$fa5, $ft10, $fa1, $ft11
-	fmadd.d	$fa5, $ft2, $fa0, $fa5
-	fmadd.d	$fs0, $ft5, $fa2, $fa5
-	vori.b	$vr5, $vr13, 0
-	vextrins.d	$vr5, $vr9, 16
-	fmadd.d	$ft5, $fa6, $ft13, $ft12
-	fmadd.d	$fa6, $fa7, $ft13, $ft12
-	vori.b	$vr7, $vr10, 0
-	vextrins.d	$vr7, $vr13, 16
-	fmadd.d	$ft2, $fa3, $ft13, $ft12
-	fmadd.d	$fa3, $fa4, $ft13, $ft12
-	vori.b	$vr4, $vr18, 0
-	vextrins.d	$vr4, $vr10, 16
+	vldi	$vr19, -860
+	vldi	$vr20, -972
+	fmadd.d	$ft8, $ft8, $ft12, $ft11
+	fmadd.d	$fa1, $ft9, $ft12, $ft11
+	fmadd.d	$ft9, $ft5, $ft12, $ft11
+	fmadd.d	$ft6, $ft6, $ft12, $ft11
+	fmadd.d	$ft5, $ft7, $ft12, $ft11
+	fmadd.d	$ft7, $ft2, $ft12, $ft11
+	fmadd.d	$ft3, $ft3, $ft12, $ft11
+	fmadd.d	$ft2, $ft4, $ft12, $ft11
+	fmadd.d	$ft4, $fa7, $ft12, $ft11
+	fmadd.d	$ft0, $ft0, $ft12, $ft11
+	fmadd.d	$fa7, $ft1, $ft12, $ft11
+	fmadd.d	$ft1, $fa4, $ft12, $ft11
+	fmadd.d	$ft13, $fa0, $ft12, $ft11
+	fmadd.d	$fa0, $ft10, $ft12, $ft11
+	movgr2fr.d	$ft10, $zero
+	fmadd.d	$fa4, $ft13, $ft7, $ft10
+	fmadd.d	$fa4, $ft1, $ft3, $fa4
+	fmadd.d	$ft14, $ft4, $ft2, $fa4
+	fmadd.d	$fa4, $ft13, $ft9, $ft10
+	fmadd.d	$fa4, $ft1, $ft6, $fa4
+	fmadd.d	$ft15, $ft4, $ft5, $fa4
+	fmadd.d	$fa4, $ft13, $ft8, $ft10
+	fmadd.d	$fa4, $ft1, $fa1, $fa4
+	fmadd.d	$fs0, $ft4, $fa0, $fa4
+	vori.b	$vr4, $vr12, 0
+	vextrins.d	$vr4, $vr8, 16
+	fmadd.d	$ft4, $fa5, $ft12, $ft11
+	fmadd.d	$fa5, $fa6, $ft12, $ft11
+	vori.b	$vr6, $vr9, 0
+	vextrins.d	$vr6, $vr12, 16
+	fmadd.d	$ft1, $fa2, $ft12, $ft11
+	fmadd.d	$fa2, $fa3, $ft12, $ft11
+	vori.b	$vr3, $vr21, 0
+	vextrins.d	$vr3, $vr9, 16
 	fst.d	$ft14, $sp, 152
 	fst.d	$ft15, $sp, 176
 	fst.d	$fs0, $sp, 200
-	fmadd.d	$ft10, $ft2, $ft8, $ft11
-	fmadd.d	$ft10, $ft5, $ft4, $ft10
-	fmadd.d	$ft10, $ft1, $ft3, $ft10
-	fst.d	$ft10, $sp, 160
-	fmadd.d	$ft12, $ft2, $ft9, $ft11
-	fmadd.d	$ft12, $ft5, $ft7, $ft12
-	fmadd.d	$ft12, $ft1, $ft6, $ft12
+	fmadd.d	$ft11, $ft1, $ft7, $ft10
+	fmadd.d	$ft11, $ft4, $ft3, $ft11
+	fmadd.d	$ft11, $ft0, $ft2, $ft11
+	fst.d	$ft11, $sp, 160
+	fmadd.d	$ft12, $ft1, $ft9, $ft10
+	fmadd.d	$ft12, $ft4, $ft6, $ft12
+	fmadd.d	$ft12, $ft0, $ft5, $ft12
 	fst.d	$ft12, $sp, 184
-	fmadd.d	$ft2, $ft2, $fa1, $ft11
-	fmadd.d	$ft2, $ft5, $fa0, $ft2
-	fmadd.d	$ft1, $ft1, $fa2, $ft2
-	fst.d	$ft1, $sp, 208
-	fmadd.d	$ft2, $fa3, $ft8, $ft11
-	fmadd.d	$ft2, $fa6, $ft4, $ft2
-	fmadd.d	$ft2, $ft0, $ft3, $ft2
-	fst.d	$ft2, $sp, 168
-	fmadd.d	$ft5, $fa3, $ft9, $ft11
-	fmadd.d	$ft5, $fa6, $ft7, $ft5
-	fmadd.d	$ft5, $ft0, $ft6, $ft5
-	fst.d	$ft5, $sp, 192
-	fmadd.d	$ft11, $fa3, $fa1, $ft11
-	fmadd.d	$ft11, $fa6, $fa0, $ft11
-	fmadd.d	$ft11, $ft0, $fa2, $ft11
-	fst.d	$ft11, $sp, 216
-	vextrins.d	$vr22, $vr18, 16
+	fmadd.d	$ft1, $ft1, $ft8, $ft10
+	fmadd.d	$ft1, $ft4, $fa1, $ft1
+	fmadd.d	$ft0, $ft0, $fa0, $ft1
+	fst.d	$ft0, $sp, 208
+	fmadd.d	$ft1, $fa2, $ft7, $ft10
+	fmadd.d	$ft1, $fa5, $ft3, $ft1
+	fmadd.d	$ft1, $fa7, $ft2, $ft1
+	fst.d	$ft1, $sp, 168
+	fmadd.d	$ft4, $fa2, $ft9, $ft10
+	fmadd.d	$ft4, $fa5, $ft6, $ft4
+	fmadd.d	$ft4, $fa7, $ft5, $ft4
+	fst.d	$ft4, $sp, 192
+	fmadd.d	$ft10, $fa2, $ft8, $ft10
+	fmadd.d	$ft10, $fa5, $fa1, $ft10
+	fmadd.d	$ft10, $fa7, $fa0, $ft10
+	fst.d	$ft10, $sp, 216
+	vextrins.d	$vr22, $vr19, 16
 	vextrins.d	$vr23, $vr20, 16
-	vextrins.d	$vr24, $vr9, 16
-	fst.d	$ft2, $sp, 96
+	vextrins.d	$vr24, $vr8, 16
+	fst.d	$ft1, $sp, 96
 	vst	$vr22, $sp, 80
-	fst.d	$ft5, $sp, 120
+	fst.d	$ft4, $sp, 120
 	vst	$vr23, $sp, 104
-	fst.d	$ft11, $sp, 144
+	fst.d	$ft10, $sp, 144
 	vst	$vr24, $sp, 128
-	vreplvei.d	$vr9, $vr16, 0
-	vfmul.d	$vr9, $vr4, $vr9
-	fmul.d	$ft2, $fa3, $ft8
-	vreplvei.d	$vr13, $vr12, 0
-	vfmul.d	$vr13, $vr7, $vr13
-	fmul.d	$ft4, $fa6, $ft4
-	fadd.d	$ft2, $ft2, $ft4
-	vfadd.d	$vr9, $vr9, $vr13
+	vreplvei.d	$vr8, $vr15, 0
+	vfmul.d	$vr8, $vr3, $vr8
+	fmul.d	$ft1, $fa2, $ft7
 	vreplvei.d	$vr12, $vr11, 0
-	fmul.d	$ft3, $ft0, $ft3
-	vfmul.d	$vr12, $vr5, $vr12
-	vfadd.d	$vr9, $vr9, $vr12
-	fadd.d	$ft2, $ft2, $ft3
-	vreplvei.d	$vr11, $vr17, 0
+	vfmul.d	$vr12, $vr6, $vr12
+	fmul.d	$ft3, $fa5, $ft3
+	fadd.d	$ft1, $ft1, $ft3
+	vfadd.d	$vr8, $vr8, $vr12
+	vreplvei.d	$vr11, $vr10, 0
+	fmul.d	$ft2, $fa7, $ft2
 	vfmul.d	$vr11, $vr4, $vr11
-	fmul.d	$ft4, $fa3, $ft9
-	vreplvei.d	$vr13, $vr15, 0
-	vfmul.d	$vr13, $vr7, $vr13
-	fmul.d	$ft7, $fa6, $ft7
-	fadd.d	$ft4, $ft4, $ft7
-	vfadd.d	$vr11, $vr11, $vr13
-	vreplvei.d	$vr13, $vr14, 0
-	fmul.d	$ft6, $ft0, $ft6
-	vfmul.d	$vr13, $vr5, $vr13
-	vfadd.d	$vr11, $vr11, $vr13
-	fadd.d	$ft4, $ft4, $ft6
-	vreplvei.d	$vr13, $vr1, 0
-	vfmul.d	$vr4, $vr4, $vr13
-	fmul.d	$fa1, $fa3, $fa1
+	vfadd.d	$vr8, $vr8, $vr11
+	fadd.d	$ft1, $ft1, $ft2
+	vreplvei.d	$vr10, $vr17, 0
+	vfmul.d	$vr10, $vr3, $vr10
+	fmul.d	$ft3, $fa2, $ft9
+	vreplvei.d	$vr12, $vr14, 0
+	vfmul.d	$vr12, $vr6, $vr12
+	fmul.d	$ft6, $fa5, $ft6
+	fadd.d	$ft3, $ft3, $ft6
+	vfadd.d	$vr10, $vr10, $vr12
+	vreplvei.d	$vr12, $vr13, 0
+	fmul.d	$ft5, $fa7, $ft5
+	vfmul.d	$vr12, $vr4, $vr12
+	vfadd.d	$vr10, $vr10, $vr12
+	fadd.d	$ft3, $ft3, $ft5
+	vreplvei.d	$vr12, $vr16, 0
+	vfmul.d	$vr3, $vr3, $vr12
+	fmul.d	$fa2, $fa2, $ft8
+	vreplvei.d	$vr12, $vr1, 0
+	vfmul.d	$vr6, $vr6, $vr12
+	fmul.d	$fa1, $fa5, $fa1
+	fadd.d	$fa1, $fa2, $fa1
+	vfadd.d	$vr2, $vr3, $vr6
 	vreplvei.d	$vr3, $vr0, 0
-	vfmul.d	$vr3, $vr7, $vr3
-	fmul.d	$fa0, $fa6, $fa0
+	fmul.d	$fa0, $fa7, $fa0
+	vfmul.d	$vr3, $vr4, $vr3
+	vfadd.d	$vr2, $vr2, $vr3
+	fst.d	$ft1, $sp, 24
+	vst	$vr8, $sp, 8
+	fst.d	$ft3, $sp, 48
+	vst	$vr10, $sp, 32
 	fadd.d	$fa0, $fa1, $fa0
-	vfadd.d	$vr1, $vr4, $vr3
-	vreplvei.d	$vr3, $vr2, 0
-	fmul.d	$fa2, $ft0, $fa2
-	vfmul.d	$vr3, $vr5, $vr3
-	vfadd.d	$vr1, $vr1, $vr3
-	fst.d	$ft2, $sp, 24
-	vst	$vr9, $sp, 8
-	fst.d	$ft4, $sp, 48
-	vst	$vr11, $sp, 32
-	fadd.d	$fa0, $fa0, $fa2
 	fst.d	$fa0, $sp, 72
-	vst	$vr1, $sp, 56
+	vst	$vr2, $sp, 56
 	addi.d	$a0, $sp, 80
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 3
@@ -6195,94 +6008,94 @@ _Z12testMultiplyIdLj3ELj3ELj3EEvv:      # @_Z12testMultiplyIdLj3ELj3ELj3EEvv
 	addi.d	$sp, $sp, 256
 	ret
 .LBB7_55:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa2, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa0, $a3
 	b	.LBB7_3
 .LBB7_56:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa3, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa2, $a3
 	b	.LBB7_6
 .LBB7_57:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa4, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa3, $a3
 	b	.LBB7_9
 .LBB7_58:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa5, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa4, $a3
 	b	.LBB7_12
 .LBB7_59:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa6, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa5, $a3
 	b	.LBB7_15
 .LBB7_60:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$fa7, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa6, $a3
 	b	.LBB7_18
 .LBB7_61:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft0, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$fa7, $a3
 	b	.LBB7_21
 .LBB7_62:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft1, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft0, $a3
 	b	.LBB7_24
 .LBB7_63:
-	addi.w	$a4, $zero, -1
-	lu52i.d	$a4, $a4, 1022
-	movgr2fr.d	$ft2, $a4
+	addi.w	$a2, $zero, -1
+	lu52i.d	$a2, $a2, 1022
+	movgr2fr.d	$ft1, $a2
 	b	.LBB7_27
 .LBB7_64:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft3, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft2, $a3
 	b	.LBB7_30
 .LBB7_65:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft4, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft3, $a3
 	b	.LBB7_33
 .LBB7_66:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft5, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft4, $a3
 	b	.LBB7_36
 .LBB7_67:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft6, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft5, $a3
 	b	.LBB7_39
 .LBB7_68:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft7, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft6, $a3
 	b	.LBB7_42
 .LBB7_69:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft8, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft7, $a3
 	b	.LBB7_45
 .LBB7_70:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft9, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft8, $a3
 	b	.LBB7_48
 .LBB7_71:
-	addi.w	$a5, $zero, -1
-	lu52i.d	$a5, $a5, 1022
-	movgr2fr.d	$ft10, $a5
+	addi.w	$a3, $zero, -1
+	lu52i.d	$a3, $a3, 1022
+	movgr2fr.d	$ft9, $a3
 	b	.LBB7_51
 .LBB7_72:
 	addi.w	$a0, $zero, -1
 	lu52i.d	$a0, $a0, 1022
-	movgr2fr.d	$ft11, $a0
+	movgr2fr.d	$ft10, $a0
 	b	.LBB7_54
 .Lfunc_end7:
 	.size	_Z12testMultiplyIdLj3ELj3ELj3EEvv, .Lfunc_end7-_Z12testMultiplyIdLj3ELj3ELj3EEvv
@@ -6360,143 +6173,130 @@ _Z12testMultiplyIdLj10ELj21ELj23EEvv:   # @_Z12testMultiplyIdLj10ELj21ELj23EEvv
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(__fixunstfdi)
 	jirl	$ra, $ra, 0
-	move	$a5, $zero
+	move	$a3, $zero
 	addi.d	$a1, $a0, 52
 	div.du	$a0, $a1, $a0
-	ori	$a7, $zero, 1
-	sltu	$a1, $a7, $a0
+	ori	$a5, $zero, 1
+	sltu	$a1, $a5, $a0
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a7, $a1
+	masknez	$a1, $a5, $a1
 	or	$a0, $a0, $a1
-	movgr2fr.d	$fa2, $zero
+	movgr2fr.d	$fa1, $zero
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 423
-	ori	$a6, $zero, 5
-	lu32i.d	$a6, 2
-	lu52i.d	$a2, $zero, 1107
-	lu12i.w	$a3, 256
-	lu52i.d	$a3, $a3, 1107
-	movgr2fr.d	$fa0, $a3
-	lu12i.w	$a3, 275200
-	lu12i.w	$a4, -2048
-	lu52i.d	$a4, $a4, 1053
-	movgr2fr.d	$fa1, $a4
-	vldi	$vr3, -912
-	vldi	$vr4, -860
-	vldi	$vr5, -972
-	lu12i.w	$a4, 3
-	ori	$a4, $a4, 552
-	add.d	$t0, $sp, $a4
-	ori	$t1, $zero, 210
-	addi.w	$a4, $zero, -1
-	lu52i.d	$a4, $a4, 1022
-	movgr2fr.d	$fa6, $a4
+	ori	$a4, $zero, 5
+	lu32i.d	$a4, 2
+	lu12i.w	$a2, -2048
+	lu52i.d	$a2, $a2, 1053
+	movgr2fr.d	$fa0, $a2
+	vldi	$vr2, -912
+	vldi	$vr3, -860
+	vldi	$vr4, -972
+	lu12i.w	$a2, 3
+	ori	$a2, $a2, 552
+	add.d	$a6, $sp, $a2
+	ori	$a7, $zero, 210
+	addi.w	$a2, $zero, -1
+	lu52i.d	$a2, $a2, 1022
+	movgr2fr.d	$fa5, $a2
 	.p2align	4, , 16
 .LBB8_1:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_2 Depth 2
-	vldi	$vr7, -912
-	move	$t2, $a0
-	fmov.d	$ft0, $fa2
+	vldi	$vr6, -912
+	move	$t0, $a0
+	fmov.d	$fa7, $fa1
 	.p2align	4, , 16
 .LBB8_2:                                # %select.unfold.i.i.i.i.i
                                         #   Parent Loop BB8_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	mul.d	$a7, $a7, $a1
-	mulh.du	$t3, $a7, $a6
-	sub.d	$t4, $a7, $t3
-	srli.d	$t4, $t4, 1
-	add.d	$t3, $t4, $t3
-	srli.d	$t3, $t3, 30
-	slli.d	$t4, $t3, 31
-	sub.d	$t3, $t3, $t4
-	add.d	$a7, $a7, $t3
-	addi.d	$t3, $a7, -1
-	srli.d	$t4, $t3, 32
-	or	$t4, $t4, $a2
-	movgr2fr.d	$ft1, $t4
-	fsub.d	$ft1, $ft1, $fa0
-	bstrins.d	$t3, $a3, 63, 32
-	movgr2fr.d	$ft2, $t3
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$ft0, $ft1, $fa7, $ft0
-	addi.d	$t2, $t2, -1
-	fmul.d	$fa7, $fa7, $fa1
-	bnez	$t2, .LBB8_2
+	mul.d	$a5, $a5, $a1
+	mulh.du	$t1, $a5, $a4
+	sub.d	$t2, $a5, $t1
+	srli.d	$t2, $t2, 1
+	add.d	$t1, $t2, $t1
+	srli.d	$t1, $t1, 30
+	slli.d	$t2, $t1, 31
+	sub.d	$t1, $t1, $t2
+	add.d	$a5, $a5, $t1
+	addi.d	$t1, $a5, -1
+	vinsgr2vr.d	$vr8, $t1, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa7, $ft0, $fa6, $fa7
+	addi.d	$t0, $t0, -1
+	fmul.d	$fa6, $fa6, $fa0
+	bnez	$t0, .LBB8_2
 # %bb.3:                                #   in Loop: Header=BB8_1 Depth=1
-	fdiv.d	$fa7, $ft0, $fa7
-	fcmp.cult.d	$fcc0, $fa7, $fa3
+	fdiv.d	$fa6, $fa7, $fa6
+	fcmp.cult.d	$fcc0, $fa6, $fa2
 	bceqz	$fcc0, .LBB8_5
 .LBB8_4:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i
                                         #   in Loop: Header=BB8_1 Depth=1
-	fmadd.d	$fa7, $fa7, $fa5, $fa4
-	slli.d	$t2, $a5, 3
-	addi.d	$a5, $a5, 1
-	fstx.d	$fa7, $t2, $t0
-	bne	$a5, $t1, .LBB8_1
+	fmadd.d	$fa6, $fa6, $fa4, $fa3
+	slli.d	$t0, $a3, 3
+	addi.d	$a3, $a3, 1
+	fstx.d	$fa6, $t0, $a6
+	bne	$a3, $a7, .LBB8_1
 	b	.LBB8_6
 .LBB8_5:                                #   in Loop: Header=BB8_1 Depth=1
-	fmov.d	$fa7, $fa6
+	fmov.d	$fa6, $fa5
 	b	.LBB8_4
 .LBB8_6:                                # %_Z10initRandomIdTnNSt9enable_ifIXsr3std17is_floating_pointIT_EE5valueEiE4typeELi0EEvPS1_jj.exit.preheader
-	move	$a5, $zero
-	ori	$t1, $zero, 1
-	movgr2fr.d	$fa2, $zero
-	ori	$a6, $zero, 5
-	lu32i.d	$a6, 2
-	vldi	$vr3, -912
-	vldi	$vr4, -860
-	vldi	$vr5, -972
-	lu12i.w	$a7, 2
-	ori	$a7, $a7, 784
-	add.d	$a7, $sp, $a7
-	ori	$t0, $zero, 483
-	movgr2fr.d	$fa6, $a4
+	move	$a3, $zero
+	ori	$a7, $zero, 1
+	movgr2fr.d	$fa1, $zero
+	ori	$a4, $zero, 5
+	lu32i.d	$a4, 2
+	vldi	$vr2, -912
+	vldi	$vr3, -860
+	vldi	$vr4, -972
+	lu12i.w	$a5, 2
+	ori	$a5, $a5, 784
+	add.d	$a5, $sp, $a5
+	ori	$a6, $zero, 483
+	movgr2fr.d	$fa5, $a2
 	.p2align	4, , 16
 .LBB8_7:                                # %_Z10initRandomIdTnNSt9enable_ifIXsr3std17is_floating_pointIT_EE5valueEiE4typeELi0EEvPS1_jj.exit
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_8 Depth 2
-	vldi	$vr7, -912
-	move	$a4, $a0
-	fmov.d	$ft0, $fa2
+	vldi	$vr6, -912
+	move	$a2, $a0
+	fmov.d	$fa7, $fa1
 	.p2align	4, , 16
 .LBB8_8:                                # %select.unfold.i.i.i.i.i4
                                         #   Parent Loop BB8_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	mul.d	$t1, $t1, $a1
-	mulh.du	$t2, $t1, $a6
-	sub.d	$t3, $t1, $t2
-	srli.d	$t3, $t3, 1
-	add.d	$t2, $t3, $t2
-	srli.d	$t2, $t2, 30
-	slli.d	$t3, $t2, 31
-	sub.d	$t2, $t2, $t3
-	add.d	$t1, $t1, $t2
-	addi.d	$t2, $t1, -1
-	srli.d	$t3, $t2, 32
-	or	$t3, $t3, $a2
-	movgr2fr.d	$ft1, $t3
-	fsub.d	$ft1, $ft1, $fa0
-	bstrins.d	$t2, $a3, 63, 32
-	movgr2fr.d	$ft2, $t2
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$ft0, $ft1, $fa7, $ft0
-	addi.d	$a4, $a4, -1
-	fmul.d	$fa7, $fa7, $fa1
-	bnez	$a4, .LBB8_8
+	mul.d	$a7, $a7, $a1
+	mulh.du	$t0, $a7, $a4
+	sub.d	$t1, $a7, $t0
+	srli.d	$t1, $t1, 1
+	add.d	$t0, $t1, $t0
+	srli.d	$t0, $t0, 30
+	slli.d	$t1, $t0, 31
+	sub.d	$t0, $t0, $t1
+	add.d	$a7, $a7, $t0
+	addi.d	$t0, $a7, -1
+	vinsgr2vr.d	$vr8, $t0, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa7, $ft0, $fa6, $fa7
+	addi.d	$a2, $a2, -1
+	fmul.d	$fa6, $fa6, $fa0
+	bnez	$a2, .LBB8_8
 # %bb.9:                                #   in Loop: Header=BB8_7 Depth=1
-	fdiv.d	$fa7, $ft0, $fa7
-	fcmp.cult.d	$fcc0, $fa7, $fa3
+	fdiv.d	$fa6, $fa7, $fa6
+	fcmp.cult.d	$fcc0, $fa6, $fa2
 	bceqz	$fcc0, .LBB8_11
 .LBB8_10:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9
                                         #   in Loop: Header=BB8_7 Depth=1
-	fmadd.d	$fa7, $fa7, $fa5, $fa4
-	slli.d	$a4, $a5, 3
-	addi.d	$a5, $a5, 1
-	fstx.d	$fa7, $a4, $a7
-	bne	$a5, $t0, .LBB8_7
+	fmadd.d	$fa6, $fa6, $fa4, $fa3
+	slli.d	$a2, $a3, 3
+	addi.d	$a3, $a3, 1
+	fstx.d	$fa6, $a2, $a5
+	bne	$a3, $a6, .LBB8_7
 	b	.LBB8_12
 .LBB8_11:                               #   in Loop: Header=BB8_7 Depth=1
-	fmov.d	$fa7, $fa6
+	fmov.d	$fa6, $fa5
 	b	.LBB8_10
 .LBB8_12:                               # %.preheader.us.i.preheader
 	lu12i.w	$a0, 1
@@ -19843,143 +19643,130 @@ _Z12testMultiplyIdLj25ELj19ELj11EEvv:   # @_Z12testMultiplyIdLj25ELj19ELj11EEvv
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(__fixunstfdi)
 	jirl	$ra, $ra, 0
-	move	$a5, $zero
+	move	$a3, $zero
 	addi.d	$a1, $a0, 52
 	div.du	$a0, $a1, $a0
-	ori	$a7, $zero, 1
-	sltu	$a1, $a7, $a0
+	ori	$a5, $zero, 1
+	sltu	$a1, $a5, $a0
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $a7, $a1
+	masknez	$a1, $a5, $a1
 	or	$a0, $a0, $a1
-	movgr2fr.d	$fa2, $zero
+	movgr2fr.d	$fa1, $zero
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 423
-	ori	$a6, $zero, 5
-	lu32i.d	$a6, 2
-	lu52i.d	$a2, $zero, 1107
-	lu12i.w	$a3, 256
-	lu52i.d	$a3, $a3, 1107
-	movgr2fr.d	$fa0, $a3
-	lu12i.w	$a3, 275200
-	lu12i.w	$a4, -2048
-	lu52i.d	$a4, $a4, 1053
-	movgr2fr.d	$fa1, $a4
-	vldi	$vr3, -912
-	vldi	$vr4, -860
-	vldi	$vr5, -972
-	lu12i.w	$a4, 3
-	ori	$a4, $a4, 1888
-	add.d	$t0, $sp, $a4
-	ori	$t1, $zero, 475
-	addi.w	$a4, $zero, -1
-	lu52i.d	$a4, $a4, 1022
-	movgr2fr.d	$fa6, $a4
+	ori	$a4, $zero, 5
+	lu32i.d	$a4, 2
+	lu12i.w	$a2, -2048
+	lu52i.d	$a2, $a2, 1053
+	movgr2fr.d	$fa0, $a2
+	vldi	$vr2, -912
+	vldi	$vr3, -860
+	vldi	$vr4, -972
+	lu12i.w	$a2, 3
+	ori	$a2, $a2, 1888
+	add.d	$a6, $sp, $a2
+	ori	$a7, $zero, 475
+	addi.w	$a2, $zero, -1
+	lu52i.d	$a2, $a2, 1022
+	movgr2fr.d	$fa5, $a2
 	.p2align	4, , 16
 .LBB9_1:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_2 Depth 2
-	vldi	$vr7, -912
-	move	$t2, $a0
-	fmov.d	$ft0, $fa2
+	vldi	$vr6, -912
+	move	$t0, $a0
+	fmov.d	$fa7, $fa1
 	.p2align	4, , 16
 .LBB9_2:                                # %select.unfold.i.i.i.i.i
                                         #   Parent Loop BB9_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	mul.d	$a7, $a7, $a1
-	mulh.du	$t3, $a7, $a6
-	sub.d	$t4, $a7, $t3
-	srli.d	$t4, $t4, 1
-	add.d	$t3, $t4, $t3
-	srli.d	$t3, $t3, 30
-	slli.d	$t4, $t3, 31
-	sub.d	$t3, $t3, $t4
-	add.d	$a7, $a7, $t3
-	addi.d	$t3, $a7, -1
-	srli.d	$t4, $t3, 32
-	or	$t4, $t4, $a2
-	movgr2fr.d	$ft1, $t4
-	fsub.d	$ft1, $ft1, $fa0
-	bstrins.d	$t3, $a3, 63, 32
-	movgr2fr.d	$ft2, $t3
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$ft0, $ft1, $fa7, $ft0
-	addi.d	$t2, $t2, -1
-	fmul.d	$fa7, $fa7, $fa1
-	bnez	$t2, .LBB9_2
+	mul.d	$a5, $a5, $a1
+	mulh.du	$t1, $a5, $a4
+	sub.d	$t2, $a5, $t1
+	srli.d	$t2, $t2, 1
+	add.d	$t1, $t2, $t1
+	srli.d	$t1, $t1, 30
+	slli.d	$t2, $t1, 31
+	sub.d	$t1, $t1, $t2
+	add.d	$a5, $a5, $t1
+	addi.d	$t1, $a5, -1
+	vinsgr2vr.d	$vr8, $t1, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa7, $ft0, $fa6, $fa7
+	addi.d	$t0, $t0, -1
+	fmul.d	$fa6, $fa6, $fa0
+	bnez	$t0, .LBB9_2
 # %bb.3:                                #   in Loop: Header=BB9_1 Depth=1
-	fdiv.d	$fa7, $ft0, $fa7
-	fcmp.cult.d	$fcc0, $fa7, $fa3
+	fdiv.d	$fa6, $fa7, $fa6
+	fcmp.cult.d	$fcc0, $fa6, $fa2
 	bceqz	$fcc0, .LBB9_5
 .LBB9_4:                                # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i
                                         #   in Loop: Header=BB9_1 Depth=1
-	fmadd.d	$fa7, $fa7, $fa5, $fa4
-	slli.d	$t2, $a5, 3
-	addi.d	$a5, $a5, 1
-	fstx.d	$fa7, $t2, $t0
-	bne	$a5, $t1, .LBB9_1
+	fmadd.d	$fa6, $fa6, $fa4, $fa3
+	slli.d	$t0, $a3, 3
+	addi.d	$a3, $a3, 1
+	fstx.d	$fa6, $t0, $a6
+	bne	$a3, $a7, .LBB9_1
 	b	.LBB9_6
 .LBB9_5:                                #   in Loop: Header=BB9_1 Depth=1
-	fmov.d	$fa7, $fa6
+	fmov.d	$fa6, $fa5
 	b	.LBB9_4
 .LBB9_6:                                # %_Z10initRandomIdTnNSt9enable_ifIXsr3std17is_floating_pointIT_EE5valueEiE4typeELi0EEvPS1_jj.exit.preheader
-	move	$a5, $zero
-	ori	$t1, $zero, 1
-	movgr2fr.d	$fa2, $zero
-	ori	$a6, $zero, 5
-	lu32i.d	$a6, 2
-	vldi	$vr3, -912
-	vldi	$vr4, -860
-	vldi	$vr5, -972
-	lu12i.w	$a7, 3
-	ori	$a7, $a7, 216
-	add.d	$a7, $sp, $a7
-	ori	$t0, $zero, 209
-	movgr2fr.d	$fa6, $a4
+	move	$a3, $zero
+	ori	$a7, $zero, 1
+	movgr2fr.d	$fa1, $zero
+	ori	$a4, $zero, 5
+	lu32i.d	$a4, 2
+	vldi	$vr2, -912
+	vldi	$vr3, -860
+	vldi	$vr4, -972
+	lu12i.w	$a5, 3
+	ori	$a5, $a5, 216
+	add.d	$a5, $sp, $a5
+	ori	$a6, $zero, 209
+	movgr2fr.d	$fa5, $a2
 	.p2align	4, , 16
 .LBB9_7:                                # %_Z10initRandomIdTnNSt9enable_ifIXsr3std17is_floating_pointIT_EE5valueEiE4typeELi0EEvPS1_jj.exit
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB9_8 Depth 2
-	vldi	$vr7, -912
-	move	$a4, $a0
-	fmov.d	$ft0, $fa2
+	vldi	$vr6, -912
+	move	$a2, $a0
+	fmov.d	$fa7, $fa1
 	.p2align	4, , 16
 .LBB9_8:                                # %select.unfold.i.i.i.i.i4
                                         #   Parent Loop BB9_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	mul.d	$t1, $t1, $a1
-	mulh.du	$t2, $t1, $a6
-	sub.d	$t3, $t1, $t2
-	srli.d	$t3, $t3, 1
-	add.d	$t2, $t3, $t2
-	srli.d	$t2, $t2, 30
-	slli.d	$t3, $t2, 31
-	sub.d	$t2, $t2, $t3
-	add.d	$t1, $t1, $t2
-	addi.d	$t2, $t1, -1
-	srli.d	$t3, $t2, 32
-	or	$t3, $t3, $a2
-	movgr2fr.d	$ft1, $t3
-	fsub.d	$ft1, $ft1, $fa0
-	bstrins.d	$t2, $a3, 63, 32
-	movgr2fr.d	$ft2, $t2
-	fadd.d	$ft1, $ft2, $ft1
-	fmadd.d	$ft0, $ft1, $fa7, $ft0
-	addi.d	$a4, $a4, -1
-	fmul.d	$fa7, $fa7, $fa1
-	bnez	$a4, .LBB9_8
+	mul.d	$a7, $a7, $a1
+	mulh.du	$t0, $a7, $a4
+	sub.d	$t1, $a7, $t0
+	srli.d	$t1, $t1, 1
+	add.d	$t0, $t1, $t0
+	srli.d	$t0, $t0, 30
+	slli.d	$t1, $t0, 31
+	sub.d	$t0, $t0, $t1
+	add.d	$a7, $a7, $t0
+	addi.d	$t0, $a7, -1
+	vinsgr2vr.d	$vr8, $t0, 0
+	vffint.d.lu	$vr8, $vr8
+	vreplvei.d	$vr8, $vr8, 0
+	fmadd.d	$fa7, $ft0, $fa6, $fa7
+	addi.d	$a2, $a2, -1
+	fmul.d	$fa6, $fa6, $fa0
+	bnez	$a2, .LBB9_8
 # %bb.9:                                #   in Loop: Header=BB9_7 Depth=1
-	fdiv.d	$fa7, $ft0, $fa7
-	fcmp.cult.d	$fcc0, $fa7, $fa3
+	fdiv.d	$fa6, $fa7, $fa6
+	fcmp.cult.d	$fcc0, $fa6, $fa2
 	bceqz	$fcc0, .LBB9_11
 .LBB9_10:                               # %_ZNSt25uniform_real_distributionIdEclISt26linear_congruential_engineImLm16807ELm0ELm2147483647EEEEdRT_.exit.i9
                                         #   in Loop: Header=BB9_7 Depth=1
-	fmadd.d	$fa7, $fa7, $fa5, $fa4
-	slli.d	$a4, $a5, 3
-	addi.d	$a5, $a5, 1
-	fstx.d	$fa7, $a4, $a7
-	bne	$a5, $t0, .LBB9_7
+	fmadd.d	$fa6, $fa6, $fa4, $fa3
+	slli.d	$a2, $a3, 3
+	addi.d	$a3, $a3, 1
+	fstx.d	$fa6, $a2, $a5
+	bne	$a3, $a6, .LBB9_7
 	b	.LBB9_12
 .LBB9_11:                               #   in Loop: Header=BB9_7 Depth=1
-	fmov.d	$fa7, $fa6
+	fmov.d	$fa6, $fa5
 	b	.LBB9_10
 .LBB9_12:                               # %vector.body
 	move	$a0, $zero

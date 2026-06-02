@@ -37,17 +37,15 @@ get_hashtablesize:                      # @get_hashtablesize
 	.type	compact_hash_init,@function
 compact_hash_init:                      # @compact_hash_init
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
 	pcalau12i	$a4, %pc_hi20(hash_ncells)
 	st.w	$zero, $a4, %pc_lo12(hash_ncells)
 	pcalau12i	$a4, %pc_hi20(write_hash_collisions)
@@ -107,46 +105,26 @@ compact_hash_init:                      # @compact_hash_init
 	fmul.d	$fa0, $fa0, $fs1
 	vldi	$vr1, -912
 	fadd.d	$fa0, $fa0, $fa1
-	lu52i.d	$a0, $zero, 1086
-	movgr2fr.d	$fs2, $a0
-	fcmp.clt.d	$fcc0, $fa0, $fs2
-	ftintrz.l.d	$fa1, $fa0
-	movfr2gr.d	$a0, $fa1
-	movcf2gr	$a1, $fcc0
-	maskeqz	$a0, $a0, $a1
-	fsub.d	$fa0, $fa0, $fs2
-	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a2, $fa0
-	lu52i.d	$s0, $zero, -2048
-	xor	$a2, $a2, $s0
-	masknez	$a1, $a2, $a1
-	or	$a0, $a0, $a1
-	pcalau12i	$s4, %pc_hi20(AA)
-	st.d	$a0, $s4, %pc_lo12(AA)
+	vftintrz.lu.d	$vr0, $vr0
+	pcalau12i	$a0, %pc_hi20(AA)
+	addi.d	$s0, $a0, %pc_lo12(AA)
+	vstelm.d	$vr0, $s0, 0, 0
 	pcaddu18i	$ra, %call36(glibc_compat_rand)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
 	fdiv.d	$fa0, $fa0, $fs0
 	fmul.d	$fa0, $fa0, $fs1
-	fcmp.clt.d	$fcc0, $fa0, $fs2
-	ftintrz.l.d	$fa1, $fa0
-	movfr2gr.d	$a0, $fa1
-	movcf2gr	$a1, $fcc0
-	maskeqz	$a0, $a0, $a1
-	fsub.d	$fa0, $fa0, $fs2
-	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a2, $fa0
-	xor	$a2, $a2, $s0
-	masknez	$a1, $a2, $a1
-	or	$a2, $a0, $a1
-	ld.d	$a1, $s4, %pc_lo12(AA)
+	vftintrz.lu.d	$vr0, $vr0
 	pcalau12i	$a0, %pc_hi20(BB)
-	addi.w	$a3, $zero, -6
-	lu32i.d	$a3, 0
-	st.d	$a2, $a0, %pc_lo12(BB)
-	bltu	$a3, $a1, .LBB2_49
+	addi.d	$a0, $a0, %pc_lo12(BB)
+	ld.d	$a1, $s0, 0
+	addi.w	$a2, $zero, -6
+	lu32i.d	$a2, 0
+	vstelm.d	$vr0, $a0, 0, 0
+	bltu	$a2, $a1, .LBB2_49
 # %bb.7:
+	vpickve2gr.d	$a2, $vr0, 0
 	addi.w	$a0, $zero, -5
 	lu32i.d	$a0, 0
 	bgeu	$a2, $a0, .LBB2_49
@@ -446,17 +424,15 @@ compact_hash_init:                      # @compact_hash_init
 	jirl	$ra, $ra, 0
 .LBB2_47:                               # %.thread58
 	move	$a0, $s0
-	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB2_48:
 	pcalau12i	$a0, %pc_hi20(read_hash)

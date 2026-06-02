@@ -265,17 +265,10 @@ main:                                   # @main
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_21 Depth 2
 	alsl.d	$fp, $s4, $s5, 2
-	srli.d	$a0, $s4, 1
-	andi	$a1, $s4, 1
-	or	$a0, $a1, $a0
-	movgr2fr.d	$fa0, $a0
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a0, $s4, 0
-	movgr2fr.d	$fa1, $s4
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a0
-	fsel	$fs1, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $s4, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fs1, $fa0
 	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload

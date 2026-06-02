@@ -1092,17 +1092,10 @@ matgen:                                 # @matgen
 	slli.d	$a6, $a0, 3
 	ldx.d	$t0, $a1, $a6
 	addi.d	$a6, $a0, 1
-	srli.d	$a7, $a6, 1
-	andi	$t1, $a6, 1
-	or	$a7, $t1, $a7
-	movgr2fr.d	$fa6, $a7
-	ffint.s.l	$fa6, $fa6
-	fadd.s	$fa6, $fa6, $fa6
-	slti	$a7, $a6, 0
-	movgr2fr.d	$fa7, $a6
-	ffint.s.l	$fa7, $fa7
-	movgr2cf	$fcc0, $a7
-	fsel	$fa6, $fa7, $fa6, $fcc0
+	vinsgr2vr.d	$vr6, $a6, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
+	fcvt.s.d	$fa6, $fa6
 	bge	$s3, $a5, .LBB1_104
 # %bb.103:                              #   in Loop: Header=BB1_102 Depth=1
 	move	$t1, $zero
@@ -1418,17 +1411,10 @@ matgen:                                 # @matgen
 	slli.d	$a6, $a0, 3
 	ldx.d	$t0, $a1, $a6
 	addi.d	$a6, $a0, 1
-	srli.d	$a7, $a6, 1
-	andi	$t1, $a6, 1
-	or	$a7, $t1, $a7
-	movgr2fr.d	$fa6, $a7
-	ffint.s.l	$fa6, $fa6
-	fadd.s	$fa6, $fa6, $fa6
-	slti	$a7, $a6, 0
-	movgr2fr.d	$fa7, $a6
-	ffint.s.l	$fa7, $fa7
-	movgr2cf	$fcc0, $a7
-	fsel	$fa6, $fa7, $fa6, $fcc0
+	vinsgr2vr.d	$vr6, $a6, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
+	fcvt.s.d	$fa6, $fa6
 	bge	$s3, $a5, .LBB1_141
 # %bb.140:                              #   in Loop: Header=BB1_139 Depth=1
 	move	$t1, $zero

@@ -202,17 +202,10 @@ test_integer_to_float:                  # @test_integer_to_float
 	.type	ull2f,@function
 ull2f:                                  # @ull2f
 # %bb.0:
-	srli.d	$a1, $a0, 1
-	andi	$a2, $a0, 1
-	or	$a1, $a2, $a1
-	movgr2fr.d	$fa0, $a1
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a1, $a0, 0
-	movgr2fr.d	$fa1, $a0
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a1
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	ret
 .Lfunc_end10:
 	.size	ull2f, .Lfunc_end10-ull2f
@@ -223,18 +216,10 @@ ull2f:                                  # @ull2f
 	.type	ull2d,@function
 ull2d:                                  # @ull2d
 # %bb.0:
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	ret
 .Lfunc_end11:
 	.size	ull2d, .Lfunc_end11-ull2d
@@ -406,20 +391,9 @@ test_float_to_integer:                  # @test_float_to_integer
 	.type	f2ull,@function
 f2ull:                                  # @f2ull
 # %bb.0:
-	lu12i.w	$a0, 389120
-	movgr2fr.w	$fa1, $a0
-	fcmp.clt.s	$fcc0, $fa0, $fa1
-	fsub.s	$fa1, $fa0, $fa1
-	ftintrz.l.s	$fa1, $fa1
-	movfr2gr.d	$a0, $fa1
-	lu52i.d	$a1, $zero, -2048
-	xor	$a0, $a0, $a1
-	movcf2gr	$a1, $fcc0
-	masknez	$a0, $a0, $a1
-	ftintrz.l.s	$fa0, $fa0
-	movfr2gr.d	$a2, $fa0
-	maskeqz	$a1, $a2, $a1
-	or	$a0, $a1, $a0
+	fcvt.d.s	$fa0, $fa0
+	vftintrz.lu.d	$vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ret
 .Lfunc_end24:
 	.size	f2ull, .Lfunc_end24-f2ull
@@ -430,20 +404,9 @@ f2ull:                                  # @f2ull
 	.type	d2ull,@function
 d2ull:                                  # @d2ull
 # %bb.0:
-	lu52i.d	$a0, $zero, 1086
-	movgr2fr.d	$fa1, $a0
-	fcmp.clt.d	$fcc0, $fa0, $fa1
-	fsub.d	$fa1, $fa0, $fa1
-	ftintrz.l.d	$fa1, $fa1
-	movfr2gr.d	$a0, $fa1
-	lu52i.d	$a1, $zero, -2048
-	xor	$a0, $a0, $a1
-	movcf2gr	$a1, $fcc0
-	masknez	$a0, $a0, $a1
-	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a2, $fa0
-	maskeqz	$a1, $a2, $a1
-	or	$a0, $a1, $a0
+                                        # kill: def $f0_64 killed $f0_64 def $vr0
+	vftintrz.lu.d	$vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	ret
 .Lfunc_end25:
 	.size	d2ull, .Lfunc_end25-d2ull

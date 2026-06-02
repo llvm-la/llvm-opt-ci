@@ -1077,30 +1077,18 @@ array_sxhash:                           # @array_sxhash
 	ld.d	$a1, $s0, 8
 	blez	$a1, .LBB9_7
 # %bb.10:                               # %.lr.ph61.preheader
-	move	$a0, $zero
 	ld.d	$a2, $s0, 16
-	lu52i.d	$a3, $zero, 1086
-	movgr2fr.d	$fa0, $a3
-	lu52i.d	$a3, $zero, -2048
+	move	$a0, $zero
 	.p2align	4, , 16
 .LBB9_11:                               # %.lr.ph61
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a2, 0
+	fld.d	$fa0, $a2, 0
 	alsl.d	$a0, $a0, $a0, 4
 	addi.d	$a0, $a0, 1
-	fcmp.clt.d	$fcc0, $fa1, $fa0
-	fsub.d	$fa2, $fa1, $fa0
-	ftintrz.l.d	$fa2, $fa2
-	movfr2gr.d	$a4, $fa2
-	xor	$a4, $a4, $a3
-	movcf2gr	$a5, $fcc0
-	masknez	$a4, $a4, $a5
-	ftintrz.l.d	$fa1, $fa1
-	movfr2gr.d	$a6, $fa1
-	maskeqz	$a5, $a6, $a5
-	or	$a4, $a5, $a4
-	mod.du	$a4, $a4, $fp
-	xor	$a0, $a4, $a0
+	vftintrz.lu.d	$vr0, $vr0
+	vpickve2gr.d	$a3, $vr0, 0
+	mod.du	$a3, $a3, $fp
+	xor	$a0, $a3, $a0
 	mod.du	$a0, $a0, $fp
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 8
@@ -3787,20 +3775,8 @@ c_sxhash:                               # @c_sxhash
 	b	.LBB38_21
 .LBB38_11:
 	fld.d	$fa0, $a1, 8
-	lu52i.d	$a0, $zero, 1086
-	movgr2fr.d	$fa1, $a0
-	fcmp.clt.d	$fcc0, $fa0, $fa1
-	fsub.d	$fa1, $fa0, $fa1
-	ftintrz.l.d	$fa1, $fa1
-	movfr2gr.d	$a0, $fa1
-	lu52i.d	$a1, $zero, -2048
-	xor	$a0, $a0, $a1
-	movcf2gr	$a1, $fcc0
-	masknez	$a0, $a0, $a1
-	ftintrz.l.d	$fa0, $fa0
-	movfr2gr.d	$a2, $fa0
-	maskeqz	$a1, $a2, $a1
-	or	$a0, $a1, $a0
+	vftintrz.lu.d	$vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	mod.du	$a0, $a0, $fp
 	b	.LBB38_21
 .LBB38_12:
@@ -5614,18 +5590,10 @@ string_length:                          # @string_length
 	ld.d	$a0, $fp, 16
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
@@ -11443,18 +11411,10 @@ lstrspn:                                # @lstrspn
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strspn)
 	jirl	$ra, $ra, 0
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -11485,18 +11445,10 @@ lstrcspn:                               # @lstrcspn
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strcspn)
 	jirl	$ra, $ra, 0
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

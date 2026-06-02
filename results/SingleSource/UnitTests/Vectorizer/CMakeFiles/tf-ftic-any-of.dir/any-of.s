@@ -6985,17 +6985,10 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 	xor	$t7, $t8, $t7
 	srli.d	$t8, $t7, 18
 	xor	$t7, $t8, $t7
-	srli.d	$t8, $t7, 1
-	andi	$s0, $t7, 1
-	or	$t8, $s0, $t8
-	movgr2fr.d	$ft6, $t8
-	ffint.s.l	$ft6, $ft6
-	fadd.s	$ft6, $ft6, $ft6
-	slti	$t8, $t7, 0
-	movgr2fr.d	$ft7, $t7
-	ffint.s.l	$ft7, $ft7
-	movgr2cf	$fcc0, $t8
-	fsel	$ft6, $ft7, $ft6, $fcc0
+	vinsgr2vr.d	$vr14, $t7, 0
+	vffint.d.lu	$vr14, $vr14
+	vreplvei.d	$vr14, $vr14, 0
+	fcvt.s.d	$ft6, $ft6
 	fmadd.s	$ft5, $ft6, $ft4, $ft5
 	addi.d	$t5, $t5, -1
 	fmul.s	$ft4, $ft4, $fa7

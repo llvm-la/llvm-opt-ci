@@ -283,19 +283,18 @@ GCC_except_table0:
 _ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_: # @_ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 8                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 32                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -306,7 +305,6 @@ _ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_: # 
 	.cfi_offset 56, -64
 	.cfi_offset 57, -72
 	.cfi_offset 58, -80
-	.cfi_offset 59, -88
 	move	$s0, $a1
 	move	$fp, $a0
 	st.d	$zero, $a0, 48
@@ -314,57 +312,47 @@ _ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_: # 
 	vst	$vr0, $a0, 32
 	vst	$vr0, $a0, 16
 	vst	$vr0, $a0, 0
-	lu12i.w	$a1, 256
-	lu12i.w	$a0, 275200
-	bne	$a2, $s0, .LBB1_2
+	bne	$a2, $a1, .LBB1_2
 # %bb.1:                                # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEdET0_T_S8_S7_.exit.thread
 	move	$s3, $zero
 	move	$s2, $zero
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, -524288
-	lu52i.d	$a3, $a3, 2047
-	movgr2fr.d	$fs1, $zero
-	st.d	$a3, $fp, 8
-	fmov.d	$fs2, $fs1
-	fmov.d	$fs3, $fs1
-	fmov.d	$fa0, $fs1
-	fmov.d	$fa1, $fs1
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, -524288
+	lu52i.d	$a0, $a0, 2047
+	movgr2fr.d	$fa5, $zero
+	st.d	$a0, $fp, 8
+	fmov.d	$fs1, $fa5
+	fmov.d	$fs2, $fa5
+	fmov.d	$fa0, $fa5
+	fmov.d	$fa1, $fa5
 	b	.LBB1_6
 .LBB1_2:                                # %.lr.ph.i.preheader
 	movgr2fr.d	$fa0, $zero
-	move	$a3, $s0
+	move	$a0, $s0
 	.p2align	4, , 16
 .LBB1_3:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa1, $a3, 0
-	addi.d	$a3, $a3, 8
+	fld.d	$fa1, $a0, 0
+	addi.d	$a0, $a0, 8
 	fadd.d	$fa0, $fa0, $fa1
-	bne	$a3, $a2, .LBB1_3
+	bne	$a0, $a2, .LBB1_3
 # %bb.4:                                # %.lr.ph.preheader
 	sub.d	$s2, $a2, $s0
 	srai.d	$s3, $s2, 3
-	srli.d	$a3, $s3, 32
-	lu52i.d	$a4, $zero, 1107
-	or	$a3, $a3, $a4
-	movgr2fr.d	$fa1, $a3
-	lu52i.d	$a3, $a1, 1107
-	movgr2fr.d	$fa2, $a3
-	fsub.d	$fa1, $fa1, $fa2
-	move	$a3, $s3
-	bstrins.d	$a3, $a0, 63, 32
-	movgr2fr.d	$fa2, $a3
-	fadd.d	$fs1, $fa2, $fa1
-	fdiv.d	$fa2, $fa0, $fs1
+	vinsgr2vr.d	$vr1, $s3, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr5, $vr1, 0
+	fdiv.d	$fa2, $fa0, $fa5
 	movgr2fr.d	$fa1, $zero
 	fst.d	$fa2, $fp, 8
-	move	$a3, $s0
+	move	$a0, $s0
 	fmov.d	$fa0, $fa1
-	fmov.d	$fs3, $fa1
 	fmov.d	$fs2, $fa1
+	fmov.d	$fs1, $fa1
 	.p2align	4, , 16
 .LBB1_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	fld.d	$fa3, $a3, 0
+	fld.d	$fa3, $a0, 0
 	fsub.d	$fa3, $fa3, $fa2
 	fabs.d	$fa4, $fa3
 	fadd.d	$fa1, $fa1, $fa4
@@ -373,26 +361,19 @@ _ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_: # 
 	fadd.d	$fa0, $fa4, $fa0
 	fst.d	$fa0, $fp, 32
 	fmul.d	$fa4, $fa3, $fa4
-	fadd.d	$fs3, $fa4, $fs3
-	fst.d	$fs3, $fp, 40
-	fmadd.d	$fs2, $fa4, $fa3, $fs2
-	addi.d	$a3, $a3, 8
-	fst.d	$fs2, $fp, 48
-	bne	$a3, $a2, .LBB1_5
+	fadd.d	$fs2, $fa4, $fs2
+	fst.d	$fs2, $fp, 40
+	fmadd.d	$fs1, $fa4, $fa3, $fs1
+	addi.d	$a0, $a0, 8
+	fst.d	$fs1, $fp, 48
+	bne	$a0, $a2, .LBB1_5
 .LBB1_6:                                # %._crit_edge
-	fdiv.d	$fa1, $fa1, $fs1
+	fdiv.d	$fa1, $fa1, $fa5
 	fst.d	$fa1, $fp, 16
-	addi.d	$a3, $s3, -1
-	srli.d	$a4, $a3, 32
-	lu52i.d	$a5, $zero, 1107
-	or	$a4, $a4, $a5
-	movgr2fr.d	$fa1, $a4
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa2, $a1
-	fsub.d	$fa1, $fa1, $fa2
-	bstrins.d	$a3, $a0, 63, 32
-	movgr2fr.d	$fa2, $a3
-	fadd.d	$fa1, $fa2, $fa1
+	addi.d	$a0, $s3, -1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fs0, $fa0, $fa1
 	fsqrt.d	$fa0, $fs0
 	fcmp.cor.d	$fcc0, $fa0, $fa0
@@ -404,12 +385,12 @@ _ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_: # 
 	fst.d	$fa0, $fp, 24
 	bceqz	$fcc0, .LBB1_9
 .LBB1_8:
-	fmul.d	$fa1, $fs0, $fs1
+	fmul.d	$fa1, $fs0, $fa5
 	fmul.d	$fa0, $fa1, $fa0
-	fdiv.d	$fa0, $fs3, $fa0
+	fdiv.d	$fa0, $fs2, $fa0
 	fst.d	$fa0, $fp, 40
 	fmul.d	$fa0, $fs0, $fa1
-	fdiv.d	$fa0, $fs2, $fa0
+	fdiv.d	$fa0, $fs1, $fa0
 	vldi	$vr1, -888
 	fadd.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $fp, 48
@@ -465,24 +446,25 @@ _ZN7momentsIdEC2IN9__gnu_cxx17__normal_iteratorIPdSt6vectorIdSaIdEEEEEET_S9_: # 
 	fld.d	$fa0, $s1, 0
 .LBB1_19:
 	fst.d	$fa0, $fp, 0
-	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	fld.d	$fs2, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .LBB1_20:                               # %call.sqrt
 	fmov.d	$fa0, $fs0
 	move	$s1, $a2
+	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
+	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
 	move	$a2, $s1
 	movgr2fr.d	$fa1, $zero
 	fcmp.cune.d	$fcc0, $fs0, $fa1

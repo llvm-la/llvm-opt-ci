@@ -74,28 +74,15 @@ speedup_test:                           # @speedup_test
 	ld.d	$a0, $sp, 16
 	ld.d	$a1, $sp, 24
 	sub.d	$a0, $a0, $a1
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	ld.d	$a3, $sp, 8
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa0, $fa2, $fa0
-	srli.d	$a0, $a3, 32
-	or	$a0, $a0, $a2
-	movgr2fr.d	$fa2, $a0
-	fsub.d	$fa1, $fa2, $fa1
-	bstrins.d	$a3, $a1, 63, 32
+	ld.d	$a1, $sp, 8
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $a1, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	fld.d	$fa2, $a0, %pc_lo12(.LCPI0_0)
-	movgr2fr.d	$fa3, $a3
-	fadd.d	$fa1, $fa3, $fa1
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa2
 	movfr2gr.d	$a1, $fa0
@@ -229,7 +216,6 @@ specul_time_o:                          # @specul_time_o
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $a5
 	move	$s2, $a4
 	move	$s0, $a3
@@ -431,14 +417,11 @@ specul_time_o:                          # @specul_time_o
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	move	$s6, $s0
-	bstrins.d	$s6, $zero, 1, 1
+	move	$s3, $s0
+	bstrins.d	$s3, $zero, 1, 1
 	ori	$a0, $zero, 1
-	pcalau12i	$s4, %pc_hi20(loop_time)
-	lu52i.d	$s3, $zero, 1107
-	lu12i.w	$s5, 256
-	lu12i.w	$s2, 275200
-	beq	$s6, $a0, .LBB3_33
+	pcalau12i	$s2, %pc_hi20(loop_time)
+	beq	$s3, $a0, .LBB3_33
 # %bb.31:
 	bstrins.d	$s0, $zero, 0, 0
 	ori	$a0, $zero, 2
@@ -447,24 +430,13 @@ specul_time_o:                          # @specul_time_o
 	bnez	$fp, .LBB3_35
 	b	.LBB3_39
 .LBB3_33:
-	ld.d	$a0, $s4, %pc_lo12(loop_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s3
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s5, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	bstrins.d	$a0, $s2, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa0, $fa2, $fa0
-	srli.d	$a0, $s1, 32
-	or	$a0, $a0, $s3
-	movgr2fr.d	$fa2, $a0
-	fsub.d	$fa1, $fa2, $fa1
-	move	$a0, $s1
-	bstrins.d	$a0, $s2, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	ld.d	$a0, $s2, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s1, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
@@ -477,25 +449,15 @@ specul_time_o:                          # @specul_time_o
 .LBB3_34:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s3
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s5, 1107
-	movgr2fr.d	$fa1, $a1
-	add.d	$a1, $a0, $s1
-	bstrins.d	$a0, $s2, 63, 32
-	ld.d	$a2, $s4, %pc_lo12(loop_time)
-	movgr2fr.d	$fa2, $a0
-	fsub.d	$fa0, $fa0, $fa1
-	fadd.d	$fa0, $fa2, $fa0
-	sub.d	$a0, $a1, $a2
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s3
-	movgr2fr.d	$fa2, $a1
-	fsub.d	$fa1, $fa2, $fa1
-	bstrins.d	$a0, $s2, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	vinsgr2vr.d	$vr0, $a0, 0
+	ld.d	$a1, $s2, %pc_lo12(loop_time)
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	add.d	$a0, $a0, $s1
+	sub.d	$a0, $a0, $a1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
@@ -505,26 +467,15 @@ specul_time_o:                          # @specul_time_o
 	beqz	$fp, .LBB3_39
 .LBB3_35:
 	ori	$a0, $zero, 1
-	bne	$s6, $a0, .LBB3_37
+	bne	$s3, $a0, .LBB3_37
 # %bb.36:
-	ld.d	$a0, $s4, %pc_lo12(loop_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s3
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s5, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	bstrins.d	$a0, $s2, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa0, $fa2, $fa0
-	srli.d	$a0, $s1, 32
-	or	$a0, $a0, $s3
-	movgr2fr.d	$fa2, $a0
-	fsub.d	$fa1, $fa2, $fa1
-	move	$a0, $s1
-	bstrins.d	$a0, $s2, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	ld.d	$a0, $s2, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s1, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
@@ -538,31 +489,20 @@ specul_time_o:                          # @specul_time_o
 # %bb.38:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s3
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s5, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	add.d	$a1, $a0, $s1
-	ld.d	$a2, $s4, %pc_lo12(loop_time)
-	bstrins.d	$a0, $s2, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa0, $fa2, $fa0
-	sub.d	$a0, $a1, $a2
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s3
-	movgr2fr.d	$fa2, $a1
-	fsub.d	$fa1, $fa2, $fa1
-	bstrins.d	$a0, $s2, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	vinsgr2vr.d	$vr0, $a0, 0
+	ld.d	$a1, $s2, %pc_lo12(loop_time)
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	add.d	$a0, $a0, $s1
+	sub.d	$a0, $a0, $a1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a2, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.11)
 	move	$a0, $fp
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
@@ -575,7 +515,6 @@ specul_time_o:                          # @specul_time_o
 	pcaddu18i	$t8, %call36(fprintf)
 	jr	$t8
 .LBB3_39:
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
@@ -1071,6 +1010,7 @@ specul_time_r:                          # @specul_time_r
 .LBB4_65:
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a1, $s5, 40
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB4_79
 .LBB4_66:                               # %vector.ph326
 	bstrpick.d	$a1, $s4, 30, 1
@@ -1164,6 +1104,7 @@ specul_time_r:                          # @specul_time_r
 	addi.d	$a4, $a4, 56
 	bnez	$a2, .LBB4_77
 .LBB4_78:
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 .LBB4_79:                               # %.loopexit
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
@@ -1177,41 +1118,26 @@ specul_time_r:                          # @specul_time_r
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	move	$s7, $s1
-	bstrins.d	$s7, $zero, 1, 1
+	move	$s4, $s1
+	bstrins.d	$s4, $zero, 1, 1
 	ori	$a0, $zero, 1
-	pcalau12i	$s5, %pc_hi20(loop_time)
-	lu52i.d	$s4, $zero, 1107
-	lu12i.w	$s6, 256
-	lu12i.w	$s3, 275200
-	beq	$s7, $a0, .LBB4_82
+	pcalau12i	$s3, %pc_hi20(loop_time)
+	beq	$s4, $a0, .LBB4_82
 # %bb.80:
 	bstrins.d	$s1, $zero, 0, 0
 	ori	$a0, $zero, 2
 	beq	$s1, $a0, .LBB4_83
 .LBB4_81:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	bnez	$a0, .LBB4_84
+	bnez	$s0, .LBB4_84
 	b	.LBB4_88
 .LBB4_82:
-	ld.d	$a0, $s5, %pc_lo12(loop_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s4
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s6, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa0, $fa2, $fa0
-	srli.d	$a0, $s2, 32
-	or	$a0, $a0, $s4
-	movgr2fr.d	$fa2, $a0
-	fsub.d	$fa1, $fa2, $fa1
-	move	$a0, $s2
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	ld.d	$a0, $s3, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s2, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
@@ -1224,60 +1150,38 @@ specul_time_r:                          # @specul_time_r
 .LBB4_83:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s4
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s6, 1107
-	movgr2fr.d	$fa1, $a1
-	add.d	$a1, $a0, $s2
-	bstrins.d	$a0, $s3, 63, 32
-	ld.d	$a2, $s5, %pc_lo12(loop_time)
-	movgr2fr.d	$fa2, $a0
-	fsub.d	$fa0, $fa0, $fa1
-	fadd.d	$fa0, $fa2, $fa0
-	sub.d	$a0, $a1, $a2
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s4
-	movgr2fr.d	$fa2, $a1
-	fsub.d	$fa1, $fa2, $fa1
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	vinsgr2vr.d	$vr0, $a0, 0
+	ld.d	$a1, $s3, %pc_lo12(loop_time)
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	add.d	$a0, $a0, $s2
+	sub.d	$a0, $a0, $a1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	beqz	$a0, .LBB4_88
+	beqz	$s0, .LBB4_88
 .LBB4_84:
 	ori	$a0, $zero, 1
-	bne	$s7, $a0, .LBB4_86
+	bne	$s4, $a0, .LBB4_86
 # %bb.85:
-	ld.d	$a0, $s5, %pc_lo12(loop_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s4
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s6, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa0, $fa2, $fa0
-	srli.d	$a0, $s2, 32
-	or	$a0, $a0, $s4
-	movgr2fr.d	$fa2, $a0
-	fsub.d	$fa1, $fa2, $fa1
-	move	$a0, $s2
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	ld.d	$a0, $s3, %pc_lo12(loop_time)
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s2, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a3, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	move	$a0, $s0
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
@@ -1287,30 +1191,20 @@ specul_time_r:                          # @specul_time_r
 # %bb.87:
 	pcalau12i	$a0, %pc_hi20(prog_time)
 	ld.d	$a0, $a0, %pc_lo12(prog_time)
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s4
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $s6, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	add.d	$a1, $a0, $s2
-	ld.d	$a2, $s5, %pc_lo12(loop_time)
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa0, $fa2, $fa0
-	sub.d	$a0, $a1, $a2
-	srli.d	$a1, $a0, 32
-	or	$a1, $a1, $s4
-	movgr2fr.d	$fa2, $a1
-	fsub.d	$fa1, $fa2, $fa1
-	bstrins.d	$a0, $s3, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	vinsgr2vr.d	$vr0, $a0, 0
+	ld.d	$a1, $s3, %pc_lo12(loop_time)
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	add.d	$a0, $a0, $s2
+	sub.d	$a0, $a0, $a1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a3, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.15)
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	move	$a0, $s0
 	move	$a2, $fp
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload

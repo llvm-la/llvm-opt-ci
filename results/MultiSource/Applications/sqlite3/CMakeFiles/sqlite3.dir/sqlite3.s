@@ -5454,21 +5454,20 @@ sqlite3_step:                           # @sqlite3_step
 # %bb.0:
 	beqz	$a0, .LBB59_159
 # %bb.1:
-	addi.d	$sp, $sp, -736
-	st.d	$ra, $sp, 728                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 720                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 712                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 704                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 696                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 688                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 680                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 672                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 664                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 656                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 648                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 640                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 632                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 624                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -720
+	st.d	$ra, $sp, 712                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 704                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 696                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 688                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 680                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 672                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 664                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 656                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 648                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 640                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 632                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 624                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 616                  # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 116
 	ld.d	$s8, $fp, 0
@@ -5487,11 +5486,9 @@ sqlite3_step:                           # @sqlite3_step
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	ori	$s5, $zero, 5
-	lu52i.d	$a0, $zero, 1086
-	movgr2fr.d	$fs2, $a0
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	lu12i.w	$a0, 444054
 	ori	$a0, $a0, 3628
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -5500,16 +5497,16 @@ sqlite3_step:                           # @sqlite3_step
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	lu12i.w	$a0, -64585
 	ori	$a0, $a0, 2310
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	lu12i.w	$a0, 334274
 	ori	$s2, $a0, 2419
 	lu12i.w	$a0, 158670
 	ori	$a0, $a0, 2725
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	lu12i.w	$a0, -392550
 	ori	$a0, $a0, 1687
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
 .LBB59_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB59_10 Depth 2
                                         #     Child Loop BB59_15 Depth 2
@@ -5537,8 +5534,8 @@ sqlite3_step:                           # @sqlite3_step
 	ld.w	$a0, $fp, 120
 	beqz	$a0, .LBB59_13
 # %bb.8:                                #   in Loop: Header=BB59_3 Depth=1
-	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
 	move	$s3, $s6
 	ld.d	$s0, $s4, 64
 	ld.bu	$s6, $s0, 42
@@ -5571,8 +5568,8 @@ sqlite3_step:                           # @sqlite3_step
                                         #   in Loop: Header=BB59_3 Depth=1
 	st.b	$s6, $s0, 42
 	move	$s6, $s3
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
 	ori	$s0, $zero, 1
 .LBB59_13:                              # %releaseMemArray.exit.i
                                         #   in Loop: Header=BB59_3 Depth=1
@@ -5601,7 +5598,7 @@ sqlite3_step:                           # @sqlite3_step
 	ori	$a7, $zero, 109
 	beq	$a6, $a7, .LBB59_38
 # %bb.17:                               #   in Loop: Header=BB59_15 Depth=2
-	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 112                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $a6
 	addi.d	$a4, $a4, 1
 	addi.d	$a5, $a5, -1
@@ -5770,39 +5767,29 @@ sqlite3_step:                           # @sqlite3_step
 # %bb.55:                               #   in Loop: Header=BB59_3 Depth=1
 	ld.d	$a2, $s2, 0
 	ld.d	$a3, $a2, 128
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 128
 	move	$s4, $a0
 	move	$a0, $a2
 	jirl	$ra, $a3, 0
-	fld.d	$fa0, $sp, 136
+	fld.d	$fa0, $sp, 128
 	ftintrz.w.d	$fa1, $fa0
 	movfr2gr.s	$a0, $fa1
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fld.d	$fa2, $fp, 352
 	fsub.d	$fa0, $fa0, $fa1
+	fld.d	$fa1, $fp, 352
 	fmul.d	$fa0, $fa0, $fs0
-	vldi	$vr1, -968
-	fmul.d	$fa0, $fa0, $fa1
-	ffint.d.l	$fa1, $fa2
-	fmsub.d	$fa0, $fa0, $fs1, $fa1
-	fcmp.clt.d	$fcc0, $fa0, $fs2
-	ftintrz.l.d	$fa1, $fa0
-	movfr2gr.d	$a0, $fa1
-	movcf2gr	$a2, $fcc0
-	maskeqz	$a3, $a0, $a2
-	fsub.d	$fa0, $fa0, $fs2
-	ftintrz.l.d	$fa0, $fa0
+	vldi	$vr2, -968
+	fmul.d	$fa0, $fa0, $fa2
 	ld.d	$a1, $fp, 32
-	movfr2gr.d	$a4, $fa0
-	ld.d	$a5, $s2, 152
+	ffint.d.l	$fa1, $fa1
+	ld.d	$a3, $s2, 152
 	ld.d	$a0, $s2, 160
 	ld.d	$a1, $a1, 16
-	lu52i.d	$a6, $zero, -2048
-	xor	$a4, $a4, $a6
-	masknez	$a2, $a4, $a2
-	or	$a2, $a3, $a2
-	jirl	$ra, $a5, 0
+	fmsub.d	$fa0, $fa0, $fs1, $fa1
+	vftintrz.lu.d	$vr0, $vr0
+	vpickve2gr.d	$a2, $vr0, 0
+	jirl	$ra, $a3, 0
 	ld.d	$s1, $fp, 0
 	bnez	$s1, .LBB59_25
 	b	.LBB59_43
@@ -5829,16 +5816,16 @@ sqlite3_step:                           # @sqlite3_step
                                         #   in Loop: Header=BB59_3 Depth=1
 	ld.w	$a0, $s1, 72
 	ld.d	$a1, $fp, 472
-	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	beq	$a0, $a2, .LBB59_64
 # %bb.63:                               # %sqlite3SafetyCheckOk.exit.i
                                         #   in Loop: Header=BB59_3 Depth=1
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	bne	$a0, $a2, .LBB59_162
 .LBB59_64:                              # %sqlite3LockAndPrepare.exit
                                         #   in Loop: Header=BB59_3 Depth=1
 	addi.w	$a2, $zero, -1
-	addi.d	$a4, $sp, 128
+	addi.d	$a4, $sp, 120
 	move	$a0, $s1
 	move	$a3, $zero
 	move	$a5, $zero
@@ -5846,8 +5833,8 @@ sqlite3_step:                           # @sqlite3_step
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB59_160
 # %bb.65:                               #   in Loop: Header=BB59_3 Depth=1
-	ld.d	$s1, $sp, 128
-	addi.d	$a0, $sp, 136
+	ld.d	$s1, $sp, 120
+	addi.d	$a0, $sp, 128
 	ori	$a2, $zero, 488
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(memcpy)
@@ -5857,7 +5844,7 @@ sqlite3_step:                           # @sqlite3_step
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 128
 	ori	$a2, $zero, 488
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(memcpy)
@@ -5875,7 +5862,7 @@ sqlite3_step:                           # @sqlite3_step
 	st.w	$a0, $s1, 464
 	st.w	$a1, $fp, 464
 	ld.w	$a0, $s1, 116
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	beq	$a0, $s2, .LBB59_67
 # %bb.66:                               #   in Loop: Header=BB59_3 Depth=1
 	bne	$a0, $s3, .LBB59_77
@@ -5935,7 +5922,7 @@ sqlite3_step:                           # @sqlite3_step
 	ld.w	$a0, $s1, 116
 	move	$s3, $s5
 	ori	$s5, $zero, 5
-	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB59_77:                              # %sqlite3_transfer_bindings.exit
                                         #   in Loop: Header=BB59_3 Depth=1
@@ -5943,7 +5930,7 @@ sqlite3_step:                           # @sqlite3_step
 	beq	$a0, $s2, .LBB59_80
 # %bb.78:                               # %sqlite3_transfer_bindings.exit
                                         #   in Loop: Header=BB59_3 Depth=1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB59_81
 # %bb.79:                               # %sqlite3_transfer_bindings.exit
                                         #   in Loop: Header=BB59_3 Depth=1
@@ -6004,9 +5991,9 @@ sqlite3_step:                           # @sqlite3_step
 # %bb.89:                               #   in Loop: Header=BB59_3 Depth=1
 	ld.d	$a0, $s2, 0
 	ld.d	$a2, $a0, 128
-	addi.d	$a1, $sp, 136
+	addi.d	$a1, $sp, 128
 	jirl	$ra, $a2, 0
-	fld.d	$fa0, $sp, 136
+	fld.d	$fa0, $sp, 128
 	ftintrz.w.d	$fa1, $fa0
 	movfr2gr.s	$a0, $fa1
 	movgr2fr.w	$fa1, $a0
@@ -6048,7 +6035,7 @@ sqlite3_step:                           # @sqlite3_step
 	srai.d	$a4, $a0, 28
 	add.d	$a3, $a4, $a3
 	add.d	$a3, $a1, $a3
-	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	bne	$a2, $s0, .LBB59_95
 # %bb.94:                               #   in Loop: Header=BB59_3 Depth=1
 	srai.d	$a0, $a0, 32
@@ -6066,7 +6053,7 @@ sqlite3_step:                           # @sqlite3_step
 	st.d	$a0, $s4, 120
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	st.w	$a0, $s4, 128
 	ori	$a0, $zero, 259
 	st.h	$a0, $s4, 134
@@ -6141,7 +6128,7 @@ sqlite3_step:                           # @sqlite3_step
 	jirl	$ra, $ra, 0
 	st.d	$s5, $s4, 24
 	st.d	$zero, $s4, 40
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 .LBB59_107:                             # %sqlite3VdbeMemGrow.exit.i
                                         #   in Loop: Header=BB59_3 Depth=1
 	ori	$a0, $zero, 98
@@ -6191,7 +6178,7 @@ sqlite3_step:                           # @sqlite3_step
 	st.b	$zero, $s5, 0
 	b	.LBB59_156
 .LBB59_116:                             #   in Loop: Header=BB59_3 Depth=1
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
 	ld.d	$s4, $a3, 16
 	ld.w	$a3, $s4, 12
 	pcalau12i	$a0, %pc_hi20(.L.str.184)
@@ -6219,7 +6206,7 @@ sqlite3_step:                           # @sqlite3_step
 	add.d	$a0, $a2, $s0
 	ld.d	$a1, $s1, 0
 	slli.d	$a2, $s4, 32
-	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
 	srai.d	$a2, $a2, 32
 	pcaddu18i	$ra, %call36(memcpy)
@@ -6388,7 +6375,7 @@ sqlite3_step:                           # @sqlite3_step
 	ori	$a0, $zero, 2
 	st.w	$a0, $s5, 80
 	ld.d	$a1, $s5, 72
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.bu	$a3, $a0, 3
 	pcalau12i	$a0, %pc_hi20(.L.str.40)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.40)
@@ -6461,7 +6448,7 @@ sqlite3_step:                           # @sqlite3_step
 	ori	$a1, $zero, 41
 	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
 	stx.h	$a1, $s4, $a0
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB59_137
 .LBB59_159:
 	ori	$a0, $zero, 21
@@ -6540,21 +6527,20 @@ sqlite3_step:                           # @sqlite3_step
 	ori	$a0, $zero, 255
 .LBB59_178:                             # %sqlite3ApiExit.exit
 	and	$a0, $a0, $s4
-	fld.d	$fs2, $sp, 624                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 632                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 640                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 648                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 656                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 664                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 672                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 680                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 688                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 696                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 704                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 712                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 720                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 728                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 736
+	fld.d	$fs1, $sp, 616                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 624                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 632                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 640                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 648                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 656                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 664                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 672                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 680                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 688                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 696                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 704                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 712                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 720
 	ret
 .LBB59_179:
 	beqz	$s1, .LBB59_182

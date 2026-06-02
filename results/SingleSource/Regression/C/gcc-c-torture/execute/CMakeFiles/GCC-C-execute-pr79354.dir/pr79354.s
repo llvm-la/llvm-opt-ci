@@ -14,17 +14,10 @@ foo:                                    # @foo
 # %bb.1:                                # %.split
 	pcalau12i	$a2, %pc_hi20(d)
 	ld.d	$a2, $a2, %pc_lo12(d)
-	srli.d	$a3, $a2, 1
-	andi	$a4, $a2, 1
-	or	$a3, $a4, $a3
-	movgr2fr.d	$fa0, $a3
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a3, $a2, 0
-	movgr2fr.d	$fa1, $a2
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a3
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $a2, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	ori	$a2, $zero, 31
 	st.w	$a2, $a1, %pc_lo12(g)
 	pcalau12i	$a2, %pc_hi20(b)

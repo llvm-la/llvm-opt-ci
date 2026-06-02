@@ -175,20 +175,9 @@ OpenSndFile:                            # @OpenSndFile
 	fcvt.s.d	$fa0, $fa0
 	ffint.s.w	$fa1, $fa3
 	fmul.s	$fa0, $fa1, $fa0
-	lu12i.w	$a0, 389120
-	movgr2fr.w	$fa1, $a0
-	fcmp.clt.s	$fcc0, $fa0, $fa1
-	ftintrz.l.s	$fa2, $fa0
-	movfr2gr.d	$a0, $fa2
-	movcf2gr	$a1, $fcc0
-	maskeqz	$a0, $a0, $a1
-	fsub.s	$fa0, $fa0, $fa1
-	ftintrz.l.s	$fa0, $fa0
-	movfr2gr.d	$a2, $fa0
-	lu52i.d	$a3, $zero, -2048
-	xor	$a2, $a2, $a3
-	masknez	$a1, $a2, $a1
-	or	$a0, $a0, $a1
+	fcvt.d.s	$fa0, $fa0
+	vftintrz.lu.d	$vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	b	.LBB1_16
 .LBB1_14:
 	pcalau12i	$a0, %got_pc_hi20(stdin)

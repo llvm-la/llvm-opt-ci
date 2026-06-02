@@ -1688,25 +1688,24 @@ GCC_except_table4:
 _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 112                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 104                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 88                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 72                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 64                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1723,7 +1722,6 @@ _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	.cfi_offset 58, -112
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
-	.cfi_offset 61, -136
 	move	$fp, $a1
 	ld.d	$a1, $a1, 16
 	move	$s2, $a0
@@ -1731,7 +1729,7 @@ _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	pcaddu18i	$ra, %call36(_ZN10polynomialIdE4log2Em)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 16
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN10polynomialIdE4log2Em)
 	jirl	$ra, $ra, 0
@@ -1791,62 +1789,53 @@ _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	st.d	$zero, $a4, 8
 	bne	$a0, $s1, .LBB5_2
 # %bb.5:                                # %_ZN10polynomialIdE11bit_reverseERKS0_.exit
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	bnez	$a0, .LBB5_7
 	b	.LBB5_20
 .LBB5_6:                                # %_ZN10polynomialISt7complexIdEEC2Em.exit.thread.i
 	st.d	$s0, $s2, 8
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB5_20
 .LBB5_7:                                # %.lr.ph61.preheader
-	move	$a2, $zero
+	move	$a1, $zero
+	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI5_0)
 	ori	$s1, $zero, 1
 	ori	$s4, $zero, 2
-	lu12i.w	$a0, 256
-	lu52i.d	$a0, $a0, 1107
-	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
-	fld.d	$fs0, $a1, %pc_lo12(.LCPI5_0)
-	movgr2fr.d	$fs5, $a0
 	movgr2fr.d	$fs1, $zero
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB5_9
 	.p2align	4, , 16
 .LBB5_8:                                #   in Loop: Header=BB5_9 Depth=1
 	slli.d	$s4, $s4, 1
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
-	addi.d	$a2, $a2, 1
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$a1, $a1, 1
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	slli.d	$s1, $s1, 1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	beq	$a2, $a0, .LBB5_20
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB5_20
 .LBB5_9:                                # %.lr.ph61
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_10 Depth 2
                                         #       Child Loop BB5_14 Depth 3
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	srli.d	$a0, $s4, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs5
-	move	$a0, $s4
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa2, $fa1, $fa0
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	vinsgr2vr.d	$vr0, $s4, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr2, $vr0, 0
 	fmov.d	$fa0, $fs1
 	fmov.d	$fa1, $fs0
+                                        # kill: def $f2_64 killed $f2_64 killed $vr2
 	fmov.d	$fa3, $fs1
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
 	move	$s2, $zero
-	addi.d	$s8, $s1, -1
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
-	slli.d	$s5, $s1, 4
-	slli.d	$s6, $s4, 4
+	addi.d	$s6, $s1, -1
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	slli.d	$s7, $s1, 4
+	slli.d	$s8, $s4, 4
 	vldi	$vr8, -912
 	fmov.d	$fs2, $fs1
 	.p2align	4, , 16
@@ -1873,20 +1862,20 @@ _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	addi.d	$s0, $s0, 16
 	fmov.d	$fs2, $fa3
 	fmov.d	$ft0, $fa2
-	bgeu	$s8, $s2, .LBB5_10
+	bgeu	$s6, $s2, .LBB5_10
 	b	.LBB5_8
 	.p2align	4, , 16
 .LBB5_13:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB5_10 Depth=2
 	move	$s1, $s0
-	move	$s7, $s2
+	move	$s5, $s2
 	.p2align	4, , 16
 .LBB5_14:                               # %.lr.ph
                                         #   Parent Loop BB5_9 Depth=1
                                         #     Parent Loop BB5_10 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$s3, $s1, $s5
-	fldx.d	$fa2, $s1, $s5
+	add.d	$s3, $s1, $s7
+	fldx.d	$fa2, $s1, $s7
 	fld.d	$fa3, $s3, 8
 	fmul.d	$fa4, $ft0, $fa2
 	fmul.d	$fa5, $fs2, $fa3
@@ -1907,10 +1896,10 @@ _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	fsub.d	$fa3, $fa3, $fa5
 	fst.d	$fa2, $s3, 0
 	fst.d	$fa3, $s3, 8
-	add.d	$s7, $s7, $s4
+	add.d	$s5, $s5, $s4
 	addi.d	$a1, $a0, -1
-	add.d	$s1, $s1, $s6
-	bgeu	$a1, $s7, .LBB5_14
+	add.d	$s1, $s1, $s8
+	bgeu	$a1, $s5, .LBB5_14
 	b	.LBB5_11
 .LBB5_16:                               #   in Loop: Header=BB5_14 Depth=3
 	fcmp.cor.d	$fcc0, $fa5, $fa5
@@ -1948,24 +1937,23 @@ _ZN10polynomialIdE3fftERKS0_:           # @_ZN10polynomialIdE3fftERKS0_
 	fmov.d	$fa1, $fs3
 	b	.LBB5_12
 .LBB5_20:                               # %._crit_edge62
-	fld.d	$fs5, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 80                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 88                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 96                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 104                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 112                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	fld.d	$fs4, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end5:
 	.size	_ZN10polynomialIdE3fftERKS0_, .Lfunc_end5-_ZN10polynomialIdE3fftERKS0_
@@ -2002,7 +1990,6 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	fst.d	$fs3, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$fs4, $sp, 80                   # 8-byte Folded Spill
 	fst.d	$fs5, $sp, 72                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 64                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2020,44 +2007,43 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
 	.cfi_offset 61, -136
-	.cfi_offset 62, -144
-	move	$s0, $a1
+	move	$fp, $a1
 	ld.d	$a1, $a1, 16
 	move	$s2, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN10polynomialIdE4log2Em)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s0, 16
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a1, $fp, 16
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZN10polynomialIdE4log2Em)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $s0, 16
+	ld.d	$s0, $fp, 16
 	move	$s3, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	st.d	$a0, $s2, 0
-	st.d	$s5, $s2, 16
-	srli.d	$a0, $s5, 60
+	st.d	$s0, $s2, 16
+	srli.d	$a0, $s0, 60
 	sltu	$a0, $zero, $a0
-	slli.d	$s4, $s5, 4
+	slli.d	$s4, $s0, 4
 	masknez	$a1, $s4, $a0
 	addi.w	$a2, $zero, -1
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
-	beqz	$s5, .LBB6_7
+	move	$s1, $a0
+	beqz	$s0, .LBB6_7
 # %bb.1:                                # %.lr.ph.i
-	move	$a0, $fp
+	move	$a0, $s1
 	move	$a1, $zero
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	st.d	$fp, $s2, 8
-	ld.d	$a1, $s0, 8
+	st.d	$s1, $s2, 8
+	ld.d	$a1, $fp, 8
 	addi.d	$a2, $s3, -1
 	ori	$a3, $zero, 1
 	sll.w	$a2, $a3, $a2
@@ -2083,80 +2069,69 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
                                         #   in Loop: Header=BB6_2 Depth=1
 	slli.d	$a3, $a3, 4
 	addi.d	$a0, $a0, 1
-	vstx	$vr0, $fp, $a3
-	bne	$a0, $s5, .LBB6_2
+	vstx	$vr0, $s1, $a3
+	bne	$a0, $s0, .LBB6_2
 # %bb.5:                                # %_ZN10polynomialIdE11bit_reverseERKS_ISt7complexIdEE.exit
-	lu12i.w	$a3, 256
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	bnez	$a0, .LBB6_8
 .LBB6_6:                                # %.preheader
-	bnez	$s5, .LBB6_22
+	bnez	$s0, .LBB6_22
 	b	.LBB6_24
 .LBB6_7:                                # %_ZN10polynomialISt7complexIdEEC2Em.exit.thread.i
-	st.d	$fp, $s2, 8
-	lu12i.w	$a3, 256
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	st.d	$s1, $s2, 8
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB6_6
 .LBB6_8:                                # %.lr.ph77.preheader
-	move	$a2, $zero
-	ori	$s1, $zero, 1
-	ori	$s6, $zero, 2
-	lu52i.d	$a0, $a3, 1107
-	pcalau12i	$a1, %pc_hi20(.LCPI6_0)
-	fld.d	$fs0, $a1, %pc_lo12(.LCPI6_0)
-	movgr2fr.d	$fs6, $a0
+	move	$a1, $zero
+	ori	$s0, $zero, 1
+	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI6_0)
+	ori	$s4, $zero, 2
 	movgr2fr.d	$fs1, $zero
 	fneg.d	$fs2, $fs1
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB6_10
 	.p2align	4, , 16
 .LBB6_9:                                #   in Loop: Header=BB6_10 Depth=1
-	slli.d	$s6, $s6, 1
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$a2, $a2, 1
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	slli.d	$s1, $s1, 1
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	beq	$a2, $a0, .LBB6_21
+	slli.d	$s4, $s4, 1
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	addi.d	$a1, $a1, 1
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	slli.d	$s0, $s0, 1
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	beq	$a1, $a0, .LBB6_21
 .LBB6_10:                               # %.lr.ph77
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_11 Depth 2
                                         #       Child Loop BB6_15 Depth 3
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	srli.d	$a0, $s6, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs6
-	move	$a0, $s6
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa2, $fa1, $fa0
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	vinsgr2vr.d	$vr0, $s4, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr2, $vr0, 0
 	fmov.d	$fa0, $fs2
 	fmov.d	$fa1, $fs0
+                                        # kill: def $f2_64 killed $f2_64 killed $vr2
 	fmov.d	$fa3, $fs1
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
-	move	$s4, $zero
-	addi.d	$s3, $s1, -1
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	slli.d	$s2, $s1, 4
-	slli.d	$s7, $s6, 4
+	move	$s2, $zero
+	addi.d	$s6, $s0, -1
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	slli.d	$s7, $s0, 4
+	slli.d	$s8, $s4, 4
 	vldi	$vr8, -912
-	move	$s1, $fp
 	fmov.d	$fs3, $fs1
 	.p2align	4, , 16
 .LBB6_11:                               # %.preheader68
                                         #   Parent Loop BB6_10 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB6_15 Depth 3
-	ld.d	$a0, $s0, 16
+	ld.d	$a0, $fp, 16
 	addi.d	$a1, $a0, -1
-	bgeu	$a1, $s4, .LBB6_14
+	bgeu	$a1, $s2, .LBB6_14
 .LBB6_12:                               # %._crit_edge
                                         #   in Loop: Header=BB6_11 Depth=2
 	fmul.d	$fa2, $fa0, $ft0
@@ -2169,25 +2144,25 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	bceqz	$fcc0, .LBB6_19
 .LBB6_13:                               # %_ZNSt7complexIdEmLIdEERS0_RKS_IT_E.exit
                                         #   in Loop: Header=BB6_11 Depth=2
-	addi.d	$s4, $s4, 1
+	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 16
 	fmov.d	$fs3, $fa3
 	fmov.d	$ft0, $fa2
-	bgeu	$s3, $s4, .LBB6_11
+	bgeu	$s6, $s2, .LBB6_11
 	b	.LBB6_9
 	.p2align	4, , 16
 .LBB6_14:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB6_11 Depth=2
-	move	$fp, $s1
-	move	$s8, $s4
+	move	$s0, $s1
+	move	$s5, $s2
 	.p2align	4, , 16
 .LBB6_15:                               # %.lr.ph
                                         #   Parent Loop BB6_10 Depth=1
                                         #     Parent Loop BB6_11 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$s5, $fp, $s2
-	fldx.d	$fa2, $fp, $s2
-	fld.d	$fa3, $s5, 8
+	add.d	$s3, $s0, $s7
+	fldx.d	$fa2, $s0, $s7
+	fld.d	$fa3, $s3, 8
 	fmul.d	$fa4, $ft0, $fa2
 	fmul.d	$fa5, $fs3, $fa3
 	fmul.d	$fa6, $ft0, $fa3
@@ -2197,20 +2172,20 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	fadd.d	$fa5, $fa7, $fa6
 	bceqz	$fcc0, .LBB6_17
 .LBB6_16:                               #   in Loop: Header=BB6_15 Depth=3
-	fld.d	$fa2, $fp, 0
-	fld.d	$fa3, $fp, 8
+	fld.d	$fa2, $s0, 0
+	fld.d	$fa3, $s0, 8
 	fadd.d	$fa6, $fa4, $fa2
 	fadd.d	$fa7, $fa5, $fa3
-	fst.d	$fa6, $fp, 0
-	fst.d	$fa7, $fp, 8
+	fst.d	$fa6, $s0, 0
+	fst.d	$fa7, $s0, 8
 	fsub.d	$fa2, $fa2, $fa4
 	fsub.d	$fa3, $fa3, $fa5
-	fst.d	$fa2, $s5, 0
-	fst.d	$fa3, $s5, 8
-	add.d	$s8, $s8, $s6
+	fst.d	$fa2, $s3, 0
+	fst.d	$fa3, $s3, 8
+	add.d	$s5, $s5, $s4
 	addi.d	$a1, $a0, -1
-	add.d	$fp, $fp, $s7
-	bgeu	$a1, $s8, .LBB6_15
+	add.d	$s0, $s0, $s8
+	bgeu	$a1, $s5, .LBB6_15
 	b	.LBB6_12
 .LBB6_17:                               #   in Loop: Header=BB6_15 Depth=3
 	fcmp.cor.d	$fcc0, $fa5, $fa5
@@ -2224,7 +2199,7 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
 	vld	$vr8, $sp, 16                   # 16-byte Folded Reload
-	ld.d	$a0, $s0, 16
+	ld.d	$a0, $fp, 16
 	fmov.d	$fa4, $fa0
 	fmov.d	$fa0, $fs5
 	fmov.d	$fa5, $fa1
@@ -2248,34 +2223,23 @@ _ZN10polynomialIdE11inverse_fftERKS_ISt7complexIdEE: # @_ZN10polynomialIdE11inve
 	fmov.d	$fa1, $fs4
 	b	.LBB6_13
 .LBB6_21:                               # %.preheader.loopexit
-	ld.d	$s5, $s0, 16
-	lu12i.w	$a3, 256
-	beqz	$s5, .LBB6_24
+	ld.d	$s0, $fp, 16
+	beqz	$s0, .LBB6_24
 .LBB6_22:                               # %.lr.ph79
 	move	$a0, $zero
-	srli.d	$a1, $s5, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu52i.d	$a1, $a3, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	move	$a1, $s5
-	lu12i.w	$a2, 275200
-	bstrins.d	$a1, $a2, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $s0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	vreplvei.d	$vr0, $vr0, 0
 	.p2align	4, , 16
 .LBB6_23:                               # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $fp, 0
+	vld	$vr1, $s1, 0
 	vfdiv.d	$vr1, $vr1, $vr0
-	vst	$vr1, $fp, 0
+	vst	$vr1, $s1, 0
 	addi.d	$a0, $a0, 1
-	addi.d	$fp, $fp, 16
-	bltu	$a0, $s5, .LBB6_23
+	addi.d	$s1, $s1, 16
+	bltu	$a0, $s0, .LBB6_23
 .LBB6_24:                               # %._crit_edge80
-	fld.d	$fs6, $sp, 64                   # 8-byte Folded Reload
 	fld.d	$fs5, $sp, 72                   # 8-byte Folded Reload
 	fld.d	$fs4, $sp, 80                   # 8-byte Folded Reload
 	fld.d	$fs3, $sp, 88                   # 8-byte Folded Reload

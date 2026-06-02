@@ -43,26 +43,17 @@ ma_malloc:                              # @ma_malloc
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_2
 # %bb.1:
-	srli.d	$a1, $fp, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	pcalau12i	$a2, %pc_hi20(counter_malloc)
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	lu12i.w	$a1, 275200
-	bstrins.d	$fp, $a1, 63, 32
-	ld.w	$a1, $a2, %pc_lo12(counter_malloc)
-	fsub.d	$fa0, $fa0, $fa1
-	movgr2fr.d	$fa1, $fp
-	pcalau12i	$a3, %pc_hi20(size_malloc)
-	fld.d	$fa2, $a3, %pc_lo12(size_malloc)
-	fadd.d	$fa0, $fa1, $fa0
-	addi.d	$a1, $a1, 1
-	st.w	$a1, $a2, %pc_lo12(counter_malloc)
-	fadd.d	$fa0, $fa2, $fa0
-	fst.d	$fa0, $a3, %pc_lo12(size_malloc)
+	pcalau12i	$a1, %pc_hi20(counter_malloc)
+	ld.w	$a2, $a1, %pc_lo12(counter_malloc)
+	addi.d	$a2, $a2, 1
+	st.w	$a2, $a1, %pc_lo12(counter_malloc)
+	pcalau12i	$a1, %pc_hi20(size_malloc)
+	fld.d	$fa0, $a1, %pc_lo12(size_malloc)
+	vinsgr2vr.d	$vr1, $fp, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
+	fadd.d	$fa0, $fa0, $fa1
+	fst.d	$fa0, $a1, %pc_lo12(size_malloc)
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload

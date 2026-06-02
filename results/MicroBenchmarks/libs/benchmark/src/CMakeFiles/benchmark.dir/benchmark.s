@@ -988,27 +988,24 @@ _ZN9benchmark5State11PauseTimingEv:     # @_ZN9benchmark5State11PauseTimingEv
 	move	$s6, $zero
 	move	$s7, $zero
 	addi.d	$s1, $sp, 64
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fs0, $a1
-	lu12i.w	$fp, 275200
+	ori	$s8, $zero, 16
 	b	.LBB8_13
 	.p2align	4, , 16
 .LBB8_10:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i.i.i
                                         #   in Loop: Header=BB8_13 Depth=1
-	st.d	$a1, $s2, 0
+	st.d	$a1, $fp, 0
 	ld.d	$a0, $sp, 64
-	ld.d	$s3, $sp, 56
-	st.d	$a0, $s2, 16
+	ld.d	$s2, $sp, 56
+	st.d	$a0, $fp, 16
 .LBB8_11:                               # %_ZNSt6vectorISt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEdESaIS7_EE9push_backEOS7_.exit.thread
                                         #   in Loop: Header=BB8_13 Depth=1
-	st.d	$s3, $s2, 8
+	st.d	$s2, $fp, 8
 	fld.d	$fa0, $sp, 80
 	st.d	$s1, $sp, 48
 	st.d	$zero, $sp, 56
 	st.b	$zero, $sp, 64
-	fst.d	$fa0, $s2, 32
-	addi.d	$a0, $s2, 40
+	fst.d	$fa0, $fp, 32
+	addi.d	$a0, $fp, 40
 	st.d	$a0, $sp, 32
 .LBB8_12:                               # %_ZNSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEdED2Ev.exit
                                         #   in Loop: Header=BB8_13 Depth=1
@@ -1021,7 +1018,7 @@ _ZN9benchmark5State11PauseTimingEv:     # @_ZN9benchmark5State11PauseTimingEv
 	addi.d	$s6, $s6, 32
 	bgeu	$s7, $a1, .LBB8_26
 .LBB8_13:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s8, $s0, 0
+	ld.d	$fp, $s0, 0
 	ld.d	$s4, $s0, -280
 	add.d	$a1, $a0, $s6
 	st.d	$s1, $sp, 48
@@ -1029,8 +1026,7 @@ _ZN9benchmark5State11PauseTimingEv:     # @_ZN9benchmark5State11PauseTimingEv
 	ldx.d	$s3, $a0, $s6
 	st.d	$s2, $sp, 88
 	move	$a0, $s1
-	ori	$a1, $zero, 16
-	bltu	$s2, $a1, .LBB8_16
+	bltu	$s2, $s8, .LBB8_16
 # %bb.14:                               # %.noexc.i.i
                                         #   in Loop: Header=BB8_13 Depth=1
 .Ltmp27:                                # EH_LABEL
@@ -1064,38 +1060,29 @@ _ZN9benchmark5State11PauseTimingEv:     # @_ZN9benchmark5State11PauseTimingEv
 	jirl	$ra, $ra, 0
 .LBB8_20:                               # %.noexc11
                                         #   in Loop: Header=BB8_13 Depth=1
-	srli.d	$a0, $s8, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$s8, $fp, 63, 32
-	movgr2fr.d	$fa1, $s8
-	fadd.d	$fa0, $fa1, $fa0
-	srli.d	$a0, $s4, 32
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa1, $a0
+	vinsgr2vr.d	$vr0, $fp, 0
+	vffint.d.lu	$vr0, $vr0
 	ld.d	$a0, $sp, 88
 	ld.d	$a1, $sp, 48
-	fsub.d	$fa1, $fa1, $fs0
-	bstrins.d	$s4, $fp, 63, 32
+	vreplvei.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s4, 0
 	st.d	$a0, $sp, 56
 	stx.b	$zero, $a1, $a0
-	ld.d	$s2, $sp, 32
+	ld.d	$fp, $sp, 32
 	ld.d	$a0, $sp, 40
-	movgr2fr.d	$fa2, $s4
-	fadd.d	$fa1, $fa2, $fa1
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fsub.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $sp, 80
-	beq	$s2, $a0, .LBB8_23
+	beq	$fp, $a0, .LBB8_23
 # %bb.21:                               #   in Loop: Header=BB8_13 Depth=1
-	addi.d	$a0, $s2, 16
-	st.d	$a0, $s2, 0
+	addi.d	$a0, $fp, 16
+	st.d	$a0, $fp, 0
 	ld.d	$a1, $sp, 48
 	bne	$a1, $s1, .LBB8_10
 # %bb.22:                               #   in Loop: Header=BB8_13 Depth=1
-	ld.d	$s3, $sp, 56
-	addi.d	$a2, $s3, 1
+	ld.d	$s2, $sp, 56
+	addi.d	$a2, $s2, 1
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
