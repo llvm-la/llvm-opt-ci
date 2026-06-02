@@ -41,17 +41,10 @@ bilinearKernel:                         # @bilinearKernel
                                         #     Child Loop BB0_13 Depth 2
                                         #     Child Loop BB0_8 Depth 2
 	bstrpick.d	$t2, $a4, 31, 2
-	srli.d	$t1, $a4, 1
-	andi	$t3, $a4, 1
-	or	$t1, $t3, $t1
-	movgr2fr.d	$fa2, $t1
-	ffint.s.l	$fa2, $fa2
-	fadd.s	$fa2, $fa2, $fa2
-	slti	$t1, $a4, 0
-	movgr2fr.d	$fa3, $a4
-	ffint.s.l	$fa3, $fa3
-	movgr2cf	$fcc0, $t1
-	fsel	$fa2, $fa3, $fa2, $fcc0
+	vinsgr2vr.d	$vr2, $a4, 0
+	vffint.d.lu	$vr2, $vr2
+	vreplvei.d	$vr2, $vr2, 0
+	fcvt.s.d	$fa2, $fa2
 	fmul.s	$fa2, $fa2, $fa0
 	movgr2fr.d	$fa3, $t2
 	ffint.s.l	$fa3, $fa3

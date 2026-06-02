@@ -383,17 +383,10 @@ _ZN12CProfileNode6ReturnEv:             # @_ZN12CProfileNode6ReturnEv
 	add.d	$a0, $a0, $a3
 	add.d	$a1, $a1, $a4
 	sub.d	$a0, $a0, $a1
-	srli.d	$a1, $a0, 1
-	andi	$a2, $a0, 1
-	or	$a1, $a2, $a1
-	movgr2fr.d	$fa0, $a1
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a1, $a0, 0
-	movgr2fr.d	$fa1, $a0
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a1
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	lu12i.w	$a0, 280480
 	fld.s	$fa1, $fp, 12
 	movgr2fr.w	$fa2, $a0
@@ -650,17 +643,10 @@ _ZN15CProfileManager12Stop_ProfileEv:   # @_ZN15CProfileManager12Stop_ProfileEv
 	add.d	$a0, $a0, $a3
 	add.d	$a1, $a1, $a4
 	sub.d	$a0, $a0, $a1
-	srli.d	$a1, $a0, 1
-	andi	$a2, $a0, 1
-	or	$a1, $a2, $a1
-	movgr2fr.d	$fa0, $a1
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a1, $a0, 0
-	movgr2fr.d	$fa1, $a0
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a1
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	lu12i.w	$a0, 280480
 	fld.s	$fa1, $s0, 12
 	movgr2fr.w	$fa2, $a0
@@ -794,17 +780,10 @@ _ZN15CProfileManager20Get_Time_Since_ResetEv: # @_ZN15CProfileManager20Get_Time_
 	add.d	$a0, $a0, $a3
 	add.d	$a1, $a1, $a4
 	sub.d	$a0, $a0, $a1
-	srli.d	$a1, $a0, 1
-	andi	$a2, $a0, 1
-	or	$a1, $a2, $a1
-	movgr2fr.d	$fa0, $a1
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a1, $a0, 0
-	movgr2fr.d	$fa1, $a0
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a1
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	lu12i.w	$a0, 280480
 	movgr2fr.w	$fa1, $a0
 	fdiv.s	$fa0, $fa0, $fa1
@@ -895,17 +874,10 @@ _ZN15CProfileManager13dumpRecursiveEP16CProfileIteratori: # @_ZN15CProfileManage
 	add.d	$a0, $a0, $a3
 	add.d	$a1, $a1, $a4
 	sub.d	$a0, $a0, $a1
-	srli.d	$a1, $a0, 1
-	andi	$a2, $a0, 1
-	or	$a1, $a2, $a1
-	movgr2fr.d	$fa0, $a1
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a1, $a0, 0
-	movgr2fr.d	$fa1, $a0
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a1
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	lu12i.w	$a0, 280480
 	movgr2fr.w	$fa1, $a0
 	fdiv.s	$fs0, $fa0, $fa1

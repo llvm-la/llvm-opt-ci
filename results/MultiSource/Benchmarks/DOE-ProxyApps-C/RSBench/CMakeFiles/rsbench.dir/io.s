@@ -687,7 +687,7 @@ print_input_summary:                    # @print_input_summary
 	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	move	$s0, $a0
+	move	$fp, $a0
 	vld	$vr0, $a0, 16
 	vld	$vr1, $a0, 0
 	vst	$vr0, $sp, 32
@@ -695,7 +695,7 @@ print_input_summary:                    # @print_input_summary
 	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(get_mem_estimate)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.Lstr.12)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.12)
 	pcaddu18i	$ra, %call36(puts)
@@ -704,7 +704,7 @@ print_input_summary:                    # @print_input_summary
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 12
+	ld.w	$a0, $fp, 12
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.Lstr.13)
 	addi.d	$a1, $a1, %pc_lo12(.Lstr.13)
@@ -715,7 +715,7 @@ print_input_summary:                    # @print_input_summary
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 28
+	ld.w	$a0, $fp, 28
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.Lstr.15)
@@ -727,7 +727,7 @@ print_input_summary:                    # @print_input_summary
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, 4
+	ld.w	$a1, $fp, 4
 	pcalau12i	$a0, %pc_hi20(.L.str.35)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.35)
 	pcaddu18i	$ra, %call36(printf)
@@ -736,7 +736,7 @@ print_input_summary:                    # @print_input_summary
 	addi.d	$a0, $a0, %pc_lo12(.L.str.36)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, 16
+	ld.w	$a1, $fp, 16
 	ori	$a0, $zero, 999
 	lu12i.w	$s1, 244
 	blt	$a0, $a1, .LBB6_2
@@ -837,7 +837,7 @@ print_input_summary:                    # @print_input_summary
 	addi.d	$a0, $a0, %pc_lo12(.L.str.37)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, 20
+	ld.w	$a1, $fp, 20
 	ori	$a0, $zero, 999
 	blt	$a0, $a1, .LBB6_9
 # %bb.8:
@@ -937,7 +937,7 @@ print_input_summary:                    # @print_input_summary
 	addi.d	$a0, $a0, %pc_lo12(.L.str.38)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s0, 8
+	ld.w	$a1, $fp, 8
 	ori	$a0, $zero, 999
 	blt	$a0, $a1, .LBB6_16
 # %bb.15:
@@ -1033,23 +1033,14 @@ print_input_summary:                    # @print_input_summary
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 .LBB6_21:                               # %fancy_int.exit6
-	ld.w	$a1, $s0, 0
+	ld.w	$a1, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.39)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.39)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	srli.d	$a0, $fp, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	lu12i.w	$a0, 256
-	lu52i.d	$a0, $a0, 1107
-	movgr2fr.d	$fa1, $a0
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a0, 275200
-	bstrins.d	$fp, $a0, 63, 32
-	movgr2fr.d	$fa1, $fp
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $s0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	lu52i.d	$a0, $zero, 1013
 	movgr2fr.d	$fa1, $a0
 	fmul.d	$fa0, $fa0, $fa1

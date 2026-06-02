@@ -20,8 +20,9 @@ rn:                                     # @rn
 	slli.d	$a3, $a2, 31
 	sub.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	ffint.d.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	lu12i.w	$a2, -1024
 	lu52i.d	$a2, $a2, 1053
 	movgr2fr.d	$fa1, $a2

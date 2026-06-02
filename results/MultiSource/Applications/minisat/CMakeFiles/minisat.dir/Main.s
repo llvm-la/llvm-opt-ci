@@ -81,31 +81,17 @@ _Z10printStatsR6Solver:                 # @_Z10printStatsR6Solver
 	ld.d	$a1, $fp, 120
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $fp, 112
-	srli.d	$a3, $a1, 1
-	andi	$a4, $a1, 1
-	or	$a3, $a4, $a3
-	movgr2fr.d	$fa0, $a3
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a3, $a1, 0
-	movgr2fr.d	$fa1, $a1
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a3
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	lu12i.w	$a1, 273536
 	movgr2fr.w	$fa1, $a1
 	fmul.s	$fa0, $fa0, $fa1
-	srli.d	$a1, $a2, 1
-	andi	$a3, $a2, 1
-	or	$a1, $a3, $a1
-	movgr2fr.d	$fa1, $a1
-	ffint.s.l	$fa1, $fa1
-	fadd.s	$fa1, $fa1, $fa1
-	slti	$a1, $a2, 0
-	movgr2fr.d	$fa2, $a2
-	ffint.s.l	$fa2, $fa2
-	movgr2cf	$fcc0, $a1
-	fsel	$fa1, $fa2, $fa1, $fcc0
+	vinsgr2vr.d	$vr1, $a2, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
+	fcvt.s.d	$fa1, $fa1
 	fdiv.s	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a3, $fa0
@@ -137,28 +123,12 @@ _Z10printStatsR6Solver:                 # @_Z10printStatsR6Solver
 	sub.d	$a3, $a1, $a2
 	ori	$a4, $zero, 100
 	mul.d	$a3, $a3, $a4
-	srli.d	$a4, $a3, 32
-	lu52i.d	$a5, $zero, 1107
-	or	$a4, $a4, $a5
-	movgr2fr.d	$fa0, $a4
-	lu12i.w	$a4, 256
-	lu52i.d	$a4, $a4, 1107
-	movgr2fr.d	$fa1, $a4
-	fsub.d	$fa0, $fa0, $fa1
-	bstrpick.d	$a3, $a3, 31, 2
-	slli.d	$a3, $a3, 2
-	lu52i.d	$a4, $zero, 1075
-	or	$a3, $a3, $a4
-	movgr2fr.d	$fa2, $a3
-	fadd.d	$fa0, $fa2, $fa0
-	srli.d	$a3, $a1, 32
-	or	$a3, $a3, $a5
-	movgr2fr.d	$fa2, $a3
-	fsub.d	$fa1, $fa2, $fa1
-	lu12i.w	$a3, 275200
-	bstrins.d	$a1, $a3, 63, 32
-	movgr2fr.d	$fa2, $a1
-	fadd.d	$fa1, $fa2, $fa1
+	vinsgr2vr.d	$vr0, $a3, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $a1, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	movfr2gr.d	$a3, $fa0
 	pcalau12i	$a1, %pc_hi20(.L.str.8)

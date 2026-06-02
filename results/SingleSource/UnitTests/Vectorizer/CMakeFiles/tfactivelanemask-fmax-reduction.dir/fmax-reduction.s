@@ -1676,17 +1676,10 @@ _ZL19checkVectorFunctionIfEvSt8functionIFT_PS1_jEES4_PKc: # @_ZL19checkVectorFun
 	xor	$t7, $t8, $t7
 	srli.d	$t8, $t7, 18
 	xor	$t7, $t8, $t7
-	srli.d	$t8, $t7, 1
-	andi	$s3, $t7, 1
-	or	$t8, $s3, $t8
-	movgr2fr.d	$ft4, $t8
-	ffint.s.l	$ft4, $ft4
-	fadd.s	$ft4, $ft4, $ft4
-	slti	$t8, $t7, 0
-	movgr2fr.d	$ft5, $t7
-	ffint.s.l	$ft5, $ft5
-	movgr2cf	$fcc0, $t8
-	fsel	$ft4, $ft5, $ft4, $fcc0
+	vinsgr2vr.d	$vr12, $t7, 0
+	vffint.d.lu	$vr12, $vr12
+	vreplvei.d	$vr12, $vr12, 0
+	fcvt.s.d	$ft4, $ft4
 	fmadd.s	$ft3, $ft4, $ft2, $ft3
 	addi.d	$t5, $t5, -1
 	fmul.s	$ft2, $ft2, $fa5

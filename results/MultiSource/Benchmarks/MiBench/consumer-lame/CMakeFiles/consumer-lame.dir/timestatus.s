@@ -80,8 +80,10 @@ ts_calc_times:                          # @ts_calc_times
 	movgr2fr.d	$fa1, $a3
 	ffint.s.l	$fa1, $fa1
 	fmul.s	$fa1, $fa0, $fa1
-	movgr2fr.d	$fa2, $a2
-	ffint.s.l	$fa2, $fa2
+	vinsgr2vr.d	$vr2, $a2, 0
+	vffint.d.lu	$vr2, $vr2
+	vreplvei.d	$vr2, $vr2, 0
+	fcvt.s.d	$fa2, $fa2
 	fdiv.s	$fa1, $fa1, $fa2
 	movgr2fr.w	$fa2, $a1
 	ffint.s.w	$fa2, $fa2
@@ -177,13 +179,15 @@ timestatus:                             # @timestatus
 	ori	$a0, $a0, 1024
 	movgr2fr.w	$fa1, $a0
 	fdiv.s	$fa4, $fa0, $fa1
-	movgr2fr.d	$fa6, $fp
 	blez	$fp, .LBB3_8
 # %bb.6:
 	movgr2fr.d	$fa0, $s0
 	ffint.s.l	$fa0, $fa0
 	fmul.s	$fa1, $fa0, $fa2
-	ffint.s.l	$fa3, $fa6
+	vinsgr2vr.d	$vr3, $fp, 0
+	vffint.d.lu	$vr3, $vr3
+	vreplvei.d	$vr3, $vr3, 0
+	fcvt.s.d	$fa3, $fa3
 	fdiv.s	$fa1, $fa1, $fa3
 	fmul.s	$fa0, $fa4, $fa0
 	fdiv.s	$fa3, $fa0, $fa3
@@ -192,7 +196,7 @@ timestatus:                             # @timestatus
 	fmul.s	$fa0, $fa3, $fa0
 	movgr2fr.w	$fa5, $zero
 	fcmp.cule.s	$fcc0, $fa0, $fa5
-	fsub.s	$fa7, $fa1, $fa2
+	fsub.s	$fa6, $fa1, $fa2
 	bcnez	$fcc0, .LBB3_10
 # %bb.7:
 	mul.d	$a0, $s0, $s1
@@ -216,22 +220,24 @@ timestatus:                             # @timestatus
 	movgr2fr.d	$fa0, $zero
 .LBB3_11:
 	fcvt.d.s	$fa3, $fa3
-	vldi	$vr8, -928
-	fadd.d	$fa5, $fa3, $ft0
+	vldi	$vr7, -928
+	fadd.d	$fa5, $fa3, $fa7
 	fcvt.d.s	$fa1, $fa1
-	fadd.d	$fa3, $fa1, $ft0
-	fcvt.d.s	$fa1, $fa7
-	fadd.d	$fa1, $fa1, $ft0
+	fadd.d	$fa3, $fa1, $fa7
+	fcvt.d.s	$fa1, $fa6
+	fadd.d	$fa1, $fa1, $fa7
 	ori	$a0, $zero, 1
 	bge	$a0, $s0, .LBB3_9
 .LBB3_12:
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	fld.d	$fa7, $a0, %pc_lo12(.LCPI3_0)
-	ffint.d.l	$fa6, $fa6
-	fmul.d	$fa6, $fa6, $fa7
-	addi.d	$a3, $s0, -1
-	movgr2fr.d	$fa7, $a3
+	fld.d	$fa6, $a0, %pc_lo12(.LCPI3_0)
+	movgr2fr.d	$fa7, $fp
 	ffint.d.l	$fa7, $fa7
+	fmul.d	$fa6, $fa7, $fa6
+	addi.d	$a3, $s0, -1
+	vinsgr2vr.d	$vr7, $a3, 0
+	vffint.d.lu	$vr7, $vr7
+	vreplvei.d	$vr7, $vr7, 0
 	fdiv.d	$fa6, $fa6, $fa7
 	ftintrz.w.d	$fa6, $fa6
 	movfr2gr.s	$a4, $fa6

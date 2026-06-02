@@ -27,18 +27,9 @@ _ZN9benchmark14StatisticsMeanERKSt6vectorIdSaIdEE: # @_ZN9benchmark14StatisticsM
 # %bb.3:                                # %"_ZNK9benchmark3$_0clERKSt6vectorIdSaIdEE.exit"
 	sub.d	$a0, $a0, $a1
 	srai.d	$a0, $a0, 3
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa1, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa2, $a1
-	fsub.d	$fa1, $fa1, $fa2
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa1, $fa2, $fa1
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	frecip.d	$fa1, $fa1
 	fmul.d	$fa0, $fa1, $fa0
 	ret
@@ -98,8 +89,9 @@ _ZN9benchmark16StatisticsMedianERKSt6vectorIdSaIdEE: # @_ZN9benchmark16Statistic
 	fadd.d	$fa0, $fa0, $fa1
 	bne	$s1, $a0, .LBB1_3
 # %bb.4:                                # %"_ZNK9benchmark3$_0clERKSt6vectorIdSaIdEE.exit.i"
-	movgr2fr.d	$fa1, $a1
-	ffint.d.l	$fa1, $fa1
+	vinsgr2vr.d	$vr1, $a1, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	frecip.d	$fa1, $fa1
 	fmul.d	$fs0, $fa1, $fa0
 	b	.LBB1_22
@@ -292,18 +284,9 @@ _ZN9benchmark16StatisticsStdDevERKSt6vectorIdSaIdEE: # @_ZN9benchmark16Statistic
 	ret
 .LBB2_6:                                # %.lr.ph.i.i.preheader
 	srai.d	$a2, $a2, 3
-	srli.d	$a3, $a2, 32
-	lu52i.d	$a4, $zero, 1107
-	or	$a3, $a3, $a4
-	movgr2fr.d	$fa1, $a3
-	lu12i.w	$a3, 256
-	lu52i.d	$a3, $a3, 1107
-	movgr2fr.d	$fa2, $a3
-	fsub.d	$fa1, $fa1, $fa2
-	lu12i.w	$a3, 275200
-	bstrins.d	$a2, $a3, 63, 32
-	movgr2fr.d	$fa2, $a2
-	fadd.d	$fa1, $fa2, $fa1
+	vinsgr2vr.d	$vr1, $a2, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	frecip.d	$fa2, $fa1
 	fmul.d	$fa0, $fa2, $fa0
 	movgr2fr.d	$fa3, $zero
@@ -359,52 +342,43 @@ _ZN9benchmark12StatisticsCVERKSt6vectorIdSaIdEE: # @_ZN9benchmark12StatisticsCVE
 	ori	$a2, $zero, 2
 	bltu	$a1, $a2, .LBB3_12
 # %bb.2:                                # %.lr.ph.i.i.i.i.preheader
-	movgr2fr.d	$fa1, $zero
+	movgr2fr.d	$fa2, $zero
 	move	$a2, $s0
 	.p2align	4, , 16
 .LBB3_3:                                # %.lr.ph.i.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a2, 0
 	addi.d	$a2, $a2, 8
-	fadd.d	$fa1, $fa1, $fa0
+	fadd.d	$fa2, $fa2, $fa0
 	bne	$a2, $fp, .LBB3_3
 # %bb.4:
-	srli.d	$a2, $a1, 32
-	lu52i.d	$a3, $zero, 1107
-	or	$a2, $a2, $a3
-	movgr2fr.d	$fa0, $a2
-	lu12i.w	$a2, 256
-	lu52i.d	$a2, $a2, 1107
-	movgr2fr.d	$fa2, $a2
-	fsub.d	$fa0, $fa0, $fa2
-	lu12i.w	$a2, 275200
-	bstrins.d	$a1, $a2, 63, 32
-	movgr2fr.d	$fa2, $a1
-	fadd.d	$fa2, $fa2, $fa0
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr1, $vr0, 0
 	movgr2fr.d	$fs0, $zero
 	ori	$a1, $zero, 8
-	frecip.d	$fs1, $fa2
+	frecip.d	$fs1, $fa1
 	fmov.d	$fa0, $fs0
 	beq	$a0, $a1, .LBB3_9
 # %bb.5:                                # %.lr.ph.i.i.i.preheader
-	fmul.d	$fa0, $fs1, $fa1
-	movgr2fr.d	$fa1, $zero
+	fmul.d	$fa0, $fs1, $fa2
+	movgr2fr.d	$fa2, $zero
 	move	$a0, $s0
 	.p2align	4, , 16
 .LBB3_6:                                # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa3, $a0, 0
 	addi.d	$a0, $a0, 8
-	fmadd.d	$fa1, $fa3, $fa3, $fa1
+	fmadd.d	$fa2, $fa3, $fa3, $fa2
 	bne	$a0, $fp, .LBB3_6
 # %bb.7:                                # %"_ZNK9benchmark3$_1clERKSt6vectorIdSaIdEE.exit.i"
-	fmul.d	$fa1, $fs1, $fa1
+	fmul.d	$fa2, $fs1, $fa2
 	vldi	$vr3, -784
-	fadd.d	$fa3, $fa2, $fa3
-	fdiv.d	$fa2, $fa2, $fa3
+	fadd.d	$fa3, $fa1, $fa3
+	fdiv.d	$fa1, $fa1, $fa3
 	fmul.d	$fa0, $fa0, $fa0
-	fsub.d	$fa0, $fa1, $fa0
-	fmul.d	$fa1, $fa2, $fa0
+	fsub.d	$fa0, $fa2, $fa0
+	fmul.d	$fa1, $fa1, $fa0
 	movgr2fr.d	$fa0, $zero
 	fcmp.clt.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB3_9
@@ -1574,18 +1548,9 @@ _ZN9benchmark12ComputeStatsERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	beq	$a1, $a0, .LBB4_201
 # %bb.142:                              # %.lr.ph350
-	srli.d	$a0, $s1, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	lu12i.w	$a0, 256
-	lu52i.d	$a0, $a0, 1107
-	movgr2fr.d	$fa1, $a0
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a0, 275200
-	bstrins.d	$s1, $a0, 63, 32
-	movgr2fr.d	$fa1, $s1
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $s1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	movgr2fr.d	$fa1, $s5
 	ffint.d.l	$fa1, $fa1
 	fdiv.d	$fs1, $fa0, $fa1

@@ -413,20 +413,9 @@ main:                                   # @main
 .LBB0_50:
 	ld.d	$a0, $s1, 24
 	slli.d	$a0, $a0, 2
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	bstrpick.d	$a0, $a0, 31, 2
-	slli.d	$a0, $a0, 2
-	lu52i.d	$a1, $zero, 1075
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	lu52i.d	$a0, $zero, 1013
 	movgr2fr.d	$fa1, $a0
 	fmul.d	$fa0, $fa0, $fa1

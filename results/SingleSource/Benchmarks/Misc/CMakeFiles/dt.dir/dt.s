@@ -56,15 +56,19 @@ main:                                   # @main
 	move	$s5, $zero
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	movgr2fr.d	$fa0, $s3
-	ffint.s.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $s3, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	pcaddu18i	$ra, %call36(cosf)
 	jirl	$ra, $ra, 0
 	fcvt.d.s	$fa0, $fa0
 	fmul.d	$fa0, $fa0, $fs0
 	fstx.d	$fa0, $s1, $s4
-	movgr2fr.d	$fa0, $s5
-	ffint.s.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $s5, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	pcaddu18i	$ra, %call36(sinf)
 	jirl	$ra, $ra, 0
 	fcvt.d.s	$fa0, $fa0

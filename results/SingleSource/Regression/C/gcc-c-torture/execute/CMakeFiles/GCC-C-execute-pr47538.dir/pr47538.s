@@ -33,51 +33,38 @@ foo:                                    # @foo
 	st.d	$zero, $a0, 0
 	ret
 .LBB0_4:                                # %.lr.ph
-	move	$a6, $zero
+	move	$a4, $zero
 	ld.d	$a0, $a0, 16
 	movgr2fr.d	$fa1, $zero
-	ori	$a7, $zero, 1
+	ori	$a5, $zero, 1
 	vldi	$vr2, -912
-	lu52i.d	$a4, $zero, 1107
-	lu12i.w	$a5, 256
-	lu52i.d	$a5, $a5, 1107
-	movgr2fr.d	$fa3, $a5
-	lu12i.w	$a5, 275200
 	.p2align	4, , 16
 .LBB0_5:                                # =>This Inner Loop Header: Depth=1
-	add.d	$t0, $a1, $a6
-	fldx.d	$fa4, $a1, $a6
-	fld.d	$fa5, $t0, 16
-	addi.d	$t0, $a7, 1
-	fsub.d	$fa4, $fa4, $fa5
-	fmul.d	$fa4, $fa0, $fa4
-	srli.d	$t1, $a7, 32
-	or	$t1, $t1, $a4
-	movgr2fr.d	$fa5, $t1
-	fsub.d	$fa5, $fa5, $fa3
-	bstrins.d	$a7, $a5, 63, 32
-	movgr2fr.d	$fa6, $a7
-	fadd.d	$fa5, $fa6, $fa5
-	fdiv.d	$fa4, $fa4, $fa5
-	add.d	$a7, $a0, $a6
-	fst.d	$fa4, $a7, 8
-	fmadd.d	$fa1, $fa2, $fa4, $fa1
+	add.d	$a6, $a1, $a4
+	fldx.d	$fa3, $a1, $a4
+	fld.d	$fa4, $a6, 16
+	addi.d	$a6, $a5, 1
+	fsub.d	$fa3, $fa3, $fa4
+	fmul.d	$fa3, $fa0, $fa3
+	vinsgr2vr.d	$vr4, $a5, 0
+	vffint.d.lu	$vr4, $vr4
+	vreplvei.d	$vr4, $vr4, 0
+	fdiv.d	$fa3, $fa3, $fa4
+	add.d	$a5, $a0, $a4
+	fst.d	$fa3, $a5, 8
+	fmadd.d	$fa1, $fa2, $fa3, $fa1
 	fneg.d	$fa2, $fa2
-	addi.d	$a6, $a6, 8
-	move	$a7, $t0
-	bne	$a2, $t0, .LBB0_5
+	addi.d	$a4, $a4, 8
+	move	$a5, $a6
+	bne	$a2, $a6, .LBB0_5
 # %bb.6:                                # %._crit_edge
 	alsl.d	$a1, $a2, $a1, 3
-	fld.d	$fa4, $a1, -8
+	fld.d	$fa3, $a1, -8
 	slli.d	$a1, $a2, 3
-	fmul.d	$fa0, $fa0, $fa4
-	srli.d	$a2, $a3, 32
-	or	$a2, $a2, $a4
-	movgr2fr.d	$fa4, $a2
-	fsub.d	$fa3, $fa4, $fa3
-	bstrins.d	$a3, $a5, 63, 32
-	movgr2fr.d	$fa4, $a3
-	fadd.d	$fa3, $fa4, $fa3
+	fmul.d	$fa0, $fa0, $fa3
+	vinsgr2vr.d	$vr3, $a3, 0
+	vffint.d.lu	$vr3, $vr3
+	vreplvei.d	$vr3, $vr3, 0
 	vldi	$vr4, -784
 	fadd.d	$fa3, $fa3, $fa4
 	fdiv.d	$fa0, $fa0, $fa3

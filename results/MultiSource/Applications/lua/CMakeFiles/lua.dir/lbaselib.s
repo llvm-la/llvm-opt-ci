@@ -1380,7 +1380,10 @@ luaB_tonumber:                          # @luaB_tonumber
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_tonumber)
 	jirl	$ra, $ra, 0
-	b	.LBB24_11
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(lua_pushnumber)
+	jirl	$ra, $ra, 0
+	b	.LBB24_10
 .LBB24_3:
 	move	$s1, $a0
 	ori	$a1, $zero, 1
@@ -1421,30 +1424,12 @@ luaB_tonumber:                          # @luaB_tonumber
 	addi.d	$s2, $s2, 1
 	bltz	$a2, .LBB24_7
 # %bb.8:
-	beqz	$a1, .LBB24_10
+	beqz	$a1, .LBB24_11
 .LBB24_9:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_pushnil)
 	jirl	$ra, $ra, 0
-	b	.LBB24_12
-.LBB24_10:                              # %.critedge
-	srli.d	$a0, $s0, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	lu12i.w	$a0, 256
-	lu52i.d	$a0, $a0, 1107
-	movgr2fr.d	$fa1, $a0
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a0, 275200
-	bstrins.d	$s0, $a0, 63, 32
-	movgr2fr.d	$fa1, $s0
-	fadd.d	$fa0, $fa1, $fa0
-.LBB24_11:
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(lua_pushnumber)
-	jirl	$ra, $ra, 0
-.LBB24_12:
+.LBB24_10:
 	ori	$a0, $zero, 1
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1453,6 +1438,15 @@ luaB_tonumber:                          # @luaB_tonumber
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
+.LBB24_11:                              # %.critedge
+	vinsgr2vr.d	$vr0, $s0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	move	$a0, $fp
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
+	pcaddu18i	$ra, %call36(lua_pushnumber)
+	jirl	$ra, $ra, 0
+	b	.LBB24_10
 .Lfunc_end24:
 	.size	luaB_tonumber, .Lfunc_end24-luaB_tonumber
                                         # -- End function

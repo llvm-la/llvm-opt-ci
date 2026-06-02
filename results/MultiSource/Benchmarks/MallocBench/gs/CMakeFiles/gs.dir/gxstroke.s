@@ -1148,10 +1148,14 @@ stroke_add:                             # @stroke_add
 	srai.d	$a6, $a4, 63
 	xor	$a4, $a4, $a6
 	sub.d	$a4, $a4, $a6
-	movgr2fr.d	$fa5, $a5
-	ffint.s.l	$fa6, $fa5
-	movgr2fr.d	$fa5, $a4
-	ffint.s.l	$fa7, $fa5
+	vinsgr2vr.d	$vr5, $a5, 0
+	vffint.d.lu	$vr5, $vr5
+	vreplvei.d	$vr5, $vr5, 0
+	fcvt.s.d	$fa6, $fa5
+	vinsgr2vr.d	$vr5, $a4, 0
+	vffint.d.lu	$vr5, $vr5
+	vreplvei.d	$vr5, $vr5, 0
+	fcvt.s.d	$fa7, $fa5
 	movgr2fr.d	$fa5, $a3
 	ffint.s.l	$ft0, $fa5
 	movgr2fr.d	$fa5, $a0

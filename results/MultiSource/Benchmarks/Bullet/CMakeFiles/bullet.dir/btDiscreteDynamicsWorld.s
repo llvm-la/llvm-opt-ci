@@ -9303,17 +9303,10 @@ _ZN12btIDebugDraw15drawSpherePatchERK9btVector3S2_S2_fffffS2_f: # @_ZN12btIDebug
 	bge	$a0, $a1, .LBB44_15
 .LBB44_13:                              # %.peel.next.peel
                                         #   in Loop: Header=BB44_6 Depth=1
-	srli.d	$a0, $s4, 1
-	andi	$a1, $s4, 1
-	or	$a0, $a1, $a0
-	movgr2fr.d	$fa0, $a0
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a0, $s4, 0
-	movgr2fr.d	$fa1, $s4
-	ffint.s.l	$fa1, $fa1
-	movgr2cf	$fcc0, $a0
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $s4, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	fmadd.s	$fs2, $fa0, $fs0, $fs4
 	fmov.s	$fa0, $fs2
 	pcaddu18i	$ra, %call36(sinf)

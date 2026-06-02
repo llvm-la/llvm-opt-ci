@@ -8777,11 +8777,11 @@ init_storage_1:                         # @init_storage_1
 	st.d	$a0, $s4, %pc_lo12(heap)
 .LBB86_91:                              #   in Loop: Header=BB86_92 Depth=1
 	st.w	$s2, $s5, 0
-	movgr2fr.d	$fa0, $s1
+	vinsgr2vr.d	$vr0, $s1, 0
 	ld.d	$s4, $s7, %pc_lo12(inums)
-	ffint.d.l	$fa0, $fa0
+	vffint.d.lu	$vr0, $vr0
 	ld.d	$s6, $s0, %pc_lo12(inums_dim)
-	fst.d	$fa0, $s5, 8
+	vstelm.d	$vr0, $s5, 8, 0
 	stx.d	$s5, $s4, $s3
 	addi.d	$s1, $s1, 1
 	addi.d	$s3, $s3, 8
@@ -12195,15 +12195,15 @@ gc_status:                              # @gc_status
 	.type	gc_info,@function
 gc_info:                                # @gc_info
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 0                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 16                   # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(get_c_long)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
-	bltu	$a1, $a0, .LBB123_18
+	bltu	$a1, $a0, .LBB123_22
 # %bb.1:
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI123_0)
@@ -12219,12 +12219,12 @@ gc_info:                                # @gc_info
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
 	maskeqz	$a0, $a1, $a0
-	b	.LBB123_45
+	b	.LBB123_53
 .LBB123_3:
 	pcalau12i	$a0, %pc_hi20(gc_kind_copying)
 	ld.d	$a1, $a0, %pc_lo12(gc_kind_copying)
 	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB123_19
+	bne	$a1, $a0, .LBB123_23
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(heap_end)
 	ld.d	$a2, $a0, %pc_lo12(heap_end)
@@ -12237,7 +12237,7 @@ gc_info:                                # @gc_info
 	lu32i.d	$a4, -349526
 	lu52i.d	$a4, $a4, -1366
 	mul.d	$a3, $a3, $a4
-	b	.LBB123_32
+	b	.LBB123_40
 .LBB123_5:
 	pcalau12i	$a0, %pc_hi20(nheaps)
 	ld.d	$a0, $a0, %pc_lo12(nheaps)
@@ -12245,12 +12245,12 @@ gc_info:                                # @gc_info
 	ld.d	$a2, $a1, %pc_lo12(inums_dim)
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-	blez	$a2, .LBB123_26
+	blez	$a2, .LBB123_12
 # %bb.6:
 	ftintrz.l.d	$fa0, $fs0
 	movfr2gr.d	$a1, $fa0
 	blt	$a1, $a2, .LBB123_9
-	b	.LBB123_26
+	b	.LBB123_12
 .LBB123_7:
 	pcalau12i	$a0, %pc_hi20(heap_size)
 	ld.d	$a0, $a0, %pc_lo12(heap_size)
@@ -12258,97 +12258,36 @@ gc_info:                                # @gc_info
 	ld.d	$a2, $a1, %pc_lo12(inums_dim)
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fs0, $fa0
-	blez	$a2, .LBB123_26
+	blez	$a2, .LBB123_12
 # %bb.8:
 	ftintrz.l.d	$fa0, $fs0
 	movfr2gr.d	$a1, $fa0
-	bge	$a1, $a2, .LBB123_26
+	bge	$a1, $a2, .LBB123_12
 .LBB123_9:
-	bltz	$a0, .LBB123_26
+	bltz	$a0, .LBB123_12
 # %bb.10:
 	movgr2fr.d	$fa0, $a1
 	ffint.d.l	$fa0, $fa0
 	fcmp.ceq.d	$fcc0, $fs0, $fa0
-	bceqz	$fcc0, .LBB123_26
+	bceqz	$fcc0, .LBB123_12
 # %bb.11:
 	pcalau12i	$a0, %pc_hi20(inums)
 	ld.d	$a0, $a0, %pc_lo12(inums)
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB123_45
+	b	.LBB123_53
 .LBB123_12:
-	pcalau12i	$a0, %pc_hi20(nheaps)
-	ld.d	$a0, $a0, %pc_lo12(nheaps)
-	blez	$a0, .LBB123_22
-# %bb.13:                               # %.lr.ph.i
-	pcalau12i	$a1, %pc_hi20(heaps)
-	ld.d	$a2, $a1, %pc_lo12(heaps)
-	move	$a1, $zero
-	.p2align	4, , 16
-.LBB123_14:                             # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a2, 0
-	beqz	$a3, .LBB123_17
-# %bb.15:                               #   in Loop: Header=BB123_14 Depth=1
-	addi.d	$a1, $a1, 1
-	addi.d	$a2, $a2, 8
-	bne	$a0, $a1, .LBB123_14
-# %bb.16:
-	move	$a1, $a0
-.LBB123_17:                             # %nactive_heaps.exit.loopexit
-	movgr2fr.d	$fa0, $a1
-	ffint.d.l	$fs0, $fa0
-	pcalau12i	$a0, %pc_hi20(inums_dim)
-	ld.d	$a1, $a0, %pc_lo12(inums_dim)
-	bgtz	$a1, .LBB123_23
-	b	.LBB123_26
-.LBB123_18:
-	move	$a0, $zero
-	b	.LBB123_45
-.LBB123_19:
-	pcalau12i	$a0, %pc_hi20(freelist)
-	ld.d	$a0, $a0, %pc_lo12(freelist)
-	beqz	$a0, .LBB123_30
-# %bb.20:                               # %.lr.ph.i17.preheader
-	move	$a3, $zero
-	.p2align	4, , 16
-.LBB123_21:                             # %.lr.ph.i17
-                                        # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $a0, 16
-	addi.d	$a3, $a3, 1
-	bnez	$a0, .LBB123_21
-	b	.LBB123_31
-.LBB123_22:
-	movgr2fr.d	$fs0, $zero
-	pcalau12i	$a0, %pc_hi20(inums_dim)
-	ld.d	$a1, $a0, %pc_lo12(inums_dim)
-	blez	$a1, .LBB123_26
-.LBB123_23:
-	ftintrz.l.d	$fa0, $fs0
-	movfr2gr.d	$a0, $fa0
-	bge	$a0, $a1, .LBB123_26
-# %bb.24:
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
-	fcmp.ceq.d	$fcc0, $fs0, $fa0
-	bceqz	$fcc0, .LBB123_26
-# %bb.25:
-	pcalau12i	$a1, %pc_hi20(inums)
-	ld.d	$a1, $a1, %pc_lo12(inums)
-	slli.d	$a0, $a0, 3
-	ldx.d	$a0, $a1, $a0
-	b	.LBB123_45
-.LBB123_26:
 	pcalau12i	$a0, %pc_hi20(gc_kind_copying)
 	ld.d	$a0, $a0, %pc_lo12(gc_kind_copying)
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB123_41
-# %bb.27:
+	bne	$a0, $a1, .LBB123_49
+# %bb.13:
 	pcalau12i	$fp, %pc_hi20(heap)
 	ld.d	$a0, $fp, %pc_lo12(heap)
 	pcalau12i	$a1, %pc_hi20(heap_end)
 	ld.d	$a1, $a1, %pc_lo12(heap_end)
-	bltu	$a0, $a1, .LBB123_29
-# %bb.28:
+	bltu	$a0, $a1, .LBB123_15
+# %bb.14:
 	pcalau12i	$a1, %pc_hi20(.L.str.26)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.26)
 	move	$s0, $a0
@@ -12357,13 +12296,123 @@ gc_info:                                # @gc_info
 	pcaddu18i	$ra, %call36(err)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-.LBB123_29:
+.LBB123_15:
 	addi.d	$a1, $a0, 24
 	st.d	$a1, $fp, %pc_lo12(heap)
-	b	.LBB123_44
-.LBB123_30:
+	b	.LBB123_52
+.LBB123_16:
+	pcalau12i	$a0, %pc_hi20(nheaps)
+	ld.d	$a0, $a0, %pc_lo12(nheaps)
+	blez	$a0, .LBB123_26
+# %bb.17:                               # %.lr.ph.i
+	pcalau12i	$a1, %pc_hi20(heaps)
+	ld.d	$a2, $a1, %pc_lo12(heaps)
+	move	$a1, $zero
+	.p2align	4, , 16
+.LBB123_18:                             # =>This Inner Loop Header: Depth=1
+	ld.d	$a3, $a2, 0
+	beqz	$a3, .LBB123_21
+# %bb.19:                               #   in Loop: Header=BB123_18 Depth=1
+	addi.d	$a1, $a1, 1
+	addi.d	$a2, $a2, 8
+	bne	$a0, $a1, .LBB123_18
+# %bb.20:
+	move	$a1, $a0
+.LBB123_21:                             # %nactive_heaps.exit.loopexit
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr1, $vr0, 0
+	pcalau12i	$a0, %pc_hi20(inums_dim)
+	ld.d	$a1, $a0, %pc_lo12(inums_dim)
+	bgtz	$a1, .LBB123_27
+	b	.LBB123_30
+.LBB123_22:
+	move	$a0, $zero
+	b	.LBB123_53
+.LBB123_23:
+	pcalau12i	$a0, %pc_hi20(freelist)
+	ld.d	$a0, $a0, %pc_lo12(freelist)
+	beqz	$a0, .LBB123_38
+# %bb.24:                               # %.lr.ph.i17.preheader
 	move	$a3, $zero
-.LBB123_31:                             # %freelist_length.exit
+	.p2align	4, , 16
+.LBB123_25:                             # %.lr.ph.i17
+                                        # =>This Inner Loop Header: Depth=1
+	ld.d	$a0, $a0, 16
+	addi.d	$a3, $a3, 1
+	bnez	$a0, .LBB123_25
+	b	.LBB123_39
+.LBB123_26:
+	movgr2fr.d	$fa1, $zero
+	pcalau12i	$a0, %pc_hi20(inums_dim)
+	ld.d	$a1, $a0, %pc_lo12(inums_dim)
+	blez	$a1, .LBB123_30
+.LBB123_27:
+	ftintrz.l.d	$fa0, $fa1
+	movfr2gr.d	$a0, $fa0
+	bge	$a0, $a1, .LBB123_30
+# %bb.28:
+	movgr2fr.d	$fa0, $a0
+	ffint.d.l	$fa0, $fa0
+	fcmp.ceq.d	$fcc0, $fa1, $fa0
+	bceqz	$fcc0, .LBB123_30
+# %bb.29:
+	pcalau12i	$a1, %pc_hi20(inums)
+	ld.d	$a1, $a1, %pc_lo12(inums)
+	slli.d	$a0, $a0, 3
+	ldx.d	$a0, $a1, $a0
+	b	.LBB123_53
+.LBB123_30:
+	pcalau12i	$a0, %pc_hi20(gc_kind_copying)
+	ld.d	$a0, $a0, %pc_lo12(gc_kind_copying)
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB123_34
+# %bb.31:
+	pcalau12i	$fp, %pc_hi20(heap)
+	ld.d	$a0, $fp, %pc_lo12(heap)
+	pcalau12i	$a1, %pc_hi20(heap_end)
+	ld.d	$a1, $a1, %pc_lo12(heap_end)
+	bltu	$a0, $a1, .LBB123_33
+# %bb.32:
+	pcalau12i	$a1, %pc_hi20(.L.str.26)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.26)
+	move	$s0, $a0
+	move	$a0, $a1
+	move	$a1, $zero
+	vst	$vr1, $sp, 0                    # 16-byte Folded Spill
+	pcaddu18i	$ra, %call36(err)
+	jirl	$ra, $ra, 0
+	vld	$vr1, $sp, 0                    # 16-byte Folded Reload
+	move	$a0, $s0
+.LBB123_33:
+	addi.d	$a1, $a0, 24
+	st.d	$a1, $fp, %pc_lo12(heap)
+	b	.LBB123_37
+.LBB123_34:
+	pcalau12i	$fp, %pc_hi20(freelist)
+	ld.d	$a0, $fp, %pc_lo12(freelist)
+	bnez	$a0, .LBB123_36
+# %bb.35:
+	vst	$vr1, $sp, 0                    # 16-byte Folded Spill
+	pcaddu18i	$ra, %call36(gc_for_newcell)
+	jirl	$ra, $ra, 0
+	vld	$vr1, $sp, 0                    # 16-byte Folded Reload
+	ld.d	$a0, $fp, %pc_lo12(freelist)
+.LBB123_36:
+	ld.d	$a1, $a0, 16
+	pcalau12i	$a2, %pc_hi20(gc_cells_allocated)
+	ld.d	$a3, $a2, %pc_lo12(gc_cells_allocated)
+	st.d	$a1, $fp, %pc_lo12(freelist)
+	addi.d	$a1, $a3, 1
+	st.d	$a1, $a2, %pc_lo12(gc_cells_allocated)
+.LBB123_37:
+	lu12i.w	$a1, 32
+	st.w	$a1, $a0, 0
+	fst.d	$fa1, $a0, 8
+	b	.LBB123_53
+.LBB123_38:
+	move	$a3, $zero
+.LBB123_39:                             # %freelist_length.exit
 	pcalau12i	$a0, %pc_hi20(heap_end)
 	ld.d	$a2, $a0, %pc_lo12(heap_end)
 	pcalau12i	$a0, %pc_hi20(heap)
@@ -12376,35 +12425,35 @@ gc_info:                                # @gc_info
 	lu52i.d	$a5, $a5, -1366
 	mul.d	$a4, $a4, $a5
 	add.d	$a3, $a4, $a3
-.LBB123_32:
+.LBB123_40:
 	pcalau12i	$a4, %pc_hi20(inums_dim)
 	ld.d	$a5, $a4, %pc_lo12(inums_dim)
 	movgr2fr.d	$fa0, $a3
 	ffint.d.l	$fs0, $fa0
-	blez	$a5, .LBB123_37
-# %bb.33:
+	blez	$a5, .LBB123_45
+# %bb.41:
 	ftintrz.l.d	$fa0, $fs0
 	movfr2gr.d	$a4, $fa0
-	bge	$a4, $a5, .LBB123_37
-# %bb.34:
-	bltz	$a3, .LBB123_37
-# %bb.35:
+	bge	$a4, $a5, .LBB123_45
+# %bb.42:
+	bltz	$a3, .LBB123_45
+# %bb.43:
 	movgr2fr.d	$fa0, $a4
 	ffint.d.l	$fa0, $fa0
 	fcmp.ceq.d	$fcc0, $fs0, $fa0
-	bceqz	$fcc0, .LBB123_37
-# %bb.36:
+	bceqz	$fcc0, .LBB123_45
+# %bb.44:
 	pcalau12i	$a0, %pc_hi20(inums)
 	ld.d	$a0, $a0, %pc_lo12(inums)
 	slli.d	$a1, $a4, 3
 	ldx.d	$a0, $a0, $a1
-	b	.LBB123_45
-.LBB123_37:
+	b	.LBB123_53
+.LBB123_45:
 	ori	$a3, $zero, 1
-	bne	$a1, $a3, .LBB123_41
-# %bb.38:
-	bltu	$a0, $a2, .LBB123_40
-# %bb.39:
+	bne	$a1, $a3, .LBB123_49
+# %bb.46:
+	bltu	$a0, $a2, .LBB123_48
+# %bb.47:
 	pcalau12i	$a1, %pc_hi20(.L.str.26)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.26)
 	move	$fp, $a0
@@ -12413,36 +12462,36 @@ gc_info:                                # @gc_info
 	pcaddu18i	$ra, %call36(err)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-.LBB123_40:
+.LBB123_48:
 	addi.d	$a1, $a0, 24
 	pcalau12i	$a2, %pc_hi20(heap)
 	st.d	$a1, $a2, %pc_lo12(heap)
-	b	.LBB123_44
-.LBB123_41:
+	b	.LBB123_52
+.LBB123_49:
 	pcalau12i	$fp, %pc_hi20(freelist)
 	ld.d	$a0, $fp, %pc_lo12(freelist)
-	bnez	$a0, .LBB123_43
-# %bb.42:
+	bnez	$a0, .LBB123_51
+# %bb.50:
 	pcaddu18i	$ra, %call36(gc_for_newcell)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, %pc_lo12(freelist)
-.LBB123_43:
+.LBB123_51:
 	ld.d	$a1, $a0, 16
 	pcalau12i	$a2, %pc_hi20(gc_cells_allocated)
 	ld.d	$a3, $a2, %pc_lo12(gc_cells_allocated)
 	st.d	$a1, $fp, %pc_lo12(freelist)
 	addi.d	$a1, $a3, 1
 	st.d	$a1, $a2, %pc_lo12(gc_cells_allocated)
-.LBB123_44:
+.LBB123_52:
 	lu12i.w	$a1, 32
 	st.w	$a1, $a0, 0
 	fst.d	$fs0, $a0, 8
-.LBB123_45:                             # %flocons.exit
-	fld.d	$fs0, $sp, 0                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+.LBB123_53:                             # %flocons.exit
+	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end123:
 	.size	gc_info, .Lfunc_end123-gc_info
@@ -12450,7 +12499,7 @@ gc_info:                                # @gc_info
 	.p2align	2, 0x0
 .LJTI123_0:
 	.word	.LBB123_2-.LJTI123_0
-	.word	.LBB123_12-.LJTI123_0
+	.word	.LBB123_16-.LJTI123_0
 	.word	.LBB123_5-.LJTI123_0
 	.word	.LBB123_7-.LJTI123_0
 	.word	.LBB123_3-.LJTI123_0

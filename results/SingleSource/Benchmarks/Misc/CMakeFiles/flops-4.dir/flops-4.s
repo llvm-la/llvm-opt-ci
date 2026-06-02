@@ -96,8 +96,9 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $a0, 1
-	movgr2fr.d	$ft5, $a0
-	ffint.d.l	$ft5, $ft5
+	vinsgr2vr.d	$vr13, $a0, 0
+	vffint.d.lu	$vr13, $vr13
+	vreplvei.d	$vr13, $vr13, 0
 	fmul.d	$ft5, $fa2, $ft5
 	fmul.d	$ft5, $ft5, $ft5
 	fmadd.d	$ft6, $fa5, $ft5, $fa7

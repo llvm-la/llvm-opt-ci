@@ -9359,18 +9359,9 @@ XRate:                                  # @XRate
 	ori	$a4, $zero, 127
 	masknez	$a2, $a4, $a2
 	or	$a1, $a1, $a2
-	srli.d	$a2, $a3, 32
-	lu52i.d	$a5, $zero, 1107
-	or	$a2, $a2, $a5
-	movgr2fr.d	$fa0, $a2
-	lu12i.w	$a2, 256
-	lu52i.d	$a2, $a2, 1107
-	movgr2fr.d	$fa1, $a2
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a2, 275200
-	bstrins.d	$a3, $a2, 63, 32
-	movgr2fr.d	$fa1, $a3
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a3, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	lu52i.d	$a2, $zero, 1018
 	movgr2fr.d	$fa1, $a2
 	fmul.d	$fa0, $fa0, $fa1
@@ -9413,34 +9404,27 @@ XRate:                                  # @XRate
 	.type	GetCtxModelNumber,@function
 GetCtxModelNumber:                      # @GetCtxModelNumber
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 288                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 280                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 272                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 264                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -336
+	st.d	$ra, $sp, 328                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 312                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 248                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 240                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 232                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 224                  # 8-byte Folded Spill
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$a0, $a0, %got_pc_lo12(img)
 	ld.d	$a3, $a0, 0
 	ld.w	$a0, $a3, 20
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$a0, $a1, 528
-	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
-	addi.d	$a0, $a1, 816
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
-	addi.d	$a0, $a1, 1136
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	addi.d	$a0, $a2, 2047
 	addi.d	$a0, $a0, 1281
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
@@ -9467,38 +9451,29 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	masknez	$a6, $a6, $a4
 	maskeqz	$a4, $a5, $a4
 	or	$a4, $a4, $a6
-	srli.d	$a5, $a0, 32
-	lu52i.d	$t8, $zero, 1107
-	or	$a5, $a5, $t8
-	movgr2fr.d	$fa1, $a5
-	lu12i.w	$a5, 256
-	lu52i.d	$a5, $a5, 1107
-	movgr2fr.d	$fa0, $a5
-	fsub.d	$fa1, $fa1, $fa0
-	lu12i.w	$fp, 275200
-	bstrins.d	$a0, $fp, 63, 32
-	movgr2fr.d	$fa2, $a0
-	fadd.d	$fa2, $fa2, $fa1
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr1, $vr0, 0
 	lu52i.d	$a0, $zero, 1018
-	movgr2fr.d	$fa1, $a0
-	fmul.d	$fa3, $fa2, $fa1
-	vldi	$vr2, -912
-	fcmp.clt.d	$fcc0, $fa2, $fa3
-	fsel	$fa4, $fa3, $fa2, $fcc0
+	movgr2fr.d	$fa0, $a0
+	fmul.d	$fa2, $fa1, $fa0
+	vldi	$vr1, -912
+	fcmp.clt.d	$fcc0, $fa1, $fa2
+	fsel	$fa3, $fa2, $fa1, $fcc0
 	slli.d	$a0, $a4, 3
 	pcalau12i	$a5, %pc_hi20(probability)
-	addi.d	$s0, $a5, %pc_lo12(probability)
-	fldx.d	$fa3, $s0, $a0
-	ori	$s1, $zero, 127
-	sub.d	$a0, $s1, $a4
+	addi.d	$t8, $a5, %pc_lo12(probability)
+	fldx.d	$fa2, $t8, $a0
+	ori	$fp, $zero, 127
+	sub.d	$a0, $fp, $a4
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa5, $s0, $a0
-	fneg.d	$fa3, $fa3
-	fmul.d	$fa3, $fa4, $fa3
-	fneg.d	$fa5, $fa5
+	fldx.d	$fa4, $t8, $a0
+	fneg.d	$fa2, $fa2
+	fmul.d	$fa2, $fa3, $fa2
+	fneg.d	$fa4, $fa4
 	ld.bu	$a0, $a1, 1378
 	ld.hu	$a4, $a1, 1376
-	fmul.d	$fa4, $fa4, $fa5
+	fmul.d	$fa3, $fa3, $fa4
 	ld.d	$a5, $a1, 1384
 	sltui	$a0, $a0, 1
 	addi.d	$a6, $a4, 64
@@ -9506,66 +9481,54 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	masknez	$a6, $a6, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a6
-	srli.d	$a4, $a5, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$fa5, $a4
-	fsub.d	$fa5, $fa5, $fa0
-	bstrins.d	$a5, $fp, 63, 32
-	movgr2fr.d	$fa6, $a5
-	fadd.d	$fa5, $fa6, $fa5
-	fmul.d	$fa5, $fa5, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $fa5
-	fsel	$fa6, $fa5, $fa2, $fcc0
+	vinsgr2vr.d	$vr4, $a5, 0
+	vffint.d.lu	$vr4, $vr4
+	vreplvei.d	$vr4, $vr4, 0
+	fmul.d	$fa4, $fa4, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $fa4
+	fsel	$fa5, $fa4, $fa1, $fcc0
 	slli.d	$a4, $a0, 3
-	fldx.d	$fa5, $s0, $a4
-	sub.d	$a0, $s1, $a0
+	fldx.d	$fa4, $t8, $a4
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa7, $s0, $a0
-	fneg.d	$fa5, $fa5
+	fldx.d	$fa6, $t8, $a0
+	fneg.d	$fa4, $fa4
 	ld.d	$a0, $a2, 8
-	fmul.d	$fa5, $fa6, $fa5
-	fneg.d	$fa7, $fa7
-	fmul.d	$fa6, $fa6, $fa7
-	srli.d	$a4, $a0, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$fa7, $a4
-	fsub.d	$fa7, $fa7, $fa0
-	bstrins.d	$a0, $fp, 63, 32
-	movgr2fr.d	$ft0, $a0
-	fadd.d	$fa7, $ft0, $fa7
+	fmul.d	$fa4, $fa5, $fa4
+	fneg.d	$fa6, $fa6
+	fmul.d	$fa5, $fa5, $fa6
+	vinsgr2vr.d	$vr6, $a0, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
 	ld.d	$a0, $a2, 24
-	fmul.d	$fa7, $fa7, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $fa7
-	fsel	$fa7, $fa7, $fa2, $fcc0
-	srli.d	$a4, $a0, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft0, $a4
-	fsub.d	$ft0, $ft0, $fa0
-	bstrins.d	$a0, $fp, 63, 32
-	movgr2fr.d	$ft1, $a0
-	fadd.d	$ft0, $ft1, $ft0
+	fmul.d	$fa6, $fa6, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $fa6
+	fsel	$fa6, $fa6, $fa1, $fcc0
+	vinsgr2vr.d	$vr7, $a0, 0
+	vffint.d.lu	$vr7, $vr7
+	vreplvei.d	$vr7, $vr7, 0
 	ld.bu	$a0, $a2, 18
 	ld.hu	$a4, $a2, 16
-	fmul.d	$ft0, $ft0, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft0
+	fmul.d	$fa7, $fa7, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $fa7
 	sltui	$a0, $a0, 1
 	sub.d	$a5, $t6, $a4
 	addi.d	$a4, $a4, 64
 	masknez	$a4, $a4, $a0
 	maskeqz	$a0, $a5, $a0
 	or	$a0, $a0, $a4
-	sub.d	$a4, $s1, $a0
+	sub.d	$a4, $fp, $a0
 	slli.d	$a4, $a4, 3
-	fldx.d	$ft1, $s0, $a4
+	fldx.d	$ft0, $t8, $a4
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft2, $s0, $a0
-	fsel	$ft3, $ft0, $fa2, $fcc0
+	fldx.d	$ft1, $t8, $a0
+	fsel	$ft2, $fa7, $fa1, $fcc0
+	fneg.d	$fa7, $ft0
+	fmul.d	$fa7, $ft2, $fa7
 	fneg.d	$ft0, $ft1
-	fmul.d	$ft0, $ft3, $ft0
-	fneg.d	$ft1, $ft2
 	ld.bu	$a0, $a2, 34
 	ld.hu	$a4, $a2, 32
-	fmul.d	$ft1, $ft3, $ft1
+	fmul.d	$ft0, $ft2, $ft0
 	ld.d	$a5, $a2, 40
 	sltui	$a0, $a0, 1
 	addi.d	$a6, $a4, 64
@@ -9573,27 +9536,23 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	masknez	$a6, $a6, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a6
-	srli.d	$a4, $a5, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft2, $a4
-	fsub.d	$ft2, $ft2, $fa0
-	bstrins.d	$a5, $fp, 63, 32
-	movgr2fr.d	$ft3, $a5
-	fadd.d	$ft2, $ft3, $ft2
-	fmul.d	$ft2, $ft2, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft2
+	vinsgr2vr.d	$vr9, $a5, 0
+	vffint.d.lu	$vr9, $vr9
+	vreplvei.d	$vr9, $vr9, 0
+	fmul.d	$ft1, $ft1, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft1
 	slli.d	$a4, $a0, 3
-	fldx.d	$ft3, $s0, $a4
-	sub.d	$a0, $s1, $a0
+	fldx.d	$ft2, $t8, $a4
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft4, $s0, $a0
-	fsel	$ft5, $ft2, $fa2, $fcc0
+	fldx.d	$ft3, $t8, $a0
+	fsel	$ft4, $ft1, $fa1, $fcc0
+	fneg.d	$ft1, $ft2
+	fmul.d	$ft1, $ft4, $ft1
 	fneg.d	$ft2, $ft3
-	fmul.d	$ft2, $ft5, $ft2
-	fneg.d	$ft3, $ft4
 	ld.bu	$a0, $a2, 50
 	ld.hu	$a4, $a2, 48
-	fmul.d	$ft3, $ft5, $ft3
+	fmul.d	$ft2, $ft4, $ft2
 	ld.d	$a5, $a2, 56
 	sltui	$a0, $a0, 1
 	addi.d	$a6, $a4, 64
@@ -9601,27 +9560,23 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	masknez	$a6, $a6, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a6
-	srli.d	$a4, $a5, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft4, $a4
-	fsub.d	$ft4, $ft4, $fa0
-	bstrins.d	$a5, $fp, 63, 32
-	movgr2fr.d	$ft5, $a5
-	fadd.d	$ft4, $ft5, $ft4
-	fmul.d	$ft4, $ft4, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft4
+	vinsgr2vr.d	$vr11, $a5, 0
+	vffint.d.lu	$vr11, $vr11
+	vreplvei.d	$vr11, $vr11, 0
+	fmul.d	$ft3, $ft3, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft3
 	slli.d	$a4, $a0, 3
-	fldx.d	$ft5, $s0, $a4
-	sub.d	$a0, $s1, $a0
+	fldx.d	$ft4, $t8, $a4
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft6, $s0, $a0
-	fsel	$ft7, $ft4, $fa2, $fcc0
+	fldx.d	$ft5, $t8, $a0
+	fsel	$ft6, $ft3, $fa1, $fcc0
+	fneg.d	$ft3, $ft4
+	fmul.d	$ft3, $ft6, $ft3
 	fneg.d	$ft4, $ft5
-	fmul.d	$ft4, $ft7, $ft4
-	fneg.d	$ft5, $ft6
 	ld.bu	$a0, $a2, 66
 	ld.hu	$a4, $a2, 64
-	fmul.d	$ft5, $ft7, $ft5
+	fmul.d	$ft4, $ft6, $ft4
 	ld.d	$a5, $a2, 72
 	sltui	$a0, $a0, 1
 	addi.d	$a6, $a4, 64
@@ -9629,27 +9584,23 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	masknez	$a6, $a6, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a6
-	srli.d	$a4, $a5, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft6, $a4
-	fsub.d	$ft6, $ft6, $fa0
-	bstrins.d	$a5, $fp, 63, 32
-	movgr2fr.d	$ft7, $a5
-	fadd.d	$ft6, $ft7, $ft6
-	fmul.d	$ft6, $ft6, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft6
+	vinsgr2vr.d	$vr13, $a5, 0
+	vffint.d.lu	$vr13, $vr13
+	vreplvei.d	$vr13, $vr13, 0
+	fmul.d	$ft5, $ft5, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft5
 	slli.d	$a4, $a0, 3
-	fldx.d	$ft7, $s0, $a4
-	sub.d	$a0, $s1, $a0
+	fldx.d	$ft6, $t8, $a4
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft8, $s0, $a0
-	fsel	$ft9, $ft6, $fa2, $fcc0
+	fldx.d	$ft7, $t8, $a0
+	fsel	$ft8, $ft5, $fa1, $fcc0
+	fneg.d	$ft5, $ft6
+	fmul.d	$ft5, $ft8, $ft5
 	fneg.d	$ft6, $ft7
-	fmul.d	$ft6, $ft9, $ft6
-	fneg.d	$ft7, $ft8
 	ld.bu	$a0, $a2, 82
 	ld.hu	$a4, $a2, 80
-	fmul.d	$ft7, $ft9, $ft7
+	fmul.d	$ft6, $ft8, $ft6
 	ld.d	$a5, $a2, 88
 	sltui	$a0, $a0, 1
 	addi.d	$a6, $a4, 64
@@ -9657,25 +9608,21 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	masknez	$a6, $a6, $a0
 	maskeqz	$a0, $a4, $a0
 	or	$a0, $a0, $a6
-	srli.d	$a4, $a5, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft8, $a4
-	fsub.d	$ft8, $ft8, $fa0
-	bstrins.d	$a5, $fp, 63, 32
-	movgr2fr.d	$ft9, $a5
-	fadd.d	$ft8, $ft9, $ft8
-	fmul.d	$ft8, $ft8, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft8
+	vinsgr2vr.d	$vr15, $a5, 0
+	vffint.d.lu	$vr15, $vr15
+	vreplvei.d	$vr15, $vr15, 0
+	fmul.d	$ft7, $ft7, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft7
 	slli.d	$a4, $a0, 3
-	fldx.d	$ft9, $s0, $a4
-	sub.d	$a0, $s1, $a0
+	fldx.d	$ft8, $t8, $a4
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft10, $s0, $a0
-	fsel	$ft11, $ft8, $fa2, $fcc0
+	fldx.d	$ft9, $t8, $a0
+	fsel	$ft10, $ft7, $fa1, $fcc0
+	fneg.d	$ft7, $ft8
+	fmul.d	$ft7, $ft10, $ft7
 	fneg.d	$ft8, $ft9
-	fmul.d	$ft8, $ft11, $ft8
-	fneg.d	$ft9, $ft10
-	fmul.d	$ft9, $ft11, $ft9
+	fmul.d	$ft8, $ft10, $ft8
 	ori	$a0, $t2, 1672
 	add.d	$a0, $a2, $a0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
@@ -9683,21 +9630,19 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	add.d	$a0, $a2, $a0
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(INIT_MB_TYPE_P+4)
-	addi.d	$s8, $a0, %pc_lo12(INIT_MB_TYPE_P+4)
+	addi.d	$s5, $a0, %pc_lo12(INIT_MB_TYPE_P+4)
 	pcalau12i	$a0, %pc_hi20(INIT_MB_TYPE_I+4)
-	addi.d	$a7, $a0, %pc_lo12(INIT_MB_TYPE_I+4)
+	addi.d	$t3, $a0, %pc_lo12(INIT_MB_TYPE_I+4)
 	pcalau12i	$a0, %pc_hi20(INIT_MB_AFF_P+4)
 	addi.d	$a0, $a0, %pc_lo12(INIT_MB_AFF_P+4)
-	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(INIT_MB_AFF_I+4)
 	addi.d	$a0, $a0, %pc_lo12(INIT_MB_AFF_I+4)
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(INIT_B8_TYPE_P)
-	addi.d	$a0, $a0, %pc_lo12(INIT_B8_TYPE_P)
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
+	addi.d	$a5, $a0, %pc_lo12(INIT_B8_TYPE_P)
 	pcalau12i	$a0, %pc_hi20(INIT_MV_RES_P)
-	addi.d	$a0, $a0, %pc_lo12(INIT_MV_RES_P)
-	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
+	addi.d	$a7, $a0, %pc_lo12(INIT_MV_RES_P)
 	ori	$a0, $zero, 16
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(INIT_MAP_P)
@@ -9713,7 +9658,7 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	addi.d	$a0, $a0, %pc_lo12(INIT_LAST_I)
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	ori	$a0, $zero, 20
-	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(INIT_FLD_MAP_P)
 	addi.d	$a0, $a0, %pc_lo12(INIT_FLD_MAP_P)
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
@@ -9726,19 +9671,17 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	pcalau12i	$a0, %pc_hi20(INIT_FLD_LAST_I)
 	addi.d	$a0, $a0, %pc_lo12(INIT_FLD_LAST_I)
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	move	$a4, $zero
+	move	$a6, $zero
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
-	fld.d	$ft10, $a0, %pc_lo12(.LCPI5_0)
-	ori	$s5, $zero, 2
-	ori	$s6, $zero, 176
-	ori	$t7, $zero, 120
-	ori	$t3, $zero, 8
-	ori	$t0, $zero, 80
-	ori	$s4, $zero, 72
+	fld.d	$ft9, $a0, %pc_lo12(.LCPI5_0)
+	ori	$s8, $zero, 2
+	ori	$s2, $zero, 176
+	ori	$t0, $zero, 120
+	ori	$a4, $zero, 8
+	ori	$t7, $zero, 80
+	ori	$t1, $zero, 72
 	ori	$a0, $zero, 16
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 200                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB5_1:                                # %.preheader391
                                         # =>This Loop Header: Depth=1
@@ -9767,3689 +9710,3400 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
                                         #     Child Loop BB5_60 Depth 2
                                         #       Child Loop BB5_62 Depth 3
                                         #       Child Loop BB5_61 Depth 3
-	ld.w	$a6, $a3, 36
-	move	$a0, $zero
-	st.d	$a4, $sp, 216                   # 8-byte Folded Spill
-	ld.w	$a5, $a3, 20
-	srai.d	$a4, $a6, 63
-	andn	$a4, $a6, $a4
-	movgr2fr.d	$ft11, $zero
-	st.d	$a7, $sp, 80                    # 8-byte Folded Spill
-	move	$a6, $a7
-	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
-	move	$s7, $a1
+	st.d	$a7, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 192                   # 8-byte Folded Spill
+	ld.w	$a7, $a3, 36
+	move	$a5, $zero
+	st.d	$a6, $sp, 96                    # 8-byte Folded Spill
+	ld.w	$t4, $a3, 20
+	srai.d	$a6, $a7, 63
+	andn	$a6, $a7, $a6
+	movgr2fr.d	$ft10, $zero
+	st.d	$t3, $sp, 80                    # 8-byte Folded Spill
+	move	$a7, $t3
+	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
+	move	$s3, $a1
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                # %.split.us
                                         #   in Loop: Header=BB5_3 Depth=2
-	addi.d	$a0, $a0, 1
-	addi.d	$s7, $s7, 176
-	addi.d	$s8, $s8, 88
-	addi.d	$a6, $a6, 88
-	ori	$a1, $zero, 3
-	beq	$a0, $a1, .LBB5_8
+	addi.d	$a5, $a5, 1
+	addi.d	$s3, $s3, 176
+	addi.d	$s5, $s5, 88
+	addi.d	$a7, $a7, 88
+	ori	$a0, $zero, 3
+	beq	$a5, $a0, .LBB5_8
 .LBB5_3:                                # %.preheader374
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_7 Depth 3
                                         #       Child Loop BB5_5 Depth 3
-	pcalau12i	$a7, %pc_hi20(entropy)
-	addi.d	$t1, $a7, %pc_lo12(entropy)
-	move	$t5, $zero
-	bne	$a5, $s5, .LBB5_6
+	pcalau12i	$t3, %pc_hi20(entropy)
+	addi.d	$t3, $t3, %pc_lo12(entropy)
+	move	$s4, $zero
+	bne	$t4, $s8, .LBB5_6
 # %bb.4:                                # %.preheader374.split.us.preheader
                                         #   in Loop: Header=BB5_3 Depth=2
-	move	$a7, $a6
+	move	$t5, $a7
 	.p2align	4, , 16
 .LBB5_5:                                # %.preheader374.split.us
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_3 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$ra, $s7, $t5
-	ld.d	$s2, $ra, 8
+	add.d	$ra, $s3, $s4
+	ld.d	$s6, $ra, 8
 	ld.bu	$ra, $ra, 2
-	ldx.hu	$s3, $s7, $t5
-	ld.w	$t4, $a7, -4
-	ld.w	$a3, $a7, 0
+	ldx.hu	$s7, $s3, $s4
+	ld.w	$s0, $t5, -4
+	ld.w	$s1, $t5, 0
 	sltui	$ra, $ra, 1
-	addi.d	$a1, $s3, 64
-	sub.d	$s3, $t6, $s3
-	masknez	$a1, $a1, $ra
-	maskeqz	$s3, $s3, $ra
-	or	$a1, $s3, $a1
-	mul.w	$t4, $t4, $a4
-	srli.d	$t4, $t4, 4
-	add.w	$a3, $t4, $a3
-	srai.d	$t4, $a3, 63
-	andn	$a3, $a3, $t4
-	slti	$t4, $a3, 127
-	maskeqz	$a3, $a3, $t4
-	masknez	$t4, $s1, $t4
-	or	$a3, $a3, $t4
-	srli.d	$t4, $s2, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft12, $t4
-	fsub.d	$ft12, $ft12, $fa0
-	bstrins.d	$s2, $fp, 63, 32
-	movgr2fr.d	$ft13, $s2
-	fadd.d	$ft12, $ft13, $ft12
-	fmul.d	$ft12, $ft12, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft12
-	slli.d	$t4, $a1, 3
-	fldx.d	$ft13, $s0, $t4
-	fsel	$ft12, $ft12, $fa2, $fcc0
-	slli.d	$t4, $a3, 3
-	fldx.d	$ft14, $t1, $t4
-	fneg.d	$ft13, $ft13
-	fmul.d	$ft13, $ft12, $ft13
-	movgr2fr.d	$ft15, $zero
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a3, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft13, $ft13, $ft14, $ft15
-	fneg.d	$ft14, $fs0
-	fmul.d	$ft12, $ft12, $ft14
-	fmadd.d	$ft12, $ft12, $fs1, $ft13
-	fadd.d	$ft11, $ft11, $ft12
-	addi.d	$t5, $t5, 16
-	addi.d	$a7, $a7, 8
-	bne	$t5, $s6, .LBB5_5
+	addi.d	$a0, $s7, 64
+	sub.d	$s7, $t6, $s7
+	masknez	$a0, $a0, $ra
+	maskeqz	$s7, $s7, $ra
+	or	$a0, $s7, $a0
+	mul.w	$s0, $s0, $a6
+	srli.d	$s0, $s0, 4
+	add.w	$s0, $s0, $s1
+	srai.d	$s1, $s0, 63
+	andn	$s0, $s0, $s1
+	slti	$s1, $s0, 127
+	maskeqz	$s0, $s0, $s1
+	masknez	$s1, $fp, $s1
+	or	$s0, $s0, $s1
+	vinsgr2vr.d	$vr19, $s6, 0
+	vffint.d.lu	$vr19, $vr19
+	vreplvei.d	$vr19, $vr19, 0
+	fmul.d	$ft11, $ft11, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft11
+	slli.d	$s1, $a0, 3
+	fldx.d	$ft12, $t8, $s1
+	fsel	$ft11, $ft11, $fa1, $fcc0
+	slli.d	$s1, $s0, 3
+	fldx.d	$ft13, $t3, $s1
+	fneg.d	$ft12, $ft12
+	fmul.d	$ft12, $ft11, $ft12
+	movgr2fr.d	$ft14, $zero
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft12, $ft12, $ft13, $ft14
+	fneg.d	$ft13, $ft15
+	fmul.d	$ft11, $ft11, $ft13
+	fmadd.d	$ft11, $ft11, $fs0, $ft12
+	fadd.d	$ft10, $ft10, $ft11
+	addi.d	$s4, $s4, 16
+	addi.d	$t5, $t5, 8
+	bne	$s4, $s2, .LBB5_5
 	b	.LBB5_2
 	.p2align	4, , 16
 .LBB5_6:                                # %.preheader374.split.preheader
                                         #   in Loop: Header=BB5_3 Depth=2
-	move	$a7, $s8
+	move	$t5, $s5
 	.p2align	4, , 16
 .LBB5_7:                                # %.preheader374.split
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_3 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $s7, $t5
-	ld.d	$a3, $a1, 8
-	ld.bu	$a1, $a1, 2
-	ldx.hu	$t4, $s7, $t5
-	ld.w	$s2, $a7, -4
-	ld.w	$s3, $a7, 0
-	sltui	$a1, $a1, 1
-	addi.d	$ra, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$ra, $ra, $a1
-	maskeqz	$a1, $t4, $a1
-	or	$a1, $a1, $ra
-	mul.w	$t4, $s2, $a4
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s3
-	srai.d	$s2, $t4, 63
-	andn	$t4, $t4, $s2
-	slti	$s2, $t4, 127
-	maskeqz	$t4, $t4, $s2
-	masknez	$s2, $s1, $s2
-	or	$t4, $t4, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft12, $s2
-	fsub.d	$ft12, $ft12, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft13, $a3
-	fadd.d	$ft12, $ft13, $ft12
-	fmul.d	$ft12, $ft12, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft12
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft13, $s0, $a3
-	fsel	$ft12, $ft12, $fa2, $fcc0
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $t1, $a3
-	fneg.d	$ft13, $ft13
-	fmul.d	$ft13, $ft12, $ft13
-	movgr2fr.d	$ft15, $zero
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft13, $ft13, $ft14, $ft15
-	fneg.d	$ft14, $fs0
-	fmul.d	$ft12, $ft12, $ft14
-	fmadd.d	$ft12, $ft12, $fs1, $ft13
-	fadd.d	$ft11, $ft11, $ft12
-	addi.d	$t5, $t5, 16
-	addi.d	$a7, $a7, 8
-	bne	$t5, $s6, .LBB5_7
+	add.d	$a0, $s3, $s4
+	ld.d	$s0, $a0, 8
+	ld.bu	$a0, $a0, 2
+	ldx.hu	$s1, $s3, $s4
+	ld.w	$s6, $t5, -4
+	ld.w	$s7, $t5, 0
+	sltui	$a0, $a0, 1
+	addi.d	$ra, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$ra, $ra, $a0
+	maskeqz	$a0, $s1, $a0
+	or	$a0, $a0, $ra
+	mul.w	$s1, $s6, $a6
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s7
+	srai.d	$s6, $s1, 63
+	andn	$s1, $s1, $s6
+	slti	$s6, $s1, 127
+	maskeqz	$s1, $s1, $s6
+	masknez	$s6, $fp, $s6
+	or	$s1, $s1, $s6
+	vinsgr2vr.d	$vr19, $s0, 0
+	vffint.d.lu	$vr19, $vr19
+	vreplvei.d	$vr19, $vr19, 0
+	fmul.d	$ft11, $ft11, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft11
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft12, $t8, $s0
+	fsel	$ft11, $ft11, $fa1, $fcc0
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t3, $s0
+	fneg.d	$ft12, $ft12
+	fmul.d	$ft12, $ft11, $ft12
+	movgr2fr.d	$ft14, $zero
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft12, $ft12, $ft13, $ft14
+	fneg.d	$ft13, $ft15
+	fmul.d	$ft11, $ft11, $ft13
+	fmadd.d	$ft11, $ft11, $fs0, $ft12
+	fadd.d	$ft10, $ft10, $ft11
+	addi.d	$s4, $s4, 16
+	addi.d	$t5, $t5, 8
+	bne	$s4, $s2, .LBB5_7
 	b	.LBB5_2
 	.p2align	4, , 16
 .LBB5_8:                                # %.preheader390
                                         #   in Loop: Header=BB5_1 Depth=1
-	fld.d	$ft12, $t1, 512
-	fld.d	$ft13, $t1, 504
-	move	$t5, $zero
-	ori	$a6, $zero, 1
-	ld.d	$s8, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
+	fld.d	$ft11, $t3, 512
+	fld.d	$ft12, $t3, 504
+	move	$s3, $zero
+	ori	$a5, $zero, 1
+	addi.d	$s7, $a1, 528
+	ld.d	$ra, $sp, 192                   # 8-byte Folded Reload
 	b	.LBB5_11
 	.p2align	4, , 16
 .LBB5_9:                                # %.preheader373.split.us.preheader
                                         #   in Loop: Header=BB5_11 Depth=2
-	ld.bu	$a0, $a7, 2
-	ld.hu	$a1, $a7, 0
-	ld.d	$a3, $a7, 8
+	ld.bu	$a0, $a6, 2
+	ld.hu	$a7, $a6, 0
+	ld.d	$t5, $a6, 8
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft14, $a1
-	fsub.d	$ft14, $ft14, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft15, $a3
-	fadd.d	$ft14, $ft15, $ft14
-	slli.d	$a1, $a0, 3
-	fldx.d	$ft15, $s0, $a1
-	fmul.d	$ft14, $ft14, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft14
-	fsel	$fs0, $ft14, $fa2, $fcc0
-	fneg.d	$ft14, $ft15
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr21, $t5, 0
+	vffint.d.lu	$vr21, $vr21
+	vreplvei.d	$vr21, $vr21, 0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft14, $t8, $a7
+	fmul.d	$ft13, $ft13, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft13
+	fsel	$ft15, $ft13, $fa1, $fcc0
+	fneg.d	$ft13, $ft14
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft15, $s0, $a0
-	fmul.d	$fs1, $fs0, $ft14
-	movgr2fr.d	$ft14, $zero
-	fmadd.d	$fs1, $fs1, $ft12, $ft14
+	fldx.d	$ft14, $t8, $a0
+	fmul.d	$fs0, $ft15, $ft13
+	movgr2fr.d	$ft13, $zero
+	fmadd.d	$fs0, $fs0, $ft11, $ft13
+	fneg.d	$ft14, $ft14
+	fmul.d	$ft14, $ft15, $ft14
+	fmadd.d	$ft14, $ft14, $ft12, $fs0
+	ld.bu	$a0, $a6, 18
+	ld.hu	$a7, $a6, 16
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 24
+	sltui	$a0, $a0, 1
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t8, $a0
 	fneg.d	$ft15, $ft15
-	fmul.d	$ft15, $fs0, $ft15
-	fmadd.d	$ft15, $ft15, $ft13, $fs1
-	ld.bu	$a0, $a7, 18
-	ld.hu	$a1, $a7, 16
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 24
-	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
-	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 34
-	ld.hu	$a1, $a7, 32
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 40
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 34
+	ld.hu	$a7, $a6, 32
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 40
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 50
-	ld.hu	$a1, $a7, 48
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 56
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 50
+	ld.hu	$a7, $a6, 48
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 56
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 66
-	ld.hu	$a1, $a7, 64
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 72
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 66
+	ld.hu	$a7, $a6, 64
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 72
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 82
-	ld.hu	$a1, $a7, 80
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 88
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 82
+	ld.hu	$a7, $a6, 80
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 88
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 98
-	ld.hu	$a1, $a7, 96
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 104
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 98
+	ld.hu	$a7, $a6, 96
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 104
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 114
-	ld.hu	$a1, $a7, 112
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 120
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 114
+	ld.hu	$a7, $a6, 112
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 120
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 130
-	ld.hu	$a1, $a7, 128
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 136
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 130
+	ld.hu	$a7, $a6, 128
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$a6, $a6, 136
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$t5, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$t5, $t5, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $t5
+	vinsgr2vr.d	$vr22, $a6, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a6, $a0, 3
+	fldx.d	$ft15, $t8, $a6
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
-	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$ft14, $fs0, $ft12, $ft14
-	fneg.d	$fs0, $fs1
-	fmul.d	$ft15, $ft15, $fs0
-	fmadd.d	$ft14, $ft15, $ft13, $ft14
-	fadd.d	$ft11, $ft11, $ft14
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft13, $ft15, $ft11, $ft13
+	fneg.d	$ft15, $fs0
+	fmul.d	$ft14, $ft14, $ft15
+	fmadd.d	$ft13, $ft14, $ft12, $ft13
+	fadd.d	$ft10, $ft10, $ft13
 .LBB5_10:                               # %.split399.us
                                         #   in Loop: Header=BB5_11 Depth=2
-	andi	$a0, $a6, 1
-	ori	$t5, $zero, 1
-	move	$a6, $zero
+	andi	$a0, $a5, 1
+	ori	$s3, $zero, 1
+	move	$a5, $zero
 	beqz	$a0, .LBB5_14
 .LBB5_11:                               # %.preheader373
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_13 Depth 3
-	slli.d	$a0, $t5, 7
-	alsl.d	$a0, $t5, $a0, 4
-	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
-	add.d	$a7, $a1, $a0
-	beq	$a5, $s5, .LBB5_9
+	slli.d	$a0, $s3, 7
+	alsl.d	$a0, $s3, $a0, 4
+	add.d	$a6, $s7, $a0
+	beq	$t4, $s8, .LBB5_9
 # %bb.12:                               # %.preheader373.split
                                         #   in Loop: Header=BB5_11 Depth=2
-	ld.w	$a1, $ra, 36
-	move	$a0, $zero
-	srai.d	$a3, $a1, 63
-	andn	$a4, $a1, $a3
-	slli.d	$a1, $t5, 6
-	alsl.d	$a1, $t5, $a1, 3
-	ld.d	$a3, $sp, 232                   # 8-byte Folded Reload
-	add.d	$s7, $a3, $a1
+	ld.w	$a0, $a3, 36
+	move	$a7, $zero
+	srai.d	$t5, $a0, 63
+	andn	$t5, $a0, $t5
+	slli.d	$a0, $s3, 6
+	alsl.d	$a0, $s3, $a0, 3
+	add.d	$s3, $ra, $a0
 	.p2align	4, , 16
 .LBB5_13:                               #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_11 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $s7, $a0
-	ld.d	$a3, $a7, 8
-	ld.bu	$t4, $a7, 2
-	ld.hu	$t5, $a7, 0
-	ldx.w	$s2, $s7, $a0
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$s3, $t5, 64
-	sub.d	$t5, $t6, $t5
-	masknez	$s3, $s3, $t4
-	maskeqz	$t4, $t5, $t4
-	or	$t4, $t4, $s3
-	mul.w	$t5, $s2, $a4
-	srli.d	$t5, $t5, 4
-	add.w	$a1, $t5, $a1
-	srai.d	$t5, $a1, 63
-	andn	$a1, $a1, $t5
-	slti	$t5, $a1, 127
-	maskeqz	$a1, $a1, $t5
-	masknez	$t5, $s1, $t5
-	or	$a1, $a1, $t5
-	srli.d	$t5, $a3, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft14, $t5
-	fsub.d	$ft14, $ft14, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft15, $a3
-	fadd.d	$ft14, $ft15, $ft14
-	fmul.d	$ft14, $ft14, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft14
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft15, $s0, $a3
-	fsel	$ft14, $ft14, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$fs0, $t1, $a3
-	fneg.d	$ft15, $ft15
-	fmul.d	$ft15, $ft14, $ft15
-	movgr2fr.d	$fs1, $zero
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs2, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs3, $t1, $a1
-	fmadd.d	$ft15, $ft15, $fs0, $fs1
-	fneg.d	$fs0, $fs2
-	fmul.d	$ft14, $ft14, $fs0
-	fmadd.d	$ft14, $ft14, $fs3, $ft15
-	fadd.d	$ft11, $ft11, $ft14
-	addi.d	$a0, $a0, 8
-	addi.d	$a7, $a7, 16
-	bne	$a0, $s4, .LBB5_13
+	add.d	$a0, $s3, $a7
+	ld.d	$s0, $a6, 8
+	ld.bu	$s1, $a6, 2
+	ld.hu	$s4, $a6, 0
+	ldx.w	$s5, $s3, $a7
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$s6, $s4, 64
+	sub.d	$s4, $t6, $s4
+	masknez	$s6, $s6, $s1
+	maskeqz	$s1, $s4, $s1
+	or	$s1, $s1, $s6
+	mul.w	$s4, $s5, $t5
+	srli.d	$s4, $s4, 4
+	add.w	$a0, $s4, $a0
+	srai.d	$s4, $a0, 63
+	andn	$a0, $a0, $s4
+	slti	$s4, $a0, 127
+	maskeqz	$a0, $a0, $s4
+	masknez	$s4, $fp, $s4
+	or	$a0, $a0, $s4
+	vinsgr2vr.d	$vr21, $s0, 0
+	vffint.d.lu	$vr21, $vr21
+	vreplvei.d	$vr21, $vr21, 0
+	fmul.d	$ft13, $ft13, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft13
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft14, $t8, $s0
+	fsel	$ft13, $ft13, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft15, $t3, $s0
+	fneg.d	$ft14, $ft14
+	fmul.d	$ft14, $ft13, $ft14
+	movgr2fr.d	$fs0, $zero
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$fs1, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs2, $t3, $a0
+	fmadd.d	$ft14, $ft14, $ft15, $fs0
+	fneg.d	$ft15, $fs1
+	fmul.d	$ft13, $ft13, $ft15
+	fmadd.d	$ft13, $ft13, $fs2, $ft14
+	fadd.d	$ft10, $ft10, $ft13
+	addi.d	$a7, $a7, 8
+	addi.d	$a6, $a6, 16
+	bne	$a7, $t1, .LBB5_13
 	b	.LBB5_10
 	.p2align	4, , 16
 .LBB5_14:                               # %.preheader389
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.w	$a5, $ra, 20
-	fld.d	$ft12, $t1, 512
-	fld.d	$ft13, $t1, 504
-	move	$t5, $zero
-	ori	$a6, $zero, 1
+	ld.w	$a5, $a3, 20
+	fld.d	$ft11, $t3, 512
+	fld.d	$ft12, $t3, 504
+	move	$s3, $zero
+	ori	$t4, $zero, 1
+	addi.d	$s7, $a1, 816
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
 	b	.LBB5_17
 	.p2align	4, , 16
 .LBB5_15:                               # %.preheader372.split.us.preheader
                                         #   in Loop: Header=BB5_17 Depth=2
-	ld.bu	$a0, $a7, 2
-	ld.hu	$a1, $a7, 0
-	ld.d	$a3, $a7, 8
+	ld.bu	$a0, $a6, 2
+	ld.hu	$a7, $a6, 0
+	ld.d	$t5, $a6, 8
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft14, $a1
-	fsub.d	$ft14, $ft14, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft15, $a3
-	fadd.d	$ft14, $ft15, $ft14
-	slli.d	$a1, $a0, 3
-	fldx.d	$ft15, $s0, $a1
-	fmul.d	$ft14, $ft14, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft14
-	fsel	$fs0, $ft14, $fa2, $fcc0
-	fneg.d	$ft14, $ft15
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr21, $t5, 0
+	vffint.d.lu	$vr21, $vr21
+	vreplvei.d	$vr21, $vr21, 0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft14, $t8, $a7
+	fmul.d	$ft13, $ft13, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft13
+	fsel	$ft15, $ft13, $fa1, $fcc0
+	fneg.d	$ft13, $ft14
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft15, $s0, $a0
-	fmul.d	$fs1, $fs0, $ft14
-	movgr2fr.d	$ft14, $zero
-	fmadd.d	$fs1, $fs1, $ft12, $ft14
+	fldx.d	$ft14, $t8, $a0
+	fmul.d	$fs0, $ft15, $ft13
+	movgr2fr.d	$ft13, $zero
+	fmadd.d	$fs0, $fs0, $ft11, $ft13
+	fneg.d	$ft14, $ft14
+	fmul.d	$ft14, $ft15, $ft14
+	fmadd.d	$ft14, $ft14, $ft12, $fs0
+	ld.bu	$a0, $a6, 18
+	ld.hu	$a7, $a6, 16
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 24
+	sltui	$a0, $a0, 1
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t8, $a0
 	fneg.d	$ft15, $ft15
-	fmul.d	$ft15, $fs0, $ft15
-	fmadd.d	$ft15, $ft15, $ft13, $fs1
-	ld.bu	$a0, $a7, 18
-	ld.hu	$a1, $a7, 16
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 24
-	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
-	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 34
-	ld.hu	$a1, $a7, 32
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 40
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 34
+	ld.hu	$a7, $a6, 32
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 40
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 50
-	ld.hu	$a1, $a7, 48
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 56
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 50
+	ld.hu	$a7, $a6, 48
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 56
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 66
-	ld.hu	$a1, $a7, 64
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 72
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 66
+	ld.hu	$a7, $a6, 64
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 72
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 82
-	ld.hu	$a1, $a7, 80
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 88
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 82
+	ld.hu	$a7, $a6, 80
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 88
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 98
-	ld.hu	$a1, $a7, 96
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 104
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 98
+	ld.hu	$a7, $a6, 96
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 104
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 114
-	ld.hu	$a1, $a7, 112
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 120
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 114
+	ld.hu	$a7, $a6, 112
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 120
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 130
-	ld.hu	$a1, $a7, 128
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 136
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 130
+	ld.hu	$a7, $a6, 128
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$t5, $a6, 136
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $t5, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $a7, 146
-	ld.hu	$a1, $a7, 144
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $a7, 152
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 146
+	ld.hu	$a7, $a6, 144
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$a6, $a6, 152
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$t5, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$t5, $t5, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $t5
+	vinsgr2vr.d	$vr22, $a6, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a6, $a0, 3
+	fldx.d	$ft15, $t8, $a6
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
-	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$ft14, $fs0, $ft12, $ft14
-	fneg.d	$fs0, $fs1
-	fmul.d	$ft15, $ft15, $fs0
-	fmadd.d	$ft14, $ft15, $ft13, $ft14
-	fadd.d	$ft11, $ft11, $ft14
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft13, $ft15, $ft11, $ft13
+	fneg.d	$ft15, $fs0
+	fmul.d	$ft14, $ft14, $ft15
+	fmadd.d	$ft13, $ft14, $ft12, $ft13
+	fadd.d	$ft10, $ft10, $ft13
 .LBB5_16:                               # %.split406.us
                                         #   in Loop: Header=BB5_17 Depth=2
-	andi	$a0, $a6, 1
-	ori	$t5, $zero, 1
-	move	$a6, $zero
+	andi	$a0, $t4, 1
+	ori	$s3, $zero, 1
+	move	$t4, $zero
 	beqz	$a0, .LBB5_20
 .LBB5_17:                               # %.preheader372
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_19 Depth 3
-	alsl.d	$a0, $t5, $t5, 2
+	alsl.d	$a0, $s3, $s3, 2
 	slli.d	$a0, $a0, 5
-	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	add.d	$a7, $a1, $a0
-	beq	$a5, $s5, .LBB5_15
+	add.d	$a6, $s7, $a0
+	beq	$a5, $s8, .LBB5_15
 # %bb.18:                               # %.preheader372.split
                                         #   in Loop: Header=BB5_17 Depth=2
-	ld.w	$a1, $ra, 36
-	move	$a0, $zero
-	srai.d	$a3, $a1, 63
-	andn	$a4, $a1, $a3
-	slli.d	$a1, $t5, 6
-	alsl.d	$a1, $t5, $a1, 4
-	ld.d	$a3, $sp, 224                   # 8-byte Folded Reload
-	add.d	$s7, $a3, $a1
+	ld.w	$a0, $a3, 36
+	move	$a7, $zero
+	srai.d	$t5, $a0, 63
+	andn	$t5, $a0, $t5
+	slli.d	$a0, $s3, 6
+	alsl.d	$a0, $s3, $a0, 4
+	add.d	$s3, $ra, $a0
 	.p2align	4, , 16
 .LBB5_19:                               #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_17 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $s7, $a0
-	ld.d	$a3, $a7, 8
-	ld.bu	$t4, $a7, 2
-	ld.hu	$t5, $a7, 0
-	ldx.w	$s2, $s7, $a0
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$s3, $t5, 64
-	sub.d	$t5, $t6, $t5
-	masknez	$s3, $s3, $t4
-	maskeqz	$t4, $t5, $t4
-	or	$t4, $t4, $s3
-	mul.w	$t5, $s2, $a4
-	srli.d	$t5, $t5, 4
-	add.w	$a1, $t5, $a1
-	srai.d	$t5, $a1, 63
-	andn	$a1, $a1, $t5
-	slti	$t5, $a1, 127
-	maskeqz	$a1, $a1, $t5
-	masknez	$t5, $s1, $t5
-	or	$a1, $a1, $t5
-	srli.d	$t5, $a3, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft14, $t5
-	fsub.d	$ft14, $ft14, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft15, $a3
-	fadd.d	$ft14, $ft15, $ft14
-	fmul.d	$ft14, $ft14, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft14
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft15, $s0, $a3
-	fsel	$ft14, $ft14, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$fs0, $t1, $a3
-	fneg.d	$ft15, $ft15
-	fmul.d	$ft15, $ft14, $ft15
-	movgr2fr.d	$fs1, $zero
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs2, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs3, $t1, $a1
-	fmadd.d	$ft15, $ft15, $fs0, $fs1
-	fneg.d	$fs0, $fs2
-	fmul.d	$ft14, $ft14, $fs0
-	fmadd.d	$ft14, $ft14, $fs3, $ft15
-	fadd.d	$ft11, $ft11, $ft14
-	addi.d	$a0, $a0, 8
-	addi.d	$a7, $a7, 16
-	bne	$a0, $t0, .LBB5_19
+	add.d	$a0, $s3, $a7
+	ld.d	$s0, $a6, 8
+	ld.bu	$s1, $a6, 2
+	ld.hu	$s4, $a6, 0
+	ldx.w	$s5, $s3, $a7
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$s6, $s4, 64
+	sub.d	$s4, $t6, $s4
+	masknez	$s6, $s6, $s1
+	maskeqz	$s1, $s4, $s1
+	or	$s1, $s1, $s6
+	mul.w	$s4, $s5, $t5
+	srli.d	$s4, $s4, 4
+	add.w	$a0, $s4, $a0
+	srai.d	$s4, $a0, 63
+	andn	$a0, $a0, $s4
+	slti	$s4, $a0, 127
+	maskeqz	$a0, $a0, $s4
+	masknez	$s4, $fp, $s4
+	or	$a0, $a0, $s4
+	vinsgr2vr.d	$vr21, $s0, 0
+	vffint.d.lu	$vr21, $vr21
+	vreplvei.d	$vr21, $vr21, 0
+	fmul.d	$ft13, $ft13, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft13
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft14, $t8, $s0
+	fsel	$ft13, $ft13, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft15, $t3, $s0
+	fneg.d	$ft14, $ft14
+	fmul.d	$ft14, $ft13, $ft14
+	movgr2fr.d	$fs0, $zero
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$fs1, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs2, $t3, $a0
+	fmadd.d	$ft14, $ft14, $ft15, $fs0
+	fneg.d	$ft15, $fs1
+	fmul.d	$ft13, $ft13, $ft15
+	fmadd.d	$ft13, $ft13, $fs2, $ft14
+	fadd.d	$ft10, $ft10, $ft13
+	addi.d	$a7, $a7, 8
+	addi.d	$a6, $a6, 16
+	bne	$a7, $t7, .LBB5_19
 	b	.LBB5_16
 	.p2align	4, , 16
 .LBB5_20:                               # %.preheader388
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.w	$a5, $ra, 20
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	alsl.d	$a0, $a0, $a0, 1
-	slli.d	$a1, $a0, 5
-	pcalau12i	$a0, %pc_hi20(INIT_REF_NO_P)
-	addi.d	$a3, $a0, %pc_lo12(INIT_REF_NO_P)
-	fld.d	$ft12, $t1, 512
-	fld.d	$ft13, $t1, 504
-	move	$a0, $zero
-	add.d	$a6, $a3, $a1
-	ori	$a7, $zero, 1
+	ld.w	$a5, $a3, 20
+	ld.d	$ra, $sp, 96                    # 8-byte Folded Reload
+	alsl.d	$a0, $ra, $ra, 1
+	slli.d	$a0, $a0, 5
+	pcalau12i	$a6, %pc_hi20(INIT_REF_NO_P)
+	addi.d	$a7, $a6, %pc_lo12(INIT_REF_NO_P)
+	fld.d	$ft11, $t3, 512
+	fld.d	$ft12, $t3, 504
+	move	$a6, $zero
+	add.d	$t4, $a7, $a0
+	ori	$t5, $zero, 1
+	addi.d	$s7, $a1, 1136
 	b	.LBB5_23
 	.p2align	4, , 16
 .LBB5_21:                               # %.preheader371.split
                                         #   in Loop: Header=BB5_23 Depth=2
-	ld.w	$a1, $ra, 36
-	slli.d	$a3, $a0, 4
-	add.d	$a0, $a6, $a3
-	srai.d	$a4, $a1, 63
-	andn	$a4, $a1, $a4
-	ld.d	$a1, $s7, 8
-	ld.bu	$t4, $s7, 2
-	ld.hu	$t5, $s7, 0
-	ldx.w	$a3, $a6, $a3
-	ld.w	$s2, $a0, 4
-	sltui	$t4, $t4, 1
-	addi.d	$s3, $t5, 64
-	sub.d	$t5, $t6, $t5
-	masknez	$s3, $s3, $t4
-	maskeqz	$t4, $t5, $t4
-	or	$t4, $t4, $s3
-	mul.w	$a3, $a3, $a4
-	srli.d	$a3, $a3, 4
-	add.w	$a3, $a3, $s2
-	srai.d	$t5, $a3, 63
-	andn	$a3, $a3, $t5
-	slti	$t5, $a3, 127
-	maskeqz	$a3, $a3, $t5
-	masknez	$t5, $s1, $t5
-	or	$a3, $a3, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft14, $t5
-	fsub.d	$ft14, $ft14, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft15, $a1
-	fadd.d	$ft14, $ft15, $ft14
-	fmul.d	$ft14, $ft14, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft14
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $s0, $a1
-	fsel	$fs0, $ft14, $fa2, $fcc0
-	slli.d	$a1, $a3, 3
-	fldx.d	$fs1, $t1, $a1
-	fneg.d	$ft14, $ft15
-	fmul.d	$ft15, $fs0, $ft14
-	movgr2fr.d	$ft14, $zero
-	sub.d	$a1, $s1, $t4
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs2, $s0, $a1
-	xori	$a1, $a3, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs3, $t1, $a1
-	fmadd.d	$ft15, $ft15, $fs1, $ft14
-	fneg.d	$fs1, $fs2
-	fmul.d	$fs0, $fs0, $fs1
-	fmadd.d	$ft15, $fs0, $fs3, $ft15
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a1, $s7, 24
-	ld.bu	$a3, $s7, 18
-	ld.hu	$t4, $s7, 16
-	ld.w	$t5, $a0, 8
-	ld.w	$s2, $a0, 12
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a4
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft15, $t5
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$fs0, $a1
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	slli.d	$a1, $a3, 3
-	fldx.d	$fs0, $s0, $a1
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$fs1, $t1, $a1
-	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs2, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs3, $t1, $a1
-	fmadd.d	$fs0, $fs0, $fs1, $ft14
-	fneg.d	$fs1, $fs2
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $fs3, $fs0
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a1, $s7, 40
-	ld.bu	$a3, $s7, 34
-	ld.hu	$t4, $s7, 32
-	ld.w	$t5, $a0, 16
-	ld.w	$s2, $a0, 20
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a4
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft15, $t5
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$fs0, $a1
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	slli.d	$a1, $a3, 3
-	fldx.d	$fs0, $s0, $a1
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$fs1, $t1, $a1
-	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs2, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs3, $t1, $a1
-	fmadd.d	$fs0, $fs0, $fs1, $ft14
-	fneg.d	$fs1, $fs2
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $fs3, $fs0
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a1, $s7, 56
-	ld.bu	$a3, $s7, 50
-	ld.hu	$t4, $s7, 48
-	ld.w	$t5, $a0, 24
-	ld.w	$s2, $a0, 28
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a4
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft15, $t5
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$fs0, $a1
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	slli.d	$a1, $a3, 3
-	fldx.d	$fs0, $s0, $a1
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$fs1, $t1, $a1
-	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs2, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs3, $t1, $a1
-	fmadd.d	$fs0, $fs0, $fs1, $ft14
-	fneg.d	$fs1, $fs2
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $fs3, $fs0
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a1, $s7, 72
-	ld.bu	$a3, $s7, 66
-	ld.hu	$t4, $s7, 64
-	ld.w	$t5, $a0, 32
-	ld.w	$s2, $a0, 36
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a4
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft15, $t5
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$fs0, $a1
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	slli.d	$a1, $a3, 3
-	fldx.d	$fs0, $s0, $a1
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$fs1, $t1, $a1
-	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs2, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs3, $t1, $a1
-	fmadd.d	$fs0, $fs0, $fs1, $ft14
-	fneg.d	$fs1, $fs2
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $fs3, $fs0
-	ld.d	$a1, $s7, 88
-	ld.bu	$a3, $s7, 82
-	ld.hu	$t4, $s7, 80
-	ld.w	$t5, $a0, 40
-	ld.w	$a0, $a0, 44
-	sltui	$a3, $a3, 1
-	addi.d	$s2, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s2, $s2, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s2
-	mul.w	$a4, $t5, $a4
-	srli.d	$a4, $a4, 4
-	add.w	$a0, $a4, $a0
-	srai.d	$a4, $a0, 63
-	andn	$a0, $a0, $a4
-	slti	$a4, $a0, 127
-	maskeqz	$a0, $a0, $a4
-	masknez	$a4, $s1, $a4
-	or	$a0, $a0, $a4
-	srli.d	$a4, $a1, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$fs0, $a4
-	fsub.d	$fs0, $fs0, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$fs1, $a1
-	fadd.d	$fs0, $fs1, $fs0
-	fmul.d	$fs0, $fs0, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $fs0
-	slli.d	$a1, $a3, 3
-	fldx.d	$fs1, $s0, $a1
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs2, $t1, $a1
-	fsel	$fs0, $fs0, $fa2, $fcc0
-	fneg.d	$fs1, $fs1
-	fmul.d	$fs1, $fs0, $fs1
-	fmadd.d	$ft14, $fs1, $fs2, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $s0, $a1
-	xori	$a0, $a0, 127
+	ld.w	$a0, $a3, 36
+	slli.d	$s0, $a7, 4
+	add.d	$s3, $t4, $s0
+	srai.d	$a7, $a0, 63
+	andn	$a7, $a0, $a7
+	ld.d	$a0, $a6, 8
+	ld.bu	$s1, $a6, 2
+	ld.hu	$s4, $a6, 0
+	ldx.w	$s0, $t4, $s0
+	ld.w	$s5, $s3, 4
+	sltui	$s1, $s1, 1
+	addi.d	$s6, $s4, 64
+	sub.d	$s4, $t6, $s4
+	masknez	$s6, $s6, $s1
+	maskeqz	$s1, $s4, $s1
+	or	$s1, $s1, $s6
+	mul.w	$s0, $s0, $a7
+	srli.d	$s0, $s0, 4
+	add.w	$s0, $s0, $s5
+	srai.d	$s4, $s0, 63
+	andn	$s0, $s0, $s4
+	slti	$s4, $s0, 127
+	maskeqz	$s0, $s0, $s4
+	masknez	$s4, $fp, $s4
+	or	$s0, $s0, $s4
+	vinsgr2vr.d	$vr21, $a0, 0
+	vffint.d.lu	$vr21, $vr21
+	vreplvei.d	$vr21, $vr21, 0
+	fmul.d	$ft13, $ft13, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft13
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t8, $a0
+	fsel	$ft15, $ft13, $fa1, $fcc0
+	slli.d	$a0, $s0, 3
+	fldx.d	$fs0, $t3, $a0
+	fneg.d	$ft13, $ft14
+	fmul.d	$ft14, $ft15, $ft13
+	movgr2fr.d	$ft13, $zero
+	sub.d	$a0, $fp, $s1
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs2, $t1, $a0
-	fadd.d	$ft11, $ft11, $ft15
-	fneg.d	$ft15, $fs1
-	fmul.d	$ft15, $fs0, $ft15
+	fldx.d	$fs1, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs2, $t3, $a0
+	fmadd.d	$ft14, $ft14, $fs0, $ft13
+	fneg.d	$fs0, $fs1
+	fmul.d	$ft15, $ft15, $fs0
 	fmadd.d	$ft14, $ft15, $fs2, $ft14
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$a0, $a6, 24
+	ld.bu	$s0, $a6, 18
+	ld.hu	$s1, $a6, 16
+	ld.w	$s4, $s3, 8
+	ld.w	$s5, $s3, 12
+	sltui	$s0, $s0, 1
+	addi.d	$s6, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s6, $s6, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s6
+	mul.w	$s1, $s4, $a7
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s5
+	srai.d	$s4, $s1, 63
+	andn	$s1, $s1, $s4
+	slti	$s4, $s1, 127
+	maskeqz	$s1, $s1, $s4
+	masknez	$s4, $fp, $s4
+	or	$s1, $s1, $s4
+	vinsgr2vr.d	$vr22, $a0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft15, $t8, $a0
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$fs0, $t3, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs1, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs2, $t3, $a0
+	fmadd.d	$ft15, $ft15, $fs0, $ft13
+	fneg.d	$fs0, $fs1
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $fs2, $ft15
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$a0, $a6, 40
+	ld.bu	$s0, $a6, 34
+	ld.hu	$s1, $a6, 32
+	ld.w	$s4, $s3, 16
+	ld.w	$s5, $s3, 20
+	sltui	$s0, $s0, 1
+	addi.d	$s6, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s6, $s6, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s6
+	mul.w	$s1, $s4, $a7
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s5
+	srai.d	$s4, $s1, 63
+	andn	$s1, $s1, $s4
+	slti	$s4, $s1, 127
+	maskeqz	$s1, $s1, $s4
+	masknez	$s4, $fp, $s4
+	or	$s1, $s1, $s4
+	vinsgr2vr.d	$vr22, $a0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft15, $t8, $a0
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$fs0, $t3, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs1, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs2, $t3, $a0
+	fmadd.d	$ft15, $ft15, $fs0, $ft13
+	fneg.d	$fs0, $fs1
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $fs2, $ft15
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$a0, $a6, 56
+	ld.bu	$s0, $a6, 50
+	ld.hu	$s1, $a6, 48
+	ld.w	$s4, $s3, 24
+	ld.w	$s5, $s3, 28
+	sltui	$s0, $s0, 1
+	addi.d	$s6, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s6, $s6, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s6
+	mul.w	$s1, $s4, $a7
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s5
+	srai.d	$s4, $s1, 63
+	andn	$s1, $s1, $s4
+	slti	$s4, $s1, 127
+	maskeqz	$s1, $s1, $s4
+	masknez	$s4, $fp, $s4
+	or	$s1, $s1, $s4
+	vinsgr2vr.d	$vr22, $a0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft15, $t8, $a0
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$fs0, $t3, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs1, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs2, $t3, $a0
+	fmadd.d	$ft15, $ft15, $fs0, $ft13
+	fneg.d	$fs0, $fs1
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $fs2, $ft15
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$a0, $a6, 72
+	ld.bu	$s0, $a6, 66
+	ld.hu	$s1, $a6, 64
+	ld.w	$s4, $s3, 32
+	ld.w	$s5, $s3, 36
+	sltui	$s0, $s0, 1
+	addi.d	$s6, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s6, $s6, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s6
+	mul.w	$s1, $s4, $a7
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s5
+	srai.d	$s4, $s1, 63
+	andn	$s1, $s1, $s4
+	slti	$s4, $s1, 127
+	maskeqz	$s1, $s1, $s4
+	masknez	$s4, $fp, $s4
+	or	$s1, $s1, $s4
+	vinsgr2vr.d	$vr22, $a0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft15, $t8, $a0
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$fs0, $t3, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs1, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs2, $t3, $a0
+	fmadd.d	$ft15, $ft15, $fs0, $ft13
+	fneg.d	$fs0, $fs1
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $fs2, $ft15
+	ld.d	$a0, $a6, 88
+	ld.bu	$s0, $a6, 82
+	ld.hu	$a6, $a6, 80
+	ld.w	$s1, $s3, 40
+	ld.w	$s3, $s3, 44
+	sltui	$s0, $s0, 1
+	addi.d	$s4, $a6, 64
+	sub.d	$a6, $t6, $a6
+	masknez	$s4, $s4, $s0
+	maskeqz	$a6, $a6, $s0
+	or	$a6, $a6, $s4
+	mul.w	$a7, $s1, $a7
+	srli.d	$a7, $a7, 4
+	add.w	$a7, $a7, $s3
+	srai.d	$s0, $a7, 63
+	andn	$a7, $a7, $s0
+	slti	$s0, $a7, 127
+	maskeqz	$a7, $a7, $s0
+	masknez	$s0, $fp, $s0
+	or	$a7, $a7, $s0
+	vinsgr2vr.d	$vr23, $a0, 0
+	vffint.d.lu	$vr23, $vr23
+	vreplvei.d	$vr23, $vr23, 0
+	fmul.d	$ft15, $ft15, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft15
+	slli.d	$a0, $a6, 3
+	fldx.d	$fs0, $t8, $a0
+	slli.d	$a0, $a7, 3
+	fldx.d	$fs1, $t3, $a0
+	fsel	$ft15, $ft15, $fa1, $fcc0
+	fneg.d	$fs0, $fs0
+	fmul.d	$fs0, $ft15, $fs0
+	fmadd.d	$ft13, $fs0, $fs1, $ft13
+	sub.d	$a0, $fp, $a6
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t8, $a0
+	xori	$a0, $a7, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs1, $t3, $a0
+	fadd.d	$ft10, $ft10, $ft14
+	fneg.d	$ft14, $fs0
+	fmul.d	$ft14, $ft15, $ft14
+	fmadd.d	$ft13, $ft14, $fs1, $ft13
 .LBB5_22:                               # %.split413.us
                                         #   in Loop: Header=BB5_23 Depth=2
-	fadd.d	$ft11, $ft11, $ft14
-	andi	$a1, $a7, 1
-	ori	$a0, $zero, 1
-	move	$a7, $zero
-	beqz	$a1, .LBB5_25
+	fadd.d	$ft10, $ft10, $ft13
+	andi	$a0, $t5, 1
+	ori	$a6, $zero, 1
+	move	$t5, $zero
+	beqz	$a0, .LBB5_25
 .LBB5_23:                               # %.preheader371
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	alsl.d	$a0, $a0, $a0, 1
-	slli.d	$a1, $a0, 5
-	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
-	add.d	$s7, $a3, $a1
-	bne	$a5, $s5, .LBB5_21
+	alsl.d	$a7, $a6, $a6, 1
+	slli.d	$a0, $a7, 5
+	add.d	$a6, $s7, $a0
+	bne	$a5, $s8, .LBB5_21
 # %bb.24:                               # %.preheader371.split.us.preheader
                                         #   in Loop: Header=BB5_23 Depth=2
-	ld.bu	$a0, $s7, 2
-	ld.hu	$a1, $s7, 0
-	ld.d	$a3, $s7, 8
+	ld.bu	$a0, $a6, 2
+	ld.hu	$a7, $a6, 0
+	ld.d	$s0, $a6, 8
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft14, $a1
-	fsub.d	$ft14, $ft14, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft15, $a3
-	fadd.d	$ft14, $ft15, $ft14
-	slli.d	$a1, $a0, 3
-	fldx.d	$ft15, $s0, $a1
-	fmul.d	$ft14, $ft14, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft14
-	fsel	$fs0, $ft14, $fa2, $fcc0
-	fneg.d	$ft14, $ft15
-	sub.d	$a0, $s1, $a0
+	addi.d	$s1, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s1
+	vinsgr2vr.d	$vr21, $s0, 0
+	vffint.d.lu	$vr21, $vr21
+	vreplvei.d	$vr21, $vr21, 0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft14, $t8, $a7
+	fmul.d	$ft13, $ft13, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft13
+	fsel	$ft15, $ft13, $fa1, $fcc0
+	fneg.d	$ft13, $ft14
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft15, $s0, $a0
-	fmul.d	$fs1, $fs0, $ft14
-	movgr2fr.d	$ft14, $zero
-	fmadd.d	$fs1, $fs1, $ft12, $ft14
+	fldx.d	$ft14, $t8, $a0
+	fmul.d	$fs0, $ft15, $ft13
+	movgr2fr.d	$ft13, $zero
+	fmadd.d	$fs0, $fs0, $ft11, $ft13
+	fneg.d	$ft14, $ft14
+	fmul.d	$ft14, $ft15, $ft14
+	fmadd.d	$ft14, $ft14, $ft12, $fs0
+	ld.bu	$a0, $a6, 18
+	ld.hu	$a7, $a6, 16
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$s0, $a6, 24
+	sltui	$a0, $a0, 1
+	addi.d	$s1, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s1
+	vinsgr2vr.d	$vr22, $s0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t8, $a0
 	fneg.d	$ft15, $ft15
-	fmul.d	$ft15, $fs0, $ft15
-	fmadd.d	$ft15, $ft15, $ft13, $fs1
-	ld.bu	$a0, $s7, 18
-	ld.hu	$a1, $s7, 16
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $s7, 24
-	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
-	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $s7, 34
-	ld.hu	$a1, $s7, 32
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $s7, 40
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 34
+	ld.hu	$a7, $a6, 32
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$s0, $a6, 40
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s1, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s1
+	vinsgr2vr.d	$vr22, $s0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $s7, 50
-	ld.hu	$a1, $s7, 48
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $s7, 56
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 50
+	ld.hu	$a7, $a6, 48
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$s0, $a6, 56
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s1, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s1
+	vinsgr2vr.d	$vr22, $s0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $s7, 66
-	ld.hu	$a1, $s7, 64
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $s7, 72
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 66
+	ld.hu	$a7, $a6, 64
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$s0, $a6, 72
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s1, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s1
+	vinsgr2vr.d	$vr22, $s0, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft15, $t8, $a7
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft15, $ft15, $ft11, $ft13
 	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$fs0, $fs0, $ft12, $ft14
-	fneg.d	$fs1, $fs1
-	fmul.d	$ft15, $ft15, $fs1
-	fmadd.d	$ft15, $ft15, $ft13, $fs0
-	ld.bu	$a0, $s7, 82
-	ld.hu	$a1, $s7, 80
-	fadd.d	$ft11, $ft11, $ft15
-	ld.d	$a3, $s7, 88
+	fmul.d	$ft14, $ft14, $fs0
+	fmadd.d	$ft14, $ft14, $ft12, $ft15
+	ld.bu	$a0, $a6, 82
+	ld.hu	$a7, $a6, 80
+	fadd.d	$ft10, $ft10, $ft14
+	ld.d	$a6, $a6, 88
 	sltui	$a0, $a0, 1
-	addi.d	$a4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$a4, $a4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $a4
-	srli.d	$a1, $a3, 32
-	or	$a1, $a1, $t8
-	movgr2fr.d	$ft15, $a1
-	fsub.d	$ft15, $ft15, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$fs0, $a3
-	fadd.d	$ft15, $fs0, $ft15
-	fmul.d	$ft15, $ft15, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft15
-	fsel	$ft15, $ft15, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$fs0, $s0, $a1
-	sub.d	$a0, $s1, $a0
+	addi.d	$s0, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s0, $s0, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr22, $a6, 0
+	vffint.d.lu	$vr22, $vr22
+	vreplvei.d	$vr22, $vr22, 0
+	fmul.d	$ft14, $ft14, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft14
+	fsel	$ft14, $ft14, $fa1, $fcc0
+	slli.d	$a6, $a0, 3
+	fldx.d	$ft15, $t8, $a6
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $s0, $a0
-	fneg.d	$fs0, $fs0
-	fmul.d	$fs0, $ft15, $fs0
-	fmadd.d	$ft14, $fs0, $ft12, $ft14
-	fneg.d	$fs0, $fs1
-	fmul.d	$ft15, $ft15, $fs0
-	fmadd.d	$ft14, $ft15, $ft13, $ft14
+	fldx.d	$fs0, $t8, $a0
+	fneg.d	$ft15, $ft15
+	fmul.d	$ft15, $ft14, $ft15
+	fmadd.d	$ft13, $ft15, $ft11, $ft13
+	fneg.d	$ft15, $fs0
+	fmul.d	$ft14, $ft14, $ft15
+	fmadd.d	$ft13, $ft14, $ft12, $ft13
 	b	.LBB5_22
 	.p2align	4, , 16
 .LBB5_25:                               # %.preheader387
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.w	$a6, $ra, 20
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
-	slli.d	$a5, $a0, 5
-	bne	$a6, $s5, .LBB5_27
+	ld.w	$t4, $a3, 20
+	slli.d	$t5, $ra, 5
+	bne	$t4, $s8, .LBB5_27
 # %bb.26:                               #   in Loop: Header=BB5_1 Depth=1
 	pcalau12i	$a0, %pc_hi20(INIT_DELTA_QP_I)
-	addi.d	$a0, $a0, %pc_lo12(INIT_DELTA_QP_I)
+	addi.d	$a5, $a0, %pc_lo12(INIT_DELTA_QP_I)
 	b	.LBB5_28
 	.p2align	4, , 16
 .LBB5_27:                               #   in Loop: Header=BB5_1 Depth=1
 	pcalau12i	$a0, %pc_hi20(INIT_DELTA_QP_P)
-	addi.d	$a0, $a0, %pc_lo12(INIT_DELTA_QP_P)
+	addi.d	$a5, $a0, %pc_lo12(INIT_DELTA_QP_P)
 .LBB5_28:                               # %.preheader386
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.bu	$a1, $s8, 1330
-	add.d	$a3, $a0, $a5
-	ld.d	$a4, $s8, 1336
-	ld.w	$a7, $a3, 4
-	sltui	$a1, $a1, 1
-	ld.d	$t4, $sp, 40                    # 8-byte Folded Reload
-	masknez	$t4, $t4, $a1
-	ld.d	$t5, $sp, 32                    # 8-byte Folded Reload
-	maskeqz	$a1, $t5, $a1
-	or	$a1, $a1, $t4
-	srai.d	$t4, $a7, 63
-	andn	$a7, $a7, $t4
-	slti	$t4, $a7, 127
-	maskeqz	$a7, $a7, $t4
-	masknez	$t4, $s1, $t4
-	or	$a7, $a7, $t4
-	srli.d	$t4, $a4, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft12, $t4
-	fsub.d	$ft12, $ft12, $fa0
-	bstrins.d	$a4, $fp, 63, 32
-	movgr2fr.d	$ft13, $a4
-	fadd.d	$ft12, $ft13, $ft12
-	fmul.d	$ft12, $ft12, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft12
-	slli.d	$a4, $a1, 3
-	fldx.d	$ft13, $s0, $a4
-	fsel	$ft12, $ft12, $fa2, $fcc0
-	slli.d	$a4, $a7, 3
-	fldx.d	$ft14, $t1, $a4
+	ld.bu	$a0, $a1, 1330
+	add.d	$a6, $a5, $t5
+	ld.d	$a7, $a1, 1336
+	ld.w	$s0, $a6, 4
+	sltui	$a0, $a0, 1
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	masknez	$s1, $s1, $a0
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	maskeqz	$a0, $s3, $a0
+	or	$a0, $a0, $s1
+	srai.d	$s1, $s0, 63
+	andn	$s0, $s0, $s1
+	slti	$s1, $s0, 127
+	maskeqz	$s0, $s0, $s1
+	masknez	$s1, $fp, $s1
+	or	$s0, $s0, $s1
+	vinsgr2vr.d	$vr19, $a7, 0
+	vffint.d.lu	$vr19, $vr19
+	vreplvei.d	$vr19, $vr19, 0
+	fmul.d	$ft11, $ft11, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft11
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft12, $t8, $a7
+	fsel	$ft11, $ft11, $fa1, $fcc0
+	slli.d	$a7, $s0, 3
+	fldx.d	$ft13, $t3, $a7
+	fneg.d	$ft12, $ft12
+	fmul.d	$ft12, $ft11, $ft12
+	movgr2fr.d	$ft14, $zero
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft12, $ft12, $ft13, $ft14
+	fneg.d	$ft13, $ft15
+	fmul.d	$ft11, $ft11, $ft13
+	fmadd.d	$ft11, $ft11, $fs0, $ft12
+	ld.bu	$a0, $a1, 1346
+	ld.hu	$a7, $a1, 1344
+	ld.d	$s0, $a1, 1352
+	ld.w	$a6, $a6, 12
+	sltui	$a0, $a0, 1
+	addi.d	$s1, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s1
+	srai.d	$a7, $a6, 63
+	andn	$a6, $a6, $a7
+	slti	$a7, $a6, 127
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $fp, $a7
+	or	$a6, $a6, $a7
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a7, $a0, 3
+	fldx.d	$ft13, $t8, $a7
+	slli.d	$a7, $a6, 3
+	fldx.d	$ft15, $t3, $a7
+	fsel	$ft12, $ft12, $fa1, $fcc0
 	fneg.d	$ft13, $ft13
 	fmul.d	$ft13, $ft12, $ft13
-	movgr2fr.d	$ft15, $zero
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a7, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft13, $ft13, $ft14, $ft15
-	fneg.d	$ft14, $fs0
-	fmul.d	$ft12, $ft12, $ft14
-	fmadd.d	$ft12, $ft12, $fs1, $ft13
-	ld.bu	$a1, $s8, 1346
-	ld.hu	$a4, $s8, 1344
-	ld.d	$a7, $s8, 1352
-	ld.w	$a3, $a3, 12
-	sltui	$a1, $a1, 1
-	addi.d	$t4, $a4, 64
-	sub.d	$a4, $t6, $a4
-	masknez	$t4, $t4, $a1
-	maskeqz	$a1, $a4, $a1
-	or	$a1, $a1, $t4
-	srai.d	$a4, $a3, 63
-	andn	$a3, $a3, $a4
-	slti	$a4, $a3, 127
-	maskeqz	$a3, $a3, $a4
-	masknez	$a4, $s1, $a4
-	or	$a3, $a3, $a4
-	srli.d	$a4, $a7, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft13, $a4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a7, $fp, 63, 32
-	movgr2fr.d	$ft14, $a7
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a4, $a1, 3
-	fldx.d	$ft14, $s0, $a4
-	slli.d	$a4, $a3, 3
-	fldx.d	$fs0, $t1, $a4
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	fmadd.d	$ft14, $ft14, $fs0, $ft15
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $s0, $a1
-	xori	$a1, $a3, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $t1, $a1
+	fmadd.d	$ft13, $ft13, $ft15, $ft14
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft14, $t8, $a0
+	xori	$a0, $a6, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t3, $a0
+	fadd.d	$ft10, $ft10, $ft11
+	fneg.d	$ft11, $ft14
+	fmul.d	$ft11, $ft12, $ft11
+	fmadd.d	$ft11, $ft11, $ft15, $ft13
+	fadd.d	$ft11, $ft10, $ft11
+	ori	$s5, $zero, 48
+	add.d	$a0, $a5, $t5
+	ld.w	$a5, $a0, 20
+	move	$a6, $zero
+	srai.d	$a7, $a5, 63
+	andn	$a5, $a5, $a7
+	slti	$a7, $a5, 127
+	maskeqz	$a5, $a5, $a7
+	masknez	$a7, $fp, $a7
+	or	$a5, $a5, $a7
+	slli.d	$a7, $a5, 3
+	fldx.d	$ft12, $t3, $a7
+	xori	$a5, $a5, 127
+	slli.d	$a5, $a5, 3
+	fldx.d	$ft13, $t3, $a5
+	ld.w	$a0, $a0, 28
+	movgr2fr.d	$ft10, $zero
+	fmadd.d	$ft12, $fa2, $ft12, $ft10
+	fmadd.d	$ft12, $fa3, $ft13, $ft12
+	srai.d	$a5, $a0, 63
+	andn	$a0, $a0, $a5
+	slti	$a5, $a0, 127
+	maskeqz	$a0, $a0, $a5
+	masknez	$a5, $fp, $a5
+	or	$a0, $a0, $a5
+	slli.d	$a5, $a0, 3
+	fldx.d	$ft13, $t3, $a5
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft14, $t3, $a0
 	fadd.d	$ft11, $ft11, $ft12
-	fneg.d	$ft12, $ft15
-	fmul.d	$ft12, $ft13, $ft12
-	fmadd.d	$ft12, $ft12, $fs0, $ft14
-	fadd.d	$ft12, $ft11, $ft12
-	add.d	$a1, $a0, $a5
-	ld.w	$a3, $a1, 20
-	move	$a0, $zero
-	srai.d	$a4, $a3, 63
-	andn	$a3, $a3, $a4
-	slti	$a4, $a3, 127
-	maskeqz	$a3, $a3, $a4
-	masknez	$a4, $s1, $a4
-	or	$a3, $a3, $a4
-	slli.d	$a4, $a3, 3
-	fldx.d	$ft13, $t1, $a4
-	xori	$a3, $a3, 127
-	slli.d	$a3, $a3, 3
-	fldx.d	$ft14, $t1, $a3
-	ld.w	$a1, $a1, 28
-	movgr2fr.d	$ft11, $zero
-	fmadd.d	$ft13, $fa3, $ft13, $ft11
-	fmadd.d	$ft13, $fa4, $ft14, $ft13
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft14, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $t1, $a1
-	fadd.d	$ft12, $ft12, $ft13
-	ld.w	$a1, $ra, 36
-	fmadd.d	$ft13, $fa5, $ft14, $ft11
-	fmadd.d	$ft13, $fa6, $ft15, $ft13
-	fadd.d	$ft12, $ft12, $ft13
-	srai.d	$a3, $a1, 63
-	andn	$a7, $a1, $a3
-	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
+	ld.w	$a0, $a3, 36
+	fmadd.d	$ft12, $fa4, $ft13, $ft10
+	fmadd.d	$ft12, $fa5, $ft14, $ft12
+	fadd.d	$ft11, $ft11, $ft12
+	srai.d	$a5, $a0, 63
+	andn	$a5, $a0, $a5
+	ld.d	$a7, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
 	b	.LBB5_31
 	.p2align	4, , 16
 .LBB5_29:                               #   in Loop: Header=BB5_31 Depth=2
-	ld.w	$a1, $a4, -4
-	ld.w	$a3, $a4, 0
-	mul.w	$a1, $a1, $a7
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $t1, $a1
-	fmadd.d	$ft13, $ft13, $ft15, $ft11
-	fmadd.d	$ft13, $ft14, $fs0, $ft13
-	fadd.d	$ft12, $ft12, $ft13
-	ori	$a1, $zero, 48
-	beq	$a0, $a1, .LBB5_34
+	ld.w	$a0, $a7, -4
+	ld.w	$s0, $a7, 0
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $s0
+	srai.d	$s0, $a0, 63
+	andn	$a0, $a0, $s0
+	slti	$s0, $a0, 127
+	maskeqz	$a0, $a0, $s0
+	masknez	$s0, $fp, $s0
+	or	$a0, $a0, $s0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t3, $a0
+	fmadd.d	$ft12, $ft12, $ft14, $ft10
+	fmadd.d	$ft12, $ft13, $ft15, $ft12
+	fadd.d	$ft11, $ft11, $ft12
+	beq	$a6, $s5, .LBB5_34
 .LBB5_30:                               # %.backedge.backedge
                                         #   in Loop: Header=BB5_31 Depth=2
-	addi.d	$a0, $a0, 16
-	addi.d	$s7, $s7, 8
-	addi.d	$a4, $a4, 8
+	addi.d	$a6, $a6, 16
+	addi.d	$s3, $s3, 8
+	addi.d	$a7, $a7, 8
 .LBB5_31:                               # %.backedge
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a1, $s8, $a0
-	ld.bu	$a3, $a1, 1394
-	ld.hu	$t4, $a1, 1392
-	ld.d	$a1, $a1, 1400
-	sltui	$a3, $a3, 1
-	addi.d	$t5, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$t5, $t5, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $t5
-	srli.d	$t4, $a1, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $s0, $a1
-	fsel	$fs0, $ft13, $fa2, $fcc0
+	add.d	$a0, $a1, $a6
+	ld.bu	$s0, $a0, 1394
+	ld.hu	$s1, $a0, 1392
+	ld.d	$a0, $a0, 1400
+	sltui	$s0, $s0, 1
+	addi.d	$s4, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s4, $s4, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s4
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft14, $t8, $a0
+	fsel	$ft15, $ft12, $fa1, $fcc0
+	fneg.d	$ft12, $ft13
+	fmul.d	$ft12, $ft15, $ft12
 	fneg.d	$ft13, $ft14
-	fmul.d	$ft13, $fs0, $ft13
-	fneg.d	$ft14, $ft15
-	fmul.d	$ft14, $fs0, $ft14
-	beq	$a6, $s5, .LBB5_29
+	fmul.d	$ft13, $ft15, $ft13
+	beq	$t4, $s8, .LBB5_29
 # %bb.32:                               # %.thread631
                                         #   in Loop: Header=BB5_31 Depth=2
-	ld.w	$a1, $s7, -4
-	ld.w	$a3, $s7, 0
-	mul.w	$a1, $a1, $a7
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $t1, $a1
-	fmadd.d	$ft13, $ft13, $ft15, $ft11
-	fmadd.d	$ft13, $ft14, $fs0, $ft13
-	fadd.d	$ft12, $ft12, $ft13
-	ori	$a1, $zero, 48
-	bne	$a0, $a1, .LBB5_30
+	ld.w	$a0, $s3, -4
+	ld.w	$s0, $s3, 0
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $s0
+	srai.d	$s0, $a0, 63
+	andn	$a0, $a0, $s0
+	slti	$s0, $a0, 127
+	maskeqz	$a0, $a0, $s0
+	masknez	$s0, $fp, $s0
+	or	$a0, $a0, $s0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t3, $a0
+	fmadd.d	$ft12, $ft12, $ft14, $ft10
+	fmadd.d	$ft12, $ft13, $ft15, $ft12
+	fadd.d	$ft11, $ft11, $ft12
+	bne	$a6, $s5, .LBB5_30
 # %bb.33:                               #   in Loop: Header=BB5_1 Depth=1
-	ld.d	$s7, $sp, 216                   # 8-byte Folded Reload
-	slli.d	$a0, $s7, 4
-	alsl.d	$a1, $s7, $a0, 3
-	pcalau12i	$a3, %pc_hi20(INIT_TRANSFORM_SIZE_P)
-	addi.d	$a3, $a3, %pc_lo12(INIT_TRANSFORM_SIZE_P)
-	add.d	$a4, $a3, $a1
-	ld.d	$t4, $s8, 1464
-	ld.bu	$t5, $s8, 1458
-	ld.hu	$s2, $s8, 1456
-	ldx.w	$a1, $a3, $a1
-	ld.w	$a3, $a4, 4
-	sltui	$t5, $t5, 1
-	addi.d	$s3, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$s3, $s3, $t5
-	maskeqz	$t5, $s2, $t5
-	or	$t5, $t5, $s3
-	mul.w	$a1, $a1, $a7
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	srli.d	$a3, $t4, 32
-	or	$a3, $a3, $t8
-	movgr2fr.d	$ft13, $a3
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$t4, $fp, 63, 32
-	movgr2fr.d	$ft14, $t4
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t5, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t5
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $s8, 1480
-	ld.bu	$a3, $s8, 1474
-	ld.hu	$t4, $s8, 1472
-	ld.w	$t5, $a4, 8
-	ld.w	$s2, $a4, 12
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a7
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft13, $t5
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $s8, 1496
-	ld.bu	$a3, $s8, 1490
-	ld.hu	$t4, $s8, 1488
-	ld.w	$t5, $a4, 16
-	ld.w	$a4, $a4, 20
-	sltui	$a3, $a3, 1
-	addi.d	$s2, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s2, $s2, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s2
-	mul.w	$t4, $t5, $a7
-	srli.d	$t4, $t4, 4
-	add.w	$a4, $t4, $a4
-	srai.d	$t4, $a4, 63
-	andn	$a4, $a4, $t4
-	slti	$t4, $a4, 127
-	maskeqz	$a4, $a4, $t4
-	masknez	$t4, $s1, $t4
-	or	$a4, $a4, $t4
-	srli.d	$t4, $a1, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	pcalau12i	$a1, %pc_hi20(INIT_IPR_P)
-	addi.d	$a4, $a1, %pc_lo12(INIT_IPR_P)
-	alsl.d	$a1, $s7, $a4, 4
-	ld.bu	$a3, $a2, 2
-	ld.hu	$t4, $a2, 0
-	ldx.w	$t5, $a4, $a0
-	ld.w	$a1, $a1, 4
-	sltui	$a0, $a3, 1
-	addi.d	$a3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$a3, $a3, $a0
-	maskeqz	$a0, $t4, $a0
-	or	$a0, $a0, $a3
-	mul.w	$a3, $t5, $a7
-	srli.d	$a3, $a3, 4
-	add.w	$t5, $a3, $a1
+	slli.d	$a6, $ra, 4
+	alsl.d	$a0, $ra, $a6, 3
+	pcalau12i	$a7, %pc_hi20(INIT_TRANSFORM_SIZE_P)
+	addi.d	$s0, $a7, %pc_lo12(INIT_TRANSFORM_SIZE_P)
+	add.d	$a7, $s0, $a0
+	ld.d	$s1, $a1, 1464
+	ld.bu	$s3, $a1, 1458
+	ld.hu	$s4, $a1, 1456
+	ldx.w	$a0, $s0, $a0
+	ld.w	$s0, $a7, 4
+	sltui	$s3, $s3, 1
+	addi.d	$s5, $s4, 64
+	sub.d	$s4, $t6, $s4
+	masknez	$s5, $s5, $s3
+	maskeqz	$s3, $s4, $s3
+	or	$s3, $s3, $s5
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $s0
+	srai.d	$s0, $a0, 63
+	andn	$a0, $a0, $s0
+	slti	$s0, $a0, 127
+	maskeqz	$a0, $a0, $s0
+	masknez	$s0, $fp, $s0
+	or	$a0, $a0, $s0
+	vinsgr2vr.d	$vr20, $s1, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s3, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s3
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $a1, 1480
+	ld.bu	$s0, $a1, 1474
+	ld.hu	$s1, $a1, 1472
+	ld.w	$s3, $a7, 8
+	ld.w	$s4, $a7, 12
+	sltui	$s0, $s0, 1
+	addi.d	$s5, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s5, $s5, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s5
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s4
+	srai.d	$s3, $s1, 63
+	andn	$s1, $s1, $s3
+	slti	$s3, $s1, 127
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $fp, $s3
+	or	$s1, $s1, $s3
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $a1, 1496
+	ld.bu	$s0, $a1, 1490
+	ld.hu	$s1, $a1, 1488
+	ld.w	$s3, $a7, 16
+	ld.w	$a7, $a7, 20
+	sltui	$s0, $s0, 1
+	addi.d	$s4, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s4, $s4, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s4
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$a7, $s1, $a7
+	srai.d	$s1, $a7, 63
+	andn	$a7, $a7, $s1
+	slti	$s1, $a7, 127
+	maskeqz	$a7, $a7, $s1
+	masknez	$s1, $fp, $s1
+	or	$a7, $a7, $s1
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $a7, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $a7, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	pcalau12i	$a0, %pc_hi20(INIT_IPR_P)
+	addi.d	$a7, $a0, %pc_lo12(INIT_IPR_P)
+	alsl.d	$a0, $ra, $a7, 4
+	ld.bu	$s0, $a2, 2
+	ld.hu	$s1, $a2, 0
+	ldx.w	$s3, $a7, $a6
+	ld.w	$a0, $a0, 4
+	sltui	$a6, $s0, 1
+	addi.d	$s0, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s0, $s0, $a6
+	maskeqz	$a6, $s1, $a6
+	or	$a6, $a6, $s0
+	mul.w	$s0, $s3, $a5
+	srli.d	$s0, $s0, 4
+	add.w	$s3, $s0, $a0
 	b	.LBB5_35
 	.p2align	4, , 16
 .LBB5_34:                               #   in Loop: Header=BB5_1 Depth=1
-	ld.d	$s7, $sp, 216                   # 8-byte Folded Reload
-	slli.d	$a0, $s7, 4
-	alsl.d	$a0, $s7, $a0, 3
-	pcalau12i	$a1, %pc_hi20(INIT_TRANSFORM_SIZE_I)
-	addi.d	$a1, $a1, %pc_lo12(INIT_TRANSFORM_SIZE_I)
-	add.d	$a0, $a1, $a0
-	ld.bu	$a1, $s8, 1458
-	ld.hu	$a3, $s8, 1456
-	ld.d	$a4, $s8, 1464
-	ld.w	$t4, $a0, 4
-	sltui	$a1, $a1, 1
-	addi.d	$t5, $a3, 64
-	sub.d	$a3, $t6, $a3
-	masknez	$t5, $t5, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a1, $a1, $t5
-	slli.d	$a3, $a7, 5
-	sub.d	$a3, $a3, $a7
-	bstrpick.d	$a3, $a3, 31, 4
-	add.w	$a3, $a3, $t4
-	srai.d	$t4, $a3, 63
-	andn	$a3, $a3, $t4
-	slti	$t4, $a3, 127
-	maskeqz	$a3, $a3, $t4
-	masknez	$t4, $s1, $t4
-	or	$a3, $a3, $t4
-	srli.d	$t4, $a4, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a4, $fp, 63, 32
-	movgr2fr.d	$ft14, $a4
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a4, $a1, 3
-	fldx.d	$ft14, $s0, $a4
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a4, $a3, 3
-	fldx.d	$ft15, $t1, $a4
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a3, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $s8, 1480
-	ld.bu	$a3, $s8, 1474
-	ld.hu	$a4, $s8, 1472
-	ld.w	$t4, $a0, 8
-	ld.w	$t5, $a0, 12
-	sltui	$a3, $a3, 1
-	addi.d	$s2, $a4, 64
-	sub.d	$a4, $t6, $a4
-	masknez	$s2, $s2, $a3
-	maskeqz	$a3, $a4, $a3
-	or	$a3, $a3, $s2
-	mul.w	$a4, $t4, $a7
-	srli.d	$a4, $a4, 4
-	add.w	$a4, $a4, $t5
-	srai.d	$t4, $a4, 63
-	andn	$a4, $a4, $t4
-	slti	$t4, $a4, 127
-	maskeqz	$a4, $a4, $t4
-	masknez	$t4, $s1, $t4
-	or	$a4, $a4, $t4
-	srli.d	$t4, $a1, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $s8, 1496
-	ld.bu	$a3, $s8, 1490
-	ld.hu	$a4, $s8, 1488
-	ld.w	$t4, $a0, 16
-	ld.w	$a0, $a0, 20
-	sltui	$a3, $a3, 1
-	addi.d	$t5, $a4, 64
-	sub.d	$a4, $t6, $a4
-	masknez	$t5, $t5, $a3
-	maskeqz	$a3, $a4, $a3
-	or	$a3, $a3, $t5
-	mul.w	$a4, $t4, $a7
-	srli.d	$a4, $a4, 4
-	add.w	$a0, $a4, $a0
-	srai.d	$a4, $a0, 63
-	andn	$a0, $a0, $a4
-	slti	$a4, $a0, 127
-	maskeqz	$a0, $a0, $a4
-	masknez	$a4, $s1, $a4
-	or	$a0, $a0, $a4
-	srli.d	$a4, $a1, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft13, $a4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a0, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a0, $a0, 127
-	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $t1, $a0
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	pcalau12i	$a0, %pc_hi20(INIT_IPR_I)
-	addi.d	$a4, $a0, %pc_lo12(INIT_IPR_I)
-	ld.bu	$a0, $a2, 2
-	ld.hu	$a1, $a2, 0
-	alsl.d	$a3, $s7, $a4, 4
-	ld.w	$a3, $a3, 4
+	slli.d	$a0, $ra, 4
+	alsl.d	$a0, $ra, $a0, 3
+	pcalau12i	$a6, %pc_hi20(INIT_TRANSFORM_SIZE_I)
+	addi.d	$a6, $a6, %pc_lo12(INIT_TRANSFORM_SIZE_I)
+	add.d	$a6, $a6, $a0
+	ld.bu	$a0, $a1, 1458
+	ld.hu	$a7, $a1, 1456
+	ld.d	$s0, $a1, 1464
+	ld.w	$s1, $a6, 4
 	sltui	$a0, $a0, 1
-	addi.d	$t4, $a1, 64
-	sub.d	$a1, $t6, $a1
-	masknez	$t4, $t4, $a0
-	maskeqz	$a0, $a1, $a0
-	or	$a0, $a0, $t4
-	alsl.d	$a1, $a7, $a7, 1
-	alsl.d	$a1, $a1, $a7, 2
-	bstrpick.d	$a1, $a1, 31, 4
-	add.w	$t5, $a1, $a3
+	addi.d	$s3, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s3, $s3, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a0, $a0, $s3
+	slli.d	$a7, $a5, 5
+	sub.d	$a7, $a7, $a5
+	bstrpick.d	$a7, $a7, 31, 4
+	add.w	$a7, $a7, $s1
+	srai.d	$s1, $a7, 63
+	andn	$a7, $a7, $s1
+	slti	$s1, $a7, 127
+	maskeqz	$a7, $a7, $s1
+	masknez	$s1, $fp, $s1
+	or	$a7, $a7, $s1
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a7, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $a7, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $a1, 1480
+	ld.bu	$a7, $a1, 1474
+	ld.hu	$s0, $a1, 1472
+	ld.w	$s1, $a6, 8
+	ld.w	$s3, $a6, 12
+	sltui	$a7, $a7, 1
+	addi.d	$s4, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s4, $s4, $a7
+	maskeqz	$a7, $s0, $a7
+	or	$a7, $a7, $s4
+	mul.w	$s0, $s1, $a5
+	srli.d	$s0, $s0, 4
+	add.w	$s0, $s0, $s3
+	srai.d	$s1, $s0, 63
+	andn	$s0, $s0, $s1
+	slti	$s1, $s0, 127
+	maskeqz	$s0, $s0, $s1
+	masknez	$s1, $fp, $s1
+	or	$s0, $s0, $s1
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $a7, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $a7
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $a1, 1496
+	ld.bu	$a7, $a1, 1490
+	ld.hu	$s0, $a1, 1488
+	ld.w	$s1, $a6, 16
+	ld.w	$a6, $a6, 20
+	sltui	$a7, $a7, 1
+	addi.d	$s3, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s3, $s3, $a7
+	maskeqz	$a7, $s0, $a7
+	or	$a7, $a7, $s3
+	mul.w	$s0, $s1, $a5
+	srli.d	$s0, $s0, 4
+	add.w	$a6, $s0, $a6
+	srai.d	$s0, $a6, 63
+	andn	$a6, $a6, $s0
+	slti	$s0, $a6, 127
+	maskeqz	$a6, $a6, $s0
+	masknez	$s0, $fp, $s0
+	or	$a6, $a6, $s0
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $a7, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $a6, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $a7
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $a6, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	pcalau12i	$a0, %pc_hi20(INIT_IPR_I)
+	addi.d	$a7, $a0, %pc_lo12(INIT_IPR_I)
+	ld.bu	$a0, $a2, 2
+	ld.hu	$a6, $a2, 0
+	alsl.d	$s0, $ra, $a7, 4
+	ld.w	$s0, $s0, 4
+	sltui	$a0, $a0, 1
+	addi.d	$s1, $a6, 64
+	sub.d	$a6, $t6, $a6
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $a6, $a0
+	or	$a6, $a0, $s1
+	alsl.d	$a0, $a5, $a5, 1
+	alsl.d	$a0, $a0, $a5, 2
+	bstrpick.d	$a0, $a0, 31, 4
+	add.w	$s3, $a0, $s0
 .LBB5_35:                               # %.preheader370.preheader
                                         #   in Loop: Header=BB5_1 Depth=1
-	sub.d	$a1, $s1, $a0
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft13, $s0, $a1
-	addi.d	$a1, $a6, -2
+	sub.d	$a0, $fp, $a6
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft12, $t8, $a0
+	addi.d	$a0, $t4, -2
+	fneg.d	$ft12, $ft12
+	fmul.d	$ft12, $fa6, $ft12
+	srai.d	$t4, $s3, 63
+	andn	$t4, $s3, $t4
+	slti	$s0, $t4, 127
+	maskeqz	$t4, $t4, $s0
+	masknez	$s0, $fp, $s0
+	or	$t4, $t4, $s0
+	slli.d	$a6, $a6, 3
+	fldx.d	$ft13, $t8, $a6
+	xori	$a6, $t4, 127
+	slli.d	$a6, $a6, 3
+	fldx.d	$ft14, $t3, $a6
 	fneg.d	$ft13, $ft13
-	fmul.d	$ft13, $fa7, $ft13
-	srai.d	$a3, $t5, 63
-	andn	$a3, $t5, $a3
-	slti	$a6, $a3, 127
-	maskeqz	$a3, $a3, $a6
-	masknez	$a6, $s1, $a6
-	or	$a3, $a3, $a6
-	slli.d	$a0, $a0, 3
-	fldx.d	$ft14, $s0, $a0
-	xori	$a0, $a3, 127
-	slli.d	$a0, $a0, 3
-	fldx.d	$ft15, $t1, $a0
-	fneg.d	$ft14, $ft14
-	slli.d	$a0, $a3, 3
-	fldx.d	$fs0, $t1, $a0
-	fmul.d	$ft14, $fa7, $ft14
-	alsl.d	$a0, $s7, $a4, 4
-	ld.w	$a3, $a0, 8
-	fmadd.d	$ft14, $ft14, $fs0, $ft11
-	ld.w	$a0, $a0, 12
-	fmadd.d	$ft13, $ft13, $ft15, $ft14
-	mul.w	$a3, $a3, $a7
-	srli.d	$a3, $a3, 4
-	add.w	$a0, $a3, $a0
-	srai.d	$a3, $a0, 63
-	andn	$a0, $a0, $a3
-	slti	$a3, $a0, 127
-	maskeqz	$a0, $a0, $a3
-	masknez	$a3, $s1, $a3
-	or	$a0, $a0, $a3
-	xori	$a3, $a0, 127
-	slli.d	$a3, $a3, 3
-	slli.d	$a0, $a0, 3
-	fldx.d	$ft14, $t1, $a0
-	fldx.d	$ft15, $t1, $a3
-	sltui	$a6, $a1, 1
-	fadd.d	$ft12, $ft12, $ft13
-	fmadd.d	$ft13, $ft1, $ft14, $ft11
-	fmadd.d	$ft13, $ft0, $ft15, $ft13
-	fadd.d	$ft12, $ft12, $ft13
+	slli.d	$a6, $t4, 3
+	fldx.d	$ft15, $t3, $a6
+	fmul.d	$ft13, $fa6, $ft13
+	alsl.d	$a6, $ra, $a7, 4
+	ld.w	$a7, $a6, 8
+	fmadd.d	$ft13, $ft13, $ft15, $ft10
+	ld.w	$a6, $a6, 12
+	fmadd.d	$ft12, $ft12, $ft14, $ft13
+	mul.w	$a7, $a7, $a5
+	srli.d	$a7, $a7, 4
+	add.w	$a6, $a7, $a6
+	srai.d	$a7, $a6, 63
+	andn	$a6, $a6, $a7
+	slti	$a7, $a6, 127
+	maskeqz	$a6, $a6, $a7
+	masknez	$a7, $fp, $a7
+	or	$a6, $a6, $a7
+	xori	$a7, $a6, 127
+	slli.d	$a7, $a7, 3
+	slli.d	$a6, $a6, 3
+	fldx.d	$ft13, $t3, $a6
+	fldx.d	$ft14, $t3, $a7
+	sltui	$a7, $a0, 1
+	fadd.d	$ft11, $ft11, $ft12
+	fmadd.d	$ft12, $ft0, $ft13, $ft10
+	fmadd.d	$ft12, $fa7, $ft14, $ft12
+	fadd.d	$ft11, $ft11, $ft12
 	pcalau12i	$a0, %pc_hi20(INIT_CIPR_P)
 	addi.d	$a0, $a0, %pc_lo12(INIT_CIPR_P)
-	masknez	$a0, $a0, $a6
-	pcalau12i	$a1, %pc_hi20(INIT_CIPR_I)
-	addi.d	$a1, $a1, %pc_lo12(INIT_CIPR_I)
-	maskeqz	$a1, $a1, $a6
-	or	$a0, $a1, $a0
-	ldx.w	$a1, $a0, $a5
-	add.d	$a0, $a0, $a5
-	ld.w	$a3, $a0, 4
-	mul.w	$a1, $a1, $a7
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft13, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft14, $t1, $a1
-	ld.w	$a1, $a0, 8
-	fmadd.d	$ft13, $ft2, $ft13, $ft11
-	ld.w	$a3, $a0, 12
-	fmadd.d	$ft13, $ft3, $ft14, $ft13
-	mul.w	$a1, $a1, $a7
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft14, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $t1, $a1
-	fadd.d	$ft12, $ft12, $ft13
-	fmadd.d	$ft13, $ft4, $ft14, $ft11
-	ld.w	$a1, $a0, 16
-	fmadd.d	$ft13, $ft5, $ft15, $ft13
-	ld.w	$a3, $a0, 20
-	fadd.d	$ft12, $ft12, $ft13
-	mul.w	$a1, $a1, $a7
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft13, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft14, $t1, $a1
-	ld.w	$a1, $a0, 24
-	fmadd.d	$ft13, $ft6, $ft13, $ft11
-	ld.w	$a0, $a0, 28
-	fmadd.d	$ft13, $ft7, $ft14, $ft13
-	mul.w	$a1, $a1, $a7
-	srli.d	$a1, $a1, 4
-	add.w	$a0, $a1, $a0
-	srai.d	$a1, $a0, 63
-	andn	$a0, $a0, $a1
-	slti	$a1, $a0, 127
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s1, $a1
-	or	$a0, $a0, $a1
-	slli.d	$a1, $a0, 3
-	fldx.d	$ft14, $t1, $a1
+	masknez	$a0, $a0, $a7
+	pcalau12i	$a6, %pc_hi20(INIT_CIPR_I)
+	addi.d	$a6, $a6, %pc_lo12(INIT_CIPR_I)
+	maskeqz	$a6, $a6, $a7
+	or	$a0, $a6, $a0
+	ldx.w	$t4, $a0, $t5
+	add.d	$a6, $a0, $t5
+	ld.w	$a0, $a6, 4
+	mul.w	$t4, $t4, $a5
+	srli.d	$t4, $t4, 4
+	add.w	$a0, $t4, $a0
+	srai.d	$t4, $a0, 63
+	andn	$a0, $a0, $t4
+	slti	$t4, $a0, 127
+	maskeqz	$a0, $a0, $t4
+	masknez	$t4, $fp, $t4
+	or	$a0, $a0, $t4
+	slli.d	$t4, $a0, 3
+	fldx.d	$ft12, $t3, $t4
 	xori	$a0, $a0, 127
 	slli.d	$a0, $a0, 3
-	fldx.d	$ft15, $t1, $a0
-	fadd.d	$ft12, $ft12, $ft13
-	ld.w	$a0, $ra, 36
-	fmadd.d	$ft13, $ft8, $ft14, $ft11
-	fmadd.d	$ft13, $ft9, $ft15, $ft13
-	fadd.d	$ft12, $ft12, $ft13
-	srai.d	$a1, $a0, 63
-	andn	$a0, $a0, $a1
-	pcalau12i	$a1, %pc_hi20(INIT_CBP_P)
-	addi.d	$a1, $a1, %pc_lo12(INIT_CBP_P)
-	masknez	$a1, $a1, $a6
-	pcalau12i	$a3, %pc_hi20(INIT_CBP_I)
-	addi.d	$a3, $a3, %pc_lo12(INIT_CBP_I)
-	move	$a4, $zero
-	maskeqz	$a3, $a3, $a6
-	or	$a1, $a3, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
-	add.d	$a5, $a1, $a3
-	ori	$s3, $zero, 192
-	ori	$s7, $zero, 512
+	fldx.d	$ft13, $t3, $a0
+	ld.w	$a0, $a6, 8
+	fmadd.d	$ft12, $ft1, $ft12, $ft10
+	ld.w	$t4, $a6, 12
+	fmadd.d	$ft12, $ft2, $ft13, $ft12
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $t4
+	srai.d	$t4, $a0, 63
+	andn	$a0, $a0, $t4
+	slti	$t4, $a0, 127
+	maskeqz	$a0, $a0, $t4
+	masknez	$t4, $fp, $t4
+	or	$a0, $a0, $t4
+	slli.d	$t4, $a0, 3
+	fldx.d	$ft13, $t3, $t4
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft14, $t3, $a0
+	fadd.d	$ft11, $ft11, $ft12
+	fmadd.d	$ft12, $ft3, $ft13, $ft10
+	ld.w	$a0, $a6, 16
+	fmadd.d	$ft12, $ft4, $ft14, $ft12
+	ld.w	$t4, $a6, 20
+	fadd.d	$ft11, $ft11, $ft12
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $t4
+	srai.d	$t4, $a0, 63
+	andn	$a0, $a0, $t4
+	slti	$t4, $a0, 127
+	maskeqz	$a0, $a0, $t4
+	masknez	$t4, $fp, $t4
+	or	$a0, $a0, $t4
+	slli.d	$t4, $a0, 3
+	fldx.d	$ft12, $t3, $t4
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft13, $t3, $a0
+	ld.w	$a0, $a6, 24
+	fmadd.d	$ft12, $ft5, $ft12, $ft10
+	ld.w	$a6, $a6, 28
+	fmadd.d	$ft12, $ft6, $ft13, $ft12
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $a6
+	srai.d	$a5, $a0, 63
+	andn	$a0, $a0, $a5
+	slti	$a5, $a0, 127
+	maskeqz	$a0, $a0, $a5
+	masknez	$a5, $fp, $a5
+	or	$a0, $a0, $a5
+	slli.d	$a5, $a0, 3
+	fldx.d	$ft13, $t3, $a5
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft14, $t3, $a0
+	fadd.d	$ft11, $ft11, $ft12
+	ld.w	$a0, $a3, 36
+	fmadd.d	$ft12, $ft7, $ft13, $ft10
+	fmadd.d	$ft12, $ft8, $ft14, $ft12
+	fadd.d	$ft11, $ft11, $ft12
+	srai.d	$a5, $a0, 63
+	andn	$a5, $a0, $a5
+	pcalau12i	$a0, %pc_hi20(INIT_CBP_P)
+	addi.d	$a0, $a0, %pc_lo12(INIT_CBP_P)
+	masknez	$a0, $a0, $a7
+	pcalau12i	$a6, %pc_hi20(INIT_CBP_I)
+	addi.d	$t4, $a6, %pc_lo12(INIT_CBP_I)
+	move	$a6, $zero
+	maskeqz	$a7, $t4, $a7
+	or	$a0, $a7, $a0
+	ld.d	$a7, $sp, 104                   # 8-byte Folded Reload
+	add.d	$a7, $a0, $a7
+	ori	$s5, $zero, 192
 	.p2align	4, , 16
 .LBB5_36:                               # %.preheader370
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a6, $a2, $a4
-	ld.bu	$a1, $a6, 98
-	ld.hu	$a3, $a6, 96
-	ld.d	$a7, $a6, 104
-	sltui	$a1, $a1, 1
-	addi.d	$t4, $a3, 64
-	sub.d	$a3, $t6, $a3
-	masknez	$t4, $t4, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a1, $a1, $t4
-	srli.d	$a3, $a7, 32
-	or	$a3, $a3, $t8
-	movgr2fr.d	$ft13, $a3
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a7, $fp, 63, 32
-	movgr2fr.d	$ft14, $a7
-	fadd.d	$ft13, $ft14, $ft13
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft14, $s0, $a3
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	fsel	$ft13, $ft13, $fa2, $fcc0
+	add.d	$t4, $a2, $a6
+	ld.bu	$a0, $t4, 98
+	ld.hu	$t5, $t4, 96
+	ld.d	$s0, $t4, 104
+	sltui	$a0, $a0, 1
+	addi.d	$s1, $t5, 64
+	sub.d	$t5, $t6, $t5
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $t5, $a0
+	or	$a0, $a0, $s1
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	slli.d	$t5, $a0, 3
+	fldx.d	$ft13, $t8, $t5
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	fneg.d	$ft13, $ft13
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft14, $t8, $a0
+	ld.w	$a0, $a7, -16
+	fmul.d	$ft13, $ft12, $ft13
+	ld.w	$t5, $a7, -12
 	fneg.d	$ft14, $ft14
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $s0, $a1
-	ld.w	$a1, $a5, -16
-	fmul.d	$ft14, $ft13, $ft14
-	ld.w	$a3, $a5, -12
-	fneg.d	$ft15, $ft15
-	mul.w	$a1, $a1, $a0
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$fs0, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmul.d	$ft13, $ft13, $ft15
-	ld.d	$a1, $a6, 120
-	fmadd.d	$ft14, $ft14, $fs0, $ft11
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.bu	$a3, $a6, 114
-	ld.hu	$a7, $a6, 112
-	ld.w	$t4, $a5, -8
-	ld.w	$t5, $a5, -4
-	sltui	$a3, $a3, 1
-	addi.d	$s2, $a7, 64
-	sub.d	$a7, $t6, $a7
-	masknez	$s2, $s2, $a3
-	maskeqz	$a3, $a7, $a3
-	or	$a3, $a3, $s2
-	mul.w	$a7, $t4, $a0
-	srli.d	$a7, $a7, 4
-	add.w	$a7, $a7, $t5
-	srai.d	$t4, $a7, 63
-	andn	$a7, $a7, $t4
-	slti	$t4, $a7, 127
-	maskeqz	$a7, $a7, $t4
-	masknez	$t4, $s1, $t4
-	or	$a7, $a7, $t4
-	srli.d	$t4, $a1, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a7, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a7, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $a6, 136
-	ld.bu	$a3, $a6, 130
-	ld.hu	$a7, $a6, 128
-	ld.w	$t4, $a5, 0
-	ld.w	$t5, $a5, 4
-	sltui	$a3, $a3, 1
-	addi.d	$s2, $a7, 64
-	sub.d	$a7, $t6, $a7
-	masknez	$s2, $s2, $a3
-	maskeqz	$a3, $a7, $a3
-	or	$a3, $a3, $s2
-	mul.w	$a7, $t4, $a0
-	srli.d	$a7, $a7, 4
-	add.w	$a7, $a7, $t5
-	srai.d	$t4, $a7, 63
-	andn	$a7, $a7, $t4
-	slti	$t4, $a7, 127
-	maskeqz	$a7, $a7, $t4
-	masknez	$t4, $s1, $t4
-	or	$a7, $a7, $t4
-	srli.d	$t4, $a1, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a7, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a7, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $a6, 152
-	ld.bu	$a3, $a6, 146
-	ld.hu	$a6, $a6, 144
-	ld.w	$a7, $a5, 8
-	ld.w	$t4, $a5, 12
-	sltui	$a3, $a3, 1
-	addi.d	$t5, $a6, 64
-	sub.d	$a6, $t6, $a6
-	masknez	$t5, $t5, $a3
-	maskeqz	$a3, $a6, $a3
-	or	$a3, $a3, $t5
-	mul.w	$a6, $a7, $a0
-	srli.d	$a6, $a6, 4
-	add.w	$a6, $a6, $t4
-	srai.d	$a7, $a6, 63
-	andn	$a6, $a6, $a7
-	slti	$a7, $a6, 127
-	maskeqz	$a6, $a6, $a7
-	masknez	$a7, $s1, $a7
-	or	$a6, $a6, $a7
-	srli.d	$a7, $a1, 32
-	or	$a7, $a7, $t8
-	movgr2fr.d	$ft13, $a7
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a6, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a6, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 32
-	bne	$a4, $s3, .LBB5_36
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $t5
+	srai.d	$t5, $a0, 63
+	andn	$a0, $a0, $t5
+	slti	$t5, $a0, 127
+	maskeqz	$a0, $a0, $t5
+	masknez	$t5, $fp, $t5
+	or	$a0, $a0, $t5
+	slli.d	$t5, $a0, 3
+	fldx.d	$ft15, $t3, $t5
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmul.d	$ft12, $ft12, $ft14
+	ld.d	$a0, $t4, 120
+	fmadd.d	$ft13, $ft13, $ft15, $ft10
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.bu	$t5, $t4, 114
+	ld.hu	$s0, $t4, 112
+	ld.w	$s1, $a7, -8
+	ld.w	$s3, $a7, -4
+	sltui	$t5, $t5, 1
+	addi.d	$s4, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s4, $s4, $t5
+	maskeqz	$t5, $s0, $t5
+	or	$t5, $t5, $s4
+	mul.w	$s0, $s1, $a5
+	srli.d	$s0, $s0, 4
+	add.w	$s0, $s0, $s3
+	srai.d	$s1, $s0, 63
+	andn	$s0, $s0, $s1
+	slti	$s1, $s0, 127
+	maskeqz	$s0, $s0, $s1
+	masknez	$s1, $fp, $s1
+	or	$s0, $s0, $s1
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $t5
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $t4, 136
+	ld.bu	$t5, $t4, 130
+	ld.hu	$s0, $t4, 128
+	ld.w	$s1, $a7, 0
+	ld.w	$s3, $a7, 4
+	sltui	$t5, $t5, 1
+	addi.d	$s4, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s4, $s4, $t5
+	maskeqz	$t5, $s0, $t5
+	or	$t5, $t5, $s4
+	mul.w	$s0, $s1, $a5
+	srli.d	$s0, $s0, 4
+	add.w	$s0, $s0, $s3
+	srai.d	$s1, $s0, 63
+	andn	$s0, $s0, $s1
+	slti	$s1, $s0, 127
+	maskeqz	$s0, $s0, $s1
+	masknez	$s1, $fp, $s1
+	or	$s0, $s0, $s1
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $t5
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $t4, 152
+	ld.bu	$t5, $t4, 146
+	ld.hu	$t4, $t4, 144
+	ld.w	$s0, $a7, 8
+	ld.w	$s1, $a7, 12
+	sltui	$t5, $t5, 1
+	addi.d	$s3, $t4, 64
+	sub.d	$t4, $t6, $t4
+	masknez	$s3, $s3, $t5
+	maskeqz	$t4, $t4, $t5
+	or	$t4, $t4, $s3
+	mul.w	$t5, $s0, $a5
+	srli.d	$t5, $t5, 4
+	add.w	$t5, $t5, $s1
+	srai.d	$s0, $t5, 63
+	andn	$t5, $t5, $s0
+	slti	$s0, $t5, 127
+	maskeqz	$t5, $t5, $s0
+	masknez	$s0, $fp, $s0
+	or	$t5, $t5, $s0
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $t4, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $t4
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $t5, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$a6, $a6, 64
+	addi.d	$a7, $a7, 32
+	bne	$a6, $s5, .LBB5_36
 # %bb.37:                               # %.preheader381
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.w	$a0, $ra, 20
-	ld.w	$a1, $ra, 36
+	ld.w	$a0, $a3, 20
+	ld.w	$a5, $a3, 36
 	addi.d	$a0, $a0, -2
-	sltui	$a3, $a0, 1
-	srai.d	$a0, $a1, 63
-	andn	$a0, $a1, $a0
-	pcalau12i	$a1, %pc_hi20(INIT_BCBP_P)
-	addi.d	$a1, $a1, %pc_lo12(INIT_BCBP_P)
-	masknez	$a1, $a1, $a3
-	pcalau12i	$a4, %pc_hi20(INIT_BCBP_I)
-	addi.d	$a5, $a4, %pc_lo12(INIT_BCBP_I)
-	move	$a4, $zero
-	maskeqz	$a3, $a5, $a3
-	or	$a1, $a3, $a1
-	ld.d	$a3, $sp, 176                   # 8-byte Folded Reload
-	add.d	$a5, $a1, $a3
+	sltui	$a0, $a0, 1
+	srai.d	$a6, $a5, 63
+	andn	$a5, $a5, $a6
+	pcalau12i	$a6, %pc_hi20(INIT_BCBP_P)
+	addi.d	$a6, $a6, %pc_lo12(INIT_BCBP_P)
+	masknez	$a7, $a6, $a0
+	pcalau12i	$a6, %pc_hi20(INIT_BCBP_I)
+	addi.d	$t4, $a6, %pc_lo12(INIT_BCBP_I)
+	move	$a6, $zero
+	maskeqz	$a0, $t4, $a0
+	or	$a0, $a0, $a7
+	ld.d	$a7, $sp, 176                   # 8-byte Folded Reload
+	add.d	$a7, $a0, $a7
+	ori	$s5, $zero, 512
 	.p2align	4, , 16
 .LBB5_38:                               # %.preheader369
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a6, $a2, $a4
-	ld.bu	$a1, $a6, 290
-	ld.hu	$a3, $a6, 288
-	ld.d	$a7, $a6, 296
-	sltui	$a1, $a1, 1
-	addi.d	$t4, $a3, 64
-	sub.d	$a3, $t6, $a3
-	masknez	$t4, $t4, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a1, $a1, $t4
-	srli.d	$a3, $a7, 32
-	or	$a3, $a3, $t8
-	movgr2fr.d	$ft13, $a3
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a7, $fp, 63, 32
-	movgr2fr.d	$ft14, $a7
-	fadd.d	$ft13, $ft14, $ft13
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft14, $s0, $a3
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	fsel	$ft13, $ft13, $fa2, $fcc0
+	add.d	$t4, $a2, $a6
+	ld.bu	$a0, $t4, 290
+	ld.hu	$t5, $t4, 288
+	ld.d	$s0, $t4, 296
+	sltui	$a0, $a0, 1
+	addi.d	$s1, $t5, 64
+	sub.d	$t5, $t6, $t5
+	masknez	$s1, $s1, $a0
+	maskeqz	$a0, $t5, $a0
+	or	$a0, $a0, $s1
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	slli.d	$t5, $a0, 3
+	fldx.d	$ft13, $t8, $t5
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	fneg.d	$ft13, $ft13
+	sub.d	$a0, $fp, $a0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft14, $t8, $a0
+	ld.w	$a0, $a7, -16
+	fmul.d	$ft13, $ft12, $ft13
+	ld.w	$t5, $a7, -12
 	fneg.d	$ft14, $ft14
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $s0, $a1
-	ld.w	$a1, $a5, -16
-	fmul.d	$ft14, $ft13, $ft14
-	ld.w	$a3, $a5, -12
-	fneg.d	$ft15, $ft15
-	mul.w	$a1, $a1, $a0
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$fs0, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmul.d	$ft13, $ft13, $ft15
-	ld.d	$a1, $a6, 312
-	fmadd.d	$ft14, $ft14, $fs0, $ft11
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.bu	$a3, $a6, 306
-	ld.hu	$a7, $a6, 304
-	ld.w	$t4, $a5, -8
-	ld.w	$t5, $a5, -4
-	sltui	$a3, $a3, 1
-	addi.d	$s2, $a7, 64
-	sub.d	$a7, $t6, $a7
-	masknez	$s2, $s2, $a3
-	maskeqz	$a3, $a7, $a3
-	or	$a3, $a3, $s2
-	mul.w	$a7, $t4, $a0
-	srli.d	$a7, $a7, 4
-	add.w	$a7, $a7, $t5
-	srai.d	$t4, $a7, 63
-	andn	$a7, $a7, $t4
-	slti	$t4, $a7, 127
-	maskeqz	$a7, $a7, $t4
-	masknez	$t4, $s1, $t4
-	or	$a7, $a7, $t4
-	srli.d	$t4, $a1, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a7, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a7, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $a6, 328
-	ld.bu	$a3, $a6, 322
-	ld.hu	$a7, $a6, 320
-	ld.w	$t4, $a5, 0
-	ld.w	$t5, $a5, 4
-	sltui	$a3, $a3, 1
-	addi.d	$s2, $a7, 64
-	sub.d	$a7, $t6, $a7
-	masknez	$s2, $s2, $a3
-	maskeqz	$a3, $a7, $a3
-	or	$a3, $a3, $s2
-	mul.w	$a7, $t4, $a0
-	srli.d	$a7, $a7, 4
-	add.w	$a7, $a7, $t5
-	srai.d	$t4, $a7, 63
-	andn	$a7, $a7, $t4
-	slti	$t4, $a7, 127
-	maskeqz	$a7, $a7, $t4
-	masknez	$t4, $s1, $t4
-	or	$a7, $a7, $t4
-	srli.d	$t4, $a1, 32
-	or	$t4, $t4, $t8
-	movgr2fr.d	$ft13, $t4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a7, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a7, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.d	$a1, $a6, 344
-	ld.bu	$a3, $a6, 338
-	ld.hu	$a6, $a6, 336
-	ld.w	$a7, $a5, 8
-	ld.w	$t4, $a5, 12
-	sltui	$a3, $a3, 1
-	addi.d	$t5, $a6, 64
-	sub.d	$a6, $t6, $a6
-	masknez	$t5, $t5, $a3
-	maskeqz	$a3, $a6, $a3
-	or	$a3, $a3, $t5
-	mul.w	$a6, $a7, $a0
-	srli.d	$a6, $a6, 4
-	add.w	$a6, $a6, $t4
-	srai.d	$a7, $a6, 63
-	andn	$a6, $a6, $a7
-	slti	$a7, $a6, 127
-	maskeqz	$a6, $a6, $a7
-	masknez	$a7, $s1, $a7
-	or	$a6, $a6, $a7
-	srli.d	$a7, $a1, 32
-	or	$a7, $a7, $t8
-	movgr2fr.d	$ft13, $a7
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a6, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $a6, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$a4, $a4, 64
-	addi.d	$a5, $a5, 32
-	bne	$a4, $s7, .LBB5_38
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $t5
+	srai.d	$t5, $a0, 63
+	andn	$a0, $a0, $t5
+	slti	$t5, $a0, 127
+	maskeqz	$a0, $a0, $t5
+	masknez	$t5, $fp, $t5
+	or	$a0, $a0, $t5
+	slli.d	$t5, $a0, 3
+	fldx.d	$ft15, $t3, $t5
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmul.d	$ft12, $ft12, $ft14
+	ld.d	$a0, $t4, 312
+	fmadd.d	$ft13, $ft13, $ft15, $ft10
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.bu	$t5, $t4, 306
+	ld.hu	$s0, $t4, 304
+	ld.w	$s1, $a7, -8
+	ld.w	$s3, $a7, -4
+	sltui	$t5, $t5, 1
+	addi.d	$s4, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s4, $s4, $t5
+	maskeqz	$t5, $s0, $t5
+	or	$t5, $t5, $s4
+	mul.w	$s0, $s1, $a5
+	srli.d	$s0, $s0, 4
+	add.w	$s0, $s0, $s3
+	srai.d	$s1, $s0, 63
+	andn	$s0, $s0, $s1
+	slti	$s1, $s0, 127
+	maskeqz	$s0, $s0, $s1
+	masknez	$s1, $fp, $s1
+	or	$s0, $s0, $s1
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $t5
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $t4, 328
+	ld.bu	$t5, $t4, 322
+	ld.hu	$s0, $t4, 320
+	ld.w	$s1, $a7, 0
+	ld.w	$s3, $a7, 4
+	sltui	$t5, $t5, 1
+	addi.d	$s4, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s4, $s4, $t5
+	maskeqz	$t5, $s0, $t5
+	or	$t5, $t5, $s4
+	mul.w	$s0, $s1, $a5
+	srli.d	$s0, $s0, 4
+	add.w	$s0, $s0, $s3
+	srai.d	$s1, $s0, 63
+	andn	$s0, $s0, $s1
+	slti	$s1, $s0, 127
+	maskeqz	$s0, $s0, $s1
+	masknez	$s1, $fp, $s1
+	or	$s0, $s0, $s1
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $t5
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.d	$a0, $t4, 344
+	ld.bu	$t5, $t4, 338
+	ld.hu	$t4, $t4, 336
+	ld.w	$s0, $a7, 8
+	ld.w	$s1, $a7, 12
+	sltui	$t5, $t5, 1
+	addi.d	$s3, $t4, 64
+	sub.d	$t4, $t6, $t4
+	masknez	$s3, $s3, $t5
+	maskeqz	$t4, $t4, $t5
+	or	$t4, $t4, $s3
+	mul.w	$t5, $s0, $a5
+	srli.d	$t5, $t5, 4
+	add.w	$t5, $t5, $s1
+	srai.d	$s0, $t5, 63
+	andn	$t5, $t5, $s0
+	slti	$s0, $t5, 127
+	maskeqz	$t5, $t5, $s0
+	masknez	$s0, $fp, $s0
+	or	$t5, $t5, $s0
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $t4, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $t4
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $t5, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$a6, $a6, 64
+	addi.d	$a7, $a7, 32
+	bne	$a6, $s5, .LBB5_38
 # %bb.39:                               # %.preheader380
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.w	$a1, $ra, 36
-	ld.w	$a5, $ra, 20
-	move	$a0, $zero
-	srai.d	$a3, $a1, 63
-	andn	$a6, $a1, $a3
-	ld.d	$a4, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$s7, $a2, 928
+	ld.w	$a0, $a3, 36
+	ld.w	$a5, $a3, 20
+	move	$a7, $zero
+	srai.d	$a6, $a0, 63
+	andn	$a6, $a0, $a6
+	ld.d	$t4, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$s3, $a2, 928
 	b	.LBB5_41
 	.p2align	4, , 16
 .LBB5_40:                               # %.split444.us
                                         #   in Loop: Header=BB5_41 Depth=2
-	addi.d	$a0, $a0, 1
-	addi.d	$s7, $s7, 240
-	addi.d	$a7, $a7, 120
-	addi.d	$a4, $a4, 120
-	beq	$a0, $t3, .LBB5_44
+	addi.d	$a7, $a7, 1
+	addi.d	$s3, $s3, 240
+	addi.d	$t5, $t5, 120
+	addi.d	$t4, $t4, 120
+	beq	$a7, $a4, .LBB5_44
 .LBB5_41:                               # %.preheader368
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_43 Depth 3
                                         #       Child Loop BB5_42 Depth 3
-	move	$t5, $zero
-	move	$s8, $s7
-	bne	$a5, $s5, .LBB5_43
+	move	$s4, $zero
+	move	$s5, $s3
+	bne	$a5, $s8, .LBB5_43
 	.p2align	4, , 16
 .LBB5_42:                               # %.preheader368.split.us
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_41 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a4, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a4, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_42
+	add.d	$a0, $t4, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t4, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_42
 	b	.LBB5_40
 	.p2align	4, , 16
 .LBB5_43:                               # %.preheader368.split
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_41 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a7, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a7, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_43
+	add.d	$a0, $t5, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t5, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_43
 	b	.LBB5_40
 	.p2align	4, , 16
 .LBB5_44:                               # %.preheader379
                                         #   in Loop: Header=BB5_1 Depth=1
-	move	$a0, $zero
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	move	$a7, $zero
+	ld.d	$t4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB5_46
 	.p2align	4, , 16
 .LBB5_45:                               # %.split451.us
                                         #   in Loop: Header=BB5_46 Depth=2
-	addi.d	$a0, $a0, 1
-	addi.d	$s7, $s7, 240
-	addi.d	$a7, $a7, 120
-	addi.d	$a4, $a4, 120
-	beq	$a0, $t3, .LBB5_49
+	addi.d	$a7, $a7, 1
+	addi.d	$s3, $s3, 240
+	addi.d	$t5, $t5, 120
+	addi.d	$t4, $t4, 120
+	beq	$a7, $a4, .LBB5_49
 .LBB5_46:                               # %.preheader367
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_48 Depth 3
                                         #       Child Loop BB5_47 Depth 3
-	move	$t5, $zero
-	move	$s8, $s7
-	bne	$a5, $s5, .LBB5_48
+	move	$s4, $zero
+	move	$s5, $s3
+	bne	$a5, $s8, .LBB5_48
 	.p2align	4, , 16
 .LBB5_47:                               # %.preheader367.split.us
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_46 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a4, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a4, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_47
+	add.d	$a0, $t4, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t4, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_47
 	b	.LBB5_45
 	.p2align	4, , 16
 .LBB5_48:                               # %.preheader367.split
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_46 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a7, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a7, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_48
+	add.d	$a0, $t5, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t5, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_48
 	b	.LBB5_45
 	.p2align	4, , 16
 .LBB5_49:                               # %.preheader366.preheader
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.d	$s7, $sp, 200                   # 8-byte Folded Reload
-	ld.w	$a0, $s7, 36
-	addi.d	$a1, $a5, -2
-	sltui	$a1, $a1, 1
-	srai.d	$a3, $a0, 63
-	andn	$a5, $a0, $a3
+	ld.w	$a0, $a3, 36
+	addi.d	$a5, $a5, -2
+	sltui	$a7, $a5, 1
+	srai.d	$a5, $a0, 63
+	andn	$a5, $a0, $a5
 	pcalau12i	$a0, %pc_hi20(INIT_ONE_P)
 	addi.d	$a0, $a0, %pc_lo12(INIT_ONE_P)
-	masknez	$a0, $a0, $a1
-	pcalau12i	$a3, %pc_hi20(INIT_ONE_I)
-	addi.d	$a3, $a3, %pc_lo12(INIT_ONE_I)
+	masknez	$a0, $a0, $a7
+	pcalau12i	$a6, %pc_hi20(INIT_ONE_I)
+	addi.d	$t4, $a6, %pc_lo12(INIT_ONE_I)
 	move	$a6, $zero
-	maskeqz	$a1, $a3, $a1
-	or	$a0, $a1, $a0
-	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
-	add.d	$a7, $a0, $a1
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ori	$ra, $zero, 640
+	maskeqz	$a7, $t4, $a7
+	or	$a0, $a7, $a0
+	ld.d	$a7, $sp, 216                   # 8-byte Folded Reload
+	add.d	$t4, $a0, $a7
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ori	$s7, $zero, 640
 	.p2align	4, , 16
 .LBB5_50:                               # %.preheader366
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a0, $a2, $a6
-	add.d	$a4, $s8, $a6
-	ld.bu	$a1, $a4, -38
-	ori	$a3, $t2, 1632
-	ldx.hu	$a3, $a0, $a3
-	ldptr.d	$t4, $a0, 5736
-	sltui	$a1, $a1, 1
-	addi.d	$t5, $a3, 64
-	sub.d	$a3, $t6, $a3
-	masknez	$t5, $t5, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a1, $a1, $t5
-	srli.d	$a3, $t4, 32
-	or	$a3, $a3, $t8
-	movgr2fr.d	$ft13, $a3
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$t4, $fp, 63, 32
-	movgr2fr.d	$ft14, $t4
-	fadd.d	$ft13, $ft14, $ft13
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft14, $s0, $a3
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	fneg.d	$ft14, $ft14
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $s0, $a1
-	ld.w	$a1, $a7, -20
-	fmul.d	$ft14, $ft13, $ft14
-	ld.w	$a3, $a7, -16
-	fneg.d	$ft15, $ft15
-	mul.w	$a1, $a1, $a5
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$fs0, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmul.d	$ft13, $ft13, $ft15
-	ldptr.d	$a1, $a0, 5752
-	fmadd.d	$ft14, $ft14, $fs0, $ft11
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.bu	$a3, $a4, -22
-	ori	$t4, $t2, 1648
-	ldx.hu	$t4, $a0, $t4
-	ld.w	$t5, $a7, -12
-	ld.w	$s2, $a7, -8
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a5
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft13, $t5
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ldptr.d	$a1, $a0, 5768
-	ld.bu	$a3, $a4, -6
-	ori	$t4, $t2, 1664
-	ldx.hu	$t4, $a0, $t4
-	ld.w	$t5, $a7, -4
-	ld.w	$s2, $a7, 0
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a5
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft13, $t5
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ldptr.d	$a1, $a0, 5784
-	ld.bu	$a3, $a4, 10
-	ori	$t4, $t2, 1680
-	ldx.hu	$t4, $a0, $t4
-	ld.w	$t5, $a7, 4
-	ld.w	$s2, $a7, 8
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a5
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft13, $t5
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ldptr.d	$a1, $a0, 5800
-	ld.bu	$a3, $a4, 26
-	ori	$a4, $t2, 1696
-	ldx.hu	$a0, $a0, $a4
-	ld.w	$a4, $a7, 12
-	ld.w	$t4, $a7, 16
-	sltui	$a3, $a3, 1
-	addi.d	$t5, $a0, 64
-	sub.d	$a0, $t6, $a0
-	masknez	$t5, $t5, $a3
-	maskeqz	$a0, $a0, $a3
-	or	$a0, $a0, $t5
-	mul.w	$a3, $a4, $a5
-	srli.d	$a3, $a3, 4
-	add.w	$a3, $a3, $t4
-	srai.d	$a4, $a3, 63
-	andn	$a3, $a3, $a4
-	slti	$a4, $a3, 127
-	maskeqz	$a3, $a3, $a4
-	masknez	$a4, $s1, $a4
-	or	$a3, $a3, $a4
-	srli.d	$a4, $a1, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft13, $a4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a0, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a0, $s1, $a0
+	add.d	$a7, $a2, $a6
+	add.d	$t5, $s6, $a6
+	ld.bu	$a0, $t5, -38
+	ori	$s0, $t2, 1632
+	ldx.hu	$s0, $a7, $s0
+	ldptr.d	$s1, $a7, 5736
+	sltui	$a0, $a0, 1
+	addi.d	$s3, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s3, $s3, $a0
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $s3
+	vinsgr2vr.d	$vr20, $s1, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft13, $t8, $s0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	fneg.d	$ft13, $ft13
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs0, $s0, $a0
-	xori	$a0, $a3, 127
+	fldx.d	$ft14, $t8, $a0
+	ld.w	$a0, $t4, -20
+	fmul.d	$ft13, $ft12, $ft13
+	ld.w	$s0, $t4, -16
+	fneg.d	$ft14, $ft14
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $s0
+	srai.d	$s0, $a0, 63
+	andn	$a0, $a0, $s0
+	slti	$s0, $a0, 127
+	maskeqz	$a0, $a0, $s0
+	masknez	$s0, $fp, $s0
+	or	$a0, $a0, $s0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft15, $t3, $s0
+	xori	$a0, $a0, 127
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $t1, $a0
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
+	fldx.d	$fs0, $t3, $a0
+	fmul.d	$ft12, $ft12, $ft14
+	ldptr.d	$a0, $a7, 5752
+	fmadd.d	$ft13, $ft13, $ft15, $ft10
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.bu	$s0, $t5, -22
+	ori	$s1, $t2, 1648
+	ldx.hu	$s1, $a7, $s1
+	ld.w	$s3, $t4, -12
+	ld.w	$s4, $t4, -8
+	sltui	$s0, $s0, 1
+	addi.d	$s5, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s5, $s5, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s5
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s4
+	srai.d	$s3, $s1, 63
+	andn	$s1, $s1, $s3
+	slti	$s3, $s1, 127
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $fp, $s3
+	or	$s1, $s1, $s3
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ldptr.d	$a0, $a7, 5768
+	ld.bu	$s0, $t5, -6
+	ori	$s1, $t2, 1664
+	ldx.hu	$s1, $a7, $s1
+	ld.w	$s3, $t4, -4
+	ld.w	$s4, $t4, 0
+	sltui	$s0, $s0, 1
+	addi.d	$s5, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s5, $s5, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s5
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s4
+	srai.d	$s3, $s1, 63
+	andn	$s1, $s1, $s3
+	slti	$s3, $s1, 127
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $fp, $s3
+	or	$s1, $s1, $s3
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ldptr.d	$a0, $a7, 5784
+	ld.bu	$s0, $t5, 10
+	ori	$s1, $t2, 1680
+	ldx.hu	$s1, $a7, $s1
+	ld.w	$s3, $t4, 4
+	ld.w	$s4, $t4, 8
+	sltui	$s0, $s0, 1
+	addi.d	$s5, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s5, $s5, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s5
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s4
+	srai.d	$s3, $s1, 63
+	andn	$s1, $s1, $s3
+	slti	$s3, $s1, 127
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $fp, $s3
+	or	$s1, $s1, $s3
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ldptr.d	$a0, $a7, 5800
+	ld.bu	$t5, $t5, 26
+	ori	$s0, $t2, 1696
+	ldx.hu	$a7, $a7, $s0
+	ld.w	$s0, $t4, 12
+	ld.w	$s1, $t4, 16
+	sltui	$t5, $t5, 1
+	addi.d	$s3, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s3, $s3, $t5
+	maskeqz	$a7, $a7, $t5
+	or	$a7, $a7, $s3
+	mul.w	$t5, $s0, $a5
+	srli.d	$t5, $t5, 4
+	add.w	$t5, $t5, $s1
+	srai.d	$s0, $t5, 63
+	andn	$t5, $t5, $s0
+	slti	$s0, $t5, 127
+	maskeqz	$t5, $t5, $s0
+	masknez	$s0, $fp, $s0
+	or	$t5, $t5, $s0
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $a7, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $a7
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $t5, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
 	addi.d	$a6, $a6, 80
-	addi.d	$a7, $a7, 40
-	bne	$a6, $ra, .LBB5_50
+	addi.d	$t4, $t4, 40
+	bne	$a6, $s7, .LBB5_50
 # %bb.51:                               # %.preheader377
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.w	$a0, $s7, 20
-	ld.w	$a1, $s7, 36
+	ld.w	$a0, $a3, 20
+	ld.w	$a5, $a3, 36
 	addi.d	$a0, $a0, -2
 	sltui	$a0, $a0, 1
-	srai.d	$a3, $a1, 63
-	andn	$a5, $a1, $a3
-	pcalau12i	$a1, %pc_hi20(INIT_ABS_P)
-	addi.d	$a1, $a1, %pc_lo12(INIT_ABS_P)
-	masknez	$a1, $a1, $a0
-	pcalau12i	$a3, %pc_hi20(INIT_ABS_I)
-	addi.d	$a3, $a3, %pc_lo12(INIT_ABS_I)
+	srai.d	$a6, $a5, 63
+	andn	$a5, $a5, $a6
+	pcalau12i	$a6, %pc_hi20(INIT_ABS_P)
+	addi.d	$a6, $a6, %pc_lo12(INIT_ABS_P)
+	masknez	$a7, $a6, $a0
+	pcalau12i	$a6, %pc_hi20(INIT_ABS_I)
+	addi.d	$t4, $a6, %pc_lo12(INIT_ABS_I)
 	move	$a6, $zero
-	maskeqz	$a0, $a3, $a0
-	or	$a0, $a0, $a1
-	ld.d	$a1, $sp, 208                   # 8-byte Folded Reload
-	add.d	$a7, $a0, $a1
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
+	maskeqz	$a0, $t4, $a0
+	or	$a0, $a0, $a7
+	ld.d	$a7, $sp, 216                   # 8-byte Folded Reload
+	add.d	$t4, $a0, $a7
+	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB5_52:                               # %.preheader365
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$a0, $a2, $a6
-	add.d	$a4, $s8, $a6
-	ld.bu	$a1, $a4, -38
-	ori	$a3, $t2, 2432
-	ldx.hu	$a3, $a0, $a3
-	ldptr.d	$t4, $a0, 6536
-	sltui	$a1, $a1, 1
-	addi.d	$t5, $a3, 64
-	sub.d	$a3, $t6, $a3
-	masknez	$t5, $t5, $a1
-	maskeqz	$a1, $a3, $a1
-	or	$a1, $a1, $t5
-	srli.d	$a3, $t4, 32
-	or	$a3, $a3, $t8
-	movgr2fr.d	$ft13, $a3
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$t4, $fp, 63, 32
-	movgr2fr.d	$ft14, $t4
-	fadd.d	$ft13, $ft14, $ft13
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft14, $s0, $a3
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	fneg.d	$ft14, $ft14
-	sub.d	$a1, $s1, $a1
-	slli.d	$a1, $a1, 3
-	fldx.d	$ft15, $s0, $a1
-	ld.w	$a1, $a7, -20
-	fmul.d	$ft14, $ft13, $ft14
-	ld.w	$a3, $a7, -16
-	fneg.d	$ft15, $ft15
-	mul.w	$a1, $a1, $a5
-	srli.d	$a1, $a1, 4
-	add.w	$a1, $a1, $a3
-	srai.d	$a3, $a1, 63
-	andn	$a1, $a1, $a3
-	slti	$a3, $a1, 127
-	maskeqz	$a1, $a1, $a3
-	masknez	$a3, $s1, $a3
-	or	$a1, $a1, $a3
-	slli.d	$a3, $a1, 3
-	fldx.d	$fs0, $t1, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmul.d	$ft13, $ft13, $ft15
-	ldptr.d	$a1, $a0, 6552
-	fmadd.d	$ft14, $ft14, $fs0, $ft11
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ld.bu	$a3, $a4, -22
-	ori	$t4, $t2, 2448
-	ldx.hu	$t4, $a0, $t4
-	ld.w	$t5, $a7, -12
-	ld.w	$s2, $a7, -8
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a5
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft13, $t5
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ldptr.d	$a1, $a0, 6568
-	ld.bu	$a3, $a4, -6
-	ori	$t4, $t2, 2464
-	ldx.hu	$t4, $a0, $t4
-	ld.w	$t5, $a7, -4
-	ld.w	$s2, $a7, 0
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a5
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft13, $t5
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ldptr.d	$a1, $a0, 6584
-	ld.bu	$a3, $a4, 10
-	ori	$t4, $t2, 2480
-	ldx.hu	$t4, $a0, $t4
-	ld.w	$t5, $a7, 4
-	ld.w	$s2, $a7, 8
-	sltui	$a3, $a3, 1
-	addi.d	$s3, $t4, 64
-	sub.d	$t4, $t6, $t4
-	masknez	$s3, $s3, $a3
-	maskeqz	$a3, $t4, $a3
-	or	$a3, $a3, $s3
-	mul.w	$t4, $t5, $a5
-	srli.d	$t4, $t4, 4
-	add.w	$t4, $t4, $s2
-	srai.d	$t5, $t4, 63
-	andn	$t4, $t4, $t5
-	slti	$t5, $t4, 127
-	maskeqz	$t4, $t4, $t5
-	masknez	$t5, $s1, $t5
-	or	$t4, $t4, $t5
-	srli.d	$t5, $a1, 32
-	or	$t5, $t5, $t8
-	movgr2fr.d	$ft13, $t5
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $t4, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a1, $s1, $a3
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs0, $s0, $a1
-	xori	$a1, $t4, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	ldptr.d	$a1, $a0, 6600
-	ld.bu	$a3, $a4, 26
-	ori	$a4, $t2, 2496
-	ldx.hu	$a0, $a0, $a4
-	ld.w	$a4, $a7, 12
-	ld.w	$t4, $a7, 16
-	sltui	$a3, $a3, 1
-	addi.d	$t5, $a0, 64
-	sub.d	$a0, $t6, $a0
-	masknez	$t5, $t5, $a3
-	maskeqz	$a0, $a0, $a3
-	or	$a0, $a0, $t5
-	mul.w	$a3, $a4, $a5
-	srli.d	$a3, $a3, 4
-	add.w	$a3, $a3, $t4
-	srai.d	$a4, $a3, 63
-	andn	$a3, $a3, $a4
-	slti	$a4, $a3, 127
-	maskeqz	$a3, $a3, $a4
-	masknez	$a4, $s1, $a4
-	or	$a3, $a3, $a4
-	srli.d	$a4, $a1, 32
-	or	$a4, $a4, $t8
-	movgr2fr.d	$ft13, $a4
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a1, $fp, 63, 32
-	movgr2fr.d	$ft14, $a1
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a1, $a0, 3
-	fldx.d	$ft14, $s0, $a1
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a1, $a3, 3
-	fldx.d	$ft15, $t1, $a1
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a0, $s1, $a0
+	add.d	$a7, $a2, $a6
+	add.d	$t5, $s6, $a6
+	ld.bu	$a0, $t5, -38
+	ori	$s0, $t2, 2432
+	ldx.hu	$s0, $a7, $s0
+	ldptr.d	$s1, $a7, 6536
+	sltui	$a0, $a0, 1
+	addi.d	$s3, $s0, 64
+	sub.d	$s0, $t6, $s0
+	masknez	$s3, $s3, $a0
+	maskeqz	$a0, $s0, $a0
+	or	$a0, $a0, $s3
+	vinsgr2vr.d	$vr20, $s1, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft13, $t8, $s0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	fneg.d	$ft13, $ft13
+	sub.d	$a0, $fp, $a0
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs0, $s0, $a0
-	xori	$a0, $a3, 127
+	fldx.d	$ft14, $t8, $a0
+	ld.w	$a0, $t4, -20
+	fmul.d	$ft13, $ft12, $ft13
+	ld.w	$s0, $t4, -16
+	fneg.d	$ft14, $ft14
+	mul.w	$a0, $a0, $a5
+	srli.d	$a0, $a0, 4
+	add.w	$a0, $a0, $s0
+	srai.d	$s0, $a0, 63
+	andn	$a0, $a0, $s0
+	slti	$s0, $a0, 127
+	maskeqz	$a0, $a0, $s0
+	masknez	$s0, $fp, $s0
+	or	$a0, $a0, $s0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft15, $t3, $s0
+	xori	$a0, $a0, 127
 	slli.d	$a0, $a0, 3
-	fldx.d	$fs1, $t1, $a0
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
+	fldx.d	$fs0, $t3, $a0
+	fmul.d	$ft12, $ft12, $ft14
+	ldptr.d	$a0, $a7, 6552
+	fmadd.d	$ft13, $ft13, $ft15, $ft10
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ld.bu	$s0, $t5, -22
+	ori	$s1, $t2, 2448
+	ldx.hu	$s1, $a7, $s1
+	ld.w	$s3, $t4, -12
+	ld.w	$s4, $t4, -8
+	sltui	$s0, $s0, 1
+	addi.d	$s5, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s5, $s5, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s5
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s4
+	srai.d	$s3, $s1, 63
+	andn	$s1, $s1, $s3
+	slti	$s3, $s1, 127
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $fp, $s3
+	or	$s1, $s1, $s3
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ldptr.d	$a0, $a7, 6568
+	ld.bu	$s0, $t5, -6
+	ori	$s1, $t2, 2464
+	ldx.hu	$s1, $a7, $s1
+	ld.w	$s3, $t4, -4
+	ld.w	$s4, $t4, 0
+	sltui	$s0, $s0, 1
+	addi.d	$s5, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s5, $s5, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s5
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s4
+	srai.d	$s3, $s1, 63
+	andn	$s1, $s1, $s3
+	slti	$s3, $s1, 127
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $fp, $s3
+	or	$s1, $s1, $s3
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ldptr.d	$a0, $a7, 6584
+	ld.bu	$s0, $t5, 10
+	ori	$s1, $t2, 2480
+	ldx.hu	$s1, $a7, $s1
+	ld.w	$s3, $t4, 4
+	ld.w	$s4, $t4, 8
+	sltui	$s0, $s0, 1
+	addi.d	$s5, $s1, 64
+	sub.d	$s1, $t6, $s1
+	masknez	$s5, $s5, $s0
+	maskeqz	$s0, $s1, $s0
+	or	$s0, $s0, $s5
+	mul.w	$s1, $s3, $a5
+	srli.d	$s1, $s1, 4
+	add.w	$s1, $s1, $s4
+	srai.d	$s3, $s1, 63
+	andn	$s1, $s1, $s3
+	slti	$s3, $s1, 127
+	maskeqz	$s1, $s1, $s3
+	masknez	$s3, $fp, $s3
+	or	$s1, $s1, $s3
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $s0, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $s1, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $s0
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $s1, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	ldptr.d	$a0, $a7, 6600
+	ld.bu	$t5, $t5, 26
+	ori	$s0, $t2, 2496
+	ldx.hu	$a7, $a7, $s0
+	ld.w	$s0, $t4, 12
+	ld.w	$s1, $t4, 16
+	sltui	$t5, $t5, 1
+	addi.d	$s3, $a7, 64
+	sub.d	$a7, $t6, $a7
+	masknez	$s3, $s3, $t5
+	maskeqz	$a7, $a7, $t5
+	or	$a7, $a7, $s3
+	mul.w	$t5, $s0, $a5
+	srli.d	$t5, $t5, 4
+	add.w	$t5, $t5, $s1
+	srai.d	$s0, $t5, 63
+	andn	$t5, $t5, $s0
+	slti	$s0, $t5, 127
+	maskeqz	$t5, $t5, $s0
+	masknez	$s0, $fp, $s0
+	or	$t5, $t5, $s0
+	vinsgr2vr.d	$vr20, $a0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$a0, $a7, 3
+	fldx.d	$ft13, $t8, $a0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$a0, $t5, 3
+	fldx.d	$ft14, $t3, $a0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$a0, $fp, $a7
+	slli.d	$a0, $a0, 3
+	fldx.d	$ft15, $t8, $a0
+	xori	$a0, $t5, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
 	addi.d	$a6, $a6, 80
-	addi.d	$a7, $a7, 40
-	bne	$a6, $ra, .LBB5_52
+	addi.d	$t4, $t4, 40
+	bne	$a6, $s7, .LBB5_52
 # %bb.53:                               # %.preheader376
                                         #   in Loop: Header=BB5_1 Depth=1
-	ld.w	$a1, $s7, 36
-	ld.w	$a5, $s7, 20
-	move	$a0, $zero
-	srai.d	$a3, $a1, 63
-	andn	$a6, $a1, $a3
-	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
+	ld.w	$a0, $a3, 36
+	ld.w	$a5, $a3, 20
+	move	$a7, $zero
+	srai.d	$a6, $a0, 63
+	andn	$a6, $a0, $a6
+	ld.d	$t4, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB5_55
 	.p2align	4, , 16
 .LBB5_54:                               # %.split472.us
                                         #   in Loop: Header=BB5_55 Depth=2
-	addi.d	$a0, $a0, 1
-	addi.d	$s7, $s7, 240
-	addi.d	$a7, $a7, 120
-	addi.d	$a4, $a4, 120
-	beq	$a0, $t3, .LBB5_58
+	addi.d	$a7, $a7, 1
+	addi.d	$s3, $s3, 240
+	addi.d	$t5, $t5, 120
+	addi.d	$t4, $t4, 120
+	beq	$a7, $a4, .LBB5_58
 .LBB5_55:                               # %.preheader364
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_57 Depth 3
                                         #       Child Loop BB5_56 Depth 3
-	move	$t5, $zero
-	move	$s8, $s7
-	bne	$a5, $s5, .LBB5_57
+	move	$s4, $zero
+	move	$s5, $s3
+	bne	$a5, $s8, .LBB5_57
 	.p2align	4, , 16
 .LBB5_56:                               # %.preheader364.split.us
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_55 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a4, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a4, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_56
+	add.d	$a0, $t4, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t4, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_56
 	b	.LBB5_54
 	.p2align	4, , 16
 .LBB5_57:                               # %.preheader364.split
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_55 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a7, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a7, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_57
+	add.d	$a0, $t5, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t5, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_57
 	b	.LBB5_54
 	.p2align	4, , 16
 .LBB5_58:                               # %.preheader375
                                         #   in Loop: Header=BB5_1 Depth=1
-	move	$a0, $zero
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	move	$a7, $zero
+	ld.d	$t4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB5_60
 	.p2align	4, , 16
 .LBB5_59:                               # %.split479.us
                                         #   in Loop: Header=BB5_60 Depth=2
-	addi.d	$a0, $a0, 1
-	addi.d	$s7, $s7, 240
-	addi.d	$a7, $a7, 120
-	addi.d	$a4, $a4, 120
-	beq	$a0, $t3, .LBB5_63
+	addi.d	$a7, $a7, 1
+	addi.d	$s3, $s3, 240
+	addi.d	$t5, $t5, 120
+	addi.d	$t4, $t4, 120
+	beq	$a7, $a4, .LBB5_63
 .LBB5_60:                               # %.preheader
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB5_62 Depth 3
                                         #       Child Loop BB5_61 Depth 3
-	move	$t5, $zero
-	move	$s8, $s7
-	bne	$a5, $s5, .LBB5_62
+	move	$s4, $zero
+	move	$s5, $s3
+	bne	$a5, $s8, .LBB5_62
 	.p2align	4, , 16
 .LBB5_61:                               # %.preheader.split.us
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_60 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a4, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a4, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_61
+	add.d	$a0, $t4, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t4, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_61
 	b	.LBB5_59
 	.p2align	4, , 16
 .LBB5_62:                               # %.preheader.split
                                         #   Parent Loop BB5_1 Depth=1
                                         #     Parent Loop BB5_60 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$a1, $a7, $t5
-	ld.d	$a3, $s8, 8
-	ld.bu	$t4, $s8, 2
-	ld.hu	$s2, $s8, 0
-	ldx.w	$s3, $a7, $t5
-	ld.w	$a1, $a1, 4
-	sltui	$t4, $t4, 1
-	addi.d	$ra, $s2, 64
-	sub.d	$s2, $t6, $s2
-	masknez	$ra, $ra, $t4
-	maskeqz	$t4, $s2, $t4
-	or	$t4, $t4, $ra
-	mul.w	$s2, $s3, $a6
-	srli.d	$s2, $s2, 4
-	add.w	$a1, $s2, $a1
-	srai.d	$s2, $a1, 63
-	andn	$a1, $a1, $s2
-	slti	$s2, $a1, 127
-	maskeqz	$a1, $a1, $s2
-	masknez	$s2, $s1, $s2
-	or	$a1, $a1, $s2
-	srli.d	$s2, $a3, 32
-	or	$s2, $s2, $t8
-	movgr2fr.d	$ft13, $s2
-	fsub.d	$ft13, $ft13, $fa0
-	bstrins.d	$a3, $fp, 63, 32
-	movgr2fr.d	$ft14, $a3
-	fadd.d	$ft13, $ft14, $ft13
-	fmul.d	$ft13, $ft13, $fa1
-	fcmp.clt.d	$fcc0, $fa2, $ft13
-	slli.d	$a3, $t4, 3
-	fldx.d	$ft14, $s0, $a3
-	fsel	$ft13, $ft13, $fa2, $fcc0
-	slli.d	$a3, $a1, 3
-	fldx.d	$ft15, $t1, $a3
-	fneg.d	$ft14, $ft14
-	fmul.d	$ft14, $ft13, $ft14
-	sub.d	$a3, $s1, $t4
-	slli.d	$a3, $a3, 3
-	fldx.d	$fs0, $s0, $a3
-	xori	$a1, $a1, 127
-	slli.d	$a1, $a1, 3
-	fldx.d	$fs1, $t1, $a1
-	fmadd.d	$ft14, $ft14, $ft15, $ft11
-	fneg.d	$ft15, $fs0
-	fmul.d	$ft13, $ft13, $ft15
-	fmadd.d	$ft13, $ft13, $fs1, $ft14
-	fadd.d	$ft12, $ft12, $ft13
-	addi.d	$t5, $t5, 8
-	addi.d	$s8, $s8, 16
-	bne	$t5, $t7, .LBB5_62
+	add.d	$a0, $t5, $s4
+	ld.d	$s0, $s5, 8
+	ld.bu	$s1, $s5, 2
+	ld.hu	$s6, $s5, 0
+	ldx.w	$s7, $t5, $s4
+	ld.w	$a0, $a0, 4
+	sltui	$s1, $s1, 1
+	addi.d	$ra, $s6, 64
+	sub.d	$s6, $t6, $s6
+	masknez	$ra, $ra, $s1
+	maskeqz	$s1, $s6, $s1
+	or	$s1, $s1, $ra
+	mul.w	$s6, $s7, $a6
+	srli.d	$s6, $s6, 4
+	add.w	$a0, $s6, $a0
+	srai.d	$s6, $a0, 63
+	andn	$a0, $a0, $s6
+	slti	$s6, $a0, 127
+	maskeqz	$a0, $a0, $s6
+	masknez	$s6, $fp, $s6
+	or	$a0, $a0, $s6
+	vinsgr2vr.d	$vr20, $s0, 0
+	vffint.d.lu	$vr20, $vr20
+	vreplvei.d	$vr20, $vr20, 0
+	fmul.d	$ft12, $ft12, $fa0
+	fcmp.clt.d	$fcc0, $fa1, $ft12
+	slli.d	$s0, $s1, 3
+	fldx.d	$ft13, $t8, $s0
+	fsel	$ft12, $ft12, $fa1, $fcc0
+	slli.d	$s0, $a0, 3
+	fldx.d	$ft14, $t3, $s0
+	fneg.d	$ft13, $ft13
+	fmul.d	$ft13, $ft12, $ft13
+	sub.d	$s0, $fp, $s1
+	slli.d	$s0, $s0, 3
+	fldx.d	$ft15, $t8, $s0
+	xori	$a0, $a0, 127
+	slli.d	$a0, $a0, 3
+	fldx.d	$fs0, $t3, $a0
+	fmadd.d	$ft13, $ft13, $ft14, $ft10
+	fneg.d	$ft14, $ft15
+	fmul.d	$ft12, $ft12, $ft14
+	fmadd.d	$ft12, $ft12, $fs0, $ft13
+	fadd.d	$ft11, $ft11, $ft12
+	addi.d	$s4, $s4, 8
+	addi.d	$s5, $s5, 16
+	bne	$s4, $t0, .LBB5_62
 	b	.LBB5_59
 	.p2align	4, , 16
 .LBB5_63:                               #   in Loop: Header=BB5_1 Depth=1
-	fcmp.cule.d	$fcc0, $ft10, $ft12
-	ld.d	$a5, $sp, 216                   # 8-byte Folded Reload
+	fcmp.cule.d	$fcc0, $ft9, $ft11
+	ld.d	$t4, $sp, 96                    # 8-byte Folded Reload
 	bcnez	$fcc0, .LBB5_65
 # %bb.64:                               #   in Loop: Header=BB5_1 Depth=1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	st.w	$a5, $a0, 0
-	fmov.d	$ft10, $ft12
+	st.w	$t4, $a0, 0
+	fmov.d	$ft9, $ft11
 .LBB5_65:                               #   in Loop: Header=BB5_1 Depth=1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a7, $sp, 80                    # 8-byte Folded Reload
-	beq	$a0, $s5, .LBB5_67
+	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$t3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 184                   # 8-byte Folded Reload
+	beq	$a0, $s8, .LBB5_67
 # %bb.66:                               #   in Loop: Header=BB5_1 Depth=1
-	addi.d	$a4, $a5, 1
-	addi.d	$s8, $s8, 264
-	addi.d	$a7, $a7, 264
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$a0, $a0, 144
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
-	addi.d	$a0, $a0, 160
-	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	addi.d	$a6, $t4, 1
+	addi.d	$s5, $s5, 264
+	addi.d	$t3, $t3, 264
+	addi.d	$a5, $a5, 144
+	addi.d	$a7, $a7, 160
+	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 192                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 32
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 96
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
@@ -13468,9 +13122,9 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 960
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 320
-	st.d	$a0, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 216                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 960
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
@@ -13483,24 +13137,23 @@ GetCtxModelNumber:                      # @GetCtxModelNumber
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 960
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
-	bltu	$a5, $s5, .LBB5_1
+	bltu	$t4, $s8, .LBB5_1
 .LBB5_67:
-	fld.d	$fs3, $sp, 264                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 272                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 280                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 288                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	fld.d	$fs2, $sp, 224                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 232                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 240                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 328                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 336
 	ret
 .Lfunc_end5:
 	.size	GetCtxModelNumber, .Lfunc_end5-GetCtxModelNumber

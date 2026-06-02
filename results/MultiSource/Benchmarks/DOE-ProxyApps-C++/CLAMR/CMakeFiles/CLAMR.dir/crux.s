@@ -530,21 +530,14 @@ _ZN4Crux11store_beginEmi:               # @_ZN4Crux11store_beginEmi
 	ld.bu	$a0, $a0, %pc_lo12(do_crux_timing)
 	beqz	$a0, .LBB8_7
 .LBB8_6:
-	srli.d	$a0, $fp, 1
-	andi	$a1, $fp, 1
-	or	$a0, $a1, $a0
-	movgr2fr.d	$fa0, $a0
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	slti	$a0, $fp, 0
-	pcalau12i	$a1, %pc_hi20(checkpoint_timing_size)
-	fld.s	$fa1, $a1, %pc_lo12(checkpoint_timing_size)
-	movgr2fr.d	$fa2, $fp
-	ffint.s.l	$fa2, $fa2
-	movgr2cf	$fcc0, $a0
-	fsel	$fa0, $fa2, $fa0, $fcc0
+	vinsgr2vr.d	$vr0, $fp, 0
+	pcalau12i	$a0, %pc_hi20(checkpoint_timing_size)
+	fld.s	$fa1, $a0, %pc_lo12(checkpoint_timing_size)
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	fadd.s	$fa0, $fa1, $fa0
-	fst.s	$fa0, $a1, %pc_lo12(checkpoint_timing_size)
+	fst.s	$fa0, $a0, %pc_lo12(checkpoint_timing_size)
 .LBB8_7:
 	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload

@@ -13659,6 +13659,7 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	ori	$t5, $t5, 1808
 	lu12i.w	$t6, 260095
 	ori	$t6, $t6, 4095
+	movgr2fr.w	$ft1, $t6
 	ori	$t8, $zero, 624
 	.p2align	4, , 16
 .LBB40_3:                               # =>This Loop Header: Depth=1
@@ -13671,9 +13672,9 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
                                         #     Child Loop BB40_23 Depth 2
                                         #       Child Loop BB40_25 Depth 3
                                         #       Child Loop BB40_27 Depth 3
-	vldi	$vr9, -1168
+	vldi	$vr10, -1168
 	move	$t7, $a0
-	fmov.s	$ft2, $fa0
+	fmov.s	$ft3, $fa0
 	b	.LBB40_5
 	.p2align	4, , 16
 .LBB40_4:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv.exit
@@ -13695,20 +13696,13 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	xor	$s2, $s3, $s2
 	srli.d	$s3, $s2, 18
 	xor	$s2, $s3, $s2
-	srli.d	$s3, $s2, 1
-	andi	$s5, $s2, 1
-	or	$s3, $s5, $s3
-	movgr2fr.d	$ft3, $s3
-	ffint.s.l	$ft3, $ft3
-	fadd.s	$ft3, $ft3, $ft3
-	slti	$s3, $s2, 0
-	movgr2fr.d	$ft4, $s2
-	ffint.s.l	$ft4, $ft4
-	movgr2cf	$fcc0, $s3
-	fsel	$ft3, $ft4, $ft3, $fcc0
-	fmadd.s	$ft2, $ft3, $ft1, $ft2
+	vinsgr2vr.d	$vr12, $s2, 0
+	vffint.d.lu	$vr12, $vr12
+	vreplvei.d	$vr12, $vr12, 0
+	fcvt.s.d	$ft4, $ft4
+	fmadd.s	$ft3, $ft4, $ft2, $ft3
 	addi.d	$t7, $t7, -1
-	fmul.s	$ft1, $ft1, $fa5
+	fmul.s	$ft2, $ft2, $fa5
 	beqz	$t7, .LBB40_11
 .LBB40_5:                               # %select.unfold.i.i.i.i
                                         #   Parent Loop BB40_3 Depth=1
@@ -13720,33 +13714,33 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
                                         #   in Loop: Header=BB40_5 Depth=2
 	ld.d	$s2, $sp, 8
 	move	$t8, $zero
-	vinsgr2vr.d	$vr11, $s2, 1
+	vinsgr2vr.d	$vr12, $s2, 1
 	.p2align	4, , 16
 .LBB40_7:                               # %vector.body134
                                         #   Parent Loop BB40_3 Depth=1
                                         #     Parent Loop BB40_5 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	vori.b	$vr12, $vr11, 0
+	vori.b	$vr13, $vr12, 0
 	add.d	$s2, $a2, $t8
-	vld	$vr11, $s2, 8
-	vshuf4i.d	$vr12, $vr11, 9
-	vand.v	$vr12, $vr12, $vr1
-	vldx	$vr13, $s2, $a3
-	vand.v	$vr14, $vr11, $vr2
-	vor.v	$vr12, $vr14, $vr12
-	vsrli.d	$vr12, $vr12, 1
-	vxor.v	$vr12, $vr12, $vr13
-	vand.v	$vr13, $vr11, $vr3
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr4
-	vxor.v	$vr12, $vr12, $vr13
-	vstx	$vr12, $t8, $a2
+	vld	$vr12, $s2, 8
+	vshuf4i.d	$vr13, $vr12, 9
+	vand.v	$vr13, $vr13, $vr1
+	vldx	$vr14, $s2, $a3
+	vand.v	$vr15, $vr12, $vr2
+	vor.v	$vr13, $vr15, $vr13
+	vsrli.d	$vr13, $vr13, 1
+	vxor.v	$vr13, $vr13, $vr14
+	vand.v	$vr14, $vr12, $vr3
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr4
+	vxor.v	$vr13, $vr13, $vr14
+	vstx	$vr13, $t8, $a2
 	addi.d	$t8, $t8, 16
 	bne	$t8, $a5, .LBB40_7
 # %bb.8:                                # %vector.ph123
                                         #   in Loop: Header=BB40_5 Depth=2
 	ld.d	$t8, $sp, 1824
-	vpickve2gr.d	$s2, $vr11, 1
+	vpickve2gr.d	$s2, $vr12, 1
 	bstrpick.d	$s3, $t8, 30, 1
 	lu12i.w	$s5, 1
 	ori	$s5, $s5, 896
@@ -13761,7 +13755,7 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	and	$s3, $s3, $a4
 	xor	$s2, $s2, $s3
 	st.d	$s2, $sp, 1816
-	vinsgr2vr.d	$vr11, $t8, 1
+	vinsgr2vr.d	$vr12, $t8, 1
 	move	$t8, $a7
 	.p2align	4, , 16
 .LBB40_9:                               # %vector.body124
@@ -13769,21 +13763,21 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
                                         #     Parent Loop BB40_5 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$s2, $a2, $t8
-	vldx	$vr12, $s2, $t0
-	vshuf4i.d	$vr11, $vr12, 9
-	vand.v	$vr11, $vr11, $vr1
-	vldx	$vr13, $s2, $t1
-	vand.v	$vr14, $vr12, $vr2
-	vor.v	$vr11, $vr14, $vr11
-	vsrli.d	$vr11, $vr11, 1
-	vxor.v	$vr11, $vr11, $vr13
-	vand.v	$vr13, $vr12, $vr3
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr4
-	vxor.v	$vr11, $vr11, $vr13
+	vldx	$vr13, $s2, $t0
+	vshuf4i.d	$vr12, $vr13, 9
+	vand.v	$vr12, $vr12, $vr1
+	vldx	$vr14, $s2, $t1
+	vand.v	$vr15, $vr13, $vr2
+	vor.v	$vr12, $vr15, $vr12
+	vsrli.d	$vr12, $vr12, 1
+	vxor.v	$vr12, $vr12, $vr14
+	vand.v	$vr14, $vr13, $vr3
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr4
+	vxor.v	$vr12, $vr12, $vr14
 	addi.d	$t8, $t8, 16
-	vstx	$vr11, $s2, $t2
-	vori.b	$vr11, $vr12, 0
+	vstx	$vr12, $s2, $t2
+	vori.b	$vr12, $vr13, 0
 	bnez	$t8, .LBB40_9
 # %bb.10:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i
                                         #   in Loop: Header=BB40_5 Depth=2
@@ -13812,17 +13806,17 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	b	.LBB40_4
 	.p2align	4, , 16
 .LBB40_11:                              #   in Loop: Header=BB40_3 Depth=1
-	fdiv.s	$ft1, $ft2, $ft1
-	fcmp.cult.s	$fcc0, $ft1, $fa6
+	fdiv.s	$ft2, $ft3, $ft2
+	fcmp.cult.s	$fcc0, $ft2, $fa6
 	bceqz	$fcc0, .LBB40_31
 .LBB40_12:                              # %_ZNSt25uniform_real_distributionIfEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEfRT_.exit
                                         #   in Loop: Header=BB40_3 Depth=1
-	fmadd.s	$ft1, $ft1, $ft0, $fa7
+	fmadd.s	$ft2, $ft2, $ft0, $fa7
 	slli.d	$t7, $a1, 2
-	fstx.s	$ft1, $s1, $t7
-	vldi	$vr9, -1168
+	fstx.s	$ft2, $s1, $t7
+	vldi	$vr10, -1168
 	move	$s2, $a0
-	fmov.s	$ft2, $fa0
+	fmov.s	$ft3, $fa0
 	b	.LBB40_14
 	.p2align	4, , 16
 .LBB40_13:                              # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv.exit37
@@ -13844,20 +13838,13 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	xor	$s3, $s5, $s3
 	srli.d	$s5, $s3, 18
 	xor	$s3, $s5, $s3
-	srli.d	$s5, $s3, 1
-	andi	$s6, $s3, 1
-	or	$s5, $s6, $s5
-	movgr2fr.d	$ft3, $s5
-	ffint.s.l	$ft3, $ft3
-	fadd.s	$ft3, $ft3, $ft3
-	slti	$s5, $s3, 0
-	movgr2fr.d	$ft4, $s3
-	ffint.s.l	$ft4, $ft4
-	movgr2cf	$fcc0, $s5
-	fsel	$ft3, $ft4, $ft3, $fcc0
-	fmadd.s	$ft2, $ft3, $ft1, $ft2
+	vinsgr2vr.d	$vr12, $s3, 0
+	vffint.d.lu	$vr12, $vr12
+	vreplvei.d	$vr12, $vr12, 0
+	fcvt.s.d	$ft4, $ft4
+	fmadd.s	$ft3, $ft4, $ft2, $ft3
 	addi.d	$s2, $s2, -1
-	fmul.s	$ft1, $ft1, $fa5
+	fmul.s	$ft2, $ft2, $fa5
 	beqz	$s2, .LBB40_20
 .LBB40_14:                              # %select.unfold.i.i.i.i8
                                         #   Parent Loop BB40_3 Depth=1
@@ -13869,33 +13856,33 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
                                         #   in Loop: Header=BB40_14 Depth=2
 	ld.d	$s3, $sp, 8
 	move	$t8, $zero
-	vinsgr2vr.d	$vr11, $s3, 1
+	vinsgr2vr.d	$vr12, $s3, 1
 	.p2align	4, , 16
 .LBB40_16:                              # %vector.body113
                                         #   Parent Loop BB40_3 Depth=1
                                         #     Parent Loop BB40_14 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	vori.b	$vr12, $vr11, 0
+	vori.b	$vr13, $vr12, 0
 	add.d	$s3, $a2, $t8
-	vld	$vr11, $s3, 8
-	vshuf4i.d	$vr12, $vr11, 9
-	vand.v	$vr12, $vr12, $vr1
-	vldx	$vr13, $s3, $a3
-	vand.v	$vr14, $vr11, $vr2
-	vor.v	$vr12, $vr14, $vr12
-	vsrli.d	$vr12, $vr12, 1
-	vxor.v	$vr12, $vr12, $vr13
-	vand.v	$vr13, $vr11, $vr3
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr4
-	vxor.v	$vr12, $vr12, $vr13
-	vstx	$vr12, $t8, $a2
+	vld	$vr12, $s3, 8
+	vshuf4i.d	$vr13, $vr12, 9
+	vand.v	$vr13, $vr13, $vr1
+	vldx	$vr14, $s3, $a3
+	vand.v	$vr15, $vr12, $vr2
+	vor.v	$vr13, $vr15, $vr13
+	vsrli.d	$vr13, $vr13, 1
+	vxor.v	$vr13, $vr13, $vr14
+	vand.v	$vr14, $vr12, $vr3
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr4
+	vxor.v	$vr13, $vr13, $vr14
+	vstx	$vr13, $t8, $a2
 	addi.d	$t8, $t8, 16
 	bne	$t8, $a5, .LBB40_16
 # %bb.17:                               # %vector.ph102
                                         #   in Loop: Header=BB40_14 Depth=2
 	ld.d	$t8, $sp, 1824
-	vpickve2gr.d	$s3, $vr11, 1
+	vpickve2gr.d	$s3, $vr12, 1
 	bstrpick.d	$s5, $t8, 30, 1
 	lu12i.w	$s6, 1
 	ori	$s6, $s6, 896
@@ -13910,7 +13897,7 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	and	$s5, $s5, $a4
 	xor	$s3, $s3, $s5
 	st.d	$s3, $sp, 1816
-	vinsgr2vr.d	$vr11, $t8, 1
+	vinsgr2vr.d	$vr12, $t8, 1
 	ori	$t8, $a6, 928
 	.p2align	4, , 16
 .LBB40_18:                              # %vector.body103
@@ -13918,21 +13905,21 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
                                         #     Parent Loop BB40_14 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$s3, $a2, $t8
-	vldx	$vr12, $s3, $t0
-	vshuf4i.d	$vr11, $vr12, 9
-	vand.v	$vr11, $vr11, $vr1
-	vldx	$vr13, $s3, $t1
-	vand.v	$vr14, $vr12, $vr2
-	vor.v	$vr11, $vr14, $vr11
-	vsrli.d	$vr11, $vr11, 1
-	vxor.v	$vr11, $vr11, $vr13
-	vand.v	$vr13, $vr12, $vr3
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr4
-	vxor.v	$vr11, $vr11, $vr13
+	vldx	$vr13, $s3, $t0
+	vshuf4i.d	$vr12, $vr13, 9
+	vand.v	$vr12, $vr12, $vr1
+	vldx	$vr14, $s3, $t1
+	vand.v	$vr15, $vr13, $vr2
+	vor.v	$vr12, $vr15, $vr12
+	vsrli.d	$vr12, $vr12, 1
+	vxor.v	$vr12, $vr12, $vr14
+	vand.v	$vr14, $vr13, $vr3
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr4
+	vxor.v	$vr12, $vr12, $vr14
 	addi.d	$t8, $t8, 16
-	vstx	$vr11, $s3, $t2
-	vori.b	$vr11, $vr12, 0
+	vstx	$vr12, $s3, $t2
+	vori.b	$vr12, $vr13, 0
 	bnez	$t8, .LBB40_18
 # %bb.19:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i35
                                         #   in Loop: Header=BB40_14 Depth=2
@@ -13961,16 +13948,16 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	b	.LBB40_13
 	.p2align	4, , 16
 .LBB40_20:                              #   in Loop: Header=BB40_3 Depth=1
-	fdiv.s	$ft1, $ft2, $ft1
-	fcmp.cult.s	$fcc0, $ft1, $fa6
+	fdiv.s	$ft2, $ft3, $ft2
+	fcmp.cult.s	$fcc0, $ft2, $fa6
 	bceqz	$fcc0, .LBB40_32
 .LBB40_21:                              # %_ZNSt25uniform_real_distributionIfEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEfRT_.exit14
                                         #   in Loop: Header=BB40_3 Depth=1
-	fmadd.s	$ft1, $ft1, $ft0, $fa7
-	fstx.s	$ft1, $s0, $t7
-	vldi	$vr9, -1168
+	fmadd.s	$ft2, $ft2, $ft0, $fa7
+	fstx.s	$ft2, $s0, $t7
+	vldi	$vr10, -1168
 	move	$s2, $a0
-	fmov.s	$ft2, $fa0
+	fmov.s	$ft3, $fa0
 	b	.LBB40_23
 	.p2align	4, , 16
 .LBB40_22:                              # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv.exit51
@@ -13992,20 +13979,13 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	xor	$s3, $s5, $s3
 	srli.d	$s5, $s3, 18
 	xor	$s3, $s5, $s3
-	srli.d	$s5, $s3, 1
-	andi	$s6, $s3, 1
-	or	$s5, $s6, $s5
-	movgr2fr.d	$ft3, $s5
-	ffint.s.l	$ft3, $ft3
-	fadd.s	$ft3, $ft3, $ft3
-	slti	$s5, $s3, 0
-	movgr2fr.d	$ft4, $s3
-	ffint.s.l	$ft4, $ft4
-	movgr2cf	$fcc0, $s5
-	fsel	$ft3, $ft4, $ft3, $fcc0
-	fmadd.s	$ft2, $ft3, $ft1, $ft2
+	vinsgr2vr.d	$vr12, $s3, 0
+	vffint.d.lu	$vr12, $vr12
+	vreplvei.d	$vr12, $vr12, 0
+	fcvt.s.d	$ft4, $ft4
+	fmadd.s	$ft3, $ft4, $ft2, $ft3
 	addi.d	$s2, $s2, -1
-	fmul.s	$ft1, $ft1, $fa5
+	fmul.s	$ft2, $ft2, $fa5
 	beqz	$s2, .LBB40_29
 .LBB40_23:                              # %select.unfold.i.i.i.i16
                                         #   Parent Loop BB40_3 Depth=1
@@ -14017,33 +13997,33 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
                                         #   in Loop: Header=BB40_23 Depth=2
 	ld.d	$s3, $sp, 8
 	move	$t8, $zero
-	vinsgr2vr.d	$vr11, $s3, 1
+	vinsgr2vr.d	$vr12, $s3, 1
 	.p2align	4, , 16
 .LBB40_25:                              # %vector.body93
                                         #   Parent Loop BB40_3 Depth=1
                                         #     Parent Loop BB40_23 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	vori.b	$vr12, $vr11, 0
+	vori.b	$vr13, $vr12, 0
 	add.d	$s3, $a2, $t8
-	vld	$vr11, $s3, 8
-	vshuf4i.d	$vr12, $vr11, 9
-	vand.v	$vr12, $vr12, $vr1
-	vldx	$vr13, $s3, $a3
-	vand.v	$vr14, $vr11, $vr2
-	vor.v	$vr12, $vr14, $vr12
-	vsrli.d	$vr12, $vr12, 1
-	vxor.v	$vr12, $vr12, $vr13
-	vand.v	$vr13, $vr11, $vr3
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr4
-	vxor.v	$vr12, $vr12, $vr13
-	vstx	$vr12, $t8, $a2
+	vld	$vr12, $s3, 8
+	vshuf4i.d	$vr13, $vr12, 9
+	vand.v	$vr13, $vr13, $vr1
+	vldx	$vr14, $s3, $a3
+	vand.v	$vr15, $vr12, $vr2
+	vor.v	$vr13, $vr15, $vr13
+	vsrli.d	$vr13, $vr13, 1
+	vxor.v	$vr13, $vr13, $vr14
+	vand.v	$vr14, $vr12, $vr3
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr4
+	vxor.v	$vr13, $vr13, $vr14
+	vstx	$vr13, $t8, $a2
 	addi.d	$t8, $t8, 16
 	bne	$t8, $a5, .LBB40_25
 # %bb.26:                               # %vector.ph
                                         #   in Loop: Header=BB40_23 Depth=2
 	ld.d	$t8, $sp, 1824
-	vpickve2gr.d	$s3, $vr11, 1
+	vpickve2gr.d	$s3, $vr12, 1
 	bstrpick.d	$s5, $t8, 30, 1
 	lu12i.w	$s6, 1
 	ori	$s6, $s6, 896
@@ -14058,7 +14038,7 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	and	$s5, $s5, $a4
 	xor	$s3, $s3, $s5
 	st.d	$s3, $sp, 1816
-	vinsgr2vr.d	$vr11, $t8, 1
+	vinsgr2vr.d	$vr12, $t8, 1
 	ori	$t8, $a6, 928
 	.p2align	4, , 16
 .LBB40_27:                              # %vector.body
@@ -14066,21 +14046,21 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
                                         #     Parent Loop BB40_23 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$s3, $a2, $t8
-	vldx	$vr12, $s3, $t0
-	vshuf4i.d	$vr11, $vr12, 9
-	vand.v	$vr11, $vr11, $vr1
-	vldx	$vr13, $s3, $t1
-	vand.v	$vr14, $vr12, $vr2
-	vor.v	$vr11, $vr14, $vr11
-	vsrli.d	$vr11, $vr11, 1
-	vxor.v	$vr11, $vr11, $vr13
-	vand.v	$vr13, $vr12, $vr3
-	vseqi.d	$vr13, $vr13, 0
-	vandn.v	$vr13, $vr13, $vr4
-	vxor.v	$vr11, $vr11, $vr13
+	vldx	$vr13, $s3, $t0
+	vshuf4i.d	$vr12, $vr13, 9
+	vand.v	$vr12, $vr12, $vr1
+	vldx	$vr14, $s3, $t1
+	vand.v	$vr15, $vr13, $vr2
+	vor.v	$vr12, $vr15, $vr12
+	vsrli.d	$vr12, $vr12, 1
+	vxor.v	$vr12, $vr12, $vr14
+	vand.v	$vr14, $vr13, $vr3
+	vseqi.d	$vr14, $vr14, 0
+	vandn.v	$vr14, $vr14, $vr4
+	vxor.v	$vr12, $vr12, $vr14
 	addi.d	$t8, $t8, 16
-	vstx	$vr11, $s3, $t2
-	vori.b	$vr11, $vr12, 0
+	vstx	$vr12, $s3, $t2
+	vori.b	$vr12, $vr13, 0
 	bnez	$t8, .LBB40_27
 # %bb.28:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i49
                                         #   in Loop: Header=BB40_23 Depth=2
@@ -14109,27 +14089,27 @@ _ZL9init_dataIfEvPT_S1_S1_:             # @_ZL9init_dataIfEvPT_S1_S1_
 	b	.LBB40_22
 	.p2align	4, , 16
 .LBB40_29:                              #   in Loop: Header=BB40_3 Depth=1
-	fdiv.s	$ft1, $ft2, $ft1
-	fcmp.cult.s	$fcc0, $ft1, $fa6
+	fdiv.s	$ft2, $ft3, $ft2
+	fcmp.cult.s	$fcc0, $ft2, $fa6
 	bceqz	$fcc0, .LBB40_33
 # %bb.30:                               # %_ZNSt25uniform_real_distributionIfEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEfRT_.exit22
                                         #   in Loop: Header=BB40_3 Depth=1
-	fmadd.s	$ft1, $ft1, $ft0, $fa7
+	fmadd.s	$ft2, $ft2, $ft0, $fa7
 	addi.d	$a1, $a1, 1
-	fstx.s	$ft1, $fp, $t7
+	fstx.s	$ft2, $fp, $t7
 	bne	$a1, $t5, .LBB40_3
 	b	.LBB40_34
 .LBB40_31:                              #   in Loop: Header=BB40_3 Depth=1
-	movgr2fr.w	$ft1, $t6
+	movgr2fr.w	$ft2, $t6
 	b	.LBB40_12
 .LBB40_32:                              #   in Loop: Header=BB40_3 Depth=1
-	movgr2fr.w	$ft1, $t6
+	movgr2fr.w	$ft2, $t6
 	b	.LBB40_21
 .LBB40_33:                              #   in Loop: Header=BB40_3 Depth=1
-	movgr2fr.w	$ft1, $t6
-	fmadd.s	$ft1, $ft1, $ft0, $fa7
+	fmov.s	$ft2, $ft1
+	fmadd.s	$ft2, $ft2, $ft0, $fa7
 	addi.d	$a1, $a1, 1
-	fstx.s	$ft1, $fp, $t7
+	fstx.s	$ft2, $fp, $t7
 	bne	$a1, $t5, .LBB40_3
 .LBB40_34:
 	addi.d	$sp, $sp, 2032
@@ -14171,10 +14151,8 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
 	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
 	st.d	$s6, $sp, 1960                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -1024
+	addi.d	$sp, $sp, -1008
 	move	$fp, $a2
 	move	$s0, $a1
 	move	$s1, $a0
@@ -14257,17 +14235,12 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
 	lu32i.d	$t3, 0
 	lu12i.w	$t4, -66464
 	lu32i.d	$t4, 0
-	lu52i.d	$t5, $zero, 1107
-	lu12i.w	$t6, 256
-	lu52i.d	$t6, $t6, 1107
-	movgr2fr.d	$fa5, $t6
-	lu12i.w	$t6, 275200
-	lu52i.d	$t7, $zero, 1055
-	movgr2fr.d	$fa6, $t7
-	vldi	$vr7, -912
-	lu12i.w	$t7, 2
-	ori	$t7, $t7, 1808
-	ori	$s2, $zero, 624
+	lu52i.d	$t5, $zero, 1055
+	movgr2fr.d	$fa5, $t5
+	vldi	$vr6, -912
+	lu12i.w	$t5, 2
+	ori	$t5, $t5, 1808
+	ori	$t7, $zero, 624
 	.p2align	4, , 16
 .LBB41_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB41_5 Depth 2
@@ -14279,469 +14252,455 @@ _ZL9init_dataIdEvPT_S1_S1_:             # @_ZL9init_dataIdEvPT_S1_S1_
                                         #     Child Loop BB41_23 Depth 2
                                         #       Child Loop BB41_25 Depth 3
                                         #       Child Loop BB41_27 Depth 3
-	vldi	$vr8, -912
-	move	$t8, $a0
-	fmov.d	$ft1, $fa0
+	vldi	$vr7, -912
+	move	$t6, $a0
+	fmov.d	$ft0, $fa0
 	b	.LBB41_5
 	.p2align	4, , 16
 .LBB41_4:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv.exit
                                         #   in Loop: Header=BB41_5 Depth=2
-	slli.d	$s3, $s2, 3
-	addi.d	$s2, $s2, 1
-	lu12i.w	$s5, 1
-	ori	$s5, $s5, 912
-	add.d	$s5, $sp, $s5
-	stptr.d	$s2, $s5, 0
-	ldx.d	$s3, $s3, $a2
-	bstrpick.d	$s5, $s3, 42, 11
-	xor	$s3, $s5, $s3
-	slli.d	$s5, $s3, 7
-	and	$s5, $s5, $t3
-	xor	$s3, $s5, $s3
-	slli.d	$s5, $s3, 15
-	and	$s5, $s5, $t4
-	xor	$s3, $s5, $s3
-	srli.d	$s5, $s3, 18
-	xor	$s3, $s5, $s3
-	srli.d	$s5, $s3, 32
-	or	$s5, $s5, $t5
-	movgr2fr.d	$ft2, $s5
-	fsub.d	$ft2, $ft2, $fa5
-	bstrins.d	$s3, $t6, 63, 32
-	movgr2fr.d	$ft3, $s3
-	fadd.d	$ft2, $ft3, $ft2
-	fmadd.d	$ft1, $ft2, $ft0, $ft1
-	addi.d	$t8, $t8, -1
-	fmul.d	$ft0, $ft0, $fa6
-	beqz	$t8, .LBB41_11
+	slli.d	$t8, $t7, 3
+	addi.d	$t7, $t7, 1
+	lu12i.w	$s2, 1
+	ori	$s2, $s2, 912
+	add.d	$s2, $sp, $s2
+	stptr.d	$t7, $s2, 0
+	ldx.d	$t8, $t8, $a2
+	bstrpick.d	$s2, $t8, 42, 11
+	xor	$t8, $s2, $t8
+	slli.d	$s2, $t8, 7
+	and	$s2, $s2, $t3
+	xor	$t8, $s2, $t8
+	slli.d	$s2, $t8, 15
+	and	$s2, $s2, $t4
+	xor	$t8, $s2, $t8
+	srli.d	$s2, $t8, 18
+	xor	$t8, $s2, $t8
+	vinsgr2vr.d	$vr9, $t8, 0
+	vffint.d.lu	$vr9, $vr9
+	vreplvei.d	$vr9, $vr9, 0
+	fmadd.d	$ft0, $ft1, $fa7, $ft0
+	addi.d	$t6, $t6, -1
+	fmul.d	$fa7, $fa7, $fa5
+	beqz	$t6, .LBB41_11
 .LBB41_5:                               # %select.unfold.i.i.i.i
                                         #   Parent Loop BB41_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB41_7 Depth 3
                                         #       Child Loop BB41_9 Depth 3
-	bltu	$s2, $s4, .LBB41_4
+	bltu	$t7, $s4, .LBB41_4
 # %bb.6:                                # %vector.ph133
                                         #   in Loop: Header=BB41_5 Depth=2
-	ld.d	$s3, $sp, 16
-	move	$s2, $zero
-	vinsgr2vr.d	$vr10, $s3, 1
+	ld.d	$t8, $sp, 16
+	move	$t7, $zero
+	vinsgr2vr.d	$vr9, $t8, 1
 	.p2align	4, , 16
 .LBB41_7:                               # %vector.body134
                                         #   Parent Loop BB41_3 Depth=1
                                         #     Parent Loop BB41_5 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	vori.b	$vr11, $vr10, 0
-	add.d	$s3, $a2, $s2
-	vld	$vr10, $s3, 8
-	vshuf4i.d	$vr11, $vr10, 9
-	vand.v	$vr11, $vr11, $vr1
-	vldx	$vr12, $s3, $a3
-	vand.v	$vr13, $vr10, $vr2
-	vor.v	$vr11, $vr13, $vr11
-	vsrli.d	$vr11, $vr11, 1
-	vxor.v	$vr11, $vr11, $vr12
-	vand.v	$vr12, $vr10, $vr3
-	vseqi.d	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr4
-	vxor.v	$vr11, $vr11, $vr12
-	vstx	$vr11, $s2, $a2
-	addi.d	$s2, $s2, 16
-	bne	$s2, $a5, .LBB41_7
+	vori.b	$vr10, $vr9, 0
+	add.d	$t8, $a2, $t7
+	vld	$vr9, $t8, 8
+	vshuf4i.d	$vr10, $vr9, 9
+	vand.v	$vr10, $vr10, $vr1
+	vldx	$vr11, $t8, $a3
+	vand.v	$vr12, $vr9, $vr2
+	vor.v	$vr10, $vr12, $vr10
+	vsrli.d	$vr10, $vr10, 1
+	vxor.v	$vr10, $vr10, $vr11
+	vand.v	$vr11, $vr9, $vr3
+	vseqi.d	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr4
+	vxor.v	$vr10, $vr10, $vr11
+	vstx	$vr10, $t7, $a2
+	addi.d	$t7, $t7, 16
+	bne	$t7, $a5, .LBB41_7
 # %bb.8:                                # %vector.ph123
                                         #   in Loop: Header=BB41_5 Depth=2
-	ld.d	$s2, $sp, 1832
-	vpickve2gr.d	$s3, $vr10, 1
+	ld.d	$t7, $sp, 1832
+	vpickve2gr.d	$t8, $vr9, 1
+	bstrpick.d	$s2, $t7, 30, 1
+	lu12i.w	$s3, 1
+	ori	$s3, $s3, 904
+	add.d	$s3, $sp, $s3
+	ldptr.d	$s3, $s3, 0
+	slli.d	$s2, $s2, 1
+	bstrins.d	$t8, $s2, 30, 0
+	srli.d	$t8, $t8, 1
+	xor	$t8, $t8, $s3
+	andi	$s2, $t7, 1
+	sub.d	$s2, $zero, $s2
+	and	$s2, $s2, $a4
+	xor	$t8, $t8, $s2
+	st.d	$t8, $sp, 1824
+	vinsgr2vr.d	$vr9, $t7, 1
+	move	$t7, $a7
+	.p2align	4, , 16
+.LBB41_9:                               # %vector.body124
+                                        #   Parent Loop BB41_3 Depth=1
+                                        #     Parent Loop BB41_5 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	add.d	$t8, $a2, $t7
+	vldx	$vr10, $t8, $t0
+	vshuf4i.d	$vr9, $vr10, 9
+	vand.v	$vr9, $vr9, $vr1
+	vldx	$vr11, $t8, $t1
+	vand.v	$vr12, $vr10, $vr2
+	vor.v	$vr9, $vr12, $vr9
+	vsrli.d	$vr9, $vr9, 1
+	vxor.v	$vr9, $vr9, $vr11
+	vand.v	$vr11, $vr10, $vr3
+	vseqi.d	$vr11, $vr11, 0
+	vandn.v	$vr11, $vr11, $vr4
+	vxor.v	$vr9, $vr9, $vr11
+	addi.d	$t7, $t7, 16
+	vstx	$vr9, $t8, $t2
+	vori.b	$vr9, $vr10, 0
+	bnez	$t7, .LBB41_9
+# %bb.10:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i
+                                        #   in Loop: Header=BB41_5 Depth=2
+	ld.d	$t8, $sp, 16
+	move	$t7, $zero
+	lu12i.w	$s2, 1
+	ori	$s2, $s2, 904
+	add.d	$s2, $sp, $s2
+	ldptr.d	$s2, $s2, 0
+	bstrpick.d	$s3, $t8, 30, 1
+	ori	$s5, $zero, 3184
+	add.d	$s5, $sp, $s5
+	ldptr.d	$s5, $s5, 0
+	slli.d	$s3, $s3, 1
+	bstrins.d	$s2, $s3, 30, 0
+	srli.d	$s2, $s2, 1
+	xor	$s2, $s2, $s5
+	andi	$t8, $t8, 1
+	sub.d	$t8, $zero, $t8
+	and	$t8, $t8, $a4
+	xor	$t8, $s2, $t8
+	lu12i.w	$s2, 1
+	ori	$s2, $s2, 904
+	add.d	$s2, $sp, $s2
+	stptr.d	$t8, $s2, 0
+	b	.LBB41_4
+	.p2align	4, , 16
+.LBB41_11:                              #   in Loop: Header=BB41_3 Depth=1
+	fdiv.d	$ft1, $ft0, $fa7
+	fcmp.cult.d	$fcc0, $ft1, $fa6
+	bceqz	$fcc0, .LBB41_31
+.LBB41_12:                              # %_ZNSt25uniform_real_distributionIdEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEdRT_.exit
+                                        #   in Loop: Header=BB41_3 Depth=1
+	pcalau12i	$t6, %pc_hi20(.LCPI41_0)
+	fld.d	$fa7, $t6, %pc_lo12(.LCPI41_0)
+	pcalau12i	$t6, %pc_hi20(.LCPI41_1)
+	fld.d	$ft0, $t6, %pc_lo12(.LCPI41_1)
+	fmadd.d	$ft1, $ft1, $ft0, $fa7
+	slli.d	$t6, $a1, 3
+	fstx.d	$ft1, $s1, $t6
+	vldi	$vr9, -912
+	move	$t8, $a0
+	fmov.d	$ft2, $fa0
+	b	.LBB41_14
+	.p2align	4, , 16
+.LBB41_13:                              # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv.exit37
+                                        #   in Loop: Header=BB41_14 Depth=2
+	slli.d	$s2, $t7, 3
+	addi.d	$t7, $t7, 1
+	lu12i.w	$s3, 1
+	ori	$s3, $s3, 912
+	add.d	$s3, $sp, $s3
+	stptr.d	$t7, $s3, 0
+	ldx.d	$s2, $s2, $a2
+	bstrpick.d	$s3, $s2, 42, 11
+	xor	$s2, $s3, $s2
+	slli.d	$s3, $s2, 7
+	and	$s3, $s3, $t3
+	xor	$s2, $s3, $s2
+	slli.d	$s3, $s2, 15
+	and	$s3, $s3, $t4
+	xor	$s2, $s3, $s2
+	srli.d	$s3, $s2, 18
+	xor	$s2, $s3, $s2
+	vinsgr2vr.d	$vr11, $s2, 0
+	vffint.d.lu	$vr11, $vr11
+	vreplvei.d	$vr11, $vr11, 0
+	fmadd.d	$ft2, $ft3, $ft1, $ft2
+	addi.d	$t8, $t8, -1
+	fmul.d	$ft1, $ft1, $fa5
+	beqz	$t8, .LBB41_20
+.LBB41_14:                              # %select.unfold.i.i.i.i8
+                                        #   Parent Loop BB41_3 Depth=1
+                                        # =>  This Loop Header: Depth=2
+                                        #       Child Loop BB41_16 Depth 3
+                                        #       Child Loop BB41_18 Depth 3
+	bltu	$t7, $s4, .LBB41_13
+# %bb.15:                               # %vector.ph112
+                                        #   in Loop: Header=BB41_14 Depth=2
+	ld.d	$s2, $sp, 16
+	move	$t7, $zero
+	vinsgr2vr.d	$vr11, $s2, 1
+	.p2align	4, , 16
+.LBB41_16:                              # %vector.body113
+                                        #   Parent Loop BB41_3 Depth=1
+                                        #     Parent Loop BB41_14 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	vori.b	$vr12, $vr11, 0
+	add.d	$s2, $a2, $t7
+	vld	$vr11, $s2, 8
+	vshuf4i.d	$vr12, $vr11, 9
+	vand.v	$vr12, $vr12, $vr1
+	vldx	$vr13, $s2, $a3
+	vand.v	$vr14, $vr11, $vr2
+	vor.v	$vr12, $vr14, $vr12
+	vsrli.d	$vr12, $vr12, 1
+	vxor.v	$vr12, $vr12, $vr13
+	vand.v	$vr13, $vr11, $vr3
+	vseqi.d	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr4
+	vxor.v	$vr12, $vr12, $vr13
+	vstx	$vr12, $t7, $a2
+	addi.d	$t7, $t7, 16
+	bne	$t7, $a5, .LBB41_16
+# %bb.17:                               # %vector.ph102
+                                        #   in Loop: Header=BB41_14 Depth=2
+	ld.d	$t7, $sp, 1832
+	vpickve2gr.d	$s2, $vr11, 1
+	bstrpick.d	$s3, $t7, 30, 1
+	lu12i.w	$s5, 1
+	ori	$s5, $s5, 904
+	add.d	$s5, $sp, $s5
+	ldptr.d	$s5, $s5, 0
+	slli.d	$s3, $s3, 1
+	bstrins.d	$s2, $s3, 30, 0
+	srli.d	$s2, $s2, 1
+	xor	$s2, $s2, $s5
+	andi	$s3, $t7, 1
+	sub.d	$s3, $zero, $s3
+	and	$s3, $s3, $a4
+	xor	$s2, $s2, $s3
+	st.d	$s2, $sp, 1824
+	vinsgr2vr.d	$vr11, $t7, 1
+	ori	$t7, $a6, 928
+	.p2align	4, , 16
+.LBB41_18:                              # %vector.body103
+                                        #   Parent Loop BB41_3 Depth=1
+                                        #     Parent Loop BB41_14 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	add.d	$s2, $a2, $t7
+	vldx	$vr12, $s2, $t0
+	vshuf4i.d	$vr11, $vr12, 9
+	vand.v	$vr11, $vr11, $vr1
+	vldx	$vr13, $s2, $t1
+	vand.v	$vr14, $vr12, $vr2
+	vor.v	$vr11, $vr14, $vr11
+	vsrli.d	$vr11, $vr11, 1
+	vxor.v	$vr11, $vr11, $vr13
+	vand.v	$vr13, $vr12, $vr3
+	vseqi.d	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr4
+	vxor.v	$vr11, $vr11, $vr13
+	addi.d	$t7, $t7, 16
+	vstx	$vr11, $s2, $t2
+	vori.b	$vr11, $vr12, 0
+	bnez	$t7, .LBB41_18
+# %bb.19:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i35
+                                        #   in Loop: Header=BB41_14 Depth=2
+	ld.d	$s2, $sp, 16
+	move	$t7, $zero
+	lu12i.w	$s3, 1
+	ori	$s3, $s3, 904
+	add.d	$s3, $sp, $s3
+	ldptr.d	$s3, $s3, 0
 	bstrpick.d	$s5, $s2, 30, 1
-	lu12i.w	$s6, 1
-	ori	$s6, $s6, 904
+	ori	$s6, $zero, 3184
 	add.d	$s6, $sp, $s6
 	ldptr.d	$s6, $s6, 0
 	slli.d	$s5, $s5, 1
 	bstrins.d	$s3, $s5, 30, 0
 	srli.d	$s3, $s3, 1
 	xor	$s3, $s3, $s6
-	andi	$s5, $s2, 1
-	sub.d	$s5, $zero, $s5
-	and	$s5, $s5, $a4
-	xor	$s3, $s3, $s5
-	st.d	$s3, $sp, 1824
-	vinsgr2vr.d	$vr10, $s2, 1
-	move	$s2, $a7
-	.p2align	4, , 16
-.LBB41_9:                               # %vector.body124
-                                        #   Parent Loop BB41_3 Depth=1
-                                        #     Parent Loop BB41_5 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	add.d	$s3, $a2, $s2
-	vldx	$vr11, $s3, $t0
-	vshuf4i.d	$vr10, $vr11, 9
-	vand.v	$vr10, $vr10, $vr1
-	vldx	$vr12, $s3, $t1
-	vand.v	$vr13, $vr11, $vr2
-	vor.v	$vr10, $vr13, $vr10
-	vsrli.d	$vr10, $vr10, 1
-	vxor.v	$vr10, $vr10, $vr12
-	vand.v	$vr12, $vr11, $vr3
-	vseqi.d	$vr12, $vr12, 0
-	vandn.v	$vr12, $vr12, $vr4
-	vxor.v	$vr10, $vr10, $vr12
-	addi.d	$s2, $s2, 16
-	vstx	$vr10, $s3, $t2
-	vori.b	$vr10, $vr11, 0
-	bnez	$s2, .LBB41_9
-# %bb.10:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i
-                                        #   in Loop: Header=BB41_5 Depth=2
-	ld.d	$s3, $sp, 16
-	move	$s2, $zero
-	lu12i.w	$s5, 1
-	ori	$s5, $s5, 904
-	add.d	$s5, $sp, $s5
-	ldptr.d	$s5, $s5, 0
-	bstrpick.d	$s6, $s3, 30, 1
-	ori	$s7, $zero, 3184
-	add.d	$s7, $sp, $s7
-	ldptr.d	$s7, $s7, 0
-	slli.d	$s6, $s6, 1
-	bstrins.d	$s5, $s6, 30, 0
-	srli.d	$s5, $s5, 1
-	xor	$s5, $s5, $s7
-	andi	$s3, $s3, 1
-	sub.d	$s3, $zero, $s3
-	and	$s3, $s3, $a4
-	xor	$s3, $s5, $s3
-	lu12i.w	$s5, 1
-	ori	$s5, $s5, 904
-	add.d	$s5, $sp, $s5
-	stptr.d	$s3, $s5, 0
-	b	.LBB41_4
-	.p2align	4, , 16
-.LBB41_11:                              #   in Loop: Header=BB41_3 Depth=1
-	fdiv.d	$ft2, $ft1, $ft0
-	fcmp.cult.d	$fcc0, $ft2, $fa7
-	bceqz	$fcc0, .LBB41_31
-.LBB41_12:                              # %_ZNSt25uniform_real_distributionIdEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEdRT_.exit
-                                        #   in Loop: Header=BB41_3 Depth=1
-	pcalau12i	$t8, %pc_hi20(.LCPI41_0)
-	fld.d	$ft0, $t8, %pc_lo12(.LCPI41_0)
-	pcalau12i	$t8, %pc_hi20(.LCPI41_1)
-	fld.d	$ft1, $t8, %pc_lo12(.LCPI41_1)
-	fmadd.d	$ft2, $ft2, $ft1, $ft0
-	slli.d	$t8, $a1, 3
-	fstx.d	$ft2, $s1, $t8
-	vldi	$vr10, -912
-	move	$s3, $a0
-	fmov.d	$ft3, $fa0
-	b	.LBB41_14
-	.p2align	4, , 16
-.LBB41_13:                              # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv.exit37
-                                        #   in Loop: Header=BB41_14 Depth=2
-	slli.d	$s5, $s2, 3
-	addi.d	$s2, $s2, 1
-	lu12i.w	$s6, 1
-	ori	$s6, $s6, 912
-	add.d	$s6, $sp, $s6
-	stptr.d	$s2, $s6, 0
-	ldx.d	$s5, $s5, $a2
-	bstrpick.d	$s6, $s5, 42, 11
-	xor	$s5, $s6, $s5
-	slli.d	$s6, $s5, 7
-	and	$s6, $s6, $t3
-	xor	$s5, $s6, $s5
-	slli.d	$s6, $s5, 15
-	and	$s6, $s6, $t4
-	xor	$s5, $s6, $s5
-	srli.d	$s6, $s5, 18
-	xor	$s5, $s6, $s5
-	srli.d	$s6, $s5, 32
-	or	$s6, $s6, $t5
-	movgr2fr.d	$ft4, $s6
-	fsub.d	$ft4, $ft4, $fa5
-	bstrins.d	$s5, $t6, 63, 32
-	movgr2fr.d	$ft5, $s5
-	fadd.d	$ft4, $ft5, $ft4
-	fmadd.d	$ft3, $ft4, $ft2, $ft3
-	addi.d	$s3, $s3, -1
-	fmul.d	$ft2, $ft2, $fa6
-	beqz	$s3, .LBB41_20
-.LBB41_14:                              # %select.unfold.i.i.i.i8
-                                        #   Parent Loop BB41_3 Depth=1
-                                        # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB41_16 Depth 3
-                                        #       Child Loop BB41_18 Depth 3
-	bltu	$s2, $s4, .LBB41_13
-# %bb.15:                               # %vector.ph112
-                                        #   in Loop: Header=BB41_14 Depth=2
-	ld.d	$s5, $sp, 16
-	move	$s2, $zero
-	vinsgr2vr.d	$vr12, $s5, 1
-	.p2align	4, , 16
-.LBB41_16:                              # %vector.body113
-                                        #   Parent Loop BB41_3 Depth=1
-                                        #     Parent Loop BB41_14 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	vori.b	$vr13, $vr12, 0
-	add.d	$s5, $a2, $s2
-	vld	$vr12, $s5, 8
-	vshuf4i.d	$vr13, $vr12, 9
-	vand.v	$vr13, $vr13, $vr1
-	vldx	$vr14, $s5, $a3
-	vand.v	$vr15, $vr12, $vr2
-	vor.v	$vr13, $vr15, $vr13
-	vsrli.d	$vr13, $vr13, 1
-	vxor.v	$vr13, $vr13, $vr14
-	vand.v	$vr14, $vr12, $vr3
-	vseqi.d	$vr14, $vr14, 0
-	vandn.v	$vr14, $vr14, $vr4
-	vxor.v	$vr13, $vr13, $vr14
-	vstx	$vr13, $s2, $a2
-	addi.d	$s2, $s2, 16
-	bne	$s2, $a5, .LBB41_16
-# %bb.17:                               # %vector.ph102
-                                        #   in Loop: Header=BB41_14 Depth=2
-	ld.d	$s2, $sp, 1832
-	vpickve2gr.d	$s5, $vr12, 1
-	bstrpick.d	$s6, $s2, 30, 1
-	lu12i.w	$s7, 1
-	ori	$s7, $s7, 904
-	add.d	$s7, $sp, $s7
-	ldptr.d	$s7, $s7, 0
-	slli.d	$s6, $s6, 1
-	bstrins.d	$s5, $s6, 30, 0
-	srli.d	$s5, $s5, 1
-	xor	$s5, $s5, $s7
-	andi	$s6, $s2, 1
-	sub.d	$s6, $zero, $s6
-	and	$s6, $s6, $a4
-	xor	$s5, $s5, $s6
-	st.d	$s5, $sp, 1824
-	vinsgr2vr.d	$vr12, $s2, 1
-	ori	$s2, $a6, 928
-	.p2align	4, , 16
-.LBB41_18:                              # %vector.body103
-                                        #   Parent Loop BB41_3 Depth=1
-                                        #     Parent Loop BB41_14 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	add.d	$s5, $a2, $s2
-	vldx	$vr13, $s5, $t0
-	vshuf4i.d	$vr12, $vr13, 9
-	vand.v	$vr12, $vr12, $vr1
-	vldx	$vr14, $s5, $t1
-	vand.v	$vr15, $vr13, $vr2
-	vor.v	$vr12, $vr15, $vr12
-	vsrli.d	$vr12, $vr12, 1
-	vxor.v	$vr12, $vr12, $vr14
-	vand.v	$vr14, $vr13, $vr3
-	vseqi.d	$vr14, $vr14, 0
-	vandn.v	$vr14, $vr14, $vr4
-	vxor.v	$vr12, $vr12, $vr14
-	addi.d	$s2, $s2, 16
-	vstx	$vr12, $s5, $t2
-	vori.b	$vr12, $vr13, 0
-	bnez	$s2, .LBB41_18
-# %bb.19:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i35
-                                        #   in Loop: Header=BB41_14 Depth=2
-	ld.d	$s5, $sp, 16
-	move	$s2, $zero
-	lu12i.w	$s6, 1
-	ori	$s6, $s6, 904
-	add.d	$s6, $sp, $s6
-	ldptr.d	$s6, $s6, 0
-	bstrpick.d	$s7, $s5, 30, 1
-	ori	$s8, $zero, 3184
-	add.d	$s8, $sp, $s8
-	ldptr.d	$s8, $s8, 0
-	slli.d	$s7, $s7, 1
-	bstrins.d	$s6, $s7, 30, 0
-	srli.d	$s6, $s6, 1
-	xor	$s6, $s6, $s8
-	andi	$s5, $s5, 1
-	sub.d	$s5, $zero, $s5
-	and	$s5, $s5, $a4
-	xor	$s5, $s6, $s5
-	lu12i.w	$s6, 1
-	ori	$s6, $s6, 904
-	add.d	$s6, $sp, $s6
-	stptr.d	$s5, $s6, 0
+	andi	$s2, $s2, 1
+	sub.d	$s2, $zero, $s2
+	and	$s2, $s2, $a4
+	xor	$s2, $s3, $s2
+	lu12i.w	$s3, 1
+	ori	$s3, $s3, 904
+	add.d	$s3, $sp, $s3
+	stptr.d	$s2, $s3, 0
 	b	.LBB41_13
 	.p2align	4, , 16
 .LBB41_20:                              #   in Loop: Header=BB41_3 Depth=1
-	fdiv.d	$ft2, $ft3, $ft2
-	fcmp.cult.d	$fcc0, $ft2, $fa7
+	fdiv.d	$ft1, $ft2, $ft1
+	fcmp.cult.d	$fcc0, $ft1, $fa6
 	bceqz	$fcc0, .LBB41_32
 .LBB41_21:                              # %_ZNSt25uniform_real_distributionIdEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEdRT_.exit14
                                         #   in Loop: Header=BB41_3 Depth=1
-	fmadd.d	$ft2, $ft2, $ft1, $ft0
-	fstx.d	$ft2, $s0, $t8
-	vldi	$vr10, -912
-	move	$s3, $a0
-	fmov.d	$ft3, $fa0
+	fmadd.d	$ft1, $ft1, $ft0, $fa7
+	fstx.d	$ft1, $s0, $t6
+	vldi	$vr9, -912
+	move	$t8, $a0
+	fmov.d	$ft2, $fa0
 	b	.LBB41_23
 	.p2align	4, , 16
 .LBB41_22:                              # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv.exit51
                                         #   in Loop: Header=BB41_23 Depth=2
-	slli.d	$s5, $s2, 3
-	addi.d	$s2, $s2, 1
-	lu12i.w	$s6, 1
-	ori	$s6, $s6, 912
-	add.d	$s6, $sp, $s6
-	stptr.d	$s2, $s6, 0
-	ldx.d	$s5, $s5, $a2
-	bstrpick.d	$s6, $s5, 42, 11
-	xor	$s5, $s6, $s5
-	slli.d	$s6, $s5, 7
-	and	$s6, $s6, $t3
-	xor	$s5, $s6, $s5
-	slli.d	$s6, $s5, 15
-	and	$s6, $s6, $t4
-	xor	$s5, $s6, $s5
-	srli.d	$s6, $s5, 18
-	xor	$s5, $s6, $s5
-	srli.d	$s6, $s5, 32
-	or	$s6, $s6, $t5
-	movgr2fr.d	$ft4, $s6
-	fsub.d	$ft4, $ft4, $fa5
-	bstrins.d	$s5, $t6, 63, 32
-	movgr2fr.d	$ft5, $s5
-	fadd.d	$ft4, $ft5, $ft4
-	fmadd.d	$ft3, $ft4, $ft2, $ft3
-	addi.d	$s3, $s3, -1
-	fmul.d	$ft2, $ft2, $fa6
-	beqz	$s3, .LBB41_29
+	slli.d	$s2, $t7, 3
+	addi.d	$t7, $t7, 1
+	lu12i.w	$s3, 1
+	ori	$s3, $s3, 912
+	add.d	$s3, $sp, $s3
+	stptr.d	$t7, $s3, 0
+	ldx.d	$s2, $s2, $a2
+	bstrpick.d	$s3, $s2, 42, 11
+	xor	$s2, $s3, $s2
+	slli.d	$s3, $s2, 7
+	and	$s3, $s3, $t3
+	xor	$s2, $s3, $s2
+	slli.d	$s3, $s2, 15
+	and	$s3, $s3, $t4
+	xor	$s2, $s3, $s2
+	srli.d	$s3, $s2, 18
+	xor	$s2, $s3, $s2
+	vinsgr2vr.d	$vr11, $s2, 0
+	vffint.d.lu	$vr11, $vr11
+	vreplvei.d	$vr11, $vr11, 0
+	fmadd.d	$ft2, $ft3, $ft1, $ft2
+	addi.d	$t8, $t8, -1
+	fmul.d	$ft1, $ft1, $fa5
+	beqz	$t8, .LBB41_29
 .LBB41_23:                              # %select.unfold.i.i.i.i16
                                         #   Parent Loop BB41_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB41_25 Depth 3
                                         #       Child Loop BB41_27 Depth 3
-	bltu	$s2, $s4, .LBB41_22
+	bltu	$t7, $s4, .LBB41_22
 # %bb.24:                               # %vector.ph92
                                         #   in Loop: Header=BB41_23 Depth=2
-	ld.d	$s5, $sp, 16
-	move	$s2, $zero
-	vinsgr2vr.d	$vr12, $s5, 1
+	ld.d	$s2, $sp, 16
+	move	$t7, $zero
+	vinsgr2vr.d	$vr11, $s2, 1
 	.p2align	4, , 16
 .LBB41_25:                              # %vector.body93
                                         #   Parent Loop BB41_3 Depth=1
                                         #     Parent Loop BB41_23 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	vori.b	$vr13, $vr12, 0
-	add.d	$s5, $a2, $s2
-	vld	$vr12, $s5, 8
-	vshuf4i.d	$vr13, $vr12, 9
-	vand.v	$vr13, $vr13, $vr1
-	vldx	$vr14, $s5, $a3
-	vand.v	$vr15, $vr12, $vr2
-	vor.v	$vr13, $vr15, $vr13
-	vsrli.d	$vr13, $vr13, 1
-	vxor.v	$vr13, $vr13, $vr14
-	vand.v	$vr14, $vr12, $vr3
-	vseqi.d	$vr14, $vr14, 0
-	vandn.v	$vr14, $vr14, $vr4
-	vxor.v	$vr13, $vr13, $vr14
-	vstx	$vr13, $s2, $a2
-	addi.d	$s2, $s2, 16
-	bne	$s2, $a5, .LBB41_25
+	vori.b	$vr12, $vr11, 0
+	add.d	$s2, $a2, $t7
+	vld	$vr11, $s2, 8
+	vshuf4i.d	$vr12, $vr11, 9
+	vand.v	$vr12, $vr12, $vr1
+	vldx	$vr13, $s2, $a3
+	vand.v	$vr14, $vr11, $vr2
+	vor.v	$vr12, $vr14, $vr12
+	vsrli.d	$vr12, $vr12, 1
+	vxor.v	$vr12, $vr12, $vr13
+	vand.v	$vr13, $vr11, $vr3
+	vseqi.d	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr4
+	vxor.v	$vr12, $vr12, $vr13
+	vstx	$vr12, $t7, $a2
+	addi.d	$t7, $t7, 16
+	bne	$t7, $a5, .LBB41_25
 # %bb.26:                               # %vector.ph
                                         #   in Loop: Header=BB41_23 Depth=2
-	ld.d	$s2, $sp, 1832
-	vpickve2gr.d	$s5, $vr12, 1
-	bstrpick.d	$s6, $s2, 30, 1
-	lu12i.w	$s7, 1
-	ori	$s7, $s7, 904
-	add.d	$s7, $sp, $s7
-	ldptr.d	$s7, $s7, 0
-	slli.d	$s6, $s6, 1
-	bstrins.d	$s5, $s6, 30, 0
-	srli.d	$s5, $s5, 1
-	xor	$s5, $s5, $s7
-	andi	$s6, $s2, 1
-	sub.d	$s6, $zero, $s6
-	and	$s6, $s6, $a4
-	xor	$s5, $s5, $s6
-	st.d	$s5, $sp, 1824
-	vinsgr2vr.d	$vr12, $s2, 1
-	ori	$s2, $a6, 928
+	ld.d	$t7, $sp, 1832
+	vpickve2gr.d	$s2, $vr11, 1
+	bstrpick.d	$s3, $t7, 30, 1
+	lu12i.w	$s5, 1
+	ori	$s5, $s5, 904
+	add.d	$s5, $sp, $s5
+	ldptr.d	$s5, $s5, 0
+	slli.d	$s3, $s3, 1
+	bstrins.d	$s2, $s3, 30, 0
+	srli.d	$s2, $s2, 1
+	xor	$s2, $s2, $s5
+	andi	$s3, $t7, 1
+	sub.d	$s3, $zero, $s3
+	and	$s3, $s3, $a4
+	xor	$s2, $s2, $s3
+	st.d	$s2, $sp, 1824
+	vinsgr2vr.d	$vr11, $t7, 1
+	ori	$t7, $a6, 928
 	.p2align	4, , 16
 .LBB41_27:                              # %vector.body
                                         #   Parent Loop BB41_3 Depth=1
                                         #     Parent Loop BB41_23 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$s5, $a2, $s2
-	vldx	$vr13, $s5, $t0
-	vshuf4i.d	$vr12, $vr13, 9
-	vand.v	$vr12, $vr12, $vr1
-	vldx	$vr14, $s5, $t1
-	vand.v	$vr15, $vr13, $vr2
-	vor.v	$vr12, $vr15, $vr12
-	vsrli.d	$vr12, $vr12, 1
-	vxor.v	$vr12, $vr12, $vr14
-	vand.v	$vr14, $vr13, $vr3
-	vseqi.d	$vr14, $vr14, 0
-	vandn.v	$vr14, $vr14, $vr4
-	vxor.v	$vr12, $vr12, $vr14
-	addi.d	$s2, $s2, 16
-	vstx	$vr12, $s5, $t2
-	vori.b	$vr12, $vr13, 0
-	bnez	$s2, .LBB41_27
+	add.d	$s2, $a2, $t7
+	vldx	$vr12, $s2, $t0
+	vshuf4i.d	$vr11, $vr12, 9
+	vand.v	$vr11, $vr11, $vr1
+	vldx	$vr13, $s2, $t1
+	vand.v	$vr14, $vr12, $vr2
+	vor.v	$vr11, $vr14, $vr11
+	vsrli.d	$vr11, $vr11, 1
+	vxor.v	$vr11, $vr11, $vr13
+	vand.v	$vr13, $vr12, $vr3
+	vseqi.d	$vr13, $vr13, 0
+	vandn.v	$vr13, $vr13, $vr4
+	vxor.v	$vr11, $vr11, $vr13
+	addi.d	$t7, $t7, 16
+	vstx	$vr11, $s2, $t2
+	vori.b	$vr11, $vr12, 0
+	bnez	$t7, .LBB41_27
 # %bb.28:                               # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit.i49
                                         #   in Loop: Header=BB41_23 Depth=2
-	ld.d	$s5, $sp, 16
-	move	$s2, $zero
-	lu12i.w	$s6, 1
-	ori	$s6, $s6, 904
+	ld.d	$s2, $sp, 16
+	move	$t7, $zero
+	lu12i.w	$s3, 1
+	ori	$s3, $s3, 904
+	add.d	$s3, $sp, $s3
+	ldptr.d	$s3, $s3, 0
+	bstrpick.d	$s5, $s2, 30, 1
+	ori	$s6, $zero, 3184
 	add.d	$s6, $sp, $s6
 	ldptr.d	$s6, $s6, 0
-	bstrpick.d	$s7, $s5, 30, 1
-	ori	$s8, $zero, 3184
-	add.d	$s8, $sp, $s8
-	ldptr.d	$s8, $s8, 0
-	slli.d	$s7, $s7, 1
-	bstrins.d	$s6, $s7, 30, 0
-	srli.d	$s6, $s6, 1
-	xor	$s6, $s6, $s8
-	andi	$s5, $s5, 1
-	sub.d	$s5, $zero, $s5
-	and	$s5, $s5, $a4
-	xor	$s5, $s6, $s5
-	lu12i.w	$s6, 1
-	ori	$s6, $s6, 904
-	add.d	$s6, $sp, $s6
-	stptr.d	$s5, $s6, 0
+	slli.d	$s5, $s5, 1
+	bstrins.d	$s3, $s5, 30, 0
+	srli.d	$s3, $s3, 1
+	xor	$s3, $s3, $s6
+	andi	$s2, $s2, 1
+	sub.d	$s2, $zero, $s2
+	and	$s2, $s2, $a4
+	xor	$s2, $s3, $s2
+	lu12i.w	$s3, 1
+	ori	$s3, $s3, 904
+	add.d	$s3, $sp, $s3
+	stptr.d	$s2, $s3, 0
 	b	.LBB41_22
 	.p2align	4, , 16
 .LBB41_29:                              #   in Loop: Header=BB41_3 Depth=1
-	fdiv.d	$ft2, $ft3, $ft2
-	fcmp.cult.d	$fcc0, $ft2, $fa7
+	fdiv.d	$ft1, $ft2, $ft1
+	fcmp.cult.d	$fcc0, $ft1, $fa6
 	bceqz	$fcc0, .LBB41_33
 # %bb.30:                               # %_ZNSt25uniform_real_distributionIdEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEdRT_.exit22
                                         #   in Loop: Header=BB41_3 Depth=1
-	fmadd.d	$ft0, $ft2, $ft1, $ft0
+	fmadd.d	$fa7, $ft1, $ft0, $fa7
 	addi.d	$a1, $a1, 1
-	fstx.d	$ft0, $fp, $t8
-	bne	$a1, $t7, .LBB41_3
+	fstx.d	$fa7, $fp, $t6
+	bne	$a1, $t5, .LBB41_3
 	b	.LBB41_34
 .LBB41_31:                              #   in Loop: Header=BB41_3 Depth=1
-	addi.w	$t8, $zero, -1
-	lu52i.d	$t8, $t8, 1022
-	movgr2fr.d	$ft2, $t8
+	addi.w	$t6, $zero, -1
+	lu52i.d	$t6, $t6, 1022
+	movgr2fr.d	$ft1, $t6
 	b	.LBB41_12
 .LBB41_32:                              #   in Loop: Header=BB41_3 Depth=1
-	addi.w	$s3, $zero, -1
-	lu52i.d	$s3, $s3, 1022
-	movgr2fr.d	$ft2, $s3
+	addi.w	$t8, $zero, -1
+	lu52i.d	$t8, $t8, 1022
+	movgr2fr.d	$ft1, $t8
 	b	.LBB41_21
 .LBB41_33:                              #   in Loop: Header=BB41_3 Depth=1
-	addi.w	$s3, $zero, -1
-	lu52i.d	$s3, $s3, 1022
-	movgr2fr.d	$ft2, $s3
-	fmadd.d	$ft0, $ft2, $ft1, $ft0
+	addi.w	$t8, $zero, -1
+	lu52i.d	$t8, $t8, 1022
+	movgr2fr.d	$ft1, $t8
+	fmadd.d	$fa7, $ft1, $ft0, $fa7
 	addi.d	$a1, $a1, 1
-	fstx.d	$ft0, $fp, $t8
-	bne	$a1, $t7, .LBB41_3
+	fstx.d	$fa7, $fp, $t6
+	bne	$a1, $t5, .LBB41_3
 .LBB41_34:
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 1040
-	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1024
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload
 	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload

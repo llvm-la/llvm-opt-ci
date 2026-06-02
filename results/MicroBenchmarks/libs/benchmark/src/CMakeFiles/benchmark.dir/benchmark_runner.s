@@ -3214,8 +3214,9 @@ _ZN9benchmark8internal15BenchmarkRunner15DoOneRepetitionEv: # @_ZN9benchmark8int
 	vpickve2gr.d	$a0, $vr0, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.d.l	$fa0, $fa0
-	movgr2fr.d	$fa1, $s0
-	ffint.d.l	$fa1, $fa1
+	vinsgr2vr.d	$vr1, $s0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $sp, 632
 .LBB13_49:

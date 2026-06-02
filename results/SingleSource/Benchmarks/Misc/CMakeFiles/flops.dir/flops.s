@@ -683,8 +683,9 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
 .LBB0_21:                               # =>This Inner Loop Header: Depth=1
-	movgr2fr.d	$fa7, $a0
-	ffint.d.l	$fa7, $fa7
+	vinsgr2vr.d	$vr7, $a0, 0
+	vffint.d.lu	$vr7, $vr7
+	vreplvei.d	$vr7, $vr7, 0
 	fmul.d	$fa7, $fs4, $fa7
 	fmul.d	$fa7, $fa7, $fa7
 	fmadd.d	$ft0, $fa0, $fa7, $fa1
@@ -831,8 +832,9 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
 .LBB0_24:                               # =>This Inner Loop Header: Depth=1
-	movgr2fr.d	$ft5, $a0
-	ffint.d.l	$ft5, $ft5
+	vinsgr2vr.d	$vr13, $a0, 0
+	vffint.d.lu	$vr13, $vr13
+	vreplvei.d	$vr13, $vr13, 0
 	fmul.d	$ft5, $fs4, $ft5
 	fmul.d	$ft6, $ft5, $ft5
 	fmadd.d	$ft7, $fa0, $ft6, $fa1
@@ -992,8 +994,9 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
 .LBB0_27:                               # =>This Inner Loop Header: Depth=1
-	movgr2fr.d	$ft5, $a0
-	ffint.d.l	$ft5, $ft5
+	vinsgr2vr.d	$vr13, $a0, 0
+	vffint.d.lu	$vr13, $vr13
+	vreplvei.d	$vr13, $vr13, 0
 	fmul.d	$ft5, $fs4, $ft5
 	fmul.d	$ft6, $ft5, $ft5
 	fmadd.d	$ft7, $fa0, $ft6, $fa1
@@ -1130,8 +1133,9 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_30:                               # %.lr.ph377
                                         # =>This Inner Loop Header: Depth=1
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	fmul.d	$fa0, $fs3, $fa0
 	fmul.d	$fa1, $fa0, $fa0
 	fadd.d	$fa2, $fs4, $fa0
@@ -1264,8 +1268,9 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
 .LBB0_33:                               # =>This Inner Loop Header: Depth=1
-	movgr2fr.d	$ft5, $a0
-	ffint.d.l	$ft5, $ft5
+	vinsgr2vr.d	$vr13, $a0, 0
+	vffint.d.lu	$vr13, $vr13
+	vreplvei.d	$vr13, $vr13, 0
 	fmul.d	$ft5, $fs3, $ft5
 	fmul.d	$ft6, $ft5, $ft5
 	fmadd.d	$ft7, $fa0, $ft6, $fa1

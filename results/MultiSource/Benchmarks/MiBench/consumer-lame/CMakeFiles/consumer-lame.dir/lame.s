@@ -140,17 +140,10 @@ lame_init_params:                       # @lame_init_params
 	fst.s	$fa0, $fp, 216
 .LBB0_12:
 	ld.d	$a5, $fp, 0
-	srli.d	$a6, $a5, 1
-	andi	$a7, $a5, 1
-	or	$a6, $a7, $a6
-	movgr2fr.d	$fa1, $a6
-	ffint.s.l	$fa1, $fa1
-	fadd.s	$fa1, $fa1, $fa1
-	slti	$a6, $a5, 0
-	movgr2fr.d	$fa2, $a5
-	ffint.s.l	$fa2, $fa2
-	movgr2cf	$fcc0, $a6
-	fsel	$fa1, $fa2, $fa1, $fcc0
+	vinsgr2vr.d	$vr1, $a5, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
+	fcvt.s.d	$fa1, $fa1
 	bstrpick.d	$a4, $a4, 31, 0
 	movgr2fr.d	$fa2, $a4
 	ffint.s.l	$fa2, $fa2

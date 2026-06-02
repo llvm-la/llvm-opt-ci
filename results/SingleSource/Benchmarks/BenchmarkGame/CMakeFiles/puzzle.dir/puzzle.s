@@ -100,55 +100,45 @@ shuffle:                                # @shuffle
 	ld.d	$a4, $a3, %pc_lo12(next)
 	alsl.d	$a5, $a1, $a0, 2
 	addi.d	$a5, $a5, -4
-	lu52i.d	$a6, $zero, 1107
-	lu12i.w	$a7, 256
-	lu52i.d	$a7, $a7, 1107
-	movgr2fr.d	$fa0, $a7
-	lu12i.w	$a7, 275200
-	lu12i.w	$t0, 269412
-	ori	$t0, $t0, 3693
-	lu12i.w	$t1, 3
-	ori	$t1, $t1, 57
-	lu12i.w	$t2, 160
-	lu32i.d	$t2, 131076
-	lu52i.d	$t3, $zero, 1008
-	movgr2fr.d	$fa1, $t3
+	lu12i.w	$a6, 269412
+	ori	$a6, $a6, 3693
+	lu12i.w	$a7, 3
+	ori	$a7, $a7, 57
+	lu12i.w	$t0, 160
+	lu32i.d	$t0, 131076
+	lu52i.d	$t1, $zero, 1008
+	movgr2fr.d	$fa0, $t1
 	.p2align	4, , 16
 .LBB3_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	srli.d	$t3, $a1, 32
-	or	$t3, $t3, $a6
-	movgr2fr.d	$fa2, $t3
-	fsub.d	$fa2, $fa2, $fa0
-	move	$t3, $a1
-	bstrins.d	$t3, $a7, 63, 32
-	movgr2fr.d	$fa3, $t3
-	fadd.d	$fa2, $fa3, $fa2
-	mul.d	$a4, $a4, $t0
-	add.d	$a4, $a4, $t1
-	srli.d	$t3, $a4, 16
-	bstrpick.d	$t4, $a4, 47, 16
-	mulh.du	$t4, $t4, $t2
-	slli.d	$t5, $t4, 15
-	sub.d	$t4, $t4, $t5
-	add.d	$t3, $t3, $t4
-	addi.d	$t3, $t3, 1
-	bstrpick.d	$t3, $t3, 31, 0
-	movgr2fr.d	$fa3, $t3
-	ffint.d.l	$fa3, $fa3
-	fmul.d	$fa3, $fa3, $fa1
-	fmul.d	$fa2, $fa3, $fa2
-	ftintrz.w.d	$fa2, $fa2
-	movfr2gr.s	$t3, $fa2
-	xor	$t4, $a1, $t3
-	sltui	$t4, $t4, 1
-	alsl.d	$t3, $t3, $a0, 2
-	slli.d	$t4, $t4, 2
-	sub.d	$t3, $t3, $t4
-	ld.w	$t4, $t3, 0
-	ld.w	$t5, $a5, 0
-	st.w	$t4, $a5, 0
-	st.w	$t5, $t3, 0
+	vinsgr2vr.d	$vr1, $a1, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
+	mul.d	$a4, $a4, $a6
+	add.d	$a4, $a4, $a7
+	srli.d	$t1, $a4, 16
+	bstrpick.d	$t2, $a4, 47, 16
+	mulh.du	$t2, $t2, $t0
+	slli.d	$t3, $t2, 15
+	sub.d	$t2, $t2, $t3
+	add.d	$t1, $t1, $t2
+	addi.d	$t1, $t1, 1
+	bstrpick.d	$t1, $t1, 31, 0
+	movgr2fr.d	$fa2, $t1
+	ffint.d.l	$fa2, $fa2
+	fmul.d	$fa2, $fa2, $fa0
+	fmul.d	$fa1, $fa2, $fa1
+	ftintrz.w.d	$fa1, $fa1
+	movfr2gr.s	$t1, $fa1
+	xor	$t2, $a1, $t1
+	sltui	$t2, $t2, 1
+	alsl.d	$t1, $t1, $a0, 2
+	slli.d	$t2, $t2, 2
+	sub.d	$t1, $t1, $t2
+	ld.w	$t2, $t1, 0
+	ld.w	$t3, $a5, 0
+	st.w	$t2, $a5, 0
+	st.w	$t3, $t1, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a5, $a5, -4
 	bne	$a1, $a2, .LBB3_2
@@ -260,51 +250,41 @@ createRandomArray:                      # @createRandomArray
 	beqz	$fp, .LBB4_12
 # %bb.9:                                # %.lr.ph.preheader.i
 	alsl.d	$a6, $fp, $a0, 2
-	lu52i.d	$a7, $zero, 1107
-	lu12i.w	$t0, 256
-	lu52i.d	$t0, $t0, 1107
-	movgr2fr.d	$fa1, $t0
-	lu12i.w	$t0, 275200
-	ori	$t1, $zero, 1
+	ori	$a7, $zero, 1
 	.p2align	4, , 16
 .LBB4_10:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	srli.d	$t2, $s0, 32
-	or	$t2, $t2, $a7
-	movgr2fr.d	$fa2, $t2
-	fsub.d	$fa2, $fa2, $fa1
-	move	$t2, $s0
-	bstrins.d	$t2, $t0, 63, 32
-	movgr2fr.d	$fa3, $t2
-	fadd.d	$fa2, $fa3, $fa2
+	vinsgr2vr.d	$vr1, $s0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	mul.d	$a4, $a4, $a2
 	add.d	$a4, $a4, $a3
-	srli.d	$t2, $a4, 16
-	bstrpick.d	$t3, $a4, 47, 16
-	mulh.du	$t3, $t3, $a5
-	slli.d	$t4, $t3, 15
-	sub.d	$t3, $t3, $t4
-	add.d	$t2, $t2, $t3
-	addi.d	$t2, $t2, 1
-	bstrpick.d	$t2, $t2, 31, 0
-	movgr2fr.d	$fa3, $t2
-	ffint.d.l	$fa3, $fa3
-	fmul.d	$fa3, $fa3, $fa0
-	fmul.d	$fa2, $fa3, $fa2
-	ftintrz.w.d	$fa2, $fa2
-	movfr2gr.s	$t2, $fa2
-	xor	$t3, $s0, $t2
-	sltui	$t3, $t3, 1
-	alsl.d	$t2, $t2, $a0, 2
-	slli.d	$t3, $t3, 2
-	sub.d	$t2, $t2, $t3
-	ld.w	$t3, $t2, 0
-	ld.w	$t4, $a6, 0
-	st.w	$t3, $a6, 0
-	st.w	$t4, $t2, 0
+	srli.d	$t0, $a4, 16
+	bstrpick.d	$t1, $a4, 47, 16
+	mulh.du	$t1, $t1, $a5
+	slli.d	$t2, $t1, 15
+	sub.d	$t1, $t1, $t2
+	add.d	$t0, $t0, $t1
+	addi.d	$t0, $t0, 1
+	bstrpick.d	$t0, $t0, 31, 0
+	movgr2fr.d	$fa2, $t0
+	ffint.d.l	$fa2, $fa2
+	fmul.d	$fa2, $fa2, $fa0
+	fmul.d	$fa1, $fa2, $fa1
+	ftintrz.w.d	$fa1, $fa1
+	movfr2gr.s	$t0, $fa1
+	xor	$t1, $s0, $t0
+	sltui	$t1, $t1, 1
+	alsl.d	$t0, $t0, $a0, 2
+	slli.d	$t1, $t1, 2
+	sub.d	$t0, $t0, $t1
+	ld.w	$t1, $t0, 0
+	ld.w	$t2, $a6, 0
+	st.w	$t1, $a6, 0
+	st.w	$t2, $t0, 0
 	addi.d	$s0, $s0, -1
 	addi.d	$a6, $a6, -4
-	bne	$s0, $t1, .LBB4_10
+	bne	$s0, $a7, .LBB4_10
 # %bb.11:                               # %._crit_edge.i
 	st.d	$a4, $a1, %pc_lo12(next)
 .LBB4_12:                               # %shuffle.exit

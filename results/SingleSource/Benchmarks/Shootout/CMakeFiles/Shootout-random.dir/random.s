@@ -69,11 +69,12 @@ main:                                   # @main
 	sub.d	$a0, $a0, $a1
 	st.d	$a0, $fp, %pc_lo12(gen_random.last)
 	ori	$a1, $zero, 100
-	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI0_0)
 	mul.d	$a0, $a0, $a1
-	movgr2fr.d	$fa1, $a0
-	ffint.d.l	$fa1, $fa1
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI0_0)
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa0, $fa1, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)

@@ -34,14 +34,15 @@ updateMetricsData:                      # @updateMetricsData
 # %bb.5:
 	st.d	$a0, $s0, 56
 .LBB0_6:
-	fld.d	$fa0, $s0, 40
-	movgr2fr.d	$fa1, $a0
-	ffint.d.l	$fa1, $fa1
+	vinsgr2vr.d	$vr0, $a0, 0
+	fld.d	$fa1, $s0, 40
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	fld.d	$fa2, $s0, 48
-	fadd.d	$fa0, $fa0, $fa1
+	fadd.d	$fa1, $fa1, $fa0
 	ld.d	$a0, $s0, 32
-	fst.d	$fa0, $s0, 40
-	fmadd.d	$fa0, $fa1, $fa1, $fa2
+	fst.d	$fa1, $s0, 40
+	fmadd.d	$fa0, $fa0, $fa0, $fa2
 	fst.d	$fa0, $s0, 48
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s0, 32

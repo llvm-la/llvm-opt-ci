@@ -6,36 +6,26 @@
 	.type	print,@function
 print:                                  # @print
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 0                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	lu12i.w	$a0, 323584
 	movgr2fr.w	$fa1, $a0
-	fmul.s	$fs0, $fa0, $fa1
-	fcvt.d.s	$fa0, $fs0
+	fmul.s	$fa0, $fa0, $fa1
+	fcvt.d.s	$fa0, $fa0
+	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	lu12i.w	$a0, 389120
-	movgr2fr.w	$fa0, $a0
-	fcmp.clt.s	$fcc0, $fs0, $fa0
-	ftintrz.l.s	$fa1, $fs0
-	movfr2gr.d	$a0, $fa1
-	movcf2gr	$a1, $fcc0
-	maskeqz	$a0, $a0, $a1
-	fsub.s	$fa0, $fs0, $fa0
-	ftintrz.l.s	$fa0, $fa0
-	movfr2gr.d	$a2, $fa0
-	masknez	$a1, $a2, $a1
-	or	$a0, $a0, $a1
+	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
+	vftintrz.lu.d	$vr0, $vr0
+	vpickve2gr.d	$a0, $vr0, 0
 	addi.w	$a1, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	fld.d	$fs0, $sp, 0                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(printf)
 	jr	$t8
 .Lfunc_end0:

@@ -172,20 +172,10 @@ luaO_str2d:                             # @luaO_str2d
 	ori	$a2, $zero, 16
 	pcaddu18i	$ra, %call36(strtoul)
 	jirl	$ra, $ra, 0
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
 	ld.d	$s0, $sp, 0
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $fp, 0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vstelm.d	$vr0, $fp, 0, 0
 	ld.bu	$a1, $s0, 0
 .LBB4_3:
 	beqz	$a1, .LBB4_8

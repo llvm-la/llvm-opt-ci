@@ -12588,19 +12588,10 @@ _ZN4Mesh24print_calc_neighbor_typeEv:   # @_ZN4Mesh24print_calc_neighbor_typeEv
 	beqz	$a1, .LBB28_3
 # %bb.1:
 	ld.d	$s0, $fp, 1160
-	srli.d	$a0, $s0, 32
-	lu52i.d	$a1, $zero, 1107
-	or	$a0, $a0, $a1
-	movgr2fr.d	$fa0, $a0
-	lu12i.w	$a0, 256
-	lu52i.d	$a0, $a0, 1107
-	movgr2fr.d	$fa1, $a0
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a0, 275200
-	move	$a1, $s0
-	bstrins.d	$a1, $a0, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $s0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
 	ftintrz.w.d	$fa0, $fa0

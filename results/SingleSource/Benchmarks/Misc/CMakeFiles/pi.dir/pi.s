@@ -69,8 +69,10 @@ main:                                   # @main
 	srli.d	$a5, $a5, 15
 	mul.d	$a5, $a5, $a4
 	sub.d	$a1, $a1, $a5
-	movgr2fr.d	$fa6, $a1
-	ffint.s.l	$fa6, $fa6
+	vinsgr2vr.d	$vr6, $a1, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
+	fcvt.s.d	$fa6, $fa6
 	fdiv.s	$fa6, $fa6, $fa1
 	fmul.s	$fa0, $fa0, $fa2
 	fdiv.s	$fa7, $fa0, $fa3
@@ -99,8 +101,10 @@ main:                                   # @main
 	ori	$a4, $fp, 2561
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	movgr2fr.d	$fa0, $s0
-	ffint.s.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $s0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI1_0)
 	fcvt.d.s	$fa0, $fa0

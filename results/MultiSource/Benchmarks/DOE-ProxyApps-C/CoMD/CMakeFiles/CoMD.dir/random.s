@@ -33,8 +33,9 @@ gasdev:                                 # @gasdev
 	slli.d	$a5, $a4, 61
 	sub.d	$a4, $a4, $a5
 	add.d	$a3, $a3, $a4
-	movgr2fr.d	$fa5, $a3
-	ffint.d.l	$fa5, $fa5
+	vinsgr2vr.d	$vr5, $a3, 0
+	vffint.d.lu	$vr5, $vr5
+	vreplvei.d	$vr5, $vr5, 0
 	fmul.d	$fa5, $fa5, $fa0
 	fmadd.d	$fa5, $fa5, $fa2, $fa1
 	mul.d	$a3, $a3, $a1
@@ -46,8 +47,9 @@ gasdev:                                 # @gasdev
 	slli.d	$a5, $a4, 61
 	sub.d	$a4, $a4, $a5
 	add.d	$a3, $a3, $a4
-	movgr2fr.d	$fa6, $a3
-	ffint.d.l	$fa6, $fa6
+	vinsgr2vr.d	$vr6, $a3, 0
+	vffint.d.lu	$vr6, $vr6
+	vreplvei.d	$vr6, $vr6, 0
 	fmul.d	$fa6, $fa6, $fa0
 	fmadd.d	$fs1, $fa6, $fa2, $fa1
 	fmul.d	$fa6, $fs1, $fs1
@@ -104,8 +106,9 @@ lcg61:                                  # @lcg61
 	slli.d	$a3, $a2, 61
 	sub.d	$a2, $a2, $a3
 	add.d	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	ffint.d.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	lu52i.d	$a2, $zero, 962
 	movgr2fr.d	$fa1, $a2
 	fmul.d	$fa0, $fa0, $fa1

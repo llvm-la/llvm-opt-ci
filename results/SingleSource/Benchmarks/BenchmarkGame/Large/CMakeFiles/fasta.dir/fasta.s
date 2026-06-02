@@ -188,8 +188,10 @@ main:                                   # @main
 	srli.d	$a2, $a2, 15
 	mul.d	$a2, $a2, $s5
 	sub.d	$a0, $a0, $a2
-	movgr2fr.d	$fa0, $a0
-	ffint.s.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	move	$a2, $s2
 	.p2align	4, , 16
@@ -254,8 +256,10 @@ main:                                   # @main
 	srli.d	$a2, $a2, 15
 	mul.d	$a2, $a2, $s5
 	sub.d	$a0, $a0, $a2
-	movgr2fr.d	$fa0, $a0
-	ffint.s.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+	fcvt.s.d	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fs0
 	move	$a2, $s1
 	.p2align	4, , 16

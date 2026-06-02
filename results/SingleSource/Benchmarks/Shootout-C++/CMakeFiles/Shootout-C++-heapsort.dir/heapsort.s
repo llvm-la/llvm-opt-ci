@@ -31,12 +31,13 @@ _Z10gen_randomd:                        # @_Z10gen_randomd
 	ori	$a3, $a3, 704
 	mul.d	$a2, $a2, $a3
 	sub.d	$a1, $a1, $a2
+	vinsgr2vr.d	$vr1, $a1, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	fld.d	$fa1, $a2, %pc_lo12(.LCPI0_0)
-	movgr2fr.d	$fa2, $a1
-	ffint.d.l	$fa2, $fa2
-	fmul.d	$fa0, $fa0, $fa2
-	fdiv.d	$fa0, $fa0, $fa1
+	fld.d	$fa2, $a2, %pc_lo12(.LCPI0_0)
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
+	fmul.d	$fa0, $fa0, $fa1
+	fdiv.d	$fa0, $fa0, $fa2
 	st.d	$a1, $a0, %pc_lo12(_ZZ10gen_randomdE4last)
 	ret
 .Lfunc_end0:
@@ -185,8 +186,9 @@ main:                                   # @main
 	srli.d	$t1, $t1, 15
 	mul.d	$t1, $t1, $t0
 	sub.d	$a4, $a4, $t1
-	movgr2fr.d	$fa1, $a4
-	ffint.d.l	$fa1, $fa1
+	vinsgr2vr.d	$vr1, $a4, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
 	fdiv.d	$fa1, $fa1, $fa0
 	fst.d	$fa1, $a2, 0
 	addi.d	$a3, $a3, -1

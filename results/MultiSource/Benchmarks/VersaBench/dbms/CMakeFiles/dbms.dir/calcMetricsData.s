@@ -23,8 +23,9 @@ calcMetricsData:                        # @calcMetricsData
 	blez	$a1, .LBB0_2
 # %bb.1:
 	fld.d	$fa1, $fp, 40
-	movgr2fr.d	$fa0, $a1
-	ffint.d.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	fld.d	$fa2, $fp, 48
 	fdiv.d	$fa3, $fa1, $fa0
 	fmul.d	$fa1, $fa1, $fa1
@@ -56,8 +57,9 @@ calcMetricsData:                        # @calcMetricsData
 	blez	$a0, .LBB0_6
 .LBB0_5:
 	fld.d	$fa1, $fp, 104
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	fld.d	$fa2, $fp, 112
 	fdiv.d	$fa3, $fa1, $fa0
 	fmul.d	$fa1, $fa1, $fa1
@@ -89,8 +91,9 @@ calcMetricsData:                        # @calcMetricsData
 	blez	$a0, .LBB0_10
 .LBB0_9:
 	fld.d	$fa1, $fp, 168
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
 	fld.d	$fa2, $fp, 176
 	fdiv.d	$fa3, $fa1, $fa0
 	fmul.d	$fa1, $fa1, $fa1

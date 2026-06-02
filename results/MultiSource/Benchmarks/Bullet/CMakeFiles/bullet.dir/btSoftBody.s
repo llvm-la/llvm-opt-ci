@@ -32567,15 +32567,15 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fmul.s	$fs1, $fa0, $fa3
 	fmul.s	$fs2, $fa3, $fa1
 	fmul.s	$fs3, $fa3, $fa2
-	addi.d	$a3, $sp, 108
+	addi.d	$a2, $sp, 108
 	addi.d	$s3, $sp, 128
 	addi.d	$s4, $sp, 148
 	addi.d	$s5, $a1, 64
 	movgr2fr.w	$fs0, $zero
 	lu12i.w	$s6, 260096
-	vrepli.b	$vr3, 0
+	vrepli.b	$vr2, 0
 	ori	$s7, $zero, 19
-	vst	$vr3, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB181_2
 	.p2align	4, , 16
 .LBB181_1:                              #   in Loop: Header=BB181_2 Depth=1
@@ -32588,21 +32588,13 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
                                         #     Child Loop BB181_4 Depth 2
 	move	$s1, $zero
 	move	$s8, $zero
-	move	$a2, $a0
-	srli.d	$a0, $a0, 1
-	andi	$a1, $a2, 1
-	or	$a0, $a1, $a0
-	slti	$a1, $a2, 0
-	movgr2fr.d	$fa0, $a0
-	movgr2cf	$fcc0, $a1
-	fld.s	$fa1, $s0, 32
-	ffint.s.l	$fa0, $fa0
-	fadd.s	$fa0, $fa0, $fa0
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	movgr2fr.d	$fa2, $a2
-	ffint.s.l	$fa2, $fa2
-	fsel	$fa0, $fa2, $fa0, $fcc0
-	fmadd.s	$fs4, $fa1, $fa0, $fs3
+	fld.s	$fa0, $s0, 32
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	vinsgr2vr.d	$vr1, $a0, 0
+	vffint.d.lu	$vr1, $vr1
+	vreplvei.d	$vr1, $vr1, 0
+	fcvt.s.d	$fa1, $fa1
+	fmadd.s	$fs4, $fa0, $fa1, $fs3
 	b	.LBB181_4
 	.p2align	4, , 16
 .LBB181_3:                              # %_ZN11btSparseSdfILi3EE15DistanceToShapeERK9btVector3P16btCollisionShape.exit.3
@@ -32624,9 +32616,9 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fst.s	$fs5, $sp, 36
 	fst.s	$fs4, $sp, 40
 	ld.d	$a1, $fp, 280
-	vst	$vr3, $a3, 0
-	vst	$vr3, $s3, 0
-	vst	$vr3, $s4, 0
+	vst	$vr2, $a2, 0
+	vst	$vr2, $s3, 0
+	vst	$vr2, $s4, 0
 	st.w	$zero, $s4, 16
 	ld.w	$a0, $a1, 8
 	st.w	$zero, $sp, 44
@@ -32641,8 +32633,8 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN15btGjkEpaSolver214SignedDistanceERK9btVector3fPK13btConvexShapeRK11btTransformRNS_8sResultsE)
 	jirl	$ra, $ra, 0
-	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
-	addi.d	$a3, $sp, 108
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	addi.d	$a2, $sp, 108
 	ld.d	$a1, $fp, 280
 	b	.LBB181_7
 	.p2align	4, , 16
@@ -32657,9 +32649,9 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fst.s	$fa0, $sp, 32
 	fst.s	$fs5, $sp, 36
 	fst.s	$fs4, $sp, 40
-	vst	$vr3, $a3, 0
-	vst	$vr3, $s3, 0
-	vst	$vr3, $s4, 0
+	vst	$vr2, $a2, 0
+	vst	$vr2, $s3, 0
+	vst	$vr2, $s4, 0
 	st.w	$zero, $s4, 16
 	ld.w	$a0, $a1, 8
 	st.w	$zero, $sp, 44
@@ -32674,8 +32666,8 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN15btGjkEpaSolver214SignedDistanceERK9btVector3fPK13btConvexShapeRK11btTransformRNS_8sResultsE)
 	jirl	$ra, $ra, 0
-	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
-	addi.d	$a3, $sp, 108
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	addi.d	$a2, $sp, 108
 	ld.d	$a1, $fp, 280
 	b	.LBB181_10
 	.p2align	4, , 16
@@ -32690,9 +32682,9 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fst.s	$fa0, $sp, 32
 	fst.s	$fs5, $sp, 36
 	fst.s	$fs4, $sp, 40
-	vst	$vr3, $a3, 0
-	vst	$vr3, $s3, 0
-	vst	$vr3, $s4, 0
+	vst	$vr2, $a2, 0
+	vst	$vr2, $s3, 0
+	vst	$vr2, $s4, 0
 	st.w	$zero, $s4, 16
 	ld.w	$a0, $a1, 8
 	st.w	$zero, $sp, 44
@@ -32707,8 +32699,8 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN15btGjkEpaSolver214SignedDistanceERK9btVector3fPK13btConvexShapeRK11btTransformRNS_8sResultsE)
 	jirl	$ra, $ra, 0
-	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
-	addi.d	$a3, $sp, 108
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	addi.d	$a2, $sp, 108
 	ld.d	$a1, $fp, 280
 	b	.LBB181_13
 	.p2align	4, , 16
@@ -32723,9 +32715,9 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fst.s	$fa0, $sp, 32
 	fst.s	$fs5, $sp, 36
 	fst.s	$fs4, $sp, 40
-	vst	$vr3, $a3, 0
-	vst	$vr3, $s3, 0
-	vst	$vr3, $s4, 0
+	vst	$vr2, $a2, 0
+	vst	$vr2, $s3, 0
+	vst	$vr2, $s4, 0
 	st.w	$zero, $s4, 16
 	ld.w	$a0, $a1, 8
 	st.w	$zero, $sp, 44
@@ -32741,8 +32733,8 @@ _ZN11btSparseSdfILi3EE9BuildCellERNS0_4CellE: # @_ZN11btSparseSdfILi3EE9BuildCel
 	fmov.s	$fa0, $fs0
 	pcaddu18i	$ra, %call36(_ZN15btGjkEpaSolver214SignedDistanceERK9btVector3fPK13btConvexShapeRK11btTransformRNS_8sResultsE)
 	jirl	$ra, $ra, 0
-	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
-	addi.d	$a3, $sp, 108
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
+	addi.d	$a2, $sp, 108
 	b	.LBB181_3
 .LBB181_15:
 	fld.d	$fs5, $sp, 168                  # 8-byte Folded Reload

@@ -2929,36 +2929,24 @@ decode_stat:                            # @decode_stat
 	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 192                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 184                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 176                  # 8-byte Folded Spill
 	move	$s3, $a0
 	ld.d	$a0, $a0, 0
-	srli.d	$a1, $a0, 32
-	lu52i.d	$fp, $zero, 1107
-	or	$a1, $a1, $fp
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fs0, $a1
-	fsub.d	$fa0, $fa0, $fs0
-	lu12i.w	$s0, 275200
-	bstrins.d	$a0, $s0, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 8
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	srli.d	$a0, $a1, 32
-	or	$a0, $a0, $fp
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s0, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
+	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s3, 16
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(decode_st_moden)
 	jirl	$ra, $ra, 0
@@ -2982,13 +2970,10 @@ decode_stat:                            # @decode_stat
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s3, 32
 	move	$s5, $a0
-	srli.d	$a0, $a1, 32
-	or	$a0, $a0, $fp
-	movgr2fr.d	$fa0, $a0
-	fsub.d	$fa0, $fa0, $fs0
-	bstrins.d	$a1, $s0, 63, 32
-	movgr2fr.d	$fa1, $a1
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a1, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $s3, 48
@@ -3067,13 +3052,12 @@ decode_stat:                            # @decode_stat
 	addi.d	$a4, $a1, %pc_lo12(.L.str.59)
 	pcalau12i	$a1, %pc_hi20(.L.str.60)
 	addi.d	$a6, $a1, %pc_lo12(.L.str.60)
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 168                   # 8-byte Folded Reload
 	move	$a5, $s1
 	move	$a7, $s2
 	pcaddu18i	$ra, %call36(symalist)
 	jirl	$ra, $ra, 0
-	fld.d	$fs0, $sp, 176                  # 8-byte Folded Reload
 	ld.d	$s8, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
@@ -5990,18 +5974,10 @@ datref:                                 # @datref
 	jirl	$ra, $ra, 0
 .LBB102_12:
 	ldx.d	$a0, $fp, $s1
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	b	.LBB102_37
 .LBB102_13:
 	ld.d	$a0, $sp, 0
@@ -6247,18 +6223,10 @@ datlength:                              # @datlength
 	ret
 .LBB105_7:
 	ld.d	$a0, $sp, 8
-	srli.d	$a1, $a0, 32
-	lu52i.d	$a2, $zero, 1107
-	or	$a1, $a1, $a2
-	movgr2fr.d	$fa0, $a1
-	lu12i.w	$a1, 256
-	lu52i.d	$a1, $a1, 1107
-	movgr2fr.d	$fa1, $a1
-	fsub.d	$fa0, $fa0, $fa1
-	lu12i.w	$a1, 275200
-	bstrins.d	$a0, $a1, 63, 32
-	movgr2fr.d	$fa1, $a0
-	fadd.d	$fa0, $fa1, $fa0
+	vinsgr2vr.d	$vr0, $a0, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	b	.LBB105_6
 .LBB105_8:
 	pcalau12i	$a0, %pc_hi20(.L.str.120)
@@ -8051,8 +8019,10 @@ lposition_script:                       # @lposition_script
 	jirl	$ra, $ra, 0
 	bltz	$fp, .LBB112_2
 # %bb.1:
-	movgr2fr.d	$fa0, $fp
-	ffint.d.l	$fa0, $fa0
+	vinsgr2vr.d	$vr0, $fp, 0
+	vffint.d.lu	$vr0, $vr0
+	vreplvei.d	$vr0, $vr0, 0
+                                        # kill: def $f0_64 killed $f0_64 killed $vr0
 	pcaddu18i	$ra, %call36(flocons)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
