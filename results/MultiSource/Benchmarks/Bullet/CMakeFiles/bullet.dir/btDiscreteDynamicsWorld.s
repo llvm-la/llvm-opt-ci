@@ -1921,16 +1921,8 @@ _ZN23btDiscreteDynamicsWorld19debugDrawConstraintEP17btTypedConstraint: # @_ZN23
 	vpermi.w	$vr2, $vr12, 68
 	vextrins.w	$vr6, $vr1, 16
 	vpermi.w	$vr8, $vr6, 68
-	vpickve2gr.w	$a0, $vr8, 2
-	vinsgr2vr.d	$vr0, $a0, 0
-	vpickve2gr.w	$a0, $vr8, 3
-	vinsgr2vr.d	$vr0, $a0, 1
-	vpickve2gr.w	$a0, $vr8, 0
-	vinsgr2vr.d	$vr1, $a0, 0
-	vpickve2gr.w	$a0, $vr8, 1
-	vinsgr2vr.d	$vr1, $a0, 1
-	xvpermi.q	$xr1, $xr0, 2
-	xvslli.d	$xr0, $xr1, 32
+	vext2xv.du.wu	$xr0, $xr8
+	xvslli.d	$xr0, $xr0, 32
 	vext2xv.du.wu	$xr1, $xr2
 	xvor.v	$xr0, $xr0, $xr1
 	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
@@ -8232,16 +8224,8 @@ _ZN23btDiscreteDynamicsWorld15debugDrawSphereEfRK11btTransformRK9btVector3: # @_
 	vextrins.w	$vr6, $vr5, 16
 	vextrins.w	$vr6, $vr2, 32
 	vextrins.w	$vr6, $vr4, 48
-	vpickve2gr.w	$a1, $vr6, 2
-	vinsgr2vr.d	$vr0, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 3
-	vinsgr2vr.d	$vr0, $a1, 1
-	vpickve2gr.w	$a1, $vr6, 0
-	vinsgr2vr.d	$vr1, $a1, 0
-	vpickve2gr.w	$a1, $vr6, 1
-	vinsgr2vr.d	$vr1, $a1, 1
-	xvpermi.q	$xr1, $xr0, 2
-	xvslli.d	$xr0, $xr1, 32
+	vext2xv.du.wu	$xr0, $xr6
+	xvslli.d	$xr0, $xr0, 32
 	vext2xv.du.wu	$xr1, $xr3
 	xvor.v	$xr0, $xr0, $xr1
 	xvst	$xr0, $sp, 32                   # 32-byte Folded Spill

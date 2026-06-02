@@ -878,24 +878,9 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.d	$a0, $a3, 0
 	vinsgr2vr.d	$vr0, $a0, 0
-	vpickve2gr.b	$a0, $vr0, 0
-	vinsgr2vr.h	$vr1, $a0, 0
-	vpickve2gr.b	$a0, $vr0, 1
-	vinsgr2vr.h	$vr1, $a0, 1
-	vpickve2gr.b	$a0, $vr0, 2
-	vinsgr2vr.h	$vr1, $a0, 2
-	vpickve2gr.b	$a0, $vr0, 3
-	vinsgr2vr.h	$vr1, $a0, 3
-	vpickve2gr.b	$a0, $vr0, 4
-	vinsgr2vr.h	$vr1, $a0, 4
-	vpickve2gr.b	$a0, $vr0, 5
-	vinsgr2vr.h	$vr1, $a0, 5
-	vpickve2gr.b	$a0, $vr0, 6
-	vinsgr2vr.h	$vr1, $a0, 6
-	vpickve2gr.b	$a0, $vr0, 7
-	vinsgr2vr.h	$vr1, $a0, 7
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
-	vand.v	$vr0, $vr1, $vr0
+	vext2xv.hu.bu	$xr0, $xr0
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vand.v	$vr0, $vr0, $vr1
 	vxori.b	$vr0, $vr0, 255
 	vpickve2gr.h	$a0, $vr0, 0
 	andi	$a0, $a0, 1
@@ -942,24 +927,9 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.d	$a0, $a3, 8
 	vinsgr2vr.d	$vr0, $a0, 0
-	vpickve2gr.b	$a0, $vr0, 0
-	vinsgr2vr.h	$vr1, $a0, 0
-	vpickve2gr.b	$a0, $vr0, 1
-	vinsgr2vr.h	$vr1, $a0, 1
-	vpickve2gr.b	$a0, $vr0, 2
-	vinsgr2vr.h	$vr1, $a0, 2
-	vpickve2gr.b	$a0, $vr0, 3
-	vinsgr2vr.h	$vr1, $a0, 3
-	vpickve2gr.b	$a0, $vr0, 4
-	vinsgr2vr.h	$vr1, $a0, 4
-	vpickve2gr.b	$a0, $vr0, 5
-	vinsgr2vr.h	$vr1, $a0, 5
-	vpickve2gr.b	$a0, $vr0, 6
-	vinsgr2vr.h	$vr1, $a0, 6
-	vpickve2gr.b	$a0, $vr0, 7
-	vinsgr2vr.h	$vr1, $a0, 7
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
-	vand.v	$vr0, $vr1, $vr0
+	vext2xv.hu.bu	$xr0, $xr0
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vand.v	$vr0, $vr0, $vr1
 	vxori.b	$vr0, $vr0, 255
 	vpickve2gr.h	$a0, $vr0, 0
 	andi	$a0, $a0, 1
@@ -1006,24 +976,9 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
                                         #   in Loop: Header=BB0_10 Depth=1
 	ld.d	$a0, $a3, 16
 	vinsgr2vr.d	$vr0, $a0, 0
-	vpickve2gr.b	$a0, $vr0, 0
-	vinsgr2vr.h	$vr1, $a0, 0
-	vpickve2gr.b	$a0, $vr0, 1
-	vinsgr2vr.h	$vr1, $a0, 1
-	vpickve2gr.b	$a0, $vr0, 2
-	vinsgr2vr.h	$vr1, $a0, 2
-	vpickve2gr.b	$a0, $vr0, 3
-	vinsgr2vr.h	$vr1, $a0, 3
-	vpickve2gr.b	$a0, $vr0, 4
-	vinsgr2vr.h	$vr1, $a0, 4
-	vpickve2gr.b	$a0, $vr0, 5
-	vinsgr2vr.h	$vr1, $a0, 5
-	vpickve2gr.b	$a0, $vr0, 6
-	vinsgr2vr.h	$vr1, $a0, 6
-	vpickve2gr.b	$a0, $vr0, 7
-	vinsgr2vr.h	$vr1, $a0, 7
-	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
-	vand.v	$vr0, $vr1, $vr0
+	vext2xv.hu.bu	$xr0, $xr0
+	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
+	vand.v	$vr0, $vr0, $vr1
 	vxori.b	$vr0, $vr0, 255
 	vpickve2gr.h	$a0, $vr0, 0
 	andi	$a0, $a0, 1

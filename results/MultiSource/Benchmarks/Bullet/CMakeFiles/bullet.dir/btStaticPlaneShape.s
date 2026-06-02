@@ -291,16 +291,8 @@ _ZNK18btStaticPlaneShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S
 	vextrins.w	$vr9, $vr6, 16
 	vextrins.w	$vr9, $vr8, 32
 	vextrins.w	$vr9, $vr2, 48
-	vpickve2gr.w	$a1, $vr9, 2
-	vinsgr2vr.d	$vr1, $a1, 0
-	vpickve2gr.w	$a1, $vr9, 3
-	vinsgr2vr.d	$vr1, $a1, 1
-	vpickve2gr.w	$a1, $vr9, 0
-	vinsgr2vr.d	$vr2, $a1, 0
-	vpickve2gr.w	$a1, $vr9, 1
-	vinsgr2vr.d	$vr2, $a1, 1
-	xvpermi.q	$xr2, $xr1, 2
-	xvslli.d	$xr1, $xr2, 32
+	vext2xv.du.wu	$xr1, $xr9
+	xvslli.d	$xr1, $xr1, 32
 	vext2xv.du.wu	$xr2, $xr7
 	xvor.v	$xr1, $xr1, $xr2
 	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill

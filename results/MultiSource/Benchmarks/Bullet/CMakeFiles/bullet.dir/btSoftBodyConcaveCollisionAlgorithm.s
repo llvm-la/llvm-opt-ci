@@ -1444,16 +1444,8 @@ _ZN26btSoftBodyTriangleCallback15processTriangleEP9btVector3ii: # @_ZN26btSoftBo
 	vextrins.w	$vr11, $vr17, 16
 	vextrins.w	$vr11, $vr16, 32
 	vextrins.w	$vr11, $vr15, 48
-	vpickve2gr.w	$a1, $vr11, 2
-	vinsgr2vr.d	$vr12, $a1, 0
-	vpickve2gr.w	$a1, $vr11, 3
-	vinsgr2vr.d	$vr12, $a1, 1
-	vpickve2gr.w	$a1, $vr11, 0
-	vinsgr2vr.d	$vr13, $a1, 0
-	vpickve2gr.w	$a1, $vr11, 1
-	vinsgr2vr.d	$vr13, $a1, 1
-	xvpermi.q	$xr13, $xr12, 2
-	xvslli.d	$xr11, $xr13, 32
+	vext2xv.du.wu	$xr11, $xr11
+	xvslli.d	$xr11, $xr11, 32
 	vext2xv.du.wu	$xr10, $xr10
 	xvor.v	$xr10, $xr11, $xr10
 	xvstelm.d	$xr10, $sp, 16, 0

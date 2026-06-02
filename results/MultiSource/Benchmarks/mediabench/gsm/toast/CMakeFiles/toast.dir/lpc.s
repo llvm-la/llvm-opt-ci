@@ -578,43 +578,11 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_23:                               # %vector.body186
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr16, $s0, $a3
-	vpickve2gr.h	$a2, $vr16, 4
-	vinsgr2vr.w	$vr17, $a2, 0
-	vpickve2gr.h	$a2, $vr16, 5
-	vinsgr2vr.w	$vr17, $a2, 1
-	vpickve2gr.h	$a2, $vr16, 6
-	vinsgr2vr.w	$vr17, $a2, 2
-	vpickve2gr.h	$a2, $vr16, 7
-	vinsgr2vr.w	$vr17, $a2, 3
-	vpickve2gr.h	$a2, $vr16, 0
-	vinsgr2vr.w	$vr18, $a2, 0
-	vpickve2gr.h	$a2, $vr16, 1
-	vinsgr2vr.w	$vr18, $a2, 1
-	vpickve2gr.h	$a2, $vr16, 2
-	vinsgr2vr.w	$vr18, $a2, 2
-	vpickve2gr.h	$a2, $vr16, 3
-	vinsgr2vr.w	$vr18, $a2, 3
-	xvpermi.q	$xr18, $xr17, 2
+	vext2xv.wu.hu	$xr17, $xr16
 	xvpermi.q	$xr16, $xr16, 1
-	vpickve2gr.h	$a2, $vr16, 4
-	vinsgr2vr.w	$vr17, $a2, 0
-	vpickve2gr.h	$a2, $vr16, 5
-	vinsgr2vr.w	$vr17, $a2, 1
-	vpickve2gr.h	$a2, $vr16, 6
-	vinsgr2vr.w	$vr17, $a2, 2
-	vpickve2gr.h	$a2, $vr16, 7
-	vinsgr2vr.w	$vr17, $a2, 3
-	vpickve2gr.h	$a2, $vr16, 0
-	vinsgr2vr.w	$vr19, $a2, 0
-	vpickve2gr.h	$a2, $vr16, 1
-	vinsgr2vr.w	$vr19, $a2, 1
-	vpickve2gr.h	$a2, $vr16, 2
-	vinsgr2vr.w	$vr19, $a2, 2
-	vpickve2gr.h	$a2, $vr16, 3
-	vinsgr2vr.w	$vr19, $a2, 3
-	xvpermi.q	$xr19, $xr17, 2
-	xvsll.w	$xr16, $xr19, $xr15
-	xvsll.w	$xr17, $xr18, $xr15
+	vext2xv.wu.hu	$xr16, $xr16
+	xvsll.w	$xr16, $xr16, $xr15
+	xvsll.w	$xr17, $xr17, $xr15
 	xvpickve2gr.w	$a2, $xr17, 0
 	vinsgr2vr.h	$vr18, $a2, 0
 	xvpickve2gr.w	$a2, $xr17, 1

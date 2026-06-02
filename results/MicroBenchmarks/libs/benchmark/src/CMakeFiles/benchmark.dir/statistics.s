@@ -548,28 +548,12 @@ _ZN9benchmark12ComputeStatsERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @
 	vinsgr2vr.w	$vr4, $t3, 3
 	vseqi.w	$vr3, $vr3, 0
 	vxori.b	$vr3, $vr3, 255
-	vpickve2gr.w	$t0, $vr3, 2
-	vinsgr2vr.d	$vr5, $t0, 0
-	vpickve2gr.w	$t0, $vr3, 3
-	vinsgr2vr.d	$vr5, $t0, 1
-	vpickve2gr.w	$t0, $vr3, 0
-	vinsgr2vr.d	$vr6, $t0, 0
-	vpickve2gr.w	$t0, $vr3, 1
-	vinsgr2vr.d	$vr6, $t0, 1
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr3, $xr6, $xr1
+	vext2xv.du.wu	$xr3, $xr3
+	xvand.v	$xr3, $xr3, $xr1
 	vseqi.w	$vr4, $vr4, 0
 	vxori.b	$vr4, $vr4, 255
-	vpickve2gr.w	$t0, $vr4, 2
-	vinsgr2vr.d	$vr5, $t0, 0
-	vpickve2gr.w	$t0, $vr4, 3
-	vinsgr2vr.d	$vr5, $t0, 1
-	vpickve2gr.w	$t0, $vr4, 0
-	vinsgr2vr.d	$vr6, $t0, 0
-	vpickve2gr.w	$t0, $vr4, 1
-	vinsgr2vr.d	$vr6, $t0, 1
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr4, $xr6, $xr1
+	vext2xv.du.wu	$xr4, $xr4
+	xvand.v	$xr4, $xr4, $xr1
 	xvadd.d	$xr0, $xr0, $xr3
 	xvadd.d	$xr2, $xr2, $xr4
 	addi.d	$a7, $a7, -8

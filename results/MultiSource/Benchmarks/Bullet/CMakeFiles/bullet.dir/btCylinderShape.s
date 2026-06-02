@@ -622,16 +622,8 @@ _ZNK15btCylinderShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVe
 	xvand.v	$xr6, $xr13, $xr6
 	xvpickve2gr.d	$t0, $xr6, 3
 	vbitsel.v	$vr5, $vr0, $vr5, $vr8
-	vpickve2gr.w	$t1, $vr9, 2
-	vinsgr2vr.d	$vr7, $t1, 0
-	vpickve2gr.w	$t1, $vr9, 3
-	vinsgr2vr.d	$vr7, $t1, 1
-	vpickve2gr.w	$t1, $vr9, 0
-	vinsgr2vr.d	$vr8, $t1, 0
-	vpickve2gr.w	$t1, $vr9, 1
-	vinsgr2vr.d	$vr8, $t1, 1
-	xvpermi.q	$xr8, $xr7, 2
-	xvslli.d	$xr7, $xr8, 32
+	vext2xv.du.wu	$xr7, $xr9
+	xvslli.d	$xr7, $xr7, 32
 	vext2xv.du.wu	$xr5, $xr5
 	xvor.v	$xr5, $xr7, $xr5
 	xvpickve2gr.d	$t1, $xr5, 3
@@ -787,16 +779,8 @@ _ZNK16btCylinderShapeZ49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	vfdiv.s	$vr7, $vr0, $vr7
 	vfmul.s	$vr5, $vr5, $vr7
 	vfmul.s	$vr6, $vr6, $vr7
-	vpickve2gr.w	$t0, $vr6, 2
-	vinsgr2vr.d	$vr7, $t0, 0
-	vpickve2gr.w	$t0, $vr6, 3
-	vinsgr2vr.d	$vr7, $t0, 1
-	vpickve2gr.w	$t0, $vr6, 0
-	vinsgr2vr.d	$vr10, $t0, 0
-	vpickve2gr.w	$t0, $vr6, 1
-	vinsgr2vr.d	$vr10, $t0, 1
-	xvpermi.q	$xr10, $xr7, 2
-	xvslli.d	$xr6, $xr10, 32
+	vext2xv.du.wu	$xr6, $xr6
+	xvslli.d	$xr6, $xr6, 32
 	xvand.v	$xr6, $xr13, $xr6
 	vbitsel.v	$vr5, $vr0, $vr5, $vr8
 	vext2xv.du.wu	$xr5, $xr5
@@ -957,16 +941,8 @@ _ZNK16btCylinderShapeX49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btV
 	xvand.v	$xr6, $xr13, $xr6
 	xvpickve2gr.d	$t0, $xr6, 3
 	vbitsel.v	$vr5, $vr0, $vr5, $vr8
-	vpickve2gr.w	$t1, $vr5, 2
-	vinsgr2vr.d	$vr7, $t1, 0
-	vpickve2gr.w	$t1, $vr5, 3
-	vinsgr2vr.d	$vr7, $t1, 1
-	vpickve2gr.w	$t1, $vr5, 0
-	vinsgr2vr.d	$vr8, $t1, 0
-	vpickve2gr.w	$t1, $vr5, 1
-	vinsgr2vr.d	$vr8, $t1, 1
-	xvpermi.q	$xr8, $xr7, 2
-	xvslli.d	$xr5, $xr8, 32
+	vext2xv.du.wu	$xr5, $xr5
+	xvslli.d	$xr5, $xr5, 32
 	vext2xv.du.wu	$xr7, $xr9
 	xvor.v	$xr5, $xr5, $xr7
 	xvpickve2gr.d	$t1, $xr5, 3

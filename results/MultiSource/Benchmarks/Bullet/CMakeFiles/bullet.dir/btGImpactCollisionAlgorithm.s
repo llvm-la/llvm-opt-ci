@@ -1640,23 +1640,23 @@ _ZN27btGImpactCollisionAlgorithm21collide_sat_trianglesEP17btCollisionObjectS1_P
 	move	$a1, $s7
 	jirl	$ra, $a3, 0
 	fld.s	$fa1, $sp, 504
-	fld.s	$fa5, $sp, 520
-	fld.s	$fa3, $sp, 500
-	fld.s	$ft4, $sp, 496
+	fld.s	$fa4, $sp, 520
+	fld.s	$fa5, $sp, 500
+	fld.s	$ft2, $sp, 496
 	fld.s	$fa2, $sp, 536
-	fld.s	$fa4, $sp, 432
+	fld.s	$fa3, $sp, 432
 	fld.s	$ft10, $sp, 96                  # 4-byte Folded Reload
-	fmul.s	$fa0, $ft10, $fa3
+	fmul.s	$fa0, $ft10, $fa5
 	fld.s	$ft9, $sp, 100                  # 4-byte Folded Reload
-	fmadd.s	$fa0, $ft9, $ft4, $fa0
+	fmadd.s	$fa0, $ft9, $ft2, $fa0
 	fld.s	$ft11, $sp, 92                  # 4-byte Folded Reload
 	fmadd.s	$fa0, $ft11, $fa1, $fa0
 	fld.s	$ft12, $sp, 88                  # 4-byte Folded Reload
 	fadd.s	$fa0, $ft12, $fa0
 	movfr2gr.s	$a0, $fa0
 	bstrpick.d	$a0, $a0, 31, 0
-	fld.s	$ft2, $sp, 516
-	fld.s	$ft3, $sp, 512
+	fld.s	$ft3, $sp, 516
+	fld.s	$ft4, $sp, 512
 	fld.s	$fa6, $sp, 428
 	fld.s	$ft0, $sp, 532
 	fld.s	$ft1, $sp, 528
@@ -1664,18 +1664,18 @@ _ZN27btGImpactCollisionAlgorithm21collide_sat_trianglesEP17btCollisionObjectS1_P
 	fmul.s	$fa0, $fs7, $fa6
 	fld.s	$ft7, $sp, 64                   # 4-byte Folded Reload
 	fmul.s	$ft5, $ft7, $ft0
-	fmul.s	$ft6, $ft7, $ft2
-	fmul.s	$ft7, $ft7, $fa3
+	fmul.s	$ft6, $ft7, $ft3
+	fmul.s	$ft7, $ft7, $fa5
 	fmadd.s	$fa0, $fs0, $fa7, $fa0
 	fld.s	$ft8, $sp, 60                   # 4-byte Folded Reload
 	fmadd.s	$ft5, $ft8, $ft1, $ft5
-	fmadd.s	$ft6, $ft8, $ft3, $ft6
-	fmadd.s	$ft7, $ft8, $ft4, $ft7
+	fmadd.s	$ft6, $ft8, $ft4, $ft6
+	fmadd.s	$ft7, $ft8, $ft2, $ft7
 	fld.s	$ft13, $sp, 84                  # 4-byte Folded Reload
-	fmadd.s	$fa0, $ft13, $fa4, $fa0
+	fmadd.s	$fa0, $ft13, $fa3, $fa0
 	fld.s	$ft8, $sp, 108                  # 4-byte Folded Reload
 	fmadd.s	$ft5, $ft8, $fa2, $ft5
-	fmadd.s	$ft6, $ft8, $fa5, $ft6
+	fmadd.s	$ft6, $ft8, $fa4, $ft6
 	fmadd.s	$ft7, $ft8, $fa1, $ft7
 	vextrins.w	$vr15, $vr14, 16
 	vextrins.w	$vr15, $vr13, 32
@@ -1684,73 +1684,65 @@ _ZN27btGImpactCollisionAlgorithm21collide_sat_trianglesEP17btCollisionObjectS1_P
 	vfadd.s	$vr0, $vr0, $vr15
 	fmul.s	$ft5, $fs1, $fa6
 	fmul.s	$ft6, $fs5, $ft0
-	fmul.s	$ft7, $fs5, $ft2
-	fmul.s	$fa3, $fs5, $fa3
+	fmul.s	$ft7, $fs5, $ft3
+	fmul.s	$fa5, $fs5, $fa5
 	fmadd.s	$ft5, $fs2, $fa7, $ft5
 	fmadd.s	$ft6, $fs6, $ft1, $ft6
-	fmadd.s	$ft7, $fs6, $ft3, $ft7
-	fmadd.s	$fa3, $fs6, $ft4, $fa3
+	fmadd.s	$ft7, $fs6, $ft4, $ft7
+	fmadd.s	$fa5, $fs6, $ft2, $fa5
 	fld.s	$ft14, $sp, 80                  # 4-byte Folded Reload
-	fmadd.s	$ft4, $ft14, $fa4, $ft5
+	fmadd.s	$ft2, $ft14, $fa3, $ft5
 	fld.s	$ft8, $sp, 104                  # 4-byte Folded Reload
 	fmadd.s	$ft5, $ft8, $fa2, $ft6
-	fmadd.s	$ft6, $ft8, $fa5, $ft7
-	fmadd.s	$fa1, $ft8, $fa1, $fa3
+	fmadd.s	$ft6, $ft8, $fa4, $ft7
+	fmadd.s	$fa1, $ft8, $fa1, $fa5
 	vextrins.w	$vr1, $vr14, 16
 	vextrins.w	$vr1, $vr13, 32
-	vextrins.w	$vr1, $vr12, 48
-	vld	$vr3, $sp, 32                   # 16-byte Folded Reload
-	vfadd.s	$vr3, $vr3, $vr1
-	vpickve2gr.w	$a1, $vr3, 2
-	vinsgr2vr.d	$vr1, $a1, 0
-	vpickve2gr.w	$a1, $vr3, 3
-	vinsgr2vr.d	$vr1, $a1, 1
-	vpickve2gr.w	$a1, $vr3, 0
-	vinsgr2vr.d	$vr12, $a1, 0
-	vpickve2gr.w	$a1, $vr3, 1
-	vinsgr2vr.d	$vr12, $a1, 1
-	xvpermi.q	$xr12, $xr1, 2
-	xvslli.d	$xr1, $xr12, 32
-	vext2xv.du.wu	$xr12, $xr0
-	xvor.v	$xr1, $xr1, $xr12
+	vextrins.w	$vr1, $vr10, 48
+	vld	$vr5, $sp, 32                   # 16-byte Folded Reload
+	vfadd.s	$vr5, $vr5, $vr1
+	vext2xv.du.wu	$xr1, $xr5
+	xvslli.d	$xr1, $xr1, 32
+	vext2xv.du.wu	$xr10, $xr0
+	xvor.v	$xr1, $xr1, $xr10
 	xvstelm.d	$xr1, $sp, 496, 0
 	st.d	$a0, $sp, 504
-	fmul.s	$ft2, $ft10, $ft2
-	fmadd.s	$ft2, $ft9, $ft3, $ft2
-	fmadd.s	$fa5, $ft11, $fa5, $ft2
-	fadd.s	$fa5, $ft12, $fa5
-	movfr2gr.s	$a0, $fa5
+	fmul.s	$ft2, $ft10, $ft3
+	fmadd.s	$ft2, $ft9, $ft4, $ft2
+	fmadd.s	$fa4, $ft11, $fa4, $ft2
+	fadd.s	$fa4, $ft12, $fa4
+	movfr2gr.s	$a0, $fa4
 	bstrpick.d	$a0, $a0, 31, 0
 	xvstelm.d	$xr1, $sp, 512, 1
 	st.d	$a0, $sp, 520
-	fmul.s	$fa5, $ft10, $ft0
-	fmadd.s	$fa5, $ft9, $ft1, $fa5
-	fmadd.s	$fa2, $ft11, $fa2, $fa5
+	fmul.s	$fa4, $ft10, $ft0
+	fmadd.s	$fa4, $ft9, $ft1, $fa4
+	fmadd.s	$fa2, $ft11, $fa2, $fa4
 	fadd.s	$fa2, $ft12, $fa2
 	fld.s	$ft5, $sp, 72                   # 4-byte Folded Reload
-	fmul.s	$fa5, $ft5, $fa6
+	fmul.s	$fa4, $ft5, $fa6
 	fld.s	$ft4, $sp, 76                   # 4-byte Folded Reload
-	fmadd.s	$fa5, $ft4, $fa7, $fa5
+	fmadd.s	$fa4, $ft4, $fa7, $fa4
 	fld.s	$ft6, $sp, 68                   # 4-byte Folded Reload
-	fmadd.s	$fa4, $ft6, $fa4, $fa5
-	fadd.s	$fa4, $fs3, $fa4
-	movfr2gr.s	$a0, $fa4
+	fmadd.s	$fa3, $ft6, $fa3, $fa4
+	fadd.s	$fa3, $fs3, $fa3
+	movfr2gr.s	$a0, $fa3
 	bstrpick.d	$a0, $a0, 31, 0
 	xvstelm.d	$xr1, $sp, 424, 3
 	fld.s	$fa6, $sp, 444
 	fld.s	$fa7, $sp, 440
 	fld.s	$ft0, $sp, 448
 	st.d	$a0, $sp, 432
-	fmul.s	$fa4, $fs7, $fa6
-	fmadd.s	$fa4, $fs0, $fa7, $fa4
-	fmadd.s	$fa4, $ft13, $ft0, $fa4
+	fmul.s	$fa3, $fs7, $fa6
+	fmadd.s	$fa3, $fs0, $fa7, $fa3
+	fmadd.s	$fa3, $ft13, $ft0, $fa3
 	vld	$vr16, $sp, 112                 # 16-byte Folded Reload
-	fadd.s	$fa4, $ft8, $fa4
-	fmul.s	$fa5, $fs1, $fa6
-	fmadd.s	$fa5, $fs2, $fa7, $fa5
-	fmadd.s	$fa5, $ft14, $ft0, $fa5
+	fadd.s	$fa3, $ft8, $fa3
+	fmul.s	$fa4, $fs1, $fa6
+	fmadd.s	$fa4, $fs2, $fa7, $fa4
+	fmadd.s	$fa4, $ft14, $ft0, $fa4
 	vld	$vr15, $sp, 128                 # 16-byte Folded Reload
-	fadd.s	$fa5, $ft7, $fa5
+	fadd.s	$fa4, $ft7, $fa4
 	fmul.s	$fa6, $ft5, $fa6
 	fmadd.s	$fa6, $ft4, $fa7, $fa6
 	fmadd.s	$fa6, $ft6, $ft0, $fa6
@@ -1781,10 +1773,10 @@ _ZN27btGImpactCollisionAlgorithm21collide_sat_trianglesEP17btCollisionObjectS1_P
 	fsub.s	$ft7, $ft7, $ft3
 	vreplvei.w	$vr16, $vr0, 2
 	fsub.s	$ft8, $ft8, $ft1
-	vreplvei.w	$vr3, $vr3, 2
-	fsub.s	$fa3, $fa3, $ft2
+	vreplvei.w	$vr5, $vr5, 2
+	fsub.s	$fa5, $fa5, $ft2
 	fsub.s	$ft9, $fa2, $ft3
-	fneg.s	$ft10, $fa3
+	fneg.s	$ft10, $fa5
 	fmul.s	$ft10, $ft7, $ft10
 	fmadd.s	$ft10, $ft6, $ft9, $ft10
 	fneg.s	$ft9, $ft9
@@ -1792,12 +1784,12 @@ _ZN27btGImpactCollisionAlgorithm21collide_sat_trianglesEP17btCollisionObjectS1_P
 	fmadd.s	$ft7, $ft7, $ft8, $ft9
 	fneg.s	$ft8, $ft8
 	fmul.s	$ft6, $ft6, $ft8
-	fmadd.s	$fa3, $ft5, $fa3, $ft6
+	fmadd.s	$fa5, $ft5, $fa5, $ft6
 	fld.s	$ft5, $sp, 428
 	fld.s	$ft6, $sp, 432
 	vreplvei.w	$vr0, $vr0, 3
-	fsub.s	$ft8, $fa4, $fa0
-	fsub.s	$ft9, $fa5, $ft5
+	fsub.s	$ft8, $fa3, $fa0
+	fsub.s	$ft9, $fa4, $ft5
 	fsub.s	$ft11, $fa6, $ft6
 	fsub.s	$ft12, $fa7, $fa0
 	fsub.s	$ft13, $ft0, $ft5
@@ -1813,26 +1805,26 @@ _ZN27btGImpactCollisionAlgorithm21collide_sat_trianglesEP17btCollisionObjectS1_P
 	fmadd.s	$ft8, $ft8, $ft13, $ft9
 	movfr2gr.s	$a0, $fa2
 	xvstelm.d	$xr1, $sp, 528, 2
-	movfr2gr.s	$a1, $fa4
-	movfr2gr.s	$a2, $fa5
+	movfr2gr.s	$a1, $fa3
+	movfr2gr.s	$a2, $fa4
 	movfr2gr.s	$a3, $fa6
 	movfr2gr.s	$a4, $fa7
 	movfr2gr.s	$a5, $ft0
 	movfr2gr.s	$a6, $ft4
 	fmul.s	$fa1, $ft7, $ft7
 	fmadd.s	$fa1, $ft10, $ft10, $fa1
-	fmadd.s	$fa1, $fa3, $fa3, $fa1
+	fmadd.s	$fa1, $fa5, $fa5, $fa1
 	frsqrt.s	$fa1, $fa1
 	fmul.s	$fa2, $ft10, $fa1
-	fmul.s	$fa4, $ft7, $fa1
-	fmul.s	$fa1, $fa3, $fa1
-	fmul.s	$fa3, $ft2, $fa4
-	fmadd.s	$fa3, $ft1, $fa2, $fa3
-	fmadd.s	$fa3, $ft3, $fa1, $fa3
+	fmul.s	$fa3, $ft7, $fa1
+	fmul.s	$fa1, $fa5, $fa1
+	fmul.s	$fa4, $ft2, $fa3
+	fmadd.s	$fa4, $ft1, $fa2, $fa4
+	fmadd.s	$fa4, $ft3, $fa1, $fa4
 	fst.s	$fa2, $sp, 544
-	fst.s	$fa4, $sp, 548
+	fst.s	$fa3, $sp, 548
 	fst.s	$fa1, $sp, 552
-	fst.s	$fa3, $sp, 556
+	fst.s	$fa4, $sp, 556
 	fmul.s	$fa1, $ft11, $ft11
 	fmadd.s	$fa1, $ft15, $ft15, $fa1
 	fmadd.s	$fa1, $ft8, $ft8, $fa1

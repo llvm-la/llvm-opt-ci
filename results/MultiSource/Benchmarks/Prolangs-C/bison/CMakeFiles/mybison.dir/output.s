@@ -1645,44 +1645,12 @@ token_actions:                          # @token_actions
 	vld	$vr4, $a4, 0
 	vseqi.h	$vr3, $vr3, 0
 	vxori.b	$vr3, $vr3, 255
-	vpickve2gr.h	$a6, $vr3, 4
-	vinsgr2vr.w	$vr5, $a6, 0
-	vpickve2gr.h	$a6, $vr3, 5
-	vinsgr2vr.w	$vr5, $a6, 1
-	vpickve2gr.h	$a6, $vr3, 6
-	vinsgr2vr.w	$vr5, $a6, 2
-	vpickve2gr.h	$a6, $vr3, 7
-	vinsgr2vr.w	$vr5, $a6, 3
-	vpickve2gr.h	$a6, $vr3, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	vpickve2gr.h	$a6, $vr3, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	vpickve2gr.h	$a6, $vr3, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	vpickve2gr.h	$a6, $vr3, 3
-	vinsgr2vr.w	$vr6, $a6, 3
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr3, $xr6, $xr1
+	vext2xv.wu.hu	$xr3, $xr3
+	xvand.v	$xr3, $xr3, $xr1
 	vseqi.h	$vr4, $vr4, 0
 	vxori.b	$vr4, $vr4, 255
-	vpickve2gr.h	$a6, $vr4, 4
-	vinsgr2vr.w	$vr5, $a6, 0
-	vpickve2gr.h	$a6, $vr4, 5
-	vinsgr2vr.w	$vr5, $a6, 1
-	vpickve2gr.h	$a6, $vr4, 6
-	vinsgr2vr.w	$vr5, $a6, 2
-	vpickve2gr.h	$a6, $vr4, 7
-	vinsgr2vr.w	$vr5, $a6, 3
-	vpickve2gr.h	$a6, $vr4, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	vpickve2gr.h	$a6, $vr4, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	vpickve2gr.h	$a6, $vr4, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	vpickve2gr.h	$a6, $vr4, 3
-	vinsgr2vr.w	$vr6, $a6, 3
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr4, $xr6, $xr1
+	vext2xv.wu.hu	$xr4, $xr4
+	xvand.v	$xr4, $xr4, $xr1
 	xvadd.w	$xr0, $xr0, $xr3
 	xvadd.w	$xr2, $xr2, $xr4
 	addi.d	$a5, $a5, -16
@@ -1807,14 +1775,14 @@ token_actions:                          # @token_actions
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	vrepli.w	$vr6, 1
+	vrepli.w	$vr4, 1
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
-	xvrepli.w	$xr7, 1
+	xvrepli.w	$xr5, 1
 	ori	$s7, $zero, 10
 	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
-	vst	$vr6, $sp, 144                  # 16-byte Folded Spill
-	xvst	$xr7, $sp, 112                  # 32-byte Folded Spill
+	vst	$vr4, $sp, 144                  # 16-byte Folded Spill
+	xvst	$xr5, $sp, 112                  # 32-byte Folded Spill
 	b	.LBB12_25
 	.p2align	4, , 16
 .LBB12_23:                              # %._crit_edge34.i19
@@ -1870,8 +1838,8 @@ token_actions:                          # @token_actions
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
-	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
-	xvld	$xr7, $sp, 112                  # 32-byte Folded Reload
+	vld	$vr4, $sp, 144                  # 16-byte Folded Reload
+	xvld	$xr5, $sp, 112                  # 32-byte Folded Reload
 	blez	$a0, .LBB12_24
 # %bb.29:                               # %iter.check68
                                         #   in Loop: Header=BB12_25 Depth=1
@@ -1908,44 +1876,12 @@ token_actions:                          # @token_actions
 	vld	$vr3, $a4, 0
 	vseqi.h	$vr2, $vr2, 0
 	vxori.b	$vr2, $vr2, 255
-	vpickve2gr.h	$a6, $vr2, 4
-	vinsgr2vr.w	$vr4, $a6, 0
-	vpickve2gr.h	$a6, $vr2, 5
-	vinsgr2vr.w	$vr4, $a6, 1
-	vpickve2gr.h	$a6, $vr2, 6
-	vinsgr2vr.w	$vr4, $a6, 2
-	vpickve2gr.h	$a6, $vr2, 7
-	vinsgr2vr.w	$vr4, $a6, 3
-	vpickve2gr.h	$a6, $vr2, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	vpickve2gr.h	$a6, $vr2, 1
-	vinsgr2vr.w	$vr5, $a6, 1
-	vpickve2gr.h	$a6, $vr2, 2
-	vinsgr2vr.w	$vr5, $a6, 2
-	vpickve2gr.h	$a6, $vr2, 3
-	vinsgr2vr.w	$vr5, $a6, 3
-	xvpermi.q	$xr5, $xr4, 2
-	xvand.v	$xr2, $xr5, $xr7
+	vext2xv.wu.hu	$xr2, $xr2
+	xvand.v	$xr2, $xr2, $xr5
 	vseqi.h	$vr3, $vr3, 0
 	vxori.b	$vr3, $vr3, 255
-	vpickve2gr.h	$a6, $vr3, 4
-	vinsgr2vr.w	$vr4, $a6, 0
-	vpickve2gr.h	$a6, $vr3, 5
-	vinsgr2vr.w	$vr4, $a6, 1
-	vpickve2gr.h	$a6, $vr3, 6
-	vinsgr2vr.w	$vr4, $a6, 2
-	vpickve2gr.h	$a6, $vr3, 7
-	vinsgr2vr.w	$vr4, $a6, 3
-	vpickve2gr.h	$a6, $vr3, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	vpickve2gr.h	$a6, $vr3, 1
-	vinsgr2vr.w	$vr5, $a6, 1
-	vpickve2gr.h	$a6, $vr3, 2
-	vinsgr2vr.w	$vr5, $a6, 2
-	vpickve2gr.h	$a6, $vr3, 3
-	vinsgr2vr.w	$vr5, $a6, 3
-	xvpermi.q	$xr5, $xr4, 2
-	xvand.v	$xr3, $xr5, $xr7
+	vext2xv.wu.hu	$xr3, $xr3
+	xvand.v	$xr3, $xr3, $xr5
 	xvadd.w	$xr0, $xr0, $xr2
 	xvadd.w	$xr1, $xr1, $xr3
 	addi.d	$a5, $a5, -16
@@ -1981,7 +1917,7 @@ token_actions:                          # @token_actions
 	vseqi.h	$vr1, $vr1, 0
 	vxori.b	$vr1, $vr1, 255
 	vilvl.h	$vr1, $vr1, $vr1
-	vand.v	$vr1, $vr1, $vr6
+	vand.v	$vr1, $vr1, $vr4
 	vadd.w	$vr0, $vr0, $vr1
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 8
@@ -4345,44 +4281,12 @@ save_row:                               # @save_row
 	vld	$vr4, $a4, 0
 	vseqi.h	$vr3, $vr3, 0
 	vxori.b	$vr3, $vr3, 255
-	vpickve2gr.h	$a6, $vr3, 4
-	vinsgr2vr.w	$vr5, $a6, 0
-	vpickve2gr.h	$a6, $vr3, 5
-	vinsgr2vr.w	$vr5, $a6, 1
-	vpickve2gr.h	$a6, $vr3, 6
-	vinsgr2vr.w	$vr5, $a6, 2
-	vpickve2gr.h	$a6, $vr3, 7
-	vinsgr2vr.w	$vr5, $a6, 3
-	vpickve2gr.h	$a6, $vr3, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	vpickve2gr.h	$a6, $vr3, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	vpickve2gr.h	$a6, $vr3, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	vpickve2gr.h	$a6, $vr3, 3
-	vinsgr2vr.w	$vr6, $a6, 3
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr3, $xr6, $xr1
+	vext2xv.wu.hu	$xr3, $xr3
+	xvand.v	$xr3, $xr3, $xr1
 	vseqi.h	$vr4, $vr4, 0
 	vxori.b	$vr4, $vr4, 255
-	vpickve2gr.h	$a6, $vr4, 4
-	vinsgr2vr.w	$vr5, $a6, 0
-	vpickve2gr.h	$a6, $vr4, 5
-	vinsgr2vr.w	$vr5, $a6, 1
-	vpickve2gr.h	$a6, $vr4, 6
-	vinsgr2vr.w	$vr5, $a6, 2
-	vpickve2gr.h	$a6, $vr4, 7
-	vinsgr2vr.w	$vr5, $a6, 3
-	vpickve2gr.h	$a6, $vr4, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	vpickve2gr.h	$a6, $vr4, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	vpickve2gr.h	$a6, $vr4, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	vpickve2gr.h	$a6, $vr4, 3
-	vinsgr2vr.w	$vr6, $a6, 3
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr4, $xr6, $xr1
+	vext2xv.wu.hu	$xr4, $xr4
+	xvand.v	$xr4, $xr4, $xr1
 	xvadd.w	$xr0, $xr0, $xr3
 	xvadd.w	$xr2, $xr2, $xr4
 	addi.d	$a5, $a5, -16

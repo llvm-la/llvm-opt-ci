@@ -17662,32 +17662,32 @@ vorbis_encode_noisebias_setup:          # @vorbis_encode_noisebias_setup
 	fcvt.s.d	$ft0, $ft1
 	fcvt.s.d	$ft1, $ft2
 	fcvt.s.d	$fa7, $fa7
-	fcmp.clt.s	$fcc2, $ft3, $fa2
-	fcmp.clt.s	$fcc3, $ft4, $fa2
-	fcmp.clt.s	$fcc4, $fa5, $fa2
-	fcmp.clt.s	$fcc5, $fa4, $fa2
-	fcmp.clt.s	$fcc0, $fa6, $fa2
-	fcmp.clt.s	$fcc1, $ft0, $fa2
-	fcmp.clt.s	$fcc6, $ft1, $fa2
-	fcmp.clt.s	$fcc7, $fa7, $fa2
-	movcf2gr	$a4, $fcc5
-	vinsgr2vr.w	$vr3, $a4, 0
-	movcf2gr	$a4, $fcc4
-	vinsgr2vr.w	$vr3, $a4, 1
-	movcf2gr	$a4, $fcc3
-	vinsgr2vr.w	$vr3, $a4, 2
-	movcf2gr	$a4, $fcc2
-	vinsgr2vr.w	$vr3, $a4, 3
-	movcf2gr	$a4, $fcc7
-	vinsgr2vr.w	$vr10, $a4, 0
+	fcmp.clt.s	$fcc0, $ft3, $fa2
+	fcmp.clt.s	$fcc1, $ft4, $fa2
+	fcmp.clt.s	$fcc2, $fa5, $fa2
+	fcmp.clt.s	$fcc3, $fa4, $fa2
+	fcmp.clt.s	$fcc4, $fa6, $fa2
+	fcmp.clt.s	$fcc5, $ft0, $fa2
+	fcmp.clt.s	$fcc6, $fa7, $fa2
+	fcmp.clt.s	$fcc7, $ft1, $fa2
 	movcf2gr	$a4, $fcc6
-	vinsgr2vr.w	$vr10, $a4, 1
+	vinsgr2vr.h	$vr3, $a4, 0
+	movcf2gr	$a4, $fcc7
+	vinsgr2vr.h	$vr3, $a4, 1
+	movcf2gr	$a4, $fcc5
+	vinsgr2vr.h	$vr3, $a4, 2
+	movcf2gr	$a4, $fcc4
+	vinsgr2vr.h	$vr3, $a4, 3
+	movcf2gr	$a4, $fcc3
+	vinsgr2vr.h	$vr3, $a4, 4
+	movcf2gr	$a4, $fcc2
+	vinsgr2vr.h	$vr3, $a4, 5
 	movcf2gr	$a4, $fcc1
-	vinsgr2vr.w	$vr10, $a4, 2
+	vinsgr2vr.h	$vr3, $a4, 6
 	movcf2gr	$a4, $fcc0
-	vinsgr2vr.w	$vr10, $a4, 3
-	xvpermi.q	$xr10, $xr3, 2
-	xvslli.w	$xr3, $xr10, 31
+	vinsgr2vr.h	$vr3, $a4, 7
+	vext2xv.wu.hu	$xr3, $xr3
+	xvslli.w	$xr3, $xr3, 31
 	xvsrai.w	$xr10, $xr3, 31
 	xvreplve0.w	$xr3, $xr2
 	vextrins.w	$vr4, $vr5, 16
@@ -17731,32 +17731,32 @@ vorbis_encode_noisebias_setup:          # @vorbis_encode_noisebias_setup
 	fcvt.s.d	$ft0, $ft1
 	fcvt.s.d	$ft1, $ft2
 	fcvt.s.d	$fa5, $ft3
-	fcmp.clt.s	$fcc2, $ft4, $fa2
-	fcmp.clt.s	$fcc3, $ft5, $fa2
-	fcmp.clt.s	$fcc4, $fa6, $fa2
-	fcmp.clt.s	$fcc5, $fa4, $fa2
-	fcmp.clt.s	$fcc0, $fa7, $fa2
-	fcmp.clt.s	$fcc1, $ft0, $fa2
-	fcmp.clt.s	$fcc6, $ft1, $fa2
-	fcmp.clt.s	$fcc7, $fa5, $fa2
-	movcf2gr	$a4, $fcc5
-	vinsgr2vr.w	$vr10, $a4, 0
-	movcf2gr	$a4, $fcc4
-	vinsgr2vr.w	$vr10, $a4, 1
-	movcf2gr	$a4, $fcc3
-	vinsgr2vr.w	$vr10, $a4, 2
-	movcf2gr	$a4, $fcc2
-	vinsgr2vr.w	$vr10, $a4, 3
-	movcf2gr	$a4, $fcc7
-	vinsgr2vr.w	$vr11, $a4, 0
+	fcmp.clt.s	$fcc0, $ft4, $fa2
+	fcmp.clt.s	$fcc1, $ft5, $fa2
+	fcmp.clt.s	$fcc2, $fa6, $fa2
+	fcmp.clt.s	$fcc3, $fa4, $fa2
+	fcmp.clt.s	$fcc4, $fa7, $fa2
+	fcmp.clt.s	$fcc5, $ft0, $fa2
+	fcmp.clt.s	$fcc6, $fa5, $fa2
+	fcmp.clt.s	$fcc7, $ft1, $fa2
 	movcf2gr	$a4, $fcc6
-	vinsgr2vr.w	$vr11, $a4, 1
+	vinsgr2vr.h	$vr10, $a4, 0
+	movcf2gr	$a4, $fcc7
+	vinsgr2vr.h	$vr10, $a4, 1
+	movcf2gr	$a4, $fcc5
+	vinsgr2vr.h	$vr10, $a4, 2
+	movcf2gr	$a4, $fcc4
+	vinsgr2vr.h	$vr10, $a4, 3
+	movcf2gr	$a4, $fcc3
+	vinsgr2vr.h	$vr10, $a4, 4
+	movcf2gr	$a4, $fcc2
+	vinsgr2vr.h	$vr10, $a4, 5
 	movcf2gr	$a4, $fcc1
-	vinsgr2vr.w	$vr11, $a4, 2
+	vinsgr2vr.h	$vr10, $a4, 6
 	movcf2gr	$a4, $fcc0
-	vinsgr2vr.w	$vr11, $a4, 3
-	xvpermi.q	$xr11, $xr10, 2
-	xvslli.w	$xr10, $xr11, 31
+	vinsgr2vr.h	$vr10, $a4, 7
+	vext2xv.wu.hu	$xr10, $xr10
+	xvslli.w	$xr10, $xr10, 31
 	xvsrai.w	$xr10, $xr10, 31
 	vextrins.w	$vr4, $vr6, 16
 	vextrins.w	$vr4, $vr13, 32
@@ -43005,33 +43005,17 @@ setup_tone_curves:                      # @setup_tone_curves
 	xvpickve2gr.w	$a0, $xr5, 7
 	vinsgr2vr.h	$vr6, $a0, 7
 	vand.v	$vr5, $vr2, $vr6
-	vpickve2gr.h	$a0, $vr5, 4
-	vinsgr2vr.w	$vr6, $a0, 0
-	vpickve2gr.h	$a0, $vr5, 5
-	vinsgr2vr.w	$vr6, $a0, 1
-	vpickve2gr.h	$a0, $vr5, 6
-	vinsgr2vr.w	$vr6, $a0, 2
-	vpickve2gr.h	$a0, $vr5, 7
-	vinsgr2vr.w	$vr6, $a0, 3
-	vpickve2gr.h	$a0, $vr5, 0
-	vinsgr2vr.w	$vr7, $a0, 0
-	vpickve2gr.h	$a0, $vr5, 1
-	vinsgr2vr.w	$vr7, $a0, 1
-	vpickve2gr.h	$a0, $vr5, 2
-	vinsgr2vr.w	$vr7, $a0, 2
-	vpickve2gr.h	$a0, $vr5, 3
-	vinsgr2vr.w	$vr7, $a0, 3
-	xvpermi.q	$xr7, $xr6, 2
+	vext2xv.wu.hu	$xr5, $xr5
 	pcalau12i	$a0, %pc_hi20(.LCPI220_1)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI220_1)
-	xvslli.w	$xr6, $xr7, 31
-	xvsrai.w	$xr6, $xr6, 31
-	xvandn.v	$xr6, $xr6, $xr1
+	xvld	$xr6, $a0, %pc_lo12(.LCPI220_1)
+	xvslli.w	$xr5, $xr5, 31
+	xvsrai.w	$xr5, $xr5, 31
+	xvandn.v	$xr5, $xr5, $xr1
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 4048
 	add.d	$a0, $fp, $a0
-	xvst	$xr6, $a0, 0                    # 32-byte Folded Spill
-	xvfmul.s	$xr5, $xr3, $xr5
+	xvst	$xr5, $a0, 0                    # 32-byte Folded Spill
+	xvfmul.s	$xr5, $xr3, $xr6
 	xvfadd.s	$xr5, $xr4, $xr5
 	xvfcmp.clt.s	$xr6, $xr0, $xr5
 	xvpickve2gr.w	$a0, $xr6, 0
@@ -43051,33 +43035,17 @@ setup_tone_curves:                      # @setup_tone_curves
 	xvpickve2gr.w	$a0, $xr6, 7
 	vinsgr2vr.h	$vr7, $a0, 7
 	vand.v	$vr6, $vr2, $vr7
-	vpickve2gr.h	$a0, $vr6, 4
-	vinsgr2vr.w	$vr7, $a0, 0
-	vpickve2gr.h	$a0, $vr6, 5
-	vinsgr2vr.w	$vr7, $a0, 1
-	vpickve2gr.h	$a0, $vr6, 6
-	vinsgr2vr.w	$vr7, $a0, 2
-	vpickve2gr.h	$a0, $vr6, 7
-	vinsgr2vr.w	$vr7, $a0, 3
-	vpickve2gr.h	$a0, $vr6, 0
-	vinsgr2vr.w	$vr8, $a0, 0
-	vpickve2gr.h	$a0, $vr6, 1
-	vinsgr2vr.w	$vr8, $a0, 1
-	vpickve2gr.h	$a0, $vr6, 2
-	vinsgr2vr.w	$vr8, $a0, 2
-	vpickve2gr.h	$a0, $vr6, 3
-	vinsgr2vr.w	$vr8, $a0, 3
-	xvpermi.q	$xr8, $xr7, 2
+	vext2xv.wu.hu	$xr6, $xr6
 	pcalau12i	$a0, %pc_hi20(.LCPI220_2)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI220_2)
-	xvslli.w	$xr7, $xr8, 31
-	xvsrai.w	$xr7, $xr7, 31
-	xvandn.v	$xr7, $xr7, $xr5
+	xvld	$xr7, $a0, %pc_lo12(.LCPI220_2)
+	xvslli.w	$xr6, $xr6, 31
+	xvsrai.w	$xr6, $xr6, 31
+	xvandn.v	$xr6, $xr6, $xr5
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 4016
 	add.d	$a0, $fp, $a0
-	xvst	$xr7, $a0, 0                    # 32-byte Folded Spill
-	xvfmul.s	$xr6, $xr3, $xr6
+	xvst	$xr6, $a0, 0                    # 32-byte Folded Spill
+	xvfmul.s	$xr6, $xr3, $xr7
 	xvfadd.s	$xr6, $xr4, $xr6
 	xvfcmp.clt.s	$xr7, $xr0, $xr6
 	xvpickve2gr.w	$a0, $xr7, 0
@@ -43097,33 +43065,17 @@ setup_tone_curves:                      # @setup_tone_curves
 	xvpickve2gr.w	$a0, $xr7, 7
 	vinsgr2vr.h	$vr8, $a0, 7
 	vand.v	$vr7, $vr2, $vr8
-	vpickve2gr.h	$a0, $vr7, 4
-	vinsgr2vr.w	$vr8, $a0, 0
-	vpickve2gr.h	$a0, $vr7, 5
-	vinsgr2vr.w	$vr8, $a0, 1
-	vpickve2gr.h	$a0, $vr7, 6
-	vinsgr2vr.w	$vr8, $a0, 2
-	vpickve2gr.h	$a0, $vr7, 7
-	vinsgr2vr.w	$vr8, $a0, 3
-	vpickve2gr.h	$a0, $vr7, 0
-	vinsgr2vr.w	$vr9, $a0, 0
-	vpickve2gr.h	$a0, $vr7, 1
-	vinsgr2vr.w	$vr9, $a0, 1
-	vpickve2gr.h	$a0, $vr7, 2
-	vinsgr2vr.w	$vr9, $a0, 2
-	vpickve2gr.h	$a0, $vr7, 3
-	vinsgr2vr.w	$vr9, $a0, 3
-	xvpermi.q	$xr9, $xr8, 2
+	vext2xv.wu.hu	$xr7, $xr7
 	pcalau12i	$a0, %pc_hi20(.LCPI220_3)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI220_3)
-	xvslli.w	$xr8, $xr9, 31
-	xvsrai.w	$xr8, $xr8, 31
-	xvandn.v	$xr8, $xr8, $xr6
+	xvld	$xr8, $a0, %pc_lo12(.LCPI220_3)
+	xvslli.w	$xr7, $xr7, 31
+	xvsrai.w	$xr7, $xr7, 31
+	xvandn.v	$xr7, $xr7, $xr6
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 3984
 	add.d	$a0, $fp, $a0
-	xvst	$xr8, $a0, 0                    # 32-byte Folded Spill
-	xvfmul.s	$xr7, $xr3, $xr7
+	xvst	$xr7, $a0, 0                    # 32-byte Folded Spill
+	xvfmul.s	$xr7, $xr3, $xr8
 	xvfadd.s	$xr7, $xr4, $xr7
 	xvfcmp.clt.s	$xr8, $xr0, $xr7
 	xvpickve2gr.w	$a0, $xr8, 0
@@ -43143,33 +43095,17 @@ setup_tone_curves:                      # @setup_tone_curves
 	xvpickve2gr.w	$a0, $xr8, 7
 	vinsgr2vr.h	$vr9, $a0, 7
 	vand.v	$vr8, $vr2, $vr9
-	vpickve2gr.h	$a0, $vr8, 4
-	vinsgr2vr.w	$vr9, $a0, 0
-	vpickve2gr.h	$a0, $vr8, 5
-	vinsgr2vr.w	$vr9, $a0, 1
-	vpickve2gr.h	$a0, $vr8, 6
-	vinsgr2vr.w	$vr9, $a0, 2
-	vpickve2gr.h	$a0, $vr8, 7
-	vinsgr2vr.w	$vr9, $a0, 3
-	vpickve2gr.h	$a0, $vr8, 0
-	vinsgr2vr.w	$vr10, $a0, 0
-	vpickve2gr.h	$a0, $vr8, 1
-	vinsgr2vr.w	$vr10, $a0, 1
-	vpickve2gr.h	$a0, $vr8, 2
-	vinsgr2vr.w	$vr10, $a0, 2
-	vpickve2gr.h	$a0, $vr8, 3
-	vinsgr2vr.w	$vr10, $a0, 3
-	xvpermi.q	$xr10, $xr9, 2
+	vext2xv.wu.hu	$xr8, $xr8
 	pcalau12i	$a0, %pc_hi20(.LCPI220_4)
-	xvld	$xr8, $a0, %pc_lo12(.LCPI220_4)
-	xvslli.w	$xr9, $xr10, 31
-	xvsrai.w	$xr9, $xr9, 31
-	xvandn.v	$xr9, $xr9, $xr7
+	xvld	$xr9, $a0, %pc_lo12(.LCPI220_4)
+	xvslli.w	$xr8, $xr8, 31
+	xvsrai.w	$xr8, $xr8, 31
+	xvandn.v	$xr8, $xr8, $xr7
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 3952
 	add.d	$a0, $fp, $a0
-	xvst	$xr9, $a0, 0                    # 32-byte Folded Spill
-	xvfmul.s	$xr8, $xr3, $xr8
+	xvst	$xr8, $a0, 0                    # 32-byte Folded Spill
+	xvfmul.s	$xr8, $xr3, $xr9
 	xvfadd.s	$xr8, $xr4, $xr8
 	xvfcmp.clt.s	$xr9, $xr0, $xr8
 	xvpickve2gr.w	$a0, $xr9, 0
@@ -43189,33 +43125,17 @@ setup_tone_curves:                      # @setup_tone_curves
 	xvpickve2gr.w	$a0, $xr9, 7
 	vinsgr2vr.h	$vr10, $a0, 7
 	vand.v	$vr9, $vr2, $vr10
-	vpickve2gr.h	$a0, $vr9, 4
-	vinsgr2vr.w	$vr10, $a0, 0
-	vpickve2gr.h	$a0, $vr9, 5
-	vinsgr2vr.w	$vr10, $a0, 1
-	vpickve2gr.h	$a0, $vr9, 6
-	vinsgr2vr.w	$vr10, $a0, 2
-	vpickve2gr.h	$a0, $vr9, 7
-	vinsgr2vr.w	$vr10, $a0, 3
-	vpickve2gr.h	$a0, $vr9, 0
-	vinsgr2vr.w	$vr11, $a0, 0
-	vpickve2gr.h	$a0, $vr9, 1
-	vinsgr2vr.w	$vr11, $a0, 1
-	vpickve2gr.h	$a0, $vr9, 2
-	vinsgr2vr.w	$vr11, $a0, 2
-	vpickve2gr.h	$a0, $vr9, 3
-	vinsgr2vr.w	$vr11, $a0, 3
-	xvpermi.q	$xr11, $xr10, 2
+	vext2xv.wu.hu	$xr9, $xr9
 	pcalau12i	$a0, %pc_hi20(.LCPI220_5)
-	xvld	$xr9, $a0, %pc_lo12(.LCPI220_5)
-	xvslli.w	$xr10, $xr11, 31
-	xvsrai.w	$xr10, $xr10, 31
-	xvandn.v	$xr10, $xr10, $xr8
+	xvld	$xr10, $a0, %pc_lo12(.LCPI220_5)
+	xvslli.w	$xr9, $xr9, 31
+	xvsrai.w	$xr9, $xr9, 31
+	xvandn.v	$xr9, $xr9, $xr8
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 3920
 	add.d	$a0, $fp, $a0
-	xvst	$xr10, $a0, 0                   # 32-byte Folded Spill
-	xvfmul.s	$xr9, $xr3, $xr9
+	xvst	$xr9, $a0, 0                    # 32-byte Folded Spill
+	xvfmul.s	$xr9, $xr3, $xr10
 	xvfadd.s	$xr9, $xr4, $xr9
 	xvfcmp.clt.s	$xr10, $xr0, $xr9
 	xvpickve2gr.w	$a0, $xr10, 0
@@ -43235,33 +43155,17 @@ setup_tone_curves:                      # @setup_tone_curves
 	xvpickve2gr.w	$a0, $xr10, 7
 	vinsgr2vr.h	$vr11, $a0, 7
 	vand.v	$vr10, $vr2, $vr11
-	vpickve2gr.h	$a0, $vr10, 4
-	vinsgr2vr.w	$vr11, $a0, 0
-	vpickve2gr.h	$a0, $vr10, 5
-	vinsgr2vr.w	$vr11, $a0, 1
-	vpickve2gr.h	$a0, $vr10, 6
-	vinsgr2vr.w	$vr11, $a0, 2
-	vpickve2gr.h	$a0, $vr10, 7
-	vinsgr2vr.w	$vr11, $a0, 3
-	vpickve2gr.h	$a0, $vr10, 0
-	vinsgr2vr.w	$vr12, $a0, 0
-	vpickve2gr.h	$a0, $vr10, 1
-	vinsgr2vr.w	$vr12, $a0, 1
-	vpickve2gr.h	$a0, $vr10, 2
-	vinsgr2vr.w	$vr12, $a0, 2
-	vpickve2gr.h	$a0, $vr10, 3
-	vinsgr2vr.w	$vr12, $a0, 3
-	xvpermi.q	$xr12, $xr11, 2
+	vext2xv.wu.hu	$xr10, $xr10
 	pcalau12i	$a0, %pc_hi20(.LCPI220_6)
-	xvld	$xr10, $a0, %pc_lo12(.LCPI220_6)
-	xvslli.w	$xr11, $xr12, 31
-	xvsrai.w	$xr11, $xr11, 31
-	xvandn.v	$xr11, $xr11, $xr9
+	xvld	$xr11, $a0, %pc_lo12(.LCPI220_6)
+	xvslli.w	$xr10, $xr10, 31
+	xvsrai.w	$xr10, $xr10, 31
+	xvandn.v	$xr10, $xr10, $xr9
 	lu12i.w	$a0, -9
 	ori	$a0, $a0, 3888
 	add.d	$a0, $fp, $a0
-	xvst	$xr11, $a0, 0                   # 32-byte Folded Spill
-	xvfmul.s	$xr3, $xr3, $xr10
+	xvst	$xr10, $a0, 0                   # 32-byte Folded Spill
+	xvfmul.s	$xr3, $xr3, $xr11
 	xvfadd.s	$xr3, $xr4, $xr3
 	xvfcmp.clt.s	$xr4, $xr0, $xr3
 	xvpickve2gr.w	$a0, $xr4, 0
@@ -43281,24 +43185,8 @@ setup_tone_curves:                      # @setup_tone_curves
 	xvpickve2gr.w	$a0, $xr4, 7
 	vinsgr2vr.h	$vr10, $a0, 7
 	vand.v	$vr2, $vr2, $vr10
-	vpickve2gr.h	$a0, $vr2, 4
-	vinsgr2vr.w	$vr4, $a0, 0
-	vpickve2gr.h	$a0, $vr2, 5
-	vinsgr2vr.w	$vr4, $a0, 1
-	vpickve2gr.h	$a0, $vr2, 6
-	vinsgr2vr.w	$vr4, $a0, 2
-	vpickve2gr.h	$a0, $vr2, 7
-	vinsgr2vr.w	$vr4, $a0, 3
-	vpickve2gr.h	$a0, $vr2, 0
-	vinsgr2vr.w	$vr10, $a0, 0
-	vpickve2gr.h	$a0, $vr2, 1
-	vinsgr2vr.w	$vr10, $a0, 1
-	vpickve2gr.h	$a0, $vr2, 2
-	vinsgr2vr.w	$vr10, $a0, 2
-	vpickve2gr.h	$a0, $vr2, 3
-	vinsgr2vr.w	$vr10, $a0, 3
-	xvpermi.q	$xr10, $xr4, 2
-	xvslli.w	$xr2, $xr10, 31
+	vext2xv.wu.hu	$xr2, $xr2
+	xvslli.w	$xr2, $xr2, 31
 	xvsrai.w	$xr2, $xr2, 31
 	xvandn.v	$xr2, $xr2, $xr3
 	lu12i.w	$a0, -9
@@ -71932,28 +71820,12 @@ res2_forward:                           # @res2_forward
 	vld	$vr4, $a0, 0
 	vseqi.w	$vr3, $vr3, 0
 	vxori.b	$vr3, $vr3, 255
-	vpickve2gr.w	$a4, $vr3, 2
-	vinsgr2vr.d	$vr5, $a4, 0
-	vpickve2gr.w	$a4, $vr3, 3
-	vinsgr2vr.d	$vr5, $a4, 1
-	vpickve2gr.w	$a4, $vr3, 0
-	vinsgr2vr.d	$vr6, $a4, 0
-	vpickve2gr.w	$a4, $vr3, 1
-	vinsgr2vr.d	$vr6, $a4, 1
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr3, $xr6, $xr1
+	vext2xv.du.wu	$xr3, $xr3
+	xvand.v	$xr3, $xr3, $xr1
 	vseqi.w	$vr4, $vr4, 0
 	vxori.b	$vr4, $vr4, 255
-	vpickve2gr.w	$a4, $vr4, 2
-	vinsgr2vr.d	$vr5, $a4, 0
-	vpickve2gr.w	$a4, $vr4, 3
-	vinsgr2vr.d	$vr5, $a4, 1
-	vpickve2gr.w	$a4, $vr4, 0
-	vinsgr2vr.d	$vr6, $a4, 0
-	vpickve2gr.w	$a4, $vr4, 1
-	vinsgr2vr.d	$vr6, $a4, 1
-	xvpermi.q	$xr6, $xr5, 2
-	xvand.v	$xr4, $xr6, $xr1
+	vext2xv.du.wu	$xr4, $xr4
+	xvand.v	$xr4, $xr4, $xr1
 	xvadd.d	$xr0, $xr0, $xr3
 	xvadd.d	$xr2, $xr2, $xr4
 	addi.d	$a3, $a3, -8

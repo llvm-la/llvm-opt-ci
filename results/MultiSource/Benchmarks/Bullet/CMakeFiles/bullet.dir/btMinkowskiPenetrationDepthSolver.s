@@ -184,16 +184,8 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	vfmul.s	$vr9, $vr25, $vr9
 	vfmadd.s	$vr8, $vr24, $vr8, $vr9
 	vfmadd.s	$vr8, $vr26, $vr10, $vr8
-	vpickve2gr.w	$a4, $vr12, 2
-	vinsgr2vr.d	$vr9, $a4, 0
-	vpickve2gr.w	$a4, $vr12, 3
-	vinsgr2vr.d	$vr9, $a4, 1
-	vpickve2gr.w	$a4, $vr12, 0
-	vinsgr2vr.d	$vr10, $a4, 0
-	vpickve2gr.w	$a4, $vr12, 1
-	vinsgr2vr.d	$vr10, $a4, 1
-	xvpermi.q	$xr10, $xr9, 2
-	xvslli.d	$xr9, $xr10, 32
+	vext2xv.du.wu	$xr9, $xr12
+	xvslli.d	$xr9, $xr9, 32
 	vext2xv.du.wu	$xr10, $xr11
 	xvor.v	$xr9, $xr9, $xr10
 	xvpickve2gr.d	$a4, $xr9, 3
@@ -217,16 +209,8 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	vfmul.s	$vr6, $vr6, $vr2
 	vfmadd.s	$vr5, $vr1, $vr5, $vr6
 	vfmadd.s	$vr5, $vr3, $vr7, $vr5
-	vpickve2gr.w	$a4, $vr9, 2
-	vinsgr2vr.d	$vr6, $a4, 0
-	vpickve2gr.w	$a4, $vr9, 3
-	vinsgr2vr.d	$vr6, $a4, 1
-	vpickve2gr.w	$a4, $vr9, 0
-	vinsgr2vr.d	$vr7, $a4, 0
-	vpickve2gr.w	$a4, $vr9, 1
-	vinsgr2vr.d	$vr7, $a4, 1
-	xvpermi.q	$xr7, $xr6, 2
-	xvslli.d	$xr6, $xr7, 32
+	vext2xv.du.wu	$xr6, $xr9
+	xvslli.d	$xr6, $xr6, 32
 	vext2xv.du.wu	$xr7, $xr8
 	xvor.v	$xr6, $xr6, $xr7
 	vext2xv.du.wu	$xr5, $xr5
