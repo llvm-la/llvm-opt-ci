@@ -43,24 +43,13 @@ keysUnion:                              # @keysUnion
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
 	xvld	$xr1, $a0, 8
 	xvfcmp.clt.s	$xr2, $xr1, $xr0
-	xvpickve2gr.w	$a2, $xr2, 3
-	xvpickve2gr.w	$a3, $xr2, 2
-	xvpickve2gr.w	$a4, $xr2, 1
-	xvpickve2gr.w	$a5, $xr2, 0
-	xvfcmp.clt.s	$xr2, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr2, 7
-	xvpickve2gr.w	$a7, $xr2, 6
-	xvpickve2gr.w	$t0, $xr2, 5
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr2, $a5, 0
-	vinsgr2vr.h	$vr2, $a4, 1
-	vinsgr2vr.h	$vr2, $a3, 2
-	vinsgr2vr.h	$vr2, $a2, 3
-	vinsgr2vr.h	$vr2, $t1, 4
-	vinsgr2vr.h	$vr2, $t0, 5
-	vinsgr2vr.h	$vr2, $a7, 6
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvfcmp.clt.s	$xr3, $xr0, $xr1
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
 	ld.d	$a0, $a0, 40
-	vinsgr2vr.h	$vr2, $a6, 7
+	vshuf4i.d	$vr2, $vr3, 12
 	vext2xv.w.h	$xr2, $xr2
 	xvbitsel.v	$xr0, $xr0, $xr1, $xr2
 	xvst	$xr0, $a1, 0

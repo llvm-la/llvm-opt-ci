@@ -128,15 +128,15 @@ polybench_alloc_data:                   # @polybench_alloc_data
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
 .LCPI7_2:
-	.dword	32                              # 0x20
-	.dword	40                              # 0x28
-	.dword	48                              # 0x30
-	.dword	56                              # 0x38
-.LCPI7_3:
 	.dword	0                               # 0x0
 	.dword	8                               # 0x8
 	.dword	16                              # 0x10
 	.dword	24                              # 0x18
+.LCPI7_3:
+	.dword	32                              # 0x20
+	.dword	40                              # 0x28
+	.dword	48                              # 0x30
+	.dword	56                              # 0x38
 	.text
 	.globl	main
 	.p2align	2
@@ -254,18 +254,12 @@ main:                                   # @main
                                         #   Parent Loop BB7_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvadd.d	$xr6, $xr5, $xr4
-	xvpickve2gr.d	$a5, $xr6, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr6, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr6, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr6, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	vmuh.wu	$vr6, $vr7, $vr1
-	vsrli.w	$vr6, $vr6, 11
-	vmsub.w	$vr7, $vr6, $vr2
-	vext2xv.du.wu	$xr6, $xr7
+	xvpickev.w	$xr6, $xr6, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	vmuh.wu	$vr7, $vr6, $vr1
+	vsrli.w	$vr7, $vr7, 11
+	vmsub.w	$vr6, $vr7, $vr2
+	vext2xv.du.wu	$xr6, $xr6
 	xvffint.d.lu	$xr6, $xr6
 	xvfdiv.d	$xr6, $xr6, $xr3
 	add.d	$a5, $a3, $a4
@@ -394,23 +388,12 @@ main:                                   # @main
 	xvreplgr2vr.d	$xr2, $a3
 	xvsrl.d	$xr3, $xr2, $xr0
 	xvsrl.d	$xr2, $xr2, $xr1
-	xvpickve2gr.d	$a3, $xr2, 0
-	vinsgr2vr.b	$vr4, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 1
-	vinsgr2vr.b	$vr4, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 2
-	vinsgr2vr.b	$vr4, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 3
-	vinsgr2vr.b	$vr4, $a3, 3
-	xvpickve2gr.d	$a3, $xr3, 0
-	vinsgr2vr.b	$vr4, $a3, 4
-	xvpickve2gr.d	$a3, $xr3, 1
-	vinsgr2vr.b	$vr4, $a3, 5
-	xvpickve2gr.d	$a3, $xr3, 2
-	vinsgr2vr.b	$vr4, $a3, 6
-	xvpickve2gr.d	$a3, $xr3, 3
-	vinsgr2vr.b	$vr4, $a3, 7
-	vandi.b	$vr2, $vr4, 15
+	xvpickev.w	$xr2, $xr2, $xr3
+	xvpermi.d	$xr2, $xr2, 216
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvpickev.b	$xr2, $xr2, $xr2
+	vandi.b	$vr2, $vr2, 15
 	vori.b	$vr2, $vr2, 48
 	vilvl.b	$vr2, $vr2, $vr2
 	vst	$vr2, $a1, -7

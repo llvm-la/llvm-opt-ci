@@ -651,11 +651,13 @@ update:                                 # @update
 	or	$a6, $a6, $t5
 	add.d	$a0, $a0, $a6
 	st.h	$a0, $a7, 22
-	vinsgr2vr.h	$vr0, $t4, 0
-	vinsgr2vr.h	$vr0, $t4, 1
+	vinsgr2vr.w	$vr0, $t4, 0
+	vinsgr2vr.w	$vr0, $t4, 1
+	vinsgr2vr.w	$vr0, $t4, 2
+	vinsgr2vr.w	$vr0, $t4, 3
 	ld.d	$a0, $a7, 24
-	vinsgr2vr.h	$vr0, $t4, 2
-	vinsgr2vr.h	$vr0, $t4, 3
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	vbitseti.h	$vr0, $vr0, 3
 	vinsgr2vr.d	$vr1, $a0, 0
 	vsra.h	$vr0, $vr1, $vr0

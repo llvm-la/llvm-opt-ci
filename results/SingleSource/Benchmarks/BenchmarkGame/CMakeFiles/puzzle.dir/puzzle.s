@@ -410,23 +410,8 @@ findDuplicate:                          # @findDuplicate
 	xvld	$xr5, $a5, 0
 	xvxor.v	$xr2, $xr2, $xr4
 	xvxor.v	$xr3, $xr3, $xr5
-	xvpickve2gr.d	$a7, $xr1, 0
-	vinsgr2vr.w	$vr4, $a7, 0
-	xvpickve2gr.d	$a7, $xr1, 1
-	vinsgr2vr.w	$vr4, $a7, 1
-	xvpickve2gr.d	$a7, $xr1, 2
-	vinsgr2vr.w	$vr4, $a7, 2
-	xvpickve2gr.d	$a7, $xr1, 3
-	vinsgr2vr.w	$vr4, $a7, 3
-	xvpickve2gr.d	$a7, $xr0, 0
-	vinsgr2vr.w	$vr5, $a7, 0
-	xvpickve2gr.d	$a7, $xr0, 1
-	vinsgr2vr.w	$vr5, $a7, 1
-	xvpickve2gr.d	$a7, $xr0, 2
-	vinsgr2vr.w	$vr5, $a7, 2
-	xvpickve2gr.d	$a7, $xr0, 3
-	vinsgr2vr.w	$vr5, $a7, 3
-	xvpermi.q	$xr4, $xr5, 2
+	xvpickev.w	$xr4, $xr0, $xr1
+	xvpermi.d	$xr4, $xr4, 216
 	xvaddi.wu	$xr5, $xr4, 1
 	xvaddi.wu	$xr4, $xr4, 9
 	xvxor.v	$xr2, $xr2, $xr5
@@ -452,35 +437,29 @@ findDuplicate:                          # @findDuplicate
 	move	$a4, $a2
 	bstrpick.d	$a2, $a1, 30, 2
 	slli.d	$a2, $a2, 2
-	xvld	$xr0, $a3, %pc_lo12(.LCPI5_1)
-	vrepli.b	$vr1, 0
-	vinsgr2vr.w	$vr1, $a5, 0
+	xvld	$xr1, $a3, %pc_lo12(.LCPI5_1)
+	vrepli.b	$vr0, 0
+	vinsgr2vr.w	$vr0, $a5, 0
 	xvreplgr2vr.d	$xr2, $a4
-	xvor.v	$xr0, $xr2, $xr0
+	xvor.v	$xr1, $xr2, $xr1
 	sub.d	$a3, $a4, $a2
 	alsl.d	$a4, $a4, $a0, 2
 	.p2align	4, , 16
 .LBB5_10:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a4, 0
-	vxor.v	$vr1, $vr1, $vr2
-	xvpickve2gr.d	$a5, $xr0, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr0, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr0, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr0, 3
-	vinsgr2vr.w	$vr2, $a5, 3
+	vxor.v	$vr0, $vr0, $vr2
+	xvpickev.w	$xr2, $xr1, $xr1
+	xvpermi.d	$xr2, $xr2, 216
 	vaddi.wu	$vr2, $vr2, 1
-	vxor.v	$vr1, $vr1, $vr2
-	xvaddi.du	$xr0, $xr0, 4
+	vxor.v	$vr0, $vr0, $vr2
+	xvaddi.du	$xr1, $xr1, 4
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 16
 	bnez	$a3, .LBB5_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vbsrl.v	$vr0, $vr1, 8
-	vxor.v	$vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
+	vxor.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 4
 	vxor.v	$vr0, $vr1, $vr0
 	vpickve2gr.w	$a5, $vr0, 0
@@ -557,8 +536,8 @@ main:                                   # @main
                                         #     Child Loop BB6_2 Depth 2
 	move	$a4, $zero
 	xvori.b	$xr3, $xr1, 0
-	xvori.b	$xr4, $xr0, 0
-	xvori.b	$xr5, $xr2, 0
+	xvori.b	$xr5, $xr0, 0
+	xvori.b	$xr4, $xr2, 0
 	xvori.b	$xr6, $xr2, 0
 	.p2align	4, , 16
 .LBB6_2:                                # %vector.body
@@ -567,32 +546,17 @@ main:                                   # @main
 	add.d	$a5, $a0, $a4
 	xvldx	$xr7, $a0, $a4
 	xvld	$xr8, $a5, 32
-	xvxor.v	$xr5, $xr7, $xr5
+	xvxor.v	$xr4, $xr7, $xr4
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr5, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
-	xvxor.v	$xr5, $xr5, $xr8
+	xvxor.v	$xr4, $xr4, $xr8
 	xvxor.v	$xr6, $xr6, $xr7
 	xvaddi.du	$xr3, $xr3, 16
 	addi.d	$a4, $a4, 64
-	xvaddi.du	$xr4, $xr4, 16
+	xvaddi.du	$xr5, $xr5, 16
 	bne	$a4, $s1, .LBB6_2
 # %bb.3:                                # %.lr.ph.i
                                         #   in Loop: Header=BB6_1 Depth=1
@@ -600,7 +564,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_1
 # %bb.4:
 	ld.w	$a1, $a2, 0
-	xvxor.v	$xr0, $xr6, $xr5
+	xvxor.v	$xr0, $xr6, $xr4
 	xvpermi.q	$xr1, $xr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -631,8 +595,8 @@ main:                                   # @main
                                         #     Child Loop BB6_6 Depth 2
 	move	$a4, $zero
 	xvori.b	$xr3, $xr1, 0
-	xvori.b	$xr4, $xr0, 0
-	xvori.b	$xr5, $xr2, 0
+	xvori.b	$xr5, $xr0, 0
+	xvori.b	$xr4, $xr2, 0
 	xvori.b	$xr6, $xr2, 0
 	.p2align	4, , 16
 .LBB6_6:                                # %vector.body27
@@ -641,32 +605,17 @@ main:                                   # @main
 	add.d	$a5, $a0, $a4
 	xvldx	$xr7, $a0, $a4
 	xvld	$xr8, $a5, 32
-	xvxor.v	$xr5, $xr7, $xr5
+	xvxor.v	$xr4, $xr7, $xr4
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr5, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
-	xvxor.v	$xr5, $xr5, $xr8
+	xvxor.v	$xr4, $xr4, $xr8
 	xvxor.v	$xr6, $xr6, $xr7
 	xvaddi.du	$xr3, $xr3, 16
 	addi.d	$a4, $a4, 64
-	xvaddi.du	$xr4, $xr4, 16
+	xvaddi.du	$xr5, $xr5, 16
 	bne	$a4, $s1, .LBB6_6
 # %bb.7:                                # %.lr.ph.i.1
                                         #   in Loop: Header=BB6_5 Depth=1
@@ -674,7 +623,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_5
 # %bb.8:
 	ld.w	$a1, $a2, 0
-	xvxor.v	$xr0, $xr6, $xr5
+	xvxor.v	$xr0, $xr6, $xr4
 	xvpermi.q	$xr1, $xr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -705,8 +654,8 @@ main:                                   # @main
                                         #     Child Loop BB6_10 Depth 2
 	move	$a4, $zero
 	xvori.b	$xr3, $xr1, 0
-	xvori.b	$xr4, $xr0, 0
-	xvori.b	$xr5, $xr2, 0
+	xvori.b	$xr5, $xr0, 0
+	xvori.b	$xr4, $xr2, 0
 	xvori.b	$xr6, $xr2, 0
 	.p2align	4, , 16
 .LBB6_10:                               # %vector.body41
@@ -715,32 +664,17 @@ main:                                   # @main
 	add.d	$a5, $a0, $a4
 	xvldx	$xr7, $a0, $a4
 	xvld	$xr8, $a5, 32
-	xvxor.v	$xr5, $xr7, $xr5
+	xvxor.v	$xr4, $xr7, $xr4
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr5, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
-	xvxor.v	$xr5, $xr5, $xr8
+	xvxor.v	$xr4, $xr4, $xr8
 	xvxor.v	$xr6, $xr6, $xr7
 	xvaddi.du	$xr3, $xr3, 16
 	addi.d	$a4, $a4, 64
-	xvaddi.du	$xr4, $xr4, 16
+	xvaddi.du	$xr5, $xr5, 16
 	bne	$a4, $s1, .LBB6_10
 # %bb.11:                               # %.lr.ph.i.2
                                         #   in Loop: Header=BB6_9 Depth=1
@@ -748,7 +682,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_9
 # %bb.12:
 	ld.w	$a1, $a2, 0
-	xvxor.v	$xr0, $xr6, $xr5
+	xvxor.v	$xr0, $xr6, $xr4
 	xvpermi.q	$xr1, $xr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -779,8 +713,8 @@ main:                                   # @main
                                         #     Child Loop BB6_14 Depth 2
 	move	$a4, $zero
 	xvori.b	$xr3, $xr1, 0
-	xvori.b	$xr4, $xr0, 0
-	xvori.b	$xr5, $xr2, 0
+	xvori.b	$xr5, $xr0, 0
+	xvori.b	$xr4, $xr2, 0
 	xvori.b	$xr6, $xr2, 0
 	.p2align	4, , 16
 .LBB6_14:                               # %vector.body55
@@ -789,32 +723,17 @@ main:                                   # @main
 	add.d	$a5, $a0, $a4
 	xvldx	$xr7, $a0, $a4
 	xvld	$xr8, $a5, 32
-	xvxor.v	$xr5, $xr7, $xr5
+	xvxor.v	$xr4, $xr7, $xr4
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a5, $xr3, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr3, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr3, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr3, 3
-	vinsgr2vr.w	$vr7, $a5, 3
-	xvpickve2gr.d	$a5, $xr4, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr4, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr4, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr4, 3
-	vinsgr2vr.w	$vr8, $a5, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr5, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
-	xvxor.v	$xr5, $xr5, $xr8
+	xvxor.v	$xr4, $xr4, $xr8
 	xvxor.v	$xr6, $xr6, $xr7
 	xvaddi.du	$xr3, $xr3, 16
 	addi.d	$a4, $a4, 64
-	xvaddi.du	$xr4, $xr4, 16
+	xvaddi.du	$xr5, $xr5, 16
 	bne	$a4, $s1, .LBB6_14
 # %bb.15:                               # %.lr.ph.i.3
                                         #   in Loop: Header=BB6_13 Depth=1
@@ -822,7 +741,7 @@ main:                                   # @main
 	bne	$a1, $a3, .LBB6_13
 # %bb.16:
 	ld.w	$a1, $a2, 0
-	xvxor.v	$xr0, $xr6, $xr5
+	xvxor.v	$xr0, $xr6, $xr4
 	xvpermi.q	$xr1, $xr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
@@ -852,8 +771,8 @@ main:                                   # @main
                                         #     Child Loop BB6_18 Depth 2
 	move	$a3, $zero
 	xvori.b	$xr3, $xr1, 0
-	xvori.b	$xr4, $xr0, 0
-	xvori.b	$xr5, $xr2, 0
+	xvori.b	$xr5, $xr0, 0
+	xvori.b	$xr4, $xr2, 0
 	xvori.b	$xr6, $xr2, 0
 	.p2align	4, , 16
 .LBB6_18:                               # %vector.body69
@@ -862,32 +781,17 @@ main:                                   # @main
 	add.d	$a4, $a0, $a3
 	xvldx	$xr7, $a0, $a3
 	xvld	$xr8, $a4, 32
-	xvxor.v	$xr5, $xr7, $xr5
+	xvxor.v	$xr4, $xr7, $xr4
 	xvxor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$a4, $xr3, 0
-	vinsgr2vr.w	$vr7, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	vinsgr2vr.w	$vr7, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	vinsgr2vr.w	$vr7, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	vinsgr2vr.w	$vr7, $a4, 3
-	xvpickve2gr.d	$a4, $xr4, 0
-	vinsgr2vr.w	$vr8, $a4, 0
-	xvpickve2gr.d	$a4, $xr4, 1
-	vinsgr2vr.w	$vr8, $a4, 1
-	xvpickve2gr.d	$a4, $xr4, 2
-	vinsgr2vr.w	$vr8, $a4, 2
-	xvpickve2gr.d	$a4, $xr4, 3
-	vinsgr2vr.w	$vr8, $a4, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr5, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr8, $xr7, 1
 	xvaddi.wu	$xr7, $xr7, 9
-	xvxor.v	$xr5, $xr5, $xr8
+	xvxor.v	$xr4, $xr4, $xr8
 	xvxor.v	$xr6, $xr6, $xr7
 	xvaddi.du	$xr3, $xr3, 16
 	addi.d	$a3, $a3, 64
-	xvaddi.du	$xr4, $xr4, 16
+	xvaddi.du	$xr5, $xr5, 16
 	bne	$a3, $s1, .LBB6_18
 # %bb.19:                               # %.lr.ph.i.4
                                         #   in Loop: Header=BB6_17 Depth=1
@@ -895,7 +799,7 @@ main:                                   # @main
 	bne	$a1, $a2, .LBB6_17
 # %bb.20:
 	ldx.w	$a1, $a0, $s1
-	xvxor.v	$xr0, $xr6, $xr5
+	xvxor.v	$xr0, $xr6, $xr4
 	xvpermi.q	$xr1, $xr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8

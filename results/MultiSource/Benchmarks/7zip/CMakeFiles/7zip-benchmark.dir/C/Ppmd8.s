@@ -3207,18 +3207,15 @@ GetUsedMemory:                          # @GetUsedMemory
 	.type	CutOff,@function
 CutOff:                                 # @CutOff
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.bu	$s4, $a1, 0
@@ -3540,8 +3537,7 @@ CutOff:                                 # @CutOff
 	st.d	$a1, $s0, 88
 	b	.LBB17_49
 .LBB17_38:                              # %vector.ph
-	andi	$a2, $a4, 12
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	andi	$a7, $a4, 12
 	bstrpick.d	$a5, $a4, 32, 4
 	slli.d	$a6, $a5, 4
 	sub.d	$a2, $s3, $a6
@@ -3608,74 +3604,64 @@ CutOff:                                 # @CutOff
 	xvadd.w	$xr12, $xr5, $xr12
 	xvsrl.w	$xr11, $xr11, $xr5
 	xvsrl.w	$xr12, $xr12, $xr5
-	xvpickve2gr.w	$t2, $xr11, 7
-	xvpickve2gr.w	$t3, $xr11, 6
-	xvpickve2gr.w	$t4, $xr11, 5
-	xvpickve2gr.w	$t5, $xr11, 4
-	xvpickve2gr.w	$t6, $xr11, 3
-	xvpickve2gr.w	$t7, $xr11, 2
-	xvpickve2gr.w	$t8, $xr11, 1
-	xvpickve2gr.w	$s0, $xr11, 0
-	xvpickve2gr.w	$s2, $xr12, 7
-	xvpickve2gr.w	$s4, $xr12, 6
-	xvpickve2gr.w	$s5, $xr12, 5
-	xvpickve2gr.w	$s6, $xr12, 4
-	xvpickve2gr.w	$s7, $xr12, 3
-	xvpickve2gr.w	$s8, $xr12, 2
-	xvpickve2gr.w	$ra, $xr12, 1
-	xvpickve2gr.w	$a7, $xr12, 0
-	st.b	$s0, $t0, -41
-	st.b	$t8, $t0, -35
-	st.b	$t7, $t0, -29
-	st.b	$t6, $t0, -23
-	st.b	$t5, $t0, -17
-	st.b	$t4, $t0, -11
-	st.b	$t3, $t0, -5
-	st.b	$t2, $t0, 1
-	st.b	$a7, $t0, 7
-	st.b	$ra, $t0, 13
-	st.b	$s8, $t0, 19
-	st.b	$s7, $t0, 25
-	st.b	$s6, $t0, 31
-	st.b	$s5, $t0, 37
-	st.b	$s4, $t0, 43
-	st.b	$s2, $t0, 49
+	xvpickev.h	$xr13, $xr11, $xr11
+	xvpermi.d	$xr13, $xr13, 216
+	xvpickev.b	$xr13, $xr13, $xr13
+	xvpickev.h	$xr14, $xr12, $xr12
+	xvpermi.d	$xr14, $xr14, 216
+	xvpickev.b	$xr14, $xr14, $xr14
+	vstelm.b	$vr13, $t0, -41, 0
+	vstelm.b	$vr13, $t0, -35, 1
+	vstelm.b	$vr13, $t0, -29, 2
+	vstelm.b	$vr13, $t0, -23, 3
+	vstelm.b	$vr13, $t0, -17, 4
+	vstelm.b	$vr13, $t0, -11, 5
+	vstelm.b	$vr13, $t0, -5, 6
+	vstelm.b	$vr13, $t0, 1, 7
+	vstelm.b	$vr14, $t0, 7, 0
+	vstelm.b	$vr14, $t0, 13, 1
+	vstelm.b	$vr14, $t0, 19, 2
+	vstelm.b	$vr14, $t0, 25, 3
+	vstelm.b	$vr14, $t0, 31, 4
+	vstelm.b	$vr14, $t0, 37, 5
+	vstelm.b	$vr14, $t0, 43, 6
+	vstelm.b	$vr14, $t0, 49, 7
 	xvand.v	$xr11, $xr11, $xr8
 	xvand.v	$xr12, $xr12, $xr8
 	xvadd.w	$xr3, $xr11, $xr3
 	xvadd.w	$xr7, $xr12, $xr7
-	ld.b	$a7, $t0, -42
-	ld.b	$t2, $t0, -36
-	ld.b	$t3, $t0, -30
-	ld.b	$t4, $t0, -24
-	ld.b	$t5, $t0, -18
-	ld.b	$t6, $t0, -12
-	ld.b	$t7, $t0, -6
-	ld.b	$t8, $t0, 0
-	vinsgr2vr.b	$vr11, $a7, 0
-	vinsgr2vr.b	$vr11, $t2, 1
-	vinsgr2vr.b	$vr11, $t3, 2
-	vinsgr2vr.b	$vr11, $t4, 3
-	vinsgr2vr.b	$vr11, $t5, 4
-	vinsgr2vr.b	$vr11, $t6, 5
-	vinsgr2vr.b	$vr11, $t7, 6
-	vinsgr2vr.b	$vr11, $t8, 7
-	ld.b	$a7, $t0, 6
-	ld.b	$t2, $t0, 12
-	ld.b	$t3, $t0, 18
-	ld.b	$t4, $t0, 24
-	ld.b	$t5, $t0, 30
-	ld.b	$t6, $t0, 36
-	ld.b	$t7, $t0, 42
-	ld.b	$t8, $t0, 48
-	vinsgr2vr.b	$vr12, $a7, 0
-	vinsgr2vr.b	$vr12, $t2, 1
-	vinsgr2vr.b	$vr12, $t3, 2
-	vinsgr2vr.b	$vr12, $t4, 3
-	vinsgr2vr.b	$vr12, $t5, 4
-	vinsgr2vr.b	$vr12, $t6, 5
-	vinsgr2vr.b	$vr12, $t7, 6
-	vinsgr2vr.b	$vr12, $t8, 7
+	ld.b	$t2, $t0, -42
+	ld.b	$t3, $t0, -36
+	ld.b	$t4, $t0, -30
+	ld.b	$t5, $t0, -24
+	ld.b	$t6, $t0, -18
+	ld.b	$t7, $t0, -12
+	ld.b	$t8, $t0, -6
+	ld.b	$s0, $t0, 0
+	vinsgr2vr.b	$vr11, $t2, 0
+	vinsgr2vr.b	$vr11, $t3, 1
+	vinsgr2vr.b	$vr11, $t4, 2
+	vinsgr2vr.b	$vr11, $t5, 3
+	vinsgr2vr.b	$vr11, $t6, 4
+	vinsgr2vr.b	$vr11, $t7, 5
+	vinsgr2vr.b	$vr11, $t8, 6
+	vinsgr2vr.b	$vr11, $s0, 7
+	ld.b	$t2, $t0, 6
+	ld.b	$t3, $t0, 12
+	ld.b	$t4, $t0, 18
+	ld.b	$t5, $t0, 24
+	ld.b	$t6, $t0, 30
+	ld.b	$t7, $t0, 36
+	ld.b	$t8, $t0, 42
+	ld.b	$s0, $t0, 48
+	vinsgr2vr.b	$vr12, $t2, 0
+	vinsgr2vr.b	$vr12, $t3, 1
+	vinsgr2vr.b	$vr12, $t4, 2
+	vinsgr2vr.b	$vr12, $t5, 3
+	vinsgr2vr.b	$vr12, $t6, 4
+	vinsgr2vr.b	$vr12, $t7, 5
+	vinsgr2vr.b	$vr12, $t8, 6
+	vinsgr2vr.b	$vr12, $s0, 7
 	vslt.bu	$vr11, $vr0, $vr11
 	xvpermi.d	$xr11, $xr11, 68
 	xvshuf.b	$xr11, $xr0, $xr11, $xr6
@@ -3714,7 +3700,6 @@ CutOff:                                 # @CutOff
 	vpickve2gr.w	$t2, $vr1, 0
 	beq	$a4, $a6, .LBB17_47
 # %bb.41:                               # %vec.epilog.iter.check
-	ld.d	$a7, $sp, 8                     # 8-byte Folded Reload
 	beqz	$a7, .LBB17_45
 .LBB17_42:                              # %vec.epilog.ph
 	bstrpick.d	$a5, $a4, 32, 2
@@ -3816,18 +3801,15 @@ CutOff:                                 # @CutOff
 .LBB17_48:                              # %._crit_edge._crit_edge
 	sub.w	$a0, $fp, $a3
 .LBB17_49:                              # %SpecialFreeUnit.exit
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end17:
 	.size	CutOff, .Lfunc_end17-CutOff

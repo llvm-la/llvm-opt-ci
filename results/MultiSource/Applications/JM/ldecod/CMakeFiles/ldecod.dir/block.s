@@ -3640,23 +3640,8 @@ intrapred_chroma:                       # @intrapred_chroma
 	vshuf4i.h	$vr4, $vr4, 27
 	vext2xv.wu.hu	$xr4, $xr4
 	xvsub.w	$xr3, $xr3, $xr4
-	xvpickve2gr.d	$t5, $xr2, 0
-	vinsgr2vr.w	$vr4, $t5, 0
-	xvpickve2gr.d	$t5, $xr2, 1
-	vinsgr2vr.w	$vr4, $t5, 1
-	xvpickve2gr.d	$t5, $xr2, 2
-	vinsgr2vr.w	$vr4, $t5, 2
-	xvpickve2gr.d	$t5, $xr2, 3
-	vinsgr2vr.w	$vr4, $t5, 3
-	xvpickve2gr.d	$t5, $xr1, 0
-	vinsgr2vr.w	$vr5, $t5, 0
-	xvpickve2gr.d	$t5, $xr1, 1
-	vinsgr2vr.w	$vr5, $t5, 1
-	xvpickve2gr.d	$t5, $xr1, 2
-	vinsgr2vr.w	$vr5, $t5, 2
-	xvpickve2gr.d	$t5, $xr1, 3
-	vinsgr2vr.w	$vr5, $t5, 3
-	xvpermi.q	$xr4, $xr5, 2
+	xvpickev.w	$xr4, $xr1, $xr2
+	xvpermi.d	$xr4, $xr4, 216
 	xvaddi.wu	$xr4, $xr4, 1
 	xvmadd.w	$xr0, $xr3, $xr4
 	xvaddi.du	$xr2, $xr2, 8
@@ -3851,23 +3836,9 @@ intrapred_chroma:                       # @intrapred_chroma
 	xvsrai.w	$xr5, $xr6, 5
 	xvmaxi.w	$xr5, $xr5, 0
 	xvmin.w	$xr5, $xr5, $xr1
-	xvpickve2gr.w	$t5, $xr5, 0
-	vinsgr2vr.h	$vr6, $t5, 0
-	xvpickve2gr.w	$t5, $xr5, 1
-	vinsgr2vr.h	$vr6, $t5, 1
-	xvpickve2gr.w	$t5, $xr5, 2
-	vinsgr2vr.h	$vr6, $t5, 2
-	xvpickve2gr.w	$t5, $xr5, 3
-	vinsgr2vr.h	$vr6, $t5, 3
-	xvpickve2gr.w	$t5, $xr5, 4
-	vinsgr2vr.h	$vr6, $t5, 4
-	xvpickve2gr.w	$t5, $xr5, 5
-	vinsgr2vr.h	$vr6, $t5, 5
-	xvpickve2gr.w	$t5, $xr5, 6
-	vinsgr2vr.h	$vr6, $t5, 6
-	xvpickve2gr.w	$t5, $xr5, 7
-	vinsgr2vr.h	$vr6, $t5, 7
-	vst	$vr6, $t3, 0
+	xvpickev.h	$xr5, $xr5, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	vst	$vr5, $t3, 0
 	xvaddi.wu	$xr3, $xr3, 8
 	addi.d	$t4, $t4, -8
 	addi.d	$t3, $t3, 16
@@ -4262,23 +4233,8 @@ intrapred_chroma:                       # @intrapred_chroma
 	vext2xv.wu.hu	$xr7, $xr7
 	xvsub.w	$xr4, $xr4, $xr6
 	xvsub.w	$xr5, $xr5, $xr7
-	xvpickve2gr.d	$t8, $xr3, 0
-	vinsgr2vr.w	$vr6, $t8, 0
-	xvpickve2gr.d	$t8, $xr3, 1
-	vinsgr2vr.w	$vr6, $t8, 1
-	xvpickve2gr.d	$t8, $xr3, 2
-	vinsgr2vr.w	$vr6, $t8, 2
-	xvpickve2gr.d	$t8, $xr3, 3
-	vinsgr2vr.w	$vr6, $t8, 3
-	xvpickve2gr.d	$t8, $xr2, 0
-	vinsgr2vr.w	$vr7, $t8, 0
-	xvpickve2gr.d	$t8, $xr2, 1
-	vinsgr2vr.w	$vr7, $t8, 1
-	xvpickve2gr.d	$t8, $xr2, 2
-	vinsgr2vr.w	$vr7, $t8, 2
-	xvpickve2gr.d	$t8, $xr2, 3
-	vinsgr2vr.w	$vr7, $t8, 3
-	xvpermi.q	$xr6, $xr7, 2
+	xvpickev.w	$xr6, $xr2, $xr3
+	xvpermi.d	$xr6, $xr6, 216
 	xvaddi.wu	$xr7, $xr6, 1
 	xvaddi.wu	$xr6, $xr6, 9
 	xvmadd.w	$xr1, $xr4, $xr7

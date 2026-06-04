@@ -183,42 +183,11 @@ routenet:                               # @routenet
 	.p2align	4, , 16
 .LBB0_18:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvadd.w	$xr4, $xr0, $xr1
-	xvadd.w	$xr5, $xr0, $xr2
-	xvpickve2gr.w	$t2, $xr5, 0
-	vinsgr2vr.h	$vr6, $t2, 0
-	xvpickve2gr.w	$t2, $xr5, 1
-	vinsgr2vr.h	$vr6, $t2, 1
-	xvpickve2gr.w	$t2, $xr5, 2
-	vinsgr2vr.h	$vr6, $t2, 2
-	xvpickve2gr.w	$t2, $xr5, 3
-	vinsgr2vr.h	$vr6, $t2, 3
-	xvpickve2gr.w	$t2, $xr5, 4
-	vinsgr2vr.h	$vr6, $t2, 4
-	xvpickve2gr.w	$t2, $xr5, 5
-	vinsgr2vr.h	$vr6, $t2, 5
-	xvpickve2gr.w	$t2, $xr5, 6
-	vinsgr2vr.h	$vr6, $t2, 6
-	xvpickve2gr.w	$t2, $xr5, 7
-	vinsgr2vr.h	$vr6, $t2, 7
-	xvpickve2gr.w	$t2, $xr4, 0
-	vinsgr2vr.h	$vr5, $t2, 0
-	xvpickve2gr.w	$t2, $xr4, 1
-	vinsgr2vr.h	$vr5, $t2, 1
-	xvpickve2gr.w	$t2, $xr4, 2
-	vinsgr2vr.h	$vr5, $t2, 2
-	xvpickve2gr.w	$t2, $xr4, 3
-	vinsgr2vr.h	$vr5, $t2, 3
-	xvpickve2gr.w	$t2, $xr4, 4
-	vinsgr2vr.h	$vr5, $t2, 4
-	xvpickve2gr.w	$t2, $xr4, 5
-	vinsgr2vr.h	$vr5, $t2, 5
-	xvpickve2gr.w	$t2, $xr4, 6
-	vinsgr2vr.h	$vr5, $t2, 6
-	xvpickve2gr.w	$t2, $xr4, 7
-	vinsgr2vr.h	$vr5, $t2, 7
-	xvpermi.q	$xr6, $xr5, 2
-	xvst	$xr6, $a7, 0
+	xvadd.w	$xr4, $xr0, $xr2
+	xvadd.w	$xr5, $xr0, $xr1
+	xvpickev.h	$xr4, $xr5, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvst	$xr4, $a7, 0
 	xvst	$xr3, $t0, 0
 	xvaddi.wu	$xr2, $xr2, 16
 	xvaddi.wu	$xr1, $xr1, 16

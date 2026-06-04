@@ -407,22 +407,8 @@ _ZL27run_single_csa_only_autovecIiET_PS0_S1_S1_S0_: # @_ZL27run_single_csa_only_
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr3, $a0, 0
 	xvslt.w	$xr4, $xr2, $xr3
-	xvpickve2gr.w	$a3, $xr4, 0
-	vinsgr2vr.h	$vr5, $a3, 0
-	xvpickve2gr.w	$a3, $xr4, 1
-	vinsgr2vr.h	$vr5, $a3, 1
-	xvpickve2gr.w	$a3, $xr4, 2
-	vinsgr2vr.h	$vr5, $a3, 2
-	xvpickve2gr.w	$a3, $xr4, 3
-	vinsgr2vr.h	$vr5, $a3, 3
-	xvpickve2gr.w	$a3, $xr4, 4
-	vinsgr2vr.h	$vr5, $a3, 4
-	xvpickve2gr.w	$a3, $xr4, 5
-	vinsgr2vr.h	$vr5, $a3, 5
-	xvpickve2gr.w	$a3, $xr4, 6
-	vinsgr2vr.h	$vr5, $a3, 6
-	xvpickve2gr.w	$a3, $xr4, 7
-	vinsgr2vr.h	$vr5, $a3, 7
+	xvpickev.h	$xr5, $xr4, $xr4
+	xvpermi.d	$xr5, $xr5, 216
 	xvmskltz.w	$xr4, $xr4
 	xvpickve2gr.wu	$a3, $xr4, 0
 	xvpickve2gr.wu	$a4, $xr4, 4
@@ -1537,22 +1523,8 @@ _ZL26run_multi_csa_only_autovecIiET_PS0_S1_S1_S0_: # @_ZL26run_multi_csa_only_au
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr7, $a0, 0
 	xvslt.w	$xr8, $xr6, $xr7
-	xvpickve2gr.w	$a5, $xr8, 0
-	vinsgr2vr.h	$vr9, $a5, 0
-	xvpickve2gr.w	$a5, $xr8, 1
-	vinsgr2vr.h	$vr9, $a5, 1
-	xvpickve2gr.w	$a5, $xr8, 2
-	vinsgr2vr.h	$vr9, $a5, 2
-	xvpickve2gr.w	$a5, $xr8, 3
-	vinsgr2vr.h	$vr9, $a5, 3
-	xvpickve2gr.w	$a5, $xr8, 4
-	vinsgr2vr.h	$vr9, $a5, 4
-	xvpickve2gr.w	$a5, $xr8, 5
-	vinsgr2vr.h	$vr9, $a5, 5
-	xvpickve2gr.w	$a5, $xr8, 6
-	vinsgr2vr.h	$vr9, $a5, 6
-	xvpickve2gr.w	$a5, $xr8, 7
-	vinsgr2vr.h	$vr9, $a5, 7
+	xvpickev.h	$xr9, $xr8, $xr8
+	xvpermi.d	$xr9, $xr9, 216
 	xvmskltz.w	$xr8, $xr8
 	xvpickve2gr.wu	$a5, $xr8, 0
 	xvpickve2gr.wu	$a6, $xr8, 4
@@ -1565,22 +1537,8 @@ _ZL26run_multi_csa_only_autovecIiET_PS0_S1_S1_S0_: # @_ZL26run_multi_csa_only_au
 	xvreplgr2vr.w	$xr8, $a5
 	xvbitsel.v	$xr5, $xr7, $xr5, $xr8
 	xvslt.w	$xr7, $xr6, $xr10
-	xvpickve2gr.w	$a5, $xr7, 0
-	vinsgr2vr.h	$vr8, $a5, 0
-	xvpickve2gr.w	$a5, $xr7, 1
-	vinsgr2vr.h	$vr8, $a5, 1
-	xvpickve2gr.w	$a5, $xr7, 2
-	vinsgr2vr.h	$vr8, $a5, 2
-	xvpickve2gr.w	$a5, $xr7, 3
-	vinsgr2vr.h	$vr8, $a5, 3
-	xvpickve2gr.w	$a5, $xr7, 4
-	vinsgr2vr.h	$vr8, $a5, 4
-	xvpickve2gr.w	$a5, $xr7, 5
-	vinsgr2vr.h	$vr8, $a5, 5
-	xvpickve2gr.w	$a5, $xr7, 6
-	vinsgr2vr.h	$vr8, $a5, 6
-	xvpickve2gr.w	$a5, $xr7, 7
-	vinsgr2vr.h	$vr8, $a5, 7
+	xvpickev.h	$xr8, $xr7, $xr7
+	xvpermi.d	$xr8, $xr8, 216
 	xvmskltz.w	$xr7, $xr7
 	xvpickve2gr.wu	$a5, $xr7, 0
 	xvpickve2gr.wu	$a6, $xr7, 4
@@ -1593,22 +1551,8 @@ _ZL26run_multi_csa_only_autovecIiET_PS0_S1_S1_S0_: # @_ZL26run_multi_csa_only_au
 	xvreplgr2vr.w	$xr7, $a5
 	xvbitsel.v	$xr3, $xr10, $xr3, $xr7
 	xvslt.w	$xr7, $xr6, $xr9
-	xvpickve2gr.w	$a5, $xr7, 0
-	vinsgr2vr.h	$vr8, $a5, 0
-	xvpickve2gr.w	$a5, $xr7, 1
-	vinsgr2vr.h	$vr8, $a5, 1
-	xvpickve2gr.w	$a5, $xr7, 2
-	vinsgr2vr.h	$vr8, $a5, 2
-	xvpickve2gr.w	$a5, $xr7, 3
-	vinsgr2vr.h	$vr8, $a5, 3
-	xvpickve2gr.w	$a5, $xr7, 4
-	vinsgr2vr.h	$vr8, $a5, 4
-	xvpickve2gr.w	$a5, $xr7, 5
-	vinsgr2vr.h	$vr8, $a5, 5
-	xvpickve2gr.w	$a5, $xr7, 6
-	vinsgr2vr.h	$vr8, $a5, 6
-	xvpickve2gr.w	$a5, $xr7, 7
-	vinsgr2vr.h	$vr8, $a5, 7
+	xvpickev.h	$xr8, $xr7, $xr7
+	xvpermi.d	$xr8, $xr8, 216
 	xvmskltz.w	$xr7, $xr7
 	xvpickve2gr.wu	$a5, $xr7, 0
 	xvpickve2gr.wu	$a6, $xr7, 4
@@ -2811,22 +2755,8 @@ _ZL34run_csa_with_in_loop_arith_autovecIiET_PS0_S1_S1_S0_: # @_ZL34run_csa_with_
 	xvmadd.w	$xr5, $xr6, $xr3
 	xvst	$xr5, $a2, 0
 	xvslt.w	$xr5, $xr2, $xr6
-	xvpickve2gr.w	$a5, $xr5, 0
-	vinsgr2vr.h	$vr7, $a5, 0
-	xvpickve2gr.w	$a5, $xr5, 1
-	vinsgr2vr.h	$vr7, $a5, 1
-	xvpickve2gr.w	$a5, $xr5, 2
-	vinsgr2vr.h	$vr7, $a5, 2
-	xvpickve2gr.w	$a5, $xr5, 3
-	vinsgr2vr.h	$vr7, $a5, 3
-	xvpickve2gr.w	$a5, $xr5, 4
-	vinsgr2vr.h	$vr7, $a5, 4
-	xvpickve2gr.w	$a5, $xr5, 5
-	vinsgr2vr.h	$vr7, $a5, 5
-	xvpickve2gr.w	$a5, $xr5, 6
-	vinsgr2vr.h	$vr7, $a5, 6
-	xvpickve2gr.w	$a5, $xr5, 7
-	vinsgr2vr.h	$vr7, $a5, 7
+	xvpickev.h	$xr7, $xr5, $xr5
+	xvpermi.d	$xr7, $xr7, 216
 	xvmskltz.w	$xr5, $xr5
 	xvpickve2gr.wu	$a5, $xr5, 0
 	xvpickve2gr.wu	$a6, $xr5, 4
@@ -7034,22 +6964,8 @@ _ZL37run_multi_csa_with_cond_arith_autovecIiET_PS0_S1_S1_S0_: # @_ZL37run_multi_
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr11, $a0, 0
 	xvslt.w	$xr12, $xr4, $xr11
-	xvpickve2gr.w	$a5, $xr12, 0
-	vinsgr2vr.h	$vr13, $a5, 0
-	xvpickve2gr.w	$a5, $xr12, 1
-	vinsgr2vr.h	$vr13, $a5, 1
-	xvpickve2gr.w	$a5, $xr12, 2
-	vinsgr2vr.h	$vr13, $a5, 2
-	xvpickve2gr.w	$a5, $xr12, 3
-	vinsgr2vr.h	$vr13, $a5, 3
-	xvpickve2gr.w	$a5, $xr12, 4
-	vinsgr2vr.h	$vr13, $a5, 4
-	xvpickve2gr.w	$a5, $xr12, 5
-	vinsgr2vr.h	$vr13, $a5, 5
-	xvpickve2gr.w	$a5, $xr12, 6
-	vinsgr2vr.h	$vr13, $a5, 6
-	xvpickve2gr.w	$a5, $xr12, 7
-	vinsgr2vr.h	$vr13, $a5, 7
+	xvpickev.h	$xr13, $xr12, $xr12
+	xvpermi.d	$xr13, $xr13, 216
 	xvbitsel.v	$xr11, $xr7, $xr11, $xr12
 	xvmskltz.w	$xr12, $xr12
 	xvpickve2gr.wu	$a5, $xr12, 0
@@ -7064,22 +6980,8 @@ _ZL37run_multi_csa_with_cond_arith_autovecIiET_PS0_S1_S1_S0_: # @_ZL37run_multi_
 	xvreplgr2vr.w	$xr13, $a5
 	xvbitsel.v	$xr6, $xr11, $xr6, $xr13
 	xvslt.w	$xr11, $xr4, $xr12
-	xvpickve2gr.w	$a5, $xr11, 0
-	vinsgr2vr.h	$vr13, $a5, 0
-	xvpickve2gr.w	$a5, $xr11, 1
-	vinsgr2vr.h	$vr13, $a5, 1
-	xvpickve2gr.w	$a5, $xr11, 2
-	vinsgr2vr.h	$vr13, $a5, 2
-	xvpickve2gr.w	$a5, $xr11, 3
-	vinsgr2vr.h	$vr13, $a5, 3
-	xvpickve2gr.w	$a5, $xr11, 4
-	vinsgr2vr.h	$vr13, $a5, 4
-	xvpickve2gr.w	$a5, $xr11, 5
-	vinsgr2vr.h	$vr13, $a5, 5
-	xvpickve2gr.w	$a5, $xr11, 6
-	vinsgr2vr.h	$vr13, $a5, 6
-	xvpickve2gr.w	$a5, $xr11, 7
-	vinsgr2vr.h	$vr13, $a5, 7
+	xvpickev.h	$xr13, $xr11, $xr11
+	xvpermi.d	$xr13, $xr13, 216
 	xvbitsel.v	$xr12, $xr7, $xr12, $xr11
 	xvmskltz.w	$xr11, $xr11
 	xvpickve2gr.wu	$a5, $xr11, 0
@@ -7094,22 +6996,8 @@ _ZL37run_multi_csa_with_cond_arith_autovecIiET_PS0_S1_S1_S0_: # @_ZL37run_multi_
 	xvreplgr2vr.w	$xr13, $a5
 	xvbitsel.v	$xr3, $xr12, $xr3, $xr13
 	xvslt.w	$xr12, $xr4, $xr11
-	xvpickve2gr.w	$a5, $xr12, 0
-	vinsgr2vr.h	$vr13, $a5, 0
-	xvpickve2gr.w	$a5, $xr12, 1
-	vinsgr2vr.h	$vr13, $a5, 1
-	xvpickve2gr.w	$a5, $xr12, 2
-	vinsgr2vr.h	$vr13, $a5, 2
-	xvpickve2gr.w	$a5, $xr12, 3
-	vinsgr2vr.h	$vr13, $a5, 3
-	xvpickve2gr.w	$a5, $xr12, 4
-	vinsgr2vr.h	$vr13, $a5, 4
-	xvpickve2gr.w	$a5, $xr12, 5
-	vinsgr2vr.h	$vr13, $a5, 5
-	xvpickve2gr.w	$a5, $xr12, 6
-	vinsgr2vr.h	$vr13, $a5, 6
-	xvpickve2gr.w	$a5, $xr12, 7
-	vinsgr2vr.h	$vr13, $a5, 7
+	xvpickev.h	$xr13, $xr12, $xr12
+	xvpermi.d	$xr13, $xr13, 216
 	xvbitsel.v	$xr11, $xr7, $xr11, $xr12
 	xvdiv.w	$xr11, $xr10, $xr11
 	xvmskltz.w	$xr12, $xr12
@@ -13929,14 +13817,8 @@ _ZL27run_single_csa_only_autovecIlET_PS0_S1_S1_S0_: # @_ZL27run_single_csa_only_
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr3, $a0, 0
 	xvslt.d	$xr4, $xr2, $xr3
-	xvpickve2gr.d	$a3, $xr4, 0
-	vinsgr2vr.w	$vr5, $a3, 0
-	xvpickve2gr.d	$a3, $xr4, 1
-	vinsgr2vr.w	$vr5, $a3, 1
-	xvpickve2gr.d	$a3, $xr4, 2
-	vinsgr2vr.w	$vr5, $a3, 2
-	xvpickve2gr.d	$a3, $xr4, 3
-	vinsgr2vr.w	$vr5, $a3, 3
+	xvpickev.w	$xr5, $xr4, $xr4
+	xvpermi.d	$xr5, $xr5, 216
 	xvmskltz.d	$xr4, $xr4
 	xvpickve2gr.wu	$a3, $xr4, 0
 	xvpickve2gr.wu	$a4, $xr4, 4
@@ -14726,14 +14608,8 @@ _ZL26run_multi_csa_only_autovecIlET_PS0_S1_S1_S0_: # @_ZL26run_multi_csa_only_au
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr7, $a0, 0
 	xvslt.d	$xr8, $xr6, $xr7
-	xvpickve2gr.d	$a5, $xr8, 0
-	vinsgr2vr.w	$vr9, $a5, 0
-	xvpickve2gr.d	$a5, $xr8, 1
-	vinsgr2vr.w	$vr9, $a5, 1
-	xvpickve2gr.d	$a5, $xr8, 2
-	vinsgr2vr.w	$vr9, $a5, 2
-	xvpickve2gr.d	$a5, $xr8, 3
-	vinsgr2vr.w	$vr9, $a5, 3
+	xvpickev.w	$xr9, $xr8, $xr8
+	xvpermi.d	$xr9, $xr9, 216
 	xvmskltz.d	$xr8, $xr8
 	xvpickve2gr.wu	$a5, $xr8, 0
 	xvpickve2gr.wu	$a6, $xr8, 4
@@ -14746,14 +14622,8 @@ _ZL26run_multi_csa_only_autovecIlET_PS0_S1_S1_S0_: # @_ZL26run_multi_csa_only_au
 	xvreplgr2vr.d	$xr8, $a5
 	xvbitsel.v	$xr5, $xr7, $xr5, $xr8
 	xvslt.d	$xr7, $xr6, $xr10
-	xvpickve2gr.d	$a5, $xr7, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr7, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr7, 3
-	vinsgr2vr.w	$vr8, $a5, 3
+	xvpickev.w	$xr8, $xr7, $xr7
+	xvpermi.d	$xr8, $xr8, 216
 	xvmskltz.d	$xr7, $xr7
 	xvpickve2gr.wu	$a5, $xr7, 0
 	xvpickve2gr.wu	$a6, $xr7, 4
@@ -14766,14 +14636,8 @@ _ZL26run_multi_csa_only_autovecIlET_PS0_S1_S1_S0_: # @_ZL26run_multi_csa_only_au
 	xvreplgr2vr.d	$xr7, $a5
 	xvbitsel.v	$xr3, $xr10, $xr3, $xr7
 	xvslt.d	$xr7, $xr6, $xr9
-	xvpickve2gr.d	$a5, $xr7, 0
-	vinsgr2vr.w	$vr8, $a5, 0
-	xvpickve2gr.d	$a5, $xr7, 1
-	vinsgr2vr.w	$vr8, $a5, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	vinsgr2vr.w	$vr8, $a5, 2
-	xvpickve2gr.d	$a5, $xr7, 3
-	vinsgr2vr.w	$vr8, $a5, 3
+	xvpickev.w	$xr8, $xr7, $xr7
+	xvpermi.d	$xr8, $xr8, 216
 	xvmskltz.d	$xr7, $xr7
 	xvpickve2gr.wu	$a5, $xr7, 0
 	xvpickve2gr.wu	$a6, $xr7, 4
@@ -15645,14 +15509,8 @@ _ZL34run_csa_with_in_loop_arith_autovecIlET_PS0_S1_S1_S0_: # @_ZL34run_csa_with_
 	xvmadd.d	$xr5, $xr6, $xr3
 	xvst	$xr5, $a2, 0
 	xvslt.d	$xr5, $xr2, $xr6
-	xvpickve2gr.d	$a5, $xr5, 0
-	vinsgr2vr.w	$vr7, $a5, 0
-	xvpickve2gr.d	$a5, $xr5, 1
-	vinsgr2vr.w	$vr7, $a5, 1
-	xvpickve2gr.d	$a5, $xr5, 2
-	vinsgr2vr.w	$vr7, $a5, 2
-	xvpickve2gr.d	$a5, $xr5, 3
-	vinsgr2vr.w	$vr7, $a5, 3
+	xvpickev.w	$xr7, $xr5, $xr5
+	xvpermi.d	$xr7, $xr7, 216
 	xvmskltz.d	$xr5, $xr5
 	xvpickve2gr.wu	$a5, $xr5, 0
 	xvpickve2gr.wu	$a6, $xr5, 4
@@ -18745,14 +18603,8 @@ _ZL37run_multi_csa_with_cond_arith_autovecIlET_PS0_S1_S1_S0_: # @_ZL37run_multi_
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr11, $a0, 0
 	xvslt.d	$xr12, $xr5, $xr11
-	xvpickve2gr.d	$a5, $xr12, 0
-	vinsgr2vr.w	$vr13, $a5, 0
-	xvpickve2gr.d	$a5, $xr12, 1
-	vinsgr2vr.w	$vr13, $a5, 1
-	xvpickve2gr.d	$a5, $xr12, 2
-	vinsgr2vr.w	$vr13, $a5, 2
-	xvpickve2gr.d	$a5, $xr12, 3
-	vinsgr2vr.w	$vr13, $a5, 3
+	xvpickev.w	$xr13, $xr12, $xr12
+	xvpermi.d	$xr13, $xr13, 216
 	xvbitsel.v	$xr11, $xr7, $xr11, $xr12
 	xvmskltz.d	$xr12, $xr12
 	xvpickve2gr.wu	$a5, $xr12, 0
@@ -18767,14 +18619,8 @@ _ZL37run_multi_csa_with_cond_arith_autovecIlET_PS0_S1_S1_S0_: # @_ZL37run_multi_
 	xvreplgr2vr.d	$xr13, $a5
 	xvbitsel.v	$xr6, $xr11, $xr6, $xr13
 	xvslt.d	$xr11, $xr5, $xr12
-	xvpickve2gr.d	$a5, $xr11, 0
-	vinsgr2vr.w	$vr13, $a5, 0
-	xvpickve2gr.d	$a5, $xr11, 1
-	vinsgr2vr.w	$vr13, $a5, 1
-	xvpickve2gr.d	$a5, $xr11, 2
-	vinsgr2vr.w	$vr13, $a5, 2
-	xvpickve2gr.d	$a5, $xr11, 3
-	vinsgr2vr.w	$vr13, $a5, 3
+	xvpickev.w	$xr13, $xr11, $xr11
+	xvpermi.d	$xr13, $xr13, 216
 	xvbitsel.v	$xr12, $xr7, $xr12, $xr11
 	xvmskltz.d	$xr11, $xr11
 	xvpickve2gr.wu	$a5, $xr11, 0
@@ -18789,14 +18635,8 @@ _ZL37run_multi_csa_with_cond_arith_autovecIlET_PS0_S1_S1_S0_: # @_ZL37run_multi_
 	xvreplgr2vr.d	$xr13, $a5
 	xvbitsel.v	$xr3, $xr12, $xr3, $xr13
 	xvslt.d	$xr12, $xr5, $xr11
-	xvpickve2gr.d	$a5, $xr12, 0
-	vinsgr2vr.w	$vr13, $a5, 0
-	xvpickve2gr.d	$a5, $xr12, 1
-	vinsgr2vr.w	$vr13, $a5, 1
-	xvpickve2gr.d	$a5, $xr12, 2
-	vinsgr2vr.w	$vr13, $a5, 2
-	xvpickve2gr.d	$a5, $xr12, 3
-	vinsgr2vr.w	$vr13, $a5, 3
+	xvpickev.w	$xr13, $xr12, $xr12
+	xvpermi.d	$xr13, $xr13, 216
 	xvbitsel.v	$xr11, $xr7, $xr11, $xr12
 	xvdiv.d	$xr11, $xr10, $xr11
 	xvmskltz.d	$xr12, $xr12

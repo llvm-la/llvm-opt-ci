@@ -383,7 +383,9 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	addi.d	$sp, $sp, 256
 	ret
 .LBB1_23:
-	xvpickve2gr.w	$a2, $xr0, 2
+	xvpickev.h	$xr1, $xr0, $xr0
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.h	$a2, $vr1, 2
 	andi	$a2, $a2, 1
 	ori	$a3, $zero, 115
 	masknez	$a3, $a3, $a2
@@ -394,7 +396,9 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	andi	$a2, $s3, 1024
 	beqz	$a2, .LBB1_10
 .LBB1_24:
-	xvpickve2gr.w	$a2, $xr0, 5
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vpickve2gr.h	$a2, $vr0, 5
 	andi	$a2, $a2, 1
 	ori	$a3, $zero, 115
 	masknez	$a3, $a3, $a2

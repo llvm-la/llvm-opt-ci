@@ -192,27 +192,15 @@ jinit_color_deconverter:                # @jinit_color_deconverter
 	xvori.b	$xr6, $xr2, 0
 	xvmadd.d	$xr6, $xr0, $xr1
 	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a1, $a4
+	xvpickev.w	$xr6, $xr6, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	vstx	$vr6, $a1, $a4
 	xvori.b	$xr6, $xr2, 0
 	xvmadd.d	$xr6, $xr0, $xr3
 	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a2, $a4
+	xvpickev.w	$xr6, $xr6, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	vstx	$vr6, $a2, $a4
 	xvmul.d	$xr6, $xr0, $xr4
 	xvst	$xr6, $a3, 0
 	xvori.b	$xr6, $xr2, 0
@@ -300,27 +288,15 @@ jinit_color_deconverter:                # @jinit_color_deconverter
 	xvori.b	$xr6, $xr2, 0
 	xvmadd.d	$xr6, $xr0, $xr1
 	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a1, $a4
+	xvpickev.w	$xr6, $xr6, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	vstx	$vr6, $a1, $a4
 	xvori.b	$xr6, $xr2, 0
 	xvmadd.d	$xr6, $xr0, $xr3
 	xvsrli.d	$xr6, $xr6, 16
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	vstx	$vr7, $a2, $a4
+	xvpickev.w	$xr6, $xr6, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	vstx	$vr6, $a2, $a4
 	xvmul.d	$xr6, $xr0, $xr4
 	xvst	$xr6, $a3, 0
 	xvori.b	$xr6, $xr2, 0

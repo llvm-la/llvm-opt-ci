@@ -541,22 +541,8 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	beqz	$a0, .LBB5_2
 # %bb.1:
 	move	$a0, $zero
-	xvpickve2gr.w	$a1, $xr1, 0
-	vinsgr2vr.h	$vr0, $a1, 0
-	xvpickve2gr.w	$a1, $xr1, 1
-	vinsgr2vr.h	$vr0, $a1, 1
-	xvpickve2gr.w	$a1, $xr1, 2
-	vinsgr2vr.h	$vr0, $a1, 2
-	xvpickve2gr.w	$a1, $xr1, 3
-	vinsgr2vr.h	$vr0, $a1, 3
-	xvpickve2gr.w	$a1, $xr1, 4
-	vinsgr2vr.h	$vr0, $a1, 4
-	xvpickve2gr.w	$a1, $xr1, 5
-	vinsgr2vr.h	$vr0, $a1, 5
-	xvpickve2gr.w	$a1, $xr1, 6
-	vinsgr2vr.h	$vr0, $a1, 6
-	xvpickve2gr.w	$a1, $xr1, 7
-	vinsgr2vr.h	$vr0, $a1, 7
+	xvpickev.h	$xr0, $xr1, $xr1
+	xvpermi.d	$xr0, $xr0, 216
 	b	.LBB5_10
 .LBB5_2:                                # %vector.body.interim
 	pcalau12i	$a0, %pc_hi20(.LCPI5_1)
@@ -568,22 +554,8 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	bstrins.d	$a0, $a1, 7, 4
 	beqz	$a0, .LBB5_4
 # %bb.3:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickev.h	$xr0, $xr1, $xr1
+	xvpermi.d	$xr0, $xr0, 216
 	ori	$a0, $zero, 8
 	b	.LBB5_10
 .LBB5_4:                                # %vector.body.interim.1
@@ -596,22 +568,8 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	bstrins.d	$a0, $a1, 7, 4
 	beqz	$a0, .LBB5_6
 # %bb.5:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickev.h	$xr0, $xr1, $xr1
+	xvpermi.d	$xr0, $xr0, 216
 	ori	$a0, $zero, 16
 	b	.LBB5_10
 .LBB5_6:                                # %vector.body.interim.2
@@ -624,50 +582,22 @@ Lzma2Enc_WriteProperties:               # @Lzma2Enc_WriteProperties
 	bstrins.d	$a0, $a1, 7, 4
 	beqz	$a0, .LBB5_8
 # %bb.7:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickev.h	$xr0, $xr1, $xr1
+	xvpermi.d	$xr0, $xr0, 216
 	ori	$a0, $zero, 24
 	b	.LBB5_10
 .LBB5_8:                                # %vector.body.interim.3
 	pcalau12i	$a0, %pc_hi20(.LCPI5_4)
 	xvld	$xr1, $a0, %pc_lo12(.LCPI5_4)
-	xvslt.wu	$xr1, $xr0, $xr1
-	xvmskltz.w	$xr0, $xr1
-	xvpickve2gr.wu	$a0, $xr0, 0
-	xvpickve2gr.wu	$a1, $xr0, 4
+	xvslt.wu	$xr0, $xr0, $xr1
+	xvmskltz.w	$xr1, $xr0
+	xvpickve2gr.wu	$a0, $xr1, 0
+	xvpickve2gr.wu	$a1, $xr1, 4
 	bstrins.d	$a0, $a1, 7, 4
 	beqz	$a0, .LBB5_11
 # %bb.9:
-	xvpickve2gr.w	$a0, $xr1, 0
-	vinsgr2vr.h	$vr0, $a0, 0
-	xvpickve2gr.w	$a0, $xr1, 1
-	vinsgr2vr.h	$vr0, $a0, 1
-	xvpickve2gr.w	$a0, $xr1, 2
-	vinsgr2vr.h	$vr0, $a0, 2
-	xvpickve2gr.w	$a0, $xr1, 3
-	vinsgr2vr.h	$vr0, $a0, 3
-	xvpickve2gr.w	$a0, $xr1, 4
-	vinsgr2vr.h	$vr0, $a0, 4
-	xvpickve2gr.w	$a0, $xr1, 5
-	vinsgr2vr.h	$vr0, $a0, 5
-	xvpickve2gr.w	$a0, $xr1, 6
-	vinsgr2vr.h	$vr0, $a0, 6
-	xvpickve2gr.w	$a0, $xr1, 7
-	vinsgr2vr.h	$vr0, $a0, 7
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	ori	$a0, $zero, 32
 .LBB5_10:                               # %vector.early.exit
 	pcalau12i	$a1, %pc_hi20(.LCPI5_5)

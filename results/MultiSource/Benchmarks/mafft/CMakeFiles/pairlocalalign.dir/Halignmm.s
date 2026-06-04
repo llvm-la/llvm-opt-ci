@@ -2480,26 +2480,11 @@ H__align:                               # @H__align
 	.p2align	4, , 16
 .LBB2_171:                              # %vector.body1045
                                         # =>This Inner Loop Header: Depth=1
-	xvsub.d	$xr5, $xr3, $xr1
-	xvsub.d	$xr6, $xr3, $xr2
-	xvpickve2gr.d	$a7, $xr6, 0
-	vinsgr2vr.w	$vr7, $a7, 0
-	xvpickve2gr.d	$a7, $xr6, 1
-	vinsgr2vr.w	$vr7, $a7, 1
-	xvpickve2gr.d	$a7, $xr6, 2
-	vinsgr2vr.w	$vr7, $a7, 2
-	xvpickve2gr.d	$a7, $xr6, 3
-	vinsgr2vr.w	$vr7, $a7, 3
-	xvpickve2gr.d	$a7, $xr5, 0
-	vinsgr2vr.w	$vr6, $a7, 0
-	xvpickve2gr.d	$a7, $xr5, 1
-	vinsgr2vr.w	$vr6, $a7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	vinsgr2vr.w	$vr6, $a7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	vinsgr2vr.w	$vr6, $a7, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvmul.w	$xr5, $xr0, $xr7
+	xvsub.d	$xr5, $xr3, $xr2
+	xvsub.d	$xr6, $xr3, $xr1
+	xvpickev.w	$xr5, $xr6, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	xvmul.w	$xr5, $xr0, $xr5
 	vext2xv.d.w	$xr6, $xr5
 	xvffint.d.l	$xr6, $xr6
 	xvpermi.q	$xr5, $xr5, 1

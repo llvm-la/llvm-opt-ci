@@ -54,14 +54,17 @@ simulator_kernel:                       # @simulator_kernel
 	xvpickve2gr.d	$t3, $xr4, 1
 	xvpickve2gr.d	$t4, $xr4, 2
 	xvpickve2gr.d	$t5, $xr4, 3
-	ldx.d	$t2, $a1, $t2
-	ldx.d	$t3, $a1, $t3
 	ldx.d	$t4, $a1, $t4
 	ldx.d	$t5, $a1, $t5
-	vinsgr2vr.w	$vr4, $t2, 0
-	vinsgr2vr.w	$vr4, $t3, 1
-	vinsgr2vr.w	$vr4, $t4, 2
-	vinsgr2vr.w	$vr4, $t5, 3
+	ldx.d	$t2, $a1, $t2
+	ldx.d	$t3, $a1, $t3
+	vinsgr2vr.d	$vr4, $t4, 0
+	vinsgr2vr.d	$vr4, $t5, 1
+	vinsgr2vr.d	$vr5, $t2, 0
+	vinsgr2vr.d	$vr5, $t3, 1
+	xvpermi.q	$xr5, $xr4, 2
+	xvpickev.w	$xr4, $xr5, $xr5
+	xvpermi.d	$xr4, $xr4, 216
 	vsub.w	$vr4, $vr4, $vr0
 	vand.v	$vr4, $vr4, $vr1
 	vext2xv.du.wu	$xr4, $xr4

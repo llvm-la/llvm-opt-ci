@@ -2886,7 +2886,7 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	bgeu	$a1, $a0, .LBB5_30
 # %bb.18:
 	move	$a0, $zero
-	ori	$a6, $zero, 1
+	ori	$a4, $zero, 1
 	b	.LBB5_39
 .LBB5_19:
 	addi.w	$a4, $zero, -1
@@ -2961,13 +2961,13 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	bgeu	$a1, $a0, .LBB5_32
 # %bb.31:
 	move	$a0, $zero
-	ori	$a6, $zero, 1
+	ori	$a4, $zero, 1
 	b	.LBB5_36
 .LBB5_32:                               # %vector.ph244
-	andi	$a4, $ra, 12
+	andi	$a6, $ra, 12
 	bstrpick.d	$a0, $ra, 31, 4
 	slli.d	$a0, $a0, 4
-	addi.d	$a6, $sp, 472
+	addi.d	$a4, $sp, 472
 	vrepli.b	$vr0, 0
 	addi.d	$a7, $sp, 600
 	move	$t0, $a0
@@ -2976,63 +2976,35 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 .LBB5_33:                               # %vector.body247
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a7, -32
-	xvld	$xr3, $a6, -32
+	xvld	$xr3, $a4, -32
 	xvld	$xr4, $a7, 0
-	xvld	$xr5, $a6, 0
+	xvld	$xr5, $a4, 0
 	xvseq.w	$xr2, $xr2, $xr3
 	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t1, $xr2, 0
-	vinsgr2vr.h	$vr3, $t1, 0
-	xvpickve2gr.w	$t1, $xr2, 1
-	vinsgr2vr.h	$vr3, $t1, 1
-	xvpickve2gr.w	$t1, $xr2, 2
-	vinsgr2vr.h	$vr3, $t1, 2
-	xvpickve2gr.w	$t1, $xr2, 3
-	vinsgr2vr.h	$vr3, $t1, 3
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr3, $t1, 4
-	xvpickve2gr.w	$t1, $xr2, 5
-	vinsgr2vr.h	$vr3, $t1, 5
-	xvpickve2gr.w	$t1, $xr2, 6
-	vinsgr2vr.h	$vr3, $t1, 6
-	xvpickve2gr.w	$t1, $xr2, 7
-	vinsgr2vr.h	$vr3, $t1, 7
-	xvseq.w	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t1, $xr2, 0
-	vinsgr2vr.h	$vr4, $t1, 0
-	xvpickve2gr.w	$t1, $xr2, 1
-	vinsgr2vr.h	$vr4, $t1, 1
-	xvpickve2gr.w	$t1, $xr2, 2
-	vinsgr2vr.h	$vr4, $t1, 2
-	xvpickve2gr.w	$t1, $xr2, 3
-	vinsgr2vr.h	$vr4, $t1, 3
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr4, $t1, 4
-	xvpickve2gr.w	$t1, $xr2, 5
-	vinsgr2vr.h	$vr4, $t1, 5
-	xvpickve2gr.w	$t1, $xr2, 6
-	vinsgr2vr.h	$vr4, $t1, 6
-	xvpickve2gr.w	$t1, $xr2, 7
-	vinsgr2vr.h	$vr4, $t1, 7
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvseq.w	$xr3, $xr4, $xr5
+	xvxori.b	$xr3, $xr3, 255
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr1, $vr1, $vr3
 	addi.d	$t0, $t0, -16
-	addi.d	$a6, $a6, 64
+	addi.d	$a4, $a4, 64
 	addi.d	$a7, $a7, 64
 	bnez	$t0, .LBB5_33
 # %bb.34:                               # %middle.block255
 	vor.v	$vr0, $vr1, $vr0
 	vslli.h	$vr0, $vr0, 15
 	vmskltz.h	$vr0, $vr0
-	vpickve2gr.hu	$a6, $vr0, 0
-	sltui	$a6, $a6, 1
+	vpickve2gr.hu	$a4, $vr0, 0
+	sltui	$a4, $a4, 1
 	beq	$a0, $ra, .LBB5_41
 # %bb.35:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB5_39
+	beqz	$a6, .LBB5_39
 .LBB5_36:                               # %vec.epilog.ph
 	move	$a7, $a0
-	sltui	$a4, $a6, 1
+	sltui	$a4, $a4, 1
 	bstrpick.d	$a0, $ra, 31, 2
 	slli.d	$a0, $a0, 2
 	vreplgr2vr.w	$vr0, $a4
@@ -3056,28 +3028,28 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a4, $vr0, 0
-	sltui	$a6, $a4, 1
+	sltui	$a4, $a4, 1
 	beq	$a0, $ra, .LBB5_41
 .LBB5_39:                               # %.lr.ph151.preheader
-	addi.d	$a4, $sp, 568
-	alsl.d	$a4, $a0, $a4, 2
+	addi.d	$a6, $sp, 568
+	alsl.d	$a6, $a0, $a6, 2
 	addi.d	$a7, $sp, 440
 	alsl.d	$a7, $a0, $a7, 2
 	sub.d	$a0, $ra, $a0
 	.p2align	4, , 16
 .LBB5_40:                               # %.lr.ph151
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a4, 0
+	ld.w	$t0, $a6, 0
 	ld.w	$t1, $a7, 0
 	xor	$t0, $t0, $t1
 	sltui	$t0, $t0, 1
-	maskeqz	$a6, $a6, $t0
-	addi.d	$a4, $a4, 4
+	maskeqz	$a4, $a4, $t0
+	addi.d	$a6, $a6, 4
 	addi.d	$a0, $a0, -1
 	addi.d	$a7, $a7, 4
 	bnez	$a0, .LBB5_40
 .LBB5_41:                               # %._crit_edge
-	bnez	$a6, .LBB5_54
+	bnez	$a4, .LBB5_54
 # %bb.42:                               # %.lr.ph168
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$a0, $a0, %got_pc_lo12(img)

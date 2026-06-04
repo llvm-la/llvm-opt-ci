@@ -59,28 +59,28 @@ nsis_inflate:                           # @nsis_inflate
 	addi.d	$a0, $a0, %pc_lo12(.LJTI0_0)
 	st.d	$a0, $sp, 400                   # 8-byte Folded Spill
 	ori	$t8, $zero, 1
-	xvrepli.d	$xr10, 143
-	xvrepli.d	$xr11, 135
-	xvrepli.d	$xr12, 280
-	xvrepli.d	$xr13, 272
-	xvrepli.w	$xr14, 8
-	xvrepli.d	$xr15, -144
-	xvrepli.d	$xr16, 112
-	xvrepli.d	$xr17, -136
-	xvrepli.w	$xr18, 9
+	xvrepli.d	$xr9, 143
+	xvrepli.d	$xr10, 135
+	xvrepli.d	$xr11, 280
+	xvrepli.d	$xr12, 272
+	xvrepli.w	$xr13, 8
+	xvrepli.d	$xr14, -144
+	xvrepli.d	$xr15, 112
+	xvrepli.d	$xr16, -136
+	xvrepli.w	$xr17, 9
 	xvrepli.w	$xr0, 5
 	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
 	vrepli.w	$vr0, 5
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	xvst	$xr10, $sp, 352                 # 32-byte Folded Spill
-	xvst	$xr11, $sp, 320                 # 32-byte Folded Spill
-	xvst	$xr12, $sp, 288                 # 32-byte Folded Spill
-	xvst	$xr13, $sp, 256                 # 32-byte Folded Spill
-	xvst	$xr14, $sp, 224                 # 32-byte Folded Spill
-	xvst	$xr15, $sp, 192                 # 32-byte Folded Spill
-	xvst	$xr16, $sp, 160                 # 32-byte Folded Spill
-	xvst	$xr17, $sp, 128                 # 32-byte Folded Spill
-	xvst	$xr18, $sp, 96                  # 32-byte Folded Spill
+	xvst	$xr9, $sp, 352                  # 32-byte Folded Spill
+	xvst	$xr10, $sp, 320                 # 32-byte Folded Spill
+	xvst	$xr11, $sp, 288                 # 32-byte Folded Spill
+	xvst	$xr12, $sp, 256                 # 32-byte Folded Spill
+	xvst	$xr13, $sp, 224                 # 32-byte Folded Spill
+	xvst	$xr14, $sp, 192                 # 32-byte Folded Spill
+	xvst	$xr15, $sp, 160                 # 32-byte Folded Spill
+	xvst	$xr16, $sp, 128                 # 32-byte Folded Spill
+	xvst	$xr17, $sp, 96                  # 32-byte Folded Spill
 .LBB0_4:                                # %.thread922
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_72 Depth 2
@@ -167,15 +167,15 @@ nsis_inflate:                           # @nsis_inflate
 	or	$s1, $a3, $a5
 	or	$s5, $a2, $a6
 	ori	$t8, $zero, 1
-	xvld	$xr10, $sp, 352                 # 32-byte Folded Reload
-	xvld	$xr11, $sp, 320                 # 32-byte Folded Reload
-	xvld	$xr12, $sp, 288                 # 32-byte Folded Reload
-	xvld	$xr13, $sp, 256                 # 32-byte Folded Reload
-	xvld	$xr14, $sp, 224                 # 32-byte Folded Reload
-	xvld	$xr15, $sp, 192                 # 32-byte Folded Reload
-	xvld	$xr16, $sp, 160                 # 32-byte Folded Reload
-	xvld	$xr17, $sp, 128                 # 32-byte Folded Reload
-	xvld	$xr18, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 352                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 320                 # 32-byte Folded Reload
+	xvld	$xr11, $sp, 288                 # 32-byte Folded Reload
+	xvld	$xr12, $sp, 256                 # 32-byte Folded Reload
+	xvld	$xr13, $sp, 224                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 192                 # 32-byte Folded Reload
+	xvld	$xr15, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr16, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr17, $sp, 96                  # 32-byte Folded Reload
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	beqz	$s1, .LBB0_237
 .LBB0_11:                               #   in Loop: Header=BB0_12 Depth=2
@@ -351,15 +351,15 @@ nsis_inflate:                           # @nsis_inflate
 	ld.d	$s5, $s4, 16
 	st.d	$a1, $s4, 8
 	ori	$t8, $zero, 1
-	xvld	$xr10, $sp, 352                 # 32-byte Folded Reload
-	xvld	$xr11, $sp, 320                 # 32-byte Folded Reload
-	xvld	$xr12, $sp, 288                 # 32-byte Folded Reload
-	xvld	$xr13, $sp, 256                 # 32-byte Folded Reload
-	xvld	$xr14, $sp, 224                 # 32-byte Folded Reload
-	xvld	$xr15, $sp, 192                 # 32-byte Folded Reload
-	xvld	$xr16, $sp, 160                 # 32-byte Folded Reload
-	xvld	$xr17, $sp, 128                 # 32-byte Folded Reload
-	xvld	$xr18, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 352                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 320                 # 32-byte Folded Reload
+	xvld	$xr11, $sp, 288                 # 32-byte Folded Reload
+	xvld	$xr12, $sp, 256                 # 32-byte Folded Reload
+	xvld	$xr13, $sp, 224                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 192                 # 32-byte Folded Reload
+	xvld	$xr15, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr16, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr17, $sp, 96                  # 32-byte Folded Reload
 	move	$ra, $s1
 	bne	$s5, $a1, .LBB0_249
 # %bb.33:                               #   in Loop: Header=BB0_4 Depth=1
@@ -465,15 +465,15 @@ nsis_inflate:                           # @nsis_inflate
 	ori	$a0, $zero, 17
 	st.w	$a0, $fp, 40
 	ori	$t8, $zero, 1
-	xvld	$xr10, $sp, 352                 # 32-byte Folded Reload
-	xvld	$xr11, $sp, 320                 # 32-byte Folded Reload
-	xvld	$xr12, $sp, 288                 # 32-byte Folded Reload
-	xvld	$xr13, $sp, 256                 # 32-byte Folded Reload
-	xvld	$xr14, $sp, 224                 # 32-byte Folded Reload
-	xvld	$xr15, $sp, 192                 # 32-byte Folded Reload
-	xvld	$xr16, $sp, 160                 # 32-byte Folded Reload
-	xvld	$xr17, $sp, 128                 # 32-byte Folded Reload
-	xvld	$xr18, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 352                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 320                 # 32-byte Folded Reload
+	xvld	$xr11, $sp, 288                 # 32-byte Folded Reload
+	xvld	$xr12, $sp, 256                 # 32-byte Folded Reload
+	xvld	$xr13, $sp, 224                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 192                 # 32-byte Folded Reload
+	xvld	$xr15, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr16, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr17, $sp, 96                  # 32-byte Folded Reload
 	move	$ra, $s6
 	b	.LBB0_4
 .LBB0_49:                               #   in Loop: Header=BB0_4 Depth=1
@@ -1098,15 +1098,15 @@ nsis_inflate:                           # @nsis_inflate
 	st.d	$a3, $fp, 88
 	addi.d	$s7, $fp, 56
 	ori	$t8, $zero, 1
-	xvld	$xr10, $sp, 352                 # 32-byte Folded Reload
-	xvld	$xr11, $sp, 320                 # 32-byte Folded Reload
-	xvld	$xr12, $sp, 288                 # 32-byte Folded Reload
-	xvld	$xr13, $sp, 256                 # 32-byte Folded Reload
-	xvld	$xr14, $sp, 224                 # 32-byte Folded Reload
-	xvld	$xr15, $sp, 192                 # 32-byte Folded Reload
-	xvld	$xr16, $sp, 160                 # 32-byte Folded Reload
-	xvld	$xr17, $sp, 128                 # 32-byte Folded Reload
-	xvld	$xr18, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 352                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 320                 # 32-byte Folded Reload
+	xvld	$xr11, $sp, 288                 # 32-byte Folded Reload
+	xvld	$xr12, $sp, 256                 # 32-byte Folded Reload
+	xvld	$xr13, $sp, 224                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 192                 # 32-byte Folded Reload
+	xvld	$xr15, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr16, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr17, $sp, 96                  # 32-byte Folded Reload
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 .LBB0_136:                              #   in Loop: Header=BB0_4 Depth=1
 	st.w	$a0, $fp, 64
@@ -1204,130 +1204,40 @@ nsis_inflate:                           # @nsis_inflate
 .LBB0_151:                              # %vector.body
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	xvslt.du	$xr2, $xr9, $xr1
+	xvslt.du	$xr3, $xr9, $xr0
+	xvpickev.w	$xr2, $xr3, $xr2
+	xvpermi.d	$xr2, $xr2, 216
 	xvslt.du	$xr3, $xr10, $xr1
-	xvpickve2gr.d	$a1, $xr3, 0
-	vinsgr2vr.w	$vr2, $a1, 0
-	xvpickve2gr.d	$a1, $xr3, 1
-	vinsgr2vr.w	$vr2, $a1, 1
-	xvpickve2gr.d	$a1, $xr3, 2
-	vinsgr2vr.w	$vr2, $a1, 2
-	xvpickve2gr.d	$a1, $xr3, 3
-	vinsgr2vr.w	$vr2, $a1, 3
-	xvslt.du	$xr3, $xr10, $xr0
-	xvpickve2gr.d	$a1, $xr3, 0
-	vinsgr2vr.w	$vr4, $a1, 0
-	xvpickve2gr.d	$a1, $xr3, 1
-	vinsgr2vr.w	$vr4, $a1, 1
-	xvpickve2gr.d	$a1, $xr3, 2
-	vinsgr2vr.w	$vr4, $a1, 2
-	xvpickve2gr.d	$a1, $xr3, 3
-	vinsgr2vr.w	$vr4, $a1, 3
-	xvpermi.q	$xr2, $xr4, 2
-	xvslt.du	$xr4, $xr11, $xr1
-	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.w	$vr3, $a1, 0
-	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.w	$vr3, $a1, 1
-	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.w	$vr3, $a1, 2
-	xvpickve2gr.d	$a1, $xr4, 3
-	vinsgr2vr.w	$vr3, $a1, 3
-	xvslt.du	$xr4, $xr11, $xr0
-	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.w	$vr5, $a1, 0
-	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.w	$vr5, $a1, 1
-	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.w	$vr5, $a1, 2
-	xvpickve2gr.d	$a1, $xr4, 3
-	vinsgr2vr.w	$vr5, $a1, 3
-	xvpermi.q	$xr3, $xr5, 2
-	xvslt.du	$xr4, $xr1, $xr12
-	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.w	$vr5, $a1, 0
-	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.w	$vr5, $a1, 1
-	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.w	$vr5, $a1, 2
-	xvpickve2gr.d	$a1, $xr4, 3
-	vinsgr2vr.w	$vr5, $a1, 3
-	xvslt.du	$xr4, $xr0, $xr12
-	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.w	$vr6, $a1, 0
-	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.w	$vr6, $a1, 1
-	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.w	$vr6, $a1, 2
-	xvpickve2gr.d	$a1, $xr4, 3
-	vinsgr2vr.w	$vr6, $a1, 3
-	xvpermi.q	$xr5, $xr6, 2
-	xvaddi.wu	$xr4, $xr5, 8
-	xvslt.du	$xr5, $xr1, $xr13
-	xvpickve2gr.d	$a1, $xr5, 0
-	vinsgr2vr.w	$vr6, $a1, 0
-	xvpickve2gr.d	$a1, $xr5, 1
-	vinsgr2vr.w	$vr6, $a1, 1
-	xvpickve2gr.d	$a1, $xr5, 2
-	vinsgr2vr.w	$vr6, $a1, 2
-	xvpickve2gr.d	$a1, $xr5, 3
-	vinsgr2vr.w	$vr6, $a1, 3
-	xvslt.du	$xr5, $xr0, $xr13
-	xvpickve2gr.d	$a1, $xr5, 0
-	vinsgr2vr.w	$vr7, $a1, 0
-	xvpickve2gr.d	$a1, $xr5, 1
-	vinsgr2vr.w	$vr7, $a1, 1
-	xvpickve2gr.d	$a1, $xr5, 2
-	vinsgr2vr.w	$vr7, $a1, 2
-	xvpickve2gr.d	$a1, $xr5, 3
-	vinsgr2vr.w	$vr7, $a1, 3
-	xvpermi.q	$xr6, $xr7, 2
-	xvaddi.wu	$xr5, $xr6, 8
-	xvadd.d	$xr6, $xr0, $xr15
-	xvadd.d	$xr7, $xr1, $xr15
-	xvslt.du	$xr7, $xr7, $xr16
-	xvpickve2gr.d	$a1, $xr7, 0
-	vinsgr2vr.w	$vr8, $a1, 0
-	xvpickve2gr.d	$a1, $xr7, 1
-	vinsgr2vr.w	$vr8, $a1, 1
-	xvpickve2gr.d	$a1, $xr7, 2
-	vinsgr2vr.w	$vr8, $a1, 2
-	xvpickve2gr.d	$a1, $xr7, 3
-	vinsgr2vr.w	$vr8, $a1, 3
-	xvslt.du	$xr6, $xr6, $xr16
-	xvpickve2gr.d	$a1, $xr6, 0
-	vinsgr2vr.w	$vr7, $a1, 0
-	xvpickve2gr.d	$a1, $xr6, 1
-	vinsgr2vr.w	$vr7, $a1, 1
-	xvpickve2gr.d	$a1, $xr6, 2
-	vinsgr2vr.w	$vr7, $a1, 2
-	xvpickve2gr.d	$a1, $xr6, 3
-	vinsgr2vr.w	$vr7, $a1, 3
-	xvpermi.q	$xr8, $xr7, 2
-	xvadd.d	$xr6, $xr0, $xr17
-	xvadd.d	$xr7, $xr1, $xr17
-	xvslt.du	$xr7, $xr7, $xr16
-	xvpickve2gr.d	$a1, $xr7, 0
-	vinsgr2vr.w	$vr9, $a1, 0
-	xvpickve2gr.d	$a1, $xr7, 1
-	vinsgr2vr.w	$vr9, $a1, 1
-	xvpickve2gr.d	$a1, $xr7, 2
-	vinsgr2vr.w	$vr9, $a1, 2
-	xvpickve2gr.d	$a1, $xr7, 3
-	vinsgr2vr.w	$vr9, $a1, 3
-	xvslt.du	$xr6, $xr6, $xr16
-	xvpickve2gr.d	$a1, $xr6, 0
-	vinsgr2vr.w	$vr7, $a1, 0
-	xvpickve2gr.d	$a1, $xr6, 1
-	vinsgr2vr.w	$vr7, $a1, 1
-	xvpickve2gr.d	$a1, $xr6, 2
-	vinsgr2vr.w	$vr7, $a1, 2
-	xvpickve2gr.d	$a1, $xr6, 3
-	vinsgr2vr.w	$vr7, $a1, 3
-	xvpermi.q	$xr9, $xr7, 2
-	xvbitsel.v	$xr4, $xr4, $xr18, $xr8
-	xvbitsel.v	$xr2, $xr14, $xr4, $xr2
-	xvbitsel.v	$xr4, $xr5, $xr18, $xr9
-	xvbitsel.v	$xr3, $xr14, $xr4, $xr3
+	xvslt.du	$xr4, $xr10, $xr0
+	xvpickev.w	$xr3, $xr4, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvslt.du	$xr4, $xr1, $xr11
+	xvslt.du	$xr5, $xr0, $xr11
+	xvpickev.w	$xr4, $xr5, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvaddi.wu	$xr4, $xr4, 8
+	xvslt.du	$xr5, $xr1, $xr12
+	xvslt.du	$xr6, $xr0, $xr12
+	xvpickev.w	$xr5, $xr6, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	xvaddi.wu	$xr5, $xr5, 8
+	xvadd.d	$xr6, $xr0, $xr14
+	xvadd.d	$xr7, $xr1, $xr14
+	xvslt.du	$xr7, $xr7, $xr15
+	xvslt.du	$xr6, $xr6, $xr15
+	xvpickev.w	$xr6, $xr6, $xr7
+	xvpermi.d	$xr6, $xr6, 216
+	xvadd.d	$xr7, $xr0, $xr16
+	xvadd.d	$xr8, $xr1, $xr16
+	xvslt.du	$xr8, $xr8, $xr15
+	xvslt.du	$xr7, $xr7, $xr15
+	xvpickev.w	$xr7, $xr7, $xr8
+	xvpermi.d	$xr7, $xr7, 216
+	xvbitsel.v	$xr4, $xr4, $xr17, $xr6
+	xvbitsel.v	$xr2, $xr13, $xr4, $xr2
+	xvbitsel.v	$xr4, $xr5, $xr17, $xr7
+	xvbitsel.v	$xr3, $xr13, $xr4, $xr3
 	pcalau12i	$a1, %pc_hi20(nsis_inflate.lc)
 	addi.d	$s7, $a1, %pc_lo12(nsis_inflate.lc)
 	add.d	$a1, $s7, $a0
@@ -1382,15 +1292,15 @@ nsis_inflate:                           # @nsis_inflate
 	move	$a7, $s6
 	pcaddu18i	$ra, %call36(huft_build)
 	jirl	$ra, $ra, 0
-	xvld	$xr18, $sp, 96                  # 32-byte Folded Reload
-	xvld	$xr17, $sp, 128                 # 32-byte Folded Reload
-	xvld	$xr16, $sp, 160                 # 32-byte Folded Reload
-	xvld	$xr15, $sp, 192                 # 32-byte Folded Reload
-	xvld	$xr14, $sp, 224                 # 32-byte Folded Reload
-	xvld	$xr13, $sp, 256                 # 32-byte Folded Reload
-	xvld	$xr12, $sp, 288                 # 32-byte Folded Reload
-	xvld	$xr11, $sp, 320                 # 32-byte Folded Reload
-	xvld	$xr10, $sp, 352                 # 32-byte Folded Reload
+	xvld	$xr17, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr16, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr15, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 192                 # 32-byte Folded Reload
+	xvld	$xr13, $sp, 224                 # 32-byte Folded Reload
+	xvld	$xr12, $sp, 256                 # 32-byte Folded Reload
+	xvld	$xr11, $sp, 288                 # 32-byte Folded Reload
+	xvld	$xr10, $sp, 320                 # 32-byte Folded Reload
+	xvld	$xr9, $sp, 352                  # 32-byte Folded Reload
 	ori	$t8, $zero, 1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	st.b	$t8, $a0, %pc_lo12(fixed_built)
@@ -1455,15 +1365,15 @@ nsis_inflate:                           # @nsis_inflate
 	or	$s1, $a3, $a1
 	or	$s5, $a0, $a2
 	ori	$t8, $zero, 1
-	xvld	$xr10, $sp, 352                 # 32-byte Folded Reload
-	xvld	$xr11, $sp, 320                 # 32-byte Folded Reload
-	xvld	$xr12, $sp, 288                 # 32-byte Folded Reload
-	xvld	$xr13, $sp, 256                 # 32-byte Folded Reload
-	xvld	$xr14, $sp, 224                 # 32-byte Folded Reload
-	xvld	$xr15, $sp, 192                 # 32-byte Folded Reload
-	xvld	$xr16, $sp, 160                 # 32-byte Folded Reload
-	xvld	$xr17, $sp, 128                 # 32-byte Folded Reload
-	xvld	$xr18, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 352                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 320                 # 32-byte Folded Reload
+	xvld	$xr11, $sp, 288                 # 32-byte Folded Reload
+	xvld	$xr12, $sp, 256                 # 32-byte Folded Reload
+	xvld	$xr13, $sp, 224                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 192                 # 32-byte Folded Reload
+	xvld	$xr15, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr16, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr17, $sp, 96                  # 32-byte Folded Reload
 	move	$ra, $s6
 	beqz	$s1, .LBB0_276
 .LBB0_159:                              #   in Loop: Header=BB0_4 Depth=1
@@ -1624,15 +1534,15 @@ nsis_inflate:                           # @nsis_inflate
 	sub.d	$a1, $a0, $s6
 	st.w	$a1, $fp, 48
 	ori	$t8, $zero, 1
-	xvld	$xr10, $sp, 352                 # 32-byte Folded Reload
-	xvld	$xr11, $sp, 320                 # 32-byte Folded Reload
-	xvld	$xr12, $sp, 288                 # 32-byte Folded Reload
-	xvld	$xr13, $sp, 256                 # 32-byte Folded Reload
-	xvld	$xr14, $sp, 224                 # 32-byte Folded Reload
-	xvld	$xr15, $sp, 192                 # 32-byte Folded Reload
-	xvld	$xr16, $sp, 160                 # 32-byte Folded Reload
-	xvld	$xr17, $sp, 128                 # 32-byte Folded Reload
-	xvld	$xr18, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr9, $sp, 352                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 320                 # 32-byte Folded Reload
+	xvld	$xr11, $sp, 288                 # 32-byte Folded Reload
+	xvld	$xr12, $sp, 256                 # 32-byte Folded Reload
+	xvld	$xr13, $sp, 224                 # 32-byte Folded Reload
+	xvld	$xr14, $sp, 192                 # 32-byte Folded Reload
+	xvld	$xr15, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr16, $sp, 128                 # 32-byte Folded Reload
+	xvld	$xr17, $sp, 96                  # 32-byte Folded Reload
 	bne	$a0, $s6, .LBB0_4
 # %bb.175:                              #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $fp, 1352

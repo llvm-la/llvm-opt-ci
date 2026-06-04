@@ -992,44 +992,46 @@ readspec:                               # @readspec
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a2, -16
 	xvslti.w	$xr2, $xr2, 0
-	xvpickve2gr.w	$a6, $xr2, 0
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	vpickve2gr.h	$a6, $vr2, 0
 	andi	$a6, $a6, 1
 	xvaddi.du	$xr3, $xr1, 1
 	bnez	$a6, .LBB1_142
 # %bb.135:                              # %pred.store.continue
                                         #   in Loop: Header=BB1_134 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 1
+	vpickve2gr.h	$a6, $vr2, 1
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB1_143
 .LBB1_136:                              # %pred.store.continue333
                                         #   in Loop: Header=BB1_134 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 2
+	vpickve2gr.h	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB1_144
 .LBB1_137:                              # %pred.store.continue335
                                         #   in Loop: Header=BB1_134 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 3
+	vpickve2gr.h	$a6, $vr2, 3
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB1_145
 .LBB1_138:                              # %pred.store.continue337
                                         #   in Loop: Header=BB1_134 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 4
+	vpickve2gr.h	$a6, $vr2, 4
 	andi	$a6, $a6, 1
 	xvaddi.du	$xr3, $xr0, 1
 	bnez	$a6, .LBB1_146
 .LBB1_139:                              # %pred.store.continue339
                                         #   in Loop: Header=BB1_134 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 5
+	vpickve2gr.h	$a6, $vr2, 5
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB1_147
 .LBB1_140:                              # %pred.store.continue341
                                         #   in Loop: Header=BB1_134 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 6
+	vpickve2gr.h	$a6, $vr2, 6
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB1_148
 .LBB1_141:                              # %pred.store.continue343
                                         #   in Loop: Header=BB1_134 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 7
+	vpickve2gr.h	$a6, $vr2, 7
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB1_133
 	b	.LBB1_149
@@ -1042,7 +1044,7 @@ readspec:                               # @readspec
 	maskeqz	$a6, $a4, $a6
 	or	$a6, $a6, $a7
 	st.w	$a6, $a2, -16
-	xvpickve2gr.w	$a6, $xr2, 1
+	vpickve2gr.h	$a6, $vr2, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB1_136
 .LBB1_143:                              # %pred.store.if332
@@ -1053,7 +1055,7 @@ readspec:                               # @readspec
 	maskeqz	$a6, $a4, $a6
 	or	$a6, $a6, $a7
 	st.w	$a6, $a2, -12
-	xvpickve2gr.w	$a6, $xr2, 2
+	vpickve2gr.h	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB1_137
 .LBB1_144:                              # %pred.store.if334
@@ -1064,7 +1066,7 @@ readspec:                               # @readspec
 	maskeqz	$a6, $a4, $a6
 	or	$a6, $a6, $a7
 	st.w	$a6, $a2, -8
-	xvpickve2gr.w	$a6, $xr2, 3
+	vpickve2gr.h	$a6, $vr2, 3
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB1_138
 .LBB1_145:                              # %pred.store.if336
@@ -1075,7 +1077,7 @@ readspec:                               # @readspec
 	maskeqz	$a6, $a4, $a6
 	or	$a6, $a6, $a7
 	st.w	$a6, $a2, -4
-	xvpickve2gr.w	$a6, $xr2, 4
+	vpickve2gr.h	$a6, $vr2, 4
 	andi	$a6, $a6, 1
 	xvaddi.du	$xr3, $xr0, 1
 	beqz	$a6, .LBB1_139
@@ -1087,7 +1089,7 @@ readspec:                               # @readspec
 	maskeqz	$a6, $a4, $a6
 	or	$a6, $a6, $a7
 	st.w	$a6, $a2, 0
-	xvpickve2gr.w	$a6, $xr2, 5
+	vpickve2gr.h	$a6, $vr2, 5
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB1_140
 .LBB1_147:                              # %pred.store.if340
@@ -1098,7 +1100,7 @@ readspec:                               # @readspec
 	maskeqz	$a6, $a4, $a6
 	or	$a6, $a6, $a7
 	st.w	$a6, $a2, 4
-	xvpickve2gr.w	$a6, $xr2, 6
+	vpickve2gr.h	$a6, $vr2, 6
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB1_141
 .LBB1_148:                              # %pred.store.if342
@@ -1109,7 +1111,7 @@ readspec:                               # @readspec
 	maskeqz	$a6, $a4, $a6
 	or	$a6, $a6, $a7
 	st.w	$a6, $a2, 8
-	xvpickve2gr.w	$a6, $xr2, 7
+	vpickve2gr.h	$a6, $vr2, 7
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB1_133
 .LBB1_149:                              # %pred.store.if344

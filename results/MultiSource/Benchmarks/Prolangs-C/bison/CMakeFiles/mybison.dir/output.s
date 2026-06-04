@@ -3593,11 +3593,11 @@ action_row:                             # @action_row
 	move	$a6, $zero
 	move	$a0, $zero
 	ld.d	$a5, $a3, 0
-	pcalau12i	$a4, %pc_hi20(actrow)
-	ld.d	$a7, $a4, %pc_lo12(actrow)
+	pcalau12i	$a3, %pc_hi20(actrow)
+	ld.d	$a7, $a3, %pc_lo12(actrow)
 	andi	$t0, $s0, 12
-	bstrpick.d	$a3, $s0, 30, 4
-	slli.d	$t1, $a3, 4
+	bstrpick.d	$a4, $s0, 30, 4
+	slli.d	$t1, $a4, 4
 	bstrpick.d	$t2, $s0, 30, 2
 	slli.d	$t2, $t2, 2
 	addi.d	$t3, $a7, 16
@@ -3741,176 +3741,176 @@ action_row:                             # @action_row
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr1, $a4, -16
 	xvseq.h	$xr1, $xr1, $xr0
-	vpickve2gr.h	$a6, $vr1, 0
+	xvpickev.b	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.b	$a6, $vr1, 0
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_91
 # %bb.76:                               # %pred.store.if308
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -16
-	vpickve2gr.h	$a6, $vr1, 1
+	vpickve2gr.b	$a6, $vr1, 1
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_92
 .LBB21_77:                              # %pred.store.continue311
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 2
+	vpickve2gr.b	$a6, $vr1, 2
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_93
 .LBB21_78:                              # %pred.store.if312
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -12
-	vpickve2gr.h	$a6, $vr1, 3
+	vpickve2gr.b	$a6, $vr1, 3
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_94
 .LBB21_79:                              # %pred.store.continue315
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 4
+	vpickve2gr.b	$a6, $vr1, 4
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_95
 .LBB21_80:                              # %pred.store.if316
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -8
-	vpickve2gr.h	$a6, $vr1, 5
+	vpickve2gr.b	$a6, $vr1, 5
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_96
 .LBB21_81:                              # %pred.store.continue319
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 6
+	vpickve2gr.b	$a6, $vr1, 6
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_97
 .LBB21_82:                              # %pred.store.if320
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -4
-	vpickve2gr.h	$a6, $vr1, 7
+	vpickve2gr.b	$a6, $vr1, 7
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_98
 .LBB21_83:                              # %pred.store.continue323
                                         #   in Loop: Header=BB21_75 Depth=1
-	xvpermi.d	$xr1, $xr1, 14
-	vpickve2gr.h	$a6, $vr1, 0
+	vpickve2gr.b	$a6, $vr1, 8
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_99
 .LBB21_84:                              # %pred.store.if324
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, 0
-	vpickve2gr.h	$a6, $vr1, 1
+	vpickve2gr.b	$a6, $vr1, 9
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_100
 .LBB21_85:                              # %pred.store.continue327
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 2
+	vpickve2gr.b	$a6, $vr1, 10
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_101
 .LBB21_86:                              # %pred.store.if328
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, 4
-	vpickve2gr.h	$a6, $vr1, 3
+	vpickve2gr.b	$a6, $vr1, 11
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_102
 .LBB21_87:                              # %pred.store.continue331
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 4
+	vpickve2gr.b	$a6, $vr1, 12
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_103
 .LBB21_88:                              # %pred.store.if332
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, 8
-	vpickve2gr.h	$a6, $vr1, 5
+	vpickve2gr.b	$a6, $vr1, 13
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_104
 .LBB21_89:                              # %pred.store.continue335
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 6
+	vpickve2gr.b	$a6, $vr1, 14
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_105
 .LBB21_90:                              # %pred.store.if336
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, 12
-	vpickve2gr.h	$a6, $vr1, 7
+	vpickve2gr.b	$a6, $vr1, 15
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_74
 	b	.LBB21_106
 	.p2align	4, , 16
 .LBB21_91:                              # %pred.store.continue309
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 1
+	vpickve2gr.b	$a6, $vr1, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_77
 .LBB21_92:                              # %pred.store.if310
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -14
-	vpickve2gr.h	$a6, $vr1, 2
+	vpickve2gr.b	$a6, $vr1, 2
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_78
 .LBB21_93:                              # %pred.store.continue313
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 3
+	vpickve2gr.b	$a6, $vr1, 3
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_79
 .LBB21_94:                              # %pred.store.if314
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -10
-	vpickve2gr.h	$a6, $vr1, 4
+	vpickve2gr.b	$a6, $vr1, 4
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_80
 .LBB21_95:                              # %pred.store.continue317
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 5
+	vpickve2gr.b	$a6, $vr1, 5
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_81
 .LBB21_96:                              # %pred.store.if318
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -6
-	vpickve2gr.h	$a6, $vr1, 6
+	vpickve2gr.b	$a6, $vr1, 6
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_82
 .LBB21_97:                              # %pred.store.continue321
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 7
+	vpickve2gr.b	$a6, $vr1, 7
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_83
 .LBB21_98:                              # %pred.store.if322
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, -2
-	xvpermi.d	$xr1, $xr1, 14
-	vpickve2gr.h	$a6, $vr1, 0
+	vpickve2gr.b	$a6, $vr1, 8
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_84
 .LBB21_99:                              # %pred.store.continue325
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 1
+	vpickve2gr.b	$a6, $vr1, 9
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_85
 .LBB21_100:                             # %pred.store.if326
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, 2
-	vpickve2gr.h	$a6, $vr1, 2
+	vpickve2gr.b	$a6, $vr1, 10
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_86
 .LBB21_101:                             # %pred.store.continue329
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 3
+	vpickve2gr.b	$a6, $vr1, 11
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_87
 .LBB21_102:                             # %pred.store.if330
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, 6
-	vpickve2gr.h	$a6, $vr1, 4
+	vpickve2gr.b	$a6, $vr1, 12
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_88
 .LBB21_103:                             # %pred.store.continue333
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 5
+	vpickve2gr.b	$a6, $vr1, 13
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_89
 .LBB21_104:                             # %pred.store.if334
                                         #   in Loop: Header=BB21_75 Depth=1
 	st.h	$zero, $a4, 10
-	vpickve2gr.h	$a6, $vr1, 6
+	vpickve2gr.b	$a6, $vr1, 14
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_90
 .LBB21_105:                             # %pred.store.continue337
                                         #   in Loop: Header=BB21_75 Depth=1
-	vpickve2gr.h	$a6, $vr1, 7
+	vpickve2gr.b	$a6, $vr1, 15
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_74
 .LBB21_106:                             # %pred.store.if338
@@ -3941,7 +3941,7 @@ action_row:                             # @action_row
 .LBB21_113:                             # %._crit_edge157
 	beqz	$a6, .LBB21_31
 # %bb.114:                              # %iter.check267
-	ld.d	$a1, $a4, %pc_lo12(actrow)
+	ld.d	$a1, $a3, %pc_lo12(actrow)
 	ori	$a2, $zero, 8
 	bgeu	$s1, $a2, .LBB21_118
 # %bb.115:
@@ -3984,86 +3984,88 @@ action_row:                             # @action_row
 	vld	$vr1, $a3, -8
 	vext2xv.w.h	$xr1, $xr1
 	xvseq.w	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$a5, $xr1, 0
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.h	$a5, $vr1, 0
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_130
 # %bb.123:                              # %pred.store.if279
                                         #   in Loop: Header=BB21_122 Depth=1
 	st.h	$zero, $a3, -8
-	xvpickve2gr.w	$a5, $xr1, 1
+	vpickve2gr.h	$a5, $vr1, 1
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_131
 .LBB21_124:                             # %pred.store.continue282
                                         #   in Loop: Header=BB21_122 Depth=1
-	xvpickve2gr.w	$a5, $xr1, 2
+	vpickve2gr.h	$a5, $vr1, 2
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_132
 .LBB21_125:                             # %pred.store.if283
                                         #   in Loop: Header=BB21_122 Depth=1
 	st.h	$zero, $a3, -4
-	xvpickve2gr.w	$a5, $xr1, 3
+	vpickve2gr.h	$a5, $vr1, 3
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_133
 .LBB21_126:                             # %pred.store.continue286
                                         #   in Loop: Header=BB21_122 Depth=1
-	xvpickve2gr.w	$a5, $xr1, 4
+	vpickve2gr.h	$a5, $vr1, 4
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_134
 .LBB21_127:                             # %pred.store.if287
                                         #   in Loop: Header=BB21_122 Depth=1
 	st.h	$zero, $a3, 0
-	xvpickve2gr.w	$a5, $xr1, 5
+	vpickve2gr.h	$a5, $vr1, 5
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_135
 .LBB21_128:                             # %pred.store.continue290
                                         #   in Loop: Header=BB21_122 Depth=1
-	xvpickve2gr.w	$a5, $xr1, 6
+	vpickve2gr.h	$a5, $vr1, 6
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_136
 .LBB21_129:                             # %pred.store.if291
                                         #   in Loop: Header=BB21_122 Depth=1
 	st.h	$zero, $a3, 4
-	xvpickve2gr.w	$a5, $xr1, 7
+	vpickve2gr.h	$a5, $vr1, 7
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_121
 	b	.LBB21_137
 	.p2align	4, , 16
 .LBB21_130:                             # %pred.store.continue280
                                         #   in Loop: Header=BB21_122 Depth=1
-	xvpickve2gr.w	$a5, $xr1, 1
+	vpickve2gr.h	$a5, $vr1, 1
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_124
 .LBB21_131:                             # %pred.store.if281
                                         #   in Loop: Header=BB21_122 Depth=1
 	st.h	$zero, $a3, -6
-	xvpickve2gr.w	$a5, $xr1, 2
+	vpickve2gr.h	$a5, $vr1, 2
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_125
 .LBB21_132:                             # %pred.store.continue284
                                         #   in Loop: Header=BB21_122 Depth=1
-	xvpickve2gr.w	$a5, $xr1, 3
+	vpickve2gr.h	$a5, $vr1, 3
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_126
 .LBB21_133:                             # %pred.store.if285
                                         #   in Loop: Header=BB21_122 Depth=1
 	st.h	$zero, $a3, -2
-	xvpickve2gr.w	$a5, $xr1, 4
+	vpickve2gr.h	$a5, $vr1, 4
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_127
 .LBB21_134:                             # %pred.store.continue288
                                         #   in Loop: Header=BB21_122 Depth=1
-	xvpickve2gr.w	$a5, $xr1, 5
+	vpickve2gr.h	$a5, $vr1, 5
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_128
 .LBB21_135:                             # %pred.store.if289
                                         #   in Loop: Header=BB21_122 Depth=1
 	st.h	$zero, $a3, 2
-	xvpickve2gr.w	$a5, $xr1, 6
+	vpickve2gr.h	$a5, $vr1, 6
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_129
 .LBB21_136:                             # %pred.store.continue292
                                         #   in Loop: Header=BB21_122 Depth=1
-	xvpickve2gr.w	$a5, $xr1, 7
+	vpickve2gr.h	$a5, $vr1, 7
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_121
 .LBB21_137:                             # %pred.store.if293
@@ -4074,197 +4076,202 @@ action_row:                             # @action_row
 	beq	$a2, $s0, .LBB21_174
 	b	.LBB21_176
 .LBB21_139:                             # %vector.ph225
-	andi	$a4, $s0, 8
-	slli.d	$a2, $a3, 4
-	addi.d	$a3, $a1, 16
+	andi	$a3, $s0, 8
+	slli.d	$a2, $a4, 4
+	addi.d	$a4, $a1, 16
 	move	$a5, $a2
 	b	.LBB21_141
 	.p2align	4, , 16
 .LBB21_140:                             # %pred.store.continue262
                                         #   in Loop: Header=BB21_141 Depth=1
 	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 32
+	addi.d	$a4, $a4, 32
 	beqz	$a5, .LBB21_173
 .LBB21_141:                             # %vector.body230
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $a3, -16
-	vext2xv.w.h	$xr2, $xr1
-	xvseq.w	$xr2, $xr0, $xr2
-	xvpickve2gr.w	$a6, $xr2, 0
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_149
-# %bb.142:                              # %pred.store.if
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -16
-	xvpickve2gr.w	$a6, $xr2, 1
-	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_150
-.LBB21_143:                             # %pred.store.continue234
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 2
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_151
-.LBB21_144:                             # %pred.store.if235
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -12
-	xvpickve2gr.w	$a6, $xr2, 3
-	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_152
-.LBB21_145:                             # %pred.store.continue238
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 4
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_153
-.LBB21_146:                             # %pred.store.if239
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -8
-	xvpickve2gr.w	$a6, $xr2, 5
-	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_154
-.LBB21_147:                             # %pred.store.continue242
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 6
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_155
-.LBB21_148:                             # %pred.store.if243
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -4
-	xvpickve2gr.w	$a6, $xr2, 7
-	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_156
-	b	.LBB21_157
-	.p2align	4, , 16
-.LBB21_149:                             # %pred.store.continue
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 1
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_143
-.LBB21_150:                             # %pred.store.if233
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -14
-	xvpickve2gr.w	$a6, $xr2, 2
-	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_144
-.LBB21_151:                             # %pred.store.continue236
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 3
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_145
-.LBB21_152:                             # %pred.store.if237
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -10
-	xvpickve2gr.w	$a6, $xr2, 4
-	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_146
-.LBB21_153:                             # %pred.store.continue240
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 5
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_147
-.LBB21_154:                             # %pred.store.if241
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -6
-	xvpickve2gr.w	$a6, $xr2, 6
-	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_148
-.LBB21_155:                             # %pred.store.continue244
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr2, 7
-	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_157
-.LBB21_156:                             # %pred.store.if245
-                                        #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, -2
-.LBB21_157:                             # %pred.store.continue246
-                                        #   in Loop: Header=BB21_141 Depth=1
-	xvpermi.q	$xr1, $xr1, 1
+	xvld	$xr1, $a4, -16
+	xvpermi.q	$xr2, $xr1, 1
+	vext2xv.w.h	$xr2, $xr2
 	vext2xv.w.h	$xr1, $xr1
 	xvseq.w	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr1, 0
+	xvseq.w	$xr2, $xr0, $xr2
+	xvpickev.h	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvpickev.b	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.b	$a6, $vr1, 0
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_157
+# %bb.142:                              # %pred.store.if
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -16
+	vpickve2gr.b	$a6, $vr1, 1
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_158
+.LBB21_143:                             # %pred.store.continue234
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 2
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_159
+.LBB21_144:                             # %pred.store.if235
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -12
+	vpickve2gr.b	$a6, $vr1, 3
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_160
+.LBB21_145:                             # %pred.store.continue238
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 4
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_161
+.LBB21_146:                             # %pred.store.if239
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -8
+	vpickve2gr.b	$a6, $vr1, 5
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_162
+.LBB21_147:                             # %pred.store.continue242
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 6
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_163
+.LBB21_148:                             # %pred.store.if243
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -4
+	vpickve2gr.b	$a6, $vr1, 7
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_164
+.LBB21_149:                             # %pred.store.continue246
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 8
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_165
-# %bb.158:                              # %pred.store.if247
+.LBB21_150:                             # %pred.store.if247
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 0
-	xvpickve2gr.w	$a6, $xr1, 1
+	st.h	$zero, $a4, 0
+	vpickve2gr.b	$a6, $vr1, 9
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_166
-.LBB21_159:                             # %pred.store.continue250
+.LBB21_151:                             # %pred.store.continue250
                                         #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr1, 2
+	vpickve2gr.b	$a6, $vr1, 10
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_167
-.LBB21_160:                             # %pred.store.if251
+.LBB21_152:                             # %pred.store.if251
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 4
-	xvpickve2gr.w	$a6, $xr1, 3
+	st.h	$zero, $a4, 4
+	vpickve2gr.b	$a6, $vr1, 11
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_168
-.LBB21_161:                             # %pred.store.continue254
+.LBB21_153:                             # %pred.store.continue254
                                         #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr1, 4
+	vpickve2gr.b	$a6, $vr1, 12
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_169
-.LBB21_162:                             # %pred.store.if255
+.LBB21_154:                             # %pred.store.if255
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 8
-	xvpickve2gr.w	$a6, $xr1, 5
+	st.h	$zero, $a4, 8
+	vpickve2gr.b	$a6, $vr1, 13
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB21_170
-.LBB21_163:                             # %pred.store.continue258
+.LBB21_155:                             # %pred.store.continue258
                                         #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr1, 6
+	vpickve2gr.b	$a6, $vr1, 14
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_171
-.LBB21_164:                             # %pred.store.if259
+.LBB21_156:                             # %pred.store.if259
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 12
-	xvpickve2gr.w	$a6, $xr1, 7
+	st.h	$zero, $a4, 12
+	vpickve2gr.b	$a6, $vr1, 15
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_140
 	b	.LBB21_172
 	.p2align	4, , 16
+.LBB21_157:                             # %pred.store.continue
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 1
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_143
+.LBB21_158:                             # %pred.store.if233
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -14
+	vpickve2gr.b	$a6, $vr1, 2
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_144
+.LBB21_159:                             # %pred.store.continue236
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 3
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_145
+.LBB21_160:                             # %pred.store.if237
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -10
+	vpickve2gr.b	$a6, $vr1, 4
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_146
+.LBB21_161:                             # %pred.store.continue240
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 5
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_147
+.LBB21_162:                             # %pred.store.if241
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -6
+	vpickve2gr.b	$a6, $vr1, 6
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_148
+.LBB21_163:                             # %pred.store.continue244
+                                        #   in Loop: Header=BB21_141 Depth=1
+	vpickve2gr.b	$a6, $vr1, 7
+	andi	$a6, $a6, 1
+	beqz	$a6, .LBB21_149
+.LBB21_164:                             # %pred.store.if245
+                                        #   in Loop: Header=BB21_141 Depth=1
+	st.h	$zero, $a4, -2
+	vpickve2gr.b	$a6, $vr1, 8
+	andi	$a6, $a6, 1
+	bnez	$a6, .LBB21_150
 .LBB21_165:                             # %pred.store.continue248
                                         #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr1, 1
+	vpickve2gr.b	$a6, $vr1, 9
 	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_159
+	beqz	$a6, .LBB21_151
 .LBB21_166:                             # %pred.store.if249
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 2
-	xvpickve2gr.w	$a6, $xr1, 2
+	st.h	$zero, $a4, 2
+	vpickve2gr.b	$a6, $vr1, 10
 	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_160
+	bnez	$a6, .LBB21_152
 .LBB21_167:                             # %pred.store.continue252
                                         #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr1, 3
+	vpickve2gr.b	$a6, $vr1, 11
 	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_161
+	beqz	$a6, .LBB21_153
 .LBB21_168:                             # %pred.store.if253
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 6
-	xvpickve2gr.w	$a6, $xr1, 4
+	st.h	$zero, $a4, 6
+	vpickve2gr.b	$a6, $vr1, 12
 	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_162
+	bnez	$a6, .LBB21_154
 .LBB21_169:                             # %pred.store.continue256
                                         #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr1, 5
+	vpickve2gr.b	$a6, $vr1, 13
 	andi	$a6, $a6, 1
-	beqz	$a6, .LBB21_163
+	beqz	$a6, .LBB21_155
 .LBB21_170:                             # %pred.store.if257
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 10
-	xvpickve2gr.w	$a6, $xr1, 6
+	st.h	$zero, $a4, 10
+	vpickve2gr.b	$a6, $vr1, 14
 	andi	$a6, $a6, 1
-	bnez	$a6, .LBB21_164
+	bnez	$a6, .LBB21_156
 .LBB21_171:                             # %pred.store.continue260
                                         #   in Loop: Header=BB21_141 Depth=1
-	xvpickve2gr.w	$a6, $xr1, 7
+	vpickve2gr.b	$a6, $vr1, 15
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB21_140
 .LBB21_172:                             # %pred.store.if261
                                         #   in Loop: Header=BB21_141 Depth=1
-	st.h	$zero, $a3, 14
+	st.h	$zero, $a4, 14
 	b	.LBB21_140
 .LBB21_173:                             # %middle.block264
 	bne	$a2, $s0, .LBB21_175
@@ -4272,7 +4279,7 @@ action_row:                             # @action_row
 	sub.d	$a0, $zero, $a0
 	b	.LBB21_31
 .LBB21_175:                             # %vec.epilog.iter.check269
-	bnez	$a4, .LBB21_120
+	bnez	$a3, .LBB21_120
 .LBB21_176:                             # %vec.epilog.scalar.ph268.preheader
 	alsl.d	$a1, $a2, $a1, 1
 	sub.d	$a2, $s1, $a2

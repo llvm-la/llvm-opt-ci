@@ -584,8 +584,8 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	pcalau12i	$a0, %pc_hi20(base_dither_matrix+8)
 	addi.d	$s3, $a0, %pc_lo12(base_dither_matrix+8)
 	move	$s4, $zero
-	xvrepli.w	$xr4, 255
-	xvst	$xr4, $sp, 16                   # 32-byte Folded Spill
+	xvrepli.w	$xr3, 255
+	xvst	$xr3, $sp, 16                   # 32-byte Folded Spill
 	b	.LBB1_17
 	.p2align	4, , 16
 .LBB1_15:                               #   in Loop: Header=BB1_17 Depth=1
@@ -626,7 +626,7 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	ori	$a2, $zero, 1024
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
-	xvld	$xr4, $sp, 16                   # 32-byte Folded Reload
+	xvld	$xr3, $sp, 16                   # 32-byte Folded Reload
 	move	$a1, $zero
 	slli.d	$a2, $s5, 9
 	addi.d	$a2, $a2, -512
@@ -640,61 +640,31 @@ start_pass_1_quant:                     # @start_pass_1_quant
 	vinsgr2vr.d	$vr1, $a3, 0
 	vext2xv.wu.bu	$xr1, $xr1
 	xvslli.w	$xr1, $xr1, 1
-	xvsub.w	$xr1, $xr4, $xr1
-	xvmul.w	$xr1, $xr1, $xr4
-	vext2xv.d.w	$xr2, $xr1
-	xvpermi.q	$xr1, $xr1, 1
+	xvsub.w	$xr1, $xr3, $xr1
+	xvmul.w	$xr1, $xr1, $xr3
+	xvpermi.q	$xr2, $xr1, 1
+	vext2xv.d.w	$xr2, $xr2
 	vext2xv.d.w	$xr1, $xr1
 	xvdiv.d	$xr1, $xr1, $xr0
 	xvdiv.d	$xr2, $xr2, $xr0
-	xvpickve2gr.d	$a3, $xr2, 0
-	vinsgr2vr.w	$vr3, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 1
-	vinsgr2vr.w	$vr3, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 2
-	vinsgr2vr.w	$vr3, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 3
-	vinsgr2vr.w	$vr3, $a3, 3
-	xvpickve2gr.d	$a3, $xr1, 0
-	vinsgr2vr.w	$vr2, $a3, 0
-	xvpickve2gr.d	$a3, $xr1, 1
-	vinsgr2vr.w	$vr2, $a3, 1
-	xvpickve2gr.d	$a3, $xr1, 2
-	vinsgr2vr.w	$vr2, $a3, 2
-	xvpickve2gr.d	$a3, $xr1, 3
-	vinsgr2vr.w	$vr2, $a3, 3
-	xvpermi.q	$xr3, $xr2, 2
-	xvstx	$xr3, $a0, $a1
+	xvpickev.w	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvstx	$xr1, $a0, $a1
 	ld.d	$a3, $a2, 0
 	add.d	$a4, $a0, $a1
 	vinsgr2vr.d	$vr1, $a3, 0
 	vext2xv.wu.bu	$xr1, $xr1
 	xvslli.w	$xr1, $xr1, 1
-	xvsub.w	$xr1, $xr4, $xr1
-	xvmul.w	$xr1, $xr1, $xr4
-	vext2xv.d.w	$xr2, $xr1
-	xvpermi.q	$xr1, $xr1, 1
+	xvsub.w	$xr1, $xr3, $xr1
+	xvmul.w	$xr1, $xr1, $xr3
+	xvpermi.q	$xr2, $xr1, 1
+	vext2xv.d.w	$xr2, $xr2
 	vext2xv.d.w	$xr1, $xr1
 	xvdiv.d	$xr1, $xr1, $xr0
 	xvdiv.d	$xr2, $xr2, $xr0
-	xvpickve2gr.d	$a3, $xr2, 0
-	vinsgr2vr.w	$vr3, $a3, 0
-	xvpickve2gr.d	$a3, $xr2, 1
-	vinsgr2vr.w	$vr3, $a3, 1
-	xvpickve2gr.d	$a3, $xr2, 2
-	vinsgr2vr.w	$vr3, $a3, 2
-	xvpickve2gr.d	$a3, $xr2, 3
-	vinsgr2vr.w	$vr3, $a3, 3
-	xvpickve2gr.d	$a3, $xr1, 0
-	vinsgr2vr.w	$vr2, $a3, 0
-	xvpickve2gr.d	$a3, $xr1, 1
-	vinsgr2vr.w	$vr2, $a3, 1
-	xvpickve2gr.d	$a3, $xr1, 2
-	vinsgr2vr.w	$vr2, $a3, 2
-	xvpickve2gr.d	$a3, $xr1, 3
-	vinsgr2vr.w	$vr2, $a3, 3
-	xvpermi.q	$xr3, $xr2, 2
-	xvst	$xr3, $a4, 32
+	xvpickev.w	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvst	$xr1, $a4, 32
 	addi.d	$a1, $a1, 64
 	addi.d	$a2, $a2, 16
 	bne	$a1, $s2, .LBB1_21

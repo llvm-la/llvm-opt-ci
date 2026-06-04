@@ -1249,23 +1249,9 @@ ercPixConcealIMB:                       # @ercPixConcealIMB
 	xvmul.w	$xr6, $xr4, $xr6
 	xvmadd.w	$xr6, $xr3, $xr5
 	xvdiv.w	$xr5, $xr6, $xr0
-	xvpickve2gr.w	$s0, $xr5, 0
-	vinsgr2vr.h	$vr6, $s0, 0
-	xvpickve2gr.w	$s0, $xr5, 1
-	vinsgr2vr.h	$vr6, $s0, 1
-	xvpickve2gr.w	$s0, $xr5, 2
-	vinsgr2vr.h	$vr6, $s0, 2
-	xvpickve2gr.w	$s0, $xr5, 3
-	vinsgr2vr.h	$vr6, $s0, 3
-	xvpickve2gr.w	$s0, $xr5, 4
-	vinsgr2vr.h	$vr6, $s0, 4
-	xvpickve2gr.w	$s0, $xr5, 5
-	vinsgr2vr.h	$vr6, $s0, 5
-	xvpickve2gr.w	$s0, $xr5, 6
-	vinsgr2vr.h	$vr6, $s0, 6
-	xvpickve2gr.w	$s0, $xr5, 7
-	vinsgr2vr.h	$vr6, $s0, 7
-	vand.v	$vr5, $vr6, $vr1
+	xvpickev.h	$xr5, $xr5, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	vand.v	$vr5, $vr5, $vr1
 	vstx	$vr5, $a1, $fp
 	addi.d	$t8, $t8, -8
 	addi.d	$fp, $fp, 16
@@ -1316,11 +1302,11 @@ ercPixConcealIMB:                       # @ercPixConcealIMB
                                         # =>  This Inner Loop Header: Depth=2
 	xvldx	$xr5, $a3, $fp
 	xvldx	$xr6, $t0, $fp
-	xvpermi.q	$xr7, $xr5, 1
-	vext2xv.wu.hu	$xr7, $xr7
+	vext2xv.wu.hu	$xr7, $xr5
+	xvpermi.q	$xr5, $xr5, 1
 	vext2xv.wu.hu	$xr5, $xr5
-	vext2xv.wu.hu	$xr8, $xr6
-	xvpermi.q	$xr6, $xr6, 1
+	xvpermi.q	$xr8, $xr6, 1
+	vext2xv.wu.hu	$xr8, $xr8
 	vext2xv.wu.hu	$xr6, $xr6
 	xvmul.w	$xr6, $xr4, $xr6
 	xvmul.w	$xr8, $xr4, $xr8
@@ -1328,40 +1314,9 @@ ercPixConcealIMB:                       # @ercPixConcealIMB
 	xvmadd.w	$xr6, $xr3, $xr7
 	xvdiv.w	$xr5, $xr6, $xr0
 	xvdiv.w	$xr6, $xr8, $xr0
-	xvpickve2gr.w	$s1, $xr6, 0
-	vinsgr2vr.h	$vr7, $s1, 0
-	xvpickve2gr.w	$s1, $xr6, 1
-	vinsgr2vr.h	$vr7, $s1, 1
-	xvpickve2gr.w	$s1, $xr6, 2
-	vinsgr2vr.h	$vr7, $s1, 2
-	xvpickve2gr.w	$s1, $xr6, 3
-	vinsgr2vr.h	$vr7, $s1, 3
-	xvpickve2gr.w	$s1, $xr6, 4
-	vinsgr2vr.h	$vr7, $s1, 4
-	xvpickve2gr.w	$s1, $xr6, 5
-	vinsgr2vr.h	$vr7, $s1, 5
-	xvpickve2gr.w	$s1, $xr6, 6
-	vinsgr2vr.h	$vr7, $s1, 6
-	xvpickve2gr.w	$s1, $xr6, 7
-	vinsgr2vr.h	$vr7, $s1, 7
-	xvpickve2gr.w	$s1, $xr5, 0
-	vinsgr2vr.h	$vr6, $s1, 0
-	xvpickve2gr.w	$s1, $xr5, 1
-	vinsgr2vr.h	$vr6, $s1, 1
-	xvpickve2gr.w	$s1, $xr5, 2
-	vinsgr2vr.h	$vr6, $s1, 2
-	xvpickve2gr.w	$s1, $xr5, 3
-	vinsgr2vr.h	$vr6, $s1, 3
-	xvpickve2gr.w	$s1, $xr5, 4
-	vinsgr2vr.h	$vr6, $s1, 4
-	xvpickve2gr.w	$s1, $xr5, 5
-	vinsgr2vr.h	$vr6, $s1, 5
-	xvpickve2gr.w	$s1, $xr5, 6
-	vinsgr2vr.h	$vr6, $s1, 6
-	xvpickve2gr.w	$s1, $xr5, 7
-	vinsgr2vr.h	$vr6, $s1, 7
-	xvpermi.q	$xr7, $xr6, 2
-	xvand.v	$xr5, $xr7, $xr2
+	xvpickev.h	$xr5, $xr6, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	xvand.v	$xr5, $xr5, $xr2
 	xvstx	$xr5, $a1, $fp
 	addi.d	$s0, $s0, -16
 	addi.d	$fp, $fp, 32

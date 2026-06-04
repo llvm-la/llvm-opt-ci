@@ -32,28 +32,28 @@ main:                                   # @main
 	addi.d	$a4, $a4, %pc_lo12(h)
 	bgeu	$a5, $a7, .LBB0_9
 .LBB0_4:
-	move	$t0, $a6
+	move	$t1, $a6
 .LBB0_5:                                # %vec.epilog.scalar.ph.preheader
-	addi.d	$a5, $t0, 1
-	pcalau12i	$a6, %pc_hi20(e)
-	ori	$a7, $zero, 2
+	addi.d	$a6, $t1, 1
+	pcalau12i	$a7, %pc_hi20(e)
+	ori	$t1, $zero, 2
 	.p2align	4, , 16
 .LBB0_6:                                # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t1, $a2, 0
-	st.w	$t1, $a4, 0
-	ext.w.h	$t0, $t1
-	xor	$t0, $t0, $a3
-	sltui	$t0, $t0, 1
-	sltu	$t3, $t0, $a1
-	st.w	$a5, $a0, 0
-	addi.w	$a5, $a5, 1
-	st.w	$t3, $a6, %pc_lo12(e)
-	bne	$a5, $a7, .LBB0_6
+	ld.w	$t0, $a2, 0
+	st.w	$t0, $a4, 0
+	ext.w.h	$a5, $t0
+	xor	$a5, $a5, $a3
+	sltui	$a5, $a5, 1
+	sltu	$a5, $a5, $a1
+	st.w	$a6, $a0, 0
+	addi.w	$a6, $a6, 1
+	st.w	$a5, $a7, %pc_lo12(e)
+	bne	$a6, $t1, .LBB0_6
 .LBB0_7:                                # %foo.exit
 	pcalau12i	$a0, %pc_hi20(d)
-	andi	$a1, $t3, 1
-	st.h	$t1, $a0, %pc_lo12(d)
+	andi	$a1, $a5, 1
+	st.h	$t0, $a0, %pc_lo12(d)
 	bnez	$a1, .LBB0_2
 .LBB0_8:
 	pcaddu18i	$ra, %call36(abort)
@@ -100,63 +100,74 @@ main:                                   # @main
 	bgeu	$a5, $t0, .LBB0_17
 # %bb.16:
 	move	$t2, $zero
-	move	$t0, $a6
-	b	.LBB0_21
+	move	$t1, $a6
+	b	.LBB0_22
 .LBB0_17:                               # %vector.ph
-	ld.w	$t1, $a2, 0
-	andi	$t4, $a5, 12
+	ld.w	$t0, $a2, 0
+	andi	$t3, $a5, 12
 	move	$t2, $a5
 	bstrins.d	$t2, $zero, 3, 0
-	add.d	$t0, $a6, $t2
-	ext.w.h	$t3, $t1
-	xor	$t3, $t3, $a3
-	sltui	$t3, $t3, 1
-	vreplgr2vr.w	$vr1, $t3
+	add.d	$t1, $a6, $t2
+	ext.w.h	$t4, $t0
+	xor	$t4, $t4, $a3
+	sltui	$t4, $t4, 1
+	vreplgr2vr.w	$vr1, $t4
 	vext2xv.du.wu	$xr1, $xr1
 	xvslt.du	$xr1, $xr1, $xr0
-	xvpickve2gr.d	$t3, $xr1, 3
-	andi	$t5, $t3, 1
-	st.w	$t1, $a4, 0
-	st.w	$t5, $a7, 0
-	move	$t5, $a6
-	move	$t6, $t2
+	xvpickev.w	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.h	$t4, $vr1, 7
+	andi	$t4, $t4, 1
+	st.w	$t0, $a4, 0
+	st.w	$t4, $a7, 0
+	move	$t4, $a6
+	move	$t5, $t2
 	.p2align	4, , 16
 .LBB0_18:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.w	$t6, $t6, -16
-	addi.d	$t5, $t5, 16
-	bnez	$t6, .LBB0_18
+	addi.w	$t5, $t5, -16
+	addi.d	$t4, $t4, 16
+	bnez	$t5, .LBB0_18
 # %bb.19:                               # %middle.block
-	st.w	$t5, $a0, 0
-	beq	$a5, $t2, .LBB0_7
-# %bb.20:                               # %vec.epilog.iter.check
-	beqz	$t4, .LBB0_5
-.LBB0_21:                               # %vec.epilog.ph
-	ld.w	$t1, $a2, 0
-	move	$t5, $t0
-	move	$t4, $a5
-	bstrins.d	$t4, $zero, 1, 0
-	add.d	$t0, $a6, $t4
-	ext.w.h	$a6, $t1
+	st.w	$t4, $a0, 0
+	bne	$a5, $t2, .LBB0_21
+# %bb.20:
+	vpickve2gr.h	$a5, $vr1, 7
+	b	.LBB0_7
+.LBB0_21:                               # %vec.epilog.iter.check
+	beqz	$t3, .LBB0_5
+.LBB0_22:                               # %vec.epilog.ph
+	ld.w	$t0, $a2, 0
+	move	$t4, $t1
+	move	$t3, $a5
+	bstrins.d	$t3, $zero, 1, 0
+	add.d	$t1, $a6, $t3
+	ext.w.h	$a6, $t0
 	xor	$a6, $a6, $a3
 	sltui	$a6, $a6, 1
 	vreplgr2vr.w	$vr1, $a6
 	vext2xv.du.wu	$xr1, $xr1
 	xvslt.du	$xr0, $xr1, $xr0
-	xvpickve2gr.d	$t3, $xr0, 3
-	andi	$a6, $t3, 1
-	st.w	$t1, $a4, 0
+	xvpickev.w	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vpickve2gr.w	$a6, $vr0, 3
+	andi	$a6, $a6, 1
+	st.w	$t0, $a4, 0
 	st.w	$a6, $a7, 0
-	sub.d	$a6, $t2, $t4
+	sub.d	$a6, $t2, $t3
 	.p2align	4, , 16
-.LBB0_22:                               # %vec.epilog.vector.body
+.LBB0_23:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$a6, $a6, 4
-	addi.d	$t5, $t5, 4
-	bnez	$a6, .LBB0_22
-# %bb.23:                               # %vec.epilog.middle.block
-	st.w	$t5, $a0, 0
-	bne	$a5, $t4, .LBB0_5
+	addi.d	$t4, $t4, 4
+	bnez	$a6, .LBB0_23
+# %bb.24:                               # %vec.epilog.middle.block
+	st.w	$t4, $a0, 0
+	bne	$a5, $t3, .LBB0_5
+# %bb.25:
+	vpickve2gr.w	$a5, $vr0, 3
 	b	.LBB0_7
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main

@@ -1039,22 +1039,8 @@ encode_mcu_AC_refine:                   # @encode_mcu_AC_refine
 	xvsrl.w	$xr4, $xr4, $xr2
 	xvst	$xr4, $a3, 0
 	xvseqi.w	$xr4, $xr4, 1
-	xvpickve2gr.w	$a7, $xr4, 0
-	vinsgr2vr.h	$vr5, $a7, 0
-	xvpickve2gr.w	$a7, $xr4, 1
-	vinsgr2vr.h	$vr5, $a7, 1
-	xvpickve2gr.w	$a7, $xr4, 2
-	vinsgr2vr.h	$vr5, $a7, 2
-	xvpickve2gr.w	$a7, $xr4, 3
-	vinsgr2vr.h	$vr5, $a7, 3
-	xvpickve2gr.w	$a7, $xr4, 4
-	vinsgr2vr.h	$vr5, $a7, 4
-	xvpickve2gr.w	$a7, $xr4, 5
-	vinsgr2vr.h	$vr5, $a7, 5
-	xvpickve2gr.w	$a7, $xr4, 6
-	vinsgr2vr.h	$vr5, $a7, 6
-	xvpickve2gr.w	$a7, $xr4, 7
-	vinsgr2vr.h	$vr5, $a7, 7
+	xvpickev.h	$xr5, $xr4, $xr4
+	xvpermi.d	$xr5, $xr5, 216
 	xvmskltz.w	$xr4, $xr4
 	xvpickve2gr.wu	$a7, $xr4, 0
 	xvpickve2gr.wu	$t0, $xr4, 4

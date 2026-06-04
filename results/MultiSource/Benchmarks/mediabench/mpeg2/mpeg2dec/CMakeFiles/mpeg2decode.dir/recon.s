@@ -1304,40 +1304,9 @@ form_component_prediction:              # @form_component_prediction
 	xvaddi.hu	$xr1, $xr1, 2
 	xvsrli.h	$xr1, $xr1, 2
 	xvavgr.hu	$xr0, $xr0, $xr1
-	vpickve2gr.h	$t3, $vr0, 0
-	vinsgr2vr.b	$vr1, $t3, 0
-	vpickve2gr.h	$t3, $vr0, 1
-	vinsgr2vr.b	$vr1, $t3, 1
-	vpickve2gr.h	$t3, $vr0, 2
-	vinsgr2vr.b	$vr1, $t3, 2
-	vpickve2gr.h	$t3, $vr0, 3
-	vinsgr2vr.b	$vr1, $t3, 3
-	vpickve2gr.h	$t3, $vr0, 4
-	vinsgr2vr.b	$vr1, $t3, 4
-	vpickve2gr.h	$t3, $vr0, 5
-	vinsgr2vr.b	$vr1, $t3, 5
-	vpickve2gr.h	$t3, $vr0, 6
-	vinsgr2vr.b	$vr1, $t3, 6
-	vpickve2gr.h	$t3, $vr0, 7
-	vinsgr2vr.b	$vr1, $t3, 7
-	xvpermi.d	$xr0, $xr0, 14
-	vpickve2gr.h	$t3, $vr0, 0
-	vinsgr2vr.b	$vr1, $t3, 8
-	vpickve2gr.h	$t3, $vr0, 1
-	vinsgr2vr.b	$vr1, $t3, 9
-	vpickve2gr.h	$t3, $vr0, 2
-	vinsgr2vr.b	$vr1, $t3, 10
-	vpickve2gr.h	$t3, $vr0, 3
-	vinsgr2vr.b	$vr1, $t3, 11
-	vpickve2gr.h	$t3, $vr0, 4
-	vinsgr2vr.b	$vr1, $t3, 12
-	vpickve2gr.h	$t3, $vr0, 5
-	vinsgr2vr.b	$vr1, $t3, 13
-	vpickve2gr.h	$t3, $vr0, 6
-	vinsgr2vr.b	$vr1, $t3, 14
-	vpickve2gr.h	$t3, $vr0, 7
-	vinsgr2vr.b	$vr1, $t3, 15
-	vst	$vr1, $a7, 0
+	xvpickev.b	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vst	$vr0, $a7, 0
 	beq	$t5, $t1, .LBB2_63
 # %bb.69:                               # %vec.epilog.iter.check408
                                         #   in Loop: Header=BB2_64 Depth=1
@@ -1548,40 +1517,9 @@ form_component_prediction:              # @form_component_prediction
 	xvadd.h	$xr0, $xr0, $xr3
 	xvaddi.hu	$xr0, $xr0, 2
 	xvsrli.h	$xr0, $xr0, 2
-	vpickve2gr.h	$t3, $vr0, 0
-	vinsgr2vr.b	$vr1, $t3, 0
-	vpickve2gr.h	$t3, $vr0, 1
-	vinsgr2vr.b	$vr1, $t3, 1
-	vpickve2gr.h	$t3, $vr0, 2
-	vinsgr2vr.b	$vr1, $t3, 2
-	vpickve2gr.h	$t3, $vr0, 3
-	vinsgr2vr.b	$vr1, $t3, 3
-	vpickve2gr.h	$t3, $vr0, 4
-	vinsgr2vr.b	$vr1, $t3, 4
-	vpickve2gr.h	$t3, $vr0, 5
-	vinsgr2vr.b	$vr1, $t3, 5
-	vpickve2gr.h	$t3, $vr0, 6
-	vinsgr2vr.b	$vr1, $t3, 6
-	vpickve2gr.h	$t3, $vr0, 7
-	vinsgr2vr.b	$vr1, $t3, 7
-	xvpermi.d	$xr0, $xr0, 14
-	vpickve2gr.h	$t3, $vr0, 0
-	vinsgr2vr.b	$vr1, $t3, 8
-	vpickve2gr.h	$t3, $vr0, 1
-	vinsgr2vr.b	$vr1, $t3, 9
-	vpickve2gr.h	$t3, $vr0, 2
-	vinsgr2vr.b	$vr1, $t3, 10
-	vpickve2gr.h	$t3, $vr0, 3
-	vinsgr2vr.b	$vr1, $t3, 11
-	vpickve2gr.h	$t3, $vr0, 4
-	vinsgr2vr.b	$vr1, $t3, 12
-	vpickve2gr.h	$t3, $vr0, 5
-	vinsgr2vr.b	$vr1, $t3, 13
-	vpickve2gr.h	$t3, $vr0, 6
-	vinsgr2vr.b	$vr1, $t3, 14
-	vpickve2gr.h	$t3, $vr0, 7
-	vinsgr2vr.b	$vr1, $t3, 15
-	vst	$vr1, $a7, 0
+	xvpickev.b	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vst	$vr0, $a7, 0
 	beq	$t5, $t1, .LBB2_85
 # %bb.91:                               # %vec.epilog.iter.check455
                                         #   in Loop: Header=BB2_86 Depth=1

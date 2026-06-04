@@ -3312,25 +3312,28 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	xvpermi.q	$xr6, $xr4, 2
 	xvrepli.d	$xr4, 32
 	xvslt.du	$xr6, $xr6, $xr4
-	xvpickve2gr.d	$a4, $xr6, 0
-	xvpickve2gr.d	$a5, $xr6, 1
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 1
-	sub.d	$a4, $a5, $a4
-	xvpickve2gr.d	$a5, $xr6, 2
-	bstrins.d	$a4, $a5, 2, 2
-	xvpickve2gr.d	$a5, $xr6, 3
-	bstrins.d	$a4, $a5, 3, 3
 	xvslt.du	$xr4, $xr5, $xr4
-	xvpickve2gr.d	$a5, $xr4, 0
+	xvpickev.w	$xr4, $xr4, $xr6
+	xvpermi.d	$xr4, $xr4, 216
+	xvpickev.h	$xr4, $xr4, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	vpickve2gr.h	$a4, $vr4, 0
+	vpickve2gr.h	$a5, $vr4, 1
+	andi	$a5, $a5, 1
+	bstrins.d	$a4, $a5, 63, 1
+	vpickve2gr.h	$a5, $vr4, 2
+	bstrins.d	$a4, $a5, 2, 2
+	vpickve2gr.h	$a5, $vr4, 3
+	bstrins.d	$a4, $a5, 3, 3
+	vpickve2gr.h	$a5, $vr4, 4
 	bstrins.d	$a4, $a5, 4, 4
-	xvpickve2gr.d	$a5, $xr4, 1
+	vpickve2gr.h	$a5, $vr4, 5
 	bstrins.d	$a4, $a5, 5, 5
-	xvpickve2gr.d	$a5, $xr4, 2
+	vpickve2gr.h	$a5, $vr4, 6
 	andi	$a5, $a5, 1
 	slli.d	$a5, $a5, 6
 	or	$a4, $a4, $a5
-	xvpickve2gr.d	$a5, $xr4, 3
+	vpickve2gr.h	$a5, $vr4, 7
 	slli.d	$a5, $a5, 7
 	or	$a4, $a4, $a5
 	andi	$a5, $a4, 255

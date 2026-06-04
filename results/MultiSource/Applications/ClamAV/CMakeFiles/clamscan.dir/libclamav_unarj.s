@@ -2535,122 +2535,128 @@ make_table:                             # @make_table
 	bnez	$t6, .LBB7_5
 # %bb.6:                                # %vector.body
 	pcalau12i	$t3, %pc_hi20(.LCPI7_0)
-	xvld	$xr2, $t3, %pc_lo12(.LCPI7_0)
-	addi.d	$t2, $t2, -3
-	xvreplgr2vr.d	$xr1, $t2
-	xvsle.du	$xr2, $xr2, $xr1
-	xvpickve2gr.d	$t2, $xr2, 0
-	andi	$t3, $t2, 1
-	lu12i.w	$t2, 16
-	bnez	$t3, .LBB7_20
-# %bb.7:                                # %pred.store.continue
-	xvpickve2gr.d	$t3, $xr2, 1
-	andi	$t3, $t3, 1
-	bnez	$t3, .LBB7_21
-.LBB7_8:                                # %pred.store.continue2
-	xvpickve2gr.d	$t3, $xr2, 2
-	andi	$t3, $t3, 1
-	bnez	$t3, .LBB7_22
-.LBB7_9:                                # %pred.store.continue4
-	xvpickve2gr.d	$t3, $xr2, 3
-	andi	$t3, $t3, 1
-	beqz	$t3, .LBB7_11
-.LBB7_10:                               # %pred.store.if5
-	ori	$t3, $zero, 4
-	sub.d	$t3, $t3, $a7
-	srl.w	$t3, $t2, $t3
-	st.h	$t3, $t1, 0
-.LBB7_11:                               # %pred.store.continue6
+	xvld	$xr1, $t3, %pc_lo12(.LCPI7_0)
 	pcalau12i	$t3, %pc_hi20(.LCPI7_1)
 	xvld	$xr2, $t3, %pc_lo12(.LCPI7_1)
-	xvsle.du	$xr1, $xr2, $xr1
-	xvpickve2gr.d	$t3, $xr1, 0
+	addi.d	$t2, $t2, -3
+	xvreplgr2vr.d	$xr3, $t2
+	xvsle.du	$xr1, $xr1, $xr3
+	xvsle.du	$xr2, $xr2, $xr3
+	xvpickev.w	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.h	$t2, $vr1, 0
+	andi	$t3, $t2, 1
+	lu12i.w	$t2, 16
+	bnez	$t3, .LBB7_19
+# %bb.7:                                # %pred.store.continue
+	vpickve2gr.h	$t3, $vr1, 1
+	andi	$t3, $t3, 1
+	bnez	$t3, .LBB7_20
+.LBB7_8:                                # %pred.store.continue2
+	vpickve2gr.h	$t3, $vr1, 2
+	andi	$t3, $t3, 1
+	bnez	$t3, .LBB7_21
+.LBB7_9:                                # %pred.store.continue4
+	vpickve2gr.h	$t3, $vr1, 3
+	andi	$t3, $t3, 1
+	bnez	$t3, .LBB7_22
+.LBB7_10:                               # %pred.store.continue6
+	vpickve2gr.h	$t3, $vr1, 4
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB7_23
-# %bb.12:                               # %pred.store.continue8
-	xvpickve2gr.d	$t3, $xr1, 1
+.LBB7_11:                               # %pred.store.continue8
+	vpickve2gr.h	$t3, $vr1, 5
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB7_24
-.LBB7_13:                               # %pred.store.continue10
-	xvpickve2gr.d	$t3, $xr1, 2
+.LBB7_12:                               # %pred.store.continue10
+	vpickve2gr.h	$t3, $vr1, 6
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB7_25
-.LBB7_14:                               # %pred.store.continue12
-	xvpickve2gr.d	$t3, $xr1, 3
+.LBB7_13:                               # %pred.store.continue12
+	vpickve2gr.h	$t3, $vr1, 7
 	andi	$t3, $t3, 1
-	beqz	$t3, .LBB7_16
-.LBB7_15:                               # %pred.store.if13
+	beqz	$t3, .LBB7_15
+.LBB7_14:                               # %pred.store.if13
 	ori	$t3, $zero, 8
 	sub.d	$a7, $t3, $a7
 	srl.w	$a7, $t2, $a7
 	st.h	$a7, $t1, 8
-.LBB7_16:                               # %._crit_edge
+.LBB7_15:                               # %._crit_edge
 	addi.d	$a7, $sp, 8
 	alsl.d	$t0, $t0, $a7, 1
 	ld.hu	$t0, $t0, 2
 	srl.w	$t3, $t0, $a6
 	beqz	$t3, .LBB7_36
-# %bb.17:
+# %bb.16:
 	ori	$t0, $zero, 1
 	sll.w	$t0, $t0, $a3
 	beq	$t0, $t3, .LBB7_36
-# %bb.18:                               # %iter.check
+# %bb.17:                               # %iter.check
 	sub.w	$t1, $t0, $t3
 	ori	$t2, $zero, 8
 	bgeu	$t1, $t2, .LBB7_26
-# %bb.19:
+# %bb.18:
 	move	$t2, $t3
 	b	.LBB7_35
-.LBB7_20:                               # %pred.store.if
+.LBB7_19:                               # %pred.store.if
 	ori	$t3, $zero, 1
 	sub.d	$t3, $t3, $a7
 	srl.w	$t3, $t2, $t3
 	st.h	$t3, $t1, -6
-	xvpickve2gr.d	$t3, $xr2, 1
+	vpickve2gr.h	$t3, $vr1, 1
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB7_8
-.LBB7_21:                               # %pred.store.if1
+.LBB7_20:                               # %pred.store.if1
 	ori	$t3, $zero, 2
 	sub.d	$t3, $t3, $a7
 	srl.w	$t3, $t2, $t3
 	st.h	$t3, $t1, -4
-	xvpickve2gr.d	$t3, $xr2, 2
+	vpickve2gr.h	$t3, $vr1, 2
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB7_9
-.LBB7_22:                               # %pred.store.if3
+.LBB7_21:                               # %pred.store.if3
 	ori	$t3, $zero, 3
 	sub.d	$t3, $t3, $a7
 	srl.w	$t3, $t2, $t3
 	st.h	$t3, $t1, -2
-	xvpickve2gr.d	$t3, $xr2, 3
+	vpickve2gr.h	$t3, $vr1, 3
 	andi	$t3, $t3, 1
-	bnez	$t3, .LBB7_10
-	b	.LBB7_11
+	beqz	$t3, .LBB7_10
+.LBB7_22:                               # %pred.store.if5
+	ori	$t3, $zero, 4
+	sub.d	$t3, $t3, $a7
+	srl.w	$t3, $t2, $t3
+	st.h	$t3, $t1, 0
+	vpickve2gr.h	$t3, $vr1, 4
+	andi	$t3, $t3, 1
+	beqz	$t3, .LBB7_11
 .LBB7_23:                               # %pred.store.if7
 	ori	$t3, $zero, 5
 	sub.d	$t3, $t3, $a7
 	srl.w	$t3, $t2, $t3
 	st.h	$t3, $t1, 2
-	xvpickve2gr.d	$t3, $xr1, 1
+	vpickve2gr.h	$t3, $vr1, 5
 	andi	$t3, $t3, 1
-	beqz	$t3, .LBB7_13
+	beqz	$t3, .LBB7_12
 .LBB7_24:                               # %pred.store.if9
 	ori	$t3, $zero, 6
 	sub.d	$t3, $t3, $a7
 	srl.w	$t3, $t2, $t3
 	st.h	$t3, $t1, 4
-	xvpickve2gr.d	$t3, $xr1, 2
+	vpickve2gr.h	$t3, $vr1, 6
 	andi	$t3, $t3, 1
-	beqz	$t3, .LBB7_14
+	beqz	$t3, .LBB7_13
 .LBB7_25:                               # %pred.store.if11
 	ori	$t3, $zero, 7
 	sub.d	$t3, $t3, $a7
 	srl.w	$t3, $t2, $t3
 	st.h	$t3, $t1, 6
-	xvpickve2gr.d	$t3, $xr1, 3
+	vpickve2gr.h	$t3, $vr1, 7
 	andi	$t3, $t3, 1
-	bnez	$t3, .LBB7_15
-	b	.LBB7_16
+	bnez	$t3, .LBB7_14
+	b	.LBB7_15
 .LBB7_26:                               # %vector.main.loop.iter.check
 	ori	$t2, $zero, 32
 	bgeu	$t1, $t2, .LBB7_28

@@ -2541,23 +2541,9 @@ lame_encode_buffer:                     # @lame_encode_buffer
 	xvadd.w	$xr1, $xr2, $xr1
 	xvsrli.w	$xr2, $xr1, 31
 	xvavg.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$a4, $xr1, 0
-	vinsgr2vr.h	$vr2, $a4, 0
-	xvpickve2gr.w	$a4, $xr1, 1
-	vinsgr2vr.h	$vr2, $a4, 1
-	xvpickve2gr.w	$a4, $xr1, 2
-	vinsgr2vr.h	$vr2, $a4, 2
-	xvpickve2gr.w	$a4, $xr1, 3
-	vinsgr2vr.h	$vr2, $a4, 3
-	xvpickve2gr.w	$a4, $xr1, 4
-	vinsgr2vr.h	$vr2, $a4, 4
-	xvpickve2gr.w	$a4, $xr1, 5
-	vinsgr2vr.h	$vr2, $a4, 5
-	xvpickve2gr.w	$a4, $xr1, 6
-	vinsgr2vr.h	$vr2, $a4, 6
-	xvpickve2gr.w	$a4, $xr1, 7
-	vinsgr2vr.h	$vr2, $a4, 7
-	vst	$vr2, $a3, 0
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vst	$vr1, $a3, 0
 	vst	$vr0, $a2, 0
 	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 16
@@ -2591,40 +2577,9 @@ lame_encode_buffer:                     # @lame_encode_buffer
 	xvavg.w	$xr2, $xr3, $xr2
 	xvsrli.w	$xr3, $xr1, 31
 	xvavg.w	$xr1, $xr1, $xr3
-	xvpickve2gr.w	$a5, $xr2, 0
-	vinsgr2vr.h	$vr3, $a5, 0
-	xvpickve2gr.w	$a5, $xr2, 1
-	vinsgr2vr.h	$vr3, $a5, 1
-	xvpickve2gr.w	$a5, $xr2, 2
-	vinsgr2vr.h	$vr3, $a5, 2
-	xvpickve2gr.w	$a5, $xr2, 3
-	vinsgr2vr.h	$vr3, $a5, 3
-	xvpickve2gr.w	$a5, $xr2, 4
-	vinsgr2vr.h	$vr3, $a5, 4
-	xvpickve2gr.w	$a5, $xr2, 5
-	vinsgr2vr.h	$vr3, $a5, 5
-	xvpickve2gr.w	$a5, $xr2, 6
-	vinsgr2vr.h	$vr3, $a5, 6
-	xvpickve2gr.w	$a5, $xr2, 7
-	vinsgr2vr.h	$vr3, $a5, 7
-	xvpickve2gr.w	$a5, $xr1, 0
-	vinsgr2vr.h	$vr2, $a5, 0
-	xvpickve2gr.w	$a5, $xr1, 1
-	vinsgr2vr.h	$vr2, $a5, 1
-	xvpickve2gr.w	$a5, $xr1, 2
-	vinsgr2vr.h	$vr2, $a5, 2
-	xvpickve2gr.w	$a5, $xr1, 3
-	vinsgr2vr.h	$vr2, $a5, 3
-	xvpickve2gr.w	$a5, $xr1, 4
-	vinsgr2vr.h	$vr2, $a5, 4
-	xvpickve2gr.w	$a5, $xr1, 5
-	vinsgr2vr.h	$vr2, $a5, 5
-	xvpickve2gr.w	$a5, $xr1, 6
-	vinsgr2vr.h	$vr2, $a5, 6
-	xvpickve2gr.w	$a5, $xr1, 7
-	vinsgr2vr.h	$vr2, $a5, 7
-	xvpermi.q	$xr2, $xr3, 2
-	xvst	$xr2, $a2, 0
+	xvpickev.h	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvst	$xr1, $a2, 0
 	xvst	$xr0, $a3, 0
 	addi.d	$a4, $a4, -16
 	addi.d	$a3, $a3, 32

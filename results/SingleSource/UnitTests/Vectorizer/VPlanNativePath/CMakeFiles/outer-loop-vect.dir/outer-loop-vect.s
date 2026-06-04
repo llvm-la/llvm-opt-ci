@@ -1218,8 +1218,8 @@ main:                                   # @main
 .LBB0_83:                               # %.preheader.i183373
                                         #   Parent Loop BB0_82 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	xvmul.d	$xr5, $xr1, $xr9
 	xvmul.d	$xr6, $xr2, $xr8
-	xvmul.d	$xr7, $xr1, $xr9
 	xvori.b	$xr12, $xr3, 0
 	xvmadd.d	$xr12, $xr2, $xr13
 	xvori.b	$xr0, $xr4, 0
@@ -1240,41 +1240,26 @@ main:                                   # @main
 	st.w	$zero, $a6, 0
 	xvpickve2gr.d	$a6, $xr12, 3
 	st.w	$zero, $a6, 0
-	xvpickve2gr.d	$a6, $xr7, 0
-	vinsgr2vr.w	$vr5, $a6, 0
-	xvpickve2gr.d	$a7, $xr7, 1
-	vinsgr2vr.w	$vr5, $a7, 1
-	xvpickve2gr.d	$t0, $xr7, 2
-	vinsgr2vr.w	$vr5, $t0, 2
-	xvpickve2gr.d	$t1, $xr7, 3
-	vinsgr2vr.w	$vr5, $t1, 3
-	xvpickve2gr.d	$t2, $xr6, 0
-	vinsgr2vr.w	$vr7, $t2, 0
-	xvpickve2gr.d	$t3, $xr6, 1
-	vinsgr2vr.w	$vr7, $t3, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	vinsgr2vr.w	$vr7, $t4, 2
-	xvpickve2gr.d	$t5, $xr6, 3
-	vinsgr2vr.w	$vr7, $t5, 3
-	xvpermi.q	$xr5, $xr7, 2
+	xvpickev.w	$xr5, $xr6, $xr5
+	xvpermi.d	$xr5, $xr5, 216
 	xvaddi.du	$xr6, $xr12, 4
 	xvaddi.du	$xr7, $xr0, 4
-	xvpickve2gr.d	$t6, $xr7, 0
-	st.w	$a6, $t6, 0
+	xvpickve2gr.d	$a6, $xr7, 0
+	xvstelm.w	$xr5, $a6, 0, 0
 	xvpickve2gr.d	$a6, $xr7, 1
-	st.w	$a7, $a6, 0
+	xvstelm.w	$xr5, $a6, 0, 1
 	xvpickve2gr.d	$a6, $xr7, 2
-	st.w	$t0, $a6, 0
+	xvstelm.w	$xr5, $a6, 0, 2
 	xvpickve2gr.d	$a6, $xr7, 3
-	st.w	$t1, $a6, 0
+	xvstelm.w	$xr5, $a6, 0, 3
 	xvpickve2gr.d	$a6, $xr6, 0
-	st.w	$t2, $a6, 0
+	xvstelm.w	$xr5, $a6, 0, 4
 	xvpickve2gr.d	$a6, $xr6, 1
-	st.w	$t3, $a6, 0
+	xvstelm.w	$xr5, $a6, 0, 5
 	xvpickve2gr.d	$a6, $xr6, 2
-	st.w	$t4, $a6, 0
+	xvstelm.w	$xr5, $a6, 0, 6
 	xvpickve2gr.d	$a6, $xr6, 3
-	st.w	$t5, $a6, 0
+	xvstelm.w	$xr5, $a6, 0, 7
 	xvslli.w	$xr6, $xr5, 1
 	xvaddi.du	$xr7, $xr0, 8
 	xvpickve2gr.d	$a6, $xr7, 0

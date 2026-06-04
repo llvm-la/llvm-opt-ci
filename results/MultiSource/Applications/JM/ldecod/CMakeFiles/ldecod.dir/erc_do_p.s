@@ -1766,26 +1766,14 @@ init_lists_for_non_reference_loss:      # @init_lists_for_non_reference_loss
 	xvld	$xr5, $a5, 0
 	xvseq.d	$xr2, $xr2, $xr3
 	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.d	$t0, $xr2, 0
-	vinsgr2vr.w	$vr3, $t0, 0
-	xvpickve2gr.d	$t0, $xr2, 1
-	vinsgr2vr.w	$vr3, $t0, 1
-	xvpickve2gr.d	$t0, $xr2, 2
-	vinsgr2vr.w	$vr3, $t0, 2
-	xvpickve2gr.d	$t0, $xr2, 3
-	vinsgr2vr.w	$vr3, $t0, 3
-	xvseq.d	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.d	$t0, $xr2, 0
-	vinsgr2vr.w	$vr4, $t0, 0
-	xvpickve2gr.d	$t0, $xr2, 1
-	vinsgr2vr.w	$vr4, $t0, 1
-	xvpickve2gr.d	$t0, $xr2, 2
-	vinsgr2vr.w	$vr4, $t0, 2
-	xvpickve2gr.d	$t0, $xr2, 3
-	vinsgr2vr.w	$vr4, $t0, 3
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
+	xvpickev.w	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvseq.d	$xr3, $xr4, $xr5
+	xvxori.b	$xr3, $xr3, 255
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr1, $vr1, $vr3
 	addi.d	$a7, $a7, -8
 	addi.d	$a5, $a5, 64
 	addi.d	$a6, $a6, 64

@@ -437,42 +437,44 @@ ParamInt:                               # @ParamInt
 	vinsgr2vr.w	$vr2, $t2, 3
 	xvpermi.q	$xr2, $xr1, 2
 	xvseq.w	$xr1, $xr2, $xr0
-	xvpickve2gr.w	$a7, $xr1, 0
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.h	$a7, $vr1, 0
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_13
 # %bb.6:                                # %pred.store.continue
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvpickve2gr.w	$a7, $xr1, 1
+	vpickve2gr.h	$a7, $vr1, 1
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_14
 .LBB6_7:                                # %pred.store.continue6
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvpickve2gr.w	$a7, $xr1, 2
+	vpickve2gr.h	$a7, $vr1, 2
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_15
 .LBB6_8:                                # %pred.store.continue8
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvpickve2gr.w	$a7, $xr1, 3
+	vpickve2gr.h	$a7, $vr1, 3
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_16
 .LBB6_9:                                # %pred.store.continue10
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvpickve2gr.w	$a7, $xr1, 4
+	vpickve2gr.h	$a7, $vr1, 4
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_17
 .LBB6_10:                               # %pred.store.continue12
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvpickve2gr.w	$a7, $xr1, 5
+	vpickve2gr.h	$a7, $vr1, 5
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_18
 .LBB6_11:                               # %pred.store.continue14
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvpickve2gr.w	$a7, $xr1, 6
+	vpickve2gr.h	$a7, $vr1, 6
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB6_19
 .LBB6_12:                               # %pred.store.continue16
                                         #   in Loop: Header=BB6_5 Depth=1
-	xvpickve2gr.w	$a7, $xr1, 7
+	vpickve2gr.h	$a7, $vr1, 7
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_4
 	b	.LBB6_20
@@ -480,43 +482,43 @@ ParamInt:                               # @ParamInt
 .LBB6_13:                               # %pred.store.if
                                         #   in Loop: Header=BB6_5 Depth=1
 	st.w	$a5, $a4, 96
-	xvpickve2gr.w	$a7, $xr1, 1
+	vpickve2gr.h	$a7, $vr1, 1
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_7
 .LBB6_14:                               # %pred.store.if5
                                         #   in Loop: Header=BB6_5 Depth=1
 	st.w	$a5, $a4, 64
-	xvpickve2gr.w	$a7, $xr1, 2
+	vpickve2gr.h	$a7, $vr1, 2
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_8
 .LBB6_15:                               # %pred.store.if7
                                         #   in Loop: Header=BB6_5 Depth=1
 	st.w	$a5, $a4, 32
-	xvpickve2gr.w	$a7, $xr1, 3
+	vpickve2gr.h	$a7, $vr1, 3
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_9
 .LBB6_16:                               # %pred.store.if9
                                         #   in Loop: Header=BB6_5 Depth=1
 	st.w	$a5, $a4, 0
-	xvpickve2gr.w	$a7, $xr1, 4
+	vpickve2gr.h	$a7, $vr1, 4
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_10
 .LBB6_17:                               # %pred.store.if11
                                         #   in Loop: Header=BB6_5 Depth=1
 	st.w	$a5, $a4, -32
-	xvpickve2gr.w	$a7, $xr1, 5
+	vpickve2gr.h	$a7, $vr1, 5
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_11
 .LBB6_18:                               # %pred.store.if13
                                         #   in Loop: Header=BB6_5 Depth=1
 	st.w	$a5, $a4, -64
-	xvpickve2gr.w	$a7, $xr1, 6
+	vpickve2gr.h	$a7, $vr1, 6
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_12
 .LBB6_19:                               # %pred.store.if15
                                         #   in Loop: Header=BB6_5 Depth=1
 	st.w	$a5, $a4, -96
-	xvpickve2gr.w	$a7, $xr1, 7
+	vpickve2gr.h	$a7, $vr1, 7
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB6_4
 .LBB6_20:                               # %pred.store.if17

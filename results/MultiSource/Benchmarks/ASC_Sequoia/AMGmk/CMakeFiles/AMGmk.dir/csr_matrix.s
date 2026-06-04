@@ -1209,40 +1209,12 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	xvld	$xr4, $t3, -32
 	xvld	$xr5, $t3, 0
 	xvseq.w	$xr4, $xr4, $xr1
-	xvpickve2gr.w	$t5, $xr4, 0
-	vinsgr2vr.h	$vr6, $t5, 0
-	xvpickve2gr.w	$t5, $xr4, 1
-	vinsgr2vr.h	$vr6, $t5, 1
-	xvpickve2gr.w	$t5, $xr4, 2
-	vinsgr2vr.h	$vr6, $t5, 2
-	xvpickve2gr.w	$t5, $xr4, 3
-	vinsgr2vr.h	$vr6, $t5, 3
-	xvpickve2gr.w	$t5, $xr4, 4
-	vinsgr2vr.h	$vr6, $t5, 4
-	xvpickve2gr.w	$t5, $xr4, 5
-	vinsgr2vr.h	$vr6, $t5, 5
-	xvpickve2gr.w	$t5, $xr4, 6
-	vinsgr2vr.h	$vr6, $t5, 6
-	xvpickve2gr.w	$t5, $xr4, 7
-	vinsgr2vr.h	$vr6, $t5, 7
-	xvseq.w	$xr4, $xr5, $xr1
-	xvpickve2gr.w	$t5, $xr4, 0
-	vinsgr2vr.h	$vr5, $t5, 0
-	xvpickve2gr.w	$t5, $xr4, 1
-	vinsgr2vr.h	$vr5, $t5, 1
-	xvpickve2gr.w	$t5, $xr4, 2
-	vinsgr2vr.h	$vr5, $t5, 2
-	xvpickve2gr.w	$t5, $xr4, 3
-	vinsgr2vr.h	$vr5, $t5, 3
-	xvpickve2gr.w	$t5, $xr4, 4
-	vinsgr2vr.h	$vr5, $t5, 4
-	xvpickve2gr.w	$t5, $xr4, 5
-	vinsgr2vr.h	$vr5, $t5, 5
-	xvpickve2gr.w	$t5, $xr4, 6
-	vinsgr2vr.h	$vr5, $t5, 6
-	xvpickve2gr.w	$t5, $xr4, 7
-	vinsgr2vr.h	$vr5, $t5, 7
-	vor.v	$vr2, $vr2, $vr6
+	xvpickev.h	$xr4, $xr4, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvseq.w	$xr5, $xr5, $xr1
+	xvpickev.h	$xr5, $xr5, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	vor.v	$vr2, $vr2, $vr4
 	vor.v	$vr3, $vr3, $vr5
 	addi.d	$t4, $t4, -16
 	addi.d	$t3, $t3, 64
@@ -1456,40 +1428,12 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	xvld	$xr4, $t4, -32
 	xvld	$xr5, $t4, 0
 	xvseq.w	$xr4, $xr4, $xr1
-	xvpickve2gr.w	$t6, $xr4, 0
-	vinsgr2vr.h	$vr6, $t6, 0
-	xvpickve2gr.w	$t6, $xr4, 1
-	vinsgr2vr.h	$vr6, $t6, 1
-	xvpickve2gr.w	$t6, $xr4, 2
-	vinsgr2vr.h	$vr6, $t6, 2
-	xvpickve2gr.w	$t6, $xr4, 3
-	vinsgr2vr.h	$vr6, $t6, 3
-	xvpickve2gr.w	$t6, $xr4, 4
-	vinsgr2vr.h	$vr6, $t6, 4
-	xvpickve2gr.w	$t6, $xr4, 5
-	vinsgr2vr.h	$vr6, $t6, 5
-	xvpickve2gr.w	$t6, $xr4, 6
-	vinsgr2vr.h	$vr6, $t6, 6
-	xvpickve2gr.w	$t6, $xr4, 7
-	vinsgr2vr.h	$vr6, $t6, 7
-	xvseq.w	$xr4, $xr5, $xr1
-	xvpickve2gr.w	$t6, $xr4, 0
-	vinsgr2vr.h	$vr5, $t6, 0
-	xvpickve2gr.w	$t6, $xr4, 1
-	vinsgr2vr.h	$vr5, $t6, 1
-	xvpickve2gr.w	$t6, $xr4, 2
-	vinsgr2vr.h	$vr5, $t6, 2
-	xvpickve2gr.w	$t6, $xr4, 3
-	vinsgr2vr.h	$vr5, $t6, 3
-	xvpickve2gr.w	$t6, $xr4, 4
-	vinsgr2vr.h	$vr5, $t6, 4
-	xvpickve2gr.w	$t6, $xr4, 5
-	vinsgr2vr.h	$vr5, $t6, 5
-	xvpickve2gr.w	$t6, $xr4, 6
-	vinsgr2vr.h	$vr5, $t6, 6
-	xvpickve2gr.w	$t6, $xr4, 7
-	vinsgr2vr.h	$vr5, $t6, 7
-	vor.v	$vr2, $vr2, $vr6
+	xvpickev.h	$xr4, $xr4, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvseq.w	$xr5, $xr5, $xr1
+	xvpickev.h	$xr5, $xr5, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	vor.v	$vr2, $vr2, $vr4
 	vor.v	$vr3, $vr3, $vr5
 	addi.d	$t5, $t5, -16
 	addi.d	$t4, $t4, 64

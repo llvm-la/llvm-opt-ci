@@ -52,49 +52,49 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vbsll.v	$vr9, $vr0, 2
 	vor.v	$vr8, $vr9, $vr8
 	vext2xv.w.h	$xr9, $xr8
-	xvpermi.q	$xr8, $xr9, 1
-	vext2xv.d.w	$xr8, $xr8
+	vext2xv.d.w	$xr8, $xr9
+	xvpermi.q	$xr9, $xr9, 1
 	vext2xv.d.w	$xr9, $xr9
 	vext2xv.w.h	$xr11, $xr0
 	vld	$vr12, $a6, -4
-	vext2xv.d.w	$xr10, $xr11
-	xvpermi.q	$xr11, $xr11, 1
+	xvpermi.q	$xr10, $xr11, 1
+	vext2xv.d.w	$xr10, $xr10
 	vext2xv.d.w	$xr11, $xr11
 	vext2xv.w.h	$xr13, $xr12
 	vld	$vr14, $a6, -2
-	xvpermi.q	$xr12, $xr13, 1
-	vext2xv.d.w	$xr12, $xr12
+	vext2xv.d.w	$xr12, $xr13
+	xvpermi.q	$xr13, $xr13, 1
 	vext2xv.d.w	$xr13, $xr13
 	vext2xv.w.h	$xr14, $xr14
 	vldx	$vr15, $fp, $a3
-	xvpermi.q	$xr16, $xr14, 1
-	vext2xv.d.w	$xr16, $xr16
+	vext2xv.d.w	$xr16, $xr14
+	xvpermi.q	$xr14, $xr14, 1
 	vext2xv.d.w	$xr17, $xr14
 	vext2xv.w.h	$xr14, $xr15
-	xvpermi.q	$xr15, $xr14, 1
-	vext2xv.d.w	$xr18, $xr15
+	vext2xv.d.w	$xr18, $xr14
+	xvpermi.q	$xr14, $xr14, 1
 	vld	$vr19, $a6, 2
 	vext2xv.d.w	$xr14, $xr14
 	xvslli.d	$xr15, $xr14, 13
 	xvslli.d	$xr14, $xr18, 13
 	vext2xv.w.h	$xr18, $xr19
 	vld	$vr19, $a6, 4
-	xvpermi.q	$xr20, $xr18, 1
-	vext2xv.d.w	$xr20, $xr20
+	vext2xv.d.w	$xr20, $xr18
+	xvpermi.q	$xr18, $xr18, 1
 	vext2xv.d.w	$xr18, $xr18
 	vext2xv.w.h	$xr19, $xr19
 	vld	$vr21, $a6, 8
-	xvpermi.q	$xr22, $xr19, 1
-	vext2xv.d.w	$xr22, $xr22
+	vext2xv.d.w	$xr22, $xr19
+	xvpermi.q	$xr19, $xr19, 1
 	vext2xv.d.w	$xr19, $xr19
 	vext2xv.w.h	$xr21, $xr21
 	vld	$vr23, $a6, 10
-	vext2xv.d.w	$xr24, $xr21
-	xvpermi.q	$xr21, $xr21, 1
+	xvpermi.q	$xr24, $xr21, 1
+	vext2xv.d.w	$xr24, $xr24
 	vext2xv.d.w	$xr21, $xr21
 	vext2xv.w.h	$xr23, $xr23
-	xvpermi.q	$xr25, $xr23, 1
-	vext2xv.d.w	$xr25, $xr25
+	vext2xv.d.w	$xr25, $xr23
+	xvpermi.q	$xr23, $xr23, 1
 	vext2xv.d.w	$xr23, $xr23
 	xvadd.d	$xr17, $xr18, $xr17
 	xvadd.d	$xr16, $xr20, $xr16
@@ -120,23 +120,11 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	xvmax.d	$xr9, $xr9, $xr6
 	xvmin.d	$xr9, $xr9, $xr7
 	xvmin.d	$xr8, $xr8, $xr7
-	xvpickve2gr.d	$a6, $xr8, 0
-	vinsgr2vr.h	$vr10, $a6, 0
-	xvpickve2gr.d	$a6, $xr8, 1
-	vinsgr2vr.h	$vr10, $a6, 1
-	xvpickve2gr.d	$a6, $xr8, 2
-	vinsgr2vr.h	$vr10, $a6, 2
-	xvpickve2gr.d	$a6, $xr8, 3
-	vinsgr2vr.h	$vr10, $a6, 3
-	xvpickve2gr.d	$a6, $xr9, 0
-	vinsgr2vr.h	$vr10, $a6, 4
-	xvpickve2gr.d	$a6, $xr9, 1
-	vinsgr2vr.h	$vr10, $a6, 5
-	xvpickve2gr.d	$a6, $xr9, 2
-	vinsgr2vr.h	$vr10, $a6, 6
-	xvpickve2gr.d	$a6, $xr9, 3
-	vinsgr2vr.h	$vr10, $a6, 7
-	vstx	$vr10, $a3, $a4
+	xvpickev.w	$xr8, $xr8, $xr9
+	xvpermi.d	$xr8, $xr8, 216
+	xvpickev.h	$xr8, $xr8, $xr8
+	xvpermi.d	$xr8, $xr8, 216
+	vstx	$vr8, $a3, $a4
 	addi.d	$a3, $a3, 16
 	bne	$a3, $a5, .LBB0_1
 # %bb.2:                                # %Weighting_filter.exit
@@ -442,50 +430,22 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vinsgr2vr.d	$vr2, $t3, 1
 	xvpermi.q	$xr2, $xr0, 2
 	xvslli.d	$xr0, $xr2, 48
-	xvsrai.d	$xr2, $xr0, 48
-	xvslli.d	$xr0, $xr1, 48
-	xvsrai.d	$xr1, $xr0, 48
-	xvreplgr2vr.d	$xr0, $a4
-	xvmul.d	$xr1, $xr1, $xr0
-	xvmul.d	$xr2, $xr2, $xr0
-	xvpickve2gr.d	$a5, $xr2, 0
-	vinsgr2vr.w	$vr3, $a5, 0
-	xvpickve2gr.d	$a5, $xr2, 1
-	vinsgr2vr.w	$vr3, $a5, 1
-	xvpickve2gr.d	$a5, $xr2, 2
-	vinsgr2vr.w	$vr3, $a5, 2
-	xvpickve2gr.d	$a5, $xr2, 3
-	vinsgr2vr.w	$vr3, $a5, 3
-	vsrli.w	$vr2, $vr3, 15
-	vpickve2gr.w	$a5, $vr2, 0
-	vinsgr2vr.h	$vr3, $a5, 0
-	vpickve2gr.w	$a5, $vr2, 1
-	vinsgr2vr.h	$vr3, $a5, 1
-	vpickve2gr.w	$a5, $vr2, 2
-	vinsgr2vr.h	$vr3, $a5, 2
-	vpickve2gr.w	$a5, $vr2, 3
-	vinsgr2vr.h	$vr3, $a5, 3
-	xvpickve2gr.d	$a5, $xr1, 0
-	vinsgr2vr.w	$vr2, $a5, 0
-	xvpickve2gr.d	$a5, $xr1, 1
-	vinsgr2vr.w	$vr2, $a5, 1
-	xvpickve2gr.d	$a5, $xr1, 2
-	vinsgr2vr.w	$vr2, $a5, 2
-	xvpickve2gr.d	$a5, $xr1, 3
-	vinsgr2vr.w	$vr2, $a5, 3
-	vsrli.w	$vr1, $vr2, 15
-	vpickve2gr.w	$a5, $vr1, 0
-	vinsgr2vr.h	$vr3, $a5, 4
-	vpickve2gr.w	$a5, $vr1, 1
-	vinsgr2vr.h	$vr3, $a5, 5
-	vpickve2gr.w	$a5, $vr1, 2
-	vinsgr2vr.h	$vr3, $a5, 6
-	vpickve2gr.w	$a5, $vr1, 3
-	vinsgr2vr.h	$vr3, $a5, 7
-	vsrai.h	$vr1, $vr3, 12
-	vaddi.hu	$vr1, $vr1, 4
+	xvsrai.d	$xr0, $xr0, 48
+	xvslli.d	$xr1, $xr1, 48
+	xvsrai.d	$xr1, $xr1, 48
+	xvreplgr2vr.d	$xr2, $a4
+	xvmul.d	$xr1, $xr1, $xr2
+	xvmul.d	$xr0, $xr0, $xr2
+	xvsrli.d	$xr0, $xr0, 15
+	xvsrli.d	$xr1, $xr1, 15
+	xvpickev.w	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vsrai.h	$vr0, $vr0, 12
+	vaddi.hu	$vr0, $vr0, 4
 	ld.d	$a7, $sp, 56                    # 8-byte Folded Reload
-	vst	$vr1, $a7, 0
+	vst	$vr0, $a7, 0
 	ld.d	$a5, $sp, 16                    # 8-byte Folded Reload
 	sll.w	$a5, $a5, $a3
 	ext.w.h	$a5, $a5
@@ -502,24 +462,19 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	sll.w	$a6, $a6, $a3
 	ld.d	$t0, $sp, 40                    # 8-byte Folded Reload
 	sll.w	$a3, $t0, $a3
-	vinsgr2vr.d	$vr1, $a5, 0
-	vinsgr2vr.d	$vr1, $a4, 1
-	vinsgr2vr.d	$vr2, $a3, 0
-	vinsgr2vr.d	$vr2, $a6, 1
-	xvpermi.q	$xr2, $xr1, 2
-	xvslli.d	$xr1, $xr2, 48
-	xvsrai.d	$xr1, $xr1, 48
-	xvmul.d	$xr0, $xr1, $xr0
+	vinsgr2vr.d	$vr0, $a5, 0
+	vinsgr2vr.d	$vr0, $a4, 1
+	vinsgr2vr.d	$vr1, $a3, 0
+	vinsgr2vr.d	$vr1, $a6, 1
+	xvpermi.q	$xr1, $xr0, 2
+	xvslli.d	$xr0, $xr1, 48
+	xvsrai.d	$xr0, $xr0, 48
+	xvmul.d	$xr0, $xr0, $xr2
 	xvsrli.d	$xr0, $xr0, 15
-	xvpickve2gr.d	$a3, $xr0, 0
-	vinsgr2vr.h	$vr1, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 1
-	vinsgr2vr.h	$vr1, $a3, 1
-	xvpickve2gr.d	$a3, $xr0, 2
-	vinsgr2vr.h	$vr1, $a3, 2
-	xvpickve2gr.d	$a3, $xr0, 3
-	vinsgr2vr.h	$vr1, $a3, 3
-	vsrai.h	$vr0, $vr1, 12
+	xvpickev.w	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.h	$xr0, $xr0, $xr0
+	vsrai.h	$vr0, $vr0, 12
 	vaddi.hu	$vr0, $vr0, 4
 	vstelm.h	$vr0, $a7, 18, 0
 	vstelm.h	$vr0, $a7, 20, 1

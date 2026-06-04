@@ -44,27 +44,12 @@ _Z4initv:                               # @_Z4initv
 .LBB0_2:                                # %vector.body
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvadd.d	$xr5, $xr4, $xr2
-	xvadd.d	$xr6, $xr3, $xr2
+	xvadd.d	$xr5, $xr3, $xr2
+	xvadd.d	$xr6, $xr4, $xr2
 	add.d	$a6, $a0, $a5
-	xvpickve2gr.d	$a7, $xr6, 0
-	vinsgr2vr.w	$vr7, $a7, 0
-	xvpickve2gr.d	$a7, $xr6, 1
-	vinsgr2vr.w	$vr7, $a7, 1
-	xvpickve2gr.d	$a7, $xr6, 2
-	vinsgr2vr.w	$vr7, $a7, 2
-	xvpickve2gr.d	$a7, $xr6, 3
-	vinsgr2vr.w	$vr7, $a7, 3
-	xvpickve2gr.d	$a7, $xr5, 0
-	vinsgr2vr.w	$vr6, $a7, 0
-	xvpickve2gr.d	$a7, $xr5, 1
-	vinsgr2vr.w	$vr6, $a7, 1
-	xvpickve2gr.d	$a7, $xr5, 2
-	vinsgr2vr.w	$vr6, $a7, 2
-	xvpickve2gr.d	$a7, $xr5, 3
-	vinsgr2vr.w	$vr6, $a7, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvstx	$xr7, $a6, $a3
+	xvpickev.w	$xr5, $xr6, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	xvstx	$xr5, $a6, $a3
 	xvaddi.du	$xr3, $xr3, 8
 	addi.d	$a5, $a5, 32
 	xvaddi.du	$xr4, $xr4, 8
@@ -138,27 +123,12 @@ main:                                   # @main
 .LBB1_2:                                # %vector.body
                                         #   Parent Loop BB1_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvadd.d	$xr5, $xr4, $xr2
-	xvadd.d	$xr6, $xr3, $xr2
+	xvadd.d	$xr5, $xr3, $xr2
+	xvadd.d	$xr6, $xr4, $xr2
 	add.d	$a5, $a0, $a4
-	xvpickve2gr.d	$a6, $xr6, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	xvpickve2gr.d	$a6, $xr6, 1
-	vinsgr2vr.w	$vr7, $a6, 1
-	xvpickve2gr.d	$a6, $xr6, 2
-	vinsgr2vr.w	$vr7, $a6, 2
-	xvpickve2gr.d	$a6, $xr6, 3
-	vinsgr2vr.w	$vr7, $a6, 3
-	xvpickve2gr.d	$a6, $xr5, 0
-	vinsgr2vr.w	$vr6, $a6, 0
-	xvpickve2gr.d	$a6, $xr5, 1
-	vinsgr2vr.w	$vr6, $a6, 1
-	xvpickve2gr.d	$a6, $xr5, 2
-	vinsgr2vr.w	$vr6, $a6, 2
-	xvpickve2gr.d	$a6, $xr5, 3
-	vinsgr2vr.w	$vr6, $a6, 3
-	xvpermi.q	$xr7, $xr6, 2
-	xvstx	$xr7, $a5, $s0
+	xvpickev.w	$xr5, $xr6, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	xvstx	$xr5, $a5, $s0
 	xvaddi.du	$xr3, $xr3, 8
 	addi.d	$a4, $a4, 32
 	xvaddi.du	$xr4, $xr4, 8

@@ -7628,27 +7628,30 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	vinsgr2vr.d	$vr2, $a5, 0
 	vinsgr2vr.d	$vr2, $a6, 1
 	xvpermi.q	$xr2, $xr1, 2
-	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
-	xvslt.du	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$a5, $xr0, 0
-	xvpickve2gr.d	$a6, $xr0, 1
+	xvld	$xr3, $sp, 16                   # 32-byte Folded Reload
+	xvslt.du	$xr1, $xr2, $xr3
+	xvslt.du	$xr0, $xr0, $xr3
+	xvpickev.w	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vpickve2gr.h	$a5, $vr0, 0
+	vpickve2gr.h	$a6, $vr0, 1
 	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 1
-	sub.d	$a5, $a6, $a5
-	xvpickve2gr.d	$a6, $xr0, 2
+	bstrins.d	$a5, $a6, 63, 1
+	vpickve2gr.h	$a6, $vr0, 2
 	bstrins.d	$a5, $a6, 2, 2
-	xvpickve2gr.d	$a6, $xr0, 3
+	vpickve2gr.h	$a6, $vr0, 3
 	bstrins.d	$a5, $a6, 3, 3
-	xvslt.du	$xr0, $xr2, $xr1
-	xvpickve2gr.d	$a6, $xr0, 0
+	vpickve2gr.h	$a6, $vr0, 4
 	bstrins.d	$a5, $a6, 4, 4
-	xvpickve2gr.d	$a6, $xr0, 1
+	vpickve2gr.h	$a6, $vr0, 5
 	bstrins.d	$a5, $a6, 5, 5
-	xvpickve2gr.d	$a6, $xr0, 2
+	vpickve2gr.h	$a6, $vr0, 6
 	andi	$a6, $a6, 1
 	slli.d	$a6, $a6, 6
 	or	$a5, $a5, $a6
-	xvpickve2gr.d	$a6, $xr0, 3
+	vpickve2gr.h	$a6, $vr0, 7
 	slli.d	$a6, $a6, 7
 	or	$a5, $a5, $a6
 	andi	$a5, $a5, 255

@@ -24,7 +24,7 @@ endgame:                                # @endgame
 	fst.d	$fs5, $sp, 1912                 # 8-byte Folded Spill
 	fst.d	$fs6, $sp, 1904                 # 8-byte Folded Spill
 	fst.d	$fs7, $sp, 1896                 # 8-byte Folded Spill
-	addi.d	$sp, $sp, -880
+	addi.d	$sp, $sp, -864
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
@@ -63,14 +63,14 @@ endgame:                                # @endgame
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
-	ori	$a1, $zero, 2766
+	ori	$a1, $zero, 2750
 	add.d	$a1, $sp, $a1
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 2770
+	ori	$a1, $zero, 2754
 	add.d	$a1, $sp, $a1
 	ld.bu	$a1, $a1, 0
 	lu12i.w	$a2, 460535
@@ -107,15 +107,15 @@ endgame:                                # @endgame
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a1, $sp, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 2770
+	ori	$a1, $zero, 2754
 	add.d	$a1, $sp, $a1
 	ld.bu	$a1, $a1, 0
 	xor	$a0, $a0, $s2
@@ -123,18 +123,18 @@ endgame:                                # @endgame
 	beqz	$a0, .LBB0_6
 .LBB0_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2756
+	ori	$a2, $zero, 2740
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(getij)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2760
+	ori	$a0, $zero, 2744
 	add.d	$a0, $sp, $a0
 	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 2756
+	ori	$a0, $zero, 2740
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
 	alsl.d	$a2, $a1, $a1, 3
@@ -168,14 +168,14 @@ endgame:                                # @endgame
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
-	ori	$a1, $zero, 2766
+	ori	$a1, $zero, 2750
 	add.d	$a1, $sp, $a1
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 2770
+	ori	$a1, $zero, 2754
 	add.d	$a1, $sp, $a1
 	ld.bu	$a1, $a1, 0
 	xor	$a0, $a0, $s2
@@ -198,19 +198,19 @@ endgame:                                # @endgame
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph38
                                         # =>This Inner Loop Header: Depth=1
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2756
+	ori	$a2, $zero, 2740
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(getij)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2760
+	ori	$a0, $zero, 2744
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
 	ld.b	$a1, $s3, 0
-	ori	$a2, $zero, 2756
+	ori	$a2, $zero, 2740
 	add.d	$a2, $sp, $a2
 	ld.w	$a2, $a2, 0
 	mul.d	$a0, $a0, $s4
@@ -219,24 +219,24 @@ endgame:                                # @endgame
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a1, $sp, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
-	ori	$a2, $zero, 2756
+	ori	$a2, $zero, 2740
 	add.d	$a2, $sp, $a2
 	pcaddu18i	$ra, %call36(getij)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2760
+	ori	$a0, $zero, 2744
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
 	ld.b	$a1, $s6, 0
-	ori	$a2, $zero, 2756
+	ori	$a2, $zero, 2740
 	add.d	$a2, $sp, $a2
 	ld.w	$a2, $a2, 0
 	mul.d	$a0, $a0, $s4
@@ -247,22 +247,22 @@ endgame:                                # @endgame
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a1, $sp, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 2766
+	ori	$a0, $zero, 2750
 	add.d	$a0, $sp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 2770
+	ori	$a1, $zero, 2754
 	add.d	$a1, $sp, $a1
 	ld.bu	$a1, $a1, 0
 	xor	$a0, $a0, $s2
 	or	$a0, $a0, $a1
 	bnez	$a0, .LBB0_8
 .LBB0_9:                                # %.critedge31.preheader
-	ori	$a0, $zero, 2760
+	ori	$a0, $zero, 2744
 	add.d	$a0, $sp, $a0
 	st.w	$zero, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(p)
@@ -274,7 +274,7 @@ endgame:                                # @endgame
 .LBB0_10:                               # %.critedge31
                                         #   in Loop: Header=BB0_11 Depth=1
 	addi.w	$a0, $a2, 1
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
 	st.w	$a0, $a1, 0
 	bge	$a2, $s0, .LBB0_15
@@ -282,7 +282,7 @@ endgame:                                # @endgame
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_13 Depth 2
 	move	$a1, $zero
-	ori	$a2, $zero, 2756
+	ori	$a2, $zero, 2740
 	add.d	$a2, $sp, $a2
 	st.w	$zero, $a2, 0
 	move	$a2, $a0
@@ -291,7 +291,7 @@ endgame:                                # @endgame
 .LBB0_12:                               #   in Loop: Header=BB0_13 Depth=2
 	move	$a0, $a1
 	addi.w	$a1, $a1, 1
-	ori	$a3, $zero, 2756
+	ori	$a3, $zero, 2740
 	add.d	$a3, $sp, $a3
 	st.w	$a1, $a3, 0
 	bge	$a0, $s0, .LBB0_10
@@ -306,10 +306,10 @@ endgame:                                # @endgame
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(findcolor)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
 	ld.w	$a2, $a1, 0
-	ori	$a1, $zero, 2756
+	ori	$a1, $zero, 2740
 	add.d	$a1, $sp, $a1
 	ld.w	$a1, $a1, 0
 	alsl.d	$a3, $a2, $a2, 3
@@ -339,14 +339,14 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr3, $xr0
-	xvseq.w	$xr28, $xr21, $xr3
-	xvrepli.w	$xr2, 1
+	vext2xv.wu.bu	$xr30, $xr0
+	xvseq.w	$xr29, $xr21, $xr30
+	xvrepli.w	$xr3, 1
 	vld	$vr0, $fp, 153
 	ld.b	$a2, $fp, 172
 	ld.b	$a3, $fp, 191
 	ld.b	$a4, $fp, 210
-	xvand.v	$xr1, $xr28, $xr2
+	xvand.v	$xr1, $xr29, $xr3
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -358,16 +358,19 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr31, $xr0
-	xvseq.w	$xr4, $xr21, $xr31
-	ori	$a2, $zero, 2720
+	vext2xv.wu.bu	$xr0, $xr0
+	ori	$a2, $zero, 2704
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2672
+	add.d	$a2, $sp, $a2
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 154
 	ld.b	$a2, $fp, 173
 	ld.b	$a3, $fp, 192
 	ld.b	$a4, $fp, 211
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -380,18 +383,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2688
+	ori	$a2, $zero, 2640
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2656
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2608
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 155
 	ld.b	$a2, $fp, 174
 	ld.b	$a3, $fp, 193
 	ld.b	$a4, $fp, 212
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -404,18 +407,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2624
+	ori	$a2, $zero, 2576
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2592
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2544
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 156
 	ld.b	$a2, $fp, 175
 	ld.b	$a3, $fp, 194
 	ld.b	$a4, $fp, 213
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -428,18 +431,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2560
+	ori	$a2, $zero, 2512
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2528
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2480
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 157
 	ld.b	$a2, $fp, 176
 	ld.b	$a3, $fp, 195
 	ld.b	$a4, $fp, 214
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -452,18 +455,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2496
+	ori	$a2, $zero, 2448
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2464
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2416
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 158
 	ld.b	$a2, $fp, 177
 	ld.b	$a3, $fp, 196
 	ld.b	$a4, $fp, 215
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -476,18 +479,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2432
+	ori	$a2, $zero, 2384
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2400
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2352
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 159
 	ld.b	$a2, $fp, 178
 	ld.b	$a3, $fp, 197
 	ld.b	$a4, $fp, 216
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -500,18 +503,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2368
+	ori	$a2, $zero, 2320
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2336
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2288
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 160
 	ld.b	$a2, $fp, 179
 	ld.b	$a3, $fp, 198
 	ld.b	$a4, $fp, 217
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -524,18 +527,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2304
+	ori	$a2, $zero, 2256
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2272
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2224
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 161
 	ld.b	$a2, $fp, 180
 	ld.b	$a3, $fp, 199
 	ld.b	$a4, $fp, 218
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -548,18 +551,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2240
+	ori	$a2, $zero, 2192
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2208
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2160
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 162
 	ld.b	$a2, $fp, 181
 	ld.b	$a3, $fp, 200
 	ld.b	$a4, $fp, 219
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -572,18 +575,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2176
+	ori	$a2, $zero, 2128
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2144
+	xvseq.w	$xr2, $xr21, $xr0
+	ori	$a2, $zero, 2096
 	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvst	$xr2, $a2, 0                    # 32-byte Folded Spill
 	vld	$vr0, $fp, 163
 	ld.b	$a2, $fp, 182
 	ld.b	$a3, $fp, 201
 	ld.b	$a4, $fp, 220
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -596,18 +599,16 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2112
+	ori	$a2, $zero, 2064
 	add.d	$a2, $sp, $a2
 	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	ori	$a2, $zero, 2080
-	add.d	$a2, $sp, $a2
-	xvst	$xr4, $a2, 0                    # 32-byte Folded Spill
+	xvseq.w	$xr2, $xr21, $xr0
+	xvst	$xr2, $sp, 2032                 # 32-byte Folded Spill
 	vld	$vr0, $fp, 164
 	ld.b	$a2, $fp, 183
 	ld.b	$a3, $fp, 202
 	ld.b	$a4, $fp, 221
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -620,16 +621,14 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	ori	$a2, $zero, 2048
-	add.d	$a2, $sp, $a2
-	xvst	$xr0, $a2, 0                    # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	xvst	$xr4, $sp, 2016                 # 32-byte Folded Spill
+	xvst	$xr0, $sp, 2000                 # 32-byte Folded Spill
+	xvseq.w	$xr2, $xr21, $xr0
+	xvst	$xr2, $sp, 1968                 # 32-byte Folded Spill
 	vld	$vr0, $fp, 165
 	ld.b	$a2, $fp, 184
 	ld.b	$a3, $fp, 203
 	ld.b	$a4, $fp, 222
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -642,14 +641,14 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	xvst	$xr0, $sp, 1984                 # 32-byte Folded Spill
-	xvseq.w	$xr4, $xr21, $xr0
-	xvst	$xr4, $sp, 1952                 # 32-byte Folded Spill
+	xvst	$xr0, $sp, 1936                 # 32-byte Folded Spill
+	xvseq.w	$xr2, $xr21, $xr0
+	xvst	$xr2, $sp, 1904                 # 32-byte Folded Spill
 	vld	$vr0, $fp, 166
 	ld.b	$a2, $fp, 185
 	ld.b	$a3, $fp, 204
 	ld.b	$a4, $fp, 223
-	xvsub.w	$xr1, $xr1, $xr4
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -661,15 +660,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1920                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1872                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 186
 	ld.b	$a3, $fp, 205
 	vld	$vr0, $fp, 167
 	ld.b	$a4, $fp, 224
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1888                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1840                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -681,15 +680,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1856                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1808                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 187
 	ld.b	$a3, $fp, 206
 	vld	$vr0, $fp, 168
 	ld.b	$a4, $fp, 225
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1824                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1776                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -701,15 +700,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1792                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1744                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 188
 	ld.b	$a3, $fp, 207
 	vld	$vr0, $fp, 169
 	ld.b	$a4, $fp, 226
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1760                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1712                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -721,15 +720,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1728                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1680                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 189
 	ld.b	$a3, $fp, 208
 	vld	$vr0, $fp, 170
 	ld.b	$a4, $fp, 227
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1696                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1648                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -741,15 +740,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1664                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1616                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 19
 	ld.b	$a3, $fp, 38
 	vld	$vr0, $fp, 0
 	ld.b	$a4, $fp, 57
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1632                 # 32-byte Folded Spill
-	xvsub.w	$xr5, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1584                 # 32-byte Folded Spill
+	xvsub.w	$xr4, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -766,7 +765,7 @@ endgame:                                # @endgame
 	ld.b	$a3, $fp, 39
 	ld.b	$a4, $fp, 58
 	vext2xv.wu.bu	$xr0, $xr0
-	xvst	$xr0, $sp, 1536                 # 32-byte Folded Spill
+	xvst	$xr0, $sp, 1488                 # 32-byte Folded Spill
 	vinsgr2vr.b	$vr1, $a2, 1
 	vinsgr2vr.b	$vr1, $a3, 2
 	vinsgr2vr.b	$vr1, $a4, 3
@@ -778,18 +777,18 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr1, $a3, 5
 	vinsgr2vr.b	$vr1, $a4, 6
 	vinsgr2vr.b	$vr1, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr1
-	xvst	$xr4, $sp, 1600                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr1
+	xvst	$xr2, $sp, 1552                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 21
 	ld.b	$a3, $fp, 40
 	ld.b	$a4, $fp, 59
 	xvseq.w	$xr1, $xr21, $xr0
-	xvst	$xr1, $sp, 1504                 # 32-byte Folded Spill
+	xvst	$xr1, $sp, 1456                 # 32-byte Folded Spill
 	vld	$vr0, $fp, 2
-	xvand.v	$xr1, $xr1, $xr2
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1568                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvand.v	$xr1, $xr1, $xr3
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1520                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -801,15 +800,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1472                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1424                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 22
 	ld.b	$a3, $fp, 41
 	vld	$vr0, $fp, 3
 	ld.b	$a4, $fp, 60
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1440                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1392                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -821,15 +820,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1408                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1360                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 23
 	ld.b	$a3, $fp, 42
 	vld	$vr0, $fp, 4
 	ld.b	$a4, $fp, 61
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1376                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1328                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -841,15 +840,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1344                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1296                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 24
 	ld.b	$a3, $fp, 43
 	vld	$vr0, $fp, 5
 	ld.b	$a4, $fp, 62
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1312                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1264                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -861,15 +860,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1280                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1232                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 25
 	ld.b	$a3, $fp, 44
 	vld	$vr0, $fp, 6
 	ld.b	$a4, $fp, 63
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1248                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1200                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -881,15 +880,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1216                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1168                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 26
 	ld.b	$a3, $fp, 45
 	vld	$vr0, $fp, 7
 	ld.b	$a4, $fp, 64
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1184                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1136                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -901,15 +900,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1152                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1104                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 27
 	ld.b	$a3, $fp, 46
 	vld	$vr0, $fp, 8
 	ld.b	$a4, $fp, 65
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1120                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1072                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -921,15 +920,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1088                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 1040                 # 32-byte Folded Spill
 	ld.b	$a2, $fp, 28
 	ld.b	$a3, $fp, 47
 	vld	$vr0, $fp, 9
 	ld.b	$a4, $fp, 66
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 1056                 # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 1008                 # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -941,15 +940,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 1024                 # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 976                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 29
 	ld.b	$a3, $fp, 48
 	vld	$vr0, $fp, 10
 	ld.b	$a4, $fp, 67
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 992                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 944                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -961,15 +960,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 960                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 912                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 30
 	ld.b	$a3, $fp, 49
 	vld	$vr0, $fp, 11
 	ld.b	$a4, $fp, 68
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 928                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 880                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -981,15 +980,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 896                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 848                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 31
 	ld.b	$a3, $fp, 50
 	vld	$vr0, $fp, 12
 	ld.b	$a4, $fp, 69
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 864                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 816                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -1001,15 +1000,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 832                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 784                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 32
 	ld.b	$a3, $fp, 51
 	vld	$vr0, $fp, 13
 	ld.b	$a4, $fp, 70
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 800                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 752                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -1021,15 +1020,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 768                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 720                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 33
 	ld.b	$a3, $fp, 52
 	vld	$vr0, $fp, 14
 	ld.b	$a4, $fp, 71
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 736                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 688                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -1041,15 +1040,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 704                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 656                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 34
 	ld.b	$a3, $fp, 53
 	vld	$vr0, $fp, 15
 	ld.b	$a4, $fp, 72
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 672                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 624                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -1061,15 +1060,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 640                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 592                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 35
 	ld.b	$a3, $fp, 54
 	vld	$vr0, $fp, 16
 	ld.b	$a4, $fp, 73
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 608                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 560                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -1081,15 +1080,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 576                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 528                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 36
 	ld.b	$a3, $fp, 55
 	vld	$vr0, $fp, 17
 	ld.b	$a4, $fp, 74
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 544                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 496                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -1101,15 +1100,15 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a3, 5
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
-	vext2xv.wu.bu	$xr4, $xr0
-	xvst	$xr4, $sp, 512                  # 32-byte Folded Spill
+	vext2xv.wu.bu	$xr2, $xr0
+	xvst	$xr2, $sp, 464                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 37
 	ld.b	$a3, $fp, 56
 	vld	$vr0, $fp, 18
 	ld.b	$a4, $fp, 75
-	xvseq.w	$xr4, $xr21, $xr4
-	xvst	$xr4, $sp, 480                  # 32-byte Folded Spill
-	xvsub.w	$xr1, $xr1, $xr4
+	xvseq.w	$xr2, $xr21, $xr2
+	xvst	$xr2, $sp, 432                  # 32-byte Folded Spill
+	xvsub.w	$xr1, $xr1, $xr2
 	vinsgr2vr.b	$vr0, $a2, 1
 	vinsgr2vr.b	$vr0, $a3, 2
 	vinsgr2vr.b	$vr0, $a4, 3
@@ -1122,11 +1121,11 @@ endgame:                                # @endgame
 	vinsgr2vr.b	$vr0, $a4, 6
 	vinsgr2vr.b	$vr0, $a5, 7
 	vext2xv.wu.bu	$xr0, $xr0
-	xvst	$xr0, $sp, 448                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 400                  # 32-byte Folded Spill
 	xvseq.w	$xr0, $xr21, $xr0
-	xvst	$xr0, $sp, 416                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 368                  # 32-byte Folded Spill
 	xvsub.w	$xr0, $xr1, $xr0
-	xvadd.w	$xr0, $xr5, $xr0
+	xvadd.w	$xr0, $xr4, $xr0
 	xvhaddw.d.w	$xr0, $xr0, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
 	xvpermi.d	$xr1, $xr0, 2
@@ -1138,677 +1137,638 @@ endgame:                                # @endgame
 	vinsgr2vr.w	$vr0, $a2, 0
 	ld.b	$a2, $fp, 304
 	ld.b	$a3, $fp, 323
-	vinsgr2vr.w	$vr6, $a0, 0
-	vinsgr2vr.w	$vr6, $a0, 1
+	vinsgr2vr.w	$vr2, $a0, 0
+	vinsgr2vr.w	$vr2, $a0, 1
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 352                  # 32-byte Folded Spill
+	xvst	$xr1, $sp, 336                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 305
 	ld.b	$a3, $fp, 324
-	vseq.w	$vr16, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr16
+	vseq.w	$vr1, $vr2, $vr1
+	vst	$vr1, $sp, 192                  # 16-byte Folded Spill
+	vsub.w	$vr0, $vr0, $vr1
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 384                  # 32-byte Folded Spill
+	xvst	$xr1, $sp, 304                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 306
 	ld.b	$a3, $fp, 325
-	vseq.w	$vr1, $vr6, $vr1
-	vst	$vr1, $sp, 272                  # 16-byte Folded Spill
+	vseq.w	$vr1, $vr2, $vr1
+	vst	$vr1, $sp, 288                  # 16-byte Folded Spill
 	vsub.w	$vr0, $vr0, $vr1
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 320                  # 32-byte Folded Spill
+	xvst	$xr1, $sp, 256                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 307
 	ld.b	$a3, $fp, 326
-	vseq.w	$vr1, $vr6, $vr1
-	vst	$vr1, $sp, 224                  # 16-byte Folded Spill
+	vseq.w	$vr1, $vr2, $vr1
+	vst	$vr1, $sp, 240                  # 16-byte Folded Spill
 	vsub.w	$vr0, $vr0, $vr1
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 288                  # 32-byte Folded Spill
+	xvst	$xr1, $sp, 208                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 308
 	ld.b	$a3, $fp, 327
-	vseq.w	$vr1, $vr6, $vr1
+	vseq.w	$vr1, $vr2, $vr1
 	vst	$vr1, $sp, 176                  # 16-byte Folded Spill
 	vsub.w	$vr0, $vr0, $vr1
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 240                  # 32-byte Folded Spill
+	xvst	$xr1, $sp, 144                  # 32-byte Folded Spill
 	ld.b	$a2, $fp, 309
 	ld.b	$a3, $fp, 328
-	vseq.w	$vr26, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr26
+	vseq.w	$vr1, $vr2, $vr1
+	vst	$vr1, $sp, 128                  # 16-byte Folded Spill
+	vsub.w	$vr0, $vr0, $vr1
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 192                  # 32-byte Folded Spill
+	xvst	$xr1, $sp, 96                   # 32-byte Folded Spill
 	ld.b	$a2, $fp, 310
 	ld.b	$a3, $fp, 329
-	vseq.w	$vr24, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr24
-	vinsgr2vr.b	$vr1, $a2, 0
-	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 144                  # 32-byte Folded Spill
-	ld.b	$a2, $fp, 311
-	ld.b	$a3, $fp, 330
-	vseq.w	$vr22, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr22
-	vinsgr2vr.b	$vr1, $a2, 0
-	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 112                  # 32-byte Folded Spill
-	ld.b	$a2, $fp, 312
-	ld.b	$a3, $fp, 331
-	vseq.w	$vr19, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr19
-	vinsgr2vr.b	$vr1, $a2, 0
-	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr1, $xr1
-	xvst	$xr1, $sp, 80                   # 32-byte Folded Spill
-	ld.b	$a2, $fp, 313
-	ld.b	$a3, $fp, 332
-	vseq.w	$vr18, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr18
+	vseq.w	$vr1, $vr2, $vr1
+	vst	$vr1, $sp, 80                   # 16-byte Folded Spill
+	vsub.w	$vr0, $vr0, $vr1
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
 	xvst	$xr1, $sp, 48                   # 32-byte Folded Spill
-	ld.b	$a2, $fp, 314
-	ld.b	$a3, $fp, 333
-	vseq.w	$vr15, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr15
+	ld.b	$a2, $fp, 311
+	ld.b	$a3, $fp, 330
+	vseq.w	$vr27, $vr2, $vr1
+	vsub.w	$vr0, $vr0, $vr27
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr1, $xr1
 	xvst	$xr1, $sp, 16                   # 32-byte Folded Spill
+	ld.b	$a2, $fp, 312
+	ld.b	$a3, $fp, 331
+	vseq.w	$vr25, $vr2, $vr1
+	vsub.w	$vr0, $vr0, $vr25
+	vinsgr2vr.b	$vr1, $a2, 0
+	vinsgr2vr.b	$vr1, $a3, 1
+	vext2xv.wu.bu	$xr28, $xr1
+	ld.b	$a2, $fp, 313
+	ld.b	$a3, $fp, 332
+	vseq.w	$vr23, $vr2, $vr28
+	vsub.w	$vr0, $vr0, $vr23
+	vinsgr2vr.b	$vr1, $a2, 0
+	vinsgr2vr.b	$vr1, $a3, 1
+	vext2xv.wu.bu	$xr26, $xr1
+	ld.b	$a2, $fp, 314
+	ld.b	$a3, $fp, 333
+	vseq.w	$vr20, $vr2, $vr26
+	vsub.w	$vr0, $vr0, $vr20
+	vinsgr2vr.b	$vr1, $a2, 0
+	vinsgr2vr.b	$vr1, $a3, 1
+	vext2xv.wu.bu	$xr24, $xr1
 	ld.b	$a2, $fp, 315
 	ld.b	$a3, $fp, 334
-	vseq.w	$vr13, $vr6, $vr1
-	vsub.w	$vr0, $vr0, $vr13
+	vseq.w	$vr18, $vr2, $vr24
+	vsub.w	$vr0, $vr0, $vr18
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr29, $xr1
+	vext2xv.wu.bu	$xr22, $xr1
 	ld.b	$a2, $fp, 316
 	ld.b	$a3, $fp, 335
-	vseq.w	$vr11, $vr6, $vr29
-	vsub.w	$vr0, $vr0, $vr11
+	vseq.w	$vr16, $vr2, $vr22
+	vsub.w	$vr0, $vr0, $vr16
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr27, $xr1
+	vext2xv.wu.bu	$xr19, $xr1
 	ld.b	$a2, $fp, 317
 	ld.b	$a3, $fp, 336
-	vseq.w	$vr10, $vr6, $vr27
-	vsub.w	$vr0, $vr0, $vr10
-	vinsgr2vr.b	$vr1, $a2, 0
-	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr25, $xr1
-	ld.b	$a2, $fp, 318
-	ld.b	$a3, $fp, 337
-	vseq.w	$vr9, $vr6, $vr25
-	vsub.w	$vr0, $vr0, $vr9
-	vinsgr2vr.b	$vr1, $a2, 0
-	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr23, $xr1
-	ld.b	$a2, $fp, 319
-	ld.b	$a3, $fp, 338
-	vseq.w	$vr8, $vr6, $vr23
-	vsub.w	$vr0, $vr0, $vr8
-	vinsgr2vr.b	$vr1, $a2, 0
-	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr20, $xr1
-	ld.b	$a2, $fp, 320
-	ld.b	$a3, $fp, 339
-	vseq.w	$vr7, $vr6, $vr20
-	vsub.w	$vr0, $vr0, $vr7
+	vseq.w	$vr14, $vr2, $vr19
+	vsub.w	$vr0, $vr0, $vr14
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
 	vext2xv.wu.bu	$xr17, $xr1
+	ld.b	$a2, $fp, 318
+	ld.b	$a3, $fp, 337
+	vseq.w	$vr12, $vr2, $vr17
+	vsub.w	$vr0, $vr0, $vr12
+	vinsgr2vr.b	$vr1, $a2, 0
+	vinsgr2vr.b	$vr1, $a3, 1
+	vext2xv.wu.bu	$xr15, $xr1
+	ld.b	$a2, $fp, 319
+	ld.b	$a3, $fp, 338
+	vseq.w	$vr10, $vr2, $vr15
+	vsub.w	$vr0, $vr0, $vr10
+	vinsgr2vr.b	$vr1, $a2, 0
+	vinsgr2vr.b	$vr1, $a3, 1
+	vext2xv.wu.bu	$xr13, $xr1
+	ld.b	$a2, $fp, 320
+	ld.b	$a3, $fp, 339
+	vseq.w	$vr8, $vr2, $vr13
+	vsub.w	$vr0, $vr0, $vr8
+	vinsgr2vr.b	$vr1, $a2, 0
+	vinsgr2vr.b	$vr1, $a3, 1
+	vext2xv.wu.bu	$xr11, $xr1
 	ld.b	$a2, $fp, 321
 	ld.b	$a3, $fp, 340
-	vseq.w	$vr5, $vr6, $vr17
+	vseq.w	$vr5, $vr2, $vr11
 	vsub.w	$vr0, $vr0, $vr5
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr14, $xr1
+	vext2xv.wu.bu	$xr9, $xr1
 	ld.b	$a2, $fp, 322
 	ld.b	$a3, $fp, 341
-	vseq.w	$vr4, $vr6, $vr14
+	vseq.w	$vr4, $vr2, $vr9
 	vsub.w	$vr0, $vr0, $vr4
 	vinsgr2vr.b	$vr1, $a2, 0
 	vinsgr2vr.b	$vr1, $a3, 1
-	vext2xv.wu.bu	$xr12, $xr1
-	vseq.w	$vr6, $vr6, $vr12
+	vext2xv.wu.bu	$xr7, $xr1
+	vseq.w	$vr6, $vr2, $vr7
 	vsub.w	$vr0, $vr0, $vr6
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a2, $vr0, 0
 	xvreplgr2vr.w	$xr1, $a1
-	xvseq.w	$xr3, $xr1, $xr3
+	xvseq.w	$xr2, $xr1, $xr30
 	xvldi	$xr0, -2305
-	xvxor.v	$xr30, $xr28, $xr0
-	xvand.v	$xr3, $xr30, $xr3
-	xvseq.w	$xr30, $xr1, $xr31
-	ori	$a3, $zero, 2720
+	xvxor.v	$xr31, $xr29, $xr0
+	xvand.v	$xr2, $xr31, $xr2
+	ori	$a3, $zero, 2704
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr31, $xr1, $xr29
+	ori	$a3, $zero, 2672
+	add.d	$a3, $sp, $a3
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr30, $xr29, $xr0
+	xvand.v	$xr30, $xr30, $xr31
+	xvand.v	$xr2, $xr2, $xr3
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2640
+	add.d	$a3, $sp, $a3
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2608
+	add.d	$a3, $sp, $a3
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr3, $xr3, $xr2
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2688
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2576
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2656
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2544
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2624
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2512
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2592
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2480
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2560
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2448
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2528
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2416
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2496
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2384
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2464
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2352
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2432
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2320
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2400
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2288
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2368
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2256
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2336
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2224
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2304
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2192
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2272
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2160
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2240
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2128
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2208
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	ori	$a3, $zero, 2096
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2176
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	ori	$a3, $zero, 2064
 	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2144
-	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvld	$xr29, $a3, 0                   # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 2032                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2112
-	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	ori	$a3, $zero, 2080
-	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 2000                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1968                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	ori	$a3, $zero, 2048
-	add.d	$a3, $sp, $a3
-	xvld	$xr28, $a3, 0                   # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 2016                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 1936                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1904                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	xvld	$xr28, $sp, 1984                # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 1952                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 1872                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1840                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	xvld	$xr28, $sp, 1920                # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 1888                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 1808                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1776                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	xvld	$xr28, $sp, 1856                # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 1824                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 1744                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1712                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	xvld	$xr28, $sp, 1792                # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 1760                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 1680                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1648                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	xvld	$xr28, $sp, 1728                # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 1696                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 1616                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1584                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	xvld	$xr28, $sp, 1664                # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 1632                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr2, $xr2, $xr30
+	xvld	$xr29, $sp, 1488                # 32-byte Folded Reload
+	xvseq.w	$xr30, $xr1, $xr29
+	xvld	$xr29, $sp, 1456                # 32-byte Folded Reload
+	xvxor.v	$xr31, $xr29, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr3, $xr3, $xr30
-	xvld	$xr28, $sp, 1536                # 32-byte Folded Reload
-	xvseq.w	$xr30, $xr1, $xr28
-	xvld	$xr28, $sp, 1504                # 32-byte Folded Reload
-	xvxor.v	$xr31, $xr28, $xr0
-	xvand.v	$xr30, $xr31, $xr30
-	xvld	$xr28, $sp, 1600                # 32-byte Folded Reload
-	xvseq.w	$xr31, $xr1, $xr28
-	xvld	$xr28, $sp, 1568                # 32-byte Folded Reload
-	xvxor.v	$xr28, $xr28, $xr0
-	xvand.v	$xr28, $xr28, $xr31
-	xvand.v	$xr30, $xr30, $xr2
-	xvand.v	$xr28, $xr28, $xr2
-	xvadd.w	$xr28, $xr30, $xr28
-	xvld	$xr30, $sp, 1472                # 32-byte Folded Reload
+	xvld	$xr29, $sp, 1552                # 32-byte Folded Reload
+	xvseq.w	$xr31, $xr1, $xr29
+	xvld	$xr29, $sp, 1520                # 32-byte Folded Reload
+	xvxor.v	$xr29, $xr29, $xr0
+	xvand.v	$xr29, $xr29, $xr31
+	xvand.v	$xr30, $xr30, $xr3
+	xvand.v	$xr29, $xr29, $xr3
+	xvadd.w	$xr29, $xr30, $xr29
+	xvld	$xr30, $sp, 1424                # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 1440                # 32-byte Folded Reload
+	xvld	$xr31, $sp, 1392                # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 1408                # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 1360                # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 1376                # 32-byte Folded Reload
+	xvld	$xr31, $sp, 1328                # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 1344                # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 1296                # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 1312                # 32-byte Folded Reload
+	xvld	$xr31, $sp, 1264                # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 1280                # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 1232                # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 1248                # 32-byte Folded Reload
+	xvld	$xr31, $sp, 1200                # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 1216                # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 1168                # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 1184                # 32-byte Folded Reload
+	xvld	$xr31, $sp, 1136                # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 1152                # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 1104                # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 1120                # 32-byte Folded Reload
+	xvld	$xr31, $sp, 1072                # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 1088                # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 1040                # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 1056                # 32-byte Folded Reload
+	xvld	$xr31, $sp, 1008                # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 1024                # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 976                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 992                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 944                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 960                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 912                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 928                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 880                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 896                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 848                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 864                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 816                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 832                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 784                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 800                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 752                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 768                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 720                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 736                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 688                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 704                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 656                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 672                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 624                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 640                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 592                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 608                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 560                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 576                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 528                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 544                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 496                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 512                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 464                 # 32-byte Folded Reload
 	xvseq.w	$xr30, $xr1, $xr30
-	xvld	$xr31, $sp, 480                 # 32-byte Folded Reload
+	xvld	$xr31, $sp, 432                 # 32-byte Folded Reload
 	xvxor.v	$xr31, $xr31, $xr0
 	xvand.v	$xr30, $xr31, $xr30
-	xvand.v	$xr30, $xr30, $xr2
-	xvadd.w	$xr28, $xr28, $xr30
-	xvld	$xr30, $sp, 448                 # 32-byte Folded Reload
+	xvand.v	$xr30, $xr30, $xr3
+	xvadd.w	$xr29, $xr29, $xr30
+	xvld	$xr30, $sp, 400                 # 32-byte Folded Reload
 	xvseq.w	$xr1, $xr1, $xr30
-	xvld	$xr30, $sp, 416                 # 32-byte Folded Reload
+	xvld	$xr30, $sp, 368                 # 32-byte Folded Reload
 	xvxor.v	$xr0, $xr30, $xr0
 	xvand.v	$xr0, $xr0, $xr1
-	xvand.v	$xr0, $xr0, $xr2
-	xvadd.w	$xr0, $xr28, $xr0
-	xvadd.w	$xr0, $xr3, $xr0
+	xvand.v	$xr0, $xr0, $xr3
+	xvadd.w	$xr0, $xr29, $xr0
+	xvadd.w	$xr0, $xr2, $xr0
 	xvhaddw.d.w	$xr0, $xr0, $xr0
 	xvhaddw.q.d	$xr0, $xr0, $xr0
 	xvpermi.d	$xr1, $xr0, 2
 	xvadd.d	$xr0, $xr1, $xr0
 	xvpickve2gr.d	$a3, $xr0, 0
-	vshuf4i.w	$vr1, $vr16, 16
+	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
+	vshuf4i.w	$vr1, $vr0, 16
 	vinsgr2vr.w	$vr0, $a1, 0
 	vinsgr2vr.w	$vr0, $a1, 1
-	xvld	$xr2, $sp, 352                  # 32-byte Folded Reload
+	xvld	$xr2, $sp, 336                  # 32-byte Folded Reload
 	vseq.w	$vr2, $vr0, $vr2
 	vshuf4i.w	$vr2, $vr2, 16
-	vandn.v	$vr1, $vr1, $vr2
-	vrepli.d	$vr16, 1
-	vand.v	$vr1, $vr1, $vr16
-	vpickve2gr.d	$a4, $vr1, 0
-	vpickve2gr.d	$a5, $vr1, 1
+	vandn.v	$vr2, $vr1, $vr2
 	vinsgr2vr.w	$vr21, $a3, 0
-	vinsgr2vr.w	$vr1, $a4, 0
-	vinsgr2vr.w	$vr1, $a5, 1
-	vadd.w	$vr1, $vr21, $vr1
-	vld	$vr2, $sp, 272                  # 16-byte Folded Reload
-	vshuf4i.w	$vr2, $vr2, 16
-	xvld	$xr3, $sp, 384                  # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
+	vrepli.d	$vr1, 1
+	vand.v	$vr2, $vr2, $vr1
+	xvpickev.w	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	vadd.w	$vr2, $vr21, $vr2
+	vld	$vr3, $sp, 288                  # 16-byte Folded Reload
 	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 224                  # 16-byte Folded Reload
-	vshuf4i.w	$vr2, $vr2, 16
-	xvld	$xr3, $sp, 320                  # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
+	xvld	$xr21, $sp, 304                 # 32-byte Folded Reload
+	vseq.w	$vr21, $vr0, $vr21
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vld	$vr3, $sp, 240                  # 16-byte Folded Reload
 	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 176                  # 16-byte Folded Reload
-	vshuf4i.w	$vr2, $vr2, 16
-	xvld	$xr3, $sp, 288                  # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
+	xvld	$xr21, $sp, 256                 # 32-byte Folded Reload
+	vseq.w	$vr21, $vr0, $vr21
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vld	$vr3, $sp, 176                  # 16-byte Folded Reload
 	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr26, 16
-	xvld	$xr3, $sp, 240                  # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
+	xvld	$xr21, $sp, 208                 # 32-byte Folded Reload
+	vseq.w	$vr21, $vr0, $vr21
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vld	$vr3, $sp, 128                  # 16-byte Folded Reload
 	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr24, 16
-	xvld	$xr3, $sp, 192                  # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
+	xvld	$xr21, $sp, 144                 # 32-byte Folded Reload
+	vseq.w	$vr21, $vr0, $vr21
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vld	$vr3, $sp, 80                   # 16-byte Folded Reload
 	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr22, 16
-	xvld	$xr3, $sp, 144                  # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr19, 16
-	xvld	$xr3, $sp, 112                  # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr18, 16
-	xvld	$xr3, $sp, 80                   # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr15, 16
-	xvld	$xr3, $sp, 48                   # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr13, 16
-	xvld	$xr3, $sp, 16                   # 32-byte Folded Reload
-	vseq.w	$vr3, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr11, 16
-	vseq.w	$vr3, $vr0, $vr29
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr10, 16
-	vseq.w	$vr3, $vr0, $vr27
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr9, 16
-	vseq.w	$vr3, $vr0, $vr25
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr8, 16
-	vseq.w	$vr3, $vr0, $vr23
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr7, 16
-	vseq.w	$vr3, $vr0, $vr20
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr5, 16
-	vseq.w	$vr3, $vr0, $vr17
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr4, 16
-	vseq.w	$vr3, $vr0, $vr14
-	vshuf4i.w	$vr3, $vr3, 16
-	vandn.v	$vr2, $vr2, $vr3
-	vand.v	$vr2, $vr2, $vr16
-	vpickve2gr.d	$a3, $vr2, 0
-	vpickve2gr.d	$a4, $vr2, 1
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a4, 1
-	vadd.w	$vr1, $vr1, $vr2
-	vseq.w	$vr0, $vr0, $vr12
-	vshuf4i.w	$vr2, $vr6, 16
+	xvld	$xr21, $sp, 96                  # 32-byte Folded Reload
+	vseq.w	$vr21, $vr0, $vr21
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr27, 16
+	xvld	$xr21, $sp, 48                  # 32-byte Folded Reload
+	vseq.w	$vr21, $vr0, $vr21
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr25, 16
+	xvld	$xr21, $sp, 16                  # 32-byte Folded Reload
+	vseq.w	$vr21, $vr0, $vr21
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr23, 16
+	vseq.w	$vr21, $vr0, $vr28
+	vshuf4i.w	$vr21, $vr21, 16
+	vandn.v	$vr3, $vr3, $vr21
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr20, 16
+	vseq.w	$vr20, $vr0, $vr26
+	vshuf4i.w	$vr20, $vr20, 16
+	vandn.v	$vr3, $vr3, $vr20
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr18, 16
+	vseq.w	$vr18, $vr0, $vr24
+	vshuf4i.w	$vr18, $vr18, 16
+	vandn.v	$vr3, $vr3, $vr18
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr16, 16
+	vseq.w	$vr16, $vr0, $vr22
+	vshuf4i.w	$vr16, $vr16, 16
+	vandn.v	$vr3, $vr3, $vr16
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr14, 16
+	vseq.w	$vr14, $vr0, $vr19
+	vshuf4i.w	$vr14, $vr14, 16
+	vandn.v	$vr3, $vr3, $vr14
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr12, 16
+	vseq.w	$vr12, $vr0, $vr17
+	vshuf4i.w	$vr12, $vr12, 16
+	vandn.v	$vr3, $vr3, $vr12
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr10, 16
+	vseq.w	$vr10, $vr0, $vr15
+	vshuf4i.w	$vr10, $vr10, 16
+	vandn.v	$vr3, $vr3, $vr10
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr8, 16
+	vseq.w	$vr8, $vr0, $vr13
+	vshuf4i.w	$vr8, $vr8, 16
+	vandn.v	$vr3, $vr3, $vr8
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr5, 16
+	vseq.w	$vr5, $vr0, $vr11
+	vshuf4i.w	$vr5, $vr5, 16
+	vandn.v	$vr3, $vr3, $vr5
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vshuf4i.w	$vr3, $vr4, 16
+	vseq.w	$vr4, $vr0, $vr9
+	vshuf4i.w	$vr4, $vr4, 16
+	vandn.v	$vr3, $vr3, $vr4
+	vand.v	$vr3, $vr3, $vr1
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vadd.w	$vr2, $vr2, $vr3
+	vseq.w	$vr0, $vr0, $vr7
+	vshuf4i.w	$vr3, $vr6, 16
 	vshuf4i.w	$vr0, $vr0, 16
-	vandn.v	$vr0, $vr2, $vr0
-	vand.v	$vr0, $vr0, $vr16
-	vpickve2gr.d	$a3, $vr0, 0
-	vpickve2gr.d	$a4, $vr0, 1
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr0, $a4, 1
+	vandn.v	$vr0, $vr3, $vr0
+	vand.v	$vr0, $vr0, $vr1
+	xvpickev.w	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	ld.bu	$a3, $fp, 342
-	vadd.w	$vr0, $vr1, $vr0
+	vadd.w	$vr0, $vr2, $vr0
 	vhaddw.d.w	$vr0, $vr0, $vr0
 	vpickve2gr.d	$a4, $vr0, 0
 	bstrpick.d	$a3, $a3, 31, 0
@@ -2001,10 +1961,10 @@ endgame:                                # @endgame
 	and	$a0, $a5, $a1
 	add.w	$s0, $a3, $a0
 	ori	$a0, $zero, 19
-	ori	$a1, $zero, 2760
+	ori	$a1, $zero, 2744
 	add.d	$a1, $sp, $a1
 	st.w	$a0, $a1, 0
-	ori	$a1, $zero, 2756
+	ori	$a1, $zero, 2740
 	add.d	$a1, $sp, $a1
 	st.w	$a0, $a1, 0
 	pcaddu18i	$ra, %call36(showboard)
@@ -2019,7 +1979,7 @@ endgame:                                # @endgame
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.d	$sp, $sp, 880
+	addi.d	$sp, $sp, 864
 	fld.d	$fs7, $sp, 1896                 # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 1904                 # 8-byte Folded Reload
 	fld.d	$fs5, $sp, 1912                 # 8-byte Folded Reload

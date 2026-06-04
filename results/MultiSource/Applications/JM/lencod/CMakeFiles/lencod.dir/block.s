@@ -7331,17 +7331,17 @@ dct_chroma:                             # @dct_chroma
 	ldptr.d	$a2, $a7, 6472
 	add.d	$t6, $a1, $a6
 	ld.d	$t7, $sp, 224                   # 8-byte Folded Reload
-	ldx.d	$a2, $a2, $t7
-	ld.w	$t7, $t4, 184
+	ldx.d	$t7, $a2, $t7
+	ld.w	$a2, $t4, 184
 	slli.d	$t6, $t6, 48
 	srai.d	$t6, $t6, 45
-	ldx.d	$t6, $a2, $t6
+	ldx.d	$t6, $t7, $t6
 	bgeu	$a3, $t5, .LBB4_182
 .LBB4_179:                              #   in Loop: Header=BB4_177 Depth=1
 	move	$fp, $zero
 .LBB4_180:                              # %scalar.ph1270.preheader
                                         #   in Loop: Header=BB4_177 Depth=1
-	add.d	$a2, $t7, $fp
+	add.d	$a2, $a2, $fp
 	slli.d	$t7, $fp, 2
 	slli.d	$t8, $fp, 1
 	sub.d	$fp, $a3, $fp
@@ -7364,13 +7364,13 @@ dct_chroma:                             # @dct_chroma
 	.p2align	4, , 16
 .LBB4_182:                              # %vector.scevcheck1266
                                         #   in Loop: Header=BB4_177 Depth=1
-	slli.d	$a2, $t7, 48
-	srai.d	$a2, $a2, 47
-	add.d	$t8, $t7, $t0
+	slli.d	$t7, $a2, 48
+	srai.d	$t7, $t7, 47
+	add.d	$t8, $a2, $t0
 	slli.d	$t8, $t8, 48
 	srai.d	$t8, $t8, 47
 	move	$fp, $zero
-	blt	$t8, $a2, .LBB4_180
+	blt	$t8, $t7, .LBB4_180
 # %bb.183:                              # %vector.scevcheck1266
                                         #   in Loop: Header=BB4_177 Depth=1
 	srli.d	$t8, $t0, 16
@@ -7380,11 +7380,11 @@ dct_chroma:                             # @dct_chroma
 	slli.d	$t8, $a6, 5
 	sub.d	$t8, $t1, $t8
 	add.d	$t8, $t8, $t6
-	add.d	$a2, $t8, $a2
-	bltu	$a2, $t5, .LBB4_179
+	add.d	$t7, $t8, $t7
+	bltu	$t7, $t5, .LBB4_179
 # %bb.185:                              # %vector.body1275.preheader
                                         #   in Loop: Header=BB4_177 Depth=1
-	move	$a2, $t7
+	move	$t7, $a2
 	move	$t8, $a4
 	move	$fp, $a5
 	move	$s0, $t2
@@ -7394,30 +7394,16 @@ dct_chroma:                             # @dct_chroma
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr0, $t8, 0
 	vld	$vr1, $fp, 0
-	xvpickve2gr.w	$s1, $xr0, 0
-	vinsgr2vr.h	$vr2, $s1, 0
-	xvpickve2gr.w	$s1, $xr0, 1
-	vinsgr2vr.h	$vr2, $s1, 1
-	xvpickve2gr.w	$s1, $xr0, 2
-	vinsgr2vr.h	$vr2, $s1, 2
-	xvpickve2gr.w	$s1, $xr0, 3
-	vinsgr2vr.h	$vr2, $s1, 3
-	xvpickve2gr.w	$s1, $xr0, 4
-	vinsgr2vr.h	$vr2, $s1, 4
-	xvpickve2gr.w	$s1, $xr0, 5
-	vinsgr2vr.h	$vr2, $s1, 5
-	xvpickve2gr.w	$s1, $xr0, 6
-	vinsgr2vr.h	$vr2, $s1, 6
-	xvpickve2gr.w	$s1, $xr0, 7
-	vinsgr2vr.h	$vr2, $s1, 7
-	vadd.h	$vr0, $vr1, $vr2
-	slli.d	$s1, $a2, 48
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vadd.h	$vr0, $vr1, $vr0
+	slli.d	$s1, $t7, 48
 	srai.d	$s1, $s1, 47
 	vstx	$vr0, $t6, $s1
 	addi.d	$s0, $s0, -8
 	addi.d	$fp, $fp, 16
 	addi.d	$t8, $t8, 32
-	addi.d	$a2, $a2, 8
+	addi.d	$t7, $t7, 8
 	bnez	$s0, .LBB4_186
 # %bb.187:                              # %middle.block1280
                                         #   in Loop: Header=BB4_177 Depth=1
@@ -8348,19 +8334,19 @@ dct_chroma:                             # @dct_chroma
 # %bb.208:                              # %.lr.ph920
                                         #   in Loop: Header=BB4_207 Depth=1
 	ldptr.d	$a2, $a5, 6472
-	add.d	$t5, $a1, $a4
-	ld.d	$t6, $sp, 224                   # 8-byte Folded Reload
-	ldx.d	$t6, $a2, $t6
-	ld.w	$a2, $t4, 184
-	slli.d	$t5, $t5, 48
-	srai.d	$t5, $t5, 45
-	ldx.d	$t5, $t6, $t5
+	add.d	$t6, $a1, $a4
+	ld.d	$t5, $sp, 224                   # 8-byte Folded Reload
+	ldx.d	$a2, $a2, $t5
+	ld.w	$t5, $t4, 184
+	slli.d	$t6, $t6, 48
+	srai.d	$t6, $t6, 45
+	ldx.d	$a2, $a2, $t6
 	bgeu	$a0, $t2, .LBB4_212
 # %bb.209:                              #   in Loop: Header=BB4_207 Depth=1
 	move	$t7, $zero
 .LBB4_210:                              # %scalar.ph1255.preheader
                                         #   in Loop: Header=BB4_207 Depth=1
-	add.d	$a2, $a2, $t7
+	add.d	$t5, $t5, $t7
 	slli.d	$t6, $t7, 2
 	sub.d	$t7, $a0, $t7
 	.p2align	4, , 16
@@ -8368,10 +8354,10 @@ dct_chroma:                             # @dct_chroma
                                         #   Parent Loop BB4_207 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.h	$t8, $a3, $t6
-	slli.d	$fp, $a2, 48
+	slli.d	$fp, $t5, 48
 	srai.d	$fp, $fp, 47
-	stx.h	$t8, $t5, $fp
-	addi.d	$a2, $a2, 1
+	stx.h	$t8, $a2, $fp
+	addi.d	$t5, $t5, 1
 	addi.d	$t7, $t7, -1
 	addi.d	$t6, $t6, 4
 	bnez	$t7, .LBB4_211
@@ -8379,9 +8365,9 @@ dct_chroma:                             # @dct_chroma
 	.p2align	4, , 16
 .LBB4_212:                              # %vector.scevcheck
                                         #   in Loop: Header=BB4_207 Depth=1
-	slli.d	$t6, $a2, 48
+	slli.d	$t6, $t5, 48
 	srai.d	$t6, $t6, 47
-	add.d	$t7, $a2, $a7
+	add.d	$t7, $t5, $a7
 	slli.d	$t7, $t7, 48
 	srai.d	$t8, $t7, 47
 	move	$t7, $zero
@@ -8391,7 +8377,7 @@ dct_chroma:                             # @dct_chroma
 	bnez	$t3, .LBB4_210
 # %bb.214:                              # %vector.body1260.preheader
                                         #   in Loop: Header=BB4_207 Depth=1
-	move	$t6, $a2
+	move	$t6, $t5
 	move	$t7, $a3
 	move	$t8, $t0
 	.p2align	4, , 16
@@ -8399,25 +8385,11 @@ dct_chroma:                             # @dct_chroma
                                         #   Parent Loop BB4_207 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr0, $t7, 0
-	xvpickve2gr.w	$fp, $xr0, 0
-	vinsgr2vr.h	$vr1, $fp, 0
-	xvpickve2gr.w	$fp, $xr0, 1
-	vinsgr2vr.h	$vr1, $fp, 1
-	xvpickve2gr.w	$fp, $xr0, 2
-	vinsgr2vr.h	$vr1, $fp, 2
-	xvpickve2gr.w	$fp, $xr0, 3
-	vinsgr2vr.h	$vr1, $fp, 3
-	xvpickve2gr.w	$fp, $xr0, 4
-	vinsgr2vr.h	$vr1, $fp, 4
-	xvpickve2gr.w	$fp, $xr0, 5
-	vinsgr2vr.h	$vr1, $fp, 5
-	xvpickve2gr.w	$fp, $xr0, 6
-	vinsgr2vr.h	$vr1, $fp, 6
-	xvpickve2gr.w	$fp, $xr0, 7
-	vinsgr2vr.h	$vr1, $fp, 7
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	slli.d	$fp, $t6, 48
 	srai.d	$fp, $fp, 47
-	vstx	$vr1, $t5, $fp
+	vstx	$vr0, $a2, $fp
 	addi.d	$t8, $t8, -8
 	addi.d	$t7, $t7, 32
 	addi.d	$t6, $t6, 8

@@ -319,8 +319,8 @@ do_ari:                                 # @do_ari
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	pcalau12i	$a4, %pc_hi20(ari_pos)
-	st.w	$zero, $a4, %pc_lo12(ari_pos)
+	pcalau12i	$a3, %pc_hi20(ari_pos)
+	st.w	$zero, $a3, %pc_lo12(ari_pos)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
@@ -339,26 +339,12 @@ do_ari:                                 # @do_ari
 	.p2align	4, , 16
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvaddi.du	$xr3, $xr1, 1
-	xvpickve2gr.d	$a2, $xr3, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a3, $xr3, 1
-	vinsgr2vr.w	$vr4, $a3, 1
-	xvpickve2gr.d	$a3, $xr3, 2
-	vinsgr2vr.w	$vr4, $a3, 2
-	xvpickve2gr.d	$a3, $xr3, 3
-	vinsgr2vr.w	$vr4, $a3, 3
-	xvpickve2gr.d	$a3, $xr0, 0
-	vinsgr2vr.w	$vr3, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 1
-	vinsgr2vr.w	$vr3, $a3, 1
-	xvpickve2gr.d	$a3, $xr0, 2
-	vinsgr2vr.w	$vr3, $a3, 2
-	xvpickve2gr.d	$a3, $xr0, 3
-	vinsgr2vr.w	$vr3, $a3, 3
-	vaddi.wu	$vr3, $vr3, 1
-	xvpermi.q	$xr4, $xr3, 2
-	xvstx	$xr4, $s2, $a0
+	xvaddi.du	$xr3, $xr0, 1
+	xvaddi.du	$xr4, $xr1, 1
+	xvpickve2gr.d	$a2, $xr4, 0
+	xvpickev.w	$xr3, $xr3, $xr4
+	xvpermi.d	$xr3, $xr3, 216
+	xvstx	$xr3, $s2, $a0
 	add.d	$a2, $s3, $a2
 	vstelm.d	$vr2, $a2, 0, 0
 	xvaddi.du	$xr1, $xr1, 8
@@ -367,7 +353,7 @@ do_ari:                                 # @do_ari
 	vaddi.bu	$vr2, $vr2, 8
 	bne	$a0, $a1, .LBB0_1
 # %bb.2:                                # %vector.body43
-	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(freq)
 	addi.d	$s4, $a0, %pc_lo12(freq)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)

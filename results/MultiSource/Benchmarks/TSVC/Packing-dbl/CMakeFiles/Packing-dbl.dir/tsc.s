@@ -12545,23 +12545,8 @@ set:                                    # @set
 	.p2align	4, , 16
 .LBB10_19:                              # %vector.body109
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a2, $xr1, 0
-	vinsgr2vr.w	$vr3, $a2, 0
-	xvpickve2gr.d	$a2, $xr1, 1
-	vinsgr2vr.w	$vr3, $a2, 1
-	xvpickve2gr.d	$a2, $xr1, 2
-	vinsgr2vr.w	$vr3, $a2, 2
-	xvpickve2gr.d	$a2, $xr1, 3
-	vinsgr2vr.w	$vr3, $a2, 3
-	xvpickve2gr.d	$a2, $xr0, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	xvpickve2gr.d	$a2, $xr0, 1
-	vinsgr2vr.w	$vr4, $a2, 1
-	xvpickve2gr.d	$a2, $xr0, 2
-	vinsgr2vr.w	$vr4, $a2, 2
-	xvpickve2gr.d	$a2, $xr0, 3
-	vinsgr2vr.w	$vr4, $a2, 3
-	xvpermi.q	$xr3, $xr4, 2
+	xvpickev.w	$xr3, $xr0, $xr1
+	xvpermi.d	$xr3, $xr3, 216
 	xvaddi.wu	$xr3, $xr3, 1
 	xvand.v	$xr3, $xr3, $xr2
 	xvaddi.wu	$xr3, $xr3, 1

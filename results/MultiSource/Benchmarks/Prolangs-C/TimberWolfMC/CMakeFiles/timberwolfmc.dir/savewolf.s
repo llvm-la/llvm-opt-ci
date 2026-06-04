@@ -437,16 +437,10 @@ TW_oldinput:                            # @TW_oldinput
 	xvpermi.q	$xr7, $xr4, 2
 	xvfsub.d	$xr3, $xr5, $xr7
 	xvfcmp.cle.d	$xr3, $xr9, $xr3
-	xvpickve2gr.d	$a3, $xr3, 0
-	vinsgr2vr.w	$vr4, $a3, 0
-	xvpickve2gr.d	$a3, $xr3, 1
-	vinsgr2vr.w	$vr4, $a3, 1
-	xvpickve2gr.d	$a3, $xr3, 2
-	vinsgr2vr.w	$vr4, $a3, 2
-	xvpickve2gr.d	$a3, $xr3, 3
-	vinsgr2vr.w	$vr4, $a3, 3
+	xvpickev.w	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
 	vadd.w	$vr2, $vr1, $vr2
-	vsub.w	$vr2, $vr2, $vr4
+	vsub.w	$vr2, $vr2, $vr3
 	vst	$vr2, $a2, 56
 	ld.d	$a2, $a2, 0
 	bnez	$a2, .LBB1_23

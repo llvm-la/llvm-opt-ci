@@ -173,8 +173,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_5:                                # %vector.body133
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr1, $s0, $a0
-	vext2xv.w.h	$xr2, $xr1
-	xvpermi.q	$xr1, $xr1, 1
+	xvpermi.q	$xr2, $xr1, 1
+	vext2xv.w.h	$xr2, $xr2
 	vext2xv.w.h	$xr1, $xr1
 	xvslli.w	$xr1, $xr1, 14
 	xvslli.w	$xr2, $xr2, 14
@@ -182,40 +182,9 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	xvadd.w	$xr1, $xr1, $xr0
 	xvsrli.w	$xr1, $xr1, 15
 	xvsrli.w	$xr2, $xr2, 15
-	xvpickve2gr.w	$a2, $xr2, 0
-	vinsgr2vr.h	$vr3, $a2, 0
-	xvpickve2gr.w	$a2, $xr2, 1
-	vinsgr2vr.h	$vr3, $a2, 1
-	xvpickve2gr.w	$a2, $xr2, 2
-	vinsgr2vr.h	$vr3, $a2, 2
-	xvpickve2gr.w	$a2, $xr2, 3
-	vinsgr2vr.h	$vr3, $a2, 3
-	xvpickve2gr.w	$a2, $xr2, 4
-	vinsgr2vr.h	$vr3, $a2, 4
-	xvpickve2gr.w	$a2, $xr2, 5
-	vinsgr2vr.h	$vr3, $a2, 5
-	xvpickve2gr.w	$a2, $xr2, 6
-	vinsgr2vr.h	$vr3, $a2, 6
-	xvpickve2gr.w	$a2, $xr2, 7
-	vinsgr2vr.h	$vr3, $a2, 7
-	xvpickve2gr.w	$a2, $xr1, 0
-	vinsgr2vr.h	$vr2, $a2, 0
-	xvpickve2gr.w	$a2, $xr1, 1
-	vinsgr2vr.h	$vr2, $a2, 1
-	xvpickve2gr.w	$a2, $xr1, 2
-	vinsgr2vr.h	$vr2, $a2, 2
-	xvpickve2gr.w	$a2, $xr1, 3
-	vinsgr2vr.h	$vr2, $a2, 3
-	xvpickve2gr.w	$a2, $xr1, 4
-	vinsgr2vr.h	$vr2, $a2, 4
-	xvpickve2gr.w	$a2, $xr1, 5
-	vinsgr2vr.h	$vr2, $a2, 5
-	xvpickve2gr.w	$a2, $xr1, 6
-	vinsgr2vr.h	$vr2, $a2, 6
-	xvpickve2gr.w	$a2, $xr1, 7
-	vinsgr2vr.h	$vr2, $a2, 7
-	xvpermi.q	$xr3, $xr2, 2
-	xvstx	$xr3, $s0, $a0
+	xvpickev.h	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvstx	$xr1, $s0, $a0
 	addi.d	$a0, $a0, 32
 	bne	$a0, $a1, .LBB0_5
 # %bb.6:
@@ -239,8 +208,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_11:                               # %vector.body121
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr1, $s0, $a1
-	vext2xv.w.h	$xr2, $xr1
-	xvpermi.q	$xr1, $xr1, 1
+	xvpermi.q	$xr2, $xr1, 1
+	vext2xv.w.h	$xr2, $xr2
 	vext2xv.w.h	$xr1, $xr1
 	xvslli.w	$xr1, $xr1, 12
 	xvslli.w	$xr2, $xr2, 12
@@ -248,40 +217,9 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	xvadd.w	$xr1, $xr1, $xr0
 	xvsrli.w	$xr1, $xr1, 15
 	xvsrli.w	$xr2, $xr2, 15
-	xvpickve2gr.w	$a3, $xr2, 0
-	vinsgr2vr.h	$vr3, $a3, 0
-	xvpickve2gr.w	$a3, $xr2, 1
-	vinsgr2vr.h	$vr3, $a3, 1
-	xvpickve2gr.w	$a3, $xr2, 2
-	vinsgr2vr.h	$vr3, $a3, 2
-	xvpickve2gr.w	$a3, $xr2, 3
-	vinsgr2vr.h	$vr3, $a3, 3
-	xvpickve2gr.w	$a3, $xr2, 4
-	vinsgr2vr.h	$vr3, $a3, 4
-	xvpickve2gr.w	$a3, $xr2, 5
-	vinsgr2vr.h	$vr3, $a3, 5
-	xvpickve2gr.w	$a3, $xr2, 6
-	vinsgr2vr.h	$vr3, $a3, 6
-	xvpickve2gr.w	$a3, $xr2, 7
-	vinsgr2vr.h	$vr3, $a3, 7
-	xvpickve2gr.w	$a3, $xr1, 0
-	vinsgr2vr.h	$vr2, $a3, 0
-	xvpickve2gr.w	$a3, $xr1, 1
-	vinsgr2vr.h	$vr2, $a3, 1
-	xvpickve2gr.w	$a3, $xr1, 2
-	vinsgr2vr.h	$vr2, $a3, 2
-	xvpickve2gr.w	$a3, $xr1, 3
-	vinsgr2vr.h	$vr2, $a3, 3
-	xvpickve2gr.w	$a3, $xr1, 4
-	vinsgr2vr.h	$vr2, $a3, 4
-	xvpickve2gr.w	$a3, $xr1, 5
-	vinsgr2vr.h	$vr2, $a3, 5
-	xvpickve2gr.w	$a3, $xr1, 6
-	vinsgr2vr.h	$vr2, $a3, 6
-	xvpickve2gr.w	$a3, $xr1, 7
-	vinsgr2vr.h	$vr2, $a3, 7
-	xvpermi.q	$xr3, $xr2, 2
-	xvstx	$xr3, $s0, $a1
+	xvpickev.h	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvstx	$xr1, $s0, $a1
 	addi.d	$a1, $a1, 32
 	bne	$a1, $a2, .LBB0_11
 # %bb.12:
@@ -295,8 +233,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_14:                               # %vector.body115
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr1, $s0, $a1
-	vext2xv.w.h	$xr2, $xr1
-	xvpermi.q	$xr1, $xr1, 1
+	xvpermi.q	$xr2, $xr1, 1
+	vext2xv.w.h	$xr2, $xr2
 	vext2xv.w.h	$xr1, $xr1
 	xvslli.w	$xr1, $xr1, 11
 	xvslli.w	$xr2, $xr2, 11
@@ -304,40 +242,9 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	xvadd.w	$xr1, $xr1, $xr0
 	xvsrli.w	$xr1, $xr1, 15
 	xvsrli.w	$xr2, $xr2, 15
-	xvpickve2gr.w	$a3, $xr2, 0
-	vinsgr2vr.h	$vr3, $a3, 0
-	xvpickve2gr.w	$a3, $xr2, 1
-	vinsgr2vr.h	$vr3, $a3, 1
-	xvpickve2gr.w	$a3, $xr2, 2
-	vinsgr2vr.h	$vr3, $a3, 2
-	xvpickve2gr.w	$a3, $xr2, 3
-	vinsgr2vr.h	$vr3, $a3, 3
-	xvpickve2gr.w	$a3, $xr2, 4
-	vinsgr2vr.h	$vr3, $a3, 4
-	xvpickve2gr.w	$a3, $xr2, 5
-	vinsgr2vr.h	$vr3, $a3, 5
-	xvpickve2gr.w	$a3, $xr2, 6
-	vinsgr2vr.h	$vr3, $a3, 6
-	xvpickve2gr.w	$a3, $xr2, 7
-	vinsgr2vr.h	$vr3, $a3, 7
-	xvpickve2gr.w	$a3, $xr1, 0
-	vinsgr2vr.h	$vr2, $a3, 0
-	xvpickve2gr.w	$a3, $xr1, 1
-	vinsgr2vr.h	$vr2, $a3, 1
-	xvpickve2gr.w	$a3, $xr1, 2
-	vinsgr2vr.h	$vr2, $a3, 2
-	xvpickve2gr.w	$a3, $xr1, 3
-	vinsgr2vr.h	$vr2, $a3, 3
-	xvpickve2gr.w	$a3, $xr1, 4
-	vinsgr2vr.h	$vr2, $a3, 4
-	xvpickve2gr.w	$a3, $xr1, 5
-	vinsgr2vr.h	$vr2, $a3, 5
-	xvpickve2gr.w	$a3, $xr1, 6
-	vinsgr2vr.h	$vr2, $a3, 6
-	xvpickve2gr.w	$a3, $xr1, 7
-	vinsgr2vr.h	$vr2, $a3, 7
-	xvpermi.q	$xr3, $xr2, 2
-	xvstx	$xr3, $s0, $a1
+	xvpickev.h	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvstx	$xr1, $s0, $a1
 	addi.d	$a1, $a1, 32
 	bne	$a1, $a2, .LBB0_14
 # %bb.15:
@@ -351,8 +258,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_17:                               # %vector.body127
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr1, $s0, $a1
-	vext2xv.w.h	$xr2, $xr1
-	xvpermi.q	$xr1, $xr1, 1
+	xvpermi.q	$xr2, $xr1, 1
+	vext2xv.w.h	$xr2, $xr2
 	vext2xv.w.h	$xr1, $xr1
 	xvslli.w	$xr1, $xr1, 13
 	xvslli.w	$xr2, $xr2, 13
@@ -360,40 +267,9 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	xvadd.w	$xr1, $xr1, $xr0
 	xvsrli.w	$xr1, $xr1, 15
 	xvsrli.w	$xr2, $xr2, 15
-	xvpickve2gr.w	$a3, $xr2, 0
-	vinsgr2vr.h	$vr3, $a3, 0
-	xvpickve2gr.w	$a3, $xr2, 1
-	vinsgr2vr.h	$vr3, $a3, 1
-	xvpickve2gr.w	$a3, $xr2, 2
-	vinsgr2vr.h	$vr3, $a3, 2
-	xvpickve2gr.w	$a3, $xr2, 3
-	vinsgr2vr.h	$vr3, $a3, 3
-	xvpickve2gr.w	$a3, $xr2, 4
-	vinsgr2vr.h	$vr3, $a3, 4
-	xvpickve2gr.w	$a3, $xr2, 5
-	vinsgr2vr.h	$vr3, $a3, 5
-	xvpickve2gr.w	$a3, $xr2, 6
-	vinsgr2vr.h	$vr3, $a3, 6
-	xvpickve2gr.w	$a3, $xr2, 7
-	vinsgr2vr.h	$vr3, $a3, 7
-	xvpickve2gr.w	$a3, $xr1, 0
-	vinsgr2vr.h	$vr2, $a3, 0
-	xvpickve2gr.w	$a3, $xr1, 1
-	vinsgr2vr.h	$vr2, $a3, 1
-	xvpickve2gr.w	$a3, $xr1, 2
-	vinsgr2vr.h	$vr2, $a3, 2
-	xvpickve2gr.w	$a3, $xr1, 3
-	vinsgr2vr.h	$vr2, $a3, 3
-	xvpickve2gr.w	$a3, $xr1, 4
-	vinsgr2vr.h	$vr2, $a3, 4
-	xvpickve2gr.w	$a3, $xr1, 5
-	vinsgr2vr.h	$vr2, $a3, 5
-	xvpickve2gr.w	$a3, $xr1, 6
-	vinsgr2vr.h	$vr2, $a3, 6
-	xvpickve2gr.w	$a3, $xr1, 7
-	vinsgr2vr.h	$vr2, $a3, 7
-	xvpermi.q	$xr3, $xr2, 2
-	xvstx	$xr3, $s0, $a1
+	xvpickev.h	$xr1, $xr2, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvstx	$xr1, $s0, $a1
 	addi.d	$a1, $a1, 32
 	bne	$a1, $a2, .LBB0_17
 # %bb.18:
@@ -578,6 +454,24 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 .LBB0_23:                               # %vector.body186
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr16, $s0, $a3
+	xvpermi.q	$xr17, $xr16, 1
+	vpickve2gr.h	$a2, $vr17, 4
+	vinsgr2vr.w	$vr18, $a2, 0
+	vpickve2gr.h	$a2, $vr17, 5
+	vinsgr2vr.w	$vr18, $a2, 1
+	vpickve2gr.h	$a2, $vr17, 6
+	vinsgr2vr.w	$vr18, $a2, 2
+	vpickve2gr.h	$a2, $vr17, 7
+	vinsgr2vr.w	$vr18, $a2, 3
+	vpickve2gr.h	$a2, $vr17, 0
+	vinsgr2vr.w	$vr19, $a2, 0
+	vpickve2gr.h	$a2, $vr17, 1
+	vinsgr2vr.w	$vr19, $a2, 1
+	vpickve2gr.h	$a2, $vr17, 2
+	vinsgr2vr.w	$vr19, $a2, 2
+	vpickve2gr.h	$a2, $vr17, 3
+	vinsgr2vr.w	$vr19, $a2, 3
+	xvpermi.q	$xr19, $xr18, 2
 	vpickve2gr.h	$a2, $vr16, 4
 	vinsgr2vr.w	$vr17, $a2, 0
 	vpickve2gr.h	$a2, $vr16, 5
@@ -595,60 +489,11 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vpickve2gr.h	$a2, $vr16, 3
 	vinsgr2vr.w	$vr18, $a2, 3
 	xvpermi.q	$xr18, $xr17, 2
-	xvpermi.q	$xr16, $xr16, 1
-	vpickve2gr.h	$a2, $vr16, 4
-	vinsgr2vr.w	$vr17, $a2, 0
-	vpickve2gr.h	$a2, $vr16, 5
-	vinsgr2vr.w	$vr17, $a2, 1
-	vpickve2gr.h	$a2, $vr16, 6
-	vinsgr2vr.w	$vr17, $a2, 2
-	vpickve2gr.h	$a2, $vr16, 7
-	vinsgr2vr.w	$vr17, $a2, 3
-	vpickve2gr.h	$a2, $vr16, 0
-	vinsgr2vr.w	$vr19, $a2, 0
-	vpickve2gr.h	$a2, $vr16, 1
-	vinsgr2vr.w	$vr19, $a2, 1
-	vpickve2gr.h	$a2, $vr16, 2
-	vinsgr2vr.w	$vr19, $a2, 2
-	vpickve2gr.h	$a2, $vr16, 3
-	vinsgr2vr.w	$vr19, $a2, 3
-	xvpermi.q	$xr19, $xr17, 2
-	xvsll.w	$xr16, $xr19, $xr15
-	xvsll.w	$xr17, $xr18, $xr15
-	xvpickve2gr.w	$a2, $xr17, 0
-	vinsgr2vr.h	$vr18, $a2, 0
-	xvpickve2gr.w	$a2, $xr17, 1
-	vinsgr2vr.h	$vr18, $a2, 1
-	xvpickve2gr.w	$a2, $xr17, 2
-	vinsgr2vr.h	$vr18, $a2, 2
-	xvpickve2gr.w	$a2, $xr17, 3
-	vinsgr2vr.h	$vr18, $a2, 3
-	xvpickve2gr.w	$a2, $xr17, 4
-	vinsgr2vr.h	$vr18, $a2, 4
-	xvpickve2gr.w	$a2, $xr17, 5
-	vinsgr2vr.h	$vr18, $a2, 5
-	xvpickve2gr.w	$a2, $xr17, 6
-	vinsgr2vr.h	$vr18, $a2, 6
-	xvpickve2gr.w	$a2, $xr17, 7
-	vinsgr2vr.h	$vr18, $a2, 7
-	xvpickve2gr.w	$a2, $xr16, 0
-	vinsgr2vr.h	$vr17, $a2, 0
-	xvpickve2gr.w	$a2, $xr16, 1
-	vinsgr2vr.h	$vr17, $a2, 1
-	xvpickve2gr.w	$a2, $xr16, 2
-	vinsgr2vr.h	$vr17, $a2, 2
-	xvpickve2gr.w	$a2, $xr16, 3
-	vinsgr2vr.h	$vr17, $a2, 3
-	xvpickve2gr.w	$a2, $xr16, 4
-	vinsgr2vr.h	$vr17, $a2, 4
-	xvpickve2gr.w	$a2, $xr16, 5
-	vinsgr2vr.h	$vr17, $a2, 5
-	xvpickve2gr.w	$a2, $xr16, 6
-	vinsgr2vr.h	$vr17, $a2, 6
-	xvpickve2gr.w	$a2, $xr16, 7
-	vinsgr2vr.h	$vr17, $a2, 7
-	xvpermi.q	$xr18, $xr17, 2
-	xvstx	$xr18, $s0, $a3
+	xvsll.w	$xr16, $xr18, $xr15
+	xvsll.w	$xr17, $xr19, $xr15
+	xvpickev.h	$xr16, $xr17, $xr16
+	xvpermi.d	$xr16, $xr16, 216
+	xvstx	$xr16, $s0, $a3
 	addi.d	$a3, $a3, 32
 	bne	$a3, $a1, .LBB0_23
 .LBB0_24:                               # %Autocorrelation.exit
@@ -1214,15 +1059,9 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vext2xv.d.h	$xr0, $xr0
 	xvmadd.d	$xr6, $xr0, $xr5
 	xvsrli.d	$xr0, $xr6, 32
-	xvpickve2gr.d	$a0, $xr0, 0
-	vinsgr2vr.w	$vr3, $a0, 0
-	xvpickve2gr.d	$a0, $xr0, 1
-	vinsgr2vr.w	$vr3, $a0, 1
-	xvpickve2gr.d	$a0, $xr0, 2
-	vinsgr2vr.w	$vr3, $a0, 2
-	xvpickve2gr.d	$a0, $xr0, 3
-	vinsgr2vr.w	$vr3, $a0, 3
-	xvpermi.q	$xr1, $xr3, 2
+	xvpickev.w	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpermi.q	$xr1, $xr0, 2
 	vshuf4i.w	$vr0, $vr2, 8
 	xvinsve0.d	$xr1, $xr0, 1
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
@@ -1231,26 +1070,12 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	xvadd.w	$xr1, $xr1, $xr2
 	xvsrai.w	$xr1, $xr1, 25
 	xvslt.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.h	$vr2, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.h	$vr2, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.h	$vr2, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.h	$vr2, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.h	$vr2, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.h	$vr2, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.h	$vr2, $a0, 6
 	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_5)
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.h	$vr2, $a0, 7
-	xvpermi.q	$xr0, $xr1, 1
-	vmax.w	$vr0, $vr0, $vr3
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_5)
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpermi.q	$xr3, $xr1, 1
+	vmax.w	$vr2, $vr3, $vr2
 	xvpickve2gr.w	$a0, $xr1, 2
 	vinsgr2vr.w	$vr3, $a0, 0
 	xvpickve2gr.w	$a0, $xr1, 3
@@ -1261,9 +1086,9 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
 	vld	$vr5, $a0, %pc_lo12(.LCPI0_7)
 	vpermi.w	$vr3, $vr1, 68
-	vpickev.h	$vr0, $vr0, $vr3
-	vadd.h	$vr0, $vr0, $vr4
-	vbitsel.v	$vr0, $vr0, $vr5, $vr2
+	vpickev.h	$vr1, $vr2, $vr3
+	vadd.h	$vr1, $vr1, $vr4
+	vbitsel.v	$vr0, $vr1, $vr5, $vr0
 	vst	$vr0, $s2, 0
 	fld.d	$fs2, $sp, 96                   # 8-byte Folded Reload
 	fld.d	$fs1, $sp, 104                  # 8-byte Folded Reload

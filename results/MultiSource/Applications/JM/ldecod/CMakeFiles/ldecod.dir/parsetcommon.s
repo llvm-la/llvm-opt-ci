@@ -179,7 +179,7 @@ sps_is_equal:                           # @sps_is_equal
 	bgeu	$a2, $a3, .LBB4_29
 # %bb.14:
 	move	$a3, $zero
-	ori	$a5, $zero, 1
+	ori	$a4, $zero, 1
 	b	.LBB4_38
 .LBB4_15:
 	move	$a3, $zero
@@ -255,13 +255,13 @@ sps_is_equal:                           # @sps_is_equal
 	bgeu	$a2, $a3, .LBB4_31
 # %bb.30:
 	move	$a3, $zero
-	ori	$a5, $zero, 1
+	ori	$a4, $zero, 1
 	b	.LBB4_35
 .LBB4_31:                               # %vector.ph
-	andi	$a4, $a2, 12
+	andi	$a5, $a2, 12
 	bstrpick.d	$a3, $a2, 31, 4
 	slli.d	$a3, $a3, 4
-	addi.d	$a5, $a1, 1068
+	addi.d	$a4, $a1, 1068
 	vrepli.b	$vr0, 0
 	addi.d	$a6, $a0, 1068
 	move	$a7, $a3
@@ -269,68 +269,40 @@ sps_is_equal:                           # @sps_is_equal
 .LBB4_32:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a6, -32
-	xvld	$xr3, $a5, -32
+	xvld	$xr3, $a4, -32
 	xvld	$xr4, $a6, 0
-	xvld	$xr5, $a5, 0
+	xvld	$xr5, $a4, 0
 	xvseq.w	$xr2, $xr2, $xr3
 	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr3, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr3, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr3, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr3, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr3, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr3, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr3, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr3, $t0, 7
-	xvseq.w	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr4, $t0, 7
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvseq.w	$xr3, $xr4, $xr5
+	xvxori.b	$xr3, $xr3, 255
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr1, $vr1, $vr3
 	addi.d	$a7, $a7, -16
-	addi.d	$a5, $a5, 64
+	addi.d	$a4, $a4, 64
 	addi.d	$a6, $a6, 64
 	bnez	$a7, .LBB4_32
 # %bb.33:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
 	vslli.h	$vr0, $vr0, 15
 	vmskltz.h	$vr0, $vr0
-	vpickve2gr.hu	$a5, $vr0, 0
-	sltui	$a5, $a5, 1
+	vpickve2gr.hu	$a4, $vr0, 0
+	sltui	$a4, $a4, 1
 	beq	$a3, $a2, .LBB4_40
 # %bb.34:                               # %vec.epilog.iter.check
-	beqz	$a4, .LBB4_38
+	beqz	$a5, .LBB4_38
 .LBB4_35:                               # %vec.epilog.ph
-	move	$a6, $a3
-	sltui	$a4, $a5, 1
+	move	$a5, $a3
+	sltui	$a4, $a4, 1
 	bstrpick.d	$a3, $a2, 31, 2
 	slli.d	$a3, $a3, 2
 	vreplgr2vr.w	$vr0, $a4
-	sub.d	$a4, $a6, $a3
-	slli.d	$a5, $a6, 2
+	sub.d	$a4, $a5, $a3
+	slli.d	$a5, $a5, 2
 	addi.d	$a6, $a5, 1036
 	add.d	$a5, $a1, $a6
 	add.d	$a6, $a0, $a6
@@ -348,28 +320,28 @@ sps_is_equal:                           # @sps_is_equal
 	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a4, $vr0, 0
-	sltui	$a5, $a4, 1
+	sltui	$a4, $a4, 1
 	beq	$a3, $a2, .LBB4_40
 .LBB4_38:                               # %vec.epilog.scalar.ph.preheader
-	slli.d	$a4, $a3, 2
-	addi.d	$a6, $a4, 1036
-	add.d	$a4, $a0, $a6
+	slli.d	$a5, $a3, 2
+	addi.d	$a6, $a5, 1036
+	add.d	$a5, $a0, $a6
 	add.d	$a6, $a1, $a6
 	sub.d	$a2, $a2, $a3
 	.p2align	4, , 16
 .LBB4_39:                               # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $a4, 0
+	ld.w	$a3, $a5, 0
 	ld.w	$a7, $a6, 0
 	xor	$a3, $a3, $a7
 	sltui	$a3, $a3, 1
-	maskeqz	$a5, $a5, $a3
-	addi.d	$a4, $a4, 4
+	maskeqz	$a4, $a4, $a3
+	addi.d	$a5, $a5, 4
 	addi.d	$a2, $a2, -1
 	addi.d	$a6, $a6, 4
 	bnez	$a2, .LBB4_39
 .LBB4_40:                               # %.loopexit.loopexit
-	sltui	$a3, $a5, 1
+	sltui	$a3, $a4, 1
 	b	.LBB4_16
 .Lfunc_end4:
 	.size	sps_is_equal, .Lfunc_end4-sps_is_equal
@@ -522,42 +494,14 @@ pps_is_equal:                           # @pps_is_equal
 	xvld	$xr5, $a2, 0
 	xvseq.w	$xr2, $xr2, $xr3
 	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr3, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr3, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr3, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr3, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr3, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr3, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr3, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr3, $t0, 7
-	xvseq.w	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t0, $xr2, 0
-	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.w	$t0, $xr2, 1
-	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.w	$t0, $xr2, 2
-	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.w	$t0, $xr2, 3
-	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.w	$t0, $xr2, 4
-	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.w	$t0, $xr2, 5
-	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.w	$t0, $xr2, 6
-	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.w	$t0, $xr2, 7
-	vinsgr2vr.h	$vr4, $t0, 7
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvseq.w	$xr3, $xr4, $xr5
+	xvxori.b	$xr3, $xr3, 255
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr1, $vr1, $vr3
 	addi.d	$a7, $a7, -16
 	addi.d	$a2, $a2, 64
 	addi.d	$a6, $a6, 64
@@ -633,42 +577,14 @@ pps_is_equal:                           # @pps_is_equal
 	xvld	$xr5, $a2, 0
 	xvseq.w	$xr2, $xr2, $xr3
 	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t2, $xr2, 0
-	vinsgr2vr.h	$vr3, $t2, 0
-	xvpickve2gr.w	$t2, $xr2, 1
-	vinsgr2vr.h	$vr3, $t2, 1
-	xvpickve2gr.w	$t2, $xr2, 2
-	vinsgr2vr.h	$vr3, $t2, 2
-	xvpickve2gr.w	$t2, $xr2, 3
-	vinsgr2vr.h	$vr3, $t2, 3
-	xvpickve2gr.w	$t2, $xr2, 4
-	vinsgr2vr.h	$vr3, $t2, 4
-	xvpickve2gr.w	$t2, $xr2, 5
-	vinsgr2vr.h	$vr3, $t2, 5
-	xvpickve2gr.w	$t2, $xr2, 6
-	vinsgr2vr.h	$vr3, $t2, 6
-	xvpickve2gr.w	$t2, $xr2, 7
-	vinsgr2vr.h	$vr3, $t2, 7
-	xvseq.w	$xr2, $xr4, $xr5
-	xvxori.b	$xr2, $xr2, 255
-	xvpickve2gr.w	$t2, $xr2, 0
-	vinsgr2vr.h	$vr4, $t2, 0
-	xvpickve2gr.w	$t2, $xr2, 1
-	vinsgr2vr.h	$vr4, $t2, 1
-	xvpickve2gr.w	$t2, $xr2, 2
-	vinsgr2vr.h	$vr4, $t2, 2
-	xvpickve2gr.w	$t2, $xr2, 3
-	vinsgr2vr.h	$vr4, $t2, 3
-	xvpickve2gr.w	$t2, $xr2, 4
-	vinsgr2vr.h	$vr4, $t2, 4
-	xvpickve2gr.w	$t2, $xr2, 5
-	vinsgr2vr.h	$vr4, $t2, 5
-	xvpickve2gr.w	$t2, $xr2, 6
-	vinsgr2vr.h	$vr4, $t2, 6
-	xvpickve2gr.w	$t2, $xr2, 7
-	vinsgr2vr.h	$vr4, $t2, 7
-	vor.v	$vr0, $vr0, $vr3
-	vor.v	$vr1, $vr1, $vr4
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvseq.w	$xr3, $xr4, $xr5
+	xvxori.b	$xr3, $xr3, 255
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr1, $vr1, $vr3
 	addi.d	$t1, $t1, -16
 	addi.d	$a2, $a2, 64
 	addi.d	$t0, $t0, 64

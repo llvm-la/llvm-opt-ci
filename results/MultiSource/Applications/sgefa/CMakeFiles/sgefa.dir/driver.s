@@ -416,6 +416,7 @@ matgen:                                 # @matgen
 	ori	$a5, $zero, 1
 	ori	$a6, $zero, 8
 	movgr2fr.w	$fa0, $zero
+	xvrepli.b	$xr1, 0
 	move	$s7, $fp
 	b	.LBB1_19
 	.p2align	4, , 16
@@ -442,47 +443,32 @@ matgen:                                 # @matgen
                                         #   in Loop: Header=BB1_19 Depth=1
 	add.d	$t1, $t2, $a3
 	pcalau12i	$t3, %pc_hi20(.LCPI1_0)
-	xvld	$xr1, $t3, %pc_lo12(.LCPI1_0)
-	xvreplgr2vr.d	$xr2, $a7
-	xvreplgr2vr.d	$xr3, $t0
-	xvreplgr2vr.w	$xr4, $a0
+	xvld	$xr2, $t3, %pc_lo12(.LCPI1_0)
+	xvreplgr2vr.d	$xr3, $a7
+	xvreplgr2vr.d	$xr4, $t0
+	xvreplgr2vr.w	$xr5, $a0
 	move	$t3, $a2
 	.p2align	4, , 16
 .LBB1_22:                               # %vector.body758
                                         #   Parent Loop BB1_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvpermi.q	$xr5, $xr1, 1
-	vext2xv.du.wu	$xr5, $xr5
-	vext2xv.du.wu	$xr6, $xr1
-	xvslt.d	$xr7, $xr5, $xr2
-	xvslt.d	$xr8, $xr6, $xr2
-	xvslt.du	$xr5, $xr3, $xr5
-	xvslt.du	$xr6, $xr3, $xr6
+	xvpermi.q	$xr6, $xr2, 1
+	vext2xv.du.wu	$xr6, $xr6
+	vext2xv.du.wu	$xr7, $xr2
+	xvslt.d	$xr8, $xr6, $xr3
+	xvslt.d	$xr9, $xr7, $xr3
+	xvslt.du	$xr6, $xr4, $xr6
+	xvslt.du	$xr7, $xr4, $xr7
+	xvor.v	$xr7, $xr9, $xr7
 	xvor.v	$xr6, $xr8, $xr6
-	xvpickve2gr.d	$t4, $xr6, 0
-	vinsgr2vr.w	$vr8, $t4, 0
-	xvpickve2gr.d	$t4, $xr6, 1
-	vinsgr2vr.w	$vr8, $t4, 1
-	xvpickve2gr.d	$t4, $xr6, 2
-	vinsgr2vr.w	$vr8, $t4, 2
-	xvpickve2gr.d	$t4, $xr6, 3
-	vinsgr2vr.w	$vr8, $t4, 3
-	xvor.v	$xr5, $xr7, $xr5
-	xvpickve2gr.d	$t4, $xr5, 0
-	vinsgr2vr.w	$vr6, $t4, 0
-	xvpickve2gr.d	$t4, $xr5, 1
-	vinsgr2vr.w	$vr6, $t4, 1
-	xvpickve2gr.d	$t4, $xr5, 2
-	vinsgr2vr.w	$vr6, $t4, 2
-	xvpickve2gr.d	$t4, $xr5, 3
-	vinsgr2vr.w	$vr6, $t4, 3
-	xvpermi.q	$xr8, $xr6, 2
-	xvadd.w	$xr5, $xr1, $xr4
-	xvffint.s.wu	$xr5, $xr5
-	xvfrecip.s	$xr5, $xr5
-	xvandn.v	$xr5, $xr8, $xr5
-	xvst	$xr5, $t2, 0
-	xvaddi.wu	$xr1, $xr1, 8
+	xvpickev.w	$xr6, $xr6, $xr7
+	xvpermi.d	$xr6, $xr6, 216
+	xvadd.w	$xr7, $xr2, $xr5
+	xvffint.s.wu	$xr7, $xr7
+	xvfrecip.s	$xr7, $xr7
+	xvbitsel.v	$xr6, $xr7, $xr1, $xr6
+	xvst	$xr6, $t2, 0
+	xvaddi.wu	$xr2, $xr2, 8
 	addi.d	$t3, $t3, -8
 	addi.d	$t2, $t2, 32
 	bnez	$t3, .LBB1_22
@@ -498,7 +484,7 @@ matgen:                                 # @matgen
 	b	.LBB1_26
 	.p2align	4, , 16
 .LBB1_25:                               #   in Loop: Header=BB1_26 Depth=2
-	fst.s	$fa1, $t1, 0
+	fst.s	$fa2, $t1, 0
 	addi.d	$t1, $t1, 4
 	addi.d	$t2, $t2, 1
 	bstrpick.d	$t4, $t4, 31, 0
@@ -509,17 +495,17 @@ matgen:                                 # @matgen
 .LBB1_26:                               # %scalar.ph747
                                         #   Parent Loop BB1_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fmov.s	$fa1, $fa0
+	fmov.s	$fa2, $fa0
 	blt	$t2, $a7, .LBB1_25
 # %bb.27:                               # %scalar.ph747
                                         #   in Loop: Header=BB1_26 Depth=2
-	fmov.s	$fa1, $fa0
+	fmov.s	$fa2, $fa0
 	bltu	$t0, $t2, .LBB1_25
 # %bb.28:                               #   in Loop: Header=BB1_26 Depth=2
 	bstrpick.d	$t5, $t3, 31, 0
-	movgr2fr.d	$fa1, $t5
-	ffint.s.l	$fa1, $fa1
-	frecip.s	$fa1, $fa1
+	movgr2fr.d	$fa2, $t5
+	ffint.s.l	$fa2, $fa2
+	frecip.s	$fa2, $fa2
 	b	.LBB1_25
 .LBB1_29:
 	slli.d	$a0, $s4, 4
@@ -629,8 +615,7 @@ matgen:                                 # @matgen
 	xvreplve0.w	$xr3, $xr1
 	ori	$a6, $zero, 8
 	xvrepli.b	$xr4, 0
-	xvldi	$xr5, -2305
-	xvldi	$xr6, -1520
+	xvldi	$xr5, -1520
 	move	$s7, $fp
 	b	.LBB1_41
 	.p2align	4, , 16
@@ -657,18 +642,18 @@ matgen:                                 # @matgen
                                         #   in Loop: Header=BB1_41 Depth=1
 	addi.d	$t3, $t1, -1
 	add.d	$t0, $t2, $a5
-	xvreplgr2vr.d	$xr7, $t1
+	xvreplgr2vr.d	$xr6, $t1
 	pcalau12i	$t1, %pc_hi20(.LCPI1_0)
-	xvld	$xr8, $t1, %pc_lo12(.LCPI1_0)
-	xvreplgr2vr.d	$xr9, $a7
-	xvreplgr2vr.w	$xr10, $t3
+	xvld	$xr7, $t1, %pc_lo12(.LCPI1_0)
+	xvreplgr2vr.d	$xr8, $a7
+	xvreplgr2vr.w	$xr9, $t3
 	addi.d	$t1, $t2, 16
 	move	$t2, $a4
 	b	.LBB1_45
 	.p2align	4, , 16
 .LBB1_44:                               # %pred.store.continue740
                                         #   in Loop: Header=BB1_45 Depth=2
-	xvaddi.wu	$xr8, $xr8, 8
+	xvaddi.wu	$xr7, $xr7, 8
 	addi.d	$t2, $t2, -8
 	addi.d	$t1, $t1, 32
 	beqz	$t2, .LBB1_61
@@ -676,118 +661,86 @@ matgen:                                 # @matgen
                                         #   Parent Loop BB1_41 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvst	$xr4, $t1, -16
-	xvpermi.q	$xr11, $xr8, 1
-	vext2xv.du.wu	$xr12, $xr11
-	vext2xv.du.wu	$xr14, $xr8
-	xvseq.d	$xr13, $xr7, $xr14
-	xvpickve2gr.d	$t3, $xr13, 0
-	vinsgr2vr.w	$vr11, $t3, 0
-	xvpickve2gr.d	$t4, $xr13, 1
-	vinsgr2vr.w	$vr11, $t4, 1
-	xvpickve2gr.d	$t5, $xr13, 2
-	vinsgr2vr.w	$vr11, $t5, 2
-	xvpickve2gr.d	$t6, $xr13, 3
-	vinsgr2vr.w	$vr11, $t6, 3
-	xvseq.d	$xr13, $xr7, $xr12
-	xvpickve2gr.d	$t7, $xr13, 0
-	vinsgr2vr.w	$vr15, $t7, 0
-	xvpickve2gr.d	$t8, $xr13, 1
-	vinsgr2vr.w	$vr15, $t8, 1
-	xvpickve2gr.d	$fp, $xr13, 2
-	vinsgr2vr.w	$vr15, $fp, 2
-	xvpickve2gr.d	$s0, $xr13, 3
-	vinsgr2vr.w	$vr15, $s0, 3
-	xvpermi.q	$xr11, $xr15, 2
-	vinsgr2vr.h	$vr13, $t3, 0
-	vinsgr2vr.h	$vr13, $t4, 1
-	vinsgr2vr.h	$vr13, $t5, 2
-	vinsgr2vr.h	$vr13, $t6, 3
-	vinsgr2vr.h	$vr13, $t7, 4
-	vinsgr2vr.h	$vr13, $t8, 5
-	vinsgr2vr.h	$vr13, $fp, 6
-	vinsgr2vr.h	$vr13, $s0, 7
-	xvseq.w	$xr15, $xr8, $xr10
-	xvpickve2gr.w	$t3, $xr15, 0
-	vinsgr2vr.h	$vr16, $t3, 0
-	xvpickve2gr.w	$t3, $xr15, 1
-	vinsgr2vr.h	$vr16, $t3, 1
-	xvpickve2gr.w	$t3, $xr15, 2
-	vinsgr2vr.h	$vr16, $t3, 2
-	xvpickve2gr.w	$t3, $xr15, 3
-	vinsgr2vr.h	$vr16, $t3, 3
-	xvpickve2gr.w	$t3, $xr15, 4
-	vinsgr2vr.h	$vr16, $t3, 4
-	xvpickve2gr.w	$t3, $xr15, 5
-	vinsgr2vr.h	$vr16, $t3, 5
-	xvpickve2gr.w	$t3, $xr15, 6
-	vinsgr2vr.h	$vr16, $t3, 6
-	xvpickve2gr.w	$t3, $xr15, 7
-	vinsgr2vr.h	$vr16, $t3, 7
-	vor.v	$vr17, $vr13, $vr16
-	xvseq.d	$xr14, $xr9, $xr14
-	xvpickve2gr.d	$t3, $xr14, 0
-	vinsgr2vr.h	$vr18, $t3, 0
-	xvpickve2gr.d	$t3, $xr14, 1
-	vinsgr2vr.h	$vr18, $t3, 1
-	xvpickve2gr.d	$t3, $xr14, 2
-	vinsgr2vr.h	$vr18, $t3, 2
-	xvpickve2gr.d	$t3, $xr14, 3
-	vinsgr2vr.h	$vr18, $t3, 3
-	xvseq.d	$xr12, $xr9, $xr12
-	xvpickve2gr.d	$t3, $xr12, 0
-	vinsgr2vr.h	$vr18, $t3, 4
-	xvpickve2gr.d	$t3, $xr12, 1
-	vinsgr2vr.h	$vr18, $t3, 5
-	xvpickve2gr.d	$t3, $xr12, 2
-	vinsgr2vr.h	$vr18, $t3, 6
-	xvpickve2gr.d	$t3, $xr12, 3
-	vinsgr2vr.h	$vr18, $t3, 7
-	vandn.v	$vr12, $vr17, $vr18
-	xvxor.v	$xr14, $xr11, $xr5
-	xvand.v	$xr14, $xr14, $xr15
-	xvslli.w	$xr14, $xr14, 16
-	xvsrai.w	$xr14, $xr14, 16
-	vandn.v	$vr15, $vr13, $vr16
-	vor.v	$vr12, $vr12, $vr15
-	vor.v	$vr12, $vr12, $vr13
-	xvbitsel.v	$xr13, $xr3, $xr2, $xr14
-	vpickve2gr.h	$t3, $vr12, 0
+	xvpermi.q	$xr10, $xr7, 1
+	vext2xv.du.wu	$xr10, $xr10
+	vext2xv.du.wu	$xr11, $xr7
+	xvseq.d	$xr12, $xr6, $xr11
+	xvseq.d	$xr13, $xr6, $xr10
+	xvpickev.w	$xr12, $xr13, $xr12
+	xvpermi.d	$xr12, $xr12, 216
+	xvpickev.h	$xr13, $xr12, $xr12
+	xvpermi.d	$xr13, $xr13, 216
+	xvseq.w	$xr14, $xr7, $xr9
+	xvpickev.h	$xr14, $xr14, $xr14
+	xvpermi.d	$xr14, $xr14, 216
+	vor.v	$vr15, $vr13, $vr14
+	xvseq.d	$xr11, $xr8, $xr11
+	xvseq.d	$xr10, $xr8, $xr10
+	xvpickev.w	$xr10, $xr10, $xr11
+	xvpermi.d	$xr10, $xr10, 216
+	xvpickev.h	$xr10, $xr10, $xr10
+	xvpermi.d	$xr10, $xr10, 216
+	vandn.v	$vr10, $vr15, $vr10
+	vandn.v	$vr11, $vr13, $vr14
+	vpickve2gr.h	$t3, $vr11, 4
+	vinsgr2vr.w	$vr14, $t3, 0
+	vpickve2gr.h	$t3, $vr11, 5
+	vinsgr2vr.w	$vr14, $t3, 1
+	vpickve2gr.h	$t3, $vr11, 6
+	vinsgr2vr.w	$vr14, $t3, 2
+	vpickve2gr.h	$t3, $vr11, 7
+	vinsgr2vr.w	$vr14, $t3, 3
+	vpickve2gr.h	$t3, $vr11, 0
+	vinsgr2vr.w	$vr15, $t3, 0
+	vpickve2gr.h	$t3, $vr11, 1
+	vinsgr2vr.w	$vr15, $t3, 1
+	vpickve2gr.h	$t3, $vr11, 2
+	vinsgr2vr.w	$vr15, $t3, 2
+	vpickve2gr.h	$t3, $vr11, 3
+	vinsgr2vr.w	$vr15, $t3, 3
+	xvpermi.q	$xr15, $xr14, 2
+	xvslli.w	$xr14, $xr15, 31
+	xvsrai.w	$xr14, $xr14, 31
+	vor.v	$vr10, $vr10, $vr11
+	vor.v	$vr10, $vr10, $vr13
+	xvbitsel.v	$xr11, $xr3, $xr2, $xr14
+	vpickve2gr.h	$t3, $vr10, 0
 	andi	$t3, $t3, 1
-	xvbitsel.v	$xr11, $xr13, $xr6, $xr11
+	xvbitsel.v	$xr11, $xr11, $xr5, $xr12
 	bnez	$t3, .LBB1_53
 # %bb.46:                               # %pred.store.continue
                                         #   in Loop: Header=BB1_45 Depth=2
-	vpickve2gr.h	$t3, $vr12, 1
+	vpickve2gr.h	$t3, $vr10, 1
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB1_54
 .LBB1_47:                               # %pred.store.continue728
                                         #   in Loop: Header=BB1_45 Depth=2
-	vpickve2gr.h	$t3, $vr12, 2
+	vpickve2gr.h	$t3, $vr10, 2
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB1_55
 .LBB1_48:                               # %pred.store.continue730
                                         #   in Loop: Header=BB1_45 Depth=2
-	vpickve2gr.h	$t3, $vr12, 3
+	vpickve2gr.h	$t3, $vr10, 3
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB1_56
 .LBB1_49:                               # %pred.store.continue732
                                         #   in Loop: Header=BB1_45 Depth=2
-	vpickve2gr.h	$t3, $vr12, 4
+	vpickve2gr.h	$t3, $vr10, 4
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB1_57
 .LBB1_50:                               # %pred.store.continue734
                                         #   in Loop: Header=BB1_45 Depth=2
-	vpickve2gr.h	$t3, $vr12, 5
+	vpickve2gr.h	$t3, $vr10, 5
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB1_58
 .LBB1_51:                               # %pred.store.continue736
                                         #   in Loop: Header=BB1_45 Depth=2
-	vpickve2gr.h	$t3, $vr12, 6
+	vpickve2gr.h	$t3, $vr10, 6
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB1_59
 .LBB1_52:                               # %pred.store.continue738
                                         #   in Loop: Header=BB1_45 Depth=2
-	vpickve2gr.h	$t3, $vr12, 7
+	vpickve2gr.h	$t3, $vr10, 7
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_44
 	b	.LBB1_60
@@ -795,43 +748,43 @@ matgen:                                 # @matgen
 .LBB1_53:                               # %pred.store.if
                                         #   in Loop: Header=BB1_45 Depth=2
 	xvstelm.w	$xr11, $t1, -16, 0
-	vpickve2gr.h	$t3, $vr12, 1
+	vpickve2gr.h	$t3, $vr10, 1
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_47
 .LBB1_54:                               # %pred.store.if727
                                         #   in Loop: Header=BB1_45 Depth=2
 	xvstelm.w	$xr11, $t1, -12, 1
-	vpickve2gr.h	$t3, $vr12, 2
+	vpickve2gr.h	$t3, $vr10, 2
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_48
 .LBB1_55:                               # %pred.store.if729
                                         #   in Loop: Header=BB1_45 Depth=2
 	xvstelm.w	$xr11, $t1, -8, 2
-	vpickve2gr.h	$t3, $vr12, 3
+	vpickve2gr.h	$t3, $vr10, 3
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_49
 .LBB1_56:                               # %pred.store.if731
                                         #   in Loop: Header=BB1_45 Depth=2
 	xvstelm.w	$xr11, $t1, -4, 3
-	vpickve2gr.h	$t3, $vr12, 4
+	vpickve2gr.h	$t3, $vr10, 4
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_50
 .LBB1_57:                               # %pred.store.if733
                                         #   in Loop: Header=BB1_45 Depth=2
 	xvstelm.w	$xr11, $t1, 0, 4
-	vpickve2gr.h	$t3, $vr12, 5
+	vpickve2gr.h	$t3, $vr10, 5
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_51
 .LBB1_58:                               # %pred.store.if735
                                         #   in Loop: Header=BB1_45 Depth=2
 	xvstelm.w	$xr11, $t1, 4, 5
-	vpickve2gr.h	$t3, $vr12, 6
+	vpickve2gr.h	$t3, $vr10, 6
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_52
 .LBB1_59:                               # %pred.store.if737
                                         #   in Loop: Header=BB1_45 Depth=2
 	xvstelm.w	$xr11, $t1, 8, 6
-	vpickve2gr.h	$t3, $vr12, 7
+	vpickve2gr.h	$t3, $vr10, 7
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_44
 .LBB1_60:                               # %pred.store.if739
@@ -853,10 +806,10 @@ matgen:                                 # @matgen
 	b	.LBB1_66
 	.p2align	4, , 16
 .LBB1_63:                               #   in Loop: Header=BB1_66 Depth=2
-	vldi	$vr7, -1264
+	vldi	$vr6, -1264
 .LBB1_64:                               # %.sink.split
                                         #   in Loop: Header=BB1_66 Depth=2
-	fstx.s	$fa7, $t0, $t1
+	fstx.s	$fa6, $t0, $t1
 .LBB1_65:                               #   in Loop: Header=BB1_66 Depth=2
 	addi.d	$t1, $t1, 4
 	addi.w	$t3, $t3, -1
@@ -869,11 +822,11 @@ matgen:                                 # @matgen
 	stx.w	$zero, $t0, $t1
 	beqz	$t5, .LBB1_63
 # %bb.67:                               #   in Loop: Header=BB1_66 Depth=2
-	fmov.s	$fa7, $fa0
+	fmov.s	$fa6, $fa0
 	beqz	$t4, .LBB1_64
 # %bb.68:                               #   in Loop: Header=BB1_66 Depth=2
 	addi.d	$t5, $t5, -4
-	fmov.s	$fa7, $fa1
+	fmov.s	$fa6, $fa1
 	bnez	$t5, .LBB1_65
 	b	.LBB1_64
 .LBB1_69:                               # %get_space.exit
@@ -1039,6 +992,7 @@ matgen:                                 # @matgen
 	ori	$a6, $zero, 8
 	movgr2fr.w	$fa1, $zero
 	xvrepli.w	$xr2, 1
+	xvrepli.b	$xr3, 0
 	b	.LBB1_91
 .LBB1_90:                               # %._crit_edge477
                                         #   in Loop: Header=BB1_91 Depth=1
@@ -1059,42 +1013,27 @@ matgen:                                 # @matgen
 .LBB1_93:                               # %vector.ph647
                                         #   in Loop: Header=BB1_91 Depth=1
 	add.d	$a7, $t0, $a5
-	xvreplgr2vr.d	$xr3, $a0
-	xvreplgr2vr.w	$xr4, $a0
-	xvsub.w	$xr4, $xr2, $xr4
+	xvreplgr2vr.d	$xr4, $a0
+	xvreplgr2vr.w	$xr5, $a0
+	xvsub.w	$xr5, $xr2, $xr5
 	move	$t1, $a4
-	xvori.b	$xr5, $xr0, 0
+	xvori.b	$xr6, $xr0, 0
 	.p2align	4, , 16
 .LBB1_94:                               # %vector.body654
                                         #   Parent Loop BB1_91 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvpermi.q	$xr6, $xr5, 1
-	vext2xv.du.wu	$xr6, $xr6
-	vext2xv.du.wu	$xr7, $xr5
-	xvslt.du	$xr7, $xr7, $xr3
-	xvpickve2gr.d	$t2, $xr7, 0
-	vinsgr2vr.w	$vr8, $t2, 0
-	xvpickve2gr.d	$t2, $xr7, 1
-	vinsgr2vr.w	$vr8, $t2, 1
-	xvpickve2gr.d	$t2, $xr7, 2
-	vinsgr2vr.w	$vr8, $t2, 2
-	xvpickve2gr.d	$t2, $xr7, 3
-	vinsgr2vr.w	$vr8, $t2, 3
-	xvslt.du	$xr6, $xr6, $xr3
-	xvpickve2gr.d	$t2, $xr6, 0
-	vinsgr2vr.w	$vr7, $t2, 0
-	xvpickve2gr.d	$t2, $xr6, 1
-	vinsgr2vr.w	$vr7, $t2, 1
-	xvpickve2gr.d	$t2, $xr6, 2
-	vinsgr2vr.w	$vr7, $t2, 2
-	xvpickve2gr.d	$t2, $xr6, 3
-	vinsgr2vr.w	$vr7, $t2, 3
-	xvpermi.q	$xr8, $xr7, 2
-	xvadd.w	$xr6, $xr5, $xr4
-	xvffint.s.wu	$xr6, $xr6
-	xvandn.v	$xr6, $xr8, $xr6
-	xvst	$xr6, $t0, 0
-	xvaddi.wu	$xr5, $xr5, 8
+	xvpermi.q	$xr7, $xr6, 1
+	vext2xv.du.wu	$xr7, $xr7
+	vext2xv.du.wu	$xr8, $xr6
+	xvslt.du	$xr8, $xr8, $xr4
+	xvslt.du	$xr7, $xr7, $xr4
+	xvpickev.w	$xr7, $xr7, $xr8
+	xvpermi.d	$xr7, $xr7, 216
+	xvadd.w	$xr8, $xr6, $xr5
+	xvffint.s.wu	$xr8, $xr8
+	xvbitsel.v	$xr7, $xr8, $xr3, $xr7
+	xvst	$xr7, $t0, 0
+	xvaddi.wu	$xr6, $xr6, 8
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB1_94
@@ -1113,11 +1052,11 @@ matgen:                                 # @matgen
                                         # =>  This Inner Loop Header: Depth=2
 	sltu	$t3, $t1, $a0
 	bstrpick.d	$t4, $t0, 31, 0
-	movgr2fr.d	$fa3, $t4
-	ffint.s.l	$fa3, $fa3
+	movgr2fr.d	$fa4, $t4
+	ffint.s.l	$fa4, $fa4
 	movgr2cf	$fcc0, $t3
-	fsel	$fa3, $fa3, $fa1, $fcc0
-	fst.s	$fa3, $a7, 0
+	fsel	$fa4, $fa4, $fa1, $fcc0
+	fst.s	$fa4, $a7, 0
 	addi.d	$a7, $a7, 4
 	addi.w	$t0, $t0, 1
 	addi.w	$t2, $t2, -1
@@ -1265,26 +1204,11 @@ matgen:                                 # @matgen
 	vext2xv.du.wu	$xr10, $xr10
 	vext2xv.du.wu	$xr11, $xr9
 	xvslt.du	$xr11, $xr6, $xr11
-	xvpickve2gr.d	$t2, $xr11, 0
-	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr11, 1
-	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr11, 2
-	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr11, 3
-	vinsgr2vr.w	$vr12, $t2, 3
 	xvslt.du	$xr10, $xr6, $xr10
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr11, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr11, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr11, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr11, $t2, 3
-	xvpermi.q	$xr12, $xr11, 2
-	xvaddi.wu	$xr10, $xr9, 1
-	xvbitsel.v	$xr10, $xr7, $xr10, $xr12
+	xvpickev.w	$xr10, $xr10, $xr11
+	xvpermi.d	$xr10, $xr10, 216
+	xvaddi.wu	$xr11, $xr9, 1
+	xvbitsel.v	$xr10, $xr7, $xr11, $xr10
 	xvffint.s.wu	$xr10, $xr10
 	xvfdiv.s	$xr10, $xr8, $xr10
 	xvpermi.d	$xr10, $xr10, 216
@@ -1609,26 +1533,11 @@ matgen:                                 # @matgen
 	vext2xv.du.wu	$xr10, $xr10
 	vext2xv.du.wu	$xr11, $xr9
 	xvslt.du	$xr11, $xr6, $xr11
-	xvpickve2gr.d	$t2, $xr11, 0
-	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr11, 1
-	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr11, 2
-	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr11, 3
-	vinsgr2vr.w	$vr12, $t2, 3
 	xvslt.du	$xr10, $xr6, $xr10
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr11, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr11, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr11, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr11, $t2, 3
-	xvpermi.q	$xr12, $xr11, 2
-	xvaddi.wu	$xr10, $xr9, 1
-	xvbitsel.v	$xr10, $xr7, $xr10, $xr12
+	xvpickev.w	$xr10, $xr10, $xr11
+	xvpermi.d	$xr10, $xr10, 216
+	xvaddi.wu	$xr11, $xr9, 1
+	xvbitsel.v	$xr10, $xr7, $xr11, $xr10
 	xvffint.s.wu	$xr10, $xr10
 	xvfdiv.s	$xr10, $xr10, $xr8
 	xvfmul.s	$xr10, $xr10, $xr1
@@ -1759,6 +1668,7 @@ matgen:                                 # @matgen
 	ori	$a6, $zero, 8
 	movgr2fr.w	$fa1, $zero
 	xvrepli.w	$xr2, 1
+	xvrepli.b	$xr3, 0
 	b	.LBB1_166
 .LBB1_165:                              # %._crit_edge485
                                         #   in Loop: Header=BB1_166 Depth=1
@@ -1779,42 +1689,27 @@ matgen:                                 # @matgen
 .LBB1_168:                              # %vector.ph666
                                         #   in Loop: Header=BB1_166 Depth=1
 	add.d	$a7, $t0, $a5
-	xvreplgr2vr.d	$xr3, $a0
-	xvreplgr2vr.w	$xr4, $a0
-	xvsub.w	$xr4, $xr2, $xr4
+	xvreplgr2vr.d	$xr4, $a0
+	xvreplgr2vr.w	$xr5, $a0
+	xvsub.w	$xr5, $xr2, $xr5
 	move	$t1, $a4
-	xvori.b	$xr5, $xr0, 0
+	xvori.b	$xr6, $xr0, 0
 	.p2align	4, , 16
 .LBB1_169:                              # %vector.body673
                                         #   Parent Loop BB1_166 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvpermi.q	$xr6, $xr5, 1
-	vext2xv.du.wu	$xr6, $xr6
-	vext2xv.du.wu	$xr7, $xr5
-	xvslt.du	$xr7, $xr3, $xr7
-	xvpickve2gr.d	$t2, $xr7, 0
-	vinsgr2vr.w	$vr8, $t2, 0
-	xvpickve2gr.d	$t2, $xr7, 1
-	vinsgr2vr.w	$vr8, $t2, 1
-	xvpickve2gr.d	$t2, $xr7, 2
-	vinsgr2vr.w	$vr8, $t2, 2
-	xvpickve2gr.d	$t2, $xr7, 3
-	vinsgr2vr.w	$vr8, $t2, 3
-	xvslt.du	$xr6, $xr3, $xr6
-	xvpickve2gr.d	$t2, $xr6, 0
-	vinsgr2vr.w	$vr7, $t2, 0
-	xvpickve2gr.d	$t2, $xr6, 1
-	vinsgr2vr.w	$vr7, $t2, 1
-	xvpickve2gr.d	$t2, $xr6, 2
-	vinsgr2vr.w	$vr7, $t2, 2
-	xvpickve2gr.d	$t2, $xr6, 3
-	vinsgr2vr.w	$vr7, $t2, 3
-	xvpermi.q	$xr8, $xr7, 2
-	xvadd.w	$xr6, $xr5, $xr4
-	xvffint.s.w	$xr6, $xr6
-	xvandn.v	$xr6, $xr8, $xr6
-	xvst	$xr6, $t0, 0
-	xvaddi.wu	$xr5, $xr5, 8
+	xvpermi.q	$xr7, $xr6, 1
+	vext2xv.du.wu	$xr7, $xr7
+	vext2xv.du.wu	$xr8, $xr6
+	xvslt.du	$xr8, $xr4, $xr8
+	xvslt.du	$xr7, $xr4, $xr7
+	xvpickev.w	$xr7, $xr7, $xr8
+	xvpermi.d	$xr7, $xr7, 216
+	xvadd.w	$xr8, $xr6, $xr5
+	xvffint.s.w	$xr8, $xr8
+	xvbitsel.v	$xr7, $xr8, $xr3, $xr7
+	xvst	$xr7, $t0, 0
+	xvaddi.wu	$xr6, $xr6, 8
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB1_169
@@ -1832,11 +1727,11 @@ matgen:                                 # @matgen
                                         #   Parent Loop BB1_166 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	sltu	$t3, $a0, $t1
-	movgr2fr.w	$fa3, $t0
-	ffint.s.w	$fa3, $fa3
+	movgr2fr.w	$fa4, $t0
+	ffint.s.w	$fa4, $fa4
 	movgr2cf	$fcc0, $t3
-	fsel	$fa3, $fa3, $fa1, $fcc0
-	fst.s	$fa3, $a7, 0
+	fsel	$fa4, $fa4, $fa1, $fcc0
+	fst.s	$fa4, $a7, 0
 	addi.d	$a7, $a7, 4
 	addi.w	$t0, $t0, 1
 	addi.w	$t2, $t2, -1

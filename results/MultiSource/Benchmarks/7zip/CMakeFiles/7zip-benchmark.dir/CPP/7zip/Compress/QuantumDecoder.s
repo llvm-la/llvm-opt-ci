@@ -498,42 +498,11 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
 	.p2align	4, , 16
 .LBB0_33:                               # %vector.body92
                                         # =>This Inner Loop Header: Depth=1
-	xvsub.w	$xr4, $xr3, $xr1
-	xvsub.w	$xr5, $xr3, $xr2
-	xvpickve2gr.w	$t3, $xr5, 0
-	vinsgr2vr.h	$vr6, $t3, 0
-	xvpickve2gr.w	$t3, $xr5, 1
-	vinsgr2vr.h	$vr6, $t3, 1
-	xvpickve2gr.w	$t3, $xr5, 2
-	vinsgr2vr.h	$vr6, $t3, 2
-	xvpickve2gr.w	$t3, $xr5, 3
-	vinsgr2vr.h	$vr6, $t3, 3
-	xvpickve2gr.w	$t3, $xr5, 4
-	vinsgr2vr.h	$vr6, $t3, 4
-	xvpickve2gr.w	$t3, $xr5, 5
-	vinsgr2vr.h	$vr6, $t3, 5
-	xvpickve2gr.w	$t3, $xr5, 6
-	vinsgr2vr.h	$vr6, $t3, 6
-	xvpickve2gr.w	$t3, $xr5, 7
-	vinsgr2vr.h	$vr6, $t3, 7
-	xvpickve2gr.w	$t3, $xr4, 0
-	vinsgr2vr.h	$vr5, $t3, 0
-	xvpickve2gr.w	$t3, $xr4, 1
-	vinsgr2vr.h	$vr5, $t3, 1
-	xvpickve2gr.w	$t3, $xr4, 2
-	vinsgr2vr.h	$vr5, $t3, 2
-	xvpickve2gr.w	$t3, $xr4, 3
-	vinsgr2vr.h	$vr5, $t3, 3
-	xvpickve2gr.w	$t3, $xr4, 4
-	vinsgr2vr.h	$vr5, $t3, 4
-	xvpickve2gr.w	$t3, $xr4, 5
-	vinsgr2vr.h	$vr5, $t3, 5
-	xvpickve2gr.w	$t3, $xr4, 6
-	vinsgr2vr.h	$vr5, $t3, 6
-	xvpickve2gr.w	$t3, $xr4, 7
-	vinsgr2vr.h	$vr5, $t3, 7
-	xvpermi.q	$xr6, $xr5, 2
-	xvst	$xr6, $a7, 0
+	xvsub.w	$xr4, $xr3, $xr2
+	xvsub.w	$xr5, $xr3, $xr1
+	xvpickev.h	$xr4, $xr5, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvst	$xr4, $a7, 0
 	vst	$vr0, $t0, 0
 	xvaddi.wu	$xr2, $xr2, 16
 	xvaddi.wu	$xr1, $xr1, 16
@@ -594,42 +563,11 @@ _ZN9NCompress8NQuantum8CDecoder4InitEv: # @_ZN9NCompress8NQuantum8CDecoder4InitE
 	.p2align	4, , 16
 .LBB0_40:                               # %vector.body133
                                         # =>This Inner Loop Header: Depth=1
-	xvsub.w	$xr4, $xr3, $xr0
-	xvsub.w	$xr5, $xr3, $xr1
-	xvpickve2gr.w	$t2, $xr5, 0
-	vinsgr2vr.h	$vr6, $t2, 0
-	xvpickve2gr.w	$t2, $xr5, 1
-	vinsgr2vr.h	$vr6, $t2, 1
-	xvpickve2gr.w	$t2, $xr5, 2
-	vinsgr2vr.h	$vr6, $t2, 2
-	xvpickve2gr.w	$t2, $xr5, 3
-	vinsgr2vr.h	$vr6, $t2, 3
-	xvpickve2gr.w	$t2, $xr5, 4
-	vinsgr2vr.h	$vr6, $t2, 4
-	xvpickve2gr.w	$t2, $xr5, 5
-	vinsgr2vr.h	$vr6, $t2, 5
-	xvpickve2gr.w	$t2, $xr5, 6
-	vinsgr2vr.h	$vr6, $t2, 6
-	xvpickve2gr.w	$t2, $xr5, 7
-	vinsgr2vr.h	$vr6, $t2, 7
-	xvpickve2gr.w	$t2, $xr4, 0
-	vinsgr2vr.h	$vr5, $t2, 0
-	xvpickve2gr.w	$t2, $xr4, 1
-	vinsgr2vr.h	$vr5, $t2, 1
-	xvpickve2gr.w	$t2, $xr4, 2
-	vinsgr2vr.h	$vr5, $t2, 2
-	xvpickve2gr.w	$t2, $xr4, 3
-	vinsgr2vr.h	$vr5, $t2, 3
-	xvpickve2gr.w	$t2, $xr4, 4
-	vinsgr2vr.h	$vr5, $t2, 4
-	xvpickve2gr.w	$t2, $xr4, 5
-	vinsgr2vr.h	$vr5, $t2, 5
-	xvpickve2gr.w	$t2, $xr4, 6
-	vinsgr2vr.h	$vr5, $t2, 6
-	xvpickve2gr.w	$t2, $xr4, 7
-	vinsgr2vr.h	$vr5, $t2, 7
-	xvpermi.q	$xr6, $xr5, 2
-	xvst	$xr6, $a6, 0
+	xvsub.w	$xr4, $xr3, $xr1
+	xvsub.w	$xr5, $xr3, $xr0
+	xvpickev.h	$xr4, $xr5, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvst	$xr4, $a6, 0
 	vst	$vr2, $a7, 0
 	xvaddi.wu	$xr1, $xr1, 16
 	xvaddi.wu	$xr0, $xr0, 16
@@ -1416,40 +1354,9 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	xvaddi.wu	$xr2, $xr2, 1
 	xvsrli.w	$xr3, $xr3, 1
 	xvsrli.w	$xr2, $xr2, 1
-	xvpickve2gr.w	$a6, $xr3, 0
-	vinsgr2vr.h	$vr4, $a6, 0
-	xvpickve2gr.w	$a6, $xr3, 1
-	vinsgr2vr.h	$vr4, $a6, 1
-	xvpickve2gr.w	$a6, $xr3, 2
-	vinsgr2vr.h	$vr4, $a6, 2
-	xvpickve2gr.w	$a6, $xr3, 3
-	vinsgr2vr.h	$vr4, $a6, 3
-	xvpickve2gr.w	$a6, $xr3, 4
-	vinsgr2vr.h	$vr4, $a6, 4
-	xvpickve2gr.w	$a6, $xr3, 5
-	vinsgr2vr.h	$vr4, $a6, 5
-	xvpickve2gr.w	$a6, $xr3, 6
-	vinsgr2vr.h	$vr4, $a6, 6
-	xvpickve2gr.w	$a6, $xr3, 7
-	vinsgr2vr.h	$vr4, $a6, 7
-	xvpickve2gr.w	$a6, $xr2, 0
-	vinsgr2vr.h	$vr3, $a6, 0
-	xvpickve2gr.w	$a6, $xr2, 1
-	vinsgr2vr.h	$vr3, $a6, 1
-	xvpickve2gr.w	$a6, $xr2, 2
-	vinsgr2vr.h	$vr3, $a6, 2
-	xvpickve2gr.w	$a6, $xr2, 3
-	vinsgr2vr.h	$vr3, $a6, 3
-	xvpickve2gr.w	$a6, $xr2, 4
-	vinsgr2vr.h	$vr3, $a6, 4
-	xvpickve2gr.w	$a6, $xr2, 5
-	vinsgr2vr.h	$vr3, $a6, 5
-	xvpickve2gr.w	$a6, $xr2, 6
-	vinsgr2vr.h	$vr3, $a6, 6
-	xvpickve2gr.w	$a6, $xr2, 7
-	vinsgr2vr.h	$vr3, $a6, 7
-	xvpermi.q	$xr3, $xr4, 2
-	xvst	$xr3, $a4, -2
+	xvpickev.h	$xr2, $xr3, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvst	$xr2, $a4, -2
 	addi.d	$a5, $a5, -16
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB2_24

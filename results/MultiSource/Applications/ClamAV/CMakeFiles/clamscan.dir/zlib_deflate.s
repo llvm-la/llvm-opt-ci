@@ -727,28 +727,14 @@ fill_window:                            # @fill_window
 	addi.d	$a5, $a5, -16
 	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
 	xvmin.wu	$xr0, $xr0, $xr1
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	.p2align	4, , 16
 .LBB5_7:                                # %vec.epilog.vector.body157
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr1, $a5, 0
-	xvpickve2gr.w	$a6, $xr0, 0
-	vinsgr2vr.h	$vr2, $a6, 0
-	xvpickve2gr.w	$a6, $xr0, 1
-	vinsgr2vr.h	$vr2, $a6, 1
-	xvpickve2gr.w	$a6, $xr0, 2
-	vinsgr2vr.h	$vr2, $a6, 2
-	xvpickve2gr.w	$a6, $xr0, 3
-	vinsgr2vr.h	$vr2, $a6, 3
-	xvpickve2gr.w	$a6, $xr0, 4
-	vinsgr2vr.h	$vr2, $a6, 4
-	xvpickve2gr.w	$a6, $xr0, 5
-	vinsgr2vr.h	$vr2, $a6, 5
-	xvpickve2gr.w	$a6, $xr0, 6
-	vinsgr2vr.h	$vr2, $a6, 6
-	xvpickve2gr.w	$a6, $xr0, 7
-	vinsgr2vr.h	$vr2, $a6, 7
-	vssub.hu	$vr1, $vr1, $vr2
+	vssub.hu	$vr1, $vr1, $vr0
 	vst	$vr1, $a5, 0
 	addi.d	$a7, $a7, 8
 	addi.d	$a5, $a5, -16
@@ -768,38 +754,15 @@ fill_window:                            # @fill_window
 	addi.d	$t2, $a7, -32
 	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
 	xvmin.wu	$xr1, $xr0, $xr1
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
 	move	$t3, $t0
 	.p2align	4, , 16
 .LBB5_10:                               # %vector.body137
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr2, $t2, 0
-	xvpickve2gr.w	$t4, $xr1, 0
-	vinsgr2vr.h	$vr3, $t4, 0
-	xvpickve2gr.w	$t5, $xr1, 1
-	vinsgr2vr.h	$vr3, $t5, 1
-	xvpickve2gr.w	$t6, $xr1, 2
-	vinsgr2vr.h	$vr3, $t6, 2
-	xvpickve2gr.w	$t7, $xr1, 3
-	vinsgr2vr.h	$vr3, $t7, 3
-	xvpickve2gr.w	$t8, $xr1, 4
-	vinsgr2vr.h	$vr3, $t8, 4
-	xvpickve2gr.w	$s1, $xr1, 5
-	vinsgr2vr.h	$vr3, $s1, 5
-	xvpickve2gr.w	$s2, $xr1, 6
-	vinsgr2vr.h	$vr3, $s2, 6
-	xvpickve2gr.w	$s8, $xr1, 7
-	vinsgr2vr.h	$vr3, $s8, 7
-	vinsgr2vr.h	$vr4, $t4, 0
-	vinsgr2vr.h	$vr4, $t5, 1
-	vinsgr2vr.h	$vr4, $t6, 2
-	vinsgr2vr.h	$vr4, $t7, 3
-	vinsgr2vr.h	$vr4, $t8, 4
-	vinsgr2vr.h	$vr4, $s1, 5
-	vinsgr2vr.h	$vr4, $s2, 6
-	vinsgr2vr.h	$vr4, $s8, 7
-	xvpermi.q	$xr3, $xr4, 2
-	xvssub.hu	$xr2, $xr2, $xr3
+	xvssub.hu	$xr2, $xr2, $xr1
 	xvst	$xr2, $t2, 0
 	addi.d	$t3, $t3, -16
 	addi.d	$t2, $t2, -32
@@ -861,28 +824,14 @@ fill_window:                            # @fill_window
 	addi.d	$a5, $a5, -16
 	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
 	xvmin.wu	$xr0, $xr0, $xr1
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	.p2align	4, , 16
 .LBB5_20:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr1, $a5, 0
-	xvpickve2gr.w	$a7, $xr0, 0
-	vinsgr2vr.h	$vr2, $a7, 0
-	xvpickve2gr.w	$a7, $xr0, 1
-	vinsgr2vr.h	$vr2, $a7, 1
-	xvpickve2gr.w	$a7, $xr0, 2
-	vinsgr2vr.h	$vr2, $a7, 2
-	xvpickve2gr.w	$a7, $xr0, 3
-	vinsgr2vr.h	$vr2, $a7, 3
-	xvpickve2gr.w	$a7, $xr0, 4
-	vinsgr2vr.h	$vr2, $a7, 4
-	xvpickve2gr.w	$a7, $xr0, 5
-	vinsgr2vr.h	$vr2, $a7, 5
-	xvpickve2gr.w	$a7, $xr0, 6
-	vinsgr2vr.h	$vr2, $a7, 6
-	xvpickve2gr.w	$a7, $xr0, 7
-	vinsgr2vr.h	$vr2, $a7, 7
-	vssub.hu	$vr1, $vr1, $vr2
+	vssub.hu	$vr1, $vr1, $vr0
 	vst	$vr1, $a5, 0
 	addi.d	$a6, $a6, 8
 	addi.d	$a5, $a5, -16
@@ -903,38 +852,15 @@ fill_window:                            # @fill_window
 	addi.d	$t1, $a6, -32
 	xvld	$xr1, $sp, 16                   # 32-byte Folded Reload
 	xvmin.wu	$xr0, $xr0, $xr1
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	move	$t2, $a7
 	.p2align	4, , 16
 .LBB5_23:                               # %vector.body
                                         #   Parent Loop BB5_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr1, $t1, 0
-	xvpickve2gr.w	$t3, $xr0, 0
-	vinsgr2vr.h	$vr2, $t3, 0
-	xvpickve2gr.w	$t4, $xr0, 1
-	vinsgr2vr.h	$vr2, $t4, 1
-	xvpickve2gr.w	$t5, $xr0, 2
-	vinsgr2vr.h	$vr2, $t5, 2
-	xvpickve2gr.w	$t6, $xr0, 3
-	vinsgr2vr.h	$vr2, $t6, 3
-	xvpickve2gr.w	$t7, $xr0, 4
-	vinsgr2vr.h	$vr2, $t7, 4
-	xvpickve2gr.w	$t8, $xr0, 5
-	vinsgr2vr.h	$vr2, $t8, 5
-	xvpickve2gr.w	$s1, $xr0, 6
-	vinsgr2vr.h	$vr2, $s1, 6
-	xvpickve2gr.w	$s2, $xr0, 7
-	vinsgr2vr.h	$vr2, $s2, 7
-	vinsgr2vr.h	$vr3, $t3, 0
-	vinsgr2vr.h	$vr3, $t4, 1
-	vinsgr2vr.h	$vr3, $t5, 2
-	vinsgr2vr.h	$vr3, $t6, 3
-	vinsgr2vr.h	$vr3, $t7, 4
-	vinsgr2vr.h	$vr3, $t8, 5
-	vinsgr2vr.h	$vr3, $s1, 6
-	vinsgr2vr.h	$vr3, $s2, 7
-	xvpermi.q	$xr2, $xr3, 2
-	xvssub.hu	$xr1, $xr1, $xr2
+	xvssub.hu	$xr1, $xr1, $xr0
 	xvst	$xr1, $t1, 0
 	addi.d	$t2, $t2, -16
 	addi.d	$t1, $t1, -32
@@ -2944,9 +2870,6 @@ deflate:                                # @deflate
 	.type	slide_hash,@function
 slide_hash:                             # @slide_hash
 # %bb.0:                                # %iter.check
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	ld.wu	$a5, $a0, 132
 	ld.d	$a6, $a0, 120
 	ld.wu	$a1, $a0, 80
@@ -2979,23 +2902,9 @@ slide_hash:                             # @slide_hash
 	sub.d	$a5, $a5, $t0
 	add.d	$a5, $a5, $a6
 	addi.d	$a5, $a5, -16
-	xvmin.wu	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr1, 0
-	vinsgr2vr.h	$vr0, $a6, 0
-	xvpickve2gr.w	$a6, $xr1, 1
-	vinsgr2vr.h	$vr0, $a6, 1
-	xvpickve2gr.w	$a6, $xr1, 2
-	vinsgr2vr.h	$vr0, $a6, 2
-	xvpickve2gr.w	$a6, $xr1, 3
-	vinsgr2vr.h	$vr0, $a6, 3
-	xvpickve2gr.w	$a6, $xr1, 4
-	vinsgr2vr.h	$vr0, $a6, 4
-	xvpickve2gr.w	$a6, $xr1, 5
-	vinsgr2vr.h	$vr0, $a6, 5
-	xvpickve2gr.w	$a6, $xr1, 6
-	vinsgr2vr.h	$vr0, $a6, 6
-	xvpickve2gr.w	$a6, $xr1, 7
-	vinsgr2vr.h	$vr0, $a6, 7
+	xvmin.wu	$xr0, $xr0, $xr1
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	.p2align	4, , 16
 .LBB13_5:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -3016,32 +2925,9 @@ slide_hash:                             # @slide_hash
 	sub.d	$a4, $a7, $a2
 	sub.d	$a2, $a5, $t0
 	addi.d	$t2, $a7, -32
-	xvmin.wu	$xr3, $xr0, $xr1
-	xvpickve2gr.w	$t3, $xr3, 0
-	vinsgr2vr.h	$vr2, $t3, 0
-	xvpickve2gr.w	$t4, $xr3, 1
-	vinsgr2vr.h	$vr2, $t4, 1
-	xvpickve2gr.w	$t5, $xr3, 2
-	vinsgr2vr.h	$vr2, $t5, 2
-	xvpickve2gr.w	$t6, $xr3, 3
-	vinsgr2vr.h	$vr2, $t6, 3
-	xvpickve2gr.w	$t7, $xr3, 4
-	vinsgr2vr.h	$vr2, $t7, 4
-	xvpickve2gr.w	$t8, $xr3, 5
-	vinsgr2vr.h	$vr2, $t8, 5
-	xvpickve2gr.w	$fp, $xr3, 6
-	vinsgr2vr.h	$vr2, $fp, 6
-	xvpickve2gr.w	$s0, $xr3, 7
-	vinsgr2vr.h	$vr2, $s0, 7
-	vinsgr2vr.h	$vr3, $t3, 0
-	vinsgr2vr.h	$vr3, $t4, 1
-	vinsgr2vr.h	$vr3, $t5, 2
-	vinsgr2vr.h	$vr3, $t6, 3
-	vinsgr2vr.h	$vr3, $t7, 4
-	vinsgr2vr.h	$vr3, $t8, 5
-	vinsgr2vr.h	$vr3, $fp, 6
-	vinsgr2vr.h	$vr3, $s0, 7
-	xvpermi.q	$xr2, $xr3, 2
+	xvmin.wu	$xr2, $xr0, $xr1
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
 	move	$t3, $t0
 	.p2align	4, , 16
 .LBB13_8:                               # %vector.body
@@ -3100,23 +2986,9 @@ slide_hash:                             # @slide_hash
 	add.d	$a4, $a6, $a4
 	addi.d	$a4, $a4, -16
 	xvldi	$xr1, -2305
-	xvmin.wu	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$a6, $xr1, 0
-	vinsgr2vr.h	$vr0, $a6, 0
-	xvpickve2gr.w	$a6, $xr1, 1
-	vinsgr2vr.h	$vr0, $a6, 1
-	xvpickve2gr.w	$a6, $xr1, 2
-	vinsgr2vr.h	$vr0, $a6, 2
-	xvpickve2gr.w	$a6, $xr1, 3
-	vinsgr2vr.h	$vr0, $a6, 3
-	xvpickve2gr.w	$a6, $xr1, 4
-	vinsgr2vr.h	$vr0, $a6, 4
-	xvpickve2gr.w	$a6, $xr1, 5
-	vinsgr2vr.h	$vr0, $a6, 5
-	xvpickve2gr.w	$a6, $xr1, 6
-	vinsgr2vr.h	$vr0, $a6, 6
-	xvpickve2gr.w	$a6, $xr1, 7
-	vinsgr2vr.h	$vr0, $a6, 7
+	xvmin.wu	$xr0, $xr0, $xr1
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	.p2align	4, , 16
 .LBB13_18:                              # %vec.epilog.vector.body68
                                         # =>This Inner Loop Header: Depth=1
@@ -3139,32 +3011,9 @@ slide_hash:                             # @slide_hash
 	xvreplgr2vr.w	$xr0, $a1
 	addi.d	$t0, $a5, -32
 	xvldi	$xr1, -2305
-	xvmin.wu	$xr1, $xr0, $xr1
-	xvpickve2gr.w	$t1, $xr1, 0
-	vinsgr2vr.h	$vr0, $t1, 0
-	xvpickve2gr.w	$t2, $xr1, 1
-	vinsgr2vr.h	$vr0, $t2, 1
-	xvpickve2gr.w	$t3, $xr1, 2
-	vinsgr2vr.h	$vr0, $t3, 2
-	xvpickve2gr.w	$t4, $xr1, 3
-	vinsgr2vr.h	$vr0, $t4, 3
-	xvpickve2gr.w	$t5, $xr1, 4
-	vinsgr2vr.h	$vr0, $t5, 4
-	xvpickve2gr.w	$t6, $xr1, 5
-	vinsgr2vr.h	$vr0, $t6, 5
-	xvpickve2gr.w	$t7, $xr1, 6
-	vinsgr2vr.h	$vr0, $t7, 6
-	xvpickve2gr.w	$t8, $xr1, 7
-	vinsgr2vr.h	$vr0, $t8, 7
-	vinsgr2vr.h	$vr1, $t1, 0
-	vinsgr2vr.h	$vr1, $t2, 1
-	vinsgr2vr.h	$vr1, $t3, 2
-	vinsgr2vr.h	$vr1, $t4, 3
-	vinsgr2vr.h	$vr1, $t5, 4
-	vinsgr2vr.h	$vr1, $t6, 5
-	vinsgr2vr.h	$vr1, $t7, 6
-	vinsgr2vr.h	$vr1, $t8, 7
-	xvpermi.q	$xr0, $xr1, 2
+	xvmin.wu	$xr0, $xr0, $xr1
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
 	move	$t1, $a6
 	.p2align	4, , 16
 .LBB13_21:                              # %vector.body48
@@ -3193,9 +3042,6 @@ slide_hash:                             # @slide_hash
 	addi.d	$a2, $a2, -2
 	bnez	$a0, .LBB13_25
 .LBB13_26:                              # %.loopexit
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end13:
 	.size	slide_hash, .Lfunc_end13-slide_hash

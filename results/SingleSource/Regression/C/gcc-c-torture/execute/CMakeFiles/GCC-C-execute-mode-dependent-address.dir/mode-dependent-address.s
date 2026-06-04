@@ -42,14 +42,10 @@ f883b:                                  # @f883b
 	vsra.w	$vr2, $vr2, $vr3
 	vadd.w	$vr2, $vr2, $vr1
 	vsrli.w	$vr2, $vr2, 7
-	xvpickve2gr.d	$a6, $xr4, 0
-	vinsgr2vr.b	$vr3, $a6, 0
-	xvpickve2gr.d	$a6, $xr4, 1
-	vinsgr2vr.b	$vr3, $a6, 1
-	xvpickve2gr.d	$a6, $xr4, 2
-	vinsgr2vr.b	$vr3, $a6, 2
-	xvpickve2gr.d	$a6, $xr4, 3
-	vinsgr2vr.b	$vr3, $a6, 3
+	xvpickev.w	$xr3, $xr4, $xr4
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpickev.b	$xr3, $xr3, $xr3
 	vshuf.b	$vr2, $vr0, $vr2, $vr0
 	vori.b	$vr2, $vr2, 251
 	vand.v	$vr2, $vr2, $vr3
@@ -646,14 +642,10 @@ main:                                   # @main
 	vsra.w	$vr2, $vr2, $vr3
 	vadd.w	$vr2, $vr2, $vr1
 	vsrli.w	$vr2, $vr2, 7
-	xvpickve2gr.d	$t8, $xr4, 0
-	vinsgr2vr.b	$vr3, $t8, 0
-	xvpickve2gr.d	$t8, $xr4, 1
-	vinsgr2vr.b	$vr3, $t8, 1
-	xvpickve2gr.d	$t8, $xr4, 2
-	vinsgr2vr.b	$vr3, $t8, 2
-	xvpickve2gr.d	$t8, $xr4, 3
-	vinsgr2vr.b	$vr3, $t8, 3
+	xvpickev.w	$xr3, $xr4, $xr4
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpickev.b	$xr3, $xr3, $xr3
 	vshuf.b	$vr2, $vr0, $vr2, $vr0
 	vori.b	$vr2, $vr2, 251
 	vand.v	$vr2, $vr2, $vr3

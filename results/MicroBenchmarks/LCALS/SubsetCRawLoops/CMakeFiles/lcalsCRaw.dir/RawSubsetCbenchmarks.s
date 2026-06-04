@@ -3133,38 +3133,38 @@ _ZL13BM_PIC_1D_RAWRN9benchmark5StateE:  # @_ZL13BM_PIC_1D_RAWRN9benchmark5StateE
 	alsl.d	$a3, $t6, $s3, 3
 	alsl.d	$a4, $t6, $s5, 3
 	alsl.d	$a5, $t6, $s2, 3
-	vinsgr2vr.d	$vr0, $a4, 0
-	alsl.d	$a6, $t6, $s7, 3
-	vori.b	$vr1, $vr0, 0
-	vinsgr2vr.d	$vr2, $a2, 0
-	vinsgr2vr.d	$vr1, $a1, 1
-	vori.b	$vr7, $vr2, 0
-	vinsgr2vr.d	$vr7, $a1, 1
+	vinsgr2vr.d	$vr1, $a2, 0
 	vinsgr2vr.d	$vr3, $a1, 0
-	xvpermi.q	$xr7, $xr1, 2
-	vori.b	$vr4, $vr3, 0
-	vinsgr2vr.d	$vr4, $a3, 1
+	alsl.d	$a6, $t6, $s7, 3
+	vori.b	$vr2, $vr1, 0
+	vori.b	$vr0, $vr3, 0
+	vinsgr2vr.d	$vr0, $a3, 1
 	vinsgr2vr.d	$vr2, $a5, 1
-	xvori.b	$xr8, $xr4, 0
-	xvpermi.q	$xr8, $xr2, 2
+	xvori.b	$xr6, $xr0, 0
+	vinsgr2vr.d	$vr4, $a4, 0
+	xvpermi.q	$xr6, $xr2, 2
+	vori.b	$vr2, $vr4, 0
+	vinsgr2vr.d	$vr2, $a1, 1
+	vinsgr2vr.d	$vr1, $a1, 1
+	xvpermi.q	$xr1, $xr2, 2
+	vinsgr2vr.d	$vr4, $a2, 1
+	vinsgr2vr.d	$vr2, $a6, 0
+	vinsgr2vr.d	$vr2, $a2, 1
+	xvpermi.q	$xr2, $xr4, 2
 	vinsgr2vr.d	$vr3, $a5, 1
-	xvpermi.q	$xr4, $xr3, 2
-	vinsgr2vr.d	$vr0, $a2, 1
-	vinsgr2vr.d	$vr6, $a6, 0
-	vinsgr2vr.d	$vr6, $a2, 1
-	vinsgr2vr.d	$vr5, $t7, 0
-	xvpermi.q	$xr6, $xr0, 2
-	vori.b	$vr2, $vr5, 0
-	xvinsgr2vr.d	$xr0, $a6, 0
-	xvinsgr2vr.d	$xr0, $a4, 1
-	xvinsgr2vr.d	$xr0, $a3, 2
-	xvpermi.d	$xr0, $xr0, 36
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s5, 1
-	xvinsgr2vr.d	$xr3, $a2, 0
-	xvinsgr2vr.d	$xr3, $a3, 1
-	xvinsgr2vr.d	$xr3, $a5, 2
-	xvpermi.d	$xr3, $xr3, 100
+	vinsgr2vr.d	$vr7, $t7, 0
+	xvpermi.q	$xr0, $xr3, 2
+	vori.b	$vr5, $vr7, 0
+	xvinsgr2vr.d	$xr3, $a6, 0
+	xvinsgr2vr.d	$xr3, $a4, 1
+	xvinsgr2vr.d	$xr3, $a3, 2
+	xvpermi.d	$xr3, $xr3, 36
+	vinsgr2vr.d	$vr4, $s7, 0
+	vinsgr2vr.d	$vr4, $s5, 1
+	xvinsgr2vr.d	$xr8, $a2, 0
+	xvinsgr2vr.d	$xr8, $a3, 1
+	xvinsgr2vr.d	$xr8, $a5, 2
+	xvpermi.d	$xr8, $xr8, 100
 	xvinsgr2vr.d	$xr9, $t7, 0
 	xvinsgr2vr.d	$xr9, $s5, 2
 	xvld	$xr15, $sp, 48                  # 32-byte Folded Reload
@@ -3178,90 +3178,50 @@ _ZL13BM_PIC_1D_RAWRN9benchmark5StateE:  # @_ZL13BM_PIC_1D_RAWRN9benchmark5StateE
 	xvori.b	$xr13, $xr16, 0
 	xvpermi.q	$xr13, $xr12, 2
 	xvpermi.d	$xr11, $xr11, 100
-	xvslt.du	$xr8, $xr11, $xr8
-	xvpickve2gr.d	$a1, $xr8, 0
-	vinsgr2vr.w	$vr11, $a1, 0
-	xvpickve2gr.d	$a1, $xr8, 1
-	vinsgr2vr.w	$vr11, $a1, 1
-	xvpickve2gr.d	$a1, $xr8, 2
-	vinsgr2vr.w	$vr11, $a1, 2
-	xvpickve2gr.d	$a1, $xr8, 3
-	vinsgr2vr.w	$vr11, $a1, 3
-	xvslt.du	$xr7, $xr13, $xr7
-	xvpickve2gr.d	$a1, $xr7, 0
-	vinsgr2vr.w	$vr8, $a1, 0
-	xvpickve2gr.d	$a1, $xr7, 1
-	vinsgr2vr.w	$vr8, $a1, 1
-	xvpickve2gr.d	$a1, $xr7, 2
-	vinsgr2vr.w	$vr8, $a1, 2
-	xvpickve2gr.d	$a1, $xr7, 3
-	vinsgr2vr.w	$vr8, $a1, 3
-	xvpermi.q	$xr8, $xr11, 2
-	vinsgr2vr.d	$vr7, $s5, 0
-	vextrins.d	$vr7, $vr16, 16
-	vextrins.d	$vr5, $vr16, 16
-	xvpermi.q	$xr5, $xr7, 2
+	xvslt.du	$xr1, $xr13, $xr1
+	xvslt.du	$xr6, $xr11, $xr6
+	xvpickev.w	$xr1, $xr6, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
 	xvinsve0.d	$xr10, $xr9, 2
 	xvpermi.q	$xr10, $xr16, 48
-	xvslt.du	$xr6, $xr10, $xr6
-	xvpickve2gr.d	$a1, $xr6, 0
-	vinsgr2vr.w	$vr7, $a1, 0
-	xvpickve2gr.d	$a1, $xr6, 1
-	vinsgr2vr.w	$vr7, $a1, 1
-	xvpickve2gr.d	$a1, $xr6, 2
-	vinsgr2vr.w	$vr7, $a1, 2
-	xvpickve2gr.d	$a1, $xr6, 3
-	vinsgr2vr.w	$vr7, $a1, 3
-	xvslt.du	$xr4, $xr5, $xr4
-	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.w	$vr5, $a1, 0
-	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.w	$vr5, $a1, 1
-	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.w	$vr5, $a1, 2
-	xvpickve2gr.d	$a1, $xr4, 3
-	vinsgr2vr.w	$vr5, $a1, 3
-	xvpermi.q	$xr5, $xr7, 2
-	xvand.v	$xr4, $xr8, $xr5
-	xvpickve2gr.w	$a1, $xr4, 0
-	vinsgr2vr.h	$vr5, $a1, 0
-	xvpickve2gr.w	$a1, $xr4, 1
-	vinsgr2vr.h	$vr5, $a1, 1
-	xvpickve2gr.w	$a1, $xr4, 2
-	vinsgr2vr.h	$vr5, $a1, 2
-	xvpickve2gr.w	$a1, $xr4, 3
-	vinsgr2vr.h	$vr5, $a1, 3
-	xvpickve2gr.w	$a1, $xr4, 4
-	vinsgr2vr.h	$vr5, $a1, 4
-	xvpickve2gr.w	$a1, $xr4, 5
-	vinsgr2vr.h	$vr5, $a1, 5
-	xvpickve2gr.w	$a1, $xr4, 6
-	vinsgr2vr.h	$vr5, $a1, 6
-	xvpickve2gr.w	$a1, $xr4, 7
-	vinsgr2vr.h	$vr5, $a1, 7
-	xvpermi.d	$xr4, $xr15, 68
+	vinsgr2vr.d	$vr6, $s5, 0
+	vextrins.d	$vr6, $vr16, 16
+	vextrins.d	$vr7, $vr16, 16
+	xvpermi.q	$xr7, $xr6, 2
+	xvslt.du	$xr0, $xr7, $xr0
+	xvslt.du	$xr2, $xr10, $xr2
+	xvpickev.w	$xr0, $xr2, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vand.v	$vr0, $vr1, $vr0
+	xvpermi.d	$xr1, $xr15, 68
 	pcalau12i	$a1, %pc_hi20(.LCPI20_0)
-	xvld	$xr6, $a1, %pc_lo12(.LCPI20_0)
-	xvpermi.d	$xr2, $xr2, 68
+	xvld	$xr2, $a1, %pc_lo12(.LCPI20_0)
+	xvpermi.d	$xr5, $xr5, 68
 	pcalau12i	$a1, %pc_hi20(.LCPI20_1)
-	xvld	$xr7, $a1, %pc_lo12(.LCPI20_1)
-	xvshuf.d	$xr6, $xr4, $xr2
-	xvslt.du	$xr0, $xr6, $xr0
-	xvpermi.d	$xr1, $xr1, 68
-	xvshuf.d	$xr7, $xr4, $xr1
-	xvslt.du	$xr1, $xr7, $xr3
-	xvand.v	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$a1, $xr0, 3
-	xvpickve2gr.d	$a2, $xr0, 2
-	xvpickve2gr.d	$a3, $xr0, 1
-	xvpickve2gr.d	$a4, $xr0, 0
-	vinsgr2vr.h	$vr0, $a4, 0
-	vinsgr2vr.h	$vr0, $a3, 1
-	vinsgr2vr.h	$vr0, $a2, 2
-	vinsgr2vr.h	$vr0, $a1, 3
-	vor.v	$vr0, $vr5, $vr0
-	vpermi.w	$vr5, $vr0, 228
-	vslli.h	$vr0, $vr5, 15
+	xvld	$xr6, $a1, %pc_lo12(.LCPI20_1)
+	xvshuf.d	$xr2, $xr1, $xr5
+	xvslt.du	$xr2, $xr2, $xr3
+	xvpermi.d	$xr3, $xr4, 68
+	xvshuf.d	$xr6, $xr1, $xr3
+	xvslt.du	$xr1, $xr6, $xr8
+	xvand.v	$xr1, $xr2, $xr1
+	xvpickev.w	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	vpickve2gr.w	$a1, $vr1, 0
+	vinsgr2vr.h	$vr2, $a1, 0
+	vpickve2gr.w	$a1, $vr1, 1
+	vinsgr2vr.h	$vr2, $a1, 1
+	vpickve2gr.w	$a1, $vr1, 2
+	vinsgr2vr.h	$vr2, $a1, 2
+	vpickve2gr.w	$a1, $vr1, 3
+	vinsgr2vr.h	$vr2, $a1, 3
+	vor.v	$vr1, $vr0, $vr2
+	vpermi.w	$vr0, $vr1, 228
+	vslli.h	$vr0, $vr0, 15
 	vmskltz.h	$vr0, $vr0
 	vpickve2gr.hu	$a3, $vr0, 0
 	bstrpick.d	$a1, $t6, 62, 2
@@ -4298,11 +4258,11 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	ld.d	$a7, $a0, 8
 	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$t0, $s3, 8
-	ori	$a1, $zero, 1
+	ori	$t1, $zero, 1
 	pcalau12i	$t4, %pc_hi20(.LCPI21_1)
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB21_74
+	ori	$a1, $zero, 4
+	bgeu	$a0, $a1, .LBB21_74
 # %bb.58:                               #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 56                    # 8-byte Folded Reload
@@ -4312,35 +4272,35 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	ori	$s0, $zero, 2
 .LBB21_60:                              # %scalar.ph384.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
-	alsl.d	$a0, $a1, $a3, 3
-	alsl.d	$a2, $a1, $a4, 3
-	alsl.d	$a3, $a1, $a5, 3
-	alsl.d	$a4, $a1, $a6, 3
-	alsl.d	$a5, $a1, $a7, 3
-	alsl.d	$a6, $a1, $t0, 3
-	ld.d	$a7, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a1, $a7, $a1
+	alsl.d	$a0, $t1, $a3, 3
+	alsl.d	$a1, $t1, $a4, 3
+	alsl.d	$a2, $t1, $a5, 3
+	alsl.d	$a3, $t1, $a6, 3
+	alsl.d	$a4, $t1, $a7, 3
+	alsl.d	$a5, $t1, $t0, 3
+	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
+	sub.d	$a6, $a6, $t1
 	.p2align	4, , 16
 .LBB21_61:                              # %scalar.ph384
                                         #   Parent Loop BB21_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa3, $a0, 0
-	fld.d	$fa4, $a2, 0
+	fld.d	$fa4, $a1, 0
 	fld.d	$fa5, $t4, %pc_lo12(.LCPI21_1)
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
-	fst.d	$fa3, $a3, 0
-	fld.d	$fa3, $a4, 0
-	fld.d	$fa4, $a5, 0
+	fst.d	$fa3, $a2, 0
+	fld.d	$fa3, $a3, 0
+	fld.d	$fa4, $a4, 0
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
-	fst.d	$fa3, $a6, 0
+	fst.d	$fa3, $a5, 0
 	addi.d	$a0, $a0, 8
+	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, 8
+	addi.d	$a6, $a6, -1
 	addi.d	$a5, $a5, 8
-	addi.d	$a1, $a1, -1
-	addi.d	$a6, $a6, 8
-	bnez	$a1, .LBB21_61
+	bnez	$a6, .LBB21_61
 .LBB21_62:                              # %._crit_edge.us213
                                         #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
@@ -4353,40 +4313,40 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a7, $a0, 16
 	ld.d	$t0, $s3, 16
-	ori	$a1, $zero, 1
+	ori	$t1, $zero, 1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB21_79
+	ori	$a1, $zero, 4
+	bgeu	$a0, $a1, .LBB21_79
 .LBB21_63:                              # %scalar.ph351.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a1
-	alsl.d	$a2, $a1, $t0, 3
-	alsl.d	$a7, $a1, $a7, 3
-	alsl.d	$a6, $a1, $a6, 3
-	alsl.d	$a5, $a1, $a5, 3
-	alsl.d	$a4, $a1, $a4, 3
-	alsl.d	$a1, $a1, $a3, 3
+	sub.d	$a0, $a0, $t1
+	alsl.d	$a1, $t1, $t0, 3
+	alsl.d	$a2, $t1, $a7, 3
+	alsl.d	$a6, $t1, $a6, 3
+	alsl.d	$a5, $t1, $a5, 3
+	alsl.d	$a4, $t1, $a4, 3
+	alsl.d	$a3, $t1, $a3, 3
 	.p2align	4, , 16
 .LBB21_64:                              # %scalar.ph351
                                         #   Parent Loop BB21_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa3, $a1, 0
+	fld.d	$fa3, $a3, 0
 	fld.d	$fa4, $a4, 0
 	fld.d	$fa5, $t4, %pc_lo12(.LCPI21_1)
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
 	fst.d	$fa3, $a5, 0
 	fld.d	$fa3, $a6, 0
-	fld.d	$fa4, $a7, 0
+	fld.d	$fa4, $a2, 0
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
-	fst.d	$fa3, $a2, 0
+	fst.d	$fa3, $a1, 0
 	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 8
-	addi.d	$a7, $a7, 8
 	addi.d	$a6, $a6, 8
 	addi.d	$a5, $a5, 8
 	addi.d	$a4, $a4, 8
-	addi.d	$a1, $a1, 8
+	addi.d	$a3, $a3, 8
 	bnez	$a0, .LBB21_64
 .LBB21_65:                              # %._crit_edge.us213.1
                                         #   in Loop: Header=BB21_4 Depth=1
@@ -4400,40 +4360,40 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a7, $a0, 24
 	ld.d	$t0, $s3, 24
-	ori	$a1, $zero, 1
+	ori	$t1, $zero, 1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB21_84
+	ori	$a1, $zero, 4
+	bgeu	$a0, $a1, .LBB21_84
 .LBB21_66:                              # %scalar.ph318.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a1
-	alsl.d	$a2, $a1, $t0, 3
-	alsl.d	$a7, $a1, $a7, 3
-	alsl.d	$a6, $a1, $a6, 3
-	alsl.d	$a5, $a1, $a5, 3
-	alsl.d	$a4, $a1, $a4, 3
-	alsl.d	$a1, $a1, $a3, 3
+	sub.d	$a0, $a0, $t1
+	alsl.d	$a1, $t1, $t0, 3
+	alsl.d	$a2, $t1, $a7, 3
+	alsl.d	$a6, $t1, $a6, 3
+	alsl.d	$a5, $t1, $a5, 3
+	alsl.d	$a4, $t1, $a4, 3
+	alsl.d	$a3, $t1, $a3, 3
 	.p2align	4, , 16
 .LBB21_67:                              # %scalar.ph318
                                         #   Parent Loop BB21_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa3, $a1, 0
+	fld.d	$fa3, $a3, 0
 	fld.d	$fa4, $a4, 0
 	fld.d	$fa5, $t4, %pc_lo12(.LCPI21_1)
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
 	fst.d	$fa3, $a5, 0
 	fld.d	$fa3, $a6, 0
-	fld.d	$fa4, $a7, 0
+	fld.d	$fa4, $a2, 0
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
-	fst.d	$fa3, $a2, 0
+	fst.d	$fa3, $a1, 0
 	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 8
-	addi.d	$a7, $a7, 8
 	addi.d	$a6, $a6, 8
 	addi.d	$a5, $a5, 8
 	addi.d	$a4, $a4, 8
-	addi.d	$a1, $a1, 8
+	addi.d	$a3, $a3, 8
 	bnez	$a0, .LBB21_67
 .LBB21_68:                              # %._crit_edge.us213.2
                                         #   in Loop: Header=BB21_4 Depth=1
@@ -4447,40 +4407,40 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a7, $a0, 32
 	ld.d	$t0, $s3, 32
-	ori	$a1, $zero, 1
+	ori	$t1, $zero, 1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB21_89
+	ori	$a1, $zero, 4
+	bgeu	$a0, $a1, .LBB21_89
 .LBB21_69:                              # %scalar.ph285.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a1
-	alsl.d	$a2, $a1, $t0, 3
-	alsl.d	$a7, $a1, $a7, 3
-	alsl.d	$a6, $a1, $a6, 3
-	alsl.d	$a5, $a1, $a5, 3
-	alsl.d	$a4, $a1, $a4, 3
-	alsl.d	$a1, $a1, $a3, 3
+	sub.d	$a0, $a0, $t1
+	alsl.d	$a1, $t1, $t0, 3
+	alsl.d	$a2, $t1, $a7, 3
+	alsl.d	$a6, $t1, $a6, 3
+	alsl.d	$a5, $t1, $a5, 3
+	alsl.d	$a4, $t1, $a4, 3
+	alsl.d	$a3, $t1, $a3, 3
 	.p2align	4, , 16
 .LBB21_70:                              # %scalar.ph285
                                         #   Parent Loop BB21_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa3, $a1, 0
+	fld.d	$fa3, $a3, 0
 	fld.d	$fa4, $a4, 0
 	fld.d	$fa5, $t4, %pc_lo12(.LCPI21_1)
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
 	fst.d	$fa3, $a5, 0
 	fld.d	$fa3, $a6, 0
-	fld.d	$fa4, $a7, 0
+	fld.d	$fa4, $a2, 0
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
-	fst.d	$fa3, $a2, 0
+	fst.d	$fa3, $a1, 0
 	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 8
-	addi.d	$a7, $a7, 8
 	addi.d	$a6, $a6, 8
 	addi.d	$a5, $a5, 8
 	addi.d	$a4, $a4, 8
-	addi.d	$a1, $a1, 8
+	addi.d	$a3, $a3, 8
 	bnez	$a0, .LBB21_70
 .LBB21_71:                              # %._crit_edge.us213.3
                                         #   in Loop: Header=BB21_4 Depth=1
@@ -4494,57 +4454,57 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a7, $a0, 40
 	ld.d	$t0, $s3, 40
-	ori	$a1, $zero, 1
+	ori	$t1, $zero, 1
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
-	ori	$a2, $zero, 4
-	bgeu	$a0, $a2, .LBB21_94
+	ori	$a1, $zero, 4
+	bgeu	$a0, $a1, .LBB21_94
 .LBB21_72:                              # %scalar.ph.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $a1
-	alsl.d	$a2, $a1, $t0, 3
-	alsl.d	$a7, $a1, $a7, 3
-	alsl.d	$a6, $a1, $a6, 3
-	alsl.d	$a5, $a1, $a5, 3
-	alsl.d	$a4, $a1, $a4, 3
-	alsl.d	$a1, $a1, $a3, 3
+	sub.d	$a0, $a0, $t1
+	alsl.d	$a1, $t1, $t0, 3
+	alsl.d	$a2, $t1, $a7, 3
+	alsl.d	$a6, $t1, $a6, 3
+	alsl.d	$a5, $t1, $a5, 3
+	alsl.d	$a4, $t1, $a4, 3
+	alsl.d	$a3, $t1, $a3, 3
 	.p2align	4, , 16
 .LBB21_73:                              # %scalar.ph
                                         #   Parent Loop BB21_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa3, $a1, 0
+	fld.d	$fa3, $a3, 0
 	fld.d	$fa4, $a4, 0
 	fld.d	$fa5, $t4, %pc_lo12(.LCPI21_1)
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
 	fst.d	$fa3, $a5, 0
 	fld.d	$fa3, $a6, 0
-	fld.d	$fa4, $a7, 0
+	fld.d	$fa4, $a2, 0
 	fmadd.d	$fa3, $fa4, $fa5, $fa3
-	fst.d	$fa3, $a2, 0
+	fst.d	$fa3, $a1, 0
 	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 8
-	addi.d	$a7, $a7, 8
 	addi.d	$a6, $a6, 8
 	addi.d	$a5, $a5, 8
 	addi.d	$a4, $a4, 8
-	addi.d	$a1, $a1, 8
+	addi.d	$a3, $a3, 8
 	bnez	$a0, .LBB21_73
 	b	.LBB21_3
 	.p2align	4, , 16
 .LBB21_74:                              # %vector.memcheck366
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a6
-	sub.d	$a2, $t0, $a4
-	sub.d	$t1, $t0, $a3
+	sub.d	$a1, $t0, $a4
+	sub.d	$a2, $t0, $a3
 	sub.d	$t2, $a7, $a5
 	sub.d	$t3, $a6, $a5
 	sub.d	$t5, $a5, $a4
 	sub.d	$t6, $a5, $a3
 	sub.d	$t7, $t0, $a5
-	vinsgr2vr.d	$vr3, $a2, 0
+	vinsgr2vr.d	$vr3, $a1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vinsgr2vr.d	$vr4, $t2, 0
-	vinsgr2vr.d	$vr4, $t1, 1
+	vinsgr2vr.d	$vr4, $a2, 1
 	xvpermi.q	$xr4, $xr3, 2
 	vinsgr2vr.d	$vr3, $t5, 0
 	vinsgr2vr.d	$vr3, $t3, 1
@@ -4552,27 +4512,30 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	vinsgr2vr.d	$vr5, $t6, 1
 	xvpermi.q	$xr5, $xr3, 2
 	xvslt.du	$xr3, $xr5, $xr0
-	xvpickve2gr.d	$a0, $xr3, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 1
-	sub.d	$a0, $a2, $a0
-	xvpickve2gr.d	$a2, $xr3, 2
-	bstrins.d	$a0, $a2, 2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	bstrins.d	$a0, $a2, 3, 3
-	xvslt.du	$xr3, $xr4, $xr0
-	xvpickve2gr.d	$a2, $xr3, 0
-	bstrins.d	$a0, $a2, 4, 4
-	xvpickve2gr.d	$a2, $xr3, 1
-	bstrins.d	$a0, $a2, 5, 5
-	xvpickve2gr.d	$a2, $xr3, 2
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a0, $a0, $a2
-	xvpickve2gr.d	$a2, $xr3, 3
-	slli.d	$a2, $a2, 7
-	or	$a0, $a0, $a2
+	xvslt.du	$xr4, $xr4, $xr0
+	xvpickev.w	$xr3, $xr4, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vpickve2gr.h	$a0, $vr3, 0
+	vpickve2gr.h	$a1, $vr3, 1
+	andi	$a1, $a1, 1
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr3, 2
+	bstrins.d	$a0, $a1, 2, 2
+	vpickve2gr.h	$a1, $vr3, 3
+	bstrins.d	$a0, $a1, 3, 3
+	vpickve2gr.h	$a1, $vr3, 4
+	bstrins.d	$a0, $a1, 4, 4
+	vpickve2gr.h	$a1, $vr3, 5
+	bstrins.d	$a0, $a1, 5, 5
+	vpickve2gr.h	$a1, $vr3, 6
+	andi	$a1, $a1, 1
+	slli.d	$a1, $a1, 6
+	or	$a0, $a0, $a1
+	vpickve2gr.h	$a1, $vr3, 7
+	slli.d	$a1, $a1, 7
+	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 56                    # 8-byte Folded Reload
@@ -4582,8 +4545,8 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a7
 	ori	$s0, $zero, 2
-	ori	$a2, $zero, 32
-	bltu	$a0, $a2, .LBB21_60
+	ori	$a1, $zero, 32
+	bltu	$a0, $a1, .LBB21_60
 # %bb.76:                               # %vector.body389.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	addi.d	$a0, $a3, 8
@@ -4615,7 +4578,7 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	bnez	$t5, .LBB21_77
 # %bb.78:                               # %middle.block396
                                         #   in Loop: Header=BB21_4 Depth=1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	bne	$a0, $t8, .LBB21_60
 	b	.LBB21_62
@@ -4623,17 +4586,17 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 .LBB21_79:                              # %vector.memcheck333
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a6
-	sub.d	$a2, $t0, $a4
-	sub.d	$t1, $t0, $a3
+	sub.d	$a1, $t0, $a4
+	sub.d	$a2, $t0, $a3
 	sub.d	$t2, $a7, $a5
 	sub.d	$t3, $a6, $a5
 	sub.d	$t5, $a5, $a4
 	sub.d	$t6, $a5, $a3
 	sub.d	$t7, $t0, $a5
-	vinsgr2vr.d	$vr3, $a2, 0
+	vinsgr2vr.d	$vr3, $a1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vinsgr2vr.d	$vr4, $t2, 0
-	vinsgr2vr.d	$vr4, $t1, 1
+	vinsgr2vr.d	$vr4, $a2, 1
 	xvpermi.q	$xr4, $xr3, 2
 	vinsgr2vr.d	$vr3, $t5, 0
 	vinsgr2vr.d	$vr3, $t3, 1
@@ -4641,34 +4604,37 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	vinsgr2vr.d	$vr5, $t6, 1
 	xvpermi.q	$xr5, $xr3, 2
 	xvslt.du	$xr3, $xr5, $xr0
-	xvpickve2gr.d	$a0, $xr3, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 1
-	sub.d	$a0, $a2, $a0
-	xvpickve2gr.d	$a2, $xr3, 2
-	bstrins.d	$a0, $a2, 2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	bstrins.d	$a0, $a2, 3, 3
-	xvslt.du	$xr3, $xr4, $xr0
-	xvpickve2gr.d	$a2, $xr3, 0
-	bstrins.d	$a0, $a2, 4, 4
-	xvpickve2gr.d	$a2, $xr3, 1
-	bstrins.d	$a0, $a2, 5, 5
-	xvpickve2gr.d	$a2, $xr3, 2
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a0, $a0, $a2
-	xvpickve2gr.d	$a2, $xr3, 3
-	slli.d	$a2, $a2, 7
-	or	$a0, $a0, $a2
+	xvslt.du	$xr4, $xr4, $xr0
+	xvpickev.w	$xr3, $xr4, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vpickve2gr.h	$a0, $vr3, 0
+	vpickve2gr.h	$a1, $vr3, 1
+	andi	$a1, $a1, 1
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr3, 2
+	bstrins.d	$a0, $a1, 2, 2
+	vpickve2gr.h	$a1, $vr3, 3
+	bstrins.d	$a0, $a1, 3, 3
+	vpickve2gr.h	$a1, $vr3, 4
+	bstrins.d	$a0, $a1, 4, 4
+	vpickve2gr.h	$a1, $vr3, 5
+	bstrins.d	$a0, $a1, 5, 5
+	vpickve2gr.h	$a1, $vr3, 6
+	andi	$a1, $a1, 1
+	slli.d	$a1, $a1, 6
+	or	$a0, $a0, $a1
+	vpickve2gr.h	$a1, $vr3, 7
+	slli.d	$a1, $a1, 7
+	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_63
 # %bb.80:                               # %vector.memcheck333
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a7
-	ori	$a2, $zero, 32
-	bltu	$a0, $a2, .LBB21_63
+	ori	$a1, $zero, 32
+	bltu	$a0, $a1, .LBB21_63
 # %bb.81:                               # %vector.body356.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	addi.d	$a0, $a3, 8
@@ -4700,7 +4666,7 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	bnez	$t5, .LBB21_82
 # %bb.83:                               # %middle.block363
                                         #   in Loop: Header=BB21_4 Depth=1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	bne	$a0, $t8, .LBB21_63
 	b	.LBB21_65
@@ -4708,17 +4674,17 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 .LBB21_84:                              # %vector.memcheck300
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a6
-	sub.d	$a2, $t0, $a4
-	sub.d	$t1, $t0, $a3
+	sub.d	$a1, $t0, $a4
+	sub.d	$a2, $t0, $a3
 	sub.d	$t2, $a7, $a5
 	sub.d	$t3, $a6, $a5
 	sub.d	$t5, $a5, $a4
 	sub.d	$t6, $a5, $a3
 	sub.d	$t7, $t0, $a5
-	vinsgr2vr.d	$vr3, $a2, 0
+	vinsgr2vr.d	$vr3, $a1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vinsgr2vr.d	$vr4, $t2, 0
-	vinsgr2vr.d	$vr4, $t1, 1
+	vinsgr2vr.d	$vr4, $a2, 1
 	xvpermi.q	$xr4, $xr3, 2
 	vinsgr2vr.d	$vr3, $t5, 0
 	vinsgr2vr.d	$vr3, $t3, 1
@@ -4726,34 +4692,37 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	vinsgr2vr.d	$vr5, $t6, 1
 	xvpermi.q	$xr5, $xr3, 2
 	xvslt.du	$xr3, $xr5, $xr0
-	xvpickve2gr.d	$a0, $xr3, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 1
-	sub.d	$a0, $a2, $a0
-	xvpickve2gr.d	$a2, $xr3, 2
-	bstrins.d	$a0, $a2, 2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	bstrins.d	$a0, $a2, 3, 3
-	xvslt.du	$xr3, $xr4, $xr0
-	xvpickve2gr.d	$a2, $xr3, 0
-	bstrins.d	$a0, $a2, 4, 4
-	xvpickve2gr.d	$a2, $xr3, 1
-	bstrins.d	$a0, $a2, 5, 5
-	xvpickve2gr.d	$a2, $xr3, 2
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a0, $a0, $a2
-	xvpickve2gr.d	$a2, $xr3, 3
-	slli.d	$a2, $a2, 7
-	or	$a0, $a0, $a2
+	xvslt.du	$xr4, $xr4, $xr0
+	xvpickev.w	$xr3, $xr4, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vpickve2gr.h	$a0, $vr3, 0
+	vpickve2gr.h	$a1, $vr3, 1
+	andi	$a1, $a1, 1
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr3, 2
+	bstrins.d	$a0, $a1, 2, 2
+	vpickve2gr.h	$a1, $vr3, 3
+	bstrins.d	$a0, $a1, 3, 3
+	vpickve2gr.h	$a1, $vr3, 4
+	bstrins.d	$a0, $a1, 4, 4
+	vpickve2gr.h	$a1, $vr3, 5
+	bstrins.d	$a0, $a1, 5, 5
+	vpickve2gr.h	$a1, $vr3, 6
+	andi	$a1, $a1, 1
+	slli.d	$a1, $a1, 6
+	or	$a0, $a0, $a1
+	vpickve2gr.h	$a1, $vr3, 7
+	slli.d	$a1, $a1, 7
+	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_66
 # %bb.85:                               # %vector.memcheck300
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a7
-	ori	$a2, $zero, 32
-	bltu	$a0, $a2, .LBB21_66
+	ori	$a1, $zero, 32
+	bltu	$a0, $a1, .LBB21_66
 # %bb.86:                               # %vector.body323.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	addi.d	$a0, $a3, 8
@@ -4785,7 +4754,7 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	bnez	$t5, .LBB21_87
 # %bb.88:                               # %middle.block330
                                         #   in Loop: Header=BB21_4 Depth=1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	bne	$a0, $t8, .LBB21_66
 	b	.LBB21_68
@@ -4793,17 +4762,17 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 .LBB21_89:                              # %vector.memcheck267
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a6
-	sub.d	$a2, $t0, $a4
-	sub.d	$t1, $t0, $a3
+	sub.d	$a1, $t0, $a4
+	sub.d	$a2, $t0, $a3
 	sub.d	$t2, $a7, $a5
 	sub.d	$t3, $a6, $a5
 	sub.d	$t5, $a5, $a4
 	sub.d	$t6, $a5, $a3
 	sub.d	$t7, $t0, $a5
-	vinsgr2vr.d	$vr3, $a2, 0
+	vinsgr2vr.d	$vr3, $a1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vinsgr2vr.d	$vr4, $t2, 0
-	vinsgr2vr.d	$vr4, $t1, 1
+	vinsgr2vr.d	$vr4, $a2, 1
 	xvpermi.q	$xr4, $xr3, 2
 	vinsgr2vr.d	$vr3, $t5, 0
 	vinsgr2vr.d	$vr3, $t3, 1
@@ -4811,34 +4780,37 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	vinsgr2vr.d	$vr5, $t6, 1
 	xvpermi.q	$xr5, $xr3, 2
 	xvslt.du	$xr3, $xr5, $xr0
-	xvpickve2gr.d	$a0, $xr3, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 1
-	sub.d	$a0, $a2, $a0
-	xvpickve2gr.d	$a2, $xr3, 2
-	bstrins.d	$a0, $a2, 2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	bstrins.d	$a0, $a2, 3, 3
-	xvslt.du	$xr3, $xr4, $xr0
-	xvpickve2gr.d	$a2, $xr3, 0
-	bstrins.d	$a0, $a2, 4, 4
-	xvpickve2gr.d	$a2, $xr3, 1
-	bstrins.d	$a0, $a2, 5, 5
-	xvpickve2gr.d	$a2, $xr3, 2
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a0, $a0, $a2
-	xvpickve2gr.d	$a2, $xr3, 3
-	slli.d	$a2, $a2, 7
-	or	$a0, $a0, $a2
+	xvslt.du	$xr4, $xr4, $xr0
+	xvpickev.w	$xr3, $xr4, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vpickve2gr.h	$a0, $vr3, 0
+	vpickve2gr.h	$a1, $vr3, 1
+	andi	$a1, $a1, 1
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr3, 2
+	bstrins.d	$a0, $a1, 2, 2
+	vpickve2gr.h	$a1, $vr3, 3
+	bstrins.d	$a0, $a1, 3, 3
+	vpickve2gr.h	$a1, $vr3, 4
+	bstrins.d	$a0, $a1, 4, 4
+	vpickve2gr.h	$a1, $vr3, 5
+	bstrins.d	$a0, $a1, 5, 5
+	vpickve2gr.h	$a1, $vr3, 6
+	andi	$a1, $a1, 1
+	slli.d	$a1, $a1, 6
+	or	$a0, $a0, $a1
+	vpickve2gr.h	$a1, $vr3, 7
+	slli.d	$a1, $a1, 7
+	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_69
 # %bb.90:                               # %vector.memcheck267
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a7
-	ori	$a2, $zero, 32
-	bltu	$a0, $a2, .LBB21_69
+	ori	$a1, $zero, 32
+	bltu	$a0, $a1, .LBB21_69
 # %bb.91:                               # %vector.body290.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	addi.d	$a0, $a3, 8
@@ -4870,7 +4842,7 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	bnez	$t5, .LBB21_92
 # %bb.93:                               # %middle.block297
                                         #   in Loop: Header=BB21_4 Depth=1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	bne	$a0, $t8, .LBB21_69
 	b	.LBB21_71
@@ -4878,17 +4850,17 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 .LBB21_94:                              # %vector.memcheck
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a6
-	sub.d	$a2, $t0, $a4
-	sub.d	$t1, $t0, $a3
+	sub.d	$a1, $t0, $a4
+	sub.d	$a2, $t0, $a3
 	sub.d	$t2, $a7, $a5
 	sub.d	$t3, $a6, $a5
 	sub.d	$t5, $a5, $a4
 	sub.d	$t6, $a5, $a3
 	sub.d	$t7, $t0, $a5
-	vinsgr2vr.d	$vr3, $a2, 0
+	vinsgr2vr.d	$vr3, $a1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vinsgr2vr.d	$vr4, $t2, 0
-	vinsgr2vr.d	$vr4, $t1, 1
+	vinsgr2vr.d	$vr4, $a2, 1
 	xvpermi.q	$xr4, $xr3, 2
 	vinsgr2vr.d	$vr3, $t5, 0
 	vinsgr2vr.d	$vr3, $t3, 1
@@ -4896,34 +4868,37 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	vinsgr2vr.d	$vr5, $t6, 1
 	xvpermi.q	$xr5, $xr3, 2
 	xvslt.du	$xr3, $xr5, $xr0
-	xvpickve2gr.d	$a0, $xr3, 0
-	xvpickve2gr.d	$a2, $xr3, 1
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 1
-	sub.d	$a0, $a2, $a0
-	xvpickve2gr.d	$a2, $xr3, 2
-	bstrins.d	$a0, $a2, 2, 2
-	xvpickve2gr.d	$a2, $xr3, 3
-	bstrins.d	$a0, $a2, 3, 3
-	xvslt.du	$xr3, $xr4, $xr0
-	xvpickve2gr.d	$a2, $xr3, 0
-	bstrins.d	$a0, $a2, 4, 4
-	xvpickve2gr.d	$a2, $xr3, 1
-	bstrins.d	$a0, $a2, 5, 5
-	xvpickve2gr.d	$a2, $xr3, 2
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a0, $a0, $a2
-	xvpickve2gr.d	$a2, $xr3, 3
-	slli.d	$a2, $a2, 7
-	or	$a0, $a0, $a2
+	xvslt.du	$xr4, $xr4, $xr0
+	xvpickev.w	$xr3, $xr4, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vpickve2gr.h	$a0, $vr3, 0
+	vpickve2gr.h	$a1, $vr3, 1
+	andi	$a1, $a1, 1
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr3, 2
+	bstrins.d	$a0, $a1, 2, 2
+	vpickve2gr.h	$a1, $vr3, 3
+	bstrins.d	$a0, $a1, 3, 3
+	vpickve2gr.h	$a1, $vr3, 4
+	bstrins.d	$a0, $a1, 4, 4
+	vpickve2gr.h	$a1, $vr3, 5
+	bstrins.d	$a0, $a1, 5, 5
+	vpickve2gr.h	$a1, $vr3, 6
+	andi	$a1, $a1, 1
+	slli.d	$a1, $a1, 6
+	or	$a0, $a0, $a1
+	vpickve2gr.h	$a1, $vr3, 7
+	slli.d	$a1, $a1, 7
+	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB21_72
 # %bb.95:                               # %vector.memcheck
                                         #   in Loop: Header=BB21_4 Depth=1
 	sub.d	$a0, $t0, $a7
-	ori	$a2, $zero, 32
-	bltu	$a0, $a2, .LBB21_72
+	ori	$a1, $zero, 32
+	bltu	$a0, $a1, .LBB21_72
 # %bb.96:                               # %vector.body.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	addi.d	$a0, $a3, 8
@@ -4955,7 +4930,7 @@ _ZL15BM_HYDRO_2D_RAWRN9benchmark5StateE: # @_ZL15BM_HYDRO_2D_RAWRN9benchmark5Sta
 	bnez	$t5, .LBB21_97
 # %bb.98:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	beq	$a0, $t8, .LBB21_3
 	b	.LBB21_72

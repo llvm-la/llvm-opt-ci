@@ -719,22 +719,17 @@ _Z27ConvertUInt32ToHexWithZerosjPc:     # @_Z27ConvertUInt32ToHexWithZerosjPc
 	xvrepli.w	$xr1, 55
 	xvadd.w	$xr0, $xr0, $xr1
 	xvbitsel.v	$xr0, $xr0, $xr2, $xr3
-	xvpickve2gr.w	$a0, $xr0, 0
-	xvpickve2gr.w	$a2, $xr0, 1
-	xvpickve2gr.w	$a3, $xr0, 2
-	xvpickve2gr.w	$a4, $xr0, 3
-	xvpickve2gr.w	$a5, $xr0, 4
-	xvpickve2gr.w	$a6, $xr0, 5
-	xvpickve2gr.w	$a7, $xr0, 6
-	xvpickve2gr.w	$t0, $xr0, 7
-	st.b	$t0, $a1, 7
-	st.b	$a7, $a1, 6
-	st.b	$a6, $a1, 5
-	st.b	$a5, $a1, 4
-	st.b	$a4, $a1, 3
-	st.b	$a3, $a1, 2
-	st.b	$a2, $a1, 1
-	st.b	$a0, $a1, 0
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.b	$xr0, $xr0, $xr0
+	vstelm.b	$vr0, $a1, 7, 7
+	vstelm.b	$vr0, $a1, 6, 6
+	vstelm.b	$vr0, $a1, 5, 5
+	vstelm.b	$vr0, $a1, 4, 4
+	vstelm.b	$vr0, $a1, 3, 3
+	vstelm.b	$vr0, $a1, 2, 2
+	vstelm.b	$vr0, $a1, 1, 1
+	vstelm.b	$vr0, $a1, 0, 0
 	st.b	$zero, $a1, 8
 	ret
 .Lfunc_end6:

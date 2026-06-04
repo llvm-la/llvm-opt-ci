@@ -126,15 +126,15 @@ polybench_alloc_data:                   # @polybench_alloc_data
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
 .LCPI7_2:
-	.dword	32                              # 0x20
-	.dword	40                              # 0x28
-	.dword	48                              # 0x30
-	.dword	56                              # 0x38
-.LCPI7_3:
 	.dword	0                               # 0x0
 	.dword	8                               # 0x8
 	.dword	16                              # 0x10
 	.dword	24                              # 0x18
+.LCPI7_3:
+	.dword	32                              # 0x20
+	.dword	40                              # 0x28
+	.dword	48                              # 0x30
+	.dword	56                              # 0x38
 	.text
 	.globl	main
 	.p2align	2
@@ -224,60 +224,30 @@ main:                                   # @main
 .LBB7_6:                                # %vector.body
                                         #   Parent Loop BB7_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvmul.d	$xr14, $xr13, $xr11
-	xvmul.d	$xr15, $xr12, $xr11
-	xvpickve2gr.d	$t0, $xr15, 0
-	vinsgr2vr.w	$vr16, $t0, 0
-	xvpickve2gr.d	$t0, $xr15, 1
-	vinsgr2vr.w	$vr16, $t0, 1
-	xvpickve2gr.d	$t0, $xr15, 2
-	vinsgr2vr.w	$vr16, $t0, 2
-	xvpickve2gr.d	$t0, $xr15, 3
-	vinsgr2vr.w	$vr16, $t0, 3
-	xvpickve2gr.d	$t0, $xr14, 0
-	vinsgr2vr.w	$vr15, $t0, 0
-	xvpickve2gr.d	$t0, $xr14, 1
-	vinsgr2vr.w	$vr15, $t0, 1
-	xvpickve2gr.d	$t0, $xr14, 2
-	vinsgr2vr.w	$vr15, $t0, 2
-	xvpickve2gr.d	$t0, $xr14, 3
-	vinsgr2vr.w	$vr15, $t0, 3
-	xvpermi.q	$xr16, $xr15, 2
-	xvmuh.wu	$xr14, $xr16, $xr0
-	xvsub.w	$xr15, $xr16, $xr14
-	xvsrli.w	$xr15, $xr15, 1
-	xvadd.w	$xr14, $xr15, $xr14
-	xvsrli.w	$xr14, $xr14, 2
-	xvmsub.w	$xr16, $xr14, $xr1
-	xvaddi.wu	$xr14, $xr16, 1
+	xvmul.d	$xr14, $xr12, $xr11
+	xvmul.d	$xr15, $xr13, $xr11
+	xvpickev.w	$xr14, $xr15, $xr14
+	xvpermi.d	$xr14, $xr14, 216
+	xvmuh.wu	$xr15, $xr14, $xr0
+	xvsub.w	$xr16, $xr14, $xr15
+	xvsrli.w	$xr16, $xr16, 1
+	xvadd.w	$xr15, $xr16, $xr15
+	xvsrli.w	$xr15, $xr15, 2
+	xvmsub.w	$xr14, $xr15, $xr1
+	xvaddi.wu	$xr14, $xr14, 1
 	add.d	$t0, $a6, $a7
-	xvadd.d	$xr15, $xr13, $xr11
-	xvadd.d	$xr16, $xr12, $xr11
-	xvpickve2gr.d	$t1, $xr16, 0
-	vinsgr2vr.w	$vr17, $t1, 0
-	xvpickve2gr.d	$t1, $xr16, 1
-	vinsgr2vr.w	$vr17, $t1, 1
-	xvpickve2gr.d	$t1, $xr16, 2
-	vinsgr2vr.w	$vr17, $t1, 2
-	xvpickve2gr.d	$t1, $xr16, 3
-	vinsgr2vr.w	$vr17, $t1, 3
-	xvpickve2gr.d	$t1, $xr15, 0
-	vinsgr2vr.w	$vr16, $t1, 0
-	xvpickve2gr.d	$t1, $xr15, 1
-	vinsgr2vr.w	$vr16, $t1, 1
-	xvpickve2gr.d	$t1, $xr15, 2
-	vinsgr2vr.w	$vr16, $t1, 2
-	xvpickve2gr.d	$t1, $xr15, 3
-	vinsgr2vr.w	$vr16, $t1, 3
-	xvpermi.q	$xr17, $xr16, 2
-	xvmul.w	$xr15, $xr17, $xr2
-	xvsle.wu	$xr15, $xr15, $xr3
-	xvmul.w	$xr16, $xr17, $xr4
-	xvsle.wu	$xr16, $xr16, $xr5
-	xvmul.w	$xr17, $xr17, $xr6
-	xvsle.wu	$xr17, $xr17, $xr7
+	xvadd.d	$xr15, $xr12, $xr11
+	xvadd.d	$xr16, $xr13, $xr11
+	xvpickev.w	$xr15, $xr16, $xr15
+	xvpermi.d	$xr15, $xr15, 216
+	xvmul.w	$xr16, $xr15, $xr2
+	xvsle.wu	$xr16, $xr16, $xr3
+	xvmul.w	$xr17, $xr15, $xr4
+	xvsle.wu	$xr17, $xr17, $xr5
+	xvmul.w	$xr15, $xr15, $xr6
+	xvsle.wu	$xr15, $xr15, $xr7
+	xvor.v	$xr16, $xr16, $xr17
 	xvor.v	$xr15, $xr15, $xr16
-	xvor.v	$xr15, $xr17, $xr15
 	xvbitsel.v	$xr14, $xr14, $xr10, $xr15
 	xvstx	$xr14, $t0, $s2
 	xvaddi.du	$xr12, $xr12, 8
@@ -411,60 +381,30 @@ main:                                   # @main
 .LBB7_19:                               # %vector.body102
                                         #   Parent Loop BB7_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvmul.d	$xr14, $xr13, $xr11
-	xvmul.d	$xr15, $xr12, $xr11
-	xvpickve2gr.d	$a7, $xr15, 0
-	vinsgr2vr.w	$vr16, $a7, 0
-	xvpickve2gr.d	$a7, $xr15, 1
-	vinsgr2vr.w	$vr16, $a7, 1
-	xvpickve2gr.d	$a7, $xr15, 2
-	vinsgr2vr.w	$vr16, $a7, 2
-	xvpickve2gr.d	$a7, $xr15, 3
-	vinsgr2vr.w	$vr16, $a7, 3
-	xvpickve2gr.d	$a7, $xr14, 0
-	vinsgr2vr.w	$vr15, $a7, 0
-	xvpickve2gr.d	$a7, $xr14, 1
-	vinsgr2vr.w	$vr15, $a7, 1
-	xvpickve2gr.d	$a7, $xr14, 2
-	vinsgr2vr.w	$vr15, $a7, 2
-	xvpickve2gr.d	$a7, $xr14, 3
-	vinsgr2vr.w	$vr15, $a7, 3
-	xvpermi.q	$xr16, $xr15, 2
-	xvmuh.wu	$xr14, $xr16, $xr0
-	xvsub.w	$xr15, $xr16, $xr14
-	xvsrli.w	$xr15, $xr15, 1
-	xvadd.w	$xr14, $xr15, $xr14
-	xvsrli.w	$xr14, $xr14, 2
-	xvmsub.w	$xr16, $xr14, $xr1
-	xvaddi.wu	$xr14, $xr16, 1
+	xvmul.d	$xr14, $xr12, $xr11
+	xvmul.d	$xr15, $xr13, $xr11
+	xvpickev.w	$xr14, $xr15, $xr14
+	xvpermi.d	$xr14, $xr14, 216
+	xvmuh.wu	$xr15, $xr14, $xr0
+	xvsub.w	$xr16, $xr14, $xr15
+	xvsrli.w	$xr16, $xr16, 1
+	xvadd.w	$xr15, $xr16, $xr15
+	xvsrli.w	$xr15, $xr15, 2
+	xvmsub.w	$xr14, $xr15, $xr1
+	xvaddi.wu	$xr14, $xr14, 1
 	add.d	$a7, $a5, $a6
-	xvadd.d	$xr15, $xr13, $xr11
-	xvadd.d	$xr16, $xr12, $xr11
-	xvpickve2gr.d	$t0, $xr16, 0
-	vinsgr2vr.w	$vr17, $t0, 0
-	xvpickve2gr.d	$t0, $xr16, 1
-	vinsgr2vr.w	$vr17, $t0, 1
-	xvpickve2gr.d	$t0, $xr16, 2
-	vinsgr2vr.w	$vr17, $t0, 2
-	xvpickve2gr.d	$t0, $xr16, 3
-	vinsgr2vr.w	$vr17, $t0, 3
-	xvpickve2gr.d	$t0, $xr15, 0
-	vinsgr2vr.w	$vr16, $t0, 0
-	xvpickve2gr.d	$t0, $xr15, 1
-	vinsgr2vr.w	$vr16, $t0, 1
-	xvpickve2gr.d	$t0, $xr15, 2
-	vinsgr2vr.w	$vr16, $t0, 2
-	xvpickve2gr.d	$t0, $xr15, 3
-	vinsgr2vr.w	$vr16, $t0, 3
-	xvpermi.q	$xr17, $xr16, 2
-	xvmul.w	$xr15, $xr17, $xr2
-	xvsle.wu	$xr15, $xr15, $xr3
-	xvmul.w	$xr16, $xr17, $xr4
-	xvsle.wu	$xr16, $xr16, $xr5
-	xvmul.w	$xr17, $xr17, $xr6
-	xvsle.wu	$xr17, $xr17, $xr7
+	xvadd.d	$xr15, $xr12, $xr11
+	xvadd.d	$xr16, $xr13, $xr11
+	xvpickev.w	$xr15, $xr16, $xr15
+	xvpermi.d	$xr15, $xr15, 216
+	xvmul.w	$xr16, $xr15, $xr2
+	xvsle.wu	$xr16, $xr16, $xr3
+	xvmul.w	$xr17, $xr15, $xr4
+	xvsle.wu	$xr17, $xr17, $xr5
+	xvmul.w	$xr15, $xr15, $xr6
+	xvsle.wu	$xr15, $xr15, $xr7
+	xvor.v	$xr16, $xr16, $xr17
 	xvor.v	$xr15, $xr15, $xr16
-	xvor.v	$xr15, $xr17, $xr15
 	xvbitsel.v	$xr14, $xr14, $xr10, $xr15
 	xvstx	$xr14, $a7, $s2
 	xvaddi.du	$xr12, $xr12, 8
@@ -613,9 +553,9 @@ main:                                   # @main
 	move	$s1, $a0
 	ori	$a0, $s4, 3840
 	pcalau12i	$a1, %pc_hi20(.LCPI7_2)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI7_2)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI7_2)
 	pcalau12i	$a1, %pc_hi20(.LCPI7_3)
-	xvld	$xr4, $a1, %pc_lo12(.LCPI7_3)
+	xvld	$xr3, $a1, %pc_lo12(.LCPI7_3)
 	stx.b	$zero, $s1, $a0
 	addi.d	$s4, $s1, 7
 	ori	$s3, $s3, 1088
@@ -624,8 +564,8 @@ main:                                   # @main
 	move	$s6, $zero
 	move	$s7, $zero
 	ori	$s8, $zero, 2800
-	xvst	$xr3, $sp, 48                   # 32-byte Folded Spill
-	xvst	$xr4, $sp, 16                   # 32-byte Folded Spill
+	xvst	$xr2, $sp, 48                   # 32-byte Folded Spill
+	xvst	$xr3, $sp, 16                   # 32-byte Folded Spill
 .LBB7_36:                               # %.preheader.i51
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_37 Depth 2
@@ -640,25 +580,14 @@ main:                                   # @main
 	movgr2fr.w	$fa0, $a3
 	ffint.d.w	$fa0, $fa0
 	xvreplve0.d	$xr0, $xr0
-	xvsrl.d	$xr1, $xr0, $xr3
-	xvsrl.d	$xr0, $xr0, $xr4
-	xvpickve2gr.d	$a3, $xr0, 0
-	vinsgr2vr.b	$vr2, $a3, 0
-	xvpickve2gr.d	$a3, $xr0, 1
-	vinsgr2vr.b	$vr2, $a3, 1
-	xvpickve2gr.d	$a3, $xr0, 2
-	vinsgr2vr.b	$vr2, $a3, 2
-	xvpickve2gr.d	$a3, $xr0, 3
-	vinsgr2vr.b	$vr2, $a3, 3
-	xvpickve2gr.d	$a3, $xr1, 0
-	vinsgr2vr.b	$vr2, $a3, 4
-	xvpickve2gr.d	$a3, $xr1, 1
-	vinsgr2vr.b	$vr2, $a3, 5
-	xvpickve2gr.d	$a3, $xr1, 2
-	vinsgr2vr.b	$vr2, $a3, 6
-	xvpickve2gr.d	$a3, $xr1, 3
-	vinsgr2vr.b	$vr2, $a3, 7
-	vandi.b	$vr0, $vr2, 15
+	xvsrl.d	$xr1, $xr0, $xr2
+	xvsrl.d	$xr0, $xr0, $xr3
+	xvpickev.w	$xr0, $xr0, $xr1
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.b	$xr0, $xr0, $xr0
+	vandi.b	$vr0, $vr0, 15
 	vori.b	$vr0, $vr0, 48
 	vilvl.b	$vr0, $vr0, $vr0
 	vst	$vr0, $a1, -7
@@ -670,8 +599,8 @@ main:                                   # @main
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	xvld	$xr4, $sp, 16                   # 32-byte Folded Reload
-	xvld	$xr3, $sp, 48                   # 32-byte Folded Reload
+	xvld	$xr3, $sp, 16                   # 32-byte Folded Reload
+	xvld	$xr2, $sp, 48                   # 32-byte Folded Reload
 	addi.d	$s7, $s7, 1
 	add.d	$s6, $s6, $s2
 	bne	$s7, $s8, .LBB7_36

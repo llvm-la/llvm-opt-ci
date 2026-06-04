@@ -4668,8 +4668,8 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 .LBB5_6:
 	alsl.d	$t3, $t2, $t2, 1
 .LBB5_7:
-	addi.d	$t6, $t4, 2
-	add.d	$t3, $t6, $t3
+	addi.d	$t5, $t4, 2
+	add.d	$t3, $t5, $t3
 	vext2xv.wu.hu	$xr1, $xr1
 	vinsgr2vr.w	$vr2, $t2, 0
 	xvpickve2gr.w	$t2, $xr1, 0
@@ -4684,59 +4684,45 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	vinsgr2vr.w	$vr3, $t2, 1
 	xvpickve2gr.w	$t2, $xr1, 5
 	vinsgr2vr.w	$vr3, $t2, 2
-	xvpickve2gr.w	$t5, $xr1, 6
-	vinsgr2vr.w	$vr3, $t5, 3
+	xvpickve2gr.w	$t2, $xr1, 6
+	vinsgr2vr.w	$vr3, $t2, 3
 	xvpermi.q	$xr2, $xr3, 2
-	ori	$t2, $zero, 2
+	ori	$t6, $zero, 2
 	xvori.b	$xr3, $xr2, 0
-	xvinsgr2vr.w	$xr3, $t2, 0
+	xvinsgr2vr.w	$xr3, $t6, 0
 	xvadd.w	$xr2, $xr2, $xr3
 	vinsgr2vr.w	$vr3, $t4, 0
-	vinsgr2vr.w	$vr3, $t6, 1
-	xvpickve2gr.d	$t6, $xr1, 1
-	vinsgr2vr.d	$vr4, $t6, 0
-	xvpickve2gr.d	$t6, $xr1, 2
-	vinsgr2vr.d	$vr4, $t6, 1
-	xvpickve2gr.d	$t6, $xr3, 0
-	vinsgr2vr.d	$vr3, $t6, 0
-	xvpickve2gr.d	$t6, $xr1, 0
-	st.w	$t2, $sp, 60
+	vinsgr2vr.w	$vr3, $t5, 1
+	xvpickve2gr.d	$t5, $xr1, 1
+	vinsgr2vr.d	$vr4, $t5, 0
+	xvpickve2gr.d	$t5, $xr1, 2
+	vinsgr2vr.d	$vr4, $t5, 1
+	xvpickve2gr.d	$t5, $xr3, 0
+	vinsgr2vr.d	$vr3, $t5, 0
+	xvpickve2gr.d	$t5, $xr1, 0
+	st.w	$t6, $sp, 60
 	st.w	$t4, $sp, 32
-	lu32i.d	$t2, 2
-	st.d	$t2, $sp, 52
-	st.d	$t2, $sp, 44
-	ori	$t2, $zero, 0
-	lu32i.d	$t2, 2
-	st.d	$t2, $sp, 36
+	lu32i.d	$t6, 2
+	st.d	$t6, $sp, 52
+	st.d	$t6, $sp, 44
+	ori	$t4, $zero, 0
+	lu32i.d	$t4, 2
+	st.d	$t4, $sp, 36
 	xvld	$xr5, $sp, 32
-	vinsgr2vr.d	$vr3, $t6, 1
+	vinsgr2vr.d	$vr3, $t5, 1
 	xvpermi.q	$xr3, $xr4, 2
-	srli.d	$t2, $t3, 2
+	srli.d	$t5, $t3, 2
 	xvadd.w	$xr3, $xr3, $xr5
 	xvadd.w	$xr2, $xr3, $xr2
 	xvadd.w	$xr1, $xr2, $xr1
-	xvsrli.w	$xr2, $xr1, 2
-	xvpickve2gr.w	$t3, $xr2, 0
-	vinsgr2vr.h	$vr1, $t3, 0
-	xvpickve2gr.w	$t3, $xr2, 1
-	vinsgr2vr.h	$vr1, $t3, 1
-	xvpickve2gr.w	$t3, $xr2, 2
-	vinsgr2vr.h	$vr1, $t3, 2
-	xvpickve2gr.w	$t3, $xr2, 3
-	vinsgr2vr.h	$vr1, $t3, 3
-	xvpickve2gr.w	$t3, $xr2, 4
-	vinsgr2vr.h	$vr1, $t3, 4
-	xvpickve2gr.w	$t3, $xr2, 5
-	vinsgr2vr.h	$vr1, $t3, 5
-	xvpickve2gr.w	$t3, $xr2, 6
-	vinsgr2vr.h	$vr1, $t3, 6
-	xvpickve2gr.w	$t3, $xr2, 7
-	vinsgr2vr.h	$vr1, $t3, 7
-	alsl.d	$t3, $t1, $t5, 1
-	add.d	$t3, $t3, $t0
-	addi.d	$t3, $t3, 2
+	xvsrli.w	$xr1, $xr1, 2
+	xvpickev.h	$xr1, $xr1, $xr1
+	xvpermi.d	$xr1, $xr1, 216
+	alsl.d	$t2, $t1, $t2, 1
+	add.d	$t2, $t2, $t0
+	addi.d	$t2, $t2, 2
 	alsl.d	$t1, $t0, $t1, 1
-	bstrpick.d	$t5, $t3, 19, 2
+	bstrpick.d	$t2, $t2, 19, 2
 	add.d	$t1, $t1, $a7
 	addi.d	$t1, $t1, 2
 	alsl.d	$t0, $a7, $t0, 1
@@ -4765,7 +4751,8 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	addi.d	$t0, $t0, 2
 	srli.d	$t4, $t0, 2
 	move	$t0, $t1
-	move	$t1, $t5
+	move	$t1, $t2
+	move	$t2, $t5
 	beqz	$a1, .LBB5_4
 .LBB5_8:
 	beqz	$a2, .LBB5_12

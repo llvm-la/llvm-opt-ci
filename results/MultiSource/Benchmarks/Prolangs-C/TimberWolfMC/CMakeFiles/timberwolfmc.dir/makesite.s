@@ -342,23 +342,8 @@ Vside:                                  # @Vside
 	st.w	$s0, $t0, 44
 	st.w	$s0, $t0, 64
 	st.w	$s0, $t0, 84
-	xvpickve2gr.d	$t2, $xr3, 0
-	vinsgr2vr.w	$vr7, $t2, 0
-	xvpickve2gr.d	$t2, $xr3, 1
-	vinsgr2vr.w	$vr7, $t2, 1
-	xvpickve2gr.d	$t2, $xr3, 2
-	vinsgr2vr.w	$vr7, $t2, 2
-	xvpickve2gr.d	$t2, $xr3, 3
-	vinsgr2vr.w	$vr7, $t2, 3
-	xvpickve2gr.d	$t2, $xr2, 0
-	vinsgr2vr.w	$vr8, $t2, 0
-	xvpickve2gr.d	$t2, $xr2, 1
-	vinsgr2vr.w	$vr8, $t2, 1
-	xvpickve2gr.d	$t2, $xr2, 2
-	vinsgr2vr.w	$vr8, $t2, 2
-	xvpickve2gr.d	$t2, $xr2, 3
-	vinsgr2vr.w	$vr8, $t2, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr2, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr7, $xr7, 1
 	vext2xv.du.wu	$xr8, $xr7
 	xvffint.d.lu	$xr8, $xr8
@@ -388,25 +373,10 @@ Vside:                                  # @Vside
 	xvfsub.d	$xr12, $xr8, $xr12
 	xvfsub.d	$xr10, $xr10, $xr13
 	xvfcmp.cle.d	$xr10, $xr6, $xr10
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr13, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr13, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr13, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr13, $t2, 3
-	xvfcmp.cle.d	$xr10, $xr6, $xr12
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr12, $t2, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr10, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr10, $xr12, $xr10
+	xvpermi.d	$xr10, $xr10, 216
+	xvsub.w	$xr10, $xr11, $xr10
 	xvadd.w	$xr11, $xr10, $xr5
 	xvstelm.w	$xr11, $t0, -52, 0
 	xvstelm.w	$xr11, $t0, -32, 1
@@ -430,25 +400,10 @@ Vside:                                  # @Vside
 	xvfsub.d	$xr12, $xr7, $xr12
 	xvfsub.d	$xr9, $xr9, $xr13
 	xvfcmp.cle.d	$xr9, $xr6, $xr9
-	xvpickve2gr.d	$t2, $xr9, 0
-	vinsgr2vr.w	$vr13, $t2, 0
-	xvpickve2gr.d	$t2, $xr9, 1
-	vinsgr2vr.w	$vr13, $t2, 1
-	xvpickve2gr.d	$t2, $xr9, 2
-	vinsgr2vr.w	$vr13, $t2, 2
-	xvpickve2gr.d	$t2, $xr9, 3
-	vinsgr2vr.w	$vr13, $t2, 3
-	xvfcmp.cle.d	$xr9, $xr6, $xr12
-	xvpickve2gr.d	$t2, $xr9, 0
-	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr9, 1
-	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr9, 2
-	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr9, 3
-	vinsgr2vr.w	$vr12, $t2, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr9, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr9, $xr12, $xr9
+	xvpermi.d	$xr9, $xr9, 216
+	xvsub.w	$xr9, $xr11, $xr9
 	xvsub.w	$xr9, $xr9, $xr10
 	xvstelm.w	$xr9, $t0, -60, 0
 	xvstelm.w	$xr9, $t0, -40, 1
@@ -559,23 +514,8 @@ Vside:                                  # @Vside
 	st.w	$s0, $t0, 44
 	st.w	$s0, $t0, 64
 	st.w	$s0, $t0, 84
-	xvpickve2gr.d	$t2, $xr3, 0
-	vinsgr2vr.w	$vr7, $t2, 0
-	xvpickve2gr.d	$t2, $xr3, 1
-	vinsgr2vr.w	$vr7, $t2, 1
-	xvpickve2gr.d	$t2, $xr3, 2
-	vinsgr2vr.w	$vr7, $t2, 2
-	xvpickve2gr.d	$t2, $xr3, 3
-	vinsgr2vr.w	$vr7, $t2, 3
-	xvpickve2gr.d	$t2, $xr2, 0
-	vinsgr2vr.w	$vr8, $t2, 0
-	xvpickve2gr.d	$t2, $xr2, 1
-	vinsgr2vr.w	$vr8, $t2, 1
-	xvpickve2gr.d	$t2, $xr2, 2
-	vinsgr2vr.w	$vr8, $t2, 2
-	xvpickve2gr.d	$t2, $xr2, 3
-	vinsgr2vr.w	$vr8, $t2, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr2, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr7, $xr7, 1
 	vext2xv.du.wu	$xr8, $xr7
 	xvffint.d.lu	$xr8, $xr8
@@ -605,25 +545,10 @@ Vside:                                  # @Vside
 	xvfsub.d	$xr12, $xr8, $xr12
 	xvfsub.d	$xr10, $xr10, $xr13
 	xvfcmp.cle.d	$xr10, $xr6, $xr10
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr13, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr13, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr13, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr13, $t2, 3
-	xvfcmp.cle.d	$xr10, $xr6, $xr12
-	xvpickve2gr.d	$t2, $xr10, 0
-	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr10, 1
-	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr10, 2
-	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr10, 3
-	vinsgr2vr.w	$vr12, $t2, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr10, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr10, $xr12, $xr10
+	xvpermi.d	$xr10, $xr10, 216
+	xvsub.w	$xr10, $xr11, $xr10
 	xvsub.w	$xr11, $xr5, $xr10
 	xvstelm.w	$xr11, $t0, -52, 0
 	xvstelm.w	$xr11, $t0, -32, 1
@@ -647,25 +572,10 @@ Vside:                                  # @Vside
 	xvfsub.d	$xr12, $xr7, $xr12
 	xvfsub.d	$xr9, $xr9, $xr13
 	xvfcmp.cle.d	$xr9, $xr6, $xr9
-	xvpickve2gr.d	$t2, $xr9, 0
-	vinsgr2vr.w	$vr13, $t2, 0
-	xvpickve2gr.d	$t2, $xr9, 1
-	vinsgr2vr.w	$vr13, $t2, 1
-	xvpickve2gr.d	$t2, $xr9, 2
-	vinsgr2vr.w	$vr13, $t2, 2
-	xvpickve2gr.d	$t2, $xr9, 3
-	vinsgr2vr.w	$vr13, $t2, 3
-	xvfcmp.cle.d	$xr9, $xr6, $xr12
-	xvpickve2gr.d	$t2, $xr9, 0
-	vinsgr2vr.w	$vr12, $t2, 0
-	xvpickve2gr.d	$t2, $xr9, 1
-	vinsgr2vr.w	$vr12, $t2, 1
-	xvpickve2gr.d	$t2, $xr9, 2
-	vinsgr2vr.w	$vr12, $t2, 2
-	xvpickve2gr.d	$t2, $xr9, 3
-	vinsgr2vr.w	$vr12, $t2, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr9, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr9, $xr12, $xr9
+	xvpermi.d	$xr9, $xr9, 216
+	xvsub.w	$xr9, $xr11, $xr9
 	xvsub.w	$xr9, $xr9, $xr10
 	xvstelm.w	$xr9, $t0, -60, 0
 	xvstelm.w	$xr9, $t0, -40, 1
@@ -1111,23 +1021,8 @@ Hside:                                  # @Hside
 	st.w	$fp, $a6, 48
 	st.w	$fp, $a6, 68
 	st.w	$fp, $a6, 88
-	xvpickve2gr.d	$t0, $xr3, 0
-	vinsgr2vr.w	$vr7, $t0, 0
-	xvpickve2gr.d	$t0, $xr3, 1
-	vinsgr2vr.w	$vr7, $t0, 1
-	xvpickve2gr.d	$t0, $xr3, 2
-	vinsgr2vr.w	$vr7, $t0, 2
-	xvpickve2gr.d	$t0, $xr3, 3
-	vinsgr2vr.w	$vr7, $t0, 3
-	xvpickve2gr.d	$t0, $xr2, 0
-	vinsgr2vr.w	$vr8, $t0, 0
-	xvpickve2gr.d	$t0, $xr2, 1
-	vinsgr2vr.w	$vr8, $t0, 1
-	xvpickve2gr.d	$t0, $xr2, 2
-	vinsgr2vr.w	$vr8, $t0, 2
-	xvpickve2gr.d	$t0, $xr2, 3
-	vinsgr2vr.w	$vr8, $t0, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr2, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr7, $xr7, 1
 	vext2xv.du.wu	$xr8, $xr7
 	xvffint.d.lu	$xr8, $xr8
@@ -1157,25 +1052,10 @@ Hside:                                  # @Hside
 	xvfsub.d	$xr12, $xr8, $xr12
 	xvfsub.d	$xr10, $xr10, $xr13
 	xvfcmp.cle.d	$xr10, $xr6, $xr10
-	xvpickve2gr.d	$t0, $xr10, 0
-	vinsgr2vr.w	$vr13, $t0, 0
-	xvpickve2gr.d	$t0, $xr10, 1
-	vinsgr2vr.w	$vr13, $t0, 1
-	xvpickve2gr.d	$t0, $xr10, 2
-	vinsgr2vr.w	$vr13, $t0, 2
-	xvpickve2gr.d	$t0, $xr10, 3
-	vinsgr2vr.w	$vr13, $t0, 3
-	xvfcmp.cle.d	$xr10, $xr6, $xr12
-	xvpickve2gr.d	$t0, $xr10, 0
-	vinsgr2vr.w	$vr12, $t0, 0
-	xvpickve2gr.d	$t0, $xr10, 1
-	vinsgr2vr.w	$vr12, $t0, 1
-	xvpickve2gr.d	$t0, $xr10, 2
-	vinsgr2vr.w	$vr12, $t0, 2
-	xvpickve2gr.d	$t0, $xr10, 3
-	vinsgr2vr.w	$vr12, $t0, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr10, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr10, $xr12, $xr10
+	xvpermi.d	$xr10, $xr10, 216
+	xvsub.w	$xr10, $xr11, $xr10
 	xvadd.w	$xr11, $xr10, $xr5
 	xvstelm.w	$xr11, $a6, -56, 0
 	xvstelm.w	$xr11, $a6, -36, 1
@@ -1199,25 +1079,10 @@ Hside:                                  # @Hside
 	xvfsub.d	$xr12, $xr7, $xr12
 	xvfsub.d	$xr9, $xr9, $xr13
 	xvfcmp.cle.d	$xr9, $xr6, $xr9
-	xvpickve2gr.d	$t0, $xr9, 0
-	vinsgr2vr.w	$vr13, $t0, 0
-	xvpickve2gr.d	$t0, $xr9, 1
-	vinsgr2vr.w	$vr13, $t0, 1
-	xvpickve2gr.d	$t0, $xr9, 2
-	vinsgr2vr.w	$vr13, $t0, 2
-	xvpickve2gr.d	$t0, $xr9, 3
-	vinsgr2vr.w	$vr13, $t0, 3
-	xvfcmp.cle.d	$xr9, $xr6, $xr12
-	xvpickve2gr.d	$t0, $xr9, 0
-	vinsgr2vr.w	$vr12, $t0, 0
-	xvpickve2gr.d	$t0, $xr9, 1
-	vinsgr2vr.w	$vr12, $t0, 1
-	xvpickve2gr.d	$t0, $xr9, 2
-	vinsgr2vr.w	$vr12, $t0, 2
-	xvpickve2gr.d	$t0, $xr9, 3
-	vinsgr2vr.w	$vr12, $t0, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr9, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr9, $xr12, $xr9
+	xvpermi.d	$xr9, $xr9, 216
+	xvsub.w	$xr9, $xr11, $xr9
 	xvsub.w	$xr9, $xr9, $xr10
 	xvstelm.w	$xr9, $a6, -60, 0
 	xvstelm.w	$xr9, $a6, -40, 1
@@ -1327,23 +1192,8 @@ Hside:                                  # @Hside
 	st.w	$fp, $a6, 48
 	st.w	$fp, $a6, 68
 	st.w	$fp, $a6, 88
-	xvpickve2gr.d	$t0, $xr3, 0
-	vinsgr2vr.w	$vr7, $t0, 0
-	xvpickve2gr.d	$t0, $xr3, 1
-	vinsgr2vr.w	$vr7, $t0, 1
-	xvpickve2gr.d	$t0, $xr3, 2
-	vinsgr2vr.w	$vr7, $t0, 2
-	xvpickve2gr.d	$t0, $xr3, 3
-	vinsgr2vr.w	$vr7, $t0, 3
-	xvpickve2gr.d	$t0, $xr2, 0
-	vinsgr2vr.w	$vr8, $t0, 0
-	xvpickve2gr.d	$t0, $xr2, 1
-	vinsgr2vr.w	$vr8, $t0, 1
-	xvpickve2gr.d	$t0, $xr2, 2
-	vinsgr2vr.w	$vr8, $t0, 2
-	xvpickve2gr.d	$t0, $xr2, 3
-	vinsgr2vr.w	$vr8, $t0, 3
-	xvpermi.q	$xr7, $xr8, 2
+	xvpickev.w	$xr7, $xr2, $xr3
+	xvpermi.d	$xr7, $xr7, 216
 	xvaddi.wu	$xr7, $xr7, 1
 	vext2xv.du.wu	$xr8, $xr7
 	xvffint.d.lu	$xr8, $xr8
@@ -1373,25 +1223,10 @@ Hside:                                  # @Hside
 	xvfsub.d	$xr12, $xr8, $xr12
 	xvfsub.d	$xr10, $xr10, $xr13
 	xvfcmp.cle.d	$xr10, $xr6, $xr10
-	xvpickve2gr.d	$t0, $xr10, 0
-	vinsgr2vr.w	$vr13, $t0, 0
-	xvpickve2gr.d	$t0, $xr10, 1
-	vinsgr2vr.w	$vr13, $t0, 1
-	xvpickve2gr.d	$t0, $xr10, 2
-	vinsgr2vr.w	$vr13, $t0, 2
-	xvpickve2gr.d	$t0, $xr10, 3
-	vinsgr2vr.w	$vr13, $t0, 3
-	xvfcmp.cle.d	$xr10, $xr6, $xr12
-	xvpickve2gr.d	$t0, $xr10, 0
-	vinsgr2vr.w	$vr12, $t0, 0
-	xvpickve2gr.d	$t0, $xr10, 1
-	vinsgr2vr.w	$vr12, $t0, 1
-	xvpickve2gr.d	$t0, $xr10, 2
-	vinsgr2vr.w	$vr12, $t0, 2
-	xvpickve2gr.d	$t0, $xr10, 3
-	vinsgr2vr.w	$vr12, $t0, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr10, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr10, $xr12, $xr10
+	xvpermi.d	$xr10, $xr10, 216
+	xvsub.w	$xr10, $xr11, $xr10
 	xvsub.w	$xr11, $xr5, $xr10
 	xvstelm.w	$xr11, $a6, -56, 0
 	xvstelm.w	$xr11, $a6, -36, 1
@@ -1415,25 +1250,10 @@ Hside:                                  # @Hside
 	xvfsub.d	$xr12, $xr7, $xr12
 	xvfsub.d	$xr9, $xr9, $xr13
 	xvfcmp.cle.d	$xr9, $xr6, $xr9
-	xvpickve2gr.d	$t0, $xr9, 0
-	vinsgr2vr.w	$vr13, $t0, 0
-	xvpickve2gr.d	$t0, $xr9, 1
-	vinsgr2vr.w	$vr13, $t0, 1
-	xvpickve2gr.d	$t0, $xr9, 2
-	vinsgr2vr.w	$vr13, $t0, 2
-	xvpickve2gr.d	$t0, $xr9, 3
-	vinsgr2vr.w	$vr13, $t0, 3
-	xvfcmp.cle.d	$xr9, $xr6, $xr12
-	xvpickve2gr.d	$t0, $xr9, 0
-	vinsgr2vr.w	$vr12, $t0, 0
-	xvpickve2gr.d	$t0, $xr9, 1
-	vinsgr2vr.w	$vr12, $t0, 1
-	xvpickve2gr.d	$t0, $xr9, 2
-	vinsgr2vr.w	$vr12, $t0, 2
-	xvpickve2gr.d	$t0, $xr9, 3
-	vinsgr2vr.w	$vr12, $t0, 3
-	xvpermi.q	$xr13, $xr12, 2
-	xvsub.w	$xr9, $xr11, $xr13
+	xvfcmp.cle.d	$xr12, $xr6, $xr12
+	xvpickev.w	$xr9, $xr12, $xr9
+	xvpermi.d	$xr9, $xr9, 216
+	xvsub.w	$xr9, $xr11, $xr9
 	xvsub.w	$xr9, $xr9, $xr10
 	xvstelm.w	$xr9, $a6, -60, 0
 	xvstelm.w	$xr9, $a6, -40, 1

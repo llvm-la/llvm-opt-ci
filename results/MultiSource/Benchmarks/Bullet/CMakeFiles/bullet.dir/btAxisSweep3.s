@@ -268,39 +268,12 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	.p2align	4, , 16
 .LBB1_17:                               # %vector.body78
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$t0, $xr3, 0
-	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.d	$t0, $xr3, 1
-	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.d	$t0, $xr3, 2
-	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.d	$t0, $xr3, 3
-	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.d	$t0, $xr2, 0
-	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.d	$t0, $xr2, 1
-	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.d	$t0, $xr2, 2
-	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.d	$t0, $xr2, 3
-	vinsgr2vr.h	$vr4, $t0, 7
-	xvpickve2gr.d	$t0, $xr1, 0
-	vinsgr2vr.h	$vr5, $t0, 0
-	xvpickve2gr.d	$t0, $xr1, 1
-	vinsgr2vr.h	$vr5, $t0, 1
-	xvpickve2gr.d	$t0, $xr1, 2
-	vinsgr2vr.h	$vr5, $t0, 2
-	xvpickve2gr.d	$t0, $xr1, 3
-	vinsgr2vr.h	$vr5, $t0, 3
-	xvpickve2gr.d	$t0, $xr0, 0
-	vinsgr2vr.h	$vr5, $t0, 4
-	xvpickve2gr.d	$t0, $xr0, 1
-	vinsgr2vr.h	$vr5, $t0, 5
-	xvpickve2gr.d	$t0, $xr0, 2
-	vinsgr2vr.h	$vr5, $t0, 6
-	xvpickve2gr.d	$t0, $xr0, 3
-	vinsgr2vr.h	$vr5, $t0, 7
-	xvpermi.q	$xr4, $xr5, 2
+	xvpickev.w	$xr4, $xr2, $xr3
+	xvpermi.d	$xr4, $xr4, 216
+	xvpickev.w	$xr5, $xr0, $xr1
+	xvpermi.d	$xr5, $xr5, 216
+	xvpickev.h	$xr4, $xr5, $xr4
+	xvpermi.d	$xr4, $xr4, 216
 	xvaddi.hu	$xr4, $xr4, 1
 	vpickve2gr.h	$t0, $vr4, 0
 	vpickve2gr.h	$t1, $vr4, 1
@@ -356,14 +329,9 @@ _ZN20btAxisSweep3InternalItEC2ERK9btVector3S3_tttP22btOverlappingPairCacheb: # @
 	.p2align	4, , 16
 .LBB1_21:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvpickve2gr.d	$a6, $xr0, 0
-	vinsgr2vr.h	$vr1, $a6, 0
-	xvpickve2gr.d	$a6, $xr0, 1
-	vinsgr2vr.h	$vr1, $a6, 1
-	xvpickve2gr.d	$a6, $xr0, 2
-	vinsgr2vr.h	$vr1, $a6, 2
-	xvpickve2gr.d	$a6, $xr0, 3
-	vinsgr2vr.h	$vr1, $a6, 3
+	xvpickev.w	$xr1, $xr0, $xr0
+	xvpermi.d	$xr1, $xr1, 216
+	xvpickev.h	$xr1, $xr1, $xr1
 	vaddi.hu	$vr1, $vr1, 1
 	vstelm.h	$vr1, $a4, -80, 0
 	vstelm.h	$vr1, $a4, 0, 1

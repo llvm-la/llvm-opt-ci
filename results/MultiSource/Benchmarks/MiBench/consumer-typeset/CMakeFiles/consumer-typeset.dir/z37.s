@@ -1048,8 +1048,8 @@ FontChange:                             # @FontChange
 	beq	$s3, $s7, .LBB1_158
 # %bb.108:                              # %.preheader519.lr.ph.i
 	ori	$s5, $zero, 10
-	pcalau12i	$s0, %pc_hi20(fd_tag)
-	pcalau12i	$s6, %pc_hi20(fd_family)
+	pcalau12i	$s6, %pc_hi20(fd_tag)
+	pcalau12i	$s0, %pc_hi20(fd_family)
 	pcalau12i	$a0, %pc_hi20(.L.str.77)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.77)
 	st.d	$a0, $sp, 336                   # 8-byte Folded Spill
@@ -1117,10 +1117,10 @@ FontChange:                             # @FontChange
 .LBB1_117:                              # %.loopexit520.i
                                         #   in Loop: Header=BB1_113 Depth=1
 	ld.d	$a0, $fp, 80
-	ld.d	$a1, $s0, %pc_lo12(fd_tag)
+	ld.d	$a1, $s6, %pc_lo12(fd_tag)
 	beq	$a0, $a1, .LBB1_112
 # %bb.118:                              #   in Loop: Header=BB1_113 Depth=1
-	ld.d	$a1, $s6, %pc_lo12(fd_family)
+	ld.d	$a1, $s0, %pc_lo12(fd_family)
 	beq	$a0, $a1, .LBB1_126
 # %bb.119:                              #   in Loop: Header=BB1_113 Depth=1
 	pcalau12i	$a1, %pc_hi20(fd_face)
@@ -4081,44 +4081,13 @@ FontChange:                             # @FontChange
 	xvpermi.q	$xr3, $xr2, 1
 	vext2xv.w.h	$xr3, $xr3
 	vext2xv.w.h	$xr2, $xr2
-	xvmul.w	$xr2, $xr0, $xr2
 	xvmul.w	$xr3, $xr0, $xr3
-	xvdiv.w	$xr3, $xr3, $xr1
+	xvmul.w	$xr2, $xr0, $xr2
 	xvdiv.w	$xr2, $xr2, $xr1
-	xvpickve2gr.w	$t1, $xr2, 0
-	vinsgr2vr.h	$vr4, $t1, 0
-	xvpickve2gr.w	$t1, $xr2, 1
-	vinsgr2vr.h	$vr4, $t1, 1
-	xvpickve2gr.w	$t1, $xr2, 2
-	vinsgr2vr.h	$vr4, $t1, 2
-	xvpickve2gr.w	$t1, $xr2, 3
-	vinsgr2vr.h	$vr4, $t1, 3
-	xvpickve2gr.w	$t1, $xr2, 4
-	vinsgr2vr.h	$vr4, $t1, 4
-	xvpickve2gr.w	$t1, $xr2, 5
-	vinsgr2vr.h	$vr4, $t1, 5
-	xvpickve2gr.w	$t1, $xr2, 6
-	vinsgr2vr.h	$vr4, $t1, 6
-	xvpickve2gr.w	$t1, $xr2, 7
-	vinsgr2vr.h	$vr4, $t1, 7
-	xvpickve2gr.w	$t1, $xr3, 0
-	vinsgr2vr.h	$vr2, $t1, 0
-	xvpickve2gr.w	$t1, $xr3, 1
-	vinsgr2vr.h	$vr2, $t1, 1
-	xvpickve2gr.w	$t1, $xr3, 2
-	vinsgr2vr.h	$vr2, $t1, 2
-	xvpickve2gr.w	$t1, $xr3, 3
-	vinsgr2vr.h	$vr2, $t1, 3
-	xvpickve2gr.w	$t1, $xr3, 4
-	vinsgr2vr.h	$vr2, $t1, 4
-	xvpickve2gr.w	$t1, $xr3, 5
-	vinsgr2vr.h	$vr2, $t1, 5
-	xvpickve2gr.w	$t1, $xr3, 6
-	vinsgr2vr.h	$vr2, $t1, 6
-	xvpickve2gr.w	$t1, $xr3, 7
-	vinsgr2vr.h	$vr2, $t1, 7
-	xvpermi.q	$xr4, $xr2, 2
-	xvst	$xr4, $a7, 0
+	xvdiv.w	$xr3, $xr3, $xr1
+	xvpickev.h	$xr2, $xr3, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvst	$xr2, $a7, 0
 	addi.d	$a6, $a6, 32
 	addi.d	$t0, $t0, -16
 	addi.d	$a7, $a7, 32

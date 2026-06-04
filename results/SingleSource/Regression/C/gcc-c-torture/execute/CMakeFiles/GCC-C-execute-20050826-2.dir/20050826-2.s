@@ -346,26 +346,29 @@ main:                                   # @main
 	xvreplgr2vr.d	$xr2, $a0
 	xvseq.d	$xr0, $xr0, $xr2
 	xvxori.b	$xr0, $xr0, 255
-	xvpickve2gr.d	$a0, $xr0, 0
-	xvpickve2gr.d	$a1, $xr0, 1
+	xvseq.d	$xr1, $xr1, $xr2
+	xvxori.b	$xr1, $xr1, 255
+	xvpickev.w	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vpickve2gr.h	$a0, $vr0, 0
+	vpickve2gr.h	$a1, $vr0, 1
 	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 1
-	sub.d	$a0, $a1, $a0
-	xvpickve2gr.d	$a1, $xr0, 2
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr0, 2
 	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.d	$a1, $xr0, 3
+	vpickve2gr.h	$a1, $vr0, 3
 	bstrins.d	$a0, $a1, 3, 3
-	xvseq.d	$xr0, $xr1, $xr2
-	xvxori.b	$xr0, $xr0, 255
-	xvpickve2gr.d	$a1, $xr0, 0
+	vpickve2gr.h	$a1, $vr0, 4
 	bstrins.d	$a0, $a1, 4, 4
-	xvpickve2gr.d	$a1, $xr0, 1
+	vpickve2gr.h	$a1, $vr0, 5
 	bstrins.d	$a0, $a1, 5, 5
-	xvpickve2gr.d	$a1, $xr0, 2
+	vpickve2gr.h	$a1, $vr0, 6
 	andi	$a1, $a1, 1
 	slli.d	$a1, $a1, 6
 	or	$a0, $a0, $a1
-	xvpickve2gr.d	$a1, $xr0, 3
+	vpickve2gr.h	$a1, $vr0, 7
 	slli.d	$a1, $a1, 7
 	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255

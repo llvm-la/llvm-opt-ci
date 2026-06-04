@@ -2072,14 +2072,8 @@ blockAlign2:                            # @blockAlign2
                                         # =>    This Inner Loop Header: Depth=3
 	xvld	$xr10, $s6, 0
 	xvfcmp.clt.d	$xr11, $xr9, $xr10
-	xvpickve2gr.d	$s7, $xr11, 0
-	vinsgr2vr.w	$vr12, $s7, 0
-	xvpickve2gr.d	$s7, $xr11, 1
-	vinsgr2vr.w	$vr12, $s7, 1
-	xvpickve2gr.d	$s7, $xr11, 2
-	vinsgr2vr.w	$vr12, $s7, 2
-	xvpickve2gr.d	$s7, $xr11, 3
-	vinsgr2vr.w	$vr12, $s7, 3
+	xvpickev.w	$xr12, $xr11, $xr11
+	xvpermi.d	$xr12, $xr12, 216
 	xvmskltz.d	$xr11, $xr11
 	xvpickve2gr.wu	$s7, $xr11, 0
 	xvpickve2gr.wu	$s8, $xr11, 4

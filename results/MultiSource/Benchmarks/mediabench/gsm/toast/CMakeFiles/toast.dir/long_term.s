@@ -352,25 +352,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	xvori.b	$xr3, $xr0, 0
 	xvmadd.w	$xr3, $xr2, $xr1
 	xvsrli.w	$xr2, $xr3, 15
-	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.h	$vr3, $a1, 0
-	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.h	$vr3, $a1, 1
-	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.h	$vr3, $a1, 2
-	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.h	$vr3, $a1, 3
-	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.h	$vr3, $a1, 4
-	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.h	$vr3, $a1, 5
-	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.h	$vr3, $a1, 6
-	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.h	$vr3, $a1, 7
-	vst	$vr3, $s1, 0
-	vld	$vr2, $fp, 0
-	vssub.h	$vr2, $vr2, $vr3
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	vst	$vr2, $s1, 0
+	vld	$vr3, $fp, 0
+	vssub.h	$vr2, $vr3, $vr2
 	vst	$vr2, $s0, 0
 	ori	$a1, $zero, 8
 	sub.d	$a1, $a1, $a0
@@ -380,25 +366,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	xvori.b	$xr3, $xr0, 0
 	xvmadd.w	$xr3, $xr2, $xr1
 	xvsrli.w	$xr2, $xr3, 15
-	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.h	$vr3, $a1, 0
-	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.h	$vr3, $a1, 1
-	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.h	$vr3, $a1, 2
-	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.h	$vr3, $a1, 3
-	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.h	$vr3, $a1, 4
-	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.h	$vr3, $a1, 5
-	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.h	$vr3, $a1, 6
-	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.h	$vr3, $a1, 7
-	vst	$vr3, $s1, 16
-	vld	$vr2, $fp, 16
-	vssub.h	$vr2, $vr2, $vr3
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	vst	$vr2, $s1, 16
+	vld	$vr3, $fp, 16
+	vssub.h	$vr2, $vr3, $vr2
 	vst	$vr2, $s0, 16
 	ori	$a1, $zero, 16
 	sub.d	$a1, $a1, $a0
@@ -408,25 +380,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	xvori.b	$xr3, $xr0, 0
 	xvmadd.w	$xr3, $xr2, $xr1
 	xvsrli.w	$xr2, $xr3, 15
-	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.h	$vr3, $a1, 0
-	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.h	$vr3, $a1, 1
-	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.h	$vr3, $a1, 2
-	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.h	$vr3, $a1, 3
-	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.h	$vr3, $a1, 4
-	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.h	$vr3, $a1, 5
-	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.h	$vr3, $a1, 6
-	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.h	$vr3, $a1, 7
-	vst	$vr3, $s1, 32
-	vld	$vr2, $fp, 32
-	vssub.h	$vr2, $vr2, $vr3
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	vst	$vr2, $s1, 32
+	vld	$vr3, $fp, 32
+	vssub.h	$vr2, $vr3, $vr2
 	vst	$vr2, $s0, 32
 	ori	$a1, $zero, 24
 	sub.d	$a1, $a1, $a0
@@ -436,25 +394,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	xvori.b	$xr3, $xr0, 0
 	xvmadd.w	$xr3, $xr2, $xr1
 	xvsrli.w	$xr2, $xr3, 15
-	xvpickve2gr.w	$a1, $xr2, 0
-	vinsgr2vr.h	$vr3, $a1, 0
-	xvpickve2gr.w	$a1, $xr2, 1
-	vinsgr2vr.h	$vr3, $a1, 1
-	xvpickve2gr.w	$a1, $xr2, 2
-	vinsgr2vr.h	$vr3, $a1, 2
-	xvpickve2gr.w	$a1, $xr2, 3
-	vinsgr2vr.h	$vr3, $a1, 3
-	xvpickve2gr.w	$a1, $xr2, 4
-	vinsgr2vr.h	$vr3, $a1, 4
-	xvpickve2gr.w	$a1, $xr2, 5
-	vinsgr2vr.h	$vr3, $a1, 5
-	xvpickve2gr.w	$a1, $xr2, 6
-	vinsgr2vr.h	$vr3, $a1, 6
-	xvpickve2gr.w	$a1, $xr2, 7
-	vinsgr2vr.h	$vr3, $a1, 7
-	vst	$vr3, $s1, 48
-	vld	$vr2, $fp, 48
-	vssub.h	$vr2, $vr2, $vr3
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	vst	$vr2, $s1, 48
+	vld	$vr3, $fp, 48
+	vssub.h	$vr2, $vr3, $vr2
 	vst	$vr2, $s0, 48
 	ori	$a1, $zero, 32
 	sub.d	$a0, $a1, $a0
@@ -463,25 +407,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vext2xv.w.h	$xr2, $xr2
 	xvmadd.w	$xr0, $xr2, $xr1
 	xvsrli.w	$xr0, $xr0, 15
-	xvpickve2gr.w	$a0, $xr0, 0
-	vinsgr2vr.h	$vr1, $a0, 0
-	xvpickve2gr.w	$a0, $xr0, 1
-	vinsgr2vr.h	$vr1, $a0, 1
-	xvpickve2gr.w	$a0, $xr0, 2
-	vinsgr2vr.h	$vr1, $a0, 2
-	xvpickve2gr.w	$a0, $xr0, 3
-	vinsgr2vr.h	$vr1, $a0, 3
-	xvpickve2gr.w	$a0, $xr0, 4
-	vinsgr2vr.h	$vr1, $a0, 4
-	xvpickve2gr.w	$a0, $xr0, 5
-	vinsgr2vr.h	$vr1, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 6
-	vinsgr2vr.h	$vr1, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 7
-	vinsgr2vr.h	$vr1, $a0, 7
-	vst	$vr1, $s1, 64
-	vld	$vr0, $fp, 64
-	vssub.h	$vr0, $vr0, $vr1
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vst	$vr0, $s1, 64
+	vld	$vr1, $fp, 64
+	vssub.h	$vr0, $vr1, $vr0
 	vst	$vr0, $s0, 64
 	b	.LBB0_28
 .LBB0_24:                               # %scalar.ph109.preheader
@@ -731,14 +661,14 @@ Gsm_Long_Term_Synthesis_Filtering:      # @Gsm_Long_Term_Synthesis_Filtering
 	xvreplgr2vr.d	$xr0, $a2
 	vld	$vr2, $a1, 16
 	vext2xv.w.h	$xr1, $xr1
-	xvpermi.q	$xr3, $xr1, 1
-	vext2xv.d.w	$xr3, $xr3
+	vext2xv.d.w	$xr3, $xr1
+	xvpermi.q	$xr1, $xr1, 1
 	vext2xv.d.w	$xr4, $xr1
 	vext2xv.w.h	$xr1, $xr2
-	xvpermi.q	$xr2, $xr1, 1
-	vext2xv.d.w	$xr5, $xr2
-	vext2xv.d.w	$xr6, $xr1
-	vld	$vr2, $a3, 0
+	vext2xv.d.w	$xr2, $xr1
+	xvpermi.q	$xr1, $xr1, 1
+	vext2xv.d.w	$xr5, $xr1
+	vld	$vr6, $a3, 0
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 32768
 	xvreplgr2vr.d	$xr1, $a1
@@ -748,47 +678,23 @@ Gsm_Long_Term_Synthesis_Filtering:      # @Gsm_Long_Term_Synthesis_Filtering
 	xvori.b	$xr4, $xr1, 0
 	xvmadd.d	$xr4, $xr0, $xr3
 	xvori.b	$xr3, $xr1, 0
-	xvmadd.d	$xr3, $xr0, $xr6
-	xvori.b	$xr6, $xr1, 0
-	xvmadd.d	$xr6, $xr0, $xr5
-	xvsrli.d	$xr4, $xr4, 48
-	xvsrli.d	$xr5, $xr8, 48
-	xvsrli.d	$xr6, $xr6, 48
+	xvmadd.d	$xr3, $xr0, $xr5
+	xvori.b	$xr5, $xr1, 0
+	xvmadd.d	$xr5, $xr0, $xr2
+	xvsrli.d	$xr2, $xr4, 48
+	xvsrli.d	$xr4, $xr8, 48
+	xvsrli.d	$xr5, $xr5, 48
 	xvsrli.d	$xr3, $xr3, 48
-	xvpickve2gr.d	$a1, $xr5, 0
-	vinsgr2vr.h	$vr8, $a1, 0
-	xvpickve2gr.d	$a1, $xr5, 1
-	vinsgr2vr.h	$vr8, $a1, 1
-	xvpickve2gr.d	$a1, $xr5, 2
-	vinsgr2vr.h	$vr8, $a1, 2
-	xvpickve2gr.d	$a1, $xr5, 3
-	vinsgr2vr.h	$vr8, $a1, 3
-	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.h	$vr8, $a1, 4
-	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.h	$vr8, $a1, 5
-	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.h	$vr8, $a1, 6
-	xvpickve2gr.d	$a1, $xr4, 3
-	vinsgr2vr.h	$vr8, $a1, 7
-	xvpickve2gr.d	$a1, $xr3, 0
-	vinsgr2vr.h	$vr4, $a1, 0
-	xvpickve2gr.d	$a1, $xr3, 1
-	vinsgr2vr.h	$vr4, $a1, 1
-	xvpickve2gr.d	$a1, $xr3, 2
-	vinsgr2vr.h	$vr4, $a1, 2
-	xvpickve2gr.d	$a1, $xr3, 3
-	vinsgr2vr.h	$vr4, $a1, 3
-	xvpickve2gr.d	$a1, $xr6, 0
-	vinsgr2vr.h	$vr4, $a1, 4
-	xvpickve2gr.d	$a1, $xr6, 1
-	vinsgr2vr.h	$vr4, $a1, 5
-	xvpickve2gr.d	$a1, $xr6, 2
-	vinsgr2vr.h	$vr4, $a1, 6
-	xvpickve2gr.d	$a1, $xr6, 3
-	vinsgr2vr.h	$vr4, $a1, 7
-	vsadd.h	$vr2, $vr8, $vr2
-	vsadd.h	$vr3, $vr4, $vr7
+	xvpickev.w	$xr2, $xr4, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvpickev.w	$xr3, $xr3, $xr5
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vsadd.h	$vr2, $vr2, $vr6
+	vsadd.h	$vr3, $vr3, $vr7
 	vst	$vr2, $a4, 0
 	vst	$vr3, $a4, 16
 	ori	$a1, $zero, 16
@@ -798,12 +704,12 @@ Gsm_Long_Term_Synthesis_Filtering:      # @Gsm_Long_Term_Synthesis_Filtering
 	alsl.d	$a1, $a1, $a4, 1
 	vld	$vr3, $a1, 16
 	vext2xv.w.h	$xr2, $xr2
-	xvpermi.q	$xr4, $xr2, 1
-	vext2xv.d.w	$xr4, $xr4
+	vext2xv.d.w	$xr4, $xr2
+	xvpermi.q	$xr2, $xr2, 1
 	vext2xv.d.w	$xr2, $xr2
 	vext2xv.w.h	$xr3, $xr3
-	xvpermi.q	$xr5, $xr3, 1
-	vext2xv.d.w	$xr5, $xr5
+	vext2xv.d.w	$xr5, $xr3
+	xvpermi.q	$xr3, $xr3, 1
 	vext2xv.d.w	$xr3, $xr3
 	vld	$vr6, $a3, 32
 	vld	$vr7, $a3, 48
@@ -819,49 +725,25 @@ Gsm_Long_Term_Synthesis_Filtering:      # @Gsm_Long_Term_Synthesis_Filtering
 	xvsrli.d	$xr5, $xr8, 48
 	xvsrli.d	$xr3, $xr3, 48
 	xvsrli.d	$xr4, $xr4, 48
-	xvpickve2gr.d	$a1, $xr5, 0
-	vinsgr2vr.h	$vr8, $a1, 0
-	xvpickve2gr.d	$a1, $xr5, 1
-	vinsgr2vr.h	$vr8, $a1, 1
-	xvpickve2gr.d	$a1, $xr5, 2
-	vinsgr2vr.h	$vr8, $a1, 2
-	xvpickve2gr.d	$a1, $xr5, 3
-	vinsgr2vr.h	$vr8, $a1, 3
-	xvpickve2gr.d	$a1, $xr2, 0
-	vinsgr2vr.h	$vr8, $a1, 4
-	xvpickve2gr.d	$a1, $xr2, 1
-	vinsgr2vr.h	$vr8, $a1, 5
-	xvpickve2gr.d	$a1, $xr2, 2
-	vinsgr2vr.h	$vr8, $a1, 6
-	xvpickve2gr.d	$a1, $xr2, 3
-	vinsgr2vr.h	$vr8, $a1, 7
-	xvpickve2gr.d	$a1, $xr4, 0
-	vinsgr2vr.h	$vr2, $a1, 0
-	xvpickve2gr.d	$a1, $xr4, 1
-	vinsgr2vr.h	$vr2, $a1, 1
-	xvpickve2gr.d	$a1, $xr4, 2
-	vinsgr2vr.h	$vr2, $a1, 2
-	xvpickve2gr.d	$a1, $xr4, 3
-	vinsgr2vr.h	$vr2, $a1, 3
-	xvpickve2gr.d	$a1, $xr3, 0
-	vinsgr2vr.h	$vr2, $a1, 4
-	xvpickve2gr.d	$a1, $xr3, 1
-	vinsgr2vr.h	$vr2, $a1, 5
-	xvpickve2gr.d	$a1, $xr3, 2
-	vinsgr2vr.h	$vr2, $a1, 6
-	xvpickve2gr.d	$a1, $xr3, 3
-	vinsgr2vr.h	$vr2, $a1, 7
-	vsadd.h	$vr3, $vr8, $vr6
-	vsadd.h	$vr2, $vr2, $vr7
-	vst	$vr3, $a4, 32
-	vst	$vr2, $a4, 48
+	xvpickev.w	$xr2, $xr5, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvpickev.h	$xr2, $xr2, $xr2
+	xvpermi.d	$xr2, $xr2, 216
+	xvpickev.w	$xr3, $xr4, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvpickev.h	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	vsadd.h	$vr2, $vr2, $vr6
+	vsadd.h	$vr3, $vr3, $vr7
+	vst	$vr2, $a4, 32
+	vst	$vr3, $a4, 48
 	ori	$a1, $zero, 32
 	sub.d	$a0, $a1, $a0
 	slli.d	$a0, $a0, 1
 	vldx	$vr2, $a4, $a0
 	vext2xv.w.h	$xr2, $xr2
-	xvpermi.q	$xr3, $xr2, 1
-	vext2xv.d.w	$xr3, $xr3
+	vext2xv.d.w	$xr3, $xr2
+	xvpermi.q	$xr2, $xr2, 1
 	vext2xv.d.w	$xr2, $xr2
 	vld	$vr4, $a3, 64
 	xvori.b	$xr5, $xr1, 0
@@ -869,23 +751,11 @@ Gsm_Long_Term_Synthesis_Filtering:      # @Gsm_Long_Term_Synthesis_Filtering
 	xvmadd.d	$xr1, $xr0, $xr3
 	xvsrli.d	$xr0, $xr1, 48
 	xvsrli.d	$xr1, $xr5, 48
-	xvpickve2gr.d	$a0, $xr1, 0
-	vinsgr2vr.h	$vr2, $a0, 0
-	xvpickve2gr.d	$a0, $xr1, 1
-	vinsgr2vr.h	$vr2, $a0, 1
-	xvpickve2gr.d	$a0, $xr1, 2
-	vinsgr2vr.h	$vr2, $a0, 2
-	xvpickve2gr.d	$a0, $xr1, 3
-	vinsgr2vr.h	$vr2, $a0, 3
-	xvpickve2gr.d	$a0, $xr0, 0
-	vinsgr2vr.h	$vr2, $a0, 4
-	xvpickve2gr.d	$a0, $xr0, 1
-	vinsgr2vr.h	$vr2, $a0, 5
-	xvpickve2gr.d	$a0, $xr0, 2
-	vinsgr2vr.h	$vr2, $a0, 6
-	xvpickve2gr.d	$a0, $xr0, 3
-	vinsgr2vr.h	$vr2, $a0, 7
-	vsadd.h	$vr0, $vr2, $vr4
+	xvpickev.w	$xr0, $xr1, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	xvpickev.h	$xr0, $xr0, $xr0
+	xvpermi.d	$xr0, $xr0, 216
+	vsadd.h	$vr0, $vr0, $vr4
 	vst	$vr0, $a4, 64
 	addi.d	$a0, $a4, -240
 	addi.d	$a1, $a4, -160
