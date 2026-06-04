@@ -1092,79 +1092,98 @@ build_decrypt_dictionaries:             # @build_decrypt_dictionaries
 	vreplgr2vr.d	$vr0, $a1
 	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
 	vsle.du	$vr1, $vr1, $vr0
-	vpickve2gr.h	$a2, $vr1, 0
+	vld	$vr2, $sp, 48                   # 16-byte Folded Reload
+	vsle.du	$vr2, $vr2, $vr0
+	vpickev.w	$vr1, $vr2, $vr1
+	vld	$vr2, $sp, 32                   # 16-byte Folded Reload
+	vsle.du	$vr2, $vr2, $vr0
+	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
+	vsle.du	$vr0, $vr3, $vr0
+	vpickev.w	$vr0, $vr0, $vr2
+	vpickev.h	$vr0, $vr0, $vr1
+	vpickve2gr.h	$a2, $vr0, 0
 	andi	$a4, $a2, 1
 	add.d	$a2, $s1, $a3
-	beqz	$a4, .LBB1_44
+	beqz	$a4, .LBB1_50
 # %bb.43:                               # %pred.store.if
                                         #   in Loop: Header=BB1_22 Depth=1
 	st.b	$a0, $a2, 1
-.LBB1_44:                               # %pred.store.continue
-                                        #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr1, $vr1, 2
-	vpickve2gr.h	$a3, $vr1, 2
+	vpickve2gr.h	$a3, $vr0, 1
 	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_46
-# %bb.45:                               # %pred.store.if210
+	bnez	$a3, .LBB1_51
+.LBB1_44:                               # %pred.store.continue211
                                         #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 2
-.LBB1_46:                               # %pred.store.continue211
-                                        #   in Loop: Header=BB1_22 Depth=1
-	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
-	vsle.du	$vr1, $vr1, $vr0
-	vreplvei.w	$vr2, $vr1, 0
-	vpickve2gr.h	$a3, $vr2, 4
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_48
-# %bb.47:                               # %pred.store.if212
-                                        #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 3
-.LBB1_48:                               # %pred.store.continue213
-                                        #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr1, $vr1, 2
-	vpickve2gr.h	$a3, $vr1, 6
-	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_50
-# %bb.49:                               # %pred.store.if214
-                                        #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 4
-.LBB1_50:                               # %pred.store.continue215
-                                        #   in Loop: Header=BB1_22 Depth=1
-	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
-	vsle.du	$vr1, $vr1, $vr0
-	vpickve2gr.h	$a3, $vr1, 0
+	vpickve2gr.h	$a3, $vr0, 2
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB1_52
-# %bb.51:                               # %pred.store.if216
+.LBB1_45:                               # %pred.store.if212
                                         #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 5
-.LBB1_52:                               # %pred.store.continue217
+	st.b	$a0, $a2, 3
+	vpickve2gr.h	$a3, $vr0, 3
+	andi	$a3, $a3, 1
+	bnez	$a3, .LBB1_53
+.LBB1_46:                               # %pred.store.continue215
                                         #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr1, $vr1, 2
-	vpickve2gr.h	$a3, $vr1, 2
+	vpickve2gr.h	$a3, $vr0, 4
 	andi	$a3, $a3, 1
 	beqz	$a3, .LBB1_54
-# %bb.53:                               # %pred.store.if218
+.LBB1_47:                               # %pred.store.if216
                                         #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 6
-.LBB1_54:                               # %pred.store.continue219
-                                        #   in Loop: Header=BB1_22 Depth=1
-	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
-	vsle.du	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 0
-	vpickve2gr.h	$a3, $vr1, 4
+	st.b	$a0, $a2, 5
+	vpickve2gr.h	$a3, $vr0, 5
 	andi	$a3, $a3, 1
-	beqz	$a3, .LBB1_56
-# %bb.55:                               # %pred.store.if220
+	bnez	$a3, .LBB1_55
+.LBB1_48:                               # %pred.store.continue219
                                         #   in Loop: Header=BB1_22 Depth=1
-	st.b	$a0, $a2, 7
-.LBB1_56:                               # %pred.store.continue221
-                                        #   in Loop: Header=BB1_22 Depth=1
-	vreplvei.w	$vr0, $vr0, 2
 	vpickve2gr.h	$a3, $vr0, 6
 	andi	$a3, $a3, 1
+	beqz	$a3, .LBB1_56
+.LBB1_49:                               # %pred.store.if220
+                                        #   in Loop: Header=BB1_22 Depth=1
+	st.b	$a0, $a2, 7
+	vpickve2gr.h	$a3, $vr0, 7
+	andi	$a3, $a3, 1
+	bnez	$a3, .LBB1_57
+	b	.LBB1_58
+.LBB1_50:                               # %pred.store.continue
+                                        #   in Loop: Header=BB1_22 Depth=1
+	vpickve2gr.h	$a3, $vr0, 1
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB1_44
+.LBB1_51:                               # %pred.store.if210
+                                        #   in Loop: Header=BB1_22 Depth=1
+	st.b	$a0, $a2, 2
+	vpickve2gr.h	$a3, $vr0, 2
+	andi	$a3, $a3, 1
+	bnez	$a3, .LBB1_45
+.LBB1_52:                               # %pred.store.continue213
+                                        #   in Loop: Header=BB1_22 Depth=1
+	vpickve2gr.h	$a3, $vr0, 3
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB1_46
+.LBB1_53:                               # %pred.store.if214
+                                        #   in Loop: Header=BB1_22 Depth=1
+	st.b	$a0, $a2, 4
+	vpickve2gr.h	$a3, $vr0, 4
+	andi	$a3, $a3, 1
+	bnez	$a3, .LBB1_47
+.LBB1_54:                               # %pred.store.continue217
+                                        #   in Loop: Header=BB1_22 Depth=1
+	vpickve2gr.h	$a3, $vr0, 5
+	andi	$a3, $a3, 1
+	beqz	$a3, .LBB1_48
+.LBB1_55:                               # %pred.store.if218
+                                        #   in Loop: Header=BB1_22 Depth=1
+	st.b	$a0, $a2, 6
+	vpickve2gr.h	$a3, $vr0, 6
+	andi	$a3, $a3, 1
+	bnez	$a3, .LBB1_49
+.LBB1_56:                               # %pred.store.continue221
+                                        #   in Loop: Header=BB1_22 Depth=1
+	vpickve2gr.h	$a3, $vr0, 7
+	andi	$a3, $a3, 1
 	beqz	$a3, .LBB1_58
-# %bb.57:                               # %pred.store.if222
+.LBB1_57:                               # %pred.store.if222
                                         #   in Loop: Header=BB1_22 Depth=1
 	st.b	$a0, $a2, 8
 .LBB1_58:                               # %.loopexit110.loopexit134

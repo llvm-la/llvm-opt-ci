@@ -237,29 +237,30 @@ _ZL15BM_INIT3_LAMBDARN9benchmark5StateE: # @_ZL15BM_INIT3_LAMBDARN9benchmark5Sta
 	vsub.d	$vr1, $vr5, $vr3
 	vsub.d	$vr2, $vr2, $vr5
 	sub.d	$a2, $s1, $s0
+	vslti.du	$vr0, $vr0, 16
+	vslti.du	$vr3, $vr4, 16
+	vpickev.w	$vr0, $vr3, $vr0
 	vslti.du	$vr2, $vr2, 16
 	vslti.du	$vr1, $vr1, 16
 	vpickev.w	$vr1, $vr1, $vr2
-	vpickve2gr.h	$a3, $vr1, 2
-	andi	$a3, $a3, 1
-	vpickve2gr.h	$a4, $vr2, 0
-	bstrins.d	$a4, $a3, 63, 1
-	vpickve2gr.h	$a3, $vr1, 4
-	bstrins.d	$a4, $a3, 2, 2
-	vpickve2gr.h	$a3, $vr1, 6
-	bstrins.d	$a4, $a3, 3, 3
-	vslti.du	$vr0, $vr0, 16
-	vslti.du	$vr1, $vr4, 16
-	vpickev.w	$vr0, $vr1, $vr0
+	vpickev.h	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a3, $vr0, 0
-	bstrins.d	$a4, $a3, 4, 4
-	vpickve2gr.h	$a3, $vr0, 2
-	bstrins.d	$a4, $a3, 5, 5
-	vpickve2gr.h	$a3, $vr0, 4
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 6
-	or	$a3, $a4, $a3
+	vpickve2gr.h	$a4, $vr0, 1
+	andi	$a4, $a4, 1
+	bstrins.d	$a3, $a4, 63, 1
+	vpickve2gr.h	$a4, $vr0, 2
+	bstrins.d	$a3, $a4, 2, 2
+	vpickve2gr.h	$a4, $vr0, 3
+	bstrins.d	$a3, $a4, 3, 3
+	vpickve2gr.h	$a4, $vr0, 4
+	bstrins.d	$a3, $a4, 4, 4
+	vpickve2gr.h	$a4, $vr0, 5
+	bstrins.d	$a3, $a4, 5, 5
 	vpickve2gr.h	$a4, $vr0, 6
+	andi	$a4, $a4, 1
+	slli.d	$a4, $a4, 6
+	or	$a3, $a3, $a4
+	vpickve2gr.h	$a4, $vr0, 7
 	slli.d	$a4, $a4, 7
 	or	$a3, $a3, $a4
 	andi	$a3, $a3, 255

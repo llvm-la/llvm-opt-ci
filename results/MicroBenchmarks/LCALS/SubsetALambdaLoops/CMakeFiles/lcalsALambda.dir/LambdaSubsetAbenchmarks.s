@@ -781,6 +781,7 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
 	ld.d	$a7, $sp, 120                   # 8-byte Folded Reload
 	sltu	$a5, $s6, $a1
 	and	$a4, $a4, $a5
+	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a5, $vr0, 0
 	sltu	$a5, $zero, $a5

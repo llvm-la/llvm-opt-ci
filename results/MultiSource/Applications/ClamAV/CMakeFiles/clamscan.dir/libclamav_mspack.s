@@ -8093,30 +8093,34 @@ lzx_read_lens:                          # @lzx_read_lens
 .LBB10_114:                             # %vector.ph640
                                         #   in Loop: Header=BB10_17 Depth=1
 	pcalau12i	$a4, %pc_hi20(.LCPI10_0)
-	vld	$vr2, $a4, %pc_lo12(.LCPI10_0)
-	vreplgr2vr.w	$vr0, $t2
-	vadd.w	$vr3, $vr0, $vr2
+	vld	$vr0, $a4, %pc_lo12(.LCPI10_0)
+	vreplgr2vr.w	$vr1, $t2
+	vadd.w	$vr3, $vr1, $vr0
+	pcalau12i	$a4, %pc_hi20(.LCPI10_1)
+	vld	$vr2, $a4, %pc_lo12(.LCPI10_1)
 	addi.d	$a4, $a3, 3
-	vreplgr2vr.w	$vr1, $a4
-	vsle.wu	$vr2, $vr2, $vr1
-	vpickve2gr.h	$a4, $vr2, 0
+	vreplgr2vr.w	$vr4, $a4
+	vsle.wu	$vr0, $vr0, $vr4
+	vsle.wu	$vr4, $vr2, $vr4
+	vpickev.h	$vr0, $vr4, $vr0
+	vpickve2gr.h	$a4, $vr0, 0
 	andi	$a4, $a4, 1
 	vilvl.w	$vr4, $vr5, $vr3
 	bnez	$a4, .LBB10_134
 # %bb.115:                              # %pred.store.continue
                                         #   in Loop: Header=BB10_17 Depth=1
-	vpickve2gr.h	$a4, $vr2, 2
+	vpickve2gr.h	$a4, $vr0, 1
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB10_135
 .LBB10_116:                             # %pred.store.continue645
                                         #   in Loop: Header=BB10_17 Depth=1
-	vpickve2gr.h	$a4, $vr2, 4
+	vpickve2gr.h	$a4, $vr0, 2
 	andi	$a4, $a4, 1
 	vilvh.w	$vr3, $vr5, $vr3
 	bnez	$a4, .LBB10_136
 .LBB10_117:                             # %pred.store.continue647
                                         #   in Loop: Header=BB10_17 Depth=1
-	vpickve2gr.h	$a4, $vr2, 6
+	vpickve2gr.h	$a4, $vr0, 3
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB10_119
 .LBB10_118:                             # %pred.store.if648
@@ -8125,24 +8129,21 @@ lzx_read_lens:                          # @lzx_read_lens
 	stx.b	$a2, $s2, $a4
 .LBB10_119:                             # %pred.store.continue649
                                         #   in Loop: Header=BB10_17 Depth=1
-	pcalau12i	$a4, %pc_hi20(.LCPI10_1)
-	vld	$vr3, $a4, %pc_lo12(.LCPI10_1)
-	vadd.w	$vr2, $vr0, $vr3
-	vsle.wu	$vr0, $vr3, $vr1
-	vpickve2gr.h	$a4, $vr0, 0
+	vadd.w	$vr1, $vr1, $vr2
+	vpickve2gr.h	$a4, $vr0, 4
 	andi	$a4, $a4, 1
-	vilvl.w	$vr1, $vr5, $vr2
+	vilvl.w	$vr2, $vr5, $vr1
 	bnez	$a4, .LBB10_137
 # %bb.120:                              # %pred.store.continue651
                                         #   in Loop: Header=BB10_17 Depth=1
-	vpickve2gr.h	$a4, $vr0, 2
+	vpickve2gr.h	$a4, $vr0, 5
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB10_138
 .LBB10_121:                             # %pred.store.continue653
                                         #   in Loop: Header=BB10_17 Depth=1
-	vpickve2gr.h	$a4, $vr0, 4
+	vpickve2gr.h	$a4, $vr0, 6
 	andi	$a4, $a4, 1
-	vilvh.w	$vr1, $vr5, $vr2
+	vilvh.w	$vr1, $vr5, $vr1
 	beqz	$a4, .LBB10_123
 .LBB10_122:                             # %pred.store.if654
                                         #   in Loop: Header=BB10_17 Depth=1
@@ -8151,7 +8152,7 @@ lzx_read_lens:                          # @lzx_read_lens
 .LBB10_123:                             # %pred.store.continue655
                                         #   in Loop: Header=BB10_17 Depth=1
 	add.d	$a3, $t2, $a3
-	vpickve2gr.h	$a4, $vr0, 6
+	vpickve2gr.h	$a4, $vr0, 7
 	andi	$a4, $a4, 1
 	addi.w	$t2, $a3, 4
 	beqz	$a4, .LBB10_125
@@ -8208,14 +8209,14 @@ lzx_read_lens:                          # @lzx_read_lens
                                         #   in Loop: Header=BB10_17 Depth=1
 	vpickve2gr.d	$a4, $vr4, 0
 	stx.b	$a2, $s2, $a4
-	vpickve2gr.h	$a4, $vr2, 2
+	vpickve2gr.h	$a4, $vr0, 1
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB10_116
 .LBB10_135:                             # %pred.store.if644
                                         #   in Loop: Header=BB10_17 Depth=1
 	vpickve2gr.d	$a4, $vr4, 1
 	stx.b	$a2, $s2, $a4
-	vpickve2gr.h	$a4, $vr2, 4
+	vpickve2gr.h	$a4, $vr0, 2
 	andi	$a4, $a4, 1
 	vilvh.w	$vr3, $vr5, $vr3
 	beqz	$a4, .LBB10_117
@@ -8223,24 +8224,24 @@ lzx_read_lens:                          # @lzx_read_lens
                                         #   in Loop: Header=BB10_17 Depth=1
 	vpickve2gr.d	$a4, $vr3, 0
 	stx.b	$a2, $s2, $a4
-	vpickve2gr.h	$a4, $vr2, 6
+	vpickve2gr.h	$a4, $vr0, 3
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB10_118
 	b	.LBB10_119
 .LBB10_137:                             # %pred.store.if650
                                         #   in Loop: Header=BB10_17 Depth=1
-	vpickve2gr.d	$a4, $vr1, 0
+	vpickve2gr.d	$a4, $vr2, 0
 	stx.b	$a2, $s2, $a4
-	vpickve2gr.h	$a4, $vr0, 2
+	vpickve2gr.h	$a4, $vr0, 5
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB10_121
 .LBB10_138:                             # %pred.store.if652
                                         #   in Loop: Header=BB10_17 Depth=1
-	vpickve2gr.d	$a4, $vr1, 1
+	vpickve2gr.d	$a4, $vr2, 1
 	stx.b	$a2, $s2, $a4
-	vpickve2gr.h	$a4, $vr0, 4
+	vpickve2gr.h	$a4, $vr0, 6
 	andi	$a4, $a4, 1
-	vilvh.w	$vr1, $vr5, $vr2
+	vilvh.w	$vr1, $vr5, $vr1
 	bnez	$a4, .LBB10_122
 	b	.LBB10_123
 .LBB10_139:                             #   in Loop: Header=BB10_17 Depth=1

@@ -586,10 +586,10 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	sll.w	$a6, $a6, $a3
 	ld.d	$t0, $sp, 160                   # 8-byte Folded Reload
 	sll.w	$a3, $t0, $a3
-	vinsgr2vr.w	$vr0, $a3, 0
-	vinsgr2vr.w	$vr0, $a6, 2
-	vinsgr2vr.w	$vr1, $a5, 0
-	vinsgr2vr.w	$vr1, $a4, 2
+	vinsgr2vr.w	$vr0, $a5, 0
+	vinsgr2vr.w	$vr0, $a4, 2
+	vinsgr2vr.w	$vr1, $a3, 0
+	vinsgr2vr.w	$vr1, $a6, 2
 	vslli.d	$vr1, $vr1, 48
 	vsrai.d	$vr1, $vr1, 48
 	vslli.d	$vr0, $vr0, 48
@@ -598,15 +598,9 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vmul.d	$vr1, $vr1, $vr4
 	vsrli.d	$vr1, $vr1, 15
 	vsrli.d	$vr0, $vr0, 15
-	vpickve2gr.d	$a3, $vr0, 0
-	vinsgr2vr.h	$vr2, $a3, 0
-	vpickve2gr.d	$a3, $vr0, 1
-	vinsgr2vr.h	$vr2, $a3, 1
-	vpickve2gr.d	$a3, $vr1, 0
-	vinsgr2vr.h	$vr2, $a3, 2
-	vpickve2gr.d	$a3, $vr1, 1
-	vinsgr2vr.h	$vr2, $a3, 3
-	vsrai.h	$vr0, $vr2, 12
+	vpickev.w	$vr0, $vr0, $vr1
+	vpickev.h	$vr0, $vr0, $vr0
+	vsrai.h	$vr0, $vr0, 12
 	vaddi.hu	$vr0, $vr0, 4
 	vstelm.h	$vr0, $a7, 18, 0
 	vstelm.h	$vr0, $a7, 20, 1

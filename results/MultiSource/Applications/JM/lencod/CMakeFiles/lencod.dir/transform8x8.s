@@ -2576,7 +2576,7 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ori	$t5, $s5, 3688
 	stx.h	$t6, $s6, $t5
 	ld.hu	$t5, $fp, 32
-	vilvl.h	$vr3, $vr0, $vr1
+	vilvl.h	$vr2, $vr0, $vr1
 	st.h	$t6, $s4, 320
 	st.h	$t6, $s4, 292
 	st.h	$t6, $s4, 264
@@ -2586,7 +2586,7 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	srli.d	$t4, $t4, 1
 	ori	$t7, $s3, 80
 	stx.h	$t4, $s6, $t7
-	vpickve2gr.w	$t4, $vr3, 1
+	vpickve2gr.w	$t4, $vr2, 1
 	add.d	$t6, $t6, $t4
 	bstrpick.d	$t6, $t6, 18, 2
 	ori	$t7, $s5, 3760
@@ -2601,48 +2601,49 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	st.h	$t6, $s4, 308
 	st.h	$t6, $s4, 280
 	pcalau12i	$t6, %pc_hi20(.LCPI2_0)
-	vld	$vr2, $t6, %pc_lo12(.LCPI2_0)
+	vld	$vr4, $t6, %pc_lo12(.LCPI2_0)
 	pcalau12i	$t6, %pc_hi20(.LCPI2_1)
-	vld	$vr5, $t6, %pc_lo12(.LCPI2_1)
+	vld	$vr6, $t6, %pc_lo12(.LCPI2_1)
 	pcalau12i	$t6, %pc_hi20(.LCPI2_2)
 	vld	$vr7, $t6, %pc_lo12(.LCPI2_2)
-	vbsrl.v	$vr6, $vr1, 8
-	vilvl.h	$vr1, $vr0, $vr6
-	vbsrl.v	$vr4, $vr3, 4
+	vbsrl.v	$vr5, $vr1, 8
+	vilvl.h	$vr1, $vr0, $vr5
+	vbsrl.v	$vr3, $vr2, 4
 	vbsll.v	$vr8, $vr1, 12
-	vor.v	$vr4, $vr8, $vr4
+	vor.v	$vr3, $vr8, $vr3
 	vrepli.w	$vr8, 2
-	vshuf.w	$vr2, $vr1, $vr8
+	vshuf.w	$vr4, $vr1, $vr8
 	vshuf4i.w	$vr8, $vr1, 14
 	vinsgr2vr.w	$vr8, $t5, 2
 	alsl.d	$t5, $t5, $t5, 1
-	vslli.w	$vr4, $vr4, 1
-	vsll.w	$vr2, $vr2, $vr5
-	vadd.w	$vr2, $vr1, $vr2
-	vaddi.wu	$vr5, $vr3, 2
+	vslli.w	$vr3, $vr3, 1
+	vsll.w	$vr4, $vr4, $vr6
+	vadd.w	$vr6, $vr1, $vr4
+	vaddi.wu	$vr4, $vr2, 2
 	vinsgr2vr.w	$vr8, $t5, 3
-	vadd.w	$vr2, $vr2, $vr8
-	vadd.w	$vr8, $vr5, $vr4
-	vpermi.w	$vr1, $vr3, 78
+	vadd.w	$vr6, $vr6, $vr8
+	vadd.w	$vr8, $vr4, $vr3
+	vpermi.w	$vr1, $vr2, 78
 	vadd.w	$vr1, $vr8, $vr1
-	vadd.w	$vr2, $vr2, $vr7
+	vadd.w	$vr6, $vr6, $vr7
 	vsrli.w	$vr1, $vr1, 2
-	vsrli.w	$vr2, $vr2, 2
+	vsrli.w	$vr6, $vr6, 2
+	vpickev.h	$vr1, $vr6, $vr1
 	vpickve2gr.h	$t5, $vr1, 0
 	st.h	$t5, $s4, 352
 	st.h	$t5, $s4, 324
 	st.h	$t5, $s4, 296
 	st.h	$t5, $s4, 268
-	vpickve2gr.h	$t5, $vr1, 2
+	vpickve2gr.h	$t5, $vr1, 1
 	st.h	$t5, $s4, 340
 	st.h	$t5, $s4, 312
 	st.h	$t5, $s4, 284
-	vpickve2gr.h	$t5, $vr2, 0
+	vpickve2gr.h	$t5, $vr1, 4
 	st.h	$t5, $s4, 360
 	st.h	$t5, $s4, 332
-	vpickve2gr.h	$t5, $vr2, 2
+	vpickve2gr.h	$t5, $vr1, 5
 	st.h	$t5, $s4, 348
-	vpickve2gr.h	$t5, $vr2, 4
+	vpickve2gr.h	$t5, $vr1, 6
 	st.h	$t5, $s4, 364
 	add.d	$t3, $a7, $t3
 	addi.d	$t3, $t3, 1
@@ -2705,7 +2706,7 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ori	$t0, $s3, 124
 	stx.h	$a7, $s6, $t0
 	st.h	$a7, $s4, 780
-	vpickve2gr.w	$a7, $vr3, 2
+	vpickve2gr.w	$a7, $vr2, 2
 	bstrpick.d	$a7, $a7, 15, 0
 	or	$t0, $a6, $a7
 	xor	$a6, $a6, $a7
@@ -2715,7 +2716,7 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ori	$t0, $s3, 156
 	stx.h	$a6, $s6, $t0
 	st.h	$a6, $s4, 812
-	vpickve2gr.w	$a6, $vr3, 3
+	vpickve2gr.w	$a6, $vr2, 3
 	bstrpick.d	$a6, $a6, 15, 0
 	or	$t0, $a7, $a6
 	xor	$a7, $a7, $a6
@@ -2726,19 +2727,19 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	st.h	$a7, $s4, 844
 	ori	$a7, $s3, 96
 	stx.h	$a4, $s6, $a7
-	vpickve2gr.w	$a4, $vr6, 0
+	vpickve2gr.w	$a4, $vr5, 0
 	bstrpick.d	$a4, $a4, 15, 0
 	or	$a7, $a6, $a4
 	xor	$a6, $a6, $a4
-	vpickve2gr.h	$a4, $vr1, 6
+	vpickve2gr.h	$a4, $vr1, 2
+	st.h	$a4, $s4, 356
+	st.h	$a4, $s4, 328
+	st.h	$a4, $s4, 300
 	srli.d	$a6, $a6, 1
 	sub.d	$a7, $a7, $a6
-	vpickve2gr.h	$a6, $vr1, 4
-	st.h	$a6, $s4, 356
-	st.h	$a6, $s4, 328
-	st.h	$a6, $s4, 300
-	st.h	$a4, $s4, 344
-	st.h	$a4, $s4, 316
+	vpickve2gr.h	$a6, $vr1, 3
+	st.h	$a6, $s4, 344
+	st.h	$a6, $s4, 316
 	st.h	$a7, $s4, 876
 	ori	$a7, $s3, 128
 	stx.h	$a0, $s6, $a7
@@ -2769,7 +2770,7 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ori	$a1, $s3, 104
 	ld.hu	$a3, $fp, 14
 	stx.h	$a0, $s6, $a1
-	vpickve2gr.w	$a0, $vr5, 0
+	vpickve2gr.w	$a0, $vr4, 0
 	add.d	$a0, $a0, $a2
 	alsl.d	$a0, $a3, $a0, 1
 	bstrpick.d	$a0, $a0, 18, 2
@@ -2779,7 +2780,7 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	stx.h	$a0, $s6, $a1
 	st.h	$a0, $s4, 852
 	st.h	$a0, $s4, 792
-	vpickve2gr.w	$a0, $vr5, 1
+	vpickve2gr.w	$a0, $vr4, 1
 	alsl.d	$a0, $a5, $a0, 1
 	add.d	$a0, $a0, $a3
 	bstrpick.d	$a0, $a0, 18, 2
@@ -2790,8 +2791,8 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ori	$a1, $s3, 108
 	stx.h	$a0, $s6, $a1
 	ld.hu	$a0, $fp, 16
-	vpickve2gr.w	$a1, $vr5, 2
-	vpickve2gr.w	$a2, $vr4, 0
+	vpickve2gr.w	$a1, $vr4, 2
+	vpickve2gr.w	$a2, $vr3, 0
 	add.d	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 18, 2
@@ -2802,8 +2803,8 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	stx.h	$a0, $s6, $a1
 	st.h	$a0, $s4, 796
 	ld.hu	$a0, $fp, 18
-	vpickve2gr.w	$a1, $vr5, 3
-	vpickve2gr.w	$a2, $vr4, 1
+	vpickve2gr.w	$a1, $vr4, 3
+	vpickve2gr.w	$a2, $vr3, 1
 	add.d	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 18, 2
@@ -2811,8 +2812,8 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	stx.h	$a0, $s6, $a1
 	st.h	$a0, $s4, 888
 	st.h	$a0, $s4, 828
-	st.h	$a6, $s4, 860
-	st.h	$a4, $s4, 892
+	st.h	$a4, $s4, 860
+	st.h	$a6, $s4, 892
 	ori	$a0, $s5, 3748
 	add.d	$a0, $s6, $a0
 	vstelm.h	$vr1, $a0, 0, 0
@@ -2824,37 +2825,36 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	vstelm.h	$vr1, $a0, 0, 0
 	ori	$a0, $s5, 3764
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 2
+	vstelm.h	$vr1, $a0, 0, 1
 	ori	$a0, $s5, 3736
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 2
+	vstelm.h	$vr1, $a0, 0, 1
 	ori	$a0, $s5, 3708
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 2
+	vstelm.h	$vr1, $a0, 0, 1
 	ori	$a0, $s5, 3752
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 4
+	vstelm.h	$vr1, $a0, 0, 2
 	ori	$a0, $s5, 3724
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 4
+	vstelm.h	$vr1, $a0, 0, 2
 	ori	$a0, $s5, 3768
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 6
+	vstelm.h	$vr1, $a0, 0, 3
 	ori	$a0, $s5, 3740
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 6
+	vstelm.h	$vr1, $a0, 0, 3
 	ori	$a0, $s5, 3756
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr2, $a0, 0, 0
+	vstelm.h	$vr1, $a0, 0, 4
 	ori	$a0, $s5, 3772
 	add.d	$a0, $s6, $a0
-	vpickev.h	$vr3, $vr2, $vr1
-	vstelm.h	$vr2, $a0, 0, 2
+	vstelm.h	$vr1, $a0, 0, 5
 	ori	$a0, $s5, 3776
-	vstx	$vr3, $s6, $a0
+	vstx	$vr1, $s6, $a0
 	ori	$a0, $s3, 204
 	add.d	$a0, $s6, $a0
-	vstelm.h	$vr1, $a0, 0, 4
+	vstelm.h	$vr1, $a0, 0, 2
 .LBB2_50:
 	sltui	$a0, $s8, 1
 	xori	$a1, $s0, 1
@@ -3135,35 +3135,35 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ori	$a3, $s5, 3948
 	stx.h	$t2, $a0, $a3
 	st.h	$t1, $a1, 156
-	ld.hu	$t8, $fp, 36
+	ld.hu	$t5, $fp, 36
 	ld.hu	$a7, $fp, 34
-	ld.hu	$t4, $fp, 38
-	ld.hu	$t5, $fp, 40
-	add.d	$t1, $a2, $t8
-	addi.d	$t0, $t8, 2
-	alsl.d	$a2, $t4, $t0, 1
-	add.d	$a2, $a2, $t5
+	ld.hu	$t3, $fp, 38
+	ld.hu	$t7, $fp, 40
+	add.d	$t1, $a2, $t5
+	addi.d	$t0, $t5, 2
+	alsl.d	$a2, $t3, $t0, 1
+	add.d	$a2, $a2, $t7
 	srli.d	$a2, $a2, 2
 	st.h	$a2, $a1, 224
-	ld.hu	$t6, $fp, 42
+	ld.hu	$s1, $fp, 42
 	ori	$a3, $s5, 3984
 	stx.h	$a2, $a0, $a3
-	alsl.d	$a3, $t5, $t4, 1
-	add.d	$a3, $a3, $t6
+	alsl.d	$a3, $t7, $t3, 1
+	add.d	$a3, $a3, $s1
 	addi.d	$a3, $a3, 2
 	srli.d	$a3, $a3, 2
 	st.h	$a3, $a1, 240
-	ld.hu	$t3, $fp, 44
+	ld.hu	$t6, $fp, 44
 	ori	$a4, $s5, 4000
 	stx.h	$a3, $a0, $a4
-	alsl.d	$a4, $t6, $t5, 1
-	add.d	$a4, $a4, $t3
+	alsl.d	$a4, $s1, $t7, 1
+	add.d	$a4, $a4, $t6
 	addi.d	$a4, $a4, 2
 	srli.d	$a4, $a4, 2
 	ld.hu	$t2, $fp, 46
 	ori	$a5, $s5, 4016
 	stx.h	$a4, $a0, $a5
-	alsl.d	$a5, $t3, $t6, 1
+	alsl.d	$a5, $t6, $s1, 1
 	add.d	$a5, $a5, $t2
 	addi.d	$a5, $a5, 2
 	srli.d	$a5, $a5, 2
@@ -3172,184 +3172,184 @@ intrapred_luma8x8:                      # @intrapred_luma8x8
 	ld.d	$a6, $s2, 0
 	alsl.d	$t1, $a7, $t1, 1
 	srli.d	$t1, $t1, 2
-	ori	$t7, $s5, 4020
-	stx.h	$t1, $a0, $t7
+	ori	$t4, $s5, 4020
+	stx.h	$t1, $a0, $t4
 	st.h	$t1, $a1, 192
-	ori	$t7, $s5, 3952
-	stx.h	$t1, $a0, $t7
-	addi.d	$t7, $a7, 2
-	alsl.d	$t1, $t8, $t7, 1
-	add.d	$t1, $t1, $t4
+	ori	$t4, $s5, 3952
+	stx.h	$t1, $a0, $t4
+	addi.d	$t4, $a7, 2
+	alsl.d	$t1, $t5, $t4, 1
+	add.d	$t1, $t1, $t3
 	srli.d	$t1, $t1, 2
-	ori	$s0, $s5, 4036
-	stx.h	$t1, $a0, $s0
+	ori	$t8, $s5, 4036
+	stx.h	$t1, $a0, $t8
+	add.d	$t8, $t5, $t3
+	addi.d	$t8, $t8, 1
+	srli.d	$s0, $t8, 1
+	add.d	$t3, $t3, $t7
+	add.d	$t7, $t7, $s1
+	addi.d	$t7, $t7, 1
+	srli.d	$t8, $t7, 1
+	add.d	$t7, $s1, $t6
+	addi.d	$t7, $t7, 1
+	srli.d	$t7, $t7, 1
 	st.h	$t1, $a1, 208
 	ori	$a1, $s5, 3968
 	stx.h	$t1, $a0, $a1
 	addi.d	$a0, $a7, 1
-	add.d	$a1, $a0, $t8
+	add.d	$a1, $a0, $t5
 	srli.d	$a1, $a1, 1
-	ori	$s0, $s3, 28
-	stx.h	$a1, $a6, $s0
-	ori	$s0, $s3, 8
-	stx.h	$a1, $a6, $s0
-	ori	$s0, $s5, 4084
-	stx.h	$a1, $a6, $s0
-	ori	$s0, $s5, 4064
-	stx.h	$a1, $a6, $s0
-	add.d	$a1, $t8, $t4
-	addi.d	$a1, $a1, 1
-	srli.d	$a1, $a1, 1
-	ori	$t8, $s3, 44
-	stx.h	$a1, $a6, $t8
-	ori	$t8, $s3, 24
-	stx.h	$a1, $a6, $t8
-	ori	$t8, $s3, 4
-	stx.h	$a1, $a6, $t8
-	ori	$t8, $s5, 4080
-	stx.h	$a1, $a6, $t8
-	add.d	$a1, $t5, $t6
-	addi.d	$a1, $a1, 1
-	srli.d	$a1, $a1, 1
-	ori	$t8, $s3, 76
-	stx.h	$a1, $a6, $t8
-	ori	$t8, $s3, 56
-	stx.h	$a1, $a6, $t8
-	ori	$t8, $s3, 36
-	stx.h	$a1, $a6, $t8
-	ori	$t8, $s3, 16
-	stx.h	$a1, $a6, $t8
-	add.d	$t4, $t4, $t5
-	add.d	$a1, $t6, $t3
-	addi.d	$a1, $a1, 1
-	srli.d	$a1, $a1, 1
-	ori	$t5, $s3, 72
+	ori	$t5, $s3, 28
 	stx.h	$a1, $a6, $t5
-	ori	$t5, $s3, 52
+	ori	$t5, $s3, 8
 	stx.h	$a1, $a6, $t5
-	ori	$t5, $s3, 32
+	ori	$t5, $s5, 4084
 	stx.h	$a1, $a6, $t5
-	ld.hu	$a1, $fp, 0
-	ld.hu	$t5, $fp, 2
-	vinsgr2vr.w	$vr1, $a0, 0
-	ld.hu	$t6, $fp, 4
-	alsl.d	$a0, $a1, $t7, 1
-	vinsgr2vr.w	$vr1, $a0, 1
-	alsl.d	$a0, $t5, $a1, 1
-	addi.d	$a0, $a0, 2
-	vinsgr2vr.w	$vr1, $a0, 2
-	ori	$a0, $s3, 12
-	add.d	$a0, $a6, $a0
+	ori	$t5, $s5, 4064
+	stx.h	$a1, $a6, $t5
+	add.d	$a1, $t6, $t2
+	addi.d	$a1, $a1, 1
+	srli.d	$s1, $a1, 1
+	alsl.d	$a1, $t2, $t6, 1
 	vld	$vr2, $fp, 0
-	alsl.d	$t5, $t6, $t5, 1
-	addi.d	$t5, $t5, 2
-	vinsgr2vr.w	$vr1, $t5, 3
-	pcalau12i	$t5, %pc_hi20(.LCPI2_3)
-	vld	$vr3, $t5, %pc_lo12(.LCPI2_3)
-	ori	$t5, $s5, 4088
-	add.d	$t5, $a6, $t5
-	vilvl.h	$vr4, $vr0, $vr2
-	vadd.w	$vr1, $vr1, $vr4
-	vsrl.w	$vr1, $vr1, $vr3
-	vstelm.h	$vr1, $a0, 0, 0
-	ori	$a0, $s5, 4068
-	add.d	$a0, $a6, $a0
-	addi.d	$t4, $t4, 1
-	srli.d	$t4, $t4, 1
-	vstelm.h	$vr1, $t5, 0, 0
-	add.d	$t5, $t3, $t2
-	addi.d	$t5, $t5, 1
-	vstelm.h	$vr1, $a0, 0, 0
-	ori	$a0, $s3, 60
-	stx.h	$t4, $a6, $a0
-	ori	$a0, $s3, 40
-	stx.h	$t4, $a6, $a0
-	ori	$a0, $s3, 20
-	stx.h	$t4, $a6, $a0
-	ld.hu	$t7, $fp, 48
-	srli.d	$t5, $t5, 1
-	alsl.d	$a0, $t2, $t3, 1
-	stx.h	$t4, $a6, $s3
-	add.d	$a0, $a0, $t7
+	ori	$t5, $s3, 44
+	stx.h	$s0, $a6, $t5
+	ori	$t5, $s3, 24
+	stx.h	$s0, $a6, $t5
+	ori	$t5, $s3, 4
+	stx.h	$s0, $a6, $t5
+	ori	$t5, $s5, 4080
+	stx.h	$s0, $a6, $t5
+	ld.hu	$t5, $fp, 4
+	vilvl.h	$vr1, $vr0, $vr2
 	vilvh.h	$vr0, $vr0, $vr2
-	ori	$t3, $s3, 68
-	stx.h	$t5, $a6, $t3
-	ori	$t3, $s3, 48
-	stx.h	$t5, $a6, $t3
-	vpickve2gr.w	$t3, $vr0, 2
-	vpickve2gr.w	$t4, $vr0, 1
-	add.d	$t2, $t2, $t7
+	ori	$t6, $s3, 76
+	stx.h	$t8, $a6, $t6
+	ori	$t6, $s3, 56
+	stx.h	$t8, $a6, $t6
+	ori	$t6, $s3, 36
+	stx.h	$t8, $a6, $t6
+	ori	$t6, $s3, 16
+	stx.h	$t8, $a6, $t6
+	vpickve2gr.w	$t8, $vr0, 2
+	ori	$t6, $s3, 72
+	stx.h	$t7, $a6, $t6
+	ori	$t6, $s3, 52
+	stx.h	$t7, $a6, $t6
+	ori	$t6, $s3, 32
+	stx.h	$t7, $a6, $t6
+	ld.hu	$t6, $fp, 48
+	ori	$t7, $s3, 68
+	stx.h	$s1, $a6, $t7
+	ori	$t7, $s3, 48
+	stx.h	$s1, $a6, $t7
+	vpickve2gr.w	$t7, $vr0, 1
+	add.d	$t2, $t2, $t6
 	addi.d	$t2, $t2, 1
 	srli.d	$t2, $t2, 1
-	ori	$t5, $s3, 64
-	stx.h	$t2, $a6, $t5
+	ori	$s0, $s3, 64
+	stx.h	$t2, $a6, $s0
 	vpickve2gr.w	$t2, $vr0, 0
-	vpickve2gr.w	$t5, $vr4, 3
-	alsl.d	$t3, $t3, $t4, 1
-	alsl.d	$t4, $t4, $t2, 1
-	alsl.d	$t2, $t2, $t5, 1
-	alsl.d	$t5, $t5, $t6, 1
-	bstrpick.d	$t5, $t5, 17, 0
-	addi.d	$t5, $t5, 2
-	vinsgr2vr.w	$vr2, $t5, 0
+	vpickve2gr.w	$s0, $vr1, 3
+	alsl.d	$t8, $t8, $t7, 1
+	alsl.d	$t7, $t7, $t2, 1
+	alsl.d	$t2, $t2, $s0, 1
+	alsl.d	$s0, $s0, $t5, 1
+	bstrpick.d	$s0, $s0, 17, 0
+	addi.d	$s0, $s0, 2
+	vinsgr2vr.w	$vr2, $s0, 0
 	bstrpick.d	$t2, $t2, 17, 0
 	addi.d	$t2, $t2, 2
 	vinsgr2vr.w	$vr2, $t2, 1
-	bstrpick.d	$t2, $t4, 17, 0
+	bstrpick.d	$t2, $t7, 17, 0
 	addi.d	$t2, $t2, 2
 	vinsgr2vr.w	$vr2, $t2, 2
-	bstrpick.d	$t2, $t3, 17, 0
-	addi.d	$t2, $t2, 2
-	vinsgr2vr.w	$vr2, $t2, 3
-	alsl.d	$a7, $a7, $t0, 1
-	ori	$t0, $s5, 4066
-	add.d	$a7, $a7, $a1
-	add.d	$a1, $a6, $t0
-	srli.d	$t2, $a7, 2
-	stx.h	$t2, $a6, $t0
+	ld.hu	$t2, $fp, 0
+	bstrpick.d	$t7, $t8, 17, 0
+	addi.d	$t7, $t7, 2
+	vinsgr2vr.w	$vr2, $t7, 3
+	ld.hu	$t7, $fp, 2
+	vinsgr2vr.w	$vr3, $a0, 0
+	alsl.d	$a0, $t2, $t4, 1
+	vinsgr2vr.w	$vr3, $a0, 1
+	alsl.d	$a0, $t5, $t7, 1
+	alsl.d	$t4, $t7, $t2, 1
+	addi.d	$t4, $t4, 2
+	vinsgr2vr.w	$vr3, $t4, 2
+	addi.d	$a0, $a0, 2
+	vinsgr2vr.w	$vr3, $a0, 3
+	vadd.w	$vr0, $vr2, $vr0
+	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI2_3)
+	ori	$a0, $s3, 12
+	add.d	$a0, $a6, $a0
+	vadd.w	$vr1, $vr3, $vr1
+	vsrli.w	$vr0, $vr0, 2
+	vsrl.w	$vr1, $vr1, $vr2
+	vpickev.h	$vr0, $vr0, $vr1
+	vstelm.h	$vr0, $a0, 0, 0
+	ori	$a0, $s5, 4088
+	add.d	$a0, $a6, $a0
+	vstelm.h	$vr0, $a0, 0, 0
+	ori	$a0, $s5, 4068
+	add.d	$a0, $a6, $a0
+	addi.d	$t3, $t3, 1
+	srli.d	$t3, $t3, 1
+	vstelm.h	$vr0, $a0, 0, 0
+	ori	$a0, $s3, 60
+	stx.h	$t3, $a6, $a0
+	ori	$a0, $s3, 40
+	stx.h	$t3, $a6, $a0
+	ori	$a0, $s3, 20
+	stx.h	$t3, $a6, $a0
+	stx.h	$t3, $a6, $s3
+	add.d	$a1, $a1, $t6
+	alsl.d	$a0, $a7, $t0, 1
+	ori	$a7, $s5, 4066
+	add.d	$t0, $a0, $t2
+	add.d	$a0, $a6, $a7
+	srli.d	$t0, $t0, 2
+	stx.h	$t0, $a6, $a7
 	ori	$a7, $s5, 4092
 	add.d	$a7, $a6, $a7
-	vadd.w	$vr0, $vr2, $vr0
-	vsrli.w	$vr0, $vr0, 2
-	vpickev.h	$vr2, $vr0, $vr1
-	ori	$t0, $s5, 4048
-	vstx	$vr2, $a6, $t0
-	ori	$t0, $s5, 4072
-	add.d	$t0, $a6, $t0
+	ori	$t2, $s5, 4048
+	vstx	$vr0, $a6, $t2
+	ori	$t2, $s5, 4072
+	add.d	$t2, $a6, $t2
 	ori	$t3, $s5, 4076
 	add.d	$a6, $a6, $t3
-	st.h	$t2, $a1, 60
-	st.h	$t2, $a1, 40
-	st.h	$t2, $a1, 20
-	st.h	$t1, $a1, 76
-	st.h	$t1, $a1, 56
-	st.h	$t1, $a1, 36
-	st.h	$t1, $a1, 16
-	st.h	$a2, $a1, 92
-	st.h	$a2, $a1, 72
-	st.h	$a2, $a1, 52
-	st.h	$a2, $a1, 32
-	st.h	$a3, $a1, 108
-	st.h	$a3, $a1, 88
-	st.h	$a3, $a1, 68
-	st.h	$a3, $a1, 48
-	st.h	$a4, $a1, 104
-	st.h	$a4, $a1, 84
-	st.h	$a4, $a1, 64
-	st.h	$a5, $a1, 100
-	st.h	$a5, $a1, 80
-	addi.d	$a0, $a0, 2
-	srli.d	$a0, $a0, 2
-	st.h	$a0, $a1, 96
-	vstelm.h	$vr1, $a7, 0, 4
-	vstelm.h	$vr1, $t0, 0, 4
-	vstelm.h	$vr0, $a6, 0, 0
-	vstelm.h	$vr1, $a1, 44, 2
-	vstelm.h	$vr1, $a1, 24, 2
-	vstelm.h	$vr1, $a1, 4, 2
-	vstelm.h	$vr1, $a1, 28, 6
-	vstelm.h	$vr1, $a1, 8, 6
-	vstelm.h	$vr0, $a1, 12, 2
+	st.h	$t0, $a0, 60
+	st.h	$t0, $a0, 40
+	st.h	$t0, $a0, 20
+	st.h	$t1, $a0, 76
+	st.h	$t1, $a0, 56
+	st.h	$t1, $a0, 36
+	st.h	$t1, $a0, 16
+	st.h	$a2, $a0, 92
+	st.h	$a2, $a0, 72
+	st.h	$a2, $a0, 52
+	st.h	$a2, $a0, 32
+	st.h	$a3, $a0, 108
+	st.h	$a3, $a0, 88
+	st.h	$a3, $a0, 68
+	st.h	$a3, $a0, 48
+	st.h	$a4, $a0, 104
+	st.h	$a4, $a0, 84
+	st.h	$a4, $a0, 64
+	st.h	$a5, $a0, 100
+	st.h	$a5, $a0, 80
+	addi.d	$a1, $a1, 2
+	srli.d	$a1, $a1, 2
+	st.h	$a1, $a0, 96
+	vstelm.h	$vr0, $a7, 0, 2
+	vstelm.h	$vr0, $t2, 0, 2
+	vstelm.h	$vr0, $a6, 0, 4
+	vstelm.h	$vr0, $a0, 44, 1
+	vstelm.h	$vr0, $a0, 24, 1
+	vstelm.h	$vr0, $a0, 4, 1
+	vstelm.h	$vr0, $a0, 28, 3
+	vstelm.h	$vr0, $a0, 8, 3
+	vstelm.h	$vr0, $a0, 12, 5
 	b	.LBB2_53
 .LBB2_52:
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

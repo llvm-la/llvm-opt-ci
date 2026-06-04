@@ -14744,62 +14744,63 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeIhEmPT_S1_S1_i: # @_ZL39singleEarlyE
 	vmul.w	$vr3, $vr3, $vr4
 	vmul.w	$vr2, $vr2, $vr8
 	vmul.w	$vr4, $vr5, $vr6
-	vmul.w	$vr5, $vr1, $vr7
+	vmul.w	$vr1, $vr1, $vr7
 	vseqi.w	$vr3, $vr3, 1
-	vseqi.w	$vr1, $vr2, 1
+	vseqi.w	$vr2, $vr2, 1
+	vpickev.h	$vr2, $vr2, $vr3
+	vseqi.w	$vr3, $vr4, 1
+	vseqi.w	$vr1, $vr1, 1
 	vpickev.h	$vr1, $vr1, $vr3
-	vpickve2gr.b	$a6, $vr1, 2
-	andi	$a6, $a6, 1
-	vpickve2gr.b	$a7, $vr3, 0
-	bstrins.d	$a7, $a6, 63, 1
-	vpickve2gr.b	$a6, $vr1, 4
-	bstrins.d	$a7, $a6, 2, 2
-	vpickve2gr.b	$a6, $vr1, 6
-	bstrins.d	$a7, $a6, 3, 3
-	vpickve2gr.b	$a6, $vr1, 8
-	bstrins.d	$a7, $a6, 4, 4
-	vpickve2gr.b	$a6, $vr1, 10
-	bstrins.d	$a7, $a6, 5, 5
-	vpickve2gr.b	$a6, $vr1, 12
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 6
-	or	$a6, $a7, $a6
-	vpickve2gr.b	$a7, $vr1, 14
+	vpickev.b	$vr1, $vr1, $vr2
+	vpickve2gr.b	$a6, $vr1, 0
+	vpickve2gr.b	$a7, $vr1, 1
+	andi	$a7, $a7, 1
+	bstrins.d	$a6, $a7, 63, 1
+	vpickve2gr.b	$a7, $vr1, 2
+	bstrins.d	$a6, $a7, 2, 2
+	vpickve2gr.b	$a7, $vr1, 3
+	bstrins.d	$a6, $a7, 3, 3
+	vpickve2gr.b	$a7, $vr1, 4
+	bstrins.d	$a6, $a7, 4, 4
+	vpickve2gr.b	$a7, $vr1, 5
+	bstrins.d	$a6, $a7, 5, 5
+	vpickve2gr.b	$a7, $vr1, 6
+	andi	$a7, $a7, 1
+	slli.d	$a7, $a7, 6
+	or	$a6, $a6, $a7
+	vpickve2gr.b	$a7, $vr1, 7
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 7
 	or	$a6, $a6, $a7
-	vseqi.w	$vr2, $vr4, 1
-	vpickve2gr.b	$a7, $vr2, 0
+	vpickve2gr.b	$a7, $vr1, 8
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 8
 	or	$a6, $a6, $a7
-	vseqi.w	$vr3, $vr5, 1
-	vpickev.h	$vr2, $vr3, $vr2
-	vpickve2gr.b	$a7, $vr2, 2
+	vpickve2gr.b	$a7, $vr1, 9
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 9
 	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 4
+	vpickve2gr.b	$a7, $vr1, 10
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 10
 	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 6
+	vpickve2gr.b	$a7, $vr1, 11
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 11
 	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 8
+	vpickve2gr.b	$a7, $vr1, 12
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 12
 	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 10
+	vpickve2gr.b	$a7, $vr1, 13
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 13
 	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 12
+	vpickve2gr.b	$a7, $vr1, 14
 	andi	$a7, $a7, 1
 	slli.d	$a7, $a7, 14
 	or	$a6, $a6, $a7
-	vpickve2gr.b	$a7, $vr2, 14
+	vpickve2gr.b	$a7, $vr1, 15
 	slli.d	$a7, $a7, 15
 	or	$a6, $a6, $a7
 	bstrpick.d	$a6, $a6, 15, 0
@@ -14819,7 +14820,8 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeIhEmPT_S1_S1_i: # @_ZL39singleEarlyE
 .LBB58_12:                              # %vector.early.exit
 	pcalau12i	$a0, %pc_hi20(.LCPI58_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI58_0)
-	vpickev.b	$vr1, $vr2, $vr1
+	vslli.b	$vr1, $vr1, 7
+	vsrai.b	$vr1, $vr1, 7
 	vand.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.bu	$vr0, $vr1, $vr0
@@ -14931,6 +14933,8 @@ _ZL39singleEarlyExitWithThreeLoadsAndComputeItEmPT_S1_S1_i: # @_ZL39singleEarlyE
 .LBB59_12:                              # %vector.early.exit
 	pcalau12i	$a0, %pc_hi20(.LCPI59_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI59_0)
+	vslli.h	$vr1, $vr1, 15
+	vsrai.h	$vr1, $vr1, 15
 	vand.v	$vr0, $vr1, $vr0
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.hu	$vr0, $vr1, $vr0

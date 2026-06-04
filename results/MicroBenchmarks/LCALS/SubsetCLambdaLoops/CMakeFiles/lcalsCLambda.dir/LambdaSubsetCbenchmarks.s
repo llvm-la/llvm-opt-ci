@@ -4260,30 +4260,30 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	ld.d	$a7, $a0, 8
 	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$t0, $s3, 8
-	ori	$a0, $zero, 1
+	ori	$a1, $zero, 1
 	pcalau12i	$t4, %pc_hi20(.LCPI21_1)
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	ori	$s0, $zero, 2
-	bgeu	$a1, $s0, .LBB21_73
+	bgeu	$a0, $s0, .LBB21_73
 # %bb.58:                               #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 .LBB21_59:                              # %scalar.ph278.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
-	alsl.d	$a1, $a0, $a3, 3
-	alsl.d	$a2, $a0, $a4, 3
-	alsl.d	$a3, $a0, $a5, 3
-	alsl.d	$a4, $a0, $a6, 3
-	alsl.d	$a5, $a0, $a7, 3
-	alsl.d	$a6, $a0, $t0, 3
+	alsl.d	$a0, $a1, $a3, 3
+	alsl.d	$a2, $a1, $a4, 3
+	alsl.d	$a3, $a1, $a5, 3
+	alsl.d	$a4, $a1, $a6, 3
+	alsl.d	$a5, $a1, $a7, 3
+	alsl.d	$a6, $a1, $t0, 3
 	ld.d	$a7, $sp, 144                   # 8-byte Folded Reload
-	sub.d	$a0, $a7, $a0
+	sub.d	$a1, $a7, $a1
 	.p2align	4, , 16
 .LBB21_60:                              # %scalar.ph278
                                         #   Parent Loop BB21_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa2, $a1, 0
+	fld.d	$fa2, $a0, 0
 	fld.d	$fa3, $a2, 0
 	fld.d	$fa4, $t4, %pc_lo12(.LCPI21_1)
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
@@ -4292,14 +4292,14 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	fld.d	$fa3, $a5, 0
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fst.d	$fa2, $a6, 0
-	addi.d	$a1, $a1, 8
+	addi.d	$a0, $a0, 8
 	addi.d	$a2, $a2, 8
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a5, 8
-	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, -1
 	addi.d	$a6, $a6, 8
-	bnez	$a0, .LBB21_60
+	bnez	$a1, .LBB21_60
 .LBB21_61:                              # %"._Z6forallIZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateEE3$_2Ev9simd_execiiT_.exit_crit_edge.us"
                                         #   in Loop: Header=BB21_4 Depth=1
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
@@ -4488,7 +4488,7 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	.p2align	4, , 16
 .LBB21_73:                              # %vector.memcheck260
                                         #   in Loop: Header=BB21_4 Depth=1
-	sub.d	$a1, $t0, $a6
+	sub.d	$a0, $t0, $a6
 	sub.d	$a2, $t0, $a4
 	sub.d	$t1, $t0, $a3
 	sub.d	$t2, $a7, $a5
@@ -4497,7 +4497,7 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	sub.d	$t6, $a5, $a3
 	sub.d	$t7, $t0, $a5
 	vinsgr2vr.d	$vr2, $a2, 0
-	vinsgr2vr.d	$vr2, $a1, 1
+	vinsgr2vr.d	$vr2, $a0, 1
 	vinsgr2vr.d	$vr3, $t2, 0
 	vinsgr2vr.d	$vr3, $t1, 1
 	vinsgr2vr.d	$vr4, $t5, 0
@@ -4507,38 +4507,39 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vslti.du	$vr5, $vr5, 16
 	vslti.du	$vr4, $vr4, 16
 	vpickev.w	$vr4, $vr4, $vr5
-	vpickve2gr.h	$a1, $vr4, 2
-	andi	$a1, $a1, 1
-	vpickve2gr.h	$a2, $vr5, 0
-	bstrins.d	$a2, $a1, 63, 1
-	vpickve2gr.h	$a1, $vr4, 4
-	bstrins.d	$a2, $a1, 2, 2
-	vpickve2gr.h	$a1, $vr4, 6
-	bstrins.d	$a2, $a1, 3, 3
 	vslti.du	$vr3, $vr3, 16
 	vslti.du	$vr2, $vr2, 16
 	vpickev.w	$vr2, $vr2, $vr3
-	vpickve2gr.h	$a1, $vr2, 0
-	bstrins.d	$a2, $a1, 4, 4
-	vpickve2gr.h	$a1, $vr2, 2
-	bstrins.d	$a2, $a1, 5, 5
-	vpickve2gr.h	$a1, $vr2, 4
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a1, $a2, $a1
+	vpickev.h	$vr2, $vr2, $vr4
+	vpickve2gr.h	$a0, $vr2, 0
+	vpickve2gr.h	$a2, $vr2, 1
+	andi	$a2, $a2, 1
+	bstrins.d	$a0, $a2, 63, 1
+	vpickve2gr.h	$a2, $vr2, 2
+	bstrins.d	$a0, $a2, 2, 2
+	vpickve2gr.h	$a2, $vr2, 3
+	bstrins.d	$a0, $a2, 3, 3
+	vpickve2gr.h	$a2, $vr2, 4
+	bstrins.d	$a0, $a2, 4, 4
+	vpickve2gr.h	$a2, $vr2, 5
+	bstrins.d	$a0, $a2, 5, 5
 	vpickve2gr.h	$a2, $vr2, 6
+	andi	$a2, $a2, 1
+	slli.d	$a2, $a2, 6
+	or	$a0, $a0, $a2
+	vpickve2gr.h	$a2, $vr2, 7
 	slli.d	$a2, $a2, 7
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 255
+	or	$a0, $a0, $a2
+	andi	$a0, $a0, 255
 	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$t8, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	bnez	$a1, .LBB21_59
+	bnez	$a0, .LBB21_59
 # %bb.74:                               # %vector.memcheck260
                                         #   in Loop: Header=BB21_4 Depth=1
-	sub.d	$a1, $t0, $a7
+	sub.d	$a0, $t0, $a7
 	ori	$a2, $zero, 16
-	bltu	$a1, $a2, .LBB21_59
+	bltu	$a0, $a2, .LBB21_59
 # %bb.75:                               # %vector.body283.preheader
                                         #   in Loop: Header=BB21_4 Depth=1
 	addi.d	$a0, $a3, 8
@@ -4570,9 +4571,9 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	bnez	$t5, .LBB21_76
 # %bb.77:                               # %middle.block290
                                         #   in Loop: Header=BB21_4 Depth=1
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
-	bne	$a1, $t8, .LBB21_59
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	bne	$a0, $t8, .LBB21_59
 	b	.LBB21_61
 	.p2align	4, , 16
 .LBB21_78:                              # %vector.memcheck227
@@ -4596,26 +4597,27 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vslti.du	$vr5, $vr5, 16
 	vslti.du	$vr4, $vr4, 16
 	vpickev.w	$vr4, $vr4, $vr5
-	vpickve2gr.h	$a1, $vr4, 2
-	andi	$a1, $a1, 1
-	vpickve2gr.h	$a2, $vr5, 0
-	bstrins.d	$a2, $a1, 63, 1
-	vpickve2gr.h	$a1, $vr4, 4
-	bstrins.d	$a2, $a1, 2, 2
-	vpickve2gr.h	$a1, $vr4, 6
-	bstrins.d	$a2, $a1, 3, 3
 	vslti.du	$vr3, $vr3, 16
 	vslti.du	$vr2, $vr2, 16
 	vpickev.w	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr2, $vr4
 	vpickve2gr.h	$a1, $vr2, 0
-	bstrins.d	$a2, $a1, 4, 4
-	vpickve2gr.h	$a1, $vr2, 2
-	bstrins.d	$a2, $a1, 5, 5
-	vpickve2gr.h	$a1, $vr2, 4
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a1, $a2, $a1
+	vpickve2gr.h	$a2, $vr2, 1
+	andi	$a2, $a2, 1
+	bstrins.d	$a1, $a2, 63, 1
+	vpickve2gr.h	$a2, $vr2, 2
+	bstrins.d	$a1, $a2, 2, 2
+	vpickve2gr.h	$a2, $vr2, 3
+	bstrins.d	$a1, $a2, 3, 3
+	vpickve2gr.h	$a2, $vr2, 4
+	bstrins.d	$a1, $a2, 4, 4
+	vpickve2gr.h	$a2, $vr2, 5
+	bstrins.d	$a1, $a2, 5, 5
 	vpickve2gr.h	$a2, $vr2, 6
+	andi	$a2, $a2, 1
+	slli.d	$a2, $a2, 6
+	or	$a1, $a1, $a2
+	vpickve2gr.h	$a2, $vr2, 7
 	slli.d	$a2, $a2, 7
 	or	$a1, $a1, $a2
 	andi	$a1, $a1, 255
@@ -4682,26 +4684,27 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vslti.du	$vr5, $vr5, 16
 	vslti.du	$vr4, $vr4, 16
 	vpickev.w	$vr4, $vr4, $vr5
-	vpickve2gr.h	$a1, $vr4, 2
-	andi	$a1, $a1, 1
-	vpickve2gr.h	$a2, $vr5, 0
-	bstrins.d	$a2, $a1, 63, 1
-	vpickve2gr.h	$a1, $vr4, 4
-	bstrins.d	$a2, $a1, 2, 2
-	vpickve2gr.h	$a1, $vr4, 6
-	bstrins.d	$a2, $a1, 3, 3
 	vslti.du	$vr3, $vr3, 16
 	vslti.du	$vr2, $vr2, 16
 	vpickev.w	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr2, $vr4
 	vpickve2gr.h	$a1, $vr2, 0
-	bstrins.d	$a2, $a1, 4, 4
-	vpickve2gr.h	$a1, $vr2, 2
-	bstrins.d	$a2, $a1, 5, 5
-	vpickve2gr.h	$a1, $vr2, 4
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a1, $a2, $a1
+	vpickve2gr.h	$a2, $vr2, 1
+	andi	$a2, $a2, 1
+	bstrins.d	$a1, $a2, 63, 1
+	vpickve2gr.h	$a2, $vr2, 2
+	bstrins.d	$a1, $a2, 2, 2
+	vpickve2gr.h	$a2, $vr2, 3
+	bstrins.d	$a1, $a2, 3, 3
+	vpickve2gr.h	$a2, $vr2, 4
+	bstrins.d	$a1, $a2, 4, 4
+	vpickve2gr.h	$a2, $vr2, 5
+	bstrins.d	$a1, $a2, 5, 5
 	vpickve2gr.h	$a2, $vr2, 6
+	andi	$a2, $a2, 1
+	slli.d	$a2, $a2, 6
+	or	$a1, $a1, $a2
+	vpickve2gr.h	$a2, $vr2, 7
 	slli.d	$a2, $a2, 7
 	or	$a1, $a1, $a2
 	andi	$a1, $a1, 255
@@ -4768,26 +4771,27 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vslti.du	$vr5, $vr5, 16
 	vslti.du	$vr4, $vr4, 16
 	vpickev.w	$vr4, $vr4, $vr5
-	vpickve2gr.h	$a1, $vr4, 2
-	andi	$a1, $a1, 1
-	vpickve2gr.h	$a2, $vr5, 0
-	bstrins.d	$a2, $a1, 63, 1
-	vpickve2gr.h	$a1, $vr4, 4
-	bstrins.d	$a2, $a1, 2, 2
-	vpickve2gr.h	$a1, $vr4, 6
-	bstrins.d	$a2, $a1, 3, 3
 	vslti.du	$vr3, $vr3, 16
 	vslti.du	$vr2, $vr2, 16
 	vpickev.w	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr2, $vr4
 	vpickve2gr.h	$a1, $vr2, 0
-	bstrins.d	$a2, $a1, 4, 4
-	vpickve2gr.h	$a1, $vr2, 2
-	bstrins.d	$a2, $a1, 5, 5
-	vpickve2gr.h	$a1, $vr2, 4
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a1, $a2, $a1
+	vpickve2gr.h	$a2, $vr2, 1
+	andi	$a2, $a2, 1
+	bstrins.d	$a1, $a2, 63, 1
+	vpickve2gr.h	$a2, $vr2, 2
+	bstrins.d	$a1, $a2, 2, 2
+	vpickve2gr.h	$a2, $vr2, 3
+	bstrins.d	$a1, $a2, 3, 3
+	vpickve2gr.h	$a2, $vr2, 4
+	bstrins.d	$a1, $a2, 4, 4
+	vpickve2gr.h	$a2, $vr2, 5
+	bstrins.d	$a1, $a2, 5, 5
 	vpickve2gr.h	$a2, $vr2, 6
+	andi	$a2, $a2, 1
+	slli.d	$a2, $a2, 6
+	or	$a1, $a1, $a2
+	vpickve2gr.h	$a2, $vr2, 7
 	slli.d	$a2, $a2, 7
 	or	$a1, $a1, $a2
 	andi	$a1, $a1, 255
@@ -4854,26 +4858,27 @@ _ZL18BM_HYDRO_2D_LAMBDARN9benchmark5StateE: # @_ZL18BM_HYDRO_2D_LAMBDARN9benchma
 	vslti.du	$vr5, $vr5, 16
 	vslti.du	$vr4, $vr4, 16
 	vpickev.w	$vr4, $vr4, $vr5
-	vpickve2gr.h	$a1, $vr4, 2
-	andi	$a1, $a1, 1
-	vpickve2gr.h	$a2, $vr5, 0
-	bstrins.d	$a2, $a1, 63, 1
-	vpickve2gr.h	$a1, $vr4, 4
-	bstrins.d	$a2, $a1, 2, 2
-	vpickve2gr.h	$a1, $vr4, 6
-	bstrins.d	$a2, $a1, 3, 3
 	vslti.du	$vr3, $vr3, 16
 	vslti.du	$vr2, $vr2, 16
 	vpickev.w	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr2, $vr4
 	vpickve2gr.h	$a1, $vr2, 0
-	bstrins.d	$a2, $a1, 4, 4
-	vpickve2gr.h	$a1, $vr2, 2
-	bstrins.d	$a2, $a1, 5, 5
-	vpickve2gr.h	$a1, $vr2, 4
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a1, $a2, $a1
+	vpickve2gr.h	$a2, $vr2, 1
+	andi	$a2, $a2, 1
+	bstrins.d	$a1, $a2, 63, 1
+	vpickve2gr.h	$a2, $vr2, 2
+	bstrins.d	$a1, $a2, 2, 2
+	vpickve2gr.h	$a2, $vr2, 3
+	bstrins.d	$a1, $a2, 3, 3
+	vpickve2gr.h	$a2, $vr2, 4
+	bstrins.d	$a1, $a2, 4, 4
+	vpickve2gr.h	$a2, $vr2, 5
+	bstrins.d	$a1, $a2, 5, 5
 	vpickve2gr.h	$a2, $vr2, 6
+	andi	$a2, $a2, 1
+	slli.d	$a2, $a2, 6
+	or	$a1, $a1, $a2
+	vpickve2gr.h	$a2, $vr2, 7
 	slli.d	$a2, $a2, 7
 	or	$a1, $a1, $a2
 	andi	$a1, $a1, 255

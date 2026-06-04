@@ -2917,33 +2917,33 @@ copy_to_conceal:                        # @copy_to_conceal
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 296
 	vld	$vr1, $sp, 312
-	vpickev.h	$vr2, $vr1, $vr0
+	vpickev.h	$vr0, $vr1, $vr0
 	vstelm.h	$vr0, $s1, 104, 0
-	vstelm.h	$vr0, $s1, 106, 2
-	vstelm.h	$vr0, $s1, 108, 4
-	vstelm.h	$vr0, $s1, 110, 6
-	vstelm.h	$vr1, $s1, 136, 0
-	vstelm.h	$vr1, $s1, 138, 2
-	vld	$vr0, $sp, 328
-	vld	$vr3, $sp, 344
-	vstelm.h	$vr1, $s1, 140, 4
-	vstelm.h	$vr1, $s1, 142, 6
+	vstelm.h	$vr0, $s1, 106, 1
+	vstelm.h	$vr0, $s1, 108, 2
+	vstelm.h	$vr0, $s1, 110, 3
+	vstelm.h	$vr0, $s1, 136, 4
+	vstelm.h	$vr0, $s1, 138, 5
+	vld	$vr1, $sp, 328
+	vld	$vr2, $sp, 344
+	vstelm.h	$vr0, $s1, 140, 6
+	vstelm.h	$vr0, $s1, 142, 7
 	ld.d	$s7, $sp, 272                   # 8-byte Folded Reload
-	vst	$vr2, $s7, 0
-	vpickev.h	$vr1, $vr3, $vr0
+	vst	$vr0, $s7, 0
+	vpickev.h	$vr0, $vr2, $vr1
 	vstelm.h	$vr0, $s1, 168, 0
-	vstelm.h	$vr0, $s1, 170, 2
-	vstelm.h	$vr0, $s1, 172, 4
+	vstelm.h	$vr0, $s1, 170, 1
+	vstelm.h	$vr0, $s1, 172, 2
 	ld.d	$a0, $s8, 0
-	vstelm.h	$vr0, $s1, 174, 6
-	vstelm.h	$vr3, $s1, 200, 0
+	vstelm.h	$vr0, $s1, 174, 3
+	vstelm.h	$vr0, $s1, 200, 4
 	ori	$a1, $s6, 1480
 	add.d	$t0, $a0, $a1
 	ld.w	$a0, $t0, 172
-	vstelm.h	$vr3, $s1, 202, 2
-	vstelm.h	$vr3, $s1, 204, 4
-	vstelm.h	$vr3, $s1, 206, 6
-	vst	$vr1, $s7, 16
+	vstelm.h	$vr0, $s1, 202, 5
+	vstelm.h	$vr0, $s1, 204, 6
+	vstelm.h	$vr0, $s1, 206, 7
+	vst	$vr0, $s7, 16
 	beqz	$a0, .LBB19_56
 # %bb.55:                               # %.preheader.preheader.i.us
                                         #   in Loop: Header=BB19_52 Depth=2

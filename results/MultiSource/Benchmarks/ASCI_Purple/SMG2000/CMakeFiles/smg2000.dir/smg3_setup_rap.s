@@ -7669,29 +7669,30 @@ hypre_SMG3RAPPeriodicSym:               # @hypre_SMG3RAPPeriodicSym
 	vinsgr2vr.d	$vr3, $a7, 0
 	vinsgr2vr.d	$vr3, $t0, 1
 	vld	$vr4, $sp, 16                   # 16-byte Folded Reload
+	vslt.du	$vr2, $vr2, $vr4
+	vslt.du	$vr3, $vr3, $vr4
+	vpickev.w	$vr2, $vr3, $vr2
 	vslt.du	$vr0, $vr0, $vr4
 	vslt.du	$vr1, $vr1, $vr4
-	vpickev.w	$vr1, $vr1, $vr0
-	vpickve2gr.h	$a5, $vr1, 2
-	andi	$a5, $a5, 1
-	vpickve2gr.h	$a6, $vr0, 0
-	bstrins.d	$a6, $a5, 63, 1
-	vpickve2gr.h	$a5, $vr1, 4
-	bstrins.d	$a6, $a5, 2, 2
-	vpickve2gr.h	$a5, $vr1, 6
-	bstrins.d	$a6, $a5, 3, 3
-	vslt.du	$vr0, $vr2, $vr4
-	vslt.du	$vr1, $vr3, $vr4
 	vpickev.w	$vr0, $vr1, $vr0
+	vpickev.h	$vr0, $vr2, $vr0
 	vpickve2gr.h	$a5, $vr0, 0
-	bstrins.d	$a6, $a5, 4, 4
-	vpickve2gr.h	$a5, $vr0, 2
-	bstrins.d	$a6, $a5, 5, 5
-	vpickve2gr.h	$a5, $vr0, 4
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 6
-	or	$a5, $a6, $a5
+	vpickve2gr.h	$a6, $vr0, 1
+	andi	$a6, $a6, 1
+	bstrins.d	$a5, $a6, 63, 1
+	vpickve2gr.h	$a6, $vr0, 2
+	bstrins.d	$a5, $a6, 2, 2
+	vpickve2gr.h	$a6, $vr0, 3
+	bstrins.d	$a5, $a6, 3, 3
+	vpickve2gr.h	$a6, $vr0, 4
+	bstrins.d	$a5, $a6, 4, 4
+	vpickve2gr.h	$a6, $vr0, 5
+	bstrins.d	$a5, $a6, 5, 5
 	vpickve2gr.h	$a6, $vr0, 6
+	andi	$a6, $a6, 1
+	slli.d	$a6, $a6, 6
+	or	$a5, $a5, $a6
+	vpickve2gr.h	$a6, $vr0, 7
 	slli.d	$a6, $a6, 7
 	or	$a5, $a5, $a6
 	andi	$a5, $a5, 255

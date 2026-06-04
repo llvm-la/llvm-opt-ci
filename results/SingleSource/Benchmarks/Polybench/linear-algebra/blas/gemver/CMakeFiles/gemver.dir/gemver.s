@@ -380,6 +380,7 @@ main:                                   # @main
 	vslt.du	$vr1, $vr1, $vr5
 	vpickev.w	$vr0, $vr1, $vr0
 	vand.v	$vr0, $vr2, $vr0
+	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a3, $vr0, 0
 	andi	$a3, $a3, 15

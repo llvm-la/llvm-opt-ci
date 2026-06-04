@@ -44,27 +44,7 @@ test:                                   # @test
 .Lfunc_end0:
 	.size	test, .Lfunc_end0-test
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function main
-.LCPI1_0:
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	16                              # 0x10
-	.byte	18                              # 0x12
-	.byte	20                              # 0x14
-	.byte	22                              # 0x16
-	.byte	24                              # 0x18
-	.byte	26                              # 0x1a
-	.byte	28                              # 0x1c
-	.byte	30                              # 0x1e
-	.text
-	.globl	main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.prefalign	5, .Lfunc_end1, nop
 	.type	main,@function
@@ -76,14 +56,14 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(tmp)
 	addi.d	$a0, $a0, %pc_lo12(tmp)
-	vld	$vr0, $a0, 64
-	vld	$vr1, $a0, 80
-	vld	$vr2, $a0, 96
-	vld	$vr3, $a0, 112
-	vld	$vr4, $a0, 0
-	vld	$vr5, $a0, 16
-	vld	$vr6, $a0, 32
-	vld	$vr7, $a0, 48
+	vld	$vr0, $a0, 0
+	vld	$vr1, $a0, 16
+	vld	$vr2, $a0, 32
+	vld	$vr3, $a0, 48
+	vld	$vr4, $a0, 64
+	vld	$vr5, $a0, 80
+	vld	$vr6, $a0, 96
+	vld	$vr7, $a0, 112
 	vldi	$vr8, -784
 	vfcmp.ceq.d	$vr0, $vr0, $vr8
 	vfcmp.ceq.d	$vr1, $vr1, $vr8
@@ -99,14 +79,7 @@ main:                                   # @main
 	vfcmp.ceq.d	$vr3, $vr7, $vr8
 	vpickev.w	$vr2, $vr3, $vr2
 	vpickev.h	$vr1, $vr2, $vr1
-	vpickve2gr.b	$a1, $vr1, 14
-	vpickve2gr.b	$a2, $vr1, 12
-	vpickve2gr.b	$a3, $vr1, 10
-	vpickve2gr.b	$a4, $vr1, 8
-	vpickve2gr.b	$a5, $vr1, 6
-	vpickve2gr.b	$a6, $vr1, 4
-	vpickve2gr.b	$a7, $vr1, 2
-	vpickve2gr.b	$t0, $vr1, 0
+	vpickev.b	$vr0, $vr1, $vr0
 	vld	$vr1, $a0, 128
 	vld	$vr2, $a0, 144
 	vld	$vr3, $a0, 160
@@ -126,13 +99,21 @@ main:                                   # @main
 	vpickev.w	$vr2, $vr3, $vr2
 	vldi	$vr3, -784
 	fcmp.ceq.d	$fcc0, $fa4, $fa3
-	vinsgr2vr.h	$vr3, $t0, 0
-	vinsgr2vr.h	$vr3, $a7, 1
-	vinsgr2vr.h	$vr3, $a6, 2
-	vinsgr2vr.h	$vr3, $a5, 3
-	vinsgr2vr.h	$vr3, $a4, 4
-	vinsgr2vr.h	$vr3, $a3, 5
-	vinsgr2vr.h	$vr3, $a2, 6
+	vpickve2gr.b	$a1, $vr0, 0
+	vinsgr2vr.h	$vr3, $a1, 0
+	vpickve2gr.b	$a1, $vr0, 1
+	vinsgr2vr.h	$vr3, $a1, 1
+	vpickve2gr.b	$a1, $vr0, 2
+	vinsgr2vr.h	$vr3, $a1, 2
+	vpickve2gr.b	$a1, $vr0, 3
+	vinsgr2vr.h	$vr3, $a1, 3
+	vpickve2gr.b	$a1, $vr0, 4
+	vinsgr2vr.h	$vr3, $a1, 4
+	vpickve2gr.b	$a1, $vr0, 5
+	vinsgr2vr.h	$vr3, $a1, 5
+	vpickve2gr.b	$a1, $vr0, 6
+	vinsgr2vr.h	$vr3, $a1, 6
+	vpickve2gr.b	$a1, $vr0, 7
 	vinsgr2vr.h	$vr3, $a1, 7
 	vor.v	$vr1, $vr3, $vr1
 	vpickve2gr.h	$a1, $vr1, 4
@@ -144,12 +125,9 @@ main:                                   # @main
 	vpickve2gr.h	$a1, $vr1, 7
 	vinsgr2vr.b	$vr3, $a1, 7
 	vpickve2gr.h	$a1, $vr1, 3
-	pcalau12i	$a2, %pc_hi20(.LCPI1_0)
-	vld	$vr4, $a2, %pc_lo12(.LCPI1_0)
 	vpickve2gr.h	$a2, $vr1, 2
 	vpickve2gr.h	$a3, $vr1, 1
 	vpickve2gr.h	$a4, $vr1, 0
-	vshuf.b	$vr0, $vr0, $vr3, $vr4
 	vinsgr2vr.w	$vr1, $a4, 0
 	vinsgr2vr.w	$vr1, $a3, 1
 	vinsgr2vr.w	$vr1, $a2, 2
@@ -164,6 +142,7 @@ main:                                   # @main
 	vpickve2gr.w	$a1, $vr1, 3
 	vinsgr2vr.b	$vr2, $a1, 3
 	vextrins.w	$vr0, $vr2, 0
+	vextrins.w	$vr0, $vr3, 17
 	vslli.b	$vr0, $vr0, 7
 	vmskltz.b	$vr0, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0

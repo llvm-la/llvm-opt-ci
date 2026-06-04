@@ -120,6 +120,7 @@ main:                                   # @main
 	vxori.b	$vr2, $vr2, 255
 	vpickev.w	$vr1, $vr2, $vr1
 	vor.v	$vr0, $vr0, $vr1
+	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB2_2

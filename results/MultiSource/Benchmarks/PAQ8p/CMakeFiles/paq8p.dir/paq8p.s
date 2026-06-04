@@ -16790,15 +16790,15 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
                                         #     Child Loop BB59_25 Depth 2
                                         #       Child Loop BB59_28 Depth 3
                                         #       Child Loop BB59_32 Depth 3
-	ld.wu	$s1, $fp, 96
-	andi	$a0, $s1, 7
+	ld.wu	$s2, $fp, 96
+	andi	$a0, $s2, 7
 	beqz	$a0, .LBB59_5
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB59_3 Depth=1
 	ld.d	$a0, $fp, 32
-	addi.w	$a1, $s1, 0
+	addi.w	$a1, $s2, 0
 	alsl.d	$a0, $a1, $a0, 1
-	slli.d	$a1, $s1, 1
+	slli.d	$a1, $s2, 1
 	andi	$a1, $a1, 14
 	ori	$a2, $zero, 16
 	sub.d	$a2, $a2, $a1
@@ -16806,33 +16806,35 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 7
-	andn	$a0, $a1, $s1
+	andn	$a0, $a1, $s2
 	vreplgr2vr.d	$vr0, $a0
-	vreplgr2vr.w	$vr1, $s1
 	pcalau12i	$a0, %pc_hi20(.LCPI59_0)
-	vld	$vr2, $a0, %pc_lo12(.LCPI59_0)
+	vld	$vr1, $a0, %pc_lo12(.LCPI59_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_1)
-	vld	$vr3, $a0, %pc_lo12(.LCPI59_1)
+	vld	$vr2, $a0, %pc_lo12(.LCPI59_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_2)
-	vld	$vr4, $a0, %pc_lo12(.LCPI59_2)
+	vld	$vr3, $a0, %pc_lo12(.LCPI59_2)
+	vreplgr2vr.w	$vr4, $s2
+	vadd.w	$vr1, $vr4, $vr1
+	vadd.w	$vr2, $vr4, $vr2
+	vslt.du	$vr3, $vr0, $vr3
 	pcalau12i	$a0, %pc_hi20(.LCPI59_3)
-	vld	$vr5, $a0, %pc_lo12(.LCPI59_3)
-	vadd.w	$vr2, $vr1, $vr2
-	vadd.w	$vr1, $vr1, $vr3
-	vslt.du	$vr3, $vr0, $vr4
-	vslt.du	$vr4, $vr0, $vr5
+	vld	$vr4, $a0, %pc_lo12(.LCPI59_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI59_4)
 	vld	$vr5, $a0, %pc_lo12(.LCPI59_4)
-	vpickev.w	$vr3, $vr4, $vr3
 	pcalau12i	$a0, %pc_hi20(.LCPI59_5)
-	vld	$vr4, $a0, %pc_lo12(.LCPI59_5)
-	vslt.du	$vr5, $vr0, $vr5
+	vld	$vr6, $a0, %pc_lo12(.LCPI59_5)
+	vslt.du	$vr4, $vr0, $vr4
+	vpickev.w	$vr3, $vr4, $vr3
+	vslt.du	$vr4, $vr0, $vr5
+	vslt.du	$vr0, $vr0, $vr6
+	vpickev.w	$vr0, $vr0, $vr4
 	pcalau12i	$a0, %pc_hi20(.LCPI59_6)
-	vld	$vr6, $a0, %pc_lo12(.LCPI59_6)
-	vslt.du	$vr0, $vr0, $vr4
-	vpickev.w	$vr0, $vr0, $vr5
+	vld	$vr4, $a0, %pc_lo12(.LCPI59_6)
 	vpickev.h	$vr0, $vr0, $vr3
-	vand.v	$vr0, $vr0, $vr6
+	vslli.h	$vr0, $vr0, 15
+	vsrai.h	$vr0, $vr0, 15
+	vand.v	$vr0, $vr0, $vr4
 	vbsrl.v	$vr3, $vr0, 8
 	vmax.hu	$vr0, $vr3, $vr0
 	vbsrl.v	$vr3, $vr0, 4
@@ -16844,11 +16846,11 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	sub.d	$a0, $a1, $a0
 	andi	$a0, $a0, 7
 	slli.d	$a0, $a0, 2
-	vst	$vr1, $sp, 96
-	vst	$vr2, $sp, 80
+	vst	$vr2, $sp, 96
+	vst	$vr1, $sp, 80
 	addi.d	$a1, $sp, 80
-	ldx.w	$s1, $a0, $a1
-	st.w	$s1, $fp, 96
+	ldx.w	$s2, $a0, $a1
+	st.w	$s2, $fp, 96
 .LBB59_5:                               #   in Loop: Header=BB59_3 Depth=1
 	ld.d	$a0, $fp, 128
 	pcalau12i	$a1, %pc_hi20(_ZZ6squashiE1t)
@@ -17165,7 +17167,7 @@ _ZN5Mixer1pEv:                          # @_ZN5Mixer1pEv
 	move	$a1, $zero
 	b	.LBB59_2
 .LBB59_37:
-	addi.w	$a0, $s1, 0
+	addi.w	$a0, $s2, 0
 	blez	$a0, .LBB59_42
 # %bb.38:                               # %.lr.ph.preheader.i13
 	ld.d	$a3, $fp, 32

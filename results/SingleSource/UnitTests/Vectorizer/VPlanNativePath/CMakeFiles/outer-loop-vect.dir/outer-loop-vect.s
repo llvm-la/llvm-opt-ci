@@ -1113,8 +1113,8 @@ main:                                   # @main
 .LBB0_75:                               # %.preheader.i183372
                                         #   Parent Loop BB0_74 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vmul.d	$vr24, $vr9, $vr17
-	vmul.d	$vr25, $vr10, $vr16
+	vmul.d	$vr23, $vr9, $vr17
+	vmul.d	$vr24, $vr10, $vr16
 	vori.b	$vr7, $vr11, 0
 	vmadd.d	$vr7, $vr10, $vr21
 	vori.b	$vr8, $vr22, 0
@@ -1127,17 +1127,17 @@ main:                                   # @main
 	st.w	$zero, $a0, 0
 	vpickve2gr.d	$a0, $vr7, 1
 	st.w	$zero, $a0, 0
-	vaddi.du	$vr23, $vr8, 4
-	vpickve2gr.d	$a0, $vr23, 0
-	vpickve2gr.d	$a6, $vr23, 1
-	vpickev.w	$vr23, $vr25, $vr24
-	vstelm.w	$vr24, $a0, 0, 0
-	vstelm.w	$vr24, $a6, 0, 2
+	vpickev.w	$vr23, $vr24, $vr23
 	vaddi.du	$vr24, $vr7, 4
+	vaddi.du	$vr25, $vr8, 4
+	vpickve2gr.d	$a0, $vr25, 0
+	vstelm.w	$vr23, $a0, 0, 0
+	vpickve2gr.d	$a0, $vr25, 1
+	vstelm.w	$vr23, $a0, 0, 1
 	vpickve2gr.d	$a0, $vr24, 0
-	vstelm.w	$vr25, $a0, 0, 0
+	vstelm.w	$vr23, $a0, 0, 2
 	vpickve2gr.d	$a0, $vr24, 1
-	vstelm.w	$vr25, $a0, 0, 2
+	vstelm.w	$vr23, $a0, 0, 3
 	vslli.w	$vr24, $vr23, 1
 	vaddi.du	$vr25, $vr8, 8
 	vpickve2gr.d	$a0, $vr25, 0

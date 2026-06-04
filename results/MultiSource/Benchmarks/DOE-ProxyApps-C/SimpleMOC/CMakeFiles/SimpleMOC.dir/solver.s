@@ -571,26 +571,27 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vslti.du	$vr6, $vr6, 16
 	vslti.du	$vr4, $vr4, 16
 	vpickev.w	$vr4, $vr4, $vr6
-	vpickve2gr.h	$a1, $vr4, 2
-	andi	$a1, $a1, 1
-	vpickve2gr.h	$a2, $vr6, 0
-	bstrins.d	$a2, $a1, 63, 1
-	vpickve2gr.h	$a1, $vr4, 4
-	bstrins.d	$a2, $a1, 2, 2
-	vpickve2gr.h	$a1, $vr4, 6
-	bstrins.d	$a2, $a1, 3, 3
 	vslti.du	$vr3, $vr3, 16
 	vslti.du	$vr0, $vr0, 16
 	vpickev.w	$vr0, $vr0, $vr3
+	vpickev.h	$vr0, $vr0, $vr4
 	vpickve2gr.h	$a1, $vr0, 0
-	bstrins.d	$a2, $a1, 4, 4
-	vpickve2gr.h	$a1, $vr0, 2
-	bstrins.d	$a2, $a1, 5, 5
-	vpickve2gr.h	$a1, $vr0, 4
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a1, $a2, $a1
+	vpickve2gr.h	$a2, $vr0, 1
+	andi	$a2, $a2, 1
+	bstrins.d	$a1, $a2, 63, 1
+	vpickve2gr.h	$a2, $vr0, 2
+	bstrins.d	$a1, $a2, 2, 2
+	vpickve2gr.h	$a2, $vr0, 3
+	bstrins.d	$a1, $a2, 3, 3
+	vpickve2gr.h	$a2, $vr0, 4
+	bstrins.d	$a1, $a2, 4, 4
+	vpickve2gr.h	$a2, $vr0, 5
+	bstrins.d	$a1, $a2, 5, 5
 	vpickve2gr.h	$a2, $vr0, 6
+	andi	$a2, $a2, 1
+	slli.d	$a2, $a2, 6
+	or	$a1, $a1, $a2
+	vpickve2gr.h	$a2, $vr0, 7
 	slli.d	$a2, $a2, 7
 	or	$a1, $a1, $a2
 	andi	$a2, $a1, 255
@@ -1127,26 +1128,27 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vslti.du	$vr12, $vr12, 16
 	vslti.du	$vr11, $vr11, 16
 	vpickev.w	$vr11, $vr11, $vr12
-	vpickve2gr.h	$a5, $vr11, 2
-	andi	$a5, $a5, 1
-	vpickve2gr.h	$t1, $vr12, 0
-	bstrins.d	$t1, $a5, 63, 1
-	vpickve2gr.h	$a5, $vr11, 4
-	bstrins.d	$t1, $a5, 2, 2
-	vpickve2gr.h	$a5, $vr11, 6
-	bstrins.d	$t1, $a5, 3, 3
 	vslti.du	$vr10, $vr10, 16
 	vslti.du	$vr9, $vr9, 16
 	vpickev.w	$vr9, $vr9, $vr10
+	vpickev.h	$vr9, $vr9, $vr11
 	vpickve2gr.h	$a5, $vr9, 0
-	bstrins.d	$t1, $a5, 4, 4
-	vpickve2gr.h	$a5, $vr9, 2
-	bstrins.d	$t1, $a5, 5, 5
-	vpickve2gr.h	$a5, $vr9, 4
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 6
-	or	$a5, $t1, $a5
+	vpickve2gr.h	$t1, $vr9, 1
+	andi	$t1, $t1, 1
+	bstrins.d	$a5, $t1, 63, 1
+	vpickve2gr.h	$t1, $vr9, 2
+	bstrins.d	$a5, $t1, 2, 2
+	vpickve2gr.h	$t1, $vr9, 3
+	bstrins.d	$a5, $t1, 3, 3
+	vpickve2gr.h	$t1, $vr9, 4
+	bstrins.d	$a5, $t1, 4, 4
+	vpickve2gr.h	$t1, $vr9, 5
+	bstrins.d	$a5, $t1, 5, 5
 	vpickve2gr.h	$t1, $vr9, 6
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 6
+	or	$a5, $a5, $t1
+	vpickve2gr.h	$t1, $vr9, 7
 	slli.d	$t1, $t1, 7
 	or	$a5, $a5, $t1
 	andi	$t1, $a5, 255
@@ -1230,26 +1232,27 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vslti.du	$vr12, $vr12, 16
 	vslti.du	$vr11, $vr11, 16
 	vpickev.w	$vr11, $vr11, $vr12
-	vpickve2gr.h	$a5, $vr11, 2
-	andi	$a5, $a5, 1
-	vpickve2gr.h	$t1, $vr12, 0
-	bstrins.d	$t1, $a5, 63, 1
-	vpickve2gr.h	$a5, $vr11, 4
-	bstrins.d	$t1, $a5, 2, 2
-	vpickve2gr.h	$a5, $vr11, 6
-	bstrins.d	$t1, $a5, 3, 3
 	vslti.du	$vr10, $vr10, 16
 	vslti.du	$vr9, $vr9, 16
 	vpickev.w	$vr9, $vr9, $vr10
+	vpickev.h	$vr9, $vr9, $vr11
 	vpickve2gr.h	$a5, $vr9, 0
-	bstrins.d	$t1, $a5, 4, 4
-	vpickve2gr.h	$a5, $vr9, 2
-	bstrins.d	$t1, $a5, 5, 5
-	vpickve2gr.h	$a5, $vr9, 4
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 6
-	or	$a5, $t1, $a5
+	vpickve2gr.h	$t1, $vr9, 1
+	andi	$t1, $t1, 1
+	bstrins.d	$a5, $t1, 63, 1
+	vpickve2gr.h	$t1, $vr9, 2
+	bstrins.d	$a5, $t1, 2, 2
+	vpickve2gr.h	$t1, $vr9, 3
+	bstrins.d	$a5, $t1, 3, 3
+	vpickve2gr.h	$t1, $vr9, 4
+	bstrins.d	$a5, $t1, 4, 4
+	vpickve2gr.h	$t1, $vr9, 5
+	bstrins.d	$a5, $t1, 5, 5
 	vpickve2gr.h	$t1, $vr9, 6
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 6
+	or	$a5, $a5, $t1
+	vpickve2gr.h	$t1, $vr9, 7
 	slli.d	$t1, $t1, 7
 	or	$a5, $a5, $t1
 	andi	$a5, $a5, 255
@@ -1333,26 +1336,27 @@ attenuate_fluxes:                       # @attenuate_fluxes
 	vslti.du	$vr12, $vr12, 16
 	vslti.du	$vr11, $vr11, 16
 	vpickev.w	$vr11, $vr11, $vr12
-	vpickve2gr.h	$a5, $vr11, 2
-	andi	$a5, $a5, 1
-	vpickve2gr.h	$t1, $vr12, 0
-	bstrins.d	$t1, $a5, 63, 1
-	vpickve2gr.h	$a5, $vr11, 4
-	bstrins.d	$t1, $a5, 2, 2
-	vpickve2gr.h	$a5, $vr11, 6
-	bstrins.d	$t1, $a5, 3, 3
 	vslti.du	$vr10, $vr10, 16
 	vslti.du	$vr9, $vr9, 16
 	vpickev.w	$vr9, $vr9, $vr10
+	vpickev.h	$vr9, $vr9, $vr11
 	vpickve2gr.h	$a5, $vr9, 0
-	bstrins.d	$t1, $a5, 4, 4
-	vpickve2gr.h	$a5, $vr9, 2
-	bstrins.d	$t1, $a5, 5, 5
-	vpickve2gr.h	$a5, $vr9, 4
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 6
-	or	$a5, $t1, $a5
+	vpickve2gr.h	$t1, $vr9, 1
+	andi	$t1, $t1, 1
+	bstrins.d	$a5, $t1, 63, 1
+	vpickve2gr.h	$t1, $vr9, 2
+	bstrins.d	$a5, $t1, 2, 2
+	vpickve2gr.h	$t1, $vr9, 3
+	bstrins.d	$a5, $t1, 3, 3
+	vpickve2gr.h	$t1, $vr9, 4
+	bstrins.d	$a5, $t1, 4, 4
+	vpickve2gr.h	$t1, $vr9, 5
+	bstrins.d	$a5, $t1, 5, 5
 	vpickve2gr.h	$t1, $vr9, 6
+	andi	$t1, $t1, 1
+	slli.d	$t1, $t1, 6
+	or	$a5, $a5, $t1
+	vpickve2gr.h	$t1, $vr9, 7
 	slli.d	$t1, $t1, 7
 	or	$a5, $a5, $t1
 	andi	$a5, $a5, 255

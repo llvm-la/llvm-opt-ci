@@ -566,6 +566,7 @@ main:                                   # @main
 	vslt.du	$vr4, $vr4, $vr6
 	vpickev.w	$vr3, $vr4, $vr3
 	vand.v	$vr3, $vr3, $vr7
+	vslli.w	$vr3, $vr3, 31
 	vmskltz.w	$vr3, $vr3
 	vpickve2gr.hu	$a0, $vr3, 0
 	bstrpick.d	$fp, $t0, 62, 1
@@ -763,6 +764,7 @@ main:                                   # @main
 	vslt.du	$vr4, $vr4, $vr6
 	vpickev.w	$vr3, $vr4, $vr3
 	vand.v	$vr3, $vr3, $vr7
+	vslli.w	$vr3, $vr3, 31
 	vmskltz.w	$vr3, $vr3
 	vpickve2gr.hu	$a0, $vr3, 0
 	bstrpick.d	$t5, $t0, 62, 1

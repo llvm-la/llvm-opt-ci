@@ -727,26 +727,27 @@ process_data_context_main:              # @process_data_context_main
 	vslti.du	$vr3, $vr3, 16
 	vslti.du	$vr2, $vr2, 16
 	vpickev.w	$vr2, $vr2, $vr3
-	vpickve2gr.h	$t8, $vr2, 2
-	andi	$t8, $t8, 1
-	vpickve2gr.h	$s2, $vr3, 0
-	bstrins.d	$s2, $t8, 63, 1
-	vpickve2gr.h	$t8, $vr2, 4
-	bstrins.d	$s2, $t8, 2, 2
-	vpickve2gr.h	$t8, $vr2, 6
-	bstrins.d	$s2, $t8, 3, 3
 	vslti.du	$vr1, $vr1, 16
 	vslti.du	$vr0, $vr0, 16
 	vpickev.w	$vr0, $vr0, $vr1
+	vpickev.h	$vr0, $vr0, $vr2
 	vpickve2gr.h	$t8, $vr0, 0
-	bstrins.d	$s2, $t8, 4, 4
-	vpickve2gr.h	$t8, $vr0, 2
-	bstrins.d	$s2, $t8, 5, 5
-	vpickve2gr.h	$t8, $vr0, 4
-	andi	$t8, $t8, 1
-	slli.d	$t8, $t8, 6
-	or	$t8, $s2, $t8
+	vpickve2gr.h	$s2, $vr0, 1
+	andi	$s2, $s2, 1
+	bstrins.d	$t8, $s2, 63, 1
+	vpickve2gr.h	$s2, $vr0, 2
+	bstrins.d	$t8, $s2, 2, 2
+	vpickve2gr.h	$s2, $vr0, 3
+	bstrins.d	$t8, $s2, 3, 3
+	vpickve2gr.h	$s2, $vr0, 4
+	bstrins.d	$t8, $s2, 4, 4
+	vpickve2gr.h	$s2, $vr0, 5
+	bstrins.d	$t8, $s2, 5, 5
 	vpickve2gr.h	$s2, $vr0, 6
+	andi	$s2, $s2, 1
+	slli.d	$s2, $s2, 6
+	or	$t8, $t8, $s2
+	vpickve2gr.h	$s2, $vr0, 7
 	slli.d	$s2, $s2, 7
 	or	$t8, $t8, $s2
 	andi	$s2, $t8, 255

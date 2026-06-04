@@ -562,43 +562,43 @@ main:                                   # @main
 	vld	$vr1, $a1, %pc_lo12(.LCPI2_25)
 	vld	$vr2, $a0, 16
 	vld	$vr3, $a0, 32
-	vld	$vr4, $a0, 48
 	vfcmp.cune.s	$vr0, $vr0, $vr1
 	pcalau12i	$a1, %pc_hi20(.LCPI2_26)
 	vld	$vr1, $a1, %pc_lo12(.LCPI2_26)
 	pcalau12i	$a1, %pc_hi20(.LCPI2_27)
-	vld	$vr5, $a1, %pc_lo12(.LCPI2_27)
-	pcalau12i	$a1, %pc_hi20(.LCPI2_28)
-	vld	$vr6, $a1, %pc_lo12(.LCPI2_28)
+	vld	$vr4, $a1, %pc_lo12(.LCPI2_27)
+	vld	$vr5, $a0, 48
 	vfcmp.cune.s	$vr1, $vr2, $vr1
 	vpickev.h	$vr0, $vr1, $vr0
-	vfcmp.cune.s	$vr1, $vr3, $vr5
-	vfcmp.cune.s	$vr2, $vr4, $vr6
-	vpickev.h	$vr1, $vr2, $vr1
-	vpickev.b	$vr1, $vr1, $vr0
-	vpickve2gr.b	$a1, $vr0, 6
-	vld	$vr2, $a0, 64
+	vfcmp.cune.s	$vr1, $vr3, $vr4
+	pcalau12i	$a1, %pc_hi20(.LCPI2_28)
+	vld	$vr2, $a1, %pc_lo12(.LCPI2_28)
+	vld	$vr3, $a0, 64
 	pcalau12i	$a0, %pc_hi20(.LCPI2_29)
-	vld	$vr3, $a0, %pc_lo12(.LCPI2_29)
-	vpickve2gr.b	$a0, $vr0, 4
-	vpickve2gr.b	$a2, $vr0, 2
-	vpickve2gr.b	$a3, $vr0, 0
-	vfcmp.cune.s	$vr0, $vr2, $vr3
-	vinsgr2vr.w	$vr2, $a3, 0
-	vinsgr2vr.w	$vr2, $a2, 1
+	vld	$vr4, $a0, %pc_lo12(.LCPI2_29)
+	vfcmp.cune.s	$vr2, $vr5, $vr2
+	vpickev.h	$vr1, $vr2, $vr1
+	vpickev.b	$vr0, $vr1, $vr0
+	vfcmp.cune.s	$vr1, $vr3, $vr4
+	vpickve2gr.b	$a0, $vr0, 0
+	vinsgr2vr.w	$vr2, $a0, 0
+	vpickve2gr.b	$a0, $vr0, 1
+	vinsgr2vr.w	$vr2, $a0, 1
+	vpickve2gr.b	$a0, $vr0, 2
 	vinsgr2vr.w	$vr2, $a0, 2
-	vinsgr2vr.w	$vr2, $a1, 3
-	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
+	vpickve2gr.b	$a0, $vr0, 3
+	vinsgr2vr.w	$vr2, $a0, 3
+	vor.v	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a0, $vr1, 0
 	vinsgr2vr.b	$vr2, $a0, 0
-	vpickve2gr.w	$a0, $vr0, 1
+	vpickve2gr.w	$a0, $vr1, 1
 	vinsgr2vr.b	$vr2, $a0, 1
-	vpickve2gr.w	$a0, $vr0, 2
+	vpickve2gr.w	$a0, $vr1, 2
 	vinsgr2vr.b	$vr2, $a0, 2
-	vpickve2gr.w	$a0, $vr0, 3
+	vpickve2gr.w	$a0, $vr1, 3
 	vinsgr2vr.b	$vr2, $a0, 3
-	vextrins.w	$vr1, $vr2, 0
-	vslli.b	$vr0, $vr1, 7
+	vextrins.w	$vr0, $vr2, 0
+	vslli.b	$vr0, $vr0, 7
 	vmskltz.b	$vr0, $vr0
 	vpickve2gr.hu	$a0, $vr0, 0
 	sltu	$a0, $zero, $a0

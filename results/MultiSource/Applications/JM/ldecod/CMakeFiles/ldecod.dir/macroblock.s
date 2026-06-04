@@ -15469,16 +15469,16 @@ decode_one_macroblock:                  # @decode_one_macroblock
 	ld.w	$a0, $a0, 0
 	ld.w	$a3, $a3, 0
 	ld.w	$a2, $a2, 0
-	ld.w	$a6, $a1, 0
+	ld.w	$a5, $a1, 0
 	add.d	$a0, $a0, $a3
 	addi.w	$a0, $a0, 1
-	lu12i.w	$a3, 1
-	ori	$a1, $a3, 1664
+	lu12i.w	$a4, 1
+	ori	$a1, $a4, 1664
 	ldx.wu	$a1, $s8, $a1
-	srai.d	$a4, $a0, 1
-	ori	$a0, $a3, 1804
-	ldx.w	$a3, $s8, $a0
-	addi.d	$a5, $a1, 1
+	srai.d	$a3, $a0, 1
+	ori	$a0, $a4, 1804
+	ldx.w	$a4, $s8, $a0
+	addi.d	$a6, $a1, 1
 	ori	$a0, $zero, 1
 	sll.w	$a7, $a0, $a1
 	addi.w	$a1, $t3, 0
@@ -15486,85 +15486,87 @@ decode_one_macroblock:                  # @decode_one_macroblock
 	addi.d	$a0, $s8, 104
 	alsl.d	$a0, $t2, $a0, 1
 	slli.d	$a1, $a1, 5
-	vreplgr2vr.w	$vr1, $a6
-	add.d	$a6, $a0, $a1
+	vreplgr2vr.w	$vr1, $a5
+	add.d	$a5, $a0, $a1
 	vreplgr2vr.w	$vr2, $a7
 	addi.d	$a2, $a1, 32
-	vreplgr2vr.w	$vr3, $a5
-	add.d	$a5, $a0, $a2
-	vreplgr2vr.w	$vr4, $a4
-	addi.d	$a4, $a1, 64
-	vld	$vr5, $sp, 712
-	vld	$vr6, $sp, 696
-	vld	$vr7, $sp, 680
-	vld	$vr8, $sp, 664
+	vreplgr2vr.w	$vr3, $a6
+	add.d	$a6, $a0, $a2
+	vreplgr2vr.w	$vr4, $a3
+	addi.d	$a3, $a1, 64
+	vreplgr2vr.w	$vr5, $a4
+	add.d	$a4, $a0, $a3
+	vld	$vr6, $sp, 664
+	vld	$vr7, $sp, 728
+	vld	$vr8, $sp, 712
 	vld	$vr9, $sp, 648
 	vmul.w	$vr6, $vr6, $vr1
-	vmul.w	$vr7, $vr7, $vr1
+	vmadd.w	$vr6, $vr7, $vr0
+	vld	$vr7, $sp, 696
+	vmul.w	$vr9, $vr9, $vr1
+	vmadd.w	$vr9, $vr8, $vr0
+	vld	$vr8, $sp, 680
+	vadd.w	$vr9, $vr9, $vr2
+	vadd.w	$vr6, $vr6, $vr2
+	vsra.w	$vr6, $vr6, $vr3
+	vsra.w	$vr9, $vr9, $vr3
+	vadd.w	$vr9, $vr9, $vr4
+	vadd.w	$vr6, $vr6, $vr4
+	vmaxi.w	$vr6, $vr6, 0
+	vmaxi.w	$vr9, $vr9, 0
+	vmin.w	$vr9, $vr9, $vr5
+	vmin.w	$vr6, $vr6, $vr5
+	vpickev.h	$vr6, $vr6, $vr9
+	vstelm.h	$vr6, $a5, 0, 0
+	addi.d	$a5, $a1, 96
+	vld	$vr9, $sp, 760
 	vmul.w	$vr8, $vr8, $vr1
-	vmul.w	$vr1, $vr9, $vr1
-	vreplgr2vr.w	$vr9, $a3
-	add.d	$a3, $a0, $a4
-	vmadd.w	$vr1, $vr5, $vr0
-	vld	$vr5, $sp, 728
+	vmul.w	$vr1, $vr7, $vr1
+	vld	$vr7, $sp, 744
+	vstelm.h	$vr6, $a6, 0, 4
+	add.d	$a6, $a0, $a5
+	vmadd.w	$vr1, $vr9, $vr0
+	vmadd.w	$vr8, $vr7, $vr0
+	vadd.w	$vr0, $vr8, $vr2
 	vadd.w	$vr1, $vr1, $vr2
 	vsra.w	$vr1, $vr1, $vr3
-	vadd.w	$vr1, $vr1, $vr4
-	vmaxi.w	$vr1, $vr1, 0
-	vmin.w	$vr1, $vr1, $vr9
-	vstelm.h	$vr1, $a6, 0, 0
-	addi.d	$a6, $a1, 96
-	vmadd.w	$vr8, $vr5, $vr0
-	vld	$vr5, $sp, 744
-	vadd.w	$vr8, $vr8, $vr2
-	vsra.w	$vr8, $vr8, $vr3
-	vadd.w	$vr8, $vr8, $vr4
-	vmaxi.w	$vr8, $vr8, 0
-	vmin.w	$vr8, $vr8, $vr9
-	vstelm.h	$vr8, $a5, 0, 0
-	add.d	$a5, $a0, $a6
-	vmadd.w	$vr7, $vr5, $vr0
-	vld	$vr5, $sp, 760
-	vadd.w	$vr7, $vr7, $vr2
-	vsra.w	$vr7, $vr7, $vr3
-	vadd.w	$vr7, $vr7, $vr4
-	vmaxi.w	$vr7, $vr7, 0
-	vmin.w	$vr7, $vr7, $vr9
-	vstelm.h	$vr7, $a3, 0, 0
-	addi.d	$a3, $a0, 2
-	vmadd.w	$vr6, $vr5, $vr0
-	vadd.w	$vr0, $vr6, $vr2
 	vsra.w	$vr0, $vr0, $vr3
 	vadd.w	$vr0, $vr0, $vr4
+	vadd.w	$vr1, $vr1, $vr4
+	vmaxi.w	$vr1, $vr1, 0
 	vmaxi.w	$vr0, $vr0, 0
-	vmin.w	$vr0, $vr0, $vr9
-	vstelm.h	$vr0, $a5, 0, 0
-	add.d	$a5, $a3, $a1
-	vstelm.h	$vr1, $a5, 0, 2
-	add.d	$a5, $a3, $a2
-	vstelm.h	$vr8, $a5, 0, 2
-	add.d	$a5, $a3, $a4
-	add.d	$a3, $a3, $a6
-	vstelm.h	$vr7, $a5, 0, 2
-	addi.d	$a5, $a0, 4
-	vstelm.h	$vr0, $a3, 0, 2
-	add.d	$a3, $a5, $a1
-	vstelm.h	$vr1, $a3, 0, 4
-	add.d	$a3, $a5, $a2
-	vstelm.h	$vr8, $a3, 0, 4
-	add.d	$a3, $a5, $a4
-	vstelm.h	$vr7, $a3, 0, 4
-	add.d	$a3, $a5, $a6
-	vstelm.h	$vr0, $a3, 0, 4
+	vmin.w	$vr0, $vr0, $vr5
+	vmin.w	$vr1, $vr1, $vr5
+	vpickev.h	$vr0, $vr1, $vr0
+	vstelm.h	$vr0, $a4, 0, 0
+	addi.d	$a4, $a0, 2
+	vstelm.h	$vr0, $a6, 0, 4
+	add.d	$a6, $a4, $a1
+	vstelm.h	$vr6, $a6, 0, 1
+	add.d	$a6, $a4, $a2
+	vstelm.h	$vr6, $a6, 0, 5
+	add.d	$a6, $a4, $a3
+	add.d	$a4, $a4, $a5
+	vstelm.h	$vr0, $a6, 0, 1
+	addi.d	$a6, $a0, 4
+	vstelm.h	$vr0, $a4, 0, 5
+	add.d	$a4, $a6, $a1
+	vstelm.h	$vr6, $a4, 0, 2
+	add.d	$a4, $a6, $a2
+	vstelm.h	$vr6, $a4, 0, 6
+	add.d	$a4, $a6, $a3
+	vstelm.h	$vr0, $a4, 0, 2
+	add.d	$a4, $a6, $a5
+	vstelm.h	$vr0, $a4, 0, 6
 	addi.d	$a0, $a0, 6
 	add.d	$a1, $a0, $a1
-	vstelm.h	$vr1, $a1, 0, 6
+	vstelm.h	$vr6, $a1, 0, 3
 	add.d	$a1, $a0, $a2
-	vstelm.h	$vr8, $a1, 0, 6
-	add.d	$a1, $a0, $a4
-	vstelm.h	$vr7, $a1, 0, 6
-	add.d	$a0, $a0, $a6
-	vstelm.h	$vr0, $a0, 0, 6
+	vstelm.h	$vr6, $a1, 0, 7
+	add.d	$a1, $a0, $a3
+	vstelm.h	$vr0, $a1, 0, 3
+	add.d	$a0, $a0, $a5
+	vstelm.h	$vr0, $a0, 0, 7
 	ld.d	$a7, $sp, 576                   # 8-byte Folded Reload
 	move	$t7, $s5
 	b	.LBB25_206
@@ -16073,14 +16075,14 @@ decode_one_macroblock:                  # @decode_one_macroblock
 	alsl.d	$t8, $fp, $a0, 1
 	add.d	$a3, $a0, $a3
 	add.d	$a5, $a0, $a5
-	vld	$vr0, $sp, 712
-	vld	$vr1, $sp, 728
-	vld	$vr2, $sp, 744
-	vld	$vr3, $sp, 760
-	vld	$vr4, $sp, 696
-	vld	$vr5, $sp, 680
-	vld	$vr6, $sp, 664
-	vld	$vr7, $sp, 648
+	vld	$vr0, $sp, 760
+	vld	$vr1, $sp, 744
+	vld	$vr2, $sp, 728
+	vld	$vr3, $sp, 712
+	vld	$vr4, $sp, 648
+	vld	$vr5, $sp, 664
+	vld	$vr6, $sp, 680
+	vld	$vr7, $sp, 696
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr5
 	vadd.w	$vr1, $vr1, $vr6
@@ -16093,25 +16095,27 @@ decode_one_macroblock:                  # @decode_one_macroblock
 	vsrli.w	$vr2, $vr2, 1
 	vsrli.w	$vr1, $vr1, 1
 	vsrli.w	$vr0, $vr0, 1
-	vstelm.h	$vr0, $a1, 0, 0
-	vstelm.h	$vr0, $a4, 0, 2
-	vstelm.h	$vr0, $a6, 0, 4
-	vstelm.h	$vr0, $a7, 0, 6
-	vstelm.h	$vr1, $t1, 0, 0
-	vstelm.h	$vr1, $t2, 0, 2
+	vpickev.h	$vr0, $vr0, $vr1
+	vpickev.h	$vr1, $vr2, $vr3
+	vstelm.h	$vr1, $a1, 0, 0
+	vstelm.h	$vr1, $a4, 0, 1
+	vstelm.h	$vr1, $a6, 0, 2
+	vstelm.h	$vr1, $a7, 0, 3
+	vstelm.h	$vr1, $t1, 0, 4
+	vstelm.h	$vr1, $t2, 0, 5
 	move	$t2, $fp
-	vstelm.h	$vr1, $t3, 0, 4
+	vstelm.h	$vr1, $t3, 0, 6
 	move	$t3, $s0
-	vstelm.h	$vr1, $t0, 0, 6
-	vstelm.h	$vr2, $t5, 0, 0
-	vstelm.h	$vr2, $t6, 0, 2
-	vstelm.h	$vr2, $t7, 0, 4
-	vstelm.h	$vr2, $t4, 0, 6
-	vstelm.h	$vr3, $t8, 0, 0
-	vstelm.h	$vr3, $a3, 0, 2
-	vstelm.h	$vr3, $a5, 0, 4
+	vstelm.h	$vr1, $t0, 0, 7
+	vstelm.h	$vr0, $t5, 0, 0
+	vstelm.h	$vr0, $t6, 0, 1
+	vstelm.h	$vr0, $t7, 0, 2
+	vstelm.h	$vr0, $t4, 0, 3
+	vstelm.h	$vr0, $t8, 0, 4
+	vstelm.h	$vr0, $a3, 0, 5
+	vstelm.h	$vr0, $a5, 0, 6
 	add.d	$a0, $a0, $a2
-	vstelm.h	$vr3, $a0, 0, 6
+	vstelm.h	$vr0, $a0, 0, 7
 	ld.d	$s1, $sp, 512                   # 8-byte Folded Reload
 	st.d	$s1, $sp, 432                   # 8-byte Folded Spill
 	ld.d	$a7, $sp, 576                   # 8-byte Folded Reload

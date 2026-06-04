@@ -105,7 +105,8 @@ main:                                   # @main
 	sltui	$t2, $t2, 1
 	vreplgr2vr.d	$vr1, $t2
 	vslt.du	$vr0, $vr1, $vr0
-	vpickve2gr.w	$t2, $vr0, 2
+	vpickev.w	$vr0, $vr0, $vr0
+	vpickve2gr.w	$t2, $vr0, 3
 	andi	$t4, $t2, 1
 	st.w	$a7, $a4, 0
 	st.w	$t4, $t0, 0

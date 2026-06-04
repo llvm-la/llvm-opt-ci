@@ -47860,19 +47860,13 @@ _ZL19checkVectorFunctionIssEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vand.v	$vr2, $vr0, $vr6
 	vand.v	$vr3, $vr1, $vr6
 	vseqi.d	$vr3, $vr3, 0
-	vpickve2gr.d	$a7, $vr3, 0
-	vinsgr2vr.h	$vr4, $a7, 0
-	vpickve2gr.d	$a7, $vr3, 1
-	vinsgr2vr.h	$vr4, $a7, 1
 	vseqi.d	$vr2, $vr2, 0
-	vpickve2gr.d	$a7, $vr2, 0
-	vinsgr2vr.h	$vr4, $a7, 2
-	vpickve2gr.d	$a7, $vr2, 1
-	vinsgr2vr.h	$vr4, $a7, 3
-	vreplgr2vr.h	$vr2, $s6
-	vbitsel.v	$vr3, $vr2, $vr5, $vr4
-	vstelm.d	$vr3, $a6, 0, 0
-	vbitsel.v	$vr2, $vr5, $vr2, $vr4
+	vpickev.w	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr2, $vr2
+	vreplgr2vr.h	$vr3, $s6
+	vbitsel.v	$vr4, $vr3, $vr5, $vr2
+	vstelm.d	$vr4, $a6, 0, 0
+	vbitsel.v	$vr2, $vr5, $vr3, $vr2
 	vstelm.d	$vr2, $a5, 0, 0
 	vaddi.du	$vr1, $vr1, 4
 	vaddi.du	$vr0, $vr0, 4
@@ -68279,19 +68273,13 @@ _ZL19checkVectorFunctionItsEvSt8functionIFT_PT0_S3_jEES5_PKc: # @_ZL19checkVecto
 	vand.v	$vr2, $vr0, $vr6
 	vand.v	$vr3, $vr1, $vr6
 	vseqi.d	$vr3, $vr3, 0
-	vpickve2gr.d	$a7, $vr3, 0
-	vinsgr2vr.h	$vr4, $a7, 0
-	vpickve2gr.d	$a7, $vr3, 1
-	vinsgr2vr.h	$vr4, $a7, 1
 	vseqi.d	$vr2, $vr2, 0
-	vpickve2gr.d	$a7, $vr2, 0
-	vinsgr2vr.h	$vr4, $a7, 2
-	vpickve2gr.d	$a7, $vr2, 1
-	vinsgr2vr.h	$vr4, $a7, 3
-	vreplgr2vr.h	$vr2, $s6
-	vbitsel.v	$vr3, $vr2, $vr5, $vr4
-	vstelm.d	$vr3, $a6, 0, 0
-	vbitsel.v	$vr2, $vr5, $vr2, $vr4
+	vpickev.w	$vr2, $vr2, $vr3
+	vpickev.h	$vr2, $vr2, $vr2
+	vreplgr2vr.h	$vr3, $s6
+	vbitsel.v	$vr4, $vr3, $vr5, $vr2
+	vstelm.d	$vr4, $a6, 0, 0
+	vbitsel.v	$vr2, $vr5, $vr3, $vr2
 	vstelm.d	$vr2, $a5, 0, 0
 	vaddi.du	$vr1, $vr1, 4
 	vaddi.du	$vr0, $vr0, 4

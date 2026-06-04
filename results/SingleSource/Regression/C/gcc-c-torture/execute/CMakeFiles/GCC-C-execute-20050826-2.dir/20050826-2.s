@@ -350,29 +350,30 @@ main:                                   # @main
 	vxori.b	$vr0, $vr0, 255
 	vseq.d	$vr1, $vr1, $vr4
 	vxori.b	$vr1, $vr1, 255
-	vpickev.w	$vr1, $vr1, $vr0
-	vpickve2gr.h	$a0, $vr1, 2
-	andi	$a0, $a0, 1
-	vpickve2gr.h	$a1, $vr0, 0
-	bstrins.d	$a1, $a0, 63, 1
-	vpickve2gr.h	$a0, $vr1, 4
-	bstrins.d	$a1, $a0, 2, 2
-	vpickve2gr.h	$a0, $vr1, 6
-	bstrins.d	$a1, $a0, 3, 3
-	vseq.d	$vr0, $vr2, $vr4
-	vxori.b	$vr0, $vr0, 255
-	vseq.d	$vr1, $vr3, $vr4
-	vxori.b	$vr1, $vr1, 255
 	vpickev.w	$vr0, $vr1, $vr0
+	vseq.d	$vr1, $vr2, $vr4
+	vxori.b	$vr1, $vr1, 255
+	vseq.d	$vr2, $vr3, $vr4
+	vxori.b	$vr2, $vr2, 255
+	vpickev.w	$vr1, $vr2, $vr1
+	vpickev.h	$vr0, $vr1, $vr0
 	vpickve2gr.h	$a0, $vr0, 0
-	bstrins.d	$a1, $a0, 4, 4
-	vpickve2gr.h	$a0, $vr0, 2
-	bstrins.d	$a1, $a0, 5, 5
-	vpickve2gr.h	$a0, $vr0, 4
-	andi	$a0, $a0, 1
-	slli.d	$a0, $a0, 6
-	or	$a0, $a1, $a0
+	vpickve2gr.h	$a1, $vr0, 1
+	andi	$a1, $a1, 1
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr0, 2
+	bstrins.d	$a0, $a1, 2, 2
+	vpickve2gr.h	$a1, $vr0, 3
+	bstrins.d	$a0, $a1, 3, 3
+	vpickve2gr.h	$a1, $vr0, 4
+	bstrins.d	$a0, $a1, 4, 4
+	vpickve2gr.h	$a1, $vr0, 5
+	bstrins.d	$a0, $a1, 5, 5
 	vpickve2gr.h	$a1, $vr0, 6
+	andi	$a1, $a1, 1
+	slli.d	$a1, $a1, 6
+	or	$a0, $a0, $a1
+	vpickve2gr.h	$a1, $vr0, 7
 	slli.d	$a1, $a1, 7
 	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255

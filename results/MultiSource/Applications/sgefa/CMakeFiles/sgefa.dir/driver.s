@@ -460,7 +460,7 @@ matgen:                                 # @matgen
 	vadd.w	$vr7, $vr2, $vr5
 	vffint.s.wu	$vr7, $vr7
 	vfrecip.s	$vr7, $vr7
-	vandn.v	$vr6, $vr6, $vr7
+	vbitsel.v	$vr6, $vr7, $vr1, $vr6
 	vst	$vr6, $t2, 0
 	vaddi.wu	$vr2, $vr2, 4
 	addi.d	$t3, $t3, -4
@@ -666,9 +666,11 @@ matgen:                                 # @matgen
 	vpickev.w	$vr10, $vr10, $vr11
 	vandn.v	$vr10, $vr14, $vr10
 	vandn.v	$vr11, $vr12, $vr13
+	vslli.w	$vr13, $vr11, 31
+	vsrai.w	$vr13, $vr13, 31
 	vor.v	$vr10, $vr10, $vr11
 	vor.v	$vr10, $vr10, $vr12
-	vbitsel.v	$vr11, $vr3, $vr2, $vr11
+	vbitsel.v	$vr11, $vr3, $vr2, $vr13
 	vpickve2gr.w	$t3, $vr10, 0
 	andi	$t3, $t3, 1
 	vbitsel.v	$vr11, $vr11, $vr5, $vr12
@@ -950,7 +952,7 @@ matgen:                                 # @matgen
 	vpickev.w	$vr7, $vr7, $vr8
 	vadd.w	$vr8, $vr6, $vr5
 	vffint.s.wu	$vr8, $vr8
-	vandn.v	$vr7, $vr7, $vr8
+	vbitsel.v	$vr7, $vr8, $vr3, $vr7
 	vst	$vr7, $t0, 0
 	vaddi.wu	$vr6, $vr6, 4
 	addi.d	$t1, $t1, -4
@@ -1618,7 +1620,7 @@ matgen:                                 # @matgen
 	vpickev.w	$vr7, $vr7, $vr8
 	vadd.w	$vr8, $vr6, $vr5
 	vffint.s.w	$vr8, $vr8
-	vandn.v	$vr7, $vr7, $vr8
+	vbitsel.v	$vr7, $vr8, $vr3, $vr7
 	vst	$vr7, $t0, 0
 	vaddi.wu	$vr6, $vr6, 4
 	addi.d	$t1, $t1, -4

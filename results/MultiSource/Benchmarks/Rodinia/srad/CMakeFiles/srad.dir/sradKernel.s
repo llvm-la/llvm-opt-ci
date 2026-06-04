@@ -203,6 +203,7 @@ srad_kernel:                            # @srad_kernel
 	sltu	$a5, $s0, $t4
 	sltu	$a4, $t7, $t2
 	and	$a5, $a5, $a4
+	vslli.w	$vr2, $vr2, 31
 	vmskltz.w	$vr2, $vr2
 	vpickve2gr.hu	$a4, $vr2, 0
 	sltu	$a4, $zero, $a4
@@ -221,6 +222,7 @@ srad_kernel:                            # @srad_kernel
 	sltu	$a1, $s3, $a1
 	sltu	$a0, $a3, $a0
 	and	$a0, $a1, $a0
+	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0
 	sltu	$a1, $zero, $a1
@@ -737,9 +739,10 @@ srad_kernel:                            # @srad_kernel
 	vfcmp.clt.d	$vr12, $vr15, $vr12
 	vpickev.w	$vr12, $vr12, $vr13
 	vor.v	$vr13, $vr12, $vr14
+	vrepli.b	$vr12, 0
 	vpickve2gr.w	$a6, $vr13, 0
 	andi	$a6, $a6, 1
-	vandn.v	$vr12, $vr14, $vr5
+	vbitsel.v	$vr12, $vr5, $vr12, $vr14
 	bnez	$a6, .LBB0_34
 # %bb.31:                               # %pred.store.continue
                                         #   in Loop: Header=BB0_30 Depth=3

@@ -72,38 +72,41 @@ _Z9example2aii:                         # @_Z9example2aii
 	vreplgr2vr.d	$vr3, $a3
 	vsadd.du	$vr4, $vr3, $vr0
 	vslt.du	$vr4, $vr4, $vr2
-	vpickve2gr.w	$a0, $vr4, 0
-	andi	$a0, $a0, 1
-	beqz	$a0, .LBB1_5
-# %bb.4:                                # %pred.store.if
-                                        #   in Loop: Header=BB1_3 Depth=1
-	st.w	$a1, $a2, -8
-.LBB1_5:                                # %pred.store.continue
-                                        #   in Loop: Header=BB1_3 Depth=1
 	vsadd.du	$vr3, $vr3, $vr1
 	vslt.du	$vr3, $vr3, $vr2
 	vpickev.w	$vr3, $vr3, $vr4
+	vpickve2gr.w	$a0, $vr3, 0
+	andi	$a0, $a0, 1
+	bnez	$a0, .LBB1_7
+# %bb.4:                                # %pred.store.continue
+                                        #   in Loop: Header=BB1_3 Depth=1
 	vpickve2gr.w	$a0, $vr3, 1
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB1_8
-# %bb.6:                                # %pred.store.continue7
+.LBB1_5:                                # %pred.store.continue7
                                         #   in Loop: Header=BB1_3 Depth=1
 	vpickve2gr.w	$a0, $vr3, 2
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB1_9
-.LBB1_7:                                # %pred.store.continue9
+.LBB1_6:                                # %pred.store.continue9
                                         #   in Loop: Header=BB1_3 Depth=1
 	vpickve2gr.w	$a0, $vr3, 3
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB1_2
 	b	.LBB1_10
 	.p2align	4, , 16
+.LBB1_7:                                # %pred.store.if
+                                        #   in Loop: Header=BB1_3 Depth=1
+	st.w	$a1, $a2, -8
+	vpickve2gr.w	$a0, $vr3, 1
+	andi	$a0, $a0, 1
+	beqz	$a0, .LBB1_5
 .LBB1_8:                                # %pred.store.if6
                                         #   in Loop: Header=BB1_3 Depth=1
 	st.w	$a1, $a2, -4
 	vpickve2gr.w	$a0, $vr3, 2
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB1_7
+	beqz	$a0, .LBB1_6
 .LBB1_9:                                # %pred.store.if8
                                         #   in Loop: Header=BB1_3 Depth=1
 	st.w	$a1, $a2, 0
@@ -293,38 +296,41 @@ _Z8example5iP1A:                        # @_Z8example5iP1A
 	vreplgr2vr.d	$vr3, $a2
 	vsadd.du	$vr4, $vr3, $vr0
 	vslt.du	$vr4, $vr4, $vr2
-	vpickve2gr.w	$a4, $vr4, 0
-	andi	$a4, $a4, 1
-	beqz	$a4, .LBB7_5
-# %bb.4:                                # %pred.store.if
-                                        #   in Loop: Header=BB7_3 Depth=1
-	st.w	$a0, $a1, -8
-.LBB7_5:                                # %pred.store.continue
-                                        #   in Loop: Header=BB7_3 Depth=1
 	vsadd.du	$vr3, $vr3, $vr1
 	vslt.du	$vr3, $vr3, $vr2
 	vpickev.w	$vr3, $vr3, $vr4
+	vpickve2gr.w	$a4, $vr3, 0
+	andi	$a4, $a4, 1
+	bnez	$a4, .LBB7_7
+# %bb.4:                                # %pred.store.continue
+                                        #   in Loop: Header=BB7_3 Depth=1
 	vpickve2gr.w	$a4, $vr3, 1
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB7_8
-# %bb.6:                                # %pred.store.continue6
+.LBB7_5:                                # %pred.store.continue6
                                         #   in Loop: Header=BB7_3 Depth=1
 	vpickve2gr.w	$a4, $vr3, 2
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB7_9
-.LBB7_7:                                # %pred.store.continue8
+.LBB7_6:                                # %pred.store.continue8
                                         #   in Loop: Header=BB7_3 Depth=1
 	vpickve2gr.w	$a4, $vr3, 3
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB7_2
 	b	.LBB7_10
 	.p2align	4, , 16
+.LBB7_7:                                # %pred.store.if
+                                        #   in Loop: Header=BB7_3 Depth=1
+	st.w	$a0, $a1, -8
+	vpickve2gr.w	$a4, $vr3, 1
+	andi	$a4, $a4, 1
+	beqz	$a4, .LBB7_5
 .LBB7_8:                                # %pred.store.if5
                                         #   in Loop: Header=BB7_3 Depth=1
 	st.w	$a0, $a1, -4
 	vpickve2gr.w	$a4, $vr3, 2
 	andi	$a4, $a4, 1
-	beqz	$a4, .LBB7_7
+	beqz	$a4, .LBB7_6
 .LBB7_9:                                # %pred.store.if7
                                         #   in Loop: Header=BB7_3 Depth=1
 	st.w	$a0, $a1, 0

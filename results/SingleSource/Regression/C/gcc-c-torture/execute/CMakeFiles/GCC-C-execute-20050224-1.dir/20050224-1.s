@@ -149,8 +149,10 @@ main:                                   # @main
 	vand.v	$vr15, $vr15, $vr24
 	vand.v	$vr15, $vr15, $vr10
 	vadd.w	$vr12, $vr12, $vr15
-	vsub.w	$vr5, $vr5, $vr19
-	vsub.w	$vr14, $vr14, $vr20
+	vand.v	$vr15, $vr19, $vr10
+	vadd.w	$vr5, $vr5, $vr15
+	vand.v	$vr15, $vr20, $vr10
+	vadd.w	$vr14, $vr14, $vr15
 	vadd.d	$vr4, $vr4, $vr13
 	addi.d	$t1, $t1, -8
 	vadd.d	$vr6, $vr6, $vr13

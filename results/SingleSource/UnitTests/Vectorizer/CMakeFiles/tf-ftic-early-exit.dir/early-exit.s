@@ -14061,6 +14061,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_2E9_M_invokeERKSt9_Any_d
 .LBB22_6:                               # %.split.loop.exit.i.i.i
 	pcalau12i	$a1, %pc_hi20(.LCPI22_0)
 	vld	$vr1, $a1, %pc_lo12(.LCPI22_0)
+	vslli.h	$vr0, $vr0, 15
+	vsrai.h	$vr0, $vr0, 15
 	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.hu	$vr0, $vr1, $vr0
@@ -15136,6 +15138,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiEEEZ4mainE3$_7E9_M_invokeERKSt9_Any_d
 .LBB32_6:                               # %vector.early.exit
 	pcalau12i	$a1, %pc_hi20(.LCPI32_0)
 	vld	$vr1, $a1, %pc_lo12(.LCPI32_0)
+	vslli.h	$vr0, $vr0, 15
+	vsrai.h	$vr0, $vr0, 15
 	vand.v	$vr0, $vr0, $vr1
 	vbsrl.v	$vr1, $vr0, 8
 	vmax.hu	$vr0, $vr1, $vr0
@@ -16872,6 +16876,7 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_12E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
+	vslli.h	$vr1, $vr1, 15
 	vmskltz.h	$vr2, $vr1
 	vpickve2gr.hu	$a3, $vr2, 0
 	bnez	$a3, .LBB52_6
@@ -16887,7 +16892,6 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_12E9_M_invokeERKSt
 .LBB52_6:                               # %vector.early.exit.check
 	pcalau12i	$a1, %pc_hi20(.LCPI52_0)
 	vld	$vr2, $a1, %pc_lo12(.LCPI52_0)
-	vslli.h	$vr1, $vr1, 15
 	vsrai.h	$vr1, $vr1, 15
 	vand.v	$vr1, $vr1, $vr2
 	vbsrl.v	$vr2, $vr1, 8
@@ -18261,6 +18265,7 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_17E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
+	vslli.h	$vr1, $vr1, 15
 	vmskltz.h	$vr2, $vr1
 	vpickve2gr.hu	$a3, $vr2, 0
 	bnez	$a3, .LBB62_6
@@ -18276,7 +18281,6 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_17E9_M_invokeERKSt
 .LBB62_6:                               # %vector.early.exit.check
 	pcalau12i	$a1, %pc_hi20(.LCPI62_0)
 	vld	$vr2, $a1, %pc_lo12(.LCPI62_0)
-	vslli.h	$vr1, $vr1, 15
 	vsrai.h	$vr1, $vr1, 15
 	vand.v	$vr1, $vr1, $vr2
 	vbsrl.v	$vr2, $vr1, 8
@@ -19643,6 +19647,7 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_22E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
+	vslli.h	$vr1, $vr1, 15
 	vmskltz.h	$vr2, $vr1
 	vpickve2gr.hu	$a3, $vr2, 0
 	bnez	$a3, .LBB72_6
@@ -19658,7 +19663,6 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_22E9_M_invokeERKSt
 .LBB72_6:                               # %vector.early.exit.check
 	pcalau12i	$a1, %pc_hi20(.LCPI72_0)
 	vld	$vr2, $a1, %pc_lo12(.LCPI72_0)
-	vslli.h	$vr1, $vr1, 15
 	vsrai.h	$vr1, $vr1, 15
 	vand.v	$vr1, $vr1, $vr2
 	vbsrl.v	$vr2, $vr1, 8
@@ -24306,26 +24310,27 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	beq	$a3, $t0, .LBB111_31
 .LBB111_5:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslt.du	$vr7, $vr1, $vr3
-	vpickve2gr.w	$t1, $vr7, 0
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr7, $vr7, $vr6
 	vpickev.w	$vr6, $vr0, $vr1
+	vpickve2gr.w	$t1, $vr7, 0
 	andi	$t1, $t1, 1
 	vaddi.wu	$vr6, $vr6, 1
 	bnez	$t1, .LBB111_17
 # %bb.6:                                # %pred.store.continue
                                         #   in Loop: Header=BB111_5 Depth=1
-	vpickve2gr.w	$t2, $vr7, 2
+	vpickve2gr.w	$t2, $vr7, 1
 	andi	$t2, $t2, 1
 	bnez	$t2, .LBB111_18
 .LBB111_7:                              # %pred.store.continue16
                                         #   in Loop: Header=BB111_5 Depth=1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$t3, $vr7, 0
+	vpickve2gr.w	$t3, $vr7, 2
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB111_19
 .LBB111_8:                              # %pred.store.continue18
                                         #   in Loop: Header=BB111_5 Depth=1
-	vpickve2gr.w	$t4, $vr7, 2
+	vpickve2gr.w	$t4, $vr7, 3
 	andi	$t4, $t4, 1
 	bnez	$t4, .LBB111_20
 .LBB111_9:                              # %pred.store.continue20
@@ -24360,22 +24365,21 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
                                         #   in Loop: Header=BB111_5 Depth=1
 	add.d	$t2, $a7, $a3
 	vstelm.w	$vr6, $t2, -8, 0
-	vpickve2gr.w	$t2, $vr7, 2
+	vpickve2gr.w	$t2, $vr7, 1
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB111_7
 .LBB111_18:                             # %pred.store.if15
                                         #   in Loop: Header=BB111_5 Depth=1
 	add.d	$t3, $a7, $a3
 	vstelm.w	$vr6, $t3, -4, 1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$t3, $vr7, 0
+	vpickve2gr.w	$t3, $vr7, 2
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB111_8
 .LBB111_19:                             # %pred.store.if17
                                         #   in Loop: Header=BB111_5 Depth=1
 	add.d	$t4, $a7, $a3
 	vstelm.w	$vr6, $t4, 0, 2
-	vpickve2gr.w	$t4, $vr7, 2
+	vpickve2gr.w	$t4, $vr7, 3
 	andi	$t4, $t4, 1
 	beqz	$t4, .LBB111_9
 .LBB111_20:                             # %pred.store.if19
@@ -24581,26 +24585,27 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
 	beq	$a0, $a4, .LBB114_31
 .LBB114_5:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslt.du	$vr7, $vr1, $vr3
-	vpickve2gr.w	$a5, $vr7, 0
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr7, $vr7, $vr6
 	vpickev.w	$vr6, $vr0, $vr1
+	vpickve2gr.w	$a5, $vr7, 0
 	andi	$a5, $a5, 1
 	vaddi.wu	$vr6, $vr6, 1
 	bnez	$a5, .LBB114_17
 # %bb.6:                                # %pred.store.continue
                                         #   in Loop: Header=BB114_5 Depth=1
-	vpickve2gr.w	$a6, $vr7, 2
+	vpickve2gr.w	$a6, $vr7, 1
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB114_18
 .LBB114_7:                              # %pred.store.continue14
                                         #   in Loop: Header=BB114_5 Depth=1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$a7, $vr7, 0
+	vpickve2gr.w	$a7, $vr7, 2
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB114_19
 .LBB114_8:                              # %pred.store.continue16
                                         #   in Loop: Header=BB114_5 Depth=1
-	vpickve2gr.w	$t0, $vr7, 2
+	vpickve2gr.w	$t0, $vr7, 3
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB114_20
 .LBB114_9:                              # %pred.store.continue18
@@ -24635,22 +24640,21 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj2ELj511ELj3E
                                         #   in Loop: Header=BB114_5 Depth=1
 	add.d	$a6, $a3, $a0
 	vstelm.w	$vr6, $a6, -8, 0
-	vpickve2gr.w	$a6, $vr7, 2
+	vpickve2gr.w	$a6, $vr7, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB114_7
 .LBB114_18:                             # %pred.store.if13
                                         #   in Loop: Header=BB114_5 Depth=1
 	add.d	$a7, $a3, $a0
 	vstelm.w	$vr6, $a7, -4, 1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$a7, $vr7, 0
+	vpickve2gr.w	$a7, $vr7, 2
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB114_8
 .LBB114_19:                             # %pred.store.if15
                                         #   in Loop: Header=BB114_5 Depth=1
 	add.d	$t0, $a3, $a0
 	vstelm.w	$vr6, $t0, 0, 2
-	vpickve2gr.w	$t0, $vr7, 2
+	vpickve2gr.w	$t0, $vr7, 3
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB114_9
 .LBB114_20:                             # %pred.store.if17
@@ -27381,26 +27385,27 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	beq	$a3, $t0, .LBB140_31
 .LBB140_5:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslt.du	$vr7, $vr1, $vr3
-	vpickve2gr.w	$t1, $vr7, 0
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr7, $vr7, $vr6
 	vpickev.w	$vr6, $vr0, $vr1
+	vpickve2gr.w	$t1, $vr7, 0
 	andi	$t1, $t1, 1
 	vaddi.wu	$vr6, $vr6, 1
 	bnez	$t1, .LBB140_17
 # %bb.6:                                # %pred.store.continue
                                         #   in Loop: Header=BB140_5 Depth=1
-	vpickve2gr.w	$t2, $vr7, 2
+	vpickve2gr.w	$t2, $vr7, 1
 	andi	$t2, $t2, 1
 	bnez	$t2, .LBB140_18
 .LBB140_7:                              # %pred.store.continue16
                                         #   in Loop: Header=BB140_5 Depth=1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$t3, $vr7, 0
+	vpickve2gr.w	$t3, $vr7, 2
 	andi	$t3, $t3, 1
 	bnez	$t3, .LBB140_19
 .LBB140_8:                              # %pred.store.continue18
                                         #   in Loop: Header=BB140_5 Depth=1
-	vpickve2gr.w	$t4, $vr7, 2
+	vpickve2gr.w	$t4, $vr7, 3
 	andi	$t4, $t4, 1
 	bnez	$t4, .LBB140_20
 .LBB140_9:                              # %pred.store.continue20
@@ -27435,22 +27440,21 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
                                         #   in Loop: Header=BB140_5 Depth=1
 	add.d	$t2, $a7, $a3
 	vstelm.w	$vr6, $t2, -8, 0
-	vpickve2gr.w	$t2, $vr7, 2
+	vpickve2gr.w	$t2, $vr7, 1
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB140_7
 .LBB140_18:                             # %pred.store.if15
                                         #   in Loop: Header=BB140_5 Depth=1
 	add.d	$t3, $a7, $a3
 	vstelm.w	$vr6, $t3, -4, 1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$t3, $vr7, 0
+	vpickve2gr.w	$t3, $vr7, 2
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB140_8
 .LBB140_19:                             # %pred.store.if17
                                         #   in Loop: Header=BB140_5 Depth=1
 	add.d	$t4, $a7, $a3
 	vstelm.w	$vr6, $t4, 0, 2
-	vpickve2gr.w	$t4, $vr7, 2
+	vpickve2gr.w	$t4, $vr7, 3
 	andi	$t4, $t4, 1
 	beqz	$t4, .LBB140_9
 .LBB140_20:                             # %pred.store.if19
@@ -27656,26 +27660,27 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
 	beq	$a0, $a4, .LBB143_31
 .LBB143_5:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vslt.du	$vr7, $vr1, $vr3
-	vpickve2gr.w	$a5, $vr7, 0
+	vslt.du	$vr6, $vr1, $vr3
+	vslt.du	$vr7, $vr0, $vr3
+	vpickev.w	$vr7, $vr7, $vr6
 	vpickev.w	$vr6, $vr0, $vr1
+	vpickve2gr.w	$a5, $vr7, 0
 	andi	$a5, $a5, 1
 	vaddi.wu	$vr6, $vr6, 1
 	bnez	$a5, .LBB143_17
 # %bb.6:                                # %pred.store.continue
                                         #   in Loop: Header=BB143_5 Depth=1
-	vpickve2gr.w	$a6, $vr7, 2
+	vpickve2gr.w	$a6, $vr7, 1
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB143_18
 .LBB143_7:                              # %pred.store.continue14
                                         #   in Loop: Header=BB143_5 Depth=1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$a7, $vr7, 0
+	vpickve2gr.w	$a7, $vr7, 2
 	andi	$a7, $a7, 1
 	bnez	$a7, .LBB143_19
 .LBB143_8:                              # %pred.store.continue16
                                         #   in Loop: Header=BB143_5 Depth=1
-	vpickve2gr.w	$t0, $vr7, 2
+	vpickve2gr.w	$t0, $vr7, 3
 	andi	$t0, $t0, 1
 	bnez	$t0, .LBB143_20
 .LBB143_9:                              # %pred.store.continue18
@@ -27710,22 +27715,21 @@ _ZNSt17_Function_handlerIFvPiS0_S0_EZL24checkVectorFunctionMultiIiLj3ELj511ELj17
                                         #   in Loop: Header=BB143_5 Depth=1
 	add.d	$a6, $a3, $a0
 	vstelm.w	$vr6, $a6, -8, 0
-	vpickve2gr.w	$a6, $vr7, 2
+	vpickve2gr.w	$a6, $vr7, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB143_7
 .LBB143_18:                             # %pred.store.if13
                                         #   in Loop: Header=BB143_5 Depth=1
 	add.d	$a7, $a3, $a0
 	vstelm.w	$vr6, $a7, -4, 1
-	vslt.du	$vr7, $vr0, $vr3
-	vpickve2gr.w	$a7, $vr7, 0
+	vpickve2gr.w	$a7, $vr7, 2
 	andi	$a7, $a7, 1
 	beqz	$a7, .LBB143_8
 .LBB143_19:                             # %pred.store.if15
                                         #   in Loop: Header=BB143_5 Depth=1
 	add.d	$t0, $a3, $a0
 	vstelm.w	$vr6, $t0, 0, 2
-	vpickve2gr.w	$t0, $vr7, 2
+	vpickve2gr.w	$t0, $vr7, 3
 	andi	$t0, $t0, 1
 	beqz	$t0, .LBB143_9
 .LBB143_20:                             # %pred.store.if17
@@ -30861,7 +30865,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a0, $vr2, 0
 	beqz	$a0, .LBB168_4
 # %bb.3:
@@ -30879,7 +30884,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 8
 	bnez	$a1, .LBB168_11
@@ -30895,7 +30901,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 16
 	bnez	$a1, .LBB168_11
@@ -30911,7 +30918,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 24
 	bnez	$a1, .LBB168_11
@@ -30927,7 +30935,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 32
 	bnez	$a1, .LBB168_11
@@ -30943,7 +30952,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 40
 	bnez	$a1, .LBB168_11
@@ -30959,7 +30969,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 48
 	bnez	$a1, .LBB168_11
@@ -30975,7 +30986,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_52E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 56
 	beqz	$a1, .LBB168_14
@@ -35668,7 +35680,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a0, $vr2, 0
 	beqz	$a0, .LBB197_4
 # %bb.3:
@@ -35686,7 +35699,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 8
 	bnez	$a1, .LBB197_11
@@ -35702,7 +35716,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 16
 	bnez	$a1, .LBB197_11
@@ -35718,7 +35733,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 24
 	bnez	$a1, .LBB197_11
@@ -35734,7 +35750,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 32
 	bnez	$a1, .LBB197_11
@@ -35750,7 +35767,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 40
 	bnez	$a1, .LBB197_11
@@ -35766,7 +35784,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 48
 	bnez	$a1, .LBB197_11
@@ -35782,7 +35801,8 @@ _ZNSt17_Function_handlerIFjSt8functionIFvPiS1_S1_EEEZ4mainE4$_62E9_M_invokeERKSt
 	vseq.w	$vr2, $vr2, $vr4
 	vpickev.h	$vr1, $vr2, $vr1
 	vor.v	$vr1, $vr0, $vr1
-	vmskltz.h	$vr2, $vr1
+	vslli.h	$vr2, $vr1, 15
+	vmskltz.h	$vr2, $vr2
 	vpickve2gr.hu	$a1, $vr2, 0
 	ori	$a0, $zero, 56
 	beqz	$a1, .LBB197_14

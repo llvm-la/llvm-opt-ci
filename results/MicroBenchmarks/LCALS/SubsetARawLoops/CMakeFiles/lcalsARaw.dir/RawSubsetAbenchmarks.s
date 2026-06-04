@@ -777,6 +777,7 @@ _ZL18BM_ENERGY_CALC_RAWRN9benchmark5StateE: # @_ZL18BM_ENERGY_CALC_RAWRN9benchma
 	move	$a5, $s3
 	sltu	$a4, $s6, $a0
 	and	$a3, $a3, $a4
+	vslli.w	$vr0, $vr0, 31
 	vmskltz.w	$vr0, $vr0
 	vpickve2gr.hu	$a4, $vr0, 0
 	sltu	$a4, $zero, $a4

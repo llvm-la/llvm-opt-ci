@@ -34,47 +34,48 @@ f:                                      # @f
 	addi.d	$sp, $sp, -16
 	vinsgr2vr.d	$vr0, $a6, 0
 	vinsgr2vr.d	$vr0, $a7, 1
-	vinsgr2vr.d	$vr1, $a4, 0
-	pcalau12i	$a4, %pc_hi20(.LCPI1_0)
-	vld	$vr2, $a4, %pc_lo12(.LCPI1_0)
-	vinsgr2vr.d	$vr1, $a5, 1
+	pcalau12i	$a6, %pc_hi20(.LCPI1_0)
+	vld	$vr1, $a6, %pc_lo12(.LCPI1_0)
+	vinsgr2vr.d	$vr2, $a4, 0
 	vinsgr2vr.d	$vr3, $a0, 0
 	vinsgr2vr.d	$vr3, $a1, 1
-	vseq.d	$vr2, $vr3, $vr2
+	vseq.d	$vr1, $vr3, $vr1
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
 	vld	$vr3, $a0, %pc_lo12(.LCPI1_1)
 	vinsgr2vr.d	$vr4, $a2, 0
 	vinsgr2vr.d	$vr4, $a3, 1
-	vxori.b	$vr2, $vr2, 255
+	vxori.b	$vr1, $vr1, 255
 	vseq.d	$vr3, $vr4, $vr3
 	vxori.b	$vr3, $vr3, 255
-	vpickev.w	$vr3, $vr3, $vr2
-	vpickve2gr.h	$a0, $vr3, 2
-	andi	$a0, $a0, 1
-	vpickve2gr.h	$a1, $vr2, 0
-	bstrins.d	$a1, $a0, 63, 1
-	vpickve2gr.h	$a0, $vr3, 4
-	bstrins.d	$a1, $a0, 2, 2
-	vpickve2gr.h	$a0, $vr3, 6
-	pcalau12i	$a2, %pc_hi20(.LCPI1_2)
-	vld	$vr2, $a2, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI1_3)
-	vld	$vr3, $a2, %pc_lo12(.LCPI1_3)
-	bstrins.d	$a1, $a0, 3, 3
-	vseq.d	$vr1, $vr1, $vr2
-	vxori.b	$vr1, $vr1, 255
-	vseq.d	$vr0, $vr0, $vr3
+	vpickev.w	$vr1, $vr3, $vr1
+	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
+	vld	$vr3, $a0, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
+	vld	$vr4, $a0, %pc_lo12(.LCPI1_3)
+	vinsgr2vr.d	$vr2, $a5, 1
+	vseq.d	$vr2, $vr2, $vr3
+	vxori.b	$vr2, $vr2, 255
+	vseq.d	$vr0, $vr0, $vr4
 	vxori.b	$vr0, $vr0, 255
-	vpickev.w	$vr0, $vr0, $vr1
+	vpickev.w	$vr0, $vr0, $vr2
+	vpickev.h	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a0, $vr0, 0
-	bstrins.d	$a1, $a0, 4, 4
-	vpickve2gr.h	$a0, $vr0, 2
-	bstrins.d	$a1, $a0, 5, 5
-	vpickve2gr.h	$a0, $vr0, 4
-	andi	$a0, $a0, 1
-	slli.d	$a0, $a0, 6
-	or	$a0, $a1, $a0
+	vpickve2gr.h	$a1, $vr0, 1
+	andi	$a1, $a1, 1
+	bstrins.d	$a0, $a1, 63, 1
+	vpickve2gr.h	$a1, $vr0, 2
+	bstrins.d	$a0, $a1, 2, 2
+	vpickve2gr.h	$a1, $vr0, 3
+	bstrins.d	$a0, $a1, 3, 3
+	vpickve2gr.h	$a1, $vr0, 4
+	bstrins.d	$a0, $a1, 4, 4
+	vpickve2gr.h	$a1, $vr0, 5
+	bstrins.d	$a0, $a1, 5, 5
 	vpickve2gr.h	$a1, $vr0, 6
+	andi	$a1, $a1, 1
+	slli.d	$a1, $a1, 6
+	or	$a0, $a0, $a1
+	vpickve2gr.h	$a1, $vr0, 7
 	slli.d	$a1, $a1, 7
 	or	$a0, $a0, $a1
 	andi	$a0, $a0, 255

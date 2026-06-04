@@ -688,47 +688,33 @@ AesCtr_Code:                            # @AesCtr_Code
 	ld.wu	$a1, $sp, 52
 	vinsgr2vr.d	$vr0, $a0, 0
 	vreplvei.w	$vr1, $vr0, 1
-	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
-	vsrl.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$a0, $vr1, 3
-	vpickve2gr.w	$a2, $vr1, 2
-	vpickve2gr.w	$a3, $vr1, 1
-	vpickve2gr.w	$a4, $vr1, 0
-	vld	$vr1, $s1, 0
-	addi.d	$a5, $s1, 16
-	ld.wu	$a6, $sp, 48
-	srli.d	$a7, $a1, 24
-	srli.d	$t0, $a1, 16
-	srli.d	$t1, $a1, 8
-	srli.d	$t2, $a6, 24
-	srli.d	$t3, $a6, 16
-	srli.d	$t4, $a6, 8
 	vreplvei.w	$vr0, $vr0, 0
+	vld	$vr2, $sp, 16                   # 16-byte Folded Reload
 	vsrl.w	$vr0, $vr0, $vr2
-	vpickve2gr.w	$t5, $vr0, 3
-	vpickve2gr.w	$t6, $vr0, 2
-	vpickve2gr.w	$t7, $vr0, 1
-	vpickve2gr.w	$t8, $vr0, 0
-	vinsgr2vr.b	$vr0, $t8, 0
-	vinsgr2vr.b	$vr0, $t7, 1
-	vinsgr2vr.b	$vr0, $t6, 2
-	vinsgr2vr.b	$vr0, $t5, 3
-	vinsgr2vr.b	$vr0, $a4, 4
-	vinsgr2vr.b	$vr0, $a3, 5
-	vinsgr2vr.b	$vr0, $a2, 6
-	vinsgr2vr.b	$vr0, $a0, 7
-	vinsgr2vr.b	$vr0, $a6, 8
-	vinsgr2vr.b	$vr0, $t4, 9
-	vinsgr2vr.b	$vr0, $t3, 10
-	vinsgr2vr.b	$vr0, $t2, 11
+	vsrl.w	$vr1, $vr1, $vr2
+	vpickev.h	$vr0, $vr1, $vr0
+	vld	$vr1, $s1, 0
+	addi.d	$a0, $s1, 16
+	ld.wu	$a2, $sp, 48
+	srli.d	$a3, $a1, 24
+	srli.d	$a4, $a1, 16
+	srli.d	$a5, $a1, 8
+	srli.d	$a6, $a2, 24
+	srli.d	$a7, $a2, 16
+	srli.d	$t0, $a2, 8
+	vpickev.b	$vr0, $vr0, $vr0
+	vinsgr2vr.b	$vr0, $a2, 8
+	vinsgr2vr.b	$vr0, $t0, 9
+	vinsgr2vr.b	$vr0, $a7, 10
+	vinsgr2vr.b	$vr0, $a6, 11
 	vinsgr2vr.b	$vr0, $a1, 12
-	vinsgr2vr.b	$vr0, $t1, 13
-	vinsgr2vr.b	$vr0, $t0, 14
-	vinsgr2vr.b	$vr0, $a7, 15
+	vinsgr2vr.b	$vr0, $a5, 13
+	vinsgr2vr.b	$vr0, $a4, 14
+	vinsgr2vr.b	$vr0, $a3, 15
 	vxor.v	$vr0, $vr1, $vr0
 	addi.d	$fp, $fp, -1
 	vst	$vr0, $s1, 0
-	move	$s1, $a5
+	move	$s1, $a0
 	beqz	$fp, .LBB3_5
 .LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	ld.wu	$a0, $s0, 0
