@@ -1,0 +1,1940 @@
+	.file	"btHeightfieldTerrainShape.cpp"
+	.text
+	.globl	_ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb # -- Begin function _ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb
+	.p2align	2
+	.prefalign	5, .Lfunc_end0, nop
+	.type	_ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb,@function
+_ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb: # @_ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb
+	.cfi_startproc
+# %bb.0:
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
+	.cfi_offset 1, -8
+	.cfi_offset 22, -16
+	.cfi_offset 23, -24
+	.cfi_offset 24, -32
+	.cfi_offset 25, -40
+	.cfi_offset 26, -48
+	.cfi_offset 27, -56
+	.cfi_offset 28, -64
+	.cfi_offset 56, -72
+	.cfi_offset 57, -80
+	.cfi_offset 58, -88
+	move	$fp, $a6
+	move	$s0, $a5
+	move	$s1, $a4
+	fmov.s	$fs0, $fa2
+	fmov.s	$fs1, $fa1
+	fmov.s	$fs2, $fa0
+	move	$s2, $a3
+	move	$s3, $a2
+	move	$s4, $a1
+	move	$s5, $a0
+	pcaddu18i	$ra, %call36(_ZN14btConcaveShapeC2Ev)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(_ZTV25btHeightfieldTerrainShape+16)
+	addi.d	$a0, $a0, %pc_lo12(_ZTV25btHeightfieldTerrainShape+16)
+	st.d	$a0, $s5, 0
+	move	$a0, $s5
+	move	$a1, $s4
+	move	$a2, $s3
+	move	$a3, $s2
+	fmov.s	$fa0, $fs2
+	fmov.s	$fa1, $fs1
+	fmov.s	$fa2, $fs0
+	move	$a4, $s1
+	move	$a5, $s0
+	move	$a6, $fp
+	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
+	pcaddu18i	$t8, %call36(_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb)
+	jr	$t8
+.Lfunc_end0:
+	.size	_ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb, .Lfunc_end0-_ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb
+	.cfi_endproc
+                                        # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb
+.LCPI1_0:
+	.word	0x3f800000                      # float 1
+	.word	0x3f800000                      # float 1
+	.word	0x3f800000                      # float 1
+	.word	0x00000000                      # float 0
+	.text
+	.globl	_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb
+	.p2align	2
+	.prefalign	5, .Lfunc_end1, nop
+	.type	_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb,@function
+_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb: # @_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb
+# %bb.0:
+	ori	$a7, $zero, 24
+	st.w	$a7, $a0, 8
+	st.w	$a1, $a0, 76
+	st.w	$a2, $a0, 80
+	fst.s	$fa1, $a0, 84
+	fst.s	$fa2, $a0, 88
+	addi.d	$a1, $a1, -1
+	movgr2fr.w	$fa3, $a1
+	ffint.s.w	$fa4, $fa3
+	fst.s	$fa4, $a0, 92
+	addi.d	$a1, $a2, -1
+	movgr2fr.w	$fa3, $a1
+	ffint.s.w	$fa3, $fa3
+	fst.s	$fa3, $a0, 96
+	fst.s	$fa0, $a0, 100
+	st.d	$a3, $a0, 104
+	st.w	$a5, $a0, 112
+	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_0)
+	st.b	$a6, $a0, 116
+	st.b	$zero, $a0, 117
+	st.w	$a4, $a0, 120
+	vst	$vr0, $a0, 124
+	beqz	$a4, .LBB1_5
+# %bb.1:
+	ori	$a1, $zero, 1
+	beq	$a4, $a1, .LBB1_4
+# %bb.2:
+	ori	$a1, $zero, 2
+	bne	$a4, $a1, .LBB1_6
+# %bb.3:
+	st.d	$zero, $a0, 28
+	fst.s	$fa1, $a0, 36
+	st.w	$zero, $a0, 40
+	fst.s	$fa4, $a0, 44
+	fst.s	$fa3, $a0, 48
+	fst.s	$fa2, $a0, 52
+	movgr2fr.w	$fa6, $zero
+	st.w	$zero, $a0, 56
+	fmov.s	$fa5, $fa2
+	fmov.s	$fa0, $fa1
+	fmov.s	$fa2, $fa4
+	fmov.s	$fa1, $fa6
+	b	.LBB1_7
+.LBB1_4:
+	st.w	$zero, $a0, 28
+	fst.s	$fa1, $a0, 32
+	st.d	$zero, $a0, 36
+	fst.s	$fa4, $a0, 44
+	fst.s	$fa2, $a0, 48
+	fst.s	$fa3, $a0, 52
+	movgr2fr.w	$fa0, $zero
+	st.w	$zero, $a0, 56
+	fmov.s	$fa5, $fa3
+	fmov.s	$fa3, $fa2
+	fmov.s	$fa6, $fa1
+	fmov.s	$fa2, $fa4
+	fmov.s	$fa1, $fa0
+	b	.LBB1_7
+.LBB1_5:
+	fst.s	$fa1, $a0, 28
+	st.d	$zero, $a0, 32
+	st.w	$zero, $a0, 40
+	fst.s	$fa2, $a0, 44
+	fst.s	$fa4, $a0, 48
+	fst.s	$fa3, $a0, 52
+	movgr2fr.w	$fa0, $zero
+	st.w	$zero, $a0, 56
+	fmov.s	$fa5, $fa3
+	fmov.s	$fa3, $fa4
+	fmov.s	$fa6, $fa0
+	b	.LBB1_7
+.LBB1_6:                                # %._crit_edge
+	fld.s	$fa1, $a0, 28
+	fld.s	$fa2, $a0, 44
+	fld.s	$fa6, $a0, 32
+	fld.s	$fa3, $a0, 48
+	fld.s	$fa0, $a0, 36
+	fld.s	$fa5, $a0, 52
+.LBB1_7:
+	fadd.s	$fa1, $fa1, $fa2
+	fadd.s	$fa2, $fa6, $fa3
+	fadd.s	$fa0, $fa0, $fa5
+	vldi	$vr3, -1184
+	fmul.s	$fa1, $fa1, $fa3
+	fmul.s	$fa2, $fa2, $fa3
+	fmul.s	$fa0, $fa0, $fa3
+	movfr2gr.s	$a1, $fa1
+	movfr2gr.s	$a2, $fa2
+	bstrins.d	$a1, $a2, 63, 32
+	movfr2gr.s	$a2, $fa0
+	bstrpick.d	$a2, $a2, 31, 0
+	st.d	$a1, $a0, 60
+	st.d	$a2, $a0, 68
+	ret
+.Lfunc_end1:
+	.size	_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb, .Lfunc_end1-_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb
+                                        # -- End function
+	.globl	_ZN25btHeightfieldTerrainShapeC2EiiPvfibb # -- Begin function _ZN25btHeightfieldTerrainShapeC2EiiPvfibb
+	.p2align	2
+	.prefalign	5, .Lfunc_end2, nop
+	.type	_ZN25btHeightfieldTerrainShapeC2EiiPvfibb,@function
+_ZN25btHeightfieldTerrainShapeC2EiiPvfibb: # @_ZN25btHeightfieldTerrainShapeC2EiiPvfibb
+	.cfi_startproc
+# %bb.0:
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
+	.cfi_offset 1, -8
+	.cfi_offset 22, -16
+	.cfi_offset 23, -24
+	.cfi_offset 24, -32
+	.cfi_offset 25, -40
+	.cfi_offset 26, -48
+	.cfi_offset 27, -56
+	.cfi_offset 28, -64
+	.cfi_offset 56, -72
+	move	$fp, $a6
+	move	$s0, $a5
+	move	$s1, $a4
+	fmov.s	$fs0, $fa0
+	move	$s2, $a3
+	move	$s3, $a2
+	move	$s4, $a1
+	move	$s5, $a0
+	pcaddu18i	$ra, %call36(_ZN14btConcaveShapeC2Ev)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(_ZTV25btHeightfieldTerrainShape+16)
+	addi.d	$a0, $a0, %pc_lo12(_ZTV25btHeightfieldTerrainShape+16)
+	lu12i.w	$a1, 292863
+	ori	$a1, $a1, 3840
+	movgr2fr.w	$fa0, $a1
+	ori	$a1, $zero, 5
+	masknez	$a5, $a1, $s0
+	fdiv.s	$fa0, $fs0, $fa0
+	movgr2fr.w	$fa1, $zero
+	st.d	$a0, $s5, 0
+	move	$a0, $s5
+	move	$a1, $s4
+	move	$a2, $s3
+	move	$a3, $s2
+	fmov.s	$fa2, $fs0
+	move	$a4, $s1
+	move	$a6, $fp
+	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
+	pcaddu18i	$t8, %call36(_ZN25btHeightfieldTerrainShape10initializeEiiPvfffi14PHY_ScalarTypeb)
+	jr	$t8
+.Lfunc_end2:
+	.size	_ZN25btHeightfieldTerrainShapeC2EiiPvfibb, .Lfunc_end2-_ZN25btHeightfieldTerrainShapeC2EiiPvfibb
+	.cfi_endproc
+                                        # -- End function
+	.globl	_ZN25btHeightfieldTerrainShapeD2Ev # -- Begin function _ZN25btHeightfieldTerrainShapeD2Ev
+	.p2align	2
+	.prefalign	5, .Lfunc_end3, nop
+	.type	_ZN25btHeightfieldTerrainShapeD2Ev,@function
+_ZN25btHeightfieldTerrainShapeD2Ev:     # @_ZN25btHeightfieldTerrainShapeD2Ev
+	.cfi_startproc
+# %bb.0:
+	pcaddu18i	$t8, %call36(_ZN14btConcaveShapeD2Ev)
+	jr	$t8
+.Lfunc_end3:
+	.size	_ZN25btHeightfieldTerrainShapeD2Ev, .Lfunc_end3-_ZN25btHeightfieldTerrainShapeD2Ev
+	.cfi_endproc
+                                        # -- End function
+	.globl	_ZN25btHeightfieldTerrainShapeD0Ev # -- Begin function _ZN25btHeightfieldTerrainShapeD0Ev
+	.p2align	2
+	.prefalign	5, .Lfunc_end4, nop
+	.type	_ZN25btHeightfieldTerrainShapeD0Ev,@function
+_ZN25btHeightfieldTerrainShapeD0Ev:     # @_ZN25btHeightfieldTerrainShapeD0Ev
+.Lfunc_begin0:
+	.cfi_startproc
+	.cfi_personality 155, DW.ref.__gxx_personality_v0
+	.cfi_lsda 27, .Lexception0
+# %bb.0:
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	.cfi_offset 1, -8
+	.cfi_offset 22, -16
+	.cfi_offset 23, -24
+	move	$fp, $a0
+.Ltmp0:                                 # EH_LABEL
+	pcaddu18i	$ra, %call36(_ZN14btConcaveShapeD2Ev)
+	jirl	$ra, $ra, 0
+.Ltmp1:                                 # EH_LABEL
+# %bb.1:                                # %_ZN25btHeightfieldTerrainShapeD2Ev.exit
+	move	$a0, $fp
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
+	pcaddu18i	$t8, %call36(_ZdlPv)
+	jr	$t8
+.LBB4_2:
+.Ltmp2:                                 # EH_LABEL
+	move	$s0, $a0
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(_ZdlPv)
+	jirl	$ra, $ra, 0
+	move	$a0, $s0
+	pcaddu18i	$ra, %call36(_Unwind_Resume)
+	jirl	$ra, $ra, 0
+.Lfunc_end4:
+	.size	_ZN25btHeightfieldTerrainShapeD0Ev, .Lfunc_end4-_ZN25btHeightfieldTerrainShapeD0Ev
+	.cfi_endproc
+	.section	.gcc_except_table,"a",@progbits
+	.p2align	2, 0x0
+GCC_except_table4:
+.Lexception0:
+	.byte	255                             # @LPStart Encoding = omit
+	.byte	255                             # @TType Encoding = omit
+	.byte	1                               # Call site Encoding = uleb128
+	.uleb128 .Lcst_end0-.Lcst_begin0
+.Lcst_begin0:
+	.uleb128 .Ltmp0-.Lfunc_begin0           # >> Call Site 1 <<
+	.uleb128 .Ltmp1-.Ltmp0                  #   Call between .Ltmp0 and .Ltmp1
+	.uleb128 .Ltmp2-.Lfunc_begin0           #     jumps to .Ltmp2
+	.byte	0                               #   On action: cleanup
+	.uleb128 .Ltmp1-.Lfunc_begin0           # >> Call Site 2 <<
+	.uleb128 .Lfunc_end4-.Ltmp1             #   Call between .Ltmp1 and .Lfunc_end4
+	.byte	0                               #     has no landing pad
+	.byte	0                               #   On action: cleanup
+.Lcst_end0:
+	.p2align	2, 0x0
+                                        # -- End function
+	.text
+	.globl	_ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_ # -- Begin function _ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_
+	.p2align	2
+	.prefalign	5, .Lfunc_end5, nop
+	.type	_ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_,@function
+_ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_: # @_ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_
+	.cfi_startproc
+# %bb.0:
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 16                   # 8-byte Folded Spill
+	.cfi_offset 1, -8
+	.cfi_offset 22, -16
+	.cfi_offset 23, -24
+	.cfi_offset 24, -32
+	.cfi_offset 56, -40
+	.cfi_offset 57, -48
+	.cfi_offset 58, -56
+	.cfi_offset 59, -64
+	.cfi_offset 60, -72
+	.cfi_offset 61, -80
+	.cfi_offset 62, -88
+	.cfi_offset 63, -96
+	move	$s1, $a0
+	fld.s	$fa0, $a0, 44
+	fld.s	$fa1, $a0, 28
+	fld.s	$fa2, $a0, 48
+	fld.s	$fa3, $a0, 32
+	move	$fp, $a3
+	move	$s0, $a2
+	fsub.s	$fa0, $fa0, $fa1
+	fsub.s	$fa1, $fa2, $fa3
+	fld.s	$fa2, $a0, 52
+	fld.s	$fa3, $a0, 36
+	fld.s	$fa4, $a0, 124
+	fld.s	$fa5, $a0, 128
+	fld.s	$fa6, $a0, 132
+	fsub.s	$fa2, $fa2, $fa3
+	fmul.s	$fa0, $fa0, $fa4
+	fmul.s	$fa1, $fa1, $fa5
+	fmul.s	$fa2, $fa2, $fa6
+	vldi	$vr3, -1184
+	fld.s	$fa4, $a1, 0
+	fmul.s	$fa0, $fa0, $fa3
+	fmul.s	$fa1, $fa1, $fa3
+	fmul.s	$fa2, $fa2, $fa3
+	fabs.s	$fa3, $fa4
+	fld.s	$fa4, $a1, 4
+	fld.s	$fa5, $a1, 8
+	fld.s	$fa6, $a1, 16
+	fld.s	$fa7, $a1, 20
+	fabs.s	$fa4, $fa4
+	fabs.s	$fa5, $fa5
+	fabs.s	$fa6, $fa6
+	fabs.s	$fa7, $fa7
+	fld.s	$ft0, $a1, 24
+	fld.s	$ft1, $a1, 32
+	fld.s	$ft2, $a1, 36
+	fld.s	$ft3, $a1, 40
+	fabs.s	$ft0, $ft0
+	fabs.s	$ft1, $ft1
+	fabs.s	$ft2, $ft2
+	fabs.s	$ft3, $ft3
+	fld.s	$fs2, $a1, 48
+	fld.s	$fs3, $a1, 52
+	fld.s	$fs4, $a1, 56
+	fmul.s	$fa4, $fa1, $fa4
+	fmadd.s	$fa3, $fa3, $fa0, $fa4
+	fmadd.s	$fs5, $fa5, $fa2, $fa3
+	ld.d	$a0, $a0, 0
+	fmul.s	$fa3, $fa1, $fa7
+	fmadd.s	$fa3, $fa6, $fa0, $fa3
+	fmadd.s	$fs6, $ft0, $fa2, $fa3
+	ld.d	$a1, $a0, 88
+	fmul.s	$fa1, $fa1, $ft2
+	fmadd.s	$fa0, $ft1, $fa0, $fa1
+	fmadd.s	$fs7, $ft3, $fa2, $fa0
+	move	$a0, $s1
+	jirl	$ra, $a1, 0
+	ld.d	$a0, $s1, 0
+	ld.d	$a1, $a0, 88
+	fmov.s	$fs0, $fa0
+	move	$a0, $s1
+	jirl	$ra, $a1, 0
+	ld.d	$a0, $s1, 0
+	ld.d	$a1, $a0, 88
+	fmov.s	$fs1, $fa0
+	move	$a0, $s1
+	jirl	$ra, $a1, 0
+	fadd.s	$fa1, $fs5, $fs0
+	fadd.s	$fa2, $fs6, $fs1
+	fadd.s	$fa0, $fs7, $fa0
+	fsub.s	$fa3, $fs4, $fa0
+	movfr2gr.s	$a0, $fa3
+	bstrpick.d	$a0, $a0, 31, 0
+	st.d	$a0, $s0, 8
+	fadd.s	$fa0, $fs4, $fa0
+	fadd.s	$fa3, $fs2, $fa1
+	fsub.s	$fa1, $fs2, $fa1
+	fadd.s	$fa4, $fs3, $fa2
+	fsub.s	$fa2, $fs3, $fa2
+	vextrins.w	$vr1, $vr3, 16
+	vextrins.w	$vr2, $vr4, 16
+	vshuf4i.w	$vr2, $vr2, 16
+	vslli.d	$vr2, $vr2, 32
+	vext2xv.du.wu	$xr1, $xr1
+	vor.v	$vr1, $vr2, $vr1
+	vstelm.d	$vr1, $s0, 0, 0
+	movfr2gr.s	$a0, $fa0
+	bstrpick.d	$a0, $a0, 31, 0
+	vstelm.d	$vr1, $fp, 0, 1
+	st.d	$a0, $fp, 8
+	fld.d	$fs7, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 72                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
+	ret
+.Lfunc_end5:
+	.size	_ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_, .Lfunc_end5-_ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_
+	.cfi_endproc
+                                        # -- End function
+	.globl	_ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii # -- Begin function _ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii
+	.p2align	2
+	.prefalign	5, .Lfunc_end6, nop
+	.type	_ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii,@function
+_ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii: # @_ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii
+# %bb.0:
+	ld.w	$a3, $a0, 112
+	ori	$a4, $zero, 5
+	beq	$a3, $a4, .LBB6_5
+# %bb.1:
+	ori	$a4, $zero, 3
+	beq	$a3, $a4, .LBB6_4
+# %bb.2:
+	bnez	$a3, .LBB6_7
+# %bb.3:
+	ld.w	$a3, $a0, 76
+	ld.d	$a0, $a0, 104
+	mul.d	$a2, $a3, $a2
+	add.w	$a1, $a2, $a1
+	slli.d	$a1, $a1, 2
+	fldx.s	$fa0, $a0, $a1
+	ret
+.LBB6_4:
+	ld.w	$a3, $a0, 76
+	ld.d	$a4, $a0, 104
+	mul.d	$a2, $a3, $a2
+	add.w	$a1, $a2, $a1
+	slli.d	$a1, $a1, 1
+	ldx.h	$a1, $a4, $a1
+	b	.LBB6_6
+.LBB6_5:
+	ld.w	$a3, $a0, 76
+	ld.d	$a4, $a0, 104
+	mul.d	$a2, $a3, $a2
+	add.w	$a1, $a2, $a1
+	ldx.bu	$a1, $a4, $a1
+.LBB6_6:
+	fld.s	$fa0, $a0, 100
+	movgr2fr.w	$fa1, $a1
+	ffint.s.w	$fa1, $fa1
+	fmul.s	$fa0, $fa0, $fa1
+	ret
+.LBB6_7:
+	movgr2fr.w	$fa0, $zero
+	ret
+.Lfunc_end6:
+	.size	_ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii, .Lfunc_end6-_ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii
+                                        # -- End function
+	.globl	_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3 # -- Begin function _ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3
+	.p2align	2
+	.prefalign	5, .Lfunc_end7, nop
+	.type	_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3,@function
+_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3: # @_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3
+	.cfi_startproc
+# %bb.0:
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	.cfi_offset 1, -8
+	.cfi_offset 22, -16
+	.cfi_offset 23, -24
+	.cfi_offset 24, -32
+	.cfi_offset 25, -40
+	move	$fp, $a0
+	ld.d	$a0, $a0, 0
+	ld.d	$a4, $a0, 104
+	move	$s0, $a3
+	move	$s1, $a2
+	move	$s2, $a1
+	move	$a0, $fp
+	jirl	$ra, $a4, 0
+	ld.w	$a0, $fp, 120
+	beqz	$a0, .LBB7_5
+# %bb.1:
+	ori	$a1, $zero, 1
+	beq	$a0, $a1, .LBB7_4
+# %bb.2:
+	ori	$a1, $zero, 2
+	bne	$a0, $a1, .LBB7_8
+# %bb.3:
+	fld.s	$fa1, $fp, 92
+	vldi	$vr2, -1184
+	fmul.s	$fa1, $fa1, $fa2
+	fld.s	$fa3, $fp, 96
+	movgr2fr.w	$fa4, $s2
+	ffint.s.w	$fa4, $fa4
+	fsub.s	$fa1, $fa4, $fa1
+	fmul.s	$fa2, $fa3, $fa2
+	fld.s	$fa3, $fp, 68
+	movgr2fr.w	$fa4, $s1
+	ffint.s.w	$fa4, $fa4
+	fsub.s	$fa2, $fa4, $fa2
+	fsub.s	$fa0, $fa0, $fa3
+	b	.LBB7_7
+.LBB7_4:
+	fld.s	$fa1, $fp, 92
+	vldi	$vr3, -1184
+	fmul.s	$fa1, $fa1, $fa3
+	movgr2fr.w	$fa2, $s2
+	fld.s	$fa4, $fp, 64
+	fld.s	$fa5, $fp, 96
+	ffint.s.w	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa4
+	fmul.s	$fa0, $fa5, $fa3
+	b	.LBB7_6
+.LBB7_5:
+	fld.s	$fa1, $fp, 60
+	fld.s	$fa2, $fp, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr0, -1184
+	fmul.s	$fa2, $fa2, $fa0
+	fld.s	$fa3, $fp, 96
+	movgr2fr.w	$fa4, $s2
+	ffint.s.w	$fa4, $fa4
+	fsub.s	$fa2, $fa4, $fa2
+	fmul.s	$fa0, $fa3, $fa0
+.LBB7_6:
+	movgr2fr.w	$fa3, $s1
+	ffint.s.w	$fa3, $fa3
+	fsub.s	$fa0, $fa3, $fa0
+.LBB7_7:
+	fst.s	$fa1, $s0, 0
+	fst.s	$fa2, $s0, 4
+	fst.s	$fa0, $s0, 8
+	st.w	$zero, $s0, 12
+	b	.LBB7_9
+.LBB7_8:                                # %._crit_edge
+	fld.s	$fa1, $s0, 0
+	fld.s	$fa2, $s0, 4
+	fld.s	$fa0, $s0, 8
+.LBB7_9:
+	fld.s	$fa3, $fp, 124
+	fmul.s	$fa1, $fa3, $fa1
+	fst.s	$fa1, $s0, 0
+	fld.s	$fa1, $fp, 128
+	fmul.s	$fa1, $fa1, $fa2
+	fst.s	$fa1, $s0, 4
+	fld.s	$fa1, $fp, 132
+	fmul.s	$fa0, $fa1, $fa0
+	fst.s	$fa0, $s0, 8
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
+	ret
+.Lfunc_end7:
+	.size	_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3, .Lfunc_end7-_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3
+	.cfi_endproc
+                                        # -- End function
+	.globl	_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i # -- Begin function _ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i
+	.p2align	2
+	.prefalign	5, .Lfunc_end8, nop
+	.type	_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i,@function
+_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i: # @_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i
+# %bb.0:                                # %_Z8btSetMaxIfEvRT_RKS0_.exit.i
+	fld.s	$fa0, $a2, 0
+	fld.s	$fa1, $a0, 28
+	fld.s	$fa2, $a2, 4
+	fld.s	$fa3, $a2, 8
+	fld.s	$fa4, $a0, 32
+	fcmp.clt.s	$fcc0, $fa0, $fa1
+	fsel	$fa0, $fa0, $fa1, $fcc0
+	fld.s	$fa1, $a0, 36
+	fcmp.clt.s	$fcc0, $fa2, $fa4
+	fsel	$fa2, $fa2, $fa4, $fcc0
+	fld.s	$fa4, $a0, 44
+	fcmp.clt.s	$fcc0, $fa3, $fa1
+	fsel	$fa1, $fa3, $fa1, $fcc0
+	fld.s	$fa3, $a0, 48
+	fcmp.clt.s	$fcc0, $fa4, $fa0
+	fld.s	$fa5, $a0, 52
+	fsel	$fa0, $fa0, $fa4, $fcc0
+	fcmp.clt.s	$fcc0, $fa3, $fa2
+	fsel	$fa2, $fa2, $fa3, $fcc0
+	fcmp.clt.s	$fcc0, $fa5, $fa1
+	fsel	$fa1, $fa1, $fa5, $fcc0
+	fcvt.d.s	$fa3, $fa0
+	movgr2fr.w	$fa4, $zero
+	fcmp.clt.s	$fcc0, $fa0, $fa4
+	vldi	$vr0, -800
+	vldi	$vr5, -928
+	fsel	$fa6, $fa5, $fa0, $fcc0
+	fadd.d	$fa3, $fa6, $fa3
+	ftintrz.w.d	$fa3, $fa3
+	movfr2gr.s	$a0, $fa3
+	st.w	$a0, $a1, 0
+	fcvt.d.s	$fa3, $fa2
+	fcmp.clt.s	$fcc0, $fa2, $fa4
+	fsel	$fa2, $fa5, $fa0, $fcc0
+	fadd.d	$fa2, $fa2, $fa3
+	ftintrz.w.d	$fa2, $fa2
+	movfr2gr.s	$a0, $fa2
+	st.w	$a0, $a1, 4
+	fcvt.d.s	$fa2, $fa1
+	fcmp.clt.s	$fcc0, $fa1, $fa4
+	fsel	$fa0, $fa5, $fa0, $fcc0
+	fadd.d	$fa0, $fa0, $fa2
+	ftintrz.w.d	$fa0, $fa0
+	movfr2gr.s	$a0, $fa0
+	st.w	$a0, $a1, 8
+	ret
+.Lfunc_end8:
+	.size	_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i, .Lfunc_end8-_ZNK25btHeightfieldTerrainShape17quantizeWithClampEPiRK9btVector3i
+                                        # -- End function
+	.globl	_ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_ # -- Begin function _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_
+	.p2align	2
+	.prefalign	5, .Lfunc_end9, nop
+	.type	_ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_,@function
+_ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_: # @_ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_
+	.cfi_startproc
+# %bb.0:
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 80                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 72                   # 8-byte Folded Spill
+	.cfi_offset 1, -8
+	.cfi_offset 22, -16
+	.cfi_offset 23, -24
+	.cfi_offset 24, -32
+	.cfi_offset 25, -40
+	.cfi_offset 26, -48
+	.cfi_offset 27, -56
+	.cfi_offset 28, -64
+	.cfi_offset 29, -72
+	.cfi_offset 30, -80
+	.cfi_offset 31, -88
+	.cfi_offset 56, -96
+	.cfi_offset 57, -104
+	move	$fp, $a1
+	move	$s0, $a0
+	fld.s	$fa0, $a0, 132
+	fld.s	$fa1, $a0, 128
+	fld.s	$fa2, $a2, 8
+	vld	$vr3, $a0, 124
+	fld.s	$fa4, $a3, 8
+	frecip.s	$fa1, $fa1
+	fld.s	$fa5, $a3, 4
+	vextrins.w	$vr3, $vr0, 16
+	vld	$vr0, $a3, 0
+	vfrecip.s	$vr3, $vr3
+	fmul.s	$fa5, $fa1, $fa5
+	fld.s	$fa6, $a2, 4
+	vextrins.w	$vr0, $vr4, 16
+	vfmul.s	$vr0, $vr3, $vr0
+	vld	$vr4, $a2, 0
+	fmul.s	$fa1, $fa1, $fa6
+	vld	$vr6, $a0, 60
+	fld.s	$fa7, $a0, 68
+	vextrins.w	$vr4, $vr2, 16
+	fld.s	$fa2, $a0, 64
+	vfmul.s	$vr3, $vr3, $vr4
+	vextrins.w	$vr6, $vr7, 16
+	vfadd.s	$vr3, $vr3, $vr6
+	fadd.s	$fa1, $fa1, $fa2
+	vld	$vr4, $a0, 28
+	fld.s	$fa7, $a0, 36
+	vfadd.s	$vr6, $vr0, $vr6
+	fadd.s	$fa5, $fa5, $fa2
+	fld.s	$ft0, $a0, 32
+	vextrins.w	$vr4, $vr7, 16
+	vfcmp.clt.s	$vr0, $vr3, $vr4
+	vbitsel.v	$vr0, $vr3, $vr4, $vr0
+	vld	$vr3, $a0, 44
+	fld.s	$fa2, $a0, 52
+	fcmp.clt.s	$fcc0, $fa1, $ft0
+	fsel	$fa1, $fa1, $ft0, $fcc0
+	fld.s	$fa7, $a0, 48
+	vextrins.w	$vr3, $vr2, 16
+	vfcmp.clt.s	$vr2, $vr3, $vr0
+	vbitsel.v	$vr2, $vr0, $vr3, $vr2
+	fcmp.clt.s	$fcc0, $fa7, $fa1
+	fsel	$fa1, $fa1, $fa7, $fcc0
+	vrepli.b	$vr0, 0
+	vfcmp.clt.s	$vr9, $vr2, $vr0
+	vext2xv.d.w	$xr9, $xr9
+	movgr2fr.w	$ft2, $zero
+	fcmp.clt.s	$fcc0, $fa1, $ft2
+	vfcvtl.d.s	$vr2, $vr2
+	fcvt.d.s	$fa1, $fa1
+	vldi	$vr11, -800
+	vldi	$vr12, -928
+	vbitsel.v	$vr9, $vr12, $vr11, $vr9
+	vldi	$vr13, -800
+	vldi	$vr14, -928
+	fsel	$ft7, $ft6, $ft5, $fcc0
+	vfadd.d	$vr2, $vr9, $vr2
+	fadd.d	$fa1, $ft7, $fa1
+	vori.b	$vr9, $vr2, 0
+	vextrins.d	$vr9, $vr1, 16
+	xvftintrz.l.d	$xr1, $xr9
+	xvpermi.d	$xr9, $xr1, 238
+	xvpickev.w	$xr1, $xr9, $xr1
+	vfcmp.clt.s	$vr9, $vr6, $vr4
+	vbitsel.v	$vr4, $vr6, $vr4, $vr9
+	fcmp.clt.s	$fcc0, $fa5, $ft0
+	fsel	$fa5, $fa5, $ft0, $fcc0
+	vfcmp.clt.s	$vr6, $vr3, $vr4
+	vbitsel.v	$vr3, $vr4, $vr3, $vr6
+	fcmp.clt.s	$fcc0, $fa7, $fa5
+	fsel	$fa4, $fa5, $fa7, $fcc0
+	vfcmp.clt.s	$vr5, $vr3, $vr0
+	vext2xv.d.w	$xr5, $xr5
+	fcmp.clt.s	$fcc0, $fa4, $ft2
+	vfcvtl.d.s	$vr3, $vr3
+	fcvt.d.s	$fa4, $fa4
+	vbitsel.v	$vr5, $vr12, $vr11, $vr5
+	fsel	$fa6, $ft6, $ft5, $fcc0
+	vfadd.d	$vr5, $vr5, $vr3
+	fadd.d	$fa3, $fa6, $fa4
+	vori.b	$vr4, $vr5, 0
+	vextrins.d	$vr4, $vr3, 16
+	xvftintrz.l.d	$xr3, $xr4
+	xvpermi.d	$xr4, $xr3, 238
+	xvpickev.w	$xr4, $xr4, $xr3
+	ld.d	$a1, $a0, 76
+	vsubi.wu	$vr3, $vr1, 1
+	ld.w	$a0, $a0, 120
+	vaddi.wu	$vr4, $vr4, 1
+	vinsgr2vr.d	$vr1, $a1, 0
+	ori	$a1, $zero, 2
+	vsubi.wu	$vr1, $vr1, 1
+	beq	$a0, $a1, .LBB9_112
+# %bb.1:
+	xvftintrz.l.d	$xr2, $xr2
+	xvpermi.d	$xr6, $xr2, 238
+	xvpickev.w	$xr2, $xr6, $xr2
+	xvftintrz.l.d	$xr5, $xr5
+	xvpermi.d	$xr6, $xr5, 238
+	xvpickev.w	$xr5, $xr6, $xr5
+	vsubi.wu	$vr2, $vr2, 1
+	ori	$a1, $zero, 1
+	vaddi.wu	$vr5, $vr5, 1
+	beq	$a0, $a1, .LBB9_4
+# %bb.2:
+	bnez	$a0, .LBB9_5
+# %bb.3:
+	vpackod.w	$vr0, $vr2, $vr3
+	vmaxi.w	$vr0, $vr0, 0
+	vpackod.w	$vr2, $vr5, $vr4
+	vmin.w	$vr1, $vr2, $vr1
+	vpickve2gr.w	$s5, $vr1, 1
+	vpickve2gr.w	$s1, $vr0, 1
+	blt	$s1, $s5, .LBB9_6
+	b	.LBB9_113
+.LBB9_4:
+	vmaxi.w	$vr0, $vr2, 0
+	vmin.w	$vr1, $vr5, $vr1
+.LBB9_5:
+	vpickve2gr.w	$s5, $vr1, 1
+	vpickve2gr.w	$s1, $vr0, 1
+	bge	$s1, $s5, .LBB9_113
+.LBB9_6:                                # %.preheader.lr.ph
+	vpickve2gr.w	$s6, $vr1, 0
+	vpickve2gr.w	$a0, $vr0, 0
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	bge	$a0, $s6, .LBB9_113
+# %bb.7:                                # %.preheader.us.preheader
+	ori	$s8, $zero, 1
+	ori	$s7, $zero, 2
+	b	.LBB9_9
+	.p2align	4, , 16
+.LBB9_8:                                # %._crit_edge.us
+                                        #   in Loop: Header=BB9_9 Depth=1
+	move	$s1, $s2
+	beq	$s2, $s5, .LBB9_113
+.LBB9_9:                                # %.preheader.us
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB9_15 Depth 2
+	bstrpick.d	$a0, $s1, 31, 0
+	movgr2fr.d	$fa0, $a0
+	ffint.s.l	$fs0, $fa0
+	addi.w	$s2, $s1, 1
+	bstrpick.d	$a0, $s2, 31, 0
+	movgr2fr.d	$fa0, $a0
+	ffint.s.l	$fs1, $fa0
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	b	.LBB9_15
+.LBB9_10:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+.LBB9_11:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+.LBB9_12:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs1, $fa0
+.LBB9_13:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	st.w	$zero, $sp, 68
+.LBB9_14:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fld.s	$fa4, $s0, 128
+	fmul.s	$fa1, $fa1, $fa3
+	fst.s	$fa1, $sp, 56
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa4
+	ld.d	$a0, $fp, 0
+	fst.s	$fa2, $sp, 60
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 64
+	ld.d	$a4, $a0, 16
+	addi.d	$a1, $sp, 24
+	move	$a0, $fp
+	move	$a2, $s4
+	move	$a3, $s1
+	jirl	$ra, $a4, 0
+	beq	$s6, $s3, .LBB9_8
+.LBB9_15:                               #   Parent Loop BB9_9 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.bu	$a0, $s0, 116
+	move	$s4, $s3
+	addi.w	$s3, $s3, 1
+	beqz	$a0, .LBB9_20
+.LBB9_16:                               #   in Loop: Header=BB9_15 Depth=2
+	ld.d	$a0, $s0, 0
+	ld.d	$a3, $a0, 104
+	move	$a0, $s0
+	move	$a1, $s4
+	move	$a2, $s1
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_27
+# %bb.17:                               #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_26
+# %bb.18:                               #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_29
+# %bb.19:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs0, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 36
+	b	.LBB9_30
+	.p2align	4, , 16
+.LBB9_20:                               #   in Loop: Header=BB9_15 Depth=2
+	ld.bu	$a0, $s0, 117
+	beqz	$a0, .LBB9_22
+# %bb.21:                               #   in Loop: Header=BB9_15 Depth=2
+	add.d	$a0, $s1, $s4
+	andi	$a0, $a0, 1
+	beqz	$a0, .LBB9_16
+.LBB9_22:                               #   in Loop: Header=BB9_15 Depth=2
+	ld.d	$a0, $s0, 0
+	ld.d	$a3, $a0, 104
+	move	$a0, $s0
+	move	$a1, $s4
+	move	$a2, $s1
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_68
+# %bb.23:                               #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_67
+# %bb.24:                               #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_70
+# %bb.25:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs0, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 36
+	b	.LBB9_71
+.LBB9_26:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_28
+.LBB9_27:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s4, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_28:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs0, $fa0
+	st.w	$zero, $sp, 36
+	b	.LBB9_30
+.LBB9_29:                               # %._crit_edge.i.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 24
+	fld.s	$fa2, $sp, 28
+	fld.s	$fa0, $sp, 32
+.LBB9_30:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 24
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 28
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 32
+	move	$a0, $s0
+	move	$a1, $s3
+	move	$a2, $s1
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_35
+# %bb.31:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_34
+# %bb.32:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_37
+# %bb.33:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs0, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 52
+	b	.LBB9_38
+.LBB9_34:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_36
+.LBB9_35:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s3, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_36:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs0, $fa0
+	st.w	$zero, $sp, 52
+	b	.LBB9_38
+.LBB9_37:                               # %._crit_edge.i131.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 40
+	fld.s	$fa2, $sp, 44
+	fld.s	$fa0, $sp, 48
+.LBB9_38:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 40
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 44
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 48
+	move	$a0, $s0
+	move	$a1, $s3
+	move	$a2, $s2
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_43
+# %bb.39:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_42
+# %bb.40:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit137.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_45
+# %bb.41:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs1, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 68
+	b	.LBB9_46
+.LBB9_42:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_44
+.LBB9_43:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s3, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_44:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs1, $fa0
+	st.w	$zero, $sp, 68
+	b	.LBB9_46
+.LBB9_45:                               # %._crit_edge.i138.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 56
+	fld.s	$fa2, $sp, 60
+	fld.s	$fa0, $sp, 64
+.LBB9_46:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fld.s	$fa4, $s0, 128
+	fmul.s	$fa1, $fa1, $fa3
+	fst.s	$fa1, $sp, 56
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa4
+	ld.d	$a0, $fp, 0
+	fst.s	$fa2, $sp, 60
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 64
+	ld.d	$a4, $a0, 16
+	addi.d	$a1, $sp, 24
+	move	$a0, $fp
+	move	$a2, $s4
+	move	$a3, $s1
+	jirl	$ra, $a4, 0
+	ld.d	$a0, $s0, 0
+	ld.d	$a3, $a0, 104
+	move	$a0, $s0
+	move	$a1, $s4
+	move	$a2, $s1
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_51
+# %bb.47:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_50
+# %bb.48:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit144.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_53
+# %bb.49:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs0, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 36
+	b	.LBB9_54
+.LBB9_50:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_52
+.LBB9_51:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s4, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_52:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs0, $fa0
+	st.w	$zero, $sp, 36
+	b	.LBB9_54
+.LBB9_53:                               # %._crit_edge.i145.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 24
+	fld.s	$fa2, $sp, 28
+	fld.s	$fa0, $sp, 32
+.LBB9_54:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 24
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 28
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 32
+	move	$a0, $s0
+	move	$a1, $s3
+	move	$a2, $s2
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_59
+# %bb.55:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_58
+# %bb.56:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit151.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_61
+# %bb.57:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs1, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 52
+	b	.LBB9_62
+.LBB9_58:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_60
+.LBB9_59:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s3, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_60:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs1, $fa0
+	st.w	$zero, $sp, 52
+	b	.LBB9_62
+.LBB9_61:                               # %._crit_edge.i152.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 40
+	fld.s	$fa2, $sp, 44
+	fld.s	$fa0, $sp, 48
+.LBB9_62:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 40
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 44
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 48
+	move	$a0, $s0
+	move	$a1, $s4
+	move	$a2, $s2
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_66
+# %bb.63:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_10
+# %bb.64:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit158.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_108
+# %bb.65:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	b	.LBB9_107
+.LBB9_66:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s4, 31, 0
+	b	.LBB9_111
+.LBB9_67:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_69
+.LBB9_68:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s4, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_69:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs0, $fa0
+	st.w	$zero, $sp, 36
+	b	.LBB9_71
+.LBB9_70:                               # %._crit_edge.i166.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 24
+	fld.s	$fa2, $sp, 28
+	fld.s	$fa0, $sp, 32
+.LBB9_71:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 24
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 28
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 32
+	move	$a0, $s0
+	move	$a1, $s4
+	move	$a2, $s2
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_76
+# %bb.72:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_75
+# %bb.73:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit172.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_78
+# %bb.74:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs1, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 52
+	b	.LBB9_79
+.LBB9_75:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_77
+.LBB9_76:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s4, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_77:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs1, $fa0
+	st.w	$zero, $sp, 52
+	b	.LBB9_79
+.LBB9_78:                               # %._crit_edge.i173.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 40
+	fld.s	$fa2, $sp, 44
+	fld.s	$fa0, $sp, 48
+.LBB9_79:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 40
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 44
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 48
+	move	$a0, $s0
+	move	$a1, $s3
+	move	$a2, $s1
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_84
+# %bb.80:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_83
+# %bb.81:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit179.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_86
+# %bb.82:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs0, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 68
+	b	.LBB9_87
+.LBB9_83:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_85
+.LBB9_84:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s3, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_85:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs0, $fa0
+	st.w	$zero, $sp, 68
+	b	.LBB9_87
+.LBB9_86:                               # %._crit_edge.i180.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 56
+	fld.s	$fa2, $sp, 60
+	fld.s	$fa0, $sp, 64
+.LBB9_87:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fld.s	$fa4, $s0, 128
+	fmul.s	$fa1, $fa1, $fa3
+	fst.s	$fa1, $sp, 56
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa4
+	ld.d	$a0, $fp, 0
+	fst.s	$fa2, $sp, 60
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 64
+	ld.d	$a4, $a0, 16
+	addi.d	$a1, $sp, 24
+	move	$a0, $fp
+	move	$a2, $s4
+	move	$a3, $s1
+	jirl	$ra, $a4, 0
+	ld.d	$a0, $s0, 0
+	ld.d	$a3, $a0, 104
+	move	$a0, $s0
+	move	$a1, $s3
+	move	$a2, $s1
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_92
+# %bb.88:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_91
+# %bb.89:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit186.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_94
+# %bb.90:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs0, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 36
+	b	.LBB9_95
+.LBB9_91:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_93
+.LBB9_92:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s3, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_93:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs0, $fa0
+	st.w	$zero, $sp, 36
+	b	.LBB9_95
+.LBB9_94:                               # %._crit_edge.i187.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 24
+	fld.s	$fa2, $sp, 28
+	fld.s	$fa0, $sp, 32
+.LBB9_95:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 24
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 28
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 32
+	move	$a0, $s0
+	move	$a1, $s4
+	move	$a2, $s2
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_100
+# %bb.96:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_99
+# %bb.97:                               # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit193.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_102
+# %bb.98:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs1, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	st.w	$zero, $sp, 52
+	b	.LBB9_103
+.LBB9_99:                               #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s4, 31, 0
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 64
+	fld.s	$fa4, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa1, $fa2, $fa1
+	fsub.s	$fa2, $fa0, $fa3
+	fmul.s	$fa0, $fa4, $fa5
+	b	.LBB9_101
+.LBB9_100:                              #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s4, 31, 0
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+.LBB9_101:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fsub.s	$fa0, $fs1, $fa0
+	st.w	$zero, $sp, 52
+	b	.LBB9_103
+.LBB9_102:                              # %._crit_edge.i194.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 40
+	fld.s	$fa2, $sp, 44
+	fld.s	$fa0, $sp, 48
+.LBB9_103:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 124
+	fmul.s	$fa1, $fa1, $fa3
+	fld.s	$fa3, $s0, 128
+	ld.d	$a0, $s0, 0
+	fst.s	$fa1, $sp, 40
+	fld.s	$fa1, $s0, 132
+	fmul.s	$fa2, $fa2, $fa3
+	ld.d	$a3, $a0, 104
+	fst.s	$fa2, $sp, 44
+	fmul.s	$fa0, $fa0, $fa1
+	fst.s	$fa0, $sp, 48
+	move	$a0, $s0
+	move	$a1, $s3
+	move	$a2, $s2
+	jirl	$ra, $a3, 0
+	ld.w	$a0, $s0, 120
+	beqz	$a0, .LBB9_110
+# %bb.104:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	beq	$a0, $s8, .LBB9_109
+# %bb.105:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit200.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	bne	$a0, $s7, .LBB9_108
+# %bb.106:                              #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+.LBB9_107:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	movgr2fr.d	$fa2, $a0
+	fld.s	$fa3, $s0, 96
+	ffint.s.l	$fa2, $fa2
+	fld.s	$fa4, $s0, 68
+	fsub.s	$fa1, $fa2, $fa1
+	fmul.s	$fa2, $fa3, $fa5
+	fsub.s	$fa2, $fs1, $fa2
+	fsub.s	$fa0, $fa0, $fa4
+	b	.LBB9_13
+	.p2align	4, , 16
+.LBB9_108:                              # %._crit_edge.i159.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $sp, 56
+	fld.s	$fa2, $sp, 60
+	fld.s	$fa0, $sp, 64
+	b	.LBB9_14
+.LBB9_109:                              #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 92
+	vldi	$vr5, -1184
+	fmul.s	$fa1, $fa1, $fa5
+	bstrpick.d	$a0, $s3, 31, 0
+	b	.LBB9_11
+.LBB9_110:                              #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa1, $s0, 60
+	fld.s	$fa2, $s0, 92
+	fsub.s	$fa1, $fa0, $fa1
+	vldi	$vr4, -1184
+	fmul.s	$fa0, $fa2, $fa4
+	bstrpick.d	$a0, $s3, 31, 0
+.LBB9_111:                              # %_ZNK25btHeightfieldTerrainShape9getVertexEiiR9btVector3.exit207.us
+                                        #   in Loop: Header=BB9_15 Depth=2
+	fld.s	$fa3, $s0, 96
+	movgr2fr.d	$fa2, $a0
+	ffint.s.l	$fa2, $fa2
+	fsub.s	$fa2, $fa2, $fa0
+	fmul.s	$fa0, $fa3, $fa4
+	b	.LBB9_12
+.LBB9_112:
+	vmaxi.w	$vr0, $vr3, 0
+	vmin.w	$vr1, $vr4, $vr1
+	vpickve2gr.w	$s5, $vr1, 1
+	vpickve2gr.w	$s1, $vr0, 1
+	blt	$s1, $s5, .LBB9_6
+.LBB9_113:                              # %._crit_edge229
+	fld.d	$fs1, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 80                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
+	ret
+.Lfunc_end9:
+	.size	_ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_, .Lfunc_end9-_ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_
+	.cfi_endproc
+                                        # -- End function
+	.globl	_ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3 # -- Begin function _ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3
+	.p2align	2
+	.prefalign	5, .Lfunc_end10, nop
+	.type	_ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3,@function
+_ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3: # @_ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3
+# %bb.0:
+	vrepli.b	$vr0, 0
+	vst	$vr0, $a1, 0
+	ret
+.Lfunc_end10:
+	.size	_ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3, .Lfunc_end10-_ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3
+                                        # -- End function
+	.globl	_ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3 # -- Begin function _ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3
+	.p2align	2
+	.prefalign	5, .Lfunc_end11, nop
+	.type	_ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3,@function
+_ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3: # @_ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3
+# %bb.0:
+	vld	$vr0, $a1, 0
+	vst	$vr0, $a0, 124
+	ret
+.Lfunc_end11:
+	.size	_ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3, .Lfunc_end11-_ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3
+                                        # -- End function
+	.globl	_ZNK25btHeightfieldTerrainShape15getLocalScalingEv # -- Begin function _ZNK25btHeightfieldTerrainShape15getLocalScalingEv
+	.p2align	2
+	.prefalign	5, .Lfunc_end12, nop
+	.type	_ZNK25btHeightfieldTerrainShape15getLocalScalingEv,@function
+_ZNK25btHeightfieldTerrainShape15getLocalScalingEv: # @_ZNK25btHeightfieldTerrainShape15getLocalScalingEv
+# %bb.0:
+	addi.d	$a0, $a0, 124
+	ret
+.Lfunc_end12:
+	.size	_ZNK25btHeightfieldTerrainShape15getLocalScalingEv, .Lfunc_end12-_ZNK25btHeightfieldTerrainShape15getLocalScalingEv
+                                        # -- End function
+	.section	.text._ZNK25btHeightfieldTerrainShape7getNameEv,"axG",@progbits,_ZNK25btHeightfieldTerrainShape7getNameEv,comdat
+	.weak	_ZNK25btHeightfieldTerrainShape7getNameEv # -- Begin function _ZNK25btHeightfieldTerrainShape7getNameEv
+	.p2align	2
+	.prefalign	5, .Lfunc_end13, nop
+	.type	_ZNK25btHeightfieldTerrainShape7getNameEv,@function
+_ZNK25btHeightfieldTerrainShape7getNameEv: # @_ZNK25btHeightfieldTerrainShape7getNameEv
+# %bb.0:
+	pcalau12i	$a0, %pc_hi20(.L.str)
+	addi.d	$a0, $a0, %pc_lo12(.L.str)
+	ret
+.Lfunc_end13:
+	.size	_ZNK25btHeightfieldTerrainShape7getNameEv, .Lfunc_end13-_ZNK25btHeightfieldTerrainShape7getNameEv
+                                        # -- End function
+	.section	.text._ZN14btConcaveShape9setMarginEf,"axG",@progbits,_ZN14btConcaveShape9setMarginEf,comdat
+	.weak	_ZN14btConcaveShape9setMarginEf # -- Begin function _ZN14btConcaveShape9setMarginEf
+	.p2align	2
+	.prefalign	5, .Lfunc_end14, nop
+	.type	_ZN14btConcaveShape9setMarginEf,@function
+_ZN14btConcaveShape9setMarginEf:        # @_ZN14btConcaveShape9setMarginEf
+# %bb.0:
+	fst.s	$fa0, $a0, 24
+	ret
+.Lfunc_end14:
+	.size	_ZN14btConcaveShape9setMarginEf, .Lfunc_end14-_ZN14btConcaveShape9setMarginEf
+                                        # -- End function
+	.section	.text._ZNK14btConcaveShape9getMarginEv,"axG",@progbits,_ZNK14btConcaveShape9getMarginEv,comdat
+	.weak	_ZNK14btConcaveShape9getMarginEv # -- Begin function _ZNK14btConcaveShape9getMarginEv
+	.p2align	2
+	.prefalign	5, .Lfunc_end15, nop
+	.type	_ZNK14btConcaveShape9getMarginEv,@function
+_ZNK14btConcaveShape9getMarginEv:       # @_ZNK14btConcaveShape9getMarginEv
+# %bb.0:
+	fld.s	$fa0, $a0, 24
+	ret
+.Lfunc_end15:
+	.size	_ZNK14btConcaveShape9getMarginEv, .Lfunc_end15-_ZNK14btConcaveShape9getMarginEv
+                                        # -- End function
+	.type	_ZTV25btHeightfieldTerrainShape,@object # @_ZTV25btHeightfieldTerrainShape
+	.section	.data.rel.ro,"aw",@progbits
+	.globl	_ZTV25btHeightfieldTerrainShape
+	.p2align	3, 0x0
+_ZTV25btHeightfieldTerrainShape:
+	.dword	0
+	.dword	_ZTI25btHeightfieldTerrainShape
+	.dword	_ZN25btHeightfieldTerrainShapeD2Ev
+	.dword	_ZN25btHeightfieldTerrainShapeD0Ev
+	.dword	_ZNK25btHeightfieldTerrainShape7getAabbERK11btTransformR9btVector3S4_
+	.dword	_ZNK16btCollisionShape17getBoundingSphereER9btVector3Rf
+	.dword	_ZNK16btCollisionShape20getAngularMotionDiscEv
+	.dword	_ZNK16btCollisionShape27getContactBreakingThresholdEv
+	.dword	_ZN25btHeightfieldTerrainShape15setLocalScalingERK9btVector3
+	.dword	_ZNK25btHeightfieldTerrainShape15getLocalScalingEv
+	.dword	_ZNK25btHeightfieldTerrainShape21calculateLocalInertiaEfR9btVector3
+	.dword	_ZNK25btHeightfieldTerrainShape7getNameEv
+	.dword	_ZN14btConcaveShape9setMarginEf
+	.dword	_ZNK14btConcaveShape9getMarginEv
+	.dword	_ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btVector3S4_
+	.dword	_ZNK25btHeightfieldTerrainShape22getRawHeightFieldValueEii
+	.size	_ZTV25btHeightfieldTerrainShape, 128
+
+	.type	_ZTI25btHeightfieldTerrainShape,@object # @_ZTI25btHeightfieldTerrainShape
+	.globl	_ZTI25btHeightfieldTerrainShape
+	.p2align	3, 0x0
+_ZTI25btHeightfieldTerrainShape:
+	.dword	_ZTVN10__cxxabiv120__si_class_type_infoE+16
+	.dword	_ZTS25btHeightfieldTerrainShape
+	.dword	_ZTI14btConcaveShape
+	.size	_ZTI25btHeightfieldTerrainShape, 24
+
+	.type	_ZTS25btHeightfieldTerrainShape,@object # @_ZTS25btHeightfieldTerrainShape
+	.section	.rodata,"a",@progbits
+	.globl	_ZTS25btHeightfieldTerrainShape
+_ZTS25btHeightfieldTerrainShape:
+	.asciz	"25btHeightfieldTerrainShape"
+	.size	_ZTS25btHeightfieldTerrainShape, 28
+
+	.type	.L.str,@object                  # @.str
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.str:
+	.asciz	"HEIGHTFIELD"
+	.size	.L.str, 12
+
+	.globl	_ZN25btHeightfieldTerrainShapeC1EiiPvfffi14PHY_ScalarTypeb
+	.type	_ZN25btHeightfieldTerrainShapeC1EiiPvfffi14PHY_ScalarTypeb,@function
+_ZN25btHeightfieldTerrainShapeC1EiiPvfffi14PHY_ScalarTypeb = _ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb
+	.globl	_ZN25btHeightfieldTerrainShapeC1EiiPvfibb
+	.type	_ZN25btHeightfieldTerrainShapeC1EiiPvfibb,@function
+_ZN25btHeightfieldTerrainShapeC1EiiPvfibb = _ZN25btHeightfieldTerrainShapeC2EiiPvfibb
+	.globl	_ZN25btHeightfieldTerrainShapeD1Ev
+	.type	_ZN25btHeightfieldTerrainShapeD1Ev,@function
+_ZN25btHeightfieldTerrainShapeD1Ev = _ZN25btHeightfieldTerrainShapeD2Ev
+	.hidden	DW.ref.__gxx_personality_v0
+	.weak	DW.ref.__gxx_personality_v0
+	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat
+	.p2align	3, 0x0
+	.type	DW.ref.__gxx_personality_v0,@object
+	.size	DW.ref.__gxx_personality_v0, 8
+DW.ref.__gxx_personality_v0:
+	.dword	__gxx_personality_v0
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
+	.addrsig_sym __gxx_personality_v0
+	.addrsig_sym _Unwind_Resume
+	.addrsig_sym _ZTV25btHeightfieldTerrainShape
+	.addrsig_sym _ZTI25btHeightfieldTerrainShape
+	.addrsig_sym _ZTVN10__cxxabiv120__si_class_type_infoE
+	.addrsig_sym _ZTS25btHeightfieldTerrainShape
+	.addrsig_sym _ZTI14btConcaveShape
