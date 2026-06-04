@@ -8168,15 +8168,22 @@ cluster_minimum_double:                 # @cluster_minimum_double
 .Lfunc_end26:
 	.size	cluster_minimum_double, .Lfunc_end26-cluster_minimum_double
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function veryfastsupg
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function veryfastsupg
 .LCPI27_0:
-	.dword	0x412e848000000000              # double 1.0E+6
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
 .LCPI27_1:
-	.dword	0x413e848000000000              # double 2.0E+6
+	.dword	0x412e848000000000              # double 1.0E+6
 .LCPI27_2:
-	.dword	0x3fb999999999999a              # double 0.10000000000000001
+	.dword	0x413e848000000000              # double 2.0E+6
 .LCPI27_3:
+	.dword	0x3fb999999999999a              # double 0.10000000000000001
+.LCPI27_4:
 	.dword	0x3feccccccccccccd              # double 0.90000000000000002
 	.text
 	.globl	veryfastsupg
@@ -8218,15 +8225,17 @@ veryfastsupg:                           # @veryfastsupg
 	ld.d	$a2, $s6, %pc_lo12(veryfastsupg.eff)
 	bstrpick.d	$a3, $s0, 30, 3
 	slli.d	$a3, $a3, 3
+	pcalau12i	$a4, %pc_hi20(.LCPI27_1)
+	fld.d	$fs0, $a4, %pc_lo12(.LCPI27_1)
+	ori	$a4, $zero, 0
+	lu32i.d	$a4, -97152
+	lu52i.d	$a4, $a4, 1042
+	xvreplgr2vr.d	$xr0, $a4
+	pcalau12i	$a4, %pc_hi20(.LCPI27_0)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI27_0)
 	ori	$a4, $zero, 8
-	vldi	$vr0, -928
-	pcalau12i	$a5, %pc_hi20(.LCPI27_0)
-	fld.d	$fs0, $a5, %pc_lo12(.LCPI27_0)
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, -97152
-	lu52i.d	$a5, $a5, 1042
-	xvreplgr2vr.d	$xr1, $a5
-	xvldi	$xr2, -928
+	vldi	$vr2, -928
+	xvldi	$xr3, -928
 	b	.LBB27_4
 	.p2align	4, , 16
 .LBB27_3:                               # %._crit_edge.us
@@ -8254,18 +8263,19 @@ veryfastsupg:                           # @veryfastsupg
 .LBB27_7:                               # %vector.body
                                         #   Parent Loop BB27_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr3, $t0, -32
-	xvld	$xr4, $t0, 0
-	xvfmadd.d	$xr3, $xr3, $xr1, $xr2
-	xvfmadd.d	$xr4, $xr4, $xr1, $xr2
-	xvftintrz.l.d	$xr3, $xr3
-	xvpermi.d	$xr5, $xr3, 238
-	xvpickev.w	$xr3, $xr5, $xr3
-	xvftintrz.l.d	$xr4, $xr4
-	xvpermi.d	$xr5, $xr4, 238
-	xvpickev.w	$xr4, $xr5, $xr4
-	vst	$vr3, $a7, -16
-	vst	$vr4, $a7, 0
+	xvld	$xr4, $t0, -32
+	xvld	$xr5, $t0, 0
+	xvfmadd.d	$xr4, $xr4, $xr0, $xr3
+	xvfmadd.d	$xr5, $xr5, $xr0, $xr3
+	xvftintrz.w.d	$xr4, $xr4, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvftintrz.w.d	$xr5, $xr5, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	xvpermi.d	$xr4, $xr4, 68
+	xvpermi.d	$xr5, $xr5, 68
+	xvori.b	$xr6, $xr1, 0
+	xvshuf.d	$xr6, $xr5, $xr4
+	xvst	$xr6, $a7, -16
 	addi.d	$t1, $t1, -8
 	addi.d	$a7, $a7, 32
 	addi.d	$t0, $t0, 64
@@ -8283,10 +8293,10 @@ veryfastsupg:                           # @veryfastsupg
 .LBB27_10:                              # %scalar.ph
                                         #   Parent Loop BB27_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.d	$fa3, $a5, 0
-	fmadd.d	$fa3, $fa3, $fs0, $fa0
-	ftintrz.w.d	$fa3, $fa3
-	movfr2gr.s	$t0, $fa3
+	fld.d	$fa4, $a5, 0
+	fmadd.d	$fa4, $fa4, $fs0, $fa2
+	ftintrz.w.d	$fa4, $fa4
+	movfr2gr.s	$t0, $fa4
 	st.w	$t0, $a6, 0
 	addi.d	$a5, $a5, 8
 	addi.d	$a7, $a7, -1
@@ -8456,8 +8466,8 @@ veryfastsupg:                           # @veryfastsupg
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	move	$s3, $zero
-	pcalau12i	$a0, %pc_hi20(.LCPI27_1)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI27_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI27_2)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI27_2)
 	vldi	$vr3, -928
 	lu12i.w	$a0, 976
 	ori	$a0, $a0, 2304
@@ -8743,11 +8753,11 @@ veryfastsupg:                           # @veryfastsupg
 	add.d	$a4, $a4, $t0
 	movgr2fr.w	$fa0, $a4
 	ffint.d.w	$fa0, $fa0
-	pcalau12i	$a4, %pc_hi20(.LCPI27_2)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI27_2)
-	fmul.d	$fa0, $fa0, $fa3
 	pcalau12i	$a4, %pc_hi20(.LCPI27_3)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI27_3)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI27_3)
+	fmul.d	$fa0, $fa0, $fa3
+	pcalau12i	$a4, %pc_hi20(.LCPI27_4)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI27_4)
 	fmul.d	$fa0, $fa0, $fa1
 	movgr2fr.w	$fa1, $a5
 	ffint.d.w	$fa1, $fa1

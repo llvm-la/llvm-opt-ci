@@ -417,9 +417,8 @@ TW_oldinput:                            # @TW_oldinput
 	vextrins.d	$vr3, $vr2, 16
 	vextrins.d	$vr5, $vr4, 16
 	xvpermi.q	$xr5, $xr3, 2
-	xvftintrz.l.d	$xr2, $xr5
-	xvpermi.d	$xr3, $xr2, 238
-	xvpickev.w	$xr2, $xr3, $xr2
+	xvftintrz.w.d	$xr2, $xr5, $xr5
+	xvpermi.d	$xr2, $xr2, 216
 	vpickve2gr.w	$a3, $vr2, 3
 	movgr2fr.w	$fa3, $a3
 	ffint.d.w	$fa3, $fa3

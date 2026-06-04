@@ -3618,9 +3618,8 @@ quantize_xrpow:                         # @quantize_xrpow
 	addi.d	$a5, $a1, 32
 	xvfmul.d	$xr1, $xr0, $xr1
 	xvfmul.d	$xr2, $xr0, $xr2
-	xvftintrz.l.d	$xr3, $xr2
-	xvpermi.d	$xr4, $xr3, 238
-	xvpickev.w	$xr3, $xr4, $xr3
+	xvftintrz.w.d	$xr3, $xr2, $xr2
+	xvpermi.d	$xr3, $xr3, 216
 	vpickve2gr.w	$a6, $vr3, 0
 	slli.d	$a6, $a6, 3
 	fldx.d	$fa4, $a3, $a6
@@ -3630,9 +3629,8 @@ quantize_xrpow:                         # @quantize_xrpow
 	vpickve2gr.w	$a6, $vr3, 2
 	slli.d	$a6, $a6, 3
 	fldx.d	$fa6, $a3, $a6
-	xvftintrz.l.d	$xr7, $xr1
-	xvpermi.d	$xr8, $xr7, 238
-	xvpickev.w	$xr7, $xr8, $xr7
+	xvftintrz.w.d	$xr7, $xr1, $xr1
+	xvpermi.d	$xr7, $xr7, 216
 	vpickve2gr.w	$a6, $vr7, 0
 	slli.d	$a6, $a6, 3
 	fldx.d	$ft0, $a3, $a6
@@ -3656,15 +3654,10 @@ quantize_xrpow:                         # @quantize_xrpow
 	xvpermi.q	$xr4, $xr6, 2
 	xvfadd.d	$xr2, $xr2, $xr4
 	xvfadd.d	$xr1, $xr1, $xr8
-	xvftintrz.l.d	$xr1, $xr1
-	xvpermi.d	$xr3, $xr1, 238
-	xvpickev.w	$xr1, $xr3, $xr1
-	xvftintrz.l.d	$xr2, $xr2
-	xvpermi.d	$xr3, $xr2, 238
-	xvpickev.w	$xr2, $xr3, $xr2
-	xvpermi.q	$xr2, $xr1, 2
+	xvftintrz.w.d	$xr1, $xr1, $xr2
+	xvpermi.d	$xr1, $xr1, 216
 	addi.w	$a2, $a2, -1
-	xvst	$xr2, $a1, 0
+	xvst	$xr1, $a1, 0
 	move	$a1, $a5
 	bltu	$a4, $a2, .LBB12_1
 # %bb.2:
@@ -3729,12 +3722,10 @@ quantize_xrpow_ISO:                     # @quantize_xrpow_ISO
 	vinsgr2vr.w	$vr7, $a6, 3
 	xvfmadd.d	$xr3, $xr0, $xr3, $xr2
 	xvfmadd.d	$xr4, $xr0, $xr4, $xr2
-	xvftintrz.l.d	$xr3, $xr3
-	xvpermi.d	$xr5, $xr3, 238
-	xvpickev.w	$xr3, $xr5, $xr3
-	xvftintrz.l.d	$xr4, $xr4
-	xvpermi.d	$xr5, $xr4, 238
-	xvpickev.w	$xr4, $xr5, $xr4
+	xvftintrz.w.d	$xr3, $xr3, $xr3
+	xvpermi.d	$xr3, $xr3, 216
+	xvftintrz.w.d	$xr4, $xr4, $xr4
+	xvpermi.d	$xr4, $xr4, 216
 	vandn.v	$vr3, $vr6, $vr3
 	vandn.v	$vr4, $vr7, $vr4
 	vstx	$vr3, $a5, $a3

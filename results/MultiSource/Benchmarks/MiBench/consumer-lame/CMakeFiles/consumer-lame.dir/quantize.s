@@ -1396,12 +1396,10 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	xvffint.d.l	$xr9, $xr9
 	xvfmul.d	$xr6, $xr6, $xr8
 	xvfmul.d	$xr7, $xr7, $xr9
-	xvftintrz.l.d	$xr6, $xr6
-	xvpermi.d	$xr8, $xr6, 238
-	xvpickev.w	$xr6, $xr8, $xr6
-	xvftintrz.l.d	$xr7, $xr7
-	xvpermi.d	$xr8, $xr7, 238
-	xvpickev.w	$xr7, $xr8, $xr7
+	xvftintrz.w.d	$xr6, $xr6, $xr6
+	xvpermi.d	$xr6, $xr6, 216
+	xvftintrz.w.d	$xr7, $xr7, $xr7
+	xvpermi.d	$xr7, $xr7, 216
 	vmax.w	$vr6, $vr6, $vr5
 	vmax.w	$vr7, $vr7, $vr5
 	vstelm.w	$vr6, $a3, -28, 0

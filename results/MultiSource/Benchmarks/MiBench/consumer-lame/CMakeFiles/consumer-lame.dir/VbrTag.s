@@ -487,28 +487,25 @@ PutVbrTag:                              # @PutVbrTag
 	xvffint.d.lu	$xr8, $xr8
 	vext2xv.du.wu	$xr9, $xr3
 	xvffint.d.lu	$xr9, $xr9
-	xvfmul.d	$xr8, $xr8, $xr5
 	xvfmul.d	$xr9, $xr9, $xr5
-	xvfmul.d	$xr9, $xr9, $xr2
+	xvfmul.d	$xr8, $xr8, $xr5
 	xvfmul.d	$xr8, $xr8, $xr2
-	xvfrintrm.d	$xr8, $xr8
+	xvfmul.d	$xr9, $xr9, $xr2
 	xvfrintrm.d	$xr9, $xr9
-	xvftintrz.l.d	$xr9, $xr9
-	xvpermi.d	$xr10, $xr9, 238
-	xvpickev.w	$xr9, $xr10, $xr9
-	xvftintrz.l.d	$xr8, $xr8
-	xvpermi.d	$xr10, $xr8, 238
-	xvpickev.w	$xr8, $xr10, $xr8
-	vext2xv.d.w	$xr8, $xr8
+	xvfrintrm.d	$xr8, $xr8
+	xvftintrz.w.d	$xr8, $xr8, $xr9
+	xvpermi.d	$xr8, $xr8, 216
+	xvpermi.q	$xr9, $xr8, 1
 	vext2xv.d.w	$xr9, $xr9
-	xvpickve2gr.d	$a5, $xr9, 0
-	xvpickve2gr.d	$a6, $xr9, 1
-	xvpickve2gr.d	$a7, $xr9, 2
-	xvpickve2gr.d	$t0, $xr9, 3
-	xvpickve2gr.d	$t1, $xr8, 0
-	xvpickve2gr.d	$t2, $xr8, 1
-	xvpickve2gr.d	$t3, $xr8, 2
-	xvpickve2gr.d	$t4, $xr8, 3
+	vext2xv.d.w	$xr8, $xr8
+	xvpickve2gr.d	$a5, $xr8, 0
+	xvpickve2gr.d	$a6, $xr8, 1
+	xvpickve2gr.d	$a7, $xr8, 2
+	xvpickve2gr.d	$t0, $xr8, 3
+	xvpickve2gr.d	$t1, $xr9, 0
+	xvpickve2gr.d	$t2, $xr9, 1
+	xvpickve2gr.d	$t3, $xr9, 2
+	xvpickve2gr.d	$t4, $xr9, 3
 	slli.d	$a5, $a5, 2
 	slli.d	$a6, $a6, 2
 	slli.d	$a7, $a7, 2
@@ -539,37 +536,22 @@ PutVbrTag:                              # @PutVbrTag
 	xvfdiv.s	$xr8, $xr8, $xr4
 	xvfcmp.clt.s	$xr9, $xr7, $xr8
 	xvbitsel.v	$xr8, $xr8, $xr7, $xr9
-	xvpickve.w	$xr9, $xr8, 0
-	ftintrz.l.s	$ft1, $ft1
-	movfr2gr.d	$a5, $ft1
+	xvftintrz.wu.s	$xr8, $xr8
+	xvpickve2gr.w	$a5, $xr8, 0
 	vinsgr2vr.b	$vr9, $a5, 0
-	xvpickve.w	$xr10, $xr8, 1
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
+	xvpickve2gr.w	$a5, $xr8, 1
 	vinsgr2vr.b	$vr9, $a5, 1
-	xvpickve.w	$xr10, $xr8, 2
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
+	xvpickve2gr.w	$a5, $xr8, 2
 	vinsgr2vr.b	$vr9, $a5, 2
-	xvpickve.w	$xr10, $xr8, 3
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
+	xvpickve2gr.w	$a5, $xr8, 3
 	vinsgr2vr.b	$vr9, $a5, 3
-	xvpickve.w	$xr10, $xr8, 4
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
+	xvpickve2gr.w	$a5, $xr8, 4
 	vinsgr2vr.b	$vr9, $a5, 4
-	xvpickve.w	$xr10, $xr8, 5
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
+	xvpickve2gr.w	$a5, $xr8, 5
 	vinsgr2vr.b	$vr9, $a5, 5
-	xvpickve.w	$xr10, $xr8, 6
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a5, $ft2
+	xvpickve2gr.w	$a5, $xr8, 6
 	vinsgr2vr.b	$vr9, $a5, 6
-	xvpickve.w	$xr8, $xr8, 7
-	ftintrz.l.s	$ft0, $ft0
-	movfr2gr.d	$a5, $ft0
+	xvpickve2gr.w	$a5, $xr8, 7
 	vinsgr2vr.b	$vr9, $a5, 7
 	add.d	$a5, $s7, $s6
 	vstelm.d	$vr9, $a5, 0, 0

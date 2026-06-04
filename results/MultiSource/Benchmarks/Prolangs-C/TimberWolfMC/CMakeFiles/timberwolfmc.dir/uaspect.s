@@ -84,12 +84,12 @@ uaspect:                                # @uaspect
 	ffint.d.w	$fa2, $fa2
 	fsub.d	$fa0, $fa0, $fa2
 	fcmp.cle.d	$fcc0, $fa1, $fa0
-	srai.d	$s5, $a0, 1
+	srai.d	$s4, $a0, 1
 	movcf2gr	$a0, $fcc0
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
-	srai.d	$s4, $a0, 1
+	srai.d	$s5, $a0, 1
 	pcalau12i	$a0, %got_pc_hi20(penalty)
 	ld.d	$a0, $a0, %got_pc_lo12(penalty)
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
@@ -132,8 +132,8 @@ uaspect:                                # @uaspect
 	move	$a0, $s6
 	move	$a1, $s2
 	move	$a2, $s3
-	move	$a3, $s4
-	move	$a4, $s5
+	move	$a3, $s5
+	move	$a4, $s4
 	xvld	$xr0, $sp, 80                   # 32-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $xr0
 	jirl	$ra, $a5, 0
@@ -151,11 +151,10 @@ uaspect:                                # @uaspect
 	ld.d	$a0, $a0, %got_pc_lo12(occa2ptr)
 	move	$s8, $a0
 	st.d	$a1, $a0, 0
-	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	sub.d	$t5, $a0, $s4
+	sub.d	$t5, $a0, $s5
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	sub.d	$a1, $a0, $s5
+	sub.d	$a1, $a0, $s4
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	beqz	$a0, .LBB0_7
 # %bb.5:                                # %.lr.ph
@@ -363,9 +362,8 @@ uaspect:                                # @uaspect
 	slli.d	$a1, $a1, 2
 	stx.w	$s6, $a0, $a1
 .LBB0_16:                               # %.lr.ph758.preheader
-	ld.d	$t6, $sp, 32                    # 8-byte Folded Reload
-	vinsgr2vr.w	$vr0, $t6, 0
-	vinsgr2vr.w	$vr0, $s5, 2
+	vinsgr2vr.w	$vr0, $s5, 0
+	vinsgr2vr.w	$vr0, $s4, 2
 	vshuf4i.w	$vr1, $vr0, 160
 	xvldi	$xr0, -928
 	move	$a0, $t5
@@ -395,9 +393,8 @@ uaspect:                                # @uaspect
 	vextrins.d	$vr3, $vr2, 16
 	vextrins.d	$vr5, $vr4, 16
 	xvpermi.q	$xr5, $xr3, 2
-	xvftintrz.l.d	$xr2, $xr5
-	xvpermi.d	$xr3, $xr2, 238
-	xvpickev.w	$xr2, $xr3, $xr2
+	xvftintrz.w.d	$xr2, $xr5, $xr5
+	xvpermi.d	$xr2, $xr2, 216
 	vpickve2gr.w	$a1, $vr2, 3
 	movgr2fr.w	$fa3, $a1
 	ffint.d.w	$fa3, $fa3
@@ -449,7 +446,7 @@ uaspect:                                # @uaspect
 	fsub.d	$fa2, $fa2, $fa3
 	fcmp.cle.d	$fcc0, $fa1, $fa2
 	ld.w	$a2, $a0, 20
-	sub.d	$a1, $a1, $t6
+	sub.d	$a1, $a1, $s5
 	movcf2gr	$a3, $fcc0
 	add.d	$a1, $a1, $a3
 	st.w	$a1, $a0, 8
@@ -463,7 +460,7 @@ uaspect:                                # @uaspect
 	ffint.d.w	$fa3, $fa3
 	fsub.d	$fa2, $fa2, $fa3
 	fcmp.cle.d	$fcc0, $fa1, $fa2
-	sub.d	$a1, $a1, $s5
+	sub.d	$a1, $a1, $s4
 	movcf2gr	$a2, $fcc0
 	add.d	$a1, $a1, $a2
 	st.w	$a1, $a0, 12
@@ -485,9 +482,9 @@ uaspect:                                # @uaspect
 	bstrins.d	$a1, $a3, 30, 3
 	xvreplgr2vr.w	$xr1, $s2
 	xvreplve0.d	$xr2, $xr11
-	xvreplgr2vr.w	$xr3, $t6
+	xvreplgr2vr.w	$xr3, $s5
 	xvreplgr2vr.w	$xr4, $s3
-	xvreplgr2vr.w	$xr5, $s5
+	xvreplgr2vr.w	$xr5, $s4
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$a3, $a3, 72
 	move	$a4, $a2
@@ -512,36 +509,32 @@ uaspect:                                # @uaspect
 	vinsgr2vr.w	$vr7, $t0, 3
 	xvpermi.q	$xr7, $xr6, 2
 	xvsub.w	$xr6, $xr7, $xr1
-	vext2xv.d.w	$xr7, $xr6
+	xvpermi.q	$xr7, $xr6, 1
+	vext2xv.d.w	$xr7, $xr7
 	xvffint.d.l	$xr7, $xr7
-	xvpermi.q	$xr6, $xr6, 1
 	vext2xv.d.w	$xr6, $xr6
 	xvffint.d.l	$xr6, $xr6
 	xvfdiv.d	$xr6, $xr6, $xr2
 	xvfdiv.d	$xr7, $xr7, $xr2
-	xvftintrz.l.d	$xr8, $xr7
-	xvpermi.d	$xr9, $xr8, 238
-	xvpickev.w	$xr8, $xr9, $xr8
-	xvftintrz.l.d	$xr9, $xr6
-	xvpermi.d	$xr10, $xr9, 238
-	xvpickev.w	$xr9, $xr10, $xr9
-	vext2xv.d.w	$xr10, $xr8
-	xvpermi.q	$xr8, $xr9, 2
-	xvffint.d.l	$xr10, $xr10
-	vext2xv.d.w	$xr9, $xr9
+	xvftintrz.w.d	$xr8, $xr7, $xr6
+	xvpermi.d	$xr8, $xr8, 216
+	vext2xv.d.w	$xr9, $xr8
 	xvffint.d.l	$xr9, $xr9
-	xvfsub.d	$xr6, $xr6, $xr9
+	xvpermi.q	$xr10, $xr8, 1
+	vext2xv.d.w	$xr10, $xr10
+	xvffint.d.l	$xr10, $xr10
 	xvfsub.d	$xr7, $xr7, $xr10
-	xvfcmp.cle.d	$xr7, $xr0, $xr7
-	xvpickve2gr.d	$a5, $xr7, 0
-	vinsgr2vr.w	$vr9, $a5, 0
-	xvpickve2gr.d	$a5, $xr7, 1
-	vinsgr2vr.w	$vr9, $a5, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	vinsgr2vr.w	$vr9, $a5, 2
-	xvpickve2gr.d	$a5, $xr7, 3
-	vinsgr2vr.w	$vr9, $a5, 3
+	xvfsub.d	$xr6, $xr6, $xr9
 	xvfcmp.cle.d	$xr6, $xr0, $xr6
+	xvpickve2gr.d	$a5, $xr6, 0
+	vinsgr2vr.w	$vr9, $a5, 0
+	xvpickve2gr.d	$a5, $xr6, 1
+	vinsgr2vr.w	$vr9, $a5, 1
+	xvpickve2gr.d	$a5, $xr6, 2
+	vinsgr2vr.w	$vr9, $a5, 2
+	xvpickve2gr.d	$a5, $xr6, 3
+	vinsgr2vr.w	$vr9, $a5, 3
+	xvfcmp.cle.d	$xr6, $xr0, $xr7
 	xvpickve2gr.d	$a5, $xr6, 0
 	vinsgr2vr.w	$vr7, $a5, 0
 	xvpickve2gr.d	$a5, $xr6, 1
@@ -579,36 +572,32 @@ uaspect:                                # @uaspect
 	vinsgr2vr.w	$vr7, $t0, 3
 	xvpermi.q	$xr7, $xr6, 2
 	xvsub.w	$xr6, $xr7, $xr4
-	vext2xv.d.w	$xr7, $xr6
+	xvpermi.q	$xr7, $xr6, 1
+	vext2xv.d.w	$xr7, $xr7
 	xvffint.d.l	$xr7, $xr7
-	xvpermi.q	$xr6, $xr6, 1
 	vext2xv.d.w	$xr6, $xr6
 	xvffint.d.l	$xr6, $xr6
 	xvfmul.d	$xr6, $xr2, $xr6
 	xvfmul.d	$xr7, $xr2, $xr7
-	xvftintrz.l.d	$xr8, $xr7
-	xvpermi.d	$xr9, $xr8, 238
-	xvpickev.w	$xr8, $xr9, $xr8
-	xvftintrz.l.d	$xr9, $xr6
-	xvpermi.d	$xr10, $xr9, 238
-	xvpickev.w	$xr9, $xr10, $xr9
-	vext2xv.d.w	$xr10, $xr8
-	xvpermi.q	$xr8, $xr9, 2
-	xvffint.d.l	$xr10, $xr10
-	vext2xv.d.w	$xr9, $xr9
+	xvftintrz.w.d	$xr8, $xr7, $xr6
+	xvpermi.d	$xr8, $xr8, 216
+	vext2xv.d.w	$xr9, $xr8
 	xvffint.d.l	$xr9, $xr9
-	xvfsub.d	$xr6, $xr6, $xr9
+	xvpermi.q	$xr10, $xr8, 1
+	vext2xv.d.w	$xr10, $xr10
+	xvffint.d.l	$xr10, $xr10
 	xvfsub.d	$xr7, $xr7, $xr10
-	xvfcmp.cle.d	$xr7, $xr0, $xr7
-	xvpickve2gr.d	$a5, $xr7, 0
-	vinsgr2vr.w	$vr9, $a5, 0
-	xvpickve2gr.d	$a5, $xr7, 1
-	vinsgr2vr.w	$vr9, $a5, 1
-	xvpickve2gr.d	$a5, $xr7, 2
-	vinsgr2vr.w	$vr9, $a5, 2
-	xvpickve2gr.d	$a5, $xr7, 3
-	vinsgr2vr.w	$vr9, $a5, 3
+	xvfsub.d	$xr6, $xr6, $xr9
 	xvfcmp.cle.d	$xr6, $xr0, $xr6
+	xvpickve2gr.d	$a5, $xr6, 0
+	vinsgr2vr.w	$vr9, $a5, 0
+	xvpickve2gr.d	$a5, $xr6, 1
+	vinsgr2vr.w	$vr9, $a5, 1
+	xvpickve2gr.d	$a5, $xr6, 2
+	vinsgr2vr.w	$vr9, $a5, 2
+	xvpickve2gr.d	$a5, $xr6, 3
+	vinsgr2vr.w	$vr9, $a5, 3
+	xvfcmp.cle.d	$xr6, $xr0, $xr7
 	xvpickve2gr.d	$a5, $xr6, 0
 	vinsgr2vr.w	$vr7, $a5, 0
 	xvpickve2gr.d	$a5, $xr6, 1
@@ -656,7 +645,7 @@ uaspect:                                # @uaspect
 	fsub.d	$fa1, $fa1, $fa2
 	fcmp.cle.d	$fcc0, $fa0, $fa1
 	ld.w	$a3, $a0, 4
-	sub.d	$a2, $a2, $t6
+	sub.d	$a2, $a2, $s5
 	movcf2gr	$a4, $fcc0
 	add.d	$a2, $a2, $a4
 	st.w	$a2, $a0, -8
@@ -670,7 +659,7 @@ uaspect:                                # @uaspect
 	ffint.d.w	$fa2, $fa2
 	fsub.d	$fa1, $fa1, $fa2
 	fcmp.cle.d	$fcc0, $fa0, $fa1
-	sub.d	$a2, $a2, $s5
+	sub.d	$a2, $a2, $s4
 	movcf2gr	$a3, $fcc0
 	add.d	$a2, $a2, $a3
 	st.w	$a2, $a0, -4

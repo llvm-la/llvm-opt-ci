@@ -603,38 +603,34 @@ initcheck:                              # @initcheck
 	xvffint.d.l	$xr10, $xr10
 	xvfmul.d	$xr11, $xr13, $xr11
 	xvfmul.d	$xr10, $xr14, $xr10
-	xvftintrz.l.d	$xr11, $xr11
-	xvpermi.d	$xr12, $xr11, 238
-	xvpickev.w	$xr11, $xr12, $xr11
-	xvftintrz.l.d	$xr10, $xr10
-	xvpermi.d	$xr12, $xr10, 238
-	fld.d	$ft5, $t8, 56
-	fld.d	$ft6, $fp, 56
-	xvpickev.w	$xr10, $xr12, $xr10
-	fld.d	$ft4, $t6, 56
+	xvftintrz.w.d	$xr11, $xr11, $xr11
+	xvpermi.d	$xr11, $xr11, 216
+	xvftintrz.w.d	$xr10, $xr10, $xr10
+	fld.d	$ft4, $t8, 56
+	fld.d	$ft5, $fp, 56
+	xvpermi.d	$xr10, $xr10, 216
+	fld.d	$ft6, $t6, 56
 	fld.d	$ft7, $t7, 56
-	vextrins.d	$vr13, $vr14, 16
-	fld.d	$ft6, $t3, 56
+	vextrins.d	$vr12, $vr13, 16
+	fld.d	$ft5, $t3, 56
 	fld.d	$ft8, $t4, 56
 	fld.d	$ft9, $t5, 56
 	fld.d	$ft10, $t2, 56
-	vextrins.d	$vr12, $vr15, 16
-	xvpermi.q	$xr12, $xr13, 2
+	vextrins.d	$vr14, $vr15, 16
+	xvpermi.q	$xr14, $xr12, 2
 	vextrins.d	$vr16, $vr17, 16
-	vextrins.d	$vr14, $vr18, 16
-	xvpermi.q	$xr14, $xr16, 2
+	vextrins.d	$vr13, $vr18, 16
+	xvpermi.q	$xr13, $xr16, 2
 	vext2xv.d.w	$xr9, $xr9
 	xvffint.d.l	$xr9, $xr9
 	vext2xv.d.w	$xr8, $xr8
 	xvffint.d.l	$xr8, $xr8
-	xvfmul.d	$xr9, $xr12, $xr9
-	xvfmul.d	$xr8, $xr14, $xr8
-	xvftintrz.l.d	$xr9, $xr9
-	xvpermi.d	$xr12, $xr9, 238
-	xvpickev.w	$xr9, $xr12, $xr9
-	xvftintrz.l.d	$xr8, $xr8
-	xvpermi.d	$xr12, $xr8, 238
-	xvpickev.w	$xr8, $xr12, $xr8
+	xvfmul.d	$xr9, $xr14, $xr9
+	xvfmul.d	$xr8, $xr13, $xr8
+	xvftintrz.w.d	$xr9, $xr9, $xr9
+	xvpermi.d	$xr9, $xr9, 216
+	xvftintrz.w.d	$xr8, $xr8, $xr8
+	xvpermi.d	$xr8, $xr8, 216
 	vadd.w	$vr2, $vr2, $vr11
 	vadd.w	$vr4, $vr4, $vr10
 	vadd.w	$vr2, $vr2, $vr9

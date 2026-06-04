@@ -545,10 +545,10 @@ putAtomInBox:                           # @putAtomInBox
 getBoxFromCoord:                        # @getBoxFromCoord
 # %bb.0:
 	fld.d	$fa3, $a1, 0
-	vld	$vr0, $a1, 8
+	vld	$vr1, $a1, 8
 	fld.d	$fa4, $a0, 48
 	vld	$vr2, $a0, 32
-	vld	$vr1, $a0, 104
+	vld	$vr0, $a0, 104
 	fcmp.cule.d	$fcc0, $fa4, $fa3
 	bcnez	$fcc0, .LBB5_2
 # %bb.1:
@@ -572,18 +572,16 @@ getBoxFromCoord:                        # @getBoxFromCoord
 	ld.w	$a1, $a0, 0
 .LBB5_3:
 	fld.d	$fa3, $a0, 56
-	vreplvei.d	$vr4, $vr0, 0
+	vreplvei.d	$vr4, $vr1, 0
 	fld.d	$fa5, $a0, 64
 	fcmp.clt.d	$fcc1, $fa4, $fa3
-	vfsub.d	$vr2, $vr0, $vr2
-	vreplvei.d	$vr0, $vr0, 1
-	fcmp.clt.d	$fcc0, $fa0, $fa5
-	vfmul.d	$vr0, $vr2, $vr1
-	vfrintrm.d	$vr0, $vr0
+	vfsub.d	$vr2, $vr1, $vr2
+	vreplvei.d	$vr1, $vr1, 1
+	fcmp.clt.d	$fcc0, $fa1, $fa5
 	ld.d	$a2, $a0, 4
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvpickev.w	$xr0, $xr1, $xr0
+	vfmul.d	$vr0, $vr2, $vr0
+	vfrintrm.d	$vr0, $vr0
+	xvftintrz.w.d	$xr0, $xr0, $xr0
 	vinsgr2vr.d	$vr1, $a2, 0
 	vpickve2gr.w	$a2, $vr1, 0
 	addi.w	$a3, $a2, -1
@@ -822,12 +820,10 @@ updateLinkCells:                        # @updateLinkCells
 	fcmp.cule.d	$fcc0, $fa0, $fa1
 	fld.d	$fa5, $a0, 64
 	vreplvei.d	$vr6, $vr2, 1
+	ld.d	$t7, $a0, 4
 	vfmul.d	$vr2, $vr4, $vr3
 	vfrintrm.d	$vr2, $vr2
-	ld.d	$t7, $a0, 4
-	xvftintrz.l.d	$xr2, $xr2
-	xvpermi.d	$xr3, $xr2, 238
-	xvpickev.w	$xr2, $xr3, $xr2
+	xvftintrz.w.d	$xr2, $xr2, $xr2
 	vinsgr2vr.d	$vr4, $t7, 0
 	vpickve2gr.w	$t7, $vr4, 0
 	addi.w	$t8, $t7, -1

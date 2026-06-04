@@ -3449,15 +3449,10 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	xvffint.d.l	$xr5, $xr5
 	vext2xv.d.w	$xr4, $xr4
 	xvffint.d.l	$xr4, $xr4
-	xvfmul.d	$xr5, $xr2, $xr5
 	xvfmul.d	$xr4, $xr2, $xr4
-	xvftintrz.l.d	$xr4, $xr4
-	xvpermi.d	$xr6, $xr4, 238
-	xvpickev.w	$xr4, $xr6, $xr4
-	xvftintrz.l.d	$xr5, $xr5
-	xvpermi.d	$xr6, $xr5, 238
-	xvpickev.w	$xr5, $xr6, $xr5
-	xvpermi.q	$xr4, $xr5, 2
+	xvfmul.d	$xr5, $xr2, $xr5
+	xvftintrz.w.d	$xr4, $xr5, $xr4
+	xvpermi.d	$xr4, $xr4, 216
 	xvst	$xr4, $a4, 0
 	xvld	$xr4, $a5, 0
 	xvpermi.q	$xr5, $xr4, 1
@@ -3465,15 +3460,10 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	xvffint.d.l	$xr5, $xr5
 	vext2xv.d.w	$xr4, $xr4
 	xvffint.d.l	$xr4, $xr4
-	xvfmul.d	$xr5, $xr3, $xr5
 	xvfmul.d	$xr4, $xr3, $xr4
-	xvftintrz.l.d	$xr4, $xr4
-	xvpermi.d	$xr6, $xr4, 238
-	xvpickev.w	$xr4, $xr6, $xr4
-	xvftintrz.l.d	$xr5, $xr5
-	xvpermi.d	$xr6, $xr5, 238
-	xvpickev.w	$xr5, $xr6, $xr5
-	xvpermi.q	$xr4, $xr5, 2
+	xvfmul.d	$xr5, $xr3, $xr5
+	xvftintrz.w.d	$xr4, $xr5, $xr4
+	xvpermi.d	$xr4, $xr4, 216
 	xvst	$xr4, $a6, 0
 	addi.d	$a7, $a7, -8
 	addi.d	$a6, $a6, 32

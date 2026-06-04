@@ -222,12 +222,8 @@ createFccLattice:                       # @createFccLattice
 	vfrintrm.d	$vr0, $vr0
 	vfdiv.d	$vr1, $vr1, $vr2
 	vfrintrp.d	$vr1, $vr1
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr2, $xr0, 238
-	xvpickev.w	$xr0, $xr2, $xr0
-	xvftintrz.l.d	$xr1, $xr1
-	xvpermi.d	$xr2, $xr1, 238
-	xvpickev.w	$xr1, $xr2, $xr1
+	xvftintrz.w.d	$xr0, $xr0, $xr0
+	xvftintrz.w.d	$xr1, $xr1, $xr1
 	vslt.w	$vr2, $vr0, $vr1
 	vext2xv.d.w	$xr3, $xr2
 	vpickve2gr.d	$a0, $vr2, 0

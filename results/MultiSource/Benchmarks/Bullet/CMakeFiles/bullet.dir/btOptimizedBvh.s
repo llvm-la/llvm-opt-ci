@@ -868,7 +868,7 @@ _ZN14btOptimizedBvh14updateBvhNodesEP23btStridingMeshInterfaceiii: # @_ZN14btOpt
 	fcvt.d.s	$fa0, $fa0
 	mul.w	$a4, $a2, $a6
 	vldx	$vr2, $a1, $a4
-	fcvt.d.s	$fa4, $fa1
+	fcvt.d.s	$fa5, $fa1
 	add.d	$a4, $a1, $a4
 	vextrins.d	$vr3, $vr0, 16
 	vfmul.d	$vr0, $vr2, $vr3
@@ -876,22 +876,22 @@ _ZN14btOptimizedBvh14updateBvhNodesEP23btStridingMeshInterfaceiii: # @_ZN14btOpt
 	vfcvt.s.d	$vr0, $vr0, $vr0
 	mul.w	$a4, $a2, $a5
 	vldx	$vr2, $a1, $a4
-	fmul.d	$fa1, $fa1, $fa4
+	fmul.d	$fa1, $fa1, $fa5
 	fcvt.s.d	$fa1, $fa1
 	add.d	$a4, $a1, $a4
 	vfmul.d	$vr2, $vr2, $vr3
 	mul.w	$a2, $a2, $a3
-	vldx	$vr5, $a1, $a2
+	vldx	$vr4, $a1, $a2
 	vfcvt.s.d	$vr2, $vr0, $vr2
 	fld.d	$fa6, $a4, 16
 	add.d	$a1, $a1, $a2
-	vfmul.d	$vr5, $vr5, $vr3
+	vfmul.d	$vr4, $vr4, $vr3
 	fld.d	$fa7, $a1, 16
-	fmul.d	$fa3, $fa6, $fa4
+	fmul.d	$fa3, $fa6, $fa5
 	fcvt.s.d	$fa3, $fa3
-	vfcvt.s.d	$vr6, $vr0, $vr5
-	fmul.d	$fa4, $fa7, $fa4
-	fcvt.s.d	$fa4, $fa4
+	vfcvt.s.d	$vr4, $vr0, $vr4
+	fmul.d	$fa5, $fa7, $fa5
+	fcvt.s.d	$fa5, $fa5
 	b	.LBB6_25
 .LBB6_21:                               #   in Loop: Header=BB6_3 Depth=1
 	ld.w	$a5, $a3, 8
@@ -904,7 +904,7 @@ _ZN14btOptimizedBvh14updateBvhNodesEP23btStridingMeshInterfaceiii: # @_ZN14btOpt
 .LBB6_24:                               # %_Z8btSetMinIfEvRT_RKS0_.exit.i.loopexit
                                         #   in Loop: Header=BB6_3 Depth=1
 	fld.s	$fa0, $fp, 12
-	fld.s	$fa4, $fp, 16
+	fld.s	$fa5, $fp, 16
 	mul.w	$a4, $a2, $a5
 	add.d	$a5, $a1, $a4
 	fldx.d	$fa2, $a1, $a4
@@ -912,7 +912,7 @@ _ZN14btOptimizedBvh14updateBvhNodesEP23btStridingMeshInterfaceiii: # @_ZN14btOpt
 	mul.w	$a4, $a2, $a6
 	fldx.d	$fa3, $a1, $a4
 	vfmul.s	$vr0, $vr2, $vr1
-	fld.s	$fa5, $a5, 8
+	fld.s	$fa6, $a5, 8
 	add.d	$a4, $a1, $a4
 	vfmul.s	$vr2, $vr3, $vr1
 	mul.w	$a2, $a2, $a3
@@ -920,69 +920,66 @@ _ZN14btOptimizedBvh14updateBvhNodesEP23btStridingMeshInterfaceiii: # @_ZN14btOpt
 	fld.s	$fa7, $a4, 8
 	add.d	$a1, $a1, $a2
 	fld.s	$ft0, $a1, 8
-	vfmul.s	$vr6, $vr3, $vr1
-	fmul.s	$fa1, $fa5, $fa4
-	fmul.s	$fa3, $fa7, $fa4
-	fmul.s	$fa4, $ft0, $fa4
+	vfmul.s	$vr4, $vr3, $vr1
+	fmul.s	$fa1, $fa6, $fa5
+	fmul.s	$fa3, $fa7, $fa5
+	fmul.s	$fa5, $ft0, $fa5
 .LBB6_25:                               # %_Z8btSetMinIfEvRT_RKS0_.exit.i
                                         #   in Loop: Header=BB6_3 Depth=1
-	vfcmp.clt.s	$vr7, $vr6, $vr12
-	fcmp.clt.s	$fcc0, $fa4, $fs0
-	fsel	$fa5, $fs0, $fa4, $fcc0
-	vreplvei.w	$vr8, $vr6, 0
+	vfcmp.clt.s	$vr7, $vr4, $vr12
+	fcmp.clt.s	$fcc0, $fa5, $fs0
+	fsel	$fa6, $fs0, $fa5, $fcc0
+	vreplvei.w	$vr8, $vr4, 0
 	fcmp.clt.s	$fcc0, $fs1, $ft0
 	fsel	$ft0, $fs1, $ft0, $fcc0
-	vreplvei.w	$vr9, $vr6, 1
+	vreplvei.w	$vr9, $vr4, 1
 	fcmp.clt.s	$fcc0, $fs1, $ft1
 	fsel	$ft1, $fs1, $ft1, $fcc0
-	fcmp.clt.s	$fcc0, $fs1, $fa4
-	fsel	$fa4, $fs1, $fa4, $fcc0
-	fcmp.clt.s	$fcc0, $fa3, $fa5
-	fsel	$fa5, $fa5, $fa3, $fcc0
+	fcmp.clt.s	$fcc0, $fs1, $fa5
+	fsel	$fa5, $fs1, $fa5, $fcc0
+	fcmp.clt.s	$fcc0, $fa3, $fa6
+	fsel	$fa6, $fa6, $fa3, $fcc0
 	vreplvei.w	$vr10, $vr2, 0
 	fcmp.clt.s	$fcc0, $ft0, $ft2
 	fsel	$ft0, $ft0, $ft2, $fcc0
 	vreplvei.w	$vr10, $vr2, 1
 	fcmp.clt.s	$fcc0, $ft1, $ft2
 	fsel	$ft1, $ft1, $ft2, $fcc0
-	fcmp.clt.s	$fcc0, $fa4, $fa3
-	fsel	$ft2, $fa4, $fa3, $fcc0
-	fcmp.clt.s	$fcc0, $fa1, $fa5
-	fsel	$ft3, $fa5, $fa1, $fcc0
+	fcmp.clt.s	$fcc0, $fa5, $fa3
+	fsel	$ft2, $fa5, $fa3, $fcc0
+	fcmp.clt.s	$fcc0, $fa1, $fa6
+	fsel	$ft3, $fa6, $fa1, $fcc0
 	vreplvei.w	$vr3, $vr0, 0
 	fcmp.clt.s	$fcc0, $ft0, $fa3
 	fsel	$ft0, $ft0, $fa3, $fcc0
 	vreplvei.w	$vr3, $vr0, 1
 	fcmp.clt.s	$fcc0, $ft1, $fa3
 	fsel	$fa3, $ft1, $fa3, $fcc0
-	fld.s	$fa4, $s2, 16
-	fld.s	$fa5, $s2, 48
+	fld.s	$fa5, $s2, 16
+	fld.s	$fa6, $s2, 48
 	fcmp.clt.s	$fcc0, $ft2, $fa1
 	fsel	$fa1, $ft2, $fa1, $fcc0
-	fsub.s	$ft1, $ft3, $fa4
-	fmul.s	$ft1, $ft1, $fa5
-	vbitsel.v	$vr6, $vr12, $vr6, $vr7
-	vfcmp.clt.s	$vr7, $vr2, $vr6
-	vbitsel.v	$vr2, $vr6, $vr2, $vr7
-	fld.s	$fa6, $s2, 8
+	fsub.s	$ft1, $ft3, $fa5
+	fmul.s	$ft1, $ft1, $fa6
+	vbitsel.v	$vr4, $vr12, $vr4, $vr7
+	vfcmp.clt.s	$vr7, $vr2, $vr4
+	vbitsel.v	$vr2, $vr4, $vr2, $vr7
+	fld.s	$fa4, $s2, 8
 	vfcmp.clt.s	$vr7, $vr0, $vr2
 	vbitsel.v	$vr0, $vr2, $vr0, $vr7
 	fld.s	$fa2, $s2, 12
-	fsub.s	$fa7, $ft0, $fa6
+	fsub.s	$fa7, $ft0, $fa4
 	fld.s	$ft0, $s2, 40
 	fld.s	$ft2, $s2, 44
-	vextrins.w	$vr6, $vr2, 16
-	vfsub.s	$vr0, $vr0, $vr6
-	fmul.s	$fa6, $fa7, $ft0
+	vextrins.w	$vr4, $vr2, 16
+	vfsub.s	$vr0, $vr0, $vr4
+	fmul.s	$fa4, $fa7, $ft0
 	vextrins.w	$vr8, $vr10, 16
 	vfmul.s	$vr0, $vr0, $vr8
-	vreplvei.w	$vr7, $vr0, 0
-	ftintrz.l.s	$fa7, $fa7
-	movfr2gr.d	$a1, $fa7
+	xvftintrz.wu.s	$xr0, $xr0
+	xvpickve2gr.w	$a1, $xr0, 0
 	vinsgr2vr.h	$vr7, $a1, 0
-	vreplvei.w	$vr0, $vr0, 1
-	ftintrz.l.s	$fa0, $fa0
-	movfr2gr.d	$a1, $fa0
+	xvpickve2gr.w	$a1, $xr0, 1
 	vinsgr2vr.h	$vr7, $a1, 1
 	vbitclri.h	$vr0, $vr7, 0
 	ftintrz.l.s	$fa7, $ft1
@@ -993,10 +990,10 @@ _ZN14btOptimizedBvh14updateBvhNodesEP23btStridingMeshInterfaceiii: # @_ZN14btOpt
 	vstelm.h	$vr0, $s6, -30, 1
 	st.h	$a1, $s6, -28
 	fsub.s	$fa0, $fa3, $fa2
-	fsub.s	$fa1, $fa1, $fa4
+	fsub.s	$fa1, $fa1, $fa5
 	fmul.s	$fa0, $fa0, $ft2
-	fmul.s	$fa1, $fa1, $fa5
-	fadd.s	$fa2, $fa6, $ft5
+	fmul.s	$fa1, $fa1, $fa6
+	fadd.s	$fa2, $fa4, $ft5
 	ftintrz.l.s	$fa2, $fa2
 	movfr2gr.d	$a1, $fa2
 	ori	$a1, $a1, 1

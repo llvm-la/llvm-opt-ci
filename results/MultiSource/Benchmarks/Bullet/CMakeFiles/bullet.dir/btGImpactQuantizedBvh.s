@@ -879,18 +879,18 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	bgez	$a1, .LBB5_2
 # %bb.4:                                #   in Loop: Header=BB5_3 Depth=1
 	ld.hu	$a1, $a2, -4
-	fld.s	$fa2, $fp, 80
+	fld.s	$fa1, $fp, 80
 	ld.hu	$a3, $a2, -2
 	fld.s	$fa4, $fp, 48
 	movgr2fr.w	$fa0, $a1
 	ffint.s.w	$fa6, $fa0
 	movgr2fr.w	$fa0, $a3
 	ffint.s.w	$fa0, $fa0
-	fdiv.s	$fa0, $fa0, $fa2
+	fdiv.s	$fa0, $fa0, $fa1
 	fadd.s	$ft3, $fa4, $fa0
 	fld.s	$fa0, $fp, 76
 	fld.s	$fa3, $fp, 72
-	fld.s	$fa1, $fp, 44
+	fld.s	$fa2, $fp, 44
 	fld.s	$fa5, $fp, 40
 	ld.hu	$a1, $a2, -6
 	ld.hu	$a3, $a2, -8
@@ -905,15 +905,15 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	movgr2fr.w	$ft2, $a5
 	ffint.s.w	$ft2, $ft2
 	fdiv.s	$fa7, $fa7, $fa3
-	fdiv.s	$ft0, $ft0, $fa2
+	fdiv.s	$ft0, $ft0, $fa1
 	fdiv.s	$ft1, $ft1, $fa0
 	fdiv.s	$ft2, $ft2, $fa3
 	fdiv.s	$fa6, $fa6, $fa0
 	fadd.s	$ft4, $fa5, $fa7
 	fadd.s	$ft0, $ft0, $fa4
-	fadd.s	$fa7, $ft1, $fa1
+	fadd.s	$fa7, $ft1, $fa2
 	fadd.s	$ft1, $ft2, $fa5
-	fadd.s	$ft2, $fa1, $fa6
+	fadd.s	$ft2, $fa2, $fa6
 	fcmp.clt.s	$fcc0, $ft1, $fs0
 	fsel	$fa6, $fs0, $ft1, $fcc0
 	fcmp.clt.s	$fcc0, $fa7, $fs0
@@ -944,8 +944,8 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	fdiv.s	$ft3, $ft3, $fa0
 	movgr2fr.w	$ft5, $a5
 	ffint.s.w	$ft5, $ft5
-	fdiv.s	$ft5, $ft5, $fa2
-	fadd.s	$ft3, $fa1, $ft3
+	fdiv.s	$ft5, $ft5, $fa1
+	fadd.s	$ft3, $fa2, $ft3
 	fadd.s	$ft5, $fa4, $ft5
 	ld.hu	$a4, $a3, 6
 	ld.hu	$a5, $a3, 4
@@ -960,12 +960,12 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	movgr2fr.w	$ft9, $a1
 	ffint.s.w	$ft9, $ft9
 	fdiv.s	$ft6, $ft6, $fa3
-	fdiv.s	$ft7, $ft7, $fa2
+	fdiv.s	$ft7, $ft7, $fa1
 	fdiv.s	$ft8, $ft8, $fa0
 	fdiv.s	$ft9, $ft9, $fa3
 	fadd.s	$ft6, $fa5, $ft6
 	fadd.s	$ft7, $ft7, $fa4
-	fadd.s	$ft8, $ft8, $fa1
+	fadd.s	$ft8, $ft8, $fa2
 	fadd.s	$ft9, $ft9, $fa5
 	fcmp.clt.s	$fcc0, $ft9, $fa6
 	fsel	$fa6, $fa6, $ft9, $fcc0
@@ -981,22 +981,22 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	fsel	$ft4, $ft4, $ft5, $fcc0
 .LBB5_6:                                #   in Loop: Header=BB5_3 Depth=1
 	fld.s	$ft5, $fp, 64
-	fcmp.clt.s	$fcc0, $ft2, $fa1
-	fsel	$ft3, $ft2, $fa1, $fcc0
+	fcmp.clt.s	$fcc0, $ft2, $fa2
+	fsel	$ft3, $ft2, $fa2, $fcc0
 	fcmp.clt.s	$fcc0, $ft4, $fa4
 	fsel	$ft2, $ft4, $fa4, $fcc0
 	fcmp.clt.s	$fcc0, $ft5, $ft2
 	fsel	$ft2, $ft2, $ft5, $fcc0
 	fsub.s	$ft2, $ft2, $fa4
-	fmul.s	$ft2, $fa2, $ft2
+	fmul.s	$ft2, $fa1, $ft2
 	fld.s	$ft4, $fp, 60
 	fld.s	$ft6, $fp, 56
 	fcmp.clt.s	$fcc0, $ft1, $fa5
 	fsel	$ft1, $ft1, $fa5, $fcc0
 	fcmp.clt.s	$fcc0, $ft0, $fa4
 	fsel	$ft0, $ft0, $fa4, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fa1
-	fsel	$fa7, $fa7, $fa1, $fcc0
+	fcmp.clt.s	$fcc0, $fa7, $fa2
+	fsel	$fa7, $fa7, $fa2, $fcc0
 	fcmp.clt.s	$fcc0, $fa6, $fa5
 	fsel	$fa6, $fa6, $fa5, $fcc0
 	fcmp.clt.s	$fcc0, $ft6, $ft1
@@ -1020,36 +1020,25 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	vextrins.w	$vr6, $vr8, 32
 	vextrins.w	$vr6, $vr9, 48
 	vbitsel.v	$vr6, $vr6, $vr13, $vr15
-	vextrins.w	$vr5, $vr1, 16
+	vextrins.w	$vr5, $vr2, 16
 	vextrins.w	$vr5, $vr4, 32
 	vshuf4i.w	$vr4, $vr5, 36
 	vfsub.s	$vr4, $vr6, $vr4
 	vextrins.w	$vr3, $vr0, 16
-	vextrins.w	$vr3, $vr2, 32
-	vshuf4i.w	$vr2, $vr3, 36
-	vfmul.s	$vr2, $vr2, $vr4
+	vextrins.w	$vr3, $vr1, 32
+	vshuf4i.w	$vr1, $vr3, 36
+	vfmul.s	$vr1, $vr1, $vr4
 	vldi	$vr3, -3265
-	vfadd.s	$vr2, $vr2, $vr3
-	vreplvei.w	$vr3, $vr2, 3
-	ftintrz.l.s	$fa3, $fa3
-	movfr2gr.d	$a1, $fa3
-	vreplvei.w	$vr3, $vr2, 2
-	ftintrz.l.s	$fa3, $fa3
-	movfr2gr.d	$a3, $fa3
-	vreplvei.w	$vr3, $vr2, 1
-	ftintrz.l.s	$fa3, $fa3
-	movfr2gr.d	$a4, $fa3
-	vreplvei.w	$vr2, $vr2, 0
-	ftintrz.l.s	$fa2, $fa2
-	movfr2gr.d	$a5, $fa2
-	st.h	$a5, $a2, -28
-	st.h	$a4, $a2, -26
-	st.h	$a3, $a2, -24
+	vfadd.s	$vr1, $vr1, $vr3
+	vftintrz.wu.s	$vr1, $vr1
+	vstelm.h	$vr1, $a2, -28, 0
+	vstelm.h	$vr1, $a2, -26, 2
+	vstelm.h	$vr1, $a2, -24, 4
 	fcmp.clt.s	$fcc0, $ft4, $ft3
-	fsel	$fa2, $ft3, $ft4, $fcc0
-	fsub.s	$fa1, $fa2, $fa1
-	fmul.s	$fa0, $fa0, $fa1
-	st.h	$a1, $a2, -22
+	fsel	$fa3, $ft3, $ft4, $fcc0
+	fsub.s	$fa2, $fa3, $fa2
+	fmul.s	$fa0, $fa0, $fa2
+	vstelm.h	$vr1, $a2, -22, 6
 	vldi	$vr1, -1184
 	fadd.s	$fa0, $fa0, $fa1
 	ftintrz.l.s	$fa0, $fa0

@@ -3361,9 +3361,8 @@ _ZL13BM_PIC_1D_RAWRN9benchmark5StateE:  # @_ZL13BM_PIC_1D_RAWRN9benchmark5StateE
 	xvst	$xr4, $a4, 0
 	xvfadd.d	$xr4, $xr4, $xr6
 	xvfadd.d	$xr4, $xr0, $xr4
-	xvftintrz.l.d	$xr5, $xr4
-	xvpermi.d	$xr6, $xr5, 238
-	xvpickev.w	$xr5, $xr6, $xr5
+	xvftintrz.w.d	$xr5, $xr4, $xr4
+	xvpermi.d	$xr5, $xr5, 216
 	vext2xv.d.w	$xr6, $xr5
 	xvffint.d.l	$xr6, $xr6
 	xvfsub.d	$xr4, $xr4, $xr6

@@ -1038,9 +1038,7 @@ IntersectObjs:                          # @IntersectObjs
 	lu52i.d	$a5, $a5, 1038
 	vreplgr2vr.d	$vr1, $a5
 	vfadd.d	$vr0, $vr0, $vr1
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvpickev.w	$xr0, $xr1, $xr0
+	xvftintrz.w.d	$xr0, $xr0, $xr0
 	vpickve2gr.w	$a5, $vr0, 0
 	vpickve2gr.w	$a6, $vr0, 1
 	add.d	$a5, $a6, $a5

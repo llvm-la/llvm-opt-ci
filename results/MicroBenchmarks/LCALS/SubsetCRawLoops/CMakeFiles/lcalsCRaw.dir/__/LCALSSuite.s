@@ -1320,9 +1320,7 @@ _Z22defineLoopSuiteRunInfoRKSt6vectorI13LoopVariantIDSaIS0_EEPbdd: # @_Z22define
 	st.w	$a0, $a1, 0
 	vreplvei.d	$vr1, $vr1, 0
 	vfmul.d	$vr0, $vr1, $vr0
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvpickev.w	$xr0, $xr1, $xr0
+	xvftintrz.w.d	$xr0, $xr0, $xr0
 	vaddi.wu	$vr0, $vr0, 3
 	vmul.w	$vr1, $vr0, $vr0
 	vmul.w	$vr1, $vr1, $vr0
@@ -1593,9 +1591,7 @@ _Z22defineLoopSuiteRunInfoRKSt6vectorI13LoopVariantIDSaIS0_EEPbdd: # @_Z22define
 	st.w	$a0, $a1, 0
 	vreplvei.d	$vr1, $vr1, 0
 	vfmul.d	$vr0, $vr1, $vr0
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvpickev.w	$xr0, $xr1, $xr0
+	xvftintrz.w.d	$xr0, $xr0, $xr0
 	vaddi.wu	$vr0, $vr0, 3
 	vmul.w	$vr1, $vr0, $vr0
 	vmul.w	$vr1, $vr1, $vr0

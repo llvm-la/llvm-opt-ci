@@ -2069,9 +2069,7 @@ expandbox:                              # @expandbox
 	ftintrz.w.d	$fa1, $fa1
 	movfr2gr.s	$a2, $fa1
 	vfrintrm.d	$vr0, $vr0
-	xvftintrz.l.d	$xr0, $xr0
-	xvpermi.d	$xr1, $xr0, 238
-	xvpickev.w	$xr0, $xr1, $xr0
+	xvftintrz.w.d	$xr0, $xr0, $xr0
 	vreplgr2vr.d	$vr1, $s3
 	vsrl.w	$vr0, $vr0, $vr1
 	vreplgr2vr.d	$vr1, $s4

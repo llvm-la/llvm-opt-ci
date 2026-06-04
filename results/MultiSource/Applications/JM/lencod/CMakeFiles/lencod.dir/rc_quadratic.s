@@ -2835,9 +2835,16 @@ updateQPRC3:                            # @updateQPRC3
 .Lfunc_end7:
 	.size	updateQPRC3, .Lfunc_end7-updateQPRC3
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function rc_init_GOP
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function rc_init_GOP
 .LCPI8_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI8_1:
 	.dword	0x4000624dd2f1a9fc              # double 2.048
 	.text
 	.globl	rc_init_GOP
@@ -3029,27 +3036,30 @@ rc_init_GOP:                            # @rc_init_GOP
 	xvreplve0.d	$xr1, $xr0
 	addi.d	$a7, $a3, 108
 	lu12i.w	$t0, 1
+	pcalau12i	$t1, %pc_hi20(.LCPI8_0)
+	xvld	$xr2, $t1, %pc_lo12(.LCPI8_0)
 	ori	$t0, $t0, 1104
 	add.d	$t0, $a4, $t0
-	xvldi	$xr2, -928
+	xvldi	$xr3, -928
 	move	$t1, $a6
 	.p2align	4, , 16
 .LBB8_26:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr3, $t0, -32
-	xvld	$xr4, $t0, 0
-	xvfmadd.d	$xr3, $xr3, $xr1, $xr2
-	xvfmadd.d	$xr4, $xr4, $xr1, $xr2
-	xvfrintrm.d	$xr3, $xr3
+	xvld	$xr4, $t0, -32
+	xvld	$xr5, $t0, 0
+	xvfmadd.d	$xr4, $xr4, $xr1, $xr3
+	xvfmadd.d	$xr5, $xr5, $xr1, $xr3
 	xvfrintrm.d	$xr4, $xr4
-	xvftintrz.l.d	$xr3, $xr3
-	xvpermi.d	$xr5, $xr3, 238
-	xvpickev.w	$xr3, $xr5, $xr3
-	xvftintrz.l.d	$xr4, $xr4
-	xvpermi.d	$xr5, $xr4, 238
-	xvpickev.w	$xr4, $xr5, $xr4
-	vst	$vr3, $a7, -16
-	vst	$vr4, $a7, 0
+	xvfrintrm.d	$xr5, $xr5
+	xvftintrz.w.d	$xr4, $xr4, $xr4
+	xvpermi.d	$xr4, $xr4, 216
+	xvftintrz.w.d	$xr5, $xr5, $xr5
+	xvpermi.d	$xr5, $xr5, 216
+	xvpermi.d	$xr4, $xr4, 68
+	xvpermi.d	$xr5, $xr5, 68
+	xvori.b	$xr6, $xr2, 0
+	xvshuf.d	$xr6, $xr5, $xr4
+	xvst	$xr6, $a7, -16
 	addi.d	$t1, $t1, -8
 	addi.d	$a7, $a7, 32
 	addi.d	$t0, $t0, 64
@@ -3100,8 +3110,8 @@ rc_init_GOP:                            # @rc_init_GOP
 	fadd.s	$fa3, $fa4, $fa3
 	ftintrz.w.s	$fa3, $fa3
 	movfr2gr.s	$a5, $fa3
-	pcalau12i	$a7, %pc_hi20(.LCPI8_0)
-	fld.d	$fa3, $a7, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a7, %pc_hi20(.LCPI8_1)
+	fld.d	$fa3, $a7, %pc_lo12(.LCPI8_1)
 	st.w	$a5, $a0, 1564
 	ffint.d.w	$fa2, $fa2
 	fcvt.d.s	$fa4, $fa0

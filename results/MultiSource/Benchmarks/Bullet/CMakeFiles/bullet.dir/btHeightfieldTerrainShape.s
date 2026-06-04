@@ -780,9 +780,7 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	fadd.d	$fa1, $ft7, $fa1
 	vori.b	$vr9, $vr2, 0
 	vextrins.d	$vr9, $vr1, 16
-	xvftintrz.l.d	$xr1, $xr9
-	xvpermi.d	$xr9, $xr1, 238
-	xvpickev.w	$xr1, $xr9, $xr1
+	xvftintrz.w.d	$xr1, $xr9, $xr9
 	vfcmp.clt.s	$vr9, $vr6, $vr4
 	vbitsel.v	$vr4, $vr6, $vr4, $vr9
 	fcmp.clt.s	$fcc0, $fa5, $ft0
@@ -802,9 +800,7 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	fadd.d	$fa3, $fa6, $fa4
 	vori.b	$vr4, $vr5, 0
 	vextrins.d	$vr4, $vr3, 16
-	xvftintrz.l.d	$xr3, $xr4
-	xvpermi.d	$xr4, $xr3, 238
-	xvpickev.w	$xr4, $xr4, $xr3
+	xvftintrz.w.d	$xr4, $xr4, $xr4
 	ld.d	$a1, $a0, 76
 	vsubi.wu	$vr3, $vr1, 1
 	ld.w	$a0, $a0, 120
@@ -814,12 +810,8 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	vsubi.wu	$vr1, $vr1, 1
 	beq	$a0, $a1, .LBB9_112
 # %bb.1:
-	xvftintrz.l.d	$xr2, $xr2
-	xvpermi.d	$xr6, $xr2, 238
-	xvpickev.w	$xr2, $xr6, $xr2
-	xvftintrz.l.d	$xr5, $xr5
-	xvpermi.d	$xr6, $xr5, 238
-	xvpickev.w	$xr5, $xr6, $xr5
+	xvftintrz.w.d	$xr2, $xr2, $xr2
+	xvftintrz.w.d	$xr5, $xr5, $xr5
 	vsubi.wu	$vr2, $vr2, 1
 	ori	$a1, $zero, 1
 	vaddi.wu	$vr5, $vr5, 1

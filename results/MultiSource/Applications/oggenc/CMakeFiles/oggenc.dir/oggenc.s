@@ -62952,54 +62952,51 @@ vorbis_lsp_to_curve:                    # @vorbis_lsp_to_curve
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr3, $a2, 0
 	xvpermi.d	$xr3, $xr3, 216
-	xvfcvtl.d.s	$xr4, $xr3
-	xvfcvth.d.s	$xr3, $xr3
+	xvfcvth.d.s	$xr4, $xr3
+	xvfcvtl.d.s	$xr3, $xr3
 	xvfmul.d	$xr3, $xr3, $xr0
 	xvfmul.d	$xr4, $xr4, $xr0
 	xvfadd.d	$xr5, $xr4, $xr1
 	xvfadd.d	$xr6, $xr3, $xr1
 	xvfadd.d	$xr6, $xr6, $xr2
 	xvfadd.d	$xr5, $xr5, $xr2
-	xvftintrz.l.d	$xr5, $xr5
-	xvpermi.d	$xr7, $xr5, 238
-	xvpickev.w	$xr5, $xr7, $xr5
-	xvftintrz.l.d	$xr6, $xr6
-	xvpermi.d	$xr7, $xr6, 238
-	xvpickev.w	$xr6, $xr7, $xr6
+	xvftintrz.w.d	$xr5, $xr5, $xr6
+	xvpermi.d	$xr5, $xr5, 216
+	xvpermi.q	$xr6, $xr5, 1
 	vext2xv.d.w	$xr6, $xr6
 	vext2xv.d.w	$xr7, $xr5
-	xvpickve2gr.d	$a5, $xr7, 0
-	xvpickve2gr.d	$t0, $xr7, 1
-	xvpickve2gr.d	$t1, $xr7, 2
-	xvpickve2gr.d	$t2, $xr7, 3
-	xvpickve2gr.d	$t3, $xr6, 0
-	xvpickve2gr.d	$t4, $xr6, 1
-	xvpickve2gr.d	$t5, $xr6, 2
-	xvpickve2gr.d	$t6, $xr6, 3
-	alsl.d	$a6, $a5, $s4, 2
-	slli.d	$t7, $a5, 2
-	alsl.d	$a7, $t0, $s4, 2
+	xvpickve2gr.d	$a6, $xr7, 0
+	xvpickve2gr.d	$a7, $xr7, 1
+	xvpickve2gr.d	$t0, $xr7, 2
+	xvpickve2gr.d	$t1, $xr7, 3
+	xvpickve2gr.d	$t2, $xr6, 0
+	xvpickve2gr.d	$t3, $xr6, 1
+	xvpickve2gr.d	$t4, $xr6, 2
+	xvpickve2gr.d	$t5, $xr6, 3
+	alsl.d	$a5, $a6, $s4, 2
+	slli.d	$t6, $a6, 2
+	alsl.d	$a6, $a7, $s4, 2
+	slli.d	$a7, $a7, 2
+	alsl.d	$t7, $t0, $s4, 2
 	slli.d	$t0, $t0, 2
 	alsl.d	$t8, $t1, $s4, 2
 	slli.d	$t1, $t1, 2
-	alsl.d	$a5, $t2, $s4, 2
+	alsl.d	$s2, $t2, $s4, 2
 	slli.d	$t2, $t2, 2
-	alsl.d	$s2, $t3, $s4, 2
+	alsl.d	$s3, $t3, $s4, 2
 	slli.d	$t3, $t3, 2
-	alsl.d	$s3, $t4, $s4, 2
+	alsl.d	$s5, $t4, $s4, 2
 	slli.d	$t4, $t4, 2
-	alsl.d	$s5, $t5, $s4, 2
+	alsl.d	$s6, $t5, $s4, 2
 	slli.d	$t5, $t5, 2
-	alsl.d	$s6, $t6, $s4, 2
-	slli.d	$t6, $t6, 2
-	fldx.s	$fa5, $s4, $t7
-	fldx.s	$ft0, $s4, $t0
-	fldx.s	$ft1, $s4, $t1
-	fldx.s	$ft2, $s4, $t3
-	fldx.s	$ft3, $s4, $t4
-	fldx.s	$ft4, $s4, $t5
-	fldx.s	$ft5, $s4, $t6
-	fldx.s	$ft6, $s4, $t2
+	fldx.s	$fa5, $s4, $t6
+	fldx.s	$ft0, $s4, $a7
+	fldx.s	$ft1, $s4, $t0
+	fldx.s	$ft2, $s4, $t2
+	fldx.s	$ft3, $s4, $t3
+	fldx.s	$ft4, $s4, $t4
+	fldx.s	$ft5, $s4, $t5
+	fldx.s	$ft6, $s4, $t1
 	vextrins.w	$vr10, $vr11, 16
 	vextrins.w	$vr10, $vr12, 32
 	vextrins.w	$vr10, $vr13, 48
@@ -63013,32 +63010,32 @@ vorbis_lsp_to_curve:                    # @vorbis_lsp_to_curve
 	xvfcvtl.d.s	$xr9, $xr9
 	xvffint.d.l	$xr6, $xr6
 	xvffint.d.l	$xr7, $xr7
-	xvfsub.d	$xr4, $xr4, $xr7
-	xvfsub.d	$xr3, $xr3, $xr6
-	fld.s	$fa6, $a6, 4
-	fld.s	$fa7, $a7, 4
-	fld.s	$ft2, $t8, 4
-	fld.s	$ft3, $s2, 4
-	fld.s	$ft4, $s3, 4
-	fld.s	$ft5, $s5, 4
-	fld.s	$ft6, $s6, 4
-	fld.s	$ft7, $a5, 4
-	vextrins.w	$vr11, $vr12, 16
-	vextrins.w	$vr11, $vr13, 32
-	vextrins.w	$vr11, $vr14, 48
+	xvfsub.d	$xr3, $xr3, $xr7
+	xvfsub.d	$xr4, $xr4, $xr6
+	fld.s	$fa6, $a5, 4
+	fld.s	$fa7, $a6, 4
+	fld.s	$ft2, $t7, 4
+	fld.s	$ft3, $t8, 4
+	fld.s	$ft4, $s2, 4
+	fld.s	$ft5, $s3, 4
+	fld.s	$ft6, $s5, 4
+	fld.s	$ft7, $s6, 4
 	vextrins.w	$vr6, $vr7, 16
 	vextrins.w	$vr6, $vr10, 32
-	vextrins.w	$vr6, $vr15, 48
-	xvpermi.q	$xr6, $xr11, 2
+	vextrins.w	$vr6, $vr11, 48
+	vextrins.w	$vr12, $vr13, 16
+	vextrins.w	$vr12, $vr14, 32
+	vextrins.w	$vr12, $vr15, 48
+	xvpermi.q	$xr6, $xr12, 2
 	xvfsub.s	$xr5, $xr6, $xr5
 	xvpermi.d	$xr5, $xr5, 216
 	xvfcvtl.d.s	$xr6, $xr5
 	xvfcvth.d.s	$xr5, $xr5
-	xvfmul.d	$xr3, $xr3, $xr5
-	xvfmul.d	$xr4, $xr4, $xr6
-	xvfadd.d	$xr4, $xr4, $xr9
-	xvfadd.d	$xr3, $xr3, $xr8
-	xvfcvt.s.d	$xr3, $xr3, $xr4
+	xvfmul.d	$xr4, $xr4, $xr5
+	xvfmul.d	$xr3, $xr3, $xr6
+	xvfadd.d	$xr3, $xr3, $xr9
+	xvfadd.d	$xr4, $xr4, $xr8
+	xvfcvt.s.d	$xr3, $xr4, $xr3
 	xvpermi.d	$xr3, $xr3, 216
 	xvst	$xr3, $a2, 0
 	addi.d	$a4, $a4, -8

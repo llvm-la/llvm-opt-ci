@@ -1617,14 +1617,14 @@ prepSpots:                              # @prepSpots
 	xvsub.w	$xr13, $xr7, $xr13
 	xvbitsel.v	$xr10, $xr12, $xr14, $xr10
 	xvbitsel.v	$xr11, $xr13, $xr15, $xr11
-	xvpermi.q	$xr12, $xr10, 1
-	vext2xv.du.wu	$xr12, $xr12
+	vext2xv.du.wu	$xr12, $xr10
 	xvffint.d.lu	$xr12, $xr12
+	xvpermi.q	$xr10, $xr10, 1
 	vext2xv.du.wu	$xr10, $xr10
 	xvffint.d.lu	$xr10, $xr10
-	xvpermi.q	$xr13, $xr11, 1
-	vext2xv.du.wu	$xr13, $xr13
+	vext2xv.du.wu	$xr13, $xr11
 	xvffint.d.lu	$xr13, $xr13
+	xvpermi.q	$xr11, $xr11, 1
 	vext2xv.du.wu	$xr11, $xr11
 	xvffint.d.lu	$xr11, $xr11
 	xvfmul.d	$xr10, $xr2, $xr10
@@ -1635,20 +1635,10 @@ prepSpots:                              # @prepSpots
 	xvfmul.d	$xr10, $xr10, $xr3
 	xvfmul.d	$xr13, $xr13, $xr3
 	xvfmul.d	$xr11, $xr11, $xr3
-	xvftintrz.l.d	$xr10, $xr10
-	xvpermi.d	$xr14, $xr10, 238
-	xvpickev.w	$xr10, $xr14, $xr10
-	xvftintrz.l.d	$xr12, $xr12
-	xvpermi.d	$xr14, $xr12, 238
-	xvpickev.w	$xr12, $xr14, $xr12
-	xvpermi.q	$xr10, $xr12, 2
-	xvftintrz.l.d	$xr11, $xr11
-	xvpermi.d	$xr12, $xr11, 238
-	xvpickev.w	$xr11, $xr12, $xr11
-	xvftintrz.l.d	$xr12, $xr13
-	xvpermi.d	$xr13, $xr12, 238
-	xvpickev.w	$xr12, $xr13, $xr12
-	xvpermi.q	$xr11, $xr12, 2
+	xvftintrz.w.d	$xr10, $xr10, $xr12
+	xvpermi.d	$xr10, $xr10, 216
+	xvftintrz.w.d	$xr11, $xr11, $xr13
+	xvpermi.d	$xr11, $xr11, 216
 	xvadd.w	$xr8, $xr8, $xr10
 	xvadd.w	$xr9, $xr9, $xr11
 	addi.d	$t6, $t6, -16
@@ -1691,9 +1681,8 @@ prepSpots:                              # @prepSpots
 	xvffint.d.lu	$xr9, $xr9
 	xvfmul.d	$xr9, $xr2, $xr9
 	xvfmul.d	$xr9, $xr9, $xr3
-	xvftintrz.l.d	$xr9, $xr9
-	xvpermi.d	$xr10, $xr9, 238
-	xvpickev.w	$xr9, $xr10, $xr9
+	xvftintrz.w.d	$xr9, $xr9, $xr9
+	xvpermi.d	$xr9, $xr9, 216
 	vadd.w	$vr8, $vr8, $vr9
 	addi.d	$t5, $t5, 4
 	addi.d	$t6, $t6, 4
